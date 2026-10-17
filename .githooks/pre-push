@@ -1,0 +1,4 @@
+#!/bin/sh
+# Runs the full local gate before every push: selftest, scores and the CI checks.
+# Enable once per clone with: git config core.hooksPath .githooks
+exec python tools/check.py gate
