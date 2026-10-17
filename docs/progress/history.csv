@@ -1,0 +1,7 @@
+date,decompiled,matched,accuracy,game_total,changes
+2026-10-16,0,0,,11107,Baseline: compiler and scoring pipeline verified; CRT __security_init_cookie identified
+2026-10-16,3,3,100.00,11107,+FUN_00405360 100%; +FUN_0044c520 100%; +FUN_004c9c90 100%; +FUN_00422560 stub; +FUN_0044c420 stub; 1 more
+2026-10-17,6,6,100.00,16541,"+FUN_0042b3b0 100%; +FUN_0042b3d0 100%; +FUN_0042b400 100%; +__security_check_cookie 100%; +std::exception::exception(char const *const &, int) 100%; 683 more"
+2026-10-17,6,6,100.00,16537,"+std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 32.4%; +std::locale::facet::_Incref 89.5%; +std::locale::facet::_Decref 93.1%; +std::locale::~locale 0.0%; _umatherr 98.2% -> 100%; 11 more"
+2026-10-17,6,6,100.00,16537,+__endstdio 100%; +_free_locale 100%
+2026-10-17,6,6,100.00,16537,"std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 32.4% -> 42.9%; std::locale::~locale 0.0% -> 17.0%"
