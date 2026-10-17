@@ -1,0 +1,50 @@
+name: CI
+
+# Pull requests, and pushes to the default branch. A push to another branch runs
+# nothing until it has a pull request, so no push runs the job twice. If the
+# default branch has another name, put it in the list.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+# A newer push to the same branch cancels the older run, to save minutes.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: CI
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - uses: actions/cache/restore@v4
+        id: toolchain
+        with:
+          path: .toolchain
+          key: toolchain-${{ hashFiles('tools/toolchain.py') }}
+          # An older toolchain is fine when it still passes toolchain.ensure's check.
+          restore-keys: toolchain-
+      # The game never reaches CI: this runs every check but the ones that need the
+      # game exe, which `check.py gate` runs before each push.
+      # After a force push the old tip can be on no branch, so the clone need not hold it.
+      # CI then compares with no base.
+      # The pre-push hook already compared with that tip.
+      - run: python tools/check.py ci --base "${{ github.event.pull_request.base.sha || (!github.event.forced && github.event.before) || '' }}"
+      # Saved even when a check fails, so the next run does not download the toolchain again.
+      - uses: actions/cache/save@v4
+        if: always() && steps.toolchain.outputs.cache-hit != 'true'
+        with:
+          path: .toolchain
+          key: ${{ steps.toolchain.outputs.cache-primary-key }}
