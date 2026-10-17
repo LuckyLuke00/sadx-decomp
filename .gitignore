@@ -1,0 +1,10 @@
+.venv/
+.toolchain/
+.toolchain.partial/
+build/
+__pycache__/
+reccmp-user.yml
+ghidra.log
+*.exe
+*.dll
+*.pdb
