@@ -1,0 +1,5615 @@
+{
+ "target": "SADX",
+ "functions": [
+  {
+   "address": "0x00402f90",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >",
+   "accuracy": 0.42857142857142855,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00405360",
+   "name": "FUN_00405360",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004081c0",
+   "name": "std::locale::facet::_Incref",
+   "accuracy": 0.8947368421052632,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x004081f0",
+   "name": "std::locale::facet::_Decref",
+   "accuracy": 0.9310344827586207,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00408240",
+   "name": "std::locale::~locale",
+   "accuracy": 0.1702127659574468,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00422560",
+   "name": "FUN_00422560",
+   "accuracy": 0.47058823529411764,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00422c80",
+   "name": "WinMain",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0042b3b0",
+   "name": "syMalloc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0042b3d0",
+   "name": "syCalloc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0042b400",
+   "name": "syFree",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004337a0",
+   "name": "FUN_004337a0",
+   "accuracy": 0.6153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004337c0",
+   "name": "FUN_004337c0",
+   "accuracy": 0.6666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044c420",
+   "name": "FUN_0044c420",
+   "accuracy": 0.041666666666666664,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044c520",
+   "name": "FUN_0044c520",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9a20",
+   "name": "FUN_004c9a20",
+   "accuracy": 0.05405405405405406,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c9c90",
+   "name": "FUN_004c9c90",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008e1fa3",
+   "name": "__security_check_cookie",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e1fb2",
+   "name": "std::exception::exception(char const *const &, int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e1fcf",
+   "name": "std::exception::what",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e1fdc",
+   "name": "std::exception::_Copy_str",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e201c",
+   "name": "std::exception::_Tidy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e203a",
+   "name": "std::exception::exception(char const *const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2061",
+   "name": "std::exception::operator=",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2096",
+   "name": "std::bad_cast::bad_cast(char const *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e20b4",
+   "name": "std::exception::~exception",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e20bf",
+   "name": "std::exception::`scalar deleting destructor'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e20e6",
+   "name": "std::exception::exception(class std::exception const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e210b",
+   "name": "std::bad_cast::bad_cast(class std::bad_cast const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2130",
+   "name": "memmove",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2491",
+   "name": "_onexit_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2547",
+   "name": "__onexitinit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2578",
+   "name": "_onexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e25b4",
+   "name": "atexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e25cb",
+   "name": "operator delete(void *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e25d6",
+   "name": "type_info::~type_info",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e25e6",
+   "name": "type_info::`scalar deleting destructor'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2607",
+   "name": "type_info::operator==",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2627",
+   "name": "operator new(unsigned int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e26a7",
+   "name": "_purecall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e26d1",
+   "name": "_vsprintf_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2755",
+   "name": "vsprintf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e276f",
+   "name": "printf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2816",
+   "name": "_get_printf_count_output",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e282c",
+   "name": "fast_error_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2855",
+   "name": "__tmainCRTStartup",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e29c2",
+   "name": "WinMainCRTStartup",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e29d0",
+   "name": "memcpy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2d31",
+   "name": "_JumpToContinuation",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2d63",
+   "name": "_CallMemberFunction0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2d6a",
+   "name": "_UnwindNestedFrames",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2dbe",
+   "name": "__CxxFrameHandler3",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2df4",
+   "name": "CatchGuardHandler",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2e27",
+   "name": "_CallSETranslator",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2efe",
+   "name": "TranslatorGuardHandler",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e2f9d",
+   "name": "_GetRangeOfTrysToCheck",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3010",
+   "name": "_CreateFrameInfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e303c",
+   "name": "_IsExceptionObjectToBeDestroyed",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3063",
+   "name": "_FindAndUnlinkFrame",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e30b5",
+   "name": "_CallCatchBlock2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3115",
+   "name": "_cfltcvt_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3175",
+   "name": "_fpmath",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3190",
+   "name": "_CIsqrt",
+   "accuracy": 0.9591836734693877,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e324a",
+   "name": "_CxxThrowException",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e32a0",
+   "name": "_ftol2_sse",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e32a9",
+   "name": "_ftol2_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e32bc",
+   "name": "_ftol2_sse_excpt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e32d6",
+   "name": "_ftol2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3350",
+   "name": "memset",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e33ca",
+   "name": "sprintf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e344e",
+   "name": "sprintf_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3470",
+   "name": "_alldiv",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3520",
+   "name": "_allmul",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3554",
+   "name": "__crtCorExitProcess",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e357f",
+   "name": "__crtExitProcess",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3597",
+   "name": "_lockexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e35a0",
+   "name": "_unlockexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e35a9",
+   "name": "_init_pointers",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e35dc",
+   "name": "_initterm_e",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3600",
+   "name": "_cinit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3697",
+   "name": "doexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e37d7",
+   "name": "exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e37ed",
+   "name": "_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3803",
+   "name": "_cexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3812",
+   "name": "_c_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3821",
+   "name": "_amsg_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3840",
+   "name": "atan",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3880",
+   "name": "_CIatan",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e38bb",
+   "name": "_CIatan_default",
+   "accuracy": 0.9523809523809523,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3960",
+   "name": "tan",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e39a0",
+   "name": "_CItan",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e39db",
+   "name": "_CItan_default",
+   "accuracy": 0.9622641509433962,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3a90",
+   "name": "sin",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3ad0",
+   "name": "_CIsin",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3b0b",
+   "name": "_CIsin_default",
+   "accuracy": 0.9607843137254902,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3bb9",
+   "name": "_gmtime64_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e3df2",
+   "name": "_localtime64_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e407a",
+   "name": "_localtime64",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e40a1",
+   "name": "_make__time64_t",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4350",
+   "name": "_mktime64",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4362",
+   "name": "_time64",
+   "accuracy": 0.967741935483871,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e43c0",
+   "name": "strncpy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e44e4",
+   "name": "_fclose_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4551",
+   "name": "fclose",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e45c5",
+   "name": "fprintf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e46d1",
+   "name": "_fsopen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e478d",
+   "name": "fopen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e47a4",
+   "name": "fopen_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e47f0",
+   "name": "_chkstk",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e481b",
+   "name": "malloc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e48af",
+   "name": "free",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e48e9",
+   "name": "realloc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4996",
+   "name": "_LocaleUpdate::_LocaleUpdate",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4a1d",
+   "name": "_tolower_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4b32",
+   "name": "tolower",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4b60",
+   "name": "log",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4ba0",
+   "name": "_CIlog",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4bdb",
+   "name": "_CIlog_default",
+   "accuracy": 0.9649122807017544,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4cb0",
+   "name": "pow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4cf0",
+   "name": "_CIpow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4d2b",
+   "name": "_CIpow_default",
+   "accuracy": 0.974025974025974,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4f40",
+   "name": "strrchr(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e4f6d",
+   "name": "frexp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5040",
+   "name": "atan2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e504a",
+   "name": "_CIatan2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5054",
+   "name": "srand",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5066",
+   "name": "rand",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5090",
+   "name": "acos",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e50d0",
+   "name": "_CIacos",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e510b",
+   "name": "_CIacos_default",
+   "accuracy": 0.9661016949152542,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e51e0",
+   "name": "ceil",
+   "accuracy": 0.8666666666666667,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5220",
+   "name": "_ceil_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5300",
+   "name": "strcpy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5310",
+   "name": "strcat",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e53f8",
+   "name": "fabs",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e54c0",
+   "name": "strcmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5550",
+   "name": "strlen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e55db",
+   "name": "strcpy_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e563a",
+   "name": "_fread_nolock_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e57f6",
+   "name": "fread_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5884",
+   "name": "fread",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e58a1",
+   "name": "rewind",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e595f",
+   "name": "_ftell_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5af3",
+   "name": "ftell",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5b58",
+   "name": "_fseek_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5be2",
+   "name": "fseek",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e5c5e",
+   "name": "memcmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e71c0",
+   "name": "memchr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e726d",
+   "name": "atol",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7283",
+   "name": "atoi",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e728e",
+   "name": "_isalpha_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e72e4",
+   "name": "isalpha",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7314",
+   "name": "_isupper_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7365",
+   "name": "isupper",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7393",
+   "name": "_islower_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e73e4",
+   "name": "islower",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7412",
+   "name": "_isdigit_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7463",
+   "name": "isdigit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7491",
+   "name": "_isxdigit_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e74e7",
+   "name": "isxdigit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7517",
+   "name": "_isspace_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7568",
+   "name": "isspace",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7596",
+   "name": "_isalnum_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e75ec",
+   "name": "isalnum",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7620",
+   "name": "asin",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7660",
+   "name": "_CIasin",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e769b",
+   "name": "_CIasin_default",
+   "accuracy": 0.9649122807017544,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7770",
+   "name": "_except_handler4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7900",
+   "name": "floor",
+   "accuracy": 0.8666666666666667,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7940",
+   "name": "_floor_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7a21",
+   "name": "_isleadbyte_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7a59",
+   "name": "isleadbyte",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7a6c",
+   "name": "_iswspace_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7a7f",
+   "name": "Concurrency::details::UMSThreadInternalContext::operator delete",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7a8a",
+   "name": "Concurrency::details::UMSThreadInternalContext::operator new",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7a95",
+   "name": "_vswprintf_helper",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7b8b",
+   "name": "_vswprintf_c_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7bb5",
+   "name": "wcslen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7bd0",
+   "name": "fmod",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7bda",
+   "name": "_CIfmod",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7c00",
+   "name": "strcspn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7c46",
+   "name": "feof",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7c6e",
+   "name": "_fwrite_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7dc5",
+   "name": "fwrite",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7e3f",
+   "name": "vscan_fn(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7eb3",
+   "name": "swscanf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7ed5",
+   "name": "wcsstr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7f35",
+   "name": "__ArrayUnwind",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7f93",
+   "name": "`eh vector destructor iterator'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e7ff6",
+   "name": "`eh vector constructor iterator'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e805b",
+   "name": "_wtol",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8071",
+   "name": "_wtoi",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8080",
+   "name": "_allrem",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8132",
+   "name": "_endthreadex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8151",
+   "name": "_callthreadstartex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8192",
+   "name": "_threadstartex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e81f7",
+   "name": "_beginthreadex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8297",
+   "name": "__ascii_stricmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e82d0",
+   "name": "_stricmp_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8390",
+   "name": "_stricmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e83d7",
+   "name": "_strnicmp_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e84b9",
+   "name": "_strnicmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8510",
+   "name": "log10",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8550",
+   "name": "_CIlog10",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e858b",
+   "name": "_CIlog10_default",
+   "accuracy": 0.9649122807017544,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8660",
+   "name": "strncpy_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8715",
+   "name": "strncat_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e87d5",
+   "name": "strcat_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8842",
+   "name": "_vsnprintf_helper",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e890c",
+   "name": "_vsprintf_s_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8983",
+   "name": "vsprintf_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e89a0",
+   "name": "_vsnprintf_s_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8a8c",
+   "name": "_vsnprintf_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8aac",
+   "name": "vscan_fn(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8b1a",
+   "name": "sscanf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8b3c",
+   "name": "sscanf_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8b5e",
+   "name": "strncmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8c1e",
+   "name": "strtoxl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8e49",
+   "name": "strtol",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8e74",
+   "name": "strtoul",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8ea0",
+   "name": "cos",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8ee0",
+   "name": "_CIcos",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8f1b",
+   "name": "_CIcos_default",
+   "accuracy": 0.9607843137254902,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e8fd0",
+   "name": "strstr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9056",
+   "name": "wcscpy_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e90d0",
+   "name": "strchr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e918e",
+   "name": "_wcstombs_l_helper",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e93f5",
+   "name": "_wcstombs_s_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e94a7",
+   "name": "wcstombs_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e94c7",
+   "name": "_snprintf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9580",
+   "name": "modf",
+   "accuracy": 0.8666666666666667,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e95c0",
+   "name": "_modf_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e96c8",
+   "name": "__report_gsfailure",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e97ce",
+   "name": "_VEC_memcpy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e98d1",
+   "name": "__sse2_available_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e98e1",
+   "name": "_malloc_crt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9926",
+   "name": "_calloc_crt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9972",
+   "name": "_realloc_crt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e99c0",
+   "name": "_recalloc_crt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9a12",
+   "name": "_msize",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9a50",
+   "name": "__SEH_prolog4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9a95",
+   "name": "__SEH_epilog4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9aa9",
+   "name": "type_info::_Type_info_dtor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9b19",
+   "name": "_initp_heap_handler",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9b28",
+   "name": "_callnewh",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9b50",
+   "name": "abort",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9b83",
+   "name": "_set_abort_behavior",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9ba4",
+   "name": "_GET_RTERRMSG",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9bca",
+   "name": "_NMSG_WRITE",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9d79",
+   "name": "_FF_MSGBANNER",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9db2",
+   "name": "__getlocaleinfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9f5e",
+   "name": "_initp_misc_purevirt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008e9f6d",
+   "name": "_flsbuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ea166",
+   "name": "_output_l",
+   "accuracy": 0.9895561357702349,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ead6e",
+   "name": "_initp_misc_invarg",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ead7d",
+   "name": "_call_reportfault",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaea6",
+   "name": "_invoke_watson(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaecb",
+   "name": "_invalid_parameter(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaef8",
+   "name": "_invalid_parameter_noinfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaf08",
+   "name": "_get_errno_from_oserr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaf4a",
+   "name": "_errno",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaf5d",
+   "name": "__doserrno",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaf70",
+   "name": "_dosmaperr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaf93",
+   "name": "__iob_func",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eaf99",
+   "name": "__initstdio",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb04a",
+   "name": "__endstdio",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb06a",
+   "name": "_lock_file",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb0ab",
+   "name": "_lock_file2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb0dd",
+   "name": "_unlock_file",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb119",
+   "name": "_unlock_file2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb148",
+   "name": "_stbuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb1e4",
+   "name": "_ftbuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb218",
+   "name": "__CxxUnhandledExceptionFilter",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb25a",
+   "name": "__CxxSetUnhandledExceptionFilter",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb268",
+   "name": "_XcptFilter",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb3b2",
+   "name": "_wincmdln",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb411",
+   "name": "_setenvp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb4ed",
+   "name": "parse_cmdline",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb687",
+   "name": "_setargv",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb742",
+   "name": "__crtGetEnvironmentStringsA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eb7d9",
+   "name": "_ioinit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eba1e",
+   "name": "_RTC_Initialize",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eba44",
+   "name": "_RTC_Terminate",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eba6a",
+   "name": "_encoded_null",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eba73",
+   "name": "__crtTlsAlloc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eba7c",
+   "name": "__fls_getvalue",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eba96",
+   "name": "__get_flsindex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eba9c",
+   "name": "__set_flsgetvalue",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebad0",
+   "name": "__fls_setvalue",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebaed",
+   "name": "_mtterm",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebb2a",
+   "name": "_initptd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebbde",
+   "name": "_getptd_noexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebc57",
+   "name": "_getptd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebc71",
+   "name": "_freefls",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebda0",
+   "name": "_freeptd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebe0e",
+   "name": "_mtinit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebf89",
+   "name": "_heap_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ebfa7",
+   "name": "__security_init_cookie",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec042",
+   "name": "std::bad_exception::~bad_exception",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec04d",
+   "name": "std::bad_exception::`scalar deleting destructor'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec074",
+   "name": "__TypeMatch",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec0d3",
+   "name": "__FrameUnwindFilter",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec122",
+   "name": "__FrameUnwindToState",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec1fe",
+   "name": "ExFilterRethrow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec243",
+   "name": "__DestructExceptionObject",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec298",
+   "name": "__AdjustPointer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec2c1",
+   "name": "__uncaught_exception",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec2d2",
+   "name": "IsInExceptionSpec",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec348",
+   "name": "CallUnexpected",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec391",
+   "name": "CallCatchBlock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec52d",
+   "name": "__BuildCatchObjectHelper",
+   "accuracy": 0.9657534246575342,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec6ac",
+   "name": "__BuildCatchObject",
+   "accuracy": 0.9629629629629629,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec73e",
+   "name": "CatchIt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec7ac",
+   "name": "FindHandlerForForeignException",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ec8b3",
+   "name": "FindHandler",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecc28",
+   "name": "std::bad_exception::bad_exception(class std::bad_exception const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecc45",
+   "name": "__InternalCxxFrameHandler",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecd2b",
+   "name": "terminate",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecd64",
+   "name": "unexpected",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecd77",
+   "name": "_inconsistency",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecdaf",
+   "name": "_initp_eh_hooks",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecdc0",
+   "name": "_CallSettingFrame",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ece0c",
+   "name": "_forcdecpt_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ece80",
+   "name": "_cropzeros_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecf02",
+   "name": "_positive",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecf1e",
+   "name": "_fassign_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecf60",
+   "name": "_fassign",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecf7a",
+   "name": "_shift",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecf99",
+   "name": "_forcdecpt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecfac",
+   "name": "_cropzeros",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ecfbf",
+   "name": "_cftoe2_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed120",
+   "name": "_cftoe_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed1e7",
+   "name": "_cftoe",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed207",
+   "name": "_cftoa_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed57d",
+   "name": "_cftof2_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed680",
+   "name": "_cftof_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed741",
+   "name": "_cftog_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed82e",
+   "name": "_cfltcvt_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed8b6",
+   "name": "_cfltcvt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed8d9",
+   "name": "_initp_misc_cfltcvt_tab",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed8fc",
+   "name": "_setdefaultprecision",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ed9ba",
+   "name": "_woutput_l",
+   "accuracy": 0.99039780521262,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee590",
+   "name": "_trandisp1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee5f7",
+   "name": "_trandisp2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee683",
+   "name": "__rttospopde",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee688",
+   "name": "__rttospop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee68a",
+   "name": "__rtnospop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee68c",
+   "name": "__rttosnpop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee68d",
+   "name": "__rtnospopde",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee694",
+   "name": "__rtzeropop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee696",
+   "name": "__rtzeronpop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee69b",
+   "name": "__rtonepop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee69d",
+   "name": "__rtonenpop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee6a2",
+   "name": "__tosnan1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee6cd",
+   "name": "__nosnan2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee6cf",
+   "name": "__tosnan2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee6f7",
+   "name": "__nan2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee736",
+   "name": "__rtindfpop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee738",
+   "name": "__rtindfnpop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee749",
+   "name": "__rttosnpopde",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee753",
+   "name": "__rtchsifneg",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee760",
+   "name": "_startTwoArgErrorHandling",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee777",
+   "name": "_startOneArgErrorHandling",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee7c0",
+   "name": "_twoToTOS",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee7d5",
+   "name": "_load_CW",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee7ec",
+   "name": "_convertTOStoQNaN",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee805",
+   "name": "_fload_withFB",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee848",
+   "name": "_checkTOS_withFB",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee85e",
+   "name": "_fast_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee86b",
+   "name": "_math_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee895",
+   "name": "_check_overflow_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee8a9",
+   "name": "_check_range_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ee94c",
+   "name": "_VEC_memzero",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eea06",
+   "name": "_mtinitlocks",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eea50",
+   "name": "_mtdeletelocks",
+   "accuracy": 0.9428571428571428,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eeaa7",
+   "name": "_unlock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eeabe",
+   "name": "_mtinitlocknum",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eeb80",
+   "name": "_lock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eebb3",
+   "name": "_initp_misc_winsig",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eebd1",
+   "name": "siglookup",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eec08",
+   "name": "__get_sigabrt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eec15",
+   "name": "raise",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eedb8",
+   "name": "_initp_misc_rand_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eedd0",
+   "name": "_ValidateImageBase",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eee10",
+   "name": "_FindPESection",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eee60",
+   "name": "_IsNonwritableInCurrentImage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eef1c",
+   "name": "_sse2_mathfcns_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eef30",
+   "name": "_CIatan_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ef220",
+   "name": "_CItan_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ef480",
+   "name": "_CIsin_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ef648",
+   "name": "__getgmtimebuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ef67f",
+   "name": "_tzset_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ef992",
+   "name": "cvtdate",
+   "accuracy": 0.9885057471264368,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efb89",
+   "name": "_isindst_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efd60",
+   "name": "__tzset",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efdaf",
+   "name": "_isindst",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efdf0",
+   "name": "_get_daylight",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efe1d",
+   "name": "_get_dstbias",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efe4a",
+   "name": "_get_timezone",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efe77",
+   "name": "__daylight",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efe7d",
+   "name": "__dstbias",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efe83",
+   "name": "__timezone",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efe89",
+   "name": "__tzname",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efe90",
+   "name": "_aulldiv",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008efef8",
+   "name": "_close_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008eff94",
+   "name": "_close",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0058",
+   "name": "_fileno",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f007e",
+   "name": "_freebuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f00af",
+   "name": "_flush",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0117",
+   "name": "_fflush_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f015f",
+   "name": "flsall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0239",
+   "name": "_flushall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0242",
+   "name": "_openfile",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f04d9",
+   "name": "_getstream",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0610",
+   "name": "_local_unwind4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f06a0",
+   "name": "_unwind_handler4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f06e6",
+   "name": "_seh_longjmp_unwind4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0702",
+   "name": "@_EH4_CallFilterFunc@8",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0719",
+   "name": "@_EH4_TransferToHandler@8",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0732",
+   "name": "@_EH4_GlobalUnwind2@8",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f074b",
+   "name": "@_EH4_LocalUnwind@16",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0762",
+   "name": "CPtoLCID",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0791",
+   "name": "setSBCS",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f07f5",
+   "name": "setSBUpLow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0985",
+   "name": "__updatetmbcinfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0a29",
+   "name": "getSystemCP",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0aa5",
+   "name": "_setmbcp_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0c8e",
+   "name": "_setmbcp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0e28",
+   "name": "__initmbctable",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0e46",
+   "name": "__addlocaleref",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0ed5",
+   "name": "__removelocaleref",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f0f6e",
+   "name": "__freetlocinfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f10b9",
+   "name": "_updatetlocinfoEx_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f1106",
+   "name": "__updatetlocinfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f117f",
+   "name": "_freea",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f119f",
+   "name": "__crtLCMapStringA_stat",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f1386",
+   "name": "__crtLCMapStringA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f13cc",
+   "name": "_isctype_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f1484",
+   "name": "_copytlocinfo_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f14aa",
+   "name": "_free_locale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f156c",
+   "name": "_matherr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f156f",
+   "name": "_strcats",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f15b0",
+   "name": "__lc_strtolc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f16cf",
+   "name": "__lc_lctostr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f173a",
+   "name": "_setlocale_get_all",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f189f",
+   "name": "_expandlocale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f1ac0",
+   "name": "_setlocale_set_cat",
+   "accuracy": 0.9955947136563876,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f1dfa",
+   "name": "_setlocale_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f2016",
+   "name": "setlocale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f2190",
+   "name": "_CIlog_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f2411",
+   "name": "__fFEXP",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f2468",
+   "name": "__rtinfpopse",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f246a",
+   "name": "__rtinfnpopse",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f247a",
+   "name": "__fFLN",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f252f",
+   "name": "__rtinfpop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f2531",
+   "name": "__rtinfnpop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f254e",
+   "name": "__ffexpm1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f2600",
+   "name": "_CIpow_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3160",
+   "name": "_d_inttype",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f31ca",
+   "name": "_powhlp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f32f5",
+   "name": "_set_exp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3322",
+   "name": "_sptype",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3388",
+   "name": "_decomp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f344b",
+   "name": "_raise_exc_ex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3727",
+   "name": "_raise_exc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f374a",
+   "name": "_handle_exc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f392e",
+   "name": "_set_errno_from_matherr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f395b",
+   "name": "_errcode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f398f",
+   "name": "_umatherr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3a2f",
+   "name": "_handle_qnan1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3a84",
+   "name": "_except1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3b4e",
+   "name": "_statfp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3b5e",
+   "name": "_clrfp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3b6f",
+   "name": "_ctrlfp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3b9a",
+   "name": "_set_statfp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3bf2",
+   "name": "__set_fpsr_sse2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3c8c",
+   "name": "__fFATN2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3cdc",
+   "name": "__rtpiby2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3d20",
+   "name": "_cintrindisp2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3d5e",
+   "name": "_cintrindisp1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3d9b",
+   "name": "_ctrandisp2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3f2a",
+   "name": "_ctrandisp1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3f5d",
+   "name": "_fload",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f3fa0",
+   "name": "_CIacos_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f44f4",
+   "name": "__libm_error_support",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f47c0",
+   "name": "_ceil_default",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f4898",
+   "name": "_filbuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f49ba",
+   "name": "_read_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f4f71",
+   "name": "_read",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f5067",
+   "name": "memcpy_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f50dc",
+   "name": "_lseek_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f5151",
+   "name": "_lseek",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f5230",
+   "name": "_CIasin_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f57b0",
+   "name": "_floor_default",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f5888",
+   "name": "iswctype",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f58dd",
+   "name": "_copysign",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f5905",
+   "name": "_fpclass",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f59a2",
+   "name": "_write_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f609f",
+   "name": "_write",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f624d",
+   "name": "_winput_l",
+   "accuracy": 0.9838274932614556,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f7322",
+   "name": "wcstoxl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f74e4",
+   "name": "wcstol",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f7500",
+   "name": "__ascii_strnicmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f7570",
+   "name": "_CIlog10_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f7800",
+   "name": "_output_s_l",
+   "accuracy": 0.9897039897039897,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f844a",
+   "name": "_input_l",
+   "accuracy": 0.9732569245463228,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008f94ef",
+   "name": "_input_s_l",
+   "accuracy": 0.9748201438848921,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fa620",
+   "name": "_CIcos_pentium4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fa7cc",
+   "name": "__strgtold12_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008faea8",
+   "name": "_modf_default",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fafbd",
+   "name": "_crt_debugger_hook",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fafc5",
+   "name": "_calloc_impl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb047",
+   "name": "_recalloc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb0b5",
+   "name": "__crtMessageBoxW",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb221",
+   "name": "wcscat_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb296",
+   "name": "wcsncpy_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb363",
+   "name": "_set_error_mode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb3a2",
+   "name": "__crtGetLocaleInfoA_stat",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb47c",
+   "name": "__crtGetLocaleInfoA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb4b6",
+   "name": "_lseeki64_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb53b",
+   "name": "_lseeki64",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb625",
+   "name": "_getbuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb66e",
+   "name": "_isatty",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb6c4",
+   "name": "_wctomb_s_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb819",
+   "name": "wctomb_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb840",
+   "name": "_aulldvrm",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb8d5",
+   "name": "_fcloseall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb971",
+   "name": "x_ismbbtype_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb9c4",
+   "name": "_ismbblead",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fb9dc",
+   "name": "_EH_prolog3",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fba0f",
+   "name": "_EH_prolog3_catch",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fba45",
+   "name": "_EH_epilog3",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fba59",
+   "name": "_ValidateRead",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fba70",
+   "name": "__global_unwind2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fba90",
+   "name": "__unwind_handler",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbad5",
+   "name": "__local_unwind2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbb59",
+   "name": "__abnormal_termination",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbb7c",
+   "name": "_NLG_Notify1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbb85",
+   "name": "_NLG_Notify",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbba4",
+   "name": "_NLG_Call",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbba7",
+   "name": "_atodbl_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbc4f",
+   "name": "_atoflt_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbcf7",
+   "name": "_fptostr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbdaa",
+   "name": "__dtold",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbe5d",
+   "name": "_fltout2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbef0",
+   "name": "_alldvrm",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbfd0",
+   "name": "_aullshr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbfef",
+   "name": "_fptrap",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fbff8",
+   "name": "_controlfp_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc057",
+   "name": "_fputwc_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc1de",
+   "name": "_mbtowc_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc2f4",
+   "name": "mbtowc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc30e",
+   "name": "_87except",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc44d",
+   "name": "_getenv_helper_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc4d4",
+   "name": "__init_ctype",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc87b",
+   "name": "___lc_codepage_func",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc8a1",
+   "name": "___lc_handle_func",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc8c7",
+   "name": "_set_osfhnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc948",
+   "name": "_free_osfhnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fc9ce",
+   "name": "_get_osfhandle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fca37",
+   "name": "__lock_fhandle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fcad6",
+   "name": "_unlock_fhandle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fcafd",
+   "name": "_alloc_osfhnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fcc96",
+   "name": "_commit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fcd6f",
+   "name": "_tsopen_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd4a3",
+   "name": "_sopen_helper",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd567",
+   "name": "_sopen_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd587",
+   "name": "_mbsnbicmp_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd78b",
+   "name": "_mbsnbicmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd7a5",
+   "name": "_mbsnbcmp_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd8f1",
+   "name": "_mbsnbcmp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd90b",
+   "name": "__crtGetStringTypeA_stat",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fd9f2",
+   "name": "__crtGetStringTypeA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fda32",
+   "name": "_get_lc_time",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fe231",
+   "name": "__free_lc_time",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fe5a8",
+   "name": "__init_time",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fe625",
+   "name": "__free_lconv_num",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fe68e",
+   "name": "__init_numeric",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fe87e",
+   "name": "__free_lconv_mon",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fe97c",
+   "name": "__init_monetary",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fecdc",
+   "name": "__pctype_func",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fed10",
+   "name": "_alloca_probe_16",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fed3c",
+   "name": "TranslateName",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fed9e",
+   "name": "ProcessCodePage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fee22",
+   "name": "TestDefaultCountry",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fee47",
+   "name": "LcidFromHexString",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fee78",
+   "name": "GetPrimaryLen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fee93",
+   "name": "CountryEnumProc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fef3a",
+   "name": "TestDefaultLanguage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008fef95",
+   "name": "LangCountryEnumProc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff166",
+   "name": "LanguageEnumProc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff226",
+   "name": "GetLcidFromLangCountry",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff28d",
+   "name": "GetLcidFromLanguage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff2c9",
+   "name": "__get_qualified_locale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff4c0",
+   "name": "strpbrk",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff500",
+   "name": "_frnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff514",
+   "name": "_putwch_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff556",
+   "name": "_fgetwc_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff701",
+   "name": "_ungetwc_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ff8bb",
+   "name": "_wchartodigit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ffa5b",
+   "name": "_ungetc_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ffb3e",
+   "name": "ungetc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x008ffba7",
+   "name": "_ld12tod",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009000f8",
+   "name": "_ld12tof",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00900649",
+   "name": "__mtold12",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090082d",
+   "name": "$I10_OUTPUT",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901125",
+   "name": "_hw_cw",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009011b3",
+   "name": "__hw_cw_sse2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901253",
+   "name": "_control87",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901565",
+   "name": "_flswbuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009016d9",
+   "name": "_mbsnbicoll_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009017b7",
+   "name": "_mbsnbicoll",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009017d1",
+   "name": "__wtomb_environ",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901868",
+   "name": "strnlen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901885",
+   "name": "_chsize_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901a3b",
+   "name": "_setmode_nolock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901af6",
+   "name": "_get_fmode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901b23",
+   "name": "xtoa_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901bdd",
+   "name": "_itoa_s",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901c07",
+   "name": "__initconout",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901c26",
+   "name": "__termconout",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901c3d",
+   "name": "_filwbuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901d6d",
+   "name": "__crtCompareStringA_stat",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00901fdb",
+   "name": "__crtCompareStringA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090201d",
+   "name": "_strnicoll_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902107",
+   "name": "findenv",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902159",
+   "name": "copy_environ",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009021b9",
+   "name": "__crtsetenv",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009023fb",
+   "name": "_strdup",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090244d",
+   "name": "_mbschr_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009024fd",
+   "name": "_mbschr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902514",
+   "name": "std::length_error::~length_error",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902519",
+   "name": "std::logic_error::logic_error(class std::logic_error const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902536",
+   "name": "std::_Xlength_error",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902566",
+   "name": "std::length_error::length_error(class std::length_error const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902583",
+   "name": "std::_Xout_of_range",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009025b3",
+   "name": "std::out_of_range::out_of_range(class std::out_of_range const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009025d0",
+   "name": "std::logic_error::`scalar deleting destructor'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009025f1",
+   "name": "std::error_condition::operator==",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902612",
+   "name": "std::error_category::equivalent(int, class std::error_condition const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902633",
+   "name": "std::error_category::equivalent(class std::error_code const &, int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902652",
+   "name": "std::_Generic_error_category::name",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902656",
+   "name": "std::_System_error_category::name",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090265a",
+   "name": "std::error_category::default_error_condition",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090266e",
+   "name": "std::iostream_category",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902674",
+   "name": "std::error_category::`scalar deleting destructor'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902696",
+   "name": "std::_Generic_error_category::message",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009026b9",
+   "name": "std::_Iostream_error_category::message",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009026e9",
+   "name": "std::ios_base::_Callfns",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902710",
+   "name": "std::ios_base::_Tidy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902754",
+   "name": "std::ios_base::_Ios_base_dtor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902792",
+   "name": "std::_Fac_node::~_Fac_node",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009027a7",
+   "name": "std::locale::facet::_Facet_Register",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009027d1",
+   "name": "_Deletegloballocale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009027f2",
+   "name": "tidy_global",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090281e",
+   "name": "std::locale::_Getgloballocale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902824",
+   "name": "std::locale::_Setgloballocale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090284e",
+   "name": "std::locale::_Locimp::_Locimp_dtor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009028ae",
+   "name": "std::_Fac_tidy_reg_t::~_Fac_tidy_reg_t",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009028fc",
+   "name": "std::_Locinfo::_Locinfo_dtor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902917",
+   "name": "std::_Yarn<char>::operator=",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0090296f",
+   "name": "std::_Locinfo::_Locinfo_ctor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009029bc",
+   "name": "std::locale::_Locimp::_Locimp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x009029fb",
+   "name": "std::locale::_Locimp::~_Locimp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902a3e",
+   "name": "std::locale::_Locimp::`scalar deleting destructor'",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902a5f",
+   "name": "std::locale::_Init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902aee",
+   "name": "std::_Init_locks::_Init_locks",
+   "accuracy": 0.9473684210526315,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902b1f",
+   "name": "std::_Init_locks::~_Init_locks",
+   "accuracy": 0.9285714285714286,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902b48",
+   "name": "std::_Lockit::_Lockit(int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902b70",
+   "name": "std::_Lockit::~_Lockit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902b87",
+   "name": "std::_Mutex::_Mutex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902ba1",
+   "name": "std::_Mutex::~_Mutex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902bb8",
+   "name": "std::_Mutex::_Lock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902bc1",
+   "name": "std::_Mutex::_Unlock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902bca",
+   "name": "std::uncaught_exception",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902bcf",
+   "name": "_Tolower",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902cdc",
+   "name": "_Getctype",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902d3c",
+   "name": "_Toupper",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902ea1",
+   "name": "_Atexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902ed3",
+   "name": "_Init_atexit::~_Init_atexit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902efe",
+   "name": "_Mtxinit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902f0e",
+   "name": "_Mtxdst",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902f1e",
+   "name": "_Mtxlock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00902f2e",
+   "name": "_Mtxunlock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0091d1e2",
+   "name": "_strupr_s_l_stat",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0091d356",
+   "name": "_strupr_s_l",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0091d38b",
+   "name": "_strupr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0091d3e8",
+   "name": "_get_sys_err_msg",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0091d410",
+   "name": "strerror",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0091d47a",
+   "name": "__sys_nerr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0091d480",
+   "name": "__sys_errlist",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094b151",
+   "name": "std::`dynamic initializer for '_Generic_object''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094b15d",
+   "name": "std::`dynamic initializer for '_Iostream_object''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094b169",
+   "name": "std::`dynamic initializer for '_System_object''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094b175",
+   "name": "std::`dynamic initializer for '_Fac_tidy_reg''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094b181",
+   "name": "std::`dynamic initializer for 'classic_locale''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094c014",
+   "name": "`operator new'::`6'::`dynamic atexit destructor for 'nomem''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094c028",
+   "name": "std::`dynamic atexit destructor for '_Generic_object''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094c033",
+   "name": "std::`dynamic atexit destructor for '_Iostream_object''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094c03e",
+   "name": "std::`dynamic atexit destructor for '_System_object''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094c049",
+   "name": "std::`dynamic atexit destructor for 'classic_locale''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0094c053",
+   "name": "std::`dynamic atexit destructor for '_Fac_tidy_reg''",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  }
+ ],
+ "exe": "Sonic Adventure DX.exe",
+ "inputs_sha256": "1f51f0b84396e18eaf77d0615a06d7a6ee9ffa2cd3d0b25aae4193f58c57d0d6"
+}

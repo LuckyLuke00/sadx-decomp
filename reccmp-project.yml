@@ -1,0 +1,19 @@
+targets:
+  SADX:
+    filename: Sonic Adventure DX.exe
+    source_root: src
+    hash:
+      sha256: e4330c00d7ee3910ecc1acab789ffd2a2d571c506984b99a8de4d3663e697fd6
+    data_sources:
+    - src/library.csv
+    encoding:
+    ghidra:
+      ignore_types: []
+      ignore_functions: []
+      name_substitutions: []
+      allow_hash_mismatch: false
+    report:
+      ignore_functions: []
+      ignore_variables: []
+      icon:
+    marker_aliases: {}
