@@ -1,0 +1,85 @@
+{
+ "target": "SELFTEST",
+ "functions": [
+  {
+   "address": "0x00401000",
+   "name": "Total",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00401020",
+   "name": "Mix",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00401070",
+   "name": "Clamp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00401090",
+   "name": "Dot",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004010c0",
+   "name": "CountAbove",
+   "accuracy": 0.9523809523809523,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004010f0",
+   "name": "Scramble",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00401110",
+   "name": "Scale",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00401130",
+   "name": "Name",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00401150",
+   "name": "Combine",
+   "accuracy": 0.5,
+   "effective": true,
+   "stub": false,
+   "library": false
+  }
+ ],
+ "totals": {
+  "decompiled": 7,
+  "matched": 5,
+  "accuracy": 0.9217687074829932,
+  "game_total": 8,
+  "library": 1,
+  "effective": 1
+ }
+}

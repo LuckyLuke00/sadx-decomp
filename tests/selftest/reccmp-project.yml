@@ -1,0 +1,11 @@
+# The self-test's own reccmp project, apart from the game's. `check.py ci` runs it.
+targets:
+  SELFTEST:
+    filename: SELFTEST.exe
+    source_root: .
+    hash:
+      sha256: e07c8fa1dd8f97fb559dabbd5984d8b5c3debd46090ac0b0f736386068f29f9d
+    report:
+      # The CRT entry point is matched automatically. It is not part of the test.
+      ignore_functions:
+      - mainCRTStartup
