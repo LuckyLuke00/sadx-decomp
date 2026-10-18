@@ -131,10 +131,17 @@ compiler from Microsoft (722 MB).
 [docs/FRAMEWORK.md](docs/FRAMEWORK.md#what-setup-downloads) says what it
 downloads and where it goes.
 
-## Disclaimer
+## Legal
 
 This project is for research and preservation. It contains no game files or
-assets and publishes no built exe. Its source is new C and C++ code, written to
-compile to the same machine code as the retail exe. You need your own legally
-obtained copy of the game: building and scoring read it. Sonic Adventure DX is
-a trademark of SEGA. This project is not affiliated with or endorsed by SEGA.
+assets and publishes no built exe. You need your own legally obtained copy of
+the game: building and scoring read it.
+
+The code in `src/` is new C and C++ code, written to compile to the same machine
+code as the retail exe. It recreates SEGA's game, and `data/` describes that
+game. SEGA owns Sonic Adventure DX. This project claims no ownership of it and
+gives no license for `src/` or `data/`.
+
+The tools, build files, tests and guides are under the MIT license in
+[LICENSE](LICENSE). Sonic Adventure DX is a trademark of SEGA. This project is
+not affiliated with or endorsed by SEGA.
