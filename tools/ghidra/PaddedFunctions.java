@@ -192,7 +192,7 @@ public class PaddedFunctions extends GhidraScript {
 	/** The filters and handlers that the SEH scope table at offset names. None if no table is there. */
 	private List<Address> scopeTableCode(long offset) throws Exception {
 		MemoryBlock block = getMemoryBlock(toAddr(offset));
-		if (block == null || block.isExecute() || block.isWrite() || !block.isInitialized() || !block.contains(toAddr(offset + 27))
+		if (block == null || !isReadOnlyData(block) || !block.contains(toAddr(offset + 27))
 			|| getInt(toAddr(offset)) >= 0 || getInt(toAddr(offset + 8)) >= 0) {
 			return List.of();
 		}
@@ -200,8 +200,8 @@ public class PaddedFunctions extends GhidraScript {
 		for (int index = 0; block.contains(toAddr(offset + 16 + 12 * index + 11)); index++) {
 			Address entry = toAddr(offset + 16 + 12 * index);
 			int level = getInt(entry);
-			long filter = getInt(entry.add(4)) & 0xFFFFFFFFL;
-			long handler = getInt(entry.add(8)) & 0xFFFFFFFFL;
+			long filter = dword(entry.add(4));
+			long handler = dword(entry.add(8));
 			// The enclosing level is -2 for none, or the index of an earlier entry.
 			if (level != -2 && (level < 0 || level >= index) || filter != 0 && !isCodeAddress(filter) || !isCodeAddress(handler)) {
 				break;
@@ -256,15 +256,14 @@ public class PaddedFunctions extends GhidraScript {
 	/** Whether offset holds a zero dword in read-only data. */
 	private boolean holdsReadOnlyZero(long offset) throws Exception {
 		MemoryBlock block = getMemoryBlock(toAddr(offset));
-		return block != null && !block.isExecute() && !block.isWrite() && block.isInitialized()
-			&& block.contains(toAddr(offset + 3)) && getInt(toAddr(offset)) == 0;
+		return block != null && isReadOnlyData(block) && block.contains(toAddr(offset + 3)) && getInt(toAddr(offset)) == 0;
 	}
 
 	/** The code addresses in the dwords from start up to end. None if any other dword isn't zero. */
 	private List<Address> initializers(long start, long end) throws Exception {
 		List<Address> entries = new ArrayList<>();
 		for (long offset = start; offset < end; offset += 4) {
-			long value = getInt(toAddr(offset)) & 0xFFFFFFFFL;
+			long value = dword(toAddr(offset));
 			if (isCodeAddress(value)) {
 				entries.add(toAddr(value));
 			}
@@ -280,13 +279,13 @@ public class PaddedFunctions extends GhidraScript {
 		Memory memory = currentProgram.getMemory();
 		List<Address> stubs = new ArrayList<>();
 		for (MemoryBlock block : memory.getBlocks()) {
-			if (!block.isExecute() || !block.isInitialized() || block.getSize() < STUB_SIZE) {
+			if (!isInitializedCode(block) || block.getSize() < STUB_SIZE) {
 				continue;
 			}
 			Address last = block.getEnd().subtract(STUB_SIZE - 1);
 			Address stub = memory.findBytes(block.getStart(), last, JMP_THROUGH_SLOT, null, true, monitor);
 			while (stub != null) {
-				if (isImportSlot(getInt(stub.add(2)) & 0xFFFFFFFFL)) {
+				if (isImportSlot(dword(stub.add(2)))) {
 					stubs.add(stub);
 				}
 				stub = stub.equals(last) ? null : memory.findBytes(stub.next(), last, JMP_THROUGH_SLOT, null, true, monitor);
@@ -295,7 +294,7 @@ public class PaddedFunctions extends GhidraScript {
 		// In address order, so the code of a stub is in place before the next one is checked.
 		int count = 0;
 		for (Address stub : stubs) {
-			if (freeCode(stub) && startsAfterEnd(stub) && createAt(stub, null) != null) {
+			if (isFreeCode(stub) && startsAfterEnd(stub) && createAt(stub, null) != null) {
 				count++;
 			}
 		}
@@ -315,7 +314,7 @@ public class PaddedFunctions extends GhidraScript {
 	private int createAtBoundaries() throws Exception {
 		int count = 0;
 		for (MemoryBlock block : currentProgram.getMemory().getBlocks()) {
-			if (!block.isExecute() || !block.isInitialized()) {
+			if (!isInitializedCode(block)) {
 				continue;
 			}
 			long first = (block.getStart().getOffset() + 15) & ~15L;
@@ -337,6 +336,8 @@ public class PaddedFunctions extends GhidraScript {
 					}
 					removeData(data);
 				}
+				// The data goes even when inReadTable rejects the address: testing it first
+				// loses the functions at 0x0050c8b0 and 0x0053c430 in SADX.
 				if (!inReadTable(address) && createAt(address, holder) != null) {
 					count++;
 				}
@@ -483,12 +484,12 @@ public class PaddedFunctions extends GhidraScript {
 	private int createAtTableEntries() throws Exception {
 		List<Address> targets = new ArrayList<>();
 		for (MemoryBlock block : currentProgram.getMemory().getBlocks()) {
-			if (block.isExecute() || block.isWrite() || !block.isInitialized()) {
+			if (!isReadOnlyData(block)) {
 				continue;
 			}
 			List<Address> run = new ArrayList<>();
 			for (long offset = block.getStart().getOffset(); offset + 3 <= block.getEnd().getOffset(); offset += 4) {
-				long value = getInt(block.getStart().getNewAddress(offset)) & 0xFFFFFFFFL;
+				long value = dword(block.getStart().getNewAddress(offset));
 				if (isCodeAddress(value)) {
 					run.add(toAddr(value));
 					continue;
@@ -506,7 +507,7 @@ public class PaddedFunctions extends GhidraScript {
 		targets.sort(null);
 		int count = 0;
 		for (Address target : targets) {
-			if (freeCode(target) && (startsAfterEnd(target) || target.getOffset() % 16 == 0) && createAt(target, null) != null) {
+			if (isFreeCode(target) && (startsAfterEnd(target) || target.getOffset() % 16 == 0) && createAt(target, null) != null) {
 				count++;
 			}
 		}
@@ -517,7 +518,7 @@ public class PaddedFunctions extends GhidraScript {
 	private int createAtFree(List<Address> targets) throws Exception {
 		int count = 0;
 		for (Address target : targets) {
-			if (freeCode(target) && createAt(target, null) != null) {
+			if (isFreeCode(target) && createAt(target, null) != null) {
 				count++;
 			}
 		}
@@ -525,7 +526,7 @@ public class PaddedFunctions extends GhidraScript {
 	}
 
 	/** Whether no function holds address, and it holds no int3, data, or the middle of an instruction. */
-	private boolean freeCode(Address address) throws Exception {
+	private boolean isFreeCode(Address address) throws Exception {
 		if (getFunctionContaining(address) != null || getByte(address) == INT3) {
 			return false;
 		}
@@ -666,7 +667,22 @@ public class PaddedFunctions extends GhidraScript {
 	}
 
 	private boolean holdsCodeAddress(Address address) throws Exception {
-		return getMemoryBlock(address) != null && isCodeAddress(getInt(address) & 0xFFFFFFFFL);
+		return getMemoryBlock(address) != null && isCodeAddress(dword(address));
+	}
+
+	/** The unsigned dword at address. */
+	private long dword(Address address) throws Exception {
+		return getInt(address) & 0xFFFFFFFFL;
+	}
+
+	/** Whether block is initialized data that nothing writes or runs. */
+	private static boolean isReadOnlyData(MemoryBlock block) {
+		return !block.isExecute() && !block.isWrite() && block.isInitialized();
+	}
+
+	/** Whether block is initialized code. */
+	private static boolean isInitializedCode(MemoryBlock block) {
+		return block.isExecute() && block.isInitialized();
 	}
 
 	private boolean isCodeAddress(long offset) {
@@ -731,7 +747,7 @@ public class PaddedFunctions extends GhidraScript {
 						continue;
 					}
 					Function holder = getFunctionContaining(target);
-					if (holder != null && holder.getEntryPoint().compareTo(owner.getEntryPoint()) > 0 && splitOff(holder, owner)) {
+					if (holder != null && holder.getEntryPoint().compareTo(owner.getEntryPoint()) > 0 && isSplitOffFrom(holder, owner)) {
 						removeFunction(holder);
 						holder = null;
 					}
@@ -758,7 +774,7 @@ public class PaddedFunctions extends GhidraScript {
 	 * code reach it. No call, no jump of another function, no pointer in data.
 	 * Ghidra turns a jump to a function into a call, so the instruction's own name tells.
 	 */
-	private boolean splitOff(Function function, Function owner) throws Exception {
+	private boolean isSplitOffFrom(Function function, Function owner) throws Exception {
 		Address entry = function.getEntryPoint();
 		if (!owner.getBody().contains(entry.previous())) {
 			return false;
@@ -785,7 +801,7 @@ public class PaddedFunctions extends GhidraScript {
 	 */
 	private void resolveSwitch(Instruction jump, Address table, Function owner) throws Exception {
 		for (Address entry = table; ; entry = entry.add(4)) {
-			long target = getInt(entry) & 0xFFFFFFFFL;
+			long target = dword(entry);
 			if (target < owner.getEntryPoint().getOffset() || target >= table.getOffset()) {
 				return;
 			}
