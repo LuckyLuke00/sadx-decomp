@@ -386,12 +386,6 @@ struct task *AlrObjSetManageTask()
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x0048a9b0
-double atan2(double, double)
-{
-	return (double)0;
-}
-
 // STUB: SADX 0x0049d460
 void CheckEmbleAchievement(struct SAVE_DATA *)
 {
@@ -692,6 +686,11 @@ void MSG_CloseRequestCls()
 
 // STUB: SADX 0x004c38e0
 void PadReadOn()
+{
+}
+
+// STUB: SADX 0x004c38f0
+void PadReadOn(int)
 {
 }
 

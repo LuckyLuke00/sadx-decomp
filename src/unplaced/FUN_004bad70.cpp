@@ -4,7 +4,6 @@ extern int DAT_05cd14d4;
 extern struct task *DAT_05cda18c;
 
 void FUN_0049f780();
-void FUN_004c38e0();
 void FUN_007d21b0(void *param_1);
 int FUN_004c39c0(int param_1);
 

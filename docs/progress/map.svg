@@ -326,7 +326,6 @@
 <rect x="898" y="190" width="6" height="6" fill="#6e7681"><title>0x0048a000 ObjectAlrCracker_Init: stub</title></rect>
 <rect x="968" y="190" width="6" height="6" fill="#6e7681"><title>0x0048a690 AlrConfetti_Init: stub</title></rect>
 <rect x="51" y="197" width="6" height="6" fill="#6e7681"><title>0x0048a950 AlrObjSetManageTask: stub</title></rect>
-<rect x="65" y="197" width="6" height="6" fill="#6e7681"><title>0x0048a9b0 atan2(double, double): stub</title></rect>
 <rect x="394" y="211" width="6" height="6" fill="#56d364"><title>0x0049d410 FUN_0049d410: 100%</title></rect>
 <rect x="401" y="211" width="6" height="6" fill="#6e7681"><title>0x0049d460 CheckEmbleAchievement: stub</title></rect>
 <rect x="408" y="211" width="6" height="6" fill="#56d364"><title>0x0049e0a0 GetEmblem: 100%</title></rect>
@@ -486,7 +485,8 @@
 <rect x="156" y="239" width="6" height="6" fill="#56d364"><title>0x004c3560 FUN_004c3560: 100%</title></rect>
 <rect x="177" y="239" width="6" height="6" fill="#56d364"><title>0x004c38b0 FUN_004c38b0: 100%</title></rect>
 <rect x="184" y="239" width="6" height="6" fill="#56d364"><title>0x004c38d0 FUN_004c38d0: 100%</title></rect>
-<rect x="191" y="239" width="6" height="6" fill="#6e7681"><title>0x004c38e0 PadReadOn: stub</title></rect>
+<rect x="191" y="239" width="6" height="6" fill="#6e7681"><title>0x004c38e0 PadReadOn(void): stub</title></rect>
+<rect x="198" y="239" width="6" height="6" fill="#6e7681"><title>0x004c38f0 PadReadOn(int): stub</title></rect>
 <rect x="205" y="239" width="6" height="6" fill="#6e7681"><title>0x004c3910 PadReadOff: stub</title></rect>
 <rect x="240" y="239" width="6" height="6" fill="#56d364"><title>0x004c39c0 FUN_004c39c0: 100%</title></rect>
 <rect x="261" y="239" width="6" height="6" fill="#6e7681"><title>0x004c3d70 GetSwitchData: stub</title></rect>
@@ -712,7 +712,7 @@
 <rect x="317" y="932" width="6" height="6" fill="#2c8735"><title>0x008e4d2b _CIpow_default (library): 97.4%</title></rect>
 <rect x="345" y="932" width="6" height="6" fill="#58a6ff"><title>0x008e4f40 strrchr(1) (library): 100%</title></rect>
 <rect x="352" y="932" width="6" height="6" fill="#58a6ff"><title>0x008e4f6d frexp (library): 100%</title></rect>
-<rect x="359" y="932" width="6" height="6" fill="#58a6ff"><title>0x008e5040 atan2(2) (library): 100%</title></rect>
+<rect x="359" y="932" width="6" height="6" fill="#58a6ff"><title>0x008e5040 atan2 (library): 100%</title></rect>
 <rect x="366" y="932" width="6" height="6" fill="#58a6ff"><title>0x008e504a _CIatan2 (library): 100%</title></rect>
 <rect x="373" y="932" width="6" height="6" fill="#58a6ff"><title>0x008e5054 srand (library): 100%</title></rect>
 <rect x="380" y="932" width="6" height="6" fill="#58a6ff"><title>0x008e5066 rand (library): 100%</title></rect>

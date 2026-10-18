@@ -5,8 +5,6 @@ extern int DAT_05cd265c;
 
 void FUN_005f22c0(struct task *param_1, struct ModeSelPrmType *param_2);
 void FUN_004c0e10(void *param_1);
-void FUN_004c06f0(struct task *param_1);
-void FUN_004c12e0(float param_1);
 void title_menu_disp(struct task *param_1);
 
 // FUNCTION: SADX 0x004c0680
