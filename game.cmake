@@ -11,3 +11,6 @@ target_link_options(game PRIVATE /DYNAMICBASE:NO)
 # and C++ in .rdata, and the literals of task.c, enemy.c and eventdraw.c, all /Od,
 # sit in .rdata (docs/STYLE.md).
 set_source_files_properties(${GAME_SOURCES} PROPERTIES LANGUAGE CXX)
+
+# The shared declarations that every source file includes as "decls.h".
+target_include_directories(game PRIVATE "${CMAKE_SOURCE_DIR}/src/include")
