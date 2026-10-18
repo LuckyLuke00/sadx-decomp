@@ -1,8 +1,6 @@
 #include <math.h>
 #include "decls.h"
 
-#define FUN_004c38e0 PadReadOn
-
 extern int DAT_05b3e05c;
 extern int DAT_05cc3574;
 extern char DAT_05cc3631;
