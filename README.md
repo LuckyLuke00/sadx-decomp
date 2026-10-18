@@ -18,6 +18,10 @@ goal is C and C++ source that compiles to the same machine code as the retail
 <!-- history:start -->
 | Date | Decompiled | Matched | Accuracy | Changes |
 | --- | --- | --- | --- | --- |
+| 2026-10-18 | 148 / 16,537 (0.89%) | 148 | 100.00% | FUN_004c3560 90.5% -> 100% |
+| 2026-10-17 | 148 / 16,537 (0.89%) | 147 | 99.94% | AlrReal_controlMode stub -> 100%; +GetEmblem 100%; +FUN_0049e130 100%; +FUN_0049e1a0 100%; +GetEmblemNumberofStageClear 100%; 226 more |
+| 2026-10-17 | 57 / 16,537 (0.34%) | 57 | 100.00% | +FUN_004822c0 100%; +AlrReal_Exe 100%; +AlrReal_exe_for_Race 100%; +AlrReal_Dsp 100%; +AlrReal_Destructor 100%; 111 more |
+| 2026-10-17 | 18 / 16,537 (0.11%) | 18 | 100.00% | +GetAdvertisePlayerNumber 100%; +EV_FreeNpcMilesPlayerTask 100%; +EV_CreateNpcMilesPlayerTask 100%; +EV_NpcMilesStandByOn 100%; +EV_NpcMilesStandByOff 100%; 14 more |
 | 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 32.4% -> 42.9%; std::locale::~locale 0.0% -> 17.0% |
 | 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | +__endstdio 100%; +_free_locale 100% |
 | 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | +std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 32.4%; +std::locale::facet::_Incref 89.5%; +std::locale::facet::_Decref 93.1%; +std::locale::~locale 0.0%; _umatherr 98.2% -> 100%; 11 more |
@@ -26,9 +30,9 @@ goal is C and C++ source that compiles to the same machine code as the retail
 | 2026-10-16 | 0 / 11,107 (0.00%) | 0 | n/a | Baseline: compiler and scoring pipeline verified; CRT __security_init_cookie identified |
 <!-- history:end -->
 
-`check.py save` writes a row to
-[docs/progress/history.csv](docs/progress/history.csv) for every score change,
-and CI rejects any edit to an old row.
+The pre-commit hook runs `check.py save`, which writes a row to
+[docs/progress/history.csv](docs/progress/history.csv) for every score change
+and redraws this table. CI rejects any edit to an old row.
 
 ### Function map
 
@@ -127,8 +131,8 @@ python tools/check.py setup
 python tools/check.py gate
 ```
 
-`setup` gets everything ready and turns on the pre-push hook, so `git push`
-runs `gate` first. If the game is not in a Steam library, give its path:
+`setup` gets everything ready and turns on the git hooks. `git commit` runs
+`save` and stages the new scores, and `git push` runs `gate` first. If the game is not in a Steam library, give its path:
 `setup --game "<path to Sonic Adventure DX.exe>"`. The path goes in
 `reccmp-user.yml`, which stays on your machine. The first run downloads the
 compiler from Microsoft (722 MB).
