@@ -38,10 +38,10 @@ Create the repo, copy framework files (`git ls-files` omits ignored files such a
 ```bash
 mkdir -p "<repo>" && git -C "<repo>" init
 cd "<framework>" && git ls-files --cached --others --exclude-standard -- tools tests .github .githooks CMakeLists.txt requirements.txt .gitignore .gitattributes docs/CLAUDE-GENERIC.md docs/FRAMEWORK.md docs/PORTING.md | while read -r file; do mkdir -p "<repo>/$(dirname "$file")" && cp "$file" "<repo>/$file"; done
-cd "<repo>" && git add --chmod=+x .githooks/pre-push
+cd "<repo>" && git add --chmod=+x .githooks/pre-push .githooks/pre-commit
 ```
 
-Last line stages the hook as executable (Windows has no executable bit). To skip the compiler download, also copy `<framework>/.toolchain` to `<repo>/.toolchain`. Copy, don't move (running `mspdbsrv.exe` can hold its files). Don't copy `.venv`: its programs hold the path of the repo that made them.
+Last line stages the hooks as executable (Windows has no executable bit). To skip the compiler download, also copy `<framework>/.toolchain` to `<repo>/.toolchain`. Copy, don't move (running `mspdbsrv.exe` can hold its files). Don't copy `.venv`: its programs hold the path of the repo that made them.
 
 Write the game files:
 
