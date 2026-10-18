@@ -66,7 +66,7 @@ def write_constants(game: Path) -> None:
         pools = group is not None and codegen.pools_strings(group["flags"].split())
         functions.append(constants.Function(function["address"], function["size"], pools))
     write_constants_csv(CONSTANTS_CSV, game, functions)
-    game_code = progress.game_addresses(rows)
+    game_code = progress.game_addresses(rows, groups)
     write_sizes_csv(SIZES_CSV, [(row["address"], row["size"]) for row in rows if row["address"] in game_code])
 
 
