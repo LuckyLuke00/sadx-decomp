@@ -1,25 +1,33 @@
 #!/usr/bin/env python3
-"""Draw the README progress visuals and keep the progress history.
+"""Draw the README progress visuals and the progress history.
 
   python tools/progress.py
 
-Reads docs/progress/summary.json and history.csv, data/functions.csv,
-data/codegen-groups.csv and README.md. Writes card.svg, history.svg and map.svg in
-docs/progress, and the recent-changes table in README.md. The output depends
-only on those committed files, so CI can check that it is current.
+Reads docs/progress/summary.json, data/functions.csv, data/codegen-groups.csv and
+README.md, and the same three files in each commit that changed summary.json.
+Writes history.csv, card.svg, history.svg and map.svg in docs/progress, and the
+recent-changes table in README.md. The history has one row for each first-parent
+commit that changed a score, and one for the working tree when its scores differ
+from the last commit's: the commit being made. The output depends only on
+committed files, so CI can check that it is current.
 `check.py save` calls this after it saves a new summary.json.
 Standard library only.
 """
 
 import csv
+import io
 import json
 import math
+import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 from typing import NamedTuple
 from xml.sax.saxutils import escape
 
-from scoring import Totals, accuracy_text, percent, ratio, score, state, stats_line, totals
+import osutil
+
+from scoring import Totals, accuracy_text, describe_changes, percent, ratio, score, scores_changed, state, stats_line, totals
 
 ROOT = Path(__file__).resolve().parent.parent
 PROGRESS = ROOT / "docs" / "progress"
@@ -85,13 +93,20 @@ def read_csv(path: Path) -> list[dict]:
         return list(csv.DictReader(rows))
 
 
+def parse_functions(rows: list[dict]) -> list[dict]:
+    return [{"address": int(row["address"], 16), "size": int(row["size"]), "name": row["ghidra_name"]} for row in rows]
+
+
 def load_functions() -> list[dict]:
-    return [{"address": int(row["address"], 16), "size": int(row["size"]), "name": row["ghidra_name"]}
-            for row in read_csv(FUNCTIONS_CSV)]
+    return parse_functions(read_csv(FUNCTIONS_CSV))
+
+
+def parse_codegen_groups(rows: list[dict]) -> list[dict]:
+    return [dict(row, start=int(row["start"], 16), end=int(row["end"], 16)) for row in rows]
 
 
 def load_codegen_groups() -> list[dict]:
-    return [dict(row, start=int(row["start"], 16), end=int(row["end"], 16)) for row in read_csv(CODEGEN_GROUPS)]
+    return parse_codegen_groups(read_csv(CODEGEN_GROUPS))
 
 
 def codegen_group(groups: list[dict], address: int) -> dict | None:
@@ -105,9 +120,9 @@ def load_summary() -> dict:
     return json.loads(SUMMARY_JSON.read_text(encoding="utf-8"))
 
 
-def game_addresses(functions: list[dict]) -> set[int]:
-    """The denominator: functions in game code ranges."""
-    groups = load_codegen_groups()
+def game_addresses(functions: list[dict], groups: list[dict] | None = None) -> set[int]:
+    """The denominator: functions in game code ranges. The groups default to the working tree's."""
+    groups = load_codegen_groups() if groups is None else groups
     game = set()
     for function in functions:
         group = codegen_group(groups, function["address"])
@@ -119,17 +134,73 @@ def game_addresses(functions: list[dict]) -> set[int]:
 # History
 
 
-def load_history() -> list[dict]:
-    """The history rows, oldest first. There are none before the first `check.py save`."""
-    return read_csv(HISTORY_CSV) if HISTORY_CSV.exists() else []
+class Snapshot(NamedTuple):
+    day: str
+    summary: dict
+    game: set[int]
 
 
-def history_row(date: str, stats: Totals, changes: list[str]) -> dict:
+def read_blobs(root: Path, specs: list[str]) -> dict[str, str]:
+    """The text of each `commit:path` spec in the repository at root. Each distinct file version is read once."""
+    checks = osutil.git(root, "cat-file", "--batch-check", stdin="".join(f"{spec}\n" for spec in specs).encode())
+    ids = []
+    for spec, line in zip(specs, checks.decode().splitlines()):
+        if line.endswith(" missing"):
+            sys.exit(f"git has no {spec}")
+        ids.append(line.split()[0])
+    unique = sorted(set(ids))
+    data = osutil.git(root, "cat-file", "--batch", stdin="".join(f"{blob}\n" for blob in unique).encode())
+    texts, position = {}, 0
+    for blob in unique:
+        header_end = data.index(b"\n", position)
+        size = int(data[position:header_end].split()[2])
+        texts[blob] = data[header_end + 1:header_end + 1 + size].decode("utf-8")
+        position = header_end + 1 + size + 1  # the content ends with a newline of its own
+    return {spec: texts[blob] for spec, blob in zip(specs, ids)}
+
+
+def csv_rows(text: str) -> list[dict]:
+    return list(csv.DictReader(io.StringIO(text)))
+
+
+def committed_snapshots() -> list[Snapshot]:
+    """The scores of each first-parent commit that changed summary.json, oldest first."""
+    if subprocess.run(["git", "rev-parse", "--verify", "--quiet", "HEAD"], cwd=ROOT, capture_output=True).returncode:
+        return []  # no commit yet
+    paths = [path.relative_to(ROOT).as_posix() for path in (SUMMARY_JSON, FUNCTIONS_CSV, CODEGEN_GROUPS)]
+    log = osutil.git(ROOT, "log", "--first-parent", "--reverse", "--format=%H %as", "--", paths[0]).decode()
+    commits = [line.split() for line in log.splitlines()]
+    texts = read_blobs(ROOT, [f"{commit}:{path}" for commit, _ in commits for path in paths])
+    games = {}  # one game set per version of functions.csv and codegen-groups.csv
+    snapshots = []
+    for commit, day in commits:
+        summary, functions, groups = (texts[f"{commit}:{path}"] for path in paths)
+        if (functions, groups) not in games:
+            games[functions, groups] = game_addresses(parse_functions(csv_rows(functions)),
+                                                      parse_codegen_groups(csv_rows(groups)))
+        snapshots.append(Snapshot(day, json.loads(summary), games[functions, groups]))
+    return snapshots
+
+
+def history_rows(snapshots: list[Snapshot]) -> list[dict]:
+    """The history rows of the snapshots, oldest first: the first snapshot, then each that moved a score.
+    Stubs score zero, so a commit that only adds or removes stubs gets no row."""
+    rows, previous = [], {"functions": []}
+    for snapshot in snapshots:
+        changes = describe_changes(previous, snapshot.summary)
+        row = history_row(snapshot.day, totals(snapshot.summary, snapshot.game), changes)
+        if not rows or scores_changed(previous, snapshot.summary) or not same_totals(row, rows[-1]):
+            rows.append(row)
+        previous = snapshot.summary
+    return rows
+
+
+def history_row(day: str, stats: Totals, changes: list[str]) -> dict:
     shown = changes[:MAX_CHANGES]
     if len(changes) > MAX_CHANGES:
         shown.append(f"{len(changes) - MAX_CHANGES} more")
     return {
-        "date": date,
+        "date": day,
         "decompiled": str(stats.decompiled),
         "matched": str(stats.matched),
         "accuracy": f"{stats.accuracy * 100:.2f}" if stats.accuracy is not None else "",
@@ -142,19 +213,12 @@ def same_totals(row: dict, other: dict) -> bool:
     return all(row[field] == other[field] for field in ("decompiled", "matched", "accuracy", "game_total"))
 
 
-def record_history(date: str, stats: Totals, changes: list[str]) -> bool:
-    """Append a row when a function changed or the totals moved. The log is append-only."""
-    row = history_row(date, stats, changes)
-    history = load_history()
-    if not changes and history and same_totals(row, history[-1]):
-        return False
-    new_file = not HISTORY_CSV.exists()
-    with HISTORY_CSV.open("a", encoding="utf-8", newline="") as rows:
-        writer = csv.DictWriter(rows, HISTORY_FIELDS, lineterminator="\n")
-        if new_file:
-            writer.writeheader()
-        writer.writerow(row)
-    return True
+def render_history_csv(history: list[dict]) -> str:
+    text = io.StringIO()
+    writer = csv.DictWriter(text, HISTORY_FIELDS, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(history)
+    return text.getvalue()
 
 
 # Drawing
@@ -460,12 +524,13 @@ def replace_between_markers(text: str, content: str) -> str:
 def render_all() -> dict[Path, str]:
     """Every generated file and its expected text, from the committed inputs only."""
     summary = load_summary()
-    history = load_history()
     functions = load_functions()
     game = game_addresses(functions)
+    history = history_rows(committed_snapshots() + [Snapshot(date.today().isoformat(), summary, game)])
     stats = totals(summary, game)
     readme = README.read_text(encoding="utf-8")
     return {
+        HISTORY_CSV: render_history_csv(history),
         PROGRESS / "map.svg": render_map(summary, functions, game),
         PROGRESS / "card.svg": render_card(stats, history[-1]["date"], summary["exe"]),
         PROGRESS / "history.svg": render_history(history),

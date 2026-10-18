@@ -26,9 +26,7 @@ import re
 import shutil
 import subprocess
 import sys
-from datetime import date
 from pathlib import Path
-from typing import NamedTuple
 
 import ci
 import codegen
@@ -46,13 +44,6 @@ import toolchain
 
 ROOT = project.ROOT
 LIBRARY_RSP = project.BUILD / "library.rsp"  # CMakeLists.txt links the game with it
-
-
-class Scored(NamedTuple):
-    """What score_game() measured, and the baseline it compared with."""
-    stats: scoring.Totals
-    current: dict
-    baseline: dict
 
 
 def main() -> int:
@@ -81,7 +72,7 @@ def parse_args() -> argparse.Namespace:
     fn.add_argument("addresses", nargs="+", type=lambda value: int(value, 16),
                     help="original addresses, e.g. 0x00401000")
     ci_command = commands.add_parser("ci")
-    ci_command.add_argument("--base", help="commit to compare scores and history with (default: the upstream)")
+    ci_command.add_argument("--base", help="commit to compare scores with (default: the upstream)")
     commands.add_parser("gate")
     commands.add_parser("save")
     commands.add_parser("library")
@@ -195,10 +186,10 @@ def run_save(game: Path) -> int:
     trusted = not any(results.values())
     if not trusted:
         print("     not saving: the scores can only be trusted once the checks above pass")
-    scored = score_game(game)
-    if scored is not None and trusted:
-        save_scores(scored)
-    return finish_game_checks(results, game, scored)
+    scores = score_game(game)
+    if scores is not None and trusted:
+        save_scores(scores)
+    return finish_game_checks(results, game, scores)
 
 
 def checks_on_game(game: Path) -> dict[str, int]:
@@ -209,8 +200,8 @@ def checks_on_game(game: Path) -> dict[str, int]:
     return results
 
 
-def finish_game_checks(results: dict[str, int], game: Path, scored: Scored | None) -> int:
-    return conclude({**results, "scores": 1 if scored is None else 0, "functions": check_function_map(game),
+def finish_game_checks(results: dict[str, int], game: Path, scores: dict | None) -> int:
+    return conclude({**results, "scores": 1 if scores is None else 0, "functions": check_function_map(game),
                      "repo": ci.run_checks(None)})
 
 
@@ -330,8 +321,8 @@ def check_regressions(baseline: dict, current: dict) -> bool:
     return not regressions
 
 
-def score_game(game: Path) -> Scored | None:
-    """Score every function. None if an annotation names no symbol or a score dropped below summary.json."""
+def score_game(game: Path) -> dict | None:
+    """Score every function, as a new summary.json. None if an annotation names no symbol or a score dropped below summary.json."""
     html = project.BUILD / "report.html"
     build = runner.game_build()
     functions = runner.score_target(build, game, "--html", str(html))
@@ -346,22 +337,19 @@ def score_game(game: Path) -> Scored | None:
     if not check_regressions(baseline, current):
         return None
     print(f"ok   no score dropped (report: {html.relative_to(ROOT)})")
-    return Scored(stats, current, baseline)
+    return current
 
 
-def save_scores(scored: Scored) -> None:
-    """Record the scores, add a history row if anything changed and redraw the visuals."""
+def save_scores(scores: dict) -> None:
+    """Record the scores and redraw the history and visuals."""
     # Check the README before writing anything, so a bad one can't leave half a save.
     progress.history_markers(progress.README.read_text(encoding="utf-8"))
-    changes = scoring.describe_changes(scored.baseline, scored.current)
-    scored.current["exe"] = project.game_config().filename
-    scored.current["inputs_sha256"] = ci.inputs_hash()
+    scores["exe"] = project.game_config().filename
+    scores["inputs_sha256"] = ci.inputs_hash()
     progress.PROGRESS.mkdir(parents=True, exist_ok=True)
-    progress.SUMMARY_JSON.write_text(json.dumps(scored.current, indent=1) + "\n", encoding="utf-8", newline="\n")
-    added = progress.record_history(date.today().isoformat(), scored.stats, changes)
+    progress.SUMMARY_JSON.write_text(json.dumps(scores, indent=1) + "\n", encoding="utf-8", newline="\n")
     progress.write_visuals()
-    print(f"     saved {progress.SUMMARY_JSON.parent.relative_to(ROOT)} and README.md"
-          f"{', with a new history row' if added else ''}")
+    print(f"     saved {progress.SUMMARY_JSON.parent.relative_to(ROOT)} and README.md")
 
 
 # Porting

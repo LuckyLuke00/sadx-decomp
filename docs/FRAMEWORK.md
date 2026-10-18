@@ -74,7 +74,7 @@ Three checks show that the toolchain is the game's own:
 
 ## Commands
 
-`tools/check.py` is the single entry point. Only `python tools/progress.py` runs on its own: it redraws the SVGs in `docs/progress` and the README table from the saved files, as `save` does. Every command first sets up what it needs, then runs itself inside `.venv`. It prints only what matters: tool output shows on failure, and compiler and reccmp warnings always show.
+`tools/check.py` is the single entry point. Only `python tools/progress.py` runs on its own: it rewrites `history.csv` from the commits and redraws the SVGs in `docs/progress` and the README table, as `save` does. Every command first sets up what it needs, then runs itself inside `.venv`. It prints only what matters: tool output shows on failure, and compiler and reccmp warnings always show.
 
 | Command | What it does | Exit code |
 | --- | --- | --- |
@@ -82,7 +82,7 @@ Three checks show that the toolchain is the game's own:
 | `fn 0x00401000 0x00401020` | Builds and scores each function: one line each, plus the instruction diff for misses | 0 only if all match |
 | `ci [--base COMMIT]` | Builds and runs every check that needs no game: the annotation lint (reccmp's linter plus a check that every function annotation is at the start of a game function), the self-test and `tools/ci.py` | 1 if any fails |
 | `gate` | `ci`, plus the Rich header check, every game function's score with `build/report.html`, and checks that every code byte is in a function of `data/functions.csv`, padding or an import stub, and that every `FUNCTION`, `STUB` and `LIBRARY` annotation names a symbol in our build. The pre-push hook runs it | 1 if any fails or a score dropped |
-| `save` | `gate`, then saves the scores, adds a history row if anything changed and redraws the visuals. It saves nothing if the lint, the self-test, the Rich header check or the annotation check fails, or a score dropped | 1 if any fails or a score dropped |
+| `save` | `gate`, then saves the scores and redraws the history and visuals. The pre-commit hook runs it. It saves nothing if the lint, the self-test, the Rich header check or the annotation check fails, or a score dropped | 1 if any fails or a score dropped |
 | `library` | Finds the runtime library code, mostly in the `library` ranges of `data/codegen-groups.csv`, writes `src/library.csv` and names the game function the runtime calls, such as `WinMain`. Then it builds and scores those functions | 1 if a function misses |
 | `sources` | Writes `data/source-files.csv` and `data/classes.csv` from the source paths and class names in the exe | 0 |
 | `groups` | Recounts the tells behind each row of `data/codegen-groups.csv` from the exe, names each function whose tells contradict its row's flags, and writes `data/file-clusters.csv`. Needs `src/library.csv` | 1 if a function contradicts its row |
@@ -118,13 +118,14 @@ Do not change the code to get past a detection. The next definitions update can 
 
 ## The self-test
 
-`tests/selftest` is a small known program with its own reccmp project. CMake builds `original.cpp` as `build/selftest-original/SELFTEST.exe`, with no PDB and no relocations, to stand in for a retail exe. `decomp.cpp` is its annotated twin. Both builds also hold `gl-caller.cpp` and `gl-callee.cpp`, compiled with `/GL`. `check.py ci` checks five things:
+`tests/selftest` is a small known program with its own reccmp project. CMake builds `original.cpp` as `build/selftest-original/SELFTEST.exe`, with no PDB and no relocations, to stand in for a retail exe. `decomp.cpp` is its annotated twin. Both builds also hold `gl-caller.cpp` and `gl-callee.cpp`, compiled with `/GL`. `check.py ci` checks six things:
 
 - The original builds to the SHA-256 pinned in `tests/selftest/reccmp-project.yml`. A change of compiler, libraries or flags breaks it.
 - reccmp scores every function exactly as `tests/selftest/expected.json` says: six matches, one near miss, one effective match and one stub. `Scale` and `Name` use a float and a string from the original's data. It has no relocations, so they match only with the constants `check.py` adds. `Total` and `Mix` are the `/GL` pair. `Combine` is the same inline assembly with two registers swapped. reccmp scores it 50% and flags it as an effective match.
-- The regression gate passes on equal scores and fires on a deliberate drop.
+- The regression gate passes on equal scores and a removed stub, and fires on a deliberate drop.
 - The register-argument search of `check.py groups` finds the call from `Total` to `Mix`, which only `/GL` makes, and no other call.
 - The totals leave the stub out of the decompiled count, and a library function out of the game total.
+- The history skips stubs. On copies of the expected scores, an added or removed stub changes no score and adds no history row. A score change adds one, and the working tree adds one only when it moved a score. The git reader of `progress.py` reads each file of a throwaway repository, also when two files share one blob.
 
 A new compiler needs a new pinned hash and new expected scores.
 
@@ -135,8 +136,8 @@ GitHub Actions runs [.github/workflows/ci.yml](../.github/workflows/ci.yml) on e
 CI never sees the game exe, so it can't score game functions itself. `tools/ci.py` covers the gap:
 
 - **Fresh scores.** `summary.json` stores a hash of the build inputs that `tools/ci.py` lists. After any source change, CI fails until a new `summary.json` from `check.py save` is committed, and only a machine with the game can make one.
-- **No drops.** No score may fall below the base commit's, and no function may disappear. After a force push, CI has no base commit, but the pre-push hook compared with the old tip.
-- **Honest history.** `history.csv` may only gain rows, its last row must equal the totals in `summary.json`, and the SVGs and the README table must equal a fresh render.
+- **No drops.** No score may fall below the base commit's. A removed function counts as a drop unless it was a stub. After a force push, CI has no base commit, but the pre-push hook compared with the old tip.
+- **Honest history.** `history.csv`, the SVGs and the README table must equal a fresh render. The render reads each first-parent commit's `summary.json`, so the history has one row for each commit that changed a score. After `git commit --amend` that changes a score, the amended commit still holds the old commit's row: run `git commit --amend --no-edit` once more.
 - **One group each.** Every function in `data/functions.csv` is in exactly one code group and ends inside it.
 - **No game files.** No file with a binary suffix (`.exe`, `.dll`, `.pdb`, `.lib`, `.obj`, `.ilk`, `.iso`, `.msi`) and no file over 10 MB. Other game files, such as a small data file, pass this check.
 

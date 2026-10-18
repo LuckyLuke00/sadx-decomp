@@ -22,6 +22,14 @@ def run(command: list, cwd: Path | None = None, env: dict | None = None) -> subp
     return result
 
 
+def git(root: Path, *args: str, stdin: bytes = b"") -> bytes:
+    """Run git in root and return its output. On failure, stop with git's message."""
+    result = subprocess.run(["git", *args], cwd=root, input=stdin, capture_output=True)
+    if result.returncode != 0:
+        sys.exit(f"git {' '.join(args)} failed: {result.stderr.decode(errors='replace').strip()}")
+    return result.stdout
+
+
 def write_if_changed(path: Path, text: str) -> None:
     """Write a build input only when its text changes, so the build tools see no change otherwise."""
     if not path.exists() or path.read_text(encoding="utf-8") != text:
