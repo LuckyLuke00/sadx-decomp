@@ -103,9 +103,9 @@ def steam_libraries() -> list[Path]:
     return libraries
 
 
-def game_in_library(library: Path, wanted: Game) -> Path | None:
+def game_in_library(steam_library: Path, wanted: Game) -> Path | None:
     """The game in one Steam library, or None."""
-    common = library / "steamapps" / "common"
+    common = steam_library / "steamapps" / "common"
     for folder in sorted(common.iterdir()) if common.is_dir() else []:
         candidate = folder / wanted.filename
         if candidate.is_file() and osutil.sha256(candidate) == wanted.sha256:
@@ -115,8 +115,8 @@ def game_in_library(library: Path, wanted: Game) -> Path | None:
 
 def steam_game() -> Path | None:
     """The game in any Steam library on this machine, or None. The pinned SHA-256 picks it out."""
-    for library in steam_libraries():
-        found = game_in_library(library, game_config())
+    for steam_library in steam_libraries():
+        found = game_in_library(steam_library, game_config())
         if found is not None:
             return found
     return None
