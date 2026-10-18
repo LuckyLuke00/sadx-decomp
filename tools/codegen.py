@@ -94,7 +94,7 @@ def file_group(source: str, text: str, groups: list[dict]) -> dict | None:
     for address in function_marker().findall(text):
         group = progress.codegen_group(groups, int(address, 16))
         if group is None:
-            sys.exit(f"{source}: {address} is outside every code group in {progress.CODEGEN_GROUPS.relative_to(ROOT)}")
+            sys.exit(f"{source}: {address} is outside every code group in {progress.CODEGEN_GROUPS.relative_to(ROOT).as_posix()}")
         found.setdefault(group["group"], (group, address))
     if not found:
         return None
