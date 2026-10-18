@@ -7,7 +7,6 @@ extern unsigned char DAT_05b42c1c;
 extern unsigned char DAT_05b3ea25;
 
 int FUN_005030d0();
-void FUN_004c38e0();
 
 // FUNCTION: SADX 0x004c4fa0
 void PauseEnable()

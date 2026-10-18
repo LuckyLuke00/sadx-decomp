@@ -738,14 +738,6 @@
    "library": false
   },
   {
-   "address": "0x0048a9b0",
-   "name": "atan2(double, double)",
-   "accuracy": 0.09523809523809523,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
    "address": "0x0049d410",
    "name": "FUN_0049d410",
    "accuracy": 1.0,
@@ -2019,8 +2011,16 @@
   },
   {
    "address": "0x004c38e0",
-   "name": "PadReadOn",
+   "name": "PadReadOn(void)",
    "accuracy": 0.8888888888888888,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c38f0",
+   "name": "PadReadOn(int)",
+   "accuracy": 0.5714285714285714,
    "effective": false,
    "stub": true,
    "library": false
@@ -3827,7 +3827,7 @@
   },
   {
    "address": "0x008e5040",
-   "name": "atan2(2)",
+   "name": "atan2",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -8459,5 +8459,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "93cc29141fa85ea0c5d2d32d409ea570aa555e9b6226f15a1e3d88b85cb6151f"
+ "inputs_sha256": "f960b8dc465980fd3e4377c835b9ab8a000908837b9b004d9734ae47f72f92a1"
 }
