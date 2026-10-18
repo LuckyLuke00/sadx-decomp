@@ -37,11 +37,13 @@ Create the repo, copy framework files (`git ls-files` omits ignored files such a
 
 ```bash
 mkdir -p "<repo>" && git -C "<repo>" init
-cd "<framework>" && git ls-files --cached --others --exclude-standard -- tools tests .github .githooks CMakeLists.txt requirements.txt .gitignore .gitattributes docs/CLAUDE-GENERIC.md docs/FRAMEWORK.md docs/PORTING.md | while read -r file; do mkdir -p "<repo>/$(dirname "$file")" && cp "$file" "<repo>/$file"; done
+cd "<framework>" && git ls-files --cached --others --exclude-standard -- tools tests .github .githooks CMakeLists.txt requirements.txt .gitignore .gitattributes LICENSE docs/CLAUDE-GENERIC.md docs/FRAMEWORK.md docs/PORTING.md | while read -r file; do mkdir -p "<repo>/$(dirname "$file")" && cp "$file" "<repo>/$file"; done
 cd "<repo>" && git add --chmod=+x .githooks/pre-push .githooks/pre-commit
 ```
 
 Last line stages the hooks as executable (Windows has no executable bit). To skip the compiler download, also copy `<framework>/.toolchain` to `<repo>/.toolchain`. Copy, don't move (running `mspdbsrv.exe` can hold its files). Don't copy `.venv`: its programs hold the path of the repo that made them.
+
+`LICENSE` keeps its copyright line: the MIT license needs it in every copy. You may add your own line under it. In its first two paragraphs, change the game and its owner to this game's.
 
 Write the game files:
 
@@ -257,7 +259,7 @@ If two games then need different compilers, the choice becomes a game file: desi
 
 ## Templates
 
-`<release>` says where the exe comes from, such as `the 2014 Steam release`.
+`<release>` says where the exe comes from, such as `the 2014 Steam release`. `<owner>` is the company that owns the game and its name, such as `SEGA`.
 
 ### CLAUDE.md
 
@@ -309,9 +311,13 @@ You need Windows 10 build 17063 or newer, Python 3.10 or newer, git and the game
 
 If the game is not in a Steam library, give its path: `setup --game "<path to the exe>"`. [docs/FRAMEWORK.md](docs/FRAMEWORK.md) explains the commands, how scores work, what setup downloads and CI.
 
-## Disclaimer
+## Legal
 
-Research and preservation project. It contains no game files or assets and publishes no built exe. Its source is new code, written to compile to the same machine code as the original exe. You need your own legally obtained copy of the game: building and scoring read it.
+This project is for research and preservation. It contains no game files or assets and publishes no built exe. You need your own legally obtained copy of the game: building and scoring read it.
+
+The code in `src/` is new C and C++ code, written to compile to the same machine code as the original exe. It recreates <owner>'s game, and `data/` describes that game. <owner> owns <Game>. This project claims no ownership of it and gives no license for `src/` or `data/`.
+
+The tools, build files, tests and guides are under the MIT license in [LICENSE](LICENSE). <Game> is a trademark of <owner>. This project is not affiliated with or endorsed by <owner>.
 ```
 
 ### docs/STYLE.md
