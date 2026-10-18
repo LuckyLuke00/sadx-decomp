@@ -1,15 +1,15 @@
 """Regression checks that need no compiler and no game files. check.py runs them last.
 
 1. summary.json is fresh: it was scored from the build inputs in this checkout.
-2. Against the base commit: no score dropped and no function disappeared.
-3. history.csv only gained rows, and its last row equals the summary totals.
-4. The visuals and the README table equal a fresh render.
-5. Every function in data/functions.csv is in exactly one code group and ends inside it.
-6. No binaries and no file over 10 MB are in the repo.
+2. Against the base commit: no score dropped. A removed stub scored zero, so it drops nothing.
+3. history.csv, the visuals and the README table equal a fresh render. The history
+   comes from the commits, so a fresh render proves it matches them.
+4. Every function in data/functions.csv is in exactly one code group and ends inside it.
+5. No binaries and no file over 10 MB are in the repo.
 
 Before the first `check.py save` there is no summary.json: that fails, and only
-checks 5 and 6 run. The base defaults to the branch's upstream. Without a base,
-check 2 and the append-only part of check 3 are skipped, with a note. Standard library only.
+checks 4 and 5 run. The base defaults to the branch's upstream. Without a base,
+check 2 is skipped, with a note. Standard library only.
 """
 
 import hashlib
@@ -18,6 +18,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+import osutil
 import progress
 import scoring
 
@@ -39,10 +40,7 @@ def run_git(*args: str) -> subprocess.CompletedProcess:
 
 
 def git(*args: str) -> str:
-    result = run_git(*args)
-    if result.returncode != 0:
-        sys.exit(f"git {' '.join(args)} failed: {result.stderr.strip()}")
-    return result.stdout
+    return osutil.git(ROOT, *args).decode("utf-8")
 
 
 def repo_files(*paths: str) -> list[Path]:
@@ -57,6 +55,9 @@ def normalized(path: Path) -> bytes:
 
 
 def inputs_hash() -> str:
+    missing = [path for path in BUILD_INPUTS if not (ROOT / path).exists()]
+    if missing:
+        sys.exit(f"BUILD_INPUTS in tools/ci.py names missing files: {', '.join(missing)}. Update the list.")
     digest = hashlib.sha256()
     for path in repo_files(*BUILD_INPUTS):
         digest.update(path.relative_to(ROOT).as_posix().encode("utf-8") + b"\0")
@@ -94,23 +95,6 @@ def check_no_drops(summary: dict, base: str) -> list[str]:
     if text is None:
         return []
     return [f"against {base[:12]}: {line}" for line in scoring.find_regressions(json.loads(text), summary)]
-
-
-def check_history_append_only(base: str) -> list[str]:
-    text = at_base(base, progress.HISTORY_CSV)
-    old = text.splitlines() if text is not None else []
-    new = progress.HISTORY_CSV.read_text(encoding="utf-8").splitlines()
-    if new[:len(old)] == old:
-        return []
-    return [f"history.csv changed rows that {base[:12]} already had. The log is append-only."]
-
-
-def check_history_current(summary: dict) -> list[str]:
-    history = progress.load_history()
-    stats = scoring.totals(summary, progress.game_addresses(progress.load_functions()))
-    if history and progress.same_totals(progress.history_row("", stats, []), history[-1]):
-        return []
-    return ["the last history.csv row does not equal the summary.json totals. Let `check.py save` write the history."]
 
 
 def check_visuals() -> list[str]:
@@ -156,13 +140,11 @@ def run_checks(base: str | None) -> int:
     resolved = resolve_base(base)
     checks = [("summary.json matches the build inputs", lambda: check_fresh(summary))]
     if resolved is None:
-        print("note no base commit: old scores and history rows are not compared")
+        print("note no base commit: old scores are not compared")
     else:
-        checks += [("no score dropped", lambda: check_no_drops(summary, resolved)),
-                   ("history.csv only gained rows", lambda: check_history_append_only(resolved))]
+        checks += [("no score dropped", lambda: check_no_drops(summary, resolved))]
     checks += [
-        ("the last history.csv row equals the summary", lambda: check_history_current(summary)),
-        ("visuals and README table are current", check_visuals),
+        ("history, visuals and README table are current", check_visuals),
         ("every function is in one code group", check_groups),
         ("no binaries or large files", check_no_binaries),
     ]

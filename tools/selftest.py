@@ -2,16 +2,20 @@
 
 run() builds nothing: CMake already built the original and our twin. It checks the
 original's hash, the scores reccmp gives, the regression gate, the register-argument
-search and the totals against what tests/selftest pins.
+search and the totals against what tests/selftest pins. It also checks the history
+rules of progress.py on changed copies of the pinned scores, and its git reader on a
+throwaway repository.
 """
 
 import copy
 import json
 import re
+import tempfile
 from pathlib import Path
 
 import osutil
 import pe
+import progress
 import project
 import runner
 import scoring
@@ -37,13 +41,16 @@ def run() -> int:
     failures += check_regression_gate(expected, current)
     failures += check_register_arguments(current, spans)
     failures += check_totals(expected, current)
+    failures += check_scores_changed(expected)
+    failures += check_history_rows(expected)
+    failures += check_read_blobs()
 
     if failures:
         print("FAIL self-test")
         for line in failures:
             print(f"     {line}")
         return 1
-    print(f"ok   self-test: build hash {original_hash[:12]}..., exact scores, regression gate, /GL call, totals")
+    print(f"ok   self-test: build hash {original_hash[:12]}..., exact scores, regression gate, /GL call, totals, history")
     return 0
 
 
@@ -84,16 +91,77 @@ def check_scores(expected: dict, current: dict) -> list[str]:
 
 
 def check_regression_gate(expected: dict, current: dict) -> list[str]:
-    """The regression gate passes on the pinned baseline and fires on a drop."""
+    """The regression gate passes on the pinned baseline and a removed stub, and fires on a drop."""
     failures = []
     false_alarms = scoring.find_regressions(expected, current)
     if false_alarms:
         failures.append(f"gate flagged a regression on identical scores: {false_alarms}")
-    dropped = copy.deepcopy(current)
-    dropped["functions"][0]["accuracy"] = 0.5
-    if len(scoring.find_regressions(current, dropped)) != 1:
+    if len(scoring.find_regressions(current, with_first_accuracy(current, 0.5))) != 1:
         failures.append("gate missed a deliberate score drop")
+    if scoring.find_regressions(current, without_stubs(current)):
+        failures.append("gate flagged a removed stub, which scores zero")
     return failures
+
+
+def check_scores_changed(expected: dict) -> list[str]:
+    """A stub added or removed moves no score. A new accuracy moves one, and so does a removed
+    match: a missing function scores zero."""
+    unstubbed = without_stubs(expected)
+    unmatched = dict(expected, functions=expected["functions"][1:])
+    cases = [("a removed stub", expected, unstubbed, False),
+             ("an added stub", unstubbed, expected, False),
+             ("a new accuracy", expected, with_first_accuracy(expected, 0.5), True),
+             ("a removed match", expected, unmatched, True)]
+    return [f"scores_changed is {not changed} for {name}"
+            for name, baseline, current, changed in cases if scoring.scores_changed(baseline, current) != changed]
+
+
+def check_history_rows(expected: dict) -> list[str]:
+    """The history gets a row for the first commit and each commit that moved a score, none for a commit
+    that only removes or adds a stub, and one for the working tree only when it moved a score."""
+    game = {int(entry["address"], 16) for entry in expected["functions"]}
+    dropped = with_first_accuracy(expected, 0.5)
+    commits = [progress.Snapshot("2026-01-01", expected, game),
+               progress.Snapshot("2026-01-02", without_stubs(expected), game),
+               progress.Snapshot("2026-01-03", expected, game),
+               progress.Snapshot("2026-01-04", dropped, game)]
+    cases = [("an unchanged working tree", dropped, ["2026-01-01", "2026-01-04"]),
+             ("a working tree that moved a score", expected, ["2026-01-01", "2026-01-04", "2026-01-05"])]
+    failures = []
+    for name, working, wanted in cases:
+        rows = progress.history_rows(commits + [progress.Snapshot("2026-01-05", working, game)])
+        days = [row["date"] for row in rows]
+        if days != wanted:
+            failures.append(f"history rows {days} for {name}, not {wanted}")
+    return failures
+
+
+def check_read_blobs() -> list[str]:
+    """read_blobs gives the text of each spec from git's batch output, also when two specs share one blob."""
+    files = {"a.txt": "same text\n", "b.txt": "same text\n", "c.txt": "other\ntext\n"}
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        osutil.git(root, "init", "--quiet")
+        for name, text in files.items():
+            (root / name).write_text(text, encoding="utf-8", newline="\n")
+        osutil.git(root, "add", *files)
+        # A tree needs no commit, so no user name, hooks or signing.
+        tree = osutil.git(root, "write-tree").decode().strip()
+        texts = progress.read_blobs(root, [f"{tree}:{name}" for name in files])
+    wanted = {f"{tree}:{name}": text for name, text in files.items()}
+    if texts == wanted:
+        return []
+    return [f"read_blobs gave {texts}, not {wanted}"]
+
+
+def without_stubs(summary: dict) -> dict:
+    return dict(summary, functions=[entry for entry in summary["functions"] if not entry["stub"]])
+
+
+def with_first_accuracy(summary: dict, accuracy: float) -> dict:
+    changed = copy.deepcopy(summary)
+    changed["functions"][0]["accuracy"] = accuracy
+    return changed
 
 
 def check_register_arguments(current: dict, spans: list[tuple[int, int]]) -> list[str]:

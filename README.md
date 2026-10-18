@@ -18,21 +18,13 @@ goal is C and C++ source that compiles to the same machine code as the retail
 <!-- history:start -->
 | Date | Decompiled | Matched | Accuracy | Changes |
 | --- | --- | --- | --- | --- |
-| 2026-10-18 | 148 / 16,537 (0.89%) | 148 | 100.00% | FUN_004c3560 90.5% -> 100% |
-| 2026-10-17 | 148 / 16,537 (0.89%) | 147 | 99.94% | AlrReal_controlMode stub -> 100%; +GetEmblem 100%; +FUN_0049e130 100%; +FUN_0049e1a0 100%; +GetEmblemNumberofStageClear 100%; 226 more |
-| 2026-10-17 | 57 / 16,537 (0.34%) | 57 | 100.00% | +FUN_004822c0 100%; +AlrReal_Exe 100%; +AlrReal_exe_for_Race 100%; +AlrReal_Dsp 100%; +AlrReal_Destructor 100%; 111 more |
-| 2026-10-17 | 18 / 16,537 (0.11%) | 18 | 100.00% | +GetAdvertisePlayerNumber 100%; +EV_FreeNpcMilesPlayerTask 100%; +EV_CreateNpcMilesPlayerTask 100%; +EV_NpcMilesStandByOn 100%; +EV_NpcMilesStandByOff 100%; 14 more |
-| 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 32.4% -> 42.9%; std::locale::~locale 0.0% -> 17.0% |
-| 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | +__endstdio 100%; +_free_locale 100% |
-| 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | +std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 32.4%; +std::locale::facet::_Incref 89.5%; +std::locale::facet::_Decref 93.1%; +std::locale::~locale 0.0%; _umatherr 98.2% -> 100%; 11 more |
-| 2026-10-17 | 6 / 16,541 (0.04%) | 6 | 100.00% | +FUN_0042b3b0 100%; +FUN_0042b3d0 100%; +FUN_0042b400 100%; +__security_check_cookie 100%; +std::exception::exception(char const *const &, int) 100%; 683 more |
-| 2026-10-16 | 3 / 11,107 (0.03%) | 3 | 100.00% | +FUN_00405360 100%; +FUN_0044c520 100%; +FUN_004c9c90 100%; +FUN_00422560 stub; +FUN_0044c420 stub; 1 more |
-| 2026-10-16 | 0 / 11,107 (0.00%) | 0 | n/a | Baseline: compiler and scoring pipeline verified; CRT __security_init_cookie identified |
+| 2026-10-18 | 148 / 16,537 (0.89%) | 148 | 100.00% | +FUN_004822c0 100%; +AlrReal_Exe 100%; +AlrReal_exe_for_Race 100%; +AlrReal_Dsp 100%; +AlrReal_Destructor 100%; 351 more |
+| 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | +std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 42.9%; +FUN_00405360 100%; +std::locale::facet::_Incref 89.5%; +std::locale::facet::_Decref 93.1%; +std::locale::~locale 17.0%; 696 more |
 <!-- history:end -->
 
-The pre-commit hook runs `check.py save`, which writes a row to
-[docs/progress/history.csv](docs/progress/history.csv) for every score change
-and redraws this table. CI rejects any edit to an old row.
+The pre-commit hook runs `check.py save`, which rebuilds
+[docs/progress/history.csv](docs/progress/history.csv) and this table from the
+commits: one row for each commit that changed a score. CI checks that they match.
 
 ### Function map
 

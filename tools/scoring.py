@@ -35,16 +35,23 @@ def state(entry: dict) -> str:
 
 
 def find_regressions(baseline: dict, current: dict) -> list[str]:
-    """Every function whose score dropped or whose annotation disappeared."""
+    """Every function whose score dropped. A removed annotation scores zero, so a removed stub drops nothing."""
     now = {entry["address"]: entry for entry in current["functions"]}
     problems = []
     for old in baseline["functions"]:
         new = now.get(old["address"])
-        if new is None:
+        if new is None and score(old) > 0:
             problems.append(f"{old['address']} {old['name']}: annotation removed")
-        elif score(new) < score(old):
+        elif new is not None and score(new) < score(old):
             problems.append(f"{old['address']} {old['name']}: {score(old):.2%} -> {score(new):.2%}")
     return problems
+
+
+def scores_changed(baseline: dict, current: dict) -> bool:
+    """True if a function's score moved. A missing function scores zero, like a stub."""
+    old = {entry["address"]: score(entry) for entry in baseline["functions"]}
+    new = {entry["address"]: score(entry) for entry in current["functions"]}
+    return any(old.get(address, 0.0) != new.get(address, 0.0) for address in old.keys() | new.keys())
 
 
 def describe_changes(baseline: dict, current: dict) -> list[str]:
