@@ -78,7 +78,7 @@ Three checks show that the toolchain is the game's own:
 
 | Command | What it does | Exit code |
 | --- | --- | --- |
-| `setup [--game PATH]` | Gets the Python packages, the compiler and the game ready, and turns on the pre-push hook | 1 if something is missing |
+| `setup [--game PATH]` | Gets the Python packages, the compiler and the game ready, and turns on the git hooks | 1 if something is missing |
 | `fn 0x00401000 0x00401020` | Builds and scores each function: one line each, plus the instruction diff for misses | 0 only if all match |
 | `ci [--base COMMIT]` | Builds and runs every check that needs no game: the annotation lint (reccmp's linter plus a check that every function annotation is at the start of a game function), the self-test and `tools/ci.py` | 1 if any fails |
 | `gate` | `ci`, plus the Rich header check, every game function's score with `build/report.html`, and checks that every code byte is in a function of `data/functions.csv`, padding or an import stub, and that every `FUNCTION`, `STUB` and `LIBRARY` annotation names a symbol in our build. The pre-push hook runs it | 1 if any fails or a score dropped |
@@ -144,7 +144,7 @@ CI never sees the game exe, so it can't score game functions itself. `tools/ci.p
 <summary>Limits while a repo is private, and settings for later</summary>
 
 - Branch protection on a private repo needs a paid GitHub plan, so until then a failed run shows a red X but does not block a merge.
-- `git push --no-verify` skips the pre-push hook.
+- `git push --no-verify` skips the pre-push hook, and `git commit --no-verify` skips the pre-commit hook.
 - Windows minutes cost more than Linux minutes on a private repo. So a push to another branch runs nothing until it has a pull request.
 - Once the repo is public (or on a paid plan), add a branch rule for the default branch: require a pull request, require the status check **CI**, and allow no bypass.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the decomp and score it against the original binary.
 
-  python tools/check.py setup [--game PATH]   get everything ready and turn on the pre-push hook
+  python tools/check.py setup [--game PATH]   get everything ready and turn on the git hooks
   python tools/check.py fn 0x00401000 ...     score functions, exit 0 when all match
   python tools/check.py ci [--base COMMIT]    lint, self-test and repo checks: no game needed
   python tools/check.py gate                  ci plus the game scores: run it before a push
@@ -135,7 +135,7 @@ def set_up(game_path: Path | None) -> int:
     print(f"Python packages: {project.VENV.relative_to(ROOT)}")
     print(f"Compiler: cl.exe {toolchain.CL_VERSION} in {project.TOOLCHAIN.relative_to(ROOT)}")
     print(f"Game: {game}")
-    print("Pre-push hook: runs `check.py gate`")
+    print("Hooks: pre-commit runs `check.py save`, pre-push runs `check.py gate`")
     if progress.SUMMARY_JSON.exists():
         print("Ready. Next: python tools/check.py gate")
     else:

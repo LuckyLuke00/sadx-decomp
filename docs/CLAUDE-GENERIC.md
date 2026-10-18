@@ -10,7 +10,7 @@ Matching decompilation of one 32-bit Windows exe on a generic framework. Root `C
 
 Run from repo root. Every command first sets up its needs (`.venv`, `.toolchain` compiler, game path), then runs inside `.venv`. Output: tool output on failure only, plus compiler and reccmp warnings.
 
-- `python tools/check.py setup [--game PATH]`: once per clone. Finds game in a Steam library or takes `--game`, enables pre-push hook.
+- `python tools/check.py setup [--game PATH]`: once per clone. Finds game in a Steam library or takes `--game`, enables the pre-commit and pre-push hooks.
 - `python tools/check.py fn 0x<addr> [0x<addr> ...]`: builds once, one line per function. Exit 0: all 100% matches. Miss prints diff: `-` original, `+` ours. reccmp calls some misses an effective match, but its check is loose: read diff.
 - `python tools/check.py ci`: no-game checks: annotation lint, self-test in `tests/selftest`, `tools/ci.py`. CI runs it. Lint fails any function annotation not at the start of a game function in `data/functions.csv`.
 - `python tools/check.py gate`: `ci`, plus Rich header check, every game score, check that `data/functions.csv` covers all code. Exit 1: a check failed or a function scored lower than in `docs/progress/summary.json`. Pre-push hook runs it.
