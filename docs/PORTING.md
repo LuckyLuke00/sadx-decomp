@@ -158,7 +158,7 @@ python tools/check.py gate
 
 - First `gate` fails one check, `FAIL no scores yet`, and ends with `FAILED: repo` (that check's group). Every other check must pass. Until the branch has an upstream (e.g. after the first `git push -u`), `gate` and `save` print `note no base commit` once `summary.json` exists: no old scores to compare.
 - Rich header check fails: our exe has a tool build the game lacks. `FAIL` lines name each such build with its products. Import library: see [Import libraries](#import-libraries). Any other product: stop, tell the user.
-- Run `python tools/check.py save` once. It creates `docs/progress`, the first history row and the README's recent-changes table.
+- Run `python tools/check.py save` once. It creates `docs/progress` and the README's recent-changes table. The first commit of `summary.json` makes the first history row.
 
 Done when `gate` prints `All checks passed.`
 
