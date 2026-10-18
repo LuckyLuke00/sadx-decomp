@@ -23,7 +23,7 @@ jobs:
     steps:
       # A pull request runs on its own last commit, not on the merge commit GitHub makes:
       # the history comes from the first-parent commits, so it must see the branch's own.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
