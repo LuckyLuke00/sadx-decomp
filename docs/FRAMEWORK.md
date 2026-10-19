@@ -80,6 +80,7 @@ Three checks show that the toolchain is the game's own:
 | --- | --- | --- |
 | `setup [--game PATH]` | Gets the Python packages, the compiler and the game ready, and turns on the git hooks | 1 if something is missing |
 | `fn 0x00401000 0x00401020` | Builds and scores each function: one line each, plus the instruction diff for misses | 0 only if all match |
+| `decls [--tables DIR] [--context DIR]` | Writes the declarations every source file includes, from the names the source files use: `src/include/types.h`, `functions.h` and `globals.h`, a `STUB` in `src/unplaced/stubs.cpp` for each called function with no source yet, and a definition in `src/unplaced/globals.cpp` for each used global no file defines. Run it after a source starts to use a new name. [tools/declgen.py](../tools/declgen.py) says where the names come from | 1 if a used name has no declaration it can make, or two functions would share a name |
 | `ci [--base COMMIT]` | Builds and runs every check that needs no game: the annotation lint (reccmp's linter plus a check that every function annotation is at the start of a game function), the self-test and `tools/ci.py` | 1 if any fails |
 | `gate` | `ci`, plus the Rich header check, every game function's score with `build/report.html`, and checks that every code byte is in a function of `data/functions.csv`, padding or an import stub, and that every `FUNCTION`, `STUB` and `LIBRARY` annotation names a symbol in our build. The pre-push hook runs it | 1 if any fails or a score dropped |
 | `save` | `gate`, then saves the scores and redraws the history and visuals. The pre-commit hook runs it. It saves nothing if the lint, the self-test, the Rich header check or the annotation check fails, or a score dropped | 1 if any fails or a score dropped |
@@ -164,3 +165,7 @@ JAVA_HOME="<JDK 21 folder>" "<Ghidra folder>/support/analyzeHeadless.bat" "<empt
 - `ExportFunctions.java` writes the list. A row runs from a function's entry up to the padding before the next one, so it holds the function's switch tables. A catch block gets no row.
 
 Headless Ghidra exits 0 even when a script fails, so check `ghidra.log` for `SCRIPT ERROR`. A good run ends its `PaddedFunctions.java` lines with `Created ...`, and `ExportFunctions.java` prints `Exported <N> functions`. Use forward slashes, as Git Bash drops backslashes. Give each run a new empty folder, since a folder another Ghidra still holds fails with `Unable to lock project!`. A failed run waits for a key press, and `< /dev/null` stops that wait. Ghidra's default heap is 2 GB, enough for a 90 MB exe. If Ghidra runs out of memory, set `GHIDRA_HEADLESS_MAXMEM` higher, for example `12G`.
+
+## Name tables
+
+`decls` takes `--tables DIR`, a folder of name tables for names the tree does not know yet: tab-separated `functions.tsv` and `globals.tsv`, and `types.h`. [tools/declgen.py](../tools/declgen.py) lists their columns. `--context DIR` names another checkout, whose source files give signatures and globals.
