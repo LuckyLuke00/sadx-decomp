@@ -210,9 +210,27 @@ def write_callers(image: pe.Image, sizes: dict[int, int]) -> None:
             f.write(f"0x{target:08x}\t{listed}\n")
 
 
-def callers_of(image: pe.Image, sizes: dict[int, int], target: int) -> str:
+def fresh_callers(image: pe.Image, sizes: dict[int, int]) -> None:
+    """Write build/callers.tsv again when data/functions.csv is newer."""
     if not CALLERS.exists() or CALLERS.stat().st_mtime < progress.FUNCTIONS_CSV.stat().st_mtime:
         write_callers(image, sizes)
+
+
+def read_callers(image: pe.Image, sizes: dict[int, int]) -> dict[int, list[tuple[int, str]]]:
+    """build/callers.tsv as target -> (caller, kind), with kind "call", "jmp" or "ref"."""
+    fresh_callers(image, sizes)
+    found = {}
+    with open(CALLERS, encoding="utf-8") as f:
+        for line in f:
+            target, listed = line.rstrip("\n").split("\t", 1)
+            items = [item.split() for item in listed.split(", ")]
+            found[int(target, 16)] = [(int(item[0], 16), item[1].strip("()") if len(item) > 1 else "call")
+                                      for item in items]
+    return found
+
+
+def callers_of(image: pe.Image, sizes: dict[int, int], target: int) -> str:
+    fresh_callers(image, sizes)
     key = f"0x{target:08x}\t"
     with open(CALLERS, encoding="utf-8") as f:
         found = [line.rstrip("\n").split("\t", 1)[1] for line in f if line.startswith(key)]

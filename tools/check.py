@@ -9,6 +9,7 @@
   python tools/check.py library               find the runtime library in the game and score it
   python tools/check.py sources               tie functions to source files and classes, from the exe
   python tools/check.py groups                recount the evidence for data/codegen-groups.csv
+  python tools/check.py areas                 sort functions into the game's areas, such as its stages
   python tools/check.py decls                 write the declarations and stubs that the sources use
   python tools/check.py dossier 0x00401000    what an agent needs to decompile a function
   python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
@@ -60,6 +61,11 @@ def main() -> int:
         return datafiles.write_sources(project.require_game())
     if args.command == "groups":
         return datafiles.check_groups(project.require_game())
+    if args.command == "areas":
+        # Only .venv has capstone.
+        import areas
+
+        return areas.write(project.require_game())
     if args.command == "decls":
         return declgen.write(args.context, args.tables)
     if args.command == "dossier":
@@ -95,6 +101,7 @@ def parse_args() -> argparse.Namespace:
     commands.add_parser("library")
     commands.add_parser("sources")
     commands.add_parser("groups")
+    commands.add_parser("areas")
     decls = commands.add_parser("decls")
     decls.add_argument("--context", type=Path, help="another checkout whose files give signatures and globals")
     decls.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
