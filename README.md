@@ -4,9 +4,6 @@ A matching decompilation of the 2014 Steam release of Sonic Adventure DX. The
 goal is C and C++ source that compiles to the same machine code as the retail
 `Sonic Adventure DX.exe`, one function at a time.
 
-> **Status:** early. The game's own compiler and the scoring pipeline are in
-> place and verified.
-
 ## Progress
 
 <img src="docs/progress/card.svg" alt="Progress summary" width="520">
@@ -31,13 +28,14 @@ The decomp runs on a generic framework.
 [docs/FRAMEWORK.md](docs/FRAMEWORK.md) explains scoring, the commands and CI.
 [docs/PORTING.md](docs/PORTING.md) ports the framework to another game.
 
-**Game functions** are the functions in
+**Game functions** are the functions the progress counts: those in
 [data/functions.csv](data/functions.csv) within a game code range of
 [data/codegen-groups.csv](data/codegen-groups.csv), less the four header
 functions that [src/header-functions.h](src/header-functions.h) names as
-library code. Library code (the C runtime, the CRI middleware and
-compiler-made code at the end of `.text`, such as exception funclets) is
-linked, not decompiled, and does not count.
+library code. Library code does not count, because nobody needs to decompile
+it. It is the C runtime, which comes with the compiler, the code the compiler
+adds on its own, such as exception handlers, and CRI's middleware. The full
+rebuild will copy CRI's code from your own exe.
 
 <details>
 <summary>Is our compiler really the game's compiler?</summary>
@@ -94,7 +92,7 @@ Two independent sources confirm it is the retail file:
 
 You need Windows 10 build 17063 or newer, Python 3.10 or newer, git and the
 game from Steam. Every command is tested on Windows 11 with Python 3.13 only.
-CI is set to run `ci` with Python 3.12 but has not run yet. In your clone:
+In your clone:
 
 ```console
 python tools/check.py setup
