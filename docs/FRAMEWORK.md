@@ -32,6 +32,7 @@ The game files:
 | `data/codegen-groups.csv` | Code groups: address ranges with their compiler flags and the evidence for them. |
 | `data/file-clusters.csv` | Functions in one row of `data/codegen-groups.csv` that pass each other register arguments. Without `/GL` such a call stays inside one source file, so a cluster mostly shares a file. Two things join files: `/GL`, and the linker folding identical `static` functions, which sends a call to another file's copy. |
 | `data/source-files.csv`, `data/classes.csv` | Functions that use each source path in the exe, and each class's vtable, methods and users. `check.py sources` writes them. |
+| `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the progress map's sections and the name the map shows for each area. `check.py areas` writes the guess to `areas.csv`. |
 | `src/library.csv` | Runtime library functions and their globals, matched by name. |
 | `src/header-functions.h` | `LIBRARY` annotations for header functions the linker kept in game code, such as `swprintf`. Written by hand in a header, since the lint rejects them in a `.cpp`. |
 | `CLAUDE.md` | Imports `docs/CLAUDE-GENERIC.md`, then adds the game's facts for Claude. |
@@ -89,6 +90,7 @@ Three checks show that the toolchain is the game's own:
 | `library` | Finds the runtime library code, mostly in the `library` ranges of `data/codegen-groups.csv`, writes `src/library.csv` and names the game function the runtime calls, such as `WinMain`. Then it builds and scores those functions | 1 if a function misses |
 | `sources` | Writes `data/source-files.csv` and `data/classes.csv` from the source paths and class names in the exe | 0 |
 | `groups` | Recounts the tells behind each row of `data/codegen-groups.csv` from the exe, names each function whose tells contradict its row's flags, and writes `data/file-clusters.csv`. Needs `src/library.csv` | 1 if a function contradicts its row |
+| `areas` | Sorts the game functions into the areas of `data/areas.yml`. A function in a file under `src/` takes its folder's area; the others take a guess from the exe, written to `data/areas.csv` with its evidence | 1 if a file under `src/` matches no tree line, or `shared`, `direct` or a `tables` entry in `data/areas.yml` doesn't fit the `map` list |
 | `probe EXE` | Reads an exe's PE and Rich headers, and suggests its `game.cmake` and reccmp target. Needs no game setup | 1 if the exe is a DLL, is not 32-bit x86 with a GUI or console subsystem, has no Rich header, or the framework's compiler did not build it |
 
 `setup` finds the game in any Steam library on the machine by the SHA-256 in `reccmp-project.yml`. For a copy from elsewhere, pass `--game`. The path goes in `reccmp-user.yml`, which stays on your machine.
