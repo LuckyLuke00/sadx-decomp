@@ -10,6 +10,8 @@
   python tools/check.py sources               tie functions to source files and classes, from the exe
   python tools/check.py groups                recount the evidence for data/codegen-groups.csv
   python tools/check.py decls                 write the declarations and stubs that the sources use
+  python tools/check.py dossier 0x00401000    what an agent needs to decompile a function
+  python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
   python tools/check.py probe EXE             what a new game's exe needs: see docs/PORTING.md
 
 Every command sets up what it needs: .venv with the pinned packages, the
@@ -60,6 +62,17 @@ def main() -> int:
         return datafiles.check_groups(project.require_game())
     if args.command == "decls":
         return declgen.write(args.context, args.tables)
+    if args.command == "dossier":
+        # Only .venv has capstone.
+        import dossier
+
+        return dossier.show(project.require_game(), args.addresses, args.c, args.callers, args.tables, args.drafts,
+                            args.accesses)
+    if args.command == "access":
+        # Only .venv has capstone.
+        import accesses
+
+        return accesses.show(project.require_game(), args.addresses, args.size)
     if args.command == "ci":
         toolchain.ensure(project.TOOLCHAIN)
         build()
@@ -85,6 +98,16 @@ def parse_args() -> argparse.Namespace:
     decls = commands.add_parser("decls")
     decls.add_argument("--context", type=Path, help="another checkout whose files give signatures and globals")
     decls.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
+    dossier = commands.add_parser("dossier")
+    dossier.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00401000")
+    dossier.add_argument("--c", action="store_true", help="add Ghidra's draft C")
+    dossier.add_argument("--callers", action="store_true", help="add the functions that call it")
+    dossier.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
+    dossier.add_argument("--drafts", type=Path, help="the folder of Ghidra drafts (default: build/decomp)")
+    dossier.add_argument("--accesses", action="store_true", help="add how the whole exe reads and writes each global")
+    access = commands.add_parser("access")
+    access.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00800000")
+    access.add_argument("--size", type=int, default=1, help="bytes to cover from each address (default: 1)")
     commands.add_parser("probe").add_argument("exe", type=Path)
     return parser.parse_args()
 
