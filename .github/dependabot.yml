@@ -1,8 +1,12 @@
-# A weekly pull request for each action in the workflows that has a new version.
+# At most one pull request a month: all the actions in the workflows that have a new version.
 # Only actions: a new reccmp in requirements.txt changes the scores, so it needs `check.py save`.
 version: 2
 updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
+    groups:
+      actions:
+        patterns:
+          - "*"
