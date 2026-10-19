@@ -18,6 +18,7 @@ goal is C and C++ source that compiles to the same machine code as the retail
 <!-- history:start -->
 | Date | Decompiled | Matched | Accuracy | Changes |
 | --- | --- | --- | --- | --- |
+| 2026-10-19 | 313 / 16,537 (1.89%) | 313 | 100.00% | InitGetEmblem stub -> 100%; +destGetEmblem 100%; +DialogJimakuInit 100%; +DialogJimakuEnd 100%; +DialogJimakuPut 100%; 56 more |
 | 2026-10-19 | 277 / 16,537 (1.68%) | 277 | 100.00% | AlrReal_changeAct_for_Race stub -> 100%; +A_Life_for_ALR 100%; AlrReal_calcAverage stub -> 100%; AlrReal_dspHead stub -> 100%; AlrReal_offSonic stub -> 100%; 13 more |
 | 2026-10-19 | 269 / 16,537 (1.63%) | 269 | 100.00% | +AvaLoadTexForCommon 100%; +FUN_004b08f0 100%; +AvaReleaseTexForAll 100%; +AvaReleaseTex 100%; +FUN_004b0a10 100%; 19 more |
 | 2026-10-19 | 250 / 16,537 (1.51%) | 250 | 100.00% | +IsndPlay 100%; makesndfilename stub -> 100%; +FUN_004ae8c0 100%; IsndStop stub -> 100%; IsndVolume stub -> 100%; 26 more |
