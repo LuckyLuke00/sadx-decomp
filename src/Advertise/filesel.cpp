@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_05b42528;
+void *_SOCMalloc(unsigned int size, const char *file, int line);
 
 #pragma warning(disable: 4716)
 
@@ -215,5 +217,31 @@ void FUN_004b83c0(struct task *param_1)
 	if (DAT_05b3e356)
 	{
 		AlertWindowTask(DAT_05b42520);
+	}
+}
+
+// FUNCTION: SADX 0x004b9bc0
+void FreeAdvaFileSelTask(void)
+{
+	if (DAT_05b42530)
+	{
+		DestroyTask(DAT_05b42530);
+	}
+}
+
+// FUNCTION: SADX 0x004b9be0
+void ChgSeqFileSel(void)
+{
+	((struct FileSelWk *)DAT_05b42530->awp)->NextMode = (enum AdvaModeEnum)7;
+	((struct FileSelWk *)DAT_05b42530->awp)->PrevMode = (enum AdvaModeEnum)7;
+}
+
+// FUNCTION: SADX 0x004ba980
+void FUN_004ba980(void)
+{
+	if (DAT_05b42528 == 0)
+	{
+		DAT_05b42528 = _SOCMalloc(0x18, "..\\..\\src\\Advertise\\filesel.cpp", 3481);
+		*(int *)((char *)DAT_05b42528 + 0x14) = 0;
 	}
 }

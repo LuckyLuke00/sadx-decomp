@@ -18,6 +18,7 @@ goal is C and C++ source that compiles to the same machine code as the retail
 <!-- history:start -->
 | Date | Decompiled | Matched | Accuracy | Changes |
 | --- | --- | --- | --- | --- |
+| 2026-10-19 | 269 / 16,537 (1.63%) | 269 | 100.00% | +AvaLoadTexForCommon 100%; +FUN_004b08f0 100%; +AvaReleaseTexForAll 100%; +AvaReleaseTex 100%; +FUN_004b0a10 100%; 19 more |
 | 2026-10-19 | 250 / 16,537 (1.51%) | 250 | 100.00% | +IsndPlay 100%; makesndfilename stub -> 100%; +FUN_004ae8c0 100%; IsndStop stub -> 100%; IsndVolume stub -> 100%; 26 more |
 | 2026-10-19 | 227 / 16,537 (1.37%) | 227 | 100.00% | isTextureNG stub -> 100%; +FUN_004a0920 100%; FUN_004a0940 stub -> 100%; FUN_004a0960 stub -> 100%; +FUN_004a0980 100%; 104 more |
 | 2026-10-18 | 148 / 16,537 (0.89%) | 148 | 100.00% | +FUN_004822c0 100%; +AlrReal_Exe 100%; +AlrReal_exe_for_Race 100%; +AlrReal_Dsp 100%; +AlrReal_Destructor 100%; 351 more |
