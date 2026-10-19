@@ -13,14 +13,14 @@ extern unsigned char DAT_05b3e065;
 extern int DAT_05b9d838;
 
 // FUNCTION: SADX 0x004a0220
-void ___njSetPerspective(long param_1)
+void ___njSetPerspective(long a)
 {
-	if (DAT_06298c64 != param_1)
+	if (DAT_06298c64 != a)
 	{
-		njSetPerspective(param_1);
+		njSetPerspective(a);
 	}
-	DAT_05b39e6c = param_1;
-	DAT_06298c64 = param_1;
+	DAT_05b39e6c = a;
+	DAT_06298c64 = a;
 }
 
 // FUNCTION: SADX 0x004a0250
@@ -30,12 +30,12 @@ long ds_GetPerspective()
 }
 
 // FUNCTION: SADX 0x004a0260
-void ___njSetBackColor(unsigned long param_1, unsigned long param_2, unsigned long param_3)
+void ___njSetBackColor(unsigned long c0, unsigned long c1, unsigned long c2)
 {
-	param_1 |= 0xff000000;
-	param_2 |= 0xff000000;
-	param_3 |= 0xff000000;
-	njSetBackColor(param_1, param_2, param_3);
+	c0 |= 0xff000000;
+	c1 |= 0xff000000;
+	c2 |= 0xff000000;
+	njSetBackColor(c0, c1, c2);
 }
 
 // FUNCTION: SADX 0x004a02a0
@@ -47,9 +47,9 @@ void ___njReleaseTextureAll()
 }
 
 // FUNCTION: SADX 0x004a02c0
-void ___njSetConstantMaterial(NJS_ARGB *param_1)
+void ___njSetConstantMaterial(NJS_ARGB *argb)
 {
-	DAT_05b39de4 = *param_1;
+	DAT_05b39de4 = *argb;
 	if (DAT_05b39de4.a > 1.0)
 	{
 		DAT_05b39de4.a = 1.0;
@@ -86,22 +86,22 @@ void ___njSetConstantMaterial(NJS_ARGB *param_1)
 }
 
 // FUNCTION: SADX 0x004a03f0
-void ___njSetTexture(NJS_TEXLIST *param_1)
+void ___njSetTexture(NJS_TEXLIST *texlist)
 {
-	long result;
+	long local_8;
 
-	DAT_05b3ded0 = param_1;
+	DAT_05b3ded0 = texlist;
 	DAT_05b39eb4 = 0;
-	result = njSetTexture(param_1);
+	local_8 = njSetTexture(texlist);
 }
 
 // FUNCTION: SADX 0x004a0420
-void ___njSetTextureNum(int param_1)
+void ___njSetTextureNum(int num)
 {
-	DAT_05b39eb4 = param_1;
+	DAT_05b39eb4 = num;
 	if (DAT_05b3ded0 != 0)
 	{
-		njSetTextureNum(param_1);
+		njSetTextureNum(num);
 	}
 }
 
@@ -113,35 +113,35 @@ int ___dsSetTexture()
 }
 
 // FUNCTION: SADX 0x004a0470
-void ___njColorBlendingMode(int param_1, int param_2)
+void ___njColorBlendingMode(int tgt, int mode)
 {
-	if (param_1 == 0)
+	if (tgt == 0)
 	{
-		DAT_05b39e10 = (DAT_05b39e10 & ~0xf) | (param_2 & 0xf);
+		DAT_05b39e10 = (DAT_05b39e10 & ~0xf) | (mode & 0xf);
 	}
-	else if (param_1 == 1)
+	else if (tgt == 1)
 	{
-		DAT_05b39e10 = (DAT_05b39e10 & 0xf) | ((param_2 & 0xf) << 4);
+		DAT_05b39e10 = (DAT_05b39e10 & 0xf) | ((mode & 0xf) << 4);
 	}
-	njColorBlendingMode(param_1, param_2);
+	njColorBlendingMode(tgt, mode);
 }
 
 // FUNCTION: SADX 0x004a04d0
-void ___njDrawTexture(struct NJS_TEXTURE_VTX *param_1, int param_2, int param_3, int param_4)
+void ___njDrawTexture(struct NJS_TEXTURE_VTX *v, int num, int ind, int tf)
 {
-	int fog;
+	int local_8;
 
-	fog = DAT_05b3e065;
+	local_8 = DAT_05b3e065;
 	if (DAT_05b9d838)
 	{
 		return;
 	}
-	if (fog)
+	if (local_8)
 	{
 		___njFogDisable();
 	}
-	njDrawTexture(param_1, param_2, param_3, param_4);
-	if (fog)
+	njDrawTexture(v, num, ind, tf);
+	if (local_8)
 	{
 		___njFogEnable();
 	}
@@ -150,44 +150,44 @@ void ___njDrawTexture(struct NJS_TEXTURE_VTX *param_1, int param_2, int param_3,
 // FUNCTION: SADX 0x004a0620
 int FUN_004a0620(int param_1)
 {
-	unsigned int flags;
-	unsigned int kind;
-	int result;
+	unsigned int local_ci;
+	unsigned int local_8g;
+	int local_10;
 
-	flags = *(unsigned int *)(*(int *)(param_1 + 0x10) + 0x10);
-	result = 0;
-	if (flags & 0x100000)
+	local_ci = *(unsigned int *)(*(int *)(param_1 + 0x10) + 0x10);
+	local_10 = 0;
+	if (local_ci & 0x100000)
 	{
-		result = 1;
+		local_10 = 1;
 	}
-	kind = flags & 0xfc000000;
-	if (kind == 0x84000000 || kind == 0x24000000 || kind == 0x30000000)
+	local_8g = local_ci & 0xfc000000;
+	if (local_8g == 0x84000000 || local_8g == 0x24000000 || local_8g == 0x30000000)
 	{
-		result = ((flags & 0x2000000) != 0) + 1;
+		local_10 = ((local_ci & 0x2000000) != 0) + 1;
 	}
-	return result;
+	return local_10;
 }
 
 // FUNCTION: SADX 0x004a0690
-void late_ReleaseTexture(NJS_TEXLIST *param_1)
+void late_ReleaseTexture(NJS_TEXLIST *tl)
 {
-	int a;
-	int b;
-	int c;
+	int local_8g;
+	int local_cj;
+	int local_10;
 
-	if (isTextureNG(param_1, 0))
+	if (isTextureNG(tl, 0))
 	{
 		return;
 	}
-	njReleaseTexture(param_1);
+	njReleaseTexture(tl);
 }
 
 // FUNCTION: SADX 0x004a0740
-int dsCheckView(float x, float y, float z, float r)
+int dsCheckView(float x, float y, float z, float radius)
 {
-	struct NJS_POINT3 p;
-	p.x = x;
-	p.y = y;
-	p.z = z;
-	return dsCheckViewV(&p, r);
+	struct NJS_POINT3 ft;
+	ft.x = x;
+	ft.y = y;
+	ft.z = z;
+	return dsCheckViewV(&ft, radius);
 }

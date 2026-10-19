@@ -2954,14 +2954,6 @@
    "library": false
   },
   {
-   "address": "0x006e2050",
-   "name": "light",
-   "accuracy": 0.030303030303030304,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
    "address": "0x00712cc0",
    "name": "ADV1_ALR_GetEntryStatus",
    "accuracy": 0.2222222222222222,
@@ -8314,6 +8306,14 @@
    "library": true
   },
   {
+   "address": "0x00913370",
+   "name": "ind",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091d1e2",
    "name": "_strupr_s_l_stat",
    "accuracy": 1.0,
@@ -8459,5 +8459,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b50bd751a8568da0aae5df6c2a9982d0edc106c03fbdb5a989aba76c67a40769"
+ "inputs_sha256": "276753e701e9eb911de01a875ed5e93fd49f4939c342302b1586576939e15b03"
 }

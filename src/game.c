@@ -23,7 +23,7 @@ void PauseDisable()
 // FUNCTION: SADX 0x004c4fc0
 void StartTheFirstGame()
 {
-	int local;
+	int local_8;
 
 	InitGCMemocaState();
 	SetPlayerNumberForGame(0);
@@ -32,7 +32,7 @@ void StartTheFirstGame()
 	SeqInit();
 	DAT_05b42c1c = 0;
 	InitGame();
-	local = FUN_005030d0();
+	local_8 = FUN_005030d0();
 	DAT_05b3ea25 = 0;
 	srand(0xdead0cab);
 }

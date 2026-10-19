@@ -3,7 +3,7 @@
 extern int DAT_05b3ebbc;
 
 // FUNCTION: SADX 0x0044c520
-const unsigned long *AlMsgStrLoad(const char *param_1)
+const unsigned long *AlMsgStrLoad(const char *name)
 {
-	return AlMsgStrLoadLang(param_1, DAT_05b3ebbc);
+	return AlMsgStrLoadLang(name, DAT_05b3ebbc);
 }

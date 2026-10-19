@@ -1140,11 +1140,6 @@ int checkInSsHodel()
 	return (int)0;
 }
 
-// STUB: SADX 0x006e2050
-void light(struct task *pTask)
-{
-}
-
 // STUB: SADX 0x00712cc0
 struct al_status *ADV1_ALR_GetEntryStatus(int num)
 {
@@ -1153,5 +1148,10 @@ struct al_status *ADV1_ALR_GetEntryStatus(int num)
 
 // STUB: SADX 0x007d21b0
 void FUN_007d21b0(void *)
+{
+}
+
+// STUB: SADX 0x00913370
+void ind()
 {
 }

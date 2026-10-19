@@ -7,12 +7,12 @@ extern int DAT_05b3dfe4;
 extern int DAT_05b3dfec;
 
 // FUNCTION: SADX 0x004ab380
-void voicevolchange(int volume)
+void voicevolchange(int vol)
 {
 	DAT_05b3dfc4 = VOICE_VOLUME;
-	if (VOICE_VOLUME > volume)
+	if (VOICE_VOLUME > vol)
 	{
-		VOICE_VOLUME = VOICE_VOLUME - volume;
+		VOICE_VOLUME = VOICE_VOLUME - vol;
 	}
 }
 

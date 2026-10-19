@@ -7,8 +7,8 @@ extern int DAT_05cd14fc;
 // FUNCTION: SADX 0x00573d20
 int GetAdvertisePlayerNumber(unsigned char)
 {
-	int result = DAT_05cd14ed;
-	return result;
+	int local_8 = DAT_05cd14ed;
+	return local_8;
 }
 
 // FUNCTION: SADX 0x00573d40
@@ -36,27 +36,27 @@ void EV_NpcMilesStandByOff()
 }
 
 // FUNCTION: SADX 0x00573d80
-struct task *EV_CreateBossController(struct BOSSPLAYER_CREATE_PARAM *param_1)
+struct task *EV_CreateBossController(struct BOSSPLAYER_CREATE_PARAM *Param)
 {
-	return CreateBossPlayer(param_1);
+	return CreateBossPlayer(Param);
 }
 
 // FUNCTION: SADX 0x00573da0
-struct task *EV_CreateBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *param_1)
+struct task *EV_CreateBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 {
-	return CreateBossPlayerTask(param_1);
+	return CreateBossPlayerTask(Param);
 }
 
 // FUNCTION: SADX 0x00573dc0
-void EV_FreeBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *param_1)
+void EV_FreeBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 {
-	FreeBossPlayerTask(param_1);
+	FreeBossPlayerTask(Param);
 }
 
 // FUNCTION: SADX 0x00573de0
-void SetBossPlayerResult(int param_1)
+void SetBossPlayerResult(int flag)
 {
-	DAT_05cd14fc = param_1;
+	DAT_05cd14fc = flag;
 }
 
 // FUNCTION: SADX 0x00573df0
@@ -66,13 +66,13 @@ int GetBossPlayerResult()
 }
 
 // FUNCTION: SADX 0x00573e00
-long GameStageNameModeInit(long param_1)
+long GameStageNameModeInit(long time)
 {
-	return StageNameModeInit(param_1);
+	return StageNameModeInit(time);
 }
 
 // FUNCTION: SADX 0x00573e20
-long GameStageNameMode(void *param_1)
+long GameStageNameMode(void *Param)
 {
-	return StageNameMode(param_1);
+	return StageNameMode(Param);
 }
