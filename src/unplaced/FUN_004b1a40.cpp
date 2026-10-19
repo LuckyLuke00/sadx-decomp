@@ -1,6 +1,9 @@
 #include "decls.h"
 #include <string.h>
 #include <new>
+void *FUN_004b6ae0(unsigned int param_1);
+void FUN_004b66c0(void **param_1);
+void FUN_004b6720(void *param_1, void *param_2, void *param_3);
 void FUN_004b5e70(int param_1);
 
 extern char **DAT_05b422dc;
@@ -175,6 +178,75 @@ void FUN_004b6520(int param_1)
 	}
 }
 
+// FUNCTION: SADX 0x004b6590
+void __fastcall FUN_004b6590(int *param_1)
+{
+	int local_18o;
+	int local_20k;
+	int local_14s;
+	int local_10l;
+	int local_ci;
+	int local_8g;
+	int local_24;
+	int local_1cg;
+
+	local_18o = *(int *)param_1;
+	local_14s = *(int *)(param_1 + 1);
+	local_24 = local_14s;
+	local_1cg = local_24;
+	local_20k = *(int *)param_1;
+	local_ci = local_20k;
+	local_8g = local_ci;
+	FUN_004b6720(&local_10l, (void *)local_8g, (void *)local_1cg);
+	return;
+}
+
+// FUNCTION: SADX 0x004b66c0
+void FUN_004b66c0(void **param_1)
+{
+	void **local_8 = param_1;
+	if (*local_8 != 0)
+	{
+		int local_10l = (int)((char *)local_8[2] - (char *)local_8[0]) >> 2;
+		void *local_c = *local_8;
+		char local_14[4];
+		local_14[0] = 0;
+		delete local_c;
+	}
+	*local_8 = 0;
+	local_8[1] = 0;
+	local_8[2] = 0;
+}
+
+// FUNCTION: SADX 0x004b6860
+int FUN_004b6860(int *param_1, int param_2)
+{
+	unsigned int local_ci = (*(int *)(param_1 + 2) - *(int *)param_1) >> 2;
+	unsigned int local_8g;
+	if (0x3fffffff >= local_ci)
+	{
+		local_8g = 0x3fffffff;
+	}
+	else
+	{
+		local_8g = local_ci;
+	}
+	unsigned int local_10;
+	if (local_8g - (local_ci >> 1) < local_ci)
+	{
+		local_10 = 0;
+	}
+	else
+	{
+		local_10 = (local_ci >> 1) + local_ci;
+	}
+	if (local_10 < param_2)
+	{
+		local_10 = param_2;
+	}
+	return local_10;
+}
+
 // FUNCTION: SADX 0x004b6a60
 void FUN_004b6a60(int param_1, int *param_2, int *param_3)
 {
@@ -211,4 +283,20 @@ void FUN_004b6aa0(int param_1, int *param_2, int *param_3)
 		local_10 = 0;
 	}
 	local_8g = local_10;
+}
+
+// FUNCTION: SADX 0x004b6ae0
+void *FUN_004b6ae0(unsigned int param_1)
+{
+	void *local_8 = 0;
+	if (param_1 == 0)
+	{
+		param_1 = 0;
+		return local_8;
+	}
+	if (param_1 > 0x3fffffff || (local_8 = operator new(param_1 * 4)) == 0)
+	{
+		throw std::bad_alloc();
+	}
+	return local_8;
 }

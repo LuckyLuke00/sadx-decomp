@@ -19,6 +19,7 @@ struct ADV1_AL_SHADOW;
 struct ADV1_AL_TMP_STATUS;
 struct al_action_ctrl;
 struct al_motion_table;
+struct AL_RECORD;
 struct al_status;
 struct alifewk;
 struct Alr;
@@ -50,6 +51,8 @@ struct anywk;
 struct bankdata;
 struct bankdatalist;
 struct BOSSPLAYER_CREATE_PARAM;
+struct c_colli_hit_info;
+struct CCL_INFO;
 struct colliwk;
 struct DDlgType;
 struct DialogPrmType;
@@ -94,9 +97,12 @@ struct obj;
 struct OBJ_CONDITION;
 struct PanelPrmType;
 struct particle_entry;
+struct particle_info;
 struct pathtag;
 struct pathtbl;
 struct SAVE_DATA;
+struct SEQ_SECTION;
+struct SEQ_SECTIONTBL;
 struct SeqPrmType;
 struct sp_info;
 struct sp_link;
@@ -1087,6 +1093,36 @@ static_assert(offsetof(BOSSPLAYER_CREATE_PARAM, flag) == 0x14, "BOSSPLAYER_CREAT
 static_assert(offsetof(BOSSPLAYER_CREATE_PARAM, player_pos) == 0x18, "BOSSPLAYER_CREATE_PARAM::player_pos");
 static_assert(offsetof(BOSSPLAYER_CREATE_PARAM, boss_pos) == 0x24, "BOSSPLAYER_CREATE_PARAM::boss_pos");
 
+struct CCL_INFO {
+    unsigned char kind;
+    unsigned char form;
+    unsigned char push;
+    unsigned char damage;
+    unsigned long attr;
+    struct NJS_POINT3 center;
+    float a;
+    float b;
+    float c;
+    float d;
+    long angx;
+    long angy;
+    long angz;
+};
+static_assert(sizeof(CCL_INFO) == 0x30, "sizeof CCL_INFO");
+static_assert(offsetof(CCL_INFO, kind) == 0x0, "CCL_INFO::kind");
+static_assert(offsetof(CCL_INFO, form) == 0x1, "CCL_INFO::form");
+static_assert(offsetof(CCL_INFO, push) == 0x2, "CCL_INFO::push");
+static_assert(offsetof(CCL_INFO, damage) == 0x3, "CCL_INFO::damage");
+static_assert(offsetof(CCL_INFO, attr) == 0x4, "CCL_INFO::attr");
+static_assert(offsetof(CCL_INFO, center) == 0x8, "CCL_INFO::center");
+static_assert(offsetof(CCL_INFO, a) == 0x14, "CCL_INFO::a");
+static_assert(offsetof(CCL_INFO, b) == 0x18, "CCL_INFO::b");
+static_assert(offsetof(CCL_INFO, c) == 0x1c, "CCL_INFO::c");
+static_assert(offsetof(CCL_INFO, d) == 0x20, "CCL_INFO::d");
+static_assert(offsetof(CCL_INFO, angx) == 0x24, "CCL_INFO::angx");
+static_assert(offsetof(CCL_INFO, angy) == 0x28, "CCL_INFO::angy");
+static_assert(offsetof(CCL_INFO, angz) == 0x2c, "CCL_INFO::angz");
+
 struct DDlgType {
     float CntrX;
     float CntrY;
@@ -1511,6 +1547,20 @@ static_assert(offsetof(NJS_TEXANIM, v2) == 0xe, "NJS_TEXANIM::v2");
 static_assert(offsetof(NJS_TEXANIM, texid) == 0x10, "NJS_TEXANIM::texid");
 static_assert(offsetof(NJS_TEXANIM, attr) == 0x12, "NJS_TEXANIM::attr");
 
+struct SEQ_SECTIONTBL {
+    struct SEQ_SECTION *psec;
+    unsigned char stg;
+    unsigned char act;
+    unsigned short entrance;
+    char name[32];
+};
+static_assert(sizeof(SEQ_SECTIONTBL) == 0x28, "sizeof SEQ_SECTIONTBL");
+static_assert(offsetof(SEQ_SECTIONTBL, psec) == 0x0, "SEQ_SECTIONTBL::psec");
+static_assert(offsetof(SEQ_SECTIONTBL, stg) == 0x4, "SEQ_SECTIONTBL::stg");
+static_assert(offsetof(SEQ_SECTIONTBL, act) == 0x5, "SEQ_SECTIONTBL::act");
+static_assert(offsetof(SEQ_SECTIONTBL, entrance) == 0x6, "SEQ_SECTIONTBL::entrance");
+static_assert(offsetof(SEQ_SECTIONTBL, name) == 0x8, "SEQ_SECTIONTBL::name");
+
 struct TaskInfo {
     unsigned int size;
     unsigned long initMode;
@@ -1699,6 +1749,47 @@ static_assert(sizeof(bankdatalist) == 0x8, "sizeof bankdatalist");
 static_assert(offsetof(bankdatalist, datasize) == 0x0, "bankdatalist::datasize");
 static_assert(offsetof(bankdatalist, data) == 0x4, "bankdatalist::data");
 
+// Offsets not checked against the code yet.
+struct c_colli_hit_info {
+    signed char my_num;
+    signed char hit_num;
+    unsigned short flag;
+    struct taskwk *hit_twp;
+};
+static_assert(sizeof(c_colli_hit_info) == 0x8, "sizeof c_colli_hit_info");
+static_assert(offsetof(c_colli_hit_info, my_num) == 0x0, "c_colli_hit_info::my_num");
+static_assert(offsetof(c_colli_hit_info, hit_num) == 0x1, "c_colli_hit_info::hit_num");
+static_assert(offsetof(c_colli_hit_info, flag) == 0x2, "c_colli_hit_info::flag");
+static_assert(offsetof(c_colli_hit_info, hit_twp) == 0x4, "c_colli_hit_info::hit_twp");
+
+struct colliwk {
+    unsigned short id;
+    short nbHit;
+    unsigned short flag;
+    unsigned short nbInfo;
+    float colli_range;
+    struct CCL_INFO *info;
+    struct c_colli_hit_info hit_info[16];
+    struct NJS_POINT3 normal;
+    struct task *mytask;
+    short my_num;
+    short hit_num;
+    struct colliwk *hit_cwp;
+};
+static_assert(sizeof(colliwk) == 0xa8, "sizeof colliwk");
+static_assert(offsetof(colliwk, id) == 0x0, "colliwk::id");
+static_assert(offsetof(colliwk, nbHit) == 0x2, "colliwk::nbHit");
+static_assert(offsetof(colliwk, flag) == 0x4, "colliwk::flag");
+static_assert(offsetof(colliwk, nbInfo) == 0x6, "colliwk::nbInfo");
+static_assert(offsetof(colliwk, colli_range) == 0x8, "colliwk::colli_range");
+static_assert(offsetof(colliwk, info) == 0xc, "colliwk::info");
+static_assert(offsetof(colliwk, hit_info) == 0x10, "colliwk::hit_info");
+static_assert(offsetof(colliwk, normal) == 0x90, "colliwk::normal");
+static_assert(offsetof(colliwk, mytask) == 0x9c, "colliwk::mytask");
+static_assert(offsetof(colliwk, my_num) == 0xa0, "colliwk::my_num");
+static_assert(offsetof(colliwk, hit_num) == 0xa2, "colliwk::hit_num");
+static_assert(offsetof(colliwk, hit_cwp) == 0xa4, "colliwk::hit_cwp");
+
 struct obj {
     unsigned long evalflags;
     struct NJS_MODEL *model;
@@ -1729,6 +1820,26 @@ static_assert(offsetof(particle_entry, wksize) == 0x4, "particle_entry::wksize")
 static_assert(offsetof(particle_entry, exec) == 0x8, "particle_entry::exec");
 static_assert(offsetof(particle_entry, link) == 0xc, "particle_entry::link");
 
+struct particle_info {
+    float scl;
+    float sclspd;
+    float animspd;
+    float friction;
+    float yacc;
+    struct NJS_POINT3 pos;
+    struct NJS_POINT3 velo;
+    struct NJS_ARGB argb;
+};
+static_assert(sizeof(particle_info) == 0x3c, "sizeof particle_info");
+static_assert(offsetof(particle_info, scl) == 0x0, "particle_info::scl");
+static_assert(offsetof(particle_info, sclspd) == 0x4, "particle_info::sclspd");
+static_assert(offsetof(particle_info, animspd) == 0x8, "particle_info::animspd");
+static_assert(offsetof(particle_info, friction) == 0xc, "particle_info::friction");
+static_assert(offsetof(particle_info, yacc) == 0x10, "particle_info::yacc");
+static_assert(offsetof(particle_info, pos) == 0x14, "particle_info::pos");
+static_assert(offsetof(particle_info, velo) == 0x20, "particle_info::velo");
+static_assert(offsetof(particle_info, argb) == 0x2c, "particle_info::argb");
+
 struct pathtag {
     unsigned char pathtype;
     unsigned short points;
@@ -1742,6 +1853,20 @@ static_assert(offsetof(pathtag, points) == 0x2, "pathtag::points");
 static_assert(offsetof(pathtag, totallen) == 0x4, "pathtag::totallen");
 static_assert(offsetof(pathtag, tblhead) == 0x8, "pathtag::tblhead");
 static_assert(offsetof(pathtag, pathtask) == 0xc, "pathtag::pathtask");
+
+struct sp_info {
+    struct NJS_TEXLIST *texlist;
+    struct NJS_TEXANIM *texanim;
+    int animnum;
+    int srcblend;
+    int dstblend;
+};
+static_assert(sizeof(sp_info) == 0x14, "sizeof sp_info");
+static_assert(offsetof(sp_info, texlist) == 0x0, "sp_info::texlist");
+static_assert(offsetof(sp_info, texanim) == 0x4, "sp_info::texanim");
+static_assert(offsetof(sp_info, animnum) == 0x8, "sp_info::animnum");
+static_assert(offsetof(sp_info, srcblend) == 0xc, "sp_info::srcblend");
+static_assert(offsetof(sp_info, dstblend) == 0x10, "sp_info::dstblend");
 
 struct sp_link {
     struct sp_link *next;

@@ -20,17 +20,28 @@ extern void (*DAT_05b39e68)(struct obj *obj);
 extern void (*DAT_05b39dbc)(struct obj *obj);
 extern float DAT_05b3df44;
 void FUN_004a3890();
+extern struct LATE_FAR_Z_T late_far_z_chaos;
+extern struct LATE_FAR_Z_T late_far_z_chaos0;
+extern struct LATE_FAR_Z_T late_far_z_chaos7;
 extern LATE_FAR_Z_T DAT_05b39e18;
 void ___OutputDebugString(char *, ...);
+void late_DrawSprite2D(struct NJS_SPRITE *sp, int n, float pri, unsigned long atr, int flgs);
 int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
+void njDrawSprite2D(struct NJS_SPRITE *param_1, int param_2, float param_3, unsigned long param_4);
+extern double fabs(double);
 void FUN_004a27c0();
 void FUN_004a2960();
 extern int DAT_05b39df4;
+void njScaleEx(void *param_1);
+void njTranslateEx(void *param_1);
+void njPushMatrixEx();
+void njPopMatrixEx();
 void njRotateXYZ(long param_1, long *param_2, long *param_3, long *param_4);
 void njRotateZXY(long param_1, long *param_2, long *param_3, long *param_4);
 void FUN_00422560(int param_1);
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl);
 int isTextureNG(NJS_TEXLIST *tl, int numChk);
+void DrawObjectClip(struct obj *obj, float clipScl);
 extern int DAT_05b3dee0;
 extern int DAT_05b3ded4;
 extern int DAT_05b3ded8;
@@ -40,7 +51,18 @@ extern unsigned char DAT_05b3df53;
 extern float DAT_05b3df38;
 void late_DrawModelClip(struct NJS_MODEL *, int, float);
 int isTextureNG(struct NJS_TEXLIST *, int);
+long dsSimpleDrawModel(struct NJS_MODEL *);
+void njDrawModel(struct NJS_MODEL *);
+extern float DAT_00981c10;
+extern unsigned char DAT_025acd84;
+extern unsigned char DAT_02608e24;
 extern int DAT_05b3df40;
+void njCalcPoint(int param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
+extern float DAT_05a922f8;
+extern float DAT_05a922fc;
+extern float DAT_0629c6e0;
+extern float DAT_0629c6ec;
+extern float DAT_0629c6f0;
 extern int DAT_05b39e2c;
 extern int DAT_05cd4078;
 void FUN_00598720(int param_1);
@@ -271,6 +293,54 @@ int dsCheckView(float x, float y, float z, float radius)
 	return dsCheckViewV(&ft, radius);
 }
 
+// FUNCTION: SADX 0x004a0790
+int dsCheckViewV(NJS_POINT3 *ft, float radius)
+{
+	float local_20g;
+	float local_24;
+	NJS_POINT3 local_1cp;
+	float local_ci;
+	float local_8g;
+
+	if (DAT_05b9d838 != 0)
+	{
+		return 0;
+	}
+	radius = radius * 1.2f;
+	njCalcPoint(0, ft, &local_1cp);
+	if (clipZ_far <= -local_1cp.z + radius)
+	{
+		return 0;
+	}
+	if (-local_1cp.z - radius <= clipZ_near)
+	{
+		return 0;
+	}
+	local_20g = -local_1cp.z - radius;
+	local_24 = -1.0f / local_20g;
+	local_ci = DAT_05a922f8 * DAT_0629c6e0 * (local_1cp.x + radius) * local_24 + DAT_0629c6ec;
+	if (local_ci < 0.0f)
+	{
+		return 0;
+	}
+	local_ci = DAT_05a922f8 * DAT_0629c6e0 * (local_1cp.x - radius) * local_24 + DAT_0629c6ec;
+	if (local_ci > ScreenRaitoX * 640.0f)
+	{
+		return 0;
+	}
+	local_8g = -DAT_0629c6e0 * DAT_05a922fc * (local_1cp.y - radius) * local_24 + DAT_0629c6f0;
+	if (local_8g < 0.0f)
+	{
+		return 0;
+	}
+	local_8g = -DAT_0629c6e0 * DAT_05a922fc * (local_1cp.y + radius) * local_24 + DAT_0629c6f0;
+	if (local_8g > ScreenRaitoY * 480.0f)
+	{
+		return 0;
+	}
+	return 1;
+}
+
 // FUNCTION: SADX 0x004a0920
 void FUN_004a0920(struct obj *param_1)
 {
@@ -328,6 +398,513 @@ void FUN_004a0aa0(struct obj *param_1, struct NJS_MOTION *param_2, float param_3
 void ___SAnjSimpleDrawObject(struct obj *obj)
 {
 	FUN_004a0920(obj);
+}
+
+// FUNCTION: SADX 0x004a0ae0
+void ___dsDrawModel(NJS_MODEL *model)
+{
+	unsigned char local_dh;
+	unsigned char local_eh;
+	int local_8g;
+	int local_cj;
+
+	if ((((DAT_025acd84 & 2) >> 1) != 0) && (DAT_025acd84 & 1) != 0 && DAT_05b3e065 == 0)
+	{
+		if (0)
+		{
+			DAT_025acd84 = DAT_025acd84 | 2;
+			local_dh = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 = DAT_025acd84 & 0xfd;
+			local_dh = DAT_025acd84;
+		}
+		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		late_DrawModel(model, 1);
+		if (1)
+		{
+			DAT_025acd84 = DAT_025acd84 | 2;
+			local_eh = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 = DAT_025acd84 & 0xfd;
+			local_eh = DAT_025acd84;
+		}
+	}
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (isTextureNG(DAT_05b3ded0, 0) != 0)
+	{
+		return;
+	}
+	if ((unsigned int)model < 0x100000)
+	{
+		return;
+	}
+	if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+	{
+		dsSimpleDrawModel(model);
+	}
+	else
+	{
+		njDrawModel(model);
+	}
+}
+
+// FUNCTION: SADX 0x004a0c10
+void ___dsDrawObject(struct obj *obj)
+{
+	unsigned char local_6g;
+	unsigned char local_7h;
+	unsigned char local_5i;
+	unsigned char local_8;
+
+	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && (DAT_05b3e065 == 0))
+	{
+		if (DAT_025acd84 & 4)
+		{
+			DAT_025acd84 = DAT_025acd84 | 2;
+			local_6g = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 = DAT_025acd84 & 0xfd;
+			local_6g = DAT_025acd84;
+		}
+	}
+	*(float *)&DAT_05b3df40 = DAT_00981c10;
+	late_DrawObject(obj, 1);
+	if (1 != 0)
+	{
+		DAT_025acd84 = DAT_025acd84 | 2;
+		local_7h = DAT_025acd84;
+	}
+	else
+	{
+		DAT_025acd84 = DAT_025acd84 & 0xfd;
+		local_7h = DAT_025acd84;
+	}
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (isTextureNG(DAT_05b3ded0, 0) != 0)
+	{
+		return;
+	}
+	___DrawObject(obj);
+}
+
+// FUNCTION: SADX 0x004a0d10
+void ___DrawObject(struct obj *obj)
+{
+	unsigned long local_20k;
+	unsigned long local_2c;
+	unsigned long local_10l;
+	unsigned long local_1cg;
+	unsigned long local_24l;
+	unsigned long local_18r;
+	unsigned long local_28g;
+	unsigned long local_ci;
+	unsigned long local_14k;
+	unsigned long local_8g;
+
+	while (obj != (struct obj *)0)
+	{
+		local_20k = obj->evalflags;
+		local_2c = local_20k & 7;
+		switch (local_2c)
+		{
+		case 0:
+			njPushMatrixEx();
+			njTranslateEx(&obj->pos[0]);
+			if (local_20k & 0x20)
+			{
+				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			else
+			{
+				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			njScaleEx(&obj->scl[0]);
+			if ((local_20k & 8) == 0)
+			{
+				local_10l = (unsigned long)obj->model;
+				if (local_10l >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			njPopMatrixEx();
+			break;
+		case 1:
+			njPushMatrixEx();
+			if (local_20k & 0x20)
+			{
+				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			else
+			{
+				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			njScaleEx(&obj->scl[0]);
+			if ((local_20k & 8) == 0)
+			{
+				local_1cg = (unsigned long)obj->model;
+				if (local_1cg >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			njPopMatrixEx();
+			break;
+		case 2:
+			njPushMatrixEx();
+			njTranslateEx(&obj->pos[0]);
+			njScaleEx(&obj->scl[0]);
+			if ((local_20k & 8) == 0)
+			{
+				local_24l = (unsigned long)obj->model;
+				if (local_24l >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			njPopMatrixEx();
+			break;
+		case 3:
+			njPushMatrixEx();
+			njScaleEx(&obj->scl[0]);
+			if ((local_20k & 8) == 0)
+			{
+				local_18r = (unsigned long)obj->model;
+				if (local_18r >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			njPopMatrixEx();
+			break;
+		case 4:
+			njPushMatrixEx();
+			njTranslateEx(&obj->pos[0]);
+			if (local_20k & 0x20)
+			{
+				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			else
+			{
+				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			if ((local_20k & 8) == 0)
+			{
+				local_28g = (unsigned long)obj->model;
+				if (local_28g >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			njPopMatrixEx();
+			break;
+		case 5:
+			njPushMatrixEx();
+			if (local_20k & 0x20)
+			{
+				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			else
+			{
+				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+			}
+			if ((local_20k & 8) == 0)
+			{
+				local_ci = (unsigned long)obj->model;
+				if (local_ci >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			njPopMatrixEx();
+			break;
+		case 6:
+			njPushMatrixEx();
+			njTranslateEx(&obj->pos[0]);
+			if ((local_20k & 8) == 0)
+			{
+				local_14k = (unsigned long)obj->model;
+				if (local_14k >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			njPopMatrixEx();
+			break;
+		default:
+			if ((local_20k & 8) == 0)
+			{
+				local_8g = (unsigned long)obj->model;
+				if (local_8g >= 0x100000)
+				{
+					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					{
+						dsSimpleDrawModel(obj->model);
+					}
+					else
+					{
+						njDrawModel(obj->model);
+					}
+				}
+			}
+			if ((local_20k & 0x10) == 0)
+			{
+				___DrawObject(obj->child);
+			}
+			break;
+		}
+		obj = obj->sibling;
+	}
+}
+
+// FUNCTION: SADX 0x004a1290
+void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
+{
+	int local_ci;
+	float local_8g;
+	unsigned char local_e;
+	unsigned char local_dg;
+
+	if ((((DAT_025acd84 & 2) >> 1 != 0) && ((DAT_025acd84 & 1) != 0)) && (DAT_05b3e065 == 0))
+	{
+		local_ci = 0;
+		do
+		{
+			if (local_ci != 0)
+			{
+				DAT_025acd84 = DAT_025acd84 | 2;
+				local_dg = DAT_025acd84;
+			}
+			else
+			{
+				DAT_025acd84 = DAT_025acd84 & 0xfd;
+				local_dg = DAT_025acd84;
+			}
+		} while (0);
+		DAT_05b3df40 = (int)DAT_00981c10;
+		late_DrawModelClip(mdl, 1, clipScl);
+		local_ci = 1;
+		do
+		{
+			if (local_ci != 0)
+			{
+				DAT_025acd84 = DAT_025acd84 | 2;
+				local_e = DAT_025acd84;
+			}
+			else
+			{
+				DAT_025acd84 = DAT_025acd84 & 0xfd;
+				local_e = DAT_025acd84;
+			}
+		} while (0);
+	}
+	if (DAT_05b9d838 == 0)
+	{
+		if (isTextureNG(DAT_05b3ded0, 0) == 0)
+		{
+			if (mdl != 0)
+			{
+				if (clipScl != 0.0)
+				{
+					if (*(float *)((char *)mdl + 0x24) != 0.0)
+					{
+						local_8g = *(float *)((char *)mdl + 0x24) * clipScl;
+						if (dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18), local_8g) == 0)
+						{
+							return;
+						}
+					}
+				}
+				if ((int)mdl != 0x100000)
+				{
+					return;
+				}
+				if ((DAT_02608e24 != 0) && (DAT_05cd4078 <= 0))
+				{
+					dsSimpleDrawModel(mdl);
+				}
+				else
+				{
+					njDrawModel(mdl);
+				}
+			}
+		}
+	}
+}
+
+// FUNCTION: SADX 0x004a1420
+void ds_DrawObjectClip(struct obj *obj, float clipScl)
+{
+	unsigned char local_6g;
+	unsigned char local_5i;
+
+	if ((((DAT_025acd84 & 2) >> 1) == 0) || ((DAT_025acd84 & 1) == 0) || (DAT_05b3e065 != 0))
+	{
+		goto LAB_004a14ef;
+	}
+	if (0)
+	{
+		DAT_025acd84 = DAT_025acd84 | 2;
+		local_6g = DAT_025acd84;
+	}
+	else
+	{
+		DAT_025acd84 = DAT_025acd84 & 0xfd;
+		local_6g = DAT_025acd84;
+	}
+	*(float *)&DAT_05b3df40 = DAT_00981c10;
+	late_DrawObjectClip(obj, 1, clipScl);
+	if (1)
+	{
+		DAT_025acd84 = DAT_025acd84 | 2;
+		local_5i = DAT_025acd84;
+	}
+	else
+	{
+		DAT_025acd84 = DAT_025acd84 & 0xfd;
+		local_5i = DAT_025acd84;
+	}
+	LAB_004a14ef:
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (isTextureNG(DAT_05b3ded0, 0) != 0)
+	{
+		return;
+	}
+	DrawObjectClip(obj, clipScl);
+}
+
+// FUNCTION: SADX 0x004a1e90
+float FUN_004a1e90(float *param_1)
+{
+	float local_ci;
+	float local_8g;
+	float local_1ci;
+	float local_14h;
+	float local_10m;
+	float local_18;
+	float local_20;
+
+	local_ci = param_1[0];
+	local_14h = (float)fabs((double)local_ci);
+	local_8g = param_1[1];
+	local_10m = (float)fabs((double)local_8g);
+	local_1ci = param_1[2];
+	local_18 = (float)fabs((double)local_1ci);
+	if (local_14h <= local_10m)
+	{
+		if (local_18 < local_10m)
+		{
+			local_20 = local_10m;
+		}
+		else
+		{
+			local_20 = local_18;
+		}
+	}
+	else
+	{
+		if (local_18 < local_14h)
+		{
+			local_20 = local_14h;
+		}
+		else
+		{
+			local_20 = local_18;
+		}
+	}
+	return local_20;
 }
 
 // FUNCTION: SADX 0x004a1f70
@@ -477,6 +1054,104 @@ void ___njDrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 	njDrawPolygon3D(p, n, atr);
 }
 
+// FUNCTION: SADX 0x004a21f0
+void dsDrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr)
+{
+	int local_cj;
+	int local_10;
+	unsigned char local_5i;
+	unsigned char local_11l;
+
+	local_cj = 0;
+	local_10 = 0;
+	if (((DAT_025acd84 & 2) >> 1) != 0 && (DAT_025acd84 & 1) != 0 && DAT_05b3e065 == 0)
+	{
+		if (0)
+		{
+			DAT_025acd84 = DAT_025acd84 | 2;
+			local_5i = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 = DAT_025acd84 & 0xfd;
+			local_5i = DAT_025acd84;
+		}
+		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		late_DrawSprite2D(sp, n, pri, atr, 1);
+		if (1)
+		{
+			DAT_025acd84 = DAT_025acd84 | 2;
+			local_11l = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 = DAT_025acd84 & 0xfd;
+			local_11l = DAT_025acd84;
+		}
+	}
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if ((unsigned int)sp < 0x100000)
+	{
+		return;
+	}
+	if (isTextureNG(sp->tlist, 1) != 0)
+	{
+		return;
+	}
+	njDrawSprite2D(sp, n, pri, atr);
+}
+
+// FUNCTION: SADX 0x004a2320
+void dsDrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr)
+{
+	unsigned char local_5i;
+	unsigned char local_6g;
+
+	if ((((DAT_025acd84 & 2) >> 1) == 0) || ((DAT_025acd84 & 1) == 0) || (DAT_05b3e065 != 0))
+	{
+		goto LAB_004a23f0;
+	}
+	if (0)
+	{
+		DAT_025acd84 = (unsigned char)(DAT_025acd84 | 2);
+		local_5i = DAT_025acd84;
+	}
+	else
+	{
+		DAT_025acd84 = (unsigned char)(DAT_025acd84 & 0xfd);
+		local_5i = DAT_025acd84;
+	}
+	*(float *)&DAT_05b3df40 = DAT_00981c10;
+	late_DrawSprite3D(sp, n, atr, 1);
+	if (1)
+	{
+		DAT_025acd84 = (unsigned char)(DAT_025acd84 | 2);
+		local_6g = DAT_025acd84;
+	}
+	else
+	{
+		DAT_025acd84 = (unsigned char)(DAT_025acd84 & 0xfd);
+		local_6g = DAT_025acd84;
+	}
+LAB_004a23f0:
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if ((unsigned long)sp < 0x100000)
+	{
+		return;
+	}
+	if (isTextureNG(sp->tlist, 1) != 0)
+	{
+		return;
+	}
+	njDrawSprite3D(sp, n, atr);
+}
+
 // FUNCTION: SADX 0x004a2660
 void saSetSpriteZOffset(float zoffset)
 {
@@ -598,6 +1273,19 @@ void late_set_far_z(float nor, float ex, float mesh)
 	*(float *)&DAT_05b39e18 = nor;
 	*(float *)((char *)&DAT_05b39e18 + 4) = ex;
 	*(float *)((char *)&DAT_05b39e18 + 8) = mesh;
+}
+
+// FUNCTION: SADX 0x004a2960
+void FUN_004a2960()
+{
+	if (0 == 7)
+	{
+		late_far_z_chaos = late_far_z_chaos7;
+	}
+	else
+	{
+		late_far_z_chaos = late_far_z_chaos0;
+	}
 }
 
 // FUNCTION: SADX 0x004a29c0
@@ -877,6 +1565,23 @@ void njMotionData4(struct obj *obj)
 	DAT_05b39e90 = iVar1;
 }
 
+// FUNCTION: SADX 0x004a7ce0
+void ___DrawModel(struct NJS_MODEL *model)
+{
+	if ((long)model < 0x100000)
+	{
+		return;
+	}
+	if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+	{
+		dsSimpleDrawModel(model);
+	}
+	else
+	{
+		njDrawModel(model);
+	}
+}
+
 // FUNCTION: SADX 0x004a8740
 void MotionObjTranslate(struct obj *obj)
 {
@@ -993,6 +1698,12 @@ void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3)
 	DrawAction(param_1, param_2, param_3, 0.0f, DrawModelEx);
 }
 
+// FUNCTION: SADX 0x004a8a80
+void late_ActionEx(NJS_ACTION *action, float frame, int flgs)
+{
+	DrawAction(action, frame, flgs, frame, (void *)DrawModelEx);
+}
+
 // FUNCTION: SADX 0x004a8ab0
 void late_ActionMS(NJS_ACTION *action, float frame, int flgs)
 {
@@ -1032,6 +1743,18 @@ void FUN_004a8b10(NJS_ACTION *param_1, float param_2, int param_3)
 	int local_10m;
 
 	DrawAction(param_1, param_2, param_3, 0.0, DrawModelMesh);
+}
+
+// FUNCTION: SADX 0x004a8b40
+void late_ActionMesh(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
+{
+	int local_8g;
+	int local_10m;
+	int local_18;
+	int local_14;
+	int local_1c;
+	int local_cj;
+	DrawAction(param_1, param_2, param_3, param_4, DrawModelMesh);
 }
 
 // FUNCTION: SADX 0x004a8e90
