@@ -285,14 +285,14 @@ Matching decompilation of <release> of <Game>: C and C++ source that compiles ba
 
 <img src="docs/progress/card.svg" alt="Progress summary" width="520">
 
-![Progress over time](docs/progress/history.svg)
+![Progress map by area](docs/progress/map.svg)
 
 ### Recent changes
 
 <!-- history:start -->
 <!-- history:end -->
 
-![Function map](docs/progress/map.svg)
+![Progress over time](docs/progress/history.svg)
 
 ## Which version do I have?
 
