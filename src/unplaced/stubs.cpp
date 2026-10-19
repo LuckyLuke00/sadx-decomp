@@ -96,6 +96,11 @@ void njReleaseTextureAll(void)
 {
 }
 
+// STUB: SADX 0x00423b10
+void njExitTexture(void)
+{
+}
+
 // STUB: SADX 0x00424240
 void njSetCamera(struct NJS_CAMERA *)
 {
@@ -439,10 +444,9 @@ void GetEmblemofStageClear(struct SAVE_DATA *psd, long chara, long stage, long l
 {
 }
 
-// STUB: SADX 0x0049ed70
-struct task *InitGetEmblem()
+// STUB: SADX 0x0049ee00
+extern void dispGetEmblem(struct task *)
 {
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x004a0040
@@ -693,13 +697,13 @@ void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {
 }
 
-// STUB: SADX 0x004b6460
-void FUN_004b6460(struct NJS_TEXLIST *, char *)
+// STUB: SADX 0x004b5e70
+void FUN_004b5e70(int)
 {
 }
 
-// STUB: SADX 0x004b6520
-void FUN_004b6520(int)
+// STUB: SADX 0x004b6460
+void FUN_004b6460(struct NJS_TEXLIST *, char *)
 {
 }
 
@@ -778,6 +782,26 @@ void SetViewAngle(long new_view_angle)
 {
 }
 
+// STUB: SADX 0x004bafe0
+void cameraModeInit()
+{
+}
+
+// STUB: SADX 0x004bd5a0
+void CameraViewSet(struct taskwk *pTaskWork)
+{
+}
+
+// STUB: SADX 0x004bee10
+void FUN_004bee10(void)
+{
+}
+
+// STUB: SADX 0x004bf010
+void SetAdjustMode(long)
+{
+}
+
 // STUB: SADX 0x004c06f0
 void title_menu_exec(struct task *tp)
 {
@@ -793,8 +817,35 @@ void DisplayTitleNew(float basez)
 {
 }
 
-// STUB: SADX 0x004c1c10
-void MSG_CloseRequestCls()
+// STUB: SADX 0x004c1800
+int FUN_004c1800(const unsigned char *)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004c1d50
+void MSG_Disp(struct MSGC *msgc)
+{
+}
+
+// STUB: SADX 0x004c22f0
+void MSG_Cls(struct MSGC *msgc)
+{
+}
+
+// STUB: SADX 0x004c2940
+void MSG_Puts(struct MSGC *msgc, char *str)
+{
+}
+
+// STUB: SADX 0x004c3180
+struct MSGC *NH_MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex, char *buf)
+{
+	return (struct MSGC *)0;
+}
+
+// STUB: SADX 0x004c3310
+void FUN_004c3310(int *)
 {
 }
 
@@ -834,6 +885,11 @@ void SetChangeGameMode(short mode)
 {
 }
 
+// STUB: SADX 0x004c79b0
+void GameInit()
+{
+}
+
 // STUB: SADX 0x004c91e0
 void SetPlayerNumberForGame(unsigned short pno)
 {
@@ -854,6 +910,12 @@ long NP_ChkStageChaoGarden()
 // STUB: SADX 0x004c9a20
 void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
 {
+}
+
+// STUB: SADX 0x004c9e00
+long ChkGameMode()
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x004cb390
@@ -886,14 +948,26 @@ void LoadPlayerMotionData(long PlayerNo)
 {
 }
 
+// STUB: SADX 0x004cfb60
+extern long NeonuLoadTexture(struct NJS_TEXLIST *)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004f1860
+long CheckCollisionP(struct NJS_POINT3 *, float)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004f1a60
-long GetPlayerCharacterName(unsigned char pno)
+long GetPlayerCharacterName(unsigned char)
 {
 	return (long)0;
 }
 
 // STUB: SADX 0x004f3750
-struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *))
+extern struct task *CreateElementalTask(unsigned short, long, void (*)(struct task *))
 {
 	return (struct task *)0;
 }
@@ -951,8 +1025,13 @@ long SeqGetTime()
 	return (long)0;
 }
 
+// STUB: SADX 0x004f5f90
+void ADX_Init()
+{
+}
+
 // STUB: SADX 0x004f6320
-void ADX_Close()
+extern void ADX_Close()
 {
 }
 
@@ -961,8 +1040,19 @@ void Serif_Play(int no)
 {
 }
 
+// STUB: SADX 0x004f6580
+extern struct task *ADXTaskInit()
+{
+	return (struct task *)0;
+}
+
 // STUB: SADX 0x004f6fd0
 void CL_ColPolListUpModeSetAll()
+{
+}
+
+// STUB: SADX 0x00501c60
+void ReleaseAllPlayersTexture()
 {
 }
 
@@ -1060,6 +1150,12 @@ long InitGGMessage()
 unsigned char isGGMessageEnable()
 {
 	return (unsigned char)0;
+}
+
+// STUB: SADX 0x005707b0
+struct task *MirenInitTask(struct task *task_p, const struct TaskInfo *info_p, void *param_p)
+{
+	return (struct task *)0;
 }
 
 // STUB: SADX 0x005730b0
@@ -1192,6 +1288,11 @@ void DrawSkyBg(float z)
 {
 }
 
+// STUB: SADX 0x005a64e0
+void SpFreeTask(struct sp_task *tp)
+{
+}
+
 // STUB: SADX 0x005acaf0
 long FreeNpcMilesPlayerTask()
 {
@@ -1216,8 +1317,14 @@ long StageNameMode(void *Param)
 	return (long)0;
 }
 
-// STUB: SADX 0x005b5aa0
-void FUN_005b5aa0()
+// STUB: SADX 0x005d1a40
+long ERobKill()
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x005e0120
+void DrawLensFlare(struct NJS_POINT3 *)
 {
 }
 
@@ -1241,6 +1348,12 @@ void FreeBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 // STUB: SADX 0x005f22c0
 void FUN_005f22c0(struct task *, struct ModeSelPrmType *)
 {
+}
+
+// STUB: SADX 0x00610680
+struct task *Eggrob_GenerateEggrob(struct erctrlstr *)
+{
+	return (struct task *)0;
 }
 
 // STUB: SADX 0x006411b0

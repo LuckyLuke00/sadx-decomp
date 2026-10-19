@@ -1,5 +1,16 @@
 #include <math.h>
 #include "decls.h"
+struct NJS_TEXLIST;
+struct NJS_TEXANIM;
+extern struct NJS_TEXLIST texlist_get_emblem;
+extern float DAT_00956ba8;
+extern float DAT_0095c8d0;
+extern void dispGetEmblem(struct task *);
+extern void destGetEmblem(struct task *);
+extern long NeonuLoadTexture(struct NJS_TEXLIST *);
+extern struct task *CreateElementalTask(unsigned short, long, void (*)(struct task *));
+extern void ADX_Close();
+extern struct task *ADXTaskInit();
 
 extern int DAT_05b3e05c;
 extern int DAT_05cc3574;
@@ -325,4 +336,35 @@ void Disp(struct task *tp)
 	njPopMatrix(1);
 	ResetMaterial();
 	LoadConstantAttr();
+}
+
+// FUNCTION: SADX 0x0049ed70
+struct task *InitGetEmblem()
+{
+	struct task *local_8;
+
+	if (DAT_05bb00a9)
+	{
+		return 0;
+	}
+	local_8 = CreateElementalTask(2, 6, dispGetEmblem);
+	if (local_8)
+	{
+		ADX_Close();
+		NeonuLoadTexture(&texlist_get_emblem);
+		ADXTaskInit();
+		*(short *)((char *)local_8->twp + 6) = 0;
+		*((char *)local_8->twp) = 0;
+		*(float *)((char *)local_8->twp + 0x20) = DAT_00956ba8;
+		*(float *)((char *)local_8->twp + 0x24) = DAT_0095c8d0;
+		*(void **)((char *)local_8 + 0x18) = destGetEmblem;
+		return local_8;
+	}
+	return 0;
+}
+
+// FUNCTION: SADX 0x0049f280
+void destGetEmblem(struct task *tp)
+{
+	late_ReleaseTexture(&texlist_get_emblem);
 }
