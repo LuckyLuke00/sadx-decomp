@@ -2,6 +2,7 @@
 
 #pragma once
 
+extern double DAT_0095b120;
 extern struct AlrData alrdata;
 extern enum AvaTexLdEnum DAT_00985418;
 extern struct DialogPrmType DAT_009919e0;

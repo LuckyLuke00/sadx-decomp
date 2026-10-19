@@ -7,7 +7,7 @@
 <rect width="1000" height="1217" rx="6" fill="#0d1117"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one cell per function, in address order</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">269 / 16,537 game functions decompiled (1.63%) | 269 matched | 0 effective | accuracy 100.00% | library functions identified: 689</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">277 / 16,537 game functions decompiled (1.68%) | 277 matched | 0 effective | accuracy 100.00% | library functions identified: 689</text>
 <rect x="16" y="64" width="966" height="7" fill="url(#todo)"/>
 <rect x="16" y="71" width="966" height="7" fill="url(#todo)"/>
 <rect x="16" y="78" width="966" height="7" fill="url(#todo)"/>
@@ -272,6 +272,8 @@
 <rect x="667" y="113" width="6" height="6" fill="#6e7681"><title>0x004337a0 _SOCMalloc: stub</title></rect>
 <rect x="674" y="113" width="6" height="6" fill="#6e7681"><title>0x004337c0 _SOCFree: stub</title></rect>
 <rect x="905" y="120" width="6" height="6" fill="#6e7681"><title>0x0043bcf0 AL_IconResetPos: stub</title></rect>
+<rect x="527" y="127" width="6" height="6" fill="#6e7681"><title>0x0043e2a0 AL_PlayerDisable: stub</title></rect>
+<rect x="534" y="127" width="6" height="6" fill="#6e7681"><title>0x0043e2d0 AL_PlayerEnable: stub</title></rect>
 <rect x="779" y="134" width="6" height="6" fill="#6e7681"><title>0x00443b80 AL_GetnbPlayer: stub</title></rect>
 <rect x="814" y="134" width="6" height="6" fill="#6e7681"><title>0x00443c00 AL_GetRaceNum: stub</title></rect>
 <rect x="828" y="134" width="6" height="6" fill="#6e7681"><title>0x00443c20 AL_GetCourseNum: stub</title></rect>
@@ -286,24 +288,27 @@
 <rect x="779" y="183" width="6" height="6" fill="#56d364"><title>0x004825a0 FUN_004825a0: 100%</title></rect>
 <rect x="786" y="183" width="6" height="6" fill="#56d364"><title>0x004826e0 AlrReal_controlColliMode: 100%</title></rect>
 <rect x="793" y="183" width="6" height="6" fill="#56d364"><title>0x004826f0 AlrReal_controlMode: 100%</title></rect>
-<rect x="800" y="183" width="6" height="6" fill="#6e7681"><title>0x00483070 AlrReal_changeAct_for_Race: stub</title></rect>
+<rect x="800" y="183" width="6" height="6" fill="#56d364"><title>0x00483070 AlrReal_changeAct_for_Race: 100%</title></rect>
+<rect x="828" y="183" width="6" height="6" fill="#56d364"><title>0x004833e0 A_Life_for_ALR: 100%</title></rect>
 <rect x="835" y="183" width="6" height="6" fill="#6e7681"><title>0x00483410 AlrReal_setRanking: stub</title></rect>
-<rect x="842" y="183" width="6" height="6" fill="#6e7681"><title>0x00483490 AlrReal_calcAverage: stub</title></rect>
+<rect x="842" y="183" width="6" height="6" fill="#56d364"><title>0x00483490 AlrReal_calcAverage: 100%</title></rect>
 <rect x="849" y="183" width="6" height="6" fill="#6e7681"><title>0x00483500 AlrReal_checkGoal: stub</title></rect>
 <rect x="856" y="183" width="6" height="6" fill="#6e7681"><title>0x00483930 AlrReal_raceEndAlr: stub</title></rect>
 <rect x="863" y="183" width="6" height="6" fill="#6e7681"><title>0x00483a00 AlrReal_SetCameraMode: stub</title></rect>
 <rect x="870" y="183" width="6" height="6" fill="#6e7681"><title>0x00483a40 AlrReal_controlCamera: stub</title></rect>
-<rect x="891" y="183" width="6" height="6" fill="#6e7681"><title>0x00483fa0 AlrReal_dspHead: stub</title></rect>
-<rect x="898" y="183" width="6" height="6" fill="#6e7681"><title>0x00484060 AlrReal_offSonic: stub</title></rect>
-<rect x="905" y="183" width="6" height="6" fill="#6e7681"><title>0x004840a0 AlrReal_onSonic: stub</title></rect>
-<rect x="919" y="183" width="6" height="6" fill="#6e7681"><title>0x00484150 AlrFanFan_checkFanFan: stub</title></rect>
+<rect x="891" y="183" width="6" height="6" fill="#56d364"><title>0x00483fa0 AlrReal_dspHead: 100%</title></rect>
+<rect x="898" y="183" width="6" height="6" fill="#56d364"><title>0x00484060 AlrReal_offSonic: 100%</title></rect>
+<rect x="905" y="183" width="6" height="6" fill="#56d364"><title>0x004840a0 AlrReal_onSonic: 100%</title></rect>
+<rect x="919" y="183" width="6" height="6" fill="#56d364"><title>0x00484150 AlrFanFan_checkFanFan: 100%</title></rect>
 <rect x="926" y="183" width="6" height="6" fill="#6e7681"><title>0x00484170 AlrFanFan_exe: stub</title></rect>
 <rect x="933" y="183" width="6" height="6" fill="#6e7681"><title>0x004849a0 AlrReal_checkSaveJewel: stub</title></rect>
-<rect x="940" y="183" width="6" height="6" fill="#6e7681"><title>0x00484a90 AlrReal_checkCommendation: stub</title></rect>
+<rect x="940" y="183" width="6" height="6" fill="#56d364"><title>0x00484a90 AlrReal_checkCommendation: 100%</title></rect>
 <rect x="947" y="183" width="6" height="6" fill="#6e7681"><title>0x00484ac0 ADV1_AL_GetRaceTimeRam: stub</title></rect>
 <rect x="44" y="190" width="6" height="6" fill="#6e7681"><title>0x00484d80 AlrCam_Ini: stub</title></rect>
 <rect x="135" y="190" width="6" height="6" fill="#6e7681"><title>0x00486640 AlrCam_Exe: stub</title></rect>
+<rect x="156" y="190" width="6" height="6" fill="#6e7681"><title>0x004868e0 Alr_Kill: stub</title></rect>
 <rect x="170" y="190" width="6" height="6" fill="#6e7681"><title>0x00486930 Alr_GetAwp: stub</title></rect>
+<rect x="177" y="190" width="6" height="6" fill="#6e7681"><title>0x00486950 Alr_GetTwp: stub</title></rect>
 <rect x="191" y="190" width="6" height="6" fill="#6e7681"><title>0x004869a0 Alr_CheckRace: stub</title></rect>
 <rect x="247" y="190" width="6" height="6" fill="#6e7681"><title>0x00486bb0 FUN_00486bb0: stub</title></rect>
 <rect x="261" y="190" width="6" height="6" fill="#6e7681"><title>0x00486c00 Alr_ConstraintLookAt: stub</title></rect>
@@ -314,6 +319,7 @@
 <rect x="534" y="190" width="6" height="6" fill="#6e7681"><title>0x004881e0 AlrTimer_Dsp: stub</title></rect>
 <rect x="541" y="190" width="6" height="6" fill="#6e7681"><title>0x004882d0 AlrRank_Clear: stub</title></rect>
 <rect x="562" y="190" width="6" height="6" fill="#6e7681"><title>0x004886a0 AlrRank_Dsp: stub</title></rect>
+<rect x="569" y="190" width="6" height="6" fill="#6e7681"><title>0x00488980 AlrRank_DspHeadYa: stub</title></rect>
 <rect x="583" y="190" width="6" height="6" fill="#6e7681"><title>0x00488c50 FUN_00488c50: stub</title></rect>
 <rect x="590" y="190" width="6" height="6" fill="#6e7681"><title>0x00488c80 AllClearEntryDialog: stub</title></rect>
 <rect x="597" y="190" width="6" height="6" fill="#6e7681"><title>0x00488cc0 SetCommandToDialog: stub</title></rect>
@@ -324,6 +330,7 @@
 <rect x="702" y="190" width="6" height="6" fill="#6e7681"><title>0x004893f0 CallCool: stub</title></rect>
 <rect x="709" y="190" width="6" height="6" fill="#6e7681"><title>0x00489420 CallJewelGet: stub</title></rect>
 <rect x="744" y="190" width="6" height="6" fill="#6e7681"><title>0x004896f0 AlrRoot_Del: stub</title></rect>
+<rect x="751" y="190" width="6" height="6" fill="#6e7681"><title>0x00489710 AlrRoot_Clear: stub</title></rect>
 <rect x="772" y="190" width="6" height="6" fill="#6e7681"><title>0x004897f0 FUN_004897f0: stub</title></rect>
 <rect x="779" y="190" width="6" height="6" fill="#6e7681"><title>0x00489870 AlrWhite_In: stub</title></rect>
 <rect x="786" y="190" width="6" height="6" fill="#6e7681"><title>0x004898a0 AlrWhite_Out: stub</title></rect>
@@ -332,7 +339,11 @@
 <rect x="849" y="190" width="6" height="6" fill="#6e7681"><title>0x00489c90 ObjectAlrCracker_Start: stub</title></rect>
 <rect x="898" y="190" width="6" height="6" fill="#6e7681"><title>0x0048a000 ObjectAlrCracker_Init: stub</title></rect>
 <rect x="968" y="190" width="6" height="6" fill="#6e7681"><title>0x0048a690 AlrConfetti_Init: stub</title></rect>
+<rect x="16" y="197" width="6" height="6" fill="#6e7681"><title>0x0048a7f0 AlrObjFreeManageTask: stub</title></rect>
 <rect x="51" y="197" width="6" height="6" fill="#6e7681"><title>0x0048a950 AlrObjSetManageTask: stub</title></rect>
+<rect x="205" y="197" width="6" height="6" fill="#6e7681"><title>0x0048c150 ALR_Init: stub</title></rect>
+<rect x="212" y="197" width="6" height="6" fill="#6e7681"><title>0x0048c3a0 ALR_Destructor: stub</title></rect>
+<rect x="415" y="197" width="6" height="6" fill="#6e7681"><title>0x0048f680 ALR_Executor: stub</title></rect>
 <rect x="394" y="211" width="6" height="6" fill="#56d364"><title>0x0049d410 FUN_0049d410: 100%</title></rect>
 <rect x="401" y="211" width="6" height="6" fill="#6e7681"><title>0x0049d460 CheckEmbleAchievement: stub</title></rect>
 <rect x="408" y="211" width="6" height="6" fill="#56d364"><title>0x0049e0a0 GetEmblem: 100%</title></rect>

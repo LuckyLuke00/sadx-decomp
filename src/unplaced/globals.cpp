@@ -2,6 +2,9 @@
 
 #include "decls.h"
 
+// GLOBAL: SADX 0x0095b120
+double DAT_0095b120;
+
 // GLOBAL: SADX 0x009617c4
 struct AlrData alrdata;
 

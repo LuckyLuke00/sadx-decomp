@@ -147,6 +147,16 @@ void AL_IconResetPos(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0043e2a0
+void AL_PlayerDisable()
+{
+}
+
+// STUB: SADX 0x0043e2d0
+void AL_PlayerEnable()
+{
+}
+
 // STUB: SADX 0x00443b80
 long AL_GetnbPlayer()
 {
@@ -171,18 +181,8 @@ const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 	return (const unsigned long *)0;
 }
 
-// STUB: SADX 0x00483070
-void AlrReal_changeAct_for_Race(struct AlrReal *___this)
-{
-}
-
 // STUB: SADX 0x00483410
 void AlrReal_setRanking(struct AlrReal *___this)
-{
-}
-
-// STUB: SADX 0x00483490
-void AlrReal_calcAverage(struct AlrReal *___this)
 {
 }
 
@@ -206,29 +206,6 @@ void AlrReal_controlCamera(struct AlrReal *___this)
 {
 }
 
-// STUB: SADX 0x00483fa0
-void AlrReal_dspHead(struct AlrReal *___this)
-{
-}
-
-// STUB: SADX 0x00484060
-int AlrReal_offSonic(struct AlrReal *___this)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x004840a0
-int AlrReal_onSonic(struct AlrReal *___this)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x00484150
-int AlrFanFan_checkFanFan(struct AlrFanFan *___this)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x00484170
 void AlrFanFan_exe(struct AlrFanFan *___this, struct AlrReal *alrreal)
 {
@@ -237,12 +214,6 @@ void AlrFanFan_exe(struct AlrFanFan *___this, struct AlrReal *alrreal)
 // STUB: SADX 0x004849a0
 void AlrReal_checkSaveJewel(struct AlrReal *___this)
 {
-}
-
-// STUB: SADX 0x00484a90
-long AlrReal_checkCommendation(struct AlrReal *___this)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x00484ac0
@@ -261,10 +232,21 @@ void AlrCam_Exe(struct AlrCam *___this, struct AlrReal *alrreal)
 {
 }
 
+// STUB: SADX 0x004868e0
+void Alr_Kill(struct Alr *___this)
+{
+}
+
 // STUB: SADX 0x00486930
 struct alifewk *Alr_GetAwp(struct Alr *___this)
 {
 	return (struct alifewk *)0;
+}
+
+// STUB: SADX 0x00486950
+struct taskwk *Alr_GetTwp(struct Alr *___this)
+{
+	return (struct taskwk *)0;
 }
 
 // STUB: SADX 0x004869a0
@@ -319,6 +301,11 @@ void AlrRank_Dsp(struct AlrRank *___this, struct Alr *alr, int look)
 {
 }
 
+// STUB: SADX 0x00488980
+void AlrRank_DspHeadYa(struct AlrRank *___this, int num, struct NJS_POINT3 *position)
+{
+}
+
 // STUB: SADX 0x00488c50
 void FUN_00488c50(struct AlrMemory *)
 {
@@ -370,6 +357,11 @@ void AlrRoot_Del(struct AlrRoot *___this)
 {
 }
 
+// STUB: SADX 0x00489710
+void AlrRoot_Clear(struct AlrRoot *___this, float goal_pathpos)
+{
+}
+
 // STUB: SADX 0x004897f0
 void FUN_004897f0(struct AlrRoot *, struct pathtag **, int, float)
 {
@@ -410,10 +402,31 @@ void AlrConfetti_Init()
 {
 }
 
+// STUB: SADX 0x0048a7f0
+void AlrObjFreeManageTask()
+{
+}
+
 // STUB: SADX 0x0048a950
 struct task *AlrObjSetManageTask()
 {
 	return (struct task *)0;
+}
+
+// STUB: SADX 0x0048c150
+struct alifewk *ALR_Init(struct task *tp)
+{
+	return (struct alifewk *)0;
+}
+
+// STUB: SADX 0x0048c3a0
+void ALR_Destructor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0048f680
+void ALR_Executor(struct task *tp)
+{
 }
 
 // STUB: SADX 0x0049d460
