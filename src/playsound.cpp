@@ -16,9 +16,9 @@ bool EndPlaySound()
 }
 
 // FUNCTION: SADX 0x004ab0d0
-void Set3Dmode(int mode)
+void Set3Dmode(int flag)
 {
-	DAT_05b3dfc0 = mode;
+	DAT_05b3dfc0 = flag;
 }
 
 // FUNCTION: SADX 0x004ab0e0

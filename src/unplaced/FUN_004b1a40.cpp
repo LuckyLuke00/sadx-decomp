@@ -16,26 +16,26 @@ extern unsigned char DAT_05b423fc;
 // FUNCTION: SADX 0x004b1a40
 int FUN_004b1a40(int *param_1, int param_2)
 {
-	int result = 0;
+	int local_8 = 0;
 
 	while (param_1 != 0 && *param_1 != 0x24)
 	{
 		if (*param_1 == param_2)
 		{
-			result = 1;
+			local_8 = 1;
 		}
 		param_1++;
 	}
-	return result;
+	return local_8;
 }
 
 // FUNCTION: SADX 0x004b1a80
 bool FUN_004b1a80(char *param_1, int param_2)
 {
-	for (unsigned int i = 0; i < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); i++)
+	for (unsigned int local_8 = 0; local_8 < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); local_8++)
 	{
-		char **it = DAT_05b422dc + i;
-		if (!strcmp(*it, param_1) && *(int *)(DAT_05b422dc[i] + 0x104) == param_2)
+		char **local_c = DAT_05b422dc + local_8;
+		if (!strcmp(*local_c, param_1) && *(int *)(DAT_05b422dc[local_8] + 0x104) == param_2)
 		{
 			return true;
 		}
@@ -46,10 +46,10 @@ bool FUN_004b1a80(char *param_1, int param_2)
 // FUNCTION: SADX 0x004b2860
 unsigned char FUN_004b2860(unsigned char param_1, unsigned char param_2, unsigned char param_3)
 {
-	float f = param_3 / 255.0;
-	unsigned short b = param_2;
-	unsigned short a = param_1;
-	return (unsigned char)(b * f + (1.0f - f) * a);
+	float local_ci = param_3 / 255.0;
+	unsigned short local_10 = param_2;
+	unsigned short local_8g = param_1;
+	return (unsigned char)(local_10 * local_ci + (1.0f - local_ci) * local_8g);
 }
 
 // FUNCTION: SADX 0x004b3210
@@ -65,20 +65,20 @@ bool FUN_004b3210(int *param_1, int *param_2)
 // FUNCTION: SADX 0x004b5ad0
 void FUN_004b5ad0(void)
 {
-	unsigned int hyk;
-	unsigned int rl;
-	char *mog;
-	unsigned int i;
-	unsigned int cm;
-	char *dz;
-	unsigned int qu;
-	char *ddcu;
-	unsigned int crbm;
-	char *faqf;
-	char ***des;
-	char **jtb;
-	char *t;
-	char ***o;
+	unsigned int local_8gk;
+	unsigned int local_ci;
+	char *local_10hk;
+	unsigned int local_14k;
+	unsigned int local_18go;
+	char *local_1co;
+	unsigned int local_20go;
+	char *local_24gl;
+	unsigned int local_28g;
+	char *local_2cgm;
+	char ***local_30k;
+	char **local_34q;
+	char *local_38g;
+	char ***local_3cj;
 
 	if (!(DAT_05b42414 & 1))
 	{
@@ -94,29 +94,29 @@ void FUN_004b5ad0(void)
 		}
 		if ((int)!(int)!memcmp(&DAT_05ad9654, &DAT_05b40a4c, 0x10) && (int)!(int)!memcmp(&DAT_05ad9654, &DAT_025adbf8, 0x10))
 		{
-			hyk = 0;
-			for (rl = 0; rl < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); rl++)
+			local_8gk = 0;
+			for (local_ci = 0; local_ci < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); local_ci++)
 			{
-				mog = DAT_05b422dc[rl];
-				for (i = 0; des = (char ***)(mog + 0x11c), i < (unsigned int)(des[1] - des[0]); i++)
+				local_10hk = DAT_05b422dc[local_ci];
+				for (local_14k = 0; local_30k = (char ***)(local_10hk + 0x11c), local_14k < (unsigned int)(local_30k[1] - local_30k[0]); local_14k++)
 				{
-					jtb = *(char ***)(mog + 0x11c) + i;
-					t = *jtb;
-					if ((int)!memcmp(t, &DAT_05ad9654, 0x10))
+					local_34q = *(char ***)(local_10hk + 0x11c) + local_14k;
+					local_38g = *local_34q;
+					if ((int)!memcmp(local_38g, &DAT_05ad9654, 0x10))
 					{
-						hyk = i;
+						local_8gk = local_14k;
 					}
 				}
 			}
-			for (cm = 0; cm < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); cm++)
+			for (local_18go = 0; local_18go < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); local_18go++)
 			{
-				dz = DAT_05b422dc[cm];
-				if (dz)
+				local_1co = DAT_05b422dc[local_18go];
+				if (local_1co)
 				{
-					o = (char ***)(dz + 0x11c);
-					if ((unsigned int)(o[1] - o[0]) > 0 && dz && *(int *)((*(char ***)(dz + 0x11c))[hyk] + 0x10) && *(int *)(dz + 0x108))
+					local_3cj = (char ***)(local_1co + 0x11c);
+					if ((unsigned int)(local_3cj[1] - local_3cj[0]) > 0 && local_1co && *(int *)((*(char ***)(local_1co + 0x11c))[local_8gk] + 0x10) && *(int *)(local_1co + 0x108))
 					{
-						**(int **)(dz + 0x108) = *(int *)((*(char ***)(dz + 0x11c))[hyk] + 0x10);
+						**(int **)(local_1co + 0x108) = *(int *)((*(char ***)(local_1co + 0x11c))[local_8gk] + 0x10);
 						DAT_05b423fc = 1;
 					}
 				}
@@ -126,24 +126,24 @@ void FUN_004b5ad0(void)
 		{
 			if ((int)!memcmp(&DAT_05ad9654, &DAT_025adbf8, 0x10))
 			{
-				for (qu = 0; qu < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); qu++)
+				for (local_20go = 0; local_20go < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); local_20go++)
 				{
-					ddcu = DAT_05b422dc[qu];
-					if (ddcu && *(int *)(ddcu + 0x118) && *(int *)(ddcu + 0x108))
+					local_24gl = DAT_05b422dc[local_20go];
+					if (local_24gl && *(int *)(local_24gl + 0x118) && *(int *)(local_24gl + 0x108))
 					{
-						**(int **)(ddcu + 0x108) = *(int *)(ddcu + 0x118);
+						**(int **)(local_24gl + 0x108) = *(int *)(local_24gl + 0x118);
 						DAT_05b423fc = 1;
 					}
 				}
 			}
 			else
 			{
-				for (crbm = 0; crbm < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); crbm++)
+				for (local_28g = 0; local_28g < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); local_28g++)
 				{
-					faqf = DAT_05b422dc[crbm];
-					if (faqf && *(int *)(faqf + 0x114) && *(int *)(faqf + 0x108))
+					local_2cgm = DAT_05b422dc[local_28g];
+					if (local_2cgm && *(int *)(local_2cgm + 0x114) && *(int *)(local_2cgm + 0x108))
 					{
-						**(int **)(faqf + 0x108) = *(int *)(faqf + 0x114);
+						**(int **)(local_2cgm + 0x108) = *(int *)(local_2cgm + 0x114);
 						DAT_05b423fc = 1;
 					}
 				}
@@ -155,18 +155,18 @@ void FUN_004b5ad0(void)
 // FUNCTION: SADX 0x004b6a60
 void FUN_004b6a60(int param_1, int *param_2, int *param_3)
 {
-	void *a = param_2;
-	int *b;
-	int *d;
-	void *c = a;
-	if (c)
+	void *local_8g = param_2;
+	int *local_cj;
+	int *local_14;
+	void *local_10 = local_8g;
+	if (local_10)
 	{
-		*(int *)c = *param_3;
-		d = (int *)c;
+		*(int *)local_10 = *param_3;
+		local_14 = (int *)local_10;
 	}
 	else
 	{
-		d = 0;
+		local_14 = 0;
 	}
-	b = d;
+	local_cj = local_14;
 }

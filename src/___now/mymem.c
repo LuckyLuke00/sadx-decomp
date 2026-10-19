@@ -4,29 +4,29 @@ extern struct __MYMEM_DATA *DAT_025d7b20;
 void *FUN_004cb010(unsigned long param_1);
 
 // FUNCTION: SADX 0x004cafa0
-struct __MYMEM_DATA *MYMEM_HeapInit(struct __MYMEM_DATA *param_1)
+struct __MYMEM_DATA *MYMEM_HeapInit(struct __MYMEM_DATA *mem)
 {
-	if (param_1 == 0)
+	if (mem == 0)
 	{
-		param_1 = (struct __MYMEM_DATA *)FUN_004cb010(8);
+		mem = (struct __MYMEM_DATA *)FUN_004cb010(8);
 	}
-	if (param_1 != 0)
+	if (mem != 0)
 	{
-		*(void **)param_1 = 0;
-		*(int *)((char *)param_1 + 4) = 0;
+		*(void **)mem = 0;
+		*(int *)((char *)mem + 4) = 0;
 	}
-	return param_1;
+	return mem;
 }
 
 // FUNCTION: SADX 0x004cafe0
-struct __MYMEM_DATA *MYMEM_SelectHeap(struct __MYMEM_DATA *param_1)
+struct __MYMEM_DATA *MYMEM_SelectHeap(struct __MYMEM_DATA *mem)
 {
-	struct __MYMEM_DATA *old;
+	struct __MYMEM_DATA *local_8;
 
-	old = DAT_025d7b20;
-	if (param_1 != 0)
+	local_8 = DAT_025d7b20;
+	if (mem != 0)
 	{
-		DAT_025d7b20 = param_1;
+		DAT_025d7b20 = mem;
 	}
-	return old;
+	return local_8;
 }
