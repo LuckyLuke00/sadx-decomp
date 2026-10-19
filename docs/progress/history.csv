@@ -3,3 +3,4 @@ date,decompiled,matched,accuracy,game_total,changes
 2026-10-18,148,148,100.00,16537,+FUN_004822c0 100%; +AlrReal_Exe 100%; +AlrReal_exe_for_Race 100%; +AlrReal_Dsp 100%; +AlrReal_Destructor 100%; 351 more
 2026-10-19,227,227,100.00,16537,isTextureNG stub -> 100%; +FUN_004a0920 100%; FUN_004a0940 stub -> 100%; FUN_004a0960 stub -> 100%; +FUN_004a0980 100%; 104 more
 2026-10-19,250,250,100.00,16537,+IsndPlay 100%; makesndfilename stub -> 100%; +FUN_004ae8c0 100%; IsndStop stub -> 100%; IsndVolume stub -> 100%; 26 more
+2026-10-19,269,269,100.00,16537,+AvaLoadTexForCommon 100%; +FUN_004b08f0 100%; +AvaReleaseTexForAll 100%; +AvaReleaseTex 100%; +FUN_004b0a10 100%; 19 more

@@ -51,6 +51,8 @@ struct bankdatalist;
 struct BOSSPLAYER_CREATE_PARAM;
 struct colliwk;
 struct DDlgType;
+struct DialogPrmType;
+struct DlgSndPrmType;
 struct eventwk;
 struct FileSelWk;
 struct forcewk;
@@ -87,6 +89,7 @@ struct NJS_TEXNAME;
 struct NJS_TEXTURE_VTX;
 struct obj;
 struct OBJ_CONDITION;
+struct PanelPrmType;
 struct pathtag;
 struct pathtbl;
 struct SAVE_DATA;
@@ -150,6 +153,17 @@ enum AvaCharEnum : int {
     AVA_CHAR_MAX = 7,
 };
 static_assert(sizeof(AvaCharEnum) == 4, "sizeof AvaCharEnum");
+
+enum DlgPnlStyleEnum : int {
+    DLG_PNLSTYLE_MARU = 0,
+    DLG_PNLSTYLE_SIKAKU = 1,
+    DLG_PNLSTYLE_MARU4 = 2,
+    DLG_PNLSTYLE_MARUSO = 3,
+    DLG_PNLSTYLE_SIKAKU2 = 4,
+    DLG_PNLSTYLE_MARU2 = 5,
+    DLG_PNLSTYLE_MAX = 6,
+};
+static_assert(sizeof(DlgPnlStyleEnum) == 4, "sizeof DlgPnlStyleEnum");
 
 enum EVBOSS_TYPE : int {
     EVBOSS_TYPE_SONIC_VS_KNUCKLES = 0,
@@ -1080,6 +1094,42 @@ static_assert(offsetof(DDlgType, BaseZ) == 0x8, "DDlgType::BaseZ");
 static_assert(offsetof(DDlgType, SclX) == 0xc, "DDlgType::SclX");
 static_assert(offsetof(DDlgType, SclY) == 0x10, "DDlgType::SclY");
 static_assert(offsetof(DDlgType, Csr) == 0x14, "DDlgType::Csr");
+
+struct DialogPrmType {
+    enum DlgPnlStyleEnum DlgStyle;
+    void (*EachDrawFnc)(struct DDlgType *);
+    struct NJS_TEXLIST *PnlTlsPtr;
+    struct PanelPrmType *PnlPrmPtr;
+    struct DlgSndPrmType *DlgSndPrmPtr;
+    unsigned long DlgColU;
+    unsigned long DlgColD;
+    float CntrX;
+    float CntrY;
+    float BaseZ;
+    float SzX;
+    float SzY;
+    float MagX;
+    float MagY;
+    signed char CsrMax;
+    signed char CsrCancel;
+};
+static_assert(sizeof(DialogPrmType) == 0x3c, "sizeof DialogPrmType");
+static_assert(offsetof(DialogPrmType, DlgStyle) == 0x0, "DialogPrmType::DlgStyle");
+static_assert(offsetof(DialogPrmType, EachDrawFnc) == 0x4, "DialogPrmType::EachDrawFnc");
+static_assert(offsetof(DialogPrmType, PnlTlsPtr) == 0x8, "DialogPrmType::PnlTlsPtr");
+static_assert(offsetof(DialogPrmType, PnlPrmPtr) == 0xc, "DialogPrmType::PnlPrmPtr");
+static_assert(offsetof(DialogPrmType, DlgSndPrmPtr) == 0x10, "DialogPrmType::DlgSndPrmPtr");
+static_assert(offsetof(DialogPrmType, DlgColU) == 0x14, "DialogPrmType::DlgColU");
+static_assert(offsetof(DialogPrmType, DlgColD) == 0x18, "DialogPrmType::DlgColD");
+static_assert(offsetof(DialogPrmType, CntrX) == 0x1c, "DialogPrmType::CntrX");
+static_assert(offsetof(DialogPrmType, CntrY) == 0x20, "DialogPrmType::CntrY");
+static_assert(offsetof(DialogPrmType, BaseZ) == 0x24, "DialogPrmType::BaseZ");
+static_assert(offsetof(DialogPrmType, SzX) == 0x28, "DialogPrmType::SzX");
+static_assert(offsetof(DialogPrmType, SzY) == 0x2c, "DialogPrmType::SzY");
+static_assert(offsetof(DialogPrmType, MagX) == 0x30, "DialogPrmType::MagX");
+static_assert(offsetof(DialogPrmType, MagY) == 0x34, "DialogPrmType::MagY");
+static_assert(offsetof(DialogPrmType, CsrMax) == 0x38, "DialogPrmType::CsrMax");
+static_assert(offsetof(DialogPrmType, CsrCancel) == 0x39, "DialogPrmType::CsrCancel");
 
 struct NJS_ACTION {
     struct obj *object;
