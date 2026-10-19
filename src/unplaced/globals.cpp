@@ -35,6 +35,12 @@ struct LE_LIGHT_ENV le_ctrl_dflt;
 // GLOBAL: SADX 0x025a3ce0
 struct LE_LIGHT_ENV le_stg[256];
 
+// GLOBAL: SADX 0x025acd00
+struct LATE_LNK *late_zentry;
+
+// GLOBAL: SADX 0x025acd04
+struct LATE_FAR_Z_T late_far_z_dflt;
+
 // GLOBAL: SADX 0x025acd70
 int VOICE_VOLUME;
 
@@ -158,23 +164,107 @@ int DAT_05b39dac;
 // GLOBAL: SADX 0x05b39db1
 unsigned char DAT_05b39db1;
 
+// GLOBAL: SADX 0x05b39db8
+int DAT_05b39db8;
+
+// GLOBAL: SADX 0x05b39dbc
+void (*DAT_05b39dbc)(struct obj *obj);
+
+// GLOBAL: SADX 0x05b39dc0
+float DAT_05b39dc0[9];
+
 // GLOBAL: SADX 0x05b39de4
 NJS_ARGB DAT_05b39de4;
+
+// GLOBAL: SADX 0x05b39df4
+int DAT_05b39df4;
+
+// GLOBAL: SADX 0x05b39e08
+void *DAT_05b39e08[1];
 
 // GLOBAL: SADX 0x05b39e10
 unsigned char DAT_05b39e10;
 
+// GLOBAL: SADX 0x05b39e18
+LATE_FAR_Z_T DAT_05b39e18;
+
+// GLOBAL: SADX 0x05b39e2c
+int DAT_05b39e2c;
+
+// GLOBAL: SADX 0x05b39e68
+void (*DAT_05b39e68)(struct obj *obj);
+
 // GLOBAL: SADX 0x05b39e6c
 long DAT_05b39e6c;
+
+// GLOBAL: SADX 0x05b39e78
+void *DAT_05b39e78[1];
+
+// GLOBAL: SADX 0x05b39e90
+int DAT_05b39e90;
+
+// GLOBAL: SADX 0x05b39e94
+int DAT_05b39e94;
+
+// GLOBAL: SADX 0x05b39e98
+int DAT_05b39e98;
+
+// GLOBAL: SADX 0x05b39ea4
+int DAT_05b39ea4;
 
 // GLOBAL: SADX 0x05b39eb4
 int DAT_05b39eb4;
 
+// GLOBAL: SADX 0x05b39eb8
+int DAT_05b39eb8[9];
+
 // GLOBAL: SADX 0x05b3ded0
 NJS_TEXLIST *DAT_05b3ded0;
 
+// GLOBAL: SADX 0x05b3ded4
+int DAT_05b3ded4;
+
+// GLOBAL: SADX 0x05b3ded8
+int DAT_05b3ded8;
+
+// GLOBAL: SADX 0x05b3dee0
+int DAT_05b3dee0;
+
+// GLOBAL: SADX 0x05b3dee4
+void *DAT_05b3dee4[1];
+
+// GLOBAL: SADX 0x05b3df00
+void (*DAT_05b3df00)(struct obj *obj);
+
+// GLOBAL: SADX 0x05b3df0c
+float DAT_05b3df0c[3];
+
+// GLOBAL: SADX 0x05b3df10
+float DAT_05b3df10[3];
+
+// GLOBAL: SADX 0x05b3df14
+float DAT_05b3df14[3];
+
 // GLOBAL: SADX 0x05b3df28
 NJS_ARGB DAT_05b3df28;
+
+// GLOBAL: SADX 0x05b3df38
+float DAT_05b3df38;
+
+// GLOBAL: SADX 0x05b3df3c
+float DAT_05b3df3c;
+
+// GLOBAL: SADX 0x05b3df40
+int DAT_05b3df40;
+
+// GLOBAL: SADX 0x05b3df44
+float DAT_05b3df44;
+
+// GLOBAL: SADX 0x05b3df48
+int DAT_05b3df48;
+
+// GLOBAL: SADX 0x05b3df53
+unsigned char DAT_05b3df53;
 
 // GLOBAL: SADX 0x05b3df54
 int DAT_05b3df54;
@@ -424,6 +514,9 @@ unsigned char DAT_05cd2604;
 
 // GLOBAL: SADX 0x05cd265c
 int DAT_05cd265c;
+
+// GLOBAL: SADX 0x05cd4078
+int DAT_05cd4078;
 
 // GLOBAL: SADX 0x05cda18c
 struct task *DAT_05cda18c;
