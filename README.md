@@ -11,47 +11,19 @@ goal is C and C++ source that compiles to the same machine code as the retail
 
 <img src="docs/progress/card.svg" alt="Progress summary" width="520">
 
-![Progress over time](docs/progress/history.svg)
+![Progress map by area](docs/progress/map.svg)
 
 ### Recent changes
 
 <!-- history:start -->
-| Date | Decompiled | Matched | Accuracy | Changes |
+| Date | Done | Decompiled | Accuracy | Areas |
 | --- | --- | --- | --- | --- |
-| 2026-10-19 | 384 / 16,537 (2.32%) | 313 | 94.46% | +AlrReal_changeAct_for_Entrance 90.5%; +AlrReal_createChao 92.3%; +AlrReal_createChaoALR 70.9%; AlrReal_setRanking stub -> 92.3%; AlrReal_checkGoal stub -> 53.1%; 113 more |
-| 2026-10-19 | 313 / 16,537 (1.89%) | 313 | 100.00% | InitGetEmblem stub -> 100%; +destGetEmblem 100%; +DialogJimakuInit 100%; +DialogJimakuEnd 100%; +DialogJimakuPut 100%; 56 more |
-| 2026-10-19 | 277 / 16,537 (1.68%) | 277 | 100.00% | AlrReal_changeAct_for_Race stub -> 100%; +A_Life_for_ALR 100%; AlrReal_calcAverage stub -> 100%; AlrReal_dspHead stub -> 100%; AlrReal_offSonic stub -> 100%; 13 more |
-| 2026-10-19 | 269 / 16,537 (1.63%) | 269 | 100.00% | +AvaLoadTexForCommon 100%; +FUN_004b08f0 100%; +AvaReleaseTexForAll 100%; +AvaReleaseTex 100%; +FUN_004b0a10 100%; 19 more |
-| 2026-10-19 | 250 / 16,537 (1.51%) | 250 | 100.00% | +IsndPlay 100%; makesndfilename stub -> 100%; +FUN_004ae8c0 100%; IsndStop stub -> 100%; IsndVolume stub -> 100%; 26 more |
-| 2026-10-19 | 227 / 16,537 (1.37%) | 227 | 100.00% | isTextureNG stub -> 100%; +FUN_004a0920 100%; FUN_004a0940 stub -> 100%; FUN_004a0960 stub -> 100%; +FUN_004a0980 100%; 104 more |
-| 2026-10-18 | 148 / 16,537 (0.89%) | 148 | 100.00% | +FUN_004822c0 100%; +AlrReal_Exe 100%; +AlrReal_exe_for_Race 100%; +AlrReal_Dsp 100%; +AlrReal_Destructor 100%; 351 more |
-| 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | +std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 42.9%; +FUN_00405360 100%; +std::locale::facet::_Incref 89.5%; +std::locale::facet::_Decref 93.1%; +std::locale::~locale 17.0%; 696 more |
+| 2026-10-19 | 313 (+165) | 384 | 94.46% | Not sorted yet 236 |
+| 2026-10-18 | 148 (+142) | 148 | 100.00% | Not sorted yet 142 |
+| 2026-10-17 | 6 (+6) | 6 | 100.00% | Not sorted yet 6 |
 <!-- history:end -->
 
-The pre-commit hook runs `check.py save`, which rebuilds
-[docs/progress/history.csv](docs/progress/history.csv) and this table from the
-commits: one row for each commit that changed a score. CI checks that they match.
-
-### Function map
-
-![Function map](docs/progress/map.svg)
-
-Open the SVG on its own and hover a scored cell for its address, name and
-score. Cells that are not started show nothing.
-
-<details>
-<summary>What the colours mean</summary>
-
-| Colour | Meaning |
-| --- | --- |
-| Dark grey | Not started |
-| Grey | Stub: address claimed, body not written yet |
-| Red to green | Partial match: closest version's score so far |
-| Bright green | 100% match |
-| Blue | Runtime library code matching our copy of the library |
-| Dark blue | Library code or code the compiler made: linked, not decompiled, not counted |
-
-</details>
+![Progress over time](docs/progress/history.svg)
 
 ## How it works
 

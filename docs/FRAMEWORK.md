@@ -32,7 +32,7 @@ The game files:
 | `data/codegen-groups.csv` | Code groups: address ranges with their compiler flags and the evidence for them. |
 | `data/file-clusters.csv` | Functions in one row of `data/codegen-groups.csv` that pass each other register arguments. Without `/GL` such a call stays inside one source file, so a cluster mostly shares a file. Two things join files: `/GL`, and the linker folding identical `static` functions, which sends a call to another file's copy. |
 | `data/source-files.csv`, `data/classes.csv` | Functions that use each source path in the exe, and each class's vtable, methods and users. `check.py sources` writes them. |
-| `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the progress map's sections and the name the map shows for each area. `check.py areas` writes the guess to `areas.csv`. |
+| `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the progress map's sections and the name the map shows for each area. A `map` section may have a `color`, a quoted `"#rrggbb"`, for the gem before its title. `check.py areas` writes the guess to `areas.csv`. |
 | `src/library.csv` | Runtime library functions and their globals, matched by name. |
 | `src/header-functions.h` | `LIBRARY` annotations for header functions the linker kept in game code, such as `swprintf`. Written by hand in a header, since the lint rejects them in a `.cpp`. |
 | `CLAUDE.md` | Imports `docs/CLAUDE-GENERIC.md`, then adds the game's facts for Claude. |
@@ -75,7 +75,7 @@ Three checks show that the toolchain is the game's own:
 
 ## Commands
 
-`tools/check.py` is the single entry point. Only `python tools/progress.py` runs on its own: it rewrites `history.csv` from the commits and redraws the SVGs in `docs/progress` and the README table, as `save` does. Every command first sets up what it needs, then runs itself inside `.venv`. It prints only what matters: tool output shows on failure, and compiler and reccmp warnings always show.
+`tools/check.py` is the single entry point. Only `python tools/progress.py` runs on its own: it rewrites `history.csv` from the commits and redraws the SVGs in `docs/progress` and the README table, as `save` does. Every command first sets up what it needs, then runs itself inside `.venv`, and so does `progress.py`. It prints only what matters: tool output shows on failure, and compiler and reccmp warnings always show.
 
 | Command | What it does | Exit code |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Do not change the code to get past a detection. The next definitions update can 
 - The regression gate passes on equal scores and a removed stub, and fires on a deliberate drop.
 - The register-argument search of `check.py groups` finds the call from `Total` to `Mix`, which only `/GL` makes, and no other call.
 - The totals leave the stub out of the decompiled count, and a library function out of the game total.
-- The history skips stubs. On copies of the expected scores, an added or removed stub changes no score and adds no history row. A score change adds one, and the working tree adds one only when it moved a score. The git reader of `progress.py` reads each file of a throwaway repository, also when two files share one blob.
+- The history skips stubs. On copies of the expected scores, an added or removed stub changes no score and adds no history row. A day with a score change adds one, and the working tree adds one only when it moved a score. A working tree on the last commit's day joins that day's row. The git reader of `progress.py` reads each file of a throwaway repository, also when two files share one blob.
 - The annotation lint lets a `STUB` start a library function. It flags a `FUNCTION` there, and a `STUB` inside a function.
 
 A new compiler needs a new pinned hash and new expected scores.
@@ -143,7 +143,7 @@ CI never sees the game exe, so it can't score game functions itself. `tools/ci.p
 
 - **Fresh scores.** `summary.json` stores a hash of the build inputs that `tools/ci.py` lists. After any source change, CI fails until a new `summary.json` from `check.py save` is committed, and only a machine with the game can make one.
 - **No drops.** No score may fall below the base commit's. A removed function counts as a drop unless it was a stub. After a force push, CI has no base commit, but the pre-push hook compared with the old tip.
-- **Honest history.** `history.csv`, the SVGs and the README table must equal a fresh render. The render reads each first-parent commit's `summary.json`, so the history has one row for each commit that changed a score. After `git commit --amend` that changes a score, the amended commit still holds the old commit's row: run `git commit --amend --no-edit` once more. Pull requests merge by rebase, after the branch is up to date with the default branch. A squash or a merge commit leaves the branch's commits off the first-parent line. CI checks a pull request on its own last commit for the same reason.
+- **Honest history.** `history.csv`, the SVGs and the README table must equal a fresh render. The render reads each first-parent commit's `summary.json`, so the history has one row for each day whose commits changed a score, from the day's last commit. Each row's Areas text follows today's area rules, so a change to `data/areas.yml` or `data/areas.csv` rewrites it in old rows. After `git commit --amend` that changes a score in a commit from an earlier day, the amended commit still holds the old commit's row: run `git commit --amend --no-edit` once more. Pull requests merge by rebase, after the branch is up to date with the default branch. A squash or a merge commit leaves the branch's commits off the first-parent line. CI checks a pull request on its own last commit for the same reason.
 - **One group each.** Every function in `data/functions.csv` is in exactly one code group and ends inside it.
 - **No game files.** No file with a binary suffix (`.exe`, `.dll`, `.pdb`, `.lib`, `.obj`, `.ilk`, `.iso`, `.msi`) and no file over 10 MB. Other game files, such as a small data file, pass this check.
 

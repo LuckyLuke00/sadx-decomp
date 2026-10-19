@@ -39,6 +39,8 @@ RULES = ROOT / "data" / "areas.yml"
 AREAS_CSV = ROOT / "data" / "areas.csv"
 UNPLACED = "src/unplaced/"  # functions whose file is not known yet
 UNSORTED = "unsorted"
+UNSORTED_SECTION = ("Not sorted yet", None, {UNSORTED: "Not sorted yet"})  # the progress map's last section
+HEX_COLOR = re.compile(r"#[0-9a-fA-F]{6}")
 Edges = dict[int, dict[int, set[str]]]  # function -> {caller: kinds of reference}
 
 MAX_STRING = 64  # bytes read for a string, NUL included: a longer string reads as empty
@@ -124,6 +126,38 @@ def tree_areas(rules: dict) -> dict[int, tuple[str, str]]:
         for address in addresses:
             found[int(address, 16)] = (area, source)
     return found
+
+
+def load(game: set[int]) -> tuple[dict[int, str], list[tuple[str, str | None, dict[str, str]]]]:
+    """The area of each game function, and the progress map's sections as (section, gem colour or None,
+    {area: name}), with UNSORTED_SECTION last. A function takes its file's area, else the guess in data/areas.csv,
+    else UNSORTED. Without data/areas.yml all are UNSORTED."""
+    if not RULES.exists():
+        return dict.fromkeys(game, UNSORTED), [UNSORTED_SECTION]
+    rules = project.read_yml(RULES)
+    tree = tree_areas(rules)
+    guessed = {}
+    if AREAS_CSV.exists():  # a new game has none until `check.py areas` writes it
+        guessed = {int(row["address"], 16): row["area"] for row in progress.read_csv(AREAS_CSV)}
+    found = {a: tree[a][0] if a in tree else guessed.get(a, UNSORTED) for a in game}
+    sections = [(entry["section"], entry.get("color"), entry["areas"]) for entry in rules["map"]]
+    sections.append(UNSORTED_SECTION)
+    named = {area for _, _, names in sections for area in names}
+    missing = sorted(set(found.values()) - named)
+    if missing:
+        sys.exit(f"{RULES.relative_to(ROOT).as_posix()}: the `map` list has no name for {', '.join(missing)}.")
+    bad = miscolored(rules)
+    if bad:
+        sys.exit(f"{RULES.relative_to(ROOT).as_posix()}: the `color` of {', '.join(bad)} is not a quoted colour "
+                 'such as "#2ecc71". Unquoted, the # starts a comment.')
+    return found, sections
+
+
+def miscolored(rules: dict) -> list[str]:
+    """The sections of the `map` list whose `color` is not a quoted colour such as "#2ecc71". Unquoted, the # starts
+    a YAML comment, so the colour reads as null."""
+    return [entry["section"] for entry in rules["map"] if "color" in entry
+            and not (isinstance(entry["color"], str) and HEX_COLOR.fullmatch(entry["color"]))]
 
 
 def object_lists(data: Data, game: set[int], lists: dict) -> list[tuple[int, str, int]]:

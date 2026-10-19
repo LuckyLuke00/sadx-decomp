@@ -152,6 +152,13 @@ def ensure_venv() -> None:
     shutil.copyfile(project.REQUIREMENTS, installed)
 
 
+def rerun_in_venv(script: str) -> None:
+    """Unless this is .venv's Python, set .venv up, run the script again with it and exit with its status."""
+    if Path(sys.executable) != project.VENV_PYTHON:
+        ensure_venv()
+        sys.exit(subprocess.call([str(project.VENV_PYTHON), script, *sys.argv[1:]]))
+
+
 def set_up(game_path: Path | None) -> int:
     if ci.run_git("rev-parse", "--is-inside-work-tree").stdout.strip() != "true":
         sys.exit("Not a git clone. The checks compare against git history: clone the repo with git.")
@@ -496,7 +503,5 @@ def print_reccmp_project(path: Path, sha256: str) -> None:
 
 
 if __name__ == "__main__":
-    if Path(sys.executable) != project.VENV_PYTHON:
-        ensure_venv()
-        sys.exit(subprocess.call([str(project.VENV_PYTHON), __file__, *sys.argv[1:]]))
+    rerun_in_venv(__file__)
     sys.exit(main())

@@ -47,41 +47,32 @@ def find_regressions(baseline: dict, current: dict) -> list[str]:
     return problems
 
 
-def scores_changed(baseline: dict, current: dict) -> bool:
-    """True if a function's score moved. A missing function scores zero, like a stub."""
-    old = {entry["address"]: score(entry) for entry in baseline["functions"]}
-    new = {entry["address"]: score(entry) for entry in current["functions"]}
-    return any(old.get(address, 0.0) != new.get(address, 0.0) for address in old.keys() | new.keys())
+def moved_scores(baseline: dict, current: dict) -> list[int]:
+    """The addresses of the functions whose score moved, in order. A missing function scores zero, like a stub."""
+    old = {int(entry["address"], 16): score(entry) for entry in baseline["functions"]}
+    new = {int(entry["address"], 16): score(entry) for entry in current["functions"]}
+    return sorted(address for address in old.keys() | new.keys() if old.get(address, 0.0) != new.get(address, 0.0))
 
 
-def describe_changes(baseline: dict, current: dict) -> list[str]:
-    """One short line per function that was added, removed or rescored."""
-    old = {entry["address"]: entry for entry in baseline["functions"]}
-    new = {entry["address"]: entry for entry in current["functions"]}
-    changes = []
-    for address in sorted(old.keys() | new.keys()):
-        before, after = old.get(address), new.get(address)
-        if before is None:
-            changes.append(f"+{after['name']} {state(after)}")
-        elif after is None:
-            changes.append(f"-{before['name']}")
-        elif state(before) != state(after):
-            changes.append(f"{after['name']} {state(before)} -> {state(after)}")
-    # Scores first: new stubs are the least interesting news.
-    changes.sort(key=lambda line: line.endswith(" stub"))
-    return changes
+def library_addresses(summary: dict) -> set[int]:
+    return {int(entry["address"], 16) for entry in summary["functions"] if entry["library"]}
+
+
+def game_functions(summary: dict, game: set[int]) -> set[int]:
+    """The game addresses that are not library entries. A library entry in a game range, such as a header function
+    that the linker kept in game code, is not a game function."""
+    return game - library_addresses(summary)
 
 
 def totals(summary: dict, game: set[int]) -> Totals:
-    """Library entries are runtime code we link, not decompile, so they count apart.
-    One in a game range, such as a header function that the linker kept in game code, leaves the game total too."""
+    """Library entries are runtime code we link, not decompile, so they count apart."""
     ours = [entry for entry in summary["functions"] if not entry["library"]]
-    library = {int(entry["address"], 16) for entry in summary["functions"] if entry["library"]}
+    library = library_addresses(summary)
     implemented = [entry for entry in ours if not entry["stub"]]
     matched = sum(1 for entry in implemented if score(entry) == 1.0)
     effective = sum(1 for entry in implemented if entry["effective"] and score(entry) < 1.0)
     accuracy = sum(score(entry) for entry in implemented) / len(implemented) if implemented else None
-    return Totals(len(implemented), matched, accuracy, len(game - library), len(library), effective)
+    return Totals(len(implemented), matched, accuracy, len(game_functions(summary, game)), len(library), effective)
 
 
 def ratio(part: float, whole: float) -> float:
@@ -91,6 +82,12 @@ def ratio(part: float, whole: float) -> float:
 
 def percent(part: int, whole: int) -> str:
     return f"{ratio(part, whole):.2%}"
+
+
+def whole_percent(part: int, whole: int) -> str:
+    """The percent rounded down, so only a whole that is all done shows 100%. Integers, so no float error rounds it
+    down a step."""
+    return f"{100 * part // max(whole, 1)}%"
 
 
 def accuracy_text(stats: Totals) -> str:

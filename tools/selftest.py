@@ -41,8 +41,12 @@ def run() -> int:
     failures += check_regression_gate(expected, current)
     failures += check_register_arguments(current, spans)
     failures += check_totals(expected, current)
-    failures += check_scores_changed(expected)
+    failures += check_whole_percent()
+    failures += check_moved_scores(expected)
     failures += check_history_rows(expected)
+    failures += check_empty_map()
+    failures += check_block_names()
+    failures += check_gem_colors()
     failures += check_read_blobs()
     failures += check_misplaced_annotations()
 
@@ -105,36 +109,91 @@ def check_regression_gate(expected: dict, current: dict) -> list[str]:
     return failures
 
 
-def check_scores_changed(expected: dict) -> list[str]:
+def check_moved_scores(expected: dict) -> list[str]:
     """A stub added or removed moves no score. A new accuracy moves one, and so does a removed
     match: a missing function scores zero."""
     unstubbed = without_stubs(expected)
     unmatched = dict(expected, functions=expected["functions"][1:])
-    cases = [("a removed stub", expected, unstubbed, False),
-             ("an added stub", unstubbed, expected, False),
-             ("a new accuracy", expected, with_first_accuracy(expected, 0.5), True),
-             ("a removed match", expected, unmatched, True)]
-    return [f"scores_changed is {not changed} for {name}"
-            for name, baseline, current, changed in cases if scoring.scores_changed(baseline, current) != changed]
+    first = [int(expected["functions"][0]["address"], 16)]
+    cases = [("a removed stub", expected, unstubbed, []),
+             ("an added stub", unstubbed, expected, []),
+             ("a new accuracy", expected, with_first_accuracy(expected, 0.5), first),
+             ("a removed match", expected, unmatched, first)]
+    failures = []
+    for name, baseline, current, wanted in cases:
+        moved = scoring.moved_scores(baseline, current)
+        if moved != wanted:
+            failures.append(f"moved_scores gives {moved} for {name}, not {wanted}")
+    return failures
 
 
 def check_history_rows(expected: dict) -> list[str]:
-    """The history gets a row for the first commit and each commit that moved a score, none for a commit
-    that only removes or adds a stub, and one for the working tree only when it moved a score."""
+    """The history gets a row for the first day and each day that moved a score, none for a day that only
+    removes or adds a stub, and one for the working tree only when it moved a score. The last snapshot of a
+    day stands for the day: a working tree on the last commit's day replaces that day's scores, and a day
+    whose last commit undoes its first gets no row."""
     game = {int(entry["address"], 16) for entry in expected["functions"]}
     dropped = with_first_accuracy(expected, 0.5)
+    later = with_first_accuracy(expected, 0.25)
     commits = [progress.Snapshot("2026-01-01", expected, game),
                progress.Snapshot("2026-01-02", without_stubs(expected), game),
                progress.Snapshot("2026-01-03", expected, game),
                progress.Snapshot("2026-01-04", dropped, game)]
-    cases = [("an unchanged working tree", dropped, ["2026-01-01", "2026-01-04"]),
-             ("a working tree that moved a score", expected, ["2026-01-01", "2026-01-04", "2026-01-05"])]
+    # (case, the snapshots after the commits, the days with a row, the scores of the last row)
+    cases = [("an unchanged working tree", [("2026-01-05", dropped)], ["2026-01-01", "2026-01-04"], dropped),
+             ("a working tree that moved a score", [("2026-01-05", expected)],
+              ["2026-01-01", "2026-01-04", "2026-01-05"], expected),
+             ("a working tree on the last commit's day", [("2026-01-04", later)], ["2026-01-01", "2026-01-04"], later),
+             ("a day whose last commit undoes its first", [("2026-01-05", expected), ("2026-01-05", dropped)],
+              ["2026-01-01", "2026-01-04"], dropped)]
     failures = []
-    for name, working, wanted in cases:
-        rows = progress.history_rows(commits + [progress.Snapshot("2026-01-05", working, game)])
+    for name, more, wanted, last in cases:
+        snapshots = commits + [progress.Snapshot(day, summary, game) for day, summary in more]
+        rows = progress.history_rows(snapshots, {})
         days = [row["date"] for row in rows]
         if days != wanted:
             failures.append(f"history rows {days} for {name}, not {wanted}")
+        elif not progress.same_totals(rows[-1], progress.history_row(wanted[-1], scoring.totals(last, game), "")):
+            failures.append(f"the last history row for {name} does not hold the scores of its day's last snapshot")
+    return failures
+
+
+def check_empty_map() -> list[str]:
+    """A game with no game functions yet, such as a new port, gets a map of just its header and colour key."""
+    summary = {"exe": "GAME.EXE", "functions": []}
+    sections = progress.map_sections({}, [("Stages", None, {"stage": "Stages"})])
+    svg = progress.render_map(summary, scoring.totals(summary, set()), sections)
+    height = progress.HEADER + progress.FOOTER
+    if f'viewBox="0 0 {progress.WIDTH} {height}"' in svg:
+        return []
+    return [f"the map of a game with no game functions is not {height} px high"]
+
+
+def check_block_names() -> list[str]:
+    """A block shows its name unless its section has only one area in the map list, whose title names it. A section
+    of two areas names its block also when only one of them has functions."""
+    sections = [("Two areas", None, {"a": "Area A", "b": "Area B"}), ("One area", None, {"c": "Area C"})]
+    found = progress.map_sections({0x401000: "a", 0x402000: "c"}, sections)
+    labelled = [(block.name, block.labelled) for section in found for block in section.blocks]
+    wanted = [("Area A", True), ("Area C", False)]
+    return [] if labelled == wanted else [f"map blocks (name, labelled) {labelled}, not {wanted}"]
+
+
+def check_gem_colors() -> list[str]:
+    """A section's gem colour in data/areas.yml is a quoted #rrggbb string. Unquoted, the # starts a YAML comment, so
+    the colour reads as null, and a number is no colour either: the map stops on both."""
+    import areas  # here, not at the top: it needs .venv's packages, and check.py imports this module before .venv
+
+    cases = [('"#2f6bff"', []), ("#2f6bff", ["Stages"]), ("123456", ["Stages"])]
+    failures = []
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "areas.yml"
+        for color, wanted in cases:
+            path.write_text(f"map:\n- section: Stages\n  color: {color}\n  areas: {{stage: Stages}}\n",
+                            encoding="utf-8")
+            found = areas.miscolored(project.read_yml(path))
+            if found != wanted:
+                failures.append(f"miscolored gives {found} for `color: {color}`, not {wanted}")
     return failures
 
 
@@ -199,6 +258,14 @@ def check_totals(expected: dict, current: dict) -> list[str]:
     if totals._asdict() == expected["totals"]:
         return []
     return [f"totals {json.dumps(totals._asdict())} != {json.dumps(expected['totals'])} in expected.json"]
+
+
+def check_whole_percent() -> list[str]:
+    """A whole percent rounds down, so only a whole that is all done shows 100%. It counts in integers: 29 of 100 is
+    29%, though 100 * 0.29 in floats is just under 29."""
+    cases = [(0, 0, "0%"), (29, 100, "29%"), (199, 200, "99%"), (1, 1, "100%")]
+    return [f"whole_percent({part}, {whole}) gives {scoring.whole_percent(part, whole)}, not {wanted}"
+            for part, whole, wanted in cases if scoring.whole_percent(part, whole) != wanted]
 
 
 def map_functions(path: Path) -> list[tuple[int, int]]:

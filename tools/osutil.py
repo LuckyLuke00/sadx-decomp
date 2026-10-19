@@ -1,4 +1,5 @@
-"""Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders.
+"""Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, keep the last
+item of each day.
 
 Standard library only.
 """
@@ -9,8 +10,11 @@ import stat
 import subprocess
 import sys
 from pathlib import Path
+from typing import Callable, TypeVar
 
 POWERSHELL = ["powershell", "-NoProfile", "-NonInteractive", "-Command"]
+
+T = TypeVar("T")
 
 
 def run(command: list, cwd: Path | None = None, env: dict | None = None) -> subprocess.CompletedProcess:
@@ -70,3 +74,14 @@ def remove(path: Path) -> None:
     for item in path.rglob("*"):
         item.chmod(stat.S_IWRITE)
     shutil.rmtree(path)
+
+
+def last_of_each_day(items: list[T], day: Callable[[T], str]) -> list[T]:
+    """The last item of each run of items from one day."""
+    kept = []
+    for item in items:
+        if kept and day(kept[-1]) == day(item):
+            kept[-1] = item
+        else:
+            kept.append(item)
+    return kept
