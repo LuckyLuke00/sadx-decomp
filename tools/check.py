@@ -243,7 +243,7 @@ def conclude(results: dict[str, int]) -> int:
 
 def lint() -> int:
     """reccmp's annotation linter: bad addresses, duplicates, misplaced markers.
-    Then each function annotation must start a game function in data/functions.csv."""
+    Then each function annotation must start a function in data/functions.csv, a game function unless it is a STUB."""
     lint_command = [project.VENV_SCRIPTS / "reccmp-decomplint.exe", "src", "--module", project.game_config().target,
                     "--warnfail"]
     result = subprocess.run(lint_command, cwd=ROOT, capture_output=True, text=True, errors="replace")
@@ -253,7 +253,7 @@ def lint() -> int:
         return 1
     misplaced = runner.misplaced_annotations()
     if misplaced:
-        print(f"FAIL {len(misplaced)} function annotations in src/ start no game function:")
+        print(f"FAIL {len(misplaced)} function annotations in src/ start no function they may name:")
         for line in misplaced[:ci.MAX_LINES]:
             print(f"     {line}")
         return 1
