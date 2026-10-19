@@ -1,4 +1,9 @@
 #include "decls.h"
+long GetPlayerCharacterName(unsigned char pno);
+long CheckCollisionP(struct NJS_POINT3 *vp, float d);
+void ___njSetConstantMaterial(struct NJS_ARGB *argb);
+struct NJS_POINT3;
+struct NJS_ARGB;
 
 extern struct NJS_ARGB DAT_05b9d7dc;
 extern struct NJS_ARGB DAT_05b9d7ec;
@@ -51,4 +56,33 @@ void DrawLine(float x1, float y1, float z1, float x2, float y2, float z2)
 	local_30g.tex = 0;
 	local_30g.num = 2;
 	___njDrawLine3D(&local_30g, 1, 0);
+}
+
+// FUNCTION: SADX 0x004cb290
+void ModelTurnWhite(struct taskwk *twp, short BkNumber)
+{
+	struct NJS_ARGB argb;
+	short sVar1;
+
+	sVar1 = (short)(1 << (GetPlayerCharacterName(0)));
+	if (BkNumber & sVar1)
+	{
+		if (CheckCollisionP((struct NJS_POINT3 *)((char *)twp + 0x20), 20.0))
+		{
+			argb.a = 0.0;
+			argb.r = 0.5;
+			argb.g = 0.5;
+			argb.b = 0.5;
+			___njSetConstantMaterial(&argb);
+		}
+		else
+		{
+			argb.a = 0.0;
+			argb.r = 0.0;
+			argb.g = 0.0;
+			argb.b = 0.0;
+			___njSetConstantMaterial(&argb);
+		}
+	}
+	return;
 }

@@ -5,6 +5,7 @@
 #include <stddef.h>
 
 struct __MYMEM_DATA;
+struct _CameraSystemWork;
 struct _SC_NUMBERS;
 struct ADV1_AL_BODY;
 struct ADV1_AL_FACE;
@@ -53,6 +54,7 @@ struct colliwk;
 struct DDlgType;
 struct DialogPrmType;
 struct DlgSndPrmType;
+struct erctrlstr;
 struct eventwk;
 struct FileSelWk;
 struct forcewk;
@@ -65,6 +67,7 @@ struct LightInfo;
 struct MDHANDLE;
 struct ModeSelPrmType;
 struct motionwk;
+struct MSGC;
 struct NJS_ACTION;
 struct NJS_ACTION_LINK;
 struct NJS_ARGB;
@@ -90,12 +93,17 @@ struct NJS_TEXTURE_VTX;
 struct obj;
 struct OBJ_CONDITION;
 struct PanelPrmType;
+struct particle_entry;
 struct pathtag;
 struct pathtbl;
 struct SAVE_DATA;
 struct SeqPrmType;
+struct sp_info;
+struct sp_link;
+struct sp_task;
 struct task;
 struct TaskCommunication;
+struct TaskInfo;
 struct taskwk;
 struct xssunit;
 struct xyyzzxsdwstr;
@@ -1327,6 +1335,54 @@ static_assert(offsetof(NJS_TEXNAME, filename) == 0x0, "NJS_TEXNAME::filename");
 static_assert(offsetof(NJS_TEXNAME, attr) == 0x4, "NJS_TEXNAME::attr");
 static_assert(offsetof(NJS_TEXNAME, texaddr) == 0x8, "NJS_TEXNAME::texaddr");
 
+struct MSGC {
+    unsigned char kind;
+    short x;
+    short y;
+    unsigned short width;
+    unsigned short height;
+    unsigned short buf_width;
+    unsigned short buf_height;
+    unsigned short buf_width2;
+    unsigned short buf_height2;
+    short lx;
+    short ly;
+    short sx;
+    short sy;
+    unsigned short color;
+    union NJS_COLOR fc;
+    union NJS_COLOR bc;
+    float scale;
+    void *bitmap;
+    unsigned long globalindex;
+    struct NJS_TEXLIST texlist;
+    struct NJS_TEXNAME texname;
+    int msgc_flag;
+};
+static_assert(sizeof(MSGC) == 0x48, "sizeof MSGC");
+static_assert(offsetof(MSGC, kind) == 0x0, "MSGC::kind");
+static_assert(offsetof(MSGC, x) == 0x2, "MSGC::x");
+static_assert(offsetof(MSGC, y) == 0x4, "MSGC::y");
+static_assert(offsetof(MSGC, width) == 0x6, "MSGC::width");
+static_assert(offsetof(MSGC, height) == 0x8, "MSGC::height");
+static_assert(offsetof(MSGC, buf_width) == 0xa, "MSGC::buf_width");
+static_assert(offsetof(MSGC, buf_height) == 0xc, "MSGC::buf_height");
+static_assert(offsetof(MSGC, buf_width2) == 0xe, "MSGC::buf_width2");
+static_assert(offsetof(MSGC, buf_height2) == 0x10, "MSGC::buf_height2");
+static_assert(offsetof(MSGC, lx) == 0x12, "MSGC::lx");
+static_assert(offsetof(MSGC, ly) == 0x14, "MSGC::ly");
+static_assert(offsetof(MSGC, sx) == 0x16, "MSGC::sx");
+static_assert(offsetof(MSGC, sy) == 0x18, "MSGC::sy");
+static_assert(offsetof(MSGC, color) == 0x1a, "MSGC::color");
+static_assert(offsetof(MSGC, fc) == 0x1c, "MSGC::fc");
+static_assert(offsetof(MSGC, bc) == 0x20, "MSGC::bc");
+static_assert(offsetof(MSGC, scale) == 0x24, "MSGC::scale");
+static_assert(offsetof(MSGC, bitmap) == 0x28, "MSGC::bitmap");
+static_assert(offsetof(MSGC, globalindex) == 0x2c, "MSGC::globalindex");
+static_assert(offsetof(MSGC, texlist) == 0x30, "MSGC::texlist");
+static_assert(offsetof(MSGC, texname) == 0x38, "MSGC::texname");
+static_assert(offsetof(MSGC, msgc_flag) == 0x44, "MSGC::msgc_flag");
+
 struct NJS_CAMERA {
     float px;
     float py;
@@ -1430,6 +1486,46 @@ static_assert(offsetof(NJS_SPRITE, sy) == 0x10, "NJS_SPRITE::sy");
 static_assert(offsetof(NJS_SPRITE, ang) == 0x14, "NJS_SPRITE::ang");
 static_assert(offsetof(NJS_SPRITE, tlist) == 0x18, "NJS_SPRITE::tlist");
 static_assert(offsetof(NJS_SPRITE, tanim) == 0x1c, "NJS_SPRITE::tanim");
+
+struct NJS_TEXANIM {
+    short sx;
+    short sy;
+    short cx;
+    short cy;
+    short u1;
+    short v1;
+    short u2;
+    short v2;
+    short texid;
+    short attr;
+};
+static_assert(sizeof(NJS_TEXANIM) == 0x14, "sizeof NJS_TEXANIM");
+static_assert(offsetof(NJS_TEXANIM, sx) == 0x0, "NJS_TEXANIM::sx");
+static_assert(offsetof(NJS_TEXANIM, sy) == 0x2, "NJS_TEXANIM::sy");
+static_assert(offsetof(NJS_TEXANIM, cx) == 0x4, "NJS_TEXANIM::cx");
+static_assert(offsetof(NJS_TEXANIM, cy) == 0x6, "NJS_TEXANIM::cy");
+static_assert(offsetof(NJS_TEXANIM, u1) == 0x8, "NJS_TEXANIM::u1");
+static_assert(offsetof(NJS_TEXANIM, v1) == 0xa, "NJS_TEXANIM::v1");
+static_assert(offsetof(NJS_TEXANIM, u2) == 0xc, "NJS_TEXANIM::u2");
+static_assert(offsetof(NJS_TEXANIM, v2) == 0xe, "NJS_TEXANIM::v2");
+static_assert(offsetof(NJS_TEXANIM, texid) == 0x10, "NJS_TEXANIM::texid");
+static_assert(offsetof(NJS_TEXANIM, attr) == 0x12, "NJS_TEXANIM::attr");
+
+struct TaskInfo {
+    unsigned int size;
+    unsigned long initMode;
+    void (*init_p)(struct task *, void *);
+    void (*exec_p)(struct task *);
+    void (*disp_p)(struct task *);
+    void (*dest_p)(struct task *);
+};
+static_assert(sizeof(TaskInfo) == 0x18, "sizeof TaskInfo");
+static_assert(offsetof(TaskInfo, size) == 0x0, "TaskInfo::size");
+static_assert(offsetof(TaskInfo, initMode) == 0x4, "TaskInfo::initMode");
+static_assert(offsetof(TaskInfo, init_p) == 0x8, "TaskInfo::init_p");
+static_assert(offsetof(TaskInfo, exec_p) == 0xc, "TaskInfo::exec_p");
+static_assert(offsetof(TaskInfo, disp_p) == 0x10, "TaskInfo::disp_p");
+static_assert(offsetof(TaskInfo, dest_p) == 0x14, "TaskInfo::dest_p");
 
 // Offsets not checked against the code yet.
 struct al_action_ctrl {
@@ -1621,6 +1717,18 @@ static_assert(offsetof(obj, scl) == 0x20, "obj::scl");
 static_assert(offsetof(obj, child) == 0x2c, "obj::child");
 static_assert(offsetof(obj, sibling) == 0x30, "obj::sibling");
 
+struct particle_entry {
+    struct sp_info *info;
+    unsigned long wksize;
+    void (*exec)(struct sp_link *);
+    struct sp_link *link;
+};
+static_assert(sizeof(particle_entry) == 0x10, "sizeof particle_entry");
+static_assert(offsetof(particle_entry, info) == 0x0, "particle_entry::info");
+static_assert(offsetof(particle_entry, wksize) == 0x4, "particle_entry::wksize");
+static_assert(offsetof(particle_entry, exec) == 0x8, "particle_entry::exec");
+static_assert(offsetof(particle_entry, link) == 0xc, "particle_entry::link");
+
 struct pathtag {
     unsigned char pathtype;
     unsigned short points;
@@ -1634,6 +1742,61 @@ static_assert(offsetof(pathtag, points) == 0x2, "pathtag::points");
 static_assert(offsetof(pathtag, totallen) == 0x4, "pathtag::totallen");
 static_assert(offsetof(pathtag, tblhead) == 0x8, "pathtag::tblhead");
 static_assert(offsetof(pathtag, pathtask) == 0xc, "pathtag::pathtask");
+
+struct sp_link {
+    struct sp_link *next;
+    struct sp_task *head;
+    void (*exec)(struct sp_link *);
+    unsigned long numtask;
+    struct sp_info *info;
+    unsigned long sysflag;
+    void *work;
+};
+static_assert(sizeof(sp_link) == 0x1c, "sizeof sp_link");
+static_assert(offsetof(sp_link, next) == 0x0, "sp_link::next");
+static_assert(offsetof(sp_link, head) == 0x4, "sp_link::head");
+static_assert(offsetof(sp_link, exec) == 0x8, "sp_link::exec");
+static_assert(offsetof(sp_link, numtask) == 0xc, "sp_link::numtask");
+static_assert(offsetof(sp_link, info) == 0x10, "sp_link::info");
+static_assert(offsetof(sp_link, sysflag) == 0x14, "sp_link::sysflag");
+static_assert(offsetof(sp_link, work) == 0x18, "sp_link::work");
+
+struct sp_task {
+    struct sp_task *next;
+    void (*exec)(struct sp_task *, struct sp_link *);
+    unsigned char mode;
+    unsigned char flag;
+    short no;
+    long ang;
+    float frame;
+    float scl;
+    struct NJS_POINT3 pos;
+    struct NJS_POINT3 spd;
+    struct NJS_ARGB argb;
+    float offset;
+    union {
+        short w[2];
+        long l;
+        float f;
+        void *ptr;
+    } work[2];
+    unsigned char wrtZflg;
+};
+static_assert(sizeof(sp_task) == 0x50, "sizeof sp_task");
+static_assert(offsetof(sp_task, next) == 0x0, "sp_task::next");
+static_assert(offsetof(sp_task, exec) == 0x4, "sp_task::exec");
+static_assert(offsetof(sp_task, mode) == 0x8, "sp_task::mode");
+static_assert(offsetof(sp_task, flag) == 0x9, "sp_task::flag");
+static_assert(offsetof(sp_task, no) == 0xa, "sp_task::no");
+static_assert(offsetof(sp_task, ang) == 0xc, "sp_task::ang");
+static_assert(offsetof(sp_task, frame) == 0x10, "sp_task::frame");
+static_assert(offsetof(sp_task, scl) == 0x14, "sp_task::scl");
+static_assert(offsetof(sp_task, pos) == 0x18, "sp_task::pos");
+static_assert(offsetof(sp_task, spd) == 0x24, "sp_task::spd");
+static_assert(offsetof(sp_task, argb) == 0x30, "sp_task::argb");
+static_assert(offsetof(sp_task, offset) == 0x40, "sp_task::offset");
+static_assert(offsetof(sp_task, work) == 0x44, "sp_task::work");
+static_assert(offsetof(sp_task, wrtZflg) == 0x4c, "sp_task::wrtZflg");
 
 struct task {
     struct task *next;

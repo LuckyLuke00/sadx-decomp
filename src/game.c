@@ -61,6 +61,12 @@ void GM_WaitEvent(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x004c79a0
+void FUN_004c79a0()
+{
+	GameInit();
+}
+
 // FUNCTION: SADX 0x004c9c90
 void FUN_004c9c90()
 {

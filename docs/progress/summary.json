@@ -194,6 +194,14 @@
    "library": false
   },
   {
+   "address": "0x00423b10",
+   "name": "njExitTexture",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00424240",
    "name": "njSetCamera",
    "accuracy": 0.02973977695167286,
@@ -1004,9 +1012,25 @@
   {
    "address": "0x0049ed70",
    "name": "InitGetEmblem",
-   "accuracy": 0.20408163265306123,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0049ee00",
+   "name": "dispGetEmblem",
+   "accuracy": 0.025236593059936908,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0049f280",
+   "name": "destGetEmblem",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -2338,6 +2362,54 @@
    "library": false
   },
   {
+   "address": "0x004ac820",
+   "name": "DialogJimakuInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ac8a0",
+   "name": "DialogJimakuEnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ac900",
+   "name": "DialogJimakuPut",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ac980",
+   "name": "njUserInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004adc90",
+   "name": "FUN_004adc90",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004adca0",
+   "name": "Clear",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004adcc0",
    "name": "Reset",
    "accuracy": 0.0975609756097561,
@@ -2746,6 +2818,14 @@
    "library": false
   },
   {
+   "address": "0x004b5e70",
+   "name": "FUN_004b5e70",
+   "accuracy": 0.038834951456310676,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004b6460",
    "name": "FUN_004b6460",
    "accuracy": 0.12903225806451613,
@@ -2756,14 +2836,22 @@
   {
    "address": "0x004b6520",
    "name": "FUN_004b6520",
-   "accuracy": 0.19047619047619047,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004b6a60",
    "name": "FUN_004b6a60",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b6aa0",
+   "name": "FUN_004b6aa0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -3018,9 +3106,121 @@
    "library": false
   },
   {
+   "address": "0x004badf0",
+   "name": "SetDefaultNormalCameraMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bae10",
+   "name": "GetViewAngle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004bae20",
    "name": "SetViewAngle",
    "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bafb0",
+   "name": "FUN_004bafb0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bafe0",
+   "name": "cameraModeInit",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bb090",
+   "name": "CameraEnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bb0a0",
+   "name": "CameraPause",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bb0c0",
+   "name": "AddCameraStage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bbcf0",
+   "name": "CameraReleaseCollisionCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bc160",
+   "name": "InitFreeCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bc180",
+   "name": "ResetFreeCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bd5a0",
+   "name": "CameraViewSet",
+   "accuracy": 0.046511627906976744,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bee10",
+   "name": "FUN_004bee10",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004beff0",
+   "name": "GetCameraTimer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf010",
+   "name": "SetAdjustMode",
+   "accuracy": 0.42105263157894735,
    "effective": false,
    "stub": true,
    "library": false
@@ -3106,6 +3306,30 @@
    "library": false
   },
   {
+   "address": "0x004c1790",
+   "name": "FPpCalcProp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c1800",
+   "name": "FUN_004c1800",
+   "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c1a60",
+   "name": "MSG_LoadTexture",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004c1b70",
    "name": "FUN_004c1b70",
    "accuracy": 1.0,
@@ -3116,9 +3340,9 @@
   {
    "address": "0x004c1c10",
    "name": "MSG_CloseRequestCls",
-   "accuracy": 0.7272727272727273,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3130,11 +3354,51 @@
    "library": false
   },
   {
+   "address": "0x004c1d50",
+   "name": "MSG_Disp",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c22f0",
+   "name": "MSG_Cls",
+   "accuracy": 0.16326530612244897,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c2940",
+   "name": "MSG_Puts",
+   "accuracy": 0.1038961038961039,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004c3170",
    "name": "MSG_CheckMainMessage",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c3180",
+   "name": "NH_MSG_Open",
+   "accuracy": 0.06611570247933884,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c3310",
+   "name": "FUN_004c3310",
+   "accuracy": 0.5714285714285714,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -3290,6 +3554,22 @@
    "library": false
   },
   {
+   "address": "0x004c79a0",
+   "name": "FUN_004c79a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c79b0",
+   "name": "GameInit",
+   "accuracy": 0.018957345971563982,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004c9100",
    "name": "FUN_004c9100",
    "accuracy": 1.0,
@@ -3351,6 +3631,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9e00",
+   "name": "ChkGameMode",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -3418,6 +3706,14 @@
    "library": false
   },
   {
+   "address": "0x004cb290",
+   "name": "ModelTurnWhite",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004cb390",
    "name": "ghReleaseFontTexture",
    "accuracy": 0.5,
@@ -3461,6 +3757,22 @@
    "address": "0x004cf5e0",
    "name": "LoadPlayerMotionData",
    "accuracy": 0.13114754098360656,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004cfb60",
+   "name": "NeonuLoadTexture",
+   "accuracy": 0.5714285714285714,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f1860",
+   "name": "CheckCollisionP",
+   "accuracy": 0.09900990099009901,
    "effective": false,
    "stub": true,
    "library": false
@@ -3562,6 +3874,14 @@
    "library": false
   },
   {
+   "address": "0x004f5f90",
+   "name": "ADX_Init",
+   "accuracy": 0.8888888888888888,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f6320",
    "name": "ADX_Close",
    "accuracy": 0.5333333333333333,
@@ -3578,9 +3898,25 @@
    "library": false
   },
   {
+   "address": "0x004f6580",
+   "name": "ADXTaskInit",
+   "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f6fd0",
    "name": "CL_ColPolListUpModeSetAll",
    "accuracy": 0.8888888888888888,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00501c60",
+   "name": "ReleaseAllPlayersTexture",
+   "accuracy": 0.18604651162790697,
    "effective": false,
    "stub": true,
    "library": false
@@ -3714,6 +4050,14 @@
    "library": false
   },
   {
+   "address": "0x0056e3b0",
+   "name": "CheckEditMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0056f080",
    "name": "MirenSoundStartBgm",
    "accuracy": 0.6666666666666666,
@@ -3746,6 +4090,30 @@
    "library": false
   },
   {
+   "address": "0x00570760",
+   "name": "MirenSetChildTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005707b0",
+   "name": "MirenInitTask",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005708d0",
+   "name": "dispLensFlare",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005730b0",
    "name": "___njFogEnable",
    "accuracy": 0.2962962962962963,
@@ -3759,6 +4127,14 @@
    "accuracy": 0.6153846153846154,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00573d10",
+   "name": "pfENDDIF",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4082,6 +4458,22 @@
    "library": false
   },
   {
+   "address": "0x005a6360",
+   "name": "CloseDownload",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a64e0",
+   "name": "SpFreeTask",
+   "accuracy": 0.8,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005acaf0",
    "name": "FreeNpcMilesPlayerTask",
    "accuracy": 0.22727272727272727,
@@ -4114,9 +4506,57 @@
    "library": false
   },
   {
+   "address": "0x005b4a60",
+   "name": "EffectSnow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005b5aa0",
    "name": "FUN_005b5aa0",
    "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005d1980",
+   "name": "ERobCtrlInitTP",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005d1a00",
+   "name": "ERobStart",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005d1a40",
+   "name": "ERobKill",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005d1a80",
+   "name": "ERobByenara",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005e0120",
+   "name": "DrawLensFlare",
+   "accuracy": 0.023054755043227664,
    "effective": false,
    "stub": true,
    "library": false
@@ -4146,9 +4586,25 @@
    "library": false
   },
   {
+   "address": "0x005e81c0",
+   "name": "EffectFlash",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005f22c0",
    "name": "FUN_005f22c0",
    "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00610680",
+   "name": "Eggrob_GenerateEggrob",
+   "accuracy": 0.04065040650406504,
    "effective": false,
    "stub": true,
    "library": false
@@ -9755,5 +10211,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d612cb1208b0b768f63df96ce50ddc71dba9fafa18718a6ad11677d04a4884f0"
+ "inputs_sha256": "d2df5af068bf9f3b4c80004e14039aedc5ca013939784435dd38df16f17a68d5"
 }

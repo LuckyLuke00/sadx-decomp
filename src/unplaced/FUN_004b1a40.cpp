@@ -1,5 +1,7 @@
 #include "decls.h"
 #include <string.h>
+#include <new>
+void FUN_004b5e70(int param_1);
 
 extern char **DAT_05b422dc;
 extern char **DAT_05b422e0;
@@ -152,6 +154,27 @@ void FUN_004b5ad0(void)
 	}
 }
 
+// FUNCTION: SADX 0x004b6520
+void FUN_004b6520(int param_1)
+{
+	int *local_8 = (int *)param_1;
+	if (local_8 != 0)
+	{
+		for (unsigned int local_c = 0; local_c < (unsigned int)local_8[1]; local_c++)
+		{
+			int local_10 = *(int *)(*local_8 + local_c * 0xc + 8);
+			if (local_10 != 0)
+			{
+				int local_14 = *(int *)(local_10 + 0x34);
+				if (local_14 != 0)
+				{
+					FUN_004b5e70(local_10 + 0x34);
+				}
+			}
+		}
+	}
+}
+
 // FUNCTION: SADX 0x004b6a60
 void FUN_004b6a60(int param_1, int *param_2, int *param_3)
 {
@@ -169,4 +192,23 @@ void FUN_004b6a60(int param_1, int *param_2, int *param_3)
 		local_14 = 0;
 	}
 	local_cj = local_14;
+}
+
+// FUNCTION: SADX 0x004b6aa0
+void FUN_004b6aa0(int param_1, int *param_2, int *param_3)
+{
+	int *local_8g;
+	int *local_cj;
+	int *local_10;
+	local_cj = param_2;
+	if (local_cj)
+	{
+		*local_cj = *param_3;
+		local_10 = local_cj;
+	}
+	else
+	{
+		local_10 = 0;
+	}
+	local_8g = local_10;
 }
