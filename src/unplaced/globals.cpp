@@ -314,6 +314,9 @@ void *DAT_05b3e37c;
 // GLOBAL: SADX 0x05b3e398
 int DAT_05b3e398;
 
+// GLOBAL: SADX 0x05b3e39c
+int DAT_05b3e39c;
+
 // GLOBAL: SADX 0x05b3e3a0
 struct MDHANDLE *DAT_05b3e3a0[51];
 
@@ -329,6 +332,9 @@ int DAT_05b3e46c[20][14];
 // GLOBAL: SADX 0x05b3e924
 int DAT_05b3e924;
 
+// GLOBAL: SADX 0x05b3e930
+int DAT_05b3e930;
+
 // GLOBAL: SADX 0x05b3e938
 int DAT_05b3e938[20];
 
@@ -340,6 +346,9 @@ int DAT_05b3ea00;
 
 // GLOBAL: SADX 0x05b3ea04
 int DAT_05b3ea04;
+
+// GLOBAL: SADX 0x05b3ea08
+unsigned char DAT_05b3ea08;
 
 // GLOBAL: SADX 0x05b3ea25
 unsigned char DAT_05b3ea25;

@@ -577,6 +577,12 @@ void FUN_004ab120(int, int)
 {
 }
 
+// STUB: SADX 0x004ab150
+bool PlayPCM(int ch, void *wavememory, int wavesize, int loopflag, bool bBGMLike)
+{
+	return (bool)0;
+}
+
 // STUB: SADX 0x004ab190
 bool Load3DPCM(int ch, void *wavememory, int wavesize, int loopflag)
 {
@@ -588,9 +594,25 @@ void StopPCM(int ch)
 {
 }
 
+// STUB: SADX 0x004ab260
+void SetVolumePCM(int ch, int volume)
+{
+}
+
 // STUB: SADX 0x004ab290
 void FUN_004ab290(int, float)
 {
+}
+
+// STUB: SADX 0x004ab2d0
+void SetPanPCM(int ch, long pan)
+{
+}
+
+// STUB: SADX 0x004ab300
+bool Set3DPositionPCM(int ch, float x, float y, float z)
+{
+	return (bool)0;
 }
 
 // STUB: SADX 0x004ab340
@@ -604,28 +626,18 @@ void wmaend()
 {
 }
 
+// STUB: SADX 0x004abbb0
+void wmapause()
+{
+}
+
+// STUB: SADX 0x004abc00
+void wmaresume()
+{
+}
+
 // STUB: SADX 0x004adcc0
 void Reset()
-{
-}
-
-// STUB: SADX 0x004ae7f0
-void makesndfilename(int bk, int li)
-{
-}
-
-// STUB: SADX 0x004ae920
-void IsndStop(long handleno)
-{
-}
-
-// STUB: SADX 0x004ae940
-void IsndVolume(int vol, int handleno)
-{
-}
-
-// STUB: SADX 0x004ae9a0
-void IsndPitch(int pitch, int handleno)
 {
 }
 
@@ -633,11 +645,6 @@ void IsndPitch(int pitch, int handleno)
 int dsPlay_oneshot(int tone, int id, int pri, int volofs)
 {
 	return (int)0;
-}
-
-// STUB: SADX 0x004af780
-void InitOverlapSE(unsigned char ini)
-{
 }
 
 // STUB: SADX 0x004afc60
@@ -1198,6 +1205,11 @@ void FUN_005f22c0(struct task *, struct ModeSelPrmType *)
 {
 }
 
+// STUB: SADX 0x006411b0
+void FUN_006411b0(int, int)
+{
+}
+
 // STUB: SADX 0x0067d080
 void njRotateY(float *, unsigned short)
 {
@@ -1257,6 +1269,11 @@ struct al_status *ADV1_ALR_GetEntryStatus(int num)
 
 // STUB: SADX 0x007d21b0
 void FUN_007d21b0(void *)
+{
+}
+
+// STUB: SADX 0x009132a0
+void ini()
 {
 }
 
