@@ -3,7 +3,12 @@
 #include "decls.h"
 
 // STUB: SADX 0x00404ef0
-void ___OutputDebugString(char *str, ...)
+void ___OutputDebugString(char *, ...)
+{
+}
+
+// STUB: SADX 0x00404fa0
+void ___SAnjDrawPolygon2D(struct NJS_POINT2COL *p, int n, float pri, unsigned long attr)
 {
 }
 
@@ -28,8 +33,23 @@ void njDrawTexture(struct NJS_TEXTURE_VTX *,int,int,int)
 {
 }
 
+// STUB: SADX 0x00421ff0
+void njDrawLine3D(struct NJS_POINT3COL *,int,unsigned long)
+{
+}
+
 // STUB: SADX 0x004220c0
 void njDrawTriangle2D(struct NJS_POINT2COL *,int,float,unsigned long)
+{
+}
+
+// STUB: SADX 0x00422330
+void njDrawPolygon3D(struct NJS_POINT3COL *,int,unsigned long)
+{
+}
+
+// STUB: SADX 0x004223f0
+void njDrawTriangle3D(struct NJS_POINT3COL *,int,unsigned long)
 {
 }
 
@@ -38,8 +58,18 @@ void njColorBlendingMode(int,int)
 {
 }
 
+// STUB: SADX 0x00422540
+void gjGXSetBlendMode(long)
+{
+}
+
 // STUB: SADX 0x00422560
 void FUN_00422560(int)
+{
+}
+
+// STUB: SADX 0x00422590
+void njSetZUpdateMode(long)
 {
 }
 
@@ -419,50 +449,84 @@ void FUN_004a0520(float, float)
 {
 }
 
-// STUB: SADX 0x004a06c0
-int isTextureNG(struct NJS_TEXLIST *tl, int numChk)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x004a0790
 int dsCheckViewV(struct NJS_POINT3 *ft, float radius)
 {
 	return (int)0;
 }
 
-// STUB: SADX 0x004a0940
-void FUN_004a0940(struct NJS_MODEL *)
+// STUB: SADX 0x004a0ae0
+void ___dsDrawModel(struct NJS_MODEL *model)
 {
 }
 
-// STUB: SADX 0x004a0960
-void FUN_004a0960(struct obj *, struct NJS_MOTION *, float)
+// STUB: SADX 0x004a0c10
+void ___dsDrawObject(struct obj *obj)
 {
 }
 
-// STUB: SADX 0x004a2010
-void ___njDrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
+// STUB: SADX 0x004a1290
+void ds_DrawModelClip(struct NJS_MODEL *mdl, float clipScl)
 {
 }
 
-// STUB: SADX 0x004a2800
-void FUN_004a2800()
+// STUB: SADX 0x004a2960
+void FUN_004a2960()
 {
 }
 
-// STUB: SADX 0x004a29c0
-void FUN_004a29c0()
+// STUB: SADX 0x004a45e0
+void late_DrawSprite3D(struct NJS_SPRITE *sp, int n, unsigned long atr, int flgs)
 {
 }
 
-// STUB: SADX 0x004a2a10
-void late_execCancel()
+// STUB: SADX 0x004a4870
+void lateDrawObject(struct obj *obj, int flgs, float clipScl)
 {
 }
 
-// STUB: SADX 0x004a6940
-void late_DrawObjectMesh(struct obj *obj, int flgs)
+// STUB: SADX 0x004a4ff0
+void late_DrawModelClip(struct NJS_MODEL *, int, float)
+{
+}
+
+// STUB: SADX 0x004a5110
+void lateDrawModel(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a5290
+void DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
+{
+}
+
+// STUB: SADX 0x004a5aa0
+void late_DrawModelClipEx(struct NJS_MODEL *mdl, int flgs, float clipScl)
+{
+}
+
+// STUB: SADX 0x004a5b30
+void DrawModelEx(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a5d20
+void DrawObjectMS(struct obj *obj, int flgs, float clipScl)
+{
+}
+
+// STUB: SADX 0x004a65c0
+void DrawModelMS(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a69e0
+void DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
+{
+}
+
+// STUB: SADX 0x004a7280
+void DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
@@ -473,6 +537,26 @@ void ___DrawModel(struct NJS_MODEL *model)
 
 // STUB: SADX 0x004a7d20
 void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
+{
+}
+
+// STUB: SADX 0x004a88f0
+void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, void *drwMdlFnc)
+{
+}
+
+// STUB: SADX 0x004a9660
+void DrawShapeMotion(struct obj *object, struct NJS_MOTION *motion, struct NJS_MOTION *shape, float frame, int flgs, float clpScl, void *drawModel)
+{
+}
+
+// STUB: SADX 0x004a9df0
+void DrawMotionLink(struct obj *object, struct NJS_MOTION_LINK *motionlink, float frame, int flgs, float clpScl, void *drwMdlFnc)
+{
+}
+
+// STUB: SADX 0x004aac80
+void ActionLink(struct NJS_ACTION_LINK *actionlink, float frame, int flgs, float clpScl, void *drwMdlFnc)
 {
 }
 
@@ -999,6 +1083,16 @@ int CloseDialog()
 	return (int)0;
 }
 
+// STUB: SADX 0x00597fd0
+void lig_resetGjPaletteNo(int no)
+{
+}
+
+// STUB: SADX 0x00598720
+void FUN_00598720(int)
+{
+}
+
 // STUB: SADX 0x00598b80
 void InitSystemTV()
 {
@@ -1124,13 +1218,28 @@ void njRotateX(float *, unsigned short)
 {
 }
 
+// STUB: SADX 0x0067d5a0
+void njRotateXYZ(long, long *, long *, long *)
+{
+}
+
 // STUB: SADX 0x0067d800
 void njPopMatrix(int)
 {
 }
 
+// STUB: SADX 0x0067d830
+void FUN_0067d830(int, float, float, float)
+{
+}
+
 // STUB: SADX 0x0067e550
 void njSetPerspective(long)
+{
+}
+
+// STUB: SADX 0x0067e600
+void njRotateZXY(long, long *, long *, long *)
 {
 }
 

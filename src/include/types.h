@@ -55,12 +55,16 @@ struct eventwk;
 struct FileSelWk;
 struct forcewk;
 struct GH_FONT_INFO;
+struct LATE_FAR_Z_T;
+struct LATE_LNK;
 struct LE_LIGHT_ENV;
 struct LE_PALIGHT_ENV;
 struct LightInfo;
 struct MDHANDLE;
 struct ModeSelPrmType;
 struct motionwk;
+struct NJS_ACTION;
+struct NJS_ACTION_LINK;
 struct NJS_ARGB;
 struct NJS_BGRA;
 struct NJS_CAMERA;
@@ -69,11 +73,13 @@ struct NJS_MATERIAL;
 struct NJS_MESHSET;
 struct NJS_MODEL;
 struct NJS_MOTION;
+struct NJS_MOTION_LINK;
 struct NJS_POINT2;
 struct NJS_POINT2COL;
 struct NJS_POINT3;
 struct NJS_POINT3COL;
 struct NJS_RGB;
+struct NJS_SPRITE;
 struct NJS_TEX;
 struct NJS_TEXANIM;
 struct NJS_TEXLIST;
@@ -1075,6 +1081,14 @@ static_assert(offsetof(DDlgType, SclX) == 0xc, "DDlgType::SclX");
 static_assert(offsetof(DDlgType, SclY) == 0x10, "DDlgType::SclY");
 static_assert(offsetof(DDlgType, Csr) == 0x14, "DDlgType::Csr");
 
+struct NJS_ACTION {
+    struct obj *object;
+    struct NJS_MOTION *motion;
+};
+static_assert(sizeof(NJS_ACTION) == 0x8, "sizeof NJS_ACTION");
+static_assert(offsetof(NJS_ACTION, object) == 0x0, "NJS_ACTION::object");
+static_assert(offsetof(NJS_ACTION, motion) == 0x4, "NJS_ACTION::motion");
+
 struct FileSelWk {
     enum AdvaStatEnum Stat;
     enum AdvaModeEnum PrevMode;
@@ -1134,6 +1148,16 @@ static_assert(offsetof(GH_FONT_INFO, tex_height) == 0xc, "GH_FONT_INFO::tex_heig
 static_assert(offsetof(GH_FONT_INFO, texlist) == 0x10, "GH_FONT_INFO::texlist");
 static_assert(offsetof(GH_FONT_INFO, prop_tbl) == 0x14, "GH_FONT_INFO::prop_tbl");
 static_assert(offsetof(GH_FONT_INFO, color) == 0x18, "GH_FONT_INFO::color");
+
+struct LATE_FAR_Z_T {
+    float nor;
+    float ex;
+    float mesh;
+};
+static_assert(sizeof(LATE_FAR_Z_T) == 0xc, "sizeof LATE_FAR_Z_T");
+static_assert(offsetof(LATE_FAR_Z_T, nor) == 0x0, "LATE_FAR_Z_T::nor");
+static_assert(offsetof(LATE_FAR_Z_T, ex) == 0x4, "LATE_FAR_Z_T::ex");
+static_assert(offsetof(LATE_FAR_Z_T, mesh) == 0x8, "LATE_FAR_Z_T::mesh");
 
 struct LE_LIGHT_ENV {
     unsigned char stgNo;
@@ -1340,6 +1364,22 @@ static_assert(offsetof(NJS_POINT3COL, p) == 0x0, "NJS_POINT3COL::p");
 static_assert(offsetof(NJS_POINT3COL, col) == 0x4, "NJS_POINT3COL::col");
 static_assert(offsetof(NJS_POINT3COL, tex) == 0x8, "NJS_POINT3COL::tex");
 static_assert(offsetof(NJS_POINT3COL, num) == 0xc, "NJS_POINT3COL::num");
+
+struct NJS_SPRITE {
+    struct NJS_POINT3 p;
+    float sx;
+    float sy;
+    long ang;
+    struct NJS_TEXLIST *tlist;
+    struct NJS_TEXANIM *tanim;
+};
+static_assert(sizeof(NJS_SPRITE) == 0x20, "sizeof NJS_SPRITE");
+static_assert(offsetof(NJS_SPRITE, p) == 0x0, "NJS_SPRITE::p");
+static_assert(offsetof(NJS_SPRITE, sx) == 0xc, "NJS_SPRITE::sx");
+static_assert(offsetof(NJS_SPRITE, sy) == 0x10, "NJS_SPRITE::sy");
+static_assert(offsetof(NJS_SPRITE, ang) == 0x14, "NJS_SPRITE::ang");
+static_assert(offsetof(NJS_SPRITE, tlist) == 0x18, "NJS_SPRITE::tlist");
+static_assert(offsetof(NJS_SPRITE, tanim) == 0x1c, "NJS_SPRITE::tanim");
 
 // Offsets not checked against the code yet.
 struct al_action_ctrl {
