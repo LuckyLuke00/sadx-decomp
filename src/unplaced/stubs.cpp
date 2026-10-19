@@ -670,6 +670,11 @@ void dsDolbySound()
 {
 }
 
+// STUB: SADX 0x004b0aa0
+void LoadGameDDS()
+{
+}
+
 // STUB: SADX 0x004b1940
 void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {
@@ -677,6 +682,11 @@ void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 
 // STUB: SADX 0x004b6460
 void FUN_004b6460(struct NJS_TEXLIST *, char *)
+{
+}
+
+// STUB: SADX 0x004b6520
+void FUN_004b6520(int)
 {
 }
 
@@ -1081,6 +1091,21 @@ void DrawShadowWindow(float x, float y, float z, float w, float h)
 
 // STUB: SADX 0x00575760
 void DrawTitleBack(float x, float y, float z, float w, float h)
+{
+}
+
+// STUB: SADX 0x00577960
+void OpenDialogQuick(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
+{
+}
+
+// STUB: SADX 0x00577a40
+void OpenDialogCsrLet(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
+{
+}
+
+// STUB: SADX 0x00577ac0
+void OpenDialog(struct DialogPrmType *, int)
 {
 }
 

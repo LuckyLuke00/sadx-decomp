@@ -2546,6 +2546,70 @@
    "library": false
   },
   {
+   "address": "0x004b08c0",
+   "name": "AvaLoadTexForCommon",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b08f0",
+   "name": "FUN_004b08f0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b0920",
+   "name": "AvaReleaseTexForAll",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b0990",
+   "name": "AvaReleaseTex",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b0a10",
+   "name": "FUN_004b0a10",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b0a50",
+   "name": "FUN_004b0a50",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b0aa0",
+   "name": "LoadGameDDS",
+   "accuracy": 0.009535160905840286,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004b1920",
+   "name": "AvaLoadTexForEachMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004b1940",
    "name": "AvaReleaseTexForEachMode",
    "accuracy": 0.10666666666666667,
@@ -2597,6 +2661,14 @@
    "address": "0x004b6460",
    "name": "FUN_004b6460",
    "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004b6520",
+   "name": "FUN_004b6520",
+   "accuracy": 0.19047619047619047,
    "effective": false,
    "stub": true,
    "library": false
@@ -2762,6 +2834,22 @@
    "library": false
   },
   {
+   "address": "0x004b9bc0",
+   "name": "FreeAdvaFileSelTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b9be0",
+   "name": "ChgSeqFileSel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004b9c10",
    "name": "FUN_004b9c10",
    "accuracy": 1.0,
@@ -2775,6 +2863,14 @@
    "accuracy": 0.01937046004842615,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ba980",
+   "name": "FUN_004ba980",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -2903,6 +2999,22 @@
    "accuracy": 0.02867383512544803,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c1680",
+   "name": "FUN_004c1680",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c16a0",
+   "name": "ChgSeqTitleMenu",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -3474,6 +3586,22 @@
    "library": false
   },
   {
+   "address": "0x0055e260",
+   "name": "IsBtnDecide",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0055e280",
+   "name": "IsBtnCancel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0056a980",
    "name": "EV_Load2",
    "accuracy": 0.13333333333333333,
@@ -3698,6 +3826,30 @@
    "library": false
   },
   {
+   "address": "0x00577960",
+   "name": "OpenDialogQuick",
+   "accuracy": 0.25806451612903225,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00577a40",
+   "name": "OpenDialogCsrLet",
+   "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00577ac0",
+   "name": "OpenDialog",
+   "accuracy": 0.5333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00577b30",
    "name": "CloseDialog",
    "accuracy": 0.3448275862068966,
@@ -3727,6 +3879,22 @@
    "accuracy": 0.8,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0059bc90",
+   "name": "AvaExitDispLoading",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059bcc0",
+   "name": "_advertise_prolog",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -3791,6 +3959,30 @@
    "accuracy": 0.8888888888888888,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a3fc0",
+   "name": "AdvaOpenDialog",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a3fe0",
+   "name": "AdvaOpenDialogCsrLet",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a4010",
+   "name": "AdvaOpenDialogQuick",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -9475,5 +9667,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b4865f3f50a5c0c56941a55e8f2ef46f2f45783268536d9448397de90c2d5198"
+ "inputs_sha256": "7bdc6ff8cd8c6eaf0b3b3c83a15cb745ec9a824f619900947684f7d73c8c2333"
 }

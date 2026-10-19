@@ -48,3 +48,18 @@ void title_menu_disp(struct task *tp)
 {
 	DisplayTitleNew(*(float *)((char *)tp + 0x10));
 }
+
+// FUNCTION: SADX 0x004c1680
+void FUN_004c1680(void)
+{
+	if (DAT_05b42a8c != 0)
+	{
+		DestroyTask(DAT_05b42a8c);
+	}
+}
+
+// FUNCTION: SADX 0x004c16a0
+void ChgSeqTitleMenu()
+{
+	*(int *)((char *)DAT_05b42a8c->awp + 4) = 0xe;
+}

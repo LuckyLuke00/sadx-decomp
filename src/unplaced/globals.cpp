@@ -5,6 +5,12 @@
 // GLOBAL: SADX 0x009617c4
 struct AlrData alrdata;
 
+// GLOBAL: SADX 0x00985418
+enum AvaTexLdEnum DAT_00985418;
+
+// GLOBAL: SADX 0x009919e0
+struct DialogPrmType DAT_009919e0;
+
 // GLOBAL: SADX 0x01c6ede0
 float _nj_unit_matrix_[16];
 
@@ -68,6 +74,9 @@ struct NJS_TEXLIST texlist_ava_title;
 // GLOBAL: SADX 0x025add48
 void *(*DAT_025add48[5])[2];
 
+// GLOBAL: SADX 0x025add78
+enum AvaTexLdEnum *DAT_025add78[27];
+
 // GLOBAL: SADX 0x025addd8
 unsigned char DAT_025addd8;
 
@@ -106,6 +115,9 @@ struct __MYMEM_DATA *DAT_025d7b20;
 
 // GLOBAL: SADX 0x025d7bbc
 struct GH_FONT_INFO Ascii16x16FontInfo[1];
+
+// GLOBAL: SADX 0x025d7c78
+struct GH_FONT_INFO StaffRollFontInfo[1];
 
 // GLOBAL: SADX 0x02639adc
 struct NJS_POINT3 vec[2];
@@ -362,6 +374,9 @@ int DAT_05b3ebbc;
 // GLOBAL: SADX 0x05b40a40
 unsigned int DAT_05b40a40[2];
 
+// GLOBAL: SADX 0x05b40a48
+int DAT_05b40a48;
+
 // GLOBAL: SADX 0x05b40a4c
 struct NJS_ARGB DAT_05b40a4c;
 
@@ -388,6 +403,9 @@ struct task *DAT_05b42520;
 
 // GLOBAL: SADX 0x05b42524
 struct task *DAT_05b42524;
+
+// GLOBAL: SADX 0x05b42528
+void *DAT_05b42528;
 
 // GLOBAL: SADX 0x05b4252c
 unsigned char DAT_05b4252c;
@@ -421,6 +439,9 @@ int DAT_05b92e24;
 
 // GLOBAL: SADX 0x05b92e30
 unsigned char *DAT_05b92e30;
+
+// GLOBAL: SADX 0x05b92e44
+int DAT_05b92e44;
 
 // GLOBAL: SADX 0x05b92e54
 unsigned char DAT_05b92e54;
@@ -488,6 +509,33 @@ int DAT_05cc3574;
 // GLOBAL: SADX 0x05cc3631
 char DAT_05cc3631;
 
+// GLOBAL: SADX 0x05cc3fe0
+int DAT_05cc3fe0;
+
+// GLOBAL: SADX 0x05cc3ff0
+int DAT_05cc3ff0;
+
+// GLOBAL: SADX 0x05cc4000
+int DAT_05cc4000;
+
+// GLOBAL: SADX 0x05cc4010
+int DAT_05cc4010;
+
+// GLOBAL: SADX 0x05cc4020
+int DAT_05cc4020;
+
+// GLOBAL: SADX 0x05cc62c0
+int DAT_05cc62c0;
+
+// GLOBAL: SADX 0x05cc62d0
+int DAT_05cc62d0;
+
+// GLOBAL: SADX 0x05cc7fe8
+int DAT_05cc7fe8;
+
+// GLOBAL: SADX 0x05cc7ff8
+int DAT_05cc7ff8;
+
 // GLOBAL: SADX 0x05ccca18
 char DAT_05ccca18;
 
@@ -527,8 +575,17 @@ int DAT_05cd265c;
 // GLOBAL: SADX 0x05cd4078
 int DAT_05cd4078;
 
+// GLOBAL: SADX 0x05cda118
+unsigned char DAT_05cda118;
+
 // GLOBAL: SADX 0x05cda18c
 struct task *DAT_05cda18c;
+
+// GLOBAL: SADX 0x060eea5c
+int DAT_060eea5c;
+
+// GLOBAL: SADX 0x06274afc
+int DAT_06274afc;
 
 // GLOBAL: SADX 0x06276b20
 char DAT_06276b20[260];
@@ -538,6 +595,9 @@ struct NJS_CAMERA DAT_06298c48;
 
 // GLOBAL: SADX 0x06298c64
 long DAT_06298c64;
+
+// GLOBAL: SADX 0x06298cac
+int DAT_06298cac;
 
 // GLOBAL: SADX 0x0629c6ec
 float DAT_0629c6ec;

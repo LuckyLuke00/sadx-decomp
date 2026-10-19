@@ -7,7 +7,7 @@
 <rect width="1000" height="1217" rx="6" fill="#0d1117"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one cell per function, in address order</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">250 / 16,537 game functions decompiled (1.51%) | 250 matched | 0 effective | accuracy 100.00% | library functions identified: 689</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">269 / 16,537 game functions decompiled (1.63%) | 269 matched | 0 effective | accuracy 100.00% | library functions identified: 689</text>
 <rect x="16" y="64" width="966" height="7" fill="url(#todo)"/>
 <rect x="16" y="71" width="966" height="7" fill="url(#todo)"/>
 <rect x="16" y="78" width="966" height="7" fill="url(#todo)"/>
@@ -553,6 +553,14 @@
 <rect x="632" y="225" width="6" height="6" fill="#6e7681"><title>0x004b0600 dsDolbySound: stub</title></rect>
 <rect x="639" y="225" width="6" height="6" fill="#56d364"><title>0x004b0790 AvaLoadTex: 100%</title></rect>
 <rect x="646" y="225" width="6" height="6" fill="#56d364"><title>0x004b0870 FUN_004b0870: 100%</title></rect>
+<rect x="653" y="225" width="6" height="6" fill="#56d364"><title>0x004b08c0 AvaLoadTexForCommon: 100%</title></rect>
+<rect x="660" y="225" width="6" height="6" fill="#56d364"><title>0x004b08f0 FUN_004b08f0: 100%</title></rect>
+<rect x="667" y="225" width="6" height="6" fill="#56d364"><title>0x004b0920 AvaReleaseTexForAll: 100%</title></rect>
+<rect x="674" y="225" width="6" height="6" fill="#56d364"><title>0x004b0990 AvaReleaseTex: 100%</title></rect>
+<rect x="681" y="225" width="6" height="6" fill="#56d364"><title>0x004b0a10 FUN_004b0a10: 100%</title></rect>
+<rect x="688" y="225" width="6" height="6" fill="#56d364"><title>0x004b0a50 FUN_004b0a50: 100%</title></rect>
+<rect x="695" y="225" width="6" height="6" fill="#6e7681"><title>0x004b0aa0 LoadGameDDS: stub</title></rect>
+<rect x="702" y="225" width="6" height="6" fill="#56d364"><title>0x004b1920 AvaLoadTexForEachMode: 100%</title></rect>
 <rect x="709" y="225" width="6" height="6" fill="#6e7681"><title>0x004b1940 AvaReleaseTexForEachMode: stub</title></rect>
 <rect x="716" y="225" width="6" height="6" fill="#56d364"><title>0x004b1a40 FUN_004b1a40: 100%</title></rect>
 <rect x="723" y="225" width="6" height="6" fill="#56d364"><title>0x004b1a80 FUN_004b1a80: 100%</title></rect>
@@ -560,6 +568,7 @@
 <rect x="814" y="225" width="6" height="6" fill="#56d364"><title>0x004b3210 FUN_004b3210: 100%</title></rect>
 <rect x="856" y="225" width="6" height="6" fill="#56d364"><title>0x004b5ad0 FUN_004b5ad0: 100%</title></rect>
 <rect x="877" y="225" width="6" height="6" fill="#6e7681"><title>0x004b6460 FUN_004b6460: stub</title></rect>
+<rect x="884" y="225" width="6" height="6" fill="#6e7681"><title>0x004b6520 FUN_004b6520: stub</title></rect>
 <rect x="940" y="225" width="6" height="6" fill="#56d364"><title>0x004b6a60 FUN_004b6a60: 100%</title></rect>
 <rect x="961" y="225" width="6" height="6" fill="#56d364"><title>0x004b6b50 DrawFileDelDlgSub: 100%</title></rect>
 <rect x="968" y="225" width="6" height="6" fill="#56d364"><title>0x004b6c50 FUN_004b6c50: 100%</title></rect>
@@ -580,8 +589,11 @@
 <rect x="107" y="232" width="6" height="6" fill="#6e7681"><title>0x004b9330 file_sel_disp: stub</title></rect>
 <rect x="114" y="232" width="6" height="6" fill="#6e7681"><title>0x004b93b0 DrawFileSelBallChar: stub</title></rect>
 <rect x="121" y="232" width="6" height="6" fill="#6e7681"><title>0x004b95e0 DrawFileSelCsr: stub</title></rect>
+<rect x="128" y="232" width="6" height="6" fill="#56d364"><title>0x004b9bc0 FreeAdvaFileSelTask: 100%</title></rect>
+<rect x="135" y="232" width="6" height="6" fill="#56d364"><title>0x004b9be0 ChgSeqFileSel: 100%</title></rect>
 <rect x="142" y="232" width="6" height="6" fill="#56d364"><title>0x004b9c10 FUN_004b9c10: 100%</title></rect>
 <rect x="149" y="232" width="6" height="6" fill="#6e7681"><title>0x004b9da0 AvaDrawInfo: stub</title></rect>
+<rect x="163" y="232" width="6" height="6" fill="#56d364"><title>0x004ba980 FUN_004ba980: 100%</title></rect>
 <rect x="177" y="232" width="6" height="6" fill="#6e7681"><title>0x004baaa0 ReleaseLineList: stub</title></rect>
 <rect x="191" y="232" width="6" height="6" fill="#56d364"><title>0x004bab70 Title2Init: 100%</title></rect>
 <rect x="198" y="232" width="6" height="6" fill="#6e7681"><title>0x004bac60 FUN_004bac60: stub</title></rect>
@@ -598,6 +610,8 @@
 <rect x="828" y="232" width="6" height="6" fill="#6e7681"><title>0x004c0e10 FUN_004c0e10: stub</title></rect>
 <rect x="835" y="232" width="6" height="6" fill="#56d364"><title>0x004c12c0 title_menu_disp: 100%</title></rect>
 <rect x="842" y="232" width="6" height="6" fill="#6e7681"><title>0x004c12e0 DisplayTitleNew: stub</title></rect>
+<rect x="849" y="232" width="6" height="6" fill="#56d364"><title>0x004c1680 FUN_004c1680: 100%</title></rect>
+<rect x="856" y="232" width="6" height="6" fill="#56d364"><title>0x004c16a0 ChgSeqTitleMenu: 100%</title></rect>
 <rect x="905" y="232" width="6" height="6" fill="#56d364"><title>0x004c1b70 FUN_004c1b70: 100%</title></rect>
 <rect x="912" y="232" width="6" height="6" fill="#6e7681"><title>0x004c1c10 MSG_CloseRequestCls: stub</title></rect>
 <rect x="919" y="232" width="6" height="6" fill="#56d364"><title>0x004c1c20 FUN_004c1c20: 100%</title></rect>
@@ -669,6 +683,8 @@
 <rect x="751" y="295" width="6" height="6" fill="#6e7681"><title>0x005554a0 InitTime: stub</title></rect>
 <rect x="765" y="295" width="6" height="6" fill="#6e7681"><title>0x00555500 WakeTimer: stub</title></rect>
 <rect x="296" y="302" width="6" height="6" fill="#6e7681"><title>0x0055de60 FUN_0055de60: stub</title></rect>
+<rect x="310" y="302" width="6" height="6" fill="#56d364"><title>0x0055e260 IsBtnDecide: 100%</title></rect>
+<rect x="317" y="302" width="6" height="6" fill="#56d364"><title>0x0055e280 IsBtnCancel: 100%</title></rect>
 <rect x="359" y="309" width="6" height="6" fill="#6e7681"><title>0x0056a980 EV_Load2: stub</title></rect>
 <rect x="373" y="309" width="6" height="6" fill="#6e7681"><title>0x0056aab0 EV_Exec2: stub</title></rect>
 <rect x="429" y="309" width="6" height="6" fill="#6e7681"><title>0x0056ae70 EV_CheckCansel: stub</title></rect>
@@ -697,10 +713,15 @@
 <rect x="156" y="323" width="6" height="6" fill="#6e7681"><title>0x00575150 ghGetPvrTextureSize: stub</title></rect>
 <rect x="198" y="323" width="6" height="6" fill="#6e7681"><title>0x00575490 DrawShadowWindow: stub</title></rect>
 <rect x="205" y="323" width="6" height="6" fill="#6e7681"><title>0x00575760 DrawTitleBack: stub</title></rect>
+<rect x="373" y="323" width="6" height="6" fill="#6e7681"><title>0x00577960 OpenDialogQuick: stub</title></rect>
+<rect x="387" y="323" width="6" height="6" fill="#6e7681"><title>0x00577a40 OpenDialogCsrLet: stub</title></rect>
+<rect x="394" y="323" width="6" height="6" fill="#6e7681"><title>0x00577ac0 OpenDialog: stub</title></rect>
 <rect x="408" y="323" width="6" height="6" fill="#6e7681"><title>0x00577b30 CloseDialog: stub</title></rect>
 <rect x="219" y="337" width="6" height="6" fill="#6e7681"><title>0x00597fd0 lig_resetGjPaletteNo: stub</title></rect>
 <rect x="240" y="337" width="6" height="6" fill="#6e7681"><title>0x00598720 FUN_00598720: stub</title></rect>
 <rect x="296" y="337" width="6" height="6" fill="#6e7681"><title>0x00598b80 InitSystemTV: stub</title></rect>
+<rect x="590" y="337" width="6" height="6" fill="#56d364"><title>0x0059bc90 AvaExitDispLoading: 100%</title></rect>
+<rect x="597" y="337" width="6" height="6" fill="#56d364"><title>0x0059bcc0 _advertise_prolog: 100%</title></rect>
 <rect x="667" y="337" width="6" height="6" fill="#6e7681"><title>0x0059c810 AlertWindowTask: stub</title></rect>
 <rect x="702" y="337" width="6" height="6" fill="#6e7681"><title>0x0059ce70 MDHeaderOpen: stub</title></rect>
 <rect x="709" y="337" width="6" height="6" fill="#6e7681"><title>0x0059d430 MDHeaderClose: stub</title></rect>
@@ -709,6 +730,9 @@
 <rect x="940" y="337" width="6" height="6" fill="#6e7681"><title>0x0059e430 GetFadeInColFromT: stub</title></rect>
 <rect x="947" y="337" width="6" height="6" fill="#6e7681"><title>0x0059e460 GetFadeOutColFromT: stub</title></rect>
 <rect x="121" y="344" width="6" height="6" fill="#6e7681"><title>0x0059f710 StopAdvaBGM: stub</title></rect>
+<rect x="303" y="344" width="6" height="6" fill="#56d364"><title>0x005a3fc0 AdvaOpenDialog: 100%</title></rect>
+<rect x="310" y="344" width="6" height="6" fill="#56d364"><title>0x005a3fe0 AdvaOpenDialogCsrLet: 100%</title></rect>
+<rect x="317" y="344" width="6" height="6" fill="#56d364"><title>0x005a4010 AdvaOpenDialogQuick: 100%</title></rect>
 <rect x="331" y="344" width="6" height="6" fill="#6e7681"><title>0x005a4120 DrawSkyBg: stub</title></rect>
 <rect x="576" y="351" width="6" height="6" fill="#6e7681"><title>0x005acaf0 FreeNpcMilesPlayerTask: stub</title></rect>
 <rect x="583" y="351" width="6" height="6" fill="#6e7681"><title>0x005acb60 CreateNpcMilesPlayerTask: stub</title></rect>
