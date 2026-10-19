@@ -1,5 +1,7 @@
 #include "decls.h"
 #include <string.h>
+static struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr);
+static struct LE_PALIGHT_ENV *le_find_paenv(int, int, int);
 
 extern float DAT_05b39d10;
 extern void *DAT_05ab39ac;
@@ -465,4 +467,105 @@ void le_set_paenv(int stg, int act, int chr)
 	{
 		DAT_05b39ce0.vec = DAT_05b39bf0[0].vec;
 	}
+}
+
+// FUNCTION: SADX 0x004a0040
+static struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr)
+{
+	struct LE_PALIGHT_ENV *local_ci;
+	struct LE_PALIGHT_ENV *local_10m;
+	int local_14;
+	int local_8g;
+	local_ci = &le_plyrPal[0];
+	local_10m = 0;
+	local_14 = 0;
+	if (chr < 0)
+	{
+		local_14 = 1;
+		chr = -chr;
+	}
+	local_8g = 0;
+	while (1)
+	{
+		if (*(unsigned char *)local_ci == 0xff)
+		{
+			break;
+		}
+		if (local_8g >= 0xff)
+		{
+			break;
+		}
+		if (*(unsigned char *)local_ci != stg)
+		{
+			local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
+			local_8g++;
+			continue;
+		}
+		if (*(unsigned char *)(local_ci + 1) != act)
+		{
+			local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
+			local_8g++;
+			continue;
+		}
+		if (*(unsigned char *)(local_ci + 2) == chr)
+		{
+			local_10m = local_ci;
+			if (*(unsigned char *)(local_ci + 2) == chr)
+			{
+				break;
+			}
+		}
+		else if (local_14 != 0)
+		{
+			if (*(unsigned char *)(local_ci + 2) != 0)
+			{
+				local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
+				local_8g++;
+				continue;
+			}
+		}
+		else
+		{
+			local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
+			local_8g++;
+			continue;
+		}
+	}
+	return local_10m;
+}
+
+// FUNCTION: SADX 0x004a0100
+int dsGDLoadPalette(unsigned short stg, unsigned short act)
+{
+	struct LE_PALIGHT_ENV *local_8;
+	local_8 = le_find_paenv(stg, act, 0);
+	if (local_8 == 0 || (local_8->flgs & 1) == 0)
+	{
+		act = 0;
+		local_8 = le_find_paenv(stg, act, 0);
+		if (local_8 == 0)
+		{
+			stg = 0;
+		}
+	}
+	local_8 = le_find_paenv(stg, act, -8);
+	if (local_8 != 0 && (local_8->flgs & 1) != 0)
+	{
+		le_set_paenv(stg, act, -8);
+	}
+	else
+	{
+		le_set_paenv(stg, act, 0);
+	}
+	local_8 = le_find_paenv(stg, act, -6);
+	if (local_8 != 0 && (local_8->flgs & 1) != 0)
+	{
+		le_set_paenv(stg, act, -6);
+	}
+	else
+	{
+		le_set_paenv(stg, act, 0);
+	}
+	le_set_paenv(stg, act, 0);
+	return 1;
 }
