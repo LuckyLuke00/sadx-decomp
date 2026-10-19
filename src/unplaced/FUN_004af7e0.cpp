@@ -14,162 +14,162 @@ void FUN_004ae9c0(int param_1, int param_2);
 // FUNCTION: SADX 0x004af7e0
 void FUN_004af7e0()
 {
-	int *v = DAT_05b3e468[0];
-	int y;
-	int *x = DAT_05b3e988;
-	int p = 0;
-	int vol;
-	int *ok;
-	int i;
-	int bt;
+	int *local_10l = DAT_05b3e468[0];
+	int local_18x;
+	int *local_14u = DAT_05b3e988;
+	int local_ci = 0;
+	int local_8g;
+	int *local_20k;
+	int local_1cg;
+	int local_24;
 
 	if (DAT_05b3ea00 == 0)
 	{
 		InitOverlapSE(0);
-		for (vol = 0; vol < 20; vol++)
+		for (local_8g = 0; local_8g < 20; local_8g++)
 		{
-			if (v[3] & 1)
+			if (local_10l[3] & 1)
 			{
-				if (v[4] > 0x568)
+				if (local_10l[4] > 0x568)
 				{
-					Serif_Play(v[4] + 0x159);
-					v[3] &= ~0x10;
-					v[1] = 0;
+					Serif_Play(local_10l[4] + 0x159);
+					local_10l[3] &= ~0x10;
+					local_10l[1] = 0;
 				}
 				else
 				{
-					i = 0;
-					y = 0;
-					ok = banktbl;
-					while (*ok >= 0 || i != 0)
+					local_1cg = 0;
+					local_18x = 0;
+					local_20k = banktbl;
+					while (*local_20k >= 0 || local_1cg != 0)
 					{
-						if (v[4] > *ok)
+						if (local_10l[4] > *local_20k)
 						{
-							i = *ok;
-							ok++;
-							y = *ok;
+							local_1cg = *local_20k;
+							local_20k++;
+							local_18x = *local_20k;
 							break;
 						}
-						ok += 2;
+						local_20k += 2;
 					}
-					if (dsEVboss(v[4]))
+					if (dsEVboss(local_10l[4]))
 					{
-						y = (y == 6) + (y == 3) * 4;
+						local_18x = (local_18x == 6) + (local_18x == 3) * 4;
 					}
-					if (i != 0)
+					if (local_1cg != 0)
 					{
-						p = IsPlayOk(v[4]);
-						if (p)
+						local_ci = IsPlayOk(local_10l[4]);
+						if (local_ci)
 						{
-							makesndfilename(y, v[4] - i - 1);
-							v[13] = y;
+							makesndfilename(local_18x, local_10l[4] - local_1cg - 1);
+							local_10l[13] = local_18x;
 						}
 					}
 					else
 					{
-						p = IsPlayOk(v[4]);
-						if (p)
+						local_ci = IsPlayOk(local_10l[4]);
+						if (local_ci)
 						{
-							makesndfilename(0, v[4]);
-							v[13] = 0;
+							makesndfilename(0, local_10l[4]);
+							local_10l[13] = 0;
 						}
 					}
-					if (p)
+					if (local_ci)
 					{
-						if (v[3] & 0x4000)
+						if (local_10l[3] & 0x4000)
 						{
-							Load3DPCM(vol, (void *)DAT_05b3e398, DAT_05b3e464, 2);
-							Set3DMinMaxPCM(vol, 10.0f, 500.0f);
+							Load3DPCM(local_8g, (void *)DAT_05b3e398, DAT_05b3e464, 2);
+							Set3DMinMaxPCM(local_8g, 10.0f, 500.0f);
 						}
 						else
 						{
-							LoadPCM(vol, (void *)DAT_05b3e398, DAT_05b3e464, 2);
+							LoadPCM(local_8g, (void *)DAT_05b3e398, DAT_05b3e464, 2);
 						}
-						if (!(v[3] & 0x4000))
+						if (!(local_10l[3] & 0x4000))
 						{
-							if (v[3] & 0x100)
+							if (local_10l[3] & 0x100)
 							{
-								*x = dsGetVolume(vol);
+								*local_14u = dsGetVolume(local_8g);
 							}
-							else if (v[3] & 0x200)
+							else if (local_10l[3] & 0x200)
 							{
-								*x = v[6];
+								*local_14u = local_10l[6];
 							}
 							else
 							{
-								*x = 0;
+								*local_14u = 0;
 							}
-							IsndVolume(*x, vol);
+							IsndVolume(*local_14u, local_8g);
 						}
-						if (v[3] & 0x800)
+						if (local_10l[3] & 0x800)
 						{
-							IsndPitch(v[5], vol);
+							IsndPitch(local_10l[5], local_8g);
 						}
-						if (v[3] & 0x2000)
+						if (local_10l[3] & 0x2000)
 						{
-							FUN_004ae9c0(v[8], vol);
+							FUN_004ae9c0(local_10l[8], local_8g);
 						}
-						FUN_004ab120(vol, 0);
+						FUN_004ab120(local_8g, 0);
 					}
 				}
-				v[3] &= ~1;
+				local_10l[3] &= ~1;
 			}
 			else
 			{
-				if (v[1] > 0)
+				if (local_10l[1] > 0)
 				{
-					if (!(v[3] & 0x4000))
+					if (!(local_10l[3] & 0x4000))
 					{
-						if ((v[3] & 2) || (v[3] & 0x20))
+						if ((local_10l[3] & 2) || (local_10l[3] & 0x20))
 						{
-							if (v[3] & 0x100)
+							if (local_10l[3] & 0x100)
 							{
-								bt = dsGetVolume(vol);
-								if (*x != bt)
+								local_24 = dsGetVolume(local_8g);
+								if (*local_14u != local_24)
 								{
-									IsndVolume(bt, vol);
-									*x = bt;
+									IsndVolume(local_24, local_8g);
+									*local_14u = local_24;
 								}
 							}
-							v[3] &= ~2;
+							local_10l[3] &= ~2;
 						}
-						if (v[3] & 0x200)
+						if (local_10l[3] & 0x200)
 						{
-							bt = v[6];
-							if (*x != bt)
+							local_24 = local_10l[6];
+							if (*local_14u != local_24)
 							{
-								IsndVolume(bt, vol);
-								*x = bt;
+								IsndVolume(local_24, local_8g);
+								*local_14u = local_24;
 							}
 						}
 					}
-					if (v[3] & 0x800)
+					if (local_10l[3] & 0x800)
 					{
-						IsndPitch(v[5], vol);
-						v[3] &= ~0x800;
+						IsndPitch(local_10l[5], local_8g);
+						local_10l[3] &= ~0x800;
 					}
-					if (v[3] & 0x2000)
+					if (local_10l[3] & 0x2000)
 					{
-						FUN_004ae9c0(v[8], vol);
-						v[3] &= ~0x2000;
+						FUN_004ae9c0(local_10l[8], local_8g);
+						local_10l[3] &= ~0x2000;
 					}
-					v[1] = v[1] - 1;
+					local_10l[1] = local_10l[1] - 1;
 				}
-				if (v[1] == 0)
+				if (local_10l[1] == 0)
 				{
-					if (v[3] & 0x10)
+					if (local_10l[3] & 0x10)
 					{
-						IsndStop(vol);
+						IsndStop(local_8g);
 					}
-					v[1] = 0;
-					v[2] = 0;
-					v[3] = 0;
-					v[4] = -1;
-					DAT_05b3e938[vol] = 0;
+					local_10l[1] = 0;
+					local_10l[2] = 0;
+					local_10l[3] = 0;
+					local_10l[4] = -1;
+					DAT_05b3e938[local_8g] = 0;
 				}
 			}
-			v += 14;
-			x++;
+			local_10l += 14;
+			local_14u++;
 		}
 		if (DAT_05b3ea04 == 0)
 		{

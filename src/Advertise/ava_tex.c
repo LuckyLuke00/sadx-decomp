@@ -8,32 +8,32 @@ void FUN_004b0870(int param_1);
 void FUN_004b6460(struct NJS_TEXLIST *param_1, char *param_2);
 
 // FUNCTION: SADX 0x004b0790
-void AvaLoadTex(enum AvaTexLdEnum *list)
+void AvaLoadTex(enum AvaTexLdEnum *enumlist_ptr)
 {
-	int tex;
+	int local_8;
 
-	if (list == 0)
+	if (enumlist_ptr == 0)
 	{
 		return;
 	}
-	while ((tex = *list++) != 0x24)
+	while ((local_8 = *enumlist_ptr++) != 0x24)
 	{
-		FUN_004b0870(tex);
-		if (tex == 0x1f)
+		FUN_004b0870(local_8);
+		if (local_8 == 0x1f)
 		{
-			void *(*a)[2];
+			void *(*local_c)[2];
 
-			a = DAT_025add48[DAT_05b3ebbc];
-			texLoadTexturePvmFile((char *)a[tex][0], (struct NJS_TEXLIST *)a[tex][1]);
-			FUN_004b6460((struct NJS_TEXLIST *)a[tex][1], (char *)a[tex][0]);
+			local_c = DAT_025add48[DAT_05b3ebbc];
+			texLoadTexturePvmFile((char *)local_c[local_8][0], (struct NJS_TEXLIST *)local_c[local_8][1]);
+			FUN_004b6460((struct NJS_TEXLIST *)local_c[local_8][1], (char *)local_c[local_8][0]);
 		}
 		else
 		{
-			void *(*b)[2];
+			void *(*local_10)[2];
 
-			b = DAT_025add48[DAT_05b3ebbc];
-			texLoadTexturePvmFile((char *)b[tex][0], (struct NJS_TEXLIST *)b[tex][1]);
-			FUN_004b6460((struct NJS_TEXLIST *)b[tex][1], (char *)b[tex][0]);
+			local_10 = DAT_025add48[DAT_05b3ebbc];
+			texLoadTexturePvmFile((char *)local_10[local_8][0], (struct NJS_TEXLIST *)local_10[local_8][1]);
+			FUN_004b6460((struct NJS_TEXLIST *)local_10[local_8][1], (char *)local_10[local_8][0]);
 		}
 	}
 }
@@ -41,10 +41,10 @@ void AvaLoadTex(enum AvaTexLdEnum *list)
 // FUNCTION: SADX 0x004b0870
 void FUN_004b0870(int param_1)
 {
-	int word;
-	int bit;
+	int local_8g;
+	int local_cg;
 
-	word = param_1 / 32;
-	bit = param_1 % 32;
-	DAT_05b40a40[word] |= 1 << bit;
+	local_8g = param_1 / 32;
+	local_cg = param_1 % 32;
+	DAT_05b40a40[local_8g] |= 1 << local_cg;
 }

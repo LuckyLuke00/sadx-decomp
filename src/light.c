@@ -12,7 +12,7 @@ extern int DAT_05b39be8;
 extern int DAT_05b39bec;
 extern int DAT_05b39dac;
 
-int __fastcall FUN_004199f0(void *self, float value);
+int __fastcall FUN_004199f0(void *param_1, float param_2);
 void njPushMatrix(float *m);
 void njTranslateV(float *m, struct NJS_POINT3 *v);
 void njRotateZ(float *m, int ang);
@@ -37,14 +37,14 @@ void ChangePowerMaterial()
 // FUNCTION: SADX 0x0049f2e0
 void Light(struct task *tp)
 {
-	struct taskwk *twp = tp->twp;
-	switch (twp->mode)
+	struct taskwk *local_8 = tp->twp;
+	switch (local_8->mode)
 	{
 	case 0:
 		le_load_stagelight();
 		dsEditLightInit();
 		tp->dest = FUN_0049f340;
-		twp->mode++;
+		local_8->mode++;
 		break;
 	case 1:
 		break;
@@ -61,161 +61,161 @@ void FUN_0049f340(struct task *)
 }
 
 // FUNCTION: SADX 0x0049f350
-struct task *asSetLight(struct task *tp, struct NJS_LIGHT *light, struct LightInfo *info)
+struct task *asSetLight(struct task *tp, struct NJS_LIGHT *glp, struct LightInfo *lip)
 {
-	struct taskwk *ctwp;
-	struct task *ctp;
-	struct taskwk *twp;
-	twp = tp->twp;
-	ctp = CreateChildTask(2, FUN_0049f4a0, tp);
-	if (ctp == 0)
+	struct taskwk *local_8g;
+	struct task *local_cj;
+	struct taskwk *local_10;
+	local_10 = tp->twp;
+	local_cj = CreateChildTask(2, FUN_0049f4a0, tp);
+	if (local_cj == 0)
 	{
 		return 0;
 	}
-	ctwp = ctp->twp;
-	if (ctwp)
+	local_8g = local_cj->twp;
+	if (local_8g)
 	{
-		if (twp)
+		if (local_10)
 		{
-			struct NJS_POINT3 out;
-			struct NJS_POINT3 pos = info->pos;
+			struct NJS_POINT3 local_20g;
+			struct NJS_POINT3 local_2c = lip->pos;
 			njPushMatrix(_nj_unit_matrix_);
-			njTranslateV(0, &twp->pos);
-			if (twp->ang.z)
+			njTranslateV(0, &local_10->pos);
+			if (local_10->ang.z)
 			{
-				njRotateZ(0, (unsigned short)twp->ang.z);
+				njRotateZ(0, (unsigned short)local_10->ang.z);
 			}
-			if (twp->ang.x)
+			if (local_10->ang.x)
 			{
-				njRotateX(0, twp->ang.x);
+				njRotateX(0, local_10->ang.x);
 			}
-			if (twp->ang.y)
+			if (local_10->ang.y)
 			{
-				njRotateY(0, twp->ang.y);
+				njRotateY(0, local_10->ang.y);
 			}
-			njCalcVector(0, &pos, &out);
+			njCalcVector(0, &local_2c, &local_20g);
 			njPopMatrixEx();
-			ctwp->pos.x = twp->pos.x + pos.x;
-			ctwp->pos.y = twp->pos.y + pos.y;
-			ctwp->pos.z = twp->pos.z + pos.z;
+			local_8g->pos.x = local_10->pos.x + local_2c.x;
+			local_8g->pos.y = local_10->pos.y + local_2c.y;
+			local_8g->pos.z = local_10->pos.z + local_2c.z;
 		}
-		ctwp->counter.ptr = light;
-		ctwp->timer.ptr = info;
+		local_8g->counter.ptr = glp;
+		local_8g->timer.ptr = lip;
 	}
-	return ctp;
+	return local_cj;
 }
 
 // FUNCTION: SADX 0x0049f4a0
-void FUN_0049f4a0(struct task *tp)
+void FUN_0049f4a0(struct task *param_1)
 {
-	struct taskwk *twp = tp->twp;
-	switch (twp->mode)
+	struct taskwk *local_8 = param_1->twp;
+	switch (local_8->mode)
 	{
 	case 0:
 	{
-		struct LightInfo *info = (struct LightInfo *)twp->timer.ptr;
-		twp->wtimer = ((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744;
-		le_CreateLight(3, info->lsrc);
-		le_SetLightIntensity(3, info->spc, info->dif, info->amb);
-		le_SetLightColor(3, info->argb.r, info->argb.g, info->argb.b);
-		if (info->lsrc & 0xa)
+		struct LightInfo *local_c = (struct LightInfo *)local_8->timer.ptr;
+		local_8->wtimer = ((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744;
+		le_CreateLight(3, local_c->lsrc);
+		le_SetLightIntensity(3, local_c->spc, local_c->dif, local_c->amb);
+		le_SetLightColor(3, local_c->argb.r, local_c->argb.g, local_c->argb.b);
+		if (local_c->lsrc & 0xa)
 		{
-			le_SetLightDirection(3, info->vec.x, info->vec.y, info->vec.z);
+			le_SetLightDirection(3, local_c->vec.x, local_c->vec.y, local_c->vec.z);
 		}
-		tp->dest = FUN_0049f5e0;
-		twp->mode++;
+		param_1->dest = FUN_0049f5e0;
+		local_8->mode++;
 		break;
 	}
 	case 1:
-		if (twp->wtimer != (((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744))
+		if (local_8->wtimer != (((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744))
 		{
-			twp->mode = 2;
+			local_8->mode = 2;
 		}
 		break;
 	case 2:
-		FreeTask(tp);
+		FreeTask(param_1);
 		break;
 	}
 }
 
 // FUNCTION: SADX 0x0049f5e0
-void FUN_0049f5e0(struct task *tp)
+void FUN_0049f5e0(struct task *param_1)
 {
-	void *light;
-	struct taskwk *twp = tp->twp;
-	light = twp->counter.ptr;
-	FUN_007d21b0(light);
+	void *local_8g;
+	struct taskwk *local_cg = param_1->twp;
+	local_8g = local_cg->counter.ptr;
+	FUN_007d21b0(local_8g);
 }
 
 // FUNCTION: SADX 0x0049f610
-void get_stg_act(int *stage_out, int *act_out)
+void get_stg_act(int *a_stg, int *a_act)
 {
 	int act;
-	int stage;
+	int stg;
 	act = ((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744;
-	stage = act >> 8;
+	stg = act >> 8;
 	act = (unsigned char)act;
-	if (stage == 0x1a || stage == 0x21 || stage == 0x1d)
+	if (stg == 0x1a || stg == 0x21 || stg == 0x1d)
 	{
-		cnv_stg_act(&stage, &act);
+		cnv_stg_act(&stg, &act);
 	}
-	*act_out = act;
-	*stage_out = stage;
+	*a_act = act;
+	*a_stg = stg;
 }
 
 // FUNCTION: SADX 0x0049f680
-static void cnv_stg_act(int *stage_p, int *act_p)
+static void cnv_stg_act(int *a_stg, int *a_act)
 {
-	int act;
-	int stage;
-	stage = *stage_p;
-	act = *act_p;
-	if (stage == 0x1a)
+	int local_cg;
+	int local_8g;
+	local_8g = *a_stg;
+	local_cg = *a_act;
+	if (local_8g == 0x1a)
 	{
-		int time;
-		switch (act)
+		int local_10;
+		switch (local_cg)
 		{
 		case 2:
 			break;
 		case 5:
-			act = 0;
+			local_cg = 0;
 			break;
 		case 4:
 			if (checkInSsHodel() == 2)
 			{
-				act = 0;
+				local_cg = 0;
 				break;
 			}
 		default:
-			time = SeqGetTime();
-			if (time == 1)
+			local_10 = SeqGetTime();
+			if (local_10 == 1)
 			{
-				act = 1;
+				local_cg = 1;
 			}
-			else if (time == 2)
+			else if (local_10 == 2)
 			{
-				act = 3;
+				local_cg = 3;
 			}
 			else
 			{
-				act = 0;
+				local_cg = 0;
 			}
 		}
 	}
-	else if (stage == 0x21)
+	else if (local_8g == 0x21)
 	{
-		if (act < 3)
+		if (local_cg < 3)
 		{
-			act = SeqGetTime();
+			local_cg = SeqGetTime();
 		}
 	}
-	else if (stage == 0x1d)
+	else if (local_8g == 0x1d)
 	{
-		stage = 1;
-		act = 0;
+		local_8g = 1;
+		local_cg = 0;
 	}
-	*act_p = act;
-	*stage_p = stage;
+	*a_act = local_cg;
+	*a_stg = local_8g;
 }
 
 // FUNCTION: SADX 0x0049f750
@@ -237,23 +237,23 @@ void FUN_0049f780()
 void dsEditLightInit()
 {
 	int act;
-	int stage;
-	get_stg_act(&stage, &act);
-	le_lightInit(stage, act);
+	int stg;
+	get_stg_act(&stg, &act);
+	le_lightInit(stg, act);
 }
 
 // FUNCTION: SADX 0x0049f7c0
 void le_loadLight(int stg, int act)
 {
-	int pno;
-	int player;
-	pno = 0;
-	pno = GetPlayerNumber();
-	if (pno != 6)
+	int local_cg;
+	int local_8g;
+	local_cg = 0;
+	local_cg = GetPlayerNumber();
+	if (local_cg != 6)
 	{
-		pno = 0;
+		local_cg = 0;
 	}
-	player = pno;
+	local_8g = local_cg;
 	cnv_stg_act(&stg, &act);
 	FUN_005b5aa0();
 	le_set_env(stg, act);
@@ -265,15 +265,15 @@ void le_loadLight(int stg, int act)
 // FUNCTION: SADX 0x0049f840
 void le_lightInit(int stg, int act)
 {
-	int pno;
-	int player;
-	pno = 0;
-	pno = GetPlayerNumber();
-	if (pno != 6)
+	int local_cg;
+	int local_8g;
+	local_cg = 0;
+	local_cg = GetPlayerNumber();
+	if (local_cg != 6)
 	{
-		pno = 0;
+		local_cg = 0;
 	}
-	player = pno;
+	local_8g = local_cg;
 	cnv_stg_act(&stg, &act);
 	DAT_05b39bec = 0;
 	DAT_05b39be8 = 0;
@@ -286,12 +286,12 @@ void le_lightInit(int stg, int act)
 }
 
 // FUNCTION: SADX 0x0049f8e0
-void le_CreateLight(int no, int flg)
+void le_CreateLight(int no, int typ)
 {
 	if (no)
 	{
-		DAT_05b39da8[no & 3] = flg;
-		if (flg & 2)
+		DAT_05b39da8[no & 3] = typ;
+		if (typ & 2)
 		{
 			DAT_05b39bf0[no & 3].flgs |= 1;
 		}
@@ -311,27 +311,27 @@ void le_DeleteLight(int no)
 // FUNCTION: SADX 0x0049f970
 void le_SetLightIntensity(int no, float spe, float dif, float amb)
 {
-	int f;
-	struct LE_LIGHT_ENV *e;
+	int local_8g;
+	struct LE_LIGHT_ENV *local_cg;
 	if (no)
 	{
-		e = &DAT_05b39cb0;
-		f = -1;
+		local_cg = &DAT_05b39cb0;
+		local_8g = -1;
 		if (no)
 		{
-			e = &DAT_05b39bf0[no & 3];
-			f = DAT_05b39da8[no & 3];
+			local_cg = &DAT_05b39bf0[no & 3];
+			local_8g = DAT_05b39da8[no & 3];
 		}
-		e->dif = dif;
-		if (f & 0x10)
+		local_cg->dif = dif;
+		if (local_8g & 0x10)
 		{
-			e->spe = spe;
+			local_cg->spe = spe;
 		}
-		if (f & 1)
+		if (local_8g & 1)
 		{
-			e->ambB = amb;
-			e->ambG = amb;
-			e->ambR = amb;
+			local_cg->ambB = amb;
+			local_cg->ambG = amb;
+			local_cg->ambR = amb;
 		}
 	}
 }
@@ -339,34 +339,34 @@ void le_SetLightIntensity(int no, float spe, float dif, float amb)
 // FUNCTION: SADX 0x0049fa00
 void le_SetLightColor(int no, float r, float g, float b)
 {
-	struct LE_LIGHT_ENV *env;
+	struct LE_LIGHT_ENV *local_8;
 	if (no)
 	{
-		env = &DAT_05b39cb0;
+		local_8 = &DAT_05b39cb0;
 		if (no)
 		{
-			env = &DAT_05b39bf0[no & 3];
+			local_8 = &DAT_05b39bf0[no & 3];
 		}
-		env->r = r;
-		env->g = g;
-		env->b = b;
+		local_8->r = r;
+		local_8->g = g;
+		local_8->b = b;
 	}
 }
 
 // FUNCTION: SADX 0x0049fa50
 void le_SetLightDirection(int no, float x, float y, float z)
 {
-	struct LE_LIGHT_ENV *env;
+	struct LE_LIGHT_ENV *local_8;
 	if (no)
 	{
-		env = &DAT_05b39cb0;
+		local_8 = &DAT_05b39cb0;
 		if (no)
 		{
-			env = &DAT_05b39bf0[no & 3];
+			local_8 = &DAT_05b39bf0[no & 3];
 		}
-		env->vec.x = x;
-		env->vec.y = y;
-		env->vec.z = z;
+		local_8->vec.x = x;
+		local_8->vec.y = y;
+		local_8->vec.z = z;
 	}
 }
 
@@ -388,15 +388,15 @@ int le_load_stagelight()
 }
 
 // FUNCTION: SADX 0x0049fdd0
-struct LE_LIGHT_ENV *le_find_env(int stg, int act, int lig)
+struct LE_LIGHT_ENV *le_find_env(int stg, int act, int ligNo)
 {
-	int idx;
-	struct LE_LIGHT_ENV *e;
-	for (e = le_stg, idx = 0; e->stgNo != 0xff && idx < 0xff; idx++, e++)
+	int local_8g;
+	struct LE_LIGHT_ENV *local_cg;
+	for (local_cg = le_stg, local_8g = 0; local_cg->stgNo != 0xff && local_8g < 0xff; local_8g++, local_cg++)
 	{
-		if (e->stgNo == stg && e->actNo == act && e->ligNo == lig)
+		if (local_cg->stgNo == stg && local_cg->actNo == act && local_cg->ligNo == ligNo)
 		{
-			return e;
+			return local_cg;
 		}
 	}
 	return 0;
@@ -405,58 +405,58 @@ struct LE_LIGHT_ENV *le_find_env(int stg, int act, int lig)
 // FUNCTION: SADX 0x0049fe40
 void le_set_env(int stg, int act)
 {
-	int e;
-	struct LE_LIGHT_ENV *d;
-	struct LE_LIGHT_ENV *l;
-	int idx;
-	l = le_stg;
-	d = DAT_05b39bf0;
+	int local_14;
+	struct LE_LIGHT_ENV *local_10;
+	struct LE_LIGHT_ENV *local_ci;
+	int local_8g;
+	local_ci = le_stg;
+	local_10 = DAT_05b39bf0;
 	memset(DAT_05b39bf0, 0, sizeof(DAT_05b39bf0));
-	*d = le_env_dflt;
-	d->flgs = 1;
-	d->stgNo = stg;
-	d->actNo = act;
-	d->ligNo = 0;
-	d[1].ligNo = 1;
-	d[2].ligNo = 2;
-	d[3].ligNo = 3;
-	for (idx = 0; l->stgNo != 0xff && idx < 0xff; idx++, l++)
+	*local_10 = le_env_dflt;
+	local_10->flgs = 1;
+	local_10->stgNo = stg;
+	local_10->actNo = act;
+	local_10->ligNo = 0;
+	local_10[1].ligNo = 1;
+	local_10[2].ligNo = 2;
+	local_10[3].ligNo = 3;
+	for (local_8g = 0; local_ci->stgNo != 0xff && local_8g < 0xff; local_8g++, local_ci++)
 	{
-		if (l->stgNo == stg && (l->actNo == act || l->actNo == 0))
+		if (local_ci->stgNo == stg && (local_ci->actNo == act || local_ci->actNo == 0))
 		{
-			e = l->ligNo & 3;
-			d = &DAT_05b39bf0[e];
-			*d = *l;
-			d->stgNo = stg;
-			d->actNo = act;
-			d->ligNo = e;
+			local_14 = local_ci->ligNo & 3;
+			local_10 = &DAT_05b39bf0[local_14];
+			*local_10 = *local_ci;
+			local_10->stgNo = stg;
+			local_10->actNo = act;
+			local_10->ligNo = local_14;
 		}
 	}
 }
 
 // FUNCTION: SADX 0x0049ff50
-void le_set_paenv(int stg, int act, int lig)
+void le_set_paenv(int stg, int act, int chr)
 {
-	struct LE_PALIGHT_ENV *pa;
+	struct LE_PALIGHT_ENV *local_8;
 	memset(&DAT_05b39ce0, 0, sizeof(DAT_05b39ce0));
-	pa = le_find_paenv(stg, act, lig);
-	if (pa == 0)
+	local_8 = le_find_paenv(stg, act, chr);
+	if (local_8 == 0)
 	{
-		pa = le_find_paenv(stg, 0, lig);
+		local_8 = le_find_paenv(stg, 0, chr);
 	}
-	if (pa == 0)
+	if (local_8 == 0)
 	{
-		pa = le_find_paenv(0, 0, lig);
+		local_8 = le_find_paenv(0, 0, chr);
 	}
-	if (pa)
+	if (local_8)
 	{
-		DAT_05b39ce0 = *pa;
-		lig = lig < 0 ? -lig : lig;
-		if (lig == 6)
+		DAT_05b39ce0 = *local_8;
+		chr = chr < 0 ? -chr : chr;
+		if (chr == 6)
 		{
 			DAT_05b39ce0.chrNo = 6;
 		}
-		else if (lig == 8)
+		else if (chr == 8)
 		{
 			DAT_05b39ce0.chrNo = 8;
 		}

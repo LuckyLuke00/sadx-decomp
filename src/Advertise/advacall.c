@@ -11,10 +11,10 @@ void FUN_004a0520(float param_1, float param_2);
 void FUN_005b5aa0();
 
 // FUNCTION: SADX 0x004bab70
-long Title2Init(void *param_1)
+long Title2Init(void *Param)
 {
-	unsigned char *local_4;
-	long local_8;
+	unsigned char *local_8g;
+	long local_cg;
 
 	DAT_05ad95e1 = 1;
 	FUN_004bac60();
@@ -24,27 +24,27 @@ long Title2Init(void *param_1)
 	LoadTextureForEachGameMode(0);
 	LoadPlayerMotionData(0);
 	DAT_05cda18c = 0;
-	local_4 = (unsigned char *)param_1;
-	switch (*local_4)
+	local_8g = (unsigned char *)Param;
+	switch (*local_8g)
 	{
 	case 1:
-		local_8 = 1;
+		local_cg = 1;
 		break;
 	case 2:
-		local_8 = 2;
+		local_cg = 2;
 		break;
 	case 3:
-		local_8 = 3;
+		local_cg = 3;
 		break;
 	default:
 		DAT_05cd14e2 = 0;
 		DAT_05cd14eb = 0;
-		local_8 = 0;
+		local_cg = 0;
 		DAT_05b9d848 = 0;
 		break;
 	}
-	SetAdvaSequenceTask((struct SeqPrmType *)&local_8);
-	if (local_4[1] != 0)
+	SetAdvaSequenceTask((struct SeqPrmType *)&local_cg);
+	if (local_8g[1] != 0)
 	{
 		FUN_005b5aa0();
 	}
@@ -53,7 +53,7 @@ long Title2Init(void *param_1)
 }
 
 // FUNCTION: SADX 0x004bacf0
-long Title2Exit(void *param_1)
+long Title2Exit(void *Param)
 {
 	npSetZCompareMode(1);
 	ReleaseTextureForEachGameMode();
@@ -64,23 +64,23 @@ long Title2Exit(void *param_1)
 }
 
 // FUNCTION: SADX 0x004bad20
-long Title2Loop(void *param_1)
+long Title2Loop(void *Param)
 {
-	long local_4;
+	long local_8;
 
 	npSetZCompareMode(3);
-	local_4 = FUN_004bad70();
-	if (local_4 == 0)
+	local_8 = FUN_004bad70();
+	if (local_8 == 0)
 	{
 		if (*(int *)((char *)DAT_05cda18c + 0x2c) == 0)
 		{
-			local_4 = -2;
+			local_8 = -2;
 		}
 		else
 		{
-			local_4 = *(int *)(*(int *)((char *)DAT_05cda18c + 0x2c) + 0x14);
+			local_8 = *(int *)(*(int *)((char *)DAT_05cda18c + 0x2c) + 0x14);
 		}
 	}
 	FUN_005b5aa0();
-	return local_4;
+	return local_8;
 }

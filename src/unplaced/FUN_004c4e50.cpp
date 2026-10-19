@@ -9,20 +9,20 @@ extern unsigned char DAT_05b92e56;
 // FUNCTION: SADX 0x004c4e50
 void FUN_004c4e50()
 {
-	int i;
+	int local_8;
 
-	for (i = 0; i < 256; i++)
+	for (local_8 = 0; local_8 < 256; local_8++)
 	{
-		DAT_05b92ec8[i * 3 + 1] = DAT_05b92ec8[i * 3];
-		DAT_05b92ec8[i * 3] = 0;
+		DAT_05b92ec8[local_8 * 3 + 1] = DAT_05b92ec8[local_8 * 3];
+		DAT_05b92ec8[local_8 * 3] = 0;
 	}
-	for (i = 0; i < 6; i++)
+	for (local_8 = 0; local_8 < 6; local_8++)
 	{
-		DAT_05b92ec8[DAT_05b92e30[i + 2] * 3] = 1;
+		DAT_05b92ec8[DAT_05b92e30[local_8 + 2] * 3] = 1;
 	}
-	for (i = 0; i < 256; i++)
+	for (local_8 = 0; local_8 < 256; local_8++)
 	{
-		DAT_05b92ec8[i * 3 + 2] = (DAT_05b92ec8[i * 3] ^ DAT_05b92ec8[i * 3 + 1]) & DAT_05b92ec8[i * 3];
+		DAT_05b92ec8[local_8 * 3 + 2] = (DAT_05b92ec8[local_8 * 3] ^ DAT_05b92ec8[local_8 * 3 + 1]) & DAT_05b92ec8[local_8 * 3];
 	}
 	DAT_05b92e55 = DAT_05b92e54;
 	DAT_05b92e54 = *DAT_05b92e30;

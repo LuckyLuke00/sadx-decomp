@@ -25,21 +25,21 @@ extern void *DAT_05b3e378;
 extern void *DAT_05b3e37c;
 
 // FUNCTION: SADX 0x004b6b50
-void DrawFileDelDlgSub(struct DDlgType *param_1)
+void DrawFileDelDlgSub(struct DDlgType *dlgp)
 {
-	int w;
-	int h;
-	float x;
-	float y;
-	struct FileSelWk *wk;
+	int local_8g;
+	int local_cj;
+	float local_14h;
+	float local_10m;
+	struct FileSelWk *local_18;
 
-	wk = (struct FileSelWk *)DAT_05b42530->awp;
+	local_18 = (struct FileSelWk *)DAT_05b42530->awp;
 	___njSetTexture(&texlist_ava_fsdlg);
 	ghSetPvrTexMaterial(-1);
-	ghGetPvrTextureSize(&texlist_ava_fsdlg, 3, &w, &h);
-	x = w * 0.5 + -113.0;
-	y = h * 0.5 + -43.0;
-	((void (*)(int, float, float, float, float, float))ghDrawPvrTexture)(0x4000003, (float)(x * param_1->SclX + param_1->CntrX) * ScreenRaitoX, (float)(y * param_1->SclY + param_1->CntrY) * ScreenRaitoY, param_1->BaseZ + -6.0, param_1->SclX * ScreenRaitoX, param_1->SclY * ScreenRaitoY);
+	ghGetPvrTextureSize(&texlist_ava_fsdlg, 3, &local_8g, &local_cj);
+	local_14h = local_8g * 0.5 + -113.0;
+	local_10m = local_cj * 0.5 + -43.0;
+	((void (*)(int, float, float, float, float, float))ghDrawPvrTexture)(0x4000003, (float)(local_14h * dlgp->SclX + dlgp->CntrX) * ScreenRaitoX, (float)(local_10m * dlgp->SclY + dlgp->CntrY) * ScreenRaitoY, dlgp->BaseZ + -6.0, dlgp->SclX * ScreenRaitoX, dlgp->SclY * ScreenRaitoY);
 }
 
 // FUNCTION: SADX 0x004b6c50
@@ -72,86 +72,86 @@ void FUN_004b6ca0(void)
 // FUNCTION: SADX 0x004b6cd0
 struct task *FUN_004b6cd0(struct ModeSelPrmType *param_1)
 {
-	void *pWk;
-	struct task *pTask;
+	void *local_cg;
+	struct task *local_8g;
 
-	pTask = CreateElementalTask(0, 3, file_sel_exec);
-	DAT_05b42530 = pTask;
+	local_8g = CreateElementalTask(0, 3, file_sel_exec);
+	DAT_05b42530 = local_8g;
 	if (DAT_05b42530)
 	{
-		pWk = CAlloc(1, 0x38);
-		pTask->awp = (struct anywk *)pWk;
-		((void (*)(struct task *, struct ModeSelPrmType *))SetAdvaFileSelTask)(pTask, param_1);
-		pTask->exec = file_sel_exec;
-		pTask->disp = FUN_004b83c0;
+		local_cg = CAlloc(1, 0x38);
+		local_8g->awp = (struct anywk *)local_cg;
+		((void (*)(struct task *, struct ModeSelPrmType *))SetAdvaFileSelTask)(local_8g, param_1);
+		local_8g->exec = file_sel_exec;
+		local_8g->disp = FUN_004b83c0;
 	}
-	return pTask;
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x004b6d40
-struct task *SetAdvaFileSelTask(struct ModeSelPrmType *param_1)
+struct task *SetAdvaFileSelTask(struct ModeSelPrmType *prmp)
 {
-	struct FileSelWk *wk;
+	struct FileSelWk *local_8;
 
-	wk = (struct FileSelWk *)((struct task *)param_1)->awp;
-	wk->PrevMode = *(enum AdvaModeEnum *)*(&param_1 + 1);
-	wk->NextMode = *(enum AdvaModeEnum *)((char *)*(&param_1 + 1) + 4);
-	wk->BaseZ = 5900.0f;
-	wk->Stat = ADVA_STAT_REQWAIT;
-	FUN_004b6c50(wk);
+	local_8 = (struct FileSelWk *)((struct task *)prmp)->awp;
+	local_8->PrevMode = *(enum AdvaModeEnum *)*(&prmp + 1);
+	local_8->NextMode = *(enum AdvaModeEnum *)((char *)*(&prmp + 1) + 4);
+	local_8->BaseZ = 5900.0f;
+	local_8->Stat = ADVA_STAT_REQWAIT;
+	FUN_004b6c50(local_8);
 }
 
 // FUNCTION: SADX 0x004b6d90
-void file_sel_exec(struct task *param_1)
+void file_sel_exec(struct task *tp)
 {
-	struct FileSelWk *wk;
+	struct FileSelWk *local_8;
 
-	wk = (struct FileSelWk *)param_1->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 2 && wk->Stat == ADVA_STAT_REQWAIT)
+	local_8 = (struct FileSelWk *)tp->awp;
+	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 2 && local_8->Stat == ADVA_STAT_REQWAIT)
 	{
-		FileSelModeWakeProcedure(wk);
-		wk->T = 0.0f;
-		wk->Stat = ADVA_STAT_FADEIN;
+		FileSelModeWakeProcedure(local_8);
+		local_8->T = 0.0f;
+		local_8->Stat = ADVA_STAT_FADEIN;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 2 && wk->Stat == ADVA_STAT_KEEP)
+	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 2 && local_8->Stat == ADVA_STAT_KEEP)
 	{
-		FUN_004b7800(wk);
-		wk->T = 0.0f;
-		wk->Stat = ADVA_STAT_FADEOUT;
+		FUN_004b7800(local_8);
+		local_8->T = 0.0f;
+		local_8->Stat = ADVA_STAT_FADEOUT;
 	}
-	switch (wk->Stat)
+	switch (local_8->Stat)
 	{
 	case ADVA_STAT_REQWAIT:
-		wk->BaseCol = 0;
+		local_8->BaseCol = 0;
 		break;
 	case ADVA_STAT_FADEIN:
-		wk->BaseCol = GetFadeInColFromT(wk->T);
-		wk->T = (float)(*(volatile int *)&DAT_05b9d848 * 0.05) + wk->T;
-		if (wk->T >= 1.0)
+		local_8->BaseCol = GetFadeInColFromT(local_8->T);
+		local_8->T = (float)(*(volatile int *)&DAT_05b9d848 * 0.05) + local_8->T;
+		if (local_8->T >= 1.0)
 		{
 			CloseDialog();
-			wk->Stat = ADVA_STAT_KEEP;
+			local_8->Stat = ADVA_STAT_KEEP;
 		}
 		DAT_05cd2604 = 1;
 		break;
 	case ADVA_STAT_KEEP:
-		wk->BaseCol = -1;
+		local_8->BaseCol = -1;
 		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 2;
-		file_sel_sub_exec(wk);
+		file_sel_sub_exec(local_8);
 		break;
 	case ADVA_STAT_FADEOUT:
-		wk->BaseCol = GetFadeOutColFromT(wk->T);
-		wk->T = (float)(*(volatile int *)&DAT_05b9d848 * 0.05) + wk->T;
-		if (wk->T > 1.0)
+		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
+		local_8->T = (float)(*(volatile int *)&DAT_05b9d848 * 0.05) + local_8->T;
+		if (local_8->T > 1.0)
 		{
-			wk->T = 1.0f;
+			local_8->T = 1.0f;
 		}
-		if (wk->T >= 1.0)
+		if (local_8->T >= 1.0)
 		{
 			AvaReleaseTexForEachMode(ADVA_MODE_FILE_SEL);
 			ghReleaseFontTexture(Ascii16x16FontInfo);
 			*((unsigned char *)DAT_05cda18c->awp + 0x1f) = 1;
-			wk->Stat = ADVA_STAT_REQWAIT;
+			local_8->Stat = ADVA_STAT_REQWAIT;
 			ReleaseLineList();
 		}
 		break;
@@ -161,25 +161,25 @@ void file_sel_exec(struct task *param_1)
 // FUNCTION: SADX 0x004b7800
 void FUN_004b7800(struct FileSelWk *param_1)
 {
-	void *a;
-	void *b;
-	void *c;
-	void *d;
+	void *local_8g;
+	void *local_cj;
+	void *local_14;
+	void *local_10;
 
 	if (DAT_05b3e378)
 	{
 		FUN_0041c2d0(DAT_05b3e378);
-		b = DAT_05b3e378;
-		a = b;
-		a ? (*(void *(__thiscall *)(void *, int))**(void ***)a)(a, 1) : 0;
+		local_cj = DAT_05b3e378;
+		local_8g = local_cj;
+		local_8g ? (*(void *(__thiscall *)(void *, int))**(void ***)local_8g)(local_8g, 1) : 0;
 		DAT_05b3e378 = 0;
 	}
 	if (DAT_05b3e37c)
 	{
 		FUN_0041c2d0(DAT_05b3e37c);
-		c = DAT_05b3e37c;
-		d = c;
-		d ? (*(void *(__thiscall *)(void *, int))**(void ***)d)(d, 1) : 0;
+		local_14 = DAT_05b3e37c;
+		local_10 = local_14;
+		local_10 ? (*(void *(__thiscall *)(void *, int))**(void ***)local_10)(local_10, 1) : 0;
 		DAT_05b3e37c = 0;
 	}
 }
@@ -187,27 +187,27 @@ void FUN_004b7800(struct FileSelWk *param_1)
 // FUNCTION: SADX 0x004b83c0
 void FUN_004b83c0(struct task *param_1)
 {
-	struct FileSelWk *wk;
+	struct FileSelWk *local_8;
 
-	wk = (struct FileSelWk *)param_1->awp;
-	if (wk->BaseCol == 0)
+	local_8 = (struct FileSelWk *)param_1->awp;
+	if (local_8->BaseCol == 0)
 	{
 		return;
 	}
 	ghDefaultBlendingMode();
-	wk->OfsX = 20.0f;
-	DrawSkyBg(wk->BaseZ + -2.0);
-	FUN_004b9c10(wk);
-	ghSetPvrTexBaseColor(wk->BaseCol);
-	DrawFileSelScoreWindow(wk);
-	DrawFileSelBallChar(wk);
-	DrawFileSelCsr(wk);
-	DrawFileSelBg(wk);
-	DrawFileEmblem(wk);
-	file_sel_disp((struct task *)wk);
-	DrawStartChiten(wk);
-	DrawSaishuuClear(wk);
-	DrawPlayTime(wk);
+	local_8->OfsX = 20.0f;
+	DrawSkyBg(local_8->BaseZ + -2.0);
+	FUN_004b9c10(local_8);
+	ghSetPvrTexBaseColor(local_8->BaseCol);
+	DrawFileSelScoreWindow(local_8);
+	DrawFileSelBallChar(local_8);
+	DrawFileSelCsr(local_8);
+	DrawFileSelBg(local_8);
+	DrawFileEmblem(local_8);
+	file_sel_disp((struct task *)local_8);
+	DrawStartChiten(local_8);
+	DrawSaishuuClear(local_8);
+	DrawPlayTime(local_8);
 	if (DAT_05b4252c)
 	{
 		AlertWindowTask(DAT_05b42524);

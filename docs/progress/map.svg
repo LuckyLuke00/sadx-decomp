@@ -603,7 +603,6 @@
 <rect x="590" y="540" width="6" height="6" fill="#6e7681"><title>0x0067d800 njPopMatrix: stub</title></rect>
 <rect x="744" y="540" width="6" height="6" fill="#6e7681"><title>0x0067e550 njSetPerspective: stub</title></rect>
 <rect x="863" y="540" width="6" height="6" fill="#6e7681"><title>0x0067f3f0 checkInSsHodel: stub</title></rect>
-<rect x="877" y="631" width="6" height="6" fill="#6e7681"><title>0x006e2050 light: stub</title></rect>
 <rect x="65" y="673" width="6" height="6" fill="#6e7681"><title>0x00712cc0 ADV1_ALR_GetEntryStatus: stub</title></rect>
 <rect x="86" y="694" width="6" height="6" fill="#6e7681"><title>0x007d21b0 FUN_007d21b0: stub</title></rect>
 <rect x="492" y="925" width="6" height="6" fill="#58a6ff"><title>0x008e1fa3 __security_check_cookie (library): 100%</title></rect>
@@ -1273,6 +1272,7 @@
 <rect x="716" y="960" width="6" height="6" fill="#58a6ff"><title>0x00902f0e _Mtxdst (library): 100%</title></rect>
 <rect x="723" y="960" width="6" height="6" fill="#58a6ff"><title>0x00902f1e _Mtxlock (library): 100%</title></rect>
 <rect x="730" y="960" width="6" height="6" fill="#58a6ff"><title>0x00902f2e _Mtxunlock (library): 100%</title></rect>
+<rect x="947" y="995" width="6" height="6" fill="#6e7681"><title>0x00913370 ind: stub</title></rect>
 <rect x="611" y="1030" width="6" height="6" fill="#58a6ff"><title>0x0091d1e2 _strupr_s_l_stat (library): 100%</title></rect>
 <rect x="618" y="1030" width="6" height="6" fill="#58a6ff"><title>0x0091d356 _strupr_s_l (library): 100%</title></rect>
 <rect x="625" y="1030" width="6" height="6" fill="#58a6ff"><title>0x0091d38b _strupr (library): 100%</title></rect>

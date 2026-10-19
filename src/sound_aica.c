@@ -11,65 +11,65 @@ extern char DAT_06276b20[260];
 // FUNCTION: SADX 0x004ae460
 void StopBankSound(int bank)
 {
-	int i;
+	int local_8;
 
-	for (i = 0; i < 20; i++)
+	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[i][3] != -1 && DAT_05b3e46c[i][12] == bank)
+		if (DAT_05b3e46c[local_8][3] != -1 && DAT_05b3e46c[local_8][12] == bank)
 		{
-			StopPCM(i);
-			DAT_05b3e46c[i][0] = 0;
-			DAT_05b3e46c[i][1] = 0;
-			DAT_05b3e46c[i][2] = 0;
-			DAT_05b3e46c[i][3] = -1;
-			DAT_05b3e938[i] = 0;
+			StopPCM(local_8);
+			DAT_05b3e46c[local_8][0] = 0;
+			DAT_05b3e46c[local_8][1] = 0;
+			DAT_05b3e46c[local_8][2] = 0;
+			DAT_05b3e46c[local_8][3] = -1;
+			DAT_05b3e938[local_8] = 0;
 		}
 	}
 }
 
 // FUNCTION: SADX 0x004ae500
-int SetBankDir(int bank)
+int SetBankDir(int num)
 {
-	int i;
-	struct MDHANDLE *handle;
-	char path[264];
+	int local_8g;
+	struct MDHANDLE *local_118g;
+	char local_114[264];
 
-	if (bank >= 0x7b)
+	if (num >= 0x7b)
 	{
 		return 0;
 	}
 	if (IsSoundSystem() && DAT_05a92330)
 	{
-		for (i = 0; i < allsedata[bank].datasize; i++)
+		for (local_8g = 0; local_8g < allsedata[num].datasize; local_8g++)
 		{
-			if (DAT_05b3e3a0[((struct bankdata *)allsedata[bank].data)[i].banknum])
+			if (DAT_05b3e3a0[((struct bankdata *)allsedata[num].data)[local_8g].banknum])
 			{
-				wsprintfA(path, "%sSoundData\\SE\\%s.dat", "SYSTEM\\", allsedata[bank].data[i].bankfilename);
-				if (!_stricmp(path, *(char **)((char *)DAT_05b3e3a0[allsedata[bank].data[i].banknum] + 0x10)))
+				wsprintfA(local_114, "%sSoundData\\SE\\%s.dat", "SYSTEM\\", allsedata[num].data[local_8g].bankfilename);
+				if (!_stricmp(local_114, *(char **)((char *)DAT_05b3e3a0[allsedata[num].data[local_8g].banknum] + 0x10)))
 				{
 					continue;
 				}
-				wsprintfA(path, "%sSoundData\\SE\\%s.dat", DAT_06276b20, allsedata[bank].data[i].bankfilename);
-				if (!_stricmp(path, *(char **)((char *)DAT_05b3e3a0[allsedata[bank].data[i].banknum] + 0x10)))
+				wsprintfA(local_114, "%sSoundData\\SE\\%s.dat", DAT_06276b20, allsedata[num].data[local_8g].bankfilename);
+				if (!_stricmp(local_114, *(char **)((char *)DAT_05b3e3a0[allsedata[num].data[local_8g].banknum] + 0x10)))
 				{
 					continue;
 				}
 			}
-			if (DAT_05b3e3a0[allsedata[bank].data[i].banknum])
+			if (DAT_05b3e3a0[allsedata[num].data[local_8g].banknum])
 			{
-				StopBankSound(allsedata[bank].data[i].banknum);
-				MDHeaderClose(DAT_05b3e3a0[allsedata[bank].data[i].banknum]);
-				DAT_05b3e3a0[allsedata[bank].data[i].banknum] = 0;
+				StopBankSound(allsedata[num].data[local_8g].banknum);
+				MDHeaderClose(DAT_05b3e3a0[allsedata[num].data[local_8g].banknum]);
+				DAT_05b3e3a0[allsedata[num].data[local_8g].banknum] = 0;
 			}
-			if (*allsedata[bank].data[i].bankfilename)
+			if (*allsedata[num].data[local_8g].bankfilename)
 			{
-				wsprintfA(path, "%sSoundData\\SE\\%s.dat", DAT_06276b20, allsedata[bank].data[i].bankfilename);
-				handle = MDHeaderOpen(path, 1);
-				DAT_05b3e3a0[allsedata[bank].data[i].banknum] = handle;
-				if (!handle)
+				wsprintfA(local_114, "%sSoundData\\SE\\%s.dat", DAT_06276b20, allsedata[num].data[local_8g].bankfilename);
+				local_118g = MDHeaderOpen(local_114, 1);
+				DAT_05b3e3a0[allsedata[num].data[local_8g].banknum] = local_118g;
+				if (!local_118g)
 				{
-					wsprintfA(path, "%sSoundData\\SE\\%s.dat", "SYSTEM\\", allsedata[bank].data[i].bankfilename);
-					DAT_05b3e3a0[allsedata[bank].data[i].banknum] = MDHeaderOpen(path, 1);
+					wsprintfA(local_114, "%sSoundData\\SE\\%s.dat", "SYSTEM\\", allsedata[num].data[local_8g].bankfilename);
+					DAT_05b3e3a0[allsedata[num].data[local_8g].banknum] = MDHeaderOpen(local_114, 1);
 				}
 			}
 		}

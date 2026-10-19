@@ -17,12 +17,12 @@ void Exec(struct task *);
 void Disp(struct task *);
 
 // FUNCTION: SADX 0x0049e0a0
-void GetEmblem(struct SAVE_DATA *savedata, long num)
+void GetEmblem(struct SAVE_DATA *psd, long no)
 {
-	long index = num / 8;
-	long bit = 1 << (num % 8);
+	long local_8g = no / 8;
+	long local_cg = 1 << (no % 8);
 
-	*((char *)savedata + index + 0x240) |= bit;
+	*((char *)psd + local_8g + 0x240) |= local_cg;
 	if (DAT_05b3e05c == 5 || DAT_05b3e05c == 10)
 	{
 		if (DAT_05cc3574 == 0)
@@ -34,126 +34,126 @@ void GetEmblem(struct SAVE_DATA *savedata, long num)
 			CreateSaveData();
 		}
 	}
-	CheckEmbleAchievement(savedata);
+	CheckEmbleAchievement(psd);
 }
 
 // FUNCTION: SADX 0x0049e130
-int FUN_0049e130(struct SAVE_DATA *savedata)
+int FUN_0049e130(struct SAVE_DATA *param_1)
 {
-	int total = 0;
-	unsigned char *ptr = (unsigned char *)savedata + 0x240;
-	int i;
-	unsigned char bits;
+	int local_14 = 0;
+	unsigned char *local_ci = (unsigned char *)param_1 + 0x240;
+	int local_8g;
+	unsigned char local_dg;
 
-	for (i = 0x11; i > 0; i--)
+	for (local_8g = 0x11; local_8g > 0; local_8g--)
 	{
-		bits = *ptr;
-		while (bits)
+		local_dg = *local_ci;
+		while (local_dg)
 		{
-			if (bits & 1)
+			if (local_dg & 1)
 			{
-				total++;
+				local_14++;
 			}
-			bits = bits >> 1;
+			local_dg = local_dg >> 1;
 		}
-		ptr++;
+		local_ci++;
 	}
-	return total;
+	return local_14;
 }
 
 // FUNCTION: SADX 0x0049e1a0
-int FUN_0049e1a0(int num)
+int FUN_0049e1a0(int param_1)
 {
-	if (num >= 5)
+	if (param_1 >= 5)
 	{
-		num--;
+		param_1--;
 	}
-	if (num >= 2)
+	if (param_1 >= 2)
 	{
-		num--;
+		param_1--;
 	}
-	return num + 0x6f;
+	return param_1 + 0x6f;
 }
 
 // FUNCTION: SADX 0x0049e1d0
-long GetEmblemNumberofStageClear(long a, long b, long c)
+long GetEmblemNumberofStageClear(long chara, long stage, long level)
 {
-	long result = 0;
-	long i;
-	unsigned short bits;
+	long local_10 = 0;
+	long local_8g;
+	unsigned short local_cj;
 
-	if (b == 0)
+	if (stage == 0)
 	{
-		result = 100;
-		result += c * 5;
+		local_10 = 100;
+		local_10 += level * 5;
 	}
-	else if (b <= 14)
+	else if (stage <= 14)
 	{
-		for (i = 0; i < a + 1; i++)
+		for (local_8g = 0; local_8g < chara + 1; local_8g++)
 		{
-			if (a == i)
+			if (chara == local_8g)
 			{
-				bits = 0xffff >> (15 - b);
-				bits &= em_stage_table[i];
+				local_cj = 0xffff >> (15 - stage);
+				local_cj &= em_stage_table[local_8g];
 			}
 			else
 			{
-				bits = em_stage_table[i];
+				local_cj = em_stage_table[local_8g];
 			}
-			while (bits)
+			while (local_cj)
 			{
-				if (bits & 1)
+				if (local_cj & 1)
 				{
-					result++;
+					local_10++;
 				}
-				bits = bits >> 1;
+				local_cj = local_cj >> 1;
 			}
 		}
-		result--;
-		result += c * 32;
+		local_10--;
+		local_10 += level * 32;
 	}
-	else if (b > 0x22 && b <= 0x26)
+	else if (stage > 0x22 && stage <= 0x26)
 	{
-		result = b + 0x3d;
-		result += c * 5;
+		local_10 = stage + 0x3d;
+		local_10 += level * 5;
 	}
-	else if (b == 0x27 || b == 0x28 || b == 0x29)
+	else if (stage == 0x27 || stage == 0x28 || stage == 0x29)
 	{
-		result = 0x6a;
-		result += c;
+		local_10 = 0x6a;
+		local_10 += level;
 	}
-	return result;
+	return local_10;
 }
 
 // FUNCTION: SADX 0x0049e2f0
-void GetEmblemofEnding(struct SAVE_DATA *savedata, long num)
+void GetEmblemofEnding(struct SAVE_DATA *psd, long chara)
 {
-	GetEmblem(savedata, FUN_0049e1a0(num));
+	GetEmblem(psd, FUN_0049e1a0(chara));
 }
 
 // FUNCTION: SADX 0x0049e310
-long CheckEmblemofEnding(struct SAVE_DATA *savedata, long num)
+long CheckEmblemofEnding(struct SAVE_DATA *psd, long chara)
 {
-	return FUN_0049d410((int)savedata, FUN_0049e1a0(num));
+	return FUN_0049d410((int)psd, FUN_0049e1a0(chara));
 }
 
 // FUNCTION: SADX 0x0049e330
-long CheckEmblemofStageClear(struct SAVE_DATA *savedata, long a, long b, long c)
+long CheckEmblemofStageClear(struct SAVE_DATA *psd, long chara, long stage, long level)
 {
 	if (!DAT_05bb00a9)
 	{
-		return FUN_0049d410((int)savedata, GetEmblemNumberofStageClear(a, b, c));
+		return FUN_0049d410((int)psd, GetEmblemNumberofStageClear(chara, stage, level));
 	}
 	else
 	{
-		return 1 << FUN_0049f2a0(b, c) & DAT_05cccf84;
+		return 1 << FUN_0049f2a0(stage, level) & DAT_05cccf84;
 	}
 }
 
 // FUNCTION: SADX 0x0049e830
 void dispEmblem(struct task *tp)
 {
-	struct taskwk *twp = tp->twp;
+	struct taskwk *local_8 = tp->twp;
 
 	if (DAT_05b9d838)
 	{
@@ -161,37 +161,37 @@ void dispEmblem(struct task *tp)
 	}
 	___njSetTexture(&texlist_emblem);
 	njPushMatrix(0);
-	njTranslateV(0, &twp->pos);
-	if (twp->ang.y)
+	njTranslateV(0, &local_8->pos);
+	if (local_8->ang.y)
 	{
-		njRotateY(0, twp->ang.y);
+		njRotateY(0, local_8->ang.y);
 	}
-	late_DrawObjectMesh((struct obj *)twp->counter.ptr, 0);
+	late_DrawObjectMesh((struct obj *)local_8->counter.ptr, 0);
 	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x0049e8b0
-void FUN_0049e8b0(struct task *tp)
+void FUN_0049e8b0(struct task *param_1)
 {
-	FreeTask(tp);
+	FreeTask(param_1);
 }
 
 // FUNCTION: SADX 0x0049e8d0
-struct task *FUN_0049e8d0(struct NJS_POINT3 *pos)
+struct task *FUN_0049e8d0(struct NJS_POINT3 *param_1)
 {
-	struct task *tp = CreateElementalTask(2, 3, ObjectGetEmblem);
+	struct task *local_8 = CreateElementalTask(2, 3, ObjectGetEmblem);
 
-	if (tp)
+	if (local_8)
 	{
-		tp->twp->mode = 0;
-		tp->twp->pos.x = pos->x;
-		tp->twp->pos.y = pos->y;
-		tp->twp->pos.z = pos->z;
+		local_8->twp->mode = 0;
+		local_8->twp->pos.x = param_1->x;
+		local_8->twp->pos.y = param_1->y;
+		local_8->twp->pos.z = param_1->z;
 		if (DAT_05baf368[2] & 1)
 		{
 			PadReadOff();
 		}
-		return tp;
+		return local_8;
 	}
 	return 0;
 }
@@ -199,16 +199,16 @@ struct task *FUN_0049e8d0(struct NJS_POINT3 *pos)
 // FUNCTION: SADX 0x0049e950
 void ObjectGetEmblem(struct task *tp)
 {
-	struct taskwk *twp = tp->twp;
+	struct taskwk *local_8 = tp->twp;
 
-	twp->ang.x = 0;
-	twp->ang.z = 0;
-	twp->mode = 0;
-	twp->counter.f = 0.0f;
-	twp->wtimer = 0;
-	twp->value.l = 0;
-	twp->timer.f = 0.0f;
-	twp->scl.x = 1.0f;
+	local_8->ang.x = 0;
+	local_8->ang.z = 0;
+	local_8->mode = 0;
+	local_8->counter.f = 0.0f;
+	local_8->wtimer = 0;
+	local_8->value.l = 0;
+	local_8->timer.f = 0.0f;
+	local_8->scl.x = 1.0f;
 	if (DAT_05baf368[2] & 1)
 	{
 		PadReadOff();
@@ -223,11 +223,11 @@ void ObjectGetEmblem(struct task *tp)
 // FUNCTION: SADX 0x0049ea10
 void Exec(struct task *tp)
 {
-	struct taskwk *twp = tp->twp;
-	float dx1;
-	float zd;
-	float dx;
-	float dz1;
+	struct taskwk *local_8g = tp->twp;
+	float local_10m;
+	float local_cj;
+	float local_18;
+	float local_14;
 
 	if (CheckRangeOut(tp))
 	{
@@ -237,44 +237,44 @@ void Exec(struct task *tp)
 	{
 		PadReadOff();
 	}
-	switch (twp->mode)
+	switch (local_8g->mode)
 	{
 	case 0:
-		twp->mode = 1;
-		twp->wtimer = 0;
-		twp->value.l = FUN_0049e130((struct SAVE_DATA *)&DAT_05ccca18);
+		local_8g->mode = 1;
+		local_8g->wtimer = 0;
+		local_8g->value.l = FUN_0049e130((struct SAVE_DATA *)&DAT_05ccca18);
 		dsPlay_oneshot(12, 0, 0, 0);
 		break;
 	case 1:
-		twp->wtimer++;
-		if (twp->wtimer > 0x2d)
+		local_8g->wtimer++;
+		if (local_8g->wtimer > 0x2d)
 		{
-			twp->wtimer = 0;
-			twp->mode = 2;
+			local_8g->wtimer = 0;
+			local_8g->mode = 2;
 		}
-		dx1 = DAT_05b42a7c->pos.x - twp->pos.x;
-		zd = DAT_05b42a7c->pos.z - twp->pos.z;
-		twp->ang.y = (long)(atan2((double)dx1, (double)zd) * 65536.0 / 6.283184);
-		*(long *)(emblem_num + 8) = twp->value.l;
+		local_10m = DAT_05b42a7c->pos.x - local_8g->pos.x;
+		local_cj = DAT_05b42a7c->pos.z - local_8g->pos.z;
+		local_8g->ang.y = (long)(atan2((double)local_10m, (double)local_cj) * 65536.0 / 6.283184);
+		*(long *)(emblem_num + 8) = local_8g->value.l;
 		FUN_0055de60((struct _SC_NUMBERS *)emblem_num);
 		break;
 	case 2:
-		twp->wtimer++;
-		if (twp->wtimer == 12)
+		local_8g->wtimer++;
+		if (local_8g->wtimer == 12)
 		{
-			twp->wtimer = 0;
+			local_8g->wtimer = 0;
 			*(long *)(emblem_num + 0x1c) = -1;
 		}
-		else if (twp->wtimer == 6)
+		else if (local_8g->wtimer == 6)
 		{
 			*(long *)(emblem_num + 0x1c) = 0x3fffffff;
 		}
 		FUN_0055de60((struct _SC_NUMBERS *)emblem_num);
-		twp->counter.f -= 0.02f;
-		if (twp->counter.f <= -1.0)
+		local_8g->counter.f -= 0.02f;
+		if (local_8g->counter.f <= -1.0)
 		{
-			twp->counter.f = -1.0f;
-			twp->mode = 3;
+			local_8g->counter.f = -1.0f;
+			local_8g->mode = 3;
 			if (isCheckGGApper_Emblem())
 			{
 				InitGGMessage();
@@ -287,10 +287,10 @@ void Exec(struct task *tp)
 		}
 		else
 		{
-			dx = DAT_05b42a7c->pos.x - twp->pos.x;
-			dz1 = DAT_05b42a7c->pos.z - twp->pos.z;
-			twp->ang.y = (long)(atan2((double)dx, (double)dz1) * 65536.0 / 6.283184);
-			twp->scl.x += 0.08f;
+			local_18 = DAT_05b42a7c->pos.x - local_8g->pos.x;
+			local_14 = DAT_05b42a7c->pos.z - local_8g->pos.z;
+			local_8g->ang.y = (long)(atan2((double)local_18, (double)local_14) * 65536.0 / 6.283184);
+			local_8g->scl.x += 0.08f;
 		}
 		break;
 	case 3:
@@ -307,20 +307,20 @@ void Exec(struct task *tp)
 // FUNCTION: SADX 0x0049ec90
 void Disp(struct task *tp)
 {
-	struct taskwk *twp = tp->twp;
-	float scale = twp->scl.x;
+	struct taskwk *local_cg = tp->twp;
+	float local_8g = local_cg->scl.x;
 
 	___njSetTexture(&texlist_emblem);
 	SaveConstantAttr();
 	OnConstantAttr(0, 0x100000);
-	SetMaterial(twp->counter.f, 0.0f, 0.0f, 0.0f);
+	SetMaterial(local_cg->counter.f, 0.0f, 0.0f, 0.0f);
 	njPushMatrix(0);
-	njTranslateV(0, &twp->pos);
-	if (twp->ang.y)
+	njTranslateV(0, &local_cg->pos);
+	if (local_cg->ang.y)
 	{
-		njRotateY(0, twp->ang.y);
+		njRotateY(0, local_cg->ang.y);
 	}
-	FUN_0067d2d0(0, scale, scale, scale);
+	FUN_0067d2d0(0, local_8g, local_8g, local_8g);
 	late_DrawObjectMesh(object_o_emblm_emblm, 0);
 	njPopMatrix(1);
 	ResetMaterial();

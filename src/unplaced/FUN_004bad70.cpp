@@ -10,7 +10,7 @@ int FUN_004c39c0(int param_1);
 // FUNCTION: SADX 0x004bad70
 int FUN_004bad70()
 {
-	int result;
+	int local_8;
 
 	GetSwitchData();
 	PadReadOn();
@@ -22,9 +22,9 @@ int FUN_004bad70()
 	DAT_05cd14d4 = 0;
 	if (FUN_004c39c0(0))
 	{
-		result = *(int *)(*(int *)((char *)DAT_05cda18c + 0x2c) + 0xc) == 5 ? 0x6c : -2;
+		local_8 = *(int *)(*(int *)((char *)DAT_05cda18c + 0x2c) + 0xc) == 5 ? 0x6c : -2;
 		GenocideTask();
-		return result;
+		return local_8;
 	}
 	return 0;
 }

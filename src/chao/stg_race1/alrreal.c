@@ -14,93 +14,93 @@ void FUN_00488c50(struct AlrMemory *param_1);
 void FUN_004897f0(struct AlrRoot *param_1, struct pathtag **param_2, int param_3, float param_4);
 
 // FUNCTION: SADX 0x00482320
-int AlrReal_Exe(struct AlrReal *awp)
+int AlrReal_Exe(struct AlrReal *___this)
 {
-	AlrReal_exe_for_Race(awp);
-	if (awp->total_timer != 0xffff)
+	AlrReal_exe_for_Race(___this);
+	if (___this->total_timer != 0xffff)
 	{
-		awp->total_timer++;
+		___this->total_timer++;
 	}
 	else
 	{
-		awp->total_timer = 0;
+		___this->total_timer = 0;
 	}
-	if (awp->flag & 4)
+	if (___this->flag & 4)
 	{
-		awp->flag = awp->flag & ~4;
+		___this->flag = ___this->flag & ~4;
 		return 1;
 	}
 	return 0;
 }
 
 // FUNCTION: SADX 0x004823a0
-void AlrReal_exe_for_Race(struct AlrReal *awp)
+void AlrReal_exe_for_Race(struct AlrReal *___this)
 {
-	int i;
+	int cnt;
 
-	if (awp == 0)
+	if (___this == 0)
 	{
 		return;
 	}
-	AlrReal_controlColliMode(awp);
-	AlrReal_controlMode(awp);
-	if (1 && (awp->flag & 1))
+	AlrReal_controlColliMode(___this);
+	AlrReal_controlMode(___this);
+	if (1 && (___this->flag & 1))
 	{
-		awp->flag = awp->flag & ~1;
-		AlrReal_changeAct_for_Race(awp);
+		___this->flag = ___this->flag & ~1;
+		AlrReal_changeAct_for_Race(___this);
 	}
-	AlrReal_controlCamera(awp);
-	for (i = 0; i < 8; i++)
+	AlrReal_controlCamera(___this);
+	for (cnt = 0; cnt < 8; cnt++)
 	{
-		Alr_Exe(&awp->alr[i], &awp->alrroot, AL_GetCourseNum());
+		Alr_Exe(&___this->alr[cnt], &___this->alrroot, AL_GetCourseNum());
 	}
-	AlrCam_Exe(&awp->alrcam, awp);
-	AlrReal_Dsp(awp);
+	AlrCam_Exe(&___this->alrcam, ___this);
+	AlrReal_Dsp(___this);
 }
 
 // FUNCTION: SADX 0x00482480
-void AlrReal_Dsp(struct AlrReal *awp)
+void AlrReal_Dsp(struct AlrReal *___this)
 {
-	AlrTimer_Dsp(&awp->alrtimer);
-	AlrRank_Dsp(&awp->alrrank, awp->alr, awp->look);
-	AlrReal_dspHead(awp);
+	AlrTimer_Dsp(&___this->alrtimer);
+	AlrRank_Dsp(&___this->alrrank, ___this->alr, ___this->look);
+	AlrReal_dspHead(___this);
 }
 
 // FUNCTION: SADX 0x004824d0
-void AlrReal_Destructor(struct AlrReal *awp)
+void AlrReal_Destructor(struct AlrReal *___this)
 {
-	if (awp == 0)
+	if (___this == 0)
 	{
 		return;
 	}
 	DAT_05b33108 = 0;
-	AlrRoot_Del(&awp->alrroot);
-	AlrReal_onSonic(awp);
+	AlrRoot_Del(&___this->alrroot);
+	AlrReal_onSonic(___this);
 	WinDestructor();
 	ClearPanel();
-	Free(awp);
+	Free(___this);
 }
 
 // FUNCTION: SADX 0x00482520
 int GetChaoId(struct task *tp)
 {
-	int i;
+	int current;
 	struct Alr *alr;
-	struct alifewk *awp;
-	struct task *chao;
+	struct alifewk *local_10g;
+	struct task *local_14i;
 
 	if (DAT_05b33108 && tp)
 	{
-		for (i = 0; i < 8; i++)
+		for (current = 0; current < 8; current++)
 		{
-			alr = &DAT_05b33108->alr[i];
-			awp = Alr_GetAwp(alr);
-			if (awp)
+			alr = &DAT_05b33108->alr[current];
+			local_10g = Alr_GetAwp(alr);
+			if (local_10g)
 			{
-				chao = awp->mytask;
-				if (chao == tp)
+				local_14i = local_10g->mytask;
+				if (local_14i == tp)
 				{
-					return i;
+					return current;
 				}
 			}
 		}
@@ -109,230 +109,230 @@ int GetChaoId(struct task *tp)
 }
 
 // FUNCTION: SADX 0x004825a0
-int FUN_004825a0(struct AlrReal *awp)
+int FUN_004825a0(struct AlrReal *param_1)
 {
-	int i;
+	int local_8;
 
-	awp->entry_num = AL_GetnbPlayer();
-	awp->look = 0;
-	awp->average = 0.0f;
-	awp->vms_lane = 0;
-	awp->mode = 0;
-	awp->stage_exe = AlrStage00_Exe;
-	awp->total_timer = 0;
-	awp->player = GetPlayerCharacterName(0);
-	AlrCam_Ini(&awp->alrcam);
-	FUN_004897f0(&awp->alrroot, pathdata_race, 2, alrdata.endpathpos[AL_GetCourseNum()]);
-	awp->alrmemory = (struct AlrMemory *)ADV1_AL_GetRaceTimeRam();
-	FUN_00488c50(awp->alrmemory);
-	for (i = 0; i < 8; i++)
+	param_1->entry_num = AL_GetnbPlayer();
+	param_1->look = 0;
+	param_1->average = 0.0f;
+	param_1->vms_lane = 0;
+	param_1->mode = 0;
+	param_1->stage_exe = AlrStage00_Exe;
+	param_1->total_timer = 0;
+	param_1->player = GetPlayerCharacterName(0);
+	AlrCam_Ini(&param_1->alrcam);
+	FUN_004897f0(&param_1->alrroot, pathdata_race, 2, alrdata.endpathpos[AL_GetCourseNum()]);
+	param_1->alrmemory = (struct AlrMemory *)ADV1_AL_GetRaceTimeRam();
+	FUN_00488c50(param_1->alrmemory);
+	for (local_8 = 0; local_8 < 8; local_8++)
 	{
-		memcpy(&awp->status[i], ADV1_ALR_GetEntryStatus(i), 0x198);
+		memcpy(&param_1->status[local_8], ADV1_ALR_GetEntryStatus(local_8), 0x198);
 	}
-	AlrTimer_Clear(&awp->alrtimer);
-	AlrRank_Clear(&awp->alrrank);
+	AlrTimer_Clear(&param_1->alrtimer);
+	AlrRank_Clear(&param_1->alrrank);
 	AlrWhite_Init();
 	return 1;
 }
 
 // FUNCTION: SADX 0x004826e0
-void AlrReal_controlColliMode(struct AlrReal *awp)
+void AlrReal_controlColliMode(struct AlrReal *___this)
 {
 	CL_ColPolListUpModeSetAll();
 }
 
 // FUNCTION: SADX 0x004826f0
-void AlrReal_controlMode(struct AlrReal *awp)
+void AlrReal_controlMode(struct AlrReal *___this)
 {
-	int i;
-	struct Alr *alr;
-	float dif;
-	struct NJS_POINT3 pos;
+	int local_8g;
+	struct Alr *local_cj;
+	float local_10;
+	struct NJS_POINT3 local_20;
 
-	awp->stimer++;
-	if (AlrReal_checkCommendation(awp) == 1)
+	___this->stimer++;
+	if (AlrReal_checkCommendation(___this) == 1)
 	{
-		for (i = 0; i < 8; i++)
+		for (local_8g = 0; local_8g < 8; local_8g++)
 		{
-			Alr_ConstraintLookAt(&awp->alr[i], &alrdata.fixedposition[16]);
+			Alr_ConstraintLookAt(&___this->alr[local_8g], &alrdata.fixedposition[16]);
 		}
 	}
-	switch (awp->mode)
+	switch (___this->mode)
 	{
 	case 0:
-		AlrReal_SetCameraMode(awp, 3);
-		awp->look = 0;
+		AlrReal_SetCameraMode(___this, 3);
+		___this->look = 0;
 		AlrObjSetManageTask();
 		AlrConfetti_Init();
 		ObjectAlrCracker_Init();
-		AlrReal_offSonic(awp);
-		for (i = 0; i < 8; i++)
+		AlrReal_offSonic(___this);
+		for (local_8g = 0; local_8g < 8; local_8g++)
 		{
 			do
 			{
-				awp->alr[i].mode = 2;
+				___this->alr[local_8g].mode = 2;
 			} while (0);
 		}
 		do
 		{
-			awp->mode = 2;
-			awp->stimer = 0;
+			___this->mode = 2;
+			___this->stimer = 0;
 		} while (0);
 		break;
 	case 1:
 		do
 		{
-			awp->mode = 2;
-			awp->stimer = 0;
+			___this->mode = 2;
+			___this->stimer = 0;
 		} while (0);
 		break;
 	case 2:
-		if (awp->stimer % 0x30 == 0x2f)
+		if (___this->stimer % 0x30 == 0x2f)
 		{
-			awp->look++;
-			awp->camera_timer = 0;
+			___this->look++;
+			___this->camera_timer = 0;
 		}
-		if (awp->look >= 8)
+		if (___this->look >= 8)
 		{
-			awp->look = 0;
-			AlrReal_SetCameraMode(awp, 4);
-			for (i = 0; i < 8; i++)
+			___this->look = 0;
+			AlrReal_SetCameraMode(___this, 4);
+			for (local_8g = 0; local_8g < 8; local_8g++)
 			{
 				do
 				{
-					awp->alr[i].mode = 8;
+					___this->alr[local_8g].mode = 8;
 				} while (0);
 			}
 			CallStart();
 			dsPlay_oneshot(0x2b2, 0, 0, 0);
 			dsPlay_oneshot(0x562, 0, 0, 0);
 			SetCommandToDialog(0, 9);
-			awp->flag |= 0x800;
+			___this->flag |= 0x800;
 			do
 			{
-				awp->mode = 3;
-				awp->stimer = 0;
+				___this->mode = 3;
+				___this->stimer = 0;
 			} while (0);
 		}
 		break;
 	case 3:
-		FUN_004881d0(&awp->alrtimer);
+		FUN_004881d0(&___this->alrtimer);
 		if (1)
 		{
-			AlrFanFan_exe(&awp->alrfanfan, awp);
+			AlrFanFan_exe(&___this->alrfanfan, ___this);
 		}
-		for (i = 0; i < 8; i++)
+		for (local_8g = 0; local_8g < 8; local_8g++)
 		{
-			alr = &awp->alr[i];
-			dif = alr->pathpos - awp->average;
-			if (!Alr_CheckRace(alr))
+			local_cj = &___this->alr[local_8g];
+			local_10 = local_cj->pathpos - ___this->average;
+			if (!Alr_CheckRace(local_cj))
 			{
 				continue;
 			}
-			if (dif > 160.0 && AlrFanFan_checkFanFan(&awp->alrfanfan) != 1)
+			if (local_10 > 160.0 && AlrFanFan_checkFanFan(&___this->alrfanfan) != 1)
 			{
-				if (alr->mode != 7 && alr->mode != 5)
+				if (local_cj->mode != 7 && local_cj->mode != 5)
 				{
 					do
 					{
-						alr->mode = 6;
+						local_cj->mode = 6;
 					} while (0);
 				}
 			}
 			else
 			{
-				if (alr->mode == 7 || (alr->mode == 5 && FUN_00486bb0(alr)))
+				if (local_cj->mode == 7 || (local_cj->mode == 5 && FUN_00486bb0(local_cj)))
 				{
 					do
 					{
-						alr->mode = 8;
+						local_cj->mode = 8;
 					} while (0);
 				}
 			}
 		}
-		AlrReal_checkGoal(awp);
-		awp->stage_exe(awp);
-		if (awp->stimer > 36000)
+		AlrReal_checkGoal(___this);
+		___this->stage_exe(___this);
+		if (___this->stimer > 36000)
 		{
 			do
 			{
-				awp->mode = 4;
-				awp->stimer = 0;
+				___this->mode = 4;
+				___this->stimer = 0;
 			} while (0);
 		}
-		AlrReal_calcAverage(awp);
-		AlrReal_setRanking(awp);
+		AlrReal_calcAverage(___this);
+		AlrReal_setRanking(___this);
 		if (0)
 		{
 			if (DAT_05b93264[4] & 2)
 			{
-				awp->flag |= 1;
+				___this->flag |= 1;
 			}
 			if (DAT_05ccde90 == 0 && (DAT_05b93264[2] & 0x200))
 			{
 				do
 				{
-					awp->alr[awp->look].flag |= 0x4000;
+					___this->alr[___this->look].flag |= 0x4000;
 				} while (0);
 			}
 		}
 		break;
 	case 4:
-		AlrReal_raceEndAlr(awp);
-		if (awp->stimer == 100)
+		AlrReal_raceEndAlr(___this);
+		if (___this->stimer == 100)
 		{
 			AlrWhite_Out(0x24);
 		}
-		if (awp->stimer == 0x6e)
+		if (___this->stimer == 0x6e)
 		{
 			StopAdvaBGM();
 		}
-		if (awp->stimer > 168.0)
+		if (___this->stimer > 168.0)
 		{
 			do
 			{
-				awp->mode = 5;
-				awp->stimer = 0;
+				___this->mode = 5;
+				___this->stimer = 0;
 			} while (0);
-			for (i = 0; i < 8; i++)
+			for (local_8g = 0; local_8g < 8; local_8g++)
 			{
-				Alr_DisconnectObj(&awp->alr[i]);
+				Alr_DisconnectObj(&___this->alr[local_8g]);
 				do
 				{
-					awp->alr[i].mode = 0xc;
+					___this->alr[local_8g].mode = 0xc;
 				} while (0);
 			}
 		}
 		break;
 	case 5:
 	{
-		int top;
+		int local_24;
 
 		MirenSoundStartBgm(0x11);
 		ObjectAlrCracker_Start();
-		if (awp->flag & 0x20)
+		if (___this->flag & 0x20)
 		{
 			do
 			{
-				pos.x = alrdata.fixedposition[8].x;
-				pos.y = alrdata.fixedposition[8].y;
-				pos.z = alrdata.fixedposition[8].z;
+				local_20.x = alrdata.fixedposition[8].x;
+				local_20.y = alrdata.fixedposition[8].y;
+				local_20.z = alrdata.fixedposition[8].z;
 			} while (0);
 			dsPlay_oneshot(0x564, 0, 0, 0);
-			pos.y = pos.y + 10.0;
-			Jewel_Create(AL_GetCourseNum(), &pos);
+			local_20.y = local_20.y + 10.0;
+			Jewel_Create(AL_GetCourseNum(), &local_20);
 		}
 		else if (AL_GetRaceNum() == 1)
 		{
-			if (!(*(int *)((char *)awp->alrmemory + 8) & AL_GetCourseNum()))
+			if (!(*(int *)((char *)___this->alrmemory + 8) & AL_GetCourseNum()))
 			{
 				dsPlay_oneshot(0x565, 0, 0, 0);
 			}
 		}
-		top = awp->alrrank.rank[0];
-		if (awp->entry[top].garden != 4)
+		local_24 = ___this->alrrank.rank[0];
+		if (___this->entry[local_24].garden != 4)
 		{
-			if (awp->flag & 0x40)
+			if (___this->flag & 0x40)
 			{
 				CallJewelGet();
 				SetCommandToDialog(0, 0xb);
@@ -344,77 +344,77 @@ void AlrReal_controlMode(struct AlrReal *awp)
 			}
 		}
 		AlrWhite_In(0x30);
-		AlrReal_checkSaveJewel(awp);
-		awp->mode = 6;
-		awp->scnt = 0;
-		awp->stimer = 0;
+		AlrReal_checkSaveJewel(___this);
+		___this->mode = 6;
+		___this->scnt = 0;
+		___this->stimer = 0;
 	}
 	case 6:
 	{
-		struct alifewk *life;
-		struct AlrEntry *ent;
+		struct alifewk *awp;
+		struct AlrEntry *entry;
 
 		do
 		{
-			if (awp->alr[awp->scnt].flag & 0x80)
+			if (___this->alr[___this->scnt].flag & 0x80)
 			{
 				do
 				{
-					awp->alr[awp->scnt].flag &= ~0x80;
+					___this->alr[___this->scnt].flag &= ~0x80;
 				} while (0);
-				ent = &awp->entry[awp->scnt];
-				life = Alr_GetAwp(&awp->alr[awp->scnt]);
-				if (ent->garden == 3 && life)
+				entry = &___this->entry[___this->scnt];
+				awp = Alr_GetAwp(&___this->alr[___this->scnt]);
+				if (entry->garden == 3 && awp)
 				{
-					awp->mode = 7;
+					___this->mode = 7;
 				}
 				else
 				{
-					awp->flag |= 0x80;
+					___this->flag |= 0x80;
 				}
 			}
-			awp->scnt++;
-			if (awp->scnt >= 8)
+			___this->scnt++;
+			if (___this->scnt >= 8)
 			{
-				awp->mode = 8;
+				___this->mode = 8;
 				break;
 			}
 		} while (1);
 		break;
 	}
 	case 7:
-		awp->mode = 6;
+		___this->mode = 6;
 		break;
 	case 8:
 	{
-		long stage;
-		long name;
-		int idx;
+		long local_38;
+		long local_34;
+		int local_30;
 
 		if (DAT_05ccde90 != 0)
 		{
-			awp->stimer = 0;
+			___this->stimer = 0;
 		}
-		if (awp->stimer < 2)
+		if (___this->stimer < 2)
 		{
-			for (idx = 0; idx < 8; idx++)
+			for (local_30 = 0; local_30 < 8; local_30++)
 			{
-				AL_IconResetPos(awp->alr[idx].awp->pAdv2ChaoTask);
+				AL_IconResetPos(___this->alr[local_30].awp->pAdv2ChaoTask);
 			}
 		}
-		if (awp->stimer > 540.0)
+		if (___this->stimer > 540.0)
 		{
 			AllClearEntryDialog();
-			if (awp->flag & 0x20)
+			if (___this->flag & 0x20)
 			{
-				name = GetPlayerCharacterName(0);
-				stage = (((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744) >> 8;
-				if (CheckEmblemofStageClear((struct SAVE_DATA *)&DAT_05ccca18, name, stage, AL_GetCourseNum()) != 1)
+				local_34 = GetPlayerCharacterName(0);
+				local_38 = (((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744) >> 8;
+				if (CheckEmblemofStageClear((struct SAVE_DATA *)&DAT_05ccca18, local_34, local_38, AL_GetCourseNum()) != 1)
 				{
-					GetEmblemofStageClear((struct SAVE_DATA *)&DAT_05ccca18, name, stage, AL_GetCourseNum());
+					GetEmblemofStageClear((struct SAVE_DATA *)&DAT_05ccca18, local_34, local_38, AL_GetCourseNum());
 					InitGetEmblem();
-					awp->stimer = 0;
-					awp->mode = 9;
+					___this->stimer = 0;
+					___this->mode = 9;
 					if (isCheckGGApper_Emblem())
 					{
 						InitGGMessage();
@@ -422,23 +422,23 @@ void AlrReal_controlMode(struct AlrReal *awp)
 				}
 				else
 				{
-					awp->flag |= 1;
-					awp->mode++;
+					___this->flag |= 1;
+					___this->mode++;
 				}
 			}
 			else
 			{
-				awp->flag |= 1;
-				awp->mode++;
+				___this->flag |= 1;
+				___this->mode++;
 			}
 		}
 		break;
 	}
 	case 9:
-		if (awp->stimer > 300.0 && !isGGMessageEnable())
+		if (___this->stimer > 300.0 && !isGGMessageEnable())
 		{
-			awp->flag |= 1;
-			awp->mode++;
+			___this->flag |= 1;
+			___this->mode++;
 		}
 		break;
 	}

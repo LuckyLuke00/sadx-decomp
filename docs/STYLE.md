@@ -16,6 +16,14 @@ The exe shows how VC++ 2010 SP1 compiled the code, not how the original authors 
 
 Use the first tier that has a name for the thing.
 
+Parameters, locals and labels with a guessed name keep a placeholder until a naming pass at the end of the project:
+
+- parameters: `param_1`, `param_2`, ... by position
+- locals: `local_<hex>`, the bytes below the entry stack pointer (`[ebp-0x10]` is `local_14`), with a letter suffix `g` to `z` when the plain spelling would move the slot (`local_14g`); `var1`, `var2`, ... for a local with no stack slot in optimized code
+- labels: `LAB_<address>`
+
+Tier 2 names no longer apply to parameters and locals.
+
 ### Tier 1: official
 
 Keep spelling and case exactly, typos included.
