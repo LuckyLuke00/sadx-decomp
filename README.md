@@ -18,6 +18,7 @@ goal is C and C++ source that compiles to the same machine code as the retail
 <!-- history:start -->
 | Date | Decompiled | Matched | Accuracy | Changes |
 | --- | --- | --- | --- | --- |
+| 2026-10-19 | 227 / 16,537 (1.37%) | 227 | 100.00% | isTextureNG stub -> 100%; +FUN_004a0920 100%; FUN_004a0940 stub -> 100%; FUN_004a0960 stub -> 100%; +FUN_004a0980 100%; 104 more |
 | 2026-10-18 | 148 / 16,537 (0.89%) | 148 | 100.00% | +FUN_004822c0 100%; +AlrReal_Exe 100%; +AlrReal_exe_for_Race 100%; +AlrReal_Dsp 100%; +AlrReal_Destructor 100%; 351 more |
 | 2026-10-17 | 6 / 16,537 (0.04%) | 6 | 100.00% | +std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> > 42.9%; +FUN_00405360 100%; +std::locale::facet::_Incref 89.5%; +std::locale::facet::_Decref 93.1%; +std::locale::~locale 17.0%; 696 more |
 <!-- history:end -->
