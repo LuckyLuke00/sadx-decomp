@@ -3,8 +3,8 @@
 run() builds nothing: CMake already built the original and our twin. It checks the
 original's hash, the scores reccmp gives, the regression gate, the register-argument
 search and the totals against what tests/selftest pins. It also checks the history
-rules of progress.py on changed copies of the pinned scores, and its git reader on a
-throwaway repository.
+rules of progress.py on changed copies of the pinned scores, its git reader on a
+throwaway repository, and where the annotation lint lets a function annotation sit.
 """
 
 import copy
@@ -44,13 +44,15 @@ def run() -> int:
     failures += check_scores_changed(expected)
     failures += check_history_rows(expected)
     failures += check_read_blobs()
+    failures += check_misplaced_annotations()
 
     if failures:
         print("FAIL self-test")
         for line in failures:
             print(f"     {line}")
         return 1
-    print(f"ok   self-test: build hash {original_hash[:12]}..., exact scores, regression gate, /GL call, totals, history")
+    print(f"ok   self-test: build hash {original_hash[:12]}..., exact scores, regression gate, /GL call, totals, history, "
+          "annotation lint")
     return 0
 
 
@@ -152,6 +154,17 @@ def check_read_blobs() -> list[str]:
     if texts == wanted:
         return []
     return [f"read_blobs gave {texts}, not {wanted}"]
+
+
+def check_misplaced_annotations() -> list[str]:
+    """A STUB may start any function, such as a library function that game code calls. Any other function annotation
+    must start a game function."""
+    game, library = 0x401000, 0x402000
+    annotations = [(game, "FUNCTION at a game function", False), (library, "STUB at a library function", True),
+                   (library, "FUNCTION at a library function", False), (library + 1, "STUB inside a function", True)]
+    found = [where for _, where, _ in runner.misplaced(annotations, {game, library}, {game})]
+    expected = ["FUNCTION at a library function", "STUB inside a function"]
+    return [] if found == expected else [f"annotation lint flags {found}, not {expected}"]
 
 
 def without_stubs(summary: dict) -> dict:

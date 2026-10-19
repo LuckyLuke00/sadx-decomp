@@ -143,8 +143,8 @@ def unmatched_library_rows(functions: dict[int, dict], game: Path) -> dict[int, 
     return {address: name for address, name in missing.items() if original.read(address, 2) != library.IMPORT_JUMP}
 
 
-def function_annotations() -> list[tuple[int, str]]:
-    """The FUNCTION, STUB, LIBRARY, TEMPLATE and SYNTHETIC annotations in src/, as (address, where)."""
+def function_annotations() -> list[tuple[int, str, bool]]:
+    """The FUNCTION, STUB, LIBRARY, TEMPLATE and SYNTHETIC annotations in src/, as (address, where, is a STUB)."""
     # reccmp is in .venv, which the first run of this script makes after this module loads.
     from reccmp.dir import source_code_search
     from reccmp.formats import TextFile
@@ -154,7 +154,7 @@ def function_annotations() -> list[tuple[int, str]]:
                               project.game_config().target)
     annotated = [*codebase.iter_line_functions(), *codebase.iter_name_functions()]
     return [(symbol.offset, f"0x{symbol.offset:08x}: {Path(symbol.filename).relative_to(project.ROOT).as_posix()} "
-                            f"line {symbol.line_number}") for symbol in annotated]
+                            f"line {symbol.line_number}", symbol.should_skip()) for symbol in annotated]
 
 
 def unmatched_annotations(functions: dict[int, dict]) -> list[str]:
@@ -162,17 +162,26 @@ def unmatched_annotations(functions: dict[int, dict]) -> list[str]:
 
     reccmp drops them quietly: a LIBRARY name that is no symbol, or a FUNCTION line it can't find.
     """
-    return [where for address, where in function_annotations() if address not in functions]
+    return [where for address, where, _ in function_annotations() if address not in functions]
 
 
 def misplaced_annotations() -> list[str]:
-    """The function annotations in src/ whose address starts no game function in data/functions.csv.
+    """The function annotations in src/ at an address they may not name in data/functions.csv.
 
-    reccmp scores such a function on whatever bytes are there, and the totals count it as game code.
+    Any other annotation must start a game function: reccmp scores it on whatever bytes are there, and the totals
+    count it as game code. A STUB may start any function, such as a library function that game code calls: the
+    totals skip stubs.
     """
-    game_code = progress.game_addresses(progress.load_functions())
-    return [f"{where}: not the start of a game function in data/functions.csv"
-            for address, where in function_annotations() if address not in game_code]
+    functions = progress.load_functions()
+    starts = {function["address"] for function in functions}
+    return [f"{where}: not the start of a {'' if stub else 'game '}function in data/functions.csv"
+            for _, where, stub in misplaced(function_annotations(), starts, progress.game_addresses(functions))]
+
+
+def misplaced(annotations: list[tuple[int, str, bool]], starts: set[int],
+              game: set[int]) -> list[tuple[int, str, bool]]:
+    """The annotations of function_annotations() whose address is not in starts for a STUB, or in game otherwise."""
+    return [annotation for annotation in annotations if annotation[0] not in (starts if annotation[2] else game)]
 
 
 def unmatched_library_note(address: int, name: str) -> str:
