@@ -2130,6 +2130,14 @@
    "library": false
   },
   {
+   "address": "0x004ab150",
+   "name": "PlayPCM",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004ab190",
    "name": "Load3DPCM",
    "accuracy": 0.1951219512195122,
@@ -2146,9 +2154,33 @@
    "library": false
   },
   {
+   "address": "0x004ab260",
+   "name": "SetVolumePCM",
+   "accuracy": 0.4444444444444444,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004ab290",
    "name": "FUN_004ab290",
    "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ab2d0",
+   "name": "SetPanPCM",
+   "accuracy": 0.4444444444444444,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ab300",
+   "name": "Set3DPositionPCM",
+   "accuracy": 0.2962962962962963,
    "effective": false,
    "stub": true,
    "library": false
@@ -2191,6 +2223,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004abbb0",
+   "name": "wmapause",
+   "accuracy": 0.38095238095238093,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004abc00",
+   "name": "wmaresume",
+   "accuracy": 0.4444444444444444,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -2242,35 +2290,51 @@
    "library": false
   },
   {
+   "address": "0x004ae7b0",
+   "name": "IsndPlay",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004ae7f0",
    "name": "makesndfilename",
-   "accuracy": 0.14545454545454545,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ae8c0",
+   "name": "FUN_004ae8c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004ae920",
    "name": "IsndStop",
-   "accuracy": 0.6666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004ae940",
    "name": "IsndVolume",
-   "accuracy": 0.23529411764705882,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004ae9a0",
    "name": "IsndPitch",
-   "accuracy": 0.5714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -2290,11 +2354,99 @@
    "library": false
   },
   {
+   "address": "0x004aee80",
+   "name": "FUN_004aee80",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af360",
+   "name": "dsStop_num",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af3c0",
+   "name": "dsStop_id",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af420",
+   "name": "dsVolume_id",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af4a0",
+   "name": "dsPan_id",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af520",
+   "name": "dsPitch_id",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af590",
+   "name": "dsPause_all",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af5e0",
+   "name": "dsRelease_all",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af640",
+   "name": "dsPauseSndOnly",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af6c0",
+   "name": "dsStop_all",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004af730",
+   "name": "FUN_004af730",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004af780",
    "name": "InitOverlapSE",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -2322,11 +2474,51 @@
    "library": false
   },
   {
+   "address": "0x004afe30",
+   "name": "FUN_004afe30",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004afe60",
+   "name": "dsSetFxAny",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004aff60",
    "name": "dsEVboss",
    "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004b00e0",
+   "name": "dsReloadEVBossSound",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b0150",
+   "name": "TempEraseSound",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b0170",
+   "name": "EraseDolbyCtrl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -3677,6 +3869,14 @@
    "address": "0x005f22c0",
    "name": "FUN_005f22c0",
    "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006411b0",
+   "name": "FUN_006411b0",
+   "accuracy": 0.3333333333333333,
    "effective": false,
    "stub": true,
    "library": false
@@ -9114,6 +9314,14 @@
    "library": true
   },
   {
+   "address": "0x009132a0",
+   "name": "ini",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00913370",
    "name": "ind",
    "accuracy": 0.06666666666666667,
@@ -9267,5 +9475,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "7fdcd12bf3ed0164c2c9fcdcbbb1376b51959412e2b4421717f4e7b3702bc286"
+ "inputs_sha256": "b4865f3f50a5c0c56941a55e8f2ef46f2f45783268536d9448397de90c2d5198"
 }
