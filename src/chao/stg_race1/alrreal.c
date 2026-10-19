@@ -1,6 +1,22 @@
 #include <string.h>
 
 #include "decls.h"
+#include <stdlib.h>
+struct AlrRank;
+struct AlrRoot;
+struct NJS_POINT3;
+extern double DAT_0095b120;
+static long AlrReal_checkCommendation(struct AlrReal *___this);
+static int AlrFanFan_checkFanFan(struct AlrFanFan *___this);
+static int AlrReal_onSonic(struct AlrReal *___this);
+struct AlrData;
+struct task;
+struct Alr;
+void A_Life_for_ALR(struct task *);
+enum eCourseNumDX AL_GetCourseNum();
+static void AlrReal_changeAct_for_Race(struct AlrReal *___this);
+struct AlrReal;
+extern struct AlrData alrdata;
 
 extern struct AlrReal *DAT_05b33108;
 extern unsigned int *DAT_05b93264;
@@ -442,4 +458,113 @@ void AlrReal_controlMode(struct AlrReal *___this)
 		}
 		break;
 	}
+}
+
+// FUNCTION: SADX 0x00483070
+static void AlrReal_changeAct_for_Race(struct AlrReal *___this)
+{
+	int current;
+
+	*(short *)((char *)___this + 0x157e) = 0;
+	AlrRank_Clear((struct AlrRank *)((char *)___this + 0x14c0));
+	AlrRoot_Clear((struct AlrRoot *)((char *)___this + 0x1500), (*(float **)((char *)&alrdata + 8))[AL_GetCourseNum()]);
+	AlrObjFreeManageTask();
+	for (current = 0; current < 8; current++)
+	{
+		Alr_Kill((struct Alr *)((char *)___this + 0xcc0 + current * 0xf4));
+	}
+	for (current = 0; current < 8; current++)
+	{
+	}
+	AlrReal_onSonic(___this);
+	*(unsigned short *)((char *)___this + 0x157c) |= 4;
+}
+
+// FUNCTION: SADX 0x004833e0
+void A_Life_for_ALR(struct task *tp)
+{
+	ALR_Init(tp);
+	*(void (**)(struct task *))((char *)tp + 0x10) = ALR_Executor;
+	*(void (**)(struct task *))((char *)tp + 0x18) = ALR_Destructor;
+}
+
+// FUNCTION: SADX 0x00483490
+void AlrReal_calcAverage(struct AlrReal *___this)
+{
+	int current;
+
+	*(float *)((char *)___this + 0x1574) = 0.0f;
+	for (current = 0; current < 8; current++)
+	{
+		*(float *)((char *)___this + 0x1574) += *(float *)((char *)___this + current * 0xf4 + 0xd90);
+	}
+	*(float *)((char *)___this + 0x1574) *= 0.125f;
+}
+
+// FUNCTION: SADX 0x00483fa0
+void AlrReal_dspHead(struct AlrReal *___this)
+{
+	struct Alr *alr;
+	struct taskwk *twp;
+	NJS_POINT3 position;
+
+	if (AlrReal_checkCommendation(___this) == 1)
+	{
+		return;
+	}
+	alr = (struct Alr *)((char *)___this + 0xcc0 + *(char *)((char *)___this + 0x156c) * 0xf4);
+	twp = Alr_GetTwp(alr);
+	if (twp)
+	{
+		do
+		{
+			position.x = *(float *)((char *)twp + 0x20);
+			position.y = *(float *)((char *)twp + 0x24);
+			position.z = *(float *)((char *)twp + 0x28);
+		} while (0);
+		position.y = position.y + DAT_0095b120;
+		AlrRank_DspHeadYa((struct AlrRank *)((char *)___this + 0x14c0), *(char *)((char *)___this + 0x156c) + 1, &position);
+	}
+}
+
+// FUNCTION: SADX 0x00484060
+int AlrReal_offSonic(struct AlrReal *___this)
+{
+	if ((*(unsigned short *)((char *)___this + 0x157c) & 2) == 0)
+	{
+		*(unsigned short *)((char *)___this + 0x157c) = *(unsigned short *)((char *)___this + 0x157c) | 2;
+		AL_PlayerDisable();
+		return 1;
+	}
+	return 0;
+}
+
+// FUNCTION: SADX 0x004840a0
+static int AlrReal_onSonic(struct AlrReal *___this)
+{
+	if (*(unsigned short *)((char *)___this + 0x157c) & 2)
+	{
+		*(unsigned short *)((char *)___this + 0x157c) &= ~2;
+		AL_PlayerEnable();
+		return 1;
+	}
+	return 0;
+}
+
+// FUNCTION: SADX 0x00484150
+static int AlrFanFan_checkFanFan(struct AlrFanFan *___this)
+{
+	if (!*(unsigned char *)((char *)___this + 2))
+		return 0;
+	return 1;
+}
+
+// FUNCTION: SADX 0x00484a90
+static long AlrReal_checkCommendation(struct AlrReal *___this)
+{
+	if (*(unsigned char *)((char *)___this + 0x156e) >= 5 && *(unsigned char *)((char *)___this + 0x156e) <= 8)
+	{
+		return 1;
+	}
+	return 0;
 }
