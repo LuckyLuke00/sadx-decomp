@@ -1,4 +1,5 @@
 #include "decls.h"
+extern unsigned int *DAT_05b93264;
 extern int DAT_05b92e44;
 
 // FUNCTION: SADX 0x0055e260
@@ -11,4 +12,10 @@ int IsBtnDecide()
 int IsBtnCancel(void)
 {
 	return (DAT_05b92e44 & 2) | (DAT_05b92e44 & 0x400);
+}
+
+// FUNCTION: SADX 0x0055e2a0
+int IsSOCAVAPress(int padno, int keys)
+{
+	return (*(int *)(DAT_05b93264[padno] + 0x10)) & keys;
 }

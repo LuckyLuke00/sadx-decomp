@@ -6,7 +6,10 @@ extern int DAT_05b3e930;
 extern int DAT_05b3e39c;
 extern unsigned char DAT_05b3ea08;
 extern int DAT_05b3e988[20];
+extern struct taskwk *DAT_05b42a7c;
 int FUN_004aee80(int param_1, int param_2);
+extern int DAT_05b3e924;
+extern int DAT_025adbd0;
 int FUN_004ae8c0(struct MDHANDLE *, char *);
 extern int DAT_05b3e398;
 extern int DAT_05b3e464;
@@ -14,6 +17,8 @@ extern int DAT_05b3ea00;
 extern int DAT_05b3ea04;
 extern unsigned short DAT_05b9d724;
 extern unsigned short DAT_05b9d744;
+extern unsigned char DAT_05bb00a9;
+extern int DAT_05b3ea18;
 void FUN_004afe30(void);
 
 extern int DAT_05b3e46c[20][14];
@@ -21,6 +26,308 @@ extern int DAT_05b3e938[20];
 extern int DAT_05a92330;
 extern struct MDHANDLE *DAT_05b3e3a0[51];
 extern char DAT_06276b20[260];
+
+// FUNCTION: SADX 0x004adea0
+void dsLoadStageSound()
+{
+	short local_14;
+	int local_ci;
+	int local_10;
+	int local_8g;
+
+	DAT_05b3ea00 = 0;
+	DAT_05b3ea04 = 0;
+	local_14 = (short)(((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744);
+	local_10 = (unsigned short)local_14;
+	if (local_10 > 0x2a)
+	{
+		SetBankDir(0x21);
+	}
+	else
+	{
+		switch (local_10)
+		{
+		case 0:
+			SetBankDir(0x24);
+			break;
+		case 1:
+			SetBankDir(0);
+			break;
+		case 2:
+			SetBankDir(0x38);
+			break;
+		case 3:
+			SetBankDir(0x37);
+			break;
+		case 4:
+			SetBankDir(0x26);
+			break;
+		case 5:
+			SetBankDir(0x21);
+			break;
+		case 6:
+			SetBankDir(0x34);
+			break;
+		case 7:
+			SetBankDir(0x29);
+			break;
+		case 8:
+			SetBankDir(0x28);
+			break;
+		case 9:
+			SetBankDir(0x18);
+			local_ci = GetPlayerNumber();
+			if (local_ci <= 7)
+			{
+				switch (local_ci)
+				{
+				case 0:
+					SetBankDir(1);
+					if (DAT_05bb00a9)
+					{
+						SetBankDir(0x3e);
+					}
+					else
+					{
+						if (!DAT_05b3ea18)
+						{
+							SetBankDir(0x3b);
+						}
+						else
+						{
+							SetBankDir(0x3c);
+						}
+					}
+					break;
+				case 2:
+					if (DAT_05bb00a9)
+					{
+						SetBankDir(0x3e);
+					}
+					else
+					{
+						SetBankDir(1);
+					}
+					if (!DAT_05b3ea18)
+					{
+						SetBankDir(0x3b);
+					}
+					else
+					{
+						SetBankDir(0x3c);
+					}
+					break;
+				case 3:
+					SetBankDir(0x31);
+					if (!DAT_05b3ea18)
+					{
+						SetBankDir(0x45);
+						SetBankDir(0x39);
+					}
+					else
+					{
+						SetBankDir(0x46);
+						SetBankDir(0x3a);
+					}
+					break;
+				default:
+					break;
+				}
+			}
+			else
+			{
+				SetBankDir(0x1a);
+				if (DAT_05bb00a9)
+				{
+					SetBankDir(0x3e);
+				}
+				else
+				{
+					if (!DAT_05b3ea18)
+					{
+						SetBankDir(0x3b);
+					}
+					else
+					{
+						SetBankDir(0x3c);
+					}
+				}
+			}
+			break;
+		case 0xa:
+			SetBankDir(0x25);
+			break;
+		case 0xc:
+			SetBankDir(0x27);
+			break;
+		case 0xf:
+			SetBankDir(0x1b);
+			break;
+		case 0x10:
+			SetBankDir(0x1c);
+			break;
+		case 0x11:
+			SetBankDir(0x1d);
+			break;
+		case 0x12:
+			SetBankDir(0x1e);
+			break;
+		case 0x13:
+			SetBankDir(0x20);
+			break;
+		case 0x14:
+			SetBankDir(0x2a);
+			break;
+		case 0x15:
+			SetBankDir(0x2b);
+			break;
+		case 0x16:
+			SetBankDir(0x2c);
+			break;
+		case 0x18:
+			SetBankDir(0x22);
+			break;
+		case 0x19:
+			SetBankDir(0x23);
+			break;
+		case 0x1a:
+		case 0x1b:
+		case 0x1c:
+			SetBankDir(0x36);
+			break;
+		case 0x1d:
+		case 0x1e:
+		case 0x1f:
+		case 0x20:
+			SetBankDir(0x24);
+			break;
+		case 0x21:
+		case 0x22:
+			SetBankDir(0x2d);
+			break;
+		case 0x23:
+			SetBankDir(0x17);
+			break;
+		case 0x24:
+		case 0x25:
+			SetBankDir(0x33);
+			break;
+		case 0x26:
+			SetBankDir(0x32);
+			break;
+		case 0x27:
+		case 0x28:
+		case 0x29:
+		case 0x2a:
+			SetBankDir(0x3d);
+			dsLoadCharacterVoice();
+			break;
+		}
+	}
+	local_8g = GetPlayerNumber();
+	if (local_8g <= 7)
+	{
+		switch (local_8g)
+		{
+		case 0:
+			if (DAT_05bb00a9)
+			{
+				SetBankDir(0x3e);
+			}
+			else
+			{
+				SetBankDir(1);
+			}
+			if (!DAT_05b3ea18)
+			{
+				SetBankDir(0x47);
+			}
+			else
+			{
+				SetBankDir(0x48);
+			}
+			break;
+		case 2:
+			SetBankDir(1);
+			if (!DAT_05b3ea18)
+			{
+				SetBankDir(0x47);
+			}
+			else
+			{
+				SetBankDir(0x48);
+			}
+			break;
+		case 3:
+			SetBankDir(0x31);
+			if (!DAT_05b3ea18)
+			{
+				SetBankDir(0x45);
+			}
+			else
+			{
+				SetBankDir(0x46);
+			}
+			break;
+		case 5:
+			SetBankDir(0x2e);
+			if (!DAT_05b3ea18)
+			{
+				SetBankDir(0x3f);
+			}
+			else
+			{
+				SetBankDir(0x40);
+			}
+			break;
+		case 6:
+			SetBankDir(0x30);
+			if (!DAT_05b3ea18)
+			{
+				SetBankDir(0x43);
+			}
+			else
+			{
+				SetBankDir(0x44);
+			}
+			break;
+		case 7:
+			SetBankDir(0x2f);
+			if (!DAT_05b3ea18)
+			{
+				SetBankDir(0x41);
+			}
+			else
+			{
+				SetBankDir(0x42);
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	else
+	{
+		if (DAT_05bb00a9)
+		{
+			SetBankDir(0x3e);
+		}
+		else
+		{
+			SetBankDir(1);
+		}
+		if (!DAT_05b3ea18)
+		{
+			SetBankDir(0x47);
+		}
+		else
+		{
+			SetBankDir(0x48);
+		}
+	}
+	FUN_004afe30();
+	dsStop_all();
+}
 
 // FUNCTION: SADX 0x004ae460
 void StopBankSound(int bank)
@@ -164,6 +471,132 @@ void IsndVolume(int vol, int handleno)
 void IsndPitch(int pitch, int handleno)
 {
 	SetPanPCM(handleno, pitch);
+}
+
+// FUNCTION: SADX 0x004aea00
+int dsPlay_oneshot(int tone, int id, int pri, int volofs)
+{
+	int local_8;
+
+	local_8 = dsCheckHandle(pri, tone);
+	if (local_8 < 0)
+	{
+		return -1;
+	}
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38) = 0x78;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 4) = -1;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 8) = id;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 12) = 0x11;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 16) = tone;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 20) = 0;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 24) = volofs;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 28) = 0;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 32) = 0;
+	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 36) = 0.0f;
+	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 40) = 0.0f;
+	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 44) = 0.0f;
+	if (tone == 7)
+	{
+		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 12) = 0x801;
+		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 20) = DAT_025adbd0;
+		DAT_025adbd0 = -DAT_025adbd0;
+	}
+	return 1;
+}
+
+// FUNCTION: SADX 0x004aeb20
+int dsCheckHandle(int pri, int tone)
+{
+	int local_10;
+	int local_ci;
+	int local_8g;
+
+	local_10 = -1;
+	local_ci = 0x13;
+	local_8g = DAT_05b3e924;
+	while (local_10 < 0 && local_ci > 0)
+	{
+		if (DAT_05b3e46c[local_8g][0] == 0)
+		{
+			local_10 = local_8g;
+		}
+		if (DAT_05b3e46c[local_8g][1] <= pri)
+		{
+			local_10 = local_8g;
+		}
+		local_8g++;
+		if (local_8g >= 0x13)
+		{
+			local_8g = 0;
+		}
+		local_ci--;
+	}
+	if (local_10 != -1)
+	{
+		DAT_05b3e924 = local_10 + 1;
+		if (DAT_05b3e924 >= 0x14)
+		{
+			DAT_05b3e924 = 0;
+		}
+	}
+	return local_10;
+}
+
+// FUNCTION: SADX 0x004aebd0
+int dsPlay_oneshot_v(int tone, int id, int pri, int volofs, float x, float y, float z)
+{
+	int local_8g;
+	int local_20o;
+	int local_cj;
+	float local_10m;
+	float local_1ci;
+	float local_18;
+	float local_24;
+	float local_14;
+
+	local_20o = 0;
+	local_cj = 0xc8;
+	local_10m = x - *(float *)((char *)DAT_05b42a7c + 0x20);
+	local_1ci = y - *(float *)((char *)DAT_05b42a7c + 0x24);
+	local_18 = z - *(float *)((char *)DAT_05b42a7c + 0x28);
+	local_24 = (float)local_cj;
+	local_14 = local_10m * local_10m + local_1ci * local_1ci + local_18 * local_18 + local_24 * local_24;
+	if (local_cj >= 0 && DAT_05b42a7c)
+	{
+		if (local_14 > 1600000000.0f)
+		{
+			return -1;
+		}
+		local_20o = local_20o | 0x1000;
+	}
+	local_8g = FUN_004aee80(tone, id);
+	if (local_8g >= 0)
+	{
+		local_20o = DAT_05b3e46c[local_8g][2] & 1;
+	}
+	else
+	{
+		local_8g = dsCheckHandle(pri, tone);
+		if (local_8g < 0)
+		{
+			return -1;
+		}
+		local_20o = local_20o | 1;
+	}
+	DAT_05b3e46c[local_8g][0] = 0x78;
+	DAT_05b3e46c[local_8g][1] = -1;
+	DAT_05b3e46c[local_8g][2] = id;
+	DAT_05b3e46c[local_8g][3] = local_20o | 0x10;
+	DAT_05b3e46c[local_8g][3] = DAT_05b3e46c[local_8g][3] | 0x100;
+	DAT_05b3e46c[local_8g][4] = tone;
+	DAT_05b3e46c[local_8g][5] = 0;
+	DAT_05b3e46c[local_8g][6] = volofs;
+	DAT_05b3e46c[local_8g][7] = volofs;
+	DAT_05b3e46c[local_8g][8] = 0;
+	*(float *)&DAT_05b3e46c[local_8g][9] = x;
+	*(float *)&DAT_05b3e46c[local_8g][10] = y;
+	*(float *)&DAT_05b3e46c[local_8g][11] = z;
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x004aee80

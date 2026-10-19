@@ -37,6 +37,31 @@ long GetViewAngle()
 	return DAT_05b42968;
 }
 
+// FUNCTION: SADX 0x004bae20
+void SetViewAngle(long new_view_angle)
+{
+	int local_8;
+
+	local_8 = *(char *)((char *)pCameraSystemWork + 0x6);
+	if (local_8 < 0x1c || local_8 > 0x1e)
+	{
+		DAT_05b42968 = new_view_angle;
+	}
+	else
+	{
+		if (GetAdjustMode())
+		{
+			DAT_05b42968 = AdjustAngle(DAT_05b42968, 0x31c7, 0x12);
+		}
+		else
+		{
+			DAT_05b42968 = 0x31c7;
+		}
+	}
+	___njSetPerspective(DAT_05b42968);
+	DAT_05b42a80 = DAT_05b42968;
+}
+
 // FUNCTION: SADX 0x004bafb0
 void FUN_004bafb0(void)
 {

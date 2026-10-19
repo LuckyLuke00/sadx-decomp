@@ -17,6 +17,12 @@ void npSetZCompareMode(int flag)
 {
 }
 
+// STUB: SADX 0x00405370
+long dsSimpleDrawModel(struct NJS_MODEL *)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004199f0
 int __fastcall FUN_004199f0(void *, float)
 {
@@ -28,8 +34,23 @@ void FUN_0041c2d0(void *)
 {
 }
 
+// STUB: SADX 0x00421390
+void njDrawModel(struct NJS_MODEL *)
+{
+}
+
 // STUB: SADX 0x00421470
 void njDrawTexture(struct NJS_TEXTURE_VTX *,int,int,int)
+{
+}
+
+// STUB: SADX 0x004217d0
+void njDrawSprite2D(struct NJS_SPRITE *, int, float, unsigned long)
+{
+}
+
+// STUB: SADX 0x00421b30
+void njDrawSprite3D(struct NJS_SPRITE *,int,unsigned long)
 {
 }
 
@@ -101,6 +122,11 @@ void njExitTexture(void)
 {
 }
 
+// STUB: SADX 0x00423ee0
+void njPrintC(int,char const *)
+{
+}
+
 // STUB: SADX 0x00424240
 void njSetCamera(struct NJS_CAMERA *)
 {
@@ -136,6 +162,26 @@ void njPushMatrix(float *)
 {
 }
 
+// STUB: SADX 0x00430bb0
+void njCalcPoint(int, struct NJS_POINT3 *, struct NJS_POINT3 *)
+{
+}
+
+// STUB: SADX 0x00432d10
+void njScaleEx(void *)
+{
+}
+
+// STUB: SADX 0x004333e0
+void njTranslateEx(void *)
+{
+}
+
+// STUB: SADX 0x00433770
+void njPushMatrixEx()
+{
+}
+
 // STUB: SADX 0x004337a0
 void *_SOCMalloc(unsigned int, const char *, int)
 {
@@ -168,6 +214,11 @@ long AL_GetnbPlayer()
 	return (long)0;
 }
 
+// STUB: SADX 0x00443ba0
+void AL_SetRaceNew(enum eRaceNum num)
+{
+}
+
 // STUB: SADX 0x00443c00
 enum eRaceNum AL_GetRaceNum()
 {
@@ -180,44 +231,35 @@ enum eCourseNumDX AL_GetCourseNum()
 	return (enum eCourseNumDX)0;
 }
 
+// STUB: SADX 0x00443c80
+long AL_GetCourseClearedLevel(enum eCourseNumDX num)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00443c90
+void AL_CourseClearedLevelUp(enum eCourseNumDX num)
+{
+}
+
+// STUB: SADX 0x00443cb0
+void AL_GetCourseRecord(enum eCourseNumDX num, struct AL_RECORD *pRecord)
+{
+}
+
+// STUB: SADX 0x00443ce0
+void AL_SetCourseRecord(enum eCourseNumDX num, struct AL_RECORD *pRecord)
+{
+}
+
 // STUB: SADX 0x0044c420
 const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 {
 	return (const unsigned long *)0;
 }
 
-// STUB: SADX 0x00483410
-void AlrReal_setRanking(struct AlrReal *___this)
-{
-}
-
-// STUB: SADX 0x00483500
-void AlrReal_checkGoal(struct AlrReal *___this)
-{
-}
-
-// STUB: SADX 0x00483930
-void AlrReal_raceEndAlr(struct AlrReal *___this)
-{
-}
-
-// STUB: SADX 0x00483a00
-void AlrReal_SetCameraMode(struct AlrReal *___this, int mode)
-{
-}
-
-// STUB: SADX 0x00483a40
-void AlrReal_controlCamera(struct AlrReal *___this)
-{
-}
-
 // STUB: SADX 0x00484170
 void AlrFanFan_exe(struct AlrFanFan *___this, struct AlrReal *alrreal)
-{
-}
-
-// STUB: SADX 0x004849a0
-void AlrReal_checkSaveJewel(struct AlrReal *___this)
 {
 }
 
@@ -229,6 +271,22 @@ void *ADV1_AL_GetRaceTimeRam()
 
 // STUB: SADX 0x00484d80
 void AlrCam_Ini(struct AlrCam *___this)
+{
+}
+
+// STUB: SADX 0x00484d90
+extern int FUN_00484d90(struct AlrCam *)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00484da0
+void AlrCam_CheckAndRelease(struct AlrCam *___this)
+{
+}
+
+// STUB: SADX 0x004861e0
+void AlrCam_ConstraintAroundAng(struct AlrCam *___this, long angle)
 {
 }
 
@@ -260,6 +318,12 @@ int Alr_CheckRace(const struct Alr *___this)
 	return (int)0;
 }
 
+// STUB: SADX 0x004869c0
+int Alr_CheckGoal(const struct Alr *___this)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00486bb0
 int FUN_00486bb0(struct Alr *)
 {
@@ -276,6 +340,18 @@ void Alr_DisconnectObj(struct Alr *___this)
 {
 }
 
+// STUB: SADX 0x00487aa0
+void *Alr_SetId(struct Alr *, int)
+{
+	return (void *)0;
+}
+
+// STUB: SADX 0x00487b00
+enum Event_Id Alr_GetCurrentEvent(struct Alr *___this)
+{
+	return (enum Event_Id)0;
+}
+
 // STUB: SADX 0x00487c70
 void Alr_Exe(struct Alr *___this, struct AlrRoot *root, int cup)
 {
@@ -283,6 +359,11 @@ void Alr_Exe(struct Alr *___this, struct AlrRoot *root, int cup)
 
 // STUB: SADX 0x00488150
 void AlrTimer_Clear(struct AlrTimer *___this)
+{
+}
+
+// STUB: SADX 0x00488160
+void AlrTimer_SetBest(struct AlrTimer *___this, struct AlrMemory *memory, int cup)
 {
 }
 
@@ -299,6 +380,17 @@ void AlrTimer_Dsp(struct AlrTimer *___this)
 // STUB: SADX 0x004882d0
 void AlrRank_Clear(struct AlrRank *___this)
 {
+}
+
+// STUB: SADX 0x00488330
+void AlrRank_CalcRank(struct AlrRank *___this, struct Alr *alr, int look)
+{
+}
+
+// STUB: SADX 0x00488680
+int AlrRank_GetId(struct AlrRank *___this, int rank)
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x004886a0
@@ -347,6 +439,11 @@ void CallStart()
 {
 }
 
+// STUB: SADX 0x004893c0
+void CallGoalin()
+{
+}
+
 // STUB: SADX 0x004893f0
 void CallCool()
 {
@@ -355,6 +452,12 @@ void CallCool()
 // STUB: SADX 0x00489420
 void CallJewelGet()
 {
+}
+
+// STUB: SADX 0x00489690
+int AlrRoot_CheckGoal(struct AlrRoot *___this, struct NJS_POINT3 *trans)
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x004896f0
@@ -418,6 +521,12 @@ struct task *AlrObjSetManageTask()
 	return (struct task *)0;
 }
 
+// STUB: SADX 0x0048a970
+struct task *CreateChao_for_ALR_ALRE(void (*)(struct task *), struct al_status *)
+{
+	return (struct task *)0;
+}
+
 // STUB: SADX 0x0048c150
 struct alifewk *ALR_Init(struct task *tp)
 {
@@ -434,6 +543,11 @@ void ALR_Executor(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00495270
+void ghDrawPvrSprite(short *, float, float, float, float, float, float)
+{
+}
+
 // STUB: SADX 0x0049d460
 void CheckEmbleAchievement(struct SAVE_DATA *psd)
 {
@@ -444,51 +558,23 @@ void GetEmblemofStageClear(struct SAVE_DATA *psd, long chara, long stage, long l
 {
 }
 
-// STUB: SADX 0x0049ee00
-extern void dispGetEmblem(struct task *)
-{
-}
-
-// STUB: SADX 0x004a0040
-struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr)
-{
-	return (struct LE_PALIGHT_ENV *)0;
-}
-
-// STUB: SADX 0x004a0100
-int dsGDLoadPalette(unsigned short stg, unsigned short act)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x004a0520
 void FUN_004a0520(float, float)
 {
 }
 
-// STUB: SADX 0x004a0790
-int dsCheckViewV(struct NJS_POINT3 *ft, float radius)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x004a0ae0
-void ___dsDrawModel(struct NJS_MODEL *model)
+// STUB: SADX 0x004a1530
+void DrawObjectClip(struct obj *, float)
 {
 }
 
-// STUB: SADX 0x004a0c10
-void ___dsDrawObject(struct obj *obj)
+// STUB: SADX 0x004a4160
+void late_DrawBoxFill2D(float x, float y, float x2, float y2, float pri, unsigned long argb, int flgs)
 {
 }
 
-// STUB: SADX 0x004a1290
-void ds_DrawModelClip(struct NJS_MODEL *mdl, float clipScl)
-{
-}
-
-// STUB: SADX 0x004a2960
-void FUN_004a2960()
+// STUB: SADX 0x004a44b0
+void late_DrawSprite2D(struct NJS_SPRITE *, int, float, unsigned long, int)
 {
 }
 
@@ -504,6 +590,11 @@ void lateDrawObject(struct obj *obj, int flgs, float clipScl)
 
 // STUB: SADX 0x004a4ff0
 void late_DrawModelClip(struct NJS_MODEL *, int, float)
+{
+}
+
+// STUB: SADX 0x004a5080
+void late_DrawModel(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
@@ -544,11 +635,6 @@ void DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
 
 // STUB: SADX 0x004a7280
 void DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
-{
-}
-
-// STUB: SADX 0x004a7ce0
-void ___DrawModel(struct NJS_MODEL *model)
 {
 }
 
@@ -658,12 +744,6 @@ void Reset()
 {
 }
 
-// STUB: SADX 0x004aea00
-int dsPlay_oneshot(int tone, int id, int pri, int volofs)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x004afc60
 int dsGetVolume(int ii)
 {
@@ -674,6 +754,11 @@ int dsGetVolume(int ii)
 long IsPlayOk(int tone)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004afe70
+void dsLoadCharacterVoice()
+{
 }
 
 // STUB: SADX 0x004aff60
@@ -704,6 +789,11 @@ void FUN_004b5e70(int)
 
 // STUB: SADX 0x004b6460
 void FUN_004b6460(struct NJS_TEXLIST *, char *)
+{
+}
+
+// STUB: SADX 0x004b6720
+void FUN_004b6720(void *, void *, void *)
 {
 }
 
@@ -747,11 +837,6 @@ void DrawFileSelBg(struct FileSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x004b9330
-void file_sel_disp(struct task *tp)
-{
-}
-
 // STUB: SADX 0x004b93b0
 void DrawFileSelBallChar(struct FileSelWk *wkp)
 {
@@ -777,11 +862,6 @@ void FUN_004bac60()
 {
 }
 
-// STUB: SADX 0x004bae20
-void SetViewAngle(long new_view_angle)
-{
-}
-
 // STUB: SADX 0x004bafe0
 void cameraModeInit()
 {
@@ -802,6 +882,12 @@ void SetAdjustMode(long)
 {
 }
 
+// STUB: SADX 0x004bf050
+long GetAdjustMode()
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004c06f0
 void title_menu_exec(struct task *tp)
 {
@@ -814,17 +900,6 @@ void FUN_004c0e10(void *)
 
 // STUB: SADX 0x004c12e0
 void DisplayTitleNew(float basez)
-{
-}
-
-// STUB: SADX 0x004c1800
-int FUN_004c1800(const unsigned char *)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x004c1d50
-void MSG_Disp(struct MSGC *msgc)
 {
 }
 
@@ -928,6 +1003,12 @@ void dsInitInt(int vsync, int loop)
 {
 }
 
+// STUB: SADX 0x004cb9c0
+long AdjustAngle(long ang0, long ang1, long dang)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004cce50
 void SaveConstantAttr()
 {
@@ -954,6 +1035,23 @@ extern long NeonuLoadTexture(struct NJS_TEXLIST *)
 	return (long)0;
 }
 
+// STUB: SADX 0x004cfb80
+long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004da580
+long EntryColliList(struct taskwk *twp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004da980
+void SET_COLLI_RANGE(struct colliwk *cwp, float range)
+{
+}
+
 // STUB: SADX 0x004f1860
 long CheckCollisionP(struct NJS_POINT3 *, float)
 {
@@ -978,7 +1076,7 @@ void DestroyTask(struct task *tp)
 }
 
 // STUB: SADX 0x004f3be0
-void FreeTask(struct task *tp)
+void FreeTask(struct task *)
 {
 }
 
@@ -995,6 +1093,12 @@ void DisplayTask()
 // STUB: SADX 0x004f3f30
 void GenocideTask()
 {
+}
+
+// STUB: SADX 0x004f41f0
+void *MAlloc(unsigned int size)
+{
+	return (void *)0;
 }
 
 // STUB: SADX 0x004f4390
@@ -1088,6 +1192,11 @@ long CheckRangeOut(struct task *pTask)
 	return (long)0;
 }
 
+// STUB: SADX 0x005515f0
+void DeadOut(struct task *pTask)
+{
+}
+
 // STUB: SADX 0x00554090
 void CreateSaveData()
 {
@@ -1152,12 +1261,6 @@ unsigned char isGGMessageEnable()
 	return (unsigned char)0;
 }
 
-// STUB: SADX 0x005707b0
-struct task *MirenInitTask(struct task *task_p, const struct TaskInfo *info_p, void *param_p)
-{
-	return (struct task *)0;
-}
-
 // STUB: SADX 0x005730b0
 void ___njFogEnable()
 {
@@ -1169,7 +1272,7 @@ void ___njFogDisable()
 }
 
 // STUB: SADX 0x00573f20
-void ghSetPvrTexMaterial(unsigned long color)
+void ghSetPvrTexMaterial(unsigned long)
 {
 }
 
@@ -1222,6 +1325,11 @@ void OpenDialog(struct DialogPrmType *, int)
 int CloseDialog()
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x00597a20
+void VibShot(long pno, long Time)
+{
 }
 
 // STUB: SADX 0x00597fd0
@@ -1278,19 +1386,37 @@ unsigned long GetFadeOutColFromT(float t)
 	return (unsigned long)0;
 }
 
+// STUB: SADX 0x0059eac0
+void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, float z, float magx, float magy)
+{
+}
+
 // STUB: SADX 0x0059f710
 void StopAdvaBGM()
 {
 }
 
-// STUB: SADX 0x005a4120
-void DrawSkyBg(float z)
+// STUB: SADX 0x005a4400
+enum AvaCharEnum AvaGetlastPlayer(int)
 {
+	return (enum AvaCharEnum)0;
+}
+
+// STUB: SADX 0x005a6450
+struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *, struct sp_link *))
+{
+	return (struct sp_task *)0;
 }
 
 // STUB: SADX 0x005a64e0
 void SpFreeTask(struct sp_task *tp)
 {
+}
+
+// STUB: SADX 0x005a64f0
+struct sp_link *SpCreateLinkW(struct sp_info *, unsigned long)
+{
+	return (struct sp_link *)0;
 }
 
 // STUB: SADX 0x005acaf0
@@ -1313,12 +1439,6 @@ long StageNameModeInit(long time)
 
 // STUB: SADX 0x005ae2f0
 long StageNameMode(void *Param)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x005d1a40
-long ERobKill()
 {
 	return (long)0;
 }
@@ -1350,10 +1470,21 @@ void FUN_005f22c0(struct task *, struct ModeSelPrmType *)
 {
 }
 
+// STUB: SADX 0x0060fcb0
+void CreateSpark(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
+{
+}
+
 // STUB: SADX 0x00610680
 struct task *Eggrob_GenerateEggrob(struct erctrlstr *)
 {
 	return (struct task *)0;
+}
+
+// STUB: SADX 0x00617a00
+struct taskwk *Flicky_Create(float xpos, float ypos, float zpos, void (*FlickyXXXX_New)(struct task *))
+{
+	return (struct taskwk *)0;
 }
 
 // STUB: SADX 0x006411b0

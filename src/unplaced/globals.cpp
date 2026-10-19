@@ -14,14 +14,35 @@ float DAT_0095c8d0;
 // GLOBAL: SADX 0x009617c4
 struct AlrData alrdata;
 
+// GLOBAL: SADX 0x00981c10
+float DAT_00981c10;
+
 // GLOBAL: SADX 0x00985418
 enum AvaTexLdEnum DAT_00985418;
 
 // GLOBAL: SADX 0x00987240
 struct _CameraSystemWork *pCameraSystemWork;
 
+// GLOBAL: SADX 0x0098beec
+struct TaskInfo MirenEfLensFlareTaskInfo;
+
+// GLOBAL: SADX 0x0098fcf0
+unsigned char DAT_0098fcf0[3];
+
 // GLOBAL: SADX 0x009919e0
 struct DialogPrmType DAT_009919e0;
+
+// GLOBAL: SADX 0x009921c0
+unsigned long DAT_009921c0[16];
+
+// GLOBAL: SADX 0x009921c1
+unsigned long DAT_009921c1[16];
+
+// GLOBAL: SADX 0x009921c2
+unsigned long DAT_009921c2[16];
+
+// GLOBAL: SADX 0x009921c3
+unsigned long DAT_009921c3[16];
 
 // GLOBAL: SADX 0x01c6ede0
 float _nj_unit_matrix_[16];
@@ -41,11 +62,17 @@ struct obj object_o_emblm_emblm[1];
 // GLOBAL: SADX 0x025a3610
 unsigned short em_stage_table[8];
 
+// GLOBAL: SADX 0x025a3620
+struct CCL_INFO cci_emblem[1];
+
 // GLOBAL: SADX 0x025a3650
 char emblem_num[0x20];
 
 // GLOBAL: SADX 0x025a3688
 struct NJS_TEXLIST texlist_get_emblem;
+
+// GLOBAL: SADX 0x025a36b8
+char emblem_sc[32];
 
 // GLOBAL: SADX 0x025a36e4
 struct LE_LIGHT_ENV le_env_dflt;
@@ -56,20 +83,44 @@ struct LE_LIGHT_ENV le_ctrl_dflt;
 // GLOBAL: SADX 0x025a3ce0
 struct LE_LIGHT_ENV le_stg[256];
 
+// GLOBAL: SADX 0x025a6ce0
+struct LE_PALIGHT_ENV le_plyrPal[256];
+
+// GLOBAL: SADX 0x025accf0
+float clipZ_near;
+
+// GLOBAL: SADX 0x025accf4
+float clipZ_far;
+
 // GLOBAL: SADX 0x025acd00
 struct LATE_LNK *late_zentry;
 
 // GLOBAL: SADX 0x025acd04
 struct LATE_FAR_Z_T late_far_z_dflt;
 
+// GLOBAL: SADX 0x025acd10
+struct LATE_FAR_Z_T late_far_z_chaos;
+
+// GLOBAL: SADX 0x025acd1c
+struct LATE_FAR_Z_T late_far_z_chaos0;
+
+// GLOBAL: SADX 0x025acd28
+struct LATE_FAR_Z_T late_far_z_chaos7;
+
 // GLOBAL: SADX 0x025acd70
 int VOICE_VOLUME;
+
+// GLOBAL: SADX 0x025acd84
+unsigned char DAT_025acd84;
 
 // GLOBAL: SADX 0x025ad5f8
 struct bankdatalist allsedata[123];
 
 // GLOBAL: SADX 0x025ad9d0
 int banktbl[128];
+
+// GLOBAL: SADX 0x025adbd0
+int DAT_025adbd0;
 
 // GLOBAL: SADX 0x025adbd8
 struct NJS_ARGB DAT_025adbd8;
@@ -86,6 +137,9 @@ struct NJS_TEXLIST texlist_ava_vmssel;
 // GLOBAL: SADX 0x025adce0
 struct NJS_TEXLIST texlist_ava_title;
 
+// GLOBAL: SADX 0x025add28
+struct NJS_TEXLIST texlist_ava_back;
+
 // GLOBAL: SADX 0x025add48
 void *(*DAT_025add48[5])[2];
 
@@ -94,6 +148,9 @@ enum AvaTexLdEnum *DAT_025add78[27];
 
 // GLOBAL: SADX 0x025addd8
 unsigned char DAT_025addd8;
+
+// GLOBAL: SADX 0x025d4cad
+unsigned char DAT_025d4cad;
 
 // GLOBAL: SADX 0x025d5968
 float DAT_025d5968;
@@ -134,14 +191,77 @@ struct GH_FONT_INFO Ascii16x16FontInfo[1];
 // GLOBAL: SADX 0x025d7c78
 struct GH_FONT_INFO StaffRollFontInfo[1];
 
+// GLOBAL: SADX 0x02608e24
+unsigned char DAT_02608e24;
+
+// GLOBAL: SADX 0x026313ac
+char *DAT_026313ac;
+
+// GLOBAL: SADX 0x02631474
+char *DAT_02631474;
+
 // GLOBAL: SADX 0x02639adc
 struct NJS_POINT3 vec[2];
+
+// GLOBAL: SADX 0x02639af4
+int DAT_02639af4;
+
+// GLOBAL: SADX 0x02639b08
+struct particle_entry *ListofParticleFixed[13];
+
+// GLOBAL: SADX 0x02639b80
+struct particle_entry * *ListofListofParticle[43];
+
+// GLOBAL: SADX 0x0263dbf4
+struct particle_info default_snow;
+
+// GLOBAL: SADX 0x0263dc30
+struct particle_entry particle_snow;
+
+// GLOBAL: SADX 0x0263ddb0
+struct SEQ_SECTIONTBL seqSectionSonic[1];
+
+// GLOBAL: SADX 0x0263e030
+struct SEQ_SECTIONTBL seqSectionMiles[1];
+
+// GLOBAL: SADX 0x0263e210
+struct SEQ_SECTIONTBL seqSectionKnuckles[1];
+
+// GLOBAL: SADX 0x0263e3f0
+struct SEQ_SECTIONTBL seqSectionAmy[1];
+
+// GLOBAL: SADX 0x0263e558
+struct SEQ_SECTIONTBL seqSectionE102[1];
+
+// GLOBAL: SADX 0x0263e6c0
+struct SEQ_SECTIONTBL seqSectionBig[1];
+
+// GLOBAL: SADX 0x0263e800
+struct SEQ_SECTIONTBL seqSectionLast[1];
+
+// GLOBAL: SADX 0x026759d0
+void (*animal[15])(struct task *);
+
+// GLOBAL: SADX 0x02675a10
+signed char MinimalList[13][5];
+
+// GLOBAL: SADX 0x026795dc
+struct particle_entry particle_flash;
+
+// GLOBAL: SADX 0x0268d998
+struct NJS_TEXLIST texlist_eggrob;
 
 // GLOBAL: SADX 0x0317858c
 long amb;
 
 // GLOBAL: SADX 0x03b4e2f0
 struct obj *obj[10];
+
+// GLOBAL: SADX 0x05a922f8
+float DAT_05a922f8;
+
+// GLOBAL: SADX 0x05a922fc
+float DAT_05a922fc;
 
 // GLOBAL: SADX 0x05a92330
 int DAT_05a92330;
@@ -347,6 +467,12 @@ int DAT_05b3e06c;
 // GLOBAL: SADX 0x05b3e070
 int DAT_05b3e070;
 
+// GLOBAL: SADX 0x05b3e308
+unsigned long DAT_05b3e308[16];
+
+// GLOBAL: SADX 0x05b3e320
+int DAT_05b3e320[16];
+
 // GLOBAL: SADX 0x05b3e356
 unsigned char DAT_05b3e356;
 
@@ -400,6 +526,12 @@ int DAT_05b3ea04;
 
 // GLOBAL: SADX 0x05b3ea08
 unsigned char DAT_05b3ea08;
+
+// GLOBAL: SADX 0x05b3ea16
+int DAT_05b3ea16;
+
+// GLOBAL: SADX 0x05b3ea18
+int DAT_05b3ea18;
 
 // GLOBAL: SADX 0x05b3ea25
 unsigned char DAT_05b3ea25;
@@ -503,11 +635,17 @@ unsigned char DAT_05b42c1c;
 // GLOBAL: SADX 0x05b42c1d
 signed char DAT_05b42c1d;
 
+// GLOBAL: SADX 0x05b42c24
+int DAT_05b42c24[4];
+
 // GLOBAL: SADX 0x05b42c40
 struct NJS_TEXLIST DAT_05b42c40[32];
 
 // GLOBAL: SADX 0x05b92e24
 int DAT_05b92e24;
+
+// GLOBAL: SADX 0x05b92e28
+int DAT_05b92e28;
 
 // GLOBAL: SADX 0x05b92e30
 unsigned char *DAT_05b92e30;
@@ -562,6 +700,9 @@ int DAT_05b9d848;
 
 // GLOBAL: SADX 0x05baf368
 short *DAT_05baf368;
+
+// GLOBAL: SADX 0x05bb00a8
+int DAT_05bb00a8;
 
 // GLOBAL: SADX 0x05bb00a9
 unsigned char DAT_05bb00a9;
@@ -647,6 +788,24 @@ unsigned char DAT_05cd2604;
 // GLOBAL: SADX 0x05cd265c
 int DAT_05cd265c;
 
+// GLOBAL: SADX 0x05cd2948
+int DAT_05cd2948;
+
+// GLOBAL: SADX 0x05cd294c
+int DAT_05cd294c;
+
+// GLOBAL: SADX 0x05cd2950
+int DAT_05cd2950;
+
+// GLOBAL: SADX 0x05cd2954
+int DAT_05cd2954;
+
+// GLOBAL: SADX 0x05cd2958
+int DAT_05cd2958;
+
+// GLOBAL: SADX 0x05cd295c
+int DAT_05cd295c;
+
 // GLOBAL: SADX 0x05cd4078
 int DAT_05cd4078;
 
@@ -659,6 +818,66 @@ struct task *DAT_05cda18c;
 // GLOBAL: SADX 0x05cda1b0
 unsigned long DAT_05cda1b0;
 
+// GLOBAL: SADX 0x05cda1b4
+unsigned long DAT_05cda1b4;
+
+// GLOBAL: SADX 0x05cda1b8
+unsigned long DAT_05cda1b8;
+
+// GLOBAL: SADX 0x05cda1bc
+unsigned long DAT_05cda1bc;
+
+// GLOBAL: SADX 0x05cda1c0
+unsigned long DAT_05cda1c0;
+
+// GLOBAL: SADX 0x05cda1c4
+unsigned long DAT_05cda1c4;
+
+// GLOBAL: SADX 0x05cda1c8
+unsigned long DAT_05cda1c8;
+
+// GLOBAL: SADX 0x05eda290
+int DAT_05eda290[0x60];
+
+// GLOBAL: SADX 0x05edbc10
+int DAT_05edbc10;
+
+// GLOBAL: SADX 0x05edbc14
+int DAT_05edbc14[4];
+
+// GLOBAL: SADX 0x05edbc24
+int DAT_05edbc24;
+
+// GLOBAL: SADX 0x05edbc28
+int DAT_05edbc28;
+
+// GLOBAL: SADX 0x05edbc2c
+int DAT_05edbc2c[10];
+
+// GLOBAL: SADX 0x05edbc60
+int DAT_05edbc60;
+
+// GLOBAL: SADX 0x05edbc64
+int DAT_05edbc64;
+
+// GLOBAL: SADX 0x05edbc6c
+int DAT_05edbc6c;
+
+// GLOBAL: SADX 0x05edbc70
+int DAT_05edbc70;
+
+// GLOBAL: SADX 0x05edbc74
+int DAT_05edbc74;
+
+// GLOBAL: SADX 0x05edbc78
+int DAT_05edbc78;
+
+// GLOBAL: SADX 0x05edbc7c
+int DAT_05edbc7c;
+
+// GLOBAL: SADX 0x05edbc80
+int DAT_05edbc80;
+
 // GLOBAL: SADX 0x05edbc84
 struct task *DAT_05edbc84;
 
@@ -667,6 +886,9 @@ int DAT_05edbc88;
 
 // GLOBAL: SADX 0x05edc428
 int DAT_05edc428;
+
+// GLOBAL: SADX 0x05edd2e0
+char DAT_05edd2e0[0x800];
 
 // GLOBAL: SADX 0x060eea5c
 int DAT_060eea5c;
@@ -685,6 +907,9 @@ long DAT_06298c64;
 
 // GLOBAL: SADX 0x06298cac
 int DAT_06298cac;
+
+// GLOBAL: SADX 0x0629c6e0
+float DAT_0629c6e0;
 
 // GLOBAL: SADX 0x0629c6ec
 float DAT_0629c6ec;
