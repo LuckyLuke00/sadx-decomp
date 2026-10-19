@@ -1,0 +1,121 @@
+# The game's areas for the progress map, such as a stage, a character or the menus: what places a function in
+# one. tools/areas.py reads this file, and its docstring says how each part is used.
+
+# The source tree. A function in a file under src/ takes the area of the first pattern that matches the file's
+# path, and a file that no pattern matches stops `check.py areas`. A folder gets a line once a file lands in it.
+tree:
+  - ['^src/___now/', pc_port]
+  - ['^src/Advertise/', menus]
+  - ['^src/chao/stg_race1/', chao_race]
+  - ['^src/chao/', chao_garden]
+  - ['^src/enemy/', enemies]
+  - ['^src/shinobi/', ninja]
+  - ['^src/animal\.c$', enemies]
+  - ['^src/(emblem|message)\.c$', menus]
+  - ['^src/(miren_\w+\.c|playsound\.cpp)$', pc_port]
+  - ['^src/npc_sub\.c$', player]
+  - ['^src/SeqStageTable\.c$', story]
+  - ['^src/setstagetable\.c$', objects]
+  - ['^src/[^/]+$', engine]  # the other files at the top of src/
+
+# The progress map's sections, in order, each with its areas and the name the map shows for each. Every area
+# above needs a name here. A section's `color` is the emerald before its title: quote it, since YAML
+# reads an unquoted # as a comment.
+map:
+  - section: Characters
+    color: "#2f6bff"
+    areas: {sonic: Sonic, tails: Tails, knuckles: Knuckles, amy: Amy, big: Big, gamma: E-102 Gamma,
+            player: Shared}
+  - section: Action Stages
+    color: "#ff3b4a"
+    areas: {emerald_coast: Emerald Coast, windy_valley: Windy Valley, casinopolis: Casinopolis, ice_cap: Ice Cap,
+            twinkle_park: Twinkle Park, speed_highway: Speed Highway, red_mountain: Red Mountain,
+            sky_deck: Sky Deck, lost_world: Lost World, final_egg: Final Egg, hot_shelter: Hot Shelter}
+  - section: Adventure Fields
+    color: "#39d353"
+    areas: {station_square: Station Square, egg_carrier: Egg Carrier, mystic_ruins: Mystic Ruins,
+            the_past: The Past}
+  - section: Bosses
+    color: "#b266ff"
+    areas: {chaos_0: Chaos 0, chaos_2: Chaos 2, chaos_4: Chaos 4, chaos_6: Chaos 6, perfect_chaos: Perfect Chaos,
+            egg_hornet: Egg Hornet, egg_walker: Egg Walker, egg_viper: Egg Viper, zero: ZERO,
+            e101_beta: E-101 Beta, e101_mk2: E-101 mkII}
+  - section: Mini-games
+    color: "#ffe14d"
+    areas: {sky_chase: Sky Chase, sand_hill: Sand Hill, twinkle_circuit: Twinkle Circuit, other: Hedgehog Hammer,
+            game_gear: Game Gear games}
+  - section: Chao
+    color: "#7fe8ff"
+    areas: {chao_garden: Chao Gardens, chao_race: Chao Race}
+  - section: Story and menus
+    color: "#f2f5fb"
+    areas: {story: Story, menus: Menus, missions: Missions}
+  - section: Shared code
+    color: "#0f9d6b"
+    areas: {objects: Objects, enemies: Enemies, engine: Engine, ninja: Ninja graphics, pc_port: PC port}
+
+# Areas whose code many places call. A function called only from one of them is often shared code too, so it
+# takes that area only from a nearby caller, and only short gaps between two of its seeds are filled.
+shared: [objects, enemies, menus, story, missions, pc_port, ninja, engine]
+# Shared areas that code reaches only through an entry table, so a function they call directly is theirs.
+direct: [story]
+
+# Stage numbers, as the mod loader's headers number them, and their areas. A stage that is missing has no area.
+stages: {0: other, 1: emerald_coast, 2: windy_valley, 3: twinkle_park, 4: speed_highway, 5: red_mountain,
+         6: sky_deck, 7: lost_world, 8: ice_cap, 9: casinopolis, 10: final_egg, 12: hot_shelter, 15: chaos_0,
+         16: chaos_2, 17: chaos_4, 18: chaos_6, 19: perfect_chaos, 20: egg_hornet, 21: egg_walker, 22: egg_viper,
+         23: zero, 24: e101_beta, 25: e101_mk2, 26: station_square, 27: station_square, 28: station_square,
+         29: egg_carrier, 32: egg_carrier, 33: mystic_ruins, 34: the_past, 35: twinkle_circuit, 36: sky_chase,
+         37: sky_chase, 38: sand_hill, 39: chao_garden, 40: chao_garden, 41: chao_garden, 42: chao_race}
+
+# The stage object lists: a table of 44 stages by 8 acts, each a pointer to {count, first entry}. An entry is
+# 20 bytes, with the object's code at +12 and its name at +16. An object takes its stage's area. One that
+# several stages list takes the area `several`.
+object_lists: {address: 0x02606C90, stages: 44, acts: 8, entry: 20, code: 12, name: 16, several: objects}
+# Object names that say what an object is, whatever stage lists it. The first match wins. With `stages`, the
+# name counts only when that many stages list the object.
+object_names:
+  - {name: '^E ', area: enemies, stages: 2}  # one stage's enemy may be that stage's own code
+  - {name: '^S ', area: big}  # the fish of Big's fishing ("S BASS", "S KAERU")
+  - {name: '^C ', area: engine}  # collision volumes ("C CUBE", "C WALL")
+  - {name: '^Minigame Mogura', area: other}  # Hedgehog Hammer, stage 0
+
+# Tables of one function per stage, indexed by stage number. Index 0 of the second is empty.
+stage_tables: [0x025D7530, 0x025D77E8]
+
+# Function tables found by reading the exe. Each `stride` bytes holds an entry. With `hops: 1`, the entry points
+# to a record whose first word is the function. A list of areas gives one per entry, in order.
+tables:
+  - {address: 0x04CB95E0, entries: 1792, stride: 4, areas: [game_gear],
+     what: "the Game Gear's Z80 instruction handlers, 7 pages of 256"}
+  - {address: 0x0099C520, entries: 6, stride: 16, areas: [sonic, tails, knuckles, amy, big, gamma],
+     what: "the playable characters' main code, in select-screen order"}
+  - {address: 0x02603708, entries: 512, stride: 4, hops: 1, areas: [story],
+     what: "the event records, by event ID, that the code formatting 'ev%04X.rel' reads; word 0 is the event's code"}
+  - {address: 0x02618A0C, entries: 46, stride: 4, areas: [menus],
+     what: "the start and end code of the 22 title, file select and option screens"}
+
+# A string a function uses, directly or through up to two pointer hops, names its area.
+strings:
+  - [chao_race, '(?i)race|^cr_|al_ent|entrance']
+  - [chao_garden, '^AL_|^ali_|(?i:garden|kinder)|\.snc$']
+  - [menus, '(?i)^ava_|^title|^tgs_|^hyoji|filesel|\\option\\|staffroll|^adv_window|^segalogo']
+  - [missions, '^(Set|Prm)Mi|(?i:^p_mission|^m_c_)']
+  - [story, '(?i)^ev_|event']
+  - [ninja, '(?i)ninja|shinobi|\\soc\\|\\st\\|polybuff|shader/']
+  - [the_past, '(?i)^past']
+
+# A class name in data/classes.csv names the area of its methods and of the code that uses its vtable.
+classes:
+  - [game_gear, '^\.\?AV(TGameGear|TAdvertise|TModeCtrl|TMainTask|TObject)']
+  - [pc_port, 'LSS_TINYXML|STEAM@@']
+  - [ninja, '^\.\?AVSOC']
+
+# A source path in data/source-files.csv names the area of the functions that use it.
+sources:
+  - [menus, '(?i)\\advertise\\']
+  - [ninja, '(?i)\\(soc|st|shinobi)\\']
+  - [enemies, '(?i)\\enemy\.c$']
+  - [story, '(?i)\\event\w*\.c$']
+  - [engine, '(?i)\\task\.c$']
+  - [pc_port, '(?i)\\(l_edit|texture)\.cpp$']
