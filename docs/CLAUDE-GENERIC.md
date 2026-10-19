@@ -21,6 +21,7 @@ Run from repo root. Every command first sets up its needs (`.venv`, `.toolchain`
 - `python tools/check.py library`: finds runtime library code in game, writes `src/library.csv`, scores it. Run after `data/functions.csv` or `library` ranges in `data/codegen-groups.csv` change.
 - `python tools/check.py sources`: ties functions to source files (`data/source-files.csv`) and classes (`data/classes.csv`) from exe paths and class names. Run after `data/functions.csv` changes.
 - `python tools/check.py groups`: prints evidence for each row of `data/codegen-groups.csv`, writes `data/file-clusters.csv`. Exit 1: a function has a tell its row's flags could not have made. Run after `data/functions.csv`, `src/library.csv` or a row changes.
+- `python tools/check.py areas`: sorts game functions into areas (`data/areas.yml`), writes the exe's guess to `data/areas.csv`. Exit 1: a file in a new folder under `src/` has no tree line: add one in `data/areas.yml`.
 - `python tools/check.py probe <exe>`: reads exe headers, suggests its game files. Needs no game setup.
 
 ## Loop for one function
