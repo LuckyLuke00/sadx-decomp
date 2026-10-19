@@ -9,6 +9,7 @@
   python tools/check.py library               find the runtime library in the game and score it
   python tools/check.py sources               tie functions to source files and classes, from the exe
   python tools/check.py groups                recount the evidence for data/codegen-groups.csv
+  python tools/check.py decls                 write the declarations and stubs that the sources use
   python tools/check.py probe EXE             what a new game's exe needs: see docs/PORTING.md
 
 Every command sets up what it needs: .venv with the pinned packages, the
@@ -31,6 +32,7 @@ from pathlib import Path
 import ci
 import codegen
 import datafiles
+import declgen
 import library
 import osutil
 import pe
@@ -56,6 +58,8 @@ def main() -> int:
         return datafiles.write_sources(project.require_game())
     if args.command == "groups":
         return datafiles.check_groups(project.require_game())
+    if args.command == "decls":
+        return declgen.write(args.context, args.tables)
     if args.command == "ci":
         toolchain.ensure(project.TOOLCHAIN)
         build()
@@ -78,6 +82,9 @@ def parse_args() -> argparse.Namespace:
     commands.add_parser("library")
     commands.add_parser("sources")
     commands.add_parser("groups")
+    decls = commands.add_parser("decls")
+    decls.add_argument("--context", type=Path, help="another checkout whose files give signatures and globals")
+    decls.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
     commands.add_parser("probe").add_argument("exe", type=Path)
     return parser.parse_args()
 

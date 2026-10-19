@@ -90,7 +90,7 @@ short ssPauseEnable;
 void (*DAT_025d7530[43])(struct task *);
 
 // GLOBAL: SADX 0x025d75e0
-unsigned long BackColorList[3][43];
+unsigned long BackColorList[43][3];
 
 // GLOBAL: SADX 0x025d77e8
 void (*DAT_025d77e8[43])(struct task *);

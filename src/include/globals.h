@@ -31,7 +31,7 @@ extern long action_button;
 extern long hold_button;
 extern short ssPauseEnable;
 extern void (*DAT_025d7530[43])(struct task *);
-extern unsigned long BackColorList[3][43];
+extern unsigned long BackColorList[43][3];
 extern void (*DAT_025d77e8[43])(struct task *);
 extern struct __MYMEM_DATA *DAT_025d7b20;
 extern struct GH_FONT_INFO Ascii16x16FontInfo[];

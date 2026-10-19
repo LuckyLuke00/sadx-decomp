@@ -3,23 +3,23 @@
 #include "decls.h"
 
 // STUB: SADX 0x00404ef0
-void ___OutputDebugString(char *, ...)
+void ___OutputDebugString(char *str, ...)
 {
 }
 
 // STUB: SADX 0x00405350
-void npSetZCompareMode(int)
+void npSetZCompareMode(int flag)
 {
 }
 
 // STUB: SADX 0x004199f0
-int __fastcall FUN_004199f0(void *self, float value)
+int __fastcall FUN_004199f0(void *, float)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x0041c2d0
-void FUN_0041c2d0(void *param_1)
+void FUN_0041c2d0(void *)
 {
 }
 
@@ -39,7 +39,7 @@ void njColorBlendingMode(int,int)
 }
 
 // STUB: SADX 0x00422560
-void FUN_00422560(int param_1)
+void FUN_00422560(int)
 {
 }
 
@@ -77,7 +77,7 @@ void njSetBackColor(unsigned long,unsigned long,unsigned long)
 }
 
 // STUB: SADX 0x004251a0
-void njSetConstantMaterial(NJS_ARGB *param_1)
+void njSetConstantMaterial(NJS_ARGB *)
 {
 }
 
@@ -87,33 +87,33 @@ void njPopMatrixEx()
 }
 
 // STUB: SADX 0x004309b0
-void njCalcVector(float *m, struct NJS_POINT3 *v, struct NJS_POINT3 *out)
+void njCalcVector(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
 }
 
 // STUB: SADX 0x00430aa0
-void njRotateZ(float *m, int ang)
+void njRotateZ(float *, int)
 {
 }
 
 // STUB: SADX 0x00430b70
-void njPushMatrix(float *m)
+void njPushMatrix(float *)
 {
 }
 
 // STUB: SADX 0x004337a0
-void *_SOCMalloc(unsigned int size, const char *file, int line)
+void *_SOCMalloc(unsigned int, const char *, int)
 {
 	return (void *)0;
 }
 
 // STUB: SADX 0x004337c0
-void _SOCFree(void *p, const char *file, int line)
+void _SOCFree(void *, const char *, int)
 {
 }
 
 // STUB: SADX 0x0043bcf0
-void AL_IconResetPos(struct task *)
+void AL_IconResetPos(struct task *tp)
 {
 }
 
@@ -136,81 +136,81 @@ enum eCourseNumDX AL_GetCourseNum()
 }
 
 // STUB: SADX 0x0044c420
-const unsigned long *AlMsgStrLoadLang(const char *, int)
+const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 {
 	return (const unsigned long *)0;
 }
 
 // STUB: SADX 0x00483070
-void AlrReal_changeAct_for_Race(struct AlrReal *)
+void AlrReal_changeAct_for_Race(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00483410
-void AlrReal_setRanking(struct AlrReal *)
+void AlrReal_setRanking(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00483490
-void AlrReal_calcAverage(struct AlrReal *)
+void AlrReal_calcAverage(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00483500
-void AlrReal_checkGoal(struct AlrReal *)
+void AlrReal_checkGoal(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00483930
-void AlrReal_raceEndAlr(struct AlrReal *)
+void AlrReal_raceEndAlr(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00483a00
-void AlrReal_SetCameraMode(struct AlrReal *, int)
+void AlrReal_SetCameraMode(struct AlrReal *___this, int mode)
 {
 }
 
 // STUB: SADX 0x00483a40
-void AlrReal_controlCamera(struct AlrReal *)
+void AlrReal_controlCamera(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00483fa0
-void AlrReal_dspHead(struct AlrReal *)
+void AlrReal_dspHead(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00484060
-int AlrReal_offSonic(struct AlrReal *)
+int AlrReal_offSonic(struct AlrReal *___this)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x004840a0
-int AlrReal_onSonic(struct AlrReal *)
+int AlrReal_onSonic(struct AlrReal *___this)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x00484150
-int AlrFanFan_checkFanFan(struct AlrFanFan *)
+int AlrFanFan_checkFanFan(struct AlrFanFan *___this)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x00484170
-void AlrFanFan_exe(struct AlrFanFan *, struct AlrReal *)
+void AlrFanFan_exe(struct AlrFanFan *___this, struct AlrReal *alrreal)
 {
 }
 
 // STUB: SADX 0x004849a0
-void AlrReal_checkSaveJewel(struct AlrReal *)
+void AlrReal_checkSaveJewel(struct AlrReal *___this)
 {
 }
 
 // STUB: SADX 0x00484a90
-long AlrReal_checkCommendation(struct AlrReal *)
+long AlrReal_checkCommendation(struct AlrReal *___this)
 {
 	return (long)0;
 }
@@ -222,75 +222,75 @@ void *ADV1_AL_GetRaceTimeRam()
 }
 
 // STUB: SADX 0x00484d80
-void AlrCam_Ini(struct AlrCam *)
+void AlrCam_Ini(struct AlrCam *___this)
 {
 }
 
 // STUB: SADX 0x00486640
-void AlrCam_Exe(struct AlrCam *, struct AlrReal *)
+void AlrCam_Exe(struct AlrCam *___this, struct AlrReal *alrreal)
 {
 }
 
 // STUB: SADX 0x00486930
-struct alifewk *Alr_GetAwp(struct Alr *)
+struct alifewk *Alr_GetAwp(struct Alr *___this)
 {
 	return (struct alifewk *)0;
 }
 
 // STUB: SADX 0x004869a0
-int Alr_CheckRace(const struct Alr *)
+int Alr_CheckRace(const struct Alr *___this)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x00486bb0
-int FUN_00486bb0(struct Alr *param_1)
+int FUN_00486bb0(struct Alr *)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x00486c00
-void Alr_ConstraintLookAt(struct Alr *, const struct NJS_POINT3 *)
+void Alr_ConstraintLookAt(struct Alr *___this, const struct NJS_POINT3 *pos)
 {
 }
 
 // STUB: SADX 0x00487440
-void Alr_DisconnectObj(struct Alr *)
+void Alr_DisconnectObj(struct Alr *___this)
 {
 }
 
 // STUB: SADX 0x00487c70
-void Alr_Exe(struct Alr *, struct AlrRoot *, int)
+void Alr_Exe(struct Alr *___this, struct AlrRoot *root, int cup)
 {
 }
 
 // STUB: SADX 0x00488150
-void AlrTimer_Clear(struct AlrTimer *)
+void AlrTimer_Clear(struct AlrTimer *___this)
 {
 }
 
 // STUB: SADX 0x004881d0
-void FUN_004881d0(struct AlrTimer *param_1)
+void FUN_004881d0(struct AlrTimer *)
 {
 }
 
 // STUB: SADX 0x004881e0
-void AlrTimer_Dsp(struct AlrTimer *)
+void AlrTimer_Dsp(struct AlrTimer *___this)
 {
 }
 
 // STUB: SADX 0x004882d0
-void AlrRank_Clear(struct AlrRank *)
+void AlrRank_Clear(struct AlrRank *___this)
 {
 }
 
 // STUB: SADX 0x004886a0
-void AlrRank_Dsp(struct AlrRank *, struct Alr *, int)
+void AlrRank_Dsp(struct AlrRank *___this, struct Alr *alr, int look)
 {
 }
 
 // STUB: SADX 0x00488c50
-void FUN_00488c50(struct AlrMemory *param_1)
+void FUN_00488c50(struct AlrMemory *)
 {
 }
 
@@ -300,7 +300,7 @@ void AllClearEntryDialog()
 }
 
 // STUB: SADX 0x00488cc0
-int SetCommandToDialog(int, int)
+int SetCommandToDialog(int num, int command)
 {
 	return (int)0;
 }
@@ -316,7 +316,7 @@ void WinDestructor()
 }
 
 // STUB: SADX 0x00489260
-void Jewel_Create(int, struct NJS_POINT3 *)
+void Jewel_Create(int cup, struct NJS_POINT3 *pos)
 {
 }
 
@@ -336,22 +336,22 @@ void CallJewelGet()
 }
 
 // STUB: SADX 0x004896f0
-void AlrRoot_Del(struct AlrRoot *)
+void AlrRoot_Del(struct AlrRoot *___this)
 {
 }
 
 // STUB: SADX 0x004897f0
-void FUN_004897f0(struct AlrRoot *param_1, struct pathtag **param_2, int param_3, float param_4)
+void FUN_004897f0(struct AlrRoot *, struct pathtag **, int, float)
 {
 }
 
 // STUB: SADX 0x00489870
-void AlrWhite_In(int)
+void AlrWhite_In(int nCount)
 {
 }
 
 // STUB: SADX 0x004898a0
-void AlrWhite_Out(int)
+void AlrWhite_Out(int nCount)
 {
 }
 
@@ -361,7 +361,7 @@ void AlrWhite_Init()
 }
 
 // STUB: SADX 0x00489c00
-void AlrStage00_Exe(struct AlrReal *)
+void AlrStage00_Exe(struct AlrReal *___this)
 {
 }
 
@@ -387,12 +387,12 @@ struct task *AlrObjSetManageTask()
 }
 
 // STUB: SADX 0x0049d460
-void CheckEmbleAchievement(struct SAVE_DATA *)
+void CheckEmbleAchievement(struct SAVE_DATA *psd)
 {
 }
 
 // STUB: SADX 0x0049e390
-void GetEmblemofStageClear(struct SAVE_DATA *, long, long, long)
+void GetEmblemofStageClear(struct SAVE_DATA *psd, long chara, long stage, long level)
 {
 }
 
@@ -403,46 +403,46 @@ struct task *InitGetEmblem()
 }
 
 // STUB: SADX 0x004a0040
-struct LE_PALIGHT_ENV *le_find_paenv(int, int, int)
+struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr)
 {
 	return (struct LE_PALIGHT_ENV *)0;
 }
 
 // STUB: SADX 0x004a0100
-int dsGDLoadPalette(unsigned short, unsigned short)
+int dsGDLoadPalette(unsigned short stg, unsigned short act)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x004a0520
-void FUN_004a0520(float param_1, float param_2)
+void FUN_004a0520(float, float)
 {
 }
 
 // STUB: SADX 0x004a06c0
-int isTextureNG(struct NJS_TEXLIST *, int)
+int isTextureNG(struct NJS_TEXLIST *tl, int numChk)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x004a0790
-int dsCheckViewV(struct NJS_POINT3 *, float)
+int dsCheckViewV(struct NJS_POINT3 *ft, float radius)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x004a0940
-void FUN_004a0940(struct NJS_MODEL *model)
+void FUN_004a0940(struct NJS_MODEL *)
 {
 }
 
 // STUB: SADX 0x004a0960
-void FUN_004a0960(struct obj *object, struct NJS_MOTION *motion, float frame)
+void FUN_004a0960(struct obj *, struct NJS_MOTION *, float)
 {
 }
 
 // STUB: SADX 0x004a2010
-void ___njDrawLine3D(struct NJS_POINT3COL *, int, unsigned long)
+void ___njDrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
 }
 
@@ -462,17 +462,17 @@ void late_execCancel()
 }
 
 // STUB: SADX 0x004a6940
-void late_DrawObjectMesh(struct obj *, int)
+void late_DrawObjectMesh(struct obj *obj, int flgs)
 {
 }
 
 // STUB: SADX 0x004a7ce0
-void ___DrawModel(struct NJS_MODEL *)
+void ___DrawModel(struct NJS_MODEL *model)
 {
 }
 
 // STUB: SADX 0x004a7d20
-void DrawMotion(struct obj *, struct NJS_MOTION *, float, int, float, void *)
+void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
 {
 }
 
@@ -483,34 +483,34 @@ long IsSoundSystem()
 }
 
 // STUB: SADX 0x004ab0f0
-bool LoadPCM(int, void *, int, int)
+bool LoadPCM(int ch, void *wavememory, int wavesize, int loopflag)
 {
 	return (bool)0;
 }
 
 // STUB: SADX 0x004ab120
-void FUN_004ab120(int param_1, int param_2)
+void FUN_004ab120(int, int)
 {
 }
 
 // STUB: SADX 0x004ab190
-bool Load3DPCM(int, void *, int, int)
+bool Load3DPCM(int ch, void *wavememory, int wavesize, int loopflag)
 {
 	return (bool)0;
 }
 
 // STUB: SADX 0x004ab200
-void StopPCM(int)
+void StopPCM(int ch)
 {
 }
 
 // STUB: SADX 0x004ab290
-void FUN_004ab290(int param_1, float param_2)
+void FUN_004ab290(int, float)
 {
 }
 
 // STUB: SADX 0x004ab340
-bool Set3DMinMaxPCM(int, float, float)
+bool Set3DMinMaxPCM(int ch, float min, float max)
 {
 	return (bool)0;
 }
@@ -526,50 +526,50 @@ void Reset()
 }
 
 // STUB: SADX 0x004ae7f0
-void makesndfilename(int, int)
+void makesndfilename(int bk, int li)
 {
 }
 
 // STUB: SADX 0x004ae920
-void IsndStop(long)
+void IsndStop(long handleno)
 {
 }
 
 // STUB: SADX 0x004ae940
-void IsndVolume(int, int)
+void IsndVolume(int vol, int handleno)
 {
 }
 
 // STUB: SADX 0x004ae9a0
-void IsndPitch(int, int)
+void IsndPitch(int pitch, int handleno)
 {
 }
 
 // STUB: SADX 0x004aea00
-int dsPlay_oneshot(int, int, int, int)
+int dsPlay_oneshot(int tone, int id, int pri, int volofs)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x004af780
-void InitOverlapSE(unsigned char)
+void InitOverlapSE(unsigned char ini)
 {
 }
 
 // STUB: SADX 0x004afc60
-int dsGetVolume(int)
+int dsGetVolume(int ii)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x004afda0
-long IsPlayOk(int)
+long IsPlayOk(int tone)
 {
 	return (long)0;
 }
 
 // STUB: SADX 0x004aff60
-int dsEVboss(int)
+int dsEVboss(int tone)
 {
 	return (int)0;
 }
@@ -580,72 +580,72 @@ void dsDolbySound()
 }
 
 // STUB: SADX 0x004b1940
-void AvaReleaseTexForEachMode(enum AdvaModeEnum)
+void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {
 }
 
 // STUB: SADX 0x004b6460
-void FUN_004b6460(struct NJS_TEXLIST *param_1, char *param_2)
+void FUN_004b6460(struct NJS_TEXLIST *, char *)
 {
 }
 
 // STUB: SADX 0x004b6f80
-void FileSelModeWakeProcedure(struct FileSelWk *)
+void FileSelModeWakeProcedure(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b78b0
-void file_sel_sub_exec(struct FileSelWk *)
+void file_sel_sub_exec(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b84d0
-void DrawStartChiten(struct FileSelWk *)
+void DrawStartChiten(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b85b0
-void DrawSaishuuClear(struct FileSelWk *)
+void DrawSaishuuClear(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b8710
-void DrawPlayTime(struct FileSelWk *)
+void DrawPlayTime(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b8860
-void DrawFileEmblem(struct FileSelWk *)
+void DrawFileEmblem(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b89a0
-void DrawFileSelScoreWindow(struct FileSelWk *)
+void DrawFileSelScoreWindow(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b9060
-void DrawFileSelBg(struct FileSelWk *)
+void DrawFileSelBg(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b9330
-void file_sel_disp(struct task *)
+void file_sel_disp(struct task *tp)
 {
 }
 
 // STUB: SADX 0x004b93b0
-void DrawFileSelBallChar(struct FileSelWk *)
+void DrawFileSelBallChar(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b95e0
-void DrawFileSelCsr(struct FileSelWk *)
+void DrawFileSelCsr(struct FileSelWk *wkp)
 {
 }
 
 // STUB: SADX 0x004b9da0
-void AvaDrawInfo(struct FileSelWk *)
+void AvaDrawInfo(struct FileSelWk *wkp)
 {
 }
 
@@ -660,22 +660,22 @@ void FUN_004bac60()
 }
 
 // STUB: SADX 0x004bae20
-void SetViewAngle(long)
+void SetViewAngle(long new_view_angle)
 {
 }
 
 // STUB: SADX 0x004c06f0
-void title_menu_exec(struct task *)
+void title_menu_exec(struct task *tp)
 {
 }
 
 // STUB: SADX 0x004c0e10
-void FUN_004c0e10(void *param_1)
+void FUN_004c0e10(void *)
 {
 }
 
 // STUB: SADX 0x004c12e0
-void DisplayTitleNew(float)
+void DisplayTitleNew(float basez)
 {
 }
 
@@ -690,7 +690,7 @@ void PadReadOn()
 }
 
 // STUB: SADX 0x004c38f0
-void PadReadOn(int)
+void PadReadOn(int counter)
 {
 }
 
@@ -716,12 +716,12 @@ long InitGame()
 }
 
 // STUB: SADX 0x004c76a0
-void SetChangeGameMode(short)
+void SetChangeGameMode(short mode)
 {
 }
 
 // STUB: SADX 0x004c91e0
-void SetPlayerNumberForGame(unsigned short)
+void SetPlayerNumberForGame(unsigned short pno)
 {
 }
 
@@ -738,17 +738,17 @@ long NP_ChkStageChaoGarden()
 }
 
 // STUB: SADX 0x004c9a20
-void GM_SetNextAdventureStage(unsigned short, unsigned short)
+void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
 {
 }
 
 // STUB: SADX 0x004cb390
-void ghReleaseFontTexture(struct GH_FONT_INFO *)
+void ghReleaseFontTexture(struct GH_FONT_INFO *font)
 {
 }
 
 // STUB: SADX 0x004cb7d0
-void dsInitInt(int, int)
+void dsInitInt(int vsync, int loop)
 {
 }
 
@@ -763,34 +763,34 @@ void LoadConstantAttr()
 }
 
 // STUB: SADX 0x004ccea0
-void OnConstantAttr(unsigned long, unsigned long)
+void OnConstantAttr(unsigned long soc_and, unsigned long soc_or)
 {
 }
 
 // STUB: SADX 0x004cf5e0
-void LoadPlayerMotionData(long)
+void LoadPlayerMotionData(long PlayerNo)
 {
 }
 
 // STUB: SADX 0x004f1a60
-long GetPlayerCharacterName(unsigned char)
+long GetPlayerCharacterName(unsigned char pno)
 {
 	return (long)0;
 }
 
 // STUB: SADX 0x004f3750
-struct task *CreateElementalTask(unsigned short, long, void (*)(struct task *))
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *))
 {
 	return (struct task *)0;
 }
 
 // STUB: SADX 0x004f39c0
-void DestroyTask(struct task *)
+void DestroyTask(struct task *tp)
 {
 }
 
 // STUB: SADX 0x004f3be0
-void FreeTask(struct task *)
+void FreeTask(struct task *tp)
 {
 }
 
@@ -810,18 +810,18 @@ void GenocideTask()
 }
 
 // STUB: SADX 0x004f4390
-void *CAlloc(unsigned int, unsigned int)
+void *CAlloc(unsigned int num, unsigned int size)
 {
 	return (void *)0;
 }
 
 // STUB: SADX 0x004f4400
-void Free(void *)
+void Free(void *mp)
 {
 }
 
 // STUB: SADX 0x004f45c0
-struct task *CreateChildTask(unsigned short, void (*)(struct task *), struct task *)
+struct task *CreateChildTask(unsigned short im, void (*exec)(struct task *), struct task *tp)
 {
 	return (struct task *)0;
 }
@@ -843,7 +843,7 @@ void ADX_Close()
 }
 
 // STUB: SADX 0x004f63d0
-void Serif_Play(int)
+void Serif_Play(int no)
 {
 }
 
@@ -853,7 +853,7 @@ void CL_ColPolListUpModeSetAll()
 }
 
 // STUB: SADX 0x00501ce0
-void LoadTextureForEachGameMode(long)
+void LoadTextureForEachGameMode(long gamemode)
 {
 }
 
@@ -863,7 +863,7 @@ void ReleaseTextureForEachGameMode()
 }
 
 // STUB: SADX 0x00502980
-void texLoadTexturePvmFile(char *, struct NJS_TEXLIST *)
+void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo)
 {
 }
 
@@ -879,7 +879,7 @@ void InitGCMemocaState()
 }
 
 // STUB: SADX 0x00551340
-long CheckRangeOut(struct task *)
+long CheckRangeOut(struct task *pTask)
 {
 	return (long)0;
 }
@@ -910,7 +910,7 @@ void FUN_0055de60(struct _SC_NUMBERS *)
 }
 
 // STUB: SADX 0x0056a980
-void EV_Load2(int)
+void EV_Load2(int no)
 {
 }
 
@@ -926,7 +926,7 @@ int EV_CheckCansel()
 }
 
 // STUB: SADX 0x0056f080
-void MirenSoundStartBgm(int)
+void MirenSoundStartBgm(int bgmId)
 {
 }
 
@@ -959,17 +959,17 @@ void ___njFogDisable()
 }
 
 // STUB: SADX 0x00573f20
-void ghSetPvrTexMaterial(unsigned long)
+void ghSetPvrTexMaterial(unsigned long color)
 {
 }
 
 // STUB: SADX 0x005740a0
-void ghSetPvrTexBaseColor(unsigned long)
+void ghSetPvrTexBaseColor(unsigned long color)
 {
 }
 
 // STUB: SADX 0x00574950
-void ghDrawPvrTexture(int, float, float, float)
+void ghDrawPvrTexture(int index, float x, float y, float z)
 {
 }
 
@@ -979,17 +979,17 @@ void ghDefaultBlendingMode()
 }
 
 // STUB: SADX 0x00575150
-void ghGetPvrTextureSize(struct NJS_TEXLIST *, int, int *, int *)
+void ghGetPvrTextureSize(struct NJS_TEXLIST *texlist, int index, int *w, int *h)
 {
 }
 
 // STUB: SADX 0x00575490
-void DrawShadowWindow(float, float, float, float, float)
+void DrawShadowWindow(float x, float y, float z, float w, float h)
 {
 }
 
 // STUB: SADX 0x00575760
-void DrawTitleBack(float, float, float, float, float)
+void DrawTitleBack(float x, float y, float z, float w, float h)
 {
 }
 
@@ -1005,23 +1005,23 @@ void InitSystemTV()
 }
 
 // STUB: SADX 0x0059c810
-void AlertWindowTask(struct task *)
+void AlertWindowTask(struct task *tp)
 {
 }
 
 // STUB: SADX 0x0059ce70
-struct MDHANDLE *MDHeaderOpen(char *, int)
+struct MDHANDLE *MDHeaderOpen(char *fname, int flag)
 {
 	return (struct MDHANDLE *)0;
 }
 
 // STUB: SADX 0x0059d430
-void MDHeaderClose(struct MDHANDLE *)
+void MDHeaderClose(struct MDHANDLE *mdh)
 {
 }
 
 // STUB: SADX 0x0059d4b0
-struct task *SetAdvaSequenceTask(struct SeqPrmType *)
+struct task *SetAdvaSequenceTask(struct SeqPrmType *prmp)
 {
 	return (struct task *)0;
 }
@@ -1032,13 +1032,13 @@ void FreeAdvaSequenceTask()
 }
 
 // STUB: SADX 0x0059e430
-unsigned long GetFadeInColFromT(float)
+unsigned long GetFadeInColFromT(float t)
 {
 	return (unsigned long)0;
 }
 
 // STUB: SADX 0x0059e460
-unsigned long GetFadeOutColFromT(float)
+unsigned long GetFadeOutColFromT(float t)
 {
 	return (unsigned long)0;
 }
@@ -1049,7 +1049,7 @@ void StopAdvaBGM()
 }
 
 // STUB: SADX 0x005a4120
-void DrawSkyBg(float)
+void DrawSkyBg(float z)
 {
 }
 
@@ -1066,13 +1066,13 @@ struct task *CreateNpcMilesPlayerTask()
 }
 
 // STUB: SADX 0x005adfc0
-long StageNameModeInit(long)
+long StageNameModeInit(long time)
 {
 	return (long)0;
 }
 
 // STUB: SADX 0x005ae2f0
-long StageNameMode(void *)
+long StageNameMode(void *Param)
 {
 	return (long)0;
 }
@@ -1083,54 +1083,54 @@ void FUN_005b5aa0()
 }
 
 // STUB: SADX 0x005e1d60
-struct task *CreateBossPlayer(struct BOSSPLAYER_CREATE_PARAM *)
+struct task *CreateBossPlayer(struct BOSSPLAYER_CREATE_PARAM *param)
 {
 	return (struct task *)0;
 }
 
 // STUB: SADX 0x005e2420
-struct task *CreateBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *)
+struct task *CreateBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 {
 	return (struct task *)0;
 }
 
 // STUB: SADX 0x005e2500
-void FreeBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *)
+void FreeBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 {
 }
 
 // STUB: SADX 0x005f22c0
-void FUN_005f22c0(struct task *param_1, struct ModeSelPrmType *param_2)
+void FUN_005f22c0(struct task *, struct ModeSelPrmType *)
 {
 }
 
 // STUB: SADX 0x0067d080
-void njRotateY(float *m, unsigned short ang)
+void njRotateY(float *, unsigned short)
 {
 }
 
 // STUB: SADX 0x0067d2d0
-void FUN_0067d2d0(float *m, float x, float y, float z)
+void FUN_0067d2d0(float *, float, float, float)
 {
 }
 
 // STUB: SADX 0x0067d350
-void njTranslateV(float *m, struct NJS_POINT3 *v)
+void njTranslateV(float *, struct NJS_POINT3 *)
 {
 }
 
 // STUB: SADX 0x0067d4c0
-void njRotateX(float *m, unsigned short ang)
+void njRotateX(float *, unsigned short)
 {
 }
 
 // STUB: SADX 0x0067d800
-void njPopMatrix(int n)
+void njPopMatrix(int)
 {
 }
 
 // STUB: SADX 0x0067e550
-void njSetPerspective(long param_1)
+void njSetPerspective(long)
 {
 }
 
@@ -1141,17 +1141,17 @@ int checkInSsHodel()
 }
 
 // STUB: SADX 0x006e2050
-void light(struct task *)
+void light(struct task *pTask)
 {
 }
 
 // STUB: SADX 0x00712cc0
-struct al_status *ADV1_ALR_GetEntryStatus(int)
+struct al_status *ADV1_ALR_GetEntryStatus(int num)
 {
 	return (struct al_status *)0;
 }
 
 // STUB: SADX 0x007d21b0
-void FUN_007d21b0(void *param_1)
+void FUN_007d21b0(void *)
 {
 }
