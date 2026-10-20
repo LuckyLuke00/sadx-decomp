@@ -287,6 +287,9 @@ long amb;
 // GLOBAL: SADX 0x03b4e2f0
 struct obj *obj[10];
 
+// GLOBAL: SADX 0x05a922f4
+int DAT_05a922f4;
+
 // GLOBAL: SADX 0x05a922f8
 float DAT_05a922f8;
 
@@ -725,8 +728,14 @@ struct NJS_ARGB DAT_05b9d7dc;
 // GLOBAL: SADX 0x05b9d7ec
 struct NJS_ARGB DAT_05b9d7ec;
 
+// GLOBAL: SADX 0x05b9d834
+int DAT_05b9d834;
+
 // GLOBAL: SADX 0x05b9d838
 int DAT_05b9d838;
+
+// GLOBAL: SADX 0x05b9d844
+int DAT_05b9d844;
 
 // GLOBAL: SADX 0x05b9d848
 int DAT_05b9d848;

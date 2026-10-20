@@ -94,6 +94,11 @@ void njSetZUpdateMode(long)
 {
 }
 
+// STUB: SADX 0x004225b0
+void njSetWaitVsyncCount(int)
+{
+}
+
 // STUB: SADX 0x00423200
 long njSetTexture(struct NJS_TEXLIST *)
 {
@@ -134,6 +139,11 @@ void njSetCamera(struct NJS_CAMERA *)
 
 // STUB: SADX 0x004245a0
 void njSetBackColor(unsigned long,unsigned long,unsigned long)
+{
+}
+
+// STUB: SADX 0x00425160
+void njSetVSyncFunction(void (*)())
 {
 }
 
@@ -990,11 +1000,6 @@ long ChkGameMode()
 
 // STUB: SADX 0x004cb390
 void ghReleaseFontTexture(struct GH_FONT_INFO *font)
-{
-}
-
-// STUB: SADX 0x004cb7d0
-void dsInitInt(int vsync, int loop)
 {
 }
 
