@@ -170,6 +170,12 @@ long action_button;
 // GLOBAL: SADX 0x025d5a00
 long hold_button;
 
+// GLOBAL: SADX 0x025d5a0c
+unsigned char ucInputStatus;
+
+// GLOBAL: SADX 0x025d5a10
+unsigned char ucInputStatusForEachPlayer[2];
+
 // GLOBAL: SADX 0x025d5bcc
 short ssPauseEnable;
 
@@ -700,6 +706,9 @@ int DAT_05b93290;
 
 // GLOBAL: SADX 0x05b93294
 int DAT_05b93294;
+
+// GLOBAL: SADX 0x05b93588
+int DAT_05b93588;
 
 // GLOBAL: SADX 0x05b935cc
 int DAT_05b935cc;
