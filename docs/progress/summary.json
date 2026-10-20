@@ -596,7 +596,7 @@
   {
    "address": "0x00483240",
    "name": "AlrReal_createChao",
-   "accuracy": 0.9230769230769231,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -604,7 +604,7 @@
   {
    "address": "0x00483270",
    "name": "AlrReal_createChaoALR",
-   "accuracy": 0.708994708994709,
+   "accuracy": 0.7127659574468085,
    "effective": false,
    "stub": false,
    "library": false
@@ -636,7 +636,7 @@
   {
    "address": "0x00483500",
    "name": "AlrReal_checkGoal",
-   "accuracy": 0.5311475409836065,
+   "accuracy": 0.5513866231647635,
    "effective": false,
    "stub": false,
    "library": false
@@ -660,7 +660,7 @@
   {
    "address": "0x00483a40",
    "name": "AlrReal_controlCamera",
-   "accuracy": 0.3288084464555053,
+   "accuracy": 0.49696969696969695,
    "effective": false,
    "stub": false,
    "library": false
@@ -732,7 +732,7 @@
   {
    "address": "0x004849a0",
    "name": "AlrReal_checkSaveJewel",
-   "accuracy": 0.6115702479338843,
+   "accuracy": 0.8833333333333333,
    "effective": false,
    "stub": false,
    "library": false
@@ -1276,7 +1276,7 @@
   {
    "address": "0x0049e470",
    "name": "ObjectEmblem",
-   "accuracy": 0.6678700361010831,
+   "accuracy": 0.6763110307414105,
    "effective": false,
    "stub": false,
    "library": false
@@ -1340,7 +1340,7 @@
   {
    "address": "0x0049ee00",
    "name": "dispGetEmblem",
-   "accuracy": 0.535031847133758,
+   "accuracy": 0.6048,
    "effective": false,
    "stub": false,
    "library": false
@@ -1540,7 +1540,7 @@
   {
    "address": "0x004a0040",
    "name": "le_find_paenv",
-   "accuracy": 0.35714285714285715,
+   "accuracy": 0.37142857142857144,
    "effective": false,
    "stub": false,
    "library": false
@@ -1772,7 +1772,7 @@
   {
    "address": "0x004a0ae0",
    "name": "___dsDrawModel",
-   "accuracy": 0.802547770700637,
+   "accuracy": 0.8354430379746836,
    "effective": false,
    "stub": false,
    "library": false
@@ -1788,7 +1788,7 @@
   {
    "address": "0x004a0d10",
    "name": "___DrawObject",
-   "accuracy": 0.3080260303687636,
+   "accuracy": 0.33970753655793023,
    "effective": false,
    "stub": false,
    "library": false
@@ -1796,7 +1796,7 @@
   {
    "address": "0x004a1290",
    "name": "ds_DrawModelClip",
-   "accuracy": 0.5929203539823009,
+   "accuracy": 0.6200873362445415,
    "effective": false,
    "stub": false,
    "library": false
@@ -2276,7 +2276,7 @@
   {
    "address": "0x004a7ce0",
    "name": "___DrawModel",
-   "accuracy": 0.6046511627906976,
+   "accuracy": 0.6190476190476191,
    "effective": false,
    "stub": false,
    "library": false
@@ -3300,7 +3300,7 @@
   {
    "address": "0x004b6590",
    "name": "FUN_004b6590",
-   "accuracy": 0.39344262295081966,
+   "accuracy": 0.4262295081967213,
    "effective": false,
    "stub": false,
    "library": false
@@ -7244,7 +7244,7 @@
   {
    "address": "0x005707b0",
    "name": "MirenInitTask",
-   "accuracy": 0.7592592592592593,
+   "accuracy": 0.7777777777777778,
    "effective": false,
    "stub": false,
    "library": false
@@ -7700,7 +7700,7 @@
   {
    "address": "0x005a6240",
    "name": "ClearDownload",
-   "accuracy": 0.7555555555555555,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -8020,7 +8020,7 @@
   {
    "address": "0x005e84a0",
    "name": "CreateFlash2",
-   "accuracy": 0.7714285714285715,
+   "accuracy": 0.9577464788732394,
    "effective": false,
    "stub": false,
    "library": false
@@ -13675,5 +13675,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "bfd3452824fc15dd1d105222a7ce16667b4b97a20c28c9a3937ff8338eef0c85"
+ "inputs_sha256": "9b6d1640f6080d8a232e3737749521cb073a32457fe6b9424a79ed2e20de1306"
 }
