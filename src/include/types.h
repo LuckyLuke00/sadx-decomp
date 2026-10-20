@@ -112,6 +112,7 @@ struct task;
 struct TaskCommunication;
 struct TaskInfo;
 struct taskwk;
+struct thread;
 struct xssunit;
 struct xyyzzxsdwstr;
 
