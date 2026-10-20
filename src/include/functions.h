@@ -299,8 +299,9 @@ void SetViewAngle(long new_view_angle);
 void cameraModeInit();
 void CameraViewSet(struct taskwk *pTaskWork);
 void FUN_004bee10(void);
-void SetAdjustMode(long);
+void SetAdjustMode(long AdjustType);
 long GetAdjustMode();
+void CameraFilter();
 void title_menu_exec(struct task *tp);
 void FUN_004c0db0(struct task *param_1);
 void FUN_004c0e10(void *);
@@ -365,6 +366,7 @@ struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long 
 void SaveConstantAttr();
 void LoadConstantAttr();
 void OnConstantAttr(unsigned long soc_and, unsigned long soc_or);
+long MSetPositionIgnoreAttribute(struct NJS_POINT3 *p, struct NJS_POINT3 *v, struct Angle3 *a, long attrmask, float r);
 long MSetPositionWIgnoreAttribute(struct NJS_POINT3 *p, struct NJS_POINT3 *v, struct Angle3 *a, long attrmask, float r);
 struct obj *scanObjectSub(float **, struct obj *, float *);
 int VSPrintf(char *s, const char *format, char *arg);
