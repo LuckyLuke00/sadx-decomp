@@ -3348,7 +3348,7 @@
   {
    "address": "0x004b6ae0",
    "name": "FUN_004b6ae0",
-   "accuracy": 0.6557377049180327,
+   "accuracy": 0.6885245901639344,
    "effective": false,
    "stub": false,
    "library": false
@@ -3620,7 +3620,7 @@
   {
    "address": "0x004bae20",
    "name": "SetViewAngle",
-   "accuracy": 0.6376811594202898,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -4052,7 +4052,7 @@
   {
    "address": "0x004c1cf0",
    "name": "MSG_Close",
-   "accuracy": 0.6545454545454545,
+   "accuracy": 0.9642857142857143,
    "effective": false,
    "stub": false,
    "library": false
@@ -7708,7 +7708,7 @@
   {
    "address": "0x005a62c0",
    "name": "InitDownload",
-   "accuracy": 0.5833333333333334,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -7972,7 +7972,7 @@
   {
    "address": "0x005e2870",
    "name": "DebPrintf",
-   "accuracy": 0.8,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -13675,5 +13675,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "9764bdb60562e22f2315571e44ce8466a02290d972ff46a0664ec0d69ec46ddc"
+ "inputs_sha256": "c801eac42954ea70a62c82723b1370cd4108877fc75105de18ac6e9e46ddb06a"
 }
