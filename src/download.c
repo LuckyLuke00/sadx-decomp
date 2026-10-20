@@ -23,11 +23,9 @@ int ClearDownload()
 	int local_8;
 	DAT_05edbc80 = 0;
 	DAT_05edbc70 = 0;
-	local_8 = 0;
-	while (local_8 < 4)
+	for (local_8 = 0; 4 > local_8; local_8++)
 	{
 		DAT_05edbc14[local_8] = 0;
-		local_8++;
 	}
 	DAT_05edbc74 = 0;
 	DAT_05edbc78 = 0;

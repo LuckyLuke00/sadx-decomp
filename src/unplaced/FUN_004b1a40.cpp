@@ -193,8 +193,8 @@ void __fastcall FUN_004b6590(int *param_1)
 	local_18o = *(int *)param_1;
 	local_14s = *(int *)(param_1 + 1);
 	local_24 = local_14s;
-	local_1cg = local_24;
 	local_20k = *(int *)param_1;
+	local_1cg = local_24;
 	local_ci = local_20k;
 	local_8g = local_ci;
 	FUN_004b6720(&local_10l, (void *)local_8g, (void *)local_1cg);

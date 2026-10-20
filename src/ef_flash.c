@@ -124,13 +124,12 @@ void FlashManagerNormal(struct taskwk *twp)
 void CreateFlash2(float x, float y, float z, float scl)
 {
 	dsPlay_oneshot(0x19, 0, 0, 0);
-	struct task *local_8 = CreateElementalTask(2, 6, FlashManager);
-	if (local_8 != 0)
-	{
-		struct task *local_c = *(struct task **)((char *)local_8 + 0x20);
-		*(float *)((char *)local_c + 0x20) = x;
-		*(float *)((char *)local_c + 0x24) = y;
-		*(float *)((char *)local_c + 0x28) = z;
-		*(float *)((char *)local_c + 0x2c) = scl;
-	}
+	struct task *local_cg = CreateElementalTask(2, 6, FlashManager);
+	if (local_cg == 0)
+		return;
+	struct task *local_8g = *(struct task **)((char *)local_cg + 0x20);
+	*(float *)((char *)local_8g + 0x20) = x;
+	*(float *)((char *)local_8g + 0x24) = y;
+	*(float *)((char *)local_8g + 0x28) = z;
+	*(float *)((char *)local_8g + 0x2c) = scl;
 }
