@@ -186,6 +186,14 @@
    "library": false
   },
   {
+   "address": "0x004225b0",
+   "name": "njSetWaitVsyncCount",
+   "accuracy": 0.75,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00422c80",
    "name": "WinMain",
    "accuracy": 0.08333333333333333,
@@ -253,6 +261,14 @@
    "address": "0x004245a0",
    "name": "njSetBackColor",
    "accuracy": 0.5333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00425160",
+   "name": "njSetVSyncFunction",
+   "accuracy": 0.8,
    "effective": false,
    "stub": true,
    "library": false
@@ -4244,9 +4260,17 @@
   {
    "address": "0x004cb7d0",
    "name": "dsInitInt",
-   "accuracy": 0.22857142857142856,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cb9b0",
+   "name": "dsVSyncServer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -11899,5 +11923,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "879ba1d5e13a167f569bf1734f4da84accb79ccb0a060d06aade79430a6152af"
+ "inputs_sha256": "201996b52308f460c02e079a8c59e646e9bdaf2b321cbffbeede9df4a11f6d8e"
 }

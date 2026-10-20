@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 168" width="520" height="168">
-<title>475 / 16,537 game functions decompiled (2.87%) | 404 matched | 0 effective | accuracy 95.52% | library functions identified: 689</title>
+<title>477 / 16,537 game functions decompiled (2.88%) | 406 matched | 0 effective | accuracy 95.54% | library functions identified: 689</title>
 <defs><linearGradient id="backdrop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10307e"/><stop offset="1" stop-color="#07154a"/></linearGradient></defs>
 <rect width="520" height="168" rx="8" fill="url(#backdrop)"/>
 <text x="20" y="30" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">Sonic Adventure DX.exe</text>
 <text x="500" y="30" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">updated 2026-10-20</text>
-<text x="20" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="40" font-weight="600" fill="#ffffff">2.44%</text>
-<text x="483" y="56" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffd700">+404 this week</text>
+<text x="20" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="40" font-weight="600" fill="#ffffff">2.46%</text>
+<text x="483" y="56" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffd700">+406 this week</text>
 <circle cx="494" cy="51.5" r="5" fill="none" stroke="#ffd700" stroke-width="2.5"/>
 <text x="500" y="76" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">of the game done</text>
 <rect x="20" y="96" width="480" height="8" rx="4" fill="#06113d"/>
 <rect x="20" y="96" width="13.8" height="8" rx="4" fill="#4aa8ff"/>
-<rect x="20" y="96" width="11.7" height="8" rx="4" fill="#ffd700"/>
-<text x="20" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">404</text>
+<rect x="20" y="96" width="11.8" height="8" rx="4" fill="#ffd700"/>
+<text x="20" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">406</text>
 <text x="20" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">done</text>
 <text x="140" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">71</text>
 <text x="140" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">in progress</text>
-<text x="260" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">95.52%</text>
+<text x="260" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">95.54%</text>
 <text x="260" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">accuracy</text>
 <text x="380" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">16,537</text>
 <text x="380" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">game functions</text>
