@@ -4,7 +4,7 @@
 <rect width="1000" height="1421" rx="6" fill="url(#backdrop)"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">601 of 16,537 game functions done (3.63%), 54 in progress, accuracy 97.59%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">603 of 16,537 game functions done (3.65%), 52 in progress, accuracy 97.66%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#06113d"/></pattern></defs>
 <polygon points="614,1163.5 620,1163.5 623,1167 617,1174 611,1167" fill="#2f6bff"/>
 <polygon points="614,1163.5 620,1163.5 618.5,1167 615.5,1167" fill="#ffffff" fill-opacity="0.45"/>
@@ -446,8 +446,8 @@
 <rect x="7" y="77" width="6" height="6" fill="#9ca89c"><title>0x005d8bf0 CreateAnimal: 56.4%</title></rect>
 <rect x="14" y="77" width="6" height="6" fill="#ebce47"><title>0x005d8cc0 CreateRareAnimal: 91.2%</title></rect>
 </g>
-<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 345 of 388 done</title></rect>
-<text x="23" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Engine <tspan font-weight="400" fill="#a9bde8">88%</tspan></text>
+<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 347 of 388 done</title></rect>
+<text x="23" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Engine <tspan font-weight="400" fill="#a9bde8">89%</tspan></text>
 <g transform="translate(23,849)">
 <rect y="0" width="133" height="140" fill="url(#todo)"/>
 <rect y="140" width="56" height="7" fill="url(#todo)"/>
@@ -490,9 +490,9 @@
 <rect x="119" y="7" width="6" height="6" fill="#ffd700"><title>0x004ae920 IsndStop: 100%</title></rect>
 <rect x="126" y="7" width="6" height="6" fill="#ffd700"><title>0x004ae940 IsndVolume: 100%</title></rect>
 <rect x="0" y="14" width="6" height="6" fill="#ffd700"><title>0x004ae9a0 IsndPitch: 100%</title></rect>
-<rect x="7" y="14" width="6" height="6" fill="#d5c46a"><title>0x004aea00 dsPlay_oneshot: 81.9%</title></rect>
-<rect x="14" y="14" width="6" height="6" fill="#fad512"><title>0x004aeb20 dsCheckHandle: 97.8%</title></rect>
-<rect x="21" y="14" width="6" height="6" fill="#b4b48b"><title>0x004aebd0 dsPlay_oneshot_v: 67.2%</title></rect>
+<rect x="7" y="14" width="6" height="6" fill="#ffd700"><title>0x004aea00 dsPlay_oneshot: 100%</title></rect>
+<rect x="14" y="14" width="6" height="6" fill="#ffd700"><title>0x004aeb20 dsCheckHandle: 100%</title></rect>
+<rect x="21" y="14" width="6" height="6" fill="#f0d133"><title>0x004aebd0 dsPlay_oneshot_v: 93.7%</title></rect>
 <rect x="28" y="14" width="6" height="6" fill="#ffd700"><title>0x004aee80 FUN_004aee80: 100%</title></rect>
 <rect x="35" y="14" width="6" height="6" fill="#ffd700"><title>0x004af360 dsStop_num: 100%</title></rect>
 <rect x="42" y="14" width="6" height="6" fill="#ffd700"><title>0x004af3c0 dsStop_id: 100%</title></rect>
