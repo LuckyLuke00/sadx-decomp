@@ -5074,6 +5074,38 @@
    "library": false
   },
   {
+   "address": "0x004f34a0",
+   "name": "setBtpToBtp_Pre",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f34e0",
+   "name": "setBtp_PreToBtp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3520",
+   "name": "checkdestroytaskc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3570",
+   "name": "checkdestroytask",
+   "accuracy": 0.19607843137254902,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f3750",
    "name": "CreateElementalTask",
    "accuracy": 0.10416666666666667,
@@ -5092,9 +5124,33 @@
   {
    "address": "0x004f3be0",
    "name": "FreeTask",
-   "accuracy": 0.47058823529411764,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3cc0",
+   "name": "FUN_004f3cc0",
+   "accuracy": 0.1702127659574468,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f3d40",
+   "name": "FUN_004f3d40",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3db0",
+   "name": "FUN_004f3db0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -5108,17 +5164,97 @@
   {
    "address": "0x004f3ec0",
    "name": "DisplayTask",
-   "accuracy": 0.3076923076923077,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3f00",
+   "name": "FUN_004f3f00",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004f3f30",
    "name": "GenocideTask",
-   "accuracy": 0.36363636363636365,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3f60",
+   "name": "FUN_004f3f60",
+   "accuracy": 0.17777777777777778,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f3fe0",
+   "name": "FUN_004f3fe0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4000",
+   "name": "FUN_004f4000",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4020",
+   "name": "FUN_004f4020",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4040",
+   "name": "FUN_004f4040",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f40a0",
+   "name": "FUN_004f40a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f40c0",
+   "name": "FUN_004f40c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f40e0",
+   "name": "FUN_004f40e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4100",
+   "name": "IsSafeTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -5132,9 +5268,9 @@
   {
    "address": "0x004f4390",
    "name": "CAlloc",
-   "accuracy": 0.1951219512195122,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5151,6 +5287,14 @@
    "accuracy": 0.1282051282051282,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f49a0",
+   "name": "LoopTaskC",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -6069,6 +6213,14 @@
    "address": "0x005ae2f0",
    "name": "StageNameMode",
    "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b2480",
+   "name": "FUN_005b2480",
+   "accuracy": 0.3076923076923077,
    "effective": false,
    "stub": true,
    "library": false
@@ -11923,5 +12075,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "201996b52308f460c02e079a8c59e646e9bdaf2b321cbffbeede9df4a11f6d8e"
+ "inputs_sha256": "67c8014cf0b5c438a3e02ab4d37b895c2ff03eb3a2ca3cc6d8a1ce4e6bcb7c5b"
 }

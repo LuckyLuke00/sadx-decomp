@@ -1189,6 +1189,12 @@ long SetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3
 	return (long)0;
 }
 
+// STUB: SADX 0x004f3570
+long checkdestroytask(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004f3750
 extern struct task *CreateElementalTask(unsigned short, long, void (*)(struct task *))
 {
@@ -1200,34 +1206,13 @@ void DestroyTask(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004f3be0
-void FreeTask(struct task *)
-{
-}
-
 // STUB: SADX 0x004f3e20
 void LoopTask()
 {
 }
 
-// STUB: SADX 0x004f3ec0
-void DisplayTask()
-{
-}
-
-// STUB: SADX 0x004f3f30
-void GenocideTask()
-{
-}
-
 // STUB: SADX 0x004f41f0
 void *MAlloc(unsigned int size)
-{
-	return (void *)0;
-}
-
-// STUB: SADX 0x004f4390
-void *CAlloc(unsigned int num, unsigned int size)
 {
 	return (void *)0;
 }
@@ -1560,6 +1545,11 @@ long StageNameModeInit(long time)
 long StageNameMode(void *Param)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x005b2480
+void FUN_005b2480(int)
+{
 }
 
 // STUB: SADX 0x005e0120

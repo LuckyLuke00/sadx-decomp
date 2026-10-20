@@ -842,6 +842,18 @@ unsigned short DAT_05ba2eac;
 // GLOBAL: SADX 0x05baf368
 short *DAT_05baf368;
 
+// GLOBAL: SADX 0x05baf4d0
+int DAT_05baf4d0[8];
+
+// GLOBAL: SADX 0x05baf4f8
+int DAT_05baf4f8[8];
+
+// GLOBAL: SADX 0x05baf51c
+void *DAT_05baf51c;
+
+// GLOBAL: SADX 0x05baf524
+void *DAT_05baf524;
+
 // GLOBAL: SADX 0x05bb00a8
 int DAT_05bb00a8;
 
