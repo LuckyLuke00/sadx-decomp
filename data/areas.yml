@@ -10,6 +10,7 @@ tree:
   - ['^src/chao/', chao_garden]
   - ['^src/enemy/', enemies]
   - ['^src/shinobi/', ninja]
+  - ['^src/summary/', menus]
   - ['^src/animal\.c$', enemies]
   - ['^src/(emblem|message)\.c$', menus]
   - ['^src/(miren_\w+\.c|playsound\.cpp)$', pc_port]

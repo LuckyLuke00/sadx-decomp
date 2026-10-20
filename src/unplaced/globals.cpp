@@ -785,6 +785,18 @@ struct NJS_ARGB DAT_05b9d7dc;
 // GLOBAL: SADX 0x05b9d7ec
 struct NJS_ARGB DAT_05b9d7ec;
 
+// GLOBAL: SADX 0x05b9d7fc
+float DAT_05b9d7fc;
+
+// GLOBAL: SADX 0x05b9d800
+struct GH_FONT_INFO DAT_05b9d800;
+
+// GLOBAL: SADX 0x05b9d828
+struct GH_FONT_INFO *DAT_05b9d828;
+
+// GLOBAL: SADX 0x05b9d82c
+float DAT_05b9d82c;
+
 // GLOBAL: SADX 0x05b9d834
 int DAT_05b9d834;
 
