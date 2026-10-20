@@ -954,6 +954,11 @@ void MSG_Puts(struct MSGC *msgc, char *str)
 {
 }
 
+// STUB: SADX 0x004c3060
+extern void MSG_ThreadMainMessages(char **)
+{
+}
+
 // STUB: SADX 0x004c3180
 struct MSGC *NH_MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex, char *buf)
 {
@@ -1021,11 +1026,6 @@ void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
 long SetNextTrialStage()
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x004cb390
-void ghReleaseFontTexture(struct GH_FONT_INFO *font)
-{
 }
 
 // STUB: SADX 0x004cbe70
@@ -1559,9 +1559,20 @@ enum AvaCharEnum AvaGetlastPlayer(int)
 	return (enum AvaCharEnum)0;
 }
 
+// STUB: SADX 0x005a4d70
+void FUN_005a4d70()
+{
+}
+
 // STUB: SADX 0x005a4ef0
 void TH_DestroyAll()
 {
+}
+
+// STUB: SADX 0x005a4fa0
+extern struct thread *TH_Create(void *, void *, unsigned int)
+{
+	return (struct thread *)0;
 }
 
 // STUB: SADX 0x005a5490
