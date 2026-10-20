@@ -724,8 +724,18 @@ bool Set3DMinMaxPCM(int ch, float min, float max)
 	return (bool)0;
 }
 
+// STUB: SADX 0x004ab3c0
+void wmainit()
+{
+}
+
 // STUB: SADX 0x004ab540
 void wmaend()
+{
+}
+
+// STUB: SADX 0x004abaf0
+void wmastop(int ch)
 {
 }
 
@@ -1254,25 +1264,14 @@ long SeqGetTime()
 	return (long)0;
 }
 
-// STUB: SADX 0x004f5f90
-void ADX_Init()
+// STUB: SADX 0x004f5fe0
+void ADX_TaskLoop(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004f6320
-extern void ADX_Close()
+// STUB: SADX 0x004f6480
+void JingleTask(struct task *tp)
 {
-}
-
-// STUB: SADX 0x004f63d0
-void Serif_Play(int no)
-{
-}
-
-// STUB: SADX 0x004f6580
-extern struct task *ADXTaskInit()
-{
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x004f6f70
