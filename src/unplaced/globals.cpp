@@ -191,6 +191,9 @@ struct GH_FONT_INFO Ascii16x16FontInfo[1];
 // GLOBAL: SADX 0x025d7c78
 struct GH_FONT_INFO StaffRollFontInfo[1];
 
+// GLOBAL: SADX 0x025d9b40
+int DAT_025d9b40[256];
+
 // GLOBAL: SADX 0x02608e24
 unsigned char DAT_02608e24;
 
@@ -697,6 +700,93 @@ int DAT_05b9d838;
 
 // GLOBAL: SADX 0x05b9d848
 int DAT_05b9d848;
+
+// GLOBAL: SADX 0x05b9e0b8
+int DAT_05b9e0b8;
+
+// GLOBAL: SADX 0x05b9e0bc
+short DAT_05b9e0bc;
+
+// GLOBAL: SADX 0x05b9e4c0
+int DAT_05b9e4c0;
+
+// GLOBAL: SADX 0x05b9e4c4
+unsigned short DAT_05b9e4c4;
+
+// GLOBAL: SADX 0x05b9e4c8
+unsigned short DAT_05b9e4c8;
+
+// GLOBAL: SADX 0x05b9e4cc
+unsigned short DAT_05b9e4cc;
+
+// GLOBAL: SADX 0x05b9e4d0
+int DAT_05b9e4d0;
+
+// GLOBAL: SADX 0x05b9ecd8
+struct taskwk *DAT_05b9ecd8[16];
+
+// GLOBAL: SADX 0x05b9f2d8
+short DAT_05b9f2d8;
+
+// GLOBAL: SADX 0x05b9f2dc
+unsigned short DAT_05b9f2dc;
+
+// GLOBAL: SADX 0x05b9f320
+unsigned short DAT_05b9f320;
+
+// GLOBAL: SADX 0x05b9f324
+short DAT_05b9f324;
+
+// GLOBAL: SADX 0x05b9f528
+int DAT_05b9f528;
+
+// GLOBAL: SADX 0x05ba0bb0
+int DAT_05ba0bb0[256];
+
+// GLOBAL: SADX 0x05ba0bf0
+int DAT_05ba0bf0;
+
+// GLOBAL: SADX 0x05ba2478
+int DAT_05ba2478;
+
+// GLOBAL: SADX 0x05ba247c
+int DAT_05ba247c;
+
+// GLOBAL: SADX 0x05ba2480
+int DAT_05ba2480;
+
+// GLOBAL: SADX 0x05ba2484
+int DAT_05ba2484;
+
+// GLOBAL: SADX 0x05ba2488
+unsigned short DAT_05ba2488;
+
+// GLOBAL: SADX 0x05ba248c
+unsigned short DAT_05ba248c;
+
+// GLOBAL: SADX 0x05ba2490
+struct taskwk *DAT_05ba2490[16];
+
+// GLOBAL: SADX 0x05ba2690
+unsigned short DAT_05ba2690;
+
+// GLOBAL: SADX 0x05ba2694
+unsigned short DAT_05ba2694;
+
+// GLOBAL: SADX 0x05ba2698
+int DAT_05ba2698;
+
+// GLOBAL: SADX 0x05ba2ea0
+short DAT_05ba2ea0;
+
+// GLOBAL: SADX 0x05ba2ea4
+unsigned short DAT_05ba2ea4;
+
+// GLOBAL: SADX 0x05ba2ea8
+unsigned short DAT_05ba2ea8;
+
+// GLOBAL: SADX 0x05ba2eac
+unsigned short DAT_05ba2eac;
 
 // GLOBAL: SADX 0x05baf368
 short *DAT_05baf368;
