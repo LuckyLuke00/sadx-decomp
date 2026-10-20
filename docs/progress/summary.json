@@ -3690,11 +3690,59 @@
    "library": false
   },
   {
+   "address": "0x004bc1a0",
+   "name": "SetFreeCameraMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bc200",
+   "name": "SetFreeCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bc260",
+   "name": "GetFreeCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004bd5a0",
    "name": "CameraViewSet",
    "accuracy": 0.046511627906976744,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bd800",
+   "name": "CameraCollisionCube",
+   "accuracy": 0.2127659574468085,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bde80",
+   "name": "CamcontSetCameraCAMSTATUS",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004be0b0",
+   "name": "AddCameraOffset",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -3706,6 +3754,22 @@
    "library": false
   },
   {
+   "address": "0x004befb0",
+   "name": "IsEventCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004befd0",
+   "name": "IsCompulsionCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004beff0",
    "name": "GetCameraTimer",
    "accuracy": 1.0,
@@ -3714,19 +3778,147 @@
    "library": false
   },
   {
+   "address": "0x004bf000",
+   "name": "ResetCameraTimer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004bf010",
    "name": "SetAdjustMode",
-   "accuracy": 0.42105263157894735,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004bf050",
    "name": "GetAdjustMode",
-   "accuracy": 0.7272727272727273,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf060",
+   "name": "GetCameraMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf070",
+   "name": "FUN_004bf070",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf1b0",
+   "name": "FUN_004bf1b0",
+   "accuracy": 0.5,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bf1e0",
+   "name": "FUN_004bf1e0",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bf260",
+   "name": "FUN_004bf260",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf290",
+   "name": "FUN_004bf290",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf300",
+   "name": "CheckAdjustCollisionMode",
+   "accuracy": 0.19607843137254902,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bf360",
+   "name": "FUN_004bf360",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf370",
+   "name": "CameraCameraAction",
+   "accuracy": 0.3225806451612903,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bf650",
+   "name": "FUN_004bf650",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bfd60",
+   "name": "MSetPositionNW",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bfd90",
+   "name": "cameraDisplay",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bfda0",
+   "name": "CameraFilter",
+   "accuracy": 0.021621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c0320",
+   "name": "FUN_004c0320",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c04b0",
+   "name": "FollowRingData",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -12875,5 +13067,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "20420cc54867454a4bf5707438848554201a58c21e926bcdef1dc72605f3a3f3"
+ "inputs_sha256": "8c89bf6c6981f78ae04dacd862d45c5135a2e07e5d7c872650a4fdbc430fc2f9"
 }

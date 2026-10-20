@@ -5,7 +5,9 @@
 #include <stddef.h>
 
 struct __MYMEM_DATA;
+struct _camcontwk;
 struct _CameraSystemWork;
+struct _OBJ_ADJUSTPARAM;
 struct _SC_NUMBERS;
 struct ADV1_AL_BODY;
 struct ADV1_AL_FACE;
@@ -75,6 +77,7 @@ struct NJS_ACTION;
 struct NJS_ACTION_LINK;
 struct NJS_ARGB;
 struct NJS_BGRA;
+struct NJS_CACTION;
 struct NJS_CAMERA;
 union NJS_COLOR;
 struct NJS_MATERIAL;
@@ -1420,6 +1423,14 @@ static_assert(offsetof(MSGC, globalindex) == 0x2c, "MSGC::globalindex");
 static_assert(offsetof(MSGC, texlist) == 0x30, "MSGC::texlist");
 static_assert(offsetof(MSGC, texname) == 0x38, "MSGC::texname");
 static_assert(offsetof(MSGC, msgc_flag) == 0x44, "MSGC::msgc_flag");
+
+struct NJS_CACTION {
+    struct NJS_CAMERA *camera;
+    struct NJS_MOTION *motion;
+};
+static_assert(sizeof(NJS_CACTION) == 0x8, "sizeof NJS_CACTION");
+static_assert(offsetof(NJS_CACTION, camera) == 0x0, "NJS_CACTION::camera");
+static_assert(offsetof(NJS_CACTION, motion) == 0x4, "NJS_CACTION::motion");
 
 struct NJS_CAMERA {
     float px;
