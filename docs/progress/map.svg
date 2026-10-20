@@ -4,7 +4,7 @@
 <rect width="1000" height="1421" rx="6" fill="url(#backdrop)"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">586 of 16,537 game functions done (3.54%), 69 in progress, accuracy 96.81%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">588 of 16,537 game functions done (3.56%), 67 in progress, accuracy 96.99%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#06113d"/></pattern></defs>
 <polygon points="614,1163.5 620,1163.5 623,1167 617,1174 611,1167" fill="#2f6bff"/>
 <polygon points="614,1163.5 620,1163.5 618.5,1167 615.5,1167" fill="#ffffff" fill-opacity="0.45"/>
@@ -279,14 +279,14 @@
 </g>
 <polygon points="686,513.5 692,513.5 695,517 689,524 683,517" fill="#7fe8ff"/>
 <polygon points="686,513.5 692,513.5 690.5,517 687.5,517" fill="#ffffff" fill-opacity="0.45"/>
-<text x="699" y="523" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff">Chao <tspan font-weight="400" fill="#a9bde8">0%</tspan></text>
+<text x="699" y="523" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff">Chao <tspan font-weight="400" fill="#a9bde8">1%</tspan></text>
 <rect x="684" y="531" width="296" height="247" rx="3" fill="#0f2a78"><title>Chao Gardens: 1 of 1,271 done</title></rect>
 <text x="687" y="545" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Chao Gardens <tspan font-weight="400" fill="#a9bde8">0%</tspan></text>
 <g transform="translate(687,549)">
 <rect y="0" width="287" height="217" fill="url(#todo)"/>
 <rect x="259" y="63" width="6" height="6" fill="#ffd700"><title>0x0044c520 AlMsgStrLoad: 100%</title></rect>
 </g>
-<rect x="684" y="780" width="296" height="113" rx="3" fill="#0f2a78"><title>Chao Race: 16 of 443 done</title></rect>
+<rect x="684" y="780" width="296" height="113" rx="3" fill="#0f2a78"><title>Chao Race: 17 of 443 done</title></rect>
 <text x="687" y="794" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Chao Race <tspan font-weight="400" fill="#a9bde8">3%</tspan></text>
 <g transform="translate(687,798)">
 <rect y="0" width="287" height="70" fill="url(#todo)"/>
@@ -301,15 +301,15 @@
 <rect x="126" y="14" width="6" height="6" fill="#ffd700"><title>0x004826f0 AlrReal_controlMode: 100%</title></rect>
 <rect x="133" y="14" width="6" height="6" fill="#ffd700"><title>0x00483070 AlrReal_changeAct_for_Race: 100%</title></rect>
 <rect x="140" y="14" width="6" height="6" fill="#e9ce4d"><title>0x00483140 AlrReal_changeAct_for_Entrance: 90.5%</title></rect>
-<rect x="147" y="14" width="6" height="6" fill="#edcf3e"><title>0x00483240 AlrReal_createChao: 92.3%</title></rect>
-<rect x="154" y="14" width="6" height="6" fill="#bcb884"><title>0x00483270 AlrReal_createChaoALR: 70.9%</title></rect>
+<rect x="147" y="14" width="6" height="6" fill="#ffd700"><title>0x00483240 AlrReal_createChao: 100%</title></rect>
+<rect x="154" y="14" width="6" height="6" fill="#bdb883"><title>0x00483270 AlrReal_createChaoALR: 71.3%</title></rect>
 <rect x="161" y="14" width="6" height="6" fill="#ffd700"><title>0x004833e0 A_Life_for_ALR: 100%</title></rect>
 <rect x="168" y="14" width="6" height="6" fill="#edcf3e"><title>0x00483410 AlrReal_setRanking: 92.3%</title></rect>
 <rect x="175" y="14" width="6" height="6" fill="#ffd700"><title>0x00483490 AlrReal_calcAverage: 100%</title></rect>
-<rect x="182" y="14" width="6" height="6" fill="#95a4a1"><title>0x00483500 AlrReal_checkGoal: 53.1%</title></rect>
+<rect x="182" y="14" width="6" height="6" fill="#99a69e"><title>0x00483500 AlrReal_checkGoal: 55.1%</title></rect>
 <rect x="189" y="14" width="6" height="6" fill="#b3b38c"><title>0x00483930 AlrReal_raceEndAlr: 66.7%</title></rect>
 <rect x="196" y="14" width="6" height="6" fill="#d9c666"><title>0x00483a00 AlrReal_SetCameraMode: 83.3%</title></rect>
-<rect x="203" y="14" width="6" height="6" fill="#698aba"><title>0x00483a40 AlrReal_controlCamera: 32.9%</title></rect>
+<rect x="203" y="14" width="6" height="6" fill="#8da0a6"><title>0x00483a40 AlrReal_controlCamera: 49.7%</title></rect>
 <rect x="210" y="14" width="6" height="6" fill="#e1ca5a"><title>0x00483f00 AlrReal_incLook: 87.0%</title></rect>
 <rect x="217" y="14" width="6" height="6" fill="#e1ca5a"><title>0x00483f50 AlrReal_decLook: 87.0%</title></rect>
 <rect x="224" y="14" width="6" height="6" fill="#ffd700"><title>0x00483fa0 AlrReal_dspHead: 100%</title></rect>
@@ -317,7 +317,7 @@
 <rect x="238" y="14" width="6" height="6" fill="#ffd700"><title>0x004840a0 AlrReal_onSonic: 100%</title></rect>
 <rect x="245" y="14" width="6" height="6" fill="#e3cb58"><title>0x004840e0 AlrFanFan_clear: 87.9%</title></rect>
 <rect x="252" y="14" width="6" height="6" fill="#ffd700"><title>0x00484150 AlrFanFan_checkFanFan: 100%</title></rect>
-<rect x="259" y="14" width="6" height="6" fill="#a7ad95"><title>0x004849a0 AlrReal_checkSaveJewel: 61.2%</title></rect>
+<rect x="259" y="14" width="6" height="6" fill="#e4cb56"><title>0x004849a0 AlrReal_checkSaveJewel: 88.3%</title></rect>
 <rect x="266" y="14" width="6" height="6" fill="#ffd700"><title>0x00484a90 AlrReal_checkCommendation: 100%</title></rect>
 </g>
 <polygon points="373,902.5 379,902.5 382,906 376,913 370,906" fill="#f2f5fb"/>
@@ -343,7 +343,7 @@
 <rect x="56" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e2f0 GetEmblemofEnding: 100%</title></rect>
 <rect x="63" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e310 CheckEmblemofEnding: 100%</title></rect>
 <rect x="70" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e330 CheckEmblemofStageClear: 100%</title></rect>
-<rect x="77" y="7" width="6" height="6" fill="#b3b38b"><title>0x0049e470 ObjectEmblem: 66.8%</title></rect>
+<rect x="77" y="7" width="6" height="6" fill="#b5b48a"><title>0x0049e470 ObjectEmblem: 67.6%</title></rect>
 <rect x="84" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e830 dispEmblem: 100%</title></rect>
 <rect x="91" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e8b0 FUN_0049e8b0: 100%</title></rect>
 <rect x="98" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e8d0 FUN_0049e8d0: 100%</title></rect>
@@ -351,7 +351,7 @@
 <rect x="112" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ea10 Exec: 100%</title></rect>
 <rect x="119" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ec90 Disp: 100%</title></rect>
 <rect x="126" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ed70 InitGetEmblem: 100%</title></rect>
-<rect x="133" y="7" width="6" height="6" fill="#96a4a1"><title>0x0049ee00 dispGetEmblem: 53.5%</title></rect>
+<rect x="133" y="7" width="6" height="6" fill="#a5ad96"><title>0x0049ee00 dispGetEmblem: 60.5%</title></rect>
 <rect x="140" y="7" width="6" height="6" fill="#ffd700"><title>0x0049f280 destGetEmblem: 100%</title></rect>
 <rect x="147" y="7" width="6" height="6" fill="#ffd700"><title>0x004b0790 AvaLoadTex: 100%</title></rect>
 <rect x="0" y="14" width="6" height="6" fill="#ffd700"><title>0x004b0870 FUN_004b0870: 100%</title></rect>
@@ -446,8 +446,8 @@
 <rect x="7" y="77" width="6" height="6" fill="#9ca89c"><title>0x005d8bf0 CreateAnimal: 56.4%</title></rect>
 <rect x="14" y="77" width="6" height="6" fill="#ebce47"><title>0x005d8cc0 CreateRareAnimal: 91.2%</title></rect>
 </g>
-<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 341 of 388 done</title></rect>
-<text x="23" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Engine <tspan font-weight="400" fill="#a9bde8">87%</tspan></text>
+<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 342 of 388 done</title></rect>
+<text x="23" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Engine <tspan font-weight="400" fill="#a9bde8">88%</tspan></text>
 <g transform="translate(23,849)">
 <rect y="0" width="133" height="140" fill="url(#todo)"/>
 <rect y="140" width="56" height="7" fill="url(#todo)"/>
@@ -473,7 +473,7 @@
 <rect x="0" y="7" width="6" height="6" fill="#ffd700"><title>0x0049fdd0 le_find_env: 100%</title></rect>
 <rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x0049fe40 le_set_env: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ff50 le_set_paenv: 100%</title></rect>
-<rect x="21" y="7" width="6" height="6" fill="#6f8db7"><title>0x004a0040 le_find_paenv: 35.7%</title></rect>
+<rect x="21" y="7" width="6" height="6" fill="#728fb5"><title>0x004a0040 le_find_paenv: 37.1%</title></rect>
 <rect x="28" y="7" width="6" height="6" fill="#f9d514"><title>0x004a0100 dsGDLoadPalette: 97.5%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x004ac820 DialogJimakuInit: 100%</title></rect>
 <rect x="42" y="7" width="6" height="6" fill="#ffd700"><title>0x004ac8a0 DialogJimakuEnd: 100%</title></rect>
@@ -798,7 +798,7 @@
 <rect x="21" y="126" width="6" height="6" fill="#ffd700"><title>0x0056e3b0 CheckEditMode: 100%</title></rect>
 <rect x="28" y="126" width="6" height="6" fill="#ffd700"><title>0x00573d10 pfENDDIF: 100%</title></rect>
 <rect x="35" y="126" width="6" height="6" fill="#b0b28e"><title>0x005a4b20 Init_objCameraEntryTable: 65.3%</title></rect>
-<rect x="42" y="126" width="6" height="6" fill="#c7bd7a"><title>0x005a6240 ClearDownload: 75.6%</title></rect>
+<rect x="42" y="126" width="6" height="6" fill="#ffd700"><title>0x005a6240 ClearDownload: 100%</title></rect>
 <rect x="49" y="126" width="6" height="6" fill="#a0aa9a"><title>0x005a62c0 InitDownload: 58.3%</title></rect>
 <rect x="56" y="126" width="6" height="6" fill="#ffd700"><title>0x005a6360 CloseDownload: 100%</title></rect>
 <rect x="63" y="126" width="6" height="6" fill="#f1d130"><title>0x005a6a40 SetParticle: 94.1%</title></rect>
@@ -812,7 +812,7 @@
 <rect x="119" y="126" width="6" height="6" fill="#aeb18f"><title>0x005e8280 FlashManager: 64.7%</title></rect>
 <rect x="126" y="126" width="6" height="6" fill="#96a5a0"><title>0x005e82e0 FlashManagerInit: 53.8%</title></rect>
 <rect x="0" y="133" width="6" height="6" fill="#abaf92"><title>0x005e83a0 FlashManagerNormal: 63.1%</title></rect>
-<rect x="7" y="133" width="6" height="6" fill="#cabf76"><title>0x005e84a0 CreateFlash2: 77.1%</title></rect>
+<rect x="7" y="133" width="6" height="6" fill="#f5d322"><title>0x005e84a0 CreateFlash2: 95.8%</title></rect>
 </g>
 <rect x="215" y="531" width="148" height="298" rx="3" fill="#0f2a78"><title>Ninja graphics: 3 of 692 done</title></rect>
 <text x="218" y="545" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Ninja graphics <tspan font-weight="400" fill="#a9bde8">0%</tspan></text>
@@ -853,10 +853,10 @@
 <rect x="70" y="49" width="6" height="6" fill="#ffd700"><title>0x004a0a80 FUN_004a0a80: 100%</title></rect>
 <rect x="77" y="49" width="6" height="6" fill="#ffd700"><title>0x004a0aa0 FUN_004a0aa0: 100%</title></rect>
 <rect x="84" y="49" width="6" height="6" fill="#ffd700"><title>0x004a0ac0 ___SAnjSimpleDrawObject: 100%</title></rect>
-<rect x="91" y="49" width="6" height="6" fill="#d2c26f"><title>0x004a0ae0 ___dsDrawModel: 80.3%</title></rect>
+<rect x="91" y="49" width="6" height="6" fill="#d9c665"><title>0x004a0ae0 ___dsDrawModel: 83.5%</title></rect>
 <rect x="98" y="49" width="6" height="6" fill="#dec85f"><title>0x004a0c10 ___dsDrawObject: 85.5%</title></rect>
-<rect x="105" y="49" width="6" height="6" fill="#6587bc"><title>0x004a0d10 ___DrawObject: 30.8%</title></rect>
-<rect x="112" y="49" width="6" height="6" fill="#a2ab98"><title>0x004a1290 ds_DrawModelClip: 59.3%</title></rect>
+<rect x="105" y="49" width="6" height="6" fill="#6b8bb9"><title>0x004a0d10 ___DrawObject: 34.0%</title></rect>
+<rect x="112" y="49" width="6" height="6" fill="#a8ae94"><title>0x004a1290 ds_DrawModelClip: 62.0%</title></rect>
 <rect x="119" y="49" width="6" height="6" fill="#e2ca59"><title>0x004a1420 ds_DrawObjectClip: 87.5%</title></rect>
 <rect x="126" y="49" width="6" height="6" fill="#869baa"><title>0x004a1e90 FUN_004a1e90: 46.4%</title></rect>
 <rect x="133" y="49" width="6" height="6" fill="#ffd700"><title>0x004a1f70 dsDrawModel_S: 100%</title></rect>
@@ -899,7 +899,7 @@
 <rect x="28" y="63" width="6" height="6" fill="#ffd700"><title>0x004a7b60 njMotionData2: 100%</title></rect>
 <rect x="35" y="63" width="6" height="6" fill="#ffd700"><title>0x004a7bd0 njMotionData3: 100%</title></rect>
 <rect x="42" y="63" width="6" height="6" fill="#ffd700"><title>0x004a7c40 njMotionData4: 100%</title></rect>
-<rect x="49" y="63" width="6" height="6" fill="#a5ad96"><title>0x004a7ce0 ___DrawModel: 60.5%</title></rect>
+<rect x="49" y="63" width="6" height="6" fill="#a8ae94"><title>0x004a7ce0 ___DrawModel: 61.9%</title></rect>
 <rect x="56" y="63" width="6" height="6" fill="#ffd700"><title>0x004a8740 MotionObjTranslate: 100%</title></rect>
 <rect x="63" y="63" width="6" height="6" fill="#ffd700"><title>0x004a8770 MotionObjRotateXYZ: 100%</title></rect>
 <rect x="70" y="63" width="6" height="6" fill="#ffd700"><title>0x004a87a0 MotionObjRotateZXY: 100%</title></rect>
@@ -946,7 +946,7 @@
 <rect x="175" y="70" width="6" height="6" fill="#ffd700"><title>0x004cafe0 MYMEM_SelectHeap: 100%</title></rect>
 <rect x="70" y="77" width="6" height="6" fill="#e8cd51"><title>0x00570710 MirenSetTask: 90.0%</title></rect>
 <rect x="77" y="77" width="6" height="6" fill="#ffd700"><title>0x00570760 MirenSetChildTask: 100%</title></rect>
-<rect x="84" y="77" width="6" height="6" fill="#c8be79"><title>0x005707b0 MirenInitTask: 75.9%</title></rect>
+<rect x="84" y="77" width="6" height="6" fill="#ccc075"><title>0x005707b0 MirenInitTask: 77.8%</title></rect>
 <rect x="91" y="77" width="6" height="6" fill="#96a4a1"><title>0x00570850 MirenCreateLensFlare: 53.6%</title></rect>
 <rect x="98" y="77" width="6" height="6" fill="#889caa"><title>0x005708a0 initLensFlare: 47.1%</title></rect>
 <rect x="105" y="77" width="6" height="6" fill="#ffd700"><title>0x005708d0 dispLensFlare: 100%</title></rect>
@@ -972,7 +972,7 @@
 <rect x="357" y="70" width="6" height="6" fill="#ffd700"><title>0x004b3210 FUN_004b3210: 100%</title></rect>
 <rect x="0" y="77" width="6" height="6" fill="#ffd700"><title>0x004b5ad0 FUN_004b5ad0: 100%</title></rect>
 <rect x="28" y="77" width="6" height="6" fill="#ffd700"><title>0x004b6520 FUN_004b6520: 100%</title></rect>
-<rect x="35" y="77" width="6" height="6" fill="#7792b3"><title>0x004b6590 FUN_004b6590: 39.3%</title></rect>
+<rect x="35" y="77" width="6" height="6" fill="#7e96af"><title>0x004b6590 FUN_004b6590: 42.6%</title></rect>
 <rect x="49" y="77" width="6" height="6" fill="#8098ae"><title>0x004b66c0 FUN_004b66c0: 43.8%</title></rect>
 <rect x="70" y="77" width="6" height="6" fill="#718fb5"><title>0x004b6860 FUN_004b6860: 36.8%</title></rect>
 <rect x="84" y="77" width="6" height="6" fill="#ffd700"><title>0x004b6a60 FUN_004b6a60: 100%</title></rect>

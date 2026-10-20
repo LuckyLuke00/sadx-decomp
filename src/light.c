@@ -473,25 +473,25 @@ void le_set_paenv(int stg, int act, int chr)
 static struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr)
 {
 	struct LE_PALIGHT_ENV *local_ci;
-	struct LE_PALIGHT_ENV *local_10m;
 	int local_14;
+	struct LE_PALIGHT_ENV *local_10m;
 	int local_8g;
 	local_ci = &le_plyrPal[0];
-	local_10m = 0;
 	local_14 = 0;
+	local_10m = 0;
 	if (chr < 0)
 	{
 		local_14 = 1;
 		chr = -chr;
 	}
 	local_8g = 0;
-	while (1)
+	while (1 != 0)
 	{
 		if (*(unsigned char *)local_ci == 0xff)
 		{
 			break;
 		}
-		if (local_8g >= 0xff)
+		if (0xff <= local_8g)
 		{
 			break;
 		}
@@ -510,17 +510,17 @@ static struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr)
 		if (*(unsigned char *)(local_ci + 2) == chr)
 		{
 			local_10m = local_ci;
-			if (*(unsigned char *)(local_ci + 2) == chr)
+			if (*(unsigned char *)(2 + local_ci) == chr)
 			{
 				break;
 			}
 		}
-		else if (local_14 != 0)
+		else if (0 != local_14)
 		{
 			if (*(unsigned char *)(local_ci + 2) != 0)
 			{
 				local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
-				local_8g++;
+				++local_8g;
 				continue;
 			}
 		}

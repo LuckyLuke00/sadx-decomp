@@ -404,54 +404,60 @@ void ___SAnjSimpleDrawObject(struct obj *obj)
 void ___dsDrawModel(NJS_MODEL *model)
 {
 	unsigned char local_dh;
-	unsigned char local_eh;
-	int local_8g;
+	char local_eh;
+	unsigned int local_8g;
 	int local_cj;
 
-	if ((((DAT_025acd84 & 2) >> 1) != 0) && (DAT_025acd84 & 1) != 0 && DAT_05b3e065 == 0)
+	if ((((DAT_025acd84 & 2) >> 1) != 0))
 	{
-		if (0)
+		if ((1 & DAT_025acd84) != 0)
 		{
-			DAT_025acd84 = DAT_025acd84 | 2;
-			local_dh = DAT_025acd84;
+			if (!DAT_05b3e065)
+			{
+				if (0 != 0)
+				{
+					DAT_025acd84 = DAT_025acd84 | 2;
+					local_dh = DAT_025acd84;
+				}
+				else
+				{
+					DAT_025acd84 = 0xfd & DAT_025acd84;
+					local_dh = DAT_025acd84;
+				}
+				*(float *)&DAT_05b3df40 = DAT_00981c10;
+				late_DrawModel(model, 1);
+				if (1)
+				{
+					DAT_025acd84 |= 2;
+					local_eh = DAT_025acd84;
+				}
+				else
+				{
+					DAT_025acd84 = DAT_025acd84 & 0xfd;
+					local_eh = DAT_025acd84;
+				}
+			}
 		}
-		else
+	}
+	switch (DAT_05b9d838)
+	{
+	case 0:
+		if (isTextureNG(DAT_05b3ded0, 0))
 		{
-			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_dh = DAT_025acd84;
+			return;
 		}
-		*(float *)&DAT_05b3df40 = DAT_00981c10;
-		late_DrawModel(model, 1);
-		if (1)
+		if (!((unsigned int)model < 0x100000))
 		{
-			DAT_025acd84 = DAT_025acd84 | 2;
-			local_eh = DAT_025acd84;
+			if (DAT_02608e24 && DAT_05cd4078 <= 0)
+			{
+				dsSimpleDrawModel(model);
+			}
+			else
+			{
+				njDrawModel(model);
+			}
 		}
-		else
-		{
-			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_eh = DAT_025acd84;
-		}
-	}
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0) != 0)
-	{
-		return;
-	}
-	if ((unsigned int)model < 0x100000)
-	{
-		return;
-	}
-	if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
-	{
-		dsSimpleDrawModel(model);
-	}
-	else
-	{
-		njDrawModel(model);
+		break;
 	}
 }
 
@@ -528,7 +534,7 @@ void ___DrawObject(struct obj *obj)
 			}
 			else
 			{
-				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				((void (*)())njRotateXYZ)();
 			}
 			njScaleEx(&obj->scl[0]);
 			if ((local_20k & 8) == 0)
@@ -556,7 +562,7 @@ void ___DrawObject(struct obj *obj)
 			njPushMatrixEx();
 			if (local_20k & 0x20)
 			{
-				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				((void (*)())njRotateZXY)();
 			}
 			else
 			{
@@ -638,7 +644,7 @@ void ___DrawObject(struct obj *obj)
 			njTranslateEx(&obj->pos[0]);
 			if (local_20k & 0x20)
 			{
-				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				((void (*)())njRotateZXY)();
 			}
 			else
 			{
@@ -726,13 +732,13 @@ void ___DrawObject(struct obj *obj)
 				local_8g = (unsigned long)obj->model;
 				if (local_8g >= 0x100000)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if (!(DAT_02608e24 != 0 && DAT_05cd4078 <= 0))
 					{
-						dsSimpleDrawModel(obj->model);
+						njDrawModel(obj->model);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						dsSimpleDrawModel(obj->model);
 					}
 				}
 			}
@@ -754,70 +760,74 @@ void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 	unsigned char local_e;
 	unsigned char local_dg;
 
-	if ((((DAT_025acd84 & 2) >> 1 != 0) && ((DAT_025acd84 & 1) != 0)) && (DAT_05b3e065 == 0))
+	if ((((DAT_025acd84 & 2) >> 1 != 0) && ((DAT_025acd84 & 1) != 0)))
 	{
-		local_ci = 0;
-		do
+		if ((DAT_05b3e065 == 0))
 		{
-			if (local_ci != 0)
+			local_ci = 0;
+			do
 			{
-				DAT_025acd84 = DAT_025acd84 | 2;
-				local_dg = DAT_025acd84;
-			}
-			else
-			{
-				DAT_025acd84 = DAT_025acd84 & 0xfd;
-				local_dg = DAT_025acd84;
-			}
-		} while (0);
-		DAT_05b3df40 = (int)DAT_00981c10;
-		late_DrawModelClip(mdl, 1, clipScl);
-		local_ci = 1;
-		do
-		{
-			if (local_ci != 0)
-			{
-				DAT_025acd84 = DAT_025acd84 | 2;
-				local_e = DAT_025acd84;
-			}
-			else
-			{
-				DAT_025acd84 = DAT_025acd84 & 0xfd;
-				local_e = DAT_025acd84;
-			}
-		} while (0);
-	}
-	if (DAT_05b9d838 == 0)
-	{
-		if (isTextureNG(DAT_05b3ded0, 0) == 0)
-		{
-			if (mdl != 0)
-			{
-				if (clipScl != 0.0)
+				if (0 == local_ci)
 				{
-					if (*(float *)((char *)mdl + 0x24) != 0.0)
-					{
-						local_8g = *(float *)((char *)mdl + 0x24) * clipScl;
-						if (dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18), local_8g) == 0)
-						{
-							return;
-						}
-					}
-				}
-				if ((int)mdl != 0x100000)
-				{
-					return;
-				}
-				if ((DAT_02608e24 != 0) && (DAT_05cd4078 <= 0))
-				{
-					dsSimpleDrawModel(mdl);
+					DAT_025acd84 = 0xfd & DAT_025acd84;
+					local_dg = DAT_025acd84;
 				}
 				else
 				{
-					njDrawModel(mdl);
+					DAT_025acd84 = DAT_025acd84 | 2;
+					local_dg = DAT_025acd84;
+				}
+			} while (0);
+			DAT_05b3df40 = (int)DAT_00981c10;
+			late_DrawModelClip(mdl, 1, clipScl);
+			local_ci = 1;
+			do
+			{
+				if (0 == local_ci)
+				{
+					DAT_025acd84 &= 0xfd;
+					local_e = DAT_025acd84;
+				}
+				else
+				{
+					DAT_025acd84 = DAT_025acd84 | 2;
+					local_e = DAT_025acd84;
+				}
+			} while (0);
+		}
+	}
+	if (DAT_05b9d838)
+		return;
+	switch (isTextureNG(DAT_05b3ded0, 0))
+	{
+	case 0:
+		if (mdl != 0)
+		{
+			if (clipScl != 0.0)
+			{
+				if (*(float *)((char *)mdl + 0x24) != 0.0)
+				{
+					local_8g = *(float *)((char *)mdl + 0x24) * clipScl;
+					if (dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18), local_8g) == 0)
+					{
+						return;
+					}
 				}
 			}
+			if ((int)mdl != 0x100000)
+			{
+				return;
+			}
+			if ((DAT_02608e24 != 0) && (DAT_05cd4078 <= 0))
+			{
+				dsSimpleDrawModel(mdl);
+			}
+			else
+			{
+				njDrawModel(mdl);
+			}
 		}
+		break;
 	}
 }
 
@@ -1568,17 +1578,16 @@ void njMotionData4(struct obj *obj)
 // FUNCTION: SADX 0x004a7ce0
 void ___DrawModel(struct NJS_MODEL *model)
 {
-	if ((long)model < 0x100000)
+	if (!((unsigned long)model < 0x100000))
 	{
-		return;
-	}
-	if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
-	{
-		dsSimpleDrawModel(model);
-	}
-	else
-	{
-		njDrawModel(model);
+		if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+		{
+			dsSimpleDrawModel(model);
+		}
+		else
+		{
+			njDrawModel(model);
+		}
 	}
 }
 

@@ -516,15 +516,15 @@ void AlrReal_changeAct_for_Entrance(struct AlrReal *___this)
 // FUNCTION: SADX 0x00483240
 static int AlrReal_createChao(struct AlrReal *___this, int alr_or_alre_or_demo)
 {
-	int local_8;
 
-	local_8 = alr_or_alre_or_demo;
-	if (local_8 == 2)
+	switch (alr_or_alre_or_demo)
 	{
+	case 2:
 		if (AlrReal_createChaoALR(___this) == 0)
 		{
 			return 0;
 		}
+		break;
 	}
 	return 1;
 }
@@ -532,22 +532,20 @@ static int AlrReal_createChao(struct AlrReal *___this, int alr_or_alre_or_demo)
 // FUNCTION: SADX 0x00483270
 static int AlrReal_createChaoALR(struct AlrReal *___this)
 {
-	int local_8g;
+	struct task *local_14;
+	unsigned int local_8g;
 	int local_cj;
-	struct task *local_18;
-	void *local_14;
-	int local_10;
+	void *local_10;
 
 	local_cj = -1;
-	local_10 = 0;
 	for (local_8g = 0; local_8g < 8; local_8g++)
 	{
-		local_18 = CreateChao_for_ALR_ALRE(A_Life_for_ALR, &___this->status[local_8g]);
+		local_14 = CreateChao_for_ALR_ALRE(A_Life_for_ALR, &___this->status[local_8g]);
 		if (((unsigned short)___this->status[local_8g].flag & 2) != 0)
 		{
 			local_cj = local_8g;
 		}
-		*(unsigned char *)((char *)___this + 0x14b1 + local_8g * 2) = (unsigned char)local_8g;
+		*(unsigned char *)((char *)___this + 0x14b1 + local_8g * 2) = local_8g;
 		if (*(unsigned char *)((char *)&___this->status[local_8g] + 0x17a))
 		{
 			*(char *)((char *)___this + 0x14b0 + local_8g * 2) = 4;
@@ -556,13 +554,13 @@ static int AlrReal_createChaoALR(struct AlrReal *___this)
 		{
 			*(char *)((char *)___this + 0x14b0 + local_8g * 2) = 0;
 		}
-		if (local_18 == 0)
+		if (local_14 == 0)
 		{
 			return 0;
 		}
-		local_14 = *(void **)((char *)local_18 + 0x20);
-		*(NJS_POINT3 *)((char *)local_14 + 0x20) = *(NJS_POINT3 *)((char *)alrdata.startpos + AL_GetCourseNum() * 0x60 + local_8g * 0xc);
-		*(int *)((char *)local_14 + 0x10) = (int)Alr_SetId(&___this->alr[local_8g], local_8g);
+		local_10 = *(void **)((char *)local_14 + 0x20);
+		*(NJS_POINT3 *)((char *)local_10 + 0x20) = *(NJS_POINT3 *)((char *)alrdata.startpos + AL_GetCourseNum() * 0x60 + local_8g * 0xc);
+		*(int *)((char *)local_10 + 0x10) = (unsigned int)Alr_SetId(&___this->alr[local_8g], local_8g);
 		if (local_cj >= 0)
 		{
 			*(unsigned short *)((char *)&___this->alr[local_cj] + 0xd86) |= 0x100;
@@ -609,112 +607,122 @@ void AlrReal_calcAverage(struct AlrReal *___this)
 // FUNCTION: SADX 0x00483500
 void AlrReal_checkGoal(struct AlrReal *___this)
 {
-	int local_18o;
-	int local_14s;
-	struct Alr *local_38i;
-	struct Alr *local_3c;
-	struct alifewk *local_10l;
-	int local_28q;
-	int local_1cg;
-	int local_34m;
-	char local_21i;
-	char local_29h;
-	char local_9h;
-	char *local_8g;
-	char local_20k[4];
-	char local_30g[4];
+	int local_18s;
+	int local_14p;
+	struct Alr *local_38g;
+	struct Alr *local_3cj;
+	unsigned int local_28;
+	struct alifewk *local_10s;
+	int local_1cj;
+	char local_29j;
+	unsigned int local_34l;
+	char *local_cj;
+	char local_21k;
+	char local_5i;
+	unsigned char local_20o[4];
+	char local_30j[4];
 
-	local_14s = 8 - *(char *)((char *)___this + 0x1585);
-	for (local_18o = 0; local_18o < 8; local_18o++)
+	local_14p = 8 - *(char *)((char *)___this + 0x1585);
+	local_18s = 0;
+	while (8 > local_18s)
 	{
-		local_38i = (struct Alr *)((char *)___this + 0xcc0 + local_18o * 0xf4);
-		if (alrdata.endpathpos[AL_GetCourseNum()] < *(float *)((char *)local_38i + 0xd0) && Alr_CheckRace(local_38i))
+		local_38g = (struct Alr *)((char *)___this + 0xcc0 + local_18s * 0xf4);
+		if (alrdata.endpathpos[AL_GetCourseNum()] < *(float *)((char *)local_38g + 0xd0) && Alr_CheckRace(local_38g) != 0)
 		{
-			*(char *)((char *)local_38i + 0xc9) = 0x10;
+			*(char *)((char *)local_38g + 0xc9) = 0x10;
 		}
-		if (*(char *)((char *)local_38i + 0xc9) == 0x10 && AlrRoot_CheckGoal((struct AlrRoot *)((char *)___this + 0x1500), (struct NJS_POINT3 *)(*(int *)((char *)local_38i + 0xf0) + 0x20)))
+		if (*(char *)((char *)local_38g + 0xc9) == 0x10)
 		{
-			*(char *)((char *)local_38i + 0xc9) = 0xa;
-			if (*(char *)((char *)local_38i + 0xc8) == 0)
+			if (AlrRoot_CheckGoal((struct AlrRoot *)((char *)___this + 0x1500), (struct NJS_POINT3 *)(*(int *)((char *)local_38g + 0xf0) + 0x20)))
 			{
-				CallGoalin();
-				SetCommandToDialog(0, 0xa);
-				dsPlay_oneshot(0x563, 0, 0, 0);
-				*(char *)((char *)___this + 0x156d) = *(char *)((char *)___this + 0x156c);
-				*(char *)((char *)___this + 0x156c) = *(char *)((char *)local_38i + 0xc4);
-				AlrReal_SetCameraMode(___this, 6);
-			}
-			if (*(char *)((char *)___this + 0x14b0 + local_18o * 2) != 4)
-			{
-				if (AL_GetRaceNum() != 2)
+				*(char *)((char *)local_38g + 0xc9) = 0xa;
+				if (*(char *)((char *)local_38g + 0xc8) == 0)
 				{
-					*(char *)((char *)___this + 0x156e) = 4;
-					*(short *)((char *)___this + 0x157e) = 0;
+					CallGoalin();
+					SetCommandToDialog(0, 0xa);
+					dsPlay_oneshot(0x563, 0, 0, 0);
+					*(char *)((char *)___this + 0x156d) = *(char *)((char *)___this + 0x156c);
+					*(char *)((char *)___this + 0x156c) = *(char *)((char *)local_38g + 0xc4);
+					AlrReal_SetCameraMode(___this, 6);
 				}
-				if (*(char *)((char *)local_38i + 0xc8) == 0)
+				if (*(char *)((char *)___this + 0x14b0 + local_18s * 2) != 4)
 				{
-					local_3c = (struct Alr *)((char *)___this + 0xcc0 + AlrRank_GetId((struct AlrRank *)((char *)___this + 0x14c0), 0) * 0xf4);
-					local_10l = Alr_GetAwp(local_3c);
-					local_28q = *(int *)(*(int *)((char *)local_10l + 0x8d0) + 0x20);
-					local_28q = *(int *)((char *)local_28q + 0x6c);
-					local_21i = *(char *)((char *)___this + 0x1518);
-					local_29h = *(char *)((char *)___this + 0x1519);
-					local_9h = *(char *)((char *)___this + 0x151a);
-					local_8g = (char *)(local_28q + 0x4ec + AL_GetCourseNum() * 3);
-					if (*local_8g == 0 && local_8g[1] == 0 && local_8g[2] == 0)
+					if (AL_GetRaceNum() != 2)
 					{
-						memcpy(local_8g, &local_9h, 3);
+						*(char *)((char *)___this + 0x156e) = 4;
+						*(short *)((char *)___this + 0x157e) = 0;
 					}
-					else
+					if (*(char *)((char *)local_38g + 0xc8) == 0)
 					{
-						local_1cg = (unsigned char)local_9h * 0xe10 + (unsigned char)local_29h * 0x3c + (unsigned char)local_21i;
-						local_34m = (unsigned char)*local_8g * 0xe10 + (unsigned char)(local_8g[1]) * 0x3c + (unsigned char)(local_8g[2]);
-						if (local_1cg < local_34m)
+						local_3cj = (struct Alr *)((char *)___this + 0xcc0 + AlrRank_GetId((struct AlrRank *)((char *)___this + 0x14c0), 0) * 0xf4);
+						local_10s = Alr_GetAwp(local_3cj);
+						local_28 = *(int *)(*(int *)((char *)local_10s + 0x8d0) + 0x20);
+						local_21k = *(char *)((char *)___this + 0x1518);
+						local_28 = *(int *)((char *)local_28 + 0x6c);
+						local_5i = *(char *)((char *)___this + 0x151a);
+						local_29j = *(char *)((char *)___this + 0x1519);
+						local_cj = (char *)(local_28 + 0x4ec + AL_GetCourseNum() * 3);
+						if (!(!(*local_cj == 0 && local_cj[1] == 0 && !local_cj[2])))
 						{
-							memcpy(local_8g, &local_9h, 3);
+							memcpy(local_cj, &local_5i, 3);
 						}
-					}
-					AL_GetCourseRecord(AL_GetCourseNum(), (struct AL_RECORD *)local_20k);
-					local_1cg = (unsigned char)local_9h * 0xe10 + (unsigned char)local_29h * 0x3c + (unsigned char)local_21i;
-					local_34m = (unsigned char)local_20k[1] * 0xe10 + (unsigned char)local_20k[2] * 0x3c + (unsigned char)local_20k[3];
-					if (local_34m == 0 || local_20k[0] == 0 || local_1cg < local_34m)
-					{
-						memcpy(local_30g, &local_9h, 3);
-						local_30g[3] = 1;
-						AL_SetCourseRecord(AL_GetCourseNum(), (struct AL_RECORD *)local_30g);
-					}
-					if (AL_GetRaceNum() == 0)
-					{
-						if (AL_GetCourseClearedLevel(AL_GetCourseNum()) < 0)
+						else
 						{
-							AL_CourseClearedLevelUp(AL_GetCourseNum());
+							local_1cj = (unsigned char)local_5i * 0xe10 + (unsigned char)local_29j * 0x3c + (unsigned char)local_21k;
+							local_34l = (unsigned char)*local_cj * 0xe10 + (unsigned char)(local_cj[1]) * 0x3c + (unsigned char)(local_cj[2]);
+							if (local_1cj < local_34l)
+							{
+								memcpy(local_cj, &local_5i, 3);
+							}
 						}
-						if (AL_GetCourseNum() == 4)
+						AL_GetCourseRecord(AL_GetCourseNum(), (struct AL_RECORD *)local_20o);
+						local_34l = (unsigned char)local_20o[1] * 0xe10 + (unsigned char)local_20o[2] * 0x3c + (unsigned char)local_20o[3];
+						local_1cj = (unsigned char)local_5i * 0xe10 + local_29j * 0x3c + (char)local_21k;
+						if (local_34l == 0 || !local_20o[0] || local_1cj < local_34l)
 						{
-							AL_SetRaceNew((enum eRaceNum)1);
+							memcpy(local_30j, &local_5i, 3);
+							local_30j[3] = 1;
+							AL_SetCourseRecord(AL_GetCourseNum(), (struct AL_RECORD *)local_30j);
 						}
-					}
-					else if (AL_GetRaceNum() == 1)
-					{
-						*(short *)((char *)___this + 0x157c) = *(short *)((char *)___this + 0x157c) | 0x20;
-						if (AL_GetCourseClearedLevel(AL_GetCourseNum()) < 1)
+						if (AL_GetRaceNum() == 0)
 						{
-							AL_CourseClearedLevelUp(AL_GetCourseNum());
-							*(short *)((char *)___this + 0x157c) = *(short *)((char *)___this + 0x157c) | 0x40;
+							if (AL_GetCourseClearedLevel(AL_GetCourseNum()) < 0)
+							{
+								AL_CourseClearedLevelUp(AL_GetCourseNum());
+							}
+							if (AL_GetCourseNum() == 4)
+							{
+								AL_SetRaceNew((enum eRaceNum)1);
+							}
+						}
+						else if (1 == AL_GetRaceNum())
+						{
+							*(short *)((char *)___this + 0x157c) = *(short *)((char *)___this + 0x157c) | 0x20;
+							if (AL_GetCourseClearedLevel(AL_GetCourseNum()) < 1)
+							{
+								AL_CourseClearedLevelUp(AL_GetCourseNum());
+								*(short *)((char *)___this + 0x157c) = *(short *)((char *)___this + 0x157c) | 0x40;
+							}
 						}
 					}
 				}
 			}
 		}
-		if (*(char *)((char *)___this + 0x14b0 + local_18o * 2) != 4 && Alr_CheckGoal(local_38i))
+		if (*(char *)((char *)___this + 0x14b0 + local_18s * 2) != 4)
 		{
-			local_14s++;
+			if (0 != Alr_CheckGoal(local_38g))
+			{
+				local_14p += 1;
+			}
 		}
+		local_18s = local_18s + 1;
 	}
-	if (local_14s == 8)
+	switch (local_14p)
 	{
+	case 8:
 		*(char *)((char *)___this + 0x156e) = 4;
 		*(short *)((char *)___this + 0x157e) = 0;
+		break;
 	}
 }
 
@@ -758,47 +766,60 @@ void AlrReal_SetCameraMode(struct AlrReal *___this, int mode)
 // FUNCTION: SADX 0x00483a40
 void AlrReal_controlCamera(struct AlrReal *___this)
 {
+	unsigned int local_cg;
 	int local_8g;
-	int local_cg;
 
 	local_8g = FUN_00484d90(&___this->alrcam);
-	if (local_8g != 0)
+	if (0 != local_8g)
 	{
-		if (local_8g != 0xc)
+		if (0xc == local_8g)
 		{
-			if (DAT_05ccde90 == 0 && (*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
+			switch (DAT_05ccde90)
 			{
-				AlrReal_SetCameraMode(___this, 0xc);
+			case 0:
+				if ((*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
+				{
+					AlrReal_SetCameraMode(___this, 9);
+				}
+				break;
 			}
 		}
 		else
 		{
-			if (DAT_05ccde90 == 0 && (*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
+			if (!DAT_05ccde90)
 			{
-				AlrReal_SetCameraMode(___this, 9);
+				if ((*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
+				{
+					AlrReal_SetCameraMode(___this, 0xc);
+				}
 			}
 		}
 	}
-	if (local_8g != 0)
+	if (0 != local_8g)
 	{
-		if (local_8g != 0xb)
+		if (0xb == local_8g)
 		{
-			if (DAT_05ccde90 == 0 && (*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
+			if (!DAT_05ccde90 && (*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
 			{
-				AlrReal_SetCameraMode(___this, 0xb);
+				AlrReal_SetCameraMode(___this, 9);
 			}
 		}
 		else
 		{
-			if (DAT_05ccde90 == 0 && (*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
+			if (!DAT_05ccde90)
 			{
-				AlrReal_SetCameraMode(___this, 9);
+				if ((*(unsigned int *)((char *)DAT_05b93264 + 0x10) & 0x400))
+				{
+					AlrReal_SetCameraMode(___this, 0xb);
+				}
 			}
 		}
 	}
-	if (___this->mode == 5)
+	switch (___this->mode)
 	{
+	case 5:
 		AlrReal_SetCameraMode(___this, 0xa);
+		break;
 	}
 	local_cg = local_8g - 3;
 	switch (local_cg)
@@ -818,46 +839,49 @@ void AlrReal_controlCamera(struct AlrReal *___this)
 		}
 		break;
 	case 3:
-		if ((___this->flag & 0x10) == 0 && DAT_05ccde90 == 0)
+		if ((0x10 & ___this->flag) == 0)
 		{
-			if (DAT_05b92e44 & 0x80)
+			if (!DAT_05ccde90)
 			{
-				AlrReal_incLook(___this);
-			}
-			if (DAT_05b92e44 & 0x40)
-			{
-				AlrReal_decLook(___this);
-			}
-			if (DAT_05b92e44 & 0x20)
-			{
-				AlrReal_SetCameraMode(___this, 5);
+				if (0x80 & DAT_05b92e44)
+				{
+					((void (*)())AlrReal_incLook)();
+				}
+				if (0x40 & DAT_05b92e44)
+				{
+					AlrReal_decLook(___this);
+				}
+				if (0x20 & DAT_05b92e44)
+				{
+					AlrReal_SetCameraMode(___this, 5);
+				}
 			}
 		}
 		break;
 	case 4:
-		if (Alr_GetCurrentEvent(&___this->alr[___this->look]) == 1)
+		if (1 == Alr_GetCurrentEvent(&___this->alr[___this->look]))
 		{
 			AlrCam_ConstraintAroundAng(&___this->alrcam, 0);
 		}
-		if ((___this->flag & 0x10) == 0 && DAT_05ccde90 == 0)
+		if ((___this->flag & 0x10) == 0)
 		{
-			if (DAT_05b92e44 & 0x80)
+			if (DAT_05ccde90 == 0)
 			{
-				AlrReal_incLook(___this);
-				___this->look = 0;
-			}
-			if (DAT_05b92e44 & 0x40)
-			{
-				AlrReal_decLook(___this);
-				___this->look = 0;
-			}
-			if (DAT_05b92e44 & 0x10)
-			{
-				AlrReal_SetCameraMode(___this, 9);
-			}
-			if ((double)___this->look < 108.0)
-			{
-				if (30.0 < (double)___this->look)
+				if (DAT_05b92e44 & 0x80)
+				{
+					AlrReal_incLook(___this);
+					___this->look = 0;
+				}
+				if (0x40 & DAT_05b92e44)
+				{
+					((void (*)())AlrReal_decLook)();
+					___this->look = 0;
+				}
+				if (0x10 & DAT_05b92e44)
+				{
+					AlrReal_SetCameraMode(___this, 9);
+				}
+				if ((double)___this->look < 108.0 && 30.0 < (double)___this->look)
 				{
 					*(unsigned short *)((char *)___this + 0xd86 + ___this->look * 0xf4) |= 0x2000;
 				}
@@ -890,8 +914,8 @@ void AlrReal_controlCamera(struct AlrReal *___this)
 		___this->look = AlrRank_GetId(&___this->alrrank, 0);
 		break;
 	}
-	___this->flag &= ~0x10;
-	___this->look++;
+	___this->flag = ___this->flag & (~0x10);
+	___this->look = ___this->look + 1;
 }
 
 // FUNCTION: SADX 0x00483f00
@@ -1017,39 +1041,36 @@ static int AlrFanFan_checkFanFan(struct AlrFanFan *___this)
 // FUNCTION: SADX 0x004849a0
 void AlrReal_checkSaveJewel(struct AlrReal *___this)
 {
-	int local_ci;
-	struct alifewk *local_14;
 	int local_8g;
 	int local_10;
+	struct alifewk *local_cj;
 
-	___this->flag = ___this->flag & 0xfffe;
-	if ((___this->flag & 0x20) != 0)
+	___this->flag = 0xfffe & ___this->flag;
+	if (!((___this->flag & 0x20) != 0))
+		return;
+	local_8g = AlrRank_GetId(&___this->alrrank, 0);
+	local_cj = Alr_GetAwp(&___this->alr[local_8g]);
+	if (local_cj != 0)
 	{
-		local_ci = AlrRank_GetId(&___this->alrrank, 0);
-		local_14 = Alr_GetAwp(&___this->alr[local_ci]);
-		if (local_14 != 0)
+		switch (AL_GetCourseNum())
 		{
-			local_8g = AL_GetCourseNum();
-			switch (local_8g)
-			{
-			case 0:
-				local_10 = 0xb;
-				break;
-			case 1:
-				local_10 = 0xc;
-				break;
-			case 2:
-				local_10 = 0xf;
-				break;
-			case 3:
-				local_10 = 0xe;
-				break;
-			case 4:
-				local_10 = 0xd;
-				break;
-			}
-			*(char *)(*(int *)((char *)local_14 + 0x8d0) + 0x6c + 0xd7) = local_10;
+		case 0:
+			local_10 = 0xb;
+			break;
+		case 1:
+			local_10 = 0xc;
+			break;
+		case 2:
+			local_10 = 0xf;
+			break;
+		case 3:
+			local_10 = 0xe;
+			break;
+		case 4:
+			local_10 = 0xd;
+			break;
 		}
+		*(char *)(*(int *)((char *)local_cj + 0x8d0) + 0x6c + 0xd7) = local_10;
 	}
 }
 

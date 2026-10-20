@@ -31,7 +31,7 @@ struct task *MirenSetChildTask(struct task *parent_p, const struct TaskInfo *inf
 // FUNCTION: SADX 0x005707b0
 struct task *MirenInitTask(struct task *task_p, const struct TaskInfo *info_p, void *param_p)
 {
-	int iVar1;
+	unsigned int iVar1;
 	struct task *local_10;
 	int local_8g;
 

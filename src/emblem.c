@@ -172,16 +172,16 @@ long CheckEmblemofStageClear(struct SAVE_DATA *psd, long chara, long stage, long
 // FUNCTION: SADX 0x0049e470
 void ObjectEmblem(struct task *tp)
 {
-	struct taskwk *local_14 = tp->twp;
-	signed char local_dh;
-	char local_5i;
 	int local_cj;
+	signed char local_dh;
+	struct taskwk *local_14 = tp->twp;
+	char local_5i;
 
-	if (CheckRangeOut(tp))
+	if (CheckRangeOut(tp) != 0)
 	{
 		return;
 	}
-	if (CheckEditMode())
+	if (0 != CheckEditMode())
 	{
 		*(int *)((char *)local_14 + 8) = (int)&object_o_emblm_emblm;
 		*(int *)((char *)local_14 + 0x18) += *(int *)((char *)local_14 + 0x14);
@@ -199,7 +199,7 @@ void ObjectEmblem(struct task *tp)
 			{
 				njPrintC(0x1d0013, "3");
 			}
-			else if (local_14->scl.x >= 2.0f)
+			else if (2.0f <= local_14->scl.x)
 			{
 				njPrintC(0x1d0013, "2");
 			}
@@ -220,7 +220,7 @@ void ObjectEmblem(struct task *tp)
 	if (local_5i == 0)
 	{
 		local_cj = ((DAT_05b9d724 << 8) | DAT_05b9d744) >> 8;
-		local_cj -= 0x1d;
+		local_cj = local_cj - 0x1d;
 		switch (local_cj)
 		{
 		case 0:
@@ -238,19 +238,19 @@ void ObjectEmblem(struct task *tp)
 			local_14->value.l = 0x76;
 			break;
 		}
-		if (local_14->scl.x >= 3.0f)
+		if (3.0f <= local_14->scl.x)
 		{
-			local_14->value.l += 3;
+			local_14->value.l = local_14->value.l + 3;
 		}
-		else if (local_14->scl.x >= 2.0f)
+		else if (2.0f <= local_14->scl.x)
 		{
 			local_14->value.l += 2;
 		}
 		else if (local_14->scl.x >= 1.0f)
 		{
-			local_14->value.l += 1;
+			local_14->value.l++;
 		}
-		if (FUN_0049d410(local_14->value.l, (int)&DAT_05ccca18))
+		if (!(!(FUN_0049d410(local_14->value.l, (unsigned int)&DAT_05ccca18))))
 		{
 			local_14->mode = 2;
 		}
@@ -265,25 +265,27 @@ void ObjectEmblem(struct task *tp)
 		SET_COLLI_RANGE((struct colliwk *)*(int *)((char *)local_14 + 0x38), 5.0f);
 		return;
 	}
-	if (local_5i == 1)
+	if (1 == local_5i)
 	{
 		if ((*(unsigned short *)((char *)*(int *)((char *)local_14 + 0x38) + 4) & 1) &&
 			(*(short *)*(int *)((char *)*(int *)((char *)local_14 + 0x38) + 0xa4) == 0))
 		{
 			local_dh = *(char *)((char *)*(int *)((char *)*(int *)((char *)*(int *)((char *)local_14 + 0x38) + 0xa4) + 0x9c) + 0x20) + 8;
-			VibShot((long)local_dh, 4);
+			VibShot(local_dh, 4);
 			GetEmblem((struct SAVE_DATA *)&DAT_05ccca18, local_14->value.l);
 			local_14->mode = 2;
 			FUN_0049e8d0((struct NJS_POINT3 *)&local_14->pos);
 		}
 		*(int *)((char *)local_14 + 0x18) += *(int *)((char *)local_14 + 0x14);
 		dispEmblem(tp);
-		EntryColliList(local_14);
+		((void (*)())EntryColliList)();
 		return;
 	}
-	if (local_5i == 2)
+	switch (local_5i)
 	{
+	case 2:
 		DeadOut(tp);
+		break;
 	}
 }
 
@@ -492,34 +494,34 @@ struct task *InitGetEmblem()
 // FUNCTION: SADX 0x0049ee00
 void dispGetEmblem(struct task *tp)
 {
-	struct taskwk *local_5c = tp->twp;
 	float local_4cr;
+	struct taskwk *local_5c = tp->twp;
 	float local_50t;
 	float local_ci;
 	float local_8g;
-	float local_58p;
 	float local_34h;
+	float local_58p;
 	float local_54g;
-	float local_64j;
 	float local_30r[7];
-	float local_48g[4];
-	unsigned short local_10r;
+	float local_64j;
+	short local_10r;
+	unsigned int local_48g;
+	float local_44k[4];
 	unsigned short local_60j;
-	int local_38x;
 
-	if (DAT_05b3ea16 < 0)
+	if (0 > DAT_05b3ea16)
 	{
 		return;
 	}
-	if (EV_CheckCansel())
+	if (0 != EV_CheckCansel())
 	{
-		FreeTask(tp);
+		((void (*)())FreeTask)();
 		return;
 	}
 	switch (local_5c->mode)
 	{
 	case 0:
-		local_5c->wtimer++;
+		++local_5c->wtimer;
 		if (local_5c->wtimer <= 40)
 		{
 			return;
@@ -534,32 +536,32 @@ void dispGetEmblem(struct task *tp)
 		local_5c->value.l = FUN_0049e130((struct SAVE_DATA *)&DAT_05ccca18);
 		*(int *)(emblem_sc + 8) = local_5c->value.l - 1;
 		*(float *)(emblem_sc + 12) = ScreenRaitoX * 272.0f;
-		*(float *)(emblem_sc + 16) = ScreenRaitoY * 336.0f;
-		*(float *)(emblem_sc + 24) = ScreenRaitoX * 2.0f;
+		*(float *)(emblem_sc + 16) = 336.0f * ScreenRaitoY;
+		*(float *)(emblem_sc + 24) = 2.0f * ScreenRaitoX;
 		if (*(int *)(emblem_sc + 8) > 9)
 		{
-			*(float *)(emblem_sc + 12) = ScreenRaitoX * 272.0f + 8.0f;
+			*(float *)(12 + emblem_sc) = ScreenRaitoX * 272.0f + 8.0f;
 		}
 		if (*(int *)(emblem_sc + 8) > 99)
 		{
-			*(float *)(emblem_sc + 12) = ScreenRaitoX * 272.0f + 16.0f;
+			*(float *)(12 + emblem_sc) = ScreenRaitoX * 272.0f + 16.0f;
 		}
 		break;
 	case 1:
 		local_10r = local_5c->wtimer - 1;
 		local_5c->wtimer = local_10r;
-		if (local_10r == 0)
+		if (0 == local_10r)
 		{
 			local_5c->mode = 2;
 			local_5c->wtimer = 120;
-			*(int *)(emblem_sc + 8) = local_5c->value.l;
+			*(int *)(8 + emblem_sc) = local_5c->value.l;
 			if (*(int *)(emblem_sc + 8) > 9)
 			{
 				*(float *)(emblem_sc + 12) = ScreenRaitoX * 272.0f + 8.0f;
 			}
 			if (*(int *)(emblem_sc + 8) > 99)
 			{
-				*(float *)(emblem_sc + 12) = ScreenRaitoX * 272.0f + 16.0f;
+				*(float *)(12 + emblem_sc) = ScreenRaitoX * 272.0f + 16.0f;
 			}
 		}
 		break;
@@ -580,57 +582,59 @@ void dispGetEmblem(struct task *tp)
 		}
 		break;
 	case 3:
-		local_5c->scl.z -= 0.025f;
-		if (local_5c->scl.z < 0.0f)
+		local_5c->scl.z = local_5c->scl.z - 0.025f;
+		if (local_5c->scl.z < 0.0f && EV_CheckCansel() == 0)
 		{
-			if (!EV_CheckCansel())
-			{
-				break;
-			}
+			break;
 		}
 		PadReadOn();
 		FreeTask(tp);
 		return;
 	}
-	if (DAT_05b9d838 != 0)
+	if (!DAT_05b9d838)
 	{
-		return;
+		local_4cr = local_5c->pos.x * ScreenRaitoX;
+		local_50t = local_5c->pos.y * ScreenRaitoY;
+		local_ci = local_5c->scl.x * ScreenRaitoX;
+		local_8g = local_5c->scl.y * ScreenRaitoY;
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+		___njSetTexture(&texlist_get_emblem);
+		local_58p = ScreenRaitoX * 640.0f;
+		local_34h = 480.0f * ScreenRaitoY;
+		late_DrawBoxFill2D(0.0f, 0.0f, local_58p, local_34h, 22047.998f, 0xbb080808, 1);
+		local_44k[0] = local_5c->scl.z;
+		local_44k[1] = 1.0f;
+		local_44k[2] = 1.0f;
+		local_44k[3] = 1.0f;
+		___njSetConstantMaterial((struct NJS_ARGB *)local_44k);
+		local_54g = -0.001f;
+		if (local_54g >= -3.0f)
+		{
+			if (local_54g <= 12048.0f)
+			{
+				local_54g += 22048.0f;
+			}
+		}
+		local_30r[0] = local_ci;
+		local_30r[1] = local_8g;
+		local_30r[3] = local_4cr;
+		local_30r[4] = local_50t;
+		late_DrawSprite2D((struct NJS_SPRITE *)local_30r, 0, local_54g, 0x22, 4);
+		local_64j = -0.001f;
+		if (-3.0f <= local_64j)
+		{
+			if (local_64j <= 12048.0f)
+			{
+				local_64j += 22048.0f;
+			}
+		}
+		late_DrawSprite2D((struct NJS_SPRITE *)local_30r, 1, local_64j, 0x22, 4);
+		ResetMaterial();
+		local_48g = (int)(local_5c->scl.z * 255.0f);
+		*(int *)(emblem_sc + 28) = (local_48g << 24 | 0x00ffffff) & *(int *)(28 + emblem_sc);
+		FUN_0055de60((struct _SC_NUMBERS *)&emblem_sc);
 	}
-	local_4cr = local_5c->pos.x * ScreenRaitoX;
-	local_50t = local_5c->pos.y * ScreenRaitoY;
-	local_ci = local_5c->scl.x * ScreenRaitoX;
-	local_8g = local_5c->scl.y * ScreenRaitoY;
-	___njColorBlendingMode(0, 8);
-	___njColorBlendingMode(1, 6);
-	___njSetTexture(&texlist_get_emblem);
-	local_58p = ScreenRaitoX * 640.0f;
-	local_34h = ScreenRaitoY * 480.0f;
-	late_DrawBoxFill2D(0.0f, 0.0f, local_58p, local_34h, 22047.998f, 0xbb080808, 1);
-	local_48g[0] = local_5c->scl.z;
-	local_48g[1] = 1.0f;
-	local_48g[2] = 1.0f;
-	local_48g[3] = 1.0f;
-	___njSetConstantMaterial((struct NJS_ARGB *)local_48g);
-	local_54g = -0.001f;
-	if (local_54g >= -3.0f && local_54g <= 12048.0f)
-	{
-		local_54g += 22048.0f;
-	}
-	local_30r[0] = local_ci;
-	local_30r[1] = local_8g;
-	local_30r[3] = local_4cr;
-	local_30r[4] = local_50t;
-	late_DrawSprite2D((struct NJS_SPRITE *)local_30r, 0, local_54g, 0x22, 4);
-	local_64j = -0.001f;
-	if (local_64j >= -3.0f && local_64j <= 12048.0f)
-	{
-		local_64j += 22048.0f;
-	}
-	late_DrawSprite2D((struct NJS_SPRITE *)local_30r, 1, local_64j, 0x22, 4);
-	ResetMaterial();
-	local_38x = (int)(local_5c->scl.z * 255.0f);
-	*(int *)(emblem_sc + 28) = (local_38x << 24 | 0x00ffffff) & *(int *)(emblem_sc + 28);
-	FUN_0055de60((struct _SC_NUMBERS *)&emblem_sc);
 }
 
 // FUNCTION: SADX 0x0049f280
