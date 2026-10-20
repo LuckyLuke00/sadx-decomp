@@ -4,7 +4,7 @@
 <rect width="1000" height="1421" rx="6" fill="url(#backdrop)"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">588 of 16,537 game functions done (3.56%), 67 in progress, accuracy 96.99%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">592 of 16,537 game functions done (3.58%), 63 in progress, accuracy 97.18%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#06113d"/></pattern></defs>
 <polygon points="614,1163.5 620,1163.5 623,1167 617,1174 611,1167" fill="#2f6bff"/>
 <polygon points="614,1163.5 620,1163.5 618.5,1167 615.5,1167" fill="#ffffff" fill-opacity="0.45"/>
@@ -322,7 +322,7 @@
 </g>
 <polygon points="373,902.5 379,902.5 382,906 376,913 370,906" fill="#f2f5fb"/>
 <polygon points="373,902.5 379,902.5 377.5,906 374.5,906" fill="#ffffff" fill-opacity="0.45"/>
-<text x="386" y="912" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff">Story and menus <tspan font-weight="400" fill="#a9bde8">4%</tspan></text>
+<text x="386" y="912" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff">Story and menus <tspan font-weight="400" fill="#a9bde8">5%</tspan></text>
 <rect x="371" y="920" width="233" height="231" rx="3" fill="#0f2a78"><title>Story: 0 of 850 done</title></rect>
 <text x="374" y="934" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Story <tspan font-weight="400" fill="#a9bde8">0%</tspan></text>
 <g transform="translate(374,938)">
@@ -331,7 +331,7 @@
 <rect x="105" y="21" width="6" height="6" fill="#d2c36e"><title>0x005b59a0 SeqGetSectionList: 80.5%</title></rect>
 <rect x="112" y="21" width="6" height="6" fill="#bfba81"><title>0x005b5a20 SeqGetSectionNumber: 72.3%</title></rect>
 </g>
-<rect x="371" y="1153" width="163" height="204" rx="3" fill="#0f2a78"><title>Menus: 70 of 531 done</title></rect>
+<rect x="371" y="1153" width="163" height="204" rx="3" fill="#0f2a78"><title>Menus: 74 of 531 done</title></rect>
 <text x="374" y="1167" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Menus <tspan font-weight="400" fill="#a9bde8">13%</tspan></text>
 <g transform="translate(374,1171)">
 <rect y="0" width="154" height="168" fill="url(#todo)"/>
@@ -371,7 +371,7 @@
 <rect x="112" y="14" width="6" height="6" fill="#ffd700"><title>0x004b6d90 file_sel_exec: 100%</title></rect>
 <rect x="126" y="14" width="6" height="6" fill="#ffd700"><title>0x004b7800 FUN_004b7800: 100%</title></rect>
 <rect x="140" y="14" width="6" height="6" fill="#ffd700"><title>0x004b83c0 FUN_004b83c0: 100%</title></rect>
-<rect x="35" y="21" width="6" height="6" fill="#98a59f"><title>0x004b9330 file_sel_disp: 54.5%</title></rect>
+<rect x="35" y="21" width="6" height="6" fill="#ffd700"><title>0x004b9330 file_sel_disp: 100%</title></rect>
 <rect x="56" y="21" width="6" height="6" fill="#ffd700"><title>0x004b9bc0 FreeAdvaFileSelTask: 100%</title></rect>
 <rect x="63" y="21" width="6" height="6" fill="#ffd700"><title>0x004b9be0 ChgSeqFileSel: 100%</title></rect>
 <rect x="70" y="21" width="6" height="6" fill="#ffd700"><title>0x004b9c10 FUN_004b9c10: 100%</title></rect>
@@ -405,14 +405,14 @@
 <rect x="35" y="35" width="6" height="6" fill="#ffd700"><title>0x004cb7b0 SetCurFontInfo: 100%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#ffd700"><title>0x0055e260 IsBtnDecide: 100%</title></rect>
 <rect x="49" y="35" width="6" height="6" fill="#ffd700"><title>0x0055e280 IsBtnCancel: 100%</title></rect>
-<rect x="56" y="35" width="6" height="6" fill="#bbb885"><title>0x0055e2a0 IsSOCAVAPress: 70.6%</title></rect>
+<rect x="56" y="35" width="6" height="6" fill="#ffd700"><title>0x0055e2a0 IsSOCAVAPress: 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#ffd700"><title>0x0059bc90 AvaExitDispLoading: 100%</title></rect>
 <rect x="70" y="56" width="6" height="6" fill="#ffd700"><title>0x0059bcc0 _advertise_prolog: 100%</title></rect>
-<rect x="91" y="77" width="6" height="6" fill="#9ea99b"><title>0x005a3f60 DialogJimakuProcDel: 57.1%</title></rect>
+<rect x="91" y="77" width="6" height="6" fill="#ffd700"><title>0x005a3f60 DialogJimakuProcDel: 100%</title></rect>
 <rect x="98" y="77" width="6" height="6" fill="#ffd700"><title>0x005a3fc0 AdvaOpenDialog: 100%</title></rect>
 <rect x="105" y="77" width="6" height="6" fill="#ffd700"><title>0x005a3fe0 AdvaOpenDialogCsrLet: 100%</title></rect>
 <rect x="112" y="77" width="6" height="6" fill="#ffd700"><title>0x005a4010 AdvaOpenDialogQuick: 100%</title></rect>
-<rect x="126" y="77" width="6" height="6" fill="#efd03a"><title>0x005a4120 DrawSkyBg: 92.9%</title></rect>
+<rect x="126" y="77" width="6" height="6" fill="#ffd700"><title>0x005a4120 DrawSkyBg: 100%</title></rect>
 </g>
 <rect x="536" y="1153" width="68" height="204" rx="3" fill="#0f2a78"><title>Missions: 0 of 59 done</title></rect>
 <text x="539" y="1167" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Missions</text>

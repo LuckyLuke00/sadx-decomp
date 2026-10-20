@@ -1,5 +1,5 @@
 #include "decls.h"
-enum AvaCharEnum AvaGetlastPlayer(int param_1);
+enum AvaCharEnum AvaGetlastPlayer();
 extern void *DAT_05b42528;
 void *_SOCMalloc(unsigned int size, const char *file, int line);
 extern unsigned char DAT_025d4cad;
@@ -225,15 +225,13 @@ void FUN_004b83c0(struct task *param_1)
 // FUNCTION: SADX 0x004b9330
 void file_sel_disp(struct task *tp)
 {
-	float local_8g;
-	float local_cg;
-
-	if (DAT_025d4cad)
+	if (!DAT_025d4cad)
 	{
-		local_8g = *(float *)((char *)tp + 0x0c) + -12.0f;
-		local_cg = *(float *)((char *)tp + 0x34) + 248.0f + 160.0f;
-		DrawMCharName(AvaGetlastPlayer(-1), local_cg, 122.0f, local_8g, 0.7f, 0.7f, 0.7f);
+		return;
 	}
+	DrawMCharName(AvaGetlastPlayer(), 0xffffffff,
+		*(float *)((char *)tp + 0x34) + 248.0 + 160.0, 122.0f,
+		*(float *)((char *)tp + 0x0c) + -12.0, 0.7f, 0.7f);
 }
 
 // FUNCTION: SADX 0x004b9bc0

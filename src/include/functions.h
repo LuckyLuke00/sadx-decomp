@@ -128,7 +128,7 @@ struct task *CreateChao_for_ALR_ALRE(void (*)(struct task *), struct al_status *
 struct alifewk *ALR_Init(struct task *tp);
 void ALR_Destructor(struct task *tp);
 void ALR_Executor(struct task *tp);
-void ghDrawPvrSprite(short *, float, float, float, float, float, float);
+void ghDrawPvrSprite(short *, int, float, float, float, float, float);
 void InitMission();
 void ReleaseMissionObject();
 int FUN_0049d410(int param_1, int param_2);
@@ -521,7 +521,7 @@ unsigned long GetFadeOutColFromT(float t);
 void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, float z, float magx, float magy);
 void StopAdvaBGM();
 void DrawSkyBg(float z);
-enum AvaCharEnum AvaGetlastPlayer(int);
+enum AvaCharEnum AvaGetlastPlayer();
 void FUN_005a4d70();
 void TH_DestroyAll();
 extern struct thread *TH_Create(void *, void *, unsigned int);
