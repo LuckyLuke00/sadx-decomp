@@ -7484,7 +7484,7 @@
   {
    "address": "0x0058b920",
    "name": "Init_objEditTable",
-   "accuracy": 0.46808510638297873,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -7660,7 +7660,7 @@
   {
    "address": "0x005a4b20",
    "name": "Init_objCameraEntryTable",
-   "accuracy": 0.6530612244897959,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -7852,7 +7852,7 @@
   {
    "address": "0x005b59a0",
    "name": "SeqGetSectionList",
-   "accuracy": 0.8051948051948052,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -7860,7 +7860,7 @@
   {
    "address": "0x005b5a20",
    "name": "SeqGetSectionNumber",
-   "accuracy": 0.7228915662650602,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -13675,5 +13675,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b32b615f0bac1261bf3cf4da662ea529b218da84f7fcc5deb9b2f266dc9e9f3b"
+ "inputs_sha256": "901d7d865c37c1939942b8b80b6a857c162f0621380cd0d7574884caf48a92de"
 }

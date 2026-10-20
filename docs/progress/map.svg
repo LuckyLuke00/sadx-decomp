@@ -4,7 +4,7 @@
 <rect width="1000" height="1421" rx="6" fill="url(#backdrop)"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">592 of 16,537 game functions done (3.58%), 63 in progress, accuracy 97.18%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">596 of 16,537 game functions done (3.60%), 59 in progress, accuracy 97.39%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#06113d"/></pattern></defs>
 <polygon points="614,1163.5 620,1163.5 623,1167 617,1174 611,1167" fill="#2f6bff"/>
 <polygon points="614,1163.5 620,1163.5 618.5,1167 615.5,1167" fill="#ffffff" fill-opacity="0.45"/>
@@ -323,13 +323,13 @@
 <polygon points="373,902.5 379,902.5 382,906 376,913 370,906" fill="#f2f5fb"/>
 <polygon points="373,902.5 379,902.5 377.5,906 374.5,906" fill="#ffffff" fill-opacity="0.45"/>
 <text x="386" y="912" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff">Story and menus <tspan font-weight="400" fill="#a9bde8">5%</tspan></text>
-<rect x="371" y="920" width="233" height="231" rx="3" fill="#0f2a78"><title>Story: 0 of 850 done</title></rect>
+<rect x="371" y="920" width="233" height="231" rx="3" fill="#0f2a78"><title>Story: 2 of 850 done</title></rect>
 <text x="374" y="934" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Story <tspan font-weight="400" fill="#a9bde8">0%</tspan></text>
 <g transform="translate(374,938)">
 <rect y="0" width="224" height="182" fill="url(#todo)"/>
 <rect y="182" width="126" height="7" fill="url(#todo)"/>
-<rect x="105" y="21" width="6" height="6" fill="#d2c36e"><title>0x005b59a0 SeqGetSectionList: 80.5%</title></rect>
-<rect x="112" y="21" width="6" height="6" fill="#bfba81"><title>0x005b5a20 SeqGetSectionNumber: 72.3%</title></rect>
+<rect x="105" y="21" width="6" height="6" fill="#ffd700"><title>0x005b59a0 SeqGetSectionList: 100%</title></rect>
+<rect x="112" y="21" width="6" height="6" fill="#ffd700"><title>0x005b5a20 SeqGetSectionNumber: 100%</title></rect>
 </g>
 <rect x="371" y="1153" width="163" height="204" rx="3" fill="#0f2a78"><title>Menus: 74 of 531 done</title></rect>
 <text x="374" y="1167" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Menus <tspan font-weight="400" fill="#a9bde8">13%</tspan></text>
@@ -424,12 +424,12 @@
 <polygon points="22,513.5 28,513.5 31,517 25,524 19,517" fill="#0f9d6b"/>
 <polygon points="22,513.5 28,513.5 26.5,517 23.5,517" fill="#ffffff" fill-opacity="0.45"/>
 <text x="35" y="523" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff">Shared code <tspan font-weight="400" fill="#a9bde8">18%</tspan></text>
-<rect x="163" y="831" width="120" height="175" rx="3" fill="#0f2a78"><title>Objects: 0 of 333 done</title></rect>
+<rect x="163" y="831" width="120" height="175" rx="3" fill="#0f2a78"><title>Objects: 1 of 333 done</title></rect>
 <text x="166" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Objects <tspan font-weight="400" fill="#a9bde8">0%</tspan></text>
 <g transform="translate(166,849)">
 <rect y="0" width="112" height="140" fill="url(#todo)"/>
 <rect y="140" width="91" height="7" fill="url(#todo)"/>
-<rect x="35" y="14" width="6" height="6" fill="#879caa"><title>0x0058b920 Init_objEditTable: 46.8%</title></rect>
+<rect x="35" y="14" width="6" height="6" fill="#ffd700"><title>0x0058b920 Init_objEditTable: 100%</title></rect>
 </g>
 <rect x="285" y="831" width="78" height="175" rx="3" fill="#0f2a78"><title>Enemies: 3 of 179 done</title></rect>
 <text x="288" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Enemies</text>
@@ -446,7 +446,7 @@
 <rect x="7" y="77" width="6" height="6" fill="#9ca89c"><title>0x005d8bf0 CreateAnimal: 56.4%</title></rect>
 <rect x="14" y="77" width="6" height="6" fill="#ebce47"><title>0x005d8cc0 CreateRareAnimal: 91.2%</title></rect>
 </g>
-<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 342 of 388 done</title></rect>
+<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 343 of 388 done</title></rect>
 <text x="23" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Engine <tspan font-weight="400" fill="#a9bde8">88%</tspan></text>
 <g transform="translate(23,849)">
 <rect y="0" width="133" height="140" fill="url(#todo)"/>
@@ -797,7 +797,7 @@
 <rect x="14" y="126" width="6" height="6" fill="#ffd700"><title>0x004f6ef0 FUN_004f6ef0: 100%</title></rect>
 <rect x="21" y="126" width="6" height="6" fill="#ffd700"><title>0x0056e3b0 CheckEditMode: 100%</title></rect>
 <rect x="28" y="126" width="6" height="6" fill="#ffd700"><title>0x00573d10 pfENDDIF: 100%</title></rect>
-<rect x="35" y="126" width="6" height="6" fill="#b0b28e"><title>0x005a4b20 Init_objCameraEntryTable: 65.3%</title></rect>
+<rect x="35" y="126" width="6" height="6" fill="#ffd700"><title>0x005a4b20 Init_objCameraEntryTable: 100%</title></rect>
 <rect x="42" y="126" width="6" height="6" fill="#ffd700"><title>0x005a6240 ClearDownload: 100%</title></rect>
 <rect x="49" y="126" width="6" height="6" fill="#a0aa9a"><title>0x005a62c0 InitDownload: 58.3%</title></rect>
 <rect x="56" y="126" width="6" height="6" fill="#ffd700"><title>0x005a6360 CloseDownload: 100%</title></rect>

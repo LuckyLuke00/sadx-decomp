@@ -11,9 +11,7 @@ extern int DAT_05bb00a8;
 // FUNCTION: SADX 0x005b59a0
 struct SEQ_SECTIONTBL *SeqGetSectionList(long playerno)
 {
-	struct SEQ_SECTIONTBL *local_8;
-
-	if (DAT_05bb00a8 != 0)
+	if (*(unsigned char *)&DAT_05bb00a8 != 0)
 	{
 		return seqSectionLast;
 	}
@@ -38,13 +36,9 @@ struct SEQ_SECTIONTBL *SeqGetSectionList(long playerno)
 // FUNCTION: SADX 0x005b5a20
 long SeqGetSectionNumber(long playerno)
 {
-	if (*(char *)&DAT_05bb00a8 != '\0')
+	if (*(unsigned char *)&DAT_05bb00a8 != 0)
 	{
 		return 4;
-	}
-	if (playerno > 7)
-	{
-		return 0;
 	}
 	switch (playerno)
 	{
