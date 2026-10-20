@@ -4,7 +4,7 @@
 <rect width="1000" height="1421" rx="6" fill="url(#backdrop)"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">599 of 16,537 game functions done (3.62%), 56 in progress, accuracy 97.49%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">601 of 16,537 game functions done (3.63%), 54 in progress, accuracy 97.59%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#06113d"/></pattern></defs>
 <polygon points="614,1163.5 620,1163.5 623,1167 617,1174 611,1167" fill="#2f6bff"/>
 <polygon points="614,1163.5 620,1163.5 618.5,1167 615.5,1167" fill="#ffffff" fill-opacity="0.45"/>
@@ -446,7 +446,7 @@
 <rect x="7" y="77" width="6" height="6" fill="#9ca89c"><title>0x005d8bf0 CreateAnimal: 56.4%</title></rect>
 <rect x="14" y="77" width="6" height="6" fill="#ebce47"><title>0x005d8cc0 CreateRareAnimal: 91.2%</title></rect>
 </g>
-<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 343 of 388 done</title></rect>
+<rect x="20" y="831" width="141" height="175" rx="3" fill="#0f2a78"><title>Engine: 345 of 388 done</title></rect>
 <text x="23" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Engine <tspan font-weight="400" fill="#a9bde8">88%</tspan></text>
 <g transform="translate(23,849)">
 <rect y="0" width="133" height="140" fill="url(#todo)"/>
@@ -473,8 +473,8 @@
 <rect x="0" y="7" width="6" height="6" fill="#ffd700"><title>0x0049fdd0 le_find_env: 100%</title></rect>
 <rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x0049fe40 le_set_env: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ff50 le_set_paenv: 100%</title></rect>
-<rect x="21" y="7" width="6" height="6" fill="#728fb5"><title>0x004a0040 le_find_paenv: 37.1%</title></rect>
-<rect x="28" y="7" width="6" height="6" fill="#f9d514"><title>0x004a0100 dsGDLoadPalette: 97.5%</title></rect>
+<rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x004a0040 le_find_paenv: 100%</title></rect>
+<rect x="28" y="7" width="6" height="6" fill="#ffd700"><title>0x004a0100 dsGDLoadPalette: 100%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x004ac820 DialogJimakuInit: 100%</title></rect>
 <rect x="42" y="7" width="6" height="6" fill="#ffd700"><title>0x004ac8a0 DialogJimakuEnd: 100%</title></rect>
 <rect x="49" y="7" width="6" height="6" fill="#ffd700"><title>0x004ac900 DialogJimakuPut: 100%</title></rect>
