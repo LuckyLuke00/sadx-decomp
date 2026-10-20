@@ -43,6 +43,8 @@ import project
 ROOT = project.ROOT
 HEADER = "// Generated from the names the source files use. Do not edit: change the sources instead.\n"
 EMPTY_ROW = {"name": "", "proto": "", "scope": "", "file": ""}
+POINTER_TO = re.compile(r"\b(?:struct|union)\s+(\w+)\s*\*+\s*(\w+)")  # the pointed-to type and the pointer's name
+REACHED_THROUGH = re.compile(r"(\w+)\s*(?:->|\[[^\]]*\]\s*(?:\.|->))")  # `p->x`, `p[i].x`: p's type needs its layout
 
 
 def load_tables(library: set[str], tables: Path | None) -> tuple[dict, dict, dict, dict]:
@@ -82,6 +84,11 @@ class Types(names.Types):
             out.add(n)
             todo.extend(d for d in self.deps[n] if d in self.blocks and d not in out)
         return out
+
+    def pointees(self, defined, reached):
+        """The types with a layout that pointer members of the DEFINED types point to, for members named in REACHED."""
+        return {u for n in defined for u, member in POINTER_TO.findall(self.blocks[n])
+                if member in reached and u in self.blocks}
 
     def write(self, defined, forward):
         lines = [HEADER, "#pragma once", "#pragma warning(disable: 4480)", "#include <stddef.h>", ""]
@@ -347,7 +354,17 @@ def write(context: Path | None, tables: Path | None) -> int:
                 fatal.append(f"{gname}: no file gives the layout of {m.group(1)}, so it cannot be defined. Declare it "
                              f"`extern char {gname}[{size}];` at the top of the file that uses it and reach its fields "
                              "through casts.")
+    # A pointer the code reaches through, such as `tp->awp->work`, needs its type's layout even when the code never
+    # names that type: for globals and for members of the types defined so far, until no more turn up.
+    reached = set()
+    for text in sources.values():
+        reached |= set(REACHED_THROUGH.findall(names.strip_code(text)))
+    used_types |= {u for ext in externs.values() for u, n in POINTER_TO.findall(ext) if n in reached and u in types.blocks}
     defined_types = types.closure(used_types)
+    more = types.pointees(defined_types, reached) - defined_types
+    while more:
+        defined_types |= types.closure(more)
+        more = types.pointees(defined_types, reached) - defined_types
     forward = set()
     for sig in list(decls.values()) + list(externs.values()):
         forward |= set(n for n in re.findall(r"\b(?:struct|union)\s+(\w+)", sig))
