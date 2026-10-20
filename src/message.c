@@ -2,7 +2,7 @@
 extern int DAT_05b92e28;
 extern int DAT_05b9d838;
 extern int DAT_05b42c24[4];
-extern unsigned char DAT_05b42c1c;
+extern char DAT_05b42c1c;
 int FUN_004c1800(const unsigned char *param_1);
 
 extern signed char DAT_05b42c1d;

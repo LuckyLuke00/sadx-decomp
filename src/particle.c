@@ -1,7 +1,7 @@
 #include "decls.h"
 struct sp_link *SpCreateLinkW(struct sp_info *info, unsigned long wksize);
-extern unsigned short DAT_05b9d724;
-extern unsigned short DAT_05b9d744;
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
 
 // FUNCTION: SADX 0x005a6a40
 void SetParticle()

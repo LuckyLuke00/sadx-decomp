@@ -3836,7 +3836,7 @@
   {
    "address": "0x004c1d50",
    "name": "MSG_Disp",
-   "accuracy": 0.9642857142857143,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -6284,7 +6284,7 @@
   {
    "address": "0x005d1990",
    "name": "ERobCtrlInit",
-   "accuracy": 0.7272727272727273,
+   "accuracy": 0.8727272727272727,
    "effective": false,
    "stub": false,
    "library": false
@@ -6324,7 +6324,7 @@
   {
    "address": "0x005d8bf0",
    "name": "CreateAnimal",
-   "accuracy": 0.5454545454545454,
+   "accuracy": 0.5636363636363636,
    "effective": false,
    "stub": false,
    "library": false
@@ -12075,5 +12075,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "67c8014cf0b5c438a3e02ab4d37b895c2ff03eb3a2ca3cc6d8a1ce4e6bcb7c5b"
+ "inputs_sha256": "5dd7e37f7eb1d57a172a01efd4b599578197d6fa43e7049ab24beb2d60f00d62"
 }

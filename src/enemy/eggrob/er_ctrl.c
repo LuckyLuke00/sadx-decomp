@@ -2,8 +2,8 @@
 long ERobKill();
 long ERobKill(void);
 struct task *Eggrob_GenerateEggrob(struct erctrlstr *);
-extern unsigned short DAT_05b9d724;
-extern unsigned short DAT_05b9d744;
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
 extern int DAT_05edc428;
 
 // FUNCTION: SADX 0x005d1980
