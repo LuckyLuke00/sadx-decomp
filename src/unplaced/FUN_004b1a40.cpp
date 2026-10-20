@@ -289,14 +289,13 @@ void FUN_004b6aa0(int param_1, int *param_2, int *param_3)
 void *FUN_004b6ae0(unsigned int param_1)
 {
 	void *local_8 = 0;
-	if (param_1 == 0)
+	if (param_1 <= 0)
 	{
 		param_1 = 0;
-		return local_8;
 	}
-	if (param_1 > 0x3fffffff || (local_8 = operator new(param_1 * 4)) == 0)
+	else if (param_1 > 0x3fffffff || (local_8 = operator new(param_1 * 4)) == 0)
 	{
-		throw std::bad_alloc();
+		throw std::bad_alloc(0);
 	}
 	return local_8;
 }

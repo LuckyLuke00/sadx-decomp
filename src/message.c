@@ -10,6 +10,7 @@ extern char DAT_05b42c1c;
 int FUN_004c1800(const unsigned char *param_1);
 
 extern signed char DAT_05b42c1d;
+extern unsigned char DAT_05b42e20[0x50000];
 
 // FUNCTION: SADX 0x004c1790
 int FPpCalcProp(const unsigned char *patt)
@@ -91,7 +92,7 @@ void MSG_Close(struct MSGC *msgc)
 	}
 	if (msgc->bitmap != NULL)
 	{
-		if (msgc->bitmap < (void *)0x5b42e20 || msgc->bitmap > (void *)0x5b92e20)
+		if (msgc->bitmap < DAT_05b42e20 || msgc->bitmap >= DAT_05b42e20 + sizeof(DAT_05b42e20))
 		{
 			Free(msgc->bitmap);
 		}
@@ -190,7 +191,7 @@ void MSG_WaitC(struct MSGC *msgc, int time)
 // FUNCTION: SADX 0x004c3030
 struct MSGC *NH_MSG_OpenMain(struct MSGC *msgc)
 {
-	return NH_MSG_Open(msgc, 0x46, 0x180, 0x1f4, 0x34, 0xd0000004, (char *)0x5b42e20);
+	return NH_MSG_Open(msgc, 0x46, 0x180, 0x1f4, 0x34, 0xd0000004, (char *)DAT_05b42e20);
 }
 
 // FUNCTION: SADX 0x004c3150

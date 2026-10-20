@@ -15,7 +15,7 @@ goal is C and C++ source that compiles to the same machine code as the retail
 <!-- history:start -->
 | Date | Done | Decompiled | Accuracy | Areas |
 | --- | --- | --- | --- | --- |
-| 2026-10-20 | 603 (+290) | 655 | 97.66% | Engine 267, Menus 20, Chao Race 5 and 5 more |
+| 2026-10-20 | 606 (+293) | 655 | 97.86% | Engine 270, Menus 21, Chao Race 5 and 5 more |
 | 2026-10-19 | 313 (+165) | 384 | 94.46% | PC port 98, Engine 67, Menus 33 and 5 more |
 | 2026-10-18 | 148 (+142) | 148 | 100.00% | Engine 35, Not sorted yet 32, Menus 32 and 3 more |
 | 2026-10-17 | 6 (+6) | 6 | 100.00% | Ninja graphics 3, PC port 1, Chao Gardens 1 and 1 more |
