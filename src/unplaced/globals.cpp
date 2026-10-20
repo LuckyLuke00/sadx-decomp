@@ -20,8 +20,14 @@ float DAT_00981c10;
 // GLOBAL: SADX 0x00985418
 enum AvaTexLdEnum DAT_00985418;
 
+// GLOBAL: SADX 0x0098723c
+struct _camcontwk *camcont_wp;
+
 // GLOBAL: SADX 0x00987240
 struct _CameraSystemWork *pCameraSystemWork;
+
+// GLOBAL: SADX 0x00987244
+struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
 
 // GLOBAL: SADX 0x0098beec
 struct TaskInfo MirenEfLensFlareTaskInfo;
@@ -647,14 +653,32 @@ unsigned char DAT_05b4252c;
 // GLOBAL: SADX 0x05b42530
 struct task *DAT_05b42530;
 
+// GLOBAL: SADX 0x05b425c8
+int DAT_05b425c8;
+
+// GLOBAL: SADX 0x05b425d0
+NJS_POINT3 DAT_05b425d0[0x32];
+
 // GLOBAL: SADX 0x05b42860
 int DAT_05b42860;
 
 // GLOBAL: SADX 0x05b42894
 int DAT_05b42894;
 
+// GLOBAL: SADX 0x05b4289c
+float DAT_05b4289c;
+
+// GLOBAL: SADX 0x05b428a0
+float DAT_05b428a0;
+
+// GLOBAL: SADX 0x05b428a4
+float DAT_05b428a4;
+
 // GLOBAL: SADX 0x05b428e8
 int DAT_05b428e8;
+
+// GLOBAL: SADX 0x05b4295c
+struct NJS_POINT3 DAT_05b4295c;
 
 // GLOBAL: SADX 0x05b42968
 int DAT_05b42968;
@@ -665,11 +689,17 @@ int DAT_05b42974;
 // GLOBAL: SADX 0x05b42978
 int DAT_05b42978;
 
+// GLOBAL: SADX 0x05b4298c
+int *DAT_05b4298c;
+
 // GLOBAL: SADX 0x05b42994
 int DAT_05b42994;
 
 // GLOBAL: SADX 0x05b42998
 short DAT_05b42998;
+
+// GLOBAL: SADX 0x05b4299c
+int DAT_05b4299c[1];
 
 // GLOBAL: SADX 0x05b429a0
 unsigned long DAT_05b429a0;

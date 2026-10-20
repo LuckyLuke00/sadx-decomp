@@ -918,15 +918,9 @@ void FUN_004bee10(void)
 {
 }
 
-// STUB: SADX 0x004bf010
-void SetAdjustMode(long)
+// STUB: SADX 0x004bfda0
+void CameraFilter()
 {
-}
-
-// STUB: SADX 0x004bf050
-long GetAdjustMode()
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x004c06f0
