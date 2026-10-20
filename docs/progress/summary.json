@@ -3484,7 +3484,7 @@
   {
    "address": "0x004b9330",
    "name": "file_sel_disp",
-   "accuracy": 0.5454545454545454,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -7140,7 +7140,7 @@
   {
    "address": "0x0055e2a0",
    "name": "IsSOCAVAPress",
-   "accuracy": 0.7058823529411765,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -7612,7 +7612,7 @@
   {
    "address": "0x005a3f60",
    "name": "DialogJimakuProcDel",
-   "accuracy": 0.5714285714285714,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -7644,7 +7644,7 @@
   {
    "address": "0x005a4120",
    "name": "DrawSkyBg",
-   "accuracy": 0.9285714285714286,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -13675,5 +13675,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "9b6d1640f6080d8a232e3737749521cb073a32457fe6b9424a79ed2e20de1306"
+ "inputs_sha256": "b32b615f0bac1261bf3cf4da662ea529b218da84f7fcc5deb9b2f266dc9e9f3b"
 }

@@ -17,5 +17,5 @@ int IsBtnCancel(void)
 // FUNCTION: SADX 0x0055e2a0
 int IsSOCAVAPress(int padno, int keys)
 {
-	return (*(int *)(DAT_05b93264[padno] + 0x10)) & keys;
+	return ((unsigned int **)&DAT_05b93264)[padno][4] & keys;
 }
