@@ -1178,14 +1178,33 @@ long EntryColliList(struct taskwk *twp)
 	return (long)0;
 }
 
-// STUB: SADX 0x004f1860
-long CheckCollisionP(struct NJS_POINT3 *, float)
+// STUB: SADX 0x004e3130
+void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
 }
 
-// STUB: SADX 0x004f1a60
-long GetPlayerCharacterName(unsigned char)
+// STUB: SADX 0x004efcd0
+void LoopSECallForTheMode(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004f0160
+void ExecFallingDownP(unsigned char pno)
+{
+}
+
+// STUB: SADX 0x004f0e00
+void SetVelocityP(unsigned char, float, float, float)
+{
+}
+
+// STUB: SADX 0x004f1430
+void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
+{
+}
+
+// STUB: SADX 0x004f1860
+long CheckCollisionP(struct NJS_POINT3 *, float)
 {
 	return (long)0;
 }
@@ -1200,6 +1219,16 @@ long GetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3
 long SetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3 *pos, long *ang)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004f1fc0
+void PlayerSpeedUp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004f23a0
+void MomentMuteki(struct task *tp)
+{
 }
 
 // STUB: SADX 0x004f3570
@@ -1412,6 +1441,18 @@ unsigned char isGGMessageEnable()
 	return (unsigned char)0;
 }
 
+// STUB: SADX 0x00570480
+extern long SCPathPntnmbToOnpos(struct pathtag *, unsigned long, float *)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x005704f0
+float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct NJS_POINT3 *onpnt3, float *onpos)
+{
+	return (float)0;
+}
+
 // STUB: SADX 0x005730b0
 void ___njFogEnable()
 {
@@ -1622,6 +1663,17 @@ long StageNameMode(void *Param)
 
 // STUB: SADX 0x005b2480
 void FUN_005b2480(int)
+{
+}
+
+// STUB: SADX 0x005b3640
+long CanIMakePanelJump(struct taskwk *ptwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x005b44c0
+void EffectCrash(struct task *tp)
 {
 }
 

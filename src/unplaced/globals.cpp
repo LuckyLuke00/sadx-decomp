@@ -56,6 +56,9 @@ float _nj_unit_matrix_[16];
 // GLOBAL: SADX 0x01e5f844
 float value;
 
+// GLOBAL: SADX 0x0221e5b0
+long angx;
+
 // GLOBAL: SADX 0x022ae290
 struct pathtag *pathdata_race[4];
 
@@ -173,6 +176,9 @@ float DAT_025d5974;
 // GLOBAL: SADX 0x025d59f0
 long action_button;
 
+// GLOBAL: SADX 0x025d59f4
+long jump_button;
+
 // GLOBAL: SADX 0x025d5a00
 long hold_button;
 
@@ -272,6 +278,9 @@ struct particle_entry *ListofParticleFixed[13];
 // GLOBAL: SADX 0x02639b80
 struct particle_entry * *ListofListofParticle[43];
 
+// GLOBAL: SADX 0x0263da30
+struct FACETBL *faceTbl[31];
+
 // GLOBAL: SADX 0x0263dbf4
 struct particle_info default_snow;
 
@@ -313,6 +322,9 @@ struct NJS_TEXLIST texlist_eggrob;
 
 // GLOBAL: SADX 0x0317858c
 long amb;
+
+// GLOBAL: SADX 0x03711078
+struct NJS_POINT3 point[5];
 
 // GLOBAL: SADX 0x03b4e2f0
 struct obj *obj[10];
@@ -770,6 +782,12 @@ int DAT_05b93290;
 // GLOBAL: SADX 0x05b93294
 int DAT_05b93294;
 
+// GLOBAL: SADX 0x05b932f0
+char DAT_05b932f0[1024];
+
+// GLOBAL: SADX 0x05b932f8
+long DAT_05b932f8[1];
+
 // GLOBAL: SADX 0x05b93588
 int DAT_05b93588;
 
@@ -944,8 +962,29 @@ unsigned short DAT_05ba2ea8;
 // GLOBAL: SADX 0x05ba2eac
 unsigned short DAT_05ba2eac;
 
+// GLOBAL: SADX 0x05ba32b8
+int DAT_05ba32b8[8];
+
+// GLOBAL: SADX 0x05ba32e0
+long DAT_05ba32e0[4];
+
+// GLOBAL: SADX 0x05ba3320
+char DAT_05ba3320[1];
+
+// GLOBAL: SADX 0x05ba3328
+int DAT_05ba3328[8];
+
+// GLOBAL: SADX 0x05ba9348
+int DAT_05ba9348[8];
+
 // GLOBAL: SADX 0x05baf368
 short *DAT_05baf368;
+
+// GLOBAL: SADX 0x05baf388
+int DAT_05baf388[8];
+
+// GLOBAL: SADX 0x05baf3a8
+int DAT_05baf3a8[8];
 
 // GLOBAL: SADX 0x05baf4d0
 int DAT_05baf4d0[8];
