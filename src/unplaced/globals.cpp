@@ -194,6 +194,27 @@ struct GH_FONT_INFO StaffRollFontInfo[1];
 // GLOBAL: SADX 0x025d9b40
 int DAT_025d9b40[256];
 
+// GLOBAL: SADX 0x025dcc64
+int ADX_BGM_FLAG;
+
+// GLOBAL: SADX 0x025dcc68
+int ADX_SERIF_FLAG;
+
+// GLOBAL: SADX 0x025dcc6c
+int SerifNo;
+
+// GLOBAL: SADX 0x025dcc70
+int BgmNo;
+
+// GLOBAL: SADX 0x025dcc74
+int BgmLast;
+
+// GLOBAL: SADX 0x025dcc7c
+int BgmRound;
+
+// GLOBAL: SADX 0x025dcc80
+int BgmBackup;
+
 // GLOBAL: SADX 0x02608e24
 unsigned char DAT_02608e24;
 
@@ -808,6 +829,18 @@ int DAT_05bb00a8;
 
 // GLOBAL: SADX 0x05bb00a9
 unsigned char DAT_05bb00a9;
+
+// GLOBAL: SADX 0x05bb00b4
+int DAT_05bb00b4;
+
+// GLOBAL: SADX 0x05bb00b8
+int DAT_05bb00b8;
+
+// GLOBAL: SADX 0x05bb00bc
+unsigned char DAT_05bb00bc;
+
+// GLOBAL: SADX 0x05bb00c0
+struct task *DAT_05bb00c0;
 
 // GLOBAL: SADX 0x05cc3560
 unsigned char DAT_05cc3560;
