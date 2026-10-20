@@ -127,6 +127,12 @@ void njExitTexture(void)
 {
 }
 
+// STUB: SADX 0x00423b40
+long njLoadTexture(struct NJS_TEXLIST *)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00423ee0
 void njPrintC(int,char const *)
 {
@@ -1064,12 +1070,6 @@ int VSPrintf(char *s, const char *format, char *arg)
 // STUB: SADX 0x004cf5e0
 void LoadPlayerMotionData(long PlayerNo)
 {
-}
-
-// STUB: SADX 0x004cfb60
-extern long NeonuLoadTexture(struct NJS_TEXLIST *)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x004cfb80

@@ -242,6 +242,14 @@
    "library": false
   },
   {
+   "address": "0x00423b40",
+   "name": "njLoadTexture",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00423ee0",
    "name": "njPrintC",
    "accuracy": 0.16666666666666666,
@@ -4914,6 +4922,38 @@
    "library": false
   },
   {
+   "address": "0x004cde50",
+   "name": "ReleaseModule",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ce3a0",
+   "name": "ReleaseSetFile",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ce420",
+   "name": "GetFnamesPlayerStr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ce450",
+   "name": "ReleaseCamFile",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004cf5e0",
    "name": "LoadPlayerMotionData",
    "accuracy": 0.13114754098360656,
@@ -4924,9 +4964,9 @@
   {
    "address": "0x004cfb60",
    "name": "NeonuLoadTexture",
-   "accuracy": 0.5714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -12707,5 +12747,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3b7b3d28b48b7c78a6507c6ef6b4ca9b9abfdcecf68a3c51fb9df624559d017d"
+ "inputs_sha256": "b4d5479d127ef963febcae50298077eb9d73d029dde4ac4397ae481c1952cba0"
 }

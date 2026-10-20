@@ -197,6 +197,12 @@ struct GH_FONT_INFO Ascii16x16FontInfo[1];
 // GLOBAL: SADX 0x025d7c78
 struct GH_FONT_INFO StaffRollFontInfo[1];
 
+// GLOBAL: SADX 0x025d7ca0
+char *characterinitial[8];
+
+// GLOBAL: SADX 0x025d7cc0
+char *last_initial;
+
 // GLOBAL: SADX 0x025d9b40
 int DAT_025d9b40[256];
 
@@ -806,6 +812,9 @@ int DAT_05b9e064;
 // GLOBAL: SADX 0x05b9e068
 int DAT_05b9e068;
 
+// GLOBAL: SADX 0x05b9e0b0
+void (*DAT_05b9e0b0)();
+
 // GLOBAL: SADX 0x05b9e0b8
 int DAT_05b9e0b8;
 
@@ -1009,6 +1018,12 @@ int DAT_05cc7fe8;
 
 // GLOBAL: SADX 0x05cc7ff8
 int DAT_05cc7ff8;
+
+// GLOBAL: SADX 0x05cc8670
+int DAT_05cc8670;
+
+// GLOBAL: SADX 0x05cc8674
+int DAT_05cc8674;
 
 // GLOBAL: SADX 0x05ccca18
 char DAT_05ccca18;
