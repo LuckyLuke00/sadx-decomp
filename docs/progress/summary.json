@@ -386,6 +386,14 @@
    "library": false
   },
   {
+   "address": "0x00435370",
+   "name": "pdVibMxStop",
+   "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043bcf0",
    "name": "AL_IconResetPos",
    "accuracy": 0.0425531914893617,
@@ -1157,6 +1165,22 @@
    "address": "0x00495270",
    "name": "ghDrawPvrSprite",
    "accuracy": 0.03773584905660377,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00498f50",
+   "name": "InitMission",
+   "accuracy": 0.04878048780487805,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0049a260",
+   "name": "ReleaseMissionObject",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -4066,6 +4090,38 @@
    "library": false
   },
   {
+   "address": "0x004c5190",
+   "name": "GM_CheckClearEvent",
+   "accuracy": 0.15151515151515152,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c5260",
+   "name": "GM_WaitEventE",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c5280",
+   "name": "GM_WaitEventEDestruct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c5290",
+   "name": "GM_CheckMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004c5300",
    "name": "InitGame",
    "accuracy": 0.2222222222222222,
@@ -4074,11 +4130,51 @@
    "library": false
   },
   {
+   "address": "0x004c66b0",
+   "name": "IsNeedForcePause",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c66e0",
+   "name": "FUN_004c66e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004c76a0",
    "name": "SetChangeGameMode",
-   "accuracy": 0.47058823529411764,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c76d0",
+   "name": "FUN_004c76d0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c76e0",
+   "name": "FUN_004c76e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c7950",
+   "name": "FUN_004c7950",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4095,6 +4191,118 @@
    "accuracy": 0.018957345971563982,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c8170",
+   "name": "FUN_004c8170",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c8190",
+   "name": "FUN_004c8190",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c81c0",
+   "name": "GameLoop_with_SyoriOchiTaisaku",
+   "accuracy": 0.08247422680412371,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c83c0",
+   "name": "FUN_004c83c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c8570",
+   "name": "FUN_004c8570",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c85b0",
+   "name": "FUN_004c85b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c85c0",
+   "name": "FUN_004c85c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c85d0",
+   "name": "FUN_004c85d0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c8600",
+   "name": "ActionEnd",
+   "accuracy": 0.08888888888888889,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c8770",
+   "name": "FUN_004c8770",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c87a0",
+   "name": "FUN_004c87a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c8880",
+   "name": "GM_SECall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c88d0",
+   "name": "GM_SEControle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c8950",
+   "name": "GM_BGM_Play",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4122,11 +4330,59 @@
    "library": false
   },
   {
+   "address": "0x004c9290",
+   "name": "SetPlayerNumber",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004c92a0",
    "name": "GetPlayerNumber",
-   "accuracy": 0.8,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c92b0",
+   "name": "GetCountKilledPlayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9350",
+   "name": "SetStageNumber",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9380",
+   "name": "FUN_004c9380",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c93a0",
+   "name": "SetNextStageNumber",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c93c0",
+   "name": "ChangeStageWithFadeOut",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4138,11 +4394,75 @@
    "library": false
   },
   {
+   "address": "0x004c9400",
+   "name": "FUN_004c9400",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9430",
+   "name": "FUN_004c9430",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9450",
+   "name": "GetLastStageNumber",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9470",
+   "name": "GetNextStageNumber",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004c9490",
    "name": "NP_ChkStageChaoGarden",
-   "accuracy": 0.4166666666666667,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c94d0",
+   "name": "AdvanceAct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c94f0",
+   "name": "AdvanceActLocal",
+   "accuracy": 0.09523809523809523,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c9630",
+   "name": "SetEntranceNumber",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9640",
+   "name": "GetEntranceNumber",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4162,11 +4482,59 @@
    "library": false
   },
   {
-   "address": "0x004c9e00",
-   "name": "ChkGameMode",
-   "accuracy": 0.3333333333333333,
+   "address": "0x004c9cb0",
+   "name": "SetNextTrialStage",
+   "accuracy": 0.12658227848101267,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c9dc0",
+   "name": "ChkPause",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c9e00",
+   "name": "ChkGameMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cac60",
+   "name": "MissionInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cac90",
+   "name": "FUN_004cac90",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cacc0",
+   "name": "FUN_004cacc0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004caf50",
+   "name": "isMissionClearDisp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -5106,6 +5474,14 @@
    "library": false
   },
   {
+   "address": "0x004f3600",
+   "name": "InitTask",
+   "accuracy": 0.09876543209876543,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f3750",
    "name": "CreateElementalTask",
    "accuracy": 0.10416666666666667,
@@ -5258,6 +5634,14 @@
    "library": false
   },
   {
+   "address": "0x004f4130",
+   "name": "InitMemory",
+   "accuracy": 0.16,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f41f0",
    "name": "MAlloc",
    "accuracy": 0.07692307692307693,
@@ -5306,9 +5690,25 @@
    "library": false
   },
   {
+   "address": "0x004f4e10",
+   "name": "SeqInitStage",
+   "accuracy": 0.10256410256410256,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f5420",
    "name": "SeqGetTime",
    "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f57c0",
+   "name": "SeqSetClearActionFlag",
+   "accuracy": 0.25806451612903225,
    "effective": false,
    "stub": true,
    "library": false
@@ -5490,6 +5890,14 @@
    "library": false
   },
   {
+   "address": "0x004fee60",
+   "name": "SetDefaultGravity",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00501c60",
    "name": "ReleaseAllPlayersTexture",
    "accuracy": 0.18604651162790697,
@@ -5570,6 +5978,22 @@
    "library": false
   },
   {
+   "address": "0x00554a70",
+   "name": "FUN_00554a70",
+   "accuracy": 0.8,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00554d50",
+   "name": "DisplayScore",
+   "accuracy": 0.25806451612903225,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005554a0",
    "name": "InitTime",
    "accuracy": 0.8,
@@ -5581,6 +6005,14 @@
    "address": "0x00555500",
    "name": "WakeTimer",
    "accuracy": 0.8888888888888888,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00555700",
+   "name": "DisplayTimer",
+   "accuracy": 0.1111111111111111,
    "effective": false,
    "stub": true,
    "library": false
@@ -6122,6 +6554,22 @@
    "library": false
   },
   {
+   "address": "0x005a4ef0",
+   "name": "TH_DestroyAll",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a5490",
+   "name": "InitContinueData",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005a6240",
    "name": "ClearDownload",
    "accuracy": 0.7555555555555555,
@@ -6165,6 +6613,14 @@
    "address": "0x005a64f0",
    "name": "SpCreateLinkW",
    "accuracy": 0.22727272727272727,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a6940",
+   "name": "SpDestroyAll",
+   "accuracy": 0.25,
    "effective": false,
    "stub": true,
    "library": false
@@ -12075,5 +12531,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5dd7e37f7eb1d57a172a01efd4b599578197d6fa43e7049ab24beb2d60f00d62"
+ "inputs_sha256": "ed1f516a1c94ad6e3a5e5b5e09d2cdd762c052cb4919c22ddfc6ed071edfad96"
 }
