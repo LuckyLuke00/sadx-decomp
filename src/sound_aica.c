@@ -22,6 +22,7 @@ extern int DAT_05b3ea18;
 void FUN_004afe30(void);
 
 extern int DAT_05b3e46c[20][14];
+extern int DAT_05b3e468[20][14];
 extern int DAT_05b3e938[20];
 extern int DAT_05a92330;
 extern struct MDHANDLE *DAT_05b3e3a0[51];
@@ -484,21 +485,21 @@ int dsPlay_oneshot(int tone, int id, int pri, int volofs)
 		return -1;
 	}
 	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38) = 0x78;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 4) = -1;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 8) = id;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 12) = 0x11;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 16) = tone;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 20) = 0;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 24) = volofs;
+	DAT_05b3e468[local_8][0] = -1;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 4) = id;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 8) = 0x11;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 12) = tone;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 16) = 0;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 20) = volofs;
+	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 24) = 0;
 	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 28) = 0;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 32) = 0;
+	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 32) = 0.0f;
 	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 36) = 0.0f;
 	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 40) = 0.0f;
-	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 44) = 0.0f;
 	if (tone == 7)
 	{
-		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 12) = 0x801;
-		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 20) = DAT_025adbd0;
+		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 8) = 0x801;
+		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 16) = DAT_025adbd0;
 		DAT_025adbd0 = -DAT_025adbd0;
 	}
 	return 1;
@@ -520,7 +521,7 @@ int dsCheckHandle(int pri, int tone)
 		{
 			local_10 = local_8g;
 		}
-		if (DAT_05b3e46c[local_8g][1] <= pri)
+		if (DAT_05b3e468[local_8g][0] <= pri)
 		{
 			local_10 = local_8g;
 		}
@@ -546,33 +547,33 @@ int dsCheckHandle(int pri, int tone)
 int dsPlay_oneshot_v(int tone, int id, int pri, int volofs, float x, float y, float z)
 {
 	int local_8g;
-	int local_20o;
 	int local_cj;
-	float local_10m;
-	float local_1ci;
+	int local_10m;
+	float local_20o;
 	float local_18;
-	float local_24;
 	float local_14;
+	float local_1ci;
+	float local_24;
 
-	local_20o = 0;
-	local_cj = 0xc8;
-	local_10m = x - *(float *)((char *)DAT_05b42a7c + 0x20);
-	local_1ci = y - *(float *)((char *)DAT_05b42a7c + 0x24);
-	local_18 = z - *(float *)((char *)DAT_05b42a7c + 0x28);
-	local_24 = (float)local_cj;
-	local_14 = local_10m * local_10m + local_1ci * local_1ci + local_18 * local_18 + local_24 * local_24;
-	if (local_cj >= 0 && DAT_05b42a7c)
+	local_cj = 0;
+	local_10m = 0xc8;
+	if (local_10m >= 0 && DAT_05b42a7c)
 	{
-		if (local_14 > 1600000000.0f)
+		local_20o = x - DAT_05b42a7c->pos.x;
+		local_18 = y - DAT_05b42a7c->pos.y;
+		local_14 = z - DAT_05b42a7c->pos.z;
+		local_1ci = (float)local_10m;
+		local_1ci = local_1ci * local_1ci;
+		if (local_1ci * local_1ci < (local_24 = local_14 * local_14 + (local_18 * local_18 + local_20o * local_20o)))
 		{
 			return -1;
 		}
-		local_20o = local_20o | 0x1000;
+		local_cj = local_cj | 0x1000;
 	}
 	local_8g = FUN_004aee80(tone, id);
 	if (local_8g >= 0)
 	{
-		local_20o = DAT_05b3e46c[local_8g][2] & 1;
+		local_cj = DAT_05b3e46c[local_8g][2] & 1;
 	}
 	else
 	{
@@ -581,21 +582,20 @@ int dsPlay_oneshot_v(int tone, int id, int pri, int volofs, float x, float y, fl
 		{
 			return -1;
 		}
-		local_20o = local_20o | 1;
+		local_cj = local_cj | 1;
 	}
 	DAT_05b3e46c[local_8g][0] = 0x78;
-	DAT_05b3e46c[local_8g][1] = -1;
-	DAT_05b3e46c[local_8g][2] = id;
-	DAT_05b3e46c[local_8g][3] = local_20o | 0x10;
-	DAT_05b3e46c[local_8g][3] = DAT_05b3e46c[local_8g][3] | 0x100;
-	DAT_05b3e46c[local_8g][4] = tone;
-	DAT_05b3e46c[local_8g][5] = 0;
+	DAT_05b3e468[local_8g][0] = -1;
+	DAT_05b3e46c[local_8g][1] = id;
+	DAT_05b3e46c[local_8g][2] = local_cj | 0x10 | 0x100;
+	DAT_05b3e46c[local_8g][3] = tone;
+	DAT_05b3e46c[local_8g][4] = 0;
+	DAT_05b3e46c[local_8g][5] = volofs;
 	DAT_05b3e46c[local_8g][6] = volofs;
-	DAT_05b3e46c[local_8g][7] = volofs;
-	DAT_05b3e46c[local_8g][8] = 0;
-	*(float *)&DAT_05b3e46c[local_8g][9] = x;
-	*(float *)&DAT_05b3e46c[local_8g][10] = y;
-	*(float *)&DAT_05b3e46c[local_8g][11] = z;
+	DAT_05b3e46c[local_8g][7] = 0;
+	*(float *)&DAT_05b3e46c[local_8g][8] = x;
+	*(float *)&DAT_05b3e46c[local_8g][9] = y;
+	*(float *)&DAT_05b3e46c[local_8g][10] = z;
 	return local_8g;
 }
 

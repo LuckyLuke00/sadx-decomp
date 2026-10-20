@@ -2940,7 +2940,7 @@
   {
    "address": "0x004aea00",
    "name": "dsPlay_oneshot",
-   "accuracy": 0.8194444444444444,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -2948,7 +2948,7 @@
   {
    "address": "0x004aeb20",
    "name": "dsCheckHandle",
-   "accuracy": 0.9782608695652174,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -2956,7 +2956,7 @@
   {
    "address": "0x004aebd0",
    "name": "dsPlay_oneshot_v",
-   "accuracy": 0.671875,
+   "accuracy": 0.9365079365079365,
    "effective": false,
    "stub": false,
    "library": false
@@ -13675,5 +13675,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c4acca1a69e392dae1062328034d39ccb3079045d62c9e78a31feb84260c3705"
+ "inputs_sha256": "9764bdb60562e22f2315571e44ce8466a02290d972ff46a0664ec0d69ec46ddc"
 }
