@@ -3882,6 +3882,14 @@
    "library": false
   },
   {
+   "address": "0x004c3890",
+   "name": "KeyGetPress",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004c38b0",
    "name": "FUN_004c38b0",
    "accuracy": 1.0,
@@ -3900,25 +3908,57 @@
   {
    "address": "0x004c38e0",
    "name": "PadReadOn(void)",
-   "accuracy": 0.8888888888888888,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004c38f0",
    "name": "PadReadOn(int)",
-   "accuracy": 0.5714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004c3910",
    "name": "PadReadOff",
-   "accuracy": 0.8888888888888888,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c3920",
+   "name": "CheckPadReadMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c3930",
+   "name": "PadReadOnP",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c3970",
+   "name": "PadReadOffP",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c39b0",
+   "name": "CheckPadReadModeP",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -3927,6 +3967,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c39d0",
+   "name": "CheckSoftResetTiming",
+   "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -11851,5 +11899,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "2e619eb14074456b268b398e63d243cabe5efed2bbc24a1eaa8a693bceb15641"
+ "inputs_sha256": "879ba1d5e13a167f569bf1734f4da84accb79ccb0a060d06aade79430a6152af"
 }
