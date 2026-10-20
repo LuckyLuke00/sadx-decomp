@@ -4188,33 +4188,273 @@
   {
    "address": "0x004cb9c0",
    "name": "AdjustAngle",
-   "accuracy": 0.19047619047619047,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cba30",
+   "name": "SubAngle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cba60",
+   "name": "DiffAngle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cbab0",
+   "name": "CreateNinjaAngle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cbd30",
+   "name": "InterpolateModel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cbe70",
+   "name": "InterpolatePointAsSin",
+   "accuracy": 0.10666666666666667,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004cbf50",
+   "name": "CalculatePlaneNormals",
+   "accuracy": 0.01606425702811245,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004cc620",
+   "name": "CalculatePointNormals",
+   "accuracy": 0.021798365122615803,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ccaf0",
+   "name": "SearchTheObjectTreeForTheObject",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccb30",
+   "name": "SearchTheObjectForTheObject",
+   "accuracy": 0.15873015873015872,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ccbd0",
+   "name": "GetFloatMod",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004cce50",
    "name": "SaveConstantAttr",
-   "accuracy": 0.6666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004cce70",
    "name": "LoadConstantAttr",
-   "accuracy": 0.6153846153846154,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004ccea0",
    "name": "OnConstantAttr",
-   "accuracy": 0.5333333333333333,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cced0",
+   "name": "OffConstantAttr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccf00",
+   "name": "SaveControl3D",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccf10",
+   "name": "LoadControl3D",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccf20",
+   "name": "OnControl3D",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccf40",
+   "name": "OffControl3D",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccf60",
+   "name": "MSetPosition",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccf90",
+   "name": "MSetPositionIgnoreAttribute",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ccfc0",
+   "name": "MSetPositionWIgnoreAttribute",
+   "accuracy": 0.025477707006369428,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004cd480",
+   "name": "setObjFlags",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cd4b0",
+   "name": "clrObjFlags",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cd4e0",
+   "name": "scanObjectSub",
+   "accuracy": 0.07547169811320754,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004cd600",
+   "name": "getObjectMatrix",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cd670",
+   "name": "getObjectMatrixBuf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cd690",
+   "name": "initSpriteSub",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cd6e0",
+   "name": "VSPrintf",
+   "accuracy": 0.02318840579710145,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004cdab0",
+   "name": "FUN_004cdab0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cdaf0",
+   "name": "FUN_004cdaf0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cdb40",
+   "name": "FUN_004cdb40",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cdb90",
+   "name": "SPrintf",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cdbd0",
+   "name": "AdjustFloat",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -5898,6 +6138,14 @@
    "library": false
   },
   {
+   "address": "0x0067d3f0",
+   "name": "njGetMatrix",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0067d4c0",
    "name": "njRotateX",
    "accuracy": 0.0898876404494382,
@@ -5925,6 +6173,14 @@
    "address": "0x0067d830",
    "name": "FUN_0067d830",
    "accuracy": 0.13114754098360656,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0067dba0",
+   "name": "njSetMatrix",
+   "accuracy": 0.42105263157894735,
    "effective": false,
    "stub": true,
    "library": false
@@ -11467,5 +11723,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "07889625eb6d2fbb7b7e1367548e144cf5585086ae16f8e8373b347248e95865"
+ "inputs_sha256": "814153e5d85bd3531392a43bd3f3d71b80271674b444db71c7cc6955c1558aa3"
 }
