@@ -127,6 +127,7 @@ struct TaskCommunication;
 struct TaskInfo;
 struct taskwk;
 struct thread;
+struct u4s;
 struct xssunit;
 struct xyyzzxsdwstr;
 
@@ -2314,3 +2315,15 @@ static_assert(offsetof(taskwk, pos) == 0x20, "taskwk::pos");
 static_assert(offsetof(taskwk, scl) == 0x2c, "taskwk::scl");
 static_assert(offsetof(taskwk, cwp) == 0x38, "taskwk::cwp");
 static_assert(offsetof(taskwk, ewp) == 0x3c, "taskwk::ewp");
+
+struct u4s {
+    unsigned char u4_ACT1 : 4;
+    unsigned char u4_ACT2 : 4;
+    unsigned char u4_ACT3 : 4;
+    unsigned char u4_ACT4 : 4;
+    unsigned char u4_ACT5 : 4;
+    unsigned char u4_ACT6 : 4;
+    unsigned char u4_ACT7 : 4;
+    unsigned char u4_ACT8 : 4;
+};
+static_assert(sizeof(u4s) == 4, "sizeof u4s");

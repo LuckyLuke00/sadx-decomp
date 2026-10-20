@@ -33,22 +33,13 @@ struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
 struct TaskInfo MirenEfLensFlareTaskInfo;
 
 // GLOBAL: SADX 0x0098fcf0
-unsigned char DAT_0098fcf0[3];
+struct u4s DAT_0098fcf0[1];
 
 // GLOBAL: SADX 0x009919e0
 struct DialogPrmType DAT_009919e0;
 
 // GLOBAL: SADX 0x009921c0
-unsigned long DAT_009921c0[16];
-
-// GLOBAL: SADX 0x009921c1
-unsigned long DAT_009921c1[16];
-
-// GLOBAL: SADX 0x009921c2
-unsigned long DAT_009921c2[16];
-
-// GLOBAL: SADX 0x009921c3
-unsigned long DAT_009921c3[16];
+struct u4s DAT_009921c0[1];
 
 // GLOBAL: SADX 0x01c6ede0
 float _nj_unit_matrix_[16];
