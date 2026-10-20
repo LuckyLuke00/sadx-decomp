@@ -1041,15 +1041,110 @@ long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char
 	return (long)0;
 }
 
+// STUB: SADX 0x004cfd90
+void CCL_ClearInfo(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x004d0670
+void CCL_PCheckColli()
+{
+}
+
+// STUB: SADX 0x004d0930
+void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
+{
+}
+
+// STUB: SADX 0x004d8860
+void CCL_BCheckColli()
+{
+}
+
+// STUB: SADX 0x004d8ab0
+void CCL_CCheckColli()
+{
+}
+
+// STUB: SADX 0x004d8d20
+void CCL_E2CheckColli()
+{
+}
+
+// STUB: SADX 0x004d8f80
+void CCL_CalcRange(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x004d9130
+signed char _GetColliFaceNormalPO(struct taskwk *twp1, struct NJS_POINT3 *v)
+{
+	return (signed char)0;
+}
+
+// STUB: SADX 0x004d9710
+struct c_colli_hit_info *CCL_IsHitPlayerEx(struct taskwk *twp)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004d9890
+struct c_colli_hit_info *CCL_IsHitBulletEx(struct taskwk *twp)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004d9970
+struct c_colli_hit_info *CCL_IsHitEnemyEx(struct taskwk *twp)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004d9a50
+int FUN_004d9a50(int)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004d9b30
+void FUN_004d9b30(int)
+{
+}
+
+// STUB: SADX 0x004d9c60
+struct c_colli_hit_info *CCL_IsHitKindEx(struct taskwk *twp, unsigned char kind)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004d9e80
+struct c_colli_hit_info *CCL_IsHitPlayerWithNumEx(struct taskwk *twp, long info_num)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004d9f60
+struct c_colli_hit_info *CCL_IsHitObjectWithNumEx(struct taskwk *twp, long info_num)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004da070
+struct c_colli_hit_info *CCL_IsHitKindWithNumEx(struct taskwk *twp, long info_num, unsigned char kind)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004da190
+struct c_colli_hit_info *CCL_IsHitWithNumEx(struct taskwk *twp, long info_num)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
 // STUB: SADX 0x004da580
 long EntryColliList(struct taskwk *twp)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x004da980
-void SET_COLLI_RANGE(struct colliwk *cwp, float range)
-{
 }
 
 // STUB: SADX 0x004f1860
@@ -1060,6 +1155,18 @@ long CheckCollisionP(struct NJS_POINT3 *, float)
 
 // STUB: SADX 0x004f1a60
 long GetPlayerCharacterName(unsigned char)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004f1af0
+long GetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3 *pos, long *ang)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004f1bb0
+long SetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3 *pos, long *ang)
 {
 	return (long)0;
 }
@@ -1148,6 +1255,11 @@ void Serif_Play(int no)
 extern struct task *ADXTaskInit()
 {
 	return (struct task *)0;
+}
+
+// STUB: SADX 0x004f6f70
+void FUN_004f6f70(void *, int)
+{
 }
 
 // STUB: SADX 0x004f6fd0

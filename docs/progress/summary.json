@@ -4242,6 +4242,446 @@
    "library": false
   },
   {
+   "address": "0x004cfd90",
+   "name": "CCL_ClearInfo",
+   "accuracy": 0.10126582278481013,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d0460",
+   "name": "CCL_ColliLine2Sphere",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d04d0",
+   "name": "CCL_ClearSearch",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d0500",
+   "name": "FUN_004d0500",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d0520",
+   "name": "FUN_004d0520",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d05a0",
+   "name": "FUN_004d05a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d05f0",
+   "name": "CCL_Analyze",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d0670",
+   "name": "CCL_PCheckColli",
+   "accuracy": 0.037037037037037035,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d0930",
+   "name": "CCL_CalcColli",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d0ad0",
+   "name": "FUN_004d0ad0",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d0ca0",
+   "name": "FUN_004d0ca0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d52d0",
+   "name": "FUN_004d52d0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d5330",
+   "name": "FUN_004d5330",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d8860",
+   "name": "CCL_BCheckColli",
+   "accuracy": 0.04395604395604396,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d8ab0",
+   "name": "CCL_CCheckColli",
+   "accuracy": 0.0425531914893617,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d8d20",
+   "name": "CCL_E2CheckColli",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d8e80",
+   "name": "CCL_OCheckColli",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d8f00",
+   "name": "CCL_O2CheckColli",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d8f80",
+   "name": "CCL_CalcRange",
+   "accuracy": 0.064,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d90f0",
+   "name": "CalcColliRange",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9110",
+   "name": "CCL_GetHitFaceNormal",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9130",
+   "name": "_GetColliFaceNormalPO",
+   "accuracy": 0.021052631578947368,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9680",
+   "name": "CCL_IsPushed",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d96b0",
+   "name": "CCL_IsHit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d96e0",
+   "name": "CCL_IsHitPlayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9710",
+   "name": "CCL_IsHitPlayerEx",
+   "accuracy": 0.15873015873015872,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9850",
+   "name": "FUN_004d9850",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9860",
+   "name": "CCL_IsHitBullet",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9890",
+   "name": "CCL_IsHitBulletEx",
+   "accuracy": 0.15873015873015872,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9940",
+   "name": "CCL_IsHitEnemy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9970",
+   "name": "CCL_IsHitEnemyEx",
+   "accuracy": 0.15151515151515152,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9a20",
+   "name": "FUN_004d9a20",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9a50",
+   "name": "FUN_004d9a50",
+   "accuracy": 0.15625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9b00",
+   "name": "FUN_004d9b00",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9b30",
+   "name": "FUN_004d9b30",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9be0",
+   "name": "CCL_IsHitKind",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9c10",
+   "name": "CCL_IsHitKind2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9c60",
+   "name": "CCL_IsHitKindEx",
+   "accuracy": 0.11627906976744186,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9e00",
+   "name": "CCL_IsHitPlayerWithNum",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9e30",
+   "name": "CCL_IsHitPlayerWithNum2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9e80",
+   "name": "CCL_IsHitPlayerWithNumEx",
+   "accuracy": 0.14925373134328357,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9f30",
+   "name": "CCL_IsHitObjectWithNum",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d9f60",
+   "name": "CCL_IsHitObjectWithNumEx",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004da020",
+   "name": "CCL_IsHitKindWithNum2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da070",
+   "name": "CCL_IsHitKindWithNumEx",
+   "accuracy": 0.12658227848101267,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004da160",
+   "name": "CCL_IsHitWithNum",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da190",
+   "name": "CCL_IsHitWithNumEx",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004da3f0",
+   "name": "FUN_004da3f0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da420",
+   "name": "FUN_004da420",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da470",
+   "name": "CCL_Enable",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da4c0",
+   "name": "CCL_Disable",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da510",
+   "name": "CCL_GetInfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da540",
+   "name": "FUN_004da540",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da550",
+   "name": "FUN_004da550",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da560",
+   "name": "CCL_Entry",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004da580",
    "name": "EntryColliList",
    "accuracy": 0.05181347150259067,
@@ -4250,11 +4690,27 @@
    "library": false
   },
   {
+   "address": "0x004da8f0",
+   "name": "FUN_004da8f0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004da910",
+   "name": "FUN_004da910",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004da980",
    "name": "SET_COLLI_RANGE",
-   "accuracy": 0.6153846153846154,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4269,6 +4725,22 @@
    "address": "0x004f1a60",
    "name": "GetPlayerCharacterName",
    "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f1af0",
+   "name": "GetPlayerPosition",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f1bb0",
+   "name": "SetPlayerPosition",
+   "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
    "library": false
@@ -4397,6 +4869,30 @@
    "address": "0x004f6580",
    "name": "ADXTaskInit",
    "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f6ef0",
+   "name": "FUN_004f6ef0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6f20",
+   "name": "FUN_004f6f20",
+   "accuracy": 0.24242424242424243,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f6f70",
+   "name": "FUN_004f6f70",
+   "accuracy": 0.23529411764705882,
    "effective": false,
    "stub": true,
    "library": false
@@ -10971,5 +11467,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "703365515246c9dc4edcf83acbde28c38b25a62b06fd3adb3ca43064b6b8731e"
+ "inputs_sha256": "07889625eb6d2fbb7b7e1367548e144cf5585086ae16f8e8373b347248e95865"
 }
