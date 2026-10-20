@@ -1267,14 +1267,8 @@ void SeqInitStage()
 {
 }
 
-// STUB: SADX 0x004f5420
-long SeqGetTime()
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x004f57c0
-void SeqSetClearActionFlag(long stg)
+// STUB: SADX 0x004f5640
+void EventBossExecutor(struct task *tp)
 {
 }
 

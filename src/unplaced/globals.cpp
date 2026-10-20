@@ -200,6 +200,24 @@ struct GH_FONT_INFO StaffRollFontInfo[1];
 // GLOBAL: SADX 0x025d9b40
 int DAT_025d9b40[256];
 
+// GLOBAL: SADX 0x025da4b0
+long slSeqRunning;
+
+// GLOBAL: SADX 0x025da4b4
+int slEventBossName;
+
+// GLOBAL: SADX 0x025da51c
+unsigned short plboss_name[6];
+
+// GLOBAL: SADX 0x025da70c
+unsigned short plboss_equ[6][2];
+
+// GLOBAL: SADX 0x025da800
+struct SEQ_CLEAR_EQUIV *actionEquivTable[8];
+
+// GLOBAL: SADX 0x025da820
+short flgEggCarrierInTheSea[8];
+
 // GLOBAL: SADX 0x025dcc64
 int ADX_BGM_FLAG;
 
@@ -572,6 +590,9 @@ int DAT_05b3ea18;
 // GLOBAL: SADX 0x05b3ea25
 unsigned char DAT_05b3ea25;
 
+// GLOBAL: SADX 0x05b3ea28
+int DAT_05b3ea28;
+
 // GLOBAL: SADX 0x05b3eab4
 struct task *DAT_05b3eab4;
 
@@ -887,6 +908,48 @@ void *DAT_05baf51c;
 // GLOBAL: SADX 0x05baf524
 void *DAT_05baf524;
 
+// GLOBAL: SADX 0x05baf538
+int DAT_05baf538;
+
+// GLOBAL: SADX 0x05baf53c
+int DAT_05baf53c;
+
+// GLOBAL: SADX 0x05baf544
+int DAT_05baf544;
+
+// GLOBAL: SADX 0x05baf548
+char DAT_05baf548[0x2b * 4];
+
+// GLOBAL: SADX 0x05bafb00
+unsigned char DAT_05bafb00[1];
+
+// GLOBAL: SADX 0x05bafb41
+unsigned char DAT_05bafb41;
+
+// GLOBAL: SADX 0x05bafb42
+unsigned char DAT_05bafb42;
+
+// GLOBAL: SADX 0x05bafb43
+unsigned char DAT_05bafb43;
+
+// GLOBAL: SADX 0x05bafb44
+unsigned char DAT_05bafb44;
+
+// GLOBAL: SADX 0x05bafb45
+unsigned char DAT_05bafb45;
+
+// GLOBAL: SADX 0x05bafb46
+unsigned char DAT_05bafb46;
+
+// GLOBAL: SADX 0x05bafd18
+short DAT_05bafd18;
+
+// GLOBAL: SADX 0x05bafd1c
+struct BOSSPLAYER_CREATE_PARAM DAT_05bafd1c;
+
+// GLOBAL: SADX 0x05bafd4c
+int DAT_05bafd4c;
+
 // GLOBAL: SADX 0x05bb00a8
 int DAT_05bb00a8;
 
@@ -958,6 +1021,9 @@ short DAT_05ccde90;
 
 // GLOBAL: SADX 0x05ccde94
 short DAT_05ccde94;
+
+// GLOBAL: SADX 0x05cd0f28
+int DAT_05cd0f28;
 
 // GLOBAL: SADX 0x05cd14d4
 int DAT_05cd14d4;
