@@ -934,21 +934,6 @@ void FUN_004c3310(int *)
 {
 }
 
-// STUB: SADX 0x004c38e0
-void PadReadOn()
-{
-}
-
-// STUB: SADX 0x004c38f0
-void PadReadOn(int counter)
-{
-}
-
-// STUB: SADX 0x004c3910
-void PadReadOff()
-{
-}
-
 // STUB: SADX 0x004c3d70
 void GetSwitchData()
 {
