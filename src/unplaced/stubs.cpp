@@ -565,7 +565,7 @@ void ALR_Executor(struct task *tp)
 }
 
 // STUB: SADX 0x00495270
-void ghDrawPvrSprite(short *, float, float, float, float, float, float)
+void ghDrawPvrSprite(short *, int, float, float, float, float, float)
 {
 }
 
@@ -1589,7 +1589,7 @@ void StopAdvaBGM()
 }
 
 // STUB: SADX 0x005a4400
-enum AvaCharEnum AvaGetlastPlayer(int)
+enum AvaCharEnum AvaGetlastPlayer()
 {
 	return (enum AvaCharEnum)0;
 }

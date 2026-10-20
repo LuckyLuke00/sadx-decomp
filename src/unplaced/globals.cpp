@@ -261,10 +261,10 @@ int BgmBackup;
 unsigned char DAT_02608e24;
 
 // GLOBAL: SADX 0x026313ac
-char *DAT_026313ac;
+char *DAT_026313ac[1];
 
 // GLOBAL: SADX 0x02631474
-char *DAT_02631474;
+char *DAT_02631474[1];
 
 // GLOBAL: SADX 0x02639adc
 struct NJS_POINT3 vec[2];
