@@ -2682,6 +2682,14 @@
    "library": false
   },
   {
+   "address": "0x004ab3c0",
+   "name": "wmainit",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004ab540",
    "name": "wmaend",
    "accuracy": 0.0975609756097561,
@@ -2695,6 +2703,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004abaf0",
+   "name": "wmastop",
+   "accuracy": 0.17777777777777778,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -5084,33 +5100,145 @@
   {
    "address": "0x004f5f90",
    "name": "ADX_Init",
-   "accuracy": 0.8888888888888888,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5fa0",
+   "name": "ADX_TaskInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5fe0",
+   "name": "ADX_TaskLoop",
+   "accuracy": 0.05228758169934641,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f62c0",
+   "name": "ADX_free",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004f6320",
    "name": "ADX_Close",
-   "accuracy": 0.5333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6350",
+   "name": "BGM_Play",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6370",
+   "name": "BGM_Stop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6390",
+   "name": "BGM_Status",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f63a0",
+   "name": "BGM_Replay",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004f63d0",
    "name": "Serif_Play",
-   "accuracy": 0.6666666666666666,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f63f0",
+   "name": "Serif_Stop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6410",
+   "name": "Jingle_Play",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6470",
+   "name": "JingleDead",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6480",
+   "name": "JingleTask",
+   "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
+   "address": "0x004f6530",
+   "name": "BGM_RequestClear",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f6560",
+   "name": "Serif_RequestClear",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004f6580",
    "name": "ADXTaskInit",
-   "accuracy": 0.4,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f65b0",
+   "name": "RoundBGM_Play",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -11723,5 +11851,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "814153e5d85bd3531392a43bd3f3d71b80271674b444db71c7cc6955c1558aa3"
+ "inputs_sha256": "2e619eb14074456b268b398e63d243cabe5efed2bbc24a1eaa8a693bceb15641"
 }
