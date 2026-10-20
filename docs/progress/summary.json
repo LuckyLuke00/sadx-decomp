@@ -5690,6 +5690,46 @@
    "library": false
   },
   {
+   "address": "0x004f4b70",
+   "name": "FUN_004f4b70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4b90",
+   "name": "SeqRun",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4ba0",
+   "name": "SeqStop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4bb0",
+   "name": "FUN_004f4bb0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f4bc0",
+   "name": "SeqSetPlayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004f4e10",
    "name": "SeqInitStage",
    "accuracy": 0.10256410256410256,
@@ -5698,19 +5738,155 @@
    "library": false
   },
   {
-   "address": "0x004f5420",
-   "name": "SeqGetTime",
-   "accuracy": 0.5,
+   "address": "0x004f51d0",
+   "name": "SeqSave",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5230",
+   "name": "SeqNext",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5270",
+   "name": "SeqEndSection",
+   "accuracy": 0.23529411764705882,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
-   "address": "0x004f57c0",
-   "name": "SeqSetClearActionFlag",
-   "accuracy": 0.25806451612903225,
+   "address": "0x004f5400",
+   "name": "SeqSetTime",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5420",
+   "name": "SeqGetTime",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5450",
+   "name": "SeqCheckPlayable",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f54d0",
+   "name": "SeqPlayable",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5550",
+   "name": "FUN_004f5550",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5560",
+   "name": "SeqClrFlag",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5570",
+   "name": "SeqCheckFlag",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5590",
+   "name": "SeqCheckStage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f55e0",
+   "name": "SeqChangeStage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5600",
+   "name": "SeqCheckNextStage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5640",
+   "name": "EventBossExecutor",
+   "accuracy": 0.12903225806451613,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f5720",
+   "name": "plboss_destruct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5770",
+   "name": "SeqExecBossPlayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f57a0",
+   "name": "SeqCheckClearAction",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f57c0",
+   "name": "SeqSetClearActionFlag",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f5810",
+   "name": "CheckEggCarrierInTheSea",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -12531,5 +12707,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ed1f516a1c94ad6e3a5e5b5e09d2cdd762c052cb4919c22ddfc6ed071edfad96"
+ "inputs_sha256": "3b7b3d28b48b7c78a6507c6ef6b4ca9b9abfdcecf68a3c51fb9df624559d017d"
 }

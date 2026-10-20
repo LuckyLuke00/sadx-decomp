@@ -101,6 +101,7 @@ struct particle_info;
 struct pathtag;
 struct pathtbl;
 struct SAVE_DATA;
+struct SEQ_CLEAR_EQUIV;
 struct SEQ_SECTION;
 struct SEQ_SECTIONTBL;
 struct SeqPrmType;
@@ -1546,6 +1547,14 @@ static_assert(offsetof(NJS_TEXANIM, u2) == 0xc, "NJS_TEXANIM::u2");
 static_assert(offsetof(NJS_TEXANIM, v2) == 0xe, "NJS_TEXANIM::v2");
 static_assert(offsetof(NJS_TEXANIM, texid) == 0x10, "NJS_TEXANIM::texid");
 static_assert(offsetof(NJS_TEXANIM, attr) == 0x12, "NJS_TEXANIM::attr");
+
+struct SEQ_CLEAR_EQUIV {
+    short stageno;
+    short flagno;
+};
+static_assert(sizeof(SEQ_CLEAR_EQUIV) == 0x4, "sizeof SEQ_CLEAR_EQUIV");
+static_assert(offsetof(SEQ_CLEAR_EQUIV, stageno) == 0x0, "SEQ_CLEAR_EQUIV::stageno");
+static_assert(offsetof(SEQ_CLEAR_EQUIV, flagno) == 0x2, "SEQ_CLEAR_EQUIV::flagno");
 
 struct SEQ_SECTIONTBL {
     struct SEQ_SECTION *psec;
