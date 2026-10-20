@@ -317,6 +317,9 @@ struct NJS_ARGB DAT_05ad9654;
 // GLOBAL: SADX 0x05b33108
 struct AlrReal *DAT_05b33108;
 
+// GLOBAL: SADX 0x05b3739a
+unsigned char DAT_05b3739a;
+
 // GLOBAL: SADX 0x05b39be8
 int DAT_05b39be8;
 
@@ -716,11 +719,38 @@ int DAT_05b93588;
 // GLOBAL: SADX 0x05b935cc
 int DAT_05b935cc;
 
+// GLOBAL: SADX 0x05b9d718
+unsigned short DAT_05b9d718;
+
+// GLOBAL: SADX 0x05b9d720
+short DAT_05b9d720;
+
 // GLOBAL: SADX 0x05b9d724
 short DAT_05b9d724;
 
+// GLOBAL: SADX 0x05b9d72c
+short DAT_05b9d72c;
+
+// GLOBAL: SADX 0x05b9d730
+short DAT_05b9d730;
+
+// GLOBAL: SADX 0x05b9d73c
+short DAT_05b9d73c;
+
+// GLOBAL: SADX 0x05b9d740
+short DAT_05b9d740;
+
 // GLOBAL: SADX 0x05b9d744
 short DAT_05b9d744;
+
+// GLOBAL: SADX 0x05b9d748
+unsigned short DAT_05b9d748;
+
+// GLOBAL: SADX 0x05b9d770
+unsigned short DAT_05b9d770;
+
+// GLOBAL: SADX 0x05b9d774
+short DAT_05b9d774;
 
 // GLOBAL: SADX 0x05b9d7dc
 struct NJS_ARGB DAT_05b9d7dc;
@@ -733,6 +763,9 @@ int DAT_05b9d834;
 
 // GLOBAL: SADX 0x05b9d838
 int DAT_05b9d838;
+
+// GLOBAL: SADX 0x05b9d83c
+int DAT_05b9d83c;
 
 // GLOBAL: SADX 0x05b9d844
 int DAT_05b9d844;
