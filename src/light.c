@@ -473,65 +473,31 @@ void le_set_paenv(int stg, int act, int chr)
 static struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr)
 {
 	struct LE_PALIGHT_ENV *local_ci;
-	int local_14;
-	struct LE_PALIGHT_ENV *local_10m;
+	struct LE_PALIGHT_ENV *local_14;
+	int local_10m;
 	int local_8g;
 	local_ci = &le_plyrPal[0];
 	local_14 = 0;
 	local_10m = 0;
 	if (chr < 0)
 	{
-		local_14 = 1;
+		local_10m = 1;
 		chr = -chr;
 	}
-	local_8g = 0;
-	while (1 != 0)
+	for (local_8g = 0; local_ci->stgNo != 0xff && local_8g < 0xff; local_8g++)
 	{
-		if (*(unsigned char *)local_ci == 0xff)
+		if (local_ci->stgNo == stg && local_ci->actNo == act &&
+			(local_ci->chrNo == chr || (local_10m && local_ci->chrNo == 0)))
 		{
-			break;
-		}
-		if (0xff <= local_8g)
-		{
-			break;
-		}
-		if (*(unsigned char *)local_ci != stg)
-		{
-			local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
-			local_8g++;
-			continue;
-		}
-		if (*(unsigned char *)(local_ci + 1) != act)
-		{
-			local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
-			local_8g++;
-			continue;
-		}
-		if (*(unsigned char *)(local_ci + 2) == chr)
-		{
-			local_10m = local_ci;
-			if (*(unsigned char *)(2 + local_ci) == chr)
+			local_14 = local_ci;
+			if (local_ci->chrNo == chr)
 			{
 				break;
 			}
 		}
-		else if (0 != local_14)
-		{
-			if (*(unsigned char *)(local_ci + 2) != 0)
-			{
-				local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
-				++local_8g;
-				continue;
-			}
-		}
-		else
-		{
-			local_ci = (struct LE_PALIGHT_ENV *)((char *)local_ci + 0x60);
-			local_8g++;
-			continue;
-		}
+		local_ci++;
 	}
-	return local_10m;
+	return local_14;
 }
 
 // FUNCTION: SADX 0x004a0100
@@ -539,7 +505,10 @@ int dsGDLoadPalette(unsigned short stg, unsigned short act)
 {
 	struct LE_PALIGHT_ENV *local_8;
 	local_8 = le_find_paenv(stg, act, 0);
-	if (local_8 == 0 || (local_8->flgs & 1) == 0)
+	if (local_8 != 0 && (local_8->flgs & 1) != 0)
+	{
+	}
+	else
 	{
 		act = 0;
 		local_8 = le_find_paenv(stg, act, 0);
