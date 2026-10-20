@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include "decls.h"
 
-extern unsigned short DAT_05b9d724;
-extern unsigned short DAT_05b9d744;
-extern unsigned char DAT_05b42c1c;
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
+extern char DAT_05b42c1c;
 extern unsigned char DAT_05b3ea25;
 
 int FUN_005030d0();

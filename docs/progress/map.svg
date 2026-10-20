@@ -4,7 +4,7 @@
 <rect width="1000" height="1421" rx="6" fill="url(#backdrop)"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">425 of 16,537 game functions done (2.57%), 71 in progress, accuracy 95.71%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">426 of 16,537 game functions done (2.58%), 70 in progress, accuracy 95.75%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#06113d"/></pattern></defs>
 <polygon points="610,1165.5 616,1165.5 619,1169 613,1176 607,1169" fill="#2f6bff"/>
 <polygon points="610,1165.5 616,1165.5 614.5,1169 611.5,1169" fill="#ffffff" fill-opacity="0.45"/>
@@ -336,7 +336,7 @@
 <rect x="84" y="21" width="6" height="6" fill="#d2c36e"><title>0x005b59a0 SeqGetSectionList: 80.5%</title></rect>
 <rect x="91" y="21" width="6" height="6" fill="#bfba81"><title>0x005b5a20 SeqGetSectionNumber: 72.3%</title></rect>
 </g>
-<rect x="359" y="1149" width="173" height="208" rx="3" fill="#0f2a78"><title>Menus: 56 of 519 done</title></rect>
+<rect x="359" y="1149" width="173" height="208" rx="3" fill="#0f2a78"><title>Menus: 57 of 519 done</title></rect>
 <text x="362" y="1163" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Menus <tspan font-weight="400" fill="#a9bde8">10%</tspan></text>
 <g transform="translate(362,1167)">
 <rect y="0" width="168" height="147" fill="url(#todo)"/>
@@ -394,7 +394,7 @@
 <rect x="0" y="28" width="6" height="6" fill="#ffd700"><title>0x004c1a60 MSG_LoadTexture: 100%</title></rect>
 <rect x="7" y="28" width="6" height="6" fill="#ffd700"><title>0x004c1c10 MSG_CloseRequestCls: 100%</title></rect>
 <rect x="14" y="28" width="6" height="6" fill="#b0b28e"><title>0x004c1cf0 MSG_Close: 65.5%</title></rect>
-<rect x="21" y="28" width="6" height="6" fill="#f7d31d"><title>0x004c1d50 MSG_Disp: 96.4%</title></rect>
+<rect x="21" y="28" width="6" height="6" fill="#ffd700"><title>0x004c1d50 MSG_Disp: 100%</title></rect>
 <rect x="28" y="28" width="6" height="6" fill="#ffd700"><title>0x004c3170 MSG_CheckMainMessage: 100%</title></rect>
 <rect x="56" y="28" width="6" height="6" fill="#ffd700"><title>0x0055e260 IsBtnDecide: 100%</title></rect>
 <rect x="63" y="28" width="6" height="6" fill="#ffd700"><title>0x0055e280 IsBtnCancel: 100%</title></rect>
@@ -431,12 +431,12 @@
 <rect y="0" width="77" height="112" fill="url(#todo)"/>
 <rect y="112" width="21" height="7" fill="url(#todo)"/>
 <rect x="42" y="63" width="6" height="6" fill="#ffd700"><title>0x005d1980 ERobCtrlInitTP: 100%</title></rect>
-<rect x="49" y="63" width="6" height="6" fill="#c0ba80"><title>0x005d1990 ERobCtrlInit: 72.7%</title></rect>
+<rect x="49" y="63" width="6" height="6" fill="#e2ca59"><title>0x005d1990 ERobCtrlInit: 87.3%</title></rect>
 <rect x="56" y="63" width="6" height="6" fill="#ffd700"><title>0x005d1a00 ERobStart: 100%</title></rect>
 <rect x="63" y="63" width="6" height="6" fill="#d7c567"><title>0x005d1a40 ERobKill: 82.8%</title></rect>
 <rect x="70" y="63" width="6" height="6" fill="#ffd700"><title>0x005d1a80 ERobByenara: 100%</title></rect>
 <rect x="0" y="70" width="6" height="6" fill="#aeb18f"><title>0x005d1ad0 ERobGetPosition: 64.5%</title></rect>
-<rect x="7" y="70" width="6" height="6" fill="#98a59f"><title>0x005d8bf0 CreateAnimal: 54.5%</title></rect>
+<rect x="7" y="70" width="6" height="6" fill="#9ca89c"><title>0x005d8bf0 CreateAnimal: 56.4%</title></rect>
 <rect x="14" y="70" width="6" height="6" fill="#ebce47"><title>0x005d8cc0 CreateRareAnimal: 91.2%</title></rect>
 </g>
 <rect x="164" y="831" width="102" height="164" rx="3" fill="#0f2a78"><title>Engine: 194 of 241 done</title></rect>
