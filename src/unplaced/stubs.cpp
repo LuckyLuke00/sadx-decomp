@@ -1003,25 +1003,43 @@ void dsInitInt(int vsync, int loop)
 {
 }
 
-// STUB: SADX 0x004cb9c0
-long AdjustAngle(long ang0, long ang1, long dang)
+// STUB: SADX 0x004cbe70
+void InterpolatePointAsSin(struct NJS_POINT3 *opp, struct NJS_POINT3 *npp, struct NJS_POINT3 *dpp, float ang, unsigned long nbPoint)
+{
+}
+
+// STUB: SADX 0x004cbf50
+void CalculatePlaneNormals(struct NJS_MODEL *dp)
+{
+}
+
+// STUB: SADX 0x004cc620
+void CalculatePointNormals(struct NJS_MODEL *dp)
+{
+}
+
+// STUB: SADX 0x004ccb30
+struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum)
+{
+	return (struct obj *)0;
+}
+
+// STUB: SADX 0x004ccfc0
+long MSetPositionWIgnoreAttribute(struct NJS_POINT3 *p, struct NJS_POINT3 *v, struct Angle3 *a, long attrmask, float r)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x004cce50
-void SaveConstantAttr()
+// STUB: SADX 0x004cd4e0
+struct obj *scanObjectSub(float **, struct obj *, float *)
 {
+	return (struct obj *)0;
 }
 
-// STUB: SADX 0x004cce70
-void LoadConstantAttr()
+// STUB: SADX 0x004cd6e0
+int VSPrintf(char *s, const char *format, char *arg)
 {
-}
-
-// STUB: SADX 0x004ccea0
-void OnConstantAttr(unsigned long soc_and, unsigned long soc_or)
-{
+	return (int)0;
 }
 
 // STUB: SADX 0x004cf5e0
@@ -1619,6 +1637,11 @@ void njTranslateV(float *, struct NJS_POINT3 *)
 {
 }
 
+// STUB: SADX 0x0067d3f0
+void njGetMatrix(float *)
+{
+}
+
 // STUB: SADX 0x0067d4c0
 void njRotateX(float *, unsigned short)
 {
@@ -1636,6 +1659,11 @@ void njPopMatrix(int)
 
 // STUB: SADX 0x0067d830
 void FUN_0067d830(int, float, float, float)
+{
+}
+
+// STUB: SADX 0x0067dba0
+void njSetMatrix(float *, float *)
 {
 }
 
