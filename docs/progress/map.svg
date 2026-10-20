@@ -4,7 +4,7 @@
 <rect width="1000" height="1421" rx="6" fill="url(#backdrop)"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">596 of 16,537 game functions done (3.60%), 59 in progress, accuracy 97.39%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#a9bde8">599 of 16,537 game functions done (3.62%), 56 in progress, accuracy 97.49%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#06113d"/></pattern></defs>
 <polygon points="614,1163.5 620,1163.5 623,1167 617,1174 611,1167" fill="#2f6bff"/>
 <polygon points="614,1163.5 620,1163.5 618.5,1167 615.5,1167" fill="#ffffff" fill-opacity="0.45"/>
@@ -431,18 +431,18 @@
 <rect y="140" width="91" height="7" fill="url(#todo)"/>
 <rect x="35" y="14" width="6" height="6" fill="#ffd700"><title>0x0058b920 Init_objEditTable: 100%</title></rect>
 </g>
-<rect x="285" y="831" width="78" height="175" rx="3" fill="#0f2a78"><title>Enemies: 3 of 179 done</title></rect>
+<rect x="285" y="831" width="78" height="175" rx="3" fill="#0f2a78"><title>Enemies: 6 of 179 done</title></rect>
 <text x="288" y="845" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff">Enemies</text>
-<text x="288" y="860" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff"><tspan font-weight="400" fill="#a9bde8">1%</tspan></text>
+<text x="288" y="860" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#ffffff"><tspan font-weight="400" fill="#a9bde8">3%</tspan></text>
 <g transform="translate(288,864)">
 <rect y="0" width="70" height="119" fill="url(#todo)"/>
 <rect y="119" width="63" height="7" fill="url(#todo)"/>
 <rect x="35" y="70" width="6" height="6" fill="#ffd700"><title>0x005d1980 ERobCtrlInitTP: 100%</title></rect>
-<rect x="42" y="70" width="6" height="6" fill="#e2ca59"><title>0x005d1990 ERobCtrlInit: 87.3%</title></rect>
+<rect x="42" y="70" width="6" height="6" fill="#ffd700"><title>0x005d1990 ERobCtrlInit: 100%</title></rect>
 <rect x="49" y="70" width="6" height="6" fill="#ffd700"><title>0x005d1a00 ERobStart: 100%</title></rect>
-<rect x="56" y="70" width="6" height="6" fill="#d7c567"><title>0x005d1a40 ERobKill: 82.8%</title></rect>
+<rect x="56" y="70" width="6" height="6" fill="#ffd700"><title>0x005d1a40 ERobKill: 100%</title></rect>
 <rect x="63" y="70" width="6" height="6" fill="#ffd700"><title>0x005d1a80 ERobByenara: 100%</title></rect>
-<rect x="0" y="77" width="6" height="6" fill="#aeb18f"><title>0x005d1ad0 ERobGetPosition: 64.5%</title></rect>
+<rect x="0" y="77" width="6" height="6" fill="#ffd700"><title>0x005d1ad0 ERobGetPosition: 100%</title></rect>
 <rect x="7" y="77" width="6" height="6" fill="#9ca89c"><title>0x005d8bf0 CreateAnimal: 56.4%</title></rect>
 <rect x="14" y="77" width="6" height="6" fill="#ebce47"><title>0x005d8cc0 CreateRareAnimal: 91.2%</title></rect>
 </g>
