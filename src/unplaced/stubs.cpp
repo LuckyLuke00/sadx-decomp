@@ -203,6 +203,11 @@ void _SOCFree(void *, const char *, int)
 {
 }
 
+// STUB: SADX 0x00435370
+void pdVibMxStop(int)
+{
+}
+
 // STUB: SADX 0x0043bcf0
 void AL_IconResetPos(struct task *tp)
 {
@@ -555,6 +560,16 @@ void ALR_Executor(struct task *tp)
 
 // STUB: SADX 0x00495270
 void ghDrawPvrSprite(short *, float, float, float, float, float, float)
+{
+}
+
+// STUB: SADX 0x00498f50
+void InitMission()
+{
+}
+
+// STUB: SADX 0x0049a260
+void ReleaseMissionObject()
 {
 }
 
@@ -954,19 +969,30 @@ void input_reset()
 {
 }
 
+// STUB: SADX 0x004c5190
+long GM_CheckClearEvent()
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004c5300
 long InitGame()
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x004c76a0
-void SetChangeGameMode(short mode)
+// STUB: SADX 0x004c79b0
+void GameInit()
 {
 }
 
-// STUB: SADX 0x004c79b0
-void GameInit()
+// STUB: SADX 0x004c81c0
+void GameLoop_with_SyoriOchiTaisaku()
+{
+}
+
+// STUB: SADX 0x004c8600
+void ActionEnd()
 {
 }
 
@@ -975,16 +1001,9 @@ void SetPlayerNumberForGame(unsigned short pno)
 {
 }
 
-// STUB: SADX 0x004c92a0
-long GetPlayerNumber()
+// STUB: SADX 0x004c94f0
+void AdvanceActLocal(short ssActAddition)
 {
-	return (long)0;
-}
-
-// STUB: SADX 0x004c9490
-long NP_ChkStageChaoGarden()
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x004c9a20
@@ -992,8 +1011,8 @@ void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
 {
 }
 
-// STUB: SADX 0x004c9e00
-long ChkGameMode()
+// STUB: SADX 0x004c9cb0
+long SetNextTrialStage()
 {
 	return (long)0;
 }
@@ -1195,6 +1214,11 @@ long checkdestroytask(struct task *tp)
 	return (long)0;
 }
 
+// STUB: SADX 0x004f3600
+void InitTask()
+{
+}
+
 // STUB: SADX 0x004f3750
 extern struct task *CreateElementalTask(unsigned short, long, void (*)(struct task *))
 {
@@ -1208,6 +1232,11 @@ void DestroyTask(struct task *tp)
 
 // STUB: SADX 0x004f3e20
 void LoopTask()
+{
+}
+
+// STUB: SADX 0x004f4130
+void InitMemory()
 {
 }
 
@@ -1233,10 +1262,20 @@ void SeqInit()
 {
 }
 
+// STUB: SADX 0x004f4e10
+void SeqInitStage()
+{
+}
+
 // STUB: SADX 0x004f5420
 long SeqGetTime()
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004f57c0
+void SeqSetClearActionFlag(long stg)
+{
 }
 
 // STUB: SADX 0x004f5fe0
@@ -1256,6 +1295,11 @@ void FUN_004f6f70(void *, int)
 
 // STUB: SADX 0x004f6fd0
 void CL_ColPolListUpModeSetAll()
+{
+}
+
+// STUB: SADX 0x004fee60
+void SetDefaultGravity()
 {
 }
 
@@ -1311,6 +1355,16 @@ void InitScore()
 {
 }
 
+// STUB: SADX 0x00554a70
+void FUN_00554a70()
+{
+}
+
+// STUB: SADX 0x00554d50
+void DisplayScore()
+{
+}
+
 // STUB: SADX 0x005554a0
 void InitTime()
 {
@@ -1318,6 +1372,11 @@ void InitTime()
 
 // STUB: SADX 0x00555500
 void WakeTimer()
+{
+}
+
+// STUB: SADX 0x00555700
+void DisplayTimer()
 {
 }
 
@@ -1506,6 +1565,16 @@ enum AvaCharEnum AvaGetlastPlayer(int)
 	return (enum AvaCharEnum)0;
 }
 
+// STUB: SADX 0x005a4ef0
+void TH_DestroyAll()
+{
+}
+
+// STUB: SADX 0x005a5490
+void InitContinueData()
+{
+}
+
 // STUB: SADX 0x005a6450
 struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *, struct sp_link *))
 {
@@ -1521,6 +1590,11 @@ void SpFreeTask(struct sp_task *tp)
 struct sp_link *SpCreateLinkW(struct sp_info *, unsigned long)
 {
 	return (struct sp_link *)0;
+}
+
+// STUB: SADX 0x005a6940
+void SpDestroyAll()
+{
 }
 
 // STUB: SADX 0x005acaf0
