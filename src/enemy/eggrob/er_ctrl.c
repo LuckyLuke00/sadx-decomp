@@ -16,17 +16,8 @@ void ERobCtrlInitTP()
 void ERobCtrlInit()
 {
 	DAT_05edc428 = 0;
-	if ((((int)(DAT_05b9d724 << 8) | (int)DAT_05b9d744) != 0xa00))
-	{
-		if ((((int)(DAT_05b9d724 << 8) | (int)DAT_05b9d744) & 0xff00) != 0x1700)
-		{
-			if (EV_CheckCansel() == 0)
-			{
-				texLoadTexturePvmFile("EGGROB", &texlist_eggrob);
-			}
-		}
-	}
-	else
+	if ((((int)(DAT_05b9d724 << 8) | (int)DAT_05b9d744) == 0xa00) ||
+		(((((int)(DAT_05b9d724 << 8) | (int)DAT_05b9d744) & 0xff00) != 0x1700) && EV_CheckCansel() == 0))
 	{
 		texLoadTexturePvmFile("EGGROB", &texlist_eggrob);
 	}
@@ -53,7 +44,10 @@ long ERobKill(void)
 	{
 		return 0;
 	}
-	FreeTask((struct task *)DAT_05edc428);
+	else
+	{
+		FreeTask((struct task *)DAT_05edc428);
+	}
 	DAT_05edc428 = 0;
 	return 1;
 }
@@ -84,9 +78,6 @@ long ERobGetPosition(struct NJS_POINT3 *posp)
 		ERobKill();
 		return 0;
 	}
-	int iVar1 = *(int *)(DAT_05edc428 + 0x20) + 0x20;
-	*(int *)posp = *(int *)iVar1;
-	*(int *)((char *)posp + 4) = *(int *)((char *)iVar1 + 4);
-	*(int *)((char *)posp + 8) = *(int *)((char *)iVar1 + 8);
+	*posp = ((struct task *)DAT_05edc428)->twp->pos;
 	return 1;
 }
