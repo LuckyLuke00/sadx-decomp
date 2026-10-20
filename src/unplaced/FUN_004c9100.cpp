@@ -1,6 +1,6 @@
 #include "decls.h"
 
-extern unsigned short DAT_05b9d724;
+extern short DAT_05b9d724;
 extern void (*DAT_025d7530[43])(struct task *);
 extern struct task *DAT_05b3eab4;
 extern void (*DAT_025d77e8[43])(struct task *);

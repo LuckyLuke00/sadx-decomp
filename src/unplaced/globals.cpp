@@ -663,7 +663,7 @@ struct task *DAT_05b42a8c;
 struct NJS_POINT3 DAT_05b42a98[32];
 
 // GLOBAL: SADX 0x05b42c1c
-unsigned char DAT_05b42c1c;
+char DAT_05b42c1c;
 
 // GLOBAL: SADX 0x05b42c1d
 signed char DAT_05b42c1d;
@@ -717,10 +717,10 @@ int DAT_05b93588;
 int DAT_05b935cc;
 
 // GLOBAL: SADX 0x05b9d724
-unsigned short DAT_05b9d724;
+short DAT_05b9d724;
 
 // GLOBAL: SADX 0x05b9d744
-unsigned short DAT_05b9d744;
+short DAT_05b9d744;
 
 // GLOBAL: SADX 0x05b9d7dc
 struct NJS_ARGB DAT_05b9d7dc;
