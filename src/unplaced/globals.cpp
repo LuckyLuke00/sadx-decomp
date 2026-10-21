@@ -950,6 +950,9 @@ unsigned int DAT_05ad966c;
 // GLOBAL: SADX 0x05ad9a9c
 void *DAT_05ad9a9c;
 
+// GLOBAL: SADX 0x05ad9b20
+int DAT_05ad9b20;
+
 // GLOBAL: SADX 0x05aeaa38
 int DAT_05aeaa38;
 
@@ -2956,6 +2959,9 @@ void *DAT_06298ccc;
 
 // GLOBAL: SADX 0x06298ce8
 void *DAT_06298ce8;
+
+// GLOBAL: SADX 0x06298d24
+int DAT_06298d24;
 
 // GLOBAL: SADX 0x062992fc
 int DAT_062992fc;

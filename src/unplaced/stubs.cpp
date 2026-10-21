@@ -12,6 +12,11 @@ void FUN_00405380(int)
 {
 }
 
+// STUB: SADX 0x00419570
+void SOCCreateDevice(void)
+{
+}
+
 // STUB: SADX 0x004199f0
 int __fastcall FUN_004199f0(void *, float)
 {
@@ -88,6 +93,11 @@ void njSetWaitVsyncCount(int)
 {
 }
 
+// STUB: SADX 0x00422730
+void stHWWaitVSync()
+{
+}
+
 // STUB: SADX 0x00423200
 long njSetTexture(struct NJS_TEXLIST *)
 {
@@ -158,6 +168,36 @@ void njCnkClrShortAngleUser(void)
 {
 }
 
+// STUB: SADX 0x00430480
+void _gjRender2DReset(void)
+{
+}
+
+// STUB: SADX 0x004304e0
+void _gjBeforeRender(void)
+{
+}
+
+// STUB: SADX 0x004305c0
+void _gjDoneRender(void)
+{
+}
+
+// STUB: SADX 0x00430680
+void _gjSwapBuffers(void)
+{
+}
+
+// STUB: SADX 0x004306b0
+void _gjRenderClear(void)
+{
+}
+
+// STUB: SADX 0x00430710
+void _gjExecServer(void)
+{
+}
+
 // STUB: SADX 0x00430990
 void njPopMatrixEx()
 {
@@ -180,6 +220,11 @@ void njPushMatrix(float *)
 
 // STUB: SADX 0x00430bb0
 void njCalcPoint(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
+{
+}
+
+// STUB: SADX 0x00431730
+void gjPrintExit(void)
 {
 }
 
@@ -219,6 +264,11 @@ void njTranslateEx(void *)
 
 // STUB: SADX 0x00433770
 void njPushMatrixEx()
+{
+}
+
+// STUB: SADX 0x00435190
+void _njDirectResDelAll(void)
 {
 }
 
@@ -1426,6 +1476,11 @@ void DisplayMilesSnowBoard(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00547690
+void SonicChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x0054da60
 void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
@@ -1612,11 +1667,6 @@ void EV_InitPlayer(int n)
 
 // STUB: SADX 0x0056b650
 void FUN_0056b650(struct task *, struct NJS_ACTION *, struct NJS_TEXLIST *, float, int, int)
-{
-}
-
-// STUB: SADX 0x0056b6d0
-void FUN_0056b6d0(struct task *)
 {
 }
 
@@ -2334,6 +2384,12 @@ long movie(long movie_num)
 	return (long)0;
 }
 
+// STUB: SADX 0x00634f10
+int FUN_00634f10()
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x006411b0
 void FUN_006411b0(int, int)
 {
@@ -2718,6 +2774,11 @@ void BridgeDraw2(struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x00902fb0
+void EvChaos2Water2Human()
+{
+}
+
 // STUB: SADX 0x009132a0
 void ini()
 {
@@ -2726,4 +2787,10 @@ void ini()
 // STUB: SADX 0x00913370
 void ind()
 {
+}
+
+// STUB: SADX 0x00924470
+int FUN_00924470()
+{
+	return (int)0;
 }
