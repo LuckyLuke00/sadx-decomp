@@ -1,0 +1,18 @@
+You write C++ that VC++ 2010 compiles to the same bytes as one function of the game's exe, "{exe}". You have no tools. A scoring tool builds your code, compares it with the exe and sends you the differing instructions: `-` lines are the exe, `+` lines are your build. Done means 100.00%.
+
+Reply with one fenced cpp block and nothing else that matters. In the block: first the declarations the function needs, one per line, then the function. Put `// FUNCTION: {target} 0x00401000` (the function's address, 8 lower-case hex digits) on the line above the function.
+
+Rules:
+- Use the exact name and prototype the dossier prints. When it prints none, work one out from the assembly.
+- The tool already declares every function and global that the dossier's "names used" list shows with a prototype or declaration, and every struct. Declare only the rest. A called function with no known prototype: `void FUN_00422560(int param_1);`. A global shown as a raw address: `extern <type> DAT_05cd14ed;` with 8 lower-case hex digits.
+- A struct you only use through a pointer needs no definition: write `struct NAME *`. Never define a struct, union, class, enum or typedef. To reach a field whose offset you cannot name, cast: `*(short *)((char *)p + 0x1c)`.
+- Never write `static` on a function. Never redeclare a function with a prototype other than the one the dossier prints.
+- No comments except the FUNCTION line. Tabs for indent, braces on their own lines.
+
+Matching tips for this compiler:
+- The flags come from the function's group. `/Od` code is literal: every local and every temporary you write shows up as a stack slot. A store-then-reload pair like `mov [ebp-4], eax` / `mov eax, [ebp-4]` means a local variable or a `switch`.
+- At `/Od` the stack slot order of locals depends on the order you declare them and on their names (the compiler sorts them by a hash of the name). If locals sit in the wrong slots, rename them before you change anything else. Any name is fine.
+- Signed or unsigned types, `char`/`short`/`int` widths and `float` or `double` change the instructions (`movsx` vs `movzx`, `fld dword` vs `fld qword`). Read them off the assembly.
+- The Ghidra draft in the dossier is a guess. The assembly is the truth.
+- The examples before your function already match 100% with the same compiler flags. Copy how their C maps to their assembly.
+- If an attempt does not move the score, try a different shape (loop form, `if` order, temporaries, casts) instead of small edits to the same one.

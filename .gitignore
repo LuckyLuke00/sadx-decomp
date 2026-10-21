@@ -8,3 +8,4 @@ ghidra.log
 *.exe
 *.dll
 *.pdb
+llm.json
