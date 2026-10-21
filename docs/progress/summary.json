@@ -9802,6 +9802,14 @@
    "library": false
   },
   {
+   "address": "0x00500f50",
+   "name": "ObjectScaleCCollision",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00500ff0",
    "name": "ObjectScaleCCollisionExecute",
    "accuracy": 1.0,
@@ -28011,5 +28019,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "cbb27dc0c9834382bcfcff549b61c2d05b68780095e09a05b5fb1d5aa8d073d0"
+ "inputs_sha256": "3cd4975323c356638b088e4663fa0d0a84344151786a774c5bd579abeb89c997"
 }
