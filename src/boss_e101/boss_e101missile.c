@@ -1,0 +1,253 @@
+#include "decls.h"
+#include <math.h>
+
+extern int DAT_060c4538;
+extern struct NJS_TEXLIST texlist_e101;
+extern struct obj object_01_misile_01_misile_01_misile[];
+void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2);
+void FUN_005e5770(struct task *param_1);
+void FUN_00810290(struct NJS_POINT3 *param_1, float param_2);
+float njSqrt(float param_1);
+void njUnitMatrix(float *param_1);
+void updownHeight(struct task *pTask);
+
+// GLOBAL: SADX 0x02c0cab0
+static struct CCL_INFO colliInfo[1];
+
+// GLOBAL: SADX 0x02c0cae0
+static struct particle_info missile_smoke;
+
+// FUNCTION: SADX 0x007069d0
+static void death(struct task *pTask, float fSize)
+{
+	struct taskwk *local_8 = pTask->twp;
+	FUN_0060d560(&local_8->pos, fSize);
+	FreeTask(pTask);
+	dsPlay_oneshot_v(0x9e, 0, 0, 0, local_8->pos.x, local_8->pos.y, local_8->pos.z);
+}
+
+// FUNCTION: SADX 0x00706a20
+static void chkDamage(struct task *pTask)
+{
+	struct taskwk *local_8 = pTask->twp;
+	struct enemywk *local_c = (struct enemywk *)pTask->mwp;
+	int *local_10 = (int *)pTask->awp;
+	struct colliwk *local_14;
+	struct task *local_18;
+	struct NJS_POINT3 vecDummy;
+	if (DAT_060c4538 < 0)
+	{
+		FUN_005e5770(pTask);
+		death(pTask, 0.5f);
+		return;
+	}
+	if ((local_8->flag & 4) && local_c->lock_tp != 0)
+	{
+		FUN_005e5770(pTask);
+		death(pTask, 0.5f);
+		return;
+	}
+	if (ChkE104ColliLandXZ(&local_8->pos, 2.0f, 0, &vecDummy) == 1)
+	{
+		death(pTask, 0.5f);
+		return;
+	}
+	local_14 = local_8->cwp;
+	if ((local_14->flag & 1) && local_14->hit_cwp != (struct colliwk *)local_10[8])
+	{
+		if (local_14->hit_cwp->id != 1)
+		{
+			death(pTask, 0.5f);
+			return;
+		}
+		local_18 = local_14->hit_cwp->mytask;
+		local_18 = GetE102LockCsTaskPointer(local_18);
+		if (local_18 != 0 && local_c->lock_tp == local_18)
+		{
+			death(pTask, 0.5f);
+			return;
+		}
+	}
+	if (local_10[3] <= 0)
+	{
+		death(pTask, 0.5f);
+	}
+}
+
+// FUNCTION: SADX 0x00706b40
+static void smoke(struct task *pTask)
+{
+	struct taskwk *local_8 = pTask->twp;
+	struct NJS_POINT3 pos;
+	njPushMatrix(_nj_unit_matrix_);
+	pos.z = 0.0f;
+	if (local_8->ang.y)
+	{
+		pos.y = 0.0f;
+		pos.x = 2.0f;
+		njRotateY(0, local_8->ang.y);
+	}
+	else
+	{
+		pos.y = 0.0f;
+		pos.x = 2.0f;
+	}
+	if (local_8->ang.x)
+	{
+		njRotateX(0, local_8->ang.x);
+	}
+	njCalcPoint(0, &pos, &missile_smoke.velo);
+	njPopMatrix(1);
+	missile_smoke.pos.x = local_8->pos.x + missile_smoke.velo.x;
+	missile_smoke.pos.y = local_8->pos.y + missile_smoke.velo.y;
+	missile_smoke.pos.z = local_8->pos.z + missile_smoke.velo.z;
+	CreateAddSmoke(&missile_smoke);
+}
+
+// FUNCTION: SADX 0x00706c10
+static void disp(struct task *pTask)
+{
+	struct taskwk *local_8 = pTask->twp;
+	float *local_c = (float *)pTask->awp;
+	struct NJS_ARGB argb;
+	local_c[7] = Shadow(local_8, 1.0f);
+	___njSetTexture(&texlist_e101);
+	if (((int *)local_c)[6])
+	{
+		SaveControl3D();
+		SaveConstantAttr();
+		njControl3D(0x14);
+		argb.a = 0.0f;
+		argb.r = argb.g = argb.b = 1.0f;
+		___njSetConstantMaterial(&argb);
+		OffConstantAttr(0x200000, 0);
+		OnConstantAttr(0, 0x2000000);
+		njPushMatrix(0);
+		njTranslateV(0, &local_8->pos);
+		if (local_8->ang.y - 0x4000)
+		{
+			njRotateY(0, local_8->ang.y - 0x4000);
+		}
+		if (local_8->ang.x + 0x4000)
+		{
+			njRotateX(0, local_8->ang.x + 0x4000);
+		}
+		late_DrawObjectEx(object_01_misile_01_misile_01_misile, 0);
+		njPopMatrix(1);
+		LoadConstantAttr();
+		LoadControl3D();
+		return;
+	}
+	njPushMatrix(0);
+	njTranslateV(0, &local_8->pos);
+	if (local_8->ang.y - 0x4000)
+	{
+		njRotateY(0, local_8->ang.y - 0x4000);
+	}
+	if (local_8->ang.x + 0x4000)
+	{
+		njRotateX(0, local_8->ang.x + 0x4000);
+	}
+	late_DrawObjectEx(object_01_misile_01_misile_01_misile, 0);
+	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x00706db0
+static void dest(struct task *pTask)
+{
+	int *local_8 = (int *)pTask->awp;
+	if (local_8[5] == 0)
+	{
+		local_8[5] = 1;
+		if (DAT_060c4538 > 0)
+		{
+			DAT_060c4538--;
+		}
+	}
+}
+
+// FUNCTION: SADX 0x00706de0
+static void _exec(struct task *pTask)
+{
+	struct NJS_POINT3 *local_8 = (struct NJS_POINT3 *)pTask->awp;
+	struct taskwk *local_c = pTask->twp;
+	struct taskwk *local_10;
+	long local_14;
+	struct NJS_POINT3 local_60;
+	struct NJS_POINT3 local_54;
+	float local_48[16];
+	float local_64;
+	((int *)local_8)[3]--;
+	chkDamage(pTask);
+	local_10 = pTask->twp;
+	local_14 = SubAngle(local_10->ang.y, (long)(atan2(
+		(double)(float)(local_10->pos.z - ((struct taskwk *)DAT_05baf368)->pos.z),
+		(double)(float)(local_10->pos.x - ((struct taskwk *)DAT_05baf368)->pos.x)) * 65536.0 / -6.283184));
+	if (local_14 < -0x38e)
+	{
+		local_14 = -0x38e;
+	}
+	else if (local_14 > 0x38e)
+	{
+		local_14 = 0x38e;
+	}
+	local_10->ang.y += local_14;
+	updownHeight(pTask);
+	local_60.x = -0.4f;
+	local_60.y = local_60.z = 0.0f;
+	njUnitMatrix(local_48);
+	if (local_c->ang.y)
+	{
+		njRotateY(local_48, local_c->ang.y);
+	}
+	njCalcPoint(local_48, &local_60, &local_54);
+	local_8->x += local_54.x;
+	local_8->z = local_8->z + local_54.z;
+	FUN_00810290(local_8, 1.0f);
+	local_64 = local_8->x * local_8->x + local_8->z * local_8->z;
+	local_64 = njSqrt(local_64);
+	local_c->ang.x = (long)(atan2((double)local_64, (double)local_8->y) * 65536.0 / 6.283184);
+	local_c->pos.x += local_8->x;
+	local_c->pos.y += local_8->y;
+	local_c->pos.z += local_8->z;
+	if (((int *)local_8)[3] < 5)
+	{
+		((int *)local_8)[6] = 1;
+	}
+	else if (((int *)local_8)[3] < 24)
+	{
+		((int *)local_8)[6] = (((int *)local_8)[3] >> 1) & 1;
+	}
+	smoke(pTask);
+	EntryColliList(local_c);
+	dsPlay_timer_v(0x9a, (int)pTask, 1, 0, 4, local_c->pos.x, local_c->pos.y, local_c->pos.z);
+	disp(pTask);
+}
+
+// FUNCTION: SADX 0x00706fb0
+void EnemyBossE101Missile(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct colliwk *pIgnoreColliWk)
+{
+	struct task *local_8 = CreateElementalTask(2, 3, _exec);
+	struct taskwk *local_c;
+	float *local_10;
+	if (local_8)
+	{
+		local_c = local_8->twp;
+		CCL_Init(local_8, colliInfo, 1, 3);
+		EnemyInitialize(local_8, local_c);
+		local_10 = (float *)MAlloc(0x24);
+		local_8->awp = (struct anywk *)local_10;
+		local_c->pos = *pos;
+		local_c->ang.y = (long)(atan2((double)vec->z, (double)vec->x) * 65536.0 / -6.283184);
+		local_10[0] = local_10[1] = local_10[2] = 0.0f;
+		((int *)local_10)[3] = 0x1a4;
+		((int *)local_10)[5] = 0;
+		((int *)local_10)[6] = 0;
+		local_10[7] = -9999.0f;
+		((struct colliwk **)local_10)[8] = pIgnoreColliWk;
+		DAT_060c4538++;
+		local_8->exec = _exec;
+		local_8->disp = disp;
+		local_8->dest = dest;
+	}
+}

@@ -9,6 +9,15 @@ tree:
   - ['^src/chao/stg_race1/', chao_race]
   - ['^src/chao/', chao_garden]
   - ['^src/enemy/', enemies]
+  - ['^src/event/', story]
+  - ['^src/figure/amy/', amy]
+  - ['^src/figure/big/', big]
+  - ['^src/figure/chaos/', story]  # Chaos's model, run by the event scripts of the Chaos fights
+  - ['^src/figure/e102/', gamma]
+  - ['^src/figure/eggman/', story]  # Eggman's model, run by the event scripts
+  - ['^src/figure/knuckles/', knuckles]
+  - ['^src/figure/miles/', tails]
+  - ['^src/figure/sonic/', sonic]
   - ['^src/mini_cart/', twinkle_circuit]
   - ['^src/mission/', missions]
   - ['^src/movie/', engine]
@@ -23,6 +32,10 @@ tree:
   - ['^src/npc_sub\.c$', player]
   - ['^src/SeqStageTable\.c$', story]
   - ['^src/setstagetable\.c$', objects]
+  - ['^src/boss_e101/', e101_beta]
+  - ['^src/boss_e101_r/', e101_mk2]
+  - ['^src/bossegm2/', egg_walker]
+  - ['^src/bossrobo/', zero]
   - ['^src/[^/]+$', engine]  # the other files at the top of src/
 
 # The progress map's sections, in order, each with its areas and the name the map shows for each. Every area
