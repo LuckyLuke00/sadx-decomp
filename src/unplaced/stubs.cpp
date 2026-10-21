@@ -2,25 +2,14 @@
 
 #include "decls.h"
 
-// STUB: SADX 0x00404ef0
-void ___OutputDebugString(char *, ...)
-{
-}
-
 // STUB: SADX 0x00404fa0
 void ___SAnjDrawPolygon2D(struct NJS_POINT2COL *p, int n, float pri, unsigned long attr)
 {
 }
 
-// STUB: SADX 0x00405350
-void npSetZCompareMode(int flag)
+// STUB: SADX 0x00405380
+void FUN_00405380(int)
 {
-}
-
-// STUB: SADX 0x00405370
-long dsSimpleDrawModel(struct NJS_MODEL *)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x004199f0
@@ -143,6 +132,11 @@ void njSetCamera(struct NJS_CAMERA *)
 {
 }
 
+// STUB: SADX 0x00424580
+void njWaitVSync(void)
+{
+}
+
 // STUB: SADX 0x004245a0
 void njSetBackColor(unsigned long,unsigned long,unsigned long)
 {
@@ -179,7 +173,7 @@ void njPushMatrix(float *)
 }
 
 // STUB: SADX 0x00430bb0
-void njCalcPoint(int, struct NJS_POINT3 *, struct NJS_POINT3 *)
+void njCalcPoint(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
 }
 
@@ -1013,6 +1007,11 @@ void GetSwitchData()
 {
 }
 
+// STUB: SADX 0x004c4240
+void input_init()
+{
+}
+
 // STUB: SADX 0x004c42e0
 void input_reset()
 {
@@ -1416,14 +1415,8 @@ void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo)
 {
 }
 
-// STUB: SADX 0x005030d0
-int FUN_005030d0()
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x005030f0
-void InitGCMemocaState()
+// STUB: SADX 0x00503160
+void FUN_00503160()
 {
 }
 
@@ -1536,21 +1529,6 @@ void CalcEventCamera()
 {
 }
 
-// STUB: SADX 0x0056f020
-void MirenSoundInitBgm(int bgmId)
-{
-}
-
-// STUB: SADX 0x0056f050
-void MirenSoundFinishBgm()
-{
-}
-
-// STUB: SADX 0x0056f080
-void MirenSoundStartBgm(int bgmId)
-{
-}
-
 // STUB: SADX 0x0056f630
 long isCheckGGApper_Emblem()
 {
@@ -1605,11 +1583,6 @@ void ___njFogDisable()
 {
 }
 
-// STUB: SADX 0x00573f20
-void ghSetPvrTexMaterial(unsigned long)
-{
-}
-
 // STUB: SADX 0x005740a0
 void ghSetPvrTexBaseColor(unsigned long color)
 {
@@ -1617,16 +1590,6 @@ void ghSetPvrTexBaseColor(unsigned long color)
 
 // STUB: SADX 0x00574950
 void ghDrawPvrTexture(int index, float x, float y, float z)
-{
-}
-
-// STUB: SADX 0x00574f80
-void ghDefaultBlendingMode()
-{
-}
-
-// STUB: SADX 0x00575150
-void ghGetPvrTextureSize(struct NJS_TEXLIST *texlist, int index, int *w, int *h)
 {
 }
 
@@ -1666,13 +1629,13 @@ void FUN_0058b160(struct task *)
 {
 }
 
-// STUB: SADX 0x00597a20
-void VibShot(long pno, long Time)
+// STUB: SADX 0x00597a80
+void SetVibTask(unsigned long)
 {
 }
 
-// STUB: SADX 0x00597fd0
-void lig_resetGjPaletteNo(int no)
+// STUB: SADX 0x00597ff0
+void lig_calcPalette(int)
 {
 }
 
@@ -1681,8 +1644,8 @@ void FUN_00598720(int)
 {
 }
 
-// STUB: SADX 0x00598b80
-void InitSystemTV()
+// STUB: SADX 0x00598740
+void FUN_00598740(int)
 {
 }
 
@@ -1746,20 +1709,9 @@ enum AvaCharEnum AvaGetlastPlayer()
 	return (enum AvaCharEnum)0;
 }
 
-// STUB: SADX 0x005a4d70
-void FUN_005a4d70()
+// STUB: SADX 0x005a4db0
+void FUN_005a4db0(void *)
 {
-}
-
-// STUB: SADX 0x005a4ef0
-void TH_DestroyAll()
-{
-}
-
-// STUB: SADX 0x005a4fa0
-extern struct thread *TH_Create(void *, void *, unsigned int)
-{
-	return (struct thread *)0;
 }
 
 // STUB: SADX 0x005a5490
@@ -1914,6 +1866,12 @@ struct taskwk *Flicky_Create(float xpos, float ypos, float zpos, void (*FlickyXX
 	return (struct taskwk *)0;
 }
 
+// STUB: SADX 0x0061f4d0
+long movie(long movie_num)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x006411b0
 void FUN_006411b0(int, int)
 {
@@ -1955,7 +1913,7 @@ void njPopMatrix(int)
 }
 
 // STUB: SADX 0x0067d830
-void FUN_0067d830(int, float, float, float)
+void FUN_0067d830(float *, float, float, float)
 {
 }
 

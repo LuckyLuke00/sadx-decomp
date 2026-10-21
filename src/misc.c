@@ -1,7 +1,7 @@
 #include "decls.h"
 extern float DAT_05b9d860;
-void njGetMatrix(float *m);
-void njSetMatrix(float *m, float *mat);
+void njGetMatrix(float *param_1);
+void njSetMatrix(float *param_1, float *param_2);
 struct obj *scanObjectSub(float **mbp, struct obj *obj, float *m);
 extern int DAT_0629c6c8;
 extern int DAT_05b9e064;
@@ -9,7 +9,7 @@ extern int DAT_0629c540;
 extern int DAT_0629c6c4;
 extern int DAT_05b9e060;
 extern int DAT_05b9e068;
-extern "C" double floor(double x);
+extern "C" double floor(double param_1);
 
 // FUNCTION: SADX 0x004cb9c0
 long AdjustAngle(long ang0, long ang1, long dang)

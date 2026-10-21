@@ -8,7 +8,7 @@ struct task *MirenSetTask(enum tasklevel level, const struct TaskInfo *info_p, v
 {
 	struct task *local_8;
 
-	local_8 = CreateElementalTask(*(int *)((char *)info_p + 0xc), (long)level, (void (*)(struct task *))(*(int *)((char *)info_p + 4) & 0xfffffffe));
+	local_8 = CreateElementalTask(info_p->initMode & 0xfffffffe, (long)level, info_p->exec_p);
 	if (local_8 != NULL)
 	{
 		local_8 = MirenInitTask(local_8, info_p, param_p);
@@ -31,22 +31,22 @@ struct task *MirenSetChildTask(struct task *parent_p, const struct TaskInfo *inf
 // FUNCTION: SADX 0x005707b0
 struct task *MirenInitTask(struct task *task_p, const struct TaskInfo *info_p, void *param_p)
 {
-	unsigned int iVar1;
-	struct task *local_10;
-	int local_8g;
+	unsigned int local_8gk;
+	struct task *local_ci;
+	void (*local_10hk)(struct task *, void *);
 
-	iVar1 = *(int *)info_p;
-	if (iVar1 > 0)
+	local_8gk = *(int *)info_p;
+	if (local_8gk > 0)
 	{
-		local_10 = (struct task *)MAlloc((unsigned int)iVar1);
-		if (local_10 == (struct task *)0x0)
+		local_ci = (struct task *)MAlloc((unsigned int)local_8gk);
+		if (local_ci == (struct task *)0x0)
 		{
 			FreeTask(task_p);
 			task_p = (struct task *)0x0;
 		}
 		else
 		{
-			*(void **)((char *)task_p + 0x24) = local_10;
+			*(void **)((char *)task_p + 0x24) = local_ci;
 		}
 	}
 	if (task_p != (struct task *)0x0)
@@ -54,10 +54,10 @@ struct task *MirenInitTask(struct task *task_p, const struct TaskInfo *info_p, v
 		*(void **)((char *)task_p + 0x10) = *(void **)((char *)info_p + 0xc);
 		*(void **)((char *)task_p + 0x14) = *(void **)((char *)info_p + 0x10);
 		*(void **)((char *)task_p + 0x18) = *(void **)((char *)info_p + 0x14);
-		local_8g = *(int *)((char *)info_p + 8);
-		if (local_8g != 0)
+		local_10hk = info_p->init_p;
+		if (local_10hk != 0)
 		{
-			(*(void (**)(struct task *, void *))(int *)local_8g)(task_p, param_p);
+			local_10hk(task_p, param_p);
 		}
 	}
 	return task_p;

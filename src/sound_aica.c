@@ -31,206 +31,66 @@ extern char DAT_06276b20[260];
 // FUNCTION: SADX 0x004adea0
 void dsLoadStageSound()
 {
-	short local_14;
-	int local_ci;
-	int local_10;
-	int local_8g;
-
+	struct {
+		unsigned int local_c;
+		short local_8;
+	} local_10;
 	DAT_05b3ea00 = 0;
 	DAT_05b3ea04 = 0;
-	local_14 = (short)(((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744);
-	local_10 = (unsigned short)local_14;
-	if (local_10 > 0x2a)
+	local_10.local_8 = (short)(((DAT_05b9d724 << 8) | (short)DAT_05b9d744) >> 8);
+	switch ((unsigned short)local_10.local_8)
 	{
+	case 0:
+		SetBankDir(0x24);
+		break;
+	case 1:
+		SetBankDir(0);
+		break;
+	case 2:
+		SetBankDir(0x38);
+		break;
+	case 3:
+		SetBankDir(0x37);
+		break;
+	case 4:
+		SetBankDir(0x26);
+		break;
+	case 5:
 		SetBankDir(0x21);
-	}
-	else
-	{
-		switch (local_10)
+		break;
+	case 6:
+		SetBankDir(0x34);
+		break;
+	case 7:
+		SetBankDir(0x29);
+		break;
+	case 8:
+		SetBankDir(0x28);
+		break;
+	case 9:
+		SetBankDir(0x18);
+		local_10.local_c = GetPlayerNumber();
+		switch (local_10.local_c)
 		{
 		case 0:
-			SetBankDir(0x24);
-			break;
-		case 1:
-			SetBankDir(0);
-			break;
-		case 2:
-			SetBankDir(0x38);
-			break;
-		case 3:
-			SetBankDir(0x37);
-			break;
-		case 4:
-			SetBankDir(0x26);
-			break;
-		case 5:
-			SetBankDir(0x21);
-			break;
-		case 6:
-			SetBankDir(0x34);
-			break;
-		case 7:
-			SetBankDir(0x29);
-			break;
-		case 8:
-			SetBankDir(0x28);
-			break;
-		case 9:
-			SetBankDir(0x18);
-			local_ci = GetPlayerNumber();
-			if (local_ci <= 7)
+			SetBankDir(1);
+			if (DAT_05bb00a9)
 			{
-				switch (local_ci)
-				{
-				case 0:
-					SetBankDir(1);
-					if (DAT_05bb00a9)
-					{
-						SetBankDir(0x3e);
-					}
-					else
-					{
-						if (!DAT_05b3ea18)
-						{
-							SetBankDir(0x3b);
-						}
-						else
-						{
-							SetBankDir(0x3c);
-						}
-					}
-					break;
-				case 2:
-					if (DAT_05bb00a9)
-					{
-						SetBankDir(0x3e);
-					}
-					else
-					{
-						SetBankDir(1);
-					}
-					if (!DAT_05b3ea18)
-					{
-						SetBankDir(0x3b);
-					}
-					else
-					{
-						SetBankDir(0x3c);
-					}
-					break;
-				case 3:
-					SetBankDir(0x31);
-					if (!DAT_05b3ea18)
-					{
-						SetBankDir(0x45);
-						SetBankDir(0x39);
-					}
-					else
-					{
-						SetBankDir(0x46);
-						SetBankDir(0x3a);
-					}
-					break;
-				default:
-					break;
-				}
+				SetBankDir(0x3e);
 			}
 			else
 			{
-				SetBankDir(0x1a);
-				if (DAT_05bb00a9)
+				if (!DAT_05b3ea18)
 				{
-					SetBankDir(0x3e);
+					SetBankDir(0x3b);
 				}
 				else
 				{
-					if (!DAT_05b3ea18)
-					{
-						SetBankDir(0x3b);
-					}
-					else
-					{
-						SetBankDir(0x3c);
-					}
+					SetBankDir(0x3c);
 				}
 			}
 			break;
-		case 0xa:
-			SetBankDir(0x25);
-			break;
-		case 0xc:
-			SetBankDir(0x27);
-			break;
-		case 0xf:
-			SetBankDir(0x1b);
-			break;
-		case 0x10:
-			SetBankDir(0x1c);
-			break;
-		case 0x11:
-			SetBankDir(0x1d);
-			break;
-		case 0x12:
-			SetBankDir(0x1e);
-			break;
-		case 0x13:
-			SetBankDir(0x20);
-			break;
-		case 0x14:
-			SetBankDir(0x2a);
-			break;
-		case 0x15:
-			SetBankDir(0x2b);
-			break;
-		case 0x16:
-			SetBankDir(0x2c);
-			break;
-		case 0x18:
-			SetBankDir(0x22);
-			break;
-		case 0x19:
-			SetBankDir(0x23);
-			break;
-		case 0x1a:
-		case 0x1b:
-		case 0x1c:
-			SetBankDir(0x36);
-			break;
-		case 0x1d:
-		case 0x1e:
-		case 0x1f:
-		case 0x20:
-			SetBankDir(0x24);
-			break;
-		case 0x21:
-		case 0x22:
-			SetBankDir(0x2d);
-			break;
-		case 0x23:
-			SetBankDir(0x17);
-			break;
-		case 0x24:
-		case 0x25:
-			SetBankDir(0x33);
-			break;
-		case 0x26:
-			SetBankDir(0x32);
-			break;
-		case 0x27:
-		case 0x28:
-		case 0x29:
-		case 0x2a:
-			SetBankDir(0x3d);
-			dsLoadCharacterVoice();
-			break;
-		}
-	}
-	local_8g = GetPlayerNumber();
-	if (local_8g <= 7)
-	{
-		switch (local_8g)
-		{
-		case 0:
+		case 2:
 			if (DAT_05bb00a9)
 			{
 				SetBankDir(0x3e);
@@ -241,22 +101,11 @@ void dsLoadStageSound()
 			}
 			if (!DAT_05b3ea18)
 			{
-				SetBankDir(0x47);
+				SetBankDir(0x3b);
 			}
 			else
 			{
-				SetBankDir(0x48);
-			}
-			break;
-		case 2:
-			SetBankDir(1);
-			if (!DAT_05b3ea18)
-			{
-				SetBankDir(0x47);
-			}
-			else
-			{
-				SetBankDir(0x48);
+				SetBankDir(0x3c);
 			}
 			break;
 		case 3:
@@ -264,51 +113,192 @@ void dsLoadStageSound()
 			if (!DAT_05b3ea18)
 			{
 				SetBankDir(0x45);
+				SetBankDir(0x39);
 			}
 			else
 			{
 				SetBankDir(0x46);
+				SetBankDir(0x3a);
 			}
 			break;
 		case 5:
-			SetBankDir(0x2e);
-			if (!DAT_05b3ea18)
-			{
-				SetBankDir(0x3f);
-			}
-			else
-			{
-				SetBankDir(0x40);
-			}
 			break;
 		case 6:
-			SetBankDir(0x30);
-			if (!DAT_05b3ea18)
-			{
-				SetBankDir(0x43);
-			}
-			else
-			{
-				SetBankDir(0x44);
-			}
 			break;
 		case 7:
-			SetBankDir(0x2f);
-			if (!DAT_05b3ea18)
+			break;
+		default:
+			SetBankDir(0x1a);
+			if (DAT_05bb00a9)
 			{
-				SetBankDir(0x41);
+				SetBankDir(0x3e);
 			}
 			else
 			{
-				SetBankDir(0x42);
+				if (!DAT_05b3ea18)
+				{
+					SetBankDir(0x3b);
+				}
+				else
+				{
+					SetBankDir(0x3c);
+				}
 			}
 			break;
-		default:
-			break;
 		}
+		break;
+	case 0xa:
+		SetBankDir(0x25);
+		break;
+	case 0xc:
+		SetBankDir(0x27);
+		break;
+	case 0xf:
+		SetBankDir(0x1b);
+		break;
+	case 0x10:
+		SetBankDir(0x1c);
+		break;
+	case 0x11:
+		SetBankDir(0x1d);
+		break;
+	case 0x12:
+		SetBankDir(0x1e);
+		break;
+	case 0x13:
+		SetBankDir(0x20);
+		break;
+	case 0x14:
+		SetBankDir(0x2a);
+		break;
+	case 0x15:
+		SetBankDir(0x2b);
+		break;
+	case 0x16:
+		SetBankDir(0x2c);
+		break;
+	case 0x18:
+		SetBankDir(0x22);
+		break;
+	case 0x19:
+		SetBankDir(0x23);
+		break;
+	case 0x1a:
+	case 0x1b:
+	case 0x1c:
+		SetBankDir(0x36);
+		break;
+	case 0x1d:
+	case 0x1e:
+	case 0x1f:
+	case 0x20:
+		SetBankDir(0x24);
+		break;
+	case 0x21:
+	case 0x22:
+		SetBankDir(0x2d);
+		break;
+	case 0x27:
+	case 0x28:
+	case 0x29:
+	case 0x2a:
+		SetBankDir(0x3d);
+		dsLoadCharacterVoice();
+		goto local_20;
+		break;
+	case 0x23:
+		SetBankDir(0x17);
+		break;
+	case 0x24:
+	case 0x25:
+		SetBankDir(0x33);
+		break;
+	case 0x26:
+		SetBankDir(0x32);
+		break;
+	default:
+		SetBankDir(0x21);
+		break;
 	}
-	else
+	local_10.local_c = GetPlayerNumber();
+	switch (local_10.local_c)
 	{
+	case 0:
+		if (DAT_05bb00a9)
+		{
+			SetBankDir(0x3e);
+		}
+		else
+		{
+			SetBankDir(1);
+		}
+		if (!DAT_05b3ea18)
+		{
+			SetBankDir(0x47);
+			goto local_20;
+		}
+		else
+		{
+			((void (*)())SetBankDir)();
+			goto local_20;
+		}
+		break;
+	case 2:
+		SetBankDir(1);
+		if (!DAT_05b3ea18)
+		{
+			SetBankDir(0x47);
+		}
+		else
+		{
+			SetBankDir(0x48);
+		}
+		break;
+	case 3:
+		SetBankDir(0x31);
+		if (!DAT_05b3ea18)
+		{
+			SetBankDir(0x45);
+		}
+		else
+		{
+			((void (*)())SetBankDir)();
+		}
+		break;
+	case 5:
+		SetBankDir(0x2e);
+		if (!DAT_05b3ea18)
+		{
+			SetBankDir(0x3f);
+		}
+		else
+		{
+			SetBankDir(0x40);
+		}
+		break;
+	case 6:
+		SetBankDir(0x30);
+		if (0 == DAT_05b3ea18)
+		{
+			SetBankDir(0x43);
+		}
+		else
+		{
+			SetBankDir(0x44);
+		}
+		break;
+	case 7:
+		SetBankDir(0x2f);
+		if (!DAT_05b3ea18)
+		{
+			SetBankDir(0x41);
+		}
+		else
+		{
+			SetBankDir(0x42);
+		}
+		break;
+	default:
 		if (DAT_05bb00a9)
 		{
 			SetBankDir(0x3e);
@@ -325,7 +315,9 @@ void dsLoadStageSound()
 		{
 			SetBankDir(0x48);
 		}
+		break;
 	}
+local_20:
 	FUN_004afe30();
 	dsStop_all();
 }
@@ -553,18 +545,17 @@ int dsPlay_oneshot_v(int tone, int id, int pri, int volofs, float x, float y, fl
 	float local_18;
 	float local_14;
 	float local_1ci;
-	float local_24;
 
 	local_cj = 0;
 	local_10m = 0xc8;
 	if (local_10m >= 0 && DAT_05b42a7c)
 	{
 		local_20o = x - DAT_05b42a7c->pos.x;
-		local_18 = y - DAT_05b42a7c->pos.y;
-		local_14 = z - DAT_05b42a7c->pos.z;
+		local_14 = y - DAT_05b42a7c->pos.y;
+		local_18 = z - DAT_05b42a7c->pos.z;
 		local_1ci = (float)local_10m;
 		local_1ci = local_1ci * local_1ci;
-		if (local_1ci * local_1ci < (local_24 = local_14 * local_14 + (local_18 * local_18 + local_20o * local_20o)))
+		if (local_1ci * local_1ci < (float)(local_18 * local_18 + (local_14 * local_14 + local_20o * local_20o)))
 		{
 			return -1;
 		}
