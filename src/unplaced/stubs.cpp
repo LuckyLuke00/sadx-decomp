@@ -142,16 +142,6 @@ void njSetBackColor(unsigned long,unsigned long,unsigned long)
 {
 }
 
-// STUB: SADX 0x00425160
-void njSetVSyncFunction(void (*)())
-{
-}
-
-// STUB: SADX 0x004251a0
-void njSetConstantMaterial(NJS_ARGB *)
-{
-}
-
 // STUB: SADX 0x00430990
 void njPopMatrixEx()
 {
@@ -189,17 +179,6 @@ void njTranslateEx(void *)
 
 // STUB: SADX 0x00433770
 void njPushMatrixEx()
-{
-}
-
-// STUB: SADX 0x004337a0
-void *_SOCMalloc(unsigned int, const char *, int)
-{
-	return (void *)0;
-}
-
-// STUB: SADX 0x004337c0
-void _SOCFree(void *, const char *, int)
 {
 }
 
@@ -1844,6 +1823,26 @@ void FUN_005f22c0(struct task *, struct ModeSelPrmType *)
 {
 }
 
+// STUB: SADX 0x005f2320
+void FUN_005f2320(struct task *)
+{
+}
+
+// STUB: SADX 0x005f2850
+void FUN_005f2850(struct task *)
+{
+}
+
+// STUB: SADX 0x005f3310
+void FUN_005f3310(float)
+{
+}
+
+// STUB: SADX 0x005fcd60
+void FUN_005fcd60(float)
+{
+}
+
 // STUB: SADX 0x0060ea40
 void objDisplay(struct task *tp)
 {
@@ -1959,8 +1958,23 @@ struct al_status *ADV1_ALR_GetEntryStatus(int num)
 	return (struct al_status *)0;
 }
 
+// STUB: SADX 0x007d1d20
+void dispModelTask(struct task *p_task)
+{
+}
+
+// STUB: SADX 0x007d1ef0
+void execModelTask(struct task *p_task)
+{
+}
+
 // STUB: SADX 0x007d21b0
 void FUN_007d21b0(void *)
+{
+}
+
+// STUB: SADX 0x007d6940
+void FUN_007d6940(struct task *)
 {
 }
 

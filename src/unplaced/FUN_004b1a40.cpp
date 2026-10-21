@@ -2,7 +2,7 @@
 #include <string.h>
 #include <new>
 void *FUN_004b6ae0(unsigned int param_1);
-void FUN_004b66c0(void **param_1);
+void __fastcall FUN_004b66c0(void **param_1);
 void FUN_004b6720(void *param_1, void *param_2, void *param_3);
 void FUN_004b5e70(int param_1);
 
@@ -181,70 +181,61 @@ void FUN_004b6520(int param_1)
 // FUNCTION: SADX 0x004b6590
 void __fastcall FUN_004b6590(int *param_1)
 {
-	int local_18o;
-	int local_20k;
-	int local_14s;
-	int local_10l;
+	int local_1co;
 	int local_ci;
-	int local_8g;
-	int local_24;
-	int local_1cg;
+	int local_20go;
+	int local_18go;
+	int local_14k;
+	int local_8gk;
+	int local_24gl;
+	int local_10hk;
 
-	local_18o = *(int *)param_1;
-	local_14s = *(int *)(param_1 + 1);
-	local_24 = local_14s;
-	local_20k = *(int *)param_1;
-	local_1cg = local_24;
-	local_ci = local_20k;
-	local_8g = local_ci;
-	FUN_004b6720(&local_10l, (void *)local_8g, (void *)local_1cg);
+	local_1co = param_1[1];
+	local_ci = local_1co;
+	local_8gk = local_ci;
+	local_20go = param_1[0];
+	local_14k = local_20go;
+	local_10hk = local_14k;
+	((void (__thiscall *)(int *, void *, void *, void *))FUN_004b6720)(param_1, &local_18go, (void *)local_10hk, (void *)local_8gk);
 	return;
 }
 
 // FUNCTION: SADX 0x004b66c0
-void FUN_004b66c0(void **param_1)
+void __fastcall FUN_004b66c0(void **param_1)
 {
-	void **local_8 = param_1;
-	if (*local_8 != 0)
+	char local_5kt;
+	char local_6;
+	void *local_cgt;
+	int local_10r;
+
+	if (*param_1 != 0)
 	{
-		int local_10l = (int)((char *)local_8[2] - (char *)local_8[0]) >> 2;
-		void *local_c = *local_8;
-		char local_14[4];
-		local_14[0] = 0;
-		delete local_c;
+		local_5kt = local_6;
+		local_10r = (int)((char *)param_1[2] - (char *)param_1[0]) >> 2;
+		local_cgt = *param_1;
+		operator delete(local_cgt);
 	}
-	*local_8 = 0;
-	local_8[1] = 0;
-	local_8[2] = 0;
+	*param_1 = 0;
+	param_1[1] = 0;
+	param_1[2] = 0;
 }
 
 // FUNCTION: SADX 0x004b6860
-int FUN_004b6860(int *param_1, int param_2)
+int __stdcall FUN_004b6860(int param_1)
 {
-	unsigned int local_ci = (*(int *)(param_1 + 2) - *(int *)param_1) >> 2;
-	unsigned int local_8g;
-	if (0x3fffffff >= local_ci)
+	unsigned int local_8gk;
+	unsigned int local_ci;
+	int *local_10hk;
+
+	__asm mov local_10hk, ecx
+	local_8gk = (local_10hk[2] - local_10hk[0]) >> 2;
+	local_ci = 0x3fffffff;
+	local_8gk = (local_ci > 0 ? local_ci : 1) - (local_8gk >> 1) < local_8gk ? 0 : (local_8gk >> 1) + local_8gk;
+	if (local_8gk < (unsigned int)param_1)
 	{
-		local_8g = 0x3fffffff;
+		local_8gk = param_1;
 	}
-	else
-	{
-		local_8g = local_ci;
-	}
-	unsigned int local_10;
-	if (local_8g - (local_ci >> 1) < local_ci)
-	{
-		local_10 = 0;
-	}
-	else
-	{
-		local_10 = (local_ci >> 1) + local_ci;
-	}
-	if (local_10 < param_2)
-	{
-		local_10 = param_2;
-	}
-	return local_10;
+	return local_8gk;
 }
 
 // FUNCTION: SADX 0x004b6a60
