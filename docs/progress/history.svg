@@ -1,44 +1,120 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" width="1000" height="330">
 <title>Decompilation progress over time</title>
-<defs><linearGradient id="backdrop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10307e"/><stop offset="1" stop-color="#07154a"/></linearGradient></defs>
-<rect width="1000" height="330" rx="6" fill="url(#backdrop)"/>
-<text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#ffffff">Share of game functions decompiled and done</text>
-<text x="16" y="176" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#ffffff">Accuracy of the decompiled functions</text>
-<rect x="911" y="19" width="10" height="10" rx="2" fill="#ffffff"/>
-<text x="926" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">accuracy</text>
-<rect x="849" y="19" width="10" height="10" rx="2" fill="#ffd700"/>
-<text x="864" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">done</text>
-<rect x="744" y="19" width="10" height="10" rx="2" fill="#4aa8ff"/>
-<text x="759" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#a9bde8">decompiled</text>
-<line x1="64" y1="140.0" x2="984" y2="140.0" stroke="#2a4aa0" stroke-width="1"/>
-<text x="56" y="144.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">0%</text>
-<line x1="64" y1="94.0" x2="984" y2="94.0" stroke="#2a4aa0" stroke-width="1"/>
-<text x="56" y="98.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">2.5%</text>
-<line x1="64" y1="48.0" x2="984" y2="48.0" stroke="#2a4aa0" stroke-width="1"/>
-<text x="56" y="52.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">5%</text>
-<polyline points="64.0,139.3 370.7,123.5 677.3,97.3 984.0,67.1" fill="none" stroke="#4aa8ff" stroke-width="2"/>
-<circle cx="64.0" cy="139.3" r="3" fill="#4aa8ff"><title>2026-10-17: decompiled 0.04%</title></circle>
-<circle cx="370.7" cy="123.5" r="3" fill="#4aa8ff"><title>2026-10-18: decompiled 0.89%</title></circle>
-<circle cx="677.3" cy="97.3" r="3" fill="#4aa8ff"><title>2026-10-19: decompiled 2.32%</title></circle>
-<circle cx="984.0" cy="67.1" r="3" fill="#4aa8ff"><title>2026-10-20: decompiled 3.96%</title></circle>
-<polyline points="64.0,139.3 370.7,123.5 677.3,105.2 984.0,72.6" fill="none" stroke="#ffd700" stroke-width="2"/>
-<circle cx="64.0" cy="139.3" r="3" fill="#ffd700"><title>2026-10-17: done 0.04%</title></circle>
-<circle cx="370.7" cy="123.5" r="3" fill="#ffd700"><title>2026-10-18: done 0.89%</title></circle>
-<circle cx="677.3" cy="105.2" r="3" fill="#ffd700"><title>2026-10-19: done 1.89%</title></circle>
-<circle cx="984.0" cy="72.6" r="3" fill="#ffd700"><title>2026-10-20: done 3.66%</title></circle>
-<line x1="64" y1="288.0" x2="984" y2="288.0" stroke="#2a4aa0" stroke-width="1"/>
-<text x="56" y="292.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">0%</text>
-<line x1="64" y1="242.0" x2="984" y2="242.0" stroke="#2a4aa0" stroke-width="1"/>
-<text x="56" y="246.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">50%</text>
-<line x1="64" y1="196.0" x2="984" y2="196.0" stroke="#2a4aa0" stroke-width="1"/>
-<text x="56" y="200.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">100%</text>
-<polyline points="64.0,196.0 370.7,196.0 677.3,201.1 984.0,198.0" fill="none" stroke="#ffffff" stroke-width="2"/>
-<circle cx="64.0" cy="196.0" r="3" fill="#ffffff"><title>2026-10-17: accuracy 100.00%</title></circle>
-<circle cx="370.7" cy="196.0" r="3" fill="#ffffff"><title>2026-10-18: accuracy 100.00%</title></circle>
-<circle cx="677.3" cy="201.1" r="3" fill="#ffffff"><title>2026-10-19: accuracy 94.46%</title></circle>
-<circle cx="984.0" cy="198.0" r="3" fill="#ffffff"><title>2026-10-20: accuracy 97.86%</title></circle>
-<text x="64.0" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">2026-10-17</text>
-<text x="370.7" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">2026-10-18</text>
-<text x="677.3" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">2026-10-19</text>
-<text x="984.0" y="310" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#a9bde8">2026-10-20</text>
+<rect x="0.5" y="0.5" width="999" height="329" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#1f2328">Share of game functions decompiled and done</text>
+<text x="16" y="176" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#1f2328">Accuracy of the decompiled functions</text>
+<rect x="911" y="19" width="10" height="10" rx="2" fill="#1f2328"/>
+<text x="926" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">accuracy</text>
+<rect x="849" y="19" width="10" height="10" rx="2" fill="#b07d00"/>
+<text x="864" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">done</text>
+<rect x="744" y="19" width="10" height="10" rx="2" fill="#0969da"/>
+<text x="759" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">decompiled</text>
+<line x1="64" y1="140.0" x2="984" y2="140.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="56" y="144.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">0%</text>
+<line x1="64" y1="94.0" x2="984" y2="94.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="56" y="98.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">2.5%</text>
+<line x1="64" y1="48.0" x2="984" y2="48.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="56" y="52.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">5%</text>
+<line x1="81.0" y1="48" x2="81.0" y2="140" stroke="#d0d7de" stroke-width="1"/>
+<line x1="115.1" y1="48" x2="115.1" y2="140" stroke="#d0d7de" stroke-width="1"/>
+<line x1="319.6" y1="48" x2="319.6" y2="140" stroke="#d0d7de" stroke-width="1"/>
+<polyline points="64.0,139.3 98.1,123.5 132.1,114.7 166.2,112.2 200.3,110.1 234.4,109.2 268.4,105.2 302.5,97.3 336.6,92.8 370.7,89.8 404.7,88.0 438.8,87.1 472.9,86.9 507.0,84.8 541.0,84.8 575.1,80.3 609.2,77.8 643.3,77.2 677.3,75.9 711.4,73.7 745.5,67.1 779.6,67.1 813.6,67.1 847.7,67.1 881.8,67.1 915.9,67.1 949.9,67.1 984.0,67.1" fill="none" stroke="#0969da" stroke-width="2"/>
+<circle cx="64.0" cy="139.3" r="3.0" fill="#0969da"><title>2026-10-17: decompiled 0.04%</title></circle>
+<circle cx="98.1" cy="123.5" r="3.0" fill="#0969da"><title>2026-10-18: decompiled 0.89%</title></circle>
+<circle cx="132.1" cy="114.7" r="3.0" fill="#0969da"><title>2026-10-19: decompiled 1.37%</title></circle>
+<circle cx="166.2" cy="112.2" r="3.0" fill="#0969da"><title>2026-10-19: decompiled 1.51%</title></circle>
+<circle cx="200.3" cy="110.1" r="3.0" fill="#0969da"><title>2026-10-19: decompiled 1.63%</title></circle>
+<circle cx="234.4" cy="109.2" r="3.0" fill="#0969da"><title>2026-10-19: decompiled 1.68%</title></circle>
+<circle cx="268.4" cy="105.2" r="3.0" fill="#0969da"><title>2026-10-19: decompiled 1.89%</title></circle>
+<circle cx="302.5" cy="97.3" r="3.0" fill="#0969da"><title>2026-10-19: decompiled 2.32%</title></circle>
+<circle cx="336.6" cy="92.8" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 2.56%</title></circle>
+<circle cx="370.7" cy="89.8" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 2.73%</title></circle>
+<circle cx="404.7" cy="88.0" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 2.82%</title></circle>
+<circle cx="438.8" cy="87.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 2.87%</title></circle>
+<circle cx="472.9" cy="86.9" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 2.88%</title></circle>
+<circle cx="507.0" cy="84.8" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.00%</title></circle>
+<circle cx="541.0" cy="84.8" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.00%</title></circle>
+<circle cx="575.1" cy="80.3" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.25%</title></circle>
+<circle cx="609.2" cy="77.8" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.38%</title></circle>
+<circle cx="643.3" cy="77.2" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.41%</title></circle>
+<circle cx="677.3" cy="75.9" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.48%</title></circle>
+<circle cx="711.4" cy="73.7" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.60%</title></circle>
+<circle cx="745.5" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<circle cx="779.6" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<circle cx="813.6" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<circle cx="847.7" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<circle cx="881.8" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<circle cx="915.9" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<circle cx="949.9" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<circle cx="984.0" cy="67.1" r="3.0" fill="#0969da"><title>2026-10-20: decompiled 3.96%</title></circle>
+<polyline points="64.0,139.3 98.1,123.5 132.1,114.7 166.2,112.2 200.3,110.1 234.4,109.2 268.4,105.2 302.5,105.2 336.6,100.7 370.7,97.7 404.7,95.9 438.8,95.0 472.9,94.8 507.0,92.7 541.0,92.6 575.1,88.0 609.2,85.6 643.3,85.0 677.3,83.6 711.4,81.4 745.5,74.8 779.6,74.6 813.6,74.1 847.7,73.7 881.8,73.4 915.9,73.1 949.9,72.9 984.0,72.6" fill="none" stroke="#b07d00" stroke-width="2"/>
+<circle cx="64.0" cy="139.3" r="3.0" fill="#b07d00"><title>2026-10-17: done 0.04%</title></circle>
+<circle cx="98.1" cy="123.5" r="3.0" fill="#b07d00"><title>2026-10-18: done 0.89%</title></circle>
+<circle cx="132.1" cy="114.7" r="3.0" fill="#b07d00"><title>2026-10-19: done 1.37%</title></circle>
+<circle cx="166.2" cy="112.2" r="3.0" fill="#b07d00"><title>2026-10-19: done 1.51%</title></circle>
+<circle cx="200.3" cy="110.1" r="3.0" fill="#b07d00"><title>2026-10-19: done 1.63%</title></circle>
+<circle cx="234.4" cy="109.2" r="3.0" fill="#b07d00"><title>2026-10-19: done 1.68%</title></circle>
+<circle cx="268.4" cy="105.2" r="3.0" fill="#b07d00"><title>2026-10-19: done 1.89%</title></circle>
+<circle cx="302.5" cy="105.2" r="3.0" fill="#b07d00"><title>2026-10-19: done 1.89%</title></circle>
+<circle cx="336.6" cy="100.7" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.13%</title></circle>
+<circle cx="370.7" cy="97.7" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.30%</title></circle>
+<circle cx="404.7" cy="95.9" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.39%</title></circle>
+<circle cx="438.8" cy="95.0" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.44%</title></circle>
+<circle cx="472.9" cy="94.8" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.46%</title></circle>
+<circle cx="507.0" cy="92.7" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.57%</title></circle>
+<circle cx="541.0" cy="92.6" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.58%</title></circle>
+<circle cx="575.1" cy="88.0" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.82%</title></circle>
+<circle cx="609.2" cy="85.6" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.96%</title></circle>
+<circle cx="643.3" cy="85.0" r="3.0" fill="#b07d00"><title>2026-10-20: done 2.99%</title></circle>
+<circle cx="677.3" cy="83.6" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.07%</title></circle>
+<circle cx="711.4" cy="81.4" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.19%</title></circle>
+<circle cx="745.5" cy="74.8" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.54%</title></circle>
+<circle cx="779.6" cy="74.6" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.56%</title></circle>
+<circle cx="813.6" cy="74.1" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.58%</title></circle>
+<circle cx="847.7" cy="73.7" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.60%</title></circle>
+<circle cx="881.8" cy="73.4" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.62%</title></circle>
+<circle cx="915.9" cy="73.1" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.63%</title></circle>
+<circle cx="949.9" cy="72.9" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.65%</title></circle>
+<circle cx="984.0" cy="72.6" r="3.0" fill="#b07d00"><title>2026-10-20: done 3.66%</title></circle>
+<line x1="64" y1="288.0" x2="984" y2="288.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="56" y="292.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">0%</text>
+<line x1="64" y1="242.0" x2="984" y2="242.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="56" y="246.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">50%</text>
+<line x1="64" y1="196.0" x2="984" y2="196.0" stroke="#d0d7de" stroke-width="1"/>
+<text x="56" y="200.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">100%</text>
+<line x1="81.0" y1="196" x2="81.0" y2="288" stroke="#d0d7de" stroke-width="1"/>
+<line x1="115.1" y1="196" x2="115.1" y2="288" stroke="#d0d7de" stroke-width="1"/>
+<line x1="319.6" y1="196" x2="319.6" y2="288" stroke="#d0d7de" stroke-width="1"/>
+<polyline points="64.0,196.0 98.1,196.0 132.1,196.0 166.2,196.0 200.3,196.0 234.4,196.0 268.4,196.0 302.5,201.1 336.6,200.6 370.7,200.3 404.7,200.2 438.8,200.1 472.9,200.1 507.0,199.9 541.0,199.9 575.1,199.6 609.2,199.5 643.3,199.4 677.3,199.3 711.4,199.2 745.5,198.9 779.6,198.8 813.6,198.6 847.7,198.4 881.8,198.3 915.9,198.2 949.9,198.2 984.0,198.0" fill="none" stroke="#1f2328" stroke-width="2"/>
+<circle cx="64.0" cy="196.0" r="3.0" fill="#1f2328"><title>2026-10-17: accuracy 100.00%</title></circle>
+<circle cx="98.1" cy="196.0" r="3.0" fill="#1f2328"><title>2026-10-18: accuracy 100.00%</title></circle>
+<circle cx="132.1" cy="196.0" r="3.0" fill="#1f2328"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="166.2" cy="196.0" r="3.0" fill="#1f2328"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="200.3" cy="196.0" r="3.0" fill="#1f2328"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="234.4" cy="196.0" r="3.0" fill="#1f2328"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="268.4" cy="196.0" r="3.0" fill="#1f2328"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="302.5" cy="201.1" r="3.0" fill="#1f2328"><title>2026-10-19: accuracy 94.46%</title></circle>
+<circle cx="336.6" cy="200.6" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 94.98%</title></circle>
+<circle cx="370.7" cy="200.3" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 95.28%</title></circle>
+<circle cx="404.7" cy="200.2" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 95.45%</title></circle>
+<circle cx="438.8" cy="200.1" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 95.52%</title></circle>
+<circle cx="472.9" cy="200.1" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 95.54%</title></circle>
+<circle cx="507.0" cy="199.9" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 95.71%</title></circle>
+<circle cx="541.0" cy="199.9" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 95.75%</title></circle>
+<circle cx="575.1" cy="199.6" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 96.08%</title></circle>
+<circle cx="609.2" cy="199.5" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 96.23%</title></circle>
+<circle cx="643.3" cy="199.4" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 96.26%</title></circle>
+<circle cx="677.3" cy="199.3" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 96.37%</title></circle>
+<circle cx="711.4" cy="199.2" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 96.49%</title></circle>
+<circle cx="745.5" cy="198.9" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 96.81%</title></circle>
+<circle cx="779.6" cy="198.8" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 96.99%</title></circle>
+<circle cx="813.6" cy="198.6" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 97.18%</title></circle>
+<circle cx="847.7" cy="198.4" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 97.39%</title></circle>
+<circle cx="881.8" cy="198.3" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 97.49%</title></circle>
+<circle cx="915.9" cy="198.2" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 97.59%</title></circle>
+<circle cx="949.9" cy="198.2" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 97.66%</title></circle>
+<circle cx="984.0" cy="198.0" r="3.0" fill="#1f2328"><title>2026-10-20: accuracy 97.86%</title></circle>
+<text x="64.0" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">2026-10-17</text>
+<text x="217.3" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">2026-10-19</text>
+<text x="660.3" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">2026-10-20</text>
 </svg>
