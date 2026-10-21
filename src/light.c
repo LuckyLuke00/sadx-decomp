@@ -15,12 +15,12 @@ extern int DAT_05b39bec;
 extern int DAT_05b39dac;
 
 int __fastcall FUN_004199f0(void *param_1, float param_2);
-void njPushMatrix(float *m);
-void njTranslateV(float *m, struct NJS_POINT3 *v);
-void njRotateZ(float *m, int ang);
-void njRotateX(float *m, unsigned short ang);
-void njRotateY(float *m, unsigned short ang);
-void njCalcVector(float *m, struct NJS_POINT3 *v, struct NJS_POINT3 *out);
+void njPushMatrix(float *param_1);
+void njTranslateV(float *param_1, struct NJS_POINT3 *param_2);
+void njRotateZ(float *param_1, int param_2);
+void njRotateX(float *param_1, unsigned short param_2);
+void njRotateY(float *param_1, unsigned short param_2);
+void njCalcVector(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 void njPopMatrixEx();
 void FUN_007d21b0(void *param_1);
 void FUN_005b5aa0();

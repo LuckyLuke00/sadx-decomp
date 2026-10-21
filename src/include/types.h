@@ -59,6 +59,7 @@ struct BOSSPLAYER_CREATE_PARAM;
 struct c_colli_hit_info;
 struct CCL_INFO;
 struct colliwk;
+struct CRUSHLIGHT_WK;
 struct csts;
 struct DDlgType;
 struct DialogPrmType;
@@ -69,6 +70,11 @@ struct FACETBL;
 struct FileSelWk;
 struct forcewk;
 struct GH_FONT_INFO;
+struct GHPARTICLE_INFO;
+struct GHPARTICLE_UNIT;
+struct GHSPRITE;
+struct GHSPRITE_ANIM;
+struct GHSPRITE_ANIM_TABLE;
 struct LATE_FAR_Z_T;
 struct LATE_LNK;
 struct LE_LIGHT_ENV;
@@ -1248,6 +1254,24 @@ struct NJS_POINT2 {
 static_assert(sizeof(NJS_POINT2) == 0x8, "sizeof NJS_POINT2");
 static_assert(offsetof(NJS_POINT2, x) == 0x0, "NJS_POINT2::x");
 static_assert(offsetof(NJS_POINT2, y) == 0x4, "NJS_POINT2::y");
+
+struct GHSPRITE_ANIM_TABLE {
+    short nTexId;
+    unsigned char flag;
+    unsigned long gIndex;
+    struct NJS_POINT2 size;
+    struct NJS_POINT2 trans;
+    float fFrame;
+    struct NJS_ARGB argb;
+};
+static_assert(sizeof(GHSPRITE_ANIM_TABLE) == 0x2c, "sizeof GHSPRITE_ANIM_TABLE");
+static_assert(offsetof(GHSPRITE_ANIM_TABLE, nTexId) == 0x0, "GHSPRITE_ANIM_TABLE::nTexId");
+static_assert(offsetof(GHSPRITE_ANIM_TABLE, flag) == 0x2, "GHSPRITE_ANIM_TABLE::flag");
+static_assert(offsetof(GHSPRITE_ANIM_TABLE, gIndex) == 0x4, "GHSPRITE_ANIM_TABLE::gIndex");
+static_assert(offsetof(GHSPRITE_ANIM_TABLE, size) == 0x8, "GHSPRITE_ANIM_TABLE::size");
+static_assert(offsetof(GHSPRITE_ANIM_TABLE, trans) == 0x10, "GHSPRITE_ANIM_TABLE::trans");
+static_assert(offsetof(GHSPRITE_ANIM_TABLE, fFrame) == 0x18, "GHSPRITE_ANIM_TABLE::fFrame");
+static_assert(offsetof(GHSPRITE_ANIM_TABLE, argb) == 0x1c, "GHSPRITE_ANIM_TABLE::argb");
 
 struct GH_FONT_INFO {
     float char_width;

@@ -33,11 +33,9 @@ void CreateFlash(struct taskwk *twp, float scl)
 	local_cg = CreateElementalTask(2, 6, FlashManager);
 	if (local_cg != 0)
 	{
-		local_8g = (struct taskwk *)(*(int *)(*(char **)local_cg + 0x20) + 0x20);
-		*(int *)local_8g = *(int *)((char *)twp + 0x20);
-		*(int *)(local_8g + 1) = *(int *)((char *)twp + 0x24);
-		*(int *)(local_8g + 2) = *(int *)((char *)twp + 0x28);
-		*(float *)(local_8g + 3) = scl;
+		local_8g = local_cg->twp;
+		local_8g->pos = twp->pos;
+		local_8g->scl.x = scl;
 	}
 	return;
 }
@@ -46,11 +44,9 @@ void CreateFlash(struct taskwk *twp, float scl)
 void FlashManager(struct task *tp)
 {
 	struct taskwk *local_8g;
-	char local_9;
 
 	local_8g = *(struct taskwk **)((char *)tp + 0x20);
-	local_9 = *(char *)local_8g;
-	switch (local_9)
+	switch (local_8g->mode)
 	{
 		case 0:
 			FlashManagerInit(local_8g);
@@ -67,54 +63,60 @@ void FlashManager(struct task *tp)
 // FUNCTION: SADX 0x005e82e0
 void FlashManagerInit(struct taskwk *twp)
 {
-	struct sp_task *local_14;
-	int iVar2;
-	double dVar3;
+	struct sp_link *local_8gk;
+	struct sp_task *local_ci;
+	int local_10hk;
+	float local_14k;
 
-	local_14 = SpCreateTask((struct sp_link *)&particle_flash, EffectFlash);
-	if (local_14 != NULL)
+	local_8gk = particle_flash.link;
+	local_ci = SpCreateTask(local_8gk, EffectFlash);
+	if (local_ci != NULL)
 	{
-		*(int *)((char *)local_14 + 0x18) = *(int *)((char *)twp + 0x20);
-		*(int *)((char *)local_14 + 0x1c) = *(int *)((char *)twp + 0x24);
-		*(int *)((char *)local_14 + 0x20) = *(int *)((char *)twp + 0x28);
-		*(float *)((char *)local_14 + 0x14) = *(float *)((char *)twp + 0x2c);
-		*(float *)((char *)local_14 + 0x10) = 0.0;
-		iVar2 = rand();
-		dVar3 = ((double)(float)(iVar2 / 32768.0f)) * 360.0 * 65536.0 / 360.0;
-		*(int *)((char *)local_14 + 0xc) = (int)dVar3;
-		*(float *)((char *)local_14 + 0x30) = 1.0;
-		*(float *)((char *)local_14 + 0x34) = 1.0;
-		*(float *)((char *)local_14 + 0x38) = 1.0;
-		*(float *)((char *)local_14 + 0x3c) = 1.0;
+		local_ci->pos = twp->pos;
+		local_ci->scl = twp->scl.x;
+		local_ci->frame = 0.0;
+		local_10hk = rand();
+		local_14k = (float)(local_10hk / 32768.0);
+		local_ci->ang = (int)(local_14k * 360.0 * 65536.0 / 360.0);
+		local_ci->argb.a = 1.0;
+		local_ci->argb.r = 1.0;
+		local_ci->argb.g = 1.0;
+		local_ci->argb.b = 1.0;
 	}
-	*(char *)twp = 1;
+	twp->mode = 1;
 }
 
 // FUNCTION: SADX 0x005e83a0
 void FlashManagerNormal(struct taskwk *twp)
 {
-	int local_8g;
-	float local_14h;
-	float local_10m;
-	float local_cj;
-	int local_18;
+	int local_8gk;
+	struct NJS_POINT3 velo;
+	int local_1cj;
+	float local_20r;
+	int local_24h;
+	float local_28;
+	int local_2cg;
+	float local_30i;
 
 	*(float *)((char *)twp + 0x10) = *(float *)((char *)twp + 0x10) + 0.4000000059604645;
 	if (*(float *)((char *)twp + 0x10) > 7.0)
 	{
-		*(char *)twp = 2;
+		twp->mode = 2;
 	}
 	else
 	{
-		for (local_18 = 0; local_18 < 3; local_18 = local_18 + 1)
+		for (local_8gk = 0; local_8gk < 3; local_8gk = local_8gk + 1)
 		{
-			local_8g = rand();
-			local_14h = ((float)local_8g / 32768.0) * 5.5 - 2.75;
-			local_8g = rand();
-			local_10m = ((float)local_8g / 32768.0) * 5.5 - 2.0;
-			local_8g = rand();
-			local_cj = ((float)local_8g / 32768.0) * 5.5 - 2.75;
-			CreateSpark((struct NJS_POINT3 *)((char *)twp + 0x20), (struct NJS_POINT3 *)&local_14h, 1.0);
+			local_1cj = rand();
+			local_20r = (float)(local_1cj / 32768.0);
+			velo.x = (float)(local_20r * 5.5 - 2.75);
+			local_24h = rand();
+			local_28 = (float)(local_24h / 32768.0);
+			velo.y = (float)(local_28 * 5.5 - 2.0);
+			local_2cg = rand();
+			local_30i = (float)(local_2cg / 32768.0);
+			velo.z = (float)(local_30i * 5.5 - 2.75);
+			CreateSpark(&twp->pos, &velo, 1.0);
 		}
 	}
 	return;
@@ -123,13 +125,17 @@ void FlashManagerNormal(struct taskwk *twp)
 // FUNCTION: SADX 0x005e84a0
 void CreateFlash2(float x, float y, float z, float scl)
 {
+	struct task *local_cg;
+	struct taskwk *local_8g;
+
 	dsPlay_oneshot(0x19, 0, 0, 0);
-	struct task *local_cg = CreateElementalTask(2, 6, FlashManager);
-	if (local_cg == 0)
-		return;
-	struct task *local_8g = *(struct task **)((char *)local_cg + 0x20);
-	*(float *)((char *)local_8g + 0x20) = x;
-	*(float *)((char *)local_8g + 0x24) = y;
-	*(float *)((char *)local_8g + 0x28) = z;
-	*(float *)((char *)local_8g + 0x2c) = scl;
+	local_cg = CreateElementalTask(2, 6, FlashManager);
+	if (local_cg != 0)
+	{
+		local_8g = local_cg->twp;
+		local_8g->pos.x = x;
+		local_8g->pos.y = y;
+		local_8g->pos.z = z;
+		local_8g->scl.x = scl;
+	}
 }
