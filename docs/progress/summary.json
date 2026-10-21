@@ -19954,8 +19954,32 @@
    "library": false
   },
   {
+   "address": "0x006c5a10",
+   "name": "Egm2TikalEnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006c7f70",
+   "name": "Egm2CameraHumiCameraGet",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006cc5e0",
    "name": "FUN_006cc5e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006cea80",
+   "name": "FUN_006cea80",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -19994,6 +20018,14 @@
    "library": false
   },
   {
+   "address": "0x006e0230",
+   "name": "CamRobo_SetExpSize",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006e2710",
    "name": "FUN_006e2710",
    "accuracy": 1.0,
@@ -20004,6 +20036,14 @@
   {
    "address": "0x006ede20",
    "name": "FUN_006ede20",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006eec20",
+   "name": "Tmit_MaterialInit",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -20178,6 +20218,30 @@
    "library": false
   },
   {
+   "address": "0x0070ab50",
+   "name": "CamE101R_SetViewHeight",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0070ab80",
+   "name": "CamE101R_SetMissileFlag",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0070abf0",
+   "name": "CamE101R_GetAngle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0070b6a0",
    "name": "changere101rinit",
    "accuracy": 1.0,
@@ -20196,6 +20260,14 @@
   {
    "address": "0x0070ee70",
    "name": "E101R_BarrierExit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0070ee80",
+   "name": "E101R_BarrierSetMode",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -20252,6 +20324,14 @@
   {
    "address": "0x00716330",
    "name": "AL_ReleaseMessageTable",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00717f80",
+   "name": "EventSeInitInit",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -20490,6 +20570,38 @@
    "library": false
   },
   {
+   "address": "0x007d5120",
+   "name": "FUN_007d5120",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d5140",
+   "name": "FUN_007d5140",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d52c0",
+   "name": "CLast1AHigh_Disp",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d52e0",
+   "name": "FUN_007d52e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007d5340",
    "name": "FUN_007d5340",
    "accuracy": 1.0,
@@ -20500,6 +20612,14 @@
   {
    "address": "0x007d5360",
    "name": "FUN_007d5360",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d56a0",
+   "name": "StgChaos7Howl1",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -20540,6 +20660,22 @@
   {
    "address": "0x007d69d0",
    "name": "WaterPillarOff",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d7f80",
+   "name": "StgChaos6Human2Water",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d7f90",
+   "name": "StgChaos6Water2Human",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -20596,6 +20732,14 @@
   {
    "address": "0x007db720",
    "name": "MemeDelete",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007dc760",
+   "name": "StgChaos2Human2Water",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -21658,6 +21802,14 @@
    "library": false
   },
   {
+   "address": "0x008b9290",
+   "name": "TikalBossKill",
+   "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008b9f60",
    "name": "FUN_008b9f60",
    "accuracy": 1.0,
@@ -21935,6 +22087,14 @@
    "accuracy": 0.11764705882352941,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c6ba0",
+   "name": "deleteBubbleChaos",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -27898,9 +28058,41 @@
    "library": true
   },
   {
+   "address": "0x00902f90",
+   "name": "EvChaos2Human2Water",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00902fb0",
    "name": "EvChaos2Water2Human",
    "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00903000",
+   "name": "EvChaos6Human2Water",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00903020",
+   "name": "EvChaos6Water2Human",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00903040",
+   "name": "EvChaos7Howl1",
+   "accuracy": 0.18181818181818182,
    "effective": false,
    "stub": true,
    "library": false
@@ -27916,6 +28108,22 @@
   {
    "address": "0x00904010",
    "name": "FUN_00904010",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00906b30",
+   "name": "SakanaGenerater",
+   "accuracy": 0.01680672268907563,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00906cc0",
+   "name": "sakana00",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -28171,5 +28379,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "64aadf9f21e068527c90f51ba67867765d3664476c5a4f8b2fb49fafbea54671"
+ "inputs_sha256": "1b4a5c15fb7d8ea7c227517f97bf601321cd685bca90a8c18210ed96330cdb57"
 }

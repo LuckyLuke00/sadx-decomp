@@ -2696,6 +2696,9 @@ void *DAT_060b5fec;
 // GLOBAL: SADX 0x060b907c
 int DAT_060b907c;
 
+// GLOBAL: SADX 0x060b9b34
+int DAT_060b9b34;
+
 // GLOBAL: SADX 0x060bbe34
 int DAT_060bbe34;
 
@@ -2704,6 +2707,9 @@ int DAT_060bcea0;
 
 // GLOBAL: SADX 0x060bcfdc
 int DAT_060bcfdc;
+
+// GLOBAL: SADX 0x060bd178
+float DAT_060bd178;
 
 // GLOBAL: SADX 0x060c4538
 int DAT_060c4538;
@@ -2714,11 +2720,23 @@ struct NJS_POINT3 *DAT_060c453c;
 // GLOBAL: SADX 0x060c4544
 struct NJS_POINT3 DAT_060c4544;
 
+// GLOBAL: SADX 0x060c4644
+int DAT_060c4644;
+
+// GLOBAL: SADX 0x060c4658
+int DAT_060c4658;
+
+// GLOBAL: SADX 0x060c4678
+float DAT_060c4678;
+
 // GLOBAL: SADX 0x060c4a8c
 int DAT_060c4a8c;
 
 // GLOBAL: SADX 0x060c4aa4
 struct task *DAT_060c4aa4;
+
+// GLOBAL: SADX 0x060c4aa8
+int DAT_060c4aa8;
 
 // GLOBAL: SADX 0x060c4ab4
 int DAT_060c4ab4;
@@ -2740,6 +2758,12 @@ int DAT_060cb320;
 
 // GLOBAL: SADX 0x060cb328
 void *DAT_060cb328;
+
+// GLOBAL: SADX 0x060cb338
+int DAT_060cb338;
+
+// GLOBAL: SADX 0x060cb33c
+int DAT_060cb33c;
 
 // GLOBAL: SADX 0x060cb654
 struct task *DAT_060cb654;
@@ -2932,6 +2956,9 @@ struct NJS_SPRITE DAT_060df720;
 
 // GLOBAL: SADX 0x060df740
 struct taskwk *DAT_060df740[256];
+
+// GLOBAL: SADX 0x060dfb48
+void *DAT_060dfb48;
 
 // GLOBAL: SADX 0x060dfb58
 float DAT_060dfb58;
