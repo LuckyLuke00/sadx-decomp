@@ -256,7 +256,7 @@ def score(config, address):
 
 
 def dossier(config, address, *flags):
-    return run_check("dossier", hexa(address), *flags, *folder_flags(config, "tables", "drafts"))[0].strip()
+    return run_check("dossier", hexa(address), *flags, *folder_flags(config, "tables", "drafts", "context"))[0].strip()
 
 
 def tree_warnings(config):
