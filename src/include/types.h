@@ -71,6 +71,7 @@ struct anywk;
 struct bankdata;
 struct bankdatalist;
 struct BOSSPLAYER_CREATE_PARAM;
+struct bosswk;
 struct c_colli_hit_info;
 struct CCL_INFO;
 struct chao_colliwk;
@@ -78,6 +79,7 @@ struct CHAO_GLOBAL;
 struct CHAO_ID;
 struct CHAO_PARAM_GC;
 struct chao_save_info;
+struct chaoswk;
 struct CharMdlWk;
 struct cnkobj;
 struct colliwk;
@@ -124,6 +126,7 @@ struct NJS_CACTION;
 struct NJS_CAMERA;
 struct NJS_CNK_MODEL;
 union NJS_COLOR;
+struct NJS_LIGHT;
 struct NJS_MATERIAL;
 struct NJS_MESHSET;
 struct NJS_MODEL;
@@ -162,6 +165,7 @@ struct SEQ_SECTION;
 struct SEQ_SECTIONTBL;
 struct SeqPrmType;
 struct shadowwk;
+struct sMRacePath;
 struct sp_info;
 struct sp_link;
 struct sp_task;
@@ -2379,6 +2383,18 @@ static_assert(offsetof(NJS_CAMERA, f_clip) == 0x24, "NJS_CAMERA::f_clip");
 static_assert(offsetof(NJS_CAMERA, lx) == 0x28, "NJS_CAMERA::lx");
 static_assert(offsetof(NJS_CAMERA, ly) == 0x34, "NJS_CAMERA::ly");
 
+struct NJS_CNK_MODEL {
+    long *vlist;
+    short *plist;
+    struct NJS_POINT3 center;
+    float r;
+};
+static_assert(sizeof(NJS_CNK_MODEL) == 0x18, "sizeof NJS_CNK_MODEL");
+static_assert(offsetof(NJS_CNK_MODEL, vlist) == 0x0, "NJS_CNK_MODEL::vlist");
+static_assert(offsetof(NJS_CNK_MODEL, plist) == 0x4, "NJS_CNK_MODEL::plist");
+static_assert(offsetof(NJS_CNK_MODEL, center) == 0x8, "NJS_CNK_MODEL::center");
+static_assert(offsetof(NJS_CNK_MODEL, r) == 0x14, "NJS_CNK_MODEL::r");
+
 struct NJS_MATERIAL {
     union NJS_COLOR diffuse;
     union NJS_COLOR specular;
@@ -2739,6 +2755,50 @@ static_assert(sizeof(bankdatalist) == 0x8, "sizeof bankdatalist");
 static_assert(offsetof(bankdatalist, datasize) == 0x0, "bankdatalist::datasize");
 static_assert(offsetof(bankdatalist, data) == 0x4, "bankdatalist::data");
 
+struct bosswk {
+    union {
+        signed char b[4];
+        short w[2];
+        long l;
+        float f;
+        void *ptr;
+    } work;
+    short mtnmode;
+    short jvmode;
+    unsigned short req_action;
+    unsigned short action;
+    unsigned short lastaction;
+    unsigned short action_tm;
+    float nframe;
+    float xacc;
+    float yacc;
+    float zacc;
+    float xspd;
+    float yspd;
+    float zspd;
+    struct PL_ACTION *plactptr;
+    struct PL_JOIN_VERTEX *pljvptr;
+    struct NJS_ACTION *actwkptr;
+};
+static_assert(sizeof(bosswk) == 0x38, "sizeof bosswk");
+static_assert(offsetof(bosswk, work) == 0x0, "bosswk::work");
+static_assert(offsetof(bosswk, mtnmode) == 0x4, "bosswk::mtnmode");
+static_assert(offsetof(bosswk, jvmode) == 0x6, "bosswk::jvmode");
+static_assert(offsetof(bosswk, req_action) == 0x8, "bosswk::req_action");
+static_assert(offsetof(bosswk, action) == 0xa, "bosswk::action");
+static_assert(offsetof(bosswk, lastaction) == 0xc, "bosswk::lastaction");
+static_assert(offsetof(bosswk, action_tm) == 0xe, "bosswk::action_tm");
+static_assert(offsetof(bosswk, nframe) == 0x10, "bosswk::nframe");
+static_assert(offsetof(bosswk, xacc) == 0x14, "bosswk::xacc");
+static_assert(offsetof(bosswk, yacc) == 0x18, "bosswk::yacc");
+static_assert(offsetof(bosswk, zacc) == 0x1c, "bosswk::zacc");
+static_assert(offsetof(bosswk, xspd) == 0x20, "bosswk::xspd");
+static_assert(offsetof(bosswk, yspd) == 0x24, "bosswk::yspd");
+static_assert(offsetof(bosswk, zspd) == 0x28, "bosswk::zspd");
+static_assert(offsetof(bosswk, plactptr) == 0x2c, "bosswk::plactptr");
+static_assert(offsetof(bosswk, pljvptr) == 0x30, "bosswk::pljvptr");
+static_assert(offsetof(bosswk, actwkptr) == 0x34, "bosswk::actwkptr");
+
 // Offsets not checked against the code yet.
 struct c_colli_hit_info {
     signed char my_num;
@@ -2751,6 +2811,70 @@ static_assert(offsetof(c_colli_hit_info, my_num) == 0x0, "c_colli_hit_info::my_n
 static_assert(offsetof(c_colli_hit_info, hit_num) == 0x1, "c_colli_hit_info::hit_num");
 static_assert(offsetof(c_colli_hit_info, flag) == 0x2, "c_colli_hit_info::flag");
 static_assert(offsetof(c_colli_hit_info, hit_twp) == 0x4, "c_colli_hit_info::hit_twp");
+
+struct chaoswk {
+    struct bosswk bwk;
+    long generaltimer;
+    signed char txchg_tmr;
+    signed char txchg_num;
+    signed char form;
+    signed char sp_mode;
+    signed char colli_mode;
+    signed char headsts;
+    signed char camera_mode;
+    short etcflag;
+    short dispflag;
+    short morph_time;
+    struct NJS_POINT3 sp_scale;
+    struct NJS_POINT3 tgtpos_s;
+    struct NJS_POINT3 tgtpos;
+    float HitPoint;
+    float attack_dist;
+    long attack_zang;
+    long attack_yang;
+    struct NJS_ARGB argb_ofs[2];
+    float morph_param;
+    short attack_tmr;
+    signed char barrier_ptno;
+    signed char barrier_tmr;
+    float barrier_a;
+    struct NJS_TEXLIST *texlist;
+    float ground_y;
+    void *morph_wp;
+    float param;
+    unsigned long old_texaddr;
+};
+static_assert(sizeof(chaoswk) == 0xc0, "sizeof chaoswk");
+static_assert(offsetof(chaoswk, bwk) == 0x0, "chaoswk::bwk");
+static_assert(offsetof(chaoswk, generaltimer) == 0x38, "chaoswk::generaltimer");
+static_assert(offsetof(chaoswk, txchg_tmr) == 0x3c, "chaoswk::txchg_tmr");
+static_assert(offsetof(chaoswk, txchg_num) == 0x3d, "chaoswk::txchg_num");
+static_assert(offsetof(chaoswk, form) == 0x3e, "chaoswk::form");
+static_assert(offsetof(chaoswk, sp_mode) == 0x3f, "chaoswk::sp_mode");
+static_assert(offsetof(chaoswk, colli_mode) == 0x40, "chaoswk::colli_mode");
+static_assert(offsetof(chaoswk, headsts) == 0x41, "chaoswk::headsts");
+static_assert(offsetof(chaoswk, camera_mode) == 0x42, "chaoswk::camera_mode");
+static_assert(offsetof(chaoswk, etcflag) == 0x44, "chaoswk::etcflag");
+static_assert(offsetof(chaoswk, dispflag) == 0x46, "chaoswk::dispflag");
+static_assert(offsetof(chaoswk, morph_time) == 0x48, "chaoswk::morph_time");
+static_assert(offsetof(chaoswk, sp_scale) == 0x4c, "chaoswk::sp_scale");
+static_assert(offsetof(chaoswk, tgtpos_s) == 0x58, "chaoswk::tgtpos_s");
+static_assert(offsetof(chaoswk, tgtpos) == 0x64, "chaoswk::tgtpos");
+static_assert(offsetof(chaoswk, HitPoint) == 0x70, "chaoswk::HitPoint");
+static_assert(offsetof(chaoswk, attack_dist) == 0x74, "chaoswk::attack_dist");
+static_assert(offsetof(chaoswk, attack_zang) == 0x78, "chaoswk::attack_zang");
+static_assert(offsetof(chaoswk, attack_yang) == 0x7c, "chaoswk::attack_yang");
+static_assert(offsetof(chaoswk, argb_ofs) == 0x80, "chaoswk::argb_ofs");
+static_assert(offsetof(chaoswk, morph_param) == 0xa0, "chaoswk::morph_param");
+static_assert(offsetof(chaoswk, attack_tmr) == 0xa4, "chaoswk::attack_tmr");
+static_assert(offsetof(chaoswk, barrier_ptno) == 0xa6, "chaoswk::barrier_ptno");
+static_assert(offsetof(chaoswk, barrier_tmr) == 0xa7, "chaoswk::barrier_tmr");
+static_assert(offsetof(chaoswk, barrier_a) == 0xa8, "chaoswk::barrier_a");
+static_assert(offsetof(chaoswk, texlist) == 0xac, "chaoswk::texlist");
+static_assert(offsetof(chaoswk, ground_y) == 0xb0, "chaoswk::ground_y");
+static_assert(offsetof(chaoswk, morph_wp) == 0xb4, "chaoswk::morph_wp");
+static_assert(offsetof(chaoswk, param) == 0xb8, "chaoswk::param");
+static_assert(offsetof(chaoswk, old_texaddr) == 0xbc, "chaoswk::old_texaddr");
 
 struct cnkobj {
     unsigned long evalflags;
@@ -2797,6 +2921,42 @@ static_assert(offsetof(colliwk, mytask) == 0x9c, "colliwk::mytask");
 static_assert(offsetof(colliwk, my_num) == 0xa0, "colliwk::my_num");
 static_assert(offsetof(colliwk, hit_num) == 0xa2, "colliwk::hit_num");
 static_assert(offsetof(colliwk, hit_cwp) == 0xa4, "colliwk::hit_cwp");
+
+struct csts {
+    float radius;
+    struct NJS_POINT3 pos;
+    struct NJS_POINT3 spd;
+    struct NJS_POINT3 tnorm;
+    unsigned short find_count;
+    unsigned short selected_nmb;
+    float yt;
+    float yb;
+    long angx;
+    long angz;
+    struct NJS_POINT3 normal;
+    struct NJS_POINT3 normal2;
+    struct NJS_POINT3 onpoly;
+    struct NJS_POINT3 pshbk;
+    struct NJS_POINT3 anaspdh;
+    struct NJS_POINT3 anaspdv;
+};
+static_assert(sizeof(csts) == 0x84, "sizeof csts");
+static_assert(offsetof(csts, radius) == 0x0, "csts::radius");
+static_assert(offsetof(csts, pos) == 0x4, "csts::pos");
+static_assert(offsetof(csts, spd) == 0x10, "csts::spd");
+static_assert(offsetof(csts, tnorm) == 0x1c, "csts::tnorm");
+static_assert(offsetof(csts, find_count) == 0x28, "csts::find_count");
+static_assert(offsetof(csts, selected_nmb) == 0x2a, "csts::selected_nmb");
+static_assert(offsetof(csts, yt) == 0x2c, "csts::yt");
+static_assert(offsetof(csts, yb) == 0x30, "csts::yb");
+static_assert(offsetof(csts, angx) == 0x34, "csts::angx");
+static_assert(offsetof(csts, angz) == 0x38, "csts::angz");
+static_assert(offsetof(csts, normal) == 0x3c, "csts::normal");
+static_assert(offsetof(csts, normal2) == 0x48, "csts::normal2");
+static_assert(offsetof(csts, onpoly) == 0x54, "csts::onpoly");
+static_assert(offsetof(csts, pshbk) == 0x60, "csts::pshbk");
+static_assert(offsetof(csts, anaspdh) == 0x6c, "csts::anaspdh");
+static_assert(offsetof(csts, anaspdv) == 0x78, "csts::anaspdv");
 
 struct enemywk {
     union {
@@ -3325,6 +3485,14 @@ static_assert(offsetof(playerwk, leftfoot_vec) == 0x1b8, "playerwk::leftfoot_vec
 static_assert(offsetof(playerwk, user0_vec) == 0x1c4, "playerwk::user0_vec");
 static_assert(offsetof(playerwk, user1_vec) == 0x1d0, "playerwk::user1_vec");
 static_assert(offsetof(playerwk, shadow) == 0x1dc, "playerwk::shadow");
+
+struct sMRacePath {
+    long flag;
+    struct NJS_POINT3 pos;
+};
+static_assert(sizeof(sMRacePath) == 0x10, "sizeof sMRacePath");
+static_assert(offsetof(sMRacePath, flag) == 0x0, "sMRacePath::flag");
+static_assert(offsetof(sMRacePath, pos) == 0x4, "sMRacePath::pos");
 
 struct sp_info {
     struct NJS_TEXLIST *texlist;
