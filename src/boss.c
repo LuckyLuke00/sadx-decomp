@@ -31,3 +31,8 @@ void FUN_005dbd40(int param_1, int param_2)
 void FUN_005dbda0(int param_1)
 {
 }
+
+// STUB: SADX 0x005dbe10
+void FUN_005dbe10(struct taskwk *twp, struct bosswk *bwp)
+{
+}

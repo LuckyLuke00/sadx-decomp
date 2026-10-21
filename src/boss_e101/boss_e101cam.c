@@ -45,8 +45,3 @@ void StartCameraE101_Tgt(struct NJS_POINT3 *pTgtPos, struct NJS_POINT3 *pEyePos)
 	DAT_060c4544.z = pEyePos->z;
 	CameraSetEventCameraFunc(CameraE101Tgt, 0, 2);
 }
-
-// STUB: SADX 0x00837890
-void updownHeight(struct task *pTask)
-{
-}

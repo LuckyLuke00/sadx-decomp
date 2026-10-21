@@ -1,5 +1,8 @@
 #include "decls.h"
 #include <string.h>
+void FUN_0056a200(struct task *param_1);
+struct eventwk;
+void ___OutputDebugString(char *str, ...);
 extern int DAT_05ccde18;
 extern int DAT_05ccde00;
 extern int DAT_05ccde0c;
@@ -569,4 +572,149 @@ void EV_CreateObject(struct task **tp, float px, float py, float pz, long ax, lo
 	local_8->ang.x = ax;
 	local_8->ang.y = ay;
 	local_8->ang.z = az;
+}
+
+// FUNCTION: SADX 0x0056b270
+void EV_CreateObjectFunc(struct task **tp, struct task *(*func)(), float px, float py, float pz, long ax, long ay, long az)
+{
+	struct taskwk *local_8;
+	FUN_0056b2f0(tp);
+	if (func == 0)
+	{
+		___OutputDebugString("\nERROR : EV_CreateObjectFunc() func=NULL\n\n");
+	}
+	else
+	{
+		*tp = func();
+		local_8 = (*tp)->twp;
+		local_8->pos.x = px;
+		local_8->pos.y = py;
+		local_8->pos.z = pz;
+		local_8->ang.x = ax;
+		local_8->ang.y = ay;
+		local_8->ang.z = az;
+	}
+}
+
+// FUNCTION: SADX 0x0056b430
+void EV_SetMode(struct task *tp, int mode)
+{
+	if (tp != 0)
+	{
+		tp->twp->ewp->mode = mode;
+	}
+}
+
+// FUNCTION: SADX 0x0056b450
+void EV_SetShadow(struct task *tp, float size)
+{
+	if (tp != 0)
+	{
+		*(float *)((char *)tp->twp->ewp + 0x78) = size;
+	}
+}
+
+// FUNCTION: SADX 0x0056b470
+void EV_SetColli(struct task *tp, float size)
+{
+	if (tp != 0)
+	{
+		*(float *)((char *)tp->twp->cwp->info + 0x14) = size;
+	}
+}
+
+// STUB: SADX 0x0056b490
+void EV_CreatePlayer(int n, void (*func)(struct task *), float px, float py, float pz, long ax, long ay, long az)
+{
+}
+
+// STUB: SADX 0x0056b510
+void FUN_0056b510(unsigned char param_1)
+{
+}
+
+// STUB: SADX 0x0056b6f0
+void FUN_0056b6f0(void *param_1)
+{
+}
+
+// FUNCTION: SADX 0x0056b750
+void EV_ClrPath(struct task *tp)
+{
+	if (tp != 0)
+	{
+		FreeEventPath(tp->twp);
+	}
+}
+
+// STUB: SADX 0x0056b770
+void FUN_0056b770(int param_1)
+{
+}
+
+// STUB: SADX 0x0056b940
+void EV_LookObject(struct task *tp, struct task *target, float x, float y, float z)
+{
+}
+
+// FUNCTION: SADX 0x0056b990
+void EV_LookPoint(struct task *tp, float x, float y, float z)
+{
+	struct eventwk *local_8;
+	if (tp != 0)
+	{
+		local_8 = tp->twp->ewp;
+		local_8->look.mode = 2;
+		local_8->look.pos.x = x;
+		local_8->look.pos.y = y;
+		local_8->look.pos.z = z;
+	}
+}
+
+// FUNCTION: SADX 0x0056b9d0
+void EV_LookAngle(struct task *tp, long x, long y, long z)
+{
+	if (tp != 0)
+	{
+		void *local_8 = (void *)tp->twp->ewp;
+		*(char *)((char *)local_8 + 4) = 1;
+		*(long *)((char *)local_8 + 8) = x;
+		*(long *)((char *)local_8 + 0xc) = y;
+		*(long *)((char *)local_8 + 0x10) = z;
+	}
+}
+
+// STUB: SADX 0x0056ba10
+void EV_MoveFree(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x0056bab0
+void EV_MovePoint2(struct task *tp, float x, float y, float z, float s, float a)
+{
+	char *local_8;
+	if (tp != 0)
+	{
+		local_8 = (char *)tp->twp->ewp;
+		FUN_0056a200(tp);
+		*(char *)(local_8 + 0x24) = 2;
+		*(float *)(local_8 + 0x28) = x;
+		*(float *)(local_8 + 0x2c) = y;
+		*(float *)(local_8 + 0x30) = z;
+		*(float *)(local_8 + 0x34) = s;
+		*(float *)(local_8 + 0x38) = a;
+	}
+}
+
+// FUNCTION: SADX 0x0056bb10
+void EV_MoveRotation(struct task *tp, long x, long y, long z)
+{
+	if (tp != 0)
+	{
+		struct eventwk *local_8 = tp->twp->ewp;
+		*(char *)((char *)local_8 + 0x24) = 5;
+		*(long *)((char *)local_8 + 0x28) = x;
+		*(long *)((char *)local_8 + 0x2c) = y;
+		*(long *)((char *)local_8 + 0x30) = z;
+	}
 }

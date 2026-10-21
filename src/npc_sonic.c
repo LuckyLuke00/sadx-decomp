@@ -1,4 +1,16 @@
 #include "decls.h"
+extern char DAT_009960fc[1];
+void DispMilesMeter2P(struct task *tp);
+void SetInputP(unsigned char pno, signed char mode);
+void SetPositionP(unsigned char pno, float x, float y, float z);
+void CharColliOn(struct taskwk *twp);
+long ChkParabolaEnd(struct sParabola *para);
+extern char DAT_05edbd80[0x24];
+extern int DAT_05edbdd0;
+extern float DAT_05edbd08;
+extern float DAT_05edbd78;
+extern unsigned long DAT_05b3ea20;
+void FUN_005a9100(int param_1, unsigned short param_2, struct sMobleCtrl *param_3);
 extern int DAT_05edbd7c;
 extern int DAT_05edbd0c;
 extern const struct sMRacePath *PPT_MRaceEachStage[10];
@@ -13,8 +25,65 @@ void InitSonic2PControl(struct task *tp)
 {
 }
 
+// FUNCTION: SADX 0x005a8990
+void FUN_005a8990(float *param_1, float *param_2, float *param_3)
+{
+	*param_3 = *param_1 + *param_2;
+	param_3++;
+	param_2++;
+	param_1++;
+	*param_3 = *param_1 + *param_2;
+	param_3++;
+	param_2++;
+	param_1++;
+	*param_3 = *param_1 + *param_2;
+	param_3++;
+	param_2++;
+	param_1++;
+}
+
+// STUB: SADX 0x005a8ae0
+void FUN_005a8ae0(float *param_1, float *param_2, float *param_3)
+{
+}
+
 // STUB: SADX 0x005a8cc0
 void InitMoble2PControl(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005a8d10
+void Moble2PControl(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005a8e10
+void Highway_Init(struct task *tp, struct sMobleCtrl *moble_ctrl)
+{
+	int local_cg;
+	int local_8g;
+	local_cg = *(int *)((char *)tp + 0x20);
+	local_8g = *(int *)((char *)GetPlayerTaskPointer(0) + 0x20);
+	*(char *)local_cg = 1;
+	if (DAT_05edbdd0 == 1)
+	{
+		DAT_05edbd08 = 3.5;
+		DAT_05edbd78 = 2.2;
+		DAT_05b3ea20 = 1;
+	}
+	else
+	{
+		DAT_05edbd08 = 2.0;
+		DAT_05edbd78 = 0.08;
+	}
+	*(short *)((char *)local_cg + 0xc) = GetNearestPath((struct NJS_POINT3 *)(local_8g + 0x20), (struct sMRacePath *)DAT_05edbd7c, *(short *)((char *)local_cg + 8));
+	*(short *)((char *)local_cg + 0xe) = GetNearestPath((struct NJS_POINT3 *)(local_8g + 0x20), (struct sMRacePath *)DAT_05edbd0c, *(short *)((char *)local_cg + 0xa));
+	FUN_005a9100(local_cg, *(unsigned short *)((char *)local_cg + 0xe), moble_ctrl);
+	CCL_Init(tp, CLI_MobleDamageCsn, 1, 4);
+}
+
+// STUB: SADX 0x005a9060
+void FUN_005a9060(short param_1)
 {
 }
 
@@ -39,6 +108,42 @@ void FUN_005a9320(struct sMRacePath *param_1, struct NJS_POINT3 *param_2)
 {
 }
 
+// STUB: SADX 0x005a9350
+short GetNearestPath(struct NJS_POINT3 *pos, struct sMRacePath *path_tbl, short max_path)
+{
+	return (short)0;
+}
+
+// STUB: SADX 0x005aa480
+void InitJumpSonicToPoint(struct taskwk *stwp, struct NJS_POINT3 *pos, long time)
+{
+}
+
+// FUNCTION: SADX 0x005aa520
+long ChkEndSonicFakeJump(struct taskwk *stwp)
+{
+	char *local_cg;
+	int local_8g;
+	local_cg = DAT_05edbd80;
+	SetPositionP(1, stwp->pos.x + *(float *)(local_cg + 0x20), stwp->pos.y + *(float *)(local_cg + 0x24), stwp->pos.z + *(float *)(local_cg + 0x28));
+	*(float *)(local_cg + 0x24) = *(float *)(local_cg + 0x24) - *(float *)(local_cg + 0x18);
+	if (*(float *)(local_cg + 0x24) < 0.0)
+	{
+		CharColliOn(stwp);
+	}
+	local_8g = ChkParabolaEnd((struct sParabola *)local_cg);
+	if (local_8g == 0)
+	{
+		return 0;
+	}
+	SetInputP(1, 0x18);
+	if (local_8g == 2)
+	{
+		SetPositionP(1, *(float *)(local_cg + 0xc), *(float *)(local_cg + 0x10), *(float *)(local_cg + 0x14));
+	}
+	return 1;
+}
+
 // STUB: SADX 0x005aa610
 int FUN_005aa610(int param_1)
 {
@@ -49,6 +154,12 @@ int FUN_005aa610(int param_1)
 float MakeStrokeWithDist(struct NJS_POINT3 *vec, float range, float ratio)
 {
 	return (float)0;
+}
+
+// STUB: SADX 0x005aa840
+long ChkSonicStack(struct taskwk *stwp)
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x005aa8d0
@@ -71,8 +182,23 @@ float FUN_005aa8d0(int param_1)
 	}
 }
 
+// STUB: SADX 0x005aaa70
+void DrawMoble2P(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005ab160
+void FUN_005ab160(int param_1, int param_2)
+{
+}
+
 // STUB: SADX 0x005ab220
 void VibrateMoble(struct taskwk *twp, struct sMobleCtrl *moble_ctrl)
+{
+}
+
+// STUB: SADX 0x005ab3e0
+void MRaceSetVoice(struct anywk *awp, long type)
 {
 }
 
@@ -80,6 +206,17 @@ void VibrateMoble(struct taskwk *twp, struct sMobleCtrl *moble_ctrl)
 int FUN_005ab4a0()
 {
 	return (int)0;
+}
+
+// FUNCTION: SADX 0x005ab510
+void SetTexture_EggMoble(struct task *tp)
+{
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	local_8->value.ptr = &texlist_MRace_Eggmoble;
+	texLoadTexturePvmFile(DAT_009960fc, (struct NJS_TEXLIST *)local_8->value.ptr);
+	tp->exec = (void (*)(struct task *))FUN_005b5aa0;
+	tp->dest = DstrReleaseTexture;
 }
 
 // FUNCTION: SADX 0x005ab560
@@ -118,4 +255,9 @@ void SetMilesLose()
 long GetMRaceResult()
 {
 	return DAT_05edbdac;
+}
+
+// STUB: SADX 0x005ab840
+void MRaceDispResult(struct task *tp)
+{
 }

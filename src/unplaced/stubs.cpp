@@ -943,6 +943,11 @@ void CamcontSetCameraLOOKAT(struct taskwk *pTaskWork)
 {
 }
 
+// STUB: SADX 0x004be650
+void CameraSetEventCamera(short ssCameraMode, unsigned char ucAdjustType)
+{
+}
+
 // STUB: SADX 0x004be800
 void CameraSetEventCameraFunc(void (*)(struct _OBJ_CAMERAPARAM *), unsigned char, signed char)
 {
@@ -1145,6 +1150,16 @@ void PGetAccelerationAir(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 {
 }
 
+// STUB: SADX 0x004e0e10
+void PGetBreak(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004e19d0
+void PGetRotation(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x004e3130
 void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
@@ -1210,11 +1225,6 @@ void SeqInitStage()
 
 // STUB: SADX 0x004f52e0
 void SeqEvent(long no)
-{
-}
-
-// STUB: SADX 0x004f5640
-void EventBossExecutor(struct task *tp)
 {
 }
 
@@ -1355,8 +1365,79 @@ void FUN_00503160()
 {
 }
 
+// STUB: SADX 0x005098c0
+long BigCheckWater(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00515760
+void E102ChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0051b830
+void AmyChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x00521120
+void AmyBalanceGameStartChecker(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00521ac0
+void KnucklesTheEchidna(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00528560
+void KnucklesChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0052c370
+void KnucklesChargeEffectExe(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00530180
 void MilesTalesPrower(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00536e70
+void MilesChangeWaitingMotion(struct taskwk *twp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0053de50
+void MilesFaceMotionExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0053dfb0
+void ExecuteMilesSnowBoard(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0053e0e0
+void DisplayMilesSnowBoard(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0054da60
+void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0054f960
+void FUN_0054f960(struct task *)
+{
+}
+
+// STUB: SADX 0x0054fab0
+void DrawBlurOfMetalSonic(struct task *tp)
 {
 }
 
@@ -1463,8 +1544,23 @@ void cameraDebugMake(struct _OBJ_CAMERAPARAM *, struct NJS_POINT3 *, struct NJS_
 {
 }
 
+// STUB: SADX 0x005670c0
+void CameraFishing(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
 // STUB: SADX 0x00567470
 void cameraSonicMain(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
+// STUB: SADX 0x0056a200
+void FUN_0056a200(struct task *)
+{
+}
+
+// STUB: SADX 0x0056a2c0
+void FUN_0056a2c0()
 {
 }
 
@@ -1494,6 +1590,41 @@ void FUN_0056b2f0(struct task **)
 {
 }
 
+// STUB: SADX 0x0056b370
+void FUN_0056b370(struct task *, float, float, float)
+{
+}
+
+// STUB: SADX 0x0056b3e0
+void FUN_0056b3e0(struct task *, long, long, long)
+{
+}
+
+// STUB: SADX 0x0056b540
+void EV_InitPlayer(int n)
+{
+}
+
+// STUB: SADX 0x0056b650
+void FUN_0056b650(struct task *, struct NJS_ACTION *, struct NJS_TEXLIST *, float, int, int)
+{
+}
+
+// STUB: SADX 0x0056b6d0
+void FUN_0056b6d0(struct task *)
+{
+}
+
+// STUB: SADX 0x0056bb50
+void FUN_0056bb50(struct task *)
+{
+}
+
+// STUB: SADX 0x0056bb90
+void FUN_0056bb90()
+{
+}
+
 // STUB: SADX 0x0056bcd0
 void FUN_0056bcd0()
 {
@@ -1501,6 +1632,41 @@ void FUN_0056bcd0()
 
 // STUB: SADX 0x0056be40
 void CalcEventCamera()
+{
+}
+
+// STUB: SADX 0x0056cbf0
+void EV_CameraAng(int mode, int time, long x, long y, long z)
+{
+}
+
+// STUB: SADX 0x0056cc80
+void EV_CameraPos(int mode, int time, float x, float y, float z)
+{
+}
+
+// STUB: SADX 0x0056d010
+void EV_CameraPerspective(int mode, int time, long ang)
+{
+}
+
+// STUB: SADX 0x0056d0b0
+void FUN_0056d0b0(struct task *, char *)
+{
+}
+
+// STUB: SADX 0x0056d0e0
+void EV_ClrFace(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0056d110
+void EV_CameraOff()
+{
+}
+
+// STUB: SADX 0x0056d140
+void EV_SerifPlay(int id)
 {
 }
 
@@ -1719,6 +1885,11 @@ void RingDrawShadow(struct task *tp, float tempy, float pushx, float pushz)
 {
 }
 
+// STUB: SADX 0x005a9100
+void FUN_005a9100(int, unsigned short, struct sMobleCtrl *)
+{
+}
+
 // STUB: SADX 0x005ab5b0
 void late_DispMilesMeter2P(struct task *tp)
 {
@@ -1757,8 +1928,23 @@ long StageNameMode(void *Param)
 	return (long)0;
 }
 
-// STUB: SADX 0x005b1ff0
-void SonicIce(struct task *tp)
+// STUB: SADX 0x005af870
+void EffectSpin(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005af8b0
+void EffectSpinDS(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005af8f0
+void EffectStartHoming(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b0560
+void EffectDash(struct task *tp)
 {
 }
 
@@ -1769,6 +1955,11 @@ void FUN_005b2480(int)
 
 // STUB: SADX 0x005b2660
 void DrawEventActionPL(struct taskwk *twp, int ligPalNo)
+{
+}
+
+// STUB: SADX 0x005b2b60
+void FreeEventPath(struct taskwk *twp)
 {
 }
 
@@ -1875,6 +2066,11 @@ void SaruBombExplosionDraw(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005cdd60
 void PoliceDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005d1230
+void ChaosLifeGauge(struct task *tp)
 {
 }
 
@@ -2204,6 +2400,11 @@ void njSubVector(struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
 }
 
+// STUB: SADX 0x0067e460
+void njScaleV(float *, struct NJS_POINT3 *)
+{
+}
+
 // STUB: SADX 0x0067e500
 void njTranslateLightV(struct NJS_LIGHT *,struct NJS_POINT3 *)
 {
@@ -2235,6 +2436,16 @@ void CreamManager(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006fd380
+void EffectSSSpinDS(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006fd3b0
+void EffectSSStartHoming(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006fd3e0
 void EffectSSDash(struct task *tp)
 {
@@ -2256,6 +2467,41 @@ struct al_status *ADV1_ALR_GetEntryStatus(int num)
 	return (struct al_status *)0;
 }
 
+// STUB: SADX 0x00717f90
+void FUN_00717f90(int)
+{
+}
+
+// STUB: SADX 0x00717fc0
+void FUN_00717fc0()
+{
+}
+
+// STUB: SADX 0x00718010
+void FUN_00718010(int, int, int)
+{
+}
+
+// STUB: SADX 0x00718050
+void FUN_00718050(int)
+{
+}
+
+// STUB: SADX 0x00718120
+void FUN_00718120(int, int, int, int)
+{
+}
+
+// STUB: SADX 0x00731880
+void FUN_00731880()
+{
+}
+
+// STUB: SADX 0x007d1cf0
+void FUN_007d1cf0(int)
+{
+}
+
 // STUB: SADX 0x007d1d20
 void dispModelTask(struct task *p_task)
 {
@@ -2266,8 +2512,34 @@ void execModelTask(struct task *p_task)
 {
 }
 
+// STUB: SADX 0x007d2030
+void FUN_007d2030(float, float, float, long, long, long, float, float, float, struct obj *, struct NJS_TEXLIST *, int)
+{
+}
+
 // STUB: SADX 0x007d21b0
 void FUN_007d21b0(void *)
+{
+}
+
+// STUB: SADX 0x007d4c80
+struct task *FUN_007d4c80(float, float, float, float, float)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x007d4cd0
+void FUN_007d4cd0(struct task *, float)
+{
+}
+
+// STUB: SADX 0x007d6280
+void FUN_007d6280(float, float, float, long, long, long)
+{
+}
+
+// STUB: SADX 0x007d6300
+void ChgEggMobleMod(signed char mode)
 {
 }
 
@@ -2297,11 +2569,6 @@ long GameGearLoop()
 long Expand2(void *src, void *dest)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x00810290
-void FUN_00810290(struct NJS_POINT3 *, float)
-{
 }
 
 // STUB: SADX 0x00810f90
@@ -2351,23 +2618,13 @@ void dispEffectChaos0AttackA(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008c50d0
-void ChaosShakeBrain(struct task *tp)
-{
-}
-
 // STUB: SADX 0x008c51b0
 void drawEffectChaos0LightParticle(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008c5730
-void dispEffectChaos0AttackB(struct task *tp)
-{
-}
-
-// STUB: SADX 0x008c5960
-void SetObjectAlpha(struct obj * *list, float a)
+// STUB: SADX 0x008c57c0
+void drawEffectChaos0EffectB(struct task *tp)
 {
 }
 
@@ -2376,19 +2633,23 @@ void initialChaos(struct taskwk *twp, struct chaoswk *chwp, int id)
 {
 }
 
-// STUB: SADX 0x008c87c0
-struct task *SetTaskDispChaosWater(long ang)
+// STUB: SADX 0x008c7790
+void effectWaterMove(struct taskwk *, struct chaoswk *, struct obj *)
 {
-	return (struct task *)0;
 }
 
-// STUB: SADX 0x008c8990
-void SetParamDispChaosWater(struct NJS_POINT3 *pos, struct NJS_POINT3 *scale)
+// STUB: SADX 0x008c80b0
+void ChaosSurfacePatternChange(struct chaoswk *)
 {
 }
 
 // STUB: SADX 0x008c9d30
 void MirenPlyInitPlayerPos(signed char player)
+{
+}
+
+// STUB: SADX 0x008c9da0
+void Eggman(struct task *tp)
 {
 }
 

@@ -1,7 +1,15 @@
 #include "decls.h"
+extern int DAT_05cd14f4;
+extern "C" double atan2(double v, double u);
 void SetInputP(unsigned char pno, signed char mode);
 extern int DAT_05cd14f8;
 void EV_NpcMilesStandByOff();
+
+// STUB: SADX 0x005ac960
+struct task *NpcMilesSet(struct task *tp1p)
+{
+	return (struct task *)0;
+}
 
 // FUNCTION: SADX 0x005aca60
 void NpcMilesControlDestructor(struct task *tp)
@@ -85,6 +93,68 @@ void GetPlayerSidePos(struct taskwk *twp, float dist, struct NJS_POINT3 *pos)
 		pos->y = twp->pos.y;
 		pos->z = twp->pos.z - dist * local_8g;
 	}
+}
+
+// STUB: SADX 0x005ada90
+long NpcGetAngleToTarget(struct NJS_POINT3 *ps, struct NJS_POINT3 *pd, float *dist, float *distxz)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x005adb60
+void NpcGetAnalogForBrake(struct NJS_POINT3 *spd, float *stroke, long *angle)
+{
+	if ((spd->x == 0.0f) && (spd->z == 0.0f))
+	{
+		if (stroke != 0)
+		{
+			*stroke = 0.0f;
+		}
+		if (angle != 0)
+		{
+			*angle = 0;
+		}
+	}
+	else
+	{
+		if (stroke != 0)
+		{
+			*stroke = 1.0f;
+		}
+		if (angle != 0)
+		{
+			*angle = (long)(atan2(spd->z, spd->x) * 65536.0 / 6.283184) + 0x8000;
+		}
+	}
+}
+
+// FUNCTION: SADX 0x005adc00
+long NpcCheckBothDamage(struct task *tp1, struct task *tp2)
+{
+	struct taskwk *local_cg;
+	struct taskwk *local_8g;
+
+	local_cg = tp1->twp;
+	local_8g = tp2->twp;
+	if ((tp1 == 0) || (tp2 == 0))
+	{
+		return 0;
+	}
+	if (((local_cg->flag & 0x408) == 0x408))
+	{
+		if (((local_cg->cwp->hit_cwp->mytask) == tp2) && ((local_8g->flag & 0x400) != 0))
+		{
+			return 1;
+		}
+	}
+	else
+	{
+		if (((local_8g->flag & 0x408) == 0x408) && ((local_8g->cwp->hit_cwp->mytask) == tp1) && ((local_cg->flag & 0x400) != 0))
+		{
+			return 1;
+		}
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x005adf30

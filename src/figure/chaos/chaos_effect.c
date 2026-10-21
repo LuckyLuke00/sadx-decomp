@@ -1,4 +1,11 @@
 #include "decls.h"
+extern struct taskwk *DAT_060df330[0x80];
+extern struct NJS_SPRITE DAT_060df534;
+extern struct NJS_SPRITE DAT_060df6d8;
+extern struct NJS_SPRITE DAT_060df700;
+extern struct NJS_SPRITE DAT_060df720;
+extern struct NJS_SPRITE DAT_060df55c;
+extern int DAT_060df530;
 extern float DAT_060df57c;
 extern float DAT_060df554;
 extern float DAT_060df6fc;
@@ -7,6 +14,22 @@ extern struct taskwk *DAT_060df740[256];
 extern char DAT_060df580[1];
 extern float DAT_060df6f8;
 
+// FUNCTION: SADX 0x008c4400
+void LoadEffectTexture()
+{
+	initSpriteSub(&DAT_060df534, &texlist_chaos_effect, &anim_c0_attack_a[0]);
+	initSpriteSub(&DAT_060df6d8, &texlist_chaos_effect, &anim_c0_attack_b[0]);
+	initSpriteSub(&DAT_060df700, &texlist_chaos_effect, &anim_c0_attack_c[0]);
+	initSpriteSub(&DAT_060df720, &texlist_chaos_effect, &anim_c0_drop[0]);
+	initSpriteSub(&DAT_060df55c, &texlist_chaos_effect, &anim_c0_ato[0]);
+	DAT_060df558 = 0;
+	DAT_060df530 = 0;
+	DAT_060df6f8 = 1.3f;
+	DAT_060df6fc = 1.3f;
+	DAT_060df57c = 1.0f;
+	DAT_060df554 = 0.2f;
+}
+
 // STUB: SADX 0x008c46c0
 void setDrop(struct taskwk *twp, int num, float size, float yofs)
 {
@@ -14,6 +37,11 @@ void setDrop(struct taskwk *twp, int num, float size, float yofs)
 
 // STUB: SADX 0x008c4ad0
 void SetEffectPunchTameParticle(struct NJS_POINT3 *pos, int num)
+{
+}
+
+// STUB: SADX 0x008c4d00
+void dispEffectChaos0LightParticle_tame(struct task *tp)
 {
 }
 
@@ -70,6 +98,11 @@ void SetChaosShakeBrain(struct obj *obj, struct task *tp)
 	}
 }
 
+// STUB: SADX 0x008c50d0
+void ChaosShakeBrain(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x008c5160
 void setParticleDispTask(struct taskwk *twp)
 {
@@ -92,6 +125,57 @@ void dispEffectChaos0AttackB_init(struct task *tp)
 	local_8->counter.f = 0.0f;
 	local_8->scl.x = DAT_060df6fc;
 	tp->exec = dispEffectChaos0AttackB;
+}
+
+// FUNCTION: SADX 0x008c5730
+void dispEffectChaos0AttackB(struct task *tp)
+{
+	struct taskwk *local_8g;
+	float local_cg;
+	local_8g = tp->twp;
+	local_cg = local_8g->counter.f + 1.25f;
+	local_8g->counter.f = local_cg;
+	if (local_cg >= 10.0f)
+	{
+		DestroyTask(tp);
+	}
+	else
+	{
+		if (DAT_060df530 < 0x80)
+		{
+			if (DAT_060df530 == 0)
+			{
+				CreateElementalTask(0, 6, drawEffectChaos0EffectB);
+			}
+			DAT_060df330[DAT_060df530] = local_8g;
+			DAT_060df530 = DAT_060df530 + 1;
+		}
+	}
+}
+
+// STUB: SADX 0x008c5960
+void SetObjectAlpha(struct obj **list, float a)
+{
+}
+
+// FUNCTION: SADX 0x008c5a10
+struct task *SetChangeAlpha(struct task *tp, struct obj **list, float a0, float a1, int time)
+{
+	struct task *local_8g;
+	struct anywk *local_cg;
+	local_8g = CreateChildTask(0, ChangeAlphaTask, tp);
+	if (local_8g != NULL)
+	{
+		local_8g->awp = (struct anywk *)CAlloc(1, 0x14);
+		local_cg = local_8g->awp;
+		local_cg->work.ptr[0] = list;
+		local_cg->work.f[1] = a0;
+		local_cg->work.f[2] = a1;
+		local_cg->work.f[3] = (a1 - a0) / (float)time;
+		local_cg->work.ul[4] = time;
+		SetObjectAlpha(list, a0);
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x008c5aa0

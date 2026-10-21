@@ -9,6 +9,17 @@ void EggmanDestruct(struct task *tp)
 	ReleasePlayersTexture(1);
 }
 
+// STUB: SADX 0x008cb460
+void EggmanChangeRunningMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x008cb540
+long EggmanCheckJump(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x008cb770
 long EggmanCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
