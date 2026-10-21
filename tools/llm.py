@@ -23,7 +23,8 @@ members), --top-k K,
 --top-p P and --min-p M (sent with every request, else the server picks), --tree-wins
 (a try that fails on a declaration the tree has in another way is built once more without
 the model's declaration of that name), --think-max N (the run ends when it would think after
-N thinking tries, or after a thinking try that repeated), --give-up (the run ends after
+N thinking tries, or after a thinking try that repeated), --max-repeats N (the run ends after
+N tries that repeated an earlier try), --give-up (the run ends after
 GIVE_UP_STALE tries without a new best, or after STUCK_TRIES when the best is below
 GIVE_UP_BELOW%), --stale-built-only (a try that does not build does not count toward
 STUCK_TRIES, nor toward --give-up) and --tag T (default: the prompt's name). Every command
@@ -1285,6 +1286,8 @@ def solve_function(args, file, address, transcript):
                   flush=True)
             if percent == 100:
                 break
+            if args.max_repeats is not None and totals["repeats"] >= args.max_repeats:
+                break
             best_percent = best.percent if best else 0.0
             if args.give_up and (stale >= GIVE_UP_STALE or (stale >= STUCK_TRIES and best_percent < GIVE_UP_BELOW)):
                 break
@@ -1434,6 +1437,7 @@ def parse_args():
     runs.add_argument("--tree-wins", action="store_true",
                       help="build a try once more without the declarations that clash with the tree")
     runs.add_argument("--think-max", type=int, help="end a run when it would think after N thinking tries")
+    runs.add_argument("--max-repeats", type=int, help="end a run after N tries that repeated an earlier try")
     runs.add_argument("--give-up", action="store_true", help="end a run that stopped getting better")
     runs.add_argument("--stale-built-only", action="store_true",
                       help="a try that does not build does not count toward thinking")
