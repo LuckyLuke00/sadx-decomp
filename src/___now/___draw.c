@@ -1,5 +1,16 @@
 #include "decls.h"
 #include <math.h>
+extern struct LATE_FAR_Z_T late_far_z_dflt;
+extern void *DAT_05b39e08[1];
+extern void *DAT_05b39e78[1];
+extern void *DAT_05b3dee4[1];
+extern unsigned char DAT_05b3df51;
+void FUN_004a5c80(struct obj *param_1, int param_2);
+extern int DAT_05b3df64;
+extern void *DAT_05b3df04;
+extern int DAT_05b3df4c;
+extern unsigned char DAT_05b3df52;
+extern int DAT_05b3df68;
 extern float DAT_05b3df0c[3];
 extern float DAT_05b3df10[3];
 extern float DAT_05b3df14[3];
@@ -782,20 +793,20 @@ void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 	if (isTextureNG(DAT_05b3ded0, 0) != 0) return;
 	if (mdl != 0)
 	{
-		if (clipScl != 0.0 && *(float *)((char *)mdl + 0x24) != 0.0)
+		if (clipScl == 0.0 || *(float *)((char *)mdl + 0x24) == 0.0 ||
+			dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18),
+				(local_14.local_14 = *(float *)((char *)mdl + 0x24) * clipScl)) != 0)
 		{
-			local_14.local_14 = *(float *)((char *)mdl + 0x24) * clipScl;
-			if (dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18), local_14.local_14) == 0) return;
-		}
-		if (((unsigned int)mdl < 0x100000) == 0)
-		{
-			if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+			if (((unsigned int)mdl < 0x100000) == 0)
 			{
-				dsSimpleDrawModel(mdl);
-			}
-			else
-			{
-				njDrawModel(mdl);
+				if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+				{
+					dsSimpleDrawModel(mdl);
+				}
+				else
+				{
+					njDrawModel(mdl);
+				}
 			}
 		}
 	}
@@ -1242,7 +1253,7 @@ void late_set_far_z(float nor, float ex, float mesh)
 // FUNCTION: SADX 0x004a2960
 void FUN_004a2960()
 {
-	if (0 == 7)
+	if (((void)0, 0) == 7)
 	{
 		late_far_z_chaos = late_far_z_chaos7;
 	}
@@ -1320,6 +1331,11 @@ void nlateBegin(int flgs)
 	njSetConstantMaterial(local_8);
 }
 
+// STUB: SADX 0x004a43c0
+void late_DrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr, int flgs)
+{
+}
+
 // FUNCTION: SADX 0x004a47d0
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl)
 {
@@ -1354,6 +1370,16 @@ void late_DrawObject(struct obj *obj, int flgs)
 	lateDrawObject(obj, flgs, DAT_05b3df44);
 }
 
+// STUB: SADX 0x004a4ff0
+void late_DrawModelClip(struct NJS_MODEL *mdl, int flgs, float clipScl)
+{
+}
+
+// STUB: SADX 0x004a5080
+void late_DrawModel(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
 // FUNCTION: SADX 0x004a51f0
 void late_DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
 {
@@ -1384,6 +1410,16 @@ void late_DrawObjectEx(struct obj *obj, int flgs)
 	DrawObjectClipEx(obj, flgs, DAT_05b3df44);
 }
 
+// STUB: SADX 0x004a5a10
+void late_DrawModelEx(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a5aa0
+void late_DrawModelClipEx(struct NJS_MODEL *mdl, int flgs, float clipScl)
+{
+}
+
 // FUNCTION: SADX 0x004a5c80
 void FUN_004a5c80(struct obj *param_1, int param_2)
 {
@@ -1412,6 +1448,16 @@ void late_DrawObjectClipMS(struct obj *obj, int flgs, float clipScl)
 	if (isTextureNG(DAT_05b3ded0, 0) != 0)
 		return;
 	DrawObjectMS(obj, flgs, clipScl);
+}
+
+// STUB: SADX 0x004a64a0
+void late_DrawModelMS(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a6530
+void late_DrawModelClipMS(struct NJS_MODEL *mdl, int flgs, float clipScl)
+{
 }
 
 // FUNCTION: SADX 0x004a6900
@@ -1451,10 +1497,85 @@ void late_DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
 	DrawObjectClipMesh(obj, flgs, clipScl);
 }
 
+// STUB: SADX 0x004a7160
+void late_DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a71f0
+void late_DrawModelClipMesh(struct NJS_MODEL *mdl, int flgs, float clipScl)
+{
+}
+
+// FUNCTION: SADX 0x004a7620
+void CHAOS_SetChaosNo(int no)
+{
+
+	DAT_05b3df51 = no;
+	if (no == 7)
+	{
+		late_far_z_chaos = late_far_z_chaos7;
+	}
+	else
+	{
+		late_far_z_chaos = late_far_z_chaos0;
+	}
+	DAT_05b3df04 = 0;
+	DAT_05b3df4c = 0;
+	DAT_05b3df52 = 0;
+	DAT_05b3df68 = 0;
+	DAT_05b3df53 = 0;
+	switch (no)
+	{
+	case 4:
+		DAT_05b3df4c = 1;
+		DAT_05b3df52 = 1;
+		DAT_05b3df68 = 1;
+		break;
+	case 7:
+		DAT_05b3df4c = 1;
+		DAT_05b3df04 = (void *)CHAOS7_MsZofsFnc;
+		break;
+	}
+}
+
 // FUNCTION: SADX 0x004a7800
 void CHAOS_SetMeshMode(int sw)
 {
 	DAT_05b3df53 = sw;
+}
+
+// STUB: SADX 0x004a7810
+void CHAOS_DrawModel(struct NJS_MODEL *m)
+{
+}
+
+// FUNCTION: SADX 0x004a78d0
+void CHAOS_DrawObject(struct obj *o)
+{
+	DAT_05b3df64 = (int)DAT_05b3df04;
+	DAT_05b39e18 = late_far_z_chaos;
+	if ((char)DAT_05b3df52 != 0)
+	{
+		*(float *)&DAT_05b3df40 = -7952.0f;
+	}
+	FUN_004a5c80(o, DAT_05b3df68);
+	if (DAT_05b3df4c != 0)
+	{
+		*(float *)&DAT_05b3df40 = 0.0f;
+	}
+	DAT_05b39e18 = late_far_z_dflt;
+	DAT_05b3df64 = 0;
+}
+
+// STUB: SADX 0x004a7970
+void CHAOS_Action(struct NJS_ACTION *a, float fr)
+{
+}
+
+// STUB: SADX 0x004a7a10
+void CHAOS_DrawShapeMotion(struct obj *o, struct NJS_MOTION *m, struct NJS_MOTION *shp, float fr)
+{
 }
 
 // FUNCTION: SADX 0x004a7ac0
@@ -1607,6 +1728,11 @@ void FUN_004a88c0(NJS_ACTION *param_1, float param_2)
 	DrawAction(param_1, param_2, 0, 0.0f, ___DrawModel);
 }
 
+// STUB: SADX 0x004a88f0
+void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, void *drwMdlFnc)
+{
+}
+
 // FUNCTION: SADX 0x004a89c0
 void ___dsAction(struct NJS_ACTION *param_1, float param_2, float param_3)
 {
@@ -1722,12 +1848,28 @@ void late_ActionMesh(NJS_ACTION *param_1, float param_2, int param_3, float para
 	DrawAction(param_1, param_2, param_3, param_4, DrawModelMesh);
 }
 
+// STUB: SADX 0x004a8b70
+void njShapeData0(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x004a8de0
+float GetKeyframeData(const struct NJS_MKEY_P *key, unsigned long keyno, unsigned long n, float **dst1, float **dst2)
+{
+	return (float)0;
+}
+
 // FUNCTION: SADX 0x004a8e90
 void FUN_004a8e90(float *param_1, float *param_2, float *param_3, float param_4)
 {
 	*param_3 = (1.0 - param_4) * *param_1 + *param_2 * param_4;
 	param_3[1] = (1.0 - param_4) * param_1[1] + param_2[1] * param_4;
 	param_3[2] = (1.0 - param_4) * param_1[2] + param_2[2] * param_4;
+}
+
+// STUB: SADX 0x004a90c0
+void InterpolatesNormal(const float *srca, const float *srcb, float *dst, float t)
+{
 }
 
 // FUNCTION: SADX 0x004a99c0
@@ -1768,10 +1910,56 @@ void MotLnkData0(struct obj *obj)
 	(*(void (*)(struct obj *))DAT_05b3dee4[DAT_05b39db8])(obj);
 }
 
+// FUNCTION: SADX 0x004a9b00
+void MotLnkData1(struct obj *obj)
+{
+	int local_8;
+	local_8 = *(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30);
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e44) = local_8;
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e48) = local_8 + 4;
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e38) = 0;
+	(*(void (**)(struct obj *))(&DAT_05b39e78[DAT_05b39db8]))(obj);
+	(*(void (**)(struct obj *))(&DAT_05b39e08[DAT_05b39db8]))(obj);
+	(*(void (**)(struct obj *))(&DAT_05b3dee4[DAT_05b39db8]))(obj);
+	local_8 += 8;
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30) = local_8;
+}
+
+// STUB: SADX 0x004a9bb0
+void MotLnkData2(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x004a9c60
+void MotLnkData3(struct obj *obj)
+{
+}
+
+// FUNCTION: SADX 0x004a9d10
+void MotLnkData4(struct obj *obj)
+{
+	int local_8;
+
+	local_8 = *(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30);
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e44) = local_8;
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e48) = local_8 + 0x10;
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e38) = 0;
+	(*(void (*)(struct obj *))DAT_05b39e78[DAT_05b39db8])(obj);
+	(*(void (*)(struct obj *))DAT_05b39e08[DAT_05b39db8])(obj);
+	(*(void (*)(struct obj *))DAT_05b3dee4[DAT_05b39db8])(obj);
+	local_8 = local_8 + 0x20;
+	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30) = local_8;
+}
+
 // FUNCTION: SADX 0x004a9dc0
 void ___dsDrawMotionLink(struct obj *object, struct NJS_MOTION_LINK *motionlink, float frame)
 {
 	DrawMotionLink(object, motionlink, frame, 0, 0.0f, ___DrawModel);
+}
+
+// STUB: SADX 0x004aa630
+void FUN_004aa630(int *p1, int *p2, int w, int h, int *out)
+{
 }
 
 // FUNCTION: SADX 0x004aa720
