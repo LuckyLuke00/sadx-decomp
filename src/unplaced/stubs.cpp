@@ -142,6 +142,16 @@ void njSetBackColor(unsigned long,unsigned long,unsigned long)
 {
 }
 
+// STUB: SADX 0x004252b0
+void njCnkSetShortAngleUser(void)
+{
+}
+
+// STUB: SADX 0x004252c0
+void njCnkClrShortAngleUser(void)
+{
+}
+
 // STUB: SADX 0x00430990
 void njPopMatrixEx()
 {
@@ -165,6 +175,24 @@ void njPushMatrix(float *)
 // STUB: SADX 0x00430bb0
 void njCalcPoint(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
+}
+
+// STUB: SADX 0x00431900
+float njSqrt(float)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x00431950
+float njCos(int)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x00431ac0
+float njSin(int)
+{
+	return (float)0;
 }
 
 // STUB: SADX 0x00432d10
@@ -197,9 +225,40 @@ void njFogDisable(void)
 {
 }
 
+// STUB: SADX 0x00435fd0
+void njCnkDrawMotion(struct cnkobj const *,struct NJS_MOTION const *,float)
+{
+}
+
+// STUB: SADX 0x00436030
+void njCnkDrawMotionLink(struct cnkobj const *,struct NJS_MOTION_LINK const *,float)
+{
+}
+
+// STUB: SADX 0x00436200
+void njCnkDrawObject(struct cnkobj *)
+{
+}
+
+// STUB: SADX 0x00438790
+void AL_SetMotionLink(struct task *tp, long MtnNum)
+{
+}
+
+// STUB: SADX 0x00438e50
+void AL_ClearChaoParam(struct CHAO_PARAM_GC *pParam)
+{
+}
+
 // STUB: SADX 0x0043bcf0
 void AL_IconResetPos(struct task *tp)
 {
+}
+
+// STUB: SADX 0x0043d810
+long AL_EmotionGetValue(struct task *tp, unsigned long EmotionNum)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x0043e2a0
@@ -210,6 +269,18 @@ void AL_PlayerDisable()
 // STUB: SADX 0x0043e2d0
 void AL_PlayerEnable()
 {
+}
+
+// STUB: SADX 0x0043ed90
+int FUN_0043ed90()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004400d0
+struct chao_save_info *AL_SetHoldingEggBM(long EggColor)
+{
+	return (struct chao_save_info *)0;
 }
 
 // STUB: SADX 0x00443b80
@@ -235,24 +306,8 @@ enum eCourseNumDX AL_GetCourseNum()
 	return (enum eCourseNumDX)0;
 }
 
-// STUB: SADX 0x00443c80
-long AL_GetCourseClearedLevel(enum eCourseNumDX num)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x00443c90
-void AL_CourseClearedLevelUp(enum eCourseNumDX num)
-{
-}
-
-// STUB: SADX 0x00443cb0
-void AL_GetCourseRecord(enum eCourseNumDX num, struct AL_RECORD *pRecord)
-{
-}
-
-// STUB: SADX 0x00443ce0
-void AL_SetCourseRecord(enum eCourseNumDX num, struct AL_RECORD *pRecord)
+// STUB: SADX 0x0044a470
+void AL_SetBehaviorWithTimer(struct task *tp, long (*Func)(struct task *), long ReserveTimer)
 {
 }
 
@@ -262,10 +317,9 @@ const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 	return (const unsigned long *)0;
 }
 
-// STUB: SADX 0x00477b80
-float ghUnitVector(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5)
+// STUB: SADX 0x0044c4b0
+void FUN_0044c4b0(void *)
 {
-	return (float)0;
 }
 
 // STUB: SADX 0x00484170
@@ -295,43 +349,9 @@ void AlrCam_CheckAndRelease(struct AlrCam *___this)
 {
 }
 
-// STUB: SADX 0x004861e0
-void AlrCam_ConstraintAroundAng(struct AlrCam *___this, long angle)
-{
-}
-
 // STUB: SADX 0x00486640
 void AlrCam_Exe(struct AlrCam *___this, struct AlrReal *alrreal)
 {
-}
-
-// STUB: SADX 0x004868e0
-void Alr_Kill(struct Alr *___this)
-{
-}
-
-// STUB: SADX 0x00486930
-struct alifewk *Alr_GetAwp(struct Alr *___this)
-{
-	return (struct alifewk *)0;
-}
-
-// STUB: SADX 0x00486950
-struct taskwk *Alr_GetTwp(struct Alr *___this)
-{
-	return (struct taskwk *)0;
-}
-
-// STUB: SADX 0x004869a0
-int Alr_CheckRace(const struct Alr *___this)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x004869c0
-int Alr_CheckGoal(const struct Alr *___this)
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x00486bb0
@@ -418,52 +438,6 @@ void FUN_00488c50(struct AlrMemory *)
 {
 }
 
-// STUB: SADX 0x00488c80
-void AllClearEntryDialog()
-{
-}
-
-// STUB: SADX 0x00488cc0
-int SetCommandToDialog(int num, int command)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x00488f90
-void ClearPanel()
-{
-}
-
-// STUB: SADX 0x00489180
-void WinDestructor()
-{
-}
-
-// STUB: SADX 0x00489260
-void Jewel_Create(int cup, struct NJS_POINT3 *pos)
-{
-}
-
-// STUB: SADX 0x00489390
-void CallStart()
-{
-}
-
-// STUB: SADX 0x004893c0
-void CallGoalin()
-{
-}
-
-// STUB: SADX 0x004893f0
-void CallCool()
-{
-}
-
-// STUB: SADX 0x00489420
-void CallJewelGet()
-{
-}
-
 // STUB: SADX 0x00489690
 int AlrRoot_CheckGoal(struct AlrRoot *___this, struct NJS_POINT3 *trans)
 {
@@ -520,11 +494,6 @@ void AlrConfetti_Init()
 {
 }
 
-// STUB: SADX 0x0048a7f0
-void AlrObjFreeManageTask()
-{
-}
-
 // STUB: SADX 0x0048a950
 struct task *AlrObjSetManageTask()
 {
@@ -550,6 +519,26 @@ void ALR_Destructor(struct task *tp)
 
 // STUB: SADX 0x0048f680
 void ALR_Executor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0048fad0
+void AlrEff_Exe(struct AlrEff *___this, struct NJS_POINT3 *trans, struct NJS_POINT3 *velo)
+{
+}
+
+// STUB: SADX 0x0048fc60
+void AlrEff_SetFlag(struct AlrEff *___this, unsigned char flag)
+{
+}
+
+// STUB: SADX 0x00494140
+void ___beforecnk()
+{
+}
+
+// STUB: SADX 0x00494150
+void ___aftercnk()
 {
 }
 
@@ -1253,6 +1242,12 @@ void MomentMuteki(struct task *tp)
 {
 }
 
+// STUB: SADX 0x004f2470
+long GetHoldingItemIDP(unsigned char pno)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004f3570
 long checkdestroytask(struct task *tp)
 {
@@ -1348,6 +1343,11 @@ struct obj *GetMobileLandObject()
 	return (struct obj *)0;
 }
 
+// STUB: SADX 0x004ff450
+void ExtraDisplayExecutor(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005005d0
 void occ_DrawObject(struct taskwk *twp, struct obj *o, float clipScl)
 {
@@ -1396,6 +1396,11 @@ void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo)
 
 // STUB: SADX 0x00503160
 void FUN_00503160()
+{
+}
+
+// STUB: SADX 0x0054fec0
+void CreateKiran2(struct NJS_POINT3 *pos, float scl, float spd)
 {
 }
 
