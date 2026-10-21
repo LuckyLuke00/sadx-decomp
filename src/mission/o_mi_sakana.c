@@ -15,6 +15,11 @@ void FUN_0049b990(struct obj *objp)
 {
 }
 
+// STUB: SADX 0x0049b9f0
+void sakana_disp(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0049baf0
 void sakana_exit(struct task *tp)
 {
@@ -42,4 +47,13 @@ void sakanaInitialize(struct task *tp)
 struct task *setSakana(struct task *tp)
 {
 	return (struct task *)0;
+}
+
+// FUNCTION: SADX 0x0049c270
+void ObjectMiSakana(struct task *tp)
+{
+	if (IsMissionAppear(tp))
+	{
+		MiSakanaGenerater(tp);
+	}
 }

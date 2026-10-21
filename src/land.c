@@ -1,4 +1,9 @@
 #include "decls.h"
+extern int DAT_05b9d838;
+extern int DAT_05b42a84;
+extern int DAT_05b3e0d0;
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
 extern float DAT_05b3ebc8;
 extern float DAT_05b3ebcc;
 extern float DAT_05b3ebd0;
@@ -17,6 +22,11 @@ extern short DAT_05cb5730;
 extern short DAT_05cbaf48;
 extern int DAT_05cbef54;
 extern int DAT_05cbef58;
+
+// STUB: SADX 0x004fcd50
+void SetLandform(struct task *pTask)
+{
+}
 
 // FUNCTION: SADX 0x004fcdf0
 void InitializeLandWork(struct task *pTask)
@@ -64,11 +74,78 @@ void LandChangeLandTable(struct _OBJ_LANDTABLE *pOLT)
 	DAT_05cbef58 = 0;
 }
 
+// STUB: SADX 0x004fd290
+void InitializeGround()
+{
+}
+
 // FUNCTION: SADX 0x004fd360
 void EndGround(struct task *pTask)
 {
 	LandRelease((long)DAT_05cbef5c, (long)DAT_05cbef5d);
 	InitializeLandWork(pTask);
+}
+
+// FUNCTION: SADX 0x004fd390
+void ManageGround(struct task *pTask)
+{
+	struct taskwk *local_8;
+	local_8 = pTask->twp;
+	ResetMaterial();
+	SaveConstantAttr();
+	if (boolLandDisplay == 1 && DAT_05b9d838 == 0)
+	{
+		if (DAT_05b42a84 != 0)
+		{
+			ListGroundForDrawing();
+			npSetZCompareMode(3);
+			npSetZCompare();
+			DrawGround();
+			if (DAT_05b3e0d0 < 1)
+			{
+				MotionGround();
+			}
+			if (DAT_05b3e0d0 < 2 || ((DAT_05b9d724 << 8) | DAT_05b9d744) == 0x2103)
+			{
+				DrawMotionGround();
+			}
+			npSetZCompareMode(1);
+			npSetZCompare();
+		}
+		else
+		{
+			if (DAT_05b3e0d0 < 1)
+			{
+				MotionGround();
+			}
+		}
+	}
+	LoadConstantAttr();
+	ResetMaterial();
+}
+
+// FUNCTION: SADX 0x004fd450
+void ManageGroundDisplayer(struct task *pTask)
+{
+	struct taskwk *local_8;
+	local_8 = pTask->twp;
+	ResetMaterial();
+	SaveConstantAttr();
+	if (boolLandDisplay == 1 && DAT_05b9d838 == 0)
+	{
+		npSetZCompareMode(3);
+		npSetZCompare();
+		ListGroundForDrawing();
+		DrawGround();
+		if (DAT_05b3e0d0 < 2 || ((DAT_05b9d724 << 8) | DAT_05b9d744) == 0x2103)
+		{
+			DrawMotionGround();
+		}
+		npSetZCompareMode(1);
+		npSetZCompare();
+	}
+	LoadConstantAttr();
+	ResetMaterial();
 }
 
 // FUNCTION: SADX 0x004fd8e0
@@ -83,6 +160,11 @@ float FUN_004fd8e0(float *param_1, float *param_2)
 	fVar3 = param_2[2] - param_1[2];
 	fVar1 = fVar4 * fVar4 + fVar2 * fVar2 + fVar3 * fVar3;
 	return fVar1;
+}
+
+// STUB: SADX 0x004fda40
+void MotionGround()
+{
 }
 
 // FUNCTION: SADX 0x004fdae0
@@ -109,6 +191,16 @@ void FUN_004feb40()
 	boolLandCollision = 1;
 }
 
+// STUB: SADX 0x004feb50
+void RegisterCollisionEntry(long slAttribute, struct task *pTask, struct obj *pObject)
+{
+}
+
+// STUB: SADX 0x004fec40
+void WithdrawCollisionEntry(struct task *pTask, struct obj *pObject)
+{
+}
+
 // FUNCTION: SADX 0x004fed30
 void FUN_004fed30()
 {
@@ -118,6 +210,12 @@ void FUN_004fed30()
 	{
 		*(char *)(sVar1 + 0x5cb5630) = 0;
 	}
+}
+
+// STUB: SADX 0x004fed70
+struct obj *GetMobileLandObject()
+{
+	return (struct obj *)0;
 }
 
 // FUNCTION: SADX 0x004fee10

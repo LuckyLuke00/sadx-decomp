@@ -60,6 +60,11 @@ void MirenObjClearForceWork(struct forcewk *forceWk_p)
 	forceWk_p->pos_spd = *(struct NJS_POINT3 *)&DAT_00962c74;
 }
 
+// STUB: SADX 0x00571ca0
+void MirenObjEntryMobileLandObject(struct task *task_p, struct obj *obj_p, long attr, float scale)
+{
+}
+
 // STUB: SADX 0x00571d40
 long MirenObjCheckCollisionP(struct taskwk *taskWk_p, float dist)
 {

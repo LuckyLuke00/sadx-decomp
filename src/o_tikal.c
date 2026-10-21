@@ -1,4 +1,5 @@
 #include "decls.h"
+void tikal_illusion_draw(struct task *task_p);
 void FUN_005bb770(struct task *param_1);
 void FUN_005bb7e0(struct task *param_1);
 void njSubVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
@@ -86,6 +87,21 @@ void FUN_005bb7e0(struct task *param_1)
 void tikal_dispSwitch(int sw)
 {
 	tikal_sw = sw;
+}
+
+// STUB: SADX 0x005bb820
+void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, long frame, float scale)
+{
+}
+
+// STUB: SADX 0x005bb910
+void FUN_005bb910(struct task *task_p, struct NJS_POINT3 *pos_p, void *ptr_p, int bt)
+{
+}
+
+// STUB: SADX 0x005bb9d0
+void FUN_005bb9d0(struct task *task_p)
+{
 }
 
 // STUB: SADX 0x005bbac0

@@ -1,4 +1,23 @@
 #include "decls.h"
+extern float DAT_05b429a8;
+extern float DAT_05b429ac;
+extern float DAT_05b429b0;
+extern float DAT_05b429b4;
+extern float DAT_05b429b8;
+extern float DAT_05b429bc;
+extern short DAT_05b429a4;
+extern short DAT_05b429a6;
+extern float DAT_05b429c0;
+extern int DAT_05b429c4;
+extern struct _camcontwk *camcont_wp;
+extern int DAT_05b42940;
+extern short DAT_05b4294a;
+extern char DAT_05b42948;
+extern char DAT_05b4294c;
+extern char DAT_05b4294d;
+extern int DAT_05b42950;
+extern char DAT_05b42954;
+extern int DAT_05b42958;
 extern int DAT_05b425c8;
 extern NJS_POINT3 DAT_05b425d0[0x32];
 extern float DAT_05b4289c;
@@ -79,6 +98,11 @@ void FUN_004bafb0(void)
 	DAT_05b42a80 = DAT_05b42968;
 }
 
+// STUB: SADX 0x004bafe0
+void cameraModeInit()
+{
+}
+
 // FUNCTION: SADX 0x004bb090
 void CameraEnd(struct task *pTask)
 {
@@ -108,6 +132,27 @@ void AddCameraStage(short ssStep)
 	DAT_05b428e8 = 0;
 }
 
+// FUNCTION: SADX 0x004bb9a0
+void CameraSetCameraMi(struct _OBJ_CAMERAENTRY *pCameraEntry)
+{
+	if (DAT_05b42940 == 0)
+	{
+		return;
+	}
+	*(short *)((char *)pCameraSystemWork + 4) = DAT_05b4294a;
+	*(char *)((char *)pCameraSystemWork + 0xb) = DAT_05b4294c;
+	*(char *)((char *)pCameraSystemWork + 6) = DAT_05b4294d;
+	*(int *)((char *)pCameraSystemWork + 0xc) = DAT_05b42950;
+	*(char *)((char *)pCameraSystemWork + 8) = DAT_05b42948;
+	*(char *)((char *)pCameraSystemWork + 9) = DAT_05b42954;
+	*(int *)((char *)pCameraSystemWork + 0x10) = DAT_05b42958;
+	*(char *)((char *)pCameraSystemWork + 7) = *(char *)((char *)DAT_05b4299c[0] + (*(char *)((char *)pCameraSystemWork + 6)) * 16 + 5);
+	*(int *)pCameraSystemWork = 1;
+	*(int *)((char *)pCameraSystemWork + 0x14) = 0;
+	*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+	DAT_05b42940 = 0;
+}
+
 // FUNCTION: SADX 0x004bbcf0
 void CameraReleaseCollisionCamera()
 {
@@ -116,6 +161,11 @@ void CameraReleaseCollisionCamera()
 		FUN_004bee10();
 		SetAdjustMode(5);
 	}
+}
+
+// STUB: SADX 0x004bbd30
+void FUN_004bbd30(short param_1, struct _OBJ_CAMERAENTRY *param_2)
+{
 }
 
 // FUNCTION: SADX 0x004bc160
@@ -174,10 +224,25 @@ long GetFreeCamera()
 	return (DAT_05b42a74 & 1) != 0;
 }
 
+// STUB: SADX 0x004bd3d0
+void setdistdata()
+{
+}
+
+// STUB: SADX 0x004bd4b0
+void calcfreecamerapos()
+{
+}
+
 // STUB: SADX 0x004bd800
 long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004bddd0
+void FUN_004bddd0()
+{
 }
 
 // FUNCTION: SADX 0x004bde80
@@ -191,12 +256,40 @@ void CamcontSetCameraCAMSTATUS(struct taskwk *pTaskWork)
 	pTaskWork->ang.z = *(long *)((char *)camcont_wp + 0x2c);
 }
 
+// FUNCTION: SADX 0x004bdfe0
+void CamcontSetCameraTGTOFST(struct taskwk *pTaskWork)
+{
+	float fVar1;
+	fVar1 = njCos(*(long *)((char *)camcont_wp + 0x24)) * *(float *)((char *)camcont_wp + 8);
+	*(float *)((char *)pTaskWork + 0x24) = *(float *)((char *)camcont_wp + 0x1c) - njSin(*(long *)((char *)camcont_wp + 0x24)) * *(float *)((char *)camcont_wp + 8);
+	*(float *)((char *)pTaskWork + 0x20) = njSin(*(long *)((char *)camcont_wp + 0x28)) * fVar1 + *(float *)((char *)camcont_wp + 0x18);
+	*(float *)((char *)pTaskWork + 0x28) = njCos(*(long *)((char *)camcont_wp + 0x28)) * fVar1 + *(float *)((char *)camcont_wp + 0x20);
+	pTaskWork->ang.x = *(long *)((char *)camcont_wp + 0x24);
+	pTaskWork->ang.y = *(long *)((char *)camcont_wp + 0x28);
+	pTaskWork->ang.z = *(long *)((char *)camcont_wp + 0x2c);
+}
+
 // FUNCTION: SADX 0x004be0b0
 void AddCameraOffset(struct NJS_POINT3 *vecOffset)
 {
 	*(float *)((char *)pCameraSystemWork + 0x98) += vecOffset->x;
 	*(float *)((char *)pCameraSystemWork + 0x9c) += vecOffset->y;
 	*(float *)((char *)pCameraSystemWork + 0xa0) += vecOffset->z;
+}
+
+// FUNCTION: SADX 0x004bef20
+void FUN_004bef20(struct _CameraSystemWork *param_1)
+{
+	DAT_05b429a8 = *(float *)((char *)param_1 + 0x30);
+	DAT_05b429ac = *(float *)((char *)param_1 + 0x34);
+	DAT_05b429b0 = *(float *)((char *)param_1 + 0x38);
+	DAT_05b429b4 = *(float *)((char *)param_1 + 0x24);
+	DAT_05b429b8 = *(float *)((char *)param_1 + 0x28);
+	DAT_05b429bc = *(float *)((char *)param_1 + 0x2c);
+	DAT_05b429a4 = *(short *)((char *)param_1 + 0x20);
+	DAT_05b429a6 = *(short *)((char *)param_1 + 0x22);
+	DAT_05b429c0 = *(float *)((char *)param_1 + 0x3c);
+	DAT_05b429c4 = *(int *)((char *)pCameraSystemWork + 0x14);
 }
 
 // FUNCTION: SADX 0x004befb0
@@ -265,6 +358,11 @@ void FUN_004bf070(int param_1)
 	*(int *)((char *)pCameraSystemWork + 0xc) = *(int *)((char *)*(int *)DAT_05b4299c + (param_1 << 4));
 }
 
+// STUB: SADX 0x004bf0b0
+void FUN_004bf0b0(struct _CameraSystemWork *param_1, struct _CameraSystemWork *param_2)
+{
+}
+
 // STUB: SADX 0x004bf1b0
 void FUN_004bf1b0(void)
 {
@@ -308,6 +406,12 @@ long CameraCameraAction(struct NJS_CACTION *caction, float frame)
 	return (long)0;
 }
 
+// STUB: SADX 0x004bf590
+long addcolCube(struct _OBJ_CAMERAENTRY *entry, struct NJS_POINT3 *pos)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x004bf650
 long FUN_004bf650(float *param_1, float *param_2)
 {
@@ -327,6 +431,11 @@ long FUN_004bf650(float *param_1, float *param_2)
 	{
 		return 0;
 	}
+}
+
+// STUB: SADX 0x004bfcb0
+void CameraPositionSmooth(struct NJS_POINT3 *last, struct NJS_POINT3 *pos)
+{
 }
 
 // FUNCTION: SADX 0x004bfd60

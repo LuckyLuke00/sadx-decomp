@@ -52,6 +52,65 @@ void ObjectSetupInput(struct taskwk *twp, struct motionwk *mwp)
 	}
 }
 
+// FUNCTION: SADX 0x005003a0
+void OConvertVector_O2G(struct taskwk *twp, struct NJS_POINT3 *vp)
+{
+	struct NJS_POINT3 v;
+
+	v.x = vp->x;
+	v.y = vp->y;
+	v.z = vp->z;
+	njPushMatrix(_nj_unit_matrix_);
+	if (*(long *)&twp->ang.z != 0)
+	{
+		njRotateZ(0, *(unsigned short *)&twp->ang.z);
+	}
+	if (twp->ang.x != 0)
+	{
+		njRotateX(0, twp->ang.x);
+	}
+	if (twp->ang.y != 0)
+	{
+		njRotateY(0, twp->ang.y);
+	}
+	njCalcVector(0, &v, vp);
+	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x00500460
+void InitObjects()
+{
+	struct task *local_8g;
+	struct task *local_cg;
+
+	DAT_05cc25a4 = NULL;
+	DAT_05cc25a8 = 0;
+	local_8g = (struct task *)CAlloc(1, 0x34);
+	if (local_8g == NULL)
+	{
+		return;
+	}
+	DAT_05cc25a4 = local_8g;
+	DAT_05cc25a8 = (int)local_8g;
+	local_8g->next = (struct task *)0x1f;
+	local_8g->awp = NULL;
+	local_8g->thp = NULL;
+	local_8g->last = NULL;
+	local_cg = CreateElementalTask(0, 3, DrawObjects);
+	if (local_cg != NULL)
+	{
+		local_cg->dest = EndDrawObjects;
+		local_cg->disp = DrawObjects;
+	}
+	ReviveSetObject();
+	InitJumpPanel();
+	ClrRocketTaskWorkBuff();
+	InitReleaseBox();
+	InitialDynamite();
+	ClearAllSwitches();
+	InitItemBoxManager();
+}
+
 // FUNCTION: SADX 0x00500530
 void EndDrawObjects(struct task *tp)
 {
@@ -86,6 +145,103 @@ void DrawObjects(struct task *tp)
 	occ_DrawObject(local_8, (struct obj *)DAT_05cc25a4, 1.0f);
 }
 
+// FUNCTION: SADX 0x005005d0
+void occ_DrawObject(struct taskwk *twp, struct obj *o, float clipScl)
+{
+	if (twp != NULL)
+	{
+		if ((twp->flag & 0x2000) != 0)
+		{
+			if ((twp->flag & 0x8000) != 0)
+			{
+				late_DrawObjectClipMesh(o, 0, clipScl);
+			}
+			else
+			{
+				late_DrawObjectClipMesh(o, 1, clipScl);
+			}
+		}
+		else if ((twp->flag & 0x8000) != 0)
+		{
+			late_DrawObjectClipEx(o, 0, clipScl);
+		}
+		else if ((twp->flag & 0x4000) != 0)
+		{
+			late_DrawObjectClipEx(o, 1, clipScl);
+		}
+		else
+		{
+			ds_DrawObjectClip(o, clipScl);
+		}
+	}
+	else
+	{
+		ds_DrawObjectClip(o, clipScl);
+	}
+}
+
+// FUNCTION: SADX 0x005006a0
+long ObjectNormal(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return 1;
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		local_8->value.l = 0;
+	}
+	else
+	{
+		NeonuLoadTexture((struct NJS_TEXLIST *)local_8->value.l);
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			tp->exec = ObjectNormalDisplay;
+			tp->disp = ObjectNormalDisplay;
+			tp->dest = ObjectNormalExit;
+		}
+	}
+	ObjectNormalDisplay(tp);
+	return 0;
+}
+
+// FUNCTION: SADX 0x00500740
+long ObjectNormal_LE(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return 1;
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		local_8->value.l = 0;
+	}
+	else
+	{
+		NeonuLoadTexture((struct NJS_TEXLIST *)local_8->value.l);
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			tp->exec = ObjectNormalDisplay_LE;
+			tp->disp = ObjectNormalDisplay_LE;
+			tp->dest = ObjectNormalExit;
+		}
+	}
+	ObjectNormalDisplay_LE(tp);
+	return 0;
+}
+
 // FUNCTION: SADX 0x005007e0
 void ObjectNormalExit(struct task *tp)
 {
@@ -96,6 +252,68 @@ void ObjectNormalExit(struct task *tp)
 	{
 		late_ReleaseTexture((NJS_TEXLIST *)local_8->value.l);
 	}
+}
+
+// FUNCTION: SADX 0x00500a40
+long ObjectScaleNormal(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return 1;
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		local_8->value.l = 0;
+	}
+	else
+	{
+		NeonuLoadTexture((struct NJS_TEXLIST *)local_8->value.l);
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			tp->exec = ObjectScaleDisplay;
+			tp->disp = ObjectScaleDisplay;
+			tp->dest = ObjectNormalExit;
+		}
+	}
+	ObjectScaleDisplay(tp);
+	return 0;
+}
+
+// FUNCTION: SADX 0x00500d30
+long ObjectCCollision(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return 1;
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		local_8->value.l = 0;
+	}
+	else
+	{
+		NeonuLoadTexture((struct NJS_TEXLIST *)local_8->value.l);
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			tp->dest = ObjectNormalExit;
+			tp->exec = ObjectCCollisionExecute;
+			tp->disp = ObjectNormalDisplay;
+		}
+	}
+	ObjectNormalDisplay(tp);
+	return 0;
 }
 
 // FUNCTION: SADX 0x00500dd0
@@ -117,6 +335,37 @@ void ObjectCCollisionExecute(struct task *tp)
 	{
 		ObjectNormalDisplay(tp);
 	}
+}
+
+// FUNCTION: SADX 0x00500e40
+long ObjectCCollision_L(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut_L(tp) != 0)
+	{
+		return 1;
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		local_8->value.l = 0;
+	}
+	else
+	{
+		NeonuLoadTexture((struct NJS_TEXLIST *)local_8->value.ptr);
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			tp->dest = ObjectNormalExit;
+			tp->exec = ObjectCCollisionExecute_L;
+			tp->disp = ObjectNormalDisplay;
+		}
+	}
+	ObjectNormalDisplay(tp);
+	return 0;
 }
 
 // FUNCTION: SADX 0x00500ee0
@@ -183,6 +432,43 @@ void FUN_00501300(struct task *param_1, struct task *param_2)
 	DAT_05cc25a8 = (int)param_2;
 }
 
+// STUB: SADX 0x00501350
+void ObjectGCollisionExecute(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x00501440
+void ObjectGCollisionDisplay(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (SetObjectTexture() == 0)
+	{
+		___njSetTexture((struct NJS_TEXLIST *)local_8->value.ptr);
+	}
+	njPushMatrix(NULL);
+	njTranslateV(NULL, &local_8->pos);
+	if (local_8->ang.z != 0)
+	{
+		njRotateZ(NULL, (unsigned short)local_8->ang.z);
+	}
+	if (local_8->ang.y != 0)
+	{
+		njRotateY(NULL, (unsigned short)local_8->ang.y);
+	}
+	if (local_8->ang.x != 0)
+	{
+		njRotateX(NULL, (unsigned short)local_8->ang.x);
+	}
+	occ_DrawObject(local_8, (struct obj *)local_8->counter.ptr, 1.0f);
+	njPopMatrix(1);
+}
+
 // FUNCTION: SADX 0x00501510
 void ObjectGCollisionExit(struct task *tp)
 {
@@ -214,4 +500,15 @@ void FUN_00501570(struct task *param_1)
 		ReleaseMobileLandObject((struct obj *)local_8->counter.ptr);
 	}
 	FUN_005015e0(local_8->timer.ptr);
+}
+
+// STUB: SADX 0x00501680
+void ObjectGCollisionExecute___Mesh(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00501910
+struct obj *SetModelCollision(struct obj *OriginalObj, struct task *tp, long Flag)
+{
+	return (struct obj *)0;
 }

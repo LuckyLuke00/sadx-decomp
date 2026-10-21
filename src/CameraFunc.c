@@ -1,4 +1,19 @@
 #include "decls.h"
+extern long DAT_05ccdb9c;
+extern long DAT_05ccdba0;
+extern long DAT_05ccdb54;
+extern long DAT_05ccdb58;
+extern short *DAT_05baf368;
+extern struct strCamCartData camCartData[1];
+extern struct Angle3 DAT_05b42920;
+float FUN_005642f0(float *param_1, float *param_2);
+void CCSI_CalcTargetPos(float dist, struct NJS_POINT3 *ans);
+extern struct Angle3 chaoscam_angacc_lim_def;
+extern struct Angle3 chaoscam_angspd_lim_def;
+extern struct NJS_POINT3 chaoscam_camspd_lim_def;
+extern struct Angle3 DAT_05ccdb8c;
+extern struct Angle3 DAT_05ccdb7c;
+extern struct NJS_POINT3 DAT_05ccdb18;
 extern struct taskwk *DAT_05ccdbdc;
 extern struct NJS_POINT3 *DAT_05ccdbc0;
 extern struct NJS_POINT3 DAT_05ccdb44;
@@ -89,6 +104,41 @@ void SetCameraChaosStdParam(struct NJS_POINT3 *tgtpos_ofs, struct NJS_POINT3 *ca
 {
 }
 
+// FUNCTION: SADX 0x00563020
+void SetCameraChaosStdSpeed(struct Angle3 *angacc, struct Angle3 *angspd, struct NJS_POINT3 *camspd)
+{
+	if (angacc == 0)
+	{
+		angacc = &chaoscam_angacc_lim_def;
+	}
+	if (angspd == 0)
+	{
+		angspd = &chaoscam_angspd_lim_def;
+	}
+	if (camspd == 0)
+	{
+		camspd = &chaoscam_camspd_lim_def;
+	}
+	DAT_05ccdb8c = *angacc;
+	DAT_05ccdb7c = *angspd;
+	DAT_05ccdb18 = *camspd;
+}
+
+// STUB: SADX 0x005630a0
+void CCSI_CalcTargetPos(float dist, struct NJS_POINT3 *ans)
+{
+}
+
+// STUB: SADX 0x00563130
+void CameraChaosStageInit(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
+// STUB: SADX 0x00563380
+void CameraLine(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
 // FUNCTION: SADX 0x00563900
 void CameraEventCamera(struct _OBJ_CAMERAPARAM *pParam)
 {
@@ -144,6 +194,12 @@ float FUN_005642f0(float *param_1, float *param_2)
 	return (float)0;
 }
 
+// STUB: SADX 0x00564370
+int PC1_SearchNearPath(struct NJS_POINT3 *postgt, struct PATHCAMERA1WORK *pPathCamera1Work)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x005656f0
 void calcModerateVector(struct Angle3 *ang, struct NJS_POINT3 *vec)
 {
@@ -167,6 +223,44 @@ void calcModerateVector(struct Angle3 *ang, struct NJS_POINT3 *vec)
 // STUB: SADX 0x00566070
 void FUN_00566070(float param_1)
 {
+}
+
+// STUB: SADX 0x005660e0
+void calcCartCamPos()
+{
+}
+
+// FUNCTION: SADX 0x005661a0
+void calcCartCamTgt()
+{
+	struct NJS_POINT3 _vec;
+	_vec = camCartData[*(unsigned char *)camcont_wp].transTgt;
+	calcModerateVector(&DAT_05b42920, &_vec);
+	*(float *)((char *)camcont_wp + 0x18) += _vec.x;
+	*(float *)((char *)camcont_wp + 0x1c) += _vec.y;
+	*(float *)((char *)camcont_wp + 0x20) += _vec.z;
+}
+
+// FUNCTION: SADX 0x00566230
+void FUN_00566230(void)
+{
+	*(float *)((char *)camcont_wp + 0xc) = *(float *)((char *)camcont_wp + 0xc);
+	*(float *)((char *)camcont_wp + 0x10) = *(float *)((char *)camcont_wp + 0x10);
+	*(float *)((char *)camcont_wp + 0x14) = *(float *)((char *)camcont_wp + 0x14);
+	*(float *)((char *)camcont_wp + 0x18) = (*(float *)((char *)camcont_wp + 0x18) - DAT_05ccdbe8) * 0.2f + DAT_05ccdbe8;
+	*(float *)((char *)camcont_wp + 0x1c) = (*(float *)((char *)camcont_wp + 0x1c) - DAT_05ccdbec) * 0.2f + DAT_05ccdbec;
+	*(float *)((char *)camcont_wp + 0x20) = (*(float *)((char *)camcont_wp + 0x20) - DAT_05ccdbf0) * 0.2f + DAT_05ccdbf0;
+}
+
+// FUNCTION: SADX 0x005662e0
+void FUN_005662e0(void)
+{
+	*(float *)((char *)camcont_wp + 0x0c) = (*(float *)((char *)camcont_wp + 0x0c) - DAT_05ccdad4) * 0.20000000298023224 + DAT_05ccdad4;
+	*(float *)((char *)camcont_wp + 0x10) = (*(float *)((char *)camcont_wp + 0x10) - DAT_05ccdad8) * 0.20000000298023224 + DAT_05ccdad8;
+	*(float *)((char *)camcont_wp + 0x14) = (*(float *)((char *)camcont_wp + 0x14) - DAT_05ccdadc) * 0.20000000298023224 + DAT_05ccdadc;
+	*(float *)((char *)camcont_wp + 0x18) = (*(float *)((char *)camcont_wp + 0x18) - DAT_05ccdbe8) * 0.20000000298023224 + DAT_05ccdbe8;
+	*(float *)((char *)camcont_wp + 0x1c) = (*(float *)((char *)camcont_wp + 0x1c) - DAT_05ccdbec) * 0.20000000298023224 + DAT_05ccdbec;
+	*(float *)((char *)camcont_wp + 0x20) = (*(float *)((char *)camcont_wp + 0x20) - DAT_05ccdbf0) * 0.20000000298023224 + DAT_05ccdbf0;
 }
 
 // FUNCTION: SADX 0x005663c0
@@ -246,12 +340,27 @@ void FUN_005675c0(void)
 	DAT_05ccdb44 = DAT_05b42a7c->pos;
 }
 
+// STUB: SADX 0x005675f0
+void FUN_005675f0(void)
+{
+}
+
+// STUB: SADX 0x005676f0
+void sonicCameraAdjustXangle()
+{
+}
+
 // FUNCTION: SADX 0x00567d30
 void sonicCameraCalcCollision()
 {
 	CameraAdditionalCollision((struct NJS_POINT3 *)((char *)camcont_wp + 0xc));
 	CameraAdditionalPlane(&DAT_05ccdb44, (struct NJS_POINT3 *)((char *)camcont_wp + 0xc));
 	CameraCollisitonCheck(&DAT_05ccdb44, (struct NJS_POINT3 *)((char *)camcont_wp + 0xc));
+}
+
+// STUB: SADX 0x00567d80
+void sonicCameraFollow()
+{
 }
 
 // FUNCTION: SADX 0x00567e80
@@ -290,4 +399,37 @@ void CameraE103Set(struct taskwk *pTaskWk, struct NJS_POINT3 *pLinePos)
 // STUB: SADX 0x005689b0
 void AdjustNone(struct taskwk *pTaskWork, struct taskwk *pOldTaskWork, struct _OBJ_ADJUSTPARAM *pCameraAdjustWork)
 {
+}
+
+// STUB: SADX 0x00569830
+void atpInitParam(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
+{
+}
+
+// STUB: SADX 0x005698e0
+void atpCalcCamera2PlayerAngle(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
+{
+}
+
+// STUB: SADX 0x00569ba0
+void atpAdjustCameraPointWithDistance(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
+{
+}
+
+// STUB: SADX 0x00569c90
+void atpAdjustCameraTarget(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
+{
+}
+
+// FUNCTION: SADX 0x00569d70
+void AdjustThreePoint(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
+{
+	if (DiffAngle(twp->ang.x, DAT_05ccdb54) > DAT_05ccdb9c)
+	{
+		twp->ang.x = AdjustAngle(DAT_05ccdb54, twp->ang.x, DAT_05ccdb9c);
+	}
+	if (DiffAngle(twp->ang.y, DAT_05ccdb58) > DAT_05ccdba0)
+	{
+		twp->ang.y = AdjustAngle(DAT_05ccdb58, twp->ang.y, DAT_05ccdba0);
+	}
 }

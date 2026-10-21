@@ -2074,6 +2074,14 @@
    "library": false
   },
   {
+   "address": "0x0049a130",
+   "name": "IsMissionDispFlag",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0049a170",
    "name": "IsMissionAppear",
    "accuracy": 0.06153846153846154,
@@ -2090,9 +2098,33 @@
    "library": false
   },
   {
+   "address": "0x0049a770",
+   "name": "Disp(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0049a840",
+   "name": "Destructor(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0049a8a0",
+   "name": "Exec(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0049a9f0",
    "name": "ObjectMi3Dasu",
-   "accuracy": 0.8235294117647058,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -2117,6 +2149,14 @@
    "address": "0x0049b990",
    "name": "FUN_0049b990",
    "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0049b9f0",
+   "name": "sakana_disp",
+   "accuracy": 0.02631578947368421,
    "effective": false,
    "stub": true,
    "library": false
@@ -2154,8 +2194,48 @@
    "library": false
   },
   {
+   "address": "0x0049c120",
+   "name": "MiSakanaGenerater",
+   "accuracy": 0.01904761904761905,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0049c270",
+   "name": "ObjectMiSakana",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0049d140",
+   "name": "Disp(2)",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0049d1c0",
-   "name": "Destructor",
+   "name": "Destructor(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0049d1d0",
+   "name": "Exec(2)",
+   "accuracy": 0.014492753623188406,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0049d390",
+   "name": "ObjectMiMission_Start",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -2283,7 +2363,7 @@
   },
   {
    "address": "0x0049ea10",
-   "name": "Exec(1)",
+   "name": "Exec(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -2291,7 +2371,7 @@
   },
   {
    "address": "0x0049ec90",
-   "name": "Disp",
+   "name": "Disp(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -4650,11 +4730,27 @@
    "library": false
   },
   {
+   "address": "0x004bb9a0",
+   "name": "CameraSetCameraMi",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004bbcf0",
    "name": "CameraReleaseCollisionCamera",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bbd30",
+   "name": "FUN_004bbd30",
+   "accuracy": 0.14814814814814814,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -4698,6 +4794,22 @@
    "library": false
   },
   {
+   "address": "0x004bd3d0",
+   "name": "setdistdata",
+   "accuracy": 0.13559322033898305,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bd4b0",
+   "name": "calcfreecamerapos",
+   "accuracy": 0.10810810810810811,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004bd5a0",
    "name": "CameraViewSet",
    "accuracy": 0.046511627906976744,
@@ -4709,6 +4821,14 @@
    "address": "0x004bd800",
    "name": "CameraCollisionCube",
    "accuracy": 0.2127659574468085,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bddd0",
+   "name": "FUN_004bddd0",
+   "accuracy": 0.16,
    "effective": false,
    "stub": true,
    "library": false
@@ -4727,6 +4847,14 @@
    "accuracy": 0.1038961038961039,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bdfe0",
+   "name": "CamcontSetCameraTGTOFST",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4759,6 +4887,14 @@
    "accuracy": 0.12307692307692308,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004bef20",
+   "name": "FUN_004bef20",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4823,6 +4959,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bf0b0",
+   "name": "FUN_004bf0b0",
+   "accuracy": 0.08888888888888889,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -4898,11 +5042,27 @@
    "library": false
   },
   {
+   "address": "0x004bf590",
+   "name": "addcolCube",
+   "accuracy": 0.14492753623188406,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004bf650",
    "name": "FUN_004bf650",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004bfcb0",
+   "name": "CameraPositionSmooth",
+   "accuracy": 0.14814814814814814,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -6330,6 +6490,14 @@
    "library": false
   },
   {
+   "address": "0x004cfcb0",
+   "name": "CCL_InitShare",
+   "accuracy": 0.14084507042253522,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004cfd90",
    "name": "CCL_ClearInfo",
    "accuracy": 0.10126582278481013,
@@ -6418,6 +6586,30 @@
    "library": false
   },
   {
+   "address": "0x004d1330",
+   "name": "CCL_CheckPushOut",
+   "accuracy": 0.17543859649122806,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d2a50",
+   "name": "ConvertPositionGlobalToLocal",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d2b00",
+   "name": "ConvertPositionLocalToGlobal",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004d52d0",
    "name": "FUN_004d52d0",
    "accuracy": 1.0,
@@ -6431,6 +6623,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004d7f60",
+   "name": "FUN_004d7f60",
+   "accuracy": 0.08247422680412371,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -6538,6 +6738,14 @@
    "library": false
   },
   {
+   "address": "0x004d97c0",
+   "name": "FUN_004d97c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004d9850",
    "name": "FUN_004d9850",
    "accuracy": 1.0,
@@ -6629,6 +6837,14 @@
    "address": "0x004d9c60",
    "name": "CCL_IsHitKindEx",
    "accuracy": 0.11627906976744186,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004d9d50",
+   "name": "FUN_004d9d50",
+   "accuracy": 0.2222222222222222,
    "effective": false,
    "stub": true,
    "library": false
@@ -6818,11 +7034,27 @@
    "library": false
   },
   {
+   "address": "0x004db050",
+   "name": "FUN_004db050",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004db440",
    "name": "PCheckHoldSwingableObject",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004db960",
+   "name": "PCheckBreak",
+   "accuracy": 0.136986301369863,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -6839,6 +7071,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004dbb00",
+   "name": "PCheckColliAngle",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004dbbc0",
+   "name": "PCheckPushAngle",
+   "accuracy": 0.13513513513513514,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -6866,6 +7114,54 @@
    "library": false
   },
   {
+   "address": "0x004df580",
+   "name": "FUN_004df580",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004e1920",
+   "name": "PGetGravity",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004e22a0",
+   "name": "PResetAngle",
+   "accuracy": 0.09195402298850575,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004e23a0",
+   "name": "PResetAngleForBuilding",
+   "accuracy": 0.09876543209876543,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004e2770",
+   "name": "PAdjustAngleYQ",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004e2ec0",
+   "name": "FUN_004e2ec0",
+   "accuracy": 0.13114754098360656,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004e3110",
    "name": "FUN_004e3110",
    "accuracy": 1.0,
@@ -6877,6 +7173,14 @@
    "address": "0x004e3130",
    "name": "PGetPushSpeed",
    "accuracy": 0.03162055335968379,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004e3420",
+   "name": "FUN_004e3420",
+   "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
    "library": false
@@ -6898,11 +7202,83 @@
    "library": false
   },
   {
+   "address": "0x004ebeb0",
+   "name": "PConvertVector_G2P",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ebf90",
+   "name": "PConvertVector_P2G",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ec070",
+   "name": "PConvertVector_G2N",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ec160",
+   "name": "PConvertVector_N2G",
+   "accuracy": 0.0898876404494382,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ed0e0",
+   "name": "PSetMotion_Next",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ed170",
+   "name": "PSetMotion_SetStartFrame",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ed210",
+   "name": "FUN_004ed210",
+   "accuracy": 0.12698412698412698,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004eef80",
+   "name": "PAdjustAngleFacingTo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004ef210",
    "name": "PlayerFaceMotionEnd",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ef550",
+   "name": "PlayerFaceModelInterpolateSub",
+   "accuracy": 0.09090909090909091,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -6927,6 +7303,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ef840",
+   "name": "PSetSplashEffect",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -7018,6 +7402,14 @@
    "library": false
   },
   {
+   "address": "0x004f0760",
+   "name": "LadderingPathP",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f07f0",
    "name": "FUN_004f07f0",
    "accuracy": 1.0,
@@ -7085,6 +7477,14 @@
    "address": "0x004f0ae0",
    "name": "CancelLookingAtP",
    "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f0b10",
+   "name": "KeepPlayersEyesOnTheTaskP",
+   "accuracy": 0.14545454545454545,
    "effective": false,
    "stub": true,
    "library": false
@@ -7170,6 +7570,30 @@
    "library": false
   },
   {
+   "address": "0x004f0fe0",
+   "name": "SetVelocityYAndRotationAndNoconTimeP",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f11f0",
+   "name": "SetVelocityAndRotationAndNoconTimeP",
+   "accuracy": 0.10666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f12d0",
+   "name": "SetVelocityAndRotationAndNoconTimeWithSpinDashP",
+   "accuracy": 0.0975609756097561,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f13d0",
    "name": "SetRotationP",
    "accuracy": 1.0,
@@ -7242,6 +7666,14 @@
    "library": false
   },
   {
+   "address": "0x004f1980",
+   "name": "CheckCollisionCylinderP",
+   "accuracy": 0.1282051282051282,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f1a60",
    "name": "GetPlayerCharacterName",
    "accuracy": 1.0,
@@ -7295,6 +7727,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f1d40",
+   "name": "GetTheNearestPlayerNumber",
+   "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -7362,6 +7802,30 @@
    "library": false
   },
   {
+   "address": "0x004f2160",
+   "name": "GetThunderBarrierP",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f2200",
+   "name": "GetBarrierP",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f22a0",
+   "name": "GetInvincibleBodyP",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f2340",
    "name": "GetInvincibleBodyForAMomentP",
    "accuracy": 1.0,
@@ -7402,6 +7866,14 @@
    "library": false
   },
   {
+   "address": "0x004f2570",
+   "name": "StopHoldingTaskP",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f2610",
    "name": "FUN_004f2610",
    "accuracy": 1.0,
@@ -7431,6 +7903,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3350",
+   "name": "NP_PCheckNade",
+   "accuracy": 0.12658227848101267,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -8074,6 +8554,14 @@
    "library": false
   },
   {
+   "address": "0x004f6e40",
+   "name": "CL_ColPolListInit",
+   "accuracy": 0.17391304347826086,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f6ef0",
    "name": "FUN_004f6ef0",
    "accuracy": 1.0,
@@ -8138,6 +8626,22 @@
    "library": false
   },
   {
+   "address": "0x004f7740",
+   "name": "FUN_004f7740",
+   "accuracy": 0.11904761904761904,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f7830",
+   "name": "CL_SeekObjectTree",
+   "accuracy": 0.11363636363636363,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f8010",
    "name": "FUN_004f8010",
    "accuracy": 0.25,
@@ -8162,9 +8666,33 @@
    "library": false
   },
   {
+   "address": "0x004fba70",
+   "name": "FUN_004fba70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004fbad0",
+   "name": "GetAngleZXV",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004fcd10",
    "name": "RemoveObjInfo",
    "accuracy": 0.3076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004fcd50",
+   "name": "SetLandform",
+   "accuracy": 0.16,
    "effective": false,
    "stub": true,
    "library": false
@@ -8210,6 +8738,14 @@
    "library": false
   },
   {
+   "address": "0x004fd290",
+   "name": "InitializeGround",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004fd360",
    "name": "EndGround",
    "accuracy": 1.0,
@@ -8218,11 +8754,51 @@
    "library": false
   },
   {
+   "address": "0x004fd390",
+   "name": "ManageGround",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004fd450",
+   "name": "ManageGroundDisplayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004fd4e0",
+   "name": "DrawGround",
+   "accuracy": 0.046511627906976744,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004fd8e0",
    "name": "FUN_004fd8e0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004fd940",
+   "name": "DrawMotionGround",
+   "accuracy": 0.08791208791208792,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004fda40",
+   "name": "MotionGround",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -8239,6 +8815,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004fdb00",
+   "name": "ListGroundForDrawing",
+   "accuracy": 0.021739130434782608,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -8434,6 +9018,22 @@
    "library": false
   },
   {
+   "address": "0x005003a0",
+   "name": "OConvertVector_O2G",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00500460",
+   "name": "InitObjects",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00500530",
    "name": "EndDrawObjects",
    "accuracy": 1.0,
@@ -8452,25 +9052,25 @@
   {
    "address": "0x005005d0",
    "name": "occ_DrawObject",
-   "accuracy": 0.1038961038961039,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005006a0",
    "name": "ObjectNormal",
-   "accuracy": 0.18867924528301888,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00500740",
    "name": "ObjectNormal_LE",
-   "accuracy": 0.18867924528301888,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8490,11 +9090,19 @@
    "library": false
   },
   {
-   "address": "0x00500a40",
-   "name": "ObjectScaleNormal",
-   "accuracy": 0.18867924528301888,
+   "address": "0x00500920",
+   "name": "ObjectNormalDisplay_LE",
+   "accuracy": 0.0784313725490196,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00500a40",
+   "name": "ObjectScaleNormal",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -8508,14 +9116,22 @@
   {
    "address": "0x00500d30",
    "name": "ObjectCCollision",
-   "accuracy": 0.18867924528301888,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00500dd0",
    "name": "ObjectCCollisionExecute",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00500e40",
+   "name": "ObjectCCollision_L",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -8562,6 +9178,22 @@
    "library": false
   },
   {
+   "address": "0x00501350",
+   "name": "ObjectGCollisionExecute",
+   "accuracy": 0.0975609756097561,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00501440",
+   "name": "ObjectGCollisionDisplay",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00501510",
    "name": "ObjectGCollisionExit",
    "accuracy": 1.0,
@@ -8581,6 +9213,22 @@
    "address": "0x005015e0",
    "name": "FUN_005015e0",
    "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00501680",
+   "name": "ObjectGCollisionExecute___Mesh",
+   "accuracy": 0.0975609756097561,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00501910",
+   "name": "SetModelCollision",
+   "accuracy": 0.10666666666666667,
    "effective": false,
    "stub": true,
    "library": false
@@ -8613,6 +9261,22 @@
    "address": "0x00501ec0",
    "name": "ReleaseTextureForEachGameMode",
    "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00502210",
+   "name": "SetRegularTexture",
+   "accuracy": 0.5263157894736842,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00502240",
+   "name": "CheckObjectTexture",
+   "accuracy": 0.6666666666666666,
    "effective": false,
    "stub": true,
    "library": false
@@ -8850,11 +9514,27 @@
    "library": false
   },
   {
+   "address": "0x005500d0",
+   "name": "SetObject",
+   "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00550170",
    "name": "FUN_00550170",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005501a0",
+   "name": "InitStatusTable",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -8866,9 +9546,41 @@
    "library": false
   },
   {
+   "address": "0x00550c10",
+   "name": "FUN_00550c10",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00550cc0",
+   "name": "SwitchStatusTable",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00550d90",
    "name": "FUN_00550d90",
    "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00550f60",
+   "name": "FUN_00550f60",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00551150",
+   "name": "ReviveSetObject",
+   "accuracy": 0.1509433962264151,
    "effective": false,
    "stub": true,
    "library": false
@@ -9306,6 +10018,14 @@
    "library": false
   },
   {
+   "address": "0x00556160",
+   "name": "CheckTimeOver",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005561a0",
    "name": "CalcTotalScore",
    "accuracy": 1.0,
@@ -9322,11 +10042,51 @@
    "library": false
   },
   {
+   "address": "0x00559b60",
+   "name": "FUN_00559b60",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00559fa0",
+   "name": "DisplayCalcSonicScoreHH",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055a0c0",
+   "name": "DisplayCalcEggManScoreHH",
+   "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055a160",
+   "name": "FUN_0055a160",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0055af20",
    "name": "FUN_0055af20",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0055af30",
+   "name": "FUN_0055af30",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -9338,6 +10098,14 @@
    "library": false
   },
   {
+   "address": "0x0055b000",
+   "name": "FUN_0055b000",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0055b450",
    "name": "DisplayCalcTime",
    "accuracy": 0.26666666666666666,
@@ -9346,9 +10114,81 @@
    "library": false
   },
   {
+   "address": "0x0055b7c0",
+   "name": "DisplayCalcTimeScore",
+   "accuracy": 0.17391304347826086,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055b940",
+   "name": "FUN_0055b940",
+   "accuracy": 0.17391304347826086,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055c5b0",
+   "name": "DisplayCalcBoardScoreSB",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055c640",
+   "name": "DisplayCalcTimeScoreSB",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055c6d0",
+   "name": "DisplayCalcRingScoreSB",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055c760",
+   "name": "FUN_0055c760",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0055c7f0",
    "name": "FUN_0055c7f0",
    "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055cee0",
+   "name": "DisplayCalcEnemyScoreSC",
+   "accuracy": 0.21052631578947367,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055db30",
+   "name": "FUN_0055db30",
+   "accuracy": 0.14035087719298245,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055dbd0",
+   "name": "InitTotalRingDisp",
+   "accuracy": 0.1702127659574468,
    "effective": false,
    "stub": true,
    "library": false
@@ -9399,6 +10239,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0055f580",
+   "name": "InputHookSet",
+   "accuracy": 0.16393442622950818,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -9546,6 +10394,38 @@
    "library": false
   },
   {
+   "address": "0x00563020",
+   "name": "SetCameraChaosStdSpeed",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005630a0",
+   "name": "CCSI_CalcTargetPos",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00563130",
+   "name": "CameraChaosStageInit",
+   "accuracy": 0.12698412698412698,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00563380",
+   "name": "CameraLine",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00563900",
    "name": "CameraEventCamera",
    "accuracy": 1.0,
@@ -9602,6 +10482,14 @@
    "library": false
   },
   {
+   "address": "0x00564370",
+   "name": "PC1_SearchNearPath",
+   "accuracy": 0.09195402298850575,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005656f0",
    "name": "calcModerateVector",
    "accuracy": 1.0,
@@ -9615,6 +10503,38 @@
    "accuracy": 0.2857142857142857,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005660e0",
+   "name": "calcCartCamPos",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005661a0",
+   "name": "calcCartCamTgt",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00566230",
+   "name": "FUN_00566230",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005662e0",
+   "name": "FUN_005662e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -9690,11 +10610,35 @@
    "library": false
   },
   {
+   "address": "0x005675f0",
+   "name": "FUN_005675f0",
+   "accuracy": 0.11594202898550725,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005676f0",
+   "name": "sonicCameraAdjustXangle",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00567d30",
    "name": "sonicCameraCalcCollision",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00567d80",
+   "name": "sonicCameraFollow",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -9735,6 +10679,46 @@
    "accuracy": 0.2,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00569830",
+   "name": "atpInitParam",
+   "accuracy": 0.1702127659574468,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005698e0",
+   "name": "atpCalcCamera2PlayerAngle",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00569ba0",
+   "name": "atpAdjustCameraPointWithDistance",
+   "accuracy": 0.10810810810810811,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00569c90",
+   "name": "atpAdjustCameraTarget",
+   "accuracy": 0.10126582278481013,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00569d70",
+   "name": "AdjustThreePoint",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -10250,6 +11234,30 @@
    "library": false
   },
   {
+   "address": "0x0056e500",
+   "name": "DispVectorXYV",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056e600",
+   "name": "GetAngleXYV",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056e6a0",
+   "name": "DispVectorZXV",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0056e7a0",
    "name": "DispSphere",
    "accuracy": 1.0,
@@ -10266,6 +11274,30 @@
    "library": false
   },
   {
+   "address": "0x0056e890",
+   "name": "MakePopUpItem",
+   "accuracy": 0.08791208791208792,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056e990",
+   "name": "EntryMobileLandCollsion",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056ea70",
+   "name": "SetMobileLandCollsionData",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0056eb30",
    "name": "CharColliOn",
    "accuracy": 0.22857142857142856,
@@ -10277,6 +11309,30 @@
    "address": "0x0056eb90",
    "name": "CharColliOff",
    "accuracy": 0.22857142857142856,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056ebf0",
+   "name": "LoopAnimation",
+   "accuracy": 0.14814814814814814,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056ec80",
+   "name": "csnDistPlayer",
+   "accuracy": 0.10810810810810811,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056ee90",
+   "name": "ChkParabolaEnd",
+   "accuracy": 0.12345679012345678,
    "effective": false,
    "stub": true,
    "library": false
@@ -10511,6 +11567,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00571ca0",
+   "name": "MirenObjEntryMobileLandObject",
+   "accuracy": 0.14545454545454545,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -11028,9 +12092,49 @@
   {
    "address": "0x0058b160",
    "name": "FUN_0058b160",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0058b400",
+   "name": "FUN_0058b400",
+   "accuracy": 0.21052631578947367,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058b470",
+   "name": "FUN_0058b470",
+   "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058b530",
+   "name": "FUN_0058b530",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0058b560",
+   "name": "FUN_0058b560",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0058b5a0",
+   "name": "FUN_0058b5a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -11039,6 +12143,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0058b860",
+   "name": "FUN_0058b860",
+   "accuracy": 0.3076923076923077,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -11373,6 +12485,14 @@
    "address": "0x0059c040",
    "name": "SelectPlayerManager",
    "accuracy": 0.024096385542168676,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0059c4e0",
+   "name": "DisplaySelectedCharacter",
+   "accuracy": 0.16,
    "effective": false,
    "stub": true,
    "library": false
@@ -11810,6 +12930,22 @@
    "library": false
   },
   {
+   "address": "0x005a58c0",
+   "name": "savepointExit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a5a20",
+   "name": "FUN_005a5a20",
+   "accuracy": 0.27586206896551724,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005a6240",
    "name": "ClearDownload",
    "accuracy": 1.0,
@@ -11978,6 +13114,14 @@
    "library": false
   },
   {
+   "address": "0x005a82d0",
+   "name": "RingNumRunning",
+   "accuracy": 0.13559322033898305,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005a8640",
    "name": "InitSonic2PControl",
    "accuracy": 0.2222222222222222,
@@ -12135,6 +13279,70 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005abc20",
+   "name": "relbox_exec_normal",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005abe10",
+   "name": "relbox_exec",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005abe30",
+   "name": "relbox_switch_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005abe80",
+   "name": "relbox_switch_exec",
+   "accuracy": 0.0625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ac0e0",
+   "name": "relbox_switch_draw",
+   "accuracy": 0.25806451612903225,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ac130",
+   "name": "relbox_switch_end",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ac150",
+   "name": "FUN_005ac150",
+   "accuracy": 0.3076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ac3c0",
+   "name": "FUN_005ac3c0",
+   "accuracy": 0.34782608695652173,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -12370,6 +13578,14 @@
    "library": false
   },
   {
+   "address": "0x005b3730",
+   "name": "StartPlayerPanelJump",
+   "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b3c80",
    "name": "FUN_005b3c80",
    "accuracy": 0.24242424242424243,
@@ -12578,6 +13794,14 @@
    "library": false
   },
   {
+   "address": "0x005b5b20",
+   "name": "FUN_005b5b20",
+   "accuracy": 0.19047619047619047,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b5bb0",
    "name": "CPlayable_Dest",
    "accuracy": 1.0,
@@ -12594,11 +13818,35 @@
    "library": false
   },
   {
+   "address": "0x005b66f0",
+   "name": "InitItemBoxManager",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b7520",
    "name": "InitialDynamite",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b7c20",
+   "name": "ClrRocketTaskWorkBuff",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b7d60",
+   "name": "GetAngleYZV",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -12711,6 +13959,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005bb820",
+   "name": "tikal_draw_sprite",
+   "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -13173,6 +14429,14 @@
    "address": "0x005dbda0",
    "name": "FUN_005dbda0",
    "accuracy": 0.21052631578947367,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005dd600",
+   "name": "PutItem_ItemBox",
+   "accuracy": 0.14545454545454545,
    "effective": false,
    "stub": true,
    "library": false
@@ -15035,7 +16299,7 @@
   },
   {
    "address": "0x00686350",
-   "name": "Exec(2)",
+   "name": "Exec(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -15815,6 +17079,94 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007e5070",
+   "name": "CartRaceGetDialState",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e6060",
+   "name": "initObject",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e6080",
+   "name": "FUN_007e6080",
+   "accuracy": 0.09523809523809523,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e60f0",
+   "name": "dispObject",
+   "accuracy": 0.018867924528301886,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e6240",
+   "name": "execObject",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007e6270",
+   "name": "CartInitLetter",
+   "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e62d0",
+   "name": "CartTimeDisplayTitle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007e63a0",
+   "name": "drawNumber2",
+   "accuracy": 0.05263157894736842,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e6700",
+   "name": "displayDatumTime",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e6760",
+   "name": "CartTimeHistoryTime",
+   "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e68b0",
+   "name": "CartTimeDisplayTimeWithColor",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -16602,6 +17954,14 @@
    "library": false
   },
   {
+   "address": "0x008cb900",
+   "name": "CartGetOffPlayer",
+   "accuracy": 0.1702127659574468,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008cbb40",
    "name": "SetCartBonusAdd",
    "accuracy": 0.7272727272727273,
@@ -16621,6 +17981,22 @@
    "address": "0x008cd6a0",
    "name": "cartShadowPos",
    "accuracy": 0.23529411764705882,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008cef80",
+   "name": "cartSpdForceOfNature",
+   "accuracy": 0.10810810810810811,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008cf520",
+   "name": "cartTakeSonic",
+   "accuracy": 0.1038961038961039,
    "effective": false,
    "stub": true,
    "library": false
@@ -16658,6 +18034,14 @@
    "library": false
   },
   {
+   "address": "0x008d01c0",
+   "name": "FUN_008d01c0",
+   "accuracy": 0.20833333333333334,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008d0250",
    "name": "FUN_008d0250",
    "accuracy": 0.27586206896551724,
@@ -16669,6 +18053,22 @@
    "address": "0x008d02a0",
    "name": "returnSonicCollision",
    "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008d0460",
+   "name": "calcComponentVector",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d0600",
+   "name": "rotateFan",
+   "accuracy": 0.10256410256410256,
    "effective": false,
    "stub": true,
    "library": false
@@ -16690,9 +18090,25 @@
    "library": false
   },
   {
+   "address": "0x008d0a60",
+   "name": "setCartDirection",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008d0ca0",
    "name": "distCheck",
    "accuracy": 0.21739130434782608,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008d0d20",
+   "name": "cartSELoop",
+   "accuracy": 0.11267605633802817,
    "effective": false,
    "stub": true,
    "library": false
@@ -16858,6 +18274,30 @@
    "library": false
   },
   {
+   "address": "0x008db560",
+   "name": "BridgeNormal",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008db620",
+   "name": "BridgeNormal2",
+   "accuracy": 0.12698412698412698,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008db6e0",
+   "name": "ObjectBridgeShitaDisplayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008dbd30",
    "name": "ObjectTuribasiDisplayer",
    "accuracy": 1.0,
@@ -16901,6 +18341,30 @@
    "address": "0x008dc880",
    "name": "BridgeDraw2",
    "accuracy": 0.03827751196172249,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008dcaf0",
+   "name": "BridgeCheckCollision",
+   "accuracy": 0.13114754098360656,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008dcb90",
+   "name": "FUN_008dcb90",
+   "accuracy": 0.11428571428571428,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008dcc50",
+   "name": "FUN_008dcc50",
+   "accuracy": 0.13157894736842105,
    "effective": false,
    "stub": true,
    "library": false
@@ -22499,5 +23963,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6336fbe00eb3bbbac4400866a8e916b41eca864078e9729d3d5ee914cd2ce625"
+ "inputs_sha256": "fa70090ccdd695e6fa986ecfcac076dbcb3b841b59e516d4c9052619337a906c"
 }
