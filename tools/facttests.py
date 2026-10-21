@@ -1,0 +1,604 @@
+"""Unit tests for the dossier facts in tools/facts.py: the stack and register readers, the text helpers and the lines.
+
+run() calls every check and returns the failures. The code under test is built by hand: build() makes an
+x86.Function from lines of assembly, and FakeDecoder hands out the callees by address.
+"""
+
+import re
+import tempfile
+from pathlib import Path
+
+import dossier
+import facts
+import names
+import x86
+
+CODE = 0x401000  # where the function under test starts
+CALLEE = 0x402000  # where a callee starts
+DATA = 0x501000  # an address in the data section
+
+
+# ---------------------------------------------------------------- fixtures
+
+def registers_in(text: str) -> int:
+    """The register bits that a piece of operand text names."""
+    bits = 0
+    for word in re.findall(r"[a-z]+", text):
+        bits |= x86.REGISTER.get(word, 0)
+    return bits
+
+
+def effects(mnemonic: str, operands: str) -> tuple[int, int]:
+    """The register bits that an instruction reads and writes, as the decoder would give them."""
+    destination, _, source = operands.partition(", ")
+    if mnemonic in ("mov", "lea", "movzx") and destination in x86.REGISTER:
+        return registers_in(source), x86.REGISTER[destination]
+    if mnemonic == "pop":
+        return 0, registers_in(operands)
+    if mnemonic in ("cmp", "test", "push", "call", "jmp", "ret", "nop") or mnemonic.startswith("j"):
+        return registers_in(operands), 0
+    return registers_in(operands), registers_in(destination) if destination in x86.REGISTER else 0
+
+
+def build(lines: list[str], start: int = CODE) -> x86.Function:
+    """A function of one-byte instructions. @N in an operand is the address of line N."""
+    span = range(start, start + len(lines))
+    code, successors = [], {}
+    for index, text in enumerate(lines):
+        address = start + index
+        mnemonic, _, operands = text.partition(" ")
+        operands = re.sub(r"@(\d+)", lambda m: hex(start + int(m.group(1))), operands)
+        branch = mnemonic == "call" or mnemonic.startswith("j")
+        target = x86.number(operands) if branch else None
+        reads, writes = effects(mnemonic, operands)
+        code.append(x86.Instruction(address, 1, mnemonic, operands, reads, writes, target, None))
+        after = [address + 1] if address + 1 in span else []
+        if mnemonic in x86.STOPS:
+            successors[address] = []
+        elif mnemonic == "jmp":
+            successors[address] = [target] if target in span else []
+        elif mnemonic.startswith("j"):
+            successors[address] = [t for t in [target] + after if t in span]
+        else:
+            successors[address] = after
+    return x86.Function(start, len(lines), 0, code, successors)
+
+
+class FakeDecoder:
+    """Gives the function at an address: the only method that the facts call."""
+
+    def __init__(self, functions: dict[int, x86.Function]):
+        self.functions = functions
+
+    def function(self, address: int, size: int, row: int) -> x86.Function:
+        return self.functions[address]
+
+
+def callees(**by_name: list[str]) -> tuple[FakeDecoder, dict[int, int]]:
+    """A decoder and a size table for callees at CALLEE, CALLEE + 0x100 and so on, in the order given."""
+    functions = {CALLEE + 0x100 * i: build(lines, CALLEE + 0x100 * i) for i, lines in enumerate(by_name.values())}
+    return FakeDecoder(functions), {address: f.size for address, f in functions.items()}
+
+
+NO_CALLEES = callees()
+
+
+class FakeImage:
+    """The part of pe.Image that pointer_facts reads: a code section, a data section and an import slot."""
+
+    import_slots = {0x503000: "Import"}
+
+    def contains(self, address: int) -> bool:
+        return 0x400000 <= address < 0x600000
+
+    def is_code(self, address: int) -> bool:
+        return 0x400000 <= address < 0x500000
+
+
+def namer_of(globals_: list[dossier.Global]) -> dossier.Namer:
+    return dossier.Namer(FakeImage(), {}, {}, {}, sorted(globals_))
+
+
+def info(name: str = "Foo", proto: str = "", file: str = "", locals_: str = "") -> dossier.Function:
+    return dossier.Function(name, proto, False, file, "", locals_)
+
+
+def described(lines: list[str]) -> str:
+    return "; ".join(lines)
+
+
+# ---------------------------------------------------------------- operands and stack
+
+def check_memory_operands() -> list[str]:
+    """memory_operands reads each [base + index*scale + disp] in the text. A scale is the number after the star
+    and one when there is none. A minus sign makes a negative displacement. Text with no brackets gives none."""
+    cases = [("", []),
+             ("eax, ebx", []),
+             ("eax, dword ptr [ebp + 8]", [facts.Memory("ebp", None, 1, 8)]),
+             ("dword ptr [ebp - 0x14], eax", [facts.Memory("ebp", None, 1, -0x14)]),
+             ("dword ptr [eax + ecx*4 + 0x10]", [facts.Memory("eax", "ecx", 4, 0x10)]),
+             ("eax, dword ptr [ecx*8 + 0x501000]", [facts.Memory(None, "ecx", 8, 0x501000)]),
+             ("eax, [eax*2 + ebx]", [facts.Memory("ebx", "eax", 2, 0)]),
+             ("eax, dword ptr [eax + ecx]", [facts.Memory("eax", "ecx", 1, 0)]),
+             ("eax, dword ptr [esp]", [facts.Memory("esp", None, 1, 0)]),
+             ("eax, dword ptr [0x501000]", [facts.Memory(None, None, 1, 0x501000)]),
+             ("eax, dword ptr fs:[0]", [facts.Memory(None, None, 1, 0)]),
+             ("dword ptr [esi + 4], dword ptr [edi - 4]",
+              [facts.Memory("esi", None, 1, 4), facts.Memory("edi", None, 1, -4)])]
+    return [f"memory_operands gives {found} for `{text}`, not {wanted}"
+            for text, wanted in cases if (found := facts.memory_operands(text)) != wanted]
+
+
+def check_pops() -> list[str]:
+    """pops gives the byte counts that the rets of a function pop, as a set. A plain ret pops nothing. A count
+    in hex is read as hex. Two rets with one count give it once."""
+    cases = [([], set()),
+             (["ret"], set()),
+             (["ret 8"], {8}),
+             (["ret 0xc"], {12}),
+             (["add esp, 8", "ret"], set()),
+             (["test ecx, ecx", "je @4", "ret 4", "nop", "ret 0xc"], {4, 12}),
+             (["test ecx, ecx", "je @4", "ret 8", "nop", "ret 8"], {8})]
+    return [f"pops gives {found} for {described(lines)}, not {wanted}"
+            for lines, wanted in cases if (found := facts.pops(build(lines))) != wanted]
+
+
+def check_stack_change() -> list[str]:
+    """stack_change gives how many bytes an instruction adds to esp: sub and add with a number, a push or pop of
+    one dword or of the flags, 32 for pushal and popal, and the bytes that a called function pops. It gives None
+    when esp gets a value that is not known: from a register, with and, from leave. Other instructions give 0.
+    A call to a function with no known size moves nothing."""
+    decoder, sizes = callees(pops8=["ret 8"], plain=["ret"], two=["test ecx, ecx", "je @4", "ret 4", "nop", "ret 0xc"])
+    pops8, plain, two = sorted(sizes)
+    cases = [("sub esp, 0x10", -16), ("sub esp, 4", -4), ("add esp, 8", 8), ("add esp, 0x20", 32),
+             ("sub esp, eax", None), ("and esp, 0xfffffff0", None), ("mov esp, ebp", None), ("mov esp, 0x10", None),
+             ("leave", None),
+             ("push eax", -4), ("push 0", -4), ("pushfd", -4), ("pushal", -32),
+             ("pop ecx", 4), ("popfd", 4), ("popal", 32),
+             ("mov eax, ebx", 0), ("mov eax, esp", 0), ("ret", 0), ("ret 8", 0),
+             (f"call {hex(pops8)}", 8), (f"call {hex(plain)}", 0), (f"call {hex(two)}", 12),
+             ("call 0x409000", 0), ("call eax", 0)]
+    failures = []
+    for text, wanted in cases:
+        mnemonic, _, operands = text.partition(" ")
+        target = x86.number(operands) if mnemonic == "call" else None
+        instruction = x86.Instruction(CODE, 1, mnemonic, operands, 0, 0, target, None)
+        found = facts.stack_change(instruction, decoder, sizes)
+        if found != wanted:
+            failures.append(f"stack_change gives {found} for `{text}`, not {wanted}")
+    return failures
+
+
+def check_may_read_stack_arguments() -> list[str]:
+    """may_read_stack_arguments is True when a frame function reads [ebp + 8] or higher, and when a frameless one
+    reads [esp + n] at or above the return address, counting its pushes, subs and the pops of its callees. It is
+    also True when a frameless function moves esp in a way that it cannot follow, returns with esp moved, or
+    reaches one instruction with two esp offsets. It is False when no stack argument is read. A frame function
+    ignores how esp moves."""
+    frame = ["push ebp", "mov ebp, esp"]
+    cases = [
+        (frame + ["mov eax, dword ptr [ebp + 8]", "pop ebp", "ret"], True, {}),
+        (["mov edi, edi"] + frame + ["mov eax, dword ptr [ebp + 0xc]", "pop ebp", "ret"], True, {}),
+        (frame + ["sub esp, 4", "mov eax, dword ptr [ebp - 4]", "mov ecx, dword ptr [ebp + 4]", "mov esp, ebp",
+                  "pop ebp", "ret"], False, {}),
+        (["mov eax, dword ptr [esp + 4]", "ret"], True, {}),
+        (["mov eax, dword ptr [esp]", "ret"], False, {}),
+        (["mov eax, ecx", "ret"], False, {}),
+        (["push ecx", "mov eax, dword ptr [esp + 4]", "pop ecx", "ret"], False, {}),
+        (["push ecx", "mov eax, dword ptr [esp + 8]", "pop ecx", "ret"], True, {}),
+        (["sub esp, 8", "mov eax, dword ptr [esp + 8]", "add esp, 8", "ret"], False, {}),
+        (["sub esp, 8", "mov eax, dword ptr [esp + 0xc]", "add esp, 8", "ret"], True, {}),
+        (["mov esp, eax", "ret"], True, {}),
+        (["push eax", "ret"], True, {}),
+        (["test ecx, ecx", "je @4", "push eax", "nop", "pop eax", "ret"], True, {}),
+        (["push ecx", "pop ecx", "sub edx, 1", "jne @0", "ret"], False, {}),
+        (["push eax", "call 0x402000", "ret"], False, {"pop": ["ret 4"]}),
+        (["push eax", "call 0x402000", "ret"], True, {}),
+        (["push eax", "call 0x402000", "mov ecx, dword ptr [esp + 4]", "ret"], True, {"pop": ["ret 4"]}),
+        (["push eax", "call 0x402000", "mov ecx, dword ptr [esp + 4]", "pop eax", "ret"], False, {"pop": ["ret"]}),
+    ]
+    failures = []
+    for lines, wanted, callee in cases:
+        decoder, sizes = callees(**callee)
+        found = facts.may_read_stack_arguments(build(lines), decoder, sizes)
+        if found != wanted:
+            failures.append(f"may_read_stack_arguments gives {found} for {described(lines)}"
+                            f"{' with a callee ' + str(callee) if callee else ''}, not {wanted}")
+    return failures
+
+
+def check_exit_pops() -> list[str]:
+    """exit_pops gives the bytes that a function pops on return: its own rets, plus those of each function that
+    it jumps to, also by a conditional jump. A call is no exit. A jump inside the function is no exit. It gives
+    None for a jump that it cannot follow (jmp edx, an unknown target, or a chain deeper than depth). A switch
+    table jump is no exit."""
+    cases = [
+        (["ret 8"], {}, 3, {8}),
+        (["ret"], {}, 3, set()),
+        (["test ecx, ecx", "je @4", "ret 4", "nop", "ret 8"], {}, 3, {4, 8}),
+        (["jmp dword ptr [esp + 4]"], {}, 3, None),
+        (["jmp dword ptr [eax*4 + 0x501000]", "ret 4"], {}, 3, {4}),
+        (["call 0x409000", "ret 4"], {}, 3, {4}),
+        (["sub edx, 1", "jne @0", "ret 4"], {}, 3, {4}),
+        (["jmp 0x402000"], {"x": ["ret 8"]}, 3, {8}),
+        (["jmp 0x409000"], {}, 3, None),
+        (["test ecx, ecx", "jne 0x402000", "ret 4"], {"x": ["ret 0xc"]}, 3, {4, 12}),
+        (["jmp 0x402000"], {"x": ["jmp 0x402100"], "y": ["ret 4"]}, 1, None),
+        (["jmp 0x402000"], {"x": ["jmp 0x402100"], "y": ["ret 4"]}, 2, {4}),
+        (["jmp 0x402000"], {"x": ["ret 4"]}, 0, None),
+        (["jmp 0x402000"], {"x": ["jmp 0x402100"], "y": ["jmp 0x402200"], "z": ["ret 8"]}, 3, {8}),
+        (["jmp 0x402000"], {"x": ["jmp 0x402100"], "y": ["jmp 0x402200"], "z": ["jmp 0x402300"], "w": ["ret 8"]}, 3,
+         None),
+    ]
+    failures = []
+    for lines, by_name, depth, wanted in cases:
+        decoder, sizes = callees(**by_name)
+        found = facts.exit_pops(build(lines), decoder, sizes, depth)
+        if found != wanted:
+            failures.append(f"exit_pops gives {found} for {described(lines)} with {by_name} at depth {depth}, "
+                            f"not {wanted}")
+    return failures
+
+
+# ---------------------------------------------------------------- text
+
+def check_printed_keyword() -> list[str]:
+    """printed_keyword gives the calling convention that the head of a prototype names. WINAPI, CALLBACK,
+    APIENTRY and PASCAL mean __stdcall. A keyword inside the parameter list is no part of the head."""
+    cases = [("void __fastcall Foo(int a)", "__fastcall"), ("int __stdcall Foo()", "__stdcall"),
+             ("int __cdecl Foo(void)", "__cdecl"), ("void __thiscall Foo::Run(int)", "__thiscall"),
+             ("BOOL WINAPI Foo(void)", "__stdcall"), ("LRESULT CALLBACK Foo(int)", "__stdcall"),
+             ("void APIENTRY Foo(void)", "__stdcall"), ("int PASCAL Foo(int)", "__stdcall"),
+             ("void Foo(int a)", None), ("", None),
+             ("void Foo(void (__cdecl *callback)(int))", None)]
+    return [f"printed_keyword gives {found!r} for `{proto}`, not {wanted!r}"
+            for proto, wanted in cases if (found := facts.printed_keyword(proto)) != wanted]
+
+
+def check_amount() -> list[str]:
+    """amount writes a byte count as the disassembly does: decimal up to 9, hex with 0x from 10."""
+    cases = [(0, "0"), (4, "4"), (9, "9"), (10, "0xa"), (12, "0xc"), (16, "0x10"), (0x24, "0x24")]
+    return [f"amount gives {found!r} for {number}, not {wanted!r}"
+            for number, wanted in cases if (found := facts.amount(number)) != wanted]
+
+
+def check_listed() -> list[str]:
+    """listed joins items as `a`, `a and b`, `a, b and c`. Past FACT_LIMIT (3) items it keeps the first three and
+    adds `and more`."""
+    cases = [(["a"], "a"), (["a", "b"], "a and b"), (["a", "b", "c"], "a, b and c"),
+             (["a", "b", "c", "d"], "a, b, c and more"), (list("abcdefg"), "a, b, c and more")]
+    return [f"listed gives {found!r} for {items}, not {wanted!r}"
+            for items, wanted in cases if (found := facts.listed(items)) != wanted]
+
+
+def check_offsets_text() -> list[str]:
+    """offsets_text writes a set of offsets in hex, smallest first and by value, a negative one with a minus sign
+    before the 0x, in the form that listed gives."""
+    cases = [({0}, "0x0"), ({8}, "0x8"), ({-4}, "-0x4"), ({0x10, 8}, "0x8 and 0x10"),
+             ({4, -8, 0}, "-0x8, 0x0 and 0x4"), ({1, 2, 3, 4}, "0x1, 0x2, 0x3 and more"),
+             ({-1, -2, -3, 4}, "-0x3, -0x2, -0x1 and more")]
+    return [f"offsets_text gives {found!r} for {sorted(offsets)}, not {wanted!r}"
+            for offsets, wanted in cases if (found := facts.offsets_text(offsets)) != wanted]
+
+
+# ---------------------------------------------------------------- calling convention
+
+def check_convention_fact() -> list[str]:
+    """convention_fact tells which keyword the registers and the ret show. It gives None when the code shows no
+    convention, when a register other than ecx and edx is read first, when the rets pop two different counts or a
+    jump hides the pop, and in optimized code when the registers may be the compiler's choice (a C file or an
+    unknown file) or the printed keyword differs. A /Od function gets its fact against any prototype: ecx with a
+    pop is __stdcall with a mov of ecx in the body, other registers are __fastcall. A register with a plain ret
+    gives None when the code reads a stack argument. Member names get no __thiscall warning."""
+    ret8 = ["mov eax, dword ptr [esp + 4]", "ret 8"]
+    ecx = ["mov eax, ecx", "ret"]
+    thunk = ["jmp 0x402000"]
+    stack = " The stack holds the other {} bytes of parameters."
+    second = " If the first of them is an integer or a pointer, put an unused second parameter before it."
+    no_this = " Do not use `__thiscall`: it is only for class members."
+    change = " The printed prototype differs, so change it to fit the code and keep its name."
+    pop8 = "The function ends with `ret 8`, so it pops 8 bytes of parameters."
+    cases = [
+        # (code, flags, name, proto, file, callee, wanted)
+        (ret8, "/O2", "Foo", "int __stdcall Foo(int, int)", "a.c", None, f"{pop8} Keep `__stdcall`."),
+        (["mov eax, dword ptr [esp + 4]", "ret 0xc"], "/O2", "Foo", "", "a.c", None,
+         "The function ends with `ret 0xc`, so it pops 0xc bytes of parameters. Declare the function `__stdcall`."),
+        (ret8, "/O2", "Foo", "int Foo(int, int)", "a.c", None, None),
+        (ret8, "/Od", "Foo", "int Foo(int, int)", "a.c", None, f"{pop8} Declare the function `__stdcall`.{change}"),
+        (["mov eax, 1", "ret"], "/Od", "Foo", "int Foo(void)", "a.c", None, None),
+        (["cmp dword ptr [esp + 4], 0", "je @4", "ret 4", "nop", "ret 8"], "/O2", "Foo", "", "a.c", None, None),
+        (["jmp dword ptr [esp + 4]"], "/O2", "Foo", "", "a.c", None, None),
+        (["mov ecx, eax", "ret 4"], "/Od", "Foo", "", "a.cpp", None, None),
+        (thunk, "/O2", "Foo", "int __stdcall Foo(int)", "a.c", ["ret 4"],
+         "The function ends with `ret 4`, so it pops 4 bytes of parameters. Keep `__stdcall`."),
+        (ecx, "/O2", "Foo", "", "a.c", None, None),
+        (ecx, "/O2", "Foo", "", "", None, None),
+        (ecx, "/O2", "Foo", "", "a.cpp", None,
+         f"The first parameter arrives in ecx. Declare the function `__fastcall`.{no_this}"),
+        (ecx, "/O2", "Foo::Run", "void __fastcall Foo::Run(void)", "a.cpp", None,
+         "The first parameter arrives in ecx. Keep `__fastcall`."),
+        (ecx, "/O2", "?Run@Foo@@QAEXXZ", "", "a.cpp", None,
+         "The first parameter arrives in ecx. Declare the function `__fastcall`."),
+        (ecx, "/O2", "Foo", "void __stdcall Foo(void)", "a.cpp", None, None),
+        (["mov eax, edx", "ret"], "/O2", "Foo", "", "a.cpp", None,
+         "The first parameter is unused and the second arrives in edx. Declare the function `__fastcall`."),
+        (["mov eax, ecx", "add eax, edx", "ret 8"], "/O2", "Foo", "", "a.cpp", None,
+         "The first two parameters arrive in ecx and edx." + stack.format(8) + " Declare the function `__fastcall`."
+         + no_this),
+        (["mov eax, ecx", "ret 4"], "/O2", "Foo", "", "a.cpp", None,
+         "The first parameter arrives in ecx." + stack.format(4) + second + " Declare the function `__fastcall`."
+         + no_this),
+        (["mov eax, ecx", "add eax, dword ptr [esp + 4]", "ret 4"], "/O2", "Foo", "", "a.cpp", None,
+         "The first parameter arrives in ecx." + stack.format(4) + second + " Declare the function `__fastcall`."
+         + no_this),
+        (["mov eax, ecx", "add eax, dword ptr [esp + 4]", "ret"], "/O2", "Foo", "", "a.cpp", None, None),
+        (["push ebp", "mov ebp, esp", "mov eax, ecx", "add eax, dword ptr [ebp + 8]", "pop ebp", "ret"],
+         "/O2", "Foo", "", "a.cpp", None, None),
+        (["mov ecx, eax", "ret 4"], "/O2", "Foo", "int __stdcall Foo(int)", "a.cpp", None, None),
+        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "", "a.c", None,
+         f"The function reads ecx and ends with `ret 8`, so it pops 8 bytes of parameters. "
+         "Declare the function `__stdcall`. The parameters are the 8 bytes on the stack. "
+         "Start the body with `__asm mov <local>, ecx`, where <local> is a new local."),
+        (["mov eax, ecx", "ret 8"], "/Gy /Od", "Foo", "void Foo(int, int)", "a.c", None,
+         "The function reads ecx and ends with `ret 8`, so it pops 8 bytes of parameters. "
+         f"Declare the function `__stdcall`. The parameters are the 8 bytes on the stack.{change} "
+         "Start the body with `__asm mov <local>, ecx`, where <local> is a new local."),
+        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "void __stdcall Foo(int, int)", "a.c", None,
+         "The function reads ecx and ends with `ret 8`, so it pops 8 bytes of parameters. "
+         "Keep `__stdcall`. The parameters are the 8 bytes on the stack. "
+         "Start the body with `__asm mov <local>, ecx`, where <local> is a new local."),
+        (ecx, "/Od", "Foo", "", "a.c", None,
+         f"The first parameter arrives in ecx. Declare the function `__fastcall`.{no_this}"),
+        (ecx, "/Od", "Foo", "void __stdcall Foo(void)", "a.c", None,
+         f"The first parameter arrives in ecx. Declare the function `__fastcall`.{change}{no_this}"),
+        (["mov eax, edx", "ret 8"], "/Od", "Foo", "", "a.c", None,
+         "The first parameter is unused and the second arrives in edx." + stack.format(8)
+         + " Declare the function `__fastcall`."),
+    ]
+    failures = []
+    for lines, flags, name, proto, file, callee, wanted in cases:
+        decoder, sizes = callees(x=callee) if callee else NO_CALLEES
+        found = facts.convention_fact(build(lines), flags, info(name, proto, file), decoder, sizes)
+        if found != wanted:
+            failures.append(f"convention_fact gives {found!r} for {described(lines)} with flags {flags}, "
+                            f"name {name}, proto `{proto}`, file {file!r}, not {wanted!r}")
+    return failures
+
+
+# ---------------------------------------------------------------- pointer globals
+
+def check_frame_slot() -> list[str]:
+    """frame_slot gives ("slot", disp) for an operand that is one plain [ebp + disp], and None for a register,
+    a memory operand on another base, or one with an index."""
+    cases = [("dword ptr [ebp - 8]", ("slot", -8)), ("dword ptr [ebp + 8]", ("slot", 8)), ("[ebp - 8]", ("slot", -8)),
+             ("dword ptr [ebp]", ("slot", 0)), ("eax", None), ("", None), ("dword ptr [eax + 4]", None),
+             ("dword ptr [esp + 4]", None), ("dword ptr [ebp + eax*4 - 8]", None), ("dword ptr [ebp + eax]", None)]
+    return [f"frame_slot gives {found} for `{operand}`, not {wanted}"
+            for operand, wanted in cases if (found := facts.frame_slot(operand)) != wanted]
+
+
+def check_transfer() -> list[str]:
+    """transfer gives the (place, global) pairs after one instruction. A mov of a known global's address word
+    puts the global in the register. A mov between registers or to or from a frame slot copies the pairs. Every
+    write drops the old pairs of its place, a call drops eax, ecx and edx, and a write to a slot drops the slots
+    within four bytes. A compare reads and drops nothing."""
+    g, h = (dossier.Global(DATA, 4, "Foo", "int Foo"), 0), (dossier.Global(DATA + 8, 4, "Bar", "int Bar"), 0)
+    slot = lambda disp: ("slot", disp)
+    known = {DATA: g, DATA + 8: h}
+    cases = [
+        ("mov eax, dword ptr [0x501000]", frozenset(), {(x86.EAX, g)}),
+        ("mov eax, dword ptr [0x509999]", frozenset(), set()),
+        ("mov eax, dword ptr [0x509999]", {(x86.EAX, g)}, set()),
+        ("mov ecx, eax", {(x86.EAX, g)}, {(x86.EAX, g), (x86.ECX, g)}),
+        ("mov eax, ecx", {(x86.EAX, g), (x86.ECX, h)}, {(x86.EAX, h), (x86.ECX, h)}),
+        ("mov eax, ebx", {(x86.EAX, g)}, set()),
+        ("mov ecx, eax", {(x86.EAX, g), (x86.EAX, h), (x86.ECX, h)}, {(x86.EAX, g), (x86.EAX, h), (x86.ECX, g),
+                                                                       (x86.ECX, h)}),
+        ("mov al, cl", {(x86.EAX, g)}, set()),
+        ("add eax, 4", {(x86.EAX, g), (x86.EBX, h)}, {(x86.EBX, h)}),
+        ("call 0x402000", {(x86.EAX, g), (x86.ECX, g), (x86.EDX, g), (x86.EBX, h), (x86.ESI, h), (x86.EDI, h)},
+         {(x86.EBX, h), (x86.ESI, h), (x86.EDI, h)}),
+        ("mov dword ptr [ebp - 8], eax", {(x86.EAX, g)}, {(x86.EAX, g), (slot(-8), g)}),
+        ("mov ecx, dword ptr [ebp - 8]", {(slot(-8), g)}, {(slot(-8), g), (x86.ECX, g)}),
+        ("mov ecx, dword ptr [ebp - 12]", {(slot(-8), g)}, {(slot(-8), g)}),
+        ("mov dword ptr [ebp - 8], ecx", {(slot(-8), g)}, set()),
+        ("mov dword ptr [ebp - 8], 5", {(slot(-8), g), (slot(-16), h)}, {(slot(-16), h)}),
+        ("mov dword ptr [ebp - 8], ecx", {(slot(-5), g), (slot(-12), h)}, {(slot(-12), h)}),
+        ("mov dword ptr [ebp - 8], ecx", {(slot(-4), g), (slot(-13), h)}, {(slot(-4), g), (slot(-13), h)}),
+        ("add dword ptr [ebp - 8], 1", {(slot(-8), g)}, set()),
+        ("cmp dword ptr [ebp - 8], 0", {(slot(-8), g)}, {(slot(-8), g)}),
+        ("push dword ptr [ebp - 8]", {(slot(-8), g)}, {(slot(-8), g)}),
+        ("mov ecx, dword ptr [eax + 4]", {(x86.EAX, g)}, {(x86.EAX, g)}),
+    ]
+    failures = []
+    for text, before, wanted in cases:
+        mnemonic, _, operands = text.partition(" ")
+        branch = mnemonic == "call"
+        reads, writes = effects(mnemonic, operands)
+        target = x86.number(operands) if branch else None
+        instruction = x86.Instruction(CODE, 1, mnemonic, operands, reads, writes, target, None)
+        found = facts.transfer(instruction, frozenset(before), known.get)
+        if found != frozenset(wanted):
+            failures.append(f"transfer gives {sorted(found, key=repr)} for `{text}` after {sorted(before, key=repr)}, "
+                            f"not {sorted(wanted, key=repr)}")
+    return failures
+
+
+def check_pointer_globals() -> list[str]:
+    """pointer_globals maps (global, offset into it) to the offsets used from the loaded value as a base. A use
+    counts for a base register with no index, or a scaled one, and a displacement from -0x100 to 0xffff. A lea,
+    a base of esp or ebp, an overwritten register, a call that drops the register and a use before the load do
+    not count. A value kept in a frame slot counts, and so does one that reaches a use by only one of two paths.
+    One global read at two offsets gives a key for each."""
+    holder_at = lambda base: (lambda address: (dossier.Global(base, 16, "Foo", "int Foo[4]"), address - base)
+                              if base <= address < base + 16 else None)
+    load = "mov eax, dword ptr [0x501000]"
+    cases = [
+        ([load, "mov ecx, dword ptr [eax + 8]", "mov edx, dword ptr [eax + 0x10]", "ret"], {(0, 0): {8, 0x10}}),
+        (["mov eax, dword ptr [0x501000]", "mov ebx, dword ptr [0x501004]", "mov edx, dword ptr [eax + 8]",
+          "mov ecx, dword ptr [ebx + 0xc]", "ret"], {(0, 0): {8}, (0, 4): {0xc}}),
+        ([load, "mov ecx, dword ptr [eax]", "mov edx, dword ptr [eax - 4]", "ret"], {(0, 0): {0, -4}}),
+        ([load, "lea edx, [eax + 8]", "ret"], {}),
+        ([load, "mov ecx, dword ptr [eax + ebx]", "ret"], {}),
+        ([load, "mov ecx, dword ptr [eax + ebx*4 + 8]", "ret"], {(0, 0): {8}}),
+        ([load, "mov ecx, dword ptr [eax + 0xffff]", "mov edx, dword ptr [eax - 0x100]", "ret"],
+         {(0, 0): {0xffff, -0x100}}),
+        ([load, "mov ecx, dword ptr [eax + 0x10000]", "mov edx, dword ptr [eax - 0x101]", "ret"], {}),
+        ([load, "mov ecx, dword ptr [esp + 4]", "mov edx, dword ptr [ebp + 8]", "ret"], {}),
+        (["mov ecx, dword ptr [eax + 4]", load, "ret"], {}),
+        ([load, "mov eax, 5", "mov ecx, dword ptr [eax + 4]", "ret"], {}),
+        ([load, "mov ecx, ebx", "mov edx, dword ptr [ecx + 4]", "ret"], {}),
+        ([load, "mov ecx, eax", "mov edx, dword ptr [ecx + 4]", "ret"], {(0, 0): {4}}),
+        (["mov ebx, dword ptr [0x501000]", "call 0x402000", "mov ecx, dword ptr [ebx + 4]", "ret"], {(0, 0): {4}}),
+        ([load, "call 0x402000", "mov ecx, dword ptr [eax + 4]", "ret"], {}),
+        ([load, "mov dword ptr [ebp - 4], eax", "mov eax, 0", "mov ecx, dword ptr [ebp - 4]",
+          "mov edx, dword ptr [ecx + 4]", "ret"], {(0, 0): {4}}),
+        ([load, "mov dword ptr [ebp - 4], eax", "mov dword ptr [ebp - 4], 0", "mov ecx, dword ptr [ebp - 4]",
+          "mov edx, dword ptr [ecx + 4]", "ret"], {}),
+        (["test ecx, ecx", "je @4", load, "nop", "mov edx, dword ptr [eax + 4]", "ret"], {(0, 0): {4}}),
+        ([load, "mov ecx, dword ptr [eax + 4]", "sub edx, 1", "jne @1", "ret"], {(0, 0): {4}}),
+    ]
+    failures = []
+    for lines, wanted in cases:
+        found = facts.pointer_globals(build(lines), holder_at(DATA))
+        simple = {(g.address - DATA, offset): used for (g, offset), used in found.items()}
+        if simple != wanted:
+            failures.append(f"pointer_globals gives {simple} for {described(lines)}, not {wanted}")
+    return failures
+
+
+def check_pointer_facts() -> list[str]:
+    """pointer_facts gives one line for each global that the code loads and uses as a base, when its declaration
+    is an integer of 4 bytes, or the data address has no name. Named ones say to keep the declaration and cast.
+    Unnamed ones say to declare a pointer. A pointer, a float, an array or a global in code or an import slot
+    gets none. A global that is only loaded gets none. The globals with the most offsets come first, ties by
+    address, and only FACT_LIMIT lines are kept."""
+    foo = lambda decl, size=4: dossier.Global(DATA, size, "Foo", decl)
+    named = "Foo holds a pointer. The code uses it at {}. Keep its declaration and cast its value, as in `{}`."
+    unnamed = ("DAT_{:08x} (address 0x{:x}) holds a pointer. The code uses it at {}. Declare it as a pointer and "
+               "add the offsets to its value, not to its address.")
+    load = "mov eax, dword ptr [0x501000]"
+    use = lambda *offsets: [f"mov esi, dword ptr [eax {'-' if o < 0 else '+'} {abs(o)}]" for o in offsets] + ["ret"]
+    many = ["mov eax, dword ptr [0x501000]", "mov ecx, dword ptr [0x501010]", "mov edx, dword ptr [0x501008]",
+            "mov ebx, dword ptr [0x501020]", "mov esi, dword ptr [eax + 4]", "mov esi, dword ptr [ecx + 4]",
+            "mov esi, dword ptr [ecx + 8]", "mov esi, dword ptr [edx + 4]", "mov esi, dword ptr [edx + 8]",
+            "mov esi, dword ptr [ebx + 4]", "mov esi, dword ptr [ebx + 8]", "mov esi, dword ptr [ebx + 0xc]",
+            "mov esi, dword ptr [ebx + 0x10]", "ret"]
+    cases = [
+        ([load] + use(8, 0x10), [foo("int Foo")],
+         [named.format("offsets 0x8 and 0x10", "(char *)Foo + 0x8")]),
+        ([load] + use(0), [foo("int Foo")], [named.format("offset 0x0", "(char *)Foo")]),
+        ([load] + use(0, 4), [foo("int Foo")], [named.format("offsets 0x0 and 0x4", "(char *)Foo + 0x4")]),
+        ([load] + use(-4), [foo("int Foo")], [named.format("offset -0x4", "(char *)Foo - 0x4")]),
+        ([load] + use(-4, 8), [foo("int Foo")], [named.format("offsets -0x4 and 0x8", "(char *)Foo + 0x8")]),
+        ([load] + use(4), [foo("extern unsigned long Foo")], [named.format("offset 0x4", "(char *)Foo + 0x4")]),
+        ([load] + use(4), [foo("int *Foo")], []),
+        ([load] + use(4), [foo("float Foo")], []),
+        ([load] + use(4), [foo("struct Bar Foo")], []),
+        ([load] + use(4), [foo("int Foo[4]", 16)], []),
+        (["mov eax, dword ptr [0x501004]"] + use(4), [foo("int Foo[4]", 16)], []),
+        ([load, "ret"], [foo("int Foo")], []),
+        ([load] + use(4), [], [unnamed.format(DATA, DATA, "offset 0x4")]),
+        (["mov eax, dword ptr [0x401234]", "mov ecx, dword ptr [0x503000]", "mov edx, dword ptr [0x700000]",
+          "mov esi, dword ptr [eax + 4]", "mov esi, dword ptr [ecx + 4]", "mov esi, dword ptr [edx + 4]", "ret"],
+         [], []),
+        (many, [], [unnamed.format(0x501020, 0x501020, "offsets 0x4, 0x8, 0xc and more"),
+                    unnamed.format(0x501008, 0x501008, "offsets 0x4 and 0x8"),
+                    unnamed.format(0x501010, 0x501010, "offsets 0x4 and 0x8")]),
+    ]
+    failures = []
+    for lines, globals_, wanted in cases:
+        found = facts.pointer_facts(build(lines), namer_of(globals_))
+        if found != wanted:
+            failures.append(f"pointer_facts gives {found} for {described(lines)} with globals "
+                            f"{[g.decl for g in globals_]}, not {wanted}")
+    return failures
+
+
+# ---------------------------------------------------------------- types and the whole list
+
+HEADER = "struct Foo {\n    int a;\n};\n\nunion Bar {\n    int b;\n};\n\nstruct Fwd;\n"
+
+
+def check_bodiless_fact() -> list[str]:
+    """bodiless_fact names the struct and union types that the texts reach through a pointer and the types header
+    gives no body, each once and in the order first seen. It says has for one and have for more, with at most
+    FACT_LIMIT names and `and more`. A type used by value, an enum, a type with a body and text with no such type
+    give None. A forward declaration is no body."""
+    tail = (" no members and no known size. Cast a pointer to `char *` before you add to it or index it. "
+            "Read a member with a byte offset and its type, as in `*(int *)((char *)p + 0x10)`.")
+    cases = [
+        (["void Run(struct Baz *p)"], "struct Baz has" + tail),
+        (["void Run(union Baz *p)"], "union Baz has" + tail),
+        (["void Run(struct Baz *p)", "", "struct Baz *q;"], "struct Baz has" + tail),
+        (["void Run(struct Baz *p, union Qux *q)"], "struct Baz and union Qux have" + tail),
+        (["void Run(struct Qux *q)", "struct Baz *p;"], "struct Qux and struct Baz have" + tail),
+        (["struct A *a; struct B *b; struct C *c;"], "struct A, struct B and struct C have" + tail),
+        (["struct A *a; struct B *b; struct C *c; struct D *d;"], "struct A, struct B, struct C and more have" + tail),
+        (["void Run(struct Fwd *p)"], "struct Fwd has" + tail),
+        (["void Run(struct Baz **pp)"], "struct Baz has" + tail),
+        (["void Run(struct Foo *p, union Bar *q)"], None),
+        (["void Run(struct Baz b)"], None),
+        (["void Run(enum Baz *p)"], None),
+        (["void Run(int *p)", ""], None),
+        ([], None),
+    ]
+    failures = []
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text(HEADER, encoding="utf-8")
+        types = names.Types(path)
+        for texts, wanted in cases:
+            found = facts.bodiless_fact(texts, types)
+            if found != wanted:
+                failures.append(f"bodiless_fact gives {found!r} for {texts}, not {wanted!r}")
+    return failures
+
+
+def check_fact_lines() -> list[str]:
+    """fact_lines gives the convention fact, then the pointer facts, then the bodiless fact, with no empty
+    line. A register-argument cluster has no convention fact. The bodiless fact reads the prototype, the locals
+    and the declarations of the globals that the namer used, and not those of functions."""
+    lines = ["mov eax, dword ptr [0x501100]", "mov ecx, dword ptr [eax + 4]", "ret 8"]
+    plain = ["mov eax, 1", "ret"]
+    convention = "The function ends with `ret 8`"
+    pointer = "DAT_00501100 (address 0x501100) holds a pointer."
+    bodiless = "struct Baz has no members"
+    cases = [
+        (lines, "void __stdcall Foo(struct Baz *p)", "", False, {}, [convention, pointer, bodiless]),
+        (lines, "void __stdcall Foo(struct Baz *p)", "", True, {}, [pointer, bodiless]),
+        (lines, "void __stdcall Foo(int a)", "", False, {}, [convention, pointer]),
+        (lines, "void __stdcall Foo(int a)", "struct Baz *p;", False, {}, [convention, pointer, bodiless]),
+        (lines, "void __stdcall Foo(int a)", "", False, {0x501200: ("global", "Foo", "struct Baz *Foo")},
+         [convention, pointer, bodiless]),
+        (lines, "void __stdcall Foo(int a)", "", False, {0x402000: ("function", "Bar", "void Bar(struct Baz *p)")},
+         [convention, pointer]),
+        (plain, "void Foo(void)", "", False, {}, []),
+    ]
+    failures = []
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text(HEADER, encoding="utf-8")
+        types = names.Types(path)
+        for code, proto, locals_, cluster, used, wanted in cases:
+            namer = namer_of([])
+            namer.used = used
+            found = facts.fact_lines(build(code), info("Foo", proto, "a.c", locals_), "/O2", cluster, namer, types,
+                                       *NO_CALLEES)
+            starts = [line[:len(want)] for line, want in zip(found, wanted)]
+            if len(found) != len(wanted) or starts != wanted:
+                failures.append(f"fact_lines gives {[line[:40] for line in found]} for {described(code)} with proto "
+                                f"`{proto}`, locals `{locals_}`, cluster {cluster}, used {list(used.values())}, "
+                                f"not {wanted}")
+    return failures
+
+
+def run() -> list[str]:
+    """Every check, in order. Returns the failures."""
+    failures = []
+    for check in (check_memory_operands, check_pops, check_stack_change, check_may_read_stack_arguments,
+                  check_exit_pops, check_printed_keyword, check_amount, check_listed, check_offsets_text,
+                  check_convention_fact, check_frame_slot, check_transfer, check_pointer_globals,
+                  check_pointer_facts, check_bodiless_fact, check_fact_lines):
+        failures += check()
+    return failures

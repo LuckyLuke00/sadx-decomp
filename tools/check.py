@@ -73,9 +73,11 @@ def main() -> int:
     if args.command == "dossier":
         # Only .venv has capstone.
         import dossier
+        import facts
 
         return dossier.show(project.require_game(), args.addresses, draft=args.c, callers=args.callers,
-                            tables=args.tables, drafts=args.drafts, access=args.accesses, context=args.context)
+                            tables=args.tables, drafts=args.drafts, access=args.accesses,
+                            facts=facts.fact_lines if args.facts else None, context=args.context)
     if args.command == "access":
         # Only .venv has capstone.
         import accesses
@@ -116,6 +118,7 @@ def parse_args() -> argparse.Namespace:
     dossier.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
     dossier.add_argument("--drafts", type=Path, help="the folder of Ghidra drafts (default: build/decomp)")
     dossier.add_argument("--accesses", action="store_true", help="add how the whole exe reads and writes each global")
+    dossier.add_argument("--facts", action="store_true", help="add what the assembly hides: conventions, pointer globals")
     dossier.add_argument("--context", type=Path, help="another checkout whose files give names and signatures")
     access = commands.add_parser("access")
     access.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00800000")
