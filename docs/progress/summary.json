@@ -826,6 +826,14 @@
    "library": false
   },
   {
+   "address": "0x00438e10",
+   "name": "AL_ParameterControlInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00438e50",
    "name": "AL_ClearChaoParam",
    "accuracy": 0.18181818181818182,
@@ -1055,6 +1063,30 @@
    "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00442ca0",
+   "name": "AL_ConfirmSaveIsBusy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00442db0",
+   "name": "AL_ConfirmLoadIsBusy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00442dc0",
+   "name": "AL_ConfirmLoadIsLoaded",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -1290,6 +1322,14 @@
    "library": false
   },
   {
+   "address": "0x0044bda0",
+   "name": "SetChaoLevel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0044bdb0",
    "name": "KillChao",
    "accuracy": 1.0,
@@ -1335,6 +1375,38 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0046ffb0",
+   "name": "FUN_0046ffb0",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0046ffd0",
+   "name": "FUN_0046ffd0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00474720",
+   "name": "CreateCourseSelectMenuBeginner",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00476980",
+   "name": "CreateCourseNameBarJewel",
+   "accuracy": 0.05454545454545454,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -2063,6 +2135,14 @@
    "accuracy": 0.25,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00489cb0",
+   "name": "ObjectAlrCracker_GetFlag",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -20130,6 +20210,14 @@
    "library": false
   },
   {
+   "address": "0x00712670",
+   "name": "FUN_00712670",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00712cc0",
    "name": "ADV1_ALR_GetEntryStatus",
    "accuracy": 0.2222222222222222,
@@ -20140,6 +20228,14 @@
   {
    "address": "0x00714bf0",
    "name": "FUN_00714bf0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00716300",
+   "name": "AL_DrawStopChaoParamWindow",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -28067,5 +28163,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6f2c02d6229a500e8665a105c10264415c8db2b4b9e1cc4b3a63207def8f5567"
+ "inputs_sha256": "0769c151e4fcaca608fd53633b370f5058935a49db9a999c1f5d464000cbaf6c"
 }
