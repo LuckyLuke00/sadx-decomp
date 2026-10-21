@@ -29,3 +29,9 @@ void DestroyMapMR(unsigned short act)
 	FUN_004b6520((int)&texlist_mapMR);
 	late_ReleaseTexture(&texlist_mapMR);
 }
+
+// FUNCTION: SADX 0x006a8680
+void FUN_006a8680(void *param_1)
+{
+	SetTableBg();
+}
