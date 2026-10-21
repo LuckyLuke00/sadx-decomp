@@ -1,0 +1,158 @@
+#include "decls.h"
+extern float DAT_05b3ebc8;
+extern float DAT_05b3ebcc;
+extern float DAT_05b3ebd0;
+extern int DAT_05b3ebdc;
+extern int DAT_05b3ebc4;
+extern struct obj DAT_05cbbb50[256];
+extern int objLandTable[8][8];
+extern short DAT_05cba940;
+extern char DAT_05cbef5c;
+extern char DAT_05cbef5d;
+extern int DAT_05cb7938;
+extern int DAT_05cbaf4c;
+extern int DAT_05cb793c;
+extern float DAT_05cba944;
+extern short DAT_05cb5730;
+extern short DAT_05cbaf48;
+extern int DAT_05cbef54;
+extern int DAT_05cbef58;
+
+// FUNCTION: SADX 0x004fcdf0
+void InitializeLandWork(struct task *pTask)
+{
+	DAT_05cba940 = 0;
+	DAT_05cbef5c = 0;
+	DAT_05cbef5d = 0;
+	DAT_05cb7938 = 0;
+	DAT_05cbaf4c = 0;
+	DAT_05cb793c = 0;
+	DAT_05cba944 = 0.0f;
+	boolLandDisplay = 1;
+	boolLandCollision = 1;
+	DAT_05cb5730 = 0;
+	DAT_05cbaf48 = 0;
+	DAT_05cbef54 = 0;
+	DAT_05cbef58 = 0;
+}
+
+// FUNCTION: SADX 0x004fd1e0
+void LandChangeStage(short ssGap)
+{
+	if (ChkGameMode() == 0)
+		return;
+	LandRelease((long)DAT_05cbef5c, (long)DAT_05cbef5d);
+	if (DAT_05cbaf4c != 0)
+	{
+		*(char *)DAT_05cbaf4c = 2;
+	}
+	DAT_05cbef5d += ssGap;
+}
+
+// FUNCTION: SADX 0x004fd230
+void LandClearLandTable(long stage, long act)
+{
+	objLandTable[stage][act] = 0;
+}
+
+// FUNCTION: SADX 0x004fd250
+void LandChangeLandTable(struct _OBJ_LANDTABLE *pOLT)
+{
+	objLandTable[(int)DAT_05cbef5c][(int)DAT_05cbef5d] = (int)pOLT;
+	*(char *)DAT_05cbaf4c = 2;
+	DAT_05cbef54 = 0;
+	DAT_05cbef58 = 0;
+}
+
+// FUNCTION: SADX 0x004fd360
+void EndGround(struct task *pTask)
+{
+	LandRelease((long)DAT_05cbef5c, (long)DAT_05cbef5d);
+	InitializeLandWork(pTask);
+}
+
+// FUNCTION: SADX 0x004fd8e0
+float FUN_004fd8e0(float *param_1, float *param_2)
+{
+	float fVar1;
+	float fVar2;
+	float fVar3;
+	float fVar4;
+	fVar4 = *param_2 - *param_1;
+	fVar2 = param_2[1] - param_1[1];
+	fVar3 = param_2[2] - param_1[2];
+	fVar1 = fVar4 * fVar4 + fVar2 * fVar2 + fVar3 * fVar3;
+	return fVar1;
+}
+
+// FUNCTION: SADX 0x004fdae0
+void FUN_004fdae0(struct task *param_1)
+{
+	boolLandDisplay = 0;
+}
+
+// FUNCTION: SADX 0x004fdaf0
+void FUN_004fdaf0()
+{
+	boolLandDisplay = 1;
+}
+
+// FUNCTION: SADX 0x004feb30
+void FUN_004feb30(struct task *param_1)
+{
+	boolLandCollision = 0;
+}
+
+// FUNCTION: SADX 0x004feb40
+void FUN_004feb40()
+{
+	boolLandCollision = 1;
+}
+
+// FUNCTION: SADX 0x004fed30
+void FUN_004fed30()
+{
+	short sVar1;
+
+	for (sVar1 = 0xff; sVar1 >= 0; sVar1--)
+	{
+		*(char *)(sVar1 + 0x5cb5630) = 0;
+	}
+}
+
+// FUNCTION: SADX 0x004fee10
+void ReleaseMobileLandObject(struct obj *pObjLandObject)
+{
+	short local_8;
+	for (local_8 = 0xff; local_8 >= 0; local_8--)
+	{
+		if (pObjLandObject == &DAT_05cbbb50[local_8])
+			break;
+	}
+	if (local_8 >= 0)
+	{
+		*(char *)(local_8 + 0x5cb5630) = 0;
+	}
+}
+
+// FUNCTION: SADX 0x004fee60
+void SetDefaultGravity()
+{
+	DAT_05b3ebc8 = 0.0f;
+	DAT_05b3ebcc = -1.0f;
+	DAT_05b3ebd0 = 0.0f;
+	DAT_05b3ebdc = 0;
+	DAT_05b3ebc4 = 0;
+}
+
+// FUNCTION: SADX 0x004ff1c0
+void SetMleriRangeRad(float range)
+{
+	mleriRangeRad = range;
+}
+
+// FUNCTION: SADX 0x004ff1d0
+void ResetMleriRangeRad()
+{
+	mleriRangeRad = 400.0;
+}
