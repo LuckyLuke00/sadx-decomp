@@ -13,6 +13,7 @@
   python tools/check.py decls                 write the declarations and stubs that the sources use
   python tools/check.py dossier 0x00401000    what an agent needs to decompile a function
   python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
+  python tools/check.py permute FILE ADDR     try rewrites of a near match and keep the best
   python tools/check.py probe EXE             what a new game's exe needs: see docs/PORTING.md
 
 Every command sets up what it needs: .venv with the pinned packages, the
@@ -117,6 +118,12 @@ def parse_args() -> argparse.Namespace:
     access = commands.add_parser("access")
     access.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00800000")
     access.add_argument("--size", type=int, default=1, help="bytes to cover from each address (default: 1)")
+    permute = commands.add_parser("permute")
+    permute.add_argument("file", type=Path, help="the source file, e.g. src/main.c")
+    permute.add_argument("address", type=lambda value: int(value, 16), help="e.g. 0x00401000")
+    permute.add_argument("--tries", type=int, default=500, help="builds to try (default 500)")
+    permute.add_argument("--minutes", type=float, help="stop after this long")
+    permute.add_argument("--seed", type=int, default=0, help="the random seed (default 0)")
     commands.add_parser("probe").add_argument("exe", type=Path)
     return parser.parse_args()
 
@@ -132,6 +139,11 @@ def run_with_game(args: argparse.Namespace) -> int:
     runner.write_constants(game)
     if args.command == "fn":
         return report.score_functions(args.addresses, game)
+    if args.command == "permute":
+        # It imports this module back, through llm.
+        import permute
+
+        return permute.permute(ROOT / args.file, args.address, args.tries, args.minutes, args.seed)
     if args.command == "library":
         return report.score_library(game)
     if args.command == "save":
