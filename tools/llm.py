@@ -233,6 +233,19 @@ def definition_span(lines, address):
     return None if end is None else (start, end)
 
 
+def unclosed_definitions(lines):
+    """The indexes of the FUNCTION and STUB annotations in LINES whose definition has no lone "}" line before the
+    next such annotation. apply_function takes the first one after an annotation as the definition's end: with none,
+    it stops; past the next annotation, it replaces the next definition too."""
+    starts = [i for i, line in enumerate(lines) if annotation_address(line) is not None]
+    unclosed = []
+    for start, after in zip(starts, starts[1:] + [len(lines)]):
+        end = definition_end(lines, start)
+        if end is None or end > after:
+            unclosed.append(start)
+    return unclosed
+
+
 def signature_index(func):
     """Index in FUNC, a definition's lines from its annotation on, of the signature: the first line after the
     annotation that is not blank or a `//` comment, as names.parse_annotations reads it."""

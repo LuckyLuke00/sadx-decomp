@@ -39,6 +39,7 @@ import codegen
 import datafiles
 import declgen
 import library
+import names
 import osutil
 import pe
 import progress
@@ -288,7 +289,8 @@ def conclude(results: dict[str, int]) -> int:
 
 def lint() -> int:
     """reccmp's annotation linter: bad addresses, duplicates, misplaced markers.
-    Then each function annotation must start a function in data/functions.csv, a game function unless it is a STUB."""
+    Then each function annotation must start a function in data/functions.csv, a game function unless it is a STUB,
+    and each FUNCTION or STUB definition must end in a lone } line before the next one."""
     lint_command = [project.VENV_SCRIPTS / "reccmp-decomplint.exe", "src", "--module", project.game_config().target,
                     "--warnfail"]
     result = subprocess.run(lint_command, cwd=ROOT, capture_output=True, text=True, errors="replace")
@@ -302,8 +304,21 @@ def lint() -> int:
         for line in misplaced[:ci.MAX_LINES]:
             print(f"     {line}")
         return 1
+    unclosed = unclosed_definitions()
+    if unclosed:
+        print(f"FAIL {len(unclosed)} definitions in src/ have no lone }} line before the next FUNCTION or STUB:")
+        for line in unclosed[:ci.MAX_LINES]:
+            print(f"     {line}")
+        return 1
     print("ok   annotation lint")
     return 0
+
+
+def unclosed_definitions() -> list[str]:
+    """Where in src/ a FUNCTION or STUB annotation starts a definition with no lone } line before the next one."""
+    import llm  # here, not at the top: llm imports this module
+    return [f"{rel} line {i + 1}" for rel, text in names.read_sources(ROOT).items()
+            for i in llm.unclosed_definitions(text.split("\n"))]
 
 
 def scan_gap(image: pe.Image, address: int, first: int) -> tuple[int, int | None]:
