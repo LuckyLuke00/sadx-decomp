@@ -401,6 +401,17 @@ void AL_ShapeExit(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0046ffb0
+int FUN_0046ffb0()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00476980
+void CreateCourseNameBarJewel(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00484170
 void AlrFanFan_exe(struct AlrFanFan *___this, struct AlrReal *alrreal)
 {

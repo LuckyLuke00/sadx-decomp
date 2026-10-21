@@ -122,6 +122,9 @@ struct AL_ST_POS AL_StartPosMR_Odekake;
 // GLOBAL: SADX 0x01e5f844
 float value;
 
+// GLOBAL: SADX 0x01e679c0
+long gsChaoLevel;
+
 // GLOBAL: SADX 0x0221e5b0
 long angx;
 
@@ -953,6 +956,12 @@ void *DAT_05ad9a9c;
 // GLOBAL: SADX 0x05ad9b20
 int DAT_05ad9b20;
 
+// GLOBAL: SADX 0x05ade374
+int DAT_05ade374;
+
+// GLOBAL: SADX 0x05ade378
+int DAT_05ade378;
+
 // GLOBAL: SADX 0x05aeaa38
 int DAT_05aeaa38;
 
@@ -971,6 +980,15 @@ int DAT_05aeb694;
 // GLOBAL: SADX 0x05b067a8
 int DAT_05b067a8;
 
+// GLOBAL: SADX 0x05b28890
+int DAT_05b28890;
+
+// GLOBAL: SADX 0x05b2889c
+int DAT_05b2889c;
+
+// GLOBAL: SADX 0x05b288a0
+int DAT_05b288a0;
+
 // GLOBAL: SADX 0x05b288b0
 char DAT_05b288b0[5];
 
@@ -979,6 +997,9 @@ struct AlrReal *DAT_05b33108;
 
 // GLOBAL: SADX 0x05b35c28
 struct task *DAT_05b35c28;
+
+// GLOBAL: SADX 0x05b35c48
+int DAT_05b35c48;
 
 // GLOBAL: SADX 0x05b35c50
 struct task *DAT_05b35c50;
@@ -2708,8 +2729,14 @@ int DAT_060c5fc8;
 // GLOBAL: SADX 0x060c60ec
 struct task *DAT_060c60ec;
 
+// GLOBAL: SADX 0x060c6134
+int DAT_060c6134;
+
 // GLOBAL: SADX 0x060cae30
 int DAT_060cae30;
+
+// GLOBAL: SADX 0x060cb320
+int DAT_060cb320;
 
 // GLOBAL: SADX 0x060cb328
 void *DAT_060cb328;

@@ -99,6 +99,8 @@ void AL_SetBehaviorWithTimer(struct task *tp, long (*Func)(struct task *), long 
 const unsigned long *AlMsgStrLoadLang(const char *name, int lang);
 void FUN_0044c4b0(void *);
 void AL_ShapeExit(struct task *tp);
+int FUN_0046ffb0();
+void CreateCourseNameBarJewel(struct task *tp);
 float ghUnitVector(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5);
 void AlrReal_exe_for_Race(struct AlrReal *___this);
 void AlrReal_Dsp(struct AlrReal *___this);
