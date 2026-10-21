@@ -128,33 +128,31 @@ def check_moved_scores(expected: dict) -> list[str]:
 
 
 def check_history_rows(expected: dict) -> list[str]:
-    """The history gets a row for the first day and each day that moved a score, none for a day that only
-    removes or adds a stub, and one for the working tree only when it moved a score. The last snapshot of a
-    day stands for the day: a working tree on the last commit's day replaces that day's scores, and a day
-    whose last commit undoes its first gets no row."""
+    """The history gets a row for the first commit and for each commit that changed the totals, two commits of one
+    day included, and none for a commit that only removes or adds a stub. A commit that undoes the one before gets
+    a row too. The working tree gets a row only when it changed the totals."""
     game = {int(entry["address"], 16) for entry in expected["functions"]}
     dropped = with_first_accuracy(expected, 0.5)
     later = with_first_accuracy(expected, 0.25)
     commits = [progress.Snapshot("2026-01-01", expected, game),
                progress.Snapshot("2026-01-02", without_stubs(expected), game),
                progress.Snapshot("2026-01-03", expected, game),
-               progress.Snapshot("2026-01-04", dropped, game)]
-    # (case, the snapshots after the commits, the days with a row, the scores of the last row)
-    cases = [("an unchanged working tree", [("2026-01-05", dropped)], ["2026-01-01", "2026-01-04"], dropped),
-             ("a working tree that moved a score", [("2026-01-05", expected)],
-              ["2026-01-01", "2026-01-04", "2026-01-05"], expected),
-             ("a working tree on the last commit's day", [("2026-01-04", later)], ["2026-01-01", "2026-01-04"], later),
-             ("a day whose last commit undoes its first", [("2026-01-05", expected), ("2026-01-05", dropped)],
-              ["2026-01-01", "2026-01-04"], dropped)]
+               progress.Snapshot("2026-01-04", dropped, game),
+               progress.Snapshot("2026-01-04", later, game)]
+    rows_of_commits = [("2026-01-01", expected), ("2026-01-04", dropped), ("2026-01-04", later)]
+    # (case, the snapshots after the commits, the day and scores of each row)
+    cases = [("an unchanged working tree", [("2026-01-05", later)], rows_of_commits),
+             ("a working tree that changed the totals", [("2026-01-05", expected)],
+              rows_of_commits + [("2026-01-05", expected)]),
+             ("a commit that undoes the one before", [("2026-01-05", dropped), ("2026-01-05", later)],
+              rows_of_commits + [("2026-01-05", dropped), ("2026-01-05", later)])]
     failures = []
-    for name, more, wanted, last in cases:
+    for name, more, wanted in cases:
         snapshots = commits + [progress.Snapshot(day, summary, game) for day, summary in more]
-        rows = progress.history_rows(snapshots, {})
-        days = [row["date"] for row in rows]
-        if days != wanted:
-            failures.append(f"history rows {days} for {name}, not {wanted}")
-        elif not progress.same_totals(rows[-1], progress.history_row(wanted[-1], scoring.totals(last, game), "")):
-            failures.append(f"the last history row for {name} does not hold the scores of its day's last snapshot")
+        rows = progress.history_rows(snapshots)
+        if rows != [progress.history_row(day, scoring.totals(summary, game)) for day, summary in wanted]:
+            failures.append(f"history rows {[row['date'] for row in rows]} for {name}, not the "
+                            f"{len(wanted)} rows of {[day for day, _ in wanted]}")
     return failures
 
 
@@ -162,7 +160,7 @@ def check_empty_map() -> list[str]:
     """A game with no game functions yet, such as a new port, gets a map of just its header and colour key."""
     summary = {"exe": "GAME.EXE", "functions": []}
     sections = progress.map_sections({}, [("Stages", None, {"stage": "Stages"})])
-    svg = progress.render_map(summary, scoring.totals(summary, set()), sections)
+    svg = progress.render_map(summary, scoring.totals(summary, set()), sections, progress.LIGHT)
     height = progress.HEADER + progress.FOOTER
     if f'viewBox="0 0 {progress.WIDTH} {height}"' in svg:
         return []

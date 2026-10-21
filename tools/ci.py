@@ -2,8 +2,8 @@
 
 1. summary.json is fresh: it was scored from the build inputs in this checkout.
 2. Against the base commit: no score dropped. A removed stub scored zero, so it drops nothing.
-3. history.csv, the visuals and the README table equal a fresh render. The history
-   comes from the commits, so a fresh render proves it matches them.
+3. history.csv and the visuals equal a fresh render. The history comes from the
+   commits, so a fresh render proves it matches them.
 4. Every function in data/functions.csv is in exactly one code group and ends inside it.
 5. No binaries and no file over 10 MB are in the repo.
 
@@ -144,7 +144,7 @@ def run_checks(base: str | None) -> int:
     else:
         checks += [("no score dropped", lambda: check_no_drops(summary, resolved))]
     checks += [
-        ("history, visuals and README table are current", check_visuals),
+        ("history and visuals are current", check_visuals),
         ("every function is in one code group", check_groups),
         ("no binaries or large files", check_no_binaries),
     ]
