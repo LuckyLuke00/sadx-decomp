@@ -80,3 +80,8 @@ float ghUnitVectorXZ(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5)
 {
 	return (float)0;
 }
+
+// STUB: SADX 0x005e27e0
+void EvBossDispHitPoint(struct __HPPOS *hppos)
+{
+}

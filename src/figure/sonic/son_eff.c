@@ -1,5 +1,11 @@
 #include "decls.h"
+void njScaleV(float *, struct NJS_POINT3 *);
 void FUN_005ae5e0(struct taskwk *param_1, void *param_2);
+
+// STUB: SADX 0x005ae4f0
+void ObjectMizuiki(struct task *tp)
+{
+}
 
 // FUNCTION: SADX 0x005ae5b0
 void AwaEnd(struct task *tp)
@@ -54,6 +60,11 @@ void *FUN_005af750(void *param_1)
 	return local_8;
 }
 
+// STUB: SADX 0x005af7b0
+void AwaDraw(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005b1fc0
 void SetSonicIce(long pno)
 {
@@ -64,4 +75,55 @@ void SetSonicIce(long pno)
 	{
 		local_8->twp->btimer = pno;
 	}
+}
+
+// STUB: SADX 0x005b1ff0
+void SonicIce(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005b2080
+void SonicIceDisplay(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	___njSetTexture((struct NJS_TEXLIST *)local_8->value.ptr);
+	njPushMatrix(0);
+	njTranslateV(0, &local_8->pos);
+	if (*(int *)((char *)local_8 + 0x1c) != 0)
+	{
+		njRotateZ(0, *(unsigned short *)((char *)local_8 + 0x1c));
+	}
+	if (*(int *)((char *)local_8 + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)local_8 + 0x14));
+	}
+	if (*(int *)((char *)local_8 + 0x18) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)local_8 + 0x18));
+	}
+	njScaleV(0, (struct NJS_POINT3 *)((char *)local_8 + 0x2c));
+	___dsDrawObject((struct obj *)(*(int *)((char *)local_8 + 8)));
+	njPopMatrix(1);
+}
+
+// STUB: SADX 0x005b2140
+void SonicIceExecute(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b21e0
+void SetIcePieces(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x005b22a0
+void SonicIcePiece(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b2380
+void SonicIcePieceExecute(struct task *tp)
+{
 }

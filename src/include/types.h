@@ -73,6 +73,9 @@ struct bankdata;
 struct bankdatalist;
 struct BOSSPLAYER_CREATE_PARAM;
 struct bosswk;
+struct BUBBLE_DATA;
+struct BUBBLE_LIST;
+struct BUBBLE_TABLE;
 struct c_colli_hit_info;
 struct CCL_INFO;
 struct chao_colliwk;
@@ -94,6 +97,7 @@ struct erctrlstr;
 struct EVENT_ACTION_LIST;
 struct EVENT_PATH_LIST;
 struct eventwk;
+struct EVTABLE2;
 struct FACETBL;
 struct facewk;
 struct FileSelWk;
@@ -174,11 +178,13 @@ struct SEQ_SECTION;
 struct SEQ_SECTIONTBL;
 struct SeqPrmType;
 struct shadowwk;
+struct sMobleCtrl;
 struct sMRacePath;
 struct SNAPSHOT_DATA;
 struct sp_info;
 struct sp_link;
 struct sp_task;
+struct sParabola;
 struct STAFF_DATA;
 struct STAFFROLL_DATA;
 struct strCamCartData;
@@ -186,6 +192,7 @@ struct task;
 struct TaskCommunication;
 struct TaskInfo;
 struct taskwk;
+struct TEX_PVMTABLE;
 struct thread;
 struct u4s;
 union UNION_STATUS;
@@ -1468,6 +1475,20 @@ static_assert(offsetof(BOSSPLAYER_CREATE_PARAM, flag) == 0x14, "BOSSPLAYER_CREAT
 static_assert(offsetof(BOSSPLAYER_CREATE_PARAM, player_pos) == 0x18, "BOSSPLAYER_CREATE_PARAM::player_pos");
 static_assert(offsetof(BOSSPLAYER_CREATE_PARAM, boss_pos) == 0x24, "BOSSPLAYER_CREATE_PARAM::boss_pos");
 
+struct BUBBLE_DATA {
+    signed char object_num;
+    signed char spline_num;
+    struct BUBBLE_LIST *list;
+    struct BUBBLE_TABLE *tbl;
+    float scl;
+};
+static_assert(sizeof(BUBBLE_DATA) == 0x10, "sizeof BUBBLE_DATA");
+static_assert(offsetof(BUBBLE_DATA, object_num) == 0x0, "BUBBLE_DATA::object_num");
+static_assert(offsetof(BUBBLE_DATA, spline_num) == 0x1, "BUBBLE_DATA::spline_num");
+static_assert(offsetof(BUBBLE_DATA, list) == 0x4, "BUBBLE_DATA::list");
+static_assert(offsetof(BUBBLE_DATA, tbl) == 0x8, "BUBBLE_DATA::tbl");
+static_assert(offsetof(BUBBLE_DATA, scl) == 0xc, "BUBBLE_DATA::scl");
+
 struct CCL_INFO {
     unsigned char kind;
     unsigned char form;
@@ -2081,6 +2102,14 @@ struct NJS_ACTION {
 static_assert(sizeof(NJS_ACTION) == 0x8, "sizeof NJS_ACTION");
 static_assert(offsetof(NJS_ACTION, object) == 0x0, "NJS_ACTION::object");
 static_assert(offsetof(NJS_ACTION, motion) == 0x4, "NJS_ACTION::motion");
+
+struct EVTABLE2 {
+    void (*func)(int);
+    struct TEX_PVMTABLE *pvmtable;
+};
+static_assert(sizeof(EVTABLE2) == 0x8, "sizeof EVTABLE2");
+static_assert(offsetof(EVTABLE2, func) == 0x0, "EVTABLE2::func");
+static_assert(offsetof(EVTABLE2, pvmtable) == 0x4, "EVTABLE2::pvmtable");
 
 struct FileSelWk {
     enum AdvaStatEnum Stat;
@@ -2748,6 +2777,14 @@ static_assert(sizeof(STAFFROLL_DATA) == 0x8, "sizeof STAFFROLL_DATA");
 static_assert(offsetof(STAFFROLL_DATA, StaffTbl) == 0x0, "STAFFROLL_DATA::StaffTbl");
 static_assert(offsetof(STAFFROLL_DATA, nbStaff) == 0x4, "STAFFROLL_DATA::nbStaff");
 
+struct TEX_PVMTABLE {
+    char *pname;
+    struct NJS_TEXLIST *ptexlist;
+};
+static_assert(sizeof(TEX_PVMTABLE) == 0x8, "sizeof TEX_PVMTABLE");
+static_assert(offsetof(TEX_PVMTABLE, pname) == 0x0, "TEX_PVMTABLE::pname");
+static_assert(offsetof(TEX_PVMTABLE, ptexlist) == 0x4, "TEX_PVMTABLE::ptexlist");
+
 struct TaskInfo {
     unsigned int size;
     unsigned long initMode;
@@ -2775,6 +2812,30 @@ static_assert(offsetof(VolumeInfo, nearVolOfs) == 0x0, "VolumeInfo::nearVolOfs")
 static_assert(offsetof(VolumeInfo, farVolOfs) == 0x2, "VolumeInfo::farVolOfs");
 static_assert(offsetof(VolumeInfo, nearDist) == 0x4, "VolumeInfo::nearDist");
 static_assert(offsetof(VolumeInfo, farDist) == 0x8, "VolumeInfo::farDist");
+
+struct OBJ_EDITENTRY {
+    unsigned short usID;
+    short rotx;
+    short roty;
+    short rotz;
+    float xpos;
+    float ypos;
+    float zpos;
+    float xscl;
+    float yscl;
+    float zscl;
+};
+static_assert(sizeof(OBJ_EDITENTRY) == 0x20, "sizeof OBJ_EDITENTRY");
+static_assert(offsetof(OBJ_EDITENTRY, usID) == 0x0, "OBJ_EDITENTRY::usID");
+static_assert(offsetof(OBJ_EDITENTRY, rotx) == 0x2, "OBJ_EDITENTRY::rotx");
+static_assert(offsetof(OBJ_EDITENTRY, roty) == 0x4, "OBJ_EDITENTRY::roty");
+static_assert(offsetof(OBJ_EDITENTRY, rotz) == 0x6, "OBJ_EDITENTRY::rotz");
+static_assert(offsetof(OBJ_EDITENTRY, xpos) == 0x8, "OBJ_EDITENTRY::xpos");
+static_assert(offsetof(OBJ_EDITENTRY, ypos) == 0xc, "OBJ_EDITENTRY::ypos");
+static_assert(offsetof(OBJ_EDITENTRY, zpos) == 0x10, "OBJ_EDITENTRY::zpos");
+static_assert(offsetof(OBJ_EDITENTRY, xscl) == 0x14, "OBJ_EDITENTRY::xscl");
+static_assert(offsetof(OBJ_EDITENTRY, yscl) == 0x18, "OBJ_EDITENTRY::yscl");
+static_assert(offsetof(OBJ_EDITENTRY, zscl) == 0x1c, "OBJ_EDITENTRY::zscl");
 
 // Offsets not checked against the code yet.
 struct al_action_ctrl {

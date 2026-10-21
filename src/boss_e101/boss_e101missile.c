@@ -6,10 +6,10 @@ extern struct NJS_TEXLIST texlist_e101;
 extern struct obj object_01_misile_01_misile_01_misile[];
 void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2);
 void FUN_005e5770(struct task *param_1);
-void FUN_00810290(struct NJS_POINT3 *param_1, float param_2);
+static void FUN_00810290(struct NJS_POINT3 *param_1, float param_2);
 float njSqrt(float param_1);
 void njUnitMatrix(float *param_1);
-void updownHeight(struct task *pTask);
+static void updownHeight(struct task *pTask);
 
 // GLOBAL: SADX 0x02c0cab0
 static struct CCL_INFO colliInfo[1];
@@ -204,7 +204,7 @@ static void _exec(struct task *pTask)
 	local_8->x += local_54.x;
 	local_8->z = local_8->z + local_54.z;
 	FUN_00810290(local_8, 1.0f);
-	local_64 = local_8->x * local_8->x + local_8->z * local_8->z;
+	local_64 = (local_8->z * local_8->z) + local_8->x * local_8->x;
 	local_64 = njSqrt(local_64);
 	local_c->ang.x = (long)(atan2((double)local_64, (double)local_8->y) * 65536.0 / 6.283184);
 	local_c->pos.x += local_8->x;
@@ -250,4 +250,37 @@ void EnemyBossE101Missile(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct
 		local_8->disp = disp;
 		local_8->dest = dest;
 	}
+}
+
+// FUNCTION: SADX 0x00810290
+static void FUN_00810290(struct NJS_POINT3 *param_1, float param_2)
+{
+	float local_8 = param_1->x * param_1->x + param_1->y * param_1->y + param_1->z * param_1->z;
+	local_8 = njSqrt(local_8);
+	if (local_8 > param_2)
+	{
+		param_2 /= local_8;
+		param_1->x *= param_2;
+		param_1->y *= param_2;
+		param_1->z *= param_2;
+	}
+}
+
+// FUNCTION: SADX 0x00837890
+static void updownHeight(struct task *pTask)
+{
+	struct NJS_POINT3 *local_4 = (struct NJS_POINT3 *)pTask->awp;
+	struct taskwk *var2 = pTask->twp;
+	float local_8 = GetPlayerWorkPointer(0)->p.center_height + ((struct taskwk *)DAT_05baf368)->pos.y - var2->pos.y;
+	if (fabs(local_8) < 0.1f)
+	{
+		local_4->y *= 0.7f;
+	}
+	else
+	{
+		local_8 = local_8 > 0.0f ? 0.03f : -0.02f;
+		local_4->y += local_8;
+	}
+	local_8 = local_4->y < -1.5f ? -1.5f : (local_4->y > 2.0f ? 2.0f : local_4->y);
+	local_4->y = local_8;
 }

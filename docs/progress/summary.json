@@ -5162,6 +5162,14 @@
    "library": false
   },
   {
+   "address": "0x004be650",
+   "name": "CameraSetEventCamera",
+   "accuracy": 0.0784313725490196,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004be800",
    "name": "CameraSetEventCameraFunc",
    "accuracy": 0.08421052631578947,
@@ -7498,9 +7506,25 @@
    "library": false
   },
   {
+   "address": "0x004e0e10",
+   "name": "PGetBreak",
+   "accuracy": 0.020833333333333332,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004e1920",
    "name": "PGetGravity",
    "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004e19d0",
+   "name": "PGetRotation",
+   "accuracy": 0.03636363636363636,
    "effective": false,
    "stub": true,
    "library": false
@@ -8618,6 +8642,14 @@
    "library": false
   },
   {
+   "address": "0x004f4f20",
+   "name": "chk_advstage",
+   "accuracy": 0.15873015873015872,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004f51d0",
    "name": "SeqSave",
    "accuracy": 1.0,
@@ -8781,6 +8813,46 @@
    "address": "0x004f5830",
    "name": "EV_PcNpcInit",
    "accuracy": 0.1702127659574468,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f58c0",
+   "name": "EV_PcNpcEnd",
+   "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f5950",
+   "name": "SeqTaskFadeIn",
+   "accuracy": 0.12698412698412698,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f5a10",
+   "name": "DisplayFade",
+   "accuracy": 0.13559322033898305,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f5ac0",
+   "name": "SeqTaskFadeOut",
+   "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004f5ee0",
+   "name": "SeqResetLastScenario",
+   "accuracy": 0.16326530612244897,
    "effective": false,
    "stub": true,
    "library": false
@@ -9834,8 +9906,144 @@
    "library": false
   },
   {
+   "address": "0x00508980",
+   "name": "BigDestruct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005098c0",
+   "name": "BigCheckWater",
+   "accuracy": 0.18867924528301888,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00509a00",
+   "name": "BigCheckAtack_W",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0050aa30",
+   "name": "BigCheckBeInTheWater",
+   "accuracy": 0.37037037037037035,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0050aa70",
+   "name": "FUN_0050aa70",
+   "accuracy": 0.24390243902439024,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0050c310",
+   "name": "BigEarsSwingEnd",
+   "accuracy": 0.6666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0050cb50",
+   "name": "ChkFishingThrowNow",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0050cbb0",
+   "name": "FUN_0050cbb0",
+   "accuracy": 0.35714285714285715,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0050ce30",
+   "name": "BigCameraSetFishingCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0050ce60",
+   "name": "FUN_0050ce60",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0050ce80",
+   "name": "FUN_0050ce80",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0050ceb0",
+   "name": "IsBigWhistling",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0050ced0",
+   "name": "IsBigPutting",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0050d320",
    "name": "_bigmot_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005125a0",
+   "name": "FUN_005125a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00513ad0",
+   "name": "FUN_00513ad0",
+   "accuracy": 0.35714285714285715,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00515760",
+   "name": "E102ChangeWaitingMotion",
+   "accuracy": 0.04790419161676647,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00515a50",
+   "name": "chkE102EnableLaser",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9858,6 +10066,46 @@
    "library": false
   },
   {
+   "address": "0x00515c30",
+   "name": "FUN_00515c30",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00515c60",
+   "name": "FUN_00515c60",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00515c90",
+   "name": "E102MotionCallback",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005161d0",
+   "name": "SE_RDASH_ON",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00516210",
+   "name": "SE_RDASH_OFF",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00516260",
    "name": "IsE102Whistling",
    "accuracy": 1.0,
@@ -9868,6 +10116,150 @@
   {
    "address": "0x00516280",
    "name": "IsE102ShakingTree",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0051afc0",
+   "name": "AmyDestruct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0051b730",
+   "name": "FUN_0051b730",
+   "accuracy": 0.20408163265306123,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0051b7b0",
+   "name": "FUN_0051b7b0",
+   "accuracy": 0.34782608695652173,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0051b800",
+   "name": "FUN_0051b800",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0051b830",
+   "name": "AmyChangeWaitingMotion",
+   "accuracy": 0.03864734299516908,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0051c960",
+   "name": "FUN_0051c960",
+   "accuracy": 0.2631578947368421,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0051ca90",
+   "name": "FUN_0051ca90",
+   "accuracy": 0.3125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0051f1f0",
+   "name": "FUN_0051f1f0",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0051ff70",
+   "name": "AmyHeadSpikesShakeEnd",
+   "accuracy": 0.6153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005205f0",
+   "name": "AmySkirtShapeEnd",
+   "accuracy": 0.6153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00520bd0",
+   "name": "AmyFaceMotion",
+   "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00520c50",
+   "name": "AmyDrumCanPutOnCheck",
+   "accuracy": 0.3448275862068966,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00520ca0",
+   "name": "Amy_Status",
+   "accuracy": 0.12658227848101267,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005210f0",
+   "name": "FUN_005210f0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00521120",
+   "name": "AmyBalanceGameStartChecker",
+   "accuracy": 0.057971014492753624,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00521550",
+   "name": "AmyForEventHammerScaleIm",
+   "accuracy": 0.2702702702702703,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005215c0",
+   "name": "AmyHandleEntry",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00521600",
+   "name": "AmyBlindEntry",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9895,6 +10287,166 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00521ac0",
+   "name": "KnucklesTheEchidna",
+   "accuracy": 0.0029411764705882353,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00527600",
+   "name": "KnucklesDestruct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00528530",
+   "name": "FUN_00528530",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00528560",
+   "name": "KnucklesChangeWaitingMotion",
+   "accuracy": 0.037037037037037035,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00529090",
+   "name": "FUN_00529090",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005293e0",
+   "name": "FUN_005293e0",
+   "accuracy": 0.24390243902439024,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052bcd0",
+   "name": "FUN_0052bcd0",
+   "accuracy": 0.30303030303030304,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052bd30",
+   "name": "KnucklesCheckStartPunch",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052bda0",
+   "name": "FUN_0052bda0",
+   "accuracy": 0.24390243902439024,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052c320",
+   "name": "KnucklesHeadSpikesShakeEnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0052c350",
+   "name": "KnucklesChargeEffect",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0052c370",
+   "name": "KnucklesChargeEffectExe",
+   "accuracy": 0.11428571428571428,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052dd10",
+   "name": "KnucklesLaterSE",
+   "accuracy": 0.22857142857142856,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052dd70",
+   "name": "FUN_0052dd70",
+   "accuracy": 0.47058823529411764,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052e6c0",
+   "name": "KnucklesDirectAheadEnd",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052e760",
+   "name": "Knuckles_Status",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052faa0",
+   "name": "Knuckles_KakeraGame_Set_CheckEme",
+   "accuracy": 0.15625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052feb0",
+   "name": "Knuckles_KakeraGamePutRadar0C",
+   "accuracy": 0.12121212121212122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0052ff80",
+   "name": "Knuckles_KakeraGame_Set_ContPos",
+   "accuracy": 0.15625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00530040",
+   "name": "Knuckles_KakeraPrintLapTime",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -9930,6 +10482,142 @@
    "library": false
   },
   {
+   "address": "0x005360c0",
+   "name": "Board_AddScore",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005360f0",
+   "name": "FUN_005360f0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00536230",
+   "name": "MilesDestruct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00536e70",
+   "name": "MilesChangeWaitingMotion",
+   "accuracy": 0.045454545454545456,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00538480",
+   "name": "FUN_00538480",
+   "accuracy": 0.2702702702702703,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053a2c0",
+   "name": "FUN_0053a2c0",
+   "accuracy": 0.2631578947368421,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053b210",
+   "name": "MilesCheckStop",
+   "accuracy": 0.30303030303030304,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053ba40",
+   "name": "FUN_0053ba40",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0053ddc0",
+   "name": "MilesHeadSpikesShakeEnd",
+   "accuracy": 0.4444444444444444,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053ddf0",
+   "name": "MilesFaceMotion",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0053de50",
+   "name": "MilesFaceMotionExec",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053df40",
+   "name": "MilesSnowBoard",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0053dfb0",
+   "name": "ExecuteMilesSnowBoard",
+   "accuracy": 0.07920792079207921,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053e0e0",
+   "name": "DisplayMilesSnowBoard",
+   "accuracy": 0.04081632653061224,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053e4f0",
+   "name": "FUN_0053e4f0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0053e520",
+   "name": "FUN_0053e520",
+   "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0053e560",
+   "name": "FUN_0053e560",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0053e580",
    "name": "MilesSEControle",
    "accuracy": 1.0,
@@ -9954,11 +10642,267 @@
    "library": false
   },
   {
+   "address": "0x005471b0",
+   "name": "SonicDestruct",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00549ed0",
+   "name": "SonicCheckJumpCancel",
+   "accuracy": 0.2702702702702703,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054c9d0",
+   "name": "FUN_0054c9d0",
+   "accuracy": 0.24390243902439024,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054d870",
+   "name": "SonicHoldOnPillar",
+   "accuracy": 0.17391304347826086,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054d9e0",
+   "name": "SonicHoldOnIcicle",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054da60",
+   "name": "SonicInterpolateFeetModel",
+   "accuracy": 0.047337278106508875,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054dce0",
+   "name": "SonicFaceMotion",
+   "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054e460",
+   "name": "SonicHeadSpikesShakeEnd",
+   "accuracy": 0.6666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054ea70",
+   "name": "PSetDashEffect",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0054eab0",
    "name": "FUN_0054eab0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054eaf0",
+   "name": "FUN_0054eaf0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054eb30",
+   "name": "PSetSpinDSEffect",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054eb70",
+   "name": "FUN_0054eb70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054ebb0",
+   "name": "FUN_0054ebb0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054ebf0",
+   "name": "FUN_0054ebf0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054ec30",
+   "name": "FUN_0054ec30",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054eca0",
+   "name": "ManageSonicLightSpinCharge",
+   "accuracy": 0.24242424242424243,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054ed00",
+   "name": "ManageSonicLightSpinChargeExit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f210",
+   "name": "SuperSonicStatusManagerDestructor",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054f280",
+   "name": "SuperSonicStatusManagerExecutor",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054f2e0",
+   "name": "SonicCanselSpinDashForIcecap",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f760",
+   "name": "ChangeMotionSonicRush",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054f7b0",
+   "name": "FUN_0054f7b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f7d0",
+   "name": "ChangeMotionSonicLaunch",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f810",
+   "name": "ChangeMotionSonicRun",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f850",
+   "name": "FUN_0054f850",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f890",
+   "name": "ChangeMotionSonicSpin",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f8d0",
+   "name": "CreateBlurManagerForMetalSonic",
+   "accuracy": 0.32,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054f910",
+   "name": "FUN_0054f910",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f920",
+   "name": "FUN_0054f920",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f960",
+   "name": "FUN_0054f960",
+   "accuracy": 0.09195402298850575,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054fa60",
+   "name": "FUN_0054fa60",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054fab0",
+   "name": "DrawBlurOfMetalSonic",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -11098,6 +12042,14 @@
    "library": false
   },
   {
+   "address": "0x005670c0",
+   "name": "CameraFishing",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00567390",
    "name": "FUN_00567390",
    "accuracy": 1.0,
@@ -11242,6 +12194,14 @@
    "library": false
   },
   {
+   "address": "0x0056a200",
+   "name": "FUN_0056a200",
+   "accuracy": 0.26666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0056a250",
    "name": "EV_Init",
    "accuracy": 1.0,
@@ -11263,6 +12223,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056a2c0",
+   "name": "FUN_0056a2c0",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -11482,9 +12450,185 @@
    "library": false
   },
   {
+   "address": "0x0056b270",
+   "name": "EV_CreateObjectFunc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0056b2f0",
    "name": "FUN_0056b2f0",
    "accuracy": 0.4444444444444444,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b370",
+   "name": "FUN_0056b370",
+   "accuracy": 0.17391304347826086,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b3e0",
+   "name": "FUN_0056b3e0",
+   "accuracy": 0.27586206896551724,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b430",
+   "name": "EV_SetMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056b450",
+   "name": "EV_SetShadow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056b470",
+   "name": "EV_SetColli",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056b490",
+   "name": "EV_CreatePlayer",
+   "accuracy": 0.16326530612244897,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b510",
+   "name": "FUN_0056b510",
+   "accuracy": 0.38095238095238093,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b540",
+   "name": "EV_InitPlayer",
+   "accuracy": 0.0963855421686747,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b650",
+   "name": "FUN_0056b650",
+   "accuracy": 0.3076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b6d0",
+   "name": "FUN_0056b6d0",
+   "accuracy": 0.5333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b6f0",
+   "name": "FUN_0056b6f0",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b750",
+   "name": "EV_ClrPath",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056b770",
+   "name": "FUN_0056b770",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b940",
+   "name": "EV_LookObject",
+   "accuracy": 0.26666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056b990",
+   "name": "EV_LookPoint",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056b9d0",
+   "name": "EV_LookAngle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056ba10",
+   "name": "EV_MoveFree",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056bab0",
+   "name": "EV_MovePoint2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056bb10",
+   "name": "EV_MoveRotation",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056bb50",
+   "name": "FUN_0056bb50",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056bb90",
+   "name": "FUN_0056bb90",
+   "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
    "library": false
@@ -11501,6 +12645,62 @@
    "address": "0x0056be40",
    "name": "CalcEventCamera",
    "accuracy": 0.26666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056cbf0",
+   "name": "EV_CameraAng",
+   "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056cc80",
+   "name": "EV_CameraPos",
+   "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d010",
+   "name": "EV_CameraPerspective",
+   "accuracy": 0.26666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d0b0",
+   "name": "FUN_0056d0b0",
+   "accuracy": 0.38095238095238093,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d0e0",
+   "name": "EV_ClrFace",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d110",
+   "name": "EV_CameraOff",
+   "accuracy": 0.36363636363636365,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d140",
+   "name": "EV_SerifPlay",
+   "accuracy": 0.6153846153846154,
    "effective": false,
    "stub": true,
    "library": false
@@ -13914,9 +15114,57 @@
    "library": false
   },
   {
+   "address": "0x005a8990",
+   "name": "FUN_005a8990",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a8ae0",
+   "name": "FUN_005a8ae0",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005a8cc0",
    "name": "InitMoble2PControl",
    "accuracy": 0.3076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a8d10",
+   "name": "Moble2PControl",
+   "accuracy": 0.09302325581395349,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a8e10",
+   "name": "Highway_Init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a9060",
+   "name": "FUN_005a9060",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a9100",
+   "name": "FUN_005a9100",
+   "accuracy": 0.05755395683453238,
    "effective": false,
    "stub": true,
    "library": false
@@ -13946,6 +15194,30 @@
    "library": false
   },
   {
+   "address": "0x005a9350",
+   "name": "GetNearestPath",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005aa480",
+   "name": "InitJumpSonicToPoint",
+   "accuracy": 0.14035087719298245,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005aa520",
+   "name": "ChkEndSonicFakeJump",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005aa610",
    "name": "FUN_005aa610",
    "accuracy": 0.26666666666666666,
@@ -13962,11 +15234,35 @@
    "library": false
   },
   {
+   "address": "0x005aa840",
+   "name": "ChkSonicStack",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005aa8d0",
    "name": "FUN_005aa8d0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005aaa70",
+   "name": "DrawMoble2P",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ab160",
+   "name": "FUN_005ab160",
+   "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -13978,11 +15274,27 @@
    "library": false
   },
   {
+   "address": "0x005ab3e0",
+   "name": "MRaceSetVoice",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005ab4a0",
    "name": "FUN_005ab4a0",
    "accuracy": 0.20512820512820512,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ab510",
+   "name": "SetTexture_EggMoble",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -14039,6 +15351,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005ab840",
+   "name": "MRaceDispResult",
+   "accuracy": 0.10126582278481013,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -14130,6 +15450,14 @@
    "library": false
   },
   {
+   "address": "0x005ac960",
+   "name": "NpcMilesSet",
+   "accuracy": 0.12345679012345678,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005aca60",
    "name": "NpcMilesControlDestructor",
    "accuracy": 1.0,
@@ -14202,6 +15530,30 @@
    "library": false
   },
   {
+   "address": "0x005ada90",
+   "name": "NpcGetAngleToTarget",
+   "accuracy": 0.10810810810810811,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005adb60",
+   "name": "NpcGetAnalogForBrake",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005adc00",
+   "name": "NpcCheckBothDamage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005adf30",
    "name": "FUN_005adf30",
    "accuracy": 1.0,
@@ -14242,6 +15594,14 @@
    "library": false
   },
   {
+   "address": "0x005ae4f0",
+   "name": "ObjectMizuiki",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005ae5b0",
    "name": "AwaEnd",
    "accuracy": 1.0,
@@ -14266,6 +15626,46 @@
    "library": false
   },
   {
+   "address": "0x005af7b0",
+   "name": "AwaDraw",
+   "accuracy": 0.12121212121212122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005af870",
+   "name": "EffectSpin",
+   "accuracy": 0.32,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005af8b0",
+   "name": "EffectSpinDS",
+   "accuracy": 0.32,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005af8f0",
+   "name": "EffectStartHoming",
+   "accuracy": 0.32,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b0560",
+   "name": "EffectDash",
+   "accuracy": 0.26666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b1fc0",
    "name": "SetSonicIce",
    "accuracy": 1.0,
@@ -14277,6 +15677,46 @@
    "address": "0x005b1ff0",
    "name": "SonicIce",
    "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b2080",
+   "name": "SonicIceDisplay",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b2140",
+   "name": "SonicIceExecute",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b21e0",
+   "name": "SetIcePieces",
+   "accuracy": 0.13114754098360656,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b22a0",
+   "name": "SonicIcePiece",
+   "accuracy": 0.12698412698412698,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b2380",
+   "name": "SonicIcePieceExecute",
+   "accuracy": 0.11594202898550725,
    "effective": false,
    "stub": true,
    "library": false
@@ -14317,6 +15757,14 @@
    "address": "0x005b2660",
    "name": "DrawEventActionPL",
    "accuracy": 0.021917808219178082,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b2b60",
+   "name": "FreeEventPath",
+   "accuracy": 0.24242424242424243,
    "effective": false,
    "stub": true,
    "library": false
@@ -15274,6 +16722,22 @@
    "library": false
   },
   {
+   "address": "0x005d11a0",
+   "name": "SetChaosLifeGauge",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005d1230",
+   "name": "ChaosLifeGauge",
+   "accuracy": 0.06557377049180328,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005d13f0",
    "name": "ChaosLifeGaugeDisplay",
    "accuracy": 1.0,
@@ -15287,6 +16751,14 @@
    "accuracy": 0.02416918429003021,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005d18e0",
+   "name": "SetChaosLifeGaugeC",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -15437,6 +16909,14 @@
    "address": "0x005dbda0",
    "name": "FUN_005dbda0",
    "accuracy": 0.21052631578947367,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005dbe10",
+   "name": "FUN_005dbe10",
+   "accuracy": 0.11940298507462686,
    "effective": false,
    "stub": true,
    "library": false
@@ -15701,6 +17181,14 @@
    "address": "0x005e2660",
    "name": "ghUnitVectorXZ",
    "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005e27e0",
+   "name": "EvBossDispHitPoint",
+   "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
    "library": false
@@ -17610,6 +19098,14 @@
    "library": false
   },
   {
+   "address": "0x0067e460",
+   "name": "njScaleV",
+   "accuracy": 0.12698412698412698,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0067e500",
    "name": "njTranslateLightV",
    "accuracy": 0.75,
@@ -17978,6 +19474,22 @@
    "library": false
   },
   {
+   "address": "0x006fd380",
+   "name": "EffectSSSpinDS",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006fd3b0",
+   "name": "EffectSSStartHoming",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x006fd3e0",
    "name": "EffectSSDash",
    "accuracy": 0.09090909090909091,
@@ -18076,7 +19588,7 @@
   {
    "address": "0x00706de0",
    "name": "_exec",
-   "accuracy": 0.9448275862068966,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -18186,6 +19698,54 @@
    "library": false
   },
   {
+   "address": "0x00717f90",
+   "name": "FUN_00717f90",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00717fc0",
+   "name": "FUN_00717fc0",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00718010",
+   "name": "FUN_00718010",
+   "accuracy": 0.09523809523809523,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00718050",
+   "name": "FUN_00718050",
+   "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00718120",
+   "name": "FUN_00718120",
+   "accuracy": 0.05714285714285714,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00731880",
+   "name": "FUN_00731880",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007318d0",
    "name": "dispChaos0Task",
    "accuracy": 1.0,
@@ -18212,7 +19772,15 @@
   {
    "address": "0x00731b40",
    "name": "createChaos0",
-   "accuracy": 0.7435897435897436,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00731bd0",
+   "name": "evmain",
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -18282,6 +19850,14 @@
    "library": false
   },
   {
+   "address": "0x007d1cf0",
+   "name": "FUN_007d1cf0",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d1d20",
    "name": "dispModelTask",
    "accuracy": 0.05263157894736842,
@@ -18306,6 +19882,14 @@
    "library": false
   },
   {
+   "address": "0x007d2030",
+   "name": "FUN_007d2030",
+   "accuracy": 0.03225806451612903,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d21b0",
    "name": "FUN_007d21b0",
    "accuracy": 0.4,
@@ -18319,6 +19903,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d4c80",
+   "name": "FUN_007d4c80",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d4cd0",
+   "name": "FUN_007d4cd0",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -18346,11 +19946,27 @@
    "library": false
   },
   {
+   "address": "0x007d6280",
+   "name": "FUN_007d6280",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d62e0",
    "name": "FUN_007d62e0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d6300",
+   "name": "ChgEggMobleMod",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -18780,9 +20396,9 @@
   {
    "address": "0x00810290",
    "name": "FUN_00810290",
-   "accuracy": 0.041666666666666664,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -18916,9 +20532,9 @@
   {
    "address": "0x00837890",
    "name": "updownHeight",
-   "accuracy": 0.03389830508474576,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -19242,6 +20858,14 @@
    "library": false
   },
   {
+   "address": "0x008c4400",
+   "name": "LoadEffectTexture",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008c46c0",
    "name": "setDrop",
    "accuracy": 0.1702127659574468,
@@ -19253,6 +20877,14 @@
    "address": "0x008c4ad0",
    "name": "SetEffectPunchTameParticle",
    "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c4d00",
+   "name": "dispEffectChaos0LightParticle_tame",
+   "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
    "library": false
@@ -19348,7 +20980,15 @@
   {
    "address": "0x008c5730",
    "name": "dispEffectChaos0AttackB",
-   "accuracy": 0.17777777777777778,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c57c0",
+   "name": "drawEffectChaos0EffectB",
+   "accuracy": 0.06299212598425197,
    "effective": false,
    "stub": true,
    "library": false
@@ -19359,6 +20999,14 @@
    "accuracy": 0.13559322033898305,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c5a10",
+   "name": "SetChangeAlpha",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -19386,6 +21034,14 @@
    "library": false
   },
   {
+   "address": "0x008c6aa0",
+   "name": "setChaosBubble",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008c6bc0",
    "name": "ChaosBubbleAdd",
    "accuracy": 1.0,
@@ -19402,11 +21058,35 @@
    "library": false
   },
   {
+   "address": "0x008c7790",
+   "name": "effectWaterMove",
+   "accuracy": 0.02346041055718475,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c80b0",
+   "name": "ChaosSurfacePatternChange",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008c87c0",
    "name": "SetTaskDispChaosWater",
    "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c8880",
+   "name": "DispChaosWater",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -19426,11 +21106,35 @@
    "library": false
   },
   {
+   "address": "0x008c9da0",
+   "name": "Eggman",
+   "accuracy": 0.009708737864077669,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008cb190",
    "name": "EggmanDestruct",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008cb460",
+   "name": "EggmanChangeRunningMotion",
+   "accuracy": 0.11428571428571428,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008cb540",
+   "name": "EggmanCheckJump",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -20899,7 +22603,7 @@
   },
   {
    "address": "0x008e53f8",
-   "name": "fabs",
+   "name": "fabs(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -25491,5 +27195,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "49ffbbe1fb6f90de14f773eb717d7d52ac6412d4c85257205feea4bb795ab679"
+ "inputs_sha256": "6919158fe2490e1fc1d19e731aba62cf0f0ae9333133ddd8bacc22a04970d230"
 }

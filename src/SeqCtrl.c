@@ -1,4 +1,7 @@
 #include "decls.h"
+void ADX_Close();
+void EV_PcNpcEnd();
+void plboss_destruct(struct task *tp);
 extern char DAT_05baf548[0x2b * 4];
 extern int slEventBossName;
 extern unsigned short plboss_name[6];
@@ -69,6 +72,12 @@ void SeqSetPlayer(int no)
 	}
 	DAT_05b3ea28 = (int)(0x5baf6a0 + DAT_05bafd18 * 0xc);
 	DAT_05baf544 = (int)SeqGetSectionList(DAT_05bafd18);
+}
+
+// STUB: SADX 0x004f4f20
+int chk_advstage()
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x004f51d0
@@ -225,6 +234,11 @@ long SeqCheckNextStage(unsigned char stg, unsigned char act)
 	return GetNextStageNumber() == ((stg << 8) | act);
 }
 
+// STUB: SADX 0x004f5640
+void EventBossExecutor(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x004f5720
 void plboss_destruct(struct task *tp)
 {
@@ -273,4 +287,29 @@ void SeqSetClearActionFlag(long stg)
 long CheckEggCarrierInTheSea(void)
 {
 	return SeqCheckFlag(flgEggCarrierInTheSea[GetPlayerNumber()]);
+}
+
+// STUB: SADX 0x004f58c0
+void EV_PcNpcEnd()
+{
+}
+
+// STUB: SADX 0x004f5950
+void SeqTaskFadeIn(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004f5a10
+void DisplayFade(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004f5ac0
+void SeqTaskFadeOut(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004f5ee0
+void SeqResetLastScenario()
+{
 }
