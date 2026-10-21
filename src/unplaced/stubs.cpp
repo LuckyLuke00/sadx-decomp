@@ -2617,6 +2617,17 @@ void FUN_007d4cd0(struct task *, float)
 {
 }
 
+// STUB: SADX 0x007d5120
+int FUN_007d5120()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x007d52c0
+void CLast1AHigh_Disp(struct task *tp)
+{
+}
+
 // STUB: SADX 0x007d6280
 void FUN_007d6280(float, float, float, long, long, long)
 {
@@ -2704,6 +2715,11 @@ void ObjectSkydeck_tcolli_Exec(struct task *tp)
 
 // STUB: SADX 0x008b8100
 void ReleaseSnapShotTexture(struct SNAPSHOT_DATA *data)
+{
+}
+
+// STUB: SADX 0x008b9290
+void TikalBossKill()
 {
 }
 
@@ -2797,8 +2813,33 @@ void BridgeDraw2(struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x00902f90
+void EvChaos2Human2Water()
+{
+}
+
 // STUB: SADX 0x00902fb0
 void EvChaos2Water2Human()
+{
+}
+
+// STUB: SADX 0x00903000
+void EvChaos6Human2Water()
+{
+}
+
+// STUB: SADX 0x00903020
+void EvChaos6Water2Human()
+{
+}
+
+// STUB: SADX 0x00903040
+void EvChaos7Howl1()
+{
+}
+
+// STUB: SADX 0x00906b30
+void SakanaGenerater(struct task *tp)
 {
 }
 
