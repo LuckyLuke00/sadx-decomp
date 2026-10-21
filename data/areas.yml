@@ -11,8 +11,11 @@ tree:
   - ['^src/enemy/', enemies]
   - ['^src/mini_cart/', twinkle_circuit]
   - ['^src/mission/', missions]
+  - ['^src/movie/', engine]
   - ['^src/shareobj/', objects]  # objects that several stages share
   - ['^src/shinobi/', ninja]
+  - ['^src/sonicdxgg/', game_gear]
+  - ['^src/st/', pc_port]  # the Direct3D layer
   - ['^src/summary/', menus]
   - ['^src/animal\.c$', enemies]
   - ['^src/(emblem|message)\.c$', menus]

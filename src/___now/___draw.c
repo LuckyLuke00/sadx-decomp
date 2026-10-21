@@ -10,7 +10,7 @@ extern void *DAT_05b39e78[];
 extern void *DAT_05b39e08[];
 extern void *DAT_05b3dee4[];
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
-void FUN_0067d830(int param_1, float param_2, float param_3, float param_4);
+void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
 extern int DAT_05b39e90;
 extern int DAT_05b39e94;
 extern int DAT_05b39e98;
@@ -46,7 +46,7 @@ extern int DAT_05b3dee0;
 extern int DAT_05b3ded4;
 extern int DAT_05b3ded8;
 extern int DAT_05b3df48;
-extern "C" void *memset(void *dest, int c, unsigned int count);
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 extern unsigned char DAT_05b3df53;
 extern float DAT_05b3df38;
 void late_DrawModelClip(struct NJS_MODEL *, int, float);
@@ -57,7 +57,7 @@ extern float DAT_00981c10;
 extern unsigned char DAT_025acd84;
 extern unsigned char DAT_02608e24;
 extern int DAT_05b3df40;
-void njCalcPoint(int param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
+void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 extern float DAT_05a922f8;
 extern float DAT_05a922fc;
 extern float DAT_0629c6e0;
@@ -296,9 +296,9 @@ int dsCheckView(float x, float y, float z, float radius)
 // FUNCTION: SADX 0x004a0790
 int dsCheckViewV(NJS_POINT3 *ft, float radius)
 {
-	float local_20g;
+	float local_20k;
 	float local_24;
-	NJS_POINT3 local_1cp;
+	NJS_POINT3 fv;
 	float local_ci;
 	float local_8g;
 
@@ -307,33 +307,33 @@ int dsCheckViewV(NJS_POINT3 *ft, float radius)
 		return 0;
 	}
 	radius = radius * 1.2f;
-	njCalcPoint(0, ft, &local_1cp);
-	if (clipZ_far <= -local_1cp.z + radius)
+	njCalcPoint(0, ft, &fv);
+	if (clipZ_far > -fv.z + radius)
 	{
 		return 0;
 	}
-	if (-local_1cp.z - radius <= clipZ_near)
+	if (-fv.z - radius > clipZ_near)
 	{
 		return 0;
 	}
-	local_20g = -local_1cp.z - radius;
-	local_24 = -1.0f / local_20g;
-	local_ci = DAT_05a922f8 * DAT_0629c6e0 * (local_1cp.x + radius) * local_24 + DAT_0629c6ec;
+	local_20k = -fv.z - radius;
+	local_24 = -1.0f / local_20k;
+	local_ci = (fv.x + radius) * (DAT_05a922f8 * DAT_0629c6e0) * local_24 + DAT_0629c6ec;
 	if (local_ci < 0.0f)
 	{
 		return 0;
 	}
-	local_ci = DAT_05a922f8 * DAT_0629c6e0 * (local_1cp.x - radius) * local_24 + DAT_0629c6ec;
+	local_ci = (fv.x - radius) * (DAT_05a922f8 * DAT_0629c6e0) * local_24 + DAT_0629c6ec;
 	if (local_ci > ScreenRaitoX * 640.0f)
 	{
 		return 0;
 	}
-	local_8g = -DAT_0629c6e0 * DAT_05a922fc * (local_1cp.y - radius) * local_24 + DAT_0629c6f0;
+	local_8g = (fv.y - radius) * (-DAT_0629c6e0 * DAT_05a922fc) * local_24 + DAT_0629c6f0;
 	if (local_8g < 0.0f)
 	{
 		return 0;
 	}
-	local_8g = -DAT_0629c6e0 * DAT_05a922fc * (local_1cp.y + radius) * local_24 + DAT_0629c6f0;
+	local_8g = (fv.y + radius) * (-DAT_0629c6e0 * DAT_05a922fc) * local_24 + DAT_0629c6f0;
 	if (local_8g > ScreenRaitoY * 480.0f)
 	{
 		return 0;
@@ -400,13 +400,11 @@ void ___SAnjSimpleDrawObject(struct obj *obj)
 	FUN_004a0920(obj);
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a0ae0
 void ___dsDrawModel(NJS_MODEL *model)
 {
-	unsigned char local_dh;
-	char local_eh;
-	unsigned int local_8g;
-	int local_cj;
+	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
 
 	if ((((DAT_025acd84 & 2) >> 1) != 0))
 	{
@@ -417,82 +415,79 @@ void ___dsDrawModel(NJS_MODEL *model)
 				if (0 != 0)
 				{
 					DAT_025acd84 = DAT_025acd84 | 2;
-					local_dh = DAT_025acd84;
+					local_10.local_d = DAT_025acd84;
 				}
 				else
 				{
 					DAT_025acd84 = 0xfd & DAT_025acd84;
-					local_dh = DAT_025acd84;
+					local_10.local_d = DAT_025acd84;
 				}
 				*(float *)&DAT_05b3df40 = DAT_00981c10;
 				late_DrawModel(model, 1);
 				if (1)
 				{
 					DAT_025acd84 |= 2;
-					local_eh = DAT_025acd84;
+					local_10.local_e = DAT_025acd84;
 				}
 				else
 				{
 					DAT_025acd84 = DAT_025acd84 & 0xfd;
-					local_eh = DAT_025acd84;
+					local_10.local_e = DAT_025acd84;
 				}
 			}
 		}
 	}
-	switch (DAT_05b9d838)
+	if (DAT_05b9d838 != 0)
 	{
-	case 0:
-		if (isTextureNG(DAT_05b3ded0, 0))
+		return;
+	}
+	if (isTextureNG(DAT_05b3ded0, 0))
+	{
+		return;
+	}
+	if (((unsigned int)model < 0x100000) == 0)
+	{
+		if ((signed char)DAT_02608e24 && DAT_05cd4078 <= 0)
 		{
-			return;
+			dsSimpleDrawModel(model);
 		}
-		if (!((unsigned int)model < 0x100000))
+		else
 		{
-			if (DAT_02608e24 && DAT_05cd4078 <= 0)
-			{
-				dsSimpleDrawModel(model);
-			}
-			else
-			{
-				njDrawModel(model);
-			}
+			njDrawModel(model);
 		}
-		break;
 	}
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a0c10
 void ___dsDrawObject(struct obj *obj)
 {
-	unsigned char local_6g;
-	unsigned char local_7h;
-	unsigned char local_5i;
-	unsigned char local_8;
+	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
 
-	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && (DAT_05b3e065 == 0))
+	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
 	{
-		if (DAT_025acd84 & 4)
+		if (0)
+		{
+			DAT_025acd84 |= 2;
+			local_10.local_d = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 &= 0xfd;
+			local_10.local_d = DAT_025acd84;
+		}
+		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		late_DrawObject(obj, 1);
+		if (1 != 0)
 		{
 			DAT_025acd84 = DAT_025acd84 | 2;
-			local_6g = DAT_025acd84;
+			local_10.local_e = DAT_025acd84;
 		}
 		else
 		{
 			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_6g = DAT_025acd84;
+			local_10.local_e = DAT_025acd84;
 		}
-	}
-	*(float *)&DAT_05b3df40 = DAT_00981c10;
-	late_DrawObject(obj, 1);
-	if (1 != 0)
-	{
-		DAT_025acd84 = DAT_025acd84 | 2;
-		local_7h = DAT_025acd84;
-	}
-	else
-	{
-		DAT_025acd84 = DAT_025acd84 & 0xfd;
-		local_7h = DAT_025acd84;
 	}
 	if (DAT_05b9d838 != 0)
 	{
@@ -505,54 +500,55 @@ void ___dsDrawObject(struct obj *obj)
 	___DrawObject(obj);
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a0d10
 void ___DrawObject(struct obj *obj)
 {
-	unsigned long local_20k;
-	unsigned long local_2c;
-	unsigned long local_10l;
-	unsigned long local_1cg;
-	unsigned long local_24l;
-	unsigned long local_18r;
-	unsigned long local_28g;
-	unsigned long local_ci;
-	unsigned long local_14k;
-	unsigned long local_8g;
+	struct {
+		unsigned long local_24;
+		unsigned long local_20;
+		unsigned long local_1c;
+		unsigned long local_18;
+		unsigned long local_14;
+		unsigned long local_10;
+		unsigned long local_c;
+		unsigned long local_8;
+		unsigned long local_4;
+	} local_24;
 
 	while (obj != (struct obj *)0)
 	{
-		local_20k = obj->evalflags;
-		local_2c = local_20k & 7;
-		switch (local_2c)
+		local_24.local_4 = obj->evalflags;
+		switch (local_24.local_4 & 7)
 		{
 		case 0:
 			njPushMatrixEx();
 			njTranslateEx(&obj->pos[0]);
-			if (local_20k & 0x20)
+			if (local_24.local_4 & 0x20)
 			{
-				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				njRotateZXY(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
 			else
 			{
-				((void (*)())njRotateXYZ)();
+				njRotateXYZ(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
 			njScaleEx(&obj->scl[0]);
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_10l = (unsigned long)obj->model;
-				if (local_10l >= 0x100000)
+				local_24.local_8 = (unsigned long)obj->model;
+				if ((local_24.local_8 < 0x100000) == 0)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						dsSimpleDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_8);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_8);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
@@ -560,31 +556,31 @@ void ___DrawObject(struct obj *obj)
 			break;
 		case 1:
 			njPushMatrixEx();
-			if (local_20k & 0x20)
+			if (local_24.local_4 & 0x20)
 			{
-				((void (*)())njRotateZXY)();
+				njRotateZXY(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
 			else
 			{
-				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				njRotateXYZ(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
 			njScaleEx(&obj->scl[0]);
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_1cg = (unsigned long)obj->model;
-				if (local_1cg >= 0x100000)
+				local_24.local_c = (unsigned long)obj->model;
+				if ((local_24.local_c < 0x100000) == 0)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						dsSimpleDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_c);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_c);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
@@ -594,22 +590,22 @@ void ___DrawObject(struct obj *obj)
 			njPushMatrixEx();
 			njTranslateEx(&obj->pos[0]);
 			njScaleEx(&obj->scl[0]);
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_24l = (unsigned long)obj->model;
-				if (local_24l >= 0x100000)
+				local_24.local_10 = (unsigned long)obj->model;
+				if ((local_24.local_10 < 0x100000) == 0)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						dsSimpleDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_10);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_10);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
@@ -618,22 +614,22 @@ void ___DrawObject(struct obj *obj)
 		case 3:
 			njPushMatrixEx();
 			njScaleEx(&obj->scl[0]);
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_18r = (unsigned long)obj->model;
-				if (local_18r >= 0x100000)
+				local_24.local_14 = (unsigned long)obj->model;
+				if ((local_24.local_14 < 0x100000) == 0)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						dsSimpleDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_14);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_14);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
@@ -642,30 +638,30 @@ void ___DrawObject(struct obj *obj)
 		case 4:
 			njPushMatrixEx();
 			njTranslateEx(&obj->pos[0]);
-			if (local_20k & 0x20)
+			if (local_24.local_4 & 0x20)
 			{
-				((void (*)())njRotateZXY)();
+				njRotateZXY(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
 			else
 			{
-				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				njRotateXYZ(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_28g = (unsigned long)obj->model;
-				if (local_28g >= 0x100000)
+				local_24.local_18 = (unsigned long)obj->model;
+				if ((local_24.local_18 < 0x100000) == 0)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						dsSimpleDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_18);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_18);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
@@ -673,30 +669,30 @@ void ___DrawObject(struct obj *obj)
 			break;
 		case 5:
 			njPushMatrixEx();
-			if (local_20k & 0x20)
+			if (local_24.local_4 & 0x20)
 			{
-				njRotateZXY(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				njRotateZXY(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
 			else
 			{
-				njRotateXYZ(0, &obj->ang[0], &obj->ang[1], &obj->ang[2]);
+				njRotateXYZ(0, (long *)obj->ang[0], (long *)obj->ang[1], (long *)obj->ang[2]);
 			}
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_ci = (unsigned long)obj->model;
-				if (local_ci >= 0x100000)
+				local_24.local_1c = (unsigned long)obj->model;
+				if ((local_24.local_1c < 0x100000) == 0)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						dsSimpleDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_1c);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_1c);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
@@ -705,44 +701,44 @@ void ___DrawObject(struct obj *obj)
 		case 6:
 			njPushMatrixEx();
 			njTranslateEx(&obj->pos[0]);
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_14k = (unsigned long)obj->model;
-				if (local_14k >= 0x100000)
+				local_24.local_20 = (unsigned long)obj->model;
+				if ((local_24.local_20 < 0x100000) == 0)
 				{
-					if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						dsSimpleDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_20);
 					}
 					else
 					{
-						njDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_20);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
 			njPopMatrixEx();
 			break;
 		default:
-			if ((local_20k & 8) == 0)
+			if ((local_24.local_4 & 8) == 0)
 			{
-				local_8g = (unsigned long)obj->model;
-				if (local_8g >= 0x100000)
+				local_24.local_24 = (unsigned long)obj->model;
+				if ((local_24.local_24 < 0x100000) == 0)
 				{
-					if (!(DAT_02608e24 != 0 && DAT_05cd4078 <= 0))
+					if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 					{
-						njDrawModel(obj->model);
+						dsSimpleDrawModel((NJS_MODEL *)local_24.local_24);
 					}
 					else
 					{
-						dsSimpleDrawModel(obj->model);
+						njDrawModel((NJS_MODEL *)local_24.local_24);
 					}
 				}
 			}
-			if ((local_20k & 0x10) == 0)
+			if ((local_24.local_4 & 0x10) == 0)
 			{
 				___DrawObject(obj->child);
 			}
@@ -752,73 +748,48 @@ void ___DrawObject(struct obj *obj)
 	}
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a1290
 void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 {
-	int local_ci;
-	float local_8g;
-	unsigned char local_e;
-	unsigned char local_dg;
-
-	if ((((DAT_025acd84 & 2) >> 1 != 0) && ((DAT_025acd84 & 1) != 0)))
+	struct { float local_14; short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_14;
+	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
 	{
-		if ((DAT_05b3e065 == 0))
+		if (0)
 		{
-			local_ci = 0;
-			do
-			{
-				if (0 == local_ci)
-				{
-					DAT_025acd84 = 0xfd & DAT_025acd84;
-					local_dg = DAT_025acd84;
-				}
-				else
-				{
-					DAT_025acd84 = DAT_025acd84 | 2;
-					local_dg = DAT_025acd84;
-				}
-			} while (0);
-			DAT_05b3df40 = (int)DAT_00981c10;
-			late_DrawModelClip(mdl, 1, clipScl);
-			local_ci = 1;
-			do
-			{
-				if (0 == local_ci)
-				{
-					DAT_025acd84 &= 0xfd;
-					local_e = DAT_025acd84;
-				}
-				else
-				{
-					DAT_025acd84 = DAT_025acd84 | 2;
-					local_e = DAT_025acd84;
-				}
-			} while (0);
+			DAT_025acd84 |= 2;
+			local_14.local_d = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 &= 0xfd;
+			local_14.local_d = DAT_025acd84;
+		}
+		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		late_DrawModelClip(mdl, 1, clipScl);
+		if (1)
+		{
+			DAT_025acd84 |= 2;
+			local_14.local_e = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 &= 0xfd;
+			local_14.local_e = DAT_025acd84;
 		}
 	}
-	if (DAT_05b9d838)
-		return;
-	switch (isTextureNG(DAT_05b3ded0, 0))
+	if (DAT_05b9d838 != 0) return;
+	if (isTextureNG(DAT_05b3ded0, 0) != 0) return;
+	if (mdl != 0)
 	{
-	case 0:
-		if (mdl != 0)
+		if (clipScl != 0.0 && *(float *)((char *)mdl + 0x24) != 0.0)
 		{
-			if (clipScl != 0.0)
-			{
-				if (*(float *)((char *)mdl + 0x24) != 0.0)
-				{
-					local_8g = *(float *)((char *)mdl + 0x24) * clipScl;
-					if (dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18), local_8g) == 0)
-					{
-						return;
-					}
-				}
-			}
-			if ((int)mdl != 0x100000)
-			{
-				return;
-			}
-			if ((DAT_02608e24 != 0) && (DAT_05cd4078 <= 0))
+			local_14.local_14 = *(float *)((char *)mdl + 0x24) * clipScl;
+			if (dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18), local_14.local_14) == 0) return;
+		}
+		if (((unsigned int)mdl < 0x100000) == 0)
+		{
+			if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 			{
 				dsSimpleDrawModel(mdl);
 			}
@@ -827,43 +798,40 @@ void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 				njDrawModel(mdl);
 			}
 		}
-		break;
 	}
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a1420
 void ds_DrawObjectClip(struct obj *obj, float clipScl)
 {
-	unsigned char local_6g;
-	unsigned char local_5i;
+	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
 
-	if ((((DAT_025acd84 & 2) >> 1) == 0) || ((DAT_025acd84 & 1) == 0) || (DAT_05b3e065 != 0))
+	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
 	{
-		goto LAB_004a14ef;
+		if (0)
+		{
+			DAT_025acd84 = DAT_025acd84 | 2;
+			local_10.local_d = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 = DAT_025acd84 & 0xfd;
+			local_10.local_d = DAT_025acd84;
+		}
+		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		late_DrawObjectClip(obj, 1, clipScl);
+		if (1)
+		{
+			DAT_025acd84 = DAT_025acd84 | 2;
+			local_10.local_e = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 = DAT_025acd84 & 0xfd;
+			local_10.local_e = DAT_025acd84;
+		}
 	}
-	if (0)
-	{
-		DAT_025acd84 = DAT_025acd84 | 2;
-		local_6g = DAT_025acd84;
-	}
-	else
-	{
-		DAT_025acd84 = DAT_025acd84 & 0xfd;
-		local_6g = DAT_025acd84;
-	}
-	*(float *)&DAT_05b3df40 = DAT_00981c10;
-	late_DrawObjectClip(obj, 1, clipScl);
-	if (1)
-	{
-		DAT_025acd84 = DAT_025acd84 | 2;
-		local_5i = DAT_025acd84;
-	}
-	else
-	{
-		DAT_025acd84 = DAT_025acd84 & 0xfd;
-		local_5i = DAT_025acd84;
-	}
-	LAB_004a14ef:
 	if (DAT_05b9d838 != 0)
 	{
 		return;
@@ -875,46 +843,38 @@ void ds_DrawObjectClip(struct obj *obj, float clipScl)
 	DrawObjectClip(obj, clipScl);
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a1e90
 float FUN_004a1e90(float *param_1)
 {
-	float local_ci;
-	float local_8g;
-	float local_1ci;
-	float local_14h;
-	float local_10m;
-	float local_18;
-	float local_20;
-
-	local_ci = param_1[0];
-	local_14h = (float)fabs((double)local_ci);
-	local_8g = param_1[1];
-	local_10m = (float)fabs((double)local_8g);
-	local_1ci = param_1[2];
-	local_18 = (float)fabs((double)local_1ci);
-	if (local_14h <= local_10m)
+	struct {
+		float local_30; float local_2c; float local_28; float local_24;
+		float local_20; float local_1c; float local_18; float local_14;
+		float local_10; float local_c; float local_8; float local_4;
+	} local_30;
+	local_30.local_10 = param_1[0];
+	local_30.local_1c = (float)fabs((double)local_30.local_10);
+	local_30.local_8 = local_30.local_1c;
+	local_30.local_14 = param_1[1];
+	local_30.local_20 = (float)fabs((double)local_30.local_14);
+	local_30.local_4 = local_30.local_20;
+	local_30.local_18 = param_1[2];
+	local_30.local_24 = (float)fabs((double)local_30.local_18);
+	local_30.local_c = local_30.local_24;
+	if (local_30.local_8 > local_30.local_4)
 	{
-		if (local_18 < local_10m)
-		{
-			local_20 = local_10m;
-		}
-		else
-		{
-			local_20 = local_18;
-		}
+		if (local_30.local_8 > local_30.local_c) local_30.local_28 = local_30.local_8;
+		else local_30.local_28 = local_30.local_c;
+		local_30.local_2c = local_30.local_28;
 	}
 	else
 	{
-		if (local_18 < local_14h)
-		{
-			local_20 = local_14h;
-		}
-		else
-		{
-			local_20 = local_18;
-		}
+		if (local_30.local_4 > local_30.local_c) local_30.local_30 = local_30.local_4;
+		else local_30.local_30 = local_30.local_c;
+		local_30.local_2c = local_30.local_30;
 	}
-	return local_20;
+	local_30.local_8 = local_30.local_2c;
+	return local_30.local_8;
 }
 
 // FUNCTION: SADX 0x004a1f70
@@ -1064,39 +1024,35 @@ void ___njDrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 	njDrawPolygon3D(p, n, atr);
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a21f0
 void dsDrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr)
 {
-	int local_cj;
-	int local_10;
-	unsigned char local_5i;
-	unsigned char local_11l;
+	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
 
-	local_cj = 0;
-	local_10 = 0;
 	if (((DAT_025acd84 & 2) >> 1) != 0 && (DAT_025acd84 & 1) != 0 && DAT_05b3e065 == 0)
 	{
 		if (0)
 		{
 			DAT_025acd84 = DAT_025acd84 | 2;
-			local_5i = DAT_025acd84;
+			local_10.local_d = DAT_025acd84;
 		}
 		else
 		{
 			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_5i = DAT_025acd84;
+			local_10.local_d = DAT_025acd84;
 		}
 		*(float *)&DAT_05b3df40 = DAT_00981c10;
 		late_DrawSprite2D(sp, n, pri, atr, 1);
 		if (1)
 		{
 			DAT_025acd84 = DAT_025acd84 | 2;
-			local_11l = DAT_025acd84;
+			local_10.local_e = DAT_025acd84;
 		}
 		else
 		{
 			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_11l = DAT_025acd84;
+			local_10.local_e = DAT_025acd84;
 		}
 	}
 	if (DAT_05b9d838 != 0)
@@ -1114,39 +1070,37 @@ void dsDrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr)
 	njDrawSprite2D(sp, n, pri, atr);
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004a2320
 void dsDrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr)
 {
-	unsigned char local_5i;
-	unsigned char local_6g;
+	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
 
-	if ((((DAT_025acd84 & 2) >> 1) == 0) || ((DAT_025acd84 & 1) == 0) || (DAT_05b3e065 != 0))
+	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
 	{
-		goto LAB_004a23f0;
+		if (0)
+		{
+			DAT_025acd84 |= 2;
+			local_10.local_d = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 &= 0xfd;
+			local_10.local_d = DAT_025acd84;
+		}
+		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		late_DrawSprite3D(sp, n, atr, 1);
+		if (1)
+		{
+			DAT_025acd84 |= 2;
+			local_10.local_e = DAT_025acd84;
+		}
+		else
+		{
+			DAT_025acd84 &= 0xfd;
+			local_10.local_e = DAT_025acd84;
+		}
 	}
-	if (0)
-	{
-		DAT_025acd84 = (unsigned char)(DAT_025acd84 | 2);
-		local_5i = DAT_025acd84;
-	}
-	else
-	{
-		DAT_025acd84 = (unsigned char)(DAT_025acd84 & 0xfd);
-		local_5i = DAT_025acd84;
-	}
-	*(float *)&DAT_05b3df40 = DAT_00981c10;
-	late_DrawSprite3D(sp, n, atr, 1);
-	if (1)
-	{
-		DAT_025acd84 = (unsigned char)(DAT_025acd84 | 2);
-		local_6g = DAT_025acd84;
-	}
-	else
-	{
-		DAT_025acd84 = (unsigned char)(DAT_025acd84 & 0xfd);
-		local_6g = DAT_025acd84;
-	}
-LAB_004a23f0:
 	if (DAT_05b9d838 != 0)
 	{
 		return;
@@ -1578,9 +1532,9 @@ void njMotionData4(struct obj *obj)
 // FUNCTION: SADX 0x004a7ce0
 void ___DrawModel(struct NJS_MODEL *model)
 {
-	if (!((unsigned long)model < 0x100000))
+	if (((unsigned long)model < 0x100000) == 0)
 	{
-		if (DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
+		if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
 		{
 			dsSimpleDrawModel(model);
 		}
@@ -1708,9 +1662,10 @@ void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3)
 }
 
 // FUNCTION: SADX 0x004a8a80
-void late_ActionEx(NJS_ACTION *action, float frame, int flgs)
+void late_ActionEx(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
-	DrawAction(action, frame, flgs, frame, (void *)DrawModelEx);
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(param_1, param_2, param_3, param_4, (void *)DrawModelEx);
 }
 
 // FUNCTION: SADX 0x004a8ab0
@@ -1757,6 +1712,7 @@ void FUN_004a8b10(NJS_ACTION *param_1, float param_2, int param_3)
 // FUNCTION: SADX 0x004a8b40
 void late_ActionMesh(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
+	int local_20;
 	int local_8g;
 	int local_10m;
 	int local_18;

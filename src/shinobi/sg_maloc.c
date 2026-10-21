@@ -2,8 +2,8 @@
 
 #include "decls.h"
 
-void *_SOCMalloc(unsigned int size, const char *file, int line);
-void _SOCFree(void *p, const char *file, int line);
+void *_SOCMalloc(unsigned int param_1, const char *param_2, int param_3);
+void _SOCFree(void *param_1, const char *param_2, int param_3);
 
 // FUNCTION: SADX 0x0042b3b0
 void *syMalloc(unsigned int param_1)

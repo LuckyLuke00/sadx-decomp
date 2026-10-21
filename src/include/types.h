@@ -132,6 +132,7 @@ struct taskwk;
 struct thread;
 struct u4s;
 union UNION_STATUS;
+struct VolumeInfo;
 struct xssunit;
 struct xyyzzxsdwstr;
 
@@ -1637,6 +1638,18 @@ static_assert(offsetof(TaskInfo, init_p) == 0x8, "TaskInfo::init_p");
 static_assert(offsetof(TaskInfo, exec_p) == 0xc, "TaskInfo::exec_p");
 static_assert(offsetof(TaskInfo, disp_p) == 0x10, "TaskInfo::disp_p");
 static_assert(offsetof(TaskInfo, dest_p) == 0x14, "TaskInfo::dest_p");
+
+struct VolumeInfo {
+    short nearVolOfs;
+    short farVolOfs;
+    float nearDist;
+    float farDist;
+};
+static_assert(sizeof(VolumeInfo) == 0xc, "sizeof VolumeInfo");
+static_assert(offsetof(VolumeInfo, nearVolOfs) == 0x0, "VolumeInfo::nearVolOfs");
+static_assert(offsetof(VolumeInfo, farVolOfs) == 0x2, "VolumeInfo::farVolOfs");
+static_assert(offsetof(VolumeInfo, nearDist) == 0x4, "VolumeInfo::nearDist");
+static_assert(offsetof(VolumeInfo, farDist) == 0x8, "VolumeInfo::farDist");
 
 // Offsets not checked against the code yet.
 struct al_action_ctrl {
