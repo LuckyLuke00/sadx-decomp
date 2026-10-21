@@ -21,13 +21,25 @@ A tables folder holds tab-separated files with a header row, for names the tree
 does not know yet. Other columns are ignored.
   functions.tsv  address, name, proto, scope (G global, L static), file (the source file it belongs in),
                  note (a line `check.py dossier` prints), locals (local declarations,
-                 `; `-separated, which `check.py dossier` prints; optional)
-  globals.tsv    address, name, decl ({} where the name goes), base, dims (comma-separated, ? when unknown), size
+                 `; `-separated, which `check.py dossier` prints; optional), object (the object file
+                 the function is in; optional)
+  globals.tsv    address, name, decl ({} where the name goes), base, dims (comma-separated, ? when unknown), size,
+                 object (the object file the global is in; optional)
   types.h        struct, union and enum definitions, a blank line between blocks, with sizeof static_asserts
 
+A global name that several addresses share, such as one static in each object, means the address in an object that
+the using file defines functions of.
+
 Prints a line for each problem it finds. Returns 1 when a used name has no
-declaration it can make, or when functions.h would declare a function whose name
-another function in the tree also has, unless both are global overloads.
+declaration it can make, when functions.h would declare a function whose name
+another function in the tree also has, unless both are global overloads,
+when globals.h would declare one name for two globals, or when a global lies
+inside another global's span (the span comes from the types the tree knows)
+and the last layout, the context's with --context, did not have that pair
+already. A pair it had before is a problem line only. With --context, the
+functions that the context's files define count as declared in functions.h when
+their name occurs a second time in the tree and the context together, as they
+will in the context once these files are in it.
 Standard library only.
 """
 
@@ -47,9 +59,9 @@ POINTER_TO = re.compile(r"\b(?:struct|union)\s+(\w+)\s*\*+\s*(\w+)")  # the poin
 REACHED_THROUGH = re.compile(r"(\w+)\s*(?:->|\[[^\]]*\]\s*(?:\.|->))")  # `p->x`, `p[i].x`: p's type needs its layout
 
 
-def load_tables(library: set[str], tables: Path | None) -> tuple[dict, dict, dict, dict]:
-    """Functions and globals by address and by name. Every function starts with its address name, and the tables'
-    rows replace those they give."""
+def load_tables(library: set[str], tables: Path | None) -> tuple[dict, dict, dict, dict, dict]:
+    """Functions and globals by address and by name, and the addresses of each global name that several share. Every
+    function starts with its address name, and the tables' rows replace those they give."""
     funcs = {}
     fnames = collections.defaultdict(list)  # name: addresses, several for overloads and same-named statics
     with open(progress.FUNCTIONS_CSV, encoding="utf-8", newline="") as f:
@@ -57,7 +69,7 @@ def load_tables(library: set[str], tables: Path | None) -> tuple[dict, dict, dic
             a = int(r["address"], 16)
             funcs[a] = dict(EMPTY_ROW, name=f"FUN_{a:08x}")
     if tables is None:
-        return funcs, dict(fnames), {}, {}
+        return funcs, dict(fnames), {}, {}, {}
     for r in names.table_rows(tables / "functions.tsv"):
         a = int(r["address"], 16)
         funcs[a] = r
@@ -70,8 +82,10 @@ def load_tables(library: set[str], tables: Path | None) -> tuple[dict, dict, dic
         a = int(r["address"], 16)
         glob[a] = r
         gnames[r["name"]].append(a)
-    gname = {n: a[0] for n, a in gnames.items() if len(a) == 1 and len(n) > 2 and n not in fnames}
-    return funcs, fnames, glob, gname
+    usable = {n: a for n, a in gnames.items() if len(n) > 2 and n not in fnames}
+    gname = {n: a[0] for n, a in usable.items() if len(a) == 1}
+    shared = {n: a for n, a in usable.items() if len(a) > 1}
+    return funcs, fnames, glob, gname, shared
 
 
 class Types(names.Types):
@@ -124,7 +138,7 @@ def extern_of(definition: str) -> str:
 def write(context: Path | None, tables: Path | None) -> int:
     target = project.game_config().target
     library = {row.name for row in project.library_rows() if row.kind == "library"}
-    funcs, fnames, glob, gnames = load_tables(library, tables)
+    funcs, fnames, glob, gnames, shared_globals = load_tables(library, tables)
     types = Types(tables / "types.h" if tables else ROOT / names.TYPES_H)
     before = names.previous(ROOT)
     sources = names.read_sources(ROOT)
@@ -166,7 +180,9 @@ def write(context: Path | None, tables: Path | None) -> int:
     # The context's definitions and declarations: signatures and types only.
     context_funcs, context_globals = {}, {}
     context_decls = {}  # (name, declaration): the context file that declares it
+    context_counts = collections.Counter()
     for rel, text in context_sources.items():
+        context_counts.update(re.findall(r"[A-Za-z_]\w*", names.strip_code(text)))
         for kind, address, sig in names.parse_annotations(text):
             if kind in names.FUNCTION_KINDS:
                 context_funcs[address] = (rel, sig, bool(re.match(r"static\b", sig)), kind == "STUB")
@@ -183,14 +199,18 @@ def write(context: Path | None, tables: Path | None) -> int:
     def report_conflict(name, options):
         """A name declared in several ways, where one of them is this tree's own. A way that only a context
         file uses is fatal: the context's file never builds here, so a score here would not hold there."""
-        if len(options) < 2 or not any((name, o) in own_decls for o in options):
+        ways = {}  # declaration_key: the declarations that read the same
+        for o in options:
+            ways.setdefault(names.declaration_key(o), []).append(o)
+        if len(ways) < 2 or not any((name, o) in own_decls for o in options):
             return
-        theirs = [f"{context_decls[(name, o)]} declares it `{o}`" for o in options
-                  if (name, o) in context_decls and (name, o) not in own_decls]
+        theirs = [f"{context_decls[(name, same[0])]} declares it `{same[0]}`" for same in ways.values()
+                  if not any((name, o) in own_decls for o in same)]
         if theirs:
             fatal.append(f"{name}: {', '.join(theirs)} in the context tree. Declare it that way too.")
         else:
-            problems.append(f"{name}: sources declare it in {len(options)} ways: {' | '.join(options)}")
+            shown = " | ".join(same[0] for same in ways.values())
+            problems.append(f"{name}: sources declare it in {len(ways)} ways: {shown}")
 
     # A definition or an earlier stub names a function the table only knows by address, such as WinMain.
     stubs_before = {a: ("", sig, False, True) for a, sig in before.stubs.items()}
@@ -266,14 +286,20 @@ def write(context: Path | None, tables: Path | None) -> int:
             continue
         if not chosen_locally:  # report_conflict covered the local choice
             for own in sorted(o for o in local_funcs.get(name, ()) if (name, o) in own_decls):
-                if re.sub(r"\s", "", own) != re.sub(r"\s", "", names.without_parameter_names(sig)):
+                if names.declaration_key(own) != names.declaration_key(sig):
                     problems.append(f"{name}: the tree declares it `{sig}`, a file here declares it `{own}`. "
                                     "Remove that declaration: a second signature is a C++ overload that never links.")
         decls[a] = sig
         if d is None:
             stubs[a] = sig
-    # functions.h declares each function for every file, so only global overloads may share a name.
-    for name in sorted({funcs[a]["name"] for a in decls} & fnames.keys()):
+    # functions.h declares each function for every file, so only global overloads may share a name. In the context,
+    # the same holds for the functions its files define, once a name occurs a second time there with these files.
+    declared = {funcs[a]["name"] for a in decls}
+    for a, d in context_funcs.items():
+        name = funcs[a]["name"] if a in funcs else ""
+        if not d[2] and "::" not in (names.declared_name(d[1]) or "") and counts[name] + context_counts[name] > 1:
+            declared.add(name)
+    for name in sorted(declared & fnames.keys()):
         group = [a for a in fnames[name] if a in decls or a in defined_funcs or a in context_funcs]
         if len(group) > 1 and any(funcs[a]["scope"] != "G" for a in group):
             where = ", ".join(f"0x{a:08x} ({funcs[a]['file']})" for a in group)
@@ -291,7 +317,19 @@ def write(context: Path | None, tables: Path | None) -> int:
             if a in glob:
                 problems.append(f"{tok} has the name {glob[a]['name']}: use that")
             used_globals.add(a)
+    # A name that several addresses share is one static in each object: a file means the one in an object it defines
+    # functions of.
+    objects = collections.defaultdict(set)
+    for a, d in defined_funcs.items():
+        if a in funcs and funcs[a].get("object"):
+            objects[d[0]].add(funcs[a]["object"])
+    for rel, found in file_tokens.items():
+        for tok in found & shared_globals.keys():
+            here = [a for a in shared_globals[tok] if glob[a].get("object") in objects[rel]]
+            if len(here) == 1:
+                used_globals.add(here[0])
     externs, gdefs = {}, {}
+    unsized = set()  # globals that stubs give one element, though their size is unknown
     for a in sorted(used_globals | set(defined_globals)):
         row = glob.get(a)
         name = row["name"] if row else global_name.get(a, f"DAT_{a:08x}")
@@ -316,6 +354,7 @@ def write(context: Path | None, tables: Path | None) -> int:
             definition = decl
             if m:
                 definition = decl[:m.start()] + "[1]" + decl[m.end():]
+                unsized.add(a)
                 problems.append(f"{name}: no file defines it, so stubs give it one element; define it with its real size")
             gdefs[a] = (definition, "const" in decl.split(name)[0])
             continue
@@ -340,6 +379,38 @@ def write(context: Path | None, tables: Path | None) -> int:
             count = int(row["size"]) // (elem * inner) if elem and row["size"] else 1
             definition = re.sub(r"\[[\w?]*\]", f"[{max(count, 1)}]", definition, count=1)
         gdefs[a] = (definition, row["base"].startswith("const"))
+    # globals.h declares each global for every file, so a name serves one address.
+    addresses_of = collections.defaultdict(list)
+    for a, ext in externs.items():
+        addresses_of[names.declared_name(ext)].append(a)
+    for name, addresses in sorted(addresses_of.items()):
+        if len(addresses) > 1:
+            where = ", ".join(f"0x{a:08x}" for a in addresses)
+            fatal.append(f"{name}: {where} share the name. Define each one static in its own file, "
+                         f"with a GLOBAL annotation.")
+
+    # A global inside another global splits it. The globals that only the context's files use count too: they are in
+    # the layout of the whole tree. A clash that the last layout (the context's, else this tree's) already had is old.
+    layout = {a: externs[a][len("extern "):] if a in unsized else
+              gdefs[a][0] if a in gdefs else defined_globals[a][1].split("=")[0].strip() for a in externs}
+    last_layout = names.previous(context).globals if context_sources else before.globals
+    for tok in context_counts:
+        a = gnames.get(tok) or (int(tok[4:], 16) if re.fullmatch(r"DAT_[0-9a-f]{8}", tok) else None)
+        if a is None or a in layout:
+            continue
+        name = glob[a]["name"] if a in glob else global_name.get(a, tok)
+        if context_globals.get(a) and not re.match(r"static\b", context_globals[a][1]):
+            layout[a] = context_globals[a][1].split("=")[0].strip()
+        elif local_vars.get(name):
+            layout[a] = sorted(local_vars[name])[0]
+        elif a in last_layout:
+            layout[a] = last_layout[a]
+    new, old, unknown = nested_globals(layout, set(externs), last_layout, types)
+    fatal.extend(new)
+    problems.extend(old)
+    if unknown:
+        problems.append(f"{len(unknown)} globals have no known size, so none is checked for a global inside it: "
+                        + ", ".join(unknown[:5]) + (", ..." if len(unknown) > 5 else ""))
 
     # Types: full definitions for struct names the hand-written code uses; forward
     # declarations for those only signatures name.
@@ -404,6 +475,51 @@ def write(context: Path | None, tables: Path | None) -> int:
     print(f"decls: {len(decls)} functions ({len(stubs)} stubs), {len(externs)} globals "
           f"({len(gdefs)} generated), {len(defined_types)} types")
     return 1 if fatal else 0
+
+
+def declared_size(decl: str, types: Types) -> int | None:
+    """The bytes that a global's declaration takes, or None when its type or an array length is unknown."""
+    name = names.declared_name(decl)
+    tail_start = list(re.finditer(rf"\b{re.escape(name)}\b", decl))[-1].end()
+    size = names.element_size(decl[:tail_start - len(name)].strip(), types)
+    for length in re.findall(r"\[\s*([^\]]*?)\s*\]", decl[tail_start:]):
+        if size is None or not re.fullmatch(r"\d+|0x[0-9a-f]+", length):
+            return None
+        size *= int(length, 0)
+    return size
+
+
+def type_of(decl: str) -> str:
+    """The declaration without its name, such as `struct NJS_ARGB` or `int[4]`."""
+    name = names.declared_name(decl)
+    return re.sub(r"\s+(?=\[)", "", re.sub(rf"\b{re.escape(name)}\b", "", decl, count=1)).strip()
+
+
+def nested_globals(declarations: dict[int, str], own: set[int], last: dict[int, str],
+                   types: Types) -> tuple[list[str], list[str], list[str]]:
+    """(a line for each new global that lies inside another global, a line for each global that holds others as in
+    LAST, the names of the globals whose size is unknown). Only a pair with a global in OWN counts. DECLARATIONS and
+    LAST: address: declaration. The generated layout gives every global its own object, so a global inside another
+    one splits it and moves the fields behind it."""
+    sizes = {a: declared_size(d, types) for a, d in declarations.items()}
+    new, held = [], collections.defaultdict(list)
+    holder = None  # (end, address) of the global that reaches farthest among the lower addresses
+    for a in sorted(declarations):
+        if holder and a < holder[0] and (a in own or holder[1] in own):
+            h = holder[1]
+            if all(x in last and declared_size(last[x], types) == sizes[x] for x in (a, h)):
+                held[h].append(a)
+            else:
+                new.append(f"{names.declared_name(declarations[a])}: inside {names.declared_name(declarations[h])} "
+                           f"({type_of(declarations[h])}) at +{a - h}. Remove that declaration and reach it "
+                           f"through {names.declared_name(declarations[h])}.")
+        if sizes[a] is not None and (not holder or a + sizes[a] > holder[0]):
+            holder = (a + sizes[a], a)
+    old = [f"{names.declared_name(declarations[h])} ({type_of(declarations[h])}) holds {len(inside)} other globals, "
+           "as in the last layout: " + ", ".join(f"{names.declared_name(declarations[a])} at +{a - h}"
+                                                 for a in inside[:3]) + (", ..." if len(inside) > 3 else "")
+           for h, inside in held.items()]
+    return new, old, [names.declared_name(declarations[a]) for a in sorted(sizes) if sizes[a] is None]
 
 
 def global_names(defined: dict, context: dict, before: names.Previous, fnames: dict) -> dict[str, int]:
