@@ -1,0 +1,205 @@
+#include "decls.h"
+
+#pragma auto_inline(off)
+
+// GLOBAL: SADX 0x05aeaa78
+static struct task *DAT_05aeaa78;
+extern int DAT_05aeaa38;
+extern struct task *DAT_05aeaa3c[15];
+extern short *DAT_05baf368;
+
+void FUN_004f5550(int param_1);
+
+// FUNCTION: SADX 0x0043e000
+enum eCHAO_STAGE_NUMBER AL_GetStageNumber()
+{
+	return ChaoStageNumber;
+}
+
+// FUNCTION: SADX 0x0043e010
+enum eCHAO_STAGE_NUMBER AL_GetPreStageNumber()
+{
+	return ChaoOldStageNumber;
+}
+
+// FUNCTION: SADX 0x0043e020
+enum eCHAO_STAGE_NUMBER AL_GetNextStageNumber()
+{
+	return ChaoNextStageNumber;
+}
+
+// FUNCTION: SADX 0x0043e030
+int FUN_0043e030()
+{
+	return ChaoStageNumber != ChaoNextStageNumber;
+}
+
+// FUNCTION: SADX 0x0043e050
+void FUN_0043e050()
+{
+	if (DAT_05aeaa78)
+	{
+		*(char *)DAT_05aeaa78->twp = 0;
+	}
+}
+
+// FUNCTION: SADX 0x0043e060
+void AL_CheckEggHold()
+{
+	switch (GetHoldingItemIDP(0))
+	{
+	case 11:
+		if (!SeqCheckFlag(0x51))
+		{
+			SetHoldingItemIDP(0, 0);
+			if (((struct chao_save_info *(*)(long, long))AL_SetHoldingEggBM)(0xd, 5))
+			{
+				FUN_004f5550(0x51);
+			}
+		}
+		break;
+	case 10:
+		if (!SeqCheckFlag(0x50))
+		{
+			SetHoldingItemIDP(0, 0);
+			if (((struct chao_save_info *(*)(long, long))AL_SetHoldingEggBM)(0x37, 6))
+			{
+				FUN_004f5550(0x50);
+			}
+		}
+		break;
+	case 5:
+		if (!SeqCheckFlag(0x4f))
+		{
+			SetHoldingItemIDP(0, 0);
+			if (((struct chao_save_info *(*)(long, long))AL_SetHoldingEggBM)(0x36, 4))
+			{
+				FUN_004f5550(0x4f);
+			}
+		}
+		break;
+	}
+}
+
+// FUNCTION: SADX 0x0043e110
+static void AL_PlayerControlManager(struct task *tp)
+{
+	struct taskwk *var1;
+	struct AL_ST_POS *var2;
+	int var3;
+
+	var1 = tp->twp;
+	var3 = AL_GetPreStageNumber();
+	if ((unsigned char)var1->mode <= 2)
+	{
+		switch (AL_GetStageNumber())
+		{
+		case 5:
+			switch (var3)
+			{
+			case 3:
+				var2 = &AL_StartPosEC_Odekake;
+				break;
+			case 4:
+			case 6:
+				var2 = &AL_StartPosEC_Warp;
+				break;
+			default:
+				var2 = &AL_StartPosEC_EC;
+				break;
+			}
+			break;
+		case 6:
+			switch (var3)
+			{
+			case 3:
+				var2 = &AL_StartPosMR_Odekake;
+				break;
+			case 4:
+			case 5:
+				var2 = &AL_StartPosMR_Warp;
+				break;
+			default:
+				var2 = &AL_StartPosMR_MR;
+				break;
+			}
+			break;
+		default:
+			switch (var3)
+			{
+			case 5:
+			case 6:
+				var2 = &AL_StartPosSS_Warp;
+				break;
+			case 3:
+				var2 = &AL_StartPosSS_Odekake;
+				break;
+			case 2:
+				var2 = &AL_StartPosSS_Race;
+				break;
+			case 7:
+				var2 = &AL_StartPosSS_Market;
+				break;
+			default:
+				var2 = &AL_StartPosSS_SS;
+				break;
+			}
+			break;
+		}
+		*(struct NJS_POINT3 *)((char *)DAT_05baf368 + 0x20) = var2->pos;
+		*(long *)((char *)DAT_05baf368 + 0x18) = var2->angy;
+		var1->mode++;
+	}
+}
+
+// FUNCTION: SADX 0x0043e1f0
+static void AL_PlayerControlManagerDestructor(struct task *tp)
+{
+	DAT_05aeaa78 = 0;
+}
+
+// FUNCTION: SADX 0x0043e200
+void AL_CreatePlayerControlManager()
+{
+	if (DAT_05aeaa78)
+	{
+		FUN_0043e050();
+	}
+	else
+	{
+		struct task *var1 = CreateElementalTask(2, 0, AL_PlayerControlManager);
+		DAT_05aeaa78 = var1;
+		var1->dest = AL_PlayerControlManagerDestructor;
+	}
+}
+
+// FUNCTION: SADX 0x0043e230
+void FUN_0043e230()
+{
+	DAT_05aeaa38 = 0;
+}
+
+// FUNCTION: SADX 0x0043e240
+void AL_WaitForSaveHookAdd(struct task *tp)
+{
+	DAT_05aeaa3c[DAT_05aeaa38] = tp;
+	DAT_05aeaa38++;
+}
+
+// FUNCTION: SADX 0x0043e260
+void AL_WaitForSaveHookRemove(struct task *tp)
+{
+	int var1;
+	int var2;
+
+	var2 = 0;
+	for (var1 = 0; var1 < DAT_05aeaa38; var1++)
+	{
+		if (DAT_05aeaa3c[var1] != tp)
+		{
+			DAT_05aeaa3c[var2] = DAT_05aeaa3c[var1];
+			var2++;
+		}
+	}
+	DAT_05aeaa38 = var2;
+}

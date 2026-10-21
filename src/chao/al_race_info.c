@@ -1,0 +1,30 @@
+#include "decls.h"
+extern char DAT_05b288b0[5];
+extern char DAT_05b288b0[];
+
+// FUNCTION: SADX 0x00443b40
+struct AL_RACE_INFO *AL_GetRaceInfo()
+{
+	return (struct AL_RACE_INFO *)0x5b288a8;
+}
+
+// FUNCTION: SADX 0x00443c80
+long AL_GetCourseClearedLevel(enum eCourseNumDX num)
+{
+	return (long)(char)DAT_05b288b0[num];
+}
+
+// STUB: SADX 0x00443c90
+void AL_CourseClearedLevelUp(enum eCourseNumDX num)
+{
+}
+
+// STUB: SADX 0x00443cb0
+void AL_GetCourseRecord(enum eCourseNumDX num, struct AL_RECORD *pRecord)
+{
+}
+
+// STUB: SADX 0x00443ce0
+void AL_SetCourseRecord(enum eCourseNumDX num, struct AL_RECORD *pRecord)
+{
+}
