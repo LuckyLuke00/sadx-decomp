@@ -177,6 +177,12 @@ void njCalcPoint(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
 }
 
+// STUB: SADX 0x004318d0
+double njTan(int)
+{
+	return (double)0;
+}
+
 // STUB: SADX 0x00431900
 float njSqrt(float)
 {
@@ -1250,6 +1256,11 @@ void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
 {
 }
 
+// STUB: SADX 0x004f16f0
+void SetPositionP(unsigned char pno, float x, float y, float z)
+{
+}
+
 // STUB: SADX 0x004f1860
 long CheckCollisionP(struct NJS_POINT3 *, float)
 {
@@ -1348,6 +1359,11 @@ void SeqInitStage()
 {
 }
 
+// STUB: SADX 0x004f52e0
+void SeqEvent(long no)
+{
+}
+
 // STUB: SADX 0x004f5640
 void EventBossExecutor(struct task *tp)
 {
@@ -1373,6 +1389,11 @@ void LandRelease(long stage, long act)
 {
 }
 
+// STUB: SADX 0x004feb50
+void RegisterCollisionEntry(long slAttribute, struct task *pTask, struct obj *pObject)
+{
+}
+
 // STUB: SADX 0x004fec40
 void WithdrawCollisionEntry(struct task *, struct obj *)
 {
@@ -1389,9 +1410,32 @@ void ExtraDisplayExecutor(struct task *tp)
 {
 }
 
+// STUB: SADX 0x004ff9a0
+long ObjectMovableInitialize(struct taskwk *twp, struct motionwk *mwp, unsigned long mode)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004ffab0
+void ObjectMovableSRegularExecute(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005005d0
 void occ_DrawObject(struct taskwk *twp, struct obj *o, float clipScl)
 {
+}
+
+// STUB: SADX 0x005006a0
+long ObjectNormal(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00500740
+long ObjectNormal_LE(struct task *tp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x00500810
@@ -1399,9 +1443,27 @@ void ObjectNormalDisplay(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00500a40
+long ObjectScaleNormal(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00500ae0
 void ObjectScaleDisplay(struct task *tp)
 {
+}
+
+// STUB: SADX 0x00500d30
+long ObjectCCollision(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00501060
+long ObjectGCollision(struct task *tp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x005015e0
@@ -2170,6 +2232,11 @@ void char_sel_disp(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0060ceb0
+void CreateLightning(struct NJS_POINT3 *pos, float scl)
+{
+}
+
 // STUB: SADX 0x0060d560
 void FUN_0060d560(struct NJS_POINT3 *, float)
 {
@@ -2279,6 +2346,12 @@ void njRotateY(float *, unsigned short)
 {
 }
 
+// STUB: SADX 0x0067d150
+double njScalor(struct NJS_POINT3 *)
+{
+	return (double)0;
+}
+
 // STUB: SADX 0x0067d2d0
 void FUN_0067d2d0(float *, float, float, float)
 {
@@ -2360,6 +2433,11 @@ int checkInSsHodel()
 	return (int)0;
 }
 
+// STUB: SADX 0x00692030
+void CreamManager(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006fd3e0
 void EffectSSDash(struct task *tp)
 {
@@ -2422,6 +2500,26 @@ long ChkE104ColliLandXZ(struct NJS_POINT3 *pPos, float fDistChk, float *pfGround
 struct task *createMirrorTask(struct task *tp)
 {
 	return (struct task *)0;
+}
+
+// STUB: SADX 0x00825de0
+void FUN_00825de0(struct task *)
+{
+}
+
+// STUB: SADX 0x0083b600
+void ObjectSkydeck_tcolli_Display(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083b7d0
+void ObjectSkydeck_tcolli_Exit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083c930
+void ObjectSkydeck_tcolli_Exec(struct task *tp)
+{
 }
 
 // STUB: SADX 0x008c2030
