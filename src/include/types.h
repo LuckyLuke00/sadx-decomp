@@ -104,12 +104,15 @@ struct GHPARTICLE_UNIT;
 struct GHSPRITE;
 struct GHSPRITE_ANIM;
 struct GHSPRITE_ANIM_TABLE;
+struct GM_EVENT_TABLE;
+struct GM_START_POSANG;
 struct HintMessageMemory;
 struct HintMessageString;
 struct HintMessageTable;
 struct ITEM_SAVE_INFO;
 struct LATE_FAR_Z_T;
 struct LATE_LNK;
+struct LATE_MDL_RQ;
 struct LE_LIGHT_ENV;
 struct LE_PALIGHT_ENV;
 struct LightInfo;
@@ -130,6 +133,7 @@ union NJS_COLOR;
 struct NJS_LIGHT;
 struct NJS_MATERIAL;
 struct NJS_MESHSET;
+struct NJS_MKEY_P;
 struct NJS_MODEL;
 struct NJS_MOTION;
 struct NJS_MOTION_LINK;
@@ -2151,6 +2155,34 @@ static_assert(offsetof(GH_FONT_INFO, texlist) == 0x10, "GH_FONT_INFO::texlist");
 static_assert(offsetof(GH_FONT_INFO, prop_tbl) == 0x14, "GH_FONT_INFO::prop_tbl");
 static_assert(offsetof(GH_FONT_INFO, color) == 0x18, "GH_FONT_INFO::color");
 
+struct GM_EVENT_TABLE {
+    signed char stage;
+    signed char act;
+    short chara;
+    short evmod;
+    short evexe;
+    void (*exec)();
+};
+static_assert(sizeof(GM_EVENT_TABLE) == 0xc, "sizeof GM_EVENT_TABLE");
+static_assert(offsetof(GM_EVENT_TABLE, stage) == 0x0, "GM_EVENT_TABLE::stage");
+static_assert(offsetof(GM_EVENT_TABLE, act) == 0x1, "GM_EVENT_TABLE::act");
+static_assert(offsetof(GM_EVENT_TABLE, chara) == 0x2, "GM_EVENT_TABLE::chara");
+static_assert(offsetof(GM_EVENT_TABLE, evmod) == 0x4, "GM_EVENT_TABLE::evmod");
+static_assert(offsetof(GM_EVENT_TABLE, evexe) == 0x6, "GM_EVENT_TABLE::evexe");
+static_assert(offsetof(GM_EVENT_TABLE, exec) == 0x8, "GM_EVENT_TABLE::exec");
+
+struct GM_START_POSANG {
+    short stage;
+    short act;
+    struct NJS_POINT3 p;
+    long angy;
+};
+static_assert(sizeof(GM_START_POSANG) == 0x14, "sizeof GM_START_POSANG");
+static_assert(offsetof(GM_START_POSANG, stage) == 0x0, "GM_START_POSANG::stage");
+static_assert(offsetof(GM_START_POSANG, act) == 0x2, "GM_START_POSANG::act");
+static_assert(offsetof(GM_START_POSANG, p) == 0x4, "GM_START_POSANG::p");
+static_assert(offsetof(GM_START_POSANG, angy) == 0x10, "GM_START_POSANG::angy");
+
 struct HintMessageMemory {
     const struct HintMessageString *message_p;
     long adx_index;
@@ -2420,6 +2452,14 @@ static_assert(offsetof(NJS_MATERIAL, specular) == 0x4, "NJS_MATERIAL::specular")
 static_assert(offsetof(NJS_MATERIAL, exponent) == 0x8, "NJS_MATERIAL::exponent");
 static_assert(offsetof(NJS_MATERIAL, attr_texId) == 0xc, "NJS_MATERIAL::attr_texId");
 static_assert(offsetof(NJS_MATERIAL, attrflags) == 0x10, "NJS_MATERIAL::attrflags");
+
+struct NJS_MKEY_P {
+    unsigned long keyframe;
+    void *key;
+};
+static_assert(sizeof(NJS_MKEY_P) == 0x8, "sizeof NJS_MKEY_P");
+static_assert(offsetof(NJS_MKEY_P, keyframe) == 0x0, "NJS_MKEY_P::keyframe");
+static_assert(offsetof(NJS_MKEY_P, key) == 0x4, "NJS_MKEY_P::key");
 
 struct NJS_MODEL {
     struct NJS_POINT3 *points;

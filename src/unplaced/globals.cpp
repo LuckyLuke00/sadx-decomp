@@ -287,8 +287,14 @@ unsigned char ucInputStatus;
 // GLOBAL: SADX 0x025d5a10
 unsigned char ucInputStatusForEachPlayer[2];
 
+// GLOBAL: SADX 0x025d5b00
+struct GM_EVENT_TABLE cleareventtable[1];
+
 // GLOBAL: SADX 0x025d5bcc
 short ssPauseEnable;
+
+// GLOBAL: SADX 0x025d750c
+struct GM_START_POSANG *paRPTable[8];
 
 // GLOBAL: SADX 0x025d7530
 void (*DAT_025d7530[43])(struct task *);
@@ -974,6 +980,9 @@ void *DAT_05b3dee4[1];
 // GLOBAL: SADX 0x05b3df00
 void (*DAT_05b3df00)(struct obj *obj);
 
+// GLOBAL: SADX 0x05b3df04
+void *DAT_05b3df04;
+
 // GLOBAL: SADX 0x05b3df0c
 float DAT_05b3df0c[3];
 
@@ -1001,6 +1010,15 @@ float DAT_05b3df44;
 // GLOBAL: SADX 0x05b3df48
 int DAT_05b3df48;
 
+// GLOBAL: SADX 0x05b3df4c
+int DAT_05b3df4c;
+
+// GLOBAL: SADX 0x05b3df51
+unsigned char DAT_05b3df51;
+
+// GLOBAL: SADX 0x05b3df52
+unsigned char DAT_05b3df52;
+
 // GLOBAL: SADX 0x05b3df53
 unsigned char DAT_05b3df53;
 
@@ -1009,6 +1027,12 @@ int DAT_05b3df54;
 
 // GLOBAL: SADX 0x05b3df5c
 int DAT_05b3df5c;
+
+// GLOBAL: SADX 0x05b3df64
+int DAT_05b3df64;
+
+// GLOBAL: SADX 0x05b3df68
+int DAT_05b3df68;
 
 // GLOBAL: SADX 0x05b3dfc0
 int DAT_05b3dfc0;
@@ -1451,6 +1475,9 @@ int DAT_05b93588;
 // GLOBAL: SADX 0x05b935cc
 int DAT_05b935cc;
 
+// GLOBAL: SADX 0x05b93710
+short DAT_05b93710;
+
 // GLOBAL: SADX 0x05b9d718
 unsigned short DAT_05b9d718;
 
@@ -1486,6 +1513,9 @@ unsigned short DAT_05b9d770;
 
 // GLOBAL: SADX 0x05b9d774
 short DAT_05b9d774;
+
+// GLOBAL: SADX 0x05b9d778
+int DAT_05b9d778;
 
 // GLOBAL: SADX 0x05b9d7dc
 struct NJS_ARGB DAT_05b9d7dc;
@@ -1658,6 +1688,9 @@ int DAT_05baf4f8[8];
 // GLOBAL: SADX 0x05baf51c
 void *DAT_05baf51c;
 
+// GLOBAL: SADX 0x05baf520
+void *DAT_05baf520;
+
 // GLOBAL: SADX 0x05baf524
 void *DAT_05baf524;
 
@@ -1787,6 +1820,12 @@ struct task *DAT_05cc25a4;
 // GLOBAL: SADX 0x05cc25a8
 int DAT_05cc25a8;
 
+// GLOBAL: SADX 0x05cc25b0
+struct NJS_TEXLIST *DAT_05cc25b0[1];
+
+// GLOBAL: SADX 0x05cc3540
+struct NJS_TEXLIST *DAT_05cc3540[5];
+
 // GLOBAL: SADX 0x05cc3560
 unsigned char DAT_05cc3560;
 
@@ -1855,6 +1894,9 @@ long DAT_05ccca10;
 
 // GLOBAL: SADX 0x05ccca18
 char DAT_05ccca18;
+
+// GLOBAL: SADX 0x05cccc69
+char DAT_05cccc69;
 
 // GLOBAL: SADX 0x05cccc6a
 unsigned char DAT_05cccc6a[1];
@@ -2560,6 +2602,9 @@ struct task *DAT_060ccdc8;
 
 // GLOBAL: SADX 0x060cd274
 struct task *DAT_060cd274;
+
+// GLOBAL: SADX 0x060ce758
+long DAT_060ce758;
 
 // GLOBAL: SADX 0x060ce760
 void *DAT_060ce760;
