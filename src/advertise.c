@@ -23,6 +23,11 @@ void __fastcall FUN_00582af0(int param_1)
 {
 }
 
+// STUB: SADX 0x00587710
+void DestroyLBOn()
+{
+}
+
 // STUB: SADX 0x00588890
 void FUN_00588890(int param_1)
 {
@@ -57,13 +62,33 @@ int FUN_00588a10(int param_1, int param_2)
 	return (int)0;
 }
 
+// STUB: SADX 0x00588a30
+void FUN_00588a30(int param_1)
+{
+}
+
 // STUB: SADX 0x00588db0
 void FUN_00588db0(struct obj *obj, int param_2)
 {
 }
 
+// STUB: SADX 0x00588e00
+void __fastcall FUN_00588e00(void *param_1, char param_2, int param_3)
+{
+}
+
+// STUB: SADX 0x00588ea0
+void split2(void *param_1, void *param_2)
+{
+}
+
 // STUB: SADX 0x00589930
 void FUN_00589930()
+{
+}
+
+// STUB: SADX 0x00589b70
+void FUN_00589b70(void *param_1, int param_2, int param_3, short param_4)
 {
 }
 
@@ -104,4 +129,19 @@ unsigned short * FUN_0058a640(unsigned short *param_1, unsigned short *param_2, 
 			break;
 	}
 	return param_1;
+}
+
+// STUB: SADX 0x0058a670
+void FUN_0058a670(void *param_1, void *param_2)
+{
+}
+
+// STUB: SADX 0x0058a710
+void FUN_0058a710(void *param_1, int param_2, void *param_3, void *param_4)
+{
+}
+
+// STUB: SADX 0x0058a7d0
+void FUN_0058a7d0(void *param_1, void *param_2)
+{
 }

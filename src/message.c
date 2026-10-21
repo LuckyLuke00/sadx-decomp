@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05b3ebbc;
 extern void MSG_ThreadMainMessages(char **message);
 extern struct thread *TH_Create(void *func, void *pParam, unsigned int stack_size);
 void FUN_004c2fa0(struct MSGC *param_1, int param_2);
@@ -10,7 +11,16 @@ extern char DAT_05b42c1c;
 int FUN_004c1800(const unsigned char *param_1);
 
 extern signed char DAT_05b42c1d;
-extern unsigned char DAT_05b42e20[0x50000];
+// GLOBAL: SADX 0x05b42e20
+unsigned char DAT_05b42e20[0x50000] = {0};
+
+// GLOBAL: SADX 0x05b92e20
+struct MSGC *DAT_05b92e20 = 0;
+
+// STUB: SADX 0x004c16c0
+void FontInitialLoading()
+{
+}
 
 // FUNCTION: SADX 0x004c1790
 int FPpCalcProp(const unsigned char *patt)
@@ -124,11 +134,57 @@ void MSG_Disp(struct MSGC *msgc)
 	DAT_05b92e28 = DAT_05b92e28 + 1;
 }
 
+// STUB: SADX 0x004c22f0
+void MSG_Cls(struct MSGC *msgc)
+{
+}
+
+// FUNCTION: SADX 0x004c2610
+int FUN_004c2610(int param_1)
+{
+	int local_cg;
+	int local_8g;
+
+	local_cg = (int)(*(unsigned char *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5988) & 0xff);
+	local_8g = (int)(*(unsigned char *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5989) & 0xff);
+	if (param_1 < 0x100)
+	{
+		if (param_1 > local_8g)
+		{
+			param_1 -= local_8g - local_cg;
+		}
+		if (*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) != 0)
+		{
+			param_1 = (int)*(unsigned char *)(*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) + param_1 - 0x20);
+		}
+		return (char)*(char *)(*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d597c) + param_1 - 0x20) + 1;
+	}
+	else
+	{
+		return 0x18;
+	}
+}
+
 // FUNCTION: SADX 0x004c26c0
 void MSG_LF(struct MSGC *msgc)
 {
 	msgc->lx = 0;
 	msgc->ly += msgc->sy + 0x18;
+}
+
+// STUB: SADX 0x004c2940
+void MSG_Puts(struct MSGC *msgc, char *str)
+{
+}
+
+// STUB: SADX 0x004c2a30
+void FUN_004c2a30(struct MSGC *param_1, char *param_2)
+{
+}
+
+// STUB: SADX 0x004c2d60
+void MSG_WinFadeIn(struct MSGC *msgc)
+{
 }
 
 // FUNCTION: SADX 0x004c2e10
@@ -143,6 +199,11 @@ int FUN_004c2e10(int param_1)
 		param_1 = 0xff;
 	}
 	return param_1;
+}
+
+// STUB: SADX 0x004c2e40
+void MSG_WinFadeOut(struct MSGC *msgc)
+{
 }
 
 // FUNCTION: SADX 0x004c2ef0

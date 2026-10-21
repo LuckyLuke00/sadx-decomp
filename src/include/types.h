@@ -173,9 +173,12 @@ struct SEQ_SECTIONTBL;
 struct SeqPrmType;
 struct shadowwk;
 struct sMRacePath;
+struct SNAPSHOT_DATA;
 struct sp_info;
 struct sp_link;
 struct sp_task;
+struct STAFF_DATA;
+struct STAFFROLL_DATA;
 struct strCamCartData;
 struct task;
 struct TaskCommunication;
@@ -2193,6 +2196,14 @@ static_assert(offsetof(HintMessageMemory, message_p) == 0x0, "HintMessageMemory:
 static_assert(offsetof(HintMessageMemory, adx_index) == 0x4, "HintMessageMemory::adx_index");
 static_assert(offsetof(HintMessageMemory, flag_index) == 0x8, "HintMessageMemory::flag_index");
 
+struct HintMessageString {
+    const char *message;
+    long wait;
+};
+static_assert(sizeof(HintMessageString) == 0x8, "sizeof HintMessageString");
+static_assert(offsetof(HintMessageString, message) == 0x0, "HintMessageString::message");
+static_assert(offsetof(HintMessageString, wait) == 0x4, "HintMessageString::wait");
+
 struct HintMessageTable {
     const short *code;
     const struct HintMessageString *message;
@@ -2654,6 +2665,30 @@ static_assert(offsetof(SEQ_SECTIONTBL, stg) == 0x4, "SEQ_SECTIONTBL::stg");
 static_assert(offsetof(SEQ_SECTIONTBL, act) == 0x5, "SEQ_SECTIONTBL::act");
 static_assert(offsetof(SEQ_SECTIONTBL, entrance) == 0x6, "SEQ_SECTIONTBL::entrance");
 static_assert(offsetof(SEQ_SECTIONTBL, name) == 0x8, "SEQ_SECTIONTBL::name");
+
+struct SNAPSHOT_DATA {
+    char **pvmfile;
+    struct NJS_TEXLIST **texlist;
+    int nbTexlist;
+    char *lastpvmfile;
+    struct NJS_TEXLIST *lasttexlist;
+    short *lastsprite;
+};
+static_assert(sizeof(SNAPSHOT_DATA) == 0x18, "sizeof SNAPSHOT_DATA");
+static_assert(offsetof(SNAPSHOT_DATA, pvmfile) == 0x0, "SNAPSHOT_DATA::pvmfile");
+static_assert(offsetof(SNAPSHOT_DATA, texlist) == 0x4, "SNAPSHOT_DATA::texlist");
+static_assert(offsetof(SNAPSHOT_DATA, nbTexlist) == 0x8, "SNAPSHOT_DATA::nbTexlist");
+static_assert(offsetof(SNAPSHOT_DATA, lastpvmfile) == 0xc, "SNAPSHOT_DATA::lastpvmfile");
+static_assert(offsetof(SNAPSHOT_DATA, lasttexlist) == 0x10, "SNAPSHOT_DATA::lasttexlist");
+static_assert(offsetof(SNAPSHOT_DATA, lastsprite) == 0x14, "SNAPSHOT_DATA::lastsprite");
+
+struct STAFFROLL_DATA {
+    struct STAFF_DATA *StaffTbl;
+    int nbStaff;
+};
+static_assert(sizeof(STAFFROLL_DATA) == 0x8, "sizeof STAFFROLL_DATA");
+static_assert(offsetof(STAFFROLL_DATA, StaffTbl) == 0x0, "STAFFROLL_DATA::StaffTbl");
+static_assert(offsetof(STAFFROLL_DATA, nbStaff) == 0x4, "STAFFROLL_DATA::nbStaff");
 
 struct TaskInfo {
     unsigned int size;
