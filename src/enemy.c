@@ -1,5 +1,13 @@
 #include "decls.h"
+void FUN_005e4370(struct enemywk *param_1);
+void EnemyBaneDraw(struct taskwk *twp);
+void EnemyBaneDisplayer(struct task *tp);
 void FUN_005e2cc0(struct taskwk *param_1, struct enemywk *param_2);
+
+// STUB: SADX 0x005e2cc0
+void FUN_005e2cc0(struct taskwk *twp, struct enemywk *ewp)
+{
+}
 
 // FUNCTION: SADX 0x005e3b40
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp)
@@ -60,6 +68,12 @@ float EnemyDist2FromHome(struct taskwk *twp, struct enemywk *ewp)
 	return local_8;
 }
 
+// STUB: SADX 0x005e3e30
+long EnemyCalcHomeAngle(struct taskwk *twp, struct enemywk *ewp)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x005e3ec0
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -67,6 +81,28 @@ long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp)
 	local_8 = EnemyCalcHomeAngle(twp, ewp);
 	*(long *)((char *)twp + 0x18) = AdjustAngle(*(long *)((char *)twp + 0x18), ewp->aim_angle, ewp->angy_spd);
 	return local_8;
+}
+
+// FUNCTION: SADX 0x005e4370
+void FUN_005e4370(struct enemywk *param_1)
+{
+	*(float *)((char *)param_1 + 0x30) -= 0.089999996f;
+	*(float *)((char *)param_1 + 0x20) += *(float *)((char *)param_1 + 0x2c);
+	*(float *)((char *)param_1 + 0x24) += *(float *)((char *)param_1 + 0x30);
+	*(float *)((char *)param_1 + 0x28) += *(float *)((char *)param_1 + 0x34);
+	*(int *)((char *)param_1 + 0x14) += 0x200;
+	*(int *)((char *)param_1 + 0x18) += 0x1000;
+	*(int *)((char *)param_1 + 0x1c) += 0x700;
+}
+
+// STUB: SADX 0x005e43f0
+void EnemyPartsDraw(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x005e4610
+void EnemySmoke(struct taskwk *twp)
+{
 }
 
 // FUNCTION: SADX 0x005e4850
@@ -86,8 +122,23 @@ void DestructorEnemyParts(struct task *tp)
 	local_8->value.l = 0;
 }
 
+// STUB: SADX 0x005e48b0
+void EnemyBaneExplode(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005e4950
 void EnemyBaneDisplayer(struct task *tp)
 {
 	EnemyBaneDraw(tp->twp);
+}
+
+// STUB: SADX 0x005e4cc0
+void EnemyBuyoScale(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005e4d70
+void EnemyBumpPlayer(signed char pnum)
+{
 }

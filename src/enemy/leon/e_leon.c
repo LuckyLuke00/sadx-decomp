@@ -5,6 +5,11 @@ void FUN_005c1a30(int param_1)
 {
 }
 
+// STUB: SADX 0x005c2a80
+void FUN_005c2a80(struct task *tp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x005c2b10
 void CallLeonDraw(struct task *tp)
 {

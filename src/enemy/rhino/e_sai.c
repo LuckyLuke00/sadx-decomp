@@ -2,6 +2,11 @@
 void FUN_008d88b0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_MATERIAL matlist_rhino_jet[1];
 
+// STUB: SADX 0x008d8030
+void SaiMove(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x008d8580
 void FUN_008d8580(int param_1, char *param_2)
 {
@@ -13,6 +18,11 @@ void FUN_008d8580(int param_1, char *param_2)
 void FUN_008d8710(struct taskwk *param_1, struct enemywk *param_2)
 {
 	EnemyCheckGroundCollision(param_1, param_2);
+}
+
+// STUB: SADX 0x008d8730
+void SaiEditMode(struct taskwk *twp)
+{
 }
 
 // FUNCTION: SADX 0x008d8800
