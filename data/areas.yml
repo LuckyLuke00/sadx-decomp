@@ -5,6 +5,10 @@
 # path, and a file that no pattern matches stops `check.py areas`. A folder gets a line once a file lands in it.
 tree:
   - ['^src/___now/', pc_port]
+  - ['^src/adv00_stationsquare/', station_square]
+  - ['^src/adv01_eggcarrierab/', egg_carrier]
+  - ['^src/adv01_eggcarrierobj/', egg_carrier]
+  - ['^src/adv02_mysticruin/', mystic_ruins]
   - ['^src/Advertise/', menus]
   - ['^src/chao/stg_race1/', chao_race]
   - ['^src/chao/', chao_garden]
@@ -36,6 +40,13 @@ tree:
   - ['^src/boss_e101_r/', e101_mk2]
   - ['^src/bossegm2/', egg_walker]
   - ['^src/bossrobo/', zero]
+  - ['^src/stg01_beach/', emerald_coast]
+  - ['^src/stg02_windy/', windy_valley]
+  - ['^src/stg03_twinkle/', twinkle_park]
+  - ['^src/stg04_highway/', speed_highway]
+  - ['^src/stg06_skydeck/', sky_deck]
+  - ['^src/stg07_ruin/', lost_world]
+  - ['^src/stg08_icecap/', ice_cap]
   - ['^src/[^/]+$', engine]  # the other files at the top of src/
 
 # The progress map's sections, in order, each with its areas and the name the map shows for each. Every area

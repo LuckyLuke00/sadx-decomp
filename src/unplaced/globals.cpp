@@ -62,6 +62,9 @@ struct obj object_ssobj_twtesuri_twtesuri[1];
 // GLOBAL: SADX 0x01cac108
 struct obj object_sikake_powerbox_powerbox[1];
 
+// GLOBAL: SADX 0x01cad0c4
+struct obj object_ssobj_chaocard_chaocard[1];
+
 // GLOBAL: SADX 0x01e55938
 struct CHAO_GLOBAL ChaoGlobal;
 
@@ -494,6 +497,12 @@ struct obj object_ecb_bosscl_bosscl[1];
 // GLOBAL: SADX 0x026d7ec8
 int DAT_026d7ec8;
 
+// GLOBAL: SADX 0x026dcc68
+struct CCL_INFO obj_c_info[2];
+
+// GLOBAL: SADX 0x026dccc8
+char *get_message[2];
+
 // GLOBAL: SADX 0x026df614
 struct NJS_POINT3 *pScale_Adv01AB[7];
 
@@ -505,6 +514,12 @@ struct ___stcClip *pClipMap_Adv01AB[7];
 
 // GLOBAL: SADX 0x026df668
 struct ___stcFog *pFogTable_Adv01AB[7];
+
+// GLOBAL: SADX 0x026ed434
+struct CCL_INFO ColliInfo[1];
+
+// GLOBAL: SADX 0x026f0870
+struct NJS_TEXLIST texlist_mapMR;
 
 // GLOBAL: SADX 0x0270cb90
 struct NJS_POINT3 *pScale_Egm01[1];
@@ -602,11 +617,101 @@ long amb;
 // GLOBAL: SADX 0x03711078
 struct NJS_POINT3 point[5];
 
+// GLOBAL: SADX 0x0398620c
+struct obj object_seaobj_bungalow_bungalow[1];
+
+// GLOBAL: SADX 0x03986914
+struct obj object_seaobj_floot_floot[1];
+
+// GLOBAL: SADX 0x039e0c80
+struct obj object_seaobj_rock_rock[1];
+
+// GLOBAL: SADX 0x039e2954
+struct obj object_seaobj_kusa3_kusa3[1];
+
+// GLOBAL: SADX 0x039e39c4
+struct obj object_seaobj_kusa4a_kusa4a[1];
+
+// GLOBAL: SADX 0x039e3ce0
+struct obj object_seaobj_kusa4b_kusa4b[1];
+
+// GLOBAL: SADX 0x039e4920
+struct obj object_seaobj_sanngo00_sanngo00[1];
+
+// GLOBAL: SADX 0x039e50dc
+struct obj object_seaobj_sanngo01_sanngo01[1];
+
+// GLOBAL: SADX 0x039e7068
+struct obj object_seaobj_iwapole_iwapole[1];
+
+// GLOBAL: SADX 0x039e9778
+struct obj object_seaobj_komorebi_komorebi[1];
+
+// GLOBAL: SADX 0x039e9a1c
+struct obj object_seaobj_sekichuu_sekichuu[1];
+
+// GLOBAL: SADX 0x039fe4d0
+struct obj object_seaobj_rock2_rock2[1];
+
+// GLOBAL: SADX 0x03a0c380
+struct CCL_INFO object_seki_info[2];
+
+// GLOBAL: SADX 0x03b2a8fc
+struct obj object_windobj_bigfloot_bigfloot[1];
+
+// GLOBAL: SADX 0x03b4ad9c
+struct obj object_windobj_isibasi_isibasi[1];
+
 // GLOBAL: SADX 0x03b4e2f0
 struct obj *obj[10];
 
 // GLOBAL: SADX 0x03b75660
 float alpha;
+
+// GLOBAL: SADX 0x03c67068
+struct obj object_geta_cubar_cubar[1];
+
+// GLOBAL: SADX 0x03c69704
+struct obj object_mado_outmado_outmado[1];
+
+// GLOBAL: SADX 0x03e3b074
+struct obj object_asi1_asi_a_asi_a[1];
+
+// GLOBAL: SADX 0x03e3b35c
+struct obj object_asi_asi_3_asi_3[1];
+
+// GLOBAL: SADX 0x03e437f4
+struct obj object_ss_poster2_poster2[1];
+
+// GLOBAL: SADX 0x03e439d4
+struct obj object_ss_poster4_poster4[1];
+
+// GLOBAL: SADX 0x03e43bb4
+struct obj object_ss_pstr_03_pstr_03[1];
+
+// GLOBAL: SADX 0x03e463a8
+struct obj object_green_g_belt_g_belt[1];
+
+// GLOBAL: SADX 0x03e550c8
+struct obj object_green_g_belt_a_g_belt_a[1];
+
+// GLOBAL: SADX 0x0438b3d4
+struct obj object_los_nc_gakeshoku_nc_gakeshoku[1];
+
+// GLOBAL: SADX 0x0439f114
+struct obj object_ukidai_ukidai_ukidai[1];
+
+// GLOBAL: SADX 0x045aa390
+struct obj object_obj_house_d_house_d[1];
+
+// GLOBAL: SADX 0x045aa934
+struct obj object_obj_house_c_house_c[1];
+
+// GLOBAL: SADX 0x045ab114
+struct obj object_obj_house_b_house_b[1];
+
+// GLOBAL: SADX 0x045ab6bc
+struct obj object_obj_house_a_house_a[1];
 
 // GLOBAL: SADX 0x0480e444
 struct NJS_POINT3 *DAT_0480e444[1];
@@ -1481,6 +1586,9 @@ unsigned char DAT_05bafb45;
 // GLOBAL: SADX 0x05bafb46
 unsigned char DAT_05bafb46;
 
+// GLOBAL: SADX 0x05bafc0d
+unsigned char DAT_05bafc0d;
+
 // GLOBAL: SADX 0x05bafd18
 short DAT_05bafd18;
 
@@ -2189,6 +2297,21 @@ int DAT_05edf7e4;
 // GLOBAL: SADX 0x060b55f4
 int DAT_060b55f4;
 
+// GLOBAL: SADX 0x060b56a0
+int DAT_060b56a0;
+
+// GLOBAL: SADX 0x060b5fe4
+unsigned char DAT_060b5fe4;
+
+// GLOBAL: SADX 0x060b5fe5
+unsigned char DAT_060b5fe5;
+
+// GLOBAL: SADX 0x060b5fec
+void *DAT_060b5fec;
+
+// GLOBAL: SADX 0x060b907c
+int DAT_060b907c;
+
 // GLOBAL: SADX 0x060bbe34
 int DAT_060bbe34;
 
@@ -2347,6 +2470,12 @@ int DAT_060ee554;
 
 // GLOBAL: SADX 0x060eea5c
 int DAT_060eea5c;
+
+// GLOBAL: SADX 0x060eea88
+struct obj **DAT_060eea88;
+
+// GLOBAL: SADX 0x060f4ad4
+struct NJS_MODEL **DAT_060f4ad4;
 
 // GLOBAL: SADX 0x06274afc
 int DAT_06274afc;
