@@ -137,7 +137,8 @@ def parameter_span(sig: str) -> tuple[int, int, list[str]] | None:
 
 
 def parse_annotations(text: str) -> list[tuple[str, int, str]]:
-    """(kind, address, signature) of each annotation: the signature is the first code line after it."""
+    """(kind, address, signature) of each annotation: the signature is the first code line after it, without
+    `__declspec(naked)`, which only a definition may carry: declared from it, the name fails every file."""
     found = []
     for m in annotation().finditer(text):
         kind, address = m.group(1), int(m.group(2), 16)
@@ -154,7 +155,7 @@ def parse_annotations(text: str) -> list[tuple[str, int, str]]:
                 rest = rest[line_end + 1:]
                 continue
             break
-        sig = signature_after(rest, 0)
+        sig = re.sub(r"__declspec\s*\(\s*naked\s*\)\s*", "", signature_after(rest, 0))
         found.append((kind, address, sig))
     return found
 
