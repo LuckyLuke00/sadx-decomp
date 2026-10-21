@@ -6,7 +6,9 @@ constants named, and the declaration of each name it uses. --callers adds the
 functions that call it, jump to it or take its address. --accesses adds, under each
 global, how the whole exe reads and writes it (tools/accesses.py). --c adds Ghidra's draft C
 with the same names, from <drafts>/<address>.c: tools/ghidra/DumpDecomp.java writes
-those, and docs/FRAMEWORK.md says how.
+those, and docs/FRAMEWORK.md says how. --facts adds a "facts:" list after the header
+(tools/facts.py): what the assembly hides, such as a register argument, a callee that pops
+its arguments, a global that holds a pointer and a type with no body in the types header.
 
 Names come from the tree's annotations, the files `check.py decls` wrote last,
 src/library.csv and the --tables folder (tools/declgen.py says what it holds). --context
@@ -19,6 +21,7 @@ import collections
 import math
 import re
 import struct
+from collections.abc import Callable
 from pathlib import Path
 from typing import NamedTuple
 
@@ -29,6 +32,7 @@ import names
 import pe
 import progress
 import project
+import x86
 
 ROOT = project.ROOT
 ACCESS_GROUPS = 6  # most-used kinds of access shown per global
@@ -266,7 +270,8 @@ def ghidra_c(address: int, drafts: Path, functions: dict[int, Function], globals
 
 
 def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: Path | None,
-         drafts: Path | None, access: bool = False, context: Path | None = None) -> int:
+         drafts: Path | None, access: bool = False, facts: Callable[..., list[str]] | None = None,
+         context: Path | None = None) -> int:
     sources = names.read_sources(ROOT)
     added = names.context_sources(context, sources)  # a lane holds only its item's files
     sources |= added
@@ -284,6 +289,7 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
     clusters = {int(r["address"], 16): r["cluster"] for r in progress.read_csv(ROOT / "data" / "file-clusters.csv")}
     image = pe.Image(game)
     namer = Namer(image, functions, sizes, library, globals_)
+    decoder = x86.Decoder(image, library)
     access_rows = accesses.load(image) if access else None
     global_sizes = {g.address: g.size for g in globals_}
     missing = 0
@@ -295,6 +301,7 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
             continue
         f = functions.get(address, Function(library.get(address, f"FUN_{address:08x}"), "", False, "", ""))
         group = progress.codegen_group(groups, address)
+        code = disassemble(image, namer, address, size)
         print(f"== 0x{address:08x} {f.name}  ({size} bytes)")
         print(f"prototype: {f.proto or '(none known: choose the types from the code)'}")
         if f.locals:
@@ -309,8 +316,14 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
             print(f"register-argument cluster: {clusters[address]} (these functions share one file)")
         if f.note:
             print(f"note: {f.note}")
+        if facts:
+            lines = facts(decoder.function(address, size, 0), f, group["flags"] if group else "",
+                          address in clusters, namer, types, decoder, sizes)
+            if lines:
+                print("facts:")
+                print("\n".join(f"  - {line}" for line in lines))
         print()
-        print("\n".join(disassemble(image, namer, address, size)))
+        print("\n".join(code))
         if namer.used:
             print("\nnames used:")
             for a, (kind, name, decl) in sorted(namer.used.items()):

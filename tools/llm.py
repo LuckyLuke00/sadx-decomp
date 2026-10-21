@@ -17,7 +17,9 @@ solve and bench take --prompt NAME (the system prompt tools/prompts/NAME.txt, pl
 data/llm-hints.txt when the game has one), --tries N, --seed S (try N asks with seed
 S+N), --structs (the first prompt lists the members of the structs the dossier names,
 and a build error about a missing member lists the members of that struct), --accesses
-(each dossier adds how the whole exe reads and writes each global it names), --top-k K,
+(each dossier adds how the whole exe reads and writes each global it names), --facts (each
+dossier adds what the assembly hides: calling convention, pointer globals, structs without
+members), --top-k K,
 --top-p P and --min-p M (sent with every request, else the server picks), --tree-wins
 (a try that fails on a declaration the tree has in another way is built once more without
 the model's declaration of that name), --think-max N (the run ends when it would think after
@@ -525,7 +527,7 @@ def solve_function(args, file, address, transcript):
     known = tree_warnings(config)
     restore(generated)
     types = load_types(config) if args.structs else None
-    extra = ('--accesses',) if args.accesses else ()
+    extra = (('--accesses',) if args.accesses else ()) + (('--facts',) if args.facts else ())
     count = EXAMPLES
     first = first_prompt(config, file, address, types, count, extra)
     base = [{"role": "system", "content": args.system}, {"role": "user", "content": first}]
@@ -766,6 +768,9 @@ def parse_args():
     runs.add_argument("--seed", type=int, help="try N asks with seed S+N, so a rerun repeats")
     runs.add_argument("--structs", action="store_true", help="show the members of the structs the dossier names")
     runs.add_argument("--accesses", action="store_true", help="show how the whole exe reads and writes each global")
+    runs.add_argument("--facts", action="store_true",
+                      help="add what the assembly hides to each dossier: calling convention, pointer globals, "
+                           "structs without members")
     for sampler, kind in (("--top-k", int), ("--top-p", float), ("--min-p", float)):
         runs.add_argument(sampler, type=kind, help="sent with every request (default: the server's own)")
     runs.add_argument("--tree-wins", action="store_true",
