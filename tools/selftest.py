@@ -285,16 +285,20 @@ def check_declaration_keys() -> list[str]:
 
 def check_decls_trees() -> list[str]:
     """decls on throwaway trees. A static function here and a global one of the same name in the context share a
-    name once the context holds both, also when no file here uses the context's. A global name that two objects
+    name once the context holds both, also when no file here uses the context's. A name that a file defines means
+    that function, also when the file holds a folded copy of another file's function. A global name that two objects
     share means the one in the object that the using file defines functions of, and a second file that uses the
     other one fails."""
     target = project.game_config().target
     exec_here = f"// FUNCTION: {target} 0x00401000\nstatic void Exec(struct task *tp)\n{{\n}}\n"
     exec_there = f"// FUNCTION: {target} 0x00402000\nvoid Exec(struct task *tp)\n{{\n}}\n"
+    folded = f"// FUNCTION: {target} 0x00405000\nstatic void Helper(struct task *tp)\n{{\n}}\n"
     functions = [("0x00401000", "Exec", "L", "src/x.c", "o_x.obj"),
                  ("0x00402000", "Exec", "G", "src/emblem.c", "o_e.obj"),
                  ("0x00403000", "DispX", "L", "src/x.c", "o_x.obj"),
-                 ("0x00404000", "DispY", "L", "src/y.c", "o_y.obj")]
+                 ("0x00404000", "DispY", "L", "src/y.c", "o_y.obj"),
+                 ("0x00405000", "Helper", "L", "src/z.c", "o_z.obj"),
+                 ("0x00406000", "Exec", "L", "src/z.c", "o_z.obj")]
     globals_ = [("0x00501000", "obj_c_info", "o_x.obj"), ("0x00502000", "obj_c_info", "o_y.obj")]
 
     def disp(address, name):
@@ -304,6 +308,8 @@ def check_decls_trees() -> list[str]:
     cases = [("a static function against the context's global one", {"src/x.c": exec_here},
               {"src/emblem.c": exec_there}, 1, "share the name", []),
              ("a static function with no context", {"src/x.c": exec_here}, {}, 0, "", []),
+             ("a static function beside a folded copy from another file", {"src/x.c": exec_here + "\n" + folded}, {},
+              0, "", []),
              ("a global name that two objects share", {"src/x.c": disp("0x00403000", "DispX")}, {}, 0, "",
               ["0x00501000"]),
              ("a global name that two files use", {"src/x.c": disp("0x00403000", "DispX"),

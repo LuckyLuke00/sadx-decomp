@@ -230,10 +230,15 @@ def write(context: Path | None, tables: Path | None) -> int:
             home[d[0]].add(funcs[a]["file"])
 
     def meaning(name, rel):
-        """The functions a name in rel means: the one from its own file, else the global overloads."""
+        """The functions a name in rel means: the ones rel defines, else the one from its own file, else the global
+        overloads. A folded copy of another file's function makes that file a home of rel, but rel's own definitions
+        still win, as in C."""
         options = fnames[name]
         if len(options) == 1:
             return options
+        here = [a for a in options if a in defined_funcs and defined_funcs[a][0] == rel]
+        if here:
+            return here
         own = [a for a in options if funcs[a]["file"] == rel or funcs[a]["file"] in home[rel]]
         return own or [a for a in options if funcs[a]["scope"] == "G"]
 
