@@ -389,6 +389,37 @@ void ObjectCCollisionExecute_L(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x00500f50
+long ObjectScaleCCollision(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return 1;
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		local_8->value.l = 0;
+	}
+	else
+	{
+		NeonuLoadTexture((struct NJS_TEXLIST *)local_8->value.l);
+	}
+	if (CheckObjectTexture() != 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			tp->dest = ObjectNormalExit;
+			tp->exec = ObjectScaleCCollisionExecute;
+			tp->disp = ObjectScaleDisplay;
+		}
+	}
+	ObjectScaleDisplay(tp);
+	return 0;
+}
+
 // FUNCTION: SADX 0x00500ff0
 void ObjectScaleCCollisionExecute(struct task *tp)
 {

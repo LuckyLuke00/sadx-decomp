@@ -626,6 +626,7 @@ void ObjectScaleDisplay(struct task *tp);
 long ObjectCCollision(struct task *tp);
 void ObjectCCollisionExecute(struct task *tp);
 void ObjectCCollisionExecute_L(struct task *tp);
+void ObjectScaleCCollisionExecute(struct task *tp);
 long ObjectGCollision(struct task *tp);
 void FUN_00501300(struct task *param_1, struct task *param_2);
 void FUN_005015e0(void *);
