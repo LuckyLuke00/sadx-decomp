@@ -2211,6 +2211,12 @@ void EnemyCheckWall(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
+// STUB: SADX 0x005e3c80
+long EnemyCalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x005e4060
 long EnemyTurnToPlayer(struct taskwk *, struct enemywk *, unsigned char)
 {
