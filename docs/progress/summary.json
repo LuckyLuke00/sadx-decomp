@@ -19490,6 +19490,14 @@
    "library": false
   },
   {
+   "address": "0x0067f8b0",
+   "name": "DestroyMapSS",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0067fa10",
    "name": "RdBossEnd",
    "accuracy": 1.0,
@@ -19586,6 +19594,14 @@
    "library": false
   },
   {
+   "address": "0x006930f0",
+   "name": "DestroyMapEC",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00694a70",
    "name": "DrawMast",
    "accuracy": 1.0,
@@ -19642,6 +19658,22 @@
    "library": false
   },
   {
+   "address": "0x0069d790",
+   "name": "ObjectECHelicopter",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0069ddd0",
+   "name": "DestroyMapECH",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006a6d90",
    "name": "initE102EC03",
    "accuracy": 1.0,
@@ -19690,6 +19722,14 @@
    "library": false
   },
   {
+   "address": "0x006a7d60",
+   "name": "SetTableBg",
+   "accuracy": 0.017543859649122806,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x006a84a0",
    "name": "LoadMapMR",
    "accuracy": 1.0,
@@ -19700,6 +19740,14 @@
   {
    "address": "0x006a8660",
    "name": "DestroyMapMR",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006a8680",
+   "name": "FUN_006a8680",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -19932,6 +19980,14 @@
   {
    "address": "0x006afbb0",
    "name": "mrp_end",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006bc840",
+   "name": "DestroyMapPAST",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -21490,6 +21546,30 @@
    "library": false
   },
   {
+   "address": "0x00838530",
+   "name": "SetCameraMountain_TgtDeathExpSize",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00838540",
+   "name": "CameraMountainTgtDeath",
+   "accuracy": 0.02531645569620253,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00838670",
+   "name": "StartCameraMountain_TgtDeath",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00838810",
    "name": "InitIntSkyDeck",
    "accuracy": 1.0,
@@ -21532,6 +21612,22 @@
   {
    "address": "0x008445e0",
    "name": "dispSkyContainer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0084dc60",
+   "name": "ObjectSkydeck_enegymissile1_Init",
+   "accuracy": 0.027777777777777776,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0084dd60",
+   "name": "ObjectSkydeck_enegymissile1",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -21722,8 +21818,48 @@
    "library": false
   },
   {
+   "address": "0x00871b80",
+   "name": "ObjectCasinoHae",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008726d0",
+   "name": "ObjectCasinoHaeInit",
+   "accuracy": 0.02666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0087b370",
+   "name": "ObjectCasinoGetTelepotStatus",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0088df20",
    "name": "FUN_0088df20",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008a22f0",
+   "name": "InitInitShelter",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b61f0",
+   "name": "CamHot_SetE105",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -28379,5 +28515,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "1b4a5c15fb7d8ea7c227517f97bf601321cd685bca90a8c18210ed96330cdb57"
+ "inputs_sha256": "a5ae881d62eed213fa044e80e61c105d653fe18c745ffa07fd3e3a343146435c"
 }
