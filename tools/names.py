@@ -95,24 +95,45 @@ def without_parameter_name(param: str) -> str:
 
 def without_parameter_names(sig: str) -> str:
     """SIG with its parameters' names dropped: two declarations of one function then compare equal."""
+    span = parameter_span(sig)
+    if span is None:
+        return sig
+    start, end, params = span
+    types = [without_parameter_name(p) for p in params]
+    return " ".join((sig[:start] + ", ".join(types) + sig[end:]).split())
+
+
+def declaration_key(decl: str) -> str:
+    """DECL as C++ reads it, to tell whether two declarations of one name are the same: without parameter names, a
+    leading `extern`, and `struct`, `union`, `enum` or `class` before a type name, with `(void)` as `()`. Not for
+    writing: a C file needs the `struct`."""
+    decl = without_parameter_names(decl)
+    decl = re.sub(r"^\s*extern\b", "", decl)
+    decl = re.sub(r"\b(?:struct|union|enum|class)\s+(?=\w)", "", decl)
+    decl = re.sub(r"\(\s*void\s*\)", "()", decl)
+    return re.sub(r"\s", "", decl)
+
+
+def parameter_span(sig: str) -> tuple[int, int, list[str]] | None:
+    """(start, end, parameters) of SIG's parameter list, where sig[start:end] is the text between its parentheses.
+    None when SIG declares no function."""
     name = declared_name(sig)
     m = re.search(re.escape(name) + r"\s*\(", sig) if name else None
     if not m:
-        return sig
+        return None
     depth, parts, cur = 0, [], ""
     for i in range(m.end(), len(sig)):
         ch = sig[i]
         depth += (ch in "([") - (ch in ")]")
         if depth < 0:
             parts.append(cur)
-            types = [without_parameter_name(p) for p in parts if p.strip()]
-            return " ".join((sig[:m.end()] + ", ".join(types) + sig[i:]).split())
+            return m.end(), i, [p.strip() for p in parts if p.strip()]
         if ch == "," and depth == 0:
             parts.append(cur)
             cur = ""
         else:
             cur += ch
-    return sig
+    return None
 
 
 def parse_annotations(text: str) -> list[tuple[str, int, str]]:
@@ -141,7 +162,9 @@ def parse_annotations(text: str) -> list[tuple[str, int, str]]:
 def local_declarations(text: str) -> tuple[list[tuple[str, str]], list[tuple[str, str]]]:
     """File-scope declarations: `ret name(args);` and `extern type name...;`."""
     funcs, vars_ = [], []
-    for m in re.finditer(r"^(?!static\b|typedef\b|return\b|#)([A-Za-z_][^;{}()=#]*?\b([A-Za-z_]\w*)\s*\([^;{}]*\))\s*;",
+    # The lookahead also skips a label such as `end:`, which a call on the next line would turn into a declaration.
+    for m in re.finditer(r"^(?!static\b|typedef\b|return\b|#|[A-Za-z_]\w*\s*:(?!:))"
+                         r"([A-Za-z_][^;{}()=#]*?\b([A-Za-z_]\w*)\s*\([^;{}]*\))\s*;",
                          strip_code(text), re.M):
         funcs.append((m.group(2), without_parameter_names(" ".join(m.group(1).split()))))
     for m in re.finditer(r"^extern\s+([^;{}]+);", strip_code(text), re.M):

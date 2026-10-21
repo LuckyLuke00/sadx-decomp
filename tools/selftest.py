@@ -13,6 +13,7 @@ import re
 import tempfile
 from pathlib import Path
 
+import names
 import osutil
 import pe
 import progress
@@ -49,6 +50,8 @@ def run() -> int:
     failures += check_gem_colors()
     failures += check_read_blobs()
     failures += check_misplaced_annotations()
+    failures += check_local_declarations()
+    failures += check_declaration_keys()
 
     if failures:
         print("FAIL self-test")
@@ -222,6 +225,27 @@ def check_misplaced_annotations() -> list[str]:
     found = [where for _, where, _ in runner.misplaced(annotations, {game, library}, {game})]
     expected = ["FUNCTION at a library function", "STUB inside a function"]
     return [] if found == expected else [f"annotation lint flags {found}, not {expected}"]
+
+
+def check_local_declarations() -> list[str]:
+    """A label at column 0 is no declaration, also when a call follows it. A return type on its own line is one."""
+    text = "end:\n\tFoo();\nlocal_20:\n\tFUN_004afe30();\nint Bar(int a);\nint\nBaz(int);\n"
+    found = [name for name, _ in names.local_declarations(text)[0]]
+    wanted = ["Bar", "Baz"]
+    return [] if found == wanted else [f"local_declarations finds {found}, not {wanted}"]
+
+
+def check_declaration_keys() -> list[str]:
+    """Two declarations of one function read the same in C++ with or without `extern`, `struct` before a type name,
+    parameter names, and `void` for no parameters. A different parameter type is a different function."""
+    cases = [("void Foo()", "extern void Foo(void)", True),
+             ("void Foo(struct NJS_ARGB *)", "void Foo(NJS_ARGB *argb)", True),
+             ("void Foo(void (*)())", "void Foo(void (*func)(void))", True),
+             ("void Foo(NJS_ARGB *)", "void Foo(int *)", False),
+             ("void Foo(int)", "void Foo(void)", False),
+             ("void Foo(void *)", "void Foo()", False)]
+    return [f"declaration_key reads `{a}` and `{b}` {'different' if same else 'the same'}"
+            for a, b, same in cases if (names.declaration_key(a) == names.declaration_key(b)) != same]
 
 
 def without_stubs(summary: dict) -> dict:
