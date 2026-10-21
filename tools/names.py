@@ -136,6 +136,14 @@ def parameter_span(sig: str) -> tuple[int, int, list[str]] | None:
     return None
 
 
+def context_sources(context: Path | None, sources: dict[str, str]) -> dict[str, str]:
+    """The sources of the CONTEXT tree whose paths SOURCES, this tree's, lacks: this tree wins. None and this tree
+    give none."""
+    if not context or context.resolve() == ROOT.resolve():
+        return {}
+    return {rel: text for rel, text in read_sources(context).items() if rel not in sources}
+
+
 def parse_annotations(text: str) -> list[tuple[str, int, str]]:
     """(kind, address, signature) of each annotation: the signature is the first code line after it, without
     `__declspec(naked)`, which only a definition may carry: declared from it, the name fails every file."""
