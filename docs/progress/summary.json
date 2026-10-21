@@ -17618,11 +17618,19 @@
    "library": false
   },
   {
-   "address": "0x005e3d10",
-   "name": "FUN_005e3d10",
-   "accuracy": 0.25,
+   "address": "0x005e3c80",
+   "name": "EnemyCalcAimAngle",
+   "accuracy": 0.17391304347826086,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005e3d10",
+   "name": "FUN_005e3d10",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -28163,5 +28171,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0769c151e4fcaca608fd53633b370f5058935a49db9a999c1f5d464000cbaf6c"
+ "inputs_sha256": "64aadf9f21e068527c90f51ba67867765d3664476c5a4f8b2fb49fafbea54671"
 }

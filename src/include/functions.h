@@ -991,6 +991,7 @@ void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp);
 void EnemyCheckWall(struct taskwk *twp, struct enemywk *ewp);
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
 void EnemyPreservePreviousPosition(struct taskwk *twp, struct enemywk *ewp);
+long EnemyCalcAimAngle(struct taskwk *twp, struct enemywk *ewp);
 long EnemyCalcHomeAngle(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToPlayer(struct taskwk *, struct enemywk *, unsigned char);
