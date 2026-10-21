@@ -18,3 +18,8 @@ int FUN_0059b6c0(int param_1)
 {
 	return (int)0;
 }
+
+// STUB: SADX 0x0059b720
+void dsDispFadeBlack()
+{
+}

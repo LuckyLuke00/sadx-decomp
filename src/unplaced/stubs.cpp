@@ -623,7 +623,7 @@ void DrawObjectClip(struct obj *, float)
 }
 
 // STUB: SADX 0x004a4160
-void late_DrawBoxFill2D(float x, float y, float x2, float y2, float pri, unsigned long argb, int flgs)
+void late_DrawBoxFill2D(float, float, float, float, float, unsigned long, int)
 {
 }
 
@@ -961,26 +961,6 @@ void CameraFilter()
 
 // STUB: SADX 0x004c0e10
 void FUN_004c0e10(void *)
-{
-}
-
-// STUB: SADX 0x004c22f0
-void MSG_Cls(struct MSGC *msgc)
-{
-}
-
-// STUB: SADX 0x004c2940
-void MSG_Puts(struct MSGC *msgc, char *str)
-{
-}
-
-// STUB: SADX 0x004c2d60
-void MSG_WinFadeIn(struct MSGC *msgc)
-{
-}
-
-// STUB: SADX 0x004c2e40
-void MSG_WinFadeOut(struct MSGC *msgc)
 {
 }
 
@@ -1513,16 +1493,6 @@ void CalcEventCamera()
 {
 }
 
-// STUB: SADX 0x0056d8b0
-void disp_message_wait(const struct HintMessageString *message_p)
-{
-}
-
-// STUB: SADX 0x0056da30
-void field_msg_front_fade(struct MSGC *msgc_p, long time, long rate)
-{
-}
-
 // STUB: SADX 0x0056db40
 void FUN_0056db40(struct MSGC *, long, long)
 {
@@ -1530,16 +1500,6 @@ void FUN_0056db40(struct MSGC *, long, long)
 
 // STUB: SADX 0x0056dd30
 void disp_npc_message_wait(const char * *message_p)
-{
-}
-
-// STUB: SADX 0x0056e0d0
-void disp_main_message(char * *message)
-{
-}
-
-// STUB: SADX 0x0056e170
-void disp_main_messageTime(char * *message)
 {
 }
 
@@ -1679,12 +1639,6 @@ void MDHeaderClose(struct MDHANDLE *mdh)
 {
 }
 
-// STUB: SADX 0x0059d4b0
-struct task *SetAdvaSequenceTask(struct SeqPrmType *prmp)
-{
-	return (struct task *)0;
-}
-
 // STUB: SADX 0x0059e430
 unsigned long GetFadeInColFromT(float t)
 {
@@ -1711,12 +1665,6 @@ void EndAdvaBGM()
 struct SAVE_DATA *GetSDp()
 {
 	return (struct SAVE_DATA *)0;
-}
-
-// STUB: SADX 0x005a4400
-enum AvaCharEnum AvaGetlastPlayer()
-{
-	return (enum AvaCharEnum)0;
 }
 
 // STUB: SADX 0x005a4c50
@@ -2375,6 +2323,11 @@ void ObjectSkydeck_tcolli_Exit(struct task *tp)
 
 // STUB: SADX 0x0083c930
 void ObjectSkydeck_tcolli_Exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b8100
+void ReleaseSnapShotTexture(struct SNAPSHOT_DATA *data)
 {
 }
 

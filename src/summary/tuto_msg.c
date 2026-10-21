@@ -1,5 +1,11 @@
 #include "decls.h"
 
+// STUB: SADX 0x00495300
+int ChgTutorialMsgPage(struct task *tp, int flag)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00495400
 int GetTutoMsgPurposePage(struct task *tp)
 {

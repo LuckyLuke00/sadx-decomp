@@ -9,3 +9,9 @@ long AvaGetTotalNumberEmblem()
 	local_cg = FUN_0049e130(local_8g);
 	return local_cg;
 }
+
+// STUB: SADX 0x00597c50
+int AvaGetTrialEmblem(enum AvaCharEnum chnum, long stage, long level)
+{
+	return (int)0;
+}

@@ -10,3 +10,9 @@ void SummaryBgDestrutor(struct task *tp)
 		var1->work.ptr[1] = 0;
 	}
 }
+
+// STUB: SADX 0x00495130
+struct task *CreateSummaryBg(int level, int advplno)
+{
+	return (struct task *)0;
+}

@@ -1,4 +1,6 @@
 #include "decls.h"
+void disp_message_get(struct MSGC *msgc_p, char *message_p);
+void disp_message_after(struct MSGC *msgc_p);
 void FUN_0056dc40(struct MSGC *param_1);
 void FUN_0056db40(struct MSGC *param_1, long param_2, long param_3);
 extern int DAT_05ccde24;
@@ -52,6 +54,12 @@ void HintMessageDataInit(const struct HintMessageTable *table)
 	DAT_05ccde78 = 0;
 	DAT_05ccde20 = 0;
 	DAT_05ccde88 = 0;
+}
+
+// STUB: SADX 0x0056d220
+long HintMessageInit(const long number, struct HintMessageMemory *data_p)
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x0056d3a0
@@ -205,6 +213,21 @@ int * FUN_0056d830(int *param_1, int param_2)
 	return (int *)0;
 }
 
+// STUB: SADX 0x0056d8b0
+void disp_message_wait(const struct HintMessageString *message_p)
+{
+}
+
+// STUB: SADX 0x0056d970
+void disp_message_get(struct MSGC *msgc_p, char *message_p)
+{
+}
+
+// STUB: SADX 0x0056da30
+void field_msg_front_fade(struct MSGC *msgc_p, long time, long rate)
+{
+}
+
 // FUNCTION: SADX 0x0056daf0
 void field_msg_back_fade(struct MSGC *msgc_p, long time, long rate)
 {
@@ -233,6 +256,21 @@ void FUN_0056dc40(struct MSGC *msgc)
 
 // STUB: SADX 0x0056dcc0
 void disp_message_draw_wait_button(struct MSGC *msgc_p)
+{
+}
+
+// STUB: SADX 0x0056e0d0
+void disp_main_message(char * *message)
+{
+}
+
+// STUB: SADX 0x0056e170
+void disp_main_messageTime(char * *message)
+{
+}
+
+// STUB: SADX 0x0056e2b0
+void field_msg_wait_message_loop(struct task *task_p)
 {
 }
 

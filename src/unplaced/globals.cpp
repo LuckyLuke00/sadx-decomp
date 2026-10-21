@@ -779,6 +779,12 @@ struct ___stcClip *DAT_0480e45c[1];
 // GLOBAL: SADX 0x0480e468
 struct ___stcFog *DAT_0480e468[1];
 
+// GLOBAL: SADX 0x04c2d3b8
+struct NJS_TEXLIST texlist_endbg_logo;
+
+// GLOBAL: SADX 0x04c2e4b8
+struct SNAPSHOT_DATA SnapShotDataTbl[7];
+
 // GLOBAL: SADX 0x04c2e590
 long ring_kiran;
 
@@ -1435,9 +1441,6 @@ int DAT_05b42c24[4];
 
 // GLOBAL: SADX 0x05b42c40
 struct NJS_TEXLIST DAT_05b42c40[32];
-
-// GLOBAL: SADX 0x05b42e20
-unsigned char DAT_05b42e20[0x50000];
 
 // GLOBAL: SADX 0x05b92e24
 int DAT_05b92e24;
@@ -2626,6 +2629,15 @@ long DAT_060ce758;
 
 // GLOBAL: SADX 0x060ce760
 void *DAT_060ce760;
+
+// GLOBAL: SADX 0x060dd870
+struct task *DAT_060dd870;
+
+// GLOBAL: SADX 0x060dd888
+int DAT_060dd888;
+
+// GLOBAL: SADX 0x060dd88c
+int DAT_060dd88c;
 
 // GLOBAL: SADX 0x060df554
 float DAT_060df554;
