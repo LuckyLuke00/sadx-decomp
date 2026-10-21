@@ -65,3 +65,8 @@ enum EGbaCheck GbaCheck(int a)
 	}
 	return (enum EGbaCheck)0;
 }
+
+// STUB: SADX 0x00494690
+void chCalcWorldPosFromScreenPos(struct NJS_POINT3 *pScreenPos, struct NJS_POINT3 *pWorldPos)
+{
+}
