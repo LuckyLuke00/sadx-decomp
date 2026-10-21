@@ -1,8 +1,10 @@
-"""Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders.
+"""Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, read a count
+from the command line.
 
 Standard library only.
 """
 
+import argparse
 import hashlib
 import shutil
 import stat
@@ -61,6 +63,14 @@ def copy_files(source: Path, target: Path, names: list[str] | None = None) -> No
         if not (source / name).is_file():
             sys.exit(f"missing: {source / name}")
         shutil.copyfile(source / name, target / name)
+
+
+def positive_int(value: str) -> int:
+    """argparse type: VALUE as an int of 1 or more."""
+    number = int(value)
+    if number < 1:
+        raise argparse.ArgumentTypeError(f"{value} is less than 1")
+    return number
 
 
 def remove(path: Path) -> None:

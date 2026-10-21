@@ -527,7 +527,8 @@ def check_clone_globals(clone) -> list[str]:
 
 
 def check_units() -> list[str]:
-    """The unit tests of the repairs in llm.py and cfix.py and of the dossier facts in facts.py, one module each."""
+    """The unit tests of the repairs in llm.py and cfix.py, of the try loop in llm.py and of the dossier facts in
+    facts.py, one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
@@ -535,7 +536,8 @@ def check_units() -> list[str]:
     import ctexttests
     import decltests
     import facttests
-    modules = (ctexttests, bytetests, casttests, decltests, benchtests, facttests)
+    import solvetests
+    modules = (ctexttests, bytetests, casttests, decltests, benchtests, solvetests, facttests)
     return [failure for module in modules for failure in module.run()]
 
 
