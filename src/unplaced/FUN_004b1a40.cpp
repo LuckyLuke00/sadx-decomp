@@ -178,6 +178,7 @@ void FUN_004b6520(int param_1)
 	}
 }
 
+__declspec(safebuffers)
 // FUNCTION: SADX 0x004b6590
 void __fastcall FUN_004b6590(int *param_1)
 {
@@ -189,6 +190,7 @@ void __fastcall FUN_004b6590(int *param_1)
 	int local_8gk;
 	int local_24gl;
 	int local_10hk;
+	unsigned char local_48[0x24];
 
 	local_1co = param_1[1];
 	local_ci = local_1co;
