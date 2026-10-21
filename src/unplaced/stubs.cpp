@@ -12,6 +12,12 @@ void FUN_00405380(int)
 {
 }
 
+// STUB: SADX 0x00407e30
+int FUN_00407e30()
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00419570
 void SOCCreateDevice(void)
 {
@@ -2779,6 +2785,12 @@ void EvChaos2Water2Human()
 {
 }
 
+// STUB: SADX 0x0090cd50
+int FUN_0090cd50()
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x009132a0
 void ini()
 {
@@ -2791,6 +2803,12 @@ void ind()
 
 // STUB: SADX 0x00924470
 int FUN_00924470()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00928740
+int FUN_00928740()
 {
 	return (int)0;
 }

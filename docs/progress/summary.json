@@ -74,6 +74,22 @@
    "library": false
   },
   {
+   "address": "0x00407cc0",
+   "name": "FUN_00407cc0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00407e30",
+   "name": "FUN_00407e30",
+   "accuracy": 0.07142857142857142,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004081c0",
    "name": "std::locale::facet::_Incref",
    "accuracy": 0.8947368421052632,
@@ -751,6 +767,14 @@
    "accuracy": 0.2962962962962963,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00435420",
+   "name": "FUN_00435420",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -27810,6 +27834,22 @@
    "library": false
   },
   {
+   "address": "0x0090cd50",
+   "name": "FUN_0090cd50",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0090d4c0",
+   "name": "FUN_0090d4c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x009132a0",
    "name": "ini",
    "accuracy": 0.06666666666666667,
@@ -27930,6 +27970,14 @@
    "library": false
   },
   {
+   "address": "0x00928740",
+   "name": "FUN_00928740",
+   "accuracy": 0.06060606060606061,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0094b151",
    "name": "std::`dynamic initializer for '_Generic_object''",
    "accuracy": 1.0,
@@ -28019,5 +28067,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3cd4975323c356638b088e4663fa0d0a84344151786a774c5bd579abeb89c997"
+ "inputs_sha256": "6f2c02d6229a500e8665a105c10264415c8db2b4b9e1cc4b3a63207def8f5567"
 }
