@@ -950,18 +950,8 @@ void CameraFilter()
 {
 }
 
-// STUB: SADX 0x004c06f0
-void title_menu_exec(struct task *tp)
-{
-}
-
 // STUB: SADX 0x004c0e10
 void FUN_004c0e10(void *)
-{
-}
-
-// STUB: SADX 0x004c12e0
-void DisplayTitleNew(float basez)
 {
 }
 
@@ -1426,8 +1416,18 @@ long CheckRangeOutWithR(struct task *tp, float fRange)
 	return (long)0;
 }
 
+// STUB: SADX 0x00553be0
+void CreateInitData()
+{
+}
+
 // STUB: SADX 0x00554090
 void CreateSaveData()
+{
+}
+
+// STUB: SADX 0x00554220
+void ExtractLoadData()
 {
 }
 
@@ -1513,8 +1513,49 @@ int EV_CheckCansel()
 	return (int)0;
 }
 
+// STUB: SADX 0x0056ae90
+int EV_CheckExec(int no)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x0056be40
 void CalcEventCamera()
+{
+}
+
+// STUB: SADX 0x0056d8b0
+void disp_message_wait(const struct HintMessageString *message_p)
+{
+}
+
+// STUB: SADX 0x0056da30
+void field_msg_front_fade(struct MSGC *msgc_p, long time, long rate)
+{
+}
+
+// STUB: SADX 0x0056db40
+void FUN_0056db40(struct MSGC *, long, long)
+{
+}
+
+// STUB: SADX 0x0056dd30
+void disp_npc_message_wait(const char * *message_p)
+{
+}
+
+// STUB: SADX 0x0056e0d0
+void disp_main_message(char * *message)
+{
+}
+
+// STUB: SADX 0x0056e170
+void disp_main_messageTime(char * *message)
+{
+}
+
+// STUB: SADX 0x0056e210
+void field_msg_create_man(void (*thread_func)(void *), void *arg_p, long adx_use)
 {
 }
 
@@ -1593,13 +1634,18 @@ void DrawTitleBack(float x, float y, float z, float w, float h)
 {
 }
 
-// STUB: SADX 0x00577960
-void OpenDialogQuick(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
+// STUB: SADX 0x00576220
+void dialog_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00577a40
-void OpenDialogCsrLet(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
+// STUB: SADX 0x00576a60
+void FUN_00576a60(int)
+{
+}
+
+// STUB: SADX 0x00577960
+void OpenDialogQuick(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
 {
 }
 
@@ -1666,11 +1712,6 @@ struct task *SetAdvaSequenceTask(struct SeqPrmType *prmp)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x0059da40
-void FreeAdvaSequenceTask()
-{
-}
-
 // STUB: SADX 0x0059e430
 unsigned long GetFadeInColFromT(float t)
 {
@@ -1688,9 +1729,10 @@ void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, 
 {
 }
 
-// STUB: SADX 0x0059f710
-void StopAdvaBGM()
+// STUB: SADX 0x005a4170
+struct SAVE_DATA *GetSDp()
 {
+	return (struct SAVE_DATA *)0;
 }
 
 // STUB: SADX 0x005a4400
@@ -1843,6 +1885,26 @@ void FreeBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 {
 }
 
+// STUB: SADX 0x005e8f10
+void FUN_005e8f10(float)
+{
+}
+
+// STUB: SADX 0x005eaa00
+void FUN_005eaa00(struct task *)
+{
+}
+
+// STUB: SADX 0x005f10a0
+void trial_game_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005f2090
+void FUN_005f2090(float)
+{
+}
+
 // STUB: SADX 0x005f22c0
 void FUN_005f22c0(struct task *, struct ModeSelPrmType *)
 {
@@ -1863,8 +1925,34 @@ void FUN_005f3310(float)
 {
 }
 
+// STUB: SADX 0x005f3540
+void FUN_005f3540(struct task *)
+{
+}
+
+// STUB: SADX 0x005f4610
+void FUN_005f4610(float)
+{
+}
+
 // STUB: SADX 0x005fcd60
 void FUN_005fcd60(float)
+{
+}
+
+// STUB: SADX 0x00607c50
+struct task *FUN_00607c50(struct ModeSelPrmType *)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x00607cf0
+void char_sel_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00608850
+void char_sel_disp(struct task *tp)
 {
 }
 
@@ -1904,6 +1992,16 @@ struct task *Eggrob_GenerateEggrob(struct erctrlstr *)
 struct taskwk *Flicky_Create(float xpos, float ypos, float zpos, void (*FlickyXXXX_New)(struct task *))
 {
 	return (struct taskwk *)0;
+}
+
+// STUB: SADX 0x0061def0
+void FUN_0061def0(struct task *)
+{
+}
+
+// STUB: SADX 0x0061e310
+void DispCharMdls(struct CharMdlWk *wkp)
+{
 }
 
 // STUB: SADX 0x0061f4d0
@@ -2017,6 +2115,12 @@ void FUN_007d21b0(void *)
 // STUB: SADX 0x007d6940
 void FUN_007d6940(struct task *)
 {
+}
+
+// STUB: SADX 0x007f2100
+long GameGearLoop()
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x008c2030

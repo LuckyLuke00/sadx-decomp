@@ -284,8 +284,14 @@ long bWake;
 // GLOBAL: SADX 0x02604ab8
 struct NJS_TEXLIST DAT_02604ab8;
 
+// GLOBAL: SADX 0x02604d7c
+struct NJS_TEXLIST texlist_pressstart;
+
 // GLOBAL: SADX 0x02608e24
 unsigned char DAT_02608e24;
+
+// GLOBAL: SADX 0x02618a68
+void (*DAT_02618a68[1])(void);
 
 // GLOBAL: SADX 0x026313ac
 char *DAT_026313ac[1];
@@ -727,6 +733,9 @@ unsigned long DAT_05b3e308[16];
 
 // GLOBAL: SADX 0x05b3e320
 int DAT_05b3e320[16];
+
+// GLOBAL: SADX 0x05b3e350
+int DAT_05b3e350;
 
 // GLOBAL: SADX 0x05b3e356
 unsigned char DAT_05b3e356;
@@ -1502,8 +1511,35 @@ float DAT_05ccdc08;
 // GLOBAL: SADX 0x05ccdc28
 char DAT_05ccdc28;
 
+// GLOBAL: SADX 0x05ccde20
+int DAT_05ccde20;
+
+// GLOBAL: SADX 0x05ccde24
+int DAT_05ccde24;
+
+// GLOBAL: SADX 0x05ccde28
+long DAT_05ccde28;
+
+// GLOBAL: SADX 0x05ccde2c
+signed char *DAT_05ccde2c;
+
+// GLOBAL: SADX 0x05ccde30
+int DAT_05ccde30;
+
 // GLOBAL: SADX 0x05ccde78
 int DAT_05ccde78;
+
+// GLOBAL: SADX 0x05ccde7c
+const struct HintMessageTable *DAT_05ccde7c = 0;
+
+// GLOBAL: SADX 0x05ccde80
+const struct NpcMessageTable *DAT_05ccde80 = 0;
+
+// GLOBAL: SADX 0x05ccde84
+int DAT_05ccde84;
+
+// GLOBAL: SADX 0x05ccde88
+int DAT_05ccde88;
 
 // GLOBAL: SADX 0x05ccde90
 short DAT_05ccde90;
@@ -1538,6 +1574,9 @@ unsigned char DAT_05cd14e2;
 // GLOBAL: SADX 0x05cd14e9
 unsigned char DAT_05cd14e9;
 
+// GLOBAL: SADX 0x05cd14ea
+unsigned char DAT_05cd14ea;
+
 // GLOBAL: SADX 0x05cd14eb
 unsigned char DAT_05cd14eb;
 
@@ -1562,11 +1601,17 @@ unsigned long DAT_05cd25f4;
 // GLOBAL: SADX 0x05cd25f8
 long DAT_05cd25f8;
 
+// GLOBAL: SADX 0x05cd2600
+struct task *DAT_05cd2600;
+
 // GLOBAL: SADX 0x05cd2604
 unsigned char DAT_05cd2604;
 
 // GLOBAL: SADX 0x05cd265c
 int DAT_05cd265c;
+
+// GLOBAL: SADX 0x05cd2786
+unsigned char DAT_05cd2786;
 
 // GLOBAL: SADX 0x05cd290c
 unsigned char DAT_05cd290c[1024];
@@ -1607,6 +1652,9 @@ unsigned short DAT_05cda0c0;
 // GLOBAL: SADX 0x05cda0c3
 unsigned char DAT_05cda0c3;
 
+// GLOBAL: SADX 0x05cda0e4
+int DAT_05cda0e4;
+
 // GLOBAL: SADX 0x05cda118
 unsigned char DAT_05cda118;
 
@@ -1628,8 +1676,14 @@ short DAT_05cda180;
 // GLOBAL: SADX 0x05cda184
 short DAT_05cda184;
 
+// GLOBAL: SADX 0x05cda188
+void *DAT_05cda188;
+
 // GLOBAL: SADX 0x05cda18c
 struct task *DAT_05cda18c;
+
+// GLOBAL: SADX 0x05cda19c
+struct task *DAT_05cda19c;
 
 // GLOBAL: SADX 0x05cda1b0
 unsigned long DAT_05cda1b0;
@@ -1760,11 +1814,23 @@ struct _OBJ_CAMERAPARAM *DAT_05edd128;
 // GLOBAL: SADX 0x05edd2e0
 char DAT_05edd2e0[0x800];
 
+// GLOBAL: SADX 0x05edd77c
+struct task *DAT_05edd77c;
+
+// GLOBAL: SADX 0x05edd784
+struct task *DAT_05edd784;
+
 // GLOBAL: SADX 0x05edd7bc
 struct task *DAT_05edd7bc;
 
+// GLOBAL: SADX 0x05edd870
+struct task *DAT_05edd870;
+
 // GLOBAL: SADX 0x05edd888
 struct task *DAT_05edd888;
+
+// GLOBAL: SADX 0x05edd89c
+struct task *DAT_05edd89c;
 
 // GLOBAL: SADX 0x05edd91c
 struct task *DAT_05edd91c;
@@ -1775,6 +1841,15 @@ struct task *DAT_05edd990;
 // GLOBAL: SADX 0x05edd9a0
 struct task *DAT_05edd9a0;
 
+// GLOBAL: SADX 0x05edd9a4
+struct task *DAT_05edd9a4;
+
+// GLOBAL: SADX 0x05edd9ac
+struct task *DAT_05edd9ac;
+
+// GLOBAL: SADX 0x05edd9b0
+struct task *DAT_05edd9b0;
+
 // GLOBAL: SADX 0x05edd9b4
 struct task *DAT_05edd9b4;
 
@@ -1783,6 +1858,18 @@ struct task *DAT_05edd9b8;
 
 // GLOBAL: SADX 0x05edd9bc
 struct task *DAT_05edd9bc;
+
+// GLOBAL: SADX 0x05edd9c0
+struct task *DAT_05edd9c0;
+
+// GLOBAL: SADX 0x05edd9c4
+struct task *DAT_05edd9c4;
+
+// GLOBAL: SADX 0x05edf6c4
+float DAT_05edf6c4;
+
+// GLOBAL: SADX 0x05edf6e0
+struct task *DAT_05edf6e0;
 
 // GLOBAL: SADX 0x05edf79c
 void *DAT_05edf79c;

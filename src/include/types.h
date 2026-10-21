@@ -58,6 +58,7 @@ struct bankdatalist;
 struct BOSSPLAYER_CREATE_PARAM;
 struct c_colli_hit_info;
 struct CCL_INFO;
+struct CharMdlWk;
 struct colliwk;
 struct CRUSHLIGHT_WK;
 struct csts;
@@ -75,6 +76,9 @@ struct GHPARTICLE_UNIT;
 struct GHSPRITE;
 struct GHSPRITE_ANIM;
 struct GHSPRITE_ANIM_TABLE;
+struct HintMessageMemory;
+struct HintMessageString;
+struct HintMessageTable;
 struct LATE_FAR_Z_T;
 struct LATE_LNK;
 struct LE_LIGHT_ENV;
@@ -109,6 +113,7 @@ struct NJS_TEXANIM;
 struct NJS_TEXLIST;
 struct NJS_TEXNAME;
 struct NJS_TEXTURE_VTX;
+struct NpcMessageTable;
 struct obj;
 struct OBJ_CONDITION;
 struct OBJ_EDITENTRY;
@@ -1290,6 +1295,24 @@ static_assert(offsetof(GH_FONT_INFO, tex_height) == 0xc, "GH_FONT_INFO::tex_heig
 static_assert(offsetof(GH_FONT_INFO, texlist) == 0x10, "GH_FONT_INFO::texlist");
 static_assert(offsetof(GH_FONT_INFO, prop_tbl) == 0x14, "GH_FONT_INFO::prop_tbl");
 static_assert(offsetof(GH_FONT_INFO, color) == 0x18, "GH_FONT_INFO::color");
+
+struct HintMessageMemory {
+    const struct HintMessageString *message_p;
+    long adx_index;
+    long flag_index;
+};
+static_assert(sizeof(HintMessageMemory) == 0xc, "sizeof HintMessageMemory");
+static_assert(offsetof(HintMessageMemory, message_p) == 0x0, "HintMessageMemory::message_p");
+static_assert(offsetof(HintMessageMemory, adx_index) == 0x4, "HintMessageMemory::adx_index");
+static_assert(offsetof(HintMessageMemory, flag_index) == 0x8, "HintMessageMemory::flag_index");
+
+struct HintMessageTable {
+    const short *code;
+    const struct HintMessageString *message;
+};
+static_assert(sizeof(HintMessageTable) == 0x8, "sizeof HintMessageTable");
+static_assert(offsetof(HintMessageTable, code) == 0x0, "HintMessageTable::code");
+static_assert(offsetof(HintMessageTable, message) == 0x4, "HintMessageTable::message");
 
 struct LATE_FAR_Z_T {
     float nor;
