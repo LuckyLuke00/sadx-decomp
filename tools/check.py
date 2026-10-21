@@ -14,6 +14,7 @@
   python tools/check.py dossier 0x00401000    what an agent needs to decompile a function
   python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
   python tools/check.py permute FILE ADDR     try rewrites of a near match and keep the best
+  python tools/check.py clone 0x00401000      write the copies of a matched function, keep those at 100%
   python tools/check.py probe EXE             what a new game's exe needs: see docs/PORTING.md
 
 Every command sets up what it needs: .venv with the pinned packages, the
@@ -124,8 +125,15 @@ def parse_args() -> argparse.Namespace:
     permute.add_argument("--tries", type=int, default=500, help="builds to try (default 500)")
     permute.add_argument("--minutes", type=float, help="stop after this long")
     permute.add_argument("--seed", type=int, default=0, help="the random seed (default 0)")
+    clone = commands.add_parser("clone")
+    clone.add_argument("addresses", nargs="*", type=lambda value: int(value, 16), help="templates, e.g. 0x00401000")
+    clone.add_argument("--all", action="store_true", help="every function at 100%% is a template")
+    clone.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
     commands.add_parser("probe").add_argument("exe", type=Path)
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.command == "clone" and not args.addresses and not args.all:
+        parser.error("clone needs template addresses or --all")
+    return args
 
 
 def run_with_game(args: argparse.Namespace) -> int:
@@ -144,6 +152,11 @@ def run_with_game(args: argparse.Namespace) -> int:
         import permute
 
         return permute.permute(ROOT / args.file, args.address, args.tries, args.minutes, args.seed)
+    if args.command == "clone":
+        # It imports this module back.
+        import clone
+
+        return clone.run(game, args.addresses, args.all, args.tables)
     if args.command == "library":
         return report.score_library(game)
     if args.command == "save":
