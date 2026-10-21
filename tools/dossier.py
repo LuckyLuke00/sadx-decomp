@@ -9,7 +9,8 @@ with the same names, from <drafts>/<address>.c: tools/ghidra/DumpDecomp.java wri
 those, and docs/FRAMEWORK.md says how.
 
 Names come from the tree's annotations, the files `check.py decls` wrote last,
-src/library.csv and the --tables folder (tools/declgen.py says what it holds).
+src/library.csv and the --tables folder (tools/declgen.py says what it holds). --context
+adds another checkout's annotations and last decls files, as decls does: this tree's own win.
 Needs capstone, so it runs in .venv.
 """
 
@@ -265,9 +266,15 @@ def ghidra_c(address: int, drafts: Path, functions: dict[int, Function], globals
 
 
 def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: Path | None,
-         drafts: Path | None, access: bool = False) -> int:
+         drafts: Path | None, access: bool = False, context: Path | None = None) -> int:
     sources = names.read_sources(ROOT)
+    added = names.context_sources(context, sources)  # a lane holds only its item's files
+    sources |= added
     before = names.previous(ROOT)
+    if added:
+        theirs = names.previous(context)
+        before = names.Previous(theirs.stubs | before.stubs, theirs.globals | before.globals,
+                                theirs.externs | before.externs)
     types = names.Types(tables / "types.h" if tables else ROOT / names.TYPES_H)
     functions = known_functions(tables, sources, before)
     globals_ = known_globals(tables, sources, before, types)

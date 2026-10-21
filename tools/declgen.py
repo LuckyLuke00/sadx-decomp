@@ -147,9 +147,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     types = Types(tables / "types.h" if tables else ROOT / names.TYPES_H)
     before = names.previous(ROOT)
     sources = names.read_sources(ROOT)
-    context_sources = {}
-    if context and context.resolve() != ROOT.resolve():
-        context_sources = {rel: text for rel, text in names.read_sources(context).items() if rel not in sources}
+    context_sources = names.context_sources(context, sources)
     problems = []
     fatal = []  # problems the build cannot get past
 
