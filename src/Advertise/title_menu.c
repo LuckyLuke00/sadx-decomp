@@ -1,11 +1,13 @@
 #include "decls.h"
+static void DisplayTitleNew(float basez);
+static void title_menu_exec(struct task *tp);
 
 extern struct task *DAT_05b42a8c;
 extern int DAT_05cd265c;
 
 void FUN_005f22c0(struct task *param_1, struct ModeSelPrmType *param_2);
 void FUN_004c0e10(void *param_1);
-void title_menu_disp(struct task *tp);
+static void title_menu_disp(struct task *tp);
 
 // FUNCTION: SADX 0x004c0680
 struct task *SetAdvaTitleMenuTask(struct ModeSelPrmType *prmp)
@@ -26,6 +28,11 @@ struct task *SetAdvaTitleMenuTask(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
+// STUB: SADX 0x004c06f0
+static void title_menu_exec(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x004c0db0
 void FUN_004c0db0(struct task *param_1)
 {
@@ -44,9 +51,14 @@ void FUN_004c0db0(struct task *param_1)
 }
 
 // FUNCTION: SADX 0x004c12c0
-void title_menu_disp(struct task *tp)
+static void title_menu_disp(struct task *tp)
 {
 	DisplayTitleNew(*(float *)((char *)tp + 0x10));
+}
+
+// STUB: SADX 0x004c12e0
+static void DisplayTitleNew(float basez)
+{
 }
 
 // FUNCTION: SADX 0x004c1680

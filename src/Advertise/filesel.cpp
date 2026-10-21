@@ -1,12 +1,12 @@
 #include "decls.h"
 enum AvaCharEnum AvaGetlastPlayer();
 extern void *DAT_05b42528;
-void *_SOCMalloc(unsigned int size, const char *file, int line);
+void *_SOCMalloc(unsigned int param_1, const char *param_2, int param_3);
 extern unsigned char DAT_025d4cad;
 
 #pragma warning(disable: 4716)
 
-void _SOCFree(void *p, const char *file, int line);
+void _SOCFree(void *param_1, const char *param_2, int param_3);
 void FUN_004b6c50(struct FileSelWk *param_1);
 void FUN_004b7800(struct FileSelWk *param_1);
 void FUN_004b83c0(struct task *param_1);

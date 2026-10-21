@@ -1314,11 +1314,83 @@
    "library": false
   },
   {
+   "address": "0x00494750",
+   "name": "calcvsyncsyoriochi",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004947b0",
+   "name": "SummaryExit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00494950",
+   "name": "SummaryTaskDestructor",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00495100",
+   "name": "SummaryBgDestrutor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00495270",
    "name": "ghDrawPvrSprite",
    "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00495400",
+   "name": "GetTutoMsgPurposePage",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00495410",
+   "name": "GetTutoMsgPage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00495420",
+   "name": "SetTutoMsgNextPage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00495430",
+   "name": "GetTutoMsgMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00495440",
+   "name": "SetTutoMsgMode",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -4243,7 +4315,7 @@
   },
   {
    "address": "0x004c06f0",
-   "name": "title_menu_exec",
+   "name": "title_menu_exec(1)",
    "accuracy": 0.05970149253731343,
    "effective": false,
    "stub": true,
@@ -4267,7 +4339,7 @@
   },
   {
    "address": "0x004c12c0",
-   "name": "title_menu_disp",
+   "name": "title_menu_disp(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -4275,7 +4347,7 @@
   },
   {
    "address": "0x004c12e0",
-   "name": "DisplayTitleNew",
+   "name": "DisplayTitleNew(1)",
    "accuracy": 0.02867383512544803,
    "effective": false,
    "stub": true,
@@ -7898,9 +7970,25 @@
    "library": false
   },
   {
+   "address": "0x00553be0",
+   "name": "CreateInitData",
+   "accuracy": 0.038461538461538464,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00554090",
    "name": "CreateSaveData",
    "accuracy": 0.0784313725490196,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00554220",
+   "name": "ExtractLoadData",
+   "accuracy": 0.0898876404494382,
    "effective": false,
    "stub": true,
    "library": false
@@ -8658,6 +8746,14 @@
    "library": false
   },
   {
+   "address": "0x0056ae90",
+   "name": "EV_CheckExec",
+   "accuracy": 0.7272727272727273,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0056be40",
    "name": "CalcEventCamera",
    "accuracy": 0.26666666666666666,
@@ -8674,8 +8770,232 @@
    "library": false
   },
   {
+   "address": "0x0056d170",
+   "name": "HintMainMessages",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d190",
+   "name": "HintMainMessagesTime",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d1b0",
+   "name": "HintRegistStatusPointer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d1c0",
+   "name": "NpcMessageDataInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d1f0",
+   "name": "HintMessageDataInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d3a0",
+   "name": "HintMessageStart",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d400",
+   "name": "NpcMessageStart",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d440",
+   "name": "HintMessageCheck",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d480",
+   "name": "HintMessageStop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d4a0",
+   "name": "FUN_0056d4a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d680",
+   "name": "FUN_0056d680",
+   "accuracy": 0.17857142857142858,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d700",
+   "name": "FUN_0056d700",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d770",
+   "name": "FUN_0056d770",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d7e0",
+   "name": "FUN_0056d7e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056d800",
+   "name": "FUN_0056d800",
+   "accuracy": 0.4166666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d830",
+   "name": "FUN_0056d830",
+   "accuracy": 0.19607843137254902,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056d8b0",
+   "name": "disp_message_wait",
+   "accuracy": 0.14035087719298245,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056da30",
+   "name": "field_msg_front_fade",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056daf0",
+   "name": "field_msg_back_fade",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056db40",
+   "name": "FUN_0056db40",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0056dc00",
    "name": "FUN_0056dc00",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056dc20",
+   "name": "disp_message_after",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0056dc40",
+   "name": "FUN_0056dc40",
+   "accuracy": 0.17777777777777778,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056dcc0",
+   "name": "disp_message_draw_wait_button",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056dd30",
+   "name": "disp_npc_message_wait",
+   "accuracy": 0.03773584905660377,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056e0d0",
+   "name": "disp_main_message",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056e170",
+   "name": "disp_main_messageTime",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056e210",
+   "name": "field_msg_create_man",
+   "accuracy": 0.1509433962264151,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0056e360",
+   "name": "field_msg_thread_end",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9242,6 +9562,54 @@
    "library": false
   },
   {
+   "address": "0x005761c0",
+   "name": "DialogExec",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00576220",
+   "name": "dialog_exec",
+   "accuracy": 0.013008130081300813,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00576a10",
+   "name": "FUN_00576a10",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00576a60",
+   "name": "FUN_00576a60",
+   "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00577850",
+   "name": "SetDialogTask",
+   "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00577930",
+   "name": "FreeDialogTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00577960",
    "name": "OpenDialogQuick",
    "accuracy": 0.25806451612903225,
@@ -9271,6 +9639,142 @@
    "accuracy": 0.3448275862068966,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0057cd20",
+   "name": "FUN_0057cd20",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00582ad0",
+   "name": "FUN_00582ad0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00582af0",
+   "name": "FUN_00582af0",
+   "accuracy": 0.875,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00588890",
+   "name": "FUN_00588890",
+   "accuracy": 0.27586206896551724,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005888f0",
+   "name": "FUN_005888f0",
+   "accuracy": 0.36363636363636365,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00588920",
+   "name": "FUN_00588920",
+   "accuracy": 0.14634146341463414,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005889a0",
+   "name": "FUN_005889a0",
+   "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005889f0",
+   "name": "FUN_005889f0",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00588a10",
+   "name": "FUN_00588a10",
+   "accuracy": 0.375,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00588db0",
+   "name": "FUN_00588db0",
+   "accuracy": 0.20689655172413793,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00589930",
+   "name": "FUN_00589930",
+   "accuracy": 0.7272727272727273,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058a010",
+   "name": "FUN_0058a010",
+   "accuracy": 0.1276595744680851,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058a490",
+   "name": "FUN_0058a490",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058a4b0",
+   "name": "FUN_0058a4b0",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058a560",
+   "name": "FUN_0058a560",
+   "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058a5d0",
+   "name": "FUN_0058a5d0",
+   "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0058a640",
+   "name": "FUN_0058a640",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -9351,6 +9855,14 @@
    "accuracy": 0.23529411764705882,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00597c20",
+   "name": "AvaGetTotalNumberEmblem",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -9522,6 +10034,30 @@
    "library": false
   },
   {
+   "address": "0x0059abe0",
+   "name": "EndDisplayPress",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059b6b0",
+   "name": "dsSetFade",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059b6c0",
+   "name": "FUN_0059b6c0",
+   "accuracy": 0.38461538461538464,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0059bc90",
    "name": "AvaExitDispLoading",
    "accuracy": 1.0,
@@ -9594,6 +10130,22 @@
    "library": false
   },
   {
+   "address": "0x0059cdb0",
+   "name": "AlertWindowDestructor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059ce00",
+   "name": "CloseAlertWindow",
+   "accuracy": 0.2564102564102564,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0059ce70",
    "name": "MDHeaderOpen",
    "accuracy": 0.02403846153846154,
@@ -9618,11 +10170,75 @@
    "library": false
   },
   {
-   "address": "0x0059da40",
-   "name": "FreeAdvaSequenceTask",
-   "accuracy": 0.5333333333333333,
+   "address": "0x0059d650",
+   "name": "FUN_0059d650",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059d6b0",
+   "name": "FUN_0059d6b0",
+   "accuracy": 0.25806451612903225,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0059d700",
+   "name": "FUN_0059d700",
+   "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0059d9d0",
+   "name": "sequence_end",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059da10",
+   "name": "FUN_0059da10",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059da40",
+   "name": "FreeAdvaSequenceTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059da70",
+   "name": "FUN_0059da70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059e3d0",
+   "name": "AvaInitFiles",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059e420",
+   "name": "AvaExtractFile",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -9652,9 +10268,17 @@
   {
    "address": "0x0059f710",
    "name": "StopAdvaBGM",
-   "accuracy": 0.8888888888888888,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a06b0",
+   "name": "FreeAdvaTitleNewTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -9698,9 +10322,89 @@
    "library": false
   },
   {
+   "address": "0x005a4170",
+   "name": "GetSDp",
+   "accuracy": 0.8,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a42f0",
+   "name": "AvaSetTextSettei",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005a4400",
    "name": "AvaGetlastPlayer",
    "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a4490",
+   "name": "AvaGetStartChiten",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a4500",
+   "name": "AvaGetSaishuuClear",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a4530",
+   "name": "AvaGetPlayTime",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a45d0",
+   "name": "serch_stg_from_stgactprm",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a46d0",
+   "name": "AvaGetTrialWeight",
+   "accuracy": 0.2962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a47b0",
+   "name": "AvaGetTrialBestRing",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a4900",
+   "name": "AvaGetMiniGameCartTime",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a4970",
+   "name": "AvaGetMiniGameBossTime",
+   "accuracy": 0.20512820512820512,
    "effective": false,
    "stub": true,
    "library": false
@@ -10786,11 +11490,171 @@
    "library": false
   },
   {
+   "address": "0x005e8700",
+   "name": "FUN_005e8700",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005e8780",
+   "name": "SetAdvaOpCreditsTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005e87f0",
+   "name": "title_menu_exec(2)",
+   "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005e8d80",
+   "name": "title_menu_disp(2)",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005e8ef0",
+   "name": "FUN_005e8ef0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005e8f10",
+   "name": "FUN_005e8f10",
+   "accuracy": 0.02962962962962963,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005e9340",
+   "name": "SetAdvaHow2PlayTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005e93b0",
+   "name": "title_menu_exec(3)",
+   "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005eaa00",
+   "name": "FUN_005eaa00",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005eb250",
+   "name": "FreeAdvaHow2PlayTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005ee430",
+   "name": "SetAdvaOptionMenuTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005ee4a0",
+   "name": "title_menu_exec(4)",
+   "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005effc0",
+   "name": "title_menu_disp(3)",
+   "accuracy": 0.02867383512544803,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f0b00",
+   "name": "FUN_005f0b00",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005f0b20",
+   "name": "DisplayTitleNew(2)",
+   "accuracy": 0.028268551236749116,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005f1010",
    "name": "FUN_005f1010",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005f1030",
+   "name": "SetAdvaAchivementTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005f10a0",
+   "name": "trial_game_exec",
+   "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f1600",
+   "name": "title_menu_disp(4)",
+   "accuracy": 0.018140589569160998,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f2070",
+   "name": "FUN_005f2070",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005f2090",
+   "name": "FUN_005f2090",
+   "accuracy": 0.1702127659574468,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -10842,11 +11706,91 @@
    "library": false
   },
   {
+   "address": "0x005f3480",
+   "name": "SetAdvaTrialGameTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005f3540",
+   "name": "FUN_005f3540",
+   "accuracy": 0.06060606060606061,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f3b60",
+   "name": "title_menu_disp(5)",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f45f0",
+   "name": "FUN_005f45f0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005f4610",
+   "name": "FUN_005f4610",
+   "accuracy": 0.1702127659574468,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005fb390",
+   "name": "FUN_005fb390",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005fb3b0",
+   "name": "DisplayTitleNew(3)",
+   "accuracy": 0.02857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005fb820",
    "name": "FUN_005fb820",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005fbb50",
+   "name": "SetAdvaTitleMenuTask2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005fbbc0",
+   "name": "title_menu_exec(5)",
+   "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005fca60",
+   "name": "title_menu_disp(6)",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -10882,6 +11826,30 @@
    "library": false
   },
   {
+   "address": "0x005ff890",
+   "name": "FreeAdvaInetDemoTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00600aa0",
+   "name": "FreeAdvaEmblemViewTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00602340",
+   "name": "FreeAdvaMiniGameSelTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00602710",
    "name": "FUN_00602710",
    "accuracy": 1.0,
@@ -10900,6 +11868,78 @@
   {
    "address": "0x00606340",
    "name": "FUN_00606340",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00607bc0",
+   "name": "FreeAdvaTrialActSelTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00607be0",
+   "name": "SetAdvaCharSelTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00607c50",
+   "name": "FUN_00607c50",
+   "accuracy": 0.21052631578947367,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00607cf0",
+   "name": "char_sel_exec",
+   "accuracy": 0.056338028169014086,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00607f80",
+   "name": "FUN_00607f80",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00608000",
+   "name": "FUN_00608000",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00608850",
+   "name": "char_sel_disp",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00609560",
+   "name": "FreeAdvaCharSelTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00609580",
+   "name": "ChgCharSelNextAdvaMode",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -11063,6 +12103,86 @@
    "accuracy": 0.1388888888888889,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061de70",
+   "name": "FUN_0061de70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061def0",
+   "name": "FUN_0061def0",
+   "accuracy": 0.14814814814814814,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061e200",
+   "name": "FUN_0061e200",
+   "accuracy": 0.25806451612903225,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061e250",
+   "name": "charmdl_exec",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061e2d0",
+   "name": "charmdl_disp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061e310",
+   "name": "DispCharMdls",
+   "accuracy": 0.041237113402061855,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061e570",
+   "name": "FUN_0061e570",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061e5b0",
+   "name": "FUN_0061e5b0",
+   "accuracy": 0.22857142857142856,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061e690",
+   "name": "FreeAdvaCharMdlTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061e6c0",
+   "name": "SetCharMdlSelFlg",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -11490,6 +12610,14 @@
    "library": false
   },
   {
+   "address": "0x007f2100",
+   "name": "GameGearLoop",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007f2360",
    "name": "GG_Finalize",
    "accuracy": 1.0,
@@ -11751,6 +12879,30 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d57e0",
+   "name": "MirenMenuGetCommand",
+   "accuracy": 0.27586206896551724,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008d5b20",
+   "name": "destMenu",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d5b30",
+   "name": "setItemTask",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -17379,5 +18531,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "53d04f512567cb56c6882a8f5cbd3510ddf53ecd22efdddccb1b521578d1ebf6"
+ "inputs_sha256": "0f69afa7e04ed5288e11eb05d2887b25e042534768f8d49ddad55b93d07de625"
 }
