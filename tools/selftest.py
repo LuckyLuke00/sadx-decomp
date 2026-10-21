@@ -58,6 +58,7 @@ def run() -> int:
     failures += check_declaration_keys()
     failures += check_decls_trees()
     failures += check_nested_globals()
+    failures += check_reached_types()
     failures += check_clone()
 
     if failures:
@@ -352,6 +353,30 @@ def check_nested_globals() -> list[str]:
         if found != code or line not in output or (code == 0 and "inside" in output):
             failures.append(f"decls for {case} gives exit {found}, not {code}, and prints {output!r}, not {line!r}")
     return failures
+
+
+def check_reached_types() -> list[str]:
+    """A struct that a file reaches only through a call's result, as in `GetWork(0)->speed`, gets its layout in
+    types.h. So does one that the call's arguments reach the same way. A call's result that nothing reaches into
+    gets none."""
+    target = project.game_config().target
+    layouts = ("struct work {\n    float speed;\n};\n\nstruct task {\n    int id;\n};\n\n"
+               "struct pad {\n    int on;\n};\n")
+    getters = {"src/w.c": f"// FUNCTION: {target} 0x00401000\nstruct work *GetWork(int id)\n{{\n\treturn 0;\n}}\n\n"
+                          f"// FUNCTION: {target} 0x00402000\nstruct task *GetTask(void)\n{{\n\treturn 0;\n}}\n\n"
+                          f"// FUNCTION: {target} 0x00404000\nstruct pad *GetPad(void)\n{{\n\treturn 0;\n}}\n"}
+    user = {"src/x.c": f"// FUNCTION: {target} 0x00403000\nvoid Run(void)\n{{\n"
+                       "\tGetWork(GetTask()->id)->speed = 1;\n\tGetPad();\n}\n"}
+    functions = [("0x00401000", "GetWork", "G", "src/w.c", "o_w.obj"),
+                 ("0x00402000", "GetTask", "G", "src/w.c", "o_w.obj"),
+                 ("0x00403000", "Run", "G", "src/x.c", "o_x.obj"),
+                 ("0x00404000", "GetPad", "G", "src/w.c", "o_w.obj")]
+    code, output, generated = run_decls(user, getters, functions, [], layouts)
+    laid_out = [n for n in ("work", "task", "pad") if f"struct {n} {{" in generated.get(names.TYPES_H, "")]
+    if code != 0 or laid_out != ["work", "task"]:
+        return [f"decls for structs reached through calls' results gives exit {code}, not 0, lays out "
+                f"{', '.join(laid_out) or 'none'}, not work and task, and prints {output!r}"]
+    return []
 
 
 def run_decls(files: dict, context_files: dict, functions: list, globals_: list,

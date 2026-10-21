@@ -56,7 +56,12 @@ ROOT = project.ROOT
 HEADER = "// Generated from the names the source files use. Do not edit: change the sources instead.\n"
 EMPTY_ROW = {"name": "", "proto": "", "scope": "", "file": ""}
 POINTER_TO = re.compile(r"\b(?:struct|union)\s+(\w+)\s*\*+\s*(\w+)")  # the pointed-to type and the pointer's name
-REACHED_THROUGH = re.compile(r"(\w+)\s*(?:->|\[[^\]]*\]\s*(?:\.|->))")  # `p->x`, `p[i].x`: p's type needs its layout
+CALL_ARGUMENTS = r"\((?:[^()]|\([^()]*\))*\)"  # with one level of nested parentheses, as in `f(g(x))`
+# `p->x`, `p[i].x`: p's type needs its layout. `f(a)->x`: f's return type does. Only the name is consumed, so a
+# name in the arguments counts too.
+MEMBER_STEP = r"(?:->|\[[^\]]*\]\s*(?:\.|->))"  # `->`, or an index and then `.` or `->`
+REACHED_THROUGH = re.compile(rf"(\w+)(?=\s*(?:{CALL_ARGUMENTS}\s*)?{MEMBER_STEP})")
+RETURNS_POINTER_TO = re.compile(r"(?:const\s+)?(?:struct|union)\s+(\w+)\s*\*")  # a signature's pointed-to return type
 
 
 def load_tables(library: set[str], tables: Path | None) -> tuple[dict, dict, dict, dict, dict]:
@@ -436,6 +441,10 @@ def write(context: Path | None, tables: Path | None) -> int:
     for text in sources.values():
         reached |= set(REACHED_THROUGH.findall(names.strip_code(text)))
     used_types |= {u for ext in externs.values() for u, n in POINTER_TO.findall(ext) if n in reached and u in types.blocks}
+    for sig in decls.values():
+        returned = RETURNS_POINTER_TO.match(sig)
+        if returned and names.declared_name(sig) in reached and returned.group(1) in types.blocks:
+            used_types.add(returned.group(1))
     defined_types = types.closure(used_types)
     more = types.pointees(defined_types, reached) - defined_types
     while more:
