@@ -53,6 +53,9 @@ struct DialogPrmType DAT_009919e0;
 // GLOBAL: SADX 0x009921c0
 struct u4s DAT_009921c0[1];
 
+// GLOBAL: SADX 0x0099b698
+const struct FlickyData flickydata[15] = {};
+
 // GLOBAL: SADX 0x01c6ede0
 float _nj_unit_matrix_[16];
 
@@ -494,8 +497,14 @@ int objLandTable[8][8];
 // GLOBAL: SADX 0x026497b4
 int tikal_sw;
 
+// GLOBAL: SADX 0x0265d030
+struct obj object_saru_air[1];
+
 // GLOBAL: SADX 0x02660324
 struct obj object_sky_obj_lift_a_obj_lift_a;
+
+// GLOBAL: SADX 0x02661618
+struct NJS_TEXLIST texlist_e_aircraft;
 
 // GLOBAL: SADX 0x02671e74
 struct particle_info default_shotsmoke;
@@ -2464,6 +2473,9 @@ float DAT_05edecfc;
 
 // GLOBAL: SADX 0x05eded78
 float DAT_05eded78;
+
+// GLOBAL: SADX 0x05eded7c
+int DAT_05eded7c;
 
 // GLOBAL: SADX 0x05eded80
 int DAT_05eded80;

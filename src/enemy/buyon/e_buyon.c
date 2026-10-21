@@ -26,3 +26,9 @@ void exitBuyonManager(struct task *tp)
 	FreeTaskC(tp);
 	(*(void (*)(struct task *, struct taskwk *, struct motionwk *))FUN_005b5aa0)(tp, local_cg, local_8g);
 }
+
+// STUB: SADX 0x008e1430
+long searchPlayer(struct task *tp)
+{
+	return (long)0;
+}
