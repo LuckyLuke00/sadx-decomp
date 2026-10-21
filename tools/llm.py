@@ -75,6 +75,7 @@ import ci
 import declgen
 import llmclient
 import names
+import osutil
 import progress
 import project
 
@@ -1214,16 +1215,18 @@ def solve_function(args, file, address, transcript):
         if best is not None:
             log.write(json.dumps({"file_best": best.percent}) + "\n")
             print(f"{hexa(address)}: the file's code scores {best.percent:.2f}%", flush=True)
-        for tries in range(1, args.tries + 1):
+        tries = 0  # the tries that got a reply
+        while tries < args.tries:
             thinking = thinks(stale, config)
             asked = time.time()
-            seed = None if args.seed is None else args.seed + tries
+            seed = None if args.seed is None else args.seed + tries + 1
             try:
                 reply = llmclient.chat(config, messages, temperature, thinking, seed)
             except llmclient.ServerError as e:
                 if e.status != 400 or "context" not in str(e).lower():
                     raise
-                # Too long for the server: drop the history, else an example, else give up on the function.
+                # Too long for the server: drop the history, else an example, else give up on the function. The
+                # shorter chat is the same try again.
                 if messages is not base:
                     messages = base
                 elif count > 0:
@@ -1232,10 +1235,12 @@ def solve_function(args, file, address, transcript):
                     messages = base = [base[0], {"role": "user", "content": first}]
                     log.write(json.dumps({"prompt": first}) + "\n")
                 else:
-                    print(f"{hexa(address)} try {tries}: even the first prompt is too long for the server", flush=True)
+                    print(f"{hexa(address)} try {tries + 1}: even the first prompt is too long for the server",
+                          flush=True)
                     break
-                print(f"{hexa(address)} try {tries}: too long for the server, retrying shorter", flush=True)
+                print(f"{hexa(address)} try {tries + 1}: too long for the server, retrying shorter", flush=True)
                 continue
+            tries += 1
             totals["prompt_tokens"] += reply.usage["prompt_tokens"]
             totals["completion_tokens"] += reply.usage["completion_tokens"]
             totals["think_tries"] += thinking
@@ -1425,7 +1430,7 @@ def parse_args():
     common.add_argument("--config", type=Path, default=CONFIG, help="the config file (default: llm.json)")
     runs = argparse.ArgumentParser(add_help=False, parents=[common])
     runs.add_argument("--prompt", default="v2", choices=sorted(p.stem for p in PROMPTS.glob("*.txt")))
-    runs.add_argument("--tries", type=int, default=10)
+    runs.add_argument("--tries", type=osutil.positive_int, default=10)
     runs.add_argument("--seed", type=int, help="try N asks with seed S+N, so a rerun repeats")
     runs.add_argument("--structs", action="store_true", help="show the members of the structs the dossier names")
     runs.add_argument("--accesses", action="store_true", help="show how the whole exe reads and writes each global")
