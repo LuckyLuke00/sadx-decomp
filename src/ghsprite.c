@@ -1,5 +1,15 @@
 #include "decls.h"
 
+// STUB: SADX 0x0060ecd0
+void ghSpriteSetFrame2(struct GHSPRITE_ANIM *pAnim, struct GHSPRITE_ANIM_TABLE *pAnimTable, float fFrame)
+{
+}
+
+// STUB: SADX 0x0060ed70
+void ghSpriteAnimTableInit(struct NJS_TEXLIST *pList, struct GHSPRITE_ANIM_TABLE *pTable, int flag)
+{
+}
+
 // FUNCTION: SADX 0x0060ee70
 void ghSpriteAnimInit(struct GHSPRITE_ANIM *pAnim)
 {
@@ -7,6 +17,11 @@ void ghSpriteAnimInit(struct GHSPRITE_ANIM *pAnim)
 	*(float *)((char *)pAnim + 4) = 1.0f;
 	*(int *)((char *)pAnim + 8) = 0;
 	*(int *)((char *)pAnim + 0xc) = 0;
+}
+
+// STUB: SADX 0x0060eea0
+void ghSpriteInit(struct GHSPRITE *pSpr, struct NJS_POINT3 *pPos, struct GHSPRITE_INIT_INFO *pInit, int flag)
+{
 }
 
 // STUB: SADX 0x0060f060
