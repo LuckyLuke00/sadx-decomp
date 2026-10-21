@@ -187,6 +187,16 @@ void pdVibMxStop(int)
 {
 }
 
+// STUB: SADX 0x00435b20
+void njFogEnable(void)
+{
+}
+
+// STUB: SADX 0x00435b30
+void njFogDisable(void)
+{
+}
+
 // STUB: SADX 0x0043bcf0
 void AL_IconResetPos(struct task *tp)
 {
@@ -615,7 +625,7 @@ void late_DrawModelClip(struct NJS_MODEL *, int, float)
 }
 
 // STUB: SADX 0x004a5080
-void late_DrawModel(struct NJS_MODEL *mdl, int flgs)
+void late_DrawModel(struct NJS_MODEL *, int)
 {
 }
 
@@ -1552,14 +1562,15 @@ void FUN_00573040(int)
 {
 }
 
-// STUB: SADX 0x005730b0
-void ___njFogEnable()
+// STUB: SADX 0x00573100
+void FUN_00573100()
 {
 }
 
-// STUB: SADX 0x00573260
-void ___njFogDisable()
+// STUB: SADX 0x00573180
+int setfog()
 {
+	return (int)0;
 }
 
 // STUB: SADX 0x005740a0
@@ -1704,22 +1715,6 @@ struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *
 	return (struct sp_task *)0;
 }
 
-// STUB: SADX 0x005a64e0
-void SpFreeTask(struct sp_task *tp)
-{
-}
-
-// STUB: SADX 0x005a64f0
-struct sp_link *SpCreateLinkW(struct sp_info *, unsigned long)
-{
-	return (struct sp_link *)0;
-}
-
-// STUB: SADX 0x005a6940
-void SpDestroyAll()
-{
-}
-
 // STUB: SADX 0x005a7180
 void RingDone(struct taskwk *twp)
 {
@@ -1770,8 +1765,38 @@ void EffJPDisp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b44c0
-void EffectCrash(struct task *tp)
+// STUB: SADX 0x005b4500
+void CrashInit(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x005b4600
+void CrashStarGenerate(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x005b47d0
+void CrashStarDraw(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x005b4c90
+void TBarrier(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b5340
+void NBarrier(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b55f0
+void MutekiDisp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b56b0
+void Muteki(struct task *tp)
 {
 }
 
@@ -1845,6 +1870,22 @@ void FUN_005fcd60(float)
 
 // STUB: SADX 0x0060ea40
 void objDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0060ef40
+int ghSpriteAnim(struct GHSPRITE_ANIM *pAnim, struct GHSPRITE_ANIM_TABLE *pAnimTable)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0060f0c0
+void ghSpriteDraw_Unit3D_BillBoard(struct NJS_POINT3 *psPos, struct GHPARTICLE_UNIT *psPart, struct GHSPRITE_ANIM *psAnim, struct GHSPRITE_ANIM_TABLE *psAnimTable)
+{
+}
+
+// STUB: SADX 0x0060f750
+void ghParticleMove(struct GHPARTICLE_UNIT *pPart, struct GHPARTICLE_INFO *pInfo)
 {
 }
 
@@ -1980,6 +2021,16 @@ void FUN_007d6940(struct task *)
 
 // STUB: SADX 0x008c2030
 void FUN_008c2030(int)
+{
+}
+
+// STUB: SADX 0x008c22b0
+void rotate(struct CRUSHLIGHT_WK *pCrushWk)
+{
+}
+
+// STUB: SADX 0x008c2420
+void dispCrushLight(struct task *pTask)
 {
 }
 
