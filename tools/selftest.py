@@ -7,12 +7,15 @@ rules of progress.py on changed copies of the pinned scores, its git reader on a
 throwaway repository, and where the annotation lint lets a function annotation sit.
 """
 
+import contextlib
 import copy
+import io
 import json
 import re
 import tempfile
 from pathlib import Path
 
+import declgen
 import names
 import osutil
 import pe
@@ -52,6 +55,8 @@ def run() -> int:
     failures += check_misplaced_annotations()
     failures += check_local_declarations()
     failures += check_declaration_keys()
+    failures += check_decls_trees()
+    failures += check_nested_globals()
 
     if failures:
         print("FAIL self-test")
@@ -246,6 +251,105 @@ def check_declaration_keys() -> list[str]:
              ("void Foo(void *)", "void Foo()", False)]
     return [f"declaration_key reads `{a}` and `{b}` {'different' if same else 'the same'}"
             for a, b, same in cases if (names.declaration_key(a) == names.declaration_key(b)) != same]
+
+
+def check_decls_trees() -> list[str]:
+    """decls on throwaway trees. A static function here and a global one of the same name in the context share a
+    name once the context holds both, also when no file here uses the context's. A global name that two objects
+    share means the one in the object that the using file defines functions of, and a second file that uses the
+    other one fails."""
+    target = project.game_config().target
+    exec_here = f"// FUNCTION: {target} 0x00401000\nstatic void Exec(struct task *tp)\n{{\n}}\n"
+    exec_there = f"// FUNCTION: {target} 0x00402000\nvoid Exec(struct task *tp)\n{{\n}}\n"
+    functions = [("0x00401000", "Exec", "L", "src/x.c", "o_x.obj"),
+                 ("0x00402000", "Exec", "G", "src/emblem.c", "o_e.obj"),
+                 ("0x00403000", "DispX", "L", "src/x.c", "o_x.obj"),
+                 ("0x00404000", "DispY", "L", "src/y.c", "o_y.obj")]
+    globals_ = [("0x00501000", "obj_c_info", "o_x.obj"), ("0x00502000", "obj_c_info", "o_y.obj")]
+
+    def disp(address, name):
+        return f"// FUNCTION: {target} {address}\nstatic void {name}(struct task *tp)\n{{\n\tobj_c_info[0] = 1;\n}}\n"
+
+    # (case, files, the context's files, exit code, text of the output, addresses of the generated globals)
+    cases = [("a static function against the context's global one", {"src/x.c": exec_here},
+              {"src/emblem.c": exec_there}, 1, "share the name", []),
+             ("a static function with no context", {"src/x.c": exec_here}, {}, 0, "", []),
+             ("a global name that two objects share", {"src/x.c": disp("0x00403000", "DispX")}, {}, 0, "",
+              ["0x00501000"]),
+             ("a global name that two files use", {"src/x.c": disp("0x00403000", "DispX"),
+                                                   "src/y.c": disp("0x00404000", "DispY")}, {}, 1,
+              "0x00501000, 0x00502000 share the name", None)]
+    failures = []
+    for case, files, context_files, code, line, addresses in cases:
+        found, output, generated = run_decls(files, context_files, functions, globals_)
+        defined = re.findall(r"GLOBAL: \w+ (0x\w+)", generated.get(names.GLOBALS_CPP, ""))
+        if found != code or line not in output or (addresses is not None and defined != addresses):
+            failures.append(f"decls for {case} gives exit {found}, not {code}, globals {defined}, not {addresses}, "
+                            f"and prints {output!r}, not {line!r}")
+    return failures
+
+
+def check_nested_globals() -> list[str]:
+    """A global at an address inside another global's span splits it: decls fails on the new one, as the model's
+    `extern unsigned char DAT_05b3e04c;` did inside `struct NJS_ARGB DAT_05b3e040`. A global behind the span is fine,
+    and so is a pair that the context's last layout already had."""
+    target = project.game_config().target
+    argb = ("struct NJS_ARGB {\n    float a;\n    float r;\n    float g;\n    float b;\n};\n"
+            'static_assert(sizeof(NJS_ARGB) == 0x10, "sizeof NJS_ARGB");\n')
+
+    def fog(name):
+        return {"src/fog.c": f"extern unsigned char {name};\nint Fog(void)\n{{\n\treturn {name};\n}}\n"}
+
+    holder = {"src/rd.c": "extern struct NJS_ARGB DAT_05b3e040;\nvoid Rd(void)\n{\n\tDAT_05b3e040.a = 1;\n}\n"}
+    layout = "".join(f"// GLOBAL: {target} {a}\n{decl};\n\n" for a, decl in
+                     [("0x05b3e040", "struct NJS_ARGB DAT_05b3e040"), ("0x05b3e04c", "unsigned char DAT_05b3e04c")])
+    # (case, own files, the context's files, exit code, text of the output)
+    cases = [("a global inside a struct global", fog("DAT_05b3e04c"), holder, 1,
+              "decls: DAT_05b3e04c: inside DAT_05b3e040 (struct NJS_ARGB) at +12."),
+             ("a global behind a struct global", fog("DAT_05b3e050"), holder, 0, "decls: 0 functions"),
+             ("a pair that the context's layout had", fog("DAT_05b3e04c"),
+              holder | {"src/unplaced/globals.cpp": layout}, 0,
+              "decls: DAT_05b3e040 (struct NJS_ARGB) holds 1 other globals, as in the last layout: DAT_05b3e04c at +12")]
+    failures = []
+    for case, files, context_files, code, line in cases:
+        found, output, _ = run_decls(files, context_files, [], [], argb)
+        if found != code or line not in output or (code == 0 and "inside" in output):
+            failures.append(f"decls for {case} gives exit {found}, not {code}, and prints {output!r}, not {line!r}")
+    return failures
+
+
+def run_decls(files: dict, context_files: dict, functions: list, globals_: list,
+              types: str = "") -> tuple[int, str, dict]:
+    """(exit code, output, generated files) of decls in a throwaway tree of FILES, with a throwaway context tree and
+    the given rows of the tables: functions (address, name, scope, file, object) and globals (address, name, object),
+    and the TYPES header."""
+    def tsv(header, rows):
+        return "\n".join("\t".join(row) for row in [header, *rows]) + "\n"
+
+    with tempfile.TemporaryDirectory() as folder:
+        root, context, tables = (Path(folder) / name for name in ("tree", "context", "tables"))
+        for tree, texts in ((root, files), (context, context_files)):
+            for rel, text in texts.items():
+                (tree / rel).parent.mkdir(parents=True, exist_ok=True)
+                (tree / rel).write_text(text, encoding="utf-8")
+        tables.mkdir()
+        (tables / "functions.tsv").write_text(
+            tsv(["address", "name", "proto", "scope", "file", "object"],
+                [(a, n, f"void {n}(struct task *tp);", s, f, o) for a, n, s, f, o in functions]), encoding="utf-8")
+        (tables / "globals.tsv").write_text(
+            tsv(["address", "name", "decl", "base", "dims", "size", "object"],
+                [(a, n, "int {}[?]", "int", "?", "8", o) for a, n, o in globals_]), encoding="utf-8")
+        if types:
+            (tables / "types.h").write_text(types, encoding="utf-8")
+        saved, declgen.ROOT = declgen.ROOT, root
+        output = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(output):
+                code = declgen.write(context if context_files else None, tables)
+        finally:
+            declgen.ROOT = saved
+        generated = {rel: (root / rel).read_text(encoding="utf-8") for rel in names.GENERATED if (root / rel).exists()}
+    return code, output.getvalue(), generated
 
 
 def without_stubs(summary: dict) -> dict:
