@@ -122,13 +122,21 @@ class Namer:
     def data(self, address: int) -> str | None:
         if address in self.image.import_slots:
             return "[import] " + self.image.import_slots[address]
+        held = self.holder(address)
+        if held:
+            g, offset = held
+            self.used[g.address] = ("global", g.name, g.decl)
+            return g.name if offset == 0 else f"{g.name}+0x{offset:x}"
+        return self.string(address)
+
+    def holder(self, address: int) -> tuple[Global, int] | None:
+        """The known global that holds ADDRESS, and the offset into it."""
         i = bisect.bisect_right(self.starts, address) - 1
         if i >= 0:
             g = self.globals[i]
             if g.address == address or g.address < address < g.address + max(g.size, 1):
-                self.used[g.address] = ("global", g.name, g.decl)
-                return g.name if g.address == address else f"{g.name}+0x{address - g.address:x}"
-        return self.string(address)
+                return g, address - g.address
+        return None
 
     def string(self, address: int) -> str | None:
         raw = self.image.read(address, 256)
