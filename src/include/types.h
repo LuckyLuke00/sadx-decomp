@@ -12,6 +12,7 @@ struct _CameraSystemWork;
 struct _OBJ_ADJUSTPARAM;
 struct _OBJ_CAMERAPARAM;
 struct _SC_NUMBERS;
+struct ActionParam;
 struct ADV1_AL_BODY;
 struct ADV1_AL_FACE;
 struct ADV1_AL_ICON;
@@ -151,8 +152,10 @@ struct OBJ_SLEEPCON;
 struct PanelPrmType;
 struct particle_entry;
 struct particle_info;
+struct PATHCAMERA1WORK;
 struct pathtag;
 struct pathtbl;
+struct pheadeyewk;
 struct PL_ACTION;
 struct PL_FACE;
 struct PL_JOIN_VERTEX;
@@ -169,6 +172,7 @@ struct sMRacePath;
 struct sp_info;
 struct sp_link;
 struct sp_task;
+struct strCamCartData;
 struct task;
 struct TaskCommunication;
 struct TaskInfo;
@@ -892,6 +896,14 @@ struct AL_ST_POS {
 static_assert(sizeof(AL_ST_POS) == 0x10, "sizeof AL_ST_POS");
 static_assert(offsetof(AL_ST_POS, pos) == 0x0, "AL_ST_POS::pos");
 static_assert(offsetof(AL_ST_POS, angy) == 0xc, "AL_ST_POS::angy");
+
+struct ActionParam {
+    float speed;
+    struct NJS_ACTION *action_p;
+};
+static_assert(sizeof(ActionParam) == 0x8, "sizeof ActionParam");
+static_assert(offsetof(ActionParam, speed) == 0x0, "ActionParam::speed");
+static_assert(offsetof(ActionParam, action_p) == 0x4, "ActionParam::action_p");
 
 // Offsets not checked against the code yet.
 struct AlrEffUnit {
@@ -2533,6 +2545,54 @@ static_assert(offsetof(OBJ_CONDITION, pTask) == 0x4, "OBJ_CONDITION::pTask");
 static_assert(offsetof(OBJ_CONDITION, pObjEditEntry) == 0x8, "OBJ_CONDITION::pObjEditEntry");
 static_assert(offsetof(OBJ_CONDITION, unionStatus) == 0xc, "OBJ_CONDITION::unionStatus");
 
+struct PATHCAMERA1WORK {
+    int modeflag;
+    struct pathtag *pPathTag;
+    float fForwardPathDist;
+    float fBackPathDist;
+    float fForwardPathMul;
+    float fBackPathMul;
+    float fMaxSonicDist;
+    float fMinSonicDist;
+    float fSonicSize;
+    float fCameraSize;
+    float fMaxCameraAcc;
+    float fCameraAccMul;
+    float fPathCameraRangeOut;
+    int nPlayer;
+    int nTopPathGap;
+    int nBottomPathGap;
+    int nChangeFrame;
+    struct NJS_POINT3 vecCamOfs;
+    struct NJS_POINT3 vecPathOfs;
+    struct Angle3 angCamRot;
+    long angMaxCamSpd;
+    float angCamSpdMul;
+};
+static_assert(sizeof(PATHCAMERA1WORK) == 0x70, "sizeof PATHCAMERA1WORK");
+static_assert(offsetof(PATHCAMERA1WORK, modeflag) == 0x0, "PATHCAMERA1WORK::modeflag");
+static_assert(offsetof(PATHCAMERA1WORK, pPathTag) == 0x4, "PATHCAMERA1WORK::pPathTag");
+static_assert(offsetof(PATHCAMERA1WORK, fForwardPathDist) == 0x8, "PATHCAMERA1WORK::fForwardPathDist");
+static_assert(offsetof(PATHCAMERA1WORK, fBackPathDist) == 0xc, "PATHCAMERA1WORK::fBackPathDist");
+static_assert(offsetof(PATHCAMERA1WORK, fForwardPathMul) == 0x10, "PATHCAMERA1WORK::fForwardPathMul");
+static_assert(offsetof(PATHCAMERA1WORK, fBackPathMul) == 0x14, "PATHCAMERA1WORK::fBackPathMul");
+static_assert(offsetof(PATHCAMERA1WORK, fMaxSonicDist) == 0x18, "PATHCAMERA1WORK::fMaxSonicDist");
+static_assert(offsetof(PATHCAMERA1WORK, fMinSonicDist) == 0x1c, "PATHCAMERA1WORK::fMinSonicDist");
+static_assert(offsetof(PATHCAMERA1WORK, fSonicSize) == 0x20, "PATHCAMERA1WORK::fSonicSize");
+static_assert(offsetof(PATHCAMERA1WORK, fCameraSize) == 0x24, "PATHCAMERA1WORK::fCameraSize");
+static_assert(offsetof(PATHCAMERA1WORK, fMaxCameraAcc) == 0x28, "PATHCAMERA1WORK::fMaxCameraAcc");
+static_assert(offsetof(PATHCAMERA1WORK, fCameraAccMul) == 0x2c, "PATHCAMERA1WORK::fCameraAccMul");
+static_assert(offsetof(PATHCAMERA1WORK, fPathCameraRangeOut) == 0x30, "PATHCAMERA1WORK::fPathCameraRangeOut");
+static_assert(offsetof(PATHCAMERA1WORK, nPlayer) == 0x34, "PATHCAMERA1WORK::nPlayer");
+static_assert(offsetof(PATHCAMERA1WORK, nTopPathGap) == 0x38, "PATHCAMERA1WORK::nTopPathGap");
+static_assert(offsetof(PATHCAMERA1WORK, nBottomPathGap) == 0x3c, "PATHCAMERA1WORK::nBottomPathGap");
+static_assert(offsetof(PATHCAMERA1WORK, nChangeFrame) == 0x40, "PATHCAMERA1WORK::nChangeFrame");
+static_assert(offsetof(PATHCAMERA1WORK, vecCamOfs) == 0x44, "PATHCAMERA1WORK::vecCamOfs");
+static_assert(offsetof(PATHCAMERA1WORK, vecPathOfs) == 0x50, "PATHCAMERA1WORK::vecPathOfs");
+static_assert(offsetof(PATHCAMERA1WORK, angCamRot) == 0x5c, "PATHCAMERA1WORK::angCamRot");
+static_assert(offsetof(PATHCAMERA1WORK, angMaxCamSpd) == 0x68, "PATHCAMERA1WORK::angMaxCamSpd");
+static_assert(offsetof(PATHCAMERA1WORK, angCamSpdMul) == 0x6c, "PATHCAMERA1WORK::angCamSpdMul");
+
 struct SEQ_CLEAR_EQUIV {
     short stageno;
     short flagno;
@@ -3292,6 +3352,75 @@ static_assert(offsetof(pathtag, totallen) == 0x4, "pathtag::totallen");
 static_assert(offsetof(pathtag, tblhead) == 0x8, "pathtag::tblhead");
 static_assert(offsetof(pathtag, pathtask) == 0xc, "pathtag::pathtask");
 
+struct pheadeyewk {
+    long angy_head;
+    long angz_head;
+    long angy_ahead;
+    long angz_ahead;
+    long angy_eye;
+    long angz_eye;
+    long angy_leye;
+    long angz_leye;
+    long angy_reye;
+    long angz_reye;
+    long angy_head_max;
+    long angy_head_min;
+    long angz_head_max;
+    long angz_head_min;
+    long angy_leye_max;
+    long angy_leye_min;
+    long angz_leye_max;
+    long angz_leye_min;
+    long angy_reye_max;
+    long angy_reye_min;
+    long angz_reye_max;
+    long angz_reye_min;
+    struct obj *headobjptr;
+    struct obj *leyeobjptr;
+    struct obj *reyeobjptr;
+    union {
+        long ang[3];
+        float pos[3];
+    } orghead;
+    union {
+        long ang[3];
+        float pos[3];
+    } orgleye;
+    union {
+        long ang[3];
+        float pos[3];
+    } orgreye;
+};
+static_assert(sizeof(pheadeyewk) == 0x88, "sizeof pheadeyewk");
+static_assert(offsetof(pheadeyewk, angy_head) == 0x0, "pheadeyewk::angy_head");
+static_assert(offsetof(pheadeyewk, angz_head) == 0x4, "pheadeyewk::angz_head");
+static_assert(offsetof(pheadeyewk, angy_ahead) == 0x8, "pheadeyewk::angy_ahead");
+static_assert(offsetof(pheadeyewk, angz_ahead) == 0xc, "pheadeyewk::angz_ahead");
+static_assert(offsetof(pheadeyewk, angy_eye) == 0x10, "pheadeyewk::angy_eye");
+static_assert(offsetof(pheadeyewk, angz_eye) == 0x14, "pheadeyewk::angz_eye");
+static_assert(offsetof(pheadeyewk, angy_leye) == 0x18, "pheadeyewk::angy_leye");
+static_assert(offsetof(pheadeyewk, angz_leye) == 0x1c, "pheadeyewk::angz_leye");
+static_assert(offsetof(pheadeyewk, angy_reye) == 0x20, "pheadeyewk::angy_reye");
+static_assert(offsetof(pheadeyewk, angz_reye) == 0x24, "pheadeyewk::angz_reye");
+static_assert(offsetof(pheadeyewk, angy_head_max) == 0x28, "pheadeyewk::angy_head_max");
+static_assert(offsetof(pheadeyewk, angy_head_min) == 0x2c, "pheadeyewk::angy_head_min");
+static_assert(offsetof(pheadeyewk, angz_head_max) == 0x30, "pheadeyewk::angz_head_max");
+static_assert(offsetof(pheadeyewk, angz_head_min) == 0x34, "pheadeyewk::angz_head_min");
+static_assert(offsetof(pheadeyewk, angy_leye_max) == 0x38, "pheadeyewk::angy_leye_max");
+static_assert(offsetof(pheadeyewk, angy_leye_min) == 0x3c, "pheadeyewk::angy_leye_min");
+static_assert(offsetof(pheadeyewk, angz_leye_max) == 0x40, "pheadeyewk::angz_leye_max");
+static_assert(offsetof(pheadeyewk, angz_leye_min) == 0x44, "pheadeyewk::angz_leye_min");
+static_assert(offsetof(pheadeyewk, angy_reye_max) == 0x48, "pheadeyewk::angy_reye_max");
+static_assert(offsetof(pheadeyewk, angy_reye_min) == 0x4c, "pheadeyewk::angy_reye_min");
+static_assert(offsetof(pheadeyewk, angz_reye_max) == 0x50, "pheadeyewk::angz_reye_max");
+static_assert(offsetof(pheadeyewk, angz_reye_min) == 0x54, "pheadeyewk::angz_reye_min");
+static_assert(offsetof(pheadeyewk, headobjptr) == 0x58, "pheadeyewk::headobjptr");
+static_assert(offsetof(pheadeyewk, leyeobjptr) == 0x5c, "pheadeyewk::leyeobjptr");
+static_assert(offsetof(pheadeyewk, reyeobjptr) == 0x60, "pheadeyewk::reyeobjptr");
+static_assert(offsetof(pheadeyewk, orghead) == 0x64, "pheadeyewk::orghead");
+static_assert(offsetof(pheadeyewk, orgleye) == 0x70, "pheadeyewk::orgleye");
+static_assert(offsetof(pheadeyewk, orgreye) == 0x7c, "pheadeyewk::orgreye");
+
 struct player_parameter {
     long jump2_timer;
     float pos_error;
@@ -3562,6 +3691,14 @@ static_assert(offsetof(sp_task, argb) == 0x30, "sp_task::argb");
 static_assert(offsetof(sp_task, offset) == 0x40, "sp_task::offset");
 static_assert(offsetof(sp_task, work) == 0x44, "sp_task::work");
 static_assert(offsetof(sp_task, wrtZflg) == 0x4c, "sp_task::wrtZflg");
+
+struct strCamCartData {
+    struct NJS_POINT3 transCam;
+    struct NJS_POINT3 transTgt;
+};
+static_assert(sizeof(strCamCartData) == 0x18, "sizeof strCamCartData");
+static_assert(offsetof(strCamCartData, transCam) == 0x0, "strCamCartData::transCam");
+static_assert(offsetof(strCamCartData, transTgt) == 0xc, "strCamCartData::transTgt");
 
 struct task {
     struct task *next;

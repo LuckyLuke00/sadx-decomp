@@ -563,6 +563,12 @@ void InitMission()
 {
 }
 
+// STUB: SADX 0x0049a130
+unsigned char IsMissionDispFlag(struct task *tp)
+{
+	return (unsigned char)0;
+}
+
 // STUB: SADX 0x0049a170
 unsigned char IsMissionAppear(struct task *tp)
 {
@@ -571,6 +577,11 @@ unsigned char IsMissionAppear(struct task *tp)
 
 // STUB: SADX 0x0049a260
 void ReleaseMissionObject()
+{
+}
+
+// STUB: SADX 0x0049c120
+void MiSakanaGenerater(struct task *tp)
 {
 }
 
@@ -909,11 +920,6 @@ void FUN_004bac60()
 {
 }
 
-// STUB: SADX 0x004bafe0
-void cameraModeInit()
-{
-}
-
 // STUB: SADX 0x004bd5a0
 void CameraViewSet(struct taskwk *pTaskWork)
 {
@@ -1105,23 +1111,13 @@ void LoadPlayerMotionData(long PlayerNo)
 }
 
 // STUB: SADX 0x004cfb80
-long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id)
+extern long CCL_Init(struct task *, struct CCL_INFO *, long, unsigned char)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x004cfd90
-void CCL_ClearInfo(struct taskwk *twp)
-{
-}
-
 // STUB: SADX 0x004d0670
 void CCL_PCheckColli()
-{
-}
-
-// STUB: SADX 0x004d0930
-void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
 {
 }
 
@@ -1151,65 +1147,6 @@ signed char _GetColliFaceNormalPO(struct taskwk *twp1, struct NJS_POINT3 *v)
 	return (signed char)0;
 }
 
-// STUB: SADX 0x004d9710
-struct c_colli_hit_info *CCL_IsHitPlayerEx(struct taskwk *twp)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
-// STUB: SADX 0x004d9890
-struct c_colli_hit_info *CCL_IsHitBulletEx(struct taskwk *twp)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
-// STUB: SADX 0x004d9970
-struct c_colli_hit_info *CCL_IsHitEnemyEx(struct taskwk *twp)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
-// STUB: SADX 0x004d9a50
-int FUN_004d9a50(int)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x004d9b30
-void FUN_004d9b30(int)
-{
-}
-
-// STUB: SADX 0x004d9c60
-struct c_colli_hit_info *CCL_IsHitKindEx(struct taskwk *twp, unsigned char kind)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
-// STUB: SADX 0x004d9e80
-struct c_colli_hit_info *CCL_IsHitPlayerWithNumEx(struct taskwk *twp, long info_num)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
-// STUB: SADX 0x004d9f60
-struct c_colli_hit_info *CCL_IsHitObjectWithNumEx(struct taskwk *twp, long info_num)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
-// STUB: SADX 0x004da070
-struct c_colli_hit_info *CCL_IsHitKindWithNumEx(struct taskwk *twp, long info_num, unsigned char kind)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
-// STUB: SADX 0x004da190
-struct c_colli_hit_info *CCL_IsHitWithNumEx(struct taskwk *twp, long info_num)
-{
-	return (struct c_colli_hit_info *)0;
-}
-
 // STUB: SADX 0x004da580
 long EntryColliList(struct taskwk *twp)
 {
@@ -1236,18 +1173,8 @@ void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 {
 }
 
-// STUB: SADX 0x004efcd0
-void LoopSECallForTheMode(struct task *tp)
-{
-}
-
 // STUB: SADX 0x004f0160
 void ExecFallingDownP(unsigned char pno)
-{
-}
-
-// STUB: SADX 0x004f0e00
-void SetVelocityP(unsigned char, float, float, float)
 {
 }
 
@@ -1256,41 +1183,8 @@ void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
 {
 }
 
-// STUB: SADX 0x004f16f0
-void SetPositionP(unsigned char pno, float x, float y, float z)
-{
-}
-
 // STUB: SADX 0x004f1860
 long CheckCollisionP(struct NJS_POINT3 *, float)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x004f1af0
-long GetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3 *pos, long *ang)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x004f1bb0
-long SetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3 *pos, long *ang)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x004f1fc0
-void PlayerSpeedUp(struct task *tp)
-{
-}
-
-// STUB: SADX 0x004f23a0
-void MomentMuteki(struct task *tp)
-{
-}
-
-// STUB: SADX 0x004f2470
-long GetHoldingItemIDP(unsigned char pno)
 {
 	return (long)0;
 }
@@ -1384,25 +1278,29 @@ void JingleTask(struct task *tp)
 {
 }
 
+// STUB: SADX 0x004fbad0
+void GetAngleZXV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_z)
+{
+}
+
 // STUB: SADX 0x004fd020
 void LandRelease(long stage, long act)
 {
 }
 
-// STUB: SADX 0x004feb50
-void RegisterCollisionEntry(long slAttribute, struct task *pTask, struct obj *pObject)
+// STUB: SADX 0x004fd4e0
+void DrawGround()
 {
 }
 
-// STUB: SADX 0x004fec40
-void WithdrawCollisionEntry(struct task *, struct obj *)
+// STUB: SADX 0x004fd940
+void DrawMotionGround()
 {
 }
 
-// STUB: SADX 0x004fed70
-struct obj *GetMobileLandObject()
+// STUB: SADX 0x004fdb00
+void ListGroundForDrawing()
 {
-	return (struct obj *)0;
 }
 
 // STUB: SADX 0x004ff450
@@ -1421,43 +1319,19 @@ void ObjectMovableSRegularExecute(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005005d0
-void occ_DrawObject(struct taskwk *twp, struct obj *o, float clipScl)
-{
-}
-
-// STUB: SADX 0x005006a0
-long ObjectNormal(struct task *tp)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x00500740
-long ObjectNormal_LE(struct task *tp)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x00500810
 void ObjectNormalDisplay(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00500a40
-long ObjectScaleNormal(struct task *tp)
+// STUB: SADX 0x00500920
+void ObjectNormalDisplay_LE(struct task *tp)
 {
-	return (long)0;
 }
 
 // STUB: SADX 0x00500ae0
 void ObjectScaleDisplay(struct task *tp)
 {
-}
-
-// STUB: SADX 0x00500d30
-long ObjectCCollision(struct task *tp)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x00501060
@@ -1491,6 +1365,18 @@ void ReleaseTextureForEachGameMode()
 {
 }
 
+// STUB: SADX 0x00502210
+long SetRegularTexture()
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00502240
+long CheckObjectTexture()
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00502260
 long SetObjectTexture()
 {
@@ -1520,12 +1406,6 @@ void CreateKiran2(struct NJS_POINT3 *pos, float scl, float spd)
 // STUB: SADX 0x00551200
 void AddSetStage(short ssGap)
 {
-}
-
-// STUB: SADX 0x00551290
-long CheckRangeWithR(struct task *pTask, float fRange)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x005513e0
@@ -1562,11 +1442,6 @@ void ExtractLoadData()
 
 // STUB: SADX 0x00554db0
 void DisplayScoreAction()
-{
-}
-
-// STUB: SADX 0x00555700
-void DisplayTimer()
 {
 }
 
@@ -1703,12 +1578,6 @@ long isCheckGGApper_Emblem()
 	return (long)0;
 }
 
-// STUB: SADX 0x0056f770
-long InitGGMessage()
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x00570480
 extern long SCPathPntnmbToOnpos(struct pathtag *, unsigned long, float *)
 {
@@ -1798,8 +1667,8 @@ int CloseDialog()
 	return (int)0;
 }
 
-// STUB: SADX 0x0058b160
-void FUN_0058b160(struct task *)
+// STUB: SADX 0x0058b860
+void FUN_0058b860(int, int)
 {
 }
 
@@ -1920,6 +1789,21 @@ void late_DispMilesMeter2P(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005abe80
+extern void relbox_switch_exec(struct task *)
+{
+}
+
+// STUB: SADX 0x005ac0e0
+extern void relbox_switch_draw(struct task *)
+{
+}
+
+// STUB: SADX 0x005ac3c0
+void FUN_005ac3c0(struct task *)
+{
+}
+
 // STUB: SADX 0x005acaf0
 long FreeNpcMilesPlayerTask()
 {
@@ -1957,12 +1841,6 @@ void DrawEventActionPL(struct taskwk *twp, int ligPalNo)
 struct task *CreateEventObject()
 {
 	return (struct task *)0;
-}
-
-// STUB: SADX 0x005b3640
-long CanIMakePanelJump(struct taskwk *ptwp)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x005b41e0
@@ -2005,13 +1883,18 @@ void Muteki(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005bb910
-void FUN_005bb910(struct task *, struct NJS_POINT3 *, void *, int)
+// STUB: SADX 0x005b66f0
+void InitItemBoxManager()
 {
 }
 
-// STUB: SADX 0x005bb9d0
-void FUN_005bb9d0(struct task *)
+// STUB: SADX 0x005b7c20
+void ClrRocketTaskWorkBuff()
+{
+}
+
+// STUB: SADX 0x005b7d60
+void GetAngleYZV(const struct NJS_POINT3 *, long *, long *)
 {
 }
 
@@ -2479,6 +2362,17 @@ void FUN_007d6940(struct task *)
 {
 }
 
+// STUB: SADX 0x007e5070
+signed char CartRaceGetDialState()
+{
+	return (signed char)0;
+}
+
+// STUB: SADX 0x007e60f0
+void dispObject(struct task *task_p)
+{
+}
+
 // STUB: SADX 0x007f2100
 long GameGearLoop()
 {
@@ -2593,11 +2487,6 @@ void FUN_008cfbb0(int, int)
 {
 }
 
-// STUB: SADX 0x008d1410
-void egoManager(struct task *tp)
-{
-}
-
 // STUB: SADX 0x008d1560
 void drawEgo(struct task *tp)
 {
@@ -2623,28 +2512,18 @@ void FUN_008d88b0(struct taskwk *, struct enemywk *)
 {
 }
 
-// STUB: SADX 0x008dbd70
-void ObjectTuribasiExecutor(struct task *tp)
-{
-}
-
 // STUB: SADX 0x008dbe50
 void BridgeInit(struct task *tp)
 {
 }
 
 // STUB: SADX 0x008dc230
-void BridgeDraw(struct taskwk *twp)
+void BridgeDraw(struct taskwk *)
 {
 }
 
 // STUB: SADX 0x008dc880
 void BridgeDraw2(struct taskwk *twp)
-{
-}
-
-// STUB: SADX 0x008dd2e0
-void ObjectTuribasiDestructor(struct task *tp)
 {
 }
 

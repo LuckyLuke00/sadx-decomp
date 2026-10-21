@@ -1,7 +1,15 @@
 #include "decls.h"
+void FUN_00550f60(int param_1);
+void FUN_00550170(char *param_1);
+void FUN_00550280(void);
 extern char DAT_05cc8668;
 extern int DAT_05cd2948;
 extern int DAT_05ccc678;
+
+// STUB: SADX 0x005500d0
+void SetObject(struct task *pTask)
+{
+}
 
 // FUNCTION: SADX 0x00550170
 void FUN_00550170(char *param_1)
@@ -14,13 +22,39 @@ void FUN_00550170(char *param_1)
 	}
 }
 
+// STUB: SADX 0x005501a0
+void InitStatusTable()
+{
+}
+
 // STUB: SADX 0x00550280
 void FUN_00550280(void)
 {
 }
 
+// STUB: SADX 0x00550c10
+int FUN_00550c10(float *fPos, float fX, float fY, float fZ, float fRangeSq)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00550cc0
+void SwitchStatusTable(struct taskwk *pTaskWork)
+{
+}
+
 // STUB: SADX 0x00550d90
 void FUN_00550d90(void)
+{
+}
+
+// STUB: SADX 0x00550f60
+void FUN_00550f60(int param_1)
+{
+}
+
+// STUB: SADX 0x00551150
+void ReviveSetObject()
 {
 }
 
@@ -35,6 +69,12 @@ long CheckRange(struct task *pTask)
 	{
 		return CheckRangeWithR(pTask, 168100.0f);
 	}
+}
+
+// STUB: SADX 0x00551290
+long CheckRangeWithR(struct task *pTask, float fRange)
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x00551340

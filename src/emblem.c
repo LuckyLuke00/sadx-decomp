@@ -35,7 +35,7 @@ extern char emblem_num[0x20];
 
 void FUN_0055de60(struct _SC_NUMBERS *);
 static void Exec(struct task *);
-void Disp(struct task *);
+static void Disp(struct task *);
 
 // FUNCTION: SADX 0x0049e0a0
 void GetEmblem(struct SAVE_DATA *psd, long no)
@@ -411,7 +411,7 @@ static void Exec(struct task *tp)
 }
 
 // FUNCTION: SADX 0x0049ec90
-void Disp(struct task *tp)
+static void Disp(struct task *tp)
 {
 	struct taskwk *local_cg = tp->twp;
 	float local_8g = local_cg->scl.x;
