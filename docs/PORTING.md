@@ -160,7 +160,7 @@ python tools/check.py gate
 
 - First `gate` fails one check, `FAIL no scores yet`, and ends with `FAILED: repo` (that check's group). Every other check must pass. Until the branch has an upstream (e.g. after the first `git push -u`), `gate` and `save` print `note no base commit` once `summary.json` exists: no old scores to compare.
 - Rich header check fails: our exe has a tool build the game lacks. `FAIL` lines name each such build with its products. Import library: see [Import libraries](#import-libraries). Any other product: stop, tell the user.
-- Run `python tools/check.py save` once. It creates `docs/progress` and the README's recent-changes table. The first commit of `summary.json` makes the first history row.
+- Run `python tools/check.py save` once. It creates `docs/progress`. The first commit of `summary.json` makes the first history row.
 
 Done when `gate` prints `All checks passed.`
 
@@ -282,16 +282,20 @@ Matching decompilation of <release> of <Game>: C and C++ source that compiles ba
 
 ## Progress
 
-<img src="docs/progress/card.svg" alt="Progress summary" width="520">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/progress/card-dark.svg">
+  <img src="docs/progress/card.svg" alt="Progress summary" width="100%">
+</picture>
 
-![Progress map by area](docs/progress/map.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/progress/map-dark.svg">
+  <img src="docs/progress/map.svg" alt="Progress map by area" width="100%">
+</picture>
 
-### Recent changes
-
-<!-- history:start -->
-<!-- history:end -->
-
-![Progress over time](docs/progress/history.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/progress/history-dark.svg">
+  <img src="docs/progress/history.svg" alt="Progress over time" width="100%">
+</picture>
 
 ## Which version do I have?
 

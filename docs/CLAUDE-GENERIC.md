@@ -17,7 +17,7 @@ Run from repo root. Every command first sets up its needs (`.venv`, `.toolchain`
 - `python tools/check.py access 0x<addr> [--size N]`: every read and write of a global in the exe, by offset, size, int or float. Use it to check a global's type or name: a 4-byte float read does not fit a `char`.
 - `python tools/check.py ci`: no-game checks: annotation lint, self-test in `tests/selftest`, `tools/ci.py`. CI runs it. Lint fails any function annotation not at the start of a game function in `data/functions.csv`. A `STUB` may start any function there. Exit 1 like `areas` when a file in a new folder under `src/` has no tree line.
 - `python tools/check.py gate`: `ci`, plus Rich header check, every game score, check that `data/functions.csv` covers all code. Exit 1: a check failed or a function scored lower than in `docs/progress/summary.json`. Pre-push hook runs it.
-- `python tools/check.py save`: `gate`, but first saves new baseline, rebuilds `docs/progress/history.csv` from the commits (one row per day that changed a score, from the day's last commit; the commit being made counts as today's), redraws SVGs and README table. The pre-commit hook runs it. Saves nothing unless annotation lint, self-test, Rich header check and annotation check pass and no score dropped. Exit 1 like `areas` when a file in a new folder under `src/` has no tree line.
+- `python tools/check.py save`: it first saves a new baseline, rebuilds `docs/progress/history.csv` from the commits, and redraws SVGs in light and dark. Then it runs `gate`. The history file has one row per commit that changed the totals. The commit being made counts as today's. The pre-commit hook runs it. It saves nothing unless annotation lint, self-test, Rich header check and annotation check pass and no score drops. It exits 1, as `areas` does, when a file in a new folder under `src/` has no tree line.
 - `python tools/check.py library`: finds runtime library code in game, writes `src/library.csv`, scores it. Run after `data/functions.csv` or `library` ranges in `data/codegen-groups.csv` change.
 - `python tools/check.py sources`: ties functions to source files (`data/source-files.csv`) and classes (`data/classes.csv`) from exe paths and class names. Run after `data/functions.csv` changes.
 - `python tools/check.py groups`: prints evidence for each row of `data/codegen-groups.csv`, writes `data/file-clusters.csv`. Exit 1: a function has a tell its row's flags could not have made. Run after `data/functions.csv`, `src/library.csv` or a row changes.
@@ -43,7 +43,7 @@ Run from repo root. Every command first sets up its needs (`.venv`, `.toolchain`
 
 - Never add game files to the repo (`.exe`, `.dll`, game data, disassembly dumps, HTML reports). `build/` is ignored for this.
 - Compiler flags come from `data/codegen-groups.csv`, one set per code group. A file gets the flags of the group its `FUNCTION`, `TEMPLATE` and `SYNTHETIC` annotations are in, so they must all be from one group. `STUB`, `GLOBAL` and `LIBRARY` don't count. Change a group's flags only with evidence from functions in that group, then run `gate`.
-- Never hand-edit `summary.json`, `history.csv`, SVGs in `docs/progress` or the README's recent-changes table. CI rejects it.
+- Never hand-edit `summary.json`, `history.csv`, or SVGs in `docs/progress`. CI rejects the edit.
 - Write annotation addresses as `0x` plus 8 lower-case hex digits, for example `0x0040a1f0`.
 - Game facts go in the game files docs/FRAMEWORK.md lists, never in framework files.
 - Never fetch tcrf.net or other bot-walled fan wikis.

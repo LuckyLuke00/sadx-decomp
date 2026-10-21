@@ -3,15 +3,15 @@
 
   python tools/progress.py
 
-Reads docs/progress/summary.json, data/functions.csv, data/codegen-groups.csv and
-README.md, and the same three files in each commit that changed summary.json.
-The map sorts the game functions into the areas tools/areas.py gives them.
-Writes history.csv, card.svg, history.svg and map.svg in docs/progress, and the
-recent-changes table in README.md. The history has one row for each day whose
-first-parent commits changed a score: the last commit of the day. The working
-tree, the commit being made, counts as a commit of today when its scores differ
-from the last commit's. The output depends only on committed files, so CI can
-check that it is current.
+Reads docs/progress/summary.json, data/functions.csv and data/codegen-groups.csv,
+and the same three files in each commit that changed summary.json. The map sorts
+the game functions into the areas tools/areas.py gives them.
+Writes history.csv, and card.svg, history.svg and map.svg in docs/progress, each
+in a light version and a dark one with -dark in its name. The history has a row
+for the first first-parent commit that changed summary.json, and one for each
+later one that changed the totals. The working tree, the commit being made,
+counts as a commit of today when its totals differ from the last row's. The
+output depends only on committed files, so CI can check that it is current.
 `check.py save` calls this after it saves a new summary.json. The areas need
 .venv's packages, so run on its own, this runs itself again with .venv's Python.
 """
@@ -31,8 +31,8 @@ from xml.sax.saxutils import escape
 import osutil
 
 from layout import Rect, snap, squarify, svg_points, text_width, wrap
-from scoring import (Totals, accuracy_text, game_functions, moved_scores, percent, ratio, score, state, stats_line,
-                     totals, whole_percent)
+from scoring import (Totals, accuracy_text, game_functions, percent, ratio, score, state, stats_line, totals,
+                     whole_percent)
 
 ROOT = Path(__file__).resolve().parent.parent
 PROGRESS = ROOT / "docs" / "progress"
@@ -40,31 +40,39 @@ SUMMARY_JSON = PROGRESS / "summary.json"
 HISTORY_CSV = PROGRESS / "history.csv"
 FUNCTIONS_CSV = ROOT / "data" / "functions.csv"
 CODEGEN_GROUPS = ROOT / "data" / "codegen-groups.csv"
-README = ROOT / "README.md"
 
-HISTORY_FIELDS = ["date", "decompiled", "matched", "accuracy", "game_total", "changes"]
-MAX_AREAS = 3  # areas a history row names, the ones with the most changed functions
-RECENT_ROWS = 10
-TABLE_START = "<!-- history:start -->"
-TABLE_END = "<!-- history:end -->"
+HISTORY_FIELDS = ["date", "decompiled", "matched", "accuracy", "game_total"]
 
-BACKGROUND = "#07154a"
-BACKGROUND_TOP = "#10307e"  # the background fades from this at the top
-BLOCK = "#0f2a78"
-TEXT = "#ffffff"
-MUTED = "#a9bde8"
-GRID = "#2a4aa0"
-NOT_STARTED = "#06113d"
-DONE = "#ffd700"
-DONE_BORDER = f' stroke="{DONE}" stroke-width="1.5"'  # around a finished area
-DECOMPILED = "#4aa8ff"
-ACCURACY = "#ffffff"
-# Partial scores run from blue at 0% to the gold of DONE at 100%, in 10% steps of a straight line in OKLab, where
-# equal steps look equal. The lightness rises the whole way, so the order holds for every kind of colour vision.
-PARTIAL_STOPS = [(0.0, (0x27, 0x53, 0xD8)), (0.1, (0x3A, 0x66, 0xD0)), (0.2, (0x4E, 0x77, 0xC7)),
-                 (0.3, (0x63, 0x86, 0xBD)), (0.4, (0x78, 0x93, 0xB2)), (0.5, (0x8E, 0xA0, 0xA6)),
-                 (0.6, (0xA4, 0xAC, 0x97)), (0.7, (0xBA, 0xB7, 0x86)), (0.8, (0xD1, 0xC2, 0x70)),
-                 (0.9, (0xE8, 0xCD, 0x51)), (1.0, tuple(bytes.fromhex(DONE[1:])))]
+
+class Theme(NamedTuple):
+    background: str
+    border: str  # around the drawing and each block
+    block: str
+    text: str
+    muted: str
+    grid: str
+    not_started: str
+    done: str
+    decompiled: str
+    accuracy: str
+    # Partial scores in 10% steps, from 0% to the done colour at 100%, on a straight line in OKLab, where equal steps
+    # look equal. The lightness moves away from the block colour the whole way, so the order holds for every kind of
+    # colour vision.
+    partial: list[str]
+
+
+# Both themes use GitHub's neutral greys, so the drawings sit well on its light and dark pages. In the dark theme
+# the partial scores rise from blue to gold. In the light theme they fall from blue to a darker gold, which keeps its
+# contrast on white.
+DARK = Theme(background="#161b22", border="#30363d", block="#21262d", text="#e6edf3", muted="#8b949e",
+             grid="#30363d", not_started="#0d1117", done="#ffd700", decompiled="#4493f8", accuracy="#e6edf3",
+             partial=["#2753d8", "#3a66d0", "#4e77c7", "#6386bd", "#7893b2", "#8ea0a6", "#a4ac97", "#bab786",
+                      "#d1c270", "#e8cd51", "#ffd700"])
+LIGHT = Theme(background="#f6f8fa", border="#d0d7de", block="#ffffff", text="#1f2328", muted="#59636e",
+              grid="#d0d7de", not_started="#e6eaef", done="#b07d00", decompiled="#0969da", accuracy="#1f2328",
+              partial=["#6f9ff0", "#779dde", "#7f9bcc", "#8699b9", "#8d96a7", "#939394", "#9a8f80", "#a08c6b",
+                       "#a58754", "#ab8239", "#b07d00"])
+THEMES = {"": LIGHT, "-dark": DARK}  # each theme's suffix to the file names
 
 WIDTH = 1000
 MARGIN = 16
@@ -189,12 +197,12 @@ def csv_rows(text: str) -> list[dict]:
 
 
 def committed_snapshots() -> list[Snapshot]:
-    """The scores of the last first-parent commit of each day that changed summary.json, oldest first."""
+    """The scores of each first-parent commit that changed summary.json, oldest first."""
     if subprocess.run(["git", "rev-parse", "--verify", "--quiet", "HEAD"], cwd=ROOT, capture_output=True).returncode:
         return []  # no commit yet
     paths = [path.relative_to(ROOT).as_posix() for path in (SUMMARY_JSON, FUNCTIONS_CSV, CODEGEN_GROUPS)]
     log = osutil.git(ROOT, "log", "--first-parent", "--reverse", "--format=%H %as", "--", paths[0]).decode()
-    commits = osutil.last_of_each_day([line.split() for line in log.splitlines()], lambda commit: commit[1])
+    commits = [line.split() for line in log.splitlines()]
     texts = read_blobs(ROOT, [f"{commit}:{path}" for commit, _ in commits for path in paths])
     games = {}  # one game set per version of functions.csv and codegen-groups.csv
     snapshots = []
@@ -207,37 +215,24 @@ def committed_snapshots() -> list[Snapshot]:
     return snapshots
 
 
-def history_rows(snapshots: list[Snapshot], area_names: dict[int, str]) -> list[dict]:
-    """The history rows of the snapshots, oldest first: the first day, then each day that moved a score.
-    Stubs score zero, so a day that only adds or removes stubs gets no row. area_names holds the area
-    each game function shows under, for the row's changes."""
-    rows, previous = [], {"functions": []}
-    for snapshot in osutil.last_of_each_day(snapshots, lambda each: each.day):
-        moved = moved_scores(previous, snapshot.summary)
-        row = history_row(snapshot.day, totals(snapshot.summary, snapshot.game), area_changes(moved, area_names))
-        if not rows or moved or not same_totals(row, rows[-1]):
+def history_rows(snapshots: list[Snapshot]) -> list[dict]:
+    """The history rows of the snapshots, oldest first: the first snapshot, then each one that changed the totals.
+    Stubs score zero, so a commit that only adds or removes stubs gets no row."""
+    rows = []
+    for snapshot in snapshots:
+        row = history_row(snapshot.day, totals(snapshot.summary, snapshot.game))
+        if not rows or not same_totals(row, rows[-1]):
             rows.append(row)
-        previous = snapshot.summary
     return rows
 
 
-def area_changes(moved: list[int], area_names: dict[int, str]) -> str:
-    """The areas with the most of the moved game functions, each with that count."""
-    counts = collections.Counter(area_names[address] for address in moved if address in area_names)
-    text = ", ".join(f"{name} {count:,}" for name, count in counts.most_common(MAX_AREAS))
-    if len(counts) > MAX_AREAS:
-        text += f" and {len(counts) - MAX_AREAS} more"
-    return text
-
-
-def history_row(day: str, stats: Totals, changes: str) -> dict:
+def history_row(day: str, stats: Totals) -> dict:
     return {
         "date": day,
         "decompiled": str(stats.decompiled),
         "matched": str(stats.matched),
         "accuracy": f"{stats.accuracy * 100:.2f}" if stats.accuracy is not None else "",
         "game_total": str(stats.game_total),
-        "changes": changes,
     }
 
 
@@ -256,12 +251,13 @@ def render_history_csv(history: list[dict]) -> str:
 # Drawing
 
 
-def partial_color(value: float) -> str:
-    for (low, low_rgb), (high, high_rgb) in zip(PARTIAL_STOPS, PARTIAL_STOPS[1:]):
-        if value <= high:
-            t = (value - low) / (high - low)
-            return "#" + "".join(f"{round(a + (b - a) * t):02x}" for a, b in zip(low_rgb, high_rgb))
-    return DONE
+def partial_color(value: float, theme: Theme) -> str:
+    """The colour of a score from 0 to 1, between the two steps of theme.partial around it."""
+    steps = len(theme.partial) - 1
+    low = min(int(value * steps), steps - 1)
+    t = value * steps - low
+    low_rgb, high_rgb = bytes.fromhex(theme.partial[low][1:]), bytes.fromhex(theme.partial[low + 1][1:])
+    return "#" + "".join(f"{round(a + (b - a) * t):02x}" for a, b in zip(low_rgb, high_rgb))
 
 
 def cell_label(address: int, entry: dict) -> str:
@@ -375,74 +371,74 @@ def done_count(cells: list[int], entries: dict[int, dict]) -> int:
     return sum(1 for address in cells if address in entries and score(entries[address]) == 1.0)
 
 
-def map_header(summary: dict, stats: Totals, height: int) -> list[str]:
+def map_header(summary: dict, stats: Totals, height: int, theme: Theme) -> list[str]:
     """The map's opening tags: title, background and the three text lines."""
     stats_text = (f"{stats.matched:,} of {stats.game_total:,} game functions done "
-                  f"({percent(stats.matched, stats.game_total)}), {stats.decompiled - stats.matched:,} in progress, "
-                  f"accuracy {accuracy_text(stats)}")
+                  f"({percent(stats.matched, stats.game_total)}), accuracy {accuracy_text(stats)}")
     return [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {height}" width="{WIDTH}" height="{height}">',
         f'<title>{escape(summary["exe"])} decompilation progress</title>',
-        *backdrop(WIDTH, height, 6),
-        f'<text x="{MARGIN}" y="28" font-family="{FONT}" font-size="18" font-weight="600" fill="{TEXT}">{escape(summary["exe"])}</text>',
-        f'<text x="{WIDTH - MARGIN}" y="28" text-anchor="end" font-family="{FONT}" font-size="12" fill="{MUTED}">'
-        "one square per function</text>",
-        f'<text x="{MARGIN}" y="50" font-family="{FONT}" font-size="13" fill="{MUTED}">{escape(stats_text)}</text>',
+        backdrop(WIDTH, height, theme),
+        f'<text x="{MARGIN}" y="28" font-family="{FONT}" font-size="18" font-weight="600" fill="{theme.text}">'
+        f'{escape(summary["exe"])}</text>',
+        f'<text x="{WIDTH - MARGIN}" y="28" text-anchor="end" font-family="{FONT}" font-size="12" '
+        f'fill="{theme.muted}">one square per function</text>',
+        f'<text x="{MARGIN}" y="50" font-family="{FONT}" font-size="13" fill="{theme.muted}">{escape(stats_text)}</text>',
     ]
 
 
-def backdrop(width: int, height: int, radius: int) -> list[str]:
-    """The background of a drawing: a rounded rectangle that fades from BACKGROUND_TOP to BACKGROUND."""
-    return [f'<defs><linearGradient id="backdrop" x1="0" y1="0" x2="0" y2="1">'
-            f'<stop offset="0" stop-color="{BACKGROUND_TOP}"/><stop offset="1" stop-color="{BACKGROUND}"/>'
-            "</linearGradient></defs>",
-            f'<rect width="{width}" height="{height}" rx="{radius}" fill="url(#backdrop)"/>']
+def backdrop(width: int, height: int, theme: Theme) -> str:
+    """The background of a drawing: a rounded rectangle with a thin border, like GitHub's boxes."""
+    return (f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="6" fill="{theme.background}" '
+            f'stroke="{theme.border}"/>')
 
 
-def ring(x: float, y: float) -> str:
+def ring(x: float, y: float, theme: Theme) -> str:
     """A gold ring centred on (x, y)."""
-    return f'<circle cx="{x:g}" cy="{y:g}" r="5" fill="none" stroke="{DONE}" stroke-width="2.5"/>'
+    return f'<circle cx="{x:g}" cy="{y:g}" r="5" fill="none" stroke="{theme.done}" stroke-width="2.5"/>'
 
 
-def gem(x: float, y: float, color: str) -> list[str]:
-    """A cut gem 12 px wide centred on (x, y), with a light top facet."""
+def gem(x: float, y: float, color: str, theme: Theme) -> list[str]:
+    """A cut gem 12 px wide centred on (x, y), with a light top facet and a thin edge, so a pale gem shows on a light
+    background too."""
     outline = [(x - 3, y - 5), (x + 3, y - 5), (x + 6, y - 1.5), (x, y + 5.5), (x - 6, y - 1.5)]
     facet = [(x - 3, y - 5), (x + 3, y - 5), (x + 1.5, y - 1.5), (x - 1.5, y - 1.5)]
-    return [f'<polygon points="{svg_points(outline)}" fill="{color}"/>',
+    return [f'<polygon points="{svg_points(outline)}" fill="{color}" stroke="{theme.muted}" stroke-width="0.75" '
+            'stroke-linejoin="round"/>',
             f'<polygon points="{svg_points(facet)}" fill="#ffffff" fill-opacity="0.45"/>']
 
 
-def section_title(section: Section, outer: Rect, entries: dict[int, dict]) -> list[str]:
+def section_title(section: Section, outer: Rect, entries: dict[int, dict], theme: Theme) -> list[str]:
     """The section's gem, name and done share."""
     cells = [address for block in section.blocks for address in block.cells]
     share = whole_percent(done_count(cells, entries), len(cells))
     x, baseline = outer.x + SECTION_GAP, outer.y + TITLE - 7
-    parts = gem(x + GEM_WIDTH / 2, baseline - 4.5, section.color) if section.color else []
+    parts = gem(x + GEM_WIDTH / 2, baseline - 4.5, section.color, theme) if section.color else []
     parts.append(f'<text x="{x + title_indent(section)}" y="{baseline}" font-family="{FONT}" '
-                 f'font-size="{TITLE_SIZE}" font-weight="600" fill="{TEXT}">{escape(section.name)} '
-                 f'<tspan font-weight="400" fill="{MUTED}">{share}</tspan></text>')
+                 f'font-size="{TITLE_SIZE}" font-weight="600" fill="{theme.text}">{escape(section.name)} '
+                 f'<tspan font-weight="400" fill="{theme.muted}">{share}</tspan></text>')
     return parts
 
 
-def name_text(lines: list[list[str]], share: str, rect: Rect) -> list[str]:
+def name_text(lines: list[list[str]], share: str, rect: Rect, theme: Theme) -> list[str]:
     """The block's name in its lines, with the done share in place of the SHARE_SAMPLE that ends the last one."""
     parts = []
     for row, words in enumerate(lines):
         name, tail = words, ""
         if row == len(lines) - 1:
             name = words[:-1]
-            share_text = f'<tspan font-weight="400" fill="{MUTED}">{share}</tspan>'
+            share_text = f'<tspan font-weight="400" fill="{theme.muted}">{share}</tspan>'
             tail = f" {share_text}" if name else share_text
         y = rect.y + PAD + (row + 1) * NAME_LINE_HEIGHT - 4
         parts.append(f'<text x="{rect.x + PAD}" y="{y}" font-family="{FONT}" font-size="{NAME_SIZE}" '
-                     f'font-weight="600" fill="{TEXT}">{escape(" ".join(name))}{tail}</text>')
+                     f'font-weight="600" fill="{theme.text}">{escape(" ".join(name))}{tail}</text>')
     return parts
 
 
-def todo_pattern() -> str:
+def todo_pattern(theme: Theme) -> str:
     """The pattern of not-started cells that todo_rect fills with."""
     return (f'<defs><pattern id="todo" width="{PITCH}" height="{PITCH}" patternUnits="userSpaceOnUse">'
-            f'<rect width="{CELL}" height="{CELL}" fill="{NOT_STARTED}"/></pattern></defs>')
+            f'<rect width="{CELL}" height="{CELL}" fill="{theme.not_started}"/></pattern></defs>')
 
 
 def todo_rect(top: int, length: int, rows: int) -> str:
@@ -461,7 +457,7 @@ def todo_cells(count: int, columns: int) -> list[str]:
     return parts
 
 
-def scored_cells(cells: list[int], entries: dict[int, dict], columns: int) -> list[str]:
+def scored_cells(cells: list[int], entries: dict[int, dict], columns: int, theme: Theme) -> list[str]:
     """One colored cell with a tooltip for each function with a score, from the block's first cell. A stub has
     none: it is not started."""
     rects = []
@@ -470,90 +466,96 @@ def scored_cells(cells: list[int], entries: dict[int, dict], columns: int) -> li
         if entry is None or entry["stub"]:
             continue
         rects.append(f'<rect x="{index % columns * PITCH}" y="{index // columns * PITCH}" width="{CELL}" '
-                     f'height="{CELL}" fill="{partial_color(score(entry))}"><title>{cell_label(address, entry)}</title>'
-                     "</rect>")
+                     f'height="{CELL}" fill="{partial_color(score(entry), theme)}">'
+                     f'<title>{cell_label(address, entry)}</title></rect>')
     return rects
 
 
-def block_parts(block: Block, rect: Rect, entries: dict[int, dict]) -> list[str]:
-    """A block's background with its tooltip, its name and its cells. A finished block gets a gold border."""
+def block_border(done: bool, theme: Theme) -> str:
+    """The border of a block or its key swatch: gold for a finished area."""
+    return f' stroke="{theme.done}" stroke-width="1.5"' if done else f' stroke="{theme.border}"'
+
+
+def block_parts(block: Block, rect: Rect, entries: dict[int, dict], theme: Theme) -> list[str]:
+    """A block's background with its tooltip, its name and its cells."""
     done = done_count(block.cells, entries)
-    border = DONE_BORDER if done == len(block.cells) else ""
     tip = escape(f"{block.name}: {done:,} of {len(block.cells):,} done")
     parts = [f'<rect x="{rect.x + 1}" y="{rect.y + 1}" width="{rect.width - 2}" height="{rect.height - 2}" rx="3" '
-             f'fill="{BLOCK}"{border}><title>{tip}</title></rect>']
+             f'fill="{theme.block}"{block_border(done == len(block.cells), theme)}><title>{tip}</title></rect>']
     lines, columns = block_grid(block, rect)
-    parts += name_text(lines, whole_percent(done, len(block.cells)), rect)
+    parts += name_text(lines, whole_percent(done, len(block.cells)), rect, theme)
     parts.append(f'<g transform="translate({rect.x + PAD},{rect.y + PAD + len(lines) * NAME_LINE_HEIGHT})">')
     parts += todo_cells(len(block.cells), columns)
-    parts += scored_cells(block.cells, entries, columns)
+    parts += scored_cells(block.cells, entries, columns, theme)
     parts.append("</g>")
     return parts
 
 
-def map_legend(height: int) -> list[str]:
+def map_legend(height: int, theme: Theme) -> list[str]:
     """The colour key on a strip of block colour, as the cells sit on their block. Under it, a line on the code the
     map leaves out."""
     y = height - FOOTER + 22
-    keys = [([NOT_STARTED], "", "not started"),
-            ([partial_color(step / 10) for step in range(10)], "", "in progress, 0% to 99%"),
-            ([DONE], "", "done"), ([BLOCK], DONE_BORDER, "area done")]
+    keys = [([theme.not_started], "", "not started"),
+            ([partial_color(step / 10, theme) for step in range(10)], "", "partly matching, 0% to 99%"),
+            ([theme.done], "", "done"), ([theme.block], block_border(True, theme), "area done")]
     swatches = []
     x = MARGIN
     for colors, border, label in keys:
         for color in colors:
             swatches.append(f'<rect x="{x}" y="{y - 9}" width="10" height="10" rx="2" fill="{color}"{border}/>')
             x += 12
-        swatches.append(f'<text x="{x + 3}" y="{y}" font-family="{FONT}" font-size="12" fill="{MUTED}">{label}</text>')
+        swatches.append(f'<text x="{x + 3}" y="{y}" font-family="{FONT}" font-size="12" fill="{theme.muted}">'
+                        f'{label}</text>')
         x += 3 + round(text_width(label, 12)) + KEY_GAP
     strip_end = x - KEY_GAP + STRIP_PAD
     return [f'<rect x="{MARGIN - STRIP_PAD}" y="{y - 15}" width="{strip_end - MARGIN + STRIP_PAD}" height="22" rx="4" '
-            f'fill="{BLOCK}"/>',
+            f'fill="{theme.block}"{block_border(False, theme)}/>',
             *swatches,
-            f'<text x="{MARGIN}" y="{y + 22}" font-family="{FONT}" font-size="12" fill="{MUTED}">'
+            f'<text x="{MARGIN}" y="{y + 22}" font-family="{FONT}" font-size="12" fill="{theme.muted}">'
             "Library code is left out: it needs no decompiling.</text>"]
 
 
-def render_map(summary: dict, stats: Totals, sections: list[Section]) -> str:
+def render_map(summary: dict, stats: Totals, sections: list[Section], theme: Theme) -> str:
     entries = {int(entry["address"], 16): entry for entry in summary["functions"]}
     placed = map_layout(sections)
     height = max((outer.y + outer.height for outer, _ in placed), default=HEADER) + FOOTER
-    parts = map_header(summary, stats, height)
-    parts.append(todo_pattern())
+    parts = map_header(summary, stats, height, theme)
+    parts.append(todo_pattern(theme))
     for section, (outer, rects) in zip(sections, placed):
-        parts += section_title(section, outer, entries)
+        parts += section_title(section, outer, entries, theme)
         for block, rect in zip(section.blocks, rects):
-            parts += block_parts(block, rect, entries)
-    parts += map_legend(height)
+            parts += block_parts(block, rect, entries, theme)
+    parts += map_legend(height, theme)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
 
-def card_bar(stats: Totals, width: int) -> list[str]:
-    """The progress bar: a track, then the decompiled and done shares over it."""
-    bar_x, bar_y, bar_width = 20, 96, width - 40
-    parts = [f'<rect x="{bar_x}" y="{bar_y}" width="{bar_width}" height="8" rx="4" fill="{NOT_STARTED}"/>']
+def card_bar(stats: Totals, theme: Theme) -> list[str]:
+    """The progress bar across the card: a track, then the decompiled and done shares over it."""
+    bar_y, bar_width = 96, WIDTH - 2 * MARGIN
+    parts = [f'<rect x="{MARGIN}" y="{bar_y}" width="{bar_width}" height="8" rx="4" fill="{theme.not_started}"/>']
     decompiled = ratio(stats.decompiled, stats.game_total)
     matched = ratio(stats.matched, stats.game_total)
     # At least 2 px wide once there is anything, so the first functions show.
-    for fraction, color in ((decompiled, DECOMPILED), (matched, DONE)):
+    for fraction, color in ((decompiled, theme.decompiled), (matched, theme.done)):
         if fraction > 0:
-            parts.append(f'<rect x="{bar_x}" y="{bar_y}" width="{max(2.0, bar_width * fraction):.1f}" height="8" '
+            parts.append(f'<rect x="{MARGIN}" y="{bar_y}" width="{max(2.0, bar_width * fraction):.1f}" height="8" '
                          f'rx="4" fill="{color}"/>')
     return parts
 
 
-def card_figures(stats: Totals, width: int) -> list[str]:
-    """The four figures under the bar."""
-    figures = [(f"{stats.matched:,}", "done"), (f"{stats.decompiled - stats.matched:,}", "in progress"),
-               (accuracy_text(stats), "accuracy"), (f"{stats.game_total:,}", "game functions")]
+def card_figures(stats: Totals, theme: Theme) -> list[str]:
+    """The three figures under the bar, one in each third of the card."""
+    figures = [(f"{stats.matched:,}", "done"), (accuracy_text(stats), "accuracy"),
+               (f"{stats.game_total:,}", "game functions")]
     parts = []
-    column = (width - 40) / len(figures)
+    column = (WIDTH - 2 * MARGIN) / len(figures)
     for index, (value, label) in enumerate(figures):
-        x = 20 + index * column
+        x = MARGIN + index * column
         parts.append(f'<text x="{x:.0f}" y="134" font-family="{FONT}" font-size="18" font-weight="600" '
-                     f'fill="{TEXT}">{escape(value)}</text>')
-        parts.append(f'<text x="{x:.0f}" y="152" font-family="{FONT}" font-size="12" fill="{MUTED}">{label}</text>')
+                     f'fill="{theme.text}">{escape(value)}</text>')
+        parts.append(f'<text x="{x:.0f}" y="152" font-family="{FONT}" font-size="12" fill="{theme.muted}">'
+                     f'{label}</text>')
     return parts
 
 
@@ -565,27 +567,25 @@ def done_this_week(history: list[dict]) -> int:
     return int(history[-1]["matched"]) - (int(before[-1]["matched"]) if before else 0)
 
 
-def render_card(stats: Totals, history: list[dict], exe: str) -> str:
-    """The summary card at the top of the README."""
-    width, height = 520, 168
+def render_card(stats: Totals, history: list[dict], exe: str, theme: Theme) -> str:
+    """The summary card at the top of the README, as wide as the map."""
+    height = 168
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {height}" width="{WIDTH}" height="{height}">',
         f'<title>{escape(stats_line(stats))}</title>',
-        *backdrop(width, height, 8),
-        f'<text x="20" y="30" font-family="{FONT}" font-size="13" fill="{MUTED}">'
-        f'{escape(exe)}</text>',
-        f'<text x="{width - 20}" y="30" text-anchor="end" font-family="{FONT}" font-size="12" '
-        f'fill="{MUTED}">updated {escape(history[-1]["date"])}</text>',
-        f'<text x="20" y="76" font-family="{FONT}" font-size="40" font-weight="600" fill="{TEXT}">'
-        f'{percent(stats.matched, stats.game_total)}</text>',
-        f'<text x="{width - 37}" y="56" text-anchor="end" font-family="{FONT}" font-size="13" font-weight="600" '
-        f'fill="{DONE}">{done_this_week(history):+,} this week</text>',
-        ring(width - 26, 51.5),  # its right edge lines up with the text above and below
-        f'<text x="{width - 20}" y="76" text-anchor="end" font-family="{FONT}" font-size="13" fill="{MUTED}">'
-        "of the game done</text>",
+        backdrop(WIDTH, height, theme),
+        f'<text x="{MARGIN}" y="30" font-family="{FONT}" font-size="13" fill="{theme.muted}">{escape(exe)}</text>',
+        f'<text x="{WIDTH - MARGIN}" y="30" text-anchor="end" font-family="{FONT}" font-size="12" '
+        f'fill="{theme.muted}">updated {escape(history[-1]["date"])}</text>',
+        f'<text x="{MARGIN}" y="76" font-family="{FONT}" font-size="40" font-weight="600" fill="{theme.text}">'
+        f'{percent(stats.matched, stats.game_total)}<tspan dx="10" font-size="13" font-weight="400" '
+        f'fill="{theme.muted}">of the game done</tspan></text>',
+        f'<text x="{WIDTH - MARGIN - 17}" y="76" text-anchor="end" font-family="{FONT}" font-size="13" '
+        f'font-weight="600" fill="{theme.text}">{done_this_week(history):+,} this week</text>',
+        ring(WIDTH - MARGIN - 6, 71.5, theme),  # its right edge lines up with the text above
     ]
-    parts += card_bar(stats, width)
-    parts += card_figures(stats, width)
+    parts += card_bar(stats, theme)
+    parts += card_figures(stats, theme)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
@@ -608,142 +608,146 @@ def history_x(index: int, count: int) -> float:
     return HISTORY_LEFT + (HISTORY_RIGHT - HISTORY_LEFT) * index / (count - 1)
 
 
-def history_legend() -> list[str]:
+def history_legend(theme: Theme) -> list[str]:
     parts = []
     x = HISTORY_RIGHT
-    for label, color in reversed([("decompiled", DECOMPILED), ("done", DONE), ("accuracy", ACCURACY)]):
+    for label, color in reversed([("decompiled", theme.decompiled), ("done", theme.done),
+                                  ("accuracy", theme.accuracy)]):
         x -= round(text_width(label, 12)) + 15
         parts.append(f'<rect x="{x}" y="19" width="10" height="10" rx="2" fill="{color}"/>')
-        parts.append(f'<text x="{x + 15}" y="28" font-family="{FONT}" font-size="12" fill="{MUTED}">{label}</text>')
+        parts.append(f'<text x="{x + 15}" y="28" font-family="{FONT}" font-size="12" fill="{theme.muted}">'
+                     f'{label}</text>')
         x -= 18
     return parts
 
 
-def panel_grid(panel: Panel) -> list[str]:
+def panel_grid(panel: Panel, theme: Theme) -> list[str]:
     """The three horizontal grid lines of a panel, each with its percent label."""
     parts = []
     for fraction in (0.0, 0.5, 1.0):
         y = panel.bottom - (panel.bottom - panel.top) * fraction
-        parts.append(f'<line x1="{HISTORY_LEFT}" y1="{y:.1f}" x2="{HISTORY_RIGHT}" y2="{y:.1f}" stroke="{GRID}" stroke-width="1"/>')
+        parts.append(f'<line x1="{HISTORY_LEFT}" y1="{y:.1f}" x2="{HISTORY_RIGHT}" y2="{y:.1f}" '
+                     f'stroke="{theme.grid}" stroke-width="1"/>')
         parts.append(f'<text x="{HISTORY_LEFT - 8}" y="{y + 4:.1f}" text-anchor="end" font-family="{FONT}" '
-                     f'font-size="11" fill="{MUTED}">{panel.top_value * fraction * 100:g}%</text>')
+                     f'font-size="11" fill="{theme.muted}">{panel.top_value * fraction * 100:g}%</text>')
     return parts
 
 
+def day_starts(dates: list[str]) -> list[int]:
+    """The index of the first row of each day."""
+    return [index for index, day in enumerate(dates) if index == 0 or day != dates[index - 1]]
+
+
+def day_lines(dates: list[str], panel: Panel, theme: Theme) -> list[str]:
+    """A vertical grid line across the panel before the first dot of each day but the first. The rows sit an even
+    step apart, not by time, so these lines show where the days change."""
+    parts = []
+    for index in day_starts(dates)[1:]:
+        x = (history_x(index - 1, len(dates)) + history_x(index, len(dates))) / 2
+        parts.append(f'<line x1="{x:.1f}" y1="{panel.top}" x2="{x:.1f}" y2="{panel.bottom}" stroke="{theme.grid}" '
+                     'stroke-width="1"/>')
+    return parts
+
+
+def dot_radius(count: int) -> float:
+    """3 px, or a third of the step between dots when they sit closer than 9 px, but at least 1 px."""
+    if count < 2:
+        return 3.0
+    return max(1.0, min(3.0, (HISTORY_RIGHT - HISTORY_LEFT) / (count - 1) / 3))
+
+
 def plot_line(line: Line, panel: Panel, dates: list[str]) -> list[str]:
-    """A polyline through the line's values, and a circle with a tooltip at each one."""
+    """A polyline through the line's values, and a dot with a tooltip at each one."""
     height = panel.bottom - panel.top
     points = [(history_x(index, len(dates)), panel.bottom - height * value / panel.top_value, index, value)
               for index, value in enumerate(line.values) if value is not None]
+    radius = dot_radius(len(dates))
     parts = []
     if len(points) > 1:
         path = " ".join(f"{px:.1f},{py:.1f}" for px, py, _, _ in points)
         parts.append(f'<polyline points="{path}" fill="none" stroke="{line.color}" stroke-width="2"/>')
     for px, py, index, value in points:
         tip = escape(f"{dates[index]}: {line.label} {value:.2%}")
-        parts.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="3" fill="{line.color}"><title>{tip}</title></circle>')
+        parts.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="{radius:.1f}" fill="{line.color}">'
+                     f'<title>{tip}</title></circle>')
     return parts
 
 
-def date_labels(dates: list[str], y: int) -> list[str]:
-    parts = []
-    count = len(dates)
-    shown = min(count, 8)
-    for index in sorted({round(k * (count - 1) / max(shown - 1, 1)) for k in range(shown)}):
-        anchor = "end" if count > 1 and index == count - 1 else "middle"  # the last label sits on the right edge
-        parts.append(f'<text x="{history_x(index, count):.1f}" y="{y}" text-anchor="{anchor}" '
-                     f'font-family="{FONT}" font-size="11" fill="{MUTED}">{escape(dates[index])}</text>')
+def date_labels(dates: list[str], y: int, theme: Theme) -> list[str]:
+    """The date of each day, centred under its dots and kept inside the drawing. A label that would come within
+    8 px of the one before is left out."""
+    parts, last_end = [], -math.inf
+    starts = day_starts(dates)
+    for start, end in zip(starts, starts[1:] + [len(dates)]):
+        width = text_width(dates[start], 11)
+        middle = (history_x(start, len(dates)) + history_x(end - 1, len(dates))) / 2
+        x = min(max(middle, MARGIN + width / 2), WIDTH - MARGIN - width / 2)
+        if x - width / 2 < last_end + 8:
+            continue
+        parts.append(f'<text x="{x:.1f}" y="{y}" text-anchor="middle" font-family="{FONT}" font-size="11" '
+                     f'fill="{theme.muted}">{escape(dates[start])}</text>')
+        last_end = x + width / 2
     return parts
 
 
-def history_heading() -> list[str]:
+def history_heading(theme: Theme) -> list[str]:
     """The history chart's opening tags: background and the two panel titles."""
     return [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HISTORY_HEIGHT}" '
         f'width="{WIDTH}" height="{HISTORY_HEIGHT}">',
         "<title>Decompilation progress over time</title>",
-        *backdrop(WIDTH, HISTORY_HEIGHT, 6),
-        f'<text x="{MARGIN}" y="28" font-family="{FONT}" font-size="15" font-weight="600" fill="{TEXT}">'
+        backdrop(WIDTH, HISTORY_HEIGHT, theme),
+        f'<text x="{MARGIN}" y="28" font-family="{FONT}" font-size="15" font-weight="600" fill="{theme.text}">'
         "Share of game functions decompiled and done</text>",
-        f'<text x="{MARGIN}" y="176" font-family="{FONT}" font-size="15" font-weight="600" fill="{TEXT}">'
+        f'<text x="{MARGIN}" y="176" font-family="{FONT}" font-size="15" font-weight="600" fill="{theme.text}">'
         "Accuracy of the decompiled functions</text>",
     ]
 
 
-def render_history(history: list[dict]) -> str:
-    """Two panels over the history rows: completeness on an auto scale, accuracy on 0 to 100%."""
+def render_history(history: list[dict], theme: Theme) -> str:
+    """Two panels over the history rows, one dot a row: completeness on an auto scale, accuracy on 0 to 100%."""
     decompiled = [ratio(int(row["decompiled"]), int(row["game_total"])) for row in history]
     matched = [ratio(int(row["matched"]), int(row["game_total"])) for row in history]
     accuracy = [float(row["accuracy"]) / 100 if row["accuracy"] else None for row in history]
     panels = [
         Panel(48, 140, axis_top(max(decompiled + matched)),
-              [Line("decompiled", decompiled, DECOMPILED), Line("done", matched, DONE)]),
-        Panel(196, 288, 1.0, [Line("accuracy", accuracy, ACCURACY)]),
+              [Line("decompiled", decompiled, theme.decompiled), Line("done", matched, theme.done)]),
+        Panel(196, 288, 1.0, [Line("accuracy", accuracy, theme.accuracy)]),
     ]
-    parts = history_heading()
-    parts += history_legend()
+    parts = history_heading(theme)
+    parts += history_legend(theme)
     dates = [row["date"] for row in history]
     for panel in panels:
-        parts += panel_grid(panel)
+        parts += panel_grid(panel, theme)
+        parts += day_lines(dates, panel, theme)
         for line in panel.lines:
             parts += plot_line(line, panel, dates)
-    parts += date_labels(dates, panels[-1].bottom + 22)  # below the lower panel
+    parts += date_labels(dates, panels[-1].bottom + 22, theme)  # below the lower panel
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
 
-def render_recent_changes(history: list[dict]) -> str:
-    """The README table, newest row first. Done shows the change since the row before."""
-    lines = ["| Date | Done | Decompiled | Accuracy | Areas |", "| --- | --- | --- | --- | --- |"]
-    first = max(len(history) - RECENT_ROWS, 0)
-    for index in reversed(range(first, len(history))):
-        row = history[index]
-        matched = int(row["matched"])
-        before = int(history[index - 1]["matched"]) if index else 0
-        accuracy = f"{row['accuracy']}%" if row["accuracy"] else "n/a"
-        changes = row["changes"].replace("|", "\\|")
-        lines.append(f"| {row['date']} | {matched:,} ({matched - before:+,}) | {int(row['decompiled']):,} "
-                     f"| {accuracy} | {changes} |")
-    return "\n".join(lines)
-
-
-def history_markers(text: str) -> tuple[int, int]:
-    """Where the README's recent-changes table starts and ends."""
-    start, end = text.find(TABLE_START), text.find(TABLE_END)
-    if start < 0 or end < start:
-        sys.exit(f"README.md needs {TABLE_START} and then {TABLE_END} around the table of recent changes.")
-    return start + len(TABLE_START), end
-
-
-def replace_between_markers(text: str, content: str) -> str:
-    start, end = history_markers(text)
-    return text[:start] + "\n" + content + "\n" + text[end:]
-
-
-def load_areas(summary: dict, game: set[int]) -> tuple[list[Section], dict[int, str]]:
-    """The map's sections, and the name of the area each game function shows under."""
+def load_areas(summary: dict, game: set[int]) -> list[Section]:
+    """The map's sections."""
     import areas  # here, not at the top: it needs .venv's packages, and check.py imports this module before .venv
 
     area_of, sections = areas.load(game_functions(summary, game))
-    names = {area: shown for _, _, shown_names in sections for area, shown in shown_names.items()}
-    return map_sections(area_of, sections), {address: names[area] for address, area in area_of.items()}
+    return map_sections(area_of, sections)
 
 
 def render_all() -> dict[Path, str]:
     """Every generated file and its expected text, from the committed inputs only."""
     summary = load_summary()
     game = game_addresses(load_functions())
-    sections, area_names = load_areas(summary, game)
-    history = history_rows(committed_snapshots() + [Snapshot(date.today().isoformat(), summary, game)], area_names)
+    sections = load_areas(summary, game)
+    history = history_rows(committed_snapshots() + [Snapshot(date.today().isoformat(), summary, game)])
     stats = totals(summary, game)
-    readme = README.read_text(encoding="utf-8")
-    return {
-        HISTORY_CSV: render_history_csv(history),
-        PROGRESS / "map.svg": render_map(summary, stats, sections),
-        PROGRESS / "card.svg": render_card(stats, history, summary["exe"]),
-        PROGRESS / "history.svg": render_history(history),
-        README: replace_between_markers(readme, render_recent_changes(history)),
-    }
+    files = {HISTORY_CSV: render_history_csv(history)}
+    for suffix, theme in THEMES.items():
+        files[PROGRESS / f"map{suffix}.svg"] = render_map(summary, stats, sections, theme)
+        files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, history, summary["exe"], theme)
+        files[PROGRESS / f"history{suffix}.svg"] = render_history(history, theme)
+    return files
 
 
 def write_visuals() -> None:

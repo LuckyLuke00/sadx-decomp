@@ -6,22 +6,20 @@ goal is C and C++ source that compiles to the same machine code as the retail
 
 ## Progress
 
-<img src="docs/progress/card.svg" alt="Progress summary" width="520">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/progress/card-dark.svg">
+  <img src="docs/progress/card.svg" alt="Progress summary" width="100%">
+</picture>
 
-![Progress map by area](docs/progress/map.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/progress/map-dark.svg">
+  <img src="docs/progress/map.svg" alt="Progress map by area" width="100%">
+</picture>
 
-### Recent changes
-
-<!-- history:start -->
-| Date | Done | Decompiled | Accuracy | Areas |
-| --- | --- | --- | --- | --- |
-| 2026-10-20 | 606 (+293) | 655 | 97.86% | Engine 270, Menus 21, Chao Race 5 and 5 more |
-| 2026-10-19 | 313 (+165) | 384 | 94.46% | PC port 98, Engine 67, Menus 33 and 5 more |
-| 2026-10-18 | 148 (+142) | 148 | 100.00% | Engine 35, Not sorted yet 32, Menus 32 and 3 more |
-| 2026-10-17 | 6 (+6) | 6 | 100.00% | Ninja graphics 3, PC port 1, Chao Gardens 1 and 1 more |
-<!-- history:end -->
-
-![Progress over time](docs/progress/history.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/progress/history-dark.svg">
+  <img src="docs/progress/history.svg" alt="Progress over time" width="100%">
+</picture>
 
 ## How it works
 

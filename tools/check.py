@@ -386,14 +386,12 @@ def score_game(game: Path) -> dict | None:
 
 def save_scores(scores: dict) -> None:
     """Record the scores and redraw the history and visuals."""
-    # Check the README before writing anything, so a bad one can't leave half a save.
-    progress.history_markers(progress.README.read_text(encoding="utf-8"))
     scores["exe"] = project.game_config().filename
     scores["inputs_sha256"] = ci.inputs_hash()
     progress.PROGRESS.mkdir(parents=True, exist_ok=True)
     progress.SUMMARY_JSON.write_text(json.dumps(scores, indent=1) + "\n", encoding="utf-8", newline="\n")
     progress.write_visuals()
-    print(f"     saved {progress.SUMMARY_JSON.parent.relative_to(ROOT)} and README.md")
+    print(f"     saved {progress.SUMMARY_JSON.parent.relative_to(ROOT)}")
 
 
 # Porting
