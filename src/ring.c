@@ -35,3 +35,8 @@ void dispTobitiri1(struct task *tp)
 void FUN_005a7e10(struct NJS_TEXLIST *texlist)
 {
 }
+
+// STUB: SADX 0x005a82d0
+void RingNumRunning(float xpos, float ypos, float zpos, int num)
+{
+}

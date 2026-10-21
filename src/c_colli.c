@@ -1,4 +1,9 @@
 #include "decls.h"
+int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
+int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
+void njPushMatrix(float *param_1);
+void njPopMatrix(int param_1);
+extern float _nj_unit_matrix_[16];
 void FUN_004da910(int param_1);
 extern int DAT_05b9e4c0;
 void FUN_004d9b30(int param_1);
@@ -36,6 +41,17 @@ extern int DAT_05ba2478;
 extern int DAT_05ba247c;
 extern int DAT_05ba2480;
 extern int DAT_05ba2484;
+
+// STUB: SADX 0x004cfcb0
+long CCL_InitShare(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004cfd90
+void CCL_ClearInfo(struct taskwk *twp)
+{
+}
 
 // FUNCTION: SADX 0x004d0460
 void CCL_ColliLine2Sphere(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
@@ -127,6 +143,11 @@ void CCL_Analyze()
 	FUN_004d0520();
 }
 
+// STUB: SADX 0x004d0930
+void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
+{
+}
+
 // STUB: SADX 0x004d0ad0
 float FUN_004d0ad0(float *param_1, float *param_2)
 {
@@ -150,6 +171,38 @@ int FUN_004d0ca0(int param_1, int param_2, int param_3, int param_4)
 		return 1;
 	}
 	return 0;
+}
+
+// STUB: SADX 0x004d1330
+long CCL_CheckPushOut(struct colliwk *cwp1, struct CCL_INFO *info1, struct colliwk *cwp2, struct CCL_INFO *info2)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x004d2a50
+void ConvertPositionGlobalToLocal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v)
+{
+	struct NJS_POINT3 v2;
+	struct NJS_POINT3 v1;
+
+	v1.x = center1->x - center2->x;
+	v1.y = center1->y - center2->y;
+	v1.z = center1->z - center2->z;
+	njPushMatrix(_nj_unit_matrix_);
+	if (angy != 0)
+	{
+		njRotateY(0, angy);
+	}
+	njCalcVector(0, &v1, &v2);
+	njPopMatrix(1);
+	v->x = v2.x;
+	v->y = v2.y;
+	v->z = v2.z;
+}
+
+// STUB: SADX 0x004d2b00
+void ConvertPositionLocalToGlobal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v)
+{
 }
 
 // FUNCTION: SADX 0x004d52d0
@@ -178,6 +231,11 @@ void FUN_004d5330(char *param_1, int param_2, struct NJS_POINT3 *param_3)
 	{
 		SetPlayerPosition(*(char *)((char *)*(int *)(*(int *)(param_2 + 0x9c) + 0x20) + 8), 0, param_3, 0);
 	}
+}
+
+// STUB: SADX 0x004d7f60
+void FUN_004d7f60(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
 }
 
 // FUNCTION: SADX 0x004d8e80
@@ -276,6 +334,36 @@ taskwk *CCL_IsHitPlayer(taskwk *twp)
 	}
 }
 
+// STUB: SADX 0x004d9710
+struct c_colli_hit_info *CCL_IsHitPlayerEx(struct taskwk *twp)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// FUNCTION: SADX 0x004d97c0
+int FUN_004d97c0(struct taskwk *param_1, int param_2)
+{
+	if (DAT_05ba2478 != (int)param_1)
+	{
+		DAT_05ba2478 = (int)param_1;
+		DAT_05ba247c = 0;
+		DAT_05ba2484 = 0xffffffff;
+		DAT_05ba2480 = 0xffffffff;
+	}
+	if (DAT_05ba247c != param_2)
+	{
+		DAT_05ba247c = param_2;
+		DAT_05ba2484 = 0xffffffff;
+		DAT_05ba2480 = 0xffffffff;
+	}
+	DAT_05ba2480++;
+	if (DAT_05ba2480 > 0x10)
+	{
+		DAT_05ba2480 = 0x10;
+	}
+	return DAT_05ba2480;
+}
+
 // FUNCTION: SADX 0x004d9850
 void FUN_004d9850(int param_1)
 {
@@ -298,6 +386,12 @@ taskwk *CCL_IsHitBullet(taskwk *twp)
 	}
 }
 
+// STUB: SADX 0x004d9890
+struct c_colli_hit_info *CCL_IsHitBulletEx(struct taskwk *twp)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
 // FUNCTION: SADX 0x004d9940
 taskwk *CCL_IsHitEnemy(taskwk *twp)
 {
@@ -312,6 +406,12 @@ taskwk *CCL_IsHitEnemy(taskwk *twp)
 	{
 		return 0;
 	}
+}
+
+// STUB: SADX 0x004d9970
+struct c_colli_hit_info *CCL_IsHitEnemyEx(struct taskwk *twp)
+{
+	return (struct c_colli_hit_info *)0;
 }
 
 // FUNCTION: SADX 0x004d9a20
@@ -330,6 +430,12 @@ int FUN_004d9a20(int param_1)
 	}
 }
 
+// STUB: SADX 0x004d9a50
+int FUN_004d9a50(int param_1)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x004d9b00
 int FUN_004d9b00(int param_1)
 {
@@ -344,6 +450,11 @@ int FUN_004d9b00(int param_1)
 	{
 		return 0;
 	}
+}
+
+// STUB: SADX 0x004d9b30
+void FUN_004d9b30(int param_1)
+{
 }
 
 // FUNCTION: SADX 0x004d9be0
@@ -381,6 +492,18 @@ struct task *CCL_IsHitKind2(struct taskwk *twp, unsigned char kind)
 	return 0;
 }
 
+// STUB: SADX 0x004d9c60
+struct c_colli_hit_info *CCL_IsHitKindEx(struct taskwk *twp, unsigned char kind)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004d9d50
+int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x004d9e00
 struct taskwk *CCL_IsHitPlayerWithNum(struct taskwk *twp, long info_num)
 {
@@ -403,6 +526,12 @@ struct task *CCL_IsHitPlayerWithNum2(struct taskwk *twp, long info_num)
 	return 0;
 }
 
+// STUB: SADX 0x004d9e80
+struct c_colli_hit_info *CCL_IsHitPlayerWithNumEx(struct taskwk *twp, long info_num)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
 // FUNCTION: SADX 0x004d9f30
 struct taskwk *CCL_IsHitObjectWithNum(struct taskwk *twp, long info_num)
 {
@@ -412,6 +541,12 @@ struct taskwk *CCL_IsHitObjectWithNum(struct taskwk *twp, long info_num)
 		return local_8->hit_twp;
 	else
 		return 0;
+}
+
+// STUB: SADX 0x004d9f60
+struct c_colli_hit_info *CCL_IsHitObjectWithNumEx(struct taskwk *twp, long info_num)
+{
+	return (struct c_colli_hit_info *)0;
 }
 
 // FUNCTION: SADX 0x004da020
@@ -432,6 +567,12 @@ struct task *CCL_IsHitKindWithNum2(struct taskwk *twp, long info_num, unsigned c
 	return NULL;
 }
 
+// STUB: SADX 0x004da070
+struct c_colli_hit_info *CCL_IsHitKindWithNumEx(struct taskwk *twp, long info_num, unsigned char kind)
+{
+	return (struct c_colli_hit_info *)0;
+}
+
 // FUNCTION: SADX 0x004da160
 struct taskwk *CCL_IsHitWithNum(struct taskwk *twp, long info_num)
 {
@@ -442,6 +583,12 @@ struct taskwk *CCL_IsHitWithNum(struct taskwk *twp, long info_num)
 		return local_8->hit_twp;
 	else
 		return 0;
+}
+
+// STUB: SADX 0x004da190
+struct c_colli_hit_info *CCL_IsHitWithNumEx(struct taskwk *twp, long info_num)
+{
+	return (struct c_colli_hit_info *)0;
 }
 
 // FUNCTION: SADX 0x004da3f0

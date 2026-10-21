@@ -18,6 +18,12 @@ long CheckCollisionedForJumpPanel(struct taskwk *ptwp)
 	return (long)0;
 }
 
+// STUB: SADX 0x005b3640
+long CanIMakePanelJump(struct taskwk *ptwp)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x005b36e0
 void RefreshJumpPanel(void)
 {
@@ -31,6 +37,11 @@ void RefreshJumpPanel(void)
 		}
 		*((char *)*(int *)(DAT_05edbe48[local_8] + 0x20)) = 0;
 	}
+}
+
+// STUB: SADX 0x005b3730
+void StartPlayerPanelJump(struct taskwk *ptwp)
+{
 }
 
 // STUB: SADX 0x005b3c80

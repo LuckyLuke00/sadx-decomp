@@ -25,3 +25,8 @@ void SelectPlayerInit()
 	DAT_05cda180 = 0;
 	DAT_05cda184 = 6;
 }
+
+// STUB: SADX 0x0059c4e0
+void DisplaySelectedCharacter(struct task *tp)
+{
+}

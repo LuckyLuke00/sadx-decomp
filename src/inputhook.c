@@ -19,6 +19,12 @@ struct task *InputHookInit()
 	return local_8;
 }
 
+// STUB: SADX 0x0055f580
+long InputHookSet(struct task *hook_task_p, struct NJS_POINT3 *pos_p, long *ang_y_p, long *status_p, long type, float range)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0055f630
 void InputHookRelease(void)
 {

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern void FUN_004f6ef0(void);
 extern void FUN_004f8070(void *param_1);
 void FUN_004f76a0(void *param_1);
 extern int DAT_05cb5620;
@@ -6,6 +7,12 @@ extern int DAT_05cb5624;
 extern int DAT_05cb562c;
 void FUN_004f6f20(void *param_1, int param_2);
 void FUN_004f6f70(void *param_1, int param_2);
+
+// STUB: SADX 0x004f6e40
+long CL_ColPolListInit()
+{
+	return (long)0;
+}
 
 // FUNCTION: SADX 0x004f6ef0
 void FUN_004f6ef0(void)
@@ -90,6 +97,18 @@ void FUN_004f7700(void)
 {
 }
 
+// STUB: SADX 0x004f7740
+int FUN_004f7740(int *param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004f7830
+struct obj *CL_SeekObjectTree(struct obj *obp, unsigned long ulattr, struct CL_ObjInfo *oip)
+{
+	return (struct obj *)0;
+}
+
 // STUB: SADX 0x004f8010
 void FUN_004f8010(float param_1)
 {
@@ -115,6 +134,14 @@ float FUN_004f89d0(float *param_1, float *param_2)
 	param_1 = param_1 + 1;
 	local_10 = *param_1 - *param_2;
 	return local_8g * local_8g + local_cj * local_cj + local_10 * local_10;
+}
+
+// FUNCTION: SADX 0x004fba70
+void FUN_004fba70(float *param_1, float *param_2, float *param_3)
+{
+	param_3[0] = param_1[1] * param_2[2] - param_1[2] * param_2[1];
+	param_3[1] = param_1[2] * param_2[0] - param_1[0] * param_2[2];
+	param_3[2] = param_1[0] * param_2[1] - param_1[1] * param_2[0];
 }
 
 // STUB: SADX 0x004fcd10

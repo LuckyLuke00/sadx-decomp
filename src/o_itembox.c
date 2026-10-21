@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x005dd600
+void PutItem_ItemBox(struct NJS_POINT3 *putpos, long putItem)
+{
+}
+
 // STUB: SADX 0x005de180
 void Dead_ItemBox(struct task *tp)
 {

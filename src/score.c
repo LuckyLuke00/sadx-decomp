@@ -1,4 +1,7 @@
 #include "decls.h"
+void DisplayCalcRingScoreSB(struct task *tp);
+void DisplayCalcBoardScoreSB(struct task *tp);
+int FUN_0055c7f0(int param_1, int param_2);
 extern unsigned char DAT_05b3ea15;
 extern unsigned char DAT_05b3ea17;
 extern unsigned char DAT_05b3ea27;
@@ -239,6 +242,11 @@ unsigned long GetGlobalTime()
 	return DAT_05b3ec08;
 }
 
+// STUB: SADX 0x00555700
+void DisplayTimer()
+{
+}
+
 // FUNCTION: SADX 0x00556070
 void GetTime(unsigned char *minutes, unsigned char *second)
 {
@@ -287,16 +295,58 @@ void AddTime(int sec)
 	DAT_05b3ea27 = (char)sec;
 }
 
+// FUNCTION: SADX 0x00556160
+int CheckTimeOver(void)
+{
+	int local_8;
+	if (((char)DAT_05b3ea15 == 0) && ((char)DAT_05b3ea27 == 0) && ((char)DAT_05b3ea17 == 0))
+	{
+		local_8 = 1;
+	}
+	else
+	{
+		local_8 = 0;
+	}
+	return local_8;
+}
+
 // FUNCTION: SADX 0x005561a0
 void CalcTotalScore(struct task *tp)
 {
 	late_DisplayTotalScore(tp);
 }
 
+// STUB: SADX 0x00559b60
+int FUN_00559b60(int param_1, int param_2, int param_3)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00559fa0
+void DisplayCalcSonicScoreHH(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055a0c0
+void DisplayCalcEggManScoreHH(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055a160
+void FUN_0055a160(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0055af20
 double FUN_0055af20()
 {
 	return (double)DAT_05b3ebd4;
+}
+
+// STUB: SADX 0x0055af30
+float FUN_0055af30()
+{
+	return (float)0;
 }
 
 // FUNCTION: SADX 0x0055afd0
@@ -309,8 +359,44 @@ float FUN_0055afd0(void)
 	return local_cg;
 }
 
+// STUB: SADX 0x0055b000
+int FUN_0055b000(int param_1, char param_2)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x0055b450
 void DisplayCalcTime(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055b7c0
+void DisplayCalcTimeScore(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055b940
+void FUN_0055b940(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055c5b0
+void DisplayCalcBoardScoreSB(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055c640
+void DisplayCalcTimeScoreSB(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055c6d0
+void DisplayCalcRingScoreSB(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055c760
+void FUN_0055c760(struct task *tp)
 {
 }
 
@@ -318,6 +404,22 @@ void DisplayCalcTime(struct task *tp)
 int FUN_0055c7f0(int param_1, int param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0055cee0
+void DisplayCalcEnemyScoreSC(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055db30
+int FUN_0055db30(int param_1, int param_2)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0055dbd0
+void InitTotalRingDisp(struct task *tp)
+{
 }
 
 // STUB: SADX 0x0055e200
