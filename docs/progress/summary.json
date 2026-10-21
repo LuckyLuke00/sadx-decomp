@@ -522,6 +522,22 @@
    "library": false
   },
   {
+   "address": "0x00435b20",
+   "name": "njFogEnable",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00435b30",
+   "name": "njFogDisable",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043bcf0",
    "name": "AL_IconResetPos",
    "accuracy": 0.0425531914893617,
@@ -5164,7 +5180,7 @@
   {
    "address": "0x004cb1f0",
    "name": "DrawLineV",
-   "accuracy": 0.48936170212765956,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -8860,7 +8876,7 @@
   {
    "address": "0x00570850",
    "name": "MirenCreateLensFlare",
-   "accuracy": 0.5357142857142857,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -8868,7 +8884,7 @@
   {
    "address": "0x005708a0",
    "name": "initLensFlare",
-   "accuracy": 0.47058823529411764,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -8988,7 +9004,23 @@
   {
    "address": "0x005730b0",
    "name": "___njFogEnable",
-   "accuracy": 0.2962962962962963,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00573100",
+   "name": "FUN_00573100",
+   "accuracy": 0.21052631578947367,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00573180",
+   "name": "setfog",
+   "accuracy": 0.11267605633802817,
    "effective": false,
    "stub": true,
    "library": false
@@ -8996,9 +9028,9 @@
   {
    "address": "0x00573260",
    "name": "___njFogDisable",
-   "accuracy": 0.6153846153846154,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9442,6 +9474,54 @@
    "library": false
   },
   {
+   "address": "0x00598fc0",
+   "name": "FUN_00598fc0",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00598ff0",
+   "name": "InitFadeOut",
+   "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00599140",
+   "name": "InitGameOver",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00599160",
+   "name": "EndGameOver",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005999b0",
+   "name": "SetOffsetColor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005999c0",
+   "name": "FUN_005999c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0059bc90",
    "name": "AvaExitDispLoading",
    "accuracy": 1.0,
@@ -9794,6 +9874,22 @@
    "library": false
   },
   {
+   "address": "0x005a6390",
+   "name": "SpInitialize",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a63e0",
+   "name": "FUN_005a63e0",
+   "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005a6450",
    "name": "SpCreateTask",
    "accuracy": 0.20833333333333334,
@@ -9804,9 +9900,9 @@
   {
    "address": "0x005a64e0",
    "name": "SpFreeTask",
-   "accuracy": 0.8,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9818,17 +9914,33 @@
    "library": false
   },
   {
+   "address": "0x005a6560",
+   "name": "SpFreeLink",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005a6940",
    "name": "SpDestroyAll",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a6a30",
+   "name": "SpSetZOffset",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005a6a40",
    "name": "SetParticle",
-   "accuracy": 0.9411764705882353,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -9836,7 +9948,7 @@
   {
    "address": "0x005a6aa0",
    "name": "EntryParticle",
-   "accuracy": 0.8450704225352113,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -10028,7 +10140,55 @@
   {
    "address": "0x005b44c0",
    "name": "EffectCrash",
-   "accuracy": 0.32,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b4500",
+   "name": "CrashInit",
+   "accuracy": 0.09090909090909091,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b4600",
+   "name": "CrashStarGenerate",
+   "accuracy": 0.08791208791208792,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b4730",
+   "name": "CrashStar",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b47a0",
+   "name": "CrashStarDisplayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b47c0",
+   "name": "FUN_005b47c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b47d0",
+   "name": "CrashStarDraw",
+   "accuracy": 0.05970149253731343,
    "effective": false,
    "stub": true,
    "library": false
@@ -10036,7 +10196,7 @@
   {
    "address": "0x005b4970",
    "name": "CreateSnow",
-   "accuracy": 0.4358974358974359,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -10052,9 +10212,73 @@
   {
    "address": "0x005b4b60",
    "name": "CreateSnow2",
-   "accuracy": 0.24203821656050956,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b4c50",
+   "name": "EffectThunderBarrier",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b4c90",
+   "name": "TBarrier",
+   "accuracy": 0.09195402298850575,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b5280",
+   "name": "ef_barrier_DrawModel",
+   "accuracy": 0.19047619047619047,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b5300",
+   "name": "EffectBarrier",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b5340",
+   "name": "NBarrier",
+   "accuracy": 0.10810810810810811,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b55c0",
+   "name": "EffectMuteki",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b55f0",
+   "name": "MutekiDisp",
+   "accuracy": 0.11940298507462686,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b56b0",
+   "name": "Muteki",
+   "accuracy": 0.07017543859649122,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -10274,6 +10498,22 @@
    "library": false
   },
   {
+   "address": "0x005da900",
+   "name": "StopWind",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005da930",
+   "name": "StopBlowingWind",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005db5a0",
    "name": "MirenScoreCheckDisplayCartTime",
    "accuracy": 0.3076923076923077,
@@ -10434,11 +10674,35 @@
    "library": false
   },
   {
+   "address": "0x005e00f0",
+   "name": "EffectLensFlare",
+   "accuracy": 0.5333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005e0120",
    "name": "DrawLensFlare",
    "accuracy": 0.023054755043227664,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005e0600",
+   "name": "LensFlareExecutor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005e0620",
+   "name": "CreateLensFlare",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -10484,7 +10748,7 @@
   {
    "address": "0x005e8210",
    "name": "CreateFlash",
-   "accuracy": 0.631578947368421,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -10492,7 +10756,7 @@
   {
    "address": "0x005e8280",
    "name": "FlashManager",
-   "accuracy": 0.6470588235294118,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -10500,7 +10764,7 @@
   {
    "address": "0x005e82e0",
    "name": "FlashManagerInit",
-   "accuracy": 0.5378151260504201,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -10508,7 +10772,7 @@
   {
    "address": "0x005e83a0",
    "name": "FlashManagerNormal",
-   "accuracy": 0.6307692307692307,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -10516,7 +10780,7 @@
   {
    "address": "0x005e84a0",
    "name": "CreateFlash2",
-   "accuracy": 0.9577464788732394,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -10642,6 +10906,14 @@
    "library": false
   },
   {
+   "address": "0x0060cf40",
+   "name": "EffectLightning",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0060ea20",
    "name": "Object_HitMark",
    "accuracy": 1.0,
@@ -10666,11 +10938,115 @@
    "library": false
   },
   {
+   "address": "0x0060ee70",
+   "name": "ghSpriteAnimInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060ef40",
+   "name": "ghSpriteAnim",
+   "accuracy": 0.09900990099009901,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060f060",
+   "name": "ghSpriteExec",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060f0c0",
+   "name": "ghSpriteDraw_Unit3D_BillBoard",
+   "accuracy": 0.023255813953488372,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060f5e0",
+   "name": "spriteAutoDisp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060f620",
+   "name": "spriteAutoExec",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060f660",
+   "name": "spriteAutoExec_Exec",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060f750",
+   "name": "ghParticleMove",
+   "accuracy": 0.14814814814814814,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060fb20",
+   "name": "FUN_0060fb20",
+   "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060fb90",
+   "name": "FUN_0060fb90",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060fc70",
+   "name": "control_exit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0060fcb0",
    "name": "CreateSpark",
    "accuracy": 0.17391304347826086,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006105b0",
+   "name": "SphericalExplosionAlpha",
+   "accuracy": 0.21621621621621623,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00610620",
+   "name": "SphericalExplosionDraw",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -11146,9 +11522,65 @@
    "library": false
   },
   {
+   "address": "0x008c1e50",
+   "name": "MirenEffSaveState",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c1e60",
+   "name": "MirenEffLoadState",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c1e90",
+   "name": "MirenEffSetConstantAttr",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c1ec0",
+   "name": "MirenEffChangeAlpha",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008c2030",
    "name": "FUN_008c2030",
    "accuracy": 0.47058823529411764,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c22b0",
+   "name": "rotate",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c23b0",
+   "name": "execDeathCrushLight",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c2420",
+   "name": "dispCrushLight",
+   "accuracy": 0.13333333333333333,
    "effective": false,
    "stub": true,
    "library": false
@@ -16947,5 +17379,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "7e3ed5521f1b5ed81722cb970e28735b324ef95eb4a3e38564b3cb15d3aece9b"
+ "inputs_sha256": "53d04f512567cb56c6882a8f5cbd3510ddf53ecd22efdddccb1b521578d1ebf6"
 }

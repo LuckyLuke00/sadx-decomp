@@ -13,36 +13,31 @@ extern "C" long _ftol2_sse(float param_1);
 // FUNCTION: SADX 0x005b4970
 void CreateSnow(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 {
-	struct sp_link *local_18;
-	struct sp_task *local_1c;
-	int local_8g;
-	float local_14;
-	int local_cj;
-	float local_10;
+	struct sp_link *local_8gk;
+	struct sp_task *local_ci;
+	int local_10hk;
+	float local_14k;
+	int local_18go;
+	float local_1co;
 
-	local_18 = (struct sp_link *)&particle_snow;
-	local_1c = SpCreateTask(local_18, EffectSnow);
-	if (local_1c != NULL)
+	local_8gk = particle_snow.link;
+	local_ci = SpCreateTask(local_8gk, EffectSnow);
+	if (local_ci != NULL)
 	{
-		*(float *)((char *)local_1c + 0x18) = pos->x;
-		*(float *)((char *)local_1c + 0x1c) = pos->y;
-		*(float *)((char *)local_1c + 0x20) = pos->z;
-		*(float *)((char *)local_1c + 0x24) = velo->x;
-		*(float *)((char *)local_1c + 0x28) = velo->y;
-		*(float *)((char *)local_1c + 0x2c) = velo->z;
-		*(float *)((char *)local_1c + 0x14) = scl;
-		local_8g = rand();
-		local_14 = (float)local_8g / 32768.0F;
-		local_14 = local_14 * 4.0F;
-		*(float *)((char *)local_1c + 0x10) = local_14;
-		local_cj = rand();
-		local_10 = (float)local_cj / 32768.0F;
-		*(int *)((char *)local_1c + 0x0c) = 0x2000 - _ftol2_sse(local_10 * 4096.0F);
-		*(float *)((char *)local_1c + 0x30) = 1.0F;
-		*(float *)((char *)local_1c + 0x34) = 1.0F;
-		*(float *)((char *)local_1c + 0x38) = 1.0F;
-		*(float *)((char *)local_1c + 0x3c) = 1.0F;
-		*(struct particle_info **)((char *)local_1c + 0x44) = &default_snow;
+		local_ci->pos = *pos;
+		local_ci->spd = *velo;
+		local_ci->scl = scl;
+		local_10hk = rand();
+		local_14k = (float)(local_10hk / 32768.0);
+		local_ci->frame = (float)(local_14k * 4.0);
+		local_18go = rand();
+		local_1co = (float)(local_18go / 32768.0);
+		local_ci->ang = 0x2000 - (int)(local_1co * 4096.0);
+		local_ci->argb.a = 1.0F;
+		local_ci->argb.r = 1.0F;
+		local_ci->argb.g = 1.0F;
+		local_ci->argb.b = 1.0F;
+		local_ci->work[0].ptr = &default_snow;
 	}
 }
 
@@ -75,32 +70,27 @@ void EffectSnow(struct sp_task *tp, struct sp_link *lp)
 // FUNCTION: SADX 0x005b4b60
 void CreateSnow2(struct particle_info *effect)
 {
-	struct sp_task *local_14h;
-	int local_10m;
-	int local_8g;
-	int local_cj;
-	int local_18;
+	struct sp_link *local_8gk;
+	struct sp_task *local_ci;
+	int local_10hk;
+	float local_14k;
+	int local_18go;
+	float local_1co;
 
-	local_14h = SpCreateTask((struct sp_link *)&particle_snow + 1, EffectSnow);
-	if (local_14h != NULL)
+	local_8gk = particle_snow.link;
+	local_ci = SpCreateTask(local_8gk, EffectSnow);
+	if (local_ci != NULL)
 	{
-		*(int *)((char *)local_14h + 0x18) = *(int *)((char *)effect + 0x14);
-		*(int *)((char *)local_14h + 0x1c) = *(int *)((char *)effect + 0x18);
-		*(int *)((char *)local_14h + 0x20) = *(int *)((char *)effect + 0x1c);
-		*(int *)((char *)local_14h + 0x24) = *(int *)((char *)effect + 0x20);
-		*(int *)((char *)local_14h + 0x28) = *(int *)((char *)effect + 0x24);
-		*(int *)((char *)local_14h + 0x2c) = *(int *)((char *)effect + 0x28);
-		*(int *)((char *)local_14h + 0x14) = *(int *)((char *)effect + 0x0);
-		local_10m = rand();
-		local_cj = (int)(local_10m / 32768.0);
-		*(int *)((char *)local_14h + 0x10) = local_cj * 4;
-		local_8g = rand();
-		local_18 = (int)(local_8g / 32768.0 * 4096.0);
-		*(int *)((char *)local_14h + 0xc) = 0x2000 - local_18;
-		*(int *)((char *)local_14h + 0x30) = *(int *)((char *)effect + 0x2c);
-		*(int *)((char *)local_14h + 0x34) = *(int *)((char *)effect + 0x30);
-		*(int *)((char *)local_14h + 0x38) = *(int *)((char *)effect + 0x34);
-		*(int *)((char *)local_14h + 0x3c) = *(int *)((char *)effect + 0x38);
-		*(struct particle_info **)((char *)local_14h + 0x44) = effect;
+		local_ci->pos = effect->pos;
+		local_ci->spd = effect->velo;
+		local_ci->scl = effect->scl;
+		local_10hk = rand();
+		local_14k = (float)(local_10hk / 32768.0);
+		local_ci->frame = (float)(local_14k * 4.0);
+		local_18go = rand();
+		local_1co = (float)(local_18go / 32768.0);
+		local_ci->ang = 0x2000 - (int)(local_1co * 4096.0);
+		local_ci->argb = effect->argb;
+		local_ci->work[0].ptr = effect;
 	}
 }

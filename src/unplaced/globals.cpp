@@ -281,6 +281,9 @@ unsigned char gu8Vibration;
 // GLOBAL: SADX 0x02601138
 long bWake;
 
+// GLOBAL: SADX 0x02604ab8
+struct NJS_TEXLIST DAT_02604ab8;
+
 // GLOBAL: SADX 0x02608e24
 unsigned char DAT_02608e24;
 
@@ -349,6 +352,9 @@ struct particle_entry particle_flash;
 
 // GLOBAL: SADX 0x02684a60
 long o_hit_spd1;
+
+// GLOBAL: SADX 0x02684ad4
+struct NJS_MODEL model_expoly;
 
 // GLOBAL: SADX 0x0268d998
 struct NJS_TEXLIST texlist_eggrob;
@@ -466,6 +472,9 @@ struct ___stcFog *DAT_0480e468[1];
 
 // GLOBAL: SADX 0x04c2e590
 long ring_kiran;
+
+// GLOBAL: SADX 0x04c2ea78
+float DAT_04c2ea78;
 
 // GLOBAL: SADX 0x05a922f4
 int DAT_05a922f4;
@@ -1586,6 +1595,15 @@ int DAT_05cd4078;
 // GLOBAL: SADX 0x05cda0a4
 unsigned char DAT_05cda0a4;
 
+// GLOBAL: SADX 0x05cda0b9
+unsigned char DAT_05cda0b9;
+
+// GLOBAL: SADX 0x05cda0bc
+unsigned long DAT_05cda0bc;
+
+// GLOBAL: SADX 0x05cda0c0
+unsigned short DAT_05cda0c0;
+
 // GLOBAL: SADX 0x05cda0c3
 unsigned char DAT_05cda0c3;
 
@@ -1697,6 +1715,21 @@ struct task *DAT_05edbc84;
 // GLOBAL: SADX 0x05edbc88
 int DAT_05edbc88;
 
+// GLOBAL: SADX 0x05edbcb4
+struct sp_task *DAT_05edbcb4;
+
+// GLOBAL: SADX 0x05edbcb8
+int DAT_05edbcb8;
+
+// GLOBAL: SADX 0x05edbcbc
+int DAT_05edbcbc;
+
+// GLOBAL: SADX 0x05edbcc4
+unsigned long DAT_05edbcc4;
+
+// GLOBAL: SADX 0x05edbcc8
+float DAT_05edbcc8;
+
 // GLOBAL: SADX 0x05edbcfc
 unsigned long DAT_05edbcfc;
 
@@ -1717,6 +1750,9 @@ unsigned char DAT_05edc100;
 
 // GLOBAL: SADX 0x05edc428
 int DAT_05edc428;
+
+// GLOBAL: SADX 0x05edcc38
+struct task *DAT_05edcc38;
 
 // GLOBAL: SADX 0x05edd128
 struct _OBJ_CAMERAPARAM *DAT_05edd128;
