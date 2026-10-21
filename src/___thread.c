@@ -1,4 +1,8 @@
 #include "decls.h"
+struct thread;
+void *FUN_005a4c50(int param_1);
+void TH_SetFunc(struct thread *tp, void (*func)(void *), void *pParam);
+void FUN_005a4fe0(int param_1, int param_2, int param_3, int param_4);
 void FUN_005a4d90(void);
 void FUN_005a4f80(void *param_1, void *param_2, void *param_3);
 void FUN_005a4db0(void *param_1);
@@ -110,6 +114,34 @@ void FUN_005a4f80(void *param_1, void *param_2, void *param_3)
 struct thread *TH_Create(void *func, void *pParam, unsigned int stack_size)
 {
 	return (struct thread *)0;
+}
+
+// FUNCTION: SADX 0x005a4fc0
+void FUN_005a4fc0(int param_1, int param_2, int param_3, int param_4)
+{
+	FUN_005a4fe0(*(int *)(param_1 + 4), param_2, param_3, param_4);
+}
+
+// FUNCTION: SADX 0x005a5040
+void *FUN_005a5040(void *param_1, void *param_2, int param_3)
+{
+	void *local_8;
+	if (param_3 == 0)
+	{
+		param_3 = 0x20000;
+	}
+	local_8 = FUN_005a4c50(param_3);
+	if (local_8 != 0)
+	{
+		*(int *)((char *)local_8 + 0x14) = (int)((char *)local_8 + param_3);
+		*(int *)((char *)local_8 + 0xc) = 0;
+		*(int *)((char *)local_8 + 8) = 0;
+		*(int *)((char *)local_8 + 0x18) = 0;
+		*(int *)((char *)local_8 + 0x20) = 0;
+		*(int *)((char *)local_8 + 0x1c) = 0;
+		TH_SetFunc((struct thread *)local_8, (void (*)(void *))param_1, param_2);
+	}
+	return local_8;
 }
 
 // FUNCTION: SADX 0x005a5150

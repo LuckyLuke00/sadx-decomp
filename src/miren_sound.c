@@ -40,6 +40,11 @@ void MirenSoundPlayOneShotSE(int se, const struct NJS_POINT3 *pos_p, const struc
 {
 }
 
+// STUB: SADX 0x0056f120
+void MirenSoundPlayLoopSE(int se, const struct task *task_p, const struct NJS_POINT3 *pos_p, const struct VolumeInfo *info_p)
+{
+}
+
 // STUB: SADX 0x0056f1c0
 void MirenSoundStopLoopSE(const struct task *task_p)
 {

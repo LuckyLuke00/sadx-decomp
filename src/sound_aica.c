@@ -146,7 +146,7 @@ void dsLoadStageSound()
 			}
 			break;
 		}
-		break;
+		goto local_20;
 	case 0xa:
 		SetBankDir(0x25);
 		break;
@@ -235,14 +235,13 @@ void dsLoadStageSound()
 		if (!DAT_05b3ea18)
 		{
 			SetBankDir(0x47);
-			goto local_20;
+			break;
 		}
 		else
 		{
-			((void (*)())SetBankDir)();
-			goto local_20;
+			SetBankDir(0x48);
+			break;
 		}
-		break;
 	case 2:
 		SetBankDir(1);
 		if (!DAT_05b3ea18)
@@ -262,7 +261,7 @@ void dsLoadStageSound()
 		}
 		else
 		{
-			((void (*)())SetBankDir)();
+			SetBankDir(0x46);
 		}
 		break;
 	case 5:
@@ -310,6 +309,7 @@ void dsLoadStageSound()
 		if (!DAT_05b3ea18)
 		{
 			SetBankDir(0x47);
+			break;
 		}
 		else
 		{
@@ -801,6 +801,17 @@ void dsSetFxAny(int depth)
 	DAT_05b3e39c = depth;
 }
 
+// STUB: SADX 0x004aff60
+int dsEVboss(int tone)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004b0050
+void dsLoadEVBossSound()
+{
+}
+
 // FUNCTION: SADX 0x004b00e0
 void dsReloadEVBossSound()
 {
@@ -842,4 +853,9 @@ void EraseDolbyCtrl(struct taskwk *twp)
 			IsndStop(local_8);
 		}
 	}
+}
+
+// STUB: SADX 0x004b01c0
+void dsPlay_oneshot_Dolby(int tone, int id, int pri, int volofs, int time, struct taskwk *pTaskwk)
+{
 }

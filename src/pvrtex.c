@@ -1,8 +1,15 @@
 #include "decls.h"
+unsigned long FUN_005750b0(float *param_1);
+unsigned long FUN_004951c0(unsigned long param_1, unsigned long param_2);
 extern unsigned long DAT_05cd25f4;
 extern long DAT_05cd25a4[24];
 extern int DAT_05cd2588;
 extern long DAT_05cd25f8;
+
+// STUB: SADX 0x00573e60
+void ghInitPvrTexture()
+{
+}
 
 // FUNCTION: SADX 0x00573f10
 long FUN_00573f10()
@@ -13,6 +20,27 @@ long FUN_00573f10()
 // STUB: SADX 0x00573f20
 void ghSetPvrTexMaterial(unsigned long color)
 {
+}
+
+// FUNCTION: SADX 0x00573f90
+void ghSetPvrTexVertexColor(unsigned long c0, unsigned long c1, unsigned long c2, unsigned long c3)
+{
+	c0 = FUN_004951c0(c0, DAT_05cd25f8);
+	c1 = FUN_004951c0(c1, DAT_05cd25f8);
+	c2 = FUN_004951c0(c2, DAT_05cd25f8);
+	c3 = FUN_004951c0(c3, DAT_05cd25f8);
+	DAT_05cd25a4[0] = c0;
+	DAT_05cd25a4[6] = c1;
+	DAT_05cd25a4[12] = c2;
+	DAT_05cd25a4[18] = c3;
+	if ((c0 & c1 & c2 & c3 & 0xff000000) == 0xff000000)
+	{
+		DAT_05cd25a4[19] = 0;
+	}
+	else
+	{
+		DAT_05cd25a4[19] = 1;
+	}
 }
 
 // FUNCTION: SADX 0x00574040
@@ -34,6 +62,11 @@ long FUN_00574040(long *param_1)
 	return local_8;
 }
 
+// STUB: SADX 0x005740a0
+void ghSetPvrTexBaseColor(unsigned long color)
+{
+}
+
 // FUNCTION: SADX 0x00574f80
 void ghDefaultBlendingMode()
 {
@@ -41,9 +74,21 @@ void ghDefaultBlendingMode()
 	___njColorBlendingMode(1, 6);
 }
 
+// STUB: SADX 0x00574fa0
+unsigned long ghGetColor2Color(long mode, unsigned long sc, unsigned long dc, float rate)
+{
+	return (unsigned long)0;
+}
+
 // STUB: SADX 0x00575050
 void FUN_00575050(int param_1, float *param_2)
 {
+}
+
+// STUB: SADX 0x005750b0
+unsigned long FUN_005750b0(float *param_1)
+{
+	return (unsigned long)0;
 }
 
 // STUB: SADX 0x00575150
@@ -67,4 +112,9 @@ void ghSetFadeColor(unsigned long color)
 void ghSetFadeFlag(int flag)
 {
 	DAT_05cd2588 = flag;
+}
+
+// STUB: SADX 0x00575760
+void DrawTitleBack(float x, float y, float z, float w, float h)
+{
 }

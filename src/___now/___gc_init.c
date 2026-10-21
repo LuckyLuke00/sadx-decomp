@@ -6,3 +6,8 @@ void InitSystemTV()
 	late_init();
 	input_init();
 }
+
+// STUB: SADX 0x00598d20
+void gc_ClearScreen()
+{
+}

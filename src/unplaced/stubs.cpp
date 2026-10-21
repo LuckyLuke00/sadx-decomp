@@ -122,6 +122,12 @@ long njLoadTexture(struct NJS_TEXLIST *)
 	return (long)0;
 }
 
+// STUB: SADX 0x00423e50
+long FUN_00423e50(const char *, struct NJS_TEXLIST *)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00423ee0
 void njPrintC(int,char const *)
 {
@@ -217,7 +223,7 @@ void njPushMatrixEx()
 }
 
 // STUB: SADX 0x00435370
-void pdVibMxStop(int)
+extern void pdVibMxStop(int)
 {
 }
 
@@ -548,6 +554,12 @@ void ___aftercnk()
 {
 }
 
+// STUB: SADX 0x004951c0
+unsigned long FUN_004951c0(unsigned long, unsigned long)
+{
+	return (unsigned long)0;
+}
+
 // STUB: SADX 0x00495270
 void ghDrawPvrSprite(short *, int, float, float, float, float, float)
 {
@@ -560,6 +572,11 @@ void ReleaseMiMessage()
 
 // STUB: SADX 0x00498f50
 void InitMission()
+{
+}
+
+// STUB: SADX 0x00499000
+void MissionMain()
 {
 }
 
@@ -630,16 +647,6 @@ void lateDrawObject(struct obj *obj, int flgs, float clipScl)
 {
 }
 
-// STUB: SADX 0x004a4ff0
-void late_DrawModelClip(struct NJS_MODEL *, int, float)
-{
-}
-
-// STUB: SADX 0x004a5080
-void late_DrawModel(struct NJS_MODEL *, int)
-{
-}
-
 // STUB: SADX 0x004a5110
 void lateDrawModel(struct NJS_MODEL *mdl, int flgs)
 {
@@ -647,11 +654,6 @@ void lateDrawModel(struct NJS_MODEL *mdl, int flgs)
 
 // STUB: SADX 0x004a5290
 void DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
-{
-}
-
-// STUB: SADX 0x004a5aa0
-void late_DrawModelClipEx(struct NJS_MODEL *mdl, int flgs, float clipScl)
 {
 }
 
@@ -680,13 +682,14 @@ void DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
-// STUB: SADX 0x004a7d20
-void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
+// STUB: SADX 0x004a76f0
+float CHAOS7_MsZofsFnc(struct LATE_MDL_RQ *mrq, const struct NJS_MODEL *m, float z)
 {
+	return (float)0;
 }
 
-// STUB: SADX 0x004a88f0
-void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, void *drwMdlFnc)
+// STUB: SADX 0x004a7d20
+void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
 {
 }
 
@@ -817,12 +820,6 @@ long IsPlayOk(int tone)
 // STUB: SADX 0x004afe70
 void dsLoadCharacterVoice()
 {
-}
-
-// STUB: SADX 0x004aff60
-int dsEVboss(int tone)
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x004b0600
@@ -1018,18 +1015,6 @@ void input_reset()
 {
 }
 
-// STUB: SADX 0x004c5190
-long GM_CheckClearEvent()
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x004c5300
-long InitGame()
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x004c79b0
 void GameInit()
 {
@@ -1042,11 +1027,6 @@ void GameLoop_with_SyoriOchiTaisaku()
 
 // STUB: SADX 0x004c8600
 void ActionEnd()
-{
-}
-
-// STUB: SADX 0x004c91e0
-void SetPlayerNumberForGame(unsigned short pno)
 {
 }
 
@@ -1066,11 +1046,6 @@ long SetNextTrialStage()
 	return (long)0;
 }
 
-// STUB: SADX 0x004cbe70
-void InterpolatePointAsSin(struct NJS_POINT3 *opp, struct NJS_POINT3 *npp, struct NJS_POINT3 *dpp, float ang, unsigned long nbPoint)
-{
-}
-
 // STUB: SADX 0x004cbf50
 void CalculatePlaneNormals(struct NJS_MODEL *dp)
 {
@@ -1079,12 +1054,6 @@ void CalculatePlaneNormals(struct NJS_MODEL *dp)
 // STUB: SADX 0x004cc620
 void CalculatePointNormals(struct NJS_MODEL *dp)
 {
-}
-
-// STUB: SADX 0x004ccb30
-struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum)
-{
-	return (struct obj *)0;
 }
 
 // STUB: SADX 0x004ccfc0
@@ -1105,9 +1074,21 @@ int VSPrintf(char *s, const char *format, char *arg)
 	return (int)0;
 }
 
+// STUB: SADX 0x004cdea0
+int LoadFile(char *fname, void *buff)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x004cf5e0
 void LoadPlayerMotionData(long PlayerNo)
 {
+}
+
+// STUB: SADX 0x004cf6a0
+long __GetFileSize(const char *fname)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x004cfb80
@@ -1189,12 +1170,6 @@ long CheckCollisionP(struct NJS_POINT3 *, float)
 	return (long)0;
 }
 
-// STUB: SADX 0x004f3570
-long checkdestroytask(struct task *tp)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x004f3600
 void InitTask()
 {
@@ -1211,11 +1186,6 @@ void DestroyTask(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004f3e20
-void LoopTask()
-{
-}
-
 // STUB: SADX 0x004f4130
 void InitMemory()
 {
@@ -1229,17 +1199,6 @@ void *MAlloc(unsigned int size)
 
 // STUB: SADX 0x004f4400
 void Free(void *mp)
-{
-}
-
-// STUB: SADX 0x004f45c0
-struct task *CreateChildTask(unsigned short im, void (*exec)(struct task *), struct task *tp)
-{
-	return (struct task *)0;
-}
-
-// STUB: SADX 0x004f48b0
-void FreeTaskC(struct task *tp)
 {
 }
 
@@ -1273,9 +1232,10 @@ void ADX_TaskLoop(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004f6480
-void JingleTask(struct task *tp)
+// STUB: SADX 0x004f6fe0
+long CL_ColPolListUpRangeIn()
 {
+	return (long)0;
 }
 
 // STUB: SADX 0x004fbad0
@@ -1300,6 +1260,11 @@ void DrawMotionGround()
 
 // STUB: SADX 0x004fdb00
 void ListGroundForDrawing()
+{
+}
+
+// STUB: SADX 0x004ff1f0
+void ClearExtraDisplay()
 {
 }
 
@@ -1388,6 +1353,12 @@ void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo)
 {
 }
 
+// STUB: SADX 0x00502cd0
+int FUN_00502cd0()
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00503160
 void FUN_00503160()
 {
@@ -1442,6 +1413,11 @@ void ExtractLoadData()
 
 // STUB: SADX 0x00554db0
 void DisplayScoreAction()
+{
+}
+
+// STUB: SADX 0x00555540
+void AdvanceTime()
 {
 }
 
@@ -1621,11 +1597,6 @@ int setfog()
 	return (int)0;
 }
 
-// STUB: SADX 0x005740a0
-void ghSetPvrTexBaseColor(unsigned long color)
-{
-}
-
 // STUB: SADX 0x00574950
 void ghDrawPvrTexture(int index, float x, float y, float z)
 {
@@ -1633,11 +1604,6 @@ void ghDrawPvrTexture(int index, float x, float y, float z)
 
 // STUB: SADX 0x00575490
 void DrawShadowWindow(float x, float y, float z, float w, float h)
-{
-}
-
-// STUB: SADX 0x00575760
-void DrawTitleBack(float x, float y, float z, float w, float h)
 {
 }
 
@@ -1674,11 +1640,6 @@ void FUN_0058b860(int, int)
 
 // STUB: SADX 0x00592520
 void FUN_00592520(struct task *)
-{
-}
-
-// STUB: SADX 0x00597a80
-void SetVibTask(unsigned long)
 {
 }
 
@@ -1741,6 +1702,11 @@ void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, 
 {
 }
 
+// STUB: SADX 0x0059f6c0
+void EndAdvaBGM()
+{
+}
+
 // STUB: SADX 0x005a4170
 struct SAVE_DATA *GetSDp()
 {
@@ -1753,8 +1719,19 @@ enum AvaCharEnum AvaGetlastPlayer()
 	return (enum AvaCharEnum)0;
 }
 
+// STUB: SADX 0x005a4c50
+void *FUN_005a4c50(int)
+{
+	return (void *)0;
+}
+
 // STUB: SADX 0x005a4db0
 void FUN_005a4db0(void *)
+{
+}
+
+// STUB: SADX 0x005a4fe0
+void FUN_005a4fe0(int, int, int, int)
 {
 }
 
@@ -1767,6 +1744,11 @@ void InitContinueData()
 struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *, struct sp_link *))
 {
 	return (struct sp_task *)0;
+}
+
+// STUB: SADX 0x005a6590
+void SpLoop()
+{
 }
 
 // STUB: SADX 0x005a69a0
@@ -2375,6 +2357,12 @@ void dispObject(struct task *task_p)
 
 // STUB: SADX 0x007f2100
 long GameGearLoop()
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x007f2260
+long Expand2(void *src, void *dest)
 {
 	return (long)0;
 }

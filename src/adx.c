@@ -131,6 +131,11 @@ void JingleDead(struct task *tp)
 	DAT_05bb00bc = 0;
 }
 
+// STUB: SADX 0x004f6480
+void JingleTask(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x004f6530
 void BGM_RequestClear()
 {

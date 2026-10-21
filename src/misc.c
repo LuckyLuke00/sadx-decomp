@@ -100,6 +100,11 @@ void InterpolateModel(struct NJS_MODEL *op, struct NJS_MODEL *np, struct NJS_MOD
 	CalculatePointNormals(dp);
 }
 
+// STUB: SADX 0x004cbe70
+void InterpolatePointAsSin(struct NJS_POINT3 *opp, struct NJS_POINT3 *npp, struct NJS_POINT3 *dpp, float ang, unsigned long nbPoint)
+{
+}
+
 // FUNCTION: SADX 0x004ccaf0
 long SearchTheObjectTreeForTheObject(struct obj *pobj, struct obj *obj)
 {
@@ -116,6 +121,12 @@ long SearchTheObjectTreeForTheObject(struct obj *pobj, struct obj *obj)
 	}
 }
 
+// STUB: SADX 0x004ccb30
+struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum)
+{
+	return (struct obj *)0;
+}
+
 // FUNCTION: SADX 0x004ccbd0
 float GetFloatMod(float dividend, float divisor)
 {
@@ -128,6 +139,12 @@ float GetFloatMod(float dividend, float divisor)
 	local_8g = (float)floor(dividend / divisor);
 	local_cj = dividend - local_8g * divisor;
 	return local_cj;
+}
+
+// STUB: SADX 0x004ccc60
+int FUN_004ccc60(int param_1, int *param_2)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x004cce50

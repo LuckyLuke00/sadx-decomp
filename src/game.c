@@ -1,5 +1,27 @@
 #include <stdlib.h>
 #include "decls.h"
+extern unsigned char DAT_05cccc6a[];
+extern unsigned char DAT_05b3ea14;
+extern void FUN_005a4d70();
+extern int DAT_05cda154;
+extern short DAT_05b93710;
+extern int DAT_05b9d778;
+extern char DAT_05cccc69;
+extern void SetDefaultGravity();
+extern void ResetNumPlayer();
+extern short GetNumPlayer();
+extern void pdVibMxStop(int param_1);
+extern void njSetMaterialCallBackFunc(void (*)(void));
+extern void ChangePowerMaterial();
+extern long GM_CheckMode();
+extern struct GM_EVENT_TABLE cleareventtable[1];
+extern int DAT_05b9d728;
+void GM_WaitEventE(struct task *tp);
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
+void ADX_Close();
+void EV_Load2(int no);
+void EV_Exec2();
+int EV_CheckExec(int no);
 void ReleaseMissionObject();
 void FUN_007d21b0(void *param_1);
 extern unsigned char DAT_05b3739a;
@@ -82,6 +104,37 @@ void GM_WaitEvent(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x004c5190
+long GM_CheckClearEvent()
+{
+	struct GM_EVENT_TABLE *local_8;
+
+	local_8 = cleareventtable;
+	if (DAT_05b3e05c == 9)
+	{
+		return 0;
+	}
+	while (local_8->stage != 0x2b)
+	{
+		if (local_8->stage == DAT_05b9d724 && local_8->act == DAT_05b9d744 && local_8->chara == DAT_05b9d718)
+		{
+			if (EV_CheckExec(local_8->evexe) != 0)
+			{
+				local_8 = local_8 + 1;
+				continue;
+			}
+			ADX_Close();
+			EV_Load2(local_8->evexe);
+			EV_Exec2();
+			CreateElementalTask(0, 0, GM_WaitEventE);
+			DAT_05b9d728 = 0xffffffff;
+			return 1;
+		}
+		local_8 = local_8 + 1;
+	}
+	return 0;
+}
+
 // FUNCTION: SADX 0x004c5260
 void GM_WaitEventE(struct task *tp)
 {
@@ -123,6 +176,32 @@ long GM_CheckMode()
 	return local_8;
 }
 
+// FUNCTION: SADX 0x004c5300
+long InitGame()
+{
+	DAT_05b9d73c = 0x15;
+	DAT_05b9d774 = 0;
+	DAT_05cda154 = 0;
+	SetDefaultGravity();
+	DAT_05b93710 = 0;
+	DAT_05b9d778 = 0;
+	if (DAT_05cccc69 & 2)
+	{
+		DAT_05b42c1c = 0;
+	}
+	else
+	{
+		DAT_05b42c1c = 1;
+	}
+	if (GetNumPlayer() < 4)
+	{
+		ResetNumPlayer();
+	}
+	pdVibMxStop(0);
+	njSetMaterialCallBackFunc(ChangePowerMaterial);
+	return GM_CheckMode();
+}
+
 // FUNCTION: SADX 0x004c66b0
 bool IsNeedForcePause()
 {
@@ -151,6 +230,16 @@ void FUN_004c66e0()
 		FUN_004c9c90();
 	}
 	DAT_05b9d73c = 0x11;
+}
+
+// STUB: SADX 0x004c6720
+void GoNextAction()
+{
+}
+
+// STUB: SADX 0x004c75c0
+void GoNextAdventure()
+{
 }
 
 // FUNCTION: SADX 0x004c76a0
@@ -217,6 +306,47 @@ short FUN_004c8190(void)
 	DisplayScore();
 	DisplayTimer();
 	return local_cg;
+}
+
+// FUNCTION: SADX 0x004c8330
+short GameLoop()
+{
+	short local_8;
+
+	local_8 = 0;
+	GetSwitchData();
+	FUN_005a4d70();
+	if (DAT_05b3e05c == 0xa)
+	{
+		MissionMain();
+	}
+	LoopTask();
+	CCL_Analyze();
+	SpLoop();
+	CL_ColPolListUpRangeIn();
+	if (EV_CheckCansel() == 0)
+	{
+		if (GM_CheckMode() != 1)
+		{
+			AdvanceTime();
+		}
+		DAT_05b3ea16 = 0;
+	}
+	else
+	{
+		DAT_05b3ea16 = 0xff;
+	}
+	if (DAT_05b3e05c == 9)
+	{
+		if ((short)DAT_05b9d724 <= 0x19)
+		{
+			if ((short)DAT_05b9d724 > 0xe)
+			{
+				DAT_05b3ebba = 0xff;
+			}
+		}
+	}
+	return local_8;
 }
 
 // FUNCTION: SADX 0x004c83c0
@@ -325,6 +455,40 @@ void GM_BGM_Play(long bgm)
 	}
 }
 
+// FUNCTION: SADX 0x004c91e0
+void SetPlayerNumberForGame(unsigned short pno)
+{
+	long local_8;
+
+	ReleasePlayersTexture(DAT_05b9d718);
+	local_8 = DAT_05b9d718;
+	if (local_8 > 4)
+	{
+		local_8--;
+	}
+	if (local_8 > 1)
+	{
+		local_8--;
+	}
+	DAT_05b9d718 = pno;
+	LoadPlayerMotionData(DAT_05b9d718);
+	local_8 = DAT_05b9d718;
+	if (local_8 > 4)
+	{
+		local_8--;
+	}
+	if (local_8 > 1)
+	{
+		local_8--;
+	}
+	DAT_05b3ea14 = DAT_05cccc6a[local_8];
+	if (GetNumPlayer() < 4)
+	{
+		ResetNumPlayer();
+	}
+	ClearExtraDisplay();
+}
+
 // FUNCTION: SADX 0x004c9290
 void SetPlayerNumber(unsigned short pno)
 {
@@ -341,6 +505,30 @@ long GetPlayerNumber()
 long GetCountKilledPlayer()
 {
 	return DAT_05b9d740;
+}
+
+// FUNCTION: SADX 0x004c92c0
+void SetNextStageNumberForReturn()
+{
+	struct GM_START_POSANG *local_8;
+
+	DAT_05b9d748 = DAT_05b9d730;
+	DAT_05b9d770 = DAT_05b9d72c;
+	local_8 = paRPTable[DAT_05b9d718];
+	DAT_05b9d778 = 0;
+	while (local_8->stage != 0x2b)
+	{
+		if (local_8->stage == DAT_05b9d724)
+		{
+			DAT_05b9d778 = (int)local_8;
+			if (DAT_05b9d724 == 3)
+			{
+				DAT_05b9d770 = 5;
+			}
+			break;
+		}
+		local_8 = (struct GM_START_POSANG *)((char *)local_8 + 0x14);
+	}
 }
 
 // FUNCTION: SADX 0x004c9350
