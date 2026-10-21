@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1411" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">1,565 of 16,537 game functions done (9.46%), accuracy 100.00%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">1,575 of 16,537 game functions done (9.52%), accuracy 100.00%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="599,1155.5 605,1155.5 608,1159 602,1166 596,1159" fill="#2f6bff" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="599,1155.5 605,1155.5 603.5,1159 600.5,1159" fill="#ffffff" fill-opacity="0.45"/>
@@ -462,17 +462,17 @@
 <rect y="0" width="105" height="77" fill="url(#todo)"/>
 <rect y="77" width="21" height="7" fill="url(#todo)"/>
 </g>
-<rect x="607" y="782" width="61" height="112" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sand Hill: 4 of 52 done</title></rect>
-<text x="610" y="796" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sand</text>
-<text x="610" y="811" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hill</text>
-<text x="610" y="826" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">7%</tspan></text>
-<g transform="translate(610,830)">
-<rect y="0" width="56" height="42" fill="url(#todo)"/>
-<rect y="42" width="28" height="7" fill="url(#todo)"/>
-<rect x="0" y="42" width="6" height="6" fill="#b07d00"><title>0x007e88e0 execScore: 100%</title></rect>
-<rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x007e8920 SetRockyHead01Task: 100%</title></rect>
-<rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x007e8940 SetRockyHead02Task: 100%</title></rect>
-<rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x007e8960 SetRockyHead03Task: 100%</title></rect>
+<rect x="608" y="782" width="60" height="112" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sand Hill: 4 of 52 done</title></rect>
+<text x="611" y="796" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sand</text>
+<text x="611" y="811" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hill</text>
+<text x="611" y="826" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">7%</tspan></text>
+<g transform="translate(611,830)">
+<rect y="0" width="49" height="49" fill="url(#todo)"/>
+<rect y="49" width="21" height="7" fill="url(#todo)"/>
+<rect x="42" y="42" width="6" height="6" fill="#b07d00"><title>0x007e88e0 execScore: 100%</title></rect>
+<rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x007e8920 SetRockyHead01Task: 100%</title></rect>
+<rect x="7" y="49" width="6" height="6" fill="#b07d00"><title>0x007e8940 SetRockyHead02Task: 100%</title></rect>
+<rect x="14" y="49" width="6" height="6" fill="#b07d00"><title>0x007e8960 SetRockyHead03Task: 100%</title></rect>
 </g>
 <rect x="464" y="782" width="74" height="112" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Twinkle Circuit: 3 of 70 done</title></rect>
 <text x="467" y="796" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Twinkle</text>
@@ -485,7 +485,7 @@
 <rect x="35" y="49" width="6" height="6" fill="#b07d00"><title>0x007e6240 execObject: 100%</title></rect>
 <rect x="42" y="49" width="6" height="6" fill="#b07d00"><title>0x007e62d0 CartTimeDisplayTitle: 100%</title></rect>
 </g>
-<rect x="540" y="782" width="65" height="112" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Hedgehog Hammer: 0 of 42 done</title></rect>
+<rect x="540" y="782" width="66" height="112" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Hedgehog Hammer: 0 of 42 done</title></rect>
 <text x="543" y="796" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hedgehog</text>
 <text x="543" y="811" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hammer</text>
 <text x="543" y="826" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">0%</tspan></text>
@@ -511,12 +511,13 @@
 </g>
 <polygon points="678,528.5 684,528.5 687,532 681,539 675,532" fill="#7fe8ff" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="678,528.5 684,528.5 682.5,532 679.5,532" fill="#ffffff" fill-opacity="0.45"/>
-<text x="691" y="538" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">5%</tspan></text>
-<rect x="676" y="546" width="304" height="244" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 45 of 1,295 done</title></rect>
-<text x="679" y="560" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">3%</tspan></text>
+<text x="691" y="538" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">6%</tspan></text>
+<rect x="676" y="546" width="304" height="245" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 54 of 1,297 done</title></rect>
+<text x="679" y="560" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">4%</tspan></text>
 <g transform="translate(679,564)">
 <rect y="0" width="294" height="210" fill="url(#todo)"/>
-<rect y="210" width="245" height="7" fill="url(#todo)"/>
+<rect y="210" width="259" height="7" fill="url(#todo)"/>
+<rect x="252" y="7" width="6" height="6" fill="#b07d00"><title>0x00438e10 AL_ParameterControlInit: 100%</title></rect>
 <rect x="133" y="28" width="6" height="6" fill="#b07d00"><title>0x0043e000 AL_GetStageNumber: 100%</title></rect>
 <rect x="140" y="28" width="6" height="6" fill="#b07d00"><title>0x0043e010 AL_GetPreStageNumber: 100%</title></rect>
 <rect x="147" y="28" width="6" height="6" fill="#b07d00"><title>0x0043e020 AL_GetNextStageNumber: 100%</title></rect>
@@ -538,6 +539,9 @@
 <rect x="266" y="35" width="6" height="6" fill="#b07d00"><title>0x0043f390 FUN_0043f390: 100%</title></rect>
 <rect x="133" y="42" width="6" height="6" fill="#b07d00"><title>0x00440040 FUN_00440040: 100%</title></rect>
 <rect x="140" y="42" width="6" height="6" fill="#b07d00"><title>0x00440050 FUN_00440050: 100%</title></rect>
+<rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x00442ca0 AL_ConfirmSaveIsBusy: 100%</title></rect>
+<rect x="77" y="56" width="6" height="6" fill="#b07d00"><title>0x00442db0 AL_ConfirmLoadIsBusy: 100%</title></rect>
+<rect x="84" y="56" width="6" height="6" fill="#b07d00"><title>0x00442dc0 AL_ConfirmLoadIsLoaded: 100%</title></rect>
 <rect x="224" y="56" width="6" height="6" fill="#b07d00"><title>0x00443b40 AL_GetRaceInfo: 100%</title></rect>
 <rect x="231" y="56" width="6" height="6" fill="#b07d00"><title>0x00443c80 AL_GetCourseClearedLevel: 100%</title></rect>
 <rect x="203" y="63" width="6" height="6" fill="#b07d00"><title>0x0044a350 ALBHV_OsanpoThrown: 100%</title></rect>
@@ -548,84 +552,90 @@
 <rect x="238" y="63" width="6" height="6" fill="#b07d00"><title>0x0044a740 AL_SetBehavior: 100%</title></rect>
 <rect x="245" y="63" width="6" height="6" fill="#b07d00"><title>0x0044a9d0 AL_CanIWakeUp: 100%</title></rect>
 <rect x="252" y="63" width="6" height="6" fill="#b07d00"><title>0x0044bd10 ChaoDestructor: 100%</title></rect>
-<rect x="259" y="63" width="6" height="6" fill="#b07d00"><title>0x0044bdb0 KillChao: 100%</title></rect>
-<rect x="14" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c520 AlMsgStrLoad: 100%</title></rect>
-<rect x="217" y="154" width="6" height="6" fill="#b07d00"><title>0x0046ea30 FUN_0046ea30: 100%</title></rect>
-<rect x="161" y="168" width="6" height="6" fill="#b07d00"><title>0x00477b80 ghUnitVector: 100%</title></rect>
-<rect x="91" y="196" width="6" height="6" fill="#b07d00"><title>0x00494170 chCnkSetOffsetAlpha: 100%</title></rect>
-<rect x="98" y="196" width="6" height="6" fill="#b07d00"><title>0x004941d0 chCnkDrawObject: 100%</title></rect>
-<rect x="105" y="196" width="6" height="6" fill="#b07d00"><title>0x004941f0 chCnkDrawMotion: 100%</title></rect>
-<rect x="112" y="196" width="6" height="6" fill="#b07d00"><title>0x00494220 saCnkDrawMotionSA: 100%</title></rect>
-<rect x="119" y="196" width="6" height="6" fill="#b07d00"><title>0x00494250 saCnkDrawMotionLinkSA: 100%</title></rect>
-<rect x="133" y="196" width="6" height="6" fill="#b07d00"><title>0x00494650 GbaStatus: 100%</title></rect>
-<rect x="140" y="196" width="6" height="6" fill="#b07d00"><title>0x00494670 GbaCheck: 100%</title></rect>
-<rect x="224" y="196" width="6" height="6" fill="#b07d00"><title>0x007110e0 ALO_RingWinDelete: 100%</title></rect>
-<rect x="84" y="210" width="6" height="6" fill="#b07d00"><title>0x00714bf0 FUN_00714bf0: 100%</title></rect>
-<rect x="203" y="210" width="6" height="6" fill="#b07d00"><title>0x00716330 AL_ReleaseMessageTable: 100%</title></rect>
+<rect x="259" y="63" width="6" height="6" fill="#b07d00"><title>0x0044bda0 SetChaoLevel: 100%</title></rect>
+<rect x="266" y="63" width="6" height="6" fill="#b07d00"><title>0x0044bdb0 KillChao: 100%</title></rect>
+<rect x="21" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c520 AlMsgStrLoad: 100%</title></rect>
+<rect x="224" y="154" width="6" height="6" fill="#b07d00"><title>0x0046ea30 FUN_0046ea30: 100%</title></rect>
+<rect x="112" y="161" width="6" height="6" fill="#b07d00"><title>0x0046ffd0 FUN_0046ffd0: 100%</title></rect>
+<rect x="252" y="161" width="6" height="6" fill="#b07d00"><title>0x00474720 CreateCourseSelectMenuBeginner: 100%</title></rect>
+<rect x="175" y="168" width="6" height="6" fill="#b07d00"><title>0x00477b80 ghUnitVector: 100%</title></rect>
+<rect x="105" y="196" width="6" height="6" fill="#b07d00"><title>0x00494170 chCnkSetOffsetAlpha: 100%</title></rect>
+<rect x="112" y="196" width="6" height="6" fill="#b07d00"><title>0x004941d0 chCnkDrawObject: 100%</title></rect>
+<rect x="119" y="196" width="6" height="6" fill="#b07d00"><title>0x004941f0 chCnkDrawMotion: 100%</title></rect>
+<rect x="126" y="196" width="6" height="6" fill="#b07d00"><title>0x00494220 saCnkDrawMotionSA: 100%</title></rect>
+<rect x="133" y="196" width="6" height="6" fill="#b07d00"><title>0x00494250 saCnkDrawMotionLinkSA: 100%</title></rect>
+<rect x="147" y="196" width="6" height="6" fill="#b07d00"><title>0x00494650 GbaStatus: 100%</title></rect>
+<rect x="154" y="196" width="6" height="6" fill="#b07d00"><title>0x00494670 GbaCheck: 100%</title></rect>
+<rect x="238" y="196" width="6" height="6" fill="#b07d00"><title>0x007110e0 ALO_RingWinDelete: 100%</title></rect>
+<rect x="77" y="203" width="6" height="6" fill="#b07d00"><title>0x00712670 FUN_00712670: 100%</title></rect>
+<rect x="98" y="210" width="6" height="6" fill="#b07d00"><title>0x00714bf0 FUN_00714bf0: 100%</title></rect>
+<rect x="203" y="210" width="6" height="6" fill="#b07d00"><title>0x00716300 AL_DrawStopChaoParamWindow: 100%</title></rect>
+<rect x="217" y="210" width="6" height="6" fill="#b07d00"><title>0x00716330 AL_ReleaseMessageTable: 100%</title></rect>
 </g>
-<rect x="676" y="792" width="304" height="102" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 58 of 453 done</title></rect>
-<text x="679" y="806" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Race <tspan font-weight="400" fill="#59636e">12%</tspan></text>
-<g transform="translate(679,810)">
+<rect x="676" y="793" width="304" height="101" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 59 of 451 done</title></rect>
+<text x="679" y="807" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Race <tspan font-weight="400" fill="#59636e">13%</tspan></text>
+<g transform="translate(679,811)">
 <rect y="0" width="294" height="70" fill="url(#todo)"/>
-<rect y="70" width="231" height="7" fill="url(#todo)"/>
-<rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x004822a0 _alg_race_epilog: 100%</title></rect>
-<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00482320 AlrReal_Exe: 100%</title></rect>
-<rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x004823a0 AlrReal_exe_for_Race: 100%</title></rect>
-<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x00482480 AlrReal_Dsp: 100%</title></rect>
-<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x004824d0 AlrReal_Destructor: 100%</title></rect>
-<rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x00482520 GetChaoId: 100%</title></rect>
-<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x004825a0 FUN_004825a0: 100%</title></rect>
-<rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x004826e0 AlrReal_controlColliMode: 100%</title></rect>
-<rect x="119" y="14" width="6" height="6" fill="#b07d00"><title>0x004826f0 AlrReal_controlMode: 100%</title></rect>
-<rect x="126" y="14" width="6" height="6" fill="#b07d00"><title>0x00483070 AlrReal_changeAct_for_Race: 100%</title></rect>
-<rect x="133" y="14" width="6" height="6" fill="#b07d00"><title>0x00483140 AlrReal_changeAct_for_Entrance: 100%</title></rect>
-<rect x="140" y="14" width="6" height="6" fill="#b07d00"><title>0x00483240 AlrReal_createChao: 100%</title></rect>
-<rect x="147" y="14" width="6" height="6" fill="#b07d00"><title>0x00483270 AlrReal_createChaoALR: 100%</title></rect>
-<rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x004833e0 A_Life_for_ALR: 100%</title></rect>
-<rect x="161" y="14" width="6" height="6" fill="#b07d00"><title>0x00483410 AlrReal_setRanking: 100%</title></rect>
-<rect x="168" y="14" width="6" height="6" fill="#b07d00"><title>0x00483490 AlrReal_calcAverage: 100%</title></rect>
-<rect x="175" y="14" width="6" height="6" fill="#b07d00"><title>0x00483500 AlrReal_checkGoal: 100%</title></rect>
-<rect x="182" y="14" width="6" height="6" fill="#b07d00"><title>0x00483930 AlrReal_raceEndAlr: 100%</title></rect>
-<rect x="189" y="14" width="6" height="6" fill="#b07d00"><title>0x00483a00 AlrReal_SetCameraMode: 100%</title></rect>
-<rect x="196" y="14" width="6" height="6" fill="#b07d00"><title>0x00483a40 AlrReal_controlCamera: 100%</title></rect>
-<rect x="203" y="14" width="6" height="6" fill="#b07d00"><title>0x00483f00 AlrReal_incLook: 100%</title></rect>
-<rect x="210" y="14" width="6" height="6" fill="#b07d00"><title>0x00483f50 AlrReal_decLook: 100%</title></rect>
-<rect x="217" y="14" width="6" height="6" fill="#b07d00"><title>0x00483fa0 AlrReal_dspHead: 100%</title></rect>
-<rect x="224" y="14" width="6" height="6" fill="#b07d00"><title>0x00484060 AlrReal_offSonic: 100%</title></rect>
-<rect x="231" y="14" width="6" height="6" fill="#b07d00"><title>0x004840a0 AlrReal_onSonic: 100%</title></rect>
-<rect x="238" y="14" width="6" height="6" fill="#b07d00"><title>0x004840e0 AlrFanFan_clear: 100%</title></rect>
-<rect x="245" y="14" width="6" height="6" fill="#b07d00"><title>0x00484150 AlrFanFan_checkFanFan: 100%</title></rect>
-<rect x="252" y="14" width="6" height="6" fill="#b07d00"><title>0x004849a0 AlrReal_checkSaveJewel: 100%</title></rect>
-<rect x="259" y="14" width="6" height="6" fill="#b07d00"><title>0x00484a90 AlrReal_checkCommendation: 100%</title></rect>
-<rect x="266" y="14" width="6" height="6" fill="#b07d00"><title>0x004861e0 AlrCam_ConstraintAroundAng: 100%</title></rect>
-<rect x="273" y="14" width="6" height="6" fill="#b07d00"><title>0x00486880 Alr_SetWorkData: 100%</title></rect>
-<rect x="280" y="14" width="6" height="6" fill="#b07d00"><title>0x004868c0 Alr_Close: 100%</title></rect>
-<rect x="287" y="14" width="6" height="6" fill="#b07d00"><title>0x004868e0 Alr_Kill: 100%</title></rect>
-<rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x00486910 Alr_CheckOpen: 100%</title></rect>
-<rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x00486930 Alr_GetAwp: 100%</title></rect>
-<rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x00486950 Alr_GetTwp: 100%</title></rect>
-<rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x00486970 Alr_ExeWaterEff: 100%</title></rect>
-<rect x="119" y="28" width="6" height="6" fill="#b07d00"><title>0x00488c80 AllClearEntryDialog: 100%</title></rect>
-<rect x="126" y="28" width="6" height="6" fill="#b07d00"><title>0x00488cc0 SetCommandToDialog: 100%</title></rect>
-<rect x="133" y="28" width="6" height="6" fill="#b07d00"><title>0x00488cf0 FUN_00488cf0: 100%</title></rect>
-<rect x="140" y="28" width="6" height="6" fill="#b07d00"><title>0x00488d60 dialog_select: 100%</title></rect>
-<rect x="147" y="28" width="6" height="6" fill="#b07d00"><title>0x00488da0 FUN_00488da0: 100%</title></rect>
-<rect x="154" y="28" width="6" height="6" fill="#b07d00"><title>0x00488db0 FUN_00488db0: 100%</title></rect>
-<rect x="161" y="28" width="6" height="6" fill="#b07d00"><title>0x00488e30 dialog_dsp: 100%</title></rect>
-<rect x="168" y="28" width="6" height="6" fill="#b07d00"><title>0x00488f90 ClearPanel: 100%</title></rect>
-<rect x="175" y="28" width="6" height="6" fill="#b07d00"><title>0x00488fb0 Jewel_new: 100%</title></rect>
-<rect x="182" y="28" width="6" height="6" fill="#b07d00"><title>0x00489180 WinDestructor: 100%</title></rect>
-<rect x="189" y="28" width="6" height="6" fill="#b07d00"><title>0x004891b0 dialog_new: 100%</title></rect>
-<rect x="196" y="28" width="6" height="6" fill="#b07d00"><title>0x00489260 Jewel_Create: 100%</title></rect>
-<rect x="203" y="28" width="6" height="6" fill="#b07d00"><title>0x00489300 dialog_create: 100%</title></rect>
-<rect x="210" y="28" width="6" height="6" fill="#b07d00"><title>0x00489360 FUN_00489360: 100%</title></rect>
-<rect x="217" y="28" width="6" height="6" fill="#b07d00"><title>0x00489390 CallStart: 100%</title></rect>
-<rect x="224" y="28" width="6" height="6" fill="#b07d00"><title>0x004893c0 CallGoalin: 100%</title></rect>
-<rect x="231" y="28" width="6" height="6" fill="#b07d00"><title>0x004893f0 CallCool: 100%</title></rect>
-<rect x="238" y="28" width="6" height="6" fill="#b07d00"><title>0x00489420 CallJewelGet: 100%</title></rect>
-<rect x="217" y="35" width="6" height="6" fill="#b07d00"><title>0x0048a7f0 AlrObjFreeManageTask: 100%</title></rect>
-<rect x="189" y="63" width="6" height="6" fill="#b07d00"><title>0x00493700 AL_GetObjectEntryList: 100%</title></rect>
-<rect x="196" y="63" width="6" height="6" fill="#b07d00"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
+<rect y="70" width="217" height="7" fill="url(#todo)"/>
+<rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x004822a0 _alg_race_epilog: 100%</title></rect>
+<rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x00482320 AlrReal_Exe: 100%</title></rect>
+<rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x004823a0 AlrReal_exe_for_Race: 100%</title></rect>
+<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00482480 AlrReal_Dsp: 100%</title></rect>
+<rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x004824d0 AlrReal_Destructor: 100%</title></rect>
+<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x00482520 GetChaoId: 100%</title></rect>
+<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x004825a0 FUN_004825a0: 100%</title></rect>
+<rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x004826e0 AlrReal_controlColliMode: 100%</title></rect>
+<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x004826f0 AlrReal_controlMode: 100%</title></rect>
+<rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x00483070 AlrReal_changeAct_for_Race: 100%</title></rect>
+<rect x="119" y="14" width="6" height="6" fill="#b07d00"><title>0x00483140 AlrReal_changeAct_for_Entrance: 100%</title></rect>
+<rect x="126" y="14" width="6" height="6" fill="#b07d00"><title>0x00483240 AlrReal_createChao: 100%</title></rect>
+<rect x="133" y="14" width="6" height="6" fill="#b07d00"><title>0x00483270 AlrReal_createChaoALR: 100%</title></rect>
+<rect x="140" y="14" width="6" height="6" fill="#b07d00"><title>0x004833e0 A_Life_for_ALR: 100%</title></rect>
+<rect x="147" y="14" width="6" height="6" fill="#b07d00"><title>0x00483410 AlrReal_setRanking: 100%</title></rect>
+<rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x00483490 AlrReal_calcAverage: 100%</title></rect>
+<rect x="161" y="14" width="6" height="6" fill="#b07d00"><title>0x00483500 AlrReal_checkGoal: 100%</title></rect>
+<rect x="168" y="14" width="6" height="6" fill="#b07d00"><title>0x00483930 AlrReal_raceEndAlr: 100%</title></rect>
+<rect x="175" y="14" width="6" height="6" fill="#b07d00"><title>0x00483a00 AlrReal_SetCameraMode: 100%</title></rect>
+<rect x="182" y="14" width="6" height="6" fill="#b07d00"><title>0x00483a40 AlrReal_controlCamera: 100%</title></rect>
+<rect x="189" y="14" width="6" height="6" fill="#b07d00"><title>0x00483f00 AlrReal_incLook: 100%</title></rect>
+<rect x="196" y="14" width="6" height="6" fill="#b07d00"><title>0x00483f50 AlrReal_decLook: 100%</title></rect>
+<rect x="203" y="14" width="6" height="6" fill="#b07d00"><title>0x00483fa0 AlrReal_dspHead: 100%</title></rect>
+<rect x="210" y="14" width="6" height="6" fill="#b07d00"><title>0x00484060 AlrReal_offSonic: 100%</title></rect>
+<rect x="217" y="14" width="6" height="6" fill="#b07d00"><title>0x004840a0 AlrReal_onSonic: 100%</title></rect>
+<rect x="224" y="14" width="6" height="6" fill="#b07d00"><title>0x004840e0 AlrFanFan_clear: 100%</title></rect>
+<rect x="231" y="14" width="6" height="6" fill="#b07d00"><title>0x00484150 AlrFanFan_checkFanFan: 100%</title></rect>
+<rect x="238" y="14" width="6" height="6" fill="#b07d00"><title>0x004849a0 AlrReal_checkSaveJewel: 100%</title></rect>
+<rect x="245" y="14" width="6" height="6" fill="#b07d00"><title>0x00484a90 AlrReal_checkCommendation: 100%</title></rect>
+<rect x="252" y="14" width="6" height="6" fill="#b07d00"><title>0x004861e0 AlrCam_ConstraintAroundAng: 100%</title></rect>
+<rect x="259" y="14" width="6" height="6" fill="#b07d00"><title>0x00486880 Alr_SetWorkData: 100%</title></rect>
+<rect x="266" y="14" width="6" height="6" fill="#b07d00"><title>0x004868c0 Alr_Close: 100%</title></rect>
+<rect x="273" y="14" width="6" height="6" fill="#b07d00"><title>0x004868e0 Alr_Kill: 100%</title></rect>
+<rect x="280" y="14" width="6" height="6" fill="#b07d00"><title>0x00486910 Alr_CheckOpen: 100%</title></rect>
+<rect x="287" y="14" width="6" height="6" fill="#b07d00"><title>0x00486930 Alr_GetAwp: 100%</title></rect>
+<rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x00486950 Alr_GetTwp: 100%</title></rect>
+<rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x00486970 Alr_ExeWaterEff: 100%</title></rect>
+<rect x="105" y="28" width="6" height="6" fill="#b07d00"><title>0x00488c80 AllClearEntryDialog: 100%</title></rect>
+<rect x="112" y="28" width="6" height="6" fill="#b07d00"><title>0x00488cc0 SetCommandToDialog: 100%</title></rect>
+<rect x="119" y="28" width="6" height="6" fill="#b07d00"><title>0x00488cf0 FUN_00488cf0: 100%</title></rect>
+<rect x="126" y="28" width="6" height="6" fill="#b07d00"><title>0x00488d60 dialog_select: 100%</title></rect>
+<rect x="133" y="28" width="6" height="6" fill="#b07d00"><title>0x00488da0 FUN_00488da0: 100%</title></rect>
+<rect x="140" y="28" width="6" height="6" fill="#b07d00"><title>0x00488db0 FUN_00488db0: 100%</title></rect>
+<rect x="147" y="28" width="6" height="6" fill="#b07d00"><title>0x00488e30 dialog_dsp: 100%</title></rect>
+<rect x="154" y="28" width="6" height="6" fill="#b07d00"><title>0x00488f90 ClearPanel: 100%</title></rect>
+<rect x="161" y="28" width="6" height="6" fill="#b07d00"><title>0x00488fb0 Jewel_new: 100%</title></rect>
+<rect x="168" y="28" width="6" height="6" fill="#b07d00"><title>0x00489180 WinDestructor: 100%</title></rect>
+<rect x="175" y="28" width="6" height="6" fill="#b07d00"><title>0x004891b0 dialog_new: 100%</title></rect>
+<rect x="182" y="28" width="6" height="6" fill="#b07d00"><title>0x00489260 Jewel_Create: 100%</title></rect>
+<rect x="189" y="28" width="6" height="6" fill="#b07d00"><title>0x00489300 dialog_create: 100%</title></rect>
+<rect x="196" y="28" width="6" height="6" fill="#b07d00"><title>0x00489360 FUN_00489360: 100%</title></rect>
+<rect x="203" y="28" width="6" height="6" fill="#b07d00"><title>0x00489390 CallStart: 100%</title></rect>
+<rect x="210" y="28" width="6" height="6" fill="#b07d00"><title>0x004893c0 CallGoalin: 100%</title></rect>
+<rect x="217" y="28" width="6" height="6" fill="#b07d00"><title>0x004893f0 CallCool: 100%</title></rect>
+<rect x="224" y="28" width="6" height="6" fill="#b07d00"><title>0x00489420 CallJewelGet: 100%</title></rect>
+<rect x="77" y="35" width="6" height="6" fill="#b07d00"><title>0x00489cb0 ObjectAlrCracker_GetFlag: 100%</title></rect>
+<rect x="203" y="35" width="6" height="6" fill="#b07d00"><title>0x0048a7f0 AlrObjFreeManageTask: 100%</title></rect>
+<rect x="175" y="63" width="6" height="6" fill="#b07d00"><title>0x00493700 AL_GetObjectEntryList: 100%</title></rect>
+<rect x="182" y="63" width="6" height="6" fill="#b07d00"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
 </g>
 <polygon points="352,903.5 358,903.5 361,907 355,914 349,907" fill="#f2f5fb" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="352,903.5 358,903.5 356.5,907 353.5,907" fill="#ffffff" fill-opacity="0.45"/>

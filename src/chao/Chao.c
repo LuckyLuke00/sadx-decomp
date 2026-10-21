@@ -32,6 +32,12 @@ void ChaoDestructor(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x0044bda0
+void SetChaoLevel(long level)
+{
+	gsChaoLevel = level;
+}
+
 // FUNCTION: SADX 0x0044bdb0
 void KillChao(struct task *tp)
 {
