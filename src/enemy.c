@@ -47,10 +47,13 @@ float EnemyDist2FromAim(struct taskwk *twp, struct enemywk *ewp)
 	return local_8;
 }
 
-// STUB: SADX 0x005e3d10
-long FUN_005e3d10(struct taskwk *twp, struct enemywk *ewp)
+// FUNCTION: SADX 0x005e3d10
+long FUN_005e3d10(struct taskwk *param_1, struct enemywk *param_2)
 {
-	return (long)0;
+	long local_8;
+	local_8 = EnemyCalcAimAngle(param_1, param_2);
+	*(long *)((char *)param_1 + 0x18) = AdjustAngle(*(long *)((char *)param_1 + 0x18), param_2->aim_angle, param_2->angy_spd);
+	return local_8;
 }
 
 // STUB: SADX 0x005e3d60
