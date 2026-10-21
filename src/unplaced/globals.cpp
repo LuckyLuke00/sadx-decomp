@@ -59,6 +59,9 @@ char DAT_009960fc[1];
 // GLOBAL: SADX 0x0099b698
 const struct FlickyData flickydata[15] = {};
 
+// GLOBAL: SADX 0x00a0c8d8
+struct TaskInfo ObjectTaskInfo;
+
 // GLOBAL: SADX 0x01c6ede0
 float _nj_unit_matrix_[16];
 
@@ -599,6 +602,12 @@ struct CCL_INFO ColliInfo[1];
 // GLOBAL: SADX 0x026f0870
 struct NJS_TEXLIST texlist_mapMR;
 
+// GLOBAL: SADX 0x026f1ac4
+struct NJS_POINT3 pos_finalegg;
+
+// GLOBAL: SADX 0x026f1b20
+struct NJS_POINT3 DAT_026f1b20;
+
 // GLOBAL: SADX 0x02709244
 struct NJS_ACTION action_g_g0023_eggman[1];
 
@@ -739,6 +748,9 @@ long amb;
 
 // GLOBAL: SADX 0x03527f50
 struct NJS_SPRITE DAT_03527f50;
+
+// GLOBAL: SADX 0x035af6d8
+struct ActionParam DAT_035af6d8;
 
 // GLOBAL: SADX 0x03711078
 struct NJS_POINT3 point[5];
@@ -1844,8 +1856,23 @@ unsigned char DAT_05bafb45;
 // GLOBAL: SADX 0x05bafb46
 unsigned char DAT_05bafb46;
 
+// GLOBAL: SADX 0x05bafb4a
+unsigned char DAT_05bafb4a;
+
 // GLOBAL: SADX 0x05bafc0d
 unsigned char DAT_05bafc0d;
+
+// GLOBAL: SADX 0x05bafc2a
+unsigned char DAT_05bafc2a;
+
+// GLOBAL: SADX 0x05bafc2b
+unsigned char DAT_05bafc2b;
+
+// GLOBAL: SADX 0x05bafc87
+unsigned char DAT_05bafc87;
+
+// GLOBAL: SADX 0x05bafc89
+unsigned char DAT_05bafc89;
 
 // GLOBAL: SADX 0x05bafd18
 short DAT_05bafd18;
@@ -2794,6 +2821,36 @@ long DAT_060ce758;
 
 // GLOBAL: SADX 0x060ce760
 void *DAT_060ce760;
+
+// GLOBAL: SADX 0x060cef18
+long DAT_060cef18;
+
+// GLOBAL: SADX 0x060cef1c
+float DAT_060cef1c;
+
+// GLOBAL: SADX 0x060cef20
+long DAT_060cef20;
+
+// GLOBAL: SADX 0x060cef24
+float DAT_060cef24;
+
+// GLOBAL: SADX 0x060cef28
+float DAT_060cef28;
+
+// GLOBAL: SADX 0x060cef2c
+float DAT_060cef2c;
+
+// GLOBAL: SADX 0x060cef30
+long DAT_060cef30;
+
+// GLOBAL: SADX 0x060cef34
+long DAT_060cef34;
+
+// GLOBAL: SADX 0x060d0acc
+int DAT_060d0acc;
+
+// GLOBAL: SADX 0x060d0ad0
+int DAT_060d0ad0;
 
 // GLOBAL: SADX 0x060dd870
 struct task *DAT_060dd870;

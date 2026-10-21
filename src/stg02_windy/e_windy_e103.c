@@ -1,5 +1,7 @@
 #include "decls.h"
 #include <stdlib.h>
+void FUN_0080f4e0(struct task *param_1);
+void FUN_0080e4a0(int param_1, struct task *param_2);
 
 // FUNCTION: SADX 0x007062a0
 static void exec_Lightning(struct task *pTask)
@@ -45,4 +47,57 @@ void breakLightning(struct task *pTask)
 		local_8->value.ptr = pTask;
 		dsPlay_oneshot(156, 0, 0, 0);
 	}
+}
+
+// STUB: SADX 0x0080e350
+int FUN_0080e350(struct task *pTask, float fVar)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0080e440
+long chkBattleZone(struct task *pTask)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0080e4a0
+void FUN_0080e4a0(int param_1, struct task *pTask)
+{
+}
+
+// STUB: SADX 0x0080e4e0
+void execTgt(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x0080e520
+void FUN_0080e520(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x0080e590
+int FUN_0080e590(struct task *pTask)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0080ead0
+void jump(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x0080f4b0
+void callbackTgt(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x0080f4e0
+void FUN_0080f4e0(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x0080fa40
+void EnemyWindyE103(struct task *pTask)
+{
 }

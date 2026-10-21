@@ -10,3 +10,8 @@ void initBigMR02()
 	}
 	SeqSetTime(0);
 }
+
+// STUB: SADX 0x006a9ed0
+void mainBigMR02(int seqno)
+{
+}
