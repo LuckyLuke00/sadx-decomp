@@ -34,6 +34,7 @@ The game files:
 | `data/source-files.csv`, `data/classes.csv` | Functions that use each source path in the exe, and each class's vtable, methods and users. `check.py sources` writes them. |
 | `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the progress map's sections and the name the map shows for each area. A `map` section may have a `color`, a quoted `"#rrggbb"`, for the gem before its title. `check.py areas` writes the guess to `areas.csv`. |
 | `src/library.csv` | Runtime library functions and their globals, matched by name. |
+| `data/llm-hints.txt` | Optional. The game's facts for the system prompt of `tools/llm.py`, such as which release the exe is. |
 | `src/header-functions.h` | `LIBRARY` annotations for header functions the linker kept in game code, such as `swprintf`. Written by hand in a header, since the lint rejects them in a `.cpp`. |
 | `CLAUDE.md` | Imports `docs/CLAUDE-GENERIC.md`, then adds the game's facts for Claude. |
 | `README.md` | The game's page. It shows the visuals in `docs/progress`. |
@@ -179,6 +180,55 @@ JAVA_HOME="<JDK 21 folder>" "<Ghidra folder>/support/analyzeHeadless.bat" "<empt
 
 It skips the drafts that exist, so a run that stopped goes on where it was. A file of hex addresses after the folder name, one a line, limits it to those functions.
 
-## Name tables
+## LLM agents
 
-`decls` and `dossier` take `--tables DIR`, a folder of name tables for names the tree does not know yet: tab-separated `functions.tsv` and `globals.tsv`, and `types.h`. [tools/declgen.py](../tools/declgen.py) lists their columns. `decls --context DIR` names another checkout, whose source files give signatures and globals. `dossier --drafts DIR` reads Ghidra's drafts from DIR in place of `build/decomp`.
+[tools/llm.py](../tools/llm.py) lets a language model decompile functions, with the build's score as its feedback. Any server with an OpenAI-style `/chat/completions` works: llama.cpp, Ollama, LM Studio, vLLM or a hosted API. Set up the game first, as for `fn`.
+
+```bash
+python tools/llm.py init
+python tools/llm.py bench
+python tools/llm.py report
+python tools/llm.py solve src/unplaced/FUN_00401000.c 0x00401000
+```
+
+- `init` finds the server, picks its model and tests what the server takes. It tests a seed, and a switch that turns thinking on and off. It writes the settings to `llm.json`, which git ignores. [tools/llmclient.py](../tools/llmclient.py) lists the keys. `--start "COMMAND"` saves the command that starts the server. The other commands then start it when nothing answers, and stop it when they exit. `--key-env VAR` names the environment variable that holds an API key, so the key stays out of the file. When no server answers and there is no start command, `init` prints the GPU and its memory.
+- `bench` solves functions that already match, each from a start without the function. It puts the files back after. Its first run picks 5 matched functions of each size bucket and saves the set. It uses seed 1. A rerun gives the same results when `init` found that the server repeats a reply for a seed. Use it to compare models, prompts and settings. Results go to `build/llm/<tag>`. `--tag` names the run, by default after the prompt.
+- `report` sums up each run: functions matched, mean score, tries, tokens and time.
+- `solve FILE ADDRESS...` works on new functions in this checkout. The best attempt stays in the file. Check it with `check.py fn`.
+
+`--prompt NAME` picks the system prompt `tools/prompts/NAME.txt`. `data/llm-hints.txt` adds the game's facts to it. When `init` found a thinking switch, the tries think after 3 tries without a better score. They think until the score moves again.
+
+### Model and memory
+
+The prompts need a context of at least 32k tokens. 48k leaves room. The biggest first prompt of the default bench is about 12,500 tokens. A thinking try can write up to 12,000. For Qwen3.8 27B, this table picks a file of `unsloth/Qwen3.8-27B-GGUF` by GPU memory. The context needs memory too, so use the table as a rough guide. The 16 GB row runs with the llama.cpp command below.
+
+| GPU memory | File | File size |
+| --- | --- | --- |
+| 16 GB | `UD-Q3_K_XL` | 13.1 GB |
+| 24 GB | `UD-Q4_K_XL` | 17.6 GB |
+| 32 GB | `UD-Q6_K_XL` | 25.3 GB |
+| 48 GB or more | `UD-Q8_K_XL` | 31.5 GB |
+
+### Servers
+
+| Server | How to start it | URL for `init` |
+| --- | --- | --- |
+| llama.cpp | `winget install llama.cpp`, then `llama-server -hf unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL -ngl all -c 49152 -fa on -ctk q8_0 -ctv q8_0`. `-hf` downloads the model on the first start | `http://127.0.0.1:8080/v1` |
+| Ollama | `ollama pull <model>`, and set `OLLAMA_CONTEXT_LENGTH=49152` before `ollama serve`. The default context is too small | `http://127.0.0.1:11434/v1` |
+| LM Studio | Load a model with a context of 48k or more, and start the local server | `http://127.0.0.1:1234/v1` |
+| vLLM | `vllm serve <model>` | `http://127.0.0.1:8000/v1` |
+| Hosted API | Nothing to start: pass `--key-env` | The API's URL before `/chat/completions` |
+
+To let the harness start llama.cpp itself:
+
+```bash
+python tools/llm.py init --url http://127.0.0.1:8080/v1 --start "llama-server -hf unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL -ngl all -c 49152 -fa on -ctk q8_0 -ctv q8_0"
+```
+
+The server's output goes to `build/llm/server.log`. The first start downloads the model. If that takes longer than `start_timeout` (900 seconds), raise it in `llm.json`. If the server refuses a field, `init` names it. `extra_body` in `llm.json` adds fields to every request. A null value removes one.
+
+### Name tables and other folders
+
+`decls`, `dossier` and the `tables` key of `llm.json` take a folder of name tables. The tables give names that the tree does not know yet. The folder holds tab-separated `functions.tsv` and `globals.tsv`, and `types.h`. [tools/declgen.py](../tools/declgen.py) lists their columns. The `context` key names another checkout. Its source files serve as examples, and `decls` reads its signatures. The `drafts` key names a folder of Ghidra drafts in place of `build/decomp`.
+
+[tests/llm/mock_server.py](../tests/llm/mock_server.py) is a fake server, to test the harness without a model.

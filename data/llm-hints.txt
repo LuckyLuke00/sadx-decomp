@@ -1,0 +1,3 @@
+About this game:
+- The exe is the 2014 Steam release of Sonic Adventure DX.
+- NJS_POINT3 is a struct of three floats, 12 bytes. A copy of 12 bytes from one address to another is often an NJS_POINT3 assignment, and a local NJS_POINT3 brings the `__security_cookie` check.

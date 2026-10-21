@@ -54,6 +54,7 @@ def run() -> int:
     failures += check_read_blobs()
     failures += check_misplaced_annotations()
     failures += check_local_declarations()
+    failures += check_tree_conflicts()
     failures += check_declaration_keys()
     failures += check_decls_trees()
     failures += check_nested_globals()
@@ -238,6 +239,34 @@ def check_local_declarations() -> list[str]:
     found = [name for name, _ in names.local_declarations(text)[0]]
     wanted = ["Bar", "Baz"]
     return [] if found == wanted else [f"local_declarations finds {found}, not {wanted}"]
+
+
+def check_tree_conflicts() -> list[str]:
+    """Each kind of clash line drops the model's own declaration of that name, and only that one. A declaration over
+    two lines stays: dropping one of its lines would break the file. A global inside another global stays too:
+    without the declaration, the code that uses the name has no type for it."""
+    import llm  # here, not at the top: it needs .venv's packages, and check.py imports this module before .venv
+    decls = ["extern int DAT_05baf368; // eight slots", "extern int DAT_05cda1b0[1];",
+             "void FUN_004b66c0(void **param_1);", "extern short DAT_05b42998;", "extern unsigned char DAT_05b3e04c;",
+             "void FUN_004f8070(void *param_1,", "    int param_2);"]
+    lines = ["decls: DAT_05baf368: sources declare it in 2 ways: int DAT_05baf368 | short *DAT_05baf368",
+             "decls: DAT_05cda1b0: src/CameraStageTable.c declares it `unsigned long DAT_05cda1b0` in the context "
+             "tree. Declare it that way too.",
+             "decls: FUN_004b66c0: the tree declares it `void __fastcall FUN_004b66c0(void **param_1)`, a file here "
+             "declares it `void FUN_004b66c0(void **)`. Remove that declaration: a second signature is a C++ overload "
+             "that never links.",
+             "decls: FUN_004f8070: the tree declares it `void FUN_004f8070(void *param_1)`, a file here declares it "
+             "`void FUN_004f8070(void *, int)`. Remove that declaration: a second signature is a C++ overload that "
+             "never links.",
+             "decls: DAT_05b932f0: sources declare it in 2 ways: char DAT_05b932f0[1024] | long DAT_05b932f0[16]",
+             "decls: DAT_05b3e04c: inside DAT_05b3e040 (struct NJS_ARGB) at +12. Remove that declaration and reach it "
+             "through DAT_05b3e040."]
+    wanted = (["extern short DAT_05b42998;", "extern unsigned char DAT_05b3e04c;", "void FUN_004f8070(void *param_1,",
+               "    int param_2);"],
+              {"DAT_05baf368": ["short *DAT_05baf368"], "DAT_05cda1b0": ["unsigned long DAT_05cda1b0"],
+               "FUN_004b66c0": ["void __fastcall FUN_004b66c0(void **param_1)"]})
+    found = llm.tree_conflicts(decls, lines)
+    return [] if found == wanted else [f"tree_conflicts gives {found}, not {wanted}"]
 
 
 def check_declaration_keys() -> list[str]:
