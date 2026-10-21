@@ -71,6 +71,11 @@ void AL_SetNextBehavior(struct task *tp, long (*Func)(struct task *))
 {
 }
 
+// STUB: SADX 0x0044a780
+void AL_BehaviorInit(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0044a960
 long ALBHV_OdekakeEject(struct task *tp)
 {

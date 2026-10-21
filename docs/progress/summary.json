@@ -650,6 +650,14 @@
    "library": false
   },
   {
+   "address": "0x0043de30",
+   "name": "ALW_CancelEntry",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043e000",
    "name": "AL_GetStageNumber",
    "accuracy": 1.0,
@@ -1010,6 +1018,14 @@
    "library": false
   },
   {
+   "address": "0x0044a780",
+   "name": "AL_BehaviorInit",
+   "accuracy": 0.047619047619047616,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0044a960",
    "name": "ALBHV_OdekakeEject",
    "accuracy": 0.058823529411764705,
@@ -1026,11 +1042,51 @@
    "library": false
   },
   {
+   "address": "0x0044aa10",
+   "name": "AL_SleepControl",
+   "accuracy": 0.025,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044af50",
+   "name": "ALBHV_Tron",
+   "accuracy": 0.04938271604938271,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0044b1f0",
    "name": "AL_CalcIntentionScore_Tron",
    "accuracy": 0.046511627906976744,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044b9d0",
+   "name": "ALBHV_SleepSelect",
+   "accuracy": 0.05714285714285714,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044bab0",
+   "name": "AL_CalcIntentionScore_Sleep",
+   "accuracy": 0.03773584905660377,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044bd10",
+   "name": "ChaoDestructor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -1063,6 +1119,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00450210",
+   "name": "AL_ShapeExit",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -1959,6 +2023,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00494690",
+   "name": "chCalcWorldPosFromScreenPos",
+   "accuracy": 0.03773584905660377,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -3103,6 +3175,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004a2a30",
+   "name": "late_exec",
+   "accuracy": 0.008324661810613945,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -24931,5 +25011,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "37719252e037ca77f4dbc079737182cbc964bad0d9018eba0bf3284430aacbcc"
+ "inputs_sha256": "05085f90b8f27e1f4cd37173309781f13846c9c0990b1743c45e4327b3b67611"
 }

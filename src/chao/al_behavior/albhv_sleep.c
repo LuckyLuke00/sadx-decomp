@@ -14,7 +14,29 @@ long AL_CanIWakeUp(struct task *tp)
 	return 0;
 }
 
+// STUB: SADX 0x0044aa10
+void AL_SleepControl(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0044af50
+long ALBHV_Tron(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0044b1f0
 void AL_CalcIntentionScore_Tron(struct task *tp, float *pMaxScore)
+{
+}
+
+// STUB: SADX 0x0044b9d0
+long ALBHV_SleepSelect(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0044bab0
+void AL_CalcIntentionScore_Sleep(struct task *tp, float *pMaxScore)
 {
 }
