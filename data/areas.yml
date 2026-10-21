@@ -25,6 +25,7 @@ tree:
   - ['^src/mini_cart/', twinkle_circuit]
   - ['^src/mission/', missions]
   - ['^src/movie/', engine]
+  - ['^src/sandboard/', sand_hill]
   - ['^src/shareobj/', objects]  # objects that several stages share
   - ['^src/shinobi/', ninja]
   - ['^src/sonicdxgg/', game_gear]
@@ -44,6 +45,7 @@ tree:
   - ['^src/stg02_windy/', windy_valley]
   - ['^src/stg03_twinkle/', twinkle_park]
   - ['^src/stg04_highway/', speed_highway]
+  - ['^src/stg05_mountain/', red_mountain]
   - ['^src/stg06_skydeck/', sky_deck]
   - ['^src/stg07_ruin/', lost_world]
   - ['^src/stg08_icecap/', ice_cap]

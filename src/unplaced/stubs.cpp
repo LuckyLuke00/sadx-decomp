@@ -1468,6 +1468,11 @@ void EffectSmoke(struct sp_task *, struct sp_link *)
 {
 }
 
+// STUB: SADX 0x005539d0
+void CreateFire(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
+{
+}
+
 // STUB: SADX 0x00553be0
 void CreateInitData()
 {
@@ -2559,6 +2564,17 @@ void dispObject(struct task *task_p)
 {
 }
 
+// STUB: SADX 0x007e7150
+struct task *SandObjSetChildTask(const struct TaskInfo *info_p, void *param_p)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x007e8860
+void dispScore(struct task *task_p)
+{
+}
+
 // STUB: SADX 0x007f2100
 long GameGearLoop()
 {
@@ -2577,10 +2593,14 @@ long ChkE104ColliLandXZ(struct NJS_POINT3 *pPos, float fDistChk, float *pfGround
 	return (long)0;
 }
 
-// STUB: SADX 0x00812d00
-struct task *createMirrorTask(struct task *tp)
+// STUB: SADX 0x00811230
+void CameraWindyTgtDeath(struct _OBJ_CAMERAPARAM *pParam)
 {
-	return (struct task *)0;
+}
+
+// STUB: SADX 0x00812c40
+void execMirrorTask(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00825de0
