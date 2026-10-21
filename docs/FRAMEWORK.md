@@ -1,15 +1,15 @@
 # The decomp framework
 
-The framework builds a matching decompilation of one 32-bit Windows exe. It compiles the source with the exe's own compiler and scores every function against the original. Nothing in it is game-specific: each game's facts live in a few game files. This repo's game is in [README.md](../README.md). To start a new game, follow [PORTING.md](PORTING.md).
+The framework builds a matching decompilation of one 32-bit Windows exe. It compiles the source with the exe's own compiler and scores every function against the original. Nothing in it is game-specific. Each game's facts are in a few game files. [README.md](../README.md) describes this repo's game. To start a new game, follow [PORTING.md](PORTING.md).
 
 ## What it supports
 
 - One 32-bit x86 Windows exe with a GUI or console subsystem. DLLs are not supported.
-- Code built with Visual C++ 2010 SP1 (`cl.exe` 16.00.40219.01). `check.py probe` says whether an exe qualifies. PORTING.md says what another compiler takes.
-- An exe with a Rich header, which Microsoft's linker writes. `probe` and `gate` stop without one.
-- A static or DLL C runtime (`MSVCR100.dll`). The DLL runtime is tested on three small test exes only.
-- The headers and libraries in `.toolchain`, which hold no D3DX, MFC or ATL. PORTING.md says what a game that uses them takes.
-- Windows 10 build 17063 or newer (has `tar.exe`), Python 3.10 or newer and git. Every command is tested on Windows 11 with Python 3.13. CI is set to run `ci` with Python 3.12 on GitHub's latest Windows image, but has not run yet.
+- Code built with Visual C++ 2010 SP1 (`cl.exe` 16.00.40219.01). `check.py probe` shows whether an exe qualifies. PORTING.md says what another compiler needs.
+- An exe with a Rich header. Microsoft's linker writes it. `probe` and `gate` stop without one.
+- A static or DLL C runtime (`MSVCR100.dll`). Only three small test exes test the DLL runtime.
+- The headers and libraries in `.toolchain`. They hold no D3DX, MFC or ATL. PORTING.md says what a game that uses them needs.
+- Windows 10 build 17063 or newer (it has `tar.exe`), Python 3.10 or newer and git. Testing covers every command on Windows 11 with Python 3.13. The CI workflow will run `ci` with Python 3.12 on GitHub's latest Windows image. It has not run yet.
 
 ## Framework files and game files
 
@@ -20,22 +20,22 @@ The framework builds a matching decompilation of one 32-bit Windows exe. It comp
 | `.gitignore`, `.gitattributes` | `src/`, `data/` |
 | `docs/CLAUDE-GENERIC.md`, `docs/FRAMEWORK.md`, `docs/PORTING.md` | `docs/STYLE.md`, `docs/progress/` |
 
-To update a game's copy of the framework, run the copy command in [PORTING.md](PORTING.md#3-make-the-repo) step 3 without its `mkdir`, `git init` and `git add` lines. It only copies, so delete by hand any file the framework dropped. Rerun the [Ghidra command](#function-list) if the copy changed `tools/ghidra`. Rerun `check.py library` if it changed `tools/library.py` or `tools/libobjects.py`, or if the function list changed. Then run `check.py gate`, which fails after the copy changed a build input such as `CMakeLists.txt` or `tools/check.py` until `check.py save` records the scores again. Framework files quote SADX only as worked examples.
+To update a game's copy of the framework, run the copy command in [PORTING.md](PORTING.md#3-make-the-repo) step 3. Leave out its `mkdir`, `git init` and `git add` lines, because the command only copies. Delete by hand any file the framework dropped. Rerun the [Ghidra command](#function-list) if the copy changed `tools/ghidra`. Rerun `check.py library` in two cases. The first is a copy that changed `tools/library.py` or `tools/libobjects.py`. The second is a changed function list. Then run `check.py gate`. After a copy changes a build input such as `CMakeLists.txt` or `tools/check.py`, `gate` fails until `check.py save` records the scores again. Framework files quote SADX only as worked examples.
 
 The game files:
 
 | File | What it holds |
 | --- | --- |
-| `reccmp-project.yml` | reccmp's target: the target name, the exe's filename and SHA-256, the source folder and the data sources. It must hold exactly one target. The name goes in every annotation, and reccmp's lint accepts capitals and digits only. |
-| `game.cmake` | Build settings for the `game` target, which `CMakeLists.txt` adds with the framework's flags before including this file: PE header link flags, the subsystem, and any include folders, defines or runtime choice. |
+| `reccmp-project.yml` | reccmp's target: the target name, the exe's filename and SHA-256, the source folder and the data sources. It must hold exactly one target. The name goes in every annotation. reccmp's lint accepts capitals and digits only. |
+| `game.cmake` | Build settings for the `game` target. `CMakeLists.txt` adds the target with the framework's flags before it includes this file. The settings are PE header link flags, the subsystem, and any include folders, defines or runtime choice. |
 | `data/functions.csv` | Every function Ghidra finds in the exe's code, except imported functions and their jmp stubs. |
 | `data/codegen-groups.csv` | Code groups: address ranges with their compiler flags and the evidence for them. |
-| `data/file-clusters.csv` | Functions in one row of `data/codegen-groups.csv` that pass each other register arguments. Without `/GL` such a call stays inside one source file, so a cluster mostly shares a file. Two things join files: `/GL`, and the linker folding identical `static` functions, which sends a call to another file's copy. |
+| `data/file-clusters.csv` | Functions in one row of `data/codegen-groups.csv` that pass each other register arguments. Without `/GL` such a call stays inside one source file, so a cluster mostly shares a file. Two things join files: `/GL`, and the linker folding identical `static` functions. Folding sends a call to another file's copy. |
 | `data/source-files.csv`, `data/classes.csv` | Functions that use each source path in the exe, and each class's vtable, methods and users. `check.py sources` writes them. |
-| `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the progress map's sections and the name the map shows for each area. A `map` section may have a `color`, a quoted `"#rrggbb"`, for the gem before its title. `check.py areas` writes the guess to `areas.csv`. |
+| `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the sections of the progress map and the name the map shows for each area. A `map` section can have a `color`, a quoted `"#rrggbb"`, for the gem before its title. `check.py areas` writes the guess to `areas.csv`. |
 | `src/library.csv` | Runtime library functions and their globals, matched by name. |
 | `data/llm-hints.txt` | Optional. The game's facts for the system prompt of `tools/llm.py`, such as which release the exe is. |
-| `src/header-functions.h` | `LIBRARY` annotations for header functions the linker kept in game code, such as `swprintf`. Written by hand in a header, since the lint rejects them in a `.cpp`. |
+| `src/header-functions.h` | `LIBRARY` annotations for header functions the linker kept in game code, such as `swprintf`. Written by hand in a header. The lint rejects them in a `.cpp`. |
 | `CLAUDE.md` | Imports `docs/CLAUDE-GENERIC.md`, then adds the game's facts for Claude. |
 | `README.md` | The game's page. It shows the visuals in `docs/progress`. |
 | `docs/STYLE.md` | Naming, file layout and language, with the evidence. |
@@ -53,26 +53,26 @@ void FUN_00401000(int value)
 }
 ```
 
-`tools/check.py` compiles the source with the game's own compiler. Then [reccmp](https://github.com/isledecomp/reccmp), the scoring tool from the [LEGO Island decompilation](https://github.com/isledecomp/isle), disassembles both copies of every annotated function and compares the instructions.
+`tools/check.py` compiles the source with the game's own compiler. Then [reccmp](https://github.com/isledecomp/reccmp) disassembles both copies of every annotated function and compares the instructions. reccmp is the scoring tool from the [LEGO Island decompilation](https://github.com/isledecomp/isle).
 
 | Figure | Meaning |
 | --- | --- |
-| Score | The share of instructions the same in both copies. The game's copy runs to the end of its row in `data/functions.csv`, so code ours lacks at the end counts as a miss. Calls and globals compare by name, so a function can match at another address in our exe. |
-| Matched | A score of 100%. reccmp also calls some misses an *effective* match (other registers or another instruction order), but its check is loose and can pass code that behaves differently. So an effective match keeps its score and the totals count it apart as *effective*. |
+| Score | The share of instructions that are the same in both copies. The game's copy runs to the end of its row in `data/functions.csv`. Code that our copy lacks at the end counts as a miss. Calls and globals compare by name. A function can match at another address in our exe. |
+| Matched | A score of 100%. reccmp also calls some misses an *effective* match (other registers or another instruction order). Its check is loose and can pass code that behaves differently. An effective match keeps its score. The totals count it apart as *effective*. |
 | Decompiled | The share of game functions that have a body. Stubs do not count. |
 | Accuracy | The average score of the decompiled functions. |
 
-Constants compare by value. reccmp finds a float or string literal only where a relocation marks the operand as an address. Our exe keeps relocations (`/FIXED:NO`) and the game's has none, so after each build `check.py` reads the game's code and writes the floats and strings it uses to `build/constants.csv`. reccmp adds these rows after matching, along with the constants it finds itself, so a variable's name still wins. A row with no name covers an address our PDB doesn't name either, such as a compiler-made exception handler stub. [tools/constants.py](../tools/constants.py) has the rules. Literals and floats need no annotation, except a wide literal of one character or with a character outside Latin-1: docs/CLAUDE-GENERIC.md says how.
+Constants compare by value. reccmp finds a float or string literal only where a relocation marks the operand as an address. Our exe keeps relocations (`/FIXED:NO`). The game's exe has none. So after each build `check.py` reads the game's code and writes its floats and strings to `build/constants.csv`. reccmp adds these rows after matching, with the constants it finds itself. A variable's name still wins. A nameless row covers an address that our PDB does not name, such as a compiler-made exception handler stub. [tools/constants.py](../tools/constants.py) has the rules. Literals and floats need no annotation. The exception is a wide literal of one character or with a character outside Latin-1. docs/CLAUDE-GENERIC.md says how.
 
-**Game functions** are the functions in `data/functions.csv` in a `game` range of `data/codegen-groups.csv`. Functions in `library` ranges do not count, nor does compiler-made code such as the `Unwind@` funclets, which gets a `library` range of its own. A function's catch blocks and the filters and handlers of its SEH `__try` blocks are part of it. Runtime functions listed in `src/library.csv` and game functions with a `LIBRARY` annotation show apart. Every function annotation must be at the start of a game function, or the annotation lint fails. A `STUB` is the one exception: it may start any function in `data/functions.csv`, such as a library function that game code calls, since the totals skip stubs.
+**Game functions** are the functions in `data/functions.csv` in a `game` range of `data/codegen-groups.csv`. Functions in `library` ranges do not count. Compiler-made code, such as the `Unwind@` funclets, does not count either. It gets a `library` range of its own. A function's catch blocks and the filters and handlers of its SEH `__try` blocks are part of it. Runtime functions listed in `src/library.csv` show apart. Game functions with a `LIBRARY` annotation also show apart. Every function annotation must be at the start of a game function, or the annotation lint fails. A `STUB` is the one exception. It can start any function in `data/functions.csv`, such as a library function that game code calls. The totals skip stubs.
 
-The same source always gives the same score. `docs/progress/summary.json` keeps the last accepted score of every function, and `check.py gate` fails if any score drops.
+The same source always gives the same score. `docs/progress/summary.json` keeps the last accepted score of every function. `check.py gate` fails if any score drops.
 
 Three checks show that the toolchain is the game's own:
 
-1. **Rich header.** Every tool build that made our exe is also in the game's Rich header (`check.py gate`). Only build numbers compare, since product ids depend on each game's mix of C, C++ and `/GL` objects. If an import library fails it, [PORTING.md](PORTING.md#import-libraries) has the fix.
+1. **Rich header.** Every tool build that made our exe is also in the game's Rich header (`check.py gate`). Only build numbers compare. Product ids depend on each game's mix of C, C++ and `/GL` objects. If an import library fails the check, [PORTING.md](PORTING.md#import-libraries) has the fix.
 2. **Runtime library.** A CRT function from `src/library.csv` that scores 100% shows our copy of the library is the game's.
-3. **Self-test.** A small known program in `tests/selftest` builds to the same SHA-256 every time, and reccmp scores it exactly as pinned (`check.py ci`).
+3. **Self-test.** A small known program in `tests/selftest` builds to the same SHA-256 every time. reccmp scores it exactly as pinned (`check.py ci`).
 
 ## Commands
 
@@ -80,27 +80,27 @@ Three checks show that the toolchain is the game's own:
 
 | Command | What it does | Exit code |
 | --- | --- | --- |
-| `setup [--game PATH]` | Gets the Python packages, the compiler and the game ready, and turns on the git hooks | 1 if something is missing |
+| `setup [--game PATH]` | Prepares the Python packages, the compiler and the game. Turns on the git hooks | 1 if something is missing |
 | `fn 0x00401000 0x00401020` | Builds and scores each function: one line each, plus the instruction diff for misses | 0 only if all match |
-| `decls [--tables DIR] [--context DIR]` | Writes the declarations every source file includes, from the names the source files use: `src/include/types.h`, `functions.h` and `globals.h`, a `STUB` in `src/unplaced/stubs.cpp` for each called function with no source yet, and a definition in `src/unplaced/globals.cpp` for each used global no file defines. Run it after a source starts to use a new name. [tools/declgen.py](../tools/declgen.py) says where the names come from | 1 if a used name has no declaration it can make, or two functions would share a name |
-| `dossier 0x00401000 [--c] [--callers] [--accesses]` | Prints what it takes to write a function: its name, prototype, locals when a tables row gives them, code group and file, its assembly with the calls, globals, strings and floats named, and the declaration of each name it uses. `--callers` adds the functions that call it, `--accesses` adds the `access` summary under each global, and `--c` adds Ghidra's draft C from `build/decomp` (see [Function list](#function-list)). It takes `--tables DIR` too | 1 if an address is not a function in `data/functions.csv` |
-| `access 0x00800000 [--size N]` | Lists every instruction in the exe that reads or writes the N bytes from the address (default 1), grouped by offset, size, int or float, and form: direct, indexed by a register, or the address taken. Each line names the functions behind it. The sizes and kinds are evidence for the global's type. The first run scans every function in `data/functions.csv` in about 13 s and caches the result in `build/accesses.tsv` until that file changes | 0 |
+| `decls [--tables DIR] [--context DIR]` | Writes the declarations that every source file includes, from the names the source files use. It writes `src/include/types.h`, `functions.h` and `globals.h`. It writes a `STUB` in `src/unplaced/stubs.cpp` for each called function with no source yet. It writes a definition in `src/unplaced/globals.cpp` for each used global that no file defines. Run it after a source starts to use a new name. [tools/declgen.py](../tools/declgen.py) says where the names come from | 1 if a used name has no declaration it can make, or two functions would share a name |
+| `dossier 0x00401000 [--c] [--callers] [--accesses]` | Prints what is needed to write a function. It shows its name, prototype, locals when a tables row gives them, and code group and file. It shows its assembly with the calls, globals, strings and floats named. It also shows the declaration of each name it uses. `--callers` adds the functions that call it. `--accesses` adds the `access` summary under each global. `--c` adds Ghidra's draft C from `build/decomp` (see [Function list](#function-list)). It takes `--tables DIR` too | 1 if an address is not a function in `data/functions.csv` |
+| `access 0x00800000 [--size N]` | Lists every instruction in the exe that reads or writes the N bytes from the address (default 1). It groups them by offset, size, int or float, and form. The forms are direct, indexed by a register, or the address taken. Each line names the functions behind it. The sizes and kinds are evidence for the global's type. The first run scans every function in `data/functions.csv` in about 13 s. It caches the result in `build/accesses.tsv` until that file changes | 0 |
 | `permute FILE 0x00401000 [--tries N] [--minutes M] [--seed S]` | Tries rewrites of a near match that keep its meaning, such as swapped statements, flipped conditions and other loop forms. It scores each one. It writes the best try to `build/permute`. It writes to FILE only when the try scores higher. It restores FILE on a failure or Ctrl+C. It stops at once when only the names of globals or functions differ, because no rewrite can fix that | 0 only if the function matches exactly |
 | `clone 0x00401000 [...] [--all] [--tables DIR]` | Writes the copies of a function at 100%. A copy is a game function with the same instructions apart from the functions, globals, strings and constants it uses. Each copy gets the template's code with the copy's names and its own prototype's parameter names or `param_N`. It goes in the file the tables give it or in `src/unplaced`. It skips a copy whose names do not pair one to one, and says why. Then it runs `decls`, builds and scores. It keeps only the copies at 100%. `--all` takes every function at 100% as a template. Docstring: [tools/clone.py](../tools/clone.py) | 0 when it ran, whatever it matched |
-| `ci [--base COMMIT]` | Builds and runs every check that needs no game: the annotation lint (reccmp's linter plus a check that every function annotation is at the start of a game function, or of any function for a `STUB`), the self-test and `tools/ci.py` | 1 if any fails |
-| `gate` | `ci`, plus the Rich header check, every game function's score with `build/report.html`, and checks that every code byte is in a function of `data/functions.csv`, padding or an import stub, and that every `FUNCTION`, `STUB` and `LIBRARY` annotation names a symbol in our build. The pre-push hook runs it | 1 if any fails or a score dropped |
-| `save` | `gate`, then saves the scores and redraws the history and visuals. The pre-commit hook runs it. It saves nothing if the lint, the self-test, the Rich header check or the annotation check fails, or a score dropped | 1 if any fails or a score dropped |
-| `library` | Finds the runtime library code, mostly in the `library` ranges of `data/codegen-groups.csv`, writes `src/library.csv` and names the game function the runtime calls, such as `WinMain`. Then it builds and scores those functions | 1 if a function misses |
+| `ci [--base COMMIT]` | Builds and runs every check that needs no game. The checks are the annotation lint, the self-test and `tools/ci.py`. The lint is reccmp's linter plus a check that every function annotation is at the start of a game function, or of any function for a `STUB` | 1 if any fails |
+| `gate` | Runs `ci`, then the Rich header check and every game function's score with `build/report.html`. It also checks that every code byte is in a function of `data/functions.csv`, padding or an import stub. It checks that every `FUNCTION`, `STUB` and `LIBRARY` annotation names a symbol in our build. The pre-push hook runs it | 1 if any fails or a score dropped |
+| `save` | Runs `gate`, then saves the scores and redraws the history and visuals. The pre-commit hook runs it. It saves nothing if the lint, the self-test, the Rich header check or the annotation check fails. It also saves nothing if a score dropped | 1 if any fails or a score dropped |
+| `library` | Finds the runtime library code, mostly in the `library` ranges of `data/codegen-groups.csv`. It writes `src/library.csv`. It names the game function that the runtime calls, such as `WinMain`. Then it builds and scores those functions | 1 if a function misses |
 | `sources` | Writes `data/source-files.csv` and `data/classes.csv` from the source paths and class names in the exe | 0 |
-| `groups` | Recounts the tells behind each row of `data/codegen-groups.csv` from the exe, names each function whose tells contradict its row's flags, and writes `data/file-clusters.csv`. Needs `src/library.csv` | 1 if a function contradicts its row |
-| `areas` | Sorts the game functions into the areas of `data/areas.yml`. A function in a file under `src/` takes its folder's area; the others take a guess from the exe, written to `data/areas.csv` with its evidence | 1 if a file under `src/` matches no tree line, or `shared`, `direct` or a `tables` entry in `data/areas.yml` doesn't fit the `map` list |
-| `probe EXE` | Reads an exe's PE and Rich headers, and suggests its `game.cmake` and reccmp target. Needs no game setup | 1 if the exe is a DLL, is not 32-bit x86 with a GUI or console subsystem, has no Rich header, or the framework's compiler did not build it |
+| `groups` | Recounts the tells behind each row of `data/codegen-groups.csv` from the exe. It names each function whose tells contradict its row's flags. It writes `data/file-clusters.csv`. Needs `src/library.csv` | 1 if a function contradicts its row |
+| `areas` | Sorts the game functions into the areas of `data/areas.yml`. A function in a file under `src/` takes its folder's area. The others take a guess from the exe, written to `data/areas.csv` with its evidence | 1 if a file under `src/` matches no tree line, or `shared`, `direct` or a `tables` entry in `data/areas.yml` doesn't fit the `map` list |
+| `probe EXE` | Reads an exe's PE and Rich headers. It suggests its `game.cmake` and reccmp target. Needs no game setup | 1 if the exe is a DLL, is not 32-bit x86 with a GUI or console subsystem, has no Rich header, or the framework's compiler did not build it |
 
-`setup` finds the game in any Steam library on the machine by the SHA-256 in `reccmp-project.yml`. For a copy from elsewhere, pass `--game`. The path goes in `reccmp-user.yml`, which stays on your machine.
+`setup` finds the game in any Steam library on the machine by the SHA-256 in `reccmp-project.yml`. For a copy from elsewhere, pass `--game`. The path goes in `reccmp-user.yml`, which stays on the machine.
 
 ## What setup downloads
 
-Nothing is installed outside the repo: setup unpacks the Microsoft downloads with Windows' own tools and runs none of their installers. pip installs the Python packages from PyPI into `.venv`, and `check.py` runs cmake, ninja and reccmp from there. Setup keeps its files in these folders, which git ignores:
+Setup installs nothing outside the repo. It unpacks the Microsoft downloads with Windows' own tools and runs none of their installers. pip installs the Python packages from PyPI into `.venv`. `check.py` runs cmake, ninja and reccmp from there. Setup keeps its files in these folders, which git ignores:
 
 | Folder | Contents |
 | --- | --- |
@@ -108,19 +108,19 @@ Nothing is installed outside the repo: setup unpacks the Microsoft downloads wit
 | `.toolchain` | the VC++ 2010 SP1 compiler, linker, headers and libraries |
 | `build` | the build and `report.html` |
 
-[tools/toolchain.py](../tools/toolchain.py) makes `.toolchain` once. It downloads the Windows SDK 7.1 ISO and the VC++ 2010 SP1 compiler update from Microsoft (722 MB), checks their SHA-256 and unpacks them with `tar.exe`, a read-only mount of the ISO and `msiexec /a`. Then it copies the files the build uses into `.toolchain` and checks the `cl.exe` and `link.exe` versions. The script holds the URLs, file lists and steps.
+[tools/toolchain.py](../tools/toolchain.py) makes `.toolchain` once. It downloads the Windows SDK 7.1 ISO and the VC++ 2010 SP1 compiler update from Microsoft (722 MB). It checks their SHA-256. It unpacks them with `tar.exe`, a read-only mount of the ISO and `msiexec /a`. Then it copies the files that the build uses into `.toolchain`. It checks the `cl.exe` and `link.exe` versions. The script holds the URLs, file lists and steps.
 
-The downloads wait in `%TEMP%\decomp-toolchain` until this succeeds, so a failed run does not download them again. That path is short on purpose: `msiexec` failed with error 1304 under a long one. A `.toolchain` folder copied from another clone works too, since `toolchain.py` checks it before use.
+The downloads stay in `%TEMP%\decomp-toolchain` until this succeeds. A failed run does not download them again. The path is short on purpose. `msiexec` failed with error 1304 under a long path. A `.toolchain` folder copied from another clone works too. `toolchain.py` checks it before use.
 
 ## Antivirus false positives
 
-Every build links a new, unsigned exe, and an antivirus can flag it. In one port test, Malwarebytes quarantined the bare placeholder `build/game.exe` as `Adware.InstallCore` soon after each link. Later builds of the same placeholder passed.
+Every build links a new, unsigned exe. An antivirus can flag it. In one port test, Malwarebytes quarantined the bare placeholder `build/game.exe` as `Adware.InstallCore` soon after each link. Later builds of the same placeholder passed.
 
 When `build/game.exe` is gone, `check.py` stops and says it "is gone after the build". During `fn`, reccmp can say it first: "Recompiled binary ... does not exist".
 
 1. Look for `build/game.exe` in the antivirus's detection log.
 2. Report the false positive to the vendor. Only the vendor can fix it for every user.
-3. Until then, allow the repo's `build` folder in the antivirus. You need not restore the file: the next build links it again.
+3. Until then, allow the repo's `build` folder in the antivirus. Do not restore the file. The next build links it again.
 
 Do not change the code to get past a detection. The next definitions update can flag it again.
 
@@ -129,7 +129,7 @@ Do not change the code to get past a detection. The next definitions update can 
 `tests/selftest` is a small known program with its own reccmp project. CMake builds `original.cpp` as `build/selftest-original/SELFTEST.exe`, with no PDB and no relocations, to stand in for a retail exe. `decomp.cpp` is its annotated twin. Both builds also hold `gl-caller.cpp` and `gl-callee.cpp`, compiled with `/GL`. `check.py ci` checks seven things:
 
 - The original builds to the SHA-256 pinned in `tests/selftest/reccmp-project.yml`. A change of compiler, libraries or flags breaks it.
-- reccmp scores every function exactly as `tests/selftest/expected.json` says: six matches, one near miss, one effective match and one stub. `Scale` and `Name` use a float and a string from the original's data. It has no relocations, so they match only with the constants `check.py` adds. `Total` and `Mix` are the `/GL` pair. `Combine` is the same inline assembly with two registers swapped. reccmp scores it 50% and flags it as an effective match.
+- reccmp scores every function exactly as `tests/selftest/expected.json` says: six matches, one near miss, one effective match and one stub. `Scale` and `Name` use a float and a string from the original's data. The original has no relocations, so they match only with the constants `check.py` adds. `Total` and `Mix` are the `/GL` pair. `Combine` is the same inline assembly with two registers swapped. reccmp scores it 50% and flags it as an effective match.
 - The regression gate passes on equal scores and a removed stub, and fires on a deliberate drop.
 - The register-argument search of `check.py groups` finds the call from `Total` to `Mix`, which only `/GL` makes, and no other call.
 - The totals leave the stub out of the decompiled count, and a library function out of the game total.
@@ -140,23 +140,23 @@ A new compiler needs a new pinned hash and new expected scores.
 
 ## Continuous integration
 
-GitHub Actions runs [.github/workflows/ci.yml](../.github/workflows/ci.yml) on every pull request and every push to `main` or `master`. Its one job, **CI**, runs `check.py ci` on Windows and caches the compiler download between runs.
+GitHub Actions runs [.github/workflows/ci.yml](../.github/workflows/ci.yml) on every pull request and every push to `main` or `master`. It has one job, **CI**. The job runs `check.py ci` on Windows and caches the compiler download between runs.
 
-CI never sees the game exe, so it can't score game functions itself. `tools/ci.py` covers the gap:
+CI never sees the game exe, so it cannot score game functions itself. `tools/ci.py` covers the gap:
 
-- **Fresh scores.** `summary.json` stores a hash of the build inputs that `tools/ci.py` lists. After any source change, CI fails until a new `summary.json` from `check.py save` is committed, and only a machine with the game can make one.
-- **No drops.** No score may fall below the base commit's. A removed function counts as a drop unless it was a stub. After a force push, CI has no base commit, but the pre-push hook compared with the old tip.
+- **Fresh scores.** `summary.json` stores a hash of the build inputs that `tools/ci.py` lists. After any source change, CI fails until someone commits a new `summary.json` from `check.py save`. Only a machine with the game can make one.
+- **No drops.** No score may fall below the base commit's. A removed function counts as a drop unless it was a stub. After a force push, CI has no base commit. The pre-push hook compared with the old tip.
 - **Honest history.** `history.csv` and the SVGs must equal a fresh render. The render reads each first-parent commit's `summary.json`. So the history has one row for each commit that changed the totals. After a `git commit --amend` that changes a score, the amended commit still holds the old commit's row. Run `git commit --amend --no-edit` once more. Pull requests merge by rebase, after the branch is up to date with the default branch. A squash or a merge commit leaves the branch's commits off the first-parent line. CI checks a pull request on its own last commit for the same reason.
 - **One group each.** Every function in `data/functions.csv` is in exactly one code group and ends inside it.
-- **No game files.** No file with a binary suffix (`.exe`, `.dll`, `.pdb`, `.lib`, `.obj`, `.ilk`, `.iso`, `.msi`) and no file over 10 MB. Other game files, such as a small data file, pass this check.
+- **No game files.** The check rejects any file over 10 MB. It also rejects a file with a binary suffix (`.exe`, `.dll`, `.pdb`, `.lib`, `.obj`, `.ilk`, `.iso`, `.msi`). Other game files, such as a small data file, pass this check.
 
 <details>
 <summary>Limits while a repo is private, and settings for later</summary>
 
-- Branch protection on a private repo needs a paid GitHub plan, so until then a failed run shows a red X but does not block a merge.
+- Branch protection on a private repo needs a paid GitHub plan. Until then a failed run shows a red X but does not block a merge.
 - `git push --no-verify` skips the pre-push hook, and `git commit --no-verify` skips the pre-commit hook.
 - Windows minutes cost more than Linux minutes on a private repo. So a push to another branch runs nothing until it has a pull request.
-- Once the repo is public (or on a paid plan), add a branch rule for the default branch: require a pull request, require the status check **CI**, and allow no bypass.
+- Once the repo is public (or on a paid plan), add a branch rule for the default branch. The rule requires a pull request and the status check **CI**. It allows no bypass.
 
 </details>
 
@@ -168,11 +168,14 @@ Ghidra makes `data/functions.csv` with three scripts in `tools/ghidra`. With Ghi
 JAVA_HOME="<JDK 21 folder>" "<Ghidra folder>/support/analyzeHeadless.bat" "<empty temp folder>" decomp -import "<path to the exe>" -scriptPath tools/ghidra -preScript AnalysisOptions.java -postScript PaddedFunctions.java -postScript ExportFunctions.java data/functions.csv -deleteProject < /dev/null > ghidra.log 2>&1
 ```
 
-- `AnalysisOptions.java` turns off three guesses of Ghidra's analysis that go wrong in VC++ code: which functions never return, which runs of data are tables of code addresses, and that a function's code is all in one piece. Each wrong guess cuts functions short or makes code of data.
-- `PaddedFunctions.java` adds the functions analysis misses and gives functions back the code it cut off. VC++ starts each function at a 16-byte boundary after `int3` padding, except under `/O1`, so such a boundary starts one. Nothing calls an entry of the runtime's tables of initializers and terminators (`__xc_a` to `__xc_z`), so each entry starts one too, and so does an uncalled import stub. A function only an address reaches starts where a code address is pushed, stored, or listed in a table of read-only data. An SEH scope table names the filter and handler of each `__try` block, which are code of the function that pushes the table, so no function starts there. The script repeats its passes until nothing changes. Its header comment has every rule.
-- `ExportFunctions.java` writes the list. A row runs from a function's entry up to the padding before the next one, so it holds the function's switch tables. A catch block gets no row.
+- `AnalysisOptions.java` turns off three guesses of Ghidra's analysis that go wrong in VC++ code. Each wrong guess cuts functions short or makes code of data. The guesses:
+  - Which functions never return.
+  - Which runs of data are tables of code addresses.
+  - That a function's code is all in one piece.
+- `PaddedFunctions.java` adds the functions analysis misses and gives functions back the code it cut off. VC++ starts each function at a 16-byte boundary after `int3` padding, except under `/O1`. So such a boundary starts one. Nothing calls an entry of the runtime's tables of initializers and terminators (`__xc_a` to `__xc_z`). So each entry starts one too. An uncalled import stub also starts one. A function only an address reaches starts at a code address that the code pushes or stores. It also starts at one that a table of read-only data lists. An SEH scope table names the filter and handler of each `__try` block. They are code of the function that pushes the table, so no function starts there. The script repeats its passes until nothing changes. Its header comment has every rule.
+- `ExportFunctions.java` writes the list. A row runs from a function's entry up to the padding before the next one. So it holds the function's switch tables. A catch block gets no row.
 
-Headless Ghidra exits 0 even when a script fails, so check `ghidra.log` for `SCRIPT ERROR`. A good run ends its `PaddedFunctions.java` lines with `Created ...`, and `ExportFunctions.java` prints `Exported <N> functions`. Use forward slashes, as Git Bash drops backslashes. Give each run a new empty folder, since a folder another Ghidra still holds fails with `Unable to lock project!`. A failed run waits for a key press, and `< /dev/null` stops that wait. Ghidra's default heap is 2 GB, enough for a 90 MB exe. If Ghidra runs out of memory, set `GHIDRA_HEADLESS_MAXMEM` higher, for example `12G`.
+Headless Ghidra exits 0 even when a script fails. Check `ghidra.log` for `SCRIPT ERROR`. A good run ends its `PaddedFunctions.java` lines with `Created ...`. `ExportFunctions.java` prints `Exported <N> functions`. Use forward slashes, because Git Bash drops backslashes. Give each run a new empty folder. A folder that another Ghidra still holds fails with `Unable to lock project!`. A failed run waits for a key press. `< /dev/null` stops that wait. Ghidra's default heap is 2 GB, enough for a 90 MB exe. If Ghidra runs out of memory, set `GHIDRA_HEADLESS_MAXMEM` higher, for example `12G`.
 
 `check.py dossier --c` reads Ghidra's draft C of each function from `build/decomp`. A second run writes the drafts, with `DumpDecomp.java` in place of `ExportFunctions.java`:
 
@@ -180,7 +183,7 @@ Headless Ghidra exits 0 even when a script fails, so check `ghidra.log` for `SCR
 JAVA_HOME="<JDK 21 folder>" "<Ghidra folder>/support/analyzeHeadless.bat" "<empty temp folder>" decomp -import "<path to the exe>" -scriptPath tools/ghidra -preScript AnalysisOptions.java -postScript PaddedFunctions.java -postScript DumpDecomp.java build/decomp -deleteProject < /dev/null > ghidra.log 2>&1
 ```
 
-It skips the drafts that exist, so a run that stopped goes on where it was. A file of hex addresses after the folder name, one a line, limits it to those functions.
+It skips the drafts that exist, so a run that stopped goes on where it was. A file of hex addresses after the folder name, one on each line, limits it to those functions.
 
 ## LLM agents
 
