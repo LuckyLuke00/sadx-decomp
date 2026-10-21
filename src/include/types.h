@@ -4,6 +4,8 @@
 #pragma warning(disable: 4480)
 #include <stddef.h>
 
+struct ___stcClip;
+struct ___stcFog;
 struct __MYMEM_DATA;
 struct _camcontwk;
 struct _CameraSystemWork;
