@@ -8,6 +8,7 @@ struct __MYMEM_DATA;
 struct _camcontwk;
 struct _CameraSystemWork;
 struct _OBJ_ADJUSTPARAM;
+struct _OBJ_CAMERAPARAM;
 struct _SC_NUMBERS;
 struct ADV1_AL_BODY;
 struct ADV1_AL_FACE;
@@ -102,6 +103,8 @@ struct NJS_TEXNAME;
 struct NJS_TEXTURE_VTX;
 struct obj;
 struct OBJ_CONDITION;
+struct OBJ_EDITENTRY;
+struct OBJ_SLEEPCON;
 struct PanelPrmType;
 struct particle_entry;
 struct particle_info;
@@ -128,6 +131,7 @@ struct TaskInfo;
 struct taskwk;
 struct thread;
 struct u4s;
+union UNION_STATUS;
 struct xssunit;
 struct xyyzzxsdwstr;
 
@@ -1572,6 +1576,30 @@ static_assert(offsetof(NJS_TEXANIM, v2) == 0xe, "NJS_TEXANIM::v2");
 static_assert(offsetof(NJS_TEXANIM, texid) == 0x10, "NJS_TEXANIM::texid");
 static_assert(offsetof(NJS_TEXANIM, attr) == 0x12, "NJS_TEXANIM::attr");
 
+union UNION_STATUS {
+    float fRangeOut;
+    struct OBJ_SLEEPCON *pObjSleepCondition;
+};
+static_assert(sizeof(UNION_STATUS) == 0x4, "sizeof UNION_STATUS");
+static_assert(offsetof(UNION_STATUS, fRangeOut) == 0x0, "UNION_STATUS::fRangeOut");
+static_assert(offsetof(UNION_STATUS, pObjSleepCondition) == 0x0, "UNION_STATUS::pObjSleepCondition");
+
+struct OBJ_CONDITION {
+    signed char scCount;
+    signed char scUserFlag;
+    short ssCondition;
+    struct task *pTask;
+    struct OBJ_EDITENTRY *pObjEditEntry;
+    union UNION_STATUS unionStatus;
+};
+static_assert(sizeof(OBJ_CONDITION) == 0x10, "sizeof OBJ_CONDITION");
+static_assert(offsetof(OBJ_CONDITION, scCount) == 0x0, "OBJ_CONDITION::scCount");
+static_assert(offsetof(OBJ_CONDITION, scUserFlag) == 0x1, "OBJ_CONDITION::scUserFlag");
+static_assert(offsetof(OBJ_CONDITION, ssCondition) == 0x2, "OBJ_CONDITION::ssCondition");
+static_assert(offsetof(OBJ_CONDITION, pTask) == 0x4, "OBJ_CONDITION::pTask");
+static_assert(offsetof(OBJ_CONDITION, pObjEditEntry) == 0x8, "OBJ_CONDITION::pObjEditEntry");
+static_assert(offsetof(OBJ_CONDITION, unionStatus) == 0xc, "OBJ_CONDITION::unionStatus");
+
 struct SEQ_CLEAR_EQUIV {
     short stageno;
     short flagno;
@@ -1822,6 +1850,16 @@ static_assert(offsetof(colliwk, mytask) == 0x9c, "colliwk::mytask");
 static_assert(offsetof(colliwk, my_num) == 0xa0, "colliwk::my_num");
 static_assert(offsetof(colliwk, hit_num) == 0xa2, "colliwk::hit_num");
 static_assert(offsetof(colliwk, hit_cwp) == 0xa4, "colliwk::hit_cwp");
+
+struct forcewk {
+    void (*call_back)(struct task *, struct taskwk *, struct forcewk *);
+    struct Angle3 ang_spd;
+    struct NJS_POINT3 pos_spd;
+};
+static_assert(sizeof(forcewk) == 0x1c, "sizeof forcewk");
+static_assert(offsetof(forcewk, call_back) == 0x0, "forcewk::call_back");
+static_assert(offsetof(forcewk, ang_spd) == 0x4, "forcewk::ang_spd");
+static_assert(offsetof(forcewk, pos_spd) == 0x10, "forcewk::pos_spd");
 
 struct motionwk {
     union {

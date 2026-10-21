@@ -5,7 +5,7 @@ extern struct task *DAT_05cda18c;
 
 void FUN_0049f780();
 void FUN_007d21b0(void *param_1);
-int FUN_004c39c0(int param_1);
+int FUN_004c39c0(struct task *param_1);
 
 // FUNCTION: SADX 0x004bad70
 int FUN_004bad70()

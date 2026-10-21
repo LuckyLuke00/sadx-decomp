@@ -76,7 +76,7 @@ long CheckPadReadModeP(unsigned char pno)
 }
 
 // FUNCTION: SADX 0x004c39c0
-int FUN_004c39c0(int param_1)
+int FUN_004c39c0(struct task *param_1)
 {
 	return 0;
 }
