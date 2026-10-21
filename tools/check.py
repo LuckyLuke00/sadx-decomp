@@ -87,7 +87,9 @@ def main() -> int:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    # @FILE reads more arguments from FILE, one per line: fn on every matched function is too long for a command line.
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
+                                     fromfile_prefix_chars="@")
     commands = parser.add_subparsers(dest="command", required=True)
     setup = commands.add_parser("setup")
     setup.add_argument("--game", type=Path, help="the exe, if it is not in a Steam library")
