@@ -286,7 +286,10 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
     sizes = {f["address"]: f["size"] for f in progress.load_functions()}
     library = {row.address: row.name for row in project.library_rows()}
     groups = progress.load_codegen_groups()
-    clusters = {int(r["address"], 16): r["cluster"] for r in progress.read_csv(ROOT / "data" / "file-clusters.csv")}
+    cluster_rows = progress.read_csv(ROOT / "data" / "file-clusters.csv")
+    clusters = {int(r["address"], 16): r["cluster"] for r in cluster_rows}
+    passes = {int(r["address"], 16): r["callees"].split() for r in cluster_rows}
+    takes = {int(callee, 16) for callees in passes.values() for callee in callees}
     image = pe.Image(game)
     namer = Namer(image, functions, sizes, library, globals_)
     decoder = x86.Decoder(image, library)
@@ -308,12 +311,17 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
             print(f"locals: {f.locals}")
         if f.static:
             print("linkage: static (local to its file)")
+        elif address in takes:
+            print("linkage: static (its callers in this file pass it arguments in registers)")
         if group:
             print(f"group: {group['group']}  flags: {group['flags']}")
         if f.file:
             print(f"file: {f.file}")
         if address in clusters:
             print(f"register-argument cluster: {clusters[address]} (these functions share one file)")
+        if passes.get(address):
+            print(f"register-argument calls: to {', '.join(passes[address])}. They match only once those functions "
+                  "are static in this file. Until then the build pushes their arguments.")
         if f.note:
             print(f"note: {f.note}")
         if facts:
