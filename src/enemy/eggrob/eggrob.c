@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05eded7c;
 extern struct obj object_eggrob_a_er_ra4[1];
 extern struct obj object_eggrob_a_er_ra5[1];
 extern struct obj object_eggrob_a_er_ra6[1];
@@ -59,6 +60,21 @@ void Eggrob_Destruct(struct task *tp)
 	Eggrob_ResetStatus(tp->twp);
 }
 
+// FUNCTION: SADX 0x00610b40
+void Eggrob_ResetStatus(struct taskwk *twp)
+{
+	twp->btimer = 0;
+	twp->value.f = 1.0f;
+	*(unsigned long *)((char *)twp->cwp->info + 0x34) |= 0x10;
+	DAT_05eded7c = 0;
+	object_eggrob_a_chn9_1[0].ang[1] = 0;
+	object_eggrob_a_j_er_head[0].ang[2] = 0x8000;
+	object_eggrob_a_er_ra4[0].evalflags &= 0xfffffff7;
+	object_eggrob_a_er_ra5[0].evalflags &= 0xfffffff7;
+	object_eggrob_a_er_ra6[0].evalflags &= 0xfffffff7;
+	object_eggrob_a_er_ra7[0].evalflags &= 0xfffffff7;
+}
+
 // FUNCTION: SADX 0x00612b50
 void FUN_00612b50(short param_1, float param_2)
 {
@@ -67,8 +83,43 @@ void FUN_00612b50(short param_1, float param_2)
 	DAT_05edecfc = param_2;
 }
 
+// STUB: SADX 0x00613680
+void FUN_00613680(float *param_1)
+{
+}
+
+// STUB: SADX 0x00613a80
+void Eggrob_BeamInit()
+{
+}
+
 // STUB: SADX 0x00615570
 void FUN_00615570()
+{
+}
+
+// STUB: SADX 0x006160a0
+void DisplayerEggrob_FindDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00616150
+void Eggrob_FindDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00616210
+void DisplayerEggrob_HatenaDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006162c0
+void Eggrob_HatenaDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00616560
+void DisplayerEggrob_ShindohaWave(struct task *tp)
 {
 }
 

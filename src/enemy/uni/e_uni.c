@@ -9,3 +9,13 @@ void UniCDisplayer(struct task *tp)
 	local_8g = (struct enemywk *)tp->mwp;
 	UniCDraw(local_cg, local_8g);
 }
+
+// STUB: SADX 0x005cd440
+void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005cd910
+void UniCNormal(struct taskwk *twp, struct enemywk *ewp)
+{
+}

@@ -1838,6 +1838,16 @@ void MissleBombDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
+// STUB: SADX 0x005c44b0
+void AirCollision(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c45e0
+void AirDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005c90d0
 void SaruBombDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -1860,11 +1870,6 @@ void SaruBombCollision(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005c9d20
 void SaruBombExplosionDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x005cd440
-void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -1928,11 +1933,6 @@ void EnemyGetShadow(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005e2cc0
-void FUN_005e2cc0(struct taskwk *, struct enemywk *)
-{
-}
-
 // STUB: SADX 0x005e2d50
 void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -1943,19 +1943,19 @@ void EnemyCheckWall(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005e3e30
-long EnemyCalcHomeAngle(struct taskwk *twp, struct enemywk *ewp)
+// STUB: SADX 0x005e4060
+long EnemyTurnToPlayer(struct taskwk *, struct enemywk *, unsigned char)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x005e43f0
-void EnemyPartsDraw(struct taskwk *twp)
+// STUB: SADX 0x005e44f0
+void EnemyBaneDraw(struct taskwk *)
 {
 }
 
-// STUB: SADX 0x005e44f0
-void EnemyBaneDraw(struct taskwk *twp)
+// STUB: SADX 0x005e4b30
+void CreateExpSpring(struct taskwk *twp, unsigned char num)
 {
 }
 
@@ -2035,6 +2035,16 @@ void char_sel_disp(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0060c300
+void SnowmanBackSmoke(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x0060c7c0
+void SnowmanFootSmoke(struct taskwk *, struct enemywk *)
+{
+}
+
 // STUB: SADX 0x0060ceb0
 void CreateLightning(struct NJS_POINT3 *pos, float scl)
 {
@@ -2082,11 +2092,6 @@ void FUN_00610a30(struct task *)
 {
 }
 
-// STUB: SADX 0x00610b40
-void Eggrob_ResetStatus(struct taskwk *twp)
-{
-}
-
 // STUB: SADX 0x00610bd0
 void Eggrob(struct task *tp)
 {
@@ -2097,24 +2102,13 @@ void Eggrob_Display(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00613a80
-void Eggrob_BeamInit()
-{
-}
-
-// STUB: SADX 0x00617a00
-struct taskwk *Flicky_Create(float xpos, float ypos, float zpos, void (*FlickyXXXX_New)(struct task *))
-{
-	return (struct taskwk *)0;
-}
-
 // STUB: SADX 0x00617d10
 void Flicky_New(struct task *tp, int id)
 {
 }
 
-// STUB: SADX 0x0061a180
-void FUN_0061a180(int, struct taskwk *, struct task *)
+// STUB: SADX 0x0061a820
+void FUN_0061a820(struct Flicky *, struct taskwk *)
 {
 }
 
@@ -2125,6 +2119,11 @@ void FUN_0061def0(struct task *)
 
 // STUB: SADX 0x0061e310
 void DispCharMdls(struct CharMdlWk *wkp)
+{
+}
+
+// STUB: SADX 0x0061ea50
+void FUN_0061ea50(struct NJS_POINT3 *, unsigned short)
 {
 }
 
@@ -2410,11 +2409,6 @@ void drawEgo(struct task *tp)
 
 // STUB: SADX 0x008d7ef0
 void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x008d8030
-void SaiMove(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 

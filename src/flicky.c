@@ -1,6 +1,15 @@
 #include "decls.h"
+void FUN_0061a500(struct taskwk *param_1);
+void FUN_0061a820(struct Flicky *param_1, struct taskwk *param_2);
+void FUN_0061ea50(struct NJS_POINT3 *param_1, unsigned short param_2);
 void FUN_0061a180(int param_1, struct taskwk *param_2, struct task *param_3);
 void FUN_0061a590(int param_1, struct taskwk *param_2);
+
+// STUB: SADX 0x00617a00
+struct taskwk *Flicky_Create(float xpos, float ypos, float zpos, void (*FlickyXXXX_New)(struct task *))
+{
+	return (struct taskwk *)0;
+}
 
 // FUNCTION: SADX 0x00617ae0
 struct taskwk *Flicky_CreateInStayBaloon(float xpos, float ypos, float zpos, void (*FlickyXXXX_New)(struct task *))
@@ -105,6 +114,11 @@ void FlickyRako_New(struct task *tp)
 	Flicky_New(tp, 2);
 }
 
+// STUB: SADX 0x00617e60
+void FUN_00617e60(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00617f00
 void Flicky_executor(struct task *tp)
 {
@@ -155,8 +169,55 @@ void FUN_006184e0(int param_1, char *param_2)
 {
 }
 
+// FUNCTION: SADX 0x00618630
+void Flicky_transformBaloon(struct Flicky *__this, struct taskwk *twp)
+{
+	if ((twp->wtimer & 0x4000) == 0)
+	{
+		if (twp->timer.w[0] == 0xb4)
+		{
+			twp->wtimer &= 0xffffffbf;
+			twp->wtimer |= 0x80;
+			FUN_0061ea50((struct NJS_POINT3 *)((char *)twp + 0x20), __this->flickydata->color);
+		}
+		if (twp->timer.w[0] == 0xb5)
+		{
+			twp->wtimer &= 0xffffff7f;
+		}
+	}
+	if ((twp->wtimer & 0x40) != 0)
+	{
+		FUN_0061a820(__this, twp);
+	}
+}
+
+// STUB: SADX 0x00618f70
+void Flicky_moveHop(struct Flicky *__this, struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x0061a180
+void FUN_0061a180(int param_1, struct taskwk *param_2, struct task *param_3)
+{
+}
+
+// STUB: SADX 0x0061a500
+void FUN_0061a500(struct taskwk *tp)
+{
+}
+
 // STUB: SADX 0x0061a590
 void FUN_0061a590(int f, struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x0061a600
+void FUN_0061a600(struct task *tp, struct taskwk *tw, unsigned short angle)
+{
+}
+
+// STUB: SADX 0x0061a6d0
+void Flicky_dsp(struct Flicky *__this, struct taskwk *twp)
 {
 }
 
