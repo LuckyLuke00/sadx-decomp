@@ -11,6 +11,9 @@ double DAT_0095b120;
 // GLOBAL: SADX 0x0095c8d0
 float DAT_0095c8d0;
 
+// GLOBAL: SADX 0x0095cbc0
+double DAT_0095cbc0;
+
 // GLOBAL: SADX 0x00961248
 const struct NJS_TEXANIM anim_dialog[32] = {};
 
@@ -419,6 +422,9 @@ int objLandTable[8][8];
 // GLOBAL: SADX 0x026497b4
 int tikal_sw;
 
+// GLOBAL: SADX 0x02660324
+struct obj object_sky_obj_lift_a_obj_lift_a;
+
 // GLOBAL: SADX 0x026759d0
 void (*animal[15])(struct task *);
 
@@ -434,8 +440,29 @@ long o_hit_spd1;
 // GLOBAL: SADX 0x02684ad4
 struct NJS_MODEL model_expoly;
 
+// GLOBAL: SADX 0x026868ac
+struct obj object_eggrob_a_er_ra6[1];
+
+// GLOBAL: SADX 0x02686bd4
+struct obj object_eggrob_a_er_ra5[1];
+
+// GLOBAL: SADX 0x02686e74
+struct obj object_eggrob_a_er_ra7[1];
+
+// GLOBAL: SADX 0x02687154
+struct obj object_eggrob_a_er_ra4[1];
+
+// GLOBAL: SADX 0x0268a2cc
+struct obj object_eggrob_a_j_er_head[1];
+
+// GLOBAL: SADX 0x0268a300
+struct obj object_eggrob_a_chn9_1[1];
+
 // GLOBAL: SADX 0x0268d998
 struct NJS_TEXLIST texlist_eggrob;
+
+// GLOBAL: SADX 0x026b99c0
+struct CCL_INFO eggrob_ci_info[2];
 
 // GLOBAL: SADX 0x026d7ec8
 int DAT_026d7ec8;
@@ -553,6 +580,9 @@ long ring_kiran;
 
 // GLOBAL: SADX 0x04c2ea78
 float DAT_04c2ea78;
+
+// GLOBAL: SADX 0x04c6a004
+struct NJS_MATERIAL matlist_rhino_jet[1];
 
 // GLOBAL: SADX 0x05a922f4
 int DAT_05a922f4;
@@ -1984,6 +2014,30 @@ struct task *DAT_05edd9c0;
 
 // GLOBAL: SADX 0x05edd9c4
 struct task *DAT_05edd9c4;
+
+// GLOBAL: SADX 0x05edecd4
+float DAT_05edecd4;
+
+// GLOBAL: SADX 0x05edecec
+short DAT_05edecec;
+
+// GLOBAL: SADX 0x05edecfc
+float DAT_05edecfc;
+
+// GLOBAL: SADX 0x05eded78
+float DAT_05eded78;
+
+// GLOBAL: SADX 0x05eded80
+int DAT_05eded80;
+
+// GLOBAL: SADX 0x05eded84
+int DAT_05eded84;
+
+// GLOBAL: SADX 0x05eded88
+int DAT_05eded88;
+
+// GLOBAL: SADX 0x05eded8c
+int DAT_05eded8c;
 
 // GLOBAL: SADX 0x05edf6c4
 float DAT_05edf6c4;
