@@ -2520,6 +2520,11 @@ void CreamManager(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006a7d60
+void SetTableBg()
+{
+}
+
 // STUB: SADX 0x006fd380
 void EffectSSSpinDS(struct task *tp)
 {
@@ -2698,6 +2703,11 @@ void FUN_00825de0(struct task *)
 {
 }
 
+// STUB: SADX 0x00838540
+void CameraMountainTgtDeath(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
 // STUB: SADX 0x0083b600
 void ObjectSkydeck_tcolli_Display(struct task *tp)
 {
@@ -2710,6 +2720,16 @@ void ObjectSkydeck_tcolli_Exit(struct task *tp)
 
 // STUB: SADX 0x0083c930
 void ObjectSkydeck_tcolli_Exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0084dc60
+void ObjectSkydeck_enegymissile1_Init(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008726d0
+void ObjectCasinoHaeInit(struct task *tp)
 {
 }
 
