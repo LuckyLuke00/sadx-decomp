@@ -83,7 +83,7 @@ def print_game_row(index: int, row: dict, reading: Reading) -> int:
 def report_clusters(sites: list["Site"], functions: dict[int, x86.Function]) -> None:
     """Write data/file-clusters.csv and print how many clusters it holds."""
     clusters = file_clusters(sites, functions)
-    write_clusters(clusters)
+    write_clusters(clusters, sites, functions)
     print(f"     {len(clusters)} file clusters, {sum(map(len, clusters))} functions: "
           f"{FILE_CLUSTERS.relative_to(progress.ROOT).as_posix()}")
 
@@ -252,18 +252,31 @@ def file_clusters(sites: list[Site], functions: dict[int, x86.Function]) -> list
             address = parent[address]
         return address
 
-    for site in sites:
-        if functions[site.caller].row == functions[site.callee].row and site.caller != site.callee:
-            first, second = sorted((root(site.caller), root(site.callee)))
-            parent[second] = first
+    for site in in_one_row(sites, functions):
+        first, second = sorted((root(site.caller), root(site.callee)))
+        parent[second] = first
     clusters = collections.defaultdict(list)
     for address in parent.keys() | {root(address) for address in parent}:
         clusters[root(address)].append(address)
     return sorted(sorted(members) for members in clusters.values())
 
 
-def write_clusters(clusters: list[list[int]]) -> None:
-    lines = ["cluster,address"] + [f"0x{members[0]:08x},0x{address:08x}" for members in clusters for address in members]
+def in_one_row(sites: list[Site], functions: dict[int, x86.Function]) -> list[Site]:
+    """The sites whose caller and callee are two functions of one row."""
+    return [site for site in sites
+            if functions[site.caller].row == functions[site.callee].row and site.caller != site.callee]
+
+
+def write_clusters(clusters: list[list[int]], sites: list[Site], functions: dict[int, x86.Function]) -> None:
+    """One line per member: its cluster, its address, and the members it passes register arguments to."""
+    callees = collections.defaultdict(set)
+    for site in in_one_row(sites, functions):
+        callees[site.caller].add(site.callee)
+    lines = ["cluster,address,callees"]
+    for members in clusters:
+        for address in members:
+            passes = " ".join(f"0x{callee:08x}" for callee in sorted(callees[address]))
+            lines.append(f"0x{members[0]:08x},0x{address:08x},{passes}")
     FILE_CLUSTERS.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
