@@ -12,6 +12,11 @@ void EffectCrash(struct task *tp)
 	FUN_0049e8b0(tp);
 }
 
+// STUB: SADX 0x005b4500
+void CrashInit(struct taskwk *twp)
+{
+}
+
 // STUB: SADX 0x005b4730
 void CrashStar(struct task *tp)
 {

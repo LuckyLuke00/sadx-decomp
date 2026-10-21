@@ -1,5 +1,25 @@
 #include "decls.h"
 
+// STUB: SADX 0x0060f6a0
+void ghParticleUnitInit(struct GHPARTICLE_UNIT *pUnit, struct NJS_POINT3 *pPos, struct NJS_POINT3 *pVec)
+{
+}
+
+// STUB: SADX 0x0060f750
+void ghParticleMove(struct GHPARTICLE_UNIT *pPart, struct GHPARTICLE_INFO *pInfo)
+{
+}
+
+// STUB: SADX 0x0060f7e0
+void ghParticleSet(struct task *pTask, struct NJS_POINT3 *pPos, struct NJS_POINT3 *pVec, float fStartFrame, float fOffsetZ)
+{
+}
+
+// STUB: SADX 0x0060fa80
+void control_exec(struct task *pTask)
+{
+}
+
 // STUB: SADX 0x0060fb20
 void FUN_0060fb20(int param_1, int param_2)
 {
@@ -14,6 +34,11 @@ int FUN_0060fb90(struct GHPARTICLE_UNIT *param_1, struct GHPARTICLE_INFO *param_
 		return 0;
 	}
 	return 1;
+}
+
+// STUB: SADX 0x0060fbd0
+void control_exec_exec(struct task *pTask)
+{
 }
 
 // FUNCTION: SADX 0x0060fc70

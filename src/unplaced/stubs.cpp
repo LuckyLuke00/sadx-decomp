@@ -1391,8 +1391,8 @@ float Shadow(struct taskwk *twp, float scl)
 	return (float)0;
 }
 
-// STUB: SADX 0x005537c0
-void CreateAddSmoke(struct particle_info *)
+// STUB: SADX 0x00553480
+void EffectSmoke(struct sp_task *, struct sp_link *)
 {
 }
 
@@ -1740,12 +1740,6 @@ void InitContinueData()
 {
 }
 
-// STUB: SADX 0x005a6450
-struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *, struct sp_link *))
-{
-	return (struct sp_task *)0;
-}
-
 // STUB: SADX 0x005a6590
 void SpLoop()
 {
@@ -1830,11 +1824,6 @@ void EffJPDisp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b4500
-void CrashInit(struct taskwk *twp)
-{
-}
-
 // STUB: SADX 0x005b4600
 void CrashStarGenerate(struct taskwk *twp)
 {
@@ -1847,16 +1836,6 @@ void CrashStarDraw(struct taskwk *twp)
 
 // STUB: SADX 0x005b4c90
 void TBarrier(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b5340
-void NBarrier(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b55f0
-void MutekiDisp(struct task *tp)
 {
 }
 
@@ -2125,11 +2104,6 @@ int ghSpriteAnim(struct GHSPRITE_ANIM *pAnim, struct GHSPRITE_ANIM_TABLE *pAnimT
 
 // STUB: SADX 0x0060f0c0
 void ghSpriteDraw_Unit3D_BillBoard(struct NJS_POINT3 *psPos, struct GHPARTICLE_UNIT *psPart, struct GHSPRITE_ANIM *psAnim, struct GHSPRITE_ANIM_TABLE *psAnimTable)
-{
-}
-
-// STUB: SADX 0x0060f750
-void ghParticleMove(struct GHPARTICLE_UNIT *pPart, struct GHPARTICLE_INFO *pInfo)
 {
 }
 
@@ -2406,16 +2380,6 @@ void ObjectSkydeck_tcolli_Exec(struct task *tp)
 
 // STUB: SADX 0x008c2030
 void FUN_008c2030(int)
-{
-}
-
-// STUB: SADX 0x008c22b0
-void rotate(struct CRUSHLIGHT_WK *pCrushWk)
-{
-}
-
-// STUB: SADX 0x008c2420
-void dispCrushLight(struct task *pTask)
 {
 }
 

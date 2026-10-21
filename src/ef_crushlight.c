@@ -1,5 +1,15 @@
 #include "decls.h"
 
+// STUB: SADX 0x008c21e0
+void execCrushLight(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x008c22b0
+void rotate(struct CRUSHLIGHT_WK *pCrushWk)
+{
+}
+
 // FUNCTION: SADX 0x008c23b0
 void execDeathCrushLight(struct task *pTask)
 {
@@ -13,4 +23,14 @@ void execDeathCrushLight(struct task *pTask)
 		FreeTask(pTask);
 	}
 	dispCrushLight(pTask);
+}
+
+// STUB: SADX 0x008c2420
+void dispCrushLight(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x008c2830
+void FUN_008c2830(float *param_1, float *param_2, float param_3, float param_4)
+{
 }

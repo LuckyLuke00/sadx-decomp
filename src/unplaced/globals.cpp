@@ -374,6 +374,12 @@ long boolLandDisplay;
 // GLOBAL: SADX 0x025dcc90
 long boolLandCollision;
 
+// GLOBAL: SADX 0x025dec18
+struct particle_entry particle_smoke;
+
+// GLOBAL: SADX 0x025dec38
+struct particle_info default_smoke;
+
 // GLOBAL: SADX 0x0260109c
 unsigned char gu8Vibration;
 
@@ -457,6 +463,9 @@ struct particle_info default_snow;
 
 // GLOBAL: SADX 0x0263dc30
 struct particle_entry particle_snow;
+
+// GLOBAL: SADX 0x0263dd60
+struct NJS_TEXLIST texlist_muteki_sphere[1];
 
 // GLOBAL: SADX 0x0263ddb0
 struct SEQ_SECTIONTBL seqSectionSonic[1];
@@ -781,6 +790,9 @@ struct obj object_c0_manju_c0_manju[1];
 
 // GLOBAL: SADX 0x04c6a004
 struct NJS_MATERIAL matlist_rhino_jet[1];
+
+// GLOBAL: SADX 0x05a79e44
+struct NJS_MODEL DAT_05a79e44;
 
 // GLOBAL: SADX 0x05a862dc
 struct obj DAT_05a862dc;
@@ -2297,6 +2309,9 @@ struct task *DAT_05edbc84;
 // GLOBAL: SADX 0x05edbc88
 int DAT_05edbc88;
 
+// GLOBAL: SADX 0x05edbc8c
+int DAT_05edbc8c;
+
 // GLOBAL: SADX 0x05edbcb4
 struct sp_task *DAT_05edbcb4;
 
@@ -2305,6 +2320,9 @@ int DAT_05edbcb8;
 
 // GLOBAL: SADX 0x05edbcbc
 int DAT_05edbcbc;
+
+// GLOBAL: SADX 0x05edbcc0
+struct sp_task *DAT_05edbcc0;
 
 // GLOBAL: SADX 0x05edbcc4
 unsigned long DAT_05edbcc4;

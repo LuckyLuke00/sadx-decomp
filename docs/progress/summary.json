@@ -10074,6 +10074,30 @@
    "library": false
   },
   {
+   "address": "0x005533c0",
+   "name": "EffectSmokeExp",
+   "accuracy": 0.12698412698412698,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00553480",
+   "name": "EffectSmoke",
+   "accuracy": 0.07272727272727272,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005535c0",
+   "name": "CreateSmoke",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005537c0",
    "name": "CreateAddSmoke",
    "accuracy": 0.09876543209876543,
@@ -12786,6 +12810,22 @@
    "library": false
   },
   {
+   "address": "0x00598e20",
+   "name": "FUN_00598e20",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00598ee0",
+   "name": "FadeIn",
+   "accuracy": 0.16393442622950818,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00598fc0",
    "name": "FUN_00598fc0",
    "accuracy": 0.42105263157894735,
@@ -12831,6 +12871,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005999e0",
+   "name": "ColorOffset",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -13460,9 +13508,9 @@
   {
    "address": "0x005a6450",
    "name": "SpCreateTask",
-   "accuracy": 0.20833333333333334,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -14194,6 +14242,14 @@
    "library": false
   },
   {
+   "address": "0x005b4db0",
+   "name": "FUN_005b4db0",
+   "accuracy": 0.09195402298850575,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b5280",
    "name": "ef_barrier_DrawModel",
    "accuracy": 0.19047619047619047,
@@ -14218,6 +14274,22 @@
    "library": false
   },
   {
+   "address": "0x005b5430",
+   "name": "NormalB",
+   "accuracy": 0.16,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b54c0",
+   "name": "NBarrierDisp",
+   "accuracy": 0.09090909090909091,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b55c0",
    "name": "EffectMuteki",
    "accuracy": 1.0,
@@ -14228,15 +14300,31 @@
   {
    "address": "0x005b55f0",
    "name": "MutekiDisp",
-   "accuracy": 0.11940298507462686,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005b56b0",
    "name": "Muteki",
    "accuracy": 0.07017543859649122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b5830",
+   "name": "CMuteki",
+   "accuracy": 0.16,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b58c0",
+   "name": "CMutekiDisp",
+   "accuracy": 0.10810810810810811,
    "effective": false,
    "stub": true,
    "library": false
@@ -14863,6 +14951,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005da830",
+   "name": "SetWind",
+   "accuracy": 0.13559322033898305,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -16010,11 +16106,35 @@
    "library": false
   },
   {
+   "address": "0x0060ecd0",
+   "name": "ghSpriteSetFrame2",
+   "accuracy": 0.14035087719298245,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060ed70",
+   "name": "ghSpriteAnimTableInit",
+   "accuracy": 0.0963855421686747,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0060ee70",
    "name": "ghSpriteAnimInit",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060eea0",
+   "name": "ghSpriteInit",
+   "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -16066,9 +16186,33 @@
    "library": false
   },
   {
+   "address": "0x0060f6a0",
+   "name": "ghParticleUnitInit",
+   "accuracy": 0.12121212121212122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0060f750",
    "name": "ghParticleMove",
    "accuracy": 0.14814814814814814,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060f7e0",
+   "name": "ghParticleSet",
+   "accuracy": 0.0851063829787234,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060fa80",
+   "name": "control_exec",
+   "accuracy": 0.13793103448275862,
    "effective": false,
    "stub": true,
    "library": false
@@ -16090,6 +16234,14 @@
    "library": false
   },
   {
+   "address": "0x0060fbd0",
+   "name": "control_exec_exec",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0060fc70",
    "name": "control_exit",
    "accuracy": 1.0,
@@ -16101,6 +16253,14 @@
    "address": "0x0060fcb0",
    "name": "CreateSpark",
    "accuracy": 0.17391304347826086,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006103c0",
+   "name": "SphericalExplosionUV",
+   "accuracy": 0.12903225806451613,
    "effective": false,
    "stub": true,
    "library": false
@@ -18234,6 +18394,14 @@
    "library": false
   },
   {
+   "address": "0x008c21e0",
+   "name": "execCrushLight",
+   "accuracy": 0.1095890410958904,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008c22b0",
    "name": "rotate",
    "accuracy": 0.08695652173913043,
@@ -18253,6 +18421,14 @@
    "address": "0x008c2420",
    "name": "dispCrushLight",
    "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c2830",
+   "name": "FUN_008c2830",
+   "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
    "library": false
@@ -24483,5 +24659,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "84aa510b59a6d740753b38e9be11daabf2bfda932f9864a535527c4b1b547f27"
+ "inputs_sha256": "d0e12e5ff05b73ee69d23308b4fe07ac0889c4cc3bcd762bccef68255c0678ba"
 }

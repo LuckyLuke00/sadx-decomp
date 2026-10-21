@@ -1,10 +1,23 @@
 #include "decls.h"
+extern void FUN_00598e20();
+extern void FUN_00598fc0(char param_1);
 extern unsigned long DAT_05cda0bc;
 extern struct NJS_TEXLIST DAT_02604ab8;
 extern unsigned char DAT_05cda0b9;
 extern unsigned short DAT_05cda0c0;
 void FUN_00598dd0();
 void FUN_005999c0(char *param_1);
+
+// STUB: SADX 0x00598e20
+void FUN_00598e20()
+{
+}
+
+// STUB: SADX 0x00598ee0
+short FadeIn()
+{
+	return (short)0;
+}
 
 // STUB: SADX 0x00598fc0
 void FUN_00598fc0(char param_1)
@@ -45,4 +58,9 @@ void FUN_005999c0(char *param_1)
 	{
 		*(unsigned long *)param_1 = DAT_05cda0bc;
 	}
+}
+
+// STUB: SADX 0x005999e0
+void ColorOffset()
+{
 }

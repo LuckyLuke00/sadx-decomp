@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct sp_task *DAT_05edbcc0;
+extern int DAT_05edbc8c;
 extern struct sp_task *DAT_05edbcb4;
 extern unsigned long DAT_05edbcc4;
 extern int DAT_05edbcb8;
@@ -20,6 +22,31 @@ void SpInitialize(struct sp_task *buffer, unsigned long size)
 // STUB: SADX 0x005a63e0
 void FUN_005a63e0(struct sp_task *param_1, unsigned long param_2)
 {
+}
+
+// FUNCTION: SADX 0x005a6450
+struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *, struct sp_link *))
+{
+	struct sp_task *local_8;
+
+	if (link == 0)
+	{
+		return 0;
+	}
+	if (DAT_05edbcc0 == 0)
+	{
+		return 0;
+	}
+	local_8 = DAT_05edbcc0;
+	DAT_05edbcc0 = local_8->next;
+	DAT_05edbc8c = DAT_05edbc8c - 1;
+	local_8->next = link->head;
+	link->head = local_8;
+	link->numtask = link->numtask + 1;
+	local_8->exec = exec;
+	local_8->offset = DAT_05edbcc8;
+	local_8->wrtZflg = 0;
+	return local_8;
 }
 
 // FUNCTION: SADX 0x005a64e0
