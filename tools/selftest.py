@@ -58,6 +58,7 @@ def run() -> int:
     failures += check_declaration_keys()
     failures += check_decls_trees()
     failures += check_nested_globals()
+    failures += check_clone()
 
     if failures:
         print("FAIL self-test")
@@ -379,6 +380,118 @@ def run_decls(files: dict, context_files: dict, functions: list, globals_: list,
             declgen.ROOT = saved
         generated = {rel: (root / rel).read_text(encoding="utf-8") for rel in names.GENERATED if (root / rel).exists()}
     return code, output.getvalue(), generated
+
+
+def check_clone() -> list[str]:
+    """A copy gets the template's code with the copy's names. Its own prototype names its parameters and gives
+    their types, else the template's types with param_N names. A struct member keeps its name."""
+    import clone  # here, not at the top: it needs .venv's packages, and check.py imports this module before .venv
+
+    template = "void Foo(struct task *tp, int count)"
+    body = ["{", "	if (DAT_00500000)", "	{", "		Bar(tp, count + DAT_00500000);", "		tp->count = 0;", "	}", "}"]
+    names = {"Foo": "FUN_00402000", "Bar": "Baz", "DAT_00500000": "DAT_00600000"}
+    wanted_body = ["{", "	if (DAT_00600000)", "	{", "		Baz(param_1, param_2 + DAT_00600000);",
+                   "		param_1->count = 0;", "	}", "}"]
+    cases = [("FUN_00402000", "", False, "void FUN_00402000(struct task *param_1, int param_2)"),
+             ("Qux", "void Qux(struct task *tw, int);", True, "static void Qux(struct task *tw, int param_2)")]
+    failures = []
+    for name, proto, static, wanted in cases:
+        sig, renames = clone.copy_signature(template, name, proto, static)
+        if sig != wanted:
+            failures.append(f"clone signature `{sig}`, not `{wanted}`")
+        if name == "FUN_00402000":
+            found = clone.copy_body(["// FUNCTION: X 0x00401000", template] + body, renames | names)
+            if found != wanted_body:
+                failures.append(f"clone body {found}, not {wanted_body}")
+    return failures + check_clone_types(clone) + check_clone_stubs(clone) + check_clone_globals(clone)
+
+
+def check_clone_types(clone) -> list[str]:
+    """A type that only the template gives becomes a neutral one: the signed integer of its size for an integer or an
+    enum, void * for a pointer; float stays. A pointer stays where a prototype in the tables takes it at a call that
+    passes the name straight on. A struct by value or an array has no neutral type."""
+    failures = []
+    task = ["struct task *"]
+    protos = {"FreeTask": "void FreeTask(struct task *tp);", "Baz": "void Baz(struct task *, int);"}
+    body = ["{", "	FreeTask(DAT_00600000);", "	Baz(param_1, count + y);", "	Baz(FreeTask(DAT_00600004), param_3);", "}"]
+    found = clone.pointer_uses(body, protos)
+    if found != {"DAT_00600000": task, "param_1": task, "DAT_00600004": task}:
+        failures.append(f"clone pointer uses {dict(found)}")
+    cases = [
+        (lambda: clone.neutral_function("static enum eStage Foo(struct task *param_1, unsigned int param_2, float x)", {}),
+         "static int Foo(void *param_1, int param_2, float x)"),
+        (lambda: clone.neutral_function("void Foo(struct task *param_1, bool param_2, ...)", {"param_1": task}),
+         "void Foo(struct task *param_1, char param_2, ...)"),
+        (lambda: clone.neutral_function("struct task *Foo(void)", {}), "void *Foo(void)"),
+        (lambda: clone.neutral_function("void Bar(struct task *, unsigned short, void (*)(void));", {}),
+         "void Bar(void *, short, void *);"),
+        (lambda: clone.neutral_extern("extern unsigned int DAT_00600000;", "DAT_00600000", []),
+         "extern int DAT_00600000;"),
+        (lambda: clone.neutral_extern("extern struct task *DAT_00600000;", "DAT_00600000", task),
+         "extern struct task *DAT_00600000;"),
+        (lambda: clone.neutral_extern("extern struct task *DAT_00600000;", "DAT_00600000", []),
+         "extern void *DAT_00600000;"),
+        (lambda: clone.neutral_extern("extern void (*DAT_00600000)(void);", "DAT_00600000", task),
+         "extern void *DAT_00600000;"),
+        (lambda: clone.neutral_extern("extern double DAT_00600000;", "DAT_00600000", []), "extern double DAT_00600000;"),
+        (lambda: clone.neutral_function("void Foo(struct NJS_VECTOR param_1)", {}), None),
+        (lambda: clone.neutral_extern("extern int DAT_00600000[];", "DAT_00600000", []), None),
+    ]
+    for make, wanted in cases:
+        try:
+            result = make()
+        except clone.Skip:
+            result = None
+        if result != wanted:
+            failures.append(f"clone neutral type `{result}`, not `{wanted}`")
+    return failures
+
+
+def check_clone_stubs(clone) -> list[str]:
+    """A shared name that a kept copy uses or defines gets a static STUB for each of its functions that the tree uses
+    but nothing defines, once two or more are used or defined. Exec: a.c uses it, a kept copy in b.c uses it, a kept
+    copy in c.c defines it, the tree defines a fourth, and e.c does not use the fifth. Lone: only a copy in f.c uses
+    it."""
+    target = project.game_config().target
+    wanted = [f"// STUB: {target} 0x00401000", "static float Exec(struct task *tp)", "{", "\treturn (float)0;", "}"]
+    found = clone.stub(0x401000, "a.c", "float Exec(struct task *tp);").lines
+    failures = [] if found == wanted else [f"clone STUB {found}, not {wanted}"]
+    planned = {a: clone.stub(a, file, "void Exec(struct task *tp);") for a, file in
+               [(0x401000, "a.c"), (0x402000, "b.c"), (0x403000, "c.c"), (0x405000, "e.c")]}
+    planned[0x406000] = clone.stub(0x406000, "f.c", "void Lone(void);")
+    siblings = {"Exec": [0x401000, 0x402000, 0x403000, 0x404000, 0x405000], "Lone": [0x406000, 0x407000]}
+    uses = {"a.c": {"Exec"}, "b.c": set(), "c.c": set(), "e.c": set(), "f.c": set()}
+
+    def copy(address: int, file: str, shared: str) -> clone.Copy:
+        return clone.Copy(address, f"FUN_{address:08x}", 0x400000, file, [], [], frozenset(), frozenset({shared}))
+
+    cases = [([copy(0x408000, "b.c", "Exec"), copy(0x403000, "c.c", "Exec")], [0x401000, 0x402000]),
+             ([copy(0x409000, "f.c", "Lone")], [])]
+    for kept, addresses in cases:
+        found = [s.address for s in clone.stubs_needed(kept, siblings, {0x404000}, planned, uses)]
+        if found != addresses:
+            failures.append(f"clone STUBs {[hex(a) for a in found]} for copies at {[hex(c.address) for c in kept]}, "
+                            f"not {[hex(a) for a in addresses]}")
+    return failures
+
+
+def check_clone_globals(clone) -> list[str]:
+    """A copy is skipped when it uses a global whose name several globals have, also when the template's name is the
+    same (decls then fails on two copies). A function with such a name, or a global with a name of its own, passes."""
+    shared = {"missile_smoke"}
+    smoke = clone.Pair("missile_smoke", "global", 0x2C0CAE0, 0x3B76128)
+    cases = [({"missile_smoke": smoke}, True), ({"missile_smoke": smoke._replace(kind="function")}, False),
+             ({"missile_smoke": smoke._replace(new="DAT_03b76128")}, False), ({}, False)]
+    failures = []
+    for pairs, skipped in cases:
+        try:
+            clone.check_globals(pairs, shared)
+            found = False
+        except clone.Skip as skip:
+            found = skip.kind == "shared name"
+        if found != skipped:
+            failures.append(f"clone global check {'skips' if found else 'passes'} {pairs}")
+    return failures
 
 
 def without_stubs(summary: dict) -> dict:

@@ -171,6 +171,9 @@ class Image:
                 return self.data[section.raw_offset + offset:section.raw_offset + min(offset + size, section.raw_size)]
         return b""
 
+    def contains(self, address: int) -> bool:
+        return any(start <= address < start + length for start, length, _ in self.sections)
+
     def is_code(self, address: int) -> bool:
         return any(start <= address < start + length and section.flags & CODE
                    for start, length, section in self.sections)
