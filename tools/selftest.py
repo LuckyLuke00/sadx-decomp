@@ -53,6 +53,7 @@ def run() -> int:
     failures += check_gem_colors()
     failures += check_read_blobs()
     failures += check_misplaced_annotations()
+    failures += check_unclosed_definitions()
     failures += check_local_declarations()
     failures += check_tree_conflicts()
     failures += check_declaration_keys()
@@ -234,6 +235,21 @@ def check_misplaced_annotations() -> list[str]:
     found = [where for _, where, _ in runner.misplaced(annotations, {game, library}, {game})]
     expected = ["FUNCTION at a library function", "STUB inside a function"]
     return [] if found == expected else [f"annotation lint flags {found}, not {expected}"]
+
+
+def check_unclosed_definitions() -> list[str]:
+    """A FUNCTION or STUB definition ends in a lone `}` line before the next such annotation: the tools that put a
+    function in a file take that line as its end. A brace with a comment after it, or a definition on one line, has
+    none. A GLOBAL annotation inside a body is no next annotation."""
+    import llm  # here, not at the top: it needs .venv's packages, and check.py imports this module before .venv
+    target = project.game_config().target
+    lines = [llm.function_line(0x401000), "void A(void)", "{", "}", "",
+             f"// STUB: {target} 0x00401010", "void B(void)", "{", "}  // B", "",
+             llm.function_line(0x401020), "void C(void)", "{", f"\t// GLOBAL: {target} 0x00501000", "\tstatic int x;",
+             "}", "", llm.function_line(0x401030), "void D(void) {}"]
+    found = llm.unclosed_definitions(lines)
+    wanted = [5, 17]
+    return [] if found == wanted else [f"unclosed_definitions flags lines {found}, not {wanted}"]
 
 
 def check_local_declarations() -> list[str]:
