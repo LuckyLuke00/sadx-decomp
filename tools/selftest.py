@@ -60,6 +60,7 @@ def run() -> int:
     failures += check_nested_globals()
     failures += check_reached_types()
     failures += check_clone()
+    failures += check_units()
 
     if failures:
         print("FAIL self-test")
@@ -67,7 +68,7 @@ def run() -> int:
             print(f"     {line}")
         return 1
     print(f"ok   self-test: build hash {original_hash[:12]}..., exact scores, regression gate, /GL call, totals, history, "
-          "annotation lint")
+          "annotation lint, unit tests")
     return 0
 
 
@@ -523,6 +524,14 @@ def check_clone_globals(clone) -> list[str]:
         if found != skipped:
             failures.append(f"clone global check {'skips' if found else 'passes'} {pairs}")
     return failures
+
+
+def check_units() -> list[str]:
+    """The unit tests of the dossier facts in facts.py."""
+    # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
+    import facttests
+    modules = (facttests,)
+    return [failure for module in modules for failure in module.run()]
 
 
 def without_stubs(summary: dict) -> dict:
