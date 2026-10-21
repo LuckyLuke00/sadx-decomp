@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 168" width="1000" height="168">
-<title>1,419 / 16,537 game functions decompiled (8.58%) | 1,417 matched | 0 effective | accuracy 99.98% | library functions identified: 689</title>
+<title>1,420 / 16,537 game functions decompiled (8.59%) | 1,418 matched | 0 effective | accuracy 99.98% | library functions identified: 689</title>
 <rect x="0.5" y="0.5" width="999" height="167" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="30" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">Sonic Adventure DX.exe</text>
 <text x="984" y="30" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">updated 2026-10-21</text>
 <text x="16" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="40" font-weight="600" fill="#1f2328">8.57%<tspan dx="10" font-size="13" font-weight="400" fill="#59636e">of the game done</tspan></text>
-<text x="967" y="76" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">+1,417 this week</text>
+<text x="967" y="76" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">+1,418 this week</text>
 <circle cx="978" cy="71.5" r="5" fill="none" stroke="#b07d00" stroke-width="2.5"/>
 <rect x="16" y="96" width="968" height="8" rx="4" fill="#e6eaef"/>
 <rect x="16" y="96" width="83.1" height="8" rx="4" fill="#0969da"/>
-<rect x="16" y="96" width="82.9" height="8" rx="4" fill="#b07d00"/>
-<text x="16" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">1,417</text>
+<rect x="16" y="96" width="83.0" height="8" rx="4" fill="#b07d00"/>
+<text x="16" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">1,418</text>
 <text x="16" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">done</text>
 <text x="339" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">99.98%</text>
 <text x="339" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">accuracy</text>

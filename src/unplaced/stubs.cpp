@@ -273,6 +273,12 @@ long AL_EmotionGetValue(struct task *tp, unsigned long EmotionNum)
 	return (long)0;
 }
 
+// STUB: SADX 0x0043de30
+long ALW_CancelEntry(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0043e2a0
 void AL_PlayerDisable()
 {
@@ -331,6 +337,11 @@ const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 
 // STUB: SADX 0x0044c4b0
 void FUN_0044c4b0(void *)
+{
+}
+
+// STUB: SADX 0x00450210
+void AL_ShapeExit(struct task *tp)
 {
 }
 
@@ -619,6 +630,11 @@ void FUN_004a0520(float, float)
 
 // STUB: SADX 0x004a1530
 void DrawObjectClip(struct obj *, float)
+{
+}
+
+// STUB: SADX 0x004a2a30
+void late_exec()
 {
 }
 
@@ -1240,11 +1256,6 @@ void DrawMotionGround()
 
 // STUB: SADX 0x004fdb00
 void ListGroundForDrawing()
-{
-}
-
-// STUB: SADX 0x004ff1f0
-void ClearExtraDisplay()
 {
 }
 

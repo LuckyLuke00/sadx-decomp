@@ -7,6 +7,11 @@ extern unsigned char DAT_05cbeff9;
 extern int DAT_05cbf194;
 extern unsigned char DAT_05cbeffb;
 
+// STUB: SADX 0x004ff1f0
+void ClearExtraDisplay()
+{
+}
+
 // FUNCTION: SADX 0x004ff280
 void FUN_004ff280(void)
 {
