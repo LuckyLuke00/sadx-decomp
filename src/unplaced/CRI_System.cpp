@@ -1,0 +1,21 @@
+#include "decls.h"
+int FUN_00924470();
+int FUN_00634f10();
+
+// FUNCTION: SADX 0x00924460
+int FUN_00924460()
+{
+	return FUN_00634f10();
+}
+
+// FUNCTION: SADX 0x00924510
+int FUN_00924510()
+{
+	return FUN_00634f10();
+}
+
+// FUNCTION: SADX 0x00924520
+int FUN_00924520()
+{
+	return FUN_00924470();
+}

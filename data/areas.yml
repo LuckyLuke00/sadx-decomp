@@ -8,7 +8,9 @@ tree:
   - ['^src/adv00_stationsquare/', station_square]
   - ['^src/adv01_eggcarrierab/', egg_carrier]
   - ['^src/adv01_eggcarrierobj/', egg_carrier]
+  - ['^src/adv01_eggcarrierc/', egg_carrier]
   - ['^src/adv02_mysticruin/', mystic_ruins]
+  - ['^src/adv03_past/', the_past]
   - ['^src/Advertise/', menus]
   - ['^src/chao/stg_race1/', chao_race]
   - ['^src/chao/', chao_garden]
@@ -22,9 +24,11 @@ tree:
   - ['^src/figure/knuckles/', knuckles]
   - ['^src/figure/miles/', tails]
   - ['^src/figure/sonic/', sonic]
+  - ['^src/magicsdk/', pc_port]  # the PC port's framework
   - ['^src/mini_cart/', twinkle_circuit]
   - ['^src/mission/', missions]
   - ['^src/movie/', engine]
+  - ['^src/sakana/', big]  # the fish of Big's fishing
   - ['^src/sandboard/', sand_hill]
   - ['^src/shareobj/', objects]  # objects that several stages share
   - ['^src/shinobi/', ninja]
@@ -37,9 +41,11 @@ tree:
   - ['^src/npc_sub\.c$', player]
   - ['^src/SeqStageTable\.c$', story]
   - ['^src/setstagetable\.c$', objects]
+  - ['^src/boss_chaos4/', chaos_4]
   - ['^src/boss_e101/', e101_beta]
   - ['^src/boss_e101_r/', e101_mk2]
   - ['^src/bossegm2/', egg_walker]
+  - ['^src/bossegm3/', egg_viper]
   - ['^src/bossrobo/', zero]
   - ['^src/stg01_beach/', emerald_coast]
   - ['^src/stg02_windy/', windy_valley]
@@ -49,6 +55,8 @@ tree:
   - ['^src/stg06_skydeck/', sky_deck]
   - ['^src/stg07_ruin/', lost_world]
   - ['^src/stg08_icecap/', ice_cap]
+  - ['^src/stg09_casino/', casinopolis]
+  - ['^src/stg12_hotshelter/', hot_shelter]
   - ['^src/[^/]+$', engine]  # the other files at the top of src/
 
 # The progress map's sections, in order, each with its areas and the name the map shows for each. Every area
