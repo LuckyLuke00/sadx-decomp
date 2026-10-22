@@ -23,6 +23,7 @@ running. Standard library only.
 import atexit
 import json
 import os
+import random
 import shutil
 import subprocess
 import sys
@@ -51,6 +52,10 @@ THINK_MAX_TOKENS = 12000  # thinking counts toward max_tokens
 PROBE_MAX_TOKENS = 1024  # enough to see whether a reply starts with thinking
 REFUSED = (400, 422)  # the status of a request with a field the server does not take
 POLL_SECONDS = 2
+# llama.cpp's answer when its slots share one context and the requests running together filled it. It fails them all
+# at once, so each waits a random time before it asks again: asked together, they would fill it again.
+CONTEXT_FULL = "Context size has been exceeded"
+FULL_RETRIES, FULL_WAIT_SECONDS = 10, (15, 120)
 
 
 class ServerError(Exception):
@@ -135,7 +140,13 @@ def chat(config: dict, messages: list[dict], temperature: float, thinking: bool,
         body["seed"] = seed
     body = merged(body, config["extra_body"])
     body = merged(body, config["think_on"] if thinking else config["think_off"])
-    return parse(call(config, "/chat/completions", body))
+    for retry in range(FULL_RETRIES + 1):
+        try:
+            return parse(call(config, "/chat/completions", body))
+        except ServerError as e:
+            if retry == FULL_RETRIES or e.status != 500 or CONTEXT_FULL not in str(e):
+                raise
+            time.sleep(random.uniform(*FULL_WAIT_SECONDS))
 
 
 # The server
