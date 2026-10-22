@@ -8,6 +8,11 @@ void EffectSmokeExp(struct sp_task *tp, struct sp_link *lp)
 {
 }
 
+// STUB: SADX 0x00553480
+void EffectSmoke(struct sp_task *tp, struct sp_link *lp)
+{
+}
+
 // FUNCTION: SADX 0x005535c0
 void CreateSmoke(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 {

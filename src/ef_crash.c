@@ -17,6 +17,11 @@ void CrashInit(struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x005b4600
+void CrashStarGenerate(struct taskwk *twp)
+{
+}
+
 // STUB: SADX 0x005b4730
 void CrashStar(struct task *tp)
 {
@@ -32,4 +37,9 @@ void CrashStarDisplayer(struct task *tp)
 void FUN_005b47c0(struct taskwk *param_1)
 {
 	param_1->mode = 1;
+}
+
+// STUB: SADX 0x005b47d0
+void CrashStarDraw(struct taskwk *twp)
+{
 }

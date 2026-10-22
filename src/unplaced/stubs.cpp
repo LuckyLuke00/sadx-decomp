@@ -362,6 +362,11 @@ void _pdVibMxServer(void)
 {
 }
 
+// STUB: SADX 0x00435b60
+void njGenerateFogTable3(float * const,float,float)
+{
+}
+
 // STUB: SADX 0x00438790
 void AL_SetMotionLink(struct task *tp, long MtnNum)
 {
@@ -1409,11 +1414,6 @@ float Shadow(struct taskwk *twp, float scl)
 	return (float)0;
 }
 
-// STUB: SADX 0x00553480
-void EffectSmoke(struct sp_task *, struct sp_link *)
-{
-}
-
 // STUB: SADX 0x005539d0
 void CreateFire(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 {
@@ -1595,17 +1595,6 @@ void FUN_00571b20(int)
 // STUB: SADX 0x00572f90
 void FUN_00572f90(struct obj *, struct obj *)
 {
-}
-
-// STUB: SADX 0x00573100
-void FUN_00573100()
-{
-}
-
-// STUB: SADX 0x00573180
-int setfog()
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x00574950
@@ -1928,23 +1917,8 @@ void ObjectJumpPanelDisplay(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b4600
-void CrashStarGenerate(struct taskwk *twp)
-{
-}
-
-// STUB: SADX 0x005b47d0
-void CrashStarDraw(struct taskwk *twp)
-{
-}
-
 // STUB: SADX 0x005b4c90
 void TBarrier(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b56b0
-void Muteki(struct task *tp)
 {
 }
 
@@ -2262,21 +2236,9 @@ void objDisplay(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0060ef40
-int ghSpriteAnim(struct GHSPRITE_ANIM *pAnim, struct GHSPRITE_ANIM_TABLE *pAnimTable)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x0060f0c0
 void ghSpriteDraw_Unit3D_BillBoard(struct NJS_POINT3 *psPos, struct GHPARTICLE_UNIT *psPart, struct GHSPRITE_ANIM *psAnim, struct GHSPRITE_ANIM_TABLE *psAnimTable)
 {
-}
-
-// STUB: SADX 0x0060f8e0
-struct task *ghParticleControlSet(int, struct GHPARTICLE_INFO *, struct GHSPRITE_ANIM_TABLE *, long (*)(struct GHPARTICLE *, struct GHPARTICLE_INFO *, struct GHSPRITE_ANIM_TABLE *))
-{
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x0060fcb0

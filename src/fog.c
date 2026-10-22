@@ -1,4 +1,5 @@
 #include "decls.h"
+extern float DAT_05cd0d18;
 extern int DAT_05b9d838;
 extern struct NJS_ARGB DAT_05b3e040;
 extern unsigned char DAT_025acd84;
@@ -26,6 +27,26 @@ void ___njFogEnable()
 		FUN_00573100();
 		njFogDisable();
 	}
+}
+
+// FUNCTION: SADX 0x00573100
+void FUN_00573100()
+{
+	if ((oldn != -65535.0) || (oldf != -65535.0))
+	{
+		njSetFogColor(0);
+		njGenerateFogTable3(&DAT_05cd0d18, -65535.0f, -65535.0f);
+		njSetFogTable(&DAT_05cd0d18);
+		oldn = -65535.0f;
+		oldf = -65535.0f;
+		njFogDisable();
+	}
+}
+
+// STUB: SADX 0x00573180
+int setfog()
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x00573260
