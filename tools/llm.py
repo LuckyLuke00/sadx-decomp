@@ -1232,7 +1232,7 @@ def solve_function(args, file, address, transcript):
             log.write(json.dumps({"file_best": best.percent}) + "\n")
             print(f"{hexa(address)}: the file's code scores {best.percent:.2f}%", flush=True)
         tries = 0  # the tries that got a reply
-        while tries < args.tries:
+        while tries < args.tries and not (best and best.percent == 100):  # a restored try can match already
             thinking = thinks(stale, config)
             asked = time.time()
             seed = None if args.seed is None else args.seed + tries + 1
