@@ -1,4 +1,5 @@
 #include "decls.h"
+float FUN_004fd8e0(float *param_1, float *param_2);
 extern int DAT_05b9d838;
 extern int DAT_05b42a84;
 extern int DAT_05b3e0d0;
@@ -44,6 +45,16 @@ void InitializeLandWork(struct task *pTask)
 	DAT_05cbaf48 = 0;
 	DAT_05cbef54 = 0;
 	DAT_05cbef58 = 0;
+}
+
+// STUB: SADX 0x004fce70
+void LandLoad(long stage, long act)
+{
+}
+
+// STUB: SADX 0x004fd020
+void LandRelease(long stage, long act)
+{
 }
 
 // FUNCTION: SADX 0x004fd1e0
@@ -148,6 +159,11 @@ void ManageGroundDisplayer(struct task *pTask)
 	ResetMaterial();
 }
 
+// STUB: SADX 0x004fd700
+void land_DrawObject(struct obj *obj, struct _OBJ_LANDENTRY *landEnt)
+{
+}
+
 // FUNCTION: SADX 0x004fd8e0
 float FUN_004fd8e0(float *param_1, float *param_2)
 {
@@ -241,6 +257,11 @@ void SetDefaultGravity()
 	DAT_05b3ebd0 = 0.0f;
 	DAT_05b3ebdc = 0;
 	DAT_05b3ebc4 = 0;
+}
+
+// STUB: SADX 0x004feea0
+void SetUserGravityXZ(long angx, long angz)
+{
 }
 
 // FUNCTION: SADX 0x004ff1c0

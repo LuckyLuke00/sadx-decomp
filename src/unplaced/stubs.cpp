@@ -289,7 +289,7 @@ void njRotateZ(float *, int)
 }
 
 // STUB: SADX 0x00430b70
-void njPushMatrix(float *)
+extern void njPushMatrix(float *)
 {
 }
 
@@ -708,8 +708,8 @@ void ghDrawPvrSprite(short *, int, float, float, float, float, float)
 {
 }
 
-// STUB: SADX 0x00498b80
-void ReleaseMiMessage()
+// STUB: SADX 0x00498e30
+void DisplayMiMessage()
 {
 }
 
@@ -718,25 +718,28 @@ void InitMission()
 {
 }
 
-// STUB: SADX 0x00499000
-void MissionMain()
+// STUB: SADX 0x00499050
+void MissionGetNumDisplay()
 {
 }
 
-// STUB: SADX 0x0049a130
-unsigned char IsMissionDispFlag(struct task *tp)
+// STUB: SADX 0x00499400
+void MissionTimer()
 {
-	return (unsigned char)0;
 }
 
-// STUB: SADX 0x0049a170
-unsigned char IsMissionAppear(struct task *tp)
+// STUB: SADX 0x004998c0
+void FUN_004998c0()
 {
-	return (unsigned char)0;
 }
 
-// STUB: SADX 0x0049a260
-void ReleaseMissionObject()
+// STUB: SADX 0x00499ba0
+void MissionObject()
+{
+}
+
+// STUB: SADX 0x0049a580
+void ReleaseMissionCamera()
 {
 }
 
@@ -1080,26 +1083,6 @@ void CamcontSetCameraLOOKAT(struct taskwk *pTaskWork)
 {
 }
 
-// STUB: SADX 0x004be650
-void CameraSetEventCamera(short ssCameraMode, unsigned char ucAdjustType)
-{
-}
-
-// STUB: SADX 0x004be800
-void CameraSetEventCameraFunc(void (*)(struct _OBJ_CAMERAPARAM *), unsigned char, signed char)
-{
-}
-
-// STUB: SADX 0x004be9a0
-void CameraReleaseEventCamera()
-{
-}
-
-// STUB: SADX 0x004bee10
-void FUN_004bee10(void)
-{
-}
-
 // STUB: SADX 0x004bf3d0
 long CameraAdditionalCollision(struct NJS_POINT3 *pos)
 {
@@ -1235,12 +1218,6 @@ long __GetFileSize(const char *fname)
 	return (long)0;
 }
 
-// STUB: SADX 0x004cfb80
-extern long CCL_Init(struct task *, struct CCL_INFO *, long, unsigned char)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x004d0670
 void CCL_PCheckColli()
 {
@@ -1256,16 +1233,6 @@ void CCL_CCheckColli()
 {
 }
 
-// STUB: SADX 0x004d8d20
-void CCL_E2CheckColli()
-{
-}
-
-// STUB: SADX 0x004d8f80
-void CCL_CalcRange(struct taskwk *twp)
-{
-}
-
 // STUB: SADX 0x004d9130
 signed char _GetColliFaceNormalPO(struct taskwk *twp1, struct NJS_POINT3 *v)
 {
@@ -1278,18 +1245,8 @@ long EntryColliList(struct taskwk *twp)
 	return (long)0;
 }
 
-// STUB: SADX 0x004dad90
-void PDestruct(long num)
-{
-}
-
 // STUB: SADX 0x004dbe50
 void PGetAcceleration(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
-{
-}
-
-// STUB: SADX 0x004ddec0
-void PGetAccelerationAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
@@ -1306,22 +1263,6 @@ void PGetRotation(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 // STUB: SADX 0x004e3130
 void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-}
-
-// STUB: SADX 0x004f0160
-void ExecFallingDownP(unsigned char pno)
-{
-}
-
-// STUB: SADX 0x004f1430
-void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
-{
-}
-
-// STUB: SADX 0x004f1860
-long CheckCollisionP(struct NJS_POINT3 *, float)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x004f3600
@@ -1352,7 +1293,7 @@ void *MAlloc(unsigned int size)
 }
 
 // STUB: SADX 0x004f4400
-void Free(void *mp)
+void Free(void *)
 {
 }
 
@@ -1387,16 +1328,6 @@ long CL_ColPolListUpRangeIn()
 	return (long)0;
 }
 
-// STUB: SADX 0x004fbad0
-void GetAngleZXV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_z)
-{
-}
-
-// STUB: SADX 0x004fd020
-void LandRelease(long stage, long act)
-{
-}
-
 // STUB: SADX 0x004fd4e0
 void DrawGround()
 {
@@ -1417,29 +1348,8 @@ void ExtraDisplayExecutor(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004ff9a0
-long ObjectMovableInitialize(struct taskwk *twp, struct motionwk *mwp, unsigned long mode)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x004ffab0
 void ObjectMovableSRegularExecute(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00500810
-void ObjectNormalDisplay(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00500920
-void ObjectNormalDisplay_LE(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00500ae0
-void ObjectScaleDisplay(struct task *tp)
 {
 }
 
@@ -1599,12 +1509,6 @@ void AddSetStage(short ssGap)
 {
 }
 
-// STUB: SADX 0x005513e0
-long CheckRangeOutWithR(struct task *tp, float fRange)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x00551e00
 float Shadow(struct taskwk *twp, float scl)
 {
@@ -1641,11 +1545,6 @@ void DisplayScoreAction()
 {
 }
 
-// STUB: SADX 0x00555540
-void AdvanceTime()
-{
-}
-
 // STUB: SADX 0x005561c0
 void late_DisplayTotalScore(struct task *tp)
 {
@@ -1676,11 +1575,6 @@ void calcAddAngle(int hit_flag)
 {
 }
 
-// STUB: SADX 0x00562930
-void calcCamTargetPos(int flag)
-{
-}
-
 // STUB: SADX 0x00562a70
 signed char calcCameraPos(int coli_on)
 {
@@ -1692,18 +1586,8 @@ void CameraLocalPath(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
-// STUB: SADX 0x00566790
-void cameraDebugMake(struct _OBJ_CAMERAPARAM *, struct NJS_POINT3 *, struct NJS_POINT3 *)
-{
-}
-
 // STUB: SADX 0x005670c0
 void CameraFishing(struct _OBJ_CAMERAPARAM *pParam)
-{
-}
-
-// STUB: SADX 0x00567470
-void cameraSonicMain(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
@@ -1792,10 +1676,9 @@ void field_msg_create_man(void (*thread_func)(void *), void *arg_p, long adx_use
 {
 }
 
-// STUB: SADX 0x0056f630
-long isCheckGGApper_Emblem()
+// STUB: SADX 0x0056fde0
+void ManagePathWork(struct task *tp)
 {
-	return (long)0;
 }
 
 // STUB: SADX 0x00570480
@@ -2047,11 +1930,6 @@ void RingDone(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x005a7e50
-void RingDrawShadow(struct task *tp, float tempy, float pushx, float pushz)
-{
-}
-
 // STUB: SADX 0x005a9100
 void FUN_005a9100(int, unsigned short, struct sMobleCtrl *)
 {
@@ -2062,11 +1940,6 @@ void late_DispMilesMeter2P(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005abd70
-void relbox_end(struct task *task_p)
-{
-}
-
 // STUB: SADX 0x005abe80
 extern void relbox_switch_exec(struct task *)
 {
@@ -2074,6 +1947,11 @@ extern void relbox_switch_exec(struct task *)
 
 // STUB: SADX 0x005ac0e0
 extern void relbox_switch_draw(struct task *)
+{
+}
+
+// STUB: SADX 0x005ac270
+void relbox_crush_draw(struct task *task_p)
 {
 }
 
@@ -2146,8 +2024,13 @@ struct task *CreateEventObject()
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x005b41e0
-void EffJPDisp(struct task *tp)
+// STUB: SADX 0x005b3db0
+void ObjectJumpPanelSetNumber(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b3f80
+void ObjectJumpPanelDisplay(struct task *tp)
 {
 }
 
@@ -2171,18 +2054,23 @@ void Muteki(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b66f0
-void InitItemBoxManager()
-{
-}
-
-// STUB: SADX 0x005b7c20
-void ClrRocketTaskWorkBuff()
+// STUB: SADX 0x005b6a60
+void itemBoxManager(struct task *tp)
 {
 }
 
 // STUB: SADX 0x005b7d60
 void GetAngleYZV(const struct NJS_POINT3 *, long *, long *)
+{
+}
+
+// STUB: SADX 0x005b93c0
+void FUN_005b93c0(struct task *)
+{
+}
+
+// STUB: SADX 0x005ba7b0
+void ObjectEmeraldDisplay(struct NJS_POINT3 *pos, long *angy)
 {
 }
 
@@ -2265,6 +2153,11 @@ void EffectShotsmoke(struct sp_task *tp, struct sp_link *lp)
 long MirenScoreCheckDisplayCartTime()
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x005dd6c0
+void ObjectItemBox(struct task *)
+{
 }
 
 // STUB: SADX 0x005df820
@@ -2561,8 +2454,14 @@ void FUN_006411b0(int, int)
 }
 
 // STUB: SADX 0x0067d080
-void njRotateY(float *, unsigned short)
+extern void njRotateY(float *, unsigned short)
 {
+}
+
+// STUB: SADX 0x0067d290
+float njInnerProduct(struct NJS_POINT3 *, struct NJS_POINT3 *)
+{
+	return (float)0;
 }
 
 // STUB: SADX 0x0067d350
@@ -2576,7 +2475,7 @@ void njGetMatrix(float *)
 }
 
 // STUB: SADX 0x0067d4c0
-void njRotateX(float *, unsigned short)
+extern void njRotateX(float *, unsigned short)
 {
 }
 
@@ -2749,10 +2648,24 @@ void FUN_007d6940(struct task *)
 {
 }
 
-// STUB: SADX 0x007e5070
-signed char CartRaceGetDialState()
+// STUB: SADX 0x007e43c0
+void execRound(struct task *task_p)
 {
-	return (signed char)0;
+}
+
+// STUB: SADX 0x007e48b0
+void endCheckSeq(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007e4eb0
+void startDushCheck(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007e5020
+void CartRacePrepareRace()
+{
 }
 
 // STUB: SADX 0x007e60f0
@@ -2839,8 +2752,18 @@ void ReleaseSnapShotTexture(struct SNAPSHOT_DATA *data)
 {
 }
 
+// STUB: SADX 0x008b8fa0
+void ObjectTikalHint(struct task *task_p)
+{
+}
+
 // STUB: SADX 0x008b9290
 void TikalBossKill()
+{
+}
+
+// STUB: SADX 0x008bc650
+void displayToge(struct taskwk *twp)
 {
 }
 
@@ -2889,6 +2812,16 @@ void Eggman(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008cbb50
+void InitSnatchPlayerInfo()
+{
+}
+
+// STUB: SADX 0x008ccde0
+void reflexiveMaterial(struct NJS_MODEL *model, long scan_type)
+{
+}
+
 // STUB: SADX 0x008cf820
 void FUN_008cf820(int, int)
 {
@@ -2904,6 +2837,11 @@ void drawEgo(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008d45d0
+void execTPPlanet(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008d7ef0
 void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -2911,6 +2849,11 @@ void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x008d8110
 void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x008d8db0
+void bubble_child_exec(struct task *task_p)
 {
 }
 
@@ -2931,6 +2874,16 @@ void BridgeDraw(struct taskwk *)
 
 // STUB: SADX 0x008dc880
 void BridgeDraw2(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x008ddd40
+void ERSC_CorrectParameter(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x008dde40
+void ERSC_CommonExec(struct task *tp)
 {
 }
 

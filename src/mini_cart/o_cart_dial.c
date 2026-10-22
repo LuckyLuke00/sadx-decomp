@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x007e6040
+void ObjectCartDial(struct task *task_p)
+{
+}
+
 // STUB: SADX 0x007e6060
 void initObject(struct task *task_p, const struct ActionParam *param_p)
 {

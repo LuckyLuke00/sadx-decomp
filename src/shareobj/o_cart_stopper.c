@@ -13,3 +13,9 @@ int FUN_008dd910(int param_1)
 {
 	return (int)0;
 }
+
+// STUB: SADX 0x008ddb20
+long slideStopper(struct task *task_p)
+{
+	return (long)0;
+}

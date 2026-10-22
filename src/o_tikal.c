@@ -1,4 +1,8 @@
 #include "decls.h"
+extern void tikal_tubu_draw(struct task *task_p);
+void tikal_tubu_draw(struct task *task_p);
+void FUN_005bb770(struct task *param_1);
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 void tikal_illusion_draw(struct task *task_p);
 void FUN_005bb770(struct task *param_1);
 void FUN_005bb7e0(struct task *param_1);
@@ -58,6 +62,21 @@ void TikalGotoTarget(struct NJS_POINT3 *from_p, struct NJS_POINT3 *target_p, flo
 
 // STUB: SADX 0x005bb200
 void FUN_005bb200(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x005bb270
+void tikal_exec(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x005bb470
+void tikal_tubu_init(struct task *task_p, struct NJS_POINT3 *pos_p, float scale, float alpha)
+{
+}
+
+// STUB: SADX 0x005bb590
+void tikal_tubu_exec(struct task *task_p)
 {
 }
 
