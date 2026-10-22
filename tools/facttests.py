@@ -4,7 +4,9 @@ run() calls every check and returns the failures. The code under test is built b
 x86.Function from lines of assembly, and FakeDecoder hands out the callees by address.
 """
 
+import math
 import re
+import struct
 import tempfile
 from pathlib import Path
 
@@ -16,6 +18,7 @@ import x86
 
 CODE = 0x401000  # where the function under test starts
 CALLEE = 0x402000  # where a callee starts
+READ_ONLY = 0x580000  # where read-only data starts
 DATA = 0x501000  # an address in the data section
 
 
@@ -85,15 +88,24 @@ NO_CALLEES = callees()
 
 
 class FakeImage:
-    """The part of pe.Image that pointer_facts reads: a code section, a data section and an import slot."""
+    """The part of pe.Image that the facts read: a code section, a data section with read-only data from
+    READ_ONLY, an import slot and the bytes in BYTES."""
 
     import_slots = {0x503000: "Import"}
+    bytes = {0x580000: struct.pack("<f", -65535.0), 0x580008: struct.pack("<d", 0.1),
+             0x580010: struct.pack("<f", math.inf), 0x501000: struct.pack("<f", 2.0)}
 
     def contains(self, address: int) -> bool:
         return 0x400000 <= address < 0x600000
 
     def is_code(self, address: int) -> bool:
         return 0x400000 <= address < 0x500000
+
+    def is_read_only_data(self, address: int) -> bool:
+        return READ_ONLY <= address < 0x600000
+
+    def read(self, address: int, size: int) -> bytes:
+        return self.bytes.get(address, bytes(size))[:size]
 
 
 def namer_of(globals_: list[dossier.Global]) -> dossier.Namer:
@@ -556,6 +568,39 @@ def check_bodiless_fact() -> list[str]:
     return failures
 
 
+def check_float_literal() -> list[str]:
+    """float_literal gives the shortest text that gives the same float back, with `f`, and a double's repr. A
+    whole number gets `.0`. An infinity and a NaN give None."""
+    cases = [(struct.pack("<f", -65535.0), "-65535.0f"), (struct.pack("<f", 0.1), "0.1f"),
+             (struct.pack("<f", 320.0), "320.0f"),
+             (struct.pack("<f", 1e-05), "1e-05f"), (struct.pack("<f", 3.0e38), "3e+38f"),
+             (struct.pack("<d", 0.1), "0.1"), (struct.pack("<d", 2.0), "2.0"),
+             (struct.pack("<f", math.inf), None), (struct.pack("<d", math.nan), None)]
+    return [f"float_literal gives {facts.float_literal(raw)!r} for {raw.hex()}, not {wanted!r}"
+            for raw, wanted in cases if facts.float_literal(raw) != wanted]
+
+
+def check_constant_fact() -> list[str]:
+    """constant_fact names the floats and doubles that x87 code loads from read-only data with no name here.
+    It skips a named global, writable data, an integer load, a register base and an infinity."""
+    float_load = "fld dword ptr [0x580000]"
+    double_load = "fmul qword ptr [0x580008]"
+    cases = [([float_load, "ret"], [], "The code loads the constants -65535.0f (at 0x580000) from"),
+             ([float_load, double_load, "ret"], [], "The code loads the constants -65535.0f (at 0x580000) and 0.1 "),
+             ([float_load, "ret"], [dossier.Global(0x580000, 4, "Speed", "float Speed")], None),
+             (["fld dword ptr [0x501000]", "ret"], [], None),
+             (["fild dword ptr [0x580000]", "ret"], [], None),
+             (["fld dword ptr [eax + 0x580000]", "ret"], [], None),
+             (["fld dword ptr [0x580010]", "ret"], [], None),
+             (["mov eax, dword ptr [0x580000]", "ret"], [], None)]
+    failures = []
+    for code, globals_, wanted in cases:
+        found = facts.constant_fact(build(code), namer_of(globals_))
+        if (found or "")[:len(wanted or "")] != (wanted or "") or (found is None) != (wanted is None):
+            failures.append(f"constant_fact gives {found!r} for {described(code)}, not one that starts {wanted!r}")
+    return failures
+
+
 def check_fact_lines() -> list[str]:
     """fact_lines gives the convention fact, then the pointer facts, then the bodiless fact, with no empty
     line. A register-argument cluster has no convention fact. The bodiless fact reads the prototype, the locals
@@ -623,6 +668,7 @@ def run() -> list[str]:
     for check in (check_memory_operands, check_pops, check_stack_change, check_may_read_stack_arguments,
                   check_exit_pops, check_printed_keyword, check_amount, check_listed, check_offsets_text,
                   check_convention_fact, check_frame_slot, check_transfer, check_pointer_globals,
-                  check_pointer_facts, check_bodiless_fact, check_fact_lines, check_library_annotations):
+                  check_pointer_facts, check_bodiless_fact, check_float_literal, check_constant_fact,
+                  check_fact_lines, check_library_annotations):
         failures += check()
     return failures
