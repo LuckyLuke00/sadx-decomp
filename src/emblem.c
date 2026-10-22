@@ -12,9 +12,6 @@ extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern struct NJS_TEXLIST texlist_get_emblem;
 extern struct NJS_TEXANIM anim_get_emblem[];
-extern float DAT_00956ba8;
-extern double DAT_0095b120;
-extern float DAT_0095c8d0;
 extern void dispGetEmblem(struct task *);
 extern void destGetEmblem(struct task *);
 extern long NeonuLoadTexture(struct NJS_TEXLIST *);
@@ -450,8 +447,8 @@ struct task *InitGetEmblem()
 		ADXTaskInit();
 		*(short *)((char *)local_8->twp + 6) = 0;
 		*((char *)local_8->twp) = 0;
-		*(float *)((char *)local_8->twp + 0x20) = DAT_00956ba8;
-		*(float *)((char *)local_8->twp + 0x24) = DAT_0095c8d0;
+		*(float *)((char *)local_8->twp + 0x20) = 320.0f;
+		*(float *)((char *)local_8->twp + 0x24) = 256.0f;
 		*(void **)((char *)local_8 + 0x18) = destGetEmblem;
 		return local_8;
 	}
@@ -498,7 +495,7 @@ void dispGetEmblem(struct task *tp)
 		*(float *)(emblem_sc + 24) = 2.0f * ScreenRaitoX;
 		if (*(unsigned long *)(emblem_sc + 8) > 9)
 		{
-			*(float *)(12 + emblem_sc) = ScreenRaitoX * 272.0f + DAT_0095b120;
+			*(float *)(12 + emblem_sc) = ScreenRaitoX * 272.0f + 8.0;
 		}
 		if (*(unsigned long *)(emblem_sc + 8) > 99)
 		{
@@ -513,7 +510,7 @@ void dispGetEmblem(struct task *tp)
 			*(unsigned long *)(8 + emblem_sc) = local_2ci->value.l;
 			if (*(unsigned long *)(emblem_sc + 8) > 9)
 			{
-				*(float *)(emblem_sc + 12) = ScreenRaitoX * 272.0f + DAT_0095b120;
+				*(float *)(emblem_sc + 12) = ScreenRaitoX * 272.0f + 8.0;
 			}
 			if (*(unsigned long *)(emblem_sc + 8) > 99)
 			{

@@ -1525,9 +1525,14 @@ signed char _GetColliFaceNormalPO(struct taskwk *twp1, struct NJS_POINT3 *v)
 }
 
 // STUB: SADX 0x004da580
-long EntryColliList(struct taskwk *twp)
+long EntryColliList(struct taskwk *)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004daa00
+void PInitialize(long num, struct task *tp)
+{
 }
 
 // STUB: SADX 0x004dbe50
@@ -2051,8 +2056,23 @@ void FUN_00592520(struct task *)
 {
 }
 
+// STUB: SADX 0x005948e0
+void SpinnaDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x00594c30
+void SpinnaDamage(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x00597ff0
 void lig_calcPalette(int)
+{
+}
+
+// STUB: SADX 0x00598310
+extern void ___dsSetPalette(long)
 {
 }
 
@@ -2296,6 +2316,21 @@ void ObjectEmeraldDisplay(struct NJS_POINT3 *pos, long *angy)
 {
 }
 
+// STUB: SADX 0x005bc0f0
+void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005be2d0
+void FUN_005be2d0(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x005be3b0
+void RoboDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005c0e10
 void LeonDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -2306,23 +2341,8 @@ void LeonDrawLink(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005c2c10
-void AirLiftDraw(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005c3fc0
-void MissleBombDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x005c44b0
-void AirCollision(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
 // STUB: SADX 0x005c45e0
-void AirDraw(struct taskwk *twp, struct enemywk *ewp)
+void AirDraw(struct taskwk *, struct enemywk *)
 {
 }
 
@@ -2341,18 +2361,18 @@ void SaruBombDisplayer(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005c9750
-void SaruBombCollision(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x005c9d20
-void SaruBombExplosionDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
 // STUB: SADX 0x005cdd60
 void PoliceDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005cf9c0
+void PoliceRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005d07a0
+void PoliceMoveToHome(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -2404,23 +2424,6 @@ struct task *CreateBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x005e28c0
-struct enemywk *EnemyInitialize(struct task *tp, struct taskwk *twp)
-{
-	return (struct enemywk *)0;
-}
-
-// STUB: SADX 0x005e2a10
-signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp)
-{
-	return (signed char)0;
-}
-
-// STUB: SADX 0x005e2b60
-void EnemyGetShadow(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
 // STUB: SADX 0x005e2d50
 void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -2435,22 +2438,6 @@ void EnemyCheckWall(struct taskwk *twp, struct enemywk *ewp)
 long EnemyCalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x005e4060
-long EnemyTurnToPlayer(struct taskwk *, struct enemywk *, unsigned char)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x005e44f0
-void EnemyBaneDraw(struct taskwk *)
-{
-}
-
-// STUB: SADX 0x005e4b30
-void CreateExpSpring(struct taskwk *twp, unsigned char num)
-{
 }
 
 // STUB: SADX 0x005e5770
@@ -2560,11 +2547,6 @@ void char_sel_disp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0060c300
-void SnowmanBackSmoke(struct taskwk *, struct enemywk *)
-{
-}
-
 // STUB: SADX 0x0060c7c0
 void SnowmanFootSmoke(struct taskwk *, struct enemywk *)
 {
@@ -2621,8 +2603,8 @@ void Eggrob_Display(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00617d10
-void Flicky_New(struct task *tp, int id)
+// STUB: SADX 0x00616840
+void EggrobForEvent0_Exe(struct task *tp)
 {
 }
 
@@ -2665,6 +2647,11 @@ void FUN_006411b0(int, int)
 
 // STUB: SADX 0x0067d080
 extern void njRotateY(float *, unsigned short)
+{
+}
+
+// STUB: SADX 0x0067d190
+void njProjectScreen(float (*)[16],struct NJS_POINT3 *,struct NJS_POINT2 *)
 {
 }
 
@@ -3084,11 +3071,6 @@ void execTPPlanet(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008d7ef0
-void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
 // STUB: SADX 0x008d8110
 void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -3101,6 +3083,11 @@ void bubble_child_exec(struct task *task_p)
 
 // STUB: SADX 0x008d9be0
 void FUN_008d9be0(void *, float, float)
+{
+}
+
+// STUB: SADX 0x008da900
+void SnakePartsDraw(struct taskwk *twp)
 {
 }
 
@@ -3126,6 +3113,11 @@ void ERSC_CorrectParameter(struct taskwk *twp)
 
 // STUB: SADX 0x008dde40
 void ERSC_CommonExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008de9f0
+void dispBuyonSub(struct task *tp)
 {
 }
 

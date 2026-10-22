@@ -1,5 +1,11 @@
 #include "decls.h"
-extern double DAT_0095b120;
+void AirMove(struct taskwk *twp, struct enemywk *ewp);
+void AirCollision(struct taskwk *twp, struct enemywk *ewp);
+void AirDraw(struct taskwk *twp, struct enemywk *ewp);
+long EntryColliList(struct taskwk *twp);
+extern void njPushMatrix(float *);
+extern void njRotateY(float *, unsigned short);
+extern void njPopMatrix(int);
 extern int DAT_05b9d838;
 extern struct obj object_saru_air[1];
 extern struct NJS_TEXLIST texlist_e_aircraft;
@@ -11,11 +17,21 @@ void EnemyAirLift(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005c2c10
+void AirLiftDraw(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005c2e00
 void AirLiftDestructor(struct task *tp)
 {
 	WithdrawCollisionEntry(tp, &object_sky_obj_lift_a_obj_lift_a);
 	FreeTaskC(tp);
+}
+
+// STUB: SADX 0x005c2e30
+void AirLiftExecutor(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x005c2fb0
@@ -24,6 +40,21 @@ void FUN_005c2fb0(struct task *param_1)
 	struct taskwk *local_8;
 	local_8 = param_1->twp;
 	AirLiftDraw(param_1);
+}
+
+// STUB: SADX 0x005c2fd0
+void AirLiftSleep(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005c3180
+void EnemyAir(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005c3320
+void AirMissle(struct task *tp)
+{
 }
 
 // STUB: SADX 0x005c34a0
@@ -68,6 +99,16 @@ void FUN_005c3f90(struct taskwk *param_1, struct enemywk *param_2)
 {
 	MissleBombDraw(param_1, param_2);
 	EntryColliList(param_1);
+}
+
+// STUB: SADX 0x005c3fc0
+void MissleBombDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c40f0
+void FUN_005c40f0(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x005c42c0
@@ -123,9 +164,105 @@ void FUN_005c4420(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
+// STUB: SADX 0x005c44b0
+void AirCollision(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c4ab0
+void AirWingLightDraw(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x005c4c10
+void FUN_005c4c10(struct taskwk *param_1, struct enemywk *param_2)
+{
+}
+
 // STUB: SADX 0x005c4d60
 void AirMove(struct taskwk *twp, struct enemywk *ewp)
 {
+}
+
+// STUB: SADX 0x005c4e30
+void AirRun(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c4fd0
+void AirSmokeGround(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c5160
+void AirTakeOff(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// FUNCTION: SADX 0x005c5280
+void FUN_005c5280(struct taskwk *param_1, struct enemywk *param_2)
+{
+	if (param_1->wtimer > 0x96)
+	{
+		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0xffffd800, 0x20);
+		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0, 0x20);
+		*(int *)((char *)param_1 + 0x18) += 0xe3;
+	}
+	else if (param_1->wtimer > 0x32)
+	{
+		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0xffffd800, 0x20);
+		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x10);
+		*(int *)((char *)param_1 + 0x18) += 0x88;
+	}
+	else
+	{
+		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x20);
+	}
+	if (param_2->acc.x < 6.0f)
+	{
+		param_2->acc.x += 0.5f;
+	}
+	AirMove(param_1, param_2);
+	AirDraw(param_1, param_2);
+	if (param_1->wtimer > 0xfa)
+	{
+		param_2->old_mode = param_1->mode;
+		param_1->mode = 7;
+		param_1->wtimer = 0;
+	}
+}
+
+// FUNCTION: SADX 0x005c53e0
+void FUN_005c53e0(struct taskwk *param_1, struct enemywk *param_2)
+{
+	if (param_1->wtimer > 0x96)
+	{
+		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0x2800, 0x20);
+		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0, 0x10);
+		*(long *)((char *)param_1 + 0x18) -= 0xe3;
+	}
+	else if (param_1->wtimer > 0x32)
+	{
+		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0x2800, 0x10);
+		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x10);
+		*(long *)((char *)param_1 + 0x18) -= 0x88;
+	}
+	else
+	{
+		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x20);
+	}
+	if (param_2->acc.x < 6.0f)
+	{
+		param_2->acc.x += 0.5f;
+	}
+	AirMove(param_1, param_2);
+	AirDraw(param_1, param_2);
+	if (param_1->wtimer > 0xfa)
+	{
+		param_2->old_mode = param_1->mode;
+		param_1->mode = 7;
+		param_1->wtimer = 0;
+	}
 }
 
 // FUNCTION: SADX 0x005c5540
@@ -137,12 +274,22 @@ void FUN_005c5540(struct task *param_1)
 	local_cg = param_1->twp;
 	local_8g = (struct enemywk *)param_1->mwp;
 	local_8g->sub_angle[1] = AdjustAngle(local_8g->sub_angle[1], 0x800, 0x20);
-	if (local_8g->acc.x < DAT_0095b120)
+	if (local_8g->acc.x < 8.0)
 	{
 		local_8g->acc.x += 0.5;
 	}
 	AirMove(local_cg, local_8g);
 	AirDraw(local_cg, local_8g);
+}
+
+// STUB: SADX 0x005c55d0
+void FUN_005c55d0(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c5710
+void AirFlyAway(struct taskwk *twp, struct enemywk *ewp)
+{
 }
 
 // STUB: SADX 0x005c5830

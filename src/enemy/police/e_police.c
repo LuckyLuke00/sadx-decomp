@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid1[1];
+extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid3[1];
+extern short *DAT_05baf368;
 
 // FUNCTION: SADX 0x005cdd30
 void PoliceDisplayer(struct task *tp)
@@ -10,8 +13,60 @@ void PoliceDisplayer(struct task *tp)
 	PoliceDraw(local_cg, local_8g);
 }
 
+// STUB: SADX 0x005ced40
+void dispPoliceShadow(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005cf4f0
 void FUN_005cf4f0(struct task *pTask, void *param_2, void *param_3)
+{
+}
+
+// FUNCTION: SADX 0x005cf520
+void PoliceWait(struct taskwk *twp, struct enemywk *ewp)
+{
+	PoliceCheckTerritory(twp, ewp);
+	PoliceRectifyPosition(twp, ewp);
+	PoliceMove(twp, ewp);
+	PoliceDraw(twp, ewp);
+	ewp->weight = ewp->weight + -0.004000000189989805;
+	if (ewp->weight < 2.0)
+	{
+		ewp->weight = 2.0;
+	}
+	if (EnemyDist2FromPlayer(twp, 0) < 40000.0)
+	{
+		ewp->old_mode = twp->mode;
+		twp->mode = 1;
+		twp->wtimer = 0;
+		twp->flag = twp->flag | 0x400;
+		ewp->aim = *(struct NJS_POINT3 *)(DAT_05baf368 + 0x10);
+	}
+	ewp->radius = ewp->radius - 0.019999999552965164;
+	if (ewp->radius < 0.0)
+	{
+		ewp->radius = 0.0;
+	}
+	ewp->view_angle = AdjustAngle(ewp->view_angle, 0, 0x60);
+	ewp->angz_spd = AdjustAngle(ewp->angz_spd, 0, 0x60);
+	ewp->sub_angle[1] = AdjustAngle(ewp->sub_angle[1], 0, 0x100);
+	twp->ang.x = AdjustAngle(twp->ang.x, 0, 0xb0);
+	twp->ang.z = AdjustAngle(twp->ang.z, 0, 0xb0);
+}
+
+// STUB: SADX 0x005cf6d0
+void PoliceCheckTerritory(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005cf800
+void PoliceMove(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005cfd80
+void PoliceScramble(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -39,7 +94,52 @@ void PoliceTurnHead(struct taskwk *twp, struct enemywk *ewp)
 	ewp->sub_angle[1] = AdjustAngle(ewp->sub_angle[1], -local_8g, 0x360);
 }
 
+// STUB: SADX 0x005d0080
+void PoliceChase(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005d01b0
 void PoliceTurn(struct taskwk *twp, struct enemywk *ewp)
 {
+}
+
+// FUNCTION: SADX 0x005d05d0
+void PoliceReturn(struct taskwk *twp, struct enemywk *ewp)
+{
+	ewp->angy_spd = 0x50;
+	PoliceCheckTerritory(twp, ewp);
+	PoliceRectifyPosition(twp, ewp);
+	twp->ang.y = AdjustAngle(twp->ang.y, ewp->angx_spd, 0x200);
+	ewp->view_angle = AdjustAngle(ewp->view_angle, 0, 0x60);
+	PoliceMoveToHome(twp, ewp);
+	PoliceTurnHead(twp, ewp);
+	PoliceDraw(twp, ewp);
+	ewp->weight -= 0.013f;
+	if (ewp->weight < 2.0f)
+	{
+		ewp->weight = 2.0f;
+	}
+	if (twp->wtimer > 0x96)
+	{
+		ewp->old_mode = twp->mode;
+		twp->mode = 0;
+		twp->wtimer = 0;
+	}
+	if (EnemyDist2FromPlayer(twp, 0) < 40000.0f)
+	{
+		ewp->old_mode = twp->mode;
+		twp->mode = 1;
+		twp->wtimer = 0;
+		twp->flag |= 0x400;
+		ewp->aim = *(NJS_POINT3 *)(DAT_05baf368 + 16);
+	}
+	ewp->radius -= 0.005f;
+	if (ewp->radius < 0.0f)
+	{
+		ewp->radius = 0.0f;
+	}
+	ewp->nframe += 0.2f;
+	matlist_nisepat_nisepat_grid1[0].attrflags |= 0x10000000;
+	matlist_nisepat_nisepat_grid3[0].attrflags |= 0x10000000;
 }
