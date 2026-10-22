@@ -137,6 +137,7 @@ def stub_body(sig: str) -> str:
 
 def extern_of(definition: str) -> str:
     """The extern a definition needs in globals.h: an array's size is left to the definition."""
+    definition = re.sub(r"^extern\s+", "", definition)
     return "extern " + re.sub(r"\[\s*\w+\s*\]", "[]", definition, count=1) if "[" in definition else "extern " + definition
 
 

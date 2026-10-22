@@ -59,6 +59,7 @@ def run() -> int:
     failures += check_declaration_keys()
     failures += check_decls_trees()
     failures += check_nested_globals()
+    failures += check_extern_of()
     failures += check_reached_types()
     failures += check_clone()
     failures += check_units()
@@ -402,6 +403,15 @@ def check_nested_globals() -> list[str]:
         if found != code or line not in output or (code == 0 and "inside" in output):
             failures.append(f"decls for {case} gives exit {found}, not {code}, and prints {output!r}, not {line!r}")
     return failures
+
+
+def check_extern_of() -> list[str]:
+    """A definition's extern in globals.h has one `extern`, also for a C++ `extern const` definition, and leaves an
+    array's size to the definition."""
+    cases = [("int x", "extern int x"), ("extern const float x", "extern const float x"),
+             ("char buf[8]", "extern char buf[]")]
+    return [f"extern_of gives {declgen.extern_of(definition)!r} for {definition!r}, not {wanted!r}"
+            for definition, wanted in cases if declgen.extern_of(definition) != wanted]
 
 
 def check_reached_types() -> list[str]:
