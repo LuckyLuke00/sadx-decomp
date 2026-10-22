@@ -815,11 +815,14 @@ def masked(line):
 
 
 def names_only(diff):
-    """Whether the instructions that differ are the same apart from the names of globals and functions."""
+    """Whether the instructions that differ are the same apart from the names of globals and functions. A line that
+    is on both sides as it is moved, so the order differs too."""
     sides = {"-": [], "+": []}
     for sign, text in DIFF_LINE.findall(diff):
-        sides[sign].append(masked(text))
-    return bool(sides["-"]) and sorted(sides["-"]) == sorted(sides["+"])
+        sides[sign].append(SOURCE_LINE.sub("", text).strip())
+    moved = set(sides["-"]) & set(sides["+"])
+    return (bool(sides["-"]) and not moved
+            and sorted(map(masked, sides["-"])) == sorted(map(masked, sides["+"])))
 
 
 def name_pairs(diff):

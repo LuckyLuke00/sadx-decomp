@@ -414,10 +414,24 @@ def check_error_count() -> list[str]:
             for text, wanted in cases if (found := llm.error_count(text, known)) != wanted]
 
 
+def check_names_only() -> list[str]:
+    """A diff whose changed lines differ only in reccmp's names is names only. A moved line is not, though both
+    sides hold it, and neither is a diff with no changed lines."""
+    renamed = ("0x5aa7e8 : -call njSqrt (FUNCTION)\n"
+               "         : +call FUN_00788f30 (FUNCTION) \t(npc_sonic.c:174)\n")
+    moved = ("         : +push ecx \t(npc_sonic.c:174)\n"
+             "0x5aa7e1 : fld dword ptr [ebp - 0xc]\n"
+             "0x5aa7e4 : -push ecx\n")
+    cases = [(renamed, True), (moved, False), (renamed + moved, False),
+             ("0x5aa7e1 : fld dword ptr [ebp - 0xc]\n", False)]
+    return [f"names_only gives {found} for {diff!r}, not {wanted}"
+            for diff, wanted in cases if (found := llm.names_only(diff)) != wanted]
+
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     checks = [check_signature_index, check_without_static, check_cast_calls, check_one_edit_apart,
               check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_ftol,
               check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime, check_with_earlier,
-              check_without_declarations, check_tool_lines, check_build_errors, check_error_count]
+              check_without_declarations, check_tool_lines, check_build_errors, check_error_count, check_names_only]
     return [failure for check in checks for failure in check()]
