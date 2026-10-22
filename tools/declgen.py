@@ -184,8 +184,11 @@ def write(context: Path | None, tables: Path | None) -> int:
     context_funcs, context_globals = {}, {}
     context_decls = {}  # (name, declaration): the context file that declares it
     context_counts = collections.Counter()
+    context_tokens = {}
     for rel, text in context_sources.items():
-        context_counts.update(re.findall(r"[A-Za-z_]\w*", names.strip_code(text)))
+        found = re.findall(r"[A-Za-z_]\w*", names.strip_code(text))
+        context_tokens[rel] = set(found)
+        context_counts.update(found)
         for kind, address, sig in names.parse_annotations(text):
             if kind in names.FUNCTION_KINDS:
                 context_funcs[address] = (rel, sig, bool(re.match(r"static\b", sig)), kind == "STUB")
@@ -201,7 +204,8 @@ def write(context: Path | None, tables: Path | None) -> int:
 
     def report_conflict(name, options):
         """A name declared in several ways, where one of them is this tree's own. A way that only a context
-        file uses is fatal: the context's file never builds here, so a score here would not hold there."""
+        file uses is fatal: the context's file never builds here, so a score here would not hold there. Unless the
+        context already declares each of this tree's ways: then these files add no way to it."""
         ways = {}  # declaration_key: the declarations that read the same
         for o in options:
             ways.setdefault(names.declaration_key(o), []).append(o)
@@ -209,7 +213,8 @@ def write(context: Path | None, tables: Path | None) -> int:
             return
         theirs = [f"{context_decls[(name, same[0])]} declares it `{same[0]}`" for same in ways.values()
                   if not any((name, o) in own_decls for o in same)]
-        if theirs:
+        new = [same for same in ways.values() if not any((name, o) in context_decls for o in same)]
+        if theirs and new:
             fatal.append(f"{name}: {', '.join(theirs)} in the context tree. Declare it that way too.")
         else:
             shown = " | ".join(same[0] for same in ways.values())
@@ -300,10 +305,23 @@ def write(context: Path | None, tables: Path | None) -> int:
         decls[a] = sig
         if d is None:
             stubs[a] = sig
+    # A context file that declares a function defined here in another way and calls it calls an overload that never
+    # links, once these files are in the context.
+    for a, d in sorted(defined_funcs.items()):
+        name = names.declared_name(d[1])
+        if d[2] or not name or "::" in name or len(fnames.get(name, [])) > 1:
+            continue
+        for (other, decl), rel in sorted(context_decls.items()):
+            if other != name or names.declaration_key(decl) == names.declaration_key(d[1]):
+                continue
+            if len(re.findall(rf"\b{re.escape(name)}\b", names.strip_code(context_sources[rel]))) > 1:
+                fatal.append(f"{name}: {rel} declares it `{decl}` in the context tree and calls it. Define it that "
+                             f"way too.")
     # functions.h declares each function for every file, so only global overloads may share a name. In the context,
-    # the same holds for the functions its files define, once a name occurs a second time there with these files.
+    # the same holds for the functions its files or these files define, once a name occurs a second time there with
+    # these files.
     declared = {funcs[a]["name"] for a in decls}
-    for a, d in context_funcs.items():
+    for a, d in list(context_funcs.items()) + list(defined_funcs.items()):
         name = funcs[a]["name"] if a in funcs else ""
         if not d[2] and "::" not in (names.declared_name(d[1]) or "") and counts[name] + context_counts[name] > 1:
             declared.add(name)
@@ -328,14 +346,16 @@ def write(context: Path | None, tables: Path | None) -> int:
     # A name that several addresses share is one static in each object: a file means the one in an object it defines
     # functions of.
     objects = collections.defaultdict(set)
-    for a, d in defined_funcs.items():
+    for a, d in list(defined_funcs.items()) + list(context_funcs.items()):
         if a in funcs and funcs[a].get("object"):
             objects[d[0]].add(funcs[a]["object"])
-    for rel, found in file_tokens.items():
-        for tok in found & shared_globals.keys():
-            here = [a for a in shared_globals[tok] if glob[a].get("object") in objects[rel]]
-            if len(here) == 1:
-                used_globals.add(here[0])
+    context_shared = set()  # the addresses that the context's files mean by a shared name
+    for tokens_of, used in ((file_tokens, used_globals), (context_tokens, context_shared)):
+        for rel, found in tokens_of.items():
+            for tok in found & shared_globals.keys():
+                here = [a for a in shared_globals[tok] if glob[a].get("object") in objects[rel]]
+                if len(here) == 1:
+                    used.add(here[0])
     externs, gdefs = {}, {}
     unsized = set()  # globals that stubs give one element, though their size is unknown
     for a in sorted(used_globals | set(defined_globals)):
@@ -387,13 +407,19 @@ def write(context: Path | None, tables: Path | None) -> int:
             count = int(row["size"]) // (elem * inner) if elem and row["size"] else 1
             definition = re.sub(r"\[[\w?]*\]", f"[{max(count, 1)}]", definition, count=1)
         gdefs[a] = (definition, row["base"].startswith("const"))
-    # globals.h declares each global for every file, so a name serves one address.
-    addresses_of = collections.defaultdict(list)
+    # globals.h declares each global for every file, so a name serves one address. In the context, the same holds for
+    # the globals its files define or mean by a shared name, once these files are in it.
+    addresses_of = collections.defaultdict(set)
     for a, ext in externs.items():
-        addresses_of[names.declared_name(ext)].append(a)
+        addresses_of[names.declared_name(ext)].add(a)
+    for a in context_shared | context_globals.keys():
+        c = context_globals.get(a)
+        name = names.declared_name(c[1]) if c else glob[a]["name"]
+        if name in addresses_of and not (c and re.match(r"static\b", c[1])):
+            addresses_of[name].add(a)
     for name, addresses in sorted(addresses_of.items()):
         if len(addresses) > 1:
-            where = ", ".join(f"0x{a:08x}" for a in addresses)
+            where = ", ".join(f"0x{a:08x}" for a in sorted(addresses))
             fatal.append(f"{name}: {where} share the name. Define each one static in its own file, "
                          f"with a GLOBAL annotation.")
 
