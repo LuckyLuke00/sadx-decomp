@@ -158,7 +158,7 @@ long FUN_00423db0(const char *, struct NJS_TEXLIST *)
 }
 
 // STUB: SADX 0x00423ee0
-void njPrintC(int,char const *)
+extern void njPrintC(int, char const *)
 {
 }
 
@@ -1062,6 +1062,22 @@ void ghDrawPvrSprite(short *, int, float, float, float, float, float)
 {
 }
 
+// STUB: SADX 0x00496390
+void TutorialTaskDestructor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00496440
+void TutorialTask(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00497070
+struct task *CreateTutorialBgTask(int level, int advplno, struct NJS_POINT3 *pos)
+{
+	return (struct task *)0;
+}
+
 // STUB: SADX 0x00498e30
 void DisplayMiMessage()
 {
@@ -1377,11 +1393,6 @@ void DrawFileSelCsr(struct FileSelWk *wkp)
 
 // STUB: SADX 0x004b9da0
 void AvaDrawInfo(struct FileSelWk *wkp)
-{
-}
-
-// STUB: SADX 0x004baaa0
-void ReleaseLineList()
 {
 }
 
@@ -1926,8 +1937,13 @@ void FUN_00572f90(struct obj *, struct obj *)
 {
 }
 
+// STUB: SADX 0x005734b0
+void InitSegaLogo()
+{
+}
+
 // STUB: SADX 0x00574950
-void ghDrawPvrTexture(int index, float x, float y, float z)
+void ghDrawPvrTexture(int, float, float, float, float, float)
 {
 }
 
@@ -1951,26 +1967,14 @@ void FUN_00576c10(struct task *)
 {
 }
 
-// STUB: SADX 0x00577960
-void OpenDialogQuick(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
+// STUB: SADX 0x005779c0
+void FUN_005779c0(signed char)
 {
 }
 
 // STUB: SADX 0x00577ac0
 void OpenDialog(struct DialogPrmType *, int)
 {
-}
-
-// STUB: SADX 0x00577ae0
-signed char GetDialogStat()
-{
-	return (signed char)0;
-}
-
-// STUB: SADX 0x00577b30
-int CloseDialog()
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x00577e40
@@ -2086,11 +2090,6 @@ void SelectPlayerManager(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0059c810
-void AlertWindowTask(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0059ce70
 struct MDHANDLE *MDHeaderOpen(char *fname, int flag)
 {
@@ -2099,6 +2098,17 @@ struct MDHANDLE *MDHeaderOpen(char *fname, int flag)
 
 // STUB: SADX 0x0059d430
 void MDHeaderClose(struct MDHANDLE *mdh)
+{
+}
+
+// STUB: SADX 0x0059db20
+unsigned char FUN_0059db20(int)
+{
+	return (unsigned char)0;
+}
+
+// STUB: SADX 0x0059dd40
+void GetTrialActNowAvaStgActPrm(struct AvaStgActPrmT *stgactprmptr)
 {
 }
 
@@ -2124,26 +2134,15 @@ void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, 
 {
 }
 
-// STUB: SADX 0x0059f6c0
-void EndAdvaBGM()
+// STUB: SADX 0x0059ed90
+void DrawVal(long, long, unsigned char, float, float, float, float)
 {
 }
 
-// STUB: SADX 0x005a4170
-struct SAVE_DATA *GetSDp()
+// STUB: SADX 0x0059f900
+int SetAdvaSerifu(enum AvaSerifuModeEnum serifumode)
 {
-	return (struct SAVE_DATA *)0;
-}
-
-// STUB: SADX 0x005a4180
-signed char AvaGetOnseiSettei()
-{
-	return (signed char)0;
-}
-
-// STUB: SADX 0x005a41a0
-void AvaSetOnseiSettei(signed char bit)
-{
+	return (int)0;
 }
 
 // STUB: SADX 0x005a4c50
@@ -2528,6 +2527,16 @@ void FUN_005fcd60(float)
 {
 }
 
+// STUB: SADX 0x005fd320
+void FUN_005fd320(struct task *)
+{
+}
+
+// STUB: SADX 0x005fd510
+void FUN_005fd510(int, int)
+{
+}
+
 // STUB: SADX 0x005fd7e0
 void FUN_005fd7e0(struct TvSettingWk *)
 {
@@ -2538,15 +2547,14 @@ void DrawTvSettingWnd(struct TvSettingWk *wkp)
 {
 }
 
-// STUB: SADX 0x00600fc0
-void FUN_00600fc0(void *)
+// STUB: SADX 0x00601d10
+void DrawMiniGameSelEmblem(struct MiniGameSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x006023d0
-struct task *SetAdvaExplainTask(struct ModeSelPrmType *prmp)
+// STUB: SADX 0x00601dc0
+void DrawMiniGameSelRank123(struct MiniGameSelWk *wkp)
 {
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x00602430
@@ -2554,8 +2562,43 @@ void FUN_00602430(struct task *)
 {
 }
 
-// STUB: SADX 0x006026b0
-void FUN_006026b0(struct task *)
+// STUB: SADX 0x006030c0
+void FUN_006030c0(struct task *)
+{
+}
+
+// STUB: SADX 0x00603150
+void FUN_00603150(struct task *)
+{
+}
+
+// STUB: SADX 0x00604340
+void DispOptionSelCsr(struct _OptionSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00604500
+void DrawOptionSelBg(struct _OptionSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00607500
+void DrawTrialActSelEmblem(struct TrialActSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x006075f0
+void DrawTrialActSelRank(struct TrialActSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00607670
+void DrawTrialActSelTimeOrWeight(struct TrialActSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x006077f0
+void FUN_006077f0(struct TrialActSelWk *)
 {
 }
 
@@ -2570,8 +2613,18 @@ void char_sel_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00608850
-void char_sel_disp(struct task *tp)
+// STUB: SADX 0x006088d0
+void DrawCharSelBg(struct CharSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00609000
+void DrawCharSelCursors(struct CharSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x006092e0
+void DrawCharSelFixedFile(struct CharSelWk *wkp)
 {
 }
 
@@ -3332,6 +3385,11 @@ void dispScore(struct task *task_p)
 long GameGearLoop()
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x007f2150
+void FUN_007f2150(void)
+{
 }
 
 // STUB: SADX 0x007f2180

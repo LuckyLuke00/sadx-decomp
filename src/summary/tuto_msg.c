@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void TutorialMsgTask(struct task *tp);
+extern unsigned char DAT_05b367f8;
 
 // STUB: SADX 0x00495300
 int ChgTutorialMsgPage(struct task *tp, int flag)
@@ -34,4 +36,37 @@ int GetTutoMsgMode(struct task *tp)
 void SetTutoMsgMode(struct task *tp, int mode)
 {
 	tp->twp->mode = (signed char)mode;
+}
+
+// FUNCTION: SADX 0x00495450
+int GetTutoMsgStatus(struct task *tp)
+{
+	return tp->awp->work.ul[1];
+}
+
+// FUNCTION: SADX 0x00495460
+unsigned char GetTutoNowPage()
+{
+	return DAT_05b367f8;
+}
+
+// STUB: SADX 0x00495470
+void TutorialMsgTask(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00495530
+void FUN_00495530(void)
+{
+}
+
+// STUB: SADX 0x004955a0
+void ReleaseTutorialBookTexture(int advplno)
+{
+}
+
+// STUB: SADX 0x00495fd0
+struct task *CreateTutorialMsgTask(int level, int advplno, struct NJS_POINT3 *pos)
+{
+	return (struct task *)0;
 }

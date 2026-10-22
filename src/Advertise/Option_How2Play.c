@@ -3,6 +3,13 @@ static void title_menu_exec(struct task *tp);
 void FUN_005eaa00(struct task *);
 extern struct task *DAT_05edd784;
 
+// FUNCTION: SADX 0x005e9320
+void DrawHow2PlayDlgSub(struct DDlgType *dlgp)
+{
+	___njSetTexture(&texlist_ava_how2play);
+	ghSetPvrTexMaterial(0xffffffff);
+}
+
 // FUNCTION: SADX 0x005e9340
 struct task *SetAdvaHow2PlayTask(struct ModeSelPrmType *prmp)
 {

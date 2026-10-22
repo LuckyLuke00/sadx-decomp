@@ -1,4 +1,64 @@
 #include "decls.h"
+extern char DAT_05ccca18;
+
+// FUNCTION: SADX 0x005a4170
+struct SAVE_DATA *GetSDp()
+{
+	return (struct SAVE_DATA *)&DAT_05ccca18;
+}
+
+// FUNCTION: SADX 0x005a4180
+signed char AvaGetOnseiSettei()
+{
+	struct SAVE_DATA *local_8g;
+	local_8g = GetSDp();
+	return (signed char)((*(char *)((char *)local_8g + 0x251) & 2) >> 1);
+}
+
+// FUNCTION: SADX 0x005a41a0
+void AvaSetOnseiSettei(signed char bit)
+{
+	struct SAVE_DATA *local_8g;
+
+	local_8g = GetSDp();
+	if (bit)
+	{
+		*(signed char *)((char *)local_8g + 0x251) |= 2;
+	}
+	else
+	{
+		*(signed char *)((char *)local_8g + 0x251) &= 0xfd;
+	}
+}
+
+// STUB: SADX 0x005a41f0
+signed char AvaGetVoiceSettei()
+{
+	return (signed char)0;
+}
+
+// FUNCTION: SADX 0x005a4240
+void AvaSetVoiceSettei(signed char bit)
+{
+	struct SAVE_DATA *local_8g;
+
+	local_8g = GetSDp();
+	*(char *)((char *)local_8g + 0x251) = *(char *)((char *)local_8g + 0x251) & (char)0xf3;
+	if (bit == 0)
+	{
+		*(char *)((char *)local_8g + 0x251) = *(char *)((char *)local_8g + 0x251) | 4;
+	}
+	else
+	{
+		*(char *)((char *)local_8g + 0x251) = *(char *)((char *)local_8g + 0x251) | 8;
+	}
+}
+
+// STUB: SADX 0x005a42a0
+signed char AvaGetTextSettei()
+{
+	return (signed char)0;
+}
 
 // STUB: SADX 0x005a42f0
 void AvaSetTextSettei(signed char bit)
@@ -140,4 +200,10 @@ void AvaGetMiniGameCartTime(struct CLEAR_TIME *ctp, enum AvaCharEnum chnum, unsi
 // STUB: SADX 0x005a4970
 void AvaGetMiniGameBossTime(struct CLEAR_TIME *ctp, enum AvaCharEnum chnum, unsigned char stg, int rank)
 {
+}
+
+// STUB: SADX 0x005a49e0
+long AvaGetMiniGameScore(enum AvaCharEnum chnum, unsigned char stg, int rank)
+{
+	return (long)0;
 }

@@ -12,6 +12,7 @@ struct _CameraSystemWork;
 struct _OBJ_ADJUSTPARAM;
 struct _OBJ_CAMERAPARAM;
 struct _OBJ_LANDTABLE;
+struct _OptionSelWk;
 struct _SC_NUMBERS;
 struct ActionParam;
 struct ADV1_AL_BODY;
@@ -47,6 +48,8 @@ struct AL_ST_POS;
 struct al_status;
 struct AL_TIME;
 struct AL_VERTEX_INFO;
+struct ALERT_PARAM;
+struct ALERT_TASK_WORK;
 struct alifewk;
 struct Alr;
 struct AlrCam;
@@ -96,6 +99,7 @@ struct chao_save_info;
 struct CHAOS_OBJPVTBL;
 struct chaoswk;
 struct CharMdlWk;
+struct CharSelWk;
 struct cloud_scroll;
 struct cloudtbl;
 struct CMoviePolyData;
@@ -149,6 +153,7 @@ struct LE_PALIGHT_ENV;
 struct LightInfo;
 struct MDHANDLE;
 struct MiMsg;
+struct MiniGameSelWk;
 struct MirrorPlane;
 struct MJOIN_VERTEX;
 struct ModeSelPrmType;
@@ -239,6 +244,7 @@ struct Tex_anim_land_work;
 struct Tex_anim_obj_work;
 struct TEX_PVMTABLE;
 struct thread;
+struct TrialActSelWk;
 struct TvSettingWk;
 struct u4s;
 union UNION_STATUS;
@@ -246,6 +252,15 @@ struct VolumeInfo;
 struct WIREMODEL;
 struct xssunit;
 struct xyyzzxsdwstr;
+
+enum AdvDlgSelEnum : int {
+    ADVDLG_KAISHI = 0,
+    ADVDLG_SETSUMEI = 1,
+    ADVDLG_ENDING = 2,
+    ADVDLG_CANCEL = 3,
+    ADVDLG_MAX = 4,
+};
+static_assert(sizeof(AdvDlgSelEnum) == 4, "sizeof AdvDlgSelEnum");
 
 enum AdvaModeEnum : int {
     ADVA_MODE_NONE = 0,
@@ -301,6 +316,60 @@ enum AvaCharEnum : int {
 };
 static_assert(sizeof(AvaCharEnum) == 4, "sizeof AvaCharEnum");
 
+enum AvaStgEnum : int {
+    AVASTG_MR = 0,
+    AVASTG_SS = 1,
+    AVASTG_EC = 2,
+    AVASTG_BEACH = 3,
+    AVASTG_WINDY = 4,
+    AVASTG_CASINO = 5,
+    AVASTG_SNOW = 6,
+    AVASTG_TWINKLEPARK = 7,
+    AVASTG_HIGHWAY = 8,
+    AVASTG_MOUNTAIN = 9,
+    AVASTG_SKYDECK = 10,
+    AVASTG_SHELTER = 11,
+    AVASTG_RUIN = 12,
+    AVASTG_FINAL = 13,
+    AVASTG_SHOOTING1 = 14,
+    AVASTG_SHOOTING2 = 15,
+    AVASTG_SANDBOARD = 16,
+    AVASTG_EC_C = 17,
+    AVASTG_MG_CART = 18,
+    AVASTG_CHAOS0 = 19,
+    AVASTG_CHAOS2 = 20,
+    AVASTG_CHAOS4 = 21,
+    AVASTG_CHAOS6 = 22,
+    AVASTG_EGGMOBILE1 = 23,
+    AVASTG_EGGMOBILE2 = 24,
+    AVASTG_EGGMOBILE3 = 25,
+    AVASTG_VS_SONIC = 26,
+    AVASTG_VS_KNUCKLES = 27,
+    AVASTG_VS_MILES = 28,
+    AVASTG_VS_E102 = 29,
+    AVASTG_VS_ZERO = 30,
+    AVASTG_VS_E102B = 31,
+    AVASTG_VS_BOSS = 32,
+    AVASTG_MAX = 33,
+};
+static_assert(sizeof(AvaStgEnum) == 4, "sizeof AvaStgEnum");
+
+enum ChSbMdEnum : int {
+    CHSEL_SMD_STAY = 0,
+    CHSEL_SMD_MOVING_L = 1,
+    CHSEL_SMD_MOVING_R = 2,
+    CHSEL_SMD_DECIDE = 3,
+    CHSEL_SMD_DLG1 = 4,
+    CHSEL_SMD_DLG2 = 5,
+    CHSEL_SMD_DLG3 = 6,
+    CHSEL_SMD_DLG4 = 7,
+    CHSEL_SMD_DECIDE2 = 8,
+    CHSEL_SMD_DECIDE2X = 9,
+    CHSEL_SMD_NWAIT = 10,
+    CHSEL_SMD_MAX = 11,
+};
+static_assert(sizeof(ChSbMdEnum) == 4, "sizeof ChSbMdEnum");
+
 enum DlgPnlStyleEnum : int {
     DLG_PNLSTYLE_MARU = 0,
     DLG_PNLSTYLE_SIKAKU = 1,
@@ -346,6 +415,14 @@ enum FileSbMdEnum : int {
 };
 static_assert(sizeof(FileSbMdEnum) == 4, "sizeof FileSbMdEnum");
 
+enum MiniGameSelSbMdEnum : int {
+    MINIGAMESEL_SMD_STAY = 0,
+    MINIGAMESEL_SMD_DECIDE = 1,
+    MINIGAMESEL_SMD_NWAIT = 2,
+    MINIGAMESEL_SMD_MAX = 3,
+};
+static_assert(sizeof(MiniGameSelSbMdEnum) == 4, "sizeof MiniGameSelSbMdEnum");
+
 enum OdeMenuState : int {
     ODE_MENU_STATE_FAIL = -1,
     ODE_MENU_STATE_OK = 0,
@@ -353,6 +430,14 @@ enum OdeMenuState : int {
     ODE_MENU_STATE_END = 2,
 };
 static_assert(sizeof(OdeMenuState) == 4, "sizeof OdeMenuState");
+
+enum TrialActSbMdEnum : int {
+    TRIALACTSEL_SMD_STAY = 0,
+    TRIALACTSEL_SMD_DECIDE = 1,
+    TRIALACTSEL_SMD_NWAIT = 2,
+    TRIALACTSEL_SMD_MAX = 3,
+};
+static_assert(sizeof(TrialActSbMdEnum) == 4, "sizeof TrialActSbMdEnum");
 
 // Offsets not checked against the code yet.
 struct ADV1_AL_BODY {
@@ -675,6 +760,22 @@ static_assert(offsetof(ADV1_AL_TMP_STATUS, aim_h_pos) == 0x0, "ADV1_AL_TMP_STATU
 static_assert(offsetof(ADV1_AL_TMP_STATUS, aim_v_pos) == 0x4, "ADV1_AL_TMP_STATUS::aim_v_pos");
 static_assert(offsetof(ADV1_AL_TMP_STATUS, aim_grouth) == 0x8, "ADV1_AL_TMP_STATUS::aim_grouth");
 static_assert(offsetof(ADV1_AL_TMP_STATUS, aim_argb) == 0xc, "ADV1_AL_TMP_STATUS::aim_argb");
+
+struct ALERT_PARAM {
+    char **msg;
+    int nbmsg;
+    int offset;
+    struct NJS_POINT3 pos;
+    unsigned long color;
+    unsigned long globalindex;
+};
+static_assert(sizeof(ALERT_PARAM) == 0x20, "sizeof ALERT_PARAM");
+static_assert(offsetof(ALERT_PARAM, msg) == 0x0, "ALERT_PARAM::msg");
+static_assert(offsetof(ALERT_PARAM, nbmsg) == 0x4, "ALERT_PARAM::nbmsg");
+static_assert(offsetof(ALERT_PARAM, offset) == 0x8, "ALERT_PARAM::offset");
+static_assert(offsetof(ALERT_PARAM, pos) == 0xc, "ALERT_PARAM::pos");
+static_assert(offsetof(ALERT_PARAM, color) == 0x18, "ALERT_PARAM::color");
+static_assert(offsetof(ALERT_PARAM, globalindex) == 0x1c, "ALERT_PARAM::globalindex");
 
 struct AL_BODY_INFO {
     float HPos;
@@ -1518,6 +1619,14 @@ static_assert(sizeof(AvaStgActPrmT) == 0x8, "sizeof AvaStgActPrmT");
 static_assert(offsetof(AvaStgActPrmT, StgActPtr) == 0x0, "AvaStgActPrmT::StgActPtr");
 static_assert(offsetof(AvaStgActPrmT, Num) == 0x4, "AvaStgActPrmT::Num");
 
+struct AvaStgActT {
+    unsigned char Stg;
+    unsigned char Act;
+};
+static_assert(sizeof(AvaStgActT) == 0x2, "sizeof AvaStgActT");
+static_assert(offsetof(AvaStgActT, Stg) == 0x0, "AvaStgActT::Stg");
+static_assert(offsetof(AvaStgActT, Act) == 0x1, "AvaStgActT::Act");
+
 struct BOSSPLAYER_CREATE_PARAM {
     enum EVBOSS_TYPE type;
     struct task *player_tp;
@@ -2166,6 +2275,38 @@ static_assert(offsetof(CRUSHLIGHT_DATA, angMaxSpd) == 0x14, "CRUSHLIGHT_DATA::an
 static_assert(offsetof(CRUSHLIGHT_DATA, fLength) == 0x18, "CRUSHLIGHT_DATA::fLength");
 static_assert(offsetof(CRUSHLIGHT_DATA, fLengthGrowRate) == 0x1c, "CRUSHLIGHT_DATA::fLengthGrowRate");
 
+struct CharSelWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    long CsrAniAng;
+    enum ChSbMdEnum SubMode;
+    enum AvaCharEnum SelCh;
+    unsigned char SelFile;
+    float AngT;
+    short Cnt;
+    enum AdvDlgSelEnum DlgStat;
+    unsigned char WakeFlg;
+};
+static_assert(sizeof(CharSelWk) == 0x38, "sizeof CharSelWk");
+static_assert(offsetof(CharSelWk, Stat) == 0x0, "CharSelWk::Stat");
+static_assert(offsetof(CharSelWk, PrevMode) == 0x4, "CharSelWk::PrevMode");
+static_assert(offsetof(CharSelWk, NextMode) == 0x8, "CharSelWk::NextMode");
+static_assert(offsetof(CharSelWk, BaseZ) == 0xc, "CharSelWk::BaseZ");
+static_assert(offsetof(CharSelWk, T) == 0x10, "CharSelWk::T");
+static_assert(offsetof(CharSelWk, BaseCol) == 0x14, "CharSelWk::BaseCol");
+static_assert(offsetof(CharSelWk, CsrAniAng) == 0x18, "CharSelWk::CsrAniAng");
+static_assert(offsetof(CharSelWk, SubMode) == 0x1c, "CharSelWk::SubMode");
+static_assert(offsetof(CharSelWk, SelCh) == 0x20, "CharSelWk::SelCh");
+static_assert(offsetof(CharSelWk, SelFile) == 0x24, "CharSelWk::SelFile");
+static_assert(offsetof(CharSelWk, AngT) == 0x28, "CharSelWk::AngT");
+static_assert(offsetof(CharSelWk, Cnt) == 0x2c, "CharSelWk::Cnt");
+static_assert(offsetof(CharSelWk, DlgStat) == 0x30, "CharSelWk::DlgStat");
+static_assert(offsetof(CharSelWk, WakeFlg) == 0x34, "CharSelWk::WakeFlg");
+
 struct DDlgType {
     float CntrX;
     float CntrY;
@@ -2668,6 +2809,44 @@ static_assert(offsetof(MSGC, texlist) == 0x30, "MSGC::texlist");
 static_assert(offsetof(MSGC, texname) == 0x38, "MSGC::texname");
 static_assert(offsetof(MSGC, msgc_flag) == 0x44, "MSGC::msgc_flag");
 
+struct MiniGameSelWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum MiniGameSelSbMdEnum SubMode;
+    struct AvaStgActT NowStgAct[10];
+    struct AvaStgActPrmT NowStgActPrm;
+    enum AvaStgEnum Stg[33];
+    unsigned char StgEnaMax;
+    unsigned long CsrCol;
+    float CsrScale;
+    long CsrAniAng;
+    unsigned char CsrAlpha;
+    unsigned char DispStg;
+    unsigned char SelStg;
+};
+static_assert(sizeof(MiniGameSelWk) == 0xd0, "sizeof MiniGameSelWk");
+static_assert(offsetof(MiniGameSelWk, Stat) == 0x0, "MiniGameSelWk::Stat");
+static_assert(offsetof(MiniGameSelWk, PrevMode) == 0x4, "MiniGameSelWk::PrevMode");
+static_assert(offsetof(MiniGameSelWk, NextMode) == 0x8, "MiniGameSelWk::NextMode");
+static_assert(offsetof(MiniGameSelWk, BaseZ) == 0xc, "MiniGameSelWk::BaseZ");
+static_assert(offsetof(MiniGameSelWk, T) == 0x10, "MiniGameSelWk::T");
+static_assert(offsetof(MiniGameSelWk, BaseCol) == 0x14, "MiniGameSelWk::BaseCol");
+static_assert(offsetof(MiniGameSelWk, SubMode) == 0x18, "MiniGameSelWk::SubMode");
+static_assert(offsetof(MiniGameSelWk, NowStgAct) == 0x1c, "MiniGameSelWk::NowStgAct");
+static_assert(offsetof(MiniGameSelWk, NowStgActPrm) == 0x30, "MiniGameSelWk::NowStgActPrm");
+static_assert(offsetof(MiniGameSelWk, Stg) == 0x38, "MiniGameSelWk::Stg");
+static_assert(offsetof(MiniGameSelWk, StgEnaMax) == 0xbc, "MiniGameSelWk::StgEnaMax");
+static_assert(offsetof(MiniGameSelWk, CsrCol) == 0xc0, "MiniGameSelWk::CsrCol");
+static_assert(offsetof(MiniGameSelWk, CsrScale) == 0xc4, "MiniGameSelWk::CsrScale");
+static_assert(offsetof(MiniGameSelWk, CsrAniAng) == 0xc8, "MiniGameSelWk::CsrAniAng");
+static_assert(offsetof(MiniGameSelWk, CsrAlpha) == 0xcc, "MiniGameSelWk::CsrAlpha");
+static_assert(offsetof(MiniGameSelWk, DispStg) == 0xcd, "MiniGameSelWk::DispStg");
+static_assert(offsetof(MiniGameSelWk, SelStg) == 0xce, "MiniGameSelWk::SelStg");
+
 struct MirrorPlane {
     struct NJS_POINT3 pos[2];
     struct NJS_POINT3 normal;
@@ -3105,6 +3284,44 @@ static_assert(offsetof(Tex_anim_land_work, tex_max) == 0x5, "Tex_anim_land_work:
 static_assert(offsetof(Tex_anim_land_work, first) == 0x6, "Tex_anim_land_work::first");
 static_assert(offsetof(Tex_anim_land_work, second) == 0x8, "Tex_anim_land_work::second");
 static_assert(offsetof(Tex_anim_land_work, frame_spd) == 0xa, "Tex_anim_land_work::frame_spd");
+
+struct TrialActSelWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum TrialActSbMdEnum SubMode;
+    struct AvaStgActT NowStgAct[10];
+    struct AvaStgActPrmT NowStgActPrm;
+    enum AvaStgEnum Stg[33];
+    unsigned char StgEnaMax;
+    unsigned long CsrCol;
+    float CsrScale;
+    long CsrAniAng;
+    unsigned char CsrAlpha;
+    unsigned char DispStg;
+    unsigned char SelStg;
+};
+static_assert(sizeof(TrialActSelWk) == 0xd0, "sizeof TrialActSelWk");
+static_assert(offsetof(TrialActSelWk, Stat) == 0x0, "TrialActSelWk::Stat");
+static_assert(offsetof(TrialActSelWk, PrevMode) == 0x4, "TrialActSelWk::PrevMode");
+static_assert(offsetof(TrialActSelWk, NextMode) == 0x8, "TrialActSelWk::NextMode");
+static_assert(offsetof(TrialActSelWk, BaseZ) == 0xc, "TrialActSelWk::BaseZ");
+static_assert(offsetof(TrialActSelWk, T) == 0x10, "TrialActSelWk::T");
+static_assert(offsetof(TrialActSelWk, BaseCol) == 0x14, "TrialActSelWk::BaseCol");
+static_assert(offsetof(TrialActSelWk, SubMode) == 0x18, "TrialActSelWk::SubMode");
+static_assert(offsetof(TrialActSelWk, NowStgAct) == 0x1c, "TrialActSelWk::NowStgAct");
+static_assert(offsetof(TrialActSelWk, NowStgActPrm) == 0x30, "TrialActSelWk::NowStgActPrm");
+static_assert(offsetof(TrialActSelWk, Stg) == 0x38, "TrialActSelWk::Stg");
+static_assert(offsetof(TrialActSelWk, StgEnaMax) == 0xbc, "TrialActSelWk::StgEnaMax");
+static_assert(offsetof(TrialActSelWk, CsrCol) == 0xc0, "TrialActSelWk::CsrCol");
+static_assert(offsetof(TrialActSelWk, CsrScale) == 0xc4, "TrialActSelWk::CsrScale");
+static_assert(offsetof(TrialActSelWk, CsrAniAng) == 0xc8, "TrialActSelWk::CsrAniAng");
+static_assert(offsetof(TrialActSelWk, CsrAlpha) == 0xcc, "TrialActSelWk::CsrAlpha");
+static_assert(offsetof(TrialActSelWk, DispStg) == 0xcd, "TrialActSelWk::DispStg");
+static_assert(offsetof(TrialActSelWk, SelStg) == 0xce, "TrialActSelWk::SelStg");
 
 struct VolumeInfo {
     short nearVolOfs;

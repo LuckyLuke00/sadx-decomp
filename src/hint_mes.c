@@ -1,4 +1,5 @@
 #include "decls.h"
+void *field_message_init(struct HintMessageMemory *data_p, const short *code_p, const void *message_p, enum mesdata_type mes_data_type);
 void disp_message_get(struct MSGC *msgc_p, char *message_p);
 void disp_message_after(struct MSGC *msgc_p);
 void FUN_0056dc40(struct MSGC *param_1);
@@ -131,6 +132,12 @@ void FUN_0056d4a0(long param_1)
 			DAT_05bafb00[param_1] = 0;
 		}
 	}
+}
+
+// STUB: SADX 0x0056d4e0
+void *field_message_init(struct HintMessageMemory *data_p, const short *code_p, const void *message_p, enum mesdata_type mes_data_type)
+{
+	return (void *)0;
 }
 
 // STUB: SADX 0x0056d680

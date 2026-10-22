@@ -79,3 +79,15 @@ void FUN_0059da70(struct task *param_1)
 		DAT_05cda18c->awp->work.ptr[1] = param_1;
 	}
 }
+
+// FUNCTION: SADX 0x0059dab0
+void CharSelAdvaModeProcedure(enum AdvaModeEnum nextnext)
+{
+	ChgCharSelNextAdvaMode(nextnext);
+	CmnAdvaModeProcedure(ADVA_MODE_CHAR_SEL);
+}
+
+// STUB: SADX 0x0059dad0
+void CmnAdvaModeProcedure(enum AdvaModeEnum mode)
+{
+}
