@@ -1,4 +1,10 @@
 #include "decls.h"
+struct CRUSHLIGHT_WK;
+
+// STUB: SADX 0x008c2050
+void CreateCrushLight(struct NJS_POINT3 *pPos, struct CRUSHLIGHT_DATA *pCrushLightData)
+{
+}
 
 // STUB: SADX 0x008c21e0
 void execCrushLight(struct task *pTask)

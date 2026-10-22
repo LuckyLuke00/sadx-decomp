@@ -92,6 +92,7 @@ struct CMoviePolyData;
 struct CMoviePolyTag;
 struct cnkobj;
 struct colliwk;
+struct CRUSHLIGHT_DATA;
 struct CRUSHLIGHT_WK;
 struct csts;
 struct DDlgType;
@@ -2083,6 +2084,22 @@ struct CMoviePolyTag {
 static_assert(sizeof(CMoviePolyTag) == 0x8, "sizeof CMoviePolyTag");
 static_assert(offsetof(CMoviePolyTag, datap) == 0x0, "CMoviePolyTag::datap");
 static_assert(offsetof(CMoviePolyTag, num) == 0x4, "CMoviePolyTag::num");
+
+struct CRUSHLIGHT_DATA {
+    int nLife;
+    float fWidth[2];
+    union NJS_COLOR color[2];
+    long angMaxSpd;
+    float fLength;
+    float fLengthGrowRate;
+};
+static_assert(sizeof(CRUSHLIGHT_DATA) == 0x20, "sizeof CRUSHLIGHT_DATA");
+static_assert(offsetof(CRUSHLIGHT_DATA, nLife) == 0x0, "CRUSHLIGHT_DATA::nLife");
+static_assert(offsetof(CRUSHLIGHT_DATA, fWidth) == 0x4, "CRUSHLIGHT_DATA::fWidth");
+static_assert(offsetof(CRUSHLIGHT_DATA, color) == 0xc, "CRUSHLIGHT_DATA::color");
+static_assert(offsetof(CRUSHLIGHT_DATA, angMaxSpd) == 0x14, "CRUSHLIGHT_DATA::angMaxSpd");
+static_assert(offsetof(CRUSHLIGHT_DATA, fLength) == 0x18, "CRUSHLIGHT_DATA::fLength");
+static_assert(offsetof(CRUSHLIGHT_DATA, fLengthGrowRate) == 0x1c, "CRUSHLIGHT_DATA::fLengthGrowRate");
 
 struct DDlgType {
     float CntrX;

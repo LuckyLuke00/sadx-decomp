@@ -24,6 +24,12 @@ void ghSpriteInit(struct GHSPRITE *pSpr, struct NJS_POINT3 *pPos, struct GHSPRIT
 {
 }
 
+// STUB: SADX 0x0060ef40
+int ghSpriteAnim(struct GHSPRITE_ANIM *pAnim, struct GHSPRITE_ANIM_TABLE *pAnimTable)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x0060f060
 int ghSpriteExec(struct GHSPRITE *pSpr)
 {

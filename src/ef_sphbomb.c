@@ -8,6 +8,11 @@ void SphericalExplosionUV(long v0)
 {
 }
 
+// STUB: SADX 0x00610480
+void SphericalExplosionPos(float rate)
+{
+}
+
 // STUB: SADX 0x006105b0
 void SphericalExplosionAlpha(float a)
 {

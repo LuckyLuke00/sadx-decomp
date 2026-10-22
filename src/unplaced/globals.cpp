@@ -530,6 +530,12 @@ struct obj object_Arrow_Z;
 // GLOBAL: SADX 0x02604ab8
 struct NJS_TEXLIST DAT_02604ab8;
 
+// GLOBAL: SADX 0x02604c88
+float oldn;
+
+// GLOBAL: SADX 0x02604c8c
+float oldf;
+
 // GLOBAL: SADX 0x02604d7c
 struct NJS_TEXLIST texlist_pressstart;
 
@@ -2707,6 +2713,9 @@ unsigned long DAT_05cced10;
 
 // GLOBAL: SADX 0x05cced18
 float DAT_05cced18[64];
+
+// GLOBAL: SADX 0x05cd0d18
+float DAT_05cd0d18;
 
 // GLOBAL: SADX 0x05cd0f24
 int DAT_05cd0f24;

@@ -22,3 +22,9 @@ void StopBlowingWind(struct task *tp)
 {
 	DAT_05edcc38 = 0;
 }
+
+// STUB: SADX 0x005daab0
+long GetWindStatus(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec)
+{
+	return (long)0;
+}
