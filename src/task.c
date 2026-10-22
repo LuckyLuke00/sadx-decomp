@@ -1,4 +1,7 @@
 #include "decls.h"
+struct task *FUN_004f3870(long level, void (*exec)(struct task *));
+extern void *DAT_05baf4f4;
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 void ExecTask(long level);
 extern void *DAT_05baf520;
 void ___OutputDebugString(char *str, ...);
@@ -57,6 +60,23 @@ long checkdestroytaskc(struct task *tp, struct task *ctp)
 long checkdestroytask(struct task *tp)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004f3600
+void InitTask()
+{
+}
+
+// STUB: SADX 0x004f3750
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *))
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x004f3870
+struct task *FUN_004f3870(long param_1, void (*param_2)(struct task *))
+{
+	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x004f3be0
@@ -281,6 +301,35 @@ bool IsSafeTask(void *ptask)
 	return true;
 }
 
+// FUNCTION: SADX 0x004f4130
+void InitMemory()
+{
+	void *local_8;
+
+	EventSeInitInit();
+	if (DAT_05baf51c == 0)
+	{
+		DAT_05baf51c = _SOCMalloc(0x1000020, "..\\..\\src\\task.c", 0x3b1);
+		memset(DAT_05baf51c, 0, 0x1000020);
+	}
+	DAT_05baf4f4 = DAT_05baf51c;
+	local_8 = (char *)DAT_05baf51c + 0x1000000;
+	*(void **)DAT_05baf4f4 = local_8;
+	*(void **)((char *)DAT_05baf4f4 + 4) = 0;
+	*(void **)((char *)DAT_05baf4f4 + 8) = local_8;
+	*(void **)((char *)DAT_05baf4f4 + 0xc) = 0;
+	*(void **)local_8 = 0;
+	*(void **)((char *)local_8 + 4) = DAT_05baf4f4;
+	*(void **)((char *)local_8 + 8) = 0;
+	*(void **)((char *)local_8 + 0xc) = DAT_05baf4f4;
+}
+
+// STUB: SADX 0x004f41f0
+void *MAlloc(unsigned int size)
+{
+	return (void *)0;
+}
+
 // FUNCTION: SADX 0x004f4390
 void *CAlloc(unsigned int num, unsigned int size)
 {
@@ -301,6 +350,11 @@ void *CAlloc(unsigned int num, unsigned int size)
 		}
 	}
 	return (void *)local_cj;
+}
+
+// STUB: SADX 0x004f4400
+void Free(void *mp)
+{
 }
 
 // STUB: SADX 0x004f45c0

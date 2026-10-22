@@ -88,6 +88,8 @@ struct CHAO_PARAM_GC;
 struct chao_save_info;
 struct chaoswk;
 struct CharMdlWk;
+struct CMoviePolyData;
+struct CMoviePolyTag;
 struct cnkobj;
 struct colliwk;
 struct CRUSHLIGHT_WK;
@@ -2073,6 +2075,14 @@ static_assert(offsetof(CHAO_PARAM_GC, IsInitializedDX) == 0x4dc, "CHAO_PARAM_GC:
 static_assert(offsetof(CHAO_PARAM_GC, partsDX) == 0x4e0, "CHAO_PARAM_GC::partsDX");
 static_assert(offsetof(CHAO_PARAM_GC, raceDX) == 0x4ec, "CHAO_PARAM_GC::raceDX");
 static_assert(offsetof(CHAO_PARAM_GC, knowledgeDX) == 0x4fc, "CHAO_PARAM_GC::knowledgeDX");
+
+struct CMoviePolyTag {
+    struct CMoviePolyData *datap;
+    int num;
+};
+static_assert(sizeof(CMoviePolyTag) == 0x8, "sizeof CMoviePolyTag");
+static_assert(offsetof(CMoviePolyTag, datap) == 0x0, "CMoviePolyTag::datap");
+static_assert(offsetof(CMoviePolyTag, num) == 0x4, "CMoviePolyTag::num");
 
 struct DDlgType {
     float CntrX;

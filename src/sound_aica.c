@@ -607,6 +607,24 @@ int FUN_004aee80(int param_1, int param_2)
 	return local_8g;
 }
 
+// STUB: SADX 0x004aeee0
+int dsPlay_timer(int tone, int id, int pri, int volofs, int timer)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004af000
+int dsPlay_timer_v(int tone, int id, int pri, int volofs, int timer, float x, float y, float z)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004af1c0
+int dsPlay_timer_vq(int tone, int id, int pri, int volofs, int timer, float x, float y, float z, float rad)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x004af360
 int dsStop_num(int tone)
 {
@@ -787,6 +805,12 @@ void InitOverlapSE(unsigned char ini)
 	}
 }
 
+// STUB: SADX 0x004afc60
+int dsGetVolume(int ii)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x004afe30
 void FUN_004afe30(void)
 {
@@ -857,5 +881,20 @@ void EraseDolbyCtrl(struct taskwk *twp)
 
 // STUB: SADX 0x004b01c0
 void dsPlay_oneshot_Dolby(int tone, int id, int pri, int volofs, int time, struct taskwk *pTaskwk)
+{
+}
+
+// STUB: SADX 0x004b02c0
+void dsPlay_Dolby_time(int tone, int id, int pri, int volofs, int time, struct taskwk *pTaskwk)
+{
+}
+
+// STUB: SADX 0x004b0400
+void dsPlay_Dolby_timer_vq(int tone, int id, int pri, int volofs, int timer, float rad, struct taskwk *pTaskwk)
+{
+}
+
+// STUB: SADX 0x004b0600
+void dsDolbySound()
 {
 }

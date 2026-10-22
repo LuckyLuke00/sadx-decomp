@@ -1,8 +1,14 @@
 #include "decls.h"
+void lig_flashPalette(int no);
 void lig_calcPalette(int no);
 void FUN_00598720(int param_1);
 void FUN_00405380(int param_1);
 void FUN_00598740(int);
+
+// STUB: SADX 0x00597ce0
+void lig_setLight(struct NJS_POINT3 *v, float r, float g, float b, float spe, float dif, float amb)
+{
+}
 
 // STUB: SADX 0x00597f10
 void dsReScaleLight()
@@ -47,6 +53,11 @@ void FUN_005988f0()
 
 // STUB: SADX 0x00598920
 void lig_fillOffsetPalette(int no, unsigned long spe, int num)
+{
+}
+
+// STUB: SADX 0x005989e0
+void lig_supplementPalette(int no, int src1, int src2, float fmix1)
 {
 }
 

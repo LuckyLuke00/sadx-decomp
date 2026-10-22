@@ -144,6 +144,12 @@ void *FUN_005a5040(void *param_1, void *param_2, int param_3)
 	return local_8;
 }
 
+// STUB: SADX 0x005a50c0
+struct thread *TH_CreateChild(struct thread *parent, void (*func)(void *), void *pParam, unsigned int stack_size)
+{
+	return (struct thread *)0;
+}
+
 // FUNCTION: SADX 0x005a5150
 void *TH_GetWork(struct thread *tp)
 {
