@@ -68,6 +68,12 @@ struct DialogPrmType DAT_0098fa78;
 // GLOBAL: SADX 0x0098fcf0
 struct u4s DAT_0098fcf0[1];
 
+// GLOBAL: SADX 0x00990f50
+const int AdvaBgmTbl[5] = {};
+
+// GLOBAL: SADX 0x00990f64
+const int AdvaCharSelSerifuTbl[8] = {};
+
 // GLOBAL: SADX 0x009919e0
 struct DialogPrmType DAT_009919e0;
 
@@ -359,6 +365,12 @@ unsigned char mouse_tex_num[7][2];
 // GLOBAL: SADX 0x023469fc
 int DAT_023469fc;
 
+// GLOBAL: SADX 0x0234f678
+char *TutorialBgFilenameTbl[7];
+
+// GLOBAL: SADX 0x0234f908
+struct NJS_TEXLIST *TutorialBgTexlistTbl[7];
+
 // GLOBAL: SADX 0x0257cfe4
 struct NJS_TEXLIST texlist_kariobj;
 
@@ -473,8 +485,20 @@ struct NJS_TEXLIST texlist_ava_vmssel;
 // GLOBAL: SADX 0x025adce0
 struct NJS_TEXLIST texlist_ava_title;
 
+// GLOBAL: SADX 0x025adcf8
+struct NJS_TEXLIST texlist_ava_how2play;
+
+// GLOBAL: SADX 0x025add00
+struct NJS_TEXLIST texlist_ava_help_options;
+
+// GLOBAL: SADX 0x025add08
+struct NJS_TEXLIST texlist_ava_lb_menu;
+
 // GLOBAL: SADX 0x025add28
 struct NJS_TEXLIST texlist_ava_back;
+
+// GLOBAL: SADX 0x025add30
+struct NJS_TEXLIST texlist_ava_emblem;
 
 // GLOBAL: SADX 0x025add48
 void *(*DAT_025add48[5])[2];
@@ -682,6 +706,9 @@ struct NJS_TEXLIST texlist_adv_window;
 
 // GLOBAL: SADX 0x02604e54
 struct NJS_TEXLIST texlist_ava_csr;
+
+// GLOBAL: SADX 0x02604e5c
+struct NJS_TEXLIST texlist_ava_square;
 
 // GLOBAL: SADX 0x026054e8
 unsigned int DAT_026054e8[4];
@@ -1883,6 +1910,12 @@ int DAT_05b360bc;
 // GLOBAL: SADX 0x05b360c0
 int DAT_05b360c0;
 
+// GLOBAL: SADX 0x05b367f8
+unsigned char DAT_05b367f8;
+
+// GLOBAL: SADX 0x05b36808
+float DAT_05b36808;
+
 // GLOBAL: SADX 0x05b372e4
 int DAT_05b372e4;
 
@@ -2522,6 +2555,12 @@ signed char DAT_05b42c1d;
 // GLOBAL: SADX 0x05b42c24
 int DAT_05b42c24[4];
 
+// GLOBAL: SADX 0x05b42c34
+int DAT_05b42c34;
+
+// GLOBAL: SADX 0x05b42c38
+int DAT_05b42c38;
+
 // GLOBAL: SADX 0x05b42c40
 struct NJS_TEXLIST DAT_05b42c40[32];
 
@@ -3089,6 +3128,9 @@ unsigned char DAT_05cc3570;
 // GLOBAL: SADX 0x05cc3574
 int DAT_05cc3574;
 
+// GLOBAL: SADX 0x05cc3620
+int DAT_05cc3620;
+
 // GLOBAL: SADX 0x05cc3631
 char DAT_05cc3631;
 
@@ -3407,6 +3449,9 @@ int DAT_05cd0f24;
 // GLOBAL: SADX 0x05cd0f28
 int DAT_05cd0f28;
 
+// GLOBAL: SADX 0x05cd0f2c
+int DAT_05cd0f2c;
+
 // GLOBAL: SADX 0x05cd14d4
 int DAT_05cd14d4;
 
@@ -3689,6 +3734,9 @@ unsigned short DAT_05cda0c0;
 // GLOBAL: SADX 0x05cda0c3
 unsigned char DAT_05cda0c3;
 
+// GLOBAL: SADX 0x05cda0c8
+int DAT_05cda0c8;
+
 // GLOBAL: SADX 0x05cda0e4
 int DAT_05cda0e4;
 
@@ -3719,6 +3767,9 @@ int DAT_05cda16c;
 // GLOBAL: SADX 0x05cda170
 int DAT_05cda170;
 
+// GLOBAL: SADX 0x05cda174
+int DAT_05cda174;
+
 // GLOBAL: SADX 0x05cda178
 int DAT_05cda178;
 
@@ -3733,6 +3784,18 @@ void *DAT_05cda188;
 
 // GLOBAL: SADX 0x05cda18c
 struct task *DAT_05cda18c;
+
+// GLOBAL: SADX 0x05cda190
+unsigned char DAT_05cda190;
+
+// GLOBAL: SADX 0x05cda191
+unsigned char DAT_05cda191;
+
+// GLOBAL: SADX 0x05cda194
+int DAT_05cda194;
+
+// GLOBAL: SADX 0x05cda198
+int DAT_05cda198;
 
 // GLOBAL: SADX 0x05cda19c
 struct task *DAT_05cda19c;
@@ -4564,6 +4627,9 @@ struct task *DAT_060cd388;
 
 // GLOBAL: SADX 0x060ce758
 long DAT_060ce758;
+
+// GLOBAL: SADX 0x060ce75c
+int DAT_060ce75c;
 
 // GLOBAL: SADX 0x060ce760
 void *DAT_060ce760;
