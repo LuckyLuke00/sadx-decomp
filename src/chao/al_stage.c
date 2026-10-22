@@ -1,4 +1,9 @@
 #include "decls.h"
+extern enum eCHAO_STAGE_NUMBER ChaoNextStageNumber;
+void AL_ChangeStage(enum eCHAO_STAGE_NUMBER NextStage);
+void FUN_00442520();
+void PlayerEnable(unsigned char pno);
+extern int DAT_05aeaa7c;
 
 #pragma auto_inline(off)
 
@@ -202,4 +207,87 @@ void AL_WaitForSaveHookRemove(struct task *tp)
 		}
 	}
 	DAT_05aeaa38 = var2;
+}
+
+// FUNCTION: SADX 0x0043e2a0
+void AL_PlayerDisable()
+{
+	if (DAT_05aeaa7c == 0)
+	{
+		if (FUN_0043e030() == 0 || ChaoStageNumber == -1)
+		{
+			PlayerDisable(0);
+			DAT_05aeaa7c = 1;
+		}
+	}
+}
+
+// FUNCTION: SADX 0x0043e2d0
+void AL_PlayerEnable()
+{
+	if (DAT_05aeaa7c != 0)
+	{
+		PlayerEnable(0);
+		DAT_05aeaa7c = 0;
+	}
+}
+
+// FUNCTION: SADX 0x0043e420
+void FUN_0043e420()
+{
+	FUN_004b6520((int)&texlist_al_icon);
+	___OutputDebugString("ChaoMain Destructor\n");
+	ALMC_Exit();
+	AL_GBAManagerKill();
+	FUN_00442520();
+	AL_ReleaseModule((enum EChaoModuleEntry)2);
+	AL_ReleaseModule((enum EChaoModuleEntry)1);
+	AL_WaitForSaveHookRemove(DAT_05aeaa3c[8]);
+	DAT_05aeaa3c[8] = 0;
+}
+
+// FUNCTION: SADX 0x0043e5f0
+void AL_ChangeStageLater(enum eCHAO_STAGE_NUMBER NextStage)
+{
+	if (FUN_0043e030() == 0)
+	{
+		FUN_0043dfd0(NextStage);
+		*(int *)(DAT_05aeaa3c + 4) = 1;
+	}
+}
+
+// STUB: SADX 0x0043e620
+void AL_ExitToStage(long stage, long act)
+{
+}
+
+// STUB: SADX 0x0043e660
+void _al_stage_epilog()
+{
+}
+
+// FUNCTION: SADX 0x0043e6e0
+void FUN_0043e6e0()
+{
+	if (DAT_05aeaa3c[4])
+	{
+		DAT_05aeaa3c[4] = NULL;
+		AL_ChangeStage(ChaoNextStageNumber);
+	}
+}
+
+// FUNCTION: SADX 0x0043e990
+void AL_ReturnStage()
+{
+	AL_ChangeStage(AL_GetPreStageNumber());
+}
+
+// STUB: SADX 0x0043e9a0
+void AL_ExitChaoGarden()
+{
+}
+
+// STUB: SADX 0x0043e9b0
+void _al_stage_prolog()
+{
 }

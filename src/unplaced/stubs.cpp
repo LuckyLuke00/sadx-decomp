@@ -74,6 +74,11 @@ void _njDirectDrawModel(struct NJS_MODEL *)
 {
 }
 
+// STUB: SADX 0x00421500
+void njQuadTextureStart(long)
+{
+}
+
 // STUB: SADX 0x004217d0
 void njDrawSprite2D(struct NJS_SPRITE *, int, float, unsigned long)
 {
@@ -367,18 +372,54 @@ void njGenerateFogTable3(float * const,float,float)
 {
 }
 
-// STUB: SADX 0x00438790
-void AL_SetMotionLink(struct task *tp, long MtnNum)
+// STUB: SADX 0x004364a0
+void njInvertMatrix(float *)
 {
 }
 
-// STUB: SADX 0x00438e50
-void AL_ClearChaoParam(struct CHAO_PARAM_GC *pParam)
+// STUB: SADX 0x00438140
+long AL_IsOnScreen3(struct task *tp, float radius, float HalfHeight, float OffsetY)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004394e0
+void AL_ParameterDrawNameFreeLength(unsigned char *name, float xpos, float ypos, float xsize, float ysize, enum DrawAnchorH ancH, enum DrawAnchorV ancV, union NJS_COLOR col, long FreeStrlen)
+{
+}
+
+// STUB: SADX 0x00439a40
+void AL_CalcParameter(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0043a420
+void SetMotionLinkSync(struct MOTION_CTRL *pMtnCtrl, long MtnNum)
+{
+}
+
+// STUB: SADX 0x0043a6c0
+void SetMotionFrame(struct MOTION_CTRL *pMtnCtrl, float frame)
+{
+}
+
+// STUB: SADX 0x0043a7d0
+void MotionControl(struct MOTION_CTRL *pMtnCtrl)
 {
 }
 
 // STUB: SADX 0x0043bcf0
 void AL_IconResetPos(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0043cbc0
+void AL_IconInit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0043cf90
+void AL_KW_MeetPlayer(struct task *pChaoTask)
 {
 }
 
@@ -388,38 +429,73 @@ long AL_EmotionGetValue(struct task *tp, unsigned long EmotionNum)
 	return (long)0;
 }
 
-// STUB: SADX 0x0043de30
-long ALW_CancelEntry(struct task *tp)
+// STUB: SADX 0x0043d8e0
+void ALW_ClearEntry()
+{
+}
+
+// STUB: SADX 0x0043d950
+struct task *ALW_GetTask(unsigned short category, unsigned short num)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x0043dd90
+long ALW_Entry2(unsigned short category, struct task *tp, unsigned short kind, void *pSaveInfo)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x0043e2a0
-void AL_PlayerDisable()
-{
-}
-
-// STUB: SADX 0x0043e2d0
-void AL_PlayerEnable()
+// STUB: SADX 0x0043e530
+void AL_ChangeStage(enum eCHAO_STAGE_NUMBER)
 {
 }
 
 // STUB: SADX 0x0043ed90
-int FUN_0043ed90()
+extern int FUN_0043ed90()
 {
 	return (int)0;
 }
 
-// STUB: SADX 0x004400d0
-struct chao_save_info *AL_SetHoldingEggBM(long EggColor)
+// STUB: SADX 0x0043f6b0
+void AL_PackageItemSaveInfo(long category)
 {
-	return (struct chao_save_info *)0;
+}
+
+// STUB: SADX 0x00441fb0
+extern void FUN_00441fb0()
+{
+}
+
+// STUB: SADX 0x00442460
+void AL_LoadTex(char *filename, struct NJS_TEXLIST *pTexlist, unsigned short lev)
+{
+}
+
+// STUB: SADX 0x004424c0
+void AL_ReleaseTex(unsigned short)
+{
+}
+
+// STUB: SADX 0x00442520
+void FUN_00442520()
+{
+}
+
+// STUB: SADX 0x004425a0
+void AL_ReleaseModule(enum EChaoModuleEntry kind)
+{
 }
 
 // STUB: SADX 0x004427b0
 long AL_GetRandomAttrPos(enum eLANDMARK_ATTR attr, struct NJS_POINT3 *pPos)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x00443ad0
+void ALO_XYButtonShow(int)
+{
 }
 
 // STUB: SADX 0x00443b80
@@ -456,8 +532,228 @@ const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 	return (const unsigned long *)0;
 }
 
-// STUB: SADX 0x00450210
-void AL_ShapeExit(struct task *tp)
+// STUB: SADX 0x0044d180
+long AlMsgFontCreateWStr_Thread(struct SAlMsgFontStr *, const unsigned short *, int)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0044d460
+void FUN_0044d460(unsigned short *)
+{
+}
+
+// STUB: SADX 0x0044daf0
+void FUN_0044daf0(void)
+{
+}
+
+// STUB: SADX 0x0044db20
+void FUN_0044db20(struct task *)
+{
+}
+
+// STUB: SADX 0x0044f330
+void AL_FreeChaoObject(struct al_object *pObject)
+{
+}
+
+// STUB: SADX 0x0044fe10
+long AL_ShapeInit(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00450370
+void AL_MatChangeModelTexture(struct al_model *pModel, unsigned short TexId)
+{
+}
+
+// STUB: SADX 0x00450460
+void AL_MatResetModelTexture(struct al_model *pModel)
+{
+}
+
+// STUB: SADX 0x00450540
+void AL_MatChangeModelTexture2(struct al_model *pModel, const unsigned short *TexIdList, long nbTex)
+{
+}
+
+// STUB: SADX 0x00450940
+void AL_SetMiminalParts(struct task *, long, long)
+{
+}
+
+// STUB: SADX 0x00455f80
+long ALBHV_Fukkin2(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00457a90
+void AL_FaceSetEye(struct task *tp, enum eAL_EYE_NUM EyeNum, long timer)
+{
+}
+
+// STUB: SADX 0x00457e80
+void AL_FaceInit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00458530
+void MOV_CheckFloor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004586b0
+void MOV_CheckWall(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00459710
+void MOV_GetShadowPosXYZ(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00459ca0
+long AL_MoveHoldingObject(struct task *pChaoTask)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045d6e0
+long ALBHV_Nade(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045e500
+long ALBHV_Capture(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045e9f0
+long ALBHV_TurnToMinimal(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045eaf0
+long ALBHV_Eat(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045f7e0
+long ALBHV_PickUpLockOn(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00462140
+long ALBHV_Think(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004622c0
+long ALBHV_Notice(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004623a0
+long ALBHV_GoToAim(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00462780
+long ALBHV_GoToLockOn(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00462880
+long ALBHV_Touch(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004629f0
+void AL_ClearPerceptionAll(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00463840
+void WcConvFromCStr(unsigned short *, const char *, long)
+{
+}
+
+// STUB: SADX 0x00464380
+void AL_BuyoBuyoObject(struct task *tp, struct al_object *pObject)
+{
+}
+
+// STUB: SADX 0x00466c20
+long ALBHV_PostureChangeStand(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00466c90
+long ALBHV_PostureChangeSit(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00468800
+long ALBHV_Tameiki(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004688e0
+long ALBHV_MesoMeso(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00468b10
+long ALBHV_Cry(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00469a80
+long ALBHV_RideHorse(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0046b990
+void AL_WalkSelect(struct task *)
+{
+}
+
+// STUB: SADX 0x0046cfb0
+void AL_MinimalCreateManagerExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0046df20
+void AL_BlackmarketMasterExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0046e150
+void FHangyoExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0046e360
+void FBuyerExec(struct task *tp)
 {
 }
 
@@ -467,8 +763,113 @@ int FUN_0046ffb0()
 	return (int)0;
 }
 
+// STUB: SADX 0x00471da0
+void AL_EntranceMaster(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00471f30
+void AL_ENT_DelayedTaskAdd(struct task *tp, void (*func)(struct task *))
+{
+}
+
+// STUB: SADX 0x00472290
+void AL_EntranceMenuManagerExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004749d0
+void AL_EntranceMenuLargeTitleBarDisplayerSub(struct task *tp, long post_flag)
+{
+}
+
+// STUB: SADX 0x00474df0
+void AL_EntranceMenuLargeTitleBarDisplayerPost(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00474e30
+void AL_EntranceMenuLargeTitleBarExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00475530
+void AL_EntranceMenuSmallTitleBarDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00475560
+void AL_EntranceMenuSmallTitleBarExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00476360
+void AL_EntranceMenuBackGroundDisplayer(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00476980
 void CreateCourseNameBarJewel(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00476c20
+void AL_Garden00Master(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00477210
+void ObjectMain(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00478a10
+void AloG00FountainDisp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00479000
+void FUN_00479000()
+{
+}
+
+// STUB: SADX 0x00479bf0
+void AL_Garden01Master(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047a9f0
+void FUN_0047a9f0()
+{
+}
+
+// STUB: SADX 0x0047aa10
+void AL_OdekakeMenuMaster(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047ddb0
+void BGExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047dfc0
+void BGDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047e880
+void CreateGuideButton(unsigned short id, float xpos, float ypos, unsigned short WaitTime)
+{
+}
+
+// STUB: SADX 0x0047fbc0
+void LargeTitleBarExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047fe00
+void LargeTitleBarDisplayer(struct task *tp)
 {
 }
 
@@ -477,25 +878,18 @@ void AlrFanFan_exe(struct AlrFanFan *___this, struct AlrReal *alrreal)
 {
 }
 
-// STUB: SADX 0x00484ac0
-void *ADV1_AL_GetRaceTimeRam()
-{
-	return (void *)0;
-}
-
-// STUB: SADX 0x00484d80
-void AlrCam_Ini(struct AlrCam *___this)
+// STUB: SADX 0x00484af0
+void ADV1_AL_LimitChao()
 {
 }
 
-// STUB: SADX 0x00484d90
-extern int FUN_00484d90(struct AlrCam *)
+// STUB: SADX 0x00484bd0
+void FUN_00484bd0()
 {
-	return (int)0;
 }
 
-// STUB: SADX 0x00484da0
-void AlrCam_CheckAndRelease(struct AlrCam *___this)
+// STUB: SADX 0x00484c20
+void AL_DeleteChaoList(struct task *tp)
 {
 }
 
@@ -504,41 +898,38 @@ void AlrCam_Exe(struct AlrCam *___this, struct AlrReal *alrreal)
 {
 }
 
-// STUB: SADX 0x00486bb0
-int FUN_00486bb0(struct Alr *)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x00486c00
-void Alr_ConstraintLookAt(struct Alr *___this, const struct NJS_POINT3 *pos)
-{
-}
-
 // STUB: SADX 0x00487440
 void Alr_DisconnectObj(struct Alr *___this)
 {
 }
 
-// STUB: SADX 0x00487aa0
-void *Alr_SetId(struct Alr *, int)
+// STUB: SADX 0x00487490
+void Alr_swing(struct Alr *___this)
 {
-	return (void *)0;
 }
 
-// STUB: SADX 0x00487b00
-enum Event_Id Alr_GetCurrentEvent(struct Alr *___this)
+// STUB: SADX 0x004875a0
+void Alr_eatCoCo(struct Alr *___this)
 {
-	return (enum Event_Id)0;
+}
+
+// STUB: SADX 0x004876e0
+void Alr_pushBall(struct Alr *___this)
+{
+}
+
+// STUB: SADX 0x00487820
+void Alr_useToy(struct Alr *___this)
+{
+}
+
+// STUB: SADX 0x00487a80
+void Alr_goCoCo(struct Alr *___this)
+{
 }
 
 // STUB: SADX 0x00487c70
 void Alr_Exe(struct Alr *___this, struct AlrRoot *root, int cup)
-{
-}
-
-// STUB: SADX 0x00488150
-void AlrTimer_Clear(struct AlrTimer *___this)
 {
 }
 
@@ -547,30 +938,14 @@ void AlrTimer_SetBest(struct AlrTimer *___this, struct AlrMemory *memory, int cu
 {
 }
 
-// STUB: SADX 0x004881d0
-void FUN_004881d0(struct AlrTimer *)
-{
-}
-
 // STUB: SADX 0x004881e0
 void AlrTimer_Dsp(struct AlrTimer *___this)
-{
-}
-
-// STUB: SADX 0x004882d0
-void AlrRank_Clear(struct AlrRank *___this)
 {
 }
 
 // STUB: SADX 0x00488330
 void AlrRank_CalcRank(struct AlrRank *___this, struct Alr *alr, int look)
 {
-}
-
-// STUB: SADX 0x00488680
-int AlrRank_GetId(struct AlrRank *___this, int rank)
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x004886a0
@@ -588,20 +963,10 @@ void FUN_00488c50(struct AlrMemory *)
 {
 }
 
-// STUB: SADX 0x00489690
-int AlrRoot_CheckGoal(struct AlrRoot *___this, struct NJS_POINT3 *trans)
+// STUB: SADX 0x004895d0
+int AlrRoot_GetPosOnMainPath(struct AlrRoot *___this, float pathpos, struct NJS_POINT3 *answer)
 {
 	return (int)0;
-}
-
-// STUB: SADX 0x004896f0
-void AlrRoot_Del(struct AlrRoot *___this)
-{
-}
-
-// STUB: SADX 0x00489710
-void AlrRoot_Clear(struct AlrRoot *___this, float goal_pathpos)
-{
 }
 
 // STUB: SADX 0x004897f0
@@ -629,11 +994,6 @@ void AlrStage00_Exe(struct AlrReal *___this)
 {
 }
 
-// STUB: SADX 0x00489c90
-void ObjectAlrCracker_Start()
-{
-}
-
 // STUB: SADX 0x0048a000
 void ObjectAlrCracker_Init()
 {
@@ -642,12 +1002,6 @@ void ObjectAlrCracker_Init()
 // STUB: SADX 0x0048a690
 void AlrConfetti_Init()
 {
-}
-
-// STUB: SADX 0x0048a950
-struct task *AlrObjSetManageTask()
-{
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x0048a970
@@ -2401,8 +2755,18 @@ void SetE101(void)
 {
 }
 
+// STUB: SADX 0x007108f0
+void AlgKinderAdExit()
+{
+}
+
 // STUB: SADX 0x00711140
 void FUN_00711140()
+{
+}
+
+// STUB: SADX 0x00711c20
+extern void FUN_00711c20()
 {
 }
 
@@ -2410,6 +2774,16 @@ void FUN_00711140()
 struct al_status *ADV1_ALR_GetEntryStatus(int num)
 {
 	return (struct al_status *)0;
+}
+
+// STUB: SADX 0x007137e0
+void AlMsgTelopClear(struct SAlMsgTelop *self)
+{
+}
+
+// STUB: SADX 0x00713930
+void DrawSaltWater3D_39()
+{
 }
 
 // STUB: SADX 0x00717f90

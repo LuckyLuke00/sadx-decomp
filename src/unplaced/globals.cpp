@@ -8,6 +8,9 @@ short DAT_00956b1c[13];
 // GLOBAL: SADX 0x00956ba8
 float DAT_00956ba8;
 
+// GLOBAL: SADX 0x0095a394
+const unsigned long nbMaxEntry[11] = {};
+
 // GLOBAL: SADX 0x0095b120
 double DAT_0095b120;
 
@@ -20,6 +23,18 @@ float DAT_0095c8d0;
 // GLOBAL: SADX 0x0095cbc0
 double DAT_0095cbc0;
 
+// GLOBAL: SADX 0x0095e6d4
+const struct SAlEntAnimArray gAlEntAnimArray_title_j[1] = {};
+
+// GLOBAL: SADX 0x0095e8a8
+const struct SAlEntAnimArray gAlEntAnimArray_char_j[1] = {};
+
+// GLOBAL: SADX 0x0095e978
+const struct SAlEntAnimArray gAlEntAnimArray_title_e[1] = {};
+
+// GLOBAL: SADX 0x0095eb38
+const struct SAlEntAnimArray gAlEntAnimArray_char_e[1] = {};
+
 // GLOBAL: SADX 0x00961248
 const struct NJS_TEXANIM anim_dialog[32] = {};
 
@@ -28,6 +43,12 @@ struct AlrData alrdata;
 
 // GLOBAL: SADX 0x00962c74
 struct Angle3 DAT_00962c74;
+
+// GLOBAL: SADX 0x00962d28
+struct TaskInfo NeonLogoTaskInfo;
+
+// GLOBAL: SADX 0x00962da8
+struct ActionParam DAT_00962da8;
 
 // GLOBAL: SADX 0x00985418
 enum AvaTexLdEnum DAT_00985418;
@@ -146,8 +167,20 @@ struct obj object_sikake_powerbox_powerbox[1];
 // GLOBAL: SADX 0x01cad0c4
 struct obj object_ssobj_chaocard_chaocard[1];
 
+// GLOBAL: SADX 0x01e555c0
+struct NJS_TEXLIST texlist_al_icon;
+
+// GLOBAL: SADX 0x01e55768
+struct NJS_TEXLIST texlist_al_toy;
+
+// GLOBAL: SADX 0x01e558b8
+struct NJS_TEXLIST texlist_al_dx_tex_xybutton;
+
 // GLOBAL: SADX 0x01e55938
 struct CHAO_GLOBAL ChaoGlobal;
+
+// GLOBAL: SADX 0x01e55bf0
+struct MOTION_TABLE al_motion_table[1];
 
 // GLOBAL: SADX 0x01e5a838
 enum eCHAO_STAGE_NUMBER ChaoOldStageNumber;
@@ -197,8 +230,62 @@ float value;
 // GLOBAL: SADX 0x01e679c0
 long gsChaoLevel;
 
+// GLOBAL: SADX 0x01e6e400
+long NullMergeTreeList[15];
+
+// GLOBAL: SADX 0x01e6e4c0
+long PartsObjectListNumber[8][2];
+
+// GLOBAL: SADX 0x01fb19b0
+struct cnkobj **pPartsObjectListAdult[1];
+
+// GLOBAL: SADX 0x01fb19ec
+struct cnkobj * pPartsObjectListChild[1];
+
+// GLOBAL: SADX 0x021ef528
+struct NJS_TEXLIST texlist_ChaoBlackmarketObj;
+
+// GLOBAL: SADX 0x021f59c8
+struct obj object_kinblo_lamp_lamp[1];
+
+// GLOBAL: SADX 0x021f5a88
+struct NJS_MOTION motion_kinblo_lamp[1];
+
+// GLOBAL: SADX 0x021f9108
+char objLandTableChaoBlackMarket[36];
+
+// GLOBAL: SADX 0x0221e590
+struct NJS_TEXLIST texlist_al_ent_common_tex;
+
+// GLOBAL: SADX 0x0221e5a8
+float posy;
+
+// GLOBAL: SADX 0x0221e5ac
+float posz;
+
 // GLOBAL: SADX 0x0221e5b0
 long angx;
+
+// GLOBAL: SADX 0x0221e9a8
+char objLandTableChaoEntrance[36];
+
+// GLOBAL: SADX 0x02225808
+struct CCL_INFO ccinfo[1];
+
+// GLOBAL: SADX 0x02225a18
+struct NJS_TEXLIST texlist_Garden00SSObj;
+
+// GLOBAL: SADX 0x0222bf24
+struct obj object_stch_racegate_waku_waku[1];
+
+// GLOBAL: SADX 0x0222d2f8
+struct NJS_MOTION motion_stch_racegate_waku[1];
+
+// GLOBAL: SADX 0x0222e0b8
+char objLandTableGarden00[36];
+
+// GLOBAL: SADX 0x02297e5c
+char objLandTableGarden01[36];
 
 // GLOBAL: SADX 0x02299c8c
 struct NJS_TEXLIST texlist_obj_al_race;
@@ -218,11 +305,20 @@ struct obj object_medal_rub_rub;
 // GLOBAL: SADX 0x022a7624
 struct obj object_medal_saf_saf;
 
+// GLOBAL: SADX 0x022ad280
+char objLandTableChaoRace[36];
+
 // GLOBAL: SADX 0x022ae290
 struct pathtag *pathdata_race[4];
 
 // GLOBAL: SADX 0x0233e790
 struct NJS_TEXLIST texlist_chao_hyouji;
+
+// GLOBAL: SADX 0x0233ea90
+unsigned char eye_tex_num[1];
+
+// GLOBAL: SADX 0x0233ea98
+unsigned char mouse_tex_num[7][2];
 
 // GLOBAL: SADX 0x023469fc
 int DAT_023469fc;
@@ -1304,11 +1400,29 @@ int DAT_05ade374;
 // GLOBAL: SADX 0x05ade378
 int DAT_05ade378;
 
+// GLOBAL: SADX 0x05ade380
+float DAT_05ade380[16];
+
+// GLOBAL: SADX 0x05ade3c0
+int DAT_05ade3c0[0x100];
+
+// GLOBAL: SADX 0x05aea9f0
+float DAT_05aea9f0[16];
+
+// GLOBAL: SADX 0x05aeaa30
+unsigned short DAT_05aeaa30;
+
+// GLOBAL: SADX 0x05aeaa34
+int DAT_05aeaa34;
+
 // GLOBAL: SADX 0x05aeaa38
 int DAT_05aeaa38;
 
 // GLOBAL: SADX 0x05aeaa3c
 struct task *DAT_05aeaa3c[15];
+
+// GLOBAL: SADX 0x05aeaa7c
+int DAT_05aeaa7c;
 
 // GLOBAL: SADX 0x05aeb68c
 int DAT_05aeb68c;
@@ -1319,8 +1433,32 @@ int DAT_05aeb690;
 // GLOBAL: SADX 0x05aeb694
 int DAT_05aeb694;
 
+// GLOBAL: SADX 0x05aeb698
+int DAT_05aeb698;
+
+// GLOBAL: SADX 0x05aeb6a0
+char DAT_05aeb6a0;
+
 // GLOBAL: SADX 0x05b067a8
 int DAT_05b067a8;
+
+// GLOBAL: SADX 0x05b067d0
+int DAT_05b067d0;
+
+// GLOBAL: SADX 0x05b067dc
+int DAT_05b067dc;
+
+// GLOBAL: SADX 0x05b067e0
+int DAT_05b067e0;
+
+// GLOBAL: SADX 0x05b067e8
+char DAT_05b067e8;
+
+// GLOBAL: SADX 0x05b067f8
+char DAT_05b067f8[1];
+
+// GLOBAL: SADX 0x05b06828
+struct task *DAT_05b06828;
 
 // GLOBAL: SADX 0x05b28890
 int DAT_05b28890;
@@ -1334,17 +1472,89 @@ int DAT_05b288a0;
 // GLOBAL: SADX 0x05b288b0
 char DAT_05b288b0[5];
 
+// GLOBAL: SADX 0x05b2ca64
+int DAT_05b2ca64[1];
+
+// GLOBAL: SADX 0x05b2cae4
+void *DAT_05b2cae4;
+
+// GLOBAL: SADX 0x05b30ff4
+struct NJS_TEXLIST DAT_05b30ff4;
+
+// GLOBAL: SADX 0x05b31000
+int DAT_05b31000[1];
+
+// GLOBAL: SADX 0x05b31040
+struct NJS_TEXNAME DAT_05b31040;
+
+// GLOBAL: SADX 0x05b31050
+char DAT_05b31050;
+
+// GLOBAL: SADX 0x05b313a0
+struct task *DAT_05b313a0;
+
+// GLOBAL: SADX 0x05b314b8
+int DAT_05b314b8;
+
+// GLOBAL: SADX 0x05b314c8
+int DAT_05b314c8;
+
+// GLOBAL: SADX 0x05b314d8
+struct task *DAT_05b314d8;
+
+// GLOBAL: SADX 0x05b33014
+int DAT_05b33014;
+
+// GLOBAL: SADX 0x05b33018
+void *DAT_05b33018;
+
+// GLOBAL: SADX 0x05b3301c
+const struct SAlEntAnimArray *DAT_05b3301c = 0;
+
+// GLOBAL: SADX 0x05b33020
+const struct SAlEntAnimArray *DAT_05b33020 = 0;
+
+// GLOBAL: SADX 0x05b3304c
+const unsigned long *DAT_05b3304c = 0;
+
+// GLOBAL: SADX 0x05b330e4
+int DAT_05b330e4;
+
+// GLOBAL: SADX 0x05b330fc
+void *DAT_05b330fc;
+
+// GLOBAL: SADX 0x05b33100
+int DAT_05b33100;
+
+// GLOBAL: SADX 0x05b33104
+struct task *DAT_05b33104;
+
 // GLOBAL: SADX 0x05b33108
 struct AlrReal *DAT_05b33108;
 
+// GLOBAL: SADX 0x05b33291
+char DAT_05b33291;
+
+// GLOBAL: SADX 0x05b33294
+int DAT_05b33294[3];
+
+// GLOBAL: SADX 0x05b332a8
+int DAT_05b332a8;
+
 // GLOBAL: SADX 0x05b35c28
 struct task *DAT_05b35c28;
+
+// GLOBAL: SADX 0x05b35c44
+int DAT_05b35c44;
 
 // GLOBAL: SADX 0x05b35c48
 int DAT_05b35c48;
 
 // GLOBAL: SADX 0x05b35c50
 struct task *DAT_05b35c50;
+
+// GLOBAL: SADX 0x05b35db8
+signed char DAT_05b35db8;
 
 // GLOBAL: SADX 0x05b36068
 struct chao_colliwk *DAT_05b36068;
@@ -1853,8 +2063,23 @@ float DAT_05b428a4;
 // GLOBAL: SADX 0x05b428e8
 int DAT_05b428e8;
 
+// GLOBAL: SADX 0x05b42908
+float DAT_05b42908;
+
+// GLOBAL: SADX 0x05b4290c
+float DAT_05b4290c;
+
+// GLOBAL: SADX 0x05b42910
+float DAT_05b42910;
+
 // GLOBAL: SADX 0x05b42914
 float DAT_05b42914;
+
+// GLOBAL: SADX 0x05b42918
+float DAT_05b42918;
+
+// GLOBAL: SADX 0x05b4291c
+float DAT_05b4291c;
 
 // GLOBAL: SADX 0x05b42920
 struct Angle3 DAT_05b42920;
