@@ -178,6 +178,10 @@ class Image:
         return any(start <= address < start + length and section.flags & CODE
                    for start, length, section in self.sections)
 
+    def is_read_only_data(self, address: int) -> bool:
+        return any(start <= address < start + length and not section.flags & (CODE | WRITABLE)
+                   for start, length, section in self.sections)
+
 
 def rich_entries(path: Path) -> dict[tuple[int, int], int]:
     """A PE's Rich header: the object count per (product id, build), that is, which tools made its objects."""
