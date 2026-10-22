@@ -16,3 +16,9 @@ void FUN_005fd0e0(void)
 		DestroyTask(DAT_05edd990);
 	}
 }
+
+// FUNCTION: SADX 0x005fd100
+void FUN_005fd100(void)
+{
+	*(int *)((char *)DAT_05edd990->awp + 4) = 5;
+}
