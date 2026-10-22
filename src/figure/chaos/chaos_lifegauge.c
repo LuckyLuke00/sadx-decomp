@@ -14,6 +14,11 @@ void SetChaosLifeGauge(int xpos, int ypos, int max)
 {
 }
 
+// STUB: SADX 0x005d1230
+void ChaosLifeGauge(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005d13f0
 void ChaosLifeGaugeDisplay(struct task *tp)
 {

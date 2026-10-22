@@ -32,3 +32,9 @@ void CreateShotsmoke(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 		local_ci->work[0].ptr = &default_shotsmoke;
 	}
 }
+
+// FUNCTION: SADX 0x005d5090
+void initShotsmoke()
+{
+	particle_shotsmoke.link = SpCreateLinkW(particle_shotsmoke.info, 0);
+}

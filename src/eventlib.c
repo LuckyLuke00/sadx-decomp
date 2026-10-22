@@ -1,5 +1,13 @@
 #include "decls.h"
 #include <string.h>
+void ___njSetPerspective(long a);
+int HokanInt(int mode, int time, int count, int va, int vb);
+void FUN_0056ccc0(int param_1);
+extern int DAT_05ccdd28;
+void FUN_0056cc30(int param_1);
+extern unsigned char DAT_05ccddfc;
+extern struct NJS_POINT3 DAT_05ccdd34;
+extern struct Angle3 DAT_05ccdd40;
 void FUN_0056a200(struct task *param_1);
 struct eventwk;
 void ___OutputDebugString(char *str, ...);
@@ -652,6 +660,11 @@ void FUN_0056b770(int param_1)
 {
 }
 
+// STUB: SADX 0x0056b810
+void FUN_0056b810(int param_1, unsigned char *param_2)
+{
+}
+
 // STUB: SADX 0x0056b940
 void EV_LookObject(struct task *tp, struct task *target, float x, float y, float z)
 {
@@ -717,4 +730,124 @@ void EV_MoveRotation(struct task *tp, long x, long y, long z)
 		*(long *)((char *)local_8 + 0x2c) = y;
 		*(long *)((char *)local_8 + 0x30) = z;
 	}
+}
+
+// STUB: SADX 0x0056bd10
+void CalcEventCameraPers()
+{
+}
+
+// STUB: SADX 0x0056bdc0
+int HokanInt(int mode, int time, int count, int va, int vb)
+{
+	return (int)0;
+}
+
+// FUNCTION: SADX 0x0056be40
+void CalcEventCamera()
+{
+	if (DAT_05ccddfc == 0)
+	{
+		CalcEventCameraPos();
+		CalcEventCameraAng();
+		CalcEventCameraPers();
+	}
+	DAT_05b42a7c->pos = DAT_05ccdd34;
+	DAT_05b42a7c->ang = DAT_05ccdd40;
+}
+
+// STUB: SADX 0x0056c640
+float HokanFloat(int mode, int time, int count, float va, float vb)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x0056cab0
+void CalcAng(struct NJS_POINT3 *pos, struct NJS_POINT3 *target, struct Angle3 *ang)
+{
+}
+
+// STUB: SADX 0x0056cb30
+void FUN_0056cb30(float *param_1, float *param_2, int *param_3)
+{
+}
+
+// STUB: SADX 0x0056cbf0
+void EV_CameraAng(int mode, int time, long x, long y, long z)
+{
+}
+
+// STUB: SADX 0x0056cc30
+void FUN_0056cc30(int param_1)
+{
+}
+
+// FUNCTION: SADX 0x0056cc80
+void EV_CameraPos(int mode, int time, float x, float y, float z)
+{
+	int *local_8 = (int *)&DAT_05ccdd28;
+	*(char *)((char *)local_8 + 0) = (char)mode;
+	*(float *)((char *)local_8 + 0x3c) = x;
+	*(float *)((char *)local_8 + 0x40) = y;
+	*(float *)((char *)local_8 + 0x44) = z;
+	FUN_0056ccc0(time);
+}
+
+// STUB: SADX 0x0056ccc0
+void FUN_0056ccc0(int param_1)
+{
+}
+
+// STUB: SADX 0x0056cd10
+void EV_CameraPosORY(int mode, int time, struct task *tp, float x, float y, float z)
+{
+}
+
+// STUB: SADX 0x0056ceb0
+void EV_CameraChaseFree()
+{
+}
+
+// STUB: SADX 0x0056cf40
+void EV_CameraChaseRM(int mode, int time, struct task *tp, float height, long x0, long y0, long z0, float d0, long x1, long y1, long z1, float d1)
+{
+}
+
+// STUB: SADX 0x0056d010
+void EV_CameraPerspective(int mode, int time, long ang)
+{
+}
+
+// STUB: SADX 0x0056d070
+void EV_CameraPath(struct cpathtag *path, float speed)
+{
+}
+
+// FUNCTION: SADX 0x0056d0e0
+void EV_ClrFace(struct task *tp)
+{
+	struct taskwk *local_8;
+	if (tp != 0)
+	{
+		local_8 = tp->twp;
+		ClrEventFace(local_8);
+	}
+}
+
+// FUNCTION: SADX 0x0056d110
+void EV_CameraOff()
+{
+	long local_8g = FUN_004f6400();
+	while (local_8g != 0 && local_8g != 5)
+	{
+		FUN_0056aea0(1);
+		local_8g = FUN_004f6400();
+	}
+}
+
+// FUNCTION: SADX 0x0056d140
+void EV_SerifPlay(int id)
+{
+	EV_CameraOff();
+	Serif_Play(id);
 }
