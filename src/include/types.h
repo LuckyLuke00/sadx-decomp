@@ -11,6 +11,7 @@ struct _camcontwk;
 struct _CameraSystemWork;
 struct _OBJ_ADJUSTPARAM;
 struct _OBJ_CAMERAPARAM;
+struct _OBJ_LANDTABLE;
 struct _SC_NUMBERS;
 struct ActionParam;
 struct ADV1_AL_BODY;
@@ -25,7 +26,9 @@ struct ADV1_AL_SHADOW;
 struct ADV1_AL_TMP_STATUS;
 struct al_action_ctrl;
 struct AL_BODY_INFO;
+struct AL_BUYO_PARAM;
 struct AL_EMOTION;
+struct al_entry_work;
 struct AL_GENE;
 struct AL_KARATE_PERSONAL_INFO;
 struct AL_KNOWLEDGE_BTL;
@@ -33,7 +36,9 @@ struct AL_KNOWLEDGE_CHAO;
 struct AL_KNOWLEDGE_DX;
 struct AL_KNOWLEDGE_OTHER;
 struct AL_KNOWLEDGE_PLAYER;
+struct al_model;
 struct al_motion_table;
+struct al_object;
 struct AL_PARTS;
 struct AL_RACE_PERSONAL_INFO;
 struct AL_RACE_PERSONAL_INFO_DX;
@@ -41,6 +46,7 @@ struct AL_RECORD;
 struct AL_ST_POS;
 struct al_status;
 struct AL_TIME;
+struct AL_VERTEX_INFO;
 struct alifewk;
 struct Alr;
 struct AlrCam;
@@ -90,11 +96,13 @@ struct chaoswk;
 struct CharMdlWk;
 struct CMoviePolyData;
 struct CMoviePolyTag;
+struct CNK_VN_VERTEX;
 struct cnkobj;
 struct colliwk;
 struct CRUSHLIGHT_DATA;
 struct CRUSHLIGHT_WK;
 struct csts;
+struct DAT_0044e380_0;
 struct DDlgType;
 struct DialogPrmType;
 struct DlgSndPrmType;
@@ -134,6 +142,8 @@ struct LightInfo;
 struct MDHANDLE;
 struct MiMsg;
 struct ModeSelPrmType;
+struct MOTION_CTRL;
+struct MOTION_TABLE;
 struct motionwk;
 struct motionwk2;
 struct MSGC;
@@ -185,6 +195,11 @@ struct PL_JOIN_VERTEX;
 struct PL_LANDPOSI;
 struct player_parameter;
 struct playerwk;
+struct SAlEntAnimArray;
+struct SAlgKinderOrthoQuad;
+struct SAlMsgFontStr;
+struct SAlMsgTelop;
+struct SAlMsgWin;
 struct SAVE_DATA;
 struct SEQ_CLEAR_EQUIV;
 struct SEQ_SECTION;
@@ -312,6 +327,14 @@ enum FileSbMdEnum : int {
     FILESEL_SMD_MAX = 18,
 };
 static_assert(sizeof(FileSbMdEnum) == 4, "sizeof FileSbMdEnum");
+
+enum OdeMenuState : int {
+    ODE_MENU_STATE_FAIL = -1,
+    ODE_MENU_STATE_OK = 0,
+    ODE_MENU_STATE_BUSY = 1,
+    ODE_MENU_STATE_END = 2,
+};
+static_assert(sizeof(OdeMenuState) == 4, "sizeof OdeMenuState");
 
 // Offsets not checked against the code yet.
 struct ADV1_AL_BODY {
@@ -2489,6 +2512,26 @@ static_assert(offsetof(LightInfo, frang) == 0x3c, "LightInfo::frang");
 static_assert(offsetof(LightInfo, iang) == 0x40, "LightInfo::iang");
 static_assert(offsetof(LightInfo, oang) == 0x44, "LightInfo::oang");
 
+struct MOTION_TABLE {
+    struct NJS_MOTION *pMotion;
+    short mode;
+    short posture;
+    long next;
+    long link_step;
+    float start;
+    float end;
+    float spd;
+};
+static_assert(sizeof(MOTION_TABLE) == 0x1c, "sizeof MOTION_TABLE");
+static_assert(offsetof(MOTION_TABLE, pMotion) == 0x0, "MOTION_TABLE::pMotion");
+static_assert(offsetof(MOTION_TABLE, mode) == 0x4, "MOTION_TABLE::mode");
+static_assert(offsetof(MOTION_TABLE, posture) == 0x6, "MOTION_TABLE::posture");
+static_assert(offsetof(MOTION_TABLE, next) == 0x8, "MOTION_TABLE::next");
+static_assert(offsetof(MOTION_TABLE, link_step) == 0xc, "MOTION_TABLE::link_step");
+static_assert(offsetof(MOTION_TABLE, start) == 0x10, "MOTION_TABLE::start");
+static_assert(offsetof(MOTION_TABLE, end) == 0x14, "MOTION_TABLE::end");
+static_assert(offsetof(MOTION_TABLE, spd) == 0x18, "MOTION_TABLE::spd");
+
 struct NJS_TEXLIST {
     struct NJS_TEXNAME *textures;
     unsigned long nbTexture;
@@ -2827,6 +2870,34 @@ static_assert(offsetof(PATHCAMERA1WORK, angCamRot) == 0x5c, "PATHCAMERA1WORK::an
 static_assert(offsetof(PATHCAMERA1WORK, angMaxCamSpd) == 0x68, "PATHCAMERA1WORK::angMaxCamSpd");
 static_assert(offsetof(PATHCAMERA1WORK, angCamSpdMul) == 0x6c, "PATHCAMERA1WORK::angCamSpdMul");
 
+struct SAlEntAnimArray {
+    const struct NJS_TEXANIM *mpAnim;
+    long mLen;
+};
+static_assert(sizeof(SAlEntAnimArray) == 0x8, "sizeof SAlEntAnimArray");
+static_assert(offsetof(SAlEntAnimArray, mpAnim) == 0x0, "SAlEntAnimArray::mpAnim");
+static_assert(offsetof(SAlEntAnimArray, mLen) == 0x4, "SAlEntAnimArray::mLen");
+
+struct SAlgKinderOrthoQuad {
+    short x0;
+    short x1;
+    short y0;
+    short y1;
+    short u0;
+    short u1;
+    short v0;
+    short v1;
+};
+static_assert(sizeof(SAlgKinderOrthoQuad) == 0x10, "sizeof SAlgKinderOrthoQuad");
+static_assert(offsetof(SAlgKinderOrthoQuad, x0) == 0x0, "SAlgKinderOrthoQuad::x0");
+static_assert(offsetof(SAlgKinderOrthoQuad, x1) == 0x2, "SAlgKinderOrthoQuad::x1");
+static_assert(offsetof(SAlgKinderOrthoQuad, y0) == 0x4, "SAlgKinderOrthoQuad::y0");
+static_assert(offsetof(SAlgKinderOrthoQuad, y1) == 0x6, "SAlgKinderOrthoQuad::y1");
+static_assert(offsetof(SAlgKinderOrthoQuad, u0) == 0x8, "SAlgKinderOrthoQuad::u0");
+static_assert(offsetof(SAlgKinderOrthoQuad, u1) == 0xa, "SAlgKinderOrthoQuad::u1");
+static_assert(offsetof(SAlgKinderOrthoQuad, v0) == 0xc, "SAlgKinderOrthoQuad::v0");
+static_assert(offsetof(SAlgKinderOrthoQuad, v1) == 0xe, "SAlgKinderOrthoQuad::v1");
+
 struct SEQ_CLEAR_EQUIV {
     short stageno;
     short flagno;
@@ -2947,6 +3018,134 @@ static_assert(offsetof(al_action_ctrl, curr_mode) == 0x2, "al_action_ctrl::curr_
 static_assert(offsetof(al_action_ctrl, req_mode) == 0x4, "al_action_ctrl::req_mode");
 static_assert(offsetof(al_action_ctrl, flag) == 0x6, "al_action_ctrl::flag");
 static_assert(offsetof(al_action_ctrl, timer) == 0x8, "al_action_ctrl::timer");
+
+struct al_entry_work {
+    unsigned short category;
+    unsigned short num;
+    unsigned short kind;
+    unsigned short flag;
+    void *pSaveInfo;
+    long CommuID;
+    struct NJS_POINT3 pos;
+    struct Angle3 ang;
+    float radius;
+    float offset;
+    float CamDist;
+    short command;
+    short command_value;
+    short state;
+    struct task *tp;
+    struct al_entry_work *pCommu;
+    struct al_entry_work *pLockOn;
+};
+static_assert(sizeof(al_entry_work) == 0x48, "sizeof al_entry_work");
+static_assert(offsetof(al_entry_work, category) == 0x0, "al_entry_work::category");
+static_assert(offsetof(al_entry_work, num) == 0x2, "al_entry_work::num");
+static_assert(offsetof(al_entry_work, kind) == 0x4, "al_entry_work::kind");
+static_assert(offsetof(al_entry_work, flag) == 0x6, "al_entry_work::flag");
+static_assert(offsetof(al_entry_work, pSaveInfo) == 0x8, "al_entry_work::pSaveInfo");
+static_assert(offsetof(al_entry_work, CommuID) == 0xc, "al_entry_work::CommuID");
+static_assert(offsetof(al_entry_work, pos) == 0x10, "al_entry_work::pos");
+static_assert(offsetof(al_entry_work, ang) == 0x1c, "al_entry_work::ang");
+static_assert(offsetof(al_entry_work, radius) == 0x28, "al_entry_work::radius");
+static_assert(offsetof(al_entry_work, offset) == 0x2c, "al_entry_work::offset");
+static_assert(offsetof(al_entry_work, CamDist) == 0x30, "al_entry_work::CamDist");
+static_assert(offsetof(al_entry_work, command) == 0x34, "al_entry_work::command");
+static_assert(offsetof(al_entry_work, command_value) == 0x36, "al_entry_work::command_value");
+static_assert(offsetof(al_entry_work, state) == 0x38, "al_entry_work::state");
+static_assert(offsetof(al_entry_work, tp) == 0x3c, "al_entry_work::tp");
+static_assert(offsetof(al_entry_work, pCommu) == 0x40, "al_entry_work::pCommu");
+static_assert(offsetof(al_entry_work, pLockOn) == 0x44, "al_entry_work::pLockOn");
+
+struct al_model {
+    long *VList;
+    short *PList;
+    struct NJS_POINT3 Center;
+    float Radius;
+    short OrgTexId[4];
+    long PListSize;
+    long nbVertex;
+    struct CNK_VN_VERTEX *pVertex;
+    struct NJS_POINT3 *pOrgVertexPos;
+    struct NJS_POINT3 *pOrgVertexNormal;
+    struct AL_VERTEX_INFO *pVertexInfo;
+};
+static_assert(sizeof(al_model) == 0x38, "sizeof al_model");
+static_assert(offsetof(al_model, VList) == 0x0, "al_model::VList");
+static_assert(offsetof(al_model, PList) == 0x4, "al_model::PList");
+static_assert(offsetof(al_model, Center) == 0x8, "al_model::Center");
+static_assert(offsetof(al_model, Radius) == 0x14, "al_model::Radius");
+static_assert(offsetof(al_model, OrgTexId) == 0x18, "al_model::OrgTexId");
+static_assert(offsetof(al_model, PListSize) == 0x20, "al_model::PListSize");
+static_assert(offsetof(al_model, nbVertex) == 0x24, "al_model::nbVertex");
+static_assert(offsetof(al_model, pVertex) == 0x28, "al_model::pVertex");
+static_assert(offsetof(al_model, pOrgVertexPos) == 0x2c, "al_model::pOrgVertexPos");
+static_assert(offsetof(al_model, pOrgVertexNormal) == 0x30, "al_model::pOrgVertexNormal");
+static_assert(offsetof(al_model, pVertexInfo) == 0x34, "al_model::pVertexInfo");
+
+struct al_object {
+    unsigned long EvalFlags;
+    struct al_model *pModel;
+    float Pos[3];
+    long Ang[3];
+    float Scl[3];
+    struct al_object *pChild;
+    struct al_object *pSibling;
+    struct al_object *pParent;
+    struct NJS_POINT3 diff;
+    struct NJS_POINT3 GlobalAimPos;
+    struct NJS_POINT3 OrgPos;
+    struct NJS_POINT3 Velo;
+    struct NJS_POINT3 OrgAng;
+    struct NJS_POINT3 AngSpd;
+    float Weight;
+    float Spring;
+    float Friction;
+    long NoBuyoFlag;
+    long CalcBuyoPosFlag;
+    struct cnkobj *pPartsObject;
+    struct cnkobj *pItemObject;
+    struct NJS_TEXLIST *pItemTexlist;
+    float ItemScale;
+    long ItemActiveFlag;
+    long ItemOffsetFlag;
+    struct NJS_POINT3 ItemOffsetPos;
+    struct Angle3 ItemOffsetAng;
+    float (*pOldMatrix)[16];
+    struct AL_BUYO_PARAM *pBuyoParam;
+    void *DisplayList;
+};
+static_assert(sizeof(al_object) == 0xd0, "sizeof al_object");
+static_assert(offsetof(al_object, EvalFlags) == 0x0, "al_object::EvalFlags");
+static_assert(offsetof(al_object, pModel) == 0x4, "al_object::pModel");
+static_assert(offsetof(al_object, Pos) == 0x8, "al_object::Pos");
+static_assert(offsetof(al_object, Ang) == 0x14, "al_object::Ang");
+static_assert(offsetof(al_object, Scl) == 0x20, "al_object::Scl");
+static_assert(offsetof(al_object, pChild) == 0x2c, "al_object::pChild");
+static_assert(offsetof(al_object, pSibling) == 0x30, "al_object::pSibling");
+static_assert(offsetof(al_object, pParent) == 0x34, "al_object::pParent");
+static_assert(offsetof(al_object, diff) == 0x38, "al_object::diff");
+static_assert(offsetof(al_object, GlobalAimPos) == 0x44, "al_object::GlobalAimPos");
+static_assert(offsetof(al_object, OrgPos) == 0x50, "al_object::OrgPos");
+static_assert(offsetof(al_object, Velo) == 0x5c, "al_object::Velo");
+static_assert(offsetof(al_object, OrgAng) == 0x68, "al_object::OrgAng");
+static_assert(offsetof(al_object, AngSpd) == 0x74, "al_object::AngSpd");
+static_assert(offsetof(al_object, Weight) == 0x80, "al_object::Weight");
+static_assert(offsetof(al_object, Spring) == 0x84, "al_object::Spring");
+static_assert(offsetof(al_object, Friction) == 0x88, "al_object::Friction");
+static_assert(offsetof(al_object, NoBuyoFlag) == 0x8c, "al_object::NoBuyoFlag");
+static_assert(offsetof(al_object, CalcBuyoPosFlag) == 0x90, "al_object::CalcBuyoPosFlag");
+static_assert(offsetof(al_object, pPartsObject) == 0x94, "al_object::pPartsObject");
+static_assert(offsetof(al_object, pItemObject) == 0x98, "al_object::pItemObject");
+static_assert(offsetof(al_object, pItemTexlist) == 0x9c, "al_object::pItemTexlist");
+static_assert(offsetof(al_object, ItemScale) == 0xa0, "al_object::ItemScale");
+static_assert(offsetof(al_object, ItemActiveFlag) == 0xa4, "al_object::ItemActiveFlag");
+static_assert(offsetof(al_object, ItemOffsetFlag) == 0xa8, "al_object::ItemOffsetFlag");
+static_assert(offsetof(al_object, ItemOffsetPos) == 0xac, "al_object::ItemOffsetPos");
+static_assert(offsetof(al_object, ItemOffsetAng) == 0xb8, "al_object::ItemOffsetAng");
+static_assert(offsetof(al_object, pOldMatrix) == 0xc4, "al_object::pOldMatrix");
+static_assert(offsetof(al_object, pBuyoParam) == 0xc8, "al_object::pBuyoParam");
+static_assert(offsetof(al_object, DisplayList) == 0xcc, "al_object::DisplayList");
 
 struct alifewk {
     union {
