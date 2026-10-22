@@ -11,6 +11,7 @@ from pathlib import Path
 import dossier
 import facts
 import names
+import project
 import x86
 
 CODE = 0x401000  # where the function under test starts
@@ -593,12 +594,35 @@ def check_fact_lines() -> list[str]:
     return failures
 
 
+# ---------------------------------------------------------------- callee names
+
+def check_library_annotations() -> list[str]:
+    """library_annotations maps each LIBRARY address to the name on the comment line under it. A decorated name
+    comes back demangled, with no access or calling-convention words and with std::string for the long string
+    type. A plain name stays as it is, an indented annotation counts, and a FUNCTION or STUB annotation gives
+    nothing."""
+    target = project.game_config().target
+    text = (f"// LIBRARY: {target} 0x00402f90\n"
+            "// ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z\n"
+            f"\t// LIBRARY: {target} 0x00403000\n"
+            "\t// _strlen\n"
+            f"// FUNCTION: {target} 0x00403100\n"
+            "void Foo(void) {}\n"
+            f"// STUB: {target} 0x00403200\n"
+            "// Bar\n")
+    wanted = {0x402f90: "std::string::basic_string(char const *)", 0x403000: "_strlen"}
+    found = dossier.library_annotations({"a.cpp": text})
+    if found != wanted:
+        return [f"library_annotations gives {found}, not {wanted}"]
+    return []
+
+
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
     for check in (check_memory_operands, check_pops, check_stack_change, check_may_read_stack_arguments,
                   check_exit_pops, check_printed_keyword, check_amount, check_listed, check_offsets_text,
                   check_convention_fact, check_frame_slot, check_transfer, check_pointer_globals,
-                  check_pointer_facts, check_bodiless_fact, check_fact_lines):
+                  check_pointer_facts, check_bodiless_fact, check_fact_lines, check_library_annotations):
         failures += check()
     return failures

@@ -11,7 +11,9 @@ those, and docs/FRAMEWORK.md says how. --facts adds a "facts:" list after the he
 its arguments, a global that holds a pointer and a type with no body in the types header.
 
 Names come from the tree's annotations, the files `check.py decls` wrote last,
-src/library.csv and the --tables folder (tools/declgen.py says what it holds). --context
+src/library.csv and the --tables folder (tools/declgen.py says what it holds). A LIBRARY annotation's
+name wins over a tables row: the build checks it, and a row can carry the name of another function with the
+same code. --context
 adds another checkout's annotations and last decls files, as decls does: this tree's own win.
 Needs capstone, so it runs in .venv.
 """
@@ -26,6 +28,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 import capstone
+from reccmp.cvdump.demangler import msvc_demangle
 
 import accesses
 import names
@@ -38,6 +41,8 @@ ROOT = project.ROOT
 ACCESS_GROUPS = 6  # most-used kinds of access shown per global
 CALLERS = project.BUILD / "callers.tsv"
 DRAFTS = project.BUILD / "decomp"
+STRING = "basic_string<char, struct std::char_traits<char>, class std::allocator<char>>"  # as the demangler spells it
+SPECIFIERS = re.compile(r"^(?:public|protected|private): |\b__(?:thiscall|cdecl|stdcall|fastcall) ")
 
 
 class Function(NamedTuple):
@@ -72,6 +77,21 @@ def known_functions(tables: Path | None, sources: dict[str, str], before: names.
             a = int(r["address"], 16)
             proto = r["proto"] or (found[a].proto if a in found else "")
             found[a] = Function(r["name"], proto, r["scope"] == "L", r["file"], r["note"], r.get("locals", ""))
+    return found
+
+
+def library_annotations(sources: dict[str, str]) -> dict[int, str]:
+    """The name on the comment line under each LIBRARY annotation, demangled when it is a decorated name."""
+    found = {}
+    for text in sources.values():
+        for m in names.annotation().finditer(text):
+            if m.group(1) != "LIBRARY":
+                continue
+            line = text[m.end():].split("\n", 2)[1].strip()
+            if line.startswith("//"):
+                name = line[2:].strip()
+                plain = SPECIFIERS.sub("", msvc_demangle(name) or name).replace("std::" + STRING, "std::string")
+                found[int(m.group(2), 16)] = plain.replace(STRING, "basic_string")
     return found
 
 
@@ -284,7 +304,9 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
     functions = known_functions(tables, sources, before)
     globals_ = known_globals(tables, sources, before, types)
     sizes = {f["address"]: f["size"] for f in progress.load_functions()}
-    library = {row.address: row.name for row in project.library_rows()}
+    annotated = library_annotations(sources)
+    library = {row.address: row.name for row in project.library_rows()} | annotated
+    functions = {address: f for address, f in functions.items() if address not in annotated}
     groups = progress.load_codegen_groups()
     cluster_rows = progress.read_csv(ROOT / "data" / "file-clusters.csv")
     clusters = {int(r["address"], 16): r["cluster"] for r in cluster_rows}
