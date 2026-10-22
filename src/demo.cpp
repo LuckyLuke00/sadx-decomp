@@ -26,3 +26,8 @@ void DemoInputDestructor()
 		DAT_05cda15c = 0;
 	}
 }
+
+// STUB: SADX 0x0059be40
+void GetDemoInputData()
+{
+}

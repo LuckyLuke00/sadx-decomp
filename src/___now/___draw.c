@@ -1,5 +1,14 @@
 #include "decls.h"
 #include <math.h>
+void njSetZUpdateMode(long param_1);
+extern void njRotateXYZ(long param_1, long *param_2, long *param_3, long *param_4);
+extern void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
+void *late_setOdr(int sz, int odr, int no, int flgs);
+void npSetZCompare();
+void njSetZUpdateMode(long param_1);
+void *late_alloca(unsigned int sz);
+struct LATE_PO2D_RQ;
+extern void *late_alloca(unsigned int sz);
 extern struct LATE_FAR_Z_T late_far_z_dflt;
 extern void *DAT_05b39e08[1];
 extern void *DAT_05b39e78[1];
@@ -64,7 +73,6 @@ void late_DrawModelClip(struct NJS_MODEL *, int, float);
 int isTextureNG(struct NJS_TEXLIST *, int);
 long dsSimpleDrawModel(struct NJS_MODEL *);
 void njDrawModel(struct NJS_MODEL *);
-extern float DAT_00981c10;
 extern unsigned char DAT_025acd84;
 extern unsigned char DAT_02608e24;
 extern int DAT_05b3df40;
@@ -433,7 +441,7 @@ void ___dsDrawModel(NJS_MODEL *model)
 					DAT_025acd84 = 0xfd & DAT_025acd84;
 					local_10.local_d = DAT_025acd84;
 				}
-				*(float *)&DAT_05b3df40 = DAT_00981c10;
+				*(float *)&DAT_05b3df40 = -47952.0f;
 				late_DrawModel(model, 1);
 				if (1)
 				{
@@ -487,7 +495,7 @@ void ___dsDrawObject(struct obj *obj)
 			DAT_025acd84 &= 0xfd;
 			local_10.local_d = DAT_025acd84;
 		}
-		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		*(float *)&DAT_05b3df40 = -47952.0f;
 		late_DrawObject(obj, 1);
 		if (1 != 0)
 		{
@@ -776,7 +784,7 @@ void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 			DAT_025acd84 &= 0xfd;
 			local_14.local_d = DAT_025acd84;
 		}
-		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		*(float *)&DAT_05b3df40 = -47952.0f;
 		late_DrawModelClip(mdl, 1, clipScl);
 		if (1)
 		{
@@ -830,7 +838,7 @@ void ds_DrawObjectClip(struct obj *obj, float clipScl)
 			DAT_025acd84 = DAT_025acd84 & 0xfd;
 			local_10.local_d = DAT_025acd84;
 		}
-		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		*(float *)&DAT_05b3df40 = -47952.0f;
 		late_DrawObjectClip(obj, 1, clipScl);
 		if (1)
 		{
@@ -1053,7 +1061,7 @@ void dsDrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr)
 			DAT_025acd84 = DAT_025acd84 & 0xfd;
 			local_10.local_d = DAT_025acd84;
 		}
-		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		*(float *)&DAT_05b3df40 = -47952.0f;
 		late_DrawSprite2D(sp, n, pri, atr, 1);
 		if (1)
 		{
@@ -1099,7 +1107,7 @@ void dsDrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr)
 			DAT_025acd84 &= 0xfd;
 			local_10.local_d = DAT_025acd84;
 		}
-		*(float *)&DAT_05b3df40 = DAT_00981c10;
+		*(float *)&DAT_05b3df40 = -47952.0f;
 		late_DrawSprite3D(sp, n, atr, 1);
 		if (1)
 		{
@@ -1299,6 +1307,24 @@ void FUN_004a3890()
 	}
 }
 
+// STUB: SADX 0x004a3a50
+void *late_setOdr(int sz, int odr, int no, int flgs)
+{
+	return (void *)0;
+}
+
+// STUB: SADX 0x004a3b80
+int late_setPo2D(struct LATE_PO2D_RQ *s, struct NJS_POINT2COL *p, int n, float pri, unsigned long atr)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004a3ea0
+int late_setPo3D(struct LATE_PO3D_RQ *s, NJS_POINT3COL *p, int n, unsigned long atr)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x004a4000
 void nlateBegin(int flgs)
 {
@@ -1331,8 +1357,23 @@ void nlateBegin(int flgs)
 	njSetConstantMaterial(local_8);
 }
 
+// STUB: SADX 0x004a4160
+void late_DrawBoxFill2D(float x, float y, float x2, float y2, float pri, unsigned long argb, int flgs)
+{
+}
+
 // STUB: SADX 0x004a43c0
 void late_DrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr, int flgs)
+{
+}
+
+// STUB: SADX 0x004a44b0
+void late_DrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr, int flgs)
+{
+}
+
+// STUB: SADX 0x004a45e0
+void late_DrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr, int flgs)
 {
 }
 
@@ -1539,6 +1580,12 @@ void CHAOS_SetChaosNo(int no)
 	}
 }
 
+// STUB: SADX 0x004a76f0
+float CHAOS7_MsZofsFnc(struct LATE_MDL_RQ *mrq, const struct NJS_MODEL *m, float z)
+{
+	return (float)0;
+}
+
 // FUNCTION: SADX 0x004a7800
 void CHAOS_SetMeshMode(int sw)
 {
@@ -1664,6 +1711,26 @@ void ___DrawModel(struct NJS_MODEL *model)
 			njDrawModel(model);
 		}
 	}
+}
+
+// STUB: SADX 0x004a7db0
+void dsPushPopMotion(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x004a80d0
+void MotionIntTranslate(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x004a8410
+void MotionIntRotateXYZ(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x004a8620
+void MotionIntRotateZXY(struct obj *obj)
+{
 }
 
 // FUNCTION: SADX 0x004a8740
@@ -1867,8 +1934,18 @@ void FUN_004a8e90(float *param_1, float *param_2, float *param_3, float param_4)
 	param_3[2] = (1.0 - param_4) * param_1[2] + param_2[2] * param_4;
 }
 
+// STUB: SADX 0x004a8ef0
+void njShapeData1n(struct obj *obj)
+{
+}
+
 // STUB: SADX 0x004a90c0
 void InterpolatesNormal(const float *srca, const float *srcb, float *dst, float t)
+{
+}
+
+// STUB: SADX 0x004a9660
+void DrawShapeMotion(struct obj *object, struct NJS_MOTION *motion, struct NJS_MOTION *shape, float frame, int flgs, float clpScl, void *drawModel)
 {
 }
 
@@ -1955,6 +2032,16 @@ void MotLnkData4(struct obj *obj)
 void ___dsDrawMotionLink(struct obj *object, struct NJS_MOTION_LINK *motionlink, float frame)
 {
 	DrawMotionLink(object, motionlink, frame, 0, 0.0f, ___DrawModel);
+}
+
+// STUB: SADX 0x004aa160
+void FUN_004aa160(int param_1)
+{
+}
+
+// STUB: SADX 0x004aa390
+void FUN_004aa390(void *param_1)
+{
 }
 
 // STUB: SADX 0x004aa630

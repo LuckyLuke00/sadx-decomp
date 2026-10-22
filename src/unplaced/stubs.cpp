@@ -2,6 +2,11 @@
 
 #include "decls.h"
 
+// STUB: SADX 0x00403bb0
+void FUN_00403bb0(int, int, int, int)
+{
+}
+
 // STUB: SADX 0x00404fa0
 void ___SAnjDrawPolygon2D(struct NJS_POINT2COL *p, int n, float pri, unsigned long attr)
 {
@@ -182,11 +187,6 @@ void stInitVertex(unsigned long, unsigned long, void *)
 {
 }
 
-// STUB: SADX 0x00426520
-void stFinishVertex(void)
-{
-}
-
 // STUB: SADX 0x00426a20
 void stDirect3DFinish(void)
 {
@@ -359,16 +359,6 @@ void stSetFogTable(float *)
 
 // STUB: SADX 0x004351c0
 void _pdVibMxServer(void)
-{
-}
-
-// STUB: SADX 0x00435590
-void stReadFile(int, int, int, int)
-{
-}
-
-// STUB: SADX 0x004355f0
-void stCloseFile(int)
 {
 }
 
@@ -773,21 +763,6 @@ void late_exec()
 {
 }
 
-// STUB: SADX 0x004a4160
-void late_DrawBoxFill2D(float, float, float, float, float, unsigned long, int)
-{
-}
-
-// STUB: SADX 0x004a44b0
-void late_DrawSprite2D(struct NJS_SPRITE *, int, float, unsigned long, int)
-{
-}
-
-// STUB: SADX 0x004a45e0
-void late_DrawSprite3D(struct NJS_SPRITE *sp, int n, unsigned long atr, int flgs)
-{
-}
-
 // STUB: SADX 0x004a4710
 void late_SetFunc(void (*)(void *), void *, float, int)
 {
@@ -833,19 +808,8 @@ void DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
-// STUB: SADX 0x004a76f0
-float CHAOS7_MsZofsFnc(struct LATE_MDL_RQ *mrq, const struct NJS_MODEL *m, float z)
-{
-	return (float)0;
-}
-
 // STUB: SADX 0x004a7d20
 void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
-{
-}
-
-// STUB: SADX 0x004a9660
-void DrawShapeMotion(struct obj *object, struct NJS_MOTION *motion, struct NJS_MOTION *shape, float frame, int flgs, float clpScl, void *drawModel)
 {
 }
 
@@ -889,7 +853,7 @@ bool Load3DPCM(int ch, void *wavememory, int wavesize, int loopflag)
 }
 
 // STUB: SADX 0x004ab200
-void StopPCM(int ch)
+extern void StopPCM(int)
 {
 }
 
@@ -931,7 +895,7 @@ void wmaend()
 }
 
 // STUB: SADX 0x004abaf0
-void wmastop(int ch)
+extern void wmastop(int)
 {
 }
 
@@ -945,23 +909,6 @@ void wmaresume()
 {
 }
 
-// STUB: SADX 0x004adcc0
-void Reset()
-{
-}
-
-// STUB: SADX 0x004af000
-int dsPlay_timer_v(int tone, int id, int pri, int volofs, int timer, float x, float y, float z)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x004afc60
-int dsGetVolume(int ii)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x004afda0
 long IsPlayOk(int tone)
 {
@@ -970,11 +917,6 @@ long IsPlayOk(int tone)
 
 // STUB: SADX 0x004afe70
 void dsLoadCharacterVoice()
-{
-}
-
-// STUB: SADX 0x004b0600
-void dsDolbySound()
 {
 }
 
@@ -1152,25 +1094,9 @@ void GameLoop_with_SyoriOchiTaisaku()
 {
 }
 
-// STUB: SADX 0x004c8600
-void ActionEnd()
-{
-}
-
-// STUB: SADX 0x004c94f0
-void AdvanceActLocal(short ssActAddition)
-{
-}
-
 // STUB: SADX 0x004c9a20
 void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
 {
-}
-
-// STUB: SADX 0x004c9cb0
-long SetNextTrialStage()
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x004cbf50
@@ -1189,12 +1115,6 @@ long MSetPositionWIgnoreAttribute(struct NJS_POINT3 *p, struct NJS_POINT3 *v, st
 	return (long)0;
 }
 
-// STUB: SADX 0x004cd4e0
-struct obj *scanObjectSub(float **, struct obj *, float *)
-{
-	return (struct obj *)0;
-}
-
 // STUB: SADX 0x004cd6e0
 int VSPrintf(char *s, const char *format, char *arg)
 {
@@ -1203,6 +1123,12 @@ int VSPrintf(char *s, const char *format, char *arg)
 
 // STUB: SADX 0x004cdea0
 int LoadFile(char *fname, void *buff)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x004ce110
+int LoadFileWithMalloc(char *pcFileName, void * *pBuff)
 {
 	return (int)0;
 }
@@ -1265,35 +1191,8 @@ void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 {
 }
 
-// STUB: SADX 0x004f3600
-void InitTask()
-{
-}
-
-// STUB: SADX 0x004f3750
-extern struct task *CreateElementalTask(unsigned short, long, void (*)(struct task *))
-{
-	return (struct task *)0;
-}
-
 // STUB: SADX 0x004f39c0
 void DestroyTask(struct task *tp)
-{
-}
-
-// STUB: SADX 0x004f4130
-void InitMemory()
-{
-}
-
-// STUB: SADX 0x004f41f0
-void *MAlloc(unsigned int size)
-{
-	return (void *)0;
-}
-
-// STUB: SADX 0x004f4400
-void Free(void *)
 {
 }
 
@@ -1371,11 +1270,6 @@ void ReleasePlayersTexture(long pno)
 
 // STUB: SADX 0x00501c60
 void ReleaseAllPlayersTexture()
-{
-}
-
-// STUB: SADX 0x00501ce0
-void LoadTextureForEachGameMode(long gamemode)
 {
 }
 
@@ -2480,12 +2374,12 @@ extern void njRotateX(float *, unsigned short)
 }
 
 // STUB: SADX 0x0067d5a0
-void njRotateXYZ(long, long *, long *, long *)
+extern void njRotateXYZ(long, long *, long *, long *)
 {
 }
 
 // STUB: SADX 0x0067d830
-void FUN_0067d830(float *, float, float, float)
+extern void FUN_0067d830(float *, float, float, float)
 {
 }
 
@@ -2688,6 +2582,18 @@ void dispScore(struct task *task_p)
 long GameGearLoop()
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x007f2180
+int FUN_007f2180()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x007f2190
+int FUN_007f2190()
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x007f2260
@@ -2921,6 +2827,11 @@ void SakanaGenerater(struct task *tp)
 int FUN_0090cd50()
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x00912600
+void ret()
+{
 }
 
 // STUB: SADX 0x009132a0

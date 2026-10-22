@@ -29,9 +29,6 @@ struct AlrData alrdata;
 // GLOBAL: SADX 0x00962c74
 struct Angle3 DAT_00962c74;
 
-// GLOBAL: SADX 0x00981c10
-float DAT_00981c10;
-
 // GLOBAL: SADX 0x00985418
 enum AvaTexLdEnum DAT_00985418;
 
@@ -1166,6 +1163,9 @@ int DAT_05ab6820[0x180];
 // GLOBAL: SADX 0x05ab6ec0
 int DAT_05ab6ec0;
 
+// GLOBAL: SADX 0x05ab7c00
+int DAT_05ab7c00;
+
 // GLOBAL: SADX 0x05ad95c4
 int DAT_05ad95c4;
 
@@ -1634,6 +1634,9 @@ struct NJS_POINT2 DAT_05b3e080;
 // GLOBAL: SADX 0x05b3e0d0
 int DAT_05b3e0d0;
 
+// GLOBAL: SADX 0x05b3e0e0
+int DAT_05b3e0e0;
+
 // GLOBAL: SADX 0x05b3e308
 unsigned long DAT_05b3e308[16];
 
@@ -1726,6 +1729,9 @@ char DAT_05b3ea24;
 
 // GLOBAL: SADX 0x05b3ea25
 unsigned char DAT_05b3ea25;
+
+// GLOBAL: SADX 0x05b3ea26
+unsigned char DAT_05b3ea26;
 
 // GLOBAL: SADX 0x05b3ea27
 unsigned char DAT_05b3ea27;
@@ -2063,6 +2069,9 @@ unsigned short DAT_05b9d770;
 // GLOBAL: SADX 0x05b9d774
 short DAT_05b9d774;
 
+// GLOBAL: SADX 0x05b9d776
+unsigned char DAT_05b9d776;
+
 // GLOBAL: SADX 0x05b9d778
 int DAT_05b9d778;
 
@@ -2230,6 +2239,9 @@ int DAT_05baf3a8[8];
 
 // GLOBAL: SADX 0x05baf4d0
 int DAT_05baf4d0[8];
+
+// GLOBAL: SADX 0x05baf4f4
+void *DAT_05baf4f4;
 
 // GLOBAL: SADX 0x05baf4f8
 int DAT_05baf4f8[8];
@@ -2963,8 +2975,20 @@ short DAT_05cda158;
 // GLOBAL: SADX 0x05cda15c
 short DAT_05cda15c;
 
+// GLOBAL: SADX 0x05cda160
+int DAT_05cda160;
+
+// GLOBAL: SADX 0x05cda164
+int DAT_05cda164;
+
 // GLOBAL: SADX 0x05cda168
 int DAT_05cda168;
+
+// GLOBAL: SADX 0x05cda16c
+int DAT_05cda16c;
+
+// GLOBAL: SADX 0x05cda170
+int DAT_05cda170;
 
 // GLOBAL: SADX 0x05cda178
 int DAT_05cda178;

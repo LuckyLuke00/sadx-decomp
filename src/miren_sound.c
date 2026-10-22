@@ -40,14 +40,40 @@ void MirenSoundPlayOneShotSE(int se, const struct NJS_POINT3 *pos_p, const struc
 {
 }
 
-// STUB: SADX 0x0056f120
+// FUNCTION: SADX 0x0056f120
 void MirenSoundPlayLoopSE(int se, const struct task *task_p, const struct NJS_POINT3 *pos_p, const struct VolumeInfo *info_p)
 {
+	struct NJS_POINT3 *local_cg;
+	int local_8g;
+
+	if (task_p != NULL)
+	{
+		local_8g = MirenSoundGetVolumeOffset(pos_p, info_p);
+		if (DAT_05b42a7c == NULL)
+		{
+			dsPlay_timer(se, (int)task_p, 1, 0, 2);
+			if (local_8g != 0)
+			{
+				dsVolume_id((int)task_p, local_8g);
+			}
+		}
+		else
+		{
+			local_cg = (struct NJS_POINT3 *)((char *)DAT_05b42a7c + 0x20);
+			dsPlay_timer_v(se, (int)task_p, 1, local_8g, 2, local_cg->x, local_cg->y, local_cg->z);
+		}
+	}
 }
 
 // STUB: SADX 0x0056f1c0
 void MirenSoundStopLoopSE(const struct task *task_p)
 {
+}
+
+// STUB: SADX 0x0056f1e0
+int MirenSoundGetVolumeOffset(const struct NJS_POINT3 *pos_p, const struct VolumeInfo *info_p)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x0056f3c0

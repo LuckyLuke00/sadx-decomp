@@ -1,5 +1,14 @@
 #include <stdlib.h>
 #include "decls.h"
+void GenocideTask();
+extern int DAT_05cd0f24;
+extern int DAT_05cda170;
+extern int DAT_05cda168;
+extern int DAT_05cda16c;
+extern int DAT_05cda160;
+extern int DAT_05cda164;
+extern unsigned char DAT_05b3ea26;
+extern unsigned char DAT_05b9d776;
 extern unsigned char DAT_05cccc6a[];
 extern unsigned char DAT_05b3ea14;
 extern void FUN_005a4d70();
@@ -287,6 +296,40 @@ void FUN_004c79a0()
 	GameInit();
 }
 
+// FUNCTION: SADX 0x004c80c0
+void InitGameWorks()
+{
+	if (DAT_05cd0f24 == 1)
+	{
+		srand(0xdead0cab);
+	}
+	ssPauseEnable = 0;
+	DAT_05b3ea26 = 0xff;
+	if (DAT_05cda170 == 0)
+	{
+		DAT_05cda168 = 0;
+	}
+	else
+	{
+		DAT_05cda168 = 1;
+		srand(0);
+		if (DAT_05cda170 == 1)
+		{
+			DAT_05cda16c = 0;
+		}
+		else
+		{
+			DAT_05cda16c = 1;
+		}
+	}
+	DAT_05cda160 = 0;
+	DAT_05cda164 = 0xcbc0000;
+	PadReadOnP(3);
+	InitRing();
+	FUN_00554a20();
+	DAT_05b9d776 = 0;
+}
+
 // FUNCTION: SADX 0x004c8170
 void FUN_004c8170()
 {
@@ -359,6 +402,12 @@ unsigned short FUN_004c83c0()
 	return local_8;
 }
 
+// STUB: SADX 0x004c83e0
+short PauseLoop()
+{
+	return (short)0;
+}
+
 // STUB: SADX 0x004c8570
 void FUN_004c8570(void)
 {
@@ -389,6 +438,11 @@ short FUN_004c85d0()
 	return local_8;
 }
 
+// STUB: SADX 0x004c8600
+void ActionEnd()
+{
+}
+
 // FUNCTION: SADX 0x004c8770
 void FUN_004c8770()
 {
@@ -403,6 +457,11 @@ void FUN_004c8770()
 void FUN_004c87a0()
 {
 	FUN_004c8770();
+}
+
+// STUB: SADX 0x004c87b0
+void EndStage()
+{
 }
 
 // FUNCTION: SADX 0x004c8880
@@ -453,6 +512,11 @@ void GM_BGM_Play(long bgm)
 		local_8->awp->work.sl[1] = bgm;
 		local_8->awp->work.sl[2] = 0;
 	}
+}
+
+// STUB: SADX 0x004c8c90
+void WaitLandPlayer(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x004c91e0
@@ -607,6 +671,11 @@ void AdvanceAct(short ssActAddition)
 	AdvanceActLocal(ssActAddition);
 }
 
+// STUB: SADX 0x004c94f0
+void AdvanceActLocal(short ssActAddition)
+{
+}
+
 // FUNCTION: SADX 0x004c9630
 void SetEntranceNumber(signed char number)
 {
@@ -623,6 +692,12 @@ signed char GetEntranceNumber()
 void FUN_004c9c90()
 {
 	GM_SetNextAdventureStage(DAT_05b9d724, DAT_05b9d744);
+}
+
+// STUB: SADX 0x004c9cb0
+long SetNextTrialStage()
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x004c9dc0

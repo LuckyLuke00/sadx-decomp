@@ -67,6 +67,11 @@ void ghSetPvrTexBaseColor(unsigned long color)
 {
 }
 
+// STUB: SADX 0x00574e40
+void ghSetPvrTexUV(int flipflag)
+{
+}
+
 // FUNCTION: SADX 0x00574f80
 void ghDefaultBlendingMode()
 {
@@ -112,6 +117,16 @@ void ghSetFadeColor(unsigned long color)
 void ghSetFadeFlag(int flag)
 {
 	DAT_05cd2588 = flag;
+}
+
+// STUB: SADX 0x00575210
+void ghFade(float rate)
+{
+}
+
+// STUB: SADX 0x00575360
+void ghAdvertiseCamera(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00575760

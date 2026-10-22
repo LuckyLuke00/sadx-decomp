@@ -1,7 +1,18 @@
 #include "decls.h"
+void PvrLoadtexture(struct NJS_TEXLIST *texlist);
 long FUN_00423e50(const char *param_1, struct NJS_TEXLIST *param_2);
 extern struct NJS_TEXLIST *DAT_05cc3540[5];
 extern struct NJS_TEXLIST *DAT_05cc25b0[1];
+
+// STUB: SADX 0x005019e0
+void PvrLoadtexture(struct NJS_TEXLIST *texlist)
+{
+}
+
+// STUB: SADX 0x00501ce0
+void LoadTextureForEachGameMode(long gamemode)
+{
+}
 
 // FUNCTION: SADX 0x00502290
 void ReleaseTexture()

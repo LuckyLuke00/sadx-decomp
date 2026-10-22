@@ -84,6 +84,12 @@ long CreateNinjaAngle(long ang0, long ang1)
 	return local_8;
 }
 
+// STUB: SADX 0x004cbbf0
+int FrameIn(struct taskwk *twp)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x004cbd30
 void InterpolateModel(struct NJS_MODEL *op, struct NJS_MODEL *np, struct NJS_MODEL *dp, float rate)
 {
@@ -145,6 +151,11 @@ float GetFloatMod(float dividend, float divisor)
 int FUN_004ccc60(int param_1, int *param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x004cccf0
+void GetZYAngleForTheTargetPoint(struct NJS_POINT3 *tvp, struct NJS_POINT3 *bvp, long *ang)
+{
 }
 
 // FUNCTION: SADX 0x004cce50
@@ -229,6 +240,12 @@ void clrObjFlags(struct obj **obj, unsigned long flag)
 		(*obj)->evalflags &= ~flag;
 		obj++;
 	}
+}
+
+// STUB: SADX 0x004cd4e0
+struct obj *scanObjectSub(float **mbp, struct obj *obj, float *m)
+{
+	return (struct obj *)0;
 }
 
 // FUNCTION: SADX 0x004cd600
