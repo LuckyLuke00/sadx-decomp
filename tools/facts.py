@@ -1,12 +1,14 @@
 """The facts that `check.py dossier --facts` lists: what a function's assembly hides from a reader who writes C,
-such as a register argument, a callee that pops its arguments, a global that holds a pointer and a type with no
-body in the types header.
+such as a register argument, a callee that pops its arguments, a global that holds a pointer, a type with no
+body in the types header and a float constant that the source writes as a literal.
 
 check.py passes fact_lines to dossier.show. Needs capstone, so it runs in .venv.
 """
 
 import collections
+import math
 import re
+import struct
 from typing import NamedTuple
 
 import names
@@ -272,6 +274,44 @@ def bodiless_fact(texts: list[str], types: names.Types) -> str | None:
             "Read a member with a byte offset and its type, as in `*(int *)((char *)p + 0x10)`.")
 
 
+def float_literal(raw: bytes) -> str | None:
+    """The shortest C literal for the 4 bytes of a float or the 8 bytes of a double, or None for an infinity or a
+    NaN, which have no literal."""
+    double = len(raw) == 8
+    value = struct.unpack("<d" if double else "<f", raw)[0]
+    if not math.isfinite(value):
+        return None
+    text = repr(value)
+    if not double:
+        for digits in range(1, 10):
+            shortest = float(f"{value:.{digits}g}")
+            if struct.pack("<f", shortest) == raw:
+                text = repr(shortest)
+                break
+    return text if double else text + "f"
+
+
+def constant_fact(function: x86.Function, namer: Namer) -> str | None:
+    """The line about the float and double constants that the code loads from read-only data and that have no
+    name here. The compiler puts a literal of the source there, so a global at that address breaks the match."""
+    literals = {}
+    for instruction in function.code:
+        width = 8 if "qword ptr" in instruction.operands else 4 if "dword ptr" in instruction.operands else 0
+        if not instruction.mnemonic.startswith("f") or instruction.mnemonic.startswith("fi") or not width:
+            continue  # fild, fiadd and the like read integers
+        for m in memory_operands(instruction.operands):
+            if m.base or m.index or namer.holder(m.disp) or not namer.image.is_read_only_data(m.disp):
+                continue
+            literal = float_literal(namer.image.read(m.disp, width))
+            if literal:
+                literals[m.disp] = literal
+    if not literals:
+        return None
+    shown = listed([f"{text} (at 0x{address:x})" for address, text in sorted(literals.items())])
+    return (f"The code loads the constants {shown} from read-only data. Write each one as that literal. "
+            "Do not declare a global for its address: that breaks the match.")
+
+
 def fact_lines(function: x86.Function, f: Function, flags: str, cluster: bool, namer: Namer, types: names.Types,
                decoder: x86.Decoder, sizes: dict[int, int]) -> list[str]:
     """The facts about a function: what its assembly hides from a reader who writes C."""
@@ -279,4 +319,5 @@ def fact_lines(function: x86.Function, f: Function, flags: str, cluster: bool, n
     lines += pointer_facts(function, namer)
     global_decls = [decl for kind, _, decl in namer.used.values() if kind == "global"]
     lines.append(bodiless_fact([f.proto, f.locals] + global_decls, types))
+    lines.append(constant_fact(function, namer))
     return [line for line in lines if line]
