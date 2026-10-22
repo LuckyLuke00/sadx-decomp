@@ -9,8 +9,10 @@ loop or back, drop a local that only holds a copy of another, change the signedn
 cast, turn an if block that ends a function, or ends it before its last return, into an early return
 or back, turn an if/else-if chain on one operand's constants into a switch or back, write a ternary
 `c ? a : b` as `!c ? b : a`, or call a function through an old-style cast with its last arguments
-dropped, for a call the original made with fewer arguments than the function takes. It leaves local
-names alone.
+dropped, for a call the original made with fewer arguments than the function takes. When the diff
+shows a local's stack slot (`[ebp - N]`), it also renames placeholder locals (`local_*`, Ghidra's
+`iVar1`): at /Od a scope's locals sit in the order of a hash of their names, so a new name moves a
+local to another slot. It leaves other local names alone.
 
 Every other try is the next of the best function's single changes, in a random order, so a fix one
 change away is always found; the others make one to three changes at random to the current one. It
@@ -48,7 +50,7 @@ FLIP = {"<": ">", ">": "<", "<=": ">=", ">=": "<=", "==": "==", "!=": "!="}
 NEGATE = {"<": ">=", ">=": "<", ">": "<=", "<=": ">", "==": "!=", "!=": "=="}
 STATEMENT = re.compile(r"^\t+(?!(?:return|break|continue|goto|case|default|if|else|for|while|do|switch)\b)"
                        r"[^\t{}/].*;$")
-DECLARATION = re.compile(r"^\t+(?:(?:const|static|struct|union|enum|unsigned|signed|volatile) )*\w+ \**\w+"
+DECLARATION = re.compile(r"^\t+(?:(?:const|static|struct|union|enum|unsigned|signed|volatile) )*\w+ \**(\w+)"
                          r"(?:\[[^\]]*\])*(?: = .*)?;$")
 ASSIGNED = re.compile(r"^\s*([^=]*?)\s*(?:[-+*/%&|^]|<<|>>)?=(?!=)")
 CALL = re.compile(r"\w\s*\(")
@@ -69,6 +71,12 @@ FOR_LINE = re.compile(r"^(\t*)for \(([^;]+); ([^;]+); ([^;]+)\)$")
 CALL_STATEMENT = re.compile(r"^(\t+)(\w+)\((.+)\);$")
 TERNARY_STATEMENT = re.compile(r"^(\t+(?:.*?[^=!<>]= |return ))(.+);$")
 WHILE_LINE = re.compile(r"^(\t*)while \((.*)\)$")
+# VC++ 2010 /Od puts a scope's locals from low to high address by a hash of the name (16 values), then by declaration
+# order. One name for each hash value, the lowest first, so that a rename can put a local in any place.
+SLOT_NAMES = ["local_8", "local_13c", "local_80", "local_4", "local_5c", "local_40", "local_cc", "local_10", "local_d0",
+              "local_4c", "local_9c", "local_a0", "local_dc", "local_128", "local_8c", "local_c"]
+PLACEHOLDER = re.compile(r"local_\w+|[a-z]*Var\d+")
+SLOT_DIFF = re.compile(r"^(?:0x[0-9a-f]+)?\s*: [-+].*\[ebp - ", re.M)  # a changed line of reccmp's diff with a local
 
 
 # The changes. Each takes the body's lines and a random source and returns new lines, or None when it finds no place.
@@ -409,6 +417,18 @@ def flip_ternary(body, rng):
     return body[:i] + [f"{line[:start]}{negate(condition)} ? {second} : {first}{line[end:]}"] + body[i + 1:]
 
 
+def rename_local(body, rng):
+    """A placeholder local takes the SLOT_NAMES name of another hash value, which moves it to another stack slot."""
+    found = dict.fromkeys(m[1] for line in body if "static " not in line for m in [DECLARATION.match(line)]
+                          if m and PLACEHOLDER.fullmatch(m[1]))
+    used = names("\n".join(body))
+    free = [name for name in SLOT_NAMES if name not in used]
+    if not found or not free:
+        return None
+    old, new = rng.choice(list(found)), rng.choice(free)
+    return [re.sub(rf"(?<!\.)(?<!->)\b{old}\b", new, line) for line in body]
+
+
 CHANGES = [swap_statements, flip_comparison, swap_operands, change_zero_test, change_increment, change_assignment,
            change_signedness, change_cast, invert_if, split_if, join_if, for_to_while, while_to_for, inline_copy,
            early_return, if_to_switch, drop_arguments, flip_ternary]
@@ -578,10 +598,10 @@ class EveryOption:
         return bool(self.path)
 
 
-def neighbors(body):
-    """Every body that one change makes from BODY."""
+def neighbors(body, changes):
+    """Every body that one of CHANGES makes from BODY."""
     found = []
-    for change in CHANGES:
+    for change in changes:
         options = EveryOption()
         while True:
             new = change(body, options)
@@ -592,11 +612,11 @@ def neighbors(body):
     return found
 
 
-def mutate(body, rng):
-    """BODY changed in one to three ways, or None when no change applies."""
+def mutate(body, rng, changes):
+    """BODY changed by one to three of CHANGES, or None when none applies."""
     changed = None
     for _ in range(rng.choice([1, 1, 1, 2, 2, 3])):
-        for change in rng.sample(CHANGES, len(CHANGES)):
+        for change in rng.sample(changes, len(changes)):
             new = change(changed or body, rng)
             if new is not None:
                 changed = new
@@ -644,10 +664,10 @@ def try_function(path, lines, span, function, crlf, address):
     return score(address)
 
 
-def fresh_change(body, seen, rng):
+def fresh_change(body, seen, rng, changes):
     """A change of BODY not tried before, or None when 50 draws find none."""
     for _ in range(50):
-        new = mutate(body, rng)
+        new = mutate(body, rng, changes)
         if new is not None and "\n".join(new) not in seen:
             seen.add("\n".join(new))
             return new
@@ -664,19 +684,19 @@ def unseen(bodies, seen):
     return None
 
 
-def search(build_and_score, start, body, tries, minutes, rng):
-    """Climb from BODY: (best Score, best body, tries made). Every other try is the next of the best body's
-    single changes, in a random order, so that a fix one change away is always found; the others change the
+def search(build_and_score, start, body, tries, minutes, rng, changes):
+    """Climb from BODY with CHANGES: (best Score, best body, tries made). Every other try is the next of the best
+    body's single changes, in a random order, so that a fix one change away is always found; the others change the
     current body at random. After 40 tries with no new best it goes back to the best."""
     best = current = (start, body)
     seen = {"\n".join(body)}
-    sweep = neighbors(body)
+    sweep = neighbors(body, changes)
     rng.shuffle(sweep)
     deadline = time.time() + minutes * 60 if minutes else None
     tried = stale = 0
     while tried < tries and not best[0].exact and (deadline is None or time.time() < deadline):
         new = unseen(sweep, seen) if tried % 2 == 0 else None
-        new = new or fresh_change(current[1], seen, rng) or unseen(sweep, seen)
+        new = new or fresh_change(current[1], seen, rng, changes) or unseen(sweep, seen)
         if new is None:
             print("no new change to try")
             break
@@ -686,7 +706,7 @@ def search(build_and_score, start, body, tries, minutes, rng):
         if result is not None and rank(result[0]) > rank(best[0]):
             print(f"try {tried}: {describe(result[0])}", flush=True)
             best = current = (result[0], new)
-            sweep = neighbors(new)
+            sweep = neighbors(new, changes)
             rng.shuffle(sweep)
             stale = 0
         elif result is not None and rank(result[0]) >= rank(current[0]):
@@ -721,7 +741,8 @@ def permute(path, address, tries, minutes, seed):
         if llm.names_only(start[1]):
             print("Only the names of globals or functions differ: fix the declarations, a new shape cannot help.")
             return 1
-        best, best_body, tried = search(build_and_score, start[0], body, tries, minutes, random.Random(seed))
+        changes = CHANGES + [rename_local] if SLOT_DIFF.search(start[1]) else CHANGES
+        best, best_body, tried = search(build_and_score, start[0], body, tries, minutes, random.Random(seed), changes)
         OUT.mkdir(parents=True, exist_ok=True)
         (OUT / f"{address:08x}.c").write_text("\n".join(head + best_body + ["}"]) + "\n", encoding="utf-8")
         if best.percent > start[0].percent:
