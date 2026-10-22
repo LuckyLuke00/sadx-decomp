@@ -2914,6 +2914,14 @@
    "library": false
   },
   {
+   "address": "0x00435b60",
+   "name": "njGenerateFogTable3",
+   "accuracy": 0.03125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00435fd0",
    "name": "njCnkDrawMotion",
    "accuracy": 0.07142857142857142,
@@ -17316,9 +17324,9 @@
   {
    "address": "0x00573100",
    "name": "FUN_00573100",
-   "accuracy": 0.21052631578947367,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -18362,11 +18370,19 @@
    "library": false
   },
   {
+   "address": "0x00598df0",
+   "name": "InitFadeIn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00598e20",
    "name": "FUN_00598e20",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -18380,15 +18396,23 @@
   {
    "address": "0x00598fc0",
    "name": "FUN_00598fc0",
-   "accuracy": 0.42105263157894735,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00598ff0",
    "name": "InitFadeOut",
    "accuracy": 0.42105263157894735,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00599030",
+   "name": "FadeOut",
+   "accuracy": 0.15151515151515152,
    "effective": false,
    "stub": true,
    "library": false
@@ -20306,6 +20330,14 @@
    "library": false
   },
   {
+   "address": "0x005b4eb0",
+   "name": "ThunderB",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b5280",
    "name": "ef_barrier_DrawModel",
    "accuracy": 0.19047619047619047,
@@ -21591,6 +21623,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005daab0",
+   "name": "GetWindStatus",
+   "accuracy": 0.10989010989010989,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -23365,6 +23405,14 @@
    "address": "0x006103c0",
    "name": "SphericalExplosionUV",
    "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00610480",
+   "name": "SphericalExplosionPos",
+   "accuracy": 0.08421052631578947,
    "effective": false,
    "stub": true,
    "library": false
@@ -27423,6 +27471,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c2050",
+   "name": "CreateCrushLight",
+   "accuracy": 0.06956521739130435,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -34499,5 +34555,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ac0792f8161e788afecc8315ff6769fa096c68447c202c2078109d108d268f70"
+ "inputs_sha256": "c6a914e021a124f5cc09c73c106577e6daaee92de87459f4e9cfeb21f7ac74a7"
 }

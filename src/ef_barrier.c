@@ -17,6 +17,11 @@ void FUN_005b4db0(struct obj *obj, struct csts *cstsp)
 {
 }
 
+// STUB: SADX 0x005b4eb0
+void ThunderB(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005b5280
 void ef_barrier_DrawModel(struct NJS_MODEL *mdl)
 {
@@ -79,6 +84,11 @@ void MutekiDisp(struct task *tp)
 	FUN_0067d2d0(0, local_8->scl.x, local_8->scl.x, local_8->scl.x);
 	ef_barrier_DrawModel(&DAT_05a79e44);
 	njPopMatrix(1);
+}
+
+// STUB: SADX 0x005b56b0
+void Muteki(struct task *tp)
+{
 }
 
 // STUB: SADX 0x005b5830
