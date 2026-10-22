@@ -25,6 +25,12 @@ include("${CMAKE_BINARY_DIR}/codegen-groups.cmake")
 # keeps the relocations even with ASLR off: they tell reccmp which numbers in
 # our code are addresses.
 file(GLOB_RECURSE GAME_SOURCES CONFIGURE_DEPENDS src/*.c src/*.cpp)
+# The game's objects sit in its exe in link order, and the linker keeps the first copy of a function that
+# several objects hold, such as a header function. codegen-groups.cmake lists the files with FUNCTIONs by
+# lowest address; they link first in that order, the rest follow in path order.
+list(TRANSFORM GAME_LINK_ORDER PREPEND "${CMAKE_SOURCE_DIR}/")
+list(REMOVE_ITEM GAME_SOURCES ${GAME_LINK_ORDER})
+list(PREPEND GAME_SOURCES ${GAME_LINK_ORDER})
 add_executable(game ${GAME_SOURCES})
 target_link_options(game PRIVATE /DEBUG /OPT:NOREF /OPT:NOICF /FIXED:NO)
 # check.py writes library.rsp: an /INCLUDE for every function in src/library.csv,
