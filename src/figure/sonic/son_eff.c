@@ -1,4 +1,6 @@
 #include "decls.h"
+int FUN_005b05b0(struct taskwk *param_1);
+void FUN_005b0e20(struct task *param_1);
 void njScaleV(float *, struct NJS_POINT3 *);
 void FUN_005ae5e0(struct taskwk *param_1, void *param_2);
 
@@ -62,6 +64,123 @@ void *FUN_005af750(void *param_1)
 
 // STUB: SADX 0x005af7b0
 void AwaDraw(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005af870
+void EffectSpin(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	EffectSpinInit(local_8);
+	tp->exec = EffectSpinExecute;
+	tp->disp = EffectSpinDisplay;
+	EffectSpinDisplay(tp);
+}
+
+// FUNCTION: SADX 0x005af8b0
+void EffectSpinDS(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	EffectSpinDSInit(local_8);
+	tp->exec = EffectSpinDSExecute;
+	tp->disp = EffectSpinDSDisplay;
+	EffectSpinDSDisplay(tp);
+}
+
+// FUNCTION: SADX 0x005af8f0
+void EffectStartHoming(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	EffectStartHomingInit(local_8);
+	tp->exec = EffectStartHomingExecute;
+	tp->disp = EffectStartHomingDisplay;
+	EffectStartHomingDisplay(tp);
+}
+
+// STUB: SADX 0x005b0120
+void EffectSpinExecute(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b0300
+void EffectSpinDSExecute(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b04f0
+void EffectStartHomingExecute(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005b0560
+void EffectDash(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (FUN_005b05b0(local_8) == 1)
+	{
+		tp->exec = EffectDashExecute;
+		tp->disp = EffectDashDisplay;
+		tp->dest = FUN_005b0e20;
+	}
+	else
+	{
+		FreeTask(tp);
+	}
+}
+
+// STUB: SADX 0x005b0d80
+void FUN_005b0d80(struct NJS_POINT3 *param_1, int *param_2)
+{
+}
+
+// STUB: SADX 0x005b0e20
+void FUN_005b0e20(struct task *param_1)
+{
+}
+
+// STUB: SADX 0x005b1340
+void EffectDrawRibbon(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005b1820
+void EffectDestructRibbon(struct task *tp)
+{
+	struct motionwk *local_8;
+
+	local_8 = tp->mwp;
+	if (local_8->work.ptr != 0)
+	{
+		Free(local_8->work.ptr);
+		local_8->work.ptr = 0;
+	}
+	if (*(int *)&local_8->spd.x != 0)
+	{
+		Free(*(void **)&local_8->spd.x);
+		*(void **)&local_8->spd.x = 0;
+	}
+	if (*(int *)&local_8->spd.y != 0)
+	{
+		Free(*(void **)&local_8->spd.y);
+		*(void **)&local_8->spd.x = 0;
+	}
+}
+
+// STUB: SADX 0x005b18a0
+void EffectExecuteRibbon(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b1930
+void EffectFadeRibbon(struct task *tp)
 {
 }
 

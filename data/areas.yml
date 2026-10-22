@@ -41,9 +41,14 @@ tree:
   - ['^src/npc_sub\.c$', player]
   - ['^src/SeqStageTable\.c$', story]
   - ['^src/setstagetable\.c$', objects]
+  - ['^src/boss00_chaos0/', chaos_0]
+  - ['^src/boss_chaos2/', chaos_2]
   - ['^src/boss_chaos4/', chaos_4]
+  - ['^src/boss_chaos6/', chaos_6]
+  - ['^src/boss_chaos7/', perfect_chaos]
   - ['^src/boss_e101/', e101_beta]
   - ['^src/boss_e101_r/', e101_mk2]
+  - ['^src/bossegm1/', egg_hornet]
   - ['^src/bossegm2/', egg_walker]
   - ['^src/bossegm3/', egg_viper]
   - ['^src/bossrobo/', zero]
@@ -56,6 +61,7 @@ tree:
   - ['^src/stg07_ruin/', lost_world]
   - ['^src/stg08_icecap/', ice_cap]
   - ['^src/stg09_casino/', casinopolis]
+  - ['^src/stg10_finalegg/', final_egg]
   - ['^src/stg12_hotshelter/', hot_shelter]
   - ['^src/[^/]+$', engine]  # the other files at the top of src/
 

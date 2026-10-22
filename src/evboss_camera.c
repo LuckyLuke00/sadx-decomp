@@ -1,4 +1,15 @@
 #include "decls.h"
+struct _camcontwk;
+
+// STUB: SADX 0x0060d940
+void EventBossCameraSet(struct task *bctp)
+{
+}
+
+// STUB: SADX 0x0060e020
+void FUN_0060e020(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3)
+{
+}
 
 // STUB: SADX 0x0060e1d0
 float FUN_0060e1d0(float *param_1, float *param_2)

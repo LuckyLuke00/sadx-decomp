@@ -85,6 +85,7 @@ struct BUBBLE_DATA;
 struct BUBBLE_LIST;
 struct BUBBLE_TABLE;
 struct ButtonInfo;
+struct C7ACAM_PARAM;
 struct c_colli_hit_info;
 struct CCL_INFO;
 struct chao_colliwk;
@@ -92,20 +93,27 @@ struct CHAO_GLOBAL;
 struct CHAO_ID;
 struct CHAO_PARAM_GC;
 struct chao_save_info;
+struct CHAOS_OBJPVTBL;
 struct chaoswk;
 struct CharMdlWk;
+struct cloud_scroll;
+struct cloudtbl;
 struct CMoviePolyData;
 struct CMoviePolyTag;
 struct CNK_VN_VERTEX;
 struct cnkobj;
 struct colliwk;
+struct cpathtag;
+struct cpathtbl;
 struct CRUSHLIGHT_DATA;
 struct CRUSHLIGHT_WK;
 struct csts;
 struct DAT_0044e380_0;
+struct DAT_060bbe38;
 struct DDlgType;
 struct DialogPrmType;
 struct DlgSndPrmType;
+struct eggmoble_effect;
 struct enemywk;
 struct EPATHTAG;
 struct epathtbl;
@@ -141,7 +149,9 @@ struct LE_PALIGHT_ENV;
 struct LightInfo;
 struct MDHANDLE;
 struct MiMsg;
+struct MJOIN_VERTEX;
 struct ModeSelPrmType;
+struct MORPHWK;
 struct MOTION_CTRL;
 struct MOTION_TABLE;
 struct motionwk;
@@ -159,6 +169,7 @@ union NJS_COLOR;
 struct NJS_LIGHT;
 struct NJS_MATERIAL;
 struct NJS_MESHSET;
+struct NJS_MKEY_F;
 struct NJS_MKEY_P;
 struct NJS_MODEL;
 struct NJS_MOTION;
@@ -181,6 +192,7 @@ struct obj;
 struct OBJ_CONDITION;
 struct OBJ_EDITENTRY;
 struct OBJ_SLEEPCON;
+struct OBJ_UNIT;
 struct PanelPrmType;
 struct particle_entry;
 struct particle_info;
@@ -195,6 +207,7 @@ struct PL_JOIN_VERTEX;
 struct PL_LANDPOSI;
 struct player_parameter;
 struct playerwk;
+struct RAINEFF;
 struct SAlEntAnimArray;
 struct SAlgKinderOrthoQuad;
 struct SAlMsgFontStr;
@@ -213,6 +226,7 @@ struct sp_info;
 struct sp_link;
 struct sp_task;
 struct sParabola;
+struct sSonicCtrl;
 struct STAFF_DATA;
 struct STAFFROLL_DATA;
 struct strCamCartData;
@@ -226,6 +240,7 @@ struct TvSettingWk;
 struct u4s;
 union UNION_STATUS;
 struct VolumeInfo;
+struct WIREMODEL;
 struct xssunit;
 struct xyyzzxsdwstr;
 
@@ -1546,6 +1561,20 @@ static_assert(offsetof(ButtonInfo, PosY) == 0x4, "ButtonInfo::PosY");
 static_assert(offsetof(ButtonInfo, Windth) == 0x8, "ButtonInfo::Windth");
 static_assert(offsetof(ButtonInfo, Height) == 0xc, "ButtonInfo::Height");
 
+struct C7ACAM_PARAM {
+    struct NJS_POINT3 campos_src;
+    struct NJS_POINT3 campos_dst;
+    float tgtposofs_y_src;
+    float tgtposofs_y_dst;
+    float nframe;
+};
+static_assert(sizeof(C7ACAM_PARAM) == 0x24, "sizeof C7ACAM_PARAM");
+static_assert(offsetof(C7ACAM_PARAM, campos_src) == 0x0, "C7ACAM_PARAM::campos_src");
+static_assert(offsetof(C7ACAM_PARAM, campos_dst) == 0xc, "C7ACAM_PARAM::campos_dst");
+static_assert(offsetof(C7ACAM_PARAM, tgtposofs_y_src) == 0x18, "C7ACAM_PARAM::tgtposofs_y_src");
+static_assert(offsetof(C7ACAM_PARAM, tgtposofs_y_dst) == 0x1c, "C7ACAM_PARAM::tgtposofs_y_dst");
+static_assert(offsetof(C7ACAM_PARAM, nframe) == 0x20, "C7ACAM_PARAM::nframe");
+
 struct CCL_INFO {
     unsigned char kind;
     unsigned char form;
@@ -1575,6 +1604,16 @@ static_assert(offsetof(CCL_INFO, d) == 0x20, "CCL_INFO::d");
 static_assert(offsetof(CCL_INFO, angx) == 0x24, "CCL_INFO::angx");
 static_assert(offsetof(CCL_INFO, angy) == 0x28, "CCL_INFO::angy");
 static_assert(offsetof(CCL_INFO, angz) == 0x2c, "CCL_INFO::angz");
+
+struct CHAOS_OBJPVTBL {
+    signed char objno;
+    signed char vecno;
+    struct NJS_POINT3 ofs_pos;
+};
+static_assert(sizeof(CHAOS_OBJPVTBL) == 0x10, "sizeof CHAOS_OBJPVTBL");
+static_assert(offsetof(CHAOS_OBJPVTBL, objno) == 0x0, "CHAOS_OBJPVTBL::objno");
+static_assert(offsetof(CHAOS_OBJPVTBL, vecno) == 0x1, "CHAOS_OBJPVTBL::vecno");
+static_assert(offsetof(CHAOS_OBJPVTBL, ofs_pos) == 0x4, "CHAOS_OBJPVTBL::ofs_pos");
 
 struct CHAO_GLOBAL {
     long CalcBuyo;
@@ -2192,6 +2231,22 @@ static_assert(sizeof(NJS_ACTION) == 0x8, "sizeof NJS_ACTION");
 static_assert(offsetof(NJS_ACTION, object) == 0x0, "NJS_ACTION::object");
 static_assert(offsetof(NJS_ACTION, motion) == 0x4, "NJS_ACTION::motion");
 
+struct EVENT_ACTION_LIST {
+    unsigned char mode;
+    unsigned char linkframe;
+    struct NJS_ACTION action;
+    struct NJS_TEXLIST *texlist;
+    struct EVENT_ACTION_LIST *next;
+    float speed;
+};
+static_assert(sizeof(EVENT_ACTION_LIST) == 0x18, "sizeof EVENT_ACTION_LIST");
+static_assert(offsetof(EVENT_ACTION_LIST, mode) == 0x0, "EVENT_ACTION_LIST::mode");
+static_assert(offsetof(EVENT_ACTION_LIST, linkframe) == 0x1, "EVENT_ACTION_LIST::linkframe");
+static_assert(offsetof(EVENT_ACTION_LIST, action) == 0x4, "EVENT_ACTION_LIST::action");
+static_assert(offsetof(EVENT_ACTION_LIST, texlist) == 0xc, "EVENT_ACTION_LIST::texlist");
+static_assert(offsetof(EVENT_ACTION_LIST, next) == 0x10, "EVENT_ACTION_LIST::next");
+static_assert(offsetof(EVENT_ACTION_LIST, speed) == 0x14, "EVENT_ACTION_LIST::speed");
+
 struct EVTABLE2 {
     void (*func)(int);
     struct TEX_PVMTABLE *pvmtable;
@@ -2512,6 +2567,18 @@ static_assert(offsetof(LightInfo, frang) == 0x3c, "LightInfo::frang");
 static_assert(offsetof(LightInfo, iang) == 0x40, "LightInfo::iang");
 static_assert(offsetof(LightInfo, oang) == 0x44, "LightInfo::oang");
 
+struct MJOIN_VERTEX {
+    short numVertex;
+    signed char srcdepth;
+    signed char dstdepth;
+    short *pnum;
+};
+static_assert(sizeof(MJOIN_VERTEX) == 0x8, "sizeof MJOIN_VERTEX");
+static_assert(offsetof(MJOIN_VERTEX, numVertex) == 0x0, "MJOIN_VERTEX::numVertex");
+static_assert(offsetof(MJOIN_VERTEX, srcdepth) == 0x2, "MJOIN_VERTEX::srcdepth");
+static_assert(offsetof(MJOIN_VERTEX, dstdepth) == 0x3, "MJOIN_VERTEX::dstdepth");
+static_assert(offsetof(MJOIN_VERTEX, pnum) == 0x4, "MJOIN_VERTEX::pnum");
+
 struct MOTION_TABLE {
     struct NJS_MOTION *pMotion;
     short mode;
@@ -2679,6 +2746,14 @@ static_assert(offsetof(NJS_MESHSET, normals) == 0xc, "NJS_MESHSET::normals");
 static_assert(offsetof(NJS_MESHSET, vertcolor) == 0x10, "NJS_MESHSET::vertcolor");
 static_assert(offsetof(NJS_MESHSET, vertuv) == 0x14, "NJS_MESHSET::vertuv");
 static_assert(offsetof(NJS_MESHSET, ext) == 0x18, "NJS_MESHSET::ext");
+
+struct NJS_MKEY_F {
+    unsigned long keyframe;
+    float key[3];
+};
+static_assert(sizeof(NJS_MKEY_F) == 0x10, "sizeof NJS_MKEY_F");
+static_assert(offsetof(NJS_MKEY_F, keyframe) == 0x0, "NJS_MKEY_F::keyframe");
+static_assert(offsetof(NJS_MKEY_F, key) == 0x4, "NJS_MKEY_F::key");
 
 struct NJS_MKEY_P {
     unsigned long keyframe;
@@ -2886,6 +2961,24 @@ static_assert(offsetof(PL_ACTION, next) == 0x6, "PL_ACTION::next");
 static_assert(offsetof(PL_ACTION, frame) == 0x8, "PL_ACTION::frame");
 static_assert(offsetof(PL_ACTION, racio) == 0xc, "PL_ACTION::racio");
 
+struct RAINEFF {
+    int num;
+    float len_base;
+    float len_ofs;
+    float spd_base;
+    float spd_ofs;
+    float ang_base[3];
+    float ang_ofs[3];
+};
+static_assert(sizeof(RAINEFF) == 0x2c, "sizeof RAINEFF");
+static_assert(offsetof(RAINEFF, num) == 0x0, "RAINEFF::num");
+static_assert(offsetof(RAINEFF, len_base) == 0x4, "RAINEFF::len_base");
+static_assert(offsetof(RAINEFF, len_ofs) == 0x8, "RAINEFF::len_ofs");
+static_assert(offsetof(RAINEFF, spd_base) == 0xc, "RAINEFF::spd_base");
+static_assert(offsetof(RAINEFF, spd_ofs) == 0x10, "RAINEFF::spd_ofs");
+static_assert(offsetof(RAINEFF, ang_base) == 0x14, "RAINEFF::ang_base");
+static_assert(offsetof(RAINEFF, ang_ofs) == 0x20, "RAINEFF::ang_ofs");
+
 struct SAlEntAnimArray {
     const struct NJS_TEXANIM *mpAnim;
     long mLen;
@@ -2995,6 +3088,20 @@ static_assert(offsetof(VolumeInfo, nearVolOfs) == 0x0, "VolumeInfo::nearVolOfs")
 static_assert(offsetof(VolumeInfo, farVolOfs) == 0x2, "VolumeInfo::farVolOfs");
 static_assert(offsetof(VolumeInfo, nearDist) == 0x4, "VolumeInfo::nearDist");
 static_assert(offsetof(VolumeInfo, farDist) == 0x8, "VolumeInfo::farDist");
+
+struct WIREMODEL {
+    struct NJS_POINT3 *pos;
+    union NJS_COLOR *color;
+    short *index;
+    short nbLine;
+    struct NJS_POINT3COL p3col;
+};
+static_assert(sizeof(WIREMODEL) == 0x20, "sizeof WIREMODEL");
+static_assert(offsetof(WIREMODEL, pos) == 0x0, "WIREMODEL::pos");
+static_assert(offsetof(WIREMODEL, color) == 0x4, "WIREMODEL::color");
+static_assert(offsetof(WIREMODEL, index) == 0x8, "WIREMODEL::index");
+static_assert(offsetof(WIREMODEL, nbLine) == 0xc, "WIREMODEL::nbLine");
+static_assert(offsetof(WIREMODEL, p3col) == 0x10, "WIREMODEL::p3col");
 
 struct OBJ_EDITENTRY {
     unsigned short usID;
@@ -3441,6 +3548,22 @@ static_assert(offsetof(chaoswk, morph_wp) == 0xb4, "chaoswk::morph_wp");
 static_assert(offsetof(chaoswk, param) == 0xb8, "chaoswk::param");
 static_assert(offsetof(chaoswk, old_texaddr) == 0xbc, "chaoswk::old_texaddr");
 
+struct cloud_scroll {
+    struct NJS_POINT3 pos;
+    struct NJS_POINT3 disp_pos;
+    struct NJS_POINT3 len;
+    struct cloudtbl *tbl;
+    long numtbl;
+    float alpha;
+};
+static_assert(sizeof(cloud_scroll) == 0x30, "sizeof cloud_scroll");
+static_assert(offsetof(cloud_scroll, pos) == 0x0, "cloud_scroll::pos");
+static_assert(offsetof(cloud_scroll, disp_pos) == 0xc, "cloud_scroll::disp_pos");
+static_assert(offsetof(cloud_scroll, len) == 0x18, "cloud_scroll::len");
+static_assert(offsetof(cloud_scroll, tbl) == 0x24, "cloud_scroll::tbl");
+static_assert(offsetof(cloud_scroll, numtbl) == 0x28, "cloud_scroll::numtbl");
+static_assert(offsetof(cloud_scroll, alpha) == 0x2c, "cloud_scroll::alpha");
+
 struct cnkobj {
     unsigned long evalflags;
     struct NJS_CNK_MODEL *model;
@@ -3487,6 +3610,16 @@ static_assert(offsetof(colliwk, my_num) == 0xa0, "colliwk::my_num");
 static_assert(offsetof(colliwk, hit_num) == 0xa2, "colliwk::hit_num");
 static_assert(offsetof(colliwk, hit_cwp) == 0xa4, "colliwk::hit_cwp");
 
+struct cpathtag {
+    unsigned char type;
+    float points;
+    struct cpathtbl *tblhead;
+};
+static_assert(sizeof(cpathtag) == 0xc, "sizeof cpathtag");
+static_assert(offsetof(cpathtag, type) == 0x0, "cpathtag::type");
+static_assert(offsetof(cpathtag, points) == 0x4, "cpathtag::points");
+static_assert(offsetof(cpathtag, tblhead) == 0x8, "cpathtag::tblhead");
+
 struct csts {
     float radius;
     struct NJS_POINT3 pos;
@@ -3522,6 +3655,16 @@ static_assert(offsetof(csts, onpoly) == 0x54, "csts::onpoly");
 static_assert(offsetof(csts, pshbk) == 0x60, "csts::pshbk");
 static_assert(offsetof(csts, anaspdh) == 0x6c, "csts::anaspdh");
 static_assert(offsetof(csts, anaspdv) == 0x78, "csts::anaspdv");
+
+struct eggmoble_effect {
+    struct particle_info *effect;
+    struct NJS_POINT3 pos;
+    struct NJS_POINT3 vec;
+};
+static_assert(sizeof(eggmoble_effect) == 0x1c, "sizeof eggmoble_effect");
+static_assert(offsetof(eggmoble_effect, effect) == 0x0, "eggmoble_effect::effect");
+static_assert(offsetof(eggmoble_effect, pos) == 0x4, "eggmoble_effect::pos");
+static_assert(offsetof(eggmoble_effect, vec) == 0x10, "eggmoble_effect::vec");
 
 struct enemywk {
     union {
@@ -4143,6 +4286,28 @@ struct sMRacePath {
 static_assert(sizeof(sMRacePath) == 0x10, "sizeof sMRacePath");
 static_assert(offsetof(sMRacePath, flag) == 0x0, "sMRacePath::flag");
 static_assert(offsetof(sMRacePath, pos) == 0x4, "sMRacePath::pos");
+
+struct sSonicCtrl {
+    struct NJS_POINT3 now_path_pos;
+    struct NJS_POINT3 tgt_path_pos;
+    struct NJS_POINT3 vec_snc_tgt;
+    float dist_snc_tgt;
+    long path_flag;
+    long path_flag_bak;
+    long last_ang;
+    float pl_last_spd;
+    long jump_cnt;
+};
+static_assert(sizeof(sSonicCtrl) == 0x3c, "sizeof sSonicCtrl");
+static_assert(offsetof(sSonicCtrl, now_path_pos) == 0x0, "sSonicCtrl::now_path_pos");
+static_assert(offsetof(sSonicCtrl, tgt_path_pos) == 0xc, "sSonicCtrl::tgt_path_pos");
+static_assert(offsetof(sSonicCtrl, vec_snc_tgt) == 0x18, "sSonicCtrl::vec_snc_tgt");
+static_assert(offsetof(sSonicCtrl, dist_snc_tgt) == 0x24, "sSonicCtrl::dist_snc_tgt");
+static_assert(offsetof(sSonicCtrl, path_flag) == 0x28, "sSonicCtrl::path_flag");
+static_assert(offsetof(sSonicCtrl, path_flag_bak) == 0x2c, "sSonicCtrl::path_flag_bak");
+static_assert(offsetof(sSonicCtrl, last_ang) == 0x30, "sSonicCtrl::last_ang");
+static_assert(offsetof(sSonicCtrl, pl_last_spd) == 0x34, "sSonicCtrl::pl_last_spd");
+static_assert(offsetof(sSonicCtrl, jump_cnt) == 0x38, "sSonicCtrl::jump_cnt");
 
 struct sp_info {
     struct NJS_TEXLIST *texlist;
