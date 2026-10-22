@@ -149,6 +149,7 @@ struct LE_PALIGHT_ENV;
 struct LightInfo;
 struct MDHANDLE;
 struct MiMsg;
+struct MirrorPlane;
 struct MJOIN_VERTEX;
 struct ModeSelPrmType;
 struct MORPHWK;
@@ -234,6 +235,8 @@ struct task;
 struct TaskCommunication;
 struct TaskInfo;
 struct taskwk;
+struct Tex_anim_land_work;
+struct Tex_anim_obj_work;
 struct TEX_PVMTABLE;
 struct thread;
 struct TvSettingWk;
@@ -2665,6 +2668,16 @@ static_assert(offsetof(MSGC, texlist) == 0x30, "MSGC::texlist");
 static_assert(offsetof(MSGC, texname) == 0x38, "MSGC::texname");
 static_assert(offsetof(MSGC, msgc_flag) == 0x44, "MSGC::msgc_flag");
 
+struct MirrorPlane {
+    struct NJS_POINT3 pos[2];
+    struct NJS_POINT3 normal;
+    long neibor;
+};
+static_assert(sizeof(MirrorPlane) == 0x28, "sizeof MirrorPlane");
+static_assert(offsetof(MirrorPlane, pos) == 0x0, "MirrorPlane::pos");
+static_assert(offsetof(MirrorPlane, normal) == 0x18, "MirrorPlane::normal");
+static_assert(offsetof(MirrorPlane, neibor) == 0x24, "MirrorPlane::neibor");
+
 struct NJS_CACTION {
     struct NJS_CAMERA *camera;
     struct NJS_MOTION *motion;
@@ -3076,6 +3089,22 @@ static_assert(offsetof(TaskInfo, init_p) == 0x8, "TaskInfo::init_p");
 static_assert(offsetof(TaskInfo, exec_p) == 0xc, "TaskInfo::exec_p");
 static_assert(offsetof(TaskInfo, disp_p) == 0x10, "TaskInfo::disp_p");
 static_assert(offsetof(TaskInfo, dest_p) == 0x14, "TaskInfo::dest_p");
+
+struct Tex_anim_land_work {
+    struct Tex_anim_obj_work *obj_works;
+    unsigned char obj_max;
+    unsigned char tex_max;
+    unsigned short first;
+    unsigned short second;
+    unsigned short frame_spd;
+};
+static_assert(sizeof(Tex_anim_land_work) == 0xc, "sizeof Tex_anim_land_work");
+static_assert(offsetof(Tex_anim_land_work, obj_works) == 0x0, "Tex_anim_land_work::obj_works");
+static_assert(offsetof(Tex_anim_land_work, obj_max) == 0x4, "Tex_anim_land_work::obj_max");
+static_assert(offsetof(Tex_anim_land_work, tex_max) == 0x5, "Tex_anim_land_work::tex_max");
+static_assert(offsetof(Tex_anim_land_work, first) == 0x6, "Tex_anim_land_work::first");
+static_assert(offsetof(Tex_anim_land_work, second) == 0x8, "Tex_anim_land_work::second");
+static_assert(offsetof(Tex_anim_land_work, frame_spd) == 0xa, "Tex_anim_land_work::frame_spd");
 
 struct VolumeInfo {
     short nearVolOfs;
