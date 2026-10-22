@@ -1,4 +1,6 @@
 #include "decls.h"
+extern int DAT_05b42c34;
+extern int DAT_05b42c38;
 extern int DAT_05b3ebbc;
 extern void MSG_ThreadMainMessages(char **message);
 extern struct thread *TH_Create(void *func, void *pParam, unsigned int stack_size);
@@ -137,6 +139,58 @@ void MSG_Disp(struct MSGC *msgc)
 // STUB: SADX 0x004c22f0
 void MSG_Cls(struct MSGC *msgc)
 {
+}
+
+// FUNCTION: SADX 0x004c24e0
+void *SOCMSG_Font(int c)
+{
+	int local_ci;
+	int local_10m;
+	int local_14;
+	int local_8g;
+
+	local_ci = (int)(*(unsigned char *)((char *)(0x14 * DAT_05b3ebbc) + 0x25d5988) & 0xff);
+	local_8g = (int)(*(unsigned char *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5989) & 0xff);
+	if (c < 0x100)
+	{
+		if (c > local_8g)
+		{
+			c -= local_8g - local_ci;
+		}
+		c -= 0x20;
+		if (c < 0)
+		{
+			c = 0;
+		}
+		if (*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) != 0)
+		{
+			c = (int)*(unsigned char *)(*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) + c) - 0x20;
+		}
+		return (void *)(DAT_05b42c34 + 0x9000 + c * 0x480);
+	}
+	else
+	{
+		if (*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5984) != 0)
+		{
+			local_10m = ((c >> 8) & 0xff);
+			local_14 = (int)(c & 0xff);
+			local_10m = local_10m - 0x81;
+			if (local_14 <= 0x7e)
+			{
+				local_14 -= 0x40;
+			}
+			else
+			{
+				local_14 = local_14 - 0x41;
+			}
+			c = local_10m * 0xbc + local_14;
+			return (void *)(c * 0x480 + DAT_05b42c38);
+		}
+		else
+		{
+			return (void *)DAT_05b42c34;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004c2610

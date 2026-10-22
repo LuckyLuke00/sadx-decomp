@@ -3,6 +3,13 @@ static void title_menu_disp(struct task *tp);
 static void title_menu_exec(struct task *tp);
 static void DisplayTitleNew(float basez);
 
+// FUNCTION: SADX 0x005eb290
+void DrawOptionMenuSubDlgSub(struct DDlgType *dlgp)
+{
+	___njSetTexture(&texlist_ava_help_options);
+	ghSetPvrTexMaterial(0xffffffff);
+}
+
 // FUNCTION: SADX 0x005ee430
 struct task *SetAdvaOptionMenuTask(struct ModeSelPrmType *prmp)
 {

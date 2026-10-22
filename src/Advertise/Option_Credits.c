@@ -38,3 +38,8 @@ void FUN_005e8ef0(struct task *param_1)
 {
 	FUN_005e8f10(*(float *)((char *)param_1 + 0x10));
 }
+
+// STUB: SADX 0x005e9290
+void FreeAdvaOpCreditsTask()
+{
+}

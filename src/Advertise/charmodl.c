@@ -29,6 +29,11 @@ struct task *FUN_0061de70(void)
 	return local_8g;
 }
 
+// STUB: SADX 0x0061df90
+void InitCharMdls(struct CharMdlWk *wkp)
+{
+}
+
 // STUB: SADX 0x0061e0d0
 void FUN_0061e0d0(int param_1)
 {

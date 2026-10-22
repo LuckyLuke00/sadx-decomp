@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_004ba980(void);
 enum AvaCharEnum AvaGetlastPlayer();
 extern void *DAT_05b42528;
 void *_SOCMalloc(unsigned int param_1, const char *param_2, int param_3);
@@ -258,4 +259,35 @@ void FUN_004ba980(void)
 		DAT_05b42528 = _SOCMalloc(0x18, "..\\..\\src\\Advertise\\filesel.cpp", 3481);
 		*(int *)((char *)DAT_05b42528 + 0x14) = 0;
 	}
+}
+
+// STUB: SADX 0x004ba9c0
+void FUN_004ba9c0(const char *param_1, void *param_2)
+{
+}
+
+// FUNCTION: SADX 0x004baaa0
+void ReleaseLineList()
+{
+	struct _LIST_DATA *local_cg;
+	struct _LIST_DATA *local_8g;
+
+	if (!DAT_05b42528)
+	{
+		return;
+	}
+	while (*(struct _LIST_DATA **)((char *)DAT_05b42528 + 0x14))
+	{
+		local_cg = (struct _LIST_DATA *)DAT_05b42528;
+		while (*(struct _LIST_DATA **)((char *)local_cg + 0x14))
+		{
+			local_8g = local_cg;
+			local_cg = *(struct _LIST_DATA **)((char *)local_cg + 0x14);
+		}
+		_SOCFree(*(void **)((char *)local_cg + 0), "..\\..\\src\\Advertise\\filesel.cpp", 0xe4b);
+		_SOCFree(local_cg, "..\\..\\src\\Advertise\\filesel.cpp", 0xe4c);
+		*(struct _LIST_DATA **)((char *)local_8g + 0x14) = 0;
+	}
+	_SOCFree(DAT_05b42528, "..\\..\\src\\Advertise\\filesel.cpp", 0xe4f);
+	DAT_05b42528 = 0;
 }

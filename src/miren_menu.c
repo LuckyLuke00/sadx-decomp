@@ -11,6 +11,16 @@ void initMenu(struct task *task_p, const struct MenuParam *param_p)
 {
 }
 
+// STUB: SADX 0x008d58d0
+void execMenu(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x008d5a20
+void dispMenu(struct task *task_p)
+{
+}
+
 // FUNCTION: SADX 0x008d5b20
 void destMenu(struct task *task_p)
 {
