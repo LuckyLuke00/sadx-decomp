@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_006184e0(int param_1, char *param_2);
 void FUN_0061a500(struct taskwk *param_1);
 void FUN_0061a820(struct Flicky *param_1, struct taskwk *param_2);
 void FUN_0061ea50(struct NJS_POINT3 *param_1, unsigned short param_2);
@@ -114,6 +115,11 @@ void FlickyRako_New(struct task *tp)
 	Flicky_New(tp, 2);
 }
 
+// STUB: SADX 0x00617d10
+void Flicky_New(struct task *tp, int id)
+{
+}
+
 // STUB: SADX 0x00617e60
 void FUN_00617e60(struct task *tp)
 {
@@ -164,6 +170,11 @@ void Flicky_destructor(struct task *tp)
 	FreeTask(tp);
 }
 
+// STUB: SADX 0x006183a0
+void Flicky_exe(struct Flicky *__this, struct taskwk *twp, struct task *tp)
+{
+}
+
 // STUB: SADX 0x006184e0
 void FUN_006184e0(int param_1, char *param_2)
 {
@@ -191,13 +202,39 @@ void Flicky_transformBaloon(struct Flicky *__this, struct taskwk *twp)
 	}
 }
 
+// STUB: SADX 0x00618db0
+void Flicky_moveStalk(struct Flicky *__this, struct taskwk *twp)
+{
+}
+
 // STUB: SADX 0x00618f70
 void Flicky_moveHop(struct Flicky *__this, struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x00619020
+int Flicky_moveCmnOnTheFloor(struct Flicky *__this, struct taskwk *twp, struct NJS_POINT3 *target)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00619150
+void Flicky_moveStep(struct Flicky *__this, struct taskwk *twp)
+{
+}
+
 // STUB: SADX 0x0061a180
 void FUN_0061a180(int param_1, struct taskwk *param_2, struct task *param_3)
+{
+}
+
+// STUB: SADX 0x0061a280
+void FUN_0061a280(struct Flicky *__this, struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x0061a3c0
+void FUN_0061a3c0(struct Flicky *__this, struct taskwk *twp)
 {
 }
 
@@ -223,5 +260,10 @@ void Flicky_dsp(struct Flicky *__this, struct taskwk *twp)
 
 // STUB: SADX 0x0061a7b0
 void FUN_0061a7b0(struct taskwk *twp, struct CCL_INFO *info)
+{
+}
+
+// STUB: SADX 0x0061aa60
+void BaloonScale_force(struct NJS_POINT3 *__this, int flag)
 {
 }

@@ -2870,6 +2870,22 @@ static_assert(offsetof(PATHCAMERA1WORK, angCamRot) == 0x5c, "PATHCAMERA1WORK::an
 static_assert(offsetof(PATHCAMERA1WORK, angMaxCamSpd) == 0x68, "PATHCAMERA1WORK::angMaxCamSpd");
 static_assert(offsetof(PATHCAMERA1WORK, angCamSpdMul) == 0x6c, "PATHCAMERA1WORK::angCamSpdMul");
 
+struct PL_ACTION {
+    struct NJS_ACTION *actptr;
+    unsigned char objnum;
+    signed char mtnmode;
+    unsigned short next;
+    float frame;
+    float racio;
+};
+static_assert(sizeof(PL_ACTION) == 0x10, "sizeof PL_ACTION");
+static_assert(offsetof(PL_ACTION, actptr) == 0x0, "PL_ACTION::actptr");
+static_assert(offsetof(PL_ACTION, objnum) == 0x4, "PL_ACTION::objnum");
+static_assert(offsetof(PL_ACTION, mtnmode) == 0x5, "PL_ACTION::mtnmode");
+static_assert(offsetof(PL_ACTION, next) == 0x6, "PL_ACTION::next");
+static_assert(offsetof(PL_ACTION, frame) == 0x8, "PL_ACTION::frame");
+static_assert(offsetof(PL_ACTION, racio) == 0xc, "PL_ACTION::racio");
+
 struct SAlEntAnimArray {
     const struct NJS_TEXANIM *mpAnim;
     long mLen;

@@ -10,7 +10,6 @@ struct alifewk;
 struct AL_RECORD;
 struct NJS_POINT3;
 void AlrReal_checkGoal(struct AlrReal *___this);
-extern double DAT_0095b120;
 static long AlrReal_checkCommendation(struct AlrReal *___this);
 static int AlrFanFan_checkFanFan(struct AlrFanFan *___this);
 static int AlrReal_onSonic(struct AlrReal *___this);
@@ -850,7 +849,7 @@ void AlrReal_dspHead(struct AlrReal *___this)
 			position.y = *(float *)((char *)twp + 0x24);
 			position.z = *(float *)((char *)twp + 0x28);
 		} while (0);
-		position.y = position.y + DAT_0095b120;
+		position.y = position.y + 8.0;
 		AlrRank_DspHeadYa((struct AlrRank *)((char *)___this + 0x14c0), *(char *)((char *)___this + 0x156c) + 1, &position);
 	}
 }

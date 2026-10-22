@@ -1,6 +1,72 @@
 #include "decls.h"
+#include <math.h>
+#include <stdlib.h>
+void FUN_008d75c0(int param_1, char *param_2);
 void FUN_008d88b0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_MATERIAL matlist_rhino_jet[1];
+
+// STUB: SADX 0x008d74f0
+void CalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// FUNCTION: SADX 0x008d75c0
+void FUN_008d75c0(int param_1, char *param_2)
+{
+	*param_2 = (char)((char)*param_2 - 8);
+	if ((char)*param_2 < 0x23)
+	{
+		*param_2 = 0x23;
+	}
+}
+
+// STUB: SADX 0x008d75f0
+void FUN_008d75f0(struct enemywk *param_1, struct taskwk *param_2)
+{
+}
+
+// FUNCTION: SADX 0x008d76c0
+void FUN_008d76c0(int *param_1, int *param_2)
+{
+	*(float *)((char *)param_2 + 4) = 0.0f;
+	*(long *)((char *)param_1 + 0x18) = AdjustAngle(*(long *)((char *)param_1 + 0x18), *(long *)((char *)param_2 + 0x1d0), 0xf0);
+	*(long *)((char *)param_2 + 0x1a8) = 0xf0;
+	if (SubAngle(*(long *)((char *)param_1 + 0x18), *(long *)((char *)param_2 + 0x1d0)) < 0x800)
+	{
+		*(char *)param_1 = 1;
+		*(short *)((char *)param_1 + 6) = 0;
+	}
+}
+
+// STUB: SADX 0x008d7730
+void FUN_008d7730(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x008d77a0
+void SaiSearch(struct taskwk *twp, struct enemywk *ewp, struct taskwk *ptwp)
+{
+}
+
+// FUNCTION: SADX 0x008d7d00
+void FUN_008d7d00(int param_1, char *param_2)
+{
+	*param_2 = *param_2 + 2;
+	if (*param_2 > 0xfc)
+	{
+		*param_2 = 0xfc;
+	}
+}
+
+// STUB: SADX 0x008d7e80
+void CreateSaiCatSmoke(struct taskwk *twp, struct taskwk *data)
+{
+}
+
+// STUB: SADX 0x008d7ef0
+void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp)
+{
+}
 
 // STUB: SADX 0x008d8030
 void SaiMove(struct taskwk *twp, struct enemywk *ewp)
@@ -12,6 +78,11 @@ void FUN_008d8580(int param_1, char *param_2)
 {
 	matlist_rhino_jet[0].attr_texId = (int)((unsigned char)(*(char *)(param_1 + 3)) % 3);
 	matlist_rhino_jet[0].diffuse.argb.b = (char)((char)*param_2 + 3);
+}
+
+// STUB: SADX 0x008d85b0
+void SaiDisplayer(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x008d8710
