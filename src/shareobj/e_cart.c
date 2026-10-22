@@ -1,4 +1,10 @@
 #include "decls.h"
+void FUN_008d0810(void);
+void FUN_008d0870(void);
+extern int DAT_060dff64;
+extern int DAT_060dff68;
+extern int DAT_060dff6c;
+extern int DAT_060dff70;
 void GetAngleYZV(const struct NJS_POINT3 *vec, long *ang_y, long *ang_z);
 extern float _nj_unit_matrix_[16];
 extern struct OBJ_CONDITION *DAT_060dfeb4;
@@ -13,6 +19,11 @@ void CartGetOffPlayer(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008cb980
+void SetCartVelocity(struct task *tp, struct NJS_POINT3 *spd)
+{
+}
+
 // STUB: SADX 0x008cbb40
 void SetCartBonusAdd(float spd)
 {
@@ -21,6 +32,45 @@ void SetCartBonusAdd(float spd)
 // STUB: SADX 0x008cbd30
 void cartSnatchPlayerInfo(struct task *tp)
 {
+}
+
+// STUB: SADX 0x008cccc0
+void *FUN_008cccc0(void)
+{
+	return (void *)0;
+}
+
+// FUNCTION: SADX 0x008ccd10
+void searchAnimationMaterial()
+{
+	if (DAT_060dff70 == 0x309)
+	{
+		return;
+	}
+	DAT_060dff64 = 0;
+	reflexiveModel((struct obj *)&object_sarucart_sarucart_sarucart, 0);
+	DAT_060dff68 = 0;
+	reflexiveModel((struct obj *)&object_b_cart_cart_cart, 1);
+	DAT_060dff6c = 0;
+	reflexiveModel((struct obj *)&object_e_cart_cart_cart, 2);
+	DAT_060dff70 = 0x309;
+}
+
+// FUNCTION: SADX 0x008ccd80
+void reflexiveModel(struct obj *object, long scan_type)
+{
+	if (object->model != 0)
+	{
+		reflexiveMaterial(object->model, scan_type);
+	}
+	if (object->child != 0)
+	{
+		reflexiveModel(object->child, scan_type);
+	}
+	if (object->sibling != 0)
+	{
+		reflexiveModel(object->sibling, scan_type);
+	}
 }
 
 // STUB: SADX 0x008cd6a0
@@ -54,6 +104,11 @@ void FUN_008cf7d0(int param_1, int param_2)
 	{
 		FUN_008cfbb0(param_1, param_2);
 	}
+}
+
+// STUB: SADX 0x008d0090
+void cartSetVector(struct task *tp, struct taskwk *twp)
+{
 }
 
 // STUB: SADX 0x008d01c0
@@ -96,8 +151,18 @@ void calcComponentVector(struct Angle3 *ang, struct NJS_POINT3 *vec)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x008d0500
+void FUN_008d0500(float *param_1, float param_2)
+{
+}
+
 // STUB: SADX 0x008d0600
 void rotateFan(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x008d0700
+void resetHoverPoint(struct taskwk *twp)
 {
 }
 
@@ -108,6 +173,11 @@ void FUN_008d0810(void)
 
 // STUB: SADX 0x008d0870
 void FUN_008d0870(void)
+{
+}
+
+// STUB: SADX 0x008d08a0
+void cartRunPass(struct task *tp, struct taskwk *twp)
 {
 }
 
@@ -132,6 +202,11 @@ void setCartDirection(struct taskwk *twp, struct NJS_POINT3 *vec)
 	}
 }
 
+// STUB: SADX 0x008d0b60
+void FUN_008d0b60(struct task *tp, int param_2)
+{
+}
+
 // STUB: SADX 0x008d0ca0
 long distCheck(struct task *tp)
 {
@@ -140,6 +215,16 @@ long distCheck(struct task *tp)
 
 // STUB: SADX 0x008d0d20
 void cartSELoop(struct task *tp, long se_no)
+{
+}
+
+// STUB: SADX 0x008d1090
+void writeSmoke(struct task *tp, struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x008d11b0
+void pLockingOnTargetEnemy2(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 

@@ -56,6 +56,11 @@ void ObjectBridgeShitaDisplayer(struct task *tp)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x008db7a0
+void ObjectBridgeShita(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x008dbd30
 void ObjectTuribasiDisplayer(struct task *tp)
 {
@@ -77,6 +82,11 @@ void ObjectTuribasiExecutor(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008dc120
+void FUN_008dc120(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008dcaf0
 void BridgeCheckCollision(struct taskwk *twp)
 {
@@ -91,6 +101,16 @@ void FUN_008dcb90(struct taskwk *twp, struct NJS_POINT3 *out)
 unsigned char FUN_008dcc50(struct taskwk *twp, struct NJS_POINT3 *pnt)
 {
 	return (unsigned char)0;
+}
+
+// STUB: SADX 0x008dcd10
+void BridgeSetForce(struct taskwk *twp, float xpos, float zpos)
+{
+}
+
+// STUB: SADX 0x008dd0f0
+void BridgeDeform(struct taskwk *twp)
+{
 }
 
 // STUB: SADX 0x008dd2e0

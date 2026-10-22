@@ -1,6 +1,19 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+struct NP_PCHECKDATA {
+	signed char md_stand;
+	signed char md_cfue;
+	unsigned short act_cfue;
+};
+void SetInputP(unsigned char pno, signed char mode);
+void SetChangeGameMode(short mode);
+unsigned long CheckEditMode();
+void DisplayBreathCounterP(struct task *tp);
+void DestructBreathCounterP(struct task *tp);
+struct mtnjvwk;
+void Free(void *mp);
+void FUN_004f2630(void *param_1);
 extern char DAT_05ba3320[];
 static void MomentMuteki(struct task *tp);
 static void PlayerSpeedUp(struct task *tp);
@@ -38,6 +51,16 @@ void SetUpPlayerWork()
 	}
 }
 
+// STUB: SADX 0x004dad90
+void PDestruct(long num)
+{
+}
+
+// STUB: SADX 0x004daeb0
+void PSetupInput(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x004db050
 void FUN_004db050(unsigned char pno)
 {
@@ -57,6 +80,23 @@ long PCheckHoldSwingableObject(struct taskwk *twp, struct motionwk2 *mwp, struct
 		return 0;
 	}
 	return 1;
+}
+
+// STUB: SADX 0x004db480
+void PShakeObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004db5c0
+long PAdjustHoldingPosition(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004db790
+long PCheckPower(struct taskwk *twp, long *angle, float *stroke)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x004db960
@@ -131,6 +171,31 @@ long PCheckTargetEnemy(unsigned char pno)
 		return 1;
 }
 
+// STUB: SADX 0x004dbce0
+void PLockingOnTargetEnemy(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004ddec0
+void PGetAccelerationAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004dec40
+void PGetAcceleration1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004df220
+void PGetAccelerationFly(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004df400
+void PGetAccelerationGliK(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x004df580
 void FUN_004df580(struct task *tp, int param_2, struct NJS_POINT3 *out)
 {
@@ -138,6 +203,16 @@ void FUN_004df580(struct task *tp, int param_2, struct NJS_POINT3 *out)
 
 // STUB: SADX 0x004e1920
 void PGetGravity(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004e1c60
+void PRotatedByGravity(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004e1e40
+void PRotatedByGravityS(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
@@ -162,8 +237,18 @@ void PAdjustAngleYQ(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *
 	pwp->spd = v2;
 }
 
+// STUB: SADX 0x004e2800
+void PAdjustAngleYS(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, long angy)
+{
+}
+
 // STUB: SADX 0x004e2ec0
 void FUN_004e2ec0(struct taskwk *twp, struct NJS_POINT3 *v)
+{
+}
+
+// STUB: SADX 0x004e2fc0
+void PGetSpeed1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
@@ -178,8 +263,18 @@ void FUN_004e3420(struct task *tp, struct NJS_POINT3 *p1, struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x004e34b0
+void PGetSpeedGliK(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x004e4110
 void FUN_004e4110(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004e6a00
+void PSSGCollisionForceWorkEffect(struct taskwk *twp, struct playerwk *pwp, struct csts *cp, struct NJS_POINT3 *vec)
 {
 }
 
@@ -191,6 +286,22 @@ void FUN_004e6b90(int param_1, int param_2, int param_3)
 	*(float *)(param_1 + 0x28) = *(float *)(param_3 + 0x44) * 3.0f + *(float *)(param_1 + 0x28);
 	*(float *)(param_2 + 4) = *(float *)(param_3 + 0x3c) * 2.0f + *(float *)(param_2 + 4);
 	*(float *)(param_2 + 0xc) = *(float *)(param_3 + 0x44) * 2.0f + *(float *)(param_2 + 0xc);
+}
+
+// STUB: SADX 0x004e6c10
+void PSSGCollisionGetLandFriction(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, unsigned long attr)
+{
+}
+
+// STUB: SADX 0x004eadd0
+void PSRunAlongWallForPinball(struct taskwk *twp, struct playerwk *pwp, struct csts *cp, struct NJS_POINT3 *vp)
+{
+}
+
+// STUB: SADX 0x004eb550
+long PSetPositionOn1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x004ebeb0
@@ -228,6 +339,11 @@ void FUN_004ed210(struct mtnjvwk *mjp)
 {
 }
 
+// STUB: SADX 0x004ee220
+void PTerminateInterpolateMotion(struct mtnjvwk *mjp)
+{
+}
+
 // FUNCTION: SADX 0x004eef80
 void PAdjustAngleFacingTo(struct pheadeyewk *phewp)
 {
@@ -262,6 +378,11 @@ void PAdjustAngleFacingTo(struct pheadeyewk *phewp)
 	}
 	phewp->angz_ahead = local_8;
 	phewp->headobjptr->ang[2] = phewp->angz_ahead & 0xffff;
+}
+
+// STUB: SADX 0x004ef080
+void PAdjustAngleStaringEyes(struct pheadeyewk *phewp)
+{
 }
 
 // FUNCTION: SADX 0x004ef210
@@ -321,6 +442,11 @@ void PSetCrashEffect(struct taskwk *twp)
 	{
 		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)twp + 8);
 	}
+}
+
+// STUB: SADX 0x004ef700
+void PSetRippleEffect(unsigned char pno, struct NJS_POINT3 *pp, long *ap)
+{
 }
 
 // STUB: SADX 0x004ef840
@@ -396,6 +522,11 @@ void KillHimByFallingDownP(unsigned char pno)
 	ExecFallingDownP(pno);
 }
 
+// STUB: SADX 0x004f0160
+void ExecFallingDownP(unsigned char pno)
+{
+}
+
 // FUNCTION: SADX 0x004f02a0
 void FUN_004f02a0(struct task *param_1, unsigned char param_2)
 {
@@ -403,6 +534,16 @@ void FUN_004f02a0(struct task *param_1, unsigned char param_2)
 	local_8 = CreateChildTask(8, GamePlayerMissed, param_1);
 	local_8->dest = (void (*)(struct task *))FUN_005b5aa0;
 	ExecFallingDownP(param_2);
+}
+
+// STUB: SADX 0x004f02e0
+void BreathCounterP(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004f04d0
+void DisplayBreathCounterP(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x004f0610
@@ -682,6 +823,11 @@ void SetVelocityYAndRotationAndNoconTimeP(unsigned char pno, float y, long *ang,
 {
 }
 
+// STUB: SADX 0x004f10d0
+void SetParabolicMotionP(unsigned char pno, float spd, struct NJS_POINT3 *v)
+{
+}
+
 // STUB: SADX 0x004f11f0
 void SetVelocityAndRotationAndNoconTimeP(unsigned char pno, struct NJS_POINT3 *v, long *ang, long tm)
 {
@@ -704,6 +850,11 @@ void SetRotationP(unsigned char pno, long angx, long angy, long angz)
 	*(int *)(local_cg + 0x18) = 0x4000 - angy;
 	*(int *)(local_8g + 0x20) = *(int *)(local_cg + 0x18);
 	*(int *)(local_cg + 0x1c) = angz;
+}
+
+// STUB: SADX 0x004f1430
+void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
+{
 }
 
 // FUNCTION: SADX 0x004f15e0
@@ -771,6 +922,12 @@ void GetOutOfCartP(unsigned char pno, float x, float y, float z)
 	*(short *)(local_8 + 4) |= 0x1000;
 	*(char *)(local_8 + 1) = 0x1c;
 	SetVelocityP(pno, x, y, z);
+}
+
+// STUB: SADX 0x004f1860
+long CheckCollisionP(struct NJS_POINT3 *vp, float d)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x004f1980
@@ -1038,6 +1195,16 @@ void FUN_004f2660(int param_1)
 	*(short *)((char *)param_1 + 0x12) = 0;
 }
 
+// STUB: SADX 0x004f2670
+void EntryIslandForP(float x, float y, float z, float r)
+{
+}
+
+// STUB: SADX 0x004f2dc0
+void FUN_004f2dc0(struct NJS_POINT3 *arg1, struct NJS_POINT3 *arg2, struct NJS_POINT3 *arg3)
+{
+}
+
 // FUNCTION: SADX 0x004f31c0
 void PDisableDamage(unsigned char u8Pno)
 {
@@ -1052,6 +1219,12 @@ void PDisableDamage(unsigned char u8Pno)
 	*(float *)(local_8g + 0x3c) = 0.0f;
 	*(float *)(local_8g + 0x38) = 0.0f;
 	pdVibMxStop(0);
+}
+
+// STUB: SADX 0x004f3230
+long NP_PCheckWhistle(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, struct NP_PCHECKDATA pdatatbl)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x004f3350

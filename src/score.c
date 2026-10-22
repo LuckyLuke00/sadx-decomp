@@ -236,6 +236,11 @@ void AdvanceGlobalTime()
 	DAT_05b3ec08 = DAT_05b3ec08 + DAT_05b9d834;
 }
 
+// STUB: SADX 0x00555540
+void AdvanceTime()
+{
+}
+
 // FUNCTION: SADX 0x005556f0
 unsigned long GetGlobalTime()
 {
@@ -404,6 +409,11 @@ void FUN_0055c760(struct task *tp)
 int FUN_0055c7f0(int param_1, int param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0055cd10
+void DisplayCalcLettersSC(struct task *tp)
+{
 }
 
 // STUB: SADX 0x0055cee0
