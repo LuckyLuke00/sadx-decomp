@@ -9882,6 +9882,14 @@
    "library": false
   },
   {
+   "address": "0x0049c420",
+   "name": "ObjectMiKanban",
+   "accuracy": 0.9473684210526315,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0049d140",
    "name": "Disp(2)",
    "accuracy": 1.0,
@@ -48051,5 +48059,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "913d592f75bf85ba369eeccc50567490ce8d2ac2ced7c7b90509419f6a9f81e8"
+ "inputs_sha256": "ff31328b81c62e8b72463be58deb3facbff0d118c4cf5739b2091a8d3d5c1ff0"
 }
