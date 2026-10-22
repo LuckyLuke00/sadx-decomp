@@ -2,5 +2,6 @@
 #pragma once
 
 #include "types.h"
+namespace Magic { namespace RenderCore { class Texture; } }
 #include "functions.h"
 #include "globals.h"
