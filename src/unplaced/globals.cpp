@@ -2,6 +2,9 @@
 
 #include "decls.h"
 
+// GLOBAL: SADX 0x00956b1c
+short DAT_00956b1c[13];
+
 // GLOBAL: SADX 0x00956ba8
 float DAT_00956ba8;
 
@@ -44,6 +47,15 @@ struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
 // GLOBAL: SADX 0x0098beec
 struct TaskInfo MirenEfLensFlareTaskInfo;
 
+// GLOBAL: SADX 0x0098fa18
+int DAT_0098fa18[17];
+
+// GLOBAL: SADX 0x0098fa5c
+int DAT_0098fa5c[7];
+
+// GLOBAL: SADX 0x0098fa78
+struct DialogPrmType DAT_0098fa78;
+
 // GLOBAL: SADX 0x0098fcf0
 struct u4s DAT_0098fcf0[1];
 
@@ -61,6 +73,15 @@ const struct FlickyData flickydata[15] = {};
 
 // GLOBAL: SADX 0x00a0c8d8
 struct TaskInfo ObjectTaskInfo;
+
+// GLOBAL: SADX 0x01c6e428
+unsigned int DAT_01c6e428;
+
+// GLOBAL: SADX 0x01c6e42c
+unsigned int DAT_01c6e42c;
+
+// GLOBAL: SADX 0x01c6e868
+short DAT_01c6e868[13];
 
 // GLOBAL: SADX 0x01c6ede0
 float _nj_unit_matrix_[16];
@@ -386,6 +407,9 @@ long boolLandDisplay;
 // GLOBAL: SADX 0x025dcc90
 long boolLandCollision;
 
+// GLOBAL: SADX 0x025ddb78
+struct NJS_TEXLIST DAT_025ddb78;
+
 // GLOBAL: SADX 0x025ddd68
 struct NJS_TEXLIST texlist_big;
 
@@ -445,6 +469,57 @@ struct NJS_TEXLIST DAT_02604ab8;
 
 // GLOBAL: SADX 0x02604d7c
 struct NJS_TEXLIST texlist_pressstart;
+
+// GLOBAL: SADX 0x02604e4c
+struct NJS_TEXLIST texlist_adv_window;
+
+// GLOBAL: SADX 0x02604e54
+struct NJS_TEXLIST texlist_ava_csr;
+
+// GLOBAL: SADX 0x026054e8
+unsigned int DAT_026054e8[4];
+
+// GLOBAL: SADX 0x02605538
+int DAT_02605538;
+
+// GLOBAL: SADX 0x0260553c
+unsigned char DAT_0260553c;
+
+// GLOBAL: SADX 0x0260553d
+unsigned char DAT_0260553d;
+
+// GLOBAL: SADX 0x0260553e
+unsigned char DAT_0260553e;
+
+// GLOBAL: SADX 0x0260553f
+unsigned char DAT_0260553f;
+
+// GLOBAL: SADX 0x02605a24
+int DAT_02605a24;
+
+// GLOBAL: SADX 0x02606b18
+unsigned char DAT_02606b18;
+
+// GLOBAL: SADX 0x02606b1c
+char* DAT_02606b1c[6];
+
+// GLOBAL: SADX 0x02606b34
+char* DAT_02606b34[6];
+
+// GLOBAL: SADX 0x02606b4c
+char* DAT_02606b4c[6];
+
+// GLOBAL: SADX 0x02606b64
+char* DAT_02606b64[5];
+
+// GLOBAL: SADX 0x02606b78
+char* DAT_02606b78[5];
+
+// GLOBAL: SADX 0x02606b8c
+char* DAT_02606b8c[5];
+
+// GLOBAL: SADX 0x02606ba0
+char* DAT_02606ba0[5];
 
 // GLOBAL: SADX 0x02608e24
 unsigned char DAT_02608e24;
@@ -947,6 +1022,12 @@ float ScreenRaitoY;
 // GLOBAL: SADX 0x05ab39ac
 void *DAT_05ab39ac;
 
+// GLOBAL: SADX 0x05ab4243
+unsigned char DAT_05ab4243;
+
+// GLOBAL: SADX 0x05ab4304
+void* DAT_05ab4304;
+
 // GLOBAL: SADX 0x05ab45e0
 int DAT_05ab45e0;
 
@@ -1271,11 +1352,17 @@ int DAT_05b3e350;
 // GLOBAL: SADX 0x05b3e356
 unsigned char DAT_05b3e356;
 
+// GLOBAL: SADX 0x05b3e36c
+Magic::RenderCore::Texture* DAT_05b3e36c;
+
 // GLOBAL: SADX 0x05b3e378
 void *DAT_05b3e378;
 
 // GLOBAL: SADX 0x05b3e37c
 void *DAT_05b3e37c;
+
+// GLOBAL: SADX 0x05b3e388
+int DAT_05b3e388;
 
 // GLOBAL: SADX 0x05b3e38c
 int DAT_05b3e38c;
@@ -1570,6 +1657,9 @@ int DAT_05b42a84;
 
 // GLOBAL: SADX 0x05b42a8c
 struct task *DAT_05b42a8c;
+
+// GLOBAL: SADX 0x05b42a90
+int DAT_05b42a90;
 
 // GLOBAL: SADX 0x05b42a98
 struct NJS_POINT3 DAT_05b42a98[32];
@@ -2324,8 +2414,158 @@ unsigned char DAT_05cd2604;
 // GLOBAL: SADX 0x05cd265c
 int DAT_05cd265c;
 
+// GLOBAL: SADX 0x05cd26f0
+unsigned int DAT_05cd26f0[4];
+
+// GLOBAL: SADX 0x05cd2700
+Magic::RenderCore::Texture* DAT_05cd2700;
+
+// GLOBAL: SADX 0x05cd2704
+Magic::RenderCore::Texture* DAT_05cd2704;
+
+// GLOBAL: SADX 0x05cd2708
+Magic::RenderCore::Texture* DAT_05cd2708;
+
+// GLOBAL: SADX 0x05cd2710
+Magic::RenderCore::Texture* DAT_05cd2710;
+
+// GLOBAL: SADX 0x05cd2714
+Magic::RenderCore::Texture* DAT_05cd2714;
+
+// GLOBAL: SADX 0x05cd2718
+Magic::RenderCore::Texture* DAT_05cd2718;
+
+// GLOBAL: SADX 0x05cd271c
+Magic::RenderCore::Texture* DAT_05cd271c;
+
+// GLOBAL: SADX 0x05cd2720
+Magic::RenderCore::Texture* DAT_05cd2720;
+
+// GLOBAL: SADX 0x05cd2724
+Magic::RenderCore::Texture* DAT_05cd2724;
+
+// GLOBAL: SADX 0x05cd2728
+Magic::RenderCore::Texture* DAT_05cd2728;
+
+// GLOBAL: SADX 0x05cd272c
+Magic::RenderCore::Texture* DAT_05cd272c;
+
+// GLOBAL: SADX 0x05cd2730
+Magic::RenderCore::Texture* DAT_05cd2730;
+
+// GLOBAL: SADX 0x05cd273c
+struct ButtonInfo* DAT_05cd273c;
+
+// GLOBAL: SADX 0x05cd2740
+Magic::RenderCore::Texture* DAT_05cd2740;
+
+// GLOBAL: SADX 0x05cd2744
+Magic::RenderCore::Texture* DAT_05cd2744;
+
+// GLOBAL: SADX 0x05cd2748
+Magic::RenderCore::Texture* DAT_05cd2748;
+
+// GLOBAL: SADX 0x05cd274c
+Magic::RenderCore::Texture* DAT_05cd274c;
+
+// GLOBAL: SADX 0x05cd2750
+Magic::RenderCore::Texture* DAT_05cd2750;
+
+// GLOBAL: SADX 0x05cd2754
+Magic::RenderCore::Texture* DAT_05cd2754;
+
+// GLOBAL: SADX 0x05cd2758
+Magic::RenderCore::Texture* DAT_05cd2758;
+
+// GLOBAL: SADX 0x05cd2767
+unsigned char DAT_05cd2767;
+
+// GLOBAL: SADX 0x05cd2768
+int DAT_05cd2768;
+
+// GLOBAL: SADX 0x05cd276c
+int DAT_05cd276c;
+
+// GLOBAL: SADX 0x05cd2770
+int DAT_05cd2770;
+
+// GLOBAL: SADX 0x05cd2774
+int DAT_05cd2774;
+
+// GLOBAL: SADX 0x05cd2780
+int DAT_05cd2780;
+
+// GLOBAL: SADX 0x05cd2784
+unsigned char DAT_05cd2784;
+
+// GLOBAL: SADX 0x05cd2785
+unsigned char DAT_05cd2785;
+
 // GLOBAL: SADX 0x05cd2786
 unsigned char DAT_05cd2786;
+
+// GLOBAL: SADX 0x05cd2790
+int DAT_05cd2790;
+
+// GLOBAL: SADX 0x05cd2794
+int DAT_05cd2794;
+
+// GLOBAL: SADX 0x05cd2798
+int DAT_05cd2798;
+
+// GLOBAL: SADX 0x05cd279c
+int DAT_05cd279c;
+
+// GLOBAL: SADX 0x05cd27e8
+unsigned char DAT_05cd27e8;
+
+// GLOBAL: SADX 0x05cd27ec
+int DAT_05cd27ec;
+
+// GLOBAL: SADX 0x05cd27f0
+int DAT_05cd27f0;
+
+// GLOBAL: SADX 0x05cd27f4
+int DAT_05cd27f4[3];
+
+// GLOBAL: SADX 0x05cd2820
+void* DAT_05cd2820;
+
+// GLOBAL: SADX 0x05cd2824
+float DAT_05cd2824;
+
+// GLOBAL: SADX 0x05cd2828
+int DAT_05cd2828[3];
+
+// GLOBAL: SADX 0x05cd2854
+float DAT_05cd2854;
+
+// GLOBAL: SADX 0x05cd2864
+int DAT_05cd2864;
+
+// GLOBAL: SADX 0x05cd2868
+int DAT_05cd2868;
+
+// GLOBAL: SADX 0x05cd2878
+struct task* DAT_05cd2878;
+
+// GLOBAL: SADX 0x05cd287c
+int DAT_05cd287c;
+
+// GLOBAL: SADX 0x05cd2880
+int DAT_05cd2880[13];
+
+// GLOBAL: SADX 0x05cd28b8
+struct MSGC DAT_05cd28b8;
+
+// GLOBAL: SADX 0x05cd2900
+int DAT_05cd2900;
+
+// GLOBAL: SADX 0x05cd2904
+int DAT_05cd2904;
+
+// GLOBAL: SADX 0x05cd2908
+int DAT_05cd2908;
 
 // GLOBAL: SADX 0x05cd290c
 unsigned char DAT_05cd290c[48];
@@ -3023,14 +3263,23 @@ int DAT_060e3d60;
 // GLOBAL: SADX 0x060ee554
 int DAT_060ee554;
 
+// GLOBAL: SADX 0x060ee7d0
+void* DAT_060ee7d0;
+
 // GLOBAL: SADX 0x060eea5c
 int DAT_060eea5c;
+
+// GLOBAL: SADX 0x060eea80
+void* DAT_060eea80;
 
 // GLOBAL: SADX 0x060eea88
 struct obj **DAT_060eea88;
 
 // GLOBAL: SADX 0x060f4ad4
 struct NJS_MODEL **DAT_060f4ad4;
+
+// GLOBAL: SADX 0x06274ae4
+void* DAT_06274ae4;
 
 // GLOBAL: SADX 0x06274af0
 int DAT_06274af0;
@@ -3041,8 +3290,14 @@ int DAT_06274afc;
 // GLOBAL: SADX 0x06276b20
 char DAT_06276b20[260];
 
+// GLOBAL: SADX 0x06276c28
+void* DAT_06276c28;
+
 // GLOBAL: SADX 0x06276c34
 void *DAT_06276c34;
+
+// GLOBAL: SADX 0x06276c40
+void* DAT_06276c40;
 
 // GLOBAL: SADX 0x06298c48
 struct NJS_CAMERA DAT_06298c48;
@@ -3059,11 +3314,20 @@ void *DAT_06298ccc;
 // GLOBAL: SADX 0x06298ce8
 void *DAT_06298ce8;
 
+// GLOBAL: SADX 0x06298cec
+void* DAT_06298cec;
+
 // GLOBAL: SADX 0x06298d24
 int DAT_06298d24;
 
 // GLOBAL: SADX 0x062992fc
 int DAT_062992fc;
+
+// GLOBAL: SADX 0x0629c338
+void* DAT_0629c338;
+
+// GLOBAL: SADX 0x0629c344
+void* DAT_0629c344;
 
 // GLOBAL: SADX 0x0629c4a0
 int DAT_0629c4a0;

@@ -18,6 +18,18 @@ int FUN_00407e30()
 	return (int)0;
 }
 
+// STUB: SADX 0x0040ae00
+bool FUN_0040ae00()
+{
+	return (bool)0;
+}
+
+// STUB: SADX 0x0040b010
+int FUN_0040b010(const void*, const void*)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00419570
 void SOCCreateDevice(void)
 {
@@ -29,8 +41,28 @@ int __fastcall FUN_004199f0(void *, float)
 	return (int)0;
 }
 
+// STUB: SADX 0x0041b7e0
+void RenderTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int)
+{
+}
+
 // STUB: SADX 0x0041c2d0
 void FUN_0041c2d0(void *)
+{
+}
+
+// STUB: SADX 0x0041dc60
+void GetTextSize(wchar_t const *,int &,int &)
+{
+}
+
+// STUB: SADX 0x004208c0
+void FUN_004208c0(int, int, const wchar_t*, int, float, float)
+{
+}
+
+// STUB: SADX 0x00420960
+void DrawTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int)
 {
 }
 
@@ -227,6 +259,12 @@ void njPushMatrix(float *)
 // STUB: SADX 0x00430bb0
 void njCalcPoint(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
+}
+
+// STUB: SADX 0x00430e60
+void* pdGetPeripheral(int)
+{
+	return (void*)0;
 }
 
 // STUB: SADX 0x00431730
@@ -920,6 +958,11 @@ void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {
 }
 
+// STUB: SADX 0x004b23e0
+void FUN_004b23e0(void*, void*, int, const char*, int)
+{
+}
+
 // STUB: SADX 0x004b5e70
 void FUN_004b5e70(int)
 {
@@ -1049,6 +1092,17 @@ void CameraFilter()
 
 // STUB: SADX 0x004c0e10
 void FUN_004c0e10(void *)
+{
+}
+
+// STUB: SADX 0x004c1870
+struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex)
+{
+	return (struct MSGC *)0;
+}
+
+// STUB: SADX 0x004c1a80
+void MSG_LoadTexture2(struct MSGC *msgc)
 {
 }
 
@@ -1246,6 +1300,11 @@ void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
 long CheckCollisionP(struct NJS_POINT3 *, float)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004f3470
+void FUN_004f3470()
+{
 }
 
 // STUB: SADX 0x004f3600
@@ -1836,10 +1895,64 @@ void OpenDialog(struct DialogPrmType *, int)
 {
 }
 
+// STUB: SADX 0x00577ae0
+signed char GetDialogStat()
+{
+	return (signed char)0;
+}
+
 // STUB: SADX 0x00577b30
 int CloseDialog()
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x00577e40
+int InitStaff2()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00579960
+void FUN_00579960(struct MSGC*, int*, int*)
+{
+}
+
+// STUB: SADX 0x0057a860
+void printPauseTexture(enum PAUSE_TEXTURE_ID id, struct NJS_POINT3 *pos, struct NJS_POINT2 *scl)
+{
+}
+
+// STUB: SADX 0x0057a920
+void printPause(float ofsy)
+{
+}
+
+// STUB: SADX 0x0057aa30
+void printMenu2(enum PAUSE_TEXTURE_ID id, long pos_x, long pos_y, long flag)
+{
+}
+
+// STUB: SADX 0x0057d220
+int cameramodechange(int sw)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00583720
+int FUN_00583720()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00587960
+void DrawButtonACBB()
+{
+}
+
+// STUB: SADX 0x00587d10
+void DrawButtonXUBB()
+{
 }
 
 // STUB: SADX 0x0058b860
@@ -1916,6 +2029,17 @@ struct SAVE_DATA *GetSDp()
 	return (struct SAVE_DATA *)0;
 }
 
+// STUB: SADX 0x005a4180
+signed char AvaGetOnseiSettei()
+{
+	return (signed char)0;
+}
+
+// STUB: SADX 0x005a41a0
+void AvaSetOnseiSettei(signed char bit)
+{
+}
+
 // STUB: SADX 0x005a4c50
 void *FUN_005a4c50(int)
 {
@@ -1939,6 +2063,11 @@ void InitContinueData()
 
 // STUB: SADX 0x005a6590
 void SpLoop()
+{
+}
+
+// STUB: SADX 0x005a67c0
+void SpLoopOnlyDisplay()
 {
 }
 

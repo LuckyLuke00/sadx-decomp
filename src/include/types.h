@@ -76,6 +76,7 @@ struct bosswk;
 struct BUBBLE_DATA;
 struct BUBBLE_LIST;
 struct BUBBLE_TABLE;
+struct ButtonInfo;
 struct c_colli_hit_info;
 struct CCL_INFO;
 struct chao_colliwk;
@@ -1488,6 +1489,18 @@ static_assert(offsetof(BUBBLE_DATA, spline_num) == 0x1, "BUBBLE_DATA::spline_num
 static_assert(offsetof(BUBBLE_DATA, list) == 0x4, "BUBBLE_DATA::list");
 static_assert(offsetof(BUBBLE_DATA, tbl) == 0x8, "BUBBLE_DATA::tbl");
 static_assert(offsetof(BUBBLE_DATA, scl) == 0xc, "BUBBLE_DATA::scl");
+
+struct ButtonInfo {
+    float PosX;
+    float PosY;
+    float Windth;
+    float Height;
+};
+static_assert(sizeof(ButtonInfo) == 0x10, "sizeof ButtonInfo");
+static_assert(offsetof(ButtonInfo, PosX) == 0x0, "ButtonInfo::PosX");
+static_assert(offsetof(ButtonInfo, PosY) == 0x4, "ButtonInfo::PosY");
+static_assert(offsetof(ButtonInfo, Windth) == 0x8, "ButtonInfo::Windth");
+static_assert(offsetof(ButtonInfo, Height) == 0xc, "ButtonInfo::Height");
 
 struct CCL_INFO {
     unsigned char kind;
