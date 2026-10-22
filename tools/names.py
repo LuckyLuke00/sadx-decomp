@@ -171,8 +171,9 @@ def parse_annotations(text: str) -> list[tuple[str, int, str]]:
 def local_declarations(text: str) -> tuple[list[tuple[str, str]], list[tuple[str, str]]]:
     """File-scope declarations: `ret name(args);` and `extern type name...;`."""
     funcs, vars_ = [], []
-    # The lookahead also skips a label such as `end:`, which a call on the next line would turn into a declaration.
-    for m in re.finditer(r"^(?!static\b|typedef\b|return\b|#|[A-Za-z_]\w*\s*:(?!:))"
+    # The lookahead also skips a label such as `end:` or `case 0x11:`, which a call after it would turn into a
+    # declaration.
+    for m in re.finditer(r"^(?!static\b|typedef\b|return\b|case\b|#|[A-Za-z_]\w*\s*:(?!:))"
                          r"([A-Za-z_][^;{}()=#]*?\b([A-Za-z_]\w*)\s*\([^;{}]*\))\s*;",
                          strip_code(text), re.M):
         funcs.append((m.group(2), without_parameter_names(" ".join(m.group(1).split()))))
