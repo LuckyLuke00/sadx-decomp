@@ -2,12 +2,84 @@
  "target": "SADX",
  "functions": [
   {
+   "address": "0x00402aa0",
+   "name": "LoadBosschaos0models",
+   "accuracy": 0.6451612903225806,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00402f90",
-   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >",
-   "accuracy": 0.42857142857142855,
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >(char const *)",
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
+  },
+  {
+   "address": "0x00402fd0",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00403030",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign(char const *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x004030e0",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Tidy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00403140",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign(char const *, unsigned int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x004032e0",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char>> const &, unsigned int, unsigned int)",
+   "accuracy": 0.9803921568627451,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x004033d0",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Copy",
+   "accuracy": 0.9921875,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x004035e0",
+   "name": "SOCSystem::FUN_004035e0",
+   "accuracy": 0.009345794392523364,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00403840",
+   "name": "SOCSystem::GetFuncAddress",
+   "accuracy": 0.08823529411764706,
+   "effective": false,
+   "stub": true,
+   "library": false
   },
   {
    "address": "0x00404ef0",
@@ -74,6 +146,22 @@
    "library": false
   },
   {
+   "address": "0x00405f00",
+   "name": "FUN_00405f00",
+   "accuracy": 0.046511627906976744,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00406000",
+   "name": "Magic::Base::Singleton<SOCInput>::GetSubject",
+   "accuracy": 0.345679012345679,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
    "address": "0x00407cc0",
    "name": "FUN_00407cc0",
    "accuracy": 1.0,
@@ -114,6 +202,30 @@
    "library": true
   },
   {
+   "address": "0x0040ae00",
+   "name": "FUN_0040ae00",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0040b010",
+   "name": "FUN_0040b010",
+   "accuracy": 0.6666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0040b8a0",
+   "name": "SOCFileStream::FUN_0040b8a0",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00419570",
    "name": "SOCCreateDevice",
    "accuracy": 0.09090909090909091,
@@ -138,11 +250,251 @@
    "library": false
   },
   {
+   "address": "0x00419ac0",
+   "name": "FUN_00419ac0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00419ae0",
+   "name": "FUN_00419ae0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00419b00",
+   "name": "FUN_00419b00",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00419b20",
+   "name": "FUN_00419b20",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00419b40",
+   "name": "FUN_00419b40",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00419cf0",
+   "name": "SOCRender::FUN_00419cf0",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00419d00",
+   "name": "FUN_00419d00",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00419d40",
+   "name": "FUN_00419d40",
+   "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00419d80",
+   "name": "FUN_00419d80",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041a170",
+   "name": "UnknowTochar",
+   "accuracy": 0.04878048780487805,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041a1c0",
+   "name": "SOCsetZwrite",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041a1e0",
+   "name": "SOCGetZwrite",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041a800",
+   "name": "FUN_0041a800",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0041b7e0",
+   "name": "RenderTexture",
+   "accuracy": 0.055944055944055944,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0041c2d0",
    "name": "FUN_0041c2d0",
    "accuracy": 0.42105263157894735,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041ca20",
+   "name": "FUN_0041ca20",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041ca60",
+   "name": "FUN_0041ca60",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041caa0",
+   "name": "FUN_0041caa0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0041cc20",
+   "name": "FUN_0041cc20",
+   "accuracy": 0.0625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041cf30",
+   "name": "FUN_0041cf30",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041cfb0",
+   "name": "FUN_0041cfb0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041d020",
+   "name": "FUN_0041d020",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041d130",
+   "name": "FUN_0041d130",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041dc60",
+   "name": "GetTextSize",
+   "accuracy": 0.11428571428571428,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041ddb0",
+   "name": "FUN_0041ddb0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041e270",
+   "name": "FUN_0041e270",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004204d0",
+   "name": "FUN_004204d0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004207b0",
+   "name": "FUN_004207b0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004208c0",
+   "name": "FUN_004208c0",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00420960",
+   "name": "DrawTexture",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00421180",
+   "name": "DrawStringW",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -434,6 +786,94 @@
    "library": false
   },
   {
+   "address": "0x004248c0",
+   "name": "FUN_004248c0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004248f0",
+   "name": "FUN_004248f0",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00424900",
+   "name": "FUN_00424900",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00424910",
+   "name": "FUN_00424910",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00424950",
+   "name": "FUN_00424950",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00424960",
+   "name": "SOCFileStream::FUN_00424960",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00424970",
+   "name": "SOCInput::SOCInput",
+   "accuracy": 0.02857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00424a70",
+   "name": "FUN_00424a70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00424a80",
+   "name": "FUN_00424a80",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00424b40",
+   "name": "SOCInput::FUN_00424b40",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00424b90",
+   "name": "FUN_00424b90",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00425150",
    "name": "njSetTextureMemorySize",
    "accuracy": 1.0,
@@ -554,6 +994,30 @@
    "library": false
   },
   {
+   "address": "0x0042b420",
+   "name": "SOCFileStream::SOCFileStream",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0042b430",
+   "name": "SOCFileStream::~SOCFileStream",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0042b460",
+   "name": "SOCFileStream::ReadFile",
+   "accuracy": 0.14,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0042ba90",
    "name": "njSetMaterialCallBackFunc",
    "accuracy": 1.0,
@@ -671,6 +1135,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00430e60",
+   "name": "pdGetPeripheral",
+   "accuracy": 0.4166666666666667,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -4898,6 +5370,14 @@
    "library": false
   },
   {
+   "address": "0x004b23e0",
+   "name": "FUN_004b23e0",
+   "accuracy": 0.03305785123966942,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004b2860",
    "name": "FUN_004b2860",
    "accuracy": 1.0,
@@ -5802,11 +6282,27 @@
    "library": false
   },
   {
+   "address": "0x004c1870",
+   "name": "MSG_Open",
+   "accuracy": 0.07194244604316546,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004c1a60",
    "name": "MSG_LoadTexture",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004c1a80",
+   "name": "MSG_LoadTexture2",
+   "accuracy": 0.09411764705882353,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -6660,6 +7156,14 @@
   {
    "address": "0x004caf50",
    "name": "isMissionClearDisp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004caf80",
+   "name": "SOCTimer::FUN_004caf80",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -8615,6 +9119,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004f3470",
+   "name": "FUN_004f3470",
+   "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -14042,6 +14554,14 @@
    "library": false
   },
   {
+   "address": "0x00577ae0",
+   "name": "GetDialogStat",
+   "accuracy": 0.25806451612903225,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00577b30",
    "name": "CloseDialog",
    "accuracy": 0.3448275862068966,
@@ -14050,9 +14570,65 @@
    "library": false
   },
   {
+   "address": "0x00577e40",
+   "name": "InitStaff2",
+   "accuracy": 0.006968641114982578,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00579960",
+   "name": "FUN_00579960",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0057a860",
+   "name": "printPauseTexture",
+   "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0057a920",
+   "name": "printPause",
+   "accuracy": 0.11594202898550725,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0057aa30",
+   "name": "printMenu2",
+   "accuracy": 0.03980099502487562,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0057cd20",
    "name": "FUN_0057cd20",
    "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0057d220",
+   "name": "cameramodechange",
+   "accuracy": 0.0546448087431694,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0057d490",
+   "name": "padconfig",
+   "accuracy": 0.9563361148845333,
    "effective": false,
    "stub": false,
    "library": false
@@ -14074,9 +14650,33 @@
    "library": false
   },
   {
+   "address": "0x00583720",
+   "name": "FUN_00583720",
+   "accuracy": 0.19230769230769232,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00587710",
    "name": "DestroyLBOn",
    "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00587960",
+   "name": "DrawButtonACBB",
+   "accuracy": 0.03125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00587d10",
+   "name": "DrawButtonXUBB",
+   "accuracy": 0.03007518796992481,
    "effective": false,
    "stub": true,
    "library": false
@@ -14091,11 +14691,11 @@
   },
   {
    "address": "0x005888f0",
-   "name": "FUN_005888f0",
-   "accuracy": 0.36363636363636365,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::c_str",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00588920",
@@ -14115,19 +14715,19 @@
   },
   {
    "address": "0x005889f0",
-   "name": "FUN_005889f0",
-   "accuracy": 0.42105263157894735,
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::size",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00588a10",
-   "name": "FUN_00588a10",
-   "accuracy": 0.375,
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::operator[]",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00588a30",
@@ -14184,6 +14784,14 @@
    "effective": false,
    "stub": true,
    "library": false
+  },
+  {
+   "address": "0x0058a420",
+   "name": "Magic::MATH::Math::AngleUniform<float>",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0058a490",
@@ -14938,6 +15546,22 @@
    "library": false
   },
   {
+   "address": "0x005a4180",
+   "name": "AvaGetOnseiSettei",
+   "accuracy": 0.47058823529411764,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a41a0",
+   "name": "AvaSetOnseiSettei",
+   "accuracy": 0.3076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005a42f0",
    "name": "AvaSetTextSettei",
    "accuracy": 0.25,
@@ -15317,6 +15941,14 @@
    "address": "0x005a6590",
    "name": "SpLoop",
    "accuracy": 0.05,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005a67c0",
+   "name": "SpLoopOnlyDisplay",
+   "accuracy": 0.06722689075630252,
    "effective": false,
    "stub": true,
    "library": false
@@ -18122,6 +18754,14 @@
    "library": false
   },
   {
+   "address": "0x005fb840",
+   "name": "std::list<LBOnData,std::allocator<LBOnData> >::clear",
+   "accuracy": 0.9795918367346939,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
    "address": "0x005fbb50",
    "name": "SetAdvaTitleMenuTask2",
    "accuracy": 1.0,
@@ -19477,6 +20117,14 @@
    "address": "0x0067e600",
    "name": "njRotateZXY",
    "accuracy": 0.03278688524590164,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0067edf0",
+   "name": "SOCIniFile::FUN_0067edf0",
+   "accuracy": 0.23076923076923078,
    "effective": false,
    "stub": true,
    "library": false
@@ -28378,6 +29026,30 @@
    "library": false
   },
   {
+   "address": "0x00922900",
+   "name": "Magic::RenderCore::Texture::Load",
+   "accuracy": 0.10344827586206896,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00922bf0",
+   "name": "Magic::RenderCore::Texture::~Texture",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00922c80",
+   "name": "Magic::RenderCore::Texture::Texture",
+   "accuracy": 0.1518987341772152,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009243e0",
    "name": "FUN_009243e0",
    "accuracy": 1.0,
@@ -28424,6 +29096,46 @@
    "effective": false,
    "stub": true,
    "library": false
+  },
+  {
+   "address": "0x00929760",
+   "name": "Magic::Base::Timer::FUN_00929760",
+   "accuracy": 0.30303030303030304,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009297b0",
+   "name": "Magic::Base::Timer::Timer",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0092b130",
+   "name": "Magic::Base::IniFile::IniFile",
+   "accuracy": 0.1388888888888889,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0092b1b0",
+   "name": "Magic::Base::IniFile::FUN_0092b1b0",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0092b960",
+   "name": "Magic::Base::IniFile::~IniFile",
+   "accuracy": 0.04521739130434783,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0094b151",
@@ -28515,5 +29227,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "67ad3c1c9999bfc842c0943bdbd9fa388c8b9c4eb88ad724957a7bb4c623e01c"
+ "inputs_sha256": "66fc19e6e13cc0f04c162bb022a5af00d2f4e3099fd2e5fe120d0621a82adcdd"
 }
