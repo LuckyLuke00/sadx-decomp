@@ -30,6 +30,12 @@ long ComeBackNpcMiles()
 	return (long)0;
 }
 
+// STUB: SADX 0x005acaf0
+long FreeNpcMilesPlayerTask()
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x005acb60
 struct task *CreateNpcMilesPlayerTask()
 {
@@ -73,10 +79,23 @@ float FUN_005ad7f0(float *param_1)
 	return (float)0;
 }
 
-// STUB: SADX 0x005ad830
+// FUNCTION: SADX 0x005ad830
 float FUN_005ad830(float *param_1, float *param_2)
 {
-	return (float)0;
+	float local_ci;
+	float local_10;
+	float local_8g;
+
+	local_10 = param_2[0] - param_1[0];
+	local_8g = param_2[1] - param_1[1];
+	local_ci = param_2[2] - param_1[2];
+	local_10 = local_10 * local_10 + local_8g * local_8g + local_ci * local_ci;
+	return njSqrt(local_10);
+}
+
+// STUB: SADX 0x005ad890
+void FUN_005ad890(struct task *param_1, float *param_2, float *param_3)
+{
 }
 
 // FUNCTION: SADX 0x005ada20

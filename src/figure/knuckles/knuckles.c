@@ -1,4 +1,5 @@
 #include "decls.h"
+long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 extern int DAT_05cc603c;
 extern int DAT_05cc6040;
 extern int DAT_06274af0;
@@ -29,8 +30,32 @@ void FUN_00529090(int param_1, int param_2, int param_3)
 {
 }
 
+// STUB: SADX 0x005290f0
+int FUN_005290f0(struct taskwk *tpw, int param_2, struct taskwk *tpw2)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x005293e0
 long FUN_005293e0(char *twp, char *param_2, char *param_3)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0052aea0
+long FUN_0052aea0(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0052bb80
+long KnucklesCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0052bc30
+long FUN_0052bc30(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
 }
@@ -67,6 +92,16 @@ void KnucklesChargeEffect(struct task *tp)
 	tp->exec = KnucklesChargeEffectExe;
 }
 
+// STUB: SADX 0x0052c370
+void KnucklesChargeEffectExe(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0052c440
+void FUN_0052c440(int param_1, int param_2, int param_3)
+{
+}
+
 // STUB: SADX 0x0052dd10
 void KnucklesLaterSE(struct task *tp)
 {
@@ -85,6 +120,32 @@ void KnucklesDirectAheadEnd(struct task *tp)
 
 // STUB: SADX 0x0052e760
 long Knuckles_Status(long plnmb)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0052ea20
+void KnucklesTouchWallInit(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0052ed90
+void Knuckles_KakeraGame(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0052ee30
+void Knuckles_KakeraGamePutRadar1(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0052f7a0
+void Knuckles_KakeraGameFinish(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0052f9b0
+long Knuckles_KakeraGame_InThereGroundEme(struct NJS_POINT3 *chkpos)
 {
 	return (long)0;
 }

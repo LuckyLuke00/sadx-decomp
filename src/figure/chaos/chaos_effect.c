@@ -1,4 +1,7 @@
 #include "decls.h"
+void setParticleDispTask(struct taskwk *twp);
+extern struct NJS_TEXLIST texlist_chaos_effect;
+void DestroyTask(struct task *tp);
 extern struct taskwk *DAT_060df330[0x80];
 extern struct NJS_SPRITE DAT_060df534;
 extern struct NJS_SPRITE DAT_060df6d8;
@@ -30,6 +33,11 @@ void LoadEffectTexture()
 	DAT_060df554 = 0.2f;
 }
 
+// STUB: SADX 0x008c44c0
+void dispEffectChaosTracks(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008c46c0
 void setDrop(struct taskwk *twp, int num, float size, float yofs)
 {
@@ -37,6 +45,11 @@ void setDrop(struct taskwk *twp, int num, float size, float yofs)
 
 // STUB: SADX 0x008c4ad0
 void SetEffectPunchTameParticle(struct NJS_POINT3 *pos, int num)
+{
+}
+
+// STUB: SADX 0x008c4b40
+void dispEffectChaos0LightParticle_tame_init(struct task *tp)
 {
 }
 
@@ -58,6 +71,11 @@ void SetEffectPunchTame(struct NJS_POINT3 *pos)
 		*(float *)&local_cg->scl.x = DAT_060df6f8;
 		local_cg->timer.ptr = pos;
 	}
+}
+
+// STUB: SADX 0x008c4dd0
+void dispEffectChaos0AttackA(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x008c4fb0
@@ -117,6 +135,16 @@ void setParticleDispTask(struct taskwk *twp)
 	}
 }
 
+// STUB: SADX 0x008c53d0
+void SetEffectPunch(struct NJS_POINT3 *pos, struct NJS_POINT3 *pos_old, int num)
+{
+}
+
+// STUB: SADX 0x008c5520
+void dispEffectChaos0LightParticle(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x008c5700
 void dispEffectChaos0AttackB_init(struct task *tp)
 {
@@ -151,6 +179,11 @@ void dispEffectChaos0AttackB(struct task *tp)
 			DAT_060df530 = DAT_060df530 + 1;
 		}
 	}
+}
+
+// STUB: SADX 0x008c57c0
+void drawEffectChaos0EffectB(struct task *tp)
+{
 }
 
 // STUB: SADX 0x008c5960

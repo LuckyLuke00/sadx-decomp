@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_0053e4f0(struct taskwk *param_1, int param_2, int param_3);
+struct task;
 extern struct NJS_TEXLIST texlist_m_sboard_snowboard;
 extern void *DAT_06298ce8;
 extern void *DAT_06298ccc;
@@ -40,10 +42,44 @@ void MilesDestruct(struct task *tp)
 	ReleasePlayersTexture(2);
 }
 
+// STUB: SADX 0x00536270
+void FUN_00536270(struct task *tp, void *param_2)
+{
+}
+
+// STUB: SADX 0x005370b0
+float GetUnitVector(struct NJS_POINT3 *vec)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x00538070
+void MilesSBoardSlideSECall(struct taskwk *twp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x00538480
 int FUN_00538480(void *param_1, void *param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x005394e0
+long MilesCheckAutoPilot(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0053a180
+long MilesCheckBeInTheAir(struct taskwk *twp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0053a220
+long FUN_0053a220(struct taskwk *twp, struct playerwk *pwp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x0053a2c0
@@ -52,8 +88,30 @@ int FUN_0053a2c0(char *param_1, int param_2)
 	return (int)0;
 }
 
+// STUB: SADX 0x0053ac60
+void MilesThrowTheObjectOut(struct taskwk *twp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0053b090
+void MilesHoldOnPillar(struct taskwk *twp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0053b120
+int FUN_0053b120(struct task *tp)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x0053b210
 long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0053b270
+long MilesCheckStartTAttack(struct taskwk *twp, struct playerwk *pwp)
 {
 	return (long)0;
 }
@@ -65,6 +123,18 @@ void FUN_0053ba40(void)
 	*(int *)((char *)*(void **)((char *)DAT_06298ccc + 0x3c) + 0x14) = 0;
 	*(int *)((char *)*(void **)((char *)DAT_06298ccc + 0x30) + 4) = *(int *)((char *)DAT_06276c34 + 0x14);
 	*(int *)((char *)*(void **)((char *)DAT_06298ccc + 0x34) + 4) = *(int *)((char *)DAT_06276c34 + 0x18);
+}
+
+// STUB: SADX 0x0053be50
+int FUN_0053be50(char param_1, struct NJS_POINT3 *param_2)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0053bee0
+int FUN_0053bee0(unsigned char param_1, struct NJS_POINT3 *param_2)
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x0053ddc0
@@ -87,6 +157,11 @@ void MilesFaceMotion(struct task *tp)
 	*(long *)((char *)local_8 + 0x1c) = *(long *)DAT_06298ce8;
 	tp->dest = PlayerFaceMotionEnd;
 	tp->exec = MilesFaceMotionExec;
+}
+
+// STUB: SADX 0x0053de50
+void MilesFaceMotionExec(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x0053df40

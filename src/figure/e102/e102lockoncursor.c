@@ -1,6 +1,16 @@
 #include "decls.h"
 void FUN_005e5770(struct task *param_1);
 
+// STUB: SADX 0x005e5440
+void E102LockOnCursor_dest(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005e54f0
+void DispMultiDigit(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005e5750
 struct task *GetE102LockCsTaskPointer(struct task *beam_tp)
 {

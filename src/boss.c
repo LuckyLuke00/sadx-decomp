@@ -36,3 +36,8 @@ void FUN_005dbda0(int param_1)
 void FUN_005dbe10(struct taskwk *twp, struct bosswk *bwp)
 {
 }
+
+// STUB: SADX 0x005dcde0
+void BTerminateInterpolateMotion(struct taskwk *twp, struct bosswk *bwp)
+{
+}

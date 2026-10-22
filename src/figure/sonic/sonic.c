@@ -5,7 +5,6 @@ extern unsigned char DAT_05bb00a9;
 int FUN_0054f7b0(struct playerwk *param_1, unsigned short param_2);
 int FUN_0054f920(int param_1);
 extern short *DAT_05baf368;
-extern int DAT_05bb00a8;
 
 // FUNCTION: SADX 0x005471b0
 void SonicDestruct(struct task *tp)
@@ -27,8 +26,47 @@ void SonicDestruct(struct task *tp)
 	ReleasePlayersTexture(0);
 }
 
+// STUB: SADX 0x00547230
+void FUN_00547230(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00547a80
+void FUN_00547a80(struct task *param_1, struct task *param_2, struct taskwk *param_3)
+{
+}
+
+// STUB: SADX 0x00548b90
+void SonicHomeOnTarget(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x00549ed0
 long SonicCheckJumpCancel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0054bdd0
+long SonicCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0054c330
+long SonicCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0054c3e0
+long SonicCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0054c480
+long SonicCheckStartSpin(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
 }
@@ -37,6 +75,17 @@ long SonicCheckJumpCancel(struct taskwk *twp, struct motionwk2 *mwp, struct play
 int FUN_0054c9d0(unsigned char *param_1, int param_2, int param_3)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0054ca40
+long FUN_0054ca40(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0054d450
+void SonicThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
 }
 
 // STUB: SADX 0x0054d870
@@ -57,6 +106,12 @@ void SonicFaceMotion(struct task *tp)
 // STUB: SADX 0x0054e460
 void SonicHeadSpikesShakeEnd(struct task *tp)
 {
+}
+
+// STUB: SADX 0x0054e480
+int FUN_0054e480(char param_1, float *param_2)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x0054ea70
@@ -157,14 +212,38 @@ void ManageSonicLightSpinChargeExit(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x0054ed30
+void SonicSnowBoard(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0054f150
+void SuperSonicStatusManager(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0054f210
 void SuperSonicStatusManagerDestructor(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0054f280
+// FUNCTION: SADX 0x0054f280
 void SuperSonicStatusManagerExecutor(struct task *tp)
 {
+	struct anywk *local_10;
+	struct playerwk *local_8g;
+	unsigned char local_9;
+	local_10 = tp->awp;
+	local_9 = *(unsigned char *)local_10;
+	local_8g = GetPlayerWorkPointer(local_9);
+	if (local_8g == 0)
+	{
+		DestroyTask(tp);
+	}
+	else if ((local_8g->equipment & 0x8000) == 0)
+	{
+		DestroyTask(tp);
+	}
 }
 
 // FUNCTION: SADX 0x0054f2e0
@@ -266,6 +345,11 @@ int FUN_0054f920(int param_1)
 	}
 	*(int *)((char *)local_8->twp + 0xc) = param_1;
 	return 1;
+}
+
+// STUB: SADX 0x0054f960
+void FUN_0054f960(struct task *param_1)
+{
 }
 
 // FUNCTION: SADX 0x0054fa60

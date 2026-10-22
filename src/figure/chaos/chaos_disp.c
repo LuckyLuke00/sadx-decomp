@@ -1,4 +1,8 @@
 #include "decls.h"
+extern void njPushMatrix(float *param_1);
+extern void njPopMatrix(int param_1);
+extern void CHAOS_SetMeshMode(int sw);
+extern void CHAOS_DrawObject(struct obj *o);
 void ChaosSurfacePatternChange(struct chaoswk *chwp);
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
 void njPushMatrix(float *);
@@ -9,6 +13,21 @@ void CHAOS_SetMeshMode(int sw);
 void CHAOS_DrawObject(struct obj *o);
 void njPopMatrix(int);
 extern struct obj object_c0_manju_c0_manju[1];
+
+// STUB: SADX 0x008c83f0
+void InitDisplayChaosCrashSphere(struct taskwk *twp, struct chaoswk *chwp, int num)
+{
+}
+
+// STUB: SADX 0x008c8580
+void DisplayChaosCrashSphere0(struct taskwk *twp, struct chaoswk *chwp)
+{
+}
+
+// STUB: SADX 0x008c86b0
+void DisplayChaosCrashSphere(struct taskwk *twp, struct chaoswk *chwp, float param)
+{
+}
 
 // STUB: SADX 0x008c87c0
 struct task *SetTaskDispChaosWater(long ang)

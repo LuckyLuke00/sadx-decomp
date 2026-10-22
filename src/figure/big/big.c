@@ -1,4 +1,5 @@
 #include "decls.h"
+long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 extern unsigned short DAT_05cd296c;
 void FUN_004bee10(void);
 long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
@@ -29,6 +30,18 @@ void BigDestruct(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x005098c0
+long BigCheckWater(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00509950
+long BigCheckAtack(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x00509a00
 long BigCheckAtack_W(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
@@ -39,6 +52,12 @@ long BigCheckAtack_W(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk 
 		return 1;
 	}
 	return 0;
+}
+
+// STUB: SADX 0x0050a9a0
+long BigCheckFloat(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x0050aa30
@@ -53,8 +72,42 @@ long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	return (long)0;
 }
 
+// STUB: SADX 0x0050aaf0
+long BigCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0050ab80
+long BigCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0050ac30
+long FUN_0050ac30(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0050bc80
+void BigGetFloat(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x0050c310
 void BigEarsSwingEnd(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0050c330
+long FUN_0050c330(long param_1, float *param_2)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0050c8b0
+void BigDirectAheadEnd(struct task *tp)
 {
 }
 
@@ -68,6 +121,16 @@ long ChkFishingThrowNow(struct task *tp)
 int FUN_0050cbb0(char *param_1)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0050cbf0
+void FUN_0050cbf0(struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0050cd80
+void bigActMissSet(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
 }
 
 // FUNCTION: SADX 0x0050ce30

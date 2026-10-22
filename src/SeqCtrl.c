@@ -1,4 +1,15 @@
 #include "decls.h"
+void SeqTaskFadeOut(struct task *tp);
+void SeqTaskFadeIn(struct task *tp);
+void SeqCtrl();
+long FUN_004f4bb0();
+long GetPlayerNumber();
+void SeqResetLastScenario();
+void EventBossExecutor(struct task *tp);
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
+extern char DAT_05baf548[];
+void FUN_004f4b70(void);
+void SeqPlayable(long playerno);
 void ADX_Close();
 void EV_PcNpcEnd();
 void plboss_destruct(struct task *tp);
@@ -29,6 +40,11 @@ void FUN_004f5550(int param_1);
 extern long slSeqRunning;
 extern int DAT_05b3ea28;
 extern int DAT_05bafd4c;
+
+// STUB: SADX 0x004f49f0
+void SeqInit()
+{
+}
 
 // FUNCTION: SADX 0x004f4b70
 void FUN_004f4b70(void)
@@ -74,10 +90,25 @@ void SeqSetPlayer(int no)
 	DAT_05baf544 = (int)SeqGetSectionList(DAT_05bafd18);
 }
 
+// STUB: SADX 0x004f4c40
+void SeqSetSection(int sec)
+{
+}
+
+// STUB: SADX 0x004f4e10
+void SeqInitStage()
+{
+}
+
 // STUB: SADX 0x004f4f20
 int chk_advstage()
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x004f4fe0
+void SeqCtrl()
+{
 }
 
 // FUNCTION: SADX 0x004f51d0
@@ -114,6 +145,11 @@ void SeqNext()
 
 // STUB: SADX 0x004f5270
 void SeqEndSection()
+{
+}
+
+// STUB: SADX 0x004f52e0
+void SeqEvent(long no)
 {
 }
 
@@ -287,6 +323,11 @@ void SeqSetClearActionFlag(long stg)
 long CheckEggCarrierInTheSea(void)
 {
 	return SeqCheckFlag(flgEggCarrierInTheSea[GetPlayerNumber()]);
+}
+
+// STUB: SADX 0x004f5830
+void EV_PcNpcInit()
+{
 }
 
 // STUB: SADX 0x004f58c0
