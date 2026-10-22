@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 void njPushMatrix(float *param_1);
@@ -42,6 +43,12 @@ extern int DAT_05ba247c;
 extern int DAT_05ba2480;
 extern int DAT_05ba2484;
 
+// STUB: SADX 0x004cfb80
+long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004cfcb0
 long CCL_InitShare(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id)
 {
@@ -51,6 +58,55 @@ long CCL_InitShare(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned
 // STUB: SADX 0x004cfd90
 void CCL_ClearInfo(struct taskwk *twp)
 {
+}
+
+// FUNCTION: SADX 0x004d0320
+void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
+{
+	if ((info->attr & 0x20) != 0)
+	{
+		center->x = info->center.x;
+		center->y = info->center.y;
+		center->z = info->center.z;
+		return;
+	}
+	njPushMatrix(_nj_unit_matrix_);
+	njTranslateEx(&twp->pos);
+	if ((info->attr & 0x8000) == 0)
+	{
+		if ((info->attr & 0x200) != 0)
+		{
+			if (twp->ang.y != 0)
+			{
+				njRotateY(0, twp->ang.y);
+			}
+			if (twp->ang.z != 0)
+			{
+				njRotateZ(0, (unsigned short)twp->ang.z);
+			}
+			if (twp->ang.x != 0)
+			{
+				njRotateX(0, twp->ang.x);
+			}
+		}
+		else
+		{
+			if (twp->ang.z != 0)
+			{
+				njRotateZ(0, (unsigned short)twp->ang.z);
+			}
+			if (twp->ang.x != 0)
+			{
+				njRotateX(0, twp->ang.x);
+			}
+			if (twp->ang.y != 0)
+			{
+				njRotateY(0, twp->ang.y);
+			}
+		}
+	}
+	njCalcPoint(0, &info->center, center);
+	njPopMatrixEx();
 }
 
 // FUNCTION: SADX 0x004d0460
@@ -154,6 +210,11 @@ float FUN_004d0ad0(float *param_1, float *param_2)
 	return (float)0;
 }
 
+// STUB: SADX 0x004d0b30
+void FUN_004d0b30(struct taskwk *param_1, struct taskwk *param_2, float param_3)
+{
+}
+
 // FUNCTION: SADX 0x004d0ca0
 int FUN_004d0ca0(int param_1, int param_2, int param_3, int param_4)
 {
@@ -177,6 +238,27 @@ int FUN_004d0ca0(int param_1, int param_2, int param_3, int param_4)
 long CCL_CheckPushOut(struct colliwk *cwp1, struct CCL_INFO *info1, struct colliwk *cwp2, struct CCL_INFO *info2)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004d13e0
+void CCL_CheckDamage(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
+}
+
+// STUB: SADX 0x004d1e60
+void CCL_SetRideFlag(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
+}
+
+// STUB: SADX 0x004d1f80
+long CCL_GetRectSideNum(struct NJS_POINT3 *pos, float a, float c)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004d28b0
+void FUN_004d28b0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3, int param_4, struct NJS_POINT3 *param_5, struct NJS_POINT3 *param_6)
+{
 }
 
 // FUNCTION: SADX 0x004d2a50
@@ -203,6 +285,86 @@ void ConvertPositionGlobalToLocal(struct NJS_POINT3 *center1, struct NJS_POINT3 
 // STUB: SADX 0x004d2b00
 void ConvertPositionLocalToGlobal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v)
 {
+}
+
+// FUNCTION: SADX 0x004d3180
+void FUN_004d3180(void *param_1, void *param_2, float *param_3)
+{
+	struct NJS_POINT3 local_14;
+
+	local_14.x = 0.0f;
+	local_14.y = 1.0f;
+	local_14.z = 0.0f;
+	njPushMatrix(_nj_unit_matrix_);
+	njTranslateEx((char *)param_1 + 0x20);
+	if ((*(int *)((char *)param_2 + 4) & 0x200) != 0)
+	{
+		if (((*(int *)((char *)param_2 + 4) & 0x20) == 0) && ((*(int *)((char *)param_2 + 4) & 0x8000) == 0))
+		{
+			if (*(int *)((char *)param_1 + 0x18) != 0)
+			{
+				njRotateY(0, *(short *)((char *)param_1 + 0x18));
+			}
+			if (*(int *)((char *)param_1 + 0x1c) != 0)
+			{
+				njRotateZ(0, (int)*(unsigned short *)((char *)param_1 + 0x1c));
+			}
+			if (*(int *)((char *)param_1 + 0x14) != 0)
+			{
+				njRotateX(0, *(short *)((char *)param_1 + 0x14));
+			}
+		}
+		if (*(int *)((char *)param_2 + 0x28) != 0)
+		{
+			njRotateY(0, *(short *)((char *)param_2 + 0x28));
+		}
+		if (*(int *)((char *)param_2 + 0x2c) != 0)
+		{
+			njRotateZ(0, (int)*(unsigned short *)((char *)param_2 + 0x2c));
+		}
+		if (*(int *)((char *)param_2 + 0x24) != 0)
+		{
+			njRotateX(0, *(short *)((char *)param_2 + 0x24));
+		}
+	}
+	else
+	{
+		if (((*(int *)((char *)param_2 + 4) & 0x20) == 0) && ((*(int *)((char *)param_2 + 4) & 0x8000) == 0))
+		{
+			if (*(int *)((char *)param_1 + 0x1c) != 0)
+			{
+				njRotateZ(0, (int)*(unsigned short *)((char *)param_1 + 0x1c));
+			}
+			if (*(int *)((char *)param_1 + 0x14) != 0)
+			{
+				njRotateX(0, *(short *)((char *)param_1 + 0x14));
+			}
+			if (*(int *)((char *)param_1 + 0x18) != 0)
+			{
+				njRotateY(0, *(short *)((char *)param_1 + 0x18));
+			}
+		}
+		if (*(int *)((char *)param_2 + 0x2c) != 0)
+		{
+			njRotateZ(0, (int)*(unsigned short *)((char *)param_2 + 0x2c));
+		}
+		if (*(int *)((char *)param_2 + 0x24) != 0)
+		{
+			njRotateX(0, *(short *)((char *)param_2 + 0x24));
+		}
+		if (*(int *)((char *)param_2 + 0x28) != 0)
+		{
+			njRotateY(0, *(short *)((char *)param_2 + 0x28));
+		}
+	}
+	njCalcVector(0, &local_14, (struct NJS_POINT3 *)param_3);
+	njPopMatrixEx();
+}
+
+// STUB: SADX 0x004d5160
+int FUN_004d5160(float *param_1, float param_2, float param_3)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x004d52d0
@@ -233,8 +395,28 @@ void FUN_004d5330(char *param_1, int param_2, struct NJS_POINT3 *param_3)
 	}
 }
 
+// STUB: SADX 0x004d7dd0
+void CCL_CalcColliPO(struct taskwk *twp1, struct taskwk *twp2)
+{
+}
+
 // STUB: SADX 0x004d7f60
 void FUN_004d7f60(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
+}
+
+// STUB: SADX 0x004d8050
+void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
+{
+}
+
+// STUB: SADX 0x004d8210
+void CCL_CalcColliPW(struct taskwk *twp1, struct taskwk *twp2)
+{
+}
+
+// STUB: SADX 0x004d8d20
+void CCL_E2CheckColli()
 {
 }
 
@@ -276,6 +458,11 @@ void CCL_O2CheckColli()
 			CCL_CalcColli(*local_14, *local_10m);
 		}
 	}
+}
+
+// STUB: SADX 0x004d8f80
+void CCL_CalcRange(struct taskwk *twp)
+{
 }
 
 // FUNCTION: SADX 0x004d90f0

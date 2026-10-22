@@ -8,6 +8,12 @@ unsigned char GetGGClearNum(long s32Emblem, long s32Mission)
 	return (unsigned char)0;
 }
 
+// STUB: SADX 0x0056f630
+long isCheckGGApper_Emblem()
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0056f770
 long InitGGMessage()
 {

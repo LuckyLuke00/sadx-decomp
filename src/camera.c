@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int DAT_05b42990;
+void CameraReleaseCollisionCamera();
+extern struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
 extern float DAT_05b429a8;
 extern float DAT_05b429ac;
 extern float DAT_05b429b0;
@@ -90,6 +93,11 @@ void SetViewAngle(long new_view_angle)
 	DAT_05b42a80 = DAT_05b42968;
 }
 
+// STUB: SADX 0x004baea0
+void SetCameraTask()
+{
+}
+
 // FUNCTION: SADX 0x004bafb0
 void FUN_004bafb0(void)
 {
@@ -132,6 +140,22 @@ void AddCameraStage(short ssStep)
 	DAT_05b428e8 = 0;
 }
 
+// STUB: SADX 0x004bb340
+void FUN_004bb340()
+{
+}
+
+// STUB: SADX 0x004bb4f0
+void CameraManager()
+{
+}
+
+// STUB: SADX 0x004bb800
+long CameraCollisionShpere(struct _OBJ_CAMERAENTRY *pCameraEntry)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x004bb9a0
 void CameraSetCameraMi(struct _OBJ_CAMERAENTRY *pCameraEntry)
 {
@@ -165,6 +189,16 @@ void CameraReleaseCollisionCamera()
 
 // STUB: SADX 0x004bbd30
 void FUN_004bbd30(short param_1, struct _OBJ_CAMERAENTRY *param_2)
+{
+}
+
+// STUB: SADX 0x004bbdd0
+void CameraManagerRegional(short ssCameraEntry, struct _OBJ_CAMERAENTRY *pCameraEntry)
+{
+}
+
+// STUB: SADX 0x004bbf90
+void CameraManagerEvent(short ssCameraEntry, struct _OBJ_CAMERAENTRY *pCameraEntry)
 {
 }
 
@@ -275,6 +309,212 @@ void AddCameraOffset(struct NJS_POINT3 *vecOffset)
 	*(float *)((char *)pCameraSystemWork + 0x98) += vecOffset->x;
 	*(float *)((char *)pCameraSystemWork + 0x9c) += vecOffset->y;
 	*(float *)((char *)pCameraSystemWork + 0xa0) += vecOffset->z;
+}
+
+// FUNCTION: SADX 0x004be350
+void CameraCancelCamera()
+{
+	int local_10;
+	int local_cj;
+	char local_5i;
+	local_5i = *(char *)((char *)pCameraSystemWork + 8);
+	local_10 = *(char *)((char *)DAT_05b42974 + 1 + *(short *)((char *)pCameraSystemWork + 4) * 64);
+	local_cj = *(char *)((char *)DAT_05b42974 + 1 + *(short *)((char *)pCameraSystemWork + local_5i * 2 + 0x30) * 64);
+	*(short *)((char *)pCameraSystemWork + 4) = *(short *)((char *)pCameraSystemWork + local_5i * 2 + 0x30);
+	*(char *)((char *)pCameraSystemWork + 0xb) = *(char *)((char *)pCameraSystemWork + local_5i + 0x3c);
+	*(char *)((char *)pCameraSystemWork + 6) = *(char *)((char *)pCameraSystemWork + local_5i + 0x78);
+	*(int *)((char *)pCameraSystemWork + 0xc) = *(int *)((char *)pCameraSystemWork + local_5i * 4 + 0x44);
+	*(char *)((char *)pCameraSystemWork + 8) = *(char *)((char *)pCameraSystemWork + local_5i * 4 + 0x18);
+	if (0xa <= local_10 && local_cj >= 0xa)
+	{
+		*(char *)((char *)pCameraSystemWork + 9) = 0;
+	}
+	else
+	{
+		*(char *)((char *)pCameraSystemWork + 9) = *(char *)((char *)pCameraSystemWork + local_5i + 0x7e);
+	}
+	if (local_10 < local_cj)
+	{
+		DAT_05b42990 = 1;
+	}
+	if (0xa <= local_10 && local_cj >= 0xa)
+	{
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)DAT_05b4298c + 4);
+	}
+	else
+	{
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)pCameraSystemWork + local_5i * 4 + 0x5c);
+	}
+	*(char *)((char *)pCameraSystemWork + 7) = *(char *)((char *)DAT_05b4299c[0] + (*(char *)((char *)pCameraSystemWork + 6)) * 16 + 5);
+	*(int *)pCameraSystemWork = 1;
+	*(int *)((char *)pCameraSystemWork + 0x14) = 0;
+	*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+}
+
+// FUNCTION: SADX 0x004be4d0
+void CameraSetNormalCamera(short ssCameraMode, unsigned char ucAdjustType)
+{
+	if (*(char *)((char *)pCameraSystemWork + 8) == 0)
+	{
+		*(int *)((char *)pCameraSystemWork + 0x18) = *(char *)((char *)pCameraSystemWork + 8);
+		*(short *)((char *)pCameraSystemWork + 0x30) = *(short *)((char *)pCameraSystemWork + 4);
+		*(char *)((char *)pCameraSystemWork + 0x3c) = *(char *)((char *)pCameraSystemWork + 0xb);
+		*(char *)((char *)pCameraSystemWork + 0x78) = *(char *)((char *)pCameraSystemWork + 6);
+		*(int *)((char *)pCameraSystemWork + 0x44) = *(int *)((char *)pCameraSystemWork + 0xc);
+		if (*(short *)((char *)pCameraSystemWork + 4) != -1)
+		{
+			*(char *)((char *)pCameraSystemWork + 0x7e) = *(char *)((char *)DAT_05b42974 + *(short *)((char *)pCameraSystemWork + 4) * 64 + 2);
+		}
+		else
+		{
+			*(char *)((char *)pCameraSystemWork + 0x7e) = 0x15;
+		}
+		*(int *)((char *)pCameraSystemWork + 0x5c) = *(int *)((char *)DAT_05b4298c + *(char *)((char *)pCameraSystemWork + 0x7e) * 8 + 4);
+		*(short *)((char *)pCameraSystemWork + 4) = -1;
+		*(char *)((char *)pCameraSystemWork + 8) = 0;
+		*(char *)((char *)pCameraSystemWork + 6) = ssCameraMode;
+		*(int *)((char *)pCameraSystemWork + 0xc) = *(int *)((char *)DAT_05b4299c[0] + ssCameraMode * 16);
+		*(char *)((char *)pCameraSystemWork + 9) = ucAdjustType;
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)DAT_05b4298c + ucAdjustType * 8 + 4);
+		*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+		if (*(int *)((char *)DAT_05b4298c + *(char *)((char *)pCameraSystemWork + 9) * 8) != 0)
+		{
+			*(char *)((char *)pCameraSystemWork + 0xb) = *(char *)((char *)pCameraSystemWork + 0xb) | 1;
+		}
+		*(char *)((char *)pCameraSystemWork + 7) = *(char *)((char *)DAT_05b4299c[0] + *(char *)((char *)pCameraSystemWork + 6) * 16 + 5);
+		*(int *)pCameraSystemWork = 1;
+	}
+}
+
+// STUB: SADX 0x004be650
+void CameraSetEventCamera(short ssCameraMode, unsigned char ucAdjustType)
+{
+}
+
+// FUNCTION: SADX 0x004be800
+void CameraSetEventCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), unsigned char ucAdjustType, signed char scCameraDirect)
+{
+	CameraReleaseCollisionCamera();
+	if ((signed char)*(char *)((char *)pCameraSystemWork + 8) <= 2)
+	{
+		if (*(char *)((char *)pCameraSystemWork + 8) != 2)
+		{
+			*(int *)((char *)pCameraSystemWork + 0x20) = *(char *)((char *)pCameraSystemWork + 8);
+			*(short *)((char *)pCameraSystemWork + 0x34) = *(short *)((char *)pCameraSystemWork + 4);
+			*(char *)((char *)pCameraSystemWork + 0x3e) = *(char *)((char *)pCameraSystemWork + 0xb);
+			*(char *)((char *)pCameraSystemWork + 0x7a) = *(char *)((char *)pCameraSystemWork + 6);
+			*(int *)((char *)pCameraSystemWork + 0x4c) = *(int *)((char *)pCameraSystemWork + 0xc);
+			if (*(short *)((char *)pCameraSystemWork + 4) != -1)
+			{
+				*(char *)((char *)pCameraSystemWork + 0x80) = *(char *)(DAT_05b42974 + *(short *)((char *)pCameraSystemWork + 4) * 64 + 2);
+			}
+			else
+			{
+				*(char *)((char *)pCameraSystemWork + 0x80) = 0x15;
+			}
+			*(int *)((char *)pCameraSystemWork + 0x64) = *(int *)((char *)DAT_05b4298c + *(char *)((char *)pCameraSystemWork + 0x80) * 8 + 4);
+			*(char *)((char *)pCameraSystemWork + 8) = 2;
+		}
+		*(short *)((char *)pCameraSystemWork + 4) = -1;
+		*(char *)((char *)pCameraSystemWork + 6) = 0xff;
+		*(int *)((char *)pCameraSystemWork + 0xc) = (int)fnCamera;
+		*(char *)((char *)pCameraSystemWork + 9) = ucAdjustType;
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)DAT_05b4298c + *(char *)((char *)pCameraSystemWork + 9) * 8 + 4);
+		*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+		*(char *)((char *)pCameraSystemWork + 0xb) = 2;
+		if (*(int *)((char *)DAT_05b4298c + *(char *)((char *)pCameraSystemWork + 9) * 8) != 0)
+		{
+			*(char *)((char *)pCameraSystemWork + 0xb) = *(char *)((char *)pCameraSystemWork + 0xb) | 1;
+		}
+		*(char *)((char *)pCameraSystemWork + 7) = scCameraDirect;
+		*(int *)pCameraSystemWork = 1;
+	}
+}
+
+// FUNCTION: SADX 0x004be9a0
+void CameraReleaseEventCamera()
+{
+	if (*(char *)((char *)pCameraSystemWork + 8) == 2)
+	{
+		*(short *)((char *)pCameraSystemWork + 4) = *(short *)((char *)pCameraSystemWork + 0x34);
+		*(char *)((char *)pCameraSystemWork + 0xb) = *(char *)((char *)pCameraSystemWork + 0x3e);
+		*(char *)((char *)pCameraSystemWork + 6) = *(char *)((char *)pCameraSystemWork + 0x7a);
+		*(int *)((char *)pCameraSystemWork + 0xc) = *(int *)((char *)pCameraSystemWork + 0x4c);
+		*(char *)((char *)pCameraSystemWork + 9) = *(char *)((char *)pCameraSystemWork + 0x80);
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)pCameraSystemWork + 0x64);
+		*(char *)((char *)pCameraSystemWork + 8) = *(char *)((char *)pCameraSystemWork + 0x20);
+		*(char *)((char *)pCameraSystemWork + 7) = *(char *)((char *)DAT_05b4299c[0] + (*(char *)((char *)pCameraSystemWork + 6)) * 16 + 5);
+		*(int *)pCameraSystemWork = 1;
+		*(int *)((char *)pCameraSystemWork + 0x14) = 0;
+		*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+		if (*(char *)((char *)pCameraSystemWork + 8) == 0 && DAT_05b42a78 != -1)
+		{
+			CameraSetNormalCamera((short)DAT_05b42a78, DAT_05b42994);
+		}
+	}
+	DAT_05b428e8 = 0;
+}
+
+// FUNCTION: SADX 0x004beac0
+void CameraSetCollisionCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), unsigned char ucAdjustType, signed char scCameraDirect)
+{
+	if ((signed char) *(char *)((char *)pCameraSystemWork + 8) <= 4)
+	{
+		if ((signed char) *(char *)((char *)pCameraSystemWork + 8) != 4)
+		{
+			*(int *)((char *)pCameraSystemWork + 0x28) = (signed char) *(char *)((char *)pCameraSystemWork + 8);
+			*(short *)((char *)pCameraSystemWork + 0x38) = *(short *)((char *)pCameraSystemWork + 4);
+			*(char *)((char *)pCameraSystemWork + 0x40) = *(char *)((char *)pCameraSystemWork + 0xb);
+			*(char *)((char *)pCameraSystemWork + 0x7c) = *(char *)((char *)pCameraSystemWork + 6);
+			*(int *)((char *)pCameraSystemWork + 0x54) = *(int *)((char *)pCameraSystemWork + 0xc);
+			if ((short) *(short *)((char *)pCameraSystemWork + 4) != -1)
+			{
+				*(char *)((char *)pCameraSystemWork + 0x82) = *(char *)((char *)DAT_05b42974 + (short) *(short *)((char *)pCameraSystemWork + 4) * 64 + 2);
+			}
+			else
+			{
+				*(char *)((char *)pCameraSystemWork + 0x82) = 0x15;
+			}
+			*(int *)((char *)pCameraSystemWork + 0x6c) = *(int *)((char *)DAT_05b4298c + (signed char) *(char *)((char *)pCameraSystemWork + 0x82) * 8 + 4);
+			*(char *)((char *)pCameraSystemWork + 8) = 4;
+		}
+		*(short *)((char *)pCameraSystemWork + 4) = -1;
+		*(char *)((char *)pCameraSystemWork + 6) = 0xff;
+		*(int *)((char *)pCameraSystemWork + 0xc) = (int) fnCamera;
+		*(char *)((char *)pCameraSystemWork + 9) = ucAdjustType;
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)DAT_05b4298c + (signed char) *(char *)((char *)pCameraSystemWork + 9) * 8 + 4);
+		*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+		*(char *)((char *)pCameraSystemWork + 0xb) = 2;
+		if (*(int *)((char *)DAT_05b4298c + (signed char) *(char *)((char *)pCameraSystemWork + 9) * 8) != 0)
+		{
+			*(char *)((char *)pCameraSystemWork + 0xb) = (signed char) *(char *)((char *)pCameraSystemWork + 0xb) | 1;
+		}
+		*(char *)((char *)pCameraSystemWork + 7) = scCameraDirect;
+		*(int *)pCameraSystemWork = 1;
+	}
+}
+
+// FUNCTION: SADX 0x004bee10
+void FUN_004bee10(void)
+{
+	if (*(char *)((char *)pCameraSystemWork + 8) == 4)
+	{
+		*(short *)((char *)pCameraSystemWork + 4) = *(short *)((char *)pCameraSystemWork + 0x38);
+		*(char *)((char *)pCameraSystemWork + 0xb) = *(char *)((char *)pCameraSystemWork + 0x40);
+		*(char *)((char *)pCameraSystemWork + 6) = *(char *)((char *)pCameraSystemWork + 0x7c);
+		*(int *)((char *)pCameraSystemWork + 0xc) = *(int *)((char *)pCameraSystemWork + 0x54);
+		*(char *)((char *)pCameraSystemWork + 9) = *(char *)((char *)pCameraSystemWork + 0x82);
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)pCameraSystemWork + 0x6c);
+		*(char *)((char *)pCameraSystemWork + 8) = *(char *)((char *)pCameraSystemWork + 0x28);
+		*(char *)((char *)pCameraSystemWork + 7) = *(char *)((char *)DAT_05b4299c[0] + (*(char *)((char *)pCameraSystemWork + 6)) * 16 + 5);
+		*(int *)pCameraSystemWork = 1;
+		*(int *)((char *)pCameraSystemWork + 0x14) = 0;
+		*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+		if (*(char *)((char *)pCameraSystemWork + 8) == 0 && DAT_05b42a78 != -1)
+		{
+			CameraSetNormalCamera(*(short *)&DAT_05b42a78, *(unsigned char *)&DAT_05b42994);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004bef20
@@ -459,6 +699,11 @@ void FUN_004c0320()
 		DAT_05b425d0[local_8] = *(NJS_POINT3 *)((char *)DAT_05baf368 + 0x20);
 	}
 	DAT_05b425c8 = 0;
+}
+
+// STUB: SADX 0x004c0380
+void setChaseRingBuffer()
+{
 }
 
 // FUNCTION: SADX 0x004c04b0

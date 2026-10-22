@@ -32,6 +32,12 @@ void FUN_00550280(void)
 {
 }
 
+// STUB: SADX 0x005506a0
+long CheckRangeP2XYZRP(float *pf, float rx0, float ry0, float rz0, float R, float *pf2)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00550c10
 int FUN_00550c10(float *fPos, float fX, float fY, float fZ, float fRangeSq)
 {
@@ -50,6 +56,11 @@ void FUN_00550d90(void)
 
 // STUB: SADX 0x00550f60
 void FUN_00550f60(int param_1)
+{
+}
+
+// STUB: SADX 0x00550ff0
+void ReleaseStatusEntry()
 {
 }
 
@@ -92,6 +103,12 @@ long CheckRangeOut(struct task *pTask)
 
 // STUB: SADX 0x00551390
 long CheckRangeOut_L(struct task *pTask)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x005513e0
+long CheckRangeOutWithR(struct task *tp, float fRange)
 {
 	return (long)0;
 }

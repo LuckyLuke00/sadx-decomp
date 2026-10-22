@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00422560(int param_1);
 void FUN_005015e0(void *param_1);
 void FUN_00501300(struct task *param_1, struct task *param_2);
 extern int DAT_05b9d838;
@@ -27,6 +28,12 @@ void ObjectCCollision_setMeshWZ(struct task *tp)
 void ObjectCCollision_setMeshNWZ(struct task *tp)
 {
 	tp->twp->flag |= 0xa000;
+}
+
+// STUB: SADX 0x004ff9a0
+long ObjectMovableInitialize(struct taskwk *twp, struct motionwk *mwp, unsigned long mode)
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x00500320
@@ -254,6 +261,90 @@ void ObjectNormalExit(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x00500810
+void ObjectNormalDisplay(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return;
+	}
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (SetObjectTexture() == 0)
+	{
+		___njSetTexture((struct NJS_TEXLIST *)local_8->value.ptr);
+	}
+	SaveControl3D();
+	njControl3D(0x10);
+	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+	njPushMatrix(NULL);
+	njTranslateV(NULL, &local_8->pos);
+	if (local_8->ang.z != 0)
+	{
+		njRotateZ(NULL, (unsigned short)local_8->ang.z);
+	}
+	if (local_8->ang.x != 0)
+	{
+		njRotateX(NULL, (unsigned short)local_8->ang.x);
+	}
+	if (local_8->ang.y != 0)
+	{
+		njRotateY(NULL, (unsigned short)local_8->ang.y);
+	}
+	occ_DrawObject(local_8, (struct obj *)local_8->counter.ptr, 1.0f);
+	njPopMatrix(1);
+	ResetMaterial();
+	LoadControl3D();
+}
+
+// FUNCTION: SADX 0x00500920
+void ObjectNormalDisplay_LE(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return;
+	}
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (SetObjectTexture() == 0)
+	{
+		___njSetTexture((struct NJS_TEXLIST *)local_8->value.ptr);
+	}
+	FUN_00422560(3);
+	SaveControl3D();
+	njControl3D(0x10);
+	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+	njPushMatrix(NULL);
+	njTranslateV(NULL, &local_8->pos);
+	if (local_8->ang.z != 0)
+	{
+		njRotateZ(NULL, (unsigned short)local_8->ang.z);
+	}
+	if (local_8->ang.x != 0)
+	{
+		njRotateX(NULL, (unsigned short)local_8->ang.x);
+	}
+	if (local_8->ang.y != 0)
+	{
+		njRotateY(NULL, (unsigned short)local_8->ang.y);
+	}
+	occ_DrawObject(local_8, (struct obj *)local_8->counter.ptr, 1.0f);
+	njPopMatrix(1);
+	ResetMaterial();
+	LoadControl3D();
+	npSetZCompare();
+}
+
 // FUNCTION: SADX 0x00500a40
 long ObjectScaleNormal(struct task *tp)
 {
@@ -283,6 +374,11 @@ long ObjectScaleNormal(struct task *tp)
 	}
 	ObjectScaleDisplay(tp);
 	return 0;
+}
+
+// STUB: SADX 0x00500ae0
+void ObjectScaleDisplay(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x00500d30
@@ -535,6 +631,11 @@ void FUN_00501570(struct task *param_1)
 
 // STUB: SADX 0x00501680
 void ObjectGCollisionExecute___Mesh(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005017c0
+void CheckCollisionScale(struct taskwk *twp)
 {
 }
 

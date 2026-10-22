@@ -77,6 +77,11 @@ void FUN_0058b630(struct task *param_1)
 	GetSwitchOnOff(*(short *)((char *)param_1->twp + 0xe));
 }
 
+// STUB: SADX 0x0058b670
+void ExecRidingTime(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0058b8b0
 int GetSwitchOnOff(unsigned int ID)
 {

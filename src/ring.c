@@ -13,6 +13,11 @@ void RingDoneDisplayer(struct task *tp)
 	RingDone(tp->twp);
 }
 
+// STUB: SADX 0x005a73c0
+void DamegeRingScatter(unsigned char pno)
+{
+}
+
 // FUNCTION: SADX 0x005a7d60
 void dispTobitiri0(struct task *tp)
 {
@@ -33,6 +38,11 @@ void dispTobitiri1(struct task *tp)
 
 // STUB: SADX 0x005a7e10
 void FUN_005a7e10(struct NJS_TEXLIST *texlist)
+{
+}
+
+// STUB: SADX 0x005a7e50
+void RingDrawShadow(struct task *tp, float tempy, float pushx, float pushz)
 {
 }
 

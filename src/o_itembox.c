@@ -1,7 +1,36 @@
 #include "decls.h"
+extern struct NJS_MODEL DAT_05a85e0c;
+extern unsigned char DAT_05edd2a4;
+void ObjectItemBox(struct task *tp);
 
 // STUB: SADX 0x005dd600
 void PutItem_ItemBox(struct NJS_POINT3 *putpos, long putItem)
+{
+}
+
+// FUNCTION: SADX 0x005dd6a0
+void ObjectItemBoxInWater(struct task *tp)
+{
+	DAT_05edd2a4 = 1;
+	ObjectItemBox(tp);
+	DAT_05edd2a4 = 0;
+}
+
+// FUNCTION: SADX 0x005de0d0
+void Draw_Break(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	SetRegularTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &local_8->pos);
+	___dsDrawModel(&DAT_05a85e0c);
+	njPopMatrix(1);
+}
+
+// STUB: SADX 0x005de120
+void FUN_005de120(struct taskwk *twp)
 {
 }
 

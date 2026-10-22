@@ -129,6 +129,7 @@ struct LE_LIGHT_ENV;
 struct LE_PALIGHT_ENV;
 struct LightInfo;
 struct MDHANDLE;
+struct MiMsg;
 struct ModeSelPrmType;
 struct motionwk;
 struct motionwk2;
@@ -171,6 +172,7 @@ struct PanelPrmType;
 struct particle_entry;
 struct particle_info;
 struct PATHCAMERA1WORK;
+struct pathinfo;
 struct pathtag;
 struct pathtbl;
 struct pheadeyewk;
@@ -3612,6 +3614,22 @@ static_assert(offsetof(pathtag, points) == 0x2, "pathtag::points");
 static_assert(offsetof(pathtag, totallen) == 0x4, "pathtag::totallen");
 static_assert(offsetof(pathtag, tblhead) == 0x8, "pathtag::tblhead");
 static_assert(offsetof(pathtag, pathtask) == 0xc, "pathtag::pathtask");
+
+struct pathtbl {
+    short slangx;
+    short slangz;
+    float length;
+    float xpos;
+    float ypos;
+    float zpos;
+};
+static_assert(sizeof(pathtbl) == 0x14, "sizeof pathtbl");
+static_assert(offsetof(pathtbl, slangx) == 0x0, "pathtbl::slangx");
+static_assert(offsetof(pathtbl, slangz) == 0x2, "pathtbl::slangz");
+static_assert(offsetof(pathtbl, length) == 0x4, "pathtbl::length");
+static_assert(offsetof(pathtbl, xpos) == 0x8, "pathtbl::xpos");
+static_assert(offsetof(pathtbl, ypos) == 0xc, "pathtbl::ypos");
+static_assert(offsetof(pathtbl, zpos) == 0x10, "pathtbl::zpos");
 
 struct pheadeyewk {
     long angy_head;

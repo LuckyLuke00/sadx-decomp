@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int DAT_05b9d838;
+extern struct NJS_TEXLIST texlist_kariobj;
+static void Disp(struct task *tp);
 
 extern unsigned char DAT_05b37311;
 extern unsigned char *DAT_05b37314;
@@ -6,9 +9,23 @@ extern unsigned char DAT_05b37318;
 extern struct CCL_INFO mission01_colli_info[];
 extern struct NJS_ACTION action_mi_ssobj_card[];
 
-// STUB: SADX 0x0049d140
+// FUNCTION: SADX 0x0049d140
 static void Disp(struct task *tp)
 {
+	struct taskwk *var2 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		___njSetTexture(&texlist_kariobj);
+		njPushMatrix(0);
+		njTranslateV(0, &var2->pos);
+		if (*(int *)&var2->ang.y != 0)
+		{
+			njRotateY(0, *(unsigned short *)&var2->ang.y);
+		}
+		njScaleV(0, &var2->scl);
+		___dsAction((struct NJS_ACTION *)var2->counter.ptr, var2->timer.f, 1.0f);
+		njPopMatrix(1);
+	}
 }
 
 // FUNCTION: SADX 0x0049d1c0

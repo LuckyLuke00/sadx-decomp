@@ -1,9 +1,16 @@
 #include "decls.h"
 #include <stdlib.h>
+struct sParabola;
 extern struct obj object_Arrow_Y;
 extern struct obj object_Arrow_Z;
 extern int DAT_05b9d838;
 extern struct obj object_sphere01;
+
+// STUB: SADX 0x0056e3d0
+unsigned long ChkCollisionSpeed(struct taskwk *twp, struct anywk *awp)
+{
+	return (unsigned long)0;
+}
 
 // FUNCTION: SADX 0x0056e500
 void DispVectorXYV(struct NJS_POINT3 *bp, struct NJS_POINT3 *vec)
@@ -131,6 +138,11 @@ void LoopAnimation(struct NJS_ACTION *anm, float *fnum, float anm_speed)
 long csnDistPlayer(struct NJS_POINT3 *my_pos, float rad)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x0056ed60
+void MakeParabolaInitSpeed(struct sParabola *para)
+{
 }
 
 // STUB: SADX 0x0056ee90
