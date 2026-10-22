@@ -1,8 +1,26 @@
 #include "decls.h"
+void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 void FUN_005e4370(struct enemywk *param_1);
 void EnemyBaneDraw(struct taskwk *twp);
 void EnemyBaneDisplayer(struct task *tp);
 void FUN_005e2cc0(struct taskwk *param_1, struct enemywk *param_2);
+
+// STUB: SADX 0x005e28c0
+struct enemywk *EnemyInitialize(struct task *tp, struct taskwk *twp)
+{
+	return (struct enemywk *)0;
+}
+
+// STUB: SADX 0x005e2a10
+signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp)
+{
+	return (signed char)0;
+}
+
+// STUB: SADX 0x005e2b60
+void EnemyGetShadow(struct taskwk *twp, struct enemywk *ewp)
+{
+}
 
 // STUB: SADX 0x005e2cc0
 void FUN_005e2cc0(struct taskwk *twp, struct enemywk *ewp)
@@ -86,6 +104,48 @@ long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp)
 	return local_8;
 }
 
+// STUB: SADX 0x005e3f10
+float EnemyDist2FromPlayer(struct taskwk *twp, int num)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x005e3fa0
+long EnemyCalcPlayerAngle(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x005e4060
+long EnemyTurnToPlayer(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum)
+{
+	long local_8;
+	local_8 = EnemyCalcPlayerAngle(twp, ewp, pnum);
+	*(long *)((char *)twp + 0x18) = AdjustAngle(*(long *)((char *)twp + 0x18), ewp->aim_angle, ewp->angy_spd);
+	return local_8;
+}
+
+// FUNCTION: SADX 0x005e40b0
+signed char EnemyCheckFrameIn(struct NJS_POINT3 *pos)
+{
+	struct NJS_POINT2 prj_pos;
+
+	njProjectScreen((float (*)[16])0, pos, &prj_pos);
+	if (prj_pos.x >= 0.0f && prj_pos.x <= 640.0f && prj_pos.y >= 0.0f && prj_pos.y <= 400.0f)
+		return 1;
+	return 0;
+}
+
+// STUB: SADX 0x005e4120
+void EnemyAimAroundPlayer(struct taskwk *twp, struct enemywk *ewp, int pnum, int aim_num)
+{
+}
+
+// STUB: SADX 0x005e4210
+void EnemyPartsMove(struct taskwk *twp)
+{
+}
+
 // FUNCTION: SADX 0x005e4370
 void FUN_005e4370(struct enemywk *param_1)
 {
@@ -101,6 +161,43 @@ void FUN_005e4370(struct enemywk *param_1)
 // STUB: SADX 0x005e43f0
 void EnemyPartsDraw(struct taskwk *twp)
 {
+}
+
+// FUNCTION: SADX 0x005e44f0
+void EnemyBaneDraw(struct taskwk *twp)
+{
+	struct NJS_MODEL *local_8g;
+	struct NJS_MODEL *local_cg;
+
+	local_8g = (struct NJS_MODEL *)twp->counter.ptr;
+	if (local_8g == 0)
+	{
+		return;
+	}
+	local_cg = (struct NJS_MODEL *)local_8g->points;
+	if (dsCheckViewV(&twp->pos, 10.0f) == 0)
+	{
+		return;
+	}
+	SetRegularTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &twp->pos);
+	if (twp->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)twp->ang.z);
+	}
+	if (twp->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)twp->ang.x);
+	}
+	if (twp->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)twp->ang.y);
+	}
+	FUN_0067d2d0(0, 0.5f, 1.5f, 0.5f);
+	FUN_0067d2d0(0, 0.6f, 0.6f, 0.6f);
+	___dsDrawModel(local_8g);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005e4610
@@ -136,6 +233,16 @@ void EnemyBaneDisplayer(struct task *tp)
 	EnemyBaneDraw(tp->twp);
 }
 
+// STUB: SADX 0x005e4970
+void CreateExpParts(struct taskwk *twp, struct NJS_MODEL * *model, struct NJS_TEXLIST *tex)
+{
+}
+
+// STUB: SADX 0x005e4b30
+void CreateExpSpring(struct taskwk *twp, unsigned char num)
+{
+}
+
 // STUB: SADX 0x005e4cc0
 void EnemyBuyoScale(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -144,4 +251,10 @@ void EnemyBuyoScale(struct taskwk *twp, struct enemywk *ewp)
 // STUB: SADX 0x005e4d70
 void EnemyBumpPlayer(signed char pnum)
 {
+}
+
+// STUB: SADX 0x005e4e00
+long EnemyCheckDamage(struct taskwk *twp, struct enemywk *ewp)
+{
+	return (long)0;
 }

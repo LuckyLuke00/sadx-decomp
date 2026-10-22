@@ -1,4 +1,14 @@
 #include "decls.h"
+extern short DAT_05edecee;
+extern short DAT_05edece8;
+extern float DAT_05edeec8;
+extern int DAT_05eded70;
+extern int DAT_05eded74;
+extern int DAT_05eded04;
+extern int DAT_05eded08;
+extern int DAT_05edeed8;
+extern char DAT_05eded6c;
+extern struct NJS_TEXLIST texlist_eggrob;
 extern int DAT_05eded7c;
 extern struct obj object_eggrob_a_er_ra4[1];
 extern struct obj object_eggrob_a_er_ra5[1];
@@ -98,6 +108,21 @@ void FUN_00615570()
 {
 }
 
+// STUB: SADX 0x006155e0
+void FUN_006155e0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2)
+{
+}
+
+// STUB: SADX 0x00615a00
+void FUN_00615a00(struct NJS_POINT3 *pos, float rad)
+{
+}
+
+// STUB: SADX 0x00615f90
+void Eggrob_RPunchShadow(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006160a0
 void DisplayerEggrob_FindDisplay(struct task *tp)
 {
@@ -129,6 +154,38 @@ int FUN_00616650(int *param_1)
 	return (int)0;
 }
 
+// FUNCTION: SADX 0x006166a0
+void EggrobForEvent0(struct task *tp)
+{
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	CCL_Init(tp, (struct CCL_INFO *)&eggrob_ci_info, 2, 2);
+	SetEventWork(local_8);
+	PInitialize(local_8->counter.b[0], tp);
+	texLoadTexturePvmFile("EGGROB", &texlist_eggrob);
+	*(float *)((char *)local_8 + 0x34) = 0.0f;
+	*(float *)((char *)local_8 + 0x30) = 0.0f;
+	*(float *)((char *)local_8 + 0x2c) = 0.0f;
+	DAT_05edecd4 = 0.0f;
+	DAT_05edece8 = 0;
+	DAT_05eded08 = (int)eggrob_action;
+	DAT_05edecee = 0x14;
+	DAT_05edecec = DAT_05edecee;
+	DAT_05eded04 = (int)&DAT_05eded6c;
+	object_eggrob_a_chn9_1[0].ang[1] = 0;
+	object_eggrob_a_j_er_head[0].ang[2] = 0x8000;
+	DAT_05edeed8 = 0;
+	DAT_05eded74 = 0;
+	*(unsigned long *)((char *)local_8->cwp->info + 0x34) |= 0x10;
+	DAT_05edeec8 = 0.0f;
+	local_8->timer.l = 0xb4;
+	local_8->mode = 5;
+	Eggrob_BeamInit();
+	DAT_05eded70 = 0;
+	tp->dest = EggrobForEvent0_Destruct;
+	tp->exec = EggrobForEvent0_Exe;
+}
+
 // FUNCTION: SADX 0x006167d0
 void EggrobForEvent0_Destruct(struct task *tp)
 {
@@ -139,4 +196,9 @@ void EggrobForEvent0_Destruct(struct task *tp)
 	object_eggrob_a_er_ra6[0].evalflags &= 0xfffffff7;
 	object_eggrob_a_er_ra7[0].evalflags &= 0xfffffff7;
 	PDestruct(tp->twp->counter.b[0]);
+}
+
+// STUB: SADX 0x00617040
+void EggrobForEvent0_RP_1(struct task *tp)
+{
 }

@@ -1,4 +1,14 @@
 #include "decls.h"
+void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struct NJS_POINT3 *spd, float scl);
+void DisplaySnowface(struct taskwk *twp, struct enemywk *ewp);
+void DisplaySnowMobile(struct taskwk *twp, struct enemywk *ewp);
+void DrawSnowmanRange(struct NJS_POINT3 *pos, float radius);
+void FUN_0060b2f0(struct taskwk *param_1, struct enemywk *param_2);
+void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2);
+void SnowmanTurnToAim(struct taskwk *twp, struct enemywk *ewp);
+void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2);
+void SnowmanMove(struct taskwk *twp, struct enemywk *ewp);
+void SnowmanRectifyPosition(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToPlayer(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum);
 void SnowmanBackSmoke(struct taskwk *twp, struct enemywk *ewp);
 void SnowmanFootSmoke(struct taskwk *twp, struct enemywk *ewp);
@@ -53,6 +63,11 @@ void SnowmanRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 	EnemyPreservePreviousPosition(twp, ewp);
 }
 
+// STUB: SADX 0x00609d20
+void FUN_00609d20(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x0060a0c0
 void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2)
 {
@@ -66,6 +81,11 @@ void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2)
 		param_1->flag |= 0x100;
 	}
 	*(int *)((char *)param_1 + 0x18) = local_8;
+}
+
+// STUB: SADX 0x0060a130
+void SnowmanMove(struct taskwk *twp, struct enemywk *ewp)
+{
 }
 
 // STUB: SADX 0x0060a2c0
@@ -83,13 +103,28 @@ void FUN_0060a5e0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
+// STUB: SADX 0x0060a690
+void snowmanTurn(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x0060a7c0
 void FUN_0060a7c0(char *param_1)
 {
 }
 
+// STUB: SADX 0x0060aa40
+void snowmanDestroy(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x0060b0a0
 void SnowMobile(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0060b190
+void FUN_0060b190(struct task *tp)
 {
 }
 
@@ -139,13 +174,48 @@ void SnowfaceRegular(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0060bbf0
+void SnowfaceDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0060bde0
+void DisplaySnowface(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x0060bef0
+void DisplaySnowMobile(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x0060c0f0
+void SnowmanOnEdit(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0060c200
 void DrawSnowmanRange(struct NJS_POINT3 *pos, float radius)
 {
 }
 
+// STUB: SADX 0x0060c300
+void SnowmanBackSmoke(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x0060c4e0
 void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struct NJS_POINT3 *spd, float scl)
+{
+}
+
+// STUB: SADX 0x0060c5c0
+void EffectPom(struct sp_task *tp, struct sp_link *lp)
+{
+}
+
+// STUB: SADX 0x0060c9d0
+void SnowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -156,6 +226,11 @@ void SnowfaceLeftFootSmoke(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x0060cbf0
 void SnowfaceRightFootSmoke(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x0060ccc0
+void create_freeze_colli(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
