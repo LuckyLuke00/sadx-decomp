@@ -1679,6 +1679,7 @@
 <rect x="0" y="42" width="6" height="6" fill="#b07d00"><title>0x0049a9f0 ObjectMi3Dasu: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x0049bb20 sakanaGeneraterExit: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x0049c270 ObjectMiSakana: 100%</title></rect>
+<rect x="35" y="42" width="6" height="6" fill="#ad801e"><title>0x0049c420 ObjectMiKanban: 94.7%</title></rect>
 <rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x0049d140 Disp(2): 100%</title></rect>
 <rect x="21" y="56" width="6" height="6" fill="#b07d00"><title>0x0049d1c0 Destructor(2): 100%</title></rect>
 <rect x="28" y="56" width="6" height="6" fill="#b07d00"><title>0x0049d390 ObjectMiMission_Start: 100%</title></rect>
