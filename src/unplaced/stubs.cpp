@@ -18,18 +18,6 @@ int FUN_00407e30()
 	return (int)0;
 }
 
-// STUB: SADX 0x0040ae00
-bool FUN_0040ae00()
-{
-	return (bool)0;
-}
-
-// STUB: SADX 0x0040b010
-int FUN_0040b010(const void*, const void*)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x00419570
 void SOCCreateDevice(void)
 {
@@ -39,6 +27,16 @@ void SOCCreateDevice(void)
 int __fastcall FUN_004199f0(void *, float)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0041a620
+void FUN_0041a620(void *)
+{
+}
+
+// STUB: SADX 0x0041b120
+extern void FUN_0041b120(int, int)
+{
 }
 
 // STUB: SADX 0x0041b7e0
@@ -66,13 +64,8 @@ void DrawTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, 
 {
 }
 
-// STUB: SADX 0x00421390
-void njDrawModel(struct NJS_MODEL *)
-{
-}
-
-// STUB: SADX 0x00421470
-void njDrawTexture(struct NJS_TEXTURE_VTX *,int,int,int)
+// STUB: SADX 0x004211b0
+void _njDirectDrawModel(struct NJS_MODEL *)
 {
 }
 
@@ -83,11 +76,6 @@ void njDrawSprite2D(struct NJS_SPRITE *, int, float, unsigned long)
 
 // STUB: SADX 0x00421b30
 void njDrawSprite3D(struct NJS_SPRITE *,int,unsigned long)
-{
-}
-
-// STUB: SADX 0x00421ff0
-void njDrawLine3D(struct NJS_POINT3COL *,int,unsigned long)
 {
 }
 
@@ -126,26 +114,14 @@ void njSetZUpdateMode(long)
 {
 }
 
-// STUB: SADX 0x004225b0
-void njSetWaitVsyncCount(int)
+// STUB: SADX 0x004226f0
+void stHWSetVSync(int)
 {
 }
 
 // STUB: SADX 0x00422730
 void stHWWaitVSync()
 {
-}
-
-// STUB: SADX 0x00423200
-long njSetTexture(struct NJS_TEXLIST *)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x00423230
-long njSetTextureNum(unsigned long)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x00423920
@@ -159,19 +135,14 @@ void njReleaseTextureAll(void)
 {
 }
 
-// STUB: SADX 0x00423b10
-void njExitTexture(void)
-{
-}
-
 // STUB: SADX 0x00423b40
 long njLoadTexture(struct NJS_TEXLIST *)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x00423e50
-long FUN_00423e50(const char *, struct NJS_TEXLIST *)
+// STUB: SADX 0x00423db0
+long FUN_00423db0(const char *, struct NJS_TEXLIST *)
 {
 	return (long)0;
 }
@@ -186,23 +157,89 @@ void njSetCamera(struct NJS_CAMERA *)
 {
 }
 
-// STUB: SADX 0x00424580
-void njWaitVSync(void)
+// STUB: SADX 0x004253d0
+void njStartMotionObjEx(struct NJS_MOTION const *, float)
 {
 }
 
-// STUB: SADX 0x004245a0
-void njSetBackColor(unsigned long,unsigned long,unsigned long)
+// STUB: SADX 0x00425640
+void njMotionTransformEx(struct obj const *)
 {
 }
 
-// STUB: SADX 0x004252b0
-void njCnkSetShortAngleUser(void)
+// STUB: SADX 0x00425830
+void njMotionLinkTransformEx(struct obj const *)
 {
 }
 
-// STUB: SADX 0x004252c0
-void njCnkClrShortAngleUser(void)
+// STUB: SADX 0x004258c0
+void _njPushPopGetMotionDataArray(struct obj const *)
+{
+}
+
+// STUB: SADX 0x00426490
+void stInitVertex(unsigned long, unsigned long, void *)
+{
+}
+
+// STUB: SADX 0x00426520
+void stFinishVertex(void)
+{
+}
+
+// STUB: SADX 0x00426a20
+void stDirect3DFinish(void)
+{
+}
+
+// STUB: SADX 0x004295a0
+void stDrawTexture(struct NJS_TEXTURE_VTX *,int)
+{
+}
+
+// STUB: SADX 0x00429d40
+void FUN_00429d40(void)
+{
+}
+
+// STUB: SADX 0x0042ae90
+void stLoadTexture(struct NJS_TEXMEMLIST *, void *)
+{
+}
+
+// STUB: SADX 0x0042afb0
+int stSetTexture(struct NJS_TEXMEMLIST *)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0042b090
+void FUN_0042b090(long)
+{
+}
+
+// STUB: SADX 0x0042b610
+extern void stSetBaseMatrix(float (*)[16])
+{
+}
+
+// STUB: SADX 0x0042b670
+void _njBeginModel(void)
+{
+}
+
+// STUB: SADX 0x0042b810
+void _njTransformObject(struct obj *,void (*)(struct NJS_MODEL *))
+{
+}
+
+// STUB: SADX 0x0042bcb0
+void _njDrawModel(struct NJS_MODEL *)
+{
+}
+
+// STUB: SADX 0x004303f0
+void _gjRender2DSet(void)
 {
 }
 
@@ -236,8 +273,8 @@ void _gjExecServer(void)
 {
 }
 
-// STUB: SADX 0x00430990
-void njPopMatrixEx()
+// STUB: SADX 0x004308a0
+void _gjTrans2D(int)
 {
 }
 
@@ -265,17 +302,6 @@ void njCalcPoint(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
 void* pdGetPeripheral(int)
 {
 	return (void*)0;
-}
-
-// STUB: SADX 0x00431730
-void gjPrintExit(void)
-{
-}
-
-// STUB: SADX 0x004318d0
-double njTan(int)
-{
-	return (double)0;
 }
 
 // STUB: SADX 0x00431900
@@ -311,38 +337,38 @@ void njPushMatrixEx()
 {
 }
 
-// STUB: SADX 0x00435190
-void _njDirectResDelAll(void)
+// STUB: SADX 0x00434580
+void stFogEnable(void)
 {
 }
 
-// STUB: SADX 0x00435370
-extern void pdVibMxStop(int)
+// STUB: SADX 0x004345b0
+void stFogDisable(void)
 {
 }
 
-// STUB: SADX 0x00435b20
-void njFogEnable(void)
+// STUB: SADX 0x004345e0
+void stFogColor(unsigned long)
 {
 }
 
-// STUB: SADX 0x00435b30
-void njFogDisable(void)
+// STUB: SADX 0x00434ad0
+void stSetFogTable(float *)
 {
 }
 
-// STUB: SADX 0x00435fd0
-void njCnkDrawMotion(struct cnkobj const *,struct NJS_MOTION const *,float)
+// STUB: SADX 0x004351c0
+void _pdVibMxServer(void)
 {
 }
 
-// STUB: SADX 0x00436030
-void njCnkDrawMotionLink(struct cnkobj const *,struct NJS_MOTION_LINK const *,float)
+// STUB: SADX 0x00435590
+void stReadFile(int, int, int, int)
 {
 }
 
-// STUB: SADX 0x00436200
-void njCnkDrawObject(struct cnkobj *)
+// STUB: SADX 0x004355f0
+void stCloseFile(int)
 {
 }
 
@@ -395,6 +421,12 @@ struct chao_save_info *AL_SetHoldingEggBM(long EggColor)
 	return (struct chao_save_info *)0;
 }
 
+// STUB: SADX 0x004427b0
+long AL_GetRandomAttrPos(enum eLANDMARK_ATTR attr, struct NJS_POINT3 *pPos)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00443b80
 long AL_GetnbPlayer()
 {
@@ -427,11 +459,6 @@ void AL_SetBehaviorWithTimer(struct task *tp, long (*Func)(struct task *), long 
 const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 {
 	return (const unsigned long *)0;
-}
-
-// STUB: SADX 0x0044c4b0
-void FUN_0044c4b0(void *)
-{
 }
 
 // STUB: SADX 0x00450210
@@ -1117,11 +1144,6 @@ struct MSGC *NH_MSG_Open(struct MSGC *msgc, int x, int y, int width, int height,
 	return (struct MSGC *)0;
 }
 
-// STUB: SADX 0x004c3310
-void FUN_004c3310(int *)
-{
-}
-
 // STUB: SADX 0x004c3d70
 void GetSwitchData()
 {
@@ -1300,11 +1322,6 @@ void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
 long CheckCollisionP(struct NJS_POINT3 *, float)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x004f3470
-void FUN_004f3470()
-{
 }
 
 // STUB: SADX 0x004f3600
@@ -1695,22 +1712,6 @@ void FUN_0056a200(struct task *)
 {
 }
 
-// STUB: SADX 0x0056a2c0
-void FUN_0056a2c0()
-{
-}
-
-// STUB: SADX 0x0056ab30
-void FUN_0056ab30()
-{
-}
-
-// STUB: SADX 0x0056ab50
-int FUN_0056ab50(int *)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x0056ab80
 void FUN_0056ab80(int *, void (*)(void (*)(int)))
 {
@@ -1721,28 +1722,8 @@ void FUN_0056aea0(int)
 {
 }
 
-// STUB: SADX 0x0056b2f0
-void FUN_0056b2f0(struct task **)
-{
-}
-
-// STUB: SADX 0x0056b370
-void FUN_0056b370(struct task *, float, float, float)
-{
-}
-
-// STUB: SADX 0x0056b3e0
-void FUN_0056b3e0(struct task *, long, long, long)
-{
-}
-
 // STUB: SADX 0x0056b540
 void EV_InitPlayer(int n)
-{
-}
-
-// STUB: SADX 0x0056b650
-void FUN_0056b650(struct task *, struct NJS_ACTION *, struct NJS_TEXLIST *, float, int, int)
 {
 }
 
@@ -1778,11 +1759,6 @@ void EV_CameraPos(int mode, int time, float x, float y, float z)
 
 // STUB: SADX 0x0056d010
 void EV_CameraPerspective(int mode, int time, long ang)
-{
-}
-
-// STUB: SADX 0x0056d0b0
-void FUN_0056d0b0(struct task *, char *)
 {
 }
 
@@ -1839,18 +1815,8 @@ void FUN_00571b20(int)
 {
 }
 
-// STUB: SADX 0x005720e0
-void FUN_005720e0(struct obj *, float)
-{
-}
-
-// STUB: SADX 0x00572100
-void FUN_00572100(struct NJS_TEXLIST *)
-{
-}
-
-// STUB: SADX 0x00573040
-void FUN_00573040(int)
+// STUB: SADX 0x00572f90
+void FUN_00572f90(struct obj *, struct obj *)
 {
 }
 
@@ -1882,6 +1848,11 @@ void dialog_exec(struct task *tp)
 
 // STUB: SADX 0x00576a60
 void FUN_00576a60(int)
+{
+}
+
+// STUB: SADX 0x00576c10
+void FUN_00576c10(struct task *)
 {
 }
 
@@ -1955,11 +1926,6 @@ void DrawButtonXUBB()
 {
 }
 
-// STUB: SADX 0x0058b860
-void FUN_0058b860(int, int)
-{
-}
-
 // STUB: SADX 0x00592520
 void FUN_00592520(struct task *)
 {
@@ -1967,11 +1933,6 @@ void FUN_00592520(struct task *)
 
 // STUB: SADX 0x00597ff0
 void lig_calcPalette(int)
-{
-}
-
-// STUB: SADX 0x00598720
-void FUN_00598720(int)
 {
 }
 
@@ -1998,6 +1959,11 @@ struct MDHANDLE *MDHeaderOpen(char *fname, int flag)
 
 // STUB: SADX 0x0059d430
 void MDHeaderClose(struct MDHANDLE *mdh)
+{
+}
+
+// STUB: SADX 0x0059deb0
+void GetMiniGameNowAvaStgActPrm(struct AvaStgActPrmT *)
 {
 }
 
@@ -2046,8 +2012,8 @@ void *FUN_005a4c50(int)
 	return (void *)0;
 }
 
-// STUB: SADX 0x005a4db0
-void FUN_005a4db0(void *)
+// STUB: SADX 0x005a4e10
+void FUN_005a4e10(void *)
 {
 }
 
@@ -2096,6 +2062,11 @@ void late_DispMilesMeter2P(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005abd70
+void relbox_end(struct task *task_p)
+{
+}
+
 // STUB: SADX 0x005abe80
 extern void relbox_switch_exec(struct task *)
 {
@@ -2103,11 +2074,6 @@ extern void relbox_switch_exec(struct task *)
 
 // STUB: SADX 0x005ac0e0
 extern void relbox_switch_draw(struct task *)
-{
-}
-
-// STUB: SADX 0x005ac3c0
-void FUN_005ac3c0(struct task *)
 {
 }
 
@@ -2154,8 +2120,18 @@ void FUN_005b2480(int)
 {
 }
 
+// STUB: SADX 0x005b2540
+void EntryEventAction(struct taskwk *twp, struct NJS_ACTION *ap, struct NJS_TEXLIST *lp, float speed, int mode, int linkframe)
+{
+}
+
 // STUB: SADX 0x005b2660
 void DrawEventActionPL(struct taskwk *twp, int ligPalNo)
+{
+}
+
+// STUB: SADX 0x005b2ab0
+void EntryEventPath(struct taskwk *twp, struct EPATHTAG *path, float speed, int mode)
 {
 }
 
@@ -2387,11 +2363,6 @@ void FUN_005f2090(float)
 {
 }
 
-// STUB: SADX 0x005f22c0
-void FUN_005f22c0(struct task *, struct ModeSelPrmType *)
-{
-}
-
 // STUB: SADX 0x005f2320
 void FUN_005f2320(struct task *)
 {
@@ -2407,6 +2378,11 @@ void FUN_005f3310(float)
 {
 }
 
+// STUB: SADX 0x005f34f0
+void FUN_005f34f0(void *)
+{
+}
+
 // STUB: SADX 0x005f3540
 void FUN_005f3540(struct task *)
 {
@@ -2419,6 +2395,37 @@ void FUN_005f4610(float)
 
 // STUB: SADX 0x005fcd60
 void FUN_005fcd60(float)
+{
+}
+
+// STUB: SADX 0x005fd7e0
+void FUN_005fd7e0(struct TvSettingWk *)
+{
+}
+
+// STUB: SADX 0x005fd880
+void DrawTvSettingWnd(struct TvSettingWk *wkp)
+{
+}
+
+// STUB: SADX 0x00600fc0
+void FUN_00600fc0(void *)
+{
+}
+
+// STUB: SADX 0x006023d0
+struct task *SetAdvaExplainTask(struct ModeSelPrmType *prmp)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x00602430
+void FUN_00602430(struct task *)
+{
+}
+
+// STUB: SADX 0x006026b0
+void FUN_006026b0(struct task *)
 {
 }
 
@@ -2477,6 +2484,12 @@ int ghSpriteAnim(struct GHSPRITE_ANIM *pAnim, struct GHSPRITE_ANIM_TABLE *pAnimT
 // STUB: SADX 0x0060f0c0
 void ghSpriteDraw_Unit3D_BillBoard(struct NJS_POINT3 *psPos, struct GHPARTICLE_UNIT *psPart, struct GHSPRITE_ANIM *psAnim, struct GHSPRITE_ANIM_TABLE *psAnimTable)
 {
+}
+
+// STUB: SADX 0x0060f8e0
+struct task *ghParticleControlSet(int, struct GHPARTICLE_INFO *, struct GHSPRITE_ANIM_TABLE *, long (*)(struct GHPARTICLE *, struct GHPARTICLE_INFO *, struct GHSPRITE_ANIM_TABLE *))
+{
+	return (struct task *)0;
 }
 
 // STUB: SADX 0x0060fcb0
@@ -2552,17 +2565,6 @@ void njRotateY(float *, unsigned short)
 {
 }
 
-// STUB: SADX 0x0067d150
-double njScalor(struct NJS_POINT3 *)
-{
-	return (double)0;
-}
-
-// STUB: SADX 0x0067d2d0
-void FUN_0067d2d0(float *, float, float, float)
-{
-}
-
 // STUB: SADX 0x0067d350
 void njTranslateV(float *, struct NJS_POINT3 *)
 {
@@ -2583,18 +2585,8 @@ void njRotateXYZ(long, long *, long *, long *)
 {
 }
 
-// STUB: SADX 0x0067d800
-void njPopMatrix(int)
-{
-}
-
 // STUB: SADX 0x0067d830
 void FUN_0067d830(float *, float, float, float)
-{
-}
-
-// STUB: SADX 0x0067d8c0
-void njAddVector(struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
 }
 
@@ -2603,33 +2595,8 @@ void njUnitMatrix(float *)
 {
 }
 
-// STUB: SADX 0x0067dba0
-void njSetMatrix(float *, float *)
-{
-}
-
-// STUB: SADX 0x0067e350
-void njSubVector(struct NJS_POINT3 *, struct NJS_POINT3 *)
-{
-}
-
 // STUB: SADX 0x0067e460
 void njScaleV(float *, struct NJS_POINT3 *)
-{
-}
-
-// STUB: SADX 0x0067e500
-void njTranslateLightV(struct NJS_LIGHT *,struct NJS_POINT3 *)
-{
-}
-
-// STUB: SADX 0x0067e540
-void njUnitLightMatrix(struct NJS_LIGHT *)
-{
-}
-
-// STUB: SADX 0x0067e550
-void njSetPerspective(long)
 {
 }
 
@@ -2676,6 +2643,11 @@ void CameraChaos7_0Normal(struct _OBJ_CAMERAPARAM *pParam)
 
 // STUB: SADX 0x00706930
 void SetE101(void)
+{
+}
+
+// STUB: SADX 0x00711140
+void FUN_00711140()
 {
 }
 
@@ -2872,8 +2844,8 @@ void TikalBossKill()
 {
 }
 
-// STUB: SADX 0x008c2030
-void FUN_008c2030(int)
+// STUB: SADX 0x008c26f0
+extern void FUN_008c26f0(int, int, int)
 {
 }
 
@@ -2942,8 +2914,8 @@ void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x008d88b0
-void FUN_008d88b0(struct taskwk *, struct enemywk *)
+// STUB: SADX 0x008d9be0
+void FUN_008d9be0(void *, float, float)
 {
 }
 

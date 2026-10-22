@@ -69,6 +69,8 @@ struct AlrVmsTime;
 struct AlrZoneUnit;
 struct Angle3;
 struct anywk;
+struct AvaStgActPrmT;
+struct AvaStgActT;
 struct bankdata;
 struct bankdatalist;
 struct BOSSPLAYER_CREATE_PARAM;
@@ -94,6 +96,8 @@ struct DDlgType;
 struct DialogPrmType;
 struct DlgSndPrmType;
 struct enemywk;
+struct EPATHTAG;
+struct epathtbl;
 struct erctrlstr;
 struct EVENT_ACTION_LIST;
 struct EVENT_PATH_LIST;
@@ -106,6 +110,7 @@ struct Flicky;
 struct FlickyData;
 struct forcewk;
 struct GH_FONT_INFO;
+struct GHPARTICLE;
 struct GHPARTICLE_INFO;
 struct GHPARTICLE_UNIT;
 struct GHSPRITE;
@@ -143,6 +148,7 @@ struct NJS_MESHSET;
 struct NJS_MKEY_P;
 struct NJS_MODEL;
 struct NJS_MOTION;
+struct NJS_MOTION_DATA;
 struct NJS_MOTION_LINK;
 struct NJS_POINT2;
 struct NJS_POINT2COL;
@@ -153,6 +159,7 @@ struct NJS_SPRITE;
 struct NJS_TEX;
 struct NJS_TEXANIM;
 struct NJS_TEXLIST;
+struct NJS_TEXMEMLIST;
 struct NJS_TEXNAME;
 struct NJS_TEXTURE_VTX;
 struct NpcMessageTable;
@@ -195,6 +202,7 @@ struct TaskInfo;
 struct taskwk;
 struct TEX_PVMTABLE;
 struct thread;
+struct TvSettingWk;
 struct u4s;
 union UNION_STATUS;
 struct VolumeInfo;
@@ -1456,6 +1464,14 @@ static_assert(offsetof(AlrReal, vms_lane) == 0x1588, "AlrReal::vms_lane");
 static_assert(offsetof(AlrReal, tmp04) == 0x1589, "AlrReal::tmp04");
 static_assert(offsetof(AlrReal, emblem) == 0x158c, "AlrReal::emblem");
 
+struct AvaStgActPrmT {
+    struct AvaStgActT *StgActPtr;
+    unsigned char Num;
+};
+static_assert(sizeof(AvaStgActPrmT) == 0x8, "sizeof AvaStgActPrmT");
+static_assert(offsetof(AvaStgActPrmT, StgActPtr) == 0x0, "AvaStgActPrmT::StgActPtr");
+static_assert(offsetof(AvaStgActPrmT, Num) == 0x4, "AvaStgActPrmT::Num");
+
 struct BOSSPLAYER_CREATE_PARAM {
     enum EVBOSS_TYPE type;
     struct task *player_tp;
@@ -2108,6 +2124,14 @@ static_assert(offsetof(DialogPrmType, MagY) == 0x34, "DialogPrmType::MagY");
 static_assert(offsetof(DialogPrmType, CsrMax) == 0x38, "DialogPrmType::CsrMax");
 static_assert(offsetof(DialogPrmType, CsrCancel) == 0x39, "DialogPrmType::CsrCancel");
 
+struct EPATHTAG {
+    int points;
+    struct epathtbl *tblhead;
+};
+static_assert(sizeof(EPATHTAG) == 0x8, "sizeof EPATHTAG");
+static_assert(offsetof(EPATHTAG, points) == 0x0, "EPATHTAG::points");
+static_assert(offsetof(EPATHTAG, tblhead) == 0x4, "EPATHTAG::tblhead");
+
 struct NJS_ACTION {
     struct obj *object;
     struct NJS_MOTION *motion;
@@ -2564,6 +2588,26 @@ static_assert(offsetof(NJS_MATERIAL, exponent) == 0x8, "NJS_MATERIAL::exponent")
 static_assert(offsetof(NJS_MATERIAL, attr_texId) == 0xc, "NJS_MATERIAL::attr_texId");
 static_assert(offsetof(NJS_MATERIAL, attrflags) == 0x10, "NJS_MATERIAL::attrflags");
 
+struct NJS_MESHSET {
+    unsigned short type_matId;
+    unsigned short nbMesh;
+    short *meshes;
+    unsigned long *attrs;
+    struct NJS_POINT3 *normals;
+    union NJS_COLOR *vertcolor;
+    union NJS_COLOR *vertuv;
+    void *ext;
+};
+static_assert(sizeof(NJS_MESHSET) == 0x1c, "sizeof NJS_MESHSET");
+static_assert(offsetof(NJS_MESHSET, type_matId) == 0x0, "NJS_MESHSET::type_matId");
+static_assert(offsetof(NJS_MESHSET, nbMesh) == 0x2, "NJS_MESHSET::nbMesh");
+static_assert(offsetof(NJS_MESHSET, meshes) == 0x4, "NJS_MESHSET::meshes");
+static_assert(offsetof(NJS_MESHSET, attrs) == 0x8, "NJS_MESHSET::attrs");
+static_assert(offsetof(NJS_MESHSET, normals) == 0xc, "NJS_MESHSET::normals");
+static_assert(offsetof(NJS_MESHSET, vertcolor) == 0x10, "NJS_MESHSET::vertcolor");
+static_assert(offsetof(NJS_MESHSET, vertuv) == 0x14, "NJS_MESHSET::vertuv");
+static_assert(offsetof(NJS_MESHSET, ext) == 0x18, "NJS_MESHSET::ext");
+
 struct NJS_MKEY_P {
     unsigned long keyframe;
     void *key;
@@ -2607,6 +2651,16 @@ static_assert(offsetof(NJS_MOTION, mdata) == 0x0, "NJS_MOTION::mdata");
 static_assert(offsetof(NJS_MOTION, nbFrame) == 0x4, "NJS_MOTION::nbFrame");
 static_assert(offsetof(NJS_MOTION, type) == 0x8, "NJS_MOTION::type");
 static_assert(offsetof(NJS_MOTION, inp_fn) == 0xa, "NJS_MOTION::inp_fn");
+
+struct NJS_MOTION_DATA {
+    float *pos;
+    long *ang;
+    float *scl;
+};
+static_assert(sizeof(NJS_MOTION_DATA) == 0xc, "sizeof NJS_MOTION_DATA");
+static_assert(offsetof(NJS_MOTION_DATA, pos) == 0x0, "NJS_MOTION_DATA::pos");
+static_assert(offsetof(NJS_MOTION_DATA, ang) == 0x4, "NJS_MOTION_DATA::ang");
+static_assert(offsetof(NJS_MOTION_DATA, scl) == 0x8, "NJS_MOTION_DATA::scl");
 
 struct NJS_POINT2COL {
     struct NJS_POINT2 *p;

@@ -10,3 +10,8 @@ void FUN_00692b90(struct task *param_1)
 	DAT_05b3e050 = (*(struct NJS_POINT2 **)((char *)pClipMap_Adv01AB + local_8))[DAT_05b3e0d0];
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_Adv01AB + local_8))[DAT_05b3e0d0];
 }
+
+// STUB: SADX 0x00692c40
+void FUN_00692c40(void)
+{
+}
