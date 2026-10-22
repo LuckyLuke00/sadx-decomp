@@ -254,7 +254,8 @@ def check_unclosed_definitions() -> list[str]:
 
 def check_local_declarations() -> list[str]:
     """A label at column 0 is no declaration, also when a call follows it. A return type on its own line is one."""
-    text = "end:\n\tFoo();\nlocal_20:\n\tFUN_004afe30();\nint Bar(int a);\nint\nBaz(int);\n"
+    text = ("end:\n\tFoo();\nlocal_20:\n\tFUN_004afe30();\ncase 0x11: Qux(0, 8);\nint Bar(int a);\nint\n"
+            "Baz(int);\n")
     found = [name for name, _ in names.local_declarations(text)[0]]
     wanted = ["Bar", "Baz"]
     return [] if found == wanted else [f"local_declarations finds {found}, not {wanted}"]
