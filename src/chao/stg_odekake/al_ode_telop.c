@@ -1,0 +1,25 @@
+#include "decls.h"
+extern struct task *DAT_05b33104;
+void FreeTask(struct task *tp);
+
+// FUNCTION: SADX 0x00481a10
+void AL_OdeTelopDelete()
+{
+	FreeTask(DAT_05b33104);
+}
+
+// FUNCTION: SADX 0x00481a20
+void FUN_00481a20()
+{
+	AlMsgTelopClear((struct SAlMsgTelop *)DAT_05b33104->awp->work.ptr[0]);
+}
+
+// STUB: SADX 0x00481a40
+void AL_OdeTelopClear()
+{
+}
+
+// STUB: SADX 0x004820e0
+void AL_OdeTelopAdd(int id, float counter_f, short wtimer, int smode, float timer_f)
+{
+}
