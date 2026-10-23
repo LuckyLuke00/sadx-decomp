@@ -221,15 +221,10 @@ def annotation_address(line):
     return int(m.group(1), 16) if m else None
 
 
-def definition_end(lines, start):
-    """Index of the first line that is exactly "}" from START on, or None."""
-    return next((i for i in range(start, len(lines)) if lines[i] == "}"), None)
-
-
 def definition_span(lines, address):
     """(first, last) line index of the definition at ADDRESS, or None when it has none or no closing line."""
     start = next((i for i, line in enumerate(lines) if annotation_address(line) == address), None)
-    end = None if start is None else definition_end(lines, start)
+    end = None if start is None else names.definition_end(lines, start)
     return None if end is None else (start, end)
 
 
@@ -240,7 +235,7 @@ def unclosed_definitions(lines):
     starts = [i for i, line in enumerate(lines) if annotation_address(line) is not None]
     unclosed = []
     for start, after in zip(starts, starts[1:] + [len(lines)]):
-        end = definition_end(lines, start)
+        end = names.definition_end(lines, start)
         if end is None or end > after:
             unclosed.append(start)
     return unclosed
@@ -297,7 +292,7 @@ def apply_function(text, address, decls, func):
     same = next((i for i, a in annotated if a == address), None)
     later = next((i for i, a in annotated if a > address), None)
     if same is not None:
-        end = definition_end(lines, same)
+        end = names.definition_end(lines, same)
         if end is None:
             sys.exit(f"the definition at {hexa(address)} has no closing brace line")
         lines[same:end + 1] = func
