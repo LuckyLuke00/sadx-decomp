@@ -301,8 +301,10 @@ def check_convention_fact() -> list[str]:
     convention, when a register other than ecx and edx is read first, when the rets pop two different counts or a
     jump hides the pop, and in optimized code when the registers may be the compiler's choice (a C file or an
     unknown file) or the printed keyword differs. A /Od function gets its fact against any prototype: ecx with a
-    pop is __stdcall with a mov of ecx in the body, other registers are __fastcall. A register with a plain ret
-    gives None when the code reads a stack argument. Member names get no __thiscall warning."""
+    pop is a C++ member function in a C++ file (None in a C file or an unknown file, which has no members),
+    whose struct takes the class in its name or an address placeholder, other registers are __fastcall. A
+    register with a plain ret gives None when the code reads a stack argument. Member names get no __thiscall
+    warning."""
     ret8 = ["mov eax, dword ptr [esp + 4]", "ret 8"]
     ecx = ["mov eax, ecx", "ret"]
     thunk = ["jmp 0x402000"]
@@ -310,6 +312,11 @@ def check_convention_fact() -> list[str]:
     second = " If the first of them is an integer or a pointer, put an unused second parameter before it."
     no_this = " Do not use `__thiscall`: it is only for class members."
     change = " The printed prototype differs, so change it to fit the code and keep its name."
+    member = ("The function reads ecx and ends with `ret 8`, so it is a C++ member function: ecx holds `this`, and "
+              "the 8 bytes on the stack are its parameters. Declare a struct with the fields it reads through `this` "
+              "and the function as its member, then define the function as that member. ")
+    placeholder = member + "Name the struct `Unk_00401000`, a placeholder until its real name is known."
+    named = member + "The struct's name is the part of the function's name before the last `::`."
     pop8 = "The function ends with `ret 8`, so it pops 8 bytes of parameters."
     cases = [
         # (code, flags, name, proto, file, callee, wanted)
@@ -348,18 +355,12 @@ def check_convention_fact() -> list[str]:
         (["push ebp", "mov ebp, esp", "mov eax, ecx", "add eax, dword ptr [ebp + 8]", "pop ebp", "ret"],
          "/O2", "Foo", "", "a.cpp", None, None),
         (["mov ecx, eax", "ret 4"], "/O2", "Foo", "int __stdcall Foo(int)", "a.cpp", None, None),
-        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "", "a.c", None,
-         f"The function reads ecx and ends with `ret 8`, so it pops 8 bytes of parameters. "
-         "Declare the function `__stdcall`. The parameters are the 8 bytes on the stack. "
-         "Start the body with `__asm mov <local>, ecx`, where <local> is a new local."),
-        (["mov eax, ecx", "ret 8"], "/Gy /Od", "Foo", "void Foo(int, int)", "a.c", None,
-         "The function reads ecx and ends with `ret 8`, so it pops 8 bytes of parameters. "
-         f"Declare the function `__stdcall`. The parameters are the 8 bytes on the stack.{change} "
-         "Start the body with `__asm mov <local>, ecx`, where <local> is a new local."),
-        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "void __stdcall Foo(int, int)", "a.c", None,
-         "The function reads ecx and ends with `ret 8`, so it pops 8 bytes of parameters. "
-         "Keep `__stdcall`. The parameters are the 8 bytes on the stack. "
-         "Start the body with `__asm mov <local>, ecx`, where <local> is a new local."),
+        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "", "a.cpp", None, placeholder),
+        (["mov eax, ecx", "ret 8"], "/Gy /Od", "Foo", "void Foo(int, int)", "a.cpp", None, placeholder),
+        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "void __stdcall Foo(int, int)", "a.cpp", None, placeholder),
+        (["mov eax, ecx", "ret 8"], "/Od", "Foo::Run", "", "a.cpp", None, named),
+        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "", "a.c", None, None),
+        (["mov eax, ecx", "ret 8"], "/Od", "Foo", "", "", None, None),
         (ecx, "/Od", "Foo", "", "a.c", None,
          f"The first parameter arrives in ecx. Declare the function `__fastcall`.{no_this}"),
         (ecx, "/Od", "Foo", "void __stdcall Foo(void)", "a.c", None,

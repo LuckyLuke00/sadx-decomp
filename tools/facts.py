@@ -1,6 +1,7 @@
 """The facts that `check.py dossier --facts` lists: what a function's assembly hides from a reader who writes C,
 such as a register argument, a callee that pops its arguments, a global that holds a pointer, a type with no
-body in the types header and a float constant that the source writes as a literal.
+body in the types header and a float constant that the source writes as a literal. A C++ member function
+shows only as ecx and a pop.
 
 check.py passes fact_lines to dossier.show. Needs capstone, so it runs in .venv.
 """
@@ -126,13 +127,26 @@ def amount(number: int) -> str:
     return f"0x{number:x}" if number > 9 else str(number)
 
 
+def member_function_fact(function: x86.Function, f: Function, pop: int) -> str:
+    """The text for a function that reads ecx and ends with `ret POP`: a C++ member function, whose struct takes
+    the class in its name or an address placeholder."""
+    struct_name = ("The struct's name is the part of the function's name before the last `::`."
+                   if "::" in f.name else
+                   f"Name the struct `Unk_{function.address:08x}`, a placeholder until its real name is known.")
+    return (f"The function reads ecx and ends with `ret {amount(pop)}`, so it is a C++ member function: ecx "
+            f"holds `this`, and the {amount(pop)} bytes on the stack are its parameters. Declare a struct with "
+            "the fields it reads through `this` and the function as its member, then define the function as "
+            f"that member. {struct_name}")
+
+
 def convention_fact(function: x86.Function, flags: str, f: Function, decoder: x86.Decoder,
                     sizes: dict[int, int]) -> str | None:
     """What the registers and the ret say about the calling convention. None when the code shows none, when
     it reads a register that no keyword passes (the register-argument cluster), when a jump out hides what
     is popped, or when the compiler may have picked the registers: optimized code in a C file or in a file
     that is not known, and optimized code whose printed prototype names no such keyword. Only a `/Od`
-    function gets a keyword against its printed prototype, because that code never picks registers itself."""
+    function gets a keyword against its printed prototype, because that code never picks registers itself. A
+    /Od function in a C++ file that reads ecx and ends with `ret N` gets the member function fact instead."""
     first = read_first(function, {})
     registers = first & (x86.ECX | x86.EDX)
     popped = exit_pops(function, decoder, sizes)
@@ -140,8 +154,9 @@ def convention_fact(function: x86.Function, flags: str, f: Function, decoder: x8
         return None
     pop = max(popped, default=0)
     debug = "/Od" in flags
-    debug_method = debug and registers == x86.ECX and pop  # the tree matches this with an asm line
-    keyword = "__stdcall" if debug_method or not registers else "__fastcall"
+    if debug and registers == x86.ECX and pop:  # /Od keeps `this` in ecx only for a member function
+        return member_function_fact(function, f, pop) if f.file.endswith(CPP_FILES) else None
+    keyword = "__stdcall" if not registers else "__fastcall"
     printed = printed_keyword(f.proto)
     if not debug and ((registers and not f.file.endswith(CPP_FILES)) or (f.proto and printed != keyword)):
         return None
@@ -153,10 +168,6 @@ def convention_fact(function: x86.Function, flags: str, f: Function, decoder: x8
     if not registers:
         return (f"The function ends with `ret {amount(pop)}`, so it pops {amount(pop)} bytes of parameters. "
                 f"{declare}{change}")
-    if debug_method:
-        return (f"The function reads ecx and ends with `ret {amount(pop)}`, so it pops {amount(pop)} bytes of "
-                f"parameters. {declare} The parameters are the {amount(pop)} bytes on the stack.{change} "
-                "Start the body with `__asm mov <local>, ecx`, where <local> is a new local.")
     lead = {x86.ECX: "The first parameter arrives in ecx.",
             x86.EDX: "The first parameter is unused and the second arrives in edx.",
             x86.ECX | x86.EDX: "The first two parameters arrive in ecx and edx."}[registers]
