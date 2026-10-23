@@ -1,6 +1,6 @@
 """Search for a rewrite of one function that scores higher, with the score as the only judge.
 
-  python tools/check.py permute FILE 0x00401000 [--tries N] [--minutes M] [--seed S]
+  python tools/check.py permute FILE 0x00401000 [--tries N] [--minutes M] [--seed S] [--rank score|class]
 
 The small changes: swap two statements that do not depend on each other, flip a comparison or the
 operands of a commutative operation, write `x == 0` as `!x` or back, move between `x++`, `x += 1`
@@ -40,7 +40,7 @@ import project
 import runner
 
 OUT = project.BUILD / "permute"
-Score = collections.namedtuple("Score", "percent exact lines")
+Score = collections.namedtuple("Score", "percent exact lines structural")
 LVALUE = r"\w+(?:(?:\.|->)\w+|\[[^\[\]]*\])*"
 OPERAND = rf"-?{LVALUE}(?:\([^()]*\))?"
 # An operand pair counts only between these, so that swapping the two cannot change the precedence.
@@ -632,18 +632,34 @@ def score(address):
     out, _ = runner.reccmp("--target", project.game_config().target, "--verbose", hex(address), "--no-color",
                            cwd=project.BUILD)
     if re.search(r" 100% match\.", out):
-        return Score(100.0, True, 0), out
-    lines = len(llm.DIFF_LINE.findall(out))
+        return Score(100.0, True, 0, 0), out
+    changed = llm.DIFF_LINE.findall(out)
     if " 100% effective match" in out:
-        return Score(100.0, False, lines), out
+        return Score(100.0, False, len(changed), structural_lines(changed)), out
     m = re.search(r"is only (\d+(?:\.\d+)?)% similar", out)
     if m is None:
         sys.exit(f"reccmp gave no score for {hex(address)}:\n{out[-2000:]}")
-    return Score(float(m[1]), False, lines), out
+    return Score(float(m[1]), False, len(changed), structural_lines(changed)), out
+
+
+def structural_lines(changed):
+    """The lines of CHANGED, the (sign, text) of each changed line of a reccmp diff, whose mnemonic the other side
+    lacks: an instruction too many or too few. The other changed lines differ only in their operands, such as a
+    register or a stack slot."""
+    removed, added = collections.Counter(), collections.Counter()
+    for sign, text in changed:
+        words = text.split()
+        (removed if sign == "-" else added)[words[0] if words else ""] += 1
+    return sum((removed - added).values()) + sum((added - removed).values())
 
 
 def rank(result):
     return result.percent, result.exact, -result.lines
+
+
+def rank_by_class(result):
+    """Like rank, but at the same percent the try with fewer structural lines wins, even with more changed lines."""
+    return result.percent, result.exact, -result.structural, -result.lines
 
 
 def describe(result):
@@ -684,7 +700,7 @@ def unseen(bodies, seen):
     return None
 
 
-def search(build_and_score, start, body, tries, minutes, rng, changes):
+def search(build_and_score, start, body, tries, minutes, rng, changes, rank_key):
     """Climb from BODY with CHANGES: (best Score, best body, tries made). Every other try is the next of the best
     body's single changes, in a random order, so that a fix one change away is always found; the others change the
     current body at random. After 40 tries with no new best it goes back to the best."""
@@ -703,20 +719,20 @@ def search(build_and_score, start, body, tries, minutes, rng, changes):
         tried += 1
         stale += 1
         result = build_and_score(new)
-        if result is not None and rank(result[0]) > rank(best[0]):
+        if result is not None and rank_key(result[0]) > rank_key(best[0]):
             print(f"try {tried}: {describe(result[0])}", flush=True)
             best = current = (result[0], new)
             sweep = neighbors(new, changes)
             rng.shuffle(sweep)
             stale = 0
-        elif result is not None and rank(result[0]) >= rank(current[0]):
+        elif result is not None and rank_key(result[0]) >= rank_key(current[0]):
             current = (result[0], new)
         if stale and stale % 40 == 0:
             current = best
     return best[0], best[1], tried
 
 
-def permute(path, address, tries, minutes, seed):
+def permute(path, address, tries, minutes, seed, rank_key):
     """Search for a better shape of the function at ADDRESS in PATH. 0 when it reaches 100%."""
     original = path.read_bytes()
     source, crlf = llm.read_source(path)
@@ -742,7 +758,8 @@ def permute(path, address, tries, minutes, seed):
             print("Only the names of globals or functions differ: fix the declarations, a new shape cannot help.")
             return 1
         changes = CHANGES + [rename_local] if SLOT_DIFF.search(start[1]) else CHANGES
-        best, best_body, tried = search(build_and_score, start[0], body, tries, minutes, random.Random(seed), changes)
+        best, best_body, tried = search(build_and_score, start[0], body, tries, minutes, random.Random(seed), changes,
+                                        rank_key)
         OUT.mkdir(parents=True, exist_ok=True)
         (OUT / f"{address:08x}.c").write_text("\n".join(head + best_body + ["}"]) + "\n", encoding="utf-8")
         if best.percent > start[0].percent:

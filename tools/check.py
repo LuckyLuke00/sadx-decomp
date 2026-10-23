@@ -135,6 +135,8 @@ def parse_args() -> argparse.Namespace:
     permute.add_argument("--tries", type=int, default=500, help="builds to try (default 500)")
     permute.add_argument("--minutes", type=float, help="stop after this long")
     permute.add_argument("--seed", type=int, default=0, help="the random seed (default 0)")
+    permute.add_argument("--rank", choices=["score", "class"], default="score",
+                         help="class: at the same percent, fewer structural diff lines win (default score)")
     clone = commands.add_parser("clone")
     clone.add_argument("addresses", nargs="*", type=lambda value: int(value, 16), help="templates, e.g. 0x00401000")
     clone.add_argument("--all", action="store_true", help="every function at 100%% is a template")
@@ -161,7 +163,8 @@ def run_with_game(args: argparse.Namespace) -> int:
         # It imports this module back, through llm.
         import permute
 
-        return permute.permute(ROOT / args.file, args.address, args.tries, args.minutes, args.seed)
+        rank_key = permute.rank_by_class if args.rank == "class" else permute.rank
+        return permute.permute(ROOT / args.file, args.address, args.tries, args.minutes, args.seed, rank_key)
     if args.command == "clone":
         # It imports this module back.
         import clone
