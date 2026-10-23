@@ -56,6 +56,66 @@ def check_without_static() -> list[str]:
     return failures
 
 
+WRAP_BASE = "\n".join(['#include "x.h"', "", "// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "}", ""])
+WRAPPED = [llm.OFF, llm.ON]
+
+
+def stub_lines(address: int, sig: str) -> list[str]:
+    """The lines of a STUB at ADDRESS with the signature SIG."""
+    return [f"// STUB: SADX 0x{address:08x}", sig, "{", "}"]
+
+
+def pragma_lines(text: str) -> list[str]:
+    """The #pragma lines of TEXT, in order."""
+    return [line for line in text.split("\n") if line.startswith("#pragma")]
+
+
+def check_wrapped_stubs() -> list[str]:
+    """A static STUB that apply_function writes sits between pragma optimize off and on. A function replaces it
+    together with the pair, a second stub goes above the pair of a later one, a rewritten stub keeps one pair, and a
+    global stub gets none. No definition is left unclosed."""
+    one = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "static void Draw(void)"))
+    two = llm.apply_function(one, 0x300, [], stub_lines(0x300, "static void Disp(void)"))
+    function = ["// FUNCTION: SADX 0x00000500", "static void Draw(void)", "{", "\tmarker();", "}"]
+    rewritten = llm.apply_function(two, 0x500, [], stub_lines(0x500, "static void Draw(void)"))
+    global_stub = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "void Draw(void)"))
+    cases = [("one stub", pragma_lines(one), WRAPPED),
+             ("a second stub above the first", pragma_lines(two), WRAPPED * 2),
+             ("a function over a stub", pragma_lines(llm.apply_function(two, 0x500, [], function)), WRAPPED),
+             ("a stub over a stub", pragma_lines(rewritten), WRAPPED * 2),
+             ("a global stub", pragma_lines(global_stub), [])]
+    failures = [f"apply_function leaves {found} for {what}, not {wanted}" for what, found, wanted in cases
+                if found != wanted]
+    if llm.unclosed_definitions(two.split("\n")):
+        failures.append(f"apply_function leaves an unclosed definition in {two!r}")
+    return failures
+
+
+def check_definition_block() -> list[str]:
+    """definition_block is a wrapped stub's definition_span plus its pair, and the span of a definition without one."""
+    lines = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "static void Draw(void)")).split("\n")
+    failures = []
+    block, span = llm.definition_block(lines, 0x500), llm.definition_span(lines, 0x500)
+    if block != (span[0] - 1, span[1] + 1):
+        failures.append(f"definition_block gives {block} for a wrapped stub, not the span {span} plus its pair")
+    plain = WRAP_BASE.split("\n")
+    if llm.definition_block(plain, 0x1000) != llm.definition_span(plain, 0x1000):
+        failures.append("definition_block widens a definition that has no pair")
+    return failures
+
+
+def check_stub_functions_wrap() -> list[str]:
+    """stub_functions wraps the stub of a static function, and not the stub of a global one."""
+    failures = []
+    stubbed = llm.stub_functions(WRAP_BASE, [0x1000])
+    if pragma_lines(stubbed):
+        failures.append(f"stub_functions wraps a global stub in {stubbed!r}")
+    static = llm.stub_functions(WRAP_BASE.replace("void Exec", "static void Exec"), [0x1000])
+    if pragma_lines(static) != WRAPPED:
+        failures.append(f"stub_functions leaves {pragma_lines(static)} for a static function, not a wrapped stub")
+    return failures
+
+
 def check_cast_calls() -> list[str]:
     """Each call to a clashed name goes through a pointer of the type its declaration gives, without `extern`, with
     parameter names dropped. Other names, members, names with a longer name round them, and names not clashed stay.
@@ -430,7 +490,8 @@ def check_names_only() -> list[str]:
 
 def run() -> list[str]:
     """Every check of this module, in order."""
-    checks = [check_signature_index, check_without_static, check_cast_calls, check_one_edit_apart,
+    checks = [check_signature_index, check_without_static, check_wrapped_stubs, check_definition_block,
+              check_stub_functions_wrap, check_cast_calls, check_one_edit_apart,
               check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_ftol,
               check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime, check_with_earlier,
               check_without_declarations, check_tool_lines, check_build_errors, check_error_count, check_names_only]
