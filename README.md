@@ -73,6 +73,13 @@ function decompiled first.
 
 </details>
 
+## AI use
+
+I use AI on this project. It drafts the C code, and it helped write the tools
+too. Nothing counts until it matches the exe.
+
+AI-assisted PRs are fine, just read [CONTRIBUTING.md](CONTRIBUTING.md) first.
+
 ## Which version do I have?
 
 This project supports only the 2014 Steam release (app 71250, build 411939).
