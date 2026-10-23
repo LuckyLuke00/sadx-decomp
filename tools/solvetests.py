@@ -52,7 +52,7 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
             raise llmclient.ServerError(TOO_LONG, 400)
         return llmclient.Reply(reply, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
 
-    def first_prompt(config, file, address, types, count, extra):
+    def first_prompt(config, file, address, types, count, extra, similar):
         return f"{count} examples"
 
     fakes = {"read_source": lambda path: ('#include "decls.h"\n', False), "write_source": lambda path, text, crlf: None,
@@ -61,7 +61,7 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False, stop_below=None,
-                   try_tokens=None, think_max=None)
+                   try_tokens=None, think_max=None, similar_examples=False)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
