@@ -50,6 +50,7 @@ def run() -> int:
     failures += check_trick_byte_share(current)
     failures += check_summarize_tricks()
     failures += check_whole_percent()
+    failures += check_recent_gain()
     failures += check_moved_scores(expected)
     failures += check_history_rows(expected)
     failures += check_empty_map()
@@ -695,6 +696,21 @@ def check_summarize_tricks() -> list[str]:
     if keys != {"a": True, "b": False}:
         failures.append(f"summarize sets the trick key {keys}, not for the tricked address only")
     return failures
+
+
+def check_recent_gain() -> list[str]:
+    """The card counts from the last row a week or more before the newest. A younger history counts from its
+    oldest row and says since when."""
+    def rows(*pairs):
+        return [{"date": day, "matched": str(matched)} for day, matched in pairs]
+
+    cases = [(rows(("2026-10-01", 10), ("2026-10-05", 20), ("2026-10-09", 25)), (15, "this week")),
+             (rows(("2026-10-17", 6), ("2026-10-22", 2651)), (2645, "since 2026-10-17")),
+             (rows(("2026-10-22", 5)), (0, "since 2026-10-22")),
+             (rows(("2026-10-01", 10), ("2026-10-08", 30)), (20, "this week")),
+             (rows(("2026-10-02", 10), ("2026-10-08", 30)), (20, "since 2026-10-02"))]
+    return [f"recent_gain gives {progress.recent_gain(history)} for {history}, not {wanted}"
+            for history, wanted in cases if progress.recent_gain(history) != wanted]
 
 
 def check_whole_percent() -> list[str]:
