@@ -41,7 +41,8 @@ request, AI or not.
 - Run `python tools/check.py setup` once. Then `git commit` runs `save` and
   stages the new scores, and `git push` runs `gate`.
 - Never edit `summary.json`, `history.csv` or the SVGs in `docs/progress` by
-  hand. CI rejects the edit.
+  hand. CI catches an edited SVG or history line and any score drop. CI has
+  no game, so it can't catch a raised score. Only `gate` checks the scores.
 - Never add game files: no exe, no dll, no game data, no disassembly dumps.
 - Never read or use leaked source code.
 - Pull requests merge by rebase, after the branch is up to date with the
