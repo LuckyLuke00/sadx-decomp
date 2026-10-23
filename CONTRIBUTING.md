@@ -1,6 +1,8 @@
 # Contributing
 
-Pull requests are welcome. This page says what a pull request needs.
+Pull requests are welcome. This page says what a pull request needs. New
+here? [docs/FIRST-FUNCTION.md](docs/FIRST-FUNCTION.md) walks you through your
+first function.
 
 ## Set up
 
@@ -47,5 +49,8 @@ request, AI or not.
 - Never read or use leaked source code.
 - Pull requests merge by rebase, after the branch is up to date with the
   default branch.
+- CI has no game, so before a merge the maintainer runs `gate` on the pull
+  request's last commit. The CI run's summary page lists the moved scores to
+  check.
 
 Report a security problem as [SECURITY.md](SECURITY.md) says, not in an issue.

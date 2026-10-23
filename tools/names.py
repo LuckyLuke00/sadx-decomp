@@ -8,6 +8,7 @@ Standard library only.
 import csv
 import functools
 import re
+import sys
 from pathlib import Path
 from typing import NamedTuple
 
@@ -60,7 +61,10 @@ def definition_end(lines: list[str], start: int) -> int | None:
 
 
 def read_sources(root: Path) -> dict[str, str]:
-    """The hand-written source files under root/src: path relative to root: text."""
+    """The hand-written source files under root/src: path relative to root: text. A root with no src folder is a
+    wrong root: it would find no function, so no trick either, and every trick function would count as matched."""
+    if not (root / "src").is_dir():
+        sys.exit(f"{root / 'src'} is not a folder: the source scan needs the repo root")
     sources = {}
     for path in sorted((root / "src").rglob("*")):
         rel = path.relative_to(root).as_posix()
