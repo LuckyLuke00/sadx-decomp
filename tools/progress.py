@@ -564,17 +564,21 @@ def card_figures(stats: Totals, share: tuple[int, int], theme: Theme) -> list[st
     return parts
 
 
-def done_this_week(history: list[dict]) -> int:
-    """The functions done since the last history row a week or more before the newest. It counts from the newest
+def recent_gain(history: list[dict]) -> tuple[int, str]:
+    """The functions done since the last history row a week or more before the newest, and "this week". A history
+    younger than a week counts from its oldest row instead, and the label says since when. It counts from the newest
     row's date, not from today, so the card depends only on the history."""
     newest = date.fromisoformat(history[-1]["date"])
     before = [row for row in history if date.fromisoformat(row["date"]) <= newest - timedelta(days=7)]
-    return int(history[-1]["matched"]) - (int(before[-1]["matched"]) if before else 0)
+    if before:
+        return int(history[-1]["matched"]) - int(before[-1]["matched"]), "this week"
+    return int(history[-1]["matched"]) - int(history[0]["matched"]), f"since {history[0]['date']}"
 
 
 def render_card(stats: Totals, share: tuple[int, int], history: list[dict], exe: str, theme: Theme) -> str:
     """The summary card at the top of the README, as wide as the map. SHARE is the byte share, (matched, all)."""
     height = 168
+    gain, since = recent_gain(history)
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {height}" width="{WIDTH}" height="{height}">',
         f'<title>{escape(stats_line(stats))}</title>',
@@ -586,7 +590,7 @@ def render_card(stats: Totals, share: tuple[int, int], history: list[dict], exe:
         f'{percent(stats.matched, stats.game_total)}<tspan dx="10" font-size="13" font-weight="400" '
         f'fill="{theme.muted}">of the game done</tspan></text>',
         f'<text x="{WIDTH - MARGIN - 17}" y="76" text-anchor="end" font-family="{FONT}" font-size="13" '
-        f'font-weight="600" fill="{theme.text}">{done_this_week(history):+,} this week</text>',
+        f'font-weight="600" fill="{theme.text}">{gain:+,} {escape(since)}</text>',
         ring(WIDTH - MARGIN - 6, 71.5, theme),  # its right edge lines up with the text above
     ]
     parts += card_bar(stats, theme)
