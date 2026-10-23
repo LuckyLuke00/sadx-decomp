@@ -35,6 +35,11 @@ void njDrawLine2D(struct NJS_POINT2COL *param_1, int param_2, float param_3, uns
 {
 }
 
+// STUB: SADX 0x00421740
+void njDrawPolygon2D(struct NJS_POINT2COL *param_1, int param_2, float param_3, unsigned long param_4)
+{
+}
+
 // STUB: SADX 0x00421ff0
 void njDrawLine3D(struct NJS_POINT3COL *param_1, int param_2, unsigned long param_3)
 {
@@ -42,5 +47,10 @@ void njDrawLine3D(struct NJS_POINT3COL *param_1, int param_2, unsigned long para
 
 // STUB: SADX 0x00422050
 void njDrawQuadTexture(struct NJS_QUAD_TEXTURE *param_1, float param_2)
+{
+}
+
+// STUB: SADX 0x004220c0
+void njDrawTriangle2D(struct NJS_POINT2COL *param_1, int param_2, float param_3, unsigned long param_4)
 {
 }

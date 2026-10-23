@@ -24,6 +24,35 @@ void FUN_005723e0(float param_1)
 	FUN_0067d2d0(0, param_1, param_1, param_1);
 }
 
+// FUNCTION: SADX 0x00572f90
+void FUN_00572f90(struct obj *param_1, struct obj *param_2)
+{
+	int local_8g = (int)param_1->model;
+	int local_cg;
+
+	if ((local_8g & 0x20) == 0)
+	{
+		njTranslateV((float *)0, (struct NJS_POINT3 *)((char *)param_2 + 0x20));
+		if ((local_8g & 0x8000) == 0)
+		{
+			local_cg = (int)((char *)param_2 + 0x14);
+			if ((local_8g & 0x200) != 0)
+			{
+				FUN_00571b20(local_cg);
+				FUN_00573040(local_cg);
+				FUN_008c2030(local_cg);
+			}
+			else
+			{
+				FUN_00573040(local_cg);
+				FUN_008c2030(local_cg);
+				FUN_00571b20(local_cg);
+			}
+		}
+	}
+	njTranslateV((float *)0, (struct NJS_POINT3 *)((char *)param_1 + 8));
+}
+
 // FUNCTION: SADX 0x00573040
 void FUN_00573040(int param_1)
 {

@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x005c5a30
+void FUN_005c5a30(struct task *param_1)
+{
+}
+
 // FUNCTION: SADX 0x005c5ae0
 void FUN_005c5ae0(struct task *param_1)
 {

@@ -6,6 +6,11 @@ void _njEndModel(void)
 {
 }
 
+// STUB: SADX 0x0042b810
+void _njTransformObject(struct obj *obj, void (*param_2)(struct NJS_MODEL *))
+{
+}
+
 // FUNCTION: SADX 0x0042ba90
 void njSetMaterialCallBackFunc(void (*param_1)(void))
 {

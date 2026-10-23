@@ -6,6 +6,11 @@ void FUN_004086c0(void *param_1, void *param_2);
 extern "C" void free(void *param_1);
 void __stdcall FUN_00408490(void *param_1, void *param_2, void *param_3, void *param_4);
 
+// STUB: SADX 0x00408100
+void __stdcall FUN_00408100(void *param_1)
+{
+}
+
 // STUB: SADX 0x00408230
 void __fastcall FUN_00408230(int *param_1)
 {
@@ -42,6 +47,11 @@ void __stdcall FUN_00408490(void *param_1, void *param_2, void *param_3, void *p
 
 // STUB: SADX 0x004084c0
 void FUN_004084c0(void *param_1, int param_2)
+{
+}
+
+// STUB: SADX 0x00408510
+void __fastcall FUN_00408510(void *param_1, int param_2)
 {
 }
 
