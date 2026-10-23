@@ -1,4 +1,4 @@
-"""Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, read a count
+"""Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, read counts
 from the command line.
 
 Standard library only.
@@ -71,6 +71,11 @@ def positive_int(value: str) -> int:
     if number < 1:
         raise argparse.ArgumentTypeError(f"{value} is less than 1")
     return number
+
+
+def positive_ints(value: str) -> list[int]:
+    """argparse type: VALUE as comma-separated ints of 1 or more, such as 600,600,1000."""
+    return [positive_int(part) for part in value.split(",")]
 
 
 def remove(path: Path) -> None:
