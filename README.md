@@ -30,8 +30,8 @@ another game.
 
 **Game functions** are the functions that the progress counts. They are the
 functions in [data/functions.csv](data/functions.csv) inside a game code range
-of [data/codegen-groups.csv](data/codegen-groups.csv), less four header
-functions. [src/header-functions.h](src/header-functions.h) names those four as
+of [data/codegen-groups.csv](data/codegen-groups.csv), less the header
+functions. [src/header-functions.h](src/header-functions.h) names those as
 library code.
 
 A function only counts as matched when it matches in plain C. If it needs
