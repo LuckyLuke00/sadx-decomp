@@ -5,6 +5,11 @@ void AL_FieldExecutor(struct task *tp)
 {
 }
 
+// STUB: SADX 0x004516f0
+void AL_FieldDisplayer(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00451790
 void AL_ChildFieldDestructor(struct task *tp)
 {

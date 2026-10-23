@@ -20,6 +20,11 @@ void FUN_0044ebd0(const struct SAlgKinderOrthoQuad *quads, int count, unsigned l
 {
 }
 
+// STUB: SADX 0x0044ec00
+void AlgKinderOrthoQuadDrawArrayOffset(const struct SAlgKinderOrthoQuad *q, int len, unsigned long color, int ox, int oy)
+{
+}
+
 // FUNCTION: SADX 0x0044eec0
 void AlgKinderOrthoQPolyBegin()
 {

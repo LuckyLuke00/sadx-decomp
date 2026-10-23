@@ -17,6 +17,11 @@ void AL_EntranceMasterDest(struct task *tp)
 	AL_ReleaseTex(1);
 }
 
+// STUB: SADX 0x00471d00
+void AL_EntranceMasterExec(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00471ee0
 void _alg_entrance_prolog()
 {

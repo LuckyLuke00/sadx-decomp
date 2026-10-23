@@ -1,6 +1,11 @@
 #include "decls.h"
 void FUN_004da910(int param_1);
 
+// STUB: SADX 0x0046c740
+void MiniKiran(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0046ccf0
 void AL_MinimalDestructor(struct task *tp)
 {

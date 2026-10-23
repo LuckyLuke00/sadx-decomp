@@ -44,6 +44,40 @@ void FUN_004389d0(int param_1, int param_2)
 {
 }
 
+// FUNCTION: SADX 0x00438a50
+void AL_ParameterCatchup(struct task *pChaoTask)
+{
+	struct taskwk *var1;
+	struct anywk *var2;
+
+	var1 = pChaoTask->twp;
+	var2 = *(struct anywk **)((char *)var1 + 0x6c);
+	*(unsigned char *)((char *)var1 + 0x70) = *(unsigned char *)((char *)var2 + 0x20);
+	*(unsigned char *)((char *)var1 + 0x80) = *(unsigned char *)((char *)var2 + 0x30);
+	*(unsigned short *)((char *)var1 + 0x88) = *(unsigned short *)((char *)var2 + 0x38);
+	*(unsigned char *)((char *)var1 + 0x71) = *(unsigned char *)((char *)var2 + 0x21);
+	*(unsigned char *)((char *)var1 + 0x81) = *(unsigned char *)((char *)var2 + 0x31);
+	*(unsigned short *)((char *)var1 + 0x8a) = *(unsigned short *)((char *)var2 + 0x3a);
+	*(unsigned char *)((char *)var1 + 0x72) = *(unsigned char *)((char *)var2 + 0x22);
+	*(unsigned char *)((char *)var1 + 0x82) = *(unsigned char *)((char *)var2 + 0x32);
+	*(unsigned short *)((char *)var1 + 0x8c) = *(unsigned short *)((char *)var2 + 0x3c);
+	*(unsigned char *)((char *)var1 + 0x73) = *(unsigned char *)((char *)var2 + 0x23);
+	*(unsigned char *)((char *)var1 + 0x83) = *(unsigned char *)((char *)var2 + 0x33);
+	*(unsigned short *)((char *)var1 + 0x8e) = *(unsigned short *)((char *)var2 + 0x3e);
+	*(unsigned char *)((char *)var1 + 0x74) = *(unsigned char *)((char *)var2 + 0x24);
+	*(unsigned char *)((char *)var1 + 0x84) = *(unsigned char *)((char *)var2 + 0x34);
+	*(unsigned short *)((char *)var1 + 0x90) = *(unsigned short *)((char *)var2 + 0x40);
+	*(unsigned char *)((char *)var1 + 0x75) = *(unsigned char *)((char *)var2 + 0x25);
+	*(unsigned char *)((char *)var1 + 0x85) = *(unsigned char *)((char *)var2 + 0x35);
+	*(unsigned short *)((char *)var1 + 0x92) = *(unsigned short *)((char *)var2 + 0x42);
+	*(unsigned char *)((char *)var1 + 0x76) = *(unsigned char *)((char *)var2 + 0x26);
+	*(unsigned char *)((char *)var1 + 0x86) = *(unsigned char *)((char *)var2 + 0x36);
+	*(unsigned short *)((char *)var1 + 0x94) = *(unsigned short *)((char *)var2 + 0x44);
+	*(unsigned char *)((char *)var1 + 0x77) = *(unsigned char *)((char *)var2 + 0x27);
+	*(unsigned char *)((char *)var1 + 0x87) = *(unsigned char *)((char *)var2 + 0x37);
+	*(unsigned short *)((char *)var1 + 0x96) = *(unsigned short *)((char *)var2 + 0x46);
+}
+
 // STUB: SADX 0x00438b40
 void AL_ParameterAddGrowth(struct task *tp, float add)
 {
@@ -115,6 +149,11 @@ void AL_ClearChaoParam(struct CHAO_PARAM_GC *pParam)
 unsigned long AL_ParameterGetSkill(struct task *pChaoTask, unsigned short SkillKind)
 {
 	return (unsigned long)0;
+}
+
+// STUB: SADX 0x0043a120
+void AL_ParameterGrow(struct task *pChaoTask, unsigned short category, unsigned short kind, long finish)
+{
 }
 
 // FUNCTION: SADX 0x0043a220

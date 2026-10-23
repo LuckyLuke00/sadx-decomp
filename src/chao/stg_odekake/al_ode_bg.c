@@ -1,6 +1,16 @@
 #include "decls.h"
 extern int DAT_05b3e350;
 
+// STUB: SADX 0x0047ddb0
+void BGExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047dfc0
+void BGDisplayer(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0047e070
 void BGDestructor(struct task *tp)
 {

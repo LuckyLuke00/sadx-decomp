@@ -42,6 +42,11 @@ void FUN_0047a8a0()
 	CameraSetCollisionCameraFunc(CameraFunc, 1, 2);
 }
 
+// STUB: SADX 0x0047a8c0
+void AL_OdekakeStage(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0047a9c0
 void _al_odekake_prolog()
 {

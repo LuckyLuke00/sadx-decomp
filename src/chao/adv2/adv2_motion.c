@@ -33,6 +33,11 @@ void SetMotionLinkStep(struct MOTION_CTRL *pMtnCtrl, long MtnNum, unsigned short
 {
 }
 
+// STUB: SADX 0x0043a420
+void SetMotionLinkSync(struct MOTION_CTRL *pMtnCtrl, long MtnNum)
+{
+}
+
 // STUB: SADX 0x0043a4d0
 void FUN_0043a4d0(void *param_1, int param_2)
 {
@@ -59,6 +64,11 @@ long IsMotionEnd(struct MOTION_CTRL *pMtnCtrl)
 long IsMotionStop(struct MOTION_CTRL *pMtnCtrl)
 {
 	return (*(unsigned char *)pMtnCtrl >> 3) & 1;
+}
+
+// STUB: SADX 0x0043a6c0
+void SetMotionFrame(struct MOTION_CTRL *pMtnCtrl, float frame)
+{
 }
 
 // FUNCTION: SADX 0x0043a750
