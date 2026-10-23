@@ -24,6 +24,8 @@ SCALAR_SIZES = {"char": 1, "signed char": 1, "unsigned char": 1, "bool": 1, "sho
                 "__int64": 8, "unsigned __int64": 8, "long long": 8, "unsigned long long": 8}
 TYPE_WORDS = {"void", "char", "short", "int", "long", "float", "double", "signed", "unsigned", "bool", "__int64",
               "struct", "union", "enum", "class", "const", "volatile"}
+LITERAL = re.compile(r"\"(?:\\.|[^\"\\\n])*\"|'(?:\\.|[^'\\\n])*'|//[^\n]*|/\*.*?\*/",
+                     re.S)  # a string, a character or a comment, also over lines
 
 
 class Previous(NamedTuple):
@@ -42,7 +44,19 @@ def annotation() -> re.Pattern:
 
 def strip_code(text: str) -> str:
     """Text without comments, string and char literals: what is left are code tokens."""
-    return re.sub(r'//[^\n]*|/\*.*?\*/|"(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\'', " ", text, flags=re.S)
+    return LITERAL.sub(" ", text)
+
+
+def blank_literals(text: str) -> str:
+    """TEXT, a line or lines joined by newlines, with each string and character as `_` and each comment as blanks, of
+    the same length and with its newlines kept: a bracket, comma or = in them does not count, and lines still line
+    up."""
+    return LITERAL.sub(lambda m: re.sub(r"[^\n]", "_" if m[0][0] in "\"'" else " ", m[0]), text)
+
+
+def definition_end(lines: list[str], start: int) -> int | None:
+    """Index of the first line that is exactly "}" from START on, or None."""
+    return next((i for i in range(start, len(lines)) if lines[i] == "}"), None)
 
 
 def read_sources(root: Path) -> dict[str, str]:
