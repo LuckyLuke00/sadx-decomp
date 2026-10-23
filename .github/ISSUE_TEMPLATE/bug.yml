@@ -1,0 +1,33 @@
+name: Bug in the tools
+description: A command fails or gives a wrong result.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Report a security problem as SECURITY.md says, not in an issue.
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      description: The command you ran, such as `python tools/check.py fn 0x00401000`.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: What it printed. Leave out any game file contents.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit and Windows version
+      description: The output of `git rev-parse --short HEAD`, and your Windows version.

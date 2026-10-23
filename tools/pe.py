@@ -151,6 +151,18 @@ def read_header(path: Path) -> Header:
                   subsystem, dll_characteristics, sections, imports, import_slots, delay_imports, pdb)
 
 
+def initialized_data(path: Path) -> list[range]:
+    """The addresses of the file-backed bytes of the exe's .data and .rdata, the sections where MSVC puts initialized
+    data. The rest of .data, past its file bytes, is the zero-filled .bss."""
+    header = read_header(path)
+    spans = []
+    for section in header.sections:
+        if section.name in (".data", ".rdata"):
+            start = header.image_base + section.rva
+            spans.append(range(start, start + min(section.virtual_size, section.raw_size)))
+    return spans
+
+
 class Image:
     """A PE file's bytes, by address."""
 
@@ -202,14 +214,35 @@ def rich_entries(path: Path) -> dict[tuple[int, int], int]:
     return entries
 
 
+def checksum_offset(data: bytes) -> int:
+    """The file offset of the CheckSum field of the optional header."""
+    return struct.unpack_from("<I", data, 0x3C)[0] + 24 + 0x40
+
+
+def checksum(data: bytes) -> int:
+    """The PE checksum of a file's bytes: its 16-bit words summed, each carry folded back in, with the CheckSum
+    field counted as zero. Then the file's length is added."""
+    words = without_checksum(data) + bytes(len(data) % 2)
+    total = sum(memoryview(words).cast("H"))
+    while total >> 16:
+        total = (total & 0xFFFF) + (total >> 16)
+    return total + len(data)
+
+
+def without_checksum(data: bytes) -> bytes:
+    """A file's bytes with the CheckSum field zeroed."""
+    at = checksum_offset(data)
+    return data[:at] + bytes(4) + data[at + 4:]
+
+
 def clear_timestamp(path: Path) -> None:
     """Zero the link timestamp, and the checksum that covers it, so the same
     sources always give the same bytes."""
     data = bytearray(path.read_bytes())
     pe_header = struct.unpack_from("<I", data, 0x3C)[0]
     timestamp = pe_header + 8
-    checksum = pe_header + 24 + 0x40
-    if data[timestamp:timestamp + 4] != bytes(4) or data[checksum:checksum + 4] != bytes(4):
+    checksum_at = checksum_offset(data)
+    if data[timestamp:timestamp + 4] != bytes(4) or data[checksum_at:checksum_at + 4] != bytes(4):
         struct.pack_into("<I", data, timestamp, 0)
-        struct.pack_into("<I", data, checksum, 0)
+        struct.pack_into("<I", data, checksum_at, 0)
         path.write_bytes(data)
