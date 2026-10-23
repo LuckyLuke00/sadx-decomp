@@ -31,8 +31,8 @@ from xml.sax.saxutils import escape
 import osutil
 
 from layout import Rect, snap, squarify, svg_points, text_width, wrap
-from scoring import (Totals, accuracy_text, game_functions, percent, ratio, score, state, stats_line, totals,
-                     whole_percent)
+from scoring import (Totals, accuracy_text, game_functions, is_matched, is_trick, percent, ratio, score, state,
+                     stats_line, totals, whole_percent)
 
 ROOT = Path(__file__).resolve().parent.parent
 PROGRESS = ROOT / "docs" / "progress"
@@ -368,7 +368,7 @@ def map_layout(sections: list[Section]) -> list[tuple[Rect, list[Rect]]]:
 
 
 def done_count(cells: list[int], entries: dict[int, dict]) -> int:
-    return sum(1 for address in cells if address in entries and score(entries[address]) == 1.0)
+    return sum(1 for address in cells if address in entries and is_matched(entries[address]))
 
 
 def map_header(summary: dict, stats: Totals, height: int, theme: Theme) -> list[str]:
@@ -459,14 +459,15 @@ def todo_cells(count: int, columns: int) -> list[str]:
 
 def scored_cells(cells: list[int], entries: dict[int, dict], columns: int, theme: Theme) -> list[str]:
     """One colored cell with a tooltip for each function with a score, from the block's first cell. A stub has
-    none: it is not started."""
+    none: it is not started. A function at 100% through a trick gets the highest step below full, as it is not done."""
     rects = []
     for index, address in enumerate(cells):
         entry = entries.get(address)
         if entry is None or entry["stub"]:
             continue
+        color = theme.partial[-2] if is_trick(entry) else partial_color(score(entry), theme)
         rects.append(f'<rect x="{index % columns * PITCH}" y="{index // columns * PITCH}" width="{CELL}" '
-                     f'height="{CELL}" fill="{partial_color(score(entry), theme)}">'
+                     f'height="{CELL}" fill="{color}">'
                      f'<title>{cell_label(address, entry)}</title></rect>')
     return rects
 

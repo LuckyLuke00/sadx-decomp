@@ -78,6 +78,7 @@ import names
 import osutil
 import progress
 import project
+import scoring
 
 ROOT = project.ROOT
 PROMPTS = ROOT / "tools" / "prompts"  # NAME.txt: the system prompt that --prompt NAME picks
@@ -860,10 +861,10 @@ def feedback(percent, text, address, known, types=None):
 
 
 def matched_functions():
-    """address: name of each function at 100% in docs/progress/summary.json."""
+    """address: name of each function that docs/progress/summary.json counts as matched: at 100% in plain C."""
     summary = json.loads(progress.SUMMARY_JSON.read_text(encoding="utf-8"))
     return {int(f["address"], 16): f["name"] for f in summary["functions"]
-            if f["accuracy"] == 1.0 and not f["stub"] and not f["library"]}
+            if scoring.is_matched(f) and not f["library"]}
 
 
 def definitions(roots):

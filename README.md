@@ -34,6 +34,9 @@ of [data/codegen-groups.csv](data/codegen-groups.csv), less four header
 functions. [src/header-functions.h](src/header-functions.h) names those four as
 library code.
 
+A function only counts as matched when it matches in plain C. If it needs
+inline assembly or another compiler trick to match, it doesn't count.
+
 Library code does not count, because nobody needs to decompile it. Library code
 is:
 
