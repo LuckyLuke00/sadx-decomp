@@ -38,8 +38,26 @@ long FUN_0051c960(struct taskwk *twp, int param_2, int param_3)
 	return (long)0;
 }
 
+// STUB: SADX 0x0051c9d0
+long AmyCheckStartHandle(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0051ca90
 long FUN_0051ca90(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *plp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0051ce40
+long AmyBalanceCheckBadStatus(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0051e350
+long FUN_0051e350(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
 }

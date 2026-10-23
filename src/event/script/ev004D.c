@@ -1,6 +1,16 @@
 #include "decls.h"
 extern struct task *DAT_060cbb94;
 
+// STUB: SADX 0x0078da80
+void FUN_0078da80(struct task *param_1)
+{
+}
+
+// STUB: SADX 0x0078dae0
+void FUN_0078dae0()
+{
+}
+
 // FUNCTION: SADX 0x0078db30
 void FUN_0078db30()
 {

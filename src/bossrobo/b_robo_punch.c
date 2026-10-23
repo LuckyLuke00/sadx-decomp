@@ -24,6 +24,11 @@ void exec_colli(struct task *pTask)
 	}
 }
 
+// STUB: SADX 0x006de490
+void disp_ChainElec(struct task *pTask)
+{
+}
+
 // FUNCTION: SADX 0x006de6d0
 void dest_ChainElec(struct task *pTask)
 {

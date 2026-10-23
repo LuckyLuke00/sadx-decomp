@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 extern int DAT_05cc603c;
 extern int DAT_05cc6040;

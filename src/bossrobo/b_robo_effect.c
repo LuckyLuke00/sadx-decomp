@@ -26,12 +26,46 @@ void EffCrushlight(struct NJS_POINT3 *pPos, float fLength, long angSpd)
 	}
 }
 
+// STUB: SADX 0x006dcaa0
+void EffLightning(struct NJS_POINT3 *pPos, float fRange)
+{
+}
+
+// STUB: SADX 0x006dcb90
+void EffBomb(struct NJS_POINT3 *pPos, float fRange, float fScale)
+{
+}
+
 // FUNCTION: SADX 0x006dcc80
 void EffEmission_SetMode(enum EMISSION_MODE nMode)
 {
 	if (DAT_060bbe38 != NULL)
 	{
 		*(int *)((char *)*(void **)((char *)DAT_060bbe38 + 0x2c) + 0xc) = nMode;
+	}
+}
+
+// FUNCTION: SADX 0x006dcca0
+void disp_Emission(struct task *pTask)
+{
+	struct anywk *var1;
+
+	var1 = pTask->awp;
+	if (DAT_05b9d838 == 0 && *(float *)((char *)var1 + 0x10) != 0.0f)
+	{
+		float *var2;
+
+		SaveControl3D();
+		njControl3D(0x10);
+		SetMaterial(*(float *)((char *)var1 + 0x10), 1.0f, 1.0f, 1.0f);
+		var2 = (float *)0;
+		njPushMatrix(var2);
+		njTranslateV(var2, (struct NJS_POINT3 *)(*(int *)((char *)var1 + 4)));
+		___njSetTexture(&texlist_erobo);
+		late_DrawObjectClipEx((struct obj *)var1->work.ptr[0], 1, 1.0f);
+		njPopMatrix(1);
+		LoadControl3D();
+		ResetMaterial();
 	}
 }
 
@@ -82,6 +116,11 @@ void EffHandSpark_SetPos(struct NJS_POINT3 *pPosRL)
 
 // STUB: SADX 0x006dd0f0
 void disp_HandSpark(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x006dd160
+void exec_HandSpark(struct task *pTask)
 {
 }
 

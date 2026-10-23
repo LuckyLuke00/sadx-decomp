@@ -1,10 +1,28 @@
 #include "decls.h"
+void Egm3_bakucolorExit(struct task *tp);
+void addColorR(int r);
+extern union NJS_COLOR DAT_060bb188[12];
 void Egm3_kogeDraw(struct task *tp);
 void FreeTask(struct task *tp);
 extern unsigned char DAT_060bb21c;
 
+// STUB: SADX 0x006ce190
+void Egm3komaDraw(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006ce430
 void Egm3sippoHakai(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006ce4a0
+void Egm3_laser1Draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006ce5a0
+void Egm3_laser1ponDraw(struct task *tp)
 {
 }
 
@@ -14,10 +32,28 @@ void Egm3_energyballExit(struct task *tp)
 	DAT_060bb21c = 0;
 }
 
+// STUB: SADX 0x006ce8d0
+void EggmanEnergyDraw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006ce9b0
+void EggmanBoomerangDraw(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x006cea80
 void FUN_006cea80(void *param_1)
 {
 	PadReadOn();
+}
+
+// FUNCTION: SADX 0x006cecb0
+void Egm3_iroiroExit(struct task *tp)
+{
+	int var1;
+	for (var1 = 0; var1 < 12; var1++)
+		vuvS_0_kemuri_boss_boss[var1] = DAT_060bb188[var1];
 }
 
 // STUB: SADX 0x006ced40
@@ -95,6 +131,11 @@ void Egm3_koge(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006d28c0
+void Egm3_energytame(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x006d2a80
 void FUN_006d2a80(void)
 {
@@ -117,4 +158,19 @@ void FUN_006d2ae0(void *param_1)
 	struct task *var1;
 	var1 = CreateElementalTask(2, 1, SousaFunou);
 	*(void **)((char *)var1->twp + 8) = param_1;
+}
+
+// STUB: SADX 0x006d2b00
+void Egm3_bakucolor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006d2bb0
+void Egm3_bakucolor2(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006d2c90
+void Egm3_firecolor2(struct task *tp)
+{
 }
