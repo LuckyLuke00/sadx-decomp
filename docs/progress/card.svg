@@ -4,7 +4,7 @@
 <text x="16" y="30" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">Sonic Adventure DX.exe</text>
 <text x="984" y="30" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">updated 2026-10-23</text>
 <text x="16" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="40" font-weight="600" fill="#1f2328">15.80%<tspan dx="10" font-size="13" font-weight="400" fill="#59636e">of the game done</tspan></text>
-<text x="967" y="76" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">+2,611 this week</text>
+<text x="967" y="76" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">+2,605 since 2026-10-17</text>
 <circle cx="978" cy="71.5" r="5" fill="none" stroke="#b07d00" stroke-width="2.5"/>
 <rect x="16" y="96" width="968" height="8" rx="4" fill="#e6eaef"/>
 <rect x="16" y="96" width="157.2" height="8" rx="4" fill="#0969da"/>
