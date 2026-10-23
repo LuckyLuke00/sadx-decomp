@@ -97,6 +97,7 @@ GIVE_UP_STALE, GIVE_UP_BELOW = 4, 60  # --give-up ends a run at this many stale 
 TEMPERATURE_STEP, TEMPERATURE_MAX = 0.3, 1.2  # added after each repeated attempt
 EXAMPLES = 2
 CAST_ROUNDS = 3  # builds of a try with casts added on the pointer conversions the compiler refused
+OFF, ON = '#pragma optimize("", off)', '#pragma optimize("", on)'  # around a static STUB that its own file calls
 STRUCT_LINES = 120  # member lines in the first prompt's Structs section
 STRUCT_DEPTH = 2  # levels of member types below the types the dossier names
 STRUCTS_RULE = ("The Structs section lists members with their offsets: "
@@ -231,6 +232,26 @@ def definition_span(lines, address):
     return None if end is None else (start, end)
 
 
+def wrap_stub(func, sig):
+    """FUNC, a definition's lines with the signature SIG, between OFF and ON when it is a static STUB: the compiler
+    keeps a call to a function that is compiled without optimization, as it does for a function of another file. Any
+    other FUNC as it is."""
+    if re.match(r"static\b", sig) and func[0].startswith("// STUB"):
+        return [OFF, *func, ON]
+    return func
+
+
+def definition_block(lines, address):
+    """definition_span, widened over the OFF and ON lines around the definition: the lines to cut or replace."""
+    span = definition_span(lines, address)
+    if span is None:
+        return None
+    first, last = span
+    if first and lines[first - 1] == OFF and last + 1 < len(lines) and lines[last + 1] == ON:
+        return first - 1, last + 1
+    return span
+
+
 def unclosed_definitions(lines):
     """The indexes of the FUNCTION and STUB annotations in LINES whose definition has no lone "}" line before the
     next such annotation. apply_function takes the first one after an annotation as the definition's end: with none,
@@ -291,21 +312,24 @@ def apply_function(text, address, decls, func):
     lines = text.split("\n")
     if lines[-1] == "":
         lines.pop()
+    sig = names.parse_annotations("\n".join(func))[0][2]
+    func = wrap_stub(func, sig)
     annotated = [(i, annotation_address(line)) for i, line in enumerate(lines) if annotation_address(line) is not None]
     same = next((i for i, a in annotated if a == address), None)
     later = next((i for i, a in annotated if a > address), None)
     if same is not None:
-        end = names.definition_end(lines, same)
-        if end is None:
+        block = definition_block(lines, address)
+        if block is None:
             sys.exit(f"the definition at {hexa(address)} has no closing brace line")
-        lines[same:end + 1] = func
+        lines[block[0]:block[1] + 1] = func
     elif later is not None:
+        if lines[later - 1] == OFF:
+            later -= 1  # a wrapped STUB starts at its OFF line
         lines[later:later] = func + [""]
     else:
         if lines:
             lines.append("")
         lines += func
-    sig = names.parse_annotations("\n".join(func))[0][2]
     if re.match(r"static\b", sig):
         decls = decls + [sig + ";"]  # callers above it need a prototype, and decls never declares a static function
     includes = [i for i, line in enumerate(lines[:first_function_line(lines)]) if line.startswith("#include")]
@@ -349,11 +373,12 @@ def stub_functions(text, addresses):
     """TEXT with the definitions at ADDRESSES as stubs, and without the top-of-file declarations only they used."""
     lines = text.split("\n")
     for address in addresses:
-        span = definition_span(lines, address)
-        if span is not None:
-            sig = names.parse_annotations("\n".join(lines[span[0]:span[1] + 1]))[0][2]
+        block = definition_block(lines, address)
+        if block is not None:
+            sig = names.parse_annotations("\n".join(lines[block[0]:block[1] + 1]))[0][2]
             stub = [f"// STUB: {project.game_config().target} {hexa(address)}", sig, declgen.stub_body(sig)]
-            lines[span[0]:span[1] + 1] = "\n".join(stub).split("\n")
+            stub = "\n".join(stub).split("\n")
+            lines[block[0]:block[1] + 1] = wrap_stub(stub, sig)
     top = first_function_line(lines)
     declared = [names.declared_name(line[:-1]) if i < top and line.endswith(";") else None for i, line in enumerate(lines)]
     used = collections.Counter()
