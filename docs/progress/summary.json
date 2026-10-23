@@ -183,7 +183,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x00407770",
@@ -2199,7 +2200,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0042b610",
@@ -3959,7 +3961,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e010",
@@ -3967,7 +3970,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e020",
@@ -3975,7 +3979,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e030",
@@ -3983,7 +3988,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e050",
@@ -3991,7 +3997,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e060",
@@ -3999,7 +4006,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e110",
@@ -4007,7 +4015,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e1f0",
@@ -4015,7 +4024,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e200",
@@ -4023,7 +4033,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e230",
@@ -4031,7 +4042,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e240",
@@ -4039,7 +4051,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e260",
@@ -4047,7 +4060,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e2a0",
@@ -4055,7 +4069,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e2d0",
@@ -4063,7 +4078,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e420",
@@ -4071,7 +4087,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e530",
@@ -4087,7 +4104,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e620",
@@ -4111,7 +4129,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e990",
@@ -4119,7 +4138,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0043e9a0",
@@ -6855,7 +6875,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x0046f6e0",
@@ -8695,7 +8716,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x00488db0",
@@ -8775,7 +8797,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004893c0",
@@ -8783,7 +8806,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004893f0",
@@ -8791,7 +8815,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x00489420",
@@ -8799,7 +8824,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004895d0",
@@ -10503,7 +10529,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a0c10",
@@ -10511,7 +10538,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a0d10",
@@ -10519,7 +10547,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a1290",
@@ -10527,7 +10556,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a1420",
@@ -10535,7 +10565,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a1530",
@@ -10551,7 +10582,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a1f70",
@@ -10615,7 +10647,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a2320",
@@ -10623,7 +10656,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a2660",
@@ -12367,7 +12401,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004b66c0",
@@ -12391,7 +12426,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004b6a60",
@@ -12463,7 +12499,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004b6f80",
@@ -33703,7 +33740,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x00694d30",
@@ -37415,7 +37453,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x007071b0",
@@ -37695,7 +37734,8 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x00731900",
@@ -48059,5 +48099,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ff31328b81c62e8b72463be58deb3facbff0d118c4cf5739b2091a8d3d5c1ff0"
+ "inputs_sha256": "488d76c79acf1360940a058a55c8805c003935b7f61131eec6b2065f74bcef59"
 }

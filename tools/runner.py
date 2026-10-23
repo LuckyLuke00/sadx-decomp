@@ -188,9 +188,12 @@ def unmatched_library_note(address: int, name: str) -> str:
     return f"0x{address:08x} {name}: this src/library.csv name is not a symbol in our build"
 
 
-def summarize(target: str, scored: dict[int, dict]) -> dict:
-    functions = [
-        {
+def summarize(target: str, scored: dict[int, dict], tricked: set[int]) -> dict:
+    """The summary of the scores. A function in TRICKED, which matches only through a trick (tools/tricks.py), gets
+    "trick": true. The others get no key, so a summary without tricks reads as before."""
+    functions = []
+    for address, entry in sorted(scored.items()):
+        function = {
             "address": f"0x{address:08x}",
             "name": entry["name"],
             "accuracy": entry["matching"],
@@ -198,6 +201,7 @@ def summarize(target: str, scored: dict[int, dict]) -> dict:
             "stub": bool(entry.get("stub")),
             "library": bool(entry.get("library")),
         }
-        for address, entry in sorted(scored.items())
-    ]
+        if address in tricked:
+            function["trick"] = True
+        functions.append(function)
     return {"target": target, "functions": functions}
