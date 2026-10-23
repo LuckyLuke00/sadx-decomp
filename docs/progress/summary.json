@@ -9908,16 +9908,32 @@
    "library": false
   },
   {
+   "address": "0x0049c290",
+   "name": "Disp(2)",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0049c320",
+   "name": "Exec(2)",
+   "accuracy": 0.022727272727272728,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0049c420",
    "name": "ObjectMiKanban",
-   "accuracy": 0.9473684210526315,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
   },
   {
    "address": "0x0049d140",
-   "name": "Disp(2)",
+   "name": "Disp(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9933,7 +9949,7 @@
   },
   {
    "address": "0x0049d1d0",
-   "name": "Exec(2)",
+   "name": "Exec(3)",
    "accuracy": 0.014492753623188406,
    "effective": false,
    "stub": true,
@@ -10069,7 +10085,7 @@
   },
   {
    "address": "0x0049ea10",
-   "name": "Exec(3)",
+   "name": "Exec(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -10077,7 +10093,7 @@
   },
   {
    "address": "0x0049ec90",
-   "name": "Disp(3)",
+   "name": "Disp(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -33248,7 +33264,7 @@
   },
   {
    "address": "0x00686350",
-   "name": "Exec(4)",
+   "name": "Exec(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48099,5 +48115,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c97a05f25138aed81283d3d5fcdf3a7b1729ed828e3777483e4bd00027ccb77b"
+ "inputs_sha256": "06b67aa9304b61fc4c9455be2c96d10b59213270b96280d131fc84f499b5e47f"
 }

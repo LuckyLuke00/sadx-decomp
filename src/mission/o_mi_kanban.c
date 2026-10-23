@@ -1,4 +1,16 @@
 #include "decls.h"
+static void Exec(struct task *tp);
+static void Disp(struct task *tp);
+
+// STUB: SADX 0x0049c290
+static void Disp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0049c320
+static void Exec(struct task *tp)
+{
+}
 
 // FUNCTION: SADX 0x0049c420
 void ObjectMiKanban(struct task *tp)
@@ -10,8 +22,8 @@ void ObjectMiKanban(struct task *tp)
 		var1->ang.x = 0;
 		var1->ang.z = 0;
 		var1->mode = 0;
-		tp->exec = (void (__cdecl *)(struct task *))0x49c320;
-		tp->dest = (void (__cdecl *)(struct task *))0x7d21b0;
-		tp->disp = (void (__cdecl *)(struct task *))0x49c290;
+		tp->exec = Exec;
+		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		tp->disp = Disp;
 	}
 }

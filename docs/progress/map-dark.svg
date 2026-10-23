@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1421" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">2,611 of 16,524 game functions done (15.80%), accuracy 99.54%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">2,612 of 16,524 game functions done (15.81%), accuracy 99.54%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="595,1165.5 601,1165.5 604,1169 598,1176 592,1169" fill="#2f6bff" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="595,1165.5 601,1165.5 599.5,1169 596.5,1169" fill="#ffffff" fill-opacity="0.45"/>
@@ -386,7 +386,7 @@
 <rect x="42" y="28" width="6" height="6" fill="#ffd700"><title>0x00682190 CreateSSTexAnim: 100%</title></rect>
 <rect x="98" y="28" width="6" height="6" fill="#2753d8"><title>0x00682740 ExecDay: 0.0%</title></rect>
 <rect x="84" y="56" width="6" height="6" fill="#ffd700"><title>0x006862e0 disp(1): 100%</title></rect>
-<rect x="91" y="56" width="6" height="6" fill="#ffd700"><title>0x00686350 Exec(4): 100%</title></rect>
+<rect x="91" y="56" width="6" height="6" fill="#ffd700"><title>0x00686350 Exec(5): 100%</title></rect>
 <rect x="98" y="56" width="6" height="6" fill="#ffd700"><title>0x00686470 ObjectSSChaocard: 100%</title></rect>
 <rect x="21" y="63" width="6" height="6" fill="#ffd700"><title>0x006868b0 FUN_006868b0: 100%</title></rect>
 <rect x="28" y="63" width="6" height="6" fill="#ffd700"><title>0x00686920 FUN_00686920: 100%</title></rect>
@@ -1458,8 +1458,8 @@
 <rect x="126" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e8b0 FUN_0049e8b0: 100%</title></rect>
 <rect x="133" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e8d0 FUN_0049e8d0: 100%</title></rect>
 <rect x="140" y="7" width="6" height="6" fill="#ffd700"><title>0x0049e950 ObjectGetEmblem: 100%</title></rect>
-<rect x="147" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ea10 Exec(3): 100%</title></rect>
-<rect x="154" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ec90 Disp(3): 100%</title></rect>
+<rect x="147" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ea10 Exec(4): 100%</title></rect>
+<rect x="154" y="7" width="6" height="6" fill="#ffd700"><title>0x0049ec90 Disp(4): 100%</title></rect>
 <rect x="0" y="14" width="6" height="6" fill="#ffd700"><title>0x0049ed70 InitGetEmblem: 100%</title></rect>
 <rect x="7" y="14" width="6" height="6" fill="#ffd700"><title>0x0049ee00 dispGetEmblem: 100%</title></rect>
 <rect x="14" y="14" width="6" height="6" fill="#ffd700"><title>0x0049f280 destGetEmblem: 100%</title></rect>
@@ -1651,9 +1651,9 @@
 <rect x="70" y="161" width="6" height="6" fill="#ffd700"><title>0x008b8140 FUN_008b8140: 100%</title></rect>
 <rect x="77" y="161" width="6" height="6" fill="#ffd700"><title>0x008b81d0 StaffRollExit: 100%</title></rect>
 </g>
-<rect x="519" y="1156" width="66" height="202" rx="3" fill="#21262d" stroke="#30363d"><title>Missions: 25 of 69 done</title></rect>
+<rect x="519" y="1156" width="66" height="202" rx="3" fill="#21262d" stroke="#30363d"><title>Missions: 26 of 69 done</title></rect>
 <text x="522" y="1170" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Missions</text>
-<text x="522" y="1185" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">36%</tspan></text>
+<text x="522" y="1185" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">37%</tspan></text>
 <g transform="translate(522,1189)">
 <rect y="0" width="56" height="56" fill="url(#todo)"/>
 <rect y="56" width="35" height="7" fill="url(#todo)"/>
@@ -1679,8 +1679,8 @@
 <rect x="0" y="42" width="6" height="6" fill="#ffd700"><title>0x0049a9f0 ObjectMi3Dasu: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#ffd700"><title>0x0049bb20 sakanaGeneraterExit: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#ffd700"><title>0x0049c270 ObjectMiSakana: 100%</title></rect>
-<rect x="35" y="42" width="6" height="6" fill="#f3d22b"><title>0x0049c420 ObjectMiKanban: 94.7%</title></rect>
-<rect x="14" y="56" width="6" height="6" fill="#ffd700"><title>0x0049d140 Disp(2): 100%</title></rect>
+<rect x="35" y="42" width="6" height="6" fill="#ffd700"><title>0x0049c420 ObjectMiKanban: 100%</title></rect>
+<rect x="14" y="56" width="6" height="6" fill="#ffd700"><title>0x0049d140 Disp(3): 100%</title></rect>
 <rect x="21" y="56" width="6" height="6" fill="#ffd700"><title>0x0049d1c0 Destructor(2): 100%</title></rect>
 <rect x="28" y="56" width="6" height="6" fill="#ffd700"><title>0x0049d390 ObjectMiMission_Start: 100%</title></rect>
 </g>
