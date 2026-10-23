@@ -14,3 +14,23 @@ void FUN_0088df20(struct task *param_1)
 	DAT_05b3e050 = (*(struct NJS_POINT2 **)((char *)DAT_0480e45c + local_8))[DAT_05b3e0d0];
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)DAT_0480e444 + local_8))[DAT_05b3e0d0];
 }
+
+// FUNCTION: SADX 0x0088dfd0
+void FUN_0088dfd0()
+{
+	ADXTaskInit();
+	RoundBGM_Play(0x2a);
+	ClearAllSwitches();
+	TexMakeInit();
+	dsPlay_iloop(0x3e7, -1, 8, 0);
+}
+
+// FUNCTION: SADX 0x0088e000
+void FUN_0088e000()
+{
+	ADXTaskInit();
+	RoundBGM_Play(0x2b);
+	ClearAllSwitches();
+	TexMakeInit();
+	dsPlay_iloop(0x3ed, -1, 8, 0);
+}

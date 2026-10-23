@@ -33,6 +33,11 @@ void _njCnkDrawModel(struct NJS_CNK_MODEL *param_1)
 {
 }
 
+// STUB: SADX 0x004360c0
+void _njCnkDrawObject(struct cnkobj *param_1)
+{
+}
+
 // STUB: SADX 0x004361a0
 void njCnkDrawModel(struct NJS_CNK_MODEL *param_1)
 {

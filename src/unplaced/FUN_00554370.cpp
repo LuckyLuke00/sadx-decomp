@@ -11,6 +11,22 @@ void FUN_00554370(unsigned short *param_1)
 {
 }
 
+// STUB: SADX 0x00554390
+unsigned short FUN_00554390(char *param_1)
+{
+	return (unsigned short)0;
+}
+
+// STUB: SADX 0x00554430
+void FUN_00554430(int param_1)
+{
+}
+
+// STUB: SADX 0x005544e0
+void FUN_005544e0(char *param_1)
+{
+}
+
 // STUB: SADX 0x00554590
 void FUN_00554590(char *param_1)
 {

@@ -5,6 +5,21 @@ void FUN_004160c0(char *param_1, int param_2, char *param_3, char *param_4);
 void __stdcall FUN_00415a10(int param_1);
 struct FUN_004157e0_node;
 
+// STUB: SADX 0x0040e960
+void FUN_0040e960(void)
+{
+}
+
+// STUB: SADX 0x0040f080
+void neExitLibrary(void)
+{
+}
+
+// STUB: SADX 0x004115b0
+void __stdcall FUN_004115b0(void *param_1)
+{
+}
+
 // FUNCTION: SADX 0x00412230
 void __fastcall FUN_00412230(void *param_1)
 {
@@ -53,6 +68,17 @@ int __fastcall FUN_00414590(int param_1, int param_2)
 // STUB: SADX 0x00414970
 void __fastcall FUN_00414970(int *param_1)
 {
+}
+
+// STUB: SADX 0x004151f0
+void __fastcall FUN_004151f0(void *param_1)
+{
+}
+
+// STUB: SADX 0x00415750
+void * __fastcall FUN_00415750(void *param_1)
+{
+	return (void *)0;
 }
 
 // STUB: SADX 0x004157e0

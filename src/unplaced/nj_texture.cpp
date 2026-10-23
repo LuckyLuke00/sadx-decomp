@@ -30,6 +30,11 @@ void njSetPaletteMode(unsigned long param_1)
 	DAT_0629c718 = param_1;
 }
 
+// STUB: SADX 0x00423170
+void njSetPaletteData(long param_1, long param_2, void *param_3)
+{
+}
+
 // STUB: SADX 0x00423200
 long njSetTexture(struct NJS_TEXLIST *param_1)
 {
@@ -46,6 +51,11 @@ long njSetTextureNum(unsigned long param_1)
 struct NJS_TEXMEMLIST * _njSearchEmptyTexMemList(unsigned long param_1)
 {
 	return (struct NJS_TEXMEMLIST *)0;
+}
+
+// STUB: SADX 0x004233c0
+void njInitTexture(struct NJS_TEXMEMLIST *param_1, unsigned long param_2)
+{
 }
 
 // STUB: SADX 0x00423490

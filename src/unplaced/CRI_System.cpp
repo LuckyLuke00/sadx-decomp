@@ -19,3 +19,8 @@ int FUN_00924520()
 {
 	return FUN_00924470();
 }
+
+// STUB: SADX 0x00924540
+void FUN_00924540(int *param_1)
+{
+}

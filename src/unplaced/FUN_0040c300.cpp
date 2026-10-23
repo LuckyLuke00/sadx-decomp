@@ -13,6 +13,11 @@ void FUN_0040c3a0(int param_1)
 {
 }
 
+// STUB: SADX 0x0040c3e0
+void FUN_0040c3e0(int *param_1, int param_2, int param_3)
+{
+}
+
 // STUB: SADX 0x0040c470
 void * __stdcall FUN_0040c470(void *param_1, void *param_2, void *param_3)
 {
@@ -79,5 +84,10 @@ void FUN_0040d1b0(int *param_1, int *param_2)
 
 // STUB: SADX 0x0040d280
 void FUN_0040d280(int param_1)
+{
+}
+
+// STUB: SADX 0x0040d360
+void __fastcall FUN_0040d360(int *param_1, int param_2, int param_3)
 {
 }
