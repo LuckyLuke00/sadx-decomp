@@ -78,6 +78,10 @@ def game_functions(summary: dict, game: set[int]) -> set[int]:
     return game - library_addresses(summary)
 
 
+def entries_by_address(summary: dict) -> dict[int, dict]:
+    return {int(entry["address"], 16): entry for entry in summary["functions"]}
+
+
 def totals(summary: dict, game: set[int]) -> Totals:
     """Library entries are runtime code we link, not decompile, so they count apart."""
     ours = [entry for entry in summary["functions"] if not entry["library"]]
@@ -89,6 +93,14 @@ def totals(summary: dict, game: set[int]) -> Totals:
     accuracy = sum(score(entry) for entry in implemented) / len(implemented) if implemented else None
     return Totals(len(implemented), matched, accuracy, len(game_functions(summary, game)), len(library), effective,
                   tricks)
+
+
+def byte_share(summary: dict, game: set[int], sizes: dict[int, int]) -> tuple[int, int]:
+    """(bytes of the matched game functions, bytes of all game functions), from each function's size in SIZES."""
+    entries = entries_by_address(summary)
+    functions = game_functions(summary, game)
+    matched = sum(sizes[address] for address in functions if address in entries and is_matched(entries[address]))
+    return matched, sum(sizes[address] for address in functions)
 
 
 def ratio(part: float, whole: float) -> float:

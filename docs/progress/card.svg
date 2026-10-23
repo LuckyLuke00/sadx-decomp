@@ -11,8 +11,10 @@
 <rect x="16" y="96" width="153.0" height="8" rx="4" fill="#b07d00"/>
 <text x="16" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">2,611</text>
 <text x="16" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">done</text>
-<text x="339" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">99.54%</text>
-<text x="339" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">accuracy</text>
-<text x="661" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">16,524</text>
-<text x="661" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">game functions</text>
+<text x="258" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">3.62%</text>
+<text x="258" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">bytes matched</text>
+<text x="500" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">99.54%</text>
+<text x="500" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">accuracy</text>
+<text x="742" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">16,524</text>
+<text x="742" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">game functions</text>
 </svg>
