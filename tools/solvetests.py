@@ -37,8 +37,9 @@ def never_too_long(messages) -> bool:
     return False
 
 
-def solved(tries, too_long, reply="no code") -> Run:
-    """A run of TRIES against a server that refuses the chats for which TOO_LONG is true, else answers REPLY."""
+def solved(tries, too_long, reply="no code", **flags) -> Run:
+    """A run of TRIES against a server that refuses the chats for which TOO_LONG is true, else answers REPLY. FLAGS
+    override the run's other flags, such as stop_below=70."""
     asks = []
 
     def chat(config, messages, temperature, thinking, seed):
@@ -55,9 +56,10 @@ def solved(tries, too_long, reply="no code") -> Run:
              "snapshot": lambda paths: {}, "tree_warnings": lambda config: set(), "load_types": lambda config: None,
              "first_prompt": first_prompt, "file_best": lambda *args: None, "decls": lambda config: ("", 0)}
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None}
-    args = argparse.Namespace(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False,
-                              facts=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
-                              think_max=None)
+    options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
+                   tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False, stop_below=None,
+                   think_max=None)
+    args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
         transcript = Path(folder) / "transcript.jsonl"
@@ -83,6 +85,19 @@ def check_too_long() -> list[str]:
         found = solved(tries, too_long)[:4]
         if found != wanted:
             failures.append(f"{case} gives {found}, not {wanted}")
+    return failures
+
+
+def check_stop_below() -> list[str]:
+    """--stop-below P ends a run after STOP_AFTER tries when the best is below P%. Here no try builds, so the best
+    is 0%: P 70 stops it, P 0 does not, and a run of fewer tries ends as before."""
+    cases = [("--stop-below 70", 3, {"stop_below": 70.0}, llm.STOP_AFTER), ("no --stop-below", 3, {}, 3),
+             ("--stop-below 0", 3, {"stop_below": 0.0}, 3), ("--stop-below 70 --tries 1", 1, {"stop_below": 70.0}, 1)]
+    failures = []
+    for case, tries, flags, wanted in cases:
+        found = solved(tries, never_too_long, **flags).tries
+        if found != wanted:
+            failures.append(f"{case} gives {found} tries, not {wanted}")
     return failures
 
 
@@ -127,6 +142,6 @@ def check_tries_flag() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_too_long, check_forbidden_reply, check_tries_flag):
+    for check in (check_too_long, check_stop_below, check_forbidden_reply, check_tries_flag):
         failures += check()
     return failures

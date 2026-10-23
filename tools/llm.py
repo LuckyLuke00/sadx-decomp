@@ -26,7 +26,8 @@ the model's declaration of that name), --think-max N (the run ends when it would
 N thinking tries, or after a thinking try that repeated), --max-repeats N (the run ends after
 N tries that repeated an earlier try), --give-up (the run ends after
 GIVE_UP_STALE tries without a new best, or after STUCK_TRIES when the best is below
-GIVE_UP_BELOW%), --stale-built-only (a try that does not build does not count toward
+GIVE_UP_BELOW%), --stop-below P (the run ends after STOP_AFTER tries when the best is below P%,
+or when nothing built), --stale-built-only (a try that does not build does not count toward
 STUCK_TRIES, nor toward --give-up) and --tag T (default: the prompt's name). Every command
 takes --config PATH.
 Results go to build/llm/T/: results.tsv with a row per function and transcripts/ADDRESS.jsonl
@@ -94,6 +95,7 @@ FEEDBACK_LINES = 150
 ERROR_LINES = 40
 STUCK_TRIES = 3  # tries without a new best before the model thinks
 GIVE_UP_STALE, GIVE_UP_BELOW = 4, 60  # --give-up ends a run at this many stale tries, or at STUCK_TRIES below this %
+STOP_AFTER = 2  # --stop-below looks at the best after this many tries
 TEMPERATURE_STEP, TEMPERATURE_MAX = 0.3, 1.2  # added after each repeated attempt
 EXAMPLES = 2
 CAST_ROUNDS = 3  # builds of a try with casts added on the pointer conversions the compiler refused
@@ -1340,6 +1342,8 @@ def solve_function(args, file, address, transcript):
             best_percent = best.percent if best else 0.0
             if args.give_up and (stale >= GIVE_UP_STALE or (stale >= STUCK_TRIES and best_percent < GIVE_UP_BELOW)):
                 break
+            if args.stop_below is not None and tries >= STOP_AFTER and best_percent < args.stop_below:
+                break
             if args.think_max is not None and thinks(stale, config) and (totals["think_tries"] >= args.think_max
                                                                          or (thinking and repeat is not None)):
                 break
@@ -1488,6 +1492,8 @@ def parse_args():
     runs.add_argument("--think-max", type=int, help="end a run when it would think after N thinking tries")
     runs.add_argument("--max-repeats", type=int, help="end a run after N tries that repeated an earlier try")
     runs.add_argument("--give-up", action="store_true", help="end a run that stopped getting better")
+    runs.add_argument("--stop-below", type=float, metavar="P",
+                      help=f"end a run after {STOP_AFTER} tries when the best is below P%% or nothing built")
     runs.add_argument("--stale-built-only", action="store_true",
                       help="a try that does not build does not count toward thinking")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
