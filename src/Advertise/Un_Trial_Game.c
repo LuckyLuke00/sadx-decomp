@@ -34,6 +34,11 @@ void FUN_005f45f0(struct task *param_1)
 	FUN_005f4610(*(float *)((char *)param_1 + 0x10));
 }
 
+// STUB: SADX 0x005f4690
+void FreeAdvaTrialGameTask()
+{
+}
+
 // FUNCTION: SADX 0x005f4760
 void FUN_005f4760(void)
 {

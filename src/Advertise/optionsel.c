@@ -11,10 +11,36 @@ signed char LangToDlgNum(signed char csr)
 	return (signed char)0;
 }
 
+// STUB: SADX 0x00602d10
+void DrawIconFileSel(struct _OptionSelWk *wkp)
+{
+}
+
 // STUB: SADX 0x00602dd0
 int FUN_00602dd0(int param_1)
 {
 	return (int)0;
+}
+
+// FUNCTION: SADX 0x00602df0
+void DrawLangSel(struct _OptionSelWk *wkp)
+{
+	void *local_8;
+
+	local_8 = (void *)((char *)(*(void **)((char *)wkp + 0x48)) + 0xc0);
+	ghSetPvrTexMaterial(0xffffffff);
+	___njSetTexture(&texlist_ava_option);
+	ghDrawPvrTexture(*(unsigned char *)((char *)wkp + 0x3f) + 0x24, *(float *)((char *)local_8 + 0x0) * ScreenRaitoX, *(float *)((char *)local_8 + 0x4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
+}
+
+// STUB: SADX 0x00602e90
+void DrawTvSetting(struct _OptionSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00602f40
+void DrawVibSetting(struct _OptionSelWk *wkp)
+{
 }
 
 // FUNCTION: SADX 0x00602ff0
@@ -42,6 +68,11 @@ struct task *SetAdvaOptionSelTask(struct ModeSelPrmType *prmp)
 	return (struct task *)0;
 }
 
+// STUB: SADX 0x006030c0
+void FUN_006030c0(struct task *param_1)
+{
+}
+
 // FUNCTION: SADX 0x006032f0
 void FUN_006032f0(struct task *param_1)
 {
@@ -53,6 +84,11 @@ void FUN_006032f0(struct task *param_1)
 	{
 		param_1->ocp = NULL;
 	}
+}
+
+// STUB: SADX 0x006041f0
+void ChangeLanguageMode(struct _OptionSelWk *wkp)
+{
 }
 
 // FUNCTION: SADX 0x006042d0

@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00574140(int param_1, float param_2, float param_3, float param_4);
 void FUN_005fd510(int param_1, int param_2);
 void FUN_005fd320(struct task *param_1);
 void FUN_005fd760(struct task *param_1);
@@ -51,4 +52,18 @@ void FUN_005fd4e0(int param_1)
 	{
 		FUN_005fd510(*(char *)(param_1 + 0x34), 1);
 	}
+}
+
+// STUB: SADX 0x005fd510
+void FUN_005fd510(int param_1, int param_2)
+{
+}
+
+// FUNCTION: SADX 0x005fd7e0
+void FUN_005fd7e0(struct TvSettingWk *param_1)
+{
+	ghSetPvrTexMaterial(0xffffffff);
+	___njSetTexture(&texlist_tvsetting);
+	FUN_00574140(0x16, 32.0f, 42.0f, *(float *)((char *)param_1 + 0xc) + -12.0);
+	DrawTitleBack(0.0f, 32.0f, *(float *)((char *)param_1 + 0xc) + -10.0, 565.0f, 42.0f);
 }

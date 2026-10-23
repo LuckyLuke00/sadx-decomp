@@ -1,4 +1,5 @@
 #include "decls.h"
+extern unsigned char DAT_05cd14ed;
 void FUN_006077f0(struct TrialActSelWk *param_1);
 void FUN_00606810(struct AvaStgActPrmT *param_1);
 extern struct task *DAT_05edd9c0;
@@ -42,6 +43,25 @@ void FUN_00606a50(struct task *task)
 {
 }
 
+// FUNCTION: SADX 0x00607130
+void trial_act_sel_disp(struct task *tp)
+{
+	struct TrialActSelWk *local_8;
+
+	local_8 = (struct TrialActSelWk *)tp->awp;
+	if (!local_8->BaseCol)
+	{
+		return;
+	}
+	ghDefaultBlendingMode();
+	ghSetPvrTexBaseColor(local_8->BaseCol);
+	DrawSkyBg(local_8->BaseZ + -2.0);
+	DrawTrialActSelBg(local_8);
+	FUN_006074c0(local_8);
+	DrawBCharName((enum AvaCharEnum)DAT_05cd14ed, -1, 158.0f, 90.0f, local_8->BaseZ + -14.0);
+	DrawTrialActSelStage(local_8);
+}
+
 // FUNCTION: SADX 0x006074c0
 void FUN_006074c0(struct TrialActSelWk *param_1)
 {
@@ -49,6 +69,27 @@ void FUN_006074c0(struct TrialActSelWk *param_1)
 	DrawTrialActSelRank(param_1);
 	DrawTrialActSelTimeOrWeight(param_1);
 	FUN_006077f0(param_1);
+}
+
+// STUB: SADX 0x00607500
+void DrawTrialActSelEmblem(struct TrialActSelWk *wkp)
+{
+}
+
+// FUNCTION: SADX 0x006075f0
+void DrawTrialActSelRank(struct TrialActSelWk *wkp)
+{
+	long local_8;
+	local_8 = AvaGetTrialBestScore((enum AvaCharEnum)DAT_05cd14ed, wkp->NowStgActPrm.StgActPtr[wkp->SelStg].Stg);
+	DrawValTrialS(local_8, 6, 0, 463.0f, 260.0f, wkp->BaseZ + -12.0, 0.5f, 0.5f);
+}
+
+// FUNCTION: SADX 0x006077f0
+void FUN_006077f0(struct TrialActSelWk *param_1)
+{
+	short local_8;
+	local_8 = AvaGetTrialBestRing((enum AvaCharEnum)DAT_05cd14ed, param_1->NowStgActPrm.StgActPtr[param_1->SelStg].Stg);
+	DrawValTrialS(local_8, 6, 0, 463.0f, 390.0f, param_1->BaseZ + -12.0f, 0.5f, 0.5f);
 }
 
 // FUNCTION: SADX 0x00607bc0

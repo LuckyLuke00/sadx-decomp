@@ -1,5 +1,49 @@
 #include "decls.h"
+extern unsigned char DAT_05cd27e8;
+extern int DAT_05cd27f0;
+extern int DAT_05cd14d4;
 extern float DAT_05b36808;
+
+// FUNCTION: SADX 0x004960c0
+long TutorialExit(void *Param)
+{
+	int var1;
+	npSetZCompareMode(1);
+	DAT_05cd14d4 = 1;
+	if (DAT_05cd27e8 == 0)
+	{
+		var1 = GetAdvertisePlayerNumber((unsigned char)GetPlayerNumber());
+	}
+	else
+	{
+		var1 = DAT_05cd27f0;
+	}
+	BGM_Stop();
+	Serif_Stop();
+	LoopTask();
+	ADX_Close();
+	FreeDialogTask();
+	GenocideTask();
+	LoopTask();
+	ReleaseTutorialBookTexture(var1);
+	late_ReleaseTexture(&texlist_adv_window);
+	late_ReleaseTexture(&texlist_ava_csr);
+	late_ReleaseTexture(&DAT_025ddb78);
+	FUN_004b6520((int)&texlist_tuto_cmn);
+	late_ReleaseTexture(&texlist_tuto_cmn);
+	if (DAT_05cd27e8 == 0)
+	{
+		___njReleaseTextureAll();
+	}
+	else
+	{
+		setBtp_PreToBtp();
+		setPreflagstat();
+	}
+	FUN_007d21b0((void *)1);
+	DAT_05cd14d4 = 0;
+	return 1;
+}
 
 // STUB: SADX 0x00496400
 void FUN_00496400(int param_1)

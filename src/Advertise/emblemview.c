@@ -49,6 +49,39 @@ void FUN_005ffba0(struct anywk *param_1)
 	*(unsigned char *)((char *)param_1 + 0x3b) = 0;
 }
 
+// FUNCTION: SADX 0x005ffde0
+void emblem_view_disp(struct task *tp)
+{
+	struct EmblemViewWk *local_8;
+
+	local_8 = (struct EmblemViewWk *)tp->awp;
+	if (!local_8->BaseCol)
+	{
+		return;
+	}
+	ghDefaultBlendingMode();
+	ghSetPvrTexBaseColor(local_8->BaseCol);
+	DrawSkyBg(local_8->BaseZ + -2.0);
+	DrawEmblemViewBg(local_8);
+	DrawEmblemViewChar(local_8);
+	DrawEmblemViewHead(local_8);
+	DrawEmblemViewEmblem(local_8);
+}
+
+// STUB: SADX 0x00600590
+void DrawEmblemViewHead(struct EmblemViewWk *wkp)
+{
+}
+
+// FUNCTION: SADX 0x006009a0
+void DrawEmblemViewBg(struct EmblemViewWk *wkp)
+{
+	ghSetPvrTexMaterial(-1);
+	___njSetTexture(&texlist_ava_emblemview);
+	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoY * 32.0f, wkp->BaseZ + -8.0f, ScreenRaitoX * 565.0f, ScreenRaitoY * 42.0f);
+	ghDrawPvrTexture(0, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
+}
+
 // FUNCTION: SADX 0x00600aa0
 void FreeAdvaEmblemViewTask()
 {

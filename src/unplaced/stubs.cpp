@@ -1042,12 +1042,6 @@ void TutorialTask(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00497070
-struct task *CreateTutorialBgTask(int level, int advplno, struct NJS_POINT3 *pos)
-{
-	return (struct task *)0;
-}
-
 // STUB: SADX 0x00498e30
 void DisplayMiMessage()
 {
@@ -1915,8 +1909,8 @@ void FUN_00571b20(int)
 {
 }
 
-// STUB: SADX 0x005734b0
-void InitSegaLogo()
+// STUB: SADX 0x00574140
+void FUN_00574140(int, float, float, float)
 {
 }
 
@@ -2084,20 +2078,15 @@ void MDHeaderClose(struct MDHANDLE *mdh)
 {
 }
 
-// STUB: SADX 0x0059db20
-unsigned char FUN_0059db20(int)
-{
-	return (unsigned char)0;
-}
-
 // STUB: SADX 0x0059dd40
 void GetTrialActNowAvaStgActPrm(struct AvaStgActPrmT *stgactprmptr)
 {
 }
 
-// STUB: SADX 0x0059deb0
-void GetMiniGameNowAvaStgActPrm(struct AvaStgActPrmT *)
+// STUB: SADX 0x0059e230
+int AvaCheckMetalSonic()
 {
+	return (int)0;
 }
 
 // STUB: SADX 0x0059e430
@@ -2112,6 +2101,11 @@ unsigned long GetFadeOutColFromT(float t)
 	return (unsigned long)0;
 }
 
+// STUB: SADX 0x0059e8b0
+void DrawBCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, float z)
+{
+}
+
 // STUB: SADX 0x0059eac0
 void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, float z, float magx, float magy)
 {
@@ -2122,10 +2116,21 @@ void DrawVal(long, long, unsigned char, float, float, float, float)
 {
 }
 
+// STUB: SADX 0x0059ef30
+void DrawValTrialS(long val, long keta, unsigned char zflg, float x, float y, float z, float magx, float magy)
+{
+}
+
 // STUB: SADX 0x0059f900
 int SetAdvaSerifu(enum AvaSerifuModeEnum serifumode)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x005a4560
+long AvaGetTrialBestScore(enum AvaCharEnum chnum, unsigned char stg)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x005a4c50
@@ -2516,23 +2521,23 @@ void FUN_005fd320(struct task *)
 {
 }
 
-// STUB: SADX 0x005fd510
-void FUN_005fd510(int, int)
-{
-}
-
-// STUB: SADX 0x005fd7e0
-void FUN_005fd7e0(struct TvSettingWk *)
-{
-}
-
 // STUB: SADX 0x005fd880
 void DrawTvSettingWnd(struct TvSettingWk *wkp)
 {
 }
 
-// STUB: SADX 0x00601d10
-void DrawMiniGameSelEmblem(struct MiniGameSelWk *wkp)
+// STUB: SADX 0x005ffe60
+void DrawEmblemViewEmblem(struct EmblemViewWk *wkp)
+{
+}
+
+// STUB: SADX 0x00600650
+void DrawEmblemViewChar(struct EmblemViewWk *wkp)
+{
+}
+
+// STUB: SADX 0x00601950
+void DrawMiniGameSelBg(struct MiniGameSelWk *wkp)
 {
 }
 
@@ -2541,13 +2546,13 @@ void DrawMiniGameSelRank123(struct MiniGameSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x00602430
-void FUN_00602430(struct task *)
+// STUB: SADX 0x00602000
+void DrawMiniGameSelStage(struct MiniGameSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x006030c0
-void FUN_006030c0(struct task *)
+// STUB: SADX 0x00602430
+void FUN_00602430(struct task *)
 {
 }
 
@@ -2566,13 +2571,28 @@ void DrawOptionSelBg(struct _OptionSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x00607500
-void DrawTrialActSelEmblem(struct TrialActSelWk *wkp)
+// STUB: SADX 0x006055c0
+void DrawSndTestSubMenuList(struct SndTestWk *wkp)
 {
 }
 
-// STUB: SADX 0x006075f0
-void DrawTrialActSelRank(struct TrialActSelWk *wkp)
+// STUB: SADX 0x006058a0
+void DrawSndTestSubMenuBg(struct SndTestWk *wkp)
+{
+}
+
+// STUB: SADX 0x00605b40
+void DrawSndTestEffMenuList(struct SndTestWk *wkp)
+{
+}
+
+// STUB: SADX 0x00605f50
+void DrawSndTestEffMenuBg(struct SndTestWk *wkp)
+{
+}
+
+// STUB: SADX 0x006071f0
+void DrawTrialActSelBg(struct TrialActSelWk *wkp)
 {
 }
 
@@ -2581,8 +2601,8 @@ void DrawTrialActSelTimeOrWeight(struct TrialActSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x006077f0
-void FUN_006077f0(struct TrialActSelWk *)
+// STUB: SADX 0x00607880
+void DrawTrialActSelStage(struct TrialActSelWk *wkp)
 {
 }
 

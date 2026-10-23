@@ -34,6 +34,11 @@ static void title_menu_exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005e9570
+void FUN_005e9570(void *param_1)
+{
+}
+
 // FUNCTION: SADX 0x005eb250
 void FreeAdvaHow2PlayTask()
 {

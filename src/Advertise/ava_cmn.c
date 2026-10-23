@@ -36,3 +36,13 @@ void DrawEbmlem(float x, float y, float z)
 void DrawMetalEbmlem(float x, float y, float z)
 {
 }
+
+// FUNCTION: SADX 0x0059f1a0
+void DrawSankaku(int muki, float x, float y, float z)
+{
+	muki = (muki != 0 ? 0x46000000 : 0) + 0x1000000;
+	___njSetTexture(&texlist_ava_san);
+	ghSetPvrTexMaterial(0xffffffff);
+	ghDrawPvrTexture(muki | 1, x * ScreenRaitoX, y * ScreenRaitoY, z, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTexture(muki, x * ScreenRaitoX, y * ScreenRaitoY, z + -0.30000001192092896, ScreenRaitoX, ScreenRaitoY);
+}

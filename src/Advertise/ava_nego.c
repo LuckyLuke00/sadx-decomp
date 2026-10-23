@@ -1,4 +1,7 @@
 #include "decls.h"
+extern unsigned char DAT_05cd14ea;
+int AvaCheckMetalSonic();
+extern unsigned char DAT_05cd14e0;
 extern int DAT_05cc3574;
 extern char DAT_05cc3631;
 void CreateSaveData();
@@ -12,6 +15,12 @@ void InitAvaCmnPrm()
 {
 	DAT_05cda190 = 0;
 	DAT_05cda191 = 0;
+}
+
+// STUB: SADX 0x0059db20
+unsigned char FUN_0059db20(int param_1)
+{
+	return (unsigned char)0;
 }
 
 // STUB: SADX 0x0059dc20
@@ -38,8 +47,67 @@ unsigned char GetEnableMiniGameNumAll()
 	return (unsigned char)0;
 }
 
+// STUB: SADX 0x0059deb0
+void GetMiniGameNowAvaStgActPrm(struct AvaStgActPrmT *stgactprmptr)
+{
+}
+
+// FUNCTION: SADX 0x0059df60
+long GetEachCharEnable(enum AvaCharEnum chnum)
+{
+	long rt;
+	if (DAT_05cd14e0)
+	{
+		return 1;
+	}
+	switch (chnum)
+	{
+		case AVA_SONIC:
+			rt = SeqCheckFlag(0x41);
+			break;
+		case AVA_MILES:
+			rt = SeqCheckFlag(0x42);
+			break;
+		case AVA_KNUCKLES:
+			rt = SeqCheckFlag(0x43);
+			break;
+		case AVA_AMY:
+			rt = SeqCheckFlag(0x44);
+			break;
+		case AVA_BIG:
+			rt = SeqCheckFlag(0x46);
+			break;
+		case AVA_E_102:
+			rt = SeqCheckFlag(0x45);
+			break;
+		case AVA_METALSONIC:
+			if (DAT_05cd14ea == 1)
+			{
+				rt = AvaCheckMetalSonic();
+			}
+			else
+			{
+				rt = SeqCheckFlag(0x47);
+			}
+			break;
+	}
+	return rt;
+}
+
+// STUB: SADX 0x0059e040
+char FUN_0059e040(int param_1)
+{
+	return (char)0;
+}
+
 // STUB: SADX 0x0059e0d0
 int AvaGetEndingEnable(enum AvaCharEnum chnum)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0059e110
+int AvaGetTrialEnable()
 {
 	return (int)0;
 }

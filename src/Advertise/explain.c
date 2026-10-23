@@ -31,6 +31,11 @@ void FUN_006025e0()
 	*(int *)((char *)DAT_05cda18c->awp + 0x10) = 0x65;
 }
 
+// STUB: SADX 0x00602600
+void explain_exec(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x006026b0
 void FUN_006026b0(struct task *param_1)
 {

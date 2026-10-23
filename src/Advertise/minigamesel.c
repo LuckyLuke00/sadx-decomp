@@ -1,4 +1,5 @@
 #include "decls.h"
+extern unsigned char DAT_05cd14ed;
 extern struct task *DAT_05edd9b0;
 
 // STUB: SADX 0x00600e90
@@ -30,6 +31,25 @@ void FUN_006011c0(void *param_1)
 	*(char *)((char *)param_1 + 0xce) = 0;
 }
 
+// FUNCTION: SADX 0x00601890
+void minigame_sel_disp(struct task *tp)
+{
+	struct MiniGameSelWk *local_8;
+
+	local_8 = (struct MiniGameSelWk *)tp->awp;
+	if (!local_8->BaseCol)
+	{
+		return;
+	}
+	ghDefaultBlendingMode();
+	ghSetPvrTexBaseColor(local_8->BaseCol);
+	DrawSkyBg(local_8->BaseZ + -2.0);
+	DrawMiniGameSelBg(local_8);
+	FUN_00601cf0(local_8);
+	DrawBCharName((enum AvaCharEnum)DAT_05cd14ed, 0xffffffff, 158.0f, 90.0f, local_8->BaseZ + -14.0);
+	DrawMiniGameSelStage(local_8);
+}
+
 // STUB: SADX 0x00601c90
 int now_emblem_stg(struct MiniGameSelWk *wkp)
 {
@@ -41,6 +61,11 @@ void FUN_00601cf0(struct MiniGameSelWk *param_1)
 {
 	DrawMiniGameSelEmblem(param_1);
 	DrawMiniGameSelRank123(param_1);
+}
+
+// STUB: SADX 0x00601d10
+void DrawMiniGameSelEmblem(struct MiniGameSelWk *wkp)
+{
 }
 
 // FUNCTION: SADX 0x00602340

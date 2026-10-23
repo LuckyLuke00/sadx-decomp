@@ -1,8 +1,33 @@
 #include "decls.h"
+extern int DAT_05cd0f1c;
+extern int DAT_05cd0f18;
+extern char DAT_0098c030[11];
 extern int DAT_05cd0f2c;
 extern int DAT_05cd0f28;
 extern int DAT_05cda174;
 extern int DAT_05cc3620;
+
+// FUNCTION: SADX 0x005734b0
+void InitSegaLogo()
+{
+	union NJS_COLOR col;
+	InitMemory();
+	InitTask();
+	dsSetFade(0);
+	___njSetBackColor(0, 0, 0);
+	texLoadTexturePvmFile(DAT_0098c030, &texlist_segalogo);
+	DAT_05cd0f1c = 0x10;
+	DAT_05cd0f18 = 0;
+	dsInitInt(1, 1);
+	njSetWaitVsyncCount(1);
+	col.argb.b = 0;
+	col.argb.g = 0;
+	col.argb.r = 0;
+	col.argb.a = 0;
+	SetOffsetColor(&col);
+	ghInitPvrTexture();
+	FUN_007d21b0((void *)3);
+}
 
 // FUNCTION: SADX 0x00573550
 void InitDemoSequence()
