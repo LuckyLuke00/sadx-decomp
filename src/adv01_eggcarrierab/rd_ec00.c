@@ -55,9 +55,42 @@ void FUN_00692da0()
 	*var1 = (*var1 == 0);
 }
 
+// FUNCTION: SADX 0x00693060
+long LoadMapEC(unsigned short act)
+{
+	switch (act)
+	{
+	case 0:
+		texLoadTexturePvmFile("map_ec_b", &texlist_mapEC);
+		break;
+	case 1:
+	case 2:
+		texLoadTexturePvmFile("map_ec_a", &texlist_mapEC);
+		break;
+	case 3:
+	case 4:
+	case 5:
+		if (SeqCheckFlag(flg_transform[GetPlayerNumber()]))
+			texLoadTexturePvmFile("map_ec_a", &texlist_mapEC);
+		else
+			texLoadTexturePvmFile("map_ec_b", &texlist_mapEC);
+		break;
+	default:
+		return 0;
+	}
+	FUN_004b6460(&texlist_mapEC, "mapEC");
+	return 1;
+}
+
 // FUNCTION: SADX 0x006930f0
 void DestroyMapEC(unsigned short act)
 {
 	FUN_004b6520((int)&texlist_mapEC);
 	late_ReleaseTexture(&texlist_mapEC);
+}
+
+// STUB: SADX 0x00693110
+int FUN_00693110(float *param_1)
+{
+	return (int)0;
 }

@@ -40,6 +40,11 @@ void E_MatoDisp(struct task *tp)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x0068a410
+void MatoDisp(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0068a4d0
 void SakuExec(struct task *tp)
 {
@@ -47,7 +52,17 @@ void SakuExec(struct task *tp)
 	SakuDisp(tp);
 }
 
+// STUB: SADX 0x0068a6c0
+void MatoExec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0068a7c0
 void MatoInit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0068a800
+void E_MatoExec(struct task *tp)
 {
 }

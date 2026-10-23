@@ -85,6 +85,8 @@ struct bankdata;
 struct bankdatalist;
 struct BOSSPLAYER_CREATE_PARAM;
 struct bosswk;
+struct bridge_model_info;
+struct bridge_param;
 struct BUBBLE_DATA;
 struct BUBBLE_LIST;
 struct BUBBLE_TABLE;
@@ -199,6 +201,7 @@ struct OBJ_CONDITION;
 struct OBJ_EDITENTRY;
 struct OBJ_SLEEPCON;
 struct OBJ_UNIT;
+struct OCMDATA;
 struct PanelPrmType;
 struct particle_entry;
 struct particle_info;
@@ -241,9 +244,13 @@ struct task;
 struct TaskCommunication;
 struct TaskInfo;
 struct taskwk;
+struct TENSHOUSEINFO;
 struct Tex_anim_land_work;
 struct Tex_anim_obj_work;
 struct TEX_PVMTABLE;
+struct TEXANIMINFO;
+struct TEXUVINFO;
+struct TEXUVINFO2;
 struct thread;
 struct TrialActSelWk;
 struct TvSettingWk;
@@ -3273,6 +3280,68 @@ static_assert(sizeof(STAFFROLL_DATA) == 0x8, "sizeof STAFFROLL_DATA");
 static_assert(offsetof(STAFFROLL_DATA, StaffTbl) == 0x0, "STAFFROLL_DATA::StaffTbl");
 static_assert(offsetof(STAFFROLL_DATA, nbStaff) == 0x4, "STAFFROLL_DATA::nbStaff");
 
+struct TENSHOUSEINFO {
+    struct obj *pobj;
+    float objsize;
+    struct TEXUVINFO *puvinfo;
+    int texcnt;
+    struct TEXUVINFO2 *puv2info;
+    int uv2cnt;
+    struct CCL_INFO *pcoll;
+    int colcnt;
+};
+static_assert(sizeof(TENSHOUSEINFO) == 0x20, "sizeof TENSHOUSEINFO");
+static_assert(offsetof(TENSHOUSEINFO, pobj) == 0x0, "TENSHOUSEINFO::pobj");
+static_assert(offsetof(TENSHOUSEINFO, objsize) == 0x4, "TENSHOUSEINFO::objsize");
+static_assert(offsetof(TENSHOUSEINFO, puvinfo) == 0x8, "TENSHOUSEINFO::puvinfo");
+static_assert(offsetof(TENSHOUSEINFO, texcnt) == 0xc, "TENSHOUSEINFO::texcnt");
+static_assert(offsetof(TENSHOUSEINFO, puv2info) == 0x10, "TENSHOUSEINFO::puv2info");
+static_assert(offsetof(TENSHOUSEINFO, uv2cnt) == 0x14, "TENSHOUSEINFO::uv2cnt");
+static_assert(offsetof(TENSHOUSEINFO, pcoll) == 0x18, "TENSHOUSEINFO::pcoll");
+static_assert(offsetof(TENSHOUSEINFO, colcnt) == 0x1c, "TENSHOUSEINFO::colcnt");
+
+struct TEXANIMINFO {
+    struct NJS_MATERIAL *pmat;
+    unsigned long newtexid;
+    unsigned long orgtexid;
+};
+static_assert(sizeof(TEXANIMINFO) == 0xc, "sizeof TEXANIMINFO");
+static_assert(offsetof(TEXANIMINFO, pmat) == 0x0, "TEXANIMINFO::pmat");
+static_assert(offsetof(TEXANIMINFO, newtexid) == 0x4, "TEXANIMINFO::newtexid");
+static_assert(offsetof(TEXANIMINFO, orgtexid) == 0x8, "TEXANIMINFO::orgtexid");
+
+struct TEXUVINFO {
+    struct NJS_MESHSET *pmeshset;
+    short uvnum;
+    short addu;
+    short addv;
+    short nRef;
+    union NJS_COLOR *vertuv;
+    union NJS_COLOR *oldvertuv;
+};
+static_assert(sizeof(TEXUVINFO) == 0x14, "sizeof TEXUVINFO");
+static_assert(offsetof(TEXUVINFO, pmeshset) == 0x0, "TEXUVINFO::pmeshset");
+static_assert(offsetof(TEXUVINFO, uvnum) == 0x4, "TEXUVINFO::uvnum");
+static_assert(offsetof(TEXUVINFO, addu) == 0x6, "TEXUVINFO::addu");
+static_assert(offsetof(TEXUVINFO, addv) == 0x8, "TEXUVINFO::addv");
+static_assert(offsetof(TEXUVINFO, nRef) == 0xa, "TEXUVINFO::nRef");
+static_assert(offsetof(TEXUVINFO, vertuv) == 0xc, "TEXUVINFO::vertuv");
+static_assert(offsetof(TEXUVINFO, oldvertuv) == 0x10, "TEXUVINFO::oldvertuv");
+
+struct TEXUVINFO2 {
+    struct NJS_MESHSET *pmeshset;
+    short uvnum;
+    short addu;
+    short addv;
+    union NJS_COLOR *oldvertuv;
+};
+static_assert(sizeof(TEXUVINFO2) == 0x10, "sizeof TEXUVINFO2");
+static_assert(offsetof(TEXUVINFO2, pmeshset) == 0x0, "TEXUVINFO2::pmeshset");
+static_assert(offsetof(TEXUVINFO2, uvnum) == 0x4, "TEXUVINFO2::uvnum");
+static_assert(offsetof(TEXUVINFO2, addu) == 0x6, "TEXUVINFO2::addu");
+static_assert(offsetof(TEXUVINFO2, addv) == 0x8, "TEXUVINFO2::addv");
+static_assert(offsetof(TEXUVINFO2, oldvertuv) == 0xc, "TEXUVINFO2::oldvertuv");
+
 struct TEX_PVMTABLE {
     char *pname;
     struct NJS_TEXLIST *ptexlist;
@@ -3754,6 +3823,56 @@ static_assert(offsetof(bosswk, zspd) == 0x28, "bosswk::zspd");
 static_assert(offsetof(bosswk, plactptr) == 0x2c, "bosswk::plactptr");
 static_assert(offsetof(bosswk, pljvptr) == 0x30, "bosswk::pljvptr");
 static_assert(offsetof(bosswk, actwkptr) == 0x34, "bosswk::actwkptr");
+
+struct bridge_model_info {
+    short first[2][4];
+    short last[2][4];
+    short normal[4];
+    float range[3][2];
+    float length;
+    float scale;
+    struct NJS_TEXLIST *tex;
+    struct NJS_MODEL *colli_model;
+    struct NJS_MODEL *tate;
+    struct NJS_MODEL *yoko;
+    struct NJS_MODEL *shita;
+    struct bridge_param *param;
+};
+static_assert(sizeof(bridge_model_info) == 0x60, "sizeof bridge_model_info");
+static_assert(offsetof(bridge_model_info, first) == 0x0, "bridge_model_info::first");
+static_assert(offsetof(bridge_model_info, last) == 0x10, "bridge_model_info::last");
+static_assert(offsetof(bridge_model_info, normal) == 0x20, "bridge_model_info::normal");
+static_assert(offsetof(bridge_model_info, range) == 0x28, "bridge_model_info::range");
+static_assert(offsetof(bridge_model_info, length) == 0x40, "bridge_model_info::length");
+static_assert(offsetof(bridge_model_info, scale) == 0x44, "bridge_model_info::scale");
+static_assert(offsetof(bridge_model_info, tex) == 0x48, "bridge_model_info::tex");
+static_assert(offsetof(bridge_model_info, colli_model) == 0x4c, "bridge_model_info::colli_model");
+static_assert(offsetof(bridge_model_info, tate) == 0x50, "bridge_model_info::tate");
+static_assert(offsetof(bridge_model_info, yoko) == 0x54, "bridge_model_info::yoko");
+static_assert(offsetof(bridge_model_info, shita) == 0x58, "bridge_model_info::shita");
+static_assert(offsetof(bridge_model_info, param) == 0x5c, "bridge_model_info::param");
+
+struct bridge_param {
+    float weight_p;
+    float weight_b;
+    float gravity;
+    float spring;
+    float rot_spring;
+    float y_friction;
+    float rot_friction;
+    float width;
+    float min_spd;
+};
+static_assert(sizeof(bridge_param) == 0x24, "sizeof bridge_param");
+static_assert(offsetof(bridge_param, weight_p) == 0x0, "bridge_param::weight_p");
+static_assert(offsetof(bridge_param, weight_b) == 0x4, "bridge_param::weight_b");
+static_assert(offsetof(bridge_param, gravity) == 0x8, "bridge_param::gravity");
+static_assert(offsetof(bridge_param, spring) == 0xc, "bridge_param::spring");
+static_assert(offsetof(bridge_param, rot_spring) == 0x10, "bridge_param::rot_spring");
+static_assert(offsetof(bridge_param, y_friction) == 0x14, "bridge_param::y_friction");
+static_assert(offsetof(bridge_param, rot_friction) == 0x18, "bridge_param::rot_friction");
+static_assert(offsetof(bridge_param, width) == 0x1c, "bridge_param::width");
+static_assert(offsetof(bridge_param, min_spd) == 0x20, "bridge_param::min_spd");
 
 // Offsets not checked against the code yet.
 struct c_colli_hit_info {
