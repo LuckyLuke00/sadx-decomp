@@ -9,3 +9,8 @@ void ERSetColli(struct task *tp)
 	ERSC_CommonExec(tp);
 	tp->exec = ERSC_CommonExec;
 }
+
+// STUB: SADX 0x008ddd40
+void ERSC_CorrectParameter(struct taskwk *twp)
+{
+}

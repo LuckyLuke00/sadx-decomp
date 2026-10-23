@@ -1,4 +1,7 @@
 #include "decls.h"
+extern float DAT_05edbfd4;
+extern float DAT_05edbfd8;
+extern float DAT_05edbfdc;
 void FUN_005b69e0();
 void FUN_005b6f80(struct task *param_1);
 extern int DAT_05edbfe0;
@@ -70,6 +73,11 @@ void FUN_005b67b0(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005b6940
+void FUN_005b6940()
+{
+}
+
 // STUB: SADX 0x005b69e0
 void FUN_005b69e0()
 {
@@ -83,6 +91,21 @@ void ItemBox_Explosion(struct NJS_POINT3 *pos)
 // STUB: SADX 0x005b6f80
 void FUN_005b6f80(struct task *param_1)
 {
+}
+
+// FUNCTION: SADX 0x005b6fd0
+long CheckItemExplosion(struct NJS_POINT3 *pos)
+{
+	struct NJS_POINT3 _vec;
+	if (DAT_05edbe80 >= 0.0)
+	{
+		_vec.x = pos->x - DAT_05edbfd4;
+		_vec.y = pos->y - DAT_05edbfd8;
+		_vec.z = pos->z - DAT_05edbfdc;
+		if (njScalor(&_vec) < DAT_05edbe80)
+			return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x005b7060

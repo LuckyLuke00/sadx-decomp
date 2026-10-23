@@ -11,3 +11,8 @@ void SetLineringEffect(long on)
 {
 	ring_kiran = on;
 }
+
+// STUB: SADX 0x008ba110
+void LineringDisp(struct task *tp)
+{
+}

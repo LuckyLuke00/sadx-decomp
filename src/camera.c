@@ -1,4 +1,6 @@
 #include "decls.h"
+extern int DAT_05b42a88;
+extern double DAT_0095cbf8;
 extern int DAT_05b42990;
 void CameraReleaseCollisionCamera();
 extern struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
@@ -673,9 +675,16 @@ long FUN_004bf650(float *param_1, float *param_2)
 	}
 }
 
-// STUB: SADX 0x004bfcb0
+// FUNCTION: SADX 0x004bfcb0
 void CameraPositionSmooth(struct NJS_POINT3 *last, struct NJS_POINT3 *pos)
 {
+	if (DAT_05b42a88 != 0)
+	{
+		pos->x = (pos->x - last->x) * (float)(0x1e - DAT_05b42a88) * DAT_0095cbf8 + last->x;
+		pos->y = (pos->y - last->y) * (float)(0x1e - DAT_05b42a88) * DAT_0095cbf8 + last->y;
+		pos->z = (pos->z - last->z) * (float)(0x1e - DAT_05b42a88) * DAT_0095cbf8 + last->z;
+		DAT_05b42a88 = DAT_05b42a88 - 1;
+	}
 }
 
 // FUNCTION: SADX 0x004bfd60
