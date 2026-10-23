@@ -19,7 +19,8 @@ S+N), --structs (the first prompt lists the members of the structs the dossier n
 and a build error about a missing member lists the members of that struct), --accesses
 (each dossier adds how the whole exe reads and writes each global it names), --facts (each
 dossier adds what the assembly hides: calling convention, pointer globals, structs without
-members), --top-k K,
+members), --idioms (--facts, and each dossier adds the compiler idioms that its code shows, such
+as a switch's shape), --top-k K,
 --top-p P and --min-p M (sent with every request, else the server picks), --tree-wins
 (a try that fails on a declaration the tree has in another way is built once more without
 the model's declaration of that name), --think-max N (the run ends when it would think after
@@ -1272,7 +1273,8 @@ def solve_function(args, file, address, transcript):
 
     types = load_types(config) if args.structs else None
     repair_types = types or load_types(config)  # the byte offset and pointer cast repairs read layouts either way
-    extra = (('--accesses',) if args.accesses else ()) + (('--facts',) if args.facts else ())
+    extra = tuple(flag for flag, on in (("--accesses", args.accesses), ("--facts", args.facts),
+                                        ("--idioms", args.idioms)) if on)
     count = EXAMPLES
     first = first_prompt(config, file, address, types, count, extra, args.similar_examples)
     base = [{"role": "system", "content": args.system}, {"role": "user", "content": first}]
@@ -1518,6 +1520,8 @@ def parse_args():
     runs.add_argument("--facts", action="store_true",
                       help="add what the assembly hides to each dossier: calling convention, pointer globals, "
                            "structs without members")
+    runs.add_argument("--idioms", action="store_true",
+                      help="add --facts and the compiler idioms each dossier's code shows, such as a switch")
     for sampler, kind in (("--top-k", int), ("--top-p", float), ("--min-p", float)):
         runs.add_argument(sampler, type=kind, help="sent with every request (default: the server's own)")
     runs.add_argument("--tree-wins", action="store_true",

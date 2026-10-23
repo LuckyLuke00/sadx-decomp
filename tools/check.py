@@ -27,6 +27,7 @@ game.cmake. docs/FRAMEWORK.md has the details.
 """
 
 import argparse
+import functools
 import json
 import re
 import shutil
@@ -77,9 +78,10 @@ def main() -> int:
         import dossier
         import facts
 
+        with_facts = functools.partial(facts.fact_lines, idioms=args.idioms) if args.facts or args.idioms else None
         return dossier.show(project.require_game(), args.addresses, draft=args.c, callers=args.callers,
-                            tables=args.tables, drafts=args.drafts, access=args.accesses,
-                            facts=facts.fact_lines if args.facts else None, context=args.context)
+                            tables=args.tables, drafts=args.drafts, access=args.accesses, facts=with_facts,
+                            context=args.context)
     if args.command == "access":
         # Only .venv has capstone.
         import accesses
@@ -121,6 +123,8 @@ def parse_args() -> argparse.Namespace:
     dossier.add_argument("--drafts", type=Path, help="the folder of Ghidra drafts (default: build/decomp)")
     dossier.add_argument("--accesses", action="store_true", help="add how the whole exe reads and writes each global")
     dossier.add_argument("--facts", action="store_true", help="add what the assembly hides: conventions, pointer globals")
+    dossier.add_argument("--idioms", action="store_true",
+                         help="add --facts and the compiler idioms the code shows, such as a switch")
     dossier.add_argument("--context", type=Path, help="another checkout whose files give names and signatures")
     access = commands.add_parser("access")
     access.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00800000")

@@ -118,7 +118,7 @@ def calls(function: x86.Function) -> list[x86.Instruction]:
 
 def effect(instruction: x86.Instruction) -> tuple[int, int]:
     """Reads and writes. A call may change eax, ecx and edx."""
-    return instruction.reads, instruction.writes | (x86.CALL_CHANGES if instruction.mnemonic == "call" else 0)
+    return instruction.reads, x86.changes(instruction)
 
 
 def effect_with_arguments(instruction: x86.Instruction, arguments: dict[int, int]) -> tuple[int, int]:
