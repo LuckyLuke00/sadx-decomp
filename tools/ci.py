@@ -9,11 +9,14 @@
 
 Before the first `check.py save` there is no summary.json: that fails, and only
 checks 4 and 5 run. The base defaults to the branch's upstream. Without a base,
-check 2 is skipped, with a note. Standard library only.
+check 2 is skipped, with a note. On GitHub Actions, a run with a base also
+writes the score changes against it to the job's summary page. Standard library
+only.
 """
 
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -32,6 +35,7 @@ BUILD_INPUTS = ["src", "CMakeLists.txt", "game.cmake", "data/codegen-groups.csv"
 BINARY_SUFFIXES = {".exe", ".dll", ".pdb", ".lib", ".obj", ".ilk", ".iso", ".msi"}
 MAX_FILE_BYTES = 10 * 1024 * 1024
 MAX_LINES = 10  # problem lines a check prints before it sums up the rest
+JOB_SUMMARY_ROWS = 50  # the most moved functions the job summary lists
 NO_COMMIT = "0" * 40
 
 
@@ -97,6 +101,47 @@ def check_no_drops(summary: dict, base: str) -> list[str]:
     return [f"against {base[:12]}: {line}" for line in scoring.find_regressions(json.loads(text), summary)]
 
 
+def change_word(old: dict | None, new: dict | None) -> str:
+    if old is None:
+        return "new"
+    if new is None:
+        return "removed"
+    return "raised" if scoring.score(new) > scoring.score(old) else "dropped"
+
+
+def score_changes(baseline: dict, current: dict, game: set[int], sizes: dict[int, int]) -> str:
+    """Markdown for the job summary: the totals before and after, then each function whose score moved, at most
+    JOB_SUMMARY_ROWS of them."""
+    before, after = scoring.totals(baseline, game), scoring.totals(current, game)
+    code_before, code_after = scoring.code_bytes(baseline, game, sizes), scoring.code_bytes(current, game, sizes)
+    lines = ["### Scores against the base", "", "| | Before | After |", "| --- | --- | --- |",
+             f"| Game functions matched | {before.matched:,} | {after.matched:,} |",
+             f"| Code bytes matched | {code_before.matched:,} | {code_after.matched:,} |", ""]
+    moved = scoring.moved_scores(baseline, current)
+    if not moved:
+        return "\n".join(lines + ["No score moved.", ""])
+    old, new = scoring.entries_by_address(baseline), scoring.entries_by_address(current)
+    lines += ["| Function | Before | After | Change |", "| --- | --- | --- | --- |"]
+    for address in moved[:JOB_SUMMARY_ROWS]:
+        was, now = old.get(address), new.get(address)
+        lines.append(f"| `0x{address:08x}` {osutil.table_cell((now or was)['name'])} | {scoring.state_text(was)} | "
+                     f"{scoring.state_text(now)} | {change_word(was, now)} |")
+    if len(moved) > JOB_SUMMARY_ROWS:
+        lines += ["", f"And {len(moved) - JOB_SUMMARY_ROWS:,} more."]
+    return "\n".join(lines) + "\n"
+
+
+def write_job_summary(summary: dict, base: str) -> None:
+    """On GitHub Actions, add the score changes against the base to the job's summary page."""
+    path, text = os.environ.get("GITHUB_STEP_SUMMARY"), at_base(base, progress.SUMMARY_JSON)
+    if not path or text is None:
+        return
+    functions = progress.load_functions()
+    game = progress.game_addresses(functions)
+    with open(path, "a", encoding="utf-8") as out:
+        out.write(score_changes(json.loads(text), summary, game, progress.function_sizes(functions)))
+
+
 def check_visuals() -> list[str]:
     stale = [path for path, text in progress.render_all().items()
              if not path.exists() or path.read_text(encoding="utf-8") != text]
@@ -148,7 +193,10 @@ def run_checks(base: str | None) -> int:
         ("every function is in one code group", check_groups),
         ("no binaries or large files", check_no_binaries),
     ]
-    return report(checks)
+    failed = report(checks)
+    if resolved is not None:
+        write_job_summary(summary, resolved)
+    return failed
 
 
 def report(checks: list) -> int:

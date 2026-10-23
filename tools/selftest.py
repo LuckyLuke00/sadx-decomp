@@ -15,7 +15,9 @@ import re
 import tempfile
 from pathlib import Path
 
+import coff
 import declgen
+import link
 import names
 import osutil
 import pe
@@ -33,6 +35,8 @@ SELFTEST_ORIGINAL = BUILD / "selftest-original" / "SELFTEST.exe"
 SELFTEST_MAP = SELFTEST_ORIGINAL.with_suffix(".map")
 SELFTEST_OURS = BUILD / "SELFTEST.exe"
 SELFTEST_BUILD = BUILD / "selftest-reccmp"  # reccmp runs here for the self-test
+SELFTEST_OBJECT = BUILD / "CMakeFiles" / "selftest_original.dir" / "tests" / "selftest" / "original.cpp.obj"
+SELFTEST_LINK = BUILD / "selftest-link"  # check_link links here
 
 
 def run() -> int:
@@ -47,7 +51,7 @@ def run() -> int:
     failures += check_totals(expected, current)
     failures += check_trick_totals(current)
     failures += check_trick_state(current)
-    failures += check_trick_byte_share(current)
+    failures += check_code_bytes(current)
     failures += check_summarize_tricks()
     failures += check_whole_percent()
     failures += check_recent_gain()
@@ -67,6 +71,7 @@ def run() -> int:
     failures += check_extern_of()
     failures += check_reached_types()
     failures += check_clone()
+    failures += check_link()
     failures += check_units()
 
     if failures:
@@ -75,7 +80,7 @@ def run() -> int:
             print(f"     {line}")
         return 1
     print(f"ok   self-test: build hash {original_hash[:12]}..., exact scores, regression gate, /GL call, totals, history, "
-          "annotation lint, unit tests")
+          "annotation lint, relink, unit tests")
     return 0
 
 
@@ -151,13 +156,14 @@ def check_history_rows(expected: dict) -> list[str]:
     day included, and none for a commit that only removes or adds a stub. A commit that undoes the one before gets
     a row too. The working tree gets a row only when it changed the totals."""
     game = addresses(expected)
+    sizes = {address: 10 for address in game}
     dropped = with_first_accuracy(expected, 0.5)
     later = with_first_accuracy(expected, 0.25)
-    commits = [progress.Snapshot("2026-01-01", expected, game),
-               progress.Snapshot("2026-01-02", without_stubs(expected), game),
-               progress.Snapshot("2026-01-03", expected, game),
-               progress.Snapshot("2026-01-04", dropped, game),
-               progress.Snapshot("2026-01-04", later, game)]
+    commits = [progress.Snapshot("2026-01-01", expected, game, sizes),
+               progress.Snapshot("2026-01-02", without_stubs(expected), game, sizes),
+               progress.Snapshot("2026-01-03", expected, game, sizes),
+               progress.Snapshot("2026-01-04", dropped, game, sizes),
+               progress.Snapshot("2026-01-04", later, game, sizes)]
     rows_of_commits = [("2026-01-01", expected), ("2026-01-04", dropped), ("2026-01-04", later)]
     # (case, the snapshots after the commits, the day and scores of each row)
     cases = [("an unchanged working tree", [("2026-01-05", later)], rows_of_commits),
@@ -167,9 +173,10 @@ def check_history_rows(expected: dict) -> list[str]:
               rows_of_commits + [("2026-01-05", dropped), ("2026-01-05", later)])]
     failures = []
     for name, more, wanted in cases:
-        snapshots = commits + [progress.Snapshot(day, summary, game) for day, summary in more]
+        snapshots = commits + [progress.Snapshot(day, summary, game, sizes) for day, summary in more]
         rows = progress.history_rows(snapshots)
-        if rows != [progress.history_row(day, scoring.totals(summary, game)) for day, summary in wanted]:
+        if rows != [progress.history_row(day, scoring.totals(summary, game), scoring.code_bytes(summary, game, sizes))
+                    for day, summary in wanted]:
             failures.append(f"history rows {[row['date'] for row in rows]} for {name}, not the "
                             f"{len(wanted)} rows of {[day for day, _ in wanted]}")
     return failures
@@ -589,9 +596,31 @@ def check_clone_globals(clone) -> list[str]:
     return failures
 
 
+def check_link() -> list[str]:
+    """link.py rebuilds the self-test's exe byte for byte from its own bytes, and again with original.cpp's object in
+    place of its functions. That object pools five literals, uses __fltused and the security cookie, and calls the
+    /GL-built Total."""
+    image, header = pe.Image(SELFTEST_ORIGINAL), pe.read_header(SELFTEST_ORIGINAL)
+    functions = [address for address, source in map_symbols(SELFTEST_MAP) if source == "original.cpp.obj"]
+    original = SELFTEST_ORIGINAL.read_bytes()
+    failures = []
+    for case, swapped in (("its own bytes", False), ("original.cpp swapped in", True)):
+        try:
+            swaps = [link.swap_object("original.cpp", coff.read(SELFTEST_OBJECT), functions, image)] if swapped else []
+            rebuilt = link.relink(image, header, swaps, SELFTEST_LINK)[0]
+        except link.NotLinkable as error:
+            failures.append(f"link of SELFTEST.exe from {case}: {error}")
+            continue
+        count, first = osutil.byte_differences(original, rebuilt.read_bytes())
+        if count:
+            failures.append(f"link of SELFTEST.exe from {case} differs in {count} bytes, the first at 0x{first:x}")
+    return failures
+
+
 def check_units() -> list[str]:
     """The unit tests of the repairs in llm.py and cfix.py, of the try loop in llm.py, of the dossier facts in
-    facts.py, of the trick finder in tricks.py and of the site pages in pages.py, one module each."""
+    facts.py, of the trick finder in tricks.py, of the site pages in pages.py, of the data scores in scoring.py and of
+    the split in link.py, one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
@@ -599,10 +628,13 @@ def check_units() -> list[str]:
     import ctexttests
     import decltests
     import facttests
+    import linktests
+    import progresstests
     import sitetests
     import solvetests
     import tricktests
-    modules = (ctexttests, bytetests, casttests, decltests, benchtests, solvetests, facttests, tricktests, sitetests)
+    modules = (ctexttests, bytetests, casttests, decltests, benchtests, solvetests, facttests, tricktests, sitetests,
+               progresstests, linktests)
     return [failure for module in modules for failure in module.run()]
 
 
@@ -673,19 +705,22 @@ def check_trick_state(current: dict) -> list[str]:
     return failures
 
 
-def check_trick_byte_share(current: dict) -> list[str]:
-    """The byte share leaves out a trick function, and a library entry from both of its counts."""
+def check_code_bytes(current: dict) -> list[str]:
+    """The code bytes leave a trick function out of the matched bytes, a stub out of the decompiled and matched
+    bytes, and a library entry out of all three counts."""
     failures = []
     game = addresses(current)
     sizes = {address: 10 for address in game}
-    plain = scoring.byte_share(current, game, sizes)
-    for label, changed, wanted in (("a trick", {"trick": True}, (plain[0] - 10, plain[1])),
-                                   ("a library entry", {"library": True}, (plain[0] - 10, plain[1] - 10))):
+    plain = scoring.code_bytes(current, game, sizes)
+    cases = [("a trick", {"trick": True}, plain._replace(matched=plain.matched - 10)),
+             ("a stub", {"stub": True}, plain._replace(decompiled=plain.decompiled - 10, matched=plain.matched - 10)),
+             ("a library entry", {"library": True}, scoring.Bytes(*(count - 10 for count in plain)))]
+    for label, changed, wanted in cases:
         summary = copy.deepcopy(current)
         first_matched(summary).update(changed)
-        found = scoring.byte_share(summary, game, sizes)
+        found = scoring.code_bytes(summary, game, sizes)
         if found != wanted:
-            failures.append(f"byte_share gives {found} with {label}, not {wanted}")
+            failures.append(f"code_bytes gives {found} with {label}, not {wanted}")
     return failures
 
 
@@ -725,12 +760,17 @@ def check_whole_percent() -> list[str]:
 def map_functions(path: Path) -> list[tuple[int, int]]:
     """(address, size) of each function from the self-test's own objects in a link map.
     Each runs to the next symbol in the code section."""
+    symbols = map_symbols(path)
+    # A library member shows as library:object.
+    return [(address, following - address) for (address, source), (following, _) in zip(symbols, symbols[1:])
+            if ":" not in source]
+
+
+def map_symbols(path: Path) -> list[tuple[int, str]]:
+    """(address, object) of each symbol in the code section of a link map, by address."""
     symbols = []
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
         parts = line.split()
         if len(parts) >= 4 and parts[0].startswith("0001:") and re.fullmatch(r"[0-9a-f]{8}", parts[2]):
             symbols.append((int(parts[2], 16), parts[-1]))
-    symbols.sort()
-    # A library member shows as library:object.
-    return [(address, following - address) for (address, source), (following, _) in zip(symbols, symbols[1:])
-            if ":" not in source]
+    return sorted(symbols)

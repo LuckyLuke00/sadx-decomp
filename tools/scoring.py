@@ -48,8 +48,14 @@ def state(entry: dict) -> str:
     return "100%" if is_matched(entry) else "100%, through a trick"
 
 
+def state_text(entry: dict | None) -> str:
+    """The state of a function, or "none" for one with no entry."""
+    return "none" if entry is None else state(entry)
+
+
 def find_regressions(baseline: dict, current: dict) -> list[str]:
-    """Every function whose score dropped. A removed annotation scores zero, so a removed stub drops nothing."""
+    """Every function whose score dropped, and every global that matched and no longer does. A removed annotation
+    scores zero, so a removed stub drops nothing. A summary from before data scoring has no data list."""
     now = {entry["address"]: entry for entry in current["functions"]}
     problems = []
     for old in baseline["functions"]:
@@ -58,6 +64,11 @@ def find_regressions(baseline: dict, current: dict) -> list[str]:
             problems.append(f"{old['address']} {old['name']}: annotation removed")
         elif new is not None and score(new) < score(old):
             problems.append(f"{old['address']} {old['name']}: {score(old):.2%} -> {score(new):.2%}")
+    data_now = {entry["address"]: entry for entry in current.get("data", [])}
+    for old in baseline.get("data", []):
+        new = data_now.get(old["address"])
+        if old["match"] and not (new and new["match"]):
+            problems.append(f"{old['address']} {old['name']}: data matched -> {'gone' if new is None else 'differs'}")
     return problems
 
 
@@ -95,12 +106,58 @@ def totals(summary: dict, game: set[int]) -> Totals:
                   tricks)
 
 
-def byte_share(summary: dict, game: set[int], sizes: dict[int, int]) -> tuple[int, int]:
-    """(bytes of the matched game functions, bytes of all game functions), from each function's size in SIZES."""
+class Bytes(NamedTuple):
+    """Code bytes of game functions, from each function's size."""
+    decompiled: int  # functions with a body: stubs do not count
+    matched: int  # functions at 100% in plain C
+    game: int  # all game functions
+
+
+def code_bytes(summary: dict, game: set[int], sizes: dict[int, int]) -> Bytes:
+    """The code bytes of the game functions in GAME, from each function's size in SIZES. A library entry counts in
+    none of them."""
     entries = entries_by_address(summary)
     functions = game_functions(summary, game)
-    matched = sum(sizes[address] for address in functions if address in entries and is_matched(entries[address]))
-    return matched, sum(sizes[address] for address in functions)
+    scored = {address: entries[address] for address in functions if address in entries}
+    decompiled = sum(sizes[address] for address, entry in scored.items() if not entry["stub"])
+    matched = sum(sizes[address] for address, entry in scored.items() if is_matched(entry))
+    return Bytes(decompiled, matched, sum(sizes[address] for address in functions))
+
+
+class Emblem(NamedTuple):
+    """A goal in code bytes. It is earned once the matched bytes reach the needed ones."""
+    name: str
+    matched: int
+    needed: int
+
+    @property
+    def earned(self) -> bool:
+        return self.matched >= self.needed
+
+
+EMBLEM_STEP = 5  # the percent of the game's code bytes for each code emblem
+
+
+def emblems(code: Bytes, areas: list[tuple[str, Bytes]]) -> list[Emblem]:
+    """One emblem for each EMBLEM_STEP percent of the game's code bytes matched, then one for each (name, code bytes)
+    area for all of its code. They come from the current summary only, so they carry no date."""
+    steps = [Emblem(f"{share}% of the game's code", code.matched, -(-code.game * share // 100))  # rounded up
+             for share in range(EMBLEM_STEP, 101, EMBLEM_STEP)]
+    return steps + [Emblem(f"All of {name}", area.matched, area.game) for name, area in areas]
+
+
+def earned_count(found: list[Emblem]) -> int:
+    return sum(1 for emblem in found if emblem.earned)
+
+
+def data_share(summary: dict) -> tuple[int, int]:
+    """(bytes of the matching game globals, bytes of the original's initialized data). Runtime library globals count
+    in neither part, as library functions don't count in the code share. The whole holds middleware data, strings and
+    floats too. A summary from before data scoring has neither."""
+    data = summary.get("data", [])
+    matched = sum(entry["size"] for entry in data if entry["match"] and not entry["library"])
+    library = sum(entry["size"] for entry in data if entry["library"])
+    return matched, summary.get("data_bytes", 0) - library
 
 
 def ratio(part: float, whole: float) -> float:
@@ -110,6 +167,10 @@ def ratio(part: float, whole: float) -> float:
 
 def percent(part: int, whole: int) -> str:
     return f"{ratio(part, whole):.2%}"
+
+
+def count_text(part: int, whole: int, unit: str) -> str:
+    return f"{part:,} of {whole:,} {unit} ({percent(part, whole)})"
 
 
 def whole_percent(part: int, whole: int) -> str:

@@ -1,5 +1,5 @@
 """Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, read counts
-from the command line, tell how alike two counts are.
+from the command line, tell how alike two counts are, count differing bytes, escape a Markdown table cell.
 
 Standard library only.
 """
@@ -7,6 +7,7 @@ Standard library only.
 import argparse
 import collections
 import hashlib
+import html
 import shutil
 import stat
 import subprocess
@@ -83,6 +84,27 @@ def likeness(a: collections.Counter, b: collections.Counter) -> float:
     """How alike two counts are: the weighted Jaccard index, 1.0 for the same counts, 0.0 when both are empty."""
     union = sum((a | b).values())
     return sum((a & b).values()) / union if union else 0.0
+
+
+def byte_differences(a: bytes, b: bytes, block: int = 1 << 16) -> tuple[int, int | None]:
+    """How many bytes differ between a and b, the longer one's tail included, and the first offset that does. Equal
+    blocks are skipped whole, so two big, mostly equal files compare fast."""
+    count, first, common = abs(len(a) - len(b)), None, min(len(a), len(b))
+    for start in range(0, common, block):
+        end = min(start + block, common)
+        ours, theirs = a[start:end], b[start:end]
+        if ours != theirs:
+            offsets = [start + index for index, (x, y) in enumerate(zip(ours, theirs)) if x != y]
+            count += len(offsets)
+            first = offsets[0] if first is None else first
+    if first is None and len(a) != len(b):
+        first = common
+    return count, first
+
+
+def table_cell(text: str) -> str:
+    """TEXT for a cell of a GitHub Markdown table: a `<` would start an HTML tag and a `|` would end the cell."""
+    return html.escape(text, quote=False).replace("|", "\\|")
 
 
 def remove(path: Path) -> None:

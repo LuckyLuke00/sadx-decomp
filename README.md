@@ -21,6 +21,9 @@ goal is C and C++ source that compiles to the same machine code as the retail
   <img src="docs/progress/history.svg" alt="Progress over time" width="100%">
 </picture>
 
+The [progress site](https://luckyluke00.github.io/sadx-decomp/) has a page per
+area with its rank, the emblems, and the near misses: functions at 90% or more.
+
 ## How it works
 
 The decomp runs on a generic framework.
@@ -62,7 +65,7 @@ built it. This project uses that exact compiler. Three checks prove it:
    six matches, one near miss at 95.24%, one effective match and one stub
    (`check.py ci`).
 
-The game's code falls into 15 groups. The groups use 7 different sets of
+The game's code falls into 15 groups. The groups use 8 different sets of
 optimization, frame pointer, security-check, SSE2 and float settings.
 [data/codegen-groups.csv](data/codegen-groups.csv) lists the address range,
 flags and evidence of each group. The build gives every source file the flags
@@ -121,6 +124,9 @@ If the game is not in a Steam library, give its path:
 compiler from Microsoft (722 MB).
 [docs/FRAMEWORK.md](docs/FRAMEWORK.md#what-setup-downloads) says what it
 downloads and where it goes.
+
+Want to match a function? [docs/FIRST-FUNCTION.md](docs/FIRST-FUNCTION.md)
+takes you from setup to a pull request.
 
 ## Legal
 

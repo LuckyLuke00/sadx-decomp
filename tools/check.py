@@ -15,6 +15,8 @@
   python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
   python tools/check.py permute FILE ADDR     try rewrites of a near match and keep the best
   python tools/check.py clone 0x00401000      write the copies of a matched function, keep those at 100%
+  python tools/check.py link [FILE ...]       link the exe from its own bytes and these files' objects: the hash
+                                              must match
   python tools/check.py probe EXE             what a new game's exe needs: see docs/PORTING.md
 
 Every command sets up what it needs: .venv with the pinned packages, the
@@ -40,6 +42,7 @@ import codegen
 import datafiles
 import declgen
 import library
+import link
 import names
 import osutil
 import pe
@@ -141,6 +144,8 @@ def parse_args() -> argparse.Namespace:
     clone.add_argument("addresses", nargs="*", type=lambda value: int(value, 16), help="templates, e.g. 0x00401000")
     clone.add_argument("--all", action="store_true", help="every function at 100%% is a template")
     clone.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
+    commands.add_parser("link").add_argument("files", nargs="*", type=Path,
+                                             help="source files to swap in, e.g. src/main.c (none: the exe as it is)")
     commands.add_parser("probe").add_argument("exe", type=Path)
     args = parser.parse_args()
     if args.command == "clone" and not args.addresses and not args.all:
@@ -156,6 +161,8 @@ def run_with_game(args: argparse.Namespace) -> int:
     if args.command == "library":
         datafiles.write_library(game)
     build()
+    if args.command == "link":
+        return link.run(game, args.files)
     runner.write_constants(game)
     if args.command == "fn":
         return report.score_functions(args.addresses, game)
@@ -425,8 +432,12 @@ def score_game(game: Path) -> dict | None:
     build = runner.game_build()
     functions = runner.score_target(build, game, "--html", str(html))
     current = runner.summarize(build.target, functions, set(tricks.scan(ROOT)))
+    spans = pe.initialized_data(game)
+    current["data"] = runner.compare_data(build, spans)
+    current["data_bytes"] = sum(len(span) for span in spans)
     stats = scoring.totals(current, progress.game_addresses(progress.load_functions()))
     print(f"     {scoring.stats_line(stats)}")
+    print(f"     {scoring.count_text(*scoring.data_share(current), 'bytes of initialized data match')}")
     if not check_annotations(functions, game):
         return None
 

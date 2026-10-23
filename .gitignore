@@ -10,3 +10,4 @@ ghidra.log
 *.pdb
 llm.json
 _site/
+report.json

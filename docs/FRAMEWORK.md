@@ -18,7 +18,7 @@ The framework builds a matching decompilation of one 32-bit Windows exe. It comp
 | `tools/`, `tests/`, `.github/`, `.githooks/` | `CLAUDE.md`, `README.md` |
 | `CMakeLists.txt`, `requirements.txt` | `reccmp-project.yml`, `game.cmake` |
 | `.gitignore`, `.gitattributes` | `src/`, `data/` |
-| `docs/CLAUDE-GENERIC.md`, `docs/FRAMEWORK.md`, `docs/PORTING.md` | `docs/STYLE.md`, `docs/progress/` |
+| `docs/CLAUDE-GENERIC.md`, `docs/FRAMEWORK.md`, `docs/PORTING.md` | `docs/STYLE.md`, `docs/FIRST-FUNCTION.md`, `docs/progress/` |
 
 To update a game's copy of the framework, run the copy command in [PORTING.md](PORTING.md#3-make-the-repo) step 3. Leave out its `mkdir`, `git init` and `git add` lines, because the command only copies. Delete by hand any file the framework dropped. Rerun the [Ghidra command](#function-list) if the copy changed `tools/ghidra`. Rerun `check.py library` in two cases. The first is a copy that changed `tools/library.py` or `tools/libobjects.py`. The second is a changed function list. Then run `check.py gate`. After a copy changes a build input such as `CMakeLists.txt` or `tools/check.py`, `gate` fails until `check.py save` records the scores again. Framework files quote SADX only as worked examples.
 
@@ -58,7 +58,7 @@ void FUN_00401000(int value)
 | Figure | Meaning |
 | --- | --- |
 | Score | The share of instructions that are the same in both copies. The game's copy runs to the end of its row in `data/functions.csv`. Code that our copy lacks at the end counts as a miss. Calls and globals compare by name. A function can match at another address in our exe. |
-| Matched | A score of 100%. reccmp also calls some misses an *effective* match (other registers or another instruction order). Its check is loose and can pass code that behaves differently. An effective match keeps its score. The totals count it apart as *effective*. |
+| Matched | A score of 100% in plain C. A function at 100% only through a trick, such as inline assembly or `#pragma auto_inline(off)`, keeps its score but does not count as matched. `python tools/tricks.py` lists those functions and says why. reccmp also calls some misses an *effective* match (other registers or another instruction order). Its check is loose and can pass code that behaves differently. An effective match keeps its score. The totals count it apart as *effective*. |
 | Decompiled | The share of game functions that have a body. Stubs do not count. |
 | Accuracy | The average score of the decompiled functions. |
 
@@ -76,7 +76,7 @@ Three checks show that the toolchain is the game's own:
 
 ## Commands
 
-`tools/check.py` is the single entry point. Only `python tools/progress.py` runs on its own. It rewrites `history.csv` from the commits and redraws the SVGs in `docs/progress`, as `save` does. Every command first sets up what it needs, then runs itself inside `.venv`. `progress.py` also runs itself inside `.venv`. Output shows only what matters. Tool output shows on failure. Compiler and reccmp warnings always show.
+`tools/check.py` is the single entry point. These tools also run on their own. `python tools/progress.py` rewrites `history.csv` from the commits and redraws the SVGs in `docs/progress`, as `save` does. `python tools/pages.py [--out DIR]` builds the static progress site from committed files. `python tools/objdiffreport.py [--out PATH]` writes the progress as an objdiff report, which decomp.dev and decomp.fun read. CI uploads it as the `<target>_report` artifact, such as `SADX_report`, on pushes to the default branch. `python tools/tricks.py` lists the functions that match only through a trick. `tools/llm.py` runs on its own too, as [LLM agents](#llm-agents) says. Every command first sets up what it needs, then runs itself inside `.venv`. `progress.py`, `pages.py`, `objdiffreport.py` and `llm.py` also run themselves inside `.venv`. Output shows only what matters. Tool output shows on failure. Compiler and reccmp warnings always show.
 
 | Command | What it does | Exit code |
 | --- | --- | --- |
@@ -85,11 +85,12 @@ Three checks show that the toolchain is the game's own:
 | `decls [--tables DIR] [--context DIR]` | Writes the declarations that every source file includes, from the names the source files use. It writes `src/include/types.h`, `functions.h` and `globals.h`. It writes a `STUB` in `src/unplaced/stubs.cpp` for each called function with no source yet. It writes a definition in `src/unplaced/globals.cpp` for each used global that no file defines. Run it after a source starts to use a new name. [tools/declgen.py](../tools/declgen.py) says where the names come from | 1 if a used name has no declaration it can make, or two functions would share a name |
 | `dossier 0x00401000 [--c] [--callers] [--accesses]` | Prints what is needed to write a function. It shows its name, prototype, locals when a tables row gives them, and code group and file. It shows its assembly with the calls, globals, strings and floats named. It also shows the declaration of each name it uses. `--callers` adds the functions that call it. `--accesses` adds the `access` summary under each global. `--c` adds Ghidra's draft C from `build/decomp` (see [Function list](#function-list)). It takes `--tables DIR` too | 1 if an address is not a function in `data/functions.csv` |
 | `access 0x00800000 [--size N]` | Lists every instruction in the exe that reads or writes the N bytes from the address (default 1). It groups them by offset, size, int or float, and form. The forms are direct, indexed by a register, or the address taken. Each line names the functions behind it. The sizes and kinds are evidence for the global's type. The first run scans every function in `data/functions.csv` in about 13 s. It caches the result in `build/accesses.tsv` until that file changes | 0 |
-| `permute FILE 0x00401000 [--tries N] [--minutes M] [--seed S]` | Tries rewrites of a near match that keep its meaning, such as swapped statements, flipped conditions and other loop forms. It scores each one. It writes the best try to `build/permute`. It writes to FILE only when the try scores higher. It restores FILE on a failure or Ctrl+C. It stops at once when only the names of globals or functions differ, because no rewrite can fix that | 0 only if the function matches exactly |
+| `permute FILE 0x00401000 [--tries N] [--minutes M] [--seed S] [--rank score\|class]` | Tries rewrites of a near match that keep its meaning, such as swapped statements, flipped conditions and other loop forms. It scores each one. With `--rank class`, at the same score the try with fewer structural diff lines wins. It writes the best try to `build/permute`. It writes to FILE only when the try scores higher. It restores FILE on a failure or Ctrl+C. It stops at once when only the names of globals or functions differ, because no rewrite can fix that | 0 only if the function matches exactly |
 | `clone 0x00401000 [...] [--all] [--tables DIR]` | Writes the copies of a function at 100%. A copy is a game function with the same instructions apart from the functions, globals, strings and constants it uses. Each copy gets the template's code with the copy's names and its own prototype's parameter names or `param_N`. It goes in the file the tables give it or in `src/unplaced`. It skips a copy whose names do not pair one to one, and says why. Then it runs `decls`, builds and scores. It keeps only the copies at 100%. `--all` takes every function at 100% as a template. Docstring: [tools/clone.py](../tools/clone.py) | 0 when it ran, whatever it matched |
 | `ci [--base COMMIT]` | Builds and runs every check that needs no game. The checks are the annotation lint, the self-test and `tools/ci.py`. The lint is reccmp's linter plus two checks: every function annotation is at the start of a game function, or of any function for a `STUB`, and every `FUNCTION` or `STUB` definition ends in a line holding only `}` before the next one | 1 if any fails |
 | `gate` | Runs `ci`, then the Rich header check and every game function's score with `build/report.html`. It also checks that every code byte is in a function of `data/functions.csv`, padding or an import stub. It checks that every `FUNCTION`, `STUB` and `LIBRARY` annotation names a symbol in our build. The pre-push hook runs it | 1 if any fails or a score dropped |
 | `save` | Runs `gate`, then saves the scores and redraws the history and visuals. The pre-commit hook runs it. It saves nothing if the lint, the self-test, the Rich header check or the annotation check fails. It also saves nothing if a score dropped | 1 if any fails or a score dropped |
+| `link [FILE ...]` | Links the game's exe from its own bytes with link.exe 10.0, with each FILE's object in place of its functions. mt.exe then embeds the manifest, and a last step copies the Rich header, timestamp and signature and sets the checksum. A name the object uses gets its address from the original's bytes where the object uses it. Each pooled float or string folds into the original's copy. Any other data in the object stops the file | 1 if a file can't take its place or the result differs from the game's exe |
 | `library` | Finds the runtime library code, mostly in the `library` ranges of `data/codegen-groups.csv`. It writes `src/library.csv`. It names the game function that the runtime calls, such as `WinMain`. Then it builds and scores those functions | 1 if a function misses |
 | `sources` | Writes `data/source-files.csv` and `data/classes.csv` from the source paths and class names in the exe | 0 |
 | `groups` | Recounts the tells behind each row of `data/codegen-groups.csv` from the exe. It names each function whose tells contradict its row's flags. It writes `data/file-clusters.csv`. Needs `src/library.csv` | 1 if a function contradicts its row |
@@ -126,7 +127,7 @@ Do not change the code to get past a detection. The next definitions update can 
 
 ## The self-test
 
-`tests/selftest` is a small known program with its own reccmp project. CMake builds `original.cpp` as `build/selftest-original/SELFTEST.exe`, with no PDB and no relocations, to stand in for a retail exe. `decomp.cpp` is its annotated twin. Both builds also hold `gl-caller.cpp` and `gl-callee.cpp`, compiled with `/GL`. `check.py ci` checks seven things:
+`tests/selftest` is a small known program with its own reccmp project. CMake builds `original.cpp` as `build/selftest-original/SELFTEST.exe`, with no PDB and no relocations, to stand in for a retail exe. `decomp.cpp` is its annotated twin. Both builds also hold `gl-caller.cpp` and `gl-callee.cpp`, compiled with `/GL`. `check.py ci` checks eight things:
 
 - The original builds to the SHA-256 pinned in `tests/selftest/reccmp-project.yml`. A change of compiler, libraries or flags breaks it.
 - reccmp scores every function exactly as `tests/selftest/expected.json` says: six matches, one near miss, one effective match and one stub. `Scale` and `Name` use a float and a string from the original's data. The original has no relocations, so they match only with the constants `check.py` adds. `Total` and `Mix` are the `/GL` pair. `Combine` is the same inline assembly with two registers swapped. reccmp scores it 50% and flags it as an effective match.
@@ -135,6 +136,7 @@ Do not change the code to get past a detection. The next definitions update can 
 - The totals leave the stub out of the decompiled count, and a library function out of the game total.
 - The history skips stubs. On copies of the expected scores, an added or removed stub changes no score and adds no history row. Each commit that changes the totals adds one, also two commits on one day. A commit that undoes the one before adds one too. The working tree adds one only when it changed the totals. The git reader of `progress.py` reads each file of a throwaway repository, including when two files share one blob.
 - The annotation lint lets a `STUB` start a library function. It flags a `FUNCTION` there, and a `STUB` inside a function. It flags a definition with no line holding only `}` before the next `FUNCTION` or `STUB`.
+- `tools/link.py` links `SELFTEST.exe` back from its own bytes, and again with `original.cpp`'s object in place of its functions. Both match the original byte for byte.
 
 A new compiler needs a new pinned hash and new expected scores.
 
@@ -145,10 +147,12 @@ GitHub Actions runs [.github/workflows/ci.yml](../.github/workflows/ci.yml) on e
 CI never sees the game exe, so it cannot score game functions itself. `tools/ci.py` covers the gap:
 
 - **Fresh scores.** `summary.json` stores a hash of the build inputs that `tools/ci.py` lists. After any source change, CI fails until someone commits a new `summary.json` from `check.py save`. Only a machine with the game can make one.
-- **No drops.** No score may fall below the base commit's. A removed function counts as a drop unless it was a stub. After a force push, CI has no base commit. The pre-push hook compared with the old tip.
+- **No drops.** No score may fall below the base commit's, and no global that matched may stop matching. A removed function counts as a drop unless it was a stub. After a force push, CI has no base commit. The pre-push hook compared with the old tip.
 - **Honest history.** `history.csv` and the SVGs must equal a fresh render. The render reads each first-parent commit's `summary.json`. So the history has one row for each commit that changed the totals. After a `git commit --amend` that changes a score, the amended commit still holds the old commit's row. Run `git commit --amend --no-edit` once more. Pull requests merge by rebase, after the branch is up to date with the default branch. A squash or a merge commit leaves the branch's commits off the first-parent line. CI checks a pull request on its own last commit for the same reason.
 - **One group each.** Every function in `data/functions.csv` is in exactly one code group and ends inside it.
 - **No game files.** The check rejects any file over 10 MB. It also rejects a file with a binary suffix (`.exe`, `.dll`, `.pdb`, `.lib`, `.obj`, `.ilk`, `.iso`, `.msi`). Other game files, such as a small data file, pass this check.
+
+With a base commit, CI also writes the score changes to the job's summary page: the totals before and after, and up to 50 functions whose score moved. A reviewer reads them there. On a push to the default branch, CI uploads the objdiff report as the `SADX_report` artifact.
 
 <details>
 <summary>Limits while a repo is private, and the branch rule</summary>
@@ -205,20 +209,13 @@ python tools/llm.py solve src/unplaced/FUN_00401000.c 0x00401000
 
 ### Model and memory
 
-The prompts need a context of at least 32k tokens. 48k leaves room. The biggest first prompt of the default bench is about 12,500 tokens. A thinking try can write up to 12,000. For Qwen3.8 27B, this table picks a file of `unsloth/Qwen3.8-27B-GGUF` by GPU memory. The context needs memory too, so use the table as a rough guide. The 16 GB row runs with the llama.cpp command below.
-
-| GPU memory | File | File size |
-| --- | --- | --- |
-| 16 GB | `UD-Q3_K_XL` | 13.1 GB |
-| 24 GB | `UD-Q4_K_XL` | 17.6 GB |
-| 32 GB | `UD-Q6_K_XL` | 25.3 GB |
-| 48 GB or more | `UD-Q8_K_XL` | 31.5 GB |
+The prompts need a context of at least 32k tokens. 48k leaves room. The biggest first prompt of the default bench is about 12,500 tokens. A thinking try can write up to 12,000. Pick a model file that leaves GPU memory for the context too.
 
 ### Servers
 
 | Server | How to start it | URL for `init` |
 | --- | --- | --- |
-| llama.cpp | `winget install llama.cpp`, then `llama-server -hf unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL -ngl all -c 49152 -fa on -ctk q8_0 -ctv q8_0`. `-hf` downloads the model on the first start | `http://127.0.0.1:8080/v1` |
+| llama.cpp | `winget install llama.cpp`, then `llama-server -hf <model> -ngl all -c 49152 -fa on -ctk q8_0 -ctv q8_0`. `-hf` downloads the model on the first start | `http://127.0.0.1:8080/v1` |
 | Ollama | `ollama pull <model>`, and set `OLLAMA_CONTEXT_LENGTH=49152` before `ollama serve`. The default context is too small | `http://127.0.0.1:11434/v1` |
 | LM Studio | Load a model with a context of 48k or more, and start the local server | `http://127.0.0.1:1234/v1` |
 | vLLM | `vllm serve <model>` | `http://127.0.0.1:8000/v1` |
@@ -227,7 +224,7 @@ The prompts need a context of at least 32k tokens. 48k leaves room. The biggest 
 To let the harness start llama.cpp itself:
 
 ```bash
-python tools/llm.py init --url http://127.0.0.1:8080/v1 --start "llama-server -hf unsloth/Qwen3.8-27B-GGUF:UD-Q3_K_XL -ngl all -c 49152 -fa on -ctk q8_0 -ctv q8_0"
+python tools/llm.py init --url http://127.0.0.1:8080/v1 --start "llama-server -hf <model> -ngl all -c 49152 -fa on -ctk q8_0 -ctv q8_0"
 ```
 
 The server's output goes to `build/llm/server.log`. The first start downloads the model. If that takes longer than `start_timeout` (900 seconds), raise it in `llm.json`. If the server refuses a field, `init` names it. `extra_body` in `llm.json` adds fields to every request. A null value removes one.

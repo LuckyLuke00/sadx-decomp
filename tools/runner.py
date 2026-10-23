@@ -3,10 +3,11 @@
 reccmp runs in a folder that holds a reccmp-build.yml (our binary and its PDB), a
 constants.csv and a sizes.csv. write_build_yml() and write_constants() make them. write_user_yml() writes
 the reccmp-user.yml that says where the original binary is. score_target() runs reccmp
-there and returns the score of each function.
+there and returns the score of each function. compare_data() compares the globals' values there.
 """
 
 import json
+import logging
 import re
 import sys
 from pathlib import Path
@@ -119,6 +120,38 @@ def score_target(build: Build, original: Path, *extra: str) -> dict[int, dict]:
         if not harmless_ambiguity(message, functions):
             print(message)
     return functions
+
+
+def compare_data(build: Build, spans: list[range]) -> list[dict]:
+    """Compare the value of each global that reccmp matched inside SPANS, the original's initialized data
+    (pe.initialized_data), as reccmp-datacmp does: its address, name, size, whether it matches and whether
+    src/library.csv lists it as runtime data. A global in .bss is left out: the zero placeholder that declgen.py writes
+    for it matches for free."""
+    # reccmp is in .venv, which the first run of this script makes after this module loads.
+    from reccmp.compare import Compare
+    from reccmp.compare.variables import CompareResult, VariableComparator
+    from reccmp.project.detect import RecCmpProject
+    from reccmp.types import ImageId
+
+    target = RecCmpProject.from_directory(build.folder).get(build.target)
+    log = logging.getLogger("reccmp")
+    level = log.level
+    log.setLevel(logging.CRITICAL)  # building the database again logs what score_target's run already showed
+    compare = Compare.from_target(target)
+    log.setLevel(level)
+    comparator = VariableComparator(db=compare._db, types=compare.types, orig_bin=compare.orig_bin,
+                                    recomp_bin=compare.recomp_bin)
+    library_rows = {row.address for row in project.library_rows()}  # inside SPANS, a row is runtime data
+    data = []
+    for var in compare.get_variables():
+        if var.name in target.report_config.ignore_variables or not any(var.orig_addr in span for span in spans):
+            continue
+        result = comparator.compare_variable(var).result
+        # A type wider than the original's slot would count the next global's bytes too.
+        size = min(var.any_size(), var.max_size(ImageId.ORIG) or var.any_size())
+        data.append({"address": f"0x{var.orig_addr:08x}", "name": var.name, "size": size,
+                     "match": result == CompareResult.MATCH, "library": var.orig_addr in library_rows})
+    return sorted(data, key=lambda entry: entry["address"])
 
 
 def harmless_ambiguity(message: str, functions: dict[int, dict]) -> bool:

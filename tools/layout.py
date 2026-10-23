@@ -5,6 +5,7 @@ along the shorter side takes the next size only while that keeps the strip's wor
 Standard library only.
 """
 
+import math
 from typing import NamedTuple
 
 CHAR_WIDTH = 0.6  # a character's width for a font size, a little over the average of a sans-serif font
@@ -67,6 +68,16 @@ def snap(rect: Rect) -> Rect:
 def svg_points(corners: list[tuple[float, float]]) -> str:
     """The corners as the points attribute of an SVG polygon."""
     return " ".join(f"{x:g},{y:g}" for x, y in corners)
+
+
+def star_points(x: float, y: float, outer: float, inner: float) -> list[tuple[float, float]]:
+    """The 10 corners of a five-pointed star centred on (x, y), its top point up, rounded to 0.01 px."""
+    corners = []
+    for index in range(10):
+        radius = outer if index % 2 == 0 else inner
+        angle = index * math.pi / 5
+        corners.append((round(x + radius * math.sin(angle), 2), round(y - radius * math.cos(angle), 2)))
+    return corners
 
 
 def text_width(text: str, size: float) -> float:

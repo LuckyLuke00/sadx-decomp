@@ -30,9 +30,10 @@ from xml.sax.saxutils import escape
 
 import osutil
 
-from layout import Rect, snap, squarify, svg_points, text_width, wrap
-from scoring import (Totals, accuracy_text, byte_share, entries_by_address, game_functions, is_matched, is_trick,
-                     percent, ratio, score, state, stats_line, totals, whole_percent)
+from layout import Rect, snap, squarify, star_points, svg_points, text_width, wrap
+from scoring import (Bytes, Emblem, Totals, accuracy_text, code_bytes, data_share, earned_count, emblems,
+                     entries_by_address, game_functions, is_matched, is_trick, percent, ratio, score, state,
+                     stats_line, totals, whole_percent)
 
 ROOT = Path(__file__).resolve().parent.parent
 PROGRESS = ROOT / "docs" / "progress"
@@ -41,7 +42,7 @@ HISTORY_CSV = PROGRESS / "history.csv"
 FUNCTIONS_CSV = ROOT / "data" / "functions.csv"
 CODEGEN_GROUPS = ROOT / "data" / "codegen-groups.csv"
 
-HISTORY_FIELDS = ["date", "decompiled", "matched", "accuracy", "game_total"]
+HISTORY_FIELDS = ["date", "decompiled", "matched", "accuracy", "game_total", "matched_bytes", "game_bytes"]
 
 
 class Theme(NamedTuple):
@@ -107,6 +108,7 @@ class Line(NamedTuple):
     label: str
     values: list[float | None]
     color: str
+    dashed: bool = False
 
 
 class Panel(NamedTuple):
@@ -175,6 +177,7 @@ class Snapshot(NamedTuple):
     day: str
     summary: dict
     game: set[int]
+    sizes: dict[int, int]  # each function's size
 
 
 def read_blobs(root: Path, specs: list[str]) -> dict[str, str]:
@@ -208,14 +211,15 @@ def committed_snapshots() -> list[Snapshot]:
     log = osutil.git(ROOT, "log", "--first-parent", "--reverse", "--format=%H %as", "--", paths[0]).decode()
     commits = [line.split() for line in log.splitlines()]
     texts = read_blobs(ROOT, [f"{commit}:{path}" for commit, _ in commits for path in paths])
-    games = {}  # one game set per version of functions.csv and codegen-groups.csv
+    games = {}  # the game set and sizes of each version of functions.csv and codegen-groups.csv
     snapshots = []
     for commit, day in commits:
         summary, functions, groups = (texts[f"{commit}:{path}"] for path in paths)
         if (functions, groups) not in games:
-            games[functions, groups] = game_addresses(parse_functions(csv_rows(functions)),
-                                                      parse_codegen_groups(csv_rows(groups)))
-        snapshots.append(Snapshot(day, json.loads(summary), games[functions, groups]))
+            parsed = parse_functions(csv_rows(functions))
+            games[functions, groups] = (game_addresses(parsed, parse_codegen_groups(csv_rows(groups))),
+                                        function_sizes(parsed))
+        snapshots.append(Snapshot(day, json.loads(summary), *games[functions, groups]))
     return snapshots
 
 
@@ -224,24 +228,27 @@ def history_rows(snapshots: list[Snapshot]) -> list[dict]:
     Stubs score zero, so a commit that only adds or removes stubs gets no row."""
     rows = []
     for snapshot in snapshots:
-        row = history_row(snapshot.day, totals(snapshot.summary, snapshot.game))
+        row = history_row(snapshot.day, totals(snapshot.summary, snapshot.game),
+                          code_bytes(snapshot.summary, snapshot.game, snapshot.sizes))
         if not rows or not same_totals(row, rows[-1]):
             rows.append(row)
     return rows
 
 
-def history_row(day: str, stats: Totals) -> dict:
+def history_row(day: str, stats: Totals, code: Bytes) -> dict:
     return {
         "date": day,
         "decompiled": str(stats.decompiled),
         "matched": str(stats.matched),
         "accuracy": f"{stats.accuracy * 100:.2f}" if stats.accuracy is not None else "",
         "game_total": str(stats.game_total),
+        "matched_bytes": str(code.matched),
+        "game_bytes": str(code.game),
     }
 
 
 def same_totals(row: dict, other: dict) -> bool:
-    return all(row[field] == other[field] for field in ("decompiled", "matched", "accuracy", "game_total"))
+    return all(row[field] == other[field] for field in HISTORY_FIELDS[1:])
 
 
 def render_history_csv(history: list[dict]) -> str:
@@ -412,6 +419,16 @@ def gem(x: float, y: float, color: str, theme: Theme) -> list[str]:
             f'<polygon points="{svg_points(facet)}" fill="#ffffff" fill-opacity="0.45"/>']
 
 
+def emblem(x: float, y: float, earned: bool, theme: Theme) -> str:
+    """An emblem 14 px wide centred on (x, y): a disc with a star cut out. Earned, it is solid gold. Not earned yet,
+    it is a grey outline."""
+    disc = f"M{x - 7:g},{y:g}a7,7 0 1,0 14,0a7,7 0 1,0 -14,0Z"
+    star = f"M{svg_points(star_points(x, y, 4.5, 1.9))}Z"
+    paint = (f'fill="{theme.done}" fill-rule="evenodd"' if earned
+             else f'fill="none" stroke="{theme.muted}" stroke-width="1.2"')
+    return f'<path d="{disc}{star}" {paint}/>'
+
+
 def section_title(section: Section, outer: Rect, entries: dict[int, dict], theme: Theme) -> list[str]:
     """The section's gem, name and done share."""
     cells = [address for block in section.blocks for address in block.cells]
@@ -535,12 +552,12 @@ def render_map(summary: dict, stats: Totals, sections: list[Section], theme: The
     return "\n".join(parts) + "\n"
 
 
-def card_bar(stats: Totals, theme: Theme) -> list[str]:
-    """The progress bar across the card: a track, then the decompiled and done shares over it."""
+def card_bar(code: Bytes, theme: Theme) -> list[str]:
+    """The progress bar across the card: a track, then the decompiled and done shares of the code bytes over it."""
     bar_y, bar_width = 96, WIDTH - 2 * MARGIN
     parts = [f'<rect x="{MARGIN}" y="{bar_y}" width="{bar_width}" height="8" rx="4" fill="{theme.not_started}"/>']
-    decompiled = ratio(stats.decompiled, stats.game_total)
-    matched = ratio(stats.matched, stats.game_total)
+    decompiled = ratio(code.decompiled, code.game)
+    matched = ratio(code.matched, code.game)
     # At least 2 px wide once there is anything, so the first functions show.
     for fraction, color in ((decompiled, theme.decompiled), (matched, theme.done)):
         if fraction > 0:
@@ -549,10 +566,12 @@ def card_bar(stats: Totals, theme: Theme) -> list[str]:
     return parts
 
 
-def card_figures(stats: Totals, share: tuple[int, int], theme: Theme) -> list[str]:
-    """The figures under the bar, side by side: done, the byte SHARE (matched, all), accuracy and the game total."""
-    figures = [(f"{stats.matched:,}", "done"), (percent(*share), "bytes matched"), (accuracy_text(stats), "accuracy"),
-               (f"{stats.game_total:,}", "game functions")]
+def card_figures(stats: Totals, found: list[Emblem], data: tuple[int, int], theme: Theme) -> list[str]:
+    """The figures under the bar, side by side: the game functions done, the emblems earned of FOUND, the DATA share
+    (matched, all) and the accuracy."""
+    figures = [(f"{stats.matched:,} of {stats.game_total:,}", "game functions done"),
+               (f"{earned_count(found):,} of {len(found):,}", "emblems"),
+               (percent(*data), "initialized data matched"), (accuracy_text(stats), "accuracy")]
     parts = []
     column = (WIDTH - 2 * MARGIN) / len(figures)
     for index, (value, label) in enumerate(figures):
@@ -575,8 +594,10 @@ def recent_gain(history: list[dict]) -> tuple[int, str]:
     return int(history[-1]["matched"]) - int(history[0]["matched"]), f"since {history[0]['date']}"
 
 
-def render_card(stats: Totals, share: tuple[int, int], history: list[dict], exe: str, theme: Theme) -> str:
-    """The summary card at the top of the README, as wide as the map. SHARE is the byte share, (matched, all)."""
+def render_card(stats: Totals, code: Bytes, found: list[Emblem], data: tuple[int, int], history: list[dict],
+                exe: str, theme: Theme) -> str:
+    """The summary card at the top of the README, as wide as the map. Its big number is the share of the game's code
+    bytes matched, so a large function weighs more than a small one."""
     height = 168
     gain, since = recent_gain(history)
     parts = [
@@ -587,14 +608,14 @@ def render_card(stats: Totals, share: tuple[int, int], history: list[dict], exe:
         f'<text x="{WIDTH - MARGIN}" y="30" text-anchor="end" font-family="{FONT}" font-size="12" '
         f'fill="{theme.muted}">updated {escape(history[-1]["date"])}</text>',
         f'<text x="{MARGIN}" y="76" font-family="{FONT}" font-size="40" font-weight="600" fill="{theme.text}">'
-        f'{percent(stats.matched, stats.game_total)}<tspan dx="10" font-size="13" font-weight="400" '
-        f'fill="{theme.muted}">of the game done</tspan></text>',
+        f'{percent(code.matched, code.game)}<tspan dx="10" font-size="13" font-weight="400" '
+        f'fill="{theme.muted}">of the game\'s code matched</tspan></text>',
         f'<text x="{WIDTH - MARGIN - 17}" y="76" text-anchor="end" font-family="{FONT}" font-size="13" '
-        f'font-weight="600" fill="{theme.text}">{gain:+,} {escape(since)}</text>',
+        f'font-weight="600" fill="{theme.text}">{gain:+,} functions {escape(since)}</text>',
         ring(WIDTH - MARGIN - 6, 71.5, theme),  # its right edge lines up with the text above
     ]
-    parts += card_bar(stats, theme)
-    parts += card_figures(stats, share, theme)
+    parts += card_bar(code, theme)
+    parts += card_figures(stats, found, data, theme)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
@@ -617,15 +638,20 @@ def history_x(index: int, count: int) -> float:
     return HISTORY_LEFT + (HISTORY_RIGHT - HISTORY_LEFT) * index / (count - 1)
 
 
-def history_legend(theme: Theme) -> list[str]:
+def dash(line: Line) -> str:
+    return ' stroke-dasharray="5 3"' if line.dashed else ""
+
+
+def history_legend(lines: list[Line], theme: Theme) -> list[str]:
+    """A short stroke of each line, dashed or not, and its label, from the right edge."""
     parts = []
     x = HISTORY_RIGHT
-    for label, color in reversed([("decompiled", theme.decompiled), ("done", theme.done),
-                                  ("accuracy", theme.accuracy)]):
-        x -= round(text_width(label, 12)) + 15
-        parts.append(f'<rect x="{x}" y="19" width="10" height="10" rx="2" fill="{color}"/>')
-        parts.append(f'<text x="{x + 15}" y="28" font-family="{FONT}" font-size="12" fill="{theme.muted}">'
-                     f'{label}</text>')
+    for line in reversed(lines):
+        x -= round(text_width(line.label, 12)) + 19
+        parts.append(f'<line x1="{x}" y1="24" x2="{x + 14}" y2="24" stroke="{line.color}" stroke-width="2.5"'
+                     f'{dash(line)}/>')
+        parts.append(f'<text x="{x + 19}" y="28" font-family="{FONT}" font-size="12" fill="{theme.muted}">'
+                     f'{line.label}</text>')
         x -= 18
     return parts
 
@@ -674,7 +700,7 @@ def plot_line(line: Line, panel: Panel, dates: list[str]) -> list[str]:
     parts = []
     if len(points) > 1:
         path = " ".join(f"{px:.1f},{py:.1f}" for px, py, _, _ in points)
-        parts.append(f'<polyline points="{path}" fill="none" stroke="{line.color}" stroke-width="2"/>')
+        parts.append(f'<polyline points="{path}" fill="none" stroke="{line.color}" stroke-width="2"{dash(line)}/>')
     for px, py, index, value in points:
         tip = escape(f"{dates[index]}: {line.label} {value:.2%}")
         parts.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="{radius:.1f}" fill="{line.color}">'
@@ -707,24 +733,28 @@ def history_heading(theme: Theme) -> list[str]:
         "<title>Decompilation progress over time</title>",
         backdrop(WIDTH, HISTORY_HEIGHT, theme),
         f'<text x="{MARGIN}" y="28" font-family="{FONT}" font-size="15" font-weight="600" fill="{theme.text}">'
-        "Share of game functions decompiled and done</text>",
+        "Share of the game decompiled and done</text>",
         f'<text x="{MARGIN}" y="176" font-family="{FONT}" font-size="15" font-weight="600" fill="{theme.text}">'
         "Accuracy of the decompiled functions</text>",
     ]
 
 
 def render_history(history: list[dict], theme: Theme) -> str:
-    """Two panels over the history rows, one dot a row: completeness on an auto scale, accuracy on 0 to 100%."""
+    """Two panels over the history rows, one dot a row: completeness on an auto scale, accuracy on 0 to 100%. The
+    code bytes done is the solid gold line, the functions done the dashed one."""
     decompiled = [ratio(int(row["decompiled"]), int(row["game_total"])) for row in history]
     matched = [ratio(int(row["matched"]), int(row["game_total"])) for row in history]
+    matched_bytes = [ratio(int(row["matched_bytes"]), int(row["game_bytes"])) for row in history]
     accuracy = [float(row["accuracy"]) / 100 if row["accuracy"] else None for row in history]
     panels = [
-        Panel(48, 140, axis_top(max(decompiled + matched)),
-              [Line("decompiled", decompiled, theme.decompiled), Line("done", matched, theme.done)]),
+        Panel(48, 140, axis_top(max(decompiled + matched + matched_bytes)),
+              [Line("functions decompiled", decompiled, theme.decompiled),
+               Line("functions done", matched, theme.done, dashed=True),
+               Line("code bytes done", matched_bytes, theme.done)]),
         Panel(196, 288, 1.0, [Line("accuracy", accuracy, theme.accuracy)]),
     ]
     parts = history_heading(theme)
-    parts += history_legend(theme)
+    parts += history_legend([line for panel in panels for line in panel.lines], theme)
     dates = [row["date"] for row in history]
     for panel in panels:
         parts += panel_grid(panel, theme)
@@ -736,12 +766,22 @@ def render_history(history: list[dict], theme: Theme) -> str:
     return "\n".join(parts) + "\n"
 
 
-def load_areas(summary: dict, game: set[int]) -> list[Section]:
-    """The map's sections."""
+def load_areas(summary: dict, game: set[int]) -> tuple[dict[int, str], list[tuple[str, str | None, dict[str, str]]]]:
+    """The area of each game function, and the map's sections as tools/areas.py gives them, the unsorted one last."""
     import areas  # here, not at the top: it needs .venv's packages, and check.py imports this module before .venv
 
-    area_of, sections = areas.load(game_functions(summary, game))
-    return map_sections(area_of, sections)
+    return areas.load(game_functions(summary, game))
+
+
+def area_emblems(summary: dict, code: Bytes, area_of: dict[int, str],
+                 sections: list[tuple[str, str | None, dict[str, str]]], sizes: dict[int, int]) -> list[Emblem]:
+    """The emblems for the game's code, then one for each area that has game functions. The unsorted section, which
+    load_areas() gives last, earns none: its functions move out as the areas get sorted."""
+    members = collections.defaultdict(set)
+    for address, area in area_of.items():
+        members[area].add(address)
+    named = [(name, members[area]) for _, _, names in sections[:-1] for area, name in names.items() if members[area]]
+    return emblems(code, [(name, code_bytes(summary, cells, sizes)) for name, cells in named])
 
 
 def render_all() -> dict[Path, str]:
@@ -749,14 +789,18 @@ def render_all() -> dict[Path, str]:
     summary = load_summary()
     functions = load_functions()
     game = game_addresses(functions)
-    sections = load_areas(summary, game)
-    history = history_rows(committed_snapshots() + [Snapshot(date.today().isoformat(), summary, game)])
+    area_of, sections = load_areas(summary, game)
+    sizes = function_sizes(functions)
+    history = history_rows(committed_snapshots() + [Snapshot(date.today().isoformat(), summary, game, sizes)])
     stats = totals(summary, game)
-    share = byte_share(summary, game, function_sizes(functions))
+    code = code_bytes(summary, game, sizes)
+    found = area_emblems(summary, code, area_of, sections, sizes)
+    shown = map_sections(area_of, sections)
     files = {HISTORY_CSV: render_history_csv(history)}
     for suffix, theme in THEMES.items():
-        files[PROGRESS / f"map{suffix}.svg"] = render_map(summary, stats, sections, theme)
-        files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, share, history, summary["exe"], theme)
+        files[PROGRESS / f"map{suffix}.svg"] = render_map(summary, stats, shown, theme)
+        files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, code, found, data_share(summary), history,
+                                                            summary["exe"], theme)
         files[PROGRESS / f"history{suffix}.svg"] = render_history(history, theme)
     return files
 

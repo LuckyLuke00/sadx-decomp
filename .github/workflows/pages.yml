@@ -1,7 +1,9 @@
 name: Pages
 
-# Started by hand until GitHub Pages is on for the repo; then pushes to the default branch start it too.
+# Each push to the default branch redeploys the site. It can also be started by hand.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

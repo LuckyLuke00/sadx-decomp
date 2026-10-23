@@ -1,10 +1,16 @@
-"""Checks for tools/pages.py: the changelog, the badge colours and the page building blocks."""
+"""Checks for tools/pages.py: the changelog, the badge colours and the page building blocks. Also the measures of
+tools/objdiffreport.py."""
 
 import json
+import tempfile
+from pathlib import Path
 from types import SimpleNamespace
+from unittest import mock
 
+import objdiffreport
 import pages
 import progress
+import scoring
 
 
 def check_changelog_rows() -> list[str]:
@@ -35,10 +41,15 @@ def check_share_color() -> list[str]:
 
 
 def check_badge() -> list[str]:
-    """A badge is JSON for shields.io with the share as its message and the share's colour."""
-    data = json.loads(pages.badge("matched", 1, 4))
-    wanted = {"schemaVersion": 1, "label": "matched", "message": "25.00%", "color": pages.share_color(1, 4)}
-    return [] if data == wanted else [f"badge gives {data}, not {wanted}"]
+    """A badge is JSON for shields.io with the share as its message, after the prefix if it has one, and the share's
+    colour."""
+    failures = []
+    for prefix, message in (("", "25.00%"), ("D", "D 25.00%")):
+        data = json.loads(pages.badge("matched", 1, 4, prefix))
+        wanted = {"schemaVersion": 1, "label": "matched", "message": message, "color": pages.share_color(1, 4)}
+        if data != wanted:
+            failures.append(f"badge gives {data}, not {wanted}")
+    return failures
 
 
 def check_table() -> list[str]:
@@ -49,13 +60,6 @@ def check_table() -> list[str]:
     return []
 
 
-def check_count_text() -> list[str]:
-    """The count text shows the thousands and the percent, and 0 of 0 shows 0%."""
-    cases = [((1234, 5000, "bytes"), "1,234 of 5,000 bytes (24.68%)"), ((0, 0, "bytes"), "0 of 0 bytes (0.00%)")]
-    return [f"count_text{args} gives {pages.count_text(*args)}, not {wanted}"
-            for args, wanted in cases if pages.count_text(*args) != wanted]
-
-
 def check_area_page() -> list[str]:
     """A trick below 100% is not matched yet. Only a trick at 100% shows under the trick heading."""
     def entry(accuracy, trick):
@@ -64,7 +68,8 @@ def check_area_page() -> list[str]:
 
     entries = {0x401000: entry(0.85, True), 0x401010: entry(1.0, True), 0x401020: entry(1.0, False)}
     fake = SimpleNamespace(entries=entries, sizes={address: 4 for address in entries}, groups=[], sources={},
-                           section_of={"a": "Section"}, area_title=lambda area: "Area")
+                           section_of={"a": "Section"}, area_title=lambda area: "Area",
+                           area_code=lambda addresses: scoring.Bytes(12, 4, 12))
     text = pages.area_page(fake, "a", list(entries))
     open_part, trick_part = text.split("These match only through a trick")
     failures = []
@@ -74,12 +79,64 @@ def check_area_page() -> list[str]:
         failures.append("area_page does not list exactly the trick at 100% under the trick heading")
     if "1 of 3 game functions matched" not in text:
         failures.append("area_page does not count one matched function of three")
+    if ">D</span> 4 of 12 code bytes matched" not in text:
+        failures.append("area_page does not show rank D for 4 of 12 code bytes")
     return failures
+
+
+def check_hard_tail_page() -> list[str]:
+    """The hard tail leaves out the rows the tree matches now, and says how many."""
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "hard-tail.csv"
+        path.write_text("address,size,best,tries,area,group\n0x00401000,8,96.9,26,a,F\n0x00401010,8,100.0,3,a,F\n",
+                        encoding="utf-8")
+        fake = SimpleNamespace(is_matched=lambda address: address == 0x401010)
+        with mock.patch.object(pages, "HARD_TAIL_CSV", path):
+            text = pages.hard_tail_page(fake)
+    if "0x00401000" not in text or "0x00401010" in text or "the tree matches them now: 1." not in text:
+        return [f"hard_tail_page does not leave out exactly the matched row: {text!r}"]
+    return []
+
+
+def check_rank() -> list[str]:
+    """Each fifth of the whole gets the next rank, and only all of it gets the emblem."""
+    cases = [(0, 100, "E"), (19, 100, "E"), (20, 100, "D"), (99, 100, "A"), (100, 100, "Emblem"), (0, 0, "E")]
+    return [f"rank({part}, {whole}) gives {pages.rank(part, whole)}, not {wanted}"
+            for part, whole, wanted in cases if pages.rank(part, whole) != wanted]
+
+
+def check_near_misses() -> list[str]:
+    """Only game functions from 90% up to below 100% count: the highest score first, then the smallest."""
+    def entry(accuracy, stub=False, trick=False):
+        return {"name": "f", "accuracy": accuracy, "stub": stub, "library": False, "trick": trick}
+
+    entries = {0x401000: entry(0.95), 0x401010: entry(0.95), 0x401020: entry(0.99), 0x401030: entry(0.89),
+               0x401040: entry(1.0, trick=True), 0x401050: entry(0.99, stub=True), 0x401060: entry(0.92)}
+    sizes = {0x401000: 40, 0x401010: 8, 0x401020: 100, 0x401030: 4, 0x401040: 4, 0x401050: 4, 0x401060: 4}
+    fake = SimpleNamespace(game=set(entries) - {0x401060} | {0x401070}, entries=entries, sizes=sizes)
+    found = pages.near_misses(fake)
+    wanted = [0x401020, 0x401010, 0x401000]
+    return [] if found == wanted else [f"near_misses gives {[hex(a) for a in found]}, not {[hex(a) for a in wanted]}"]
+
+
+def check_objdiff_measures() -> list[str]:
+    """objdiff's measures write 64-bit counts as strings and weigh the fuzzy share by size."""
+    entries = {0x401000: {"name": "f", "accuracy": 1.0, "stub": False, "library": False},
+               0x401010: {"name": "g", "accuracy": 0.5, "stub": False, "library": False}}
+    fake = SimpleNamespace(sizes={0x401000: 30, 0x401010: 10, 0x401020: 40, 0x401030: 20}, entries=entries,
+                           area_code=lambda addresses: scoring.Bytes(40, 30, 100),
+                           is_matched=lambda address: address == 0x401000)
+    found = objdiffreport.measures(fake, [0x401000, 0x401010, 0x401020, 0x401030], (5, 50))
+    wanted = {"fuzzy_match_percent": 35.0, "total_code": "100", "matched_code": "30", "matched_code_percent": 30.0,
+              "total_data": "50", "matched_data": "5", "matched_data_percent": 10.0, "total_functions": 4,
+              "matched_functions": 1, "matched_functions_percent": 25.0}
+    return [] if found == wanted else [f"measures gives {found}, not {wanted}"]
 
 
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_changelog_rows, check_share_color, check_badge, check_table, check_count_text, check_area_page):
+    for check in (check_changelog_rows, check_share_color, check_badge, check_table, check_area_page,
+                  check_hard_tail_page, check_rank, check_near_misses, check_objdiff_measures):
         failures += check()
     return failures

@@ -1,5 +1,5 @@
-"""Tests of the try loop in tools/llm.py: solve_function against a fake server, and the --tries and --try-tokens
-flags.
+"""Tests of the try loop in tools/llm.py: solve_function against a fake server, and the --tries, --try-tokens and
+--prefix-feedback flags.
 
 solve_function gets fakes for the file, the dossier and the builds. The fake server refuses a chat as too long for
 its context when the case's rule says so, else replies with no code, so no try builds. run() returns the failures as
@@ -24,6 +24,13 @@ FILE = "src/foo.c"
 SEED = 5
 MAX_TOKENS = 1500
 TOO_LONG = "http://127.0.0.1:8080/v1/chat/completions answered 400: the request exceeds the available context size"
+DIFF = ("---\n+++\n@@ -0x401000,4 +0x405900,4 @@\n"  # reccmp's diff: two instructions match, then one differs
+        "0x401000 : sub esp, 0x10 \t(foo.c:31)\n"
+        "0x401003 : push ebx\n"
+        "0x401004 : -mov ebx, ecx\n"
+        "         : +mov ebx, dword ptr [esi + 0x2c]\n"
+        "0x401006 : ret\n\n"
+        "0x00401000 foo: 80.00% match. Diff above (- original, + ours).")
 
 
 class Run(NamedTuple):
@@ -61,7 +68,8 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
-                   stop_below=None, try_tokens=None, think_max=None, similar_examples=False)
+                   stop_below=None, try_tokens=None, think_max=None, similar_examples=False,
+                   prefix_feedback=False)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
@@ -162,9 +170,39 @@ def check_tries_flag() -> list[str]:
     return failures
 
 
+def check_prefix_feedback() -> list[str]:
+    """--prefix-feedback adds how many instructions match from the function's start to the first difference: the
+    diff's unmarked lines before the first marked one. It adds nothing when the diff's first hunk starts after the
+    function's start, since the diff leaves out the lines before it, nor when no line differs. Without the flag the
+    feedback has no such line."""
+    note = "The first 2 instructions match; the first difference is instruction 3.\n"
+    plain = llm.feedback(80.0, DIFF, ADDRESS, set())
+    later = DIFF.replace("@@ -0x401000", "@@ -0x401030")
+    first = DIFF.replace("0x401000 : sub esp, 0x10 \t(foo.c:31)\n0x401003 : push ebx\n", "")
+    same = "---\n+++\n@@ -0x401000,1 +0x405900,1 @@\n0x401000 : ret\n"
+    reply = f"```cpp\n{llm.function_line(ADDRESS)}\nvoid Foo(void)\n{{\n}}\n```"
+    with mock.patch.object(llm.Bench, "build", lambda self, decls, func: llm.Build(decls, func, "", 80.0, DIFF)):
+        asked = {flag: solved(2, never_too_long, reply, prefix_feedback=flag).lasts[-1] for flag in (True, False)}
+    cases = [("the flag on", llm.feedback(80.0, DIFF, ADDRESS, set(), None, True),
+              plain.replace("Reply with", note + "Reply with")),
+             ("the flag off", "instructions match" in plain, False),
+             ("a first hunk after the function's start", llm.feedback(80.0, later, ADDRESS, set(), None, True),
+              llm.feedback(80.0, later, ADDRESS, set())),
+             ("a difference in the first instruction", "The first 0 instructions match; the first difference is "
+              "instruction 1.\n" in llm.feedback(80.0, first, ADDRESS, set(), None, True), True),
+             ("no line that differs", llm.feedback(100.0, same, ADDRESS, set(), None, True),
+              llm.feedback(100.0, same, ADDRESS, set())),
+             ("the flag on in a run", note in asked[True], True),
+             ("the flag off in a run", note in asked[False], False),
+             ("--prefix-feedback", parsed(["solve", "--prefix-feedback", FILE, "0x00401000"], "prefix_feedback"), True),
+             ("no --prefix-feedback", parsed(["solve", FILE, "0x00401000"], "prefix_feedback"), False)]
+    return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
+
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag):
+    for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
+                  check_prefix_feedback):
         failures += check()
     return failures

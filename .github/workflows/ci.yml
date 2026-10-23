@@ -45,6 +45,15 @@ jobs:
       # CI then compares with no base.
       # The pre-push hook already compared with that tip.
       - run: python tools/check.py ci --base "${{ github.event.pull_request.base.sha || (!github.event.forced && github.event.before) || '' }}"
+      # decomp.dev and decomp.fun read the objdiff report from this artifact, on pushes to the default branch.
+      - if: github.event_name == 'push'
+        id: report
+        run: python tools/objdiffreport.py --out report.json
+      - if: github.event_name == 'push'
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.report.outputs.target }}_report
+          path: report.json
       # Saved even when a check fails, so the next run does not download the toolchain again.
       - uses: actions/cache/save@v6
         if: always() && steps.toolchain.outputs.cache-hit != 'true'

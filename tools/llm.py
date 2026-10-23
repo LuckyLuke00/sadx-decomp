@@ -31,8 +31,9 @@ GIVE_UP_BELOW%), --stop-below P (the run ends after STOP_AFTER tries when the be
 or when nothing built), --try-tokens N,N,... (the reply limit of each try in turn, the last one for
 the tries after it; a thinking try keeps its own), --stale-built-only (a try that does not build
 does not count toward STUCK_TRIES, nor toward --give-up), --similar-examples (the first example is the matched function
-whose instructions are most like the function's) and --tag T (default: the prompt's name). Every command
-takes --config PATH.
+whose instructions are most like the function's), --prefix-feedback (the feedback says how many instructions
+match from the function's start before the first difference) and --tag T (default: the prompt's name). Every
+command takes --config PATH.
 Results go to build/llm/T/: results.tsv with a row per function and transcripts/ADDRESS.jsonl
 with every exchange.
 
@@ -191,6 +192,8 @@ OFFSET = re.compile(r"static_assert\(offsetof\(\w+, (\w+)\) == (0x[0-9a-f]+)")
 MISSING_MEMBER = re.compile(r"C2039: '\w+' : is not a member of '(\w+)'")
 DIFF_LINE = re.compile(r"^(?:0x[0-9a-f]+)?\s*: ([-+])(.*)$", re.M)  # a changed line of reccmp's diff: sign, text
 SOURCE_LINE = re.compile(r"\s+\([^()\s]+:\d+\)$")  # such as "	(ef_flash.c:128)" after a line of our build
+HUNK = re.compile(r"^@@ -(0x[0-9a-f]+),", re.M)  # opens a hunk of reccmp's diff: the exe address of its first line
+EQUAL_LINE = re.compile(r"^0x[0-9a-f]+ : [^-+]", re.M)  # an instruction that the exe and our build both have
 # decls lines that say the tree declares a name in another way: name, then the tree's way(s)
 CLASH_CONTEXT = re.compile(r"^decls: (\w+): (.+) in the context tree\. Declare it that way too\.$")
 CLASH_TREE = re.compile(r"^decls: (\w+): the tree declares it `([^`]*)`, a file here declares it `([^`]*)`")
@@ -879,7 +882,20 @@ def names_note(diff):
             + "\n".join(rows) + "\n")
 
 
-def feedback(percent, text, address, known, types=None):
+def prefix_note(diff, address):
+    """How many instructions match from the function's start up to the first difference, else "". The diff shows 10
+    instructions before a difference: when its first hunk starts after the function's start, the count is lost."""
+    hunk = HUNK.search(diff)
+    if hunk is None or int(hunk.group(1), 16) != address:
+        return ""
+    change = DIFF_LINE.search(diff, hunk.end())
+    if change is None:
+        return ""
+    matched = len(EQUAL_LINE.findall(diff, hunk.end(), change.start()))
+    return f"The first {matched} instructions match; the first difference is instruction {matched + 1}.\n"
+
+
+def feedback(percent, text, address, known, types=None, prefix=False):
     if percent is None:
         errors = build_errors(text, known)
         return ("Nothing was scored: decls or the compiler failed. They said:\n```\n"
@@ -888,6 +904,7 @@ def feedback(percent, text, address, known, types=None):
     lines = tool_lines(text, known)
     return (f"Score {percent:.2f}%. The scoring tool printed (`decls:` lines are declaration problems: fix them first; "
             "`-` is the exe, `+` is your build):\n```\n" + "\n".join(lines[:FEEDBACK_LINES]) + "\n```\n"
+            + (prefix_note(text, address) if prefix else "")
             + names_note(text)
             + "Reply with one cpp block again: the declarations and the whole function with the changes.")
 
@@ -985,7 +1002,7 @@ def next_turn(best, improved, reply, note, latest):
                                         f"({best.percent:.2f}%): start again from it and change something else."}]
 
 
-def file_best(config, text, address, known, types):
+def file_best(config, text, address, known, types, prefix=False):
     """The function's definition in the file as a Best, when it has one that builds, else None."""
     lines = text.split("\n")
     span = definition_span(lines, address)
@@ -995,7 +1012,7 @@ def file_best(config, text, address, known, types):
     if percent is None:
         return None
     code = "\n".join(lines[span[0]:span[1] + 1])
-    return Best(percent, f"```cpp\n{code}\n```", feedback(percent, output, address, known, types), text)
+    return Best(percent, f"```cpp\n{code}\n```", feedback(percent, output, address, known, types, prefix), text)
 
 
 def thinks(stale, config):
@@ -1278,7 +1295,8 @@ def solve_function(args, file, address, transcript):
     count = EXAMPLES
     first = first_prompt(config, file, address, types, count, extra, args.similar_examples)
     base = [{"role": "system", "content": args.system}, {"role": "user", "content": first}]
-    best = file_best(config, before, address, known, types)  # the code already in the file is the floor
+    # the code already in the file is the floor
+    best = file_best(config, before, address, known, types, args.prefix_feedback)
     restore(generated)
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
@@ -1341,7 +1359,7 @@ def solve_function(args, file, address, transcript):
                 attempt, percent = build.source, build.percent
                 if repairs.renamed:
                     shown = "```cpp\n" + "\n".join(model.decls + [""] + model.func) + "\n```"
-                note = repairs.note() + feedback(percent, build.output, address, known, types)
+                note = repairs.note() + feedback(percent, build.output, address, known, types, args.prefix_feedback)
                 seen[attempt_key(parsed)] = (tries, note)
                 for code in (model, trimmed, build):  # the repaired code counts as this try too
                     seen[attempt_key((code.decls, code.func))] = (tries, note)
@@ -1537,6 +1555,8 @@ def parse_args():
                       help="a try that does not build does not count toward thinking")
     runs.add_argument("--similar-examples", action="store_true",
                       help="the first example is the matched function whose instructions are most like the function's")
+    runs.add_argument("--prefix-feedback", action="store_true",
+                      help="the feedback says how many instructions match from the function's start")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
     commands = parser.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init", parents=[common])

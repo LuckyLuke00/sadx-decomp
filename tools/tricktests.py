@@ -3,6 +3,8 @@
 
 import contextlib
 import io
+import tempfile
+from pathlib import Path
 
 import names
 import project
@@ -116,9 +118,20 @@ def check_report_function() -> list[str]:
     return failures
 
 
+def check_scan_needs_src() -> list[str]:
+    """A scan of a root with no src folder stops, so a wrong root can't turn every trick function into a match."""
+    with tempfile.TemporaryDirectory() as empty:
+        try:
+            tricks.scan(Path(empty))
+        except SystemExit:
+            return []
+    return ["tricks.scan of a root with no src folder found nothing instead of stopping"]
+
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_forbidden, check_file_tricks, check_declarator_start, check_report_function):
+    for check in (check_forbidden, check_file_tricks, check_declarator_start, check_report_function,
+                  check_scan_needs_src):
         failures += check()
     return failures
