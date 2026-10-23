@@ -10,11 +10,12 @@ from typing import NamedTuple
 
 class Totals(NamedTuple):
     decompiled: int
-    matched: int  # functions at 100%
+    matched: int  # functions at 100% in plain C
     accuracy: float | None  # average score of the decompiled functions
     game_total: int
     library: int  # runtime library functions identified
     effective: int  # functions below 100% that reccmp calls an effective match
+    tricks: int  # functions at 100% only through a trick (tools/tricks.py), which do not count as matched
 
 
 def score(entry: dict) -> float:
@@ -28,10 +29,23 @@ def score(entry: dict) -> float:
     return entry["accuracy"]
 
 
+def is_trick(entry: dict) -> bool:
+    """At 100% only through a trick. Only a function with a trick has the "trick" key, so older summaries read the
+    same. Below 100% a trick does not change how the function counts."""
+    return score(entry) == 1.0 and bool(entry.get("trick"))
+
+
+def is_matched(entry: dict) -> bool:
+    """At 100% in plain C. A function with a trick keeps its score, but it does not count as matched."""
+    return score(entry) == 1.0 and not is_trick(entry)
+
+
 def state(entry: dict) -> str:
     if entry["stub"]:
         return "stub"
-    return "100%" if score(entry) == 1.0 else f"{score(entry):.1%}"
+    if score(entry) < 1.0:
+        return f"{score(entry):.1%}"
+    return "100%" if is_matched(entry) else "100%, through a trick"
 
 
 def find_regressions(baseline: dict, current: dict) -> list[str]:
@@ -69,10 +83,12 @@ def totals(summary: dict, game: set[int]) -> Totals:
     ours = [entry for entry in summary["functions"] if not entry["library"]]
     library = library_addresses(summary)
     implemented = [entry for entry in ours if not entry["stub"]]
-    matched = sum(1 for entry in implemented if score(entry) == 1.0)
+    matched = sum(1 for entry in implemented if is_matched(entry))
+    tricks = sum(1 for entry in implemented if is_trick(entry))
     effective = sum(1 for entry in implemented if entry["effective"] and score(entry) < 1.0)
     accuracy = sum(score(entry) for entry in implemented) / len(implemented) if implemented else None
-    return Totals(len(implemented), matched, accuracy, len(game_functions(summary, game)), len(library), effective)
+    return Totals(len(implemented), matched, accuracy, len(game_functions(summary, game)), len(library), effective,
+                  tricks)
 
 
 def ratio(part: float, whole: float) -> float:
@@ -97,5 +113,6 @@ def accuracy_text(stats: Totals) -> str:
 def stats_line(stats: Totals) -> str:
     return (f"{stats.decompiled:,} / {stats.game_total:,} game functions decompiled "
             f"({percent(stats.decompiled, stats.game_total)}) | {stats.matched:,} matched | "
+            f"{stats.tricks:,} at 100% only through a trick | "
             f"{stats.effective:,} effective | accuracy {accuracy_text(stats)} "
             f"| library functions identified: {stats.library:,}")

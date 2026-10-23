@@ -45,6 +45,9 @@ def run() -> int:
     failures += check_regression_gate(expected, current)
     failures += check_register_arguments(current, spans)
     failures += check_totals(expected, current)
+    failures += check_trick_totals(current)
+    failures += check_trick_state(current)
+    failures += check_summarize_tricks()
     failures += check_whole_percent()
     failures += check_moved_scores(expected)
     failures += check_history_rows(expected)
@@ -97,7 +100,7 @@ def score_selftest(spans: list[tuple[int, int]]) -> dict:
     runner.write_constants_csv(SELFTEST_BUILD / "constants.csv", SELFTEST_ORIGINAL,
                                [constants.Function(address, size, True) for address, size in spans])
     runner.write_sizes_csv(SELFTEST_BUILD / "sizes.csv", spans)
-    return runner.summarize("SELFTEST", runner.score_target(build, SELFTEST_ORIGINAL))
+    return runner.summarize("SELFTEST", runner.score_target(build, SELFTEST_ORIGINAL), set())
 
 
 def check_scores(expected: dict, current: dict) -> list[str]:
@@ -145,7 +148,7 @@ def check_history_rows(expected: dict) -> list[str]:
     """The history gets a row for the first commit and for each commit that changed the totals, two commits of one
     day included, and none for a commit that only removes or adds a stub. A commit that undoes the one before gets
     a row too. The working tree gets a row only when it changed the totals."""
-    game = {int(entry["address"], 16) for entry in expected["functions"]}
+    game = addresses(expected)
     dropped = with_first_accuracy(expected, 0.5)
     later = with_first_accuracy(expected, 0.25)
     commits = [progress.Snapshot("2026-01-01", expected, game),
@@ -585,8 +588,8 @@ def check_clone_globals(clone) -> list[str]:
 
 
 def check_units() -> list[str]:
-    """The unit tests of the repairs in llm.py and cfix.py, of the try loop in llm.py and of the dossier facts in
-    facts.py, one module each."""
+    """The unit tests of the repairs in llm.py and cfix.py, of the try loop in llm.py, of the dossier facts in
+    facts.py and of the trick finder in tricks.py, one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
@@ -595,7 +598,8 @@ def check_units() -> list[str]:
     import decltests
     import facttests
     import solvetests
-    modules = (ctexttests, bytetests, casttests, decltests, benchtests, solvetests, facttests)
+    import tricktests
+    modules = (ctexttests, bytetests, casttests, decltests, benchtests, solvetests, facttests, tricktests)
     return [failure for module in modules for failure in module.run()]
 
 
@@ -623,14 +627,57 @@ def check_register_arguments(current: dict, spans: list[tuple[int, int]]) -> lis
             "are not the one from Total to Mix"]
 
 
+def addresses(summary: dict) -> set[int]:
+    return {int(entry["address"], 16) for entry in summary["functions"]}
+
+
 def check_totals(expected: dict, current: dict) -> list[str]:
     """The totals leave a stub out of the decompiled count, and a library function out of the game total."""
     with_library = copy.deepcopy(current)
     with_library["functions"][0]["library"] = True
-    totals = scoring.totals(with_library, {int(entry["address"], 16) for entry in current["functions"]})
+    totals = scoring.totals(with_library, addresses(current))
     if totals._asdict() == expected["totals"]:
         return []
     return [f"totals {json.dumps(totals._asdict())} != {json.dumps(expected['totals'])} in expected.json"]
+
+
+def check_trick_totals(current: dict) -> list[str]:
+    """A function at 100% with a trick keeps its score, but it counts under tricks, not matched."""
+    tricked = copy.deepcopy(current)
+    first_matched(tricked)["trick"] = True
+    game = addresses(current)
+    plain, with_trick = scoring.totals(current, game), scoring.totals(tricked, game)
+    if (with_trick.matched, with_trick.tricks) == (plain.matched - 1, plain.tricks + 1):
+        return []
+    return [f"a trick moves matched {plain.matched} to {with_trick.matched} and tricks {plain.tricks} to "
+            f"{with_trick.tricks}, not one from matched to tricks"]
+
+
+def first_matched(summary: dict) -> dict:
+    """The first game function of SUMMARY at 100%."""
+    return next(entry for entry in summary["functions"] if not entry["library"] and scoring.score(entry) == 1.0)
+
+
+def check_trick_state(current: dict) -> list[str]:
+    """A trick shows in the state and in is_trick only at 100%."""
+    failures = []
+    tricked = dict(first_matched(current), trick=True)
+    partial = dict(tricked, accuracy=0.85)
+    if scoring.state(tricked) != "100%, through a trick":
+        failures.append(f"state of a trick at 100% gives {scoring.state(tricked)}")
+    if scoring.is_trick(partial) or not scoring.is_trick(tricked):
+        failures.append("is_trick is true for a trick at 85% or false for a trick at 100%")
+    return failures
+
+
+def check_summarize_tricks() -> list[str]:
+    """The summary gets the trick key for the tricked addresses only."""
+    failures = []
+    scored = {0x401000: {"name": "a", "matching": 1.0}, 0x401010: {"name": "b", "matching": 1.0}}
+    keys = {entry["name"]: "trick" in entry for entry in runner.summarize("t", scored, {0x401000})["functions"]}
+    if keys != {"a": True, "b": False}:
+        failures.append(f"summarize sets the trick key {keys}, not for the tricked address only")
+    return failures
 
 
 def check_whole_percent() -> list[str]:

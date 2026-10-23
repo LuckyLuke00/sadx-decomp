@@ -49,6 +49,7 @@ import runner
 import scoring
 import selftest
 import toolchain
+import tricks
 
 ROOT = project.ROOT
 LIBRARY_RSP = project.BUILD / "library.rsp"  # CMakeLists.txt links the game with it
@@ -416,7 +417,7 @@ def score_game(game: Path) -> dict | None:
     html = project.BUILD / "report.html"
     build = runner.game_build()
     functions = runner.score_target(build, game, "--html", str(html))
-    current = runner.summarize(build.target, functions)
+    current = runner.summarize(build.target, functions, set(tricks.scan(ROOT)))
     stats = scoring.totals(current, progress.game_addresses(progress.load_functions()))
     print(f"     {scoring.stats_line(stats)}")
     if not check_annotations(functions, game):
