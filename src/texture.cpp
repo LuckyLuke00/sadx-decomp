@@ -9,6 +9,16 @@ void PvrLoadtexture(struct NJS_TEXLIST *texlist)
 {
 }
 
+// STUB: SADX 0x00501b40
+void LoadPlayersTexture(long pno)
+{
+}
+
+// STUB: SADX 0x00501bd0
+void ReleasePlayersTexture(long pno)
+{
+}
+
 // STUB: SADX 0x00501ce0
 void LoadTextureForEachGameMode(long gamemode)
 {

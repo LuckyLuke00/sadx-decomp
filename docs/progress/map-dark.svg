@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1416" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">2,741 of 16,524 game functions done (16.59%), accuracy 99.56%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">2,997 of 16,524 game functions done (18.14%), accuracy 99.58%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="596,1162.5 602,1162.5 605,1166 599,1173 593,1166" fill="#2f6bff" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="596,1162.5 602,1162.5 600.5,1166 597.5,1166" fill="#ffffff" fill-opacity="0.45"/>
@@ -839,7 +839,7 @@
 </g>
 <polygon points="22,986.5 28,986.5 31,990 25,997 19,990" fill="#ffe14d" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="22,986.5 28,986.5 26.5,990 23.5,990" fill="#ffffff" fill-opacity="0.45"/>
-<text x="35" y="996" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Mini-games <tspan font-weight="400" fill="#8b949e">4%</tspan></text>
+<text x="35" y="996" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Mini-games <tspan font-weight="400" fill="#8b949e">19%</tspan></text>
 <rect x="20" y="1239" width="110" height="114" rx="3" fill="#21262d" stroke="#30363d"><title>Sky Chase: 0 of 168 done</title></rect>
 <text x="23" y="1253" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sky Chase <tspan font-weight="400" fill="#8b949e">0%</tspan></text>
 <g transform="translate(23,1257)">
@@ -909,8 +909,8 @@
 <rect x="7" y="14" width="6" height="6" fill="#ffd700"><title>0x007f2fc0 FUN_007f2fc0: 100%</title></rect>
 <rect x="14" y="14" width="6" height="6" fill="#ffd700"><title>0x007f2ff0 FUN_007f2ff0: 100%</title></rect>
 </g>
-<rect x="20" y="1004" width="320" height="233" rx="3" fill="#21262d" stroke="#30363d"><title>Game Gear games: 29 of 1,299 done</title></rect>
-<text x="23" y="1018" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Game Gear games <tspan font-weight="400" fill="#8b949e">2%</tspan></text>
+<rect x="20" y="1004" width="320" height="233" rx="3" fill="#21262d" stroke="#30363d"><title>Game Gear games: 285 of 1,299 done</title></rect>
+<text x="23" y="1018" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Game Gear games <tspan font-weight="400" fill="#8b949e">21%</tspan></text>
 <g transform="translate(23,1022)">
 <rect y="0" width="315" height="196" fill="url(#todo)"/>
 <rect y="196" width="273" height="7" fill="url(#todo)"/>
@@ -919,6 +919,7 @@
 <rect x="14" y="0" width="6" height="6" fill="#ffd700"><title>0x007f2340 GG_Initialize: 100%</title></rect>
 <rect x="21" y="0" width="6" height="6" fill="#ffd700"><title>0x007f2360 GG_Finalize: 100%</title></rect>
 <rect x="28" y="0" width="6" height="6" fill="#ffd700"><title>0x007f2380 LoadPrsMallocFile: 100%</title></rect>
+<rect x="70" y="0" width="6" height="6" fill="#ffd700"><title>0x007f25a0 FUN_007f25a0: 100%</title></rect>
 <rect x="175" y="0" width="6" height="6" fill="#ffd700"><title>0x00903ba0 FUN_00903ba0: 100%</title></rect>
 <rect x="182" y="0" width="6" height="6" fill="#ffd700"><title>0x00904010 FUN_00904010: 100%</title></rect>
 <rect x="224" y="0" width="6" height="6" fill="#ffd700"><title>0x009041e0 FUN_009041e0: 100%</title></rect>
@@ -927,7 +928,38 @@
 <rect x="245" y="0" width="6" height="6" fill="#ffd700"><title>0x00904220 FUN_00904220: 100%</title></rect>
 <rect x="224" y="7" width="6" height="6" fill="#ffd700"><title>0x00906db0 FUN_00906db0: 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#ffd700"><title>0x00908780 FUN_00908780: 100%</title></rect>
+<rect x="182" y="21" width="6" height="6" fill="#ffd700"><title>0x00908d90 FUN_00908d90: 100%</title></rect>
+<rect x="217" y="21" width="6" height="6" fill="#ffd700"><title>0x00908fb0 FUN_00908fb0: 100%</title></rect>
+<rect x="252" y="21" width="6" height="6" fill="#ffd700"><title>0x009090a0 FUN_009090a0: 100%</title></rect>
+<rect x="294" y="21" width="6" height="6" fill="#ffd700"><title>0x009094c0 FUN_009094c0: 100%</title></rect>
+<rect x="126" y="28" width="6" height="6" fill="#6a8ab9"><title>0x00909e50 FUN_00909e50: 33.3%</title></rect>
+<rect x="238" y="28" width="6" height="6" fill="#ffd700"><title>0x0090a0d0 FUN_0090a0d0: 100%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#ffd700"><title>0x0090a810 FUN_0090a810: 100%</title></rect>
+<rect x="63" y="35" width="6" height="6" fill="#ffd700"><title>0x0090a850 FUN_0090a850: 100%</title></rect>
+<rect x="70" y="35" width="6" height="6" fill="#ffd700"><title>0x0090a860 FUN_0090a860: 100%</title></rect>
+<rect x="154" y="35" width="6" height="6" fill="#ffd700"><title>0x0090b3b0 FUN_0090b3b0: 100%</title></rect>
+<rect x="161" y="35" width="6" height="6" fill="#ffd700"><title>0x0090b3d0 FUN_0090b3d0: 100%</title></rect>
+<rect x="231" y="35" width="6" height="6" fill="#ffd700"><title>0x0090b5b0 FUN_0090b5b0: 100%</title></rect>
+<rect x="14" y="42" width="6" height="6" fill="#ffd700"><title>0x0090bab0 FUN_0090bab0: 100%</title></rect>
+<rect x="70" y="42" width="6" height="6" fill="#ffd700"><title>0x0090bcf0 FUN_0090bcf0: 100%</title></rect>
+<rect x="77" y="42" width="6" height="6" fill="#ffd700"><title>0x0090bd00 FUN_0090bd00: 100%</title></rect>
+<rect x="105" y="42" width="6" height="6" fill="#ffd700"><title>0x0090c080 FUN_0090c080: 100%</title></rect>
+<rect x="182" y="42" width="6" height="6" fill="#ffd700"><title>0x0090cc20 FUN_0090cc20: 100%</title></rect>
+<rect x="0" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cec0 ld_b_a: 100%</title></rect>
+<rect x="7" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cee0 ld_c_b: 100%</title></rect>
+<rect x="14" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cf00 ld_c_d: 100%</title></rect>
+<rect x="28" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cf40 ld_c_h: 100%</title></rect>
+<rect x="35" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cf60 ld_c_l: 100%</title></rect>
+<rect x="49" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cfb0 ld_c_a: 100%</title></rect>
+<rect x="56" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cfd0 ld_d_b: 100%</title></rect>
+<rect x="63" y="49" width="6" height="6" fill="#ffd700"><title>0x0090cff0 ld_d_c: 100%</title></rect>
+<rect x="70" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d010 ld_d_e: 100%</title></rect>
+<rect x="77" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d030 ld_d_h: 100%</title></rect>
+<rect x="84" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d050 ld_d_l: 100%</title></rect>
+<rect x="98" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d0a0 ld_d_a: 100%</title></rect>
+<rect x="105" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d0c0 ld_e_b: 100%</title></rect>
+<rect x="112" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d0e0 ld_e_c: 100%</title></rect>
+<rect x="119" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d100 ld_e_d: 100%</title></rect>
 <rect x="126" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d120 FUN_0090d120: 100%</title></rect>
 <rect x="133" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d140 FUN_0090d140: 100%</title></rect>
 <rect x="147" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d190 FUN_0090d190: 100%</title></rect>
@@ -936,13 +968,238 @@
 <rect x="168" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d1f0 FUN_0090d1f0: 100%</title></rect>
 <rect x="175" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d210 FUN_0090d210: 100%</title></rect>
 <rect x="182" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d230 FUN_0090d230: 100%</title></rect>
+<rect x="189" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d240 ld_h_l: 100%</title></rect>
+<rect x="203" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d290 ld_h_a: 100%</title></rect>
+<rect x="210" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d2b0 ld_l_b: 100%</title></rect>
+<rect x="217" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d2d0 ld_l_c: 100%</title></rect>
+<rect x="224" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d2f0 ld_l_d: 100%</title></rect>
+<rect x="231" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d310 ld_l_e: 100%</title></rect>
+<rect x="238" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d330 ld_l_h: 100%</title></rect>
+<rect x="252" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d380 ld_l_a: 100%</title></rect>
+<rect x="259" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d3a0 ld_xhl_b: 100%</title></rect>
+<rect x="287" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d460 ld_xhl_h: 100%</title></rect>
 <rect x="301" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d4c0 FUN_0090d4c0: 100%</title></rect>
+<rect x="308" y="49" width="6" height="6" fill="#ffd700"><title>0x0090d4d0 ld_xhl_a: 100%</title></rect>
+<rect x="0" y="56" width="6" height="6" fill="#ffd700"><title>0x0090d500 ld_a_b: 100%</title></rect>
+<rect x="7" y="56" width="6" height="6" fill="#ffd700"><title>0x0090d520 ld_a_c: 100%</title></rect>
+<rect x="14" y="56" width="6" height="6" fill="#ffd700"><title>0x0090d540 ld_a_d: 100%</title></rect>
+<rect x="21" y="56" width="6" height="6" fill="#ffd700"><title>0x0090d560 ld_a_e: 100%</title></rect>
+<rect x="28" y="56" width="6" height="6" fill="#ffd700"><title>0x0090d580 ld_a_h: 100%</title></rect>
+<rect x="35" y="56" width="6" height="6" fill="#ffd700"><title>0x0090d5a0 ld_a_l: 100%</title></rect>
+<rect x="28" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e010 ld_xde_a: 100%</title></rect>
+<rect x="49" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e0b0 ld_a_r: 100%</title></rect>
+<rect x="56" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e0e0 ld_i_a: 100%</title></rect>
+<rect x="63" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e100 ld_r_a: 100%</title></rect>
+<rect x="196" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e540 ld_sp_hl: 100%</title></rect>
+<rect x="203" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e560 ld_sp_ix: 100%</title></rect>
+<rect x="210" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e580 ld_sp_iy: 100%</title></rect>
+<rect x="259" y="63" width="6" height="6" fill="#ffd700"><title>0x0090e6c0 pop_af: 100%</title></rect>
+<rect x="84" y="70" width="6" height="6" fill="#ffd700"><title>0x0090efb0 adc_a_e: 100%</title></rect>
+<rect x="189" y="70" width="6" height="6" fill="#ffd700"><title>0x0090f7e0 sub_a_a: 100%</title></rect>
+<rect x="294" y="70" width="6" height="6" fill="#ffd700"><title>0x009100b0 and_a_b: 100%</title></rect>
+<rect x="308" y="70" width="6" height="6" fill="#ffd700"><title>0x00910110 and_a_d: 100%</title></rect>
+<rect x="0" y="77" width="6" height="6" fill="#ffd700"><title>0x00910140 and_a_e: 100%</title></rect>
+<rect x="7" y="77" width="6" height="6" fill="#ffd700"><title>0x00910170 and_a_h: 100%</title></rect>
+<rect x="14" y="77" width="6" height="6" fill="#ffd700"><title>0x009101a0 and_a_l: 100%</title></rect>
+<rect x="77" y="77" width="6" height="6" fill="#ffd700"><title>0x009103c0 or_a_e: 100%</title></rect>
+<rect x="133" y="77" width="6" height="6" fill="#ffd700"><title>0x009105b0 xor_a_b: 100%</title></rect>
+<rect x="140" y="77" width="6" height="6" fill="#ffd700"><title>0x009105e0 xor_a_c: 100%</title></rect>
+<rect x="147" y="77" width="6" height="6" fill="#ffd700"><title>0x00910610 xor_a_d: 100%</title></rect>
+<rect x="154" y="77" width="6" height="6" fill="#ffd700"><title>0x00910640 xor_a_e: 100%</title></rect>
+<rect x="161" y="77" width="6" height="6" fill="#ffd700"><title>0x00910670 xor_a_h: 100%</title></rect>
+<rect x="168" y="77" width="6" height="6" fill="#ffd700"><title>0x009106a0 xor_a_l: 100%</title></rect>
+<rect x="259" y="77" width="6" height="6" fill="#ffd700"><title>0x00910b10 cp_a_a: 100%</title></rect>
+<rect x="252" y="84" width="6" height="6" fill="#ffd700"><title>0x00911d30 inc_bc: 100%</title></rect>
+<rect x="259" y="84" width="6" height="6" fill="#ffd700"><title>0x00911d50 inc_de: 100%</title></rect>
+<rect x="266" y="84" width="6" height="6" fill="#ffd700"><title>0x00911d70 inc_hl: 100%</title></rect>
+<rect x="273" y="84" width="6" height="6" fill="#ffd700"><title>0x00911d90 inc_ix: 100%</title></rect>
+<rect x="280" y="84" width="6" height="6" fill="#ffd700"><title>0x00911db0 inc_iy: 100%</title></rect>
+<rect x="287" y="84" width="6" height="6" fill="#ffd700"><title>0x00911dd0 inc_sp: 100%</title></rect>
+<rect x="28" y="91" width="6" height="6" fill="#ffd700"><title>0x00911ee0 jp_xhl: 100%</title></rect>
+<rect x="35" y="91" width="6" height="6" fill="#ffd700"><title>0x00911f00 jp_xix: 100%</title></rect>
+<rect x="42" y="91" width="6" height="6" fill="#ffd700"><title>0x00911f20 jp_xiy: 100%</title></rect>
+<rect x="21" y="98" width="6" height="6" fill="#ffd700"><title>0x00912a60 ex_de_hl: 100%</title></rect>
+<rect x="28" y="98" width="6" height="6" fill="#ffd700"><title>0x00912a80 ex_af_af: 100%</title></rect>
+<rect x="35" y="98" width="6" height="6" fill="#ffd700"><title>0x00912aa0 ex_x: 100%</title></rect>
+<rect x="126" y="98" width="6" height="6" fill="#ffd700"><title>0x00912fe0 cpl: 100%</title></rect>
+<rect x="133" y="98" width="6" height="6" fill="#ffd700"><title>0x00913000 neg: 100%</title></rect>
+<rect x="140" y="98" width="6" height="6" fill="#ffd700"><title>0x00913060 ccf: 100%</title></rect>
+<rect x="147" y="98" width="6" height="6" fill="#ffd700"><title>0x00913090 scf: 100%</title></rect>
+<rect x="252" y="98" width="6" height="6" fill="#ffd700"><title>0x009134b0 out_c_b: 100%</title></rect>
+<rect x="63" y="119" width="6" height="6" fill="#ffd700"><title>0x00915180 bit_4_b: 100%</title></rect>
+<rect x="84" y="119" width="6" height="6" fill="#ffd700"><title>0x00915210 bit_7_b: 100%</title></rect>
+<rect x="119" y="119" width="6" height="6" fill="#ffd700"><title>0x00915300 bit_4_c: 100%</title></rect>
+<rect x="161" y="119" width="6" height="6" fill="#ffd700"><title>0x00915420 bit_2_d: 100%</title></rect>
+<rect x="182" y="119" width="6" height="6" fill="#ffd700"><title>0x009154b0 bit_5_d: 100%</title></rect>
+<rect x="287" y="119" width="6" height="6" fill="#ffd700"><title>0x00915780 bit_4_h: 100%</title></rect>
+<rect x="308" y="119" width="6" height="6" fill="#ffd700"><title>0x00915810 bit_7_h: 100%</title></rect>
+<rect x="28" y="126" width="6" height="6" fill="#ffd700"><title>0x00915900 bit_4_l: 100%</title></rect>
+<rect x="224" y="126" width="6" height="6" fill="#ffd700"><title>0x009160c0 set_0_a: 100%</title></rect>
+<rect x="231" y="126" width="6" height="6" fill="#ffd700"><title>0x009160e0 set_1_a: 100%</title></rect>
+<rect x="238" y="126" width="6" height="6" fill="#ffd700"><title>0x00916100 set_2_a: 100%</title></rect>
+<rect x="245" y="126" width="6" height="6" fill="#ffd700"><title>0x00916120 set_3_a: 100%</title></rect>
+<rect x="252" y="126" width="6" height="6" fill="#ffd700"><title>0x00916140 set_4_a: 100%</title></rect>
+<rect x="259" y="126" width="6" height="6" fill="#ffd700"><title>0x00916160 set_5_a: 100%</title></rect>
+<rect x="266" y="126" width="6" height="6" fill="#ffd700"><title>0x00916180 set_6_a: 100%</title></rect>
+<rect x="273" y="126" width="6" height="6" fill="#ffd700"><title>0x009161a0 set_7_a: 100%</title></rect>
+<rect x="280" y="126" width="6" height="6" fill="#ffd700"><title>0x009161c0 set_0_b: 100%</title></rect>
+<rect x="287" y="126" width="6" height="6" fill="#ffd700"><title>0x009161e0 set_1_b: 100%</title></rect>
+<rect x="294" y="126" width="6" height="6" fill="#ffd700"><title>0x00916200 set_2_b: 100%</title></rect>
+<rect x="301" y="126" width="6" height="6" fill="#ffd700"><title>0x00916220 set_3_b: 100%</title></rect>
+<rect x="308" y="126" width="6" height="6" fill="#ffd700"><title>0x00916240 set_4_b: 100%</title></rect>
+<rect x="0" y="133" width="6" height="6" fill="#ffd700"><title>0x00916260 set_5_b: 100%</title></rect>
+<rect x="7" y="133" width="6" height="6" fill="#ffd700"><title>0x00916280 set_6_b: 100%</title></rect>
+<rect x="14" y="133" width="6" height="6" fill="#ffd700"><title>0x009162a0 set_7_b: 100%</title></rect>
+<rect x="21" y="133" width="6" height="6" fill="#ffd700"><title>0x009162c0 set_0_c: 100%</title></rect>
+<rect x="28" y="133" width="6" height="6" fill="#ffd700"><title>0x009162e0 set_1_c: 100%</title></rect>
+<rect x="35" y="133" width="6" height="6" fill="#ffd700"><title>0x00916300 set_2_c: 100%</title></rect>
+<rect x="42" y="133" width="6" height="6" fill="#ffd700"><title>0x00916320 set_3_c: 100%</title></rect>
+<rect x="49" y="133" width="6" height="6" fill="#ffd700"><title>0x00916340 set_4_c: 100%</title></rect>
+<rect x="56" y="133" width="6" height="6" fill="#ffd700"><title>0x00916360 set_5_c: 100%</title></rect>
+<rect x="63" y="133" width="6" height="6" fill="#ffd700"><title>0x00916380 set_6_c: 100%</title></rect>
+<rect x="70" y="133" width="6" height="6" fill="#ffd700"><title>0x009163a0 set_7_c: 100%</title></rect>
+<rect x="77" y="133" width="6" height="6" fill="#ffd700"><title>0x009163c0 set_0_d: 100%</title></rect>
+<rect x="84" y="133" width="6" height="6" fill="#ffd700"><title>0x009163e0 set_1_d: 100%</title></rect>
+<rect x="91" y="133" width="6" height="6" fill="#ffd700"><title>0x00916400 set_2_d: 100%</title></rect>
+<rect x="98" y="133" width="6" height="6" fill="#ffd700"><title>0x00916420 set_3_d: 100%</title></rect>
+<rect x="105" y="133" width="6" height="6" fill="#ffd700"><title>0x00916440 set_4_d: 100%</title></rect>
+<rect x="112" y="133" width="6" height="6" fill="#ffd700"><title>0x00916460 set_5_d: 100%</title></rect>
+<rect x="119" y="133" width="6" height="6" fill="#ffd700"><title>0x00916480 set_6_d: 100%</title></rect>
+<rect x="126" y="133" width="6" height="6" fill="#ffd700"><title>0x009164a0 set_7_d: 100%</title></rect>
+<rect x="133" y="133" width="6" height="6" fill="#ffd700"><title>0x009164c0 set_0_e: 100%</title></rect>
+<rect x="140" y="133" width="6" height="6" fill="#ffd700"><title>0x009164e0 set_1_e: 100%</title></rect>
+<rect x="147" y="133" width="6" height="6" fill="#ffd700"><title>0x00916500 set_2_e: 100%</title></rect>
+<rect x="154" y="133" width="6" height="6" fill="#ffd700"><title>0x00916520 set_3_e: 100%</title></rect>
+<rect x="161" y="133" width="6" height="6" fill="#ffd700"><title>0x00916540 set_4_e: 100%</title></rect>
+<rect x="168" y="133" width="6" height="6" fill="#ffd700"><title>0x00916560 set_5_e: 100%</title></rect>
+<rect x="175" y="133" width="6" height="6" fill="#ffd700"><title>0x00916580 set_6_e: 100%</title></rect>
+<rect x="182" y="133" width="6" height="6" fill="#ffd700"><title>0x009165a0 set_7_e: 100%</title></rect>
+<rect x="189" y="133" width="6" height="6" fill="#ffd700"><title>0x009165c0 set_0_h: 100%</title></rect>
+<rect x="196" y="133" width="6" height="6" fill="#ffd700"><title>0x009165e0 set_1_h: 100%</title></rect>
+<rect x="203" y="133" width="6" height="6" fill="#ffd700"><title>0x00916600 set_2_h: 100%</title></rect>
+<rect x="210" y="133" width="6" height="6" fill="#ffd700"><title>0x00916620 set_3_h: 100%</title></rect>
+<rect x="217" y="133" width="6" height="6" fill="#ffd700"><title>0x00916640 set_4_h: 100%</title></rect>
+<rect x="224" y="133" width="6" height="6" fill="#ffd700"><title>0x00916660 set_5_h: 100%</title></rect>
+<rect x="231" y="133" width="6" height="6" fill="#ffd700"><title>0x00916680 set_6_h: 100%</title></rect>
+<rect x="238" y="133" width="6" height="6" fill="#ffd700"><title>0x009166a0 set_7_h: 100%</title></rect>
+<rect x="245" y="133" width="6" height="6" fill="#ffd700"><title>0x009166c0 set_0_l: 100%</title></rect>
+<rect x="252" y="133" width="6" height="6" fill="#ffd700"><title>0x009166e0 set_1_l: 100%</title></rect>
+<rect x="259" y="133" width="6" height="6" fill="#ffd700"><title>0x00916700 set_2_l: 100%</title></rect>
+<rect x="266" y="133" width="6" height="6" fill="#ffd700"><title>0x00916720 set_3_l: 100%</title></rect>
+<rect x="273" y="133" width="6" height="6" fill="#ffd700"><title>0x00916740 set_4_l: 100%</title></rect>
+<rect x="280" y="133" width="6" height="6" fill="#ffd700"><title>0x00916760 set_5_l: 100%</title></rect>
+<rect x="287" y="133" width="6" height="6" fill="#ffd700"><title>0x00916780 set_6_l: 100%</title></rect>
+<rect x="294" y="133" width="6" height="6" fill="#ffd700"><title>0x009167a0 set_7_l: 100%</title></rect>
+<rect x="154" y="140" width="6" height="6" fill="#ffd700"><title>0x009170c0 res_0_a: 100%</title></rect>
+<rect x="161" y="140" width="6" height="6" fill="#ffd700"><title>0x009170e0 res_1_a: 100%</title></rect>
+<rect x="168" y="140" width="6" height="6" fill="#ffd700"><title>0x00917100 res_2_a: 100%</title></rect>
+<rect x="175" y="140" width="6" height="6" fill="#ffd700"><title>0x00917120 res_3_a: 100%</title></rect>
+<rect x="182" y="140" width="6" height="6" fill="#ffd700"><title>0x00917140 res_4_a: 100%</title></rect>
+<rect x="189" y="140" width="6" height="6" fill="#ffd700"><title>0x00917160 res_5_a: 100%</title></rect>
+<rect x="196" y="140" width="6" height="6" fill="#ffd700"><title>0x00917180 res_6_a: 100%</title></rect>
+<rect x="203" y="140" width="6" height="6" fill="#ffd700"><title>0x009171a0 res_7_a: 100%</title></rect>
+<rect x="210" y="140" width="6" height="6" fill="#ffd700"><title>0x009171c0 res_0_b: 100%</title></rect>
+<rect x="217" y="140" width="6" height="6" fill="#ffd700"><title>0x009171e0 res_1_b: 100%</title></rect>
+<rect x="224" y="140" width="6" height="6" fill="#ffd700"><title>0x00917200 res_2_b: 100%</title></rect>
+<rect x="231" y="140" width="6" height="6" fill="#ffd700"><title>0x00917220 res_3_b: 100%</title></rect>
+<rect x="238" y="140" width="6" height="6" fill="#ffd700"><title>0x00917240 res_4_b: 100%</title></rect>
+<rect x="245" y="140" width="6" height="6" fill="#ffd700"><title>0x00917260 res_5_b: 100%</title></rect>
+<rect x="252" y="140" width="6" height="6" fill="#ffd700"><title>0x00917280 res_6_b: 100%</title></rect>
+<rect x="259" y="140" width="6" height="6" fill="#ffd700"><title>0x009172a0 res_7_b: 100%</title></rect>
+<rect x="266" y="140" width="6" height="6" fill="#ffd700"><title>0x009172c0 res_0_c: 100%</title></rect>
+<rect x="273" y="140" width="6" height="6" fill="#ffd700"><title>0x009172e0 res_1_c: 100%</title></rect>
+<rect x="280" y="140" width="6" height="6" fill="#ffd700"><title>0x00917300 res_2_c: 100%</title></rect>
+<rect x="287" y="140" width="6" height="6" fill="#ffd700"><title>0x00917320 res_3_c: 100%</title></rect>
+<rect x="294" y="140" width="6" height="6" fill="#ffd700"><title>0x00917340 res_4_c: 100%</title></rect>
+<rect x="301" y="140" width="6" height="6" fill="#ffd700"><title>0x00917360 res_5_c: 100%</title></rect>
+<rect x="308" y="140" width="6" height="6" fill="#ffd700"><title>0x00917380 res_6_c: 100%</title></rect>
+<rect x="0" y="147" width="6" height="6" fill="#ffd700"><title>0x009173a0 res_7_c: 100%</title></rect>
+<rect x="7" y="147" width="6" height="6" fill="#ffd700"><title>0x009173c0 res_0_d: 100%</title></rect>
+<rect x="14" y="147" width="6" height="6" fill="#ffd700"><title>0x009173e0 res_1_d: 100%</title></rect>
+<rect x="21" y="147" width="6" height="6" fill="#ffd700"><title>0x00917400 res_2_d: 100%</title></rect>
+<rect x="28" y="147" width="6" height="6" fill="#ffd700"><title>0x00917420 res_3_d: 100%</title></rect>
+<rect x="35" y="147" width="6" height="6" fill="#ffd700"><title>0x00917440 res_4_d: 100%</title></rect>
+<rect x="42" y="147" width="6" height="6" fill="#ffd700"><title>0x00917460 res_5_d: 100%</title></rect>
+<rect x="49" y="147" width="6" height="6" fill="#ffd700"><title>0x00917480 res_6_d: 100%</title></rect>
+<rect x="56" y="147" width="6" height="6" fill="#ffd700"><title>0x009174a0 res_7_d: 100%</title></rect>
+<rect x="63" y="147" width="6" height="6" fill="#ffd700"><title>0x009174c0 res_0_e: 100%</title></rect>
+<rect x="70" y="147" width="6" height="6" fill="#ffd700"><title>0x009174e0 res_1_e: 100%</title></rect>
+<rect x="77" y="147" width="6" height="6" fill="#ffd700"><title>0x00917500 res_2_e: 100%</title></rect>
+<rect x="84" y="147" width="6" height="6" fill="#ffd700"><title>0x00917520 res_3_e: 100%</title></rect>
+<rect x="91" y="147" width="6" height="6" fill="#ffd700"><title>0x00917540 res_4_e: 100%</title></rect>
+<rect x="98" y="147" width="6" height="6" fill="#ffd700"><title>0x00917560 res_5_e: 100%</title></rect>
+<rect x="105" y="147" width="6" height="6" fill="#ffd700"><title>0x00917580 res_6_e: 100%</title></rect>
+<rect x="112" y="147" width="6" height="6" fill="#ffd700"><title>0x009175a0 res_7_e: 100%</title></rect>
+<rect x="119" y="147" width="6" height="6" fill="#ffd700"><title>0x009175c0 res_0_h: 100%</title></rect>
+<rect x="126" y="147" width="6" height="6" fill="#ffd700"><title>0x009175e0 res_1_h: 100%</title></rect>
+<rect x="133" y="147" width="6" height="6" fill="#ffd700"><title>0x00917600 res_2_h: 100%</title></rect>
+<rect x="140" y="147" width="6" height="6" fill="#ffd700"><title>0x00917620 res_3_h: 100%</title></rect>
+<rect x="147" y="147" width="6" height="6" fill="#ffd700"><title>0x00917640 res_4_h: 100%</title></rect>
+<rect x="154" y="147" width="6" height="6" fill="#ffd700"><title>0x00917660 res_5_h: 100%</title></rect>
+<rect x="161" y="147" width="6" height="6" fill="#ffd700"><title>0x00917680 res_6_h: 100%</title></rect>
+<rect x="168" y="147" width="6" height="6" fill="#ffd700"><title>0x009176a0 res_7_h: 100%</title></rect>
+<rect x="175" y="147" width="6" height="6" fill="#ffd700"><title>0x009176c0 res_0_l: 100%</title></rect>
+<rect x="182" y="147" width="6" height="6" fill="#ffd700"><title>0x009176e0 res_1_l: 100%</title></rect>
+<rect x="189" y="147" width="6" height="6" fill="#ffd700"><title>0x00917700 res_2_l: 100%</title></rect>
+<rect x="196" y="147" width="6" height="6" fill="#ffd700"><title>0x00917720 res_3_l: 100%</title></rect>
+<rect x="203" y="147" width="6" height="6" fill="#ffd700"><title>0x00917740 res_4_l: 100%</title></rect>
+<rect x="210" y="147" width="6" height="6" fill="#ffd700"><title>0x00917760 res_5_l: 100%</title></rect>
+<rect x="217" y="147" width="6" height="6" fill="#ffd700"><title>0x00917780 res_6_l: 100%</title></rect>
+<rect x="224" y="147" width="6" height="6" fill="#ffd700"><title>0x009177a0 res_7_l: 100%</title></rect>
+<rect x="84" y="154" width="6" height="6" fill="#ffd700"><title>0x009180c0 ld_ixh_b: 100%</title></rect>
+<rect x="91" y="154" width="6" height="6" fill="#ffd700"><title>0x009180e0 ld_ixh_c: 100%</title></rect>
+<rect x="98" y="154" width="6" height="6" fill="#ffd700"><title>0x00918100 ld_ixh_d: 100%</title></rect>
+<rect x="105" y="154" width="6" height="6" fill="#ffd700"><title>0x00918120 ld_ixh_e: 100%</title></rect>
 <rect x="112" y="154" width="6" height="6" fill="#ffd700"><title>0x00918140 FUN_00918140: 100%</title></rect>
 <rect x="133" y="154" width="6" height="6" fill="#ffd700"><title>0x00918190 FUN_00918190: 100%</title></rect>
 <rect x="140" y="154" width="6" height="6" fill="#ffd700"><title>0x009181b0 FUN_009181b0: 100%</title></rect>
 <rect x="147" y="154" width="6" height="6" fill="#ffd700"><title>0x009181d0 FUN_009181d0: 100%</title></rect>
 <rect x="154" y="154" width="6" height="6" fill="#ffd700"><title>0x009181f0 FUN_009181f0: 100%</title></rect>
 <rect x="161" y="154" width="6" height="6" fill="#ffd700"><title>0x00918210 FUN_00918210: 100%</title></rect>
+<rect x="168" y="154" width="6" height="6" fill="#ffd700"><title>0x00918230 ld_ixl_a: 100%</title></rect>
+<rect x="175" y="154" width="6" height="6" fill="#ffd700"><title>0x00918250 ld_iyh_b: 100%</title></rect>
+<rect x="182" y="154" width="6" height="6" fill="#ffd700"><title>0x00918270 ld_iyh_c: 100%</title></rect>
+<rect x="189" y="154" width="6" height="6" fill="#ffd700"><title>0x00918290 ld_iyh_d: 100%</title></rect>
+<rect x="196" y="154" width="6" height="6" fill="#ffd700"><title>0x009182b0 ld_iyh_e: 100%</title></rect>
+<rect x="203" y="154" width="6" height="6" fill="#ffd700"><title>0x009182d0 ld_iyh_iyl: 100%</title></rect>
+<rect x="210" y="154" width="6" height="6" fill="#ffd700"><title>0x009182f0 ld_iyh_a: 100%</title></rect>
+<rect x="217" y="154" width="6" height="6" fill="#ffd700"><title>0x00918310 ld_iyl_b: 100%</title></rect>
+<rect x="224" y="154" width="6" height="6" fill="#ffd700"><title>0x00918330 ld_iyl_c: 100%</title></rect>
+<rect x="231" y="154" width="6" height="6" fill="#ffd700"><title>0x00918350 ld_iyl_d: 100%</title></rect>
+<rect x="238" y="154" width="6" height="6" fill="#ffd700"><title>0x00918370 ld_iyl_e: 100%</title></rect>
+<rect x="245" y="154" width="6" height="6" fill="#ffd700"><title>0x00918390 ld_iyl_iyh: 100%</title></rect>
+<rect x="252" y="154" width="6" height="6" fill="#ffd700"><title>0x009183b0 ld_iyl_a: 100%</title></rect>
+<rect x="259" y="154" width="6" height="6" fill="#ffd700"><title>0x009183d0 ld_b_ixh: 100%</title></rect>
+<rect x="266" y="154" width="6" height="6" fill="#ffd700"><title>0x009183f0 ld_c_ixh: 100%</title></rect>
+<rect x="273" y="154" width="6" height="6" fill="#ffd700"><title>0x00918410 ld_d_ixh: 100%</title></rect>
+<rect x="280" y="154" width="6" height="6" fill="#ffd700"><title>0x00918430 ld_e_ixh: 100%</title></rect>
+<rect x="287" y="154" width="6" height="6" fill="#ffd700"><title>0x00918450 ld_a_ixh: 100%</title></rect>
+<rect x="294" y="154" width="6" height="6" fill="#ffd700"><title>0x00918470 ld_b_ixl: 100%</title></rect>
+<rect x="301" y="154" width="6" height="6" fill="#ffd700"><title>0x00918490 ld_c_ixl: 100%</title></rect>
+<rect x="308" y="154" width="6" height="6" fill="#ffd700"><title>0x009184b0 ld_d_ixl: 100%</title></rect>
+<rect x="0" y="161" width="6" height="6" fill="#ffd700"><title>0x009184d0 ld_e_ixl: 100%</title></rect>
+<rect x="7" y="161" width="6" height="6" fill="#ffd700"><title>0x009184f0 ld_a_ixl: 100%</title></rect>
+<rect x="14" y="161" width="6" height="6" fill="#ffd700"><title>0x00918510 ld_b_iyh: 100%</title></rect>
+<rect x="21" y="161" width="6" height="6" fill="#ffd700"><title>0x00918530 ld_c_iyh: 100%</title></rect>
+<rect x="28" y="161" width="6" height="6" fill="#ffd700"><title>0x00918550 ld_d_iyh: 100%</title></rect>
+<rect x="35" y="161" width="6" height="6" fill="#ffd700"><title>0x00918570 ld_e_iyh: 100%</title></rect>
+<rect x="42" y="161" width="6" height="6" fill="#ffd700"><title>0x00918590 ld_a_iyh: 100%</title></rect>
+<rect x="49" y="161" width="6" height="6" fill="#ffd700"><title>0x009185b0 ld_b_iyl: 100%</title></rect>
+<rect x="56" y="161" width="6" height="6" fill="#ffd700"><title>0x009185d0 ld_c_iyl: 100%</title></rect>
+<rect x="63" y="161" width="6" height="6" fill="#ffd700"><title>0x009185f0 ld_d_iyl: 100%</title></rect>
+<rect x="70" y="161" width="6" height="6" fill="#ffd700"><title>0x00918610 ld_e_iyl: 100%</title></rect>
+<rect x="77" y="161" width="6" height="6" fill="#ffd700"><title>0x00918630 ld_a_iyl: 100%</title></rect>
+<rect x="308" y="161" width="6" height="6" fill="#ffd700"><title>0x00919110 xor_a_ixl: 100%</title></rect>
+<rect x="0" y="168" width="6" height="6" fill="#ffd700"><title>0x00919140 xor_a_iyh: 100%</title></rect>
+<rect x="7" y="168" width="6" height="6" fill="#ffd700"><title>0x00919170 xor_a_iyl: 100%</title></rect>
+<rect x="14" y="168" width="6" height="6" fill="#ffd700"><title>0x009191a0 or_a_ixh: 100%</title></rect>
+<rect x="21" y="168" width="6" height="6" fill="#ffd700"><title>0x009191d0 or_a_ixl: 100%</title></rect>
+<rect x="28" y="168" width="6" height="6" fill="#ffd700"><title>0x00919200 or_a_iyh: 100%</title></rect>
+<rect x="35" y="168" width="6" height="6" fill="#ffd700"><title>0x00919230 or_a_iyl: 100%</title></rect>
+<rect x="294" y="168" width="6" height="6" fill="#ffd700"><title>0x00919ae0 bit_0_ixh: 100%</title></rect>
+<rect x="42" y="175" width="6" height="6" fill="#ffd700"><title>0x00919c90 bit_1_ixl: 100%</title></rect>
+<rect x="70" y="175" width="6" height="6" fill="#ffd700"><title>0x00919d50 bit_5_ixl: 100%</title></rect>
+<rect x="98" y="175" width="6" height="6" fill="#ffd700"><title>0x00919e10 bit_1_iyh: 100%</title></rect>
 </g>
 <polygon points="675,539.5 681,539.5 684,543 678,550 672,543" fill="#7fe8ff" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="675,539.5 681,539.5 679.5,543 676.5,543" fill="#ffffff" fill-opacity="0.45"/>

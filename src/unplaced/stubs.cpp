@@ -1629,11 +1629,6 @@ void FUN_005015e0(void *)
 {
 }
 
-// STUB: SADX 0x00501bd0
-void ReleasePlayersTexture(long pno)
-{
-}
-
 // STUB: SADX 0x00501c60
 void ReleaseAllPlayersTexture()
 {
@@ -3645,24 +3640,35 @@ void SakanaGenerater(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0090b5e0
+void FUN_0090b5e0(int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x0090cc80
+void FUN_0090cc80(int)
+{
+}
+
+// STUB: SADX 0x0090ccd0
+int FUN_0090ccd0(int)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0090ccf0
+void FUN_0090ccf0(int, int)
+{
+}
+
 // STUB: SADX 0x0090cd50
 int FUN_0090cd50()
 {
 	return (int)0;
 }
 
-// STUB: SADX 0x00912600
-void ret()
-{
-}
-
-// STUB: SADX 0x009132a0
-void ini()
-{
-}
-
-// STUB: SADX 0x00913370
-void ind()
+// STUB: SADX 0x0091aa20
+void Z80_Reset(unsigned char *ram)
 {
 }
 

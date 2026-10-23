@@ -107,6 +107,9 @@ int DAT_009bf710[5];
 // GLOBAL: SADX 0x009bfd58
 struct NJS_POINT3 DAT_009bfd58;
 
+// GLOBAL: SADX 0x009c2d58
+int DAT_009c2d58[1];
+
 // GLOBAL: SADX 0x00a098cc
 struct TaskInfo RdTaskInfo;
 
@@ -5177,8 +5180,20 @@ int DAT_060e3d64;
 // GLOBAL: SADX 0x060ee554
 int DAT_060ee554;
 
+// GLOBAL: SADX 0x060ee558
+int DAT_060ee558;
+
+// GLOBAL: SADX 0x060ee5a0
+int DAT_060ee5a0;
+
 // GLOBAL: SADX 0x060ee5b8
 char *DAT_060ee5b8;
+
+// GLOBAL: SADX 0x060ee5c0
+char DAT_060ee5c0[0x100];
+
+// GLOBAL: SADX 0x060ee6c8
+unsigned char DAT_060ee6c8[256];
 
 // GLOBAL: SADX 0x060ee7d0
 void* DAT_060ee7d0;
