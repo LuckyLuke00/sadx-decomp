@@ -29,7 +29,8 @@ GIVE_UP_STALE tries without a new best, or after STUCK_TRIES when the best is be
 GIVE_UP_BELOW%), --stop-below P (the run ends after STOP_AFTER tries when the best is below P%,
 or when nothing built), --try-tokens N,N,... (the reply limit of each try in turn, the last one for
 the tries after it; a thinking try keeps its own), --stale-built-only (a try that does not build
-does not count toward STUCK_TRIES, nor toward --give-up) and --tag T (default: the prompt's name). Every command
+does not count toward STUCK_TRIES, nor toward --give-up), --similar-examples (the first example is the matched function
+whose instructions are most like the function's) and --tag T (default: the prompt's name). Every command
 takes --config PATH.
 Results go to build/llm/T/: results.tsv with a row per function and transcripts/ADDRESS.jsonl
 with every exchange.
@@ -915,8 +916,26 @@ def matched_source(path, address):
     return None if span is None else "\n".join(lines[span[0]:span[1] + 1])
 
 
-def examples(config, file, address, count, extra=()):
-    """Up to COUNT matched functions of the same code group, its own file first, then the nearest in size."""
+def mnemonic_grams(md, image, address, size):
+    """The counts of the function's runs of one to three mnemonics, in the exe."""
+    ops = [ins.mnemonic for ins in md.disasm(image.read(address, size), address)]
+    return collections.Counter(tuple(ops[i:i + n]) for n in (1, 2, 3) for i in range(len(ops) - n + 1))
+
+
+def most_alike(address, pool, sizes):
+    """The function in POOL whose instructions are most like the function's at ADDRESS. Of a tie, the first one."""
+    # Only .venv has capstone.
+    import pe
+    from dossier import disassembler
+
+    md, image = disassembler(), pe.Image(project.require_game())
+    own = mnemonic_grams(md, image, address, sizes[address])
+    return max(pool, key=lambda a: osutil.likeness(own, mnemonic_grams(md, image, a, sizes[a])))
+
+
+def examples(config, file, address, count, extra=(), similar=False):
+    """Up to COUNT matched functions of the same code group, its own file first, then the nearest in size. SIMILAR:
+    the one whose instructions are most like the function's comes first."""
     sizes = {f["address"]: f["size"] for f in progress.load_functions()}
     groups = progress.load_codegen_groups()
     group = progress.codegen_group(groups, address)
@@ -924,6 +943,10 @@ def examples(config, file, address, count, extra=()):
     done = matched_functions()
     pool = sorted((a for a in done if a != address and a in where and progress.codegen_group(groups, a) == group),
                   key=lambda a: (where[a][1] != file, abs(sizes.get(a, 0) - sizes[address]), a))
+    if similar and pool:
+        nearest = most_alike(address, pool, sizes)  # of a tie, the first in the file and size order
+        pool.remove(nearest)
+        pool.insert(0, nearest)
     shown = []
     for a in pool:
         if len(shown) == count:
@@ -937,12 +960,12 @@ def examples(config, file, address, count, extra=()):
     return shown
 
 
-def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=()):
+def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), similar=False):
     facts = dossier(config, address, '--c', '--callers', *extra)
     structs = "" if types is None else struct_section(types, facts)
     task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}"
             f"Write the function. Reply with one cpp block with the `{function_line(address)}` line.")
-    shown = examples(config, file, address, count, extra)
+    shown = examples(config, file, address, count, extra, similar)
     return "\n\n".join(shown + [TASK_LEAD + task]) if shown else task
 
 
@@ -1251,7 +1274,7 @@ def solve_function(args, file, address, transcript):
     repair_types = types or load_types(config)  # the byte offset and pointer cast repairs read layouts either way
     extra = (('--accesses',) if args.accesses else ()) + (('--facts',) if args.facts else ())
     count = EXAMPLES
-    first = first_prompt(config, file, address, types, count, extra)
+    first = first_prompt(config, file, address, types, count, extra, args.similar_examples)
     base = [{"role": "system", "content": args.system}, {"role": "user", "content": first}]
     best = file_best(config, before, address, known, types)  # the code already in the file is the floor
     restore(generated)
@@ -1282,7 +1305,7 @@ def solve_function(args, file, address, transcript):
                     messages = base
                 elif count > 0:
                     count -= 1
-                    first = first_prompt(config, file, address, types, count, extra)
+                    first = first_prompt(config, file, address, types, count, extra, args.similar_examples)
                     messages = base = [base[0], {"role": "user", "content": first}]
                     log.write(json.dumps({"prompt": first}) + "\n")
                 else:
@@ -1508,6 +1531,8 @@ def parse_args():
                       help="the reply limit of each try in turn, the last one for the tries after it")
     runs.add_argument("--stale-built-only", action="store_true",
                       help="a try that does not build does not count toward thinking")
+    runs.add_argument("--similar-examples", action="store_true",
+                      help="the first example is the matched function whose instructions are most like the function's")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
     commands = parser.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init", parents=[common])
