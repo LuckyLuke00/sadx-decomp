@@ -1,10 +1,11 @@
 """Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, read counts
-from the command line.
+from the command line, tell how alike two counts are.
 
 Standard library only.
 """
 
 import argparse
+import collections
 import hashlib
 import shutil
 import stat
@@ -76,6 +77,12 @@ def positive_int(value: str) -> int:
 def positive_ints(value: str) -> list[int]:
     """argparse type: VALUE as comma-separated ints of 1 or more, such as 600,600,1000."""
     return [positive_int(part) for part in value.split(",")]
+
+
+def likeness(a: collections.Counter, b: collections.Counter) -> float:
+    """How alike two counts are: the weighted Jaccard index, 1.0 for the same counts, 0.0 when both are empty."""
+    union = sum((a | b).values())
+    return sum((a & b).values()) / union if union else 0.0
 
 
 def remove(path: Path) -> None:
