@@ -27,8 +27,9 @@ N thinking tries, or after a thinking try that repeated), --max-repeats N (the r
 N tries that repeated an earlier try), --give-up (the run ends after
 GIVE_UP_STALE tries without a new best, or after STUCK_TRIES when the best is below
 GIVE_UP_BELOW%), --stop-below P (the run ends after STOP_AFTER tries when the best is below P%,
-or when nothing built), --stale-built-only (a try that does not build does not count toward
-STUCK_TRIES, nor toward --give-up) and --tag T (default: the prompt's name). Every command
+or when nothing built), --try-tokens N,N,... (the reply limit of each try in turn, the last one for
+the tries after it; a thinking try keeps its own), --stale-built-only (a try that does not build
+does not count toward STUCK_TRIES, nor toward --give-up) and --tag T (default: the prompt's name). Every command
 takes --config PATH.
 Results go to build/llm/T/: results.tsv with a row per function and transcripts/ADDRESS.jsonl
 with every exchange.
@@ -978,6 +979,14 @@ def thinks(stale, config):
     return stale >= STUCK_TRIES and bool(config["think_on"])
 
 
+def reply_limit(args, config, tries):
+    """The max_tokens of the try after TRIES tries: its --try-tokens value, the last one for the tries after the list,
+    else the config's."""
+    if not args.try_tokens:
+        return config["max_tokens"]
+    return args.try_tokens[min(tries, len(args.try_tokens) - 1)]
+
+
 class Repairs:
     """What the repairs of one try changed. A repair that did not run or was not kept leaves its field empty."""
 
@@ -1262,7 +1271,8 @@ def solve_function(args, file, address, transcript):
             asked = time.time()
             seed = None if args.seed is None else args.seed + tries + 1
             try:
-                reply = llmclient.chat(config, messages, temperature, thinking, seed)
+                reply = llmclient.chat({**config, "max_tokens": reply_limit(args, config, tries)}, messages,
+                                       temperature, thinking, seed)
             except llmclient.ServerError as e:
                 if e.status != 400 or "context" not in str(e).lower():
                     raise
@@ -1494,6 +1504,8 @@ def parse_args():
     runs.add_argument("--give-up", action="store_true", help="end a run that stopped getting better")
     runs.add_argument("--stop-below", type=float, metavar="P",
                       help=f"end a run after {STOP_AFTER} tries when the best is below P%% or nothing built")
+    runs.add_argument("--try-tokens", type=osutil.positive_ints, metavar="N,N,...",
+                      help="the reply limit of each try in turn, the last one for the tries after it")
     runs.add_argument("--stale-built-only", action="store_true",
                       help="a try that does not build does not count toward thinking")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
