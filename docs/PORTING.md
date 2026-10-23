@@ -211,7 +211,7 @@ Done when `docs/STYLE.md` covers names, layout and language.
 
 ## 11. Hand over
 
-Tell the user to commit everything in `git status` (it never shows game files). CI runs only on a push to `main` or `master`, or on a pull request. The default branch needs one of those names. CI stays untested until its first run.
+Tell the user to commit everything in `git status` (it never shows game files). CI runs only on a push to `main` or `master`, or on a pull request. The default branch needs one of those names. The new repo's CI first runs on that push. Check that it passes.
 
 ## Traps
 
