@@ -1,7 +1,7 @@
 """The facts that `check.py dossier --facts` lists: what a function's assembly hides from a reader who writes C,
 such as a register argument, a callee that pops its arguments, a global that holds a pointer, a type with no
 body in the types header and a float constant that the source writes as a literal. A C++ member function
-shows only as ecx and a pop.
+shows only as ecx and a pop. With `idioms`, the facts also name the compiler idioms that the code shows.
 
 check.py passes fact_lines to dossier.show. Needs capstone, so it runs in .venv.
 """
@@ -12,12 +12,14 @@ import re
 import struct
 from typing import NamedTuple
 
+import floattells
 import names
+import pe
 import x86
 from dossier import Function, Global, Namer
 from groups import calls, read_first
 
-FACT_LIMIT = 3  # most globals, types and offsets that a fact names
+FACT_LIMIT = 3  # most items that a fact names
 REGISTERS = {"eax": x86.EAX, "ecx": x86.ECX, "edx": x86.EDX, "ebx": x86.EBX, "esi": x86.ESI, "edi": x86.EDI}
 READ_ONLY = ("cmp", "test", "push", "call", "jmp", "fld", "fild", "fcom", "fcomp", "fadd", "fsub", "fmul", "fdiv")
 POINTED_TAG = re.compile(r"\b(struct|union)\s+(\w+)\s*\*")  # a struct or union reached through a pointer
@@ -26,6 +28,18 @@ STDCALL_NAMES = ("WINAPI", "CALLBACK", "APIENTRY", "PASCAL")
 CPP_FILES = (".cpp", ".cc", ".cxx")
 INTEGER_TYPE = re.compile(r"(?:extern\s+|static\s+)*(?:const\s+|volatile\s+)*(?:unsigned\s+|signed\s+)?(?:int|long)\s*")
 BASE_OFFSETS = range(-0x100, 0x10000)  # a displacement outside this is a table address, not a member offset
+OPPOSITE = {"je": "jne", "jne": "je", "jp": "jnp", "jnp": "jp"}
+# What `test ah, M` and the jump that skips the block say about the block, from the status bits C0 0x01, C2 0x04
+# and C3 0x40. 0x44 comes after fucompp.
+COMPARE_ROWS = {(0x41, "jne"): "st0 > other", (0x01, "jne"): "st0 >= other", (0x05, "jp"): "st0 < other",
+                (0x41, "jp"): "st0 <= other", (0x44, "jp"): "st0 == other", (0x44, "jnp"): "st0 != other"}
+TWO_TO_32 = {4: struct.pack("<f", 4294967296.0), 8: struct.pack("<d", 4294967296.0)}
+LEFT_OPERATORS = {"faddp": "+", "fmulp": "*", "fsubrp": "-", "fdivrp": "/"}
+CHAIN_STEPS = ("sub", "dec", "add", "inc")  # a switch chain read from its middle has one of these before it
+CHAIN_NEUTRAL = ("push", "pop", "mov", "movsx", "movzx", "lea")  # may sit inside a switch chain, as x87 ops may
+CHAIN_GAP = 6  # most such instructions between a step and its jump, or a je and the next step
+CAST_REACH = 6  # how far before the `jns` of an unsigned cast the `fild` may sit
+TABLE_JUMP_REACH = 3  # how many instructions after a switch's range check may hold the table jump
 
 
 class Memory(NamedTuple):
@@ -50,6 +64,11 @@ def memory_operands(operands: str) -> list[Memory]:
                 disp += int(term, 0)
         found.append(Memory(base, index, scale, disp))
     return found
+
+
+def memory_width(operands: str) -> int:
+    """The bytes that a `qword ptr` or `dword ptr` operand reads, or 0 for any other operand."""
+    return 8 if "qword ptr" in operands else 4 if "dword ptr" in operands else 0
 
 
 def pops(function: x86.Function) -> set[int]:
@@ -189,7 +208,7 @@ def transfer(instruction: x86.Instruction, before: frozenset, holder) -> frozens
     """The (place, global) pairs after an instruction. A place is a register bit or a frame slot. holder
     maps an address to the known global that holds it, and the offset into it."""
     mnemonic = instruction.mnemonic
-    written = instruction.writes | (x86.CALL_CHANGES if mnemonic == "call" else 0)
+    written = x86.changes(instruction)
     destination, _, source = instruction.operands.partition(", ")
     slot = frame_slot(destination) if mnemonic not in READ_ONLY else None
     after = {(place, key) for place, key in before
@@ -302,16 +321,17 @@ def float_literal(raw: bytes) -> str | None:
     return text if double else text + "f"
 
 
-def constant_fact(function: x86.Function, namer: Namer) -> str | None:
+def constant_fact(function: x86.Function, namer: Namer, skip: dict[int, int]) -> str | None:
     """The line about the float and double constants that the code loads from read-only data and that have no
-    name here. The compiler puts a literal of the source there, so a global at that address breaks the match."""
+    name here. The compiler puts a literal of the source there, so a global at that address breaks the match.
+    SKIP holds the constants that a cast makes, which the source does not write."""
     literals = {}
     for instruction in function.code:
-        width = 8 if "qword ptr" in instruction.operands else 4 if "dword ptr" in instruction.operands else 0
+        width = memory_width(instruction.operands)
         if not instruction.mnemonic.startswith("f") or instruction.mnemonic.startswith("fi") or not width:
             continue  # fild, fiadd and the like read integers
         for m in memory_operands(instruction.operands):
-            if m.base or m.index or namer.holder(m.disp) or not namer.image.is_read_only_data(m.disp):
+            if m.base or m.index or m.disp in skip or namer.holder(m.disp) or not namer.image.is_read_only_data(m.disp):
                 continue
             literal = float_literal(namer.image.read(m.disp, width))
             if literal:
@@ -323,12 +343,292 @@ def constant_fact(function: x86.Function, namer: Namer) -> str | None:
             "Do not declare a global for its address: that breaks the match.")
 
 
+def float_compare_fact(code: list[x86.Instruction]) -> str | None:
+    """How `fnstsw ax`, `test ah, M` and a jump after a float compare map to a C operator, for the pairs the
+    code has. A jump into the block uses the opposite jump of the row that it skips the block with."""
+    pairs, zero = set(), False
+    for compare, status, test, jump in zip(code, code[1:], code[2:], code[3:]):
+        if (compare.mnemonic not in floattells.COMPARES or (status.mnemonic, status.operands) != ("fnstsw", "ax")
+                or test.mnemonic != "test" or not test.operands.startswith("ah, ") or jump.mnemonic not in OPPOSITE):
+            continue
+        mask = x86.number(test.operands.removeprefix("ah, "))
+        key = next((k for k in ((mask, jump.mnemonic), (mask, OPPOSITE[jump.mnemonic])) if k in COMPARE_ROWS), None)
+        if key:
+            pairs.add(key)
+            zero = zero or compare.mnemonic == "ftst"
+    rows = [f"`test ah, {amount(mask)}` with `{jump}` runs it when {COMPARE_ROWS[mask, jump]}."
+            for mask, jump in sorted(pairs)]
+    if not rows:
+        return None
+    return ("A float compare ends in `fnstsw ax`, `test ah, M` and a jump. M and the jump pick the C operator. "
+            "st0 is the top of the x87 stack. The other side is the `fcomp` operand, or the value pushed first "
+            "before `fcompp`." + (" After `ftst` the other side is 0.0." if zero else "") +
+            f" A jump that skips the block means the block runs as follows. {' '.join(rows)} "
+            "A jump into the block uses the opposite jump: swap `je` and `jne`, and swap `jp` and `jnp`, then "
+            "read the same rows. A constant can be st0 (`fld` of a constant, `fldz`, `fld1`). Then flip the "
+            "operator so the variable is on the left.")
+
+
+def unsigned_float_constants(code: list[x86.Instruction], image: pe.Image) -> dict[int, int]:
+    """The 4294967296.0 constants of `fild`, `jns`, `fadd` (an unsigned int to float cast): address: width."""
+    found = {}
+    for n, add in enumerate(code[1:], 1):
+        if add.mnemonic != "fadd" or code[n - 1].mnemonic != "jns":
+            continue
+        width, memory = memory_width(add.operands), memory_operands(add.operands)
+        if not width or len(memory) != 1:
+            continue
+        m = memory[0]
+        if (not m.base and not m.index and image.read(m.disp, width) == TWO_TO_32[width]
+                and any(i.mnemonic == "fild" for i in code[max(0, n - CAST_REACH):n - 1])):
+            found[m.disp] = width
+    return found
+
+
+def unsigned_float_fact(constants: dict[int, int]) -> str | None:
+    """The cast that the `fild`, `jns`, `fadd` constants of unsigned_float_constants stand for."""
+    if not constants:
+        return None
+    casts = {4: "`(float)(unsigned int)x`", 8: "`(double)(unsigned int)x` where the `fadd` reads a qword"}
+    shown = ", or ".join(casts[width] for width in sorted(set(constants.values())))
+    return ("`fild`, then `jns` over `fadd` of 4294967296.0, converts an unsigned 32-bit value to a float. "
+            f"Write {shown}. Do not write the `if (x < 0)` fix-up. The Ghidra draft shows it, and it does not "
+            "match.")
+
+
+def float_argument_fact(code: list[x86.Instruction]) -> str | None:
+    """/Od: `fstp [ebp - N]`, `fld [ebp - N]`, `push ecx`, `fstp [esp]` is a computed float argument."""
+    slots = [store.operands.removeprefix("dword ptr ")
+             for store, load, push, argument in zip(code, code[1:], code[2:], code[3:])
+             if (store.mnemonic, load.mnemonic, push.mnemonic, argument.mnemonic) == ("fstp", "fld", "push", "fstp")
+             and store.operands == load.operands and store.operands.startswith("dword ptr [ebp - ")
+             and push.operands == "ecx" and argument.operands == "dword ptr [esp]"]
+    if not slots:
+        return None
+    slots = list(dict.fromkeys(slots))
+    return (f"`fstp`, `fld`, `push ecx` and `fstp [esp]` through {'the slot' if len(slots) == 1 else 'the slots'} "
+            f"{listed(slots)} pass a computed float as a call argument. The compiler makes the slot itself. "
+            "Write the expression inside the call and declare no local for it. A `(float)` cast of a double "
+            "expression gives the same code. A float local that you pass gives `push ecx` before `fld [local]`, "
+            "not after it. Each such argument gets its own slot below all your locals. `sub esp` counts these slots.")
+
+
+def last_write(code: list[x86.Instruction], n: int, bit: int) -> x86.Instruction | None:
+    """The last instruction before code[N] that may change the register BIT, in address order."""
+    return next((i for i in reversed(code[:n]) if x86.changes(i) & bit), None)
+
+
+def switch_step(code: list[x86.Instruction], n: int) -> tuple[str, int] | None:
+    """(register, amount) when code[N] is `sub R, K`, `dec R`, or `sub R, R2` where `xor R2, R2` last set R2, the
+    form that the compiler gives a case 0 when it keeps a zero in a register."""
+    instruction = code[n]
+    register, _, operand = instruction.operands.partition(", ")
+    if register not in REGISTERS:
+        return None
+    if instruction.mnemonic == "dec" and not operand:
+        return register, 1
+    if instruction.mnemonic != "sub":
+        return None
+    if operand in REGISTERS:
+        zeroing = last_write(code, n, REGISTERS[operand])
+        is_zero = zeroing is not None and (zeroing.mnemonic, zeroing.operands) == ("xor", f"{operand}, {operand}")
+        return (register, 0) if is_zero else None
+    gap = x86.number(operand)
+    return (register, gap) if gap is not None else None
+
+
+def skip_neutral(code: list[x86.Instruction], n: int, bit: int) -> int | None:
+    """The index of the first instruction from N on that is not a move, push, pop or x87 op that leaves the
+    register BIT and the flags alone, when at most CHAIN_GAP such instructions come first."""
+    for k in range(n, min(n + CHAIN_GAP + 1, len(code))):
+        mnemonic = code[k].mnemonic
+        keeps_flags = mnemonic in CHAIN_NEUTRAL or (mnemonic.startswith("f") and "comi" not in mnemonic)
+        if not keeps_flags or x86.changes(code[k]) & bit:
+            return k
+    return None
+
+
+def chain_cases(code: list[x86.Instruction], n: int) -> list[int]:
+    """The case values of the switch chain whose first step is code[N]: the running sums of the `sub R, K` and
+    `dec R` steps on one register, each with a je or jne. A jne ends the chain. A CHAIN_STEPS instruction must
+    not be the last to set R, so a chain is never read from its middle."""
+    first = switch_step(code, n)
+    if not first:
+        return []
+    register, bit = first[0], REGISTERS[first[0]]
+    before = last_write(code, n, bit)
+    if before is not None and before.mnemonic in CHAIN_STEPS:
+        return []
+    cases = []
+    while n is not None and (step := switch_step(code, n)) and step[0] == register:
+        jump = skip_neutral(code, n + 1, bit)
+        if jump is None or code[jump].mnemonic not in ("je", "jne"):
+            break
+        cases.append((cases[-1] if cases else 0) + step[1])
+        if code[jump].mnemonic == "jne":
+            break
+        n = skip_neutral(code, jump + 1, bit)
+    return cases
+
+
+def switch_chain_fact(code: list[x86.Instruction]) -> str | None:
+    """Optimized code: two or more `sub R, K` or `dec R` steps on one register, each with je or jne, are a switch
+    whose case values are the running sums."""
+    chains = []
+    for n, instruction in enumerate(code):
+        cases = chain_cases(code, n)
+        if len(cases) >= 2:
+            chains.append(f"The chain at 0x{instruction.address:x} is cases {', '.join(map(str, cases))}.")
+    if not chains:
+        return None
+    return ("`sub R, K` and `dec R` steps, each followed by `je` or `jne`, are one `switch`, not an `if` chain. "
+            "Each step subtracts the gap from the previous case value, so the case values are the running sums. "
+            f"{' '.join(chains[:FACT_LIMIT])} A last `jne` goes past the switch when there is no `default`. A last "
+            "`je` means the `default` body follows the chain. A `movsx` or `movzx` before the chain shows the "
+            "width and sign of the switched value.")
+
+
+def slot_cases(code: list[x86.Instruction], n: int, slot: str) -> tuple[list[int], set[int | None], int]:
+    """The constants and the jump targets of the `cmp SLOT, K` and `je` pairs from code[N] on, and the index
+    after the last pair."""
+    cases, targets, k = [], set(), n
+    while k + 1 < len(code) and code[k].mnemonic == "cmp" and code[k + 1].mnemonic == "je":
+        place, _, immediate = code[k].operands.partition(", ")
+        number = x86.number(immediate)
+        if place != slot or number is None:
+            break
+        cases.append(number)
+        targets.add(code[k + 1].target)
+        k += 2
+    return cases, targets, k
+
+
+def compare_chain_fact(code: list[x86.Instruction]) -> str | None:
+    """/Od: a stack slot that one `mov` fills and that only the `cmp [ebp - N], K` and `je` pairs after it read,
+    ended by a `jmp`, is the hidden copy of a switch. A dword slot needs two pairs that jump to different places,
+    since an `||` test gives pairs that jump to one place. A word slot is never one: a short switch widens to a
+    dword."""
+    chains, byte = [], False
+    for n, store in enumerate(code):
+        slot, _, source = store.operands.partition(", ")
+        if store.mnemonic != "mov" or "[ebp - " not in slot or source not in x86.REGISTER or slot.startswith("word"):
+            continue
+        cases, targets, k = slot_cases(code, n + 1, slot)
+        is_byte = slot.startswith("byte")
+        if not cases or k >= len(code) or code[k].mnemonic != "jmp" or not (is_byte or len(targets) >= 2):
+            continue
+        bracket = slot[slot.index("["):]
+        if sum(bracket in i.operands for i in code) != len(cases) + 1:
+            continue  # the slot is read elsewhere too, so it is a real local
+        chains.append(f"At 0x{code[n + 1].address:x}, `cmp {slot}` is case{'s' if len(cases) > 1 else ''} "
+                      f"{', '.join(map(str, cases))}.")
+        byte = byte or is_byte
+    if not chains:
+        return None
+    return ("The `cmp [ebp - N], K` and `je` pairs on one stack slot, ended by a `jmp`, are one `switch`. "
+            f"{' '.join(chains[:FACT_LIMIT])} The slot is a hidden copy of the value that the compiler makes. Write "
+            "`switch (value)` on the field, call or local itself, and declare no local for the slot. When the "
+            "value stored to the slot comes from another slot, that one is a real local: keep it. The `cmp` "
+            "constants run in ascending order, and the case bodies follow in source order. Each `je` goes to its "
+            "case body. The last `jmp` goes to `default`, or past the switch."
+            + (" A `byte ptr` slot holds a one-byte value, and its sign does not show." if byte else ""))
+
+
+def is_range_check(load: x86.Instruction, step: x86.Instruction, store: x86.Instruction, compare: x86.Instruction,
+                   above: x86.Instruction) -> bool:
+    """Whether five instructions are `mov R, [slot]`, `sub R, K` or `add R, K`, `mov [slot], R`, `cmp [slot], M`
+    and `ja`, on one frame slot."""
+    register, _, slot = load.operands.partition(", ")
+    name, _, immediate = step.operands.partition(", ")
+    return ((load.mnemonic, store.mnemonic, compare.mnemonic, above.mnemonic) == ("mov", "mov", "cmp", "ja")
+            and slot.startswith("dword ptr [ebp - ") and register in REGISTERS and step.mnemonic in ("sub", "add")
+            and name == register and x86.number(immediate) is not None and store.operands == f"{slot}, {register}"
+            and compare.operands.startswith(f"{slot}, "))
+
+
+def switch_base_fact(code: list[x86.Instruction]) -> str | None:
+    """/Od: `mov R, [slot]`, `sub R, K`, `mov [slot], R`, `cmp [slot], M`, `ja` and a table jump is the range
+    check of a switch whose cases start at K."""
+    for n in range(len(code) - 4):
+        load, step, store, compare, above = code[n:n + 5]
+        if not is_range_check(load, step, store, compare, above):
+            continue
+        if not any(i.mnemonic == "jmp" and x86.SWITCH.search(i.operands) for i in code[n + 5:n + 5 + TABLE_JUMP_REACH]):
+            continue
+        register, _, slot = load.operands.partition(", ")
+        immediate = step.operands.partition(", ")[2]
+        shown = slot.removeprefix("dword ptr ")
+        sign, side = ("-", "plus") if step.mnemonic == "sub" else ("+", "minus")
+        return (f"`{step.mnemonic} {register}, {immediate}`, `mov {shown}, {register}` and "
+                f"`cmp {shown}, {compare.operands.partition(', ')[2]}` form the range check of a `switch`. The "
+                f"compiler adds the `{step.mnemonic}` and the slot {shown} itself. Write `switch (x)` with no "
+                f"`{step.mnemonic}` and no local for `x {sign} {immediate}`. The case values are the table index "
+                f"{side} {immediate}. Ignore that step in the draft, and draft cases that start at 0. `sub esp` "
+                f"counts the slot {shown}.")
+    return None
+
+
+def bit_clear_fact(code: list[x86.Instruction]) -> str | None:
+    """/Od: `and R, 0xffff....` after a load into R clears bits, and only a `~` mask gives that immediate."""
+    sites = []
+    for load, clear in zip(code, code[1:]):
+        register, _, immediate = clear.operands.partition(", ")
+        value = x86.number(immediate)
+        if (clear.mnemonic == "and" and register in REGISTERS and value is not None
+                and 0xffff0000 <= value < 0xffffffff and load.mnemonic in ("movsx", "movzx", "mov")
+                and load.operands.startswith(f"{register}, ")):
+            sites.append((clear.address, register, value))
+    if not sites:
+        return None
+    shown = listed([f"`and {r}, 0x{v:x}` at 0x{a:x} is `& ~0x{~v & 0xffffffff:x}`" for a, r, v in sites])
+    _, register, value = sites[0]
+    return (f"{shown}. Write the mask with `~`. A 16-bit literal such as `0x{value & 0xffff:x}` gives "
+            f"`and {register}, 0x{value & 0xffff:x}`, a different immediate, and does not match.")
+
+
+def left_constant_fact(code: list[x86.Instruction]) -> str | None:
+    """/Od: `fld1` or `fldz` right before a popping `faddp`, `fmulp`, `fsubrp` or `fdivrp` is a left constant."""
+    sites = [f"`{'1.0f' if load.mnemonic == 'fld1' else '0.0f'} {LEFT_OPERATORS[use.mnemonic]} x` at "
+             f"0x{load.address:x}" for load, use in zip(code, code[1:])
+             if load.mnemonic in ("fld1", "fldz") and use.mnemonic in LEFT_OPERATORS and use.operands == "st(1)"]
+    if not sites:
+        return None
+    return ("`fld1` or `fldz` right before `faddp`, `fmulp`, `fsubrp` or `fdivrp` loads a constant that is the "
+            f"left operand. Write {listed(sites)}. `x + 1.0f` compiles to `fadd` with a memory constant instead. "
+            "The Ghidra draft may show the constant on the right.")
+
+
+def minus_one_fact(code: list[x86.Instruction]) -> str | None:
+    """/Od: `imul R, S, -1` is `x * -1`, which `-x` does not give."""
+    sites = [i for i in code if i.mnemonic == "imul" and i.operands.count(", ") == 2 and i.operands.endswith(", -1")]
+    if not sites:
+        return None
+    shown = listed([f"`imul {i.operands}` at 0x{i.address:x}" for i in sites])
+    return (f"{shown} {'is' if len(sites) == 1 else 'are'} `x * -1`. "
+            "Write the multiply by -1. Do not write `-x`, which gives `neg`.")
+
+
+def idiom_lines(code: list[x86.Instruction], flags: str, unsigned: dict[int, int]) -> list[str | None]:
+    """The compiler idioms that the code shows, each with the C that gives it. Each one holds only at the
+    optimization level that it names."""
+    if "/Od" in flags:
+        found = [float_argument_fact(code), compare_chain_fact(code), switch_base_fact(code), bit_clear_fact(code),
+                 left_constant_fact(code), minus_one_fact(code)]
+    else:
+        found = [unsigned_float_fact(unsigned), switch_chain_fact(code)]
+    return [float_compare_fact(code)] + found
+
+
 def fact_lines(function: x86.Function, f: Function, flags: str, cluster: bool, namer: Namer, types: names.Types,
-               decoder: x86.Decoder, sizes: dict[int, int]) -> list[str]:
-    """The facts about a function: what its assembly hides from a reader who writes C."""
+               decoder: x86.Decoder, sizes: dict[int, int], idioms: bool = False) -> list[str]:
+    """The facts about a function: what its assembly hides from a reader who writes C. IDIOMS adds the compiler
+    idioms that the code shows."""
     lines = [] if cluster else [convention_fact(function, flags, f, decoder, sizes)]
     lines += pointer_facts(function, namer)
     global_decls = [decl for kind, _, decl in namer.used.values() if kind == "global"]
     lines.append(bodiless_fact([f.proto, f.locals] + global_decls, types))
-    lines.append(constant_fact(function, namer))
+    unsigned = unsigned_float_constants(function.code, namer.image) if idioms and "/Od" not in flags else {}
+    lines.append(constant_fact(function, namer, unsigned))
+    if idioms:
+        lines += idiom_lines(function.code, flags, unsigned)
     return [line for line in lines if line]

@@ -93,7 +93,8 @@ class FakeImage:
 
     import_slots = {0x503000: "Import"}
     bytes = {0x580000: struct.pack("<f", -65535.0), 0x580008: struct.pack("<d", 0.1),
-             0x580010: struct.pack("<f", math.inf), 0x501000: struct.pack("<f", 2.0)}
+             0x580010: struct.pack("<f", math.inf), 0x501000: struct.pack("<f", 2.0),
+             0x580018: struct.pack("<f", 4294967296.0), 0x580020: struct.pack("<d", 4294967296.0)}
 
     def contains(self, address: int) -> bool:
         return 0x400000 <= address < 0x600000
@@ -583,7 +584,8 @@ def check_float_literal() -> list[str]:
 
 def check_constant_fact() -> list[str]:
     """constant_fact names the floats and doubles that x87 code loads from read-only data with no name here.
-    It skips a named global, writable data, an integer load, a register base and an infinity."""
+    It skips a named global, writable data, an integer load, a register base, an infinity and an address in its
+    skip table."""
     float_load = "fld dword ptr [0x580000]"
     double_load = "fmul qword ptr [0x580008]"
     cases = [([float_load, "ret"], [], "The code loads the constants -65535.0f (at 0x580000) from"),
@@ -596,9 +598,191 @@ def check_constant_fact() -> list[str]:
              (["mov eax, dword ptr [0x580000]", "ret"], [], None)]
     failures = []
     for code, globals_, wanted in cases:
-        found = facts.constant_fact(build(code), namer_of(globals_))
+        found = facts.constant_fact(build(code), namer_of(globals_), {})
         if (found or "")[:len(wanted or "")] != (wanted or "") or (found is None) != (wanted is None):
             failures.append(f"constant_fact gives {found!r} for {described(code)}, not one that starts {wanted!r}")
+    found = facts.constant_fact(build([float_load, "ret"]), namer_of([]), {0x580000: 4})
+    if found is not None:
+        failures.append(f"constant_fact gives {found!r} for a constant in its skip table, not None")
+    return failures
+
+
+UNSIGNED = ["fild dword ptr [esp + 4]", "test eax, eax", "jns @4", "fadd dword ptr [0x580018]", "ret"]
+SWITCH_BASE = ["mov ecx, dword ptr [ebp - 8]", "sub ecx, 1", "mov dword ptr [ebp - 8], ecx",
+               "cmp dword ptr [ebp - 8], 5", "ja @7", "mov edx, dword ptr [ebp - 8]",
+               "jmp dword ptr [edx*4 + 0x401100]", "ret"]
+
+
+def check_text_cases(fact, cases: list[tuple[list[str], str | None]]) -> list[str]:
+    """The failures of a fact function over (code, wanted) cases: None when wanted is None, else a text that
+    holds wanted."""
+    failures = []
+    for code, wanted in cases:
+        found = fact(build(code).code)
+        if (found is None) != (wanted is None) or (wanted and wanted not in found):
+            failures.append(f"{fact.__name__} gives {found!r} for {described(code)}, not one that holds {wanted!r}")
+    return failures
+
+
+def check_float_compare_fact() -> list[str]:
+    """float_compare_fact names the C operator of each `fnstsw ax`, `test ah, M` and jump after a float compare
+    (fcom, fcomp, fcompp, fucom, fucomp, fucompp or ftst), for every row of COMPARE_ROWS. A jump into the block
+    reads the swapped row, a mask that no row holds says nothing, and `fnstsw` with no compare before it says
+    nothing. After `ftst` the other side is 0.0."""
+    compare = ["fcomp dword ptr [0x580000]", "fnstsw ax"]
+    return check_text_cases(facts.float_compare_fact, [
+        (compare + ["test ah, 0x41", "jne @5", "ret"], "`test ah, 0x41` with `jne` runs it when st0 > other."),
+        (compare + ["test ah, 0x41", "je @5", "ret"], "`test ah, 0x41` with `jne` runs it when st0 > other."),
+        (compare + ["test ah, 1", "jne @5", "ret"], "`test ah, 1` with `jne` runs it when st0 >= other."),
+        (compare + ["test ah, 5", "jp @5", "ret"], "`test ah, 5` with `jp` runs it when st0 <"),
+        (compare + ["test ah, 0x41", "jp @5", "ret"], "`test ah, 0x41` with `jp` runs it when st0 <= other."),
+        (["fucompp", "fnstsw ax", "test ah, 0x44", "jp @5", "ret"], "st0 == other"),
+        (["fucompp", "fnstsw ax", "test ah, 0x44", "jnp @5", "ret"], "st0 != other"),
+        (["fucomp dword ptr [0x580000]", "fnstsw ax", "test ah, 5", "jp @5", "ret"], "st0 < other"),
+        (["ftst", "fnstsw ax", "test ah, 0x41", "jne @5", "ret"], "After `ftst` the other side is 0.0."),
+        (compare + ["test ah, 0x40", "jne @5", "ret"], None),
+        (["fnstsw ax", "test ah, 5", "jp @4", "ret"], None),
+    ])
+
+
+def check_float_argument_fact() -> list[str]:
+    """float_argument_fact names the slot of `fstp`, `fld`, `push ecx`, `fstp [esp]` on one slot. A float local
+    passed to a call has `push ecx` first, and a `fld` of another slot is no such argument."""
+    return check_text_cases(facts.float_argument_fact, [
+        (["fstp dword ptr [ebp - 4]", "fld dword ptr [ebp - 4]", "push ecx", "fstp dword ptr [esp]", "call @5",
+          "ret"], "through the slot [ebp - 4] pass"),
+        (["fstp dword ptr [ebp - 4]", "push ecx", "fld dword ptr [ebp - 4]", "fstp dword ptr [esp]", "ret"], None),
+        (["fstp dword ptr [ebp - 4]", "fld dword ptr [ebp - 8]", "push ecx", "fstp dword ptr [esp]", "ret"], None),
+    ])
+
+
+def check_switch_chain_fact() -> list[str]:
+    """switch_chain_fact gives the case values of two or more `sub R, K` or `dec R` steps on one register, each
+    with je or jne, as running sums. A neutral instruction may sit inside the chain, at most CHAIN_GAP of them
+    between a step and its jump. A chain after an `add` or a `jne` is read from its middle, `sub R, R2` is case
+    0 only when `xor R2, R2` set R2, and a step on another register ends the chain."""
+    gap = lambda count: ["mov eax, esi", "sub eax, 1"] + ["push edi"] * count + ["je @1", "dec eax", "je @1", "ret"]
+    return check_text_cases(facts.switch_chain_fact, [
+        (["mov eax, dword ptr [ecx + 4]", "sub eax, 0", "je @7", "sub eax, 2", "je @7", "sub eax, 4", "jne @8", "nop",
+          "ret"], "The chain at 0x401001 is cases 0, 2, 6."),
+        (["mov eax, ebp", "sub eax, 2", "push edi", "je @8", "dec eax", "je @8", "sub eax, 6", "jne @9", "nop", "ret"],
+         "The chain at 0x401001 is cases 2, 3, 9."),
+        (gap(facts.CHAIN_GAP), "The chain at 0x401001 is cases 1, 2."),
+        (gap(facts.CHAIN_GAP + 1), None),
+        (["xor ebx, ebx", "mov eax, dword ptr [ecx + 4]", "sub eax, ebx", "je @8", "dec eax", "je @8", "dec eax",
+          "jne @8", "ret"], "The chain at 0x401002 is cases 0, 1, 2."),
+        (["mov ebx, esi", "mov eax, dword ptr [ecx + 4]", "sub eax, ebx", "je @8", "dec eax", "je @8", "dec eax",
+          "jne @8", "ret"], None),
+        (["mov eax, esi", "sub eax, 1", "je @5", "sub ecx, 1", "je @5", "ret"], None),
+        (["add eax, 3", "sub eax, 1", "je @5", "dec eax", "je @5", "ret"], None),
+        (["mov eax, esi", "sub eax, 4", "jne @5", "dec eax", "je @5", "ret"], None),
+    ])
+
+
+def check_compare_chain_fact() -> list[str]:
+    """compare_chain_fact names the `cmp [ebp - N], K` and `je` pairs on a slot that one `mov` fills and a `jmp`
+    ends. A dword slot needs two pairs that jump to different places, a byte slot one. A slot read elsewhere is
+    a real local, a word slot is never a switch copy, and a chain with no `mov` before it is no copy."""
+    return check_text_cases(facts.compare_chain_fact, [
+        (["mov dword ptr [ebp - 8], eax", "cmp dword ptr [ebp - 8], 1", "je @6", "cmp dword ptr [ebp - 8], 3",
+          "je @7", "jmp @8", "nop", "nop", "ret"], "At 0x401001, `cmp dword ptr [ebp - 8]` is cases 1, 3. The slot"),
+        (["mov byte ptr [ebp - 4], al", "cmp byte ptr [ebp - 4], 0", "je @4", "jmp @5", "nop", "ret"],
+         "is case 0. The slot"),
+        (["mov dword ptr [ebp - 8], eax", "cmp dword ptr [ebp - 8], 1", "je @4", "jmp @5", "nop", "ret"], None),
+        (["mov dword ptr [ebp - 8], eax", "cmp dword ptr [ebp - 8], 1", "je @6", "cmp dword ptr [ebp - 8], 3",
+          "je @6", "jmp @7", "nop", "ret"], None),
+        (["mov dword ptr [ebp - 8], eax", "cmp dword ptr [ebp - 8], 1", "je @6", "cmp dword ptr [ebp - 8], 3",
+          "je @7", "jmp @8", "mov ecx, dword ptr [ebp - 8]", "nop", "ret"], None),
+        (["cmp dword ptr [ebp - 8], 1", "je @5", "cmp dword ptr [ebp - 8], 3", "je @6", "jmp @7", "nop", "nop",
+          "ret"], None),
+        (["mov word ptr [ebp - 4], ax", "cmp word ptr [ebp - 4], 1", "je @6", "cmp word ptr [ebp - 4], 3", "je @7",
+          "jmp @8", "nop", "nop", "ret"], None),
+    ])
+
+
+def check_switch_base_fact() -> list[str]:
+    """switch_base_fact names the `sub` or `add` of a switch whose cases do not start at 0, from the `mov`, step,
+    `mov`, `cmp`, `ja` and table jump. The table jump may come up to TABLE_JUMP_REACH instructions after the
+    `ja`. Without the table jump, or when the source shifts a value that the slot did not load, it says nothing."""
+    base_add = [line.replace("sub ecx", "add ecx") for line in SWITCH_BASE]
+    source_shift = ["mov ecx, dword ptr [ebp - 4]"] + SWITCH_BASE[1:]
+    reach = lambda count: SWITCH_BASE[:5] + ["nop"] * count + SWITCH_BASE[5:]  # COUNT nops after the `ja`
+    return check_text_cases(facts.switch_base_fact, [
+        (SWITCH_BASE, "The case values are the table index plus 1."),
+        (base_add, "The case values are the table index minus 1."),
+        (reach(facts.TABLE_JUMP_REACH - 2), "The case values are the table index plus 1."),
+        (reach(facts.TABLE_JUMP_REACH - 1), None),
+        (SWITCH_BASE[:6] + ["ret"], None),
+        (source_shift, None),
+    ])
+
+
+def check_bit_clear_fact() -> list[str]:
+    """bit_clear_fact names the `and R, 0xffff....` after a load into R. A mask that no `~` of a 16-bit value
+    gives, a 16-bit immediate and an `and` after `sbb` say nothing."""
+    return check_text_cases(facts.bit_clear_fact, [
+        (["movsx edx, word ptr [eax + 4]", "and edx, 0xfffffeff", "mov word ptr [ecx + 4], dx", "ret"],
+         "`and edx, 0xfffffeff` at 0x401001 is `& ~0x100`. Write the mask with `~`. A 16-bit literal such as "
+         "`0xfeff` gives `and edx, 0xfeff`"),
+        (["sbb edx, edx", "and edx, 0xffffff92", "ret"], None),
+        (["movsx edx, word ptr [eax + 4]", "and edx, 0xfeff", "ret"], None),
+    ])
+
+
+def check_left_constant_fact() -> list[str]:
+    """left_constant_fact names the `fld1` or `fldz` right before a popping `faddp`, `fmulp`, `fsubrp` or `fdivrp`
+    as the left operand. A `fld1` before `fstp` is no operand."""
+    return check_text_cases(facts.left_constant_fact, [
+        (["fld dword ptr [ebp - 4]", "fld1", "faddp st(1)", "ret"], "Write `1.0f + x` at 0x401001."),
+        (["fld dword ptr [ebp - 4]", "fldz", "fsubrp st(1)", "ret"], "`0.0f - x`"),
+        (["fld1", "fstp dword ptr [ebp - 4]", "ret"], None),
+    ])
+
+
+def check_minus_one_fact() -> list[str]:
+    """minus_one_fact quotes the operands of each `imul R, S, -1` and lists their addresses. Another constant
+    says nothing."""
+    return check_text_cases(facts.minus_one_fact, [
+        (["imul eax, eax, -1", "ret"], "`imul eax, eax, -1` at 0x401000 is `x * -1`."),
+        (["imul eax, ecx, -1", "ret"], "`imul eax, ecx, -1` at 0x401000 is `x * -1`."),
+        (["imul eax, eax, -1", "imul ecx, edx, -1", "ret"],
+         "`imul eax, eax, -1` at 0x401000 and `imul ecx, edx, -1` at 0x401001 are `x * -1`."),
+        (["imul eax, eax, -2", "ret"], None),
+    ])
+
+
+def check_unsigned_float() -> list[str]:
+    """unsigned_float_constants finds the 4294967296.0 that `fadd` adds right after `jns`, with a `fild` before
+    it, as a float or a double. unsigned_float_fact names the cast for each width. A `fld` before it, or another
+    constant, is no cast."""
+    qword = UNSIGNED[:3] + ["fadd qword ptr [0x580020]", "ret"]
+    cases = [(UNSIGNED, {0x580018: 4}, "Write `(float)(unsigned int)x`."),
+             (qword, {0x580020: 8}, "Write `(double)(unsigned int)x` where the `fadd` reads a qword."),
+             (["fld dword ptr [esp + 4]"] + UNSIGNED[1:], {}, None),
+             (UNSIGNED[:3] + ["fadd dword ptr [0x580000]", "ret"], {}, None)]
+    failures = []
+    for code, wanted, text in cases:
+        found = facts.unsigned_float_constants(build(code).code, FakeImage())
+        line = facts.unsigned_float_fact(found)
+        if found != wanted or (line is None) != (text is None) or (text and text not in line):
+            failures.append(f"unsigned float gives {found} and {line!r} for {described(code)}, not {wanted} and "
+                            f"{text!r}")
+    return failures
+
+
+def check_idiom_lines() -> list[str]:
+    """idiom_lines gives the /Od idioms only for /Od code, and the optimized ones only for other code."""
+    code = build(["imul eax, eax, -1", "mov ecx, esi", "sub ecx, 1", "je @6", "dec ecx", "je @6", "ret"]).code
+    minus_one, chain = facts.minus_one_fact(code), facts.switch_chain_fact(code)
+    if minus_one is None or chain is None:
+        return [f"the idiom_lines fixture gives {minus_one!r} and {chain!r}, not both facts"]
+    cases = [("/Od /GS", minus_one, chain), ("/O2 /GS", chain, minus_one)]
+    failures = []
+    for flags, kept, dropped in cases:
+        lines = facts.idiom_lines(code, flags, {})
+        if kept not in lines or dropped in lines:
+            failures.append(f"idiom_lines for {flags} gives {[line[:30] for line in lines if line]}, not "
+                            f"{kept[:30]!r} without {dropped[:30]!r}")
     return failures
 
 
@@ -640,6 +824,24 @@ def check_fact_lines() -> list[str]:
     return failures
 
 
+def check_fact_lines_idioms() -> list[str]:
+    """With idioms, fact_lines leaves the cast's 4294967296.0 out of the constant line and puts the cast's line
+    last. Without them, the constant line keeps it."""
+    failures = []
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text(HEADER, encoding="utf-8")
+        types = names.Types(path)
+        for idioms in (False, True):
+            found = facts.fact_lines(build(UNSIGNED), info("Foo", "void Foo(void)", "a.c"), "/O2", False,
+                                     namer_of([]), types, *NO_CALLEES, idioms=idioms)
+            constant = any("4294967300.0f" in line for line in found)
+            cast = bool(found) and found[-1].startswith("`fild`, then `jns`")
+            if (constant, cast) != (not idioms, idioms):
+                failures.append(f"fact_lines with idioms {idioms} gives {[line[:40] for line in found]}")
+    return failures
+
+
 # ---------------------------------------------------------------- callee names
 
 def check_library_annotations() -> list[str]:
@@ -670,6 +872,9 @@ def run() -> list[str]:
                   check_exit_pops, check_printed_keyword, check_amount, check_listed, check_offsets_text,
                   check_convention_fact, check_frame_slot, check_transfer, check_pointer_globals,
                   check_pointer_facts, check_bodiless_fact, check_float_literal, check_constant_fact,
-                  check_fact_lines, check_library_annotations):
+                  check_float_compare_fact, check_float_argument_fact, check_switch_chain_fact,
+                  check_compare_chain_fact, check_switch_base_fact, check_bit_clear_fact, check_left_constant_fact,
+                  check_minus_one_fact, check_unsigned_float, check_idiom_lines, check_fact_lines,
+                  check_fact_lines_idioms, check_library_annotations):
         failures += check()
     return failures
