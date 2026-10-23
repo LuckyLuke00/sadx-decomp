@@ -48,6 +48,11 @@ void AL_SetItem(struct task *tp, long TreeNum, struct cnkobj *pObject, struct NJ
 {
 }
 
+// STUB: SADX 0x00450b00
+void AL_SetItemOffset(struct task *tp, long TreeNum, struct AL_ITEM_INFO *pInfo)
+{
+}
+
 // FUNCTION: SADX 0x00450bd0
 void AL_SetItemParallelLeftHand(struct task *tp, struct cnkobj *pObject, struct NJS_TEXLIST *pTexlist)
 {

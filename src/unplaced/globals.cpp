@@ -110,6 +110,18 @@ struct NJS_POINT3 DAT_009bfd58;
 // GLOBAL: SADX 0x009c2d58
 int DAT_009c2d58[1];
 
+// GLOBAL: SADX 0x009c8b18
+struct TaskInfo DAT_009c8b18;
+
+// GLOBAL: SADX 0x009c8b34
+struct ActionParam DAT_009c8b34;
+
+// GLOBAL: SADX 0x009c8b90
+struct TaskInfo DAT_009c8b90;
+
+// GLOBAL: SADX 0x009c8ba8
+struct ActionParam DAT_009c8ba8;
+
 // GLOBAL: SADX 0x00a098cc
 struct TaskInfo RdTaskInfo;
 
@@ -212,11 +224,20 @@ struct obj object_sikake_powerbox_powerbox[1];
 // GLOBAL: SADX 0x01cad0c4
 struct obj object_ssobj_chaocard_chaocard[1];
 
+// GLOBAL: SADX 0x01e555b0
+struct NJS_TEXLIST texlist_al_tex_common;
+
 // GLOBAL: SADX 0x01e555c0
 struct NJS_TEXLIST texlist_al_icon;
 
+// GLOBAL: SADX 0x01e55760
+struct NJS_TEXLIST texlist_al_object;
+
 // GLOBAL: SADX 0x01e55768
 struct NJS_TEXLIST texlist_al_toy;
+
+// GLOBAL: SADX 0x01e558a8
+struct NJS_TEXLIST texlist_al_dx_obj_cmn;
 
 // GLOBAL: SADX 0x01e558b8
 struct NJS_TEXLIST texlist_al_dx_tex_xybutton;
@@ -286,6 +307,12 @@ struct cnkobj **pPartsObjectListAdult[1];
 
 // GLOBAL: SADX 0x01fb19ec
 struct cnkobj * pPartsObjectListChild[1];
+
+// GLOBAL: SADX 0x01fb629c
+struct cnkobj object_breedingflower00_breedingflower00[1];
+
+// GLOBAL: SADX 0x01fb6644
+struct cnkobj object_breedingflower01_breedingflower01[1];
 
 // GLOBAL: SADX 0x01ffffd0
 struct NJS_MKEY_F pos_alm_piyo_reg_r[1];
@@ -358,6 +385,12 @@ char objLandTableChaoRace[36];
 
 // GLOBAL: SADX 0x022ae290
 struct pathtag *pathdata_race[4];
+
+// GLOBAL: SADX 0x022ae2a0
+struct NJS_POINT3 unitVecCracker;
+
+// GLOBAL: SADX 0x022ae2ac
+struct NJS_POINT3 startPosCracker;
 
 // GLOBAL: SADX 0x0233e790
 struct NJS_TEXLIST texlist_chao_hyouji;
@@ -2026,6 +2059,9 @@ int DAT_05b314c8;
 
 // GLOBAL: SADX 0x05b314d8
 struct task *DAT_05b314d8;
+
+// GLOBAL: SADX 0x05b32e54
+struct task *DAT_05b32e54;
 
 // GLOBAL: SADX 0x05b33014
 int DAT_05b33014;
@@ -4766,11 +4802,41 @@ int DAT_060c5fc8;
 // GLOBAL: SADX 0x060c60ec
 struct task *DAT_060c60ec;
 
+// GLOBAL: SADX 0x060c6130
+int DAT_060c6130;
+
 // GLOBAL: SADX 0x060c6134
 int DAT_060c6134;
 
+// GLOBAL: SADX 0x060ca138
+char DAT_060ca138;
+
+// GLOBAL: SADX 0x060cae24
+int DAT_060cae24;
+
 // GLOBAL: SADX 0x060cae30
 int DAT_060cae30;
+
+// GLOBAL: SADX 0x060cae58
+float DAT_060cae58;
+
+// GLOBAL: SADX 0x060cae5c
+float DAT_060cae5c;
+
+// GLOBAL: SADX 0x060cae60
+float DAT_060cae60;
+
+// GLOBAL: SADX 0x060caea0
+float DAT_060caea0;
+
+// GLOBAL: SADX 0x060caea4
+float DAT_060caea4;
+
+// GLOBAL: SADX 0x060caea8
+float DAT_060caea8;
+
+// GLOBAL: SADX 0x060cb31c
+int DAT_060cb31c;
 
 // GLOBAL: SADX 0x060cb320
 int DAT_060cb320;

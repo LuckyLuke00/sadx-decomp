@@ -15,6 +15,11 @@ void _alg_garden00_ss_epilog()
 	___OutputDebugString("ChaoStgGarden00SS Epilog end\n");
 }
 
+// STUB: SADX 0x00476b30
+void AL_Garden00MasterExecutor(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00476be0
 void AL_Garden00MasterDestructor(struct task *tp)
 {

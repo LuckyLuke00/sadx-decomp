@@ -31,6 +31,7 @@ struct AL_BUYO_PARAM;
 struct AL_EMOTION;
 struct al_entry_work;
 struct AL_GENE;
+struct AL_ITEM_INFO;
 struct AL_KARATE_PERSONAL_INFO;
 struct AL_KNOWLEDGE_BTL;
 struct AL_KNOWLEDGE_CHAO;
@@ -936,6 +937,18 @@ static_assert(sizeof(Angle3) == 0xc, "sizeof Angle3");
 static_assert(offsetof(Angle3, x) == 0x0, "Angle3::x");
 static_assert(offsetof(Angle3, y) == 0x4, "Angle3::y");
 static_assert(offsetof(Angle3, z) == 0x8, "Angle3::z");
+
+struct AL_ITEM_INFO {
+    struct cnkobj *pObject;
+    struct NJS_TEXLIST *pTexlist;
+    struct NJS_POINT3 OffsetPos;
+    struct Angle3 OffsetAng;
+};
+static_assert(sizeof(AL_ITEM_INFO) == 0x20, "sizeof AL_ITEM_INFO");
+static_assert(offsetof(AL_ITEM_INFO, pObject) == 0x0, "AL_ITEM_INFO::pObject");
+static_assert(offsetof(AL_ITEM_INFO, pTexlist) == 0x4, "AL_ITEM_INFO::pTexlist");
+static_assert(offsetof(AL_ITEM_INFO, OffsetPos) == 0x8, "AL_ITEM_INFO::OffsetPos");
+static_assert(offsetof(AL_ITEM_INFO, OffsetAng) == 0x14, "AL_ITEM_INFO::OffsetAng");
 
 // Offsets not checked against the code yet.
 struct AL_KARATE_PERSONAL_INFO {
