@@ -9,3 +9,9 @@ long ALBHV_Move(struct task *tp)
 	AL_WalkSelect(tp);
 	return 0;
 }
+
+// STUB: SADX 0x004609a0
+long AL_CheckWhistle(struct task *tp)
+{
+	return (long)0;
+}

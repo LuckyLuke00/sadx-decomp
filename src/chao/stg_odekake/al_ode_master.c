@@ -4,6 +4,11 @@ void FUN_0047a9f0();
 void AL_GBAManagerSleep();
 void Free(void *mp);
 
+// STUB: SADX 0x0047aa10
+void AL_OdekakeMenuMaster(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0047aab0
 void AL_OdekakeMenuMasterDestructor(struct task *tp)
 {

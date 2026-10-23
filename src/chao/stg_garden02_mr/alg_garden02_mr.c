@@ -1,4 +1,5 @@
 #include "decls.h"
+extern short *DAT_05baf368;
 extern struct NJS_TEXLIST texlist_al_dx_tex_xybutton;
 void FUN_004b6520(int param_1);
 void BGM_Stop();
@@ -14,6 +15,31 @@ void _alg_garden02_mr_epilog()
 	___OutputDebugString("ChaoStgGarden02MR Epilog begin\n");
 	AL_ReleaseModule((enum EChaoModuleEntry)2);
 	___OutputDebugString("ChaoStgGarden02MR Epilog end\n");
+}
+
+// FUNCTION: SADX 0x00479e40
+void AL_Garden02MasterExecutor(struct task *tp)
+{
+	short *var1;
+
+	LoopTaskC(tp);
+	var1 = DAT_05baf368;
+	if (((float *)var1)[8] < 10.0f && ((float *)var1)[10] < -150.0f)
+	{
+		SetEntranceNumber(4);
+		AL_ExitToStage(0x21, 0);
+	}
+	if (((float *)var1)[9] > 200.0)
+	{
+		((float *)var1)[9] = 200.0f;
+	}
+	if (((float *)var1)[9] < -40.0f)
+	{
+		((float *)var1)[8] = 0.0f;
+		((float *)var1)[9] = 0.0f;
+		((float *)var1)[10] = 0.0f;
+	}
+	DrawSaltWater3D_39();
 }
 
 // FUNCTION: SADX 0x00479ed0
@@ -32,4 +58,9 @@ void AL_Garden02MasterDestructor(struct task *tp)
 	AL_MinimalExit();
 	AL_ReleaseTex(1);
 	FUN_0044db20(tp);
+}
+
+// STUB: SADX 0x0047a120
+void _alg_garden02_mr_prolog()
+{
 }

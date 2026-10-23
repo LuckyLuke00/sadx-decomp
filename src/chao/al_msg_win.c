@@ -1,9 +1,13 @@
 #include "decls.h"
-struct SAlMsgFontStr;
 void FUN_0044e380(struct DAT_0044e380_0 *param_1, int param_2, int param_3, int param_4);
 
 // STUB: SADX 0x0044e1d0
 void AlMsgWinCreate(struct SAlMsgWin *self)
+{
+}
+
+// STUB: SADX 0x0044e210
+void AlMsgWinDelete(struct SAlMsgWin *self)
 {
 }
 

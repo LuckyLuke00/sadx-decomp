@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_00492b00(int param_1, int param_2);
+void FUN_00492b20(int param_1, int param_2);
+void FUN_00492b80(int param_1, int param_2, int param_3);
 extern unsigned char mouse_tex_num[7][2];
 extern unsigned char eye_tex_num[];
 
@@ -39,4 +42,9 @@ void FUN_00492b80(int param_1, int param_2, int param_3)
 {
 	*(int *)(param_1 + 0x7f0) = param_2;
 	*(int *)(param_1 + 0x800) = param_3;
+}
+
+// STUB: SADX 0x00492ba0
+void ADV1_AL_FaceInit(struct taskwk *twp, struct alifewk *awp)
+{
 }

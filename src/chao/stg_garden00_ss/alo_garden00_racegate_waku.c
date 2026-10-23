@@ -1,4 +1,5 @@
 #include "decls.h"
+static void ObjectMain(struct task *tp);
 extern struct CCL_INFO ccinfo[];
 extern int DAT_05b9d838;
 extern struct NJS_TEXLIST texlist_Garden00SSObj;
@@ -19,6 +20,11 @@ void ObjectDisplay(struct task *tp)
 		FUN_004a7cb0((struct obj *)&object_stch_racegate_waku_waku, (struct NJS_MOTION *)&motion_stch_racegate_waku, var1->counter.f);
 		njPopMatrix(1);
 	}
+}
+
+// STUB: SADX 0x00477210
+static void ObjectMain(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x00477250

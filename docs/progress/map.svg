@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1416" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">2,997 of 16,524 game functions done (18.14%), accuracy 99.58%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">3,031 of 16,524 game functions done (18.34%), accuracy 99.58%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="596,1162.5 602,1162.5 605,1166 599,1173 593,1166" fill="#2f6bff" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="596,1162.5 602,1162.5 600.5,1166 597.5,1166" fill="#ffffff" fill-opacity="0.45"/>
@@ -1203,9 +1203,9 @@
 </g>
 <polygon points="675,539.5 681,539.5 684,543 678,550 672,543" fill="#7fe8ff" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="675,539.5 681,539.5 679.5,543 676.5,543" fill="#ffffff" fill-opacity="0.45"/>
-<text x="688" y="549" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">21%</tspan></text>
-<rect x="673" y="557" width="307" height="244" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 281 of 1,312 done</title></rect>
-<text x="676" y="571" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">21%</tspan></text>
+<text x="688" y="549" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">23%</tspan></text>
+<rect x="673" y="557" width="307" height="244" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 309 of 1,312 done</title></rect>
+<text x="676" y="571" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">23%</tspan></text>
 <g transform="translate(676,575)">
 <rect y="0" width="301" height="210" fill="url(#todo)"/>
 <rect y="210" width="154" height="7" fill="url(#todo)"/>
@@ -1227,6 +1227,7 @@
 <rect x="112" y="7" width="6" height="6" fill="#b07d00"><title>0x00438830 AL_SetMotionFrame: 100%</title></rect>
 <rect x="154" y="7" width="6" height="6" fill="#b07d00"><title>0x004388f0 AL_IsHero: 100%</title></rect>
 <rect x="161" y="7" width="6" height="6" fill="#b07d00"><title>0x00438920 AL_IsDark: 100%</title></rect>
+<rect x="189" y="7" width="6" height="6" fill="#b07d00"><title>0x00438a50 AL_ParameterCatchup: 100%</title></rect>
 <rect x="217" y="7" width="6" height="6" fill="#b07d00"><title>0x00438cb0 AL_ParameterAddAPos: 100%</title></rect>
 <rect x="245" y="7" width="6" height="6" fill="#b07d00"><title>0x00438e10 AL_ParameterControlInit: 100%</title></rect>
 <rect x="259" y="7" width="6" height="6" fill="#b07d00"><title>0x00438e50 AL_ClearChaoParam: 100%</title></rect>
@@ -1368,6 +1369,7 @@
 <rect x="203" y="77" width="6" height="6" fill="#b07d00"><title>0x0044eab0 AlgKinderOrthoEnd: 100%</title></rect>
 <rect x="245" y="77" width="6" height="6" fill="#b07d00"><title>0x0044eec0 AlgKinderOrthoQPolyBegin: 100%</title></rect>
 <rect x="266" y="77" width="6" height="6" fill="#b07d00"><title>0x0044f030 AlgKinderOrthoNjTranslate: 100%</title></rect>
+<rect x="294" y="77" width="6" height="6" fill="#b07d00"><title>0x0044f330 AL_FreeChaoObject: 100%</title></rect>
 <rect x="21" y="84" width="6" height="6" fill="#b07d00"><title>0x0044f7f0 FUN_0044f7f0: 100%</title></rect>
 <rect x="56" y="84" width="6" height="6" fill="#b07d00"><title>0x00450210 AL_ShapeExit: 100%</title></rect>
 <rect x="63" y="84" width="6" height="6" fill="#b07d00"><title>0x00450270 AL_ShapeChangeType: 100%</title></rect>
@@ -1392,6 +1394,7 @@
 <rect x="196" y="91" width="6" height="6" fill="#7a9cd8"><title>0x004518d0 AL_AllFieldCreateT: 13.3%</title></rect>
 <rect x="280" y="91" width="6" height="6" fill="#b07d00"><title>0x00452660 ALO_RakugakiDestructor: 100%</title></rect>
 <rect x="112" y="98" width="6" height="6" fill="#b07d00"><title>0x00454540 ALO_ShabonDestructor: 100%</title></rect>
+<rect x="294" y="98" width="6" height="6" fill="#b07d00"><title>0x00455ed0 ALBHV_PyonPyon: 100%</title></rect>
 <rect x="7" y="105" width="6" height="6" fill="#b07d00"><title>0x00456030 ALBHV_Fukkin: 100%</title></rect>
 <rect x="126" y="105" width="6" height="6" fill="#b07d00"><title>0x00457a50 AL_FaceEyelidGetCloseAng: 100%</title></rect>
 <rect x="133" y="105" width="6" height="6" fill="#b07d00"><title>0x00457a70 AL_FaceEyelidGetSlopeAng: 100%</title></rect>
@@ -1417,18 +1420,25 @@
 <rect x="287" y="119" width="6" height="6" fill="#b07d00"><title>0x00461670 ALBHV_BornPon: 100%</title></rect>
 <rect x="294" y="119" width="6" height="6" fill="#b07d00"><title>0x004616b0 ALBHV_BornKyoro: 100%</title></rect>
 <rect x="21" y="126" width="6" height="6" fill="#b07d00"><title>0x00461b80 MayuDestructor: 100%</title></rect>
+<rect x="77" y="126" width="6" height="6" fill="#b07d00"><title>0x004622c0 ALBHV_Notice: 100%</title></rect>
 <rect x="84" y="126" width="6" height="6" fill="#b07d00"><title>0x00462350 ALBHV_TurnToAim: 100%</title></rect>
 <rect x="196" y="126" width="6" height="6" fill="#b07d00"><title>0x00463330 FUN_00463330: 100%</title></rect>
 <rect x="245" y="126" width="6" height="6" fill="#b07d00"><title>0x004634c0 AL_PerceptionInit: 100%</title></rect>
 <rect x="35" y="133" width="6" height="6" fill="#ad8026"><title>0x004649b0 AL_BuyoBuyoControl: 93.3%</title></rect>
 <rect x="77" y="133" width="6" height="6" fill="#b07d00"><title>0x00466390 ALBHV_GoToWater: 100%</title></rect>
 <rect x="147" y="133" width="6" height="6" fill="#b07d00"><title>0x00467590 ALBHV_CalcMeetPlayer: 100%</title></rect>
+<rect x="154" y="133" width="6" height="6" fill="#b07d00"><title>0x004675b0 ALBHV_SuriSuri: 100%</title></rect>
+<rect x="56" y="140" width="6" height="6" fill="#b07d00"><title>0x00469d60 ALBHV_GoToTV: 100%</title></rect>
+<rect x="63" y="140" width="6" height="6" fill="#b07d00"><title>0x00469e30 ALBHV_GoToRadicase: 100%</title></rect>
 <rect x="70" y="140" width="6" height="6" fill="#b07d00"><title>0x00469f00 ALBHV_GoToBall: 100%</title></rect>
 <rect x="77" y="140" width="6" height="6" fill="#b07d00"><title>0x00469f20 ALBHV_GoToHorse: 100%</title></rect>
 <rect x="84" y="140" width="6" height="6" fill="#b07d00"><title>0x00469fa0 ALBHV_GoToBox: 100%</title></rect>
+<rect x="224" y="140" width="6" height="6" fill="#b07d00"><title>0x0046b990 AL_WalkSelect: 100%</title></rect>
+<rect x="252" y="140" width="6" height="6" fill="#b07d00"><title>0x0046c2a0 ALO_NestFlowerDisplayer: 100%</title></rect>
 <rect x="21" y="147" width="6" height="6" fill="#b07d00"><title>0x0046ccf0 AL_MinimalDestructor: 100%</title></rect>
 <rect x="56" y="147" width="6" height="6" fill="#b07d00"><title>0x0046d1c0 AL_CreateMinimalCreateManager: 100%</title></rect>
 <rect x="91" y="147" width="6" height="6" fill="#b07d00"><title>0x0046def0 AL_BlackmarketMasterDest: 100%</title></rect>
+<rect x="98" y="147" width="6" height="6" fill="#b07d00"><title>0x0046df20 AL_BlackmarketMasterExec: 100%</title></rect>
 <rect x="105" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e020 _alg_blackmarket_prolog: 100%</title></rect>
 <rect x="112" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e060 _alg_blackmarket_epilog: 100%</title></rect>
 <rect x="119" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e080 FBuyerDest: 100%</title></rect>
@@ -1473,6 +1483,7 @@
 <rect x="203" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b50 _alg_garden01_ec_epilog: 100%</title></rect>
 <rect x="231" y="175" width="6" height="6" fill="#b07d00"><title>0x00479df0 _alg_garden01_ec_prolog: 100%</title></rect>
 <rect x="238" y="175" width="6" height="6" fill="#b07d00"><title>0x00479e20 _alg_garden02_mr_epilog: 100%</title></rect>
+<rect x="245" y="175" width="6" height="6" fill="#b07d00"><title>0x00479e40 AL_Garden02MasterExecutor: 100%</title></rect>
 <rect x="252" y="175" width="6" height="6" fill="#b07d00"><title>0x00479ed0 AL_Garden02MasterDisplayer: 100%</title></rect>
 <rect x="259" y="175" width="6" height="6" fill="#b07d00"><title>0x00479ee0 AL_Garden02MasterDestructor: 100%</title></rect>
 <rect x="280" y="175" width="6" height="6" fill="#b07d00"><title>0x0047a1d0 _alg_garden02_mr_daytime_epilog: 100%</title></rect>
@@ -1511,12 +1522,29 @@
 <rect x="63" y="196" width="6" height="6" fill="#b07d00"><title>0x00494670 GbaCheck: 100%</title></rect>
 <rect x="147" y="196" width="6" height="6" fill="#b07d00"><title>0x007110e0 ALO_RingWinDelete: 100%</title></rect>
 <rect x="280" y="196" width="6" height="6" fill="#b07d00"><title>0x00712670 FUN_00712670: 100%</title></rect>
+<rect x="7" y="203" width="6" height="6" fill="#b07d00"><title>0x007126c0 AL_ChaoMenuSetBusy: 100%</title></rect>
+<rect x="14" y="203" width="6" height="6" fill="#b07d00"><title>0x007126e0 FUN_007126e0: 100%</title></rect>
+<rect x="21" y="203" width="6" height="6" fill="#b07d00"><title>0x00712700 FUN_00712700: 100%</title></rect>
+<rect x="28" y="203" width="6" height="6" fill="#b07d00"><title>0x00712710 AL_ChaoSelectMenuIsFocusedModoru: 100%</title></rect>
+<rect x="35" y="203" width="6" height="6" fill="#b07d00"><title>0x00712730 AL_ChaoSelectMenuIsFocusedKettei: 100%</title></rect>
+<rect x="70" y="203" width="6" height="6" fill="#b07d00"><title>0x00712ca0 ADV1_ALR_ClearEntryStatus: 100%</title></rect>
+<rect x="77" y="203" width="6" height="6" fill="#b07d00"><title>0x00712cc0 ADV1_ALR_GetEntryStatus: 100%</title></rect>
+<rect x="112" y="203" width="6" height="6" fill="#b07d00"><title>0x007137a0 AlMsgTelopSetPos: 100%</title></rect>
+<rect x="119" y="203" width="6" height="6" fill="#b07d00"><title>0x007137c0 AlMsgTelopSetSize: 100%</title></rect>
+<rect x="182" y="203" width="6" height="6" fill="#b07d00"><title>0x00713b30 FUN_00713b30: 100%</title></rect>
+<rect x="266" y="203" width="6" height="6" fill="#b07d00"><title>0x007149a0 ALO_OdekakeMachineDestructor: 100%</title></rect>
+<rect x="287" y="203" width="6" height="6" fill="#b07d00"><title>0x00714bb0 ALO_OdekakeMachineCreate: 100%</title></rect>
 <rect x="294" y="203" width="6" height="6" fill="#b07d00"><title>0x00714bf0 FUN_00714bf0: 100%</title></rect>
+<rect x="21" y="210" width="6" height="6" fill="#b07d00"><title>0x007151f0 AL_NormalCameraDestructor: 100%</title></rect>
+<rect x="35" y="210" width="6" height="6" fill="#b07d00"><title>0x00715330 ALCAM_CameraManagerExecutor: 100%</title></rect>
+<rect x="42" y="210" width="6" height="6" fill="#b07d00"><title>0x00715340 ALCAM_ClearCameraWork: 100%</title></rect>
 <rect x="98" y="210" width="6" height="6" fill="#b07d00"><title>0x00716300 AL_DrawStopChaoParamWindow: 100%</title></rect>
+<rect x="105" y="210" width="6" height="6" fill="#b07d00"><title>0x00716310 AL_LoadMessageTable: 100%</title></rect>
 <rect x="112" y="210" width="6" height="6" fill="#b07d00"><title>0x00716330 AL_ReleaseMessageTable: 100%</title></rect>
+<rect x="119" y="210" width="6" height="6" fill="#b07d00"><title>0x00716350 AL_GetMessage: 100%</title></rect>
 </g>
-<rect x="673" y="803" width="307" height="99" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 94 of 445 done</title></rect>
-<text x="676" y="817" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Race <tspan font-weight="400" fill="#59636e">21%</tspan></text>
+<rect x="673" y="803" width="307" height="99" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 100 of 445 done</title></rect>
+<text x="676" y="817" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Race <tspan font-weight="400" fill="#59636e">22%</tspan></text>
 <g transform="translate(676,821)">
 <rect y="0" width="301" height="70" fill="url(#todo)"/>
 <rect y="70" width="105" height="7" fill="url(#todo)"/>
@@ -1605,9 +1633,11 @@
 <rect x="196" y="28" width="6" height="6" fill="#b07d00"><title>0x00489710 AlrRoot_Clear: 100%</title></rect>
 <rect x="294" y="28" width="6" height="6" fill="#b07d00"><title>0x00489c90 ObjectAlrCracker_Start: 100%</title></rect>
 <rect x="0" y="35" width="6" height="6" fill="#b07d00"><title>0x00489cb0 ObjectAlrCracker_GetFlag: 100%</title></rect>
+<rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x00489dd0 shotTape: 100%</title></rect>
 <rect x="126" y="35" width="6" height="6" fill="#b07d00"><title>0x0048a7f0 AlrObjFreeManageTask: 100%</title></rect>
 <rect x="133" y="35" width="6" height="6" fill="#b07d00"><title>0x0048a810 AlrObjSetTask: 100%</title></rect>
 <rect x="231" y="42" width="6" height="6" fill="#b07d00"><title>0x0048f770 GetIdLookChao: 100%</title></rect>
+<rect x="245" y="42" width="6" height="6" fill="#b07d00"><title>0x0048f7e0 GetHomeTownFromId: 100%</title></rect>
 <rect x="161" y="49" width="6" height="6" fill="#b07d00"><title>0x00490650 destToy: 100%</title></rect>
 <rect x="105" y="56" width="6" height="6" fill="#b07d00"><title>0x00492460 SetOuterNeonLogo: 100%</title></rect>
 <rect x="161" y="56" width="6" height="6" fill="#b07d00"><title>0x00492ac0 ADV1_AL_SetMouseNum: 100%</title></rect>
@@ -1620,6 +1650,10 @@
 <rect x="70" y="63" width="6" height="6" fill="#b07d00"><title>0x00493700 AL_GetObjectEntryList: 100%</title></rect>
 <rect x="77" y="63" width="6" height="6" fill="#b07d00"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
 <rect x="133" y="63" width="6" height="6" fill="#b07d00"><title>0x00717130 ObjectAlrBowChao: 100%</title></rect>
+<rect x="0" y="70" width="6" height="6" fill="#b07d00"><title>0x00717790 ObjectAlrCoconut: 100%</title></rect>
+<rect x="63" y="70" width="6" height="6" fill="#b07d00"><title>0x00717b10 execFrame: 100%</title></rect>
+<rect x="70" y="70" width="6" height="6" fill="#b07d00"><title>0x00717b40 destFrame: 100%</title></rect>
+<rect x="91" y="70" width="6" height="6" fill="#b07d00"><title>0x00717dd0 ObjectAlrEntryButton: 100%</title></rect>
 </g>
 <polygon points="350,911.5 356,911.5 359,915 353,922 347,915" fill="#f2f5fb" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="350,911.5 356,911.5 354.5,915 351.5,915" fill="#ffffff" fill-opacity="0.45"/>

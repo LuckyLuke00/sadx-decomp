@@ -1,4 +1,11 @@
 #include "decls.h"
+static long ALBHV_PickUpLockOn(struct task *tp);
+
+// STUB: SADX 0x0045f7e0
+static long ALBHV_PickUpLockOn(struct task *tp)
+{
+	return (long)0;
+}
 
 // FUNCTION: SADX 0x0045f8d0
 long ALBHV_GoToEat(struct task *tp)

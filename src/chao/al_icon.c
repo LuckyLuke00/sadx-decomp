@@ -1,9 +1,25 @@
 #include "decls.h"
 
+// STUB: SADX 0x0043b220
+long AL_IconNormal(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0043b490
 long AL_IconHirameki(struct task *tp)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x0043bc50
+void AL_IconShapeControl(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0043bcf0
+void AL_IconResetPos(struct task *tp)
+{
 }
 
 // STUB: SADX 0x0043c180
