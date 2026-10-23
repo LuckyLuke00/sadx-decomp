@@ -12,6 +12,7 @@ import json
 import sys
 import tempfile
 from pathlib import Path
+from typing import NamedTuple
 from unittest import mock
 
 import llm
@@ -23,17 +24,29 @@ SEED = 5
 TOO_LONG = "http://127.0.0.1:8080/v1/chat/completions answered 400: the request exceeds the available context size"
 
 
-def solved(tries, too_long):
-    """(the seed of each ask, the asks that got a reply, the tries that solve_function returns, the try numbers in
-    its transcript) for a run of TRIES against a server that refuses the chats for which TOO_LONG is true."""
+class Run(NamedTuple):
+    seeds: list[int]  # the seed of each ask
+    replies: int  # the asks that got a reply
+    tries: int  # the tries that solve_function returns
+    logged: list[int]  # the try numbers in its transcript
+    results: list[str]  # the result of each try in its transcript
+    lasts: list[str]  # the last message of each ask
+
+
+def never_too_long(messages) -> bool:
+    return False
+
+
+def solved(tries, too_long, reply="no code") -> Run:
+    """A run of TRIES against a server that refuses the chats for which TOO_LONG is true, else answers REPLY."""
     asks = []
 
     def chat(config, messages, temperature, thinking, seed):
         refused = too_long(messages)
-        asks.append((seed, refused))
+        asks.append((seed, refused, messages[-1]["content"]))
         if refused:
             raise llmclient.ServerError(TOO_LONG, 400)
-        return llmclient.Reply("no code", "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
+        return llmclient.Reply(reply, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
 
     def first_prompt(config, file, address, types, count, extra):
         return f"{count} examples"
@@ -50,8 +63,9 @@ def solved(tries, too_long):
         transcript = Path(folder) / "transcript.jsonl"
         result = llm.solve_function(args, FILE, ADDRESS, transcript)
         logged = [json.loads(line) for line in transcript.read_text(encoding="utf-8").splitlines()]
-    return ([seed for seed, _ in asks], sum(not refused for _, refused in asks), result["tries"],
-            [entry["try"] for entry in logged if "try" in entry])
+    return Run([ask[0] for ask in asks], sum(not ask[1] for ask in asks), result["tries"],
+               [entry["try"] for entry in logged if "try" in entry],
+               [entry["result"] for entry in logged if "try" in entry], [ask[2] for ask in asks])
 
 
 def check_too_long() -> list[str]:
@@ -66,9 +80,25 @@ def check_too_long() -> list[str]:
              ("every prompt too long", 2, lambda messages: True, ([SEED + 1] * (llm.EXAMPLES + 1), 0, 0, []))]
     failures = []
     for case, tries, too_long, wanted in cases:
-        found = solved(tries, too_long)
+        found = solved(tries, too_long)[:4]
         if found != wanted:
             failures.append(f"{case} gives {found}, not {wanted}")
+    return failures
+
+
+def check_forbidden_reply() -> list[str]:
+    """A reply with inline assembly or a pragma gets no build, so it can never match. Its try names the word, and the
+    next prompt says that it is not allowed. The same reply again is a repeat of that try."""
+    failures = []
+    for word, line in [("__asm", "\t__asm nop"), ("#pragma", '#pragma optimize("", off)')]:
+        reply = f"```cpp\n{llm.function_line(ADDRESS)}\nvoid Foo(void)\n{{\n{line}\n}}\n```"
+        builds = []
+        with mock.patch.object(llm.Bench, "build", lambda self, *args: builds.append(args)):
+            run = solved(2, never_too_long, reply)
+        found = (run.results, len(builds), "are not allowed" in run.lasts[-1])
+        wanted = ([f"used `{word}`, not allowed", "repeated try 1"], 0, True)
+        if found != wanted:
+            failures.append(f"a reply with {word} gives {found}, not {wanted}")
     return failures
 
 
@@ -97,6 +127,6 @@ def check_tries_flag() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_too_long, check_tries_flag):
+    for check in (check_too_long, check_forbidden_reply, check_tries_flag):
         failures += check()
     return failures

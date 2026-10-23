@@ -47,7 +47,8 @@ attempt goes into the file as it was before the function, and `check.py decls` a
 diff, and one line on its latest try when that was another. When the instructions differ
 only in the names of globals or functions, the feedback lists the exe's name next to the
 model's for each one. An attempt it already sent
-is not built again, and the temperature rises until it sends something new. A try that does not
+is not built again, and the temperature rises until it sends something new. Nor is a try with a word
+that tricks.forbidden finds, such as inline assembly: it can never match. A try that does not
 build gets repairs, each built once more and kept when it fixes its error: the exe's or the
 runtime's spelling of a name, calls and variables through the model's type where the tree declares
 them another way, the runtime's declarations, declarations from earlier tries, `(char *)` on a
@@ -79,6 +80,7 @@ import osutil
 import progress
 import project
 import scoring
+import tricks
 
 ROOT = project.ROOT
 PROMPTS = ROOT / "tools" / "prompts"  # NAME.txt: the system prompt that --prompt NAME picks
@@ -1267,6 +1269,11 @@ def solve_function(args, file, address, transcript):
                 repeat, earlier = seen[attempt_key(parsed)]
                 result = latest = f"repeated try {repeat}"
                 note = f"That is the same code as your try {repeat}, which got this answer:\n\n{earlier}"
+            elif cheats := tricks.forbidden(parsed[0] + parsed[1]):  # no build, so it can never match
+                result = latest = "used " + ", ".join(f"`{word}`" for word in dict.fromkeys(cheats)) + ", not allowed"
+                note = ("Inline assembly, `__emit`, `__declspec(naked)`, `#pragma` and `__pragma` are not allowed. "
+                        "Write the function in C.")
+                seen[attempt_key(parsed)] = (tries, note)
             else:
                 model, trimmed, build, repairs = bench.repair(bench.build(*parsed), first.rpartition(TASK_LEAD)[2])
                 attempt, percent = build.source, build.percent
