@@ -31,8 +31,8 @@ from xml.sax.saxutils import escape
 import osutil
 
 from layout import Rect, snap, squarify, svg_points, text_width, wrap
-from scoring import (Totals, accuracy_text, game_functions, is_matched, is_trick, percent, ratio, score, state,
-                     stats_line, totals, whole_percent)
+from scoring import (Totals, accuracy_text, byte_share, entries_by_address, game_functions, is_matched, is_trick,
+                     percent, ratio, score, state, stats_line, totals, whole_percent)
 
 ROOT = Path(__file__).resolve().parent.parent
 PROGRESS = ROOT / "docs" / "progress"
@@ -132,6 +132,10 @@ def parse_functions(rows: list[dict]) -> list[dict]:
 
 def load_functions() -> list[dict]:
     return parse_functions(read_csv(FUNCTIONS_CSV))
+
+
+def function_sizes(functions: list[dict]) -> dict[int, int]:
+    return {function["address"]: function["size"] for function in functions}
 
 
 def parse_codegen_groups(rows: list[dict]) -> list[dict]:
@@ -517,7 +521,7 @@ def map_legend(height: int, theme: Theme) -> list[str]:
 
 
 def render_map(summary: dict, stats: Totals, sections: list[Section], theme: Theme) -> str:
-    entries = {int(entry["address"], 16): entry for entry in summary["functions"]}
+    entries = entries_by_address(summary)
     placed = map_layout(sections)
     height = max((outer.y + outer.height for outer, _ in placed), default=HEADER) + FOOTER
     parts = map_header(summary, stats, height, theme)
@@ -545,9 +549,9 @@ def card_bar(stats: Totals, theme: Theme) -> list[str]:
     return parts
 
 
-def card_figures(stats: Totals, theme: Theme) -> list[str]:
-    """The three figures under the bar, one in each third of the card."""
-    figures = [(f"{stats.matched:,}", "done"), (accuracy_text(stats), "accuracy"),
+def card_figures(stats: Totals, share: tuple[int, int], theme: Theme) -> list[str]:
+    """The figures under the bar, side by side: done, the byte SHARE (matched, all), accuracy and the game total."""
+    figures = [(f"{stats.matched:,}", "done"), (percent(*share), "bytes matched"), (accuracy_text(stats), "accuracy"),
                (f"{stats.game_total:,}", "game functions")]
     parts = []
     column = (WIDTH - 2 * MARGIN) / len(figures)
@@ -568,8 +572,8 @@ def done_this_week(history: list[dict]) -> int:
     return int(history[-1]["matched"]) - (int(before[-1]["matched"]) if before else 0)
 
 
-def render_card(stats: Totals, history: list[dict], exe: str, theme: Theme) -> str:
-    """The summary card at the top of the README, as wide as the map."""
+def render_card(stats: Totals, share: tuple[int, int], history: list[dict], exe: str, theme: Theme) -> str:
+    """The summary card at the top of the README, as wide as the map. SHARE is the byte share, (matched, all)."""
     height = 168
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {height}" width="{WIDTH}" height="{height}">',
@@ -586,7 +590,7 @@ def render_card(stats: Totals, history: list[dict], exe: str, theme: Theme) -> s
         ring(WIDTH - MARGIN - 6, 71.5, theme),  # its right edge lines up with the text above
     ]
     parts += card_bar(stats, theme)
-    parts += card_figures(stats, theme)
+    parts += card_figures(stats, share, theme)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
@@ -739,14 +743,16 @@ def load_areas(summary: dict, game: set[int]) -> list[Section]:
 def render_all() -> dict[Path, str]:
     """Every generated file and its expected text, from the committed inputs only."""
     summary = load_summary()
-    game = game_addresses(load_functions())
+    functions = load_functions()
+    game = game_addresses(functions)
     sections = load_areas(summary, game)
     history = history_rows(committed_snapshots() + [Snapshot(date.today().isoformat(), summary, game)])
     stats = totals(summary, game)
+    share = byte_share(summary, game, function_sizes(functions))
     files = {HISTORY_CSV: render_history_csv(history)}
     for suffix, theme in THEMES.items():
         files[PROGRESS / f"map{suffix}.svg"] = render_map(summary, stats, sections, theme)
-        files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, history, summary["exe"], theme)
+        files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, share, history, summary["exe"], theme)
         files[PROGRESS / f"history{suffix}.svg"] = render_history(history, theme)
     return files
 

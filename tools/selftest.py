@@ -47,6 +47,7 @@ def run() -> int:
     failures += check_totals(expected, current)
     failures += check_trick_totals(current)
     failures += check_trick_state(current)
+    failures += check_trick_byte_share(current)
     failures += check_summarize_tricks()
     failures += check_whole_percent()
     failures += check_moved_scores(expected)
@@ -667,6 +668,22 @@ def check_trick_state(current: dict) -> list[str]:
         failures.append(f"state of a trick at 100% gives {scoring.state(tricked)}")
     if scoring.is_trick(partial) or not scoring.is_trick(tricked):
         failures.append("is_trick is true for a trick at 85% or false for a trick at 100%")
+    return failures
+
+
+def check_trick_byte_share(current: dict) -> list[str]:
+    """The byte share leaves out a trick function, and a library entry from both of its counts."""
+    failures = []
+    game = addresses(current)
+    sizes = {address: 10 for address in game}
+    plain = scoring.byte_share(current, game, sizes)
+    for label, changed, wanted in (("a trick", {"trick": True}, (plain[0] - 10, plain[1])),
+                                   ("a library entry", {"library": True}, (plain[0] - 10, plain[1] - 10))):
+        summary = copy.deepcopy(current)
+        first_matched(summary).update(changed)
+        found = scoring.byte_share(summary, game, sizes)
+        if found != wanted:
+            failures.append(f"byte_share gives {found} with {label}, not {wanted}")
     return failures
 
 
