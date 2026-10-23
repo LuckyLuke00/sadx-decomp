@@ -1,7 +1,12 @@
-"""Checks for tools/tricks.py: which function definitions match only through a trick, not plain C."""
+"""Checks for tools/tricks.py: which function definitions match only through a trick, not plain C. Also how
+`check.py fn` reports such a function."""
+
+import contextlib
+import io
 
 import names
 import project
+import report
 import tricks
 
 TARGET = project.game_config().target
@@ -93,9 +98,27 @@ def check_forbidden() -> list[str]:
     return failures
 
 
+def check_report_function() -> list[str]:
+    """`check.py fn` counts a function at 100% only through a trick as a miss and names the trick. Plain C at 100% is
+    a match."""
+    entry = {"name": "FUN_00401000", "matching": 1.0}
+    cases = [(None, True, "0x00401000 FUN_00401000: 100% match.\n"),
+             ("__asm", False, "0x00401000 FUN_00401000: 100%, but only through a trick (__asm). It does not count as "
+                              "matched until it is plain C.\n")]
+    failures = []
+    for trick, wanted, text in cases:
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            found = report.report_function(0x401000, entry, None, trick)
+        if (found, out.getvalue()) != (wanted, text):
+            failures.append(f"report_function gives {found} and {out.getvalue()!r} for trick {trick}, "
+                            f"not {wanted} and {text!r}")
+    return failures
+
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_forbidden, check_file_tricks, check_declarator_start):
+    for check in (check_forbidden, check_file_tricks, check_declarator_start, check_report_function):
         failures += check()
     return failures
