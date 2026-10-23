@@ -314,9 +314,6 @@ struct cnkobj object_breedingflower00_breedingflower00[1];
 // GLOBAL: SADX 0x01fb6644
 struct cnkobj object_breedingflower01_breedingflower01[1];
 
-// GLOBAL: SADX 0x01ffffd0
-struct NJS_MKEY_F pos_alm_piyo_reg_r[1];
-
 // GLOBAL: SADX 0x021ef528
 struct NJS_TEXLIST texlist_ChaoBlackmarketObj;
 
@@ -683,8 +680,14 @@ signed char e102_laser_enable_table[256];
 // GLOBAL: SADX 0x025de190
 struct NJS_TEXLIST texlist_amy;
 
+// GLOBAL: SADX 0x025de198
+struct NJS_TEXLIST texlist_amy_eff;
+
 // GLOBAL: SADX 0x025de348
 struct NJS_TEXLIST texlist_knuckles;
+
+// GLOBAL: SADX 0x025de350
+struct NJS_TEXLIST texlist_knu_eff;
 
 // GLOBAL: SADX 0x025de62c
 struct NJS_TEXLIST texlist_m_sboard_snowboard;
@@ -950,8 +953,14 @@ struct NJS_MATERIAL matlist_nisepat_nisepat_grid3[1];
 // GLOBAL: SADX 0x0266f44c
 struct NJS_MATERIAL matlist_nisepat_nisepat_grid1[1];
 
+// GLOBAL: SADX 0x02671d04
+struct NJS_SPRITE sprite_e102_beam;
+
 // GLOBAL: SADX 0x02671d24
 struct NJS_SPRITE sprite_e102_flash;
+
+// GLOBAL: SADX 0x02671d74
+struct NJS_ARGB DAT_02671d74;
 
 // GLOBAL: SADX 0x02671d94
 struct NJS_ARGB DAT_02671d94;
@@ -970,6 +979,18 @@ struct WIREMODEL wire_cube2;
 
 // GLOBAL: SADX 0x02671fd0
 struct CCL_INFO colliinfo_dcan[1];
+
+// GLOBAL: SADX 0x026756d8
+struct NJS_SPRITE sprite_amy_piyo;
+
+// GLOBAL: SADX 0x02675814
+struct NJS_SPRITE sprite_k_hadoken;
+
+// GLOBAL: SADX 0x02675888
+struct NJS_SPRITE sprite_tsuchi_kake;
+
+// GLOBAL: SADX 0x02675970
+struct NJS_SPRITE sprite_rader;
 
 // GLOBAL: SADX 0x026759d0
 void (*animal[15])(struct task *);
@@ -1148,6 +1169,18 @@ struct ___stcClip *pClipMap_Egm01[1];
 // GLOBAL: SADX 0x0270cb9c
 struct ___stcFog *pFogTable_Egm01[1];
 
+// GLOBAL: SADX 0x02710204
+struct obj object_egm01_egm00_egm00[1];
+
+// GLOBAL: SADX 0x02717bf4
+struct NJS_TEXLIST texlist_egm1;
+
+// GLOBAL: SADX 0x0271b900
+struct obj object_egman1_body_body[1];
+
+// GLOBAL: SADX 0x0271b9e0
+struct NJS_TEXLIST texlist_egm1eggman;
+
 // GLOBAL: SADX 0x02726b60
 const struct HintMessageString *tikal_mes_egm1[5] = {};
 
@@ -1184,6 +1217,9 @@ struct obj object_egman_body_body[1];
 // GLOBAL: SADX 0x0280b21c
 struct obj object_egm2_mine[1];
 
+// GLOBAL: SADX 0x0280b734
+struct CCL_INFO colliInfo[1];
+
 // GLOBAL: SADX 0x0280b798
 struct NJS_TEXANIM anim_kaen[1];
 
@@ -1208,11 +1244,26 @@ struct ___stcFog *pFogTable_Egm03[1];
 // GLOBAL: SADX 0x02814cf8
 long adx_table[10];
 
+// GLOBAL: SADX 0x028152d4
+struct NJS_MODEL *model_koware[4];
+
+// GLOBAL: SADX 0x028152e4
+struct NJS_MODEL *model_koware_side[4];
+
+// GLOBAL: SADX 0x02829818
+union NJS_COLOR vuvS_0_kemuri_boss_boss[12];
+
+// GLOBAL: SADX 0x02833cf0
+struct NJS_TEXLIST *egm3_texlist_list[4];
+
 // GLOBAL: SADX 0x0286a87c
 struct NJS_TEXLIST texlist_erobo;
 
 // GLOBAL: SADX 0x0286ac28
 struct NJS_TEXLIST texlist_b_robo_bg;
+
+// GLOBAL: SADX 0x0286c3fc
+struct obj object_ecsc_s_sora_hare_robo;
 
 // GLOBAL: SADX 0x0286c430
 struct CRUSHLIGHT_DATA cl_data;
@@ -1238,6 +1289,30 @@ struct RAINEFF rain_param;
 // GLOBAL: SADX 0x0286df38
 struct NJS_POINT3COL rain_p3col;
 
+// GLOBAL: SADX 0x0286e2a0
+struct NJS_POINT3 *pScale_Chaos02[1];
+
+// GLOBAL: SADX 0x0286e2a4
+struct NJS_POINT2 *pClipSky_Chaos02[1];
+
+// GLOBAL: SADX 0x0286e2a8
+struct NJS_POINT2 *pClipMap_Chaos02[1];
+
+// GLOBAL: SADX 0x0286e2ac
+struct NJS_ARGB *pFogTable_Chaos02[1];
+
+// GLOBAL: SADX 0x0286f0a8
+struct NJS_SPRITE sprite_c2_flash;
+
+// GLOBAL: SADX 0x0286f168
+struct NJS_SPRITE sprite_c2_ball;
+
+// GLOBAL: SADX 0x0286f1c8
+struct NJS_ARGB DAT_0286f1c8;
+
+// GLOBAL: SADX 0x0286f1d8
+struct NJS_ARGB DAT_0286f1d8;
+
 // GLOBAL: SADX 0x028dd5c0
 struct NJS_POINT3 *pScale_Chaos04[1];
 
@@ -1250,6 +1325,9 @@ struct ___stcClip *pClipMap_Chaos04[1];
 // GLOBAL: SADX 0x028dd5cc
 struct ___stcFog *pFogTable_Chaos04[1];
 
+// GLOBAL: SADX 0x028dd63c
+struct NJS_TEXLIST texlist_chaos4_common;
+
 // GLOBAL: SADX 0x028dd65c
 struct NJS_TEXLIST texlist_chaos4_kama;
 
@@ -1261,6 +1339,9 @@ struct NJS_ACTION action_c4_tailattame01[1];
 
 // GLOBAL: SADX 0x0290ef54
 struct NJS_ACTION action_c4_tailattame02[1];
+
+// GLOBAL: SADX 0x0290f7ac
+struct obj object_chaos4ball_s;
 
 // GLOBAL: SADX 0x0290fadc
 struct obj object_c4_s_sora_hare_s_sora_hare;
@@ -1277,6 +1358,54 @@ struct NJS_TEXANIM anim_drop_chaos4[1];
 // GLOBAL: SADX 0x029150ec
 struct obj object_c4_ar_s_kabeb_ar_s_kabeb[1];
 
+// GLOBAL: SADX 0x02930c4c
+struct obj object_c4_nc_s_asiba_nc_s_asiba[1];
+
+// GLOBAL: SADX 0x0293b8d8
+struct obj object_ecsc_s_sora_s_sora[1];
+
+// GLOBAL: SADX 0x0293b97c
+struct NJS_TEXLIST texlist_chaos6_bg;
+
+// GLOBAL: SADX 0x0293bb48
+struct NJS_POINT3 *pScale_Chaos06[1];
+
+// GLOBAL: SADX 0x0293bb50
+struct NJS_POINT2 *pClipSky_Chaos06[1];
+
+// GLOBAL: SADX 0x0293bb58
+struct NJS_POINT2 *pClipMap_Chaos06[1];
+
+// GLOBAL: SADX 0x0293bb60
+struct NJS_ARGB *pFogTable_Chaos06[1];
+
+// GLOBAL: SADX 0x0297f1a4
+struct NJS_TEXLIST texlist_chaos6;
+
+// GLOBAL: SADX 0x0297f330
+struct NJS_TEXLIST texlist_chaos6_effect;
+
+// GLOBAL: SADX 0x02a6a45c
+struct obj object_c6_taileff_taileff[1];
+
+// GLOBAL: SADX 0x02a6a88c
+long c60_taileffang_x;
+
+// GLOBAL: SADX 0x02a6a890
+long c60_taileffang_y;
+
+// GLOBAL: SADX 0x02a6a894
+float c60_taileffpos_x;
+
+// GLOBAL: SADX 0x02a6a8ec
+float DAT_02a6a8ec;
+
+// GLOBAL: SADX 0x02a6c4b0
+struct obj *iceobj_tbl[7];
+
+// GLOBAL: SADX 0x02a71964
+struct NJS_SPRITE sprite_c6ice;
+
 // GLOBAL: SADX 0x02b0bc20
 struct NJS_POINT3 *pScale_Chaos07[2];
 
@@ -1292,11 +1421,23 @@ struct ___stcFog *pFogTable_Chaos07[2];
 // GLOBAL: SADX 0x02b0f598
 struct NJS_POINT3 player_pos[1];
 
+// GLOBAL: SADX 0x02b110f0
+struct obj object_c7_breath_tame_breath_tame;
+
 // GLOBAL: SADX 0x02b113c8
 struct NJS_TEXLIST texlist_chaos7_0breath;
 
 // GLOBAL: SADX 0x02b76514
 const struct HintMessageString *chaos_message000[5] = {};
+
+// GLOBAL: SADX 0x02b7ed88
+struct NJS_TEXANIM anim_Chaos7SDamage[1];
+
+// GLOBAL: SADX 0x02b7ed9c
+struct NJS_SPRITE sprite_Chaos7SDamage;
+
+// GLOBAL: SADX 0x02b7ee5c
+struct NJS_ARGB DAT_02b7ee5c;
 
 // GLOBAL: SADX 0x02bc0bd8
 struct NJS_TEXLIST texlist_e101;
@@ -1316,11 +1457,32 @@ struct ___stcClip *pClipMap_E101r[1];
 // GLOBAL: SADX 0x02c0cbe8
 struct ___stcFog *pFogTable_E101r[1];
 
+// GLOBAL: SADX 0x02c0d1c0
+struct NJS_TEXLIST _texlist_e101r;
+
+// GLOBAL: SADX 0x02c0f144
+struct WIDELINE_TEXDATA wline_pulse;
+
+// GLOBAL: SADX 0x02c0f170
+struct GHSPRITE_ANIM_TABLE animtable_wave[1];
+
 // GLOBAL: SADX 0x02c22c20
 char * *strtbl[5];
 
 // GLOBAL: SADX 0x02c22c38
 struct TEX_PVMTABLE evpvm[1];
+
+// GLOBAL: SADX 0x02cc288c
+struct NJS_ACTION _action_c0_wait0[1];
+
+// GLOBAL: SADX 0x02cd17b0
+struct PL_JOIN_VERTEX ev_chaos0_jv_list[1];
+
+// GLOBAL: SADX 0x02cd67d8
+float g_RotaryCircleR;
+
+// GLOBAL: SADX 0x02cd67dc
+long g_EmeraldRotSpd;
 
 // GLOBAL: SADX 0x02d16ab4
 struct NJS_TEXLIST texlist_m_em_yellow;
@@ -1367,6 +1529,36 @@ struct MJOIN_VERTEX pj1[1];
 // GLOBAL: SADX 0x02f01658
 struct MJOIN_VERTEX pj2[1];
 
+// GLOBAL: SADX 0x02f01670
+struct CCL_INFO cinfo[1];
+
+// GLOBAL: SADX 0x02f8aca4
+struct NJS_TEXLIST texlist_l_sibuki;
+
+// GLOBAL: SADX 0x02f8c05c
+struct NJS_ACTION action_l_circle[1];
+
+// GLOBAL: SADX 0x0303f1ec
+struct CCL_INFO DAT_0303f1ec;
+
+// GLOBAL: SADX 0x0307e7e4
+struct NJS_ACTION _action_c4_wait0_c4_kihon0_chaos4[1];
+
+// GLOBAL: SADX 0x0307e8f0
+struct PL_JOIN_VERTEX chaos4_jv_list[1];
+
+// GLOBAL: SADX 0x030fc86c
+struct NJS_TEXLIST texlist_capturebeam;
+
+// GLOBAL: SADX 0x030fceb4
+struct obj object_e000c_capturebeam_capturebeam[1];
+
+// GLOBAL: SADX 0x0315045c
+struct NJS_TEXLIST texlist_ev_spotlight;
+
+// GLOBAL: SADX 0x03150bf8
+struct obj _object_heli_light_light[1];
+
 // GLOBAL: SADX 0x0317858c
 long amb;
 
@@ -1384,6 +1576,9 @@ struct cloud_scroll main_cloud2;
 
 // GLOBAL: SADX 0x032ad6d8
 struct obj _object_tr1_s_t1_body_s_t1_body[1];
+
+// GLOBAL: SADX 0x0336d714
+struct CCL_INFO DAT_0336d714;
 
 // GLOBAL: SADX 0x03527f50
 struct NJS_SPRITE DAT_03527f50;
@@ -3938,6 +4133,9 @@ float DAT_05cd2974;
 // GLOBAL: SADX 0x05cd2978
 int DAT_05cd2978;
 
+// GLOBAL: SADX 0x05cd297c
+int DAT_05cd297c;
+
 // GLOBAL: SADX 0x05cd2980
 void *DAT_05cd2980;
 
@@ -4604,6 +4802,9 @@ int DAT_060b9ffc;
 // GLOBAL: SADX 0x060ba000
 int DAT_060ba000;
 
+// GLOBAL: SADX 0x060bb188
+union NJS_COLOR DAT_060bb188[12];
+
 // GLOBAL: SADX 0x060bb1d0
 int DAT_060bb1d0;
 
@@ -4739,8 +4940,20 @@ unsigned char DAT_060c2144;
 // GLOBAL: SADX 0x060c2145
 unsigned char DAT_060c2145;
 
+// GLOBAL: SADX 0x060c32b8
+struct NJS_POINT3 DAT_060c32b8;
+
 // GLOBAL: SADX 0x060c3350
 unsigned char DAT_060c3350;
+
+// GLOBAL: SADX 0x060c3354
+long DAT_060c3354;
+
+// GLOBAL: SADX 0x060c3358
+float DAT_060c3358;
+
+// GLOBAL: SADX 0x060c335c
+float DAT_060c335c;
 
 // GLOBAL: SADX 0x060c35f0
 unsigned char DAT_060c35f0;
@@ -4769,6 +4982,9 @@ short DAT_060c36ac;
 // GLOBAL: SADX 0x060c36b0
 short DAT_060c36b0;
 
+// GLOBAL: SADX 0x060c36c4
+int DAT_060c36c4;
+
 // GLOBAL: SADX 0x060c44d8
 int DAT_060c44d8;
 
@@ -4781,8 +4997,20 @@ struct NJS_POINT3 *DAT_060c453c;
 // GLOBAL: SADX 0x060c4544
 struct NJS_POINT3 DAT_060c4544;
 
+// GLOBAL: SADX 0x060c4570
+void *DAT_060c4570;
+
 // GLOBAL: SADX 0x060c4574
 void *DAT_060c4574;
+
+// GLOBAL: SADX 0x060c462c
+int DAT_060c462c;
+
+// GLOBAL: SADX 0x060c4630
+int DAT_060c4630;
+
+// GLOBAL: SADX 0x060c4634
+int DAT_060c4634;
 
 // GLOBAL: SADX 0x060c4644
 int DAT_060c4644;
@@ -4790,17 +5018,38 @@ int DAT_060c4644;
 // GLOBAL: SADX 0x060c4658
 int DAT_060c4658;
 
+// GLOBAL: SADX 0x060c4660
+int DAT_060c4660;
+
+// GLOBAL: SADX 0x060c4664
+float DAT_060c4664;
+
+// GLOBAL: SADX 0x060c4668
+float DAT_060c4668;
+
+// GLOBAL: SADX 0x060c466c
+float DAT_060c466c;
+
+// GLOBAL: SADX 0x060c4670
+float DAT_060c4670;
+
 // GLOBAL: SADX 0x060c4678
 float DAT_060c4678;
 
 // GLOBAL: SADX 0x060c4a8c
 int DAT_060c4a8c;
 
+// GLOBAL: SADX 0x060c4aa0
+struct task *DAT_060c4aa0;
+
 // GLOBAL: SADX 0x060c4aa4
 struct task *DAT_060c4aa4;
 
 // GLOBAL: SADX 0x060c4aa8
 int DAT_060c4aa8;
+
+// GLOBAL: SADX 0x060c4ab0
+float DAT_060c4ab0;
 
 // GLOBAL: SADX 0x060c4ab4
 int DAT_060c4ab4;
@@ -4877,11 +5126,17 @@ struct task *DAT_060cb770;
 // GLOBAL: SADX 0x060cb8d0
 struct task *DAT_060cb8d0;
 
+// GLOBAL: SADX 0x060cb8d4
+struct task *DAT_060cb8d4;
+
 // GLOBAL: SADX 0x060cba14
 struct task *DAT_060cba14;
 
 // GLOBAL: SADX 0x060cba34
 struct task *DAT_060cba34;
+
+// GLOBAL: SADX 0x060cba88
+struct task *DAT_060cba88[16];
 
 // GLOBAL: SADX 0x060cbb94
 struct task *DAT_060cbb94;
@@ -4901,6 +5156,9 @@ struct task *DAT_060cbf64;
 // GLOBAL: SADX 0x060cbfb4
 int DAT_060cbfb4[10];
 
+// GLOBAL: SADX 0x060cc0b0
+struct task *DAT_060cc0b0[1];
+
 // GLOBAL: SADX 0x060cc134
 struct task *DAT_060cc134;
 
@@ -4918,6 +5176,9 @@ struct task *DAT_060cc4a8;
 
 // GLOBAL: SADX 0x060cc4ac
 struct task *DAT_060cc4ac;
+
+// GLOBAL: SADX 0x060cc4c8
+struct task *DAT_060cc4c8;
 
 // GLOBAL: SADX 0x060cc57c
 struct task *DAT_060cc57c;
@@ -4946,6 +5207,15 @@ struct NJS_ACTION DAT_060cc878;
 // GLOBAL: SADX 0x060cc890
 struct NJS_ACTION DAT_060cc890;
 
+// GLOBAL: SADX 0x060cc904
+int DAT_060cc904;
+
+// GLOBAL: SADX 0x060cc950
+struct task *DAT_060cc950;
+
+// GLOBAL: SADX 0x060cc954
+struct task *DAT_060cc954;
+
 // GLOBAL: SADX 0x060cc958
 struct task *DAT_060cc958;
 
@@ -4973,6 +5243,9 @@ int DAT_060ccb24;
 // GLOBAL: SADX 0x060ccb48
 struct task *DAT_060ccb48;
 
+// GLOBAL: SADX 0x060ccb4c
+struct task *DAT_060ccb4c;
+
 // GLOBAL: SADX 0x060ccb78
 void *DAT_060ccb78;
 
@@ -4981,6 +5254,9 @@ void *DAT_060ccb7c;
 
 // GLOBAL: SADX 0x060ccb80
 struct task *DAT_060ccb80;
+
+// GLOBAL: SADX 0x060ccb94
+struct task *DAT_060ccb94;
 
 // GLOBAL: SADX 0x060ccd78
 struct task *DAT_060ccd78;
@@ -4993,6 +5269,12 @@ struct task *DAT_060ccdc8;
 
 // GLOBAL: SADX 0x060cce58
 struct task *DAT_060cce58;
+
+// GLOBAL: SADX 0x060cceb0
+struct task *DAT_060cceb0;
+
+// GLOBAL: SADX 0x060cceb4
+struct task *DAT_060cceb4;
 
 // GLOBAL: SADX 0x060cd164
 int DAT_060cd164;
@@ -5275,6 +5557,9 @@ void* DAT_060ee7d0;
 
 // GLOBAL: SADX 0x060eea04
 struct NJS_SPRITE DAT_060eea04;
+
+// GLOBAL: SADX 0x060eea50
+struct obj *DAT_060eea50;
 
 // GLOBAL: SADX 0x060eea5c
 int DAT_060eea5c;

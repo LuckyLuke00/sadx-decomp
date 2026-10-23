@@ -1,4 +1,20 @@
 #include "decls.h"
+void C4PondObjCreate(struct SuimenTask *st, struct task *pTask);
+
+// STUB: SADX 0x006f0390
+void C4PondObjCreate(struct SuimenTask *st, struct task *pTask)
+{
+}
+
+// STUB: SADX 0x006f05f0
+void FUN_006f05f0(float *param_1)
+{
+}
+
+// STUB: SADX 0x006f0680
+void Dsp_SuimenYurashi(struct task *pTask)
+{
+}
 
 // FUNCTION: SADX 0x006f0a20
 void Exe_side_collision(struct task *pTask)

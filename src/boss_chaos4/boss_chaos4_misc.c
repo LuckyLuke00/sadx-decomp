@@ -31,6 +31,16 @@ void Chaos4EffectInit()
 	initSpriteSub(&DAT_060c210c, &texlist_chaos_effect, (const struct NJS_TEXANIM *)&anim_drop_chaos4);
 }
 
+// STUB: SADX 0x006eeda0
+void Chaos4TikalSet(int cflg)
+{
+}
+
+// STUB: SADX 0x006eee50
+void Tmit_SpriteSetBase(struct NJS_SPRITE *sprite, unsigned char frame, struct NJS_POINT3 *pos, struct NJS_POINT3 *speed, float delay)
+{
+}
+
 // FUNCTION: SADX 0x006eeef0
 void Chaos4Splash_A_Set(struct NJS_POINT3 *pos)
 {

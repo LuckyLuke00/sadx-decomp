@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct NJS_SPRITE sprite_tsuchi_kake;
+extern struct NJS_SPRITE sprite_rader;
+extern struct NJS_TEXLIST texlist_knu_eff;
+extern int DAT_05b9d838;
 extern unsigned long DAT_05edcbb4;
 extern unsigned long DAT_05edcbb0;
 void FreeTask(struct task *tp);
@@ -6,6 +10,102 @@ struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(str
 void KnuEffectChargeScl(struct task *tp);
 void dispKnuEffectChargeScl(struct task *tp);
 extern unsigned long DAT_05edc4d0;
+
+// STUB: SADX 0x005d6db0
+void EffectKnuPunch(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005d7070
+void dispEffectKnuHadoken(struct task *tp)
+{
+	struct taskwk *local_cg;
+	float local_8g;
+
+	local_cg = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		local_8g = local_cg->counter.f * 0.800000011920929f;
+		SetMaterial(local_8g, 1.0f, 1.0f, 1.0f);
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 10);
+		___njSetTexture(&texlist_knu_eff);
+		njPushMatrix(0);
+		njTranslateV(0, &local_cg->pos);
+		___njDrawSprite3D(&sprite_k_hadoken, 0, 0x32);
+		njPopMatrix(1);
+		ResetMaterial();
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+	}
+}
+
+// STUB: SADX 0x005d7140
+void FUN_005d7140(struct NJS_POINT3 *pos)
+{
+}
+
+// STUB: SADX 0x005d7410
+void dispEffectSpray(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005d7800
+void KnuEffectDisplayRadar(struct NJS_POINT3 *pos, long patnmb, float scale, float alpha)
+{
+	float local_8;
+
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	SetMaterial(alpha, 1.0f, 1.0f, 1.0f);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	sprite_rader.p.x = pos->x - 30.0f;
+	sprite_rader.p.y = pos->y;
+	sprite_rader.sx = scale;
+	sprite_rader.sy = scale;
+	___njSetTexture(&texlist_knu_eff);
+	local_8 = scale * 0.009999999776482582f + -2.0f;
+	if (local_8 >= -3.0f && local_8 < 12048.0f)
+	{
+		local_8 = local_8 + 22048.0f;
+	}
+	late_DrawSprite2D(&sprite_rader, patnmb, local_8, 0x22, 4);
+	ResetMaterial();
+}
+
+// STUB: SADX 0x005d7a80
+void KnuEffectTsuchiKakeraMove(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005d7b60
+void dispKnuEffectTsuchiKakeraMove(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+		___njSetTexture(&texlist_knu_eff);
+		njPushMatrix(0);
+		njTranslateV(0, &local_8->pos);
+		if (*(int *)((char *)local_8 + 0x14) != 0)
+		{
+			njRotateX(0, *(unsigned short *)((char *)local_8 + 0x14));
+		}
+		if (*(int *)((char *)local_8 + 0x1c) != 0)
+		{
+			njRotateZ(0, *(unsigned short *)((char *)local_8 + 0x1c));
+		}
+		___njDrawSprite3D(&sprite_tsuchi_kake, 0, 0x20);
+		njPopMatrix(1);
+	}
+}
 
 // FUNCTION: SADX 0x005d7c10
 void KnuEffectPutRingSpring(struct NJS_POINT3 *pos)
@@ -21,6 +121,11 @@ void KnuEffectPutRingSpring(struct NJS_POINT3 *pos)
 
 // STUB: SADX 0x005d8000
 void dispKnuEffectChargeUpStay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005d8040
+void KnuEffectDrawTsubu(struct NJS_POINT3 *pos, float alp)
 {
 }
 

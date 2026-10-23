@@ -44,6 +44,11 @@ void Egm2MessageSet(unsigned char no)
 		Serif_Play(DAT_009bf710[no]);
 }
 
+// STUB: SADX 0x006c58d0
+void Egm2Tikal_1_Set(int cflg)
+{
+}
+
 // FUNCTION: SADX 0x006c5a10
 void Egm2TikalEnd()
 {

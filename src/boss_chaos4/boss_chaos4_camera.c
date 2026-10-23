@@ -15,6 +15,11 @@ void Chaos4CameraLookMe(struct NJS_POINT3 *pos)
 	DAT_060c20c4 = (int)pos;
 }
 
+// STUB: SADX 0x006ee2c0
+void chaos4_camera_angle_y_adjust()
+{
+}
+
 // FUNCTION: SADX 0x006ee390
 void Dsp_Air()
 {
@@ -26,6 +31,16 @@ void Dsp_Air()
 		___dsDrawObject(&object_c4_s_sora_hare_s_sora_hare);
 		njPopMatrix(1);
 	}
+}
+
+// STUB: SADX 0x006ee590
+void start_demo_camera(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
+// STUB: SADX 0x006ee630
+void start_demo_camera_water(struct _OBJ_CAMERAPARAM *pParam)
+{
 }
 
 // FUNCTION: SADX 0x006ee8e0

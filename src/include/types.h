@@ -176,7 +176,6 @@ union NJS_COLOR;
 struct NJS_LIGHT;
 struct NJS_MATERIAL;
 struct NJS_MESHSET;
-struct NJS_MKEY_F;
 struct NJS_MKEY_P;
 struct NJS_MODEL;
 struct NJS_MOTION;
@@ -237,6 +236,7 @@ struct sSonicCtrl;
 struct STAFF_DATA;
 struct STAFFROLL_DATA;
 struct strCamCartData;
+struct SuimenTask;
 struct task;
 struct TaskCommunication;
 struct TaskInfo;
@@ -250,6 +250,7 @@ struct TvSettingWk;
 struct u4s;
 union UNION_STATUS;
 struct VolumeInfo;
+struct WIDELINE_TEXDATA;
 struct WIREMODEL;
 struct xssunit;
 struct xyyzzxsdwstr;
@@ -2952,14 +2953,6 @@ static_assert(offsetof(NJS_MESHSET, vertcolor) == 0x10, "NJS_MESHSET::vertcolor"
 static_assert(offsetof(NJS_MESHSET, vertuv) == 0x14, "NJS_MESHSET::vertuv");
 static_assert(offsetof(NJS_MESHSET, ext) == 0x18, "NJS_MESHSET::ext");
 
-struct NJS_MKEY_F {
-    unsigned long keyframe;
-    float key[3];
-};
-static_assert(sizeof(NJS_MKEY_F) == 0x10, "sizeof NJS_MKEY_F");
-static_assert(offsetof(NJS_MKEY_F, keyframe) == 0x0, "NJS_MKEY_F::keyframe");
-static_assert(offsetof(NJS_MKEY_F, key) == 0x4, "NJS_MKEY_F::key");
-
 struct NJS_MKEY_P {
     unsigned long keyframe;
     void *key;
@@ -3166,6 +3159,28 @@ static_assert(offsetof(PL_ACTION, next) == 0x6, "PL_ACTION::next");
 static_assert(offsetof(PL_ACTION, frame) == 0x8, "PL_ACTION::frame");
 static_assert(offsetof(PL_ACTION, racio) == 0xc, "PL_ACTION::racio");
 
+struct PL_JOIN_VERTEX {
+    struct obj *objptr;
+    struct obj *srcobj;
+    struct obj *dstobj;
+    unsigned char numVertex;
+    signed char inpmode;
+    unsigned char srcdepth;
+    unsigned char dstdepth;
+    struct NJS_POINT3 *org;
+    unsigned short *pnum;
+};
+static_assert(sizeof(PL_JOIN_VERTEX) == 0x18, "sizeof PL_JOIN_VERTEX");
+static_assert(offsetof(PL_JOIN_VERTEX, objptr) == 0x0, "PL_JOIN_VERTEX::objptr");
+static_assert(offsetof(PL_JOIN_VERTEX, srcobj) == 0x4, "PL_JOIN_VERTEX::srcobj");
+static_assert(offsetof(PL_JOIN_VERTEX, dstobj) == 0x8, "PL_JOIN_VERTEX::dstobj");
+static_assert(offsetof(PL_JOIN_VERTEX, numVertex) == 0xc, "PL_JOIN_VERTEX::numVertex");
+static_assert(offsetof(PL_JOIN_VERTEX, inpmode) == 0xd, "PL_JOIN_VERTEX::inpmode");
+static_assert(offsetof(PL_JOIN_VERTEX, srcdepth) == 0xe, "PL_JOIN_VERTEX::srcdepth");
+static_assert(offsetof(PL_JOIN_VERTEX, dstdepth) == 0xf, "PL_JOIN_VERTEX::dstdepth");
+static_assert(offsetof(PL_JOIN_VERTEX, org) == 0x10, "PL_JOIN_VERTEX::org");
+static_assert(offsetof(PL_JOIN_VERTEX, pnum) == 0x14, "PL_JOIN_VERTEX::pnum");
+
 struct RAINEFF {
     int num;
     float len_base;
@@ -3347,6 +3362,16 @@ static_assert(offsetof(VolumeInfo, nearVolOfs) == 0x0, "VolumeInfo::nearVolOfs")
 static_assert(offsetof(VolumeInfo, farVolOfs) == 0x2, "VolumeInfo::farVolOfs");
 static_assert(offsetof(VolumeInfo, nearDist) == 0x4, "VolumeInfo::nearDist");
 static_assert(offsetof(VolumeInfo, farDist) == 0x8, "VolumeInfo::farDist");
+
+struct WIDELINE_TEXDATA {
+    long index;
+    union NJS_COLOR pColor[2];
+    float uv[4][2];
+};
+static_assert(sizeof(WIDELINE_TEXDATA) == 0x2c, "sizeof WIDELINE_TEXDATA");
+static_assert(offsetof(WIDELINE_TEXDATA, index) == 0x0, "WIDELINE_TEXDATA::index");
+static_assert(offsetof(WIDELINE_TEXDATA, pColor) == 0x4, "WIDELINE_TEXDATA::pColor");
+static_assert(offsetof(WIDELINE_TEXDATA, uv) == 0xc, "WIDELINE_TEXDATA::uv");
 
 struct WIREMODEL {
     struct NJS_POINT3 *pos;

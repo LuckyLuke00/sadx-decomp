@@ -1,0 +1,108 @@
+#include "decls.h"
+extern struct NJS_TEXLIST texlist_amy_eff;
+extern struct obj *DAT_060eea50;
+extern short *DAT_05baf368;
+extern struct NJS_SPRITE sprite_amy_piyo;
+extern int DAT_05b9d838;
+void FreeTask(struct task *tp);
+
+// STUB: SADX 0x005d61d0
+void AmyEffectFallHeart(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005d6410
+void AmyEffectSpdDwnHeartDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005d64f0
+void AmyEffectSpdDwnHeart(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005d65c0
+void AmyEffectPiyoPiyo(struct task *tp)
+{
+	struct taskwk *local_8g;
+	float local_cg;
+
+	local_8g = tp->twp;
+	if (DAT_05baf368 == 0)
+	{
+		FreeTask(tp);
+	}
+	else
+	{
+		tp->disp = AmyEffectPiyoPiyoDraw;
+		if (Amy_Status(0) != 9)
+		{
+			*(float *)((char *)local_8g + 0x2c) = 0.2f;
+			AmyEffectPiyoPiyoEnd(tp);
+			tp->exec = AmyEffectPiyoPiyoEnd;
+		}
+		else
+		{
+			*(long *)((char *)local_8g + 0x18) += 0x200;
+			local_cg = 1.0f + njSin(*(long *)((char *)local_8g + 0x18) << 2) * 0.30000001192092896;
+			sprite_amy_piyo.sx = local_cg;
+			sprite_amy_piyo.sy = local_cg;
+			AmyEffectPiyoPiyoDraw(tp);
+		}
+	}
+}
+
+// FUNCTION: SADX 0x005d6890
+void AmyEffectPiyoPiyoEnd(struct task *tp)
+{
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	if (DAT_05baf368 == 0)
+	{
+		FreeTask(tp);
+		return;
+	}
+	local_8->scl.x -= 0.025f;
+	sprite_amy_piyo.sx += local_8->scl.x;
+	sprite_amy_piyo.sy += local_8->scl.x;
+	if (sprite_amy_piyo.sy < 0.1f)
+	{
+		FreeTask(tp);
+	}
+	else
+	{
+		AmyEffectPiyoPiyoDraw(tp);
+	}
+}
+
+// STUB: SADX 0x005d6c10
+void AmyEffectHammerWaveColor(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005d6cf0
+void AmyEffectHammerWaveColorDisplayer(struct task *tp)
+{
+	struct taskwk *local_8g;
+	struct obj *local_cg;
+	local_8g = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		___njSetTexture(&texlist_amy_eff);
+		ResetMaterial();
+		njPushMatrix(0);
+		njTranslateV(0, &local_8g->pos);
+		if (*(int *)((char *)local_8g + 0x1c) != 0)
+		{
+			njRotateZ(0, *(unsigned short *)((char *)local_8g + 0x1c));
+		}
+		if (local_8g->ang.x != 0)
+		{
+			njRotateX(0, local_8g->ang.x);
+		}
+		njScaleV(0, &local_8g->scl);
+		local_cg = *(struct obj **)((char *)DAT_060eea50 + 0x74);
+		late_DrawObject(local_cg, 4);
+		njPopMatrix(1);
+	}
+}

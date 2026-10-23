@@ -6,6 +6,11 @@ long chkColli();
 extern int DAT_060bd148;
 extern int DAT_060bcfdc;
 
+// STUB: SADX 0x006df690
+void RoboBeam_Init(struct NJS_POINT3 *pPos, struct NJS_POINT3 *pVec, long *pAng)
+{
+}
+
 // FUNCTION: SADX 0x006df730
 void RoboBeam_Exit()
 {
@@ -34,6 +39,11 @@ long RoboBeam_ChkLockOn()
 		}
 	}
 	return 0;
+}
+
+// STUB: SADX 0x006df900
+void init()
+{
 }
 
 // FUNCTION: SADX 0x006dfc40

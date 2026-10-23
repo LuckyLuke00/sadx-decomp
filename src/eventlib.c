@@ -655,9 +655,16 @@ void EV_ClrPath(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0056b770
+// FUNCTION: SADX 0x0056b770
 void FUN_0056b770(int param_1)
 {
+	if (0 != param_1)
+	{
+		while (*(int **)((char *)*(int **)((char *)*(int **)((char *)param_1 + 0x20) + 0x3c) + 0x4c) != 0)
+		{
+			FUN_0056aea0(1);
+		}
+	}
 }
 
 // STUB: SADX 0x0056b810

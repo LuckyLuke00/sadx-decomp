@@ -3,6 +3,11 @@ void FUN_005d51b0(void *param_1);
 extern struct WIREMODEL wire_cube1;
 extern struct WIREMODEL wire_cube2;
 
+// STUB: SADX 0x005d50b0
+void SetWireModel(struct WIREMODEL *wmdl)
+{
+}
+
 // FUNCTION: SADX 0x005d51b0
 void FUN_005d51b0(void *param_1)
 {

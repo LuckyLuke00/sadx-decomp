@@ -18,3 +18,23 @@ void egm3EarthQuakeReq()
 {
 	DAT_060b9fec = 1;
 }
+
+// STUB: SADX 0x006cceb0
+void camEarthQuake()
+{
+}
+
+// STUB: SADX 0x006cd550
+void camWait(struct taskwk *ptwp, struct taskwk *etwp)
+{
+}
+
+// STUB: SADX 0x006cd650
+void camLaser1(struct taskwk *ptwp, struct taskwk *etwp)
+{
+}
+
+// STUB: SADX 0x006cdc70
+void CameraEgm3(struct _OBJ_CAMERAPARAM *pParam)
+{
+}

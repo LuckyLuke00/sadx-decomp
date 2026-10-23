@@ -8,3 +8,8 @@ void Egm2_Missile_Init()
 {
 	initSpriteSub(&DAT_060b9fac, &texlist_egm2_missile, &anim_missile[0]);
 }
+
+// STUB: SADX 0x006cb250
+void Exe_kemuri(struct task *pTask)
+{
+}

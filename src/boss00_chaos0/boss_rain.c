@@ -13,6 +13,11 @@ void DisplayRain(struct task *tp)
 	ResetMaterial();
 }
 
+// STUB: SADX 0x006e2ac0
+void DisplayDrop(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x006e2d70
 void ctrlRainEffect(struct task *tp)
 {

@@ -2,6 +2,11 @@
 extern unsigned char DAT_05edd131;
 extern unsigned char DAT_05edd13c;
 
+// STUB: SADX 0x006f4f40
+void setChaos6ColliParam(struct taskwk *twp, int mode)
+{
+}
+
 // FUNCTION: SADX 0x006f6510
 int Chaos6AttackStatus()
 {
