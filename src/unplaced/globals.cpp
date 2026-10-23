@@ -1637,11 +1637,20 @@ struct obj object_tpobj_slight1_slight1[1];
 // GLOBAL: SADX 0x04c5680c
 struct obj object_tpobj_slight2_slight2[1];
 
+// GLOBAL: SADX 0x04c5acb8
+struct NJS_TEXLIST texlist_e_amenbo;
+
 // GLOBAL: SADX 0x04c618cc
 struct NJS_ACTION action_mihari_ene_s_amb_root[1];
 
 // GLOBAL: SADX 0x04c63854
 struct NJS_ACTION action_run_ene_s_amb_root[1];
+
+// GLOBAL: SADX 0x04c6639c
+struct NJS_ACTION action_walk_ene_s_amb_root[1];
+
+// GLOBAL: SADX 0x04c66408
+struct NJS_MODEL *pond_model[12];
 
 // GLOBAL: SADX 0x04c6a004
 struct NJS_MATERIAL matlist_rhino_jet[1];

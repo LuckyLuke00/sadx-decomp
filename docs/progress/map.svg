@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1416" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">3,031 of 16,524 game functions done (18.34%), accuracy 99.58%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">3,037 of 16,524 game functions done (18.38%), accuracy 99.58%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="596,1162.5 602,1162.5 605,1166 599,1173 593,1166" fill="#2f6bff" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="596,1162.5 602,1162.5 600.5,1166 597.5,1166" fill="#ffffff" fill-opacity="0.45"/>
@@ -2032,7 +2032,7 @@
 </g>
 <polygon points="538,69.5 544,69.5 547,73 541,80 535,73" fill="#0f9d6b" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="538,69.5 544,69.5 542.5,73 539.5,73" fill="#ffffff" fill-opacity="0.45"/>
-<text x="551" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Shared code <tspan font-weight="400" fill="#59636e">41%</tspan></text>
+<text x="551" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Shared code <tspan font-weight="400" fill="#59636e">42%</tspan></text>
 <rect x="796" y="328" width="184" height="109" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Objects: 25 of 290 done</title></rect>
 <text x="799" y="342" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Objects <tspan font-weight="400" fill="#59636e">8%</tspan></text>
 <g transform="translate(799,346)">
@@ -2064,15 +2064,17 @@
 <rect x="105" y="70" width="6" height="6" fill="#b07d00"><title>0x008d9050 FUN_008d9050: 100%</title></rect>
 <rect x="35" y="77" width="6" height="6" fill="#b07d00"><title>0x008dd790 FUN_008dd790: 100%</title></rect>
 </g>
-<rect x="796" y="439" width="184" height="91" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Enemies: 82 of 220 done</title></rect>
-<text x="799" y="453" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Enemies <tspan font-weight="400" fill="#59636e">37%</tspan></text>
+<rect x="796" y="439" width="184" height="91" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Enemies: 88 of 220 done</title></rect>
+<text x="799" y="453" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Enemies <tspan font-weight="400" fill="#59636e">40%</tspan></text>
 <g transform="translate(799,457)">
 <rect y="0" width="175" height="56" fill="url(#todo)"/>
 <rect y="56" width="140" height="7" fill="url(#todo)"/>
+<rect x="14" y="0" width="6" height="6" fill="#b07d00"><title>0x00593ee0 SpinnaDead: 100%</title></rect>
 <rect x="35" y="0" width="6" height="6" fill="#b07d00"><title>0x005943b0 SpinnaEditDraw: 100%</title></rect>
 <rect x="42" y="0" width="6" height="6" fill="#b07d00"><title>0x00594430 FUN_00594430: 100%</title></rect>
 <rect x="84" y="0" width="6" height="6" fill="#b07d00"><title>0x005946c0 FUN_005946c0: 100%</title></rect>
 <rect x="105" y="0" width="6" height="6" fill="#b07d00"><title>0x00594c00 FUN_00594c00: 100%</title></rect>
+<rect x="133" y="0" width="6" height="6" fill="#b07d00"><title>0x005951a0 FUN_005951a0: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#b07d00"><title>0x005bc0c0 RoboHeadDisplayer: 100%</title></rect>
 <rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x005bc940 FUN_005bc940: 100%</title></rect>
 <rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x005bcd10 RoboBeamDisplayer: 100%</title></rect>
@@ -2134,6 +2136,10 @@
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x00612b50 FUN_00612b50: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x006166a0 EggrobForEvent0: 100%</title></rect>
 <rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x006167d0 EggrobForEvent0_Destruct: 100%</title></rect>
+<rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x008d60b0 FUN_008d60b0: 100%</title></rect>
+<rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x008d6150 FUN_008d6150: 100%</title></rect>
+<rect x="105" y="42" width="6" height="6" fill="#b07d00"><title>0x008d6200 FUN_008d6200: 100%</title></rect>
+<rect x="168" y="42" width="6" height="6" fill="#b07d00"><title>0x008d6c70 PondRectifyPosition: 100%</title></rect>
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x008d6d10 FUN_008d6d10: 100%</title></rect>
 <rect x="7" y="49" width="6" height="6" fill="#b07d00"><title>0x008d6dc0 FUN_008d6dc0: 100%</title></rect>
 <rect x="42" y="49" width="6" height="6" fill="#b07d00"><title>0x008d75c0 FUN_008d75c0: 100%</title></rect>

@@ -24991,6 +24991,14 @@
    "library": false
   },
   {
+   "address": "0x00593ee0",
+   "name": "SpinnaDead",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005943b0",
    "name": "SpinnaEditDraw",
    "accuracy": 1.0,
@@ -25015,6 +25023,14 @@
    "library": false
   },
   {
+   "address": "0x005944b0",
+   "name": "FUN_005944b0",
+   "accuracy": 0.11267605633802817,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00594570",
    "name": "FUN_00594570",
    "accuracy": 0.24242424242424243,
@@ -25026,6 +25042,14 @@
    "address": "0x005945c0",
    "name": "FUN_005945c0",
    "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00594630",
+   "name": "SpinnaNormalA",
+   "accuracy": 0.1568627450980392,
    "effective": false,
    "stub": true,
    "library": false
@@ -25060,6 +25084,14 @@
    "accuracy": 0.09523809523809523,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005951a0",
+   "name": "FUN_005951a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -43722,9 +43754,41 @@
    "library": false
   },
   {
+   "address": "0x008d60b0",
+   "name": "FUN_008d60b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d6150",
+   "name": "FUN_008d6150",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008d6200",
    "name": "FUN_008d6200",
-   "accuracy": 0.10126582278481013,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d62e0",
+   "name": "FUN_008d62e0",
+   "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008d6360",
+   "name": "FUN_008d6360",
+   "accuracy": 0.1951219512195122,
    "effective": false,
    "stub": true,
    "library": false
@@ -43780,9 +43844,9 @@
   {
    "address": "0x008d6c70",
    "name": "PondRectifyPosition",
-   "accuracy": 0.16326530612244897,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -44106,6 +44170,38 @@
    "library": false
   },
   {
+   "address": "0x008da420",
+   "name": "SnakeInit",
+   "accuracy": 0.13559322033898305,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008da650",
+   "name": "SnakeParts",
+   "accuracy": 0.10666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008da730",
+   "name": "FUN_008da730",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008da810",
+   "name": "SnakePartsInit",
+   "accuracy": 0.08791208791208792,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008da900",
    "name": "SnakePartsDraw",
    "accuracy": 0.06837606837606838,
@@ -44138,6 +44234,14 @@
    "library": false
   },
   {
+   "address": "0x008dad60",
+   "name": "SnakePartsDead",
+   "accuracy": 0.11267605633802817,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008dae20",
    "name": "FUN_008dae20",
    "accuracy": 1.0,
@@ -44159,6 +44263,30 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008db0d0",
+   "name": "SnakeWalk",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008db160",
+   "name": "SnakeHeadMotion",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008db230",
+   "name": "SnakeBodyMotion",
+   "accuracy": 0.10126582278481013,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -57595,5 +57723,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "22d73c37bc0735bd16304a5ed8da9319094abda993f3b83456dd1cecd895cab7"
+ "inputs_sha256": "980d7ff46e494fe24afc16f710b25bd2f4215c2c586848ad3d71e11186a2b0d3"
 }
