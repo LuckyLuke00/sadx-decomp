@@ -59,6 +59,9 @@ struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
 // GLOBAL: SADX 0x0098beec
 struct TaskInfo MirenEfLensFlareTaskInfo;
 
+// GLOBAL: SADX 0x0098c030
+char DAT_0098c030[11];
+
 // GLOBAL: SADX 0x0098fa18
 int DAT_0098fa18[17];
 
@@ -419,6 +422,9 @@ int DAT_023469fc;
 // GLOBAL: SADX 0x0234f678
 char *TutorialBgFilenameTbl[7];
 
+// GLOBAL: SADX 0x0234f6b8
+struct NJS_TEXLIST texlist_tuto_cmn;
+
 // GLOBAL: SADX 0x0234f908
 struct NJS_TEXLIST *TutorialBgTexlistTbl[7];
 
@@ -533,6 +539,12 @@ struct NJS_TEXLIST texlist_ava_fsdlg;
 // GLOBAL: SADX 0x025adca0
 struct NJS_TEXLIST texlist_ava_vmssel;
 
+// GLOBAL: SADX 0x025adcc8
+struct NJS_TEXLIST texlist_ava_emblemview;
+
+// GLOBAL: SADX 0x025adcd8
+struct NJS_TEXLIST texlist_tvsetting;
+
 // GLOBAL: SADX 0x025adce0
 struct NJS_TEXLIST texlist_ava_title;
 
@@ -545,11 +557,17 @@ struct NJS_TEXLIST texlist_ava_help_options;
 // GLOBAL: SADX 0x025add08
 struct NJS_TEXLIST texlist_ava_lb_menu;
 
+// GLOBAL: SADX 0x025add20
+struct NJS_TEXLIST texlist_ava_option;
+
 // GLOBAL: SADX 0x025add28
 struct NJS_TEXLIST texlist_ava_back;
 
 // GLOBAL: SADX 0x025add30
 struct NJS_TEXLIST texlist_ava_emblem;
+
+// GLOBAL: SADX 0x025add40
+struct NJS_TEXLIST texlist_ava_san;
 
 // GLOBAL: SADX 0x025add48
 void *(*DAT_025add48[5])[2];
@@ -766,6 +784,9 @@ float oldn;
 
 // GLOBAL: SADX 0x02604c8c
 float oldf;
+
+// GLOBAL: SADX 0x02604d68
+struct NJS_TEXLIST texlist_segalogo;
 
 // GLOBAL: SADX 0x02604d7c
 struct NJS_TEXLIST texlist_pressstart;
@@ -4517,6 +4538,12 @@ float DAT_05cced18[64];
 // GLOBAL: SADX 0x05cd0d18
 float DAT_05cd0d18;
 
+// GLOBAL: SADX 0x05cd0f18
+int DAT_05cd0f18;
+
+// GLOBAL: SADX 0x05cd0f1c
+int DAT_05cd0f1c;
+
 // GLOBAL: SADX 0x05cd0f24
 int DAT_05cd0f24;
 
@@ -4528,6 +4555,9 @@ int DAT_05cd0f2c;
 
 // GLOBAL: SADX 0x05cd14d4
 int DAT_05cd14d4;
+
+// GLOBAL: SADX 0x05cd14e0
+unsigned char DAT_05cd14e0;
 
 // GLOBAL: SADX 0x05cd14e1
 unsigned char DAT_05cd14e1;

@@ -10164,6 +10164,14 @@
    "library": false
   },
   {
+   "address": "0x004960c0",
+   "name": "TutorialExit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00496390",
    "name": "TutorialTaskDestructor",
    "accuracy": 0.09523809523809523,
@@ -10238,7 +10246,7 @@
   {
    "address": "0x00497070",
    "name": "CreateTutorialBgTask",
-   "accuracy": 0.02857142857142857,
+   "accuracy": 0.029850746268656716,
    "effective": false,
    "stub": true,
    "library": false
@@ -14018,6 +14026,14 @@
    "address": "0x004c06f0",
    "name": "title_menu_exec(1)",
    "accuracy": 0.05970149253731343,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c08b0",
+   "name": "FUN_004c08b0",
+   "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
    "library": false
@@ -23745,9 +23761,9 @@
   {
    "address": "0x005734b0",
    "name": "InitSegaLogo",
-   "accuracy": 0.17777777777777778,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23938,6 +23954,14 @@
    "address": "0x005740a0",
    "name": "ghSetPvrTexBaseColor",
    "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00574140",
+   "name": "FUN_00574140",
+   "accuracy": 0.02572347266881029,
    "effective": false,
    "stub": true,
    "library": false
@@ -25863,9 +25887,33 @@
    "library": false
   },
   {
+   "address": "0x0059df60",
+   "name": "GetEachCharEnable",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059e040",
+   "name": "FUN_0059e040",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0059e0d0",
    "name": "AvaGetEndingEnable",
    "accuracy": 0.4166666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0059e110",
+   "name": "AvaGetTrialEnable",
+   "accuracy": 0.20833333333333334,
    "effective": false,
    "stub": true,
    "library": false
@@ -25882,6 +25930,14 @@
    "address": "0x0059e1f0",
    "name": "AvaGetPutiEnable",
    "accuracy": 0.38461538461538464,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0059e230",
+   "name": "AvaCheckMetalSonic",
+   "accuracy": 0.2222222222222222,
    "effective": false,
    "stub": true,
    "library": false
@@ -25943,6 +25999,14 @@
    "library": false
   },
   {
+   "address": "0x0059e8b0",
+   "name": "DrawBCharName",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0059eac0",
    "name": "DrawMCharName",
    "accuracy": 0.08602150537634409,
@@ -25975,6 +26039,14 @@
    "library": false
   },
   {
+   "address": "0x0059ef30",
+   "name": "DrawValTrialS",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0059f060",
    "name": "DrawValTrialLf",
    "accuracy": 0.24242424242424243,
@@ -25996,6 +26068,14 @@
    "accuracy": 0.1951219512195122,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0059f1a0",
+   "name": "DrawSankaku",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -26292,6 +26372,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a4560",
+   "name": "AvaGetTrialBestScore",
+   "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -31551,6 +31639,14 @@
    "library": false
   },
   {
+   "address": "0x005e89b0",
+   "name": "FUN_005e89b0",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005e8d80",
    "name": "title_menu_disp(2)",
    "accuracy": 0.07407407407407407,
@@ -31615,6 +31711,14 @@
    "library": false
   },
   {
+   "address": "0x005e9570",
+   "name": "FUN_005e9570",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005eaa00",
    "name": "FUN_005eaa00",
    "accuracy": 0.25,
@@ -31647,6 +31751,22 @@
    "library": false
   },
   {
+   "address": "0x005eb2b0",
+   "name": "DisplayControl",
+   "accuracy": 0.19230769230769232,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ebb90",
+   "name": "DisplayStaff",
+   "accuracy": 0.17857142857142858,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005ee430",
    "name": "SetAdvaOptionMenuTask",
    "accuracy": 1.0,
@@ -31658,6 +31778,14 @@
    "address": "0x005ee4a0",
    "name": "title_menu_exec(4)",
    "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ee660",
+   "name": "FUN_005ee660",
+   "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
    "library": false
@@ -31706,6 +31834,14 @@
    "address": "0x005f10a0",
    "name": "trial_game_exec",
    "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f1260",
+   "name": "FUN_005f1260",
+   "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
    "library": false
@@ -31863,6 +31999,14 @@
    "library": false
   },
   {
+   "address": "0x005f4690",
+   "name": "FreeAdvaTrialGameTask",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005f4760",
    "name": "FUN_005f4760",
    "accuracy": 1.0,
@@ -31882,6 +32026,22 @@
    "address": "0x005f4e60",
    "name": "FUN_005f4e60",
    "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005fa060",
+   "name": "FUN_005fa060",
+   "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005fa3a0",
+   "name": "FUN_005fa3a0",
+   "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
    "library": false
@@ -31970,6 +32130,14 @@
    "address": "0x005fbbc0",
    "name": "title_menu_exec(5)",
    "accuracy": 0.06153846153846154,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005fbd80",
+   "name": "TitleMenuWakeProcedure",
+   "accuracy": 0.12307692307692308,
    "effective": false,
    "stub": true,
    "library": false
@@ -32081,9 +32249,9 @@
   {
    "address": "0x005fd7e0",
    "name": "FUN_005fd7e0",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32127,9 +32295,25 @@
    "library": false
   },
   {
+   "address": "0x005fe320",
+   "name": "inetdemo_sub_exec",
+   "accuracy": 0.12903225806451613,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005fe3f0",
    "name": "inetdemo_disp",
    "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005ff7b0",
+   "name": "DrawSprite2DRA",
+   "accuracy": 0.1,
    "effective": false,
    "stub": true,
    "library": false
@@ -32177,6 +32361,46 @@
   {
    "address": "0x005ffba0",
    "name": "FUN_005ffba0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005ffde0",
+   "name": "emblem_view_disp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005ffe60",
+   "name": "DrawEmblemViewEmblem",
+   "accuracy": 0.0163265306122449,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00600590",
+   "name": "DrawEmblemViewHead",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00600650",
+   "name": "DrawEmblemViewChar",
+   "accuracy": 0.03162055335968379,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006009a0",
+   "name": "DrawEmblemViewBg",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -32231,6 +32455,22 @@
    "library": false
   },
   {
+   "address": "0x00601890",
+   "name": "minigame_sel_disp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00601950",
+   "name": "DrawMiniGameSelBg",
+   "accuracy": 0.09876543209876543,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00601c90",
    "name": "now_emblem_stg",
    "accuracy": 0.3225806451612903,
@@ -32258,6 +32498,14 @@
    "address": "0x00601dc0",
    "name": "DrawMiniGameSelRank123",
    "accuracy": 0.0449438202247191,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00602000",
+   "name": "DrawMiniGameSelStage",
+   "accuracy": 0.03375527426160337,
    "effective": false,
    "stub": true,
    "library": false
@@ -32319,6 +32567,14 @@
    "library": false
   },
   {
+   "address": "0x00602600",
+   "name": "explain_exec",
+   "accuracy": 0.14545454545454545,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x006026b0",
    "name": "FUN_006026b0",
    "accuracy": 1.0,
@@ -32351,9 +32607,41 @@
    "library": false
   },
   {
+   "address": "0x00602d10",
+   "name": "DrawIconFileSel",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00602dd0",
    "name": "FUN_00602dd0",
    "accuracy": 0.5333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00602df0",
+   "name": "DrawLangSel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00602e90",
+   "name": "DrawTvSetting",
+   "accuracy": 0.14035087719298245,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00602f40",
+   "name": "DrawVibSetting",
+   "accuracy": 0.13559322033898305,
    "effective": false,
    "stub": true,
    "library": false
@@ -32396,6 +32684,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006041f0",
+   "name": "ChangeLanguageMode",
+   "accuracy": 0.13559322033898305,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -32455,9 +32751,65 @@
    "library": false
   },
   {
+   "address": "0x00605500",
+   "name": "snd_test_disp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006055c0",
+   "name": "DrawSndTestSubMenuList",
+   "accuracy": 0.04060913705583756,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00605830",
    "name": "FUN_00605830",
    "accuracy": 0.1951219512195122,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006058a0",
+   "name": "DrawSndTestSubMenuBg",
+   "accuracy": 0.05333333333333334,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00605aa0",
+   "name": "FUN_00605aa0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00605b40",
+   "name": "DrawSndTestEffMenuList",
+   "accuracy": 0.03686635944700461,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00605f50",
+   "name": "DrawSndTestEffMenuBg",
+   "accuracy": 0.037914691943127965,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00606240",
+   "name": "DrawSndTestBg",
+   "accuracy": 0.1038961038961039,
    "effective": false,
    "stub": true,
    "library": false
@@ -32511,6 +32863,22 @@
    "library": false
   },
   {
+   "address": "0x00607130",
+   "name": "trial_act_sel_disp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006071f0",
+   "name": "DrawTrialActSelBg",
+   "accuracy": 0.09876543209876543,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x006074c0",
    "name": "FUN_006074c0",
    "accuracy": 1.0,
@@ -32529,9 +32897,9 @@
   {
    "address": "0x006075f0",
    "name": "DrawTrialActSelRank",
-   "accuracy": 0.17391304347826086,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32545,7 +32913,15 @@
   {
    "address": "0x006077f0",
    "name": "FUN_006077f0",
-   "accuracy": 0.17391304347826086,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00607880",
+   "name": "DrawTrialActSelStage",
+   "accuracy": 0.03375527426160337,
    "effective": false,
    "stub": true,
    "library": false
@@ -65563,5 +65939,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "7723fb55825ff947238d1a5320031b3775fb35eb6455fe4538c0f4b5170e39db"
+ "inputs_sha256": "5dd37f6f18355910d2f18c9b6fa8b55a1824b466434309274af02726a24de2f8"
 }

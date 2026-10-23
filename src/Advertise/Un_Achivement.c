@@ -22,6 +22,11 @@ struct task *SetAdvaAchivementTask(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
+// STUB: SADX 0x005f1260
+void FUN_005f1260(void *param_1)
+{
+}
+
 // STUB: SADX 0x005f1600
 static void title_menu_disp(struct task *tp)
 {

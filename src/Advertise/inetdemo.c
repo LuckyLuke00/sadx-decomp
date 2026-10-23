@@ -29,8 +29,18 @@ void FUN_005fe2f0(int param_1)
 	SetAdvaBGM(0x37);
 }
 
+// STUB: SADX 0x005fe320
+void inetdemo_sub_exec(struct InetDemoWk *wkp)
+{
+}
+
 // STUB: SADX 0x005fe3f0
 void inetdemo_disp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005ff7b0
+void DrawSprite2DRA(unsigned long material, struct NJS_TEXLIST *tlist, short pvrindex, float posx, float posy, float posz, float sclx, float scly, long rot)
 {
 }
 
