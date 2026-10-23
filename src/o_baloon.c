@@ -1,7 +1,28 @@
 #include "decls.h"
+void FUN_008bb1a0(void *param_1);
+void BaloonScale(struct taskwk *twp);
+float njSin(int);
+void FUN_008babc0(struct obj *param_1);
+void FUN_008bad70(struct obj *param_1);
+void FUN_008bae10(struct obj *param_1);
+
+// STUB: SADX 0x008baad0
+void ObjectBaloon(struct task *tp)
+{
+}
 
 // STUB: SADX 0x008babc0
 void FUN_008babc0(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x008bad70
+void FUN_008bad70(struct obj *obj_p)
+{
+}
+
+// STUB: SADX 0x008bae10
+void FUN_008bae10(struct obj *obj_p)
 {
 }
 

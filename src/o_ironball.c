@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x008bcb60
+void ObjectIronBallDisplay(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x008bd160
 void FUN_008bd160(struct task *param_1)
 {

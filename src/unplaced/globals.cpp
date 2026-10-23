@@ -11,6 +11,9 @@ const unsigned long nbMaxEntry[11] = {};
 // GLOBAL: SADX 0x0095c0a0
 int DAT_0095c0a0[256];
 
+// GLOBAL: SADX 0x0095cbf8
+double DAT_0095cbf8;
+
 // GLOBAL: SADX 0x0095e6d4
 const struct SAlEntAnimArray gAlEntAnimArray_title_j[1] = {};
 
@@ -980,6 +983,21 @@ struct CCL_INFO eggrob_ci_info[2];
 // GLOBAL: SADX 0x026ba120
 struct obj object_ecb_bosscl_bosscl[1];
 
+// GLOBAL: SADX 0x026ba190
+struct CCL_INFO sphere_info[1];
+
+// GLOBAL: SADX 0x026ba1c0
+struct CCL_INFO cylinder_info[1];
+
+// GLOBAL: SADX 0x026ba1f0
+struct CCL_INFO cube_info[1];
+
+// GLOBAL: SADX 0x026ba250
+struct CCL_INFO cuberange_info[1];
+
+// GLOBAL: SADX 0x026ba280
+struct CCL_INFO circle_info[1];
+
 // GLOBAL: SADX 0x026d7ec8
 int DAT_026d7ec8;
 
@@ -1562,8 +1580,26 @@ struct obj object_b_cart_cart_cart[1];
 // GLOBAL: SADX 0x04c3d078
 struct obj object_e_cart_cart_cart[1];
 
+// GLOBAL: SADX 0x04c40998
+struct NJS_TEXLIST texlist_obj_shareobj;
+
 // GLOBAL: SADX 0x04c4c8cc
 struct obj object_sarucart_sarucart_sarucart[1];
+
+// GLOBAL: SADX 0x04c4f17c
+struct obj object_tp_obj_planet01_planet01[1];
+
+// GLOBAL: SADX 0x04c4f89c
+struct obj object_tp_obj_planet02_planet02[1];
+
+// GLOBAL: SADX 0x04c500dc
+struct obj object_tp_obj_planet03_planet03[1];
+
+// GLOBAL: SADX 0x04c558c4
+struct obj object_tpobj_slight1_slight1[1];
+
+// GLOBAL: SADX 0x04c5680c
+struct obj object_tpobj_slight2_slight2[1];
 
 // GLOBAL: SADX 0x04c618cc
 struct NJS_ACTION action_mihari_ene_s_amb_root[1];
@@ -1600,6 +1636,9 @@ struct NJS_MODEL DAT_05a8005c;
 
 // GLOBAL: SADX 0x05a80684
 struct NJS_MODEL DAT_05a80684;
+
+// GLOBAL: SADX 0x05a83f08
+struct obj DAT_05a83f08;
 
 // GLOBAL: SADX 0x05a85e0c
 struct NJS_MODEL DAT_05a85e0c;
@@ -2695,6 +2734,9 @@ int DAT_05b42a80;
 
 // GLOBAL: SADX 0x05b42a84
 int DAT_05b42a84;
+
+// GLOBAL: SADX 0x05b42a88
+int DAT_05b42a88;
 
 // GLOBAL: SADX 0x05b42a8c
 struct task *DAT_05b42a8c;
@@ -4120,6 +4162,15 @@ int DAT_05edbe88;
 
 // GLOBAL: SADX 0x05edbe8c
 int DAT_05edbe8c;
+
+// GLOBAL: SADX 0x05edbfd4
+float DAT_05edbfd4;
+
+// GLOBAL: SADX 0x05edbfd8
+float DAT_05edbfd8;
+
+// GLOBAL: SADX 0x05edbfdc
+float DAT_05edbfdc;
 
 // GLOBAL: SADX 0x05edbfe0
 int DAT_05edbfe0;
