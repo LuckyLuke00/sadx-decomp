@@ -1,4 +1,5 @@
-"""Tests of the try loop in tools/llm.py: solve_function against a fake server, and the --tries flag.
+"""Tests of the try loop in tools/llm.py: solve_function against a fake server, and the --tries and --try-tokens
+flags.
 
 solve_function gets fakes for the file, the dossier and the builds. The fake server refuses a chat as too long for
 its context when the case's rule says so, else replies with no code, so no try builds. run() returns the failures as
@@ -21,6 +22,7 @@ import llmclient
 ADDRESS = 0x00401000
 FILE = "src/foo.c"
 SEED = 5
+MAX_TOKENS = 1500
 TOO_LONG = "http://127.0.0.1:8080/v1/chat/completions answered 400: the request exceeds the available context size"
 
 
@@ -29,6 +31,7 @@ class Run(NamedTuple):
     replies: int  # the asks that got a reply
     tries: int  # the tries that solve_function returns
     logged: list[int]  # the try numbers in its transcript
+    limits: list[int]  # the max_tokens of each ask
     results: list[str]  # the result of each try in its transcript
     lasts: list[str]  # the last message of each ask
 
@@ -44,7 +47,7 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
 
     def chat(config, messages, temperature, thinking, seed):
         refused = too_long(messages)
-        asks.append((seed, refused, messages[-1]["content"]))
+        asks.append((seed, refused, config["max_tokens"], messages[-1]["content"]))
         if refused:
             raise llmclient.ServerError(TOO_LONG, 400)
         return llmclient.Reply(reply, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
@@ -55,10 +58,10 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
     fakes = {"read_source": lambda path: ('#include "decls.h"\n', False), "write_source": lambda path, text, crlf: None,
              "snapshot": lambda paths: {}, "tree_warnings": lambda config: set(), "load_types": lambda config: None,
              "first_prompt": first_prompt, "file_best": lambda *args: None, "decls": lambda config: ("", 0)}
-    settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None}
+    settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False, stop_below=None,
-                   think_max=None)
+                   try_tokens=None, think_max=None)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
@@ -66,8 +69,8 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
         result = llm.solve_function(args, FILE, ADDRESS, transcript)
         logged = [json.loads(line) for line in transcript.read_text(encoding="utf-8").splitlines()]
     return Run([ask[0] for ask in asks], sum(not ask[1] for ask in asks), result["tries"],
-               [entry["try"] for entry in logged if "try" in entry],
-               [entry["result"] for entry in logged if "try" in entry], [ask[2] for ask in asks])
+               [entry["try"] for entry in logged if "try" in entry], [ask[2] for ask in asks],
+               [entry["result"] for entry in logged if "try" in entry], [ask[3] for ask in asks])
 
 
 def check_too_long() -> list[str]:
@@ -101,6 +104,23 @@ def check_stop_below() -> list[str]:
     return failures
 
 
+def check_try_tokens() -> list[str]:
+    """--try-tokens sets each try's max_tokens in turn, and its last value holds for the tries after it. A chat too
+    long for the server is the same try again, so it keeps that try's limit. Without the flag every try gets the
+    config's max_tokens."""
+    full = f"{llm.EXAMPLES} examples"
+    cases = [("--try-tokens 600,1000", 3, never_too_long, {"try_tokens": [600, 1000]}, [600, 1000, 1000]),
+             ("--try-tokens 600,1000 and a first prompt too long", 2, lambda messages: messages[1]["content"] == full,
+              {"try_tokens": [600, 1000]}, [600, 600, 1000]),
+             ("no --try-tokens", 2, never_too_long, {}, [MAX_TOKENS, MAX_TOKENS])]
+    failures = []
+    for case, tries, too_long, flags, wanted in cases:
+        found = solved(tries, too_long, **flags).limits
+        if found != wanted:
+            failures.append(f"{case} gives the limits {found}, not {wanted}")
+    return failures
+
+
 def check_forbidden_reply() -> list[str]:
     """A reply with inline assembly or a pragma gets no build, so it can never match. Its try names the word, and the
     next prompt says that it is not allowed. The same reply again is a repeat of that try."""
@@ -117,23 +137,26 @@ def check_forbidden_reply() -> list[str]:
     return failures
 
 
-def parsed_tries(argv):
-    """The --tries that llm.py gets from the arguments ARGV, or argparse's exit code when it refuses them."""
+def parsed(argv, name):
+    """The flag NAME that llm.py gets from the arguments ARGV, or argparse's exit code when it refuses them."""
     with mock.patch.object(sys, "argv", ["llm.py", *argv]), contextlib.redirect_stderr(io.StringIO()):
         try:
-            return llm.parse_args().tries
+            return getattr(llm.parse_args(), name)
         except SystemExit as error:
             return f"exit {error.code}"
 
 
 def check_tries_flag() -> list[str]:
-    """--tries takes 1 or more. Less stops at argparse's error, before a run that would make no try."""
-    cases = [("--tries 1", ["solve", "--tries", "1", FILE, "0x00401000"], 1),
-             ("--tries 0", ["solve", "--tries", "0", FILE, "0x00401000"], "exit 2"),
-             ("bench --tries -1", ["bench", "--tries", "-1"], "exit 2")]
+    """--tries takes 1 or more. Less stops at argparse's error, before a run that would make no try. --try-tokens
+    takes a comma-separated list of the same."""
+    cases = [("--tries 1", ["solve", "--tries", "1", FILE, "0x00401000"], "tries", 1),
+             ("--tries 0", ["solve", "--tries", "0", FILE, "0x00401000"], "tries", "exit 2"),
+             ("bench --tries -1", ["bench", "--tries", "-1"], "tries", "exit 2"),
+             ("--try-tokens 600,1000", ["bench", "--try-tokens", "600,1000"], "try_tokens", [600, 1000]),
+             ("--try-tokens 600,0", ["bench", "--try-tokens", "600,0"], "try_tokens", "exit 2")]
     failures = []
-    for case, argv, wanted in cases:
-        found = parsed_tries(argv)
+    for case, argv, name, wanted in cases:
+        found = parsed(argv, name)
         if found != wanted:
             failures.append(f"{case} gives {found!r}, not {wanted!r}")
     return failures
@@ -142,6 +165,6 @@ def check_tries_flag() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_too_long, check_stop_below, check_forbidden_reply, check_tries_flag):
+    for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag):
         failures += check()
     return failures
