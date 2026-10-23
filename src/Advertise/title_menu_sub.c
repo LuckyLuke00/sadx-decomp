@@ -26,6 +26,11 @@ static void title_menu_exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005fbd80
+void TitleMenuWakeProcedure(struct TitleMenuWk *wkp)
+{
+}
+
 // STUB: SADX 0x005fca60
 static void title_menu_disp(struct task *tp)
 {

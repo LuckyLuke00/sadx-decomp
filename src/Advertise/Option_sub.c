@@ -10,6 +10,18 @@ void DrawOptionMenuSubDlgSub(struct DDlgType *dlgp)
 	ghSetPvrTexMaterial(0xffffffff);
 }
 
+// STUB: SADX 0x005eb2b0
+int DisplayControl()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x005ebb90
+int DisplayStaff()
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x005ee430
 struct task *SetAdvaOptionMenuTask(struct ModeSelPrmType *prmp)
 {
@@ -31,6 +43,11 @@ struct task *SetAdvaOptionMenuTask(struct ModeSelPrmType *prmp)
 
 // STUB: SADX 0x005ee4a0
 static void title_menu_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005ee660
+void FUN_005ee660(void *param_1)
 {
 }
 

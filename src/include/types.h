@@ -121,6 +121,7 @@ struct DDlgType;
 struct DialogPrmType;
 struct DlgSndPrmType;
 struct eggmoble_effect;
+struct EmblemViewWk;
 struct enemywk;
 struct EPATHTAG;
 struct epathtbl;
@@ -147,6 +148,7 @@ struct GM_START_POSANG;
 struct HintMessageMemory;
 struct HintMessageString;
 struct HintMessageTable;
+struct InetDemoWk;
 struct ITEM_SAVE_INFO;
 struct LATE_FAR_Z_T;
 struct LATE_LNK;
@@ -231,6 +233,7 @@ struct shadowwk;
 struct sMobleCtrl;
 struct sMRacePath;
 struct SNAPSHOT_DATA;
+struct SndTestWk;
 struct sp_info;
 struct sp_link;
 struct sp_task;
@@ -252,6 +255,7 @@ struct TEXANIMINFO;
 struct TEXUVINFO;
 struct TEXUVINFO2;
 struct thread;
+struct TitleMenuWk;
 struct TrialActSelWk;
 struct TvSettingWk;
 struct u4s;
@@ -401,6 +405,14 @@ enum EVBOSS_TYPE : int {
 };
 static_assert(sizeof(EVBOSS_TYPE) == 4, "sizeof EVBOSS_TYPE");
 
+enum EmblemViewSbMdEnum : int {
+    EMBLEMVIEW_SMD_STAY = 0,
+    EMBLEMVIEW_SMD_DECIDE = 1,
+    EMBLEMVIEW_SMD_NWAIT = 2,
+    EMBLEMVIEW_SMD_MAX = 3,
+};
+static_assert(sizeof(EmblemViewSbMdEnum) == 4, "sizeof EmblemViewSbMdEnum");
+
 enum FileSbMdEnum : int {
     FILESEL_SMD_STAY = 0,
     FILESEL_SMD_STAY2 = 1,
@@ -424,6 +436,15 @@ enum FileSbMdEnum : int {
 };
 static_assert(sizeof(FileSbMdEnum) == 4, "sizeof FileSbMdEnum");
 
+enum InetDemoSbMdEnum : int {
+    INETDEMO_SMD_STAY = 0,
+    INETDEMO_SMD_ALERT = 1,
+    INETDEMO_SMD_STAY_MAIN = 2,
+    INETDEMO_SMD_NWAIT = 3,
+    INETDEMO_SMD_MAX = 4,
+};
+static_assert(sizeof(InetDemoSbMdEnum) == 4, "sizeof InetDemoSbMdEnum");
+
 enum MiniGameSelSbMdEnum : int {
     MINIGAMESEL_SMD_STAY = 0,
     MINIGAMESEL_SMD_DECIDE = 1,
@@ -439,6 +460,55 @@ enum OdeMenuState : int {
     ODE_MENU_STATE_END = 2,
 };
 static_assert(sizeof(OdeMenuState) == 4, "sizeof OdeMenuState");
+
+enum SndSubMenuEnum : int {
+    SNDSUBMENU_MAIN = 0,
+    SNDSUBMENU_CHAR = 1,
+    SNDSUBMENU_ADV = 2,
+    SNDSUBMENU_EVENT = 3,
+    SNDSUBMENU_OTHER = 4,
+    SNDSUBMENU_JINGLE = 5,
+    SNDSUBMENU_EFFSND = 6,
+    SNDSUBMENU_GOBACK = 7,
+    SNDSUBMENU_MAX = 8,
+};
+static_assert(sizeof(SndSubMenuEnum) == 4, "sizeof SndSubMenuEnum");
+
+enum SndTestSbMdEnum : int {
+    SNDTEST_SMD_STAY = 0,
+    SNDTEST_SMD_STAY2 = 1,
+    SNDTEST_SMD_NWAIT = 2,
+    SNDTEST_SMD_SUBMENU_OPEN = 3,
+    SNDTEST_SMD_SUBMENU = 4,
+    SNDTEST_SMD_SUBMENU_CLOSE = 5,
+    SNDTEST_SMD_EFFMENU_OPEN = 6,
+    SNDTEST_SMD_EFFMENU = 7,
+    SNDTEST_SMD_EFFMENU_CLOSE = 8,
+    SNDTEST_SMD_MAX = 9,
+};
+static_assert(sizeof(SndTestSbMdEnum) == 4, "sizeof SndTestSbMdEnum");
+
+enum TitleMenuEnum : int {
+    OPTION_MENU_HOW2PLAY = 0,
+    OPTION_MENU_CONTROLS = 1,
+    OPTION_MENU_OPTIONS = 2,
+    OPTION_MENU_CREDITS = 3,
+    OPTION_MENU_BACK = 4,
+    OPTION_MENU_MAX = 5,
+};
+static_assert(sizeof(TitleMenuEnum) == 4, "sizeof TitleMenuEnum");
+
+enum TitleMenuSbMdEnum : int {
+    TITLEMENU_SMD_STAY = 0,
+    TITLEMENU_SMD_DECIDE = 1,
+    TITLEMENU_SMD_STAY_S = 2,
+    TITLEMENU_SMD_TO_DEMO = 3,
+    TITLEMENU_SMD_TO_DEMO2 = 4,
+    TITLEMENU_SMD_TO_MAINMENU = 5,
+    TITLEMENU_SMD_NWAIT = 6,
+    TITLEMENU_SMD_MAX = 7,
+};
+static_assert(sizeof(TitleMenuSbMdEnum) == 4, "sizeof TitleMenuSbMdEnum");
 
 enum TrialActSbMdEnum : int {
     TRIALACTSEL_SMD_STAY = 0,
@@ -2420,6 +2490,42 @@ static_assert(sizeof(EVTABLE2) == 0x8, "sizeof EVTABLE2");
 static_assert(offsetof(EVTABLE2, func) == 0x0, "EVTABLE2::func");
 static_assert(offsetof(EVTABLE2, pvmtable) == 0x4, "EVTABLE2::pvmtable");
 
+struct EmblemViewWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum EmblemViewSbMdEnum SubMode;
+    signed char CharEnable[10];
+    unsigned long CsrCol;
+    float CsrScale;
+    float wndscl;
+    long CsrAniAng;
+    signed char CharEnaMax;
+    unsigned char CsrAlpha;
+    unsigned char DispChar;
+    unsigned char SelChar;
+};
+static_assert(sizeof(EmblemViewWk) == 0x3c, "sizeof EmblemViewWk");
+static_assert(offsetof(EmblemViewWk, Stat) == 0x0, "EmblemViewWk::Stat");
+static_assert(offsetof(EmblemViewWk, PrevMode) == 0x4, "EmblemViewWk::PrevMode");
+static_assert(offsetof(EmblemViewWk, NextMode) == 0x8, "EmblemViewWk::NextMode");
+static_assert(offsetof(EmblemViewWk, BaseZ) == 0xc, "EmblemViewWk::BaseZ");
+static_assert(offsetof(EmblemViewWk, T) == 0x10, "EmblemViewWk::T");
+static_assert(offsetof(EmblemViewWk, BaseCol) == 0x14, "EmblemViewWk::BaseCol");
+static_assert(offsetof(EmblemViewWk, SubMode) == 0x18, "EmblemViewWk::SubMode");
+static_assert(offsetof(EmblemViewWk, CharEnable) == 0x1c, "EmblemViewWk::CharEnable");
+static_assert(offsetof(EmblemViewWk, CsrCol) == 0x28, "EmblemViewWk::CsrCol");
+static_assert(offsetof(EmblemViewWk, CsrScale) == 0x2c, "EmblemViewWk::CsrScale");
+static_assert(offsetof(EmblemViewWk, wndscl) == 0x30, "EmblemViewWk::wndscl");
+static_assert(offsetof(EmblemViewWk, CsrAniAng) == 0x34, "EmblemViewWk::CsrAniAng");
+static_assert(offsetof(EmblemViewWk, CharEnaMax) == 0x38, "EmblemViewWk::CharEnaMax");
+static_assert(offsetof(EmblemViewWk, CsrAlpha) == 0x39, "EmblemViewWk::CsrAlpha");
+static_assert(offsetof(EmblemViewWk, DispChar) == 0x3a, "EmblemViewWk::DispChar");
+static_assert(offsetof(EmblemViewWk, SelChar) == 0x3b, "EmblemViewWk::SelChar");
+
 struct FileSelWk {
     enum AdvaStatEnum Stat;
     enum AdvaModeEnum PrevMode;
@@ -2621,6 +2727,30 @@ static_assert(offsetof(ITEM_SAVE_INFO, place) == 0x2, "ITEM_SAVE_INFO::place");
 static_assert(offsetof(ITEM_SAVE_INFO, status) == 0x4, "ITEM_SAVE_INFO::status");
 static_assert(offsetof(ITEM_SAVE_INFO, nbVisit) == 0x6, "ITEM_SAVE_INFO::nbVisit");
 static_assert(offsetof(ITEM_SAVE_INFO, pos) == 0x8, "ITEM_SAVE_INFO::pos");
+
+struct InetDemoWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum InetDemoSbMdEnum SubMode;
+    struct task *AlertTsk;
+    signed char VMStatAll;
+    long titletimer;
+};
+static_assert(sizeof(InetDemoWk) == 0x28, "sizeof InetDemoWk");
+static_assert(offsetof(InetDemoWk, Stat) == 0x0, "InetDemoWk::Stat");
+static_assert(offsetof(InetDemoWk, PrevMode) == 0x4, "InetDemoWk::PrevMode");
+static_assert(offsetof(InetDemoWk, NextMode) == 0x8, "InetDemoWk::NextMode");
+static_assert(offsetof(InetDemoWk, BaseZ) == 0xc, "InetDemoWk::BaseZ");
+static_assert(offsetof(InetDemoWk, T) == 0x10, "InetDemoWk::T");
+static_assert(offsetof(InetDemoWk, BaseCol) == 0x14, "InetDemoWk::BaseCol");
+static_assert(offsetof(InetDemoWk, SubMode) == 0x18, "InetDemoWk::SubMode");
+static_assert(offsetof(InetDemoWk, AlertTsk) == 0x1c, "InetDemoWk::AlertTsk");
+static_assert(offsetof(InetDemoWk, VMStatAll) == 0x20, "InetDemoWk::VMStatAll");
+static_assert(offsetof(InetDemoWk, titletimer) == 0x24, "InetDemoWk::titletimer");
 
 struct LATE_FAR_Z_T {
     float nor;
@@ -3280,6 +3410,56 @@ static_assert(sizeof(STAFFROLL_DATA) == 0x8, "sizeof STAFFROLL_DATA");
 static_assert(offsetof(STAFFROLL_DATA, StaffTbl) == 0x0, "STAFFROLL_DATA::StaffTbl");
 static_assert(offsetof(STAFFROLL_DATA, nbStaff) == 0x4, "STAFFROLL_DATA::nbStaff");
 
+struct SndTestWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum SndTestSbMdEnum SubMode;
+    unsigned long CsrCol;
+    float CsrScale;
+    long CsrAniAng;
+    unsigned char CsrAlpha;
+    unsigned long SubBaseCol;
+    float SubT;
+    unsigned char StgEnaMax;
+    unsigned char DispStg;
+    unsigned char SelStg;
+    enum SndSubMenuEnum SelMenu;
+    float SndEffMag;
+    signed char SndEffCsrX;
+    signed char SndEffCsrY;
+    signed char RowMlt;
+    signed char RowBnk;
+    signed char RowSe;
+};
+static_assert(sizeof(SndTestWk) == 0x48, "sizeof SndTestWk");
+static_assert(offsetof(SndTestWk, Stat) == 0x0, "SndTestWk::Stat");
+static_assert(offsetof(SndTestWk, PrevMode) == 0x4, "SndTestWk::PrevMode");
+static_assert(offsetof(SndTestWk, NextMode) == 0x8, "SndTestWk::NextMode");
+static_assert(offsetof(SndTestWk, BaseZ) == 0xc, "SndTestWk::BaseZ");
+static_assert(offsetof(SndTestWk, T) == 0x10, "SndTestWk::T");
+static_assert(offsetof(SndTestWk, BaseCol) == 0x14, "SndTestWk::BaseCol");
+static_assert(offsetof(SndTestWk, SubMode) == 0x18, "SndTestWk::SubMode");
+static_assert(offsetof(SndTestWk, CsrCol) == 0x1c, "SndTestWk::CsrCol");
+static_assert(offsetof(SndTestWk, CsrScale) == 0x20, "SndTestWk::CsrScale");
+static_assert(offsetof(SndTestWk, CsrAniAng) == 0x24, "SndTestWk::CsrAniAng");
+static_assert(offsetof(SndTestWk, CsrAlpha) == 0x28, "SndTestWk::CsrAlpha");
+static_assert(offsetof(SndTestWk, SubBaseCol) == 0x2c, "SndTestWk::SubBaseCol");
+static_assert(offsetof(SndTestWk, SubT) == 0x30, "SndTestWk::SubT");
+static_assert(offsetof(SndTestWk, StgEnaMax) == 0x34, "SndTestWk::StgEnaMax");
+static_assert(offsetof(SndTestWk, DispStg) == 0x35, "SndTestWk::DispStg");
+static_assert(offsetof(SndTestWk, SelStg) == 0x36, "SndTestWk::SelStg");
+static_assert(offsetof(SndTestWk, SelMenu) == 0x38, "SndTestWk::SelMenu");
+static_assert(offsetof(SndTestWk, SndEffMag) == 0x3c, "SndTestWk::SndEffMag");
+static_assert(offsetof(SndTestWk, SndEffCsrX) == 0x40, "SndTestWk::SndEffCsrX");
+static_assert(offsetof(SndTestWk, SndEffCsrY) == 0x41, "SndTestWk::SndEffCsrY");
+static_assert(offsetof(SndTestWk, RowMlt) == 0x42, "SndTestWk::RowMlt");
+static_assert(offsetof(SndTestWk, RowBnk) == 0x43, "SndTestWk::RowBnk");
+static_assert(offsetof(SndTestWk, RowSe) == 0x44, "SndTestWk::RowSe");
+
 struct TENSHOUSEINFO {
     struct obj *pobj;
     float objsize;
@@ -3381,6 +3561,32 @@ static_assert(offsetof(Tex_anim_land_work, tex_max) == 0x5, "Tex_anim_land_work:
 static_assert(offsetof(Tex_anim_land_work, first) == 0x6, "Tex_anim_land_work::first");
 static_assert(offsetof(Tex_anim_land_work, second) == 0x8, "Tex_anim_land_work::second");
 static_assert(offsetof(Tex_anim_land_work, frame_spd) == 0xa, "Tex_anim_land_work::frame_spd");
+
+struct TitleMenuWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    enum AdvaModeEnum NextModeSub;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum TitleMenuSbMdEnum SubMode;
+    enum TitleMenuEnum SelMenu;
+    short Cnt;
+    unsigned char WakeFlg;
+};
+static_assert(sizeof(TitleMenuWk) == 0x28, "sizeof TitleMenuWk");
+static_assert(offsetof(TitleMenuWk, Stat) == 0x0, "TitleMenuWk::Stat");
+static_assert(offsetof(TitleMenuWk, PrevMode) == 0x4, "TitleMenuWk::PrevMode");
+static_assert(offsetof(TitleMenuWk, NextMode) == 0x8, "TitleMenuWk::NextMode");
+static_assert(offsetof(TitleMenuWk, NextModeSub) == 0xc, "TitleMenuWk::NextModeSub");
+static_assert(offsetof(TitleMenuWk, BaseZ) == 0x10, "TitleMenuWk::BaseZ");
+static_assert(offsetof(TitleMenuWk, T) == 0x14, "TitleMenuWk::T");
+static_assert(offsetof(TitleMenuWk, BaseCol) == 0x18, "TitleMenuWk::BaseCol");
+static_assert(offsetof(TitleMenuWk, SubMode) == 0x1c, "TitleMenuWk::SubMode");
+static_assert(offsetof(TitleMenuWk, SelMenu) == 0x20, "TitleMenuWk::SelMenu");
+static_assert(offsetof(TitleMenuWk, Cnt) == 0x24, "TitleMenuWk::Cnt");
+static_assert(offsetof(TitleMenuWk, WakeFlg) == 0x26, "TitleMenuWk::WakeFlg");
 
 struct TrialActSelWk {
     enum AdvaStatEnum Stat;

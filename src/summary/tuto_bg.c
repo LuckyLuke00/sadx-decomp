@@ -39,3 +39,9 @@ void SetTutoBgFadeMode(struct task *tp)
 {
 	tp->twp->mode = 1;
 }
+
+// STUB: SADX 0x00497070
+struct task *CreateTutorialBgTask(int level, int advplno, struct NJS_POINT3 *pos)
+{
+	return (struct task *)0;
+}

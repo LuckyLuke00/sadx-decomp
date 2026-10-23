@@ -14,6 +14,16 @@ int FUN_005f4e60()
 	return (int)0;
 }
 
+// STUB: SADX 0x005fa060
+void FUN_005fa060(void)
+{
+}
+
+// STUB: SADX 0x005fa3a0
+void FUN_005fa3a0(struct DDlgType *dlgp)
+{
+}
+
 // FUNCTION: SADX 0x005fb390
 void FUN_005fb390(struct task *param_1)
 {

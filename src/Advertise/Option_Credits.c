@@ -28,6 +28,11 @@ static void title_menu_exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005e89b0
+void FUN_005e89b0(void *param_1)
+{
+}
+
 // STUB: SADX 0x005e8d80
 static void title_menu_disp(struct task *tp)
 {
