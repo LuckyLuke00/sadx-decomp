@@ -11,7 +11,6 @@ import re
 
 import names
 
-LITERAL = re.compile(r"\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'|//.*|/\*.*?\*/")  # a string, a character or a comment
 ASSIGN = re.compile(r"(?<![=!<>+\-*/%&|^])=(?!=)")
 SIMPLE = re.compile(r"[-&*!~]*[\w.]+(?:->\w+|\.\w+|\[[^\]]*\]|\([^()]*\))*")  # an operand: a cast needs no brackets
 TAG_NAME = re.compile(r"(?<!struct )(?<!union )(?<!enum )\b\w+\b")
@@ -271,15 +270,9 @@ def type_kind(name):
     return "integer" if bare in INTEGER_TYPES else "other"
 
 
-def blank_literals(line):
-    """LINE with each string, character and comment as filler of the same length, so a bracket, comma or = in
-    them does not count."""
-    return LITERAL.sub(lambda m: ("_" if m[0][0] in "\"'" else " ") * len(m[0]), line)
-
-
 def expression_end(blanked, start):
-    """The index in BLANKED, a line from blank_literals, where the expression that starts at START ends: a `,`
-    or `;` outside brackets, or the bracket that closes the one around it. None when the line ends first."""
+    """The index in BLANKED, a line from names.blank_literals, where the expression that starts at START ends: a
+    `,` or `;` outside brackets, or the bracket that closes the one around it. None when the line ends first."""
     depth = 0
     for i in range(start, len(blanked)):
         depth += (blanked[i] in "([{") - (blanked[i] in ")]}")
@@ -296,8 +289,8 @@ def trimmed(blanked, start, end):
 
 def value_span(blanked, name):
     """(start, end) of the expression that a C2440 on NAME ('=', 'initializing' or 'return') converts in BLANKED,
-    a line from blank_literals. None when the line holds more than one = or return, or the expression goes on in
-    the next line."""
+    a line from names.blank_literals. None when the line holds more than one = or return, or the expression goes
+    on in the next line."""
     marks = [m.end() for m in (re.finditer(r"\breturn\b", blanked) if name == "return" else ASSIGN.finditer(blanked))]
     end = expression_end(blanked, marks[0]) if len(marks) == 1 else None
     if end is None:
@@ -308,7 +301,7 @@ def value_span(blanked, name):
 
 def argument_spans(blanked, start):
     """(start, end) of each argument of the call whose bracket opens just before START in BLANKED, a line from
-    blank_literals. None when the call goes on in the next line."""
+    names.blank_literals. None when the call goes on in the next line."""
     spans = []
     while (end := expression_end(blanked, start)) is not None:
         spans.append(trimmed(blanked, start, end))
@@ -321,8 +314,8 @@ def argument_spans(blanked, start):
 
 
 def argument_span(blanked, name, param):
-    """(start, end) of argument PARAM (from 1) of the one call to NAME in BLANKED, a line from blank_literals, else
-    None."""
+    """(start, end) of argument PARAM (from 1) of the one call to NAME in BLANKED, a line from names.blank_literals,
+    else None."""
     calls = list(re.finditer(rf"\b{re.escape(name)}\s*\(", blanked))
     spans = argument_spans(blanked, calls[0].end()) if len(calls) == 1 else None
     return spans[param - 1] if spans and param <= len(spans) and all(a < b for a, b in spans) else None
@@ -341,7 +334,7 @@ def cast_text(expression, target):
 
 def cast_line(line, conversion, kinds):
     """LINE with the cast that CONVERSION names, or None when the spot is more than one place in the line."""
-    blanked = blank_literals(line)
+    blanked = names.blank_literals(line)
     span = (value_span(blanked, conversion.name) if conversion.param is None
             else argument_span(blanked, conversion.name, conversion.param))
     if span is None:
@@ -354,7 +347,7 @@ def continued_lines(func):
     compiler names the last line of a statement, so the callee or the = it means can be in an earlier line."""
     continued, depth, ended = set(), 0, True
     for i, line in enumerate(func):
-        blanked = blank_literals(line).strip()
+        blanked = names.blank_literals(line).strip()
         if not blanked or blanked.startswith("#"):
             continue
         if depth > 0 or not ended:

@@ -1,17 +1,19 @@
-"""Checks for the C text scanners in tools/cfix.py and for line_declarations in tools/llm.py: they read one line or
-one function of C by brackets and commas, and must not count a bracket, comma or = inside a string, a character or
-a comment."""
+"""Checks for the C text scanners in tools/cfix.py, for blank_literals in tools/names.py and for line_declarations in
+tools/llm.py: they read one line or one function of C by brackets and commas, and must not count a bracket, comma or
+= inside a string, a character or a comment."""
 
 import cfix
 import llm
+import names
 
 Pointee = cfix.Pointee
 
 
 def check_blank_literals() -> list[str]:
     """Each string, character and comment becomes filler of the same length: `_` for a string or character, blanks for
-    a comment. Text outside them stays. A quote or comment mark inside another literal does not start a new one, and
-    an escaped quote does not end a string."""
+    a comment. Text outside them stays, and so does a newline in a comment. A quote or comment mark inside another
+    literal does not start a new one, an escaped quote does not end a string, and a string does not go on in the next
+    line."""
     cases = [("", ""),
              ("f(a, b);", "f(a, b);"),
              ('f("a,)", 1);', 'f(_____, 1);'),
@@ -21,10 +23,12 @@ def check_blank_literals() -> list[str]:
              ('s = "a \\" ) b";', "s = " + "_" * 10 + ";"),
              ('s = "// no"; // yes', 's = _______;       '),
              ("c = '\\''; d = 1;", "c = ____; d = 1;"),
-             ('f("(", ")", \'(\');', "f(___, ___, ___);")]
+             ('f("(", ")", \'(\');', "f(___, ___, ___);"),
+             ("a /* b\nc */ d", "a " + " " * 4 + "\n" + " " * 4 + " d"),
+             ('x = "a\ny = "b";', 'x = "a\ny = ___;')]
     failures = []
     for line, wanted in cases:
-        found = cfix.blank_literals(line)
+        found = names.blank_literals(line)
         if found != wanted:
             failures.append(f"blank_literals gives {found!r} for {line!r}, not {wanted!r}")
     return failures
