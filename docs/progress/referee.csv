@@ -1,0 +1,11 @@
+date,verdict,change,candidate_per_1k,candidate_fair_per_1k,candidate_share,candidate_rows,production_per_1k,production_fair_per_1k,production_share,production_rows
+2026-10-19 00:45,accepted,--prompt v3 (was v2),,,56,32,,,31,26
+2026-10-19 04:37,accepted,added --structs,,,73,30,,,64,42
+2026-10-19 19:52,accepted,added --accesses,,,71,34,,,52,29
+2026-10-19 21:46,accepted,added --top-k 20; added --top-p 0.8; added --min-p 0,,,81,32,,,74,27
+2026-10-20 19:05,rejected,--prompt v4 (was v3),0.164,,88,32,0.144,,82,56
+2026-10-20 20:14,accepted,added --tries 3,1.057,,50,32,0.163,,82,34
+2026-10-21 06:39,accepted,--prompt v5 (was v3),0.218,,23,30,0.057,,7,84
+2026-10-21 07:24,accepted,added --facts,0.255,,25,32,0.124,,14,80
+2026-10-22 18:38,accepted,added --similar-examples,1.774,,60,30,0.719,,36,118
+2026-10-22 20:23,accepted,added --idioms,1.209,1.175,56,36,0.887,0.887,46,159

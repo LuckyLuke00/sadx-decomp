@@ -9,3 +9,4 @@ ghidra.log
 *.dll
 *.pdb
 llm.json
+_site/
