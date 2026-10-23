@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x0069ce00
+void HeadExec(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0069d160
 void ExecD(struct task *tp)
 {
