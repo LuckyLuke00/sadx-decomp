@@ -135,18 +135,17 @@ The Rich header can't tell C from C++ per file. It counts 265 objects at product
 
 ## 5. Debug strings
 
-Release code still passes `__FILE__` and `__LINE__` to print and allocator calls. The line numbers show where the code sat in the original files. Reproduce the calls. Keep every format string byte for byte. Use `#line` to set the line and file name.
+Release code still passes `__FILE__` and `__LINE__` to print and allocator calls. The line numbers show where the code sat in the original files. Reproduce the calls. Keep every format string byte for byte. Write the game's path as a string literal with doubled backslashes, and its line as a number. Don't use `#line`. [PORTING.md](PORTING.md#traps) says why.
 
 Two call shapes appear in the exe:
 
 - **Print.** `FUN_00404ef0(fmt, __FILE__, __LINE__, ...)`. The function at 0x00404ef0, in group A, forwards its format and argument list to the CRT `vsprintf` at 0x008e2755. The buffer is a fixed data address.
 - **Allocator pair.** `FUN_004337a0(size, __FILE__, __LINE__)` and `FUN_004337c0(ptr, __FILE__, __LINE__)`. Each is a thin wrapper that calls the CRT `malloc` at 0x008e481b or `free` at 0x008e48af with the first argument. It drops file and line, as the disassembly shows. `src/library.csv` names `malloc`, `free` and `vsprintf`. Callers: `sg_maloc.c`, `SOCAudioSystem.cpp`, `SOCFileStream.cpp`, `st_direct3d.cpp`, `st_vertexstream.cpp`, `st_file.cpp`, `filesel.cpp`, `l_edit.cpp` and `task.c`. The exe holds no names for them. Sega's Shinobi header `sg_maloc.h` declares `Void *syMalloc(Uint32 nbytes)`, `void *syCalloc(Uint32 nobj, Uint32 size)` and `Void syFree(Void *ap)`, without file and line [official]. They fit the three `sg_maloc.c` functions that call the pair. 0x0042b3b0 takes a size, 0x0042b3d0 takes a count and a size, and 0x0042b400 takes a pointer. Name those three `syMalloc`, `syCalloc` and `syFree` [official for the names, inference for the match]. The pair takes file and line, so those names do not fit it. Give it no guessed name.
 
-Put `#line` on the line directly above the statement that holds `__LINE__`. Keep that statement on one line.
+For example, the call at line 790 of `enemy.c`:
 
 ```cpp
-#line 790 "..\\..\\src\\enemy.c"
-FUN_00404ef0("%s %d:playertwp=0\n", __FILE__, __LINE__);
+FUN_00404ef0("%s %d:playertwp=0\n", "..\\..\\src\\enemy.c", 790);
 ```
 
 Known lines:
@@ -163,7 +162,7 @@ Known lines:
 
 Two details to match:
 
-- In `eventdraw.c`, one literal holds the format string and the path at its end, for example `"%s %d : EPJoinVertexes Error\n..\..\src\eventdraw.c"`. The call pushes that literal and the line, with no separate file argument. Write it as `"...\n" __FILE__, __LINE__` so the bytes come out the same.
+- In `eventdraw.c`, one literal holds the format string and the path at its end, for example `"%s %d : EPJoinVertexes Error\n..\..\src\eventdraw.c"`. The call pushes that literal and the line, with no separate file argument. Write it as one literal and the line, for example `"...\n..\\..\\src\\eventdraw.c", 63`, so the bytes come out the same.
 - In group F every call site has its own copy of the path string. In group B3 all sites share one. This fits `data/codegen-groups.csv`: F is /Od and B3 is /O2. The cause is string pooling (/GF), which /O1 and /O2 turn on. A scratch build of two functions that pass the same literal shows it. /O1 and /O2 share one copy. /Od and /Ox give each function its own.
 
 A scratch build of the two examples shows that the repo's VC++ 2010 SP1 compiler emits both forms above. The string bytes and line constants match (`push 0x316` for line 790).
