@@ -31,6 +31,11 @@ void DestroyMapPAST(unsigned short act)
 	late_ReleaseTexture(&texlist_mapPAST);
 }
 
+// STUB: SADX 0x006bc860
+void FUN_006bc860(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006bc910
 void AnimAct2Waters(struct task *tp)
 {
@@ -38,5 +43,10 @@ void AnimAct2Waters(struct task *tp)
 
 // STUB: SADX 0x006bc960
 void AnimAct3Waters(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006bca20
+void Bg_Past(struct task *tp)
 {
 }

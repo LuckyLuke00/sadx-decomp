@@ -14,6 +14,14 @@ void ObjectBeachGrassB(struct task *tp)
 	ObjectScaleNormal(tp);
 }
 
+// FUNCTION: SADX 0x007fed90
+void ObjectBeachGrassC(struct task *tp)
+{
+	tp->twp->counter.ptr = object_seaobj_kusa6_kusa6;
+	ObjectCCollision_setWZ(tp);
+	ObjectNormal(tp);
+}
+
 // FUNCTION: SADX 0x007fedb0
 void ObjectBeachGrassD(struct task *tp)
 {

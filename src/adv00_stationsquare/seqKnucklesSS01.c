@@ -10,3 +10,8 @@ void initKnucklesSS01()
 	}
 	SeqSetTime(0);
 }
+
+// STUB: SADX 0x006807a0
+void mainKnucklesSS01(int seqno)
+{
+}

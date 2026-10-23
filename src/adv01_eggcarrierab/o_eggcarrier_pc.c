@@ -40,3 +40,8 @@ void ecp_actman(struct task *task_p)
 		var1->work.ul[0] = 0;
 	}
 }
+
+// STUB: SADX 0x00694120
+void ECPeopleInitialize()
+{
+}

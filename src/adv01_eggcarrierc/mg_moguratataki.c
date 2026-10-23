@@ -71,6 +71,11 @@ void FUN_0069fc90(unsigned char *param_1)
 	}
 }
 
+// STUB: SADX 0x006a0560
+void put3Dsprite(struct NJS_SPRITE *sprite, long sprite_no, long attr)
+{
+}
+
 // FUNCTION: SADX 0x006a0f90
 void FUN_006a0f90(void)
 {

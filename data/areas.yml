@@ -63,6 +63,8 @@ tree:
   - ['^src/stg09_casino/', casinopolis]
   - ['^src/stg10_finalegg/', final_egg]
   - ['^src/stg12_hotshelter/', hot_shelter]
+  - ['^src/shooting/', sky_chase]
+  - ['^src/stg00_practice/', other]
   - ['^src/[^/]+$', engine]  # the other files at the top of src/
 
 # The progress map's sections, in order, each with its areas and the name the map shows for each. Every area
