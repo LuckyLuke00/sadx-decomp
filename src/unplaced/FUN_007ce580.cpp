@@ -10,3 +10,13 @@ void FUN_007ce580()
 		DAT_060cbf64 = 0;
 	}
 }
+
+// STUB: SADX 0x007ce5a0
+void FUN_007ce5a0(float param_1, float param_2, float param_3, int param_4)
+{
+}
+
+// STUB: SADX 0x007ce600
+void FUN_007ce600(int param_1)
+{
+}

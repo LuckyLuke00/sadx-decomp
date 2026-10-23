@@ -45,10 +45,20 @@ void FUN_005f22c0(struct task *param_1, struct ModeSelPrmType *param_2)
 	FUN_005f34f0(local_8);
 }
 
+// STUB: SADX 0x005f24e0
+void FUN_005f24e0(void *param_1)
+{
+}
+
 // FUNCTION: SADX 0x005f32f0
 void FUN_005f32f0(struct task *param_1)
 {
 	FUN_005f3310(*(float *)((char *)param_1 + 0x10));
+}
+
+// STUB: SADX 0x005f3390
+void FUN_005f3390()
+{
 }
 
 // FUNCTION: SADX 0x005f3460

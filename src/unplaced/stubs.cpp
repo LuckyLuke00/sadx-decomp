@@ -89,11 +89,6 @@ void njDrawSprite3D(struct NJS_SPRITE *,int,unsigned long)
 {
 }
 
-// STUB: SADX 0x004220c0
-void njDrawTriangle2D(struct NJS_POINT2COL *,int,float,unsigned long)
-{
-}
-
 // STUB: SADX 0x00422330
 void njDrawPolygon3D(struct NJS_POINT3COL *,int,unsigned long)
 {
@@ -207,11 +202,6 @@ void FUN_00429d40(void)
 {
 }
 
-// STUB: SADX 0x0042ae90
-void stLoadTexture(struct NJS_TEXMEMLIST *, void *)
-{
-}
-
 // STUB: SADX 0x0042afb0
 int stSetTexture(struct NJS_TEXMEMLIST *)
 {
@@ -230,11 +220,6 @@ extern void stSetBaseMatrix(float (*)[16])
 
 // STUB: SADX 0x0042b670
 void _njBeginModel(void)
-{
-}
-
-// STUB: SADX 0x0042b810
-void _njTransformObject(struct obj *,void (*)(struct NJS_MODEL *))
 {
 }
 
@@ -285,11 +270,6 @@ void _gjTrans2D(int)
 
 // STUB: SADX 0x004309b0
 void njCalcVector(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
-{
-}
-
-// STUB: SADX 0x00430aa0
-void njRotateZ(float *, int)
 {
 }
 
@@ -1524,7 +1504,7 @@ int LoadFile(char *fname, void *buff)
 }
 
 // STUB: SADX 0x004ce110
-int LoadFileWithMalloc(char *pcFileName, void * *pBuff)
+int LoadFileWithMalloc(char *, void **)
 {
 	return (int)0;
 }
@@ -1592,6 +1572,11 @@ void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 {
 }
 
+// STUB: SADX 0x004ec740
+void PSetMotion(struct mtnjvwk *mjp)
+{
+}
+
 // STUB: SADX 0x004f39c0
 void DestroyTask(struct task *)
 {
@@ -1620,6 +1605,11 @@ void DrawMotionGround()
 
 // STUB: SADX 0x004fdb00
 void ListGroundForDrawing()
+{
+}
+
+// STUB: SADX 0x004ff320
+void FUN_004ff320(int)
 {
 }
 
@@ -1773,6 +1763,12 @@ void AddSetStage(short ssGap)
 {
 }
 
+// STUB: SADX 0x00551690
+float GetShadowPos(float x, float y, float z, struct Angle3 *ang)
+{
+	return (float)0;
+}
+
 // STUB: SADX 0x00551e00
 float Shadow(struct taskwk *twp, float scl)
 {
@@ -1855,11 +1851,6 @@ void FUN_0056a200(struct task *)
 {
 }
 
-// STUB: SADX 0x0056ab80
-void FUN_0056ab80(int *, void (*)(void (*)(int)))
-{
-}
-
 // STUB: SADX 0x0056aea0
 void FUN_0056aea0(int)
 {
@@ -1895,11 +1886,6 @@ void CalcEventCameraAng()
 {
 }
 
-// STUB: SADX 0x0056db40
-void FUN_0056db40(struct MSGC *, long, long)
-{
-}
-
 // STUB: SADX 0x0056dd30
 void disp_npc_message_wait(const char * *message_p)
 {
@@ -1929,11 +1915,6 @@ float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct N
 
 // STUB: SADX 0x00571b20
 void FUN_00571b20(int)
-{
-}
-
-// STUB: SADX 0x00572f90
-void FUN_00572f90(struct obj *, struct obj *)
 {
 }
 
@@ -2309,11 +2290,6 @@ void GetAngleYZV(const struct NJS_POINT3 *, long *, long *)
 {
 }
 
-// STUB: SADX 0x005b93c0
-void FUN_005b93c0(struct task *)
-{
-}
-
 // STUB: SADX 0x005ba7b0
 void ObjectEmeraldDisplay(struct NJS_POINT3 *pos, long *angy)
 {
@@ -2321,11 +2297,6 @@ void ObjectEmeraldDisplay(struct NJS_POINT3 *pos, long *angy)
 
 // STUB: SADX 0x005bc0f0
 void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x005be2d0
-void FUN_005be2d0(struct taskwk *, struct enemywk *)
 {
 }
 
@@ -2684,6 +2655,11 @@ void Eggrob_Display(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00614a40
+void Eggrob_LockOnCursor(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00616840
 void EggrobForEvent0_Exe(struct task *tp)
 {
@@ -2713,6 +2689,11 @@ void FUN_0061def0(struct task *)
 
 // STUB: SADX 0x0061e310
 void DispCharMdls(struct CharMdlWk *wkp)
+{
+}
+
+// STUB: SADX 0x0061e7f0
+void FlickyEff_Particle_New(struct NJS_POINT3 *trans, int colormode, int onthefloor)
 {
 }
 
@@ -2774,18 +2755,8 @@ extern void njRotateXYZ(long, long *, long *, long *)
 {
 }
 
-// STUB: SADX 0x0067d830
-extern void FUN_0067d830(float *, float, float, float)
-{
-}
-
 // STUB: SADX 0x0067d9e0
 void njUnitMatrix(float *)
-{
-}
-
-// STUB: SADX 0x0067e460
-void njScaleV(float *, struct NJS_POINT3 *)
 {
 }
 
@@ -3254,31 +3225,6 @@ void DrawSaltWater3D_39()
 {
 }
 
-// STUB: SADX 0x00717f90
-void FUN_00717f90(int)
-{
-}
-
-// STUB: SADX 0x00717fc0
-void FUN_00717fc0()
-{
-}
-
-// STUB: SADX 0x00718010
-void FUN_00718010(int, int, int)
-{
-}
-
-// STUB: SADX 0x00718050
-void FUN_00718050(int)
-{
-}
-
-// STUB: SADX 0x00718120
-void FUN_00718120(int, int, int, int)
-{
-}
-
 // STUB: SADX 0x00731880
 void FUN_00731880()
 {
@@ -3299,25 +3245,10 @@ void execModelTask(struct task *p_task)
 {
 }
 
-// STUB: SADX 0x007d2030
-void FUN_007d2030(float, float, float, long, long, long, float, float, float, struct obj *, struct NJS_TEXLIST *, int)
-{
-}
-
-// STUB: SADX 0x007d21b0
-extern void FUN_007d21b0(void *)
-{
-}
-
 // STUB: SADX 0x007d4c80
 struct task *FUN_007d4c80(float, float, float, float, float)
 {
 	return (struct task *)0;
-}
-
-// STUB: SADX 0x007d4cd0
-void FUN_007d4cd0(struct task *, float)
-{
 }
 
 // STUB: SADX 0x007d5120
@@ -3328,11 +3259,6 @@ int FUN_007d5120()
 
 // STUB: SADX 0x007d52c0
 void CLast1AHigh_Disp(struct task *tp)
-{
-}
-
-// STUB: SADX 0x007d6280
-void FUN_007d6280(float, float, float, long, long, long)
 {
 }
 
@@ -3348,6 +3274,16 @@ void FUN_007d6940(struct task *)
 
 // STUB: SADX 0x007dd060
 void EggCarrierCloud(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007dd550
+void mghand_draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007dd900
+void mghand_exec(struct task *tp)
 {
 }
 
@@ -3392,22 +3328,15 @@ void FUN_007f2150(void)
 {
 }
 
-// STUB: SADX 0x007f2180
-int FUN_007f2180()
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x007f2190
-int FUN_007f2190()
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x007f2260
 long Expand2(void *src, void *dest)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x007f25b0
+void FUN_007f25b0()
+{
 }
 
 // STUB: SADX 0x00810f90
@@ -3471,6 +3400,11 @@ void ObjectSkydeck_enegymissile1_Init(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0084e4b0
+void FUN_0084e4b0(int)
+{
+}
+
 // STUB: SADX 0x00856510
 void Normal(struct task *tp)
 {
@@ -3493,6 +3427,11 @@ void ObjectCasinoHaeInit(struct task *tp)
 
 // STUB: SADX 0x00878e40
 void FUN_00878e40()
+{
+}
+
+// STUB: SADX 0x0088e530
+void TexMakeInit()
 {
 }
 
@@ -3581,6 +3520,46 @@ void execTPPlanet(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008d6200
+void FUN_008d6200(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x008d63e0
+void FUN_008d63e0(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x008d6480
+void FUN_008d6480(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x008d6640
+void FUN_008d6640(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x008d68e0
+void FUN_008d68e0(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x008d69e0
+void FUN_008d69e0(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x008d6b70
+void PondDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x008d6c70
+void PondRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x008d8110
 void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -3641,6 +3620,11 @@ void EvChaos2Water2Human()
 {
 }
 
+// STUB: SADX 0x00902fd0
+void EvChaos2Action(float ratio)
+{
+}
+
 // STUB: SADX 0x00903000
 void EvChaos6Human2Water()
 {
@@ -3684,12 +3668,6 @@ void ind()
 
 // STUB: SADX 0x00924470
 int FUN_00924470()
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x00928740
-int FUN_00928740()
 {
 	return (int)0;
 }

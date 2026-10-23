@@ -1,6 +1,12 @@
 #include "decls.h"
 extern int DAT_05b93270;
 
+// STUB: SADX 0x008d56f0
+signed char FUN_008d56f0(struct task *task_p, int *selItem_p, int itemNumb, signed char (*func_p)(struct task *))
+{
+	return (signed char)0;
+}
+
 // FUNCTION: SADX 0x008d57b0
 int FUN_008d57b0()
 {

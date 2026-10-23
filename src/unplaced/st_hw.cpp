@@ -1,0 +1,70 @@
+#include "decls.h"
+extern int DAT_05ab8288;
+extern int DAT_05ab828c;
+extern int DAT_05ab8290;
+extern int DAT_05ab8294;
+extern int DAT_05ab8298;
+extern int DAT_05ab829c;
+extern int DAT_05ab82a0;
+extern int DAT_05ab82a4;
+extern int DAT_05ab82a8;
+extern int DAT_05ab82ac;
+extern int DAT_05ab82b0;
+extern int DAT_05ab82b4;
+extern int DAT_05ab82b8;
+extern int DAT_05ab82bc;
+extern int DAT_05ab82c0;
+extern int DAT_05ab82c4;
+extern int DAT_05ab82c8;
+extern int DAT_05ab82cc;
+extern int DAT_05ab82d0;
+extern int DAT_05ab82d4;
+extern int DAT_05ab82d8;
+extern int DAT_05ab82dc;
+extern int DAT_05ab82e0;
+extern int DAT_05ab82e4;
+extern int DAT_05ab82e8;
+extern int DAT_05ab82ec;
+extern int DAT_05ab82f0;
+extern int DAT_05ab82f4;
+extern int DAT_05ab82f8;
+extern int DAT_05ab82fc;
+extern int DAT_05ab8300;
+extern int DAT_05ab8304;
+
+// FUNCTION: SADX 0x00422600
+void _stHWForceInit(void)
+{
+	DAT_05ab8288 = 0;
+	DAT_05ab828c = 0;
+	DAT_05ab8290 = 0;
+	DAT_05ab8294 = 0;
+	DAT_05ab8298 = 0;
+	DAT_05ab829c = 0;
+	DAT_05ab82a0 = 0;
+	DAT_05ab82a4 = 0;
+	DAT_05ab82a8 = 0;
+	DAT_05ab82ac = 0;
+	DAT_05ab82b0 = 0;
+	DAT_05ab82b4 = 0;
+	DAT_05ab82b8 = 0;
+	DAT_05ab82bc = 0;
+	DAT_05ab82c0 = 0;
+	DAT_05ab82c4 = 0;
+	DAT_05ab82c8 = 0;
+	DAT_05ab82cc = 0;
+	DAT_05ab82d0 = 0;
+	DAT_05ab82d4 = 0;
+	DAT_05ab82d8 = 0;
+	DAT_05ab82dc = 0;
+	DAT_05ab82e0 = 0;
+	DAT_05ab82e4 = 0;
+	DAT_05ab82e8 = 0;
+	DAT_05ab82ec = 0;
+	DAT_05ab82f0 = 0;
+	DAT_05ab82f4 = 0;
+	DAT_05ab82f8 = 0;
+	DAT_05ab82fc = 0;
+	DAT_05ab8300 = 0;
+	DAT_05ab8304 = 0;
+}
