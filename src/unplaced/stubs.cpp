@@ -2026,11 +2026,6 @@ void SpinnaDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x00594c30
-void SpinnaDamage(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
 // STUB: SADX 0x00597ff0
 void lig_calcPalette(int)
 {
@@ -3519,13 +3514,13 @@ void execTPPlanet(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008d6200
-void FUN_008d6200(struct taskwk *, struct enemywk *)
+// STUB: SADX 0x008d62e0
+void FUN_008d62e0(struct taskwk *, struct enemywk *)
 {
 }
 
-// STUB: SADX 0x008d63e0
-void FUN_008d63e0(struct taskwk *, struct enemywk *)
+// STUB: SADX 0x008d6360
+void FUN_008d6360(struct taskwk *, struct enemywk *)
 {
 }
 
@@ -3546,16 +3541,6 @@ void FUN_008d68e0(struct taskwk *, struct enemywk *)
 
 // STUB: SADX 0x008d69e0
 void FUN_008d69e0(struct taskwk *, struct enemywk *)
-{
-}
-
-// STUB: SADX 0x008d6b70
-void PondDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x008d6c70
-void PondRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 

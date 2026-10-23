@@ -1,4 +1,25 @@
 #include "decls.h"
+void FUN_008da730(struct task *param_1);
+
+// STUB: SADX 0x008da420
+void SnakeInit(struct task *tp, struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x008da650
+void SnakeParts(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008da730
+void FUN_008da730(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008da810
+void SnakePartsInit(struct task *tp)
+{
+}
 
 // FUNCTION: SADX 0x008daa60
 void SnakePartsDisplayer(struct task *tp)
@@ -30,6 +51,11 @@ void FUN_008dad00(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008dad60
+void SnakePartsDead(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x008dae20
 void FUN_008dae20(struct task *param_1, struct task *param_2)
 {
@@ -53,4 +79,19 @@ void FUN_008db0b0(struct task *param_1)
 {
 	FreeTaskC(param_1);
 	DeadOut(param_1);
+}
+
+// STUB: SADX 0x008db0d0
+void SnakeWalk(struct task *tp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x008db160
+void SnakeHeadMotion(struct taskwk *head, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x008db230
+void SnakeBodyMotion(struct taskwk *pre, struct taskwk *curr)
+{
 }
