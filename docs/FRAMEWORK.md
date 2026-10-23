@@ -9,7 +9,7 @@ The framework builds a matching decompilation of one 32-bit Windows exe. It comp
 - An exe with a Rich header. Microsoft's linker writes it. `probe` and `gate` stop without one.
 - A static or DLL C runtime (`MSVCR100.dll`). Only three small test exes test the DLL runtime.
 - The headers and libraries in `.toolchain`. They hold no D3DX, MFC or ATL. PORTING.md says what a game that uses them needs.
-- Windows 10 build 17063 or newer (it has `tar.exe`), Python 3.10 or newer and git. Testing covers every command on Windows 11 with Python 3.13. The CI workflow will run `ci` with Python 3.12 on GitHub's latest Windows image. It has not run yet.
+- Windows 10 build 17063 or newer (it has `tar.exe`), Python 3.10 or newer and git. Testing covers every command on Windows 11 with Python 3.13. The CI workflow runs `ci` with Python 3.12 on GitHub's latest Windows image.
 
 ## Framework files and game files
 
@@ -151,12 +151,12 @@ CI never sees the game exe, so it cannot score game functions itself. `tools/ci.
 - **No game files.** The check rejects any file over 10 MB. It also rejects a file with a binary suffix (`.exe`, `.dll`, `.pdb`, `.lib`, `.obj`, `.ilk`, `.iso`, `.msi`). Other game files, such as a small data file, pass this check.
 
 <details>
-<summary>Limits while a repo is private, and settings for later</summary>
+<summary>Limits while a repo is private, and the branch rule</summary>
 
 - Branch protection on a private repo needs a paid GitHub plan. Until then a failed run shows a red X but does not block a merge.
 - `git push --no-verify` skips the pre-push hook, and `git commit --no-verify` skips the pre-commit hook.
 - Windows minutes cost more than Linux minutes on a private repo. So a push to another branch runs nothing until it has a pull request.
-- Once the repo is public (or on a paid plan), add a branch rule for the default branch. The rule requires a pull request and the status check **CI**. It allows no bypass.
+- Once the repo is public (or on a paid plan), add a branch rule for the default branch. The rule requires a pull request and the status check **CI**. This repo has that rule. Admins can still bypass it.
 
 </details>
 
