@@ -31,6 +31,12 @@ void ADC_Displayer(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x005d5510
+long ADC_SetDrumCan()
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x005d55d0
 struct task *ADC_DrumCanTouchCheck()
 {

@@ -42,6 +42,44 @@ void ChkEgm1Tikal(struct task *tp, struct taskwk *twp, struct bossextwk *bxwp)
 	}
 }
 
+// FUNCTION: SADX 0x006c1670
+void SetEgm1DispMatrix(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	struct anywk *var2 = tp->awp;
+	njTranslateV((float *)0, &var1->pos);
+	if (GetBossAngMode(tp) != 0)
+	{
+		njRotateZXY(0, (long *)(*(long *)&var1->ang.x), (long *)(*(long *)&var1->ang.y), (long *)(*(long *)&var1->ang.z));
+	}
+	else
+	{
+		ZRotateYXZ((float *)((float (*)[16])0), &var1->ang);
+	}
+	if (*(int *)((char *)var2 + 0xa0) != 0)
+	{
+		njRotateX((float *)0, (unsigned short)*(short *)((char *)var2 + 0xa0));
+	}
+	if (*(int *)((char *)var2 + 0xa8) != 0)
+	{
+		njRotateZ((float *)0, (unsigned short)*(short *)((char *)var2 + 0xa8));
+	}
+	FUN_0067d2d0((float *)0, 2.0f, 2.0f, 2.0f);
+}
+
+// FUNCTION: SADX 0x006c1a90
+void TaskBossDisp(struct task *tp)
+{
+	njPushMatrix(0);
+	FUN_0067d830(0, 38.15999984741211, 0.0, 0.0);
+	___njSetTexture(&texlist_egm1);
+	late_DrawObjectClipMesh((struct obj *)&object_egm01_egm00_egm00, 1, 2.0);
+	njPopMatrix(1);
+	___njSetTexture(&texlist_egm1eggman);
+	FUN_0067d830(0, 0.0, -0.7299995422363281, 0.0);
+	ds_DrawObjectClip((struct obj *)&object_egman1_body_body, 2.0);
+}
+
 // FUNCTION: SADX 0x006c1bd0
 void TaskBossEnd(struct task *tp)
 {

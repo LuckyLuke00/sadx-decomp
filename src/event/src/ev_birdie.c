@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct CCL_INFO cinfo[1];
 static void ev_birdie_exec(struct task *tp, struct MJOIN_VERTEX *pj);
 extern struct MJOIN_VERTEX pj0[1];
 extern struct MJOIN_VERTEX pj2[1];
@@ -36,4 +37,28 @@ void ev_birdie1_exec(struct task *tp)
 void ev_birdie2_exec(struct task *tp)
 {
 	ev_birdie_exec(tp, &pj2[0]);
+}
+
+// STUB: SADX 0x007d58e0
+struct task *SetEventBirdie0(void)
+{
+	return (struct task *)0;
+}
+
+// FUNCTION: SADX 0x007d5910
+struct task *SetEventBirdie1(void)
+{
+	struct task *var1 = CreateElementalTask(2, 5, ev_birdie1_exec);
+	SetEventWork(var1->twp);
+	CCL_Init(var1, cinfo, 1, 4);
+	return var1;
+}
+
+// FUNCTION: SADX 0x007d5940
+struct task *SetEventBirdie2()
+{
+	struct task *var1 = CreateElementalTask(2, 5, ev_birdie2_exec);
+	SetEventWork(var1->twp);
+	CCL_Init(var1, &cinfo[0], 1, 4);
+	return var1;
 }

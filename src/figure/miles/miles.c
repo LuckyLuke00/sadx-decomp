@@ -187,9 +187,12 @@ void FUN_0053e4f0(struct taskwk *param_1, int param_2, int param_3)
 	dsPlay_oneshot(param_2, 0, param_3, 0);
 }
 
-// STUB: SADX 0x0053e520
-void FUN_0053e520(struct taskwk *twp)
+// FUNCTION: SADX 0x0053e520
+void FUN_0053e520(struct taskwk *param_1)
 {
+	if (!(1 != param_1->counter.b[0] && PCheckHoldObject(param_1) & 0x400))
+		return;
+	dsPlay_timer(0xf, (int)param_1, 1, 0, 2);
 }
 
 // FUNCTION: SADX 0x0053e560

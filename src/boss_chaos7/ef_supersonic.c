@@ -1,4 +1,5 @@
 #include "decls.h"
+struct NJS_TEXLIST;
 int FUN_006fccc0(struct taskwk *param_1);
 void FUN_006fd310(struct task *param_1);
 extern unsigned char DAT_060c35f0;
@@ -15,8 +16,18 @@ void EffectSSSpinDSExecute(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006fcb30
+void EffectSSStartHomingDisplay(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006fcc10
 void EffectSSStartHomingExecute(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006fce50
+void EffectSSDashDisplay(struct task *tp)
 {
 }
 

@@ -1,5 +1,38 @@
 #include "decls.h"
+extern struct NJS_ARGB DAT_0286f1d8;
+extern struct NJS_ARGB DAT_0286f1c8;
+extern struct taskwk *DAT_05b42a7c;
 extern int DAT_05b9d838;
+
+// FUNCTION: SADX 0x006e7820
+void Chaos2BallExplodeDisplay(struct task *tp)
+{
+	struct taskwk *var1;
+	static struct NJS_ARGB var2;
+
+	var1 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		___njColorBlendingMode(0, 0xa);
+		___njColorBlendingMode(1, 0xa);
+		___njSetConstantMaterial(&DAT_0286f1c8);
+		njPushMatrix(NULL);
+		njTranslateV(NULL, &var1->pos);
+		if (DAT_05b42a7c->ang.y != 0)
+		{
+			njRotateY(NULL, (unsigned short)DAT_05b42a7c->ang.y);
+		}
+		if (DAT_05b42a7c->ang.x != 0)
+		{
+			njRotateX(NULL, (unsigned short)DAT_05b42a7c->ang.x);
+		}
+		late_DrawSprite3D(&sprite_c2_flash, (int)var1->counter.f, 0x30, 4);
+		njPopMatrix(1);
+		ResetMaterial();
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+	}
+}
 
 // FUNCTION: SADX 0x006e78e0
 void Chaos2BallExplode(struct task *tp)
@@ -20,6 +53,29 @@ void Chaos2BallExplode(struct task *tp)
 		}
 	}
 	Chaos2BallExplodeDisplay(tp);
+}
+
+// FUNCTION: SADX 0x006e7940
+void dispMiniBallSprite(struct taskwk *twp)
+{
+	struct NJS_ARGB var1;
+	___njColorBlendingMode(0, 10);
+	___njColorBlendingMode(1, 10);
+	___njSetConstantMaterial(&DAT_0286f1d8);
+	njPushMatrix((float *)0);
+	if (*(int *)((char *)DAT_05b42a7c + 0x18) != 0)
+	{
+		njRotateY((float *)0, (unsigned short)*(short *)((char *)DAT_05b42a7c + 0x18));
+	}
+	if (*(int *)((char *)DAT_05b42a7c + 0x14) != 0)
+	{
+		njRotateX((float *)0, (unsigned short)*(short *)((char *)DAT_05b42a7c + 0x14));
+	}
+	late_DrawSprite3D(&sprite_c2_ball, (int)twp->counter.f, 0x30, 4);
+	njPopMatrix(1);
+	ResetMaterial();
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // FUNCTION: SADX 0x006e7c60
