@@ -8,6 +8,7 @@ from pathlib import Path
 
 import project
 import runner
+import tricks
 
 
 def score_functions(addresses: list[int], game: Path) -> int:
@@ -15,16 +16,18 @@ def score_functions(addresses: list[int], game: Path) -> int:
     runner.require_our_game()
     functions = runner.score_target(runner.game_build(), game)
     unmatched = runner.unmatched_library_rows(functions, game)
+    tricked = {address: reasons for address, (_, reasons) in tricks.scan(project.ROOT).items()}
     matched = 0
     for address in addresses:
-        if report_function(address, functions.get(address), unmatched.get(address)):
+        if report_function(address, functions.get(address), unmatched.get(address), tricked.get(address)):
             matched += 1
     if len(addresses) > 1:
         print(f"{matched} / {len(addresses)} match.")
     return 0 if matched == len(addresses) else 1
 
 
-def report_function(address: int, entry: dict | None, unmatched_library_name: str | None) -> bool:
+def report_function(address: int, entry: dict | None, unmatched_library_name: str | None, trick: str | None) -> bool:
+    """True for a match: 100% in plain C. TRICK is why tools/tricks.py finds a trick in the function, or None."""
     if unmatched_library_name is not None:
         print(f"{runner.unmatched_library_note(address, unmatched_library_name)}.")
         return False
@@ -35,6 +38,9 @@ def report_function(address: int, entry: dict | None, unmatched_library_name: st
     label = f"0x{address:08x} {entry['name']}"
     if entry.get("stub"):
         print(f"{label}: stub. Replace STUB with FUNCTION once it has a body.")
+        return False
+    if entry["matching"] == 1.0 and trick is not None:
+        print(f"{label}: 100%, but only through a trick ({trick}). It does not count as matched until it is plain C.")
         return False
     if entry["matching"] == 1.0:
         print(f"{label}: 100% match.")
