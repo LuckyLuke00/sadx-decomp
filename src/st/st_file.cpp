@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void stFileServer(void);
+struct SADX_file;
 void stReadFileReq(int param_1, int param_2, int param_3, int param_4);
 int FUN_00928740();
 
@@ -28,6 +30,11 @@ void stReadFileReq(int param_1, int param_2, int param_3, int param_4)
 {
 }
 
+// STUB: SADX 0x004354d0
+void stFileServer(void)
+{
+}
+
 // STUB: SADX 0x00435590
 void stReadFile(int param_1, int param_2, int param_3, int param_4)
 {
@@ -35,5 +42,10 @@ void stReadFile(int param_1, int param_2, int param_3, int param_4)
 
 // STUB: SADX 0x004355f0
 void stCloseFile(int param_1)
+{
+}
+
+// STUB: SADX 0x00435650
+void stFinishFile(void)
 {
 }
