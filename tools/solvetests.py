@@ -60,8 +60,8 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
              "first_prompt": first_prompt, "file_best": lambda *args: None, "decls": lambda config: ("", 0)}
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
-                   tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False, stop_below=None,
-                   try_tokens=None, think_max=None, similar_examples=False)
+                   idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
+                   stop_below=None, try_tokens=None, think_max=None, similar_examples=False)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):

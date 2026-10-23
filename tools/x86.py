@@ -46,6 +46,11 @@ class Function(NamedTuple):
     successors: dict[int, list[int]]  # the instructions that can run next, inside the function
 
 
+def changes(instruction: Instruction) -> int:
+    """The registers an instruction may change. A call may change eax, ecx and edx."""
+    return instruction.writes | (CALL_CHANGES if instruction.mnemonic == "call" else 0)
+
+
 class Decoder:
     """Decodes the functions of one image."""
 
