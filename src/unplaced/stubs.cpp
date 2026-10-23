@@ -1063,11 +1063,6 @@ void DisplayMiMessage()
 {
 }
 
-// STUB: SADX 0x00498f50
-void InitMission()
-{
-}
-
 // STUB: SADX 0x00499050
 void MissionGetNumDisplay()
 {
@@ -2682,6 +2677,16 @@ struct task *EventBossKnucklesSet(struct BOSSPLAYER_CREATE_PARAM *Param)
 	return (struct task *)0;
 }
 
+// STUB: SADX 0x0061ccb0
+void ColliSpaceEditMode(struct task *tp, unsigned short form)
+{
+}
+
+// STUB: SADX 0x0061d570
+void ColliOttottoRangeEditMode(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0061def0
 void FUN_0061def0(struct task *)
 {
@@ -3592,11 +3597,6 @@ void BridgeDraw(struct taskwk *)
 
 // STUB: SADX 0x008dc880
 void BridgeDraw2(struct taskwk *twp)
-{
-}
-
-// STUB: SADX 0x008ddd40
-void ERSC_CorrectParameter(struct taskwk *twp)
 {
 }
 

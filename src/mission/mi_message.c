@@ -1,4 +1,5 @@
 #include "decls.h"
+void ReleaseMiMessage();
 void FUN_004c3310(int *param_1);
 void FUN_004c1c20();
 void MSG_Close(struct MSGC *msgc);
@@ -41,4 +42,9 @@ void ReleaseMiMessage()
 		syFree(DAT_05b3730c);
 		DAT_05b3730c = 0;
 	}
+}
+
+// STUB: SADX 0x00498be0
+void SetMiMessage_Main(unsigned short u16MsgNo, unsigned short u16MsgFrame)
+{
 }

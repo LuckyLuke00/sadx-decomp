@@ -9780,6 +9780,14 @@
    "library": false
   },
   {
+   "address": "0x00498be0",
+   "name": "SetMiMessage_Main",
+   "accuracy": 0.023255813953488372,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00498e30",
    "name": "DisplayMiMessage",
    "accuracy": 0.020833333333333332,
@@ -9790,7 +9798,7 @@
   {
    "address": "0x00498f50",
    "name": "InitMission",
-   "accuracy": 0.04878048780487805,
+   "accuracy": 0.05263157894736842,
    "effective": false,
    "stub": true,
    "library": false
@@ -13385,9 +13393,9 @@
   {
    "address": "0x004bfcb0",
    "name": "CameraPositionSmooth",
-   "accuracy": 0.14814814814814814,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -20959,6 +20967,22 @@
    "library": false
   },
   {
+   "address": "0x0055ea20",
+   "name": "FUN_0055ea20",
+   "accuracy": 0.1568627450980392,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0055eaf0",
+   "name": "FUN_0055eaf0",
+   "accuracy": 0.11594202898550725,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0055f0c0",
    "name": "hintbox_end",
    "accuracy": 0.26666666666666666,
@@ -27615,6 +27639,14 @@
    "library": false
   },
   {
+   "address": "0x005b6940",
+   "name": "FUN_005b6940",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b69e0",
    "name": "FUN_005b69e0",
    "accuracy": 0.23529411764705882,
@@ -27644,6 +27676,14 @@
    "accuracy": 0.34782608695652173,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b6fd0",
+   "name": "CheckItemExplosion",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -32919,8 +32959,72 @@
    "library": false
   },
   {
+   "address": "0x0061cc20",
+   "name": "ColliSphere",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061ccb0",
+   "name": "ColliSpaceEditMode",
+   "accuracy": 0.01873536299765808,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0061d220",
    "name": "FUN_0061d220",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061d280",
+   "name": "ColliCylinder",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061d310",
+   "name": "ColliCube",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061d430",
+   "name": "ColliCircle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061d4d0",
+   "name": "ColliOttottoRange",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061d570",
+   "name": "ColliOttottoRangeEditMode",
+   "accuracy": 0.03225806451612903,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061d8b0",
+   "name": "ColliBigWaterJumpRange",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41418,9 +41522,41 @@
    "library": false
   },
   {
+   "address": "0x008ba110",
+   "name": "LineringDisp",
+   "accuracy": 0.11940298507462686,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008baad0",
+   "name": "ObjectBaloon",
+   "accuracy": 0.10256410256410256,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008babc0",
    "name": "FUN_008babc0",
    "accuracy": 0.17777777777777778,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008bad70",
+   "name": "FUN_008bad70",
+   "accuracy": 0.14545454545454545,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008bae10",
+   "name": "FUN_008bae10",
+   "accuracy": 0.11267605633802817,
    "effective": false,
    "stub": true,
    "library": false
@@ -41450,6 +41586,30 @@
    "library": false
   },
   {
+   "address": "0x008bb3b0",
+   "name": "InitCmnDushRing",
+   "accuracy": 0.19230769230769232,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008bb440",
+   "name": "GetTargetDist",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008bb8e0",
+   "name": "DrawCmnDushRing",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008bbba0",
    "name": "NomalObject",
    "accuracy": 1.0,
@@ -41460,6 +41620,14 @@
   {
    "address": "0x008bbfc0",
    "name": "FUN_008bbfc0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008bbff0",
+   "name": "DrawCmnKusa",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41485,6 +41653,14 @@
    "address": "0x008bc650",
    "name": "displayToge",
    "accuracy": 0.047619047619047616,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008bcb60",
+   "name": "ObjectIronBallDisplay",
+   "accuracy": 0.12903225806451613,
    "effective": false,
    "stub": true,
    "library": false
@@ -42538,6 +42714,22 @@
    "library": false
   },
   {
+   "address": "0x008d3370",
+   "name": "dispTPArch",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d3ec0",
+   "name": "ObjectTPLightI",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008d45a0",
    "name": "ObjectTPPlanetI",
    "accuracy": 1.0,
@@ -42551,6 +42743,14 @@
    "accuracy": 0.08247422680412371,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008d4720",
+   "name": "dispTPPlanet",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -50819,5 +51019,5 @@
   }
  ],
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "22194724a417eebdd2d4c1ab49b38cae6a5d6db16b8a23cbb1ec33979c0aa151"
+ "inputs_sha256": "c434716b35f888f30a02e49ad3739bf63fd51f8b51c39a59bfa12598443ec068"
 }
