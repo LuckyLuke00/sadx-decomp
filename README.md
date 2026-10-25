@@ -21,8 +21,9 @@ goal is C and C++ source that compiles to the same machine code as the retail
   <img src="docs/progress/history.svg" alt="Progress over time" width="100%">
 </picture>
 
-The [progress site](https://luckyluke00.github.io/sadx-decomp/) has a page per
-area with its rank, the emblems, and the near misses: functions at 90% or more.
+The [progress site](https://luckyluke00.github.io/sadx-decomp/) has a page for
+each area: what matches there, its emblem and its near misses. Its Help out
+page lists all near misses: functions at 90% or more.
 
 ## How it works
 

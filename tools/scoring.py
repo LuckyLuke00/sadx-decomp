@@ -137,15 +137,10 @@ class Emblem(NamedTuple):
         return self.matched >= self.needed
 
 
-EMBLEM_STEP = 5  # the percent of the game's code bytes for each code emblem
-
-
-def emblems(code: Bytes, areas: list[tuple[str, Bytes]]) -> list[Emblem]:
-    """One emblem for each EMBLEM_STEP percent of the game's code bytes matched, then one for each (name, code bytes)
-    area for all of its code. They come from the current summary only, so they carry no date."""
-    steps = [Emblem(f"{share}% of the game's code", code.matched, -(-code.game * share // 100))  # rounded up
-             for share in range(EMBLEM_STEP, 101, EMBLEM_STEP)]
-    return steps + [Emblem(f"All of {name}", area.matched, area.game) for name, area in areas]
+def emblems(areas: list[tuple[str, Bytes]]) -> list[Emblem]:
+    """One emblem for each (name, code bytes) area, for all of its code. They come from the current summary only, so
+    they carry no date."""
+    return [Emblem(name, area.matched, area.game) for name, area in areas]
 
 
 def earned_count(found: list[Emblem]) -> int:
@@ -168,7 +163,10 @@ def ratio(part: float, whole: float) -> float:
 
 
 def percent(part: int, whole: int) -> str:
-    return f"{ratio(part, whole):.2%}"
+    """The percent rounded down to two decimals, so only a whole that is all done shows 100.00%. Integers, as in
+    whole_percent."""
+    hundredths = 10000 * part // max(whole, 1)
+    return f"{hundredths // 100}.{hundredths % 100:02d}%"
 
 
 def count_text(part: int, whole: int, unit: str) -> str:

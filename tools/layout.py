@@ -1,4 +1,5 @@
-"""Layout for the SVG drawings: the rectangles of a treemap and lines of wrapped text.
+"""Layout for the drawings and pages: the rectangles of a treemap, lines of wrapped text, counted nouns and rounded
+polygon cells.
 
 The treemap is the squarified one of Bruls, Huizing and van Wijk (2000): the sizes go largest first, and each strip
 along the shorter side takes the next size only while that keeps the strip's worst aspect ratio from growing.
@@ -6,9 +7,12 @@ Standard library only.
 """
 
 import math
+import urllib.parse
 from typing import NamedTuple
 
 CHAR_WIDTH = 0.6  # a character's width for a font size, a little over the average of a sans-serif font
+
+Point = tuple[float, float]
 
 
 class Rect(NamedTuple):
@@ -84,6 +88,11 @@ def text_width(text: str, size: float) -> float:
     return len(text) * size * CHAR_WIDTH
 
 
+def counted(count: int, noun: str) -> str:
+    """The count with its noun, the noun plural with an s unless the count is 1."""
+    return f"{count:,} {noun}" + ("" if count == 1 else "s")
+
+
 def wrap(words: list[str], width: float, size: float) -> list[list[str]] | None:
     """The words in lines no wider than width, as many on each line as fit. None if one word alone is wider."""
     lines = []
@@ -95,3 +104,51 @@ def wrap(words: list[str], width: float, size: float) -> list[list[str]] | None:
         else:
             lines.append([word])
     return lines
+
+
+def clip_polygon(polygon: list[Point], normal: Point, limit: float) -> list[Point]:
+    """The part of a convex polygon where point . normal <= limit: one step of Sutherland-Hodgman."""
+    kept = []
+    for index, current in enumerate(polygon):
+        previous = polygon[index - 1]
+        before = previous[0] * normal[0] + previous[1] * normal[1] - limit
+        now = current[0] * normal[0] + current[1] * normal[1] - limit
+        if (before <= 0) != (now <= 0):
+            share = before / (before - now)
+            kept.append((previous[0] + share * (current[0] - previous[0]),
+                         previous[1] + share * (current[1] - previous[1])))
+        if now <= 0:
+            kept.append(current)
+    return kept
+
+
+def voronoi_cell(site: Point, others: list[Point], inset: float, reach: float) -> list[Point]:
+    """The points nearer the site than any of the others, pulled in by inset from each edge, within reach of the site
+    on each axis. Others may hold the site itself."""
+    x, y = site
+    cell = [(x - reach, y - reach), (x + reach, y - reach), (x + reach, y + reach), (x - reach, y + reach)]
+    for other in others:
+        if other == site:
+            continue
+        dx, dy = other[0] - x, other[1] - y
+        length = math.hypot(dx, dy)
+        normal = (dx / length, dy / length)
+        middle = ((x + other[0]) / 2, (y + other[1]) / 2)
+        cell = clip_polygon(cell, normal, middle[0] * normal[0] + middle[1] * normal[1] - inset)
+    return cell
+
+
+def rounded_path(corners: list[Point]) -> str:
+    """An SVG path through the midpoints of a polygon's edges, each corner the control point of the curve past it."""
+    middles = [((corners[index - 1][0] + x) / 2, (corners[index - 1][1] + y) / 2)
+               for index, (x, y) in enumerate(corners)]
+    parts = [f"M{middles[0][0]:.1f} {middles[0][1]:.1f}"]
+    for index, (x, y) in enumerate(corners):
+        end = middles[(index + 1) % len(corners)]
+        parts.append(f"Q{x:.1f} {y:.1f} {end[0]:.1f} {end[1]:.1f}")
+    return "".join(parts) + "Z"
+
+
+def svg_url(svg: str) -> str:
+    """An SVG as a CSS url() of a data URI, its whitespace runs cut to one space."""
+    return 'url("data:image/svg+xml,' + urllib.parse.quote(" ".join(svg.split()), safe=" =:/'") + '")'

@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 168" width="1000" height="168">
-<title>3,627 / 16,524 game functions decompiled (21.95%) | 3,551 matched | 40 at 100% only through a trick | 0 effective | accuracy 99.63% | library functions identified: 702</title>
+<title>3,627 / 16,524 game functions decompiled (21.94%) | 3,551 matched | 40 at 100% only through a trick | 0 effective | accuracy 99.63% | library functions identified: 702</title>
 <rect x="0.5" y="0.5" width="999" height="167" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="30" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">Sonic Adventure DX.exe</text>
 <text x="984" y="30" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">updated 2026-10-25</text>
 <text x="16" y="76" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="40" font-weight="600" fill="#1f2328">4.83%<tspan dx="10" font-size="13" font-weight="400" fill="#59636e">of the game's code matched</tspan></text>
-<text x="967" y="76" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">+3,403 functions this week</text>
+<text x="967" y="76" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">+4.44% of the code this week</text>
 <circle cx="978" cy="71.5" r="5" fill="none" stroke="#b07d00" stroke-width="2.5"/>
 <rect x="16" y="96" width="968" height="8" rx="4" fill="#e6eaef"/>
 <rect x="16" y="96" width="53.0" height="8" rx="4" fill="#0969da"/>
 <rect x="16" y="96" width="46.8" height="8" rx="4" fill="#b07d00"/>
 <text x="16" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">3,551 of 16,524</text>
 <text x="16" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">game functions done</text>
-<text x="258" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">1 of 68</text>
-<text x="258" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">emblems</text>
+<text x="258" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">1 of 48</text>
+<text x="258" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">areas complete</text>
 <text x="500" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">0.00%</text>
 <text x="500" y="152" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">initialized data matched</text>
 <text x="742" y="134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">99.63%</text>

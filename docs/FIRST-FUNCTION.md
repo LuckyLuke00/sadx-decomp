@@ -17,15 +17,13 @@ has the details.
 ## 2. Pick a function
 
 Start with a near miss: a function at 90% or more that does not match yet.
-Build the progress site and open its near misses page:
+Build the progress site and open its Help out page:
 
 ```
 python tools/pages.py --out _site
 ```
 
-Then open `_site/near-misses.html`. Small functions are the easiest. Each
-area's page also lists the area's functions that are not matched yet, with
-their size. A small one with no source file is a good second pick.
+Then open `_site/near-misses.html`. Small functions are the easiest.
 
 ## 3. Read it
 
@@ -39,7 +37,7 @@ declaration of each name it uses.
 
 ## 4. Write the C
 
-A near miss already has a source file. The near misses page names it. Edit
+A near miss already has a source file. The Help out page names it. Edit
 the function there.
 
 A new function goes in `src/unplaced/FUN_<address>.cpp` until its real file is
