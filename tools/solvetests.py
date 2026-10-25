@@ -41,6 +41,7 @@ class Run(NamedTuple):
     limits: list[int]  # the max_tokens of each ask
     results: list[str]  # the result of each try in its transcript
     lasts: list[str]  # the last message of each ask
+    live: list  # every line of its live file: the last try's header, its reply's pieces, then its result
 
 
 def never_too_long(messages) -> bool:
@@ -52,11 +53,12 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
     override the run's other flags, such as stop_below=70."""
     asks = []
 
-    def chat(config, messages, temperature, thinking, seed):
+    def chat(config, messages, temperature, thinking, seed, on_text):
         refused = too_long(messages)
         asks.append((seed, refused, config["max_tokens"], messages[-1]["content"]))
         if refused:
             raise llmclient.ServerError(TOO_LONG, 400)
+        on_text("content", reply)
         return llmclient.Reply(reply, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
 
     def first_prompt(config, file, address, types, count, extra, similar):
@@ -73,12 +75,14 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
-        transcript = Path(folder) / "transcript.jsonl"
-        result = llm.solve_function(args, FILE, ADDRESS, transcript)
+        transcript, live = Path(folder) / "transcript.jsonl", Path(folder) / "live.jsonl"
+        with mock.patch.object(llm, "LIVE", live):
+            result = llm.solve_function(args, FILE, ADDRESS, transcript)
         logged = [json.loads(line) for line in transcript.read_text(encoding="utf-8").splitlines()]
+        shown = [json.loads(line) for line in live.read_text(encoding="utf-8").splitlines()] if live.exists() else []
     return Run([ask[0] for ask in asks], sum(not ask[1] for ask in asks), result["tries"],
                [entry["try"] for entry in logged if "try" in entry], [ask[2] for ask in asks],
-               [entry["result"] for entry in logged if "try" in entry], [ask[3] for ask in asks])
+               [entry["result"] for entry in logged if "try" in entry], [ask[3] for ask in asks], shown)
 
 
 def check_too_long() -> list[str]:
@@ -199,10 +203,102 @@ def check_prefix_feedback() -> list[str]:
     return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
 
 
+def check_live() -> list[str]:
+    """The live file holds the last try: its header, the reply as the client handed it over, then its result."""
+    live = solved(2, never_too_long).live
+    wanted = [["content", "no code"], {"result": "had no function in the reply"}]
+    if not live or live[0].get("try") != 2 or live[0].get("address") != llm.hexa(ADDRESS) or live[1:] != wanted:
+        return [f"the live file of 2 tries is {live}, not try 2's header and then {wanted}"]
+    return []
+
+
+def check_live_ends() -> list[str]:
+    """A try that ends without a reply closes the live file too, so the page does not wait for its result."""
+    def fails(messages):
+        raise llmclient.ServerError("boom", 500)
+
+    ended = []
+    with mock.patch.object(llm, "end_live", ended.append):
+        solved(1, lambda messages: True)
+        try:
+            solved(1, fails)
+        except llmclient.ServerError:
+            pass
+    wanted = ["even the first prompt is too long for the server", "the server failed: boom"]
+    return [] if ended == wanted else [f"the tries without a reply end the live file with {ended}, not {wanted}"]
+
+
+def sse(*events) -> list[bytes]:
+    """Server-sent events as the lines a response gives: a str is a raw line, a dict is a data line."""
+    lines = []
+    for event in events:
+        lines += [(event if isinstance(event, str) else "data: " + json.dumps(event)).encode("utf-8") + b"\n", b"\n"]
+    return lines
+
+
+def check_stream_events() -> list[str]:
+    """events joins a stream's pieces into the answer parse reads, hands each piece to on_text as it comes, and
+    turns an error event into a ServerError with its code, so a full context is asked again."""
+    def delta(**fields):
+        return {"choices": [{"delta": fields, "finish_reason": None}]}
+
+    stream = sse(": a comment", delta(reasoning_content="Hm."), delta(content="```cpp\n"), delta(content="}\n```"),
+                 {"choices": [{"delta": {}, "finish_reason": "stop"}]},
+                 {"choices": [], "usage": {"prompt_tokens": 7, "completion_tokens": 3}}, "data: [DONE]")
+    pieces = []
+    reply = llmclient.parse(llmclient.events(stream, lambda kind, text: pieces.append((kind, text)), 60))
+    failures = []
+    wanted = llmclient.Reply("```cpp\n}\n```", "Hm.", {"prompt_tokens": 7, "completion_tokens": 3}, "stop")
+    if reply != wanted:
+        failures.append(f"the stream gives {reply}, not {wanted}")
+    if pieces != [("reasoning", "Hm."), ("content", "```cpp\n"), ("content", "}\n```")]:
+        failures.append(f"on_text got {pieces}")
+    full = {"code": 500, "message": "Context size has been exceeded."}
+    for case, line in (("an error event", "error: " + json.dumps(full)), ("an error in a data line", {"error": full})):
+        try:
+            llmclient.events(sse(delta(content="x"), line), None, 60)
+            failures.append(f"{case} gives no ServerError")
+        except llmclient.ServerError as e:
+            if e.status != 500 or llmclient.CONTEXT_FULL not in str(e):
+                failures.append(f"{case} gives status {e.status} and {e}")
+    try:
+        llmclient.events(sse(delta(content="int f(){")), None, 60)
+        failures.append("a stream that the server closes before its end gives no ServerError")
+    except llmclient.ServerError:
+        pass
+    return failures
+
+
+def check_full_context_restart() -> list[str]:
+    """chat asks again after a full context or a failed draft, and first hands on_text ("restart", ""), so the live
+    file starts again."""
+    draft_failed = ('{"error":{"code":500,"message":"got exception: speculative batch index 4 is not inside the current '
+                    'sub-batch [0, 4)","type":"server_error"}}')
+    failures = []
+    for error in (llmclient.CONTEXT_FULL, draft_failed):
+        answers = [llmclient.ServerError(f"the server failed during the reply: {error}", 500),
+                   {"choices": [{"message": {"content": "x"}, "finish_reason": "stop"}]}]
+
+        def call(config, path, body=None, timeout=None, read=None):
+            answer = answers.pop(0)
+            if isinstance(answer, Exception):
+                raise answer
+            return answer
+
+        pieces = []
+        with (mock.patch.object(llmclient, "call", call),
+              mock.patch.object(llmclient.time, "sleep", lambda seconds: None)):
+            reply = llmclient.chat(llmclient.DEFAULTS, [], 0.0, False, None,
+                                   lambda kind, text: pieces.append((kind, text)))
+        if pieces != [("restart", "")] or reply.text != "x":
+            failures.append(f"{error} gives the pieces {pieces} and the reply {reply.text!r}, not a restart and 'x'")
+    return failures
+
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback):
+                  check_prefix_feedback, check_live, check_live_ends, check_stream_events, check_full_context_restart):
         failures += check()
     return failures
