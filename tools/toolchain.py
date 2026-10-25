@@ -45,9 +45,10 @@ COMPILER_UPDATE = Download(
 DOWNLOADS = (COMPILER_UPDATE, SDK_ISO)
 
 # The ISO folders that hold the SDK MSIs, and each MSI with the folder msiexec unpacks it into.
-SDK_FOLDERS = ["Setup/WinSDKBuild", "Setup/WinSDKWin32Tools", "Setup/WinSDKTools"]
+SDK_FOLDERS = ["Setup/WinSDKBuild", "Setup/WinSDKWin32Tools", "Setup/WinSDKTools", "Setup/vc_stdx86"]
 MSIS = [
     ("kb/vc_stdx86.msi", "vc"),
+    ("iso/Setup/vc_stdx86/vc_stdx86.msi", "vcrtm"),
     ("iso/Setup/WinSDKBuild/WinSDKBuild_x86.msi", "sdk"),
     ("iso/Setup/WinSDKWin32Tools/WinSDKWin32Tools_x86.msi", "rc"),
     ("iso/Setup/WinSDKTools/WinSDKTools_x86.msi", "mt"),
@@ -83,13 +84,21 @@ def ensure(dest: Path) -> None:
 
 
 def problem(dest: Path) -> str | None:
-    """Why dest is not a complete toolchain, or None when its files are there and cl.exe and link.exe run."""
+    """Why dest is not a complete toolchain, or None when its files are there, cl.exe and link.exe run, and
+    <intrin.h> compiles (an older layout's does not: see copy_layout)."""
     for name in FILES:
         if not dest.joinpath(name).exists():
             return f"missing {name}"
     for exe, version in (("cl.exe", CL_VERSION), ("link.exe", LINK_VERSION)):
         if version not in banner(dest, exe):
             return f"{exe} does not report version {version}"
+    with tempfile.TemporaryDirectory() as folder:
+        source = Path(folder, "intrin.cpp")
+        source.write_text("#include <intrin.h>\n", encoding="ascii")
+        result = subprocess.run([str(dest / "bin" / "cl.exe"), "/nologo", "/Zs", str(source)], capture_output=True,
+                                text=True, env=env(dest))
+    if result.returncode:
+        return "<intrin.h> does not compile: " + (result.stdout + result.stderr).strip().splitlines()[-1]
     return None
 
 
@@ -177,6 +186,9 @@ def copy_layout(dest: Path) -> None:
     vs = WORK / "vc" / "Program Files" / "Microsoft Visual Studio 10.0"
     sdk = Path("Program Files", "Microsoft SDKs", "Windows", "v7.1")
     osutil.copy_tree(vs / "VC" / "include", dest / "include")
+    # The update's intrin.h includes ammintrin.h, which the update does not ship. The SDK's own intrin.h differs
+    # only in that include, so <vector> and <string> compile with it.
+    osutil.copy_files(WORK / "vcrtm" / vs.relative_to(WORK / "vc") / "VC" / "include", dest / "include", ["intrin.h"])
     osutil.copy_tree(WORK / "sdk" / sdk / "Include", dest / "sdk" / "include")
     osutil.copy_files(vs / "VC" / "lib", dest / "lib")
     osutil.copy_files(WORK / "sdk" / sdk / "Lib", dest / "sdk" / "lib")
