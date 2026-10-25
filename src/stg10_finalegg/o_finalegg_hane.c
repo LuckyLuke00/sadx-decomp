@@ -27,6 +27,23 @@ void hane_draw(struct task *task_p)
 	njPopMatrix(1);
 }
 
+// FUNCTION: SADX 0x008930c0
+void hane_exec(struct task *task_p)
+{
+	struct taskwk *var1 = task_p->twp;
+	if (FUN_004c39c0(task_p) != 0)
+	{
+		njPrintC(0x110010, "<- FAN SPEED(ANGLE)");
+		if (var1->ang.x != 0)
+		{
+			var1->value.l = var1->ang.x;
+		}
+	}
+	*(int *)((char *)var1 + 0x18) += var1->value.l;
+	hane_draw(task_p);
+	dsPlay_timer_v(0x3ed, (int)task_p, 1, 0, 2, var1->pos.x, var1->pos.y, var1->pos.z);
+}
+
 // STUB: SADX 0x00893130
 void ObjectFinalEggHane(struct task *task_p)
 {

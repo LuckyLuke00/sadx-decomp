@@ -5,11 +5,6 @@ void MonorailAnimater(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006a2880
-void MonorailCarDisplayer(struct task *tp)
-{
-}
-
 // FUNCTION: SADX 0x006a2a80
 void MonorailDestructor(struct task *tp)
 {

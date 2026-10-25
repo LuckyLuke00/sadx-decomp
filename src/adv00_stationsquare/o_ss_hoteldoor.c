@@ -1,4 +1,9 @@
 #include "decls.h"
+extern struct obj object_sscasinosikake_hnakagen_hnakagen[];
+extern struct obj object_sscasinosikake_hnakagen_2_hnakagen[];
+extern struct NJS_ACTION action_sscasinosikake_hnakagen[];
+extern short DAT_05b9d744;
+extern int DAT_05b9d838;
 extern unsigned char DAT_05bafb86;
 extern unsigned char DAT_05bafbc2;
 extern unsigned char DAT_05bafc02;
@@ -72,5 +77,15 @@ long SeqCheckPool()
 
 // STUB: SADX 0x006814b0
 void ObjectColliSet2(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x00681770
+void ObjectClosed(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006817d0
+void ObjectWaitKeyblock(struct task *tp)
 {
 }

@@ -61,6 +61,15 @@ void ObjectMountainSotoSaku(struct task *tp)
 // STUB: SADX 0x0082c8c0
 void ObjectMountainTreeBox(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->counter.ptr = object_mt_mtasiba_mtasiba;
+	var1->value.ptr = &texlist_obj_mountain;
+	if (!FUN_004c39c0(tp))
+	{
+		CCL_Init(tp, (struct CCL_INFO *)0x03fea6b0, 1, 4);
+		CheckCollisionScale(var1);
+	}
+	ObjectScaleCCollision(tp);
 }
 
 // FUNCTION: SADX 0x0082c910

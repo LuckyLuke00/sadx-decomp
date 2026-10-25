@@ -1,4 +1,5 @@
 #include "decls.h"
+void CreateSmoke(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl);
 
 // FUNCTION: SADX 0x008587a0
 void Exit(struct task *tp)
@@ -25,9 +26,29 @@ void C_Fire(struct task *cTask)
 	}
 }
 
-// STUB: SADX 0x008588b0
+// FUNCTION: SADX 0x008588b0
 void C_Smoke(struct task *cTask)
 {
+	struct taskwk *var1 = cTask->twp;
+	struct taskwk *var2 = cTask->ptp->twp;
+	struct NJS_POINT3 local_20;
+	struct NJS_POINT3 local_14;
+
+	if (var1->btimer == 8)
+	{
+		var1->btimer = 0;
+		local_14.x = var2->pos.x + 45.0f;
+		local_14.y = var2->pos.y - 40.0f;
+		local_14.z = var2->pos.z + var1->scl.x;
+		local_20.x = 3.0f;
+		local_20.y = var1->scl.y;
+		local_20.z = var1->scl.z;
+		CreateSmoke(&local_14, &local_20, 2.0f);
+	}
+	else
+	{
+		var1->btimer++;
+	}
 }
 
 // STUB: SADX 0x00858960

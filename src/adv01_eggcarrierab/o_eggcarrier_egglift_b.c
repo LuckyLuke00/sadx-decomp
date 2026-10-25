@@ -7,11 +7,6 @@ extern unsigned char DAT_05bafc49;
 extern unsigned char DAT_05bafc87;
 extern unsigned char DAT_05bafcc8;
 
-// STUB: SADX 0x00699870
-void LiftDisplayer(struct task *tp)
-{
-}
-
 // FUNCTION: SADX 0x00699a90
 int chk_active()
 {

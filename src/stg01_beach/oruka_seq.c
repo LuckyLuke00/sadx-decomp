@@ -3,7 +3,7 @@ extern int DAT_060cea0c;
 extern float DAT_060cea10;
 extern float DAT_060cea14;
 extern float DAT_060cea18;
-extern int DAT_060cea1c;
+extern struct task *DAT_060cea1c;
 extern struct task *DAT_060ce9f8;
 extern int DAT_060ce9fc;
 
@@ -23,9 +23,9 @@ void orInitOrukaSequence()
 void orDestructOrukaSequence()
 {
 	DestructYurehasi();
-	if ((*(struct task *(*))&DAT_060cea1c) != 0)
+	if (DAT_060cea1c != 0)
 	{
-		FreeTask((*(struct task *(*))&DAT_060cea1c));
+		FreeTask(DAT_060cea1c);
 	}
 	if (DAT_060ce9f8 != 0)
 	{
@@ -40,11 +40,11 @@ long orCreateAttackOruka(float pos_x, float pos_y, float pos_z, long ang_y)
 	struct taskwk *var2;
 	if (DAT_060cea1c != 0)
 	{
-		FreeTask((struct task *)DAT_060cea1c);
+		FreeTask(DAT_060cea1c);
 	}
 	DAT_060cea0c = 0;
 	var1 = CreateElementalTask(3, 3, ObjectBeachAttackoruka);
-	DAT_060cea1c = (int)var1;
+	DAT_060cea1c = var1;
 	var2 = var1->twp;
 	var2->pos.x = pos_x;
 	var2->ang.y = ang_y;
@@ -65,7 +65,7 @@ long orDeleteAttackOruka()
 // FUNCTION: SADX 0x007f76f0
 void orFreeAttackOruka(struct task *o_tp)
 {
-	if (DAT_060cea1c == (int)o_tp)
+	if (DAT_060cea1c == o_tp)
 	{
 		DAT_060cea10 = 0.0f;
 		DAT_060cea14 = 0.0f;
@@ -82,14 +82,14 @@ long orCreatePathOruka()
 		return 0;
 	}
 	DAT_060cea0c = 0;
-	DAT_060cea1c = (int)CreateElementalTask(3, 3, ObjectBeachPathoruka);
+	DAT_060cea1c = CreateElementalTask(3, 3, ObjectBeachPathoruka);
 	return 1;
 }
 
 // FUNCTION: SADX 0x007f7760
 void orFreePathOruka(struct task *o_tp)
 {
-	if (DAT_060cea1c == (int)o_tp)
+	if (DAT_060cea1c == o_tp)
 	{
 		DAT_060cea1c = 0;
 	}

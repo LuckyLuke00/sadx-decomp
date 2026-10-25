@@ -108,6 +108,7 @@ struct CHAOS_OBJPVTBL;
 struct chaoswk;
 struct CharMdlWk;
 struct CharSelWk;
+struct childtaskset;
 struct CL_ObjInfo;
 struct cloud_scroll;
 struct cloudtbl;
@@ -126,6 +127,8 @@ struct DAT_0044e380_0;
 struct DDlgType;
 struct DialogPrmType;
 struct DlgSndPrmType;
+struct dummy_crushwk;
+struct EFFENEMYBOMBPARAM;
 struct Egm2CarData;
 struct EmblemViewWk;
 struct enemywk;
@@ -138,6 +141,7 @@ struct eventwk;
 struct EVTABLE2;
 struct FACETBL;
 struct facewk;
+struct fe_dynamicswk;
 struct FileSelWk;
 struct Flicky;
 struct FlickyData;
@@ -217,6 +221,7 @@ struct OCMDATA;
 struct PanelPrmType;
 struct particle_entry;
 struct particle_info;
+struct pastpc_data;
 struct PATHCAMERA1WORK;
 struct pathinfo;
 struct pathtag;
@@ -2472,6 +2477,42 @@ static_assert(offsetof(DialogPrmType, MagY) == 0x34, "DialogPrmType::MagY");
 static_assert(offsetof(DialogPrmType, CsrMax) == 0x38, "DialogPrmType::CsrMax");
 static_assert(offsetof(DialogPrmType, CsrCancel) == 0x39, "DialogPrmType::CsrCancel");
 
+struct EFFENEMYBOMBPARAM {
+    struct obj *pobjroot;
+    struct NJS_POINT3 posorg;
+    struct Angle3 angle;
+    struct NJS_POINT3 vecofs;
+    struct NJS_POINT3 vecacc;
+    float aliverange;
+    struct NJS_POINT3 vecscl;
+    float spdspread;
+    float radius;
+    float spdpos;
+    float friction;
+    struct NJS_TEXLIST *loadtex;
+    struct NJS_TEXLIST *settex;
+    float wallposy;
+    float effscl;
+    float effsclmul;
+};
+static_assert(sizeof(EFFENEMYBOMBPARAM) == 0x68, "sizeof EFFENEMYBOMBPARAM");
+static_assert(offsetof(EFFENEMYBOMBPARAM, pobjroot) == 0x0, "EFFENEMYBOMBPARAM::pobjroot");
+static_assert(offsetof(EFFENEMYBOMBPARAM, posorg) == 0x4, "EFFENEMYBOMBPARAM::posorg");
+static_assert(offsetof(EFFENEMYBOMBPARAM, angle) == 0x10, "EFFENEMYBOMBPARAM::angle");
+static_assert(offsetof(EFFENEMYBOMBPARAM, vecofs) == 0x1c, "EFFENEMYBOMBPARAM::vecofs");
+static_assert(offsetof(EFFENEMYBOMBPARAM, vecacc) == 0x28, "EFFENEMYBOMBPARAM::vecacc");
+static_assert(offsetof(EFFENEMYBOMBPARAM, aliverange) == 0x34, "EFFENEMYBOMBPARAM::aliverange");
+static_assert(offsetof(EFFENEMYBOMBPARAM, vecscl) == 0x38, "EFFENEMYBOMBPARAM::vecscl");
+static_assert(offsetof(EFFENEMYBOMBPARAM, spdspread) == 0x44, "EFFENEMYBOMBPARAM::spdspread");
+static_assert(offsetof(EFFENEMYBOMBPARAM, radius) == 0x48, "EFFENEMYBOMBPARAM::radius");
+static_assert(offsetof(EFFENEMYBOMBPARAM, spdpos) == 0x4c, "EFFENEMYBOMBPARAM::spdpos");
+static_assert(offsetof(EFFENEMYBOMBPARAM, friction) == 0x50, "EFFENEMYBOMBPARAM::friction");
+static_assert(offsetof(EFFENEMYBOMBPARAM, loadtex) == 0x54, "EFFENEMYBOMBPARAM::loadtex");
+static_assert(offsetof(EFFENEMYBOMBPARAM, settex) == 0x58, "EFFENEMYBOMBPARAM::settex");
+static_assert(offsetof(EFFENEMYBOMBPARAM, wallposy) == 0x5c, "EFFENEMYBOMBPARAM::wallposy");
+static_assert(offsetof(EFFENEMYBOMBPARAM, effscl) == 0x60, "EFFENEMYBOMBPARAM::effscl");
+static_assert(offsetof(EFFENEMYBOMBPARAM, effsclmul) == 0x64, "EFFENEMYBOMBPARAM::effsclmul");
+
 struct EPATHTAG {
     int points;
     struct epathtbl *tblhead;
@@ -4211,6 +4252,22 @@ static_assert(offsetof(chaoswk, morph_wp) == 0xb4, "chaoswk::morph_wp");
 static_assert(offsetof(chaoswk, param) == 0xb8, "chaoswk::param");
 static_assert(offsetof(chaoswk, old_texaddr) == 0xbc, "chaoswk::old_texaddr");
 
+struct childtaskset {
+    void (*exec)(struct task *);
+    unsigned short initmode;
+    short flag;
+    struct Angle3 ang_offset;
+    struct NJS_POINT3 pos_offset;
+    void *ptr;
+};
+static_assert(sizeof(childtaskset) == 0x24, "sizeof childtaskset");
+static_assert(offsetof(childtaskset, exec) == 0x0, "childtaskset::exec");
+static_assert(offsetof(childtaskset, initmode) == 0x4, "childtaskset::initmode");
+static_assert(offsetof(childtaskset, flag) == 0x6, "childtaskset::flag");
+static_assert(offsetof(childtaskset, ang_offset) == 0x8, "childtaskset::ang_offset");
+static_assert(offsetof(childtaskset, pos_offset) == 0x14, "childtaskset::pos_offset");
+static_assert(offsetof(childtaskset, ptr) == 0x20, "childtaskset::ptr");
+
 struct cloud_scroll {
     struct NJS_POINT3 pos;
     struct NJS_POINT3 disp_pos;
@@ -4493,6 +4550,14 @@ static_assert(offsetof(eventwk, face) == 0x5c, "eventwk::face");
 static_assert(offsetof(eventwk, posofs) == 0x6c, "eventwk::posofs");
 static_assert(offsetof(eventwk, shadowSize) == 0x78, "eventwk::shadowSize");
 
+struct fe_dynamicswk {
+    float air;
+    float bounce;
+};
+static_assert(sizeof(fe_dynamicswk) == 0x8, "sizeof fe_dynamicswk");
+static_assert(offsetof(fe_dynamicswk, air) == 0x0, "fe_dynamicswk::air");
+static_assert(offsetof(fe_dynamicswk, bounce) == 0x4, "fe_dynamicswk::bounce");
+
 struct forcewk {
     void (*call_back)(struct task *, struct taskwk *, struct forcewk *);
     struct Angle3 ang_spd;
@@ -4638,6 +4703,22 @@ static_assert(offsetof(particle_info, yacc) == 0x10, "particle_info::yacc");
 static_assert(offsetof(particle_info, pos) == 0x14, "particle_info::pos");
 static_assert(offsetof(particle_info, velo) == 0x20, "particle_info::velo");
 static_assert(offsetof(particle_info, argb) == 0x2c, "particle_info::argb");
+
+struct pastpc_data {
+    long index;
+    struct NJS_TEXLIST *tex_p;
+    struct NJS_ACTION *act_p;
+    float center;
+    float eye_height;
+    struct CCL_INFO colli[1];
+};
+static_assert(sizeof(pastpc_data) == 0x44, "sizeof pastpc_data");
+static_assert(offsetof(pastpc_data, index) == 0x0, "pastpc_data::index");
+static_assert(offsetof(pastpc_data, tex_p) == 0x4, "pastpc_data::tex_p");
+static_assert(offsetof(pastpc_data, act_p) == 0x8, "pastpc_data::act_p");
+static_assert(offsetof(pastpc_data, center) == 0xc, "pastpc_data::center");
+static_assert(offsetof(pastpc_data, eye_height) == 0x10, "pastpc_data::eye_height");
+static_assert(offsetof(pastpc_data, colli) == 0x14, "pastpc_data::colli");
 
 struct pathtag {
     unsigned char pathtype;

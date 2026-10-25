@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05b9d838;
 extern struct CCL_INFO key_c_info[1];
 
 // FUNCTION: SADX 0x00686aa0

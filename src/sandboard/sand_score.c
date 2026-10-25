@@ -1,4 +1,5 @@
 #include "decls.h"
+static void dispScore(struct task *task_p);
 
 // STUB: SADX 0x007e85a0
 void SandScoreAddGateScore()
@@ -20,6 +21,13 @@ float drawLetter(float xPos, float yPos, float prio, enum TexId_e102time texId)
 {
 	return (float)0;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x007e8860
+static void dispScore(struct task *task_p)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007e88e0
 void execScore(struct task *task_p)

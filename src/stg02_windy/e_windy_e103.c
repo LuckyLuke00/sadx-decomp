@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <stdlib.h>
 void FUN_0080f4e0(struct task *param_1);
+void FUN_0080f4e0(struct task *param_1);
 void FUN_0080e4a0(int param_1, struct task *param_2);
 
 // FUNCTION: SADX 0x007062a0

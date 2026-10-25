@@ -1,4 +1,12 @@
 #include "decls.h"
+void FUN_008895d0(struct task *param_1);
+void ___njSetTexture(struct NJS_TEXLIST *texlist);
+void FUN_008895d0(struct task *param_1);
+void FUN_008895d0(struct task *param_1);
+extern struct CCL_INFO colli_info_M[];
+extern struct CCL_INFO colli_info_M[1];
+extern struct CCL_INFO colli_info_S[1];
+extern struct CCL_INFO colli_info_L[1];
 long EntryColliList(struct taskwk *twp);
 long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id);
 extern int DAT_05b9d838;
@@ -36,9 +44,28 @@ void InitIntSkyDeck()
 	DAT_060d0acc = 0;
 }
 
-// STUB: SADX 0x00838a10
+// FUNCTION: SADX 0x00838a10
 void Skydeck_SetGravity()
 {
+	*(unsigned short *)((char *)&DAT_060cf49c + 2) = 0;
+	*(unsigned short *)((char *)&DAT_060cf26c + 2) = 0;
+	if ((unsigned int)(DAT_060cf49c - 0xe39) <= 0x71c6)
+	{
+		DAT_060cf49c = 0xe38;
+	}
+	else if ((unsigned int)(DAT_060cf49c - 0x8001) <= 0x71c5)
+	{
+		DAT_060cf49c = 0xf1c7;
+	}
+	if ((unsigned int)(DAT_060cf26c - 0x3f4a) <= 0x40b5)
+	{
+		DAT_060cf26c = 0x3f49;
+	}
+	else if ((unsigned int)(DAT_060cf26c - 0x8001) <= 0x40b4)
+	{
+		DAT_060cf26c = 0xc0b6;
+	}
+	SetUserGravityXZ(DAT_060cf49c, DAT_060cf26c);
 }
 
 // FUNCTION: SADX 0x00838aa0
@@ -75,10 +102,26 @@ void Bg_Skydeck_cloud_Exit(struct task *tp)
 	DAT_060d08a8--;
 }
 
+// STUB: SADX 0x00839d70
+int FUN_00839d70(float *param_1, float param_2, float param_3, float param_4, float param_5)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00839f10
 long SDCheckRangeOut(struct task *pTask)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x00839f40
+void SysSkydeck_GoAct2(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00839fe0
+void SysSkydeck_GoAct3(struct task *tp)
+{
 }
 
 // STUB: SADX 0x0083a510
@@ -93,6 +136,21 @@ void ObjectSkydeck_hangpole_Exec(struct task *tp)
 
 // STUB: SADX 0x0083a560
 void ObjectSkydeck_hangpole_s_Display(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083a5e0
+void ObjectSkydeck_hangpole_t_Display(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083a670
+void ObjectSkydeck_radder_Display(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083a7f0
+void ObjectSkydeck_untei_Display(struct task *tp)
 {
 }
 
@@ -156,9 +214,31 @@ void ObjectSkydeck_tcolli_Exit(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0083b910
+// FUNCTION: SADX 0x0083b910
 void ObjectSkydeck_flap_colli(struct task *tp)
 {
+	struct taskwk *var1;
+	struct obj *var2;
+	struct obj *var3;
+
+	var1 = tp->twp;
+	var3 = *(struct obj **)((char *)com_objtbl + 4 + (var1->smode << 4));
+	var2 = GetMobileLandObject();
+	var1->counter.l = (long)var2;
+	var2->evalflags = 0x10;
+	var2->scl[0] = 1.0f;
+	var2->scl[1] = 1.0f;
+	var2->scl[2] = 1.0f;
+	var2->ang[0] = var1->ang.x;
+	var2->ang[1] = var1->ang.y;
+	var2->ang[2] = var1->ang.z;
+	var2->pos[0] = var1->pos.x;
+	var2->pos[1] = var1->pos.y;
+	var2->pos[2] = var1->pos.z;
+	var2->model = var3->model;
+	var2->child = var3->child;
+	var2->sibling = var3->sibling;
+	RegisterCollisionEntry(0x18000001, tp, var2);
 }
 
 // FUNCTION: SADX 0x0083b990
@@ -184,9 +264,25 @@ void ObjectSkydeck_Wall(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0083bc80
+// FUNCTION: SADX 0x0083bc80
 void ObjectSkydeck_homing_Exec(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (CheckRangeOut(tp))
+	{
+		return;
+	}
+	if (CheckCollisionP(&var1->pos, 50.0f) == 1)
+	{
+		var1->cwp->flag |= 0x40;
+	}
+	else
+	{
+		var1->cwp->flag &= 0xffbf;
+	}
+	EntryColliList(var1);
 }
 
 // STUB: SADX 0x0083bdd0
@@ -239,19 +335,37 @@ void ObjectSkydeck_untei_Exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0083c540
+// FUNCTION: SADX 0x0083c540
 void ObjectSkydeck_fence_l(struct task *tp)
 {
+	tp->exec = ObjectSkydeck_fence_Exec;
+	tp->disp = ObjectSkydeck_untei_Display;
+	tp->dest = ObjectSkydeck_radder_Exit;
+	tp->twp->smode = 0x26;
+	dsSetUnteiPath(tp, 3.0, 8.0, 0.0, 0x29, 6.0);
+	CCL_Init(tp, (struct CCL_INFO *)&colli_info_L, 1, 4);
 }
 
-// STUB: SADX 0x0083c5b0
+// FUNCTION: SADX 0x0083c5b0
 void ObjectSkydeck_fence_m(struct task *tp)
 {
+	tp->exec = ObjectSkydeck_fence_Exec;
+	tp->disp = ObjectSkydeck_untei_Display;
+	tp->dest = ObjectSkydeck_radder_Exit;
+	tp->twp->smode = 0x27;
+	dsSetUnteiPath(tp, 3.0, 8.0, 0.0, 0x1f, 6.0);
+	CCL_Init(tp, (struct CCL_INFO *)&colli_info_M, 1, 4);
 }
 
-// STUB: SADX 0x0083c620
+// FUNCTION: SADX 0x0083c620
 void ObjectSkydeck_fence_s(struct task *tp)
 {
+	tp->exec = ObjectSkydeck_fence_Exec;
+	tp->disp = ObjectSkydeck_untei_Display;
+	tp->dest = ObjectSkydeck_radder_Exit;
+	tp->twp->smode = 0x28;
+	dsSetUnteiPath(tp, 0.0f, 8.0f, 0.0f, 0x12, 6.0f);
+	CCL_Init(tp, (struct CCL_INFO *)&colli_info_S, 1, 4);
 }
 
 // STUB: SADX 0x0083c840
@@ -310,12 +424,22 @@ void ObjectSkydeck_tcolli(struct task *tp)
 	tp->dest = ObjectSkydeck_tcolli_Exit;
 }
 
-// STUB: SADX 0x0083d950
+// FUNCTION: SADX 0x0083d950
 void ObjectSkydeck_flap01(struct task *tp)
 {
+	tp->exec = ObjectSkydeck_flap_Exec;
+	tp->disp = ObjectSkydeck_com_Display;
+	tp->dest = FUN_008895d0;
+	tp->twp->smode = 0x42;
+	ObjectSkydeck_flap_colli(tp);
 }
 
-// STUB: SADX 0x0083d980
+// FUNCTION: SADX 0x0083d980
 void ObjectSkydeck_flap02(struct task *tp)
 {
+	tp->exec = ObjectSkydeck_flap_Exec;
+	tp->disp = ObjectSkydeck_com_Display;
+	tp->dest = FUN_008895d0;
+	tp->twp->smode = 0x43;
+	ObjectSkydeck_flap_colli(tp);
 }

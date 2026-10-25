@@ -33,7 +33,22 @@ void TubeDisp(struct task *tp)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x008b5170
+void SideInit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b5230
+void SideInit2(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008b52f0
 void TubeExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b5370
+void TubeInit(struct task *tp)
 {
 }

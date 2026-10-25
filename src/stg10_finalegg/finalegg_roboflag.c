@@ -14,3 +14,9 @@ long FinalEggCheckAppearZERO(long no)
 {
 	return DAT_060dd080[no];
 }
+
+// FUNCTION: SADX 0x00891100
+void FinalEggSetAppearZERO(long no)
+{
+	DAT_060dd080[no] = 1;
+}

@@ -29,6 +29,31 @@ void PyramidStairsDisplayer(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x006c08d0
+void BigStairsDisplayer(struct task *tp)
+{
+	struct taskwk *var1;
+	float var2;
+	var1 = tp->twp;
+	SetObjectTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y != 0)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	var2 = njSqrt((var1->pos.x - DAT_05b42a7c->pos.x) * (var1->pos.x - DAT_05b42a7c->pos.x) + (var1->pos.y - DAT_05b42a7c->pos.y) * (var1->pos.y - DAT_05b42a7c->pos.y) + (var1->pos.z - DAT_05b42a7c->pos.z) * (var1->pos.z - DAT_05b42a7c->pos.z));
+	if (var2 < 400.0f)
+	{
+		late_DrawObjectClipEx(*(struct obj **)((char *)DAT_060eeaa4 + 0x50), 1, 1.0f);
+	}
+	else
+	{
+		late_DrawObjectClipEx(*(struct obj **)((char *)DAT_060eeaa4 + 0x4c), 1, 1.0f);
+	}
+	njPopMatrix(1);
+}
+
 // FUNCTION: SADX 0x006c09a0
 void ObjectPastPyramidStairs(struct task *tp)
 {

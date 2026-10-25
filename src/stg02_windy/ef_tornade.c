@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct NJS_MODEL model_wvobj_ha_red_ha_red[1];
+extern struct NJS_MODEL model_wvobj_ha_yellow_ha_yellow[1];
+extern struct NJS_MODEL model_wvobj_ha_green_ha_green[1];
 extern struct NJS_TEXLIST texlist_e_sai;
 extern struct obj object_rhino;
 extern int DAT_05b9d838;
@@ -10,6 +13,44 @@ void njRotateX(float *param_1, unsigned short param_2);
 void njRotateY(float *param_1, unsigned short param_2);
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl);
 void njPopMatrix(int param_1);
+
+// FUNCTION: SADX 0x00804af0
+void DrawLeaf(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		SetObjectTexture();
+		njPushMatrix((float *)0);
+		FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
+		if (*(int *)((char *)var1 + 0x1c) != 0)
+		{
+			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		}
+		if (*(int *)((char *)var1 + 0x14) != 0)
+		{
+			njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+		}
+		if (*(int *)((char *)var1 + 0x18) != 0)
+		{
+			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+		}
+		int var2 = (int)*(float *)((char *)var1 + 0x34);
+		switch (var2)
+		{
+		case 0:
+			late_DrawModelClip(&model_wvobj_ha_yellow_ha_yellow[0], 1, 1.0f);
+			break;
+		case 1:
+			late_DrawModelClip(&model_wvobj_ha_green_ha_green[0], 1, 1.0f);
+			break;
+		default:
+			late_DrawModelClip(&model_wvobj_ha_red_ha_red[0], 1, 1.0f);
+			break;
+		}
+		njPopMatrix(1);
+	}
+}
 
 // FUNCTION: SADX 0x00804bc0
 void DrawSai(struct task *tp)
