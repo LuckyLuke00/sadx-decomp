@@ -19,15 +19,49 @@ struct task *InputHookInit()
 	return local_8;
 }
 
-// STUB: SADX 0x0055f580
+// FUNCTION: SADX 0x0055f580
 long InputHookSet(struct task *hook_task_p, struct NJS_POINT3 *pos_p, long *ang_y_p, long *status_p, long type, float range)
 {
-	return (long)0;
+	struct task *local_8g;
+	struct task *local_cg;
+
+	if (FUN_0055f9f0(hook_task_p, &local_8g) == 0)
+	{
+		local_cg = local_8g;
+		local_8g = (struct task *)MAlloc(0x20);
+		if (local_8g == (struct task *)0x0)
+		{
+			return 0;
+		}
+		local_8g->next = local_cg;
+		if (local_cg != (struct task *)0x0)
+		{
+			local_cg->last = local_8g;
+		}
+		else
+		{
+			DAT_05ccdac8 = local_8g;
+		}
+		local_8g->last = (struct task *)0x0;
+	}
+	local_8g->ocp = (struct OBJ_CONDITION *)type;
+	local_8g->ctp = (struct task *)pos_p;
+	local_8g->exec = (void (*)(struct task *))ang_y_p;
+	local_8g->disp = (void (*)(struct task *))status_p;
+	*(float *)((char *)local_8g + 0x18) = range;
+	local_8g->ptp = hook_task_p;
+	return 1;
 }
 
-// STUB: SADX 0x0055f630
+// FUNCTION: SADX 0x0055f630
 void InputHookRelease(void)
 {
+	if (DAT_05ccdacc != 0)
+	{
+		*(int *)DAT_05ccdacc->disp = 0;
+		DAT_05ccdacc = 0;
+	}
+	PadReadOnP(0xff);
 }
 
 // STUB: SADX 0x0055f670

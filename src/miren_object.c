@@ -8,12 +8,27 @@ void FUN_00573040(int param_1);
 void FUN_008c2030(int param_1);
 void FUN_00571b20(int param_1);
 
+// STUB: SADX 0x00571ac0
+void MirenObjInitCharColli(struct task *task_p, const struct ObjectInfo *objInfo_p, const struct ObjCmnInfo *cmnInfo_p)
+{
+}
+
 // FUNCTION: SADX 0x00571af0
 void FUN_00571af0(int param_1)
 {
 	FUN_00573040(param_1);
 	FUN_008c2030(param_1);
 	FUN_00571b20(param_1);
+}
+
+// FUNCTION: SADX 0x00571b20
+void FUN_00571b20(int param_1)
+{
+	if (*(int *)((char *)param_1 + 4) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)param_1 + 4));
+	}
+	return;
 }
 
 // FUNCTION: SADX 0x00571b40
@@ -71,9 +86,20 @@ long MirenObjCheckCollisionP(struct taskwk *taskWk_p, float dist)
 	return (long)0;
 }
 
-// STUB: SADX 0x00571da0
+// FUNCTION: SADX 0x00571da0
 void MirenObjDrawMobileLandObject(struct obj *obj_p, struct taskwk *taskWk_p, float scale, struct NJS_TEXLIST *texList_p)
 {
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	njPushMatrix(0);
+	njTranslateV(0, &taskWk_p->pos);
+	FUN_008dd760((int)(&taskWk_p->ang));
+	FUN_005723e0(scale);
+	FUN_00572100(texList_p);
+	___dsDrawObject(obj_p);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x00571e10

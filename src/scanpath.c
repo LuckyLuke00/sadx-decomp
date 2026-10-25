@@ -22,7 +22,29 @@ unsigned long InitPathWork()
 	return 0;
 }
 
+// STUB: SADX 0x0056fde0
+void ManagePathWork(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0056fe50
+void SetPathWork()
+{
+}
+
 // STUB: SADX 0x00570230
 void CalcPNNPntParam(struct pathtag *tag, struct pathinfo *pi, long pnmb, struct pathtbl *pt)
 {
+}
+
+// STUB: SADX 0x00570410
+long SCPathOnposToPntnmb(struct pathtag *tag, float onpos, unsigned long *pntnmb)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00570480
+long SCPathPntnmbToOnpos(struct pathtag *tag, unsigned long pntnmb, float *onpos)
+{
+	return (long)0;
 }

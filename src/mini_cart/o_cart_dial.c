@@ -1,12 +1,8 @@
 #include "decls.h"
+static void dispObject(struct task *task_p);
 
 // STUB: SADX 0x007e6040
 void ObjectCartDial(struct task *task_p)
-{
-}
-
-// STUB: SADX 0x007e6060
-void initObject(struct task *task_p, const struct ActionParam *param_p)
 {
 }
 
@@ -14,6 +10,13 @@ void initObject(struct task *task_p, const struct ActionParam *param_p)
 void FUN_007e6080(char param_1)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x007e60f0
+static void dispObject(struct task *task_p)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007e6240
 void execObject(struct task *task_p)

@@ -1,4 +1,14 @@
 #include "decls.h"
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
+extern float DAT_05b42828;
+extern float DAT_05b4282c;
+long FUN_004bf650(float *param_1, float *param_2);
+long addcolCube(struct _OBJ_CAMERAENTRY *entry, struct NJS_POINT3 *pos);
+extern int DAT_05b4259c;
+extern struct NJS_CACTION *DAT_05b425cc;
+extern float DAT_05b4293c;
+void FUN_005b5aa0();
 extern int DAT_05b42a88;
 extern double DAT_0095cbf8;
 extern int DAT_05b42990;
@@ -260,9 +270,46 @@ long GetFreeCamera()
 	return (DAT_05b42a74 & 1) != 0;
 }
 
-// STUB: SADX 0x004bd3d0
+// FUNCTION: SADX 0x004bd3d0
 void setdistdata()
 {
+	int local_ci;
+	int local_10;
+	int local_8g;
+	local_8g = ((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744;
+	local_ci = (unsigned char)(local_8g >> 8);
+	local_10 = (unsigned char)local_8g;
+	switch (local_ci)
+	{
+	case 0xc:
+		if (GetPlayerCharacterName(0) == 5)
+		{
+			DAT_05b42828 = 15.0;
+			DAT_05b4282c = 30.0;
+		}
+		else
+		{
+			DAT_05b42828 = 15.0;
+			DAT_05b4282c = 50.0;
+		}
+		break;
+	case 0x21:
+		if (local_10 == 2)
+		{
+			DAT_05b42828 = 16.0;
+			DAT_05b4282c = 50.0;
+		}
+		else
+		{
+			DAT_05b42828 = 16.0;
+			DAT_05b4282c = 70.0;
+		}
+		break;
+	default:
+		DAT_05b42828 = 16.0;
+		DAT_05b4282c = 70.0;
+		break;
+	}
 }
 
 // STUB: SADX 0x004bd4b0
@@ -270,7 +317,7 @@ void calcfreecamerapos()
 {
 }
 
-// STUB: SADX 0x004bd800
+// FUNCTION: SADX 0x004bd800
 long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry)
 {
 	return (long)0;
@@ -496,6 +543,11 @@ void CameraSetCollisionCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), u
 	}
 }
 
+// STUB: SADX 0x004bec60
+void FUN_004bec60(short ucAdjustType, unsigned char ucCameraDirect)
+{
+}
+
 // FUNCTION: SADX 0x004bee10
 void FUN_004bee10(void)
 {
@@ -514,7 +566,7 @@ void FUN_004bee10(void)
 		*(int *)((char *)pObjAdjustParam + 0x14) = 0;
 		if (*(char *)((char *)pCameraSystemWork + 8) == 0 && DAT_05b42a78 != -1)
 		{
-			CameraSetNormalCamera(*(short *)&DAT_05b42a78, *(unsigned char *)&DAT_05b42994);
+			CameraSetNormalCamera((short)DAT_05b42a78, (unsigned char)DAT_05b42994);
 		}
 	}
 }
@@ -630,10 +682,26 @@ void FUN_004bf290()
 	DAT_05b4295c = DAT_05b42a7c->pos;
 }
 
-// STUB: SADX 0x004bf300
+// FUNCTION: SADX 0x004bf300
 long CheckAdjustCollisionMode()
 {
-	return (long)0;
+	switch (GetAdjustMode())
+	{
+		case 5:
+		case 7:
+		case 9:
+		case 0xb:
+		case 0xd:
+		case 0xf:
+		case 0x11:
+		case 0x13:
+		case 0x15:
+		case 0x17:
+		case 0x19:
+		case 0x1a:
+			return 1;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x004bf360
@@ -642,10 +710,21 @@ void FUN_004bf360(char param_1)
 	((char *)pCameraSystemWork)[7] = param_1;
 }
 
-// STUB: SADX 0x004bf370
+// FUNCTION: SADX 0x004bf370
 long CameraCameraAction(struct NJS_CACTION *caction, float frame)
 {
-	return (long)0;
+	switch (DAT_05b4259c)
+	{
+		case 0:
+			CameraSetEventCameraFunc((void (__cdecl *)(_OBJ_CAMERAPARAM *))FUN_005b5aa0, 0, 0);
+		case 2:
+			DAT_05b4259c = 1;
+			DAT_05b425cc = caction;
+			DAT_05b4293c = frame;
+			return 0;
+		default:
+			return 1;
+	}
 }
 
 // STUB: SADX 0x004bf590

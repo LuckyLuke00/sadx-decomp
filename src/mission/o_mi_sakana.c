@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x0049b3e0
+void FUN_0049b3e0(struct NJS_MODEL *model)
+{
+}
+
 // STUB: SADX 0x0049b8b0
 void motionSakana(struct task *tp)
 {

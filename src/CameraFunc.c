@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float DAT_05ccdb04;
+void njAddVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
 extern float DAT_05ccdb34;
 extern float DAT_05ccdb38;
 extern float DAT_05ccdb3c;
@@ -198,9 +200,21 @@ void SetCameraChaosStdSpeed(struct Angle3 *angacc, struct Angle3 *angspd, struct
 	DAT_05ccdb18 = *camspd;
 }
 
-// STUB: SADX 0x005630a0
+// FUNCTION: SADX 0x005630a0
 void CCSI_CalcTargetPos(float dist, struct NJS_POINT3 *ans)
 {
+	struct NJS_POINT3 vs;
+	vs.x = 0.0f;
+	vs.y = 0.0f;
+	vs.z = dist;
+	njPushMatrix(_nj_unit_matrix_);
+	if (*(int *)((char *)camcont_wp + 0x28) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)camcont_wp + 0x28));
+	}
+	njCalcPoint(0, &vs, ans);
+	njPopMatrix(1);
+	njAddVector(ans, (struct NJS_POINT3 *)((char *)camcont_wp + 0x18));
 }
 
 // STUB: SADX 0x00563130
@@ -276,10 +290,21 @@ void CameraStay(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
-// STUB: SADX 0x00564040
+// FUNCTION: SADX 0x00564040
 int FUN_00564040(int param_1, int param_2, int param_3)
 {
-	return (int)0;
+	int iVar4;
+
+	iVar4 = *(unsigned short *)((char *)(*(int *)(param_3 + 4) + 2)) - 1;
+	if (param_1 >= iVar4 - 2)
+	{
+		return 1;
+	}
+	if (param_1 == 0)
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x005642f0
@@ -346,9 +371,24 @@ void FUN_00566070(float param_1)
 {
 }
 
-// STUB: SADX 0x005660e0
+// FUNCTION: SADX 0x005660e0
 void calcCartCamPos()
 {
+	struct NJS_POINT3 _vec;
+	if (*(unsigned char *)camcont_wp == 0 && GetPlayerNumber() == 7)
+	{
+		_vec.x = 0.0f;
+		_vec.y = 20.0f;
+		_vec.z = 15.0f;
+	}
+	else
+	{
+		_vec = camCartData[*(unsigned char *)camcont_wp].transCam;
+	}
+	calcModerateVector(&DAT_05b42920, &_vec);
+	*(float *)((char *)camcont_wp + 0xc) += _vec.x;
+	*(float *)((char *)camcont_wp + 0x10) += _vec.y;
+	*(float *)((char *)camcont_wp + 0x14) += _vec.z;
 }
 
 // FUNCTION: SADX 0x005661a0
@@ -423,8 +463,40 @@ void cameraDebugMake(struct _OBJ_CAMERAPARAM *pParam, struct NJS_POINT3 *_pos, s
 {
 }
 
-// STUB: SADX 0x00567060
+// FUNCTION: SADX 0x00567060
 void adjustChange()
+{
+	switch (GetAdjustMode())
+	{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 8:
+		case 9:
+		case 10:
+		case 0xb:
+		case 0xc:
+		case 0xd:
+		case 0xe:
+		case 0xf:
+		case 0x12:
+		case 0x13:
+		case 0x14:
+		case 0x15:
+		case 0x16:
+		case 0x17:
+		case 0x18:
+		case 0x19:
+		case 0x1a:
+			SetAdjustMode(0x11);
+			break;
+	}
+}
+
+// STUB: SADX 0x005670c0
+void CameraFishing(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
@@ -530,9 +602,16 @@ void CameraLeave(struct _OBJ_CAMERAPARAM *pParam)
 	*(float *)((char *)camcont_wp + 0x20) = *(float *)((char *)DAT_05baf368 + 0x28);
 }
 
-// STUB: SADX 0x005680c0
+// FUNCTION: SADX 0x005680c0
 void CameraRuinWaka1(struct _OBJ_CAMERAPARAM *pParam)
 {
+	*(float *)((char *)camcont_wp + 0xc) = DAT_05b42a7c->scl.x;
+	*(float *)((char *)camcont_wp + 0x10) = DAT_05b42a7c->scl.y;
+	*(float *)((char *)camcont_wp + 0x14) = DAT_05b42a7c->scl.z;
+	*(float *)((char *)camcont_wp + 0x18) = DAT_05b42a7c->counter.f;
+	*(float *)((char *)camcont_wp + 0x1c) = DAT_05b42a7c->timer.f;
+	*(float *)((char *)camcont_wp + 0x20) = DAT_05b42a7c->value.f;
+	*(int *)((char *)camcont_wp + 0x2c) = 0;
 }
 
 // FUNCTION: SADX 0x00568420

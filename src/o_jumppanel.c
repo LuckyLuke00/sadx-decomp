@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct obj DAT_05a8c05c;
+extern struct obj DAT_05a8c248;
 void FUN_005b3ee0(struct task *param_1);
 extern int DAT_05edbe48[10];
 
@@ -13,10 +15,21 @@ void InitJumpPanel(void)
 	}
 }
 
-// STUB: SADX 0x005b35e0
+// FUNCTION: SADX 0x005b35e0
 long CheckCollisionedForJumpPanel(struct taskwk *ptwp)
 {
-	return (long)0;
+	struct colliwk *local_8g;
+	struct taskwk *local_cg;
+
+	local_8g = ptwp->cwp->hit_cwp;
+	if (local_8g == 0)
+		return 0;
+	if (ptwp->counter.b[0] != 0)
+		return 0;
+	local_cg = local_8g->mytask->twp;
+	if (local_cg->id != 8)
+		return 0;
+	return 1;
 }
 
 // STUB: SADX 0x005b3640
@@ -45,10 +58,25 @@ void StartPlayerPanelJump(struct taskwk *ptwp)
 {
 }
 
-// STUB: SADX 0x005b3c80
+// FUNCTION: SADX 0x005b3c80
 int FUN_005b3c80(void)
 {
-	return (int)0;
+	int local_cg;
+	int local_8g;
+
+	local_cg = 0;
+	for (local_8g = 0; local_8g < 10; local_8g++)
+	{
+		if (DAT_05edbe48[local_8g] == 0)
+		{
+			continue;
+		}
+		if (*((char *)*(int *)(DAT_05edbe48[local_8g] + 0x20)) == 1)
+		{
+			local_cg = local_8g;
+		}
+	}
+	return local_cg;
 }
 
 // STUB: SADX 0x005b3ce0

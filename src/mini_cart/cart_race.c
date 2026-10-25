@@ -12,16 +12,26 @@ void CartRaceDestroyManageTask()
 	}
 }
 
-// STUB: SADX 0x007e5050
+// FUNCTION: SADX 0x007e5050
 signed char CartRaceGetMode()
 {
-	return (signed char)0;
+	signed char var1 = 0;
+	if (DAT_060cd274 != 0)
+	{
+		var1 = ((struct taskwk *)DAT_060cd274->mwp)->mode;
+	}
+	return var1;
 }
 
-// STUB: SADX 0x007e5070
+// FUNCTION: SADX 0x007e5070
 signed char CartRaceGetDialState()
 {
-	return (signed char)0;
+	signed char var1 = 0;
+	if (DAT_060cd274 != 0)
+	{
+		var1 = *(signed char *)((char *)DAT_060cd274->mwp + 3);
+	}
+	return var1;
 }
 
 // STUB: SADX 0x007e5320
@@ -30,9 +40,12 @@ long CartRaceInitTime()
 	return (long)0;
 }
 
-// STUB: SADX 0x007e54d0
+// FUNCTION: SADX 0x007e54d0
 void initRace(struct task *task_p, const void *param_p)
 {
+	CartInitLetter();
+	DAT_060cd274 = task_p;
+	CartRaceInitTime();
 }
 
 // FUNCTION: SADX 0x007e5600
