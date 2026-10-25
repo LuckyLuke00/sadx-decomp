@@ -293,6 +293,18 @@ def first_function_line(lines):
     return next((i for i, line in enumerate(lines) if annotation_address(line) is not None), len(lines))
 
 
+def declares(line, name):
+    """Whether LINE declares NAME at file scope, unlike an indented call or struct member."""
+    return line[:1] not in " \t" and line.endswith(";") and names.declared_name(line[:-1]) == name
+
+
+def code_outside(lines, name, span=None):
+    """The code of LINES, without comments and strings, outside SPAN (a definition's first and last line index) and
+    outside the file-scope declarations of NAME."""
+    rest = lines if span is None else lines[:span[0]] + lines[span[1] + 1:]
+    return names.strip_code("\n".join(line for line in rest if not declares(line, name)))
+
+
 def parse_reply(reply, address, name=None):
     """(declarations, function lines) from the first fenced block that holds the function's annotation, else from
     the first that defines NAME, with the annotation put above the definition. Declarations between the annotation
@@ -377,6 +389,25 @@ def without_static(func, shared):
     if shared is None or names.declared_name(signature) in shared:
         return None
     return func[:at] + [signature] + func[at + 1:]
+
+
+def kept_alive(text, address, shared):
+    """TEXT with a global that holds the address of its static definition at ADDRESS, when nothing else in TEXT names
+    it and its name may be in SHARED (None: unknown), so it cannot lose its `static` (see without_static): the
+    compiler leaves out a static function that nothing names, which leaves nothing to score. The global changes no
+    code of the function. Only the build that scores gets it: the file keeps TEXT."""
+    lines = text.split("\n")
+    span = definition_span(lines, address)
+    if span is None:
+        return text
+    func = lines[span[0]:span[1] + 1]
+    signature = func[signature_index(func)]
+    name = names.declared_name(signature)
+    if not re.match(r"static\s", signature) or shared is not None and name not in shared:
+        return text
+    if re.search(rf"\b{re.escape(name)}\b", code_outside(lines, name, span)):
+        return text
+    return text.rstrip("\n") + f"\n\nvoid *llm_keep_{address:08x} = (void *){name};\n"
 
 
 def stub_functions(text, addresses):
@@ -1007,13 +1038,14 @@ def next_turn(best, improved, reply, note, latest):
                                         f"({best.percent:.2f}%): start again from it and change something else."}]
 
 
-def file_best(config, text, address, known, types, prefix=False):
-    """The function's definition in the file as a Best, when it has one that builds, else None."""
+def file_best(scored, text, address, known, types, prefix=False):
+    """The function's definition in TEXT, the file, as a Best when it has one that builds, else None. SCORED gives
+    the percent or None and the build output of a file's text."""
     lines = text.split("\n")
     span = definition_span(lines, address)
     if span is None or lines[span[0]].lstrip().startswith("// STUB"):
         return None
-    percent, output = score(config, address)
+    percent, output = scored(text)
     if percent is None:
         return None
     code = "\n".join(lines[span[0]:span[1] + 1])
@@ -1292,12 +1324,21 @@ def solve_function(args, file, address, transcript):
     known = tree_warnings(config)
     restore(generated)
 
+    shared = shared_names(config["tables"])
+
+    def scored(text):
+        """(the percent of TEXT as the file, or None, the build output). The file is TEXT again afterwards: the
+        global of kept_alive is only for the build."""
+        write_source(path, kept_alive(text, address, shared), crlf)
+        restore(generated)
+        result = score(config, address)
+        write_source(path, text, crlf)
+        return result
+
     def rebuild(decls, func):
         """(the file with DECLS and FUNC in place of the function, its percent or None, the build output)."""
         text = apply_function(before, address, decls, func)
-        write_source(path, text, crlf)
-        restore(generated)
-        return text, *score(config, address)
+        return text, *scored(text)
 
     types = load_types(config) if args.structs else None
     repair_types = types or load_types(config)  # the byte offset and pointer cast repairs read layouts either way
@@ -1307,7 +1348,7 @@ def solve_function(args, file, address, transcript):
     first = first_prompt(config, file, address, types, count, extra, args.similar_examples)
     base = [{"role": "system", "content": args.system}, {"role": "user", "content": first}]
     # the code already in the file is the floor
-    best = file_best(config, before, address, known, types, args.prefix_feedback)
+    best = file_best(scored, before, address, known, types, args.prefix_feedback)
     restore(generated)
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
