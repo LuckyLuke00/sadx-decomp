@@ -6,3 +6,9 @@ void EnemyE101RMissile_Reset()
 {
 	DAT_060c5fc8 = 0;
 }
+
+// FUNCTION: SADX 0x0070fbc0
+void EnemyE101RMissile_AllKill()
+{
+	DAT_060c5fc8 = -1;
+}

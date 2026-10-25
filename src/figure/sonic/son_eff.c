@@ -1,4 +1,8 @@
 #include "decls.h"
+extern "C" double asin(double param_1);
+extern "C" double atan2(double v, double u);
+void FUN_005b5aa0();
+extern void *DAT_060eea60;
 int FUN_005b05b0(struct taskwk *param_1);
 void FUN_005b0e20(struct task *param_1);
 void njScaleV(float *, struct NJS_POINT3 *);
@@ -41,6 +45,11 @@ void FUN_005ae5e0(struct taskwk *param_1, void *param_2)
 		*(struct taskwk **)((char *)local_8g + 0x2c) = local_cg;
 	}
 	Free(param_2);
+}
+
+// STUB: SADX 0x005af370
+void CalcPosVec(int pnum, struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct NJS_POINT3 *posr)
+{
 }
 
 // FUNCTION: SADX 0x005af750
@@ -103,13 +112,33 @@ void EffectStartHoming(struct task *tp)
 	EffectStartHomingDisplay(tp);
 }
 
+// STUB: SADX 0x005afdf0
+void EffectStartHomingInit(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x005aff20
+void EffectSpinDisplay(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005b0120
 void EffectSpinExecute(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005b0180
+void EffectSpinDSDisplay(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005b0300
 void EffectSpinDSExecute(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b03b0
+void EffectStartHomingDisplay(struct task *tp)
 {
 }
 
@@ -136,9 +165,30 @@ void EffectDash(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x005b0d80
+// STUB: SADX 0x005b05b0
+int FUN_005b05b0(struct taskwk *local_8)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x005b0740
+void EffectDashDisplay(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x005b0d80
 void FUN_005b0d80(struct NJS_POINT3 *param_1, int *param_2)
 {
+	float local_8;
+
+	local_8 = njScalor(param_1);
+	if (local_8 == 0.0f)
+	{
+		return;
+	}
+	param_2[1] = atan2(-param_1->z, param_1->x) * 65536.0 / 6.283184;
+	param_2[2] = asin(param_1->y / local_8) * 65536.0 / 6.283184;
+	*param_2 = 0;
 }
 
 // STUB: SADX 0x005b0e20
@@ -184,6 +234,11 @@ void EffectFadeRibbon(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005b1c50
+void EffectSpinRibbonDisplay(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005b1fc0
 void SetSonicIce(long pno)
 {
@@ -196,9 +251,23 @@ void SetSonicIce(long pno)
 	}
 }
 
-// STUB: SADX 0x005b1ff0
+// FUNCTION: SADX 0x005b1ff0
 void SonicIce(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct playerwk *local_8g;
+
+	local_cg = tp->twp;
+	local_8g = GetPlayerWorkPointer(local_cg->btimer);
+	local_cg->wtimer = *(short *)((char *)local_8g + 0x124);
+	local_cg->scl.z = 1.0f;
+	local_cg->scl.y = 1.0f;
+	local_cg->scl.x = 1.0f;
+	tp->disp = SonicIceDisplay;
+	tp->exec = SonicIceExecute;
+	tp->dest = (void (*)(struct task *))FUN_005b5aa0;
+	local_cg->counter.l = *(int *)((char *)DAT_060eea60 + 0x120);
+	local_cg->value.ptr = &texlist_sonic_s_ice;
 }
 
 // FUNCTION: SADX 0x005b2080
@@ -242,7 +311,24 @@ void SonicIcePiece(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b2380
+// FUNCTION: SADX 0x005b2380
 void SonicIcePieceExecute(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return;
+	}
+	*(float *)((char *)local_8 + 0x20) = *(float *)((char *)local_8 + 0x20) + njSin(*(int *)((char *)local_8 + 0x18)) * 2.0f;
+	*(float *)((char *)local_8 + 0x28) = *(float *)((char *)local_8 + 0x28) + njCos(*(int *)((char *)local_8 + 0x18)) * 2.0f;
+	*(float *)((char *)local_8 + 0x24) = *(float *)((char *)local_8 + 0x24) + *(float *)((char *)local_8 + 0x30);
+	*(float *)((char *)local_8 + 0x30) = *(float *)((char *)local_8 + 0x30) - 0.1f;
+	if (*(float *)((char *)local_8 + 0x30) < -6.0f)
+	{
+		*(float *)((char *)local_8 + 0x30) = -6.0f;
+	}
+	*(int *)((char *)local_8 + 0x14) = *(int *)((char *)local_8 + 0x14) + 0x100;
+	SonicIceDisplay(tp);
 }

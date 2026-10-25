@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x00701f70
+void dispChaos7Object(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x007023d0
 void ObjectChaos7RedCar(struct task *tp)
 {

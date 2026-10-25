@@ -1,4 +1,7 @@
 #include "decls.h"
+extern short DAT_060dfc80;
+extern "C" double atan2(double v, double u);
+extern struct task *DAT_060dfe30;
 extern void njPushMatrix(float *param_1);
 extern void njPopMatrix(int param_1);
 extern void CHAOS_SetMeshMode(int sw);
@@ -54,7 +57,28 @@ void DispChaosWater(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x008c8990
+// FUNCTION: SADX 0x008c8930
+void DestDispChaosWater(struct task *tp)
+{
+	struct taskwk *local_cg;
+	struct chaoswk *local_8g;
+	local_cg = tp->twp;
+	local_8g = (struct chaoswk *)tp->awp;
+	*(unsigned long *)((char *)local_8g->texlist->textures + DAT_060dfc80 * 0xc + 8) = local_8g->old_texaddr;
+	local_8g->sp_mode = 3;
+	effectWaterMove(local_cg, local_8g, &object_c0_manju_c0_manju[0]);
+}
+
+// FUNCTION: SADX 0x008c8990
 void SetParamDispChaosWater(struct NJS_POINT3 *pos, struct NJS_POINT3 *scale)
 {
+	struct taskwk *local_10;
+	struct anywk *local_ci;
+	long local_8g;
+	local_10 = DAT_060dfe30->twp;
+	local_ci = DAT_060dfe30->awp;
+	local_8g = (long)(atan2(pos->z - local_10->pos.z, pos->x - local_10->pos.x) * 65536.0 / 6.283184);
+	*(long *)((char *)local_10 + 0x18) = AdjustAngle(*(long *)((char *)local_10 + 0x18), local_8g, 0x38e);
+	local_10->pos = *pos;
+	*(struct NJS_POINT3 *)((char *)local_ci + 0x4c) = *scale;
 }

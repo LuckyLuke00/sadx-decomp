@@ -1,8 +1,15 @@
 #include "decls.h"
+long GetAmyMovableYButton(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 void FUN_0051b800(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+
+// STUB: SADX 0x0051aeb0
+long GetAmyMovableYButton(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
 
 // FUNCTION: SADX 0x0051afc0
 void AmyDestruct(struct task *tp)
@@ -19,9 +26,17 @@ long FUN_0051b730(struct taskwk *twp, int *out1, float *out2)
 	return (long)0;
 }
 
-// STUB: SADX 0x0051b7b0
+// FUNCTION: SADX 0x0051b7b0
 void FUN_0051b7b0(int param_1)
 {
+	if (*(short *)(param_1 + 4) & 0x80)
+	{
+		*(int *)(*(int *)((char *)DAT_060eea50 + 0x90) + 0x30) = *(int *)((char *)DAT_060eea50 + 0x98);
+	}
+	else
+	{
+		*(int *)(*(int *)((char *)DAT_060eea50 + 0x90) + 0x30) = *(int *)((char *)DAT_060eea50 + 0x94);
+	}
 }
 
 // FUNCTION: SADX 0x0051b800
@@ -30,6 +45,18 @@ void FUN_0051b800(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	param_1->mode = 1;
 	param_3->waittimer = 0;
 	AmyChangeWaitingMotion(param_1, param_2, param_3);
+}
+
+// STUB: SADX 0x0051bab0
+long AmyCheckFlyingHammer(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0051c5f0
+long AmyCheckDamage(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x0051c960
@@ -50,16 +77,96 @@ long FUN_0051ca90(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pl
 	return (long)0;
 }
 
+// STUB: SADX 0x0051caf0
+long AmyCheckStartBalance(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0051ce40
 long AmyBalanceCheckBadStatus(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x0051e350
-long FUN_0051e350(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+// FUNCTION: SADX 0x0051e350
+long FUN_0051e350(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
+{
+	unsigned long local_8;
+
+	PAdjustHoldingPosition(param_1, param_2, param_3);
+	if (*(float *)((char *)param_3 + 0x130) >= 6.0f)
+	{
+		local_8 = PCheckHoldObject(param_1);
+		if (local_8 != 0)
+		{
+			switch (PCheckColliAngle(param_1, param_2))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					param_1->mode = 0x32;
+					return 1;
+				}
+				break;
+			}
+			FUN_0051b800(param_1, param_2, param_3);
+		}
+	}
+	return 0;
+}
+
+// STUB: SADX 0x0051e530
+long AmyCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x0051e650
+long AmyCheckThrowObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0051ed00
+void AmyThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0051f0a0
+long AmyCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x0051f150
+long AmyCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	if (PCheckPower(twp, 0, 0) == 0 && pwp->spd.x == 0.0f)
+	{
+		if ((twp->flag & 0x800) != 0)
+		{
+			if ((PCheckHoldObject(twp) & 0xc00) != 0)
+			{
+				twp->mode = 0x1a;
+				*(short *)((char *)pwp + 0x124) = 0x3e;
+			}
+			else
+			{
+				twp->mode = 0x19;
+				*(short *)((char *)pwp + 0x124) = 0x2f;
+			}
+		}
+		else
+		{
+			FUN_0051b800(twp, mwp, pwp);
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0051f1f0
@@ -100,6 +207,12 @@ void AmySkirtShapeEnd(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00520610
+long FUN_00520610(long param_1, long *param_2)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00520bd0
 void AmyFaceMotion(struct task *tp)
 {
@@ -122,11 +235,21 @@ void AmyERobApperChecker(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00520fd0
+void AmyERobByenaraChecker(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005210f0
 void FUN_005210f0(void)
 {
 	if (((DAT_05b9d724 << 8) | DAT_05b9d744) == 0xc00)
 		CreateElementalTask(2, 3, AmyBalanceGameStartChecker);
+}
+
+// STUB: SADX 0x00521120
+void AmyBalanceGameStartChecker(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00521550

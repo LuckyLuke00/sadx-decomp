@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_0067e510(float *param_1, float param_2, float param_3, float param_4);
 void setParticleDispTask(struct taskwk *twp);
 extern struct NJS_TEXLIST texlist_chaos_effect;
 void DestroyTask(struct task *tp);
@@ -67,8 +68,8 @@ void SetEffectPunchTame(struct NJS_POINT3 *pos)
 	if (local_8g != NULL)
 	{
 		local_cg = local_8g->twp;
-		*(float *)&local_cg->counter = 0.0f;
-		*(float *)&local_cg->scl.x = DAT_060df6f8;
+		local_cg->counter.f = 0.0f;
+		local_cg->scl.x = DAT_060df6f8;
 		local_cg->timer.ptr = pos;
 	}
 }
@@ -93,9 +94,11 @@ void ChaosUnderLight(struct taskwk *twp)
 	njTranslateLightV((struct NJS_LIGHT *)DAT_060df580, &twp->pos);
 }
 
-// STUB: SADX 0x008c5030
+// FUNCTION: SADX 0x008c5030
 void ChaosUnderLight2(struct NJS_POINT3 *pos, float yofs)
 {
+	njUnitLightMatrix((struct NJS_LIGHT *)&DAT_060df580);
+	FUN_0067e510((float *)&DAT_060df580, pos->x, pos->y + yofs, pos->z);
 }
 
 // FUNCTION: SADX 0x008c5080

@@ -1,4 +1,15 @@
 #include "decls.h"
+extern int DAT_05ccde10;
+void dsLoadEVBossSound();
+struct task *GetPlayerTaskPointer(unsigned char pno);
+void FreeTask(struct task *tp);
+struct task *EV_CreateBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param);
+struct task *EV_CreateBossController(struct BOSSPLAYER_CREATE_PARAM *Param);
+extern int last_eventlist[16];
+extern void SetStageNumber(unsigned char stg, unsigned char act);
+extern void SetEntranceNumber(signed char number);
+void FUN_005b5aa0();
+extern int DAT_05cd14d4;
 void SeqTaskFadeOut(struct task *tp);
 void SeqTaskFadeIn(struct task *tp);
 void SeqCtrl();
@@ -270,9 +281,39 @@ long SeqCheckNextStage(unsigned char stg, unsigned char act)
 	return GetNextStageNumber() == ((stg << 8) | act);
 }
 
-// STUB: SADX 0x004f5640
+// FUNCTION: SADX 0x004f5640
 void EventBossExecutor(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	switch (local_8->mode)
+	{
+		case 0:
+			ADX_Close();
+			EV_PcNpcEnd();
+			dsLoadEVBossSound();
+			local_8->mode = 1;
+		case 1:
+			if (GetPlayerTaskPointer(0) != 0)
+			{
+				DAT_05bafd1c.type = (enum EVBOSS_TYPE)plboss_equ[DAT_05baf538][0];
+				DAT_05bafd1c.player_tp = GetPlayerTaskPointer(0);
+				DAT_05bafd1c.boss_tp = 0;
+				DAT_05bafd1c.exec = 0;
+				DAT_05bafd1c.exit = plboss_destruct;
+				EV_CreateBossPlayerTask(&DAT_05bafd1c);
+				EV_CreateBossController(&DAT_05bafd1c);
+				local_8->mode = 2;
+			}
+			break;
+		case 2:
+			local_8->mode = 3;
+			break;
+		case 3:
+			FreeTask(tp);
+			break;
+	}
 }
 
 // FUNCTION: SADX 0x004f5720
@@ -335,9 +376,38 @@ void EV_PcNpcEnd()
 {
 }
 
-// STUB: SADX 0x004f5950
+// FUNCTION: SADX 0x004f5950
 void SeqTaskFadeIn(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (DAT_05ccde10 != 0)
+	{
+		local_8->mode = 2;
+	}
+	switch (local_8->mode)
+	{
+		case 0:
+			tp->disp = DisplayFade;
+			tp->dest = (void (__cdecl *)(struct task *))FUN_005b5aa0;
+			local_8->mode = 1;
+			local_8->value.f = 255.0;
+			break;
+		case 1:
+			DAT_05cd14d4 = 0;
+			DisplayFade(tp);
+			local_8->value.f -= 16.0;
+			if (local_8->value.f < 0.0)
+			{
+				local_8->value.f = 0.0;
+				local_8->mode = 2;
+			}
+			break;
+		case 2:
+			FreeTask(tp);
+			break;
+	}
 }
 
 // STUB: SADX 0x004f5a10
@@ -345,12 +415,49 @@ void DisplayFade(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004f5ac0
+// FUNCTION: SADX 0x004f5ac0
 void SeqTaskFadeOut(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	switch (local_8->mode)
+	{
+		case 0:
+			tp->disp = DisplayFade;
+			tp->dest = (void (__cdecl *)(struct task *))FUN_005b5aa0;
+			local_8->mode = 1;
+			local_8->value.f = 15.0;
+		case 1:
+			DisplayFade(tp);
+			local_8->value.f += 16.0;
+			if (local_8->value.f > 255.0)
+			{
+				local_8->value.f = 255.0;
+				local_8->mode = 2;
+				DAT_05cd14d4 = 1;
+			}
+			break;
+		case 2:
+			DisplayFade(tp);
+			FreeTask(tp);
+			break;
+	}
 }
 
-// STUB: SADX 0x004f5ee0
+// FUNCTION: SADX 0x004f5ee0
 void SeqResetLastScenario()
 {
+	int local_8g;
+	int local_cg;
+	*(short *)(DAT_05b3ea28 + 4) = 0;
+	*(short *)(DAT_05b3ea28 + 2) = 0;
+	local_cg = DAT_05baf544;
+	SetEntranceNumber(*(char *)(local_cg + 6));
+	SetStageNumber(*(unsigned char *)(local_cg + 4), *(unsigned char *)(local_cg + 5));
+	*(short *)(DAT_05b3ea28 + 10) = (short)(DAT_05b9d724 << 8 | DAT_05b9d744);
+	for (local_8g = 0; last_eventlist[local_8g] != 0; local_8g++)
+	{
+		*(char *)(last_eventlist[local_8g] + 0x5baf900) = 0;
+	}
 }

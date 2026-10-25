@@ -1,4 +1,7 @@
 #include "decls.h"
+static void initWaveTask(struct task *p_task);
+static void execWaveTask(struct task *p_task);
+static void dispWaveTask(struct task *p_task);
 void FUN_007d6940(struct task *param_1);
 void FUN_007d21b0(void *param_1);
 extern struct NJS_TEXLIST texlist_l_sibuki;
@@ -30,14 +33,14 @@ void dispPillarTask(struct task *p_task)
 // FUNCTION: SADX 0x007d6940
 void FUN_007d6940(struct task *param_1)
 {
-	if (*(int *)&param_1->twp->value)
+	if (param_1->twp->value.l)
 	{
-		Free(*(void **)&param_1->twp->value);
+		Free(param_1->twp->value.ptr);
 	}
 }
 
 // FUNCTION: SADX 0x007d6960
-void dispWaveTask(struct task *p_task)
+static void dispWaveTask(struct task *p_task)
 {
 	struct taskwk *var1;
 	var1 = p_task->twp;
@@ -64,10 +67,12 @@ void execSplashTask(struct task *p_task)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x007d6bf0
-void execWaveTask(struct task *p_task)
+static void execWaveTask(struct task *p_task)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d6c70
 void initSplashTask(struct task *p_task)
@@ -86,7 +91,7 @@ void initPillarTask(struct task *p_task)
 }
 
 // FUNCTION: SADX 0x007d6cb0
-void initWaveTask(struct task *p_task)
+static void initWaveTask(struct task *p_task)
 {
 	p_task->exec = execWaveTask;
 	p_task->disp = dispWaveTask;

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern short DAT_060dfc80;
+extern int DAT_04c37b48[6][3];
 
 // STUB: SADX 0x008c74a0
 int traceObjectTree(struct obj *obj, struct obj **list)
@@ -8,6 +10,11 @@ int traceObjectTree(struct obj *obj, struct obj **list)
 
 // STUB: SADX 0x008c75b0
 void initialChaos(struct taskwk *twp, struct chaoswk *chwp, int id)
+{
+}
+
+// STUB: SADX 0x008c76f0
+void InitialChaosPos(struct taskwk *twp)
 {
 }
 
@@ -48,8 +55,24 @@ struct task *CreateChildTaskSetPos(unsigned short im, void *func, struct task *t
 	return local_8;
 }
 
-// STUB: SADX 0x008c80b0
+// FUNCTION: SADX 0x008c80b0
 void ChaosSurfacePatternChange(struct chaoswk *chwp)
+{
+	int local_8;
+	local_8 = (int)chwp->texlist->textures + DAT_060dfc80 * 0xc;
+	chwp->txchg_tmr++;
+	if (chwp->txchg_tmr >= 4)
+	{
+		chwp->txchg_tmr = 0;
+		chwp->txchg_num++;
+		if (chwp->txchg_num >= 6)
+			chwp->txchg_num = 0;
+	}
+	*(int *)((char *)local_8 + 8) = *(int *)((char *)DAT_04c37b48 + chwp->txchg_num * 0xc);
+}
+
+// STUB: SADX 0x008c8130
+void ChaosHeadColorChange(struct obj *obj)
 {
 }
 

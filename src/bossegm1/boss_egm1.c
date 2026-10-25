@@ -1,4 +1,6 @@
 #include "decls.h"
+static void TikalTaskExit(struct task *tp);
+static void TaskBossEnd(struct task *tp);
 void FUN_006c1b20(struct task *param_1);
 extern int DAT_05b3ebbc;
 extern const struct HintMessageString *tikal_mes_egm1[5];
@@ -23,7 +25,7 @@ void TikalTaskExec(struct task *tp)
 }
 
 // FUNCTION: SADX 0x006c1560
-void TikalTaskExit(struct task *tp)
+static void TikalTaskExit(struct task *tp)
 {
 	DAT_060b990c = 0;
 }
@@ -81,7 +83,7 @@ void TaskBossDisp(struct task *tp)
 }
 
 // FUNCTION: SADX 0x006c1bd0
-void TaskBossEnd(struct task *tp)
+static void TaskBossEnd(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	struct anywk *var2 = tp->awp;
