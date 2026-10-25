@@ -806,8 +806,17 @@ long boolCheckRangeIn;
 // GLOBAL: SADX 0x025dec18
 struct particle_entry particle_smoke;
 
+// GLOBAL: SADX 0x025dec28
+struct particle_entry particle_addsmoke;
+
 // GLOBAL: SADX 0x025dec38
 struct particle_info default_smoke;
+
+// GLOBAL: SADX 0x025ded5c
+struct particle_entry particle_fire;
+
+// GLOBAL: SADX 0x025ded6c
+struct particle_info default_fire;
 
 // GLOBAL: SADX 0x0260109c
 unsigned char gu8Vibration;
@@ -856,6 +865,9 @@ struct NJS_TEXLIST texlist_con_regular;
 
 // GLOBAL: SADX 0x02604ab8
 struct NJS_TEXLIST DAT_02604ab8;
+
+// GLOBAL: SADX 0x02604c3c
+struct particle_entry particle_water;
 
 // GLOBAL: SADX 0x02604c88
 float oldn;
@@ -979,6 +991,12 @@ struct particle_info default_snow;
 
 // GLOBAL: SADX 0x0263dc30
 struct particle_entry particle_snow;
+
+// GLOBAL: SADX 0x0263dca8
+struct NJS_TEXLIST texlist_barrier_cup[2];
+
+// GLOBAL: SADX 0x0263dd20
+struct NJS_TEXLIST texlist_muteki[8];
 
 // GLOBAL: SADX 0x0263dd60
 struct NJS_TEXLIST texlist_muteki_sphere[1];
@@ -1133,8 +1151,17 @@ struct CCL_INFO itembox_colli_info0[1];
 // GLOBAL: SADX 0x02678a00
 struct CCL_INFO itembox_colli_info1[2];
 
+// GLOBAL: SADX 0x02679030
+struct NJS_SPRITE sprite_lensflare;
+
 // GLOBAL: SADX 0x026795dc
 struct particle_entry particle_flash;
+
+// GLOBAL: SADX 0x026846cc
+struct particle_entry particle_lightning;
+
+// GLOBAL: SADX 0x026847d8
+struct particle_entry particle_hitmark;
 
 // GLOBAL: SADX 0x02684a60
 long o_hit_spd1;
@@ -2623,6 +2650,12 @@ struct NJS_ACTION action_ltos_s_pyo_born_b[1];
 
 // GLOBAL: SADX 0x04c7c0c0
 int DAT_04c7c0c0;
+
+// GLOBAL: SADX 0x05a6401c
+struct NJS_MODEL DAT_05a6401c;
+
+// GLOBAL: SADX 0x05a7989c
+struct NJS_MODEL DAT_05a7989c;
 
 // GLOBAL: SADX 0x05a79e44
 struct NJS_MODEL DAT_05a79e44;
@@ -5259,7 +5292,7 @@ int DAT_05edbc8c;
 struct sp_task *DAT_05edbcb4;
 
 // GLOBAL: SADX 0x05edbcb8
-int DAT_05edbcb8;
+struct sp_link *DAT_05edbcb8;
 
 // GLOBAL: SADX 0x05edbcbc
 int DAT_05edbcbc;

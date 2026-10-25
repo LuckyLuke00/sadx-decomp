@@ -1,9 +1,16 @@
 #include "decls.h"
+extern struct NJS_SPRITE sprite_lensflare;
+void FUN_005b5aa0();
+static void LensFlareExecutor(struct task *tp);
 void LensFlareExecutor(struct task *tp);
 
-// STUB: SADX 0x005e00f0
+// FUNCTION: SADX 0x005e00f0
 void EffectLensFlare(struct task *tp)
 {
+	struct NJS_SPRITE *local_8;
+	local_8 = &sprite_lensflare;
+	tp->exec = LensFlareExecutor;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_005b5aa0;
 }
 
 // FUNCTION: SADX 0x005e0600

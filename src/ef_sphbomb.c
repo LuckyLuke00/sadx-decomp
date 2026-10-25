@@ -13,9 +13,21 @@ void SphericalExplosionPos(float rate)
 {
 }
 
-// STUB: SADX 0x006105b0
+// FUNCTION: SADX 0x006105b0
 void SphericalExplosionAlpha(float a)
 {
+	if (a < 0.0)
+	{
+		a = 0.0;
+	}
+	else
+	{
+		if (a > 1.0)
+		{
+			a = 1.0;
+		}
+	}
+	*(unsigned char *)((char *)model_expoly.mats + 3) = (unsigned char)(a * 255.0);
 }
 
 // FUNCTION: SADX 0x00610620

@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00598fc0(char param_1);
 void FUN_00598e20();
 extern float ScreenRaitoX;
 extern float ScreenRaitoY;

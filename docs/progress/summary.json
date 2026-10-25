@@ -21645,7 +21645,15 @@
   {
    "address": "0x005537c0",
    "name": "CreateAddSmoke",
-   "accuracy": 0.09876543209876543,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005538c0",
+   "name": "EffectFire",
+   "accuracy": 0.08888888888888889,
    "effective": false,
    "stub": true,
    "library": false
@@ -21653,9 +21661,9 @@
   {
    "address": "0x005539d0",
    "name": "CreateFire",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -24461,6 +24469,22 @@
   {
    "address": "0x00571750",
    "name": "GetMMMatrix",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00571790",
+   "name": "EffectWater",
+   "accuracy": 0.08080808080808081,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005719c0",
+   "name": "CreateWater2",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -27757,9 +27781,9 @@
   {
    "address": "0x005a63e0",
    "name": "FUN_005a63e0",
-   "accuracy": 0.21621621621621623,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -27781,9 +27805,9 @@
   {
    "address": "0x005a64f0",
    "name": "SpCreateLinkW",
-   "accuracy": 0.22727272727272727,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29189,9 +29213,9 @@
   {
    "address": "0x005b4730",
    "name": "CrashStar",
-   "accuracy": 0.20512820512820512,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29301,17 +29325,17 @@
   {
    "address": "0x005b5430",
    "name": "NormalB",
-   "accuracy": 0.16,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005b54c0",
    "name": "NBarrierDisp",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29341,17 +29365,17 @@
   {
    "address": "0x005b5830",
    "name": "CMuteki",
-   "accuracy": 0.16,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005b58c0",
    "name": "CMutekiDisp",
-   "accuracy": 0.10810810810810811,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32221,9 +32245,9 @@
   {
    "address": "0x005e00f0",
    "name": "EffectLensFlare",
-   "accuracy": 0.5333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34661,14 +34685,30 @@
   {
    "address": "0x0060ceb0",
    "name": "CreateLightning",
-   "accuracy": 0.16,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0060cf40",
    "name": "EffectLightning",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060d0e0",
+   "name": "EffectHit",
+   "accuracy": 0.050314465408805034,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0060d2b0",
+   "name": "CreateHitmark2",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -34811,6 +34851,14 @@
    "library": false
   },
   {
+   "address": "0x0060f550",
+   "name": "ghSpriteSet",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0060f5e0",
    "name": "spriteAutoDisp",
    "accuracy": 1.0,
@@ -34867,6 +34915,14 @@
    "library": false
   },
   {
+   "address": "0x0060fa10",
+   "name": "control_disp",
+   "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0060fa80",
    "name": "control_exec",
    "accuracy": 0.13793103448275862,
@@ -34909,7 +34965,15 @@
   {
    "address": "0x0060fcb0",
    "name": "CreateSpark",
-   "accuracy": 0.17391304347826086,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060fd30",
+   "name": "EffectSpark",
+   "accuracy": 0.023529411764705882,
    "effective": false,
    "stub": true,
    "library": false
@@ -34933,9 +34997,9 @@
   {
    "address": "0x006105b0",
    "name": "SphericalExplosionAlpha",
-   "accuracy": 0.21621621621621623,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72725,8 +72789,29 @@
    "library": false
   },
   {
+   "address": "0x025dec28",
+   "name": "particle_addsmoke",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025dec38",
    "name": "default_smoke",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025ded5c",
+   "name": "particle_fire",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025ded6c",
+   "name": "default_fire",
    "size": 60,
    "match": false,
    "library": false
@@ -72840,6 +72925,13 @@
    "address": "0x02604ab8",
    "name": "DAT_02604ab8",
    "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02604c3c",
+   "name": "particle_water",
+   "size": 16,
    "match": false,
    "library": false
   },
@@ -73127,6 +73219,20 @@
    "address": "0x0263dc30",
    "name": "particle_snow",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0263dca8",
+   "name": "texlist_barrier_cup",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0263dd20",
+   "name": "texlist_muteki",
+   "size": 64,
    "match": false,
    "library": false
   },
@@ -73488,8 +73594,29 @@
    "library": false
   },
   {
+   "address": "0x02679030",
+   "name": "sprite_lensflare",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026795dc",
    "name": "particle_flash",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026846cc",
+   "name": "particle_lightning",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026847d8",
+   "name": "particle_hitmark",
    "size": 16,
    "match": false,
    "library": false
@@ -77688,6 +77815,20 @@
    "library": true
   },
   {
+   "address": "0x05a6401c",
+   "name": "DAT_05a6401c",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x05a7989c",
+   "name": "DAT_05a7989c",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x05a79e44",
    "name": "DAT_05a79e44",
    "size": 44,
@@ -77886,5 +78027,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e716eaa42f16cb51681615b527cc598cbbb7882821138b15e85213e3ea56acde"
+ "inputs_sha256": "590e0a1b9265e1e3fdc000e893da6ccbf98843a839a434aea9f9a0b5fe8bf4dd"
 }
