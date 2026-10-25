@@ -10,6 +10,8 @@ import argparse
 import contextlib
 import io
 import json
+import os
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -295,10 +297,67 @@ def check_full_context_restart() -> list[str]:
     return failures
 
 
+def check_shared_context() -> list[str]:
+    """With shared_context, a request starts after the requests that waited longer, once its prompt and max_tokens fit
+    beside the running ones or none runs. chat waits until then, holds its room while the reply runs and frees it
+    after. A request of a process that ended holds nothing."""
+    failures = []
+    requests = {"a": {"pid": 1, "tokens": 20000, "since": 0, "running": True},
+                "b": {"pid": 1, "tokens": 30000, "since": 1, "running": False},
+                "c": {"pid": 1, "tokens": 2000, "since": 2, "running": False}}
+    if llmclient.may_start(requests, "c", 32768):
+        failures.append("c starts before b, which waited longer")
+    if llmclient.may_start(requests, "b", 32768):
+        failures.append("b starts although 20000 and 30000 do not fit in 32768")
+    del requests["a"]
+    if not llmclient.may_start(requests, "b", 32768):
+        failures.append("b waits although nothing runs")
+    if not llmclient.may_start({"d": {"pid": 1, "tokens": 40000, "since": 0, "running": False}}, "d", 32768):
+        failures.append("a request bigger than the shared context does not start alone")
+
+    ended = subprocess.Popen([sys.executable, "-c", "pass"])
+    ended.wait()
+    with tempfile.TemporaryDirectory() as folder:
+        ledger = Path(folder) / "ledger.json"
+        holder = {"pid": os.getpid(), "tokens": 900, "since": 0, "running": True}
+        ledger.write_text(json.dumps({"other": holder, "ended": {**holder, "pid": ended.pid}}), encoding="utf-8")
+        held, waits = [], []
+
+        def call(config, path, body=None, timeout=None, read=None):
+            if path == "/apply-template":
+                return {"prompt": "p"}
+            if path == "/tokenize":
+                return {"tokens": [0] * 100}
+            held.append(json.loads(ledger.read_text(encoding="utf-8")))
+            return {"choices": [{"message": {"content": "x"}, "finish_reason": "stop"}]}
+
+        def sleep(seconds):
+            waits.append(seconds)
+            if len(waits) > 3:
+                raise RuntimeError("still waiting")
+            with llmclient.ledger(ledger) as noted:
+                noted.pop("other", None)
+
+        config = {**llmclient.DEFAULTS, "shared_context": 1000, "max_tokens": 200}
+        with (mock.patch.object(llmclient, "call", call), mock.patch.object(llmclient, "ledger_path", lambda c: ledger),
+              mock.patch.object(llmclient.time, "sleep", sleep)):
+            try:
+                llmclient.chat(config, [], 0.0, False, None)
+            except RuntimeError as e:
+                failures.append(f"chat {e} after the room freed up: does a request of an ended process hold room?")
+        mine = [r for noted in held for r in noted.values()]
+        if len(waits) != 1 or len(mine) != 1 or mine[0]["tokens"] != 300 or not mine[0]["running"]:
+            failures.append(f"chat waits {len(waits)} times (not 1) and holds {mine} during the reply, not 300 tokens")
+        if json.loads(ledger.read_text(encoding="utf-8")):
+            failures.append(f"chat leaves {ledger.read_text(encoding='utf-8')} in the shared file")
+    return failures
+
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_live, check_live_ends, check_stream_events, check_full_context_restart):
+                  check_prefix_feedback, check_live, check_live_ends, check_stream_events, check_full_context_restart,
+                  check_shared_context):
         failures += check()
     return failures
