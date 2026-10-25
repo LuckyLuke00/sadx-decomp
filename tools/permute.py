@@ -27,8 +27,6 @@ declarations need work, so it says so and stops.
 """
 
 import collections
-import contextlib
-import io
 import random
 import re
 import sys
@@ -36,6 +34,7 @@ import time
 
 import check
 import llm
+import osutil
 import project
 import runner
 
@@ -672,12 +671,8 @@ def describe(result):
 def try_function(path, lines, span, function, crlf, address):
     """Build the file with FUNCTION in SPAN and score it: (Score, diff), or None when it does not build."""
     llm.write_source(path, "\n".join(lines[:span[0]] + function + lines[span[1] + 1:]) + "\n", crlf)
-    try:
-        with contextlib.redirect_stdout(io.StringIO()):
-            check.build()
-    except SystemExit:
-        return None
-    return score(address)
+    worked, _ = osutil.caught(check.build)
+    return score(address) if worked else None
 
 
 def fresh_change(body, seen, rng, changes):
