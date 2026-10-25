@@ -14,8 +14,18 @@ void FUN_008de9d0(struct task *param_1)
 	FUN_004c39c0(param_1);
 }
 
+// STUB: SADX 0x008de9f0
+void dispBuyonSub(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008dea80
 void dispBuyon(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008df8f0
+void dispBuyonSub_Jel(struct task *tp)
 {
 }
 
@@ -102,6 +112,16 @@ void exitBuyonManager(struct task *tp)
 
 // STUB: SADX 0x008e0810
 void dispBuyonShadow(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008e09e0
+void calcAimPos(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x008e0f50
+void reviseBuyonPosition(struct task *tp)
 {
 }
 

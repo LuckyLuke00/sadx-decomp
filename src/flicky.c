@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short param_3);
+void Flicky_dsp(struct Flicky *__this, struct taskwk *twp);
 void FUN_006184e0(int param_1, char *param_2);
 void FUN_0061a500(struct taskwk *param_1);
 void FUN_0061a820(struct Flicky *param_1, struct taskwk *param_2);
@@ -132,7 +134,7 @@ void Flicky_executor(struct task *tp)
 	int local_8g;
 
 	local_cg = tp->twp;
-	local_8g = *(int *)&local_cg->value;
+	local_8g = local_cg->value.l;
 	FUN_0061a180(local_8g, local_cg, tp);
 	FUN_0061a590(local_8g, local_cg);
 }

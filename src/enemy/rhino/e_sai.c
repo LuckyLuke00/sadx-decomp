@@ -1,6 +1,10 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+void FUN_008d75f0(struct enemywk *param_1, struct taskwk *param_2);
+void FUN_008d7d30(struct taskwk *param_1);
+extern struct NJS_ACTION *action_rhino;
+extern struct obj object_rhino_jet[1];
 void FUN_008d75c0(int param_1, char *param_2);
 void FUN_008d88b0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_MATERIAL matlist_rhino_jet[1];
@@ -48,6 +52,16 @@ void SaiSearch(struct taskwk *twp, struct enemywk *ewp, struct taskwk *ptwp)
 {
 }
 
+// STUB: SADX 0x008d7880
+void SaiScramble(struct taskwk *twp, struct taskwk *ptwp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x008d7be0
+void SaiDash(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x008d7d00
 void FUN_008d7d00(int param_1, char *param_2)
 {
@@ -56,6 +70,11 @@ void FUN_008d7d00(int param_1, char *param_2)
 	{
 		*param_2 = 0xfc;
 	}
+}
+
+// STUB: SADX 0x008d7d30
+void FUN_008d7d30(struct taskwk *twp)
+{
 }
 
 // STUB: SADX 0x008d7e80
@@ -91,9 +110,25 @@ void FUN_008d8710(struct taskwk *param_1, struct enemywk *param_2)
 	EnemyCheckGroundCollision(param_1, param_2);
 }
 
-// STUB: SADX 0x008d8730
+// FUNCTION: SADX 0x008d8730
 void SaiEditMode(struct taskwk *twp)
 {
+	njPrintC(0x19, "EDIT");
+	___dsSetPalette(6);
+	___njSetTexture(&texlist_e_sai);
+	njPushMatrix(0);
+	njTranslateV(0, &twp->pos);
+	if (twp->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)twp->ang.y);
+	}
+	___dsDrawObject((struct obj *)action_rhino);
+	SetMaterial(0.0, 1.0, 1.0, 1.0);
+	late_DrawObject(&object_rhino_jet[0], 4);
+	ResetMaterial();
+	matlist_rhino_jet[0].attr_texId = twp->btimer % 3;
+	njPopMatrix(1);
+	___dsSetPalette(0);
 }
 
 // FUNCTION: SADX 0x008d8800
