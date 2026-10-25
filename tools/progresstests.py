@@ -13,8 +13,10 @@ def summary(*data: tuple[str, int, bool], data_bytes: int = 100) -> dict:
 
 
 def check_count_text() -> list[str]:
-    """The count text shows the thousands and the percent, and 0 of 0 shows 0%."""
-    cases = [((1234, 5000, "bytes"), "1,234 of 5,000 bytes (24.68%)"), ((0, 0, "bytes"), "0 of 0 bytes (0.00%)")]
+    """The count text shows the thousands and the percent, and 0 of 0 shows 0%. The percent rounds down, so only all
+    of it shows 100%."""
+    cases = [((1234, 5000, "bytes"), "1,234 of 5,000 bytes (24.68%)"), ((0, 0, "bytes"), "0 of 0 bytes (0.00%)"),
+             ((99996, 100000, "bytes"), "99,996 of 100,000 bytes (99.99%)")]
     return [f"count_text{args} gives {scoring.count_text(*args)}, not {wanted}"
             for args, wanted in cases if scoring.count_text(*args) != wanted]
 
@@ -60,17 +62,11 @@ def check_accepted_drops() -> list[str]:
 
 
 def check_emblems() -> list[str]:
-    """A code emblem needs its share of the game's bytes, rounded up. An area emblem needs all of its bytes."""
-    found = scoring.emblems(scoring.Bytes(900, 50, 999), [("Area", scoring.Bytes(10, 10, 10)),
-                                                         ("Other", scoring.Bytes(10, 9, 10))])
-    failures = []
-    if len(found) != 100 // scoring.EMBLEM_STEP + 2:
-        failures.append(f"emblems gives {len(found)} emblems, not one per {scoring.EMBLEM_STEP}% and one per area")
-    if found[0] != scoring.Emblem("5% of the game's code", 50, 50) or found[-3].needed != 999:
-        failures.append(f"emblems needs {found[0].needed} and {found[-3].needed} bytes, not 50 and 999")
-    if [emblem.earned for emblem in found[-2:]] != [True, False] or scoring.earned_count(found) != 2:
-        failures.append("emblems does not earn exactly the 5% emblem and the area at 10 of 10 bytes")
-    return failures
+    """An area emblem needs all of the area's code bytes."""
+    found = scoring.emblems([("Area", scoring.Bytes(10, 10, 10)), ("Other", scoring.Bytes(10, 9, 10))])
+    if found != [scoring.Emblem("Area", 10, 10), scoring.Emblem("Other", 9, 10)] or scoring.earned_count(found) != 1:
+        return [f"emblems gives {found}, which does not earn exactly the area at 10 of 10 bytes"]
+    return []
 
 
 def check_score_changes() -> list[str]:

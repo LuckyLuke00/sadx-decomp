@@ -743,16 +743,16 @@ def check_summarize_tricks() -> list[str]:
 
 
 def check_recent_gain() -> list[str]:
-    """The card counts from the last row a week or more before the newest. A younger history counts from its
-    oldest row and says since when."""
+    """The card counts the code share from the last row a week or more before the newest. A younger history counts
+    from its oldest row and says since when. Eighths of the code keep the floats exact."""
     def rows(*pairs):
-        return [{"date": day, "matched": str(matched)} for day, matched in pairs]
+        return [{"date": day, "matched_bytes": str(matched), "game_bytes": "8"} for day, matched in pairs]
 
-    cases = [(rows(("2026-10-01", 10), ("2026-10-05", 20), ("2026-10-09", 25)), (15, "this week")),
-             (rows(("2026-10-17", 6), ("2026-10-22", 2651)), (2645, "since 2026-10-17")),
-             (rows(("2026-10-22", 5)), (0, "since 2026-10-22")),
-             (rows(("2026-10-01", 10), ("2026-10-08", 30)), (20, "this week")),
-             (rows(("2026-10-02", 10), ("2026-10-08", 30)), (20, "since 2026-10-02"))]
+    cases = [(rows(("2026-10-01", 1), ("2026-10-05", 4), ("2026-10-09", 7)), (0.75, "this week")),
+             (rows(("2026-10-17", 0), ("2026-10-22", 2)), (0.25, "since 2026-10-17")),
+             (rows(("2026-10-22", 5)), (0.0, "since 2026-10-22")),
+             (rows(("2026-10-01", 1), ("2026-10-08", 3)), (0.25, "this week")),
+             (rows(("2026-10-02", 2), ("2026-10-08", 3)), (0.125, "since 2026-10-02"))]
     return [f"recent_gain gives {progress.recent_gain(history)} for {history}, not {wanted}"
             for history, wanted in cases if progress.recent_gain(history) != wanted]
 
