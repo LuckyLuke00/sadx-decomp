@@ -36,6 +36,12 @@ int ghSpriteExec(struct GHSPRITE *pSpr)
 	return (int)0;
 }
 
+// STUB: SADX 0x0060f550
+struct task *ghSpriteSet(struct NJS_POINT3 *pPos, struct GHSPRITE_INIT_INFO *pInit, int flag)
+{
+	return (struct task *)0;
+}
+
 // FUNCTION: SADX 0x0060f5e0
 void spriteAutoDisp(struct task *pTask)
 {
