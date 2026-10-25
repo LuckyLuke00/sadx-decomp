@@ -1,4 +1,8 @@
 #include "decls.h"
+void DisplayerEggrob_HatenaDisplay(struct task *tp);
+extern struct PL_ACTION eggrob_action[];
+void FUN_00610af0();
+void FUN_006155e0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
 extern short DAT_05edecee;
 extern short DAT_05edece8;
 extern float DAT_05edeec8;
@@ -23,9 +27,9 @@ extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern float DAT_05edecd4;
 void FUN_00610a30(struct task *param_1);
-extern int DAT_05eded84;
-extern int DAT_05eded88;
-extern int DAT_05eded8c;
+extern float DAT_05eded84;
+extern float DAT_05eded88;
+extern float DAT_05eded8c;
 extern int DAT_05eded80;
 
 // FUNCTION: SADX 0x00610640
@@ -55,13 +59,18 @@ void Eggrob_Init(struct task *tp)
 	Eggrob_BeamInit();
 }
 
+// STUB: SADX 0x00610a30
+void FUN_00610a30(struct task *tsp)
+{
+}
+
 // FUNCTION: SADX 0x00610af0
 void FUN_00610af0()
 {
 	DAT_05eded80 = 0;
-	*(float *)&DAT_05eded84 = 0.0f;
-	*(float *)&DAT_05eded88 = 0.0f;
-	*(float *)&DAT_05eded8c = 0.0f;
+	DAT_05eded84 = 0.0f;
+	DAT_05eded88 = 0.0f;
+	DAT_05eded8c = 0.0f;
 }
 
 // FUNCTION: SADX 0x00610b20
@@ -93,6 +102,12 @@ void FUN_00612b50(short param_1, float param_2)
 	DAT_05edecfc = param_2;
 }
 
+// STUB: SADX 0x00612b80
+int FUN_00612b80(float param_1)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00613680
 void FUN_00613680(float *param_1)
 {
@@ -100,6 +115,11 @@ void FUN_00613680(float *param_1)
 
 // STUB: SADX 0x00613a80
 void Eggrob_BeamInit()
+{
+}
+
+// STUB: SADX 0x006145a0
+void FUN_006145a0(struct NJS_POINT3 *param_1, const struct NJS_POINT3 *param_2)
 {
 }
 

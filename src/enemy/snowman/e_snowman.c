@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct particle_entry particle_pom;
+extern "C" int rand(void);
 void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struct NJS_POINT3 *spd, float scl);
 void DisplaySnowface(struct taskwk *twp, struct enemywk *ewp);
 void DisplaySnowMobile(struct taskwk *twp, struct enemywk *ewp);
@@ -88,9 +90,27 @@ void SnowmanMove(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060a2c0
+// FUNCTION: SADX 0x0060a2c0
 void SnowmanTurnToAim(struct taskwk *twp, struct enemywk *ewp)
 {
+	long local_8;
+
+	ewp->sub_angle[0] = AdjustAngle(ewp->sub_angle[0], ewp->aim_angle, ewp->angx_spd);
+	local_8 = ewp->sub_angle[0] - *(long *)((char *)twp + 0x18);
+	local_8 &= 0xffff;
+	if (local_8 > 0x8000)
+	{
+		local_8 -= 0x10000;
+	}
+	if (local_8 > 0x2000)
+	{
+		local_8 = 0x2000;
+	}
+	else if (local_8 < -0x2000)
+	{
+		local_8 = -0x2000;
+	}
+	ewp->sub_angle[0] = *(long *)((char *)twp + 0x18) + local_8;
 }
 
 // STUB: SADX 0x0060a360
@@ -98,9 +118,26 @@ void FUN_0060a360(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060a5e0
+// FUNCTION: SADX 0x0060a5e0
 void FUN_0060a5e0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	*(int *)((char *)param_2 + 0x1b0) += *(int *)((char *)param_2 + 0x1a4);
+	if (*(int *)((char *)param_2 + 0x1a4) > 0)
+	{
+		if (*(int *)((char *)param_2 + 0x1b0) >= *(int *)((char *)param_1 + 0x18) + 0x2000)
+		{
+			*(int *)((char *)param_2 + 0x1b0) = *(int *)((char *)param_1 + 0x18) + 0x2000;
+			*(int *)((char *)param_2 + 0x1a4) = *(int *)((char *)param_2 + 0x1a4) * -1;
+		}
+	}
+	else
+	{
+		if (*(int *)((char *)param_2 + 0x1b0) <= *(int *)((char *)param_1 + 0x18) - 0x2000)
+		{
+			*(int *)((char *)param_2 + 0x1b0) = *(int *)((char *)param_1 + 0x18) - 0x2000;
+			*(int *)((char *)param_2 + 0x1a4) = *(int *)((char *)param_2 + 0x1a4) * -1;
+		}
+	}
 }
 
 // STUB: SADX 0x0060a690
@@ -204,9 +241,30 @@ void SnowmanBackSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060c4e0
+// FUNCTION: SADX 0x0060c4e0
 void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struct NJS_POINT3 *spd, float scl)
 {
+	struct sp_task *local_8g;
+	int local_cj;
+	float local_10m;
+	int local_14;
+	float local_18g;
+
+	local_8g = SpCreateTask(particle_pom.link, EffectPom);
+	if (local_8g != NULL)
+	{
+		local_cj = rand();
+		local_10m = (float)(local_cj / 32768.0);
+		local_8g->frame = local_10m * 2.0;
+		local_8g->scl = scl;
+		local_14 = rand();
+		local_18g = (float)(local_14 / 32768.0);
+		local_8g->ang = (int)(local_18g * 65536.0) - 0x8000;
+		local_8g->work[0].ptr = info;
+		local_8g->argb = info->argb;
+		njCalcVector(0, spd, &local_8g->spd);
+		njCalcPoint(0, pos, &local_8g->pos);
+	}
 }
 
 // STUB: SADX 0x0060c5c0
