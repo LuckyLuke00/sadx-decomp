@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <windows.h>
 #include <string.h>
+extern int slEventBossName;
 void FUN_006411b0(int param_1, int param_2);
 extern int DAT_05b3e930;
 extern int DAT_05b3e39c;
@@ -811,6 +812,12 @@ int dsGetVolume(int ii)
 	return (int)0;
 }
 
+// STUB: SADX 0x004afda0
+long IsPlayOk(int tone)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x004afe30
 void FUN_004afe30(void)
 {
@@ -825,7 +832,12 @@ void dsSetFxAny(int depth)
 	DAT_05b3e39c = depth;
 }
 
-// STUB: SADX 0x004aff60
+// STUB: SADX 0x004afe70
+void dsLoadCharacterVoice()
+{
+}
+
+// FUNCTION: SADX 0x004aff60
 int dsEVboss(int tone)
 {
 	return (int)0;

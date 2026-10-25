@@ -56,10 +56,33 @@ long checkdestroytaskc(struct task *tp, struct task *ctp)
 	return 0;
 }
 
-// STUB: SADX 0x004f3570
+// FUNCTION: SADX 0x004f3570
 long checkdestroytask(struct task *tp)
 {
-	return (long)0;
+	int local_8g;
+	struct task *local_cg;
+
+	for (local_8g = 0; local_8g < 8; local_8g++)
+	{
+		local_cg = (struct task *)DAT_05baf4d0[local_8g];
+		while (local_cg != 0)
+		{
+			if (local_cg == tp)
+			{
+				return 1;
+			}
+			if (local_cg->ctp != 0)
+			{
+				if (checkdestroytaskc(tp, local_cg->ctp) != 0)
+				{
+					return 1;
+				}
+			}
+			local_cg = local_cg->next;
+		}
+	}
+	___OutputDebugString("???????S???@\n");
+	return 0;
 }
 
 // STUB: SADX 0x004f3600
@@ -129,9 +152,40 @@ void ExecTask(long level)
 	}
 }
 
-// STUB: SADX 0x004f3cc0
+// FUNCTION: SADX 0x004f3cc0
 void FUN_004f3cc0(int param_1)
 {
+	void *local_10;
+	void *local_8g;
+	void *local_cj;
+
+	if (param_1 == 8)
+	{
+		param_1 = 7;
+	}
+	local_10 = (void *)DAT_05baf4d0[param_1];
+	if (local_10 == 0)
+	{
+		return;
+	}
+	while (1)
+	{
+		local_8g = *(void **)((char *)local_10 + 0x14);
+		local_cj = *(void **)local_10;
+		if (local_8g != 0)
+		{
+			(*(void (*)(void *))local_8g)(local_10);
+		}
+		if (*(void **)((char *)local_10 + 0xc) != 0)
+		{
+			FUN_004f3d40(local_10);
+		}
+		local_10 = local_cj;
+		if (local_10 == 0)
+		{
+			break;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004f3d40

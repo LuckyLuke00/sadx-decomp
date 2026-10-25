@@ -36,8 +36,8 @@ void FUN_007d21b0(void *param_1);
 extern unsigned char DAT_05b3739a;
 void FUN_004c8770();
 extern short DAT_05b9d720;
-extern unsigned short DAT_05b9d748;
-extern unsigned short DAT_05b9d770;
+extern short DAT_05b9d748;
+extern short DAT_05b9d770;
 extern short DAT_05b9d72c;
 extern short DAT_05b9d730;
 void FUN_004c9380();
@@ -241,7 +241,7 @@ void FUN_004c66e0()
 	DAT_05b9d73c = 0x11;
 }
 
-// STUB: SADX 0x004c6720
+// FUNCTION: SADX 0x004c6720
 void GoNextAction()
 {
 }
@@ -408,9 +408,18 @@ short PauseLoop()
 	return (short)0;
 }
 
-// STUB: SADX 0x004c8570
-void FUN_004c8570(void)
+// FUNCTION: SADX 0x004c8570
+unsigned short FUN_004c8570(void)
 {
+	unsigned short local_8;
+	local_8 = 0;
+	GetSwitchData();
+	DAT_05b9d838 = 0;
+	DisplayTask();
+	DisplayScore();
+	DisplayTimer();
+	SpLoopOnlyDisplay();
+	return local_8;
 }
 
 // FUNCTION: SADX 0x004c85b0

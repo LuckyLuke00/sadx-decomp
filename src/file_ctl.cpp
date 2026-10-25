@@ -113,6 +113,11 @@ void LoadCamFile(char *pcFileName, unsigned long u32CamType)
 	}
 }
 
+// STUB: SADX 0x004cf5e0
+void LoadPlayerMotionData(long PlayerNo)
+{
+}
+
 // FUNCTION: SADX 0x004cfb60
 long NeonuLoadTexture(struct NJS_TEXLIST *pTexlist)
 {

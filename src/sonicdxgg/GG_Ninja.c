@@ -7,6 +7,12 @@ void MainBGM_Stop()
 	EndAdvaBGM();
 }
 
+// STUB: SADX 0x007f2260
+long Expand2(void *src, void *dest)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x007f2340
 void GG_Initialize()
 {
