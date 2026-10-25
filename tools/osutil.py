@@ -1,20 +1,27 @@
 """Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, read counts
-from the command line, tell how alike two counts are, count differing bytes, escape a Markdown table cell.
+from the command line, tell how alike two counts are, count differing bytes, escape a Markdown table cell, tell
+whether a process runs, lock a file.
 
 Standard library only.
 """
 
 import argparse
 import collections
+import contextlib
+import ctypes
 import hashlib
 import html
+import msvcrt
 import shutil
 import stat
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 POWERSHELL = ["powershell", "-NoProfile", "-NonInteractive", "-Command"]
+PROCESS_QUERY_LIMITED_INFORMATION, STILL_ACTIVE = 0x1000, 259
+LOCK_POLL_SECONDS = 0.1
 
 
 def run(command: list, cwd: Path | None = None, env: dict | None = None) -> subprocess.CompletedProcess:
@@ -114,3 +121,32 @@ def remove(path: Path) -> None:
     for item in path.rglob("*"):
         item.chmod(stat.S_IWRITE)
     shutil.rmtree(path)
+
+
+def alive(pid: int) -> bool:
+    """Whether the Windows process PID runs: os.kill(pid, 0) would end it."""
+    kernel = ctypes.windll.kernel32
+    handle = kernel.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
+    if not handle:
+        return False
+    code = ctypes.c_ulong()
+    ok = kernel.GetExitCodeProcess(handle, ctypes.byref(code))
+    kernel.CloseHandle(handle)
+    return bool(ok) and code.value == STILL_ACTIVE
+
+
+@contextlib.contextmanager
+def locked(path: Path):
+    """Hold the lock of the file PATH while the block runs: wait while another process holds it."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "a+") as handle:
+        while True:
+            try:
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+                break
+            except OSError:  # another process holds it
+                time.sleep(LOCK_POLL_SECONDS)
+        try:
+            yield
+        finally:
+            msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)

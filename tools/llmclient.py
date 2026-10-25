@@ -15,12 +15,15 @@
   start          a command line that starts the server when nothing answers, or ""
   start_timeout  seconds to wait for a server it started: a first model download takes a while
   tables, drafts, context   folders for `check.py decls` and `check.py dossier`, or ""
+  shared_context the context that the server's slots share (llama.cpp -kvu: its -c), or 0: see reserved
 
 A server that start started stops when the harness exits. One that already ran keeps
 running. Standard library only.
 """
 
 import atexit
+import contextlib
+import hashlib
 import http.client
 import json
 import os
@@ -28,15 +31,18 @@ import random
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import NamedTuple
 
+import osutil
+
 DEFAULTS = {"base_url": "", "model": "", "api_key_env": "", "temperature": 0.6, "max_tokens": 2048, "seed": False,
             "timeout": 900, "extra_body": {}, "think_on": {}, "think_off": {}, "start": "", "start_timeout": 900,
-            "tables": "", "drafts": "", "context": ""}
+            "tables": "", "drafts": "", "context": "", "shared_context": 0}
 PRESETS = (("llama.cpp", "http://127.0.0.1:8080/v1"), ("Ollama", "http://127.0.0.1:11434/v1"),
            ("LM Studio", "http://127.0.0.1:1234/v1"), ("vLLM", "http://127.0.0.1:8000/v1"))
 # (think_on, think_off) pairs that init tries in this order.
@@ -60,6 +66,7 @@ CONTEXT_FULL = "Context size has been exceeded"
 # when asked again.
 DRAFT_FAILED = "speculative batch index"
 FULL_RETRIES, FULL_WAIT_SECONDS = 10, (15, 120)
+BUDGET_POLL_SECONDS = 1
 
 
 class ServerError(Exception):
@@ -193,8 +200,9 @@ def chat(config: dict, messages: list[dict], temperature: float, thinking: bool,
     body = merged(body, config["think_on"] if thinking else config["think_off"])
     for retry in range(FULL_RETRIES + 1):
         try:
-            return parse(call(config, "/chat/completions", body,
-                              read=lambda response: events(response, on_text, config["timeout"])))
+            with reserved(config, body):
+                return parse(call(config, "/chat/completions", body,
+                                  read=lambda response: events(response, on_text, config["timeout"])))
         except ServerError as e:
             asks_again = CONTEXT_FULL in str(e) or DRAFT_FAILED in str(e)
             if retry == FULL_RETRIES or e.status != 500 or not asks_again:
@@ -202,6 +210,74 @@ def chat(config: dict, messages: list[dict], temperature: float, thinking: bool,
             if on_text:
                 on_text("restart", "")
             time.sleep(random.uniform(*FULL_WAIT_SECONDS))
+
+
+# The shared context
+
+
+@contextlib.contextmanager
+def reserved(config: dict, body: dict):
+    """Hold room for BODY's prompt and max_tokens in the context that the server's slots share, while the block runs.
+    llama.cpp fails every running reply when they fill that context together, so the clients of one server note
+    their room in one file, and a request starts once may_start says so. Nothing waits when shared_context is 0."""
+    if not config["shared_context"]:
+        yield
+        return
+    path = ledger_path(config)
+    key = f"{os.getpid()}:{time.time_ns()}"
+    tokens = prompt_tokens(config, body) + body["max_tokens"]
+    try:
+        with ledger(path) as requests:
+            requests[key] = {"pid": os.getpid(), "tokens": tokens, "since": time.time(), "running": False}
+        while not try_start(path, key, config["shared_context"]):
+            time.sleep(BUDGET_POLL_SECONDS)
+        yield
+    finally:
+        with ledger(path) as requests:
+            requests.pop(key, None)
+
+
+def may_start(requests: dict, key: str, total: int) -> bool:
+    """Whether request KEY may start: no request waited longer, and its tokens fit in TOTAL beside those of the
+    running ones, or none runs. A request that needs more than TOTAL thus runs alone."""
+    me = requests[key]
+    running = [r["tokens"] for r in requests.values() if r["running"]]
+    waited_longer = any(not r["running"] and r["since"] < me["since"] for r in requests.values())
+    return not waited_longer and (not running or sum(running) + me["tokens"] <= total)
+
+
+def try_start(path: Path, key: str, total: int) -> bool:
+    """Mark request KEY running, when it may start."""
+    with ledger(path) as requests:
+        if not may_start(requests, key, total):
+            return False
+        requests[key]["running"] = True
+        return True
+
+
+@contextlib.contextmanager
+def ledger(path: Path):
+    """The requests noted in PATH, by key, without those of processes that ended. The block may change them."""
+    with osutil.locked(path.with_suffix(".lock")):
+        requests = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        requests = {key: r for key, r in requests.items() if osutil.alive(r["pid"])}
+        yield requests
+        temporary = path.with_suffix(".tmp")
+        temporary.write_text(json.dumps(requests), encoding="utf-8")
+        temporary.replace(path)  # a client stopped while it writes leaves the old file whole
+
+
+def ledger_path(config: dict) -> Path:
+    """The file where the clients of the server at base_url note their requests."""
+    name = hashlib.sha256(config["base_url"].encode("utf-8")).hexdigest()[:12]
+    return Path(tempfile.gettempdir()) / f"llmclient-{name}.json"
+
+
+def prompt_tokens(config: dict, body: dict) -> int:
+    """The tokens of BODY's prompt, from llama.cpp's chat template and tokenizer, which it serves beside /v1."""
+    root = {**config, "base_url": config["base_url"].rstrip("/").removesuffix("/v1")}
+    prompt = call(root, "/apply-template", body)["prompt"]
+    return len(call(root, "/tokenize", {"content": prompt, "add_special": True})["tokens"])
 
 
 # The server
