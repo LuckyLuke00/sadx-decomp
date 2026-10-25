@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_00990ecc[7];
 extern unsigned char DAT_05cd14ea;
 int AvaCheckMetalSonic();
 extern unsigned char DAT_05cd14e0;
@@ -41,10 +42,21 @@ unsigned char GetEnableTrialActNumAll()
 	return local_9;
 }
 
-// STUB: SADX 0x0059dcf0
+// FUNCTION: SADX 0x0059dcf0
 unsigned char GetEnableMiniGameNumAll()
 {
-	return (unsigned char)0;
+	unsigned char local_9 = 0;
+	int local_8g;
+	for (local_8g = 0; local_8g < 6; local_8g++)
+	{
+		local_9 += (unsigned char)FUN_0059dc20(local_8g);
+	}
+	return local_9;
+}
+
+// STUB: SADX 0x0059dd40
+void GetTrialActNowAvaStgActPrm(struct AvaStgActPrmT *stgactprmptr)
+{
 }
 
 // STUB: SADX 0x0059deb0
@@ -100,10 +112,18 @@ char FUN_0059e040(int param_1)
 	return (char)0;
 }
 
-// STUB: SADX 0x0059e0d0
+// FUNCTION: SADX 0x0059e0d0
 int AvaGetEndingEnable(enum AvaCharEnum chnum)
 {
-	return (int)0;
+	if (DAT_05cd14e0 != 0)
+	{
+		return 1;
+	}
+	if (SeqCheckFlag(DAT_00990ecc[chnum]) != 0)
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0059e110
@@ -122,6 +142,11 @@ int AvaGetMissionEnable()
 int AvaGetPutiEnable()
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0059e2a0
+void SetGblPlayerAndStage()
+{
 }
 
 // FUNCTION: SADX 0x0059e3d0

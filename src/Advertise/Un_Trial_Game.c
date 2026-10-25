@@ -1,4 +1,11 @@
 #include "decls.h"
+extern unsigned char DAT_0267b758;
+extern void LoadTrialPicture();
+extern void FUN_005f45f0(struct task *param_1);
+static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp);
+extern void ghDefaultBlendingMode();
+extern void ghSetPvrTexBaseColor(unsigned long color);
+extern int DAT_05cd265c;
 static void title_menu_disp(struct task *tp);
 void FUN_005f3540(struct task *);
 extern struct task *DAT_05edd89c;
@@ -23,15 +30,40 @@ struct task *SetAdvaTrialGameTask(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
-// STUB: SADX 0x005f3b60
+// FUNCTION: SADX 0x005f3b60
 static void title_menu_disp(struct task *tp)
 {
+	struct TitleMenuWk *local_8;
+
+	local_8 = (struct TitleMenuWk *)tp->awp;
+	if (local_8->BaseCol == 0 || DAT_0267b758 != 0)
+	{
+		return;
+	}
+	ghDefaultBlendingMode();
+	ghSetPvrTexBaseColor(local_8->BaseCol);
+	LoadTrialPicture();
+	FUN_005f45f0((struct task *)local_8);
+	DisplayTitleMenuCsr(local_8);
+	DAT_05cd265c = 1;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x005f3bd0
+static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005f45f0
 void FUN_005f45f0(struct task *param_1)
 {
 	FUN_005f4610(*(float *)((char *)param_1 + 0x10));
+}
+
+// STUB: SADX 0x005f4610
+void FUN_005f4610(float param_1)
+{
 }
 
 // STUB: SADX 0x005f4690

@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_006025c0(struct task *param_1);
+void FUN_006025e0();
+void explain_exec(struct task *tp);
 static void explain_disp(struct task *tp);
 void ghDefaultBlendingMode();
 void ghSetPvrTexBaseColor(unsigned long color);
@@ -16,6 +19,11 @@ struct task *SetAdvaExplainTask(struct ModeSelPrmType *prmp)
 void FUN_00602420(struct task *param_1)
 {
 	param_1->dest = 0;
+}
+
+// STUB: SADX 0x00602430
+void FUN_00602430(struct task *param_1)
+{
 }
 
 // FUNCTION: SADX 0x006025c0

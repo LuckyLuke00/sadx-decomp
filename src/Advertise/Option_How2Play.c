@@ -1,4 +1,7 @@
 #include "decls.h"
+static void DisplayTitleNew(float basez);
+static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp);
+static void title_menu_disp(struct task *tp);
 static void title_menu_exec(struct task *tp);
 void FUN_005eaa00(struct task *);
 extern struct task *DAT_05edd784;
@@ -38,6 +41,43 @@ static void title_menu_exec(struct task *tp)
 void FUN_005e9570(void *param_1)
 {
 }
+
+// FUNCTION: SADX 0x005eaa00
+void FUN_005eaa00(struct task *param_1)
+{
+	struct TitleMenuWk *local_8;
+
+	local_8 = (struct TitleMenuWk *)param_1->awp;
+	if (local_8->BaseCol == 0)
+	{
+		return;
+	}
+	ghDefaultBlendingMode();
+	ghSetPvrTexBaseColor(local_8->BaseCol);
+	title_menu_disp((struct task *)local_8);
+	DisplayTitleMenuCsr(local_8);
+	DAT_05cd265c = 1;
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x005eaa60
+static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x005eae90
+static void title_menu_disp(struct task *tp)
+{
+	DisplayTitleNew(*(float *)((char *)tp + 0x10));
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x005eaeb0
+static void DisplayTitleNew(float basez)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005eb250
 void FreeAdvaHow2PlayTask()
