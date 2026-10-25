@@ -21,6 +21,7 @@ running. Standard library only.
 """
 
 import atexit
+import http.client
 import json
 import os
 import random
@@ -55,6 +56,9 @@ POLL_SECONDS = 2
 # llama.cpp's answer when its slots share one context and the requests running together filled it. It fails them all
 # at once, so each waits a random time before it asks again: asked together, they would fill it again.
 CONTEXT_FULL = "Context size has been exceeded"
+# llama.cpp's answer when its draft model fails one of the replies that decode together. The same request goes through
+# when asked again.
+DRAFT_FAILED = "speculative batch index"
 FULL_RETRIES, FULL_WAIT_SECONDS = 10, (15, 120)
 
 
@@ -94,8 +98,9 @@ def merged(body: dict, extra: dict) -> dict:
     return out
 
 
-def call(config: dict, path: str, body: dict | None = None, timeout: float | None = None) -> dict:
-    """The JSON the server answers at base_url + path: a POST of BODY, or a GET without one."""
+def call(config: dict, path: str, body: dict | None = None, timeout: float | None = None, read=json.load):
+    """What READ makes of the server's answer at base_url + path, by default its JSON: a POST of BODY, or a GET
+    without one."""
     url = config["base_url"].rstrip("/") + path
     headers = {"Content-Type": "application/json"}
     key = os.environ.get(config["api_key_env"]) if config["api_key_env"] else None
@@ -105,13 +110,58 @@ def call(config: dict, path: str, body: dict | None = None, timeout: float | Non
     request = urllib.request.Request(url, data=data, headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=timeout or config["timeout"]) as response:
-            return json.load(response)
+            return read(response)
     except urllib.error.HTTPError as e:
         raise ServerError(f"{url} answered {e.code}: {e.read().decode('utf-8', 'replace')[:500]}", e.code) from e
-    except (urllib.error.URLError, OSError) as e:
+    except (urllib.error.URLError, http.client.HTTPException, OSError) as e:  # HTTPException: a reply cut short
         raise ServerError(f"{url} failed: {e}") from e
     except json.JSONDecodeError as e:
         raise ServerError(f"{url} answered something other than JSON: {e}") from e
+
+
+def text_of(content) -> str:
+    """A message's content as text: Mistral sends a list of parts."""
+    if isinstance(content, list):
+        return "".join(part.get("text", "") for part in content if part.get("type") == "text")
+    return content or ""
+
+
+def events(lines, on_text, timeout: float) -> dict:
+    """The server-sent events of a streamed answer, as the JSON of an answer without a stream. ON_TEXT, when given,
+    gets each piece of the reply as it comes: ("reasoning" or "content", text)."""
+    deadline = time.time() + timeout
+    parts = {"reasoning": [], "content": []}
+    finish, usage, ended = "", {}, False
+    for raw in lines:
+        if time.time() > deadline:
+            raise ServerError(f"the reply took more than {timeout}s (timeout)")
+        field, _, data = raw.decode("utf-8").strip().partition(":")
+        data = data.strip()
+        if field not in ("data", "error") or not data:
+            continue
+        if data == "[DONE]":
+            ended = True
+            break
+        chunk = json.loads(data)
+        error = chunk if field == "error" else chunk.get("error")  # llama.cpp sends an error after the start either way
+        if error:
+            code = error.get("code") if isinstance(error, dict) else None
+            raise ServerError(f"the server failed during the reply: {data[:500]}", code if isinstance(code, int) else 0)
+        usage = chunk.get("usage") or usage
+        for choice in chunk.get("choices") or []:
+            delta = choice.get("delta") or {}
+            pieces = (("reasoning", delta.get("reasoning_content") or delta.get("reasoning")),
+                      ("content", text_of(delta.get("content"))))
+            for kind, text in pieces:
+                if text:
+                    parts[kind].append(text)
+                    if on_text:
+                        on_text(kind, text)
+            finish = choice.get("finish_reason") or finish
+    if not (ended or finish):  # the server closed the connection between two events
+        raise ServerError("the server closed the stream before the reply ended")
+    message = {"content": "".join(parts["content"]), "reasoning_content": "".join(parts["reasoning"])}
+    return {"choices": [{"message": message, "finish_reason": finish}], "usage": usage}
 
 
 def parse(data: dict) -> Reply:
@@ -120,9 +170,7 @@ def parse(data: dict) -> Reply:
         message = choice["message"]
     except (KeyError, IndexError, TypeError):
         raise ServerError(f"the answer holds no reply: {json.dumps(data)[:500]}") from None
-    content = message.get("content") or ""
-    if isinstance(content, list):  # a list of parts, as Mistral sends
-        content = "".join(part.get("text", "") for part in content if part.get("type") == "text")
+    content = text_of(message.get("content"))
     reasoning = message.get("reasoning_content") or message.get("reasoning") or ""
     if "</think>" in content:  # inline thinking: some templates send the opening tag themselves
         thought, _, content = content.rpartition("</think>")
@@ -133,19 +181,26 @@ def parse(data: dict) -> Reply:
     return Reply(content, reasoning, counts, choice.get("finish_reason") or "")
 
 
-def chat(config: dict, messages: list[dict], temperature: float, thinking: bool, seed: int | None) -> Reply:
+def chat(config: dict, messages: list[dict], temperature: float, thinking: bool, seed: int | None,
+         on_text=None) -> Reply:
+    """The reply, asked as a stream: ON_TEXT, when given, gets each piece as it comes (see events), and
+    ("restart", "") when a full context or a failed draft makes it ask again."""
     body = {"model": config["model"], "messages": messages, "temperature": temperature,
-            "max_tokens": config["max_tokens"]}
+            "max_tokens": config["max_tokens"], "stream": True, "stream_options": {"include_usage": True}}
     if seed is not None and config["seed"]:
         body["seed"] = seed
     body = merged(body, config["extra_body"])
     body = merged(body, config["think_on"] if thinking else config["think_off"])
     for retry in range(FULL_RETRIES + 1):
         try:
-            return parse(call(config, "/chat/completions", body))
+            return parse(call(config, "/chat/completions", body,
+                              read=lambda response: events(response, on_text, config["timeout"])))
         except ServerError as e:
-            if retry == FULL_RETRIES or e.status != 500 or CONTEXT_FULL not in str(e):
+            asks_again = CONTEXT_FULL in str(e) or DRAFT_FAILED in str(e)
+            if retry == FULL_RETRIES or e.status != 500 or not asks_again:
                 raise
+            if on_text:
+                on_text("restart", "")
             time.sleep(random.uniform(*FULL_WAIT_SECONDS))
 
 
