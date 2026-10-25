@@ -113,6 +113,7 @@ RESULT_FIELDS = ["file", "address", "size", "tries", "best", "wall_s", "prompt_t
 SET_FIELDS = ["file", "address", "size", "name"]
 BLOCK = re.compile(r"```[a-zA-Z+]*[ \t]*\n(.*?)```", re.S)
 NOT_BUILT = "Failed to find function symbol"  # reccmp: the build holds no code for the function
+SHARED_ONLY = 2  # check.py decls: its only fatal problems are function names that several functions share
 CALL_CLASH = re.compile(r"error C26(?:60|64): '(\w+)'")  # a call that the callee's declaration rejects
 # A name the code uses without its declaration, or a runtime function declared by hand and so mangled as C++.
 UNDECLARED = re.compile(r"error C(?:3861|2065): '(\w+)'|unresolved external symbol \"[^\"(]*?(\w+)\(")
@@ -440,8 +441,11 @@ def tree_roots(config):
 
 
 def decls(config):
-    """(output, exit code) of check.py decls with the folders llm.json sets."""
-    return run_check("decls", *folder_flags(config, "tables", "context"))
+    """(output, whether it failed) of check.py decls with the folders llm.json sets. A function name that several
+    functions share does not fail it: the files are written all the same, so the tree builds, and those functions
+    get `static` when the files go into the context tree."""
+    output, code = run_check("decls", *folder_flags(config, "tables", "context"))
+    return output, code not in (0, SHARED_ONLY)
 
 
 def score(config, address):
