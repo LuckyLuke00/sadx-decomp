@@ -2,6 +2,9 @@
 
 #include "decls.h"
 
+// GLOBAL: SADX 0x00956608
+float DAT_00956608;
+
 // GLOBAL: SADX 0x00956b1c
 short DAT_00956b1c[13];
 
@@ -98,6 +101,9 @@ void (*DAT_0099613c[4])(struct task *);
 // GLOBAL: SADX 0x00996dd0
 const struct CCL_INFO rocket_colli_info[1] = {};
 
+// GLOBAL: SADX 0x00997b60
+const long seq_item_flag[18] = {};
+
 // GLOBAL: SADX 0x00997d78
 short DAT_00997d78[4];
 
@@ -115,6 +121,9 @@ struct NJS_POINT3 DAT_009bfd58;
 
 // GLOBAL: SADX 0x009c2d58
 int DAT_009c2d58[1];
+
+// GLOBAL: SADX 0x009c610c
+struct NJS_POINT3 DAT_009c610c;
 
 // GLOBAL: SADX 0x009c8b18
 struct TaskInfo DAT_009c8b18;
@@ -136,6 +145,18 @@ struct TaskInfo DAT_00a09c28;
 
 // GLOBAL: SADX 0x00a09e8c
 struct TaskInfo DAT_00a09e8c;
+
+// GLOBAL: SADX 0x00a09ea4
+void *DAT_00a09ea4;
+
+// GLOBAL: SADX 0x00a09eb0
+void *DAT_00a09eb0;
+
+// GLOBAL: SADX 0x00a09ebc
+void *DAT_00a09ebc;
+
+// GLOBAL: SADX 0x00a09ec8
+void *DAT_00a09ec8;
 
 // GLOBAL: SADX 0x00a09ed4
 struct ActionParam DAT_00a09ed4;
@@ -161,8 +182,14 @@ struct TaskInfo CactusTaskInfo;
 // GLOBAL: SADX 0x00a0c8d8
 struct TaskInfo ObjectTaskInfo;
 
+// GLOBAL: SADX 0x00a34538
+void (*DAT_00a34538[5])(struct task *);
+
 // GLOBAL: SADX 0x00a34568
 void (*DAT_00a34568[4])(struct task *);
+
+// GLOBAL: SADX 0x00a357e8
+void (*DAT_00a357e8[3])(struct task *);
 
 // GLOBAL: SADX 0x01c6e428
 unsigned int DAT_01c6e428;
@@ -449,6 +476,15 @@ struct NJS_TEXLIST texlist_mis_p;
 // GLOBAL: SADX 0x0257d208
 struct NJS_TEXLIST texlist_mis_c;
 
+// GLOBAL: SADX 0x0257e670
+struct NJS_MATERIAL matlist_mission_item_flag01_flag02[1];
+
+// GLOBAL: SADX 0x0257e7dc
+struct NJS_MATERIAL matlist_mi_flag[1];
+
+// GLOBAL: SADX 0x0257ea04
+struct obj object_mi_flag[1];
+
 // GLOBAL: SADX 0x0257fecc
 struct NJS_ACTION action_mi_ssobj_card[1];
 
@@ -460,6 +496,9 @@ struct NJS_TEXLIST texlist_mi_3dasu;
 
 // GLOBAL: SADX 0x025a2a78
 struct CCL_INFO cinfo_mannequin[1];
+
+// GLOBAL: SADX 0x025a2b60
+struct CCL_INFO mi_flag_colli_info[1];
 
 // GLOBAL: SADX 0x025a2c50
 struct CCL_INFO mission01_colli_info[1];
@@ -734,6 +773,9 @@ struct NJS_TEXLIST texlist_knu_eff;
 // GLOBAL: SADX 0x025de62c
 struct NJS_TEXLIST texlist_m_sboard_snowboard;
 
+// GLOBAL: SADX 0x025deb14
+long boolCheckRangeIn;
+
 // GLOBAL: SADX 0x025dec18
 struct particle_entry particle_smoke;
 
@@ -935,6 +977,9 @@ struct SEQ_SECTIONTBL seqSectionBig[1];
 // GLOBAL: SADX 0x0263e800
 struct SEQ_SECTIONTBL seqSectionLast[1];
 
+// GLOBAL: SADX 0x0263e8a0
+struct CPlayableInfo gPlayableInfo[1];
+
 // GLOBAL: SADX 0x0263e9b8
 int objLandTable[8][8];
 
@@ -964,6 +1009,9 @@ struct NJS_POINT3COL tridai[1];
 
 // GLOBAL: SADX 0x026497b4
 int tikal_sw;
+
+// GLOBAL: SADX 0x02649880
+struct NJS_SPRITE sprite_tikal_tubu;
 
 // GLOBAL: SADX 0x0264d9d8
 struct NJS_SPRITE sprite_robo_beam;
@@ -1051,6 +1099,9 @@ void (*animal[15])(struct task *);
 
 // GLOBAL: SADX 0x02675a10
 signed char MinimalList[13][5];
+
+// GLOBAL: SADX 0x026789a0
+struct CCL_INFO itembox_colli_info0[1];
 
 // GLOBAL: SADX 0x02678a00
 struct CCL_INFO itembox_colli_info1[2];
@@ -1663,6 +1714,9 @@ struct obj _object_tr1_s_t1_body_s_t1_body[1];
 
 // GLOBAL: SADX 0x0336d714
 struct CCL_INFO DAT_0336d714;
+
+// GLOBAL: SADX 0x033f30f8
+long data_ele[6];
 
 // GLOBAL: SADX 0x03527f50
 struct NJS_SPRITE DAT_03527f50;
@@ -2468,6 +2522,9 @@ struct obj object_c0_manju_c0_manju[1];
 // GLOBAL: SADX 0x04c37a2c
 struct NJS_TEXLIST texlist_chaos_effect;
 
+// GLOBAL: SADX 0x04c38b98
+int DAT_04c38b98[4];
+
 // GLOBAL: SADX 0x04c3af58
 struct obj object_b_cart_cart_cart[1];
 
@@ -2494,6 +2551,9 @@ struct obj object_tpobj_slight1_slight1[1];
 
 // GLOBAL: SADX 0x04c5680c
 struct obj object_tpobj_slight2_slight2[1];
+
+// GLOBAL: SADX 0x04c58234
+struct NJS_POINT3 *CartCamDemoLine;
 
 // GLOBAL: SADX 0x04c5acb8
 struct NJS_TEXLIST texlist_e_amenbo;
@@ -2540,11 +2600,17 @@ int DAT_04c7c0c0;
 // GLOBAL: SADX 0x05a79e44
 struct NJS_MODEL DAT_05a79e44;
 
+// GLOBAL: SADX 0x05a7fd5c
+struct NJS_MODEL DAT_05a7fd5c;
+
 // GLOBAL: SADX 0x05a8005c
 struct NJS_MODEL DAT_05a8005c;
 
 // GLOBAL: SADX 0x05a80684
 struct NJS_MODEL DAT_05a80684;
+
+// GLOBAL: SADX 0x05a8167c
+void *DAT_05a8167c;
 
 // GLOBAL: SADX 0x05a83f08
 struct obj DAT_05a83f08;
@@ -2554,6 +2620,27 @@ struct NJS_MODEL DAT_05a85e0c;
 
 // GLOBAL: SADX 0x05a862dc
 struct obj DAT_05a862dc;
+
+// GLOBAL: SADX 0x05a86a68
+struct NJS_MODEL *DAT_05a86a68;
+
+// GLOBAL: SADX 0x05a86ed4
+struct NJS_MODEL DAT_05a86ed4;
+
+// GLOBAL: SADX 0x05a8c05c
+struct obj DAT_05a8c05c;
+
+// GLOBAL: SADX 0x05a8c248
+struct obj DAT_05a8c248;
+
+// GLOBAL: SADX 0x05a9014c
+struct obj DAT_05a9014c;
+
+// GLOBAL: SADX 0x05a91394
+struct obj DAT_05a91394;
+
+// GLOBAL: SADX 0x05a914a0
+struct obj DAT_05a914a0;
 
 // GLOBAL: SADX 0x05a922f4
 int DAT_05a922f4;
@@ -3063,7 +3150,7 @@ float DAT_05b372f4;
 float DAT_05b372f8;
 
 // GLOBAL: SADX 0x05b37300
-struct NJS_TEXLIST DAT_05b37300;
+struct NJS_TEXLIST *DAT_05b37300;
 
 // GLOBAL: SADX 0x05b37308
 int DAT_05b37308;
@@ -3437,6 +3524,9 @@ unsigned char DAT_05b3ea27;
 // GLOBAL: SADX 0x05b3ea28
 int DAT_05b3ea28;
 
+// GLOBAL: SADX 0x05b3ea78
+int DAT_05b3ea78[15];
+
 // GLOBAL: SADX 0x05b3eab4
 struct task *DAT_05b3eab4;
 
@@ -3530,11 +3620,23 @@ unsigned char DAT_05b4252c;
 // GLOBAL: SADX 0x05b42530
 struct task *DAT_05b42530;
 
+// GLOBAL: SADX 0x05b4259c
+int DAT_05b4259c;
+
 // GLOBAL: SADX 0x05b425c8
 int DAT_05b425c8;
 
+// GLOBAL: SADX 0x05b425cc
+struct NJS_CACTION *DAT_05b425cc;
+
 // GLOBAL: SADX 0x05b425d0
 NJS_POINT3 DAT_05b425d0[0x32];
+
+// GLOBAL: SADX 0x05b42828
+float DAT_05b42828;
+
+// GLOBAL: SADX 0x05b4282c
+float DAT_05b4282c;
 
 // GLOBAL: SADX 0x05b42860
 int DAT_05b42860;
@@ -3583,6 +3685,9 @@ struct NJS_POINT3 *DAT_05b4292c;
 
 // GLOBAL: SADX 0x05b42930
 struct NJS_POINT3 *DAT_05b42930;
+
+// GLOBAL: SADX 0x05b4293c
+float DAT_05b4293c;
 
 // GLOBAL: SADX 0x05b42940
 int DAT_05b42940;
@@ -4346,8 +4451,17 @@ int DAT_05cc7fe8;
 // GLOBAL: SADX 0x05cc7ff8
 int DAT_05cc7ff8;
 
+// GLOBAL: SADX 0x05cc8664
+int DAT_05cc8664;
+
 // GLOBAL: SADX 0x05cc8668
 char DAT_05cc8668;
+
+// GLOBAL: SADX 0x05cc8669
+char DAT_05cc8669;
+
+// GLOBAL: SADX 0x05cc866c
+short DAT_05cc866c;
 
 // GLOBAL: SADX 0x05cc8670
 int DAT_05cc8670;
@@ -4355,8 +4469,14 @@ int DAT_05cc8670;
 // GLOBAL: SADX 0x05cc8674
 int DAT_05cc8674;
 
+// GLOBAL: SADX 0x05cc867a
+short DAT_05cc867a[256];
+
 // GLOBAL: SADX 0x05ccc678
 int DAT_05ccc678;
+
+// GLOBAL: SADX 0x05ccc67c
+int DAT_05ccc67c;
 
 // GLOBAL: SADX 0x05ccca10
 long DAT_05ccca10;
@@ -4426,6 +4546,9 @@ float DAT_05ccdadc;
 
 // GLOBAL: SADX 0x05ccdaec
 float DAT_05ccdaec;
+
+// GLOBAL: SADX 0x05ccdb04
+float DAT_05ccdb04;
 
 // GLOBAL: SADX 0x05ccdb14
 float DAT_05ccdb14;
@@ -4606,6 +4729,12 @@ short DAT_05ccde94;
 
 // GLOBAL: SADX 0x05ccdeb0
 struct task *DAT_05ccdeb0;
+
+// GLOBAL: SADX 0x05ccdebc
+void *DAT_05ccdebc;
+
+// GLOBAL: SADX 0x05ccdec0
+int DAT_05ccdec0;
 
 // GLOBAL: SADX 0x05ccdf08
 short DAT_05ccdf08;
@@ -5131,6 +5260,9 @@ int DAT_05edbde4;
 
 // GLOBAL: SADX 0x05edbe48
 int DAT_05edbe48[10];
+
+// GLOBAL: SADX 0x05edbe70
+struct task *DAT_05edbe70;
 
 // GLOBAL: SADX 0x05edbe78
 long DAT_05edbe78;
@@ -6047,6 +6179,9 @@ unsigned char DAT_060cd268;
 // GLOBAL: SADX 0x060cd26c
 int DAT_060cd26c;
 
+// GLOBAL: SADX 0x060cd270
+float DAT_060cd270;
+
 // GLOBAL: SADX 0x060cd274
 struct task *DAT_060cd274;
 
@@ -6463,6 +6598,9 @@ int DAT_060dff6c;
 
 // GLOBAL: SADX 0x060dff70
 int DAT_060dff70;
+
+// GLOBAL: SADX 0x060e0178
+struct NJS_POINT3 DAT_060e0178;
 
 // GLOBAL: SADX 0x060e3ae8
 int DAT_060e3ae8;

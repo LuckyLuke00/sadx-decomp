@@ -1,5 +1,5 @@
 #include "decls.h"
-extern struct NJS_TEXLIST DAT_05b37300;
+extern struct NJS_TEXLIST *DAT_05b37300;
 extern float DAT_05b372e8;
 extern float DAT_05b372ec;
 extern float DAT_05b372f4;
@@ -51,7 +51,7 @@ void DrawSprite_Signal(unsigned char index, float x, float y, float scale, float
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
 	FUN_007d21b0(0);
-	___njSetTexture(*(struct NJS_TEXLIST **)&DAT_05b37300);
+	___njSetTexture(DAT_05b37300);
 	DAT_05b372f4 = scale;
 	DAT_05b372f8 = scale;
 	DAT_05b372e8 = x;

@@ -1,10 +1,12 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+long PCheckColliAngle(struct taskwk *twp, struct motionwk2 *mwp);
+void PlayerFaceModelInterpolateSub(struct obj *objbufp, struct PL_FACE *pfp, short *ip);
+void EffectBarrier(struct task *tp);
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
+void FUN_004e2cb0(struct task *param_1, struct NJS_POINT3 *param_2, struct taskwk *param_3);
 struct NP_PCHECKDATA {
-	signed char md_stand;
-	signed char md_cfue;
-	unsigned short act_cfue;
 };
 void SetInputP(unsigned char pno, signed char mode);
 void SetChangeGameMode(short mode);
@@ -258,9 +260,15 @@ void FUN_004e3110(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	PGetPushSpeed(param_1, param_2, param_3);
 }
 
-// STUB: SADX 0x004e3420
-void FUN_004e3420(struct task *tp, struct NJS_POINT3 *p1, struct taskwk *twp)
+// FUNCTION: SADX 0x004e3420
+void FUN_004e3420(struct task *param_1, struct NJS_POINT3 *param_2, struct taskwk *param_3)
 {
+	NJS_POINT3 local_14;
+	*(NJS_POINT3 *)((char *)param_3 + 0x38) = param_3->scl;
+	local_14 = *(NJS_POINT3 *)((char *)param_3 + 0x38);
+	PConvertVector_P2G((struct taskwk *)param_1, &local_14);
+	*(NJS_POINT3 *)((char *)param_2 + 4) = local_14;
+	FUN_004e2cb0(param_1, param_2, param_3);
 }
 
 // STUB: SADX 0x004e34b0
@@ -594,7 +602,7 @@ void HangDownFromPathP(unsigned char pno, struct pathtag *pp, long point)
 	SCPathPntnmbToOnpos(pp, point, (float *)(local_8g + 0x18));
 }
 
-// STUB: SADX 0x004f0760
+// FUNCTION: SADX 0x004f0760
 void LadderingPathP(unsigned char pno, struct pathtag *pp, long point, struct Angle3 *ang)
 {
 }
@@ -703,7 +711,7 @@ void SetLookingAngleP(unsigned char pno, long *ang)
 	local_8[4] = ang[2];
 }
 
-// STUB: SADX 0x004f0ae0
+// FUNCTION: SADX 0x004f0ae0
 void CancelLookingAtP(unsigned char pno)
 {
 }
@@ -1023,7 +1031,7 @@ long GetRivalPlayerNumber(unsigned char pno)
 	return -1;
 }
 
-// STUB: SADX 0x004f1e60
+// FUNCTION: SADX 0x004f1e60
 long CheckPlayerRideOnMobileLandObjectP(unsigned char pno, struct task *ttp)
 {
 	return (long)0;
@@ -1104,17 +1112,17 @@ void PlayerSpeedUpDest(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x004f2160
+// FUNCTION: SADX 0x004f2160
 void GetThunderBarrierP(unsigned char pno)
 {
 }
 
-// STUB: SADX 0x004f2200
+// FUNCTION: SADX 0x004f2200
 void GetBarrierP(unsigned char pno)
 {
 }
 
-// STUB: SADX 0x004f22a0
+// FUNCTION: SADX 0x004f22a0
 void GetInvincibleBodyP(unsigned char pno)
 {
 }

@@ -1,4 +1,9 @@
 #include "decls.h"
+void FUN_004fdaf0();
+void FUN_004feb40();
+void FUN_004fdae0(struct task *param_1);
+void FUN_004feb30(struct task *param_1);
+void LandLoad(long stage, long act);
 float FUN_004fd8e0(float *param_1, float *param_2);
 extern int DAT_05b9d838;
 extern int DAT_05b42a84;
@@ -176,6 +181,11 @@ float FUN_004fd8e0(float *param_1, float *param_2)
 	fVar3 = param_2[2] - param_1[2];
 	fVar1 = fVar4 * fVar4 + fVar2 * fVar2 + fVar3 * fVar3;
 	return fVar1;
+}
+
+// STUB: SADX 0x004fd940
+void DrawMotionGround()
+{
 }
 
 // STUB: SADX 0x004fda40

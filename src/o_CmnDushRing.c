@@ -1,4 +1,9 @@
 #include "decls.h"
+long CalcDashPosition(struct task *tp);
+void DrawCmnDushRing(struct task *tp);
+void FUN_005b5aa0();
+float GetTargetDist(struct task *tp);
+long CreateChkDashPlayer(struct task *tp, long pl_num, float dist);
 extern int DAT_05b9d838;
 extern struct obj DAT_05a83f08;
 extern float DAT_05b3ec0c;
@@ -6,10 +11,31 @@ void FUN_005a8ae0(float *param_1, float *param_2, float *param_3);
 void GetAngleXYV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_y);
 double njScalor(struct NJS_POINT3 *param_1);
 
-// STUB: SADX 0x008bb3b0
+// STUB: SADX 0x008bb230
+void ObjectCmnDushRing(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x008bb3b0
 long InitCmnDushRing(struct task *tp)
 {
-	return (long)0;
+	struct taskwk *local_cg;
+	float local_8g;
+	local_cg = tp->twp;
+	local_cg->mode = 1;
+	local_cg->counter.ptr = &DAT_05a83f08;
+	tp->disp = DrawCmnDushRing;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_005b5aa0;
+	local_8g = GetTargetDist(tp);
+	if (CreateChkDashPlayer(tp, 0, local_8g) == 0)
+	{
+		return 0;
+	}
+	if (CreateChkDashPlayer(tp, 1, local_8g) == 0)
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x008bb440
@@ -33,6 +59,35 @@ float GetTargetDist(struct task *tp)
 		}
 		return local_8g;
 	}
+}
+
+// FUNCTION: SADX 0x008bb500
+long CreateChkDashPlayer(struct task *tp, long pl_num, float dist)
+{
+	struct taskwk *local_10;
+	struct taskwk *local_8g;
+	struct task *local_cj;
+	local_10 = tp->twp;
+	local_cj = CreateChildTask(2, ChkDashPlayer, tp);
+	if (local_cj == 0) {
+		return 0;
+	}
+	local_8g = local_cj->twp;
+	local_8g->pos = local_10->pos;
+	local_8g->value.l = pl_num;
+	local_8g->scl.x = dist;
+	return 1;
+}
+
+// STUB: SADX 0x008bb570
+void ChkDashPlayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008bb700
+long CalcDashPosition(struct task *tp)
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x008bb8e0

@@ -1,6 +1,12 @@
 #include "decls.h"
 void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
 unsigned char FUN_008dcc50(struct taskwk *param_1, struct NJS_POINT3 *param_2);
+void BridgeCheckCollision(struct taskwk *twp);
+void BridgeDeform(struct taskwk *twp);
+void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
+unsigned char FUN_008dcc50(struct taskwk *param_1, struct NJS_POINT3 *param_2);
+void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
+unsigned char FUN_008dcc50(struct taskwk *param_1, struct NJS_POINT3 *param_2);
 void BridgeDraw(struct taskwk *twp);
 extern int DAT_05b9d838;
 
@@ -79,6 +85,11 @@ void ObjectTuribasiDisplayer2(struct task *tp)
 
 // STUB: SADX 0x008dbd70
 void ObjectTuribasiExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008dc030
+void FUN_008dc030(void *param_1)
 {
 }
 
