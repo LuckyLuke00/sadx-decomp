@@ -9,6 +9,8 @@ with the same names, from <drafts>/<address>.c: tools/ghidra/DumpDecomp.java wri
 those, and docs/FRAMEWORK.md says how. --facts adds a "facts:" list after the header
 (tools/facts.py): what the assembly hides, such as a register argument, a callee that pops
 its arguments, a global that holds a pointer and a type with no body in the types header.
+--hide-own leaves out the prototype that a shown function's own definition gives, as before it was
+decompiled: a tables row's prototype still shows.
 
 Names come from the tree's annotations, the files `check.py decls` wrote last,
 src/library.csv and the --tables folder (tools/declgen.py says what it holds). A LIBRARY annotation's
@@ -61,15 +63,18 @@ class Global(NamedTuple):
     decl: str
 
 
-def known_functions(tables: Path | None, sources: dict[str, str], before: names.Previous) -> dict[int, Function]:
+def known_functions(tables: Path | None, sources: dict[str, str], before: names.Previous,
+                    hidden: frozenset[int] = frozenset()) -> dict[int, Function]:
     """The functions with a name or a signature: the tree, then the last stubs. A tables row wins, but
-    the tree's signature fills one the row lacks."""
+    the tree's signature fills one the row lacks. A HIDDEN address's definition gives no prototype, as before
+    it was decompiled."""
     found = {}
     for rel, text in sources.items():
         for kind, address, sig in names.parse_annotations(text):
             if kind in names.FUNCTION_KINDS and names.declared_name(sig):
                 proto = re.sub(r"^static\s+", "", sig)
-                found.setdefault(address, Function(names.declared_name(sig), proto, proto != sig, rel, ""))
+                shown = "" if address in hidden else proto
+                found.setdefault(address, Function(names.declared_name(sig), shown, proto != sig, rel, ""))
     for address, sig in before.stubs.items():
         found.setdefault(address, Function(names.declared_name(sig), sig, False, "", ""))
     if tables:
@@ -291,7 +296,7 @@ def ghidra_c(address: int, drafts: Path, functions: dict[int, Function], globals
 
 def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: Path | None,
          drafts: Path | None, access: bool = False, facts: Callable[..., list[str]] | None = None,
-         context: Path | None = None) -> int:
+         context: Path | None = None, hide_own: bool = False) -> int:
     sources = names.read_sources(ROOT)
     added = names.context_sources(context, sources)  # a lane holds only its item's files
     sources |= added
@@ -301,7 +306,7 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
         before = names.Previous(theirs.stubs | before.stubs, theirs.globals | before.globals,
                                 theirs.externs | before.externs)
     types = names.Types(tables / "types.h" if tables else ROOT / names.TYPES_H)
-    functions = known_functions(tables, sources, before)
+    functions = known_functions(tables, sources, before, frozenset(addresses) if hide_own else frozenset())
     globals_ = known_globals(tables, sources, before, types)
     sizes = {f["address"]: f["size"] for f in progress.load_functions()}
     annotated = library_annotations(sources)
