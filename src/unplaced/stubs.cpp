@@ -1727,8 +1727,8 @@ float Shadow(struct taskwk *twp, float scl)
 	return (float)0;
 }
 
-// STUB: SADX 0x005539d0
-void CreateFire(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
+// STUB: SADX 0x005538c0
+void EffectFire(struct sp_task *tp, struct sp_link *lp)
 {
 }
 
@@ -1858,6 +1858,11 @@ void field_msg_create_man(void (*thread_func)(void *), void *arg_p, long adx_use
 float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct NJS_POINT3 *onpnt3, float *onpos)
 {
 	return (float)0;
+}
+
+// STUB: SADX 0x00571790
+void EffectWater(struct sp_task *tp, struct sp_link *lp)
+{
 }
 
 // STUB: SADX 0x00574140
@@ -2092,11 +2097,6 @@ void SpLoop()
 
 // STUB: SADX 0x005a67c0
 void SpLoopOnlyDisplay()
-{
-}
-
-// STUB: SADX 0x005a69a0
-void SpDestroyTaskAll()
 {
 }
 
@@ -2585,8 +2585,8 @@ void SnowmanFootSmoke(struct taskwk *, struct enemywk *)
 {
 }
 
-// STUB: SADX 0x0060ceb0
-void CreateLightning(struct NJS_POINT3 *pos, float scl)
+// STUB: SADX 0x0060d0e0
+extern void EffectHit(struct sp_task *, struct sp_link *)
 {
 }
 
@@ -2605,8 +2605,8 @@ void ghSpriteDraw_Unit3D_BillBoard(struct NJS_POINT3 *psPos, struct GHPARTICLE_U
 {
 }
 
-// STUB: SADX 0x0060fcb0
-void CreateSpark(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
+// STUB: SADX 0x0060fd30
+void EffectSpark(struct task *tp)
 {
 }
 

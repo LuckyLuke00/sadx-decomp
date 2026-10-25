@@ -1,5 +1,6 @@
 #include "decls.h"
 void FUN_005b47c0(struct taskwk *param_1);
+void FUN_005b47c0(struct taskwk *param_1);
 void FUN_0049e8b0(struct task *param_1);
 
 // FUNCTION: SADX 0x005b44c0
@@ -22,9 +23,25 @@ void CrashStarGenerate(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x005b4730
+// FUNCTION: SADX 0x005b4730
 void CrashStar(struct task *tp)
 {
+	struct taskwk *local_8g;
+
+	local_8g = tp->twp;
+	switch (local_8g->mode)
+	{
+		case 0:
+			FUN_005b47c0(local_8g);
+			tp->disp = CrashStarDisplayer;
+			break;
+		case 1:
+			CrashStarDraw(local_8g);
+			break;
+		case 2:
+			FUN_0049e8b0(tp);
+			break;
+	}
 }
 
 // FUNCTION: SADX 0x005b47a0

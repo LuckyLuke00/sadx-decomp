@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_0060fb20(int param_1, int param_2);
 struct GHPARTICLE_INFO;
 struct GHSPRITE_ANIM_TABLE;
 struct GHPARTICLE;
@@ -22,6 +23,11 @@ void ghParticleSet(struct task *pTask, struct NJS_POINT3 *pPos, struct NJS_POINT
 struct task *ghParticleControlSet(int nMax, struct GHPARTICLE_INFO *pInfo, struct GHSPRITE_ANIM_TABLE *pAnimTable, long (*exec)(struct GHPARTICLE *, struct GHPARTICLE_INFO *, struct GHSPRITE_ANIM_TABLE *))
 {
 	return (struct task *)0;
+}
+
+// STUB: SADX 0x0060fa10
+void control_disp(struct task *pTask)
+{
 }
 
 // STUB: SADX 0x0060fa80
