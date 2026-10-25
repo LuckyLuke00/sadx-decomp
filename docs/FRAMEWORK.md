@@ -58,7 +58,7 @@ void FUN_00401000(int value)
 | Figure | Meaning |
 | --- | --- |
 | Score | The share of instructions that are the same in both copies. The game's copy runs to the end of its row in `data/functions.csv`. Code that our copy lacks at the end counts as a miss. Calls and globals compare by name. A function can match at another address in our exe. |
-| Matched | A score of 100% in plain C. A function at 100% only through a trick, such as inline assembly or `#pragma auto_inline(off)`, keeps its score but does not count as matched. `python tools/tricks.py` lists those functions and says why. reccmp also calls some misses an *effective* match (other registers or another instruction order). Its check is loose and can pass code that behaves differently. An effective match keeps its score. The totals count it apart as *effective*. |
+| Matched | A score of 100% in plain C. A function at 100% only through a trick, such as inline assembly, `#pragma auto_inline(off)` or a global declared `volatile`, keeps its score but does not count as matched. `python tools/tricks.py` lists those functions and says why. reccmp also calls some misses an *effective* match (other registers or another instruction order). Its check is loose and can pass code that behaves differently. An effective match keeps its score. The totals count it apart as *effective*. |
 | Decompiled | The share of game functions that have a body. Stubs do not count. |
 | Accuracy | The average score of the decompiled functions. |
 
