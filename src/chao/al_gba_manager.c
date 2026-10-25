@@ -164,8 +164,17 @@ void AL_GBAManagerCreate()
 {
 }
 
-// STUB: SADX 0x00442120
+// FUNCTION: SADX 0x00442120
 long AL_ToridasuCountSelectedChao()
 {
-	return (long)0;
+	long var1;
+	int var2;
+
+	var1 = 0;
+	for (var2 = 1; var2 < 4; var2++)
+	{
+		var1 += (long)AL_GBAManagerIsSelected(var2, 1) != 0;
+		var1 += (long)AL_GBAManagerIsSelected(var2, 0) != 0;
+	}
+	return var1;
 }

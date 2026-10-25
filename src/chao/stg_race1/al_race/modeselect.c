@@ -74,13 +74,11 @@ static void dialog_select(struct taskwk *twp)
 	twp->scl.y = twp->scl.x = local_8 + 1.0;
 }
 
-#pragma auto_inline(off)
 // FUNCTION: SADX 0x00488da0
 static void FUN_00488da0(struct taskwk *param_1)
 {
 	param_1->scl.y = param_1->scl.x = 1.25f;
 }
-#pragma auto_inline()
 
 // FUNCTION: SADX 0x00488db0
 static void FUN_00488db0(struct taskwk *param_1)
@@ -365,8 +363,6 @@ static void FUN_00489360(unsigned char param_1, float param_2, float param_3)
 	}
 }
 
-#pragma inline_depth(0)
-
 // FUNCTION: SADX 0x00489390
 void CallStart()
 {
@@ -390,5 +386,3 @@ void CallJewelGet()
 {
 	FUN_00489360(0x17, 320.0f, 240.0f);
 }
-
-#pragma inline_depth()

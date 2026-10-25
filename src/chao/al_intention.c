@@ -1,5 +1,6 @@
 #include "decls.h"
 void FUN_00450fc0(struct task *param_1, short param_2);
+void FUN_00450fc0(struct task *param_1, short param_2);
 
 // STUB: SADX 0x00450e60
 float AL_CalcScoreTypeA(long value, long trigger)
@@ -56,12 +57,36 @@ void FUN_00450fc0(struct task *tp, short value)
 {
 }
 
-// STUB: SADX 0x00450fe0
+// FUNCTION: SADX 0x00450fe0
 void AL_IntervalTimerControl(struct task *tp)
 {
+	int *var1 = (int *)((char *)tp->twp + 0x1ec);
+	int var2 = 4;
+	while (var2 != 0)
+	{
+		if (var1[-1] != 0)
+		{
+			var1[-1]--;
+		}
+		if (var1[0] != 0)
+		{
+			var1[0]--;
+		}
+		if (var1[1] != 0)
+		{
+			var1[1]--;
+		}
+		if (var1[2] != 0)
+		{
+			var1[2]--;
+		}
+		var1 += 4;
+		var2--;
+	}
 }
 
-// STUB: SADX 0x00451030
+// FUNCTION: SADX 0x00451030
 void AL_ClearIntention(struct task *tp)
 {
+	FUN_00450fc0(tp, 0);
 }

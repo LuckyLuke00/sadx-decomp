@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00477cf0(int param_1);
 long FUN_00478350(int param_1);
 void FUN_00477c40(void *param_1, void *param_2);
 float njSqrt(float param_1);
@@ -21,10 +22,15 @@ float ghUnitVector(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5)
 	return local_8;
 }
 
-// STUB: SADX 0x00477c00
+// FUNCTION: SADX 0x00477c00
 float FUN_00477c00(float *param_1, float *param_2)
 {
-	return (float)0;
+	float var1;
+	float var2;
+
+	var1 = *param_2 - *param_1;
+	var2 = param_2[2] - param_1[2];
+	return var1 * var1 + 0.0 + var2 * var2;
 }
 
 // STUB: SADX 0x00477c40

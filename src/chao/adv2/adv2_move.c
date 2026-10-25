@@ -72,7 +72,7 @@ long MOV_TurnToAim2(struct task *tp, long rot_spd)
 	return (long)0;
 }
 
-// STUB: SADX 0x00458470
+// FUNCTION: SADX 0x00458470
 float MOV_Dist2FromPlayer(struct task *tp, long player_num)
 {
 	return (float)0;

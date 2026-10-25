@@ -1,11 +1,12 @@
 #include "decls.h"
+extern enum eCHAO_STAGE_NUMBER ChaoStageNumber;
+extern void *DAT_05b08844;
+extern int DAT_05b9e064;
 extern enum eCHAO_STAGE_NUMBER ChaoNextStageNumber;
 void AL_ChangeStage(enum eCHAO_STAGE_NUMBER NextStage);
 void FUN_00442520();
 void PlayerEnable(unsigned char pno);
 extern int DAT_05aeaa7c;
-
-#pragma auto_inline(off)
 
 // GLOBAL: SADX 0x05aeaa78
 static struct task *DAT_05aeaa78;
@@ -246,6 +247,46 @@ void FUN_0043e420()
 	DAT_05aeaa3c[8] = 0;
 }
 
+// FUNCTION: SADX 0x0043e470
+void StageMasterInit(struct task *tp)
+{
+	FUN_0043dff0();
+	BGM_Stop();
+	Serif_Stop();
+	AL_InitLandMark();
+	switch (ChaoStageNumber)
+	{
+	case 1:
+		_alg_race_prolog();
+		DAT_05b08844 = (void *)_alg_race_epilog;
+		return;
+	case 3:
+		_al_odekake_prolog();
+		DAT_05b08844 = (void *)_al_odekake_epilog;
+		return;
+	case 2:
+		_alg_entrance_prolog();
+		DAT_05b08844 = (void *)_alg_entrance_epilog;
+		return;
+	case 4:
+		_alg_garden00_ss_prolog();
+		DAT_05b08844 = (void *)_alg_garden00_ss_epilog;
+		return;
+	case 5:
+		_alg_garden01_ec_prolog();
+		DAT_05b08844 = (void *)_alg_garden01_ec_epilog;
+		return;
+	case 6:
+		_alg_garden02_mr_prolog();
+		DAT_05b08844 = (void *)_alg_garden02_mr_epilog;
+		return;
+	case 7:
+		_alg_blackmarket_prolog();
+		DAT_05b08844 = (void *)_alg_blackmarket_epilog;
+		return;
+	}
+}
+
 // FUNCTION: SADX 0x0043e5f0
 void AL_ChangeStageLater(enum eCHAO_STAGE_NUMBER NextStage)
 {
@@ -256,14 +297,42 @@ void AL_ChangeStageLater(enum eCHAO_STAGE_NUMBER NextStage)
 	}
 }
 
-// STUB: SADX 0x0043e620
+// FUNCTION: SADX 0x0043e620
 void AL_ExitToStage(long stage, long act)
 {
+	if (FUN_0043e030() == 0)
+	{
+		FUN_0043dfd0((enum eCHAO_STAGE_NUMBER)8);
+		ChaoExitStage = stage;
+		DAT_05aeaa3c[5] = (struct task *)act;
+		FUN_0043fb50();
+		if (DAT_05aeaa3c[8] != 0)
+		{
+			*(char *)(DAT_05aeaa3c[8]->twp) = 0xb;
+		}
+	}
 }
 
 // STUB: SADX 0x0043e660
 void _al_stage_epilog()
 {
+	___OutputDebugString("ChaoMain Epilog begin\n");
+	if (DAT_05aeaa3c[7] != 0)
+	{
+		FUN_0043e420();
+		DAT_05aeaa3c[7] = 0;
+	}
+	((void (*)())FUN_007d21b0)();
+	FUN_005b5aa0();
+	ChaoOldStageNumber = (enum eCHAO_STAGE_NUMBER)-1;
+	ChaoStageNumber = (enum eCHAO_STAGE_NUMBER)-1;
+	ChaoNextStageNumber = (enum eCHAO_STAGE_NUMBER)-1;
+	ChaoExitStage = -1;
+	DAT_05aeaa3c[4] = 0;
+	DAT_05aeaa3c[5] = 0;
+	DAT_05b9e064 = (int)DAT_05aeaa3c[6];
+	njControl3D((unsigned long)DAT_05aeaa3c[6]);
+	___OutputDebugString("ChaoMain Epilog end\n");
 }
 
 // FUNCTION: SADX 0x0043e6e0
@@ -282,9 +351,10 @@ void AL_ReturnStage()
 	AL_ChangeStage(AL_GetPreStageNumber());
 }
 
-// STUB: SADX 0x0043e9a0
+// FUNCTION: SADX 0x0043e9a0
 void AL_ExitChaoGarden()
 {
+	AL_ExitToStage(-1, 0);
 }
 
 // STUB: SADX 0x0043e9b0

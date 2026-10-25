@@ -8,6 +8,16 @@ struct AL_RACE_INFO *AL_GetRaceInfo()
 	return (struct AL_RACE_INFO *)0x5b288a8;
 }
 
+// STUB: SADX 0x00443ba0
+void AL_SetRaceNew(enum eRaceNum num)
+{
+}
+
+// STUB: SADX 0x00443bc0
+void AL_SetRacePlayed(enum eRaceNum num)
+{
+}
+
 // STUB: SADX 0x00443c50
 void AL_SetCourseChallengedLevel(enum eCourseNumDX num, long lev)
 {

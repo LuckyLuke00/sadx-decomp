@@ -1,4 +1,7 @@
 #include "decls.h"
+extern char DAT_05b2ca08[2];
+extern int DAT_05b2ca04;
+extern char DAT_05b2ca08[];
 int FUN_0046ffb0();
 
 // STUB: SADX 0x0046f6e0
@@ -11,9 +14,13 @@ void FUN_0046f700(int param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x0046f9e0
+// FUNCTION: SADX 0x0046f9e0
 void FUN_0046f9e0(char param_1, char param_2)
 {
+	int var1 = DAT_05b2ca04;
+	DAT_05b2ca08[var1 * 2] = param_1;
+	DAT_05b2ca08[var1 * 2 + 1] = param_2;
+	DAT_05b2ca04 = var1 + 1;
 }
 
 // FUNCTION: SADX 0x0046ffd0

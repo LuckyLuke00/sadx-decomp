@@ -1,10 +1,37 @@
 #include "decls.h"
 extern "C" int rand(void);
 
-// STUB: SADX 0x004553b0
+// FUNCTION: SADX 0x004553b0
 long ALBHV_Kaoarau(struct task *tp)
 {
-	return (long)0;
+	struct taskwk *var1;
+	int var2;
+	float var3;
+
+	var1 = tp->twp;
+	switch (*(unsigned short *)((char *)var1 + 0x1c6))
+	{
+	case 0:
+		AL_SetMotionLink(tp, 0x11b);
+		*(unsigned short *)((char *)var1 + 0x1c6) = *(unsigned short *)((char *)var1 + 0x1c6) + 1;
+		var2 = rand();
+		var3 = (float)var2 * 3.0517578125e-05;
+		*(unsigned int *)((char *)var1 + 0x1d0) = (unsigned short)((int)(var3 * 2.9999990463256836) + 2);
+		break;
+	case 1:
+		break;
+	default:
+		return 0;
+	}
+	if (AL_IsMotionEnd(tp) != 0)
+	{
+		*(int *)((char *)var1 + 0x1d0) = *(int *)((char *)var1 + 0x1d0) - 1;
+		if (*(int *)((char *)var1 + 0x1d0) <= 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x00455460

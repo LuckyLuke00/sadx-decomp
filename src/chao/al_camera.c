@@ -1,4 +1,5 @@
 #include "decls.h"
+extern long DAT_060cae34;
 extern float DAT_060cae58;
 extern float DAT_060cae5c;
 extern float DAT_060cae60;
@@ -7,10 +8,10 @@ extern float DAT_060caea4;
 extern float DAT_060caea8;
 extern int DAT_060cb31c;
 
-// STUB: SADX 0x00714c00
+// FUNCTION: SADX 0x00714c00
 long ALCAM_SetLookingFlag(long flag)
 {
-	return (long)0;
+	return DAT_060cae34 = flag;
 }
 
 // STUB: SADX 0x00714c10
