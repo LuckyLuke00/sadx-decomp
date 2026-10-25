@@ -32,7 +32,8 @@ or when nothing built), --try-tokens N,N,... (the reply limit of each try in tur
 the tries after it; a thinking try keeps its own), --stale-built-only (a try that does not build
 does not count toward STUCK_TRIES, nor toward --give-up), --similar-examples (the first example is the matched function
 whose instructions are most like the function's), --prefix-feedback (the feedback says how many instructions
-match from the function's start before the first difference) and --tag T (default: the prompt's name). Every
+match from the function's start before the first difference), --refuse-fakematch (a 100% try with a line that
+tools/fakematch.py finds does not end the run, as "The loop" says) and --tag T (default: the prompt's name). Every
 command takes --config PATH.
 Results go to build/llm/T/: results.tsv with a row per function and transcripts/ADDRESS.jsonl
 with every exchange.
@@ -60,6 +61,9 @@ them another way, the runtime's declarations, declarations from earlier tries, `
 pointer to a type of unknown size, casts on pointer conversions that C accepts (up to CAST_ROUNDS
 rounds) and no `static` on a function that nothing calls. The note to the model names each one.
 After STUCK_TRIES tries without a new best, the tries think until the best moves again.
+With --refuse-fakematch, a 100% try with a line that is not plain C, such as a cast on a raw address, is
+refused: the note names each such line and its plain form, and the run goes on. The file keeps the first
+refused try only when no try matches in plain C.
 When the file already holds the function, that code is the first best: a solve only
 replaces it with a try that scores higher.
 """
@@ -79,9 +83,11 @@ import cfix
 import check
 import ci
 import declgen
+import fakematch
 import llmclient
 import names
 import osutil
+import pe
 import progress
 import project
 import scoring
@@ -109,6 +115,16 @@ STRUCT_LINES = 120  # member lines in the first prompt's Structs section
 STRUCT_DEPTH = 2  # levels of member types below the types the dossier names
 STRUCTS_RULE = ("The Structs section lists members with their offsets: "
                 "use the member names, not casts, when an offset matches.")
+PLAIN_FORMS = {  # what to write in place of each fakematch kind, for --refuse-fakematch
+    "raw_address": "use the global or function at that address by its name, and declare it",
+    "index_game": "index the member or element at that offset",
+    "address_pun": "declare the variable with the type that the code reads it as",
+    "cast_call": "call the function as it is declared, or declare it with the arguments that the call passes",
+    "constant_test": "write the code that runs, without the test",
+    "empty_block": "leave it out, or test the opposite condition",
+    "empty_statement": "leave it out, or write the loop's work in its body",
+    "unused_local": "leave it out",
+}
 RESULT_FIELDS = ["file", "address", "size", "tries", "best", "wall_s", "prompt_tokens", "completion_tokens", "model",
                  "think_tries", "repeats"]
 SET_FIELDS = ["file", "address", "size", "name"]
@@ -945,6 +961,21 @@ def feedback(percent, text, address, known, types=None, prefix=False):
             + "Reply with one cpp block again: the declarations and the whole function with the changes.")
 
 
+def refusal(refused):
+    """The note on a 100% try with the REFUSED lines, the (kind, line) pairs that fakematch.found gives."""
+    lines = []
+    for kind, line in refused:
+        what = f"the local `{line}`" if kind == "unused_local" else f"`{line}`"
+        lines.append(f"- {what} ({kind}): {PLAIN_FORMS[kind]}")
+    return ("Score 100.00%, but these lines are not plain C, so the match is refused:\n" + "\n".join(lines) + "\n"
+            "Reply with one cpp block again: the declarations and the whole function in plain C.")
+
+
+def exe_contains():
+    """Whether an address is in the exe's sections: fakematch.found's test for a raw address."""
+    return pe.Image(project.require_game()).contains
+
+
 def matched_functions():
     """address: name of each function that docs/progress/summary.json counts as matched: at 100% in plain C."""
     summary = json.loads(progress.SUMMARY_JSON.read_text(encoding="utf-8"))
@@ -1350,6 +1381,8 @@ def solve_function(args, file, address, transcript):
     # the code already in the file is the floor
     best = file_best(scored, before, address, known, types, args.prefix_feedback)
     restore(generated)
+    in_image = exe_contains() if args.refuse_fakematch else None
+    fallback = None  # the first refused 100% try: the file keeps it when no try matches in plain C
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
     bench = Bench(rebuild, config, path, address, known, args.tree_wins, repair_types, declared_before)
@@ -1403,7 +1436,7 @@ def solve_function(args, file, address, transcript):
             totals["completion_tokens"] += reply.usage["completion_tokens"]
             totals["think_tries"] += thinking
             parsed = parse_reply(reply.text, address, name)
-            percent, repeat, repairs = None, None, Repairs()
+            percent, repeat, repairs, refused = None, None, Repairs(), []
             shown = reply.text  # the reply as the model sees it again
             if parsed is None:
                 result = latest = "had no function in the reply"
@@ -1423,7 +1456,12 @@ def solve_function(args, file, address, transcript):
                 attempt, percent = build.source, build.percent
                 if repairs.renamed:
                     shown = "```cpp\n" + "\n".join(model.decls + [""] + model.func) + "\n```"
-                note = repairs.note() + feedback(percent, build.output, address, known, types, args.prefix_feedback)
+                if in_image and percent == 100:
+                    refused = fakematch.found(build.func, signature_index(build.func), in_image)
+                if refused:
+                    note = repairs.note() + refusal(refused)
+                else:
+                    note = repairs.note() + feedback(percent, build.output, address, known, types, args.prefix_feedback)
                 seen[attempt_key(parsed)] = (tries, note)
                 for code in (model, trimmed, build):  # the repaired code counts as this try too
                     seen[attempt_key((code.decls, code.func))] = (tries, note)
@@ -1437,7 +1475,9 @@ def solve_function(args, file, address, transcript):
                 else:
                     latest = repairs.latest(f"scored {percent:.2f}%")
             improved = percent is not None and (best is None or percent > best.percent)
-            if improved:
+            if improved and refused:
+                fallback = fallback or Best(percent, shown, note, attempt)
+            elif improved:
                 best = Best(percent, shown, note, attempt)
             failed_build = parsed is not None and repeat is None and percent is None
             stale = 0 if improved else stale + (0 if args.stale_built_only and failed_build else 1)
@@ -1447,17 +1487,20 @@ def solve_function(args, file, address, transcript):
             log.write(json.dumps({"try": tries, "thinking": thinking, "result": result,
                                   "seconds": round(time.time() - asked, 1), "usage": reply.usage,
                                   "finish": reply.finish, "reasoning": reply.reasoning, "reply": reply.text,
-                                  "note": note, **repairs.logged()}) + "\n")
+                                  "note": note, **repairs.logged(), **({"refused": refused} if refused else {})})
+                      + "\n")
             log.flush()
             end_live(result)
-            cut = " (the reply hit max_tokens)" if reply.finish == "length" else ""
-            print(f"{hexa(address)} try {tries}{' (thinking)' if thinking else ''}: {result}{repairs.trim()}{cut}",
+            cut =" (the reply hit max_tokens)" if reply.finish == "length" else ""
+            why = f" (refused: {', '.join(dict.fromkeys(kind for kind, _ in refused))})" if refused else ""
+            print(f"{hexa(address)} try {tries}{' (thinking)' if thinking else ''}: {result}{why}{repairs.trim()}{cut}",
                   flush=True)
-            if percent == 100:
+            if percent == 100 and not refused:
                 break
             if args.max_repeats is not None and totals["repeats"] >= args.max_repeats:
                 break
-            best_percent = best.percent if best else 0.0
+            top = fallback or best  # a refused match still counts here: the run is no failure
+            best_percent = top.percent if top else 0.0
             if args.give_up and (stale >= GIVE_UP_STALE or (stale >= STUCK_TRIES and best_percent < GIVE_UP_BELOW)):
                 break
             if args.stop_below is not None and tries >= STOP_AFTER and best_percent < args.stop_below:
@@ -1466,6 +1509,9 @@ def solve_function(args, file, address, transcript):
                                                                          or (thinking and repeat is not None)):
                 break
             messages = base + next_turn(best, improved, shown, note, latest)
+        if fallback and not (best and best.percent == 100):
+            best = fallback
+            log.write(json.dumps({"kept_refused": True}) + "\n")
     write_source(path, best.text if best else before, crlf)
     restore(generated)
     decls(config)
@@ -1622,6 +1668,8 @@ def parse_args():
                       help="the first example is the matched function whose instructions are most like the function's")
     runs.add_argument("--prefix-feedback", action="store_true",
                       help="the feedback says how many instructions match from the function's start")
+    runs.add_argument("--refuse-fakematch", action="store_true",
+                      help="a 100%% try with a line that tools/fakematch.py finds is refused, and the run goes on")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
     commands = parser.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init", parents=[common])
