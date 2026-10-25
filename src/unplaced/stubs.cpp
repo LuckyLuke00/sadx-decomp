@@ -148,6 +148,11 @@ extern void njPrintC(int, char const *)
 {
 }
 
+// STUB: SADX 0x00423f70
+void njPrintD(int,int,int)
+{
+}
+
 // STUB: SADX 0x00424240
 void njSetCamera(struct NJS_CAMERA *)
 {
@@ -1582,6 +1587,12 @@ void DestroyTask(struct task *)
 {
 }
 
+// STUB: SADX 0x004f46a0
+struct task *CreateChildrenTask(struct childtaskset *ctsp, struct task *tp)
+{
+	return (struct task *)0;
+}
+
 // STUB: SADX 0x004f5fe0
 void ADX_TaskLoop(struct task *tp)
 {
@@ -1744,10 +1755,20 @@ float GetShadowPos(float x, float y, float z, struct Angle3 *ang)
 	return (float)0;
 }
 
+// STUB: SADX 0x00551cf0
+void StaticShadow(struct taskwk *twp, float ypos)
+{
+}
+
 // STUB: SADX 0x00551e00
 float Shadow(struct taskwk *twp, float scl)
 {
 	return (float)0;
+}
+
+// STUB: SADX 0x00551f70
+void DrawShadow(struct Angle3 *ang, struct NJS_POINT3 *pos, float scl)
+{
 }
 
 // STUB: SADX 0x005538c0
@@ -1875,6 +1896,11 @@ float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct N
 
 // STUB: SADX 0x00571790
 void EffectWater(struct sp_task *tp, struct sp_link *lp)
+{
+}
+
+// STUB: SADX 0x005718c0
+void CreateWater(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 {
 }
 
@@ -2726,8 +2752,8 @@ void njRotateZXY(long, long, long, long)
 {
 }
 
-// STUB: SADX 0x00681ff0
-void SSTwrouka(struct task *)
+// STUB: SADX 0x006854e0
+void ssp_walk_man_1st(struct task *task_p)
 {
 }
 
@@ -2751,11 +2777,6 @@ void Object_Ssadv_KomonoDraw(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0068fb40
-void ObjectClose(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00692030
 void CreamManager(struct task *tp)
 {
@@ -2774,11 +2795,6 @@ long Object_EgaGun1DrawStat(struct task *tp)
 
 // STUB: SADX 0x0069c990
 void ObjectECCommonDoorS(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0069cc10
-void Draw(struct task *tp)
 {
 }
 
@@ -2827,25 +2843,19 @@ void HugeTaraiExec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006a7d60
-void SetTableBg()
-{
-}
-
-// STUB: SADX 0x006a9490
-void MRPcEnd()
-{
-}
-
 // STUB: SADX 0x006a9b80
 void MRPcInit()
 {
 }
 
-// STUB: SADX 0x006b04e0
-struct task *mrp_walk_act_init(long act_num)
+// STUB: SADX 0x006ab950
+void ObjectMysticRuinHandyKey(struct task *tp)
 {
-	return (struct task *)0;
+}
+
+// STUB: SADX 0x006b2500
+void BigGrassDisplayer(struct task *tp)
+{
 }
 
 // STUB: SADX 0x006b2ca0
@@ -2853,13 +2863,18 @@ void TreeDisplayer(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006bef70
-void pastp_walk_man_1st(struct task *task_p)
+// STUB: SADX 0x006bccf0
+void pastpc_draw(struct task *task_p)
 {
 }
 
-// STUB: SADX 0x006c08d0
-void BigStairsDisplayer(struct task *tp)
+// STUB: SADX 0x006bcf40
+void pastpc_exec(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x006bef70
+void pastp_walk_man_1st(struct task *task_p)
 {
 }
 
@@ -3401,11 +3416,6 @@ void CartRacePrepareRace()
 {
 }
 
-// STUB: SADX 0x007e8860
-void dispScore(struct task *task_p)
-{
-}
-
 // STUB: SADX 0x007e98e0
 int StageEventCheck()
 {
@@ -3414,6 +3424,11 @@ int StageEventCheck()
 
 // STUB: SADX 0x007eb4e0
 void TornadeLifeGauge(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007eecb0
+void KumoDisp(struct task *tp)
 {
 }
 
@@ -3453,13 +3468,19 @@ void FUN_007f25b0()
 {
 }
 
-// STUB: SADX 0x007f9f90
-void FUN_007f9f90(struct task *)
+// STUB: SADX 0x007f6280
+float FUN_007f6280(struct NJS_POINT3 *)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x007f9b20
+void Object_beach_taki_Draw(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008018f0
-void CreateRippleSource25(struct task *tp, float pp_x, float pp_z, float start_rad, float end_rad, float scl)
+// STUB: SADX 0x007f9f90
+void FUN_007f9f90(struct task *)
 {
 }
 
@@ -3471,6 +3492,11 @@ float GetWaveHeight25(struct task *tp, float pos_x, float pos_z)
 
 // STUB: SADX 0x00802220
 void ObjectBeachWave25(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00802ae0
+void ObjectBeachYurehasi(struct task *tp)
 {
 }
 
@@ -3486,6 +3512,11 @@ void ObjectBeachPathoruka(struct task *tp)
 
 // STUB: SADX 0x00806b60
 void PopoDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00808210
+void DrawHasiEnd(struct task *tp)
 {
 }
 
@@ -3520,13 +3551,18 @@ void execMirrorTaskP(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00813880
-void dispTPDoorWithMirror(struct task *tp)
+// STUB: SADX 0x008145a0
+void dispTPLamp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008145a0
-void dispTPLamp(struct task *tp)
+// STUB: SADX 0x00814db0
+void dispTPFlag(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00815000
+void dispTPFlagLamp(struct task *tp)
 {
 }
 
@@ -3545,13 +3581,13 @@ void CreateCar(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0081d2d0
-void RingDrawAct2(struct task *tp)
+// STUB: SADX 0x0081eb30
+void ObjectHighwayGreenB(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0081eb30
-void ObjectHighwayGreenB(struct task *tp)
+// STUB: SADX 0x00820c60
+void ObjectHighwayNeonRegular(struct task *tp)
 {
 }
 
@@ -3590,28 +3626,8 @@ void Disp02(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0082f270
-void Object_Mountain_Syuujin_Display(struct task *)
-{
-}
-
-// STUB: SADX 0x0082f310
-void Object_Mountain_Syuujin_Move_B(struct task *)
-{
-}
-
-// STUB: SADX 0x0082f390
-void Object_Mountain_Syuujin_Move_R(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00835b50
 void Object_Mountain_Untei(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00835ed0
-void Object_Mountain_Kumonosu_Display(struct task *tp)
 {
 }
 
@@ -3620,8 +3636,18 @@ void CameraMountainTgtDeath(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
+// STUB: SADX 0x0083a8c0
+void dsSetUnteiPath(struct task *tp, float stx, float sty, float stz, int num, float len)
+{
+}
+
 // STUB: SADX 0x0083b600
 void ObjectSkydeck_tcolli_Display(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083bfc0
+void ObjectSkydeck_com_Display(struct task *tp)
 {
 }
 
@@ -3630,13 +3656,58 @@ void ObjectSkydeck_tcolli_Exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0083d9b0
+void ObjectSkydeck_kikanjyu1_End(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083da10
+void ObjectSkydeck_kikanjyu1_Draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083dac0
+void ObjectSkydeck_kikanjyu1_Exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083ee90
+void ObjectSkydeck_decal_Draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083fb90
+void ObjectSkydeck_com_GCM(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083fd60
+void ObjectSkydeck_crane_hang(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00840f30
 void ObjectSkydeck_cannon_h2_Init(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00840fe0
+void dispSkyPower(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00841230
 void dispSkyEscalator(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00844ce0
+void ObjectSkydeck_cannon_m_Draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00845000
+void ObjectSkydeck_cannon_m_Exec(struct task *tp)
 {
 }
 
@@ -3675,11 +3746,6 @@ void ObjectSkydeck_c_cyl1_Draw(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00847350
-void ObjectSkydeck_c_cyl1_Init(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00847b60
 void ObjectSkydeck_c_edge1_Init(struct task *tp)
 {
@@ -3715,8 +3781,13 @@ void ObjectSkydeck_c_talap0_Init(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0084a760
-void ObjectSkydeck_cannon_s_Init(struct task *tp)
+// STUB: SADX 0x0084a0d0
+void ObjectSkydeck_cannon_s_Draw(struct task *)
+{
+}
+
+// STUB: SADX 0x0084a250
+void ObjectSkydeck_cannon_s_Exec(struct task *)
 {
 }
 
@@ -3734,16 +3805,6 @@ void ObjectSkydeck_eff_bomb1_Init(struct task *tp)
 long OCMunregister(struct OCMDATA *ocmdata)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x0084ce00
-void TaskDisp(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0084ce10
-void TaskExec(struct task *tp)
-{
 }
 
 // STUB: SADX 0x0084dc60
@@ -3766,18 +3827,33 @@ void FUN_0084e4b0(int)
 {
 }
 
+// STUB: SADX 0x00852fc0
+void SwitchExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00853a90
+void FUN_00853a90()
+{
+}
+
 // STUB: SADX 0x00854610
 void PanelExec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00856510
-void Normal(struct task *tp)
+// STUB: SADX 0x008549b0
+void DispExp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0085e430
-void Object_IcecapHasihasiDraw(struct task *tp)
+// STUB: SADX 0x0085bb80
+void EffectColdGeneratorMain(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0085df60
+void late_Disp2(struct task *tp)
 {
 }
 
@@ -3792,23 +3868,23 @@ long Object_IcecapBicIwa_MovableMRegularExecute(struct task *tp, struct NJS_POIN
 	return (long)0;
 }
 
+// STUB: SADX 0x00862860
+void Object_IcecapBigturaraInit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00865ba0
+void DoaDraw(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00868fa0
 void ObjectIcecap_eff_lines1_Exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00869900
-void CreateJetBomb(struct NJS_POINT3 *pos)
-{
-}
-
-// STUB: SADX 0x00869cb0
-void ReleaseTextureOnCasino(long No)
-{
-}
-
-// STUB: SADX 0x0086bd20
-void DispH(struct task *tp)
+// STUB: SADX 0x00869790
+void EffectJetBomb(struct task *tp)
 {
 }
 
@@ -3852,8 +3928,8 @@ void ExecCapsule(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00876e20
-void Init(struct task *tp, struct TENSHOUSEINFO *tensinfo)
+// STUB: SADX 0x008781e0
+void ObjectCasinoSlotArmExec(struct task *tp)
 {
 }
 
@@ -3882,6 +3958,21 @@ void ObjectCasinoShakeHandInit(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0087aa30
+void kazariAExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0087c510
+void ObjectCasinoLionInit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0087ccf0
+void ObjectCasinoHyoujikiInit(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0087d350
 void ObjectCasinoManfInit(struct task *tp)
 {
@@ -3894,6 +3985,16 @@ void ObjectCasinoKkdoorInit(struct task *tp)
 
 // STUB: SADX 0x0087e180
 void ObjectCasinoHagurumaExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0087e890
+void ObjectCasino6SlotInit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0087ea70
+void FUN_0087ea70(struct task *, float)
 {
 }
 
@@ -3914,11 +4015,6 @@ void ObjCasino_InitCV(struct task *tp, float range, struct obj *pobject, struct 
 
 // STUB: SADX 0x0088a6b0
 void ObjCasino_InitR(struct task *tp, struct obj *pobject, long rotY)
-{
-}
-
-// STUB: SADX 0x0088aa20
-void ObjCasino_InitH(struct task *tp, struct obj *pobject, struct CCL_INFO *pinfo, struct NJS_ACTION *paction)
 {
 }
 
@@ -3957,6 +4053,11 @@ void ObjectCasino_eff_kinka1_Exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00893670
+void FUN_00893670(struct task *)
+{
+}
+
 // STUB: SADX 0x00894ff0
 void uptarget_sonic_draw(struct task *task_p)
 {
@@ -3977,23 +4078,38 @@ void FEGG_DrawBrokenPiece(struct taskwk *)
 {
 }
 
-// STUB: SADX 0x008a2970
-void InitAquariumSequence()
+// STUB: SADX 0x008a28e0
+void ObjShelterSenmanager(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008a2b60
-void InitBoxSwitch()
-{
-}
-
-// STUB: SADX 0x008a3130
-void InitTunnelManager()
+// STUB: SADX 0x008a4040
+void DoorInit(struct task *tp)
 {
 }
 
 // STUB: SADX 0x008b2af0
 void BubbleDisp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b4430
+void ExecNotBig(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b4c70
+void ObjShelterColsuimen(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b4fa0
+void ObjShelterAquarium(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b55d0
+void ObjShelterBtsuimen(struct task *tp)
 {
 }
 

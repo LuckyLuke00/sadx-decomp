@@ -30,3 +30,22 @@ void ObjectCasinoSlotArmDraw(struct task *tp)
 	}
 	njPopMatrix(1);
 }
+
+// STUB: SADX 0x00878340
+void ObjectCasinoSlotArm(struct task *tp)
+{
+	if (CheckRangeOutWithR(tp, 62510.0f) == 0)
+	{
+		struct taskwk *var1 = tp->twp;
+
+		if (FUN_004c39c0(tp) == 0)
+		{
+			CCL_Init(tp, (struct CCL_INFO *)0x0480ba20, 1, 4);
+		}
+		tp->disp = ObjectCasinoSlotArmDraw;
+		tp->exec = ObjectCasinoSlotArmExec;
+		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		var1->counter.f = 0.0f;
+		var1->wtimer = 0;
+	}
+}

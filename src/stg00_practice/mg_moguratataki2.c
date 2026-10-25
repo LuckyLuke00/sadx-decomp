@@ -26,6 +26,11 @@ void FUN_007f30c0(unsigned char *param_1)
 	}
 }
 
+// STUB: SADX 0x007f3130
+void moguraGameEndCheck(struct task *tp, struct taskwk *twp)
+{
+}
+
 // STUB: SADX 0x007f4410
 void FUN_007f4410(void)
 {

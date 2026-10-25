@@ -32,7 +32,15 @@ void Pasya0Init(struct task *tp)
 	tp->disp = Pasya0Disp;
 }
 
-// STUB: SADX 0x008b3770
+// FUNCTION: SADX 0x008b3770
 void Pasya1Init(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	var1->pos.y -= 80.5f;
+	var1->btimer = 0;
+	var1->wtimer = 0;
+	var1->counter.f = 0.0f;
+	tp->exec = Pasya1Exec;
+	tp->disp = Pasya1Disp;
 }

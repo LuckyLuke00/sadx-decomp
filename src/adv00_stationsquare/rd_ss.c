@@ -1,4 +1,5 @@
 #include "decls.h"
+int checkInSsHodel();
 
 // STUB: SADX 0x0067f3f0
 int checkInSsHodel()

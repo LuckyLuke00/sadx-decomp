@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05b9d838;
 
 // FUNCTION: SADX 0x008a9eb0
 void Disp2Task(struct task *tp)

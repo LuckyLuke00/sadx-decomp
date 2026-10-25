@@ -25,3 +25,8 @@ void ObjectCasinoCrisDraw(struct task *tp)
 	ds_DrawModelClip(object_cas_obj_cris_cris.model, 1.0f);
 	njPopMatrix(1);
 }
+
+// STUB: SADX 0x0087e3f0
+void ObjectCasinoCrisExec(struct task *tp)
+{
+}

@@ -8,11 +8,6 @@ void DisplayStone(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008322b0
-void EruptFire(struct sp_task *tp, struct sp_link *lp)
-{
-}
-
 // FUNCTION: SADX 0x00832500
 void DisplayLavaBall(struct task *tp)
 {

@@ -1,4 +1,12 @@
 #include "decls.h"
+static void Draw(struct task *tp);
+
+#pragma optimize("", off)
+// STUB: SADX 0x0069cc10
+static void Draw(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x0069ce00
 void HeadExec(struct task *tp)

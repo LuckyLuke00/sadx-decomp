@@ -18,3 +18,11 @@ void mrtrain_adxprove(struct task *tp)
 		return;
 	}
 }
+
+// FUNCTION: SADX 0x00855000
+void KasyaDestruct(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
+	ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
+}

@@ -191,17 +191,29 @@ struct TaskInfo DAT_00a09f08;
 // GLOBAL: SADX 0x00a0a32c
 struct TaskInfo DAT_00a0a32c;
 
+// GLOBAL: SADX 0x00a0a360
+struct TaskInfo DAT_00a0a360;
+
 // GLOBAL: SADX 0x00a0a678
 struct TaskInfo DAT_00a0a678;
 
+// GLOBAL: SADX 0x00a0a940
+struct TaskInfo DAT_00a0a940;
+
 // GLOBAL: SADX 0x00a0a970
 struct ActionParam DAT_00a0a970;
+
+// GLOBAL: SADX 0x00a0a978
+struct ActionParam DAT_00a0a978;
 
 // GLOBAL: SADX 0x00a0aa2c
 struct TaskInfo CactusTaskInfo;
 
 // GLOBAL: SADX 0x00a0c8d8
 struct TaskInfo ObjectTaskInfo;
+
+// GLOBAL: SADX 0x00a316d8
+struct NJS_POINT3 posRoundCenter;
 
 // GLOBAL: SADX 0x00a34538
 void (*DAT_00a34538[5])(struct task *);
@@ -248,11 +260,35 @@ void *DAT_01c76fa0;
 // GLOBAL: SADX 0x01c77460
 void (*DAT_01c77460[256])(int);
 
+// GLOBAL: SADX 0x01c7e3ec
+struct obj object_sscasinosikake_hnakagen_hnakagen[1];
+
+// GLOBAL: SADX 0x01c7e50c
+struct NJS_ACTION action_sscasinosikake_hnakagen[1];
+
+// GLOBAL: SADX 0x01c813c4
+struct obj object_sscasinosikake_hnakagen_2_hnakagen[1];
+
+// GLOBAL: SADX 0x01c818d4
+struct obj object_sssikake_pole_pole[1];
+
 // GLOBAL: SADX 0x01c8288c
 struct NJS_ACTION action_sssikake_kartdoor[1];
 
+// GLOBAL: SADX 0x01c87034
+struct NJS_ACTION action_sssikake_twindoor[1];
+
 // GLOBAL: SADX 0x01c87f8c
 struct NJS_ACTION action_sssikake_uradoor[1];
+
+// GLOBAL: SADX 0x01c8982c
+struct NJS_ACTION action_sssikake_twbdoor[1];
+
+// GLOBAL: SADX 0x01c8b4ec
+struct NJS_ACTION action_sssikake_gesuielebox[1];
+
+// GLOBAL: SADX 0x01c8b98c
+struct obj object_bin_bin_bin;
 
 // GLOBAL: SADX 0x01c8bcdc
 struct obj object_ssobj_exit_exit[1];
@@ -269,6 +305,12 @@ struct obj object_ssobj_bigclock_bigclock[1];
 // GLOBAL: SADX 0x01c92964
 struct obj object_ssobj_shop1solt_shop1solt[1];
 
+// GLOBAL: SADX 0x01c9574c
+struct obj object_ssobj_shop2_radio_shop2_radio[1];
+
+// GLOBAL: SADX 0x01c96644
+struct obj object_ssobj_shop2frame_shop2frame[1];
+
 // GLOBAL: SADX 0x01c984fc
 struct obj object_ssobj_twtesuri_twtesuri[1];
 
@@ -277,6 +319,9 @@ struct obj object_sssikake_eggstand_eggstand[1];
 
 // GLOBAL: SADX 0x01c9da54
 struct obj object_nisetama_tamago_tamago[1];
+
+// GLOBAL: SADX 0x01ca36c8
+struct NJS_MODEL model_poolparasol_poolparasol_poolparasol[1];
 
 // GLOBAL: SADX 0x01ca431c
 struct obj object_sssikake_kaigansaku_kaigansaku[1];
@@ -1244,6 +1289,9 @@ struct particle_entry particle_lightning;
 // GLOBAL: SADX 0x026847d8
 struct particle_entry particle_hitmark;
 
+// GLOBAL: SADX 0x026847e8
+struct NJS_TEXLIST tex_jet;
+
 // GLOBAL: SADX 0x02684a60
 long o_hit_spd1;
 
@@ -1316,6 +1364,12 @@ struct CCL_INFO key_c_info[1];
 // GLOBAL: SADX 0x026dd008
 struct CCL_INFO barricade_c_info[1];
 
+// GLOBAL: SADX 0x026dd66c
+struct obj object_loadsfin_gards_gards[1];
+
+// GLOBAL: SADX 0x026de588
+struct CCL_INFO object_komono_bin_info;
+
 // GLOBAL: SADX 0x026de5e8
 struct CCL_INFO object_komono_exit_info[1];
 
@@ -1379,6 +1433,12 @@ float TARAI_Y;
 // GLOBAL: SADX 0x026f0870
 struct NJS_TEXLIST texlist_mapMR;
 
+// GLOBAL: SADX 0x026f0878
+struct NJS_POINT3 DAT_026f0878;
+
+// GLOBAL: SADX 0x026f0888
+union NJS_COLOR DAT_026f0888;
+
 // GLOBAL: SADX 0x026f1ac4
 struct NJS_POINT3 pos_finalegg;
 
@@ -1390,6 +1450,9 @@ int SeqVarID[8];
 
 // GLOBAL: SADX 0x02709244
 struct NJS_ACTION action_g_g0023_eggman[1];
+
+// GLOBAL: SADX 0x0270aec0
+int MRLockSeqVarID[8][4];
 
 // GLOBAL: SADX 0x0270b7dc
 struct NJS_POINT3 *pScale_Adv03[3];
@@ -1405,6 +1468,9 @@ struct ___stcFog *pFogTable_Adv03[3];
 
 // GLOBAL: SADX 0x0270b82c
 struct NJS_TEXLIST texlist_mapPAST;
+
+// GLOBAL: SADX 0x0270bc68
+const struct pastpc_data pastpc_data_tbl[1] = {};
 
 // GLOBAL: SADX 0x0270c230
 struct NJS_POINT3 pos_tical;
@@ -1931,6 +1997,21 @@ struct NJS_SPRITE LapBoardSprite;
 // GLOBAL: SADX 0x03528004
 struct NJS_SPRITE LapNumberSprite;
 
+// GLOBAL: SADX 0x035280e8
+struct particle_entry SandParticleEntry;
+
+// GLOBAL: SADX 0x0352e9f4
+struct obj object_sunabo_sb_jpdai_sb_jpdai[1];
+
+// GLOBAL: SADX 0x03532614
+struct obj object_sunabo_sb_sabos_sb_sabos[1];
+
+// GLOBAL: SADX 0x0353aef0
+struct ActionParam DAT_0353aef0;
+
+// GLOBAL: SADX 0x0353afb0
+void *DAT_0353afb0;
+
 // GLOBAL: SADX 0x0353aff0
 void *DAT_0353aff0;
 
@@ -1948,6 +2029,18 @@ struct NJS_TEXLIST texlist_shooting2;
 
 // GLOBAL: SADX 0x0367147c
 struct NJS_ACTION action_tr2henkei_tr2_tf_event_s_tr2rt[1];
+
+// GLOBAL: SADX 0x036755a4
+struct NJS_CACTION sht_caction_cam_int1[1];
+
+// GLOBAL: SADX 0x03675c3c
+struct NJS_TEXLIST texlist_shooting1;
+
+// GLOBAL: SADX 0x0370e964
+struct NJS_ACTION action_beam_beam_tr1[1];
+
+// GLOBAL: SADX 0x0370fc7c
+struct NJS_ACTION action_beamev_laser[1];
 
 // GLOBAL: SADX 0x03711014
 struct NJS_TEXLIST lock_mk_list;
@@ -1967,6 +2060,9 @@ struct obj object_stef_s_pshot_s_pshot[1];
 // GLOBAL: SADX 0x03712d0c
 struct obj object_tr_f_rocket_f_rocket[1];
 
+// GLOBAL: SADX 0x03716aec
+struct NJS_ACTION action_stene_s_renzako[1];
+
 // GLOBAL: SADX 0x0371aa9c
 struct NJS_ACTION action_stene_s_kibody[1];
 
@@ -1978,6 +2074,9 @@ struct NJS_ACTION action_shot_s_ecfire;
 
 // GLOBAL: SADX 0x037633e4
 struct obj object_edv_f_futa_f_futa[1];
+
+// GLOBAL: SADX 0x0376f7c4
+struct NJS_ACTION action_beamev_s_beam[1];
 
 // GLOBAL: SADX 0x0377068c
 struct NJS_ACTION action_tekkyu_s_tekkyu[1];
@@ -1993,6 +2092,12 @@ struct obj object_seaobj_bungalow_bungalow[1];
 
 // GLOBAL: SADX 0x03986914
 struct obj object_seaobj_floot_floot[1];
+
+// GLOBAL: SADX 0x0398d994
+struct obj object_seaobj_hasi_b_hasi_b[1];
+
+// GLOBAL: SADX 0x039cafc4
+struct obj object_seaobj_parasol03_parasol03[1];
 
 // GLOBAL: SADX 0x039e0c80
 struct obj object_seaobj_rock_rock[1];
@@ -2024,11 +2129,17 @@ struct obj object_seaobj_komorebi_komorebi[1];
 // GLOBAL: SADX 0x039e9a1c
 struct obj object_seaobj_sekichuu_sekichuu[1];
 
+// GLOBAL: SADX 0x039eca98
+struct obj object_seaobj_kusa7_kusa7[1];
+
 // GLOBAL: SADX 0x039fe4d0
 struct obj object_seaobj_rock2_rock2[1];
 
 // GLOBAL: SADX 0x03a0c380
 struct CCL_INFO object_seki_info[2];
+
+// GLOBAL: SADX 0x03a0c3e0
+int takipapam_fallspeed;
 
 // GLOBAL: SADX 0x03b14fd8
 struct NJS_TEXLIST texlist_windy_back;
@@ -2042,14 +2153,14 @@ struct NJS_TEXLIST texlist_windy_back3;
 // GLOBAL: SADX 0x03b2173c
 struct obj object_windobj_bridge_a1_bridge_a1[1];
 
-// GLOBAL: SADX 0x03b23da8
-struct obj object_wvobj_ha_red_ha_red[1];
+// GLOBAL: SADX 0x03b23d7c
+struct NJS_MODEL model_wvobj_ha_red_ha_red[1];
 
-// GLOBAL: SADX 0x03b23ec4
-struct obj object_wvobj_ha_yellow_ha_yellow[1];
+// GLOBAL: SADX 0x03b23e98
+struct NJS_MODEL model_wvobj_ha_yellow_ha_yellow[1];
 
-// GLOBAL: SADX 0x03b23ff4
-struct obj object_wvobj_ha_green_ha_green[1];
+// GLOBAL: SADX 0x03b23fc8
+struct NJS_MODEL model_wvobj_ha_green_ha_green[1];
 
 // GLOBAL: SADX 0x03b28cac
 struct obj object_wvobj_ukisima_ukisima[1];
@@ -2065,6 +2176,9 @@ struct obj object_wvobj_flower_a_flower_a[1];
 
 // GLOBAL: SADX 0x03b3da68
 struct obj object_wvobj_flower_b_flower_b[1];
+
+// GLOBAL: SADX 0x03b41280
+struct obj object_wvobj_busshu_busshu[1];
 
 // GLOBAL: SADX 0x03b4ad9c
 struct obj object_windobj_isibasi_isibasi[1];
@@ -2099,17 +2213,74 @@ struct obj object_geta_cubar_cubar[1];
 // GLOBAL: SADX 0x03c69704
 struct obj object_mado_outmado_outmado[1];
 
+// GLOBAL: SADX 0x03c6f39c
+struct obj object_newship_oya_oya[1];
+
 // GLOBAL: SADX 0x03c75fcc
 struct obj object_park03_lr_doorb_lr_doorb[1];
 
 // GLOBAL: SADX 0x03c778fc
 struct obj object_tp_obj_hunger_hunger[1];
 
+// GLOBAL: SADX 0x03c85604
+struct NJS_ACTION action_hata01_hata[1];
+
+// GLOBAL: SADX 0x03c858ac
+struct NJS_ACTION action_hata02_hata02[1];
+
+// GLOBAL: SADX 0x03c85df4
+struct NJS_ACTION action_lighthata_lump[1];
+
+// GLOBAL: SADX 0x03c86aa0
+struct NJS_MOTION shape_hata01_hata[1];
+
+// GLOBAL: SADX 0x03c87740
+struct NJS_MOTION shape_hata02_hata02[1];
+
+// GLOBAL: SADX 0x03c88ae0
+struct NJS_MOTION shape_lighthata_lump[1];
+
+// GLOBAL: SADX 0x03c89250
+struct childtaskset cts_tpp[3];
+
+// GLOBAL: SADX 0x03e303ac
+struct NJS_TEXLIST texlist_neon1;
+
+// GLOBAL: SADX 0x03e303b4
+struct NJS_TEXLIST texlist_neon2;
+
+// GLOBAL: SADX 0x03e303bc
+struct NJS_TEXLIST texlist_neon3;
+
+// GLOBAL: SADX 0x03e303c4
+struct NJS_TEXLIST texlist_neon4;
+
+// GLOBAL: SADX 0x03e39bec
+struct obj object_tai_dai_tai_dai_tai_dai[1];
+
 // GLOBAL: SADX 0x03e3b074
 struct obj object_asi1_asi_a_asi_a[1];
 
 // GLOBAL: SADX 0x03e3b35c
 struct obj object_asi_asi_3_asi_3[1];
+
+// GLOBAL: SADX 0x03e3ef78
+struct obj object_obj_post1_post1[1];
+
+// GLOBAL: SADX 0x03e3f104
+struct obj object_obj_post4_post4[1];
+
+// GLOBAL: SADX 0x03e42a14
+struct obj object_neon1_neon_a_neon_a[1];
+
+// GLOBAL: SADX 0x03e42d44
+struct obj object_neon2_neon_b_neon_b[1];
+
+// GLOBAL: SADX 0x03e43154
+struct obj object_neon3_neon_c_neon_c[1];
+
+// GLOBAL: SADX 0x03e43614
+struct obj object_neon4_neon_d_neon_d[1];
 
 // GLOBAL: SADX 0x03e437f4
 struct obj object_ss_poster2_poster2[1];
@@ -2120,11 +2291,35 @@ struct obj object_ss_poster4_poster4[1];
 // GLOBAL: SADX 0x03e43bb4
 struct obj object_ss_pstr_03_pstr_03[1];
 
+// GLOBAL: SADX 0x03e446c8
+struct NJS_MODEL model_knbn_01_kanban01_kanban01[1];
+
+// GLOBAL: SADX 0x03e44b28
+struct NJS_MODEL model_knbn_02_kanban02_kanban02[1];
+
+// GLOBAL: SADX 0x03e453a0
+struct NJS_MODEL model_ss_hyd_hydbase[1];
+
+// GLOBAL: SADX 0x03e45c0c
+struct obj object_ss_hyd_hyd[1];
+
 // GLOBAL: SADX 0x03e463a8
 struct obj object_green_g_belt_g_belt[1];
 
+// GLOBAL: SADX 0x03e5269c
+struct obj object_curb_curb01_curb01[1];
+
 // GLOBAL: SADX 0x03e550c8
 struct obj object_green_g_belt_a_g_belt_a[1];
+
+// GLOBAL: SADX 0x03e57994
+struct obj object_hwobj_portlght_portlght[1];
+
+// GLOBAL: SADX 0x03e59350
+struct obj object_stobj_fplant01_fplant01[1];
+
+// GLOBAL: SADX 0x03e59d8c
+struct obj object_stobj_fplant02_fplant02[1];
 
 // GLOBAL: SADX 0x03e5ecbc
 struct NJS_TEXLIST texlist_MRace_Eggmoble;
@@ -2141,6 +2336,18 @@ struct NJS_TEXANIM anim_car_light[1];
 // GLOBAL: SADX 0x03e71478
 struct CCL_INFO ring_colli_info[1];
 
+// GLOBAL: SADX 0x03e715c8
+struct CCL_INFO colli[1];
+
+// GLOBAL: SADX 0x03e71b38
+struct NJS_TEXLIST texlist_clight;
+
+// GLOBAL: SADX 0x03e71b40
+struct NJS_TEXANIM anim_clight[1];
+
+// GLOBAL: SADX 0x03e72490
+struct NJS_TEXLIST texlist_fountain[8];
+
 // GLOBAL: SADX 0x03e728dc
 struct NJS_POINT3 *pScale_Stg05[1];
 
@@ -2156,6 +2363,9 @@ struct NJS_ARGB *pFogTable_Stg05[1];
 // GLOBAL: SADX 0x03f42728
 struct NJS_TEXLIST texlist_obj_mountain;
 
+// GLOBAL: SADX 0x03f42c10
+struct obj object_soto_ec_kazecolijon_ec_kazecolijon[1];
+
 // GLOBAL: SADX 0x03f48f3c
 struct obj object_taoreiwam_clkiri_iwa0a_iwa0a[1];
 
@@ -2164,6 +2374,9 @@ struct NJS_ACTION action_taoreiwam_dai[1];
 
 // GLOBAL: SADX 0x03f4c610
 struct obj object_kumonosu_kumonosu1a_kumonosu1a[1];
+
+// GLOBAL: SADX 0x03f582b0
+struct NJS_MODEL model_haka1a_gaikotu_gaikotu[1];
 
 // GLOBAL: SADX 0x03f5efa4
 struct obj object_saku_saku_saku[1];
@@ -2177,14 +2390,32 @@ struct obj object_sotosaku_qsaku_qsaku[1];
 // GLOBAL: SADX 0x03f71b7c
 struct obj object_fun_test_funkaball_funkaball;
 
+// GLOBAL: SADX 0x03f76b7c
+struct NJS_ACTION action_kasshatyuukei1a_st[1];
+
+// GLOBAL: SADX 0x03f76e68
+struct obj object_danger01_danger1a_danger1a[1];
+
 // GLOBAL: SADX 0x03f86e0c
 struct NJS_ACTION action_shu_jin02m_null1;
+
+// GLOBAL: SADX 0x03f8ea8c
+struct obj object_mt_mtasiba_mtasiba[1];
 
 // GLOBAL: SADX 0x03f8f6f4
 struct obj object_mt_sotosaku_sotosaku[1];
 
 // GLOBAL: SADX 0x03fa221c
 struct obj object_ki01_ki01_ki01[1];
+
+// GLOBAL: SADX 0x03fa5e78
+struct obj object_fujiyou_fujiy_fujiy[1];
+
+// GLOBAL: SADX 0x03fa7d44
+struct obj object_youUPan_yogun_yogun;
+
+// GLOBAL: SADX 0x03fa7e08
+struct NJS_TEXLIST texlist_yougan_anim;
 
 // GLOBAL: SADX 0x03fea620
 struct CCL_INFO object_saku2_info[1];
@@ -2210,26 +2441,59 @@ struct bridge_model_info mountain_bridge_04;
 // GLOBAL: SADX 0x03febdf0
 struct obj *com_objtbl[324];
 
+// GLOBAL: SADX 0x03fec504
+struct CCL_INFO colli_info_L[1];
+
+// GLOBAL: SADX 0x03fec534
+struct CCL_INFO colli_info_M[1];
+
+// GLOBAL: SADX 0x03fec564
+struct CCL_INFO colli_info_S[1];
+
 // GLOBAL: SADX 0x03fec5c4
 struct CCL_INFO wall_info[1];
 
 // GLOBAL: SADX 0x03fec5f4
 struct CCL_INFO object_homing_info[1];
 
+// GLOBAL: SADX 0x040fd3c8
+struct CCL_INFO object_kikanjyu1_info[2];
+
 // GLOBAL: SADX 0x040fde58
 struct NJS_TEXLIST texlist_obj_skydeck;
+
+// GLOBAL: SADX 0x04108de4
+struct obj object_sky_st_houdai_st_houdai[1];
+
+// GLOBAL: SADX 0x041250d4
+struct obj object_sky_obj_maruasi_a_obj_maruasi_a[1];
 
 // GLOBAL: SADX 0x04176ff0
 struct obj object_skymain_kr_skymain_kr[1];
 
+// GLOBAL: SADX 0x041af64c
+struct obj object_skymain_nc_obj_meka_obj_meka[1];
+
 // GLOBAL: SADX 0x041d635c
 struct NJS_ACTION action_skymain_eskwa_u[1];
+
+// GLOBAL: SADX 0x041d6944
+struct NJS_ACTION action_skymain_nc_obj_meka[1];
+
+// GLOBAL: SADX 0x041ec710
+struct CCL_INFO object_cannon_m_info[1];
 
 // GLOBAL: SADX 0x041ec7a0
 struct CCL_INFO object_cannon_s2_info[1];
 
 // GLOBAL: SADX 0x041ec848
 struct CCL_INFO object_cannon_s1_info[1];
+
+// GLOBAL: SADX 0x041ecca8
+struct CCL_INFO object_cannon_s_info[1];
+
+// GLOBAL: SADX 0x0436c46c
+struct NJS_TEXLIST texlist_sw_panel;
 
 // GLOBAL: SADX 0x04376698
 struct NJS_MODEL model_lwobj_snake02_snake02[1];
@@ -2240,20 +2504,74 @@ struct NJS_MODEL model_l02_lightway_h_lightway_h[1];
 // GLOBAL: SADX 0x0438b3d4
 struct obj object_los_nc_gakeshoku_nc_gakeshoku[1];
 
+// GLOBAL: SADX 0x0438cae8
+struct obj object_lwobj_arrow_arrow[1];
+
+// GLOBAL: SADX 0x0438db98
+struct obj object_lwobj_bow_bow[1];
+
+// GLOBAL: SADX 0x0438fe98
+struct obj object_lwobj_lwswitch_button[1];
+
+// GLOBAL: SADX 0x04390408
+struct obj object_lwobj_lwswitch_lwswitch[1];
+
+// GLOBAL: SADX 0x043935a4
+struct obj object_lwobj_lwdoor_lwdoor[1];
+
+// GLOBAL: SADX 0x0439abb0
+struct NJS_MODEL model_lwobj_prop_a01_prop_a01[1];
+
 // GLOBAL: SADX 0x0439b008
 struct NJS_MODEL model_lwobj_prop_a02_prop_a02[1];
+
+// GLOBAL: SADX 0x0439e750
+struct NJS_MODEL model_lwobj_snake00_snake00[1];
+
+// GLOBAL: SADX 0x0439eba4
+struct obj object_lwobj_s_water_s_water[1];
 
 // GLOBAL: SADX 0x0439f114
 struct obj object_ukidai_ukidai_ukidai[1];
 
+// GLOBAL: SADX 0x043a5588
+struct obj object_lwobj_komorebi2_komorebi2[1];
+
+// GLOBAL: SADX 0x043ac340
+struct CCL_INFO c_info01[2];
+
+// GLOBAL: SADX 0x043ac538
+struct CCL_INFO c_info_switch[1];
+
+// GLOBAL: SADX 0x043ac64c
+struct CCL_INFO tap_c_info[1];
+
 // GLOBAL: SADX 0x043ac9f0
 struct CCL_INFO object_c_info[5];
+
+// GLOBAL: SADX 0x043ad7c0
+struct NJS_POINT3 *pScale_Stg08[1];
+
+// GLOBAL: SADX 0x043ad7d0
+struct NJS_POINT2 *pClipSky_Stg08[1];
+
+// GLOBAL: SADX 0x043ad7e0
+struct NJS_POINT2 *pClipMap_Stg08[1];
+
+// GLOBAL: SADX 0x043ad7f0
+struct NJS_ARGB *pFogTable_Stg08[1];
 
 // GLOBAL: SADX 0x043adfcc
 struct NJS_TEXLIST texlist_piece[1];
 
 // GLOBAL: SADX 0x04588d84
 struct obj object_s_yukitsubu_yukitsubu[1];
+
+// GLOBAL: SADX 0x0458e7b0
+struct NJS_TEXLIST texlist_jetbomb;
+
+// GLOBAL: SADX 0x045a8e04
+struct NJS_MODEL model__obj_hasira_c_obj_hasira_c[1];
 
 // GLOBAL: SADX 0x045aa390
 struct obj object_obj_house_d_house_d[1];
@@ -2267,11 +2585,29 @@ struct obj object_obj_house_b_house_b[1];
 // GLOBAL: SADX 0x045ab6bc
 struct obj object_obj_house_a_house_a[1];
 
+// GLOBAL: SADX 0x045b0808
+struct obj object_green_ki_drya_ki_drya[1];
+
+// GLOBAL: SADX 0x045b0dc4
+struct obj object_green_moku_a_moku_a[1];
+
+// GLOBAL: SADX 0x045b1074
+struct obj object_green_moku_b_moku_b[1];
+
 // GLOBAL: SADX 0x045b2db0
 struct obj *DAT_045b2db0;
 
 // GLOBAL: SADX 0x045b3108
 struct NJS_MODEL *DAT_045b3108;
+
+// GLOBAL: SADX 0x045b34c0
+struct obj object_obj_mizuiwa_a_obj_mizuiwa_a[1];
+
+// GLOBAL: SADX 0x045b3920
+struct obj object_obj_mizuiwa_b_obj_mizuiwa_b[1];
+
+// GLOBAL: SADX 0x045b3ed4
+struct obj object_obj_mizuiwa_c_obj_mizuiwa_c[1];
 
 // GLOBAL: SADX 0x045b5cb4
 struct NJS_MODEL model_bm_all1_bomb_bomb[1];
@@ -2279,17 +2615,56 @@ struct NJS_MODEL model_bm_all1_bomb_bomb[1];
 // GLOBAL: SADX 0x045b8004
 struct NJS_MODEL model_jt_all1_bmjet_bmjet;
 
+// GLOBAL: SADX 0x045bdb08
+struct NJS_MODEL model_obj_balloon_01_balloon_01[1];
+
+// GLOBAL: SADX 0x045bea98
+struct NJS_MODEL model_obj_balloon_02_balloon_02[1];
+
+// GLOBAL: SADX 0x045bf868
+struct NJS_MODEL model_obj_balloon_03_balloon_03[1];
+
+// GLOBAL: SADX 0x045c07f8
+struct NJS_MODEL model_obj_balloon_04_balloon_04[1];
+
+// GLOBAL: SADX 0x045cdeb0
+struct obj object_snow_sn_h_hasi01a_sn_h_hasi01a[1];
+
 // GLOBAL: SADX 0x045cf1ec
 struct NJS_ACTION action_obj_m_kusa_a[1];
 
+// GLOBAL: SADX 0x045d0a64
+struct NJS_ACTION action_obj_m_kusa_b[1];
+
 // GLOBAL: SADX 0x045d9e98
 struct NJS_SPRITE sprite_yukikemu;
+
+// GLOBAL: SADX 0x045d9f50
+unsigned char DAT_045d9f50;
+
+// GLOBAL: SADX 0x045d9f51
+unsigned char DAT_045d9f51;
 
 // GLOBAL: SADX 0x045da104
 struct CCL_INFO object_hasihasi_info[1];
 
 // GLOBAL: SADX 0x045daed4
 struct CCL_INFO colli_bomb[1];
+
+// GLOBAL: SADX 0x045db000
+struct NJS_TEXANIM anim_bomb[10];
+
+// GLOBAL: SADX 0x045db378
+struct NJS_POINT3 *pScale_Stg09[1];
+
+// GLOBAL: SADX 0x045db388
+struct NJS_POINT2 *pClipSky_Stg09[1];
+
+// GLOBAL: SADX 0x045db398
+struct NJS_POINT2 *pClipMap_Stg09[1];
+
+// GLOBAL: SADX 0x045db3a8
+struct NJS_ARGB *pFogTable_Stg09[1];
 
 // GLOBAL: SADX 0x045db5c4
 struct NJS_TEXLIST texlist_balls;
@@ -2306,8 +2681,14 @@ struct NJS_TEXLIST texlist_obj_casino2;
 // GLOBAL: SADX 0x04720288
 struct obj object_cas_cl_kinko_wall_kinko_wall[1];
 
+// GLOBAL: SADX 0x04723380
+struct NJS_MODEL model_casi_tuule01a_tuule01a[1];
+
 // GLOBAL: SADX 0x04723680
 struct NJS_MODEL model_casi_tuule01b_tuule01b[1];
+
+// GLOBAL: SADX 0x04726354
+struct NJS_MODEL model_casi_tuule02a_tuule02a[1];
 
 // GLOBAL: SADX 0x047264d8
 struct NJS_MODEL model_casi_tuule02b_tuule02b[1];
@@ -2353,6 +2734,9 @@ struct NJS_MODEL model_casi_stop02b_stop02b[1];
 
 // GLOBAL: SADX 0x047319b0
 struct NJS_MODEL model_casi_stop02b_k_stop02b_k[1];
+
+// GLOBAL: SADX 0x047731a8
+struct NJS_MODEL model_card_doa_a_doa_a[1];
 
 // GLOBAL: SADX 0x04785230
 struct NJS_TEXLIST texlist_obj_casino9;
@@ -2501,6 +2885,9 @@ char DAT_048093d8;
 // GLOBAL: SADX 0x048093d9
 unsigned char DAT_048093d9;
 
+// GLOBAL: SADX 0x048094e4
+struct NJS_SPRITE sprite_black;
+
 // GLOBAL: SADX 0x04809978
 struct CCL_INFO object_c_sphere[1];
 
@@ -2615,6 +3002,9 @@ struct TENSHOUSEINFO tensinfo[1];
 // GLOBAL: SADX 0x0480ba50
 struct CCL_INFO coll_sl[1];
 
+// GLOBAL: SADX 0x0480bf98
+struct CCL_INFO coll_0[4];
+
 // GLOBAL: SADX 0x0480c6c8
 struct CCL_INFO object_c_info_sphere[1];
 
@@ -2636,6 +3026,12 @@ struct NJS_TEXLIST texlist_gachapon;
 // GLOBAL: SADX 0x04812ea8
 struct NJS_TEXLIST texlist_obj_finalegg;
 
+// GLOBAL: SADX 0x04850874
+struct obj object_lv3zc_gate_nullGB_obj_gatela[1];
+
+// GLOBAL: SADX 0x04850f34
+struct obj object_lv3zc_gate_nullGB_obj_gatelax[1];
+
 // GLOBAL: SADX 0x0485455c
 struct obj object_dramcan_can_can;
 
@@ -2645,8 +3041,14 @@ struct obj object_kowarekabe_mae_mae[1];
 // GLOBAL: SADX 0x0488ad3c
 struct obj object_hsgo_hasigo_hasigo[1];
 
+// GLOBAL: SADX 0x0488e5b4
+struct obj object_bl_nc_bllight_nc_bllight[1];
+
 // GLOBAL: SADX 0x048a54a8
 struct NJS_TEXLIST texlist_unyo;
+
+// GLOBAL: SADX 0x048a58f0
+struct CCL_INFO cinfo_drum[1];
 
 // GLOBAL: SADX 0x048a5a74
 struct CCL_INFO uptarget_colli_info[1];
@@ -2656,6 +3058,9 @@ struct obj *DAT_04a08338;
 
 // GLOBAL: SADX 0x04a22560
 struct NJS_ACTION action_hallgate[1];
+
+// GLOBAL: SADX 0x04a27d74
+struct fe_dynamicswk default_dynamicswk;
 
 // GLOBAL: SADX 0x04a27f08
 struct NJS_POINT3 *pScale_Stg12[1];
@@ -2669,6 +3074,24 @@ struct NJS_POINT2 *pClipMap_Stg12[1];
 // GLOBAL: SADX 0x04a27f2c
 struct NJS_ARGB *pFogTable_Stg12[1];
 
+// GLOBAL: SADX 0x04a35410
+struct obj *obj_box[8];
+
+// GLOBAL: SADX 0x04a35664
+struct NJS_TEXLIST texlist_e105;
+
+// GLOBAL: SADX 0x04a36c2c
+struct obj object_e105_105_a_105_a;
+
+// GLOBAL: SADX 0x04a44438
+struct NJS_TEXLIST texlist_HotShelter4;
+
+// GLOBAL: SADX 0x04a568bc
+struct NJS_ACTION action_enecrg_enemycont[1];
+
+// GLOBAL: SADX 0x04a59274
+struct obj object_enecrg_cl_enecrg_cl_enecrg[1];
+
 // GLOBAL: SADX 0x04a5a11c
 struct NJS_TEXLIST texlist_HotShelter2;
 
@@ -2681,14 +3104,29 @@ struct NJS_TEXLIST texlist_shelter_suimen;
 // GLOBAL: SADX 0x04a745d4
 struct obj object_suimen_wt_j2h_wt_j2h[1];
 
+// GLOBAL: SADX 0x04a772c0
+struct NJS_TEXLIST texlist_HotShelter0;
+
+// GLOBAL: SADX 0x04a8d3f4
+struct obj object_lightdw_daiv_daiv[1];
+
 // GLOBAL: SADX 0x04aa1630
 struct NJS_MODEL model_hasi_enhasi_bmerge1[1];
 
 // GLOBAL: SADX 0x04aa1cc0
 struct NJS_MODEL model_hasi_enhasi_enhasi[1];
 
+// GLOBAL: SADX 0x04ad2918
+struct NJS_ACTION action_kowaresuisou_hikari_sin[1];
+
+// GLOBAL: SADX 0x04ad6a3c
+struct obj object_hikari01a_light_light[1];
+
 // GLOBAL: SADX 0x04c2c408
 struct CCL_INFO c_info_a[1];
+
+// GLOBAL: SADX 0x04c2c63c
+struct NJS_SPRITE sprite_fade;
 
 // GLOBAL: SADX 0x04c2d3b8
 struct NJS_TEXLIST texlist_endbg_logo;
@@ -2821,6 +3259,9 @@ struct NJS_MODEL DAT_05a7989c;
 
 // GLOBAL: SADX 0x05a79e44
 struct NJS_MODEL DAT_05a79e44;
+
+// GLOBAL: SADX 0x05a7b20c
+struct NJS_MODEL DAT_05a7b20c;
 
 // GLOBAL: SADX 0x05a7fd5c
 struct NJS_MODEL DAT_05a7fd5c;
@@ -4460,11 +4901,17 @@ unsigned char DAT_05bafb90;
 // GLOBAL: SADX 0x05bafb91
 unsigned char DAT_05bafb91;
 
+// GLOBAL: SADX 0x05bafb94
+unsigned char DAT_05bafb94;
+
 // GLOBAL: SADX 0x05bafb96
 unsigned char DAT_05bafb96;
 
 // GLOBAL: SADX 0x05bafb9d
 unsigned char DAT_05bafb9d;
+
+// GLOBAL: SADX 0x05bafba3
+unsigned char DAT_05bafba3;
 
 // GLOBAL: SADX 0x05bafbc0
 unsigned char DAT_05bafbc0;
@@ -4481,8 +4928,14 @@ unsigned char DAT_05bafbcf;
 // GLOBAL: SADX 0x05bafbd0
 unsigned char DAT_05bafbd0;
 
+// GLOBAL: SADX 0x05bafbd3
+unsigned char DAT_05bafbd3;
+
 // GLOBAL: SADX 0x05bafbd5
 unsigned char DAT_05bafbd5;
+
+// GLOBAL: SADX 0x05bafbde
+unsigned char DAT_05bafbde;
 
 // GLOBAL: SADX 0x05bafc01
 unsigned char DAT_05bafc01;
@@ -4505,6 +4958,9 @@ unsigned char DAT_05bafc11;
 // GLOBAL: SADX 0x05bafc18
 unsigned char DAT_05bafc18;
 
+// GLOBAL: SADX 0x05bafc1d
+unsigned char DAT_05bafc1d;
+
 // GLOBAL: SADX 0x05bafc2a
 unsigned char DAT_05bafc2a;
 
@@ -4526,6 +4982,9 @@ unsigned char DAT_05bafc4a;
 // GLOBAL: SADX 0x05bafc50
 unsigned char DAT_05bafc50;
 
+// GLOBAL: SADX 0x05bafc55
+unsigned char DAT_05bafc55;
+
 // GLOBAL: SADX 0x05bafc80
 unsigned char DAT_05bafc80;
 
@@ -4538,11 +4997,17 @@ unsigned char DAT_05bafc88;
 // GLOBAL: SADX 0x05bafc89
 unsigned char DAT_05bafc89;
 
+// GLOBAL: SADX 0x05bafc90
+unsigned char DAT_05bafc90;
+
 // GLOBAL: SADX 0x05bafc92
 unsigned char DAT_05bafc92;
 
 // GLOBAL: SADX 0x05bafc96
 unsigned char DAT_05bafc96;
+
+// GLOBAL: SADX 0x05bafc99
+unsigned char DAT_05bafc99;
 
 // GLOBAL: SADX 0x05bafcc0
 unsigned char DAT_05bafcc0;
@@ -4558,6 +5023,9 @@ unsigned char DAT_05bafcc9;
 
 // GLOBAL: SADX 0x05bafccc
 unsigned char DAT_05bafccc;
+
+// GLOBAL: SADX 0x05bafcd4
+unsigned char DAT_05bafcd4;
 
 // GLOBAL: SADX 0x05bafce4
 unsigned char DAT_05bafce4;
@@ -5870,6 +6338,9 @@ int DAT_060b8328;
 // GLOBAL: SADX 0x060b832c
 int DAT_060b832c;
 
+// GLOBAL: SADX 0x060b85a8
+struct task *DAT_060b85a8[10];
+
 // GLOBAL: SADX 0x060b867c
 int *DAT_060b867c;
 
@@ -5903,6 +6374,9 @@ int DAT_060b8afc;
 // GLOBAL: SADX 0x060b8b04
 int DAT_060b8b04;
 
+// GLOBAL: SADX 0x060b9068
+int DAT_060b9068;
+
 // GLOBAL: SADX 0x060b907c
 int DAT_060b907c;
 
@@ -5911,6 +6385,12 @@ int DAT_060b9104;
 
 // GLOBAL: SADX 0x060b9138
 int DAT_060b9138;
+
+// GLOBAL: SADX 0x060b9224
+int DAT_060b9224;
+
+// GLOBAL: SADX 0x060b97f4
+struct obj *DAT_060b97f4[4];
 
 // GLOBAL: SADX 0x060b990c
 int DAT_060b990c;
@@ -6651,7 +7131,10 @@ float DAT_060cea14;
 float DAT_060cea18;
 
 // GLOBAL: SADX 0x060cea1c
-int DAT_060cea1c;
+struct task *DAT_060cea1c;
+
+// GLOBAL: SADX 0x060ceab0
+float DAT_060ceab0[96];
 
 // GLOBAL: SADX 0x060cee5c
 struct task *DAT_060cee5c;
@@ -6730,6 +7213,24 @@ struct NJS_TEXLIST *DAT_060cf088;
 
 // GLOBAL: SADX 0x060cf08c
 struct NJS_TEXANIM *DAT_060cf08c;
+
+// GLOBAL: SADX 0x060cf0ec
+float DAT_060cf0ec;
+
+// GLOBAL: SADX 0x060cf0f0
+float DAT_060cf0f0;
+
+// GLOBAL: SADX 0x060cf0f4
+float DAT_060cf0f4;
+
+// GLOBAL: SADX 0x060cf0f8
+float DAT_060cf0f8;
+
+// GLOBAL: SADX 0x060cf0fc
+float DAT_060cf0fc;
+
+// GLOBAL: SADX 0x060cf104
+struct NJS_TEXLIST DAT_060cf104;
 
 // GLOBAL: SADX 0x060cf23c
 int DAT_060cf23c;
@@ -6815,23 +7316,71 @@ int DAT_060d0acc;
 // GLOBAL: SADX 0x060d0ad0
 int DAT_060d0ad0;
 
+// GLOBAL: SADX 0x060d0da0
+float DAT_060d0da0;
+
+// GLOBAL: SADX 0x060d0da4
+float DAT_060d0da4;
+
+// GLOBAL: SADX 0x060d0db8
+char DAT_060d0db8[0x3c];
+
+// GLOBAL: SADX 0x060d0df8
+char DAT_060d0df8[0x4b0];
+
 // GLOBAL: SADX 0x060d12a8
 struct task *DAT_060d12a8;
 
 // GLOBAL: SADX 0x060d12bb
 unsigned char DAT_060d12bb;
 
+// GLOBAL: SADX 0x060d12f0
+struct NJS_SPRITE DAT_060d12f0;
+
 // GLOBAL: SADX 0x060d131b
 char DAT_060d131b;
 
+// GLOBAL: SADX 0x060d1344
+int DAT_060d1344;
+
+// GLOBAL: SADX 0x060dba68
+char DAT_060dba68;
+
+// GLOBAL: SADX 0x060dbbb0
+int DAT_060dbbb0;
+
 // GLOBAL: SADX 0x060dbbe8
 int DAT_060dbbe8;
+
+// GLOBAL: SADX 0x060dbbf4
+float DAT_060dbbf4;
+
+// GLOBAL: SADX 0x060dbbf8
+float DAT_060dbbf8;
+
+// GLOBAL: SADX 0x060dbbfc
+float DAT_060dbbfc;
+
+// GLOBAL: SADX 0x060dbc00
+float DAT_060dbc00;
+
+// GLOBAL: SADX 0x060dbc04
+float DAT_060dbc04;
+
+// GLOBAL: SADX 0x060dbc0c
+struct NJS_TEXLIST *DAT_060dbc0c;
+
+// GLOBAL: SADX 0x060dbc10
+struct NJS_TEXANIM *DAT_060dbc10;
 
 // GLOBAL: SADX 0x060dbc34
 int DAT_060dbc34;
 
 // GLOBAL: SADX 0x060dbc38
 unsigned int DAT_060dbc38;
+
+// GLOBAL: SADX 0x060dbca7
+unsigned char DAT_060dbca7;
 
 // GLOBAL: SADX 0x060dbcb0
 int DAT_060dbcb0;
@@ -6848,6 +7397,12 @@ float DAT_060dc260;
 // GLOBAL: SADX 0x060dc264
 int DAT_060dc264;
 
+// GLOBAL: SADX 0x060dc298
+struct task *DAT_060dc298;
+
+// GLOBAL: SADX 0x060dc29c
+struct task *DAT_060dc29c;
+
 // GLOBAL: SADX 0x060dc408
 long DAT_060dc408[5];
 
@@ -6863,6 +7418,9 @@ struct NJS_SPRITE DAT_060dc468;
 // GLOBAL: SADX 0x060dc4dc
 int DAT_060dc4dc;
 
+// GLOBAL: SADX 0x060dd07c
+int DAT_060dd07c;
+
 // GLOBAL: SADX 0x060dd080
 int DAT_060dd080[16];
 
@@ -6874,6 +7432,42 @@ int DAT_060dd38c;
 
 // GLOBAL: SADX 0x060dd394
 int DAT_060dd394;
+
+// GLOBAL: SADX 0x060dd398
+int DAT_060dd398;
+
+// GLOBAL: SADX 0x060dd39c
+float DAT_060dd39c;
+
+// GLOBAL: SADX 0x060dd3a0
+int DAT_060dd3a0;
+
+// GLOBAL: SADX 0x060dd3a4
+int DAT_060dd3a4;
+
+// GLOBAL: SADX 0x060dd3a8
+int DAT_060dd3a8;
+
+// GLOBAL: SADX 0x060dd3ac
+int DAT_060dd3ac;
+
+// GLOBAL: SADX 0x060dd3b0
+int DAT_060dd3b0;
+
+// GLOBAL: SADX 0x060dd3b4
+int DAT_060dd3b4;
+
+// GLOBAL: SADX 0x060dd3b8
+int DAT_060dd3b8;
+
+// GLOBAL: SADX 0x060dd3bc
+int DAT_060dd3bc;
+
+// GLOBAL: SADX 0x060dd3c0
+int DAT_060dd3c0;
+
+// GLOBAL: SADX 0x060dd3c4
+int DAT_060dd3c4;
 
 // GLOBAL: SADX 0x060dd7a8
 long DAT_060dd7a8;
@@ -7034,6 +7628,9 @@ struct NJS_SPRITE DAT_060eea04;
 // GLOBAL: SADX 0x060eea50
 struct obj *DAT_060eea50;
 
+// GLOBAL: SADX 0x060eea54
+struct NJS_ACTION *DAT_060eea54;
+
 // GLOBAL: SADX 0x060eea5c
 int DAT_060eea5c;
 
@@ -7051,6 +7648,9 @@ struct obj **DAT_060eea88;
 
 // GLOBAL: SADX 0x060eea98
 struct obj *DAT_060eea98;
+
+// GLOBAL: SADX 0x060eea9c
+struct obj *DAT_060eea9c;
 
 // GLOBAL: SADX 0x060eeaa4
 struct obj *DAT_060eeaa4;
@@ -7105,6 +7705,9 @@ void *DAT_06298ca8;
 
 // GLOBAL: SADX 0x06298cac
 int DAT_06298cac;
+
+// GLOBAL: SADX 0x06298cc8
+void *DAT_06298cc8;
 
 // GLOBAL: SADX 0x06298ccc
 void *DAT_06298ccc;

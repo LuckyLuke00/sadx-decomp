@@ -1,5 +1,13 @@
 #include "decls.h"
+static void Normal(struct task *tp);
 static void Initial(struct task *tp);
+
+#pragma optimize("", off)
+// STUB: SADX 0x00856510
+static void Normal(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00856630
 static void Initial(struct task *tp)

@@ -1,4 +1,5 @@
 #include "decls.h"
+struct task *mrp_walk_act_init(long act_num);
 extern short DAT_05b9d744;
 extern unsigned char DAT_05bafce4;
 
@@ -68,6 +69,12 @@ void mrp_walk_man(struct task *task_p)
 	LoopTaskC(task_p);
 }
 
+// STUB: SADX 0x006b04e0
+struct task *mrp_walk_act_init(long act_num)
+{
+	return (struct task *)0;
+}
+
 // FUNCTION: SADX 0x006b05c0
 void mrp_actman(struct task *task_p)
 {
@@ -96,4 +103,16 @@ void mrp_actman(struct task *task_p)
 			var1->work.ul[0] = 0;
 		}
 	}
+}
+
+// STUB: SADX 0x006be3c0
+long mrp_wait(struct task *task_p)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x006be4a0
+long mrp_talk(struct task *task_p)
+{
+	return (long)0;
 }

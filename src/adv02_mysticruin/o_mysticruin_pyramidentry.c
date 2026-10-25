@@ -19,3 +19,12 @@ int CheckOpenState()
 		return 0;
 	}
 }
+
+// FUNCTION: SADX 0x006ac750
+void DesertATask(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
+	ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
+	Free(var1->value.ptr);
+}

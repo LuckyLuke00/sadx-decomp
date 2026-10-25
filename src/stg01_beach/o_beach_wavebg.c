@@ -1,15 +1,12 @@
 #include "decls.h"
+void ObjectBeachWaveBG2(struct task *tp);
+void Exec2(struct task *tp);
 extern struct task *DAT_060ce9f4;
 
 // FUNCTION: SADX 0x007f62d0
 void DestructBeachWaveBG()
 {
 	FreeTask(DAT_060ce9f4);
-}
-
-// STUB: SADX 0x007f62e0
-void Disp2(struct task *tp)
-{
 }
 
 // STUB: SADX 0x007f63b0

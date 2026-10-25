@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x00835aa0
+void Object_Mountain_Untei_Display(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00835d90
 void Object_Mountain_Untei1(struct task *tp)
 {

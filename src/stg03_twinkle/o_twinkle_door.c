@@ -35,6 +35,36 @@ void execTPDoorB(struct task *tp)
 {
 }
 
+// FUNCTION: SADX 0x00813880
+void dispTPDoorWithMirror(struct task *tp)
+{
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		SetObjectTexture();
+		njPushMatrix(NULL);
+		njTranslateV(NULL, &var1->scl);
+		njTranslateV(NULL, &var1->pos);
+		if (var1->ang.y != 0)
+		{
+			njRotateY(NULL, (unsigned short)var1->ang.y);
+		}
+		ds_DrawObjectClip((struct obj *)var1->counter.l, 1.0f);
+		njPopMatrix(1);
+		njPushMatrix(NULL);
+		njTranslateV(NULL, &var1->scl);
+		FUN_0067d830(NULL, var1->pos.x + 50.0f, var1->pos.y, var1->pos.z);
+		if (var1->ang.y != 0)
+		{
+			njRotateY(NULL, (unsigned short)var1->ang.y);
+		}
+		ds_DrawObjectClip((struct obj *)var1->counter.l, 1.0f);
+		njPopMatrix(1);
+	}
+}
+
 // FUNCTION: SADX 0x00813960
 void execTPDoorWithMirror(struct task *tp)
 {

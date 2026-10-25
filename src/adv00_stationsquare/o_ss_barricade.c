@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct obj object_loadsfin_gards_gards[];
 extern unsigned char DAT_05bafb80;
 extern unsigned char DAT_05bafbc0;
 

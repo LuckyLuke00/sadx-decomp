@@ -18,9 +18,20 @@ void HodaiDisp(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x007f1be0
-void FUN_007f1be0(struct task *cTask)
+// FUNCTION: SADX 0x007f1be0
+void FUN_007f1be0(struct task *param_1)
 {
+	struct taskwk *var1 = param_1->twp;
+	struct NJS_POINT3 local_14;
+
+	local_14.x = 0.0f;
+	local_14.y = 6.0f;
+	local_14.z = 0.0f;
+	var1->timer.w[0]++;
+	if ((var1->timer.w[0] & 3) == 0)
+	{
+		CreateSmoke(&var1->pos, &local_14, 9.0f);
+	}
 }
 
 // FUNCTION: SADX 0x007f1c40

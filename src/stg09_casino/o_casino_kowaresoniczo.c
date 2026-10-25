@@ -1,4 +1,6 @@
 #include "decls.h"
+static void DispH(struct task *tp);
+static void ExecC(struct task *tp);
 void FUN_008895d0(struct task *param_1);
 extern void *DAT_060dc258;
 
@@ -15,6 +17,13 @@ void ObjectCasinoCrashSoniczoEnd(struct task *tp)
 	}
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0086bd20
+static void DispH(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0086be30
 void ExecH(struct task *tp)
 {
@@ -29,7 +38,7 @@ void ExecH(struct task *tp)
 }
 
 // FUNCTION: SADX 0x0086bfc0
-void ExecC(struct task *tp)
+static void ExecC(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	if (CheckRangeOutWithR(tp, 62510.0f) == 0)

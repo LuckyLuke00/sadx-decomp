@@ -1,12 +1,13 @@
 #include "decls.h"
+extern void njPushMatrix(float *);
+extern void njTranslateV(float *, struct NJS_POINT3 *);
+extern void njRotateX(float *, unsigned short);
+extern void njRotateY(float *, unsigned short);
+extern void njPopMatrix(int);
+extern char DAT_060dba68;
 extern struct taskwk *DAT_05b42a7c;
 extern int DAT_05b9d838;
 extern struct NJS_SPRITE sprite_yukikemu;
-
-// STUB: SADX 0x0085c0a0
-void Disp1(struct task *tp)
-{
-}
 
 // FUNCTION: SADX 0x0085ced0
 void cDispYukikemu(struct task *ctp)
@@ -34,7 +35,18 @@ void cDispSnow(struct task *ctp)
 {
 }
 
+// STUB: SADX 0x0085d290
+void cDispRock(struct task *ctp)
+{
+}
+
 // STUB: SADX 0x0085d560
 void PlayerJump(struct task *ctp)
 {
+}
+
+// FUNCTION: SADX 0x0085d630
+void ObjectNadareStart()
+{
+	DAT_060dba68 = 1;
 }

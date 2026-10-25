@@ -1,4 +1,5 @@
 #include "decls.h"
+void dummytarget_make_crushdata(struct dummy_crushwk **crushwk_pp, struct obj *obj);
 extern void dummytarget_init(struct task *task_p);
 extern void FUN_007d21b0(void *param_1);
 extern long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id);
@@ -86,9 +87,18 @@ void dummytarget_draw_crush(struct task *task_p)
 {
 }
 
-// STUB: SADX 0x00894ef0
+// FUNCTION: SADX 0x00894ef0
 void dummytarget_end(struct task *task_p)
 {
+	struct taskwk *var1 = task_p->ptp->twp;
+	struct taskwk *var2 = task_p->twp;
+
+	if (var2->counter.ptr != 0)
+	{
+		Free(var2->counter.ptr);
+	}
+
+	var1->timer.ptr = 0;
 }
 
 // STUB: SADX 0x00894f20

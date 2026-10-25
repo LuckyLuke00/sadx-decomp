@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 
 // FUNCTION: SADX 0x006bfb10
 void LampDisplayer(struct task *tp)
@@ -31,7 +32,31 @@ void LampDisplayer(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x006bfc00
+// FUNCTION: SADX 0x006bfc00
 void ObjectPastKnucklesLamp(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		switch (var1->mode)
+		{
+		case 0:
+			tp->disp = LampDisplayer;
+			var1->mode = 1;
+			break;
+		case 1:
+			{
+				int var2 = rand();
+				float var3 = (float)var2 * 3.0517578125e-05f;
+				var3 = var3 * 0.20000000298023224f;
+				var1->scl.x = var3 + 0.800000011920929f;
+				var3 = var3 + 0.10000000149011612f;
+				var1->scl.y = var3;
+				var1->scl.z = var3;
+				LampDisplayer(tp);
+				return;
+			}
+		}
+		LampDisplayer(tp);
+	}
 }
