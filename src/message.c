@@ -26,36 +26,10 @@ void FontInitialLoading()
 {
 }
 
-// FUNCTION: SADX 0x004c1790
+// STUB: SADX 0x004c1790
 int FPpCalcProp(const unsigned char *patt)
 {
-	int local_8;
-
-	local_8 = FUN_004c1800(patt + 2);
-	if (local_8 > 0)
-	{
-		local_8 += 0x10;
-	}
-	else
-	{
-		local_8 = FUN_004c1800(patt + 1);
-		if (local_8 > 0)
-		{
-			local_8 += 8;
-		}
-		else
-		{
-			local_8 = FUN_004c1800(patt);
-			if (local_8 > 0)
-			{
-			}
-			else
-			{
-				local_8 = 0xc;
-			}
-		}
-	}
-	return local_8;
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x004c1800

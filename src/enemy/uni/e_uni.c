@@ -99,13 +99,9 @@ void FUN_005caab0(struct task *tp, struct task *param_2)
 {
 }
 
-// FUNCTION: SADX 0x005cad80
+// STUB: SADX 0x005cad80
 void FUN_005cad80(struct task *param_1, struct taskwk *param_2, struct motionwk *param_3)
 {
-	((void (*)(struct task *, struct taskwk *, struct motionwk *))FUN_005b5aa0)(param_1, param_2, param_3);
-	DeadOut(param_1);
-	param_1->exec = FreeTaskC;
-	FUN_005e5770(param_1);
 }
 
 // FUNCTION: SADX 0x005cadc0

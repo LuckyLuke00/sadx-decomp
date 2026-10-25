@@ -74,10 +74,9 @@ void FUN_0055f990(struct task *task)
 {
 }
 
-// FUNCTION: SADX 0x0055f9e0
+// STUB: SADX 0x0055f9e0
 void FUN_0055f9e0(struct task *param_1)
 {
-	((void (*)())inputhook_end)();
 }
 
 // STUB: SADX 0x0055f9f0

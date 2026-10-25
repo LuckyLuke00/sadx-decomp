@@ -17,11 +17,7 @@ void SSTwrouka(struct task *tp)
 {
 }
 
-// FUNCTION: SADX 0x00682040
+// STUB: SADX 0x00682040
 void CreateSSTwrouka()
 {
-	if (*(char *)&DAT_05b9d744 == 5)
-	{
-		CreateElementalTask(2, 3, SSTwrouka);
-	}
 }

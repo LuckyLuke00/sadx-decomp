@@ -55,27 +55,9 @@ void Chaos2BallExplode(struct task *tp)
 	Chaos2BallExplodeDisplay(tp);
 }
 
-// FUNCTION: SADX 0x006e7940
+// STUB: SADX 0x006e7940
 void dispMiniBallSprite(struct taskwk *twp)
 {
-	struct NJS_ARGB var1;
-	___njColorBlendingMode(0, 10);
-	___njColorBlendingMode(1, 10);
-	___njSetConstantMaterial(&DAT_0286f1d8);
-	njPushMatrix((float *)0);
-	if (*(int *)((char *)DAT_05b42a7c + 0x18) != 0)
-	{
-		njRotateY((float *)0, (unsigned short)*(short *)((char *)DAT_05b42a7c + 0x18));
-	}
-	if (*(int *)((char *)DAT_05b42a7c + 0x14) != 0)
-	{
-		njRotateX((float *)0, (unsigned short)*(short *)((char *)DAT_05b42a7c + 0x14));
-	}
-	late_DrawSprite3D(&sprite_c2_ball, (int)twp->counter.f, 0x30, 4);
-	njPopMatrix(1);
-	ResetMaterial();
-	___njColorBlendingMode(0, 8);
-	___njColorBlendingMode(1, 6);
 }
 
 // FUNCTION: SADX 0x006e7c60

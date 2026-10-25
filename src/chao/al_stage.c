@@ -49,42 +49,9 @@ void FUN_0043e050()
 	}
 }
 
-// FUNCTION: SADX 0x0043e060
+// STUB: SADX 0x0043e060
 void AL_CheckEggHold()
 {
-	switch (GetHoldingItemIDP(0))
-	{
-	case 11:
-		if (!SeqCheckFlag(0x51))
-		{
-			SetHoldingItemIDP(0, 0);
-			if (((struct chao_save_info *(*)(long, long))AL_SetHoldingEggBM)(0xd, 5))
-			{
-				FUN_004f5550(0x51);
-			}
-		}
-		break;
-	case 10:
-		if (!SeqCheckFlag(0x50))
-		{
-			SetHoldingItemIDP(0, 0);
-			if (((struct chao_save_info *(*)(long, long))AL_SetHoldingEggBM)(0x37, 6))
-			{
-				FUN_004f5550(0x50);
-			}
-		}
-		break;
-	case 5:
-		if (!SeqCheckFlag(0x4f))
-		{
-			SetHoldingItemIDP(0, 0);
-			if (((struct chao_save_info *(*)(long, long))AL_SetHoldingEggBM)(0x36, 4))
-			{
-				FUN_004f5550(0x4f);
-			}
-		}
-		break;
-	}
 }
 
 // FUNCTION: SADX 0x0043e110

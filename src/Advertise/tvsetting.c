@@ -7,23 +7,10 @@ void FUN_005fd320(struct task *param_1);
 void FUN_005fd760(struct task *param_1);
 extern struct task *DAT_05edd9a0;
 
-// FUNCTION: SADX 0x005fd240
+// STUB: SADX 0x005fd240
 struct task *FUN_005fd240(struct ModeSelPrmType *param_1)
 {
-	void *local_cg;
-	struct task *local_8g;
-
-	local_8g = CreateElementalTask(0, 4, FUN_005fd320);
-	DAT_05edd9a0 = local_8g;
-	if (DAT_05edd9a0)
-	{
-		local_cg = CAlloc(1, 0x38);
-		local_8g->awp = (struct anywk *)local_cg;
-		((void (*)(struct task *, struct ModeSelPrmType *))SetAdvaTvSettingTask)(local_8g, param_1);
-		local_8g->exec = FUN_005fd320;
-		local_8g->disp = FUN_005fd760;
-	}
-	return local_8g;
+	return (struct task *)0;
 }
 
 // STUB: SADX 0x005fd2b0

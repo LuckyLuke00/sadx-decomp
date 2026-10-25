@@ -94,15 +94,9 @@ void InitItemBoxManager()
 	DAT_05edbe80 = -1.0f;
 }
 
-// FUNCTION: SADX 0x005b6740
+// STUB: SADX 0x005b6740
 void EntryItemBoxPanel(long panel)
 {
-	*(long *)(0x5edbe94 + DAT_05edbe8c * 0x10) = panel;
-	*(float *)(0x5edbe98 + DAT_05edbe8c * 0x10) = -60.0f;
-	*(float *)(0x5edbe9c + DAT_05edbe8c * 0x10) = 2.0f;
-	*(int *)(0x5edbea0 + DAT_05edbe8c * 0x10) = DAT_05edbfe0;
-	DAT_05edbe8c = DAT_05edbe8c + 1;
-	DAT_05edbe88 = 1;
 }
 
 // STUB: SADX 0x005b67b0

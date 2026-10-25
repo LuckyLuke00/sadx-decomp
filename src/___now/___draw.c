@@ -94,7 +94,7 @@ extern float DAT_0629c6f0;
 extern int DAT_05b39e2c;
 extern int DAT_05cd4078;
 void FUN_00598720(int param_1);
-static int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
+int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
 extern NJS_ARGB DAT_05b3df28;
 extern float DAT_05b3df3c;
 
@@ -266,22 +266,13 @@ int FUN_004a0620(int param_1)
 	return local_10;
 }
 
-// FUNCTION: SADX 0x004a0690
+// STUB: SADX 0x004a0690
 void late_ReleaseTexture(NJS_TEXLIST *tl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
-
-	if (isTextureNG(tl, 0))
-	{
-		return;
-	}
-	njReleaseTexture(tl);
 }
 
 // FUNCTION: SADX 0x004a06c0
-static int isTextureNG(struct NJS_TEXLIST *tl, int numChk)
+int isTextureNG(struct NJS_TEXLIST *tl, int numChk)
 {
 	struct NJS_TEXLIST *local_8g;
 	unsigned int local_cj;
@@ -429,103 +420,15 @@ void ___SAnjSimpleDrawObject(struct obj *obj)
 }
 
 __declspec(safebuffers)
-// FUNCTION: SADX 0x004a0ae0
+// STUB: SADX 0x004a0ae0
 void ___dsDrawModel(NJS_MODEL *model)
 {
-	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
-
-	if ((((DAT_025acd84 & 2) >> 1) != 0))
-	{
-		if ((1 & DAT_025acd84) != 0)
-		{
-			if (!DAT_05b3e065)
-			{
-				if (0 != 0)
-				{
-					DAT_025acd84 = DAT_025acd84 | 2;
-					local_10.local_d = DAT_025acd84;
-				}
-				else
-				{
-					DAT_025acd84 = 0xfd & DAT_025acd84;
-					local_10.local_d = DAT_025acd84;
-				}
-				*(float *)&DAT_05b3df40 = -47952.0f;
-				late_DrawModel(model, 1);
-				if (1)
-				{
-					DAT_025acd84 |= 2;
-					local_10.local_e = DAT_025acd84;
-				}
-				else
-				{
-					DAT_025acd84 = DAT_025acd84 & 0xfd;
-					local_10.local_e = DAT_025acd84;
-				}
-			}
-		}
-	}
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0))
-	{
-		return;
-	}
-	if (((unsigned int)model < 0x100000) == 0)
-	{
-		if ((signed char)DAT_02608e24 && DAT_05cd4078 <= 0)
-		{
-			dsSimpleDrawModel(model);
-		}
-		else
-		{
-			njDrawModel(model);
-		}
-	}
 }
 
 __declspec(safebuffers)
-// FUNCTION: SADX 0x004a0c10
+// STUB: SADX 0x004a0c10
 void ___dsDrawObject(struct obj *obj)
 {
-	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
-
-	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
-	{
-		if (0)
-		{
-			DAT_025acd84 |= 2;
-			local_10.local_d = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 &= 0xfd;
-			local_10.local_d = DAT_025acd84;
-		}
-		*(float *)&DAT_05b3df40 = -47952.0f;
-		late_DrawObject(obj, 1);
-		if (1 != 0)
-		{
-			DAT_025acd84 = DAT_025acd84 | 2;
-			local_10.local_e = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_10.local_e = DAT_025acd84;
-		}
-	}
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0) != 0)
-	{
-		return;
-	}
-	___DrawObject(obj);
 }
 
 // FUNCTION: SADX 0x004a0d10
@@ -766,98 +669,15 @@ void ___DrawObject(struct obj *obj)
 }
 
 __declspec(safebuffers)
-// FUNCTION: SADX 0x004a1290
+// STUB: SADX 0x004a1290
 void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 {
-	struct { float local_14; short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_14;
-	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
-	{
-		if (0)
-		{
-			DAT_025acd84 |= 2;
-			local_14.local_d = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 &= 0xfd;
-			local_14.local_d = DAT_025acd84;
-		}
-		*(float *)&DAT_05b3df40 = -47952.0f;
-		late_DrawModelClip(mdl, 1, clipScl);
-		if (1)
-		{
-			DAT_025acd84 |= 2;
-			local_14.local_e = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 &= 0xfd;
-			local_14.local_e = DAT_025acd84;
-		}
-	}
-	if (DAT_05b9d838 != 0) return;
-	if (isTextureNG(DAT_05b3ded0, 0) != 0) return;
-	if (mdl != 0)
-	{
-		if (clipScl == 0.0 || *(float *)((char *)mdl + 0x24) == 0.0 ||
-			dsCheckViewV((NJS_POINT3 *)((char *)mdl + 0x18),
-				(local_14.local_14 = *(float *)((char *)mdl + 0x24) * clipScl)) != 0)
-		{
-			if (((unsigned int)mdl < 0x100000) == 0)
-			{
-				if ((signed char)DAT_02608e24 != 0 && DAT_05cd4078 <= 0)
-				{
-					dsSimpleDrawModel(mdl);
-				}
-				else
-				{
-					njDrawModel(mdl);
-				}
-			}
-		}
-	}
 }
 
 __declspec(safebuffers)
-// FUNCTION: SADX 0x004a1420
+// STUB: SADX 0x004a1420
 void ds_DrawObjectClip(struct obj *obj, float clipScl)
 {
-	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
-
-	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
-	{
-		if (0)
-		{
-			DAT_025acd84 = DAT_025acd84 | 2;
-			local_10.local_d = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_10.local_d = DAT_025acd84;
-		}
-		*(float *)&DAT_05b3df40 = -47952.0f;
-		late_DrawObjectClip(obj, 1, clipScl);
-		if (1)
-		{
-			DAT_025acd84 = DAT_025acd84 | 2;
-			local_10.local_e = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_10.local_e = DAT_025acd84;
-		}
-	}
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0) != 0)
-	{
-		return;
-	}
-	DrawObjectClip(obj, clipScl);
 }
 
 // FUNCTION: SADX 0x004a1e90
@@ -884,17 +704,9 @@ void dsDrawModel_S(struct NJS_MODEL *m)
 	}
 }
 
-// FUNCTION: SADX 0x004a1fb0
+// STUB: SADX 0x004a1fb0
 void dsOpenDraw_S()
 {
-	do
-	{
-		if (DAT_05cd4078 != 0)
-		{
-			FUN_00598720(0);
-		}
-	}
-	while (0);
 }
 
 // FUNCTION: SADX 0x004a1fd0
@@ -906,208 +718,36 @@ void ___njDrawSprite3D(struct NJS_SPRITE *sp, int n, unsigned long atr)
 	late_DrawSprite3D(sp, n, atr, local_8);
 }
 
-// FUNCTION: SADX 0x004a2010
+// STUB: SADX 0x004a2010
 void ___njDrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
-	int local_10s;
-	int local_14h;
-	int local_8g;
-	int local_18;
-	int local_cj;
-	int local_1c;
-
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if ((atr & 0x80000000) != 0)
-	{
-		if (isTextureNG(DAT_05b3ded0, 0) != 0)
-		{
-			return;
-		}
-		if (isTextureNG(DAT_05b3ded0, 1) != 0)
-		{
-			return;
-		}
-	}
-	njDrawLine3D(p, n, atr);
 }
 
-// FUNCTION: SADX 0x004a2080
+// STUB: SADX 0x004a2080
 void ___njDrawTriangle3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
-	int local_8g;
-	int local_10m;
-	int local_18;
-	int local_14;
-	int local_1c;
-	int local_cj;
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if ((atr & 0x80000000) != 0)
-	{
-		if (isTextureNG(DAT_05b3ded0, 0) != 0)
-		{
-			return;
-		}
-		if (isTextureNG(DAT_05b3ded0, 1) != 0)
-		{
-			return;
-		}
-	}
-	njDrawTriangle3D(p, n, atr);
 }
 
-// FUNCTION: SADX 0x004a20f0
+// STUB: SADX 0x004a20f0
 void ___njDrawPolygon2D(struct NJS_POINT2COL *p, int n, float pri, unsigned long atr)
 {
-	int local_14h;
-	int local_8g;
-	int local_1c;
-	int local_18;
-	int local_10m;
-	int local_cj;
-
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if ((atr & 0x80000000) != 0)
-	{
-		if (isTextureNG(DAT_05b3ded0, 0) != 0)
-		{
-			return;
-		}
-		if (isTextureNG(DAT_05b3ded0, 1) != 0)
-		{
-			return;
-		}
-	}
-	do
-	{
-		FUN_00422560(7);
-		njSetZUpdateMode(0);
-	} while (0);
-	___SAnjDrawPolygon2D(p, n, pri, atr);
-	njSetZUpdateMode(1);
-	npSetZCompare();
 }
 
-// FUNCTION: SADX 0x004a2180
+// STUB: SADX 0x004a2180
 void ___njDrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
-	char local_1c[0x14];
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if ((atr & 0x80000000) != 0)
-	{
-		if (isTextureNG(DAT_05b3ded0, 0) != 0)
-		{
-			return;
-		}
-		if (isTextureNG(DAT_05b3ded0, 1) != 0)
-		{
-			return;
-		}
-	}
-	njDrawPolygon3D(p, n, atr);
 }
 
 __declspec(safebuffers)
-// FUNCTION: SADX 0x004a21f0
+// STUB: SADX 0x004a21f0
 void dsDrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr)
 {
-	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
-
-	if (((DAT_025acd84 & 2) >> 1) != 0 && (DAT_025acd84 & 1) != 0 && DAT_05b3e065 == 0)
-	{
-		if (0)
-		{
-			DAT_025acd84 = DAT_025acd84 | 2;
-			local_10.local_d = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_10.local_d = DAT_025acd84;
-		}
-		*(float *)&DAT_05b3df40 = -47952.0f;
-		late_DrawSprite2D(sp, n, pri, atr, 1);
-		if (1)
-		{
-			DAT_025acd84 = DAT_025acd84 | 2;
-			local_10.local_e = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 = DAT_025acd84 & 0xfd;
-			local_10.local_e = DAT_025acd84;
-		}
-	}
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if ((unsigned int)sp < 0x100000)
-	{
-		return;
-	}
-	if (isTextureNG(sp->tlist, 1) != 0)
-	{
-		return;
-	}
-	njDrawSprite2D(sp, n, pri, atr);
 }
 
 __declspec(safebuffers)
-// FUNCTION: SADX 0x004a2320
+// STUB: SADX 0x004a2320
 void dsDrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr)
 {
-	struct { short local_10; unsigned char local_e; unsigned char local_d; int local_c; int local_8; int local_4; } local_10;
-
-	if ((((DAT_025acd84 & 2) >> 1) != 0) && ((DAT_025acd84 & 1) != 0) && DAT_05b3e065 == 0)
-	{
-		if (0)
-		{
-			DAT_025acd84 |= 2;
-			local_10.local_d = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 &= 0xfd;
-			local_10.local_d = DAT_025acd84;
-		}
-		*(float *)&DAT_05b3df40 = -47952.0f;
-		late_DrawSprite3D(sp, n, atr, 1);
-		if (1)
-		{
-			DAT_025acd84 |= 2;
-			local_10.local_e = DAT_025acd84;
-		}
-		else
-		{
-			DAT_025acd84 &= 0xfd;
-			local_10.local_e = DAT_025acd84;
-		}
-	}
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if ((unsigned long)sp < 0x100000)
-	{
-		return;
-	}
-	if (isTextureNG(sp->tlist, 1) != 0)
-	{
-		return;
-	}
-	njDrawSprite3D(sp, n, atr);
 }
 
 // FUNCTION: SADX 0x004a2660
@@ -1309,36 +949,9 @@ int late_setPo3D(struct LATE_PO3D_RQ *s, NJS_POINT3COL *p, int n, unsigned long 
 	return (int)0;
 }
 
-// FUNCTION: SADX 0x004a4000
+// STUB: SADX 0x004a4000
 void nlateBegin(int flgs)
 {
-	NJS_ARGB *local_8;
-
-	if ((flgs & 1) == 0)
-	{
-		do
-		{
-			FUN_00422560(3);
-			njSetZUpdateMode(0);
-		} while (0);
-	}
-	if ((flgs & 0x10) != 0)
-	{
-		do
-		{
-			FUN_00422560(7);
-			njSetZUpdateMode(0);
-		} while (0);
-	}
-	if ((flgs & 2) != 0)
-	{
-		local_8 = &DAT_05b3df28;
-	}
-	else
-	{
-		local_8 = &DAT_05b39de4;
-	}
-	njSetConstantMaterial(local_8);
 }
 
 // STUB: SADX 0x004a4070
@@ -1371,38 +984,14 @@ void late_SetFunc(void (*fnc)(void *), void *arg, float zprio, int flgs)
 {
 }
 
-// FUNCTION: SADX 0x004a47d0
+// STUB: SADX 0x004a47d0
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0) != 0)
-	{
-		return;
-	}
-	lateDrawObject(obj, flgs, clipScl);
 }
 
-// FUNCTION: SADX 0x004a4820
+// STUB: SADX 0x004a4820
 void late_DrawObject(struct obj *obj, int flgs)
 {
-	float local_10;
-	int local_ci;
-	int local_8g;
-	if (DAT_05b9d838)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0))
-	{
-		return;
-	}
-	lateDrawObject(obj, flgs, DAT_05b3df44);
 }
 
 // STUB: SADX 0x004a4ff0
@@ -1415,34 +1004,14 @@ void late_DrawModel(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
-// FUNCTION: SADX 0x004a51f0
+// STUB: SADX 0x004a51f0
 void late_DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
-	if (DAT_05b9d838 != 0)
-		return;
-	if (isTextureNG(DAT_05b3ded0, 0) != 0)
-		return;
-	DrawObjectClipEx(obj, flgs, clipScl);
 }
 
-// FUNCTION: SADX 0x004a5240
+// STUB: SADX 0x004a5240
 void late_DrawObjectEx(struct obj *obj, int flgs)
 {
-	int local_10;
-	int local_ci;
-	int local_8g;
-	if (DAT_05b9d838)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0))
-	{
-		return;
-	}
-	DrawObjectClipEx(obj, flgs, DAT_05b3df44);
 }
 
 // STUB: SADX 0x004a5a10
@@ -1455,34 +1024,14 @@ void late_DrawModelClipEx(struct NJS_MODEL *mdl, int flgs, float clipScl)
 {
 }
 
-// FUNCTION: SADX 0x004a5c80
+// STUB: SADX 0x004a5c80
 void FUN_004a5c80(struct obj *param_1, int param_2)
 {
-	int local_10;
-	int local_ci;
-	int local_8g;
-	if (DAT_05b9d838)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0))
-	{
-		return;
-	}
-	DrawObjectMS(param_1, param_2, DAT_05b3df44);
 }
 
-// FUNCTION: SADX 0x004a5cd0
+// STUB: SADX 0x004a5cd0
 void late_DrawObjectClipMS(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
-	if (DAT_05b9d838 != 0)
-		return;
-	if (isTextureNG(DAT_05b3ded0, 0) != 0)
-		return;
-	DrawObjectMS(obj, flgs, clipScl);
 }
 
 // STUB: SADX 0x004a64a0
@@ -1502,34 +1051,14 @@ float FUN_004a6900(void *param_1, float *param_2)
 	return -local_8;
 }
 
-// FUNCTION: SADX 0x004a6940
+// STUB: SADX 0x004a6940
 void late_DrawObjectMesh(struct obj *obj, int flgs)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
-	if (DAT_05b9d838)
-	{
-		return;
-	}
-	if (isTextureNG(DAT_05b3ded0, 0))
-	{
-		return;
-	}
-	DrawObjectClipMesh(obj, flgs, DAT_05b3df44);
 }
 
-// FUNCTION: SADX 0x004a6990
+// STUB: SADX 0x004a6990
 void late_DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
-	if (DAT_05b9d838 != 0)
-		return;
-	if (isTextureNG(DAT_05b3ded0, 0) != 0)
-		return;
-	DrawObjectClipMesh(obj, flgs, clipScl);
 }
 
 // STUB: SADX 0x004a7160
@@ -1875,18 +1404,9 @@ void late_DrawMotionClipMesh(struct obj *object, struct NJS_MOTION *motion, floa
 	DrawMotion(object, motion, frame, flgs, clipScl, DrawModelMesh);
 }
 
-// FUNCTION: SADX 0x004a88c0
+// STUB: SADX 0x004a88c0
 void FUN_004a88c0(NJS_ACTION *param_1, float param_2)
 {
-	float local_8g;
-	float local_14h;
-	float local_1ci;
-	float local_18;
-	float local_20;
-	float local_cj;
-	float local_10m;
-
-	DrawAction(param_1, param_2, 0, 0.0f, ___DrawModel);
 }
 
 // STUB: SADX 0x004a88f0
@@ -1894,58 +1414,24 @@ void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, 
 {
 }
 
-// FUNCTION: SADX 0x004a89c0
+// STUB: SADX 0x004a89c0
 void ___dsAction(struct NJS_ACTION *param_1, float param_2, float param_3)
 {
-	int local_8g;
-	int local_14h;
-	int local_1ci;
-	int local_18;
-	int local_20;
-	int local_cj;
-	int local_10m;
-	DrawAction(param_1, param_2, 0, param_3, ___DrawModel);
 }
 
-// FUNCTION: SADX 0x004a89f0
+// STUB: SADX 0x004a89f0
 void FUN_004a89f0(NJS_ACTION *param_1, float param_2, int param_3)
 {
-	float local_8g;
-	float local_14h;
-	int local_1ci;
-	int local_18;
-	int local_20;
-	int local_cj;
-	int local_10m;
-
-	DrawAction(param_1, param_2, param_3, 0.0, lateDrawModel);
 }
 
-// FUNCTION: SADX 0x004a8a20
+// STUB: SADX 0x004a8a20
 void late_Action(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
-	int local_8g;
-	int local_14h;
-	int local_1ci;
-	int local_18;
-	int local_20;
-	int local_cj;
-	int local_10m;
-	DrawAction(param_1, param_2, param_3, param_4, lateDrawModel);
 }
 
-// FUNCTION: SADX 0x004a8a50
+// STUB: SADX 0x004a8a50
 void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3)
 {
-	int local_8g;
-	int local_14h;
-	int local_1ci;
-	int local_18;
-	int local_20;
-	int local_cj;
-	int local_10m;
-
-	DrawAction(param_1, param_2, param_3, 0.0f, DrawModelEx);
 }
 
 // FUNCTION: SADX 0x004a8a80
@@ -1955,58 +1441,24 @@ void late_ActionEx(NJS_ACTION *param_1, float param_2, int param_3, float param_
 	DrawAction(param_1, param_2, param_3, param_4, (void *)DrawModelEx);
 }
 
-// FUNCTION: SADX 0x004a8ab0
+// STUB: SADX 0x004a8ab0
 void late_ActionMS(NJS_ACTION *action, float frame, int flgs)
 {
-	float local_10s;
-	int local_8g;
-	int local_14h;
-	int local_1ci;
-	int local_18;
-	int local_20;
-	int local_cj;
-	DrawAction(action, frame, flgs, 0.0f, DrawModelMS);
 }
 
-// FUNCTION: SADX 0x004a8ae0
+// STUB: SADX 0x004a8ae0
 void FUN_004a8ae0(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
-	int local_8g;
-	int local_14h;
-	int local_1ci;
-	int local_18;
-	int local_20;
-	int local_cj;
-	int local_10m;
-
-	DrawAction(param_1, param_2, param_3, param_4, DrawModelMS);
 }
 
-// FUNCTION: SADX 0x004a8b10
+// STUB: SADX 0x004a8b10
 void FUN_004a8b10(NJS_ACTION *param_1, float param_2, int param_3)
 {
-	float local_8g;
-	float local_14h;
-	float local_1ci;
-	float local_18;
-	float local_20;
-	int local_cj;
-	int local_10m;
-
-	DrawAction(param_1, param_2, param_3, 0.0, DrawModelMesh);
 }
 
-// FUNCTION: SADX 0x004a8b40
+// STUB: SADX 0x004a8b40
 void late_ActionMesh(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
-	int local_20;
-	int local_8g;
-	int local_10m;
-	int local_18;
-	int local_14;
-	int local_1c;
-	int local_cj;
-	DrawAction(param_1, param_2, param_3, param_4, DrawModelMesh);
 }
 
 // STUB: SADX 0x004a8b70

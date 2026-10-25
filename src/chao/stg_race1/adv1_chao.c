@@ -5,10 +5,10 @@ extern int DAT_05b332a8;
 extern char DAT_05b33291;
 void FUN_00484bd0();
 
-// FUNCTION: SADX 0x00484ac0
+// STUB: SADX 0x00484ac0
 void *ADV1_AL_GetRaceTimeRam()
 {
-	return (void *)0x5b33110;
+	return (void *)0;
 }
 
 // FUNCTION: SADX 0x00484ad0

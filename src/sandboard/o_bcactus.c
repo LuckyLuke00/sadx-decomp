@@ -16,8 +16,7 @@ void ObjectBigCactusB(struct task *task_p)
 	MirenInitTask(task_p, &CactusTaskInfo, &DAT_0353aff0);
 }
 
-// FUNCTION: SADX 0x007e83c0
+// STUB: SADX 0x007e83c0
 void ObjectBigCactusC(struct task *task_p)
 {
-	MirenInitTask(task_p, &CactusTaskInfo, (void *)0x353b030);
 }

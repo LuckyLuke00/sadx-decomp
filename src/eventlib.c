@@ -307,35 +307,9 @@ void FUN_0056a970(unsigned long param_1)
 	DAT_05ccde18 = param_1;
 }
 
-// FUNCTION: SADX 0x0056a980
+// STUB: SADX 0x0056a980
 void EV_Load2(int no)
 {
-	char str[32];
-	DAT_05ad95e1 = 1;
-	if (no < 0)
-	{
-		goto LAB_0056a9d3;
-	}
-	SPrintf(str, "ev%04X.rel", no);
-	ADX_Close();
-	njWaitVSync();
-	if (((int (*)(char *, int))FUN_004c39c0)(str, 5) != -1)
-	{
-LAB_0056a9d3:
-		DAT_05ccddf8 = DAT_02603708[no];
-		DAT_05ccddfd = 1;
-		DAT_05ccde04 = 0;
-		DAT_05ccde00 = *(int *)DAT_05ccddf8;
-		DAT_05ccde08 = no;
-		PadReadOff();
-		FUN_0056aa50((int *)*(int *)(DAT_05ccddf8 + 4));
-		if (DAT_05ccde00 != 0)
-		{
-			((void (*)(int))DAT_05ccde00)(0);
-		}
-	}
-	ADXTaskInit();
-	DAT_05ad95e1 = 0;
 }
 
 // FUNCTION: SADX 0x0056aa50

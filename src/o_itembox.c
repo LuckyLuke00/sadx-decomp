@@ -60,37 +60,14 @@ void Dead_ItemBox(struct task *tp)
 {
 }
 
-// FUNCTION: SADX 0x005de1f0
+// STUB: SADX 0x005de1f0
 void ef_speed(struct taskwk *twp)
 {
-	struct colliwk *local_8;
-
-	local_8 = twp->cwp->hit_cwp;
-	GetSpeedUpP(*(unsigned char *)((char *)local_8->mytask->twp + 8));
-	do
-	{
-		if (GetPlayerNumber() == 6)
-		{
-			dsPlay_oneshot(0x51b, 0, 0, 0);
-		}
-	}
-	while (0);
-	dsPlay_oneshot(0xb, 0, 0, 0);
 }
 
-// FUNCTION: SADX 0x005de260
+// STUB: SADX 0x005de260
 void ef_5ring(struct taskwk *twp)
 {
-	AddNumRing(5);
-	do
-	{
-		if (GetPlayerNumber() == 6)
-		{
-			dsPlay_oneshot(0x51a, 0, 0, 0);
-		}
-	}
-	while (0);
-	dsPlay_oneshot(0xb, 0, 0, 0);
 }
 
 // STUB: SADX 0x005de2a0

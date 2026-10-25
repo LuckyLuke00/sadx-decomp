@@ -7,11 +7,6 @@ void FUN_00403bb0(int, int, int, int)
 {
 }
 
-// STUB: SADX 0x00404fa0
-void ___SAnjDrawPolygon2D(struct NJS_POINT2COL *p, int n, float pri, unsigned long attr)
-{
-}
-
 // STUB: SADX 0x00405380
 void FUN_00405380(int)
 {
@@ -84,18 +79,8 @@ void njDrawSprite2D(struct NJS_SPRITE *, int, float, unsigned long)
 {
 }
 
-// STUB: SADX 0x00421b30
-void njDrawSprite3D(struct NJS_SPRITE *,int,unsigned long)
-{
-}
-
 // STUB: SADX 0x00422330
 void njDrawPolygon3D(struct NJS_POINT3COL *, int, unsigned long)
-{
-}
-
-// STUB: SADX 0x004223f0
-void njDrawTriangle3D(struct NJS_POINT3COL *,int,unsigned long)
 {
 }
 
@@ -495,12 +480,6 @@ long AL_GetnbPlayer()
 	return (long)0;
 }
 
-// STUB: SADX 0x00443c00
-enum eRaceNum AL_GetRaceNum()
-{
-	return (enum eRaceNum)0;
-}
-
 // STUB: SADX 0x00443c20
 enum eCourseNumDX AL_GetCourseNum()
 {
@@ -654,11 +633,6 @@ void AL_ClearPerceptionAll(struct task *tp)
 
 // STUB: SADX 0x00463840
 void WcConvFromCStr(unsigned short *, const char *, long)
-{
-}
-
-// STUB: SADX 0x00464380
-void AL_BuyoBuyoObject(struct task *tp, struct al_object *pObject)
 {
 }
 
@@ -885,11 +859,6 @@ void LargeTitleBarDisplayer(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00484170
-void AlrFanFan_exe(struct AlrFanFan *___this, struct AlrReal *alrreal)
-{
-}
-
 // STUB: SADX 0x00484af0
 void ADV1_AL_LimitChao()
 {
@@ -902,11 +871,6 @@ void FUN_00484bd0()
 
 // STUB: SADX 0x00486640
 void AlrCam_Exe(struct AlrCam *___this, struct AlrReal *alrreal)
-{
-}
-
-// STUB: SADX 0x00487440
-void Alr_DisconnectObj(struct Alr *___this)
 {
 }
 
@@ -940,28 +904,13 @@ void Alr_Exe(struct Alr *___this, struct AlrRoot *root, int cup)
 {
 }
 
-// STUB: SADX 0x00488160
-void AlrTimer_SetBest(struct AlrTimer *___this, struct AlrMemory *memory, int cup)
-{
-}
-
 // STUB: SADX 0x004881e0
 void AlrTimer_Dsp(struct AlrTimer *___this)
 {
 }
 
-// STUB: SADX 0x00488330
-void AlrRank_CalcRank(struct AlrRank *___this, struct Alr *alr, int look)
-{
-}
-
 // STUB: SADX 0x004886a0
 void AlrRank_Dsp(struct AlrRank *___this, struct Alr *alr, int look)
-{
-}
-
-// STUB: SADX 0x00488980
-void AlrRank_DspHeadYa(struct AlrRank *___this, int num, struct NJS_POINT3 *position)
 {
 }
 
@@ -981,16 +930,6 @@ void FUN_004897f0(struct AlrRoot *, struct pathtag **, int, float)
 {
 }
 
-// STUB: SADX 0x00489870
-void AlrWhite_In(int nCount)
-{
-}
-
-// STUB: SADX 0x004898a0
-void AlrWhite_Out(int nCount)
-{
-}
-
 // STUB: SADX 0x004899f0
 void AlrWhite_Init()
 {
@@ -998,11 +937,6 @@ void AlrWhite_Init()
 
 // STUB: SADX 0x00489c00
 void AlrStage00_Exe(struct AlrReal *___this)
-{
-}
-
-// STUB: SADX 0x0048a690
-void AlrConfetti_Init()
 {
 }
 
@@ -1109,11 +1043,6 @@ void CheckEmbleAchievement(struct SAVE_DATA *psd)
 {
 }
 
-// STUB: SADX 0x0049e390
-void GetEmblemofStageClear(struct SAVE_DATA *psd, long chara, long stage, long level)
-{
-}
-
 // STUB: SADX 0x004a0520
 void FUN_004a0520(float, float)
 {
@@ -1134,18 +1063,8 @@ void late_exec()
 {
 }
 
-// STUB: SADX 0x004a4870
-void lateDrawObject(struct obj *obj, int flgs, float clipScl)
-{
-}
-
 // STUB: SADX 0x004a5110
 void lateDrawModel(struct NJS_MODEL *mdl, int flgs)
-{
-}
-
-// STUB: SADX 0x004a5290
-void DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
 {
 }
 
@@ -1154,18 +1073,8 @@ void DrawModelEx(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
-// STUB: SADX 0x004a5d20
-void DrawObjectMS(struct obj *obj, int flgs, float clipScl)
-{
-}
-
 // STUB: SADX 0x004a65c0
 void DrawModelMS(struct NJS_MODEL *mdl, int flgs)
-{
-}
-
-// STUB: SADX 0x004a69e0
-void DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
 {
 }
 
@@ -1335,11 +1244,6 @@ void DrawFileSelCsr(struct FileSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x004b9da0
-void AvaDrawInfo(struct FileSelWk *wkp)
-{
-}
-
 // STUB: SADX 0x004bac60
 void FUN_004bac60()
 {
@@ -1448,12 +1352,6 @@ void CalculatePointNormals(struct NJS_MODEL *dp)
 long MSetPositionWIgnoreAttribute(struct NJS_POINT3 *p, struct NJS_POINT3 *v, struct Angle3 *a, long attrmask, float r)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x004cd6e0
-int VSPrintf(char *s, const char *format, char *arg)
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x004cdc40
@@ -1719,12 +1617,6 @@ void CreateKiran2(struct NJS_POINT3 *pos, float scl, float spd)
 {
 }
 
-// STUB: SADX 0x00551690
-float GetShadowPos(float x, float y, float z, struct Angle3 *ang)
-{
-	return (float)0;
-}
-
 // STUB: SADX 0x00551cf0
 void StaticShadow(struct taskwk *twp, float ypos)
 {
@@ -1881,11 +1773,6 @@ void FUN_00574140(int, float, float, float)
 
 // STUB: SADX 0x00574950
 void ghDrawPvrTexture(int, float, float, float, float, float)
-{
-}
-
-// STUB: SADX 0x00575490
-void DrawShadowWindow(float x, float y, float z, float w, float h)
 {
 }
 
@@ -2490,11 +2377,6 @@ void DrawTrialActSelTimeOrWeight(struct TrialActSelWk *wkp)
 
 // STUB: SADX 0x00607880
 void DrawTrialActSelStage(struct TrialActSelWk *wkp)
-{
-}
-
-// STUB: SADX 0x00607cf0
-void char_sel_exec(struct task *tp)
 {
 }
 
@@ -3457,11 +3339,6 @@ void DrawHasiEnd(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00808fa0
-void DrawGate(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00810f90
 long ChkE104ColliLandXZ(struct NJS_POINT3 *pPos, float fDistChk, float *pfGroundY, struct NJS_POINT3 *pVec)
 {
@@ -3515,11 +3392,6 @@ void ObjectCarManagerRegular(struct task *tp)
 
 // STUB: SADX 0x0081c300
 void CreateCar(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0081eb30
-void ObjectHighwayGreenB(struct task *tp)
 {
 }
 

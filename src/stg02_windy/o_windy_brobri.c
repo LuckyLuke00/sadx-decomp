@@ -29,10 +29,7 @@ void BrokenBridgePos(struct NJS_POINT3 *pos, int flag, struct task *tp)
 {
 }
 
-// FUNCTION: SADX 0x0080e1a0
+// STUB: SADX 0x0080e1a0
 void ObjectWindyBridge(struct task *tp)
 {
-	tp->exec = (void (*)(struct task *))0x80dfc0;
-	tp->disp = (void (*)(struct task *))0x80d5c0;
-	tp->dest = ExplosionRockDestructor;
 }

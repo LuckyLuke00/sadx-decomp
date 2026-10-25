@@ -201,27 +201,9 @@ void EffectDrawRibbon(struct task *tp)
 {
 }
 
-// FUNCTION: SADX 0x005b1820
+// STUB: SADX 0x005b1820
 void EffectDestructRibbon(struct task *tp)
 {
-	struct motionwk *local_8;
-
-	local_8 = tp->mwp;
-	if (local_8->work.ptr != 0)
-	{
-		Free(local_8->work.ptr);
-		local_8->work.ptr = 0;
-	}
-	if (*(int *)&local_8->spd.x != 0)
-	{
-		Free(*(void **)&local_8->spd.x);
-		*(void **)&local_8->spd.x = 0;
-	}
-	if (*(int *)&local_8->spd.y != 0)
-	{
-		Free(*(void **)&local_8->spd.y);
-		*(void **)&local_8->spd.x = 0;
-	}
 }
 
 // STUB: SADX 0x005b18a0

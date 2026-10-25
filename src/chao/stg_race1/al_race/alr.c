@@ -216,11 +216,9 @@ long Alr_SetTaskCommunication(struct Alr *___this, signed char command, struct t
 	return (long)0;
 }
 
-// FUNCTION: SADX 0x004873a0
+// STUB: SADX 0x004873a0
 void FUN_004873a0(void *param_1)
 {
-	*(void **)param_1 = 0;
-	*(void **)((char *)param_1 + 4) = (void *)0x7d21b0;
 }
 
 // STUB: SADX 0x00487aa0

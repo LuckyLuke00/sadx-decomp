@@ -166,26 +166,9 @@ void FUN_005c40f0(struct task *tp)
 {
 }
 
-// FUNCTION: SADX 0x005c42c0
+// STUB: SADX 0x005c42c0
 void FUN_005c42c0(struct obj *param_1)
 {
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	___njSetTexture(&texlist_e_aircraft);
-	njPushMatrix(0);
-	njTranslateV(0, (struct NJS_POINT3 *)param_1->scl);
-	if (param_1->ang[1] != 0)
-	{
-		njRotateY(0, param_1->ang[1]);
-	}
-	if (1)
-	{
-		njRotateY(0, 0x8000);
-	}
-	___dsDrawObject(&object_saru_air[0]);
-	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005c4350

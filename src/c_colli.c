@@ -392,18 +392,9 @@ void FUN_004d52d0(char *param_1, char *param_2, NJS_POINT3 *param_3)
 	}
 }
 
-// FUNCTION: SADX 0x004d5330
+// STUB: SADX 0x004d5330
 void FUN_004d5330(char *param_1, int param_2, struct NJS_POINT3 *param_3)
 {
-	int local_8;
-	local_8 = FUN_004da3f0(param_1);
-	if (local_8 != 0)
-	{
-	}
-	else
-	{
-		SetPlayerPosition(*(char *)((char *)*(int *)(*(int *)(param_2 + 0x9c) + 0x20) + 8), 0, param_3, 0);
-	}
 }
 
 // STUB: SADX 0x004d7dd0
@@ -634,20 +625,10 @@ int FUN_004d9a50(int param_1)
 	return (int)0;
 }
 
-// FUNCTION: SADX 0x004d9b00
+// STUB: SADX 0x004d9b00
 int FUN_004d9b00(int param_1)
 {
-	int local_8;
-
-	local_8 = ((int (*)(int))FUN_004d9b30)(param_1);
-	if (local_8 != 0)
-	{
-		return *(int *)(local_8 + 4);
-	}
-	else
-	{
-		return 0;
-	}
+	return (int)0;
 }
 
 // STUB: SADX 0x004d9b30

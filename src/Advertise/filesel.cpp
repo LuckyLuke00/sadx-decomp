@@ -31,22 +31,9 @@ extern struct task *DAT_05b42530;
 extern void *DAT_05b3e378;
 extern void *DAT_05b3e37c;
 
-// FUNCTION: SADX 0x004b6b50
+// STUB: SADX 0x004b6b50
 void DrawFileDelDlgSub(struct DDlgType *dlgp)
 {
-	int local_8g;
-	int local_cj;
-	float local_14h;
-	float local_10m;
-	struct FileSelWk *local_18;
-
-	local_18 = (struct FileSelWk *)DAT_05b42530->awp;
-	___njSetTexture(&texlist_ava_fsdlg);
-	ghSetPvrTexMaterial(-1);
-	ghGetPvrTextureSize(&texlist_ava_fsdlg, 3, &local_8g, &local_cj);
-	local_14h = local_8g * 0.5 + -113.0;
-	local_10m = local_cj * 0.5 + -43.0;
-	((void (*)(int, float, float, float, float, float))ghDrawPvrTexture)(0x4000003, (float)(local_14h * dlgp->SclX + dlgp->CntrX) * ScreenRaitoX, (float)(local_10m * dlgp->SclY + dlgp->CntrY) * ScreenRaitoY, dlgp->BaseZ + -6.0, dlgp->SclX * ScreenRaitoX, dlgp->SclY * ScreenRaitoY);
 }
 
 // FUNCTION: SADX 0x004b6c50
@@ -76,23 +63,10 @@ void FUN_004b6ca0(void)
 	}
 }
 
-// FUNCTION: SADX 0x004b6cd0
+// STUB: SADX 0x004b6cd0
 struct task *FUN_004b6cd0(struct ModeSelPrmType *param_1)
 {
-	void *local_cg;
-	struct task *local_8g;
-
-	local_8g = CreateElementalTask(0, 3, file_sel_exec);
-	DAT_05b42530 = local_8g;
-	if (DAT_05b42530)
-	{
-		local_cg = CAlloc(1, 0x38);
-		local_8g->awp = (struct anywk *)local_cg;
-		((void (*)(struct task *, struct ModeSelPrmType *))SetAdvaFileSelTask)(local_8g, param_1);
-		local_8g->exec = file_sel_exec;
-		local_8g->disp = FUN_004b83c0;
-	}
-	return local_8g;
+	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x004b6d40

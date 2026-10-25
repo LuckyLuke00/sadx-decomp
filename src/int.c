@@ -27,9 +27,7 @@ void dsInitInt(int vsync, int loop)
 	njSetVSyncFunction(dsVSyncServer);
 }
 
-// FUNCTION: SADX 0x004cb9b0
+// STUB: SADX 0x004cb9b0
 void dsVSyncServer()
 {
-	((void(*)())FUN_006411b0)();
-	CheckSoftResetTiming();
 }

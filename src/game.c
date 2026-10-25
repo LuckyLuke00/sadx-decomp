@@ -813,12 +813,9 @@ unsigned short FUN_004cac90()
 	return uVar1;
 }
 
-// FUNCTION: SADX 0x004cacc0
+// STUB: SADX 0x004cacc0
 void FUN_004cacc0()
 {
-	FUN_004c8770();
-	ReleaseMissionObject();
-	((void(*)(void))FUN_007d21b0)();
 }
 
 // FUNCTION: SADX 0x004caf50
