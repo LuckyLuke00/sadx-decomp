@@ -298,6 +298,14 @@ def check_fakematch_kinds() -> list[str]:
     return failures
 
 
+def check_annotation_below_signature() -> list[str]:
+    """A reply with the annotation between the signature and the body parses as if the annotation were above it."""
+    below = "\n".join(["```cpp", "int Foo(void)", llm.function_line(ADDRESS), "{", "\treturn 1;", "}", "```"])
+    found = llm.parse_reply(below, ADDRESS)
+    wanted = ([], [llm.function_line(ADDRESS), "int Foo(void)", "{", "\treturn 1;", "}"])
+    return [] if found == wanted else [f"an annotation below the signature gives {found}, not {wanted}"]
+
+
 def check_live() -> list[str]:
     """The live file holds the last try: its header, the reply as the client handed it over, then its result."""
     live = solved(2, never_too_long).live
@@ -450,7 +458,7 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_live,
+                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_annotation_below_signature, check_live,
                   check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures
