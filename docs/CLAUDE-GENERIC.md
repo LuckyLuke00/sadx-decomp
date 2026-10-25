@@ -45,7 +45,7 @@ Run each command from the repo root. Each command first sets up what it needs (`
 
 - Never add game files to the repo (`.exe`, `.dll`, game data, disassembly dumps, HTML reports). The repo ignores `build/` for this.
 - Compiler flags come from `data/codegen-groups.csv`, one set per code group. A file gets the flags of the group that its `FUNCTION`, `TEMPLATE` and `SYNTHETIC` annotations belong to. They must all belong to one group. `STUB`, `GLOBAL` and `LIBRARY` annotations do not count. Change the flags of a group only with evidence from functions in that group. Then run `gate`.
-- Never hand-edit `summary.json`, `history.csv`, or SVGs in `docs/progress`. CI catches an edited SVG or history line and any score drop. CI has no game, so it can't catch a raised score. Only `gate` checks the scores.
+- Never hand-edit `summary.json`, `history.csv`, or SVGs in `docs/progress`. CI catches an edited SVG or history line and any score drop that `data/accepted-drops.csv` doesn't name. CI has no game, so it can't catch a raised score. Only `gate` checks the scores.
 - Write annotation addresses as `0x` plus 8 lower-case hex digits, for example `0x0040a1f0`.
 - Put game facts in the game files that docs/FRAMEWORK.md lists, never in framework files.
 - Never fetch tcrf.net or other bot-walled fan wikis.

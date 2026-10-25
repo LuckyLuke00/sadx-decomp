@@ -98,7 +98,8 @@ def check_no_drops(summary: dict, base: str) -> list[str]:
     text = at_base(base, progress.SUMMARY_JSON)
     if text is None:
         return []
-    return [f"against {base[:12]}: {line}" for line in scoring.find_regressions(json.loads(text), summary)]
+    return [f"against {base[:12]}: {line}"
+            for line in scoring.find_regressions(json.loads(text), summary, progress.load_accepted_drops())]
 
 
 def change_word(old: dict | None, new: dict | None) -> str:
