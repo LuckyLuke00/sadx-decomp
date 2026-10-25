@@ -93,6 +93,7 @@ HINTS = ROOT / "data" / "llm-hints.txt"  # the game's own facts, added to the sy
 CONFIG = ROOT / "llm.json"
 OUT = project.BUILD / "llm"
 SERVER_LOG = OUT / "server.log"
+LIVE = OUT / "live.jsonl"  # the try that runs now: a header line, then each [kind, text] piece of the reply as it comes
 BUCKETS = (("<=32", 32), ("33-64", 64), ("65-128", 128), ("129-256", 256), ("257-512", 512), (">512", float("inf")))
 LADDER = 5  # functions per size bucket
 FEEDBACK_LINES = 150
@@ -1032,6 +1033,12 @@ def reply_limit(args, config, tries):
     return args.try_tokens[min(tries, len(args.try_tokens) - 1)]
 
 
+def end_live(result):
+    """Close the try in the live file with its RESULT."""
+    with open(LIVE, "a", encoding="utf-8") as live:
+        live.write(json.dumps({"result": result}) + "\n")
+
+
 class Repairs:
     """What the repairs of one try changed. A repair that did not run or was not kept leaves its field empty."""
 
@@ -1305,7 +1312,8 @@ def solve_function(args, file, address, transcript):
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
     bench = Bench(rebuild, config, path, address, known, args.tree_wins, repair_types, declared_before)
-    stale, temperature, totals = 0, config["temperature"], collections.Counter()
+    stale, temperature = 0, config["temperature"]
+    totals = collections.Counter(prompt_tokens=0, completion_tokens=0, think_tries=0, repeats=0)  # with no try too
     transcript.parent.mkdir(parents=True, exist_ok=True)
     with open(transcript, "w", encoding="utf-8") as log:
         log.write(json.dumps({"prompt": first}) + "\n")
@@ -1318,10 +1326,20 @@ def solve_function(args, file, address, transcript):
             asked = time.time()
             seed = None if args.seed is None else args.seed + tries + 1
             try:
-                reply = llmclient.chat({**config, "max_tokens": reply_limit(args, config, tries)}, messages,
-                                       temperature, thinking, seed)
+                with open(LIVE, "w", encoding="utf-8") as live:
+                    live.write(json.dumps({"file": file, "address": hexa(address), "try": tries + 1,
+                                           "tries": args.tries, "thinking": thinking, "time": asked}) + "\n")
+                    live.flush()
+
+                    def show(kind, text):
+                        live.write(json.dumps([kind, text]) + "\n")
+                        live.flush()
+
+                    reply = llmclient.chat({**config, "max_tokens": reply_limit(args, config, tries)}, messages,
+                                           temperature, thinking, seed, show)
             except llmclient.ServerError as e:
                 if e.status != 400 or "context" not in str(e).lower():
+                    end_live(f"the server failed: {e}")
                     raise
                 # Too long for the server: drop the history, else an example, else give up on the function. The
                 # shorter chat is the same try again.
@@ -1335,6 +1353,7 @@ def solve_function(args, file, address, transcript):
                 else:
                     print(f"{hexa(address)} try {tries + 1}: even the first prompt is too long for the server",
                           flush=True)
+                    end_live("even the first prompt is too long for the server")
                     break
                 print(f"{hexa(address)} try {tries + 1}: too long for the server, retrying shorter", flush=True)
                 continue
@@ -1389,6 +1408,7 @@ def solve_function(args, file, address, transcript):
                                   "finish": reply.finish, "reasoning": reply.reasoning, "reply": reply.text,
                                   "note": note, **repairs.logged()}) + "\n")
             log.flush()
+            end_live(result)
             cut = " (the reply hit max_tokens)" if reply.finish == "length" else ""
             print(f"{hexa(address)} try {tries}{' (thinking)' if thinking else ''}: {result}{repairs.trim()}{cut}",
                   flush=True)
