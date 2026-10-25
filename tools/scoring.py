@@ -53,16 +53,18 @@ def state_text(entry: dict | None) -> str:
     return "none" if entry is None else state(entry)
 
 
-def find_regressions(baseline: dict, current: dict) -> list[str]:
+def find_regressions(baseline: dict, current: dict, accepted: set[tuple[str, str, str]] = frozenset()) -> list[str]:
     """Every function whose score dropped, and every global that matched and no longer does. A removed annotation
-    scores zero, so a removed stub drops nothing. A summary from before data scoring has no data list."""
+    scores zero, so a removed stub drops nothing. A summary from before data scoring has no data list. ACCEPTED holds
+    the drops that count as none: (address, old score, new score), the scores as this function prints them."""
     now = {entry["address"]: entry for entry in current["functions"]}
     problems = []
     for old in baseline["functions"]:
         new = now.get(old["address"])
         if new is None and score(old) > 0:
             problems.append(f"{old['address']} {old['name']}: annotation removed")
-        elif new is not None and score(new) < score(old):
+        elif (new is not None and score(new) < score(old)
+              and (old["address"], f"{score(old):.2%}", f"{score(new):.2%}") not in accepted):
             problems.append(f"{old['address']} {old['name']}: {score(old):.2%} -> {score(new):.2%}")
     data_now = {entry["address"]: entry for entry in current.get("data", [])}
     for old in baseline.get("data", []):
