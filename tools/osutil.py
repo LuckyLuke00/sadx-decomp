@@ -1,6 +1,6 @@
-"""Helpers that know nothing about the decomp: run a command, hash a file, copy and delete folders, read counts
-from the command line, tell how alike two counts are, count differing bytes, escape a Markdown table cell, tell
-whether a process runs, lock a file.
+"""Helpers that know nothing about the decomp: run a command, catch a step's output, hash a file, copy and delete
+folders, read counts from the command line, tell how alike two counts are, count differing bytes, escape a
+Markdown table cell, tell whether a process runs, lock a file.
 
 Standard library only.
 """
@@ -11,6 +11,7 @@ import contextlib
 import ctypes
 import hashlib
 import html
+import io
 import msvcrt
 import shutil
 import stat
@@ -31,6 +32,19 @@ def run(command: list, cwd: Path | None = None, env: dict | None = None) -> subp
     if result.returncode != 0:
         sys.exit(f"{result.stdout}{result.stderr}\nfailed ({result.returncode}): {' '.join(map(str, command))}")
     return result
+
+
+def caught(step) -> tuple[bool, list[str]]:
+    """Run STEP with its printed output caught: (whether it worked, the output's lines). It fails when it exits, with
+    the exit's message as the last line, or when it returns a nonzero code."""
+    out = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(out):
+            worked = not step()
+    except SystemExit as failure:
+        out.write(f"\n{failure.code}")
+        worked = False
+    return worked, out.getvalue().strip().splitlines()
 
 
 def git(root: Path, *args: str, stdin: bytes = b"") -> bytes:
