@@ -41,6 +41,7 @@ SUMMARY_JSON = PROGRESS / "summary.json"
 HISTORY_CSV = PROGRESS / "history.csv"
 FUNCTIONS_CSV = ROOT / "data" / "functions.csv"
 CODEGEN_GROUPS = ROOT / "data" / "codegen-groups.csv"
+ACCEPTED_DROPS = ROOT / "data" / "accepted-drops.csv"
 
 HISTORY_FIELDS = ["date", "decompiled", "matched", "accuracy", "game_total", "matched_bytes", "game_bytes"]
 
@@ -157,6 +158,14 @@ def codegen_group(groups: list[dict], address: int) -> dict | None:
 
 def load_summary() -> dict:
     return json.loads(SUMMARY_JSON.read_text(encoding="utf-8"))
+
+
+def load_accepted_drops() -> set[tuple[str, str, str]]:
+    """The score drops data/accepted-drops.csv names, for scoring.find_regressions. A game without the file has none."""
+    if not ACCEPTED_DROPS.exists():
+        return set()
+    with ACCEPTED_DROPS.open(encoding="utf-8", newline="") as f:
+        return {(row["address"], row["from"], row["to"]) for row in csv.DictReader(f)}
 
 
 def game_addresses(functions: list[dict], groups: list[dict] | None = None) -> set[int]:

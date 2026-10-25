@@ -44,6 +44,21 @@ def check_data_regressions() -> list[str]:
     return failures
 
 
+def check_accepted_drops() -> list[str]:
+    """A drop named with its exact old and new score counts as none. Another drop of the same function still counts."""
+    def scored(accuracy):
+        return {"functions": [{"address": "0x00401000", "name": "f", "accuracy": accuracy, "stub": False}]}
+
+    accepted = {("0x00401000", "100.00%", "76.26%")}
+    cases = [("the named drop", scored(0.7626), 0), ("a lower drop", scored(0.5), 1)]
+    failures = []
+    for name, current, wanted in cases:
+        found = scoring.find_regressions(scored(1.0), current, accepted)
+        if len(found) != wanted:
+            failures.append(f"find_regressions with an accepted drop finds {len(found)} drops for {name}, not {wanted}")
+    return failures
+
+
 def check_emblems() -> list[str]:
     """A code emblem needs its share of the game's bytes, rounded up. An area emblem needs all of its bytes."""
     found = scoring.emblems(scoring.Bytes(900, 50, 999), [("Area", scoring.Bytes(10, 10, 10)),
@@ -81,6 +96,7 @@ def check_score_changes() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_count_text, check_data_share, check_data_regressions, check_emblems, check_score_changes):
+    for check in (check_count_text, check_data_share, check_data_regressions, check_accepted_drops, check_emblems,
+                  check_score_changes):
         failures += check()
     return failures

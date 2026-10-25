@@ -418,7 +418,7 @@ def check_annotations(functions: dict[int, dict], game: Path) -> bool:
 
 def check_regressions(baseline: dict, current: dict) -> bool:
     """Print each score that dropped below the baseline. False if one did."""
-    regressions = scoring.find_regressions(baseline, current)
+    regressions = scoring.find_regressions(baseline, current, progress.load_accepted_drops())
     if regressions:
         print(f"FAIL {len(regressions)} score(s) dropped against {progress.SUMMARY_JSON.relative_to(ROOT)}:")
         for line in regressions:
