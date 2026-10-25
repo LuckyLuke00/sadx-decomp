@@ -118,6 +118,24 @@ def check_report_function() -> list[str]:
     return failures
 
 
+def check_volatile_globals() -> list[str]:
+    """A file-level declaration with `volatile` gives its name; a volatile local, a volatile member, a comment and a
+    string give none. A function that uses such a global has the trick, one that doesn't has none."""
+    text = "\n".join(["extern volatile int g_tick;", "volatile float g_rate = 1.0f;", "int plain;",
+                      "struct s {", "\tvolatile int member;", "};", "// volatile int g_comment;",
+                      'const char *text = "volatile";', *function(0x401000, "\tvolatile int local;"),
+                      *function(0x401010, "\tx = g_tick * 2;"), *function(0x401020, "\tx = plain;")])
+    failures = []
+    found = tricks.volatile_globals(text)
+    if found != {"g_tick", "g_rate"}:
+        failures.append(f"volatile_globals gives {found}, not g_tick and g_rate")
+    tricked = tricks.file_tricks(text, found)
+    wanted = {0x401000: "volatile", 0x401010: "volatile global g_tick"}
+    if tricked != wanted:
+        failures.append(f"file_tricks with the volatile globals gives {tricked}, not {wanted}")
+    return failures
+
+
 def check_scan_needs_src() -> list[str]:
     """A scan of a root with no src folder stops, so a wrong root can't turn every trick function into a match."""
     with tempfile.TemporaryDirectory() as empty:
@@ -132,6 +150,6 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_forbidden, check_file_tricks, check_declarator_start, check_report_function,
-                  check_scan_needs_src):
+                  check_volatile_globals, check_scan_needs_src):
         failures += check()
     return failures
