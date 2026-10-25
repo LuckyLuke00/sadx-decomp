@@ -46,21 +46,7 @@ void AL_SetCurrMatrix(struct task *tp)
 	njPopMatrixEx();
 }
 
-// FUNCTION: SADX 0x004649b0
+// STUB: SADX 0x004649b0
 void AL_BuyoBuyoControl(struct task *tp)
 {
-	struct taskwk *var1;
-
-	var1 = tp->twp;
-	*(unsigned short *)0x5b32d88 = 0;
-	AL_InitCalcMotionMatrix(tp);
-	njPushMatrixEx();
-	njUnitMatrix(0);
-	njTranslateV(0, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
-	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
-	}
-	AL_BuyoBuyoObject(tp, *(struct al_object **)((char *)var1 + 0x524));
-	njPopMatrixEx();
 }

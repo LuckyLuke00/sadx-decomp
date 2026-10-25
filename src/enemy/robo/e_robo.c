@@ -160,30 +160,9 @@ void EffectRoboBeam(struct task *tp)
 {
 }
 
-// FUNCTION: SADX 0x005bcd10
+// STUB: SADX 0x005bcd10
 void RoboBeamDisplayer(struct task *tp)
 {
-	struct taskwk *local_cg;
-	float local_8g;
-
-	local_cg = tp->twp;
-	local_8g = local_cg->scl.x;
-	if (dsCheckViewV(&local_cg->pos, 10.0f) == 0)
-	{
-		return;
-	}
-	SetMaterial(local_cg->scl.z, 1.0f, 1.0f, 1.0f);
-	___njColorBlendingMode(0, 8);
-	___njColorBlendingMode(1, 10);
-	njPushMatrix(0);
-	njTranslateV(0, &local_cg->pos);
-	if (1)
-	{
-		njRotateX(0, 0xc000);
-	}
-	FUN_0067d2d0(0, local_8g, local_8g, local_8g);
-	late_DrawSprite3D(&sprite_robo_beam, 1, 0x22, 4);
-	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005bce00

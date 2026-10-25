@@ -105,23 +105,9 @@ void FUN_008d9820(int param_1, float *param_2, int *param_3, float param_4, floa
 {
 }
 
-// FUNCTION: SADX 0x008d98c0
+// STUB: SADX 0x008d98c0
 void bubble_draw_sprite(struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, float scale_x, float scale_y)
 {
-	if (DAT_05b9d838 != 0)
-	{
-		return;
-	}
-	if (argb_p == NULL)
-	{
-		argb_p = &default_argb;
-	}
-	___njSetConstantMaterial(argb_p);
-	sprite_o_bubble.p = *pos_p;
-	sprite_o_bubble.sx = scale_x * 0.03125f;
-	sprite_o_bubble.sy = scale_y * 0.03125f;
-	___njDrawSprite3D(&sprite_o_bubble, 0, 0x32);
-	ResetMaterial();
 }
 
 // STUB: SADX 0x008d9b10

@@ -218,9 +218,6 @@ struct ActionParam DAT_00a0a970;
 // GLOBAL: SADX 0x00a0a978
 struct ActionParam DAT_00a0a978;
 
-// GLOBAL: SADX 0x00a0aa2c
-struct TaskInfo CactusTaskInfo;
-
 // GLOBAL: SADX 0x00a0c8d8
 struct TaskInfo ObjectTaskInfo;
 
@@ -692,14 +689,8 @@ struct NJS_TEXLIST texlist_m_chnam;
 // GLOBAL: SADX 0x025adc58
 struct NJS_TEXLIST texlist_ava_metal;
 
-// GLOBAL: SADX 0x025adc78
-struct NJS_TEXLIST texlist_ava_fsdlg;
-
 // GLOBAL: SADX 0x025adc88
 struct NJS_TEXLIST texlist_ava_trialactsel;
-
-// GLOBAL: SADX 0x025adca0
-struct NJS_TEXLIST texlist_ava_vmssel;
 
 // GLOBAL: SADX 0x025adca8
 struct NJS_TEXLIST texlist_ava_sndtest;
@@ -712,9 +703,6 @@ struct NJS_TEXLIST texlist_ava_inetdemo;
 
 // GLOBAL: SADX 0x025adcd8
 struct NJS_TEXLIST texlist_tvsetting;
-
-// GLOBAL: SADX 0x025adce0
-struct NJS_TEXLIST texlist_ava_title;
 
 // GLOBAL: SADX 0x025adcf8
 struct NJS_TEXLIST texlist_ava_how2play;
@@ -982,9 +970,6 @@ struct obj object_Arrow_Y;
 
 // GLOBAL: SADX 0x02604a34
 struct obj object_Arrow_Z;
-
-// GLOBAL: SADX 0x02604aa8
-struct NJS_TEXLIST texlist_con_regular;
 
 // GLOBAL: SADX 0x02604ab8
 struct NJS_TEXLIST DAT_02604ab8;
@@ -1493,9 +1478,6 @@ struct NJS_POINT3 pos_finalegg;
 // GLOBAL: SADX 0x026f1b20
 struct NJS_POINT3 DAT_026f1b20;
 
-// GLOBAL: SADX 0x026f1d8c
-int SeqVarID[8];
-
 // GLOBAL: SADX 0x02709244
 struct NJS_ACTION action_g_g0023_eggman[1];
 
@@ -1720,9 +1702,6 @@ struct NJS_ARGB *pFogTable_Chaos02[1];
 
 // GLOBAL: SADX 0x0286f0a8
 struct NJS_SPRITE sprite_c2_flash;
-
-// GLOBAL: SADX 0x0286f168
-struct NJS_SPRITE sprite_c2_ball;
 
 // GLOBAL: SADX 0x0286f1c8
 struct NJS_ARGB DAT_0286f1c8;
@@ -3032,9 +3011,6 @@ struct TEXUVINFO2 DAT_0480a104[1];
 // GLOBAL: SADX 0x0480a118
 struct TEXUVINFO DAT_0480a118;
 
-// GLOBAL: SADX 0x0480a670
-struct TEXANIMINFO texanim[2];
-
 // GLOBAL: SADX 0x0480a700
 struct TEXUVINFO texuvinfo[1];
 
@@ -3173,9 +3149,6 @@ struct NJS_ACTION action_kowaresuisou_hikari_sin[1];
 // GLOBAL: SADX 0x04ad6a3c
 struct obj object_hikari01a_light_light[1];
 
-// GLOBAL: SADX 0x04c2c408
-struct CCL_INFO c_info_a[1];
-
 // GLOBAL: SADX 0x04c2c63c
 struct NJS_SPRITE sprite_fade;
 
@@ -3292,9 +3265,6 @@ struct NJS_MATERIAL matlist_rhino_jet[1];
 
 // GLOBAL: SADX 0x04c6a334
 struct obj object_rhino_jet[1];
-
-// GLOBAL: SADX 0x04c6a464
-struct NJS_ARGB default_argb;
 
 // GLOBAL: SADX 0x04c6a490
 struct NJS_SPRITE sprite_o_bubble;

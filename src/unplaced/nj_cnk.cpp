@@ -26,18 +26,9 @@ void njCnkDrawMotion(struct cnkobj const *param_1, struct NJS_MOTION const *para
 	_njCnkPushPopMotion(param_1);
 }
 
-// FUNCTION: SADX 0x00436030
+// STUB: SADX 0x00436030
 void njCnkDrawMotionLink(struct cnkobj const *param_1, struct NJS_MOTION_LINK const *param_2, float param_3)
 {
-	void (__thiscall *fp)(int, int);
-
-	njStartMotionLink(param_2, param_3);
-	DAT_05ada5b8 = 1;
-	stSetBaseMatrix((float (*)[16])DAT_0629c518);
-	fp = (void (__thiscall *)(int, int))FUN_0041b120;
-	((void (__thiscall *)(void *, int, int))fp)(DAT_05ab39ac, 0, 0);
-	((void (__thiscall *)(void *, int, int))fp)(DAT_05ab39ac, 1, 0);
-	_njCnkPushPopMotionLink(param_1);
 }
 
 // STUB: SADX 0x00436090

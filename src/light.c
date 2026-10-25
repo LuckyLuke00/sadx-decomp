@@ -500,41 +500,8 @@ static struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr)
 	return local_14;
 }
 
-// FUNCTION: SADX 0x004a0100
+// STUB: SADX 0x004a0100
 int dsGDLoadPalette(unsigned short stg, unsigned short act)
 {
-	struct LE_PALIGHT_ENV *local_8;
-	local_8 = le_find_paenv(stg, act, 0);
-	if (local_8 != 0 && (local_8->flgs & 1) != 0)
-	{
-	}
-	else
-	{
-		act = 0;
-		local_8 = le_find_paenv(stg, act, 0);
-		if (local_8 == 0)
-		{
-			stg = 0;
-		}
-	}
-	local_8 = le_find_paenv(stg, act, -8);
-	if (local_8 != 0 && (local_8->flgs & 1) != 0)
-	{
-		le_set_paenv(stg, act, -8);
-	}
-	else
-	{
-		le_set_paenv(stg, act, 0);
-	}
-	local_8 = le_find_paenv(stg, act, -6);
-	if (local_8 != 0 && (local_8->flgs & 1) != 0)
-	{
-		le_set_paenv(stg, act, -6);
-	}
-	else
-	{
-		le_set_paenv(stg, act, 0);
-	}
-	le_set_paenv(stg, act, 0);
-	return 1;
+	return (int)0;
 }

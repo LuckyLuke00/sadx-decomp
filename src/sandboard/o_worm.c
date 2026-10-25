@@ -13,10 +13,10 @@ extern void *DAT_035af79c;
 // GLOBAL: SADX 0x00a0ee64
 static struct TaskInfo ObjectTaskInfo;
 
-// FUNCTION: SADX 0x007e8ec0
+// STUB: SADX 0x007e8ec0
 struct task *SetWorm01Task()
 {
-	return SandObjSetChildTask(&ObjectTaskInfo, (void *)0x35af714);
+	return (struct task *)0;
 }
 
 // STUB: SADX 0x007e8ee0

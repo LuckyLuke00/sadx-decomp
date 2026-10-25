@@ -55,10 +55,9 @@ void SpinnaEditDraw(struct taskwk *twp, float xpos, float ypos, float zpos)
 	___dsSetPalette(0);
 }
 
-// FUNCTION: SADX 0x00594430
+// STUB: SADX 0x00594430
 void FUN_00594430(int param_1, int param_2, int param_3)
 {
-	((void (*)(int, int, int))FUN_005b5aa0)(param_1, param_2, param_3);
 }
 
 // STUB: SADX 0x00594450

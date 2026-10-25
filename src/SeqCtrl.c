@@ -82,23 +82,9 @@ long FUN_004f4bb0()
 	return slSeqRunning;
 }
 
-// FUNCTION: SADX 0x004f4bc0
+// STUB: SADX 0x004f4bc0
 void SeqSetPlayer(int no)
 {
-	if (!FUN_004f4bb0())
-		return;
-	if ((unsigned char)DAT_05bb00a8)
-	{
-		FUN_004f5550(0x58);
-		DAT_05bafd18 = 4;
-	}
-	else
-	{
-		SeqClrFlag(0x58);
-		DAT_05bafd18 = (short)no;
-	}
-	DAT_05b3ea28 = (int)(0x5baf6a0 + DAT_05bafd18 * 0xc);
-	DAT_05baf544 = (int)SeqGetSectionList(DAT_05bafd18);
 }
 
 // STUB: SADX 0x004f4c40

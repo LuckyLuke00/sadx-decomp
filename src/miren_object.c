@@ -68,11 +68,9 @@ void MirenObjSetObjectMatrix(struct obj *obj_p, const struct taskwk *taskWk_p, f
 {
 }
 
-// FUNCTION: SADX 0x00571c50
+// STUB: SADX 0x00571c50
 void MirenObjClearForceWork(struct forcewk *forceWk_p)
 {
-	forceWk_p->ang_spd = DAT_00962c74;
-	forceWk_p->pos_spd = *(struct NJS_POINT3 *)&DAT_00962c74;
 }
 
 // STUB: SADX 0x00571ca0

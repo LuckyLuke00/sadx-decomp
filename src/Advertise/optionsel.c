@@ -83,23 +83,10 @@ void DrawVibSetting(struct _OptionSelWk *wkp)
 {
 }
 
-// FUNCTION: SADX 0x00602ff0
+// STUB: SADX 0x00602ff0
 struct task *FUN_00602ff0(struct ModeSelPrmType *param_1)
 {
-	void *local_cg;
-	struct task *local_8g;
-
-	local_8g = CreateElementalTask(0, 3, FUN_00603150);
-	DAT_05edd9b8 = local_8g;
-	if (DAT_05edd9b8)
-	{
-		local_cg = CAlloc(1, 0x54);
-		local_8g->awp = (struct anywk *)local_cg;
-		((void (*)(struct task *, struct ModeSelPrmType *))SetAdvaOptionSelTask)(local_8g, param_1);
-		local_8g->exec = FUN_00603150;
-		local_8g->disp = option_sel_disp;
-	}
-	return local_8g;
+	return (struct task *)0;
 }
 
 // STUB: SADX 0x00603060

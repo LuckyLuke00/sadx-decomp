@@ -51,17 +51,9 @@ void TikalSetIllusion(struct task *tikal_task_p)
 	}
 }
 
-// FUNCTION: SADX 0x005bb190
+// STUB: SADX 0x005bb190
 void TikalGotoTarget(struct NJS_POINT3 *from_p, struct NJS_POINT3 *target_p, float speed)
 {
-	NJS_POINT3 local_14;
-
-	njSubVector(target_p, from_p);
-	ghUnitVector(target_p, target_p);
-	target_p->x = target_p->x * speed;
-	target_p->y = target_p->y * speed;
-	target_p->z = target_p->z * speed;
-	njAddVector(from_p, target_p);
 }
 
 // STUB: SADX 0x005bb200

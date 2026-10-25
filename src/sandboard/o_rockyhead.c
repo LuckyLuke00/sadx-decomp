@@ -2,11 +2,10 @@
 extern int DAT_05b9d838;
 extern struct ActionParam DAT_035af6d8;
 
-// FUNCTION: SADX 0x007e8920
+// STUB: SADX 0x007e8920
 struct task *SetRockyHead01Task()
 {
-	static struct ActionParam var1;
-	return SandObjSetChildTask(&ObjectTaskInfo, (void *)0x35af6bc);
+	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x007e8940
@@ -15,10 +14,10 @@ struct task *SetRockyHead02Task()
 	return SandObjSetChildTask(&ObjectTaskInfo, &DAT_035af6d8);
 }
 
-// FUNCTION: SADX 0x007e8960
+// STUB: SADX 0x007e8960
 struct task *SetRockyHead03Task()
 {
-	return SandObjSetChildTask(&ObjectTaskInfo, (void *)0x35af6f4);
+	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x007e8ad0

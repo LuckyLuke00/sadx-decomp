@@ -15,8 +15,7 @@ void ObjectCasinoTensS(struct task *tp)
 	Init(tp, &tensinfo[0]);
 }
 
-// FUNCTION: SADX 0x00876f20
+// STUB: SADX 0x00876f20
 void ObjectCasinoTensC(struct task *tp)
 {
-	Init(tp, (struct TENSHOUSEINFO *)0x480b7f8);
 }

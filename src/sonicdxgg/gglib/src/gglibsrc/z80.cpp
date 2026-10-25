@@ -1861,11 +1861,9 @@ void out_c_a()
 {
 }
 
-// FUNCTION: SADX 0x009134b0
+// STUB: SADX 0x009134b0
 void out_c_b()
 {
-	((void (*)(int, int))FUN_0090cc80)(*(unsigned char *)((char *)DAT_060ee5b8 + 4), *(unsigned char *)((char *)DAT_060ee5b8 + 5));
-	*(int *)((char *)DAT_060ee5b8 + 0x50) = 0xc;
 }
 
 // STUB: SADX 0x009134e0

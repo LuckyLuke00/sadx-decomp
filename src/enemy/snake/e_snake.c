@@ -71,13 +71,9 @@ void SnakePartsDead(struct task *tp)
 {
 }
 
-// FUNCTION: SADX 0x008dae20
+// STUB: SADX 0x008dae20
 void FUN_008dae20(struct task *param_1, struct task *param_2)
 {
-	struct motionwk *local_8;
-	local_8 = param_1->mwp;
-	DestroyTask(param_1);
-	((void (*)(struct task *, struct task *, struct motionwk *))FUN_005b5aa0)(param_1, param_2, local_8);
 }
 
 // STUB: SADX 0x008dae60

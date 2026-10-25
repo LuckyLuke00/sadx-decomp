@@ -188,20 +188,7 @@ void SetPlayerPinball(struct task *tp)
 	}
 }
 
-// FUNCTION: SADX 0x0086a3b0
+// STUB: SADX 0x0086a3b0
 void SetObjectTexture2(long No)
 {
-	if (No == 0xc)
-	{
-		___njSetTexture(&texlist_obj_casino9);
-		return;
-	}
-	if (No == 0x22)
-	{
-		___njSetTexture(&texlist_obj_casino);
-		return;
-	}
-	for (;;)
-	{
-	}
 }

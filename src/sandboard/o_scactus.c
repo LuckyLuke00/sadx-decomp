@@ -2,16 +2,14 @@
 extern int DAT_05b9d838;
 extern struct obj object_sunabo_sb_sabos_sb_sabos[1];
 
-// FUNCTION: SADX 0x007e7e00
+// STUB: SADX 0x007e7e00
 void ObjectSmallCactusA(struct task *task_p)
 {
-	MirenInitTask(task_p, &CactusTaskInfo, (void *)0x353af30);
 }
 
-// FUNCTION: SADX 0x007e7e20
+// STUB: SADX 0x007e7e20
 void ObjectSmallCactusB(struct task *task_p)
 {
-	MirenInitTask(task_p, &CactusTaskInfo, (void *)0x353af70);
 }
 
 // FUNCTION: SADX 0x007e80d0

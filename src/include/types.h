@@ -50,7 +50,6 @@ struct al_object;
 struct AL_PARTS;
 struct AL_RACE_PERSONAL_INFO;
 struct AL_RACE_PERSONAL_INFO_DX;
-struct AL_RECORD;
 struct AL_ST_POS;
 struct al_status;
 struct AL_TIME;

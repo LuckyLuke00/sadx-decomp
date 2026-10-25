@@ -6,11 +6,7 @@ extern struct NJS_TEXLIST texlist_ava_back;
 extern float ScreenRaitoX;
 extern float ScreenRaitoY;
 
-// FUNCTION: SADX 0x005a4120
+// STUB: SADX 0x005a4120
 void DrawSkyBg(float z)
 {
-	___njSetTexture(&texlist_ava_back);
-	ghSetPvrTexMaterial(0xffffffff);
-	ghDrawPvrSprite((short *)0x26314d4, 0, 0.0, 0.0, z, ScreenRaitoX, ScreenRaitoY);
-	return;
 }

@@ -933,11 +933,9 @@ void dsReloadEVBossSound()
 	}
 }
 
-// FUNCTION: SADX 0x004b0150
+// STUB: SADX 0x004b0150
 void TempEraseSound()
 {
-	dsStop_all();
-	((void(*)(int))FUN_006411b0)(2);
 }
 
 // FUNCTION: SADX 0x004b0170
