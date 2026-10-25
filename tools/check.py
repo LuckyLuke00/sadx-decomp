@@ -14,6 +14,7 @@
   python tools/check.py dossier 0x00401000    what an agent needs to decompile a function
   python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
   python tools/check.py permute FILE ADDR     try rewrites of a near match and keep the best
+  python tools/check.py retype SPEC          build each candidate type of a global, keep the one that proves itself
   python tools/check.py clone 0x00401000      write the copies of a matched function, keep those at 100%
   python tools/check.py link [FILE ...]       link the exe from its own bytes and these files' objects: the hash
                                               must match
@@ -142,6 +143,11 @@ def parse_args() -> argparse.Namespace:
     permute.add_argument("--seed", type=int, default=0, help="the random seed (default 0)")
     permute.add_argument("--rank", choices=["score", "class"], default="score",
                          help="class: at the same percent, fewer structural diff lines win (default score)")
+    retype = commands.add_parser("retype")
+    retype.add_argument("spec", type=Path, help="the candidates, as tools/retype.py says")
+    retype.add_argument("--context", type=Path, help="decls' --context: in a lane, the main tree")
+    retype.add_argument("--tables", type=Path, help="decls' --tables")
+    retype.add_argument("--apply", action="store_true", help="write the winner's edits")
     clone = commands.add_parser("clone")
     clone.add_argument("addresses", nargs="*", type=lambda value: int(value, 16), help="templates, e.g. 0x00401000")
     clone.add_argument("--all", action="store_true", help="every function at 100%% is a template")
@@ -174,6 +180,11 @@ def run_with_game(args: argparse.Namespace) -> int:
 
         rank_key = permute.rank_by_class if args.rank == "class" else permute.rank
         return permute.permute(ROOT / args.file, args.address, args.tries, args.minutes, args.seed, rank_key)
+    if args.command == "retype":
+        # It imports this module back.
+        import retype
+
+        return retype.run(game, args.spec, args.context, args.tables, args.apply)
     if args.command == "clone":
         # It imports this module back.
         import clone

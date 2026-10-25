@@ -624,7 +624,7 @@ def check_link() -> list[str]:
 def check_units() -> list[str]:
     """The unit tests of the repairs in llm.py and cfix.py, of the try loop in llm.py, of the dossier facts in
     facts.py, of the trick finder in tricks.py, of the site pages in pages.py, of the data scores in scoring.py, of
-    the split in link.py and of the recipe checks in recipes.py, one module each."""
+    the split in link.py, of the recipe checks in recipes.py and of the type search in retype.py, one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
@@ -635,11 +635,12 @@ def check_units() -> list[str]:
     import linktests
     import progresstests
     import recipetests
+    import retypetests
     import sitetests
     import solvetests
     import tricktests
     modules = (ctexttests, bytetests, casttests, decltests, benchtests, solvetests, facttests, tricktests, sitetests,
-               progresstests, linktests, recipetests)
+               progresstests, linktests, recipetests, retypetests)
     return [failure for module in modules for failure in module.run()]
 
 
