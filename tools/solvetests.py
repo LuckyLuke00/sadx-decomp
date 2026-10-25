@@ -72,8 +72,8 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
         on_text("content", text)
         return llmclient.Reply(text, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
 
-    def first_prompt(config, file, address, types, count, extra, similar):
-        return f"{count} examples"
+    def first_prompt(config, file, address, types, count, extra, similar, recipe):
+        return f"{count} examples" + llm.recipe_section(recipe)
 
     fakes = {"read_source": lambda path: ('#include "decls.h"\n', False),
              "write_source": lambda path, text, crlf: kept.append(text), "snapshot": lambda paths: {},
@@ -83,7 +83,7 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
                    stop_below=None, try_tokens=None, think_max=None, similar_examples=False,
-                   prefix_feedback=False, refuse_fakematch=False)
+                   prefix_feedback=False, refuse_fakematch=False, recipes=None)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
@@ -214,6 +214,24 @@ def check_prefix_feedback() -> list[str]:
              ("--prefix-feedback", parsed(["solve", "--prefix-feedback", FILE, "0x00401000"], "prefix_feedback"), True),
              ("no --prefix-feedback", parsed(["solve", FILE, "0x00401000"], "prefix_feedback"), False)]
     return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
+
+
+def check_recipes() -> list[str]:
+    """--recipes DIR puts the plan in DIR/ADDRESS/recipe.md into the first prompt, after its lead line. A function
+    with no plan file gets the prompt without one."""
+    with tempfile.TemporaryDirectory() as folder:
+        plans = Path(folder)
+        no_plan = solved(1, never_too_long, recipes=plans).lasts[0]
+        (plans / llm.hexa(ADDRESS)).mkdir()
+        (plans / llm.hexa(ADDRESS) / "recipe.md").write_text("1. The loop counts down.\n", encoding="utf-8")
+        with_plan = solved(1, never_too_long, recipes=plans).lasts[0]
+    wanted = f"{llm.EXAMPLES} examples{llm.RECIPE_LEAD}\n1. The loop counts down.\n\n"
+    failures = []
+    if with_plan != wanted:
+        failures.append(f"the first prompt with a plan is {with_plan!r}, not {wanted!r}")
+    if no_plan != f"{llm.EXAMPLES} examples":
+        failures.append(f"the first prompt without a plan file is {no_plan!r}")
+    return failures
 
 
 def cpp(*body) -> str:
@@ -432,7 +450,7 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_refuse_fakematch, check_fakematch_kinds, check_live, check_live_ends,
-                  check_stream_events, check_full_context_restart, check_shared_context):
+                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_live,
+                  check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures

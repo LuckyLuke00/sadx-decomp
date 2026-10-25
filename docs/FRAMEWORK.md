@@ -77,7 +77,7 @@ Three checks show that the toolchain is the game's own:
 
 ## Commands
 
-`tools/check.py` is the single entry point. These tools also run on their own. `python tools/progress.py` rewrites `history.csv` from the commits and redraws the SVGs in `docs/progress`, as `save` does. `python tools/pages.py [--out DIR]` builds the static progress site from committed files. `python tools/objdiffreport.py [--out PATH]` writes the progress as an objdiff report, which decomp.dev and decomp.fun read. CI uploads it as the `<target>_report` artifact, such as `SADX_report`, on pushes to the default branch. `python tools/tricks.py` lists the functions that match only through a trick. `tools/llm.py` runs on its own too, as [LLM agents](#llm-agents) says. Every command first sets up what it needs, then runs itself inside `.venv`. `progress.py`, `pages.py`, `objdiffreport.py` and `llm.py` also run themselves inside `.venv`. Output shows only what matters. Tool output shows on failure. Compiler and reccmp warnings always show.
+`tools/check.py` is the single entry point. These tools also run on their own. `python tools/progress.py` rewrites `history.csv` from the commits and redraws the SVGs in `docs/progress`, as `save` does. `python tools/pages.py [--out DIR]` builds the static progress site from committed files. `python tools/objdiffreport.py [--out PATH]` writes the progress as an objdiff report, which decomp.dev and decomp.fun read. CI uploads it as the `<target>_report` artifact, such as `SADX_report`, on pushes to the default branch. `python tools/tricks.py` lists the functions that match only through a trick. `tools/llm.py` runs on its own too, as [LLM agents](#llm-agents) says. Every command first sets up what it needs, then runs itself inside `.venv`. `progress.py`, `pages.py`, `objdiffreport.py`, `llm.py` and `recipes.py` also run themselves inside `.venv`. Output shows only what matters. Tool output shows on failure. Compiler and reccmp warnings always show.
 
 | Command | What it does | Exit code |
 | --- | --- | --- |
@@ -229,6 +229,22 @@ python tools/llm.py init --url http://127.0.0.1:8080/v1 --start "llama-server -h
 ```
 
 The server's output goes to `build/llm/server.log`. The first start downloads the model. If that takes longer than `start_timeout` (900 seconds), raise it in `llm.json`. If the server refuses a field, `init` names it. `extra_body` in `llm.json` adds fields to every request. A null value removes one.
+
+### Recipes
+
+A recipe is a plan for one function, in short numbered steps without code. A stronger decompiler, the teacher, writes it after it matches a function the model missed. The teacher can be a Claude Code agent, a hosted model or a person. `solve --recipes DIR` then adds `DIR/ADDRESS/recipe.md` to the model's first prompt, under one fixed lead line. [tools/recipes.py](../tools/recipes.py) runs the steps around it, in the checkout the teacher works in:
+
+```bash
+python tools/recipes.py brief 0x00401000 --out work/recipes --structs
+python tools/recipes.py score 0x00401000
+python tools/recipes.py check work/recipes/0x00401000
+python tools/recipes.py export work/recipes --run build/llm/recipes [...] --out recipes.jsonl
+```
+
+- `brief` writes `DIR/ADDRESS/brief.md` for the teacher: the rules of [tools/prompts/teacher.md](../tools/prompts/teacher.md), then the model's system prompt and first prompt, built with the same flags as `llm.py`. Leave the function a stub or below 100% first, so the checkout holds no answer.
+- `score` scores the teacher's try, as `llm.py` scores one.
+- `check` passes only when the function is at 100%, `tricks.py` finds no trick in it, no source but its own file changed since `brief`, and `recipe.md` holds 1 to 12 numbered steps with no code block and no line with `;`, `{` or `}`.
+- `export` writes a row per checked function that a `--recipes` run matched, from the first run folder that matched it: the first prompt without the recipe, the recipe as the reasoning, and the model's matching reply. A reply with a trick word doesn't count.
 
 ### Name tables and other folders
 
