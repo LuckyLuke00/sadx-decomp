@@ -1,20 +1,44 @@
 #include "decls.h"
 
-// STUB: SADX 0x0084c560
+// FUNCTION: SADX 0x0084c560
 void EffHodaiBombReflectPlayer(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x0084c5b0
+// FUNCTION: SADX 0x0084c5b0
 int CountObjElements(struct obj *pobject)
 {
-	return (int)0;
+	int var1 = 1;
+	if (!(pobject->evalflags & 0x10))
+	{
+		for (struct obj *var2 = pobject->child; var2; var2 = var2->sibling)
+		{
+			var1 += CountObjElements(var2);
+		}
+	}
+	return var1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0084cdd0
-void TaskEnd(struct task *tp)
+static void TaskEnd(struct task *tp)
 {
 }
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x0084ce00
+static void TaskDisp(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x0084ce10
+static void TaskExec(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0084ce50
 void TaskInit(struct task *tp)

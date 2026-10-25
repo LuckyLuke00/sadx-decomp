@@ -12,6 +12,11 @@ void ObjectSSTwrouka(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x00681ff0
+void SSTwrouka(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00682040
 void CreateSSTwrouka()
 {

@@ -11,7 +11,21 @@ void initSonicMR06()
 	SeqSetTime(1);
 }
 
-// STUB: SADX 0x006aae40
+// FUNCTION: SADX 0x006aae40
 void mainSonicMR06(int seqno)
 {
+	switch (seqno)
+	{
+		case 0:
+			if (SeqCheckClearAction(0xa))
+			{
+				SeqEvent(0x26);
+				SeqNext();
+			}
+			break;
+		case 1:
+			SeqEndSection();
+			SeqNext();
+			break;
+	}
 }

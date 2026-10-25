@@ -38,7 +38,7 @@ void MastDisplayer(struct task *tp)
 void ObjectECMast(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	struct NJS_POINT3 v;
+	struct NJS_POINT3 local_14;
 	struct obj *var2;
 	struct forcewk *__restrict var3;
 
@@ -73,20 +73,20 @@ void ObjectECMast(struct task *tp)
 			var1->ang.y += 0x80;
 			((struct obj *)var1->counter.ptr)->ang[1] = var1->ang.y;
 			((volatile struct forcewk *)var3)->ang_spd.y = 0x80;
-			v = (*(struct taskwk *volatile *)&DAT_05baf368)->pos;
-			njSubVector(&v, &var1->pos);
-			v.y = 0.0f;
-			v.x = njScalor(&v) * njTan(0x80);
-			v.y = 0.0f;
-			v.z = 0.05f;
+			local_14 = (*(struct taskwk *volatile *)&DAT_05baf368)->pos;
+			njSubVector(&local_14, &var1->pos);
+			local_14.y = 0.0f;
+			local_14.x = njScalor(&local_14) * njTan(0x80);
+			local_14.y = 0.0f;
+			local_14.z = 0.05f;
 			njPushMatrix(_nj_unit_matrix_);
 			if (var1->ang.y - 0x80 != 0)
 			{
 				njRotateY(0, var1->ang.y - 0x80);
 			}
-			njCalcVector(0, &v, &v);
+			njCalcVector(0, &local_14, &local_14);
 			njPopMatrix(1);
-			var3->pos_spd = v;
+			var3->pos_spd = local_14;
 			break;
 		}
 		var1->flag &= 0xFEFF;

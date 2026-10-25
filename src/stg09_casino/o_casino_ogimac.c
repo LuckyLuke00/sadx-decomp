@@ -1,4 +1,8 @@
 #include "decls.h"
+static void DispH(struct task *tp);
+void FUN_0087ea70(struct task *param_1, float param_2);
+void DispObjV(struct task *tp);
+extern long CheckRangeOutWithR(struct task *tp, float fRange);
 struct TEXUVINFO;
 struct taskwk;
 void DispUV2ObjSE(struct task *tp);
@@ -6,7 +10,6 @@ void ObjCasino_SetTexUvInfo2(struct TEXUVINFO2 *puvinfo, int cnt, union NJS_COLO
 void SetObjectTexture2(long No);
 extern int DAT_05b9d838;
 extern struct taskwk *DAT_05b42a7c;
-extern struct taskwk *DAT_05baf36c;
 
 // FUNCTION: SADX 0x008894a0
 long ObjCasino_CheckUpperY(float ypos)
@@ -178,9 +181,29 @@ void ObjCasino_CreateSmokeR(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, floa
 {
 }
 
-// STUB: SADX 0x00889d30
+// FUNCTION: SADX 0x00889d30
 void DispSVObj(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, var1->value.f))
+	{
+		return;
+	}
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	SetObjectTexture2(0xc);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	FUN_0067d2d0(0, var1->scl.x + 1.0f, var1->scl.y + 1.0f, var1->scl.z + 1.0f);
+	ds_DrawObjectClip((struct obj *)var1->timer.ptr, FUN_00500c70(var1->scl.x + 1.0f, var1->scl.y + 1.0f, var1->scl.z + 1.0f));
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x00889f60
@@ -198,6 +221,22 @@ void ObjCasino_InitS3(struct task *tp, struct obj *pobject)
 	var1->timer.l = (long)pobject;
 }
 
+// FUNCTION: SADX 0x00889fa0
+void ExecSCV(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, var1->value.f))
+	{
+		return;
+	}
+	DispSVObj(tp);
+	if (!FUN_004c39c0(tp))
+	{
+		EntryColliList(var1);
+	}
+}
+
 // STUB: SADX 0x00889fe0
 void CalcCollisionScale(struct taskwk *twp)
 {
@@ -208,9 +247,90 @@ void DispObjVL(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0088a1f0
+void ExecCVL(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0088a250
 void ObjCasino_InitCVL(struct task *tp, float range, struct obj *pobject, struct CCL_INFO *pinfo, int cnum)
 {
+}
+
+// FUNCTION: SADX 0x0088a2d0
+void DispObjV(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, var1->value.f))
+	{
+		return;
+	}
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	SetObjectTexture2(0xc);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	ds_DrawObjectClip((struct obj *)var1->timer.ptr, 1.0f);
+	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x0088a350
+void ExecCV(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, var1->value.f))
+	{
+		return;
+	}
+	DispObjV(tp);
+	if (!FUN_004c39c0(tp))
+	{
+		EntryColliList(var1);
+	}
+}
+
+// FUNCTION: SADX 0x0088a410
+void DispObj(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, 360010.0f) != 0)
+		return;
+	if (DAT_05b9d838 != 0)
+		return;
+	SetObjectTexture2(0xc);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	ds_DrawObjectClip((struct obj *)var1->timer.ptr, 1.0f);
+	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x0088a490
+void ExecG(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, 360010.0f))
+	{
+		return;
+	}
+	DispObj(tp);
+	if (!FUN_004c39c0(tp))
+	{
+		FUN_0087ea70(tp, (float)var1->wtimer);
+	}
 }
 
 // STUB: SADX 0x0088a4e0
@@ -259,6 +379,59 @@ void ExecR(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x0088a700
+static void DispH(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, 360010.0f))
+	{
+		return;
+	}
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	SetObjectTexture2(0xc);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	if (var1->value.f != 0.0f)
+	{
+		___dsAction((struct NJS_ACTION *)var1->counter.ptr, var1->value.f, 1.0f);
+		njPopMatrix(1);
+	}
+	else
+	{
+		ds_DrawObjectClip((struct obj *)var1->timer.ptr, 1.0f);
+		njPopMatrix(1);
+	}
+}
+
+// STUB: SADX 0x0088aa20
+void ObjCasino_InitH(struct task *tp, struct obj *pobject, struct CCL_INFO *pinfo, struct NJS_ACTION *paction)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, 360010.0f) == 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			var1->ang.x = 0;
+			var1->ang.z = 0;
+			CCL_Init(tp, pinfo, 1, 4);
+		}
+		tp->disp = DispH;
+		tp->exec = (void (__cdecl *)(struct task *))0x88a7c0;
+		var1->value.f = 0.0f;
+		var1->timer.l = (long)pobject;
+		var1->counter.l = (long)paction;
+	}
+}
+
 // STUB: SADX 0x0088aa90
 void DispUV2ObjSE_sub(struct task *tp)
 {
@@ -283,6 +456,11 @@ void ExecUV2SE(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x0088ae80
+void ExecUV(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0088af80
 void ExecUVG(struct task *tp)
 {
@@ -298,6 +476,16 @@ void ObjCasino_InitTGR(struct task *tp, struct obj *pobject, struct TEXANIMINFO 
 {
 }
 
+// STUB: SADX 0x0088b430
+void ExecUVC(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0088b4b0
+void EndUV(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0088b4f0
 void ObjCasino_InitUVC(struct task *tp, struct obj *pobject, struct CCL_INFO *pinfo, int cnum, struct TEXUVINFO *tui, signed char num, signed char patnum)
 {
@@ -305,5 +493,10 @@ void ObjCasino_InitUVC(struct task *tp, struct obj *pobject, struct CCL_INFO *pi
 
 // STUB: SADX 0x0088b580
 void late_DispUVObj_sub(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0088b710
+void late_ExecUV(struct task *tp)
 {
 }

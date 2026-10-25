@@ -89,4 +89,21 @@ void ObjectRuinBigMirror(struct task *tp)
 // STUB: SADX 0x00850b90
 void ObjectRuinFogHasira(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	switch (var1->mode)
+	{
+		case 0:
+			var1->mode = 1;
+			CCL_Init(tp, (struct CCL_INFO *)0x043ac2ec, 1, 4);
+			tp->disp = DrawFogHasira;
+			break;
+		case 1:
+			if (FUN_004c39c0(tp) != 0)
+			{
+				njPrintC(0x110014, "<-AIM ID");
+			}
+			DrawFogHasira(tp);
+			EntryColliList(var1);
+			break;
+	}
 }

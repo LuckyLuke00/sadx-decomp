@@ -26,3 +26,19 @@ void KazariADisp(struct task *tp)
 		}
 	}
 }
+
+// FUNCTION: SADX 0x0087ac10
+void ObjectCasinoKazariA(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, 62510.0f) == 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			CCL_Init(tp, &coll_0[0], 4, 4);
+		}
+		var1->value.f = var1->scl.x;
+		tp->disp = KazariADisp;
+		tp->exec = kazariAExec;
+	}
+}

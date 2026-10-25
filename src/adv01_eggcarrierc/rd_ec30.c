@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct task *DAT_060b85a8[10];
 extern struct NJS_POINT2 DAT_05b3e050;
 extern short DAT_05b9d744;
 extern struct NJS_ARGB **pFogTable_Adv01C[2];
@@ -17,9 +18,19 @@ void BgActInit(struct task *tp)
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_Adv01C + local_8))[DAT_05b3e0d0];
 }
 
-// STUB: SADX 0x0069db40
+// FUNCTION: SADX 0x0069db40
 void FUN_0069db40(void)
 {
+	int var1;
+
+	for (var1 = 0; var1 < 8; var1++)
+	{
+		if (DAT_060b85a8[var1] != 0)
+		{
+			DestroyTask(DAT_060b85a8[var1]);
+			DAT_060b85a8[var1] = 0;
+		}
+	}
 }
 
 // STUB: SADX 0x0069dbe0

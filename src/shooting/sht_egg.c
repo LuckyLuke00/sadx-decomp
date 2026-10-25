@@ -1,4 +1,9 @@
 #include "decls.h"
+extern void njPushMatrix(float *);
+void njTranslateV(float *, struct NJS_POINT3 *);
+void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
+void FUN_004a8a50(struct NJS_ACTION *param_1, float param_2, int param_3);
+extern struct NJS_ACTION action_beamev_s_beam[1];
 struct task;
 extern int DAT_05b9d838;
 extern struct NJS_TEXLIST texlist_shooting0;
@@ -31,7 +36,7 @@ void EggDisp(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
 	njRotateXYZ(0, var1->ang.x, var1->ang.y, var1->ang.z);
 	FUN_004a88c0(&action_shot_bf_s_bodya, var1->value.f);
-	FUN_004a8a50(&action_shot_s_ecfire, *(float *)&var1->counter.f, 4);
+	FUN_004a8a50(&action_shot_s_ecfire, var1->counter.f, 4);
 	njPopMatrix(1);
 	npSetZCompare();
 }
@@ -73,6 +78,23 @@ void EggDisp2(struct task *tp)
 // STUB: SADX 0x007ee140
 void FUN_007ee140(struct task *cTask)
 {
+}
+
+// FUNCTION: SADX 0x007ee3d0
+void ef_TameDisp(struct task *tp)
+{
+	struct taskwk *var1;
+	struct task *var2;
+	var1 = tp->twp;
+	___njFogDisable();
+	___njSetTexture(&texlist_shooting0);
+	njPushMatrix(0);
+	var2 = tp->ptp;
+	njTranslateV(0, (struct NJS_POINT3 *)((char *)var2->twp + 0x20));
+	FUN_0067d2d0(0, 0.5f, 0.5f, 0.5f);
+	njTranslateV(0, &var1->pos);
+	FUN_004a8a50((struct NJS_ACTION *)&action_beamev_s_beam, var1->value.f, 4);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x007ee450
