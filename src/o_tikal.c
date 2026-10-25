@@ -1,4 +1,8 @@
 #include "decls.h"
+void FUN_005bb770(struct task *param_1);
+void FUN_005bb7e0(struct task *param_1);
+void FUN_005bb200(struct task *param_1);
+void FUN_005bb200(struct task *param_1);
 extern void tikal_tubu_draw(struct task *task_p);
 void tikal_tubu_draw(struct task *task_p);
 void FUN_005bb770(struct task *param_1);
@@ -80,9 +84,13 @@ void tikal_tubu_exec(struct task *task_p)
 {
 }
 
-// STUB: SADX 0x005bb730
+// FUNCTION: SADX 0x005bb730
 void tikal_tubu_draw(struct task *task_p)
 {
+	struct taskwk *local_8;
+
+	local_8 = task_p->twp;
+	tikal_draw_sprite(&sprite_tikal_tubu, (NJS_POINT3 *)((char *)local_8 + 0x20), (NJS_ARGB *)((char *)local_8 + 8), 0, 0.03125f);
 }
 
 // STUB: SADX 0x005bb770
@@ -123,7 +131,10 @@ void FUN_005bb9d0(struct task *task_p)
 {
 }
 
-// STUB: SADX 0x005bbac0
+// FUNCTION: SADX 0x005bbac0
 void tikal_illusion_draw(struct task *task_p)
 {
+	struct taskwk *local_8g = task_p->twp;
+
+	tikal_draw_sprite(&sprite_tikal_tubu, &local_8g->pos, (NJS_ARGB *)((char *)local_8g + 8), 0, local_8g->scl.x * 0.125f);
 }

@@ -1,25 +1,33 @@
 #include "decls.h"
+extern void *DAT_00a09ec8;
+extern void *DAT_00a09ebc;
+extern void *DAT_00a09eb0;
+extern void *DAT_00a09ea4;
 extern struct TaskInfo DAT_00a09e8c;
 extern struct ActionParam DAT_00a09ed4;
 
-// STUB: SADX 0x007e5820
+// FUNCTION: SADX 0x007e5820
 void ObjectCartSignboard1(struct task *task_p)
 {
+	MirenInitTask(task_p, &DAT_00a09e8c, &DAT_00a09ea4);
 }
 
-// STUB: SADX 0x007e5840
+// FUNCTION: SADX 0x007e5840
 void ObjectCartSignboard2(struct task *task_p)
 {
+	MirenInitTask(task_p, &DAT_00a09e8c, &DAT_00a09eb0);
 }
 
-// STUB: SADX 0x007e5860
+// FUNCTION: SADX 0x007e5860
 void ObjectCartSignboard3(struct task *task_p)
 {
+	MirenInitTask(task_p, &DAT_00a09e8c, &DAT_00a09ebc);
 }
 
-// STUB: SADX 0x007e5880
+// FUNCTION: SADX 0x007e5880
 void ObjectCartSignboard4(struct task *task_p)
 {
+	MirenInitTask(task_p, &DAT_00a09e8c, &DAT_00a09ec8);
 }
 
 // FUNCTION: SADX 0x007e58a0

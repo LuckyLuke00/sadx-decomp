@@ -1,4 +1,11 @@
 #include "decls.h"
+void FUN_008d94c0(struct taskwk *param_1, int param_2);
+void FUN_008d94c0(struct taskwk *param_1, int param_2);
+extern void ___njSetConstantMaterial(struct NJS_ARGB *);
+extern void ___njColorBlendingMode(int, int);
+extern void ResetMaterial();
+void bbl_ripple_set(struct NJS_POINT3 *pos_p, float speed, float fade, float size);
+void FUN_008d9e40(struct task *param_1);
 extern void bubble_child_exec_appear(struct task *task_p);
 extern void bubble_child_draw(struct task *task_p);
 void FUN_008d94c0(struct taskwk *param_1, int param_2);
@@ -14,6 +21,11 @@ void ObjectBubble(struct task *task_p)
 
 // STUB: SADX 0x008d8a20
 void ObjectBubbleSmall(struct task *bbls_task_p)
+{
+}
+
+// STUB: SADX 0x008d8b00
+void bubble_exec(struct task *task_p)
 {
 }
 
@@ -50,6 +62,11 @@ void bubble_child_draw(struct task *task_p)
 	___njColorBlendingMode(1, 6);
 }
 
+// STUB: SADX 0x008d92b0
+void bubble_small_draw(struct task *bbls_task_p)
+{
+}
+
 // FUNCTION: SADX 0x008d93d0
 void bubble_small_end(struct task *bbls_task_p)
 {
@@ -64,6 +81,11 @@ int FUN_008d93f0(float *param_1)
 
 // STUB: SADX 0x008d94c0
 void FUN_008d94c0(struct taskwk *twp, int num)
+{
+}
+
+// STUB: SADX 0x008d95b0
+void bubble_small_new_work(struct bbl_small_taskwk *bbls_taskwk_p, float x, float z)
 {
 }
 
@@ -113,7 +135,27 @@ void FUN_008d9d80(float *param_1)
 {
 }
 
+// STUB: SADX 0x008d9e40
+void FUN_008d9e40(struct task *task_p)
+{
+}
+
 // STUB: SADX 0x008d9f50
 void FUN_008d9f50(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008da020
+void bbl_ripple_set(struct NJS_POINT3 *pos_p, float speed, float fade, float size)
+{
+}
+
+// STUB: SADX 0x008da0e0
+void bbl_ripple_exec(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x008da1a0
+void bbl_ripple_draw(struct task *task_p)
 {
 }

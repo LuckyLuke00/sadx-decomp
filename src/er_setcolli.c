@@ -14,3 +14,8 @@ void ERSetColli(struct task *tp)
 void ERSC_CorrectParameter(struct taskwk *twp)
 {
 }
+
+// STUB: SADX 0x008de700
+void ERSC_DisplayEditInfo(struct task *tp)
+{
+}

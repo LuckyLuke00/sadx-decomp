@@ -1,4 +1,9 @@
 #include "decls.h"
+void DisplayCalcEnemyScore(struct task *tp);
+extern int DAT_05b3ea78[15];
+void DisplayCalcLettersSC(struct task *tp);
+extern float ScreenRaitoX;
+extern float ScreenRaitoY;
 void DisplayCalcRingScoreSB(struct task *tp);
 void DisplayCalcBoardScoreSB(struct task *tp);
 int FUN_0055c7f0(int param_1, int param_2);
@@ -332,6 +337,11 @@ void DisplayCalcSonicScoreHH(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0055a030
+void DisplayCalcSuperSonicScoreHH(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0055a0c0
 void DisplayCalcEggManScoreHH(struct task *tp)
 {
@@ -370,13 +380,25 @@ int FUN_0055b000(int param_1, char param_2)
 	return (int)0;
 }
 
-// STUB: SADX 0x0055b450
+// FUNCTION: SADX 0x0055b450
 void DisplayCalcTime(struct task *tp)
+{
+	DisplayCalcLetters(tp);
+	DrawSNumbersTime(ScreenRaitoX * 320.0 + -32.0, ScreenRaitoY * 240.0 + -144.0);
+}
+
+// STUB: SADX 0x0055b710
+void DisplayCalcEnemyScore(struct task *tp)
 {
 }
 
 // STUB: SADX 0x0055b7c0
 void DisplayCalcTimeScore(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0055b870
+void DisplayCalcRingScore(struct task *tp)
 {
 }
 
@@ -421,6 +443,11 @@ void DisplayCalcEnemyScoreSC(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0055cf70
+void FUN_0055cf70(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0055db30
 int FUN_0055db30(int param_1, int param_2)
 {
@@ -432,7 +459,14 @@ void InitTotalRingDisp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0055e200
-void InitBossTrialScore(void)
+// FUNCTION: SADX 0x0055e200
+void InitBossTrialScore()
 {
+	int local_8;
+	for (local_8 = 0; local_8 < 5; local_8++)
+	{
+		*(int *)((char *)DAT_05b3ea78 + local_8 * 0xc) = 0;
+		*(int *)((char *)DAT_05b3ea78 + local_8 * 0xc + 4) = 0;
+		*(int *)((char *)DAT_05b3ea78 + local_8 * 0xc + 8) = 0;
+	}
 }

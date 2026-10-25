@@ -1,4 +1,9 @@
 #include "decls.h"
+void FUN_005b6820();
+void FUN_005b6f80(struct task *param_1);
+void itemBoxManager(struct task *tp);
+void FUN_005b6940();
+void FUN_005b6f80(struct task *param_1);
 extern float DAT_05edbfd4;
 extern float DAT_05edbfd8;
 extern float DAT_05edbfdc;
@@ -11,8 +16,20 @@ extern float DAT_05edbe80;
 void FUN_005b67b0(struct task *param_1);
 extern struct NJS_MODEL *DAT_05edbe84;
 
-// STUB: SADX 0x005b5df0
+// FUNCTION: SADX 0x005b5df0
 void PutItem_ItemBoxAir(struct NJS_POINT3 *putpos, long putItem)
+{
+	struct task *local_cg;
+	struct taskwk *local_8g;
+
+	local_cg = CreateElementalTask(0xf, 3, ObjectItemboxAir);
+	local_8g = local_cg->twp;
+	local_8g->pos = *putpos;
+	local_8g->scl.x = (float)putItem;
+}
+
+// STUB: SADX 0x005b60c0
+void itembox_airDisplay(struct task *tp)
 {
 }
 
@@ -22,8 +39,28 @@ void *FUN_005b6290()
 	return (void *)0;
 }
 
-// STUB: SADX 0x005b62e0
+// FUNCTION: SADX 0x005b62e0
 void sphereDraw(struct obj *obj)
+{
+	struct NJS_ARGB argb;
+
+	SaveControl3D();
+	njControl3D(0x20);
+	argb.b = -(DAT_05edbe84->center.x - 1.0) * 0.25;
+	argb.g = argb.b;
+	argb.r = argb.g;
+	___njSetConstantMaterial(&argb);
+	late_DrawObject(obj, 4);
+	LoadControl3D();
+}
+
+// STUB: SADX 0x005b6360
+void itemDraw(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x005b64a0
+void itembox_airCollisitonBefore(struct task *tp)
 {
 }
 
@@ -73,6 +110,11 @@ void FUN_005b67b0(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005b6820
+void FUN_005b6820(void)
+{
+}
+
 // STUB: SADX 0x005b6940
 void FUN_005b6940()
 {
@@ -83,14 +125,27 @@ void FUN_005b69e0()
 {
 }
 
+// STUB: SADX 0x005b6a60
+void itemBoxManager(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005b6f50
 void ItemBox_Explosion(struct NJS_POINT3 *pos)
 {
 }
 
-// STUB: SADX 0x005b6f80
+// FUNCTION: SADX 0x005b6f80
 void FUN_005b6f80(struct task *param_1)
 {
+	if (DAT_05edbe80 >= 0.0f)
+	{
+		DAT_05edbe80 = DAT_05edbe80 + 10.0;
+		if (DAT_05edbe80 > 500.0)
+		{
+			DAT_05edbe80 = -1.0f;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x005b6fd0

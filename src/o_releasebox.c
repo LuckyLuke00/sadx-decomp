@@ -1,5 +1,7 @@
 #include "decls.h"
 void FUN_005ac3c0(struct task *param_1);
+extern struct NJS_MODEL DAT_05a7fd5c;
+void FUN_005ac3c0(struct task *param_1);
 extern int DAT_05b9d838;
 extern struct NJS_MODEL DAT_05a8005c;
 extern struct NJS_MODEL DAT_05a80684;
@@ -97,9 +99,26 @@ void relbox_player_hold(long player_id, struct NJS_POINT3 *pos_p)
 {
 }
 
-// STUB: SADX 0x005ac130
+// FUNCTION: SADX 0x005ac0e0
+void relbox_switch_draw(struct task *task_p)
+{
+	struct taskwk *local_8;
+
+	local_8 = task_p->twp;
+	SetRegularTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &local_8->pos);
+	ds_DrawModelClip(&DAT_05a7fd5c, 1.0f);
+	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x005ac130
 void relbox_switch_end(struct task *task_p)
 {
+	struct taskwk *local_8;
+
+	local_8 = task_p->ptp->twp;
+	*(int *)((char *)local_8 + 0x30) = 0;
 }
 
 // STUB: SADX 0x005ac150
@@ -109,5 +128,10 @@ void FUN_005ac150(int param_1)
 
 // STUB: SADX 0x005ac1a0
 void FUN_005ac1a0(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x005ac270
+void relbox_crush_draw(struct task *task_p)
 {
 }

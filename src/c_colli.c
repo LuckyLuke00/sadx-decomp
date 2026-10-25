@@ -1,4 +1,9 @@
 #include "decls.h"
+int FUN_004d97c0(struct taskwk *param_1, int param_2);
+void FUN_004d9850(int param_1);
+int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
+void FUN_004d0b30(struct taskwk *param_1, struct taskwk *param_2, float param_3);
+int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
@@ -202,6 +207,12 @@ void CCL_Analyze()
 // STUB: SADX 0x004d0930
 void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
 {
+}
+
+// STUB: SADX 0x004d0a20
+int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x004d0ad0

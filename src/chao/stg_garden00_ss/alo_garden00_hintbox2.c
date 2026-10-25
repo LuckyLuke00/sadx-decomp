@@ -43,18 +43,6 @@ void FUN_00477cf0(int param_1)
 {
 }
 
-// STUB: SADX 0x00477d70
-long hintbox_test_range(struct task *task_p, float range)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x00477e70
-long hintbox_turn(struct task *task_p)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x00477ef0
 int FUN_00477ef0(struct task *tp)
 {
@@ -64,12 +52,6 @@ int FUN_00477ef0(struct task *tp)
 // STUB: SADX 0x00478180
 void FUN_00478180(struct task *tp)
 {
-}
-
-// STUB: SADX 0x00478270
-struct task *hintbox_monitor_set(struct task *task_p, enum monitor_mode mode)
-{
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x00478350
@@ -91,29 +73,8 @@ void hintbox_edit_print()
 	njPrintC(0x110015, "<-Message ID");
 }
 
-// STUB: SADX 0x004784c0
-long hintbox_getwork(struct task *task_p)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x004785b0
 void FUN_004785b0(struct task *task_p)
-{
-}
-
-// STUB: SADX 0x004785e0
-void hintbox_exec_turn(struct task *task_p)
-{
-}
-
-// STUB: SADX 0x00478650
-void hintbox_exec_turn_wait(struct task *task_p)
-{
-}
-
-// STUB: SADX 0x004786d0
-void hintbox_exec_message(struct task *task_p)
 {
 }
 

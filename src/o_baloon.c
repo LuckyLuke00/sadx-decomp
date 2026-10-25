@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_008bad70(struct obj *param_1);
 void FUN_008bb1a0(void *param_1);
 void BaloonScale(struct taskwk *twp);
 float njSin(int);
@@ -13,6 +14,11 @@ void ObjectBaloon(struct task *tp)
 
 // STUB: SADX 0x008babc0
 void FUN_008babc0(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x008bac40
+void FUN_008bac40(struct taskwk *twp)
 {
 }
 
@@ -32,9 +38,10 @@ void FUN_008bb170(int param_1)
 	*(float *)(param_1 + 0x10) = njSin((*(int *)(param_1 + 8) + 0x320) << 8) * 4.0;
 }
 
-// STUB: SADX 0x008bb1a0
-void FUN_008bb1a0(void *p)
+// FUNCTION: SADX 0x008bb1a0
+void FUN_008bb1a0(void *param_1)
 {
+	*(int *)((char *)param_1 + 0x1c) = (int)(njCos((*(int *)((char *)param_1 + 8) + 0x7d0) * 0xc8) * 4096.0);
 }
 
 // FUNCTION: SADX 0x008bb1e0

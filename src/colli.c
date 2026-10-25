@@ -104,10 +104,38 @@ int FUN_004f7740(int *param_1)
 	return (int)0;
 }
 
-// STUB: SADX 0x004f7830
+// FUNCTION: SADX 0x004f7830
 struct obj *CL_SeekObjectTree(struct obj *obp, unsigned long ulattr, struct CL_ObjInfo *oip)
 {
-	return (struct obj *)0;
+	struct obj *local_8;
+
+	njPushMatrix(0);
+	njTranslateV(0, (struct NJS_POINT3 *)((char *)obp + 8));
+	if (*(int *)((char *)obp + 0x1c) != 0)
+	{
+		njRotateZ(0, *(unsigned short *)((char *)obp + 0x1c));
+	}
+	if (*(int *)((char *)obp + 0x18) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)obp + 0x18));
+	}
+	if (*(int *)((char *)obp + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)obp + 0x14));
+	}
+	njScaleV(0, (struct NJS_POINT3 *)((char *)obp + 0x20));
+	local_8 = obp->child;
+	while (local_8 != 0)
+	{
+		local_8 = CL_SeekObjectTree(local_8, ulattr, oip);
+	}
+	if (CL_ListUpPolygonsInObject(obp, ulattr, oip) == 0)
+	{
+		njPopMatrix(1);
+		return 0;
+	}
+	njPopMatrix(1);
+	return obp->sibling;
 }
 
 // STUB: SADX 0x004f8010
@@ -143,6 +171,17 @@ float FUN_004f89d0(float *param_1, float *param_2)
 	return local_8g * local_8g + local_cj * local_cj + local_10 * local_10;
 }
 
+// STUB: SADX 0x004fafe0
+long CL_ColPolCFPolygon(struct zxsdwstr *zss, float rad)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004fb150
+void FUN_004fb150(float *param_1, float *param_2, float *param_3, float *param_4)
+{
+}
+
 // FUNCTION: SADX 0x004fb430
 float GetInnerProduct(struct NJS_POINT3 *p0, struct NJS_POINT3 *p1, struct NJS_POINT3 *p2)
 {
@@ -169,6 +208,12 @@ void FUN_004fba70(float *param_1, float *param_2, float *param_3)
 // STUB: SADX 0x004fbad0
 void GetAngleZXV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_z)
 {
+}
+
+// STUB: SADX 0x004fbb70
+int FUN_004fbb70(int *param_1)
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x004fcd10

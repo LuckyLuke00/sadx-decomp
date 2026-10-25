@@ -10,6 +10,7 @@ struct __MYMEM_DATA;
 struct _camcontwk;
 struct _CameraSystemWork;
 struct _OBJ_ADJUSTPARAM;
+struct _OBJ_CAMERAENTRY;
 struct _OBJ_CAMERAPARAM;
 struct _OBJ_LANDTABLE;
 struct _OptionSelWk;
@@ -103,6 +104,7 @@ struct CHAOS_OBJPVTBL;
 struct chaoswk;
 struct CharMdlWk;
 struct CharSelWk;
+struct CL_ObjInfo;
 struct cloud_scroll;
 struct cloudtbl;
 struct CMoviePolyData;
@@ -112,6 +114,7 @@ struct cnkobj;
 struct colliwk;
 struct cpathtag;
 struct cpathtbl;
+struct CPlayableInfo;
 struct CRUSHLIGHT_DATA;
 struct CRUSHLIGHT_WK;
 struct csts;
@@ -203,6 +206,7 @@ struct OBJ_CONDITION;
 struct OBJ_EDITENTRY;
 struct OBJ_SLEEPCON;
 struct OBJ_UNIT;
+struct ObjCmnInfo;
 struct OCMDATA;
 struct PanelPrmType;
 struct particle_entry;
@@ -265,6 +269,7 @@ struct WIDELINE_TEXDATA;
 struct WIREMODEL;
 struct xssunit;
 struct xyyzzxsdwstr;
+struct zxsdwstr;
 
 enum AdvDlgSelEnum : int {
     ADVDLG_KAISHI = 0,
@@ -2350,6 +2355,16 @@ static_assert(sizeof(CMoviePolyTag) == 0x8, "sizeof CMoviePolyTag");
 static_assert(offsetof(CMoviePolyTag, datap) == 0x0, "CMoviePolyTag::datap");
 static_assert(offsetof(CMoviePolyTag, num) == 0x4, "CMoviePolyTag::num");
 
+struct CPlayableInfo {
+    int playerno;
+    char *ename;
+    char *jname;
+};
+static_assert(sizeof(CPlayableInfo) == 0xc, "sizeof CPlayableInfo");
+static_assert(offsetof(CPlayableInfo, playerno) == 0x0, "CPlayableInfo::playerno");
+static_assert(offsetof(CPlayableInfo, ename) == 0x4, "CPlayableInfo::ename");
+static_assert(offsetof(CPlayableInfo, jname) == 0x8, "CPlayableInfo::jname");
+
 struct CRUSHLIGHT_DATA {
     int nLife;
     float fWidth[2];
@@ -3231,6 +3246,14 @@ static_assert(offsetof(OBJ_CONDITION, ssCondition) == 0x2, "OBJ_CONDITION::ssCon
 static_assert(offsetof(OBJ_CONDITION, pTask) == 0x4, "OBJ_CONDITION::pTask");
 static_assert(offsetof(OBJ_CONDITION, pObjEditEntry) == 0x8, "OBJ_CONDITION::pObjEditEntry");
 static_assert(offsetof(OBJ_CONDITION, unionStatus) == 0xc, "OBJ_CONDITION::unionStatus");
+
+struct ObjCmnInfo {
+    unsigned char id;
+    unsigned char copy;
+};
+static_assert(sizeof(ObjCmnInfo) == 0x2, "sizeof ObjCmnInfo");
+static_assert(offsetof(ObjCmnInfo, id) == 0x0, "ObjCmnInfo::id");
+static_assert(offsetof(ObjCmnInfo, copy) == 0x1, "ObjCmnInfo::copy");
 
 struct PATHCAMERA1WORK {
     int modeflag;
@@ -5074,6 +5097,16 @@ static_assert(offsetof(taskwk, pos) == 0x20, "taskwk::pos");
 static_assert(offsetof(taskwk, scl) == 0x2c, "taskwk::scl");
 static_assert(offsetof(taskwk, cwp) == 0x38, "taskwk::cwp");
 static_assert(offsetof(taskwk, ewp) == 0x3c, "taskwk::ewp");
+
+struct zxsdwstr {
+    struct NJS_POINT3 pos;
+    struct xssunit lower;
+    struct xssunit upper;
+};
+static_assert(sizeof(zxsdwstr) == 0x4c, "sizeof zxsdwstr");
+static_assert(offsetof(zxsdwstr, pos) == 0x0, "zxsdwstr::pos");
+static_assert(offsetof(zxsdwstr, lower) == 0xc, "zxsdwstr::lower");
+static_assert(offsetof(zxsdwstr, upper) == 0x2c, "zxsdwstr::upper");
 
 struct u4s {
     unsigned char u4_ACT1 : 4;

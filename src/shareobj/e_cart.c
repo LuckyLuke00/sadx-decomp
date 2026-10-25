@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_04c38b98[4];
 void FUN_008d0810(void);
 void FUN_008d0870(void);
 extern int DAT_060dff64;
@@ -14,9 +15,19 @@ extern short DAT_05b9d744;
 void FUN_008cf820(int param_1, int param_2);
 void FUN_008cfbb0(int param_1, int param_2);
 
-// STUB: SADX 0x008cb900
+// FUNCTION: SADX 0x008cb900
 void CartGetOffPlayer(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct CCL_INFO *local_8g;
+	local_cg = tp->twp;
+	local_8g = local_cg->cwp->info;
+	DAT_060dfeb4 = (struct OBJ_CONDITION *)tp->awp->work.ptr[0];
+	*(unsigned int *)((char *)local_8g + 4) &= 0xffffffef;
+	GetOutOfCartP(0, 0.0, 2.0, 2.0);
+	*(short *)((char *)DAT_060dfeb4 + 0x16) = 0x1e;
+	returnSonicCollision(tp);
+	local_cg->mode = 9;
 }
 
 // STUB: SADX 0x008cb980
@@ -24,9 +35,10 @@ void SetCartVelocity(struct task *tp, struct NJS_POINT3 *spd)
 {
 }
 
-// STUB: SADX 0x008cbb40
+// FUNCTION: SADX 0x008cbb40
 void SetCartBonusAdd(float spd)
 {
+	*(float *)((char *)DAT_060dfeb4 + 0x7c) = spd;
 }
 
 // STUB: SADX 0x008cbd30
@@ -166,14 +178,18 @@ void resetHoverPoint(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x008d0810
+// FUNCTION: SADX 0x008d0810
 void FUN_008d0810(void)
 {
+	*(float *)((char *)DAT_060dfeb4 + 0x38) = *(float *)((char *)DAT_060dfeb4 + 0x38) + 1.0;
+	*(float *)((char *)DAT_060dfeb4 + 0x34) = 1.0f * njSin((int)((*(float *)((char *)DAT_060dfeb4 + 0x38) * 65536.0) / 360.0)) + 0.5;
 }
 
-// STUB: SADX 0x008d0870
+// FUNCTION: SADX 0x008d0870
 void FUN_008d0870(void)
 {
+	*(float *)((char *)DAT_060dfeb4 + 0x38) = 0.0f;
+	*(float *)((char *)DAT_060dfeb4 + 0x34) = *(float *)((char *)DAT_060dfeb4 + 0x34) * 0.98f;
 }
 
 // STUB: SADX 0x008d08a0
@@ -202,6 +218,11 @@ void setCartDirection(struct taskwk *twp, struct NJS_POINT3 *vec)
 	}
 }
 
+// STUB: SADX 0x008d0af0
+void FUN_008d0af0(struct taskwk *param_1)
+{
+}
+
 // STUB: SADX 0x008d0b60
 void FUN_008d0b60(struct task *tp, int param_2)
 {
@@ -213,9 +234,22 @@ long distCheck(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x008d0d20
+// FUNCTION: SADX 0x008d0d20
 void cartSELoop(struct task *tp, long se_no)
 {
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	if ((((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) == 0x300)
+	{
+		if (distCheck(tp) != 0)
+		{
+			dsPlay_timer_v(*(int *)((char *)DAT_04c38b98 + se_no * 8), (int)tp, 1, 0, 2, local_8->pos.x, local_8->pos.y, local_8->pos.z);
+		}
+	}
+	else
+	{
+		dsPlay_timer_v(*(int *)((char *)DAT_04c38b98 + se_no * 8 + 4), (int)tp, 1, 0, 2, local_8->pos.x, local_8->pos.y, local_8->pos.z);
+	}
 }
 
 // STUB: SADX 0x008d1090
@@ -228,9 +262,15 @@ void pLockingOnTargetEnemy2(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 {
 }
 
-// STUB: SADX 0x008d1350
+// FUNCTION: SADX 0x008d1350
 void FUN_008d1350(int param_1, char *param_2)
 {
+	if (DAT_060dfea8 == 1)
+	{
+		*param_2 = 6;
+		*(char *)((char *)DAT_060dfeb4 + 0x85) = 1;
+		*(char *)((char *)DAT_060dfeb4 + 0x84) = 1;
+	}
 }
 
 // STUB: SADX 0x008d1380
@@ -253,6 +293,29 @@ void MakeEgo(float rate)
 // STUB: SADX 0x008d1410
 void egoManager(struct task *tp)
 {
+	struct task *local_cg;
+	struct taskwk *local_8g;
+	if ((*(struct task *(*))&DAT_060dfeb0) == 0)
+	{
+		return;
+	}
+	local_cg = CreateElementalTask(2, 4, ego);
+	local_8g = local_cg->twp;
+	local_8g->pos = (*(struct task *(*))&DAT_060dfeb0)->twp->pos;
+	local_8g->ang = (*(struct task *(*))&DAT_060dfeb0)->twp->ang;
+	local_8g->counter.f = tp->twp->counter.f;
+	local_cg->disp = drawEgo;
+	tp->twp->counter.f -= 0.009999999776482582;
+	if (tp->twp->counter.f <= 0.0)
+	{
+		tp->twp->counter.f = 0.0;
+		FreeTask(tp);
+		DAT_060dff60 = 0;
+	}
+	else
+	{
+		DAT_060dff60 = 1;
+	}
 }
 
 // FUNCTION: SADX 0x008d1500

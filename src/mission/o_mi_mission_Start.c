@@ -18,9 +18,9 @@ static void Disp(struct task *tp)
 		___njSetTexture(&texlist_kariobj);
 		njPushMatrix(0);
 		njTranslateV(0, &var2->pos);
-		if (*(int *)&var2->ang.y != 0)
+		if (var2->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)&var2->ang.y);
+			njRotateY(0, (unsigned short)var2->ang.y);
 		}
 		njScaleV(0, &var2->scl);
 		___dsAction((struct NJS_ACTION *)var2->counter.ptr, var2->timer.f, 1.0f);

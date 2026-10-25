@@ -1,5 +1,9 @@
 #include "decls.h"
 #include <stdlib.h>
+extern "C" double atan2(double v, double u);
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
+long CheckCollisionP(struct NJS_POINT3 *vp, float d);
 struct sParabola;
 extern struct obj object_Arrow_Y;
 extern struct obj object_Arrow_Z;
@@ -33,9 +37,11 @@ void DispVectorXYV(struct NJS_POINT3 *bp, struct NJS_POINT3 *vec)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0056e600
+// FUNCTION: SADX 0x0056e600
 void GetAngleXYV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_y)
 {
+	*ang_x = -((long)(atan2((double)vec->y, (double)vec->z) * 65536.0 / 6.283184));
+	*ang_y = ((long)(atan2((double)vec->x, (double)njSqrt(vec->y * vec->y + vec->z * vec->z)) * 65536.0 / 6.283184));
 }
 
 // FUNCTION: SADX 0x0056e6a0
@@ -78,10 +84,30 @@ long ChkItemInPercent(float *tbl)
 	return (long)0;
 }
 
-// STUB: SADX 0x0056e890
+// FUNCTION: SADX 0x0056e890
 long MakePopUpItem(struct taskwk *twp, long kind)
 {
-	return (long)0;
+	long local_8;
+	local_8 = 0;
+	switch (kind)
+	{
+	case 1:
+		RingNumRunning(twp->pos.x, twp->pos.y, twp->pos.z, 1);
+		break;
+	case 2:
+		RingNumRunning(twp->pos.x, twp->pos.y, twp->pos.z, 5);
+		break;
+	case 3:
+		RingNumRunning(twp->pos.x, twp->pos.y, twp->pos.z, 10);
+		break;
+	case 4:
+		PutItem_ItemBox(&twp->pos, 4);
+		break;
+	case 6:
+		PutItem_ItemBox(&twp->pos, 6);
+		break;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0056e990
@@ -114,9 +140,27 @@ struct obj *EntryMobileLandCollsion(struct task *tp, struct NJS_MODEL *model)
 	return 0;
 }
 
-// STUB: SADX 0x0056ea70
+// FUNCTION: SADX 0x0056ea70
 void SetMobileLandCollsionData(struct taskwk *twp, struct obj *op)
 {
+	if ((twp->btimer & 2) != 0)
+	{
+		return;
+	}
+	if (CheckCollisionP(&twp->pos, op->model->r + 20.0) != 0)
+	{
+		twp->flag = twp->flag | 0x100;
+		op->pos[0] = twp->pos.x;
+		op->pos[1] = twp->pos.y;
+		op->pos[2] = twp->pos.z;
+		op->ang[0] = twp->ang.x;
+		op->ang[1] = twp->ang.y;
+		op->ang[2] = twp->ang.z;
+	}
+	else
+	{
+		twp->flag = twp->flag & ~0x100;
+	}
 }
 
 // STUB: SADX 0x0056eb30
@@ -129,9 +173,18 @@ void CharColliOff(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x0056ebf0
+// FUNCTION: SADX 0x0056ebf0
 void LoopAnimation(struct NJS_ACTION *anm, float *fnum, float anm_speed)
 {
+	*fnum += anm_speed;
+	if (*fnum < 0.0)
+	{
+		*fnum += (float)anm->motion->nbFrame;
+	}
+	else if (*fnum >= (float)anm->motion->nbFrame)
+	{
+		*fnum -= (float)anm->motion->nbFrame;
+	}
 }
 
 // STUB: SADX 0x0056ec80
@@ -149,4 +202,14 @@ void MakeParabolaInitSpeed(struct sParabola *para)
 long ChkParabolaEnd(struct sParabola *para)
 {
 	return (long)0;
+}
+
+// FUNCTION: SADX 0x0056ef80
+long ChkStageAction()
+{
+	unsigned short local_8;
+	local_8 = (unsigned short)((((short)DAT_05b9d724 << 8) | (short)DAT_05b9d744) >> 8 & 0xff);
+	if ((int)local_8 >= 0 && local_8 < 0x0f)
+		return 1;
+	return 0;
 }

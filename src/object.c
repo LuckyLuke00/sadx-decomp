@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00501770(struct taskwk *param_1);
 void FUN_00422560(int param_1);
 void FUN_005015e0(void *param_1);
 void FUN_00501300(struct task *param_1, struct task *param_2);
@@ -68,9 +69,9 @@ void OConvertVector_O2G(struct taskwk *twp, struct NJS_POINT3 *vp)
 	v.y = vp->y;
 	v.z = vp->z;
 	njPushMatrix(_nj_unit_matrix_);
-	if (*(long *)&twp->ang.z != 0)
+	if (twp->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)&twp->ang.z);
+		njRotateZ(0, (unsigned short)twp->ang.z);
 	}
 	if (twp->ang.x != 0)
 	{
@@ -381,6 +382,12 @@ void ObjectScaleDisplay(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00500c70
+float FUN_00500c70(float param_1, float param_2, float param_3)
+{
+	return (float)0;
+}
+
 // FUNCTION: SADX 0x00500d30
 long ObjectCCollision(struct task *tp)
 {
@@ -537,10 +544,22 @@ void ObjectScaleCCollisionExecute(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x005012a0
+// FUNCTION: SADX 0x005012a0
 int FUN_005012a0(struct task *param_1)
 {
-	return (int)0;
+	struct task *local_8;
+	if (DAT_05cc25a4 == 0)
+	{
+		return 0;
+	}
+	local_8 = (struct task *)MAlloc(0x34);
+	if (local_8 == 0)
+	{
+		return 0;
+	}
+	*local_8 = *param_1->ptp;
+	FUN_00501300(param_1, local_8);
+	return 1;
 }
 
 // FUNCTION: SADX 0x00501300
@@ -548,7 +567,7 @@ void FUN_00501300(struct task *param_1, struct task *param_2)
 {
 	if (DAT_05cc25a4->awp == 0)
 	{
-		*(struct anywk **)&DAT_05cc25a4->awp = (struct anywk *)param_2;
+		DAT_05cc25a4->awp = (struct anywk *)param_2;
 		DAT_05cc25a4->next = (struct task *)((long)DAT_05cc25a4->next & 0xffffffef);
 	}
 	else
@@ -559,9 +578,39 @@ void FUN_00501300(struct task *param_1, struct task *param_2)
 	DAT_05cc25a8 = (int)param_2;
 }
 
-// STUB: SADX 0x00501350
+// FUNCTION: SADX 0x00501350
 void ObjectGCollisionExecute(struct task *tp)
 {
+	struct taskwk *local_8g;
+	struct OBJ_CONDITION *local_cg;
+
+	local_8g = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return;
+	}
+	local_cg = (struct OBJ_CONDITION *)local_8g->counter.l;
+	if (local_cg != NULL)
+	{
+		*(float *)((char *)local_cg + 8) = local_8g->pos.x;
+		*(float *)((char *)local_cg + 0xc) = local_8g->pos.y;
+		*(float *)((char *)local_cg + 0x10) = local_8g->pos.z;
+		*(long *)((char *)local_cg + 0x14) = local_8g->ang.x;
+		*(long *)((char *)local_cg + 0x18) = local_8g->ang.y;
+		*(long *)((char *)local_cg + 0x1c) = local_8g->ang.z;
+		if (CheckCollisionP(&local_8g->pos, *(float *)((char *)*(void **)((char *)local_cg + 4) + 0x24) + 16.0f) != 0)
+		{
+			local_8g->flag |= 0x100;
+		}
+		else
+		{
+			local_8g->flag &= ~0x100;
+		}
+	}
+	if (tp->dest == ObjectGCollisionExit)
+	{
+		ObjectGCollisionDisplay(tp);
+	}
 }
 
 // FUNCTION: SADX 0x00501440
@@ -629,9 +678,39 @@ void FUN_00501570(struct task *param_1)
 	FUN_005015e0(local_8->timer.ptr);
 }
 
-// STUB: SADX 0x00501680
+// FUNCTION: SADX 0x00501680
 void ObjectGCollisionExecute___Mesh(struct task *tp)
 {
+	struct taskwk *local_8g;
+	struct OBJ_CONDITION *local_cg;
+
+	local_8g = tp->twp;
+	if (CheckRangeOut(tp) != 0)
+	{
+		return;
+	}
+	local_cg = (struct OBJ_CONDITION *)local_8g->counter.l;
+	if (local_cg != NULL)
+	{
+		*(float *)((char *)local_cg + 8) = local_8g->pos.x;
+		*(float *)((char *)local_cg + 0xc) = local_8g->pos.y;
+		*(float *)((char *)local_cg + 0x10) = local_8g->pos.z;
+		*(long *)((char *)local_cg + 0x14) = local_8g->ang.x;
+		*(long *)((char *)local_cg + 0x18) = local_8g->ang.y;
+		*(long *)((char *)local_cg + 0x1c) = local_8g->ang.z;
+		if (CheckCollisionP(&local_8g->pos, *(float *)((char *)*(void **)((char *)local_cg + 4) + 0x24) + 16.0f) != 0)
+		{
+			local_8g->flag |= 0x100;
+		}
+		else
+		{
+			local_8g->flag &= ~0x100;
+		}
+	}
+	if (tp->dest == ObjectGCollisionExit)
+	{
+		FUN_00501770((struct taskwk *)tp);
+	}
 }
 
 // STUB: SADX 0x005017c0
