@@ -1,4 +1,28 @@
 #include "decls.h"
+void FUN_005bc3f0(void *param_1, void *param_2);
+void RoboHeadTakeOff(struct task *tp, struct enemywk *ewp);
+void RoboHeadWait(struct task *tp, struct enemywk *ewp);
+void RoboHeadReturn(struct task *tp, struct enemywk *ewp);
+void ___njSetTexture(struct NJS_TEXLIST *texlist);
+int dsCheckViewV(struct NJS_POINT3 *ft, float radius);
+void ___dsSetPalette(long no);
+void ResetMaterial();
+void SaveControl3D();
+void njControl3D(unsigned long param_1);
+void SetMaterial(float a, float r, float g, float b);
+void njPushMatrix(float *);
+void njUnitMatrix(float *);
+void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
+void njRotateY(float *, unsigned short);
+void njGetMatrix(float *);
+void njPopMatrix(int param_1);
+void njMultiMatrix(float *, struct NJS_POINT3 *);
+void late_DrawModel(struct NJS_MODEL *mdl, int flgs);
+void LoadControl3D();
+extern struct NJS_TEXLIST texlist_e_robo;
+extern struct NJS_MODEL model_sorsar_karada_1_atama1[];
+extern void RoboHeadDisplayer(struct task *tp);
+extern struct taskwk *DAT_05baf368[8];
 void FUN_005be280(int param_1, int param_2);
 void FUN_005be2d0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005bf2c0(struct taskwk *param_1, void *param_2);
@@ -196,11 +220,46 @@ void RoboBeam2Displayer(struct task *tp)
 // FUNCTION: SADX 0x005bd0b0
 void RoboHeadUp(struct taskwk *twp, struct enemywk *ewp)
 {
+	float local_8;
+	local_8 = *(float *)((char *)ewp + 0x130);
+	if (EnemyDist2FromPlayer(twp, 0) < 900.0f && (DAT_05baf368[0]->flag & 0x8000) == 0)
+	{
+		twp->pos.y += 1.2f;
+		if (twp->pos.y > *(float *)((char *)ewp + 0x78) + 20.0f)
+		{
+			twp->pos.y = *(float *)((char *)ewp + 0x78) + 20.0f;
+		}
+	}
+	else
+	{
+		twp->pos.y -= 0.5f;
+		if (twp->pos.y < local_8 + 30.0f)
+		{
+			twp->pos.y = local_8 + 30.0f;
+		}
+	}
 }
 
 // STUB: SADX 0x005bd170
 void RoboHeadWait(struct task *tp, struct enemywk *ewp)
 {
+	struct taskwk *local_cg = tp->twp;
+	struct enemywk *local_8g = (struct enemywk *)DAT_05baf368[0];
+	*(int *)((char *)local_cg + 0x18) -= 0x400;
+	*(float *)((char *)ewp + 0x10) -= *(float *)((char *)ewp + 4) * 0.05f;
+	*(float *)((char *)ewp + 0x18) -= *(float *)((char *)ewp + 0xc) * 0.05f;
+	RoboHeadUp(local_cg, ewp);
+	FUN_005bc940(local_cg, ewp);
+	EnemyCheckGroundCollision(local_cg, ewp);
+	RoboHeadDraw(local_cg, ewp);
+	if (tp->ptp->twp->mode == 7)
+	{
+		ewp->old_mode = local_cg->mode;
+		local_cg->mode = 4;
+		local_cg->wtimer = 0;
+		ewp->aim = tp->ptp->twp->pos;
+	}
+	EntryColliList(local_cg);
 }
 
 // STUB: SADX 0x005bd270

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct taskwk *DAT_05baf368[8];
 extern char objLandTableGarden01[36];
 
 // STUB: SADX 0x00479ae0
@@ -22,6 +23,16 @@ void _alg_garden01_ec_epilog()
 // FUNCTION: SADX 0x00479b70
 void AL_Garden01MasterExecutor(struct task *tp)
 {
+	char *var1;
+
+	LoopTaskC(tp);
+	var1 = (char *)DAT_05baf368[0];
+	if (*(float *)(var1 + 0x24) < -20.0f)
+	{
+		*(float *)(var1 + 0x20) = 80.0f;
+		*(float *)(var1 + 0x24) = 10.0f;
+		*(float *)(var1 + 0x28) = -190.0f;
+	}
 }
 
 // STUB: SADX 0x00479bb0

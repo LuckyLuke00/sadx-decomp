@@ -22,8 +22,7 @@ extern unsigned char DAT_05bb00a9;
 extern int DAT_05b3ea18;
 void FUN_004afe30(void);
 
-extern int DAT_05b3e46c[20][14];
-extern int DAT_05b3e468[20][14];
+extern struct _SEcallbuf DAT_05b3e468[20];
 extern int DAT_05b3e938[20];
 extern int DAT_05a92330;
 extern struct MDHANDLE *DAT_05b3e3a0[51];
@@ -330,13 +329,13 @@ void StopBankSound(int bank)
 
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[local_8][3] != -1 && DAT_05b3e46c[local_8][12] == bank)
+		if (DAT_05b3e468[local_8].tone != -1 && DAT_05b3e468[local_8].banknum == bank)
 		{
 			StopPCM(local_8);
-			DAT_05b3e46c[local_8][0] = 0;
-			DAT_05b3e46c[local_8][1] = 0;
-			DAT_05b3e46c[local_8][2] = 0;
-			DAT_05b3e46c[local_8][3] = -1;
+			DAT_05b3e468[local_8].timer = 0;
+			DAT_05b3e468[local_8].id = 0;
+			DAT_05b3e468[local_8].mode = 0;
+			DAT_05b3e468[local_8].tone = -1;
 			DAT_05b3e938[local_8] = 0;
 		}
 	}
@@ -454,7 +453,7 @@ void IsndStop(long handleno)
 // FUNCTION: SADX 0x004ae940
 void IsndVolume(int vol, int handleno)
 {
-	if (vol <= -100 && (DAT_05b3e46c[handleno][2] & 0x4000) != 0)
+	if (vol <= -100 && (DAT_05b3e468[handleno].mode & 0x4000) != 0)
 	{
 		Set3DPositionPCM(handleno, 0.0f, 5000.0f, 0.0f);
 	}
@@ -477,22 +476,22 @@ int dsPlay_oneshot(int tone, int id, int pri, int volofs)
 	{
 		return -1;
 	}
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38) = 0x78;
-	DAT_05b3e468[local_8][0] = -1;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 4) = id;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 8) = 0x11;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 12) = tone;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 16) = 0;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 20) = volofs;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 24) = 0;
-	*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 28) = 0;
-	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 32) = 0.0f;
-	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 36) = 0.0f;
-	*(float *)((char *)DAT_05b3e46c + local_8 * 0x38 + 40) = 0.0f;
+	DAT_05b3e468[local_8].timer = 0x78;
+	DAT_05b3e468[local_8].pri = -1;
+	DAT_05b3e468[local_8].id = id;
+	DAT_05b3e468[local_8].mode = 0x11;
+	DAT_05b3e468[local_8].tone = tone;
+	DAT_05b3e468[local_8].angle = 0;
+	DAT_05b3e468[local_8].vol = volofs;
+	DAT_05b3e468[local_8].volmax = 0;
+	DAT_05b3e468[local_8].pitch = 0;
+	DAT_05b3e468[local_8].pos.x = 0.0f;
+	DAT_05b3e468[local_8].pos.y = 0.0f;
+	DAT_05b3e468[local_8].pos.z = 0.0f;
 	if (tone == 7)
 	{
-		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 8) = 0x801;
-		*(int *)((char *)DAT_05b3e46c + local_8 * 0x38 + 16) = DAT_025adbd0;
+		DAT_05b3e468[local_8].mode = 0x801;
+		DAT_05b3e468[local_8].angle = DAT_025adbd0;
 		DAT_025adbd0 = -DAT_025adbd0;
 	}
 	return 1;
@@ -510,11 +509,11 @@ int dsCheckHandle(int pri, int tone)
 	local_8g = DAT_05b3e924;
 	while (local_10 < 0 && local_ci > 0)
 	{
-		if (DAT_05b3e46c[local_8g][0] == 0)
+		if (DAT_05b3e468[local_8g].timer == 0)
 		{
 			local_10 = local_8g;
 		}
-		if (DAT_05b3e468[local_8g][0] <= pri)
+		if (DAT_05b3e468[local_8g].pri <= pri)
 		{
 			local_10 = local_8g;
 		}
@@ -565,7 +564,7 @@ int dsPlay_oneshot_v(int tone, int id, int pri, int volofs, float x, float y, fl
 	local_8g = FUN_004aee80(tone, id);
 	if (local_8g >= 0)
 	{
-		local_cj = DAT_05b3e46c[local_8g][2] & 1;
+		local_cj = DAT_05b3e468[local_8g].mode & 1;
 	}
 	else
 	{
@@ -576,19 +575,44 @@ int dsPlay_oneshot_v(int tone, int id, int pri, int volofs, float x, float y, fl
 		}
 		local_cj = local_cj | 1;
 	}
-	DAT_05b3e46c[local_8g][0] = 0x78;
-	DAT_05b3e468[local_8g][0] = -1;
-	DAT_05b3e46c[local_8g][1] = id;
-	DAT_05b3e46c[local_8g][2] = local_cj | 0x10 | 0x100;
-	DAT_05b3e46c[local_8g][3] = tone;
-	DAT_05b3e46c[local_8g][4] = 0;
-	DAT_05b3e46c[local_8g][5] = volofs;
-	DAT_05b3e46c[local_8g][6] = volofs;
-	DAT_05b3e46c[local_8g][7] = 0;
-	*(float *)&DAT_05b3e46c[local_8g][8] = x;
-	*(float *)&DAT_05b3e46c[local_8g][9] = y;
-	*(float *)&DAT_05b3e46c[local_8g][10] = z;
+	DAT_05b3e468[local_8g].timer = 0x78;
+	DAT_05b3e468[local_8g].pri = -1;
+	DAT_05b3e468[local_8g].id = id;
+	DAT_05b3e468[local_8g].mode = local_cj | 0x10 | 0x100;
+	DAT_05b3e468[local_8g].tone = tone;
+	DAT_05b3e468[local_8g].angle = 0;
+	DAT_05b3e468[local_8g].vol = volofs;
+	DAT_05b3e468[local_8g].volmax = volofs;
+	DAT_05b3e468[local_8g].pitch = 0;
+	DAT_05b3e468[local_8g].pos.x = x;
+	DAT_05b3e468[local_8g].pos.y = y;
+	DAT_05b3e468[local_8g].pos.z = z;
 	return local_8g;
+}
+
+// FUNCTION: SADX 0x004aed90
+int dsPlay_iloop(int tone, int id, int pri, int volofs)
+{
+	int local_8;
+
+	local_8 = dsCheckHandle(pri, tone);
+	if (local_8 < 0)
+	{
+		return -1;
+	}
+	DAT_05b3e468[local_8].timer = -1;
+	DAT_05b3e468[local_8].pri = pri;
+	DAT_05b3e468[local_8].id = id;
+	DAT_05b3e468[local_8].mode = 0x11;
+	DAT_05b3e468[local_8].tone = tone;
+	DAT_05b3e468[local_8].angle = 0;
+	DAT_05b3e468[local_8].vol = volofs;
+	DAT_05b3e468[local_8].volmax = 0;
+	DAT_05b3e468[local_8].pitch = 0;
+	DAT_05b3e468[local_8].pos.x = 0.0f;
+	DAT_05b3e468[local_8].pos.y = 0.0f;
+	DAT_05b3e468[local_8].pos.z = 0.0f;
+	return 1;
 }
 
 // FUNCTION: SADX 0x004aee80
@@ -600,7 +624,7 @@ int FUN_004aee80(int param_1, int param_2)
 	local_8g = -1;
 	for (local_cg = 0; local_cg < 0x13; local_cg++)
 	{
-		if (DAT_05b3e46c[local_cg][1] == param_2 && DAT_05b3e46c[local_cg][3] == param_1)
+		if (DAT_05b3e468[local_cg].id == param_2 && DAT_05b3e468[local_cg].tone == param_1)
 		{
 			local_8g = local_cg;
 		}
@@ -633,10 +657,10 @@ int dsStop_num(int tone)
 
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[local_8][3] == tone)
+		if (DAT_05b3e468[local_8].tone == tone)
 		{
-			DAT_05b3e46c[local_8][0] = 0;
-			DAT_05b3e46c[local_8][2] |= 0x10;
+			DAT_05b3e468[local_8].timer = 0;
+			DAT_05b3e468[local_8].mode |= 0x10;
 		}
 	}
 	return 0;
@@ -649,10 +673,10 @@ int dsStop_id(int id)
 
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[local_8][1] == id)
+		if (DAT_05b3e468[local_8].id == id)
 		{
-			DAT_05b3e46c[local_8][0] = 0;
-			DAT_05b3e46c[local_8][2] |= 0x10;
+			DAT_05b3e468[local_8].timer = 0;
+			DAT_05b3e468[local_8].mode |= 0x10;
 		}
 	}
 	return 0;
@@ -665,11 +689,11 @@ int dsVolume_id(int id, int vol)
 
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[local_8][1] == id)
+		if (DAT_05b3e468[local_8].id == id)
 		{
-			DAT_05b3e46c[local_8][5] = vol;
-			DAT_05b3e46c[local_8][2] &= 0xfffffeff;
-			DAT_05b3e46c[local_8][2] |= 0x200;
+			DAT_05b3e468[local_8].vol = vol;
+			DAT_05b3e468[local_8].mode &= 0xfffffeff;
+			DAT_05b3e468[local_8].mode |= 0x200;
 		}
 	}
 	return 0;
@@ -682,11 +706,11 @@ int dsPan_id(int id, int pan)
 
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[local_8][1] == id)
+		if (DAT_05b3e468[local_8].id == id)
 		{
-			DAT_05b3e46c[local_8][4] = pan;
-			DAT_05b3e46c[local_8][2] &= 0xfffffbff;
-			DAT_05b3e46c[local_8][2] |= 0x800;
+			DAT_05b3e468[local_8].angle = pan;
+			DAT_05b3e468[local_8].mode &= 0xfffffbff;
+			DAT_05b3e468[local_8].mode |= 0x800;
 		}
 	}
 	return 0;
@@ -699,10 +723,10 @@ int dsPitch_id(int id, int pitch)
 
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[local_8][1] == id)
+		if (DAT_05b3e468[local_8].id == id)
 		{
-			DAT_05b3e46c[local_8][7] = pitch;
-			DAT_05b3e46c[local_8][2] = DAT_05b3e46c[local_8][2] | 0x2000;
+			DAT_05b3e468[local_8].pitch = pitch;
+			DAT_05b3e468[local_8].mode = DAT_05b3e468[local_8].mode | 0x2000;
 		}
 	}
 	return 0;
@@ -749,7 +773,7 @@ int dsPauseSndOnly()
 	DAT_05b3ea04 = -1;
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		if (DAT_05b3e46c[local_8][3] != 3 && DAT_05b3e46c[local_8][3] != 1 && DAT_05b3e46c[local_8][3] != 2)
+		if (DAT_05b3e468[local_8].tone != 3 && DAT_05b3e468[local_8].tone != 1 && DAT_05b3e468[local_8].tone != 2)
 		{
 			IsndVolume(-127, local_8);
 		}
@@ -764,8 +788,8 @@ int dsStop_all()
 
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		DAT_05b3e46c[local_8][0] = 0;
-		DAT_05b3e46c[local_8][2] = DAT_05b3e46c[local_8][2] | 0x10;
+		DAT_05b3e468[local_8].timer = 0;
+		DAT_05b3e468[local_8].mode = DAT_05b3e468[local_8].mode | 0x10;
 		IsndStop(local_8);
 		DAT_05b3e938[local_8] = 0;
 	}
@@ -782,7 +806,7 @@ int FUN_004af730(int param_1, int param_2)
 	{
 		return 0;
 	}
-	if (DAT_05b3e46c[local_8][2] & 1)
+	if (DAT_05b3e468[local_8].mode & 1)
 	{
 		return 1;
 	}
@@ -840,7 +864,47 @@ void dsLoadCharacterVoice()
 // FUNCTION: SADX 0x004aff60
 int dsEVboss(int tone)
 {
-	return (int)0;
+	if (slEventBossName < 0)
+	{
+		return 0;
+	}
+	if (DAT_05baf368[1] != 0)
+	{
+		switch (slEventBossName)
+		{
+		case 0:
+			if (tone > 0x2f9 && tone < 0x30b)
+			{
+				return 1;
+			}
+			if (tone > 0x4c5 && tone < 0x4e6)
+			{
+				return 1;
+			}
+			break;
+		case 3:
+			if (tone > 0x30b && tone < 0x31b)
+			{
+				return 1;
+			}
+			if (tone > 0x4e6 && tone < 0x4fe)
+			{
+				return 1;
+			}
+			break;
+		case 6:
+			if (tone > 0x335 && tone < 0x348)
+			{
+				return 1;
+			}
+			if (tone > 0x510 && tone < 0x51d)
+			{
+				return 1;
+			}
+			break;
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x004b0050

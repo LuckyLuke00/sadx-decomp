@@ -28,7 +28,7 @@ extern float DAT_05cd2974;
 extern float DAT_05cd29a0;
 extern long action_button;
 extern long jump_button;
-extern char DAT_05b932f0[1024];
+extern struct PDS_PERIPHERAL DAT_05b932e8[8];
 extern unsigned short DAT_05cd296c;
 void FUN_0058d6a0();
 extern void *DAT_05cd2980;
@@ -194,8 +194,8 @@ int FUN_0058f980()
 		return 0;
 	if ((DAT_05cd296c & 1) != 0)
 	{
-		if (((*(int *)&DAT_05b932f0[4] & action_button) == action_button) &&
-			((*(int *)&DAT_05b932f0[4] & jump_button) == jump_button))
+		if (((DAT_05b932e8[0].off & action_button) == action_button) &&
+			((DAT_05b932e8[0].off & jump_button) == jump_button))
 			return 1;
 	}
 	return 0;

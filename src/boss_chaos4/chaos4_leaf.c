@@ -11,7 +11,7 @@ void FUN_004a8ae0(NJS_ACTION *param_1, float param_2, int param_3, float param_4
 void njPopMatrix(int param_1);
 extern int DAT_05b9d838;
 extern int DAT_05b3df4c;
-extern int DAT_05b3df40;
+extern float DAT_05b3df40;
 
 // FUNCTION: SADX 0x006f14f0
 void Dsp_Leaf(struct task *pTask)
@@ -40,7 +40,7 @@ void Dsp_Leaf(struct task *pTask)
 		{
 			if (*(short *)((char *)var2 + 0xe) > 0)
 			{
-				*(float *)&DAT_05b3df40 = -17952.0f;
+				DAT_05b3df40 = -17952.0f;
 			}
 		}
 		late_DrawObjectClipMS((struct obj *)&object_c4_nc_s_asiba_nc_s_asiba, 1, 1.0f);

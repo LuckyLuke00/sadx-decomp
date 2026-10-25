@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct taskwk *DAT_05baf368[8];
 
 // STUB: SADX 0x00458120
 struct MOVE_WORK *MOV_Init(struct task *tp)
@@ -75,7 +76,12 @@ long MOV_TurnToAim2(struct task *tp, long rot_spd)
 // FUNCTION: SADX 0x00458470
 float MOV_Dist2FromPlayer(struct task *tp, long player_num)
 {
-	return (float)0;
+	struct taskwk *var1;
+	struct taskwk *var2;
+
+	var1 = tp->twp;
+	var2 = DAT_05baf368[player_num];
+	return (var2->pos.x - var1->pos.x) * (var2->pos.x - var1->pos.x) + (var2->pos.y - var1->pos.y) * (var2->pos.y - var1->pos.y) + (var2->pos.z - var1->pos.z) * (var2->pos.z - var1->pos.z);
 }
 
 // STUB: SADX 0x004584b0

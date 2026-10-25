@@ -1,7 +1,7 @@
 #include "decls.h"
 extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid1[1];
 extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid3[1];
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 
 // FUNCTION: SADX 0x005cdd30
 void PoliceDisplayer(struct task *tp)
@@ -43,7 +43,7 @@ void PoliceWait(struct taskwk *twp, struct enemywk *ewp)
 		twp->mode = 1;
 		twp->wtimer = 0;
 		twp->flag = twp->flag | 0x400;
-		ewp->aim = *(struct NJS_POINT3 *)(DAT_05baf368 + 0x10);
+		ewp->aim = DAT_05baf368[0]->pos;
 	}
 	ewp->radius = ewp->radius - 0.019999999552965164;
 	if (ewp->radius < 0.0)
@@ -134,7 +134,7 @@ void PoliceReturn(struct taskwk *twp, struct enemywk *ewp)
 		twp->mode = 1;
 		twp->wtimer = 0;
 		twp->flag |= 0x400;
-		ewp->aim = *(NJS_POINT3 *)(DAT_05baf368 + 16);
+		ewp->aim = DAT_05baf368[0]->pos;
 	}
 	ewp->radius -= 0.005f;
 	if (ewp->radius < 0.0f)

@@ -10,7 +10,7 @@ void mainLastPast01(int seqno)
 		SeqNext();
 		return;
 	case 1:
-		if (*(float *)((char *)DAT_05baf368 + 0x28) < 500.0)
+		if (DAT_05baf368[0]->pos.z < 500.0)
 		{
 			SeqEvent(0xf7);
 			SeqNext();
@@ -30,7 +30,7 @@ void mainLastPast01(int seqno)
 		}
 		break;
 	case 4:
-		if (*(float *)((char *)DAT_05baf368 + 0x24) >= 90.0f && *(float *)((char *)DAT_05baf368 + 0x28) <= 100.0)
+		if (DAT_05baf368[0]->pos.y >= 90.0f && DAT_05baf368[0]->pos.z <= 100.0)
 		{
 			SeqEvent(0xf8);
 			SeqNext();

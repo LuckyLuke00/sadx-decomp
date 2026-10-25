@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "decls.h"
+extern struct taskwk *DAT_05baf368[8];
 void GenocideTask();
 extern int DAT_05cd0f24;
 extern int DAT_05cda170;
@@ -244,11 +245,60 @@ void FUN_004c66e0()
 // FUNCTION: SADX 0x004c6720
 void GoNextAction()
 {
+	short local_8;
+
+	ADX_Close();
+	if ((short)DAT_05b9d748 == DAT_05b9d724)
+	{
+		DAT_05b9d73c = 4;
+		local_8 = (short)DAT_05b9d770 - DAT_05b9d744;
+		LandChangeStage(local_8);
+		AddSetStage(local_8);
+		AddCameraStage(local_8);
+		AdvanceActLocal(local_8);
+		SetPlayerInitialPosition(DAT_05baf368[0]);
+		SetInputP(0, 0x18);
+		FUN_004c76e0();
+		InitFadeIn();
+		while (FadeIn())
+		{}
+	}
+	else
+	{
+		ActionEnd();
+		FUN_004c76e0();
+		DAT_05b9d73c = 0x11;
+	}
 }
 
 // STUB: SADX 0x004c75c0
 void GoNextAdventure()
 {
+	short local_8;
+
+	if (DAT_05b9d748 == DAT_05b9d724)
+	{
+		DAT_05b9d73c = 4;
+		local_8 = DAT_05b9d770 - DAT_05b9d744;
+		LandChangeStage(local_8);
+		AddSetStage(local_8);
+		AddCameraStage(local_8);
+		DAT_05b9d730 = DAT_05b9d724;
+		DAT_05b9d72c = DAT_05b9d744;
+		AdvanceActLocal(local_8);
+		SetPlayerInitialPosition(DAT_05baf368[0]);
+		SetInputP(0, 0x18);
+		FUN_004c76e0();
+		InitFadeIn();
+		while (FadeIn())
+			;
+	}
+	else
+	{
+		FUN_004c87a0();
+		FUN_004c76e0();
+		DAT_05b9d73c = 0x11;
+	}
 }
 
 // FUNCTION: SADX 0x004c76a0

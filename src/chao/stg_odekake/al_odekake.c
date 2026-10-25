@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct NJS_TEXLIST texlist_al_odekake_menu;
+extern struct taskwk *DAT_05baf368[8];
+extern int DAT_05b33088;
 
 // FUNCTION: SADX 0x0047a770
 void _al_odekake_epilog()
@@ -12,6 +15,23 @@ void _al_odekake_epilog()
 // FUNCTION: SADX 0x0047a790
 void AL_OdekakeStageExecutor(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = DAT_05baf368[0];
+	var1->pos.x = 0.0f;
+	var1->pos.y = 100.0f;
+	var1->pos.z = 0.0f;
+	PauseDisable();
+	if (DAT_05b33088 != 0)
+	{
+		___OutputDebugString("another: loading done.\n");
+		if (AL_CheckSaveDataCrc2(AL_GetAnotherGardenInfo()) != 0)
+		{
+			___OutputDebugString("another: crc ok.\n");
+			AL_SetAnotherGardenLoaded();
+			DAT_05b33088 = 0;
+		}
+	}
 }
 
 // STUB: SADX 0x0047a7f0

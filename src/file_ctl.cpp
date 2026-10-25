@@ -3,7 +3,7 @@ extern "C" char *strcat(char *param_1, const char *param_2);
 extern "C" char *strcpy(char *param_1, const char *param_2);
 void LoadSetFile(char *pcFileName, unsigned long u32SetType);
 extern unsigned long DAT_05b3e308[16];
-extern int DAT_05bb00a8;
+extern unsigned char DAT_05bb00a8;
 extern int DAT_05cc8670;
 extern int DAT_05cc8674;
 extern int DAT_05b3e320[16];
@@ -52,7 +52,7 @@ void ReleaseSetFile()
 // FUNCTION: SADX 0x004ce420
 char *GetFnamesPlayerStr()
 {
-	if (*(unsigned char *)&DAT_05bb00a8)
+	if (DAT_05bb00a8)
 	{
 		return last_initial;
 	}

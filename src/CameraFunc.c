@@ -28,7 +28,7 @@ extern long DAT_05ccdb9c;
 extern long DAT_05ccdba0;
 extern long DAT_05ccdb54;
 extern long DAT_05ccdb58;
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern struct strCamCartData camCartData[1];
 extern struct Angle3 DAT_05b42920;
 float FUN_005642f0(float *param_1, float *param_2);
@@ -597,9 +597,9 @@ void CameraFixed(struct _OBJ_CAMERAPARAM *pParam)
 // FUNCTION: SADX 0x00568080
 void CameraLeave(struct _OBJ_CAMERAPARAM *pParam)
 {
-	*(float *)((char *)camcont_wp + 0x18) = *(float *)((char *)DAT_05baf368 + 0x20);
-	*(float *)((char *)camcont_wp + 0x1c) = *(float *)((char *)DAT_05baf368 + 0x24);
-	*(float *)((char *)camcont_wp + 0x20) = *(float *)((char *)DAT_05baf368 + 0x28);
+	*(float *)((char *)camcont_wp + 0x18) = DAT_05baf368[0]->pos.x;
+	*(float *)((char *)camcont_wp + 0x1c) = DAT_05baf368[0]->pos.y;
+	*(float *)((char *)camcont_wp + 0x20) = DAT_05baf368[0]->pos.z;
 }
 
 // FUNCTION: SADX 0x005680c0
@@ -654,6 +654,20 @@ void atpAdjustCameraPoint(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_A
 // STUB: SADX 0x00569ba0
 void atpAdjustCameraPointWithDistance(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
 {
+	struct NJS_POINT3 local_14m;
+	struct NJS_POINT3 local_2c;
+	struct NJS_POINT3 local_20g;
+
+	GetPlayerPosition(0, 1, &local_14m, 0);
+	local_2c.x = ptwp->pos.x - local_14m.x;
+	local_2c.y = ptwp->pos.y - local_14m.y;
+	local_2c.z = ptwp->pos.z - local_14m.z;
+	local_20g.x = twp->pos.x - (*(struct taskwk *(*))&DAT_05baf368)->pos.x;
+	local_20g.y = twp->pos.y - (*(struct taskwk *(*))&DAT_05baf368)->pos.y;
+	local_20g.z = twp->pos.z - (*(struct taskwk *(*))&DAT_05baf368)->pos.z;
+	twp->pos.x = (local_20g.x - local_2c.x) * DAT_05ccdb04 + local_2c.x + (*(struct taskwk *(*))&DAT_05baf368)->pos.x;
+	twp->pos.y = (local_20g.y - local_2c.y) * DAT_05ccdb04 + local_2c.y + (*(struct taskwk *(*))&DAT_05baf368)->pos.y;
+	twp->pos.z = (local_20g.z - local_2c.z) * DAT_05ccdb04 + local_2c.z + (*(struct taskwk *(*))&DAT_05baf368)->pos.z;
 }
 
 // STUB: SADX 0x00569c90

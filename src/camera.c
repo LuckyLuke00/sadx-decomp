@@ -39,7 +39,7 @@ extern float DAT_05b4289c;
 extern float DAT_05b428a0;
 extern float DAT_05b428a4;
 extern struct NJS_POINT3 DAT_05b4295c;
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern int DAT_05b4299c[1];
 extern int *DAT_05b4298c;
 extern int DAT_05b42a74;
@@ -320,7 +320,22 @@ void calcfreecamerapos()
 // FUNCTION: SADX 0x004bd800
 long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry)
 {
-	return (long)0;
+	float fVar4;
+	float fVar1;
+	float fVar2;
+	float fVar3;
+	fVar1 = DAT_05baf368[0]->pos.x - *(float *)((char *)pCameraEntry + 8);
+	fVar4 = DAT_05baf368[0]->pos.y - *(float *)((char *)pCameraEntry + 0xc) + 4.0;
+	fVar2 = DAT_05baf368[0]->pos.z - *(float *)((char *)pCameraEntry + 0x10);
+	fVar3 = fVar1 * fVar1 + fVar4 * fVar4 + fVar2 * fVar2;
+	if (fVar3 < *(float *)((char *)pCameraEntry + 0x1c))
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x004bddd0
@@ -784,7 +799,7 @@ void FUN_004c0320()
 	int local_8;
 	for (local_8 = 0; local_8 < 0x32; local_8++)
 	{
-		DAT_05b425d0[local_8] = *(NJS_POINT3 *)((char *)DAT_05baf368 + 0x20);
+		DAT_05b425d0[local_8] = DAT_05baf368[0]->pos;
 	}
 	DAT_05b425c8 = 0;
 }
