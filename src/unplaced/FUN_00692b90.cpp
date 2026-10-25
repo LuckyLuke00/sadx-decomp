@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct task *DAT_060b8258[8];
 
 // FUNCTION: SADX 0x00692b90
 void FUN_00692b90(struct task *param_1)
@@ -11,7 +12,17 @@ void FUN_00692b90(struct task *param_1)
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_Adv01AB + local_8))[DAT_05b3e0d0];
 }
 
-// STUB: SADX 0x00692c40
+// FUNCTION: SADX 0x00692c40
 void FUN_00692c40(void)
 {
+	int var1;
+
+	for (var1 = 0; var1 < 4; var1++)
+	{
+		if (DAT_060b8258[var1] != 0)
+		{
+			DestroyTask(DAT_060b8258[var1]);
+			DAT_060b8258[var1] = 0;
+		}
+	}
 }

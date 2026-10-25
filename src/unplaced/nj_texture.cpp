@@ -1,4 +1,5 @@
 #include "decls.h"
+struct NJS_TEXMEMLIST;
 extern int DAT_0629c4c0;
 extern int DAT_0629c4c4;
 extern int DAT_0629c4c8;

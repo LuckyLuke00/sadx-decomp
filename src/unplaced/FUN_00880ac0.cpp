@@ -17,7 +17,7 @@ void FUN_00880ac0(struct task *param_1)
 	{
 		njRotateY(0, DAT_05b42a7c->ang.y);
 	}
-	FUN_0067d2d0(0, *(float *)&var1->scl, *(float *)&var1->scl, *(float *)&var1->scl);
+	FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
 	___njDrawSprite3D(&DAT_060dc468, var1->btimer, 0x20);
 	njPopMatrix(1);
 }

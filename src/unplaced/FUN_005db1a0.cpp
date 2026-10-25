@@ -33,3 +33,9 @@ long FUN_005db1a0()
 	}
 	return local_cg;
 }
+
+// STUB: SADX 0x005db230
+unsigned char FUN_005db230(void)
+{
+	return (unsigned char)0;
+}

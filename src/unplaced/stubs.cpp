@@ -23,6 +23,11 @@ int FUN_00407e30()
 	return (int)0;
 }
 
+// STUB: SADX 0x00418a70
+extern void FUN_00418a70(void)
+{
+}
+
 // STUB: SADX 0x00419570
 void SOCCreateDevice(void)
 {
@@ -46,11 +51,6 @@ extern void FUN_0041b120(int, int)
 
 // STUB: SADX 0x0041b7e0
 void RenderTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int)
-{
-}
-
-// STUB: SADX 0x0041c2d0
-void FUN_0041c2d0(void *)
 {
 }
 
@@ -99,16 +99,6 @@ void njDrawTriangle3D(struct NJS_POINT3COL *,int,unsigned long)
 {
 }
 
-// STUB: SADX 0x004224d0
-void njColorBlendingMode(int,int)
-{
-}
-
-// STUB: SADX 0x00422540
-void gjGXSetBlendMode(long)
-{
-}
-
 // STUB: SADX 0x00422560
 void FUN_00422560(int)
 {
@@ -116,11 +106,6 @@ void FUN_00422560(int)
 
 // STUB: SADX 0x00422590
 void njSetZUpdateMode(long)
-{
-}
-
-// STUB: SADX 0x004226f0
-void stHWSetVSync(int)
 {
 }
 
@@ -194,6 +179,11 @@ void stDirect3DFinish(void)
 
 // STUB: SADX 0x004295a0
 void stDrawTexture(struct NJS_TEXTURE_VTX *,int)
+{
+}
+
+// STUB: SADX 0x004296f0
+void stDrawLine2D(struct NJS_POINT2COL *,float)
 {
 }
 
@@ -276,17 +266,6 @@ void njCalcVector(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
 // STUB: SADX 0x00430b70
 extern void njPushMatrix(float *)
 {
-}
-
-// STUB: SADX 0x00430bb0
-void njCalcPoint(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
-{
-}
-
-// STUB: SADX 0x00430e60
-void* pdGetPeripheral(int)
-{
-	return (void*)0;
 }
 
 // STUB: SADX 0x00431900
@@ -426,12 +405,6 @@ void AL_ChangeStage(enum eCHAO_STAGE_NUMBER)
 {
 }
 
-// STUB: SADX 0x0043ed90
-extern int FUN_0043ed90()
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x0043f6b0
 void AL_PackageItemSaveInfo(long category)
 {
@@ -507,6 +480,11 @@ const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 	return (const unsigned long *)0;
 }
 
+// STUB: SADX 0x0044ccf0
+void FPpInit()
+{
+}
+
 // STUB: SADX 0x0044d180
 long AlMsgFontCreateWStr_Thread(struct SAlMsgFontStr *, const unsigned short *, int)
 {
@@ -515,11 +493,6 @@ long AlMsgFontCreateWStr_Thread(struct SAlMsgFontStr *, const unsigned short *, 
 
 // STUB: SADX 0x0044d460
 void FUN_0044d460(unsigned short *)
-{
-}
-
-// STUB: SADX 0x0044daf0
-void FUN_0044daf0(void)
 {
 }
 
@@ -1295,11 +1268,6 @@ void FUN_004b6460(struct NJS_TEXLIST *, char *)
 {
 }
 
-// STUB: SADX 0x004b6720
-void FUN_004b6720(void *, void *, void *)
-{
-}
-
 // STUB: SADX 0x004b6f80
 void FileSelModeWakeProcedure(struct FileSelWk *wkp)
 {
@@ -1564,6 +1532,11 @@ void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 
 // STUB: SADX 0x004ec740
 void PSetMotion(struct mtnjvwk *mjp)
+{
+}
+
+// STUB: SADX 0x004ef250
+void PlayerFaceMotionExec(struct task *tp)
 {
 }
 
@@ -1837,11 +1810,6 @@ void CameraFishing(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
-// STUB: SADX 0x0056a200
-void FUN_0056a200(struct task *)
-{
-}
-
 // STUB: SADX 0x0056aea0
 void FUN_0056aea0(int)
 {
@@ -2049,11 +2017,6 @@ void lig_calcPalette(int)
 
 // STUB: SADX 0x00598310
 extern void ___dsSetPalette(long)
-{
-}
-
-// STUB: SADX 0x00598740
-void FUN_00598740(int)
 {
 }
 
@@ -2481,18 +2444,8 @@ void FUN_005f2090(float)
 {
 }
 
-// STUB: SADX 0x005f2320
-void FUN_005f2320(struct task *)
-{
-}
-
 // STUB: SADX 0x005f2850
 void FUN_005f2850(struct task *)
-{
-}
-
-// STUB: SADX 0x005f3310
-void FUN_005f3310(float)
 {
 }
 
@@ -2568,6 +2521,17 @@ void DispOptionSelCsr(struct _OptionSelWk *wkp)
 
 // STUB: SADX 0x00604500
 void DrawOptionSelBg(struct _OptionSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00604760
+struct task *SetAdvaSndTestTask(struct task *, struct ModeSelPrmType *)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x00604800
+void snd_test_exec(struct task *tp)
 {
 }
 
@@ -2751,6 +2715,16 @@ long movie(long movie_num)
 	return (long)0;
 }
 
+// STUB: SADX 0x00620430
+void FUN_00620430(void)
+{
+}
+
+// STUB: SADX 0x006207b0
+void FUN_006207b0(void)
+{
+}
+
 // STUB: SADX 0x00634f10
 int FUN_00634f10()
 {
@@ -2776,11 +2750,6 @@ void njProjectScreen(float (*)[16],struct NJS_POINT3 *,struct NJS_POINT2 *)
 float njInnerProduct(struct NJS_POINT3 *, struct NJS_POINT3 *)
 {
 	return (float)0;
-}
-
-// STUB: SADX 0x0067d350
-void njTranslateV(float *, struct NJS_POINT3 *)
-{
 }
 
 // STUB: SADX 0x0067d3f0
@@ -3583,11 +3552,6 @@ void ObjectHighwayGreenB(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00825de0
-void FUN_00825de0(struct task *)
-{
-}
-
 // STUB: SADX 0x00829790
 void ObjectMountainExplosionRock1(struct task *tp)
 {
@@ -3890,6 +3854,16 @@ void Init(struct task *tp, struct TENSHOUSEINFO *tensinfo)
 {
 }
 
+// STUB: SADX 0x008783b0
+void DispMot3(struct task *)
+{
+}
+
+// STUB: SADX 0x00878480
+void ExecCM(struct task *)
+{
+}
+
 // STUB: SADX 0x00878e40
 void FUN_00878e40()
 {
@@ -3977,11 +3951,6 @@ void ObjectCasino_eff_kinka1_Draw(struct task *tp)
 
 // STUB: SADX 0x0088d260
 void ObjectCasino_eff_kinka1_Exec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00893db0
-void FUN_00893db0(struct task *)
 {
 }
 
@@ -4271,4 +4240,9 @@ void Z80_Reset(unsigned char *ram)
 int FUN_00924470()
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0094bac0
+extern void FUN_0094bac0(void)
+{
 }

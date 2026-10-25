@@ -1,4 +1,5 @@
 #include "decls.h"
+int FUN_00593920(void);
 
 // STUB: SADX 0x00593920
 int FUN_00593920()

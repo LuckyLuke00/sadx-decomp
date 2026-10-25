@@ -1,12 +1,36 @@
 #include "decls.h"
 #include <stdio.h>
 #include <cctype>
+#include <new>
+#include <exception>
+void FUN_0040f020(int param_1, int param_2);
 void FUN_004160c0(char *param_1, int param_2, char *param_3, char *param_4);
 void __stdcall FUN_00415a10(int param_1);
 struct FUN_004157e0_node;
 
 // STUB: SADX 0x0040e960
 void FUN_0040e960(void)
+{
+}
+
+// STUB: SADX 0x0040eaf0
+void FUN_0040eaf0(void *param_1)
+{
+}
+
+// STUB: SADX 0x0040ec80
+void __fastcall FUN_0040ec80(void *param_1, int param_2, int param_3, int param_4, int param_5)
+{
+}
+
+// STUB: SADX 0x0040ed80
+int __fastcall FUN_0040ed80(int *param_1, int param_2)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0040f020
+void __fastcall FUN_0040f020(void *param_1, int param_2)
 {
 }
 
@@ -17,6 +41,38 @@ void neExitLibrary(void)
 
 // STUB: SADX 0x004115b0
 void __stdcall FUN_004115b0(void *param_1)
+{
+}
+
+// STUB: SADX 0x00411750
+void __fastcall FUN_00411750(int *param_1)
+{
+}
+
+// STUB: SADX 0x004117d0
+void * __fastcall FUN_004117d0(unsigned int param_1)
+{
+	return (void *)0;
+}
+
+// STUB: SADX 0x00411830
+void __fastcall FUN_00411830(int *param_1)
+{
+}
+
+// STUB: SADX 0x00411ab0
+void * __fastcall FUN_00411ab0(unsigned int param_1)
+{
+	return (void *)0;
+}
+
+// STUB: SADX 0x00411de0
+void FUN_00411de0(char *param_1, char *param_2, char *param_3)
+{
+}
+
+// STUB: SADX 0x00411e00
+void FUN_00411e00(int param_1, char *param_2, const char *param_3)
 {
 }
 
@@ -36,11 +92,34 @@ void __fastcall FUN_00412230(void *param_1)
 // STUB: SADX 0x00412260
 char *FUN_00412260(char *param_1)
 {
-	return (char *)0;
+	char *var1;
+	int var2;
+	var2 = 0;
+	var1 = (char *)0x5ab16e4;
+	do
+	{
+		if (*(char **)var1 == param_1)
+		{
+			return (char *)0x5ab16d8 + var2 * 0x30;
+		}
+		var1 = var1 + 0x30;
+		var2 = var2 + 1;
+	} while ((int)var1 < 0x5ab1f24);
+	return (char *)0x0;
 }
 
 // STUB: SADX 0x00414350
 void __fastcall FUN_00414350(int *param_1)
+{
+}
+
+// STUB: SADX 0x00414360
+void __fastcall FUN_00414360(int *param_1, int param_2)
+{
+}
+
+// STUB: SADX 0x00414390
+void __stdcall FUN_00414390(int param_1, int param_2)
 {
 }
 
@@ -67,6 +146,11 @@ int __fastcall FUN_00414590(int param_1, int param_2)
 
 // STUB: SADX 0x00414970
 void __fastcall FUN_00414970(int *param_1)
+{
+}
+
+// STUB: SADX 0x00414d10
+void __fastcall FUN_00414d10(void *param_1, int param_2, int param_3)
 {
 }
 
@@ -121,9 +205,24 @@ void __stdcall FUN_00415ef0(int param_1)
 {
 }
 
-// STUB: SADX 0x00415f70
-void __fastcall FUN_00415f70(void *param_1, int param_2, FILE *param_3)
+// STUB: SADX 0x00415f10
+void __fastcall FUN_00415f10(void *param_1)
 {
+}
+
+// FUNCTION: SADX 0x00415f70
+void __fastcall FUN_00415f70(void *param_1, int param_2, FILE *param_3, int param_4)
+{
+	if (param_4 > 0)
+	{
+		do
+		{
+			fprintf(param_3, "    ");
+			param_4--;
+		}
+		while (param_4 != 0);
+	}
+	fprintf(param_3, "<%s>", *(char **)((char *)param_1 + 0x20) + 8);
 }
 
 // STUB: SADX 0x00415fb0

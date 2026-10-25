@@ -68,3 +68,13 @@ void _stHWForceInit(void)
 	DAT_05ab8300 = 0;
 	DAT_05ab8304 = 0;
 }
+
+// STUB: SADX 0x004226b0
+void _stHWStartIntTimer(void)
+{
+}
+
+// STUB: SADX 0x004226f0
+void stHWSetVSync(int param_1)
+{
+}

@@ -7,9 +7,12 @@ void FUN_00918140()
 	*(int *)(DAT_060ee5b8 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00918150
+// FUNCTION: SADX 0x00918150
 void FUN_00918150()
 {
+	char *var1 = DAT_060ee5b8;
+	*(char *)(var1 + 0x29) = *(char *)(var1 + 0x28);
+	*(int *)(var1 + 0x50) = 9;
 }
 
 // STUB: SADX 0x00918170

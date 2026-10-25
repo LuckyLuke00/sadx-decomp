@@ -30,9 +30,31 @@ void njSetQuadTexture(long param_1, unsigned long param_2)
 	FUN_0042b090(param_1);
 }
 
-// STUB: SADX 0x004216c0
+// FUNCTION: SADX 0x004216c0
 void njDrawLine2D(struct NJS_POINT2COL *param_1, int param_2, float param_3, unsigned long param_4)
 {
+	float var1;
+	int var2;
+	struct NJS_POINT2COL local_14;
+
+	var1 = -1.0 / param_3;
+	local_14.p = param_1->p;
+	local_14.col = param_1->col;
+	local_14.tex = param_1->tex;
+	local_14.num = param_1->num;
+	if (1.0 < var1)
+	{
+		var1 = 1.0;
+	}
+	var2 = (int)param_4;
+	if (var2 >= 0)
+	{
+		local_14.tex = 0;
+	}
+	_gjTrans2D((int)param_4 & 0x40);
+	_gjRender2DSet();
+	stDrawLine2D(&local_14, var1);
+	_gjRender2DReset();
 }
 
 // STUB: SADX 0x00421740

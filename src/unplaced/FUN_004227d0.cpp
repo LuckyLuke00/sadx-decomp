@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <windows.h>
+void FUN_00422a30(void);
 int FUN_00422bb0(void);
 
 // STUB: SADX 0x004227d0
@@ -15,9 +16,11 @@ void FUN_004229f0(void)
 	SystemParametersInfoA(0x11, 0, &local_8, 0);
 }
 
-// STUB: SADX 0x00422a10
+// FUNCTION: SADX 0x00422a10
 void FUN_00422a10(void)
 {
+	int local_8;
+	SystemParametersInfoA(0x11, 1, &local_8, 0);
 }
 
 // STUB: SADX 0x00422a30

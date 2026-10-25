@@ -18,9 +18,15 @@ void FUN_009288d0(void *param_1)
 {
 }
 
-// STUB: SADX 0x009288e0
-void FUN_009288e0(int *param_1)
+// FUNCTION: SADX 0x009288e0
+void __fastcall FUN_009288e0(int *param_1)
 {
+	int var1 = *param_1;
+	if (var1 != 0)
+	{
+		DeleteCriticalSection((LPCRITICAL_SECTION)var1);
+		operator delete((void *)var1);
+	}
 }
 
 // STUB: SADX 0x00928940

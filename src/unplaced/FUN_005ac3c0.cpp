@@ -1,4 +1,5 @@
 #include "decls.h"
+int FUN_005ac4e0(int param_1);
 
 // FUNCTION: SADX 0x005ac3c0
 void FUN_005ac3c0(struct task *param_1)
@@ -13,10 +14,29 @@ void FUN_005ac3c0(struct task *param_1)
 	}
 }
 
-// STUB: SADX 0x005ac490
+// STUB: SADX 0x005ac400
+void *FUN_005ac400(int param_1)
+{
+	return (void *)0;
+}
+
+// FUNCTION: SADX 0x005ac490
 int FUN_005ac490(int param_1)
 {
-	return (int)0;
+	int local_8g;
+	int local_cj;
+	int local_10;
+
+	local_8g = *(int *)(param_1 + 0xc);
+	local_cj = 0;
+	local_10 = *(unsigned short *)(param_1 + 0x14);
+	do
+	{
+		local_cj = FUN_005ac4e0(local_8g) + local_cj;
+		local_8g = local_8g + 0x1c;
+		local_10 = local_10 - 1;
+	} while (local_10 != 0);
+	return local_cj;
 }
 
 // STUB: SADX 0x005ac4e0
