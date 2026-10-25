@@ -1,6 +1,8 @@
 #include "decls.h"
 #include <stdlib.h>
 void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
+void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
+void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
 
 // FUNCTION: SADX 0x00486880
 void Alr_SetWorkData(struct Alr *___this, struct taskwk *twp, struct alifewk *awp)
@@ -115,9 +117,18 @@ void Alr_EndEx(struct Alr *___this)
 	}
 }
 
-// STUB: SADX 0x00486a90
-void FUN_00486a90(struct Alr *___this)
+// FUNCTION: SADX 0x00486a90
+void FUN_00486a90(struct Alr *param_1)
 {
+	int var1;
+	float var2;
+	int var3;
+
+	var1 = rand();
+	var2 = (float)var1 * 3.0517578125e-05;
+	var2 = var2 * 3.0 + 0.0;
+	var3 = (int)var2;
+	param_1->ex_mode = (unsigned char)var3;
 }
 
 // FUNCTION: SADX 0x00486bb0
@@ -152,10 +163,10 @@ void Alr_StopAim(struct Alr *___this)
 	___this->flag |= 0x10;
 }
 
-// STUB: SADX 0x00486e50
-int FUN_00486e50(struct Alr *___this)
+// FUNCTION: SADX 0x00486e50
+int FUN_00486e50(struct Alr *param_1)
 {
-	return (int)0;
+	return param_1->use_path;
 }
 
 // FUNCTION: SADX 0x00486e60

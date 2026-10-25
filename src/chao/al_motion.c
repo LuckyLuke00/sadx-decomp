@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_0043a4d0(void *param_1, int param_2);
 void FUN_0043a600(float *param_1, float param_2);
 extern struct MOTION_TABLE al_motion_table[1];
 
@@ -35,9 +36,10 @@ void AL_SetMotionLinkSync(struct task *tp, long MtnNum)
 	SetMotionLinkSync((struct MOTION_CTRL *)((char *)tp->twp + 0xbc), MtnNum);
 }
 
-// STUB: SADX 0x004387f0
+// FUNCTION: SADX 0x004387f0
 void AL_SetMotionSkip(struct task *tp, long MtnNum)
 {
+	FUN_0043a4d0((void *)((char *)tp->twp + 0xbc), MtnNum);
 }
 
 // FUNCTION: SADX 0x00438810

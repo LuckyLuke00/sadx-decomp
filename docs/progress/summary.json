@@ -1995,6 +1995,14 @@
    "library": false
   },
   {
+   "address": "0x004230a0",
+   "name": "syTmrGetCount",
+   "accuracy": 0.27586206896551724,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004230e0",
    "name": "syTmrDiffCount",
    "accuracy": 0.2222222222222222,
@@ -3726,9 +3734,9 @@
   {
    "address": "0x00437b90",
    "name": "alpalSetBank",
-   "accuracy": 0.02857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3742,9 +3750,9 @@
   {
    "address": "0x00438090",
    "name": "AL_Dist2FromAim",
-   "accuracy": 0.125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3798,9 +3806,9 @@
   {
    "address": "0x004384b0",
    "name": "AL_ForwardAcc",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3870,9 +3878,9 @@
   {
    "address": "0x004387f0",
    "name": "AL_SetMotionSkip",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3950,9 +3958,9 @@
   {
    "address": "0x00438950",
    "name": "AL_IsHero2",
-   "accuracy": 0.21052631578947367,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3982,25 +3990,25 @@
   {
    "address": "0x00438b40",
    "name": "AL_ParameterAddGrowth",
-   "accuracy": 0.06896551724137931,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00438bb0",
    "name": "AL_ParameterAddHPos",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00438c30",
    "name": "AL_ParameterAddVPos",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4014,25 +4022,25 @@
   {
    "address": "0x00438d20",
    "name": "AL_ParameterAddLife",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00438d50",
    "name": "AL_ParameterAddLifeMax",
-   "accuracy": 0.08333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00438da0",
    "name": "AL_ParameterAddUserLike",
-   "accuracy": 0.05263157894736842,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4046,9 +4054,9 @@
   {
    "address": "0x00438e20",
    "name": "AL_IsEmotionTimerReset",
-   "accuracy": 0.3076923076923077,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4062,9 +4070,9 @@
   {
    "address": "0x00438f80",
    "name": "AL_ParameterGetSkill",
-   "accuracy": 0.3076923076923077,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4252,6 +4260,14 @@
    "library": false
   },
   {
+   "address": "0x0043bdc0",
+   "name": "AL_IconControl",
+   "accuracy": 0.007874015748031496,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043c180",
    "name": "CalcCamDist",
    "accuracy": 0.05555555555555555,
@@ -4270,9 +4286,9 @@
   {
    "address": "0x0043cba0",
    "name": "AL_IconReset",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4292,9 +4308,57 @@
    "library": false
   },
   {
+   "address": "0x0043cd80",
+   "name": "AL_KW_GetPlayerCharacterNum",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043cde0",
+   "name": "AL_KW_InitPlayerKnowledgeDX",
+   "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043ce60",
+   "name": "AL_KW_GetPlayerLike",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043ce80",
+   "name": "AL_KW_GetPlayerFear",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043cf50",
+   "name": "AL_KW_GetPlayerDistance",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043cf70",
+   "name": "AL_KW_GetPlayerMeet",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043cf90",
    "name": "AL_KW_MeetPlayer",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 0.08,
    "effective": false,
    "stub": true,
    "library": false
@@ -4326,9 +4390,9 @@
   {
    "address": "0x0043d3b0",
    "name": "AL_KW_DanceFlagOn",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4350,9 +4414,9 @@
   {
    "address": "0x0043d420",
    "name": "AL_KW_SongFlagOn",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4420,6 +4484,14 @@
    "library": false
   },
   {
+   "address": "0x0043d580",
+   "name": "AL_KW_AddPlayerLike",
+   "accuracy": 0.06,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043d6b0",
    "name": "AL_EmotionAdd",
    "accuracy": 0.038461538461538464,
@@ -4455,6 +4527,14 @@
    "address": "0x0043d950",
    "name": "ALW_GetTask",
    "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043d980",
+   "name": "ALW_GetTaskCount",
+   "accuracy": 0.08,
    "effective": false,
    "stub": true,
    "library": false
@@ -4606,9 +4686,9 @@
   {
    "address": "0x0043dd60",
    "name": "ALW_SendCommand",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4705,8 +4785,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e010",
@@ -4714,8 +4793,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e020",
@@ -4723,8 +4801,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e030",
@@ -4732,8 +4809,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e050",
@@ -4741,8 +4817,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e060",
@@ -4750,8 +4825,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e110",
@@ -4759,8 +4833,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e1f0",
@@ -4768,8 +4841,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e200",
@@ -4777,8 +4849,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e230",
@@ -4786,8 +4857,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e240",
@@ -4795,8 +4865,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e260",
@@ -4804,8 +4873,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e2a0",
@@ -4813,8 +4881,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e2d0",
@@ -4822,8 +4889,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e420",
@@ -4831,8 +4897,15 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
+  },
+  {
+   "address": "0x0043e470",
+   "name": "StageMasterInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
   },
   {
    "address": "0x0043e530",
@@ -4848,21 +4921,20 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e620",
    "name": "AL_ExitToStage",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0043e660",
    "name": "_al_stage_epilog",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -4873,8 +4945,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e990",
@@ -4882,21 +4953,28 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x0043e9a0",
    "name": "AL_ExitChaoGarden",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0043e9b0",
    "name": "_al_stage_prolog",
    "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043ea30",
+   "name": "AL__EditCancelMode",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -4984,14 +5062,22 @@
   {
    "address": "0x0043edb0",
    "name": "AL_GetAnotherGardenInfo",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0043edd0",
    "name": "FUN_0043edd0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0043ede0",
+   "name": "FUN_0043ede0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -5176,17 +5262,17 @@
   {
    "address": "0x0043f5a0",
    "name": "FUN_0043f5a0",
-   "accuracy": 0.043478260869565216,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0043f620",
    "name": "AL_GetNewItemSaveInfo",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5280,17 +5366,41 @@
   {
    "address": "0x004400d0",
    "name": "AL_SetHoldingEggBM",
-   "accuracy": 0.17391304347826086,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00440540",
    "name": "AL_SetHoldingChaoInfo",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00440570",
+   "name": "AL_SetHoldingEggInfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00440590",
+   "name": "AL_SetSelectedChaoSaveInfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004405a0",
+   "name": "AL_GetSelectedChaoSaveInfo",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -5352,9 +5462,9 @@
   {
    "address": "0x00441750",
    "name": "ALMC_Exit",
-   "accuracy": 0.05714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5536,15 +5646,15 @@
   {
    "address": "0x00442120",
    "name": "AL_ToridasuCountSelectedChao",
-   "accuracy": 0.06896551724137931,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00442460",
    "name": "AL_LoadTex",
-   "accuracy": 0.13953488372093023,
+   "accuracy": 0.05,
    "effective": false,
    "stub": true,
    "library": false
@@ -5552,7 +5662,7 @@
   {
    "address": "0x004424c0",
    "name": "AL_ReleaseTex",
-   "accuracy": 0.06451612903225806,
+   "accuracy": 0.07142857142857142,
    "effective": false,
    "stub": true,
    "library": false
@@ -5560,6 +5670,14 @@
   {
    "address": "0x00442520",
    "name": "FUN_00442520",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00442540",
+   "name": "AL_InitTexLoad",
    "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
@@ -5569,6 +5687,14 @@
    "address": "0x004425a0",
    "name": "AL_ReleaseModule",
    "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00442720",
+   "name": "AL_InitLandMark",
+   "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
    "library": false
@@ -5630,11 +5756,35 @@
    "library": false
   },
   {
-   "address": "0x00443ad0",
-   "name": "ALO_XYButtonShow",
-   "accuracy": 0.2,
+   "address": "0x00442dd0",
+   "name": "FExec(1)",
+   "accuracy": 0.026200873362445413,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00443320",
+   "name": "AL_ConfirmLoadStart",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00443ab0",
+   "name": "ALO_XYButtonHide",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00443ad0",
+   "name": "ALO_XYButtonShow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -5656,7 +5806,15 @@
   {
    "address": "0x00443ba0",
    "name": "AL_SetRaceNew",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00443bc0",
+   "name": "AL_SetRacePlayed",
+   "accuracy": 0.3333333333333333,
    "effective": false,
    "stub": true,
    "library": false
@@ -5718,6 +5876,22 @@
    "library": false
   },
   {
+   "address": "0x00445ea0",
+   "name": "AL_MotionEdit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004463e0",
+   "name": "AL_JingleEdit",
+   "accuracy": 0.03571428571428571,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00446e70",
    "name": "FUN_00446e70",
    "accuracy": 1.0,
@@ -5726,11 +5900,27 @@
    "library": false
   },
   {
+   "address": "0x004478f0",
+   "name": "ALO_GetFruitKind",
+   "accuracy": 0.5454545454545454,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00448100",
    "name": "ALO_ObakeHeadDestructor",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00448240",
+   "name": "AL_GeneCreate",
+   "accuracy": 0.02416918429003021,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -5864,9 +6054,9 @@
   {
    "address": "0x0044b1f0",
    "name": "AL_CalcIntentionScore_Tron",
-   "accuracy": 0.046511627906976744,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5928,9 +6118,9 @@
   {
    "address": "0x0044c4c0",
    "name": "AlMsgStrEmbed",
-   "accuracy": 0.046511627906976744,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5939,6 +6129,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0044c7e0",
+   "name": "FUN_0044c7e0",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -5968,9 +6166,9 @@
   {
    "address": "0x0044c990",
    "name": "AlMsgWarnClear",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5984,9 +6182,9 @@
   {
    "address": "0x0044c9f0",
    "name": "AlMsgWarnWaitCont",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6134,6 +6332,22 @@
    "library": false
   },
   {
+   "address": "0x0044e0e0",
+   "name": "AlMsgSelectSetCStr",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044e170",
+   "name": "AlMsgSelectInit",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0044e1a0",
    "name": "AlMsgSelectExit",
    "accuracy": 1.0,
@@ -6190,9 +6404,25 @@
    "library": false
   },
   {
+   "address": "0x0044e330",
+   "name": "FUN_0044e330",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0044e380",
    "name": "FUN_0044e380",
    "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044e3d0",
+   "name": "AlMsgWinClear",
+   "accuracy": 0.2222222222222222,
    "effective": false,
    "stub": true,
    "library": false
@@ -6313,6 +6543,14 @@
    "address": "0x0044fe10",
    "name": "AL_ShapeInit",
    "accuracy": 0.050955414012738856,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004500b0",
+   "name": "AL_ShapeControl",
+   "accuracy": 0.017391304347826087,
    "effective": false,
    "stub": true,
    "library": false
@@ -6504,15 +6742,15 @@
   {
    "address": "0x00450c40",
    "name": "AL_RemoveItemAllSub",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00450c80",
    "name": "AL_RemoveItemAll",
-   "accuracy": 0.375,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -6528,9 +6766,9 @@
   {
    "address": "0x00450ce0",
    "name": "FUN_00450ce0",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6544,9 +6782,9 @@
   {
    "address": "0x00450d40",
    "name": "FUN_00450d40",
-   "accuracy": 0.08,
+   "accuracy": 0.9333333333333333,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6560,9 +6798,9 @@
   {
    "address": "0x00450da0",
    "name": "AL_PartsMinimalFlagOff_BTL",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6664,9 +6902,9 @@
   {
    "address": "0x00450fe0",
    "name": "AL_IntervalTimerControl",
-   "accuracy": 0.06896551724137931,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6674,7 +6912,7 @@
    "name": "AL_ClearIntention",
    "accuracy": 0.2857142857142857,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6840,9 +7078,9 @@
   {
    "address": "0x004553b0",
    "name": "ALBHV_Kaoarau",
-   "accuracy": 0.07547169811320754,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7130,7 +7368,7 @@
    "name": "MOV_Dist2FromPlayer",
    "accuracy": 0.08695652173913043,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7326,6 +7564,14 @@
    "library": false
   },
   {
+   "address": "0x0045fb90",
+   "name": "ALBHV_HoldThink",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0045ffc0",
    "name": "FUN_0045ffc0",
    "accuracy": 1.0,
@@ -7424,17 +7670,17 @@
   {
    "address": "0x004624c0",
    "name": "ALBHV_TurnToLockOn",
-   "accuracy": 0.046511627906976744,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00462780",
    "name": "ALBHV_GoToLockOn",
-   "accuracy": 0.02531645569620253,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7544,17 +7790,17 @@
   {
    "address": "0x00463ec0",
    "name": "AL_SetCurrMatrixSub",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00463f20",
    "name": "AL_SetCurrMatrix",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7635,6 +7881,22 @@
    "accuracy": 0.02127659574468085,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004684a0",
+   "name": "ALBHV_Pain",
+   "accuracy": 0.0196078431372549,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00468760",
+   "name": "AL_CalcIntentionScore_Pain",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -7967,10 +8229,10 @@
   },
   {
    "address": "0x0046e530",
-   "name": "FExec",
-   "accuracy": 0.0,
+   "name": "FExec(2)",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8025,9 +8287,9 @@
   {
    "address": "0x0046f9e0",
    "name": "FUN_0046f9e0",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8063,11 +8325,19 @@
    "library": false
   },
   {
-   "address": "0x00471b40",
-   "name": "AL_BlackmarketCamera",
-   "accuracy": 0.2,
+   "address": "0x00471ac0",
+   "name": "AL_BlackmarketCameraFunc",
+   "accuracy": 0.06451612903225806,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00471b40",
+   "name": "AL_BlackmarketCamera",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -8191,8 +8461,64 @@
    "library": false
   },
   {
+   "address": "0x00472b50",
+   "name": "ALBHV_Oshaburiburi",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00473cb0",
+   "name": "PersonalRecordWindowDestructor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00473d90",
+   "name": "BlueButtonExecutor",
+   "accuracy": 0.015267175572519083,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00473f50",
+   "name": "BlueButtonDisplayer",
+   "accuracy": 0.011560693641618497,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004741c0",
+   "name": "BlueButtonModoruDestructor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004741d0",
+   "name": "CreateBlueButtonModoru",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00474720",
    "name": "CreateCourseSelectMenuBeginner",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00474930",
+   "name": "MessageBarClear",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -8209,9 +8535,9 @@
   {
    "address": "0x00474df0",
    "name": "AL_EntranceMenuLargeTitleBarDisplayerPost",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8391,6 +8717,14 @@
    "library": false
   },
   {
+   "address": "0x00477570",
+   "name": "AloG00ElegateWakuCreate",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00477b80",
    "name": "ghUnitVector",
    "accuracy": 1.0,
@@ -8401,9 +8735,9 @@
   {
    "address": "0x00477c00",
    "name": "FUN_00477c00",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8587,7 +8921,7 @@
    "name": "AL_Garden01MasterExecutor",
    "accuracy": 0.1111111111111111,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8691,13 +9025,13 @@
    "name": "AL_OdekakeStageExecutor",
    "accuracy": 0.08333333333333333,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0047a7f0",
    "name": "AL_OdekakeStageDestructor",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -8986,6 +9320,14 @@
    "address": "0x004817c0",
    "name": "CreateOdekakePortWindow",
    "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00481920",
+   "name": "AL_OdeTelopCreate",
+   "accuracy": 0.03125,
    "effective": false,
    "stub": true,
    "library": false
@@ -9311,6 +9653,14 @@
    "library": false
   },
   {
+   "address": "0x00484ad0",
+   "name": "FUN_00484ad0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00484af0",
    "name": "ADV1_AL_LimitChao",
    "accuracy": 0.025,
@@ -9329,9 +9679,9 @@
   {
    "address": "0x00484c20",
    "name": "AL_DeleteChaoList",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9513,9 +9863,9 @@
   {
    "address": "0x00486a90",
    "name": "FUN_00486a90",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9569,9 +9919,9 @@
   {
    "address": "0x00486e50",
    "name": "FUN_00486e50",
-   "accuracy": 0.4,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9852,8 +10202,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x00488db0",
@@ -9933,8 +10282,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x004893c0",
@@ -9942,8 +10290,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x004893f0",
@@ -9951,8 +10298,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x00489420",
@@ -9960,8 +10306,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x004895d0",
@@ -10134,7 +10479,23 @@
   {
    "address": "0x0048a970",
    "name": "CreateChao_for_ALR_ALRE",
-   "accuracy": 0.12903225806451613,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0048b540",
+   "name": "ALR_ALRE_Happy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0048ba20",
+   "name": "ALR_ALRE_Dance",
+   "accuracy": 0.028169014084507043,
    "effective": false,
    "stub": true,
    "library": false
@@ -10236,6 +10597,38 @@
    "library": false
   },
   {
+   "address": "0x0048fff0",
+   "name": "AlrCommuSendChaoCommand",
+   "accuracy": 0.047619047619047616,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00490040",
+   "name": "AlrCommuSendObjCommand",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00490140",
+   "name": "GetTargetCoconutPosition",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00490310",
+   "name": "destObject",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004904d0",
    "name": "AlrToyEntryToy",
    "accuracy": 0.05,
@@ -10289,6 +10682,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004925f0",
+   "name": "AL_GetALifewk",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00492640",
+   "name": "ADV1toADV2_SetMotionLink",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -24614,6 +25023,14 @@
    "address": "0x00572120",
    "name": "FUN_00572120",
    "accuracy": 0.20512820512820512,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00572210",
+   "name": "MirenObjEditDrawCollision",
+   "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
    "library": false
@@ -41925,6 +42342,14 @@
    "library": false
   },
   {
+   "address": "0x00710a10",
+   "name": "DigitsToInt",
+   "accuracy": 0.09090909090909091,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007110e0",
    "name": "ALO_RingWinDelete",
    "accuracy": 1.0,
@@ -41959,6 +42384,30 @@
   {
    "address": "0x00712670",
    "name": "FUN_00712670",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00712680",
+   "name": "AL_GetChaoSelectMenuStatus",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00712690",
+   "name": "AL_ChaoMenuIsEnd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007126a0",
+   "name": "FUN_007126a0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42159,9 +42608,9 @@
   {
    "address": "0x00714c00",
    "name": "ALCAM_SetLookingFlag",
-   "accuracy": 0.4,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -45475,14 +45924,6 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
-  },
-  {
-   "address": "0x007e8ac0",
-   "name": "destObject",
-   "accuracy": 0.3333333333333333,
-   "effective": false,
-   "stub": true,
    "library": false
   },
   {
@@ -69156,6 +69597,13 @@
    "library": false
   },
   {
+   "address": "0x00961ed8",
+   "name": "DAT_00961ed8",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00962c74",
    "name": "DAT_00962c74",
    "size": 12,
@@ -71564,6 +72012,13 @@
    "library": false
   },
   {
+   "address": "0x01e55450",
+   "name": "TexBankList",
+   "size": 72,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x01e555b0",
    "name": "texlist_al_tex_common",
    "size": 8,
@@ -71636,6 +72091,13 @@
   {
    "address": "0x01e5a840",
    "name": "ChaoNextStageNumber",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01e5a844",
+   "name": "ChaoExitStage",
    "size": 4,
    "match": false,
    "library": false
@@ -71802,6 +72264,13 @@
    "library": false
   },
   {
+   "address": "0x02209bfc",
+   "name": "texlist_chao_entrance",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0221e590",
    "name": "texlist_al_ent_common_tex",
    "size": 8,
@@ -71833,6 +72302,20 @@
    "address": "0x0221e9a8",
    "name": "objLandTableChaoEntrance",
    "size": 36,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0221fa9c",
+   "name": "object_crch_nc_door_all_nc_door_all",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0221fb98",
+   "name": "motion_crch_nc_door_all",
+   "size": 12,
    "match": false,
    "library": false
   },
@@ -71875,6 +72358,13 @@
    "address": "0x02297e5c",
    "name": "objLandTableGarden01",
    "size": 36,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02297e80",
+   "name": "texlist_al_odekake_menu",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -78027,5 +78517,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "590e0a1b9265e1e3fdc000e893da6ccbf98843a839a434aea9f9a0b5fe8bf4dd"
+ "inputs_sha256": "36eb08848968d411cee7d5276e6d0df01567f5b964a2732cb9f26b7eddf5a74d"
 }

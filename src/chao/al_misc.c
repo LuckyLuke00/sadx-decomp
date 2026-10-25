@@ -5,10 +5,15 @@ void AL_DrawRectangle2(int x1, int y1, int x2, int y2, unsigned long color, floa
 {
 }
 
-// STUB: SADX 0x00438090
+// FUNCTION: SADX 0x00438090
 float AL_Dist2FromAim(struct task *tp)
 {
-	return (float)0;
+	struct taskwk *var1;
+	struct motionwk *var2;
+
+	var1 = tp->twp;
+	var2 = tp->mwp;
+	return (*(float *)((char *)var2 + 0x5c) - var1->pos.z) * (*(float *)((char *)var2 + 0x5c) - var1->pos.z) + (*(float *)((char *)var2 + 0x54) - var1->pos.x) * (*(float *)((char *)var2 + 0x54) - var1->pos.x);
 }
 
 // STUB: SADX 0x004380c0
@@ -50,9 +55,16 @@ float AL_CalcDistFromTask(struct task *pMyTask, struct task *pTargetTask)
 	return -1.0f;
 }
 
-// STUB: SADX 0x004384b0
+// FUNCTION: SADX 0x004384b0
 void AL_ForwardAcc(struct task *tp, float acc)
 {
+	struct taskwk *var1;
+	struct motionwk *var2;
+
+	var1 = tp->twp;
+	var2 = tp->mwp;
+	var2->acc.x = njSin(var1->ang.y) * acc;
+	var2->acc.z = njCos(var1->ang.y) * acc;
 }
 
 // FUNCTION: SADX 0x004384f0

@@ -19,7 +19,7 @@ void _alg_garden01_ec_epilog()
 	___OutputDebugString("ChaoStgGarden01EC Epilog end\n");
 }
 
-// STUB: SADX 0x00479b70
+// FUNCTION: SADX 0x00479b70
 void AL_Garden01MasterExecutor(struct task *tp)
 {
 }

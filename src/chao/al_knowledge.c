@@ -1,5 +1,45 @@
 #include "decls.h"
 
+// STUB: SADX 0x0043cd80
+unsigned short AL_KW_GetPlayerCharacterNum()
+{
+	return (unsigned short)0;
+}
+
+// STUB: SADX 0x0043cde0
+void AL_KW_InitPlayerKnowledgeDX(struct task *pChaoTask)
+{
+}
+
+// STUB: SADX 0x0043ce60
+signed char AL_KW_GetPlayerLike(struct task *pChaoTask)
+{
+	return (signed char)0;
+}
+
+// STUB: SADX 0x0043ce80
+unsigned char AL_KW_GetPlayerFear(struct task *pChaoTask)
+{
+	return (unsigned char)0;
+}
+
+// STUB: SADX 0x0043cf50
+unsigned short AL_KW_GetPlayerDistance(struct task *pChaoTask)
+{
+	return (unsigned short)0;
+}
+
+// STUB: SADX 0x0043cf70
+unsigned short AL_KW_GetPlayerMeet(struct task *pChaoTask)
+{
+	return (unsigned short)0;
+}
+
+// STUB: SADX 0x0043cf90
+void AL_KW_MeetPlayer(struct task *pChaoTask)
+{
+}
+
 // FUNCTION: SADX 0x0043d340
 void AL_KW_ArtFlagOn(struct task *pChaoTask, long Kind)
 {
@@ -22,9 +62,12 @@ long AL_KW_IsArtFlagOn(struct task *pChaoTask, long Kind)
 	return (long)0;
 }
 
-// STUB: SADX 0x0043d3b0
+// FUNCTION: SADX 0x0043d3b0
 void AL_KW_DanceFlagOn(struct task *pChaoTask, long Kind)
 {
+	struct taskwk *var1 = pChaoTask->twp;
+	void *var2 = *(void **)((char *)var1 + 0x6c);
+	*(char *)((char *)var2 + 0x161) |= (1 << Kind);
 }
 
 // FUNCTION: SADX 0x0043d3d0
@@ -41,9 +84,12 @@ long AL_KW_IsDanceFlagOn(struct task *pChaoTask, long Kind)
 	return (long)0;
 }
 
-// STUB: SADX 0x0043d420
+// FUNCTION: SADX 0x0043d420
 void AL_KW_SongFlagOn(struct task *pChaoTask, long Kind)
 {
+	struct taskwk *var1 = pChaoTask->twp;
+	unsigned char *var2 = (unsigned char *)(*(int *)((char *)var1 + 0x6c) + 0x162);
+	*var2 |= (unsigned char)(1 << Kind);
 }
 
 // FUNCTION: SADX 0x0043d440
