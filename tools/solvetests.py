@@ -1,5 +1,5 @@
-"""Tests of the try loop in tools/llm.py: solve_function against a fake server, and the --tries, --try-tokens and
---prefix-feedback flags.
+"""Tests of the try loop in tools/llm.py: solve_function against a fake server, and the --tries, --try-tokens,
+--prefix-feedback and --refuse-fakematch flags, with the kinds that tools/fakematch.py finds.
 
 solve_function gets fakes for the file, the dossier and the builds. The fake server refuses a chat as too long for
 its context when the case's rule says so, else replies with no code, so no try builds. run() returns the failures as
@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import NamedTuple
 from unittest import mock
 
+import fakematch
 import llm
 import llmclient
 
@@ -33,6 +34,7 @@ DIFF = ("---\n+++\n@@ -0x401000,4 +0x405900,4 @@\n"  # reccmp's diff: two instru
         "         : +mov ebx, dword ptr [esi + 0x2c]\n"
         "0x401006 : ret\n\n"
         "0x00401000 foo: 80.00% match. Diff above (- original, + ours).")
+IMAGE = range(0x400000, 0x800000)  # the fake exe's sections
 
 
 class Run(NamedTuple):
@@ -43,6 +45,9 @@ class Run(NamedTuple):
     limits: list[int]  # the max_tokens of each ask
     results: list[str]  # the result of each try in its transcript
     lasts: list[str]  # the last message of each ask
+    best: float  # the best that solve_function returns
+    kept: str  # the text that the file got last
+    entries: list[dict]  # every line of its transcript
     live: list  # every line of its live file: the last try's header, its reply's pieces, then its result
 
 
@@ -51,29 +56,34 @@ def never_too_long(messages) -> bool:
 
 
 def solved(tries, too_long, reply="no code", **flags) -> Run:
-    """A run of TRIES against a server that refuses the chats for which TOO_LONG is true, else answers REPLY. FLAGS
-    override the run's other flags, such as stop_below=70."""
-    asks = []
+    """A run of TRIES against a server that refuses the chats for which TOO_LONG is true, else answers REPLY, or
+    with a list of replies the next one, and its last one after the list. FLAGS override the run's other flags, such
+    as stop_below=70."""
+    asks, kept = [], []
+    replies = [reply] if isinstance(reply, str) else reply
 
     def chat(config, messages, temperature, thinking, seed, on_text):
         refused = too_long(messages)
         asks.append((seed, refused, config["max_tokens"], messages[-1]["content"]))
         if refused:
             raise llmclient.ServerError(TOO_LONG, 400)
-        on_text("content", reply)
-        return llmclient.Reply(reply, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
+        answered = sum(not ask[1] for ask in asks)
+        text = replies[min(answered, len(replies)) - 1]
+        on_text("content", text)
+        return llmclient.Reply(text, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
 
     def first_prompt(config, file, address, types, count, extra, similar):
         return f"{count} examples"
 
-    fakes = {"read_source": lambda path: ('#include "decls.h"\n', False), "write_source": lambda path, text, crlf: None,
-             "snapshot": lambda paths: {}, "tree_warnings": lambda config: set(), "load_types": lambda config: None,
-             "first_prompt": first_prompt, "file_best": lambda *args: None, "decls": lambda config: ("", 0)}
+    fakes = {"read_source": lambda path: ('#include "decls.h"\n', False),
+             "write_source": lambda path, text, crlf: kept.append(text), "snapshot": lambda paths: {},
+             "tree_warnings": lambda config: set(), "load_types": lambda config: None, "first_prompt": first_prompt,
+             "file_best": lambda *args: None, "decls": lambda config: ("", 0), "exe_contains": lambda: IMAGE.__contains__}
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
                    stop_below=None, try_tokens=None, think_max=None, similar_examples=False,
-                   prefix_feedback=False)
+                   prefix_feedback=False, refuse_fakematch=False)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
@@ -84,7 +94,8 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
         shown = [json.loads(line) for line in live.read_text(encoding="utf-8").splitlines()] if live.exists() else []
     return Run([ask[0] for ask in asks], sum(not ask[1] for ask in asks), result["tries"],
                [entry["try"] for entry in logged if "try" in entry], [ask[2] for ask in asks],
-               [entry["result"] for entry in logged if "try" in entry], [ask[3] for ask in asks], shown)
+               [entry["result"] for entry in logged if "try" in entry], [ask[3] for ask in asks], result["best"],
+               kept[-1], logged, shown)
 
 
 def check_too_long() -> list[str]:
@@ -203,6 +214,70 @@ def check_prefix_feedback() -> list[str]:
              ("--prefix-feedback", parsed(["solve", "--prefix-feedback", FILE, "0x00401000"], "prefix_feedback"), True),
              ("no --prefix-feedback", parsed(["solve", FILE, "0x00401000"], "prefix_feedback"), False)]
     return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
+
+
+def cpp(*body) -> str:
+    """A reply with the function `int Foo(void)` whose body is the lines BODY."""
+    return "\n".join(["```cpp", llm.function_line(ADDRESS), "int Foo(void)", "{", *body, "}", "```"])
+
+
+def check_refuse_fakematch() -> list[str]:
+    """--refuse-fakematch: a 100% try with a fakematch line does not end the run. Its note names the line, and the
+    run asks again. A later clean 100% ends the run and stays in the file. When none comes, the file keeps the first
+    refused try and the run's best is 100. A refused match counts as 100 for --stop-below. Without the flag the
+    first 100% ends the run."""
+    dirty, other, clean = (cpp("\treturn *(int *)0x00500000;"), cpp("\treturn *(int *)0x00500004;"),
+                           cpp("\treturn Bar;"))
+    code = "\n".join(llm.parse_reply(dirty, ADDRESS)[1])
+
+    def build(self, decls, func):
+        return llm.Build(decls, func, "\n".join(func), 100.0, "")
+
+    with mock.patch.object(llm.Bench, "build", build):
+        off = solved(3, never_too_long, dirty)
+        refused = solved(3, never_too_long, [dirty, other], refuse_fakematch=True)
+        then_clean = solved(3, never_too_long, [dirty, clean], refuse_fakematch=True)
+        stop_below = solved(3, never_too_long, ["no code", dirty, other], refuse_fakematch=True, stop_below=70.0)
+    note = "`return *(int *)0x00500000;` (raw_address)"
+    cases = [("the flag off", (off.tries, off.kept), (1, code)),
+             ("every try refused", (refused.tries, refused.results, refused.best, refused.kept),
+              (3, ["100.00%", "100.00%", "repeated try 2"], 100.0, code)),
+             ("the refused lines in the transcript", [e.get("refused") for e in refused.entries if "try" in e][:2],
+              [[["raw_address", "return *(int *)0x00500000;"]], [["raw_address", "return *(int *)0x00500004;"]]]),
+             ("the next prompt", [note in last for last in refused.lasts[1:2]], [True]),
+             ("the kept refused try", {"kept_refused": True} in refused.entries, True),
+             ("a clean try after a refused one", (then_clean.tries, then_clean.kept.strip().split("\n")[-2]),
+              (2, "\treturn Bar;")),
+             ("no kept refused try after a clean one", {"kept_refused": True} in then_clean.entries, False),
+             ("--stop-below 70", stop_below.tries, 3),
+             ("--refuse-fakematch", parsed(["solve", "--refuse-fakematch", FILE, "0x00401000"], "refuse_fakematch"),
+              True),
+             ("no --refuse-fakematch", parsed(["solve", FILE, "0x00401000"], "refuse_fakematch"), False)]
+    return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
+
+
+def check_fakematch_kinds() -> list[str]:
+    """fakematch.found finds each kind on its line, and not on a plain line like it."""
+    cases = [("raw_address", ["\treturn *(int *)0x00500000;"], "return *(int *)0x00500000;",
+              ["\treturn *(int *)0x00900000;"]),
+             ("index_game", ["\treturn *(&p[1] - 1);"], "return *(&p[1] - 1);", ["\treturn p[0] & 1;"]),
+             ("address_pun", ["\treturn *(int *)&x;"], "return *(int *)&x;", ["\treturn *p;"]),
+             ("address_pun", ["\treturn (*(int (*)[1])&x)[0];"], "return (*(int (*)[1])&x)[0];", ["\treturn p[0];"]),
+             ("cast_call", ["\t((void (*)(int))Foo)(x);"], "((void (*)(int))Foo)(x);", ["\tFoo(p, x);"]),
+             ("constant_test", ["\tif (0) x = 1;"], "if (0) x = 1;", ["\twhile (1) x++;"]),
+             ("empty_statement", ["\twhile (Bar(x)) ;"], "while (Bar(x)) ;",
+              ["\tdo", "\t{", "\t\tx--;", "\t}", "\twhile (x);"]),
+             ("empty_block", ["\tif (x)", "\t{", "\t}", "\telse", "\t\tx = 1;"], "{",
+              ["\tif (x)", "\t{", "\t\tx = 1;", "\t}"]),
+             ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tint y = x;", "\treturn y;"])]
+    failures = []
+    for kind, hit, line, plain in cases:
+        for body, wanted in ((hit, [(kind, line)]), (plain, [])):
+            func = [llm.function_line(ADDRESS), "int Foo(int *p, int x)", "{", *body, "}"]
+            found = fakematch.found(func, 1, IMAGE.__contains__)
+            if found != wanted:
+                failures.append(f"{kind}: {body} gives {found}, not {wanted}")
+    return failures
 
 
 def check_live() -> list[str]:
@@ -357,7 +432,7 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_live, check_live_ends, check_stream_events, check_full_context_restart,
-                  check_shared_context):
+                  check_prefix_feedback, check_refuse_fakematch, check_fakematch_kinds, check_live, check_live_ends,
+                  check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures
