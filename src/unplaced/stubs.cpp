@@ -114,6 +114,12 @@ void stHWWaitVSync()
 {
 }
 
+// STUB: SADX 0x004230a0
+int syTmrGetCount()
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00423920
 long njReleaseTexture(struct NJS_TEXLIST *)
 {
@@ -387,13 +393,18 @@ void MotionControl(struct MOTION_CTRL *pMtnCtrl)
 {
 }
 
+// STUB: SADX 0x0043bdc0
+void AL_IconControl(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0043cbc0
 void AL_IconInit(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0043cf90
-void AL_KW_MeetPlayer(struct task *pChaoTask)
+// STUB: SADX 0x0043d580
+void AL_KW_AddPlayerLike(struct task *pChaoTask, long add)
 {
 }
 
@@ -419,6 +430,12 @@ struct task *ALW_GetTask(unsigned short category, unsigned short num)
 	return (struct task *)0;
 }
 
+// STUB: SADX 0x0043d980
+struct task *ALW_GetTaskCount(unsigned short category, unsigned short count)
+{
+	return (struct task *)0;
+}
+
 // STUB: SADX 0x0043dd90
 long ALW_Entry2(unsigned short category, struct task *tp, unsigned short kind, void *pSaveInfo)
 {
@@ -427,6 +444,11 @@ long ALW_Entry2(unsigned short category, struct task *tp, unsigned short kind, v
 
 // STUB: SADX 0x0043e530
 void AL_ChangeStage(enum eCHAO_STAGE_NUMBER)
+{
+}
+
+// STUB: SADX 0x0043ea30
+void AL__EditCancelMode(struct task *)
 {
 }
 
@@ -440,23 +462,13 @@ extern void FUN_00441fb0()
 {
 }
 
-// STUB: SADX 0x00442460
-void AL_LoadTex(char *filename, struct NJS_TEXLIST *pTexlist, unsigned short lev)
-{
-}
-
-// STUB: SADX 0x004424c0
-void AL_ReleaseTex(unsigned short)
-{
-}
-
-// STUB: SADX 0x00442520
-void FUN_00442520()
-{
-}
-
 // STUB: SADX 0x004425a0
 void AL_ReleaseModule(enum EChaoModuleEntry kind)
+{
+}
+
+// STUB: SADX 0x00442720
+void AL_InitLandMark()
 {
 }
 
@@ -466,20 +478,10 @@ long AL_GetRandomAttrPos(enum eLANDMARK_ATTR attr, struct NJS_POINT3 *pPos)
 	return (long)0;
 }
 
-// STUB: SADX 0x00443ad0
-void ALO_XYButtonShow(int)
-{
-}
-
 // STUB: SADX 0x00443b80
 long AL_GetnbPlayer()
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x00443ba0
-void AL_SetRaceNew(enum eRaceNum num)
-{
 }
 
 // STUB: SADX 0x00443c00
@@ -492,6 +494,11 @@ enum eRaceNum AL_GetRaceNum()
 enum eCourseNumDX AL_GetCourseNum()
 {
 	return (enum eCourseNumDX)0;
+}
+
+// STUB: SADX 0x00448240
+void AL_GeneCreate(struct AL_GENE *pGene)
+{
 }
 
 // STUB: SADX 0x0044a470
@@ -526,10 +533,20 @@ void FUN_0044db20(struct task *)
 {
 }
 
+// STUB: SADX 0x0044e3d0
+void AlMsgWinClear(struct SAlMsgWin *self)
+{
+}
+
 // STUB: SADX 0x0044fe10
 long AL_ShapeInit(struct task *tp)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004500b0
+void AL_ShapeControl(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00450370
@@ -652,6 +669,12 @@ long ALBHV_SuriSuriPlayer(struct task *tp)
 	return (long)0;
 }
 
+// STUB: SADX 0x004684a0
+extern long ALBHV_Pain(struct task *)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00468800
 long ALBHV_Tameiki(struct task *tp)
 {
@@ -751,8 +774,8 @@ struct task *AL_BlackmarketMenuCreate(struct task *parent_tp)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x00471b40
-void AL_BlackmarketCamera()
+// STUB: SADX 0x00471ac0
+void AL_BlackmarketCameraFunc(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
@@ -771,13 +794,18 @@ void AL_EntranceMenuManagerExecutor(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004749d0
-void AL_EntranceMenuLargeTitleBarDisplayerSub(struct task *tp, long post_flag)
+// STUB: SADX 0x00473d90
+void BlueButtonExecutor(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00474df0
-void AL_EntranceMenuLargeTitleBarDisplayerPost(struct task *tp)
+// STUB: SADX 0x00473f50
+void BlueButtonDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004749d0
+void AL_EntranceMenuLargeTitleBarDisplayerSub(struct task *tp, long post_flag)
 {
 }
 
@@ -858,11 +886,6 @@ void ADV1_AL_LimitChao()
 
 // STUB: SADX 0x00484bd0
 void FUN_00484bd0()
-{
-}
-
-// STUB: SADX 0x00484c20
-void AL_DeleteChaoList(struct task *tp)
 {
 }
 
@@ -972,12 +995,6 @@ void AlrConfetti_Init()
 {
 }
 
-// STUB: SADX 0x0048a970
-struct task *CreateChao_for_ALR_ALRE(void (*)(struct task *), struct al_status *)
-{
-	return (struct task *)0;
-}
-
 // STUB: SADX 0x0048c150
 struct alifewk *ALR_Init(struct task *tp)
 {
@@ -1004,8 +1021,19 @@ void AlrEff_SetFlag(struct AlrEff *___this, unsigned char flag)
 {
 }
 
+// STUB: SADX 0x0048fff0
+long AlrCommuSendChaoCommand(struct task *chaoTask_p, struct task *objTask_p, signed char cmnd, signed char objKind)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00491770
 void ObjectAlrTape(struct NJS_POINT3 *pPos, struct NJS_POINT3 *pVec)
+{
+}
+
+// STUB: SADX 0x00492640
+void ADV1toADV2_SetMotionLink(struct alifewk *awp, long Adv1MotionNum)
 {
 }
 
@@ -1862,6 +1890,11 @@ float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct N
 
 // STUB: SADX 0x00571790
 void EffectWater(struct sp_task *tp, struct sp_link *lp)
+{
+}
+
+// STUB: SADX 0x00572210
+void MirenObjEditDrawCollision(const struct colliwk *)
 {
 }
 

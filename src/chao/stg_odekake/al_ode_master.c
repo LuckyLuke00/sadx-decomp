@@ -1,5 +1,5 @@
 #include "decls.h"
-extern int DAT_05b330e4;
+extern void *DAT_05b330e4;
 void FUN_0047a9f0();
 void AL_GBAManagerSleep();
 void Free(void *mp);
@@ -99,14 +99,14 @@ void CreateOdekakeMenuMaster()
 {
 	struct task *var1;
 
-	if ((*(void *(*))&DAT_05b330e4) == 0)
+	if (DAT_05b330e4 == 0)
 	{
-		(*(void *(*))&DAT_05b330e4) = CAlloc(1, 0x38);
-		if ((*(void *(*))&DAT_05b330e4) != 0)
+		DAT_05b330e4 = CAlloc(1, 0x38);
+		if (DAT_05b330e4 != 0)
 		{
 			var1 = CreateElementalTask(2, 2, AL_OdekakeMenuMaster);
-			*(struct task **)((char *)(*(void *(*))&DAT_05b330e4) + 0x2c) = var1;
-			*(int *)((char *)(*(void *(*))&DAT_05b330e4) + 0x28) = 2;
+			*(struct task **)((char *)DAT_05b330e4 + 0x2c) = var1;
+			*(int *)((char *)DAT_05b330e4 + 0x28) = 2;
 			var1->disp = (void (__cdecl *)(struct task *))FUN_007d21b0;
 			var1->dest = AL_OdekakeMenuMasterDestructor;
 			CreateOdeBG();

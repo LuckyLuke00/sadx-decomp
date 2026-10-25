@@ -1,5 +1,7 @@
 #include "decls.h"
 #include <string.h>
+void FUN_004ff280(void);
+void FUN_004ff2a0();
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 void FUN_0049e8b0(struct task *param_1);

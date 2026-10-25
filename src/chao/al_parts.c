@@ -1,5 +1,7 @@
 #include "decls.h"
 void FUN_00450d20(struct al_object *param_1);
+void FUN_00450d20(struct al_object *param_1);
+void FUN_00450d20(struct al_object *param_1);
 void AL_SetMiminalParts(struct task *tp, long PartsKind, long MinimalType);
 void FUN_00450c30(int param_1);
 extern struct cnkobj **pPartsObjectListAdult[1];
@@ -81,9 +83,18 @@ void FUN_00450c30(int param_1)
 	*(int *)(param_1 + 0xa4) = 0;
 }
 
-// STUB: SADX 0x00450c40
+// FUNCTION: SADX 0x00450c40
 void AL_RemoveItemAllSub(struct al_object *pObject)
 {
+	while (pObject != 0)
+	{
+		FUN_00450c30((int)pObject);
+		if (pObject->pChild != 0)
+		{
+			AL_RemoveItemAllSub(pObject->pChild);
+		}
+		pObject = pObject->pSibling;
+	}
 }
 
 // FUNCTION: SADX 0x00450c80
@@ -104,9 +115,17 @@ void AL_ClearItemAllSub(struct al_object *pObject)
 	pObject->ItemActiveFlag = 0;
 }
 
-// STUB: SADX 0x00450ce0
-void FUN_00450ce0(struct al_object *pObject)
+// FUNCTION: SADX 0x00450ce0
+void FUN_00450ce0(struct al_object *param_1)
 {
+	for (; param_1 != 0; param_1 = param_1->pSibling)
+	{
+		AL_ClearItemAllSub(param_1);
+		if (param_1->pChild != 0)
+		{
+			FUN_00450ce0(param_1->pChild);
+		}
+	}
 }
 
 // STUB: SADX 0x00450d20
@@ -114,9 +133,18 @@ void FUN_00450d20(struct al_object *pObject)
 {
 }
 
-// STUB: SADX 0x00450d40
-void FUN_00450d40(struct task *tp)
+// FUNCTION: SADX 0x00450d40
+void FUN_00450d40(struct task *param_1)
 {
+	int var1;
+	struct taskwk *var2;
+
+	var2 = param_1->twp;
+	for (var1 = 0; var1 < 8; var1++)
+	{
+		AL_SetMiminalParts(param_1, var1, *(signed char *)((char *)(*(void **)((char *)var2 + 0x6c)) + 0x4e4 + var1));
+	}
+	FUN_00450d20((struct al_object *)param_1);
 }
 
 // STUB: SADX 0x00450d80
@@ -124,9 +152,11 @@ void AL_PartsMinimalFlagOn_BTL(struct task *tp, long MinimalType)
 {
 }
 
-// STUB: SADX 0x00450da0
+// FUNCTION: SADX 0x00450da0
 void AL_PartsMinimalFlagOff_BTL(struct task *tp, long MinimalType)
 {
+	struct taskwk *var1 = tp->twp;
+	*(unsigned long *)((char *)(*(unsigned long *)((char *)var1 + 0x6c)) + 0x118) &= ~(1UL << MinimalType);
 }
 
 // STUB: SADX 0x00450dc0

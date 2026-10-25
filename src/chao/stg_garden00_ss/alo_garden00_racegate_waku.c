@@ -1,4 +1,5 @@
 #include "decls.h"
+static void ObjectDisplay(struct task *tp);
 static void ObjectMain(struct task *tp);
 extern struct CCL_INFO ccinfo[];
 extern int DAT_05b9d838;
@@ -7,7 +8,7 @@ extern struct obj object_stch_racegate_waku_waku[1];
 extern struct NJS_MOTION motion_stch_racegate_waku[1];
 
 // FUNCTION: SADX 0x00477000
-void ObjectDisplay(struct task *tp)
+static void ObjectDisplay(struct task *tp)
 {
 	struct taskwk *var1;
 

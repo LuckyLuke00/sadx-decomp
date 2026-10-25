@@ -1,4 +1,5 @@
 #include "decls.h"
+long ALW_CommunicationOff(struct task *tp);
 extern float DAT_05ade380[16];
 extern float DAT_05aea9f0[16];
 extern int DAT_05aeaa34;
@@ -186,10 +187,16 @@ short ALW_RecieveCommand(struct task *tp)
 	return var2;
 }
 
-// STUB: SADX 0x0043dd60
+// FUNCTION: SADX 0x0043dd60
 long ALW_SendCommand(struct task *tp, short command)
 {
-	return (long)0;
+	struct al_entry_work *var1 = ALW_IsCommunication(tp);
+	if (var1 != 0)
+	{
+		var1->command = command;
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0043de30

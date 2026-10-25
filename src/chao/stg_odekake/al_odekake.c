@@ -9,7 +9,7 @@ void _al_odekake_epilog()
 	PauseEnable();
 }
 
-// STUB: SADX 0x0047a790
+// FUNCTION: SADX 0x0047a790
 void AL_OdekakeStageExecutor(struct task *tp)
 {
 }
@@ -17,6 +17,14 @@ void AL_OdekakeStageExecutor(struct task *tp)
 // STUB: SADX 0x0047a7f0
 void AL_OdekakeStageDestructor(struct task *tp)
 {
+	FUN_004b6520((int)&texlist_al_odekake_menu);
+	BGM_Stop();
+	Serif_Stop();
+	AlMsgSelectExit();
+	AlMsgWarnExit();
+	((void (*)(void))FUN_0044db20)();
+	AL_ReleaseMessageTable();
+	AL_ReleaseTex(1);
 }
 
 // FUNCTION: SADX 0x0047a830

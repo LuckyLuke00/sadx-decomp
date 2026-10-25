@@ -2,6 +2,11 @@
 extern struct task *DAT_05b33104;
 void FreeTask(struct task *tp);
 
+// STUB: SADX 0x00481920
+void AL_OdeTelopCreate()
+{
+}
+
 // FUNCTION: SADX 0x00481a10
 void AL_OdeTelopDelete()
 {

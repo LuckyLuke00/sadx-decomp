@@ -8,6 +8,31 @@ void FUN_00712670(int param_1)
 	DAT_060c6134 = param_1;
 }
 
+// FUNCTION: SADX 0x00712680
+enum EMenuStatus AL_GetChaoSelectMenuStatus()
+{
+	return (enum EMenuStatus)DAT_060c6134;
+}
+
+// FUNCTION: SADX 0x00712690
+long AL_ChaoMenuIsEnd()
+{
+	if (DAT_060c6130 != 0)
+	{
+		return *(long *)((char *)DAT_060c6130 + 0x10);
+	}
+	return 0;
+}
+
+// FUNCTION: SADX 0x007126a0
+void FUN_007126a0()
+{
+	if (DAT_060c6130 != 0)
+	{
+		*(int *)((char *)DAT_060c6130 + 0x10) = 1;
+	}
+}
+
 // FUNCTION: SADX 0x007126c0
 void AL_ChaoMenuSetBusy()
 {

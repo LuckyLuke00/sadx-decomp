@@ -20,11 +20,6 @@ struct task *SetRockyHead03Task()
 	return SandObjSetChildTask(&ObjectTaskInfo, (void *)0x35af6f4);
 }
 
-// STUB: SADX 0x007e8ac0
-void destObject(struct task *task_p)
-{
-}
-
 // STUB: SADX 0x007e8ad0
 void dispRockyHead(struct task *task_p)
 {

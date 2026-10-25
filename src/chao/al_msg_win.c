@@ -38,6 +38,11 @@ int FUN_0044e2f0(int param_1)
 	return *(short *)((char *)param_1 + 0xa) > 0;
 }
 
+// STUB: SADX 0x0044e330
+void FUN_0044e330(struct SAlMsgWin *self, int param_1, int param_2, float param_3, float param_4, float param_5, float param_6, float param_7, float param_8)
+{
+}
+
 // STUB: SADX 0x0044e380
 void FUN_0044e380(struct DAT_0044e380_0 *param_1, int param_2, int param_3, int param_4)
 {

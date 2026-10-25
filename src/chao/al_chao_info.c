@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct chao_save_info *DAT_05b067b0[4];
+extern int DAT_05b067ac;
 extern int DAT_05b067a8;
 
 // STUB: SADX 0x0043ffa0
@@ -37,13 +39,55 @@ struct chao_save_info *AL_GetNewChaoSaveInfo()
 	return (struct chao_save_info *)0;
 }
 
-// STUB: SADX 0x004400d0
+// FUNCTION: SADX 0x004400d0
 struct chao_save_info *AL_SetHoldingEggBM(long EggColor)
 {
-	return (struct chao_save_info *)0;
+	if (FUN_00440040() != 0)
+	{
+		return NULL;
+	}
+	struct chao_save_info *var1 = AL_GetNewChaoSaveInfo();
+	if (var1 != NULL)
+	{
+		AL_GeneCreate((struct AL_GENE *)((char *)var1 + 0x438));
+		*(char *)((char *)var1 + 0x439) = (char)EggColor;
+		*(char *)((char *)var1 + 0x80) = 1;
+	}
+	DAT_05b067a8 = (int)var1;
+	return var1;
 }
 
-// STUB: SADX 0x00440540
+// FUNCTION: SADX 0x00440540
 void AL_SetHoldingChaoInfo(struct task *pChaoTask)
 {
+	if (pChaoTask != NULL)
+	{
+		DAT_05b067a8 = *(int *)((char *)pChaoTask->twp + 0x6c);
+		DAT_05b067ac = 1;
+		return;
+	}
+	FUN_00440050();
+}
+
+// FUNCTION: SADX 0x00440570
+void AL_SetHoldingEggInfo(struct task *pEggTask)
+{
+	if (pEggTask != NULL)
+	{
+		DAT_05b067a8 = *(int *)((char *)pEggTask->twp + 0x6c);
+		return;
+	}
+	FUN_00440050();
+}
+
+// FUNCTION: SADX 0x00440590
+void AL_SetSelectedChaoSaveInfo(unsigned long PlayerNum, struct chao_save_info *pSaveInfo)
+{
+	DAT_05b067b0[PlayerNum] = pSaveInfo;
+}
+
+// FUNCTION: SADX 0x004405a0
+struct chao_save_info *AL_GetSelectedChaoSaveInfo(unsigned long PlayerNum)
+{
+	return DAT_05b067b0[PlayerNum];
 }

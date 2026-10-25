@@ -805,7 +805,7 @@ void AlrReal_controlCamera(struct AlrReal *___this)
  case 10:
   if(___this->camera_timer<180.0)
   {
-   do { ___this->alr[*(unsigned char *)&___this->alrrank].flag|=0x2000; } while(0);
+   do { ___this->alr[___this->alrrank.rank[0]].flag|=0x2000; } while(0);
   }
   ___this->look=AlrRank_GetId(&___this->alrrank,0);
   break;

@@ -1,6 +1,11 @@
 #include "decls.h"
 extern int DAT_05b2ca64[1];
 
+// STUB: SADX 0x0044c7e0
+void FUN_0044c7e0(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0044c900
 void AlMsgWarnDelete(int winid)
 {
@@ -17,9 +22,10 @@ void AlMsgWarnOpen(int winid)
 {
 }
 
-// STUB: SADX 0x0044c990
+// FUNCTION: SADX 0x0044c990
 void AlMsgWarnClear(int winid)
 {
+	AlMsgWinClear(*(struct SAlMsgWin **)((char *)DAT_05b2ca64 + winid * 24));
 }
 
 // STUB: SADX 0x0044c9b0
@@ -27,9 +33,10 @@ void AlMsgWarnAddLineC(int winid, const char *cstr)
 {
 }
 
-// STUB: SADX 0x0044c9f0
+// FUNCTION: SADX 0x0044c9f0
 void AlMsgWarnWaitCont(int winid)
 {
+	AlMsgWinWaitCont(*(struct SAlMsgWin **)((char *)DAT_05b2ca64 + winid * 24));
 }
 
 // FUNCTION: SADX 0x0044ca10

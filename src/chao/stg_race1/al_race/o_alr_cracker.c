@@ -1,4 +1,6 @@
 #include "decls.h"
+void shotConfetti(struct task *pTask);
+void shotTape(struct task *pTask);
 extern struct NJS_POINT3 unitVecCracker;
 extern struct NJS_POINT3 startPosCracker;
 extern float _nj_unit_matrix_[16];

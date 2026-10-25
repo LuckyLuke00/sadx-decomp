@@ -27,10 +27,16 @@ long AL_IsDark(unsigned char type)
 	return 0;
 }
 
-// STUB: SADX 0x00438950
+// FUNCTION: SADX 0x00438950
 long AL_IsHero2(struct task *pChaoTask)
 {
-	return (long)0;
+	char *var1 = *(char **)((char *)pChaoTask->twp + 0x6c);
+	int var2 = (int)(unsigned char)(*(unsigned char *)(var1 + 0x80));
+	if (var2 >= 6 && var2 < 0x17 && (var2 - 6) % 3 == 0)
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x00438990
@@ -78,19 +84,62 @@ void AL_ParameterCatchup(struct task *pChaoTask)
 	*(unsigned short *)((char *)var1 + 0x96) = *(unsigned short *)((char *)var2 + 0x46);
 }
 
-// STUB: SADX 0x00438b40
+// FUNCTION: SADX 0x00438b40
 void AL_ParameterAddGrowth(struct task *tp, float add)
 {
+	struct taskwk *var1;
+	struct anywk *var2;
+	float var3;
+
+	var1 = tp->twp;
+	var2 = *(struct anywk **)((char *)var1 + 0x6c);
+	var3 = *(float *)((char *)var2 + 0xc0) + add;
+	*(float *)((char *)var2 + 0xc0) = var3;
+	if (ChaoGlobal.GrowthLimit < var3)
+	{
+		*(float *)((char *)var2 + 0xc0) = ChaoGlobal.GrowthLimit;
+	}
+	if (*(float *)((char *)var2 + 0xc0) < 0.0f)
+	{
+		*(float *)((char *)var2 + 0xc0) = 0.0f;
+	}
+	*(short *)((char *)var1 + 0x688) |= 2;
 }
 
-// STUB: SADX 0x00438bb0
+// FUNCTION: SADX 0x00438bb0
 void AL_ParameterAddHPos(struct task *tp, float add)
 {
+	struct taskwk *var1;
+	struct anywk *var2;
+	float var3;
+
+	var1 = tp->twp;
+	var2 = *(struct anywk **)((char *)var1 + 0x6c);
+	var3 = *(float *)((char *)var2 + 0xa8) + add;
+	*(float *)((char *)var2 + 0xa8) = var3;
+	if (var3 > ChaoGlobal.DeformLimit)
+		*(float *)((char *)var2 + 0xa8) = ChaoGlobal.DeformLimit;
+	if (*(float *)((char *)var2 + 0xa8) < -ChaoGlobal.DeformLimit)
+		*(float *)((char *)var2 + 0xa8) = -ChaoGlobal.DeformLimit;
+	*(short *)((char *)var1 + 0x688) |= 2;
 }
 
-// STUB: SADX 0x00438c30
+// FUNCTION: SADX 0x00438c30
 void AL_ParameterAddVPos(struct task *tp, float add)
 {
+	struct taskwk *var1;
+	struct anywk *var2;
+	float var3;
+
+	var1 = tp->twp;
+	var2 = *(struct anywk **)((char *)var1 + 0x6c);
+	var3 = *(float *)((char *)var2 + 0xac) + add;
+	*(float *)((char *)var2 + 0xac) = var3;
+	if (var3 > *(float *)((char *)&ChaoGlobal + 0x40))
+		*(float *)((char *)var2 + 0xac) = *(float *)((char *)&ChaoGlobal + 0x40);
+	if (*(float *)((char *)var2 + 0xac) < -*(float *)((char *)&ChaoGlobal + 0x40))
+		*(float *)((char *)var2 + 0xac) = -*(float *)((char *)&ChaoGlobal + 0x40);
+	*(short *)((char *)var1 + 0x688) |= 2;
 }
 
 // FUNCTION: SADX 0x00438cb0
@@ -111,19 +160,68 @@ void AL_ParameterAddAPos(struct task *tp, float add)
 	*(short *)((char *)var1 + 0x688) |= 2;
 }
 
-// STUB: SADX 0x00438d20
+// FUNCTION: SADX 0x00438d20
 void AL_ParameterAddLife(struct task *tp, long add)
 {
+	char *var1 = *(char **)((char *)tp->twp + 0x6c);
+	int var2 = (int)(unsigned short)(*(unsigned short *)(var1 + 0x8a)) + add;
+	int var3 = (int)(unsigned short)(*(unsigned short *)(var1 + 0x8c));
+	if (var2 > var3)
+	{
+		var2 = var3;
+	}
+	if (var2 < 0)
+	{
+		var2 = 0;
+	}
+	*(unsigned short *)(var1 + 0x8a) = (unsigned short)var2;
 }
 
-// STUB: SADX 0x00438d50
+// FUNCTION: SADX 0x00438d50
 void AL_ParameterAddLifeMax(struct task *tp, long add)
 {
+	struct taskwk *var1 = tp->twp;
+	struct taskwk *var2 = *(struct taskwk **)((char *)var1 + 0x6c);
+	int var3 = *(unsigned short *)((char *)var2 + 0x8c);
+	int var4 = *(unsigned short *)((char *)var2 + 0x8a);
+	int var5 = *(unsigned short *)((char *)&ChaoGlobal + 0x36);
+	var3 += add;
+	if (var3 > var5)
+		var3 = var5;
+	if (var3 < 0)
+		var3 = 0;
+	if (var4 > var3)
+	{
+		*(unsigned short *)((char *)var2 + 0x8c) = (unsigned short)var3;
+		*(unsigned short *)((char *)var2 + 0x8a) = (unsigned short)var3;
+	}
+	else
+	{
+		*(unsigned short *)((char *)var2 + 0x8c) = (unsigned short)var3;
+		*(unsigned short *)((char *)var2 + 0x8a) = (unsigned short)var4;
+	}
 }
 
-// STUB: SADX 0x00438da0
+// FUNCTION: SADX 0x00438da0
 void AL_ParameterAddUserLike(struct task *tp, long add, float AddAttr)
 {
+	struct taskwk *var1;
+	struct anywk *var2;
+	int var3;
+
+	var1 = tp->twp;
+	var2 = *(struct anywk **)((char *)var1 + 0x6c);
+	var3 = (int)(short)*(short *)((char *)var2 + 0x82) + (int)add;
+	if (var3 > 100)
+		var3 = 100;
+	if (var3 < -100)
+		var3 = -100;
+	*(short *)((char *)var2 + 0x82) = (short)var3;
+	AL_KW_AddPlayerLike(tp, add);
+	if (add > 0)
+		AL_IconSet(tp, 4, 0xb4);
+	else
+		AL_IconSet(tp, 5, 0xb4);
 }
 
 // FUNCTION: SADX 0x00438e10
@@ -133,10 +231,17 @@ void AL_ParameterControlInit()
 	DAT_05ade374 = 0;
 }
 
-// STUB: SADX 0x00438e20
+// FUNCTION: SADX 0x00438e20
 long AL_IsEmotionTimerReset(struct task *tp)
 {
-	return (long)0;
+	struct taskwk *var1 = tp->twp;
+	void *var2 = *(void **)((char *)var1 + 0x6c);
+	if (*(short *)((char *)var2 + 0x12a) == 0)
+	{
+		*(short *)((char *)var2 + 0x12a) = 1;
+		return 1;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x00438e50
@@ -145,10 +250,14 @@ void AL_ClearChaoParam(struct CHAO_PARAM_GC *pParam)
 	memset(pParam, 0, 0x520);
 }
 
-// STUB: SADX 0x00438f80
+// FUNCTION: SADX 0x00438f80
 unsigned long AL_ParameterGetSkill(struct task *pChaoTask, unsigned short SkillKind)
 {
-	return (unsigned long)0;
+	if (SkillKind >= 8)
+	{
+		SkillKind = 0;
+	}
+	return (unsigned long)*(unsigned short *)((char *)(*(void **)((char *)pChaoTask->twp + 0x6c)) + 0x38 + SkillKind * 2) * 3;
 }
 
 // STUB: SADX 0x0043a120

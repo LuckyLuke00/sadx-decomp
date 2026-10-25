@@ -1,6 +1,12 @@
 #include "decls.h"
 extern void *DAT_05b33018;
 
+// FUNCTION: SADX 0x00474df0
+void AL_EntranceMenuLargeTitleBarDisplayerPost(struct task *tp)
+{
+	AL_EntranceMenuLargeTitleBarDisplayerSub(tp, 1);
+}
+
 // FUNCTION: SADX 0x00474e00
 void AL_EntranceMenuLargeTitleBarDisplayer(struct task *tp)
 {

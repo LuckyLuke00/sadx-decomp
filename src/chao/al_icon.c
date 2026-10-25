@@ -39,9 +39,15 @@ void AL_IconSet(struct task *tp, signed char Type, long Timer)
 	*(int *)((char *)var1 + 0x708) = Timer;
 }
 
-// STUB: SADX 0x0043cba0
+// FUNCTION: SADX 0x0043cba0
 void AL_IconReset(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	*(short *)((char *)var1 + 0x702) = 0;
+	*(int *)((char *)var1 + 0x704) = 0;
+	*(int *)((char *)var1 + 0x708) = 0;
 }
 
 // STUB: SADX 0x0043cd40
