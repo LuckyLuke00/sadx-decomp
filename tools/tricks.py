@@ -4,6 +4,7 @@ A trick is one of these:
 - inline assembly, `__emit`, `__declspec(naked)`, `#pragma` or `__pragma` in the function: forbidden(), the words
   the local model's harness refuses;
 - `volatile` or `__declspec(safebuffers)` in the function;
+- a global declared `volatile` at file level in any source, used in the function;
 - a place after a file-level pragma that changes the code, such as `#pragma auto_inline(off)`, and before the pragma
   that resets it.
 
@@ -22,6 +23,7 @@ import names
 
 FORBIDDEN = re.compile(r"\b(?:__asm|_asm|asm|__emit|__pragma)\b|__declspec\s*\(\s*naked\s*\)|#\s*pragma\b")  # not C
 KEYWORDS = re.compile(r"\bvolatile\b|__declspec\s*\(\s*safebuffers\s*\)")
+VOLATILE = re.compile(r"\bvolatile\b")
 PRAGMA = re.compile(r"^\s*(?:#\s*pragma\s+|__pragma\s*\(\s*)(\w+)\s*(?:\((.*?)\))?")
 HARMLESS_PRAGMAS = {"once", "warning", "push_macro", "pop_macro", "pack"}  # they change no function's code
 RESETS = {"", "on", '"",on'}  # the arguments that put a pragma back to the command line's setting
@@ -66,15 +68,23 @@ def set_pragma(opened: dict[str, str], line: str, blank: str) -> None:
         opened[pragma[1]] = f"#pragma {pragma[1]}({argument})"
 
 
+def volatile_globals(text: str) -> set[str]:
+    """The names TEXT declares `volatile` at file level: a declaration line that starts at its first column, as in
+    `extern volatile int g;`. A line inside a function or a struct is indented."""
+    lines = names.blank_literals(text).split("\n")
+    return {names.declared_name(line.rstrip()[:-1]) for line in lines
+            if line[:1].strip() and line.rstrip().endswith(";") and VOLATILE.search(line)} - {None}
+
+
 def is_definition(annotation: re.Match | None) -> bool:
     """True for the annotation of a function definition that is not a stub."""
     return bool(annotation) and annotation[1] in names.FUNCTION_KINDS and annotation[1] != "STUB"
 
 
-def file_tricks(text: str) -> dict[int, str]:
+def file_tricks(text: str, volatiles: set[str] = frozenset()) -> dict[int, str]:
     """address: the tricks of each function definition in TEXT that has one, in the order they appear. A definition
     runs from its declarator_start to the first line that is exactly "}". A stub is left out: it counts as nothing
-    anyway."""
+    anyway. VOLATILES: the globals declared `volatile` in any source, from volatile_globals."""
     lines = text.split("\n")
     blank = names.blank_literals(text).split("\n")
     opened = {}  # pragma name: its normalized text, while it is set
@@ -89,6 +99,7 @@ def file_tricks(text: str) -> dict[int, str]:
             continue  # check.py's annotation lint reports a definition with no end
         body = "\n".join(blank[declarator_start(lines, blank, i):end + 1])
         reasons = list(dict.fromkeys(words(FORBIDDEN, body) + words(KEYWORDS, body)))
+        reasons += [f"volatile global {name}" for name in sorted(volatiles & set(re.findall(r"\w+", body)))]
         reasons += [f"after {setting}" for setting in opened.values()]
         if reasons:
             found[int(annotation[2], 16)] = ", ".join(reasons)
@@ -97,8 +108,10 @@ def file_tricks(text: str) -> dict[int, str]:
 
 def scan(root: Path) -> dict[int, tuple[str, str]]:
     """address: (file, tricks) of each function in root/src that has a trick."""
-    return {address: (rel, reasons) for rel, text in names.read_sources(root).items()
-            for address, reasons in file_tricks(text).items()}
+    sources = names.read_sources(root)
+    volatiles = set().union(*map(volatile_globals, sources.values()))
+    return {address: (rel, reasons) for rel, text in sources.items()
+            for address, reasons in file_tricks(text, volatiles).items()}
 
 
 def main() -> int:
