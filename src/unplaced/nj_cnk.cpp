@@ -1,4 +1,7 @@
 #include "decls.h"
+void njStartMotionObj(struct param_1 const *, float);
+void _njCnkPushPopMotion(struct cnkobj const *);
+extern void _njCnkDrawObject(struct cnkobj *param_1);
 extern void FUN_0041b120(int param_1, int param_2);
 extern void stSetBaseMatrix(float (*param_1)[16]);
 extern void *DAT_05ab39ac;
@@ -12,6 +15,15 @@ void FUN_0041b120(int param_1, int param_2);
 // STUB: SADX 0x00435fd0
 void njCnkDrawMotion(struct cnkobj const *param_1, struct NJS_MOTION const *param_2, float param_3)
 {
+	void (__thiscall *fp)(int, int);
+
+	njStartMotionObj(param_2, param_3);
+	DAT_05ada5b8 = 1;
+	stSetBaseMatrix((float (*)[16])DAT_0629c518);
+	fp = (void (__thiscall *)(int, int))FUN_0041b120;
+	((void (__thiscall *)(void *, int, int))fp)(DAT_05ab39ac, 0, 0);
+	((void (__thiscall *)(void *, int, int))fp)(DAT_05ab39ac, 1, 0);
+	_njCnkPushPopMotion(param_1);
 }
 
 // FUNCTION: SADX 0x00436030

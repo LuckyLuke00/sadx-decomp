@@ -31,6 +31,11 @@ void _stTwiddledToLinearHalf(void *param_1, void *param_2, unsigned long param_3
 {
 }
 
+// STUB: SADX 0x0042aa50
+void FUN_0042aa50(void)
+{
+}
+
 // STUB: SADX 0x0042ae90
 void stLoadTexture(struct NJS_TEXMEMLIST *param_1, void *param_2)
 {

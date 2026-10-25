@@ -18,16 +18,22 @@ int __fastcall FUN_00925cd0(int param_1)
 	return *(int *)(param_1 + 0x1c + var1 * 8);
 }
 
-// STUB: SADX 0x00925ce0
+// FUNCTION: SADX 0x00925ce0
 int __fastcall FUN_00925ce0(int param_1)
 {
-	return (int)0;
+	int var1;
+	var1 = *(int *)(param_1 + 0x38);
+	var1 += var1;
+	return *(int *)(param_1 + 0x18 + var1 * 8);
 }
 
-// STUB: SADX 0x00925cf0
+// FUNCTION: SADX 0x00925cf0
 int __fastcall FUN_00925cf0(int param_1)
 {
-	return (int)0;
+	int var1;
+	var1 = *(int *)(param_1 + 0x38);
+	var1 += var1;
+	return *(int *)(param_1 + 0x14 + var1 * 8);
 }
 
 // STUB: SADX 0x00925d00

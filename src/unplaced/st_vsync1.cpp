@@ -1,0 +1,17 @@
+#include "decls.h"
+extern int DAT_05ad9ad0;
+
+// STUB: SADX 0x00430d60
+void stHWVSyncServerDelete(int param_1)
+{
+	int *var1;
+	var1 = &DAT_05ad9ad0;
+	do
+	{
+		if (*var1 == param_1)
+		{
+			*var1 = 0;
+		}
+		var1++;
+	} while (var1 != (int *)0x5ad9b10);
+}

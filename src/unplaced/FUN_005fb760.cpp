@@ -18,10 +18,19 @@ void FUN_005fba20(int param_1, int *param_2, int *param_3)
 {
 }
 
-// STUB: SADX 0x005fba70
-void *FUN_005fba70(unsigned long size)
+// FUNCTION: SADX 0x005fba70
+void *FUN_005fba70(unsigned long param_1)
 {
-	return (void *)0;
+	void *local_8 = 0;
+	if (param_1 <= 0)
+	{
+		param_1 = 0;
+	}
+	else if (param_1 > 0x234f72c || (local_8 = operator new(param_1 * 0x74)) == 0)
+	{
+		throw std::bad_alloc(0);
+	}
+	return local_8;
 }
 
 // STUB: SADX 0x005fbae0

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_01c76fa0;
+extern void (*DAT_05ada214)(struct obj *);
 void njPushMatrixEx();
 void njMotionTransformEx(struct obj const *);
 void njPopMatrixEx();
@@ -73,13 +75,38 @@ void _njCnkPushPopMotionLink(struct cnkobj const *cnkobj)
 	} while (var1 != 0);
 }
 
-// STUB: SADX 0x00432b70
-void _njPushPopMotion(struct obj const *param_1)
+// FUNCTION: SADX 0x00432b70
+void _njPushPopMotion(struct obj const *obj)
 {
+	do
+	{
+		njPushMatrixEx();
+		njMotionTransformEx(obj);
+		if (DAT_05ada214)
+		{
+			DAT_05ada214((struct obj *)obj);
+		}
+		if (obj->model && (obj->evalflags & 8) == 0)
+		{
+			(*(void (**)(struct NJS_MODEL *))((char *)DAT_01c76fa0 + 0xc))(obj->model);
+		}
+		if (obj->child)
+		{
+			_njPushPopMotion(obj->child);
+		}
+		njPopMatrixEx();
+		obj = obj->sibling;
+	} while (obj);
 }
 
 // STUB: SADX 0x00432bd0
 int _njGetMotionFloat3(float * const param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00432c20
+int _njGetMotionAngle1(long *param_1)
 {
 	return (int)0;
 }

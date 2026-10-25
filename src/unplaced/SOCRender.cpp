@@ -1,7 +1,14 @@
 #include "decls.h"
 #include <new>
+void FUN_004207b0(void);
 void UnknowTochar(char *param_1, unsigned long param_2);
 extern unsigned char DAT_05ab4243;
+
+// STUB: SADX 0x004198d0
+int SOCGetInputLayout(int param_1)
+{
+	return (int)0;
+}
 
 // FUNCTION: SADX 0x00419ac0
 void __fastcall FUN_00419ac0(void *param_1, int param_2, int param_3)
@@ -131,6 +138,11 @@ void __fastcall FUN_004204d0(int *param_1, int param_2)
 
 // STUB: SADX 0x004207b0
 void FUN_004207b0(void)
+{
+}
+
+// STUB: SADX 0x004207c0
+void FUN_004207c0(void)
 {
 }
 

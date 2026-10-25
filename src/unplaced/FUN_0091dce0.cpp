@@ -127,10 +127,10 @@ void FUN_0091f6d0(int param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x0091f720
+// FUNCTION: SADX 0x0091f720
 float __fastcall FUN_0091f720(int *param_1)
 {
-	return (float)0;
+	return (float)(unsigned int)param_1[4];
 }
 
 // STUB: SADX 0x0091f8e0

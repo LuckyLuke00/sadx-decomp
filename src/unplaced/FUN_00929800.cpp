@@ -70,14 +70,38 @@ void FUN_00929f50(int *param_1)
 {
 }
 
-// STUB: SADX 0x00929fe0
+// FUNCTION: SADX 0x00929fe0
 void __stdcall FUN_00929fe0(FUN_00929fe0_t *param_1)
 {
+	int var1 = (int)(*(int **)((char *)param_1 + 0xc));
+	if (var1 != 0)
+	{
+		(*(void (__stdcall **)(int))(*(int *)var1 + 8))(var1);
+	}
+	*(int **)((char *)param_1 + 0xc) = 0;
+	int var2 = (int)(*(int **)((char *)param_1 + 0x50));
+	if (var2 != 0)
+	{
+		(*(void (__stdcall **)(int))(*(int *)var2 + 8))(var2);
+	}
+	*(int **)((char *)param_1 + 0x50) = 0;
 }
 
-// STUB: SADX 0x0092a020
+// FUNCTION: SADX 0x0092a020
 void __stdcall FUN_0092a020(struct FUN_0092a020_0 *param_1)
 {
+	int var1 = *(int *)((char *)param_1 + 0xc);
+	if (var1 != 0)
+	{
+		(*(void (__stdcall **)(int))(*(int *)var1 + 8))(var1);
+	}
+	int var2 = *(int *)((char *)param_1 + 0x50);
+	*(int *)((char *)param_1 + 0xc) = 0;
+	if (var2 != 0)
+	{
+		(*(void (__stdcall **)(int))(*(int *)var2 + 8))(var2);
+	}
+	*(int *)((char *)param_1 + 0x50) = 0;
 }
 
 // FUNCTION: SADX 0x0092a060
@@ -91,9 +115,15 @@ void __stdcall FUN_0092a060(int param_1)
 	*(int **)(param_1 + 0xc) = 0;
 }
 
-// STUB: SADX 0x0092a0b0
+// FUNCTION: SADX 0x0092a0b0
 void __stdcall FUN_0092a0b0(int param_1)
 {
+	int var1 = (int)(*(int **)(param_1 + 0xc));
+	if (var1 != 0)
+	{
+		(*(void (__stdcall **)(int))(*(int *)var1 + 8))(var1);
+	}
+	*(int **)(param_1 + 0xc) = 0;
 }
 
 // STUB: SADX 0x0092a0e0
@@ -118,9 +148,15 @@ void __stdcall FUN_0092a1e0(int param_1)
 	*(int **)(param_1 + 0xc) = 0;
 }
 
-// STUB: SADX 0x0092a2c0
+// FUNCTION: SADX 0x0092a2c0
 void __stdcall FUN_0092a2c0(int param_1)
 {
+	int var1 = (int)(*(int **)(param_1 + 0x14));
+	if (var1 != 0)
+	{
+		(*(void (__stdcall **)(int))(*(int *)var1 + 8))(var1);
+	}
+	*(int **)(param_1 + 0x14) = 0;
 }
 
 // STUB: SADX 0x0092a3b0

@@ -1,9 +1,11 @@
 #include "decls.h"
 #include <string.h>
 #include <new>
+#include <vector>
 void *FUN_004b6ae0(unsigned int param_1);
 void __fastcall FUN_004b66c0(void **param_1);
-void FUN_004b6720(void *param_1, void *param_2, void *param_3);
+struct FUN_004b6590_0;
+template class std::vector<FUN_004b6590_0 *>;
 void FUN_004b5e70(int param_1);
 
 extern char **DAT_05b422dc;
@@ -178,30 +180,6 @@ void FUN_004b6520(int param_1)
 	}
 }
 
-__declspec(safebuffers)
-// FUNCTION: SADX 0x004b6590
-void __fastcall FUN_004b6590(int *param_1)
-{
-	int local_1co;
-	int local_ci;
-	int local_20go;
-	int local_18go;
-	int local_14k;
-	int local_8gk;
-	int local_24gl;
-	int local_10hk;
-	unsigned char local_48[0x24];
-
-	local_1co = param_1[1];
-	local_ci = local_1co;
-	local_8gk = local_ci;
-	local_20go = param_1[0];
-	local_14k = local_20go;
-	local_10hk = local_14k;
-	((void (__thiscall *)(int *, void *, void *, void *))FUN_004b6720)(param_1, &local_18go, (void *)local_10hk, (void *)local_8gk);
-	return;
-}
-
 // FUNCTION: SADX 0x004b66c0
 void __fastcall FUN_004b66c0(void **param_1)
 {
@@ -220,24 +198,6 @@ void __fastcall FUN_004b66c0(void **param_1)
 	*param_1 = 0;
 	param_1[1] = 0;
 	param_1[2] = 0;
-}
-
-// FUNCTION: SADX 0x004b6860
-int __stdcall FUN_004b6860(int param_1)
-{
-	unsigned int local_8gk;
-	unsigned int local_ci;
-	int *local_10hk;
-
-	__asm mov local_10hk, ecx
-	local_8gk = (local_10hk[2] - local_10hk[0]) >> 2;
-	local_ci = 0x3fffffff;
-	local_8gk = (local_ci > 0 ? local_ci : 1) - (local_8gk >> 1) < local_8gk ? 0 : (local_8gk >> 1) + local_8gk;
-	if (local_8gk < (unsigned int)param_1)
-	{
-		local_8gk = param_1;
-	}
-	return local_8gk;
 }
 
 // FUNCTION: SADX 0x004b6a60
