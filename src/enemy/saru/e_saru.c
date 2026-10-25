@@ -161,7 +161,24 @@ void SaruBombExplosionDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005c9e30
+// FUNCTION: SADX 0x005c9e30
 void SaruBombADisplayer(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct motionwk *local_8g;
+
+	local_cg = tp->twp;
+	local_8g = tp->mwp;
+	switch (local_cg->mode)
+	{
+		case 0:
+			SaruBombDraw(local_cg, (struct enemywk *)local_8g);
+			break;
+		case 1:
+			SaruBombCountDraw(local_cg, (struct enemywk *)local_8g);
+			break;
+		case 2:
+			SaruBombExplosionDraw(local_cg, (struct enemywk *)local_8g);
+			break;
+	}
 }

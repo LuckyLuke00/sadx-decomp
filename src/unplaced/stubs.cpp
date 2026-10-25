@@ -2282,11 +2282,6 @@ void ObjectEmeraldDisplay(struct NJS_POINT3 *pos, long *angy)
 {
 }
 
-// STUB: SADX 0x005bc0f0
-void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
 // STUB: SADX 0x005be3b0
 void RoboDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -2299,6 +2294,16 @@ void LeonDraw(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005c1f00
 void LeonDrawLink(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c3600
+void MissleLockOn(struct task *tp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c38c0
+void MissleAttack(struct task *tp)
 {
 }
 
@@ -2319,6 +2324,16 @@ void SaruBombExplosion(struct task *tp)
 
 // STUB: SADX 0x005c9690
 void SaruBombDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005c9ab0
+void SaruBombCountDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005cca00
+void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -2423,12 +2438,6 @@ void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp)
 // STUB: SADX 0x005e30b0
 void EnemyCheckWall(struct taskwk *twp, struct enemywk *ewp)
 {
-}
-
-// STUB: SADX 0x005e3c80
-long EnemyCalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x005e5770
@@ -2647,11 +2656,6 @@ void EffectSpark(struct task *tp)
 struct task *Eggrob_GenerateEggrob(struct erctrlstr *)
 {
 	return (struct task *)0;
-}
-
-// STUB: SADX 0x00610a30
-void FUN_00610a30(struct task *)
-{
 }
 
 // STUB: SADX 0x00610bd0
@@ -4081,28 +4085,8 @@ long OpenCartSplineData(void *src_adr, long size)
 	return (long)0;
 }
 
-// STUB: SADX 0x008d62e0
-void FUN_008d62e0(struct taskwk *, struct enemywk *)
-{
-}
-
-// STUB: SADX 0x008d6360
-void FUN_008d6360(struct taskwk *, struct enemywk *)
-{
-}
-
-// STUB: SADX 0x008d6480
-void FUN_008d6480(struct taskwk *, struct enemywk *)
-{
-}
-
 // STUB: SADX 0x008d6640
 void FUN_008d6640(struct taskwk *, struct enemywk *)
-{
-}
-
-// STUB: SADX 0x008d68e0
-void FUN_008d68e0(struct taskwk *, struct enemywk *)
 {
 }
 
@@ -4126,11 +4110,6 @@ void FUN_008d9be0(void *, float, float)
 {
 }
 
-// STUB: SADX 0x008da900
-void SnakePartsDraw(struct taskwk *twp)
-{
-}
-
 // STUB: SADX 0x008dbe50
 void BridgeInit(struct task *tp)
 {
@@ -4148,11 +4127,6 @@ void BridgeDraw2(struct taskwk *twp)
 
 // STUB: SADX 0x008dde40
 void ERSC_CommonExec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x008de9f0
-void dispBuyonSub(struct task *tp)
 {
 }
 

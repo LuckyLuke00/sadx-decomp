@@ -1,4 +1,6 @@
 #include "decls.h"
+long AdjustAngle(long ang0, long ang1, long dang);
+extern struct CCL_INFO lift_info[3];
 void AirMove(struct taskwk *twp, struct enemywk *ewp);
 void AirCollision(struct taskwk *twp, struct enemywk *ewp);
 void AirDraw(struct taskwk *twp, struct enemywk *ewp);
@@ -12,9 +14,24 @@ extern struct NJS_TEXLIST texlist_e_aircraft;
 long AdjustAngle(long ang0, long ang1, long dang);
 extern struct obj object_sky_obj_lift_a_obj_lift_a;
 
-// STUB: SADX 0x005c2b70
+// FUNCTION: SADX 0x005c2b70
 void EnemyAirLift(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	CCL_Init(tp, lift_info, 3, 4);
+	local_8->btimer = 0;
+	local_8->wtimer = 0;
+	local_8->scl.x = 0.0f;
+	local_8->scl.y = -40.0f;
+	local_8->ang.x = 0;
+	local_8->ang.z = 0;
+	tp->dest = AirLiftDestructor;
+	tp->exec = AirLiftExecutor;
+	tp->disp = AirLiftDraw;
+	*(short *)((char *)local_8 + 4) = *(short *)((char *)local_8 + 4);
+	*(short *)((char *)local_8 + 4) = *(short *)((char *)local_8 + 4) & ~0x100;
 }
 
 // STUB: SADX 0x005c2c10
@@ -60,11 +77,49 @@ void AirMissle(struct task *tp)
 // STUB: SADX 0x005c34a0
 void FUN_005c34a0(void *param_1)
 {
+	int local_cg;
+	int local_8g;
+
+	local_cg = *(int *)((char *)param_1 + 0x20);
+	local_8g = *(int *)((char *)param_1 + 0x24);
+	((void (*)(void *, void *, void *))FUN_005b5aa0)(param_1, (void *)local_cg, (void *)local_8g);
 }
 
-// STUB: SADX 0x005c34d0
+// FUNCTION: SADX 0x005c34d0
 void MissleExecutor(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct motionwk *local_8g;
+
+	local_cg = tp->twp;
+	local_8g = tp->mwp;
+	if (CheckEditMode())
+	{
+		return;
+	}
+	if (CheckRangeOutWithR(tp, 4000000.0f))
+	{
+		return;
+	}
+	switch (local_cg->mode)
+	{
+	case 0:
+		FUN_005c35b0((int)tp, (int)local_8g);
+		break;
+	case 1:
+		MissleLockOn(tp, (struct enemywk *)local_8g);
+		break;
+	case 2:
+		MissleAttack(tp);
+		break;
+	case 3:
+		FUN_005c3f90(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 4:
+		FreeTask(tp);
+		break;
+	}
+	local_cg->wtimer++;
 }
 
 // FUNCTION: SADX 0x005c35b0
@@ -134,8 +189,10 @@ void FUN_005c42c0(struct obj *param_1)
 }
 
 // STUB: SADX 0x005c4350
-void FUN_005c4350(struct task *tp, int param_2, int param_3)
+void FUN_005c4350(struct task *param_1, int param_2, int param_3)
 {
+	((void (*)(struct task *, int, int))FUN_005b5aa0)(param_1, param_2, param_3);
+	FreeTask(param_1);
 }
 
 // STUB: SADX 0x005c4380
@@ -297,9 +354,24 @@ void FUN_005c5830(struct task *param_1)
 {
 }
 
-// STUB: SADX 0x005c5890
-void FUN_005c5890(struct task *tp)
+// FUNCTION: SADX 0x005c5890
+void FUN_005c5890(struct task *param_1)
 {
+	struct taskwk *local_8;
+
+	local_8 = param_1->twp;
+	*(float *)((char *)local_8 + 0x30) += 0.4f;
+	if ((local_8->flag & 0x100) && param_1->ctp && (*(char *)param_1->ctp->twp != 0xc))
+	{
+		*(float *)((char *)param_1->ctp->twp + 0x24) += 0.4f;
+	}
+	if (*(float *)((char *)local_8 + 0x30) > 0.0f)
+	{
+		*(float *)((char *)local_8 + 0x30) = 0.0f;
+		local_8->mode = 3;
+		local_8->wtimer = 0;
+	}
+	AirLiftDraw(param_1);
 }
 
 // FUNCTION: SADX 0x005c5930

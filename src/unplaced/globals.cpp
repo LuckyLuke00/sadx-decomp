@@ -47,6 +47,9 @@ struct TaskInfo NeonLogoTaskInfo;
 // GLOBAL: SADX 0x00962da8
 struct ActionParam DAT_00962da8;
 
+// GLOBAL: SADX 0x00962f10
+double DAT_00962f10;
+
 // GLOBAL: SADX 0x00985418
 enum AvaTexLdEnum DAT_00985418;
 
@@ -1079,6 +1082,12 @@ int tikal_sw;
 // GLOBAL: SADX 0x02649880
 struct NJS_SPRITE sprite_tikal_tubu;
 
+// GLOBAL: SADX 0x026498a0
+struct NJS_TEXLIST texlist_e_robo;
+
+// GLOBAL: SADX 0x0264b028
+struct NJS_MODEL model_sorsar_karada_1_atama1[1];
+
 // GLOBAL: SADX 0x0264d9d8
 struct NJS_SPRITE sprite_robo_beam;
 
@@ -1097,6 +1106,9 @@ struct obj object_sky_obj_lift_a_obj_lift_a;
 // GLOBAL: SADX 0x02661618
 struct NJS_TEXLIST texlist_e_aircraft;
 
+// GLOBAL: SADX 0x026616e0
+struct CCL_INFO lift_info[3];
+
 // GLOBAL: SADX 0x02661a88
 struct NJS_TEXLIST texlist_e_saru;
 
@@ -1109,8 +1121,17 @@ struct obj object_togeball_togeball_togeball;
 // GLOBAL: SADX 0x0266c000
 struct NJS_MODEL *saru_model[9];
 
+// GLOBAL: SADX 0x0266c084
+struct NJS_TEXLIST texlist_uni_a_unibody;
+
+// GLOBAL: SADX 0x0266d110
+struct obj object_uni_a_unibody_unibody[1];
+
 // GLOBAL: SADX 0x0266d168
 struct NJS_TEXLIST texlist_uni_c_unibody;
+
+// GLOBAL: SADX 0x0266e1f8
+struct obj object_uni_c_unibody_unibody[1];
 
 // GLOBAL: SADX 0x0266e910
 struct obj object_uni_c_fireball_fireball[1];
@@ -1178,6 +1199,9 @@ struct NJS_SPRITE sprite_lensflare;
 // GLOBAL: SADX 0x026795dc
 struct particle_entry particle_flash;
 
+// GLOBAL: SADX 0x02684534
+struct particle_entry particle_pom;
+
 // GLOBAL: SADX 0x026846cc
 struct particle_entry particle_lightning;
 
@@ -1212,7 +1236,7 @@ struct obj object_eggrob_a_chn9_1[1];
 struct NJS_TEXLIST texlist_eggrob;
 
 // GLOBAL: SADX 0x026b9870
-struct PL_ACTION eggrob_action[21];
+struct PL_ACTION eggrob_action[1];
 
 // GLOBAL: SADX 0x026b99c0
 struct CCL_INFO eggrob_ci_info[2];
@@ -2651,8 +2675,14 @@ struct NJS_TEXLIST texlist_e_sai;
 // GLOBAL: SADX 0x04c69204
 struct obj object_rhino;
 
+// GLOBAL: SADX 0x04c69a14
+struct NJS_ACTION *action_rhino;
+
 // GLOBAL: SADX 0x04c6a004
 struct NJS_MATERIAL matlist_rhino_jet[1];
+
+// GLOBAL: SADX 0x04c6a334
+struct obj object_rhino_jet[1];
 
 // GLOBAL: SADX 0x04c6a464
 struct NJS_ARGB default_argb;
@@ -5628,13 +5658,13 @@ int DAT_05eded7c;
 int DAT_05eded80;
 
 // GLOBAL: SADX 0x05eded84
-int DAT_05eded84;
+float DAT_05eded84;
 
 // GLOBAL: SADX 0x05eded88
-int DAT_05eded88;
+float DAT_05eded88;
 
 // GLOBAL: SADX 0x05eded8c
-int DAT_05eded8c;
+float DAT_05eded8c;
 
 // GLOBAL: SADX 0x05edeec8
 float DAT_05edeec8;

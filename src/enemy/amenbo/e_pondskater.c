@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_008d63e0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_TEXLIST texlist_e_amenbo;
 void FUN_008d62e0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d6360(struct taskwk *param_1, struct enemywk *param_2);
@@ -9,6 +10,11 @@ void FUN_008d6640(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d68e0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d69e0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_ACTION action_walk_ene_s_amb_root[1];
+
+// STUB: SADX 0x008d6040
+void FUN_008d6040(struct NJS_POINT3 *point)
+{
+}
 
 // FUNCTION: SADX 0x008d60b0
 void FUN_008d60b0(struct taskwk *param_1)
@@ -60,8 +66,58 @@ void FUN_008d6200(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
+// FUNCTION: SADX 0x008d62e0
+void FUN_008d62e0(struct taskwk *param_1, struct enemywk *param_2)
+{
+	switch (param_1->mode)
+	{
+		case 0:
+			if (param_1->wtimer == 0x46)
+			{
+				param_2->aim_angle = param_1->ang.y + 0x2aaa;
+			}
+			param_2->angy_spd = 0x60;
+			break;
+		case 2:
+			if (param_1->wtimer == 0xf)
+			{
+				param_2->aim_angle = param_1->ang.y + 0x2aaa;
+			}
+			param_2->angy_spd = 0x200;
+			break;
+	}
+}
+
+// FUNCTION: SADX 0x008d6360
+void FUN_008d6360(struct taskwk *param_1, struct enemywk *param_2)
+{
+	switch (param_1->mode)
+	{
+	case 0:
+		if (param_1->wtimer == 0x46)
+			param_2->aim_angle = *(long *)((char *)param_1 + 0x18) - 0x2aaa;
+		param_2->angy_spd = 0x60;
+		break;
+	case 2:
+		if (param_1->wtimer == 0xf)
+			param_2->aim_angle = *(long *)((char *)param_1 + 0x18) - 0x2aaa;
+		param_2->angy_spd = 0x200;
+		break;
+	}
+}
+
 // STUB: SADX 0x008d63e0
 void FUN_008d63e0(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x008d6480
+void FUN_008d6480(struct taskwk *param_1, struct enemywk *param_2)
+{
+}
+
+// STUB: SADX 0x008d68e0
+void FUN_008d68e0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 

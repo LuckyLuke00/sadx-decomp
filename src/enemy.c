@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_005e4370(struct enemywk *param_1);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 void FUN_005e4370(struct enemywk *param_1);
 void EnemyBaneDraw(struct taskwk *twp);
@@ -65,6 +66,12 @@ float EnemyDist2FromAim(struct taskwk *twp, struct enemywk *ewp)
 	return local_8;
 }
 
+// STUB: SADX 0x005e3c80
+long EnemyCalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x005e3d10
 long FUN_005e3d10(struct taskwk *param_1, struct enemywk *param_2)
 {
@@ -74,10 +81,15 @@ long FUN_005e3d10(struct taskwk *param_1, struct enemywk *param_2)
 	return local_8;
 }
 
-// STUB: SADX 0x005e3d60
+// FUNCTION: SADX 0x005e3d60
 float EnemyDistFromHome(struct taskwk *twp, struct enemywk *ewp)
 {
-	return (float)0;
+	float local_8;
+
+	local_8 = (ewp->home.x - twp->pos.x) * (ewp->home.x - twp->pos.x) +
+	         (ewp->home.y - twp->pos.y) * (ewp->home.y - twp->pos.y) +
+	         (ewp->home.z - twp->pos.z) * (ewp->home.z - twp->pos.z);
+	return njSqrt(local_8);
 }
 
 // FUNCTION: SADX 0x005e3dd0
@@ -104,7 +116,7 @@ long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp)
 	return local_8;
 }
 
-// STUB: SADX 0x005e3f10
+// FUNCTION: SADX 0x005e3f10
 float EnemyDist2FromPlayer(struct taskwk *twp, int num)
 {
 	return (float)0;
@@ -158,9 +170,36 @@ void FUN_005e4370(struct enemywk *param_1)
 	*(int *)((char *)param_1 + 0x1c) += 0x700;
 }
 
-// STUB: SADX 0x005e43f0
+// FUNCTION: SADX 0x005e43f0
 void EnemyPartsDraw(struct taskwk *twp)
 {
+	struct NJS_POINT3 *local_8g;
+	struct NJS_MODEL *local_cg;
+
+	local_cg = (struct NJS_MODEL *)twp->counter.ptr;
+	local_8g = (struct NJS_POINT3 *)((char *)local_cg + 0x18);
+	if (dsCheckViewV(&twp->pos, 10.0f) == 0)
+	{
+		return;
+	}
+	___njSetTexture((struct NJS_TEXLIST *)twp->value.ptr);
+	njPushMatrix(0);
+	njTranslateV(0, &twp->pos);
+	if (twp->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)twp->ang.z);
+	}
+	if (twp->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)twp->ang.x);
+	}
+	if (twp->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)twp->ang.y);
+	}
+	FUN_0067d830(0, -local_8g->x, -local_8g->y, -local_8g->z);
+	___dsDrawModel(local_cg);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x005e44f0
@@ -243,9 +282,26 @@ void CreateExpSpring(struct taskwk *twp, unsigned char num)
 {
 }
 
-// STUB: SADX 0x005e4cc0
+// FUNCTION: SADX 0x005e4cc0
 void EnemyBuyoScale(struct taskwk *twp, struct enemywk *ewp)
 {
+	float local_8;
+
+	local_8 = twp->scl.y - 1.0f;
+	ewp->buyoscale = (-ewp->buyoscale * 0.2f - local_8 * 0.32f) + ewp->buyoscale;
+	twp->scl.y = twp->scl.y + ewp->buyoscale;
+	if (twp->scl.y > 1.7f)
+	{
+		twp->scl.y = 1.7f;
+	}
+	else
+	{
+		if (twp->scl.y < 0.3f)
+		{
+			twp->scl.y = 0.3f;
+		}
+	}
+	twp->scl.x = 2.0f - twp->scl.y;
 }
 
 // STUB: SADX 0x005e4d70
