@@ -125,7 +125,9 @@ struct CRUSHLIGHT_WK;
 struct csts;
 struct DAT_0044e380_0;
 struct DDlgType;
+struct DEMOPICTUREINFO;
 struct DialogPrmType;
+struct DialogWk;
 struct DlgSndPrmType;
 struct dummy_crushwk;
 struct EFFENEMYBOMBPARAM;
@@ -172,6 +174,8 @@ struct MiMsg;
 struct MiniGameSelWk;
 struct MirrorPlane;
 struct MJOIN_VERTEX;
+struct MLT_DATA;
+struct MLT_SE;
 struct ModeSelPrmType;
 struct MORPHWK;
 struct MOTION_CTRL;
@@ -272,6 +276,7 @@ struct TEXUVINFO;
 struct TEXUVINFO2;
 struct thread;
 struct TitleMenuWk;
+struct TitleNewWk;
 struct TrialActSelWk;
 struct TvSettingWk;
 struct u4s;
@@ -400,6 +405,17 @@ enum ChSbMdEnum : int {
 };
 static_assert(sizeof(ChSbMdEnum) == 4, "sizeof ChSbMdEnum");
 
+enum DiaCmdEnum : int {
+    DIA_CMD_REQWAIT = 0,
+    DIA_CMD_WARPIN = 1,
+    DIA_CMD_KEEP = 2,
+    DIA_CMD_DECIDE = 3,
+    DIA_CMD_WARPOUT = 4,
+    DIA_CMD_REQEND = 5,
+    DIA_CMD_MAX = 6,
+};
+static_assert(sizeof(DiaCmdEnum) == 4, "sizeof DiaCmdEnum");
+
 enum DlgPnlStyleEnum : int {
     DLG_PNLSTYLE_MARU = 0,
     DLG_PNLSTYLE_SIKAKU = 1,
@@ -526,6 +542,15 @@ enum TitleMenuSbMdEnum : int {
     TITLEMENU_SMD_MAX = 7,
 };
 static_assert(sizeof(TitleMenuSbMdEnum) == 4, "sizeof TitleMenuSbMdEnum");
+
+enum TitleNewSbMdEnum : int {
+    TITLENEW_SMD_STAY = 0,
+    TITLENEW_SMD_ALERT = 1,
+    TITLENEW_SMD_STAY_MAIN = 2,
+    TITLENEW_SMD_NWAIT = 3,
+    TITLENEW_SMD_MAX = 4,
+};
+static_assert(sizeof(TitleNewSbMdEnum) == 4, "sizeof TitleNewSbMdEnum");
 
 enum TrialActSbMdEnum : int {
     TRIALACTSEL_SMD_STAY = 0,
@@ -2441,6 +2466,54 @@ static_assert(offsetof(DDlgType, SclX) == 0xc, "DDlgType::SclX");
 static_assert(offsetof(DDlgType, SclY) == 0x10, "DDlgType::SclY");
 static_assert(offsetof(DDlgType, Csr) == 0x14, "DDlgType::Csr");
 
+struct DEMOPICTUREINFO {
+    long flag;
+    long pvrindex;
+    long pvrindex2;
+    float posx;
+    float posy;
+    float posx2;
+    float posy2;
+    float posz;
+    float sclx;
+    float scly;
+    float sclx2;
+    float scly2;
+    long rot;
+    long starttime;
+    long fadeintime;
+    long disptime;
+    long fadeouttime;
+    unsigned long fadeinmaterial;
+    unsigned long dispmaterial;
+    unsigned long fadeoutmaterial;
+    void *phint;
+    long lhint;
+};
+static_assert(sizeof(DEMOPICTUREINFO) == 0x58, "sizeof DEMOPICTUREINFO");
+static_assert(offsetof(DEMOPICTUREINFO, flag) == 0x0, "DEMOPICTUREINFO::flag");
+static_assert(offsetof(DEMOPICTUREINFO, pvrindex) == 0x4, "DEMOPICTUREINFO::pvrindex");
+static_assert(offsetof(DEMOPICTUREINFO, pvrindex2) == 0x8, "DEMOPICTUREINFO::pvrindex2");
+static_assert(offsetof(DEMOPICTUREINFO, posx) == 0xc, "DEMOPICTUREINFO::posx");
+static_assert(offsetof(DEMOPICTUREINFO, posy) == 0x10, "DEMOPICTUREINFO::posy");
+static_assert(offsetof(DEMOPICTUREINFO, posx2) == 0x14, "DEMOPICTUREINFO::posx2");
+static_assert(offsetof(DEMOPICTUREINFO, posy2) == 0x18, "DEMOPICTUREINFO::posy2");
+static_assert(offsetof(DEMOPICTUREINFO, posz) == 0x1c, "DEMOPICTUREINFO::posz");
+static_assert(offsetof(DEMOPICTUREINFO, sclx) == 0x20, "DEMOPICTUREINFO::sclx");
+static_assert(offsetof(DEMOPICTUREINFO, scly) == 0x24, "DEMOPICTUREINFO::scly");
+static_assert(offsetof(DEMOPICTUREINFO, sclx2) == 0x28, "DEMOPICTUREINFO::sclx2");
+static_assert(offsetof(DEMOPICTUREINFO, scly2) == 0x2c, "DEMOPICTUREINFO::scly2");
+static_assert(offsetof(DEMOPICTUREINFO, rot) == 0x30, "DEMOPICTUREINFO::rot");
+static_assert(offsetof(DEMOPICTUREINFO, starttime) == 0x34, "DEMOPICTUREINFO::starttime");
+static_assert(offsetof(DEMOPICTUREINFO, fadeintime) == 0x38, "DEMOPICTUREINFO::fadeintime");
+static_assert(offsetof(DEMOPICTUREINFO, disptime) == 0x3c, "DEMOPICTUREINFO::disptime");
+static_assert(offsetof(DEMOPICTUREINFO, fadeouttime) == 0x40, "DEMOPICTUREINFO::fadeouttime");
+static_assert(offsetof(DEMOPICTUREINFO, fadeinmaterial) == 0x44, "DEMOPICTUREINFO::fadeinmaterial");
+static_assert(offsetof(DEMOPICTUREINFO, dispmaterial) == 0x48, "DEMOPICTUREINFO::dispmaterial");
+static_assert(offsetof(DEMOPICTUREINFO, fadeoutmaterial) == 0x4c, "DEMOPICTUREINFO::fadeoutmaterial");
+static_assert(offsetof(DEMOPICTUREINFO, phint) == 0x50, "DEMOPICTUREINFO::phint");
+static_assert(offsetof(DEMOPICTUREINFO, lhint) == 0x54, "DEMOPICTUREINFO::lhint");
+
 struct DialogPrmType {
     enum DlgPnlStyleEnum DlgStyle;
     void (*EachDrawFnc)(struct DDlgType *);
@@ -2476,6 +2549,56 @@ static_assert(offsetof(DialogPrmType, MagX) == 0x30, "DialogPrmType::MagX");
 static_assert(offsetof(DialogPrmType, MagY) == 0x34, "DialogPrmType::MagY");
 static_assert(offsetof(DialogPrmType, CsrMax) == 0x38, "DialogPrmType::CsrMax");
 static_assert(offsetof(DialogPrmType, CsrCancel) == 0x39, "DialogPrmType::CsrCancel");
+
+struct DialogWk {
+    struct DialogPrmType *Dp;
+    enum DiaCmdEnum DiaCmd;
+    unsigned long BaseCol;
+    float SclX;
+    float SclY;
+    float CsrScale;
+    unsigned long CsrCol;
+    unsigned long NotSelCol;
+    long CsrAniAng;
+    short NoKeyTime;
+    short Cnt;
+    signed char Csr;
+    unsigned char CsrAlpha;
+    signed char DisCsrs[16];
+    long exnum;
+    unsigned long lp;
+};
+static_assert(sizeof(DialogWk) == 0x44, "sizeof DialogWk");
+static_assert(offsetof(DialogWk, Dp) == 0x0, "DialogWk::Dp");
+static_assert(offsetof(DialogWk, DiaCmd) == 0x4, "DialogWk::DiaCmd");
+static_assert(offsetof(DialogWk, BaseCol) == 0x8, "DialogWk::BaseCol");
+static_assert(offsetof(DialogWk, SclX) == 0xc, "DialogWk::SclX");
+static_assert(offsetof(DialogWk, SclY) == 0x10, "DialogWk::SclY");
+static_assert(offsetof(DialogWk, CsrScale) == 0x14, "DialogWk::CsrScale");
+static_assert(offsetof(DialogWk, CsrCol) == 0x18, "DialogWk::CsrCol");
+static_assert(offsetof(DialogWk, NotSelCol) == 0x1c, "DialogWk::NotSelCol");
+static_assert(offsetof(DialogWk, CsrAniAng) == 0x20, "DialogWk::CsrAniAng");
+static_assert(offsetof(DialogWk, NoKeyTime) == 0x24, "DialogWk::NoKeyTime");
+static_assert(offsetof(DialogWk, Cnt) == 0x26, "DialogWk::Cnt");
+static_assert(offsetof(DialogWk, Csr) == 0x28, "DialogWk::Csr");
+static_assert(offsetof(DialogWk, CsrAlpha) == 0x29, "DialogWk::CsrAlpha");
+static_assert(offsetof(DialogWk, DisCsrs) == 0x2a, "DialogWk::DisCsrs");
+static_assert(offsetof(DialogWk, exnum) == 0x3c, "DialogWk::exnum");
+static_assert(offsetof(DialogWk, lp) == 0x40, "DialogWk::lp");
+
+struct DlgSndPrmType {
+    int OpenSnd;
+    int CloseSnd;
+    int MoveSnd;
+    int DecideSnd;
+    int CancelSnd;
+};
+static_assert(sizeof(DlgSndPrmType) == 0x14, "sizeof DlgSndPrmType");
+static_assert(offsetof(DlgSndPrmType, OpenSnd) == 0x0, "DlgSndPrmType::OpenSnd");
+static_assert(offsetof(DlgSndPrmType, CloseSnd) == 0x4, "DlgSndPrmType::CloseSnd");
+static_assert(offsetof(DlgSndPrmType, MoveSnd) == 0x8, "DlgSndPrmType::MoveSnd");
+static_assert(offsetof(DlgSndPrmType, DecideSnd) == 0xc, "DlgSndPrmType::DecideSnd");
+static_assert(offsetof(DlgSndPrmType, CancelSnd) == 0x10, "DlgSndPrmType::CancelSnd");
 
 struct EFFENEMYBOMBPARAM {
     struct obj *pobjroot;
@@ -2944,6 +3067,24 @@ static_assert(offsetof(MJOIN_VERTEX, numVertex) == 0x0, "MJOIN_VERTEX::numVertex
 static_assert(offsetof(MJOIN_VERTEX, srcdepth) == 0x2, "MJOIN_VERTEX::srcdepth");
 static_assert(offsetof(MJOIN_VERTEX, dstdepth) == 0x3, "MJOIN_VERTEX::dstdepth");
 static_assert(offsetof(MJOIN_VERTEX, pnum) == 0x4, "MJOIN_VERTEX::pnum");
+
+struct MLT_DATA {
+    struct MLT_SE *SeTbl;
+    unsigned char *BankNoTbl;
+    int nbBank;
+};
+static_assert(sizeof(MLT_DATA) == 0xc, "sizeof MLT_DATA");
+static_assert(offsetof(MLT_DATA, SeTbl) == 0x0, "MLT_DATA::SeTbl");
+static_assert(offsetof(MLT_DATA, BankNoTbl) == 0x4, "MLT_DATA::BankNoTbl");
+static_assert(offsetof(MLT_DATA, nbBank) == 0x8, "MLT_DATA::nbBank");
+
+struct MLT_SE {
+    unsigned char *SeNoTbl;
+    int nbSe;
+};
+static_assert(sizeof(MLT_SE) == 0x8, "sizeof MLT_SE");
+static_assert(offsetof(MLT_SE, SeNoTbl) == 0x0, "MLT_SE::SeNoTbl");
+static_assert(offsetof(MLT_SE, nbSe) == 0x4, "MLT_SE::nbSe");
 
 struct MOTION_TABLE {
     struct NJS_MOTION *pMotion;
@@ -3682,6 +3823,46 @@ static_assert(offsetof(TitleMenuWk, SubMode) == 0x1c, "TitleMenuWk::SubMode");
 static_assert(offsetof(TitleMenuWk, SelMenu) == 0x20, "TitleMenuWk::SelMenu");
 static_assert(offsetof(TitleMenuWk, Cnt) == 0x24, "TitleMenuWk::Cnt");
 static_assert(offsetof(TitleMenuWk, WakeFlg) == 0x26, "TitleMenuWk::WakeFlg");
+
+struct TitleNewWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum TitleNewSbMdEnum SubMode;
+    struct task *AlertTsk;
+    signed char VMStatAll;
+    long titletimer;
+    unsigned long titleblinktimer;
+    struct task *CamTskPtr;
+    unsigned long wavetimer;
+    unsigned long logotimer;
+    long bBgmEnabled;
+    unsigned long movetimer;
+    float kumotimer;
+    signed char kumoindex;
+};
+static_assert(sizeof(TitleNewWk) == 0x48, "sizeof TitleNewWk");
+static_assert(offsetof(TitleNewWk, Stat) == 0x0, "TitleNewWk::Stat");
+static_assert(offsetof(TitleNewWk, PrevMode) == 0x4, "TitleNewWk::PrevMode");
+static_assert(offsetof(TitleNewWk, NextMode) == 0x8, "TitleNewWk::NextMode");
+static_assert(offsetof(TitleNewWk, BaseZ) == 0xc, "TitleNewWk::BaseZ");
+static_assert(offsetof(TitleNewWk, T) == 0x10, "TitleNewWk::T");
+static_assert(offsetof(TitleNewWk, BaseCol) == 0x14, "TitleNewWk::BaseCol");
+static_assert(offsetof(TitleNewWk, SubMode) == 0x18, "TitleNewWk::SubMode");
+static_assert(offsetof(TitleNewWk, AlertTsk) == 0x1c, "TitleNewWk::AlertTsk");
+static_assert(offsetof(TitleNewWk, VMStatAll) == 0x20, "TitleNewWk::VMStatAll");
+static_assert(offsetof(TitleNewWk, titletimer) == 0x24, "TitleNewWk::titletimer");
+static_assert(offsetof(TitleNewWk, titleblinktimer) == 0x28, "TitleNewWk::titleblinktimer");
+static_assert(offsetof(TitleNewWk, CamTskPtr) == 0x2c, "TitleNewWk::CamTskPtr");
+static_assert(offsetof(TitleNewWk, wavetimer) == 0x30, "TitleNewWk::wavetimer");
+static_assert(offsetof(TitleNewWk, logotimer) == 0x34, "TitleNewWk::logotimer");
+static_assert(offsetof(TitleNewWk, bBgmEnabled) == 0x38, "TitleNewWk::bBgmEnabled");
+static_assert(offsetof(TitleNewWk, movetimer) == 0x3c, "TitleNewWk::movetimer");
+static_assert(offsetof(TitleNewWk, kumotimer) == 0x40, "TitleNewWk::kumotimer");
+static_assert(offsetof(TitleNewWk, kumoindex) == 0x44, "TitleNewWk::kumoindex");
 
 struct TrialActSelWk {
     enum AdvaStatEnum Stat;

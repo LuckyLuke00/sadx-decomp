@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float ScreenRaitoX;
+extern float ScreenRaitoY;
 void FUN_004ba980(void);
 enum AvaCharEnum AvaGetlastPlayer();
 extern void *DAT_05b42528;
@@ -131,7 +133,7 @@ void file_sel_exec(struct task *tp)
 		break;
 	case ADVA_STAT_FADEIN:
 		local_8->BaseCol = GetFadeInColFromT(local_8->T);
-		local_8->T = (float)(*(volatile int *)&DAT_05b9d848 * 0.05) + local_8->T;
+		local_8->T = (float)(DAT_05b9d848 * 0.05) + local_8->T;
 		if (local_8->T >= 1.0)
 		{
 			CloseDialog();
@@ -146,7 +148,7 @@ void file_sel_exec(struct task *tp)
 		break;
 	case ADVA_STAT_FADEOUT:
 		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
-		local_8->T = (float)(*(volatile int *)&DAT_05b9d848 * 0.05) + local_8->T;
+		local_8->T = (float)(DAT_05b9d848 * 0.05) + local_8->T;
 		if (local_8->T > 1.0)
 		{
 			local_8->T = 1.0f;
@@ -221,6 +223,26 @@ void FUN_004b83c0(struct task *param_1)
 	{
 		AlertWindowTask(DAT_05b42520);
 	}
+}
+
+// STUB: SADX 0x004b84d0
+void DrawStartChiten(struct FileSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x004b85b0
+void DrawSaishuuClear(struct FileSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x004b8710
+void DrawPlayTime(struct FileSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x004b8860
+void DrawFileEmblem(struct FileSelWk *wkp)
+{
 }
 
 // FUNCTION: SADX 0x004b9330

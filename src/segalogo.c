@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05cd0f24;
 extern int DAT_05cd0f1c;
 extern int DAT_05cd0f18;
 extern char DAT_0098c030[11];
@@ -40,6 +41,17 @@ void InitDemoSequence()
 	CreateInitData();
 }
 
+// STUB: SADX 0x00573590
+long SegaLogo()
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x005739a0
+void dsInitTitle()
+{
+}
+
 // STUB: SADX 0x00573a50
 int dsReturnCheck()
 {
@@ -68,4 +80,9 @@ void GM_WaitEventDemo_exec(struct task *tp)
 		DemoInputDestructor();
 		DAT_05cd0f2c = 0xffffffff;
 	}
+}
+
+// STUB: SADX 0x00573b50
+void DisplayLogo(unsigned char index)
+{
 }

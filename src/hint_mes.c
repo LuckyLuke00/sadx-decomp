@@ -1,4 +1,12 @@
 #include "decls.h"
+extern void disp_message_get(struct MSGC *msgc_p, char *message_p);
+extern void disp_message_after(struct MSGC *msgc_p);
+void FUN_0056dc40(struct MSGC *param_1);
+void FUN_0056db40(struct MSGC *param_1, long param_2, long param_3);
+static void disp_message_wait(const struct HintMessageString *message_p);
+extern int DAT_05b9d838;
+void FUN_0056dc40(struct MSGC *param_1);
+void FUN_0056db40(struct MSGC *param_1, long param_2, long param_3);
 void *field_message_init(struct HintMessageMemory *data_p, const short *code_p, const void *message_p, enum mesdata_type mes_data_type);
 void disp_message_get(struct MSGC *msgc_p, char *message_p);
 void disp_message_after(struct MSGC *msgc_p);
@@ -276,9 +284,35 @@ void disp_main_messageTime(char * *message)
 {
 }
 
-// STUB: SADX 0x0056e2b0
+// STUB: SADX 0x0056e210
+void field_msg_create_man(void (*thread_func)(void *), void *arg_p, long adx_use)
+{
+}
+
+// FUNCTION: SADX 0x0056e2b0
 void field_msg_wait_message_loop(struct task *task_p)
 {
+	struct anywk *local_8g;
+	struct thread *local_cg;
+
+	local_8g = task_p->awp;
+	if ((local_8g->work.ul[3] != 0) && (DAT_05b9d838 == 0))
+	{
+		DAT_05ccde88 = 0;
+		local_cg = TH_Create(local_8g->work.ptr[1], local_8g->work.ptr[2], 0);
+		TH_SetDest(local_cg, field_msg_thread_end);
+		DestroyTask(task_p);
+	}
+	if (DAT_05ccde78 == 0)
+	{
+		if (local_8g->work.ptr[0] != 0)
+		{
+			DAT_05ccde24 = (int)local_8g->work.ptr[0];
+		}
+		DAT_05ccde20 = (int)local_8g->work.ptr[4];
+		DAT_05ccde78 = 1;
+		local_8g->work.ul[3] = 1;
+	}
 }
 
 // FUNCTION: SADX 0x0056e360

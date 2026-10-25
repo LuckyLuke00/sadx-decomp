@@ -1,4 +1,8 @@
 #include "decls.h"
+void FUN_0061e610(unsigned short param_1);
+extern const unsigned short PlayerNoTbl[7];
+void SetCharMdlsLocOut(struct CharMdlWk *wkp);
+void FUN_0061e200(struct task *param_1);
 void FUN_0061e5b0(struct task *param_1);
 extern int DAT_05b42a80;
 void charmdl_exec(struct task *tp);
@@ -44,9 +48,21 @@ void SetCharMdlsLocOut(struct CharMdlWk *wkp)
 {
 }
 
-// STUB: SADX 0x0061e200
-void FUN_0061e200(struct task *tp)
+// FUNCTION: SADX 0x0061e200
+void FUN_0061e200(struct task *param_1)
 {
+	struct anywk *local_8;
+
+	local_8 = param_1->awp;
+	if ((signed char)local_8->work.sb[0x2c] < 2)
+	{
+		SetCharMdlsLocOut((struct CharMdlWk *)local_8);
+		local_8->work.sb[0x2c]++;
+	}
+	else
+	{
+		charmdl_exec((struct task *)local_8);
+	}
 }
 
 // STUB: SADX 0x0061e250
@@ -80,9 +96,22 @@ void FUN_0061e570(struct task *param_1)
 	FUN_0061e5b0(local_8);
 }
 
-// STUB: SADX 0x0061e5b0
-void FUN_0061e5b0(struct task *task)
+// FUNCTION: SADX 0x0061e5b0
+void FUN_0061e5b0(struct task *param_1)
 {
+	int local_8;
+
+	for (local_8 = 0; local_8 < 7; local_8++)
+	{
+		if (*(struct task **)((char *)param_1 + local_8 * 4) != NULL)
+		{
+			DestroyTask(*(struct task **)((char *)param_1 + local_8 * 4));
+		}
+		if (local_8 != 6)
+		{
+			FUN_0061e610(PlayerNoTbl[local_8]);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x0061e690

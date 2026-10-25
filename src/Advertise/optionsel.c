@@ -1,4 +1,5 @@
 #include "decls.h"
+void DrawOptionSelBg(struct _OptionSelWk *wkp);
 struct _OptionSelWk;
 void option_sel_disp(struct task *tp);
 void FUN_006030c0(struct task *param_1);
@@ -11,9 +12,48 @@ signed char LangToDlgNum(signed char csr)
 	return (signed char)0;
 }
 
-// STUB: SADX 0x00602d10
+// STUB: SADX 0x00602790
+void DrawOptionSelDlgSub2(struct DDlgType *dlgp)
+{
+}
+
+// STUB: SADX 0x006028a0
+void DrawOptionSelDlgSub1(struct DDlgType *dlgp)
+{
+}
+
+// STUB: SADX 0x006029b0
+void DrawIconSndTest(struct _OptionSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00602b40
+void DrawIconMesSetUp(struct _OptionSelWk *wkp)
+{
+}
+
+// FUNCTION: SADX 0x00602d10
 void DrawIconFileSel(struct _OptionSelWk *wkp)
 {
+	int local_8g;
+	unsigned char local_9;
+
+	local_8g = *(int *)((char *)wkp + 0x48) + 0x60;
+	ghSetPvrTexMaterial(0xffffffff);
+	___njSetTexture(&texlist_ava_option);
+	switch (*(char *)((char *)wkp + 0x44))
+	{
+		case 0:
+			local_9 = 0;
+			break;
+		case 1:
+			local_9 = 1;
+			break;
+		default:
+			local_9 = 2;
+			break;
+	}
+	ghDrawPvrTexture(local_9 + 0x2c, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // STUB: SADX 0x00602dd0
@@ -106,4 +146,14 @@ void option_sel_disp(struct task *tp)
 	DrawSkyBg(*(float *)((char *)local_8 + 0xc) + -4.0);
 	DrawOptionSelBg(local_8);
 	DispOptionSelCsr(local_8);
+}
+
+// STUB: SADX 0x00604340
+void DispOptionSelCsr(struct _OptionSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00604500
+void DrawOptionSelBg(struct _OptionSelWk *wkp)
+{
 }

@@ -1,4 +1,6 @@
 #include "decls.h"
+int local_8g;
+int local_cg;
 static void title_menu_disp(struct task *tp);
 static void title_menu_exec(struct task *tp);
 extern struct task *DAT_05edd77c;

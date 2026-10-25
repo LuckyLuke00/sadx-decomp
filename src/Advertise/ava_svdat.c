@@ -1,4 +1,7 @@
 #include "decls.h"
+struct SAVE_DATA *GetSDp();
+extern int DAT_05cccef4[7];
+extern unsigned char DAT_05cd14ed;
 extern char DAT_05ccca18;
 
 // FUNCTION: SADX 0x005a4170
@@ -60,9 +63,16 @@ signed char AvaGetTextSettei()
 	return (signed char)0;
 }
 
-// STUB: SADX 0x005a42f0
+// FUNCTION: SADX 0x005a42f0
 void AvaSetTextSettei(signed char bit)
 {
+	struct SAVE_DATA *local_8;
+	local_8 = GetSDp();
+	bit++;
+	bit = (signed char)(bit & 7);
+	bit = (signed char)(bit << 4);
+	*(char *)((char *)local_8 + 0x251) &= (char)0x8f;
+	*(char *)((char *)local_8 + 0x251) |= bit;
 }
 
 // STUB: SADX 0x005a4350
@@ -105,6 +115,27 @@ long AvaGetPlayTime()
 	return local_cg;
 }
 
+// FUNCTION: SADX 0x005a4560
+long AvaGetTrialBestScore(enum AvaCharEnum chnum, unsigned char stg)
+{
+	struct SAVE_DATA *local_8g;
+	int local_cj;
+	long local_10;
+
+	local_8g = GetSDp();
+	if (DAT_05cd14ed == 6)
+	{
+		local_10 = DAT_05cccef4[stg];
+	}
+	else
+	{
+		local_cj = serch_stg_from_stgactprm(stg, chnum);
+		local_cj = FUN_005a4640(chnum) + local_cj;
+		local_10 = *(int *)((char *)local_8g + 8 + local_cj * 4);
+	}
+	return local_10;
+}
+
 // STUB: SADX 0x005a45d0
 unsigned char serch_stg_from_stgactprm(unsigned char stg, enum AvaCharEnum chnum)
 {
@@ -117,10 +148,17 @@ int FUN_005a4640(int param_1)
 	return (int)0;
 }
 
-// STUB: SADX 0x005a46d0
+// FUNCTION: SADX 0x005a46d0
 long AvaGetTrialWeight(unsigned char stg)
 {
-	return (long)0;
+	struct SAVE_DATA *local_8g;
+	int local_cj;
+	int local_10;
+
+	local_8g = GetSDp();
+	local_cj = serch_stg_from_stgactprm(stg, AVA_BIG);
+	local_10 = *(short *)((char *)local_8g + 0xdc + local_cj * 6) * 10;
+	return local_10;
 }
 
 // STUB: SADX 0x005a4720

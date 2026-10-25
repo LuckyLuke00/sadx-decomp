@@ -1,13 +1,130 @@
 #include "decls.h"
+extern int DAT_05cd14d4;
+extern int DAT_05cda0d8;
+extern int DAT_05cda0dc;
+extern int DAT_05cda0e8;
+extern int DAT_05cda108;
+extern int DAT_05cda10c;
+extern int DAT_05cda110;
+extern int DAT_05cda170;
+extern unsigned char DAT_05cda0c5;
+extern unsigned char DAT_05cda0c7;
+extern float _nj_unit_matrix_[16];
+extern struct NJS_TEXLIST texlist_title;
+extern struct NJS_POINT3 DAT_05cda0cc;
+void dsInitTitle();
+void InitMemory();
+void InitTask();
+void ADX_Close();
+void dsSetFade(int fade_lev);
+void ___njSetBackColor(unsigned long c0, unsigned long c1, unsigned long c2);
+void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo);
+void dsLoadStageSound();
+void njPushMatrix(float *);
+void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
+void njRotateY(float *, unsigned short);
+void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
+void njPopMatrix(int param_1);
+extern int DAT_05b92eb8;
+extern int DAT_05cda0ec;
+int dsPlay_oneshot(int tone, int id, int pri, int volofs);
+extern unsigned char DAT_05cda0c4;
 extern void njPrintColor(unsigned long);
 extern void njPrintC(int, char const *);
 extern int DAT_05cda0c8;
 extern int DAT_05cda0e4;
 
+// STUB: SADX 0x00599aa0
+void InitTitle()
+{
+	struct NJS_POINT3 u;
+
+	dsInitTitle();
+	DAT_05cda10c = 0;
+	DAT_05cd14d4 = 1;
+	DAT_05cda0e8 = 1;
+	InitMemory();
+	InitTask();
+	ADX_Close();
+	DAT_05cda0dc = 0;
+	DAT_05cda110 = 0;
+	DAT_05cda108 = 1;
+	DAT_05cda0d8 = 0;
+	dsSetFade(0);
+	___njSetBackColor(0xff000000, 0xff000000, 0xff000000);
+	texLoadTexturePvmFile("TITLE", &texlist_title);
+	DAT_05cda0c5 = 0;
+	DAT_05cda0c4 = 0;
+	DAT_05cda0c7 = 0;
+	DAT_05cda0ec = 0;
+	DAT_05cda170 = 0;
+	dsLoadStageSound();
+	u.x = -6613.85986328125f;
+	u.y = -10572.419921875f;
+	u.z = -1697.969970703125f;
+	njPushMatrix(_nj_unit_matrix_);
+	FUN_0067d830(0, -1482.6300048828125f, -4582.89013671875f, 5921.56005859375f);
+	if (1)
+	{
+		njRotateY(0, 0xce75);
+	}
+	njCalcPoint(0, &u, &DAT_05cda0cc);
+	njPopMatrix(1);
+}
+
+// STUB: SADX 0x0059a560
+void DisplayTitle()
+{
+}
+
+// STUB: SADX 0x0059a620
+void DisplaySelectingCharacter()
+{
+}
+
+// STUB: SADX 0x0059a7d0
+void DisplayHint1()
+{
+}
+
+// STUB: SADX 0x0059a8a0
+void DisplayHint2()
+{
+}
+
 // FUNCTION: SADX 0x0059abe0
 void EndDisplayPress(struct task *tp)
 {
 	late_ReleaseTexture(&texlist_pressstart);
+}
+
+// FUNCTION: SADX 0x0059ac00
+void dsChrCursorMove()
+{
+	int local_8;
+
+	local_8 = 0;
+	if ((DAT_05b92eb8 & 0x20040) != 0)
+	{
+		local_8 = -1;
+		dsPlay_oneshot(1, 0, 0, 0);
+		DAT_05cda0ec = 0;
+	}
+	if ((DAT_05b92eb8 & 0x10080) != 0)
+	{
+		local_8 = 1;
+		dsPlay_oneshot(1, 0, 0, 0);
+		DAT_05cda0ec = 0;
+	}
+	DAT_05cda0c4 = (unsigned char)((char)DAT_05cda0c4 + local_8);
+	if ((char)DAT_05cda0c4 >= 6)
+	{
+		DAT_05cda0c4 = 0;
+	}
+	else if ((char)DAT_05cda0c4 < 0)
+	{
+		DAT_05cda0c4 = 5;
+	}
 }
 
 // STUB: SADX 0x0059acb0
@@ -22,6 +139,11 @@ void DisplayTitle_ss()
 
 // STUB: SADX 0x0059b370
 void DisplaySelectingCharacter_ss()
+{
+}
+
+// STUB: SADX 0x0059b440
+void DisplaySelectingStage_ss()
 {
 }
 
@@ -58,15 +180,46 @@ void dsSetFade(int fade_lev)
 	DAT_05cda0e4 = fade_lev;
 }
 
-// STUB: SADX 0x0059b6c0
+// FUNCTION: SADX 0x0059b6c0
 int FUN_0059b6c0(int param_1)
 {
-	return (int)0;
+	DAT_05cda0e4 += param_1;
+
+	if (param_1 < 0)
+	{
+		if (DAT_05cda0e4 < 1)
+		{
+			DAT_05cda0e4 = 1;
+			return -1;
+		}
+	}
+	else
+	{
+		if (DAT_05cda0e4 >= 0xff)
+		{
+			DAT_05cda0e4 = 0xff;
+			return 1;
+		}
+	}
+
+	return 0;
 }
 
-// STUB: SADX 0x0059b720
+// FUNCTION: SADX 0x0059b720
 void dsDispFadeBlack()
 {
+	int local_8g;
+	float local_10;
+	float local_cj;
+	local_8g = DAT_05cda0e4;
+	if (local_8g < 0)
+		local_8g = 0;
+	if (local_8g > 0xff)
+		local_8g = 0xff;
+	local_8g <<= 0x18;
+	local_10 = ScreenRaitoX * 320.0f + 320.0f;
+	local_cj = ScreenRaitoY * 240.0f + 240.0f;
+	late_DrawBoxFill2D(0.0f, 0.0f, local_10, local_cj, -1.0f, (unsigned long)local_8g, 1);
 }
 
 // STUB: SADX 0x0059b7c0

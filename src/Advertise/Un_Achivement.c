@@ -37,3 +37,13 @@ void FUN_005f2070(struct task *param_1)
 {
 	FUN_005f2090(*(float *)((char *)param_1 + 0x10));
 }
+
+// STUB: SADX 0x005f2090
+void FUN_005f2090(float param_1)
+{
+}
+
+// STUB: SADX 0x005f2110
+void FreeAdvaAchivementTask()
+{
+}

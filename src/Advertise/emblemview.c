@@ -1,13 +1,27 @@
 #include "decls.h"
+void FUN_005ff920(struct task *param_1, struct ModeSelPrmType *param_2);
 void FUN_005ff9b0(struct anywk *param_1);
 void FUN_005ff970(struct anywk *param_1);
 void FUN_005ff920(struct task *param_1, struct ModeSelPrmType *param_2);
 extern struct task *DAT_05edd9ac;
 
-// STUB: SADX 0x005ff8b0
+// FUNCTION: SADX 0x005ff8b0
 struct task *SetAdvaEmblemViewTask(struct ModeSelPrmType *prmp)
 {
-	return (struct task *)0;
+	void *local_cg;
+	struct task *local_8g;
+
+	local_8g = CreateElementalTask(0, 4, emblem_view_exec);
+	DAT_05edd9ac = local_8g;
+	if (DAT_05edd9ac)
+	{
+		local_cg = CAlloc(1, 0x3c);
+		local_8g->awp = (struct anywk *)local_cg;
+		FUN_005ff920(local_8g, prmp);
+		local_8g->exec = emblem_view_exec;
+		local_8g->disp = emblem_view_disp;
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x005ff920
@@ -47,6 +61,11 @@ void FUN_005ffba0(struct anywk *param_1)
 	*(unsigned char *)((char *)param_1 + 0x3a) = 0;
 	*(float *)((char *)param_1 + 0x30) = 0.0f;
 	*(unsigned char *)((char *)param_1 + 0x3b) = 0;
+}
+
+// STUB: SADX 0x005ffbe0
+void emblem_view_sub_exec(struct EmblemViewWk *wkp)
+{
 }
 
 // FUNCTION: SADX 0x005ffde0

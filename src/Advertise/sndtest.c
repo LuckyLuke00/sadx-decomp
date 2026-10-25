@@ -1,10 +1,18 @@
 #include "decls.h"
+extern int DAT_05b3ea18;
+extern int DAT_05b3ebbc;
+void FUN_006049a0(int param_1);
 
 // FUNCTION: SADX 0x006047e0
 void FUN_006047e0(int param_1)
 {
 	*(int *)(param_1 + 0x18) = 0;
 	*(int *)(param_1 + 0x38) = 0;
+}
+
+// STUB: SADX 0x00604800
+void snd_test_exec(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x006049a0
@@ -18,6 +26,92 @@ void FUN_006049a0(int param_1)
 	*(char *)(param_1 + 0x35) = 0;
 	*(char *)(param_1 + 0x36) = 0;
 	FUN_006047e0(param_1);
+}
+
+// FUNCTION: SADX 0x006052a0
+void sndeff_csr_up(struct SndTestWk *wkp)
+{
+	switch (wkp->SndEffCsrX)
+	{
+	case 0:
+		if (wkp->RowMlt < 0x21)
+		{
+			IsndStop(0x1f);
+			IsndVolume(-0x7f, 0x1f);
+			wkp->CsrScale = 1.5f;
+			wkp->RowMlt++;
+			wkp->RowBnk = 0;
+			wkp->RowSe = 0;
+			if (DAT_05b3ea18 == 0)
+			{
+				SetBankDir(EBankNumTbl[wkp->RowMlt]);
+			}
+			else
+			{
+				SetBankDir(EBankNumTblE[wkp->RowMlt]);
+			}
+		}
+		break;
+	case 1:
+		if (wkp->RowBnk < MltTbl[wkp->RowMlt]->nbBank - 1)
+		{
+			wkp->CsrScale = 1.5f;
+			wkp->RowBnk++;
+			wkp->RowSe = 0;
+		}
+		break;
+	case 2:
+		if (wkp->RowSe < MltTbl[wkp->RowMlt]->SeTbl[wkp->RowBnk].nbSe - 1)
+		{
+			wkp->CsrScale = 1.5f;
+			wkp->RowSe++;
+		}
+		break;
+	}
+	wkp->SndEffCsrY = 0;
+}
+
+// FUNCTION: SADX 0x006053f0
+void sndeff_csr_down(struct SndTestWk *wkp)
+{
+	switch (wkp->SndEffCsrX)
+	{
+	case 0:
+		if (wkp->RowMlt > 0)
+		{
+			IsndStop(0x1f);
+			IsndVolume(-0x7f, 0x1f);
+			wkp->CsrScale = 1.5f;
+			wkp->RowMlt--;
+			wkp->RowBnk = 0;
+			wkp->RowSe = 0;
+			if (DAT_05b3ebbc == 0)
+			{
+				SetBankDir(EBankNumTbl[wkp->RowMlt]);
+			}
+			else
+			{
+				SetBankDir(EBankNumTblE[wkp->RowMlt]);
+			}
+		}
+		break;
+	case 1:
+		if (wkp->RowBnk > 0)
+		{
+			wkp->CsrScale = 1.5f;
+			wkp->RowBnk--;
+			wkp->RowSe = 0;
+		}
+		break;
+	case 2:
+		if (wkp->RowSe > 0)
+		{
+			wkp->CsrScale = 1.5f;
+			wkp->RowSe--;
+		}
+		break;
+	}
+	wkp->SndEffCsrY = 1;
 }
 
 // FUNCTION: SADX 0x00605500
@@ -57,6 +151,11 @@ void FUN_00605830(unsigned long c0, unsigned long c1, float avg)
 {
 }
 
+// STUB: SADX 0x006058a0
+void DrawSndTestSubMenuBg(struct SndTestWk *wkp)
+{
+}
+
 // FUNCTION: SADX 0x00605aa0
 void FUN_00605aa0(unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4, float param_5)
 {
@@ -65,7 +164,23 @@ void FUN_00605aa0(unsigned long param_1, unsigned long param_2, unsigned long pa
 	ghSetPvrTexVertexColor(param_1, param_2, param_3, param_4);
 }
 
-// STUB: SADX 0x00606240
+// FUNCTION: SADX 0x00605db0
+void draw_sndeff_arrow(unsigned long colu, unsigned long cold, int udflg, float x, float y, float z, float mag)
+{
+	int local_8 = (udflg != 0 ? 0x40000000 : 0);
+	___njSetTexture(&texlist_ava_sndtest);
+	ghSetPvrTexMaterial(0xffffffff);
+	ghDrawPvrTexture(local_8 | 0x4000005, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z + -0.30000001192092896, mag, mag);
+	ghDrawPvrTexture(local_8 | 0x4000004, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z, mag, mag);
+	ghSetPvrTexVertexColor(colu, cold, colu, cold);
+	ghDrawPvrTexture(local_8 | 0x4000003, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z + -0.6000000238418579, mag, mag);
+}
+
+// FUNCTION: SADX 0x00606240
 void DrawSndTestBg(struct SndTestWk *wkp)
 {
+	___njSetTexture(&texlist_ava_sndtest);
+	ghSetPvrTexMaterial(-1);
+	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoY * 32.0f, wkp->BaseZ + -8.0f, ScreenRaitoX * 565.0f, ScreenRaitoY * 42.0f);
+	ghDrawPvrTexture(0xc, ScreenRaitoX * 32.0f, ScreenRaitoY * 40.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
 }

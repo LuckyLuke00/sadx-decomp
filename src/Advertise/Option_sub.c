@@ -16,6 +16,11 @@ int DisplayControl()
 	return (int)0;
 }
 
+// STUB: SADX 0x005eba60
+void DestroyControl()
+{
+}
+
 // STUB: SADX 0x005ebb90
 int DisplayStaff()
 {
@@ -64,5 +69,10 @@ void FUN_005f0b00(struct task *param_1)
 
 // STUB: SADX 0x005f0b20
 static void DisplayTitleNew(float basez)
+{
+}
+
+// STUB: SADX 0x005f0ee0
+void FreeAdvaOptionMenuTask()
 {
 }

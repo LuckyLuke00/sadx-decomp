@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00607cc0(int param_1);
 extern void FUN_00607cc0(int param_1);
 extern int FUN_00607f80();
 extern int FUN_00607f90(enum AvaCharEnum param_1);
@@ -25,6 +26,12 @@ struct task *SetAdvaCharSelTask(struct ModeSelPrmType *prmp)
 		local_8g->disp = char_sel_disp;
 	}
 	return local_8g;
+}
+
+// STUB: SADX 0x00607c50
+struct task *FUN_00607c50(struct ModeSelPrmType *param_1)
+{
+	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x00607cc0

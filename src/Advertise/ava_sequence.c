@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_0059d6b0(struct task *param_1);
+void FUN_0059d6b0(struct task *param_1);
 extern void (*DAT_02618a68[1])(void);
 extern int DAT_05b3e350;
 void FUN_0059da10(int param_1);
@@ -8,7 +10,26 @@ void FUN_0059d6b0(struct task *param_1);
 // STUB: SADX 0x0059d4b0
 struct task *SetAdvaSequenceTask(struct SeqPrmType *prmp)
 {
-	return (struct task *)0;
+	struct task *local_8g;
+	struct anywk *local_cg;
+
+	if (DAT_05cda18c != 0)
+	{
+		while (1)
+		{
+		}
+	}
+	local_8g = CreateElementalTask(0, 3, sequence_exec);
+	DAT_05cda18c = local_8g;
+	if (DAT_05cda18c != 0)
+	{
+		local_cg = (struct anywk *)CAlloc(1, 0x24);
+		local_8g->awp = local_cg;
+		sequence_init(local_8g, prmp);
+		local_8g->exec = sequence_exec;
+		local_8g->dest = sequence_end;
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x0059d650
@@ -87,7 +108,12 @@ void CharSelAdvaModeProcedure(enum AdvaModeEnum nextnext)
 	CmnAdvaModeProcedure(ADVA_MODE_CHAR_SEL);
 }
 
-// STUB: SADX 0x0059dad0
+// FUNCTION: SADX 0x0059dad0
 void CmnAdvaModeProcedure(enum AdvaModeEnum mode)
 {
+	struct anywk *local_8;
+	local_8 = DAT_05cda18c->awp;
+	EndAdvaBGM();
+	*(char *)((char *)local_8 + 0x1e) = 1;
+	*(int *)((char *)local_8 + 0x18) = (int)mode;
 }
