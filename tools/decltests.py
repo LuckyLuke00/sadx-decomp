@@ -56,6 +56,29 @@ def check_without_static() -> list[str]:
     return failures
 
 
+def check_kept_alive() -> list[str]:
+    """A static definition that nothing else in the file names gets a global that holds its address, when its name
+    is in SHARED or SHARED is None. Its own body, its file-scope declarations and comments do not count as naming it.
+    Any other file stays as it was."""
+    keep = "\n\nvoid *llm_keep_00401000 = (void *)Foo;\n"
+    foo = [ANN, "static void Foo(void)", "{", "}"]
+    cases = [(foo, None, keep), (foo, {"Foo"}, keep), (foo, {"Bar"}, ""),
+             ([ANN, "void Foo(void)", "{", "}"], None, ""),
+             (["static void Foo(void);", "// Foo is set up here", *foo], None, keep),
+             ([ANN, "static void Foo(void)", "{", "    Foo();", "}"], None, keep),
+             ([*foo, "", "// FUNCTION: SADX 0x00401010", "void Bar(void)", "{", "    Foo();", "}"], None, ""),
+             ([*foo, "", "void (*hook)(void) = Foo;"], None, ""),
+             (["// FUNCTION: SADX 0x00401010", "static void Bar(void)", "{", "}"], None, "")]
+    failures = []
+    for lines, shared, wanted in cases:
+        text = "\n".join(lines) + "\n"
+        expected = text.rstrip("\n") + wanted if wanted else text
+        found = llm.kept_alive(text, 0x00401000, shared)
+        if found != expected:
+            failures.append(f"kept_alive gives {found!r} for {text!r} and {shared}, not {expected!r}")
+    return failures
+
+
 WRAP_BASE = "\n".join(['#include "x.h"', "", "// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "}", ""])
 WRAPPED = [llm.OFF, llm.ON]
 
@@ -490,8 +513,8 @@ def check_names_only() -> list[str]:
 
 def run() -> list[str]:
     """Every check of this module, in order."""
-    checks = [check_signature_index, check_without_static, check_wrapped_stubs, check_definition_block,
-              check_stub_functions_wrap, check_cast_calls, check_one_edit_apart,
+    checks = [check_signature_index, check_without_static, check_kept_alive, check_wrapped_stubs,
+              check_definition_block, check_stub_functions_wrap, check_cast_calls, check_one_edit_apart,
               check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_ftol,
               check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime, check_with_earlier,
               check_without_declarations, check_tool_lines, check_build_errors, check_error_count, check_names_only]
