@@ -68,41 +68,74 @@ tree:
   - ['^src/[^/]+$', engine]  # the other files at the top of src/
 
 # The progress map's sections, in order, each with its areas and the name the map shows for each. Every area
-# above needs a name here. A section's `color` is the emerald before its title: quote it, since YAML
-# reads an unquoted # as a comment.
+# above needs a name here. A section's `color` is the emerald before its title, sampled from the game's emerald
+# textures: quote it, since YAML reads an unquoted # as a comment.
 map:
   - section: Characters
-    color: "#2f6bff"
+    color: "#4e32f3"
     areas: {sonic: Sonic, tails: Tails, knuckles: Knuckles, amy: Amy, big: Big, gamma: E-102 Gamma,
             player: Shared}
   - section: Action Stages
-    color: "#ff3b4a"
+    color: "#f4363d"
     areas: {emerald_coast: Emerald Coast, windy_valley: Windy Valley, casinopolis: Casinopolis, ice_cap: Ice Cap,
             twinkle_park: Twinkle Park, speed_highway: Speed Highway, red_mountain: Red Mountain,
             sky_deck: Sky Deck, lost_world: Lost World, final_egg: Final Egg, hot_shelter: Hot Shelter}
   - section: Adventure Fields
-    color: "#39d353"
+    color: "#17f073"
     areas: {station_square: Station Square, egg_carrier: Egg Carrier, mystic_ruins: Mystic Ruins,
             the_past: The Past}
   - section: Bosses
-    color: "#b266ff"
+    color: "#d95aeb"
     areas: {chaos_0: Chaos 0, chaos_2: Chaos 2, chaos_4: Chaos 4, chaos_6: Chaos 6, perfect_chaos: Perfect Chaos,
             egg_hornet: Egg Hornet, egg_walker: Egg Walker, egg_viper: Egg Viper, zero: ZERO,
             e101_beta: E-101 Beta, e101_mk2: E-101 mkII}
   - section: Mini-games
-    color: "#ffe14d"
+    color: "#d4d92d"
     areas: {sky_chase: Sky Chase, sand_hill: Sand Hill, twinkle_circuit: Twinkle Circuit, other: Hedgehog Hammer,
             game_gear: Game Gear games}
   - section: Chao
-    color: "#7fe8ff"
+    color: "#3cbaea"
     areas: {chao_garden: Chao Gardens, chao_race: Chao Race}
   - section: Story and menus
-    color: "#f2f5fb"
+    color: "#bcb9bb"
     areas: {story: Story, menus: Menus, missions: Missions}
   - section: Shared code
-    color: "#0f9d6b"
+    color: "#0a8842"
     areas: {objects: Objects, enemies: Enemies, engine: Engine, ninja: Ninja graphics, pc_port: PC port}
 
+# Each area's text for its page on the progress site. A blank line starts a new paragraph. An area without a text
+# shows only its counters and lists.
+about:
+  emerald_coast: >-
+    Sonic's first Action Stage: a tropical beach where a killer whale chases Sonic down a wooden pier.
+
+    Fun fact: there's a bridge in this stage that really floats on the waves. The code splits it into 25 pieces, and
+    every piece checks how high the water is under it and tilts to match. The sea and the bridge are both set up by
+    the killer whale's code, so the bridge asks the whale's code for the wave height.
+  windy_valley: >-
+    Sonic's second Action Stage: a green valley full of windmills, where a tornado sucks Sonic up and he runs through
+    the inside of it.
+  casinopolis: >-
+    Station Square's casino, where Sonic gets flung around pinball tables to win rings.
+  ice_cap: >-
+    A frozen mountain in the Mystic Ruins: ice caves first, then a snowboard run with an avalanche right behind you.
+  twinkle_park: >-
+    An amusement park with a roller coaster, a castle full of mirrors and a pool. It's Amy's first stage.
+  speed_highway: >-
+    Station Square's highways and skyscrapers, with a run straight down the side of a building.
+  red_mountain: >-
+    A volcano in the Mystic Ruins, full of lava, cliffs and rope bridges.
+
+    Fun fact: the rope bridges here are the same bridges as in Windy Valley and Ice Cap. All three stages run one
+    shared bridge code, and Red Mountain only tells it which of its four bridge models to use.
+  sky_deck: >-
+    The outside of the Egg Carrier, Eggman's flying fortress, full of cannons and levers that tilt the ship.
+  lost_world: >-
+    An old temple deep in the Mystic Ruins jungle, full of snake statues, traps and dark rooms.
+  final_egg: >-
+    Eggman's secret base in the Mystic Ruins, full of conveyor belts, robot factories and traps.
+  hot_shelter: >-
+    A flooded factory inside the Egg Carrier. Amy, Big and Gamma play it.
 # Areas whose code many places call. A function called only from one of them is often shared code too, so it
 # takes that area only from a nearby caller, and only short gaps between two of its seeds are filled.
 shared: [objects, enemies, menus, story, missions, pc_port, ninja, engine]

@@ -30,7 +30,7 @@ from xml.sax.saxutils import escape
 
 import osutil
 
-from layout import Rect, snap, squarify, star_points, svg_points, text_width, wrap
+from layout import Rect, snap, squarify, svg_points, text_width, wrap
 from scoring import (Bytes, Emblem, Totals, accuracy_text, code_bytes, data_share, earned_count, emblems,
                      entries_by_address, game_functions, is_matched, is_trick, percent, ratio, score, state,
                      stats_line, totals, whole_percent)
@@ -87,6 +87,7 @@ FONT = "Segoe UI,Helvetica,Arial,sans-serif"
 TITLE = 22  # the strip above a section's blocks that holds its name
 TITLE_SIZE = 13
 GEM_WIDTH = 12  # gem() draws a gem this wide
+GEM_HEIGHT = 10  # and this high
 GEM = GEM_WIDTH + 4  # the room a section's gem takes before its title
 NAME_SIZE = 12
 NAME_LINE_HEIGHT = 15
@@ -418,24 +419,23 @@ def ring(x: float, y: float, theme: Theme) -> str:
     return f'<circle cx="{x:g}" cy="{y:g}" r="5" fill="none" stroke="{theme.done}" stroke-width="2.5"/>'
 
 
-def gem(x: float, y: float, color: str, theme: Theme) -> list[str]:
-    """A cut gem 12 px wide centred on (x, y), with a light top facet and a thin edge, so a pale gem shows on a light
-    background too."""
-    outline = [(x - 3, y - 5), (x + 3, y - 5), (x + 6, y - 1.5), (x, y + 5.5), (x - 6, y - 1.5)]
-    facet = [(x - 3, y - 5), (x + 3, y - 5), (x + 1.5, y - 1.5), (x - 1.5, y - 1.5)]
-    return [f'<polygon points="{svg_points(outline)}" fill="{color}" stroke="{theme.muted}" stroke-width="0.75" '
-            'stroke-linejoin="round"/>',
-            f'<polygon points="{svg_points(facet)}" fill="#ffffff" fill-opacity="0.45"/>']
-
-
-def emblem(x: float, y: float, earned: bool, theme: Theme) -> str:
-    """An emblem 14 px wide centred on (x, y): a disc with a star cut out. Earned, it is solid gold. Not earned yet,
-    it is a grey outline."""
-    disc = f"M{x - 7:g},{y:g}a7,7 0 1,0 14,0a7,7 0 1,0 -14,0Z"
-    star = f"M{svg_points(star_points(x, y, 4.5, 1.9))}Z"
-    paint = (f'fill="{theme.done}" fill-rule="evenodd"' if earned
-             else f'fill="none" stroke="{theme.muted}" stroke-width="1.2"')
-    return f'<path d="{disc}{star}" {paint}/>'
+def gem(x: float, y: float, color: str, edge: str) -> list[str]:
+    """The game's Chaos Emerald from the side, centred on (x, y): a flat top, upper facets that bend out to the widest
+    ring, then a long point. Light upper facets and a dark right side show the cut, and a thin edge in EDGE shows a pale
+    gem on a light background too."""
+    top, point = y - GEM_HEIGHT / 2, y + GEM_HEIGHT / 2
+    bend, ring = top + 1.5, top + 3.1
+    upper = [(x - 3.2, top), (x + 3.2, top), (x + 4.9, bend), (x + 6, ring), (x - 6, ring), (x - 4.9, bend)]
+    outline = upper[:4] + [(x, point)] + upper[4:]
+    facets = [(upper, "#ffffff", 0.4),
+              ([(x - 3.2, top), (x + 3.2, top), (x, ring)], "#ffffff", 0.35),
+              ([(x - 6, ring), (x - 2.2, ring), (x, point)], "#ffffff", 0.15),
+              ([(x + 2.2, ring), (x + 6, ring), (x, point)], "#000000", 0.25)]
+    return ([f'<polygon points="{svg_points(outline)}" fill="{color}"/>']
+            + [f'<polygon points="{svg_points(corners)}" fill="{fill}" fill-opacity="{opacity}"/>'
+               for corners, fill, opacity in facets]
+            + [f'<polygon points="{svg_points(outline)}" fill="none" stroke="{edge}" stroke-width="0.75" '
+               'stroke-linejoin="round"/>'])
 
 
 def section_title(section: Section, outer: Rect, entries: dict[int, dict], theme: Theme) -> list[str]:
@@ -443,7 +443,7 @@ def section_title(section: Section, outer: Rect, entries: dict[int, dict], theme
     cells = [address for block in section.blocks for address in block.cells]
     share = whole_percent(done_count(cells, entries), len(cells))
     x, baseline = outer.x + SECTION_GAP, outer.y + TITLE - 7
-    parts = gem(x + GEM_WIDTH / 2, baseline - 4.5, section.color, theme) if section.color else []
+    parts = gem(x + GEM_WIDTH / 2, baseline - 4.5, section.color, theme.muted) if section.color else []
     parts.append(f'<text x="{x + title_indent(section)}" y="{baseline}" font-family="{FONT}" '
                  f'font-size="{TITLE_SIZE}" font-weight="600" fill="{theme.text}">{escape(section.name)} '
                  f'<tspan font-weight="400" fill="{theme.muted}">{share}</tspan></text>')
@@ -575,11 +575,11 @@ def card_bar(code: Bytes, theme: Theme) -> list[str]:
     return parts
 
 
-def card_figures(stats: Totals, found: list[Emblem], data: tuple[int, int], theme: Theme) -> list[str]:
-    """The figures under the bar, side by side: the game functions done, the emblems earned of FOUND, the DATA share
-    (matched, all) and the accuracy."""
+def card_figures(stats: Totals, areas: list[Emblem], data: tuple[int, int], theme: Theme) -> list[str]:
+    """The figures under the bar, side by side: the game functions done, the AREAS complete, the DATA share (matched,
+    all) and the accuracy."""
     figures = [(f"{stats.matched:,} of {stats.game_total:,}", "game functions done"),
-               (f"{earned_count(found):,} of {len(found):,}", "emblems"),
+               (f"{earned_count(areas):,} of {len(areas):,}", "areas complete"),
                (percent(*data), "initialized data matched"), (accuracy_text(stats), "accuracy")]
     parts = []
     column = (WIDTH - 2 * MARGIN) / len(figures)
@@ -592,23 +592,32 @@ def card_figures(stats: Totals, found: list[Emblem], data: tuple[int, int], them
     return parts
 
 
-def recent_gain(history: list[dict]) -> tuple[int, str]:
-    """The functions done since the last history row a week or more before the newest, and "this week". A history
-    younger than a week counts from its oldest row instead, and the label says since when. It counts from the newest
-    row's date, not from today, so the card depends only on the history."""
+def code_share(row: dict) -> float:
+    """The share of the game's code bytes matched in a history row."""
+    return ratio(int(row["matched_bytes"]), int(row["game_bytes"]))
+
+
+def recent_gain(history: list[dict]) -> tuple[float, str]:
+    """The gain in the share of the game's code matched since the last history row a week or more before the newest,
+    and "this week". A history younger than a week counts from its oldest row instead, and the label says since when.
+    It counts from the newest row's date, not from today, so the card depends only on the history."""
     newest = date.fromisoformat(history[-1]["date"])
     before = [row for row in history if date.fromisoformat(row["date"]) <= newest - timedelta(days=7)]
     if before:
-        return int(history[-1]["matched"]) - int(before[-1]["matched"]), "this week"
-    return int(history[-1]["matched"]) - int(history[0]["matched"]), f"since {history[0]['date']}"
+        return code_share(history[-1]) - code_share(before[-1]), "this week"
+    return code_share(history[-1]) - code_share(history[0]), f"since {history[0]['date']}"
 
 
-def render_card(stats: Totals, code: Bytes, found: list[Emblem], data: tuple[int, int], history: list[dict],
+def gain_text(history: list[dict]) -> str:
+    gain, since = recent_gain(history)
+    return f"{gain:+.2%} of the code {since}"
+
+
+def render_card(stats: Totals, code: Bytes, areas: list[Emblem], data: tuple[int, int], history: list[dict],
                 exe: str, theme: Theme) -> str:
     """The summary card at the top of the README, as wide as the map. Its big number is the share of the game's code
     bytes matched, so a large function weighs more than a small one."""
     height = 168
-    gain, since = recent_gain(history)
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {height}" width="{WIDTH}" height="{height}">',
         f'<title>{escape(stats_line(stats))}</title>',
@@ -620,11 +629,11 @@ def render_card(stats: Totals, code: Bytes, found: list[Emblem], data: tuple[int
         f'{percent(code.matched, code.game)}<tspan dx="10" font-size="13" font-weight="400" '
         f'fill="{theme.muted}">of the game\'s code matched</tspan></text>',
         f'<text x="{WIDTH - MARGIN - 17}" y="76" text-anchor="end" font-family="{FONT}" font-size="13" '
-        f'font-weight="600" fill="{theme.text}">{gain:+,} functions {escape(since)}</text>',
+        f'font-weight="600" fill="{theme.text}">{escape(gain_text(history))}</text>',
         ring(WIDTH - MARGIN - 6, 71.5, theme),  # its right edge lines up with the text above
     ]
     parts += card_bar(code, theme)
-    parts += card_figures(stats, found, data, theme)
+    parts += card_figures(stats, areas, data, theme)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
@@ -753,7 +762,7 @@ def render_history(history: list[dict], theme: Theme) -> str:
     code bytes done is the solid gold line, the functions done the dashed one."""
     decompiled = [ratio(int(row["decompiled"]), int(row["game_total"])) for row in history]
     matched = [ratio(int(row["matched"]), int(row["game_total"])) for row in history]
-    matched_bytes = [ratio(int(row["matched_bytes"]), int(row["game_bytes"])) for row in history]
+    matched_bytes = [code_share(row) for row in history]
     accuracy = [float(row["accuracy"]) / 100 if row["accuracy"] else None for row in history]
     panels = [
         Panel(48, 140, axis_top(max(decompiled + matched + matched_bytes)),
@@ -782,15 +791,15 @@ def load_areas(summary: dict, game: set[int]) -> tuple[dict[int, str], list[tupl
     return areas.load(game_functions(summary, game))
 
 
-def area_emblems(summary: dict, code: Bytes, area_of: dict[int, str],
-                 sections: list[tuple[str, str | None, dict[str, str]]], sizes: dict[int, int]) -> list[Emblem]:
-    """The emblems for the game's code, then one for each area that has game functions. The unsorted section, which
-    load_areas() gives last, earns none: its functions move out as the areas get sorted."""
+def area_emblems(summary: dict, area_of: dict[int, str], sections: list[tuple[str, str | None, dict[str, str]]],
+                 sizes: dict[int, int]) -> list[Emblem]:
+    """One emblem for each area that has game functions, named by the area. The unsorted section, which load_areas()
+    gives last, earns none: its functions move out as the areas get sorted."""
     members = collections.defaultdict(set)
     for address, area in area_of.items():
         members[area].add(address)
-    named = [(name, members[area]) for _, _, names in sections[:-1] for area, name in names.items() if members[area]]
-    return emblems(code, [(name, code_bytes(summary, cells, sizes)) for name, cells in named])
+    named = [(area, members[area]) for _, _, names in sections[:-1] for area in names if members[area]]
+    return emblems([(area, code_bytes(summary, cells, sizes)) for area, cells in named])
 
 
 def render_all() -> dict[Path, str]:
@@ -803,12 +812,12 @@ def render_all() -> dict[Path, str]:
     history = history_rows(committed_snapshots() + [Snapshot(date.today().isoformat(), summary, game, sizes)])
     stats = totals(summary, game)
     code = code_bytes(summary, game, sizes)
-    found = area_emblems(summary, code, area_of, sections, sizes)
+    areas = area_emblems(summary, area_of, sections, sizes)
     shown = map_sections(area_of, sections)
     files = {HISTORY_CSV: render_history_csv(history)}
     for suffix, theme in THEMES.items():
         files[PROGRESS / f"map{suffix}.svg"] = render_map(summary, stats, shown, theme)
-        files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, code, found, data_share(summary), history,
+        files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, code, areas, data_share(summary), history,
                                                             summary["exe"], theme)
         files[PROGRESS / f"history{suffix}.svg"] = render_history(history, theme)
     return files

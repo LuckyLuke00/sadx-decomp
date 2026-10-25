@@ -153,6 +153,14 @@ def load(game: set[int]) -> tuple[dict[int, str], list[tuple[str, str | None, di
     return found, sections
 
 
+def about() -> dict[str, str]:
+    """Each area's text for its page on the progress site, from the `about` map of data/areas.yml. Without the file
+    or the map there are none."""
+    if not RULES.exists():
+        return {}
+    return project.read_yml(RULES).get("about", {})
+
+
 def miscolored(rules: dict) -> list[str]:
     """The sections of the `map` list whose `color` is not a quoted colour such as "#2ecc71". Unquoted, the # starts
     a YAML comment, so the colour reads as null."""

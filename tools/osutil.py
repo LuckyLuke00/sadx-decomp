@@ -1,6 +1,6 @@
-"""Helpers that know nothing about the decomp: run a command, catch a step's output, hash a file, copy and delete
-folders, read counts from the command line, tell how alike two counts are, count differing bytes, escape a
-Markdown table cell, tell whether a process runs, lock a file.
+"""Helpers that know nothing about the decomp: run a command, catch a step's output, link a git remote, hash a file,
+copy and delete folders, read counts from the command line, tell how alike two counts are, count differing bytes,
+escape a Markdown table cell, tell whether a process runs, lock a file.
 
 Standard library only.
 """
@@ -53,6 +53,16 @@ def git(root: Path, *args: str, stdin: bytes = b"") -> bytes:
     if result.returncode != 0:
         sys.exit(f"git {' '.join(args)} failed: {result.stderr.decode(errors='replace').strip()}")
     return result.stdout
+
+
+def web_url(remote: str) -> str:
+    """The web page of a git remote, https://host/path or git@host:path, without a .git at the end."""
+    if remote.startswith("git@") and ":" in remote:
+        host, path = remote.removeprefix("git@").split(":", 1)
+        remote = f"https://{host}/{path}"
+    if not remote.startswith("https://"):
+        sys.exit(f"can't make a web link from the git remote {remote}")
+    return remote.removesuffix(".git")
 
 
 def write_if_changed(path: Path, text: str) -> None:

@@ -3,10 +3,14 @@
 <rect x="0.5" y="0.5" width="999" height="1410" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">3,551 of 16,524 game functions done (21.49%), accuracy 99.63%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">3,551 of 16,524 game functions done (21.48%), accuracy 99.63%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
-<polygon points="603,1168.5 609,1168.5 612,1172 606,1179 600,1172" fill="#2f6bff" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="603,1168.5 609,1168.5 607.5,1172 604.5,1172" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="602.8,1168.5 609.2,1168.5 610.9,1170 612,1171.6 606,1178.5 600,1171.6 601.1,1170" fill="#4e32f3"/>
+<polygon points="602.8,1168.5 609.2,1168.5 610.9,1170 612,1171.6 600,1171.6 601.1,1170" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="602.8,1168.5 609.2,1168.5 606,1171.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="600,1171.6 603.8,1171.6 606,1178.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="608.2,1171.6 612,1171.6 606,1178.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="602.8,1168.5 609.2,1168.5 610.9,1170 612,1171.6 606,1178.5 600,1171.6 601.1,1170" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="616" y="1178" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Characters <tspan font-weight="400" fill="#8b949e">22%</tspan></text>
 <rect x="686" y="1186" width="122" height="80" rx="3" fill="#21262d" stroke="#30363d"><title>Sonic: 33 of 117 done</title></rect>
 <text x="689" y="1200" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sonic <tspan font-weight="400" fill="#8b949e">28%</tspan></text>
@@ -203,8 +207,12 @@
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x00573e00 GameStageNameModeInit: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x00573e20 GameStageNameMode: 100%</title></rect>
 </g>
-<polygon points="22,69.5 28,69.5 31,73 25,80 19,73" fill="#ff3b4a" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="22,69.5 28,69.5 26.5,73 23.5,73" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="21.8,69.5 28.2,69.5 29.9,71 31,72.6 25,79.5 19,72.6 20.1,71" fill="#f4363d"/>
+<polygon points="21.8,69.5 28.2,69.5 29.9,71 31,72.6 19,72.6 20.1,71" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="21.8,69.5 28.2,69.5 25,72.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="19,72.6 22.8,72.6 25,79.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="27.2,72.6 31,72.6 25,79.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="21.8,69.5 28.2,69.5 29.9,71 31,72.6 25,79.5 19,72.6 20.1,71" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="35" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Action Stages <tspan font-weight="400" fill="#8b949e">12%</tspan></text>
 <rect x="349" y="234" width="181" height="90" rx="3" fill="#21262d" stroke="#30363d"><title>Emerald Coast: 30 of 213 done</title></rect>
 <text x="352" y="248" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Emerald Coast <tspan font-weight="400" fill="#8b949e">14%</tspan></text>
@@ -664,8 +672,12 @@
 <rect x="28" y="91" width="6" height="6" fill="#ffd700"><title>0x008b61f0 CamHot_SetE105: 100%</title></rect>
 <rect x="42" y="91" width="6" height="6" fill="#ffd700"><title>0x008b6340 StartCameraHot_TgtDeath: 100%</title></rect>
 </g>
-<polygon points="603,912.5 609,912.5 612,916 606,923 600,916" fill="#39d353" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="603,912.5 609,912.5 607.5,916 604.5,916" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="602.8,912.5 609.2,912.5 610.9,914 612,915.6 606,922.5 600,915.6 601.1,914" fill="#17f073"/>
+<polygon points="602.8,912.5 609.2,912.5 610.9,914 612,915.6 600,915.6 601.1,914" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="602.8,912.5 609.2,912.5 606,915.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="600,915.6 603.8,915.6 606,922.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="608.2,915.6 612,915.6 606,922.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="602.8,912.5 609.2,912.5 610.9,914 612,915.6 606,922.5 600,915.6 601.1,914" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="616" y="922" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Adventure Fields <tspan font-weight="400" fill="#8b949e">14%</tspan></text>
 <rect x="601" y="930" width="123" height="229" rx="3" fill="#21262d" stroke="#30363d"><title>Station Square: 63 of 421 done</title></rect>
 <text x="604" y="944" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Station Square</text>
@@ -879,8 +891,12 @@
 <rect x="21" y="140" width="6" height="6" fill="#ffd700"><title>0x006c0d90 ObjectPastWell: 100%</title></rect>
 <rect x="14" y="147" width="6" height="6" fill="#ffd700"><title>0x006c1010 ObjectPastSnake: 100%</title></rect>
 </g>
-<polygon points="354,538.5 360,538.5 363,542 357,549 351,542" fill="#b266ff" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="354,538.5 360,538.5 358.5,542 355.5,542" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="353.8,538.5 360.2,538.5 361.9,540 363,541.6 357,548.5 351,541.6 352.1,540" fill="#d95aeb"/>
+<polygon points="353.8,538.5 360.2,538.5 361.9,540 363,541.6 351,541.6 352.1,540" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="353.8,538.5 360.2,538.5 357,541.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="351,541.6 354.8,541.6 357,548.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="359.2,541.6 363,541.6 357,548.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="353.8,538.5 360.2,538.5 361.9,540 363,541.6 357,548.5 351,541.6 352.1,540" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="367" y="548" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Bosses <tspan font-weight="400" fill="#8b949e">20%</tspan></text>
 <rect x="456" y="845" width="115" height="58" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 0: 13 of 62 done</title></rect>
 <text x="459" y="859" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chaos 0 <tspan font-weight="400" fill="#8b949e">20%</tspan></text>
@@ -1197,8 +1213,12 @@
 <rect x="84" y="49" width="6" height="6" fill="#ffd700"><title>0x0070ef40 E101R_BarrierDisp: 100%</title></rect>
 <rect x="0" y="63" width="6" height="6" fill="#ffd700"><title>0x0070fbb0 EnemyE101RMissile_Reset: 100%</title></rect>
 </g>
-<polygon points="22,979.5 28,979.5 31,983 25,990 19,983" fill="#ffe14d" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="22,979.5 28,979.5 26.5,983 23.5,983" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="21.8,979.5 28.2,979.5 29.9,981 31,982.6 25,989.5 19,982.6 20.1,981" fill="#d4d92d"/>
+<polygon points="21.8,979.5 28.2,979.5 29.9,981 31,982.6 19,982.6 20.1,981" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="21.8,979.5 28.2,979.5 25,982.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="19,982.6 22.8,982.6 25,989.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="27.2,982.6 31,982.6 25,989.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="21.8,979.5 28.2,979.5 29.9,981 31,982.6 25,989.5 19,982.6 20.1,981" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="35" y="989" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Mini-games <tspan font-weight="400" fill="#8b949e">21%</tspan></text>
 <rect x="20" y="1228" width="116" height="119" rx="3" fill="#21262d" stroke="#30363d"><title>Sky Chase: 32 of 168 done</title></rect>
 <text x="23" y="1242" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sky Chase <tspan font-weight="400" fill="#8b949e">19%</tspan></text>
@@ -1595,8 +1615,12 @@
 <rect x="70" y="175" width="6" height="6" fill="#ffd700"><title>0x00919d50 bit_5_ixl: 100%</title></rect>
 <rect x="98" y="175" width="6" height="6" fill="#ffd700"><title>0x00919e10 bit_1_iyh: 100%</title></rect>
 </g>
-<polygon points="676,538.5 682,538.5 685,542 679,549 673,542" fill="#7fe8ff" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="676,538.5 682,538.5 680.5,542 677.5,542" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="675.8,538.5 682.2,538.5 683.9,540 685,541.6 679,548.5 673,541.6 674.1,540" fill="#3cbaea"/>
+<polygon points="675.8,538.5 682.2,538.5 683.9,540 685,541.6 673,541.6 674.1,540" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="675.8,538.5 682.2,538.5 679,541.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="673,541.6 676.8,541.6 679,548.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="681.2,541.6 685,541.6 679,548.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="675.8,538.5 682.2,538.5 683.9,540 685,541.6 679,548.5 673,541.6 674.1,540" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="689" y="548" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Chao <tspan font-weight="400" fill="#8b949e">23%</tspan></text>
 <rect x="674" y="556" width="306" height="245" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Gardens: 311 of 1,312 done</title></rect>
 <text x="677" y="570" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Gardens <tspan font-weight="400" fill="#8b949e">23%</tspan></text>
@@ -2049,8 +2073,12 @@
 <rect x="70" y="70" width="6" height="6" fill="#ffd700"><title>0x00717b40 destFrame: 100%</title></rect>
 <rect x="91" y="70" width="6" height="6" fill="#ffd700"><title>0x00717dd0 ObjectAlrEntryButton: 100%</title></rect>
 </g>
-<polygon points="354,912.5 360,912.5 363,916 357,923 351,916" fill="#f2f5fb" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="354,912.5 360,912.5 358.5,916 355.5,916" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="353.8,912.5 360.2,912.5 361.9,914 363,915.6 357,922.5 351,915.6 352.1,914" fill="#bcb9bb"/>
+<polygon points="353.8,912.5 360.2,912.5 361.9,914 363,915.6 351,915.6 352.1,914" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="353.8,912.5 360.2,912.5 357,915.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="351,915.6 354.8,915.6 357,922.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="359.2,915.6 363,915.6 357,922.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="353.8,912.5 360.2,912.5 361.9,914 363,915.6 357,922.5 351,915.6 352.1,914" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="367" y="922" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Story and menus <tspan font-weight="400" fill="#8b949e">32%</tspan></text>
 <rect x="352" y="930" width="241" height="217" rx="3" fill="#21262d" stroke="#30363d"><title>Story: 213 of 830 done</title></rect>
 <text x="355" y="944" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Story <tspan font-weight="400" fill="#8b949e">25%</tspan></text>
@@ -2543,8 +2571,12 @@
 <rect x="21" y="56" width="6" height="6" fill="#ffd700"><title>0x0049d1c0 Destructor(2): 100%</title></rect>
 <rect x="28" y="56" width="6" height="6" fill="#ffd700"><title>0x0049d390 ObjectMiMission_Start: 100%</title></rect>
 </g>
-<polygon points="540,69.5 546,69.5 549,73 543,80 537,73" fill="#0f9d6b" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<polygon points="540,69.5 546,69.5 544.5,73 541.5,73" fill="#ffffff" fill-opacity="0.45"/>
+<polygon points="539.8,69.5 546.2,69.5 547.9,71 549,72.6 543,79.5 537,72.6 538.1,71" fill="#0a8842"/>
+<polygon points="539.8,69.5 546.2,69.5 547.9,71 549,72.6 537,72.6 538.1,71" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="539.8,69.5 546.2,69.5 543,72.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="537,72.6 540.8,72.6 543,79.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="545.2,72.6 549,72.6 543,79.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="539.8,69.5 546.2,69.5 547.9,71 549,72.6 543,79.5 537,72.6 538.1,71" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="553" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Shared code <tspan font-weight="400" fill="#8b949e">42%</tspan></text>
 <rect x="799" y="331" width="181" height="112" rx="3" fill="#21262d" stroke="#30363d"><title>Objects: 25 of 290 done</title></rect>
 <text x="802" y="345" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Objects <tspan font-weight="400" fill="#8b949e">8%</tspan></text>
