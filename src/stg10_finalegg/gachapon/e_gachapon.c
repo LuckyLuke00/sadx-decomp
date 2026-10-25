@@ -32,7 +32,7 @@ void GachaponPartsDisplayer(struct task *tp)
 	___njSetTexture(&texlist_gachapon);
 	njPushMatrix(0);
 	njTranslateV(0, &var2->pos);
-	njRotateZXY(0, (long *)(*(long *)&var2->ang.x), (long *)(*(long *)&var2->ang.y), (long *)(*(long *)&var2->ang.z));
+	njRotateZXY(0, var2->ang.x, var2->ang.y, var2->ang.z);
 	___dsDrawModel((struct NJS_MODEL *)var2->value.l);
 	njPopMatrix(1);
 	SetRegularTexture();

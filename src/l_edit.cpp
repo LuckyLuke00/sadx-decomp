@@ -1,4 +1,13 @@
 #include "decls.h"
+extern char *DAT_025ddba8[1];
+extern char *DAT_025ddbbc[1];
+extern char *DAT_025ddb80[1];
+extern char *DAT_025ddb94[1];
+extern char DAT_025ddbd0[4];
+extern char DAT_025ddbe4[4];
+void DialogJimakuInit();
+void DialogJimakuPut(char *str);
+extern int DAT_05b3ebbc;
 int FUN_00502cd0();
 extern int DAT_05b9d84c;
 extern int DAT_05b9d848;
@@ -10,29 +19,88 @@ extern int DAT_05cc356c;
 extern unsigned char DAT_05cc3570;
 void FUN_00503160();
 
-// STUB: SADX 0x00502ac0
+// FUNCTION: SADX 0x00502ac0
 void DialogJimakuProcSR(struct DDlgType *ddltype)
 {
+	DialogJimakuInit();
+	switch (ddltype->Csr)
+	{
+	case 0:
+		DialogJimakuPut(DAT_025ddb80[DAT_05b3ebbc]);
+		break;
+	case 1:
+		DialogJimakuPut(DAT_025ddb94[DAT_05b3ebbc]);
+		break;
+	}
 }
 
-// STUB: SADX 0x00502b20
+// FUNCTION: SADX 0x00502b20
 void DialogJimakuProcSRC(struct DDlgType *ddltype)
 {
+	DialogJimakuInit();
+	switch (ddltype->Csr)
+	{
+	case 0:
+		DialogJimakuPut(DAT_025ddb80[DAT_05b3ebbc]);
+		break;
+	case 1:
+		DialogJimakuPut(DAT_025ddb94[DAT_05b3ebbc]);
+		break;
+	case 2:
+		DialogJimakuPut(DAT_025ddba8[DAT_05b3ebbc]);
+		break;
+	}
 }
 
-// STUB: SADX 0x00502b90
+// FUNCTION: SADX 0x00502b90
 void DialogJimakuProcSRF(struct DDlgType *ddltype)
 {
+	DialogJimakuInit();
+	switch (ddltype->Csr)
+	{
+	case 0:
+		DialogJimakuPut(DAT_025ddb80[DAT_05b3ebbc]);
+		break;
+	case 1:
+		DialogJimakuPut(DAT_025ddb94[DAT_05b3ebbc]);
+		break;
+	case 2:
+		DialogJimakuPut(DAT_025ddbbc[DAT_05b3ebbc]);
+		break;
+	}
 }
 
 // STUB: SADX 0x00502c00
 void DialogJimakuProcYN(struct DDlgType *ddltype)
 {
+	DialogJimakuInit();
+	switch (ddltype->Csr)
+	{
+	case 0:
+		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbd0)[DAT_05b3ebbc]);
+		break;
+	case 1:
+		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbe4)[DAT_05b3ebbc]);
+		break;
+	}
 }
 
 // STUB: SADX 0x00502c60
 void DialogJimakuProcYNS(struct DDlgType *ddltype)
 {
+	DialogJimakuInit();
+	switch (ddltype->Csr)
+	{
+	case 0:
+		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbd0)[DAT_05b3ebbc]);
+		break;
+	case 1:
+		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbe4)[DAT_05b3ebbc]);
+		break;
+	case 2:
+		DialogJimakuPut(DAT_025ddb94[DAT_05b3ebbc]);
+		break;
+	}
 }
 
 // FUNCTION: SADX 0x00502f00

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct PDS_VIBPARAM *DAT_05cd3014;
 extern int DAT_05cd0f24;
 extern unsigned char gu8Vibration;
 void SetVibTask(unsigned long u32Time);
@@ -33,9 +34,29 @@ void VibShot(long pno, long Time)
 	SetVibTask((unsigned long)Time);
 }
 
-// STUB: SADX 0x00597a80
+// FUNCTION: SADX 0x00597a80
 void SetVibTask(unsigned long u32Time)
 {
+	struct task *local_8 = CreateElementalTask(8, 0, VibTask);
+	if (local_8 == 0)
+	{
+		return;
+	}
+	*(int *)((char *)local_8->awp + 0) = u32Time << 2;
+	DAT_05cd3014 = (struct PDS_VIBPARAM *)MAlloc(8);
+	if (DAT_05cd3014 != 0)
+	{
+		*(char *)((char *)DAT_05cd3014 + 0) = 0;
+		*(char *)((char *)DAT_05cd3014 + 1) = 1;
+		*(char *)((char *)DAT_05cd3014 + 2) = 0xa;
+		*(char *)((char *)DAT_05cd3014 + 3) = 0x32;
+		*(char *)((char *)DAT_05cd3014 + 4) = 0;
+		local_8->fwp = (struct forcewk *)DAT_05cd3014;
+	}
+	else
+	{
+		DestroyTask(local_8);
+	}
 }
 
 // STUB: SADX 0x00597b20

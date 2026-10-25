@@ -50,7 +50,7 @@ void SetEgm1DispMatrix(struct task *tp)
 	njTranslateV((float *)0, &var1->pos);
 	if (GetBossAngMode(tp) != 0)
 	{
-		njRotateZXY(0, (long *)(*(long *)&var1->ang.x), (long *)(*(long *)&var1->ang.y), (long *)(*(long *)&var1->ang.z));
+		njRotateZXY(0, var1->ang.x, var1->ang.y, var1->ang.z);
 	}
 	else
 	{
