@@ -1,4 +1,5 @@
 #include "decls.h"
+void EvBossDispHitPoint(struct __HPPOS *hppos);
 extern int DAT_05edd2d8;
 
 // FUNCTION: SADX 0x005e0d40
@@ -22,6 +23,11 @@ void EventBossCommonDestructor(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x005e0dc0
+void EventBossCommonDisplayer(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005e0e70
 void EventBossSonicDestructor(struct task *tp)
 {
@@ -34,10 +40,19 @@ void EventBossSonicDestructor(struct task *tp)
 	EventBossCommonDestructor(tp);
 }
 
-// STUB: SADX 0x005e1d20
+// FUNCTION: SADX 0x005e1d20
 long CheckPlayer1Alive(struct task *tp)
 {
-	return (long)0;
+	struct anywk *local_cg;
+	struct task *local_8g;
+
+	local_cg = tp->awp;
+	local_8g = *(struct task **)((char *)local_cg + 0x54);
+	if (local_8g == 0)
+		return 0;
+	if (*(char *)((char *)(*(void **)((char *)local_8g + 0x20)) + 1) == 0x32)
+		return 0;
+	return 1;
 }
 
 // FUNCTION: SADX 0x005e1d60
@@ -79,6 +94,11 @@ void FUN_005e1e10(int param_1)
 
 // STUB: SADX 0x005e22b0
 void PlayerBossRingTask(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005e2330
+void SetPosForPlayerBossStage(struct task *tp)
 {
 }
 
@@ -140,6 +160,11 @@ void FreeBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 	}
 }
 
+// STUB: SADX 0x005e2570
+void EvBossMakeCrashBothCollisionedPlayersP(unsigned char pno0, unsigned char pno1, float scalor)
+{
+}
+
 // STUB: SADX 0x005e2660
 float ghUnitVectorXZ(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5)
 {
@@ -152,7 +177,13 @@ long EvBossCheckColliThrough(struct EVBOSS_WORK *bwk)
 	return (long)0;
 }
 
-// STUB: SADX 0x005e27e0
+// FUNCTION: SADX 0x005e27e0
 void EvBossDispHitPoint(struct __HPPOS *hppos)
 {
+	ghInitPvrTexture();
+	___njSetTexture(&texlist_score);
+	FUN_007d21b0((void *)1);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	FUN_00574140(*(int *)((char *)hppos + 0xc), *(float *)((char *)hppos + 0x0) * ScreenRaitoX, *(float *)((char *)hppos + 0x4) * ScreenRaitoY, *(float *)((char *)hppos + 0x8));
 }

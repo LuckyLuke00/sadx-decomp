@@ -1,6 +1,17 @@
 #include "decls.h"
 void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+extern unsigned short DAT_05cc63b6;
+extern unsigned short DAT_05cc63c6;
+extern unsigned short DAT_05cc63d6;
+extern "C" int rand(void);
+void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+extern long action_button;
+void Knuckles_KakeraGamePutRadar0(struct taskwk *twp, long cnt, long level);
+void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 extern int DAT_05cc603c;
 extern int DAT_05cc6040;
@@ -27,6 +38,11 @@ void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	KnucklesChangeWaitingMotion(param_1, param_2, param_3);
 }
 
+// STUB: SADX 0x00528810
+void KnucklesChangeRunningMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x00529090
 void FUN_00529090(int param_1, int param_2, int param_3)
 {
@@ -44,8 +60,53 @@ long FUN_005293e0(char *twp, char *param_2, char *param_3)
 	return (long)0;
 }
 
-// STUB: SADX 0x0052aea0
-long FUN_0052aea0(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+// STUB: SADX 0x00529450
+long KnucklesCheckKickWall(struct taskwk *twp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x0052aea0
+long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
+{
+	long local_8;
+
+	PAdjustHoldingPosition(param_1, param_2, param_3);
+	if (param_3->mj.nframe >= 6.0f)
+	{
+		local_8 = PCheckHoldObject(param_1);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(param_1, param_2))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					param_1->mode = 0x36;
+					return 1;
+				}
+				break;
+			}
+			FUN_00528530(param_1, param_2, param_3);
+		}
+	}
+	return 0;
+}
+
+// STUB: SADX 0x0052af40
+long KnucklesCheckHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0052b080
+long KnucklesCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0052b190
+long KnucklesCheckThrowObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
 }
@@ -56,10 +117,34 @@ long KnucklesCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct p
 	return (long)0;
 }
 
-// STUB: SADX 0x0052bc30
-long FUN_0052bc30(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+// FUNCTION: SADX 0x0052bc30
+long FUN_0052bc30(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
-	return (long)0;
+	if ((PCheckPower(param_1, 0, 0) == 0) && (param_3->spd.x == 0.0f))
+	{
+		if ((param_1->flag & 0x800) != 0)
+		{
+			if ((PCheckHoldObject(param_1) & 0xc00) != 0)
+			{
+				param_1->mode = 0x1e;
+				*(short *)((char *)param_3 + 0x124) = 0x5b;
+			}
+			else
+			{
+				param_1->mode = 0x1d;
+				*(short *)((char *)param_3 + 0x124) = 0x4a;
+			}
+		}
+		else
+		{
+			FUN_00528530(param_1, param_2, param_3);
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0052bcd0
@@ -68,7 +153,7 @@ long FUN_0052bcd0(struct taskwk *twp, int param_2, struct taskwk *param_3)
 	return (long)0;
 }
 
-// STUB: SADX 0x0052bd30
+// FUNCTION: SADX 0x0052bd30
 long KnucklesCheckStartPunch(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
@@ -104,15 +189,30 @@ void FUN_0052c440(int param_1, int param_2, int param_3)
 {
 }
 
+// STUB: SADX 0x0052d120
+long KnuckCheckOnWall(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0052d2d0
+void FUN_0052d2d0(struct task *tp, int param_2)
+{
+}
+
 // STUB: SADX 0x0052dd10
 void KnucklesLaterSE(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0052dd70
+// FUNCTION: SADX 0x0052dd70
 float FUN_0052dd70()
 {
-	return (float)0;
+	int local_8g;
+	float local_cg;
+	local_8g = rand();
+	local_cg = local_8g / 32768.0;
+	return local_cg;
 }
 
 // STUB: SADX 0x0052e6c0
@@ -124,6 +224,12 @@ void KnucklesDirectAheadEnd(struct task *tp)
 long Knuckles_Status(long plnmb)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x0052e890
+struct taskwk *KnucklesGetNearEnemyTWP(struct taskwk *twp)
+{
+	return (struct taskwk *)0;
 }
 
 // STUB: SADX 0x0052ea20
@@ -141,9 +247,25 @@ void Knuckles_KakeraGamePutRadar1(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0052ef10
+void Knuckles_KakeraGamePutRadar1C(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0052f670
+void Knuckles_KakeraGamePutRadar0(struct taskwk *twp, long cnt, long level)
+{
+}
+
 // STUB: SADX 0x0052f7a0
 void Knuckles_KakeraGameFinish(struct task *tp)
 {
+}
+
+// STUB: SADX 0x0052f830
+long Knuckles_KakeraGame_GetNearEmePos(struct NJS_POINT3 *chkpos, struct NJS_POINT3 *emepos, float *emedst)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x0052f9b0

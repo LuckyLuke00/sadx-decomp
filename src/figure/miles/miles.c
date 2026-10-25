@@ -1,4 +1,8 @@
 #include "decls.h"
+extern long action_button;
+struct NJS_LINE {
+	struct NJS_POINT3 b;
+};
 void FUN_0053e4f0(struct taskwk *param_1, int param_2, int param_3);
 struct task;
 extern struct NJS_TEXLIST texlist_m_sboard_snowboard;
@@ -53,9 +57,20 @@ float GetUnitVector(struct NJS_POINT3 *vec)
 	return (float)0;
 }
 
+// STUB: SADX 0x00537180
+void MilesChangeRunningMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x00538070
 void MilesSBoardSlideSECall(struct taskwk *twp, struct playerwk *pwp)
 {
+}
+
+// STUB: SADX 0x00538110
+long MilesCheckDamage(struct taskwk *twp, struct playerwk *pwp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x00538480
@@ -66,6 +81,12 @@ int FUN_00538480(void *param_1, void *param_2)
 
 // STUB: SADX 0x005394e0
 long MilesCheckAutoPilot(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0053a070
+long MilesCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
 }
@@ -88,6 +109,18 @@ int FUN_0053a2c0(char *param_1, int param_2)
 	return (int)0;
 }
 
+// STUB: SADX 0x0053a330
+long MilesCheckHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0053a470
+long MilesCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0053ac60
 void MilesThrowTheObjectOut(struct taskwk *twp, struct playerwk *pwp)
 {
@@ -104,7 +137,7 @@ int FUN_0053b120(struct task *tp)
 	return (int)0;
 }
 
-// STUB: SADX 0x0053b210
+// FUNCTION: SADX 0x0053b210
 long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
 {
 	return (long)0;
@@ -114,6 +147,11 @@ long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
 long MilesCheckStartTAttack(struct taskwk *twp, struct playerwk *pwp)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x0053b850
+void MilesReformTailDependOnX()
+{
 }
 
 // FUNCTION: SADX 0x0053ba40
@@ -135,6 +173,11 @@ int FUN_0053be50(char param_1, struct NJS_POINT3 *param_2)
 int FUN_0053bee0(unsigned char param_1, struct NJS_POINT3 *param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0053cb70
+void MilesStareAt(struct pheadeyewk *phewp)
+{
 }
 
 // STUB: SADX 0x0053ddc0
@@ -177,6 +220,16 @@ void MilesSnowBoard(struct task *tp)
 	tp->dest = DstrReleaseTexture;
 	tp->exec = ExecuteMilesSnowBoard;
 	tp->disp = DisplayMilesSnowBoard;
+}
+
+// STUB: SADX 0x0053dfb0
+void ExecuteMilesSnowBoard(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0053e320
+void SetMilesFinishAction()
+{
 }
 
 // FUNCTION: SADX 0x0053e4f0

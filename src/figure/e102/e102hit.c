@@ -21,3 +21,8 @@ void E102Hit_Exit()
 void E102Hit(struct NJS_POINT3 *pPos, float fOffsetZ)
 {
 }
+
+// STUB: SADX 0x005b9a10
+void partile_Set(struct NJS_POINT3 *pPos, float fOffsetZ)
+{
+}

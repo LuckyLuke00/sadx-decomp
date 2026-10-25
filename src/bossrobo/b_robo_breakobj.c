@@ -1,4 +1,5 @@
 #include "decls.h"
+void dispUnit(struct obj *pObj, struct OBJ_UNIT **ppUnit);
 extern int DAT_05b9d838;
 void njMultiMatrix(float *, struct NJS_POINT3 *);
 

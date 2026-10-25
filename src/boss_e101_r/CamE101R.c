@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float DAT_060c4648;
+extern float DAT_060c465c;
 extern float DAT_060c4668;
 extern int DAT_060c4634;
 extern float DAT_060c4670;
@@ -71,7 +73,24 @@ long CamE101R_GetAngle()
 	return DAT_060c4658;
 }
 
-// STUB: SADX 0x0070b400
+// FUNCTION: SADX 0x0070b400
 void CameraE101R(struct _OBJ_CAMERAPARAM *pParam)
 {
+	switch (DAT_060c4630)
+	{
+		case 5:
+			camWaveShotEnemy();
+			break;
+		case 6:
+			DAT_060c4648 = 1.0f;
+			DAT_060c465c = 0.0f;
+			camDeath();
+			break;
+		case 7:
+			camDeath();
+			break;
+		default:
+			camNormal();
+			break;
+	}
 }

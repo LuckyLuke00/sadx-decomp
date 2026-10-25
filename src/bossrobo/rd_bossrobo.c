@@ -38,11 +38,6 @@ void DisplayFineSky(struct taskwk *twp)
 	ResetMaterial();
 }
 
-// STUB: SADX 0x006d67d0
-void BgDisplayer(struct task *tp)
-{
-}
-
 // FUNCTION: SADX 0x006d6800
 void Rd_BossRobo(struct task *tp)
 {

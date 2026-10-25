@@ -1,4 +1,7 @@
 #include "decls.h"
+extern float DAT_060c365c;
+extern struct C7ACAM_PARAM *DAT_060c3654;
+extern unsigned char DAT_060c3645;
 extern struct _camcontwk *camcont_wp;
 extern short *DAT_05baf368;
 
@@ -8,9 +11,13 @@ void CameraChaos7_0Normal(struct _OBJ_CAMERAPARAM *pParam)
 	CameraChaos7_0Normal_sub(pParam);
 }
 
-// STUB: SADX 0x006fd780
+// FUNCTION: SADX 0x006fd780
 void SetCameraChaos7_0Adv(struct C7ACAM_PARAM *cp)
 {
+	DAT_060c3654 = cp;
+	DAT_060c365c = 0.0f;
+	CameraSetCollisionCameraFunc(CameraChaos7_0Adv, 0, 2);
+	DAT_060c3645 = 0;
 }
 
 // FUNCTION: SADX 0x006fd7b0

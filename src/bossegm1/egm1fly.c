@@ -23,3 +23,31 @@ int GetBossAngMode(struct task *tp)
 	}
 	return 0;
 }
+
+// STUB: SADX 0x006c2ff0
+int FUN_006c2ff0()
+{
+	return (int)0;
+}
+
+// FUNCTION: SADX 0x006c3030
+int __fastcall FUN_006c3030(struct task *param_1)
+{
+	if (*(float *)((char *)param_1 + 0x20) < 752.0f)
+	{
+		return 2;
+	}
+	if (*(float *)((char *)param_1 + 0x20) > 1008.0)
+	{
+		return 0;
+	}
+	return 1;
+}
+
+// FUNCTION: SADX 0x006c34e0
+void InitEgm1FlyPrm(struct task *tp, struct taskwk *twp)
+{
+	struct anywk *var1 = tp->awp;
+	*(unsigned char *)((char *)var1 + 0xd2) = 0xff;
+	*(int *)((char *)var1 + 0x38) = 0;
+}

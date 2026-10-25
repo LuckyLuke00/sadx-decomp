@@ -20,6 +20,18 @@ long EggmanCheckJump(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk 
 	return (long)0;
 }
 
+// STUB: SADX 0x008cb620
+long EggmanCheckInput(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x008cb6b0
+long EggmanCheckAutoPilot(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x008cb770
 long EggmanCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {

@@ -1,4 +1,14 @@
 #include "decls.h"
+void DrawResult(struct task *tp);
+extern const int MRVT_Sonic[16];
+extern const int MRVT_Moble[16];
+void Serif_Play(int no);
+extern struct NJS_TEXLIST texlist_MRace_Eggmoble;
+extern char DAT_05ccca18;
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
+void FUN_005a9290(struct taskwk *param_1);
+void FUN_005a92d0(struct taskwk *param_1);
 extern void FUN_005a9320(struct sMRacePath *param_1, struct NJS_POINT3 *param_2);
 extern char DAT_009960fc[1];
 void DispMilesMeter2P(struct task *tp);
@@ -137,9 +147,10 @@ void FUN_005a92d0(struct taskwk *param_1)
 {
 }
 
-// STUB: SADX 0x005a9320
+// FUNCTION: SADX 0x005a9320
 void FUN_005a9320(struct sMRacePath *param_1, struct NJS_POINT3 *param_2)
 {
+	GetNearestPath((struct NJS_POINT3 *)((char *)param_2 + 0x20), (struct sMRacePath *)DAT_05edbd7c, *(short *)((char *)param_1 + 8));
 }
 
 // STUB: SADX 0x005a9350
@@ -178,10 +189,22 @@ long ChkEndSonicFakeJump(struct taskwk *stwp)
 	return 1;
 }
 
-// STUB: SADX 0x005aa610
+// FUNCTION: SADX 0x005aa610
 int FUN_005aa610(int param_1)
 {
-	return (int)0;
+	float local_8g;
+	int local_cg;
+
+	local_8g = *(float *)(param_1 + 0x18) * *(float *)(param_1 + 0x18) + *(float *)(param_1 + 0x20) * *(float *)(param_1 + 0x20);
+	if (local_8g < 25.0)
+	{
+		local_cg = 1;
+	}
+	else
+	{
+		local_cg = 0;
+	}
+	return local_cg;
 }
 
 // STUB: SADX 0x005aa660
@@ -246,11 +269,6 @@ void DrawMoble2P(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005aab20
-void EggmobleJetEntry(struct task *tp, struct eggmoble_effect *egg)
-{
-}
-
 // STUB: SADX 0x005aac80
 void EggmobleHeadLightEntry(struct task *tp)
 {
@@ -282,15 +300,56 @@ void MRaceVoiceCtrl(struct task *tp, short new_m_path, short new_s_path)
 {
 }
 
-// STUB: SADX 0x005ab3e0
+// FUNCTION: SADX 0x005ab3e0
 void MRaceSetVoice(struct anywk *awp, long type)
 {
+	int local_8g;
+	int local_10;
+	int local_cj;
+	local_cj = 0;
+	if (*(int *)((char *)awp + 4) == type)
+	{
+		return;
+	}
+	if (*(int *)((char *)awp + 0xc) > 0)
+	{
+		return;
+	}
+	*(int *)((char *)awp + 0xc) = 0xb4;
+	if ((((DAT_05b9d724 << 8) | DAT_05b9d744) >> 8 & 0xff) != 4)
+	{
+		local_8g = (int)MRVT_Sonic;
+	}
+	else
+	{
+		local_8g = (int)MRVT_Moble;
+	}
+	local_10 = 1 << (int)type;
+	*(int *)((char *)awp + 8) = *(int *)((char *)awp + 8) ^ local_10;
+	if ((*(int *)((char *)awp + 8) & local_10) != 0)
+	{
+		local_cj = 1;
+	}
+	Serif_Play(*(int *)(local_8g + (local_cj + type * 2) * 4));
+	*(int *)((char *)awp + 4) = type;
 }
 
-// STUB: SADX 0x005ab4a0
+// FUNCTION: SADX 0x005ab4a0
 int FUN_005ab4a0()
 {
-	return (int)0;
+	int local_cg;
+	int local_8g;
+
+	local_8g = 0;
+	local_cg = ((DAT_05b9d724 << 8) | DAT_05b9d744) >> 8 & 0xff;
+	if (CheckEmblemofStageClear((SAVE_DATA *)&DAT_05ccca18, 2, local_cg, 2) != 0)
+	{
+		if (CheckEmblemofStageClear((SAVE_DATA *)&DAT_05ccca18, 2, local_cg, 1) != 0)
+		{
+			local_8g = 1;
+		}
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x005ab510

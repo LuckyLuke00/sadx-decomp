@@ -28,9 +28,18 @@ void StgChaos0SetPos(float pos_x, float pos_y, float pos_z)
 	*(float *)((char *)DAT_05edd128 + 0x28) = pos_z;
 }
 
-// STUB: SADX 0x007e05e0
+// FUNCTION: SADX 0x007e05e0
 void StgChaos0SetAng(long ang_x, long ang_y, long ang_z)
 {
+	struct taskwk *var1;
+
+	var1 = DAT_060cceb4->twp;
+	var1->ang.x = ang_x;
+	var1->ang.y = ang_y;
+	var1->ang.z = ang_z;
+	*(long *)((char *)DAT_05edd128 + 0x14) = ang_x;
+	*(long *)((char *)DAT_05edd128 + 0x18) = ang_y;
+	*(long *)((char *)DAT_05edd128 + 0x1c) = ang_z;
 }
 
 // STUB: SADX 0x007e0620

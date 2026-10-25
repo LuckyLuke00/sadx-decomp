@@ -16,6 +16,16 @@ void Dsp_SuimenYurashi(struct task *pTask)
 {
 }
 
+// STUB: SADX 0x006f0770
+void End_SuimenYurashi(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x006f0830
+void Dsp_first_pond(struct task *pTask)
+{
+}
+
 // FUNCTION: SADX 0x006f0a20
 void Exe_side_collision(struct task *pTask)
 {

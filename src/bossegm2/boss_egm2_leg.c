@@ -1,4 +1,5 @@
 #include "decls.h"
+float FUN_00500c70(float param_1, float param_2, float param_3);
 void egm2_leg_hide_set();
 extern unsigned char DAT_060b9b44;
 
@@ -7,9 +8,39 @@ void egm2_leg_model_get(struct LegModel *legmodel, struct obj *obj, long root)
 {
 }
 
-// STUB: SADX 0x006c8620
+// FUNCTION: SADX 0x006c8620
 void leg_disp(struct LegModel *legmodel)
 {
+	do
+	{
+		njPushMatrix((float *)0);
+		FUN_0067d830((float *)0, *(float *)legmodel, *(float *)((char *)legmodel + 4), *(float *)((char *)legmodel + 8));
+		if (*(int *)((char *)legmodel + 0x14) != 0)
+		{
+			njRotateZ((float *)0, *(unsigned short *)((char *)legmodel + 0x14));
+		}
+		if (*(int *)((char *)legmodel + 0x10) != 0)
+		{
+			njRotateY((float *)0, *(unsigned short *)((char *)legmodel + 0x10));
+		}
+		if (*(int *)((char *)legmodel + 0xc) != 0)
+		{
+			njRotateX((float *)0, *(unsigned short *)((char *)legmodel + 0xc));
+		}
+		FUN_0067d2d0((float *)0, *(float *)((char *)legmodel + 0x18), *(float *)((char *)legmodel + 0x1c), *(float *)((char *)legmodel + 0x20));
+		struct NJS_MODEL *var1 = (struct NJS_MODEL *)*(int *)((char *)legmodel + 0x24);
+		if (var1 != (struct NJS_MODEL *)0)
+		{
+			ds_DrawModelClip(var1, FUN_00500c70(*(float *)((char *)legmodel + 0x18), *(float *)((char *)legmodel + 0x1c), *(float *)((char *)legmodel + 0x20)));
+		}
+		if (*(int *)((char *)legmodel + 0x28) != 0)
+		{
+			leg_disp((struct LegModel *)*(int *)((char *)legmodel + 0x28));
+		}
+		njPopMatrix(1);
+		legmodel = (struct LegModel *)*(int *)((char *)legmodel + 0x2c);
+	}
+	while (legmodel != (struct LegModel *)0);
 }
 
 // STUB: SADX 0x006c8b40

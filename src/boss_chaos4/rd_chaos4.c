@@ -15,3 +15,8 @@ void RdChaos4_Dsp_Air(struct task *tp)
 	FUN_004a0520(DAT_05b3e050.x, DAT_05b3e050.y);
 	___njFogEnable();
 }
+
+// STUB: SADX 0x006edf50
+void Bg_Chaos4(struct task *tp)
+{
+}

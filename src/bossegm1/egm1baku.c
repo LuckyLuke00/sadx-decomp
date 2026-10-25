@@ -20,6 +20,11 @@ void SetEgm1Bakuhatsu(struct NJS_POINT3 *posp)
 	}
 }
 
+// STUB: SADX 0x006c42b0
+void Egm1CrushPieceExe(struct NJS_POINT3 *posp, long cnt)
+{
+}
+
 // FUNCTION: SADX 0x006c43b0
 void InitEgm1DeadFly(struct task *tp)
 {

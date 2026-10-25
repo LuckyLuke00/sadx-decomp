@@ -1,5 +1,7 @@
 #include "decls.h"
 void FUN_0070e240(struct GHPARTICLE *param_1);
+extern struct task *DAT_060c4a9c;
+void FUN_0070e240(struct GHPARTICLE *param_1);
 struct GHPARTICLE;
 extern struct task *DAT_060c4aa0;
 extern struct task *DAT_060c4aa4;
@@ -66,4 +68,13 @@ void E101R_EfShotFlickPart(struct NJS_POINT3 *pPos)
 // STUB: SADX 0x0070e650
 void E101R_EfShotFlickInit()
 {
+}
+
+// FUNCTION: SADX 0x0070e6b0
+void E101R_EfShotFlickExit()
+{
+	if (DAT_060c4a9c)
+	{
+		FreeTask(DAT_060c4a9c);
+	}
 }

@@ -1,13 +1,14 @@
 #include "decls.h"
+void disp_Emission(struct task *pTask);
 extern struct NJS_TEXLIST texlist_erobo;
 struct GHSPRITE_INIT_INFO {
 };
 void FUN_006dd200(void *param_1);
-extern int DAT_060bbe3c;
+extern struct task *DAT_060bbe3c;
 void FreeTask(struct task *tp);
 void disp_ElectSegment(struct task *pTask);
 extern int DAT_05b9d838;
-extern struct DAT_060bbe38 *DAT_060bbe38;
+extern struct task *DAT_060bbe38;
 
 // STUB: SADX 0x006dc8e0
 int EffDeathExplosion(struct NJS_POINT3 *pPos)
@@ -104,7 +105,7 @@ void FUN_006dd0b0(int param_1)
 {
 	if (DAT_060bbe3c != 0)
 	{
-		int *var1 = *(int **)(DAT_060bbe3c + 0x2c);
+		int *var1 = *(int **)((char *)DAT_060bbe3c + 0x2c);
 		*var1 = param_1;
 	}
 }
@@ -135,7 +136,7 @@ void EffHandSpark_Init()
 		var1 = CreateElementalTask(2, 4, exec_HandSpark);
 		if (var1 != 0)
 		{
-			DAT_060bbe3c = (int)var1;
+			DAT_060bbe3c = var1;
 			var2 = MAlloc(0x50);
 			var1->awp = (struct anywk *)var2;
 			FUN_006dd200((char *)var2 + 4);
@@ -160,14 +161,14 @@ void EffAll_Init(struct task *pTask)
 // FUNCTION: SADX 0x006dd540
 void EffAll_Exit()
 {
-	if ((*(struct task *(*))&DAT_060bbe38) != 0)
+	if (DAT_060bbe38 != 0)
 	{
-		FreeTask((*(struct task *(*))&DAT_060bbe38));
-		(*(struct task *(*))&DAT_060bbe38) = 0;
+		FreeTask(DAT_060bbe38);
+		DAT_060bbe38 = 0;
 	}
-	if ((*(struct task *(*))&DAT_060bbe3c) != 0)
+	if (DAT_060bbe3c != 0)
 	{
-		FreeTask((*(struct task *(*))&DAT_060bbe3c));
-		(*(struct task *(*))&DAT_060bbe3c) = 0;
+		FreeTask(DAT_060bbe3c);
+		DAT_060bbe3c = 0;
 	}
 }

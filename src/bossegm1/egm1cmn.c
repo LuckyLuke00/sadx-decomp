@@ -1,5 +1,6 @@
 #include "decls.h"
 extern "C" double atan2(double v, double u);
+extern "C" double atan2(double v, double u);
 
 // STUB: SADX 0x006c2c50
 void ZBezier3(struct NJS_POINT3 *ans, struct NJS_POINT3 *pnt3p, float t)

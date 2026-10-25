@@ -33,6 +33,11 @@ void CreateShotsmoke(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 	}
 }
 
+// STUB: SADX 0x005d4f50
+void EffectShotsmoke(struct sp_task *tp, struct sp_link *lp)
+{
+}
+
 // FUNCTION: SADX 0x005d5090
 void initShotsmoke()
 {

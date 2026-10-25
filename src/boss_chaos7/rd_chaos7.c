@@ -13,6 +13,21 @@ void SetTableBg_chaos7(int c_level)
 {
 }
 
+// FUNCTION: SADX 0x006fb1d0
+void ChangeSuperSonic(struct task *tp)
+{
+	if (++tp->twp->timer.l > 1)
+	{
+		SetInputP(0, 0x2e);
+		DestroyTask(tp);
+	}
+}
+
+// STUB: SADX 0x006fb200
+void chaos_gdcontrol(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x006fb370
 void rdChaos7ChangeBgm()
 {

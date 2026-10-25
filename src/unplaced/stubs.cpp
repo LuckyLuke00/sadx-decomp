@@ -1668,6 +1668,11 @@ void FUN_00503160()
 {
 }
 
+// STUB: SADX 0x0050b7b0
+void BigThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x0050d370
 void E102(struct task *tp)
 {
@@ -1680,11 +1685,6 @@ void E102ChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct p
 
 // STUB: SADX 0x0051b830
 void AmyChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
-{
-}
-
-// STUB: SADX 0x00521120
-void AmyBalanceGameStartChecker(struct task *tp)
 {
 }
 
@@ -1705,11 +1705,6 @@ void MilesTalesPrower(struct task *tp)
 
 // STUB: SADX 0x00536e70
 void MilesChangeWaitingMotion(struct taskwk *twp, struct playerwk *pwp)
-{
-}
-
-// STUB: SADX 0x0053dfb0
-void ExecuteMilesSnowBoard(struct task *tp)
 {
 }
 
@@ -1839,16 +1834,6 @@ void CameraLocalPath(struct _OBJ_CAMERAPARAM *pParam)
 
 // STUB: SADX 0x0056aea0
 void FUN_0056aea0(int)
-{
-}
-
-// STUB: SADX 0x0056b540
-void EV_InitPlayer(int n)
-{
-}
-
-// STUB: SADX 0x0056bb50
-void FUN_0056bb50(struct task *)
 {
 }
 
@@ -1986,11 +1971,6 @@ void DrawButtonXUBB()
 {
 }
 
-// STUB: SADX 0x0058d570
-void FUN_0058d570(float)
-{
-}
-
 // STUB: SADX 0x0058d6a0
 void FUN_0058d6a0()
 {
@@ -2001,13 +1981,8 @@ void dispReelMeter()
 {
 }
 
-// STUB: SADX 0x005923f0
-void BigDisplayHit(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00592520
-void FUN_00592520(struct task *)
+// STUB: SADX 0x00591e30
+void dispZankiTexturePause(struct task *tp)
 {
 }
 
@@ -2170,37 +2145,6 @@ void EffectSpinDSInit(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x005afdf0
-void EffectStartHomingInit(struct taskwk *twp)
-{
-}
-
-// STUB: SADX 0x005aff20
-void EffectSpinDisplay(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b0180
-void EffectSpinDSDisplay(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b03b0
-void EffectStartHomingDisplay(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b05b0
-int FUN_005b05b0(struct taskwk *)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x005b0740
-void EffectDashDisplay(struct task *tp)
-{
-}
-
 // STUB: SADX 0x005b0870
 void EffectDashExecute(struct task *tp)
 {
@@ -2267,8 +2211,8 @@ long Rocket_Open(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x005b9db0
-void E102AddRestTimeNew(struct task *atp)
+// STUB: SADX 0x005b9e40
+void E102AddSecTotalNew(struct task *)
 {
 }
 
@@ -2357,22 +2301,6 @@ void late_ChaosLifeGaugeDisplay(struct task *)
 {
 }
 
-// STUB: SADX 0x005d3e20
-int CheckEnemyAddTime(struct task *tp)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x005d4f50
-void EffectShotsmoke(struct sp_task *tp, struct sp_link *lp)
-{
-}
-
-// STUB: SADX 0x005d5350
-void ADC_DrumCanExe(struct task *tp)
-{
-}
-
 // STUB: SADX 0x005d6680
 void AmyEffectPiyoPiyoDraw(struct task *tp)
 {
@@ -2442,6 +2370,11 @@ void EnemyCheckWall(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005e5770
 void FUN_005e5770(struct task *)
+{
+}
+
+// STUB: SADX 0x005e58e0
+void E102LockOnCursor_dis_Disp(struct task *tp)
 {
 }
 
@@ -2955,18 +2888,33 @@ void TaskBossExec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006c1e60
+void DrawSaltWater3D_20(unsigned long *pu32SaltStat)
+{
+}
+
 // STUB: SADX 0x006c4150
 void egm1bakuhatsu_exec(struct task *)
 {
 }
 
-// STUB: SADX 0x006c4670
-void egm1ground_smoke_exec(struct task *)
+// STUB: SADX 0x006c71d0
+void BuilGDisp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006c73e0
+void BuilGExec(struct task *tp)
 {
 }
 
 // STUB: SADX 0x006ca190
 void Exe_bomb(struct task *pTask)
+{
+}
+
+// STUB: SADX 0x006cea90
+extern void egm3CalcObjMatrix(struct obj *, float *)
 {
 }
 
@@ -3056,11 +3004,6 @@ void BossChaos6(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006fb200
-extern void chaos_gdcontrol(struct task *)
-{
-}
-
 // STUB: SADX 0x006fbb50
 void EffectAuraDisplay(struct task *tp)
 {
@@ -3102,6 +3045,11 @@ void CameraChaos7_0Normal_sub(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
+// STUB: SADX 0x006fd560
+void CameraChaos7_0Adv(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
 // STUB: SADX 0x00701cc0
 void objDisplayR(struct task *tp)
 {
@@ -3134,6 +3082,21 @@ void SetE101(void)
 
 // STUB: SADX 0x00707530
 void BossExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0070ac00
+void camNormal()
+{
+}
+
+// STUB: SADX 0x0070b130
+void camWaveShotEnemy()
+{
+}
+
+// STUB: SADX 0x0070b2b0
+void camDeath()
 {
 }
 
@@ -3184,6 +3147,11 @@ void ALO_OdekakeMachine(struct task *tp)
 
 // STUB: SADX 0x00731880
 void FUN_00731880()
+{
+}
+
+// STUB: SADX 0x007cd4e0
+void tornado_exec(struct task *tp)
 {
 }
 
@@ -3243,11 +3211,6 @@ int FUN_007d5120()
 	return (int)0;
 }
 
-// STUB: SADX 0x007d52c0
-void CLast1AHigh_Disp(struct task *tp)
-{
-}
-
 // STUB: SADX 0x007d5380
 void dispEfWhiteTask(struct task *p_task)
 {
@@ -3255,6 +3218,16 @@ void dispEfWhiteTask(struct task *p_task)
 
 // STUB: SADX 0x007d6a70
 void execPillarTask(struct task *p_task)
+{
+}
+
+// STUB: SADX 0x007d7090
+void effect2_disp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007d7800
+void execWaveCtrlTask(struct task *)
 {
 }
 
@@ -3295,6 +3268,26 @@ void ev_e103_exec(struct task *tp)
 
 // STUB: SADX 0x007da460
 void frog_disp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007da7a0
+void ev_e101_draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007da990
+void ev_e101_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007db810
+void dispChaos2Task(struct task *p_task)
+{
+}
+
+// STUB: SADX 0x007dbc40
+void execChaos2Task(struct task *p_task)
 {
 }
 
@@ -3368,8 +3361,13 @@ void ChaosJoinVertexes(struct PL_JOIN_VERTEX *jv_list_p, struct NJS_ACTION *act_
 {
 }
 
-// STUB: SADX 0x007e1f60
-void EV_ODestruct(struct taskwk *twp)
+// STUB: SADX 0x007e15b0
+void EV_OSetMotion(struct _emtnjvwk *emjp)
+{
+}
+
+// STUB: SADX 0x007e1840
+void EV_OJoinVertexes(struct taskwk *twp, struct _eventobjwk *eobjwp)
 {
 }
 
@@ -4039,11 +4037,6 @@ void effectWaterMove(struct taskwk *, struct chaoswk *, struct obj *)
 {
 }
 
-// STUB: SADX 0x008c8130
-void ChaosHeadColorChange(struct obj *obj)
-{
-}
-
 // STUB: SADX 0x008c9d30
 void MirenPlyInitPlayerPos(signed char player)
 {
@@ -4130,38 +4123,8 @@ void ERSC_CommonExec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00902f90
-void EvChaos2Human2Water()
-{
-}
-
-// STUB: SADX 0x00902fb0
-void EvChaos2Water2Human()
-{
-}
-
-// STUB: SADX 0x00902fd0
-void EvChaos2Action(float ratio)
-{
-}
-
-// STUB: SADX 0x00903000
-void EvChaos6Human2Water()
-{
-}
-
-// STUB: SADX 0x00903020
-void EvChaos6Water2Human()
-{
-}
-
-// STUB: SADX 0x00903040
-void EvChaos7Howl1()
-{
-}
-
-// STUB: SADX 0x00903060
-void EvChaos7Breath(float len)
+// STUB: SADX 0x00903380
+extern void EV_Egm3Draw(struct task *)
 {
 }
 

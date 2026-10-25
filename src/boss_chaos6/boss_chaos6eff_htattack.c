@@ -35,9 +35,40 @@ void objDisplayT(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x006f8780
+// FUNCTION: SADX 0x006f8780
 void objNormalT(struct task *tp)
 {
+	struct taskwk *local_8 = tp->twp;
+	switch (local_8->mode)
+	{
+	case 0:
+		local_8->counter.f = local_8->counter.f + 0.01666666753590107f;
+		if (local_8->counter.f >= 1.0f)
+		{
+			local_8->counter.f = 1.0f;
+			local_8->mode = 1;
+			objDisplayT(tp);
+			return;
+		}
+		break;
+	case 1:
+		if (DAT_060c3350 == 0)
+		{
+			local_8->mode = 2;
+			objDisplayT(tp);
+			return;
+		}
+		break;
+	case 2:
+		local_8->counter.f = local_8->counter.f - 0.01666666753590107f;
+		if (local_8->counter.f <= 0.0f)
+		{
+			FreeTask(tp);
+			return;
+		}
+		break;
+	}
+	objDisplayT(tp);
 }
 
 // FUNCTION: SADX 0x006f8810

@@ -641,9 +641,21 @@ void FUN_0056b510(unsigned char param_1)
 {
 }
 
-// STUB: SADX 0x0056b6f0
+// STUB: SADX 0x0056b540
+void EV_InitPlayer(int n)
+{
+}
+
+// FUNCTION: SADX 0x0056b6f0
 void FUN_0056b6f0(void *param_1)
 {
+	if (0 != param_1)
+	{
+		while (*(int **)((char *)*(int **)((char *)*(int **)((char *)param_1 + 0x20) + 0x3c) + 0x40) != 0)
+		{
+			FUN_0056aea0(1);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x0056b750
@@ -704,9 +716,17 @@ void EV_LookAngle(struct task *tp, long x, long y, long z)
 	}
 }
 
-// STUB: SADX 0x0056ba10
+// FUNCTION: SADX 0x0056ba10
 void EV_MoveFree(struct task *tp)
 {
+	struct eventwk *local_8;
+	if (tp != 0)
+	{
+		local_8 = tp->twp->ewp;
+		*(char *)((char *)local_8 + 0x24) = 0;
+		*(float *)((char *)local_8 + 0x34) = 0.0f;
+		*(float *)((char *)local_8 + 0x38) = 0.0f;
+	}
 }
 
 // FUNCTION: SADX 0x0056bab0
@@ -739,6 +759,20 @@ void EV_MoveRotation(struct task *tp, long x, long y, long z)
 	}
 }
 
+// FUNCTION: SADX 0x0056bb50
+void FUN_0056bb50(struct task *param_1)
+{
+	struct eventwk *local_8;
+	if (param_1 != 0)
+	{
+		local_8 = param_1->twp->ewp;
+		while (*(unsigned char *)((char *)local_8 + 0x24) != 0)
+		{
+			FUN_0056aea0(1);
+		}
+	}
+}
+
 // STUB: SADX 0x0056bd10
 void CalcEventCameraPers()
 {
@@ -763,10 +797,26 @@ void CalcEventCamera()
 	DAT_05b42a7c->ang = DAT_05ccdd40;
 }
 
-// STUB: SADX 0x0056c640
+// FUNCTION: SADX 0x0056c640
 float HokanFloat(int mode, int time, int count, float va, float vb)
 {
-	return (float)0;
+	float c;
+	switch (mode)
+	{
+	case 0:
+		c = (float)count / (float)time;
+		break;
+	case 1:
+		c = (-njCos((count << 0xf) / time) + 1.0) / 2.0;
+		break;
+	}
+	return (vb - va) * c + va;
+}
+
+// STUB: SADX 0x0056c6a0
+int ExecCameraPath()
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x0056cab0

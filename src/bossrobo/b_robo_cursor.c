@@ -23,3 +23,8 @@ void RoboLockOnCursor_Off()
 {
 	DAT_060bd1ac = 1;
 }
+
+// STUB: SADX 0x006e1a80
+void RoboLockOnCursor()
+{
+}
