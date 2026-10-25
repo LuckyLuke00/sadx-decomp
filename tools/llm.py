@@ -327,8 +327,9 @@ def parse_reply(reply, address, name=None):
     """(declarations, function lines) from the first fenced block that holds the function's annotation, else from
     the first that defines NAME, with the annotation put above the definition. Declarations between the annotation
     and the signature join the others: the file's tools take the first statement after an annotation as its
-    signature."""
-    blocks = [[line.rstrip() for line in m.group(1).split("\n")] for m in BLOCK.finditer(reply.replace("\r\n", "\n"))]
+    signature. An annotation between the signature and the body goes above the signature."""
+    blocks = [annotation_first([line.rstrip() for line in m.group(1).split("\n")], address)
+              for m in BLOCK.finditer(reply.replace("\r\n", "\n"))]
     for lines in blocks + [annotated_definition(lines, address, name) for lines in blocks if name]:
         span = definition_span(lines, address)
         if span is not None:
@@ -338,6 +339,17 @@ def parse_reply(reply, address, name=None):
             decls = [d for d in lines[:span[0]] if d and not d.startswith("//")] + [func[i] for i in inner]
             return decls, [line for i, line in enumerate(func) if i not in inner]
     return None
+
+
+def annotation_first(lines, address):
+    """LINES with the annotation of ADDRESS above the signature when it sits right below one, or LINES as they are."""
+    at = next((i for i, line in enumerate(lines) if line.strip() == function_line(address)), None)
+    if not at:
+        return lines
+    above = lines[at - 1]
+    if not above[:1].strip() or "(" not in above or above.endswith(";") or above.startswith("//"):
+        return lines
+    return lines[:at - 1] + [lines[at], above] + lines[at + 1:]
 
 
 def annotated_definition(lines, address, name):
@@ -1034,15 +1046,17 @@ def most_alike(address, pool, sizes):
     return max(pool, key=lambda a: osutil.likeness(own, mnemonic_grams(md, image, a, sizes[a])))
 
 
-def examples(config, file, address, count, extra=(), similar=False):
+def examples(config, file, address, count, extra=(), similar=False, allowed=None):
     """Up to COUNT matched functions of the same code group, its own file first, then the nearest in size. SIMILAR:
-    the one whose instructions are most like the function's comes first."""
+    the one whose instructions are most like the function's comes first. ALLOWED, when given: the only addresses
+    that may be shown."""
     sizes = {f["address"]: f["size"] for f in progress.load_functions()}
     groups = progress.load_codegen_groups()
     group = progress.codegen_group(groups, address)
     where = definitions(tree_roots(config))
     done = matched_functions()
-    pool = sorted((a for a in done if a != address and a in where and progress.codegen_group(groups, a) == group),
+    pool = sorted((a for a in done if a != address and a in where and progress.codegen_group(groups, a) == group
+                   and (allowed is None or a in allowed)),
                   key=lambda a: (where[a][1] != file, abs(sizes.get(a, 0) - sizes[address]), a))
     if similar and pool:
         nearest = most_alike(address, pool, sizes)  # of a tie, the first in the file and size order
@@ -1066,12 +1080,16 @@ def recipe_section(recipe):
     return f"{RECIPE_LEAD}\n{recipe.strip()}\n\n" if recipe else ""
 
 
-def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), similar=False, recipe=None):
-    facts = dossier(config, address, '--c', '--callers', *extra)
+def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), similar=False, recipe=None,
+                 allowed=None, hide_own=False):
+    """The first user message for the function at ADDRESS. ALLOWED limits the examples, as examples() says. HIDE_OWN:
+    the dossier leaves out the prototype that the function's own definition gives, as for a function not yet
+    decompiled."""
+    facts = dossier(config, address, '--c', '--callers', *extra, *(["--hide-own"] if hide_own else []))
     structs = "" if types is None else struct_section(types, facts)
     task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}{recipe_section(recipe)}"
             f"Write the function. Reply with one cpp block with the `{function_line(address)}` line.")
-    shown = examples(config, file, address, count, extra, similar)
+    shown = examples(config, file, address, count, extra, similar, allowed)
     return "\n\n".join(shown + [TASK_LEAD + task]) if shown else task
 
 
