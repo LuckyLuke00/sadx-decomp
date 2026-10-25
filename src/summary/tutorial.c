@@ -45,6 +45,30 @@ long TutorialExit(void *Param)
 	return 1;
 }
 
+// STUB: SADX 0x00496390
+void TutorialTaskDestructor(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x004963c0
+void TutorialBgmTask(struct task *tp)
+{
+	int iVar1;
+	if (DAT_05cd27e8 == 0)
+	{
+		iVar1 = GetAdvertisePlayerNumber((unsigned char)GetPlayerNumber());
+	}
+	else
+	{
+		iVar1 = DAT_05cd27f0;
+	}
+	if (iVar1 != -1)
+	{
+		BGM_Play(*(unsigned char *)(iVar1 + 0x234f5ec));
+	}
+	FreeTask(tp);
+}
+
 // STUB: SADX 0x00496400
 void FUN_00496400(int param_1)
 {

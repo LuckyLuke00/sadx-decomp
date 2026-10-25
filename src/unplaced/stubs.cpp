@@ -1063,11 +1063,6 @@ void ghDrawPvrSprite(short *, int, float, float, float, float, float)
 {
 }
 
-// STUB: SADX 0x00496390
-void TutorialTaskDestructor(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00496440
 void TutorialTask(struct task *tp)
 {
@@ -1317,26 +1312,6 @@ void FileSelModeWakeProcedure(struct FileSelWk *wkp)
 
 // STUB: SADX 0x004b78b0
 void file_sel_sub_exec(struct FileSelWk *wkp)
-{
-}
-
-// STUB: SADX 0x004b84d0
-void DrawStartChiten(struct FileSelWk *wkp)
-{
-}
-
-// STUB: SADX 0x004b85b0
-void DrawSaishuuClear(struct FileSelWk *wkp)
-{
-}
-
-// STUB: SADX 0x004b8710
-void DrawPlayTime(struct FileSelWk *wkp)
-{
-}
-
-// STUB: SADX 0x004b8860
-void DrawFileEmblem(struct FileSelWk *wkp)
 {
 }
 
@@ -1883,11 +1858,6 @@ void disp_npc_message_wait(const char * *message_p)
 {
 }
 
-// STUB: SADX 0x0056e210
-void field_msg_create_man(void (*thread_func)(void *), void *arg_p, long adx_use)
-{
-}
-
 // STUB: SADX 0x005704f0
 float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct NJS_POINT3 *onpnt3, float *onpos)
 {
@@ -1936,6 +1906,11 @@ void FUN_00576a60(int)
 
 // STUB: SADX 0x00576c10
 void FUN_00576c10(struct task *)
+{
+}
+
+// STUB: SADX 0x005778c0
+void SetDialogLocalPrm(struct DialogWk *wkp)
 {
 }
 
@@ -2053,8 +2028,13 @@ struct MDHANDLE *MDHeaderOpen(char *fname, int flag)
 	return (struct MDHANDLE *)0;
 }
 
-// STUB: SADX 0x0059dd40
-void GetTrialActNowAvaStgActPrm(struct AvaStgActPrmT *stgactprmptr)
+// STUB: SADX 0x0059d540
+void sequence_init(struct task *tp, struct SeqPrmType *prmp)
+{
+}
+
+// STUB: SADX 0x0059d770
+void sequence_exec(struct task *tp)
 {
 }
 
@@ -2081,31 +2061,19 @@ void DrawBCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, 
 {
 }
 
-// STUB: SADX 0x0059eac0
-void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, float z, float magx, float magy)
+// STUB: SADX 0x0059f9c0
+void title_new_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0059ed90
-void DrawVal(long, long, unsigned char, float, float, float, float)
+// STUB: SADX 0x005a0110
+void DisplayFinTitle(struct TitleNewWk *, float)
 {
 }
 
-// STUB: SADX 0x0059ef30
-void DrawValTrialS(long val, long keta, unsigned char zflg, float x, float y, float z, float magx, float magy)
+// STUB: SADX 0x005a06f0
+void DrawDXTitle(struct TitleNewWk *)
 {
-}
-
-// STUB: SADX 0x0059f900
-int SetAdvaSerifu(enum AvaSerifuModeEnum serifumode)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x005a4560
-long AvaGetTrialBestScore(enum AvaCharEnum chnum, unsigned char stg)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x005a4c50
@@ -2414,18 +2382,8 @@ void FUN_005e8f10(float)
 {
 }
 
-// STUB: SADX 0x005eaa00
-void FUN_005eaa00(struct task *)
-{
-}
-
 // STUB: SADX 0x005f10a0
 void trial_game_exec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005f2090
-void FUN_005f2090(float)
 {
 }
 
@@ -2444,8 +2402,8 @@ void FUN_005f3540(struct task *)
 {
 }
 
-// STUB: SADX 0x005f4610
-void FUN_005f4610(float)
+// STUB: SADX 0x005f4780
+extern void LoadTrialPicture()
 {
 }
 
@@ -2454,13 +2412,23 @@ void FUN_005fcd60(float)
 {
 }
 
-// STUB: SADX 0x005fd320
-void FUN_005fd320(struct task *)
+// STUB: SADX 0x005fd880
+void DrawTvSettingWnd(struct TvSettingWk *wkp)
 {
 }
 
-// STUB: SADX 0x005fd880
-void DrawTvSettingWnd(struct TvSettingWk *wkp)
+// STUB: SADX 0x005fe160
+void inetdemo_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005fe450
+void DisplayDemoPictures(struct NJS_TEXLIST *ptexlist, struct InetDemoWk *wkp, float basez, struct DEMOPICTUREINFO *pdemopictureinfo, int count)
+{
+}
+
+// STUB: SADX 0x005ffa00
+void emblem_view_exec(struct task *tp)
 {
 }
 
@@ -2474,8 +2442,13 @@ void DrawEmblemViewChar(struct EmblemViewWk *wkp)
 {
 }
 
-// STUB: SADX 0x00601950
-void DrawMiniGameSelBg(struct MiniGameSelWk *wkp)
+// STUB: SADX 0x00601030
+void minigame_sel_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00601a50
+void DrawMiniGameSelRankBg(struct MiniGameSelWk *wkp)
 {
 }
 
@@ -2489,23 +2462,8 @@ void DrawMiniGameSelStage(struct MiniGameSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x00602430
-void FUN_00602430(struct task *)
-{
-}
-
 // STUB: SADX 0x00603150
 void FUN_00603150(struct task *)
-{
-}
-
-// STUB: SADX 0x00604340
-void DispOptionSelCsr(struct _OptionSelWk *wkp)
-{
-}
-
-// STUB: SADX 0x00604500
-void DrawOptionSelBg(struct _OptionSelWk *wkp)
 {
 }
 
@@ -2515,18 +2473,8 @@ struct task *SetAdvaSndTestTask(struct task *, struct ModeSelPrmType *)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x00604800
-void snd_test_exec(struct task *tp)
-{
-}
-
 // STUB: SADX 0x006055c0
 void DrawSndTestSubMenuList(struct SndTestWk *wkp)
-{
-}
-
-// STUB: SADX 0x006058a0
-void DrawSndTestSubMenuBg(struct SndTestWk *wkp)
 {
 }
 
@@ -2540,8 +2488,8 @@ void DrawSndTestEffMenuBg(struct SndTestWk *wkp)
 {
 }
 
-// STUB: SADX 0x006071f0
-void DrawTrialActSelBg(struct TrialActSelWk *wkp)
+// STUB: SADX 0x00606860
+void trial_act_sel_exec(struct task *tp)
 {
 }
 
@@ -2553,12 +2501,6 @@ void DrawTrialActSelTimeOrWeight(struct TrialActSelWk *wkp)
 // STUB: SADX 0x00607880
 void DrawTrialActSelStage(struct TrialActSelWk *wkp)
 {
-}
-
-// STUB: SADX 0x00607c50
-struct task *FUN_00607c50(struct ModeSelPrmType *)
-{
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x00607cf0
@@ -2671,6 +2613,11 @@ void FUN_0061def0(struct task *)
 
 // STUB: SADX 0x0061e310
 void DispCharMdls(struct CharMdlWk *wkp)
+{
+}
+
+// STUB: SADX 0x0061e610
+void FUN_0061e610(unsigned short)
 {
 }
 
@@ -4120,11 +4067,6 @@ void ObjShelterTunnelcol(struct task *tp)
 
 // STUB: SADX 0x008b6200
 void CameraHotTgtDeath(struct _OBJ_CAMERAPARAM *)
-{
-}
-
-// STUB: SADX 0x008b8100
-void ReleaseSnapShotTexture(struct SNAPSHOT_DATA *data)
 {
 }
 

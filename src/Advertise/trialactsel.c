@@ -7,7 +7,20 @@ extern struct task *DAT_05edd9c0;
 // STUB: SADX 0x00606730
 struct task *SetAdvaTrialActSelTask(struct ModeSelPrmType *prmp)
 {
-	return (struct task *)0;
+	void *local_cg;
+	struct task *local_8g;
+
+	local_8g = CreateElementalTask(0, 4, trial_act_sel_exec);
+	DAT_05edd9c0 = local_8g;
+	if (DAT_05edd9c0)
+	{
+		local_cg = CAlloc(1, 0xd0);
+		local_8g->awp = (struct anywk *)local_cg;
+		((void (*)(struct task *, struct ModeSelPrmType *))ChgSubModeToStay)(local_8g, prmp);
+		local_8g->exec = trial_act_sel_exec;
+		local_8g->disp = trial_act_sel_disp;
+	}
+	return local_8g;
 }
 
 // STUB: SADX 0x006067b0
@@ -62,6 +75,21 @@ void trial_act_sel_disp(struct task *tp)
 	DrawTrialActSelStage(local_8);
 }
 
+// FUNCTION: SADX 0x006071f0
+void DrawTrialActSelBg(struct TrialActSelWk *wkp)
+{
+	ghSetPvrTexMaterial(-1);
+	___njSetTexture(&texlist_ava_trialactsel);
+	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoY * 32.0f, wkp->BaseZ + -8.0f, ScreenRaitoX * 565.0f, ScreenRaitoY * 42.0f);
+	ghDrawPvrTexture(9, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
+	DrawTrialActSelRankBg(wkp);
+}
+
+// STUB: SADX 0x006072f0
+void DrawTrialActSelRankBg(struct TrialActSelWk *wkp)
+{
+}
+
 // FUNCTION: SADX 0x006074c0
 void FUN_006074c0(struct TrialActSelWk *param_1)
 {
@@ -71,9 +99,25 @@ void FUN_006074c0(struct TrialActSelWk *param_1)
 	FUN_006077f0(param_1);
 }
 
-// STUB: SADX 0x00607500
+// FUNCTION: SADX 0x00607500
 void DrawTrialActSelEmblem(struct TrialActSelWk *wkp)
 {
+	int local_8;
+
+	for (local_8 = 0; local_8 <= 2; local_8++)
+	{
+		if (AvaGetTrialEmblem((enum AvaCharEnum)DAT_05cd14ed, wkp->NowStgActPrm.StgActPtr[wkp->SelStg].Stg, local_8) != 0)
+		{
+			if (DAT_05cd14ed != 6)
+			{
+				DrawEbmlem((float)(local_8 * 50.0 + 470.0), 194.0f, wkp->BaseZ + -12.0);
+			}
+			else
+			{
+				DrawMetalEbmlem((float)(local_8 * 50.0 + 470.0), 194.0f, wkp->BaseZ + -12.0);
+			}
+		}
+	}
 }
 
 // FUNCTION: SADX 0x006075f0

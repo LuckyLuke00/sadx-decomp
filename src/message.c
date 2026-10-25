@@ -1,4 +1,6 @@
 #include "decls.h"
+extern int DAT_05cd14d4;
+extern unsigned int *DAT_05b93264;
 extern int DAT_05b42c34;
 extern int DAT_05b42c38;
 extern int DAT_05b3ebbc;
@@ -136,9 +138,27 @@ void MSG_Disp(struct MSGC *msgc)
 	DAT_05b92e28 = DAT_05b92e28 + 1;
 }
 
-// STUB: SADX 0x004c22f0
+// FUNCTION: SADX 0x004c22f0
 void MSG_Cls(struct MSGC *msgc)
 {
+	unsigned short *local_8g;
+	int local_cg;
+
+	if (0 != msgc->bitmap)
+	{
+		local_8g = (unsigned short *)msgc->bitmap;
+		for (local_cg = 0; local_cg < (msgc->buf_width2 * msgc->buf_height2); local_cg++)
+		{
+			*local_8g = 0;
+			local_8g++;
+		}
+	}
+	msgc->ly = 0;
+	msgc->lx = 0;
+	msgc->msgc_flag |= 1;
+	DAT_05cd14d4 = 1;
+	FUN_005a4d70();
+	DAT_05cd14d4 = 0;
 }
 
 // FUNCTION: SADX 0x004c24e0
@@ -255,9 +275,29 @@ int FUN_004c2e10(int param_1)
 	return param_1;
 }
 
-// STUB: SADX 0x004c2e40
+// FUNCTION: SADX 0x004c2e40
 void MSG_WinFadeOut(struct MSGC *msgc)
 {
+	int local_8g;
+	int local_cg;
+
+	local_8g = 0xa;
+	for (; local_8g != 0; local_8g--)
+	{
+		*(unsigned char *)((char *)msgc + 0x1f) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x1f) - 0x18);
+		MSG_Disp(msgc);
+		FUN_005a4d70();
+	}
+	*(unsigned char *)((char *)msgc + 0x1f) = 0;
+	local_cg = 0xa;
+	for (; local_cg != 0; local_cg--)
+	{
+		*(unsigned char *)((char *)msgc + 0x23) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x23) - 0xc);
+		MSG_Disp(msgc);
+		FUN_005a4d70();
+	}
+	*(unsigned char *)((char *)msgc + 0x23) = 0;
+	FUN_004c2fa0(msgc, 2);
 }
 
 // FUNCTION: SADX 0x004c2ef0
@@ -298,9 +338,19 @@ void FUN_004c2fa0(struct MSGC *param_1, int param_2)
 	}
 }
 
-// STUB: SADX 0x004c2fe0
+// FUNCTION: SADX 0x004c2fe0
 void MSG_WaitC(struct MSGC *msgc, int time)
 {
+	int local_8;
+	for (local_8 = time; local_8 != 0; local_8 = local_8 + -1)
+	{
+		MSG_Disp(msgc);
+		FUN_005a4d70();
+		if ((DAT_05b93264[4] & 2) != 0)
+		{
+			break;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004c3030

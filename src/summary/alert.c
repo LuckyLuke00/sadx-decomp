@@ -37,8 +37,28 @@ void AlertWindowDestructor(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0059ce00
+// FUNCTION: SADX 0x0059ce00
 long CloseAlertWindow(struct task *tp)
 {
-	return (long)0;
+	struct anywk *local_8;
+
+	local_8 = tp->awp;
+	if (*(unsigned char *)local_8 == 1)
+	{
+		*(char *)local_8 = 2;
+		if (*(int *)((char *)local_8 + 0x54) != 0)
+		{
+			FUN_004c3310((int *)((char *)local_8 + 0x2c));
+			if (DAT_05cda188 != 0)
+			{
+				syFree(DAT_05cda188);
+				DAT_05cda188 = 0;
+			}
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }

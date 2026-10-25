@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00576c10(struct task *param_1);
 void FUN_005779c0(signed char param_1);
 void FUN_00576bf0(struct task *param_1);
 void SetDialogNoKeyTime(short time);
@@ -67,10 +68,23 @@ void FUN_00576bf0(struct task *param_1)
 	*(int *)((char *)param_1 + 4) = 2;
 }
 
-// STUB: SADX 0x00577850
+// FUNCTION: SADX 0x00577850
 struct task *SetDialogTask()
 {
-	return (struct task *)0;
+	struct task *local_8g;
+	void *local_cg;
+
+	local_8g = CreateElementalTask(0, 5, dialog_exec);
+	DAT_05cd2600 = local_8g;
+	if (DAT_05cd2600 != 0)
+	{
+		local_cg = MAlloc(0x44);
+		local_8g->awp = (struct anywk *)local_cg;
+		SetDialogLocalPrm((struct DialogWk *)local_8g);
+		local_8g->exec = dialog_exec;
+		local_8g->disp = (void (*)(struct task *))FUN_00576c10;
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x00577930
@@ -94,9 +108,19 @@ void OpenDialogQuick(struct DialogPrmType *dp, signed char csr, signed char *dis
 	FUN_00576bf0((struct task *)DAT_05cd2600->awp);
 }
 
-// STUB: SADX 0x00577a40
+// FUNCTION: SADX 0x00577a40
 void OpenDialogCsrLet(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
 {
+	*(struct DialogPrmType **)((char *)DAT_05cd2600->awp + 0x0) = dp;
+	*(int *)((char *)DAT_05cd2600->awp + 4) = 1;
+	FUN_00576a60((int)dis_csr_ptr);
+	*(int *)((char *)DAT_05cd2600->awp + 0x3c) = 0xffffffff;
+	FUN_005779c0(csr);
+	SetDialogNoKeyTime(0);
+	if (dp->DlgSndPrmPtr != 0)
+	{
+		dsPlay_oneshot(dp->DlgSndPrmPtr->OpenSnd, 0, 0, 0);
+	}
 }
 
 // FUNCTION: SADX 0x00577ae0
@@ -150,7 +174,10 @@ short GetDialogNoKeyTime()
 	return *(short *)((char *)local_8 + 0x24);
 }
 
-// STUB: SADX 0x00577ba0
+// FUNCTION: SADX 0x00577ba0
 void SetDialogNoKeyTime(short time)
 {
+	struct anywk *local_8;
+	local_8 = DAT_05cd2600->awp;
+	*(short *)((char *)local_8 + 0x24) = time;
 }

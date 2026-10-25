@@ -1,11 +1,12 @@
 #include "decls.h"
+static void adva_serifu_exec(struct task *tp);
 void DestroyTask(struct task *tp);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 void *CAlloc(unsigned int num, unsigned int size);
 void adva_serifu_exec(struct task *tp);
 extern int DAT_05b40a48;
-extern int DAT_05cda194;
-extern int DAT_05cda198;
+extern struct task *DAT_05cda194;
+extern struct task *DAT_05cda198;
 
 // FUNCTION: SADX 0x0059f630
 void AdvaSndCsrMove()
@@ -36,15 +37,15 @@ void InitAdvaBGM()
 // FUNCTION: SADX 0x0059f6c0
 void EndAdvaBGM()
 {
-	if ((*(struct task *(*))&DAT_05cda198) != 0)
+	if (DAT_05cda198 != 0)
 	{
-		DestroyTask((*(struct task *(*))&DAT_05cda198));
-		(*(struct task *(*))&DAT_05cda198) = 0;
+		DestroyTask(DAT_05cda198);
+		DAT_05cda198 = 0;
 	}
-	if ((*(struct task *(*))&DAT_05cda194) != 0)
+	if (DAT_05cda194 != 0)
 	{
-		DestroyTask((*(struct task *(*))&DAT_05cda194));
-		(*(struct task *(*))&DAT_05cda194) = 0;
+		DestroyTask(DAT_05cda194);
+		DAT_05cda194 = 0;
 	}
 	ADX_Close();
 }
@@ -74,7 +75,7 @@ void SetAdvaBGM(int adxnum)
 		if (DAT_05cda194 == 0)
 		{
 			local_8g = CreateElementalTask(0, 4, adva_bgm_exec);
-			DAT_05cda194 = (int)local_8g;
+			DAT_05cda194 = local_8g;
 			if (DAT_05cda194 != 0)
 			{
 				local_cg = (int *)CAlloc(1, 8);
@@ -112,7 +113,7 @@ int SetAdvaSerifuNum(int adxnum)
 	if (DAT_05cda198 == 0)
 	{
 		local_8g = CreateElementalTask(0, 4, adva_serifu_exec);
-		DAT_05cda198 = (int)local_8g;
+		DAT_05cda198 = local_8g;
 		if (DAT_05cda198 != 0)
 		{
 			local_cg = (int *)CAlloc(1, 8);
@@ -125,9 +126,22 @@ int SetAdvaSerifuNum(int adxnum)
 	return 0;
 }
 
-// STUB: SADX 0x0059f8a0
-void adva_serifu_exec(struct task *tp)
+// FUNCTION: SADX 0x0059f8a0
+static void adva_serifu_exec(struct task *tp)
 {
+	struct anywk *local_8 = tp->awp;
+	if ((local_8->work.sl[1]++ > 0) && (DAT_05b40a48 != 0))
+	{
+		Serif_Play((int)local_8->work.ptr[0]);
+		DestroyTask(tp);
+		DAT_05cda198 = 0;
+	}
+}
+
+// STUB: SADX 0x0059f900
+int SetAdvaSerifu(enum AvaSerifuModeEnum serifumode)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x0059f930

@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_005fcd40(struct task *param_1);
+static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp);
+extern int DAT_05cd265c;
 static void title_menu_disp(struct task *tp);
 static void title_menu_exec(struct task *tp);
 
@@ -31,7 +34,26 @@ void TitleMenuWakeProcedure(struct TitleMenuWk *wkp)
 {
 }
 
-// STUB: SADX 0x005fca60
+// FUNCTION: SADX 0x005fca60
 static void title_menu_disp(struct task *tp)
 {
+	struct TitleMenuWk *local_8;
+
+	local_8 = (struct TitleMenuWk *)tp->awp;
+	if (local_8->BaseCol == 0)
+	{
+		return;
+	}
+	ghDefaultBlendingMode();
+	ghSetPvrTexBaseColor(local_8->BaseCol);
+	FUN_005fcd40((struct task *)local_8);
+	DisplayTitleMenuCsr(local_8);
+	DAT_05cd265c = 1;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x005fcac0
+static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp)
+{
+}
+#pragma optimize("", on)
