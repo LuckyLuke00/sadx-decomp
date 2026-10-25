@@ -18,7 +18,7 @@ static struct CCL_INFO colliInfo[1];
 static struct particle_info missile_smoke;
 
 // FUNCTION: SADX 0x007069d0
-static void death(struct task *pTask, float fSize)
+static __inline void death(struct task *pTask, float fSize)
 {
 	struct taskwk *local_8 = pTask->twp;
 	FUN_0060d560(&local_8->pos, fSize);

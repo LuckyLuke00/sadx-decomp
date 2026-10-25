@@ -4736,7 +4736,7 @@
   {
    "address": "0x0043fff0",
    "name": "AL_GetCurrGardenChaoCount",
-   "accuracy": 0.5,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -6208,7 +6208,7 @@
   {
    "address": "0x004518d0",
    "name": "AL_AllFieldCreateT",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -8073,7 +8073,7 @@
   {
    "address": "0x00479910",
    "name": "FUN_00479910",
-   "accuracy": 0.46153846153846156,
+   "accuracy": 0.6666666666666666,
    "effective": false,
    "stub": false,
    "library": false
@@ -74496,5 +74496,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "f242d35d290d52ad8e6ecc71b5bd6a131d7fb0e26983b79b02776b6d76690a2d"
+ "inputs_sha256": "0653461453cee017ea0f901cd8e2dea08f57194a4d7fe5f335e3e5f5edd77bcf"
 }
