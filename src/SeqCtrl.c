@@ -44,7 +44,7 @@ extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern int DAT_05cc3574;
 extern char DAT_05cc3631;
-extern int DAT_05bb00a8;
+extern unsigned char DAT_05bb00a8;
 extern short DAT_05bafd18;
 extern int DAT_05baf544;
 void FUN_004f5550(int param_1);

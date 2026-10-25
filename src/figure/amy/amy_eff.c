@@ -2,7 +2,7 @@
 extern void AmyEffectFallHeart(struct task *tp);
 extern struct NJS_TEXLIST texlist_amy_eff;
 extern struct obj *DAT_060eea50;
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern struct NJS_SPRITE sprite_amy_piyo;
 extern int DAT_05b9d838;
 void FreeTask(struct task *tp);
@@ -89,7 +89,7 @@ void AmyEffectPiyoPiyo(struct task *tp)
 	float local_cg;
 
 	local_8g = tp->twp;
-	if (DAT_05baf368 == 0)
+	if (DAT_05baf368[0] == 0)
 	{
 		FreeTask(tp);
 	}
@@ -118,7 +118,7 @@ void AmyEffectPiyoPiyoEnd(struct task *tp)
 {
 	struct taskwk *local_8;
 	local_8 = tp->twp;
-	if (DAT_05baf368 == 0)
+	if (DAT_05baf368[0] == 0)
 	{
 		FreeTask(tp);
 		return;

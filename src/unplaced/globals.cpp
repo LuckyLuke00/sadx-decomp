@@ -1112,6 +1112,9 @@ int DAT_0263d6f0;
 // GLOBAL: SADX 0x0263d6f4
 struct CCL_INFO DAT_0263d6f4;
 
+// GLOBAL: SADX 0x0263d7e8
+struct NJS_TEXLIST texlist_yellow_numbers[10];
+
 // GLOBAL: SADX 0x0263da30
 struct FACETBL *faceTbl[31];
 
@@ -1519,6 +1522,9 @@ const struct pastpc_data pastpc_data_tbl[1] = {};
 
 // GLOBAL: SADX 0x0270c230
 struct NJS_POINT3 pos_tical;
+
+// GLOBAL: SADX 0x0270c260
+struct NJS_POINT3 DAT_0270c260;
 
 // GLOBAL: SADX 0x0270c29c
 struct NJS_POINT3 tical_pos;
@@ -3209,6 +3215,12 @@ struct NJS_TEXANIM anim_c0_drop[1];
 // GLOBAL: SADX 0x04c2eca4
 struct NJS_TEXANIM anim_c0_ato[1];
 
+// GLOBAL: SADX 0x04c2ee88
+struct NJS_TEXANIM anim_c2_brain[2];
+
+// GLOBAL: SADX 0x04c2eeb0
+struct NJS_SPRITE sprite_c2_brain;
+
 // GLOBAL: SADX 0x04c33554
 struct obj object_c0_manju_c0_manju[1];
 
@@ -3824,6 +3836,9 @@ struct task *DAT_05b33048;
 // GLOBAL: SADX 0x05b3304c
 const unsigned long *DAT_05b3304c = 0;
 
+// GLOBAL: SADX 0x05b33088
+int DAT_05b33088;
+
 // GLOBAL: SADX 0x05b330e4
 void *DAT_05b330e4;
 
@@ -4086,7 +4101,7 @@ float DAT_05b3df38;
 float DAT_05b3df3c;
 
 // GLOBAL: SADX 0x05b3df40
-int DAT_05b3df40;
+float DAT_05b3df40;
 
 // GLOBAL: SADX 0x05b3df44
 float DAT_05b3df44;
@@ -4227,10 +4242,7 @@ struct MDHANDLE *DAT_05b3e3a0[51];
 int DAT_05b3e464;
 
 // GLOBAL: SADX 0x05b3e468
-int DAT_05b3e468[20][14];
-
-// GLOBAL: SADX 0x05b3e46c
-int DAT_05b3e46c[20][14];
+struct _SEcallbuf DAT_05b3e468[20];
 
 // GLOBAL: SADX 0x05b3e924
 int DAT_05b3e924;
@@ -4617,13 +4629,22 @@ signed char DAT_05b92ea0;
 int DAT_05b92eb8;
 
 // GLOBAL: SADX 0x05b92ec8
-unsigned char DAT_05b92ec8[768];
+unsigned char DAT_05b92ec8[0x300];
+
+// GLOBAL: SADX 0x05b93248
+int DAT_05b93248;
 
 // GLOBAL: SADX 0x05b93264
 unsigned int *DAT_05b93264;
 
 // GLOBAL: SADX 0x05b93270
 int DAT_05b93270;
+
+// GLOBAL: SADX 0x05b93284
+int DAT_05b93284;
+
+// GLOBAL: SADX 0x05b93288
+int DAT_05b93288;
 
 // GLOBAL: SADX 0x05b9328c
 int DAT_05b9328c;
@@ -4634,14 +4655,14 @@ int DAT_05b93290;
 // GLOBAL: SADX 0x05b93294
 int DAT_05b93294;
 
-// GLOBAL: SADX 0x05b932f0
-char DAT_05b932f0[1024];
-
-// GLOBAL: SADX 0x05b932f8
-long DAT_05b932f8[1];
+// GLOBAL: SADX 0x05b932e8
+struct PDS_PERIPHERAL DAT_05b932e8[8];
 
 // GLOBAL: SADX 0x05b93588
 int DAT_05b93588;
+
+// GLOBAL: SADX 0x05b9358c
+char DAT_05b9358c;
 
 // GLOBAL: SADX 0x05b935cc
 int DAT_05b935cc;
@@ -4845,10 +4866,7 @@ int DAT_05ba3328[8];
 int DAT_05ba9348[8];
 
 // GLOBAL: SADX 0x05baf368
-short *DAT_05baf368;
-
-// GLOBAL: SADX 0x05baf36c
-struct taskwk *DAT_05baf36c;
+struct taskwk *DAT_05baf368[8];
 
 // GLOBAL: SADX 0x05baf388
 int DAT_05baf388[8];
@@ -5103,7 +5121,7 @@ struct BOSSPLAYER_CREATE_PARAM DAT_05bafd1c;
 int DAT_05bafd4c;
 
 // GLOBAL: SADX 0x05bb00a8
-int DAT_05bb00a8;
+unsigned char DAT_05bb00a8;
 
 // GLOBAL: SADX 0x05bb00a9
 unsigned char DAT_05bb00a9;
@@ -5166,7 +5184,7 @@ char DAT_05cbef5c;
 char DAT_05cbef5d;
 
 // GLOBAL: SADX 0x05cbef64
-unsigned char DAT_05cbef64;
+int DAT_05cbef64;
 
 // GLOBAL: SADX 0x05cbeff9
 unsigned char DAT_05cbeff9;
@@ -5212,6 +5230,9 @@ int DAT_05cc3574;
 
 // GLOBAL: SADX 0x05cc3620
 int DAT_05cc3620;
+
+// GLOBAL: SADX 0x05cc3628
+int DAT_05cc3628;
 
 // GLOBAL: SADX 0x05cc3631
 char DAT_05cc3631;
@@ -7426,6 +7447,12 @@ char DAT_060d0df8[0x4b0];
 
 // GLOBAL: SADX 0x060d12a8
 struct task *DAT_060d12a8;
+
+// GLOBAL: SADX 0x060d12b4
+short DAT_060d12b4;
+
+// GLOBAL: SADX 0x060d12b6
+signed char DAT_060d12b6;
 
 // GLOBAL: SADX 0x060d12bb
 unsigned char DAT_060d12bb;

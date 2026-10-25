@@ -5148,6 +5148,14 @@
    "library": false
   },
   {
+   "address": "0x0043f290",
+   "name": "AL_CheckSaveDataCrc2",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043f300",
    "name": "FUN_0043f300",
    "accuracy": 0.3333333333333333,
@@ -7374,7 +7382,7 @@
   {
    "address": "0x00458470",
    "name": "MOV_Dist2FromPlayer",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -8927,7 +8935,7 @@
   {
    "address": "0x00479b70",
    "name": "AL_Garden01MasterExecutor",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -9031,7 +9039,7 @@
   {
    "address": "0x0047a790",
    "name": "AL_OdekakeStageExecutor",
-   "accuracy": 0.08333333333333333,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -13797,9 +13805,9 @@
   {
    "address": "0x004aed90",
    "name": "dsPlay_iloop",
-   "accuracy": 0.12121212121212122,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -13973,7 +13981,7 @@
   {
    "address": "0x004aff60",
    "name": "dsEVboss",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -14717,7 +14725,7 @@
   {
    "address": "0x004bd800",
    "name": "CameraCollisionCube",
-   "accuracy": 0.2127659574468085,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -15485,9 +15493,9 @@
   {
    "address": "0x004c39d0",
    "name": "CheckSoftResetTiming",
-   "accuracy": 0.21621621621621623,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -15501,9 +15509,9 @@
   {
    "address": "0x004c4240",
    "name": "input_init",
-   "accuracy": 0.21621621621621623,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -15629,7 +15637,7 @@
   {
    "address": "0x004c6720",
    "name": "GoNextAction",
-   "accuracy": 0.14035087719298245,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -15637,7 +15645,7 @@
   {
    "address": "0x004c75c0",
    "name": "GoNextAdventure",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -17933,7 +17941,7 @@
   {
    "address": "0x004f0760",
    "name": "LadderingPathP",
-   "accuracy": 0.1568627450980392,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -18005,7 +18013,7 @@
   {
    "address": "0x004f0ae0",
    "name": "CancelLookingAtP",
-   "accuracy": 0.4,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -18293,7 +18301,7 @@
   {
    "address": "0x004f1e60",
    "name": "CheckPlayerRideOnMobileLandObjectP",
-   "accuracy": 0.29411764705882354,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -18349,7 +18357,7 @@
   {
    "address": "0x004f2160",
    "name": "GetThunderBarrierP",
-   "accuracy": 0.1509433962264151,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -18357,7 +18365,7 @@
   {
    "address": "0x004f2200",
    "name": "GetBarrierP",
-   "accuracy": 0.1509433962264151,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -18365,7 +18373,7 @@
   {
    "address": "0x004f22a0",
    "name": "GetInvincibleBodyP",
-   "accuracy": 0.1568627450980392,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -20461,7 +20469,7 @@
   {
    "address": "0x0050cd80",
    "name": "bigActMissSet",
-   "accuracy": 0.16326530612244897,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -21197,7 +21205,7 @@
   {
    "address": "0x0052bd30",
    "name": "KnucklesCheckStartPunch",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -21597,7 +21605,7 @@
   {
    "address": "0x0053b210",
    "name": "MilesCheckStop",
-   "accuracy": 0.30303030303030304,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -23965,7 +23973,7 @@
   {
    "address": "0x00569ba0",
    "name": "atpAdjustCameraPointWithDistance",
-   "accuracy": 0.10810810810810811,
+   "accuracy": 1.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -29115,6 +29123,14 @@
    "library": false
   },
   {
+   "address": "0x005a7030",
+   "name": "RingDraw",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005a7160",
    "name": "RingDoneDisplayer",
    "accuracy": 1.0,
@@ -30397,9 +30413,9 @@
   {
    "address": "0x005b3f80",
    "name": "ObjectJumpPanelDisplay",
-   "accuracy": 0.050955414012738856,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -31357,7 +31373,7 @@
   {
    "address": "0x005bb820",
    "name": "tikal_draw_sprite",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -31501,7 +31517,7 @@
   {
    "address": "0x005bd0b0",
    "name": "RoboHeadUp",
-   "accuracy": 0.12698412698412698,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -31509,7 +31525,7 @@
   {
    "address": "0x005bd170",
    "name": "RoboHeadWait",
-   "accuracy": 0.0898876404494382,
+   "accuracy": 1.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -32899,6 +32915,22 @@
    "library": false
   },
   {
+   "address": "0x005d2890",
+   "name": "E102ResetDelayAnalogKey",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005d2910",
+   "name": "SetE102DashPanelAccel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005d2d60",
    "name": "FUN_005d2d60",
    "accuracy": 0.06557377049180328,
@@ -33152,6 +33184,14 @@
    "accuracy": 0.15625,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005d5740",
+   "name": "FUN_005d5740",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -34141,7 +34181,7 @@
   {
    "address": "0x005e3f10",
    "name": "EnemyDist2FromPlayer",
-   "accuracy": 0.18518518518518517,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -40654,6 +40694,14 @@
   {
    "address": "0x006bd330",
    "name": "mainE102Past01",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006bd3d0",
+   "name": "mainAmyPast01",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -52759,7 +52807,7 @@
   {
    "address": "0x0084c560",
    "name": "EffHodaiBombReflectPlayer",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -52879,6 +52927,22 @@
   {
    "address": "0x0084ea40",
    "name": "RuinBgmControl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0084eb00",
+   "name": "FUN_0084eb00",
+   "accuracy": 0.044444444444444446,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0084ec10",
+   "name": "LongLineRingExec",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -58069,6 +58133,38 @@
    "library": false
   },
   {
+   "address": "0x008c5bb0",
+   "name": "Effect_ChaosBrainFlame",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c5c80",
+   "name": "Effect_ChaosBrainFlameDisplay",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c5d90",
+   "name": "Effect_ChaosCore",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c5e60",
+   "name": "Effect_ChaosCoreDisplay",
+   "accuracy": 0.09523809523809523,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008c67b0",
    "name": "CreateBubble",
    "accuracy": 0.06349206349206349,
@@ -58103,6 +58199,30 @@
   {
    "address": "0x008c6bc0",
    "name": "ChaosBubbleAdd",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c6bd0",
+   "name": "moveToTarget",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c6ca0",
+   "name": "turnToPlayer",
+   "accuracy": 0.16326530612244897,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c6d30",
+   "name": "getForPlayerAngle",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -58327,9 +58447,17 @@
   {
    "address": "0x008c9d30",
    "name": "MirenPlyInitPlayerPos",
-   "accuracy": 0.42105263157894735,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c9d60",
+   "name": "MirenPlyStopPlayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -78806,6 +78934,13 @@
    "library": false
   },
   {
+   "address": "0x0263d7e8",
+   "name": "texlist_yellow_numbers",
+   "size": 80,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0263da30",
    "name": "faceTbl",
    "size": 124,
@@ -79753,6 +79888,13 @@
   {
    "address": "0x0270c230",
    "name": "pos_tical",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0270c260",
+   "name": "DAT_0270c260",
    "size": 12,
    "match": false,
    "library": false
@@ -83769,6 +83911,20 @@
    "library": false
   },
   {
+   "address": "0x04c2ee88",
+   "name": "anim_c2_brain",
+   "size": 40,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c2eeb0",
+   "name": "sprite_c2_brain",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c33554",
    "name": "object_c0_manju_c0_manju",
    "size": 52,
@@ -84856,5 +85012,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "863a7c3b65c513beabefcd7c9b30504e7c4af515e4967f5991329bc08872cc41"
+ "inputs_sha256": "976f17b5c8620c19fa9bfad187bb7e8feddedc2d5d3bd4969f437b8388ab49f7"
 }

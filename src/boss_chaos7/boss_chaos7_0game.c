@@ -1,7 +1,7 @@
 #include "decls.h"
 extern int DAT_05b9d838;
 extern struct NJS_POINT3 player_pos[1];
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern signed char DAT_060c369c;
 extern float DAT_060c36a0;
 extern float DAT_060c36a4;
@@ -66,7 +66,7 @@ void FUN_006fdeb0(void)
 {
 	int var1 = DAT_060c369c;
 	struct NJS_POINT3 *var2 = &player_pos[var1];
-	short *var3 = DAT_05baf368;
+	short *var3 = (short *)DAT_05baf368[0];
 
 	*(int *)((char *)var3 + 0x20) = *(int *)((char *)var2 + 0x0);
 	*(int *)((char *)var3 + 0x24) = *(int *)((char *)var2 + 0x4);

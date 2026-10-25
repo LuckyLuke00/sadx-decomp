@@ -14,16 +14,16 @@ extern struct taskwk *DAT_05b42a7c;
 // FUNCTION: SADX 0x008894a0
 long ObjCasino_CheckUpperY(float ypos)
 {
-	if ((*(struct taskwk *(*))&DAT_05baf368) != 0)
+	if (DAT_05baf368[0] != 0)
 	{
-		if ((*(struct taskwk *(*))&DAT_05baf368)->pos.y >= ypos)
+		if (DAT_05baf368[0]->pos.y >= ypos)
 		{
 			return 1;
 		}
 	}
-	if (DAT_05baf36c != 0)
+	if (DAT_05baf368[1] != 0)
 	{
-		if (DAT_05baf36c->pos.y >= ypos)
+		if (DAT_05baf368[1]->pos.y >= ypos)
 		{
 			return 1;
 		}

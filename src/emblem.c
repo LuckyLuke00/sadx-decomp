@@ -25,7 +25,7 @@ extern char DAT_05cc3631;
 extern unsigned char DAT_05bb00a9;
 extern unsigned long DAT_05cccf84;
 extern int DAT_05b9d838;
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern struct taskwk *DAT_05b42a7c;
 extern char DAT_05ccca18;
 extern char emblem_num[0x20];
@@ -290,7 +290,7 @@ struct task *FUN_0049e8d0(struct NJS_POINT3 *param_1)
 		local_8->twp->pos.x = param_1->x;
 		local_8->twp->pos.y = param_1->y;
 		local_8->twp->pos.z = param_1->z;
-		if (DAT_05baf368[2] & 1)
+		if (DAT_05baf368[0]->flag & 1)
 		{
 			PadReadOff();
 		}
@@ -312,7 +312,7 @@ void ObjectGetEmblem(struct task *tp)
 	local_8->value.l = 0;
 	local_8->timer.f = 0.0f;
 	local_8->scl.x = 1.0f;
-	if (DAT_05baf368[2] & 1)
+	if (DAT_05baf368[0]->flag & 1)
 	{
 		PadReadOff();
 	}
@@ -336,7 +336,7 @@ static void Exec(struct task *tp)
 	{
 		return;
 	}
-	if (DAT_05baf368[2] & 1)
+	if (DAT_05baf368[0]->flag & 1)
 	{
 		PadReadOff();
 	}

@@ -29,7 +29,7 @@ void Dsp_first_pond(struct task *pTask)
 // FUNCTION: SADX 0x006f0a20
 void Exe_side_collision(struct task *pTask)
 {
-	if (*(float *)((char *)DAT_05baf368 + 0x24) < 0.0f)
+	if (DAT_05baf368[0]->pos.y < 0.0f)
 	{
 		ADX_Close();
 		KillHimByFallingDownP(0);

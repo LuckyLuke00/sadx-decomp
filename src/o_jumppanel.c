@@ -119,6 +119,62 @@ void FUN_005b3ee0(struct task *param_1)
 {
 }
 
+// FUNCTION: SADX 0x005b3f80
+void ObjectJumpPanelDisplay(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (DAT_05baf368[0] == 0 || DAT_05b42a7c == 0)
+	{
+		return;
+	}
+	if (njSqrt((DAT_05b42a7c->pos.x - local_8->pos.x) * (DAT_05b42a7c->pos.x - local_8->pos.x) + (DAT_05b42a7c->pos.y - local_8->pos.y) * (DAT_05b42a7c->pos.y - local_8->pos.y) + (DAT_05b42a7c->pos.z - local_8->pos.z) * (DAT_05b42a7c->pos.z - local_8->pos.z)) >= 500.0f)
+	{
+		return;
+	}
+	if (local_8->wtimer == 0 && CheckEditMode() == 0)
+	{
+		return;
+	}
+	SaveControl3D();
+	njControl3D(0x10);
+	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+	njPushMatrix(NULL);
+	njTranslateV(NULL, &local_8->pos);
+	if (local_8->ang.z != 0)
+	{
+		njRotateZ(NULL, (unsigned short)local_8->ang.z);
+	}
+	if (local_8->ang.x != 0)
+	{
+		njRotateX(NULL, (unsigned short)local_8->ang.x);
+	}
+	if (local_8->ang.y != 0)
+	{
+		njRotateY(NULL, (unsigned short)local_8->ang.y);
+	}
+	if (local_8->wtimer == 0)
+	{
+		SetRegularTexture();
+		late_DrawObjectClipMesh(&DAT_05a8c05c, 0, 1.0f);
+	}
+	else
+	{
+		___njSetTexture(&texlist_yellow_numbers[local_8->wtimer]);
+		ds_DrawObjectClip(&DAT_05a8c248, 1.0f);
+		SetRegularTexture();
+		late_DrawObjectClipMesh(&DAT_05a8c05c, 0, 1.0f);
+	}
+	njPopMatrix(1);
+	ResetMaterial();
+	LoadControl3D();
+}
+
 // FUNCTION: SADX 0x005b4170
 void ObjectJumpPanelExit(struct task *tp)
 {

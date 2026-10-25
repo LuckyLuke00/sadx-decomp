@@ -9,7 +9,7 @@ void CameraSetEventCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), unsig
 // FUNCTION: SADX 0x00707080
 static __declspec(safebuffers) void CameraE101Tgt(struct _OBJ_CAMERAPARAM *pParam)
 {
-	struct taskwk *local_14 = (struct taskwk *)DAT_05baf368;
+	struct taskwk *local_14 = DAT_05baf368[0];
 	struct NJS_POINT3 local_10;
 	struct NJS_POINT3 *local_18;
 	float local_4;

@@ -140,7 +140,18 @@ int FUN_0053b120(struct task *tp)
 // FUNCTION: SADX 0x0053b210
 long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (DAT_05b932e8[twp->counter.b[0]].press & action_button)
+	{
+		twp->mode = 4;
+		*(short *)((char *)pwp + 0x124) = 0xf;
+		twp->flag |= 0x500;
+		pwp->work.f = pwp->spd.x;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0053b270

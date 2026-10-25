@@ -1,10 +1,57 @@
 #include "decls.h"
+extern int DAT_05b9d838;
+extern float DAT_05b3df40;
+extern int DAT_05b3df4c;
+extern struct NJS_MODEL DAT_05a7b20c;
 extern unsigned long DAT_05edbcfc;
 
 // FUNCTION: SADX 0x005a6b00
 void InitRing()
 {
 	DAT_05edbcfc = 0;
+}
+
+// FUNCTION: SADX 0x005a7030
+void RingDraw(struct task *tp)
+{
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (dsCheckViewV(&local_8->pos, 20.0f) == 0)
+	{
+		return;
+	}
+	if (local_8->btimer < 0x32)
+	{
+		if (*(float *)((char *)local_8 + 0x30) != -1000000.0f)
+		{
+			StaticShadow(local_8, *(float *)((char *)local_8 + 0x30));
+		}
+	}
+	SaveConstantAttr();
+	OffConstantAttr(0, 0x80000);
+	SetRegularTexture();
+	njPushMatrix(0);
+	FUN_0067d830(0, local_8->pos.x, local_8->pos.y, local_8->pos.z);
+	if (*(int *)((char *)local_8 + 0x18) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)local_8 + 0x18));
+	}
+	if (DAT_05b3df4c != 0)
+	{
+		DAT_05b3df40 = 32.0f;
+		late_DrawModel(&DAT_05a7b20c, 1);
+		DAT_05b3df40 = 0.0f;
+	}
+	else
+	{
+		___dsDrawModel(&DAT_05a7b20c);
+	}
+	njPopMatrix(1);
+	LoadConstantAttr();
 }
 
 // FUNCTION: SADX 0x005a7160

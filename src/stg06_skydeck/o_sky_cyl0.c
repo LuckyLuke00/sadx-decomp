@@ -1,5 +1,5 @@
 #include "decls.h"
-extern unsigned char DAT_05cbef64;
+extern int DAT_05cbef64;
 
 // FUNCTION: SADX 0x00847f20
 void ObjectSkydeck_c_cyl0_Exec(struct task *tp)

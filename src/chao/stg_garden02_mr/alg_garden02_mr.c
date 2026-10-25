@@ -1,5 +1,5 @@
 #include "decls.h"
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern struct NJS_TEXLIST texlist_al_dx_tex_xybutton;
 void FUN_004b6520(int param_1);
 void BGM_Stop();
@@ -23,7 +23,7 @@ void AL_Garden02MasterExecutor(struct task *tp)
 	short *var1;
 
 	LoopTaskC(tp);
-	var1 = DAT_05baf368;
+	var1 = (short *)DAT_05baf368[0];
 	if (((float *)var1)[8] < 10.0f && ((float *)var1)[10] < -150.0f)
 	{
 		SetEntranceNumber(4);

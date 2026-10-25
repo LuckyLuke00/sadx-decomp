@@ -1,4 +1,12 @@
 #include "decls.h"
+void FUN_0050ce80(char *param_1, int param_2, char *param_3);
+long PAdjustHoldingPosition(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
+long PCheckHoldObject(struct taskwk *twp);
+long PCheckColliAngle(struct taskwk *twp, struct motionwk2 *mwp);
+long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+extern struct taskwk *DAT_05b42a7c;
+extern struct taskwk *DAT_05baf368[8];
+int dsPlay_oneshot(int tone, int id, int pri, int volofs);
 long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 extern unsigned short DAT_05cd296c;
 void FUN_004bee10(void);
@@ -67,7 +75,7 @@ long BigCheckAtack(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 // FUNCTION: SADX 0x00509a00
 long BigCheckAtack_W(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	if (BigCheckWater(twp, mwp, pwp) != 0 && (*(long *)((char *)DAT_05b932f8 + twp->counter.b[0] * 0x34) & action_button) != 0)
+	if (BigCheckWater(twp, mwp, pwp) != 0 && (DAT_05b932e8[twp->counter.b[0]].press & action_button) != 0)
 	{
 		*(short *)((char *)pwp + 0x124) = 0x42;
 		twp->mode = 0x28;
@@ -216,6 +224,14 @@ void FUN_0050cbf0(struct playerwk *pwp)
 // FUNCTION: SADX 0x0050cd80
 void bigActMissSet(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	FUN_004bee10();
+	*(float *)((char *)DAT_05b42a7c + 0x24) = DAT_05baf368[0]->pos.y + 10.0f;
+	*(float *)((char *)DAT_05b42a7c + 0x20) = (*(float *)((char *)DAT_05b42a7c + 0x20) - DAT_05baf368[0]->pos.x) * 0.009999999776482582 + DAT_05baf368[0]->pos.x;
+	*(float *)((char *)DAT_05b42a7c + 0x28) = (*(float *)((char *)DAT_05b42a7c + 0x28) - DAT_05baf368[0]->pos.z) * 0.009999999776482582 + DAT_05baf368[0]->pos.z;
+	pwp->mj.reqaction = 0x3f;
+	twp->mode = 0x27;
+	dsPlay_oneshot(0x350, 0, 0, 0);
+	dsPlay_oneshot(0x52a, 0, 0, 0);
 }
 
 // FUNCTION: SADX 0x0050ce30

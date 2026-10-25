@@ -1,5 +1,6 @@
 #include "decls.h"
-extern unsigned char DAT_05cbef64;
+extern struct obj object_sky_obj_maruasi_a_obj_maruasi_a[1];
+extern int DAT_05cbef64;
 
 // FUNCTION: SADX 0x00847180
 void ObjectSkydeck_c_cyl1_End(struct task *tp)

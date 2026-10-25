@@ -1,6 +1,6 @@
 #include "decls.h"
 extern struct obj object_suimen_wt_j2h_wt_j2h[];
-extern int DAT_05b3df40;
+extern float DAT_05b3df40;
 extern int DAT_05b9d838;
 
 // FUNCTION: SADX 0x008b5090
@@ -27,9 +27,9 @@ void TubeDisp(struct task *tp)
 	___njSetTexture(&texlist_shelter_suimen);
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
-	*(float *)&DAT_05b3df40 = -17952.0f;
+	DAT_05b3df40 = -17952.0f;
 	late_DrawObjectClipMS(object_suimen_wt_j2h_wt_j2h, 0, 1.0f);
-	*(float *)&DAT_05b3df40 = 0.0f;
+	DAT_05b3df40 = 0.0f;
 	njPopMatrix(1);
 }
 

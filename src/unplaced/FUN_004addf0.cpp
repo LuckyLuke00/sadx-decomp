@@ -5,7 +5,7 @@ extern int DAT_05b3e060;
 extern int DAT_05b3e924;
 extern int DAT_05b3ea00;
 extern int DAT_05b3ea04;
-extern int DAT_05b3e46c[20][14];
+extern struct _SEcallbuf DAT_05b3e468[20];
 
 bool FUN_004ab0b0();
 void FUN_007d21b0(void *param_1);
@@ -35,7 +35,7 @@ void FUN_004ade40()
 	DAT_05b3e924 = 0;
 	for (local_8 = 0; local_8 < 20; local_8++)
 	{
-		DAT_05b3e46c[local_8][0] = 0;
+		DAT_05b3e468[local_8].timer = 0;
 	}
 	InitOverlapSE(1);
 }

@@ -1,6 +1,6 @@
 #include "decls.h"
 extern int DAT_05b9d838;
-extern int DAT_05b3df40;
+extern float DAT_05b3df40;
 extern struct NJS_TEXLIST texlist_chaos4_common;
 extern struct obj object_chaos4ball_s;
 void MirenEffSaveState();
@@ -35,9 +35,9 @@ void Dsp_damage_ball(struct task *pTask)
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
 	FUN_0067d2d0(0, var1->scl.x, var1->scl.y, var1->scl.z);
-	*(float *)&DAT_05b3df40 = 100.0f;
+	DAT_05b3df40 = 100.0f;
 	late_DrawObjectClip(&object_chaos4ball_s, 0, FUN_004a1e90(&var1->scl.x));
-	*(float *)&DAT_05b3df40 = 0.0f;
+	DAT_05b3df40 = 0.0f;
 	njPopMatrix(1);
 	MirenEffLoadState();
 }

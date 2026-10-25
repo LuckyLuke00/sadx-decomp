@@ -1,8 +1,20 @@
 #include "decls.h"
+static void TaskExec(struct task *tp);
+static void TaskEnd(struct task *tp);
+static void TaskDisp(struct task *tp);
+extern struct taskwk *DAT_05baf368[8];
 
 // FUNCTION: SADX 0x0084c560
 void EffHodaiBombReflectPlayer(struct taskwk *twp)
 {
+	struct taskwk *var1;
+
+	var1 = twp->cwp->hit_cwp->mytask->twp;
+	if (var1 != DAT_05baf368[1])
+	{
+		SetVelocityP(0, 0.0f, 2.0f, 0.0f);
+		var1->pos.y += 1.0f;
+	}
 }
 
 // FUNCTION: SADX 0x0084c5b0

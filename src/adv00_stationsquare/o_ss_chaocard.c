@@ -1,6 +1,6 @@
 #include "decls.h"
 extern int DAT_05b9d838;
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 
 // FUNCTION: SADX 0x006862e0
 static void disp(struct task *tp)
@@ -59,7 +59,7 @@ static void Exec(struct task *tp)
 		}
 		break;
 	case 2:
-		var1->ang.y = -((struct taskwk *)DAT_05baf368)->ang.y;
+		var1->ang.y = -DAT_05baf368[0]->ang.y;
 		ObjectMovableSRegularExecute(tp);
 		if (!(var1->flag & 0x1000))
 		{

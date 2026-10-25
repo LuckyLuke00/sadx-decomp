@@ -119,7 +119,19 @@ long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp)
 // FUNCTION: SADX 0x005e3f10
 float EnemyDist2FromPlayer(struct taskwk *twp, int num)
 {
-	return (float)0;
+	struct taskwk *local_8g;
+	float local_cg;
+
+	local_8g = DAT_05baf368[num];
+	if (local_8g == 0)
+	{
+		___OutputDebugString("%s %d:playertwp=0\n", "..\\..\\src\\enemy.c", 0x316);
+		return 0.0f;
+	}
+	local_cg = (local_8g->pos.x - twp->pos.x) * (local_8g->pos.x - twp->pos.x) +
+	          (local_8g->pos.y - twp->pos.y) * (local_8g->pos.y - twp->pos.y) +
+	          (local_8g->pos.z - twp->pos.z) * (local_8g->pos.z - twp->pos.z);
+	return local_cg;
 }
 
 // STUB: SADX 0x005e3fa0

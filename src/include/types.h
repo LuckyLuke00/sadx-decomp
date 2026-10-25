@@ -18,6 +18,7 @@ struct _OBJ_CAMERAPARAM;
 struct _OBJ_LANDTABLE;
 struct _OptionSelWk;
 struct _SC_NUMBERS;
+struct _SEcallbuf;
 struct _sSTVERTEXSTREAM;
 struct ActionParam;
 struct ADV1_AL_BODY;
@@ -88,6 +89,7 @@ struct AvaStgActPrmT;
 struct AvaStgActT;
 struct bankdata;
 struct bankdatalist;
+struct BgTask;
 struct BOSSPLAYER_CREATE_PARAM;
 struct bosswk;
 struct bridge_model_info;
@@ -100,6 +102,7 @@ struct C7ACAM_PARAM;
 struct c_colli_hit_info;
 struct CCL_INFO;
 struct chao_colliwk;
+struct CHAO_GARDEN_INFO;
 struct CHAO_GLOBAL;
 struct CHAO_ID;
 struct CHAO_PARAM_GC;
@@ -131,6 +134,7 @@ struct DialogWk;
 struct DlgSndPrmType;
 struct dummy_crushwk;
 struct EFFENEMYBOMBPARAM;
+struct Egm1SmokeManWk;
 struct Egm2CarData;
 struct EmblemViewWk;
 struct enemywk;
@@ -230,6 +234,8 @@ struct PATHCAMERA1WORK;
 struct pathinfo;
 struct pathtag;
 struct pathtbl;
+struct PDS_PERIPHERAL;
+struct PDS_PERIPHERALINFO;
 struct PDS_VIBPARAM;
 struct pheadeyewk;
 struct PL_ACTION;
@@ -5390,6 +5396,96 @@ static_assert(sizeof(zxsdwstr) == 0x4c, "sizeof zxsdwstr");
 static_assert(offsetof(zxsdwstr, pos) == 0x0, "zxsdwstr::pos");
 static_assert(offsetof(zxsdwstr, lower) == 0xc, "zxsdwstr::lower");
 static_assert(offsetof(zxsdwstr, upper) == 0x2c, "zxsdwstr::upper");
+
+// Offsets not checked against the code yet.
+struct PDS_PERIPHERAL {
+    unsigned long id;
+    unsigned long support;
+    unsigned long on;
+    unsigned long off;
+    unsigned long press;
+    unsigned long release;
+    unsigned short r;
+    unsigned short l;
+    short x1;
+    short y1;
+    short x2;
+    short y2;
+    char *name;
+    void *extend;
+    unsigned long old;
+    struct PDS_PERIPHERALINFO *info;
+};
+static_assert(sizeof(PDS_PERIPHERAL) == 0x34, "sizeof PDS_PERIPHERAL");
+static_assert(offsetof(PDS_PERIPHERAL, id) == 0x0, "PDS_PERIPHERAL::id");
+static_assert(offsetof(PDS_PERIPHERAL, support) == 0x4, "PDS_PERIPHERAL::support");
+static_assert(offsetof(PDS_PERIPHERAL, on) == 0x8, "PDS_PERIPHERAL::on");
+static_assert(offsetof(PDS_PERIPHERAL, off) == 0xc, "PDS_PERIPHERAL::off");
+static_assert(offsetof(PDS_PERIPHERAL, press) == 0x10, "PDS_PERIPHERAL::press");
+static_assert(offsetof(PDS_PERIPHERAL, release) == 0x14, "PDS_PERIPHERAL::release");
+static_assert(offsetof(PDS_PERIPHERAL, r) == 0x18, "PDS_PERIPHERAL::r");
+static_assert(offsetof(PDS_PERIPHERAL, l) == 0x1a, "PDS_PERIPHERAL::l");
+static_assert(offsetof(PDS_PERIPHERAL, x1) == 0x1c, "PDS_PERIPHERAL::x1");
+static_assert(offsetof(PDS_PERIPHERAL, y1) == 0x1e, "PDS_PERIPHERAL::y1");
+static_assert(offsetof(PDS_PERIPHERAL, x2) == 0x20, "PDS_PERIPHERAL::x2");
+static_assert(offsetof(PDS_PERIPHERAL, y2) == 0x22, "PDS_PERIPHERAL::y2");
+static_assert(offsetof(PDS_PERIPHERAL, name) == 0x24, "PDS_PERIPHERAL::name");
+static_assert(offsetof(PDS_PERIPHERAL, extend) == 0x28, "PDS_PERIPHERAL::extend");
+static_assert(offsetof(PDS_PERIPHERAL, old) == 0x2c, "PDS_PERIPHERAL::old");
+static_assert(offsetof(PDS_PERIPHERAL, info) == 0x30, "PDS_PERIPHERAL::info");
+
+// Offsets not checked against the code yet.
+struct _SEcallbuf {
+    int pri;
+    int timer;
+    int id;
+    int mode;
+    int tone;
+    int angle;
+    int vol;
+    int volmax;
+    int pitch;
+    struct NJS_POINT3 pos;
+    int qnum;
+    int banknum;
+};
+static_assert(sizeof(_SEcallbuf) == 0x38, "sizeof _SEcallbuf");
+static_assert(offsetof(_SEcallbuf, pri) == 0x0, "_SEcallbuf::pri");
+static_assert(offsetof(_SEcallbuf, timer) == 0x4, "_SEcallbuf::timer");
+static_assert(offsetof(_SEcallbuf, id) == 0x8, "_SEcallbuf::id");
+static_assert(offsetof(_SEcallbuf, mode) == 0xc, "_SEcallbuf::mode");
+static_assert(offsetof(_SEcallbuf, tone) == 0x10, "_SEcallbuf::tone");
+static_assert(offsetof(_SEcallbuf, angle) == 0x14, "_SEcallbuf::angle");
+static_assert(offsetof(_SEcallbuf, vol) == 0x18, "_SEcallbuf::vol");
+static_assert(offsetof(_SEcallbuf, volmax) == 0x1c, "_SEcallbuf::volmax");
+static_assert(offsetof(_SEcallbuf, pitch) == 0x20, "_SEcallbuf::pitch");
+static_assert(offsetof(_SEcallbuf, pos) == 0x24, "_SEcallbuf::pos");
+static_assert(offsetof(_SEcallbuf, qnum) == 0x30, "_SEcallbuf::qnum");
+static_assert(offsetof(_SEcallbuf, banknum) == 0x34, "_SEcallbuf::banknum");
+
+// Offsets not checked against the code yet.
+struct Egm1SmokeManWk {
+    struct NJS_POINT3 Pos;
+    unsigned char Mode;
+};
+static_assert(sizeof(Egm1SmokeManWk) == 0x10, "sizeof Egm1SmokeManWk");
+static_assert(offsetof(Egm1SmokeManWk, Pos) == 0x0, "Egm1SmokeManWk::Pos");
+static_assert(offsetof(Egm1SmokeManWk, Mode) == 0xc, "Egm1SmokeManWk::Mode");
+
+// Offsets not checked against the code yet.
+struct BgTask {
+    unsigned char stage;
+    unsigned char act;
+    signed char mode;
+    struct NJS_TEXLIST *texList_p;
+    struct obj *obj_p;
+};
+static_assert(sizeof(BgTask) == 0xc, "sizeof BgTask");
+static_assert(offsetof(BgTask, stage) == 0x0, "BgTask::stage");
+static_assert(offsetof(BgTask, act) == 0x1, "BgTask::act");
+static_assert(offsetof(BgTask, mode) == 0x2, "BgTask::mode");
+static_assert(offsetof(BgTask, texList_p) == 0x4, "BgTask::texList_p");
+static_assert(offsetof(BgTask, obj_p) == 0x8, "BgTask::obj_p");
 
 struct u4s {
     unsigned char u4_ACT1 : 4;

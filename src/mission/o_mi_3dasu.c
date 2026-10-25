@@ -33,7 +33,7 @@ static void Disp(struct task *tp)
 static void Destructor(struct task *tp)
 {
 	struct colliwk *var1 = tp->twp->cwp;
-	struct taskwk *var2 = (struct taskwk *)DAT_05baf368;
+	struct taskwk *var2 = DAT_05baf368[0];
 	if (var2)
 	{
 		for (long var3 = 0; var3 < var1->nbHit; var3++)
@@ -41,7 +41,7 @@ static void Destructor(struct task *tp)
 			if (var1->hit_info[var3].hit_twp == var2)
 			{
 				var2->flag &= ~0x800;
-				*(signed char *)DAT_05baf368 = 1;
+				DAT_05baf368[0]->mode = 1;
 				*(long *)(*(char **)DAT_05ba3328[0] + 0x68) = 0;
 				return;
 			}
@@ -101,7 +101,7 @@ static void Exec(struct task *tp)
 			}
 			break;
 		case 2:
-			var1->ang.y = -((struct taskwk *)DAT_05baf368)->ang.y;
+			var1->ang.y = -DAT_05baf368[0]->ang.y;
 			ObjectMovableSRegularExecute(tp);
 			if (!(var1->flag & 0x1000))
 			{
