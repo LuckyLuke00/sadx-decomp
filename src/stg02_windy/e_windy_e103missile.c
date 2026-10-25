@@ -6,7 +6,7 @@ void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2);
 void FUN_005e5770(struct task *param_1);
 float njSqrt(float param_1);
 void njUnitMatrix(float *param_1);
-static void death(struct task *pTask, float fSize);
+static __inline void death(struct task *pTask, float fSize);
 static void chkDamage(struct task *pTask);
 static void updownHeight(struct task *pTask);
 static void FUN_00810290(struct NJS_POINT3 *param_1, float param_2);
@@ -288,7 +288,7 @@ void FUN_00810760(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2, struct
 }
 
 // FUNCTION: SADX 0x00837700
-static void death(struct task *pTask, float fSize)
+static __inline void death(struct task *pTask, float fSize)
 {
 	struct taskwk *local_8 = pTask->twp;
 	FUN_0060d560(&local_8->pos, fSize);

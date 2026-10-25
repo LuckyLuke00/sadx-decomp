@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1410" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">3,549 of 16,524 game functions done (21.48%), accuracy 99.59%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">3,551 of 16,524 game functions done (21.49%), accuracy 99.63%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="603,1168.5 609,1168.5 612,1172 606,1179 600,1172" fill="#2f6bff" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="603,1168.5 609,1168.5 607.5,1172 604.5,1172" fill="#ffffff" fill-opacity="0.45"/>
@@ -1598,7 +1598,7 @@
 <polygon points="676,538.5 682,538.5 685,542 679,549 673,542" fill="#7fe8ff" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <polygon points="676,538.5 682,538.5 680.5,542 677.5,542" fill="#ffffff" fill-opacity="0.45"/>
 <text x="689" y="548" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">23%</tspan></text>
-<rect x="674" y="556" width="306" height="245" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 309 of 1,312 done</title></rect>
+<rect x="674" y="556" width="306" height="245" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 311 of 1,312 done</title></rect>
 <text x="677" y="570" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">23%</tspan></text>
 <g transform="translate(677,574)">
 <rect y="0" width="301" height="210" fill="url(#todo)"/>
@@ -1704,7 +1704,7 @@
 <rect x="287" y="35" width="6" height="6" fill="#b07d00"><title>0x0043f560 AL_GetItemSaveInfo: 100%</title></rect>
 <rect x="294" y="35" width="6" height="6" fill="#b07d00"><title>0x0043f580 AL_ClearItemSaveInfoPtr: 100%</title></rect>
 <rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x0043f8e0 FUN_0043f8e0: 100%</title></rect>
-<rect x="84" y="42" width="6" height="6" fill="#939394"><title>0x0043fff0 AL_GetCurrGardenChaoCount: 50.0%</title></rect>
+<rect x="84" y="42" width="6" height="6" fill="#b07d00"><title>0x0043fff0 AL_GetCurrGardenChaoCount: 100%</title></rect>
 <rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x00440040 FUN_00440040: 100%</title></rect>
 <rect x="105" y="42" width="6" height="6" fill="#b07d00"><title>0x00440050 FUN_00440050: 100%</title></rect>
 <rect x="175" y="42" width="6" height="6" fill="#b07d00"><title>0x004405d0 AL_ClearFruitNum: 100%</title></rect>
@@ -1785,7 +1785,7 @@
 <rect x="63" y="91" width="6" height="6" fill="#b07d00"><title>0x00450fb0 AL_GetIntention: 100%</title></rect>
 <rect x="168" y="91" width="6" height="6" fill="#b07d00"><title>0x00451790 AL_ChildFieldDestructor: 100%</title></rect>
 <rect x="175" y="91" width="6" height="6" fill="#b07d00"><title>0x004517b0 FUN_004517b0: 100%</title></rect>
-<rect x="196" y="91" width="6" height="6" fill="#7a9cd8"><title>0x004518d0 AL_AllFieldCreateT: 13.3%</title></rect>
+<rect x="196" y="91" width="6" height="6" fill="#b07d00"><title>0x004518d0 AL_AllFieldCreateT: 100%</title></rect>
 <rect x="280" y="91" width="6" height="6" fill="#b07d00"><title>0x00452660 ALO_RakugakiDestructor: 100%</title></rect>
 <rect x="112" y="98" width="6" height="6" fill="#b07d00"><title>0x00454540 ALO_ShabonDestructor: 100%</title></rect>
 <rect x="294" y="98" width="6" height="6" fill="#b07d00"><title>0x00455ed0 ALBHV_PyonPyon: 100%</title></rect>
@@ -1871,7 +1871,7 @@
 <rect x="7" y="175" width="6" height="6" fill="#b07d00"><title>0x00478a80 AloG00FountainExec: 100%</title></rect>
 <rect x="63" y="175" width="6" height="6" fill="#b07d00"><title>0x00478ba0 FUN_00478ba0: 100%</title></rect>
 <rect x="133" y="175" width="6" height="6" fill="#b07d00"><title>0x00479840 FUN_00479840: 100%</title></rect>
-<rect x="154" y="175" width="6" height="6" fill="#91949b"><title>0x00479910 FUN_00479910: 46.2%</title></rect>
+<rect x="154" y="175" width="6" height="6" fill="#9e8d72"><title>0x00479910 FUN_00479910: 66.7%</title></rect>
 <rect x="182" y="175" width="6" height="6" fill="#b07d00"><title>0x00479ac0 AloG00HintmenuOver: 100%</title></rect>
 <rect x="196" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b30 FUN_00479b30: 100%</title></rect>
 <rect x="203" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b50 _alg_garden01_ec_epilog: 100%</title></rect>
