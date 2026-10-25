@@ -84,7 +84,7 @@ def main() -> int:
         with_facts = functools.partial(facts.fact_lines, idioms=args.idioms) if args.facts or args.idioms else None
         return dossier.show(project.require_game(), args.addresses, draft=args.c, callers=args.callers,
                             tables=args.tables, drafts=args.drafts, access=args.accesses, facts=with_facts,
-                            context=args.context)
+                            context=args.context, hide_own=args.hide_own)
     if args.command == "access":
         # Only .venv has capstone.
         import accesses
@@ -129,6 +129,8 @@ def parse_args() -> argparse.Namespace:
     dossier.add_argument("--idioms", action="store_true",
                          help="add --facts and the compiler idioms the code shows, such as a switch")
     dossier.add_argument("--context", type=Path, help="another checkout whose files give names and signatures")
+    dossier.add_argument("--hide-own", action="store_true",
+                         help="leave out the prototype the function's own definition gives, as before it was decompiled")
     access = commands.add_parser("access")
     access.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00800000")
     access.add_argument("--size", type=int, default=1, help="bytes to cover from each address (default: 1)")
