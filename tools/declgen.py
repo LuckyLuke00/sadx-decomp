@@ -39,7 +39,10 @@ and the last layout, the context's with --context, did not have that pair
 already. A pair it had before is a problem line only. With --context, the
 functions that the context's files define count as declared in functions.h when
 their name occurs a second time in the tree and the context together, as they
-will in the context once these files are in it.
+will in the context once these files are in it. Returns 2 instead of 1 when every
+such problem is a function name that several functions share: the files are written
+all the same, so the tree builds, and making those functions static is left for
+when the files meet in one tree.
 Standard library only.
 """
 
@@ -151,6 +154,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     context_sources = names.context_sources(context, sources)
     problems = []
     fatal = []  # problems the build cannot get past
+    shared = []  # the fatal problems that are a function name several functions share
 
     defined_funcs = {}  # address: (file, signature, static, stub)
     defined_globals = {}  # address: (file, definition)
@@ -330,8 +334,9 @@ def write(context: Path | None, tables: Path | None) -> int:
         group = [a for a in fnames[name] if a in decls or a in defined_funcs or a in context_funcs]
         if len(group) > 1 and any(funcs[a]["scope"] != "G" for a in group):
             where = ", ".join(f"0x{a:08x} ({funcs[a]['file']})" for a in group)
-            fatal.append(f"{name}: {where} share the name. Make each one static in its own file, "
-                         f"with a STUB annotation until it is ported.")
+            shared.append(f"{name}: {where} share the name. Make each one static in its own file, "
+                          f"with a STUB annotation until it is ported.")
+            fatal.append(shared[-1])
 
     # Globals: every canonical or address name that a source uses.
     global_name = {a: n for n, a in gnames.items()}
@@ -395,10 +400,7 @@ def write(context: Path | None, tables: Path | None) -> int:
                 fatal.append(f"{name}: no known type. Declare it `extern <type> {name};` at the top of the file that uses it.")
             continue
         dims = row["dims"].split(",") if row["dims"] else []
-        ext = row["decl"].replace("{}", name)
-        if dims and dims[0] in ("?", "0", ""):
-            ext = re.sub(r"\[[\w?]*\]", "[]", ext, count=1)
-        externs[a] = "extern " + ext
+        externs[a] = "extern " + names.row_declaration(row)
         definition = row["decl"].replace("{}", name)
         if dims and dims[0] in ("?", "0", ""):
             elem = names.element_size(row["base"], types)
@@ -513,7 +515,9 @@ def write(context: Path | None, tables: Path | None) -> int:
         print("decls:", p)
     print(f"decls: {len(decls)} functions ({len(stubs)} stubs), {len(externs)} globals "
           f"({len(gdefs)} generated), {len(defined_types)} types")
-    return 1 if fatal else 0
+    if not fatal:
+        return 0
+    return 2 if fatal == shared else 1
 
 
 def declared_size(decl: str, types: Types) -> int | None:

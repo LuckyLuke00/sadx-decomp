@@ -102,7 +102,7 @@ def known_globals(tables: Path | None, sources: dict[str, str], before: names.Pr
     if tables:
         for r in names.table_rows(tables / "globals.tsv"):
             a = int(r["address"], 16)
-            found[a] = Global(a, int(r["size"] or 0), r["name"], r["decl"].replace("{}", r["name"]))
+            found[a] = Global(a, int(r["size"] or 0), r["name"], names.row_declaration(r))
     definitions = [(address, sig) for text in sources.values()
                    for kind, address, sig in names.parse_annotations(text) if kind == "GLOBAL"]
     for address, sig in definitions + list(before.globals.items()):
