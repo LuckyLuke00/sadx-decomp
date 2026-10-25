@@ -318,7 +318,7 @@ def check_declaration_keys() -> list[str]:
 def check_decls_trees() -> list[str]:
     """decls on throwaway trees. A static function here and a global one of the same name in the context share a
     name once the context holds both, also when no file here uses the context's, and so do a global one here and a
-    static one in the context. A name that a file defines means
+    static one in the context: exit 2, which only a shared function name gives. A name that a file defines means
     that function, also when the file holds a folded copy of another file's function. A global name that two objects
     share means the one in the object that the using file defines functions of, and a second file that uses the
     other one fails, also when that file is in the context, unless it defines its own static. A function here that a
@@ -350,9 +350,13 @@ def check_decls_trees() -> list[str]:
 
     # (case, files, the context's files, exit code, text of the output, addresses of the generated globals)
     cases = [("a static function against the context's global one", {"src/x.c": exec_here},
-              {"src/emblem.c": exec_there}, 1, "share the name", []),
+              {"src/emblem.c": exec_there}, 2, "share the name", []),
              ("a global function against the context's static one", {"src/emblem.c": exec_there},
-              {"src/x.c": exec_here}, 1, "share the name", None),
+              {"src/x.c": exec_here}, 2, "share the name", None),
+             ("a shared function name and a function a context file declares another way",
+              {"src/x.c": exec_here + "\n" + disp_x_int},
+              {"src/emblem.c": exec_there, "src/y.c": "void DispX(struct task *tp);\n" + disp_y_calls}, 1,
+              "share the name", None),
              ("a static function with no context", {"src/x.c": exec_here}, {}, 0, "", []),
              ("a static function beside a folded copy from another file", {"src/x.c": exec_here + "\n" + folded}, {},
               0, "", []),

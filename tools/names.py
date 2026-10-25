@@ -226,6 +226,15 @@ def table_rows(path: Path) -> list[dict]:
         return list(csv.DictReader(f, delimiter="\t"))
 
 
+def row_declaration(row: dict) -> str:
+    """A globals table row's declaration, with an empty first size when the table does not know it."""
+    decl = row["decl"].replace("{}", row["name"])
+    dims = row["dims"].split(",") if row["dims"] else []
+    if dims and dims[0] in ("?", "0", ""):
+        decl = re.sub(r"\[[\w?]*\]", "[]", decl, count=1)
+    return decl
+
+
 class Types:
     """Blocks of a types header: each struct, union or enum with its static_asserts."""
 
