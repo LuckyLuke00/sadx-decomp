@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_008d69e0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d6200(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d63e0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d6480(struct taskwk *param_1, struct enemywk *param_2);
@@ -38,4 +39,9 @@ void FUN_008d6dc0(struct taskwk *param_1, struct enemywk *param_2)
 	FUN_008d69e0(param_1, param_2);
 	PondDraw(param_1, param_2);
 	FUN_008d63e0(param_1, param_2);
+}
+
+// STUB: SADX 0x008d6e50
+void FUN_008d6e50(struct taskwk *twp, struct enemywk *ewp)
+{
 }

@@ -1,6 +1,11 @@
 #include "decls.h"
 #include <new>
 
+// STUB: SADX 0x0040ad40
+void __fastcall FUN_0040ad40(void **param_1, int param_2)
+{
+}
+
 // FUNCTION: SADX 0x0040ad80
 char __stdcall FUN_0040ad80(char param_1)
 {
@@ -49,6 +54,12 @@ void __stdcall FUN_0040ae10(int *param_1)
 void * __fastcall FUN_0040af10(unsigned int param_1)
 {
 	return (void *)0;
+}
+
+// STUB: SADX 0x0040af70
+char __fastcall FUN_0040af70(char *param_1, char param_2)
+{
+	return (char)0;
 }
 
 // FUNCTION: SADX 0x0040af90

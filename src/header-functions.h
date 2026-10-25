@@ -51,3 +51,13 @@
 
 // LIBRARY: SADX 0x0058a420
 // ??$AngleUniform@M@Math@MATH@Magic@@SAMM@Z
+
+// The vector members of FUN_004b6590_0 * that src/unplaced/FUN_004b1a40.cpp instantiates.
+// TEMPLATE: SADX 0x004b6590
+// std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::clear
+
+// TEMPLATE: SADX 0x004b6720
+// ?erase@?$vector@PAUFUN_004b6590_0@@V?$allocator@PAUFUN_004b6590_0@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@PAUFUN_004b6590_0@@V?$allocator@PAUFUN_004b6590_0@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@PAUFUN_004b6590_0@@V?$allocator@PAUFUN_004b6590_0@@@std@@@std@@@2@0@Z
+
+// TEMPLATE: SADX 0x004b6860
+// std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::_Grow_to

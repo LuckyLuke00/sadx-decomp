@@ -1,4 +1,5 @@
 #include "decls.h"
+struct NJS_MODEL;
 struct obj;
 struct NJS_MESHSET;
 void _njDirectReleaseMesh(struct NJS_MESHSET *param_1);
