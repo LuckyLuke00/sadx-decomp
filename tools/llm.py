@@ -33,8 +33,9 @@ the tries after it; a thinking try keeps its own), --stale-built-only (a try tha
 does not count toward STUCK_TRIES, nor toward --give-up), --similar-examples (the first example is the matched function
 whose instructions are most like the function's), --prefix-feedback (the feedback says how many instructions
 match from the function's start before the first difference), --refuse-fakematch (a 100% try with a line that
-tools/fakematch.py finds does not end the run, as "The loop" says) and --tag T (default: the prompt's name). Every
-command takes --config PATH.
+tools/fakematch.py finds does not end the run, as "The loop" says), --recipes DIR (the first prompt adds the plan in
+DIR/ADDRESS/recipe.md when there is one: tools/recipes.py writes and checks them) and --tag T (default: the
+prompt's name). Every command takes --config PATH.
 Results go to build/llm/T/: results.tsv with a row per function and transcripts/ADDRESS.jsonl
 with every exchange.
 
@@ -225,6 +226,7 @@ ERROR_CODE = re.compile(r"\berror (C\d+)")
 BYTE_STEPS = 40  # rewrites per line in byte_arith, a stop for a loop that cannot happen
 OFFSET_LINES = 3  # lines that the note on byte offsets shows
 TASK_LEAD = "Now your function. "  # between the examples and the function's own task in the first prompt
+RECIPE_LEAD = "A plan for this function, in steps, from a decompiler that matched it:"  # before a --recipes plan
 Conversion = collections.namedtuple("Conversion", "path line name param source target")  # param: None for a C2440
 
 
@@ -506,6 +508,12 @@ def score(config, address):
 
 def dossier(config, address, *flags):
     return run_check("dossier", hexa(address), *flags, *folder_flags(config, "tables", "drafts", "context"))[0].strip()
+
+
+def dossier_flags(args):
+    """The dossier flags that the --accesses, --facts and --idioms options of ARGS turn on."""
+    return tuple(flag for flag, on in (("--accesses", args.accesses), ("--facts", args.facts),
+                                       ("--idioms", args.idioms)) if on)
 
 
 def tree_warnings(config):
@@ -1001,6 +1009,14 @@ def matched_source(path, address):
     return None if span is None else "\n".join(lines[span[0]:span[1] + 1])
 
 
+def cpp_block(reply, address):
+    """The fenced block of REPLY that holds the function at ADDRESS, with its fences, or None."""
+    for m in BLOCK.finditer(reply.replace("\r\n", "\n")):
+        if definition_span([line.rstrip() for line in m.group(1).split("\n")], address) is not None:
+            return "```cpp\n" + m.group(1) + "```"
+    return None
+
+
 def mnemonic_grams(md, image, address, size):
     """The counts of the function's runs of one to three mnemonics, in the exe."""
     ops = [ins.mnemonic for ins in md.disasm(image.read(address, size), address)]
@@ -1045,10 +1061,15 @@ def examples(config, file, address, count, extra=(), similar=False):
     return shown
 
 
-def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), similar=False):
+def recipe_section(recipe):
+    """The part of the first prompt that holds RECIPE, a --recipes plan, or "" for none."""
+    return f"{RECIPE_LEAD}\n{recipe.strip()}\n\n" if recipe else ""
+
+
+def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), similar=False, recipe=None):
     facts = dossier(config, address, '--c', '--callers', *extra)
     structs = "" if types is None else struct_section(types, facts)
-    task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}"
+    task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}{recipe_section(recipe)}"
             f"Write the function. Reply with one cpp block with the `{function_line(address)}` line.")
     shown = examples(config, file, address, count, extra, similar)
     return "\n\n".join(shown + [TASK_LEAD + task]) if shown else task
@@ -1373,10 +1394,11 @@ def solve_function(args, file, address, transcript):
 
     types = load_types(config) if args.structs else None
     repair_types = types or load_types(config)  # the byte offset and pointer cast repairs read layouts either way
-    extra = tuple(flag for flag, on in (("--accesses", args.accesses), ("--facts", args.facts),
-                                        ("--idioms", args.idioms)) if on)
+    extra = dossier_flags(args)
     count = EXAMPLES
-    first = first_prompt(config, file, address, types, count, extra, args.similar_examples)
+    plan = args.recipes / hexa(address) / "recipe.md" if args.recipes else None
+    recipe = plan.read_text(encoding="utf-8") if plan and plan.exists() else None
+    first = first_prompt(config, file, address, types, count, extra, args.similar_examples, recipe)
     base = [{"role": "system", "content": args.system}, {"role": "user", "content": first}]
     # the code already in the file is the floor
     best = file_best(scored, before, address, known, types, args.prefix_feedback)
@@ -1421,7 +1443,7 @@ def solve_function(args, file, address, transcript):
                     messages = base
                 elif count > 0:
                     count -= 1
-                    first = first_prompt(config, file, address, types, count, extra, args.similar_examples)
+                    first = first_prompt(config, file, address, types, count, extra, args.similar_examples, recipe)
                     messages = base = [base[0], {"role": "user", "content": first}]
                     log.write(json.dumps({"prompt": first}) + "\n")
                 else:
@@ -1636,6 +1658,11 @@ def system_prompt(name):
     return text
 
 
+def system_text(name, structs):
+    """The system prompt of a run with --prompt NAME, and the structs rule when STRUCTS."""
+    return system_prompt(name) + ("\n\n" + STRUCTS_RULE if structs else "")
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     common = argparse.ArgumentParser(add_help=False)
@@ -1670,6 +1697,8 @@ def parse_args():
                       help="the feedback says how many instructions match from the function's start")
     runs.add_argument("--refuse-fakematch", action="store_true",
                       help="a 100%% try with a line that tools/fakematch.py finds is refused, and the run goes on")
+    runs.add_argument("--recipes", type=Path, metavar="DIR",
+                      help="add the plan in DIR/ADDRESS/recipe.md to the first prompt of each function that has one")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
     commands = parser.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init", parents=[common])
@@ -1699,9 +1728,7 @@ def main():
     samplers = {"top_k": args.top_k, "top_p": args.top_p, "min_p": args.min_p}
     args.settings["extra_body"] = {**args.settings["extra_body"], **{k: v for k, v in samplers.items() if v is not None}}
     args.tag = args.tag or args.prompt
-    args.system = system_prompt(args.prompt)  # once, so an edit mid-run changes nothing
-    if args.structs:
-        args.system += "\n\n" + STRUCTS_RULE
+    args.system = system_text(args.prompt, args.structs)  # once, so an edit mid-run changes nothing
     if args.seed is not None and not args.settings["seed"]:
         print(f"{args.config} says the server does not repeat a reply for a seed: this run will not repeat.")
     try:
