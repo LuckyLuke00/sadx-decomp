@@ -9,9 +9,9 @@ void Bg_MiniCart(struct task *task_p)
 // FUNCTION: SADX 0x007e4230
 void destBg(struct task *task_p)
 {
-	if (*(int *)&task_p->mwp->spd.x)
+	if (((struct BgTask *)task_p->mwp)->texList_p)
 	{
-		late_ReleaseTexture((struct NJS_TEXLIST *)(*(void **)&task_p->mwp->spd.x));
+		late_ReleaseTexture(((struct BgTask *)task_p->mwp)->texList_p);
 	}
 }
 

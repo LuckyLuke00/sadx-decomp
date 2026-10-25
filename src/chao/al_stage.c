@@ -12,7 +12,7 @@ extern int DAT_05aeaa7c;
 static struct task *DAT_05aeaa78;
 extern int DAT_05aeaa38;
 extern struct task *DAT_05aeaa3c[15];
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 
 void FUN_004f5550(int param_1);
 
@@ -152,8 +152,8 @@ static void AL_PlayerControlManager(struct task *tp)
 			}
 			break;
 		}
-		*(struct NJS_POINT3 *)((char *)DAT_05baf368 + 0x20) = var2->pos;
-		*(long *)((char *)DAT_05baf368 + 0x18) = var2->angy;
+		DAT_05baf368[0]->pos = var2->pos;
+		DAT_05baf368[0]->ang.y = var2->angy;
 		var1->mode++;
 	}
 }

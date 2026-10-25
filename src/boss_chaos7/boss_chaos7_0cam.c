@@ -3,7 +3,7 @@ extern float DAT_060c365c;
 extern struct C7ACAM_PARAM *DAT_060c3654;
 extern unsigned char DAT_060c3645;
 extern struct _camcontwk *camcont_wp;
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 
 // FUNCTION: SADX 0x006fd550
 void CameraChaos7_0Normal(struct _OBJ_CAMERAPARAM *pParam)
@@ -23,7 +23,7 @@ void SetCameraChaos7_0Adv(struct C7ACAM_PARAM *cp)
 // FUNCTION: SADX 0x006fd7b0
 void CameraChaos7_0Path(struct _OBJ_CAMERAPARAM *pParam)
 {
-	short *var1 = DAT_05baf368;
+	short *var1 = (short *)DAT_05baf368[0];
 	*(float *)((char *)camcont_wp + 0x18) = *(float *)((char *)var1 + 0x20);
 	*(float *)((char *)camcont_wp + 0x1c) = *(float *)((char *)var1 + 0x24);
 	*(float *)((char *)camcont_wp + 0x20) = *(float *)((char *)var1 + 0x28);

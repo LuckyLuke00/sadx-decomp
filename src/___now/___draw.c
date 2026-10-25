@@ -84,7 +84,7 @@ long dsSimpleDrawModel(struct NJS_MODEL *);
 void njDrawModel(struct NJS_MODEL *);
 extern unsigned char DAT_025acd84;
 extern unsigned char DAT_02608e24;
-extern int DAT_05b3df40;
+extern float DAT_05b3df40;
 void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 extern float DAT_05a922f8;
 extern float DAT_05a922fc;
@@ -1189,20 +1189,20 @@ void FUN_004a2800(void)
 void late_DrawShadowObject(struct obj *obj, float clipScl)
 {
 	float local_8;
-	local_8 = *(float *)&DAT_05b3df40;
-	*(float *)&DAT_05b3df40 = -27952.0f;
+	local_8 = DAT_05b3df40;
+	DAT_05b3df40 = -27952.0f;
 	late_DrawObjectClip(obj, 6, clipScl);
-	*(float *)&DAT_05b3df40 = local_8;
+	DAT_05b3df40 = local_8;
 }
 
 // FUNCTION: SADX 0x004a2880
 void late_DrawShadowModel(struct NJS_MODEL *mdl, float clipScl)
 {
 	float local_8;
-	local_8 = *(float *)&DAT_05b3df40;
-	*(float *)&DAT_05b3df40 = -27952.0;
+	local_8 = DAT_05b3df40;
+	DAT_05b3df40 = -27952.0;
 	late_DrawModelClip(mdl, 6, clipScl);
-	*(float *)&DAT_05b3df40 = local_8;
+	DAT_05b3df40 = local_8;
 }
 
 // FUNCTION: SADX 0x004a28c0
@@ -1593,7 +1593,7 @@ void CHAOS_DrawModel(struct NJS_MODEL *m)
 	DAT_05b39e18 = late_far_z_chaos;
 	if ((char)DAT_05b3df52 != 0)
 	{
-		*(float *)&DAT_05b3df40 = -7952.0f;
+		DAT_05b3df40 = -7952.0f;
 	}
 	if ((char)DAT_05b3df53 != 0)
 	{
@@ -1605,7 +1605,7 @@ void CHAOS_DrawModel(struct NJS_MODEL *m)
 	}
 	if (DAT_05b3df4c != 0)
 	{
-		*(float *)&DAT_05b3df40 = 0.0f;
+		DAT_05b3df40 = 0.0f;
 	}
 	DAT_05b39e18 = late_far_z_dflt;
 	DAT_05b3df64 = 0;
@@ -1618,12 +1618,12 @@ void CHAOS_DrawObject(struct obj *o)
 	DAT_05b39e18 = late_far_z_chaos;
 	if ((char)DAT_05b3df52 != 0)
 	{
-		*(float *)&DAT_05b3df40 = -7952.0f;
+		DAT_05b3df40 = -7952.0f;
 	}
 	FUN_004a5c80(o, DAT_05b3df68);
 	if (DAT_05b3df4c != 0)
 	{
-		*(float *)&DAT_05b3df40 = 0.0f;
+		DAT_05b3df40 = 0.0f;
 	}
 	DAT_05b39e18 = late_far_z_dflt;
 	DAT_05b3df64 = 0;
@@ -1636,12 +1636,12 @@ void CHAOS_Action(struct NJS_ACTION *a, float fr)
 	DAT_05b39e18 = late_far_z_chaos;
 	if ((char)DAT_05b3df52 != 0)
 	{
-		*(float *)&DAT_05b3df40 = -7952.0f;
+		DAT_05b3df40 = -7952.0f;
 	}
 	late_ActionMS(a, fr, DAT_05b3df68);
 	if (DAT_05b3df4c != 0)
 	{
-		*(float *)&DAT_05b3df40 = 0.0f;
+		DAT_05b3df40 = 0.0f;
 	}
 	DAT_05b39e18 = late_far_z_dflt;
 	DAT_05b3df64 = 0;
@@ -1654,12 +1654,12 @@ void CHAOS_DrawShapeMotion(struct obj *o, struct NJS_MOTION *m, struct NJS_MOTIO
 	DAT_05b39e18 = late_far_z_chaos;
 	if ((char)DAT_05b3df52 != 0)
 	{
-		*(float *)&DAT_05b3df40 = -7952.0f;
+		DAT_05b3df40 = -7952.0f;
 	}
 	FUN_004a9a50(o, m, shp, fr, DAT_05b3df68);
 	if (DAT_05b3df4c != 0)
 	{
-		*(float *)&DAT_05b3df40 = 0.0f;
+		DAT_05b3df40 = 0.0f;
 	}
 	DAT_05b39e18 = late_far_z_dflt;
 	DAT_05b3df64 = 0;

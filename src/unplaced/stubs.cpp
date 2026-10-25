@@ -457,6 +457,12 @@ void AL__EditCancelMode(struct task *)
 {
 }
 
+// STUB: SADX 0x0043f290
+long AL_CheckSaveDataCrc2(struct CHAO_GARDEN_INFO *info)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0043f6b0
 void AL_PackageItemSaveInfo(long category)
 {
@@ -1274,12 +1280,6 @@ void wmaresume()
 {
 }
 
-// STUB: SADX 0x004aed90
-int dsPlay_iloop(int tone, int id, int pri, int volofs)
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x004b0aa0
 void LoadGameDDS()
 {
@@ -1404,11 +1404,6 @@ void GetSwitchData()
 {
 }
 
-// STUB: SADX 0x004c4240
-void input_init()
-{
-}
-
 // STUB: SADX 0x004c42e0
 void input_reset()
 {
@@ -1517,7 +1512,7 @@ void PInitialize(long num, struct task *tp)
 }
 
 // STUB: SADX 0x004db110
-long PCheckHoldObject(struct taskwk *twp)
+long PCheckHoldObject(struct taskwk *)
 {
 	return (long)0;
 }
@@ -2171,11 +2166,6 @@ void EventObject(struct task *tp)
 
 // STUB: SADX 0x005b3db0
 void ObjectJumpPanelSetNumber(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b3f80
-void ObjectJumpPanelDisplay(struct task *tp)
 {
 }
 
@@ -4085,6 +4075,11 @@ void drawEffectChaos0LightParticle(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008c5e60
+void Effect_ChaosCoreDisplay(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008c6da0
 void morph_water_act(struct MORPHWK *p)
 {
@@ -4092,11 +4087,6 @@ void morph_water_act(struct MORPHWK *p)
 
 // STUB: SADX 0x008c7790
 void effectWaterMove(struct taskwk *, struct chaoswk *, struct obj *)
-{
-}
-
-// STUB: SADX 0x008c9d30
-void MirenPlyInitPlayerPos(signed char player)
 {
 }
 

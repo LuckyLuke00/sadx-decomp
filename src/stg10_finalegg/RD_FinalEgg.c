@@ -99,7 +99,7 @@ void ACT3_init(struct task *tp)
 	RoundBGM_Play(0x2a);
 	ClearAllSwitches();
 	TexMakeInit();
-	*(int *)&DAT_05cbef64 = 0xffffffff;
+	DAT_05cbef64 = 0xffffffff;
 	if (GetPlayerNumber() == 6)
 	{
 		CreateElementalTask(2, 3, AnnouncementTask);

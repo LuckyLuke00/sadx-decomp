@@ -30,12 +30,11 @@ void SetFreeCameraMode(long sw);
 void FreeTask(struct task *tp);
 extern long SCPathPntnmbToOnpos(struct pathtag *tag, unsigned long pntnmb, float *onpos);
 static void GamePlayerMissed(struct task *tp);
-extern char DAT_05b932f0[1024];
+extern struct PDS_PERIPHERAL DAT_05b932e8[8];
 extern int DAT_05ba0bf0;
 extern int DAT_05b9f528;
 extern long jump_button;
-extern long DAT_05b932f8[1];
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern int DAT_05baf388[8];
 extern int DAT_05ba3328[8];
 extern int DAT_05ba9348[8];
@@ -47,7 +46,7 @@ void SetUpPlayerWork()
 	for (local_8 = 0; local_8 < 8; local_8++)
 	{
 		DAT_05baf388[local_8] = 0;
-		*(int *)((char *)&DAT_05baf368 + local_8 * 4) = 0;
+		DAT_05baf368[local_8] = 0;
 		DAT_05ba3328[local_8] = 0;
 		DAT_05ba9348[local_8] = 0;
 	}
@@ -114,7 +113,7 @@ long PCheckJump(struct taskwk *twp, struct playerwk *pwp)
 	{
 		return 0;
 	}
-	if ((*(long *)((char *)DAT_05b932f8 + twp->counter.b[0] * 0x34) & jump_button) != 0)
+	if ((DAT_05b932e8[twp->counter.b[0]].press & jump_button) != 0)
 	{
 		if (CanIMakePanelJump(twp) > 0)
 		{
@@ -135,7 +134,7 @@ long PCheckJump2(struct taskwk *twp, struct playerwk *pwp)
 	{
 		return 0;
 	}
-	if ((*(int *)((char *)DAT_05b932f0 + twp->counter.b[0] * 0x34) & jump_button) != 0)
+	if ((DAT_05b932e8[twp->counter.b[0]].on & jump_button) != 0)
 	{
 		if (pwp->jumptimer++ < *(int *)((char *)pwp + 0x9c))
 		{
@@ -484,7 +483,7 @@ static void LoopSECallForTheMode(struct task *tp)
 void KillHimP(unsigned char pno)
 {
 	short *local_8;
-	local_8 = (&DAT_05baf368)[pno];
+	local_8 = (short *)DAT_05baf368[pno];
 	if (*(unsigned char *)((char *)local_8 + 8) == 1)
 	{
 		return;
@@ -564,7 +563,7 @@ void DestructBreathCounterP(struct task *tp)
 void RunAlongPathP(unsigned char pno, struct pathtag *pp)
 {
 	short *local_8;
-	local_8 = ((short **)&DAT_05baf368)[pno];
+	local_8 = (short *)DAT_05baf368[pno];
 	*(short *)((char *)local_8 + 4) |= 0x1000;
 	*(char *)((char *)local_8 + 1) = 1;
 	*(struct pathtag **)((char *)local_8 + 0x10) = pp;
@@ -576,7 +575,7 @@ void RunWithSeeingPathP(unsigned char pno, struct pathtag *pp)
 {
 	struct pathtag *local_8;
 
-	local_8 = (struct pathtag *)((int *)&DAT_05baf368)[pno];
+	local_8 = (struct pathtag *)DAT_05baf368[pno];
 	if (local_8 == 0)
 	{
 		return;
@@ -593,7 +592,7 @@ void HangDownFromPathP(unsigned char pno, struct pathtag *pp, long point)
 	char *local_cg;
 	char *local_8g;
 
-	local_cg = (char *)*(int *)((char *)&DAT_05baf368 + pno * 4);
+	local_cg = (char *)DAT_05baf368[pno];
 	local_8g = (char *)DAT_05ba9348[pno];
 	*(short *)(local_cg + 4) = *(short *)(local_cg + 4) | 0x1000;
 	local_cg[1] = 0x1d;
@@ -605,6 +604,17 @@ void HangDownFromPathP(unsigned char pno, struct pathtag *pp, long point)
 // FUNCTION: SADX 0x004f0760
 void LadderingPathP(unsigned char pno, struct pathtag *pp, long point, struct Angle3 *ang)
 {
+	char *local_cg;
+	char *local_8g;
+
+	local_cg = (char *)DAT_05baf368[pno];
+	local_8g = (char *)DAT_05ba9348[pno];
+	*(short *)(local_cg + 4) = *(short *)(local_cg + 4) | 0x1000;
+	local_cg[1] = 0x1f;
+	*(int *)(local_cg + 0x10) = (int)pp;
+	*(short *)(local_8g + 0x14) = (short)point;
+	SCPathPntnmbToOnpos(pp, point, (float *)(local_8g + 0x18));
+	SetRotationP(pno, ang->x, ang->y, ang->z);
 }
 
 // FUNCTION: SADX 0x004f07f0
@@ -617,7 +627,7 @@ int FUN_004f07f0(int param_1)
 	local_10 = 0;
 	for (local_8g = 0; local_8g < 2; local_8g++)
 	{
-		local_cj = ((short **)(&DAT_05baf368))[local_8g];
+		local_cj = (short *)DAT_05baf368[local_8g];
 		if (local_cj != 0)
 		{
 			if (((*(short *)((char *)local_cj + 4)) & 0x2000) != 0)
@@ -640,38 +650,38 @@ void FUN_004f0860(unsigned char param_1, float param_2, float param_3)
 // FUNCTION: SADX 0x004f08e0
 void SetAutoPilotForBreakP(unsigned char pno)
 {
-	if (*(int *)((char *)&DAT_05baf368 + pno * 4) == 0)
+	if (DAT_05baf368[pno] == 0)
 	{
 		return;
 	}
 	int local_8;
-	local_8 = *(int *)(*(int *)((char *)&DAT_05baf368 + pno * 4) + 0x3c);
+	local_8 = (int)DAT_05baf368[pno]->ewp;
 	*(unsigned char *)(local_8 + 0x24) = 1;
-	*(short *)(*(int *)((char *)&DAT_05baf368 + pno * 4) + 4) |= 0x4000;
+	DAT_05baf368[pno]->flag |= 0x4000;
 }
 
 // FUNCTION: SADX 0x004f0940
 void SetAutoPilotForYRotationP(unsigned char pno, long y)
 {
-	SetRotationP(pno, *(long *)((char *)((long **)&DAT_05baf368)[pno] + 0x14), y, *(long *)((char *)((long **)&DAT_05baf368)[pno] + 0x1c));
-	*(unsigned char *)((char *)*(long *)((char *)((long **)&DAT_05baf368)[pno] + 0x3c) + 0x24) = 0;
+	SetRotationP(pno, DAT_05baf368[pno]->ang.x, y, DAT_05baf368[pno]->ang.z);
+	*(unsigned char *)((char *)DAT_05baf368[pno]->ewp + 0x24) = 0;
 }
 
 // FUNCTION: SADX 0x004f0990
 void CancelAutoPilotP(unsigned char pno)
 {
-	*(char *)((char *)(*(int *)((char *)((short **)&DAT_05baf368)[pno] + 0x3c)) + 0x24) = 0;
+	*(char *)((char *)DAT_05baf368[pno]->ewp + 0x24) = 0;
 }
 
 // FUNCTION: SADX 0x004f09b0
 void SetLookingTaskP(unsigned char pno, struct task *ttp, struct NJS_POINT3 *offset)
 {
 	int local_8;
-	if (*(int *)(&DAT_05baf368 + pno) == 0)
+	if (DAT_05baf368[pno] == 0)
 	{
 		return;
 	}
-	local_8 = *(int *)((char *)*(int *)(&DAT_05baf368 + pno) + 0x3c);
+	local_8 = (int)DAT_05baf368[pno]->ewp;
 	*(unsigned char *)((char *)local_8 + 4) = 3;
 	*(int *)((char *)local_8 + 0x20) = (int)ttp;
 	if (offset != 0)
@@ -685,9 +695,9 @@ void SetLookingTaskP(unsigned char pno, struct task *ttp, struct NJS_POINT3 *off
 // FUNCTION: SADX 0x004f0a20
 void SetLookingPointP(unsigned char pno, struct NJS_POINT3 *point)
 {
-	if ((&DAT_05baf368)[pno] == 0)
+	if (DAT_05baf368[pno] == 0)
 		return;
-	int local_8 = *(int *)((char *)(&DAT_05baf368)[pno] + 0x3c);
+	int local_8 = (int)DAT_05baf368[pno]->ewp;
 	*(unsigned char *)((char *)local_8 + 4) = 2;
 	if (point == 0)
 		return;
@@ -700,9 +710,9 @@ void SetLookingPointP(unsigned char pno, struct NJS_POINT3 *point)
 void SetLookingAngleP(unsigned char pno, long *ang)
 {
 	long *local_8;
-	if (((short **)&DAT_05baf368)[pno] == 0)
+	if (DAT_05baf368[pno] == 0)
 		return;
-	local_8 = (long *)*(long **)((char *)((short **)&DAT_05baf368)[pno] + 0x3c);
+	local_8 = (long *)DAT_05baf368[pno]->ewp;
 	*(char *)(local_8 + 1) = 1;
 	if (ang == 0)
 		return;
@@ -714,6 +724,13 @@ void SetLookingAngleP(unsigned char pno, long *ang)
 // FUNCTION: SADX 0x004f0ae0
 void CancelLookingAtP(unsigned char pno)
 {
+	if (DAT_05baf368[pno] == 0)
+	{
+		return;
+	}
+	int local_8;
+	local_8 = (int)DAT_05baf368[pno]->ewp;
+	*(unsigned char *)(local_8 + 4) = 0;
 }
 
 // STUB: SADX 0x004f0b10
@@ -742,7 +759,7 @@ void FUN_004f0c90(unsigned char param_1, int param_2)
 {
 	short *local_8;
 
-	local_8 = ((short **)&DAT_05baf368)[param_1];
+	local_8 = (short *)DAT_05baf368[param_1];
 	if ((local_8[2] & 0x800) == 0)
 	{
 		local_8[2] |= 0x1000;
@@ -754,7 +771,7 @@ void FUN_004f0c90(unsigned char param_1, int param_2)
 // FUNCTION: SADX 0x004f0ce0
 void FUN_004f0ce0(unsigned char param_1, int param_2)
 {
-	char *local_8 = ((char **)&DAT_05baf368)[param_1];
+	char *local_8 = (char *)DAT_05baf368[param_1];
 	if ((*(short *)(local_8 + 4) & 0x800) == 0)
 	{
 		SetFreeCameraMode(0);
@@ -769,7 +786,7 @@ void CrashPlayerP(unsigned char pno, float x, float y, float z)
 {
 	short *local_8;
 
-	local_8 = ((short **)&DAT_05baf368)[pno];
+	local_8 = (short *)DAT_05baf368[pno];
 	*(short *)((char *)local_8 + 4) |= 0x1000;
 	*(unsigned char *)((char *)local_8 + 1) = 0x23;
 	SetRotationByVectorP(pno, -x, 0.0f, -z);
@@ -780,7 +797,7 @@ void CrashPlayerP(unsigned char pno, float x, float y, float z)
 void SetInputP(unsigned char pno, signed char mode)
 {
 	short *local_8;
-	local_8 = *(short **)((char *)&DAT_05baf368 + pno * 4);
+	local_8 = (short *)DAT_05baf368[pno];
 	if (local_8 != 0)
 	{
 		*(short *)((char *)local_8 + 4) = *(short *)((char *)local_8 + 4) | 0x1000;
@@ -798,7 +815,7 @@ void SetSpringVelocityP(unsigned char pno, float x, float y, float z)
 {
 	short *local_8;
 
-	local_8 = *(short **)((char *)&DAT_05baf368 + pno * 4);
+	local_8 = (short *)DAT_05baf368[pno];
 	local_8[2] |= 0x1000;
 	((char *)local_8)[1] = 3;
 	SetVelocityP(pno, x, y, z);
@@ -809,7 +826,7 @@ void SetTrampolineVelocityP(unsigned char pno, unsigned char time, float x, floa
 {
 	int local_8;
 
-	local_8 = *(int *)((char *)&DAT_05baf368 + pno * 4);
+	local_8 = (int)DAT_05baf368[pno];
 	*(short *)((char *)local_8 + 4) |= 0x1000;
 	if (time == 3)
 	{
@@ -852,7 +869,7 @@ void SetRotationP(unsigned char pno, long angx, long angy, long angz)
 	char *local_cg;
 	char *local_8g;
 
-	local_cg = (char *)*(short **)((char *)&DAT_05baf368 + pno * 4);
+	local_cg = (char *)DAT_05baf368[pno];
 	local_8g = (char *)DAT_05ba3328[pno];
 	*(int *)(local_cg + 0x14) = angx;
 	*(int *)(local_cg + 0x18) = 0x4000 - angy;
@@ -870,7 +887,7 @@ void SetAscendPowerP(unsigned char pno, float x, float y, float z)
 {
 	short *local_8;
 
-	local_8 = (&DAT_05baf368)[pno];
+	local_8 = (short *)DAT_05baf368[pno];
 	*(short *)(local_8 + 2) |= 0x1000;
 	*(unsigned char *)((char *)local_8 + 1) = 0xb;
 	SetAccelerationP(pno, x, y, z);
@@ -905,7 +922,7 @@ void SetPositionP(unsigned char pno, float x, float y, float z)
 // FUNCTION: SADX 0x004f17a0
 void ChangeModePlaceWithTrampolineP(unsigned char pno, unsigned char time)
 {
-	short *local_8 = *(short **)((char *)&DAT_05baf368 + pno * 4);
+	short *local_8 = (short *)DAT_05baf368[pno];
 	*(short *)(local_8 + 2) = *(short *)(local_8 + 2) | 0x1000;
 	if (time == 3)
 	{
@@ -926,7 +943,7 @@ void GetOutOfCartP(unsigned char pno, float x, float y, float z)
 {
 	char *local_8;
 
-	local_8 = (char *)((int *)&DAT_05baf368)[pno];
+	local_8 = (char *)DAT_05baf368[pno];
 	*(short *)(local_8 + 4) |= 0x1000;
 	*(char *)(local_8 + 1) = 0x1c;
 	SetVelocityP(pno, x, y, z);
@@ -948,7 +965,7 @@ long CheckCollisionCylinderP(struct NJS_POINT3 *vp, float r, float h)
 long GetPlayerCharacterName(unsigned char pno)
 {
 	short *local_8;
-	local_8 = (&DAT_05baf368)[pno];
+	local_8 = (short *)DAT_05baf368[pno];
 	if (local_8 == 0)
 	{
 		return GetPlayerNumber();
@@ -1013,7 +1030,7 @@ long GetRivalPlayerNumber(unsigned char pno)
 	int local_8g;
 	int local_cg;
 
-	if (*(unsigned char *)((char *)((short **)&DAT_05baf368)[pno] + 2) == 3)
+	if (DAT_05baf368[pno]->id == 3)
 	{
 		local_8g = 1;
 	}
@@ -1023,7 +1040,7 @@ long GetRivalPlayerNumber(unsigned char pno)
 	}
 	for (local_cg = 0; local_cg < 8; local_cg++)
 	{
-		if (((short **)&DAT_05baf368)[local_cg] != 0 && *(unsigned char *)((char *)((short **)&DAT_05baf368)[local_cg] + 2) == local_8g)
+		if (DAT_05baf368[local_cg] != 0 && DAT_05baf368[local_cg]->id == local_8g)
 		{
 			return local_cg;
 		}
@@ -1034,7 +1051,20 @@ long GetRivalPlayerNumber(unsigned char pno)
 // FUNCTION: SADX 0x004f1e60
 long CheckPlayerRideOnMobileLandObjectP(unsigned char pno, struct task *ttp)
 {
-	return (long)0;
+	struct task *local_cg;
+	struct task *local_8g;
+
+	local_cg = (struct task *)DAT_05baf368[pno];
+	local_8g = (struct task *)DAT_05ba9348[pno];
+	if (local_8g == 0 || local_cg == 0)
+	{
+		return 0;
+	}
+	if ((*(short *)((char *)local_cg + 4) & 1) != 0 && *(struct task **)((char *)local_8g + 0x6c) == ttp)
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x004f1ec0
@@ -1070,7 +1100,7 @@ void GetSpeedUpP(unsigned char pno)
 {
 	struct task *local_8;
 
-	if (pno >= 1 && (pno > 7 || ((int *)&DAT_05baf368)[pno] == 0))
+	if (pno >= 1 && (pno > 7 || DAT_05baf368[pno] == 0))
 	{
 		pno = 0;
 	}
@@ -1115,16 +1145,85 @@ void PlayerSpeedUpDest(struct task *tp)
 // FUNCTION: SADX 0x004f2160
 void GetThunderBarrierP(unsigned char pno)
 {
+	struct task *local_cg;
+	struct task *local_8g;
+
+	if (pno >= 1 && pno > 7 && DAT_05baf368[pno] == 0)
+	{
+		pno = 0;
+	}
+	local_8g = (struct task *)DAT_05ba9348[pno];
+	if (local_8g == 0)
+	{
+		return;
+	}
+	if ((*(short *)((char *)local_8g + 6) & 2) != 0)
+	{
+		return;
+	}
+	local_cg = CreateElementalTask(2, 2, EffectThunderBarrier);
+	if (local_cg != 0)
+	{
+		local_cg->twp->counter.b[0] = pno;
+		*(short *)((char *)local_8g + 6) = *(short *)((char *)local_8g + 6) & 0xfffffffc;
+		*(short *)((char *)local_8g + 6) = *(short *)((char *)local_8g + 6) | 2;
+	}
 }
 
 // FUNCTION: SADX 0x004f2200
 void GetBarrierP(unsigned char pno)
 {
+	struct task *local_cg;
+	struct task *local_8g;
+
+	if (pno >= 1 && pno > 7 && DAT_05baf368[pno] == 0)
+	{
+		pno = 0;
+	}
+	local_8g = (struct task *)DAT_05ba9348[pno];
+	if (local_8g == 0)
+	{
+		return;
+	}
+	if ((*(short *)((char *)local_8g + 6) & 1) != 0)
+	{
+		return;
+	}
+	local_cg = CreateElementalTask(2, 2, EffectBarrier);
+	if (local_cg != 0)
+	{
+		local_cg->twp->counter.b[0] = pno;
+		*(short *)((char *)local_8g + 6) = *(short *)((char *)local_8g + 6) & 0xfffffffc;
+		*(short *)((char *)local_8g + 6) = *(short *)((char *)local_8g + 6) | 1;
+	}
 }
 
 // FUNCTION: SADX 0x004f22a0
 void GetInvincibleBodyP(unsigned char pno)
 {
+	struct task *local_cg;
+	struct task *local_8g;
+
+	if (pno >= 1 && pno > 7 && DAT_05baf368[pno] == 0)
+	{
+		pno = 0;
+	}
+	local_8g = (struct task *)DAT_05ba9348[pno];
+	if (local_8g == 0)
+	{
+		return;
+	}
+	if ((*(short *)((char *)local_8g + 6) & 0x8000) != 0)
+	{
+		return;
+	}
+	local_cg = CreateElementalTask(2, 2, EffectMuteki);
+	if (local_cg != 0)
+	{
+		local_cg->twp->counter.b[0] = pno;
+		*(short *)((char *)local_8g + 6) = *(short *)((char *)local_8g + 6) | 0x8000;
+		Jingle_Play(0x37);
+	}
 }
 
 // FUNCTION: SADX 0x004f2340
@@ -1132,7 +1231,7 @@ void GetInvincibleBodyForAMomentP(unsigned char pno)
 {
 	struct task *local_8;
 
-	if (pno >= 1 && pno > 7 && ((int *)&DAT_05baf368)[pno] == 0)
+	if (pno >= 1 && pno > 7 && DAT_05baf368[pno] == 0)
 	{
 		pno = 0;
 	}
@@ -1153,7 +1252,7 @@ void SetHoldingItemIDP(unsigned char pno, long itemID)
 {
 	short *local_8;
 
-	local_8 = ((short **)&DAT_05baf368)[pno];
+	local_8 = (short *)DAT_05baf368[pno];
 	DAT_05ba3320[*(unsigned char *)((char *)local_8 + 9)] = (char)itemID;
 }
 
@@ -1168,7 +1267,7 @@ void HoldTaskP(unsigned char pno, struct task *htp)
 {
 	struct taskwk *local_8;
 
-	local_8 = (struct taskwk *)((void **)&DAT_05baf368)[pno];
+	local_8 = DAT_05baf368[pno];
 	local_8->flag = local_8->flag | 0x1000;
 	local_8->smode = 0x25;
 	local_8->value.ptr = htp;
@@ -1216,7 +1315,7 @@ void FUN_004f2dc0(struct NJS_POINT3 *arg1, struct NJS_POINT3 *arg2, struct NJS_P
 // FUNCTION: SADX 0x004f31c0
 void PDisableDamage(unsigned char u8Pno)
 {
-	int local_cg = ((int *)&DAT_05baf368)[u8Pno];
+	int local_cg = (int)DAT_05baf368[u8Pno];
 	int local_8g = DAT_05ba9348[u8Pno];
 	if (local_cg == 0 || local_8g == 0)
 	{

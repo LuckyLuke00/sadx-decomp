@@ -20,7 +20,7 @@ void mainE102Past01(int seqno)
 		case 2:
 			if (SeqCheckStage(0x22, 1))
 			{
-				if (*(float *)((char *)DAT_05baf368 + 0x28) < 800.0)
+				if (DAT_05baf368[0]->pos.z < 800.0)
 				{
 					SeqEvent(0xba);
 					SeqNext();

@@ -31,18 +31,16 @@ static void egm1ground_smoke_exec(struct task *tp)
 void SetEgm1GroundSmoke(struct NJS_POINT3 *posp)
 {
 	struct task *var1;
-	struct anywk *var2;
+	struct Egm1SmokeManWk *var2;
 
 	var1 = CreateElementalTask(0, 3, egm1ground_smoke_exec);
 	DAT_060b99f8 = var1;
 	if (var1 != NULL)
 	{
-		var2 = (struct anywk *)CAlloc(1, 0x10);
-		var1->awp = var2;
-		*(int *)&var2->work.ul[0] = *(int *)&posp->x;
-		*(int *)&var2->work.ul[1] = *(int *)&posp->y;
-		*(int *)&var2->work.ul[2] = *(int *)&posp->z;
-		var2->work.ub[12] = 0;
+		var2 = (struct Egm1SmokeManWk *)CAlloc(1, 0x10);
+		var1->awp = (struct anywk *)var2;
+		var2->Pos = *posp;
+		var2->Mode = 0;
 		var1->exec = egm1ground_smoke_exec;
 	}
 }

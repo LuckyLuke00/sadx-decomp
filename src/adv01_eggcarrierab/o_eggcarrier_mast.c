@@ -73,7 +73,7 @@ void ObjectECMast(struct task *tp)
 			var1->ang.y += 0x80;
 			((struct obj *)var1->counter.ptr)->ang[1] = var1->ang.y;
 			((volatile struct forcewk *)var3)->ang_spd.y = 0x80;
-			local_14 = (*(struct taskwk *volatile *)&DAT_05baf368)->pos;
+			local_14 = (*(struct taskwk *volatile *)DAT_05baf368)->pos;
 			njSubVector(&local_14, &var1->pos);
 			local_14.y = 0.0f;
 			local_14.x = njScalor(&local_14) * njTan(0x80);
@@ -90,7 +90,7 @@ void ObjectECMast(struct task *tp)
 			break;
 		}
 		var1->flag &= 0xFEFF;
-		if (njSqrt((((struct taskwk *)DAT_05baf368)->pos.x - var1->pos.x) * (((struct taskwk *)DAT_05baf368)->pos.x - var1->pos.x) + (((struct taskwk *)DAT_05baf368)->pos.y - var1->pos.y) * (((struct taskwk *)DAT_05baf368)->pos.y - var1->pos.y) + (((struct taskwk *)DAT_05baf368)->pos.z - var1->pos.z) * (((struct taskwk *)DAT_05baf368)->pos.z - var1->pos.z)) < 200.0)
+		if (njSqrt((DAT_05baf368[0]->pos.x - var1->pos.x) * (DAT_05baf368[0]->pos.x - var1->pos.x) + (DAT_05baf368[0]->pos.y - var1->pos.y) * (DAT_05baf368[0]->pos.y - var1->pos.y) + (DAT_05baf368[0]->pos.z - var1->pos.z) * (DAT_05baf368[0]->pos.z - var1->pos.z)) < 200.0)
 		{
 			var1->flag |= 0x100;
 		}

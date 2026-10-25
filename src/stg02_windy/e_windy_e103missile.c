@@ -75,13 +75,13 @@ static void updownHeight(struct task *pTask)
 	struct NJS_POINT3 *local_4 = (struct NJS_POINT3 *)pTask->awp;
 	struct taskwk *var2 = pTask->twp;
 	float local_8;
-	if (DAT_05baf368 == 0)
+	if (DAT_05baf368[0] == 0)
 	{
 		local_8 = -var2->pos.y;
 	}
 	else
 	{
-		local_8 = GetPlayerWorkPointer(0)->p.center_height + ((struct taskwk *)DAT_05baf368)->pos.y - var2->pos.y;
+		local_8 = GetPlayerWorkPointer(0)->p.center_height + DAT_05baf368[0]->pos.y - var2->pos.y;
 	}
 	if (fabs(local_8) < 0.1f)
 	{
@@ -216,8 +216,8 @@ static void _exec(struct task *pTask)
 	chkDamage(pTask);
 	local_10 = pTask->twp;
 	local_14 = SubAngle(local_10->ang.y, (long)(atan2(
-		(double)(float)(local_10->pos.z - ((struct taskwk *)DAT_05baf368)->pos.z),
-		(double)(float)(local_10->pos.x - ((struct taskwk *)DAT_05baf368)->pos.x)) * 65536.0 / -6.283184));
+		(double)(float)(local_10->pos.z - DAT_05baf368[0]->pos.z),
+		(double)(float)(local_10->pos.x - DAT_05baf368[0]->pos.x)) * 65536.0 / -6.283184));
 	if (local_14 < -0x38e)
 	{
 		local_14 = -0x38e;

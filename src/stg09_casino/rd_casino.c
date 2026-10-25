@@ -16,7 +16,7 @@ extern struct NJS_POINT3 *pScale_Stg09[];
 extern short DAT_05b9d744;
 extern int DAT_060dbcb0;
 extern unsigned char DAT_048093d9;
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 extern int DAT_05cd14d4;
 extern int DAT_060dbc34;
 extern char DAT_048093d8;
@@ -112,7 +112,7 @@ void RdCasinoCheckAct1toAct3(struct task *tp)
 	AddSetStage(3);
 	AddCameraStage(3);
 	AdvanceAct(3);
-	SetPlayerInitialPosition((struct taskwk *)DAT_05baf368);
+	SetPlayerInitialPosition(DAT_05baf368[0]);
 	*(unsigned char *)tp->twp = 0;
 	DAT_060dbc34 = 0;
 	DAT_048093d9 = 3;
@@ -129,7 +129,7 @@ void RdCasinoCheckAct1toAct4(struct task *tp)
 		AddSetStage(-1);
 		AddCameraStage(-1);
 		AdvanceAct(-1);
-		SetPlayerInitialPosition((*(struct taskwk *(*))&DAT_05baf368));
+		SetPlayerInitialPosition(DAT_05baf368[0]);
 		tp->twp->mode = 0;
 		DAT_060dbc34 = 0;
 		DAT_048093d8 = 0;

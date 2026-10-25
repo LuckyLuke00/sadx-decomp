@@ -7,7 +7,7 @@ int FUN_0054f7b0(struct playerwk *param_1, int param_2);
 extern unsigned char DAT_05bb00a9;
 int FUN_0054f7b0(struct playerwk *param_1, unsigned short param_2);
 int FUN_0054f920(int param_1);
-extern short *DAT_05baf368;
+extern struct taskwk *DAT_05baf368[8];
 
 // FUNCTION: SADX 0x005471b0
 void SonicDestruct(struct task *tp)
@@ -275,7 +275,7 @@ void ManageSonicLightSpinChargeExit(struct task *tp)
 {
 	struct OBJ_EDITENTRY *local_8;
 	local_8 = *(struct OBJ_EDITENTRY **)((char *)tp->awp + 4);
-	if (DAT_05baf368 != 0)
+	if (DAT_05baf368[0] != 0)
 	{
 		*(float *)((char *)local_8 + 0xac) = *(float *)((char *)tp->awp + 8);
 	}
