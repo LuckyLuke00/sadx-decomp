@@ -1,4 +1,6 @@
 #include "decls.h"
+static struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum);
+float njSin(int param_1);
 extern float DAT_05b9d860;
 void njGetMatrix(float *param_1);
 void njSetMatrix(float *param_1, float *param_2);
@@ -84,6 +86,12 @@ long CreateNinjaAngle(long ang0, long ang1)
 	return local_8;
 }
 
+// STUB: SADX 0x004cbb20
+long VectorAngle(struct NJS_POINT3 *v1, struct NJS_POINT3 *v2, struct NJS_POINT3 *vn)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004cbbf0
 int FrameIn(struct taskwk *twp)
 {
@@ -106,9 +114,36 @@ void InterpolateModel(struct NJS_MODEL *op, struct NJS_MODEL *np, struct NJS_MOD
 	CalculatePointNormals(dp);
 }
 
-// STUB: SADX 0x004cbe70
+// FUNCTION: SADX 0x004cbda0
+void InterpolatePointAsLiner(struct NJS_POINT3 *opp, struct NJS_POINT3 *npp, struct NJS_POINT3 *dpp, float rate, unsigned long nbPoint)
+{
+	float local_cg;
+	unsigned int local_8g;
+
+	local_cg = 1.0f - rate;
+	for (local_8g = 0; local_8g < (int)nbPoint; local_8g++)
+	{
+		dpp[local_8g].x = opp[local_8g].x * local_cg + npp[local_8g].x * rate;
+		dpp[local_8g].y = opp[local_8g].y * local_cg + npp[local_8g].y * rate;
+		dpp[local_8g].z = opp[local_8g].z * local_cg + npp[local_8g].z * rate;
+	}
+}
+
+// FUNCTION: SADX 0x004cbe70
 void InterpolatePointAsSin(struct NJS_POINT3 *opp, struct NJS_POINT3 *npp, struct NJS_POINT3 *dpp, float ang, unsigned long nbPoint)
 {
+	float local_ci;
+	float local_10;
+	unsigned int local_8g;
+
+	local_10 = njSin((int)(16384.0f * ang));
+	local_ci = 1.0f - local_10;
+	for (local_8g = 0; local_8g < (int)nbPoint; local_8g++)
+	{
+		dpp[local_8g].x = opp[local_8g].x * local_ci + npp[local_8g].x * local_10;
+		dpp[local_8g].y = opp[local_8g].y * local_ci + npp[local_8g].y * local_10;
+		dpp[local_8g].z = opp[local_8g].z * local_ci + npp[local_8g].z * local_10;
+	}
 }
 
 // FUNCTION: SADX 0x004ccaf0
@@ -127,10 +162,36 @@ long SearchTheObjectTreeForTheObject(struct obj *pobj, struct obj *obj)
 	}
 }
 
-// STUB: SADX 0x004ccb30
-struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum)
+// FUNCTION: SADX 0x004ccb30
+static struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum)
 {
-	return (struct obj *)0;
+	struct obj *local_8;
+
+	if (pobj == obj)
+	{
+		return obj;
+	}
+	*pnum = *pnum + 1;
+	local_8 = pobj->child;
+	if (local_8 != (struct obj *)0x0)
+	{
+		local_8 = SearchTheObjectForTheObject(local_8, obj, pnum);
+		if (local_8 == obj)
+		{
+			return obj;
+		}
+	}
+	local_8 = pobj->sibling;
+	if (local_8 != (struct obj *)0x0)
+	{
+		pobj = pobj->sibling;
+		local_8 = SearchTheObjectForTheObject(local_8, obj, pnum);
+		if (local_8 == obj)
+		{
+			return obj;
+		}
+	}
+	return (struct obj *)0x0;
 }
 
 // FUNCTION: SADX 0x004ccbd0
@@ -147,10 +208,33 @@ float GetFloatMod(float dividend, float divisor)
 	return local_cj;
 }
 
-// STUB: SADX 0x004ccc60
+// FUNCTION: SADX 0x004ccc60
 int FUN_004ccc60(int param_1, int *param_2)
 {
-	return (int)0;
+	int *local_8g;
+	int local_cg;
+
+	local_8g = *(int **)((char *)param_1 + *(int *)param_2 * 4);
+	*param_2 = *param_2 + 1;
+	local_cg = *(int *)((char *)local_8g + 0x2c);
+	if (local_cg != 0)
+	{
+		if (param_1 != 0)
+		{
+			*(int *)((char *)param_1 + *(int *)param_2 * 4) = local_cg;
+		}
+		FUN_004ccc60(param_1, param_2);
+	}
+	local_cg = *(int *)((char *)local_8g + 0x30);
+	if (local_cg != 0)
+	{
+		if (param_1 != 0)
+		{
+			*(int *)((char *)param_1 + *(int *)param_2 * 4) = local_cg;
+		}
+		FUN_004ccc60(param_1, param_2);
+	}
+	return *param_2;
 }
 
 // STUB: SADX 0x004cccf0

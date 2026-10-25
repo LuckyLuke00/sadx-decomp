@@ -18,7 +18,7 @@ void TamaDraw2(struct task *tp)
 	___njFogDisable();
 	njPushMatrix(0);
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
-	njRotateXYZ(0, (long *)(*(long *)&var1->ang.x), (long *)(*(long *)&var1->ang.y), (long *)(*(long *)&var1->ang.z));
+	njRotateXYZ(0, var1->ang.x, var1->ang.y, var1->ang.z);
 	FUN_0067d2d0(0, 1.0, 1.0, -1.0);
 	___njSetTexture(&texlist_shooting0);
 	late_DrawObjectEx((struct obj *)&object_stef_s_pshot_s_pshot, 4);

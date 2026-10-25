@@ -15,6 +15,7 @@ struct _OBJ_CAMERAPARAM;
 struct _OBJ_LANDTABLE;
 struct _OptionSelWk;
 struct _SC_NUMBERS;
+struct _sSTVERTEXSTREAM;
 struct ActionParam;
 struct ADV1_AL_BODY;
 struct ADV1_AL_FACE;
@@ -183,6 +184,8 @@ union NJS_COLOR;
 struct NJS_LIGHT;
 struct NJS_MATERIAL;
 struct NJS_MESHSET;
+struct NJS_MKEY_A;
+struct NJS_MKEY_F;
 struct NJS_MKEY_P;
 struct NJS_MODEL;
 struct NJS_MOTION;
@@ -215,6 +218,7 @@ struct PATHCAMERA1WORK;
 struct pathinfo;
 struct pathtag;
 struct pathtbl;
+struct PDS_VIBPARAM;
 struct pheadeyewk;
 struct PL_ACTION;
 struct PL_FACE;
@@ -3104,6 +3108,22 @@ static_assert(offsetof(NJS_MESHSET, normals) == 0xc, "NJS_MESHSET::normals");
 static_assert(offsetof(NJS_MESHSET, vertcolor) == 0x10, "NJS_MESHSET::vertcolor");
 static_assert(offsetof(NJS_MESHSET, vertuv) == 0x14, "NJS_MESHSET::vertuv");
 static_assert(offsetof(NJS_MESHSET, ext) == 0x18, "NJS_MESHSET::ext");
+
+struct NJS_MKEY_A {
+    unsigned long keyframe;
+    long key[3];
+};
+static_assert(sizeof(NJS_MKEY_A) == 0x10, "sizeof NJS_MKEY_A");
+static_assert(offsetof(NJS_MKEY_A, keyframe) == 0x0, "NJS_MKEY_A::keyframe");
+static_assert(offsetof(NJS_MKEY_A, key) == 0x4, "NJS_MKEY_A::key");
+
+struct NJS_MKEY_F {
+    unsigned long keyframe;
+    float key[3];
+};
+static_assert(sizeof(NJS_MKEY_F) == 0x10, "sizeof NJS_MKEY_F");
+static_assert(offsetof(NJS_MKEY_F, keyframe) == 0x0, "NJS_MKEY_F::keyframe");
+static_assert(offsetof(NJS_MKEY_F, key) == 0x4, "NJS_MKEY_F::key");
 
 struct NJS_MKEY_P {
     unsigned long keyframe;

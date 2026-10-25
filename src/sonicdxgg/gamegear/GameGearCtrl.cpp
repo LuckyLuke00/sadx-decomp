@@ -1,6 +1,11 @@
 #include "decls.h"
 void FUN_0090b5e0(int param_1, int param_2, int param_3, int param_4, int param_5);
 
+// STUB: SADX 0x0090a010
+void __fastcall FUN_0090a010(void *param_1, void *param_2)
+{
+}
+
 // STUB: SADX 0x0090a0b0
 void __fastcall FUN_0090a0b0(int param_1, int param_2, int param_3)
 {

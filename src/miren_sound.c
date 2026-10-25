@@ -1,11 +1,31 @@
 #include "decls.h"
+extern struct taskwk *DAT_05b42a7c;
+struct StartBgmParam {
+	int bgmId;
+	int time;
+};
+extern struct TaskInfo StartBgmTaskInfo;
 struct StartBgmParam;
 extern struct task *DAT_05ccdeb0;
 
-// STUB: SADX 0x0056efd0
+// FUNCTION: SADX 0x0056efd0
 struct task *MirenSoundSetStartBgmTask(int bgmId, int time)
 {
-	return (struct task *)0;
+	struct StartBgmParam param;
+	struct task *local_8g;
+
+	if (DAT_05ccdeb0 == NULL)
+	{
+		param.bgmId = bgmId;
+		param.time = time;
+		local_8g = MirenSetTask((enum tasklevel)0, &StartBgmTaskInfo, &param);
+		DAT_05ccdeb0 = local_8g;
+	}
+	else
+	{
+		local_8g = NULL;
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x0056f020
@@ -65,9 +85,13 @@ void MirenSoundPlayLoopSE(int se, const struct task *task_p, const struct NJS_PO
 	}
 }
 
-// STUB: SADX 0x0056f1c0
+// FUNCTION: SADX 0x0056f1c0
 void MirenSoundStopLoopSE(const struct task *task_p)
 {
+	if (task_p)
+	{
+		dsStop_id((int)task_p);
+	}
 }
 
 // STUB: SADX 0x0056f1e0

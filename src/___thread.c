@@ -1,4 +1,6 @@
 #include "decls.h"
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
+extern void *DAT_05eda1e0;
 struct thread;
 void *FUN_005a4c50(int param_1);
 void TH_SetFunc(struct thread *tp, void (*func)(void *), void *pParam);
@@ -37,9 +39,14 @@ void FUN_005a4c90(int param_1)
 	DAT_05eda200[DAT_05cda1d0] = param_1;
 }
 
-// STUB: SADX 0x005a4cd0
+// FUNCTION: SADX 0x005a4cd0
 void TH_Init()
 {
+	TH_Queue_Init();
+	memset(&DAT_05eda1dc, 0, 0x24);
+	DAT_05eda1e0 = &DAT_05eda1dc;
+	DAT_05eda1dc = DAT_05eda1e0;
+	DAT_05eda1d8 = DAT_05eda1dc;
 }
 
 // FUNCTION: SADX 0x005a4d10

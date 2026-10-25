@@ -1,6 +1,5 @@
 #include "decls.h"
 extern void stFileServer(void);
-struct SADX_file;
 void stReadFileReq(int param_1, int param_2, int param_3, int param_4);
 int FUN_00928740();
 

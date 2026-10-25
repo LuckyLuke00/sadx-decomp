@@ -90,7 +90,7 @@ void njDrawSprite3D(struct NJS_SPRITE *,int,unsigned long)
 }
 
 // STUB: SADX 0x00422330
-void njDrawPolygon3D(struct NJS_POINT3COL *,int,unsigned long)
+void njDrawPolygon3D(struct NJS_POINT3COL *, int, unsigned long)
 {
 }
 
@@ -172,8 +172,23 @@ void stInitVertex(unsigned long, unsigned long, void *)
 {
 }
 
+// STUB: SADX 0x00426740
+void FUN_00426740(void)
+{
+}
+
+// STUB: SADX 0x00426820
+void FUN_00426820(void)
+{
+}
+
 // STUB: SADX 0x00426a20
 void stDirect3DFinish(void)
+{
+}
+
+// STUB: SADX 0x00426a60
+void stDrawPlist(short *)
 {
 }
 
@@ -200,6 +215,11 @@ int stSetTexture(struct NJS_TEXMEMLIST *)
 
 // STUB: SADX 0x0042b090
 void FUN_0042b090(long)
+{
+}
+
+// STUB: SADX 0x0042b5b0
+void stPreCalcMatrix(void)
 {
 }
 
@@ -298,6 +318,11 @@ void njTranslateEx(void *)
 
 // STUB: SADX 0x00433770
 void njPushMatrixEx()
+{
+}
+
+// STUB: SADX 0x00433f40
+void stVSRelease(struct _sSTVERTEXSTREAM *)
 {
 }
 
@@ -1065,18 +1090,13 @@ void DrawObjectClip(struct obj *, float)
 {
 }
 
+// STUB: SADX 0x004a2440
+void ds_DrawBoxFill2D(float x, float y, float x2, float y2, float pri, unsigned long argb)
+{
+}
+
 // STUB: SADX 0x004a2a30
 void late_exec()
-{
-}
-
-// STUB: SADX 0x004a3db0
-void late_DrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr, int flgs)
-{
-}
-
-// STUB: SADX 0x004a4710
-void late_SetFunc(void (*)(void *), void *, float, int)
 {
 }
 
@@ -1122,6 +1142,11 @@ void DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
 
 // STUB: SADX 0x004a7d20
 void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
+{
+}
+
+// STUB: SADX 0x004a82e0
+void MotionIntScale(struct obj *obj)
 {
 }
 
@@ -1225,17 +1250,6 @@ void wmaresume()
 int dsPlay_iloop(int tone, int id, int pri, int volofs)
 {
 	return (int)0;
-}
-
-// STUB: SADX 0x004afda0
-long IsPlayOk(int tone)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x004afe70
-void dsLoadCharacterVoice()
-{
 }
 
 // STUB: SADX 0x004b0aa0
@@ -1456,11 +1470,6 @@ int LoadFileWithMalloc(char *, void **)
 	return (int)0;
 }
 
-// STUB: SADX 0x004cf5e0
-void LoadPlayerMotionData(long PlayerNo)
-{
-}
-
 // STUB: SADX 0x004cf6a0
 long __GetFileSize(const char *fname)
 {
@@ -1614,21 +1623,10 @@ long SetRegularTexture()
 	return (long)0;
 }
 
-// STUB: SADX 0x00502240
-long CheckObjectTexture()
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x00502260
 long SetObjectTexture()
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x00502980
-extern void texLoadTexturePvmFile(char *, struct NJS_TEXLIST *)
-{
 }
 
 // STUB: SADX 0x00502cd0
@@ -2005,11 +2003,6 @@ extern void ___dsSetPalette(long)
 {
 }
 
-// STUB: SADX 0x005989a0
-void lig_cpyPalette(int dstNo, int srcNo)
-{
-}
-
 // STUB: SADX 0x0059c040
 void SelectPlayerManager(struct task *tp)
 {
@@ -2019,11 +2012,6 @@ void SelectPlayerManager(struct task *tp)
 struct MDHANDLE *MDHeaderOpen(char *fname, int flag)
 {
 	return (struct MDHANDLE *)0;
-}
-
-// STUB: SADX 0x0059d430
-void MDHeaderClose(struct MDHANDLE *mdh)
-{
 }
 
 // STUB: SADX 0x0059dd40
@@ -2754,7 +2742,7 @@ extern void njRotateX(float *, unsigned short)
 }
 
 // STUB: SADX 0x0067d5a0
-extern void njRotateXYZ(long, long *, long *, long *)
+extern void njRotateXYZ(long, long, long, long)
 {
 }
 
@@ -2764,7 +2752,7 @@ void njUnitMatrix(float *)
 }
 
 // STUB: SADX 0x0067e600
-void njRotateZXY(long, long *, long *, long *)
+void njRotateZXY(long, long, long, long)
 {
 }
 
@@ -3423,12 +3411,6 @@ long GameGearLoop()
 // STUB: SADX 0x007f2150
 void FUN_007f2150(void)
 {
-}
-
-// STUB: SADX 0x007f2260
-long Expand2(void *src, void *dest)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x007f25b0
@@ -4191,6 +4173,12 @@ void FUN_0090cc80(int)
 {
 }
 
+// STUB: SADX 0x0090ccb0
+unsigned char FUN_0090ccb0(int)
+{
+	return (unsigned char)0;
+}
+
 // STUB: SADX 0x0090ccd0
 int FUN_0090ccd0(int)
 {
@@ -4202,15 +4190,15 @@ void FUN_0090ccf0(int, int)
 {
 }
 
+// STUB: SADX 0x0090cd20
+void Z80_Write2(unsigned short addr, unsigned short data)
+{
+}
+
 // STUB: SADX 0x0090cd50
 int FUN_0090cd50()
 {
 	return (int)0;
-}
-
-// STUB: SADX 0x0091aa20
-void Z80_Reset(unsigned char *ram)
-{
 }
 
 // STUB: SADX 0x00924470

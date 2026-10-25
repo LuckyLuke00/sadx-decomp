@@ -56,6 +56,11 @@ void lig_fillOffsetPalette(int no, unsigned long spe, int num)
 {
 }
 
+// STUB: SADX 0x005989a0
+void lig_cpyPalette(int dstNo, int srcNo)
+{
+}
+
 // STUB: SADX 0x005989e0
 void lig_supplementPalette(int no, int src1, int src2, float fmix1)
 {
