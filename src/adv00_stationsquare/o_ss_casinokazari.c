@@ -20,8 +20,3 @@ void ExecDay(struct task *tp)
 {
 	DispDay(tp);
 }
-
-// STUB: SADX 0x00682750
-void BuilGInit(struct task *tp)
-{
-}

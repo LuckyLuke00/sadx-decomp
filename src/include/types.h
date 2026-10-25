@@ -6,9 +6,12 @@
 
 struct ___stcClip;
 struct ___stcFog;
+struct __HPPOS;
 struct __MYMEM_DATA;
 struct _camcontwk;
 struct _CameraSystemWork;
+struct _emtnjvwk;
+struct _eventobjwk;
 struct _OBJ_ADJUSTPARAM;
 struct _OBJ_CAMERAENTRY;
 struct _OBJ_CAMERAPARAM;
@@ -120,11 +123,10 @@ struct CRUSHLIGHT_DATA;
 struct CRUSHLIGHT_WK;
 struct csts;
 struct DAT_0044e380_0;
-struct DAT_060bbe38;
 struct DDlgType;
 struct DialogPrmType;
 struct DlgSndPrmType;
-struct eggmoble_effect;
+struct Egm2CarData;
 struct EmblemViewWk;
 struct enemywk;
 struct EPATHTAG;
@@ -159,6 +161,7 @@ struct LATE_LNK;
 struct LATE_MDL_RQ;
 struct LE_LIGHT_ENV;
 struct LE_PALIGHT_ENV;
+struct LegModel;
 struct LightInfo;
 struct MDHANDLE;
 struct MiMsg;
@@ -2509,6 +2512,14 @@ static_assert(sizeof(EVTABLE2) == 0x8, "sizeof EVTABLE2");
 static_assert(offsetof(EVTABLE2, func) == 0x0, "EVTABLE2::func");
 static_assert(offsetof(EVTABLE2, pvmtable) == 0x4, "EVTABLE2::pvmtable");
 
+struct Egm2CarData {
+    struct obj *obj;
+    float weight;
+};
+static_assert(sizeof(Egm2CarData) == 0x8, "sizeof Egm2CarData");
+static_assert(offsetof(Egm2CarData, obj) == 0x0, "Egm2CarData::obj");
+static_assert(offsetof(Egm2CarData, weight) == 0x4, "Egm2CarData::weight");
+
 struct EmblemViewWk {
     enum AdvaStatEnum Stat;
     enum AdvaModeEnum PrevMode;
@@ -4307,16 +4318,6 @@ static_assert(offsetof(csts, onpoly) == 0x54, "csts::onpoly");
 static_assert(offsetof(csts, pshbk) == 0x60, "csts::pshbk");
 static_assert(offsetof(csts, anaspdh) == 0x6c, "csts::anaspdh");
 static_assert(offsetof(csts, anaspdv) == 0x78, "csts::anaspdv");
-
-struct eggmoble_effect {
-    struct particle_info *effect;
-    struct NJS_POINT3 pos;
-    struct NJS_POINT3 vec;
-};
-static_assert(sizeof(eggmoble_effect) == 0x1c, "sizeof eggmoble_effect");
-static_assert(offsetof(eggmoble_effect, effect) == 0x0, "eggmoble_effect::effect");
-static_assert(offsetof(eggmoble_effect, pos) == 0x4, "eggmoble_effect::pos");
-static_assert(offsetof(eggmoble_effect, vec) == 0x10, "eggmoble_effect::vec");
 
 struct enemywk {
     union {

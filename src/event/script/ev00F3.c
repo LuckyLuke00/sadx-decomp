@@ -35,8 +35,6 @@ void FUN_007d4cd0(struct task *param_1, float param_2);
 void FUN_007d6280(float param_1, float param_2, float param_3, long param_4, long param_5, long param_6);
 void FUN_007d6940(struct task *param_1);
 
-#pragma auto_inline(off)
-
 // FUNCTION: SADX 0x007318d0
 static void dispChaos0Task(struct task *p_task)
 {
@@ -45,8 +43,6 @@ static void dispChaos0Task(struct task *p_task)
 	*((unsigned char *)&object_c0_manju_c0_manju->model->mats->diffuse + 3) = *((unsigned char *)var1->value.ptr + 0x1c);
 	SetParamDispChaosWater(&var1->pos, &var1->scl);
 }
-
-#pragma auto_inline(on)
 
 // FUNCTION: SADX 0x00731900
 static void execChaos0Task(struct task *p_task)

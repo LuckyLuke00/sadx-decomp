@@ -22,3 +22,8 @@ void DisplaySky(struct taskwk *twp)
 	LoadControl3D();
 	FUN_004a0520(DAT_05b3e050.x, DAT_05b3e050.y);
 }
+
+// STUB: SADX 0x006f4980
+void Bg_Chaos6(struct task *tp)
+{
+}

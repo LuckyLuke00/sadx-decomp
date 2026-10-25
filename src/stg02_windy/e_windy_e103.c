@@ -66,11 +66,6 @@ void FUN_0080e4a0(int param_1, struct task *pTask)
 {
 }
 
-// STUB: SADX 0x0080e4e0
-void execTgt(struct task *pTask)
-{
-}
-
 // STUB: SADX 0x0080e520
 void FUN_0080e520(struct task *pTask)
 {
@@ -84,11 +79,6 @@ int FUN_0080e590(struct task *pTask)
 
 // STUB: SADX 0x0080ead0
 void jump(struct task *pTask)
-{
-}
-
-// STUB: SADX 0x0080f4b0
-void callbackTgt(struct obj *obj)
 {
 }
 

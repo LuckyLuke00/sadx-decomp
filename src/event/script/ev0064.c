@@ -1,4 +1,6 @@
 #include "decls.h"
+static void execShadowTask(struct task *p_task);
+static void dispShadowTask(struct task *p_task);
 extern struct task *DAT_060cba88[16];
 
 // FUNCTION: SADX 0x0077e8b0
@@ -11,15 +13,19 @@ void shadowOff(signed char num)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0077e8e0
-void dispShadowTask(struct task *p_task)
+static void dispShadowTask(struct task *p_task)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x0077e9a0
-void execShadowTask(struct task *p_task)
+static void execShadowTask(struct task *p_task)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0077ea20
 void initShadowTask(struct task *p_task)

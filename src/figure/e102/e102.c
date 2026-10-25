@@ -24,16 +24,41 @@ int FUN_00513840(char *param_1, int param_2, int param_3)
 	return (int)0;
 }
 
+// STUB: SADX 0x00513900
+long E102CheckJump(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00513ad0
 int FUN_00513ad0(struct taskwk *param_1, int param_2, struct motionwk2 *param_3)
 {
 	return (int)0;
 }
 
-// STUB: SADX 0x005146a0
+// FUNCTION: SADX 0x005146a0
 long E102CheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if ((twp->flag & 3) == 0)
+	{
+		if ((twp->flag & 0x800) != 0)
+		{
+			if ((PCheckHoldObject(twp) & 0x200) != 0)
+			{
+				twp->mode = 0x16;
+				*(short *)((char *)pwp + 0x124) = 0x21;
+				return 1;
+			}
+			E102ThrowTheObjectOut(twp, mwp, pwp);
+		}
+		twp->mode = 7;
+		*(short *)((char *)pwp + 0x124) = 8;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x00514730
@@ -42,10 +67,42 @@ long E102CheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 	return (long)0;
 }
 
-// STUB: SADX 0x005147e0
-long FUN_005147e0(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+// FUNCTION: SADX 0x005147e0
+long FUN_005147e0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
+{
+	long local_8;
+
+	PAdjustHoldingPosition(param_1, param_2, param_3);
+	if (param_3->mj.nframe >= 6.0f)
+	{
+		local_8 = PCheckHoldObject(param_1);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(param_1, param_2))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					param_1->mode = 0x38;
+					return 1;
+				}
+				break;
+			}
+			FUN_005125a0(param_1, param_2, param_3);
+		}
+	}
+	return 0;
+}
+
+// STUB: SADX 0x005149c0
+long FUN_005149c0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x00515140
+void E102ThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
 }
 
 // STUB: SADX 0x00515550
@@ -77,6 +134,11 @@ void FUN_00515a90(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	PGetAccelerationAir(param_1, param_2, param_3);
 }
 
+// STUB: SADX 0x00515ab0
+void PGetAccelerationE102_C(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // FUNCTION: SADX 0x00515c30
 void FUN_00515c30(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
@@ -96,6 +158,12 @@ void FUN_00515c60(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 // STUB: SADX 0x00515c90
 void E102MotionCallback(struct obj *param_1)
 {
+}
+
+// STUB: SADX 0x00516000
+int ChkTimeOverDead(struct taskwk *twp, struct playerwk *pwp)
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x00516140

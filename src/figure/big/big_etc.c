@@ -1,4 +1,12 @@
 #include "decls.h"
+void FUN_0058d680();
+void dispHandleTexture(float *param_1, float *param_2);
+extern struct NJS_TEXANIM dust_anim[1];
+extern int DAT_05cd2978;
+extern int DAT_05cd2970;
+extern float DAT_05cd2984;
+extern float DAT_05cd2988;
+extern float DAT_05cd298c;
 double njScalor(struct NJS_POINT3 *);
 extern struct NJS_TEXLIST texlist_fishing;
 void FUN_0058d570(float param_1);
@@ -107,6 +115,11 @@ void exitFishingLure(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0058d290
+void dispFishingLureSwitch(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0058d490
 void dispHandleTexture(float *param_1, float *param_2)
 {
@@ -124,6 +137,11 @@ void dispHandleTexture(float *param_1, float *param_2)
 	FUN_0058d570(DAT_05cd29a8);
 }
 
+// STUB: SADX 0x0058d570
+void FUN_0058d570(float param_1)
+{
+}
+
 // FUNCTION: SADX 0x0058d680
 void FUN_0058d680()
 {
@@ -132,8 +150,24 @@ void FUN_0058d680()
 	FUN_0058d6a0();
 }
 
+// STUB: SADX 0x0058dae0
+void dispFishingLure(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0058dce0
+void CalcRodPos(struct task *tp, struct NJS_POINT3 *pos_ptr)
+{
+}
+
 // STUB: SADX 0x0058dea0
 long FUN_0058dea0(int param_1)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0058df90
+long ReturnFishingLure(struct task *tp)
 {
 	return (long)0;
 }
@@ -142,6 +176,11 @@ long FUN_0058dea0(int param_1)
 long chkKabeAngle2(struct task *tp, struct Angle3 *angle3_p)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x0058e9d0
+void setLureSpd_D(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x0058f980
@@ -168,6 +207,11 @@ long iceWaterCheck()
 	return (long)0;
 }
 
+// STUB: SADX 0x0058fb00
+void setLurePosWait(struct task *tp, struct NJS_POINT3 *rod_pos_p)
+{
+}
+
 // FUNCTION: SADX 0x0058fcb0
 void setLureSetup(struct task *tp)
 {
@@ -191,10 +235,34 @@ void setLureSetup(struct task *tp)
 	dsStop_num(0x34d);
 }
 
-// STUB: SADX 0x0058ffa0
+// STUB: SADX 0x0058ff60
+long FUN_0058ff60(long param_1, long param_2)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x0058ffa0
 int FUN_0058ffa0(void)
 {
-	return (int)0;
+	if (DAT_05cd2978 == 0)
+	{
+		return 0;
+	}
+	if ((((short)DAT_05b9d724 << 8 | (short)DAT_05b9d744) & 0xff00) == 0xc00)
+	{
+		if (*(float *)(*(int *)((char *)DAT_05cd2978 + 0x20) + 0x20) == 750.0f)
+		{
+			if (*(float *)(*(int *)((char *)DAT_05cd2978 + 0x20) + 0x24) == 75.5f)
+			{
+				if (*(float *)(*(int *)((char *)DAT_05cd2978 + 0x20) + 0x28) == -650.0f)
+				{
+					DAT_05cd296c = DAT_05cd296c | 0x80;
+					return 1;
+				}
+			}
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x00590050
@@ -202,8 +270,46 @@ void FUN_00590050(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00591070
+// FUNCTION: SADX 0x00591070
 void moveFishingRotY(struct task *tp)
+{
+	int local_8g;
+	int local_cg;
+	int local_10g;
+
+	local_8g = tp->twp->ang.y;
+	local_cg = *(int *)((char *)tp->mwp + 0x20);
+	local_10g = (local_8g - local_cg) & 0xffff;
+	if (local_10g < 0x8000)
+	{
+		local_8g -= 0x40;
+	}
+	else
+	{
+		if (local_10g > 0x8000)
+		{
+			local_8g += 0x40;
+		}
+	}
+	if (local_10g < 0x80 || local_10g > 0xff80)
+	{
+		local_8g = local_cg;
+	}
+	tp->twp->ang.y = local_8g;
+}
+
+// STUB: SADX 0x005910f0
+void moveFishingRotZ(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00591260
+void CalcHookPos(struct NJS_POINT3 *ret)
+{
+}
+
+// STUB: SADX 0x00591390
+void CalcLinePos(struct NJS_POINT3 *ret)
 {
 }
 
@@ -215,6 +321,11 @@ void FUN_005914c0(void)
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
 	ResetMaterial();
+}
+
+// STUB: SADX 0x00591500
+void CameraLureAndFish(struct _OBJ_CAMERAPARAM *pParam)
+{
 }
 
 // STUB: SADX 0x00591630
@@ -254,9 +365,20 @@ float GetWaterLevel()
 	return DAT_05cd29a0;
 }
 
-// STUB: SADX 0x00591de0
+// FUNCTION: SADX 0x00591de0
 void BigDisplayStatus(struct task *tp)
 {
+	struct taskwk *local_8 = tp->twp;
+	switch (local_8->mode)
+	{
+	case 0:
+		tp->disp = dispZankiTexturePause;
+		local_8->mode = 1;
+		break;
+	case 1:
+		dispZankiTexturePause(tp);
+		break;
+	}
 }
 
 // FUNCTION: SADX 0x005923c0
@@ -265,6 +387,16 @@ void SetBigDispHit()
 	CreateElementalTask(2, 6, BigDisplayHit);
 	DAT_05cd2974 = 0.0f;
 	Jingle_Play(0x2d);
+}
+
+// STUB: SADX 0x005923f0
+void BigDisplayHit(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00592520
+void FUN_00592520(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x00592680
@@ -279,9 +411,44 @@ struct task *FUN_005926a0(struct task *param_1)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x00592880
+// STUB: SADX 0x00592720
+void DustTextureCtrl(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x00592880
 void dispDustTexture(struct task *tp)
 {
+	struct NJS_SPRITE sprite;
+	struct NJS_ARGB color;
+	struct taskwk *local_3c;
+
+	local_3c = tp->twp;
+	sprite.tlist = &texlist_fishing;
+	sprite.tanim = &dust_anim[0];
+	sprite.ang = 0;
+	sprite.sx = 0.1f;
+	sprite.sy = 0.1f;
+	sprite.p.x = 0.0f;
+	sprite.p.y = 0.0f;
+	sprite.p.z = 0.0f;
+	___njSetTexture(&texlist_fishing);
+	color.b = 1.0f;
+	color.g = color.b;
+	color.r = color.g;
+	if (local_3c->mode == 2)
+	{
+		color.a = local_3c->value.f;
+	}
+	else
+	{
+		color.a = 1.0f;
+	}
+	___njSetConstantMaterial(&color);
+	njPushMatrix(0);
+	FUN_0067d830(0, local_3c->pos.x, local_3c->pos.y, local_3c->pos.z);
+	___njDrawSprite3D(&sprite, tp->twp->counter.l, 0x32);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x00592980
@@ -290,9 +457,16 @@ long BigCheckTargetEnemy(struct taskwk *twp)
 	return (long)0;
 }
 
-// STUB: SADX 0x00592a30
+// FUNCTION: SADX 0x00592a30
 void BigStageInit()
 {
+	DAT_05cd2990 = 0;
+	DAT_05cd299c = 0;
+	DAT_05cd2994 = 0;
+	DAT_05cd2970 = (int)FUN_00593af0();
+	DAT_05cd298c = 0.0f;
+	DAT_05cd2988 = DAT_05cd298c;
+	DAT_05cd2984 = DAT_05cd2988;
 }
 
 // STUB: SADX 0x00592a80

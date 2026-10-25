@@ -4,6 +4,23 @@ struct colliwk;
 struct task;
 void E102EnemyDest(struct task *tp);
 
+// FUNCTION: SADX 0x005d3e20
+int CheckEnemyAddTime(struct task *tp)
+{
+	struct taskwk *local_cg;
+	struct colliwk *local_8g;
+
+	local_cg = tp->twp;
+	if (local_cg == 0)
+		return 0;
+	local_8g = local_cg->cwp;
+	if (local_8g == 0)
+		return 0;
+	if ((*(int *)((char *)(*(void **)((char *)local_8g + 0xc)) + 4) & 0x800000) != 0)
+		return 0;
+	return 1;
+}
+
 // STUB: SADX 0x005d44b0
 void SetEnemyDestractor(struct colliwk **list, int num)
 {

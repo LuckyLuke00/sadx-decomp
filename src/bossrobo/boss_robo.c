@@ -47,3 +47,8 @@ void _boss_robo_prolog()
 	changerroboinit();
 	DAT_05b9e0b0 = _boss_robo_epilog;
 }
+
+// STUB: SADX 0x006d8f40
+void SetRobo()
+{
+}

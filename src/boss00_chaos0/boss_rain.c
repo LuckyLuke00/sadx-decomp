@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_ARGB DAT_0286df48;
+extern struct NJS_SPRITE DAT_060df55c;
 extern struct task *DAT_060bd48c;
 
 // FUNCTION: SADX 0x006e2a80
@@ -13,9 +15,28 @@ void DisplayRain(struct task *tp)
 	ResetMaterial();
 }
 
-// STUB: SADX 0x006e2ac0
+// FUNCTION: SADX 0x006e2ac0
 void DisplayDrop(struct task *tp)
 {
+	struct taskwk *var1;
+	float var2;
+
+	var1 = tp->twp;
+	DAT_0286df48.a = var1->counter.f;
+	___njSetConstantMaterial(&DAT_0286df48);
+	___njSetTexture(&texlist_chaos_effect);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	var2 = var1->counter.f * 0.25;
+	njRotateX(0, 0x4000);
+	FUN_0067d2d0(0, var2, var2, var2);
+	___njDrawSprite3D(&DAT_060df55c, 0, 0x22);
+	njPopMatrix(1);
+	ResetMaterial();
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // FUNCTION: SADX 0x006e2d70

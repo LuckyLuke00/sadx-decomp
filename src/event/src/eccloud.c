@@ -3,6 +3,11 @@ extern struct task *DAT_060ccb80;
 extern void *DAT_060ccb78;
 extern void *DAT_060ccb7c;
 
+// STUB: SADX 0x007dcb80
+void SetCloudScroll(struct cloud_scroll *scroll)
+{
+}
+
 // FUNCTION: SADX 0x007dd000
 void CEcCloud_Stop()
 {

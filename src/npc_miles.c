@@ -73,10 +73,10 @@ void SetPlayerFlyMode(unsigned char plno)
 	}
 }
 
-// STUB: SADX 0x005ad7f0
+// FUNCTION: SADX 0x005ad7f0
 float FUN_005ad7f0(float *param_1)
 {
-	return (float)0;
+	return njSqrt(param_1[0] * param_1[0] + param_1[1] * param_1[1] + param_1[2] * param_1[2]);
 }
 
 // FUNCTION: SADX 0x005ad830

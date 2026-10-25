@@ -1,9 +1,20 @@
 #include "decls.h"
+extern int DAT_060c4aac;
+extern int DAT_060c462c;
 extern float DAT_060c4ab0;
 extern int DAT_05b9d838;
 extern struct NJS_TEXLIST _texlist_e101r;
 extern int DAT_060c4aa8;
 extern int DAT_060c4ab4;
+
+// FUNCTION: SADX 0x0070ee40
+void E101R_BarrierInit()
+{
+	DAT_060c4aa8 = 0;
+	DAT_060c4ab0 = 0.0f;
+	DAT_060c4aac = 0;
+	DAT_060c4ab4 = DAT_060c462c + 0xa19c;
+}
 
 // FUNCTION: SADX 0x0070ee70
 void E101R_BarrierExit()

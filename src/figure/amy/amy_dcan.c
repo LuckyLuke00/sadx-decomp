@@ -1,13 +1,25 @@
 #include "decls.h"
+void ADC_Displayer(struct task *tp);
+static void ADC_DrumCanExe(struct task *tp);
 extern int DAT_05b9d838;
 extern struct NJS_MODEL **DAT_060eeab4;
 extern struct CCL_INFO colliinfo_dcan[1];
 extern unsigned long DAT_05edc458;
 
-// STUB: SADX 0x005d5270
+// FUNCTION: SADX 0x005d5270
 long ADC_PutDrumCan(struct NJS_POINT3 *pos)
 {
-	return (long)0;
+	struct task *local_8;
+	local_8 = CreateElementalTask(2, 6, ADC_DrumCanIni);
+	if (local_8 != NULL)
+	{
+		local_8->twp->pos = *pos;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x005d52c0
@@ -30,6 +42,13 @@ void ADC_Displayer(struct task *tp)
 		njPopMatrix(1);
 	}
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x005d5350
+static void ADC_DrumCanExe(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x005d5510
 long ADC_SetDrumCan()

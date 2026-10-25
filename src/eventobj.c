@@ -1,4 +1,5 @@
 #include "decls.h"
+int FUN_005b3270(struct taskwk *param_1);
 struct facewk;
 int FUN_005b3270(struct taskwk *param_1);
 extern struct CCL_INFO DAT_0263d6f4;
@@ -49,6 +50,11 @@ void FreeEventPath(struct taskwk *twp)
 	}
 	twp->ewp->path.list = 0;
 	twp->ewp->path.timer = 0.0f;
+}
+
+// STUB: SADX 0x005b2bc0
+void ConvRotXYZ2YXZ(struct Angle3 *ang)
+{
 }
 
 // STUB: SADX 0x005b3100

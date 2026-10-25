@@ -9,9 +9,27 @@ extern signed char DAT_05b3ea16;
 void late_SetFunc(void (*fnc)(void *), void *arg, float zprio, int flgs);
 void late_ChaosLifeGaugeDisplay(struct task *tp);
 
-// STUB: SADX 0x005d11a0
+// FUNCTION: SADX 0x005d11a0
 void SetChaosLifeGauge(int xpos, int ypos, int max)
 {
+	struct task *local_cg;
+	struct taskwk *local_8g;
+
+	local_cg = CreateElementalTask(2, 6, (void (*)(struct task *))ChaosLifeGauge);
+	local_8g = local_cg->twp;
+	if (xpos > 0)
+	{
+		local_8g->pos.x = (float)xpos;
+		local_8g->pos.y = (float)ypos;
+	}
+	else
+	{
+		local_8g->pos.x = ScreenRaitoX * 600.0 - 35.0;
+		local_8g->pos.y = ScreenRaitoY * 48.0 + 10.0;
+	}
+	DAT_05edc418 = (unsigned char)max;
+	*(unsigned char *)((char *)&DAT_05edc418 + 1) = DAT_05edc418;
+	DAT_05edc424 = (float)max;
 }
 
 // STUB: SADX 0x005d1230

@@ -1,5 +1,4 @@
 #include "decls.h"
-struct _camcontwk;
 
 // STUB: SADX 0x0060d940
 void EventBossCameraSet(struct task *bctp)
