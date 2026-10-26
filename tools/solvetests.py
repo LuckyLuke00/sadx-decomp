@@ -309,6 +309,20 @@ def check_fakematch_kinds() -> list[str]:
     return failures
 
 
+def check_refusal_names() -> list[str]:
+    """The refusal of a raw address names the symbol there, and a global that holds it with the offset."""
+    symbols = [(0x008a5ce0, "FUN_008a5ce0", None), (0x05cda1d0, "DAT_05cda1d0", 16)]
+    cases = [("tp->exec = (void (*)(struct task *))0x8a5ce0;", "0x8a5ce0 is `FUN_008a5ce0`"),
+             ("p = (char *)0x5cda1d8;", "0x5cda1d8 is `DAT_05cda1d0 + 0x8`"),
+             ("p = (char *)0x5cda1e0;", "use the global or function at that address by its name")]
+    failures = []
+    for line, wanted in cases:
+        note = llm.refusal([("raw_address", line)], lambda a: llm.symbol_at(symbols, a))
+        if wanted not in note or (wanted.startswith("use") and " is `" in note):
+            failures.append(f"the refusal of {line!r} is {note!r}, without {wanted!r}")
+    return failures
+
+
 def check_annotation_below_signature() -> list[str]:
     """A reply with the annotation between the signature and the body parses as if the annotation were above it."""
     below = "\n".join(["```cpp", "int Foo(void)", llm.function_line(ADDRESS), "{", "\treturn 1;", "}", "```"])
@@ -469,7 +483,7 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_annotation_below_signature, check_live,
+                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_refusal_names, check_annotation_below_signature, check_live,
                   check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures
