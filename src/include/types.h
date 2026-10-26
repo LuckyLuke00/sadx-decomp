@@ -133,6 +133,7 @@ struct DialogWk;
 struct DlgSndPrmType;
 struct dummy_crushwk;
 struct EFFENEMYBOMBPARAM;
+struct eggmoble_effect;
 struct Egm1SmokeManWk;
 struct Egm2CarData;
 struct EmblemViewWk;
@@ -4562,6 +4563,16 @@ static_assert(offsetof(csts, onpoly) == 0x54, "csts::onpoly");
 static_assert(offsetof(csts, pshbk) == 0x60, "csts::pshbk");
 static_assert(offsetof(csts, anaspdh) == 0x6c, "csts::anaspdh");
 static_assert(offsetof(csts, anaspdv) == 0x78, "csts::anaspdv");
+
+struct eggmoble_effect {
+    struct particle_info *effect;
+    struct NJS_POINT3 pos;
+    struct NJS_POINT3 vec;
+};
+static_assert(sizeof(eggmoble_effect) == 0x1c, "sizeof eggmoble_effect");
+static_assert(offsetof(eggmoble_effect, effect) == 0x0, "eggmoble_effect::effect");
+static_assert(offsetof(eggmoble_effect, pos) == 0x4, "eggmoble_effect::pos");
+static_assert(offsetof(eggmoble_effect, vec) == 0x10, "eggmoble_effect::vec");
 
 struct enemywk {
     union {

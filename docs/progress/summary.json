@@ -37322,6 +37322,14 @@
    "library": false
   },
   {
+   "address": "0x00610120",
+   "name": "SphericalExplosionInit",
+   "accuracy": 0.04040404040404041,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x006103c0",
    "name": "SphericalExplosionUV",
    "accuracy": 0.12903225806451613,
@@ -45772,6 +45780,38 @@
    "library": false
   },
   {
+   "address": "0x00758d60",
+   "name": "dispShadowTask(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00758e20",
+   "name": "execShadowTask(1)",
+   "accuracy": 0.03636363636363636,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00758ea0",
+   "name": "initShadowTask(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00758ed0",
+   "name": "FUN_00758ed0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00771e90",
    "name": "FUN_00771e90",
    "accuracy": 1.0,
@@ -45829,15 +45869,15 @@
   },
   {
    "address": "0x0077e8e0",
-   "name": "dispShadowTask",
-   "accuracy": 0.0,
+   "name": "dispShadowTask(2)",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0077e9a0",
-   "name": "execShadowTask",
+   "name": "execShadowTask(2)",
    "accuracy": 0.03636363636363636,
    "effective": false,
    "stub": true,
@@ -45845,7 +45885,7 @@
   },
   {
    "address": "0x0077ea20",
-   "name": "initShadowTask",
+   "name": "initShadowTask(2)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -45854,9 +45894,9 @@
   {
    "address": "0x0077ea50",
    "name": "shadowOn",
-   "accuracy": 0.058823529411764705,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -45868,11 +45908,19 @@
    "library": false
   },
   {
-   "address": "0x0078da80",
-   "name": "FUN_0078da80",
-   "accuracy": 0.07142857142857142,
+   "address": "0x0078da40",
+   "name": "gattai_exec",
+   "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0078da80",
+   "name": "FUN_0078da80",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -46102,15 +46150,23 @@
   {
    "address": "0x007d1cf0",
    "name": "FUN_007d1cf0",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x007d1d20",
    "name": "dispModelTask",
-   "accuracy": 0.05263157894736842,
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d1df0",
+   "name": "dispModelTaskEC",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -46124,8 +46180,24 @@
    "library": false
   },
   {
+   "address": "0x007d1f70",
+   "name": "execModelTaskEC",
+   "accuracy": 0.041666666666666664,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d1ff0",
    "name": "FUN_007d1ff0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d2010",
+   "name": "initModelTaskEC",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -46238,7 +46310,15 @@
   {
    "address": "0x007d2bc0",
    "name": "effect_color",
-   "accuracy": 0.125,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d2c00",
+   "name": "effect_size_change",
+   "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
    "library": false
@@ -46308,6 +46388,14 @@
    "library": false
   },
   {
+   "address": "0x007d2f40",
+   "name": "MoveChaos0",
+   "accuracy": 0.05714285714285714,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d2fb0",
    "name": "GetChaos0",
    "accuracy": 1.0,
@@ -46318,9 +46406,9 @@
   {
    "address": "0x007d2fc0",
    "name": "ChangeMotspd",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46420,8 +46508,32 @@
    "library": false
   },
   {
+   "address": "0x007d4270",
+   "name": "execRotaryEmeraldTask",
+   "accuracy": 0.02857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d4500",
    "name": "destRotaryEmeraldTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d4530",
+   "name": "deleteRotaryEmeraldTask",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d4570",
+   "name": "initRotaryEmeraldTask",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -46444,11 +46556,19 @@
    "library": false
   },
   {
+   "address": "0x007d4700",
+   "name": "EV_Alife_FaceChange",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007d4720",
    "name": "EVAlifeMotionCallBack",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46622,7 +46742,7 @@
   {
    "address": "0x007d5120",
    "name": "FUN_007d5120",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 0.25,
    "effective": false,
    "stub": true,
    "library": false
@@ -46641,6 +46761,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d5170",
+   "name": "createScanLine",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -46694,7 +46822,7 @@
   {
    "address": "0x007d5380",
    "name": "dispEfWhiteTask",
-   "accuracy": 0.06451612903225806,
+   "accuracy": 0.07142857142857142,
    "effective": false,
    "stub": true,
    "library": false
@@ -46836,6 +46964,14 @@
    "library": false
   },
   {
+   "address": "0x007d5c20",
+   "name": "EggmobleJetEntry",
+   "accuracy": 0.023809523809523808,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d61f0",
    "name": "eggmoble_init",
    "accuracy": 0.05,
@@ -46878,9 +47014,9 @@
   {
    "address": "0x007d63b0",
    "name": "eggmoble_move_rapid",
-   "accuracy": 0.06060606060606061,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46894,9 +47030,9 @@
   {
    "address": "0x007d6480",
    "name": "eggmoble_moveandturn",
-   "accuracy": 0.03389830508474576,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46916,11 +47052,19 @@
    "library": false
   },
   {
-   "address": "0x007d6680",
-   "name": "Create_SphereBomb",
-   "accuracy": 0.05263157894736842,
+   "address": "0x007d65f0",
+   "name": "FUN_007d65f0",
+   "accuracy": 0.03571428571428571,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d6680",
+   "name": "Create_SphereBomb",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -47108,8 +47252,32 @@
    "library": false
   },
   {
+   "address": "0x007d7300",
+   "name": "effect2_cons",
+   "accuracy": 0.029850746268656716,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d7590",
    "name": "effect2_scl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d75c0",
+   "name": "effect2_color",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d7600",
+   "name": "effect2_angle",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -47246,9 +47414,9 @@
   {
    "address": "0x007d7f00",
    "name": "StgChaos6CtrlOff",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47420,6 +47588,22 @@
    "library": false
   },
   {
+   "address": "0x007d94a0",
+   "name": "e102effect_init",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d94c0",
+   "name": "SetE102Effect",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007d9500",
    "name": "ChgEffectMod",
    "accuracy": 1.0,
@@ -47468,11 +47652,19 @@
    "library": false
   },
   {
-   "address": "0x007d9870",
-   "name": "capturebeam_init",
-   "accuracy": 0.05263157894736842,
+   "address": "0x007d96c0",
+   "name": "capturebeam_exec",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d9870",
+   "name": "capturebeam_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -47582,7 +47774,7 @@
   {
    "address": "0x007da050",
    "name": "ev_e103_exec",
-   "accuracy": 0.025,
+   "accuracy": 0.025974025974025976,
    "effective": false,
    "stub": true,
    "library": false
@@ -47606,9 +47798,9 @@
   {
    "address": "0x007da1a0",
    "name": "light_draw",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47630,9 +47822,9 @@
   {
    "address": "0x007da460",
    "name": "frog_disp",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47702,7 +47894,7 @@
   {
    "address": "0x007da990",
    "name": "ev_e101_exec",
-   "accuracy": 0.023529411764705882,
+   "accuracy": 0.024390243902439025,
    "effective": false,
    "stub": true,
    "library": false
@@ -48270,9 +48462,9 @@
   {
    "address": "0x007dec40",
    "name": "eggmissile_draw",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -48479,6 +48671,14 @@
    "address": "0x007e1840",
    "name": "EV_OJoinVertexes",
    "accuracy": 0.010889292196007259,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e1f40",
+   "name": "EV_OInitialize",
+   "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
    "library": false
@@ -82389,6 +82589,13 @@
    "library": false
   },
   {
+   "address": "0x02c21248",
+   "name": "DAT_02c21248",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02c22c20",
    "name": "strtbl",
    "size": 20,
@@ -82441,6 +82648,13 @@
    "address": "0x02cd67dc",
    "name": "g_EmeraldRotSpd",
    "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02d13cf4",
+   "name": "_action_f_f0001_frog",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -82525,6 +82739,13 @@
    "address": "0x02d97d5c",
    "name": "object_m_em_green_m_em_green",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02e21c48",
+   "name": "texlist_frog",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -82641,6 +82862,13 @@
    "library": false
   },
   {
+   "address": "0x0317857c",
+   "name": "DAT_0317857c",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0317858c",
    "name": "amb",
    "size": 4,
@@ -82720,6 +82948,20 @@
   {
    "address": "0x032ad6d8",
    "name": "_object_tr1_s_t1_body_s_t1_body",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03363c8c",
+   "name": "texlist_egg_missile",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03364cf0",
+   "name": "_object_missile_body_body",
    "size": 52,
    "match": false,
    "library": false
@@ -86591,5 +86833,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "221efd215c226ea45d7ebb36630405195efa3071059da97b1b5a29ad239db01a"
+ "inputs_sha256": "c06e78d0b8812d2918aafe8bb6c206eb0c3e603b017e5d022060a8c045167d1e"
 }

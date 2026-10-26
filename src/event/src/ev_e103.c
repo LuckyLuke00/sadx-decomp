@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x007da050
+void ev_e103_exec(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x007da140
 void ev_e103_cons(struct task *tp)
 {

@@ -18,6 +18,12 @@ void dispScanLineTask(struct task *p_task)
 {
 }
 
+// STUB: SADX 0x007d5120
+int FUN_007d5120()
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x007d5140
 int FUN_007d5140()
 {
@@ -30,4 +36,9 @@ void initScanLineTask(struct task *p_task)
 	p_task->exec = (void (__cdecl *)(struct task *))FUN_007d5140;
 	p_task->disp = (void (__cdecl *)(struct task *))FUN_007d5120;
 	p_task->dest = FUN_007d6940;
+}
+
+// STUB: SADX 0x007d5170
+void createScanLine(unsigned char a, unsigned char r, unsigned char g, unsigned char b, int res)
+{
 }

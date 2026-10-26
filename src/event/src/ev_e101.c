@@ -1,6 +1,11 @@
 #include "decls.h"
 static void ev_e101_cons(struct task *tp);
 
+// STUB: SADX 0x007da990
+void ev_e101_exec(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x007daa90
 static void ev_e101_cons(struct task *tp)
 {

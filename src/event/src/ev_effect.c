@@ -51,8 +51,23 @@ void effect_scl(short ef_num, float sx, float sy)
 	}
 }
 
-// STUB: SADX 0x007d2bc0
+// FUNCTION: SADX 0x007d2bc0
 void effect_color(short ef_num, float col_a, float col_r, float col_g, float col_b)
+{
+	int *var1 = (int *)DAT_060cc0b0[ef_num];
+	if (var1 != 0)
+	{
+		int *var2 = (int *)(var1[8]);
+		int *var3 = (int *)var2[3];
+		*(float *)(var3 + 1) = col_a;
+		*(float *)(var3 + 2) = col_r;
+		*(float *)(var3 + 3) = col_g;
+		*(float *)(var3 + 4) = col_b;
+	}
+}
+
+// STUB: SADX 0x007d2c00
+void effect_size_change(short ef_num, float speed_x, float speed_y)
 {
 }
 

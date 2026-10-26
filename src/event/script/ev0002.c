@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct task *DAT_060cbf64;
 static void initChaos0Task(struct task *p_task);
 
 #pragma optimize("", off)

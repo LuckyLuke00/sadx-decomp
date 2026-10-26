@@ -2476,6 +2476,11 @@ void EffectSpark(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00610120
+void SphericalExplosionInit()
+{
+}
+
 // STUB: SADX 0x00610680
 struct task *Eggrob_GenerateEggrob(struct erctrlstr *)
 {
@@ -3030,18 +3035,13 @@ void tornado_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x007d1cf0
-void FUN_007d1cf0(int)
-{
-}
-
-// STUB: SADX 0x007d1d20
-void dispModelTask(struct task *p_task)
-{
-}
-
 // STUB: SADX 0x007d1ef0
 void execModelTask(struct task *p_task)
+{
+}
+
+// STUB: SADX 0x007d1f70
+void execModelTaskEC(struct task *p_task)
 {
 }
 
@@ -3052,6 +3052,11 @@ void effect_disp(struct task *)
 
 // STUB: SADX 0x007d2420
 void effect_disp2(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007d4270
+void execRotaryEmeraldTask(struct task *task_p)
 {
 }
 
@@ -3080,14 +3085,8 @@ void COverlayDisp(struct task *_this)
 {
 }
 
-// STUB: SADX 0x007d5120
-int FUN_007d5120()
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x007d5380
-void dispEfWhiteTask(struct task *p_task)
+// STUB: SADX 0x007d65f0
+void FUN_007d65f0(struct task *)
 {
 }
 
@@ -3116,6 +3115,11 @@ void execChaos4Task(struct task *p_task)
 {
 }
 
+// STUB: SADX 0x007d96c0
+void capturebeam_exec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x007d9a20
 void ev_e105_draw(struct task *tp)
 {
@@ -3131,23 +3135,8 @@ void ev_e103_draw(struct task *tp)
 {
 }
 
-// STUB: SADX 0x007da050
-void ev_e103_exec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x007da460
-void frog_disp(struct task *tp)
-{
-}
-
 // STUB: SADX 0x007da7a0
 void ev_e101_draw(struct task *tp)
-{
-}
-
-// STUB: SADX 0x007da990
-void ev_e101_exec(struct task *tp)
 {
 }
 
