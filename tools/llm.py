@@ -64,7 +64,8 @@ rounds) and no `static` on a function that nothing calls. The note to the model 
 After STUCK_TRIES tries without a new best, the tries think until the best moves again.
 With --refuse-fakematch, a 100% try with a line that is not plain C, such as a cast on a raw address, is
 refused: the note names each such line and its plain form, and the run goes on. The file keeps the first
-refused try only when no try matches in plain C.
+refused try only when no try matches in plain C. Nor do calls and variables go through the model's type then:
+those casts are not plain C either.
 When the file already holds the function, that code is the first best: a solve only
 replaces it with a try that scores higher.
 """
@@ -1270,13 +1271,15 @@ class Repairs:
 class Bench:
     """One function's builds for the repairs. Each repair_ method builds the try again with one repair when the
     build output asks for it, and returns (the build to go on with, what the repair changed). A repair that does
-    not help gives back the build it got and an empty change. A try that builds gets no repair."""
+    not help gives back the build it got and an empty change. A try that builds gets no repair. With PLAIN, no
+    repair writes a cast that tools/fakematch.py refuses: the calls and globals stay as the model wrote them."""
 
-    def __init__(self, rebuild, config, path, address, known, tree_wins, types, declared_before):
+    def __init__(self, rebuild, config, path, address, known, tree_wins, types, declared_before, plain):
         self.rebuild = rebuild  # (decls, func) -> (the file with them, its percent or None, the build output)
         self.config, self.path, self.address, self.known = config, path, address, known
         self.tree_wins, self.types = tree_wins, types
         self.declared_before = declared_before  # name: the line an earlier try declared it with
+        self.plain = plain
 
     def build(self, decls, func):
         return Build(decls, func, *self.rebuild(decls, func))
@@ -1327,7 +1330,7 @@ class Bench:
     def repair_calls(self, build, decls, dropped):
         """A call to a DROPPED callee that the tree declares another way goes through a cast to the type that the
         model's DECLS give it. Kept when that clash is gone, even when another error remains."""
-        if build.percent is not None:
+        if build.percent is not None or self.plain:
             return build, []
         clashed = {name for name in CALL_CLASH.findall(build.output) if name in dropped}
         if not clashed:
@@ -1340,7 +1343,7 @@ class Bench:
     def repair_globals(self, build, decls, dropped):
         """A use of a DROPPED variable that the tree declares another way goes through a cast to the type that the
         model's DECLS give it. Kept when the try then builds or has fewer errors."""
-        if build.percent is not None or not dropped:
+        if build.percent is not None or not dropped or self.plain:
             return build, []
         func, changed = cast_globals(build.func, decls, dropped)
         if not changed:
@@ -1456,7 +1459,8 @@ def solve_function(args, file, address, transcript):
     fallback = None  # the first refused 100% try: the file keeps it when no try matches in plain C
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
-    bench = Bench(rebuild, config, path, address, known, args.tree_wins, repair_types, declared_before)
+    bench = Bench(rebuild, config, path, address, known, args.tree_wins, repair_types, declared_before,
+                  args.refuse_fakematch)
     stale, temperature = 0, config["temperature"]
     totals = collections.Counter(prompt_tokens=0, completion_tokens=0, think_tries=0, repeats=0)  # with no try too
     transcript.parent.mkdir(parents=True, exist_ok=True)
