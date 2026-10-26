@@ -80,7 +80,7 @@ int FUN_00538480(void *param_1, void *param_2)
 }
 
 // STUB: SADX 0x005394e0
-long MilesCheckAutoPilot(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+long MilesCheckAutoPilot(struct taskwk *param_1, ...)
 {
 	return (long)0;
 }

@@ -893,8 +893,17 @@ struct NJS_TEXLIST texlist_knu_eff;
 // GLOBAL: SADX 0x025de62c
 struct NJS_TEXLIST texlist_m_sboard_snowboard;
 
+// GLOBAL: SADX 0x025de8d4
+struct NJS_TEXLIST texlist_s_sboard;
+
 // GLOBAL: SADX 0x025de8e8
 struct NJS_TEXLIST texlist_sonic_s_ice;
+
+// GLOBAL: SADX 0x025dea74
+struct NJS_TEXLIST texlist_sb[2];
+
+// GLOBAL: SADX 0x025dea94
+int sonic_snowboard_design;
 
 // GLOBAL: SADX 0x025deb14
 long boolCheckRangeIn;
@@ -1175,14 +1184,8 @@ struct NJS_TEXLIST texlist_e_snake;
 // GLOBAL: SADX 0x0264e554
 struct obj object_snake_head_head[1];
 
-// GLOBAL: SADX 0x0265d030
-struct obj object_saru_air[1];
-
 // GLOBAL: SADX 0x02660324
 struct obj object_sky_obj_lift_a_obj_lift_a;
-
-// GLOBAL: SADX 0x02661618
-struct NJS_TEXLIST texlist_e_aircraft;
 
 // GLOBAL: SADX 0x026616e0
 struct CCL_INFO lift_info[3];
@@ -1258,6 +1261,9 @@ struct NJS_SPRITE sprite_k_kira;
 
 // GLOBAL: SADX 0x02675814
 struct NJS_SPRITE sprite_k_hadoken;
+
+// GLOBAL: SADX 0x02675834
+struct NJS_SPRITE sprite_k_charge;
 
 // GLOBAL: SADX 0x02675888
 struct NJS_SPRITE sprite_tsuchi_kake;
@@ -3186,7 +3192,7 @@ struct NJS_TEXANIM anim_c0_drop[1];
 struct NJS_TEXANIM anim_c0_ato[1];
 
 // GLOBAL: SADX 0x04c2ee88
-struct NJS_TEXANIM anim_c2_brain[2];
+struct NJS_TEXANIM anim_c2_brain[1];
 
 // GLOBAL: SADX 0x04c2eeb0
 struct NJS_SPRITE sprite_c2_brain;

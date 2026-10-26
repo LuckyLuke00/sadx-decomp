@@ -18,10 +18,10 @@ void dispPoliceShadow(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005cf4f0
+// FUNCTION: SADX 0x005cf4f0
 void FUN_005cf4f0(struct task *param_1, void *param_2, void *param_3)
 {
-	((void (*)(struct task *, void *, void *))FUN_005b5aa0)(param_1, param_2, param_3);
+	FUN_005b5aa0(param_1, param_2, param_3);
 	DeadOut(param_1);
 }
 

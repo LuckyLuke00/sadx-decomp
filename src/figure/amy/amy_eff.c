@@ -1,4 +1,5 @@
 #include "decls.h"
+void AmyEffectFallHeartDisplayer(struct task *tp);
 extern void AmyEffectFallHeart(struct task *tp);
 extern struct NJS_TEXLIST texlist_amy_eff;
 extern struct obj *DAT_060eea50;
@@ -146,9 +147,34 @@ void AmyEffectHammerWaveDisplayer(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005d6c10
+// FUNCTION: SADX 0x005d6c10
 void AmyEffectHammerWaveColor(struct task *tp)
 {
+	struct taskwk *local_8g;
+	float local_cg;
+
+	local_8g = tp->twp;
+	if (local_8g->mode == 0)
+	{
+		local_8g->scl.x = 3.0f;
+		local_8g->counter.f = 1.0;
+		local_8g->mode = 1;
+		tp->disp = AmyEffectHammerWaveColorDisplayer;
+	}
+	local_cg = local_8g->counter.f + -0.03333333507180214;
+	local_8g->counter.f = local_cg;
+	if (local_cg < 0.0)
+	{
+		FreeTask(tp);
+	}
+	else
+	{
+		local_8g->scl.x += 0.5;
+		*(float *)((char *)local_8g + 0x30) = 3.0 * njSin((int)(65536.0 * local_8g->counter.f * 0.5));
+		*(float *)((char *)local_8g + 0x34) = local_8g->scl.x;
+		AmyEffectHammerWaveColorDisplayer(tp);
+		CheckRangeOut(tp);
+	}
 }
 
 // FUNCTION: SADX 0x005d6cf0

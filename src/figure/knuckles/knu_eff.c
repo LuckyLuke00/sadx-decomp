@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <stdlib.h>
+void FUN_005d7240(struct task *param_1);
 extern struct NJS_SPRITE sprite_tsuchi_kake;
 extern struct NJS_SPRITE sprite_rader;
 extern struct NJS_TEXLIST texlist_knu_eff;
@@ -184,9 +185,24 @@ void dispKnuEffectChargeUpStay(struct task *tp)
 	KnuEffectDrawTsubu(&local_8g->pos, (1.0f - local_8g->timer.f) * local_8g->value.f);
 }
 
-// STUB: SADX 0x005d8040
+// FUNCTION: SADX 0x005d8040
 void KnuEffectDrawTsubu(struct NJS_POINT3 *pos, float alp)
 {
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	___njSetTexture(&texlist_knu_eff);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 10);
+	SetMaterial(alp, 1.0f, 1.0f, 1.0f);
+	njPushMatrix(0);
+	njTranslateV(0, pos);
+	late_DrawSprite3D(&sprite_k_charge, 0, 0x32, 0);
+	njPopMatrix(1);
+	ResetMaterial();
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // STUB: SADX 0x005d80f0

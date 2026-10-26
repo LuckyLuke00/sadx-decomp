@@ -107,7 +107,7 @@ void exitBuyonManager(struct task *tp)
 	local_cg = tp->twp;
 	local_8g = tp->mwp;
 	FreeTaskC(tp);
-	(*(void (*)(struct task *, struct taskwk *, struct motionwk *))FUN_005b5aa0)(tp, local_cg, local_8g);
+	FUN_005b5aa0(tp, local_cg, local_8g);
 }
 
 // STUB: SADX 0x008e0810

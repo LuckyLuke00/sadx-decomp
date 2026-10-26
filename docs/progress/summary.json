@@ -21708,9 +21708,9 @@
   {
    "address": "0x005488e0",
    "name": "FUN_005488e0",
-   "accuracy": 0.16,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21740,9 +21740,9 @@
   {
    "address": "0x0054c330",
    "name": "SonicCheckBeInTheAir",
-   "accuracy": 0.17857142857142858,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21812,9 +21812,9 @@
   {
    "address": "0x0054d870",
    "name": "SonicHoldOnPillar",
-   "accuracy": 0.17391304347826086,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21940,7 +21940,23 @@
   {
    "address": "0x0054ed30",
    "name": "SonicSnowBoard",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054edd0",
+   "name": "ExecuteSonicSnowBoard",
+   "accuracy": 0.07766990291262135,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054ef10",
+   "name": "DisplaySonicSnowBoard",
+   "accuracy": 0.04081632653061224,
    "effective": false,
    "stub": true,
    "library": false
@@ -27036,9 +27052,9 @@
   {
    "address": "0x00594430",
    "name": "FUN_00594430",
-   "accuracy": 0.5,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -31870,7 +31886,7 @@
    "name": "FUN_005c34a0",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -31958,7 +31974,7 @@
    "name": "FUN_005c4350",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32396,9 +32412,9 @@
   {
    "address": "0x005cad80",
    "name": "FUN_005cad80",
-   "accuracy": 0.3076923076923077,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32414,7 +32430,7 @@
    "name": "FUN_005cae50",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32654,7 +32670,7 @@
    "name": "FUN_005cf4f0",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32876,9 +32892,9 @@
   {
    "address": "0x005d35b0",
    "name": "E102BeamAto",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -33212,9 +33228,9 @@
   {
    "address": "0x005d6c10",
    "name": "AmyEffectHammerWaveColor",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -33364,9 +33380,9 @@
   {
    "address": "0x005d8040",
    "name": "KnuEffectDrawTsubu",
-   "accuracy": 0.13114754098360656,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -59534,9 +59550,9 @@
   {
    "address": "0x008d8800",
    "name": "FUN_008d8800",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -79454,9 +79470,30 @@
    "library": false
   },
   {
+   "address": "0x025de8d4",
+   "name": "texlist_s_sboard",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025de8e8",
    "name": "texlist_sonic_s_ice",
    "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025dea74",
+   "name": "texlist_sb",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025dea94",
+   "name": "sonic_snowboard_design",
+   "size": 4,
    "match": false,
    "library": false
   },
@@ -80112,23 +80149,9 @@
    "library": false
   },
   {
-   "address": "0x0265d030",
-   "name": "object_saru_air",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x02660324",
    "name": "object_sky_obj_lift_a_obj_lift_a",
    "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x02661618",
-   "name": "texlist_e_aircraft",
-   "size": 8,
    "match": false,
    "library": false
   },
@@ -80303,6 +80326,13 @@
   {
    "address": "0x02675814",
    "name": "sprite_k_hadoken",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02675834",
+   "name": "sprite_k_charge",
    "size": 32,
    "match": false,
    "library": false
@@ -84874,7 +84904,7 @@
   {
    "address": "0x04c2ee88",
    "name": "anim_c2_brain",
-   "size": 40,
+   "size": 20,
    "match": false,
    "library": false
   },
@@ -85959,5 +85989,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b3562715d97bbae4276654a3718483f4e4f7690a2fc6594046a76c8799d73e8e"
+ "inputs_sha256": "fd9c394fbf02c2eb94fba39ac7b8cb7a734bca4d44d51d8d8d62822e4e58d429"
 }

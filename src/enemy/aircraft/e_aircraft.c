@@ -5,12 +5,6 @@ void AirMove(struct taskwk *twp, struct enemywk *ewp);
 void AirCollision(struct taskwk *twp, struct enemywk *ewp);
 void AirDraw(struct taskwk *twp, struct enemywk *ewp);
 long EntryColliList(struct taskwk *twp);
-extern void njPushMatrix(float *);
-extern void njRotateY(float *, unsigned short);
-extern void njPopMatrix(int);
-extern int DAT_05b9d838;
-extern struct obj object_saru_air[1];
-extern struct NJS_TEXLIST texlist_e_aircraft;
 long AdjustAngle(long ang0, long ang1, long dang);
 extern struct obj object_sky_obj_lift_a_obj_lift_a;
 
@@ -74,15 +68,14 @@ void AirMissle(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005c34a0
+// FUNCTION: SADX 0x005c34a0
 void FUN_005c34a0(void *param_1)
 {
 	int local_cg;
 	int local_8g;
-
 	local_cg = *(int *)((char *)param_1 + 0x20);
 	local_8g = *(int *)((char *)param_1 + 0x24);
-	((void (*)(void *, void *, void *))FUN_005b5aa0)(param_1, (void *)local_cg, (void *)local_8g);
+	FUN_005b5aa0(param_1, local_cg, local_8g);
 }
 
 // FUNCTION: SADX 0x005c34d0
@@ -171,10 +164,10 @@ void FUN_005c42c0(struct obj *param_1)
 {
 }
 
-// STUB: SADX 0x005c4350
+// FUNCTION: SADX 0x005c4350
 void FUN_005c4350(struct task *param_1, int param_2, int param_3)
 {
-	((void (*)(struct task *, int, int))FUN_005b5aa0)(param_1, param_2, param_3);
+	FUN_005b5aa0(param_1, param_2, param_3);
 	FreeTask(param_1);
 }
 
