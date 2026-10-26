@@ -13,15 +13,21 @@ void Jump3Chaos0(float pos_x, float pos_y, float pos_z, float jumph, int frame)
 {
 }
 
+// STUB: SADX 0x007d2f40
+void MoveChaos0(float pos_x, float pos_y, float pos_z, int frame)
+{
+}
+
 // FUNCTION: SADX 0x007d2fb0
 struct task *GetChaos0()
 {
 	return DAT_060cc140;
 }
 
-// STUB: SADX 0x007d2fc0
+// FUNCTION: SADX 0x007d2fc0
 void ChangeMotspd(float mot_spd)
 {
+	*(float *)((char *)DAT_060cc140->twp->value.ptr + 0x3c) = mot_spd;
 }
 
 // FUNCTION: SADX 0x007d3020

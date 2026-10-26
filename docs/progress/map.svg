@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1428" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">4,471 of 16,524 game functions done (27.05%), accuracy 99.66%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">4,495 of 16,524 game functions done (27.20%), accuracy 99.66%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="602.8,1186.5 609.2,1186.5 610.9,1188 612,1189.6 606,1196.5 600,1189.6 601.1,1188" fill="#4e32f3"/>
 <polygon points="602.8,1186.5 609.2,1186.5 610.9,1188 612,1189.6 600,1189.6 601.1,1188" fill="#ffffff" fill-opacity="0.4"/>
@@ -2655,9 +2655,9 @@
 <polygon points="348,932.6 351.8,932.6 354,939.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="356.2,932.6 360,932.6 354,939.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="350.8,929.5 357.2,929.5 358.9,931 360,932.6 354,939.5 348,932.6 349.1,931" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="364" y="939" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Story and menus <tspan font-weight="400" fill="#59636e">38%</tspan></text>
-<rect x="349" y="947" width="244" height="217" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 268 of 835 done</title></rect>
-<text x="352" y="961" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Story <tspan font-weight="400" fill="#59636e">32%</tspan></text>
+<text x="364" y="939" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Story and menus <tspan font-weight="400" fill="#59636e">40%</tspan></text>
+<rect x="349" y="947" width="244" height="217" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 292 of 835 done</title></rect>
+<text x="352" y="961" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Story <tspan font-weight="400" fill="#59636e">34%</tspan></text>
 <g transform="translate(352,965)">
 <rect y="0" width="238" height="168" fill="url(#todo)"/>
 <rect y="168" width="133" height="7" fill="url(#todo)"/>
@@ -2701,12 +2701,18 @@
 <rect x="63" y="42" width="6" height="6" fill="#b07d00"><title>0x00758d00 FUN_00758d00: 100%</title></rect>
 <rect x="70" y="42" width="6" height="6" fill="#b07d00"><title>0x00758d20 FUN_00758d20: 100%</title></rect>
 <rect x="77" y="42" width="6" height="6" fill="#b07d00"><title>0x00758d40 FUN_00758d40: 100%</title></rect>
+<rect x="84" y="42" width="6" height="6" fill="#b07d00"><title>0x00758d60 dispShadowTask(1): 100%</title></rect>
+<rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x00758ea0 initShadowTask(1): 100%</title></rect>
+<rect x="105" y="42" width="6" height="6" fill="#b07d00"><title>0x00758ed0 FUN_00758ed0: 100%</title></rect>
 <rect x="126" y="49" width="6" height="6" fill="#b07d00"><title>0x00771e90 FUN_00771e90: 100%</title></rect>
 <rect x="140" y="49" width="6" height="6" fill="#b07d00"><title>0x00771f30 FUN_00771f30: 100%</title></rect>
 <rect x="182" y="49" width="6" height="6" fill="#b07d00"><title>0x007739c0 FUN_007739c0: 100%</title></rect>
 <rect x="231" y="49" width="6" height="6" fill="#b07d00"><title>0x0077e8b0 shadowOff: 100%</title></rect>
-<rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x0077ea20 initShadowTask: 100%</title></rect>
+<rect x="0" y="56" width="6" height="6" fill="#b07d00"><title>0x0077e8e0 dispShadowTask(2): 100%</title></rect>
+<rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x0077ea20 initShadowTask(2): 100%</title></rect>
+<rect x="21" y="56" width="6" height="6" fill="#b07d00"><title>0x0077ea50 shadowOn: 100%</title></rect>
 <rect x="126" y="56" width="6" height="6" fill="#b07d00"><title>0x0078da10 FUN_0078da10: 100%</title></rect>
+<rect x="140" y="56" width="6" height="6" fill="#b07d00"><title>0x0078da80 FUN_0078da80: 100%</title></rect>
 <rect x="154" y="56" width="6" height="6" fill="#b07d00"><title>0x0078db30 FUN_0078db30: 100%</title></rect>
 <rect x="182" y="56" width="6" height="6" fill="#b07d00"><title>0x00791270 FUN_00791270: 100%</title></rect>
 <rect x="203" y="56" width="6" height="6" fill="#b07d00"><title>0x00794ec0 FUN_00794ec0: 100%</title></rect>
@@ -2725,16 +2731,20 @@
 <rect x="0" y="77" width="6" height="6" fill="#b07d00"><title>0x007ce8e0 FUN_007ce8e0: 100%</title></rect>
 <rect x="21" y="77" width="6" height="6" fill="#b07d00"><title>0x007d0bd0 FUN_007d0bd0: 100%</title></rect>
 <rect x="126" y="77" width="6" height="6" fill="#b07d00"><title>0x007d1ce0 FUN_007d1ce0: 100%</title></rect>
+<rect x="133" y="77" width="6" height="6" fill="#b07d00"><title>0x007d1cf0 FUN_007d1cf0: 100%</title></rect>
 <rect x="168" y="77" width="6" height="6" fill="#b07d00"><title>0x007d1ff0 FUN_007d1ff0: 100%</title></rect>
+<rect x="175" y="77" width="6" height="6" fill="#b07d00"><title>0x007d2010 initModelTaskEC: 100%</title></rect>
 <rect x="196" y="77" width="6" height="6" fill="#b07d00"><title>0x007d21c0 CTikalLight_Exec: 100%</title></rect>
 <rect x="217" y="77" width="6" height="6" fill="#b07d00"><title>0x007d2410 effect_exec: 100%</title></rect>
 <rect x="231" y="77" width="6" height="6" fill="#b07d00"><title>0x007d2670 effect_exec2: 100%</title></rect>
 <rect x="0" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2680 effect_delete: 100%</title></rect>
 <rect x="35" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2b90 effect_scl: 100%</title></rect>
+<rect x="42" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2bc0 effect_color: 100%</title></rect>
 <rect x="63" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2c50 FUN_007d2c50: 100%</title></rect>
 <rect x="77" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2cb0 initCrushLightTask: 100%</title></rect>
 <rect x="91" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2d60 FUN_007d2d60: 100%</title></rect>
 <rect x="119" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2fb0 GetChaos0: 100%</title></rect>
+<rect x="126" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2fc0 ChangeMotspd: 100%</title></rect>
 <rect x="133" y="84" width="6" height="6" fill="#b07d00"><title>0x007d2fe0 FUN_007d2fe0: 100%</title></rect>
 <rect x="147" y="84" width="6" height="6" fill="#b07d00"><title>0x007d3020 SetPositionChaos0: 100%</title></rect>
 <rect x="154" y="84" width="6" height="6" fill="#b07d00"><title>0x007d3040 SetAngleChaos0: 100%</title></rect>
@@ -2746,7 +2756,10 @@
 <rect x="203" y="84" width="6" height="6" fill="#b07d00"><title>0x007d3ac0 destChaos0Task: 100%</title></rect>
 <rect x="0" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4120 FUN_007d4120: 100%</title></rect>
 <rect x="21" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4500 destRotaryEmeraldTask: 100%</title></rect>
+<rect x="35" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4570 initRotaryEmeraldTask: 100%</title></rect>
 <rect x="49" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4670 CreateRotaryEmerald: 100%</title></rect>
+<rect x="56" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4700 EV_Alife_FaceChange: 100%</title></rect>
+<rect x="63" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4720 EVAlifeMotionCallBack: 100%</title></rect>
 <rect x="98" y="91" width="6" height="6" fill="#b07d00"><title>0x007d49f0 EV_Alife_cons: 100%</title></rect>
 <rect x="105" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4a20 EV_Alife: 100%</title></rect>
 <rect x="119" y="91" width="6" height="6" fill="#b07d00"><title>0x007d4be0 COverlayExec: 100%</title></rect>
@@ -2784,8 +2797,11 @@
 <rect x="35" y="105" width="6" height="6" fill="#b07d00"><title>0x007d62e0 FUN_007d62e0: 100%</title></rect>
 <rect x="42" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6300 ChgEggMobleMod: 100%</title></rect>
 <rect x="49" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6320 ChgEggMobleSMod: 100%</title></rect>
+<rect x="63" y="105" width="6" height="6" fill="#b07d00"><title>0x007d63b0 eggmoble_move_rapid: 100%</title></rect>
+<rect x="77" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6480 eggmoble_moveandturn: 100%</title></rect>
 <rect x="84" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6520 seteggmobleparam: 100%</title></rect>
 <rect x="91" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6550 GetEggMobleTask: 100%</title></rect>
+<rect x="112" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6680 Create_SphereBomb: 100%</title></rect>
 <rect x="119" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6700 ChgSphereBombMode: 100%</title></rect>
 <rect x="126" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6720 FUN_007d6720: 100%</title></rect>
 <rect x="133" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6760 dispSplashTask: 100%</title></rect>
@@ -2801,6 +2817,8 @@
 <rect x="28" y="112" width="6" height="6" fill="#b07d00"><title>0x007d72a0 effect2_exec: 100%</title></rect>
 <rect x="35" y="112" width="6" height="6" fill="#b07d00"><title>0x007d72b0 effect2_dest: 100%</title></rect>
 <rect x="63" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7590 effect2_scl: 100%</title></rect>
+<rect x="70" y="112" width="6" height="6" fill="#b07d00"><title>0x007d75c0 effect2_color: 100%</title></rect>
+<rect x="77" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7600 effect2_angle: 100%</title></rect>
 <rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7630 effect2_size_change: 100%</title></rect>
 <rect x="98" y="112" width="6" height="6" fill="#b07d00"><title>0x007d76e0 stopWaveCtrl: 100%</title></rect>
 <rect x="112" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7790 initWaveTask(2): 100%</title></rect>
@@ -2810,6 +2828,7 @@
 <rect x="154" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7950 SetEventFrog: 100%</title></rect>
 <rect x="189" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7bc0 shapefrog_dest: 100%</title></rect>
 <rect x="210" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7ed0 set_shapefrog: 100%</title></rect>
+<rect x="217" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7f00 StgChaos6CtrlOff: 100%</title></rect>
 <rect x="224" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7f80 StgChaos6Human2Water: 100%</title></rect>
 <rect x="231" y="112" width="6" height="6" fill="#b07d00"><title>0x007d7f90 StgChaos6Water2Human: 100%</title></rect>
 <rect x="0" y="119" width="6" height="6" fill="#b07d00"><title>0x007d7fa0 StgChaos6SetPos: 100%</title></rect>
@@ -2822,12 +2841,14 @@
 <rect x="119" y="119" width="6" height="6" fill="#b07d00"><title>0x007d8d30 Delete_e102lightning: 100%</title></rect>
 <rect x="133" y="119" width="6" height="6" fill="#b07d00"><title>0x007d8d80 deleteBoot: 100%</title></rect>
 <rect x="168" y="119" width="6" height="6" fill="#b07d00"><title>0x007d90f0 initBootTask: 100%</title></rect>
+<rect x="224" y="119" width="6" height="6" fill="#b07d00"><title>0x007d94c0 SetE102Effect: 100%</title></rect>
 <rect x="231" y="119" width="6" height="6" fill="#b07d00"><title>0x007d9500 ChgEffectMod: 100%</title></rect>
 <rect x="0" y="126" width="6" height="6" fill="#b07d00"><title>0x007d9520 DelE102Effect: 100%</title></rect>
 <rect x="7" y="126" width="6" height="6" fill="#b07d00"><title>0x007d9540 CE101Factory_Draw: 100%</title></rect>
 <rect x="14" y="126" width="6" height="6" fill="#b07d00"><title>0x007d9580 E101Factory_Create: 100%</title></rect>
 <rect x="21" y="126" width="6" height="6" fill="#b07d00"><title>0x007d95a0 E101Factory_Delete: 100%</title></rect>
 <rect x="28" y="126" width="6" height="6" fill="#b07d00"><title>0x007d95c0 capturebeam_draw: 100%</title></rect>
+<rect x="42" y="126" width="6" height="6" fill="#b07d00"><title>0x007d9870 capturebeam_init: 100%</title></rect>
 <rect x="49" y="126" width="6" height="6" fill="#b07d00"><title>0x007d98f0 CreateCaptureBeam: 100%</title></rect>
 <rect x="56" y="126" width="6" height="6" fill="#b07d00"><title>0x007d9950 FUN_007d9950: 100%</title></rect>
 <rect x="63" y="126" width="6" height="6" fill="#b07d00"><title>0x007d9970 FUN_007d9970: 100%</title></rect>
@@ -2838,7 +2859,9 @@
 <rect x="126" y="126" width="6" height="6" fill="#b07d00"><title>0x007d9ef0 ev_e104: 100%</title></rect>
 <rect x="147" y="126" width="6" height="6" fill="#b07d00"><title>0x007da140 ev_e103_cons: 100%</title></rect>
 <rect x="154" y="126" width="6" height="6" fill="#b07d00"><title>0x007da170 ev_e103: 100%</title></rect>
+<rect x="161" y="126" width="6" height="6" fill="#b07d00"><title>0x007da1a0 light_draw: 100%</title></rect>
 <rect x="189" y="126" width="6" height="6" fill="#b07d00"><title>0x007da440 light_turn: 100%</title></rect>
+<rect x="196" y="126" width="6" height="6" fill="#b07d00"><title>0x007da460 frog_disp: 100%</title></rect>
 <rect x="203" y="126" width="6" height="6" fill="#b07d00"><title>0x007da530 frog_exec: 100%</title></rect>
 <rect x="210" y="126" width="6" height="6" fill="#b07d00"><title>0x007da560 FUN_007da560: 100%</title></rect>
 <rect x="217" y="126" width="6" height="6" fill="#b07d00"><title>0x007da5a0 frog_delete: 100%</title></rect>
@@ -2890,6 +2913,7 @@
 <rect x="147" y="147" width="6" height="6" fill="#b07d00"><title>0x007de960 EV_eggmoble2: 100%</title></rect>
 <rect x="154" y="147" width="6" height="6" fill="#b07d00"><title>0x007de9c0 ChgEgg2Mod: 100%</title></rect>
 <rect x="161" y="147" width="6" height="6" fill="#b07d00"><title>0x007de9d0 EV_deleggmoble2: 100%</title></rect>
+<rect x="203" y="147" width="6" height="6" fill="#b07d00"><title>0x007dec40 eggmissile_draw: 100%</title></rect>
 <rect x="231" y="147" width="6" height="6" fill="#b07d00"><title>0x007def50 SetMissileEffect: 100%</title></rect>
 <rect x="28" y="154" width="6" height="6" fill="#b07d00"><title>0x007df270 Create_EV_Eggmissile: 100%</title></rect>
 <rect x="49" y="154" width="6" height="6" fill="#b07d00"><title>0x007df680 CreateEventObjectTR: 100%</title></rect>

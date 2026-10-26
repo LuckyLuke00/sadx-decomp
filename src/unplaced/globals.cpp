@@ -1883,6 +1883,9 @@ struct GHSPRITE_ANIM_TABLE animtable_wave[1];
 // GLOBAL: SADX 0x02c0f3c4
 struct NJS_TEXLIST gsAdTexlist;
 
+// GLOBAL: SADX 0x02c21248
+int *DAT_02c21248[1];
+
 // GLOBAL: SADX 0x02c22c20
 char * *strtbl[5];
 
@@ -1903,6 +1906,9 @@ float g_RotaryCircleR;
 
 // GLOBAL: SADX 0x02cd67dc
 long g_EmeraldRotSpd;
+
+// GLOBAL: SADX 0x02d13cf4
+struct NJS_ACTION _action_f_f0001_frog[1];
 
 // GLOBAL: SADX 0x02d16ab4
 struct NJS_TEXLIST texlist_m_em_yellow;
@@ -1939,6 +1945,9 @@ struct NJS_TEXLIST texlist_m_em_green;
 
 // GLOBAL: SADX 0x02d97d5c
 struct obj object_m_em_green_m_em_green[1];
+
+// GLOBAL: SADX 0x02e21c48
+struct NJS_TEXLIST texlist_frog;
 
 // GLOBAL: SADX 0x02e90d18
 struct obj object_last1a_highway_a_highway_a;
@@ -1988,6 +1997,9 @@ struct NJS_TEXLIST texlist_ev_spotlight;
 // GLOBAL: SADX 0x03150bf8
 struct obj _object_heli_light_light[1];
 
+// GLOBAL: SADX 0x0317857c
+struct MJOIN_VERTEX DAT_0317857c;
+
 // GLOBAL: SADX 0x0317858c
 long amb;
 
@@ -2023,6 +2035,12 @@ struct cloud_scroll main_cloud2;
 
 // GLOBAL: SADX 0x032ad6d8
 struct obj _object_tr1_s_t1_body_s_t1_body[1];
+
+// GLOBAL: SADX 0x03363c8c
+struct NJS_TEXLIST texlist_egg_missile;
+
+// GLOBAL: SADX 0x03364cf0
+struct obj _object_missile_body_body;
 
 // GLOBAL: SADX 0x0336d714
 struct CCL_INFO DAT_0336d714;

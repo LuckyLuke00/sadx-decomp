@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x007e1f40
+void EV_OInitialize(struct taskwk *twp)
+{
+}
+
 // FUNCTION: SADX 0x007e1f60
 void EV_ODestruct(struct taskwk *twp)
 {

@@ -30,9 +30,25 @@ void capturebeam_draw(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x007d9870
+// FUNCTION: SADX 0x007d9870
 void capturebeam_init(struct task *tp)
 {
+	tp->twp->scl.x = 0.0f;
+	tp->twp->scl.y = 1.0f;
+	tp->twp->scl.z = 0.0f;
+	tp->twp->btimer = 0;
+	tp->twp->counter.l = 0;
+	tp->mwp->spd.x = 0.0f;
+	tp->mwp->spd.z = 0.0f;
+	tp->mwp->acc.x = 0.01f;
+	tp->mwp->acc.y = 0.01f;
+	tp->mwp->acc.z = 768.0f;
+	tp->mwp->rad = 1.0f;
+	tp->mwp->height = 1.0f;
+	tp->twp->mode = 0;
+	tp->exec = capturebeam_exec;
+	tp->disp = capturebeam_draw;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }
 
 // FUNCTION: SADX 0x007d98f0

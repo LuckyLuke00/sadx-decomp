@@ -1,9 +1,33 @@
 #include "decls.h"
+extern struct obj *DAT_060eeaa4;
+extern struct Angle3 DAT_05ccdd40;
+extern void njRotateY(float *, unsigned short);
+extern void njRotateX(float *, unsigned short);
 void FUN_007d4790(struct task *param_1);
 
-// STUB: SADX 0x007d4720
+// FUNCTION: SADX 0x007d4700
+void EV_Alife_FaceChange(struct task *tp, unsigned long texid)
+{
+	if (tp != 0)
+	{
+		tp->twp->counter.l = texid;
+	}
+}
+
+// FUNCTION: SADX 0x007d4720
 void EVAlifeMotionCallBack(struct obj *obj)
 {
+	if (obj == *(struct obj **)((char *)DAT_060eeaa4 + 8))
+	{
+		if (DAT_05ccdd40.y != 0)
+		{
+			njRotateY(0, DAT_05ccdd40.y);
+		}
+		if (DAT_05ccdd40.x != 0)
+		{
+			njRotateX(0, DAT_05ccdd40.x);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x007d49f0

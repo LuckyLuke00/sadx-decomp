@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_007d4120(int param_1);
 extern struct task *DAT_060cc154;
 
 // STUB: SADX 0x007d40a0
@@ -30,6 +31,19 @@ void destRotaryEmeraldTask(struct task *task_p)
 	{
 		Free(var2);
 	}
+}
+
+// STUB: SADX 0x007d4530
+void deleteRotaryEmeraldTask()
+{
+}
+
+// FUNCTION: SADX 0x007d4570
+void initRotaryEmeraldTask(struct task *task_p)
+{
+	task_p->exec = execRotaryEmeraldTask;
+	task_p->disp = 0;
+	task_p->dest = destRotaryEmeraldTask;
 }
 
 // FUNCTION: SADX 0x007d4670

@@ -11,6 +11,11 @@ void eggmoble_dest(struct task *tp)
 	EV_ODestruct(tp->twp);
 }
 
+// STUB: SADX 0x007d5c20
+void EggmobleJetEntry(struct task *tp, struct eggmoble_effect *egg)
+{
+}
+
 // STUB: SADX 0x007d61f0
 void eggmoble_init(struct task *tp)
 {
@@ -34,9 +39,20 @@ void ChgEggMobleSMod(signed char smode)
 	}
 }
 
-// STUB: SADX 0x007d63b0
+// FUNCTION: SADX 0x007d63b0
 void eggmoble_move_rapid(float x, float y, float z, long frame)
 {
+	struct taskwk *var1 = DAT_060cc57c->twp;
+	struct motionwk *var2 = (struct motionwk *)var1->counter.ptr;
+	*(float *)((char *)var2 + 0x18) = x;
+	*(float *)((char *)var2 + 0x1c) = y;
+	*(float *)((char *)var2 + 0x20) = z;
+	*(float *)var2 = (x - var1->pos.x) / (float)frame;
+	*(float *)((char *)var2 + 4) = (y - var1->pos.y) / (float)frame;
+	*(float *)((char *)var2 + 8) = (z - var1->pos.z) / (float)frame;
+	*(long *)((char *)var2 + 0x24) = frame;
+	*(int *)((char *)var2 + 0x28) = 0;
+	var1->mode = 2;
 }
 
 // STUB: SADX 0x007d6420
@@ -44,9 +60,34 @@ void eggmoble_turn(long ax, long ay, long az, long frame, signed char efmode)
 {
 }
 
-// STUB: SADX 0x007d6480
+// FUNCTION: SADX 0x007d6480
 void eggmoble_moveandturn(float x, float y, float z, long ax, long ay, long az, long frame, signed char efmode)
 {
+	struct taskwk *var1 = DAT_060cc57c->twp;
+	struct motionwk *var2 = (struct motionwk *)var1->counter.ptr;
+	*(float *)((char *)var2 + 0x18) = x;
+	*(float *)((char *)var2 + 0x1c) = y;
+	*(float *)((char *)var2 + 0x20) = z;
+	*(float *)var2 = (x - var1->pos.x) / (float)frame;
+	*(float *)((char *)var2 + 4) = (y - var1->pos.y) / (float)frame;
+	*(float *)((char *)var2 + 8) = (z - var1->pos.z) / (float)frame;
+	*(long *)((char *)var2 + 0xc) = ax / frame;
+	*(long *)((char *)var2 + 0x10) = ay / frame;
+	*(long *)((char *)var2 + 0x14) = az / frame;
+	*(long *)((char *)var2 + 0x24) = frame;
+	*(int *)((char *)var2 + 0x28) = 0;
+	var1->mode = 4;
+	if (efmode == 0)
+	{
+		if (ay > 0)
+		{
+			var1->smode = 2;
+		}
+		if (ay < 0)
+		{
+			var1->smode = 3;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x007d6520
