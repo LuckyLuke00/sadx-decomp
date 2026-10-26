@@ -1,6 +1,6 @@
-"""Helpers that know nothing about the decomp: run a command, catch a step's output, link a git remote, hash a file,
-copy and delete folders, read counts from the command line, tell how alike two counts are, count differing bytes,
-escape a Markdown table cell, tell whether a process runs, lock a file.
+"""Helpers that know nothing about the decomp: run a command, catch a step's output, run git in another repository
+than a hook's, link a git remote, hash a file, copy and delete folders, read counts from the command line, tell how
+alike two counts are, count differing bytes, escape a Markdown table cell, tell whether a process runs, lock a file.
 
 Standard library only.
 """
@@ -13,6 +13,7 @@ import hashlib
 import html
 import io
 import msvcrt
+import os
 import shutil
 import stat
 import subprocess
@@ -53,6 +54,19 @@ def git(root: Path, *args: str, stdin: bytes = b"") -> bytes:
     if result.returncode != 0:
         sys.exit(f"git {' '.join(args)} failed: {result.stderr.decode(errors='replace').strip()}")
     return result.stdout
+
+
+@contextlib.contextmanager
+def foreign_repository():
+    """Clear the variables that tie git to one repository, as `git rev-parse --local-env-vars` lists them, while git
+    runs in another one. A hook gets them for its own repository: in a linked worktree's commit hook, `git init` in
+    another folder marks that repository bare, and `git add` there stages into the worktree's index."""
+    names = run(["git", "rev-parse", "--local-env-vars"]).stdout.split()
+    saved = {name: os.environ.pop(name) for name in names if name in os.environ}
+    try:
+        yield
+    finally:
+        os.environ.update(saved)
 
 
 def web_url(remote: str) -> str:

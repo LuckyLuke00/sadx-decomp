@@ -11,6 +11,7 @@ import contextlib
 import copy
 import io
 import json
+import os
 import re
 import tempfile
 from pathlib import Path
@@ -61,6 +62,7 @@ def run() -> int:
     failures += check_block_names()
     failures += check_gem_colors()
     failures += check_read_blobs()
+    failures += check_foreign_repository()
     failures += check_misplaced_annotations()
     failures += check_unclosed_definitions()
     failures += check_local_declarations()
@@ -224,7 +226,7 @@ def check_gem_colors() -> list[str]:
 def check_read_blobs() -> list[str]:
     """read_blobs gives the text of each spec from git's batch output, also when two specs share one blob."""
     files = {"a.txt": "same text\n", "b.txt": "same text\n", "c.txt": "other\ntext\n"}
-    with tempfile.TemporaryDirectory() as folder:
+    with tempfile.TemporaryDirectory() as folder, osutil.foreign_repository():
         root = Path(folder)
         osutil.git(root, "init", "--quiet")
         for name, text in files.items():
@@ -237,6 +239,33 @@ def check_read_blobs() -> list[str]:
     if texts == wanted:
         return []
     return [f"read_blobs gave {texts}, not {wanted}"]
+
+
+def check_foreign_repository() -> list[str]:
+    """check_read_blobs leaves alone the repository of a commit hook that runs the self-test. A linked worktree's hook
+    has GIT_DIR and GIT_INDEX_FILE set for that worktree. The worktree here is made by hand, so it needs no commit."""
+    with tempfile.TemporaryDirectory() as folder, osutil.foreign_repository():
+        main, worktree = Path(folder) / "main", Path(folder) / "worktree"
+        osutil.git(Path(folder), "init", "--quiet", str(main))
+        gitdir = main / ".git" / "worktrees" / "worktree"
+        gitdir.mkdir(parents=True)
+        (gitdir / "commondir").write_text("../..\n", encoding="utf-8")
+        (gitdir / "gitdir").write_text(f"{(worktree / '.git').as_posix()}\n", encoding="utf-8")
+        (gitdir / "HEAD").write_text("ref: refs/heads/main\n", encoding="utf-8")
+        worktree.mkdir()
+        (worktree / ".git").write_text(f"gitdir: {gitdir.as_posix()}\n", encoding="utf-8")
+        hook = {"GIT_DIR": str(gitdir), "GIT_INDEX_FILE": str(gitdir / "index")}
+        os.environ.update(hook)
+        try:
+            failures = check_read_blobs()
+        finally:
+            for name in hook:
+                del os.environ[name]
+        bare = osutil.git(main, "config", "core.bare").decode().strip()
+        staged = osutil.git(worktree, "ls-files").decode().split()
+    if bare != "false" or staged:
+        failures.append(f"git in a scratch folder changed a hook's repository: core.bare {bare}, staged {staged}")
+    return failures
 
 
 def check_misplaced_annotations() -> list[str]:
