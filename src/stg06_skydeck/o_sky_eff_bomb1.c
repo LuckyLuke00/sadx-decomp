@@ -19,3 +19,9 @@ void ObjectSkydeck_eff_bomb1(struct task *tp)
 		ObjectSkydeck_eff_bomb1_Init(tp);
 	}
 }
+
+// STUB: SADX 0x0084bf00
+struct task *CreateEffBomb2(struct NJS_POINT3 *pos, float scl, long angX, long angZ)
+{
+	return (struct task *)0;
+}

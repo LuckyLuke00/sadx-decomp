@@ -42,3 +42,13 @@ void ObjectCasinoKazariA(struct task *tp)
 		tp->exec = kazariAExec;
 	}
 }
+
+// STUB: SADX 0x0087adc0
+void ObjectCasinoKazariE(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0087ae30
+void ObjectCasinoKazariF(struct task *tp)
+{
+}

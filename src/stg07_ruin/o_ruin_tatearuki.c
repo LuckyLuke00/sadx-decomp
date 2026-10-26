@@ -32,6 +32,11 @@ void SwitchDraw(struct task *tp)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x00854090
+void ObjectRuinTateSwitch(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00854100
 void PanelTerm(struct task *tp)
 {
@@ -54,4 +59,9 @@ void PanelExecEdit(struct task *tp)
 {
 	tp->twp->wtimer = tp->twp->ang.x;
 	PanelExec(tp);
+}
+
+// STUB: SADX 0x008547b0
+void ObjectRuinTatePanel(struct task *tp)
+{
 }

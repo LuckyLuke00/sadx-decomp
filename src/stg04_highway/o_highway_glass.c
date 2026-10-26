@@ -13,3 +13,8 @@ void DrawGlass(struct task *tp)
 	late_DrawModel((struct NJS_MODEL *)var2->normals, 4);
 	njPopMatrix(1);
 }
+
+// STUB: SADX 0x008244f0
+void GlassBroken(struct task *tp)
+{
+}

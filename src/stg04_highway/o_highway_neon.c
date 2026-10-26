@@ -16,6 +16,16 @@ static void Draw(struct task *tp)
 }
 #pragma optimize("", on)
 
+// FUNCTION: SADX 0x00820c60
+void ObjectHighwayNeonRegular(struct task *tp)
+{
+	if (CheckRangeOut(tp) == 0)
+	{
+		Draw(tp);
+		tp->twp->wtimer++;
+	}
+}
+
 // FUNCTION: SADX 0x00820c90
 void ObjectHighwayNeon01(struct task *tp)
 {
@@ -35,22 +45,21 @@ void ObjectHighwayNeon01(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00820cd0
+// FUNCTION: SADX 0x00820cd0
 void ObjectHighwayNeon02(struct task *tp)
 {
 	struct taskwk *var1;
 
 	var1 = tp->twp;
-	if (CheckRangeOut(tp) != 0)
+	if (CheckRangeOut(tp) == 0)
 	{
-		return;
+		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		tp->disp = Draw;
+		tp->exec = ObjectHighwayNeonRegular;
+		var1->counter.ptr = object_neon2_neon_b_neon_b;
+		var1->value.ptr = &texlist_neon2;
+		var1->btimer = 1;
 	}
-	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
-	tp->disp = Draw;
-	tp->exec = ObjectHighwayNeonRegular;
-	*(struct obj **)&var1->counter.l = &object_neon2_neon_b_neon_b[0];
-	*(struct NJS_TEXLIST **)&var1->value.l = &texlist_neon2;
-	var1->btimer = 1;
 }
 
 // FUNCTION: SADX 0x00820d10

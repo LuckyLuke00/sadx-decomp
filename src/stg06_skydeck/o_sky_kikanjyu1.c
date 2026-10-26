@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x0083da10
+void ObjectSkydeck_kikanjyu1_Draw(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0083de50
 void ObjectSkydeck_kikanjyu1(struct task *tp)
 {

@@ -79,11 +79,6 @@ void NormalC(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008863a0
-void NormalL(struct task *tp)
-{
-}
-
 // FUNCTION: SADX 0x008864a0
 void NormalR(struct task *tp)
 {

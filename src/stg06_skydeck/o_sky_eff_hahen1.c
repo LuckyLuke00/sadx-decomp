@@ -5,6 +5,11 @@ void ObjectSkydeck_eff_hahen1_End(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0084e050
+void ObjectSkydeck_eff_hahen1_Draw(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0084e210
 void ObjectSkydeck_eff_hahen1(struct task *tp)
 {

@@ -1567,7 +1567,7 @@ long SetRegularTexture()
 }
 
 // STUB: SADX 0x00502260
-long SetObjectTexture()
+extern long SetObjectTexture()
 {
 	return (long)0;
 }
@@ -3376,6 +3376,11 @@ void PopoDisplay(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008078f0
+void ObjectWindyTuribasiExecutor(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00808210
 void DrawHasiEnd(struct task *tp)
 {
@@ -3434,11 +3439,6 @@ void ObjectCarManagerRegular(struct task *tp)
 
 // STUB: SADX 0x0081c300
 void CreateCar(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00820c60
-void ObjectHighwayNeonRegular(struct task *tp)
 {
 }
 
@@ -3512,11 +3512,6 @@ void ObjectSkydeck_kikanjyu1_End(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0083da10
-void ObjectSkydeck_kikanjyu1_Draw(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0083dac0
 void ObjectSkydeck_kikanjyu1_Exec(struct task *tp)
 {
@@ -3587,11 +3582,6 @@ void ObjectSkydeck_c_cyl2_Draw(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00847080
-void ObjectSkydeck_c_cyl2_Init(struct task *tp)
-{
-}
-
 // STUB: SADX 0x008471c0
 void ObjectSkydeck_c_cyl1_Draw(struct task *tp)
 {
@@ -3607,18 +3597,8 @@ void ObjectSkydeck_c_cyl0_Draw(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00847f60
-void ObjectSkydeck_c_cyl0_Init(struct task *tp)
-{
-}
-
 // STUB: SADX 0x008480a0
 void ObjectSkydeck_c_talap1_Draw(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00848220
-void ObjectSkydeck_c_talap1_Init(struct task *tp)
 {
 }
 
@@ -3652,19 +3632,8 @@ void ObjectSkydeck_eff_bomb1_Init(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0084c110
-long OCMunregister(struct OCMDATA *ocmdata)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x0084dc60
 void ObjectSkydeck_enegymissile1_Init(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0084e050
-void ObjectSkydeck_eff_hahen1_Draw(struct task *tp)
 {
 }
 
@@ -3675,6 +3644,11 @@ void ObjectSkydeck_eff_hahen1_Exec(struct task *tp)
 
 // STUB: SADX 0x0084e4b0
 void FUN_0084e4b0(int)
+{
+}
+
+// STUB: SADX 0x00850d10
+void FUN_00850d10(struct task *)
 {
 }
 
@@ -3700,11 +3674,6 @@ void DispExp(struct task *tp)
 
 // STUB: SADX 0x0085bb80
 void EffectColdGeneratorMain(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0085df60
-void late_Disp2(struct task *tp)
 {
 }
 
@@ -3849,43 +3818,18 @@ void FUN_0087ea70(struct task *, float)
 {
 }
 
+// STUB: SADX 0x00889bd0
+void FUN_00889bd0(struct TEXANIMINFO *, int)
+{
+}
+
 // STUB: SADX 0x00889e30
 void DispS3Obj(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0088a090
-void ObjCasino_InitSCV(struct task *tp, float range, struct obj *pobject, struct CCL_INFO *pinfo, int cnum)
-{
-}
-
-// STUB: SADX 0x0088a390
-void ObjCasino_InitCV(struct task *tp, float range, struct obj *pobject, struct CCL_INFO *pinfo, int cnum)
-{
-}
-
-// STUB: SADX 0x0088a6b0
-void ObjCasino_InitR(struct task *tp, struct obj *pobject, long rotY)
-{
-}
-
 // STUB: SADX 0x0088ab30
-void DispUV2ObjSE(struct task *)
-{
-}
-
-// STUB: SADX 0x0088acd0
-void ObjCasino_InitUV2SE(struct task *tp, struct obj *pobject, struct TEXUVINFO2 *tui, signed char cnt, int se)
-{
-}
-
-// STUB: SADX 0x0088af00
-void ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum)
-{
-}
-
-// STUB: SADX 0x0088b790
-void late_ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum)
+extern void DispUV2ObjSE(struct task *)
 {
 }
 
@@ -3906,6 +3850,11 @@ void ObjectCasino_eff_kinka1_Exec(struct task *tp)
 
 // STUB: SADX 0x00893670
 void FUN_00893670(struct task *)
+{
+}
+
+// STUB: SADX 0x00894310
+void standlight_draw(struct task *)
 {
 }
 
@@ -3934,23 +3883,8 @@ void FEGG_DrawBrokenPiece(struct taskwk *)
 {
 }
 
-// STUB: SADX 0x008a28e0
-void ObjShelterSenmanager(struct task *tp)
-{
-}
-
-// STUB: SADX 0x008a4040
-void DoorInit(struct task *tp)
-{
-}
-
-// STUB: SADX 0x008b2af0
-void BubbleDisp(struct task *tp)
-{
-}
-
-// STUB: SADX 0x008b4430
-void ExecNotBig(struct task *tp)
+// STUB: SADX 0x008b3a20
+void ObjShelterMizubashira(struct task *)
 {
 }
 
@@ -4067,6 +4001,11 @@ void bubble_child_exec(struct task *task_p)
 
 // STUB: SADX 0x008d9be0
 void FUN_008d9be0(void *, float, float)
+{
+}
+
+// STUB: SADX 0x008db920
+void BridgeCrash(struct taskwk *twp)
 {
 }
 

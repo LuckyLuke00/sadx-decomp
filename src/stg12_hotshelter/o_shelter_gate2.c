@@ -1,4 +1,5 @@
 #include "decls.h"
+void DispATask(struct task *tp);
 static void InitATask(struct task *tp);
 static void ExecATask(struct task *tp);
 static void DispATask(struct task *tp);

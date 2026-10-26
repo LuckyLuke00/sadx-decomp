@@ -1,4 +1,5 @@
 #include "decls.h"
+static void DoorInit(struct task *tp);
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 extern struct obj object_enecrg_cl_enecrg_cl_enecrg[1];
@@ -26,6 +27,13 @@ static void Disp(struct task *tp)
 #pragma optimize("", off)
 // STUB: SADX 0x008a3f20
 static void Exec(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x008a4040
+static void DoorInit(struct task *tp)
 {
 }
 #pragma optimize("", on)

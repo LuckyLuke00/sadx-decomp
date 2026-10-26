@@ -1,4 +1,15 @@
 #include "decls.h"
+extern int DAT_05b9d838;
+extern struct obj object_windobj_bridge_a2_bridge_a2[];
+extern struct obj object_windobj_bridge_a3_bridge_a3[];
+extern struct obj object_windobj_bridge_a4_bridge_a4[];
+extern void njPushMatrix(float *);
+extern void njTranslateV(float *, struct NJS_POINT3 *);
+extern void njRotateZ(float *, int);
+extern void njRotateX(float *, unsigned short);
+extern void njRotateY(float *, unsigned short);
+extern void ds_DrawObjectClip(struct obj *, float);
+extern void njPopMatrix(int);
 extern struct obj object_windobj_bridge_a1_bridge_a1[1];
 
 // FUNCTION: SADX 0x0080d6a0

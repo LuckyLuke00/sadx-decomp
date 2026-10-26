@@ -24,3 +24,13 @@ int SkydeckCheck_break(float posx, float posy, float posz)
 	}
 	return 1;
 }
+
+// STUB: SADX 0x0083f6e0
+void ControlSkydeck_wing_groundbreak(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083f990
+void ControlSkydeck_wing_childgen(struct task *tp)
+{
+}

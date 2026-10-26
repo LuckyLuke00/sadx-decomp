@@ -20,7 +20,24 @@ void Mountain_Honoo_Fire(struct task *tp, struct NJS_POINT3 tmpp, struct NJS_POI
 	CreateFire(&local_14, &local_20, f);
 }
 
-// STUB: SADX 0x008363b0
+// FUNCTION: SADX 0x008363b0
 void o_mountain_honoo_Display(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	if (dsCheckViewV(&var1->pos, 100.0f))
+	{
+		___njSetTexture(&texlist_obj_mountain);
+		njPushMatrix(0);
+		njTranslateV(0, &var1->pos);
+		if (var1->ang.y)
+		{
+			njRotateY(0, var1->ang.y);
+		}
+		FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
+		dsScaleLight(var1->scl.x);
+		___dsAction((struct NJS_ACTION *)var1->counter.ptr, (float)var1->wtimer, var1->scl.x);
+		dsReScaleLight();
+		njPopMatrix(1);
+	}
 }

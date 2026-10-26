@@ -1,6 +1,7 @@
 #include "decls.h"
+extern struct NJS_ACTION action_kasshatyuukei1a_st[1];
 
-// STUB: SADX 0x00831f50
+// FUNCTION: SADX 0x00831f50
 void RelaypointDraw(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
@@ -10,19 +11,44 @@ void RelaypointDraw(struct task *tp)
 		___njSetTexture(&texlist_obj_mountain);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)&var1->ang.z)
+		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ(0, *(unsigned short *)&var1->ang.z);
+			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
 		}
-		if (var1->ang.x)
+		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
-			njRotateX(0, var1->ang.x);
+			njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
 		}
-		if (var1->ang.y)
+		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (unsigned short)*(short *)((char *)var1 + 0x18));
 		}
 		___dsAction(action_kasshatyuukei1a_st, var1->scl.x, 1.0f);
 		njPopMatrix(1);
 	}
+}
+
+// FUNCTION: SADX 0x00832000
+void RelaypointExec(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			var1->scl.x += *(float *)((char *)var1 + 0x34);
+			if (var1->scl.y <= var1->scl.x)
+			{
+				var1->scl.x -= var1->scl.y;
+				RelaypointDraw(tp);
+				return;
+			}
+		}
+		RelaypointDraw(tp);
+	}
+}
+
+// STUB: SADX 0x00832060
+void ObjectMountainRelaypoint(struct task *tp)
+{
 }

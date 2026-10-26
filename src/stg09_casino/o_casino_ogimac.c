@@ -1,4 +1,11 @@
 #include "decls.h"
+void FUN_00422560(int param_1);
+void FUN_0087ea70(struct task *, float);
+void njPrintC(int, char const *);
+long CheckRangeOutWithR(struct task *tp, float fRange);
+void late_ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum);
+extern void DispUV2ObjSE(struct task *tp);
+extern void ExecUV2SE(struct task *tp);
 static void DispH(struct task *tp);
 void FUN_0087ea70(struct task *param_1, float param_2);
 void DispObjV(struct task *tp);
@@ -242,6 +249,11 @@ void CalcCollisionScale(struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x0088a090
+void ObjCasino_InitSCV(struct task *tp, float range, struct obj *pobject, struct CCL_INFO *pinfo, int cnum)
+{
+}
+
 // STUB: SADX 0x0088a100
 void DispObjVL(struct task *tp)
 {
@@ -295,6 +307,11 @@ void ExecCV(struct task *tp)
 	{
 		EntryColliList(var1);
 	}
+}
+
+// STUB: SADX 0x0088a390
+void ObjCasino_InitCV(struct task *tp, float range, struct obj *pobject, struct CCL_INFO *pinfo, int cnum)
+{
 }
 
 // FUNCTION: SADX 0x0088a410
@@ -379,6 +396,11 @@ void ExecR(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x0088a6b0
+void ObjCasino_InitR(struct task *tp, struct obj *pobject, long rotY)
+{
+}
+
 // FUNCTION: SADX 0x0088a700
 static void DispH(struct task *tp)
 {
@@ -456,8 +478,18 @@ void ExecUV2SE(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x0088acd0
+void ObjCasino_InitUV2SE(struct task *tp, struct obj *pobject, struct TEXUVINFO2 *tui, signed char cnt, int se)
+{
+}
+
 // STUB: SADX 0x0088ae80
 void ExecUV(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0088af00
+void ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum)
 {
 }
 
@@ -466,8 +498,18 @@ void ExecUVG(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0088b010
+void EndUVG(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0088b080
 void ObjCasino_InitUVG(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum)
+{
+}
+
+// STUB: SADX 0x0088b290
+void ExecTGR(struct task *tp)
 {
 }
 
@@ -491,12 +533,43 @@ void ObjCasino_InitUVC(struct task *tp, struct obj *pobject, struct CCL_INFO *pi
 {
 }
 
-// STUB: SADX 0x0088b580
+// FUNCTION: SADX 0x0088b580
 void late_DispUVObj_sub(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	signed char var2;
+	signed char var3;
+	struct TEXUVINFO *var4;
+
+	if (var1 != 0)
+	{
+		if (DAT_05b9d838 == 0)
+		{
+			var2 = var1->btimer;
+			var3 = var1->mode;
+			var4 = (struct TEXUVINFO *)var1->value.l;
+			if (var3 != 0)
+			{
+				ObjCasino_SetTexUvInfo(var4 + (var3 - 1) * var2, var2);
+			}
+			FUN_00422560(3);
+			SetObjectTexture2(0xc);
+			late_DrawObjectClip((struct obj *)var1->timer.l, 1, 1.0f);
+			npSetZCompare();
+			if (var3 != 0)
+			{
+				ObjCasino_ResetTexUvInfo(var4 + (var3 - 1) * var2, var2);
+			}
+		}
+	}
 }
 
 // STUB: SADX 0x0088b710
 void late_ExecUV(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0088b790
+void late_ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum)
 {
 }

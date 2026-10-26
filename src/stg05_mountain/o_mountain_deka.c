@@ -30,6 +30,58 @@ void Object_Mountain_Deka_Display(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x0082d430
+void GCInit_Deka(struct task *tp)
+{
+	struct taskwk *var1;
+	struct obj *var2;
+
+	var1 = tp->twp;
+	if (var1->counter.ptr != 0)
+	{
+		WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
+		ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
+	}
+	var2 = GetMobileLandObject();
+	var1->counter.ptr = var2;
+	var2->scl[0] = 0.1f;
+	var2->scl[1] = 0.1f;
+	var2->evalflags = 0x10;
+	var2->scl[2] = 0.1f;
+	var2->ang[0] = var1->ang.x;
+	var2->ang[1] = var1->ang.y;
+	var2->ang[2] = var1->ang.z;
+	var2->pos[0] = var1->pos.x;
+	var2->pos[1] = var1->pos.y;
+	var2->pos[2] = var1->pos.z;
+	var2->model = *(struct NJS_MODEL **)((char *)var1->timer.ptr + 4);
+	var2->child = *(struct obj **)((char *)var1->timer.ptr + 0x2c);
+	var2->sibling = *(struct obj **)((char *)var1->timer.ptr + 0x30);
+	RegisterCollisionEntry(1, tp, var2);
+}
+
+// FUNCTION: SADX 0x0082d4c0
+void GC_Deka(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	struct OBJ_CONDITION *var2 = (struct OBJ_CONDITION *)var1->counter.ptr;
+	if (var2 != 0)
+	{
+		*(float *)((char *)var2 + 8) = var1->pos.x;
+		*(float *)((char *)var2 + 0xc) = var1->pos.y;
+		*(float *)((char *)var2 + 0x10) = var1->pos.z;
+		*(long *)((char *)var2 + 0x14) = var1->ang.x;
+		*(long *)((char *)var2 + 0x18) = var1->ang.y;
+		*(long *)((char *)var2 + 0x1c) = var1->ang.z;
+		if (CheckCollisionP(&var1->pos, 200.0f))
+		{
+			var1->flag |= 0x100;
+			return;
+		}
+		var1->flag &= 0xfeff;
+	}
+}
+
 // FUNCTION: SADX 0x0082d530
 void GCInit_DownDeka(struct task *tp)
 {

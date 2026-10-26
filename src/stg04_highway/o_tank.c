@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct childtaskset cts_dmg_body_a;
+extern struct childtaskset cts_dmg_body_b;
+extern struct childtaskset cts_dmg_body_c;
 void FUN_00422560(int param_1);
 
 // FUNCTION: SADX 0x00823570
@@ -40,4 +43,20 @@ void exitTank(struct task *tp)
 		WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
 		ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
 	}
+}
+
+// FUNCTION: SADX 0x008239e0
+void __fastcall FUN_008239e0(struct task *param_1)
+{
+	if ((param_1->twp->btimer & 1) != 0)
+	{
+		CreateChildrenTask(&cts_dmg_body_a, param_1);
+		return;
+	}
+	if ((param_1->twp->btimer & 2) != 0)
+	{
+		CreateChildrenTask(&cts_dmg_body_b, param_1);
+		return;
+	}
+	CreateChildrenTask(&cts_dmg_body_c, param_1);
 }

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct TEXUVINFO DAT_0480a06c;
 extern struct TEXUVINFO DAT_0480a118;
 extern struct obj object_csn_showerhead_showerhead[1];
 extern struct CCL_INFO coll_srh[1];
@@ -192,6 +193,12 @@ void ObjectCasinoKanban4(struct task *tp)
 void ObjectCasinoTuriDenki(struct task *tp)
 {
 	late_ObjCasino_InitUV(tp, (struct obj *)&object_cas_obj_turi_denki_turi_denki, &DAT_0480a058, 1, 1);
+}
+
+// FUNCTION: SADX 0x0086d630
+void ObjectCasinoSDFutiR(struct task *tp)
+{
+	ObjCasino_InitUVC(tp, (struct obj *)&object_cas_obj_sdai_futi_r_sdai_futi_r, (struct CCL_INFO *)&coll_sdfuti, 1, &DAT_0480a06c, 1, 3);
 }
 
 // FUNCTION: SADX 0x0086d660

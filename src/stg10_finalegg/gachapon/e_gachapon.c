@@ -7,6 +7,12 @@ void GachaSetPosition(struct taskwk *twp, struct gachamotionwk *mwp)
 {
 }
 
+// STUB: SADX 0x0088eaf0
+long GachaCheckExplode(struct taskwk *twp, struct gachamotionwk *mwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0088eb50
 int FUN_0088eb50(void *param_1, void *param_2)
 {
@@ -21,6 +27,11 @@ void GachaponDestructor(struct task *tp)
 		Free(tp->mwp);
 		tp->mwp = NULL;
 	}
+}
+
+// STUB: SADX 0x0088f040
+void FUN_0088f040(float param_1)
+{
 }
 
 // FUNCTION: SADX 0x0088f7a0

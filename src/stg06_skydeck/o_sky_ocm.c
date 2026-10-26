@@ -18,6 +18,42 @@ void OCMref(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0084c0a0
+struct OCMDATA *OCMregister(struct taskwk *otwp)
+{
+	return (struct OCMDATA *)0;
+}
+
+// STUB: SADX 0x0084c110
+long OCMunregister(struct OCMDATA *ocmdata)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x0084c130
+struct OCMDATA *OCMsearchRideobj()
+{
+    int var1;
+    struct OCMDATA *var2;
+    var2 = (struct OCMDATA *)DAT_060d0df8;
+    for (var1 = 0; var1 < 100; var1++)
+    {
+        if (*(int *)var2 != 0)
+        {
+            if ((*(unsigned char *)((char *)var2 + 9) & 1) != 0)
+                return var2;
+        }
+        var2 = (struct OCMDATA *)((char *)var2 + 0xc);
+    }
+    return NULL;
+}
+
+// STUB: SADX 0x0084c3e0
+struct OCMDATA *OCMsearchNearobjByTypePosRangeFlagmask(signed char stype, struct NJS_POINT3 *spos, float range, float rangey, signed char sflag, signed char mask)
+{
+	return (struct OCMDATA *)0;
+}
+
 // FUNCTION: SADX 0x0084c4d0
 struct OCMDATA *OCMsearchObjByTypeFlagmaskNum(signed char stype, signed char sflag, signed char mask, signed char snum)
 {

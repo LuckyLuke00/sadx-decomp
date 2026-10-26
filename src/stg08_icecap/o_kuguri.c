@@ -13,6 +13,12 @@ static void Disp2(struct task *tp)
 }
 #pragma optimize("", on)
 
+// FUNCTION: SADX 0x0085df60
+void late_Disp2(struct task *tp)
+{
+	late_SetFunc((void (__cdecl *)(void *))Disp2, tp, 22047.99f, 1);
+}
+
 // FUNCTION: SADX 0x0085df80
 static void Normal2(struct task *tp)
 {

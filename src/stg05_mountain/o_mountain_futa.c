@@ -19,3 +19,8 @@ void Object_Mountain_Futa_Display(struct task *tp)
 		njPopMatrix(1);
 	}
 }
+
+// STUB: SADX 0x0082fa30
+void Object_Mountain_Futa(struct task *tp)
+{
+}

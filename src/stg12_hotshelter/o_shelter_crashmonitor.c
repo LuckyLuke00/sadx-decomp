@@ -26,3 +26,8 @@ void DispBTask(struct task *tp)
 void FUN_008af650(struct task *tp)
 {
 }
+
+// STUB: SADX 0x008af7e0
+void ShutterBrokenPiece(struct task *tp)
+{
+}

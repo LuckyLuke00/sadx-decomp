@@ -7,9 +7,6 @@ extern int DAT_060dd3b0;
 extern int DAT_060dd3b4;
 extern int DAT_060dd3b8;
 extern int DAT_060dd3bc;
-extern struct obj *obj_box[8];
-extern struct NJS_TEXLIST texlist_HotShelter2;
-extern int DAT_05b9d838;
 
 // FUNCTION: SADX 0x008a2b60
 void InitBoxSwitch()

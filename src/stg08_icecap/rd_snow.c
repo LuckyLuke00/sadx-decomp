@@ -1,17 +1,17 @@
 #include "decls.h"
-extern struct NJS_ARGB DAT_05b3e040;
-extern struct NJS_POINT2 DAT_05b3e050;
-extern struct NJS_POINT3 DAT_05b3e074;
-extern struct NJS_POINT2 DAT_05b3e080;
-extern int DAT_05b3e0d0;
-extern short DAT_05b9d744;
-extern struct NJS_ARGB *pFogTable_Stg08[];
-extern struct NJS_POINT2 *pClipSky_Stg08[];
-extern struct NJS_POINT2 *pClipMap_Stg08[];
-extern struct NJS_POINT3 *pScale_Stg08[];
 static void ExecuteBg(struct task *tp);
 static void DisplayBg(struct task *tp);
 static void DestructBg(struct task *tp);
+
+// STUB: SADX 0x0085a790
+void sn_gdcontrol(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0085a9b0
+void FUN_0085a9b0(void)
+{
+}
 
 // FUNCTION: SADX 0x0085a9f0
 void RdSnowSwitchNadareStartDestructor(struct task *tp)
@@ -24,6 +24,11 @@ void RdSnowSwitchNadareStart(struct task *tp)
 {
 	tp->dest = RdSnowSwitchNadareStartDestructor;
 	FreeTask(tp);
+}
+
+// STUB: SADX 0x0085ac30
+void RdSnowBoardingSpeedManager(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x0085ae40
