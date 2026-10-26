@@ -1,5 +1,6 @@
-"""Checks for tools/pages.py: the badge colours, the near misses, the home page and an area page. Also the layout
-helpers its art uses, the remote's web link from tools/osutil.py and the measures of tools/objdiffreport.py."""
+"""Checks for tools/pages.py: the badge colours, the near misses, the home page, an area page and a file card. Also
+the layout helpers its art uses, the remote's web link from tools/osutil.py and the measures of
+tools/objdiffreport.py."""
 
 import json
 from types import SimpleNamespace
@@ -104,6 +105,17 @@ def check_area_page() -> list[str]:
     return failures
 
 
+def check_file_card() -> list[str]:
+    """A file card lists the names its functions declare. A placeholder name and a function that declares none, such as
+    a TEMPLATE annotation, count as without a name yet."""
+    text = pages.file_card("https://example.com/r", "src/a.c", ["Foo", "FUN_00000002", None])
+    failures = [f"file_card does not show {wanted!r}" for wanted in ("<li>Foo</li>", "2 without a name yet")
+                if wanted not in text]
+    if "FUN_00000002" in text or "None" in text:
+        failures.append("file_card shows a placeholder name or None")
+    return failures
+
+
 def check_layout_helpers() -> list[str]:
     """Clipping keeps the part of a polygon on the inner side of a line, a cell ends inset from the halfway line to
     its neighbour, a count names its noun in the plural unless it is 1, and an SVG URL escapes # and double quotes."""
@@ -155,6 +167,6 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_share_color, check_badge, check_near_misses, check_index_page, check_area_page,
-                  check_layout_helpers, check_web_url, check_objdiff_measures):
+                  check_file_card, check_layout_helpers, check_web_url, check_objdiff_measures):
         failures += check()
     return failures
