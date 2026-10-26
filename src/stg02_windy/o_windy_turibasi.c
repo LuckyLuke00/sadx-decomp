@@ -22,6 +22,26 @@ void ObjectWindyStoneBridge(struct task *tp)
 	ObjectGCollision(tp);
 }
 
+// FUNCTION: SADX 0x00807e60
+void ObjectWindyTuriBroken(struct task *tp)
+{
+	tp->twp->value.ptr = &windy_bridge_01;
+	CCL_Init(tp, hasi_colli_info, 1, 4);
+	tp->twp->cwp->colli_range = 500.0f;
+	ObjectTuribasi(tp);
+	tp->exec = ObjectWindyTuribasiExecutor;
+}
+
+// FUNCTION: SADX 0x00807ea0
+void ObjectWindyTuriBroken2(struct task *tp)
+{
+	tp->twp->value.ptr = &windy_bridge_02;
+	CCL_Init(tp, hasi_colli_info2, 3, 4);
+	tp->twp->cwp->colli_range = 500.0f;
+	ObjectTuribasi(tp);
+	tp->exec = ObjectWindyTuribasiExecutor;
+}
+
 // STUB: SADX 0x00807ee0
 void ObjectWindyTuriBrokenE102(struct task *tp)
 {

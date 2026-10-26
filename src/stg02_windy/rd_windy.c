@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05cbef64;
 void DisplayBg(struct task *tp);
 static void ExecuteBg(struct task *tp);
 static void DisplayBg(struct task *tp);
@@ -34,9 +35,14 @@ void Rd_Windy(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008043a0
+// FUNCTION: SADX 0x008043a0
 void FUN_008043a0(void)
 {
+	struct NJS_POINT3 local_14;
+	local_14.x = 4136.0f;
+	local_14.y = -4460.0f;
+	local_14.z = -1620.0f;
+	DAT_05cbef64 = (CheckCollisionP(&local_14, 525.0f) == 1) - 1 + 2;
 }
 
 // STUB: SADX 0x008044d0

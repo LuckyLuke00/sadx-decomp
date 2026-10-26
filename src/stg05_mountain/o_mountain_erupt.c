@@ -38,6 +38,11 @@ void DisplayLavaBall(struct task *tp)
 	}
 }
 
+// STUB: SADX 0x00832600
+void LavaBall(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00832a30
 void ColliEruptExplosion(struct task *tp)
 {

@@ -1,4 +1,5 @@
 #include "decls.h"
+struct sp_task *var1;
 extern int DAT_060dbbb0;
 
 // FUNCTION: SADX 0x00861120
@@ -16,6 +17,11 @@ long GetBigturaraStatus()
 	return 0;
 }
 
+// STUB: SADX 0x00861320
+void Object_IcecapBigturaraIceEditInit(struct TURARAINFO *tri, struct taskwk *twp)
+{
+}
+
 // FUNCTION: SADX 0x00861410
 void Object_IcecapBigturaraEnd(struct task *tp)
 {
@@ -31,6 +37,11 @@ void Object_IcecapBigturaraEnd(struct task *tp)
 		ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
 	}
 	Free(var1->value.ptr);
+}
+
+// STUB: SADX 0x00861990
+void Object_IcecapBigturaraCreateSnow(struct particle_info *effect, struct NJS_POINT3 *velo, struct NJS_POINT3 *pos, float killheight)
+{
 }
 
 // FUNCTION: SADX 0x00862990

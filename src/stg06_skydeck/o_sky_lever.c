@@ -42,7 +42,19 @@ void exitSkyLever(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0083e5e0
-void FUN_0083e5e0(struct task *tp)
+// FUNCTION: SADX 0x0083e5e0
+void FUN_0083e5e0(struct task *param_1)
 {
+	FreeTaskC(param_1);
+	struct taskwk *var1 = param_1->twp;
+	if (*(void **)((char *)var1 + 8))
+	{
+		WithdrawCollisionEntry(param_1, (struct obj *)*(void **)((char *)var1 + 8));
+		ReleaseMobileLandObject((struct obj *)*(void **)((char *)var1 + 8));
+		if (param_1->ptp)
+		{
+			DAT_060d0acc = param_1->twp->ang.x;
+			DAT_060d0ad0 = param_1->twp->ang.z;
+		}
+	}
 }

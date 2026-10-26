@@ -1,4 +1,5 @@
 #include "decls.h"
+static void Exec(struct task *tp);
 static void DrawForCurb(struct task *tp);
 
 // FUNCTION: SADX 0x0081ca40
@@ -24,7 +25,7 @@ static void DrawForCurb(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0081cac0
+// FUNCTION: SADX 0x0081cac0
 void ObjectForCurbCurb(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
@@ -34,20 +35,77 @@ void ObjectForCurbCurb(struct task *tp)
 		{
 		case 0:
 			tp->disp = DrawForCurb;
-			CCL_Init(tp, (struct CCL_INFO *)0x3e71448, 1, 4);
+			CCL_Init(tp, &object_cu_info[0], 1, 4);
 			SET_COLLI_RANGE(var1->cwp, 10.0f);
 			var1->mode = 1;
 			break;
 		case 1:
 			DrawForCurb(tp);
 			EntryColliList(var1);
-			return;
+			break;
 		}
 	}
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0081cc10
+static void Exec(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x0081d0c0
+void ObjectHighwayGroupFence(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = 0x81e690;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
+}
+
+// FUNCTION: SADX 0x0081d0f0
+void ObjectHighwayGroupCurb(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = (long)ObjectForCurbCurb;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
+}
+
+// FUNCTION: SADX 0x0081d120
+void ObjectHighwayGroupFence02(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = 0x81ec10;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
+}
+
+// FUNCTION: SADX 0x0081d150
+void ObjectHighwayGroupPinpin(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = 0x81f5f0;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
+}
+
 // STUB: SADX 0x0081d180
 void ObjectHighwayGroupFF(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0081d1b0
+void ObjectHighwayGroupRaftA(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0081d1e0
+void ObjectHighwayGroupRaftC(struct task *tp)
 {
 }
 
@@ -59,4 +117,24 @@ void ObjectHighwayGroupGreenA(struct task *tp)
 // STUB: SADX 0x0081d240
 void ObjectHighwayGroupGreenB(struct task *tp)
 {
+}
+
+// FUNCTION: SADX 0x0081d270
+void ObjectHighwayGroupGreenD(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = 0x81eb90;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
+}
+
+// FUNCTION: SADX 0x0081d2a0
+void ObjectHighwayGroupClight(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = 0x81fbe0;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
 }

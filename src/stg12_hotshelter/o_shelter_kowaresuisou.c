@@ -26,6 +26,23 @@ void PieceDisp(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x008b2af0
+void BubbleDisp(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (DAT_05b9d838 == 0)
+	{
+		sprite_o_bubble.p.x = var1->pos.x;
+		sprite_o_bubble.p.y = var1->pos.y;
+		sprite_o_bubble.p.z = var1->pos.z;
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 10);
+		SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+		___njDrawSprite3D(&sprite_o_bubble, 0, 0x32);
+	}
+}
+
 // FUNCTION: SADX 0x008b2d20
 void BubbleExec(struct task *tp)
 {

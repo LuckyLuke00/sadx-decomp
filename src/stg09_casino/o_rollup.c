@@ -97,7 +97,44 @@ void NormalUR(struct task *tp)
 	DispUR(tp);
 }
 
+// FUNCTION: SADX 0x00884430
+void NormalUL(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	struct OBJ_CONDITION *var2 = (struct OBJ_CONDITION *)var1->counter.ptr;
+	float var3 = *(float *)((char *)var2->pTask + 0x24) + 20.0f;
+	if (CheckCollisionP(&var1->pos, var3))
+	{
+		var1->flag |= 0x100;
+	}
+	else
+	{
+		var1->flag &= 0xfeff;
+	}
+	if (var1->value.l)
+	{
+		var1->value.l--;
+		DispUL(tp);
+		return;
+	}
+	*(int *)((char *)var2 + 0x18) = *(int *)((char *)var1 + 0x18) - 0x200;
+	*(int *)((char *)var1 + 0x18) = *(int *)((char *)var2 + 0x18);
+	if (((*(int *)((char *)var1 + 0x18) & 0xff00) == 0) ||
+		((*(int *)((char *)var1 + 0x18) & 0xff00) == 0x4000) ||
+		((*(int *)((char *)var1 + 0x18) & 0xff00) == 0x8000) ||
+		((*(int *)((char *)var1 + 0x18) & 0xff00) == 0xc000))
+	{
+		var1->value.l = 0x3c;
+	}
+	DispUL(tp);
+}
+
 // STUB: SADX 0x008844d0
 void NormalDL(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00884630
+void ObjectRollDownL(struct task *tp)
 {
 }

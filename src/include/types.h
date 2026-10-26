@@ -281,6 +281,7 @@ struct TEX_PVMTABLE;
 struct TEXANIMINFO;
 struct TEXUVINFO;
 struct TEXUVINFO2;
+struct THahenInfo;
 struct thread;
 struct TitleMenuWk;
 struct TitleNewWk;
@@ -3772,6 +3773,12 @@ struct TEX_PVMTABLE {
 static_assert(sizeof(TEX_PVMTABLE) == 0x8, "sizeof TEX_PVMTABLE");
 static_assert(offsetof(TEX_PVMTABLE, pname) == 0x0, "TEX_PVMTABLE::pname");
 static_assert(offsetof(TEX_PVMTABLE, ptexlist) == 0x4, "TEX_PVMTABLE::ptexlist");
+
+struct THahenInfo {
+    struct obj *Obj;
+};
+static_assert(sizeof(THahenInfo) == 0x4, "sizeof THahenInfo");
+static_assert(offsetof(THahenInfo, Obj) == 0x0, "THahenInfo::Obj");
 
 struct TaskInfo {
     unsigned int size;

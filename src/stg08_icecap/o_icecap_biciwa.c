@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x0085f150
+void CreateSnowR(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, float scl, float rad)
+{
+}
+
 // FUNCTION: SADX 0x0085fd70
 void Object_IcecapBicIwaExec(struct task *tp)
 {

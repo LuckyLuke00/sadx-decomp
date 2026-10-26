@@ -56,3 +56,8 @@ end:
 		EntryColliList(var1);
 	}
 }
+
+// STUB: SADX 0x008661c0
+void obj_snow_doa(struct task *tp)
+{
+}

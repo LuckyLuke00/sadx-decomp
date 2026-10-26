@@ -35,7 +35,25 @@ void EffectSnowPieceDisplay(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0085bd90
+// FUNCTION: SADX 0x0085bd90
 void EffectSnowPieceExecute(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		var1->smode++;
+		if ((signed char)var1->smode >= 0xb4)
+		{
+			FreeTask(tp);
+			return;
+		}
+		var1->scl.y -= 0.04f;
+		var1->ang.x += 0x400;
+		var1->ang.y += 0x400;
+		var1->ang.z += 0x400;
+		var1->pos.x += var1->scl.x;
+		var1->pos.y += var1->scl.y;
+		var1->pos.z += var1->scl.z;
+		EffectSnowPieceDisplay(tp);
+	}
 }

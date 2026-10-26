@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct CCL_INFO object_saku2_info[];
 extern struct CCL_INFO object_rouya_info[2];
 extern struct obj object_saku_saku_saku[1];
 extern struct CCL_INFO object_saku2_info[1];

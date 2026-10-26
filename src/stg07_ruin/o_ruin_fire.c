@@ -32,3 +32,8 @@ void DrawFire(struct task *tp)
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
 }
+
+// STUB: SADX 0x008534d0
+void ObjectRuinFire(struct task *tp)
+{
+}

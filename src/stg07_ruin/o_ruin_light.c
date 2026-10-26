@@ -7,3 +7,8 @@ void ObjectRuinLight(struct task *tp)
 	ObjectCCollision_setNWZ(tp);
 	ObjectScaleNormal(tp);
 }
+
+// STUB: SADX 0x00853d90
+void ObjectRuinLightEff(struct task *tp)
+{
+}
