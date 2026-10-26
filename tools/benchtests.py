@@ -21,8 +21,8 @@ CLASH = ("decls: FUN_00402000: the tree declares it `void __fastcall FUN_0040200
          "that never links.")
 
 
-def fake_bench(rules, tree_wins=False, earlier=None, tables=None):
-    """(a Bench whose rebuild follows RULES, the list of the codes that it built)."""
+def fake_bench(rules, tree_wins=False, earlier=None, tables=None, plain=False):
+    """(a Bench whose rebuild follows RULES, the list of the codes that it built). PLAIN is the Bench's plain."""
     built = []
 
     def rebuild(decls, func):
@@ -32,7 +32,7 @@ def fake_bench(rules, tree_wins=False, earlier=None, tables=None):
 
     config = {"tables": tables, "context": None}
     types = names.Types(Path("no types.h"))
-    return llm.Bench(rebuild, config, PATH, ADDRESS, set(), tree_wins, types, earlier or {}), built
+    return llm.Bench(rebuild, config, PATH, ADDRESS, set(), tree_wins, types, earlier or {}, plain), built
 
 
 def failed(body, output, decls=(), signature=SIGNATURE):
@@ -135,7 +135,7 @@ def check_repair_clashes() -> list[str]:
 def check_repair_calls() -> list[str]:
     """A call that the tree's declaration of a dropped callee rejects goes through a cast to the model's type. The
     retry is kept when that clash is gone, even when another error remains. A clash on a name that was not dropped
-    builds nothing."""
+    builds nothing, and so does a Bench for plain C: the cast is a cast_call that fakematch refuses."""
     model = ["void FUN_00402000(int a, int b);"]
     rejected = "src/foo.c(4) : error C2660: 'FUN_00402000' : function does not take 2 arguments"
     start = failed(["\tFUN_00402000(1, 2);"], rejected)
@@ -145,17 +145,19 @@ def check_repair_calls() -> list[str]:
               (cast, ["FUN_00402000"], 1)),
              ("a clash that stays", dropped, [("(void (*)", None, rejected)], (code_of(start), [], 1)),
              ("a callee that was not dropped", {"FUN_00403000": ["void FUN_00403000(void)"]}, [],
-              (code_of(start), [], 0))]
+              (code_of(start), [], 0)),
+             ("plain C", dropped, [("(void (*)", None, OTHER)], (code_of(start), [], 0))]
     failures = []
     for case, gone, rules, wanted in cases:
-        bench, built = fake_bench(rules)
+        bench, built = fake_bench(rules, plain=case == "plain C")
         failures += judged("repair_calls", case, bench.repair_calls(start, model, gone), built, wanted)
     return failures
 
 
 def check_repair_globals() -> list[str]:
     """A use of a dropped variable goes through a cast to the model's type. The retry is kept when it builds or has
-    fewer errors. No dropped name, no build."""
+    fewer errors. No dropped name, no build, and no build for plain C: the cast is an address_pun that fakematch
+    refuses."""
     model = ["extern int DAT_00501000[4];"]
     two = OTHER + "\nsrc/foo.c(5) : error C2109: subscript requires array or pointer type"
     start = failed(["\tx = DAT_00501000[1];"], two)
@@ -165,10 +167,11 @@ def check_repair_globals() -> list[str]:
              ("a retry with fewer errors", dropped, [("(int (*)[4])", None, OTHER)],
               (cast, ["DAT_00501000"], 1)),
              ("a retry with as many errors", dropped, [("(int (*)[4])", None, two)], (code_of(start), [], 1)),
-             ("no dropped name", {}, [], (code_of(start), [], 0))]
+             ("no dropped name", {}, [], (code_of(start), [], 0)),
+             ("plain C", dropped, [("(int (*)[4])", 99.0, "")], (code_of(start), [], 0))]
     failures = []
     for case, gone, rules, wanted in cases:
-        bench, built = fake_bench(rules)
+        bench, built = fake_bench(rules, plain=case == "plain C")
         failures += judged("repair_globals", case, bench.repair_globals(start, model, gone), built, wanted)
     return failures
 
