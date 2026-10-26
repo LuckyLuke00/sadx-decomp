@@ -15,7 +15,8 @@ The guess, in this order:
 3. Callers. A function whose callers all have one area takes that area, with limits for the `shared` areas.
 4. Runs. The linker keeps an area's code together, so a function between two seeds of one area takes it.
 
-Each step's docstring has its limits. Needs capstone, so it runs in .venv.
+Each step's docstring has its limits. The guess needs capstone, so it runs in .venv. The rest needs no package:
+pages.py imports this module before it reruns itself in .venv.
 """
 
 import collections
@@ -26,10 +27,8 @@ import sys
 from collections.abc import Iterator
 from pathlib import Path
 
-import accesses
 import codegen
 import datafiles
-import dossier
 import pe
 import progress
 import project
@@ -187,6 +186,7 @@ def object_lists(data: Data, game: set[int], lists: dict) -> list[tuple[int, str
 
 def data_uses(image: pe.Image, game: set[int]) -> dict[int, set[int]]:
     """function -> the data addresses it reads, writes or takes."""
+    import accesses  # loads capstone, so only for the guess
     uses = collections.defaultdict(set)
     for access in accesses.load(image):
         for function in access.functions:
@@ -502,6 +502,7 @@ def runs(order: list[int], group_of: dict[int, int], edges: Edges, labels: dict[
 
 def guess(image: pe.Image, rules: dict) -> tuple[list[int], dict[int, tuple[str, str]]]:
     """The game functions in address order, and (area, why) for each one the exe places."""
+    import dossier  # loads capstone, so only for the guess
     functions = progress.load_functions()
     groups = progress.load_codegen_groups()
     game = progress.game_addresses(functions, groups)
