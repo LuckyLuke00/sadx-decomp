@@ -1,6 +1,6 @@
 #include "decls.h"
 static void Exec(struct task *tp);
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 #pragma optimize("", off)
 // STUB: SADX 0x0049aa30

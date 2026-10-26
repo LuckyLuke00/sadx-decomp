@@ -1,5 +1,5 @@
 #include "decls.h"
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 // FUNCTION: SADX 0x007d4be0
 void COverlayExec(struct task *_this)
@@ -27,10 +27,18 @@ void COverlayCons(struct task *_this)
 	COverlayExec(_this);
 }
 
-// STUB: SADX 0x007d4c80
+// FUNCTION: SADX 0x007d4c80
 struct task *FUN_007d4c80(float param_1, float param_2, float param_3, float param_4, float param_5)
 {
-	return (struct task *)0;
+	struct task *var1 = CreateElementalTask(2, 6, COverlayCons);
+	struct taskwk *var2 = var1->twp;
+	var2->scl.y = param_1;
+	var2->scl.x = param_2;
+	var2->pos.x = param_3;
+	var2->pos.y = param_4;
+	var2->pos.z = param_5;
+	var2->scl.z = -1.0f;
+	return var1;
 }
 
 // FUNCTION: SADX 0x007d4ce0

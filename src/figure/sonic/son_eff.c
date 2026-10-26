@@ -1,7 +1,7 @@
 #include "decls.h"
 extern "C" double asin(double param_1);
 extern "C" double atan2(double v, double u);
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 extern void *DAT_060eea60;
 int FUN_005b05b0(struct taskwk *param_1);
 void FUN_005b0e20(struct task *param_1);
@@ -201,9 +201,25 @@ void EffectDrawRibbon(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b1820
+// FUNCTION: SADX 0x005b1820
 void EffectDestructRibbon(struct task *tp)
 {
+	struct motionwk *local_8 = tp->mwp;
+	if (local_8->work.ptr)
+	{
+		Free(local_8->work.ptr);
+		local_8->work.ptr = NULL;
+	}
+	if (*(int *)((char *)local_8 + 4))
+	{
+		Free(*(void **)((char *)local_8 + 4));
+		*(void **)((char *)local_8 + 4) = NULL;
+	}
+	if (*(int *)((char *)local_8 + 8))
+	{
+		Free(*(void **)((char *)local_8 + 8));
+		*(void **)((char *)local_8 + 4) = NULL;
+	}
 }
 
 // STUB: SADX 0x005b18a0

@@ -1,7 +1,7 @@
 #include "decls.h"
 extern struct taskwk *DAT_05b42a7c;
 extern struct obj *DAT_060eeaa4;
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 // FUNCTION: SADX 0x006c0800
 void PyramidStairsDisplayer(struct task *tp)

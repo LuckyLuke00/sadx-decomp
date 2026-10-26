@@ -8,7 +8,7 @@ long addcolCube(struct _OBJ_CAMERAENTRY *entry, struct NJS_POINT3 *pos);
 extern int DAT_05b4259c;
 extern struct NJS_CACTION *DAT_05b425cc;
 extern float DAT_05b4293c;
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 extern int DAT_05b42a88;
 extern double DAT_0095cbf8;
 extern int DAT_05b42990;
@@ -354,6 +354,11 @@ void CamcontSetCameraCAMSTATUS(struct taskwk *pTaskWork)
 	pTaskWork->ang.z = *(long *)((char *)camcont_wp + 0x2c);
 }
 
+// STUB: SADX 0x004bdee0
+void CamcontSetCameraLOOKAT(struct taskwk *pTaskWork)
+{
+}
+
 // FUNCTION: SADX 0x004bdfe0
 void CamcontSetCameraTGTOFST(struct taskwk *pTaskWork)
 {
@@ -667,9 +672,42 @@ void FUN_004bf070(int param_1)
 	*(int *)((char *)pCameraSystemWork + 0xc) = *(int *)((char *)*(int *)DAT_05b4299c + (param_1 << 4));
 }
 
-// STUB: SADX 0x004bf0b0
+// FUNCTION: SADX 0x004bf0b0
 void FUN_004bf0b0(struct _CameraSystemWork *param_1, struct _CameraSystemWork *param_2)
 {
+	float local_10m;
+	float local_14;
+	float local_8g;
+	float local_cj;
+
+	local_10m = *(float *)((char *)param_1 + 0x20) - *(float *)((char *)param_2 + 0x20);
+	local_14 = *(float *)((char *)param_1 + 0x24) - *(float *)((char *)param_2 + 0x24);
+	local_8g = *(float *)((char *)param_1 + 0x28) - *(float *)((char *)param_2 + 0x28);
+	local_cj = local_10m * local_10m + local_14 * local_14 + local_8g * local_8g;
+	if (0.010000000707805157 > local_cj)
+	{
+		if (DiffAngle(*(int *)((char *)param_1 + 0x14), *(int *)((char *)param_2 + 0x14)) < 0x5b)
+		{
+			if (DiffAngle(*(int *)((char *)param_1 + 0x18), *(int *)((char *)param_2 + 0x18)) < 0x5b)
+			{
+				if (DiffAngle(*(int *)((char *)param_1 + 0x1c), *(int *)((char *)param_2 + 0x1c)) < 0x5b)
+				{
+					switch (*(char *)((char *)pCameraSystemWork + 9))
+					{
+						case 1:
+							SetAdjustMode(3);
+							break;
+						case 0:
+						case 2:
+						case 3:
+						case 4:
+							SetAdjustMode(0);
+							break;
+					}
+				}
+			}
+		}
+	}
 }
 
 // STUB: SADX 0x004bf1b0

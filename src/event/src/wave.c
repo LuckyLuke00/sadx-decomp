@@ -3,7 +3,7 @@ static void initWaveTask(struct task *p_task);
 static void execWaveTask(struct task *p_task);
 static void dispWaveTask(struct task *p_task);
 extern struct task *DAT_060cc7d0[1];
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 void FUN_007d6940(struct task *param_1);
 void execWaveCtrlTask(struct task *p_task);
 extern struct task *DAT_060cc7d0[];
@@ -55,6 +55,34 @@ void FUN_007d77b0(float param_1, float param_2, float param_3, float param_4, fl
 	var3->counter.f = 0.0f;
 	*(float *)var2 = param_4;
 	*(float *)((char *)var2 + 4) = param_5;
+}
+
+// FUNCTION: SADX 0x007d7800
+void execWaveCtrlTask(struct task *p_task)
+{
+	struct taskwk *var1 = p_task->twp;
+	void *var2 = var1->value.ptr;
+	switch (var1->mode)
+	{
+	case 0:
+		var1->mode = 1;
+		break;
+	case 1:
+		var1->counter.l = var1->counter.l + 1;
+		if (var1->counter.l % *(int *)((char *)var2 + 8) == 0)
+		{
+			FUN_007d77b0(var1->pos.x, var1->pos.y, var1->pos.z, *(float *)var2, *(float *)((char *)var2 + 4));
+		}
+		if (var1->counter.l > *(int *)((char *)var2 + 0xc))
+		{
+			var1->mode = 2;
+			return;
+		}
+		break;
+	case 2:
+		FreeTask(p_task);
+		return;
+	}
 }
 
 // FUNCTION: SADX 0x007d7880

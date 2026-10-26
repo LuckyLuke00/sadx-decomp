@@ -2,7 +2,7 @@
 extern struct NJS_ACTION action_cas_obj_s_light_g[1];
 void DispMot3(struct task *tp);
 void ExecCM(struct task *tp);
-int FUN_004c39c0(struct task *param_1);
+int FUN_004c39c0(...);
 long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id);
 long CheckRangeOutWithR(struct task *tp, float fRange);
 extern struct CCL_INFO coll_sl[1];

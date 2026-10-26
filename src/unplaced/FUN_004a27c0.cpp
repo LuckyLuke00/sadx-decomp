@@ -6,7 +6,7 @@ extern int DAT_05b3df5c;
 
 void FUN_004a2800();
 void FUN_004a29c0();
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 
 // FUNCTION: SADX 0x004a27c0
 void FUN_004a27c0()

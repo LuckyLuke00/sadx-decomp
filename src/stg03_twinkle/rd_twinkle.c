@@ -1,5 +1,5 @@
 #include "decls.h"
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 // STUB: SADX 0x00811460
 void setTPFog(unsigned char mode)

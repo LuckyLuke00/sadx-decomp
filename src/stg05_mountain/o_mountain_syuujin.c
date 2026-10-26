@@ -1,7 +1,7 @@
 #include "decls.h"
 extern struct NJS_TEXLIST texlist_obj_mountain;
 extern struct NJS_ACTION action_shu_jin02m_null1;
-int FUN_004c39c0(struct task *param_1);
+int FUN_004c39c0(...);
 void Object_Mountain_Syuujin_Display(struct task *tp);
 void Object_Mountain_Syuujin_Move_B(struct task *tp);
 

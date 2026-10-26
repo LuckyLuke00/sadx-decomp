@@ -1,5 +1,5 @@
 #include "decls.h"
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 // FUNCTION: SADX 0x00835ed0
 void Object_Mountain_Kumonosu_Display(struct task *tp)

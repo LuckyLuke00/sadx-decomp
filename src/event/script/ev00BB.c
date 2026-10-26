@@ -1,5 +1,5 @@
 #include "decls.h"
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 // STUB: SADX 0x0074b740
 void destDelObjTask(struct task *p_task)

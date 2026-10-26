@@ -22,8 +22,8 @@ void njRotateX(float *param_1, unsigned short param_2);
 void njRotateY(float *param_1, unsigned short param_2);
 void njCalcVector(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 void njPopMatrixEx();
-void FUN_007d21b0(void *param_1);
-void FUN_005b5aa0();
+void FUN_007d21b0(...);
+void FUN_005b5aa0(...);
 
 void FUN_0049f340(struct task *);
 void FUN_0049f4a0(struct task *);

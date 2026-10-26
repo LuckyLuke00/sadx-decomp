@@ -1,5 +1,5 @@
 #include "decls.h"
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 void CPlayable_Dest(struct task *tp);
 void CPlayable_Exec(struct task *tp);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));

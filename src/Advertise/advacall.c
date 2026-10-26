@@ -8,7 +8,7 @@ extern struct NJS_CAMERA DAT_06298c48;
 
 void FUN_004bac60();
 void FUN_004a0520(float param_1, float param_2);
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 
 // FUNCTION: SADX 0x004bab70
 long Title2Init(void *Param)

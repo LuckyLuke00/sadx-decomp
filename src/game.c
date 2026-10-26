@@ -33,7 +33,7 @@ void EV_Load2(int no);
 void EV_Exec2();
 int EV_CheckExec(int no);
 void ReleaseMissionObject();
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 extern unsigned char DAT_05b3739a;
 void FUN_004c8770();
 extern short DAT_05b9d720;
@@ -813,9 +813,12 @@ unsigned short FUN_004cac90()
 	return uVar1;
 }
 
-// STUB: SADX 0x004cacc0
+// FUNCTION: SADX 0x004cacc0
 void FUN_004cacc0()
 {
+	FUN_004c8770();
+	ReleaseMissionObject();
+	FUN_007d21b0();
 }
 
 // FUNCTION: SADX 0x004caf50

@@ -1,5 +1,5 @@
 #include "decls.h"
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 // STUB: SADX 0x0083edf0
 void ObjectSkydeck_vent_Draw(struct task *tp)
@@ -8,6 +8,11 @@ void ObjectSkydeck_vent_Draw(struct task *tp)
 
 // STUB: SADX 0x0083efe0
 void ObjectSkydeck_signal_Draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083f3d0
+void ObjectSkydeck_vent(struct task *tp)
 {
 }
 
