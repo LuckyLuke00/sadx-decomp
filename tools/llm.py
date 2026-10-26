@@ -119,8 +119,9 @@ STRUCTS_RULE = ("The Structs section lists members with their offsets: "
 PLAIN_FORMS = {  # what to write in place of each fakematch kind, for --refuse-fakematch
     "raw_address": "use the global or function at that address by its name, and declare it",
     "index_game": "index the member or element at that offset",
+    "neighbor_address": "declare the parameter, local or global that it reaches, and use it by its name",
     "address_pun": "declare the variable with the type that the code reads it as",
-    "cast_call": "call the function as it is declared, or declare it with the arguments that the call passes",
+    "cast_call": "call the function as the tree declares it",
     "constant_test": "write the code that runs, without the test",
     "empty_block": "leave it out, or test the opposite condition",
     "empty_statement": "leave it out, or write the loop's work in its body",
