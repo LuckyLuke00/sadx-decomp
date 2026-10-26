@@ -1,4 +1,7 @@
 #include "decls.h"
+struct NJS_POINT2;
+struct NJS_POINT3;
+struct taskwk;
 extern float DAT_00956608;
 
 // STUB: SADX 0x007e4140

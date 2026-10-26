@@ -1,11 +1,13 @@
 #include "decls.h"
+extern struct ActionParam DAT_035af6f4;
+extern struct ActionParam DAT_035af6bc;
 extern int DAT_05b9d838;
 extern struct ActionParam DAT_035af6d8;
 
-// STUB: SADX 0x007e8920
+// FUNCTION: SADX 0x007e8920
 struct task *SetRockyHead01Task()
 {
-	return (struct task *)0;
+	return SandObjSetChildTask(&ObjectTaskInfo, &DAT_035af6bc);
 }
 
 // FUNCTION: SADX 0x007e8940
@@ -14,10 +16,10 @@ struct task *SetRockyHead02Task()
 	return SandObjSetChildTask(&ObjectTaskInfo, &DAT_035af6d8);
 }
 
-// STUB: SADX 0x007e8960
+// FUNCTION: SADX 0x007e8960
 struct task *SetRockyHead03Task()
 {
-	return (struct task *)0;
+	return SandObjSetChildTask(&ObjectTaskInfo, &DAT_035af6f4);
 }
 
 // FUNCTION: SADX 0x007e8ad0

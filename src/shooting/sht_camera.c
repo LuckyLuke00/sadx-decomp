@@ -45,7 +45,7 @@ void TornadeDisp(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x007edd70
+// FUNCTION: SADX 0x007edd70
 void ShtAct2EventCamera(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
@@ -59,15 +59,15 @@ void ShtAct2EventCamera(struct task *tp)
 		var1->mode = 1;
 		break;
 	case 1:
-		CameraCameraAction((struct NJS_CACTION *)&sht_caction_cam_int1, var1->counter.f);
+		CameraCameraAction(&sht_caction_cam_int1[0], var1->counter.f);
 		TornadeDisp(tp);
-		var1->counter.f += 1.0f;
-		if ((float)(unsigned int)*(int *)&sht_caction_cam_int1[0].motion->nbFrame <= var1->counter.f)
+		var1->counter.f += 1.0;
+		if ((float)(unsigned int)sht_caction_cam_int1[0].motion->nbFrame <= var1->counter.f)
 		{
 			FreeTask(tp);
 		}
-		var1->value.f += 0.5f;
-		if (30.0f <= var1->value.f)
+		var1->value.f += 0.5;
+		if (var1->value.f >= 30.0)
 		{
 			var1->value.f = 0.0f;
 			return;

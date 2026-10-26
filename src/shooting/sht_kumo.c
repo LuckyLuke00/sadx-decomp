@@ -23,3 +23,8 @@ void Kumo1(struct task *tp)
 		DestroyTask(tp);
 	}
 }
+
+// STUB: SADX 0x007eefe0
+void sht_KUMO(struct task *tp)
+{
+}
