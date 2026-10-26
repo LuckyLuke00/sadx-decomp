@@ -37,3 +37,8 @@ int FUN_00928740()
 {
 	return (int)0;
 }
+
+// STUB: SADX 0x00928790
+void __fastcall FUN_00928790(int param_1)
+{
+}

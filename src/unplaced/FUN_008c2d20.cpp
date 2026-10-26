@@ -1,5 +1,10 @@
 #include "decls.h"
 #include <new>
+int FUN_008c3590(int param_1, int *param_2, int param_3);
+void FUN_008c3260(int param_1, int *param_2, int *param_3);
+void FUN_008c4130(char *param_1);
+void FUN_008c41a0(char *param_1);
+void FUN_008c3850(int param_1, int *param_2, int *param_3);
 void FUN_008c3450(int param_1, int *param_2, int *param_3);
 void FUN_008c3770(int param_1, int *param_2, int *param_3);
 int * FUN_008c3650(int param_1, int *param_2, int param_3);
@@ -91,6 +96,12 @@ void FUN_008c3850(int param_1, int *param_2, int *param_3)
 		}
 		local_8 = local_8 + 2;
 	}
+}
+
+// STUB: SADX 0x008c4080
+int * __fastcall FUN_008c4080(int *param_1)
+{
+	return (int *)0;
 }
 
 // STUB: SADX 0x008c4130

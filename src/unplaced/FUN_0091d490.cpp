@@ -35,6 +35,11 @@ int __fastcall FUN_0091d510(int param_1)
 	return *(int *)(param_1 + 0xc) != 0;
 }
 
+// STUB: SADX 0x0091d520
+void __fastcall FUN_0091d520(int param_1)
+{
+}
+
 // STUB: SADX 0x0091d5a0
 int FUN_0091d5a0(int param_1)
 {
@@ -67,6 +72,18 @@ int FUN_0091d5e0(int param_1)
 
 // STUB: SADX 0x0091d5f0
 int FUN_0091d5f0(int param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0091d600
+int __fastcall FUN_0091d600(int param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0091d660
+int __fastcall FUN_0091d660(int param_1)
 {
 	return (int)0;
 }

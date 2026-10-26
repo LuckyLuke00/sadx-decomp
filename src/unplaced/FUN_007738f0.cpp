@@ -6,6 +6,11 @@ void FUN_007738f0(struct task *param_1)
 {
 }
 
+// STUB: SADX 0x00773960
+void FUN_00773960()
+{
+}
+
 // FUNCTION: SADX 0x007739c0
 void FUN_007739c0()
 {

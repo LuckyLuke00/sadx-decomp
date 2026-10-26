@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_00880ac0(struct task *param_1);
+struct task;
 extern struct NJS_SPRITE DAT_060dc468;
 
 // FUNCTION: SADX 0x00880ac0
@@ -20,4 +22,9 @@ void FUN_00880ac0(struct task *param_1)
 	FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
 	___njDrawSprite3D(&DAT_060dc468, var1->btimer, 0x20);
 	njPopMatrix(1);
+}
+
+// STUB: SADX 0x00880b50
+void FUN_00880b50(struct task *tp)
+{
 }

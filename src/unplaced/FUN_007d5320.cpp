@@ -2,6 +2,11 @@
 extern struct task *DAT_060cc4ac;
 extern struct task *DAT_060cc4a8;
 
+// STUB: SADX 0x007d5320
+void FUN_007d5320()
+{
+}
+
 // FUNCTION: SADX 0x007d5340
 void FUN_007d5340()
 {

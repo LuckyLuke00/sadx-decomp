@@ -1,13 +1,16 @@
 #include "decls.h"
+extern void FUN_0041b120(int, int);
+extern void stSetBaseMatrix(float (*)[16]);
+extern void njStartMotionObj(struct NJS_MOTION const *param_1, float param_2);
+extern void _njCnkPushPopMotion(struct cnkobj const *);
+void FUN_0041b120(int param_1,int param_2);
 void njStartMotionObj(struct param_1 const *, float);
 void _njCnkPushPopMotion(struct cnkobj const *);
 extern void _njCnkDrawObject(struct cnkobj *param_1);
 extern void FUN_0041b120(int param_1, int param_2);
 extern void stSetBaseMatrix(float (*param_1)[16]);
 extern void *DAT_05ab39ac;
-void njStartMotionLink(struct NJS_MOTION_LINK const *, float);
 void stSetBaseMatrix(float (*)[16]);
-void _njCnkPushPopMotionLink(struct cnkobj const *);
 extern int DAT_0629c518;
 extern int DAT_05ada5b8;
 void FUN_0041b120(int param_1, int param_2);

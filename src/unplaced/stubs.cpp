@@ -34,11 +34,6 @@ int __fastcall FUN_004199f0(void *, float)
 	return (int)0;
 }
 
-// STUB: SADX 0x0041a620
-void FUN_0041a620(void *)
-{
-}
-
 // STUB: SADX 0x0041b120
 extern void FUN_0041b120(int, int)
 {
@@ -829,11 +824,6 @@ void AL_Garden01Master(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0047a9f0
-void FUN_0047a9f0()
-{
-}
-
 // STUB: SADX 0x0047e880
 void CreateGuideButton(unsigned short id, float xpos, float ypos, unsigned short WaitTime)
 {
@@ -1226,6 +1216,11 @@ void DrawFileSelBallChar(struct FileSelWk *wkp)
 
 // STUB: SADX 0x004b95e0
 void DrawFileSelCsr(struct FileSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x004b9da0
+void AvaDrawInfo(struct FileSelWk *wkp)
 {
 }
 
@@ -1748,6 +1743,11 @@ void FUN_00574140(int, float, float, float)
 
 // STUB: SADX 0x00574950
 void ghDrawPvrTexture(int, float, float, float, float, float)
+{
+}
+
+// STUB: SADX 0x00575490
+void DrawShadowWindow(float x, float y, float z, float w, float h)
 {
 }
 

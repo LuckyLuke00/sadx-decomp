@@ -362,6 +362,14 @@
    "library": false
   },
   {
+   "address": "0x00408620",
+   "name": "FUN_00408620",
+   "accuracy": 0.0392156862745098,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004086b0",
    "name": "FUN_004086b0",
    "accuracy": 0.0,
@@ -954,6 +962,14 @@
    "library": false
   },
   {
+   "address": "0x00412290",
+   "name": "FUN_00412290",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00414350",
    "name": "FUN_00414350",
    "accuracy": 0.6666666666666666,
@@ -994,6 +1010,14 @@
    "library": false
   },
   {
+   "address": "0x004144b0",
+   "name": "FUN_004144b0",
+   "accuracy": 0.03076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00414570",
    "name": "FUN_00414570",
    "accuracy": 0.0,
@@ -1005,6 +1029,14 @@
    "address": "0x00414590",
    "name": "FUN_00414590",
    "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00414600",
+   "name": "FUN_00414600",
+   "accuracy": 0.038461538461538464,
    "effective": false,
    "stub": true,
    "library": false
@@ -1365,14 +1397,6 @@
    "address": "0x0041a1e0",
    "name": "SOCGetZwrite",
    "accuracy": 0.11764705882352941,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
-   "address": "0x0041a620",
-   "name": "FUN_0041a620",
-   "accuracy": 0.24,
    "effective": false,
    "stub": true,
    "library": false
@@ -2050,6 +2074,14 @@
    "library": false
   },
   {
+   "address": "0x004234c0",
+   "name": "njLoadPaletteFile",
+   "accuracy": 0.023809523809523808,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00423840",
    "name": "njSetTextureG",
    "accuracy": 1.0,
@@ -2364,7 +2396,7 @@
   {
    "address": "0x004251f0",
    "name": "njDeleteWaitVSyncFunc",
-   "accuracy": 1.0,
+   "accuracy": 0.9629629629629629,
    "effective": false,
    "stub": false,
    "library": false
@@ -3044,9 +3076,9 @@
   {
    "address": "0x00430d60",
    "name": "stHWVSyncServerDelete",
-   "accuracy": 0.3125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8202,6 +8234,14 @@
    "library": false
   },
   {
+   "address": "0x0046e620",
+   "name": "FUN_0046e620",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0046ea30",
    "name": "FUN_0046ea30",
    "accuracy": 1.0,
@@ -8802,6 +8842,14 @@
    "library": false
   },
   {
+   "address": "0x00478b10",
+   "name": "FUN_00478b10",
+   "accuracy": 0.23529411764705882,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00478b40",
    "name": "FUN_00478b40",
    "accuracy": 0.23529411764705882,
@@ -9028,9 +9076,9 @@
   {
    "address": "0x0047a9f0",
    "name": "FUN_0047a9f0",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9119,6 +9167,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0047b360",
+   "name": "FUN_0047b360",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0047b3e0",
+   "name": "FUN_0047b3e0",
+   "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -14260,7 +14324,15 @@
   {
    "address": "0x004b9c10",
    "name": "FUN_004b9c10",
-   "accuracy": 0.06837606837606838,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004b9da0",
+   "name": "AvaDrawInfo",
+   "accuracy": 0.01937046004842615,
    "effective": false,
    "stub": true,
    "library": false
@@ -25802,6 +25874,14 @@
    "library": false
   },
   {
+   "address": "0x00575490",
+   "name": "DrawShadowWindow",
+   "accuracy": 0.03187250996015936,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00575760",
    "name": "DrawTitleBack",
    "accuracy": 0.09523809523809523,
@@ -35782,7 +35862,7 @@
    "name": "FUN_006046f0",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37674,6 +37754,14 @@
    "library": false
   },
   {
+   "address": "0x0067c9e0",
+   "name": "chSetBillboardColor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0067d080",
    "name": "njRotateY",
    "accuracy": 0.0898876404494382,
@@ -37804,6 +37892,14 @@
   {
    "address": "0x0067da10",
    "name": "njUnitTransPortion",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0067daf0",
+   "name": "njSubMatrix",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -38516,9 +38612,9 @@
   {
    "address": "0x0068c340",
    "name": "FUN_0068c340",
-   "accuracy": 0.08333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39160,6 +39256,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0069bce0",
+   "name": "FUN_0069bce0",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -40392,6 +40496,14 @@
    "accuracy": 0.1,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006b78c0",
+   "name": "FUN_006b78c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -44940,6 +45052,14 @@
    "library": false
   },
   {
+   "address": "0x0072a410",
+   "name": "FUN_0072a410",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00731880",
    "name": "FUN_00731880",
    "accuracy": 0.07692307692307693,
@@ -45100,6 +45220,14 @@
    "library": false
   },
   {
+   "address": "0x00773960",
+   "name": "FUN_00773960",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007739c0",
    "name": "FUN_007739c0",
    "accuracy": 1.0,
@@ -45204,8 +45332,40 @@
    "library": false
   },
   {
+   "address": "0x00794ec0",
+   "name": "FUN_00794ec0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00794ed0",
+   "name": "FUN_00794ed0",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00796000",
    "name": "FUN_00796000",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00796010",
+   "name": "FUN_00796010",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0079bb60",
+   "name": "FUN_0079bb60",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -45220,11 +45380,27 @@
    "library": false
   },
   {
-   "address": "0x007c20e0",
-   "name": "FUN_007c20e0",
-   "accuracy": 0.3333333333333333,
+   "address": "0x0079bba0",
+   "name": "FUN_0079bba0",
+   "accuracy": 0.11764705882352941,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0079bbf0",
+   "name": "FUN_0079bbf0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007c20e0",
+   "name": "FUN_007c20e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -45329,6 +45505,14 @@
    "accuracy": 0.06451612903225806,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d1ce0",
+   "name": "FUN_007d1ce0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -45588,6 +45772,14 @@
    "library": false
   },
   {
+   "address": "0x007d3060",
+   "name": "FUN_007d3060",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007d3090",
    "name": "SetSclChaos0",
    "accuracy": 1.0,
@@ -45796,6 +45988,14 @@
    "library": false
   },
   {
+   "address": "0x007d4f10",
+   "name": "FUN_007d4f10",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007d4f30",
    "name": "CIchimaie2_SetPriority",
    "accuracy": 1.0,
@@ -45881,6 +46081,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d5320",
+   "name": "FUN_007d5320",
+   "accuracy": 0.3333333333333333,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -46054,9 +46262,9 @@
   {
    "address": "0x007d6280",
    "name": "FUN_007d6280",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46508,6 +46716,14 @@
    "library": false
   },
   {
+   "address": "0x007d8120",
+   "name": "FUN_007d8120",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007d8140",
    "name": "dispChaos4Task",
    "accuracy": 0.0078125,
@@ -46694,9 +46910,9 @@
   {
    "address": "0x007d9970",
    "name": "FUN_007d9970",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46990,9 +47206,9 @@
   {
    "address": "0x007dbfd0",
    "name": "FUN_007dbfd0",
-   "accuracy": 0.07692307692307693,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47038,9 +47254,9 @@
   {
    "address": "0x007dc0b0",
    "name": "FUN_007dc0b0",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -54574,9 +54790,9 @@
   {
    "address": "0x00874520",
    "name": "FUN_00874520",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55177,6 +55393,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00880b50",
+   "name": "FUN_00880b50",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -57820,6 +58044,14 @@
    "library": false
   },
   {
+   "address": "0x008c4080",
+   "name": "FUN_008c4080",
+   "accuracy": 0.14084507042253522,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008c4130",
    "name": "FUN_008c4130",
    "accuracy": 0.18604651162790697,
@@ -60111,6 +60343,14 @@
    "address": "0x008e1870",
    "name": "knhint_exec_point",
    "accuracy": 0.11428571428571428,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008e1ab0",
+   "name": "FUN_008e1ab0",
+   "accuracy": 0.13793103448275862,
    "effective": false,
    "stub": true,
    "library": false
@@ -65948,6 +66188,14 @@
    "library": false
   },
   {
+   "address": "0x0090ad90",
+   "name": "FUN_0090ad90",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0090b3b0",
    "name": "FUN_0090b3b0",
    "accuracy": 1.0,
@@ -70926,9 +71174,9 @@
   {
    "address": "0x00918170",
    "name": "FUN_00918170",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72508,6 +72756,30 @@
    "library": false
   },
   {
+   "address": "0x0091a8e0",
+   "name": "FUN_0091a8e0",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091a910",
+   "name": "FUN_0091a910",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091a940",
+   "name": "FUN_0091a940",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0091a950",
    "name": "op_fd_cb",
    "accuracy": 0.14285714285714285,
@@ -72724,6 +72996,14 @@
    "library": false
   },
   {
+   "address": "0x0091d520",
+   "name": "FUN_0091d520",
+   "accuracy": 0.05,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091d5a0",
    "name": "FUN_0091d5a0",
    "accuracy": 0.5,
@@ -72772,6 +73052,22 @@
    "library": false
   },
   {
+   "address": "0x0091d600",
+   "name": "FUN_0091d600",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091d660",
+   "name": "FUN_0091d660",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091d7e0",
    "name": "FUN_0091d7e0",
    "accuracy": 0.0,
@@ -72804,6 +73100,14 @@
    "library": false
   },
   {
+   "address": "0x0091e1c0",
+   "name": "FUN_0091e1c0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091e220",
    "name": "FUN_0091e220",
    "accuracy": 0.18181818181818182,
@@ -72820,8 +73124,24 @@
    "library": false
   },
   {
+   "address": "0x0091e250",
+   "name": "FUN_0091e250",
+   "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091e260",
    "name": "FUN_0091e260",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091e2b0",
+   "name": "FUN_0091e2b0",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -72868,9 +73188,33 @@
    "library": false
   },
   {
+   "address": "0x0091e810",
+   "name": "FUN_0091e810",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091e850",
    "name": "FUN_0091e850",
    "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091e880",
+   "name": "FUN_0091e880",
+   "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091ea10",
+   "name": "FUN_0091ea10",
+   "accuracy": 0.05,
    "effective": false,
    "stub": true,
    "library": false
@@ -72932,6 +73276,14 @@
    "library": false
   },
   {
+   "address": "0x0091f390",
+   "name": "FUN_0091f390",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091f440",
    "name": "FUN_0091f440",
    "accuracy": 0.06451612903225806,
@@ -72972,9 +73324,57 @@
    "library": false
   },
   {
+   "address": "0x0091f740",
+   "name": "FUN_0091f740",
+   "accuracy": 0.041666666666666664,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f7b0",
+   "name": "FUN_0091f7b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0091f7c0",
+   "name": "FUN_0091f7c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0091f7d0",
+   "name": "FUN_0091f7d0",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f8a0",
+   "name": "FUN_0091f8a0",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0091f8e0",
    "name": "FUN_0091f8e0",
    "accuracy": 0.2857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f8f0",
+   "name": "FUN_0091f8f0",
+   "accuracy": 0.1,
    "effective": false,
    "stub": true,
    "library": false
@@ -72991,6 +73391,70 @@
    "address": "0x0091f930",
    "name": "FUN_0091f930",
    "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f940",
+   "name": "FUN_0091f940",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f950",
+   "name": "FUN_0091f950",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f960",
+   "name": "FUN_0091f960",
+   "accuracy": 0.18181818181818182,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f980",
+   "name": "FUN_0091f980",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091f9e0",
+   "name": "FUN_0091f9e0",
+   "accuracy": 0.23529411764705882,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091fa10",
+   "name": "FUN_0091fa10",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091fa20",
+   "name": "FUN_0091fa20",
+   "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091faa0",
+   "name": "FUN_0091faa0",
+   "accuracy": 0.05128205128205128,
    "effective": false,
    "stub": true,
    "library": false
@@ -73044,6 +73508,14 @@
    "library": false
   },
   {
+   "address": "0x0091fc60",
+   "name": "FUN_0091fc60",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0091fc70",
    "name": "FUN_0091fc70",
    "accuracy": 1.0,
@@ -73070,6 +73542,46 @@
   {
    "address": "0x0091fda0",
    "name": "FUN_0091fda0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091fdd0",
+   "name": "FUN_0091fdd0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091fe50",
+   "name": "FUN_0091fe50",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091feb0",
+   "name": "FUN_0091feb0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091ff40",
+   "name": "FUN_0091ff40",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091ffb0",
+   "name": "FUN_0091ffb0",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -73103,6 +73615,14 @@
    "address": "0x00920b60",
    "name": "FUN_00920b60",
    "accuracy": 0.047619047619047616,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00920e00",
+   "name": "FUN_00920e00",
+   "accuracy": 0.03225806451612903,
    "effective": false,
    "stub": true,
    "library": false
@@ -73260,6 +73780,22 @@
    "library": false
   },
   {
+   "address": "0x00921150",
+   "name": "FUN_00921150",
+   "accuracy": 0.05714285714285714,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009211b0",
+   "name": "FUN_009211b0",
+   "accuracy": 0.034482758620689655,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00921290",
    "name": "FUN_00921290",
    "accuracy": 1.0,
@@ -73332,11 +73868,99 @@
    "library": false
   },
   {
+   "address": "0x009215b0",
+   "name": "FUN_009215b0",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009215e0",
+   "name": "FUN_009215e0",
+   "accuracy": 0.043478260869565216,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00921640",
+   "name": "FUN_00921640",
+   "accuracy": 0.06060606060606061,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009216c0",
+   "name": "FUN_009216c0",
+   "accuracy": 0.03225806451612903,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00921780",
    "name": "FUN_00921780",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x009217c0",
+   "name": "FUN_009217c0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009218a0",
+   "name": "FUN_009218a0",
+   "accuracy": 0.0625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00921960",
+   "name": "FUN_00921960",
+   "accuracy": 0.6666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00921970",
+   "name": "FUN_00921970",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00921980",
+   "name": "FUN_00921980",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00921990",
+   "name": "FUN_00921990",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00921c70",
+   "name": "FUN_00921c70",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -73468,8 +74092,80 @@
    "library": false
   },
   {
+   "address": "0x00924ae0",
+   "name": "FUN_00924ae0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00924b10",
+   "name": "FUN_00924b10",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00924b40",
+   "name": "FUN_00924b40",
+   "accuracy": 0.05405405405405406,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00924d50",
+   "name": "FUN_00924d50",
+   "accuracy": 0.044444444444444446,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00924db0",
+   "name": "FUN_00924db0",
+   "accuracy": 0.044444444444444446,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00924eb0",
+   "name": "FUN_00924eb0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00924ec0",
+   "name": "FUN_00924ec0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00924f80",
    "name": "FUN_00924f80",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00924fd0",
+   "name": "FUN_00924fd0",
+   "accuracy": 0.027777777777777776,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00925a10",
+   "name": "FUN_00925a10",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -73516,6 +74212,22 @@
    "library": false
   },
   {
+   "address": "0x00925d90",
+   "name": "FUN_00925d90",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00925dc0",
+   "name": "FUN_00925dc0",
+   "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00925e10",
    "name": "FUN_00925e10",
    "accuracy": 0.05555555555555555,
@@ -73527,6 +74239,30 @@
    "address": "0x00925e60",
    "name": "FUN_00925e60",
    "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00925ec0",
+   "name": "FUN_00925ec0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x009260c0",
+   "name": "FUN_009260c0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009261c0",
+   "name": "FUN_009261c0",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -73548,8 +74284,40 @@
    "library": false
   },
   {
+   "address": "0x00926270",
+   "name": "FUN_00926270",
+   "accuracy": 0.05263157894736842,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009262e0",
+   "name": "FUN_009262e0",
+   "accuracy": 0.05263157894736842,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00926350",
+   "name": "FUN_00926350",
+   "accuracy": 0.05263157894736842,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009263c0",
    "name": "FUN_009263c0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x009263d0",
+   "name": "FUN_009263d0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -73575,6 +74343,14 @@
    "address": "0x009266c0",
    "name": "FUN_009266c0",
    "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00926720",
+   "name": "FUN_00926720",
+   "accuracy": 0.06451612903225806,
    "effective": false,
    "stub": true,
    "library": false
@@ -73676,6 +74452,22 @@
    "library": false
   },
   {
+   "address": "0x009273b0",
+   "name": "FUN_009273b0",
+   "accuracy": 0.06451612903225806,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009273f0",
+   "name": "FUN_009273f0",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00927410",
    "name": "FUN_00927410",
    "accuracy": 0.13333333333333333,
@@ -73692,9 +74484,41 @@
    "library": false
   },
   {
+   "address": "0x00927470",
+   "name": "FUN_00927470",
+   "accuracy": 0.038461538461538464,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009274f0",
    "name": "FUN_009274f0",
    "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00927520",
+   "name": "FUN_00927520",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00927550",
+   "name": "FUN_00927550",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00927570",
+   "name": "FUN_00927570",
+   "accuracy": 0.021739130434782608,
    "effective": false,
    "stub": true,
    "library": false
@@ -73729,6 +74553,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00927e50",
+   "name": "FUN_00927e50",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -73772,9 +74604,41 @@
    "library": false
   },
   {
+   "address": "0x00927f00",
+   "name": "FUN_00927f00",
+   "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00927f20",
    "name": "FUN_00927f20",
    "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00927f40",
+   "name": "FUN_00927f40",
+   "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00927f60",
+   "name": "FUN_00927f60",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00927f80",
+   "name": "FUN_00927f80",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -73815,6 +74679,14 @@
    "address": "0x00928020",
    "name": "FUN_00928020",
    "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928040",
+   "name": "FUN_00928040",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -73900,11 +74772,99 @@
    "library": false
   },
   {
+   "address": "0x00928360",
+   "name": "FUN_00928360",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928370",
+   "name": "FUN_00928370",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928380",
+   "name": "FUN_00928380",
+   "accuracy": 0.5,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928390",
+   "name": "FUN_00928390",
+   "accuracy": 0.4,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009283a0",
+   "name": "FUN_009283a0",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00928400",
    "name": "FUN_00928400",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00928410",
+   "name": "FUN_00928410",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928440",
+   "name": "FUN_00928440",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00928450",
+   "name": "FUN_00928450",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00928460",
+   "name": "FUN_00928460",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009284a0",
+   "name": "FUN_009284a0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928530",
+   "name": "FUN_00928530",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -73964,9 +74924,25 @@
    "library": false
   },
   {
+   "address": "0x00928790",
+   "name": "FUN_00928790",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00928840",
    "name": "FUN_00928840",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00928870",
+   "name": "FUN_00928870",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -73996,9 +74972,33 @@
    "library": false
   },
   {
+   "address": "0x00928900",
+   "name": "FUN_00928900",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00928940",
    "name": "FUN_00928940",
    "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928950",
+   "name": "FUN_00928950",
+   "accuracy": 0.1111111111111111,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928980",
+   "name": "FUN_00928980",
+   "accuracy": 0.10526315789473684,
    "effective": false,
    "stub": true,
    "library": false
@@ -74044,6 +75044,14 @@
    "library": false
   },
   {
+   "address": "0x00928a70",
+   "name": "FUN_00928a70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00928af0",
    "name": "FUN_00928af0",
    "accuracy": 0.03278688524590164,
@@ -74060,6 +75068,14 @@
    "library": false
   },
   {
+   "address": "0x00928bf0",
+   "name": "FUN_00928bf0",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00928c70",
    "name": "FUN_00928c70",
    "accuracy": 0.05714285714285714,
@@ -74071,6 +75087,30 @@
    "address": "0x00928cd0",
    "name": "FUN_00928cd0",
    "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928d30",
+   "name": "FUN_00928d30",
+   "accuracy": 0.02702702702702703,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00929020",
+   "name": "FUN_00929020",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00929140",
+   "name": "FUN_00929140",
+   "accuracy": 0.05,
    "effective": false,
    "stub": true,
    "library": false
@@ -74097,6 +75137,14 @@
    "accuracy": 0.30303030303030304,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009297a0",
+   "name": "FUN_009297a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -74196,6 +75244,14 @@
    "library": false
   },
   {
+   "address": "0x00929f70",
+   "name": "FUN_00929f70",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00929fe0",
    "name": "FUN_00929fe0",
    "accuracy": 1.0,
@@ -74252,6 +75308,14 @@
    "library": false
   },
   {
+   "address": "0x0092a210",
+   "name": "FUN_0092a210",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0092a2c0",
    "name": "FUN_0092a2c0",
    "accuracy": 1.0,
@@ -74262,9 +75326,9 @@
   {
    "address": "0x0092a3b0",
    "name": "FUN_0092a3b0",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -76864,13 +77928,6 @@
    "library": false
   },
   {
-   "address": "0x01c6e760",
-   "name": "DAT_01c6e760",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x01c6e868",
    "name": "DAT_01c6e868",
    "size": 26,
@@ -77921,6 +78978,13 @@
    "library": false
   },
   {
+   "address": "0x025adca0",
+   "name": "texlist_ava_vmssel",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025adca8",
    "name": "texlist_ava_sndtest",
    "size": 8,
@@ -78022,34 +79086,6 @@
    "address": "0x025d4cad",
    "name": "DAT_025d4cad",
    "size": 1,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x025d5968",
-   "name": "DAT_025d5968",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x025d596c",
-   "name": "DAT_025d596c",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x025d5970",
-   "name": "DAT_025d5970",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x025d5974",
-   "name": "DAT_025d5974",
-   "size": 4,
    "match": false,
    "library": false
   },
@@ -80913,6 +81949,13 @@
    "address": "0x02f8c05c",
    "name": "action_l_circle",
    "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02fb4578",
+   "name": "_object_tr2crash_tr2crash",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -84916,5 +85959,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "af5fc4db6666f3aba291de5e3e04470fd153025d26489de4a448004aaa9a1bd4"
+ "inputs_sha256": "b3562715d97bbae4276654a3718483f4e4f7690a2fc6594046a76c8799d73e8e"
 }

@@ -172,6 +172,7 @@ struct LE_LIGHT_ENV;
 struct LE_PALIGHT_ENV;
 struct LegModel;
 struct LightInfo;
+struct MC_AudioSystemFactory;
 struct MDHANDLE;
 struct MiMsg;
 struct MiniGameSelWk;

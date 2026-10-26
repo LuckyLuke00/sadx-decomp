@@ -13,7 +13,6 @@ extern void (*DAT_0629c4a4)(void);
 extern void (*DAT_0629c4a8)(void);
 extern void (*DAT_0629c730)(int);
 extern int DAT_0629c738;
-extern void (*DAT_0629c73c)(void);
 
 // FUNCTION: SADX 0x00425150
 void njSetTextureMemorySize(unsigned long param_1)
@@ -72,7 +71,7 @@ void njDeleteWaitVSyncFunc(void (*param_1)(void))
 			DAT_0629c740[var2] = 0;
 			if (var1 != 1)
 			{
-				DAT_0629c740[var2] = (&DAT_0629c73c)[var1];
+				DAT_0629c740[var2] = DAT_0629c740[var1 - 1];
 				DAT_05ad966c = var1 - 1;
 				return;
 			}
