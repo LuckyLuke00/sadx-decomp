@@ -1,4 +1,10 @@
 #include "decls.h"
+extern int DAT_060bd030;
+extern int DAT_060bd034;
+extern int DAT_060bd114;
+extern float DAT_060bd118;
+extern int DAT_060bcfe0;
+extern int DAT_060bcff0[16];
 extern int DAT_060bd12c;
 extern int DAT_060bd110;
 extern int DAT_060bd128;
@@ -6,9 +12,21 @@ long chkColli();
 extern int DAT_060bd148;
 extern int DAT_060bcfdc;
 
-// STUB: SADX 0x006df690
+// FUNCTION: SADX 0x006df690
 void RoboBeam_Init(struct NJS_POINT3 *pPos, struct NJS_POINT3 *pVec, long *pAng)
 {
+	int var1;
+	DAT_060bd118 = 0.0f;
+	DAT_060bd148 = 0;
+	DAT_060bd12c = 0;
+	DAT_060bd110 = 0;
+	DAT_060bcfdc = (int)pPos;
+	DAT_060bd114 = (int)pVec;
+	DAT_060bcfe0 = (int)pAng;
+	for (var1 = 0; var1 < 16; var1++)
+		DAT_060bcff0[var1] = 0xc0c000;
+	DAT_060bd030 = 0xc0c000;
+	DAT_060bd034 = 0xc0c000;
 }
 
 // FUNCTION: SADX 0x006df730

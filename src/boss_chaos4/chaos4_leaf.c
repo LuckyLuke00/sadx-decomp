@@ -48,6 +48,12 @@ void Dsp_Leaf(struct task *pTask)
 	}
 }
 
+// STUB: SADX 0x006f16a0
+int FUN_006f16a0(float *param_1)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x006f1750
 void Dsp_small_leaf(struct task *pTask)
 {

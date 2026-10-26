@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_SPRITE sprite_c2_ball;
 extern struct NJS_ARGB DAT_0286f1d8;
 extern struct NJS_ARGB DAT_0286f1c8;
 extern struct taskwk *DAT_05b42a7c;
@@ -55,9 +56,28 @@ void Chaos2BallExplode(struct task *tp)
 	Chaos2BallExplodeDisplay(tp);
 }
 
-// STUB: SADX 0x006e7940
+// FUNCTION: SADX 0x006e7940
 void dispMiniBallSprite(struct taskwk *twp)
 {
+	static struct NJS_ARGB var1;
+
+	___njColorBlendingMode(0, 0xa);
+	___njColorBlendingMode(1, 0xa);
+	___njSetConstantMaterial(&DAT_0286f1d8);
+	njPushMatrix(NULL);
+	if (DAT_05b42a7c->ang.y != 0)
+	{
+		njRotateY(NULL, (unsigned short)DAT_05b42a7c->ang.y);
+	}
+	if (DAT_05b42a7c->ang.x != 0)
+	{
+		njRotateX(NULL, (unsigned short)DAT_05b42a7c->ang.x);
+	}
+	late_DrawSprite3D(&sprite_c2_ball, (int)twp->counter.f, 0x30, 4);
+	njPopMatrix(1);
+	ResetMaterial();
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // FUNCTION: SADX 0x006e7c60

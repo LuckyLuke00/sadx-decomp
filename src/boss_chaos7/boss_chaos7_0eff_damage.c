@@ -1,13 +1,31 @@
 #include "decls.h"
+static void Display(struct task *tp);
+extern struct NJS_ARGB DAT_02b7ee4c;
 extern struct NJS_ARGB DAT_02b7ee5c;
 extern struct NJS_TEXANIM anim_Chaos7SDamage[1];
 extern struct NJS_SPRITE sprite_Chaos7SDamage;
 extern int DAT_05b9d838;
 extern "C" int rand(void);
 
-// STUB: SADX 0x007014b0
-void Display(struct task *tp)
+// FUNCTION: SADX 0x007014b0
+static void Display(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	___njFogDisable();
+	___njSetConstantMaterial(&DAT_02b7ee4c);
+	___njColorBlendingMode(0, 0xa);
+	___njColorBlendingMode(1, 0xa);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	anim_Chaos7Damage[0].texid = (short)(long)var1->counter.f;
+	late_DrawSprite3D(&sprite_Chaos7Damage, 0, 0x30, 4);
+	njPopMatrix(1);
+	___njFogEnable();
 }
 
 // FUNCTION: SADX 0x00701530
@@ -84,9 +102,24 @@ void SetMistDisplayTask(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00701dd0
+// FUNCTION: SADX 0x00701dd0
 void objNormalR(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->counter.f = var1->counter.f + 0.33333334f;
+	if (var1->counter.f >= 16.0f)
+	{
+		var1->timer.b[0]--;
+		if (var1->timer.b[0] > 0)
+		{
+			var1->counter.f = 0.0f;
+		}
+		else
+		{
+			FreeTask(tp);
+		}
+	}
+	objDisplayR(tp);
 }
 
 // FUNCTION: SADX 0x00701e30

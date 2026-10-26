@@ -16,3 +16,8 @@ void BgDisplayer(struct task *tp)
 	FUN_004a0520(DAT_05b3e050.x, DAT_05b3e050.y);
 	late_SetFunc((void (__cdecl *)(void *))DrawSaltWater3D_20, &DAT_060dd890, -7952.0f, 1);
 }
+
+// STUB: SADX 0x006c1470
+void Rd_Bossegm1(struct task *tp)
+{
+}

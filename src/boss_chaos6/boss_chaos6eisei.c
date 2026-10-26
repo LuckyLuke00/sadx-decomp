@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x006f9380
+void objExit(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x006f95e0
 void EFF_C6IceFloor_disp(struct task *tp)
 {
@@ -63,5 +68,15 @@ void EFF_C6IceFloor(struct task *tp)
 
 // STUB: SADX 0x006f9760
 void SetEFF_C6IceFloor(struct NJS_POINT3 *pos, int num)
+{
+}
+
+// STUB: SADX 0x006f9850
+void SlipPlayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006fa3f0
+void EiseiRollCtrl(struct task *tp)
 {
 }

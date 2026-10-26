@@ -28,6 +28,11 @@ void E101R_BarrierSetMode(int mode)
 	DAT_060c4aa8 = mode;
 }
 
+// STUB: SADX 0x0070ee90
+void E101R_BarrierExec()
+{
+}
+
 // FUNCTION: SADX 0x0070ef40
 void E101R_BarrierDisp()
 {

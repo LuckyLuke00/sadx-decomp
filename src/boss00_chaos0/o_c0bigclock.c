@@ -11,3 +11,8 @@ void exitC0BigClock(struct task *tp)
 		tp->twp->btimer = bVar1 & 0xfe;
 	}
 }
+
+// STUB: SADX 0x006e5ba0
+void ObjectC0BigClock(struct task *tp)
+{
+}

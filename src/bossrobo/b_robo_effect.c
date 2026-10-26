@@ -70,6 +70,11 @@ void disp_Emission(struct task *pTask)
 	}
 }
 
+// STUB: SADX 0x006dcd30
+void FUN_006dcd30(struct task *pTask)
+{
+}
+
 // STUB: SADX 0x006dce00
 void exec_Emission(struct task *pTask)
 {
@@ -110,9 +115,14 @@ void FUN_006dd0b0(int param_1)
 	}
 }
 
-// STUB: SADX 0x006dd0d0
+// FUNCTION: SADX 0x006dd0d0
 void EffHandSpark_SetPos(struct NJS_POINT3 *pPosRL)
 {
+	if (DAT_060bbe3c != 0)
+	{
+		struct anywk *var1 = *(struct anywk **)((char *)DAT_060bbe3c + 0x2c);
+		*(int *)((char *)var1 + 0x48) = (int)pPosRL;
+	}
 }
 
 // STUB: SADX 0x006dd0f0

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct CCL_INFO colliInfoPunch[1];
 extern int DAT_060bcea0;
 void punchColliSet();
 void RoboPunch_Init();
@@ -36,9 +37,24 @@ void dest_ChainElec(struct task *pTask)
 	DAT_060bceb0 = 0;
 }
 
-// STUB: SADX 0x006df100
+// FUNCTION: SADX 0x006df100
 void punchColliSet()
 {
+	struct task *var1;
+	struct taskwk *var2;
+
+	var1 = CreateElementalTask(2, 4, exec_colli);
+	if (var1 != NULL)
+	{
+		var2 = var1->twp;
+		var2->pos.x = 0.0f;
+		var2->pos.y = 752.09f;
+		var2->pos.z = -385.89f;
+		CCL_Init(var1, (struct CCL_INFO *)&colliInfoPunch, 0x20, 4);
+		SET_COLLI_RANGE(var1->twp->cwp, 1000.0f);
+		var1->dest = dest_colli;
+	}
+	DAT_060bcea4 = (int)var1;
 }
 
 // STUB: SADX 0x006df170

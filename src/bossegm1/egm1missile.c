@@ -9,24 +9,20 @@ void njPopMatrix(int param_1);
 extern struct obj *object_egg_m1_em_mis_em_mis;
 extern struct NJS_TEXLIST texlist_egm1mis;
 
-// STUB: SADX 0x006c4c20
+// FUNCTION: SADX 0x006c4c20
 void egm1missile_disp(struct task *tp)
 {
-	struct taskwk *var1;
-	struct Angle3 *var2;
-	struct NJS_POINT3 *var3;
-	var1 = tp->twp;
+	struct taskwk *var1 = tp->twp;
 	___njSetTexture(&texlist_egm1mis);
-	njPushMatrix(0);
-	njTranslateV(0, &var1->pos);
-	var2 = &var1->ang;
-	if (var2->y != 0)
+	njPushMatrix((float *)0);
+	njTranslateV((float *)0, &var1->pos);
+	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
-		njRotateY(0, (unsigned short)var2->y);
+		njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
 	}
-	if (var2->x != 0)
+	if (*(int *)((char *)var1 + 0x14) != 0)
 	{
-		njRotateX(0, (unsigned short)var2->x);
+		njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
 	}
 	late_DrawObjectClipEx((struct obj *)&object_egg_m1_em_mis_em_mis, 0, 1.0f);
 	njPopMatrix(1);

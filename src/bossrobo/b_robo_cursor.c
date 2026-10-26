@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_POINT3COL locursor[];
+extern int DAT_05b9d838;
 extern int DAT_060bd1ac;
 extern float DAT_060bd1a0;
 extern float DAT_060bd1a4;

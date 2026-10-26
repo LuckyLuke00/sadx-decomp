@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct obj *DAT_02833c70;
+extern struct obj *egm3_object_list[];
+extern int DAT_060ba04c;
+extern struct NJS_TEXLIST texlist_egm3mdl;
 extern struct NJS_TEXLIST *egm3_effect_texlist_list;
 extern struct obj *egm3_effect_objectlist[1];
 extern int DAT_05b9d838;
@@ -81,14 +85,72 @@ void Egm3_energyballExit(struct task *tp)
 	DAT_060bb21c = 0;
 }
 
-// STUB: SADX 0x006ce8d0
+// FUNCTION: SADX 0x006ce8d0
 void EggmanEnergyDraw(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct anywk *var2 = tp->awp;
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	if (DAT_060ba04c == 0)
+	{
+		return;
+	}
+	SaveConstantAttr();
+	___njSetTexture(&texlist_egm3mdl);
+	njPushMatrix(0);
+	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
+	if (var1->ang.y)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	if (var1->ang.x)
+	{
+		njRotateX(0, var1->ang.x);
+	}
+	if (*(int *)((char *)var1 + 0x1c) != 0)
+	{
+		njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+	}
+	njRotateY(0, 0x8000);
+	late_DrawMotionClipEx(egm3_object_list[5], *(struct NJS_MOTION **)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1, 1.0f);
+	njPopMatrix(1);
+	LoadConstantAttr();
 }
 
-// STUB: SADX 0x006ce9b0
+// FUNCTION: SADX 0x006ce9b0
 void EggmanBoomerangDraw(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct anywk *var2 = tp->awp;
+	if (DAT_05b9d838 == 0)
+	{
+		if (DAT_060ba04c != 0)
+		{
+			SaveConstantAttr();
+			___njSetTexture(&texlist_egm3mdl);
+			njPushMatrix((float *)0);
+			FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
+			if (*(int *)((char *)var1 + 0x18) != 0)
+			{
+				njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+			}
+			if (*(int *)((char *)var1 + 0x14) != 0)
+			{
+				njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+			}
+			if (*(int *)((char *)var1 + 0x1c) != 0)
+			{
+				njRotateZ((float *)0, *(unsigned short *)((char *)var1 + 0x1c));
+			}
+			late_DrawMotionClipEx(DAT_02833c70, (struct NJS_MOTION *)*(int *)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1, 1.0f);
+			njPopMatrix(1);
+			LoadConstantAttr();
+		}
+	}
 }
 
 // FUNCTION: SADX 0x006cea80
@@ -165,6 +227,11 @@ void Egm3_hibasiraDraw(struct task *tp)
 
 // STUB: SADX 0x006d1300
 void Egm3_kogeDraw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006d1320
+void Egm3_energyballDraw(struct task *tp)
 {
 }
 

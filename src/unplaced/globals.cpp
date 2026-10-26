@@ -1688,8 +1688,14 @@ struct NJS_MODEL *model_koware_side[4];
 // GLOBAL: SADX 0x02829818
 union NJS_COLOR vuvS_0_kemuri_boss_boss[12];
 
+// GLOBAL: SADX 0x0282b4c4
+struct NJS_TEXLIST texlist_egm3mdl;
+
 // GLOBAL: SADX 0x02833c5c
 struct obj *egm3_object_list[1];
+
+// GLOBAL: SADX 0x02833c70
+struct obj *DAT_02833c70;
 
 // GLOBAL: SADX 0x02833c78
 struct NJS_MOTION *egm3_motion_list[8];
@@ -1717,6 +1723,12 @@ struct CRUSHLIGHT_DATA cl_data;
 
 // GLOBAL: SADX 0x0286c4f8
 struct GHSPRITE_ANIM_TABLE animtable_HandSpark[9];
+
+// GLOBAL: SADX 0x0286c878
+struct CCL_INFO colliInfoPunch[1];
+
+// GLOBAL: SADX 0x0286d288
+struct NJS_POINT3COL locursor[1];
 
 // GLOBAL: SADX 0x0286d394
 struct NJS_POINT3 *DAT_0286d394[1];
@@ -1754,17 +1766,32 @@ struct NJS_ARGB *pFogTable_Chaos02[1];
 // GLOBAL: SADX 0x0286f0a8
 struct NJS_SPRITE sprite_c2_flash;
 
+// GLOBAL: SADX 0x0286f168
+struct NJS_SPRITE sprite_c2_ball;
+
 // GLOBAL: SADX 0x0286f1c8
 struct NJS_ARGB DAT_0286f1c8;
 
 // GLOBAL: SADX 0x0286f1d8
 struct NJS_ARGB DAT_0286f1d8;
 
+// GLOBAL: SADX 0x0288d3dc
+struct obj object_chaos2head[1];
+
 // GLOBAL: SADX 0x0289c11c
 struct NJS_ACTION action_c2_wait0[1];
 
+// GLOBAL: SADX 0x028c9e8c
+struct NJS_TEXLIST texlist_chaos2;
+
 // GLOBAL: SADX 0x028ca338
 struct PL_ACTION chaos2_action[14];
+
+// GLOBAL: SADX 0x028d1240
+struct NJS_MODEL model_caos2obj_tenhana_tenhana[1];
+
+// GLOBAL: SADX 0x028dc188
+struct NJS_SPRITE sprite_chaos_bshadow;
 
 // GLOBAL: SADX 0x028dd5c0
 struct NJS_POINT3 *pScale_Chaos04[1];
@@ -1835,9 +1862,6 @@ struct NJS_POINT2 *pClipMap_Chaos06[1];
 // GLOBAL: SADX 0x0293bb60
 struct NJS_ARGB *pFogTable_Chaos06[1];
 
-// GLOBAL: SADX 0x0297f1a4
-struct NJS_TEXLIST texlist_chaos6;
-
 // GLOBAL: SADX 0x0297f330
 struct NJS_TEXLIST texlist_chaos6_effect;
 
@@ -1855,9 +1879,6 @@ float c60_taileffpos_x;
 
 // GLOBAL: SADX 0x02a6a8ec
 float DAT_02a6a8ec;
-
-// GLOBAL: SADX 0x02a6c4b0
-struct obj *iceobj_tbl[7];
 
 // GLOBAL: SADX 0x02a71964
 struct NJS_SPRITE sprite_c6ice;
@@ -1883,14 +1904,32 @@ struct obj object_c7_breath_tame_breath_tame;
 // GLOBAL: SADX 0x02b113c8
 struct NJS_TEXLIST texlist_chaos7_0breath;
 
+// GLOBAL: SADX 0x02b1144c
+struct NJS_TEXANIM anim_breathp[1];
+
+// GLOBAL: SADX 0x02b11460
+struct NJS_SPRITE sprite_breathp;
+
+// GLOBAL: SADX 0x02b1148c
+struct NJS_ARGB DAT_02b1148c;
+
 // GLOBAL: SADX 0x02b76514
 const struct HintMessageString *chaos_message000[5] = {};
+
+// GLOBAL: SADX 0x02b7ed54
+struct NJS_TEXANIM anim_Chaos7Damage[1];
+
+// GLOBAL: SADX 0x02b7ed68
+struct NJS_SPRITE sprite_Chaos7Damage;
 
 // GLOBAL: SADX 0x02b7ed88
 struct NJS_TEXANIM anim_Chaos7SDamage[1];
 
 // GLOBAL: SADX 0x02b7ed9c
 struct NJS_SPRITE sprite_Chaos7SDamage;
+
+// GLOBAL: SADX 0x02b7ee4c
+struct NJS_ARGB DAT_02b7ee4c;
 
 // GLOBAL: SADX 0x02b7ee5c
 struct NJS_ARGB DAT_02b7ee5c;
@@ -1918,6 +1957,12 @@ struct ___stcFog *pFogTable_E101r[1];
 
 // GLOBAL: SADX 0x02c0d1c0
 struct NJS_TEXLIST _texlist_e101r;
+
+// GLOBAL: SADX 0x02c0ee60
+struct GHSPRITE_ANIM_TABLE animtable_flick_part[5];
+
+// GLOBAL: SADX 0x02c0ef40
+struct GHSPRITE_ANIM_TABLE animtable_flick[10];
 
 // GLOBAL: SADX 0x02c0f144
 struct WIDELINE_TEXDATA wline_pulse;
@@ -6761,6 +6806,9 @@ float DAT_060b99ec;
 // GLOBAL: SADX 0x060b99f0
 struct task *DAT_060b99f0;
 
+// GLOBAL: SADX 0x060b99f4
+int *DAT_060b99f4;
+
 // GLOBAL: SADX 0x060b99f8
 struct task *DAT_060b99f8;
 
@@ -6818,6 +6866,9 @@ int DAT_060ba000;
 // GLOBAL: SADX 0x060ba008
 struct anywk *DAT_060ba008;
 
+// GLOBAL: SADX 0x060ba04c
+int DAT_060ba04c;
+
 // GLOBAL: SADX 0x060ba100
 float DAT_060ba100[16];
 
@@ -6869,8 +6920,26 @@ int DAT_060bceb4;
 // GLOBAL: SADX 0x060bcfdc
 int DAT_060bcfdc;
 
+// GLOBAL: SADX 0x060bcfe0
+int DAT_060bcfe0;
+
+// GLOBAL: SADX 0x060bcff0
+int DAT_060bcff0[16];
+
+// GLOBAL: SADX 0x060bd030
+int DAT_060bd030;
+
+// GLOBAL: SADX 0x060bd034
+int DAT_060bd034;
+
 // GLOBAL: SADX 0x060bd110
 int DAT_060bd110;
+
+// GLOBAL: SADX 0x060bd114
+int DAT_060bd114;
+
+// GLOBAL: SADX 0x060bd118
+float DAT_060bd118;
 
 // GLOBAL: SADX 0x060bd128
 int DAT_060bd128;
@@ -6959,6 +7028,9 @@ int DAT_060bd55c;
 // GLOBAL: SADX 0x060bd560
 int DAT_060bd560;
 
+// GLOBAL: SADX 0x060bd800
+unsigned char DAT_060bd800;
+
 // GLOBAL: SADX 0x060c20a8
 int DAT_060c20a8;
 
@@ -6979,6 +7051,9 @@ unsigned char DAT_060c2144;
 
 // GLOBAL: SADX 0x060c2145
 unsigned char DAT_060c2145;
+
+// GLOBAL: SADX 0x060c32ab
+unsigned char DAT_060c32ab;
 
 // GLOBAL: SADX 0x060c32b8
 struct NJS_POINT3 DAT_060c32b8;

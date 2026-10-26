@@ -1,4 +1,6 @@
 #include "decls.h"
+extern "C" double fabs(double param_1);
+extern "C" double atan2(double v, double u);
 extern "C" double atan2(double v, double u);
 extern "C" double atan2(double v, double u);
 
@@ -19,10 +21,12 @@ long ZCalcAbsAngY(struct NJS_POINT3 *vecp)
 	return (long)(atan2(vecp->x, vecp->z) * 65536.0 / 6.283184) & 0xffff;
 }
 
-// STUB: SADX 0x006c2d30
+// FUNCTION: SADX 0x006c2d30
 long MissileCalcAngX(struct NJS_POINT3 *vecp)
 {
-	return (long)0;
+	float var1;
+	var1 = fabs(vecp->z);
+	return (long)(atan2(vecp->y, var1) * 65536.0 / -6.283184);
 }
 
 // STUB: SADX 0x006c2d60
