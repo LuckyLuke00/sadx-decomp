@@ -1,6 +1,5 @@
 #include "decls.h"
-extern float ScreenRaitoX;
-extern float ScreenRaitoY;
+struct FileSelWk;
 void FUN_004ba980(void);
 enum AvaCharEnum AvaGetlastPlayer();
 extern void *DAT_05b42528;
@@ -70,13 +69,13 @@ struct task *FUN_004b6cd0(struct ModeSelPrmType *param_1)
 }
 
 // FUNCTION: SADX 0x004b6d40
-struct task *SetAdvaFileSelTask(struct ModeSelPrmType *prmp)
+void SetAdvaFileSelTask(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 	struct FileSelWk *local_8;
 
-	local_8 = (struct FileSelWk *)((struct task *)prmp)->awp;
-	local_8->PrevMode = *(enum AdvaModeEnum *)*(&prmp + 1);
-	local_8->NextMode = *(enum AdvaModeEnum *)((char *)*(&prmp + 1) + 4);
+	local_8 = (struct FileSelWk *)param_1->awp;
+	local_8->PrevMode = *(enum AdvaModeEnum *)param_2;
+	local_8->NextMode = *(enum AdvaModeEnum *)((char *)param_2 + 4);
 	local_8->BaseZ = 5900.0f;
 	local_8->Stat = ADVA_STAT_REQWAIT;
 	FUN_004b6c50(local_8);

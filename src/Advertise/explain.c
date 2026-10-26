@@ -10,9 +10,8 @@ extern struct task *DAT_05cda18c;
 void FUN_00602420(struct task *param_1);
 
 // STUB: SADX 0x006023d0
-struct task *SetAdvaExplainTask(struct ModeSelPrmType *prmp)
+void SetAdvaExplainTask(struct task *param_1, struct ModeSelPrmType *param_2)
 {
-	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x00602420

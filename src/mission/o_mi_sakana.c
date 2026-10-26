@@ -5,11 +5,6 @@ void FUN_0049b3e0(struct NJS_MODEL *model)
 {
 }
 
-// STUB: SADX 0x0049b8b0
-void motionSakana(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0049b910
 void FUN_0049b910(struct task *tp)
 {

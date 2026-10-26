@@ -4,7 +4,6 @@ struct _OptionSelWk;
 void option_sel_disp(struct task *tp);
 void FUN_006030c0(struct task *param_1);
 extern struct task *DAT_05cda18c;
-void FUN_00603150(struct task *param_1);
 
 // STUB: SADX 0x00602730
 signed char LangToDlgNum(signed char csr)
@@ -73,9 +72,19 @@ void DrawLangSel(struct _OptionSelWk *wkp)
 	ghDrawPvrTexture(*(unsigned char *)((char *)wkp + 0x3f) + 0x24, *(float *)((char *)local_8 + 0x0) * ScreenRaitoX, *(float *)((char *)local_8 + 0x4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
-// STUB: SADX 0x00602e90
+// FUNCTION: SADX 0x00602e90
 void DrawTvSetting(struct _OptionSelWk *wkp)
 {
+	int local_8g;
+	unsigned char local_9;
+
+	local_8g = *(int *)((char *)wkp + 0x48) + 0x120;
+	local_9 = *(unsigned char *)((char *)wkp + 0x3e);
+	if (local_9 == 3)
+		local_9 = 1;
+	if (local_9 > 3)
+		local_9 = 0;
+	ghDrawPvrTexture(local_9 + 0x20, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // STUB: SADX 0x00602f40
@@ -90,9 +99,8 @@ struct task *FUN_00602ff0(struct ModeSelPrmType *param_1)
 }
 
 // STUB: SADX 0x00603060
-struct task *SetAdvaOptionSelTask(struct ModeSelPrmType *prmp)
+void SetAdvaOptionSelTask(struct task *param_1, struct ModeSelPrmType *param_2)
 {
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x006030c0

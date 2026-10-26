@@ -626,6 +626,12 @@ struct NJS_MATERIAL matlist_mi_flag[1];
 // GLOBAL: SADX 0x0257ea04
 struct obj object_mi_flag[1];
 
+// GLOBAL: SADX 0x0257ea38
+struct NJS_MATERIAL matlist_mi_kanban_ita3[1];
+
+// GLOBAL: SADX 0x0257f20c
+struct obj object_mi_kanban_ita[1];
+
 // GLOBAL: SADX 0x0257fecc
 struct NJS_ACTION action_mi_ssobj_card[1];
 
@@ -637,6 +643,9 @@ struct NJS_TEXLIST texlist_mi_3dasu;
 
 // GLOBAL: SADX 0x025a2a78
 struct CCL_INFO cinfo_mannequin[1];
+
+// GLOBAL: SADX 0x025a2b30
+struct CCL_INFO mi_kinka_colli_info[1];
 
 // GLOBAL: SADX 0x025a2b60
 struct CCL_INFO mi_flag_colli_info[1];

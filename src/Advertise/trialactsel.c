@@ -4,7 +4,7 @@ void FUN_006077f0(struct TrialActSelWk *param_1);
 void FUN_00606810(struct AvaStgActPrmT *param_1);
 extern struct task *DAT_05edd9c0;
 
-// STUB: SADX 0x00606730
+// FUNCTION: SADX 0x00606730
 struct task *SetAdvaTrialActSelTask(struct ModeSelPrmType *prmp)
 {
 	void *local_cg;
@@ -16,7 +16,7 @@ struct task *SetAdvaTrialActSelTask(struct ModeSelPrmType *prmp)
 	{
 		local_cg = CAlloc(1, 0xd0);
 		local_8g->awp = (struct anywk *)local_cg;
-		((void (*)(struct task *, struct ModeSelPrmType *))ChgSubModeToStay)(local_8g, prmp);
+		ChgSubModeToStay(local_8g, prmp);
 		local_8g->exec = trial_act_sel_exec;
 		local_8g->disp = trial_act_sel_disp;
 	}
@@ -24,7 +24,7 @@ struct task *SetAdvaTrialActSelTask(struct ModeSelPrmType *prmp)
 }
 
 // STUB: SADX 0x006067b0
-void ChgSubModeToStay(struct TrialActSelWk *wkp)
+void ChgSubModeToStay(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 }
 

@@ -6,7 +6,7 @@ extern int FUN_00607f90(enum AvaCharEnum param_1);
 extern unsigned char DAT_05cd14eb;
 extern unsigned char DAT_05cd14ed;
 extern unsigned char DAT_05cd14ea;
-struct task *FUN_00607c50(struct ModeSelPrmType *);
+void FUN_00607c50(struct task *, struct ModeSelPrmType *);
 extern struct task *DAT_05edd9c4;
 
 // STUB: SADX 0x00607be0
@@ -16,9 +16,8 @@ struct task *SetAdvaCharSelTask(struct ModeSelPrmType *prmp)
 }
 
 // STUB: SADX 0x00607c50
-struct task *FUN_00607c50(struct ModeSelPrmType *param_1)
+void FUN_00607c50(struct task *param_1, struct ModeSelPrmType *param_2)
 {
-	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x00607cc0
