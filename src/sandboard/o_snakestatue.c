@@ -22,8 +22,3 @@ void ObjectRockyHead(struct task *task_p)
 {
 	MirenInitTask(task_p, &ObjectTaskInfo, &DAT_00a0a978);
 }
-
-// STUB: SADX 0x007e7700
-void initObject(struct task *task_p, const struct ActionParam *param_p)
-{
-}

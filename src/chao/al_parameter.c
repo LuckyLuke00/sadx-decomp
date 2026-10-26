@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_004389d0(int param_1, int param_2);
 extern const unsigned long nbMaxEntry[11];
 extern struct CHAO_GLOBAL ChaoGlobal;
 extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);

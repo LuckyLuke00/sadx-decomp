@@ -1,4 +1,5 @@
 #include "decls.h"
+struct task *AlrObjSetTask(const struct TaskInfo *info_p, void *param_p);
 extern struct task *DAT_05b35c50;
 
 // STUB: SADX 0x0048a780

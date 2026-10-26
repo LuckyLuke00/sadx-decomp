@@ -40,6 +40,11 @@ void MOV_SetGravity(struct task *tp, float gravity)
 	*(float *)((char *)tp->mwp + 0x48) = gravity;
 }
 
+// STUB: SADX 0x00458330
+void MOV_PreservePreviousPosition(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00458350
 void MOV_SetAimPos(struct task *tp, struct NJS_POINT3 *pPos)
 {
@@ -67,10 +72,20 @@ long FUN_00458400(int param_1)
 	return (long)0;
 }
 
-// STUB: SADX 0x00458430
+// FUNCTION: SADX 0x00458430
 long MOV_TurnToAim2(struct task *tp, long rot_spd)
 {
-	return (long)0;
+	struct taskwk *var1;
+	struct motionwk *var2;
+	long var3;
+
+	var1 = tp->twp;
+	var2 = tp->mwp;
+	var3 = FUN_00458400((int)tp);
+	var2->ang_aim.y = var3;
+	var3 = AdjustAngle(var1->ang.y, var3, rot_spd);
+	var1->ang.y = var3;
+	return DiffAngle(var2->ang_aim.y, var3);
 }
 
 // FUNCTION: SADX 0x00458470
@@ -90,10 +105,21 @@ long MOV_CalcPlayerAngle(struct task *tp, long player_num)
 	return (long)0;
 }
 
-// STUB: SADX 0x004584f0
+// FUNCTION: SADX 0x004584f0
 long MOV_TurnToPlayer2(struct task *tp, long rot_spd, long player_num)
 {
-	return (long)0;
+	struct taskwk *var1;
+	struct motionwk *var2;
+	long var3;
+	long var4;
+
+	var1 = tp->twp;
+	var2 = tp->mwp;
+	var3 = MOV_CalcPlayerAngle(tp, player_num);
+	var2->ang_aim.y = var3;
+	var4 = AdjustAngle(var1->ang.y, var3, rot_spd);
+	var1->ang.y = var4;
+	return DiffAngle(var2->ang_aim.y, var4);
 }
 
 // FUNCTION: SADX 0x00459c60

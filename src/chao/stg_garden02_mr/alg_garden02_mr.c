@@ -7,7 +7,7 @@ void Serif_Stop();
 void AL_ReleaseMessageTable();
 void AL_MinimalExit();
 void AL_ReleaseTex(unsigned short lev);
-void FUN_0044db20(struct task *);
+void FUN_0044db20(void);
 
 // FUNCTION: SADX 0x00479e20
 void _alg_garden02_mr_epilog()
@@ -57,7 +57,7 @@ void AL_Garden02MasterDestructor(struct task *tp)
 	AL_ReleaseMessageTable();
 	AL_MinimalExit();
 	AL_ReleaseTex(1);
-	FUN_0044db20(tp);
+	FUN_0044db20();
 }
 
 // STUB: SADX 0x0047a120

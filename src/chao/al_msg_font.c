@@ -37,6 +37,12 @@ void FUN_0044ce30()
 	memset(&DAT_05b31050, 0, 0x348);
 }
 
+// STUB: SADX 0x0044cf90
+int FUN_0044cf90(short ax)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x0044d070
 int FUN_0044d070(int param_1)
 {

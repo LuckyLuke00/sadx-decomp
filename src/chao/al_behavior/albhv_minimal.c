@@ -115,10 +115,37 @@ long ALBHV_PyonPyon(struct task *tp)
 	return 0;
 }
 
-// STUB: SADX 0x00455f80
+// FUNCTION: SADX 0x00455f80
 long ALBHV_Fukkin2(struct task *tp)
 {
-	return (long)0;
+	struct taskwk *var1;
+	int var2;
+	float var3;
+
+	var1 = tp->twp;
+	switch (*(unsigned short *)((char *)var1 + 0x1c6))
+	{
+	case 0:
+		AL_SetMotionLink(tp, 0x139);
+		*(unsigned short *)((char *)var1 + 0x1c6) = *(unsigned short *)((char *)var1 + 0x1c6) + 1;
+		var2 = rand();
+		var3 = (float)var2 * 3.0517578125e-05;
+		*(unsigned int *)((char *)var1 + 0x1d0) = (unsigned short)((int)(var3 * 3.9999990463256836) + 4);
+		break;
+	case 1:
+		break;
+	default:
+		return 0;
+	}
+	if (AL_IsMotionEnd(tp) != 0)
+	{
+		*(int *)((char *)var1 + 0x1d0) = *(int *)((char *)var1 + 0x1d0) - 1;
+		if (*(int *)((char *)var1 + 0x1d0) <= 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x00456030
@@ -135,10 +162,72 @@ long ALBHV_Denguri(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x00456230
+// FUNCTION: SADX 0x00456150
+long ALBHV_GoroGoro(struct task *tp)
+{
+	struct taskwk *var1;
+	int var2;
+	float var3;
+	int var4;
+
+	var1 = tp->twp;
+	switch (*(unsigned short *)((char *)var1 + 0x1c6))
+	{
+	case 0:
+		AL_SetMotionLink(tp, 0x144);
+		var2 = rand();
+		var3 = (float)var2 * 3.0517578125e-05;
+		*(unsigned int *)((char *)var1 + 0x1d0) = (unsigned short)((int)(var3 * 301.0) + 500);
+		*(unsigned short *)((char *)var1 + 0x1c6) = *(unsigned short *)((char *)var1 + 0x1c6) + 1;
+		break;
+	case 1:
+		break;
+	default:
+		return 0;
+	}
+	var4 = *(int *)((char *)var1 + 0x1d0);
+	*(int *)((char *)var1 + 0x1d0) = var4 - 1;
+	if (var4 <= 0)
+	{
+		return 1;
+	}
+	*(float *)((char *)var1 + 0x20) = *(float *)((char *)var1 + 0x20) + njSin(*(int *)((char *)var1 + 0x18) - 0x4000) * 0.05000000074505806;
+	*(float *)((char *)var1 + 0x28) = *(float *)((char *)var1 + 0x28) + njCos(*(int *)((char *)var1 + 0x18) - 0x4000) * 0.05000000074505806;
+	return 0;
+}
+
+// FUNCTION: SADX 0x00456230
 long ALBHV_HaraSuberi(struct task *tp)
 {
-	return (long)0;
+	struct taskwk *var1;
+	int var2;
+	float var3;
+
+	var1 = tp->twp;
+	switch (*(unsigned short *)((char *)var1 + 0x1c6))
+	{
+	case 0:
+		AL_SetMotionLink(tp, 0x71);
+		*(unsigned short *)((char *)var1 + 0x1c6) = *(unsigned short *)((char *)var1 + 0x1c6) + 1;
+		var2 = rand();
+		var3 = (float)var2 * 3.0517578125e-05;
+		*(unsigned int *)((char *)var1 + 0x1d0) = (unsigned short)((int)(var3 * 61.0) + 0x78);
+		break;
+	case 1:
+		break;
+	default:
+		return 0;
+	}
+	if (AL_IsMotionEnd(tp) != 0)
+	{
+		*(int *)((char *)var1 + 0x1d0) = *(int *)((char *)var1 + 0x1d0) - 1;
+		if (*(int *)((char *)var1 + 0x1d0) <= 0)
+		{
+			return 1;
+		}
+	}
+	AL_ForwardSpd(tp, 0.15f);
+	return 0;
 }
 
 // STUB: SADX 0x004562f0

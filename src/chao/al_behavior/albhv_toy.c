@@ -39,6 +39,12 @@ long ALBHV_Garagara(struct task *tp)
 	return (long)0;
 }
 
+// STUB: SADX 0x00454a40
+long ALBHV_Hanabi(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00454b10
 void BookExecutor(struct task *tp)
 {

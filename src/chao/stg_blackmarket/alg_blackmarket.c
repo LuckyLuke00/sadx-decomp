@@ -2,7 +2,7 @@
 extern unsigned char DAT_05ad95e1;
 extern struct task *DAT_05b32e54;
 extern char objLandTableChaoBlackMarket[36];
-void FUN_0044db20(struct task *param_1);
+void FUN_0044db20(void);
 
 // FUNCTION: SADX 0x0046def0
 void AL_BlackmarketMasterDest(struct task *tp)
@@ -12,7 +12,7 @@ void AL_BlackmarketMasterDest(struct task *tp)
 	AL_MinimalExit();
 	AL_ReleaseTex(1);
 	AlgKinderAdExit();
-	FUN_0044db20(tp);
+	FUN_0044db20();
 }
 
 // FUNCTION: SADX 0x0046df20

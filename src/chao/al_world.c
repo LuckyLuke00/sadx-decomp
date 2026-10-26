@@ -91,16 +91,32 @@ struct task *ALW_GetLockOnTask(struct task *pMyTask)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x0043db50
+// FUNCTION: SADX 0x0043db50
 float ALW_CalcDistFromLockOn(struct task *pMyTask)
 {
-	return (float)0;
+	return AL_CalcDistFromTask(pMyTask, ALW_GetLockOnTask(pMyTask));
 }
 
-// STUB: SADX 0x0043db70
+// FUNCTION: SADX 0x0043db70
 long ALW_AttentionOn(struct task *tp1, struct task *tp2)
 {
-	return (long)0;
+	struct forcewk *var1;
+	struct forcewk *var2;
+
+	var1 = tp1->fwp;
+	var2 = tp2->fwp;
+	if (var1 == NULL || var2 == NULL)
+	{
+		return 0;
+	}
+	*(void **)((char *)var1 + 0x40) = var2;
+	*(unsigned int *)((char *)var1 + 0xc) = (unsigned int)DAT_05aeaa30;
+	DAT_05aeaa30++;
+	if (DAT_05aeaa30 >= 0x100)
+	{
+		DAT_05aeaa30 = 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0043dbc0
@@ -162,10 +178,19 @@ long ALW_CommunicationOff(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x0043dcf0
+// FUNCTION: SADX 0x0043dcf0
 struct al_entry_work *ALW_IsCommunication(struct task *tp)
 {
-	return (struct al_entry_work *)0;
+	struct al_entry_work *var1 = (struct al_entry_work *)tp->fwp;
+	if (var1 != NULL)
+	{
+		if (var1->pCommu != NULL)
+		{
+			if (var1->pCommu->pCommu == var1)
+				return var1->pCommu;
+		}
+	}
+	return NULL;
 }
 
 // STUB: SADX 0x0043dd10

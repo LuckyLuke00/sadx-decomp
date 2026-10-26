@@ -5,6 +5,12 @@ void FUN_0045e4e0(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0045e9f0
+long ALBHV_TurnToMinimal(struct task *tp)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x0045ea80
 long AL_CheckMinimal(struct task *tp)
 {

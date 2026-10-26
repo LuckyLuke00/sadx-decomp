@@ -35,17 +35,20 @@ void AL_FaceChangeEye(struct task *tp, enum eAL_EYE_NUM EyeNum)
 	AL_FaceSetEye(tp, EyeNum, -1);
 }
 
-// STUB: SADX 0x00457e20
+// FUNCTION: SADX 0x00457e20
 void AL_FaceChangeMouth(struct task *tp, enum eAL_MOUTH_NUM MouthNum)
 {
+	AL_FaceSetMouth(tp, MouthNum, -1);
 }
 
-// STUB: SADX 0x00457e40
+// FUNCTION: SADX 0x00457e40
 void AL_FaceReturnDefaultEye(struct task *tp)
 {
+	AL_FaceChangeEye(tp, (enum eAL_EYE_NUM)(*(short *)((char *)tp->twp + 0x6a8)));
 }
 
-// STUB: SADX 0x00457e60
+// FUNCTION: SADX 0x00457e60
 void AL_FaceReturnDefaultMouth(struct task *tp)
 {
+	AL_FaceChangeMouth(tp, (enum eAL_MOUTH_NUM)(*(short *)((char *)tp->twp + 0x6b2)));
 }

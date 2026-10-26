@@ -6,3 +6,8 @@ void PersonalRecordWindowDestructor(struct task *tp)
 	Free(tp->twp);
 	tp->twp = 0;
 }
+
+// STUB: SADX 0x00473cd0
+void CreateInfoBaseWindow(struct task *tp)
+{
+}

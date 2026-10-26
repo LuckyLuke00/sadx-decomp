@@ -1,7 +1,7 @@
 #include "decls.h"
 
-// STUB: SADX 0x004478f0
+// FUNCTION: SADX 0x004478f0
 long ALO_GetFruitKind(struct task *tp)
 {
-	return *(long *)&tp->twp->ang;
+	return tp->twp->ang.x;
 }

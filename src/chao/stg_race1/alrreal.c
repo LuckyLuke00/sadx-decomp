@@ -2,13 +2,8 @@
 
 #include "decls.h"
 #include <stdlib.h>
-extern int DAT_05b92e44;
-extern int FUN_00484d90(struct AlrCam *param_1);
-struct AlrRank;
 struct AlrRoot;
 struct alifewk;
-struct AL_RECORD;
-struct NJS_POINT3;
 void AlrReal_checkGoal(struct AlrReal *___this);
 long AlrReal_checkCommendation(struct AlrReal *___this);
 int AlrFanFan_checkFanFan(struct AlrFanFan *___this);
@@ -19,8 +14,6 @@ void AlrReal_setRanking(struct AlrReal *___this);
 struct task;
 struct Alr;
 void A_Life_for_ALR(struct task *);
-struct task *CreateChao_for_ALR_ALRE(void (*)(struct task *), struct al_status *);
-void *Alr_SetId(struct Alr *, int);
 enum eCourseNumDX AL_GetCourseNum();
 int AlrReal_createChaoALR(struct AlrReal *___this);
 int AlrReal_createChao(struct AlrReal *___this, int alr_or_alre_or_demo);
@@ -29,13 +22,6 @@ struct AlrReal;
 extern struct AlrData alrdata;
 
 extern struct AlrReal *DAT_05b33108;
-extern unsigned int *DAT_05b93264;
-extern short DAT_05ccde90;
-extern short DAT_05b9d724;
-extern short DAT_05b9d744;
-extern char DAT_05ccca18;
-void FUN_004881d0(struct AlrTimer *param_1);
-int FUN_00486bb0(struct Alr *param_1);
 void FUN_00488c50(struct AlrMemory *param_1);
 void FUN_004897f0(struct AlrRoot *param_1, struct pathtag **param_2, int param_3, float param_4);
 

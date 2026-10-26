@@ -147,9 +147,11 @@ void FUN_00450d40(struct task *param_1)
 	FUN_00450d20((struct al_object *)param_1);
 }
 
-// STUB: SADX 0x00450d80
+// FUNCTION: SADX 0x00450d80
 void AL_PartsMinimalFlagOn_BTL(struct task *tp, long MinimalType)
 {
+	struct taskwk *var1 = tp->twp;
+	*(unsigned long *)((char *)(*(unsigned long *)((char *)var1 + 0x6c)) + 0x118) |= (1UL << MinimalType);
 }
 
 // FUNCTION: SADX 0x00450da0
@@ -165,14 +167,18 @@ long AL_PartsIsMinimalFlagOn_BTL(struct task *tp, long MinimalType)
 	return (long)0;
 }
 
-// STUB: SADX 0x00450df0
+// FUNCTION: SADX 0x00450df0
 void AL_PartsMinimalFlagOn_DX(struct task *tp, long MinimalType)
 {
+	struct taskwk *var1 = tp->twp;
+	*(unsigned long *)((char *)(*(unsigned long *)((char *)var1 + 0x6c)) + 0x4e0) |= (1UL << MinimalType);
 }
 
-// STUB: SADX 0x00450e10
+// FUNCTION: SADX 0x00450e10
 void AL_PartsMinimalFlagOff_DX(struct task *tp, long MinimalType)
 {
+	struct taskwk *var1 = tp->twp;
+	*(unsigned long *)((char *)(*(unsigned long *)((char *)var1 + 0x6c)) + 0x4e0) &= ~(1UL << MinimalType);
 }
 
 // STUB: SADX 0x00450e30

@@ -1,8 +1,19 @@
 #include "decls.h"
 
-// STUB: SADX 0x004516c0
+// FUNCTION: SADX 0x004516c0
 void AL_FieldExecutor(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (var1->smode != 0)
+	{
+		if (var1->wtimer == 0)
+		{
+			DestroyTask(tp);
+			return;
+		}
+		var1->wtimer--;
+	}
+	CCL_Entry(tp);
 }
 
 // STUB: SADX 0x004516f0
