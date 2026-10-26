@@ -1,6 +1,6 @@
 """Checks for the C text scanners in tools/cfix.py, for blank_literals in tools/names.py and for line_declarations in
 tools/llm.py: they read one line or one function of C by brackets and commas, and must not count a bracket, comma or
-= inside a string, a character or a comment."""
+= inside a string, a character or a comment. Also checks declared_name in tools/names.py."""
 
 import cfix
 import llm
@@ -31,6 +31,27 @@ def check_blank_literals() -> list[str]:
         found = names.blank_literals(line)
         if found != wanted:
             failures.append(f"blank_literals gives {found!r} for {line!r}, not {wanted!r}")
+    return failures
+
+
+def check_declared_name() -> list[str]:
+    """The name that a declaration or definition declares, also behind a __declspec(...), or the name of a function
+    pointer."""
+    cases = [("static void X(int a)", "X"),
+             ("struct task *Make(struct task *tp)", "Make"),
+             ("extern short DAT_00501000;", "DAT_00501000"),
+             ("int DAT_00501000[4] = {1, 2};", "DAT_00501000"),
+             ("void (*f)(int)", "f"),
+             ("void Foo::Bar(int a)", "Foo::Bar"),
+             ("static __declspec(safebuffers) void Camera(struct _OBJ_CAMERAPARAM *pParam)", "Camera"),
+             ("__declspec(safebuffers) void Y(int a)", "Y"),
+             ("__declspec( naked ) void F(void)", "F"),
+             ("__declspec(safebuffers) void (*g)(int)", "g")]
+    failures = []
+    for sig, wanted in cases:
+        found = names.declared_name(sig)
+        if found != wanted:
+            failures.append(f"declared_name gives {found!r} for {sig!r}, not {wanted!r}")
     return failures
 
 
@@ -419,9 +440,9 @@ def check_tagged() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_blank_literals, check_bracket_end, check_bracket_start, check_group_at_end,
-                  check_expression_end, check_trimmed, check_value_span, check_argument_spans, check_argument_span,
-                  check_continued_lines, check_is_cast, check_plain_type, check_declared_type,
+    for check in (check_blank_literals, check_declared_name, check_bracket_end, check_bracket_start,
+                  check_group_at_end, check_expression_end, check_trimmed, check_value_span, check_argument_spans,
+                  check_argument_span, check_continued_lines, check_is_cast, check_plain_type, check_declared_type,
                   check_line_declarations, check_cast_text, check_tagged):
         failures += check()
     return failures
