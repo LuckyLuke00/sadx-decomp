@@ -93,37 +93,50 @@ def stack_change(instruction: x86.Instruction, decoder: x86.Decoder, sizes: dict
     return 0
 
 
-def may_read_stack_arguments(function: x86.Function, decoder: x86.Decoder, sizes: dict[int, int]) -> bool:
-    """Whether the code reads arguments from the stack. True also when a frameless function moves esp in a
-    way that this does not follow."""
-    if x86.has_frame(function.code):
-        return any(m.base == "ebp" and m.disp >= 8 for i in function.code for m in memory_operands(i.operands))
+def stack_offsets(function: x86.Function, decoder: x86.Decoder, sizes: dict[int, int]) -> dict[int, int] | None:
+    """esp minus its value at the entry, before each instruction. An instruction that only a path through an
+    unknown esp change reaches has none. None when two paths reach one instruction with different offsets."""
     by_address = {i.address: i for i in function.code}
-    offset = {function.address: 0}  # esp minus its value at the entry, before each instruction
+    offset = {function.address: 0}
     pending = [function.address]
-    found = False
     while pending:
         address = pending.pop()
-        instruction = by_address[address]
-        found = found or any(m.base == "esp" and m.disp + offset[address] >= 4
-                             for m in memory_operands(instruction.operands))
-        change = stack_change(instruction, decoder, sizes)
-        if change is None or (instruction.mnemonic == "ret" and offset[address] != 0):
-            return True
+        change = stack_change(by_address[address], decoder, sizes)
+        if change is None:
+            continue
         for following in function.successors[address]:
             if following not in offset:
                 offset[following] = offset[address] + change
                 pending.append(following)
             elif offset[following] != offset[address] + change:
-                return True
-    return found
+                return None
+    return offset
+
+
+def may_read_stack_arguments(function: x86.Function, decoder: x86.Decoder, sizes: dict[int, int]) -> bool:
+    """Whether the code reads arguments from the stack. True also when a frameless function moves esp in a
+    way that this does not follow."""
+    if x86.has_frame(function.code):
+        return any(m.base == "ebp" and m.disp >= 8 for i in function.code for m in memory_operands(i.operands))
+    offset = stack_offsets(function, decoder, sizes)
+    if offset is None or len(offset) < len(function.code):
+        return True
+    if any(i.mnemonic == "ret" and offset[i.address] != 0 for i in function.code):
+        return True
+    return any(m.base == "esp" and m.disp + offset[i.address] >= 4
+               for i in function.code for m in memory_operands(i.operands))
+
+
+def unknown_jump(function: x86.Function) -> bool:
+    """Whether a jmp goes where no address in the code says, such as `jmp edx`. A switch table is known."""
+    return any(i.mnemonic == "jmp" and i.target is None and not x86.SWITCH.search(i.operands) for i in function.code)
 
 
 def exit_pops(function: x86.Function, decoder: x86.Decoder, sizes: dict[int, int], depth: int = 3) -> set[int] | None:
     """The bytes that the function pops when it returns, through a ret of its own or a jump to another
     function. None when a jump goes where this can't follow, such as `jmp edx`. A switch table is no exit."""
     found = pops(function)
-    if any(i.mnemonic == "jmp" and i.target is None and not x86.SWITCH.search(i.operands) for i in function.code):
+    if unknown_jump(function):
         return None
     for jump in (i for i in calls(function) if i.mnemonic != "call"):
         if jump.target not in sizes or not depth:

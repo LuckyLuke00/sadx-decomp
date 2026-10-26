@@ -13,6 +13,7 @@
   python tools/check.py decls                 write the declarations and stubs that the sources use
   python tools/check.py dossier 0x00401000    what an agent needs to decompile a function
   python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
+  python tools/check.py args [0x00401000]     functions whose callers pass stack bytes that disagree
   python tools/check.py permute FILE ADDR     try rewrites of a near match and keep the best
   python tools/check.py retype SPEC          build each candidate type of a global, keep the one that proves itself
   python tools/check.py clone 0x00401000      write the copies of a matched function, keep those at 100%
@@ -91,6 +92,11 @@ def main() -> int:
         import accesses
 
         return accesses.show(project.require_game(), args.addresses, args.size)
+    if args.command == "args":
+        # Only .venv has capstone.
+        import stackargs
+
+        return stackargs.report(project.require_game(), args.addresses)
     if args.command == "ci":
         toolchain.ensure(project.TOOLCHAIN)
         build()
@@ -135,6 +141,9 @@ def parse_args() -> argparse.Namespace:
     access = commands.add_parser("access")
     access.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00800000")
     access.add_argument("--size", type=int, default=1, help="bytes to cover from each address (default: 1)")
+    stack_args = commands.add_parser("args")
+    stack_args.add_argument("addresses", nargs="*", type=lambda value: int(value, 16),
+                            help="the functions to show (default: every one with a verdict)")
     permute = commands.add_parser("permute")
     permute.add_argument("file", type=Path, help="the source file, e.g. src/main.c")
     permute.add_argument("address", type=lambda value: int(value, 16), help="e.g. 0x00401000")
