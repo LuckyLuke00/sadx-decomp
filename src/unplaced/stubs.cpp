@@ -1254,11 +1254,6 @@ void CameraViewSet(struct taskwk *pTaskWork)
 {
 }
 
-// STUB: SADX 0x004bdee0
-void CamcontSetCameraLOOKAT(struct taskwk *pTaskWork)
-{
-}
-
 // STUB: SADX 0x004bf3d0
 long CameraAdditionalCollision(struct NJS_POINT3 *pos)
 {
@@ -3060,11 +3055,6 @@ void effect2_disp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x007d7800
-void execWaveCtrlTask(struct task *)
-{
-}
-
 // STUB: SADX 0x007d7b30
 void BufferModelRestore()
 {
@@ -3874,6 +3864,11 @@ void uptarget_sonic_draw(struct task *task_p)
 
 // STUB: SADX 0x00895340
 extern void dummytarget_init(struct task *)
+{
+}
+
+// STUB: SADX 0x008954e0
+void target_man_exec(struct task *task_p)
 {
 }
 

@@ -11,7 +11,7 @@ void FUN_007d20f0(float pos_x, float pos_y, float pos_z, long ang_x, long ang_y,
 }
 
 // FUNCTION: SADX 0x007d21b0
-void FUN_007d21b0(void *param_1)
+void FUN_007d21b0(...)
 {
 	return;
 }

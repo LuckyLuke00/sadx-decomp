@@ -1,6 +1,6 @@
 #include "decls.h"
 extern struct NJS_SPRITE sprite_lensflare;
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 static void LensFlareExecutor(struct task *tp);
 void LensFlareExecutor(struct task *tp);
 

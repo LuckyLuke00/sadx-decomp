@@ -1,7 +1,7 @@
 #include "decls.h"
 long CalcDashPosition(struct task *tp);
 void DrawCmnDushRing(struct task *tp);
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 float GetTargetDist(struct task *tp);
 long CreateChkDashPlayer(struct task *tp, long pl_num, float dist);
 extern int DAT_05b9d838;

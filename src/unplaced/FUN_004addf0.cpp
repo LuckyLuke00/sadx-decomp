@@ -8,7 +8,7 @@ extern int DAT_05b3ea04;
 extern struct _SEcallbuf DAT_05b3e468[20];
 
 bool FUN_004ab0b0();
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 void FUN_004ade40();
 
 // FUNCTION: SADX 0x004addf0

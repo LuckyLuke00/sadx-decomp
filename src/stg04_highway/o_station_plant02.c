@@ -1,4 +1,8 @@
 #include "decls.h"
+void FUN_007d21b0(...);
+void Exec(struct task *tp);
+void Draw(struct task *tp);
+static void Exec(struct task *tp);
 static void Draw(struct task *tp);
 extern struct obj object_stobj_fplant02_fplant02[1];
 
@@ -18,10 +22,19 @@ static void Draw(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0081e530
+// FUNCTION: SADX 0x0081e510
+static void Exec(struct task *tp)
+{
+	if (CheckRangeOut(tp) == 0)
+	{
+		Draw(tp);
+	}
+}
+
+// FUNCTION: SADX 0x0081e530
 void ObjectStationPlant02(struct task *tp)
 {
 	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
-	tp->exec = (void (__cdecl *)(struct task *))0x81e510;
+	tp->exec = Exec;
 	tp->disp = Draw;
 }

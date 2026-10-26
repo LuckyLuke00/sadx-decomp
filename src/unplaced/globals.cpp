@@ -2768,6 +2768,15 @@ struct NJS_MODEL model_casi_stop02b_k_stop02b_k[1];
 // GLOBAL: SADX 0x047731a8
 struct NJS_MODEL model_card_doa_a_doa_a[1];
 
+// GLOBAL: SADX 0x04775b1c
+struct NJS_ACTION action_pian_pach_karada[1];
+
+// GLOBAL: SADX 0x04776b4c
+struct NJS_ACTION action_pian_walk_karada[1];
+
+// GLOBAL: SADX 0x0477736c
+struct NJS_ACTION action_pian_sleep_karada[1];
+
 // GLOBAL: SADX 0x04785230
 struct NJS_TEXLIST texlist_obj_casino9;
 
@@ -7015,6 +7024,9 @@ struct task *DAT_060cc4c8;
 
 // GLOBAL: SADX 0x060cc57c
 struct task *DAT_060cc57c;
+
+// GLOBAL: SADX 0x060cc634
+struct task *DAT_060cc634;
 
 // GLOBAL: SADX 0x060cc69c
 struct task *DAT_060cc69c;

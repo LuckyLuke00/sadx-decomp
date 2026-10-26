@@ -2,7 +2,7 @@
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 extern struct CCL_INFO mi_flag_colli_info[];
-extern void FUN_007d21b0(void *param_1);
+extern void FUN_007d21b0(...);
 
 // FUNCTION: SADX 0x0049c7d0
 static void Disp(struct task *tp)

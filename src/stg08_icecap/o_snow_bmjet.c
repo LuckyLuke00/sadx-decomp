@@ -2,7 +2,7 @@
 static void Wait1(struct task *tp);
 void BombDown(struct task *tp);
 extern int DAT_060dbbe8;
-extern void FUN_007d21b0(void *param_1);
+extern void FUN_007d21b0(...);
 extern void Wait1(struct task *tp);
 extern struct NJS_MODEL model_jt_all1_bmjet_bmjet;
 

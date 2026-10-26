@@ -1,6 +1,6 @@
 #include "decls.h"
 extern struct CCL_INFO WarpColliInfo[4];
-void FUN_007d21b0(void *param_1);
+void FUN_007d21b0(...);
 
 // FUNCTION: SADX 0x0069ee20
 void EffectWarp(struct task *tp)

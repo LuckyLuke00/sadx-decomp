@@ -8,7 +8,7 @@ struct task *EV_CreateBossController(struct BOSSPLAYER_CREATE_PARAM *Param);
 extern int last_eventlist[16];
 extern void SetStageNumber(unsigned char stg, unsigned char act);
 extern void SetEntranceNumber(signed char number);
-void FUN_005b5aa0();
+void FUN_005b5aa0(...);
 extern int DAT_05cd14d4;
 void SeqTaskFadeOut(struct task *tp);
 void SeqTaskFadeIn(struct task *tp);
@@ -82,9 +82,25 @@ long FUN_004f4bb0()
 	return slSeqRunning;
 }
 
-// STUB: SADX 0x004f4bc0
+// FUNCTION: SADX 0x004f4bc0
 void SeqSetPlayer(int no)
 {
+	if (FUN_004f4bb0() == 0)
+	{
+		return;
+	}
+	if (DAT_05bb00a8 != 0)
+	{
+		FUN_004f5550(0x58);
+		DAT_05bafd18 = 4;
+	}
+	else
+	{
+		SeqClrFlag(0x58);
+		DAT_05bafd18 = (short)no;
+	}
+	DAT_05b3ea28 = 0x5baf6a0 + (int)DAT_05bafd18 * 0xc;
+	DAT_05baf544 = (int)SeqGetSectionList(DAT_05bafd18);
 }
 
 // STUB: SADX 0x004f4c40

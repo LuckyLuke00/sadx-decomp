@@ -1,7 +1,7 @@
 #include "decls.h"
 void dummytarget_make_crushdata(struct dummy_crushwk **crushwk_pp, struct obj *obj);
 extern void dummytarget_init(struct task *task_p);
-extern void FUN_007d21b0(void *param_1);
+extern void FUN_007d21b0(...);
 extern long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id);
 extern int FUN_00551570(int param_1);
 extern struct task *CreateChildTask(unsigned short im, void (*exec)(struct task *), struct task *tp);
@@ -41,9 +41,13 @@ void target_man_end(struct task *task_p)
 	dsStop_num(0x11c);
 }
 
-// STUB: SADX 0x00894960
+// FUNCTION: SADX 0x00894960
 void target_draw_wheel(struct task *task_p)
 {
+	if (*(int *)((char *)task_p->twp + 0x34) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)task_p->twp + 0x34));
+	}
 }
 
 // STUB: SADX 0x00894980
@@ -72,9 +76,10 @@ void uptarget_draw_scale_set(struct task *task_p)
 	FUN_0067d2d0(0, 1.0, 1.0, task_p->twp->scl.z);
 }
 
-// STUB: SADX 0x00894ab0
+// FUNCTION: SADX 0x00894ab0
 void uptarget_draw_trans_set(struct task *task_p)
 {
+	FUN_0067d830(0, 0.0, *(float *)((char *)task_p->twp + 8), 0.0);
 }
 
 // STUB: SADX 0x00894b60
@@ -161,7 +166,16 @@ void target_init(struct task *task_p)
 	task_p->dest = target_end;
 }
 
-// STUB: SADX 0x008959f0
+// FUNCTION: SADX 0x008959f0
 void ObjectFinalEggTarget(struct task *task_p)
 {
+	struct taskwk *var1 = task_p->twp;
+
+	var1->mode = 0;
+	*(void **)((char *)var1 + 0x1c) = 0;
+	var1->counter.l = (unsigned long)CreateChildTask(2, target_init, task_p);
+	target_init((struct task *)var1->counter.ptr);
+	task_p->exec = target_man_exec;
+	task_p->disp = 0;
+	task_p->dest = target_man_end;
 }

@@ -1,6 +1,6 @@
 #include "decls.h"
 extern void *DAT_060eea80;
-extern void FUN_007d21b0(void *);
+extern void FUN_007d21b0(...);
 
 // FUNCTION: SADX 0x006e69d0
 void ObjectC0Grass0(struct task *pTask)
