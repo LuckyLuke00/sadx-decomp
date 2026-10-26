@@ -12,11 +12,6 @@ void MonorailCarDestructor(struct task *tp)
 	FreeTaskC(tp);
 }
 
-// STUB: SADX 0x00698b50
-void MonorailCarDisplayer(struct task *tp)
-{
-}
-
 // FUNCTION: SADX 0x00698ce0
 void StepsLand(struct task *tp)
 {

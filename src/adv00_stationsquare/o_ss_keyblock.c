@@ -2,6 +2,27 @@
 extern int DAT_05b9d838;
 extern struct CCL_INFO key_c_info[1];
 
+// FUNCTION: SADX 0x006869a0
+void DispPut(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	SetObjectTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	ds_DrawObjectClip(object_sssikake_blockbase_blockbase, 1.0f);
+	ds_DrawObjectClip(object_sssikake_keyblock_keyblock, 1.0f);
+	njPopMatrix(1);
+}
+
 // FUNCTION: SADX 0x00686aa0
 void KeyDisp(struct task *tp)
 {

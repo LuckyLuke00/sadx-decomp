@@ -2,10 +2,11 @@
 extern struct obj *DAT_060eeaa4;
 extern struct NJS_ACTION *DAT_060eea54;
 
-// STUB: SADX 0x006c0de0
+// FUNCTION: SADX 0x006c0de0
 void DisplayTree(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
+
 	if (DAT_05b9d838)
 	{
 		return;
@@ -23,7 +24,7 @@ void DisplayTree(struct task *tp)
 	}
 	else
 	{
-		((void (*)(struct NJS_ACTION *, float, int, float))late_ActionEx)(*(struct NJS_ACTION **)((char *)DAT_060eea54 + 0x20), var1->value.f, 1, 1.0f);
+		late_ActionEx((struct NJS_ACTION *)(*(struct obj **)((char *)DAT_060eea54 + 0x20)), var1->value.f, 1, 1.0f);
 	}
 	njPopMatrix(1);
 }
