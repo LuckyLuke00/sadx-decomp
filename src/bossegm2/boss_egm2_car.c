@@ -52,3 +52,8 @@ void Dsp_car_broken(struct task *pTask)
 	njPopMatrix(1);
 	MirenEffLoadState();
 }
+
+// STUB: SADX 0x006cbca0
+void Exe_car_broken(struct task *pTask)
+{
+}

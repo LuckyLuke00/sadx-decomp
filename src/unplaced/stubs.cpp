@@ -2805,6 +2805,11 @@ void egm1bakuhatsu_exec(struct task *)
 {
 }
 
+// STUB: SADX 0x006c4a00
+void egm1ground_clay_exec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006c71d0
 void BuilGDisp(struct task *tp)
 {
@@ -2850,6 +2855,11 @@ void changerroboend()
 {
 }
 
+// STUB: SADX 0x006dc990
+void EffSmoke(struct NJS_POINT3 *pPos, float fScale)
+{
+}
+
 // STUB: SADX 0x006dd200
 void FUN_006dd200(void *)
 {
@@ -2891,6 +2901,11 @@ void BossChaos2(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006edba0
+void EffMiniBallDisplay(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006eec90
 extern void Dsp_tmit_sprite(struct task *)
 {
@@ -2898,6 +2913,11 @@ extern void Dsp_tmit_sprite(struct task *)
 
 // STUB: SADX 0x006f00a0
 void BossChaos4(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006f08a0
+void Exe_suimen_change(struct task *pTask)
 {
 }
 

@@ -24,10 +24,24 @@ int GetBossAngMode(struct task *tp)
 	return 0;
 }
 
-// STUB: SADX 0x006c2ff0
+// STUB: SADX 0x006c2ef0
+long InterpolateEgm1Ang(long src, long dst, float avg)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x006c2ff0
 int FUN_006c2ff0()
 {
-	return (int)0;
+	if (*(float *)((char *)*DAT_05baf368 + 0x20) < 752.0)
+	{
+		return 2;
+	}
+	if (1008.0 < *(float *)((char *)*DAT_05baf368 + 0x20))
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x006c3030

@@ -14,3 +14,13 @@ void RdChaos6Init(struct task *tp)
 	DAT_05b3e050 = (*(struct NJS_POINT2 **)((char *)pClipMap_Chaos06 + local_8))[DAT_05b3e0d0];
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_Chaos06 + local_8))[DAT_05b3e0d0];
 }
+
+// STUB: SADX 0x006f4c10
+void chaos6_gdcontrol(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006f4c50
+void Rd_Chaos6(struct task *tp)
+{
+}

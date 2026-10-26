@@ -1,4 +1,5 @@
 #include "decls.h"
+void chaos4_camera(struct _OBJ_CAMERAPARAM *pParam);
 extern int DAT_060c20a8;
 void start_demo_camera_water(struct _OBJ_CAMERAPARAM *pParam);
 extern float DAT_060c20d4;

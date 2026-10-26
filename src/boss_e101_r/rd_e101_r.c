@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05b9d838;
 
 // FUNCTION: SADX 0x007075c0
 void Rd_E101_R(struct task *tp)

@@ -21,6 +21,11 @@ void End_SuimenYurashi(struct task *pTask)
 {
 }
 
+// STUB: SADX 0x006f07e0
+void C4HamonMake(struct NJS_POINT3 *pos)
+{
+}
+
 // STUB: SADX 0x006f0830
 void Dsp_first_pond(struct task *pTask)
 {
@@ -43,9 +48,21 @@ void End_side_collision(struct task *pTask)
 	pTask->awp = NULL;
 }
 
-// STUB: SADX 0x006f0be0
+// FUNCTION: SADX 0x006f0be0
 void Chaos4SuimenChange(long inorder)
 {
+	struct task *local_4;
+	struct taskwk *local_8;
+
+	local_4 = CreateElementalTask(2, 3, Exe_suimen_change);
+	if (local_4 != NULL)
+	{
+		local_8 = local_4->twp;
+		EnemyInitialize(local_4, local_8);
+		local_8->timer.l = 0x1e;
+		local_8->counter.l = inorder;
+		local_4->exec = Exe_suimen_change;
+	}
 }
 
 // FUNCTION: SADX 0x006f0c20

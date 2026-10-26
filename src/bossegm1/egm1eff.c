@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int *DAT_060b99f4;
 void SetEgm1AtkSmoke(struct NJS_POINT3 *posp);
 static void egm1ground_smoke_exec(struct task *tp);
 extern struct task *DAT_060b99f8;
@@ -82,12 +83,43 @@ void ChgEgm1ClayStat(unsigned char mode)
 {
 }
 
-// STUB: SADX 0x006c48c0
+// FUNCTION: SADX 0x006c48c0
 void egm1one_clay_exec(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct anywk *var2 = tp->awp;
+	var1->pos.x += var2->work.f[2];
+	var1->pos.y += var2->work.f[3];
+	var1->pos.z += var2->work.f[4];
+	var2->work.f[3] -= 0.10000000149011612;
+	var1->ang.x += var2->work.ul[5];
+	var1->ang.y += var2->work.ul[6];
+	var1->ang.z += var2->work.ul[7];
+	if (var1->pos.y < 0.0f)
+	{
+		FreeTask(tp);
+		return;
+	}
+	egm1one_clay_disp(tp);
 }
 
-// STUB: SADX 0x006c4b20
+// FUNCTION: SADX 0x006c4b20
 void SetEgm1GroundClay(struct NJS_POINT3 *posp)
 {
+	struct task *var1;
+	struct anywk *var2;
+
+	var1 = CreateElementalTask(0, 3, egm1ground_clay_exec);
+	DAT_060b99f4 = (int *)var1;
+	if (var1 != 0)
+	{
+		var2 = (struct anywk *)CAlloc(1, 0x14);
+		var1->awp = var2;
+		*(int *)(var2) = *(int *)(posp);
+		*(int *)((char *)var2 + 4) = *(int *)((char *)posp + 4);
+		*(int *)((char *)var2 + 8) = *(int *)((char *)posp + 8);
+		*(char *)((char *)var2 + 0x10) = 0;
+		*(int *)((char *)var2 + 0xc) = 0;
+		var1->exec = egm1ground_clay_exec;
+	}
 }

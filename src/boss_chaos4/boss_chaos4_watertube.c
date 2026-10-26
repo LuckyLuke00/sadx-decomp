@@ -6,6 +6,11 @@ long Chaos4PlayerFlyingCheck()
 	return (long)0;
 }
 
+// STUB: SADX 0x006f0ec0
+void Dsp_Chaos4WaterTube(struct task *pTask)
+{
+}
+
 // STUB: SADX 0x006f10d0
 void FUN_006f10d0(struct taskwk *twp)
 {

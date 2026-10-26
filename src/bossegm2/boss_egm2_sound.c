@@ -49,6 +49,11 @@ void Egm2Tikal_1_Set(int cflg)
 {
 }
 
+// STUB: SADX 0x006c5990
+void Egm2Tikal_2_Set(int cflg)
+{
+}
+
 // FUNCTION: SADX 0x006c5a10
 void Egm2TikalEnd()
 {

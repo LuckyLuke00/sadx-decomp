@@ -47,8 +47,19 @@ void Egm2CameraTaoreSet()
 	DAT_060b9ae4 = 1;
 }
 
-// STUB: SADX 0x006c8330
-struct task *Egm2StartPositionTask(struct NJS_POINT3 *pos)
+// FUNCTION: SADX 0x006c8330
+struct taskwk *Egm2StartPositionTask(struct NJS_POINT3 *pos)
 {
-	return (struct task *)0;
+	struct task *var1;
+	struct taskwk *var2;
+	var1 = CreateElementalTask(2, 3, (void (__cdecl *)(struct task *))FUN_007d21b0);
+	if (var1 != 0)
+	{
+		var2 = var1->twp;
+		var2->pos = *pos;
+		var2->pos.y += 40.0;
+		var1->exec = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		return var2;
+	}
+	return 0;
 }

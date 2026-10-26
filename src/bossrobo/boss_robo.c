@@ -35,9 +35,21 @@ long Robo_GetAngle()
 	return *(long *)(var2 + 0x18);
 }
 
-// STUB: SADX 0x006d85f0
+// FUNCTION: SADX 0x006d85f0
 void FUN_006d85f0(struct task *param_1)
 {
+	struct taskwk *var1 = param_1->twp;
+	struct NJS_POINT3 local_14;
+	int var2;
+
+	local_14.x = var1->pos.x;
+	local_14.y = var1->pos.y;
+	local_14.z = var1->pos.z;
+	local_14.y += 10.0f;
+	for (var2 = 8; var2 != 0; var2--)
+	{
+		EffSmoke(&local_14, 1.0f);
+	}
 }
 
 // FUNCTION: SADX 0x006d8e50
