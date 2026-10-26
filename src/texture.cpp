@@ -1,4 +1,5 @@
 #include "decls.h"
+void late_ReleaseTexture(struct NJS_TEXLIST *tl);
 extern struct TEX_PVMTABLE *ListofPlayersPvmList[9];
 extern char DAT_05cc3554[9];
 void PvrLoadtexture(struct NJS_TEXLIST *texlist);
@@ -42,9 +43,60 @@ void LoadPlayersTexture(long pno)
 	}
 }
 
-// STUB: SADX 0x00501bd0
+// FUNCTION: SADX 0x00501bd0
 void ReleasePlayersTexture(long pno)
 {
+	struct TEX_PVMTABLE *local_8 = ListofPlayersPvmList[pno];
+	if (!local_8)
+	{
+		return;
+	}
+	else
+	{
+		if (DAT_05cc3554[pno] == 1)
+		{
+			while (local_8->ptexlist)
+			{
+				if (local_8->ptexlist->textures->texaddr)
+				{
+					late_ReleaseTexture(local_8->ptexlist);
+				}
+				local_8++;
+			}
+		}
+		if (0 < DAT_05cc3554[pno])
+		{
+			DAT_05cc3554[pno]--;
+		}
+	}
+}
+
+// FUNCTION: SADX 0x00501c60
+void ReleaseAllPlayersTexture()
+{
+	int local_8g;
+	struct TEX_PVMTABLE *local_cg;
+
+	for (local_8g = 0; local_8g < 9; local_8g++)
+	{
+		local_cg = ListofPlayersPvmList[local_8g];
+		if (local_cg == 0)
+		{
+			continue;
+		}
+		else
+		{
+			if (DAT_05cc3554[local_8g] > 0)
+			{
+				while (0 != local_cg->ptexlist)
+				{
+					late_ReleaseTexture(local_cg->ptexlist);
+					local_cg = (struct TEX_PVMTABLE *)((char *)local_cg + 8);
+				}
+			}
+			DAT_05cc3554[local_8g] = 0;
+		}
+	}
 }
 
 // STUB: SADX 0x00501ce0

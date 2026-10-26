@@ -5,7 +5,6 @@ void set_motion_func(struct obj *object);
 extern unsigned short DAT_05b39e84;
 extern unsigned short DAT_05b39e14;
 void nlateBegin(int flgs);
-void njDrawPolygon3D(struct NJS_POINT3COL *param_1, int param_2, unsigned long param_3);
 void njSetZUpdateMode(long param_1);
 int dsCheckViewV(struct NJS_POINT3 *ft, float radius);
 void dsPushPopMotion(struct obj *obj);
@@ -48,7 +47,6 @@ extern int DAT_05b39ea4;
 extern void (*DAT_05b3df00)(struct obj *obj);
 extern void (*DAT_05b39e68)(struct obj *obj);
 extern void (*DAT_05b39dbc)(struct obj *obj);
-extern float DAT_05b3df44;
 void FUN_004a3890();
 extern struct LATE_FAR_Z_T late_far_z_chaos;
 extern struct LATE_FAR_Z_T late_far_z_chaos0;
@@ -57,7 +55,6 @@ extern LATE_FAR_Z_T DAT_05b39e18;
 void ___OutputDebugString(char *, ...);
 void late_DrawSprite2D(struct NJS_SPRITE *sp, int n, float pri, unsigned long atr, int flgs);
 int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
-void njDrawSprite2D(struct NJS_SPRITE *param_1, int param_2, float param_3, unsigned long param_4);
 void FUN_004a27c0();
 void FUN_004a2960();
 extern int DAT_05b39df4;
@@ -67,10 +64,8 @@ void njPushMatrixEx();
 void njPopMatrixEx();
 void njRotateXYZ(long param_1, long param_2, long param_3, long param_4);
 void njRotateZXY(long param_1, long param_2, long param_3, long param_4);
-void FUN_00422560(int param_1);
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl);
 int isTextureNG(NJS_TEXLIST *tl, int numChk);
-void DrawObjectClip(struct obj *obj, float clipScl);
 extern int DAT_05b3dee0;
 extern int DAT_05b3ded4;
 extern int DAT_05b3ded8;
@@ -82,7 +77,6 @@ void late_DrawModelClip(struct NJS_MODEL *, int, float);
 int isTextureNG(struct NJS_TEXLIST *, int);
 long dsSimpleDrawModel(struct NJS_MODEL *);
 void njDrawModel(struct NJS_MODEL *);
-extern unsigned char DAT_025acd84;
 extern unsigned char DAT_02608e24;
 extern float DAT_05b3df40;
 void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
@@ -93,7 +87,6 @@ extern float DAT_0629c6ec;
 extern float DAT_0629c6f0;
 extern int DAT_05b39e2c;
 extern int DAT_05cd4078;
-void FUN_00598720(int param_1);
 int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
 extern NJS_ARGB DAT_05b3df28;
 extern float DAT_05b3df3c;
@@ -1419,19 +1412,25 @@ void ___dsAction(struct NJS_ACTION *param_1, float param_2, float param_3)
 {
 }
 
-// STUB: SADX 0x004a89f0
+// FUNCTION: SADX 0x004a89f0
 void FUN_004a89f0(NJS_ACTION *param_1, float param_2, int param_3)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(param_1, param_2, param_3, 0.0, (void *)lateDrawModel);
 }
 
-// STUB: SADX 0x004a8a20
+// FUNCTION: SADX 0x004a8a20
 void late_Action(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(param_1, param_2, param_3, param_4, (void *)lateDrawModel);
 }
 
-// STUB: SADX 0x004a8a50
+// FUNCTION: SADX 0x004a8a50
 void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(param_1, param_2, param_3, 0.0f, (void *)DrawModelEx);
 }
 
 // FUNCTION: SADX 0x004a8a80
@@ -1446,14 +1445,18 @@ void late_ActionMS(NJS_ACTION *action, float frame, int flgs)
 {
 }
 
-// STUB: SADX 0x004a8ae0
+// FUNCTION: SADX 0x004a8ae0
 void FUN_004a8ae0(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(param_1, param_2, param_3, param_4, (void *)DrawModelMS);
 }
 
-// STUB: SADX 0x004a8b10
+// FUNCTION: SADX 0x004a8b10
 void FUN_004a8b10(NJS_ACTION *param_1, float param_2, int param_3)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(param_1, param_2, param_3, 0.0, (void *)DrawModelMesh);
 }
 
 // STUB: SADX 0x004a8b40

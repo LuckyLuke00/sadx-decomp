@@ -1,4 +1,5 @@
 #include "decls.h"
+extern char DAT_05edbe94[64];
 void FUN_005b6820();
 void FUN_005b6f80(struct task *param_1);
 void itemBoxManager(struct task *tp);
@@ -94,9 +95,15 @@ void InitItemBoxManager()
 	DAT_05edbe80 = -1.0f;
 }
 
-// STUB: SADX 0x005b6740
+// FUNCTION: SADX 0x005b6740
 void EntryItemBoxPanel(long panel)
 {
+	*(long *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 0) = panel;
+	*(float *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 4) = -60.0f;
+	*(float *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 8) = 2.0f;
+	*(int *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 12) = DAT_05edbfe0;
+	DAT_05edbe8c = DAT_05edbe8c + 1;
+	DAT_05edbe88 = 1;
 }
 
 // STUB: SADX 0x005b67b0

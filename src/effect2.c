@@ -4,7 +4,6 @@ long CheckCollisionP(struct NJS_POINT3 *vp, float d);
 void ___njSetConstantMaterial(struct NJS_ARGB *argb);
 struct NJS_POINT3;
 struct NJS_ARGB;
-void ___njDrawLine3D(struct NJS_POINT3COL *, int, unsigned long);
 
 extern struct NJS_ARGB DAT_05b9d7dc;
 extern struct NJS_ARGB DAT_05b9d7ec;

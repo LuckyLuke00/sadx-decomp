@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05cda1d8;
 extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 extern void *DAT_05eda1e0;
 struct thread;
@@ -15,9 +16,16 @@ extern int DAT_05eda200[16];
 extern int DAT_05cda1d4;
 extern int DAT_05cda1d0;
 
-// STUB: SADX 0x005a4c00
+// FUNCTION: SADX 0x005a4c00
 void TH_Queue_Init()
 {
+	int local_8;
+	for (local_8 = 0; local_8 < 0x10; local_8++)
+	{
+		DAT_05eda200[local_8] = (int)&DAT_05cda1d8 + local_8 * 0x20000;
+	}
+	DAT_05cda1d4 = 0xf;
+	DAT_05cda1d0 = 0xf;
 }
 
 // FUNCTION: SADX 0x005a4c90

@@ -336,9 +336,22 @@ void PSetMotion_Next(struct mtnjvwk *mjp, unsigned short patno)
 {
 }
 
-// STUB: SADX 0x004ed170
+// FUNCTION: SADX 0x004ed170
 void PSetMotion_SetStartFrame(struct mtnjvwk *mjp)
 {
+	if (mjp->mtnmode == 6 || 7 == mjp->mtnmode)
+	{
+		mjp->nframe = (float)mjp->plactptr[mjp->action].actptr->motion->nbFrame - 1.0;
+	}
+	else if (!(!(mjp->mtnmode == 3 || mjp->mtnmode == 10 || mjp->mtnmode == 9 || mjp->mtnmode == 0xc)))
+	{
+		mjp->nframe = mjp->start_frame;
+		mjp->start_frame = 0.0;
+	}
+	else
+	{
+		mjp->nframe = 0.0;
+	}
 }
 
 // STUB: SADX 0x004ed210
@@ -733,9 +746,31 @@ void CancelLookingAtP(unsigned char pno)
 	*(unsigned char *)(local_8 + 4) = 0;
 }
 
-// STUB: SADX 0x004f0b10
+// FUNCTION: SADX 0x004f0b10
 void KeepPlayersEyesOnTheTaskP(unsigned char pno, struct task *ttp, unsigned long count)
 {
+	struct NJS_POINT3 local_18m;
+	struct task *local_8g;
+
+	if (DAT_05baf368[pno] == 0)
+	{
+		return;
+	}
+	if (ttp == 0)
+	{
+		return;
+	}
+	local_8g = CreateElementalTask(8, 5, PlayerLookingAt);
+	if (local_8g != 0)
+	{
+		local_18m.z = 0.0f;
+		local_18m.y = local_18m.z;
+		local_18m.x = local_18m.y;
+		local_8g->dest = PlayerLookingAtDestructor;
+		local_8g->awp->work.ub[0] = pno;
+		local_8g->awp->work.ul[2] = count;
+		SetLookingTaskP(pno, ttp, &local_18m);
+	}
 }
 
 // FUNCTION: SADX 0x004f0bb0

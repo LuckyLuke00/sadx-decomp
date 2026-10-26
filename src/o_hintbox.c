@@ -1,4 +1,5 @@
 #include "decls.h"
+void *FUN_0055e540(void);
 static struct task *hintbox_monitor_set(struct task *task_p, enum monitor_mode mode);
 extern void Free(void *mp);
 static long hintbox_test_range(struct task *task_p, float range);
@@ -10,6 +11,12 @@ long FUN_0055f110(struct task *param_1);
 // STUB: SADX 0x0055e2c0
 void ObjectHintbox(struct task *task_p)
 {
+}
+
+// STUB: SADX 0x0055e470
+long hintbox_getwork(struct task *task_p)
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x0055e510
@@ -79,10 +86,20 @@ int FUN_0055eaf0(void *param_1)
 	return (int)0;
 }
 
+// STUB: SADX 0x0055ebc0
+void hintbox_exec_turn(struct task *task_p)
+{
+}
+
 // STUB: SADX 0x0055ec70
 long hintbox_turn(struct task *task_p)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x0055ed40
+void hintbox_exec_turn_wait(struct task *task_p)
+{
 }
 
 // FUNCTION: SADX 0x0055ee00

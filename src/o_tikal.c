@@ -10,8 +10,6 @@ struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(str
 void tikal_illusion_draw(struct task *task_p);
 void FUN_005bb770(struct task *param_1);
 void FUN_005bb7e0(struct task *param_1);
-void njSubVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
-void njAddVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
 void FUN_005bb9d0(struct task *param_1);
 void FUN_005bb910(struct task *param_1, struct NJS_POINT3 *param_2, void *param_3, int param_4);
 

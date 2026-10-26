@@ -953,9 +953,6 @@ struct strCamCartData camCartData[1];
 // GLOBAL: SADX 0x02603700
 int current_event;
 
-// GLOBAL: SADX 0x02603708
-int DAT_02603708[0x200];
-
 // GLOBAL: SADX 0x02603f08
 int evbgmtbl[44];
 
@@ -3275,9 +3272,6 @@ struct NJS_MATERIAL matlist_rhino_jet[1];
 // GLOBAL: SADX 0x04c6a334
 struct obj object_rhino_jet[1];
 
-// GLOBAL: SADX 0x04c6a490
-struct NJS_SPRITE sprite_o_bubble;
-
 // GLOBAL: SADX 0x04c71f9c
 struct NJS_ACTION action_l_walk_s_pyo_born_b[1];
 
@@ -4082,9 +4076,6 @@ float DAT_05b3df3c;
 // GLOBAL: SADX 0x05b3df40
 float DAT_05b3df40;
 
-// GLOBAL: SADX 0x05b3df44
-float DAT_05b3df44;
-
 // GLOBAL: SADX 0x05b3df48
 int DAT_05b3df48;
 
@@ -4865,9 +4856,6 @@ int DAT_05baf4f8[8];
 // GLOBAL: SADX 0x05baf51c
 void *DAT_05baf51c;
 
-// GLOBAL: SADX 0x05baf520
-void *DAT_05baf520;
-
 // GLOBAL: SADX 0x05baf524
 void *DAT_05baf524;
 
@@ -5116,6 +5104,12 @@ unsigned char DAT_05bb00bc;
 
 // GLOBAL: SADX 0x05bb00c0
 struct task *DAT_05bb00c0;
+
+// GLOBAL: SADX 0x05bb00d8
+void *DAT_05bb00d8;
+
+// GLOBAL: SADX 0x05bb5620
+void *DAT_05bb5620;
 
 // GLOBAL: SADX 0x05cb5620
 int DAT_05cb5620;
@@ -5488,9 +5482,6 @@ char DAT_05ccddfe;
 
 // GLOBAL: SADX 0x05ccde00
 int DAT_05ccde00;
-
-// GLOBAL: SADX 0x05ccde04
-int DAT_05ccde04;
 
 // GLOBAL: SADX 0x05ccde08
 int DAT_05ccde08;
@@ -6008,6 +5999,9 @@ int DAT_05cda1d0;
 // GLOBAL: SADX 0x05cda1d4
 int DAT_05cda1d4;
 
+// GLOBAL: SADX 0x05cda1d8
+int DAT_05cda1d8;
+
 // GLOBAL: SADX 0x05eda1d8
 void *DAT_05eda1d8;
 
@@ -6145,6 +6139,9 @@ int DAT_05edbe88;
 
 // GLOBAL: SADX 0x05edbe8c
 int DAT_05edbe8c;
+
+// GLOBAL: SADX 0x05edbe94
+char DAT_05edbe94[64];
 
 // GLOBAL: SADX 0x05edbfd4
 float DAT_05edbfd4;

@@ -1,4 +1,5 @@
 #include "decls.h"
+int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 int FUN_004d97c0(struct taskwk *param_1, int param_2);
 void FUN_004d9850(int param_1);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
@@ -392,9 +393,15 @@ void FUN_004d52d0(char *param_1, char *param_2, NJS_POINT3 *param_3)
 	}
 }
 
-// STUB: SADX 0x004d5330
+// FUNCTION: SADX 0x004d5330
 void FUN_004d5330(char *param_1, int param_2, struct NJS_POINT3 *param_3)
 {
+	switch (FUN_004da3f0(param_1))
+	{
+	case 0:
+		SetPlayerPosition(*(unsigned char *)(*(int *)(*(int *)(param_2 + 0x9c) + 0x20) + 8), 0, param_3, 0);
+		break;
+	}
 }
 
 // STUB: SADX 0x004d7dd0

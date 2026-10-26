@@ -1,4 +1,5 @@
 #include "decls.h"
+static void objNormal(struct task *tp);
 static void objDisplay(struct task *tp);
 extern long o_hit_spd1;
 
@@ -17,7 +18,7 @@ static void objDisplay(struct task *tp)
 #pragma optimize("", on)
 
 // FUNCTION: SADX 0x0060eca0
-void objNormal(struct task *tp)
+static void objNormal(struct task *tp)
 {
 	struct taskwk *local_8;
 
