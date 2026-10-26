@@ -279,15 +279,26 @@ def check_fakematch_kinds() -> list[str]:
     cases = [("raw_address", ["\treturn *(int *)0x00500000;"], "return *(int *)0x00500000;",
               ["\treturn *(int *)0x00900000;"]),
              ("index_game", ["\treturn *(&p[1] - 1);"], "return *(&p[1] - 1);", ["\treturn p[0] & 1;"]),
+             ("neighbor_address", ["\treturn *(&p + 1);"], "return *(&p + 1);", ["\treturn *(p + 1);"]),
+             ("neighbor_address", ["\treturn (&x)[1];"], "return (&x)[1];", ["\treturn (x & 1) + 1;"]),
+             ("neighbor_address", ["\tp = &x - 0x2;"], "p = &x - 0x2;", ["\tp = &x;"]),
              ("address_pun", ["\treturn *(int *)&x;"], "return *(int *)&x;", ["\treturn *p;"]),
              ("address_pun", ["\treturn (*(int (*)[1])&x)[0];"], "return (*(int (*)[1])&x)[0];", ["\treturn p[0];"]),
              ("cast_call", ["\t((void (*)(int))Foo)(x);"], "((void (*)(int))Foo)(x);", ["\tFoo(p, x);"]),
+             ("cast_call", ["\t(*(void (*)(int))Foo)(x);"], "(*(void (*)(int))Foo)(x);", ["\t(*Foo)(p, x);"]),
+             ("cast_call", ["\t((Bar)Foo)(x);"], "((Bar)Foo)(x);", ["\t(*(void (*)(int))p->f)(x);"]),
+             ("cast_call", ["\treinterpret_cast<void (__cdecl *)(int)>(&Foo)(x);"],
+              "reinterpret_cast<void (__cdecl *)(int)>(&Foo)(x);", ["\treinterpret_cast<int *>(p)[0] = x;"]),
+             ("address_pun", ["\treinterpret_cast<int *>(&x)[0] = 1;"], "reinterpret_cast<int *>(&x)[0] = 1;",
+              ["\treinterpret_cast<int *>(p)[0] = 1;"]),
+             ("cast_call", ["\t((void (*)(int))(Foo))(x);"], "((void (*)(int))(Foo))(x);", ["\t((Foo))(p, x);"]),
              ("constant_test", ["\tif (0) x = 1;"], "if (0) x = 1;", ["\twhile (1) x++;"]),
              ("empty_statement", ["\twhile (Bar(x)) ;"], "while (Bar(x)) ;",
               ["\tdo", "\t{", "\t\tx--;", "\t}", "\twhile (x);"]),
              ("empty_block", ["\tif (x)", "\t{", "\t}", "\telse", "\t\tx = 1;"], "{",
               ["\tif (x)", "\t{", "\t\tx = 1;", "\t}"]),
-             ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tint y = x;", "\treturn y;"])]
+             ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tint y = x;", "\treturn y;"]),
+             ("unused_local", ["\tint *y = p->y;", "\treturn x;"], "y", ["\tint *y = p->y;", "\treturn *y;"])]
     failures = []
     for kind, hit, line, plain in cases:
         for body, wanted in ((hit, [(kind, line)]), (plain, [])):

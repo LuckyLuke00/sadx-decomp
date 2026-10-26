@@ -4,8 +4,10 @@ code: a fake match.
 The kinds:
   raw_address      a cast applied to an address in the exe, such as *(T *)0x5edd884
   index_game       an index then an offset, such as *(&p[1] - 1)
-  address_pun      a variable read through a pointer of another type, such as *(int *)&x
-  cast_call        a call through a cast function type, such as ((void (*)(int))f)(a)
+  neighbor_address a variable's address moved by a number, such as *(&p + 1) or (&p)[1]: it reaches what the build
+                   stores next to the variable
+  address_pun      a variable read through a pointer of another type, such as *(int *)&x or reinterpret_cast<int *>(&x)
+  cast_call        a call through a cast function type, such as ((void (*)(int))f)(a) or (*(void (*)(int))f)(a)
   constant_test    if (0), if (1) or while (0); while (1) is a plain loop
   empty_statement  a lone ;, or an if, for or while (not the end of a do) with an empty body
   empty_block      { then } inside a function body
@@ -27,8 +29,17 @@ DECLARATION = re.compile(rf"^\s*({QUALIFIER}[A-Za-z_]\w*)\s*(\*?[\s*]*[A-Za-z_].
 PATTERNS = {
     "raw_address": re.compile(r"\)\s*\(?\s*(0x[0-9a-fA-F]{6,8})\b"),
     "index_game": re.compile(r"(?<!&)&(?!&)\s*[\w.>-]+\s*\[[^\]]+\]\s*[-+]\s*(?:0x[0-9a-fA-F]+|\d+)"),
-    "address_pun": re.compile(r"\*\s*\(\s*[\w\s]+[\s*]*(?:\(\s*\*\s*\)\s*(?:\[[^\]]*\])?)?\s*\)\s*&\s*\w"),
-    "cast_call": re.compile(r"\(\s*\(\s*[\w\s*]+\(\s*(?:__\w+\s*)?\*\s*\)\s*\([^()]*\)\s*\)\s*&?\s*\w+\s*\)\s*\("),
+    # The & follows an operator, so it takes an address: a bitwise and follows a value. reinterpret_cast<T>(&x) is an
+    # address_pun.
+    "neighbor_address": re.compile(r"(?:^|(?<!>)\(|[=,?:]|\breturn)\s*&\s*[A-Za-z_]\w*\s*"
+                                   r"(?:\)\s*\[|[-+]\s*(?:0x[0-9a-fA-F]+|\d+)\b)"),
+    "address_pun": re.compile(r"\*\s*\(\s*[\w\s]+[\s*]*(?:\(\s*\*\s*\)\s*(?:\[[^\]]*\])?)?\s*\)\s*&\s*\w"
+                              r"|reinterpret_cast\s*<(?:[^<>]|<[^<>]*>)*\*\s*>\s*\(\s*&\s*\w"),
+    # In C, ((T)x)(a) is only ever a call through a cast, whether T is spelled out or a typedef. A field is left out:
+    # the struct fixes its type, so a callback in a void * field needs the cast.
+    "cast_call": re.compile(r"\(\s*\*?\s*\(\s*[\w\s*]+(?:\(\s*(?:__\w+\s*)?\*\s*\)\s*\([^()]*\))?\s*\)"
+                            r"\s*&?\s*(?:\w+|\(\s*\w+\s*\))\s*\)\s*\("
+                            r"|reinterpret_cast\s*<[^<>]*\(\s*(?:__\w+\s*)?\*\s*\)[^<>]*>\s*\(\s*&?\s*\w+\s*\)\s*\("),
     "constant_test": re.compile(r"\b(?:if\s*\(\s*[01]\s*\)|while\s*\(\s*0\s*\))"),
 }
 HEAD = re.compile(r"\s*(?:if|for|while)\s*\(")
@@ -113,6 +124,6 @@ def found(func: list[str], at: int, in_image: Callable[[int], bool]) -> list[tup
             hits.append(("empty_block", source))
     text = "\n".join(clean[at + 1:])
     for name, _ in variable_types(clean, at)[1]:
-        if len(re.findall(rf"\b{name}\b", text)) == 1:
+        if len(re.findall(rf"(?<!\.)(?<!->)\b{name}\b", text)) == 1:  # p->name and p.name are members, not uses
             hits.append(("unused_local", name))
     return hits
