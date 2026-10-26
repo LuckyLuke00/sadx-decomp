@@ -2390,11 +2390,6 @@ void DrawMiniGameSelStage(struct MiniGameSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x00603150
-void FUN_00603150(struct task *)
-{
-}
-
 // STUB: SADX 0x00604760
 struct task *SetAdvaSndTestTask(struct task *, struct ModeSelPrmType *)
 {

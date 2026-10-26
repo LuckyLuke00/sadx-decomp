@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void syFree(void *param_1);
+extern void ReleaseMiMessage();
 void ReleaseMiMessage();
 void FUN_004c3310(int *param_1);
 void FUN_004c1c20();

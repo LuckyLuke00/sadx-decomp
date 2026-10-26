@@ -3,7 +3,7 @@ extern unsigned char DAT_00982ec0[];
 extern unsigned char DAT_05cd14ed;
 extern struct task *DAT_05edd9b0;
 
-// STUB: SADX 0x00600e90
+// FUNCTION: SADX 0x00600e90
 struct task *FUN_00600e90(struct ModeSelPrmType *param_1)
 {
 	void *local_cg;
@@ -15,7 +15,7 @@ struct task *FUN_00600e90(struct ModeSelPrmType *param_1)
 	{
 		local_cg = CAlloc(1, 0xd0);
 		local_8g->awp = (struct anywk *)local_cg;
-		((void (*)(struct task *, struct ModeSelPrmType *))SetAdvaMiniGameSelTask)(local_8g, param_1);
+		SetAdvaMiniGameSelTask(local_8g, param_1);
 		local_8g->exec = minigame_sel_exec;
 		local_8g->disp = minigame_sel_disp;
 	}
@@ -23,9 +23,8 @@ struct task *FUN_00600e90(struct ModeSelPrmType *param_1)
 }
 
 // STUB: SADX 0x00600f10
-struct task *SetAdvaMiniGameSelTask(struct ModeSelPrmType *prmp, struct task *src)
+void SetAdvaMiniGameSelTask(struct task *param_1, struct ModeSelPrmType *param_2)
 {
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x00600fc0
@@ -95,9 +94,22 @@ void FUN_00601cf0(struct MiniGameSelWk *param_1)
 	DrawMiniGameSelRank123(param_1);
 }
 
-// STUB: SADX 0x00601d10
+// FUNCTION: SADX 0x00601d10
 void DrawMiniGameSelEmblem(struct MiniGameSelWk *wkp)
 {
+	int local_8;
+
+	if (now_emblem_stg(wkp) == 0)
+	{
+		return;
+	}
+	for (local_8 = 0; local_8 <= 1; local_8++)
+	{
+		if (AvaGetTrialEmblem((enum AvaCharEnum)DAT_05cd14ed, wkp->NowStgActPrm.StgActPtr[wkp->SelStg].Stg, local_8) != 0)
+		{
+			DrawEbmlem((float)(local_8 * 77.0 + 480.0), 194.0f, wkp->BaseZ + -12.0);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x00602340
