@@ -1,6 +1,12 @@
 #include "decls.h"
 extern unsigned char DAT_05bafce4;
 
+// STUB: SADX 0x006be240
+long pastp_control_walk(struct task *task_p)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x006be6e0
 void pastp_walk_end(struct task *task_p)
 {

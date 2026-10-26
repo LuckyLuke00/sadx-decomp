@@ -1,16 +1,22 @@
 #include "decls.h"
 
-// STUB: SADX 0x0069bdf0
+// FUNCTION: SADX 0x0069bdf0
 void Term(struct task *tp)
 {
-	struct taskwk *local_8 = tp->twp;
-	Free(local_8->value.ptr);
-	struct taskwk *local_4 = (struct taskwk *)local_8->timer.ptr;
-	if (local_4 != NULL)
+	struct taskwk *var1 = tp->twp;
+	void *var2 = var1->value.ptr;
+	Free(var2);
+	struct task *var3 = (struct task *)var1->timer.ptr;
+	if (var3 != 0)
 	{
-		FUN_0069bd30((struct task *)(*(int *)&local_4->scl.x));
-		FUN_0069bd30((struct task *)(*(int *)&local_4->scl.y));
-		Free(local_4);
+		FUN_0069bd30((struct task *)var3->awp);
+		FUN_0069bd30((struct task *)var3->thp);
+		Free(var3);
 	}
 	FUN_004c39c0(tp);
+}
+
+// STUB: SADX 0x0069c370
+void CollisionAttackBox(struct task *tp)
+{
 }

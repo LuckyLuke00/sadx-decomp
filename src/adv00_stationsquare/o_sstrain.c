@@ -1,4 +1,10 @@
 #include "decls.h"
+extern unsigned char DAT_05bafba1;
+extern unsigned char DAT_05bafbdc;
+extern unsigned char DAT_05bafc1b;
+extern unsigned char DAT_05bafc53;
+extern unsigned char DAT_05bafc97;
+extern unsigned char DAT_05bafcd2;
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern int DAT_060b5fe0;
@@ -37,4 +43,9 @@ void sstrain_adxprove(struct task *tp)
 		DestroyTask(tp);
 		return;
 	}
+}
+
+// STUB: SADX 0x00691180
+void sstrain_adxcontrol(struct task *tp)
+{
 }

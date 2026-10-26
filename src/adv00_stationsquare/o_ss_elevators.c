@@ -1,4 +1,23 @@
 #include "decls.h"
+long SeqCheckTenbou();
+void BoxInit(struct task *tp);
+
+// STUB: SADX 0x00689320
+long SeqCheckHighway()
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x006893b0
+long SeqCheckTenbou()
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00689580
+void ColliSet(struct taskwk *twp)
+{
+}
 
 // FUNCTION: SADX 0x00689900
 void BoxInit(struct task *tp)
@@ -34,4 +53,14 @@ void BoxInit(struct task *tp)
 	var1->flag |= 0x100;
 	tp->exec = (void (__cdecl *)(struct task *))FUN_007d21b0;
 	tp->dest = FUN_00825de0;
+}
+
+// STUB: SADX 0x006899a0
+void ObjectSSTenbouele(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00689a90
+void ObjectSSHotelele(struct task *tp)
+{
 }

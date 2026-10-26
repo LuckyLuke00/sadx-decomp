@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x006abfb0
+void DispAllStones(struct TMyWork *MyWork)
+{
+}
+
 // STUB: SADX 0x006ac0f0
 int CheckOpenState()
 {

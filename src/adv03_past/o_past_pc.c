@@ -6,9 +6,23 @@ void PASTPcEnd()
 {
 }
 
-// STUB: SADX 0x006bce20
+// STUB: SADX 0x006bcc90
+void pastpc_chao_callback(struct obj *obj_p)
+{
+}
+
+// FUNCTION: SADX 0x006bce20
 void pastpc_end(struct task *task_p)
 {
+	struct taskwk *var1 = task_p->twp;
+	struct pastpc_data *var2 = (struct pastpc_data *)&pastpc_data_tbl[var1->value.l];
+
+	if (var2->index >= 0)
+	{
+		ReleasePlayersTexture(var2->index);
+	}
+	Free(*(void **)((char *)var1 + 0x30));
+	InputHookDelete(task_p);
 }
 
 // STUB: SADX 0x006bce60

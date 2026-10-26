@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct obj object_ssobj_roomlight_roomlight[];
+extern struct obj object_ssobj_roomlight_roomlight[1];
 extern struct obj object_bin_bin_bin;
 extern struct CCL_INFO object_komono_bin_info;
 extern struct obj object_ssobj_isub_isub[1];
@@ -13,9 +15,18 @@ void ObjectSsadvKomonoKeikoto(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0068dd60
+// FUNCTION: SADX 0x0068dd60
 void ObjectSsadvKomonoRoomlight(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		var1->counter.l = (long)object_ssobj_roomlight_roomlight;
+		tp->disp = Object_Ssadv_KomonoDraw;
+		tp->exec = Object_Ssadv_KomonoDraw;
+	}
 }
 
 // FUNCTION: SADX 0x0068dd90

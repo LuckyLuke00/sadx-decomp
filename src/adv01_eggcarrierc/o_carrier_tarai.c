@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct CCL_INFO c_info_button[1];
 extern struct NJS_TEXLIST texlist_ec_tarai;
 extern int DAT_05b9d838;
 extern struct obj *DAT_060eea98;
@@ -12,9 +13,40 @@ float GetPlayerHeight()
 	return (float)0;
 }
 
-// STUB: SADX 0x006a4cc0
+// FUNCTION: SADX 0x006a4cc0
 void TaraiDisp(struct task *tp)
 {
+	struct taskwk *var1;
+	struct motionwk *var2;
+
+	var1 = tp->twp;
+	var2 = tp->mwp;
+	if (DAT_05b9d838 == 0)
+	{
+		___njSetTexture(&texlist_ec_tarai);
+		njPushMatrix(NULL);
+		njTranslateV(NULL, &var1->pos);
+		if (*(int *)((char *)var2 + 0x20) != 0)
+		{
+			njRotateY(NULL, *(unsigned short *)((char *)var2 + 0x20));
+		}
+		if (*(int *)((char *)var2 + 0x28) != 0)
+		{
+			njRotateX(NULL, *(unsigned short *)((char *)var2 + 0x28));
+		}
+		if (*(int *)((char *)var2 + 0x2c) != 0)
+		{
+			njRotateY(NULL, *(unsigned short *)((char *)var2 + 0x2c));
+		}
+		if (*(int *)((char *)var2 + 0x30) != 0)
+		{
+			njRotateZ(NULL, *(unsigned short *)((char *)var2 + 0x30));
+		}
+		SetMaterial(var1->value.f, 0.0f, 0.0f, 0.0f);
+		late_DrawObjectClipMesh(*(struct obj **)((char *)DAT_060eea98 + 0x18), 1, 1.0f);
+		ResetMaterial();
+		njPopMatrix(1);
+	}
 }
 
 // FUNCTION: SADX 0x006a4da0
@@ -72,6 +104,24 @@ void HugeTaraiDisp(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x006a4f50
+void BadeffDisp(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	___njSetTexture(&texlist_ec_tarai);
+	SetMaterial(var1->counter.f, 0.0f, 0.0f, 0.0f);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	late_DrawObject(*(struct obj **)((char *)DAT_060eea98 + 0x28), 4);
+	njPopMatrix(1);
+	ResetMaterial();
+}
+
 // STUB: SADX 0x006a5790
 void BadeffExec(struct task *tp)
 {
@@ -126,7 +176,14 @@ void FUN_006a58a0(float param_1, float param_2, float param_3)
 	var1->disp = BadeffDisp;
 }
 
-// STUB: SADX 0x006a5d10
+// FUNCTION: SADX 0x006a5d10
 void ButtonInit(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->mode = 0;
+	var1->smode = 0xf;
+	var1->wtimer = 0;
+	CCL_Init(tp, c_info_button, 1, 4);
+	tp->exec = ButtonExec;
+	tp->disp = ButtonDisp;
 }

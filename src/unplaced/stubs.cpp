@@ -2627,13 +2627,25 @@ void njRotateZXY(long, long, long, long)
 {
 }
 
-// STUB: SADX 0x006854e0
-void ssp_walk_man_1st(struct task *task_p)
+// STUB: SADX 0x00684750
+long ssp_control_wait(struct task *task_p)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00684cc0
+void ssp_debug_draw(struct task *task_p)
 {
 }
 
-// STUB: SADX 0x006869a0
-void DispPut(struct task *tp)
+// STUB: SADX 0x00685280
+long ssp_new(struct task *task_p, enum sspmotion_type init_mode)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x006854e0
+void ssp_walk_man_1st(struct task *task_p)
 {
 }
 
@@ -2698,8 +2710,8 @@ void DuctDisplayer(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006a4f50
-void BadeffDisp(struct task *tp)
+// STUB: SADX 0x006a4b90
+void ButtonDisp(struct task *tp)
 {
 }
 
@@ -2718,6 +2730,11 @@ void HugeTaraiExec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006a5b00
+void ButtonExec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006a9b80
 void MRPcInit()
 {
@@ -2733,11 +2750,6 @@ void BigGrassDisplayer(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006b2ca0
-void TreeDisplayer(struct task *tp)
-{
-}
-
 // STUB: SADX 0x006bccf0
 void pastpc_draw(struct task *task_p)
 {
@@ -2750,6 +2762,11 @@ void pastpc_exec(struct task *task_p)
 
 // STUB: SADX 0x006bef70
 void pastp_walk_man_1st(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x006bf800
+void DispPastChaosFire(struct task *tp)
 {
 }
 

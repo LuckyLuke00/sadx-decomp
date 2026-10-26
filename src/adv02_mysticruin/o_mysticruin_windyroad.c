@@ -31,14 +31,31 @@ int chk_windyvalley()
 	return 0;
 }
 
+// STUB: SADX 0x006b1080
+void Leaf1Displayer(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006b1140
 void spexec_smoke(struct sp_task *tp, struct sp_link *lp)
 {
 }
 
-// STUB: SADX 0x006b1360
+// FUNCTION: SADX 0x006b1360
 void FUN_006b1360(void)
 {
+	switch (GetPlayerNumber())
+	{
+	case 0:
+		FUN_004f5550(0x95);
+		break;
+	case 2:
+		FUN_004f5550(0xd4);
+		break;
+	case 6:
+		FUN_004f5550(0x191);
+		break;
+	}
 }
 
 // STUB: SADX 0x006b1d40

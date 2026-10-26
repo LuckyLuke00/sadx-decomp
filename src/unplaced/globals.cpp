@@ -293,9 +293,6 @@ struct NJS_ACTION action_sssikake_uradoor[1];
 // GLOBAL: SADX 0x01c8982c
 struct NJS_ACTION action_sssikake_twbdoor[1];
 
-// GLOBAL: SADX 0x01c8b4ec
-struct NJS_ACTION action_sssikake_gesuielebox[1];
-
 // GLOBAL: SADX 0x01c8b98c
 struct obj object_bin_bin_bin;
 
@@ -308,6 +305,9 @@ struct obj object_ssobj_isua_isua[1];
 // GLOBAL: SADX 0x01c8d41c
 struct obj object_ssobj_isub_isub[1];
 
+// GLOBAL: SADX 0x01c8e258
+struct obj object_ssobj_roomlight_roomlight[1];
+
 // GLOBAL: SADX 0x01c91b3c
 struct obj object_ssobj_bigclock_bigclock[1];
 
@@ -317,11 +317,20 @@ struct obj object_ssobj_shop1solt_shop1solt[1];
 // GLOBAL: SADX 0x01c9574c
 struct obj object_ssobj_shop2_radio_shop2_radio[1];
 
+// GLOBAL: SADX 0x01c960ac
+struct obj object_ssobj_shop2robot_shop2robot[1];
+
 // GLOBAL: SADX 0x01c96644
 struct obj object_ssobj_shop2frame_shop2frame[1];
 
+// GLOBAL: SADX 0x01c973ac
+struct obj object_ssobj_elekanban_elekanban[1];
+
 // GLOBAL: SADX 0x01c984fc
 struct obj object_ssobj_twtesuri_twtesuri[1];
+
+// GLOBAL: SADX 0x01c991e4
+struct obj object_ssobj_shop2boxmi_shop2boxmi[1];
 
 // GLOBAL: SADX 0x01c9d500
 struct obj object_sssikake_eggstand_eggstand[1];
@@ -338,6 +347,12 @@ struct obj object_sssikake_kaigansaku_kaigansaku[1];
 // GLOBAL: SADX 0x01ca47d0
 struct obj object_sssikake_kaiganmato_kaiganmato[1];
 
+// GLOBAL: SADX 0x01ca5588
+struct obj object_sssikake_hwbhutter_blkn_hwbhutter_blkn[1];
+
+// GLOBAL: SADX 0x01caa334
+struct obj object_sssikake_blockbase_blockbase[1];
+
 // GLOBAL: SADX 0x01caa774
 struct obj object_sssikake_keyblock_keyblock[1];
 
@@ -353,8 +368,14 @@ struct NJS_TEXLIST texlist_ss_train;
 // GLOBAL: SADX 0x01cbbb8c
 struct NJS_ACTION action_train_base[1];
 
+// GLOBAL: SADX 0x01ccfb28
+struct NJS_TEXLIST texlist_ss_casino;
+
 // GLOBAL: SADX 0x01cd411c
 struct obj object_casinoobj_builg_builg[1];
+
+// GLOBAL: SADX 0x01cd73bc
+struct obj object_casinoobj_casinobuil_casinobuil[1];
 
 // GLOBAL: SADX 0x01e55450
 long TexBankList[6][3];
@@ -451,6 +472,9 @@ struct cnkobj object_breedingflower00_breedingflower00[1];
 
 // GLOBAL: SADX 0x01fb6644
 struct cnkobj object_breedingflower01_breedingflower01[1];
+
+// GLOBAL: SADX 0x01ffffd0
+struct NJS_MKEY_F pos_alm_piyo_reg_r[1];
 
 // GLOBAL: SADX 0x020ffe40
 long vertex_al_hrp_reg_l[153];
@@ -1391,6 +1415,9 @@ struct NJS_TEXLIST texlist_mapSS;
 // GLOBAL: SADX 0x026daf1c
 struct Tex_anim_land_work *land_works[7];
 
+// GLOBAL: SADX 0x026daf38
+struct obj *objs[4];
+
 // GLOBAL: SADX 0x026dcc68
 struct CCL_INFO obj_c_info[2];
 
@@ -1405,6 +1432,9 @@ struct CCL_INFO barricade_c_info[1];
 
 // GLOBAL: SADX 0x026dd66c
 struct obj object_loadsfin_gards_gards[1];
+
+// GLOBAL: SADX 0x026ddf6c
+struct NJS_SPRITE sprite_lamp;
 
 // GLOBAL: SADX 0x026de588
 struct CCL_INFO object_komono_bin_info;
@@ -1439,6 +1469,12 @@ int flg_transform[8];
 // GLOBAL: SADX 0x026df7a0
 struct NJS_TEXLIST texlist_mapEC;
 
+// GLOBAL: SADX 0x026e0b40
+struct NJS_TEXLIST texlist_ec_water;
+
+// GLOBAL: SADX 0x026e0bb4
+struct NJS_TEXLIST texlist_ec_sky;
+
 // GLOBAL: SADX 0x026ed2f0
 struct CCL_INFO cinfo_palm[1];
 
@@ -1469,6 +1505,9 @@ struct NJS_TEXLIST texlist_ec_tarai;
 // GLOBAL: SADX 0x026eff10
 float TARAI_Y;
 
+// GLOBAL: SADX 0x026eff78
+struct CCL_INFO c_info_button[1];
+
 // GLOBAL: SADX 0x026f0870
 struct NJS_TEXLIST texlist_mapMR;
 
@@ -1489,6 +1528,12 @@ struct NJS_ACTION action_g_g0023_eggman[1];
 
 // GLOBAL: SADX 0x0270aec0
 int MRLockSeqVarID[8][4];
+
+// GLOBAL: SADX 0x0270b2c8
+int MRSandSwitchSeqVarID[8];
+
+// GLOBAL: SADX 0x0270b570
+int SeqVarID[8][2];
 
 // GLOBAL: SADX 0x0270b7dc
 struct NJS_POINT3 *pScale_Adv03[3];
@@ -4202,6 +4247,9 @@ struct NJS_POINT2 DAT_05b3e080;
 // GLOBAL: SADX 0x05b3e0d0
 int DAT_05b3e0d0;
 
+// GLOBAL: SADX 0x05b3e0d8
+int *DAT_05b3e0d8;
+
 // GLOBAL: SADX 0x05b3e0e0
 int DAT_05b3e0e0;
 
@@ -4973,6 +5021,9 @@ char DAT_05bafb84;
 // GLOBAL: SADX 0x05bafb86
 unsigned char DAT_05bafb86;
 
+// GLOBAL: SADX 0x05bafb89
+unsigned char DAT_05bafb89;
+
 // GLOBAL: SADX 0x05bafb8d
 char DAT_05bafb8d;
 
@@ -4991,6 +5042,9 @@ unsigned char DAT_05bafb96;
 // GLOBAL: SADX 0x05bafb9d
 unsigned char DAT_05bafb9d;
 
+// GLOBAL: SADX 0x05bafba1
+unsigned char DAT_05bafba1;
+
 // GLOBAL: SADX 0x05bafba3
 unsigned char DAT_05bafba3;
 
@@ -5002,6 +5056,9 @@ unsigned char DAT_05bafbc1;
 
 // GLOBAL: SADX 0x05bafbc2
 unsigned char DAT_05bafbc2;
+
+// GLOBAL: SADX 0x05bafbc7
+unsigned char DAT_05bafbc7;
 
 // GLOBAL: SADX 0x05bafbcf
 unsigned char DAT_05bafbcf;
@@ -5015,6 +5072,9 @@ unsigned char DAT_05bafbd3;
 // GLOBAL: SADX 0x05bafbd5
 unsigned char DAT_05bafbd5;
 
+// GLOBAL: SADX 0x05bafbdc
+unsigned char DAT_05bafbdc;
+
 // GLOBAL: SADX 0x05bafbde
 unsigned char DAT_05bafbde;
 
@@ -5023,6 +5083,9 @@ unsigned char DAT_05bafc01;
 
 // GLOBAL: SADX 0x05bafc02
 unsigned char DAT_05bafc02;
+
+// GLOBAL: SADX 0x05bafc05
+unsigned char DAT_05bafc05;
 
 // GLOBAL: SADX 0x05bafc0b
 unsigned char DAT_05bafc0b;
@@ -5039,6 +5102,9 @@ unsigned char DAT_05bafc11;
 // GLOBAL: SADX 0x05bafc18
 unsigned char DAT_05bafc18;
 
+// GLOBAL: SADX 0x05bafc1b
+unsigned char DAT_05bafc1b;
+
 // GLOBAL: SADX 0x05bafc1d
 unsigned char DAT_05bafc1d;
 
@@ -5054,6 +5120,9 @@ unsigned char DAT_05bafc40;
 // GLOBAL: SADX 0x05bafc41
 unsigned char DAT_05bafc41;
 
+// GLOBAL: SADX 0x05bafc44
+unsigned char DAT_05bafc44;
+
 // GLOBAL: SADX 0x05bafc49
 unsigned char DAT_05bafc49;
 
@@ -5063,11 +5132,17 @@ unsigned char DAT_05bafc4a;
 // GLOBAL: SADX 0x05bafc50
 unsigned char DAT_05bafc50;
 
+// GLOBAL: SADX 0x05bafc53
+unsigned char DAT_05bafc53;
+
 // GLOBAL: SADX 0x05bafc55
 unsigned char DAT_05bafc55;
 
 // GLOBAL: SADX 0x05bafc80
 unsigned char DAT_05bafc80;
+
+// GLOBAL: SADX 0x05bafc83
+unsigned char DAT_05bafc83;
 
 // GLOBAL: SADX 0x05bafc87
 unsigned char DAT_05bafc87;
@@ -5087,6 +5162,9 @@ unsigned char DAT_05bafc92;
 // GLOBAL: SADX 0x05bafc96
 unsigned char DAT_05bafc96;
 
+// GLOBAL: SADX 0x05bafc97
+unsigned char DAT_05bafc97;
+
 // GLOBAL: SADX 0x05bafc99
 unsigned char DAT_05bafc99;
 
@@ -5095,6 +5173,9 @@ unsigned char DAT_05bafcc0;
 
 // GLOBAL: SADX 0x05bafcc1
 unsigned char DAT_05bafcc1;
+
+// GLOBAL: SADX 0x05bafcc2
+unsigned char DAT_05bafcc2;
 
 // GLOBAL: SADX 0x05bafcc8
 unsigned char DAT_05bafcc8;
@@ -5105,8 +5186,14 @@ unsigned char DAT_05bafcc9;
 // GLOBAL: SADX 0x05bafccc
 unsigned char DAT_05bafccc;
 
+// GLOBAL: SADX 0x05bafcd2
+unsigned char DAT_05bafcd2;
+
 // GLOBAL: SADX 0x05bafcd4
 unsigned char DAT_05bafcd4;
+
+// GLOBAL: SADX 0x05bafcd7
+unsigned char DAT_05bafcd7;
 
 // GLOBAL: SADX 0x05bafce4
 unsigned char DAT_05bafce4;
@@ -6496,6 +6583,9 @@ struct NJS_MOTION DAT_060b9144[16];
 
 // GLOBAL: SADX 0x060b9224
 int DAT_060b9224;
+
+// GLOBAL: SADX 0x060b97f0
+long DAT_060b97f0;
 
 // GLOBAL: SADX 0x060b97f4
 struct obj *DAT_060b97f4[4];
