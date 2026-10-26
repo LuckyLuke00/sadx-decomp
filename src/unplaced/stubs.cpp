@@ -1577,6 +1577,16 @@ void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct
 {
 }
 
+// STUB: SADX 0x0054edd0
+void ExecuteSonicSnowBoard(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0054ef10
+void DisplaySonicSnowBoard(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0054fab0
 void DrawBlurOfMetalSonic(struct task *tp)
 {

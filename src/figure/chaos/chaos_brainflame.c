@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int DAT_05b9d838;
+extern float DAT_05b3df40;
+extern struct NJS_TEXANIM anim_c2_brain[1];
 extern struct NJS_SPRITE sprite_c2_brain;
 
 // STUB: SADX 0x008c5bb0

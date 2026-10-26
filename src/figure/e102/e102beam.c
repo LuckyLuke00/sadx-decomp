@@ -41,9 +41,27 @@ void E102BeamDestruct(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005d35b0
+// FUNCTION: SADX 0x005d35b0
 void E102BeamAto(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	switch (local_8->mode)
+	{
+		case 0:
+			local_8->counter.f = 1.0;
+			tp->disp = E102BeamAtoDisplay;
+			local_8->mode = 1;
+		case 1:
+			local_8->counter.f -= 0.10000000149011612;
+			if (local_8->counter.f <= 0.0)
+			{
+				DestroyTask(tp);
+				return;
+			}
+	}
+	E102BeamAtoDisplay(tp);
 }
 
 // STUB: SADX 0x005d3630

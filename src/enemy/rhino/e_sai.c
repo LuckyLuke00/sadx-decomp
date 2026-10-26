@@ -131,9 +131,18 @@ void SaiEditMode(struct taskwk *twp)
 	___dsSetPalette(0);
 }
 
-// STUB: SADX 0x008d8800
+// FUNCTION: SADX 0x008d8800
 void FUN_008d8800(int param_1, int param_2, int param_3)
 {
+	if (*(int *)(param_2 + 0xc) != 0)
+	{
+		Free(*(void **)(param_2 + 0xc));
+	}
+	if (*(int *)(param_2 + 0x10) != 0)
+	{
+		Free(*(void **)(param_2 + 0x10));
+	}
+	FUN_005b5aa0(param_1, param_2, param_3);
 }
 
 // FUNCTION: SADX 0x008d8850

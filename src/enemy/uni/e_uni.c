@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct obj object_uni_a_unibody_unibody[];
+extern struct NJS_TEXLIST texlist_uni_a_unibody;
 void CheckParentDeath(struct task *tp, struct enemywk *ewp);
 void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
 void UniTogeADraw(struct taskwk *twp, struct enemywk *ewp);
@@ -27,9 +29,6 @@ void UniADraw(struct taskwk *twp, struct enemywk *ewp);
 signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToPlayer(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum);
-void FUN_005e5770(struct task *param_1);
-void FreeTaskC(struct task *tp);
-void DeadOut(struct task *pTask);
 
 // STUB: SADX 0x005ca330
 void UniTogeAExecutor(struct task *tp)
@@ -99,9 +98,13 @@ void FUN_005caab0(struct task *tp, struct task *param_2)
 {
 }
 
-// STUB: SADX 0x005cad80
+// FUNCTION: SADX 0x005cad80
 void FUN_005cad80(struct task *param_1, struct taskwk *param_2, struct motionwk *param_3)
 {
+	FUN_005b5aa0(param_1, param_2, param_3);
+	DeadOut(param_1);
+	param_1->exec = FreeTaskC;
+	FUN_005e5770(param_1);
 }
 
 // FUNCTION: SADX 0x005cadc0
@@ -112,10 +115,11 @@ void UniDead(struct taskwk *twp, struct enemywk *ewp)
 	CreateAnimal(0, twp->pos.x, twp->pos.y + 15.0f, twp->pos.z);
 }
 
-// STUB: SADX 0x005cae50
+// FUNCTION: SADX 0x005cae50
 void FUN_005cae50(struct taskwk *param_1, struct enemywk *param_2)
 {
-	struct colliwk *local_8 = param_1->cwp;
+	struct colliwk *local_8;
+	local_8 = param_1->cwp;
 	FUN_005caec0(param_1, param_2);
 	UniADraw(param_1, param_2);
 	if (EnemySearchPlayer(param_1, param_2) != 0)

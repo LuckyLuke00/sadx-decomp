@@ -1,4 +1,9 @@
 #include "decls.h"
+void njGetMatrix(float *param_1);
+void njMultiMatrix(float *param_1, struct NJS_POINT3 *param_2);
+void njUnitMatrix(float *param_1);
+void njPushMatrix(float *param_1);
+void njRotateY(float *param_1, unsigned short param_2);
 void FUN_005bc3f0(void *param_1, void *param_2);
 void RoboHeadTakeOff(struct task *tp, struct enemywk *ewp);
 void RoboHeadWait(struct task *tp, struct enemywk *ewp);

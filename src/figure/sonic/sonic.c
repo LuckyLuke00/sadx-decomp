@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int sonic_snowboard_design;
+extern struct NJS_TEXLIST texlist_s_sboard;
+extern struct NJS_TEXLIST texlist_sb[2];
 void FUN_0054f850(struct playerwk *param_1);
 extern void *DAT_060eea60;
 extern void *DAT_06276b1c;
@@ -44,9 +47,32 @@ void FUN_00547a80(struct task *param_1, struct task *param_2, struct taskwk *par
 {
 }
 
-// STUB: SADX 0x005488e0
+// FUNCTION: SADX 0x005488e0
 void FUN_005488e0(char *param_1, char *param_2, char *param_3)
 {
+	if (*(float *)(param_3 + 0x38) < *(float *)(param_3 + 0xc0))
+		return;
+	int local_8;
+	if ((((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) == 0x800)
+	{
+		if (*(int *)(param_3 + 0x5c) == 4)
+		{
+			local_8 = 0xe1;
+		}
+		else if (*(int *)(param_3 + 0x5c) == 8)
+		{
+			local_8 = 0xe3;
+		}
+		else
+		{
+			local_8 = 0xe2;
+		}
+	}
+	else
+	{
+		local_8 = 0x2d9;
+	}
+	PSetLoopSECallForTheMode((long)local_8, (unsigned char)param_1[8], (short)(signed char)*param_1);
 }
 
 // STUB: SADX 0x00548b90
@@ -66,10 +92,34 @@ long SonicCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struc
 	return (long)0;
 }
 
-// STUB: SADX 0x0054c330
+// FUNCTION: SADX 0x0054c330
 long SonicCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (((twp->flag & 3) == 0))
+	{
+		if ((twp->flag & 0x100) != 0)
+		{
+			twp->mode = 8;
+			return 1;
+		}
+		else if ((0x800 & twp->flag) != 0)
+		{
+			if ((PCheckHoldObject(twp) & 0x200) != 0)
+			{
+				twp->mode = 0x1c;
+				*(unsigned short *)((char *)pwp + 0x124) = 0x39;
+				return 1;
+			}
+			SonicThrowTheObjectOut(twp, mwp, pwp);
+		}
+		twp->mode = 0xc;
+		*(unsigned short *)((char *)pwp + 0x124) = 0x12;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0054c3e0
@@ -143,9 +193,25 @@ void SonicThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 {
 }
 
-// STUB: SADX 0x0054d870
+// FUNCTION: SADX 0x0054d870
 void SonicHoldOnPillar(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	int local_8g;
+	int local_cj;
+	float local_10;
+
+	local_cj = *(int *)((char *)pwp->htp + 0x20);
+	local_8g = *(int *)((char *)pwp->htp + 0x24);
+	if (local_8g == 0)
+	{
+		local_10 = 30.0f;
+	}
+	else
+	{
+		local_10 = *(float *)((char *)local_8g + 0x34);
+	}
+	twp->pos.x = *(float *)((char *)local_cj + 0x20) - njCos(*(long *)((char *)twp + 0x18)) * local_10;
+	twp->pos.z = *(float *)((char *)local_cj + 0x28) - njSin(*(long *)((char *)twp + 0x18)) * local_10;
 }
 
 // STUB: SADX 0x0054d9e0
@@ -281,9 +347,28 @@ void ManageSonicLightSpinChargeExit(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0054ed30
+// FUNCTION: SADX 0x0054ed30
 void SonicSnowBoard(struct task *tp)
 {
+	struct taskwk *local_8g;
+	int local_cg;
+
+	local_8g = tp->twp;
+	local_8g->timer.ptr = *(void **)((char *)DAT_060eea60 + 0x11c);
+	local_cg = (int)(GetGlobalTime() % (unsigned long)(sonic_snowboard_design + 1));
+	if (local_cg >= sonic_snowboard_design)
+	{
+		local_8g->value.ptr = &texlist_s_sboard;
+	}
+	else
+	{
+		local_8g->value.ptr = &texlist_sb[local_cg];
+	}
+	tp->mwp->weight = 0.019999999552965164f;
+	NeonuLoadTexture((struct NJS_TEXLIST *)local_8g->value.ptr);
+	tp->dest = DstrReleaseTexture;
+	tp->exec = ExecuteSonicSnowBoard;
+	tp->disp = DisplaySonicSnowBoard;
 }
 
 // STUB: SADX 0x0054f150
