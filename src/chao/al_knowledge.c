@@ -23,6 +23,11 @@ unsigned char AL_KW_GetPlayerFear(struct task *pChaoTask)
 	return (unsigned char)0;
 }
 
+// STUB: SADX 0x0043cea0
+void AL_KW_AddPlayerFear(struct task *pChaoTask, long add)
+{
+}
+
 // STUB: SADX 0x0043cf50
 unsigned short AL_KW_GetPlayerDistance(struct task *pChaoTask)
 {

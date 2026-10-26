@@ -12,7 +12,18 @@ void OdekakePortWindowDestructor(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x004817c0
+// FUNCTION: SADX 0x004817c0
 void CreateOdekakePortWindow(long PortNum, float xpos, float ypos, unsigned short WaitTime)
 {
+	struct task *var1;
+	struct taskwk *var2;
+
+	var1 = CreateElementalTask(2, 3, OdekakePortWindowExecutor);
+	var1->disp = OdekakePortWindowDisplayer;
+	var1->dest = OdekakePortWindowDestructor;
+	var2 = var1->twp;
+	var2->id = (unsigned char)PortNum;
+	var2->counter.f = xpos;
+	*(int *)((char *)var2 + 0x20) = WaitTime;
+	var2->timer.f = ypos;
 }

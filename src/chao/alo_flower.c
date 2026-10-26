@@ -49,3 +49,22 @@ struct task *ALO_CreateNestFlower(struct task *pNestTask, struct NJS_POINT3 *pPo
 {
 	return (struct task *)0;
 }
+
+// FUNCTION: SADX 0x0046c570
+struct task *ALO_CreateNest(struct task *pChaoTask)
+{
+	struct task *var1;
+	struct taskwk *var2;
+	struct taskwk *var3;
+
+	var1 = CreateChildTask(2, ALO_NestExecutor, pChaoTask);
+	if (var1 != 0)
+	{
+		var2 = var1->twp;
+		var1->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		var3 = pChaoTask->twp;
+		var2->pos = var3->pos;
+		*(int *)((char *)pChaoTask->twp + 0x4c) = 1;
+	}
+	return var1;
+}

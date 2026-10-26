@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float ScreenRaitoX;
+extern float ScreenRaitoY;
 
 // FUNCTION: SADX 0x004741c0
 void BlueButtonModoruDestructor(struct task *tp)
@@ -28,4 +30,23 @@ void CreateBlueButtonModoru(struct task *tp, float xpos, float ypos, long id)
 		var2->ang.y = 0;
 		*(int *)((char *)DAT_05b33018 + 0xfc) = (int)var1;
 	}
+}
+
+// FUNCTION: SADX 0x004746b0
+void CreateBlueButtonModoruCS(struct task *tp, float xpos, float ypos)
+{
+	struct task *var1;
+	struct taskwk *var2;
+
+	var1 = CreateChildTask(2, BlueButtonExecutorCS, tp);
+	var1->disp = BlueButtonDisplayerCS;
+	var1->dest = (void (*)(struct task *))FUN_007d21b0;
+	var2 = var1->twp;
+	var2->btimer = 1;
+	var2->ang.x = 0x5d;
+	var2->wtimer = 0x64;
+	var2->pos.x = ScreenRaitoX * xpos;
+	var2->pos.y = ScreenRaitoY * ypos;
+	var2->ang.y = 0;
+	var2->pos.z = 0.3f;
 }

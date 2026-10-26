@@ -30,9 +30,24 @@ void AL_OdeMenuSetNextStage(enum OdeMenuStage stage)
 	}
 }
 
-// STUB: SADX 0x0047ab00
+// FUNCTION: SADX 0x0047ab00
 void AL_OdeMenuChangeStage()
 {
+	if (DAT_05b330e4 != 0)
+	{
+		FUN_0047a9f0();
+		*(int *)DAT_05b330e4 = *(int *)((char *)DAT_05b330e4 + 4);
+		*(int *)((char *)DAT_05b330e4 + 4) = *(int *)((char *)DAT_05b330e4 + 8);
+		*(int *)((char *)DAT_05b330e4 + 0xc) = 0;
+		*(int *)((char *)DAT_05b330e4 + 0x10) = 0;
+		*(int *)((char *)DAT_05b330e4 + 0x14) = 0;
+		*(int *)((char *)DAT_05b330e4 + 0x1c) = 0;
+		*(int *)((char *)DAT_05b330e4 + 0x24) = 0;
+		*(int *)((char *)DAT_05b330e4 + 0x28) = 2;
+		*(int *)((char *)DAT_05b330e4 + 0x20) = 0;
+		*(int *)((char *)DAT_05b330e4 + 0x34) = 0;
+		*(int *)((char *)DAT_05b330e4 + 0x30) = 0;
+	}
 }
 
 // FUNCTION: SADX 0x0047ab80

@@ -481,10 +481,10 @@ void AL_SetBehaviorWithTimer(struct task *tp, long (*Func)(struct task *), long 
 {
 }
 
-// STUB: SADX 0x0044c420
-const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
+// STUB: SADX 0x0044b270
+long ALBHV_Sleep(struct task *tp)
 {
-	return (const unsigned long *)0;
+	return (long)0;
 }
 
 // STUB: SADX 0x0044ccf0
@@ -504,7 +504,7 @@ void FUN_0044d460(unsigned short *)
 }
 
 // STUB: SADX 0x0044db20
-void FUN_0044db20(struct task *)
+void FUN_0044db20(void)
 {
 }
 
@@ -581,20 +581,37 @@ long ALBHV_Nade(struct task *tp)
 	return (long)0;
 }
 
+// STUB: SADX 0x0045da40
+long ALBHV_DakkoDislike(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045dc20
+void DakkoControl(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0045df90
+long ALBHV_DakkoLike(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0045e500
 long ALBHV_Capture(struct task *tp)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x0045e9f0
-long ALBHV_TurnToMinimal(struct task *tp)
+// STUB: SADX 0x0045eaf0
+long ALBHV_Eat(struct task *tp)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x0045eaf0
-long ALBHV_Eat(struct task *tp)
+// STUB: SADX 0x0045f950
+long ALBHV_TurnToFruit(struct task *tp)
 {
 	return (long)0;
 }
@@ -614,6 +631,36 @@ long ALBHV_GoToAim(struct task *tp)
 // STUB: SADX 0x004629f0
 void AL_ClearPerceptionAll(struct task *tp)
 {
+}
+
+// STUB: SADX 0x00462a30
+long AL_SearchPlayer(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00462b80
+long AL_SearchChao(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00462d30
+long AL_SearchFruit(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00462ed0
+long AL_SearchTree(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00463170
+long AL_SearchToy(struct task *tp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x00463840
@@ -639,14 +686,14 @@ long ALBHV_SuriSuriPlayer(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x004684a0
-extern long ALBHV_Pain(struct task *)
+// STUB: SADX 0x00468170
+long ALBHV_Pleasure(struct task *tp)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x00468800
-long ALBHV_Tameiki(struct task *tp)
+// STUB: SADX 0x004684a0
+extern long ALBHV_Pain(struct task *)
 {
 	return (long)0;
 }
@@ -705,6 +752,11 @@ long ALBHV_Run2(struct task *tp)
 	return (long)0;
 }
 
+// STUB: SADX 0x0046c400
+void ALO_NestExecutor(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0046c5c0
 long ALO_GetTVWatchPos(struct NJS_POINT3 *pPos)
 {
@@ -744,11 +796,6 @@ struct task *AL_BlackmarketMenuCreate(struct task *parent_tp)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x00471ac0
-void AL_BlackmarketCameraFunc(struct _OBJ_CAMERAPARAM *pParam)
-{
-}
-
 // STUB: SADX 0x00471da0
 void AL_EntranceMaster(struct task *tp)
 {
@@ -771,6 +818,16 @@ void BlueButtonExecutor(struct task *tp)
 
 // STUB: SADX 0x00473f50
 void BlueButtonDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00474250
+void BlueButtonExecutorCS(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00474430
+void BlueButtonDisplayerCS(struct task *tp)
 {
 }
 
@@ -836,6 +893,26 @@ void LargeTitleBarExecutor(struct task *tp)
 
 // STUB: SADX 0x0047fe00
 void LargeTitleBarDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00480150
+void CategoryBarExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00480300
+void CategoryBarDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00481030
+void OdekakePortWindowExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004813a0
+void OdekakePortWindowDisplayer(struct task *tp)
 {
 }
 
@@ -926,11 +1003,6 @@ struct alifewk *ALR_Init(struct task *tp)
 	return (struct alifewk *)0;
 }
 
-// STUB: SADX 0x0048c3a0
-void ALR_Destructor(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0048f680
 void ALR_Executor(struct task *tp)
 {
@@ -944,12 +1016,6 @@ void AlrEff_Exe(struct AlrEff *___this, struct NJS_POINT3 *trans, struct NJS_POI
 // STUB: SADX 0x0048fc60
 void AlrEff_SetFlag(struct AlrEff *___this, unsigned char flag)
 {
-}
-
-// STUB: SADX 0x0048fff0
-long AlrCommuSendChaoCommand(struct task *chaoTask_p, struct task *objTask_p, signed char cmnd, signed char objKind)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x00491770
@@ -2924,18 +2990,8 @@ void changere101rend()
 {
 }
 
-// STUB: SADX 0x007108c0
-void AlgKinderAdInit()
-{
-}
-
-// STUB: SADX 0x007108f0
-void AlgKinderAdExit()
-{
-}
-
-// STUB: SADX 0x00711140
-void FUN_00711140()
+// STUB: SADX 0x00711100
+void ALO_RingWinAdd(long)
 {
 }
 

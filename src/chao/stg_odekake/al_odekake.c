@@ -30,7 +30,7 @@ void AL_OdekakeStageExecutor(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0047a7f0
+// FUNCTION: SADX 0x0047a7f0
 void AL_OdekakeStageDestructor(struct task *tp)
 {
 	FUN_004b6520((int)&texlist_al_odekake_menu);
@@ -38,7 +38,7 @@ void AL_OdekakeStageDestructor(struct task *tp)
 	Serif_Stop();
 	AlMsgSelectExit();
 	AlMsgWarnExit();
-	((void (*)(void))FUN_0044db20)();
+	FUN_0044db20();
 	AL_ReleaseMessageTable();
 	AL_ReleaseTex(1);
 }

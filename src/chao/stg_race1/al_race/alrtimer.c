@@ -11,6 +11,11 @@ void AlrTimer_Clear(struct AlrTimer *___this)
 	FUN_00487e70((short *)___this);
 }
 
+// STUB: SADX 0x00488160
+void AlrTimer_SetBest(struct AlrTimer *___this, struct AlrMemory *memory, int cup)
+{
+}
+
 // FUNCTION: SADX 0x004881d0
 void FUN_004881d0(struct AlrTimer *param_1)
 {

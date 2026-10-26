@@ -155,6 +155,9 @@ int DAT_009c2d58[1];
 // GLOBAL: SADX 0x009c610c
 struct NJS_POINT3 DAT_009c610c;
 
+// GLOBAL: SADX 0x009c6620
+const char gsAdTexFilename[21] = {};
+
 // GLOBAL: SADX 0x009c8b18
 struct TaskInfo DAT_009c8b18;
 
@@ -452,8 +455,14 @@ struct cnkobj object_breedingflower01_breedingflower01[1];
 // GLOBAL: SADX 0x020ffe40
 long vertex_al_hrp_reg_l[153];
 
+// GLOBAL: SADX 0x021eeb60
+const struct NJS_MOTION *kBuyerMotionTable[3] = {};
+
 // GLOBAL: SADX 0x021ef528
 struct NJS_TEXLIST texlist_ChaoBlackmarketObj;
+
+// GLOBAL: SADX 0x021f498c
+struct obj object_kin_bl_buyer_buyer[1];
 
 // GLOBAL: SADX 0x021f59c8
 struct obj object_kinblo_lamp_lamp[1];
@@ -494,8 +503,14 @@ struct CCL_INFO ccinfo[1];
 // GLOBAL: SADX 0x02225a18
 struct NJS_TEXLIST texlist_Garden00SSObj;
 
+// GLOBAL: SADX 0x02228b44
+struct obj object_stch_bldoor_waku_waku[1];
+
 // GLOBAL: SADX 0x0222bf24
 struct obj object_stch_racegate_waku_waku[1];
+
+// GLOBAL: SADX 0x0222d178
+struct NJS_MOTION motion_stch_bldoor_waku[1];
 
 // GLOBAL: SADX 0x0222d2f8
 struct NJS_MOTION motion_stch_racegate_waku[1];
@@ -1864,6 +1879,9 @@ struct WIDELINE_TEXDATA wline_pulse;
 
 // GLOBAL: SADX 0x02c0f170
 struct GHSPRITE_ANIM_TABLE animtable_wave[1];
+
+// GLOBAL: SADX 0x02c0f3c4
+struct NJS_TEXLIST gsAdTexlist;
 
 // GLOBAL: SADX 0x02c22c20
 char * *strtbl[5];
@@ -3742,6 +3760,9 @@ int DAT_05b288a0;
 
 // GLOBAL: SADX 0x05b288a4
 int DAT_05b288a4;
+
+// GLOBAL: SADX 0x05b288a8
+char DAT_05b288a8[1];
 
 // GLOBAL: SADX 0x05b288b0
 char DAT_05b288b0[5];
@@ -6848,6 +6869,15 @@ int DAT_060c5ac4;
 // GLOBAL: SADX 0x060c5fc8
 int DAT_060c5fc8;
 
+// GLOBAL: SADX 0x060c60c0
+float DAT_060c60c0;
+
+// GLOBAL: SADX 0x060c60c4
+float DAT_060c60c4;
+
+// GLOBAL: SADX 0x060c60cc
+long DAT_060c60cc;
+
 // GLOBAL: SADX 0x060c60ec
 struct task *DAT_060c60ec;
 
@@ -6905,8 +6935,14 @@ int DAT_060cb31c;
 // GLOBAL: SADX 0x060cb320
 int DAT_060cb320;
 
+// GLOBAL: SADX 0x060cb324
+int DAT_060cb324;
+
 // GLOBAL: SADX 0x060cb328
 void *DAT_060cb328;
+
+// GLOBAL: SADX 0x060cb32c
+int DAT_060cb32c;
 
 // GLOBAL: SADX 0x060cb334
 char DAT_060cb334;

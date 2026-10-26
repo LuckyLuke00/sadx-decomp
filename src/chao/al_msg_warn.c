@@ -6,6 +6,11 @@ void FUN_0044c7e0(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0044c830
+void AlMsgWarnCreate(int winid, float px, float py, float sx, float sy)
+{
+}
+
 // STUB: SADX 0x0044c900
 void AlMsgWarnDelete(int winid)
 {

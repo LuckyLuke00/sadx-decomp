@@ -1,4 +1,6 @@
 #include "decls.h"
+struct task;
+struct taskwk;
 
 // FUNCTION: SADX 0x0048b540
 void ALR_ALRE_Happy(struct taskwk *twp, struct alifewk *awp)
@@ -39,4 +41,25 @@ void ALR_ALRE_Happy(struct taskwk *twp, struct alifewk *awp)
 // STUB: SADX 0x0048ba20
 void ALR_ALRE_Dance(struct taskwk *twp, struct alifewk *awp)
 {
+}
+
+// STUB: SADX 0x0048c3a0
+void ALR_Destructor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0048c3d0
+void ALR_Clear(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0048c4f0
+void FUN_0048c4f0(struct Alr *param_1, struct AlrEffUnit *param_2)
+{
+}
+
+// STUB: SADX 0x0048c610
+float FUN_0048c610(struct al_race *ar)
+{
+	return (float)0;
 }

@@ -26,3 +26,45 @@ long ALBHV_HoldThink(struct task *tp)
 	}
 	return AL_MoveHoldingObject(tp) == 0;
 }
+
+// STUB: SADX 0x0045fc50
+long ALBHV_WearObakeHead(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045fd50
+long ALBHV_Throw(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0045fe40
+long ALBHV_TurnToObakeHead(struct task *tp)
+{
+	return (long)0;
+}
+
+// FUNCTION: SADX 0x0045ff40
+long AL_CheckObakeHead(struct task *tp)
+{
+	struct task *var1;
+	long (*var2)(struct task *);
+
+	var2 = (long (__cdecl *)(struct task *))AL_GetBehavior(tp);
+	if (var2 == ALBHV_Eat || var2 == ALBHV_Sleep || var2 == ALBHV_TurnToObakeHead)
+	{
+		return 0;
+	}
+	var1 = CCL_IsHitKind2(tp->twp, 0x93);
+	if (var1 != 0)
+	{
+		if (ALW_IsHeld(var1) == 0)
+		{
+			MOV_SetAimPos(tp, &var1->twp->pos);
+			AL_SetBehavior(tp, ALBHV_TurnToObakeHead);
+			return 1;
+		}
+	}
+	return 0;
+}

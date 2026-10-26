@@ -4,9 +4,17 @@ extern int DAT_05b2ca04;
 extern char DAT_05b2ca08[];
 int FUN_0046ffb0();
 
-// STUB: SADX 0x0046f6e0
-void FUN_0046f6e0(int param_1)
+// FUNCTION: SADX 0x0046f6e0
+void __fastcall FUN_0046f6e0(int param_1)
 {
+	*(int *)(param_1 + 0) = 0;
+	*(int *)(param_1 + 4) = 0;
+	*(int *)(param_1 + 8) = 0;
+	*(int *)(param_1 + 0xc) = 0;
+	*(int *)(param_1 + 0x10) = 0;
+	*(int *)(param_1 + 0x14) = 0;
+	*(int *)(param_1 + 0x18) = 0;
+	*(int *)(param_1 + 0x1c) = 0;
 }
 
 // STUB: SADX 0x0046f700

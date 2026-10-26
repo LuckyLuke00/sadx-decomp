@@ -1,5 +1,4 @@
 #include "decls.h"
-void FUN_00711140();
 
 // FUNCTION: SADX 0x0046ea30
 void FUN_0046ea30(void *param_1)

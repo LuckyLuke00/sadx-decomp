@@ -1,11 +1,12 @@
 #include "decls.h"
+extern char DAT_05b288a8[1];
 extern char DAT_05b288b0[5];
 extern char DAT_05b288b0[];
 
-// STUB: SADX 0x00443b40
+// FUNCTION: SADX 0x00443b40
 struct AL_RACE_INFO *AL_GetRaceInfo()
 {
-	return (struct AL_RACE_INFO *)0;
+	return (struct AL_RACE_INFO *)DAT_05b288a8;
 }
 
 // STUB: SADX 0x00443ba0

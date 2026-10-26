@@ -1,4 +1,6 @@
 #include "decls.h"
+extern enum eCHAO_STAGE_NUMBER ChaoOldStageNumber;
+extern long ChaoExitStage;
 extern enum eCHAO_STAGE_NUMBER ChaoStageNumber;
 extern void *DAT_05b08844;
 extern int DAT_05b9e064;
@@ -14,7 +16,6 @@ extern int DAT_05aeaa38;
 extern struct task *DAT_05aeaa3c[15];
 extern struct taskwk *DAT_05baf368[8];
 
-void FUN_004f5550(int param_1);
 
 // FUNCTION: SADX 0x0043e000
 enum eCHAO_STAGE_NUMBER AL_GetStageNumber()
@@ -280,7 +281,7 @@ void AL_ExitToStage(long stage, long act)
 	}
 }
 
-// STUB: SADX 0x0043e660
+// FUNCTION: SADX 0x0043e660
 void _al_stage_epilog()
 {
 	___OutputDebugString("ChaoMain Epilog begin\n");
@@ -289,7 +290,7 @@ void _al_stage_epilog()
 		FUN_0043e420();
 		DAT_05aeaa3c[7] = 0;
 	}
-	((void (*)())FUN_007d21b0)();
+	FUN_007d21b0();
 	FUN_005b5aa0();
 	ChaoOldStageNumber = (enum eCHAO_STAGE_NUMBER)-1;
 	ChaoStageNumber = (enum eCHAO_STAGE_NUMBER)-1;

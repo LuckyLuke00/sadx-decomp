@@ -32,6 +32,16 @@ void AlgKinderOrthoQPolyBegin()
 	njSetZUpdateMode(1);
 }
 
+// STUB: SADX 0x0044eee0
+void AlgKinderOrthoQPolyDrawZ(float x0, float x1, float y0, float y1, float z, unsigned long color)
+{
+}
+
+// STUB: SADX 0x0044ef80
+void AlgKinderOrthoTriDrawZ(float x0, float y0, float x1, float y1, float x2, float y2, float z, unsigned long color)
+{
+}
+
 // FUNCTION: SADX 0x0044f030
 void AlgKinderOrthoNjTranslate(float x, float y, float z)
 {

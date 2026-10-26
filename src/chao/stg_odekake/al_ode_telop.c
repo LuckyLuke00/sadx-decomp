@@ -1,4 +1,5 @@
 #include "decls.h"
+struct SAlMsgTelop *var1;
 extern struct task *DAT_05b33104;
 void FreeTask(struct task *tp);
 

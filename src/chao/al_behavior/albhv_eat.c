@@ -29,8 +29,26 @@ long ALBHV_GoToEat(struct task *tp)
 	return 1;
 }
 
-// STUB: SADX 0x0045fb10
+// FUNCTION: SADX 0x0045fb10
 long AL_CheckFruit(struct task *tp)
 {
-	return (long)0;
+	struct task *var1;
+	long (*var2)(struct task *);
+
+	var2 = (long (__cdecl *)(struct task *))AL_GetBehavior(tp);
+	if (var2 == ALBHV_Eat || var2 == ALBHV_Sleep || var2 == ALBHV_TurnToFruit)
+	{
+		return 0;
+	}
+	var1 = CCL_IsHitKind2(tp->twp, 0x83);
+	if (var1 != 0)
+	{
+		if (ALW_IsHeld(var1) == 0)
+		{
+			MOV_SetAimPos(tp, &var1->twp->pos);
+			AL_SetBehavior(tp, ALBHV_TurnToFruit);
+			return 1;
+		}
+	}
+	return 0;
 }

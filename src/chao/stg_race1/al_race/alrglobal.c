@@ -10,6 +10,23 @@ int GetIdLookChao(int *look)
 	return 1;
 }
 
+// FUNCTION: SADX 0x0048f790
+enum Voice_Mode GetVoiceMode()
+{
+	if (DAT_05b33108 == 0)
+		return (enum Voice_Mode)0;
+	switch (*(unsigned char *)((char *)DAT_05b33108 + 0x1460))
+	{
+	case 3:
+	case 4:
+	case 9:
+	case 10:
+		return (enum Voice_Mode)1;
+	default:
+		return (enum Voice_Mode)2;
+	}
+}
+
 // FUNCTION: SADX 0x0048f7e0
 int GetHomeTownFromId(enum IAM *i_am, int id)
 {
@@ -50,10 +67,29 @@ int __fastcall FUN_0048f880(int param_1)
 	return (int)0;
 }
 
-// STUB: SADX 0x0048f8b0
+// FUNCTION: SADX 0x0048f8b0
 int GetRacerInfoFromRank(int rank, enum Alr_Info info)
 {
-	return (int)0;
+	int var1 = FUN_0048f880(rank);
+	if (var1 == 0)
+		return -1;
+	switch (info)
+	{
+	case 0:
+		return *(unsigned char *)(var1 + 0xc4);
+	case 1:
+		return (int)(long)(double)(float)(*(float *)(var1 + 0xd0));
+	case 2:
+		return *(unsigned short *)(*(int *)(*(int *)(var1 + 0xec) + 0xec) + 0x10);
+	case 3:
+		return *(unsigned short *)(*(int *)(*(int *)(var1 + 0xec) + 0xec) + 0xc);
+	case 4:
+		return *(unsigned short *)(*(int *)(*(int *)(var1 + 0xec) + 0xec) + 0xe);
+	case 5:
+		return *(unsigned short *)(*(int *)(*(int *)(var1 + 0xec) + 0xec) + 0x12);
+	default:
+		return -1;
+	}
 }
 
 // STUB: SADX 0x0048f940

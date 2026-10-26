@@ -1,4 +1,5 @@
 #include "decls.h"
+int FUN_00717df0();
 
 // GLOBAL: SADX 0x009c8a60
 static struct TaskInfo ObjectTaskInfo;
