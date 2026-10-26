@@ -228,9 +228,9 @@ def hex_address(address: int) -> str:
     return f"0x{address:08x}"
 
 
-def read_annotations() -> tuple[dict[int, list[str]], dict[int, str]]:
+def read_annotations() -> tuple[dict[int, list[str]], dict[int, str | None]]:
     """The sources under src that annotate each function, as paths relative to the repo, and the name the function's
-    first annotation declares."""
+    first annotation declares, None when it declares none."""
     sources, declared = collections.defaultdict(list), {}
     for rel, text in names.read_sources(progress.ROOT).items():
         for kind, address, sig in names.parse_annotations(text):
@@ -411,10 +411,10 @@ def guide_link(repo: str) -> str:
     return f'<a href="{e(repo)}/blob/HEAD/docs/FIRST-FUNCTION.md">The guide</a>'
 
 
-def file_card(repo: str, rel: str, declared: list[str]) -> str:
+def file_card(repo: str, rel: str, declared: list[str | None]) -> str:
     """A source file as a card that links to it, with the names its functions declare. A placeholder name counts as
-    none yet."""
-    named = [name for name in declared if not name.startswith("FUN_")]
+    none yet, and so does None: a TEMPLATE annotation declares no name, since its name is a comment."""
+    named = [name for name in declared if name and not name.startswith("FUN_")]
     items = "".join(f"<li>{e(name)}</li>" for name in named)
     unnamed = len(declared) - len(named)
     if unnamed:
