@@ -402,6 +402,29 @@ def table_names(tables):
 
 
 @functools.cache
+def table_symbols(tables):
+    """(address, name, size or None) of each function and global in TABLES, or [] without tables."""
+    if not tables:
+        return []
+    functions = [(address, name, None) for address, name in table_names(tables).items()]
+    globals_ = [(int(r["address"], 16), r["name"], int(r["size"]) if r["size"].isdigit() else None)
+                for r in names.table_rows(Path(tables) / "globals.tsv")]
+    return functions + globals_
+
+
+def symbol_at(symbols, address):
+    """The name of the symbol at ADDRESS in SYMBOLS (see table_symbols), `NAME + 0xN` inside a global of known size,
+    or None."""
+    for start, name, size in symbols:
+        if start == address:
+            return name
+    for start, name, size in symbols:
+        if size and start < address < start + size:
+            return f"{name} + {address - start:#x}"
+    return None
+
+
+@functools.cache
 def shared_names(tables):
     """The function names that several functions in TABLES have, or None without tables."""
     if table_names(tables) is None:
@@ -982,12 +1005,19 @@ def feedback(percent, text, address, known, types=None, prefix=False):
             + "Reply with one cpp block again: the declarations and the whole function with the changes.")
 
 
-def refusal(refused):
-    """The note on a 100% try with the REFUSED lines, the (kind, line) pairs that fakematch.found gives."""
+def refusal(refused, name_at=lambda address: None):
+    """The note on a 100% try with the REFUSED lines, the (kind, line) pairs that fakematch.found gives. NAME_AT gives
+    the name of the symbol at an address, or None: a raw address's note names it."""
     lines = []
     for kind, line in refused:
         what = f"the local `{line}`" if kind == "unused_local" else f"`{line}`"
-        lines.append(f"- {what} ({kind}): {PLAIN_FORMS[kind]}")
+        form = PLAIN_FORMS[kind]
+        if kind == "raw_address":
+            known = [f"{m.group(0)} is `{name_at(int(m.group(0), 16))}`"
+                     for m in re.finditer(r"0x[0-9a-fA-F]{6,8}\b", line) if name_at(int(m.group(0), 16))]
+            if known:
+                form = "use it by its name, and declare it: " + ", ".join(known)
+        lines.append(f"- {what} ({kind}): {form}")
     return ("Score 100.00%, but these lines are not plain C, so the match is refused:\n" + "\n".join(lines) + "\n"
             "Reply with one cpp block again: the declarations and the whole function in plain C.")
 
@@ -1500,7 +1530,7 @@ def solve_function(args, file, address, transcript):
                 if in_image and percent == 100:
                     refused = fakematch.found(build.func, signature_index(build.func), in_image)
                 if refused:
-                    note = repairs.note() + refusal(refused)
+                    note = repairs.note() + refusal(refused, lambda a: symbol_at(table_symbols(config["tables"]), a))
                 else:
                     note = repairs.note() + feedback(percent, build.output, address, known, types, args.prefix_feedback)
                 seen[attempt_key(parsed)] = (tries, note)
