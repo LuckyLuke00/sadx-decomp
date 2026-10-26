@@ -74,16 +74,6 @@ void njQuadTextureStart(long)
 {
 }
 
-// STUB: SADX 0x004217d0
-void njDrawSprite2D(struct NJS_SPRITE *, int, float, unsigned long)
-{
-}
-
-// STUB: SADX 0x00422330
-void njDrawPolygon3D(struct NJS_POINT3COL *, int, unsigned long)
-{
-}
-
 // STUB: SADX 0x00422560
 void FUN_00422560(int)
 {
@@ -1048,11 +1038,6 @@ void FUN_004a0520(float, float)
 {
 }
 
-// STUB: SADX 0x004a1530
-void DrawObjectClip(struct obj *, float)
-{
-}
-
 // STUB: SADX 0x004a2440
 void ds_DrawBoxFill2D(float x, float y, float x2, float y2, float pri, unsigned long argb)
 {
@@ -1509,11 +1494,6 @@ void FUN_005015e0(void *)
 {
 }
 
-// STUB: SADX 0x00501c60
-void ReleaseAllPlayersTexture()
-{
-}
-
 // STUB: SADX 0x00501ec0
 void ReleaseTextureForEachGameMode()
 {
@@ -1628,11 +1608,6 @@ void DrawShadow(struct Angle3 *ang, struct NJS_POINT3 *pos, float scl)
 {
 }
 
-// STUB: SADX 0x005538c0
-void EffectFire(struct sp_task *tp, struct sp_link *lp)
-{
-}
-
 // STUB: SADX 0x00553be0
 void CreateInitData()
 {
@@ -1744,6 +1719,11 @@ void disp_npc_message_wait(const char * *message_p)
 float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct NJS_POINT3 *onpnt3, float *onpos)
 {
 	return (float)0;
+}
+
+// STUB: SADX 0x005709b0
+void _Exec(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00571790

@@ -1,4 +1,9 @@
 #include "decls.h"
+void FUN_008babc0(struct obj *param_1);
+void FUN_008bac40(struct taskwk *param_1);
+void FUN_008bad70(struct obj *param_1);
+void FUN_008bae10(struct obj *param_1);
+void FUN_008bad70(struct obj *param_1);
 void FUN_008bad70(struct obj *param_1);
 void FUN_008bb1a0(void *param_1);
 void BaloonScale(struct taskwk *twp);

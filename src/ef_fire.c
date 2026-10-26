@@ -1,6 +1,11 @@
 #include "decls.h"
 extern "C" int rand(void);
 
+// STUB: SADX 0x005538c0
+void EffectFire(struct sp_task *tp, struct sp_link *lp)
+{
+}
+
 // FUNCTION: SADX 0x005539d0
 void CreateFire(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 {

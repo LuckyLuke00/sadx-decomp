@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_05bb5620;
+extern void *DAT_05bb00d8;
 float njInnerProduct(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
 extern void FUN_004f6ef0(void);
 extern void FUN_004f8070(void *param_1);
@@ -15,9 +17,11 @@ long CL_ColPolListInit()
 	return (long)0;
 }
 
-// STUB: SADX 0x004f6ef0
+// FUNCTION: SADX 0x004f6ef0
 void FUN_004f6ef0(void)
 {
+	FUN_004f6f20(&DAT_05bb5620, 0x4000);
+	FUN_004f6f70(&DAT_05bb00d8, 0x100);
 }
 
 // STUB: SADX 0x004f6f20

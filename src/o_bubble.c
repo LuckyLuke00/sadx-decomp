@@ -1,16 +1,12 @@
 #include "decls.h"
 void FUN_008d94c0(struct taskwk *param_1, int param_2);
 void FUN_008d94c0(struct taskwk *param_1, int param_2);
-extern void ___njSetConstantMaterial(struct NJS_ARGB *);
 extern void ___njColorBlendingMode(int, int);
-extern void ResetMaterial();
 void bbl_ripple_set(struct NJS_POINT3 *pos_p, float speed, float fade, float size);
 void FUN_008d9e40(struct task *param_1);
 extern void bubble_child_exec_appear(struct task *task_p);
 extern void bubble_child_draw(struct task *task_p);
 void FUN_008d94c0(struct taskwk *param_1, int param_2);
-extern struct NJS_SPRITE sprite_o_bubble;
-extern int DAT_05b9d838;
 void FUN_008d97e0(struct taskwk *param_1);
 void FUN_008d9000(struct taskwk *param_1, float param_2);
 

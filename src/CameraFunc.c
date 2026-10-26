@@ -651,7 +651,7 @@ void atpAdjustCameraPoint(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_A
 {
 }
 
-// STUB: SADX 0x00569ba0
+// FUNCTION: SADX 0x00569ba0
 void atpAdjustCameraPointWithDistance(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
 {
 	struct NJS_POINT3 local_14m;
@@ -662,12 +662,12 @@ void atpAdjustCameraPointWithDistance(struct taskwk *twp, struct taskwk *ptwp, s
 	local_2c.x = ptwp->pos.x - local_14m.x;
 	local_2c.y = ptwp->pos.y - local_14m.y;
 	local_2c.z = ptwp->pos.z - local_14m.z;
-	local_20g.x = twp->pos.x - (*(struct taskwk *(*))&DAT_05baf368)->pos.x;
-	local_20g.y = twp->pos.y - (*(struct taskwk *(*))&DAT_05baf368)->pos.y;
-	local_20g.z = twp->pos.z - (*(struct taskwk *(*))&DAT_05baf368)->pos.z;
-	twp->pos.x = (local_20g.x - local_2c.x) * DAT_05ccdb04 + local_2c.x + (*(struct taskwk *(*))&DAT_05baf368)->pos.x;
-	twp->pos.y = (local_20g.y - local_2c.y) * DAT_05ccdb04 + local_2c.y + (*(struct taskwk *(*))&DAT_05baf368)->pos.y;
-	twp->pos.z = (local_20g.z - local_2c.z) * DAT_05ccdb04 + local_2c.z + (*(struct taskwk *(*))&DAT_05baf368)->pos.z;
+	local_20g.x = twp->pos.x - DAT_05baf368[0]->pos.x;
+	local_20g.y = twp->pos.y - DAT_05baf368[0]->pos.y;
+	local_20g.z = twp->pos.z - DAT_05baf368[0]->pos.z;
+	twp->pos.x = (local_20g.x - local_2c.x) * DAT_05ccdb04 + local_2c.x + DAT_05baf368[0]->pos.x;
+	twp->pos.y = (local_20g.y - local_2c.y) * DAT_05ccdb04 + local_2c.y + DAT_05baf368[0]->pos.y;
+	twp->pos.z = (local_20g.z - local_2c.z) * DAT_05ccdb04 + local_2c.z + DAT_05baf368[0]->pos.z;
 }
 
 // STUB: SADX 0x00569c90

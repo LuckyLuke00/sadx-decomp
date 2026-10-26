@@ -1,9 +1,9 @@
 #include "decls.h"
+struct task;
 struct task *FUN_004f3870(long level, void (*exec)(struct task *));
 extern void *DAT_05baf4f4;
 extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 void ExecTask(long level);
-extern void *DAT_05baf520;
 void ___OutputDebugString(char *str, ...);
 extern void *DAT_05baf524;
 extern void *DAT_05baf51c;
@@ -112,38 +112,39 @@ void FreeTask(struct task *tp)
 	tp->exec = DestroyTask;
 }
 
-// FUNCTION: SADX 0x004f3c10
+// STUB: SADX 0x004f3c10
 void ExecTask(long level)
 {
+}
+
+// FUNCTION: SADX 0x004f3cc0
+void FUN_004f3cc0(int param_1)
+{
 	struct task *local_10;
-	struct task *local_8g;
+	void (*local_8g)(struct task *);
 	struct task *local_cj;
 
-	if (level == 8)
+	if (param_1 == 8)
 	{
-		level = 7;
+		param_1 = 7;
 	}
-	local_10 = (struct task *)DAT_05baf4d0[level];
+	local_10 = (struct task *)DAT_05baf4d0[param_1];
 	if (local_10 == 0)
 	{
 		return;
 	}
 	while (1)
 	{
-		local_8g = (struct task *)local_10->exec;
+		local_8g = *(void (**)(struct task *))((char *)local_10 + 0x14);
 		local_cj = local_10->next;
-		if (local_cj == local_10)
-		{
-			___OutputDebugString("???????????????[?[?[?[?[?[!!!");
-		}
-		DAT_05baf520 = local_8g;
 		if (local_8g != 0)
 		{
-			DAT_05baf524 = local_10->thp;
-			(*(void (*)(struct task *))local_8g)(local_10);
-			DAT_05baf524 = 0;
+			local_8g(local_10);
 		}
-		DAT_05baf520 = 0;
+		if (local_10->ctp != 0)
+		{
+			FUN_004f3d40(local_10);
+		}
 		local_10 = local_cj;
 		if (local_10 == 0)
 		{
@@ -152,66 +153,9 @@ void ExecTask(long level)
 	}
 }
 
-// FUNCTION: SADX 0x004f3cc0
-void FUN_004f3cc0(int param_1)
-{
-	void *local_10;
-	void *local_8g;
-	void *local_cj;
-
-	if (param_1 == 8)
-	{
-		param_1 = 7;
-	}
-	local_10 = (void *)DAT_05baf4d0[param_1];
-	if (local_10 == 0)
-	{
-		return;
-	}
-	while (1)
-	{
-		local_8g = *(void **)((char *)local_10 + 0x14);
-		local_cj = *(void **)local_10;
-		if (local_8g != 0)
-		{
-			(*(void (*)(void *))local_8g)(local_10);
-		}
-		if (*(void **)((char *)local_10 + 0xc) != 0)
-		{
-			FUN_004f3d40(local_10);
-		}
-		local_10 = local_cj;
-		if (local_10 == 0)
-		{
-			break;
-		}
-	}
-}
-
-// FUNCTION: SADX 0x004f3d40
+// STUB: SADX 0x004f3d40
 void FUN_004f3d40(void *param_1)
 {
-	void *local_8 = *(void **)((char *)param_1 + 0xc);
-	if (!(local_8 != (void *)0))
-		return;
-	while (1)
-	{
-		void *local_c = *(void **)((char *)local_8 + 0x14);
-		void *local_10 = *(void **)local_8;
-		if (local_c != (void *)0)
-		{
-			(*(void (*)(void *))local_c)(local_8);
-		}
-		if (*(void **)((char *)local_8 + 0xc) != (void *)0)
-		{
-			FUN_004f3d40(local_8);
-		}
-		local_8 = local_10;
-		if (local_8 == (void *)0)
-		{
-			break;
-		}
-	}
 }
 
 // FUNCTION: SADX 0x004f3db0

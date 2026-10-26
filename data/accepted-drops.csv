@@ -131,3 +131,6 @@ address,from,to,reason
 0x008d98c0,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
 0x008dae20,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
 0x009134b0,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
+0x004adea0,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
+0x004f3c10,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
+0x004f3d40,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
