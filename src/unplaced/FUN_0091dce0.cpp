@@ -25,6 +25,11 @@ void FUN_0091e1b0()
 	return;
 }
 
+// STUB: SADX 0x0091e1c0
+void __fastcall FUN_0091e1c0(int param_1, int param_2)
+{
+}
+
 // STUB: SADX 0x0091e220
 void FUN_0091e220(void *param_1)
 {
@@ -35,8 +40,18 @@ void FUN_0091e240(int param_1)
 {
 }
 
+// STUB: SADX 0x0091e250
+void __fastcall FUN_0091e250(int param_1)
+{
+}
+
 // STUB: SADX 0x0091e260
 void FUN_0091e260(struct FUN_0091e260_s *param_1, int param_2, char param_3, float param_4, float param_5, float param_6)
+{
+}
+
+// STUB: SADX 0x0091e2b0
+void __fastcall FUN_0091e2b0(int param_1, int param_2, int param_3, int param_4)
 {
 }
 
@@ -67,8 +82,23 @@ int __fastcall FUN_0091e800(int param_1)
 	return *(int *)*(int *)(param_1 + 0x48);
 }
 
+// STUB: SADX 0x0091e810
+void __fastcall FUN_0091e810(int *param_1)
+{
+}
+
 // STUB: SADX 0x0091e850
 void __fastcall FUN_0091e850(int *param_1, int param_2, int param_3)
+{
+}
+
+// STUB: SADX 0x0091e880
+void __fastcall FUN_0091e880(int *param_1)
+{
+}
+
+// STUB: SADX 0x0091ea10
+void __fastcall FUN_0091ea10(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
 }
 
@@ -107,6 +137,11 @@ void __fastcall FUN_0091f2d0(int param_1, int param_2, int param_3, int param_4,
 {
 }
 
+// STUB: SADX 0x0091f390
+void __fastcall FUN_0091f390(void *param_1, int param_2, int param_3, char *param_4, int param_5)
+{
+}
+
 // STUB: SADX 0x0091f440
 void FUN_0091f440(int *param_1)
 {
@@ -133,10 +168,45 @@ float __fastcall FUN_0091f720(int *param_1)
 	return (float)(unsigned int)param_1[4];
 }
 
+// STUB: SADX 0x0091f740
+int __fastcall FUN_0091f740(int *param_1)
+{
+	return (int)0;
+}
+
+// FUNCTION: SADX 0x0091f7b0
+int __fastcall FUN_0091f7b0(int param_1)
+{
+	return *(int *)(param_1 + 0xc);
+}
+
+// FUNCTION: SADX 0x0091f7c0
+int __fastcall FUN_0091f7c0(int param_1)
+{
+	return *(int *)(param_1 + 8);
+}
+
+// STUB: SADX 0x0091f7d0
+void __stdcall FUN_0091f7d0(int *param_1)
+{
+}
+
+// STUB: SADX 0x0091f8a0
+int __fastcall FUN_0091f8a0(int param_1)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x0091f8e0
 int FUN_0091f8e0(int *param_1, int *param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0091f8f0
+char __fastcall FUN_0091f8f0(int param_1, int param_2)
+{
+	return (char)0;
 }
 
 // STUB: SADX 0x0091f920
@@ -147,6 +217,46 @@ int FUN_0091f920(int param_1)
 
 // STUB: SADX 0x0091f930
 int FUN_0091f930(int param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0091f940
+int __fastcall FUN_0091f940(int param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0091f950
+int FUN_0091f950(int param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0091f960
+void __fastcall FUN_0091f960(int param_1)
+{
+}
+
+// STUB: SADX 0x0091f980
+void FUN_0091f980(void)
+{
+}
+
+// STUB: SADX 0x0091f9e0
+int __fastcall FUN_0091f9e0(int *param_1, int param_2)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0091fa10
+int __fastcall FUN_0091fa10(int param_1, int param_2)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0091fa20
+int __fastcall FUN_0091fa20(int param_1, int param_2)
 {
 	return (int)0;
 }

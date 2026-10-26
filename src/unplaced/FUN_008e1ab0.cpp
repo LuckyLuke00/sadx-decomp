@@ -2,6 +2,11 @@
 struct task;
 struct taskwk;
 
+// STUB: SADX 0x008e1ab0
+void FUN_008e1ab0(struct task *param_1)
+{
+}
+
 // FUNCTION: SADX 0x008e1b50
 void FUN_008e1b50(struct task *param_1)
 {

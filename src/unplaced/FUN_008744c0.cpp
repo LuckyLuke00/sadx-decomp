@@ -1,8 +1,14 @@
 #include "decls.h"
 
-// STUB: SADX 0x00874520
+// FUNCTION: SADX 0x00874520
 void FUN_00874520(struct task *param_1, struct obj *param_2)
 {
+	struct taskwk *local_4 = param_1->twp;
+	struct obj *local_8 = GetMobileLandObject();
+	*local_8 = *param_2;
+	local_4->flag &= 0xfeff;
+	local_4->counter.ptr = local_8;
+	RegisterCollisionEntry(0x80000003, param_1, local_8);
 }
 
 // STUB: SADX 0x008745c0

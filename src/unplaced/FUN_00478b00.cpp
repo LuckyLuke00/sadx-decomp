@@ -1,5 +1,11 @@
 #include "decls.h"
 
+// STUB: SADX 0x00478b10
+int __fastcall FUN_00478b10(int param_1, char *param_2)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x00478b40
 int __fastcall FUN_00478b40(int param_1, int param_2)
 {

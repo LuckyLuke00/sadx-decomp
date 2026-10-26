@@ -20,7 +20,18 @@ void FUN_0068c2d0(struct task *param_1)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0068c340
+// FUNCTION: SADX 0x0068c340
 void FUN_0068c340(struct task *param_1)
 {
+	struct taskwk *var1 = param_1->twp;
+
+	if (CheckRangeOut(param_1))
+	{
+		return;
+	}
+	if (!FUN_004c39c0(param_1))
+	{
+		EntryColliList(var1);
+	}
+	FUN_0068c2d0(param_1);
 }

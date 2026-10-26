@@ -64,6 +64,12 @@ void njSetPaletteBankNum(unsigned long param_1, long param_2)
 {
 }
 
+// STUB: SADX 0x004234c0
+long njLoadPaletteFile(char const *param_1, struct NJS_TEXPALETTE *param_2)
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x00423840
 long njSetTextureG(unsigned long param_1)
 {

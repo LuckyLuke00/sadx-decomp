@@ -70,6 +70,11 @@ void FUN_00929f50(int *param_1)
 {
 }
 
+// STUB: SADX 0x00929f70
+void __stdcall FUN_00929f70(char *param_1, char *param_2, int param_3)
+{
+}
+
 // FUNCTION: SADX 0x00929fe0
 void __stdcall FUN_00929fe0(FUN_00929fe0_t *param_1)
 {
@@ -148,6 +153,12 @@ void __stdcall FUN_0092a1e0(int param_1)
 	*(int **)(param_1 + 0xc) = 0;
 }
 
+// STUB: SADX 0x0092a210
+int __fastcall FUN_0092a210(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x0092a2c0
 void __stdcall FUN_0092a2c0(int param_1)
 {
@@ -159,10 +170,10 @@ void __stdcall FUN_0092a2c0(int param_1)
 	*(int **)(param_1 + 0x14) = 0;
 }
 
-// STUB: SADX 0x0092a3b0
-int __stdcall FUN_0092a3b0(int param_1, int param_2, int param_3, int param_4)
+// FUNCTION: SADX 0x0092a3b0
+int __stdcall FUN_0092a3b0(int param_1, int param_2, int param_3, int param_4, int param_5)
 {
-	return (int)0;
+	return FUN_009214b0(*(int *)(param_1 + 0x64)) * param_2 + param_3 * param_4;
 }
 
 // STUB: SADX 0x0092a3d0

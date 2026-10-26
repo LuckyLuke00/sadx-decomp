@@ -9,7 +9,10 @@ void FUN_007d9950(struct task *param_1)
 	}
 }
 
-// STUB: SADX 0x007d9970
-void FUN_007d9970(struct task *tp, int param_2)
+// FUNCTION: SADX 0x007d9970
+void FUN_007d9970(struct task *param_1, int param_2)
 {
+	param_1->twp->mode = param_2;
+	param_1->mwp->spd.x = 0.0f;
+	param_1->mwp->spd.z = 0.0f;
 }
