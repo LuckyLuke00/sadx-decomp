@@ -85,7 +85,8 @@ def signature_after(text: str, pos: int) -> str:
 
 
 def declared_name(sig: str) -> str | None:
-    """The name a declaration or definition declares."""
+    """The name a declaration or definition declares. A __declspec(...) is not a name."""
+    sig = re.sub(r"__declspec\s*\([^()]*\)", "", sig)
     m = re.search(r"\(\s*\*\s*(\w+)", sig)
     if m and re.match(r"[^(]*\(\s*\*", sig):
         return m.group(1)
