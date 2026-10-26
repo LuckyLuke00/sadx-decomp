@@ -49876,14 +49876,6 @@
    "library": false
   },
   {
-   "address": "0x007e6be0",
-   "name": "dispBg",
-   "accuracy": 0.031746031746031744,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
    "address": "0x007e6e00",
    "name": "initBg",
    "accuracy": 0.1,
@@ -49990,17 +49982,17 @@
   {
    "address": "0x007e7e00",
    "name": "ObjectSmallCactusA",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x007e7e20",
    "name": "ObjectSmallCactusB",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50030,9 +50022,9 @@
   {
    "address": "0x007e83c0",
    "name": "ObjectBigCactusC",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50094,9 +50086,9 @@
   {
    "address": "0x007e8920",
    "name": "SetRockyHead01Task",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50110,9 +50102,9 @@
   {
    "address": "0x007e8960",
    "name": "SetRockyHead03Task",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50134,9 +50126,9 @@
   {
    "address": "0x007e8ec0",
    "name": "SetWorm01Task",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50144,7 +50136,7 @@
    "name": "SetWorm02Task",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50294,7 +50286,23 @@
   {
    "address": "0x007ebba0",
    "name": "InvertPos",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007ebd90",
+   "name": "LockedEnemyDead",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007ebe20",
+   "name": "FUN_007ebe20",
+   "accuracy": 0.07142857142857142,
    "effective": false,
    "stub": true,
    "library": false
@@ -50319,6 +50327,14 @@
    "address": "0x007ec550",
    "name": "sht_CalcTargetPos",
    "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007ecac0",
+   "name": "DirectionToPlayer",
+   "accuracy": 0.02857142857142857,
    "effective": false,
    "stub": true,
    "library": false
@@ -50352,7 +50368,7 @@
    "name": "ShtAct2EventCamera",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50428,6 +50444,14 @@
    "library": false
   },
   {
+   "address": "0x007eefe0",
+   "name": "sht_KUMO",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007ef700",
    "name": "TamaDraw2",
    "accuracy": 1.0,
@@ -50484,8 +50508,24 @@
    "library": false
   },
   {
+   "address": "0x007f0650",
+   "name": "FUN_007f0650",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007f0800",
    "name": "RocketDisp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007f0970",
+   "name": "ArmDisp",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68500,6 +68540,14 @@
    "library": false
   },
   {
+   "address": "0x00907d40",
+   "name": "FUN_00907d40",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009086f0",
    "name": "FUN_009086f0",
    "accuracy": 0.6666666666666666,
@@ -68542,9 +68590,9 @@
   {
    "address": "0x009088f0",
    "name": "FUN_009088f0",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68598,9 +68646,9 @@
   {
    "address": "0x009096d0",
    "name": "FUN_009096d0",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68624,7 +68672,7 @@
    "name": "FUN_00909e30",
    "accuracy": 0.3333333333333333,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68644,11 +68692,19 @@
    "library": false
   },
   {
-   "address": "0x0090a0b0",
-   "name": "FUN_0090a0b0",
-   "accuracy": 0.2857142857142857,
+   "address": "0x0090a090",
+   "name": "FUN_0090a090",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0090a0b0",
+   "name": "FUN_0090a0b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -68726,9 +68782,9 @@
   {
    "address": "0x0090b560",
    "name": "FUN_0090b560",
-   "accuracy": 0.4,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68788,9 +68844,9 @@
    "library": false
   },
   {
-   "address": "0x0090cc80",
-   "name": "FUN_0090cc80",
-   "accuracy": 0.10526315789473684,
+   "address": "0x0090cc60",
+   "name": "FUN_0090cc60",
+   "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
    "library": false
@@ -68836,6 +68892,14 @@
    "library": false
   },
   {
+   "address": "0x0090ce90",
+   "name": "ld_b_xhl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0090cec0",
    "name": "ld_b_a",
    "accuracy": 1.0,
@@ -68862,9 +68926,9 @@
   {
    "address": "0x0090cf20",
    "name": "ld_c_e",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68942,9 +69006,9 @@
   {
    "address": "0x0090d070",
    "name": "ld_d_xhl",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69062,9 +69126,9 @@
   {
    "address": "0x0090d260",
    "name": "ld_h_xhl",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69118,9 +69182,9 @@
   {
    "address": "0x0090d350",
    "name": "ld_l_xhl",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69244,11 +69308,19 @@
    "library": false
   },
   {
+   "address": "0x0090d5c0",
+   "name": "ld_a_xhl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0090d5f0",
    "name": "ld_b_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69262,25 +69334,25 @@
   {
    "address": "0x0090d650",
    "name": "ld_d_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d680",
    "name": "ld_e_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d6b0",
    "name": "ld_h_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69292,91 +69364,123 @@
    "library": false
   },
   {
+   "address": "0x0090d710",
+   "name": "ld_xhl_n",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090d750",
+   "name": "ld_a_n",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0090d780",
    "name": "ld_b_xix",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d7c0",
    "name": "ld_c_xix",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d800",
    "name": "ld_d_xix",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d840",
    "name": "ld_e_xix",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d880",
    "name": "ld_h_xix",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d8c0",
    "name": "ld_l_xix",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d900",
    "name": "ld_a_xix",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d940",
    "name": "ld_b_xiy",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d980",
    "name": "ld_c_xiy",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090d9c0",
    "name": "ld_d_xiy",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090da00",
+   "name": "ld_e_xiy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090da40",
+   "name": "ld_h_xiy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090da80",
    "name": "ld_l_xiy",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69460,11 +69564,43 @@
    "library": false
   },
   {
+   "address": "0x0090de80",
+   "name": "ld_xix_n",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0090dee0",
    "name": "ld_xiy_n",
    "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0090df40",
+   "name": "ld_a_xbc",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090df70",
+   "name": "ld_a_xde",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090dfa0",
+   "name": "ld_a_xn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -69526,55 +69662,111 @@
   {
    "address": "0x0090e120",
    "name": "ld_bc_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e150",
    "name": "ld_de_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e180",
    "name": "ld_hl_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e1b0",
    "name": "ld_sp_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e1e0",
    "name": "ld_ix_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e210",
    "name": "ld_iy_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090e240",
+   "name": "ld_bc_xn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090e280",
+   "name": "ld_de_xn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e2c0",
    "name": "ld_hl_xn",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090e300",
+   "name": "ld_sp_xn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090e340",
+   "name": "ld_ix_xn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090e380",
+   "name": "ld_iy_xn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0090e3c0",
+   "name": "FUN_0090e3c0",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0090e440",
+   "name": "FUN_0090e440",
+   "accuracy": 0.125,
    "effective": false,
    "stub": true,
    "library": false
@@ -69686,41 +69878,41 @@
   {
    "address": "0x0090e6f0",
    "name": "pop_bc",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e720",
    "name": "pop_de",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e750",
    "name": "pop_hl",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e780",
    "name": "pop_ix",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090e7b0",
    "name": "pop_iy",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69798,17 +69990,17 @@
   {
    "address": "0x0090ee60",
    "name": "adc_a_b",
-   "accuracy": 0.044444444444444446,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090eed0",
    "name": "adc_a_c",
-   "accuracy": 0.044444444444444446,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69830,17 +70022,17 @@
   {
    "address": "0x0090f020",
    "name": "adc_a_h",
-   "accuracy": 0.044444444444444446,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090f090",
    "name": "adc_a_l",
-   "accuracy": 0.044444444444444446,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69870,49 +70062,49 @@
   {
    "address": "0x0090f500",
    "name": "sub_a_b",
-   "accuracy": 0.05555555555555555,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090f560",
    "name": "sub_a_c",
-   "accuracy": 0.05555555555555555,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090f5c0",
    "name": "sub_a_d",
-   "accuracy": 0.05555555555555555,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090f620",
    "name": "sub_a_e",
-   "accuracy": 0.05555555555555555,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090f680",
    "name": "sub_a_h",
-   "accuracy": 0.05555555555555555,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0090f6e0",
    "name": "sub_a_l",
-   "accuracy": 0.05555555555555555,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70012,6 +70204,14 @@
    "library": false
   },
   {
+   "address": "0x0090fde0",
+   "name": "sbc_a_a",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0090fe20",
    "name": "sbc_a_n",
    "accuracy": 0.034482758620689655,
@@ -70046,9 +70246,9 @@
   {
    "address": "0x009100e0",
    "name": "and_a_c",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70126,25 +70326,25 @@
   {
    "address": "0x00910330",
    "name": "or_a_b",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00910360",
    "name": "or_a_c",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00910390",
    "name": "or_a_d",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70158,15 +70358,23 @@
   {
    "address": "0x009103f0",
    "name": "or_a_h",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00910420",
    "name": "or_a_l",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00910450",
+   "name": "or_a_xhl",
+   "accuracy": 0.1111111111111111,
    "effective": false,
    "stub": true,
    "library": false
@@ -70287,6 +70495,30 @@
    "address": "0x009107d0",
    "name": "xor_a_xiy",
    "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00910830",
+   "name": "cp_a_b",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00910890",
+   "name": "cp_a_c",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009108f0",
+   "name": "cp_a_d",
+   "accuracy": 0.058823529411764705,
    "effective": false,
    "stub": true,
    "library": false
@@ -70492,6 +70724,14 @@
    "library": false
   },
   {
+   "address": "0x009113f0",
+   "name": "dec_xhl",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00911470",
    "name": "dec_xix",
    "accuracy": 0.0425531914893617,
@@ -70510,9 +70750,9 @@
   {
    "address": "0x00911590",
    "name": "add_hl_bc",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70718,25 +70958,25 @@
   {
    "address": "0x00911df0",
    "name": "dec_bc",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00911e10",
    "name": "dec_de",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00911e30",
    "name": "dec_hl",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70750,25 +70990,25 @@
   {
    "address": "0x00911e70",
    "name": "dec_iy",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00911e90",
    "name": "dec_sp",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00911eb0",
    "name": "jp_n",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70892,19 +71132,35 @@
    "library": false
   },
   {
-   "address": "0x009122b0",
-   "name": "FUN_009122b0",
-   "accuracy": 0.09090909090909091,
+   "address": "0x00912230",
+   "name": "jr_nz_e",
+   "accuracy": 0.1,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
-   "address": "0x00912300",
-   "name": "FUN_00912300",
-   "accuracy": 0.07407407407407407,
+   "address": "0x00912270",
+   "name": "djnz",
+   "accuracy": 0.1,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009122b0",
+   "name": "FUN_009122b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00912300",
+   "name": "FUN_00912300",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -70918,17 +71174,17 @@
   {
    "address": "0x009123c0",
    "name": "FUN_009123c0",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00912420",
    "name": "FUN_00912420",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70942,9 +71198,9 @@
   {
    "address": "0x009124e0",
    "name": "FUN_009124e0",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70966,17 +71222,17 @@
   {
    "address": "0x00912600",
    "name": "ret",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00912630",
    "name": "ret_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -71022,33 +71278,33 @@
   {
    "address": "0x009127b0",
    "name": "ret_np",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009127f0",
    "name": "ret_ns",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00912830",
    "name": "reti",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00912860",
    "name": "FUN_00912860",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -71262,33 +71518,65 @@
   {
    "address": "0x009130b0",
    "name": "in_a_n",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x009130e0",
+   "name": "in_a_c",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00913120",
+   "name": "in_b_c",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00913160",
+   "name": "in_c_c",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x009131a0",
+   "name": "in_d_c",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009131e0",
    "name": "in_e_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913220",
    "name": "in_h_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913260",
    "name": "in_l_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -71302,25 +71590,25 @@
   {
    "address": "0x00913300",
    "name": "inir",
-   "accuracy": 0.05714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913370",
    "name": "ind",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009133c0",
    "name": "indr",
-   "accuracy": 0.05555555555555555,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -71476,6 +71764,30 @@
    "library": false
   },
   {
+   "address": "0x009138b0",
+   "name": "rlc_xhl",
+   "accuracy": 0.07142857142857142,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00913910",
+   "name": "rlc_xix",
+   "accuracy": 0.06060606060606061,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00913980",
+   "name": "rlc_xiy",
+   "accuracy": 0.06060606060606061,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009139f0",
    "name": "rlca",
    "accuracy": 0.125,
@@ -71543,6 +71855,22 @@
    "address": "0x00913be0",
    "name": "rl_xhl",
    "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00913c40",
+   "name": "rl_xix",
+   "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00913cb0",
+   "name": "rl_xiy",
+   "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
    "library": false
@@ -71628,6 +71956,14 @@
    "library": false
   },
   {
+   "address": "0x00913ff0",
+   "name": "rrc_xiy",
+   "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00914060",
    "name": "rrca",
    "accuracy": 0.09090909090909091,
@@ -71695,6 +72031,22 @@
    "address": "0x00914260",
    "name": "rr_xhl",
    "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x009142c0",
+   "name": "rr_xix",
+   "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00914330",
+   "name": "rr_xiy",
+   "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
    "library": false
@@ -71780,6 +72132,14 @@
    "library": false
   },
   {
+   "address": "0x00914600",
+   "name": "sla_xiy",
+   "accuracy": 0.06451612903225806,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00914670",
    "name": "sra_a",
    "accuracy": 0.1111111111111111,
@@ -71836,6 +72196,30 @@
    "library": false
   },
   {
+   "address": "0x00914830",
+   "name": "sra_xhl",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00914890",
+   "name": "sra_xix",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00914900",
+   "name": "sra_xiy",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00914970",
    "name": "sll_a",
    "accuracy": 0.13333333333333333,
@@ -71887,6 +72271,22 @@
    "address": "0x00914a90",
    "name": "sll_l",
    "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00914ac0",
+   "name": "sll_xhl",
+   "accuracy": 0.07407407407407407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00914b20",
+   "name": "sll_xix",
+   "accuracy": 0.0625,
    "effective": false,
    "stub": true,
    "library": false
@@ -71956,6 +72356,14 @@
    "library": false
   },
   {
+   "address": "0x00914d50",
+   "name": "srl_xhl",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00914da0",
    "name": "srl_xix",
    "accuracy": 0.06666666666666667,
@@ -71990,17 +72398,17 @@
   {
    "address": "0x00914f40",
    "name": "bit_0_a",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914f70",
    "name": "bit_1_a",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72030,25 +72438,25 @@
   {
    "address": "0x00915030",
    "name": "bit_5_a",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00915060",
    "name": "bit_6_a",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00915090",
    "name": "bit_7_a",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72068,11 +72476,19 @@
    "library": false
   },
   {
+   "address": "0x00915120",
+   "name": "bit_2_b",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00915150",
    "name": "bit_3_b",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72086,17 +72502,17 @@
   {
    "address": "0x009151b0",
    "name": "bit_5_b",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009151e0",
    "name": "bit_6_b",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72118,25 +72534,25 @@
   {
    "address": "0x00915270",
    "name": "bit_1_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009152a0",
    "name": "bit_2_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009152d0",
    "name": "bit_3_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72158,9 +72574,9 @@
   {
    "address": "0x00915360",
    "name": "bit_6_c",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72174,9 +72590,9 @@
   {
    "address": "0x009153c0",
    "name": "bit_0_d",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72222,17 +72638,17 @@
   {
    "address": "0x009154e0",
    "name": "bit_6_d",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00915510",
    "name": "bit_7_d",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72262,9 +72678,9 @@
   {
    "address": "0x009155d0",
    "name": "bit_3_e",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72302,9 +72718,9 @@
   {
    "address": "0x009156c0",
    "name": "bit_0_h",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72374,25 +72790,25 @@
   {
    "address": "0x00915870",
    "name": "bit_1_l",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009158a0",
    "name": "bit_2_l",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009158d0",
    "name": "bit_3_l",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72406,9 +72822,9 @@
   {
    "address": "0x00915930",
    "name": "bit_5_l",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72425,6 +72841,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x009159c0",
+   "name": "bit_0_xhl",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -72470,6 +72894,14 @@
   {
    "address": "0x00915b40",
    "name": "bit_6_xhl",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00915b80",
+   "name": "bit_7_xhl",
    "accuracy": 0.1,
    "effective": false,
    "stub": true,
@@ -72558,6 +72990,30 @@
   {
    "address": "0x00915ee0",
    "name": "bit_2_xiy",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00915f30",
+   "name": "bit_3_xiy",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00915f80",
+   "name": "bit_4_xiy",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00915fd0",
+   "name": "bit_5_xiy",
    "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
@@ -73100,6 +73556,86 @@
    "library": false
   },
   {
+   "address": "0x00916a30",
+   "name": "set_1_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916aa0",
+   "name": "set_2_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916b10",
+   "name": "set_3_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916b80",
+   "name": "set_4_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916bf0",
+   "name": "set_5_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916c60",
+   "name": "set_6_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916cd0",
+   "name": "set_7_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916d40",
+   "name": "set_0_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916db0",
+   "name": "set_1_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00916e20",
+   "name": "set_2_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00916e90",
    "name": "set_3_xiy",
    "accuracy": 0.06666666666666667,
@@ -73126,6 +73662,14 @@
   {
    "address": "0x00916fe0",
    "name": "set_6_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917050",
+   "name": "set_7_xiy",
    "accuracy": 0.06666666666666667,
    "effective": false,
    "stub": true,
@@ -73580,6 +74124,30 @@
    "library": false
   },
   {
+   "address": "0x009177c0",
+   "name": "res_0_xhl",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917800",
+   "name": "res_1_xhl",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917840",
+   "name": "res_2_xhl",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00917880",
    "name": "res_3_xhl",
    "accuracy": 0.125,
@@ -73590,6 +74158,14 @@
   {
    "address": "0x009178c0",
    "name": "res_4_xhl",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917900",
+   "name": "res_5_xhl",
    "accuracy": 0.125,
    "effective": false,
    "stub": true,
@@ -73612,6 +74188,22 @@
    "library": false
   },
   {
+   "address": "0x009179c0",
+   "name": "res_0_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917a30",
+   "name": "res_1_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00917aa0",
    "name": "res_2_xix",
    "accuracy": 0.06666666666666667,
@@ -73620,8 +74212,104 @@
    "library": false
   },
   {
+   "address": "0x00917b10",
+   "name": "res_3_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917b80",
+   "name": "res_4_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00917bf0",
    "name": "res_5_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917c60",
+   "name": "res_6_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917cd0",
+   "name": "res_7_xix",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917d40",
+   "name": "res_0_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917db0",
+   "name": "res_1_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917e20",
+   "name": "res_2_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917e90",
+   "name": "res_3_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917f00",
+   "name": "res_4_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917f70",
+   "name": "res_5_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00917fe0",
+   "name": "res_6_xiy",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00918050",
+   "name": "res_7_xiy",
    "accuracy": 0.06666666666666667,
    "effective": false,
    "stub": true,
@@ -73988,11 +74676,35 @@
    "library": false
   },
   {
+   "address": "0x00918650",
+   "name": "ld_ixh_n",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00918680",
+   "name": "ld_ixl_n",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x009186b0",
+   "name": "ld_iyh_n",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x009186e0",
    "name": "ld_iyl_n",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -75391,6 +76103,38 @@
    "address": "0x0091ad80",
    "name": "BuildZ80",
    "accuracy": 0.03076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0091b1b0",
+   "name": "FUN_0091b1b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0091b1d0",
+   "name": "FUN_0091b1d0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0091b2d0",
+   "name": "FUN_0091b2d0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0091b5f0",
+   "name": "FUN_0091b5f0",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -78591,6 +79335,13 @@
    "library": false
   },
   {
+   "address": "0x00a0aa2c",
+   "name": "CactusTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00a0aa60",
    "name": "CactusTaskInfo",
    "size": 24,
@@ -80010,6 +80761,13 @@
    "size": 20,
    "match": true,
    "library": true
+  },
+  {
+   "address": "0x00a5a974",
+   "name": "DAT_00a5a974",
+   "size": 4,
+   "match": false,
+   "library": false
   },
   {
    "address": "0x00a5e008",
@@ -84968,6 +85726,20 @@
    "library": false
   },
   {
+   "address": "0x0353af30",
+   "name": "DAT_0353af30",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0353af70",
+   "name": "DAT_0353af70",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0353afb0",
    "name": "DAT_0353afb0",
    "size": 4,
@@ -84982,9 +85754,44 @@
    "library": false
   },
   {
+   "address": "0x0353b030",
+   "name": "DAT_0353b030",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x035af6bc",
+   "name": "DAT_035af6bc",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x035af6d8",
    "name": "DAT_035af6d8",
    "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x035af6f4",
+   "name": "DAT_035af6f4",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x035af714",
+   "name": "DAT_035af714",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x035af758",
+   "name": "DAT_035af758",
+   "size": 1,
    "match": false,
    "library": false
   },
@@ -85118,6 +85925,13 @@
    "address": "0x037633e4",
    "name": "object_edv_f_futa_f_futa",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0376486c",
+   "name": "action_edv_f_arm",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -88874,6 +89688,13 @@
    "library": false
   },
   {
+   "address": "0x04cbb1e0",
+   "name": "DAT_04cbb1e0",
+   "size": 11,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04cbc008",
    "name": "_sys_errlist",
    "size": 176,
@@ -89121,5 +89942,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4145722038bcf38120c9539e333f43df16aed026654ae9de9cc15593a38050e5"
+ "inputs_sha256": "4ba1a48a43c66ceb4f0c916ed2f08e4ac61f9eec44ce95a6bf1d78a4864b62ac"
 }

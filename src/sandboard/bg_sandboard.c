@@ -1,11 +1,6 @@
 #include "decls.h"
 extern struct TaskInfo DAT_00a0a32c;
 
-// STUB: SADX 0x007e6be0
-void dispBg(struct task *task_p)
-{
-}
-
 // STUB: SADX 0x007e6e00
 void initBg(struct task *task_p, const void *param_p)
 {

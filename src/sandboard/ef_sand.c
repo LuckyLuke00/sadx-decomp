@@ -1,4 +1,5 @@
 #include "decls.h"
+struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *, struct sp_link *));
 extern struct particle_entry SandParticleEntry;
 extern "C" int rand(void);
 void effectSand(struct sp_task *task_p, struct sp_link *link_p);

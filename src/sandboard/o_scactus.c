@@ -1,15 +1,19 @@
 #include "decls.h"
+extern struct CCL_INFO DAT_0353af70[];
+extern struct CCL_INFO DAT_0353af30;
 extern int DAT_05b9d838;
 extern struct obj object_sunabo_sb_sabos_sb_sabos[1];
 
-// STUB: SADX 0x007e7e00
+// FUNCTION: SADX 0x007e7e00
 void ObjectSmallCactusA(struct task *task_p)
 {
+	MirenInitTask(task_p, &CactusTaskInfo, &DAT_0353af30);
 }
 
-// STUB: SADX 0x007e7e20
+// FUNCTION: SADX 0x007e7e20
 void ObjectSmallCactusB(struct task *task_p)
 {
+	MirenInitTask(task_p, &CactusTaskInfo, &DAT_0353af70);
 }
 
 // FUNCTION: SADX 0x007e80d0

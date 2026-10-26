@@ -4059,14 +4059,20 @@ void SakanaGenerater(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00907d40
+void FUN_00907d40()
+{
+}
+
 // STUB: SADX 0x0090b5e0
 void FUN_0090b5e0(int, int, int, int, int)
 {
 }
 
-// STUB: SADX 0x0090cc80
-void FUN_0090cc80(int)
+// STUB: SADX 0x0090cc60
+extern unsigned char FUN_0090cc60(int)
 {
+	return (unsigned char)0;
 }
 
 // STUB: SADX 0x0090ccb0
@@ -4087,7 +4093,7 @@ void FUN_0090ccf0(int, int)
 }
 
 // STUB: SADX 0x0090cd20
-void Z80_Write2(unsigned short addr, unsigned short data)
+void Z80_Write2(unsigned short, unsigned short)
 {
 }
 

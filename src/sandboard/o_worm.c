@@ -1,4 +1,6 @@
 #include "decls.h"
+extern char DAT_035af758[1];
+extern char DAT_035af714[1];
 extern void njPushMatrix(float *);
 extern void njTranslateV(float *, struct NJS_POINT3 *);
 extern void njRotateY(float *, unsigned short);
@@ -13,16 +15,16 @@ extern void *DAT_035af79c;
 // GLOBAL: SADX 0x00a0ee64
 static struct TaskInfo ObjectTaskInfo;
 
-// STUB: SADX 0x007e8ec0
+// FUNCTION: SADX 0x007e8ec0
 struct task *SetWorm01Task()
 {
-	return (struct task *)0;
+	return SandObjSetChildTask(&ObjectTaskInfo, &DAT_035af714);
 }
 
-// STUB: SADX 0x007e8ee0
+// FUNCTION: SADX 0x007e8ee0
 struct task *SetWorm02Task()
 {
-	return SandObjSetChildTask(&ObjectTaskInfo, (void *)0x35af758);
+	return SandObjSetChildTask(&ObjectTaskInfo, &DAT_035af758);
 }
 
 // FUNCTION: SADX 0x007e8f00

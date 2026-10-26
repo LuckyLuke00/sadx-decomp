@@ -221,6 +221,9 @@ struct ActionParam DAT_00a0a970;
 // GLOBAL: SADX 0x00a0a978
 struct ActionParam DAT_00a0a978;
 
+// GLOBAL: SADX 0x00a0aa2c
+struct TaskInfo CactusTaskInfo;
+
 // GLOBAL: SADX 0x00a0c8d8
 struct TaskInfo ObjectTaskInfo;
 
@@ -235,6 +238,9 @@ void (*DAT_00a34568[4])(struct task *);
 
 // GLOBAL: SADX 0x00a357e8
 void (*DAT_00a357e8[3])(struct task *);
+
+// GLOBAL: SADX 0x00a5a974
+int DAT_00a5a974;
 
 // GLOBAL: SADX 0x01c6e428
 unsigned int DAT_01c6e428;
@@ -2159,14 +2165,35 @@ struct obj object_sunabo_sb_sabos_sb_sabos[1];
 // GLOBAL: SADX 0x0353aef0
 struct ActionParam DAT_0353aef0;
 
+// GLOBAL: SADX 0x0353af30
+struct CCL_INFO DAT_0353af30;
+
+// GLOBAL: SADX 0x0353af70
+struct CCL_INFO DAT_0353af70[1];
+
 // GLOBAL: SADX 0x0353afb0
 void *DAT_0353afb0;
 
 // GLOBAL: SADX 0x0353aff0
 void *DAT_0353aff0;
 
+// GLOBAL: SADX 0x0353b030
+void *DAT_0353b030;
+
+// GLOBAL: SADX 0x035af6bc
+struct ActionParam DAT_035af6bc;
+
 // GLOBAL: SADX 0x035af6d8
 struct ActionParam DAT_035af6d8;
+
+// GLOBAL: SADX 0x035af6f4
+struct ActionParam DAT_035af6f4;
+
+// GLOBAL: SADX 0x035af714
+char DAT_035af714[1];
+
+// GLOBAL: SADX 0x035af758
+char DAT_035af758[1];
 
 // GLOBAL: SADX 0x035af79c
 void *DAT_035af79c;
@@ -2224,6 +2251,9 @@ struct NJS_ACTION action_shot_s_ecfire;
 
 // GLOBAL: SADX 0x037633e4
 struct obj object_edv_f_futa_f_futa[1];
+
+// GLOBAL: SADX 0x0376486c
+struct NJS_ACTION action_edv_f_arm[1];
 
 // GLOBAL: SADX 0x0376f7c4
 struct NJS_ACTION action_beamev_s_beam[1];
@@ -3559,6 +3589,9 @@ int DAT_04c7c0c0;
 
 // GLOBAL: SADX 0x04c7d76c
 void (*egm3_exec[5])(struct task *);
+
+// GLOBAL: SADX 0x04cbb1e0
+char DAT_04cbb1e0[11];
 
 // GLOBAL: SADX 0x05a6401c
 struct NJS_MODEL DAT_05a6401c;
@@ -7552,6 +7585,18 @@ int DAT_060ce470;
 
 // GLOBAL: SADX 0x060ce4a8
 int DAT_060ce4a8;
+
+// GLOBAL: SADX 0x060ce608
+float DAT_060ce608;
+
+// GLOBAL: SADX 0x060ce60c
+float DAT_060ce60c;
+
+// GLOBAL: SADX 0x060ce610
+float DAT_060ce610;
+
+// GLOBAL: SADX 0x060ce614
+float DAT_060ce614;
 
 // GLOBAL: SADX 0x060ce758
 long DAT_060ce758;

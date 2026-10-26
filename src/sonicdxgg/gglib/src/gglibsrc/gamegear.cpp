@@ -29,9 +29,10 @@ void __fastcall FUN_0090b540(void *param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x0090b560
+// FUNCTION: SADX 0x0090b560
 void __fastcall FUN_0090b560(void *param_1, void *param_2, int param_3)
 {
+	*(int *)((char *)*(int *)((char *)param_1 + 0x40) + 0x196a4) = param_3;
 }
 
 // FUNCTION: SADX 0x0090b5b0

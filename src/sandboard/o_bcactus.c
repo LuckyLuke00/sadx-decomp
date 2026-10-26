@@ -1,4 +1,5 @@
 #include "decls.h"
+extern void *DAT_0353b030;
 extern void *DAT_0353afb0;
 // GLOBAL: SADX 0x00a0aa60
 static struct TaskInfo CactusTaskInfo;
@@ -16,7 +17,8 @@ void ObjectBigCactusB(struct task *task_p)
 	MirenInitTask(task_p, &CactusTaskInfo, &DAT_0353aff0);
 }
 
-// STUB: SADX 0x007e83c0
+// FUNCTION: SADX 0x007e83c0
 void ObjectBigCactusC(struct task *task_p)
 {
+	MirenInitTask(task_p, &CactusTaskInfo, &DAT_0353b030);
 }
