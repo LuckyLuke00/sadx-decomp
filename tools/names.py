@@ -261,6 +261,11 @@ class Types:
             s = re.search(r"sizeof\(\w+\) == (0x[0-9a-f]+)", block)
             self.size[name] = int(s.group(1), 16) if s else None
 
+    def offsets(self, name: str) -> dict[str, int]:
+        """member: offset of each member of the type NAME that its offsetof asserts give."""
+        return {member: int(offset, 16) for member, offset in
+                re.findall(r"static_assert\(offsetof\(\w+, (\w+)\) == (0x[0-9a-f]+)", self.blocks.get(name, ""))}
+
 
 def element_size(base: str, types: Types) -> int | None:
     t = re.sub(r"\bconst\b|\bvolatile\b", "", base).strip()
