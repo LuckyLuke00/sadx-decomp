@@ -7,11 +7,6 @@ void FUN_00402d00()
 {
 }
 
-// STUB: SADX 0x00405380
-void FUN_00405380(int)
-{
-}
-
 // STUB: SADX 0x00407e30
 int FUN_00407e30()
 {
@@ -34,11 +29,6 @@ int __fastcall FUN_004199f0(void *, float)
 	return (int)0;
 }
 
-// STUB: SADX 0x0041b120
-extern void FUN_0041b120(int, int)
-{
-}
-
 // STUB: SADX 0x0041b7e0
 void RenderTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int)
 {
@@ -46,11 +36,6 @@ void RenderTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float
 
 // STUB: SADX 0x0041dc60
 void GetTextSize(wchar_t const *,int &,int &)
-{
-}
-
-// STUB: SADX 0x004208c0
-void FUN_004208c0(int, int, const wchar_t*, int, float, float)
 {
 }
 
@@ -90,32 +75,16 @@ int syTmrGetCount()
 	return (int)0;
 }
 
-// STUB: SADX 0x00423920
-long njReleaseTexture(struct NJS_TEXLIST *)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x004239f0
-void njReleaseTextureAll(void)
-{
-}
-
 // STUB: SADX 0x00423b40
 long njLoadTexture(struct NJS_TEXLIST *)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x00423db0
-long FUN_00423db0(const char *, struct NJS_TEXLIST *)
+// STUB: SADX 0x00423c50
+long njLoadTexturePvmMemory(unsigned char *,struct NJS_TEXLIST *)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x00423ee0
-extern void njPrintC(int, char const *)
-{
 }
 
 // STUB: SADX 0x00423f70
@@ -128,11 +97,6 @@ void njSetCamera(struct NJS_CAMERA *)
 {
 }
 
-// STUB: SADX 0x004253d0
-void njStartMotionObjEx(struct NJS_MOTION const *, float)
-{
-}
-
 // STUB: SADX 0x00425640
 void njMotionTransformEx(struct obj const *)
 {
@@ -140,11 +104,6 @@ void njMotionTransformEx(struct obj const *)
 
 // STUB: SADX 0x00425830
 void njMotionLinkTransformEx(struct obj const *)
-{
-}
-
-// STUB: SADX 0x004258c0
-void _njPushPopGetMotionDataArray(struct obj const *)
 {
 }
 
@@ -170,6 +129,11 @@ void stDirect3DFinish(void)
 
 // STUB: SADX 0x00426a60
 void stDrawPlist(short *)
+{
+}
+
+// STUB: SADX 0x00427310
+void stDrawLine3D(struct NJS_POINT3COL *)
 {
 }
 
@@ -229,6 +193,11 @@ void _gjRender2DReset(void)
 {
 }
 
+// STUB: SADX 0x004304b0
+void _gjRender3DSet(void)
+{
+}
+
 // STUB: SADX 0x004304e0
 void _gjBeforeRender(void)
 {
@@ -259,20 +228,14 @@ void _gjTrans2D(int)
 {
 }
 
-// STUB: SADX 0x004309b0
-void njCalcVector(float *, struct NJS_POINT3 *, struct NJS_POINT3 *)
+// STUB: SADX 0x004308e0
+void _gjTrans3D(enum GJ_DEV_BLEND)
 {
 }
 
 // STUB: SADX 0x00430b70
 extern void njPushMatrix(float *)
 {
-}
-
-// STUB: SADX 0x00431900
-float njSqrt(float)
-{
-	return (float)0;
 }
 
 // STUB: SADX 0x00431950
@@ -289,11 +252,6 @@ float njSin(int)
 
 // STUB: SADX 0x00432d10
 void njScaleEx(void *)
-{
-}
-
-// STUB: SADX 0x004333e0
-void njTranslateEx(void *)
 {
 }
 
@@ -324,11 +282,6 @@ void stFogColor(unsigned long)
 
 // STUB: SADX 0x00434ad0
 void stSetFogTable(float *)
-{
-}
-
-// STUB: SADX 0x004351c0
-void _pdVibMxServer(void)
 {
 }
 
@@ -500,11 +453,6 @@ long AlMsgFontCreateWStr_Thread(struct SAlMsgFontStr *, const unsigned short *, 
 
 // STUB: SADX 0x0044d460
 void FUN_0044d460(unsigned short *)
-{
-}
-
-// STUB: SADX 0x0044db20
-void FUN_0044db20(void)
 {
 }
 
@@ -1251,11 +1199,6 @@ void FUN_004b5e70(int)
 {
 }
 
-// STUB: SADX 0x004b6460
-void FUN_004b6460(struct NJS_TEXLIST *, char *)
-{
-}
-
 // STUB: SADX 0x004b6f80
 void FileSelModeWakeProcedure(struct FileSelWk *wkp)
 {
@@ -1667,6 +1610,12 @@ void ProcessStatusTable1P()
 {
 }
 
+// STUB: SADX 0x00551690
+float GetShadowPos(float x, float y, float z, struct Angle3 *ang)
+{
+	return (float)0;
+}
+
 // STUB: SADX 0x00551cf0
 void StaticShadow(struct taskwk *twp, float ypos)
 {
@@ -1761,11 +1710,6 @@ void FUN_0056aea0(int)
 
 // STUB: SADX 0x0056bb90
 void FUN_0056bb90()
-{
-}
-
-// STUB: SADX 0x0056bcd0
-void FUN_0056bcd0()
 {
 }
 
@@ -2067,11 +2011,6 @@ void EffectSpinDSInit(struct taskwk *twp)
 
 // STUB: SADX 0x005b0870
 void EffectDashExecute(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b2480
-void FUN_005b2480(int)
 {
 }
 
@@ -2586,11 +2525,6 @@ float njInnerProduct(struct NJS_POINT3 *, struct NJS_POINT3 *)
 	return (float)0;
 }
 
-// STUB: SADX 0x0067d3f0
-void njGetMatrix(float *)
-{
-}
-
 // STUB: SADX 0x0067d4c0
 extern void njRotateX(float *, unsigned short)
 {
@@ -3028,11 +2962,6 @@ void changere101rend()
 
 // STUB: SADX 0x00711100
 void ALO_RingWinAdd(long)
-{
-}
-
-// STUB: SADX 0x00711c20
-extern void FUN_00711c20()
 {
 }
 
@@ -3658,11 +3587,6 @@ void ObjectSkydeck_eff_hahen1_Exec(struct task *tp)
 
 // STUB: SADX 0x0084e4b0
 void FUN_0084e4b0(int)
-{
-}
-
-// STUB: SADX 0x00850d10
-void FUN_00850d10(struct task *)
 {
 }
 

@@ -8,6 +8,11 @@ void __fastcall FUN_0040c300(void *ptr, int dummy, int free_flag)
 {
 }
 
+// STUB: SADX 0x0040c340
+void __fastcall FUN_0040c340(int *param_1)
+{
+}
+
 // STUB: SADX 0x0040c3a0
 void FUN_0040c3a0(int param_1)
 {
@@ -79,6 +84,11 @@ void * __fastcall FUN_0040d120(unsigned int param_1)
 
 // STUB: SADX 0x0040d1b0
 void FUN_0040d1b0(int *param_1, int *param_2)
+{
+}
+
+// STUB: SADX 0x0040d220
+void __fastcall FUN_0040d220(int *param_1)
 {
 }
 

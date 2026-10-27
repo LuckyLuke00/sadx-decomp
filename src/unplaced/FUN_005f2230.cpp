@@ -1,4 +1,5 @@
 #include "decls.h"
+extern void *DAT_05edd884;
 void FUN_005f24e0(void *param_1);
 void FUN_005f34f0(void *param_1);
 void FUN_005f3310(float);
@@ -62,9 +63,18 @@ void FUN_005f32f0(struct task *param_1)
 	FUN_005f3310(*(float *)((char *)param_1 + 0x10));
 }
 
-// STUB: SADX 0x005f3310
+// FUNCTION: SADX 0x005f3310
 void FUN_005f3310(float param_1)
 {
+	float local_8g;
+	float local_cg;
+
+	___njSetTexture(&texlist_ava_new_menu);
+	ghSetPvrTexMaterial(0xffffffff);
+	local_cg = 0.0f;
+	local_8g = -18.0f;
+	DrawTexture(0, 0, 0x280, 0x1e0, 0.99f, (Magic::RenderCore::Texture *)DAT_05edd884, 0.0f, 0.0f, 1.0f, 1.0f, -1);
+	___njSetTexture(&texlist_ava_new_menu);
 }
 
 // STUB: SADX 0x005f3390

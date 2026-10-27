@@ -1,5 +1,11 @@
 #include "decls.h"
 #include <math.h>
+extern float _nj_unit_matrix_[16];
+void njCalcVector(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
+void njAddVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
+void njTranslateV(float *param_1, struct NJS_POINT3 *param_2);
+float njCos(int param_1);
+float njSin(int param_1);
 struct taskwk;
 void njPushMatrix(float *param_1);
 void njRotateZ(float *param_1, int param_2);
@@ -48,7 +54,30 @@ void FUN_008c9ae0(struct NJS_POINT3 *param_1, struct Angle3 *param_2, int param_
 {
 }
 
-// STUB: SADX 0x008c9c00
-void FUN_008c9c00(struct NJS_POINT3 *param_1, struct taskwk *param_2)
+// FUNCTION: SADX 0x008c9c00
+void FUN_008c9c00(struct NJS_POINT3 *param_1, struct taskwk *param_2, int param_3)
 {
+	struct NJS_POINT3 local_14;
+	local_14.x = 0.0;
+	local_14.y = 0.0;
+	local_14.z = 0.0;
+	local_14.z = (float)((double)njCos((long)((double)param_3 * 360.0 / (double)param_2->scl.x * 65536.0 / 360.0)) * (double)param_2->scl.y);
+	local_14.x = (float)((double)njSin((long)((double)param_3 * 360.0 / (double)param_2->scl.x * 65536.0 / 360.0)) * (double)param_2->scl.y);
+	njPushMatrix(&_nj_unit_matrix_[0]);
+	njTranslateV(0, &param_2->pos);
+	if (param_2->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)param_2->ang.z);
+	}
+	if (param_2->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)param_2->ang.x);
+	}
+	if (param_2->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)param_2->ang.y);
+	}
+	njCalcVector(0, &local_14, param_1);
+	njAddVector(param_1, &param_2->pos);
+	njPopMatrix(1);
 }

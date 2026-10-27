@@ -1,5 +1,12 @@
 #include "decls.h"
 
+#pragma optimize("", off)
+// STUB: SADX 0x004351c0
+void _pdVibMxServer(void)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x00435270
 void _pdVibMxInit(void)
 {

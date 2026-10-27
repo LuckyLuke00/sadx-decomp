@@ -1,9 +1,10 @@
 #include "decls.h"
 extern struct task *DAT_060ccb48;
 
-// STUB: SADX 0x007dc070
+// FUNCTION: SADX 0x007dc070
 void FUN_007dc070(float param_1)
 {
+	*(float *)((char *)DAT_060ccb48->twp->value.ptr + 4) = param_1;
 }
 
 // FUNCTION: SADX 0x007dc090

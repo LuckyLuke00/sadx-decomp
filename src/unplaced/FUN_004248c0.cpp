@@ -6,10 +6,10 @@ void __fastcall FUN_004248c0(void *param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x004248f0
-float FUN_004248f0(int param_1)
+// FUNCTION: SADX 0x004248f0
+float __stdcall FUN_004248f0(int param_1)
 {
-	return (float)0;
+	return 0.0f;
 }
 
 // FUNCTION: SADX 0x00424900
@@ -19,7 +19,7 @@ char __stdcall FUN_00424900(int param_1, int param_2, int param_3, int param_4)
 }
 
 // STUB: SADX 0x00424910
-int __fastcall FUN_00424910(int *param_1, int param_2)
+int __fastcall FUN_00424910(int *param_1, int param_2, int param_3)
 {
 	return (int)0;
 }
@@ -29,8 +29,8 @@ void __fastcall FUN_00424950(int *param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x00424960
+// FUNCTION: SADX 0x00424960
 void* SOCFileStream::FUN_00424960()
 {
-	return (void*)0;
+	return *(void **)this;
 }

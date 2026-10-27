@@ -115,9 +115,14 @@ void FUN_008c41a0(char *param_1)
 }
 
 // STUB: SADX 0x008c4210
-void *FUN_008c4210(int param_1)
+void *FUN_008c4210(int param_1, int param_2)
 {
 	return (void *)0;
+}
+
+// STUB: SADX 0x008c4280
+void __fastcall FUN_008c4280(void *param_1)
+{
 }
 
 // STUB: SADX 0x008c4330

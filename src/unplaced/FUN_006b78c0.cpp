@@ -33,3 +33,8 @@ void FUN_006b78c0(struct task *param_1)
 	var3->sibling = 0;
 	RegisterCollisionEntry(0x40000000, param_1, var3);
 }
+
+// STUB: SADX 0x006b7990
+void FUN_006b7990(struct task *param_1)
+{
+}

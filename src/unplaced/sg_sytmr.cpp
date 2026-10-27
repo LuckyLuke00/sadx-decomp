@@ -34,6 +34,13 @@ int FUN_004230f0(int param_1)
 	return param_1;
 }
 
+// FUNCTION: SADX 0x00423100
+void syTmrGenStart(void)
+{
+	DAT_05ad95d8 = 1;
+	QueryPerformanceCounter((LARGE_INTEGER *)&DAT_05ad95b8);
+}
+
 // FUNCTION: SADX 0x00423120
 void syTmrGenStop(void)
 {

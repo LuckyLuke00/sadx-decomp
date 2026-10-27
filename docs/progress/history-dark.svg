@@ -18,311 +18,314 @@
 <line x1="64" y1="48.0" x2="984" y2="48.0" stroke="#30363d" stroke-width="1"/>
 <text x="56" y="52.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">50%</text>
 <line x1="68.7" y1="48" x2="68.7" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="78.2" y1="48" x2="78.2" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="135.1" y1="48" x2="135.1" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="324.8" y1="48" x2="324.8" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="561.9" y1="48" x2="561.9" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="666.3" y1="48" x2="666.3" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="761.1" y1="48" x2="761.1" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="874.9" y1="48" x2="874.9" y2="140" stroke="#30363d" stroke-width="1"/>
-<line x1="979.3" y1="48" x2="979.3" y2="140" stroke="#30363d" stroke-width="1"/>
-<polyline points="64.0,139.9 73.5,138.4 83.0,137.5 92.5,137.2 101.9,137.0 111.4,136.9 120.9,136.5 130.4,135.7 139.9,135.3 149.4,135.0 158.8,134.8 168.3,134.7 177.8,134.7 187.3,134.5 196.8,134.5 206.3,134.0 215.8,133.8 225.2,133.7 234.7,133.6 244.2,133.4 253.7,132.7 263.2,132.7 272.7,132.7 282.1,132.7 291.6,132.7 301.1,132.7 310.6,132.7 320.1,132.7 329.6,131.0 339.1,130.5 348.5,129.8 358.0,129.5 367.5,128.7 377.0,127.8 386.5,127.2 396.0,125.7 405.4,125.0 414.9,125.0 424.4,124.5 433.9,124.3 443.4,124.3 452.9,124.2 462.4,124.2 471.8,124.1 481.3,123.3 490.8,122.9 500.3,122.6 509.8,122.6 519.3,122.6 528.7,122.5 538.2,122.5 547.7,122.3 557.2,122.1 566.7,121.9 576.2,119.9 585.6,118.9 595.1,118.8 604.6,118.7 614.1,115.6 623.6,115.2 633.1,112.7 642.6,111.0 652.0,110.1 661.5,110.1 671.0,110.1 680.5,110.1 690.0,108.8 699.5,108.7 708.9,105.8 718.4,105.4 727.9,105.4 737.4,103.6 746.9,99.8 756.4,99.6 765.9,99.6 775.3,98.7 784.8,97.6 794.3,95.9 803.8,95.7 813.3,94.8 822.8,94.5 832.2,93.2 841.7,90.6 851.2,90.1 860.7,89.9 870.2,91.4 879.7,91.2 889.2,91.0 898.6,90.5 908.1,90.4 917.6,89.8 927.1,89.5 936.6,89.1 946.1,88.1 955.5,87.8 965.0,86.2 974.5,86.2 984.0,85.0" fill="none" stroke="#4493f8" stroke-width="2"/>
+<line x1="78.1" y1="48" x2="78.1" y2="140" stroke="#30363d" stroke-width="1"/>
+<line x1="134.4" y1="48" x2="134.4" y2="140" stroke="#30363d" stroke-width="1"/>
+<line x1="322.2" y1="48" x2="322.2" y2="140" stroke="#30363d" stroke-width="1"/>
+<line x1="556.9" y1="48" x2="556.9" y2="140" stroke="#30363d" stroke-width="1"/>
+<line x1="660.1" y1="48" x2="660.1" y2="140" stroke="#30363d" stroke-width="1"/>
+<line x1="754.0" y1="48" x2="754.0" y2="140" stroke="#30363d" stroke-width="1"/>
+<line x1="866.7" y1="48" x2="866.7" y2="140" stroke="#30363d" stroke-width="1"/>
+<line x1="969.9" y1="48" x2="969.9" y2="140" stroke="#30363d" stroke-width="1"/>
+<polyline points="64.0,139.9 73.4,138.4 82.8,137.5 92.2,137.2 101.6,137.0 110.9,136.9 120.3,136.5 129.7,135.7 139.1,135.3 148.5,135.0 157.9,134.8 167.3,134.7 176.7,134.7 186.0,134.5 195.4,134.5 204.8,134.0 214.2,133.8 223.6,133.7 233.0,133.6 242.4,133.4 251.8,132.7 261.1,132.7 270.5,132.7 279.9,132.7 289.3,132.7 298.7,132.7 308.1,132.7 317.5,132.7 326.9,131.0 336.2,130.5 345.6,129.8 355.0,129.5 364.4,128.7 373.8,127.8 383.2,127.2 392.6,125.7 402.0,125.0 411.3,125.0 420.7,124.5 430.1,124.3 439.5,124.3 448.9,124.2 458.3,124.2 467.7,124.1 477.1,123.3 486.4,122.9 495.8,122.6 505.2,122.6 514.6,122.6 524.0,122.5 533.4,122.5 542.8,122.3 552.2,122.1 561.6,121.9 570.9,119.9 580.3,118.9 589.7,118.8 599.1,118.7 608.5,115.6 617.9,115.2 627.3,112.7 636.7,111.0 646.0,110.1 655.4,110.1 664.8,110.1 674.2,110.1 683.6,108.8 693.0,108.7 702.4,105.8 711.8,105.4 721.1,105.4 730.5,103.6 739.9,99.8 749.3,99.6 758.7,99.6 768.1,98.7 777.5,97.6 786.9,95.9 796.2,95.7 805.6,94.8 815.0,94.5 824.4,93.2 833.8,90.6 843.2,90.1 852.6,89.9 862.0,91.4 871.3,91.2 880.7,91.0 890.1,90.5 899.5,90.4 908.9,89.8 918.3,89.5 927.7,89.1 937.1,88.1 946.4,87.8 955.8,86.2 965.2,86.2 974.6,85.0 984.0,84.2" fill="none" stroke="#4493f8" stroke-width="2"/>
 <circle cx="64.0" cy="139.9" r="3.0" fill="#4493f8"><title>2026-10-17: functions decompiled 0.04%</title></circle>
-<circle cx="73.5" cy="138.4" r="3.0" fill="#4493f8"><title>2026-10-18: functions decompiled 0.89%</title></circle>
-<circle cx="83.0" cy="137.5" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.37%</title></circle>
-<circle cx="92.5" cy="137.2" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.51%</title></circle>
-<circle cx="101.9" cy="137.0" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.63%</title></circle>
-<circle cx="111.4" cy="136.9" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.68%</title></circle>
-<circle cx="120.9" cy="136.5" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.89%</title></circle>
-<circle cx="130.4" cy="135.7" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 2.32%</title></circle>
-<circle cx="139.9" cy="135.3" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.56%</title></circle>
-<circle cx="149.4" cy="135.0" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.73%</title></circle>
-<circle cx="158.8" cy="134.8" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.82%</title></circle>
-<circle cx="168.3" cy="134.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.87%</title></circle>
-<circle cx="177.8" cy="134.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.88%</title></circle>
-<circle cx="187.3" cy="134.5" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.00%</title></circle>
-<circle cx="196.8" cy="134.5" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.00%</title></circle>
-<circle cx="206.3" cy="134.0" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.25%</title></circle>
-<circle cx="215.8" cy="133.8" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.38%</title></circle>
-<circle cx="225.2" cy="133.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.41%</title></circle>
-<circle cx="234.7" cy="133.6" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.48%</title></circle>
-<circle cx="244.2" cy="133.4" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.60%</title></circle>
-<circle cx="253.7" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="263.2" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="272.7" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="282.1" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="291.6" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="301.1" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="310.6" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="320.1" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
-<circle cx="329.6" cy="131.0" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 4.90%</title></circle>
-<circle cx="339.1" cy="130.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 5.15%</title></circle>
-<circle cx="348.5" cy="129.8" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 5.52%</title></circle>
-<circle cx="358.0" cy="129.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 5.73%</title></circle>
-<circle cx="367.5" cy="128.7" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 6.16%</title></circle>
-<circle cx="377.0" cy="127.8" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 6.61%</title></circle>
-<circle cx="386.5" cy="127.2" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 6.95%</title></circle>
-<circle cx="396.0" cy="125.7" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 7.75%</title></circle>
-<circle cx="405.4" cy="125.0" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.13%</title></circle>
-<circle cx="414.9" cy="125.0" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.13%</title></circle>
-<circle cx="424.4" cy="124.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.41%</title></circle>
-<circle cx="433.9" cy="124.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.54%</title></circle>
-<circle cx="443.4" cy="124.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.56%</title></circle>
-<circle cx="452.9" cy="124.2" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.58%</title></circle>
-<circle cx="462.4" cy="124.2" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.59%</title></circle>
-<circle cx="471.8" cy="124.1" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.66%</title></circle>
-<circle cx="481.3" cy="123.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.09%</title></circle>
-<circle cx="490.8" cy="122.9" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.30%</title></circle>
-<circle cx="500.3" cy="122.6" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.44%</title></circle>
-<circle cx="509.8" cy="122.6" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.45%</title></circle>
-<circle cx="519.3" cy="122.6" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.46%</title></circle>
-<circle cx="528.7" cy="122.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.52%</title></circle>
-<circle cx="538.2" cy="122.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.53%</title></circle>
-<circle cx="547.7" cy="122.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.64%</title></circle>
-<circle cx="557.2" cy="122.1" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.72%</title></circle>
-<circle cx="566.7" cy="121.9" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 9.82%</title></circle>
-<circle cx="576.2" cy="119.9" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 10.95%</title></circle>
-<circle cx="585.6" cy="118.9" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 11.49%</title></circle>
-<circle cx="595.1" cy="118.8" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 11.54%</title></circle>
-<circle cx="604.6" cy="118.7" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 11.56%</title></circle>
-<circle cx="614.1" cy="115.6" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 13.24%</title></circle>
-<circle cx="623.6" cy="115.2" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 13.47%</title></circle>
-<circle cx="633.1" cy="112.7" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 14.83%</title></circle>
-<circle cx="642.6" cy="111.0" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 15.74%</title></circle>
-<circle cx="652.0" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 16.23%</title></circle>
-<circle cx="661.5" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 16.24%</title></circle>
-<circle cx="671.0" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 16.24%</title></circle>
-<circle cx="680.5" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 16.24%</title></circle>
-<circle cx="690.0" cy="108.8" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 16.94%</title></circle>
-<circle cx="699.5" cy="108.7" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 17.02%</title></circle>
-<circle cx="708.9" cy="105.8" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 18.57%</title></circle>
-<circle cx="718.4" cy="105.4" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 18.78%</title></circle>
-<circle cx="727.9" cy="105.4" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 18.82%</title></circle>
-<circle cx="737.4" cy="103.6" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 19.77%</title></circle>
-<circle cx="746.9" cy="99.8" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 21.87%</title></circle>
-<circle cx="756.4" cy="99.6" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 21.95%</title></circle>
-<circle cx="765.9" cy="99.6" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 21.95%</title></circle>
-<circle cx="775.3" cy="98.7" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 22.45%</title></circle>
-<circle cx="784.8" cy="97.6" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 23.03%</title></circle>
-<circle cx="794.3" cy="95.9" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 23.97%</title></circle>
-<circle cx="803.8" cy="95.7" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 24.06%</title></circle>
-<circle cx="813.3" cy="94.8" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 24.55%</title></circle>
-<circle cx="822.8" cy="94.5" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 24.75%</title></circle>
-<circle cx="832.2" cy="93.2" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 25.46%</title></circle>
-<circle cx="841.7" cy="90.6" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 26.83%</title></circle>
-<circle cx="851.2" cy="90.1" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 27.12%</title></circle>
-<circle cx="860.7" cy="89.9" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 27.20%</title></circle>
-<circle cx="870.2" cy="91.4" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 26.41%</title></circle>
-<circle cx="879.7" cy="91.2" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.54%</title></circle>
-<circle cx="889.2" cy="91.0" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.63%</title></circle>
-<circle cx="898.6" cy="90.5" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.88%</title></circle>
-<circle cx="908.1" cy="90.4" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.97%</title></circle>
-<circle cx="917.6" cy="89.8" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 27.30%</title></circle>
-<circle cx="927.1" cy="89.5" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 27.44%</title></circle>
-<circle cx="936.6" cy="89.1" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 27.66%</title></circle>
-<circle cx="946.1" cy="88.1" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 28.21%</title></circle>
-<circle cx="955.5" cy="87.8" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 28.38%</title></circle>
-<circle cx="965.0" cy="86.2" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 29.21%</title></circle>
-<circle cx="974.5" cy="86.2" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 29.26%</title></circle>
-<circle cx="984.0" cy="85.0" r="3.0" fill="#4493f8"><title>2026-10-27: functions decompiled 29.90%</title></circle>
-<polyline points="64.0,139.9 73.5,138.4 83.0,137.5 92.5,137.2 101.9,137.0 111.4,136.9 120.9,136.5 130.4,136.5 139.9,136.1 149.4,135.8 158.8,135.6 168.3,135.5 177.8,135.5 187.3,135.3 196.8,135.3 206.3,134.8 215.8,134.6 225.2,134.5 234.7,134.4 244.2,134.1 253.7,133.5 263.2,133.5 272.7,133.4 282.1,133.4 291.6,133.3 301.1,133.3 310.6,133.3 320.1,133.3 329.6,131.5 339.1,130.9 348.5,130.2 358.0,129.7 367.5,128.9 377.0,127.9 386.5,127.3 396.0,125.8 405.4,125.1 414.9,125.1 424.4,124.6 433.9,124.3 443.4,124.3 452.9,124.2 462.4,124.2 471.8,124.1 481.3,123.3 490.8,122.9 500.3,122.6 509.8,122.6 519.3,122.6 528.7,122.5 538.2,122.5 547.7,122.3 557.2,122.1 566.7,122.0 576.2,120.0 585.6,119.0 595.1,118.9 604.6,118.8 614.1,115.8 623.6,115.4 633.1,112.9 642.6,111.4 652.0,110.5 661.5,110.5 671.0,110.9 680.5,110.9 690.0,109.6 699.5,109.5 708.9,106.6 718.4,106.2 727.9,106.2 737.4,104.4 746.9,100.6 756.4,100.5 765.9,100.5 775.3,99.5 784.8,98.5 794.3,96.8 803.8,96.6 813.3,95.5 822.8,95.2 832.2,93.9 841.7,91.4 851.2,90.9 860.7,90.5 870.2,91.8 879.7,91.6 889.2,91.4 898.6,91.0 908.1,90.8 917.6,90.2 927.1,89.9 936.6,89.5 946.1,88.5 955.5,88.2 965.0,86.7 974.5,86.6 984.0,85.4" fill="none" stroke="#ffd700" stroke-width="2" stroke-dasharray="5 3"/>
+<circle cx="73.4" cy="138.4" r="3.0" fill="#4493f8"><title>2026-10-18: functions decompiled 0.89%</title></circle>
+<circle cx="82.8" cy="137.5" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.37%</title></circle>
+<circle cx="92.2" cy="137.2" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.51%</title></circle>
+<circle cx="101.6" cy="137.0" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.63%</title></circle>
+<circle cx="110.9" cy="136.9" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.68%</title></circle>
+<circle cx="120.3" cy="136.5" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 1.89%</title></circle>
+<circle cx="129.7" cy="135.7" r="3.0" fill="#4493f8"><title>2026-10-19: functions decompiled 2.32%</title></circle>
+<circle cx="139.1" cy="135.3" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.56%</title></circle>
+<circle cx="148.5" cy="135.0" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.73%</title></circle>
+<circle cx="157.9" cy="134.8" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.82%</title></circle>
+<circle cx="167.3" cy="134.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.87%</title></circle>
+<circle cx="176.7" cy="134.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 2.88%</title></circle>
+<circle cx="186.0" cy="134.5" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.00%</title></circle>
+<circle cx="195.4" cy="134.5" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.00%</title></circle>
+<circle cx="204.8" cy="134.0" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.25%</title></circle>
+<circle cx="214.2" cy="133.8" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.38%</title></circle>
+<circle cx="223.6" cy="133.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.41%</title></circle>
+<circle cx="233.0" cy="133.6" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.48%</title></circle>
+<circle cx="242.4" cy="133.4" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.60%</title></circle>
+<circle cx="251.8" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="261.1" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="270.5" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="279.9" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="289.3" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="298.7" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="308.1" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="317.5" cy="132.7" r="3.0" fill="#4493f8"><title>2026-10-20: functions decompiled 3.96%</title></circle>
+<circle cx="326.9" cy="131.0" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 4.90%</title></circle>
+<circle cx="336.2" cy="130.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 5.15%</title></circle>
+<circle cx="345.6" cy="129.8" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 5.52%</title></circle>
+<circle cx="355.0" cy="129.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 5.73%</title></circle>
+<circle cx="364.4" cy="128.7" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 6.16%</title></circle>
+<circle cx="373.8" cy="127.8" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 6.61%</title></circle>
+<circle cx="383.2" cy="127.2" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 6.95%</title></circle>
+<circle cx="392.6" cy="125.7" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 7.75%</title></circle>
+<circle cx="402.0" cy="125.0" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.13%</title></circle>
+<circle cx="411.3" cy="125.0" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.13%</title></circle>
+<circle cx="420.7" cy="124.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.41%</title></circle>
+<circle cx="430.1" cy="124.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.54%</title></circle>
+<circle cx="439.5" cy="124.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.56%</title></circle>
+<circle cx="448.9" cy="124.2" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.58%</title></circle>
+<circle cx="458.3" cy="124.2" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.59%</title></circle>
+<circle cx="467.7" cy="124.1" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 8.66%</title></circle>
+<circle cx="477.1" cy="123.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.09%</title></circle>
+<circle cx="486.4" cy="122.9" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.30%</title></circle>
+<circle cx="495.8" cy="122.6" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.44%</title></circle>
+<circle cx="505.2" cy="122.6" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.45%</title></circle>
+<circle cx="514.6" cy="122.6" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.46%</title></circle>
+<circle cx="524.0" cy="122.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.52%</title></circle>
+<circle cx="533.4" cy="122.5" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.53%</title></circle>
+<circle cx="542.8" cy="122.3" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.64%</title></circle>
+<circle cx="552.2" cy="122.1" r="3.0" fill="#4493f8"><title>2026-10-21: functions decompiled 9.72%</title></circle>
+<circle cx="561.6" cy="121.9" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 9.82%</title></circle>
+<circle cx="570.9" cy="119.9" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 10.95%</title></circle>
+<circle cx="580.3" cy="118.9" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 11.49%</title></circle>
+<circle cx="589.7" cy="118.8" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 11.54%</title></circle>
+<circle cx="599.1" cy="118.7" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 11.56%</title></circle>
+<circle cx="608.5" cy="115.6" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 13.24%</title></circle>
+<circle cx="617.9" cy="115.2" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 13.47%</title></circle>
+<circle cx="627.3" cy="112.7" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 14.83%</title></circle>
+<circle cx="636.7" cy="111.0" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 15.74%</title></circle>
+<circle cx="646.0" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 16.23%</title></circle>
+<circle cx="655.4" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-22: functions decompiled 16.24%</title></circle>
+<circle cx="664.8" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 16.24%</title></circle>
+<circle cx="674.2" cy="110.1" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 16.24%</title></circle>
+<circle cx="683.6" cy="108.8" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 16.94%</title></circle>
+<circle cx="693.0" cy="108.7" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 17.02%</title></circle>
+<circle cx="702.4" cy="105.8" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 18.57%</title></circle>
+<circle cx="711.8" cy="105.4" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 18.78%</title></circle>
+<circle cx="721.1" cy="105.4" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 18.82%</title></circle>
+<circle cx="730.5" cy="103.6" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 19.77%</title></circle>
+<circle cx="739.9" cy="99.8" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 21.87%</title></circle>
+<circle cx="749.3" cy="99.6" r="3.0" fill="#4493f8"><title>2026-10-23: functions decompiled 21.95%</title></circle>
+<circle cx="758.7" cy="99.6" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 21.95%</title></circle>
+<circle cx="768.1" cy="98.7" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 22.45%</title></circle>
+<circle cx="777.5" cy="97.6" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 23.03%</title></circle>
+<circle cx="786.9" cy="95.9" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 23.97%</title></circle>
+<circle cx="796.2" cy="95.7" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 24.06%</title></circle>
+<circle cx="805.6" cy="94.8" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 24.55%</title></circle>
+<circle cx="815.0" cy="94.5" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 24.75%</title></circle>
+<circle cx="824.4" cy="93.2" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 25.46%</title></circle>
+<circle cx="833.8" cy="90.6" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 26.83%</title></circle>
+<circle cx="843.2" cy="90.1" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 27.12%</title></circle>
+<circle cx="852.6" cy="89.9" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 27.20%</title></circle>
+<circle cx="862.0" cy="91.4" r="3.0" fill="#4493f8"><title>2026-10-25: functions decompiled 26.41%</title></circle>
+<circle cx="871.3" cy="91.2" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.54%</title></circle>
+<circle cx="880.7" cy="91.0" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.63%</title></circle>
+<circle cx="890.1" cy="90.5" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.88%</title></circle>
+<circle cx="899.5" cy="90.4" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 26.97%</title></circle>
+<circle cx="908.9" cy="89.8" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 27.30%</title></circle>
+<circle cx="918.3" cy="89.5" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 27.44%</title></circle>
+<circle cx="927.7" cy="89.1" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 27.66%</title></circle>
+<circle cx="937.1" cy="88.1" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 28.21%</title></circle>
+<circle cx="946.4" cy="87.8" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 28.38%</title></circle>
+<circle cx="955.8" cy="86.2" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 29.21%</title></circle>
+<circle cx="965.2" cy="86.2" r="3.0" fill="#4493f8"><title>2026-10-26: functions decompiled 29.26%</title></circle>
+<circle cx="974.6" cy="85.0" r="3.0" fill="#4493f8"><title>2026-10-27: functions decompiled 29.90%</title></circle>
+<circle cx="984.0" cy="84.2" r="3.0" fill="#4493f8"><title>2026-10-27: functions decompiled 30.32%</title></circle>
+<polyline points="64.0,139.9 73.4,138.4 82.8,137.5 92.2,137.2 101.6,137.0 110.9,136.9 120.3,136.5 129.7,136.5 139.1,136.1 148.5,135.8 157.9,135.6 167.3,135.5 176.7,135.5 186.0,135.3 195.4,135.3 204.8,134.8 214.2,134.6 223.6,134.5 233.0,134.4 242.4,134.1 251.8,133.5 261.1,133.5 270.5,133.4 279.9,133.4 289.3,133.3 298.7,133.3 308.1,133.3 317.5,133.3 326.9,131.5 336.2,130.9 345.6,130.2 355.0,129.7 364.4,128.9 373.8,127.9 383.2,127.3 392.6,125.8 402.0,125.1 411.3,125.1 420.7,124.6 430.1,124.3 439.5,124.3 448.9,124.2 458.3,124.2 467.7,124.1 477.1,123.3 486.4,122.9 495.8,122.6 505.2,122.6 514.6,122.6 524.0,122.5 533.4,122.5 542.8,122.3 552.2,122.1 561.6,122.0 570.9,120.0 580.3,119.0 589.7,118.9 599.1,118.8 608.5,115.8 617.9,115.4 627.3,112.9 636.7,111.4 646.0,110.5 655.4,110.5 664.8,110.9 674.2,110.9 683.6,109.6 693.0,109.5 702.4,106.6 711.8,106.2 721.1,106.2 730.5,104.4 739.9,100.6 749.3,100.5 758.7,100.5 768.1,99.5 777.5,98.5 786.9,96.8 796.2,96.6 805.6,95.5 815.0,95.2 824.4,93.9 833.8,91.4 843.2,90.9 852.6,90.5 862.0,91.8 871.3,91.6 880.7,91.4 890.1,91.0 899.5,90.8 908.9,90.2 918.3,89.9 927.7,89.5 937.1,88.5 946.4,88.2 955.8,86.7 965.2,86.6 974.6,85.4 984.0,84.7" fill="none" stroke="#ffd700" stroke-width="2" stroke-dasharray="5 3"/>
 <circle cx="64.0" cy="139.9" r="3.0" fill="#ffd700"><title>2026-10-17: functions done 0.04%</title></circle>
-<circle cx="73.5" cy="138.4" r="3.0" fill="#ffd700"><title>2026-10-18: functions done 0.89%</title></circle>
-<circle cx="83.0" cy="137.5" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.37%</title></circle>
-<circle cx="92.5" cy="137.2" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.51%</title></circle>
-<circle cx="101.9" cy="137.0" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.63%</title></circle>
-<circle cx="111.4" cy="136.9" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.68%</title></circle>
-<circle cx="120.9" cy="136.5" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.89%</title></circle>
-<circle cx="130.4" cy="136.5" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.89%</title></circle>
-<circle cx="139.9" cy="136.1" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.13%</title></circle>
-<circle cx="149.4" cy="135.8" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.30%</title></circle>
-<circle cx="158.8" cy="135.6" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.39%</title></circle>
-<circle cx="168.3" cy="135.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.44%</title></circle>
-<circle cx="177.8" cy="135.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.46%</title></circle>
-<circle cx="187.3" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.57%</title></circle>
-<circle cx="196.8" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.58%</title></circle>
-<circle cx="206.3" cy="134.8" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.82%</title></circle>
-<circle cx="215.8" cy="134.6" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.96%</title></circle>
-<circle cx="225.2" cy="134.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.99%</title></circle>
-<circle cx="234.7" cy="134.4" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.07%</title></circle>
-<circle cx="244.2" cy="134.1" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.19%</title></circle>
-<circle cx="253.7" cy="133.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.54%</title></circle>
-<circle cx="263.2" cy="133.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.56%</title></circle>
-<circle cx="272.7" cy="133.4" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.58%</title></circle>
-<circle cx="282.1" cy="133.4" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.60%</title></circle>
-<circle cx="291.6" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.62%</title></circle>
-<circle cx="301.1" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.63%</title></circle>
-<circle cx="310.6" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.65%</title></circle>
-<circle cx="320.1" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.66%</title></circle>
-<circle cx="329.6" cy="131.5" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 4.61%</title></circle>
-<circle cx="339.1" cy="130.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 4.95%</title></circle>
-<circle cx="348.5" cy="130.2" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 5.33%</title></circle>
-<circle cx="358.0" cy="129.7" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 5.61%</title></circle>
-<circle cx="367.5" cy="128.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 6.03%</title></circle>
-<circle cx="377.0" cy="127.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 6.55%</title></circle>
-<circle cx="386.5" cy="127.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 6.91%</title></circle>
-<circle cx="396.0" cy="125.8" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 7.70%</title></circle>
-<circle cx="405.4" cy="125.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.08%</title></circle>
-<circle cx="414.9" cy="125.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.09%</title></circle>
-<circle cx="424.4" cy="124.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.38%</title></circle>
-<circle cx="433.9" cy="124.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.52%</title></circle>
-<circle cx="443.4" cy="124.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.54%</title></circle>
-<circle cx="452.9" cy="124.2" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.57%</title></circle>
-<circle cx="462.4" cy="124.2" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.57%</title></circle>
-<circle cx="471.8" cy="124.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.65%</title></circle>
-<circle cx="481.3" cy="123.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.09%</title></circle>
-<circle cx="490.8" cy="122.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.30%</title></circle>
-<circle cx="500.3" cy="122.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.44%</title></circle>
-<circle cx="509.8" cy="122.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.45%</title></circle>
-<circle cx="519.3" cy="122.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.46%</title></circle>
-<circle cx="528.7" cy="122.5" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.52%</title></circle>
-<circle cx="538.2" cy="122.5" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.53%</title></circle>
-<circle cx="547.7" cy="122.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.64%</title></circle>
-<circle cx="557.2" cy="122.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.72%</title></circle>
-<circle cx="566.7" cy="122.0" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 9.79%</title></circle>
-<circle cx="576.2" cy="120.0" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 10.89%</title></circle>
-<circle cx="585.6" cy="119.0" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 11.43%</title></circle>
-<circle cx="595.1" cy="118.9" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 11.48%</title></circle>
-<circle cx="604.6" cy="118.8" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 11.50%</title></circle>
-<circle cx="614.1" cy="115.8" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 13.14%</title></circle>
-<circle cx="623.6" cy="115.4" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 13.37%</title></circle>
-<circle cx="633.1" cy="112.9" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 14.71%</title></circle>
-<circle cx="642.6" cy="111.4" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 15.55%</title></circle>
-<circle cx="652.0" cy="110.5" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 16.04%</title></circle>
-<circle cx="661.5" cy="110.5" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 16.04%</title></circle>
-<circle cx="671.0" cy="110.9" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 15.80%</title></circle>
-<circle cx="680.5" cy="110.9" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 15.81%</title></circle>
-<circle cx="690.0" cy="109.6" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 16.51%</title></circle>
-<circle cx="699.5" cy="109.5" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 16.59%</title></circle>
-<circle cx="708.9" cy="106.6" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 18.14%</title></circle>
-<circle cx="718.4" cy="106.2" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 18.34%</title></circle>
-<circle cx="727.9" cy="106.2" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 18.38%</title></circle>
-<circle cx="737.4" cy="104.4" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 19.34%</title></circle>
-<circle cx="746.9" cy="100.6" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 21.39%</title></circle>
-<circle cx="756.4" cy="100.5" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 21.48%</title></circle>
-<circle cx="765.9" cy="100.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 21.49%</title></circle>
-<circle cx="775.3" cy="99.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 22.01%</title></circle>
-<circle cx="784.8" cy="98.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 22.54%</title></circle>
-<circle cx="794.3" cy="96.8" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 23.48%</title></circle>
-<circle cx="803.8" cy="96.6" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 23.57%</title></circle>
-<circle cx="813.3" cy="95.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 24.16%</title></circle>
-<circle cx="822.8" cy="95.2" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 24.36%</title></circle>
-<circle cx="832.2" cy="93.9" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 25.04%</title></circle>
-<circle cx="841.7" cy="91.4" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.41%</title></circle>
-<circle cx="851.2" cy="90.9" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.69%</title></circle>
-<circle cx="860.7" cy="90.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.88%</title></circle>
-<circle cx="870.2" cy="91.8" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.19%</title></circle>
-<circle cx="879.7" cy="91.6" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.32%</title></circle>
-<circle cx="889.2" cy="91.4" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.40%</title></circle>
-<circle cx="898.6" cy="91.0" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.65%</title></circle>
-<circle cx="908.1" cy="90.8" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.74%</title></circle>
-<circle cx="917.6" cy="90.2" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.06%</title></circle>
-<circle cx="927.1" cy="89.9" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.20%</title></circle>
-<circle cx="936.6" cy="89.5" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.43%</title></circle>
-<circle cx="946.1" cy="88.5" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.98%</title></circle>
-<circle cx="955.5" cy="88.2" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 28.15%</title></circle>
-<circle cx="965.0" cy="86.7" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 28.97%</title></circle>
-<circle cx="974.5" cy="86.6" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 29.02%</title></circle>
-<circle cx="984.0" cy="85.4" r="3.0" fill="#ffd700"><title>2026-10-27: functions done 29.65%</title></circle>
-<polyline points="64.0,140.0 73.5,139.3 83.0,139.1 92.5,139.0 101.9,139.0 111.4,139.0 120.9,138.9 130.4,138.9 139.9,138.8 149.4,138.7 158.8,138.7 168.3,138.7 177.8,138.7 187.3,138.7 196.8,138.7 206.3,138.6 215.8,138.6 225.2,138.6 234.7,138.5 244.2,138.5 253.7,138.3 263.2,138.3 272.7,138.3 282.1,138.3 291.6,138.3 301.1,138.3 310.6,138.2 320.1,138.2 329.6,137.9 339.1,137.7 348.5,137.5 358.0,137.4 367.5,137.3 377.0,137.0 386.5,136.9 396.0,136.5 405.4,136.4 414.9,136.4 424.4,136.1 433.9,135.9 443.4,135.9 452.9,135.9 462.4,135.9 471.8,135.8 481.3,135.5 490.8,135.4 500.3,135.4 509.8,135.4 519.3,135.4 528.7,135.4 538.2,135.4 547.7,135.3 557.2,135.3 566.7,135.3 576.2,135.0 585.6,134.7 595.1,134.7 604.6,134.7 614.1,134.3 623.6,134.0 633.1,133.6 642.6,133.3 652.0,133.1 661.5,133.1 671.0,133.3 680.5,133.3 690.0,133.1 699.5,133.0 708.9,132.8 718.4,132.7 727.9,132.6 737.4,132.2 746.9,131.2 756.4,131.1 765.9,131.1 775.3,130.9 784.8,130.6 794.3,130.2 803.8,130.1 813.3,129.9 822.8,129.7 832.2,129.3 841.7,128.4 851.2,128.2 860.7,128.0 870.2,128.7 879.7,128.6 889.2,128.6 898.6,128.5 908.1,128.5 917.6,128.3 927.1,128.2 936.6,128.1 946.1,127.7 955.5,127.6 965.0,127.3 974.5,127.3 984.0,126.8" fill="none" stroke="#ffd700" stroke-width="2"/>
+<circle cx="73.4" cy="138.4" r="3.0" fill="#ffd700"><title>2026-10-18: functions done 0.89%</title></circle>
+<circle cx="82.8" cy="137.5" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.37%</title></circle>
+<circle cx="92.2" cy="137.2" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.51%</title></circle>
+<circle cx="101.6" cy="137.0" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.63%</title></circle>
+<circle cx="110.9" cy="136.9" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.68%</title></circle>
+<circle cx="120.3" cy="136.5" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.89%</title></circle>
+<circle cx="129.7" cy="136.5" r="3.0" fill="#ffd700"><title>2026-10-19: functions done 1.89%</title></circle>
+<circle cx="139.1" cy="136.1" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.13%</title></circle>
+<circle cx="148.5" cy="135.8" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.30%</title></circle>
+<circle cx="157.9" cy="135.6" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.39%</title></circle>
+<circle cx="167.3" cy="135.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.44%</title></circle>
+<circle cx="176.7" cy="135.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.46%</title></circle>
+<circle cx="186.0" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.57%</title></circle>
+<circle cx="195.4" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.58%</title></circle>
+<circle cx="204.8" cy="134.8" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.82%</title></circle>
+<circle cx="214.2" cy="134.6" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.96%</title></circle>
+<circle cx="223.6" cy="134.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 2.99%</title></circle>
+<circle cx="233.0" cy="134.4" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.07%</title></circle>
+<circle cx="242.4" cy="134.1" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.19%</title></circle>
+<circle cx="251.8" cy="133.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.54%</title></circle>
+<circle cx="261.1" cy="133.5" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.56%</title></circle>
+<circle cx="270.5" cy="133.4" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.58%</title></circle>
+<circle cx="279.9" cy="133.4" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.60%</title></circle>
+<circle cx="289.3" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.62%</title></circle>
+<circle cx="298.7" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.63%</title></circle>
+<circle cx="308.1" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.65%</title></circle>
+<circle cx="317.5" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-20: functions done 3.66%</title></circle>
+<circle cx="326.9" cy="131.5" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 4.61%</title></circle>
+<circle cx="336.2" cy="130.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 4.95%</title></circle>
+<circle cx="345.6" cy="130.2" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 5.33%</title></circle>
+<circle cx="355.0" cy="129.7" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 5.61%</title></circle>
+<circle cx="364.4" cy="128.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 6.03%</title></circle>
+<circle cx="373.8" cy="127.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 6.55%</title></circle>
+<circle cx="383.2" cy="127.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 6.91%</title></circle>
+<circle cx="392.6" cy="125.8" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 7.70%</title></circle>
+<circle cx="402.0" cy="125.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.08%</title></circle>
+<circle cx="411.3" cy="125.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.09%</title></circle>
+<circle cx="420.7" cy="124.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.38%</title></circle>
+<circle cx="430.1" cy="124.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.52%</title></circle>
+<circle cx="439.5" cy="124.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.54%</title></circle>
+<circle cx="448.9" cy="124.2" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.57%</title></circle>
+<circle cx="458.3" cy="124.2" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.57%</title></circle>
+<circle cx="467.7" cy="124.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 8.65%</title></circle>
+<circle cx="477.1" cy="123.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.09%</title></circle>
+<circle cx="486.4" cy="122.9" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.30%</title></circle>
+<circle cx="495.8" cy="122.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.44%</title></circle>
+<circle cx="505.2" cy="122.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.45%</title></circle>
+<circle cx="514.6" cy="122.6" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.46%</title></circle>
+<circle cx="524.0" cy="122.5" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.52%</title></circle>
+<circle cx="533.4" cy="122.5" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.53%</title></circle>
+<circle cx="542.8" cy="122.3" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.64%</title></circle>
+<circle cx="552.2" cy="122.1" r="3.0" fill="#ffd700"><title>2026-10-21: functions done 9.72%</title></circle>
+<circle cx="561.6" cy="122.0" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 9.79%</title></circle>
+<circle cx="570.9" cy="120.0" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 10.89%</title></circle>
+<circle cx="580.3" cy="119.0" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 11.43%</title></circle>
+<circle cx="589.7" cy="118.9" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 11.48%</title></circle>
+<circle cx="599.1" cy="118.8" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 11.50%</title></circle>
+<circle cx="608.5" cy="115.8" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 13.14%</title></circle>
+<circle cx="617.9" cy="115.4" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 13.37%</title></circle>
+<circle cx="627.3" cy="112.9" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 14.71%</title></circle>
+<circle cx="636.7" cy="111.4" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 15.55%</title></circle>
+<circle cx="646.0" cy="110.5" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 16.04%</title></circle>
+<circle cx="655.4" cy="110.5" r="3.0" fill="#ffd700"><title>2026-10-22: functions done 16.04%</title></circle>
+<circle cx="664.8" cy="110.9" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 15.80%</title></circle>
+<circle cx="674.2" cy="110.9" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 15.81%</title></circle>
+<circle cx="683.6" cy="109.6" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 16.51%</title></circle>
+<circle cx="693.0" cy="109.5" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 16.59%</title></circle>
+<circle cx="702.4" cy="106.6" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 18.14%</title></circle>
+<circle cx="711.8" cy="106.2" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 18.34%</title></circle>
+<circle cx="721.1" cy="106.2" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 18.38%</title></circle>
+<circle cx="730.5" cy="104.4" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 19.34%</title></circle>
+<circle cx="739.9" cy="100.6" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 21.39%</title></circle>
+<circle cx="749.3" cy="100.5" r="3.0" fill="#ffd700"><title>2026-10-23: functions done 21.48%</title></circle>
+<circle cx="758.7" cy="100.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 21.49%</title></circle>
+<circle cx="768.1" cy="99.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 22.01%</title></circle>
+<circle cx="777.5" cy="98.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 22.54%</title></circle>
+<circle cx="786.9" cy="96.8" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 23.48%</title></circle>
+<circle cx="796.2" cy="96.6" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 23.57%</title></circle>
+<circle cx="805.6" cy="95.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 24.16%</title></circle>
+<circle cx="815.0" cy="95.2" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 24.36%</title></circle>
+<circle cx="824.4" cy="93.9" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 25.04%</title></circle>
+<circle cx="833.8" cy="91.4" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.41%</title></circle>
+<circle cx="843.2" cy="90.9" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.69%</title></circle>
+<circle cx="852.6" cy="90.5" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.88%</title></circle>
+<circle cx="862.0" cy="91.8" r="3.0" fill="#ffd700"><title>2026-10-25: functions done 26.19%</title></circle>
+<circle cx="871.3" cy="91.6" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.32%</title></circle>
+<circle cx="880.7" cy="91.4" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.40%</title></circle>
+<circle cx="890.1" cy="91.0" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.65%</title></circle>
+<circle cx="899.5" cy="90.8" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 26.74%</title></circle>
+<circle cx="908.9" cy="90.2" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.06%</title></circle>
+<circle cx="918.3" cy="89.9" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.20%</title></circle>
+<circle cx="927.7" cy="89.5" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.43%</title></circle>
+<circle cx="937.1" cy="88.5" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 27.98%</title></circle>
+<circle cx="946.4" cy="88.2" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 28.15%</title></circle>
+<circle cx="955.8" cy="86.7" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 28.97%</title></circle>
+<circle cx="965.2" cy="86.6" r="3.0" fill="#ffd700"><title>2026-10-26: functions done 29.02%</title></circle>
+<circle cx="974.6" cy="85.4" r="3.0" fill="#ffd700"><title>2026-10-27: functions done 29.65%</title></circle>
+<circle cx="984.0" cy="84.7" r="3.0" fill="#ffd700"><title>2026-10-27: functions done 30.08%</title></circle>
+<polyline points="64.0,140.0 73.4,139.3 82.8,139.1 92.2,139.0 101.6,139.0 110.9,139.0 120.3,138.9 129.7,138.9 139.1,138.8 148.5,138.7 157.9,138.7 167.3,138.7 176.7,138.7 186.0,138.7 195.4,138.7 204.8,138.6 214.2,138.6 223.6,138.6 233.0,138.5 242.4,138.5 251.8,138.3 261.1,138.3 270.5,138.3 279.9,138.3 289.3,138.3 298.7,138.3 308.1,138.2 317.5,138.2 326.9,137.9 336.2,137.7 345.6,137.5 355.0,137.4 364.4,137.3 373.8,137.0 383.2,136.9 392.6,136.5 402.0,136.4 411.3,136.4 420.7,136.1 430.1,135.9 439.5,135.9 448.9,135.9 458.3,135.9 467.7,135.8 477.1,135.5 486.4,135.4 495.8,135.4 505.2,135.4 514.6,135.4 524.0,135.4 533.4,135.4 542.8,135.3 552.2,135.3 561.6,135.3 570.9,135.0 580.3,134.7 589.7,134.7 599.1,134.7 608.5,134.3 617.9,134.0 627.3,133.6 636.7,133.3 646.0,133.1 655.4,133.1 664.8,133.3 674.2,133.3 683.6,133.1 693.0,133.0 702.4,132.8 711.8,132.7 721.1,132.6 730.5,132.2 739.9,131.2 749.3,131.1 758.7,131.1 768.1,130.9 777.5,130.6 786.9,130.2 796.2,130.1 805.6,129.9 815.0,129.7 824.4,129.3 833.8,128.4 843.2,128.2 852.6,128.0 862.0,128.7 871.3,128.6 880.7,128.6 890.1,128.5 899.5,128.5 908.9,128.3 918.3,128.2 927.7,128.1 937.1,127.7 946.4,127.6 955.8,127.3 965.2,127.3 974.6,126.8 984.0,126.6" fill="none" stroke="#ffd700" stroke-width="2"/>
 <circle cx="64.0" cy="140.0" r="3.0" fill="#ffd700"><title>2026-10-17: code bytes done 0.00%</title></circle>
-<circle cx="73.5" cy="139.3" r="3.0" fill="#ffd700"><title>2026-10-18: code bytes done 0.39%</title></circle>
-<circle cx="83.0" cy="139.1" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.48%</title></circle>
-<circle cx="92.5" cy="139.0" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.52%</title></circle>
-<circle cx="101.9" cy="139.0" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.54%</title></circle>
-<circle cx="111.4" cy="139.0" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.56%</title></circle>
-<circle cx="120.9" cy="138.9" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.60%</title></circle>
-<circle cx="130.4" cy="138.9" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.60%</title></circle>
-<circle cx="139.9" cy="138.8" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.65%</title></circle>
-<circle cx="149.4" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.68%</title></circle>
-<circle cx="158.8" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.69%</title></circle>
-<circle cx="168.3" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.70%</title></circle>
-<circle cx="177.8" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.70%</title></circle>
-<circle cx="187.3" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.72%</title></circle>
-<circle cx="196.8" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.72%</title></circle>
-<circle cx="206.3" cy="138.6" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.75%</title></circle>
-<circle cx="215.8" cy="138.6" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.78%</title></circle>
-<circle cx="225.2" cy="138.6" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.78%</title></circle>
-<circle cx="234.7" cy="138.5" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.80%</title></circle>
-<circle cx="244.2" cy="138.5" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.82%</title></circle>
-<circle cx="253.7" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.91%</title></circle>
-<circle cx="263.2" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.91%</title></circle>
-<circle cx="272.7" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.91%</title></circle>
-<circle cx="282.1" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.93%</title></circle>
-<circle cx="291.6" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.93%</title></circle>
-<circle cx="301.1" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.94%</title></circle>
-<circle cx="310.6" cy="138.2" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.95%</title></circle>
-<circle cx="320.1" cy="138.2" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.96%</title></circle>
-<circle cx="329.6" cy="137.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.16%</title></circle>
-<circle cx="339.1" cy="137.7" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.27%</title></circle>
-<circle cx="348.5" cy="137.5" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.34%</title></circle>
-<circle cx="358.0" cy="137.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.40%</title></circle>
-<circle cx="367.5" cy="137.3" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.47%</title></circle>
-<circle cx="377.0" cy="137.0" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.63%</title></circle>
-<circle cx="386.5" cy="136.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.69%</title></circle>
-<circle cx="396.0" cy="136.5" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.90%</title></circle>
-<circle cx="405.4" cy="136.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.97%</title></circle>
-<circle cx="414.9" cy="136.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.98%</title></circle>
-<circle cx="424.4" cy="136.1" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.11%</title></circle>
-<circle cx="433.9" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.20%</title></circle>
-<circle cx="443.4" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.21%</title></circle>
-<circle cx="452.9" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.23%</title></circle>
-<circle cx="462.4" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.23%</title></circle>
-<circle cx="471.8" cy="135.8" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.27%</title></circle>
-<circle cx="481.3" cy="135.5" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.47%</title></circle>
-<circle cx="490.8" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
-<circle cx="500.3" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
-<circle cx="509.8" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
-<circle cx="519.3" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
-<circle cx="528.7" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
-<circle cx="538.2" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.53%</title></circle>
-<circle cx="547.7" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.53%</title></circle>
-<circle cx="557.2" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.53%</title></circle>
-<circle cx="566.7" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.54%</title></circle>
-<circle cx="576.2" cy="135.0" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.70%</title></circle>
-<circle cx="585.6" cy="134.7" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.87%</title></circle>
-<circle cx="595.1" cy="134.7" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.90%</title></circle>
-<circle cx="604.6" cy="134.7" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.91%</title></circle>
-<circle cx="614.1" cy="134.3" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.11%</title></circle>
-<circle cx="623.6" cy="134.0" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.24%</title></circle>
-<circle cx="633.1" cy="133.6" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.45%</title></circle>
-<circle cx="642.6" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.64%</title></circle>
-<circle cx="652.0" cy="133.1" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.74%</title></circle>
-<circle cx="661.5" cy="133.1" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.74%</title></circle>
-<circle cx="671.0" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.62%</title></circle>
-<circle cx="680.5" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.62%</title></circle>
-<circle cx="690.0" cy="133.1" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.76%</title></circle>
-<circle cx="699.5" cy="133.0" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.81%</title></circle>
-<circle cx="708.9" cy="132.8" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.93%</title></circle>
-<circle cx="718.4" cy="132.7" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.99%</title></circle>
-<circle cx="727.9" cy="132.6" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.01%</title></circle>
-<circle cx="737.4" cy="132.2" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.24%</title></circle>
-<circle cx="746.9" cy="131.2" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.78%</title></circle>
-<circle cx="756.4" cy="131.1" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.83%</title></circle>
-<circle cx="765.9" cy="131.1" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 4.83%</title></circle>
-<circle cx="775.3" cy="130.9" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 4.95%</title></circle>
-<circle cx="784.8" cy="130.6" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.13%</title></circle>
-<circle cx="794.3" cy="130.2" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.31%</title></circle>
-<circle cx="803.8" cy="130.1" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.36%</title></circle>
-<circle cx="813.3" cy="129.9" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.49%</title></circle>
-<circle cx="822.8" cy="129.7" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.59%</title></circle>
-<circle cx="832.2" cy="129.3" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.81%</title></circle>
-<circle cx="841.7" cy="128.4" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.28%</title></circle>
-<circle cx="851.2" cy="128.2" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.41%</title></circle>
-<circle cx="860.7" cy="128.0" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.50%</title></circle>
-<circle cx="870.2" cy="128.7" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.17%</title></circle>
-<circle cx="879.7" cy="128.6" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.21%</title></circle>
-<circle cx="889.2" cy="128.6" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.21%</title></circle>
-<circle cx="898.6" cy="128.5" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.24%</title></circle>
-<circle cx="908.1" cy="128.5" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.28%</title></circle>
-<circle cx="917.6" cy="128.3" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.36%</title></circle>
-<circle cx="927.1" cy="128.2" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.41%</title></circle>
-<circle cx="936.6" cy="128.1" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.48%</title></circle>
-<circle cx="946.1" cy="127.7" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.69%</title></circle>
-<circle cx="955.5" cy="127.6" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.74%</title></circle>
-<circle cx="965.0" cy="127.3" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.89%</title></circle>
-<circle cx="974.5" cy="127.3" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.91%</title></circle>
-<circle cx="984.0" cy="126.8" r="3.0" fill="#ffd700"><title>2026-10-27: code bytes done 7.20%</title></circle>
+<circle cx="73.4" cy="139.3" r="3.0" fill="#ffd700"><title>2026-10-18: code bytes done 0.39%</title></circle>
+<circle cx="82.8" cy="139.1" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.48%</title></circle>
+<circle cx="92.2" cy="139.0" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.52%</title></circle>
+<circle cx="101.6" cy="139.0" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.54%</title></circle>
+<circle cx="110.9" cy="139.0" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.56%</title></circle>
+<circle cx="120.3" cy="138.9" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.60%</title></circle>
+<circle cx="129.7" cy="138.9" r="3.0" fill="#ffd700"><title>2026-10-19: code bytes done 0.60%</title></circle>
+<circle cx="139.1" cy="138.8" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.65%</title></circle>
+<circle cx="148.5" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.68%</title></circle>
+<circle cx="157.9" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.69%</title></circle>
+<circle cx="167.3" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.70%</title></circle>
+<circle cx="176.7" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.70%</title></circle>
+<circle cx="186.0" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.72%</title></circle>
+<circle cx="195.4" cy="138.7" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.72%</title></circle>
+<circle cx="204.8" cy="138.6" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.75%</title></circle>
+<circle cx="214.2" cy="138.6" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.78%</title></circle>
+<circle cx="223.6" cy="138.6" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.78%</title></circle>
+<circle cx="233.0" cy="138.5" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.80%</title></circle>
+<circle cx="242.4" cy="138.5" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.82%</title></circle>
+<circle cx="251.8" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.91%</title></circle>
+<circle cx="261.1" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.91%</title></circle>
+<circle cx="270.5" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.91%</title></circle>
+<circle cx="279.9" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.93%</title></circle>
+<circle cx="289.3" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.93%</title></circle>
+<circle cx="298.7" cy="138.3" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.94%</title></circle>
+<circle cx="308.1" cy="138.2" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.95%</title></circle>
+<circle cx="317.5" cy="138.2" r="3.0" fill="#ffd700"><title>2026-10-20: code bytes done 0.96%</title></circle>
+<circle cx="326.9" cy="137.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.16%</title></circle>
+<circle cx="336.2" cy="137.7" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.27%</title></circle>
+<circle cx="345.6" cy="137.5" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.34%</title></circle>
+<circle cx="355.0" cy="137.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.40%</title></circle>
+<circle cx="364.4" cy="137.3" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.47%</title></circle>
+<circle cx="373.8" cy="137.0" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.63%</title></circle>
+<circle cx="383.2" cy="136.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.69%</title></circle>
+<circle cx="392.6" cy="136.5" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.90%</title></circle>
+<circle cx="402.0" cy="136.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.97%</title></circle>
+<circle cx="411.3" cy="136.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 1.98%</title></circle>
+<circle cx="420.7" cy="136.1" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.11%</title></circle>
+<circle cx="430.1" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.20%</title></circle>
+<circle cx="439.5" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.21%</title></circle>
+<circle cx="448.9" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.23%</title></circle>
+<circle cx="458.3" cy="135.9" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.23%</title></circle>
+<circle cx="467.7" cy="135.8" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.27%</title></circle>
+<circle cx="477.1" cy="135.5" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.47%</title></circle>
+<circle cx="486.4" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
+<circle cx="495.8" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
+<circle cx="505.2" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
+<circle cx="514.6" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
+<circle cx="524.0" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.52%</title></circle>
+<circle cx="533.4" cy="135.4" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.53%</title></circle>
+<circle cx="542.8" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.53%</title></circle>
+<circle cx="552.2" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-21: code bytes done 2.53%</title></circle>
+<circle cx="561.6" cy="135.3" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.54%</title></circle>
+<circle cx="570.9" cy="135.0" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.70%</title></circle>
+<circle cx="580.3" cy="134.7" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.87%</title></circle>
+<circle cx="589.7" cy="134.7" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.90%</title></circle>
+<circle cx="599.1" cy="134.7" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 2.91%</title></circle>
+<circle cx="608.5" cy="134.3" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.11%</title></circle>
+<circle cx="617.9" cy="134.0" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.24%</title></circle>
+<circle cx="627.3" cy="133.6" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.45%</title></circle>
+<circle cx="636.7" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.64%</title></circle>
+<circle cx="646.0" cy="133.1" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.74%</title></circle>
+<circle cx="655.4" cy="133.1" r="3.0" fill="#ffd700"><title>2026-10-22: code bytes done 3.74%</title></circle>
+<circle cx="664.8" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.62%</title></circle>
+<circle cx="674.2" cy="133.3" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.62%</title></circle>
+<circle cx="683.6" cy="133.1" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.76%</title></circle>
+<circle cx="693.0" cy="133.0" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.81%</title></circle>
+<circle cx="702.4" cy="132.8" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.93%</title></circle>
+<circle cx="711.8" cy="132.7" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 3.99%</title></circle>
+<circle cx="721.1" cy="132.6" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.01%</title></circle>
+<circle cx="730.5" cy="132.2" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.24%</title></circle>
+<circle cx="739.9" cy="131.2" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.78%</title></circle>
+<circle cx="749.3" cy="131.1" r="3.0" fill="#ffd700"><title>2026-10-23: code bytes done 4.83%</title></circle>
+<circle cx="758.7" cy="131.1" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 4.83%</title></circle>
+<circle cx="768.1" cy="130.9" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 4.95%</title></circle>
+<circle cx="777.5" cy="130.6" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.13%</title></circle>
+<circle cx="786.9" cy="130.2" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.31%</title></circle>
+<circle cx="796.2" cy="130.1" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.36%</title></circle>
+<circle cx="805.6" cy="129.9" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.49%</title></circle>
+<circle cx="815.0" cy="129.7" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.59%</title></circle>
+<circle cx="824.4" cy="129.3" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 5.81%</title></circle>
+<circle cx="833.8" cy="128.4" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.28%</title></circle>
+<circle cx="843.2" cy="128.2" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.41%</title></circle>
+<circle cx="852.6" cy="128.0" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.50%</title></circle>
+<circle cx="862.0" cy="128.7" r="3.0" fill="#ffd700"><title>2026-10-25: code bytes done 6.17%</title></circle>
+<circle cx="871.3" cy="128.6" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.21%</title></circle>
+<circle cx="880.7" cy="128.6" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.21%</title></circle>
+<circle cx="890.1" cy="128.5" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.24%</title></circle>
+<circle cx="899.5" cy="128.5" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.28%</title></circle>
+<circle cx="908.9" cy="128.3" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.36%</title></circle>
+<circle cx="918.3" cy="128.2" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.41%</title></circle>
+<circle cx="927.7" cy="128.1" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.48%</title></circle>
+<circle cx="937.1" cy="127.7" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.69%</title></circle>
+<circle cx="946.4" cy="127.6" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.74%</title></circle>
+<circle cx="955.8" cy="127.3" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.89%</title></circle>
+<circle cx="965.2" cy="127.3" r="3.0" fill="#ffd700"><title>2026-10-26: code bytes done 6.91%</title></circle>
+<circle cx="974.6" cy="126.8" r="3.0" fill="#ffd700"><title>2026-10-27: code bytes done 7.20%</title></circle>
+<circle cx="984.0" cy="126.6" r="3.0" fill="#ffd700"><title>2026-10-27: code bytes done 7.28%</title></circle>
 <line x1="64" y1="288.0" x2="984" y2="288.0" stroke="#30363d" stroke-width="1"/>
 <text x="56" y="292.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">0%</text>
 <line x1="64" y1="242.0" x2="984" y2="242.0" stroke="#30363d" stroke-width="1"/>
@@ -330,118 +333,119 @@
 <line x1="64" y1="196.0" x2="984" y2="196.0" stroke="#30363d" stroke-width="1"/>
 <text x="56" y="200.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">100%</text>
 <line x1="68.7" y1="196" x2="68.7" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="78.2" y1="196" x2="78.2" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="135.1" y1="196" x2="135.1" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="324.8" y1="196" x2="324.8" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="561.9" y1="196" x2="561.9" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="666.3" y1="196" x2="666.3" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="761.1" y1="196" x2="761.1" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="874.9" y1="196" x2="874.9" y2="288" stroke="#30363d" stroke-width="1"/>
-<line x1="979.3" y1="196" x2="979.3" y2="288" stroke="#30363d" stroke-width="1"/>
-<polyline points="64.0,196.0 73.5,196.0 83.0,196.0 92.5,196.0 101.9,196.0 111.4,196.0 120.9,196.0 130.4,201.1 139.9,200.6 149.4,200.3 158.8,200.2 168.3,200.1 177.8,200.1 187.3,199.9 196.8,199.9 206.3,199.6 215.8,199.5 225.2,199.4 234.7,199.3 244.2,199.2 253.7,198.9 263.2,198.8 272.7,198.6 282.1,198.4 291.6,198.3 301.1,198.2 310.6,198.2 320.1,198.0 329.6,197.5 339.1,197.1 348.5,196.9 358.0,196.4 367.5,196.3 377.0,196.1 386.5,196.1 396.0,196.1 405.4,196.1 414.9,196.1 424.4,196.0 433.9,196.0 443.4,196.0 452.9,196.0 462.4,196.0 471.8,196.0 481.3,196.0 490.8,196.0 500.3,196.0 509.8,196.0 519.3,196.0 528.7,196.0 538.2,196.0 547.7,196.0 557.2,196.0 566.7,196.1 576.2,196.2 585.6,196.2 595.1,196.2 604.6,196.2 614.1,196.3 623.6,196.3 633.1,196.3 642.6,196.4 652.0,196.4 661.5,196.4 671.0,196.4 680.5,196.4 690.0,196.4 699.5,196.4 708.9,196.4 718.4,196.4 727.9,196.4 737.4,196.4 746.9,196.4 756.4,196.4 765.9,196.3 775.3,196.3 784.8,196.5 794.3,196.5 803.8,196.5 813.3,196.5 822.8,196.6 832.2,196.6 841.7,196.6 851.2,196.6 860.7,196.3 870.2,196.3 879.7,196.3 889.2,196.3 898.6,196.3 908.1,196.3 917.6,196.3 927.1,196.3 936.6,196.3 946.1,196.3 955.5,196.3 965.0,196.3 974.5,196.3 984.0,196.3" fill="none" stroke="#e6edf3" stroke-width="2"/>
+<line x1="78.1" y1="196" x2="78.1" y2="288" stroke="#30363d" stroke-width="1"/>
+<line x1="134.4" y1="196" x2="134.4" y2="288" stroke="#30363d" stroke-width="1"/>
+<line x1="322.2" y1="196" x2="322.2" y2="288" stroke="#30363d" stroke-width="1"/>
+<line x1="556.9" y1="196" x2="556.9" y2="288" stroke="#30363d" stroke-width="1"/>
+<line x1="660.1" y1="196" x2="660.1" y2="288" stroke="#30363d" stroke-width="1"/>
+<line x1="754.0" y1="196" x2="754.0" y2="288" stroke="#30363d" stroke-width="1"/>
+<line x1="866.7" y1="196" x2="866.7" y2="288" stroke="#30363d" stroke-width="1"/>
+<line x1="969.9" y1="196" x2="969.9" y2="288" stroke="#30363d" stroke-width="1"/>
+<polyline points="64.0,196.0 73.4,196.0 82.8,196.0 92.2,196.0 101.6,196.0 110.9,196.0 120.3,196.0 129.7,201.1 139.1,200.6 148.5,200.3 157.9,200.2 167.3,200.1 176.7,200.1 186.0,199.9 195.4,199.9 204.8,199.6 214.2,199.5 223.6,199.4 233.0,199.3 242.4,199.2 251.8,198.9 261.1,198.8 270.5,198.6 279.9,198.4 289.3,198.3 298.7,198.2 308.1,198.2 317.5,198.0 326.9,197.5 336.2,197.1 345.6,196.9 355.0,196.4 364.4,196.3 373.8,196.1 383.2,196.1 392.6,196.1 402.0,196.1 411.3,196.1 420.7,196.0 430.1,196.0 439.5,196.0 448.9,196.0 458.3,196.0 467.7,196.0 477.1,196.0 486.4,196.0 495.8,196.0 505.2,196.0 514.6,196.0 524.0,196.0 533.4,196.0 542.8,196.0 552.2,196.0 561.6,196.1 570.9,196.2 580.3,196.2 589.7,196.2 599.1,196.2 608.5,196.3 617.9,196.3 627.3,196.3 636.7,196.4 646.0,196.4 655.4,196.4 664.8,196.4 674.2,196.4 683.6,196.4 693.0,196.4 702.4,196.4 711.8,196.4 721.1,196.4 730.5,196.4 739.9,196.4 749.3,196.4 758.7,196.3 768.1,196.3 777.5,196.5 786.9,196.5 796.2,196.5 805.6,196.5 815.0,196.6 824.4,196.6 833.8,196.6 843.2,196.6 852.6,196.3 862.0,196.3 871.3,196.3 880.7,196.3 890.1,196.3 899.5,196.3 908.9,196.3 918.3,196.3 927.7,196.3 937.1,196.3 946.4,196.3 955.8,196.3 965.2,196.3 974.6,196.3 984.0,196.3" fill="none" stroke="#e6edf3" stroke-width="2"/>
 <circle cx="64.0" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-17: accuracy 100.00%</title></circle>
-<circle cx="73.5" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-18: accuracy 100.00%</title></circle>
-<circle cx="83.0" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
-<circle cx="92.5" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
-<circle cx="101.9" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
-<circle cx="111.4" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
-<circle cx="120.9" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
-<circle cx="130.4" cy="201.1" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 94.46%</title></circle>
-<circle cx="139.9" cy="200.6" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 94.98%</title></circle>
-<circle cx="149.4" cy="200.3" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.28%</title></circle>
-<circle cx="158.8" cy="200.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.45%</title></circle>
-<circle cx="168.3" cy="200.1" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.52%</title></circle>
-<circle cx="177.8" cy="200.1" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.54%</title></circle>
-<circle cx="187.3" cy="199.9" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.71%</title></circle>
-<circle cx="196.8" cy="199.9" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.75%</title></circle>
-<circle cx="206.3" cy="199.6" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.08%</title></circle>
-<circle cx="215.8" cy="199.5" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.23%</title></circle>
-<circle cx="225.2" cy="199.4" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.26%</title></circle>
-<circle cx="234.7" cy="199.3" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.37%</title></circle>
-<circle cx="244.2" cy="199.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.49%</title></circle>
-<circle cx="253.7" cy="198.9" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.81%</title></circle>
-<circle cx="263.2" cy="198.8" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.99%</title></circle>
-<circle cx="272.7" cy="198.6" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.18%</title></circle>
-<circle cx="282.1" cy="198.4" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.39%</title></circle>
-<circle cx="291.6" cy="198.3" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.49%</title></circle>
-<circle cx="301.1" cy="198.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.59%</title></circle>
-<circle cx="310.6" cy="198.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.66%</title></circle>
-<circle cx="320.1" cy="198.0" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.86%</title></circle>
-<circle cx="329.6" cy="197.5" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 98.34%</title></circle>
-<circle cx="339.1" cy="197.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 98.81%</title></circle>
-<circle cx="348.5" cy="196.9" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.07%</title></circle>
-<circle cx="358.0" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.59%</title></circle>
-<circle cx="367.5" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.62%</title></circle>
-<circle cx="377.0" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.86%</title></circle>
-<circle cx="386.5" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.92%</title></circle>
-<circle cx="396.0" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.90%</title></circle>
-<circle cx="405.4" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.91%</title></circle>
-<circle cx="414.9" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.94%</title></circle>
-<circle cx="424.4" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.96%</title></circle>
-<circle cx="433.9" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
-<circle cx="443.4" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
-<circle cx="452.9" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
-<circle cx="462.4" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
-<circle cx="471.8" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
-<circle cx="481.3" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="490.8" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="500.3" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="509.8" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="519.3" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="528.7" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="538.2" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="547.7" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="557.2" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
-<circle cx="566.7" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.84%</title></circle>
-<circle cx="576.2" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.74%</title></circle>
-<circle cx="585.6" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.76%</title></circle>
-<circle cx="595.1" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.76%</title></circle>
-<circle cx="604.6" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.76%</title></circle>
-<circle cx="614.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.66%</title></circle>
-<circle cx="623.6" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.66%</title></circle>
-<circle cx="633.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.64%</title></circle>
-<circle cx="642.6" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.53%</title></circle>
-<circle cx="652.0" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.54%</title></circle>
-<circle cx="661.5" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.54%</title></circle>
-<circle cx="671.0" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.54%</title></circle>
-<circle cx="680.5" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.54%</title></circle>
-<circle cx="690.0" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.56%</title></circle>
-<circle cx="699.5" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.56%</title></circle>
-<circle cx="708.9" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
-<circle cx="718.4" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
-<circle cx="727.9" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
-<circle cx="737.4" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.60%</title></circle>
-<circle cx="746.9" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
-<circle cx="756.4" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.59%</title></circle>
-<circle cx="765.9" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.63%</title></circle>
-<circle cx="775.3" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.65%</title></circle>
-<circle cx="784.8" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.51%</title></circle>
-<circle cx="794.3" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.48%</title></circle>
-<circle cx="803.8" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.49%</title></circle>
-<circle cx="813.3" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.41%</title></circle>
-<circle cx="822.8" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.37%</title></circle>
-<circle cx="832.2" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.33%</title></circle>
-<circle cx="841.7" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.35%</title></circle>
-<circle cx="851.2" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.34%</title></circle>
-<circle cx="860.7" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.67%</title></circle>
-<circle cx="870.2" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.68%</title></circle>
-<circle cx="879.7" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
-<circle cx="889.2" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
-<circle cx="898.6" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
-<circle cx="908.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
-<circle cx="917.6" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.66%</title></circle>
-<circle cx="927.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.66%</title></circle>
-<circle cx="936.6" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
-<circle cx="946.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.70%</title></circle>
-<circle cx="955.5" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.70%</title></circle>
-<circle cx="965.0" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
-<circle cx="974.5" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
-<circle cx="984.0" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-27: accuracy 99.70%</title></circle>
+<circle cx="73.4" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-18: accuracy 100.00%</title></circle>
+<circle cx="82.8" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="92.2" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="101.6" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="110.9" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="120.3" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 100.00%</title></circle>
+<circle cx="129.7" cy="201.1" r="3.0" fill="#e6edf3"><title>2026-10-19: accuracy 94.46%</title></circle>
+<circle cx="139.1" cy="200.6" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 94.98%</title></circle>
+<circle cx="148.5" cy="200.3" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.28%</title></circle>
+<circle cx="157.9" cy="200.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.45%</title></circle>
+<circle cx="167.3" cy="200.1" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.52%</title></circle>
+<circle cx="176.7" cy="200.1" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.54%</title></circle>
+<circle cx="186.0" cy="199.9" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.71%</title></circle>
+<circle cx="195.4" cy="199.9" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 95.75%</title></circle>
+<circle cx="204.8" cy="199.6" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.08%</title></circle>
+<circle cx="214.2" cy="199.5" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.23%</title></circle>
+<circle cx="223.6" cy="199.4" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.26%</title></circle>
+<circle cx="233.0" cy="199.3" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.37%</title></circle>
+<circle cx="242.4" cy="199.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.49%</title></circle>
+<circle cx="251.8" cy="198.9" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.81%</title></circle>
+<circle cx="261.1" cy="198.8" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 96.99%</title></circle>
+<circle cx="270.5" cy="198.6" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.18%</title></circle>
+<circle cx="279.9" cy="198.4" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.39%</title></circle>
+<circle cx="289.3" cy="198.3" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.49%</title></circle>
+<circle cx="298.7" cy="198.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.59%</title></circle>
+<circle cx="308.1" cy="198.2" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.66%</title></circle>
+<circle cx="317.5" cy="198.0" r="3.0" fill="#e6edf3"><title>2026-10-20: accuracy 97.86%</title></circle>
+<circle cx="326.9" cy="197.5" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 98.34%</title></circle>
+<circle cx="336.2" cy="197.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 98.81%</title></circle>
+<circle cx="345.6" cy="196.9" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.07%</title></circle>
+<circle cx="355.0" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.59%</title></circle>
+<circle cx="364.4" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.62%</title></circle>
+<circle cx="373.8" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.86%</title></circle>
+<circle cx="383.2" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.92%</title></circle>
+<circle cx="392.6" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.90%</title></circle>
+<circle cx="402.0" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.91%</title></circle>
+<circle cx="411.3" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.94%</title></circle>
+<circle cx="420.7" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.96%</title></circle>
+<circle cx="430.1" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
+<circle cx="439.5" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
+<circle cx="448.9" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
+<circle cx="458.3" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
+<circle cx="467.7" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 99.98%</title></circle>
+<circle cx="477.1" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="486.4" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="495.8" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="505.2" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="514.6" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="524.0" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="533.4" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="542.8" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="552.2" cy="196.0" r="3.0" fill="#e6edf3"><title>2026-10-21: accuracy 100.00%</title></circle>
+<circle cx="561.6" cy="196.1" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.84%</title></circle>
+<circle cx="570.9" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.74%</title></circle>
+<circle cx="580.3" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.76%</title></circle>
+<circle cx="589.7" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.76%</title></circle>
+<circle cx="599.1" cy="196.2" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.76%</title></circle>
+<circle cx="608.5" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.66%</title></circle>
+<circle cx="617.9" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.66%</title></circle>
+<circle cx="627.3" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.64%</title></circle>
+<circle cx="636.7" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.53%</title></circle>
+<circle cx="646.0" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.54%</title></circle>
+<circle cx="655.4" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-22: accuracy 99.54%</title></circle>
+<circle cx="664.8" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.54%</title></circle>
+<circle cx="674.2" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.54%</title></circle>
+<circle cx="683.6" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.56%</title></circle>
+<circle cx="693.0" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.56%</title></circle>
+<circle cx="702.4" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
+<circle cx="711.8" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
+<circle cx="721.1" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
+<circle cx="730.5" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.60%</title></circle>
+<circle cx="739.9" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.58%</title></circle>
+<circle cx="749.3" cy="196.4" r="3.0" fill="#e6edf3"><title>2026-10-23: accuracy 99.59%</title></circle>
+<circle cx="758.7" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.63%</title></circle>
+<circle cx="768.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.65%</title></circle>
+<circle cx="777.5" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.51%</title></circle>
+<circle cx="786.9" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.48%</title></circle>
+<circle cx="796.2" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.49%</title></circle>
+<circle cx="805.6" cy="196.5" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.41%</title></circle>
+<circle cx="815.0" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.37%</title></circle>
+<circle cx="824.4" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.33%</title></circle>
+<circle cx="833.8" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.35%</title></circle>
+<circle cx="843.2" cy="196.6" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.34%</title></circle>
+<circle cx="852.6" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.67%</title></circle>
+<circle cx="862.0" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-25: accuracy 99.68%</title></circle>
+<circle cx="871.3" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
+<circle cx="880.7" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
+<circle cx="890.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
+<circle cx="899.5" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
+<circle cx="908.9" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.66%</title></circle>
+<circle cx="918.3" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.66%</title></circle>
+<circle cx="927.7" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
+<circle cx="937.1" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.70%</title></circle>
+<circle cx="946.4" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.70%</title></circle>
+<circle cx="955.8" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
+<circle cx="965.2" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-26: accuracy 99.69%</title></circle>
+<circle cx="974.6" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-27: accuracy 99.70%</title></circle>
+<circle cx="984.0" cy="196.3" r="3.0" fill="#e6edf3"><title>2026-10-27: accuracy 99.71%</title></circle>
 <text x="64.0" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-17</text>
-<text x="230.0" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-20</text>
-<text x="443.4" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-21</text>
-<text x="614.1" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-22</text>
-<text x="713.7" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-23</text>
-<text x="818.0" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-25</text>
-<text x="927.1" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-26</text>
+<text x="228.3" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-20</text>
+<text x="439.5" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-21</text>
+<text x="608.5" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-22</text>
+<text x="707.1" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-23</text>
+<text x="810.3" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-25</text>
+<text x="918.3" y="310" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">2026-10-26</text>
 </svg>

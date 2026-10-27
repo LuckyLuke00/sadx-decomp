@@ -3,7 +3,7 @@
 #include <windows.h>
 
 // STUB: SADX 0x00928630
-int __fastcall FUN_00928630(struct SADX_file *param_1, int param_2, int param_3)
+int __fastcall FUN_00928630(struct SADX_file *param_1, int param_2, int param_3, int param_4)
 {
 	return (int)0;
 }

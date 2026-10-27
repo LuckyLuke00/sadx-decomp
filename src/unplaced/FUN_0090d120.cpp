@@ -17,9 +17,16 @@ void FUN_0090d140()
 	*(int *)(var1 + 0x50) = 4;
 }
 
-// STUB: SADX 0x0090d160
+// FUNCTION: SADX 0x0090d160
 void FUN_0090d160()
 {
+	char *var1;
+	unsigned char uVar1;
+
+	uVar1 = FUN_0090ccb0(*(unsigned short *)((char *)DAT_060ee5b8 + 0xc));
+	var1 = DAT_060ee5b8;
+	*(unsigned char *)(var1 + 8) = uVar1;
+	*(int *)(var1 + 0x50) = 7;
 }
 
 // FUNCTION: SADX 0x0090d190

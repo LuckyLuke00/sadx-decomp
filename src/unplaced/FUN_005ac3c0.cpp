@@ -1,4 +1,5 @@
 #include "decls.h"
+struct NJS_POINT3;
 int FUN_005ac4e0(int param_1);
 
 // FUNCTION: SADX 0x005ac3c0

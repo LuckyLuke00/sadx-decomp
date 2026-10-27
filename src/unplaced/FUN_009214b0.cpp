@@ -39,6 +39,11 @@ int __fastcall FUN_00921780(void *param_1)
 	return *(int *)((char *)param_1 + 0x54);
 }
 
+// STUB: SADX 0x00921790
+void FUN_00921790(void *param_1)
+{
+}
+
 // STUB: SADX 0x009217c0
 int __fastcall FUN_009217c0(void *param_1, void *param_2, int param_3, int param_4)
 {

@@ -76,6 +76,16 @@ void FUN_00411e00(int param_1, char *param_2, const char *param_3)
 {
 }
 
+// STUB: SADX 0x004121c0
+void __fastcall FUN_004121c0(void *param_1)
+{
+}
+
+// STUB: SADX 0x00412210
+void FUN_00412210(int param_1)
+{
+}
+
 // FUNCTION: SADX 0x00412230
 void __fastcall FUN_00412230(void *param_1)
 {
@@ -167,6 +177,11 @@ void __fastcall FUN_00414970(int *param_1)
 
 // STUB: SADX 0x00414d10
 void __fastcall FUN_00414d10(void *param_1, int param_2, int param_3)
+{
+}
+
+// STUB: SADX 0x00415190
+void __fastcall FUN_00415190(void *param_1, void *param_2)
 {
 }
 

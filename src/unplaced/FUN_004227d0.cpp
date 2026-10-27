@@ -33,10 +33,12 @@ void FUN_00422b20(void)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00422b50
 void FUN_00422b50(void)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00422ba0
 void FUN_00422ba0(void)
