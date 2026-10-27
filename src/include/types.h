@@ -194,6 +194,7 @@ struct motionwk;
 struct motionwk2;
 struct MSGC;
 struct mtnjvwk;
+struct neon_info;
 struct NJS_ACTION;
 struct NJS_ACTION_LINK;
 struct NJS_ARGB;
@@ -294,6 +295,7 @@ struct TrialActSelWk;
 struct TvSettingWk;
 struct u4s;
 union UNION_STATUS;
+struct uv_info;
 struct VolumeInfo;
 struct WIDELINE_TEXDATA;
 struct WIREMODEL;
@@ -4936,6 +4938,24 @@ static_assert(offsetof(mtnjvwk, plactptr) == 0x20, "mtnjvwk::plactptr");
 static_assert(offsetof(mtnjvwk, pljvptr) == 0x24, "mtnjvwk::pljvptr");
 static_assert(offsetof(mtnjvwk, actwkptr) == 0x28, "mtnjvwk::actwkptr");
 
+struct neon_info {
+    struct uv_info *info;
+    short info_num;
+    short type;
+    short uv_spd;
+    short wait_max;
+    short timer;
+    short uv;
+};
+static_assert(sizeof(neon_info) == 0x10, "sizeof neon_info");
+static_assert(offsetof(neon_info, info) == 0x0, "neon_info::info");
+static_assert(offsetof(neon_info, info_num) == 0x4, "neon_info::info_num");
+static_assert(offsetof(neon_info, type) == 0x6, "neon_info::type");
+static_assert(offsetof(neon_info, uv_spd) == 0x8, "neon_info::uv_spd");
+static_assert(offsetof(neon_info, wait_max) == 0xa, "neon_info::wait_max");
+static_assert(offsetof(neon_info, timer) == 0xc, "neon_info::timer");
+static_assert(offsetof(neon_info, uv) == 0xe, "neon_info::uv");
+
 struct obj {
     unsigned long evalflags;
     struct NJS_MODEL *model;
@@ -5481,6 +5501,14 @@ static_assert(offsetof(taskwk, pos) == 0x20, "taskwk::pos");
 static_assert(offsetof(taskwk, scl) == 0x2c, "taskwk::scl");
 static_assert(offsetof(taskwk, cwp) == 0x38, "taskwk::cwp");
 static_assert(offsetof(taskwk, ewp) == 0x3c, "taskwk::ewp");
+
+struct uv_info {
+    union NJS_COLOR *uv_list;
+    long uv_num;
+};
+static_assert(sizeof(uv_info) == 0x8, "sizeof uv_info");
+static_assert(offsetof(uv_info, uv_list) == 0x0, "uv_info::uv_list");
+static_assert(offsetof(uv_info, uv_num) == 0x4, "uv_info::uv_num");
 
 struct zxsdwstr {
     struct NJS_POINT3 pos;
