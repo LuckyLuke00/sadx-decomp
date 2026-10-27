@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float ScreenRaitoX;
+extern float ScreenRaitoY;
 struct FileSelWk;
 void FUN_004ba980(void);
 enum AvaCharEnum AvaGetlastPlayer();
@@ -62,10 +64,23 @@ void FUN_004b6ca0(void)
 	}
 }
 
-// STUB: SADX 0x004b6cd0
-struct task *SetAdvaFileSelTask(struct ModeSelPrmType *param_1)
+// FUNCTION: SADX 0x004b6cd0
+struct task *SetAdvaFileSelTask(struct ModeSelPrmType *prmp)
 {
-	return (struct task *)0;
+	void *local_cg;
+	struct task *local_8g;
+
+	local_8g = CreateElementalTask(0, 3, file_sel_exec);
+	DAT_05b42530 = local_8g;
+	if (DAT_05b42530 != 0)
+	{
+		local_cg = CAlloc(1, 0x38);
+		local_8g->awp = (struct anywk *)local_cg;
+		FUN_004b6d40(local_8g, prmp);
+		local_8g->exec = file_sel_exec;
+		local_8g->disp = file_sel_disp;
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x004b6d40
@@ -198,25 +213,33 @@ void file_sel_disp(struct task *tp)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004b84d0
 void DrawStartChiten(struct FileSelWk *wkp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x004b85b0
 void DrawSaishuuClear(struct FileSelWk *wkp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x004b8710
 void DrawPlayTime(struct FileSelWk *wkp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x004b8860
 void DrawFileEmblem(struct FileSelWk *wkp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004b9330
 void FUN_004b9330(struct task *param_1)
@@ -244,6 +267,18 @@ void ChgSeqFileSel(void)
 {
 	((struct FileSelWk *)DAT_05b42530->awp)->NextMode = (enum AdvaModeEnum)7;
 	((struct FileSelWk *)DAT_05b42530->awp)->PrevMode = (enum AdvaModeEnum)7;
+}
+
+// FUNCTION: SADX 0x004b9c10
+void FUN_004b9c10(struct FileSelWk *param_1)
+{
+	ghSetPvrTexMaterial(-1);
+	___njSetTexture(&texlist_ava_vmssel);
+	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoX * 38.0f, param_1->BaseZ + -8.0f, ScreenRaitoX * 564.0f, ScreenRaitoY * 41.0f);
+	ghDrawPvrTextureS(8, ScreenRaitoX * 42.0f, ScreenRaitoY * 46.0f, param_1->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
+	ghSetPvrTexMaterial(0x78004fff);
+	DrawShadowWindow(ScreenRaitoX * 47.0f, ScreenRaitoY * 84.0f, param_1->BaseZ + -6.0f, ScreenRaitoX * 200.0f, ScreenRaitoX * 340.0f);
+	AvaDrawInfo(param_1);
 }
 
 // FUNCTION: SADX 0x004ba980

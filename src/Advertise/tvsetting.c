@@ -4,6 +4,13 @@ void FUN_005fd5d0(struct anywk *param_1);
 void ghDrawPvrTexture(int index, float x, float y, float z);
 void FUN_005fd510(int param_1, int param_2);
 void FUN_005fd320(struct task *param_1);
+struct task;
+struct TvSettingWk;
+
+// STUB: SADX 0x005fd120
+void DrawTvsettingDialogSub(struct DDlgType *dlgp)
+{
+}
 
 // FUNCTION: SADX 0x005fd240
 struct task *SetAdvaTvSettingTask(struct ModeSelPrmType *prmp)
@@ -24,9 +31,17 @@ struct task *SetAdvaTvSettingTask(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
-// STUB: SADX 0x005fd2b0
+// FUNCTION: SADX 0x005fd2b0
 void FUN_005fd2b0(struct task *param_1, struct ModeSelPrmType *param_2)
 {
+	struct anywk *local_8;
+
+	local_8 = param_1->awp;
+	local_8->work.ul[1] = *(int *)param_2;
+	local_8->work.ul[2] = *(int *)((char *)param_2 + 4);
+	local_8->work.f[3] = 5800.0f;
+	local_8->work.ul[0] = 0;
+	FUN_005fd300(local_8);
 }
 
 // FUNCTION: SADX 0x005fd300
@@ -104,14 +119,38 @@ void FUN_005fd4e0(int param_1)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005fd510
 void FUN_005fd510(int param_1, int param_2)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005fd5d0
 void FUN_005fd5d0(struct anywk *param_1)
 {
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x005fd760
+void FUN_005fd760(struct task *param_1)
+{
+	struct TvSettingWk *local_8;
+
+	local_8 = (struct TvSettingWk *)param_1->awp;
+	if (*(int *)((char *)local_8 + 0x14) == 0)
+	{
+		return;
+	}
+	ghDefaultBlendingMode();
+	ghSetPvrTexBaseColor(*(unsigned long *)((char *)local_8 + 0x14));
+	if (*(int *)((char *)local_8 + 0x18) != 4)
+	{
+		DrawSkyBg(*(float *)((char *)local_8 + 0xc) + -2.0);
+	}
+	FUN_005fd7e0(local_8);
+	DrawTvSettingWnd(local_8);
 }
 
 // FUNCTION: SADX 0x005fd7e0

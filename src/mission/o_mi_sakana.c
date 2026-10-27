@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05cd2968;
 
 // STUB: SADX 0x0049b3e0
 void FUN_0049b3e0(struct NJS_MODEL *model)
@@ -20,9 +21,18 @@ void sakana_disp(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0049baf0
+// FUNCTION: SADX 0x0049baf0
 void sakana_exit(struct task *tp)
 {
+	if (tp->awp)
+	{
+		struct task *var1 = *(struct task **)((char *)tp->awp + 8);
+		if (var1 && var1->twp)
+		{
+			*(int *)((char *)var1->twp + 0x10) = 0;
+		}
+		DAT_05cd2968--;
+	}
 }
 
 // FUNCTION: SADX 0x0049bb20

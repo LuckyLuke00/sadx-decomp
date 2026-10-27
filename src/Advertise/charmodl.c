@@ -1,4 +1,5 @@
 #include "decls.h"
+struct CharMdlWk;
 void FUN_0061e610(unsigned short param_1);
 extern const unsigned short PlayerNoTbl[7];
 void SetCharMdlsLocOut(struct CharMdlWk *wkp);
@@ -33,6 +34,13 @@ struct task *FUN_0061de70(void)
 	return local_8g;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0061def0
+void FUN_0061def0(struct task *param_1)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x0061df90
 void InitCharMdls(struct CharMdlWk *wkp)
 {
@@ -43,10 +51,12 @@ void FUN_0061e0d0(int param_1)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0061e160
 void SetCharMdlsLocOut(struct CharMdlWk *wkp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0061e200
 void FUN_0061e200(struct task *param_1)
@@ -65,10 +75,12 @@ void FUN_0061e200(struct task *param_1)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0061e250
 void charmdl_exec(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0061e2d0
 void charmdl_disp(struct task *tp)

@@ -65,6 +65,11 @@ void MSG_LoadTexture(struct MSGC *msgc)
 	msgc->msgc_flag |= 2;
 }
 
+// STUB: SADX 0x004c1a80
+void MSG_LoadTexture2(struct MSGC *msgc)
+{
+}
+
 // FUNCTION: SADX 0x004c1c10
 void MSG_CloseRequestCls()
 {
@@ -230,9 +235,30 @@ void FUN_004c2a30(struct MSGC *param_1, char *param_2)
 {
 }
 
-// STUB: SADX 0x004c2d60
+// FUNCTION: SADX 0x004c2d60
 void MSG_WinFadeIn(struct MSGC *msgc)
 {
+	int local_8g;
+	int local_cg;
+
+	*(unsigned char *)((char *)msgc + 0x23) = 0;
+	*(unsigned char *)((char *)msgc + 0x1f) = 0;
+	local_8g = 0xa;
+	for (; local_8g != 0; local_8g--)
+	{
+		*(unsigned char *)((char *)msgc + 0x23) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x23) + 0xc);
+		MSG_Disp(msgc);
+		FUN_005a4d70();
+	}
+	*(unsigned char *)((char *)msgc + 0x23) = 0x80;
+	local_cg = 0xa;
+	for (; local_cg != 0; local_cg--)
+	{
+		*(unsigned char *)((char *)msgc + 0x1f) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x1f) + 0x18);
+		MSG_Disp(msgc);
+		FUN_005a4d70();
+	}
+	*(unsigned char *)((char *)msgc + 0x1f) = 0xff;
 }
 
 // FUNCTION: SADX 0x004c2e10
@@ -332,6 +358,13 @@ struct MSGC *NH_MSG_OpenMain(struct MSGC *msgc)
 {
 	return NH_MSG_Open(msgc, 0x46, 0x180, 0x1f4, 0x34, 0xd0000004, (char *)DAT_05b42e20);
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x004c3060
+void MSG_ThreadMainMessages(char * *message)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c3150
 void MSG_MainMessages(char **message)

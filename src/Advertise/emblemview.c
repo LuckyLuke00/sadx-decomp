@@ -47,10 +47,12 @@ void FUN_005ff970(struct anywk *param_1)
 	*(unsigned char *)((char *)param_1 + 0x39) = 0xff;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005ff9b0
 void FUN_005ff9b0(struct anywk *param_1)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005ffba0
 void FUN_005ffba0(struct anywk *param_1)
@@ -87,10 +89,12 @@ void emblem_view_disp(struct task *tp)
 	DrawEmblemViewEmblem(local_8);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00600590
 void DrawEmblemViewHead(struct EmblemViewWk *wkp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006009a0
 void DrawEmblemViewBg(struct EmblemViewWk *wkp)

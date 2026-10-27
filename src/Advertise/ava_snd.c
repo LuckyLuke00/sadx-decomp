@@ -138,10 +138,10 @@ static void adva_serifu_exec(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0059f900
+// FUNCTION: SADX 0x0059f900
 int SetAdvaSerifu(enum AvaSerifuModeEnum serifumode)
 {
-	return (int)0;
+	return SetAdvaSerifuNum(AdvaSerifuTbl[DAT_05cd14e2][serifumode]);
 }
 
 // FUNCTION: SADX 0x0059f930

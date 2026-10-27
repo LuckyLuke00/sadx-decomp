@@ -1,4 +1,8 @@
 #include "decls.h"
+extern int DAT_05b3ebbc;
+extern const unsigned char TxChPvrIdx[7];
+extern struct NJS_TEXLIST texlist_ava_metal;
+extern struct NJS_TEXLIST texlist_tx_chnam;
 void DrawValTrialS(long val, long keta, unsigned char zflg, float x, float y, float z, float magx, float magy);
 extern float ScreenRaitoX;
 extern float ScreenRaitoY;
@@ -24,10 +28,36 @@ void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, 
 	}
 }
 
+// FUNCTION: SADX 0x0059ebf0
+void DrawTxCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, float z, float magx, float magy)
+{
+	if (chnum == 6 && DAT_05cd14ea == 1)
+	{
+		___njSetTexture(&texlist_ava_metal);
+		ghSetPvrTexMaterial(col);
+		if (DAT_05b3ebbc == 0)
+		{
+			ghDrawPvrTextureS(0x4000003, x * ScreenRaitoX, y * ScreenRaitoY, z, magx * ScreenRaitoX, magy * ScreenRaitoY);
+		}
+		else
+		{
+			ghDrawPvrTextureS(0x4000004, x * ScreenRaitoX, y * ScreenRaitoY, z, magx * ScreenRaitoX, magy * ScreenRaitoY);
+		}
+	}
+	else
+	{
+		___njSetTexture(&texlist_tx_chnam);
+		ghSetPvrTexMaterial(col);
+		ghDrawPvrTextureS((TxChPvrIdx[chnum] | 0x4000000), x * ScreenRaitoX, y * ScreenRaitoY, z, magx * ScreenRaitoX, magy * ScreenRaitoY);
+	}
+}
+
+#pragma optimize("", off)
 // STUB: SADX 0x0059ed90
 void DrawVal(long val, long keta, unsigned char zflg, float x, float y, float z, float mag)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0059eec0
 int FUN_0059eec0(int param_1)
@@ -47,10 +77,12 @@ void DrawValLf(long val, float x, float y, float z)
 	DrawVal(val, FUN_0059eec0(val), 1, x, y, z, 1.0f);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0059ef30
 void DrawValTrialS(long val, long keta, unsigned char zflg, float x, float y, float z, float magx, float magy)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0059f060
 void DrawValTrialLf(long val, float x, float y, float z, float magx, float magy)

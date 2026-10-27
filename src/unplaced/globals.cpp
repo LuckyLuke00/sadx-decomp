@@ -95,11 +95,17 @@ int DAT_00990ecc[7];
 // GLOBAL: SADX 0x00990ef0
 unsigned char MChPvrIdx[7];
 
+// GLOBAL: SADX 0x00990ef8
+const unsigned char TxChPvrIdx[7] = {};
+
 // GLOBAL: SADX 0x00990f50
 const int AdvaBgmTbl[5] = {};
 
 // GLOBAL: SADX 0x00990f64
 const int AdvaCharSelSerifuTbl[8] = {};
+
+// GLOBAL: SADX 0x00990f88
+const int AdvaSerifuTbl[9][9] = {};
 
 // GLOBAL: SADX 0x009919e0
 struct DialogPrmType DAT_009919e0;
@@ -163,6 +169,15 @@ struct ActionParam DAT_009c8ba8;
 
 // GLOBAL: SADX 0x009d4890
 char DAT_009d4890[1];
+
+// GLOBAL: SADX 0x009e1668
+char DAT_009e1668[1];
+
+// GLOBAL: SADX 0x009ec7a8
+char DAT_009ec7a8[1];
+
+// GLOBAL: SADX 0x009f2c10
+char DAT_009f2c10[1];
 
 // GLOBAL: SADX 0x00a09c28
 struct TaskInfo DAT_00a09c28;
@@ -752,6 +767,9 @@ struct NJS_TEXLIST texlist_m_chnam;
 // GLOBAL: SADX 0x025adc58
 struct NJS_TEXLIST texlist_ava_metal;
 
+// GLOBAL: SADX 0x025adc60
+struct NJS_TEXLIST texlist_tx_chnam;
+
 // GLOBAL: SADX 0x025adc88
 struct NJS_TEXLIST texlist_ava_trialactsel;
 
@@ -1147,6 +1165,9 @@ char DAT_02631488[1];
 
 // GLOBAL: SADX 0x02631494
 char DAT_02631494[16];
+
+// GLOBAL: SADX 0x026314d4
+short DAT_026314d4[25];
 
 // GLOBAL: SADX 0x02639adc
 struct NJS_POINT3 vec[2];
@@ -2161,6 +2182,18 @@ struct NJS_ACTION action_l_circle[1];
 
 // GLOBAL: SADX 0x02fb4578
 struct obj _object_tr2crash_tr2crash[1];
+
+// GLOBAL: SADX 0x02ff86c8
+struct obj object_wave7_wa_wa[1];
+
+// GLOBAL: SADX 0x02ff86fc
+struct NJS_MOTION motion_wave7_wa[1];
+
+// GLOBAL: SADX 0x02ff8c48
+struct NJS_MOTION shape_wave7_wa[1];
+
+// GLOBAL: SADX 0x02ff8c60
+struct NJS_TEXLIST texlist_wave7_wa;
 
 // GLOBAL: SADX 0x0303f1ec
 struct CCL_INFO DAT_0303f1ec;
@@ -5900,6 +5933,9 @@ unsigned char DAT_05ccceb8[60];
 // GLOBAL: SADX 0x05cccef4
 int DAT_05cccef4[7];
 
+// GLOBAL: SADX 0x05cccf3c
+unsigned short DAT_05cccf3c[8];
+
 // GLOBAL: SADX 0x05cccf84
 unsigned long DAT_05cccf84;
 
@@ -6383,6 +6419,9 @@ int DAT_05cd2958;
 // GLOBAL: SADX 0x05cd295c
 int DAT_05cd295c;
 
+// GLOBAL: SADX 0x05cd2968
+int DAT_05cd2968;
+
 // GLOBAL: SADX 0x05cd296c
 unsigned short DAT_05cd296c;
 
@@ -6806,6 +6845,9 @@ unsigned char DAT_05edd133;
 // GLOBAL: SADX 0x05edd134
 struct PL_ACTION *DAT_05edd134;
 
+// GLOBAL: SADX 0x05edd138
+struct bosswk *DAT_05edd138;
+
 // GLOBAL: SADX 0x05edd13c
 unsigned char DAT_05edd13c;
 
@@ -6817,6 +6859,9 @@ unsigned char DAT_05edd13f;
 
 // GLOBAL: SADX 0x05edd140
 unsigned char DAT_05edd140;
+
+// GLOBAL: SADX 0x05edd144
+float DAT_05edd144;
 
 // GLOBAL: SADX 0x05edd2a4
 unsigned char DAT_05edd2a4;
@@ -6830,6 +6875,9 @@ char DAT_05edd2e0[0x400];
 // GLOBAL: SADX 0x05edd6e4
 int DAT_05edd6e4;
 
+// GLOBAL: SADX 0x05edd778
+struct task *DAT_05edd778;
+
 // GLOBAL: SADX 0x05edd77c
 struct task *DAT_05edd77c;
 
@@ -6842,6 +6890,9 @@ struct task *DAT_05edd7bc;
 // GLOBAL: SADX 0x05edd870
 struct task *DAT_05edd870;
 
+// GLOBAL: SADX 0x05edd874
+void *DAT_05edd874;
+
 // GLOBAL: SADX 0x05edd884
 void *DAT_05edd884;
 
@@ -6853,6 +6904,9 @@ struct task *DAT_05edd89c;
 
 // GLOBAL: SADX 0x05edd91c
 struct task *DAT_05edd91c;
+
+// GLOBAL: SADX 0x05edd940
+unsigned char DAT_05edd940;
 
 // GLOBAL: SADX 0x05edd990
 struct task *DAT_05edd990;
@@ -7571,6 +7625,12 @@ int DAT_060cb33c;
 // GLOBAL: SADX 0x060cb340
 int DAT_060cb340;
 
+// GLOBAL: SADX 0x060cb378
+struct TEX_PVMTABLE DAT_060cb378[1];
+
+// GLOBAL: SADX 0x060cb490
+struct TEX_PVMTABLE DAT_060cb490[1];
+
 // GLOBAL: SADX 0x060cb5d8
 int DAT_060cb5d8;
 
@@ -7583,8 +7643,14 @@ struct task *DAT_060cb658;
 // GLOBAL: SADX 0x060cb65c
 struct task *DAT_060cb65c;
 
+// GLOBAL: SADX 0x060cb684
+struct TEX_PVMTABLE DAT_060cb684[1];
+
 // GLOBAL: SADX 0x060cb770
 struct task *DAT_060cb770;
+
+// GLOBAL: SADX 0x060cb8ac
+struct TEX_PVMTABLE DAT_060cb8ac[1];
 
 // GLOBAL: SADX 0x060cb8d0
 struct task *DAT_060cb8d0;
@@ -7595,11 +7661,17 @@ struct task *DAT_060cb8d4;
 // GLOBAL: SADX 0x060cba14
 struct task *DAT_060cba14;
 
+// GLOBAL: SADX 0x060cba24
+struct TEX_PVMTABLE DAT_060cba24[1];
+
 // GLOBAL: SADX 0x060cba34
 struct task *DAT_060cba34;
 
 // GLOBAL: SADX 0x060cba88
 struct task *DAT_060cba88[16];
+
+// GLOBAL: SADX 0x060cbb04
+struct TEX_PVMTABLE DAT_060cbb04[1];
 
 // GLOBAL: SADX 0x060cbb94
 struct task *DAT_060cbb94;
@@ -8344,6 +8416,9 @@ short DAT_060dfc80;
 
 // GLOBAL: SADX 0x060dfe30
 struct task *DAT_060dfe30;
+
+// GLOBAL: SADX 0x060dfe78
+int DAT_060dfe78[7];
 
 // GLOBAL: SADX 0x060dfea8
 int DAT_060dfea8;

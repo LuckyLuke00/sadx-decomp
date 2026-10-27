@@ -2,6 +2,34 @@
 extern int DAT_05b3ea18;
 extern int DAT_05b3ebbc;
 void FUN_006049a0(int param_1);
+struct task *FUN_00604760(struct task *param_1, struct ModeSelPrmType *param_2);
+
+// FUNCTION: SADX 0x006046f0
+struct task *SetAdvaSndTestTask(struct ModeSelPrmType *prmp)
+{
+	void *local_cg;
+	struct task *local_8g;
+
+	local_8g = CreateElementalTask(0, 3, snd_test_exec);
+	DAT_05edd9bc = local_8g;
+	if (DAT_05edd9bc != 0)
+	{
+		local_cg = CAlloc(1, 0x48);
+		local_8g->awp = (struct anywk *)local_cg;
+		FUN_00604760(local_8g, prmp);
+		local_8g->exec = snd_test_exec;
+		local_8g->disp = snd_test_disp;
+	}
+	return local_8g;
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x00604760
+struct task *FUN_00604760(struct task *param_1, struct ModeSelPrmType *param_2)
+{
+	return (struct task *)0;
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006047e0
 void FUN_006047e0(int param_1)
@@ -151,10 +179,12 @@ void FUN_00605830(unsigned long c0, unsigned long c1, float avg)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006058a0
 void DrawSndTestSubMenuBg(struct SndTestWk *wkp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00605aa0
 void FUN_00605aa0(unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4, float param_5)

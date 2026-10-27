@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00600f70(void *param_1);
 extern unsigned char DAT_00982ec0[];
 extern unsigned char DAT_05cd14ed;
 extern struct task *DAT_05edd9b0;
@@ -22,9 +23,18 @@ struct task *SetAdvaMiniGameSelTask(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
-// STUB: SADX 0x00600f10
+// FUNCTION: SADX 0x00600f10
 void FUN_00600f10(struct task *param_1, struct ModeSelPrmType *param_2)
 {
+	struct anywk *local_8;
+
+	local_8 = param_1->awp;
+	*(void **)((char *)local_8 + 4) = *(void **)((char *)param_2 + 0);
+	*(void **)((char *)local_8 + 8) = *(void **)((char *)param_2 + 4);
+	*(float *)((char *)local_8 + 0xc) = 5100.0f;
+	*(int *)((char *)local_8 + 0) = 0;
+	*(void **)((char *)local_8 + 0x30) = (void *)((char *)local_8 + 0x1c);
+	FUN_00600f70(local_8);
 }
 
 // STUB: SADX 0x00600fc0

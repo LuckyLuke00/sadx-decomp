@@ -1,4 +1,5 @@
 #include "decls.h"
+extern unsigned short DAT_05cccf3c[8];
 struct SAVE_DATA *GetSDp();
 extern int DAT_05cccef4[7];
 extern unsigned char DAT_05cd14ed;
@@ -166,10 +167,25 @@ void AvaGetTrialBestClearTime(struct CLEAR_TIME *ctp, enum AvaCharEnum chnum, un
 {
 }
 
-// STUB: SADX 0x005a47b0
+// FUNCTION: SADX 0x005a47b0
 short AvaGetTrialBestRing(enum AvaCharEnum chnum, unsigned char stg)
 {
-	return (short)0;
+	struct SAVE_DATA *local_8g;
+	int local_cj;
+	short local_10;
+
+	local_8g = GetSDp();
+	if (DAT_05cd14ed == 6)
+	{
+		local_10 = DAT_05cccf3c[stg];
+	}
+	else
+	{
+		local_cj = serch_stg_from_stgactprm(stg, chnum);
+		local_cj = FUN_005a4640(chnum) + local_cj;
+		local_10 = *(short *)((char *)local_8g + 0x104 + local_cj * 2);
+	}
+	return local_10;
 }
 
 // FUNCTION: SADX 0x005a4820

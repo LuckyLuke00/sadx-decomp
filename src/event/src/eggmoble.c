@@ -21,6 +21,29 @@ void eggmoble_init(struct task *tp)
 {
 }
 
+// FUNCTION: SADX 0x007d6280
+void FUN_007d6280(float param_1, float param_2, float param_3, long param_4, long param_5, long param_6)
+{
+	struct task *var1;
+	struct taskwk *var2;
+
+	var1 = CreateElementalTask(2, 5, eggmoble_init);
+	if (var1)
+	{
+		var2 = var1->twp;
+		var2->pos.x = param_1;
+		var2->ang.x = param_4;
+		var2->pos.y = param_2;
+		var2->ang.y = param_5;
+		var2->pos.z = param_3;
+		var2->ang.z = param_6;
+		var2->scl.x = 1.0f;
+		DAT_060cc57c = var1;
+		var2->scl.y = 1.0f;
+		var2->scl.z = 1.0f;
+	}
+}
+
 // FUNCTION: SADX 0x007d6300
 void ChgEggMobleMod(signed char mode)
 {
@@ -55,9 +78,28 @@ void eggmoble_move_rapid(float x, float y, float z, long frame)
 	var1->mode = 2;
 }
 
-// STUB: SADX 0x007d6420
+// FUNCTION: SADX 0x007d6420
 void eggmoble_turn(long ax, long ay, long az, long frame, signed char efmode)
 {
+	struct taskwk *var1 = DAT_060cc57c->twp;
+	struct motionwk *var2 = (struct motionwk *)var1->counter.ptr;
+	*(long *)((char *)var2 + 0x24) = frame;
+	*(int *)((char *)var2 + 0x28) = 0;
+	*(long *)((char *)var2 + 0xc) = ax / frame;
+	*(long *)((char *)var2 + 0x10) = ay / frame;
+	*(long *)((char *)var2 + 0x14) = az / frame;
+	var1->mode = 3;
+	if (efmode == 0)
+	{
+		if (ay > 0)
+		{
+			var1->smode = 2;
+		}
+		if (ay < 0)
+		{
+			var1->smode = 3;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x007d6480

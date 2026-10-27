@@ -11,9 +11,27 @@ void initChaos0CtrlTask(struct task *task_p)
 	task_p->dest = FUN_007d6940;
 }
 
-// STUB: SADX 0x007e0520
+// FUNCTION: SADX 0x007e0520
 void StgChaos0CtrlOff()
 {
+	struct task *var1;
+	struct taskwk *var2;
+	void *var3;
+
+	if (DAT_060cceb4 == 0)
+		return;
+	var1 = DAT_060cceb4;
+	var2 = var1->twp;
+	var3 = *(void **)((char *)var2 + 0x10);
+	*(float *)((char *)DAT_05edd128 + 0x20) = *(float *)var3;
+	*(float *)((char *)DAT_05edd128 + 0x24) = *(float *)((char *)var3 + 4);
+	*(float *)((char *)DAT_05edd128 + 0x28) = *(float *)((char *)var3 + 8);
+	*(int *)((char *)DAT_05edd128 + 0x14) = *(int *)((char *)var3 + 0xc);
+	*(int *)((char *)DAT_05edd128 + 0x18) = *(int *)((char *)var3 + 0x10);
+	*(int *)((char *)DAT_05edd128 + 0x1c) = *(int *)((char *)var3 + 0x14);
+	DestroyTask(var1);
+	DAT_060cceb4 = 0;
+	EvChaosExit();
 }
 
 // FUNCTION: SADX 0x007e05a0

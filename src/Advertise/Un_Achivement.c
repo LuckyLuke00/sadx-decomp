@@ -1,4 +1,5 @@
 #include "decls.h"
+extern void *DAT_05edd874;
 static void title_menu_disp(struct task *tp);
 extern struct task *DAT_05edd870;
 void FUN_005f2090(float);
@@ -38,9 +39,17 @@ void FUN_005f2070(struct task *param_1)
 	FUN_005f2090(*(float *)((char *)param_1 + 0x10));
 }
 
-// STUB: SADX 0x005f2090
+// FUNCTION: SADX 0x005f2090
 void FUN_005f2090(float param_1)
 {
+	float local_cg;
+	float local_8g;
+	___njSetTexture(&texlist_ava_new_menu);
+	ghSetPvrTexMaterial(0xffffffff);
+	local_cg = 0.0f;
+	local_8g = -18.0f;
+	DrawTexture(0, 0, 0x280, 0x1e0, 0.99f, (struct Magic::RenderCore::Texture *)DAT_05edd874, 0.0f, 0.0f, 1.0f, 1.0f, -1);
+	___njSetTexture(&texlist_ava_new_menu);
 }
 
 // STUB: SADX 0x005f2110

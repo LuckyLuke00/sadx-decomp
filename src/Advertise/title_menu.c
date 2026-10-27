@@ -61,10 +61,12 @@ static void title_menu_disp(struct task *tp)
 	DisplayTitleNew(*(float *)((char *)tp + 0x10));
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004c12e0
 static void DisplayTitleNew(float basez)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c1680
 void FUN_004c1680(void)
