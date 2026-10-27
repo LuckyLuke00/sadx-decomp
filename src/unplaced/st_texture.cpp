@@ -5,6 +5,11 @@ extern int DAT_05ab6ec0;
 void _stRectangleHalf(void *param_1, void *param_2, unsigned long param_3, unsigned long param_4, unsigned long param_5);
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 
+// STUB: SADX 0x00429f70
+void FUN_00429f70(int param_1, int param_2, int param_3, int param_4, int param_5)
+{
+}
+
 // STUB: SADX 0x0042a1e0
 void _stExpandVectorQuantizationLinear(void *param_1, void *param_2, unsigned long param_3, unsigned long param_4, unsigned long param_5)
 {

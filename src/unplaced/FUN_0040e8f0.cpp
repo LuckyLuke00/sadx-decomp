@@ -3,6 +3,7 @@
 #include <cctype>
 #include <new>
 #include <exception>
+extern void __cdecl operator delete(void *param_1);
 void FUN_0040f020(int param_1, int param_2);
 void FUN_004160c0(char *param_1, int param_2, char *param_3, char *param_4);
 void __stdcall FUN_00415a10(int param_1);
@@ -10,6 +11,11 @@ struct FUN_004157e0_node;
 
 // STUB: SADX 0x0040e960
 void FUN_0040e960(void)
+{
+}
+
+// STUB: SADX 0x0040ea20
+void FUN_0040ea20(void)
 {
 }
 

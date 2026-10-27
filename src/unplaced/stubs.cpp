@@ -97,11 +97,6 @@ void njSetCamera(struct NJS_CAMERA *)
 {
 }
 
-// STUB: SADX 0x00425640
-void njMotionTransformEx(struct obj const *)
-{
-}
-
 // STUB: SADX 0x00425830
 void njMotionLinkTransformEx(struct obj const *)
 {
@@ -247,6 +242,11 @@ float njSin(int)
 
 // STUB: SADX 0x00432d10
 void njScaleEx(void *)
+{
+}
+
+// STUB: SADX 0x00432d90
+void njRotateEx(long *, int)
 {
 }
 
@@ -2484,12 +2484,12 @@ long movie(long movie_num)
 }
 
 // STUB: SADX 0x00620430
-void FUN_00620430(void)
+void FUN_00620430()
 {
 }
 
 // STUB: SADX 0x006207b0
-void FUN_006207b0(void)
+void FUN_006207b0()
 {
 }
 
@@ -3983,12 +3983,6 @@ void FUN_0090ccf0(int, int)
 // STUB: SADX 0x0090cd20
 void Z80_Write2(unsigned short, unsigned short)
 {
-}
-
-// STUB: SADX 0x00924470
-int FUN_00924470()
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x0094bac0

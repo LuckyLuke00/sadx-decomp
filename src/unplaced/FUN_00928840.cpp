@@ -145,6 +145,11 @@ void __stdcall FUN_00929140(int *param_1)
 {
 }
 
+// STUB: SADX 0x009291a0
+void __fastcall FUN_009291a0(int param_1)
+{
+}
+
 // STUB: SADX 0x00929210
 void __fastcall FUN_00929210(struct S *param_1)
 {
