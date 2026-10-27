@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_0043d8a0(int param_1);
+extern const unsigned long nbMaxEntry[11];
 long ALW_CommunicationOff(struct task *tp);
 extern float DAT_05ade380[16];
 extern float DAT_05aea9f0[16];
@@ -6,6 +8,35 @@ extern int DAT_05aeaa34;
 void njInvertMatrix(float *param_1);
 extern unsigned short DAT_05aeaa30;
 extern int DAT_05ade3c0[0x100];
+
+#pragma optimize("", off)
+// STUB: SADX 0x0043d8e0
+void ALW_ClearEntry()
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x0043d950
+struct task *ALW_GetTask(unsigned short category, unsigned short num)
+{
+	if (num > nbMaxEntry[category] - 1)
+	{
+		return NULL;
+	}
+	return *(struct task **)((char *)DAT_05ade3c0 + 0x6c + ((category << 6) + num) * 0x48);
+}
+
+// STUB: SADX 0x0043d980
+struct task *ALW_GetTaskCount(unsigned short category, unsigned short count)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x0043d9f0
+struct al_entry_work *ALW_GetEntryCount(unsigned short category, unsigned short count)
+{
+	return (struct al_entry_work *)0;
+}
 
 // FUNCTION: SADX 0x0043da50
 long ALW_CountEntry(unsigned short category)
@@ -85,10 +116,23 @@ long ALW_LockOn(struct task *pMyTask, struct task *pTargetTask)
 	return 0;
 }
 
-// STUB: SADX 0x0043db30
+// FUNCTION: SADX 0x0043db30
 struct task *ALW_GetLockOnTask(struct task *pMyTask)
 {
-	return (struct task *)0;
+	struct task *var1 = (struct task *)pMyTask->fwp;
+	if (var1 != 0)
+	{
+		struct task *var2 = (struct task *)*(int *)((char *)var1 + 0x44);
+		if (var2 != 0)
+		{
+			struct task *var3 = (struct task *)*(int *)((char *)var2 + 0x3c);
+			if (var3 != 0)
+			{
+				return var3;
+			}
+		}
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x0043db50
@@ -142,10 +186,20 @@ struct al_entry_work *ALW_IsAttention(struct task *tp)
 	return 0;
 }
 
-// STUB: SADX 0x0043dc10
+// FUNCTION: SADX 0x0043dc10
 long ALW_IsSheAttentionOtherOne(struct task *pMyTask, struct task *pHerTask)
 {
-	return (long)0;
+	if (pHerTask->fwp)
+	{
+		if (*(void **)((char *)pHerTask->fwp + 0x40))
+		{
+			if (*(void **)((char *)pHerTask->fwp + 0x40) != pMyTask->fwp)
+			{
+				return 1;
+			}
+		}
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x0043dc40
@@ -172,10 +226,30 @@ long ALW_CommunicationOn(struct task *tp1, struct task *tp2)
 	return 1;
 }
 
-// STUB: SADX 0x0043dca0
+// FUNCTION: SADX 0x0043dca0
 long ALW_CommunicationOff(struct task *tp)
 {
-	return (long)0;
+	struct forcewk *var1;
+	struct forcewk *var2;
+
+	var1 = tp->fwp;
+	if (var1 != 0)
+	{
+		var2 = (struct forcewk *)(*(int **)((char *)var1 + 0x40));
+		*(short *)((char *)var1 + 6) = 0;
+		*(int **)((char *)var1 + 0x40) = 0;
+		*(int *)((char *)var1 + 0xc) = -1;
+		if (var2 != 0)
+		{
+			if (*(struct forcewk **)((char *)var2 + 0x40) == var1)
+			{
+				*(short *)((char *)var2 + 6) = 0;
+				*(int **)((char *)var2 + 0x40) = 0;
+			}
+			*(int *)((char *)var2 + 0xc) = -1;
+		}
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0043dcf0
@@ -193,10 +267,22 @@ struct al_entry_work *ALW_IsCommunication(struct task *tp)
 	return NULL;
 }
 
-// STUB: SADX 0x0043dd10
+// FUNCTION: SADX 0x0043dd10
 struct al_entry_work *ALW_IsCommunicationEx(struct task *tp, unsigned short category)
 {
-	return (struct al_entry_work *)0;
+	struct al_entry_work *var1 = (struct al_entry_work *)tp->fwp;
+	if (var1 != NULL)
+	{
+		if (var1->pCommu != NULL)
+		{
+			if (var1->pCommu->pCommu == var1)
+			{
+				if (var1->pCommu->category == category)
+					return var1->pCommu;
+			}
+		}
+	}
+	return NULL;
 }
 
 // FUNCTION: SADX 0x0043dd40
@@ -224,10 +310,23 @@ long ALW_SendCommand(struct task *tp, short command)
 	return 0;
 }
 
-// STUB: SADX 0x0043de30
+// FUNCTION: SADX 0x0043de30
 long ALW_CancelEntry(struct task *tp)
 {
-	return (long)0;
+	struct OBJ_CONDITION *var1;
+
+	var1 = *(struct OBJ_CONDITION **)((char *)tp + 0x28);
+	ALW_CommunicationOff(tp);
+	if (var1 != 0)
+	{
+		if (*(struct task **)((char *)var1 + 0x3c) == tp)
+		{
+			FUN_0043d8a0((int)var1);
+			DAT_05ade3c0[*(unsigned short *)var1]--;
+		}
+		*(struct OBJ_CONDITION **)((char *)tp + 0x28) = 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0043de70
@@ -267,10 +366,11 @@ long ALW_Create()
 	return (long)0;
 }
 
-// STUB: SADX 0x0043df90
+// FUNCTION: SADX 0x0043df90
 long ALW_TurnToLockOn(struct task *pMyTask, long RotSpd)
 {
-	return (long)0;
+	struct task *var1 = ALW_GetLockOnTask(pMyTask);
+	return AL_TurnToTask(pMyTask, var1, RotSpd);
 }
 
 // FUNCTION: SADX 0x0043dfb0

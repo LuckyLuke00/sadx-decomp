@@ -12,10 +12,13 @@ void ALMC_Init()
 	memset(&DAT_05b067e8, 0, 0x40);
 }
 
-// STUB: SADX 0x004416e0
+// FUNCTION: SADX 0x004416e0
 long ALMC_Mount(long slot)
 {
-	return (long)0;
+	___OutputDebugString("\nCard Mount\n");
+	*(int *)(DAT_05b067f8 + slot * 0x20) = 1;
+	___OutputDebugString("  Mount Success\n\n");
+	return 1;
 }
 
 // FUNCTION: SADX 0x00441710

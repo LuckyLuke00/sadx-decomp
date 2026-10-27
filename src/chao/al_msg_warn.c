@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_0044c7e0(struct task *param_1);
 extern int DAT_05b2ca64[1];
 
 // STUB: SADX 0x0044c7e0
@@ -16,10 +17,10 @@ void AlMsgWarnDelete(int winid)
 {
 }
 
-// STUB: SADX 0x0044c940
+// FUNCTION: SADX 0x0044c940
 enum EAlMsgWinStatus AlMsgWarnGetStatus(int winid)
 {
-	return (enum EAlMsgWinStatus)0;
+	return (enum EAlMsgWinStatus)FUN_0044e2f0((int)(*(struct SAlMsgWin **)((char *)DAT_05b2ca64 + winid * 24)));
 }
 
 // STUB: SADX 0x0044c960

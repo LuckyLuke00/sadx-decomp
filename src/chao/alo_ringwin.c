@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 void ALO_RingWinAdd(long num);
 void ALO_RingWinSetPos(float px, float py, unsigned long flag);
 extern float DAT_060c60c0;
@@ -49,4 +50,12 @@ void ALO_RingWinSetPos(float px, float py, unsigned long flag)
 	}
 	DAT_060c60c0 = px;
 	DAT_060c60c4 = py;
+}
+
+// FUNCTION: SADX 0x007111c0
+void ALO_RingWinCreate(float px, float py, unsigned long flag)
+{
+	memset(&DAT_060c60c0, 0, 0x2c);
+	DAT_060c60ec = CreateElementalTask(0, 3, FTaskExec);
+	ALO_RingWinSetPos(px, py, flag);
 }

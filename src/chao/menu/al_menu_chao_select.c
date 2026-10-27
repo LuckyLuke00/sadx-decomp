@@ -2,6 +2,16 @@
 extern int DAT_060c6130;
 extern int DAT_060c6134;
 
+// FUNCTION: SADX 0x00712650
+void ChaoSelectMenuManagerDestructor(struct task *tp)
+{
+	if (DAT_060c6130)
+	{
+		Free((void *)DAT_060c6130);
+		DAT_060c6130 = 0;
+	}
+}
+
 // FUNCTION: SADX 0x00712670
 void FUN_00712670(int param_1)
 {

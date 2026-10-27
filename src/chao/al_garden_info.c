@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 void FUN_0043ede0();
 void FUN_0043ee00();
 int syTmrGetCount();
@@ -58,9 +59,15 @@ void AL_ExtractKinderSaveInfo()
 {
 }
 
-// STUB: SADX 0x0043f0a0
+// FUNCTION: SADX 0x0043f0a0
 void FUN_0043f0a0()
 {
+	char local_12c[0x128];
+	int var1;
+
+	memcpy(local_12c, AL_GetRaceInfo(), 0x126);
+	var1 = FUN_0043ed90();
+	memcpy((char *)var1 + 0x65c, local_12c, 0x126);
 }
 
 // STUB: SADX 0x0043f0e0

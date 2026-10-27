@@ -1,4 +1,7 @@
 #include "decls.h"
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
+extern void (*DAT_05b9e0b0)();
 extern enum eCHAO_STAGE_NUMBER ChaoOldStageNumber;
 extern long ChaoExitStage;
 extern enum eCHAO_STAGE_NUMBER ChaoStageNumber;
@@ -325,7 +328,21 @@ void AL_ExitChaoGarden()
 	AL_ExitToStage(-1, 0);
 }
 
-// STUB: SADX 0x0043e9b0
+// FUNCTION: SADX 0x0043e9b0
 void _al_stage_prolog()
 {
+	___OutputDebugString("ChaoMain Prolog begin\n");
+	SaveControl3D();
+	DAT_05aeaa3c[6] = (struct task *)DAT_05b9e064;
+	FUN_00440050();
+	DAT_05aeaa3c[7] = 0;
+	DAT_05aeaa3c[14] = 0;
+	FUN_005b5aa0();
+	FUN_007d21b0();
+	{
+		unsigned short var1 = (DAT_05b9d724 << 8) | DAT_05b9d744;
+		LandClearLandTable((long)(var1 >> 8), (long)(var1 & 0xff));
+	}
+	___OutputDebugString("ChaoMain Prolog end\n");
+	DAT_05b9e0b0 = _al_stage_epilog;
 }

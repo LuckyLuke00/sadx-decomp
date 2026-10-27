@@ -1,4 +1,9 @@
 #include "decls.h"
+void FUN_007d21b0(...);
+extern long AL_GBAManagerIsExist(int PortNum, int ItemNum);
+extern long AL_GBAManagerIsSelected(int PortNum, int ItemNum);
+void AL_ClearSaveInfo(struct chao_save_info *pInfo);
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 void FUN_00441c20(int param_1, int param_2);
 struct chao_save_info;
 void FUN_004419d0(void *param_1);
@@ -22,9 +27,11 @@ void FUN_004419d0(void *param_1)
 {
 }
 
-// STUB: SADX 0x00441a00
+// FUNCTION: SADX 0x00441a00
 void AL_ClearSaveInfo(struct chao_save_info *pInfo)
 {
+	memset(pInfo, 0, 0x800);
+	FUN_004419d0(pInfo);
 }
 
 // STUB: SADX 0x00441a20
@@ -159,9 +166,23 @@ char FUN_004420b0()
 	return '\xf0';
 }
 
-// STUB: SADX 0x004420c0
+// FUNCTION: SADX 0x004420c0
 void AL_GBAManagerCreate()
 {
+	struct task *var1;
+
+	if (DAT_05b06828 == 0)
+	{
+		DAT_05b06828 = (struct task *)CAlloc(1, 0x4228);
+		if (DAT_05b06828 != 0)
+		{
+			var1 = CreateElementalTask(2, 8, AL_GBAManagerExecutor);
+			DAT_05b06828->ctp = var1;
+			var1->dest = AL_GBAManagerDestructor;
+			FUN_007d21b0();
+		}
+		___OutputDebugString("\nGBAManagerCreate\n\n");
+	}
 }
 
 // FUNCTION: SADX 0x00442120

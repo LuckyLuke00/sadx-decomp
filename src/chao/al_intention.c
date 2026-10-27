@@ -1,6 +1,7 @@
 #include "decls.h"
 void FUN_00450fc0(struct task *param_1, short param_2);
 void FUN_00450fc0(struct task *param_1, short param_2);
+void FUN_00450fc0(struct task *param_1, short param_2);
 
 // STUB: SADX 0x00450e60
 float AL_CalcScoreTypeA(long value, long trigger)
@@ -52,9 +53,14 @@ unsigned short AL_GetIntention(struct task *tp)
 	return *(unsigned short *)((char *)tp->twp + 0x1e0);
 }
 
-// STUB: SADX 0x00450fc0
-void FUN_00450fc0(struct task *tp, short value)
+// FUNCTION: SADX 0x00450fc0
+void FUN_00450fc0(struct task *param_1, short param_2)
 {
+	struct taskwk *var1;
+
+	var1 = param_1->twp;
+	*(short *)((char *)var1 + 0x1e0) = param_2;
+	*(short *)((char *)var1 + 0x1e2) = 0;
 }
 
 // FUNCTION: SADX 0x00450fe0

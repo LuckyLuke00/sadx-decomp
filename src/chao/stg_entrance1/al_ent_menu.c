@@ -2,9 +2,14 @@
 void FUN_0044daf0(void);
 extern void *DAT_05b33018;
 
-// STUB: SADX 0x004728c0
+// FUNCTION: SADX 0x004728c0
 void AL_EntranceMenuManagerDestructor(struct task *tp)
 {
+	FreeTaskC(tp);
+	FUN_0044db20();
+	FUN_0044c4b0(*(void **)((char *)DAT_05b33018 + 0x114));
+	Free(DAT_05b33018);
+	DAT_05b33018 = 0;
 }
 
 // FUNCTION: SADX 0x00472900

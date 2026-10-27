@@ -2,6 +2,11 @@
 void AL_MaruKageDraw(struct NJS_POINT3 *pPos, struct Angle3 *pAng, float scl, float scl_ratio, float alpha);
 extern struct obj DAT_05a862dc;
 
+// STUB: SADX 0x0045a740
+void AL_EntryShadowTex(struct NJS_POINT3 *pos, float scl)
+{
+}
+
 // FUNCTION: SADX 0x0045a790
 void AL_MaruKageDraw(struct NJS_POINT3 *pPos, struct Angle3 *pAng, float scl, float scl_ratio, float alpha)
 {

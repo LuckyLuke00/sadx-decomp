@@ -14,8 +14,8 @@ void ADV1_ALR_ClearEntryStatus()
 	memset(&DAT_060ca138, 0, 0xcc0);
 }
 
-// STUB: SADX 0x00712cc0
+// FUNCTION: SADX 0x00712cc0
 struct al_status *ADV1_ALR_GetEntryStatus(int num)
 {
-	return (struct al_status *)0;
+	return (al_status *)((char *)&DAT_060ca138 + num * 0x198);
 }

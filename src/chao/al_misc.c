@@ -1,5 +1,11 @@
 #include "decls.h"
 
+// STUB: SADX 0x00437c40
+float ___njUnitVector(struct NJS_POINT3 *p)
+{
+	return (float)0;
+}
+
 // STUB: SADX 0x00438030
 void AL_DrawRectangle2(int x1, int y1, int x2, int y2, unsigned long color, float depth)
 {
@@ -34,10 +40,24 @@ long AL_CalcTaskAngle(struct task *pMyTask, struct task *pTargetTask)
 	return (long)0;
 }
 
-// STUB: SADX 0x00438400
+// FUNCTION: SADX 0x00438400
 long AL_TurnToTask(struct task *pMyTask, struct task *pTargetTask, long RotSpd)
 {
-	return (long)0;
+	if ((pMyTask != NULL) && (pTargetTask != NULL))
+	{
+		struct taskwk *var1;
+		struct motionwk *var2;
+		long var3;
+
+		var1 = pMyTask->twp;
+		var2 = pMyTask->mwp;
+		var3 = AL_CalcTaskAngle(pMyTask, pTargetTask);
+		var2->ang_aim.y = var3;
+		var3 = AdjustAngle(var1->ang.y, var3, RotSpd);
+		var1->ang.y = var3;
+		return DiffAngle(var2->ang_aim.y, var3);
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x00438450

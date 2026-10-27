@@ -1,14 +1,15 @@
 #include "decls.h"
+extern int DAT_05b33110;
 struct task *FUN_00484ad0(int param_1);
 extern int DAT_05b33294[3];
 extern int DAT_05b332a8;
 extern char DAT_05b33291;
 void FUN_00484bd0();
 
-// STUB: SADX 0x00484ac0
+// FUNCTION: SADX 0x00484ac0
 void *ADV1_AL_GetRaceTimeRam()
 {
-	return (void *)0;
+	return &DAT_05b33110;
 }
 
 // FUNCTION: SADX 0x00484ad0
@@ -20,6 +21,20 @@ struct task *FUN_00484ad0(int param_1)
 	}
 	return 0;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x00484af0
+void ADV1_AL_LimitChao()
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x00484bd0
+void FUN_00484bd0()
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00484c20
 void AL_DeleteChaoList(struct task *tp)

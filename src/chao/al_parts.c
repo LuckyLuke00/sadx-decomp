@@ -2,6 +2,7 @@
 void FUN_00450d20(struct al_object *param_1);
 void FUN_00450d20(struct al_object *param_1);
 void FUN_00450d20(struct al_object *param_1);
+void FUN_00450d20(struct al_object *param_1);
 void AL_SetMiminalParts(struct task *tp, long PartsKind, long MinimalType);
 void FUN_00450c30(int param_1);
 extern struct cnkobj **pPartsObjectListAdult[1];
@@ -128,10 +129,12 @@ void FUN_00450ce0(struct al_object *param_1)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00450d20
 void FUN_00450d20(struct al_object *pObject)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00450d40
 void FUN_00450d40(struct task *param_1)

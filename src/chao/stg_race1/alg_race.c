@@ -14,9 +14,29 @@ void AL_RaceMasterDest(struct task *tp)
 	AlrReal_Destructor((struct AlrReal *)var1->value.l);
 }
 
-// STUB: SADX 0x00482160
+// FUNCTION: SADX 0x00482160
 void AL_RaceMasterExec(struct task *tp)
 {
+	int var1;
+	struct taskwk *var2;
+
+	var2 = tp->twp;
+	var1 = var2->mode;
+	switch (var1)
+	{
+		case 0:
+			var2->mode = 1;
+			break;
+		case 1:
+			if (AlrReal_Exe((struct AlrReal *)var2->value.ptr))
+			{
+				AL_ChangeStageLater((enum eCHAO_STAGE_NUMBER)2);
+			}
+			break;
+	}
+	LoopTaskC(tp);
+	(*tp->disp)(tp);
+	PauseDisable();
 }
 
 // FUNCTION: SADX 0x004821b0

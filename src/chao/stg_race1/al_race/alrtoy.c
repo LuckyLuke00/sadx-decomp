@@ -28,3 +28,9 @@ void destToy(struct task *task_p)
 {
 	DAT_05b35db8 = 0;
 }
+
+// STUB: SADX 0x00490660
+struct task *SetToyManager(long toyFlag)
+{
+	return (struct task *)0;
+}

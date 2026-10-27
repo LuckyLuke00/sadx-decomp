@@ -35,9 +35,17 @@ void AL_Garden01MasterExecutor(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00479bb0
+// FUNCTION: SADX 0x00479bb0
 void AL_Garden01MasterDestructor(struct task *tp)
 {
+	FUN_004b6520((int)&texlist_al_dx_tex_xybutton);
+	BGM_Stop();
+	Serif_Stop();
+	AL_ReleaseMessageTable();
+	AL_MinimalExit();
+	AL_ReleaseTex(1);
+	FUN_0044db20();
+	AL_ReleaseModule((enum EChaoModuleEntry)2);
 }
 
 // FUNCTION: SADX 0x00479df0
