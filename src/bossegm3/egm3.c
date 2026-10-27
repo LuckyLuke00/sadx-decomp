@@ -349,9 +349,57 @@ void Egm3_bakucolor(struct task *tp)
 	var1->mode = var1->mode + 1;
 }
 
-// STUB: SADX 0x006d2bb0
+// FUNCTION: SADX 0x006d2bb0
 void Egm3_bakucolor2(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	int var2;
+	switch (var1->mode)
+	{
+	case 0:
+		tp->dest = Egm3_bakucolorExit;
+		tp->disp = NULL;
+		var1->mode++;
+		var1->value.l = 0x107;
+		break;
+	case 1:
+		if (DAT_060bb290 == 0)
+		{
+			var1->mode++;
+			DAT_060bb290 = 1;
+		}
+		break;
+	case 2:
+		var1->value.l -= 8;
+		if (var1->value.l <= 0)
+		{
+			var1->value.l = 0;
+		}
+		addColorR(var1->value.l);
+		if (var1->value.l <= 0xc0)
+		{
+			var1->value.l = 0x107;
+		}
+		if (*(int *)((char *)((struct task *)DAT_060ba008)->awp + 0x64) & 0x200000)
+		{
+			var1->mode++;
+			var1->value.l = 0xc0;
+		}
+		break;
+	case 3:
+		var1->value.l += 4;
+		if (var1->value.l >= 0x100)
+		{
+			var1->value.l = 0xff;
+		}
+		var2 = var1->value.l;
+		addColorR(var2);
+		if (var1->value.l == 0xff)
+		{
+			var1->mode++;
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x006d2c90

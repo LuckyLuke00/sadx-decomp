@@ -1808,6 +1808,9 @@ struct NJS_TEXLIST texlist_egm2_fire;
 // GLOBAL: SADX 0x0279eea8
 struct NJS_TEXLIST texlist_egm2_car;
 
+// GLOBAL: SADX 0x027a25d8
+struct NJS_TEXLIST texlist_egm2_mesobaku;
+
 // GLOBAL: SADX 0x027dbb50
 struct obj object_boss_em2_sky_n_sky_n[1];
 
@@ -2006,6 +2009,15 @@ struct NJS_TEXANIM anim_chaos4_shibuki[1];
 // GLOBAL: SADX 0x029108e0
 struct NJS_TEXANIM anim_drop_chaos4[1];
 
+// GLOBAL: SADX 0x02912a48
+struct NJS_TEXNAME texture_chaos4_numa[12];
+
+// GLOBAL: SADX 0x02912af0
+struct NJS_TEXLIST texlist_chaos4_numa;
+
+// GLOBAL: SADX 0x029148c4
+struct NJS_TEXLIST texlist_numa_f;
+
 // GLOBAL: SADX 0x029150ec
 struct obj object_c4_ar_s_kabeb_ar_s_kabeb[1];
 
@@ -2080,6 +2092,9 @@ struct NJS_TEXANIM anim_breathp[1];
 
 // GLOBAL: SADX 0x02b11460
 struct NJS_SPRITE sprite_breathp;
+
+// GLOBAL: SADX 0x02b11480
+struct NJS_POINT3 DAT_02b11480;
 
 // GLOBAL: SADX 0x02b1148c
 struct NJS_ARGB DAT_02b1148c;
@@ -7352,6 +7367,18 @@ int DAT_060bb24c;
 // GLOBAL: SADX 0x060bb290
 int DAT_060bb290;
 
+// GLOBAL: SADX 0x060bb3e0
+int DAT_060bb3e0;
+
+// GLOBAL: SADX 0x060bb3e4
+char DAT_060bb3e4[8];
+
+// GLOBAL: SADX 0x060bb3ec
+char DAT_060bb3ec[8];
+
+// GLOBAL: SADX 0x060bb3f4
+int DAT_060bb3f4;
+
 // GLOBAL: SADX 0x060bb8cc
 struct NJS_POINT3 *DAT_060bb8cc;
 
@@ -7517,6 +7544,12 @@ unsigned char DAT_060c2144;
 // GLOBAL: SADX 0x060c2145
 unsigned char DAT_060c2145;
 
+// GLOBAL: SADX 0x060c214c
+int DAT_060c214c;
+
+// GLOBAL: SADX 0x060c2154
+float DAT_060c2154;
+
 // GLOBAL: SADX 0x060c32ab
 unsigned char DAT_060c32ab;
 
@@ -7573,6 +7606,12 @@ short DAT_060c36b0;
 
 // GLOBAL: SADX 0x060c36c4
 int DAT_060c36c4;
+
+// GLOBAL: SADX 0x060c36cc
+struct NJS_POINT3 DAT_060c36cc;
+
+// GLOBAL: SADX 0x060c4208
+struct NJS_POINT3 DAT_060c4208;
 
 // GLOBAL: SADX 0x060c44d8
 int DAT_060c44d8;

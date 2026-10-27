@@ -39,3 +39,8 @@ void SetCamEgm1SpdFastFlying()
 	DAT_060b99ec = 40.0;
 	DAT_060b99e0 = 100.0;
 }
+
+// STUB: SADX 0x006c3f70
+void SetCamPrmAlways(struct task *tp)
+{
+}

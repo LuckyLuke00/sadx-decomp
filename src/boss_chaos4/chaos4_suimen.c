@@ -1,4 +1,19 @@
 #include "decls.h"
+extern int DAT_060c214c;
+extern float DAT_060c2154;
+extern struct NJS_TEXNAME texture_chaos4_numa[12];
+extern struct NJS_TEXLIST texlist_chaos4_numa;
+extern struct NJS_TEXLIST texlist_numa_f;
+void ___njSetTexture(struct NJS_TEXLIST *texlist);
+void ___njSetConstantMaterial(struct NJS_ARGB *argb);
+void ResetMaterial();
+struct NJS_POINT3;
+extern int DAT_05b9d838;
+struct SuimenTask;
+struct task;
+struct obj;
+void RegisterCollisionEntry(long slAttribute, struct task *pTask, struct obj *pObject);
+struct obj *GetMobileLandObject();
 void C4PondObjCreate(struct SuimenTask *st, struct task *pTask);
 
 // STUB: SADX 0x006f0390
@@ -46,6 +61,40 @@ void End_side_collision(struct task *pTask)
 {
 	ReleaseMobileLandObject((struct obj *)pTask->awp);
 	pTask->awp = NULL;
+}
+
+// STUB: SADX 0x006f0a70
+void Exe_SuimenYurashi(struct task *pTask)
+{
+}
+
+// FUNCTION: SADX 0x006f0b30
+void FUN_006f0b30()
+{
+	struct NJS_ARGB local_18;
+
+	if (DAT_060c2154 > -1.0f)
+	{
+		if (DAT_05b9d838 == 0)
+		{
+			___njSetTexture(&texlist_numa_f);
+			local_18.a = DAT_060c2154;
+			local_18.b = 0.0f;
+			local_18.g = 0.0f;
+			local_18.r = 0.0f;
+			___njSetConstantMaterial(&local_18);
+			ResetMaterial();
+		}
+	}
+	if (DAT_05b9d838 == 0)
+	{
+		texlist_numa_f.textures = &texture_chaos4_numa[DAT_060c214c];
+		DAT_060c214c++;
+		if ((unsigned int)DAT_060c214c >= texlist_chaos4_numa.nbTexture)
+		{
+			DAT_060c214c = 0;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x006f0be0

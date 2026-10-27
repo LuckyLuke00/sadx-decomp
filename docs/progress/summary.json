@@ -44132,7 +44132,7 @@
   },
   {
    "address": "0x006c1a90",
-   "name": "TaskBossDisp",
+   "name": "TaskBossDisp(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -44156,7 +44156,7 @@
   },
   {
    "address": "0x006c1c00",
-   "name": "TaskBossExec",
+   "name": "TaskBossExec(1)",
    "accuracy": 0.023809523809523808,
    "effective": false,
    "stub": true,
@@ -44261,9 +44261,9 @@
   {
    "address": "0x006c2c50",
    "name": "ZBezier3",
-   "accuracy": 0.03508771929824561,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -44347,6 +44347,14 @@
    "library": false
   },
   {
+   "address": "0x006c2f60",
+   "name": "FUN_006c2f60",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x006c2ff0",
    "name": "FUN_006c2ff0",
    "accuracy": 1.0,
@@ -44400,6 +44408,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006c3f70",
+   "name": "SetCamPrmAlways",
+   "accuracy": 0.037037037037037035,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -44645,7 +44661,7 @@
   {
    "address": "0x006c5c90",
    "name": "Egm2WeakPointZeroCheck",
-   "accuracy": 0.125,
+   "accuracy": 0.13793103448275862,
    "effective": false,
    "stub": true,
    "library": false
@@ -44653,7 +44669,7 @@
   {
    "address": "0x006c5ce0",
    "name": "Egm2PodPlayerSearch",
-   "accuracy": 0.03571428571428571,
+   "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
    "library": false
@@ -44661,9 +44677,33 @@
   {
    "address": "0x006c5de0",
    "name": "Egm2ShadowDraw",
-   "accuracy": 0.044444444444444446,
+   "accuracy": 0.047619047619047616,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006c6400",
+   "name": "TaskBossDisp(2)",
+   "accuracy": 0.013605442176870748,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006c65c0",
+   "name": "TaskBossExec(2)",
+   "accuracy": 0.020618556701030927,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006c66f0",
+   "name": "setBoss_egm2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -44941,9 +44981,9 @@
   {
    "address": "0x006cbca0",
    "name": "Exe_car_broken",
-   "accuracy": 0.037037037037037035,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -44958,6 +44998,14 @@
    "address": "0x006cc9a0",
    "name": "FUN_006cc9a0",
    "accuracy": 0.3157894736842105,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006cca10",
+   "name": "Rd_Bossegm3",
+   "accuracy": 0.02857142857142857,
    "effective": false,
    "stub": true,
    "library": false
@@ -45285,9 +45333,9 @@
   {
    "address": "0x006d2bb0",
    "name": "Egm3_bakucolor2",
-   "accuracy": 0.03278688524590164,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -45325,9 +45373,9 @@
   {
    "address": "0x006d5a60",
    "name": "UkisimaExist",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -45768,6 +45816,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006e0100",
+   "name": "FUN_006e0100",
+   "accuracy": 0.05405405405405406,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -46555,6 +46611,22 @@
    "library": false
   },
   {
+   "address": "0x006f0a70",
+   "name": "Exe_SuimenYurashi",
+   "accuracy": 0.03225806451612903,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006f0b30",
+   "name": "FUN_006f0b30",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006f0be0",
    "name": "Chaos4SuimenChange",
    "accuracy": 1.0,
@@ -47205,9 +47277,9 @@
   {
    "address": "0x006fed20",
    "name": "objNormalR(1)",
-   "accuracy": 0.03125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47645,6 +47717,14 @@
   {
    "address": "0x00703e20",
    "name": "ObjectChaos7RedBld",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00703e40",
+   "name": "dispChaos7Panel",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48230,6 +48310,14 @@
   {
    "address": "0x0070fbc0",
    "name": "EnemyE101RMissile_AllKill",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00710630",
+   "name": "dispMidBomb",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -89366,6 +89454,13 @@
    "library": false
   },
   {
+   "address": "0x027a25d8",
+   "name": "texlist_egm2_mesobaku",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x027a25e0",
    "name": "objs",
    "size": 12,
@@ -89877,6 +89972,27 @@
    "library": false
   },
   {
+   "address": "0x02912a48",
+   "name": "texture_chaos4_numa",
+   "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02912af0",
+   "name": "texlist_chaos4_numa",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x029148c4",
+   "name": "texlist_numa_f",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x029150ec",
    "name": "object_c4_ar_s_kabeb_ar_s_kabeb",
    "size": 52,
@@ -90048,6 +90164,13 @@
    "address": "0x02b11460",
    "name": "sprite_breathp",
    "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02b11480",
+   "name": "DAT_02b11480",
+   "size": 12,
    "match": false,
    "library": false
   },
@@ -95311,5 +95434,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4908c900b5e36fc48364b209141db9584a5a50ef377f2e1a712b83ce6edd7369"
+ "inputs_sha256": "b7d578bac7b687bab6901ed389a9b003cfe086f859e2f5236540e4aae5e9f868"
 }

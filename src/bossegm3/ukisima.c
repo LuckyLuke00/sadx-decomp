@@ -1,4 +1,8 @@
 #include "decls.h"
+extern char DAT_060bb3e4[8];
+extern char DAT_060bb3ec[8];
+extern int DAT_060bb3e0;
+extern int DAT_060bb3f4;
 extern int DAT_05b9d838;
 extern struct NJS_TEXLIST *egm3_texlist_list[4];
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
@@ -87,10 +91,26 @@ void KowareUkisimaDraw(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x006d5a60
+// FUNCTION: SADX 0x006d5a60
 long UkisimaExist(float x, float z)
 {
-	return (long)0;
+	long var1 = ((long)((z + 480.0f) / 120.0f));
+	if ((unsigned long)var1 <= 7)
+	{
+		if ((x > -320.0f) && (x < -200.0f))
+		{
+			DAT_060bb3f4 = 0;
+			DAT_060bb3e0 = (int)var1;
+			return (long)(signed char)DAT_060bb3e4[var1];
+		}
+		if ((x > 200.0f) && (x < 320.0f))
+		{
+			DAT_060bb3f4 = 1;
+			DAT_060bb3e0 = (int)var1;
+			return (long)(signed char)DAT_060bb3ec[var1];
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x006d5c40

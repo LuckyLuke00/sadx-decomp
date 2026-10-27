@@ -1,5 +1,12 @@
 #include "decls.h"
 
+#pragma optimize("", off)
+// STUB: SADX 0x006edba0
+void EffMiniBallDisplay(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x006edc60
 void EffMiniBall(struct task *tp)
 {

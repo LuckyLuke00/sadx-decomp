@@ -4,9 +4,16 @@ extern "C" double atan2(double v, double u);
 extern "C" double atan2(double v, double u);
 extern "C" double atan2(double v, double u);
 
-// STUB: SADX 0x006c2c50
+// FUNCTION: SADX 0x006c2c50
 void ZBezier3(struct NJS_POINT3 *ans, struct NJS_POINT3 *pnt3p, float t)
 {
+	float local_c = 1.0f - t;
+	float local_8 = local_c * t * 2.0f;
+	t = t * t;
+	local_c = local_c * local_c;
+	ans->x = local_8 * *(float *)((char *)pnt3p + 0xc) + local_c * pnt3p->x + t * *(float *)((char *)pnt3p + 0x18);
+	ans->y = local_8 * *(float *)((char *)pnt3p + 0x10) + local_c * pnt3p->y + t * *(float *)((char *)pnt3p + 0x1c);
+	ans->z = local_8 * *(float *)((char *)pnt3p + 0x14) + local_c * pnt3p->z + t * *(float *)((char *)pnt3p + 0x20);
 }
 
 // FUNCTION: SADX 0x006c2ce0

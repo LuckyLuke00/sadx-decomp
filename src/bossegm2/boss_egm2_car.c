@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" double fabs(double param_1);
 extern const struct Egm2CarData egm2_car_data[64];
 
 // FUNCTION: SADX 0x006cbb70
@@ -53,7 +54,31 @@ void Dsp_car_broken(struct task *pTask)
 	MirenEffLoadState();
 }
 
-// STUB: SADX 0x006cbca0
+// FUNCTION: SADX 0x006cbca0
 void Exe_car_broken(struct task *pTask)
 {
+	struct taskwk *var1;
+	struct anywk *var2;
+	float var3;
+	var1 = pTask->twp;
+	var2 = pTask->awp;
+	var1->pos.x += var2->work.f[0];
+	var1->pos.y += var2->work.f[1];
+	var1->pos.z += var2->work.f[2];
+	var2->work.f[1] -= 0.027222221717238426f;
+	if (var1->pos.y < 0.0f)
+	{
+		var1->pos.y = 0.0f;
+		var3 = fabs(var2->work.f[1]);
+		var2->work.f[1] = var3 * 0.800000011920929f;
+	}
+	var1->ang.x += *(int *)((char *)var2 + 0xc);
+	var1->ang.y += *(int *)((char *)var2 + 0x10);
+	var1->ang.z += *(int *)((char *)var2 + 0x14);
+	var2->work.f[7] -= 0.007000000216066837f;
+	if (var2->work.f[7] < -1.0f)
+	{
+		FreeTask(pTask);
+	}
+	Dsp_car_broken(pTask);
 }
