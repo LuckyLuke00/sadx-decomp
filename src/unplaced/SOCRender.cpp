@@ -18,7 +18,7 @@ void __fastcall FUN_00419ac0(void *param_1, int param_2, int param_3)
 }
 
 // STUB: SADX 0x00419ae0
-void __fastcall FUN_00419ae0(void *param_1, void *param_2)
+void __fastcall FUN_00419ae0(void *param_1, void *param_2, int param_3)
 {
 }
 
@@ -43,9 +43,10 @@ void __fastcall FUN_00419b40(float param_1, void *param_2)
 	DAT_05ab4243 = 0;
 }
 
-// STUB: SADX 0x00419d00
-void __fastcall FUN_00419d00(int param_1, int param_2)
+// FUNCTION: SADX 0x00419d00
+void __fastcall FUN_00419d00(int param_1, int param_2, int param_3)
 {
+	*(int *)((char *)param_1 + 0x279c) = param_3;
 }
 
 // STUB: SADX 0x00419d40
@@ -72,6 +73,11 @@ void SOCsetZwrite(bool param_1)
 bool SOCGetZwrite(void)
 {
 	return (bool)0;
+}
+
+// STUB: SADX 0x0041b120
+void FUN_0041b120(int param_1, int param_2)
+{
 }
 
 // STUB: SADX 0x0041ca20
@@ -107,7 +113,7 @@ void __fastcall FUN_0041cf30(void *param_1, void *param_2)
 }
 
 // STUB: SADX 0x0041cfb0
-void __fastcall FUN_0041cfb0(void *param_1, void *param_2)
+void __fastcall FUN_0041cfb0(void *param_1, void *param_2, int param_3)
 {
 }
 
@@ -117,22 +123,22 @@ void __fastcall FUN_0041d020(int param_1, int param_2)
 }
 
 // STUB: SADX 0x0041d130
-void __fastcall FUN_0041d130(void *param_1, void *param_2)
+void __fastcall FUN_0041d130(void *param_1, void *param_2, int param_3)
 {
 }
 
 // STUB: SADX 0x0041ddb0
-void __fastcall FUN_0041ddb0(int *param_1, int param_2)
+void __fastcall FUN_0041ddb0(int *param_1, int param_2, int param_3)
 {
 }
 
 // STUB: SADX 0x0041e270
-void __fastcall FUN_0041e270(void *param_1, void *param_2)
+void __fastcall FUN_0041e270(void *param_1, void *param_2, int param_3, int param_4)
 {
 }
 
 // STUB: SADX 0x004204d0
-void __fastcall FUN_004204d0(int *param_1, int param_2)
+void __fastcall FUN_004204d0(int *param_1, int param_2, int param_3)
 {
 }
 
@@ -145,6 +151,13 @@ void FUN_004207b0(void)
 void FUN_004207c0(void)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x004208c0
+void FUN_004208c0(int param_1, int param_2, const wchar_t *param_3, int param_4, float param_5, float param_6)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00421180
 void DrawStringW(int param_1, int param_2, const wchar_t *param_3, int param_4, float param_5)

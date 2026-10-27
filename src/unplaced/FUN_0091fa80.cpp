@@ -1,6 +1,11 @@
 #include "decls.h"
 struct FUN_00920060_t;
 
+// STUB: SADX 0x0091fa80
+void FUN_0091fa80(int param_1)
+{
+}
+
 // STUB: SADX 0x0091faa0
 void __fastcall FUN_0091faa0(int param_1)
 {

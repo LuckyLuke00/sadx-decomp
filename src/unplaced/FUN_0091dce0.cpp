@@ -14,6 +14,12 @@ int __stdcall FUN_0091dce0(int param_1, int param_2, int param_3, int param_4, i
 	return 1;
 }
 
+// STUB: SADX 0x0091dd20
+int __stdcall FUN_0091dd20(int param_1, int param_2)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x0091df10
 void FUN_0091df10(int param_1)
 {

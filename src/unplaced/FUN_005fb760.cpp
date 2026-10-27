@@ -19,7 +19,7 @@ void FUN_005fba20(int param_1, int *param_2, int *param_3)
 }
 
 // FUNCTION: SADX 0x005fba70
-void *FUN_005fba70(unsigned long param_1)
+void *FUN_005fba70(unsigned long param_1, int param_2)
 {
 	void *local_8 = 0;
 	if (param_1 <= 0)

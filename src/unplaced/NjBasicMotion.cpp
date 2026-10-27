@@ -26,7 +26,17 @@ void njGetDrawMotion(struct obj const *param_1, struct NJS_MOTION const *param_2
 	_njPushPopGetMotionDataArray(param_1);
 }
 
-// STUB: SADX 0x0067e410
+// FUNCTION: SADX 0x0067e410
 void njGetAction(struct NJS_ACTION const *param_1, struct NJS_MOTION_DATA *param_2, float param_3)
 {
+	struct obj *var1;
+	struct NJS_MOTION *var2;
+
+	var1 = param_1->object;
+	var2 = param_1->motion;
+	*(void **)((char *)DAT_01c76fa0 + 0x0) = param_2->pos;
+	*(void **)((char *)DAT_01c76fa0 + 0x8) = param_2->ang;
+	*(void **)((char *)DAT_01c76fa0 + 0x4) = param_2->scl;
+	njStartMotionObj(var2, param_3);
+	_njPushPopGetMotionDataArray(var1);
 }

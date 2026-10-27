@@ -39,10 +39,10 @@ char FUN_0040adf0()
 	return 0;
 }
 
-// STUB: SADX 0x0040ae00
+// FUNCTION: SADX 0x0040ae00
 bool FUN_0040ae00()
 {
-	return false;
+	return true;
 }
 
 // STUB: SADX 0x0040ae10

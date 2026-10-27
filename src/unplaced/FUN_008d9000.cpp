@@ -1,9 +1,13 @@
 #include "decls.h"
 void FUN_008d9be0(void *param_1, float param_2, float param_3);
 
-// STUB: SADX 0x008d9000
+// FUNCTION: SADX 0x008d9000
 void FUN_008d9000(struct taskwk *param_1, float param_2)
 {
+	struct CCL_INFO *local_8;
+	local_8 = param_1->cwp->info;
+	local_8->a = param_2;
+	SET_COLLI_RANGE(param_1->cwp, (float)(param_2 + 8.0));
 }
 
 // FUNCTION: SADX 0x008d9050

@@ -12,9 +12,10 @@ void njDrawTexture(struct NJS_TEXTURE_VTX *param_1, int param_2, int param_3, in
 	_gjRender2DReset();
 }
 
-// STUB: SADX 0x004214f0
+// FUNCTION: SADX 0x004214f0
 void njDrawTexture3DExEnd(void)
 {
+	FUN_007d21b0();
 }
 
 // FUNCTION: SADX 0x00421550
@@ -62,9 +63,30 @@ void njDrawPolygon2D(struct NJS_POINT2COL *param_1, int param_2, float param_3, 
 {
 }
 
-// STUB: SADX 0x00421ff0
+// FUNCTION: SADX 0x00421ff0
 void njDrawLine3D(struct NJS_POINT3COL *param_1, int param_2, unsigned long param_3)
 {
+	struct NJS_POINT3COL local_14;
+
+	local_14.p = param_1->p;
+	local_14.col = param_1->col;
+	local_14.tex = param_1->tex;
+	local_14.num = param_1->num;
+	if ((long)param_3 >= 0)
+	{
+		local_14.tex = 0;
+	}
+	if ((param_3 & 0x40) != 0)
+	{
+		_gjTrans3D((enum GJ_DEV_BLEND)2);
+	}
+	else
+	{
+		_gjTrans3D((enum GJ_DEV_BLEND)0);
+	}
+	_gjRender3DSet();
+	stDrawLine3D(&local_14);
+	FUN_007d21b0();
 }
 
 // STUB: SADX 0x00422050

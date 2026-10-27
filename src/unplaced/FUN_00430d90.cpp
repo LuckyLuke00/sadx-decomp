@@ -1,4 +1,5 @@
 #include "decls.h"
+#include <windows.h>
 extern int DAT_05ad9b20;
 
 // STUB: SADX 0x00430d90

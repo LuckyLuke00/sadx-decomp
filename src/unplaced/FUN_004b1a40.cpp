@@ -159,6 +159,11 @@ void FUN_004b5ad0(void)
 	}
 }
 
+// STUB: SADX 0x004b6460
+void FUN_004b6460(struct NJS_TEXLIST *param_1, char *param_2)
+{
+}
+
 // FUNCTION: SADX 0x004b6520
 void FUN_004b6520(int param_1)
 {

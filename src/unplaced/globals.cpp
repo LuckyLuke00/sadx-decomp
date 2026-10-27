@@ -59,6 +59,9 @@ struct _CameraSystemWork *pCameraSystemWork;
 // GLOBAL: SADX 0x00987244
 struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
 
+// GLOBAL: SADX 0x0098b338
+unsigned char DAT_0098b338;
+
 // GLOBAL: SADX 0x0098b838
 struct TaskInfo StartBgmTaskInfo;
 
@@ -749,6 +752,9 @@ struct NJS_TEXLIST texlist_ava_inetdemo;
 // GLOBAL: SADX 0x025adcd8
 struct NJS_TEXLIST texlist_tvsetting;
 
+// GLOBAL: SADX 0x025adcf0
+struct NJS_TEXLIST texlist_ava_new_menu;
+
 // GLOBAL: SADX 0x025adcf8
 struct NJS_TEXLIST texlist_ava_how2play;
 
@@ -1013,6 +1019,9 @@ struct obj object_Arrow_Y;
 // GLOBAL: SADX 0x02604a34
 struct obj object_Arrow_Z;
 
+// GLOBAL: SADX 0x02604aa8
+struct NJS_TEXLIST texlist_con_regular;
+
 // GLOBAL: SADX 0x02604ab8
 struct NJS_TEXLIST DAT_02604ab8;
 
@@ -1114,6 +1123,9 @@ char *DAT_026313ac[1];
 
 // GLOBAL: SADX 0x02631474
 char *DAT_02631474[1];
+
+// GLOBAL: SADX 0x02631488
+char DAT_02631488[1];
 
 // GLOBAL: SADX 0x02631494
 char DAT_02631494[16];
@@ -1357,6 +1369,9 @@ void (*animal[15])(struct task *);
 
 // GLOBAL: SADX 0x02675a10
 signed char MinimalList[13][5];
+
+// GLOBAL: SADX 0x02675d70
+struct NJS_TEXANIM DAT_02675d70;
 
 // GLOBAL: SADX 0x026789a0
 struct CCL_INFO itembox_colli_info0[1];
@@ -1696,6 +1711,9 @@ struct NJS_TEXLIST texlist_egm2_car;
 
 // GLOBAL: SADX 0x027dbb50
 struct obj object_boss_em2_sky_n_sky_n[1];
+
+// GLOBAL: SADX 0x027dbb84
+struct CCL_INFO DAT_027dbb84[1];
 
 // GLOBAL: SADX 0x027dbbd0
 struct CCL_INFO colli_info[20];
@@ -3647,6 +3665,9 @@ int DAT_04c7c0c0;
 // GLOBAL: SADX 0x04c7d76c
 void (*egm3_exec[5])(struct task *);
 
+// GLOBAL: SADX 0x04cb95e0
+unsigned char (*z80_op_dd_cb[256])(void);
+
 // GLOBAL: SADX 0x04cbb1e0
 char DAT_04cbb1e0[11];
 
@@ -3679,6 +3700,9 @@ struct obj DAT_05a83f08;
 
 // GLOBAL: SADX 0x05a85e0c
 struct NJS_MODEL DAT_05a85e0c;
+
+// GLOBAL: SADX 0x05a862b0
+struct NJS_MODEL DAT_05a862b0;
 
 // GLOBAL: SADX 0x05a862dc
 struct obj DAT_05a862dc;
@@ -3896,6 +3920,9 @@ int DAT_05ad95d8;
 // GLOBAL: SADX 0x05ad95dc
 int DAT_05ad95dc;
 
+// GLOBAL: SADX 0x05ad95e0
+unsigned char DAT_05ad95e0;
+
 // GLOBAL: SADX 0x05ad95e1
 unsigned char DAT_05ad95e1;
 
@@ -3934,6 +3961,18 @@ unsigned int DAT_05ad966c;
 
 // GLOBAL: SADX 0x05ad9a9c
 void *DAT_05ad9a9c;
+
+// GLOBAL: SADX 0x05ad9abc
+int DAT_05ad9abc;
+
+// GLOBAL: SADX 0x05ad9ac0
+int DAT_05ad9ac0;
+
+// GLOBAL: SADX 0x05ad9ac4
+int DAT_05ad9ac4;
+
+// GLOBAL: SADX 0x05ad9ac8
+int DAT_05ad9ac8;
 
 // GLOBAL: SADX 0x05ad9ad0
 int DAT_05ad9ad0;
@@ -3997,6 +4036,9 @@ char DAT_05ad9db8;
 
 // GLOBAL: SADX 0x05ada118
 int DAT_05ada118;
+
+// GLOBAL: SADX 0x05ada1d0
+int DAT_05ada1d0;
 
 // GLOBAL: SADX 0x05ada210
 int DAT_05ada210;
@@ -4333,6 +4375,9 @@ char DAT_05b39da8[4];
 
 // GLOBAL: SADX 0x05b39dac
 int DAT_05b39dac;
+
+// GLOBAL: SADX 0x05b39db0
+unsigned char DAT_05b39db0;
 
 // GLOBAL: SADX 0x05b39db1
 unsigned char DAT_05b39db1;
@@ -6617,6 +6662,12 @@ unsigned long DAT_05edcbb4;
 // GLOBAL: SADX 0x05edcc38
 struct task *DAT_05edcc38;
 
+// GLOBAL: SADX 0x05edcc80
+struct NJS_SPRITE DAT_05edcc80;
+
+// GLOBAL: SADX 0x05edcca0
+int DAT_05edcca0;
+
 // GLOBAL: SADX 0x05edd128
 struct _OBJ_CAMERAPARAM *DAT_05edd128;
 
@@ -6664,6 +6715,9 @@ struct task *DAT_05edd7bc;
 
 // GLOBAL: SADX 0x05edd870
 struct task *DAT_05edd870;
+
+// GLOBAL: SADX 0x05edd884
+void *DAT_05edd884;
 
 // GLOBAL: SADX 0x05edd888
 struct task *DAT_05edd888;
@@ -6919,6 +6973,9 @@ int DAT_060b9ab4;
 
 // GLOBAL: SADX 0x060b9ae4
 int DAT_060b9ae4;
+
+// GLOBAL: SADX 0x060b9b10
+struct taskwk *DAT_060b9b10;
 
 // GLOBAL: SADX 0x060b9b2c
 float DAT_060b9b2c;
@@ -7304,6 +7361,9 @@ long DAT_060c60cc;
 // GLOBAL: SADX 0x060c60ec
 struct task *DAT_060c60ec;
 
+// GLOBAL: SADX 0x060c60f0
+void *DAT_060c60f0;
+
 // GLOBAL: SADX 0x060c6120
 int DAT_060c6120;
 
@@ -7415,6 +7475,9 @@ struct task *DAT_060cbb94;
 // GLOBAL: SADX 0x060cbb9c
 struct task *DAT_060cbb9c;
 
+// GLOBAL: SADX 0x060cbbb8
+struct obj *DAT_060cbbb8;
+
 // GLOBAL: SADX 0x060cbbbc
 int DAT_060cbbbc;
 
@@ -7429,6 +7492,9 @@ int DAT_060cbcb4;
 
 // GLOBAL: SADX 0x060cbcb8
 int DAT_060cbcb8;
+
+// GLOBAL: SADX 0x060cbe74
+int DAT_060cbe74;
 
 // GLOBAL: SADX 0x060cbeec
 int DAT_060cbeec;
@@ -8318,8 +8384,14 @@ int DAT_0629c3b0;
 // GLOBAL: SADX 0x0629c3c0
 int DAT_0629c3c0;
 
+// GLOBAL: SADX 0x0629c400
+struct NJS_MOTION *DAT_0629c400;
+
 // GLOBAL: SADX 0x0629c440
 float *DAT_0629c440;
+
+// GLOBAL: SADX 0x0629c444
+float DAT_0629c444;
 
 // GLOBAL: SADX 0x0629c4a0
 int DAT_0629c4a0;
@@ -8329,6 +8401,9 @@ void (*DAT_0629c4a4)(void);
 
 // GLOBAL: SADX 0x0629c4a8
 void (*DAT_0629c4a8)(void);
+
+// GLOBAL: SADX 0x0629c4ac
+int DAT_0629c4ac;
 
 // GLOBAL: SADX 0x0629c4c0
 int DAT_0629c4c0;

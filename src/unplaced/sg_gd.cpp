@@ -1,6 +1,13 @@
 #include "decls.h"
+void gdFsExecServer(void);
 void stCloseFile(int param_1);
 void stReadFile(int param_1, int param_2, int param_3, int param_4);
+
+// STUB: SADX 0x004310d0
+int gdFsOpen(int param_1)
+{
+	return (int)0;
+}
 
 // FUNCTION: SADX 0x00431150
 int gdFsRead(int param_1, int param_2, int param_3)
@@ -77,4 +84,9 @@ void gdFsClose(int *param_1)
 		}
 		gdHandleInit(param_1);
 	}
+}
+
+// STUB: SADX 0x00431410
+void gdFsFinish(void)
+{
 }

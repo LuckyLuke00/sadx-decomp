@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct NJS_TEXMEMLIST *DAT_0629c50c;
+extern struct NJS_TEXMEMLIST *DAT_0629c544;
+extern int DAT_0629c724;
 struct NJS_TEXMEMLIST;
 extern int DAT_0629c4c0;
 extern int DAT_0629c4c4;
@@ -36,14 +39,33 @@ void njSetPaletteData(long param_1, long param_2, void *param_3)
 {
 }
 
-// STUB: SADX 0x00423200
+// FUNCTION: SADX 0x00423200
 long njSetTexture(struct NJS_TEXLIST *param_1)
 {
-	return (long)0;
+	DAT_0629c724 = (int)param_1;
+	if (param_1 != (struct NJS_TEXLIST *)0)
+	{
+		DAT_05ad95dc = (int)param_1->textures->texaddr;
+		stSetTexture((struct NJS_TEXMEMLIST *)DAT_05ad95dc);
+	}
+	return 1;
 }
 
-// STUB: SADX 0x00423230
+// FUNCTION: SADX 0x00423230
 long njSetTextureNum(unsigned long param_1)
+{
+	if (DAT_0629c724 != 0)
+	{
+		int var1 = *(int *)(*(int *)DAT_0629c724 + param_1 * 12 + 8);
+		DAT_05ad95dc = var1;
+		stSetTexture((struct NJS_TEXMEMLIST *)var1);
+		return 1;
+	}
+	return -1;
+}
+
+// STUB: SADX 0x00423270
+long _njCheckFileName(char *param_1, char const *param_2, char const *param_3)
 {
 	return (long)0;
 }
@@ -59,9 +81,17 @@ void njInitTexture(struct NJS_TEXMEMLIST *param_1, unsigned long param_2)
 {
 }
 
-// STUB: SADX 0x00423490
+// FUNCTION: SADX 0x00423490
 void njSetPaletteBankNum(unsigned long param_1, long param_2)
 {
+	if (DAT_0629c724 != 0)
+	{
+		int *var1 = (int *)DAT_0629c724;
+		int *var2 = (int *)*var1;
+		int *var3 = (int *)(var2 + param_1 * 3 + 2);
+		int *var4 = (int *)*var3;
+		*(long *)(var4 + 1) = param_2;
+	}
 }
 
 // STUB: SADX 0x004234c0
@@ -122,6 +152,19 @@ long njReLoadTextureNumG(unsigned long param_1, void *param_2, unsigned long par
 	}
 	return -1;
 }
+
+// STUB: SADX 0x00423920
+long njReleaseTexture(struct NJS_TEXLIST *param_1)
+{
+	return (long)0;
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x004239f0
+void njReleaseTextureAll(void)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x00423a90
 struct NJS_TEXMEMLIST * _njLoadTextureTexMemList(void *param_1, unsigned long param_2)

@@ -32,6 +32,11 @@ void njPrintColor(unsigned long param_1)
 	DAT_05ad95ec = param_1;
 }
 
+// STUB: SADX 0x00423ee0
+void njPrintC(int param_1, char const *param_2)
+{
+}
+
 // STUB: SADX 0x00424080
 void njPrintH(int param_1, unsigned long param_2, int param_3)
 {

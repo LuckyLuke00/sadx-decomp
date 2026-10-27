@@ -1,4 +1,5 @@
 #include "decls.h"
+struct thread;
 
 // STUB: SADX 0x0056b8b0
 void FUN_0056b8b0(void)

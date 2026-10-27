@@ -12,9 +12,17 @@ void FUN_008c1f20(struct task *param_1, short *param_2)
 	*(int *)((char *)local_8 + 8) = *(int *)(param_2 + 4);
 }
 
-// STUB: SADX 0x008c1f60
+// FUNCTION: SADX 0x008c1f60
 void FUN_008c1f60(int param_1)
 {
+	struct motionwk *local_8;
+	local_8 = *(struct motionwk **)((char *)param_1 + 0x24);
+	FUN_008c1fb0(param_1);
+	local_8->work.w[0]++;
+	if (local_8->work.w[0] >= local_8->work.w[1])
+	{
+		local_8->work.w[0] = 0;
+	}
 }
 
 // STUB: SADX 0x008c1fb0

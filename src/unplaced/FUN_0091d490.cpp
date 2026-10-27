@@ -76,10 +76,23 @@ int FUN_0091d5f0(int param_1)
 	return (int)0;
 }
 
-// STUB: SADX 0x0091d600
+// FUNCTION: SADX 0x0091d600
 int __fastcall FUN_0091d600(int param_1)
 {
-	return (int)0;
+	int var1 = 0;
+	if (*(int **)(param_1 + 0x84) != 0)
+	{
+		var1 = (*(int (__thiscall **)(int))(*(int *)*(int **)(param_1 + 0x84) + 4))((int)*(int **)(param_1 + 0x84));
+	}
+	if (*(int **)(param_1 + 0x88) != 0)
+	{
+		var1 += (*(int (__thiscall **)(int))(*(int *)*(int **)(param_1 + 0x88) + 4))((int)*(int **)(param_1 + 0x88));
+	}
+	if (*(int **)(param_1 + 0x8c) != 0)
+	{
+		return var1 + (*(int (__thiscall **)(int))(*(int *)*(int **)(param_1 + 0x8c) + 4))((int)*(int **)(param_1 + 0x8c));
+	}
+	return var1;
 }
 
 // STUB: SADX 0x0091d660

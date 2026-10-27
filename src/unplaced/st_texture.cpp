@@ -59,3 +59,8 @@ void stSetPaletteBank(long param_1)
 		var2 += 3;
 	} while (var1 != 0x80);
 }
+
+// STUB: SADX 0x0042b040
+void stTextureInit(void)
+{
+}

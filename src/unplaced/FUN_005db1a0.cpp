@@ -1,4 +1,6 @@
 #include "decls.h"
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
 
 // FUNCTION: SADX 0x005db1a0
 long FUN_005db1a0()
@@ -34,8 +36,15 @@ long FUN_005db1a0()
 	return local_cg;
 }
 
-// STUB: SADX 0x005db230
+// FUNCTION: SADX 0x005db230
 unsigned char FUN_005db230(void)
 {
-	return (unsigned char)0;
+	int local_8g;
+	unsigned char local_9;
+
+	local_8g = ((int)DAT_05b9d724 << 8) | (int)DAT_05b9d744;
+	local_9 = (unsigned char)(local_8g & 0xff);
+	if (local_9 <= 0 || local_9 >= 6)
+		local_9 = 0;
+	return local_9;
 }
