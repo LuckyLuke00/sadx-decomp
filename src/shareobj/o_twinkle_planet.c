@@ -14,10 +14,12 @@ void ObjectTPPlanetI(struct task *tp)
 	execTPPlanet(tp);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x008d45d0
 void execTPPlanet(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008d4720
 void dispTPPlanet(struct task *tp)

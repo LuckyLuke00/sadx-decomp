@@ -1,6 +1,5 @@
 #include "decls.h"
 void FUN_005720e0(struct obj *param_1, float param_2);
-extern struct Angle3 DAT_00962c74;
 void FUN_005720e0(struct obj *param_1, float param_2);
 extern int DAT_05b9d838;
 void FUN_00572100(struct NJS_TEXLIST *param_1);
@@ -8,9 +7,10 @@ void FUN_00573040(int param_1);
 void FUN_008c2030(int param_1);
 void FUN_00571b20(int param_1);
 
-// STUB: SADX 0x00571ac0
+// FUNCTION: SADX 0x00571ac0
 void MirenObjInitCharColli(struct task *task_p, const struct ObjectInfo *objInfo_p, const struct ObjCmnInfo *cmnInfo_p)
 {
+	CCL_Init(task_p, *(struct CCL_INFO **)objInfo_p, (long)(*(struct CCL_INFO **)((char *)objInfo_p + 4)), cmnInfo_p->id);
 }
 
 // FUNCTION: SADX 0x00571af0

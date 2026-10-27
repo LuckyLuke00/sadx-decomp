@@ -27,10 +27,12 @@ void FUN_005dbd40(int param_1, int param_2)
 	FUN_005dbda0(param_1);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005dbda0
 void FUN_005dbda0(int param_1)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005dbe10
 void FUN_005dbe10(struct taskwk *twp, struct bosswk *bwp)

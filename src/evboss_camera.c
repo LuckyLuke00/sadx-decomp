@@ -10,10 +10,16 @@ void FUN_0060e020(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2, struct
 {
 }
 
-// STUB: SADX 0x0060e1d0
+// FUNCTION: SADX 0x0060e1d0
 float FUN_0060e1d0(float *param_1, float *param_2)
 {
-	return (float)0;
+	float local_cg;
+	float local_8g;
+
+	local_cg = param_2[0] - param_1[0];
+	local_8g = param_2[2] - param_1[2];
+	local_cg = local_cg * local_cg + 0.0f + local_8g * local_8g;
+	return njSqrt(local_cg);
 }
 
 // FUNCTION: SADX 0x0060e220

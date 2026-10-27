@@ -7,7 +7,7 @@ extern void *DAT_05ccdebc;
 extern int DAT_05ccdec0;
 void syFree(void *param_1);
 void GGMessageDest(struct task *tp);
-extern short DAT_05ccdf08;
+extern char DAT_05ccdf08;
 
 // STUB: SADX 0x0056f4b0
 long isCheckGGApper_Mission()
@@ -33,7 +33,7 @@ long InitGGMessage()
 	return (long)0;
 }
 
-// STUB: SADX 0x0056f800
+// FUNCTION: SADX 0x0056f800
 void GGMessageDest(struct task *tp)
 {
 	if (DAT_05ccdebc != 0)
@@ -44,11 +44,11 @@ void GGMessageDest(struct task *tp)
 	FUN_004c3310(&DAT_05ccdec0);
 	FUN_004c1c20();
 	MSG_Disp(0);
-	*(unsigned char *)&DAT_05ccdf08 = 0;
+	DAT_05ccdf08 = 0;
 }
 
 // FUNCTION: SADX 0x0056f850
 unsigned char isGGMessageEnable()
 {
-	return (signed char)DAT_05ccdf08;
+	return DAT_05ccdf08;
 }

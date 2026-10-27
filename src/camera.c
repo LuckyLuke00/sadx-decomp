@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_POINT3 DAT_05b42980;
+extern int DAT_05b4297c;
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern float DAT_05b42828;
@@ -10,7 +12,6 @@ extern struct NJS_CACTION *DAT_05b425cc;
 extern float DAT_05b4293c;
 void FUN_005b5aa0(...);
 extern int DAT_05b42a88;
-extern double DAT_0095cbf8;
 extern int DAT_05b42990;
 void CameraReleaseCollisionCamera();
 extern struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
@@ -118,10 +119,12 @@ void FUN_004bafb0(void)
 	DAT_05b42a80 = DAT_05b42968;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004bafe0
 void cameraModeInit()
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004bb090
 void CameraEnd(struct task *pTask)
@@ -710,14 +713,25 @@ void FUN_004bf0b0(struct _CameraSystemWork *param_1, struct _CameraSystemWork *p
 	}
 }
 
-// STUB: SADX 0x004bf1b0
+// FUNCTION: SADX 0x004bf1b0
 void FUN_004bf1b0(void)
 {
+	DAT_05b42980 = DAT_05baf368[0]->pos;
 }
 
-// STUB: SADX 0x004bf1e0
+// FUNCTION: SADX 0x004bf1e0
 void FUN_004bf1e0(void)
 {
+	njSubVector(&DAT_05b42980, &DAT_05baf368[0]->pos);
+	if (0.10000000149011612 > njScalor(&DAT_05b42980) && (DAT_05baf368[0]->flag & 1))
+	{
+		DAT_05b4297c = 1;
+	}
+	else
+	{
+		DAT_05b4297c = 0;
+	}
+	DAT_05b42980 = DAT_05baf368[0]->pos;
 }
 
 // FUNCTION: SADX 0x004bf260
@@ -812,9 +826,9 @@ void CameraPositionSmooth(struct NJS_POINT3 *last, struct NJS_POINT3 *pos)
 {
 	if (DAT_05b42a88 != 0)
 	{
-		pos->x = (pos->x - last->x) * (float)(0x1e - DAT_05b42a88) * DAT_0095cbf8 + last->x;
-		pos->y = (pos->y - last->y) * (float)(0x1e - DAT_05b42a88) * DAT_0095cbf8 + last->y;
-		pos->z = (pos->z - last->z) * (float)(0x1e - DAT_05b42a88) * DAT_0095cbf8 + last->z;
+		pos->x = (pos->x - last->x) * (float)(0x1e - DAT_05b42a88) * 0.03333333507180214 + last->x;
+		pos->y = (pos->y - last->y) * (float)(0x1e - DAT_05b42a88) * 0.03333333507180214 + last->y;
+		pos->z = (pos->z - last->z) * (float)(0x1e - DAT_05b42a88) * 0.03333333507180214 + last->z;
 		DAT_05b42a88 = DAT_05b42a88 - 1;
 	}
 }

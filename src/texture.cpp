@@ -7,10 +7,12 @@ long FUN_00423e50(const char *param_1, struct NJS_TEXLIST *param_2);
 extern struct NJS_TEXLIST *DAT_05cc3540[5];
 extern struct NJS_TEXLIST *DAT_05cc25b0[1];
 
+#pragma optimize("", off)
 // STUB: SADX 0x005019e0
 void PvrLoadtexture(struct NJS_TEXLIST *texlist)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00501b40
 void LoadPlayersTexture(long pno)
@@ -104,6 +106,12 @@ void LoadTextureForEachGameMode(long gamemode)
 {
 }
 
+// STUB: SADX 0x00502210
+long SetRegularTexture()
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x00502240
 long CheckObjectTexture()
 {
@@ -115,6 +123,12 @@ long CheckObjectTexture()
 	{
 		return 0;
 	}
+}
+
+// STUB: SADX 0x00502260
+long SetObjectTexture()
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x00502290
@@ -155,10 +169,12 @@ long ReleasePvmT(unsigned short stgact)
 	return (long)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00502980
 void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00502a90
 long LoadPvmMEM2(const char *filename, struct NJS_TEXLIST *texlist)

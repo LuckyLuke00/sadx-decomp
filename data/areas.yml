@@ -32,6 +32,7 @@ tree:
   - ['^src/sandboard/', sand_hill]
   - ['^src/shareobj/', objects]  # objects that several stages share
   - ['^src/shinobi/', ninja]
+  - ['^src/soc/', ninja]
   - ['^src/sonicdxgg/', game_gear]
   - ['^src/st/', pc_port]  # the Direct3D layer
   - ['^src/summary/', menus]

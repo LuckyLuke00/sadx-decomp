@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <string.h>
+void FUN_004ff2a0(void);
 void FUN_004ff280(void);
 void FUN_004ff2a0();
 extern short DAT_05b9d724;

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern char DAT_05ab4804;
+extern void stVSRelease(struct _sSTVERTEXSTREAM *param_1);
 void FUN_00426740(void);
 void FUN_00426820(void);
 extern int DAT_0629c6c8;
@@ -36,18 +38,18 @@ void FUN_00426580(int param_1)
 	}
 }
 
-// STUB: SADX 0x00426980
+// FUNCTION: SADX 0x00426980
 void FUN_00426980(void)
 {
-	char *var1;
+	char *pcVar1;
 
-	var1 = (char *)&DAT_05ab46c0;
+	pcVar1 = (char *)&DAT_05ab46c0;
 	do
 	{
-		stVSRelease((struct _sSTVERTEXSTREAM *)var1);
-		var1 += 0x24;
-	}
-	while (var1 != (char *)0x5ab4804);
+		stVSRelease((struct _sSTVERTEXSTREAM *)pcVar1);
+		pcVar1 += 0x24;
+	} while (pcVar1 != &DAT_05ab4804);
+	return;
 }
 
 // STUB: SADX 0x004269a0

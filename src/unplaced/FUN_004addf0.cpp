@@ -24,18 +24,3 @@ void FUN_004addf0()
 	input_reset();
 }
 
-// FUNCTION: SADX 0x004ade40
-void FUN_004ade40()
-{
-	int local_8;
-
-	DAT_05b3ea00 = 0;
-	DAT_05b3ea04 = 0;
-	FUN_004ab0b0();
-	DAT_05b3e924 = 0;
-	for (local_8 = 0; local_8 < 20; local_8++)
-	{
-		DAT_05b3e468[local_8].timer = 0;
-	}
-	InitOverlapSE(1);
-}

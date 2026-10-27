@@ -1,4 +1,6 @@
 #include "decls.h"
+void ProcessStatusTable1P();
+void ProcessStatusTable2P();
 extern int DAT_05cc8664;
 extern char DAT_05cc8669;
 extern long boolCheckRangeIn;
@@ -54,14 +56,25 @@ void FUN_00550170(char *param_1)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005501a0
 void InitStatusTable()
 {
 }
+#pragma optimize("", on)
 
-// STUB: SADX 0x00550280
+// FUNCTION: SADX 0x00550280
 void FUN_00550280(void)
 {
+	if (DAT_05baf368[1] == 0 || CheckEditMode() != 0 || *(unsigned char *)((char *)DAT_05baf368[1] + 9) == 2)
+	{
+		ProcessStatusTable1P();
+	}
+	else
+	{
+		ProcessStatusTable2P();
+	}
+	DAT_05ccc67c = 1;
 }
 
 // STUB: SADX 0x005506a0
@@ -76,10 +89,12 @@ int FUN_00550c10(float *fPos, float fX, float fY, float fZ, float fRangeSq)
 	return (int)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00550cc0
 void SwitchStatusTable(struct taskwk *pTaskWork)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x00550d90
 void FUN_00550d90(void)

@@ -1,4 +1,9 @@
 #include "decls.h"
+extern struct NJS_TEXLIST DAT_02684a9c;
+void SphericalExplosionUV(long v0);
+void SphericalExplosionPos(float rate);
+void SphericalExplosionAlpha(float a);
+void SphericalExplosionDraw();
 void FUN_005c9d00(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005c9060(struct taskwk *param_1, struct enemywk *param_2);
 
@@ -26,7 +31,7 @@ void FUN_005c62a0(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // FUNCTION: SADX 0x005c68f0
-void FUN_005c68f0(struct taskwk *param_1)
+void FUN_005c68f0(struct taskwk *param_1, int param_2)
 {
 	if (param_1->flag & 0x2000)
 	{
@@ -35,7 +40,7 @@ void FUN_005c68f0(struct taskwk *param_1)
 }
 
 // FUNCTION: SADX 0x005c6930
-void FUN_005c6930(struct taskwk *param_1)
+void FUN_005c6930(struct taskwk *param_1, int param_2)
 {
 	CreateFlash2(param_1->pos.x, param_1->pos.y + 5.0, param_1->pos.z, 1.4f);
 	CreateExpParts(param_1, saru_model, &texlist_e_saru);
@@ -140,10 +145,32 @@ void CreateSaruBombExplosion(struct NJS_POINT3 *pos)
 	}
 }
 
+// FUNCTION: SADX 0x005c9690
+void SaruBombDisplayer(struct task *tp)
+{
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	njPushMatrix(0);
+	SphericalExplosionUV(local_8->timer.l);
+	SphericalExplosionPos(local_8->scl.z);
+	SphericalExplosionAlpha(local_8->scl.z);
+	njTranslateV(0, &local_8->pos);
+	if (local_8->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)local_8->ang.y);
+	}
+	FUN_0067d2d0(0, local_8->scl.x, local_8->scl.x, local_8->scl.x);
+	___njSetTexture(&DAT_02684a9c);
+	SphericalExplosionDraw();
+	njPopMatrix(1);
+}
+
+#pragma optimize("", off)
 // STUB: SADX 0x005c9750
 void SaruBombCollision(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005c9950
 void SaruBombCountDown(struct taskwk *twp, struct enemywk *ewp)
@@ -156,10 +183,12 @@ void FUN_005c9d00(struct taskwk *param_1, struct enemywk *param_2)
 	SaruBombExplosionDraw(param_1, param_2);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005c9d20
 void SaruBombExplosionDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005c9e30
 void SaruBombADisplayer(struct task *tp)

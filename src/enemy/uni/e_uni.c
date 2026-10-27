@@ -1,11 +1,21 @@
 #include "decls.h"
+extern struct obj object_uni_c_unibody_unibody[1];
+void njPushMatrix(float *param_1);
+void njTranslateV(float *param_1, struct NJS_POINT3 *param_2);
+void njRotateY(float *param_1, unsigned short param_2);
+void njRotateZ(float *param_1, int param_2);
+void njRotateX(float *param_1, unsigned short param_2);
+void njPopMatrix(int param_1);
+void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp);
+void FUN_005cd0c0(struct task *param_1, struct motionwk *param_2);
+void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
+void FUN_005ca420(struct task *param_1);
 extern struct obj object_uni_a_unibody_unibody[];
 extern struct NJS_TEXLIST texlist_uni_a_unibody;
 void CheckParentDeath(struct task *tp, struct enemywk *ewp);
 void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
 void UniTogeADraw(struct taskwk *twp, struct enemywk *ewp);
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
-extern double DAT_00962f10;
 void FUN_005ccf30(struct task *param_1, struct motionwk *param_2);
 void FUN_005cd2c0(struct task *param_1, struct enemywk *param_2);
 void FUN_005cc030(struct taskwk *param_1, struct enemywk *param_2);
@@ -24,7 +34,7 @@ extern struct obj object_togeball_togeball_togeball;
 struct task;
 struct enemywk;
 void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
-void FUN_005ca420(struct task *param_1);
+void FUN_005ca420(struct task *param_1, int param_2);
 void UniADraw(struct taskwk *twp, struct enemywk *ewp);
 signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp);
@@ -36,7 +46,7 @@ void UniTogeAExecutor(struct task *tp)
 }
 
 // STUB: SADX 0x005ca420
-void FUN_005ca420(struct task *tp)
+void FUN_005ca420(struct task *tp, int param_2)
 {
 }
 
@@ -60,6 +70,7 @@ void UniADisplayer(struct task *tp)
 	UniADraw(local_cg, local_8g);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005ca7f0
 void UniADraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -87,16 +98,19 @@ void UniADraw(struct taskwk *twp, struct enemywk *ewp)
 	njPopMatrix(1);
 	dispPoliceShadow(twp, ewp);
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005ca8f0
 void UniAExecutor(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005caab0
 void FUN_005caab0(struct task *tp, struct task *param_2)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005cad80
 void FUN_005cad80(struct task *param_1, struct taskwk *param_2, struct motionwk *param_3)
@@ -187,9 +201,18 @@ long FUN_005cb070(struct taskwk *param_1, struct enemywk *param_2)
 	return 0;
 }
 
-// STUB: SADX 0x005cb0d0
-void FUN_005cb0d0(struct taskwk *twp, struct enemywk *ewp)
+// FUNCTION: SADX 0x005cb0d0
+void FUN_005cb0d0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	float local_8 = EnemyDist2FromHome(param_1, param_2);
+	if (local_8 > (param_1->scl.x + 50.0f) * (param_1->scl.x + 50.0f))
+	{
+		param_1->flag |= 0x200;
+	}
+	else
+	{
+		param_1->flag &= ~0x200;
+	}
 }
 
 // FUNCTION: SADX 0x005cb140
@@ -201,10 +224,12 @@ void FUN_005cb140(struct taskwk *param_1, struct enemywk *param_2)
 		param_1->flag &= 0xfffffbff;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005cb190
 void FUN_005cb190(struct task *tp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005cb270
 void FUN_005cb270(struct taskwk *param_1, struct enemywk *param_2)
@@ -372,6 +397,11 @@ void FUN_005ccf30(struct task *tp, struct motionwk *mwp)
 {
 }
 
+// STUB: SADX 0x005cd0c0
+void FUN_005cd0c0(struct task *tp, struct motionwk *mwp)
+{
+}
+
 // FUNCTION: SADX 0x005cd2c0
 void FUN_005cd2c0(struct task *param_1, struct enemywk *param_2)
 {
@@ -416,6 +446,7 @@ void UniCDisplayer(struct task *tp)
 	UniCDraw(local_cg, local_8g);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005cd440
 static void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -443,6 +474,7 @@ static void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 	njPopMatrix(1);
 	dispPoliceShadow(twp, ewp);
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005cd540
 void UniCExecutor(struct task *tp)
@@ -457,8 +489,8 @@ void UniCNormal(struct taskwk *twp, struct enemywk *ewp)
 	FUN_005cb140(twp, ewp);
 	FUN_005cb0d0(twp, ewp);
 	FUN_005cb070(twp, ewp);
-	ewp->acc.x = njCos(twp->ang.y) * DAT_00962f10;
-	ewp->acc.z = njSin(-twp->ang.y) * DAT_00962f10;
+	ewp->acc.x = njCos(twp->ang.y) * 0.00800000037997961;
+	ewp->acc.z = njSin(-twp->ang.y) * 0.00800000037997961;
 	FUN_005caec0(twp, ewp);
 	FUN_005cb190((struct task *)twp, ewp);
 	UniCDraw(twp, ewp);

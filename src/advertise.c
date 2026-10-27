@@ -3,8 +3,106 @@
 #include <new>
 #include <windows.h>
 #include "advertise.h"
+void late_DrawMap(void *arg);
+void FUN_0057cd30();
+long InitMap();
+void FUN_0057cf20();
+void late_SetFunc(void (*fnc)(void *), void *arg, float zprio, int flgs);
+extern void FUN_00589a70(char *param_1, int param_2, int param_3);
+extern void __fastcall FUN_00589c10(void *param_1, int param_2, char param_3);
+void FUN_0041c2d0(void *param_1);
+int dsPlay_oneshot(int tone, int id, int pri, int volofs);
+int InitLBOn();
+void DrawLBOn();
+void DestroyLBOn();
+void split2(void *param_1, void *param_2);
+extern struct NJS_TEXLIST DAT_05cd2664;
 void FUN_00588890(int param_1);
 extern unsigned char DAT_05cd2786;
+
+// STUB: SADX 0x00579e00
+void InitDisplayStart()
+{
+}
+
+// FUNCTION: SADX 0x0057a4e0
+void displayMission(struct task *tp)
+{
+	___njFogDisable();
+	late_SetFunc((void (*)(void *))late_displayMission, tp, 22047.998046875f, 1);
+	___njFogEnable();
+}
+
+// FUNCTION: SADX 0x0057a510
+void endDisplayMission(struct task *tp)
+{
+	late_ReleaseTexture(&DAT_05cd2664);
+}
+
+// STUB: SADX 0x0057a530
+void InitDisplayResult()
+{
+}
+
+// FUNCTION: SADX 0x0057a660
+void InitDisplayGoal()
+{
+	pdVibMxStop(0);
+}
+
+// FUNCTION: SADX 0x0057a670
+void DisplayPress(struct task *tp)
+{
+	late_SetFunc((void (*)(void *))late_DisplayPress, tp, 22047.998f, 1);
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x0057a6a0
+void late_DisplayPress(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x0057a860
+void printPauseTexture(enum PAUSE_TEXTURE_ID id, struct NJS_POINT3 *pos, struct NJS_POINT2 *scl)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x0057a920
+void printPause(float ofsy)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x0057aa00
+void FUN_0057aa00(enum PAUSE_TEXTURE_ID param_1, long param_2, long param_3, long param_4)
+{
+	printMenu2(param_1, 0xf0, param_2 + 0xf0, param_3);
+}
+
+// STUB: SADX 0x0057ae10
+signed char PausePrev(signed char sel)
+{
+	return (signed char)0;
+}
+
+// STUB: SADX 0x0057cc20
+int FUN_0057cc20()
+{
+	return (int)0;
+}
+
+// FUNCTION: SADX 0x0057cd00
+void MapDispOn()
+{
+	if (DAT_05cd2786 == 0)
+	{
+		DAT_05cd2786 = 1;
+	}
+}
 
 // FUNCTION: SADX 0x0057cd20
 void FUN_0057cd20()
@@ -81,9 +179,11 @@ extern unsigned char DAT_05cd27e8;
 extern int DAT_05cd27ec;
 extern int DAT_05cd27f0;
 extern int DAT_05cd27f4[3];
-extern void* DAT_05cd2820;
+// GLOBAL: SADX 0x05cd2820
+static std::list<LBOnData>::iterator DAT_05cd2820;
 extern float DAT_05cd2824;
-extern int DAT_05cd2828[3];
+// GLOBAL: SADX 0x05cd2828
+static std::list<LBOnData> DAT_05cd2828;
 extern float DAT_05cd2854;
 extern int DAT_05cd2864;
 extern int DAT_05cd2868;
@@ -107,6 +207,33 @@ void FUN_00579960(struct MSGC*, int*, int*);
 int FUN_00583720();
 void DrawTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int);
 void RenderTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int);
+
+// STUB: SADX 0x0057cd30
+void FUN_0057cd30()
+{
+}
+
+// STUB: SADX 0x0057cd40
+int FUN_0057cd40()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x0057ce00
+long InitMap()
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0057cf20
+void FUN_0057cf20()
+{
+}
+
+// STUB: SADX 0x0057d000
+void late_DrawMap(void *arg)
+{
+}
 
 // FUNCTION: SADX 0x0057d490
 int padconfig(int sw)
@@ -391,17 +518,17 @@ int padconfig(int sw)
                     DAT_05cd2785 = 17;
                 if (DAT_0260553e == 2)
                     DAT_05cd2774 = 0;
-                reinterpret_cast<std::list<LBOnData>*>(&DAT_05cd2828)->clear();
+                DAT_05cd2828.clear();
                 DAT_05cd2794 = 0;
                 DAT_05cd2798 = 0;
                 if (DAT_0260553e == 0) {
                     DAT_05cd279c = 0;
-                    reinterpret_cast<void (__cdecl *)(int, int, int, int)>(&FUN_005b5aa0)(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
+                    FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 } else if (DAT_0260553e != 0) {
-                    reinterpret_cast<void (__cdecl *)(int, int, int, int)>(&FUN_005b5aa0)(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
+                    FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 }
                 local_36du = true;
-                *reinterpret_cast<std::list<LBOnData>::iterator*>(&DAT_05cd2820) = reinterpret_cast<std::list<LBOnData>*>(&DAT_05cd2828)->begin();
+                DAT_05cd2820 = DAT_05cd2828.begin();
             }
             if ((DAT_05b92e44 & 0x80) && !local_36du) {
                 dsPlay_oneshot(1, 0, 0, 0);
@@ -415,17 +542,17 @@ int padconfig(int sw)
                     DAT_05cd2785 = 0;
                 if (DAT_0260553e == 2)
                     DAT_05cd2774 = 0;
-                reinterpret_cast<std::list<LBOnData>*>(&DAT_05cd2828)->clear();
+                DAT_05cd2828.clear();
                 DAT_05cd2794 = 0;
                 DAT_05cd2798 = 0;
                 if (DAT_0260553e == 0) {
                     DAT_05cd279c = 0;
-                    reinterpret_cast<void (__cdecl *)(int, int, int, int)>(&FUN_005b5aa0)(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
+                    FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 } else if (DAT_0260553e != 0) {
-                    reinterpret_cast<void (__cdecl *)(int, int, int, int)>(&FUN_005b5aa0)(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
+                    FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 }
                 local_36du = true;
-                *reinterpret_cast<std::list<LBOnData>::iterator*>(&DAT_05cd2820) = reinterpret_cast<std::list<LBOnData>*>(&DAT_05cd2828)->begin();
+                DAT_05cd2820 = DAT_05cd2828.begin();
             }
             if ((DAT_05b92e44 & 0x400) && !local_36du) {
                 dsPlay_oneshot(3, 0, 0, 0);
@@ -440,17 +567,17 @@ int padconfig(int sw)
                 } else if (DAT_0260553e == 2) {
                     DAT_05cd2774 = 0;
                 }
-                reinterpret_cast<std::list<LBOnData>*>(&DAT_05cd2828)->clear();
+                DAT_05cd2828.clear();
                 DAT_05cd2794 = 0;
                 DAT_05cd2798 = 0;
                 if (DAT_0260553e == 0) {
                     DAT_05cd279c = 0;
-                    reinterpret_cast<void (__cdecl *)(int, int, int, int)>(&FUN_005b5aa0)(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
+                    FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 } else if (DAT_0260553e != 0) {
-                    reinterpret_cast<void (__cdecl *)(int, int, int, int)>(&FUN_005b5aa0)(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
+                    FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 }
                 local_36du = true;
-                *reinterpret_cast<std::list<LBOnData>::iterator*>(&DAT_05cd2820) = reinterpret_cast<std::list<LBOnData>*>(&DAT_05cd2828)->begin();
+                DAT_05cd2820 = DAT_05cd2828.begin();
             }
             if ((DAT_05b92e44 & 4) && !local_36du)
                 local_36du = true;
@@ -1679,8 +1806,44 @@ void __fastcall FUN_00582af0(int param_1)
 {
 }
 
+// FUNCTION: SADX 0x00583720
+int FUN_00583720()
+{
+	if (DAT_05cd2784 == 2 && (DAT_05b92e44 & 2) != 0)
+	{
+		dsPlay_oneshot(3, 0, 0, 0);
+		DAT_05cd2784 = 3;
+	}
+	switch (DAT_05cd2784)
+	{
+	case 0:
+		return 0;
+	case 1:
+		if (InitLBOn() == 0)
+		{
+			DAT_05cd2784 = 0;
+			return 0;
+		}
+		DAT_05cd2784 = 2;
+		break;
+	case 2:
+		DrawLBOn();
+		break;
+	case 3:
+		DestroyLBOn();
+		DAT_05cd2784 = 0;
+		return 2;
+	}
+	return 1;
+}
+
 // STUB: SADX 0x00587710
 void DestroyLBOn()
+{
+}
+
+// STUB: SADX 0x00588800
+void FUN_00588800(void *param_1, wchar_t *param_2)
 {
 }
 
@@ -1705,13 +1868,19 @@ void FUN_00588a30(int param_1)
 {
 }
 
+// STUB: SADX 0x00588c90
+char * FUN_00588c90(char *param_1, char *param_2, int param_3, int param_4)
+{
+	return (char *)0;
+}
+
 // STUB: SADX 0x00588db0
 void FUN_00588db0(struct obj *obj, int param_2)
 {
 }
 
 // STUB: SADX 0x00588e00
-void __fastcall FUN_00588e00(void *param_1, char param_2, int param_3)
+void __fastcall FUN_00588e00(void *param_1, char param_2, int param_3, int param_4)
 {
 }
 
@@ -1725,8 +1894,18 @@ void FUN_00589930()
 {
 }
 
+// STUB: SADX 0x00589a70
+void FUN_00589a70(char *param_0, int param_1, int param_2)
+{
+}
+
 // STUB: SADX 0x00589b70
 void FUN_00589b70(void *param_1, int param_2, int param_3, short param_4)
+{
+}
+
+// STUB: SADX 0x00589c10
+void __fastcall FUN_00589c10(void *param_1, int param_2, char param_3)
 {
 }
 
@@ -1746,16 +1925,34 @@ void FUN_0058a4b0(int param_1, int param_2, int param_3)
 {
 }
 
-// STUB: SADX 0x0058a560
+// FUNCTION: SADX 0x0058a560
 void *FUN_0058a560(unsigned int param_1)
 {
-	return (void *)0;
+	void *local_8 = 0;
+	if (param_1 <= 0)
+	{
+		param_1 = 0;
+	}
+	else if (param_1 > 0x9249249 || (local_8 = operator new(param_1 * 0x1c)) == 0)
+	{
+		throw std::bad_alloc(0);
+	}
+	return local_8;
 }
 
-// STUB: SADX 0x0058a5d0
+// FUNCTION: SADX 0x0058a5d0
 void *FUN_0058a5d0(unsigned int param_1)
 {
-	return (void *)0;
+	void *local_8 = 0;
+	if (param_1 <= 0)
+	{
+		param_1 = 0;
+	}
+	else if (param_1 > 0x7fffffff || (local_8 = operator new(param_1 * 2)) == 0)
+	{
+		throw std::bad_alloc(0);
+	}
+	return local_8;
 }
 
 // FUNCTION: SADX 0x0058a640

@@ -2,8 +2,8 @@
 
 #include "decls.h"
 
-// STUB: SADX 0x00403bb0
-void FUN_00403bb0(int, int, int, int)
+// STUB: SADX 0x00402d00
+void FUN_00402d00()
 {
 }
 
@@ -303,7 +303,7 @@ void njPushMatrixEx()
 }
 
 // STUB: SADX 0x00433f40
-void stVSRelease(struct _sSTVERTEXSTREAM *)
+extern void stVSRelease(struct _sSTVERTEXSTREAM *)
 {
 }
 
@@ -1079,6 +1079,12 @@ void MissionObject()
 {
 }
 
+// STUB: SADX 0x0049a110
+unsigned char IsMissionStatus(void *ptr)
+{
+	return (unsigned char)0;
+}
+
 // STUB: SADX 0x0049c120
 void MiSakanaGenerater(struct task *tp)
 {
@@ -1121,11 +1127,6 @@ void DrawModelMS(struct NJS_MODEL *mdl, int flgs)
 
 // STUB: SADX 0x004a7280
 void DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
-{
-}
-
-// STUB: SADX 0x004a7d20
-void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
 {
 }
 
@@ -1471,6 +1472,11 @@ void PGetRotation(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 {
 }
 
+// STUB: SADX 0x004e2480
+void PAdjustAngleY(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, long angy)
+{
+}
+
 // STUB: SADX 0x004e2cb0
 void FUN_004e2cb0(struct task *, struct NJS_POINT3 *, struct taskwk *)
 {
@@ -1560,18 +1566,6 @@ void ReleaseTextureForEachGameMode()
 {
 }
 
-// STUB: SADX 0x00502210
-long SetRegularTexture()
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x00502260
-extern long SetObjectTexture()
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x00502cd0
 int FUN_00502cd0()
 {
@@ -1658,8 +1652,18 @@ void DrawBlurOfMetalSonic(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0054fec0
-void CreateKiran2(struct NJS_POINT3 *pos, float scl, float spd)
+// STUB: SADX 0x0054ffb0
+void drawEffectKiran2(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005502c0
+void ProcessStatusTable2P()
+{
+}
+
+// STUB: SADX 0x00550800
+void ProcessStatusTable1P()
 {
 }
 
@@ -1717,12 +1721,6 @@ void DrawSNumbersTime(float h, float v)
 // STUB: SADX 0x0055de60
 void FUN_0055de60(struct _SC_NUMBERS *)
 {
-}
-
-// STUB: SADX 0x0055f390
-long FUN_0055f390(struct task *)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x0055f6f0
@@ -1802,11 +1800,6 @@ void EffectWater(struct sp_task *tp, struct sp_link *lp)
 {
 }
 
-// STUB: SADX 0x005718c0
-void CreateWater(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
-{
-}
-
 // STUB: SADX 0x00572210
 void MirenObjEditDrawCollision(const struct colliwk *)
 {
@@ -1832,28 +1825,8 @@ void dialog_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00576a60
-void FUN_00576a60(int)
-{
-}
-
 // STUB: SADX 0x00576c10
 void FUN_00576c10(struct task *)
-{
-}
-
-// STUB: SADX 0x005778c0
-void SetDialogLocalPrm(struct DialogWk *wkp)
-{
-}
-
-// STUB: SADX 0x005779c0
-void FUN_005779c0(signed char)
-{
-}
-
-// STUB: SADX 0x00577ac0
-void OpenDialog(struct DialogPrmType *, int)
 {
 }
 
@@ -1868,13 +1841,8 @@ void FUN_00579960(struct MSGC*, int*, int*)
 {
 }
 
-// STUB: SADX 0x0057a860
-void printPauseTexture(enum PAUSE_TEXTURE_ID id, struct NJS_POINT3 *pos, struct NJS_POINT2 *scl)
-{
-}
-
-// STUB: SADX 0x0057a920
-void printPause(float ofsy)
+// STUB: SADX 0x00579ab0
+void late_displayMission(struct task *tp)
 {
 }
 
@@ -1889,10 +1857,15 @@ int cameramodechange(int sw)
 	return (int)0;
 }
 
-// STUB: SADX 0x00583720
-int FUN_00583720()
+// STUB: SADX 0x00582b10
+int InitLBOn()
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x005837c0
+void DrawLBOn()
+{
 }
 
 // STUB: SADX 0x00587960
@@ -1902,6 +1875,31 @@ void DrawButtonACBB()
 
 // STUB: SADX 0x00587d10
 void DrawButtonXUBB()
+{
+}
+
+// STUB: SADX 0x0058ac40
+void FUN_0058ac40(struct task *)
+{
+}
+
+// STUB: SADX 0x0058acd0
+void FUN_0058acd0(struct task *)
+{
+}
+
+// STUB: SADX 0x0058afb0
+void FUN_0058afb0(struct task *)
+{
+}
+
+// STUB: SADX 0x0058b190
+void FUN_0058b190(struct task *)
+{
+}
+
+// STUB: SADX 0x0058b270
+void FUN_0058b270(struct task *)
 {
 }
 
@@ -1932,11 +1930,6 @@ void BigChkHighScore()
 
 // STUB: SADX 0x005948e0
 void SpinnaDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x00597ea0
-void dsScaleLight(float a)
 {
 }
 
@@ -2082,11 +2075,6 @@ void FUN_005b2480(int)
 {
 }
 
-// STUB: SADX 0x005b2540
-void EntryEventAction(struct taskwk *twp, struct NJS_ACTION *ap, struct NJS_TEXLIST *lp, float speed, int mode, int linkframe)
-{
-}
-
 // STUB: SADX 0x005b2660
 void DrawEventActionPL(struct taskwk *twp, int ligPalNo)
 {
@@ -2099,11 +2087,6 @@ void ExecEventPath(struct taskwk *twp)
 
 // STUB: SADX 0x005b3390
 void EventObject(struct task *tp)
-{
-}
-
-// STUB: SADX 0x005b3db0
-void ObjectJumpPanelSetNumber(struct task *tp)
 {
 }
 
@@ -2122,15 +2105,26 @@ void ObjectItemboxAir(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b7d60
-void GetAngleYZV(const struct NJS_POINT3 *, long *, long *)
+// STUB: SADX 0x005b8930
+long Rocket_Move_Pl(struct task *tp)
 {
+	return (long)0;
 }
 
 // STUB: SADX 0x005b8b10
 long Rocket_Open(struct task *tp)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x005b90d0
+void Move_Rocket(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b9310
+void GetRocketBarOfs(struct taskwk *, struct NJS_ACTION *, float, struct NJS_POINT3 *)
+{
 }
 
 // STUB: SADX 0x005b9e40
@@ -2149,12 +2143,12 @@ void ObjectEmeraldDisplay(struct NJS_POINT3 *pos, long *angy)
 }
 
 // STUB: SADX 0x005be3b0
-void RoboDraw(struct taskwk *twp, struct enemywk *ewp)
+void RoboDraw(struct taskwk *, struct enemywk *)
 {
 }
 
 // STUB: SADX 0x005c0e10
-void LeonDraw(struct taskwk *twp, struct enemywk *ewp)
+void LeonDraw(struct taskwk *, struct enemywk *)
 {
 }
 
@@ -2188,18 +2182,13 @@ void SaruBombExplosion(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005c9690
-void SaruBombDisplayer(struct task *tp)
-{
-}
-
 // STUB: SADX 0x005c9ab0
 void SaruBombCountDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
 // STUB: SADX 0x005cca00
-void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp)
+void UniTogeCDraw(struct taskwk *, struct enemywk *)
 {
 }
 
@@ -2622,6 +2611,11 @@ void njRotateZXY(long, long, long, long)
 {
 }
 
+// STUB: SADX 0x006800d0
+void SSPcInit()
+{
+}
+
 // STUB: SADX 0x00684750
 long ssp_control_wait(struct task *task_p)
 {
@@ -2677,6 +2671,11 @@ long Object_EgaGun1DrawStat(struct task *tp)
 
 // STUB: SADX 0x0069c990
 void ObjectECCommonDoorS(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0069e480
+void EC_CPcSet()
 {
 }
 
@@ -3965,11 +3964,6 @@ void Eggman(struct task *tp)
 
 // STUB: SADX 0x008cbb50
 void InitSnatchPlayerInfo()
-{
-}
-
-// STUB: SADX 0x008ccde0
-void reflexiveMaterial(struct NJS_MODEL *model, long scan_type)
 {
 }
 

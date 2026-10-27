@@ -1,5 +1,6 @@
 #include "decls.h"
-void FUN_0058d680();
+void dispDistanceNum(float dist);
+void FUN_0058d680(int param_1);
 void dispDistanceLure(float *rod_pos_p, float *line_pos_p);
 extern struct NJS_TEXANIM dust_anim[1];
 extern int DAT_05cd2978;
@@ -16,7 +17,7 @@ extern float DAT_05cd29a8;
 extern float DAT_05cd29ac;
 extern float DAT_05cd29b0;
 extern int DAT_05cd29b4;
-extern char DAT_05edd2e0[0x800];
+extern int DAT_05edd6e4;
 void AddSakanaWeight(float weight, long kind);
 void BigChkHighScore();
 int dsPlay_oneshot(int tone, int id, int pri, int volofs);
@@ -83,8 +84,8 @@ long getLureKind()
 	{
 		local_8++;
 	}
-	*(int *)((char *)DAT_05edd2e0 + 0x404) = local_8;
-	return *(int *)((char *)DAT_05edd2e0 + 0x404);
+	DAT_05edd6e4 = local_8;
+	return DAT_05edd6e4;
 }
 
 // FUNCTION: SADX 0x0058c510
@@ -137,13 +138,15 @@ void dispDistanceLure(float *rod_pos_p, float *line_pos_p)
 	dispDistanceNum(DAT_05cd29a8);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0058d570
 void dispDistanceNum(float param_1)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0058d680
-void FUN_0058d680()
+void FUN_0058d680(int param_1)
 {
 	___njSetTexture(&texlist_fishing);
 	dispReelMeter();
@@ -184,7 +187,7 @@ void setLureSpd_D(struct task *tp)
 }
 
 // FUNCTION: SADX 0x0058f980
-int FUN_0058f980()
+int FUN_0058f980(int param_1)
 {
 	if (DAT_05cd2980 == 0)
 		return 0;
@@ -394,10 +397,12 @@ void BigDisplayHit(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00592520
 void FUN_00592520(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00592680
 void FUN_00592680(struct task *param_1)
@@ -405,10 +410,20 @@ void FUN_00592680(struct task *param_1)
 	FUN_00592520(param_1);
 }
 
-// STUB: SADX 0x005926a0
+// FUNCTION: SADX 0x005926a0
 struct task *FUN_005926a0(struct task *param_1)
 {
-	return (struct task *)0;
+	struct task *local_8;
+	local_8 = CreateElementalTask(2, 2, DustTextureCtrl);
+	if (local_8 != 0)
+	{
+		local_8->twp->pos = param_1->twp->pos;
+		local_8->twp->ang.y = param_1->twp->ang.y;
+		local_8->twp->counter.l = 0;
+		local_8->twp->wtimer = 5;
+		local_8->twp->value.f = 1.0f;
+	}
+	return local_8;
 }
 
 // STUB: SADX 0x00592720

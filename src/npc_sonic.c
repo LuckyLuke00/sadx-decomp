@@ -1,4 +1,8 @@
 #include "decls.h"
+extern const long *MPT_MRaceEachStage[10];
+void FUN_005a92d0(struct taskwk *param_1);
+void FUN_005a9290(struct taskwk *param_1);
+void FUN_005a92d0(struct taskwk *param_1);
 void DrawResult(struct task *tp);
 extern const int MRVT_Sonic[16];
 extern const int MRVT_Moble[16];
@@ -31,6 +35,9 @@ void FUN_005a92d0(struct taskwk *param_1);
 extern int DAT_05edbdac;
 extern int DAT_05edbd04;
 float njSqrt(float param_1);
+extern float DAT_05b3ec0c;
+extern float DAT_05b3ec10;
+extern float DAT_05b3ec14;
 
 // STUB: SADX 0x005a8640
 void InitSonic2PControl(struct task *tp)
@@ -40,6 +47,21 @@ void InitSonic2PControl(struct task *tp)
 // STUB: SADX 0x005a86c0
 void Sonic2PControl(struct task *tp)
 {
+}
+
+// FUNCTION: SADX 0x005a88c0
+void FUN_005a88c0(struct sMobleCtrl *param_1, struct taskwk *param_2, struct taskwk *param_3)
+{
+	*(char *)param_1 = 1;
+	param_2->ang = param_3->ang;
+	DAT_05b3ec0c = 0.0;
+	DAT_05b3ec10 = 1.0;
+	DAT_05b3ec14 = 10.0;
+	PConvertVector_P2G(param_3, (struct NJS_POINT3 *)&DAT_05b3ec0c);
+	FUN_005a8990((float *)&param_3->pos, &DAT_05b3ec0c, (float *)&param_2->pos);
+	*(short *)((char *)param_1 + 0xc) = GetNearestPath(&param_3->pos, (struct sMRacePath *)DAT_05edbd7c, *(short *)((char *)param_1 + 8));
+	*(short *)((char *)param_1 + 0xe) = GetNearestPath(&param_2->pos, (struct sMRacePath *)DAT_05edbd0c, *(short *)((char *)param_1 + 0xa));
+	FUN_005a9060(*(short *)((char *)param_1 + 0xc));
 }
 
 // FUNCTION: SADX 0x005a8990
@@ -121,15 +143,19 @@ void Highway_Nomal(struct task *tp, struct sMobleCtrl *moble_ctrl)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005a9060
 void FUN_005a9060(short param_1)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005a9100
 void FUN_005a9100(int param_1, unsigned short param_2, struct sMobleCtrl *param_3)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005a9290
 void FUN_005a9290(struct taskwk *param_1)
@@ -142,9 +168,15 @@ void FUN_005a9290(struct taskwk *param_1)
 	local_8 += 4;
 }
 
-// STUB: SADX 0x005a92d0
+// FUNCTION: SADX 0x005a92d0
 void FUN_005a92d0(struct taskwk *param_1)
 {
+	int local_8;
+	local_8 = (DAT_05edbd04 << 1) * 4 + (int)MPT_MRaceEachStage;
+	param_1->counter.w[0] = (short)((*(int *)(*(int *)local_8) - 1));
+	local_8 += 4;
+	*(short *)((char *)param_1 + 0xa) = (short)((*(int *)(*(int *)local_8) - 1));
+	local_8 += 4;
 }
 
 // FUNCTION: SADX 0x005a9320

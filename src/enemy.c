@@ -1,4 +1,6 @@
 #include "decls.h"
+extern "C" int rand(void);
+extern "C" double atan2(double v, double u);
 void FUN_005e4370(struct enemywk *param_1);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 void FUN_005e4370(struct enemywk *param_1);
@@ -18,15 +20,19 @@ signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp)
 	return (signed char)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005e2b60
 void EnemyGetShadow(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005e2cc0
 void FUN_005e2cc0(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005e3b40
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp)
@@ -66,10 +72,17 @@ float EnemyDist2FromAim(struct taskwk *twp, struct enemywk *ewp)
 	return local_8;
 }
 
-// STUB: SADX 0x005e3c80
+// FUNCTION: SADX 0x005e3c80
 long EnemyCalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
 {
-	return (long)0;
+	long local_cg;
+	long local_8g;
+
+	local_cg = twp->ang.y;
+	ewp->aim_angle = (long)(atan2(*(float *)((char *)ewp + 0x5c) - *(float *)((char *)twp + 0x20), *(float *)((char *)ewp + 0x64) - *(float *)((char *)twp + 0x28)) * 65536.0 / 6.283184) - 0x4000;
+	local_8g = DiffAngle(ewp->aim_angle, local_cg);
+	local_8g &= 0xffff;
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x005e3d10
@@ -251,9 +264,27 @@ void EnemyBaneDraw(struct taskwk *twp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x005e4610
+// FUNCTION: SADX 0x005e4610
 void EnemySmoke(struct taskwk *twp)
 {
+	struct sp_task *local_8g;
+	int local_cj;
+	float local_10m;
+	int local_14;
+	float local_18g;
+
+	local_8g = SpCreateTask(particle_smoke.link, EffectSmokeExp);
+	if (local_8g != NULL)
+	{
+		local_8g->pos = twp->pos;
+		local_8g->scl = 0.015000001f;
+		local_cj = rand();
+		local_10m = (float)(local_cj / 32768.0);
+		local_8g->frame = (float)(local_10m * 6.0);
+		local_14 = rand();
+		local_18g = (float)(local_14 / 32768.0);
+		local_8g->ang = (int)((local_18g * 360.0) * 65536.0 / 360.0);
+	}
 }
 
 // FUNCTION: SADX 0x005e4850

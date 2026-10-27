@@ -1,5 +1,11 @@
 #include "decls.h"
+void ObjectWaterripple(struct task *tp);
 static void Disp(struct task *tp);
+
+// STUB: SADX 0x005708f0
+void CreateWaterripple(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, float scl)
+{
+}
 
 // FUNCTION: SADX 0x00570970
 void ObjectWaterripple(struct task *tp)

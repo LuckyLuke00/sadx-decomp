@@ -1,5 +1,7 @@
 #include "decls.h"
 void FUN_0055f9e0(struct task *param_1);
+void FUN_0055f9e0(struct task *param_1);
+void FUN_0055f9e0(struct task *param_1);
 int FUN_0055f9f0(struct task *param_1, struct task **param_2);
 extern struct task *DAT_05ccdac8;
 extern struct task *DAT_05ccdacc;

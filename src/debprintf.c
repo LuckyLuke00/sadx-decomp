@@ -1,7 +1,7 @@
 #include "decls.h"
 #include <stdarg.h>
 #include <stdio.h>
-extern char DAT_05edd2e0[0x800];
+extern char DAT_05edd2e0[0x400];
 
 // FUNCTION: SADX 0x005e2870
 int DebPrintf(int loc, const char *format, ...)

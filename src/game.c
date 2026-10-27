@@ -1,5 +1,13 @@
 #include <stdlib.h>
 #include "decls.h"
+extern struct GM_EVENT_TABLE starteventtable[1];
+extern int DAT_05cd0f28;
+extern int DAT_05cd0f2c;
+extern void GM_WaitEventDemo(struct task *tp);
+extern struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
+extern void GM_WaitEventS(struct task *tp);
+extern int EV_CheckExec(int no);
+void FUN_004c87a0();
 extern struct taskwk *DAT_05baf368[8];
 void GenocideTask();
 extern int DAT_05cd0f24;
@@ -88,6 +96,46 @@ void StartTheFirstGame()
 	local_8 = FUN_005030d0();
 	DAT_05b3ea25 = 0;
 	srand(0xdead0cab);
+}
+
+// FUNCTION: SADX 0x004c5010
+long GM_CheckStartEvent()
+{
+	struct GM_EVENT_TABLE *local_8g;
+	struct task *local_10;
+	struct task *local_cj;
+
+	local_8g = starteventtable;
+	if (DAT_05cd0f24 != 0)
+	{
+		DAT_05cd0f2c = 0;
+		if (DAT_05cd0f28 >= 0)
+		{
+			local_cj = CreateElementalTask(0, 0, GM_WaitEventDemo);
+			return 1;
+		}
+	}
+	if (DAT_05b3e05c == 9)
+	{
+		return 0;
+	}
+	while (local_8g->stage != 0x2b)
+	{
+		if (local_8g->stage == DAT_05b9d724 && local_8g->act == DAT_05b9d744 && local_8g->chara == DAT_05b9d718)
+		{
+			if (0 != EV_CheckExec(local_8g->evexe))
+			{
+				local_8g = local_8g + 1;
+				continue;
+			}
+			local_10 = CreateElementalTask(2, 0, GM_WaitEventS);
+			local_10->twp->wtimer = local_8g->evexe;
+			local_10->dest = (void (__cdecl *)(struct task *))local_8g->exec;
+			return 1;
+		}
+		local_8g = local_8g + 1;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x004c5120
@@ -271,7 +319,7 @@ void GoNextAction()
 	}
 }
 
-// STUB: SADX 0x004c75c0
+// FUNCTION: SADX 0x004c75c0
 void GoNextAdventure()
 {
 	short local_8;
@@ -279,7 +327,7 @@ void GoNextAdventure()
 	if (DAT_05b9d748 == DAT_05b9d724)
 	{
 		DAT_05b9d73c = 4;
-		local_8 = DAT_05b9d770 - DAT_05b9d744;
+		local_8 = (short)DAT_05b9d770 - DAT_05b9d744;
 		LandChangeStage(local_8);
 		AddSetStage(local_8);
 		AddCameraStage(local_8);
@@ -291,7 +339,7 @@ void GoNextAdventure()
 		FUN_004c76e0();
 		InitFadeIn();
 		while (FadeIn())
-			;
+		{}
 	}
 	else
 	{
@@ -497,10 +545,12 @@ short FUN_004c85d0()
 	return local_8;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004c8600
 void ActionEnd()
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c8770
 void FUN_004c8770()
@@ -730,10 +780,12 @@ void AdvanceAct(short ssActAddition)
 	AdvanceActLocal(ssActAddition);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004c94f0
 void AdvanceActLocal(short ssActAddition)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c9630
 void SetEntranceNumber(signed char number)

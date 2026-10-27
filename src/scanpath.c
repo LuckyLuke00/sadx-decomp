@@ -1,4 +1,5 @@
 #include "decls.h"
+void SetPathWork();
 struct pathtag;
 struct pathinfo;
 struct pathtbl;
@@ -22,9 +23,26 @@ unsigned long InitPathWork()
 	return 0;
 }
 
-// STUB: SADX 0x0056fde0
+// FUNCTION: SADX 0x0056fde0
 void ManagePathWork(struct task *tp)
 {
+	struct taskwk *local_8g = tp->twp;
+	unsigned short local_cg;
+	switch (local_8g->mode)
+	{
+	case 0:
+		SetPathWork();
+		local_8g->mode = 1;
+		break;
+	case 1:
+		local_cg = (DAT_05b9d724 << 8) | DAT_05b9d744;
+		if (*(short *)((char *)local_8g + 0xc) != local_cg)
+		{
+			SetPathWork();
+			*(short *)((char *)local_8g + 0xc) = local_cg;
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x0056fe50

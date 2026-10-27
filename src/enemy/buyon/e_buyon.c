@@ -19,10 +19,12 @@ void dispBuyonSub(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x008dea80
 void dispBuyon(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x008df8f0
 void dispBuyonSub_Jel(struct task *tp)

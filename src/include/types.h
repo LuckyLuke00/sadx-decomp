@@ -151,6 +151,7 @@ struct fe_dynamicswk;
 struct FileSelWk;
 struct Flicky;
 struct FlickyData;
+struct FlickyEff;
 struct forcewk;
 struct GH_FONT_INFO;
 struct GHPARTICLE;
@@ -2727,6 +2728,14 @@ static_assert(offsetof(EmblemViewWk, CharEnaMax) == 0x38, "EmblemViewWk::CharEna
 static_assert(offsetof(EmblemViewWk, CsrAlpha) == 0x39, "EmblemViewWk::CsrAlpha");
 static_assert(offsetof(EmblemViewWk, DispChar) == 0x3a, "EmblemViewWk::DispChar");
 static_assert(offsetof(EmblemViewWk, SelChar) == 0x3b, "EmblemViewWk::SelChar");
+
+struct FACETBL {
+    char nbFrame;
+    char faceNo;
+};
+static_assert(sizeof(FACETBL) == 0x2, "sizeof FACETBL");
+static_assert(offsetof(FACETBL, nbFrame) == 0x0, "FACETBL::nbFrame");
+static_assert(offsetof(FACETBL, faceNo) == 0x1, "FACETBL::faceNo");
 
 struct FileSelWk {
     enum AdvaStatEnum Stat;
