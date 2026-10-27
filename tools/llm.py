@@ -112,7 +112,7 @@ STOP_AFTER = 2  # --stop-below looks at the best after this many tries
 TEMPERATURE_STEP, TEMPERATURE_MAX = 0.3, 1.2  # added after each repeated attempt
 EXAMPLES = 2
 CAST_ROUNDS = 3  # builds of a try with casts added on the pointer conversions the compiler refused
-OFF, ON = '#pragma optimize("", off)', '#pragma optimize("", on)'  # around a static STUB that its own file calls
+OFF, ON = '#pragma optimize("", off)', '#pragma optimize("", on)'  # around a STUB that its own file calls
 STRUCT_LINES = 120  # member lines in the first prompt's Structs section
 STRUCT_DEPTH = 2  # levels of member types below the types the dossier names
 STRUCTS_RULE = ("The Structs section lists members with their offsets: "
@@ -262,11 +262,15 @@ def definition_span(lines, address):
     return None if end is None else (start, end)
 
 
-def wrap_stub(func, sig):
-    """FUNC, a definition's lines with the signature SIG, between OFF and ON when it is a static STUB: the compiler
-    keeps a call to a function that is compiled without optimization, as it does for a function of another file. Any
-    other FUNC as it is."""
-    if re.match(r"static\b", sig) and func[0].startswith("// STUB"):
+def wrap_stub(func, sig, lines, span=None):
+    """FUNC, a definition's lines with the signature SIG, between OFF and ON when it is a STUB that is static or that
+    the code of LINES outside SPAN names: the compiler drops a call to an empty function of its own file, and keeps a
+    call to a function that is compiled without optimization, as it does for a function of another file. Any other
+    FUNC as it is."""
+    if not func[0].startswith("// STUB"):
+        return func
+    name = names.declared_name(sig)
+    if re.match(r"static\b", sig) or re.search(rf"\b{re.escape(name)}\b", code_outside(lines, name, span)):
         return [OFF, *func, ON]
     return func
 
@@ -367,12 +371,12 @@ def apply_function(text, address, decls, func):
     if lines[-1] == "":
         lines.pop()
     sig = names.parse_annotations("\n".join(func))[0][2]
-    func = wrap_stub(func, sig)
     annotated = [(i, annotation_address(line)) for i, line in enumerate(lines) if annotation_address(line) is not None]
     same = next((i for i, a in annotated if a == address), None)
     later = next((i for i, a in annotated if a > address), None)
+    block = None if same is None else definition_block(lines, address)
+    func = wrap_stub(func, sig, lines, block)
     if same is not None:
-        block = definition_block(lines, address)
         if block is None:
             sys.exit(f"the definition at {hexa(address)} has no closing brace line")
         lines[block[0]:block[1] + 1] = func
@@ -482,7 +486,7 @@ def stub_functions(text, addresses):
             sig = names.parse_annotations("\n".join(lines[block[0]:block[1] + 1]))[0][2]
             stub = [f"// STUB: {project.game_config().target} {hexa(address)}", sig, declgen.stub_body(sig)]
             stub = "\n".join(stub).split("\n")
-            lines[block[0]:block[1] + 1] = wrap_stub(stub, sig)
+            lines[block[0]:block[1] + 1] = wrap_stub(stub, sig, lines, block)
     top = first_function_line(lines)
     declared = [names.declared_name(line[:-1]) if i < top and line.endswith(";") else None for i, line in enumerate(lines)]
     used = collections.Counter()
