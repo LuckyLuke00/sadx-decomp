@@ -40538,6 +40538,14 @@
    "library": false
   },
   {
+   "address": "0x006806a0",
+   "name": "mainKnucklesSS02",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00680770",
    "name": "initKnucklesSS01",
    "accuracy": 1.0,
@@ -40722,6 +40730,14 @@
    "library": false
   },
   {
+   "address": "0x00682060",
+   "name": "Draw(struct task *)",
+   "accuracy": 0.028169014084507043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00682130",
    "name": "SSTexAnim",
    "accuracy": 0.07407407407407407,
@@ -40815,6 +40831,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006828a0",
+   "name": "Exec(struct task *)",
+   "accuracy": 0.029850746268656716,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -40915,7 +40939,7 @@
   },
   {
    "address": "0x00685a60",
-   "name": "Exec(10)",
+   "name": "Exec(11)",
    "accuracy": 0.018018018018018018,
    "effective": false,
    "stub": true,
@@ -40939,7 +40963,7 @@
   },
   {
    "address": "0x00686350",
-   "name": "Exec(11)",
+   "name": "Exec(12)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41035,23 +41059,63 @@
   },
   {
    "address": "0x00687c80",
-   "name": "exitSSCard",
+   "name": "exitSSCard(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
   },
   {
-   "address": "0x00688370",
-   "name": "dispSSCard",
-   "accuracy": 0.02564102564102564,
+   "address": "0x006882b0",
+   "name": "SeqCheck(1)",
+   "accuracy": 0.06557377049180328,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
+   "address": "0x00688370",
+   "name": "dispSSCard",
+   "accuracy": 0.02666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00688450",
+   "name": "exitSSCard(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00688470",
+   "name": "Exec(13)",
+   "accuracy": 0.022222222222222223,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00688570",
+   "name": "ObjectSSKeyice",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00688630",
+   "name": "Disp(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00688fd0",
-   "name": "SeqCheck",
+   "name": "SeqCheck(void)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41099,7 +41163,7 @@
   },
   {
    "address": "0x006895f0",
-   "name": "Exec(12)",
+   "name": "Exec(14)",
    "accuracy": 0.027522935779816515,
    "effective": false,
    "stub": true,
@@ -41133,6 +41197,14 @@
    "address": "0x00689a90",
    "name": "ObjectSSHotelele",
    "accuracy": 0.0625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00689b00",
+   "name": "ObjectSSHighwayele",
+   "accuracy": 0.045454545454545456,
    "effective": false,
    "stub": true,
    "library": false
@@ -41218,6 +41290,14 @@
    "library": false
   },
   {
+   "address": "0x0068acb0",
+   "name": "ObjectMain(struct task *)",
+   "accuracy": 0.028985507246376812,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0068ada0",
    "name": "ObjectSSHwbshutter",
    "accuracy": 0.02040816326530612,
@@ -41235,7 +41315,7 @@
   },
   {
    "address": "0x0068af40",
-   "name": "ObjectMain(2)",
+   "name": "ObjectMain(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41251,7 +41331,7 @@
   },
   {
    "address": "0x0068b0b0",
-   "name": "Disp(10)",
+   "name": "Disp(11)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -41283,7 +41363,7 @@
   },
   {
    "address": "0x0068ba90",
-   "name": "Disp(11)",
+   "name": "Disp(12)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41299,7 +41379,7 @@
   },
   {
    "address": "0x0068bb20",
-   "name": "Disp(12)",
+   "name": "Disp(13)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41315,7 +41395,7 @@
   },
   {
    "address": "0x0068bbb0",
-   "name": "Disp(13)",
+   "name": "Disp(14)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41363,7 +41443,7 @@
   },
   {
    "address": "0x0068c3d0",
-   "name": "Disp(14)",
+   "name": "Disp(15)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41371,7 +41451,7 @@
   },
   {
    "address": "0x0068c4a0",
-   "name": "Exec(13)",
+   "name": "Exec(15)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41387,7 +41467,7 @@
   },
   {
    "address": "0x0068c4f0",
-   "name": "Disp(15)",
+   "name": "Disp(16)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41403,7 +41483,7 @@
   },
   {
    "address": "0x0068c580",
-   "name": "Disp(16)",
+   "name": "Disp(17)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41419,7 +41499,7 @@
   },
   {
    "address": "0x0068c610",
-   "name": "Disp(17)",
+   "name": "Disp(18)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41435,7 +41515,7 @@
   },
   {
    "address": "0x0068c690",
-   "name": "Disp(18)",
+   "name": "Disp(19)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41487,6 +41567,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0068d240",
+   "name": "dispSSShop1Lamp",
+   "accuracy": 0.0392156862745098,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -41619,7 +41707,7 @@
   },
   {
    "address": "0x0068f2b0",
-   "name": "ObjectMain(3)",
+   "name": "ObjectMain(4)",
    "accuracy": 0.045454545454545456,
    "effective": false,
    "stub": true,
@@ -41682,14 +41770,6 @@
    "library": false
   },
   {
-   "address": "0x00690a90",
-   "name": "ObjectOpen",
-   "accuracy": 0.037037037037037035,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
    "address": "0x00690c80",
    "name": "ObjectDisplay(4)",
    "accuracy": 1.0,
@@ -41699,7 +41779,7 @@
   },
   {
    "address": "0x00690cd0",
-   "name": "ObjectMain(4)",
+   "name": "ObjectMain(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41883,7 +41963,7 @@
   },
   {
    "address": "0x006940d0",
-   "name": "ecp_actman",
+   "name": "ecp_actman(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42164,7 +42244,7 @@
   },
   {
    "address": "0x0069cc10",
-   "name": "Draw(1)",
+   "name": "Draw(2)",
    "accuracy": 0.012578616352201259,
    "effective": false,
    "stub": true,
@@ -42251,11 +42331,43 @@
    "library": false
   },
   {
+   "address": "0x0069e010",
+   "name": "EC_CPcDelete",
+   "accuracy": 0.09523809523809523,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0069e480",
    "name": "EC_CPcSet",
    "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0069e580",
+   "name": "ecp_actman(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0069e5d0",
+   "name": "_ECPeopleInitialize",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0069e980",
+   "name": "EggDisplayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -42452,7 +42564,7 @@
   },
   {
    "address": "0x006a3ca0",
-   "name": "Draw(2)",
+   "name": "Draw(3)",
    "accuracy": 0.026905829596412557,
    "effective": false,
    "stub": true,
@@ -43107,17 +43219,17 @@
    "library": false
   },
   {
-   "address": "0x006ad2b0",
-   "name": "LadderDisplayer",
-   "accuracy": 0.0392156862745098,
+   "address": "0x006ad970",
+   "name": "FUN_006ad970",
+   "accuracy": 0.09090909090909091,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
-   "address": "0x006ad970",
-   "name": "FUN_006ad970",
-   "accuracy": 0.09090909090909091,
+   "address": "0x006ada70",
+   "name": "DispATask(struct task *)",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -43288,6 +43400,14 @@
    "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006b12d0",
+   "name": "WoodyTrashDisplayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -43773,9 +43893,9 @@
   {
    "address": "0x006bf800",
    "name": "DispPastChaosFire",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -44556,7 +44676,7 @@
   },
   {
    "address": "0x006c70e0",
-   "name": "Disp(19)",
+   "name": "Disp(20)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -44572,7 +44692,7 @@
   },
   {
    "address": "0x006c7340",
-   "name": "Exec(14)",
+   "name": "Exec(16)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -53813,7 +53933,7 @@
   },
   {
    "address": "0x007f9e70",
-   "name": "Exec(15)",
+   "name": "Exec(17)",
    "accuracy": 0.043478260869565216,
    "effective": false,
    "stub": true,
@@ -53845,7 +53965,7 @@
   },
   {
    "address": "0x007fa0c0",
-   "name": "Exec(16)",
+   "name": "Exec(18)",
    "accuracy": 0.028985507246376812,
    "effective": false,
    "stub": true,
@@ -54061,7 +54181,7 @@
   },
   {
    "address": "0x00803ad0",
-   "name": "Disp(20)",
+   "name": "Disp(21)",
    "accuracy": 0.02531645569620253,
    "effective": false,
    "stub": true,
@@ -54069,7 +54189,7 @@
   },
   {
    "address": "0x00803bf0",
-   "name": "Exec(17)",
+   "name": "Exec(19)",
    "accuracy": 0.013986013986013986,
    "effective": false,
    "stub": true,
@@ -54413,7 +54533,7 @@
   },
   {
    "address": "0x00808eb0",
-   "name": "Draw(3)",
+   "name": "Draw(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -54445,7 +54565,7 @@
   },
   {
    "address": "0x00809e00",
-   "name": "Draw(4)",
+   "name": "Draw(5)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -54469,7 +54589,7 @@
   },
   {
    "address": "0x0080a740",
-   "name": "Draw(5)",
+   "name": "Draw(6)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -54493,7 +54613,7 @@
   },
   {
    "address": "0x0080d5c0",
-   "name": "Disp(21)",
+   "name": "Disp(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -54525,7 +54645,7 @@
   },
   {
    "address": "0x0080dfc0",
-   "name": "Exec(18)",
+   "name": "Exec(20)",
    "accuracy": 0.0125,
    "effective": false,
    "stub": true,
@@ -55189,7 +55309,7 @@
   },
   {
    "address": "0x0081cc10",
-   "name": "Exec(19)",
+   "name": "Exec(21)",
    "accuracy": 0.0226628895184136,
    "effective": false,
    "stub": true,
@@ -55341,7 +55461,7 @@
   },
   {
    "address": "0x0081e4b0",
-   "name": "Draw(6)",
+   "name": "Draw(7)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -55349,7 +55469,7 @@
   },
   {
    "address": "0x0081e510",
-   "name": "Exec(20)",
+   "name": "Exec(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -55365,7 +55485,7 @@
   },
   {
    "address": "0x0081e550",
-   "name": "Draw(7)",
+   "name": "Draw(8)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -55373,7 +55493,7 @@
   },
   {
    "address": "0x0081e5b0",
-   "name": "Exec(21)",
+   "name": "Exec(23)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -55421,7 +55541,7 @@
   },
   {
    "address": "0x0081fcb0",
-   "name": "Draw(8)",
+   "name": "Draw(9)",
    "accuracy": 0.425531914893617,
    "effective": false,
    "stub": true,
@@ -55477,7 +55597,7 @@
   },
   {
    "address": "0x00820a80",
-   "name": "Draw(9)",
+   "name": "Draw(10)",
    "accuracy": 0.014285714285714285,
    "effective": false,
    "stub": true,
@@ -55605,7 +55725,7 @@
   },
   {
    "address": "0x00821ff0",
-   "name": "Draw(10)",
+   "name": "Draw(11)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -58005,7 +58125,7 @@
   },
   {
    "address": "0x00850c00",
-   "name": "Disp(22)",
+   "name": "Disp(23)",
    "accuracy": 0.02247191011235955,
    "effective": false,
    "stub": true,
@@ -58037,7 +58157,7 @@
   },
   {
    "address": "0x00851090",
-   "name": "Exec(22)",
+   "name": "Exec(24)",
    "accuracy": 0.01904761904761905,
    "effective": false,
    "stub": true,
@@ -58181,7 +58301,7 @@
   },
   {
    "address": "0x00853ae0",
-   "name": "Draw(11)",
+   "name": "Draw(12)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -58781,7 +58901,7 @@
   },
   {
    "address": "0x00860b50",
-   "name": "Disp(23)",
+   "name": "Disp(24)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59061,7 +59181,7 @@
   },
   {
    "address": "0x00866240",
-   "name": "Draw(12)",
+   "name": "Draw(13)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59069,7 +59189,7 @@
   },
   {
    "address": "0x008662c0",
-   "name": "Exec(23)",
+   "name": "Exec(25)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60517,7 +60637,7 @@
   },
   {
    "address": "0x0087f7b0",
-   "name": "Disp(24)",
+   "name": "Disp(25)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60573,7 +60693,7 @@
   },
   {
    "address": "0x00880140",
-   "name": "Disp(25)",
+   "name": "Disp(26)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60613,7 +60733,7 @@
   },
   {
    "address": "0x008806c0",
-   "name": "Disp(26)",
+   "name": "Disp(27)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60677,7 +60797,7 @@
   },
   {
    "address": "0x00882450",
-   "name": "Disp(27)",
+   "name": "Disp(28)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60701,7 +60821,7 @@
   },
   {
    "address": "0x00882820",
-   "name": "Disp(28)",
+   "name": "Disp(29)",
    "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
@@ -60733,7 +60853,7 @@
   },
   {
    "address": "0x00882e80",
-   "name": "Disp(29)",
+   "name": "Disp(30)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -61605,7 +61725,7 @@
   },
   {
    "address": "0x0088e550",
-   "name": "Disp(30)",
+   "name": "Disp(31)",
    "accuracy": 0.024691358024691357,
    "effective": false,
    "stub": true,
@@ -61613,7 +61733,7 @@
   },
   {
    "address": "0x0088e660",
-   "name": "Exec(24)",
+   "name": "Exec(26)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61765,7 +61885,7 @@
   },
   {
    "address": "0x008913b0",
-   "name": "DispATask(2)",
+   "name": "DispATask(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62381,7 +62501,7 @@
   },
   {
    "address": "0x008a2ee0",
-   "name": "Exec(25)",
+   "name": "Exec(27)",
    "accuracy": 0.012048192771084338,
    "effective": false,
    "stub": true,
@@ -62405,7 +62525,7 @@
   },
   {
    "address": "0x008a3ea0",
-   "name": "Disp(31)",
+   "name": "Disp(32)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62413,7 +62533,7 @@
   },
   {
    "address": "0x008a3f20",
-   "name": "Exec(26)",
+   "name": "Exec(28)",
    "accuracy": 0.0196078431372549,
    "effective": false,
    "stub": true,
@@ -62445,7 +62565,7 @@
   },
   {
    "address": "0x008a4bd0",
-   "name": "DispATask(3)",
+   "name": "DispATask(4)",
    "accuracy": 0.028169014084507043,
    "effective": false,
    "stub": true,
@@ -62477,7 +62597,7 @@
   },
   {
    "address": "0x008a54f0",
-   "name": "DispATask(4)",
+   "name": "DispATask(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62493,7 +62613,7 @@
   },
   {
    "address": "0x008a5620",
-   "name": "DispATask(5)",
+   "name": "DispATask(6)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62509,7 +62629,7 @@
   },
   {
    "address": "0x008a5750",
-   "name": "DispATask(6)",
+   "name": "DispATask(7)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62525,7 +62645,7 @@
   },
   {
    "address": "0x008a59e0",
-   "name": "DispATask(7)",
+   "name": "DispATask(8)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62541,7 +62661,7 @@
   },
   {
    "address": "0x008a5c70",
-   "name": "Disp(32)",
+   "name": "Disp(33)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62549,7 +62669,7 @@
   },
   {
    "address": "0x008a5ce0",
-   "name": "Exec(27)",
+   "name": "Exec(29)",
    "accuracy": 0.03571428571428571,
    "effective": false,
    "stub": true,
@@ -62573,7 +62693,7 @@
   },
   {
    "address": "0x008a7360",
-   "name": "DispATask(8)",
+   "name": "DispATask(9)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62613,7 +62733,7 @@
   },
   {
    "address": "0x008abd90",
-   "name": "DispATask(9)",
+   "name": "DispATask(10)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62629,7 +62749,7 @@
   },
   {
    "address": "0x008abec0",
-   "name": "DispATask(10)",
+   "name": "DispATask(11)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62837,7 +62957,7 @@
   },
   {
    "address": "0x008b4340",
-   "name": "Disp(33)",
+   "name": "Disp(34)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62853,7 +62973,7 @@
   },
   {
    "address": "0x008b4440",
-   "name": "Exec(28)",
+   "name": "Exec(30)",
    "accuracy": 0.024691358024691357,
    "effective": false,
    "stub": true,
@@ -62869,7 +62989,7 @@
   },
   {
    "address": "0x008b47c0",
-   "name": "Disp(34)",
+   "name": "Disp(35)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62877,7 +62997,7 @@
   },
   {
    "address": "0x008b4810",
-   "name": "Exec(29)",
+   "name": "Exec(31)",
    "accuracy": 0.03225806451612903,
    "effective": false,
    "stub": true,
@@ -62909,7 +63029,7 @@
   },
   {
    "address": "0x008b4d40",
-   "name": "Disp(35)",
+   "name": "Disp(36)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62917,7 +63037,7 @@
   },
   {
    "address": "0x008b4da0",
-   "name": "Exec(30)",
+   "name": "Exec(32)",
    "accuracy": 0.012195121951219513,
    "effective": false,
    "stub": true,
@@ -63277,7 +63397,7 @@
   },
   {
    "address": "0x008b9be0",
-   "name": "Exec(31)",
+   "name": "Exec(33)",
    "accuracy": 0.0273972602739726,
    "effective": false,
    "stub": true,
@@ -85473,6 +85593,13 @@
    "library": false
   },
   {
+   "address": "0x01ca7e34",
+   "name": "action_ssobj_keyice",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x01caa334",
    "name": "object_sssikake_blockbase_blockbase",
    "size": 52,
@@ -85588,6 +85715,20 @@
    "address": "0x01cd8000",
    "name": "object_casinoobj_casinoji_casinoji",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01cd8c58",
+   "name": "DAT_01cd8c58",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01cd8c80",
+   "name": "DAT_01cd8c80",
+   "size": 4,
    "match": false,
    "library": false
   },
@@ -88315,6 +88456,13 @@
    "library": false
   },
   {
+   "address": "0x026dd110",
+   "name": "cci_sscard",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026dd66c",
    "name": "object_loadsfin_gards_gards",
    "size": 52,
@@ -88476,6 +88624,13 @@
    "library": false
   },
   {
+   "address": "0x026ee838",
+   "name": "ECHintTablePointer",
+   "size": 20,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026eedc8",
    "name": "texlist_ec_tarai",
    "size": 8,
@@ -88619,6 +88774,20 @@
    "address": "0x0270c29c",
    "name": "tical_pos",
    "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0270c530",
+   "name": "sprite_bigfire",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0270c550",
+   "name": "material_bigfire",
+   "size": 16,
    "match": false,
    "library": false
   },
@@ -94610,5 +94779,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a885fbf60a95f948dd1cceffac9ca610ac5002116206a35cbfd6d4031245e069"
+ "inputs_sha256": "edc98543ad6fcdc8185520d965e9f54f60ac9c08eb86c5bebf57813ae13554c8"
 }

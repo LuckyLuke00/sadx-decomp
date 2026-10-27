@@ -380,6 +380,9 @@ struct obj object_sssikake_kaiganmato_kaiganmato[1];
 // GLOBAL: SADX 0x01ca5588
 struct obj object_sssikake_hwbhutter_blkn_hwbhutter_blkn[1];
 
+// GLOBAL: SADX 0x01ca7e34
+struct NJS_ACTION action_ssobj_keyice[1];
+
 // GLOBAL: SADX 0x01caa334
 struct obj object_sssikake_blockbase_blockbase[1];
 
@@ -430,6 +433,12 @@ struct obj object_casinoobj_casinobuil_casinobuil[1];
 
 // GLOBAL: SADX 0x01cd8000
 struct obj object_casinoobj_casinoji_casinoji[1];
+
+// GLOBAL: SADX 0x01cd8c58
+struct NJS_MODEL *DAT_01cd8c58;
+
+// GLOBAL: SADX 0x01cd8c80
+struct obj *DAT_01cd8c80;
 
 // GLOBAL: SADX 0x01e55450
 long TexBankList[6][3];
@@ -1577,6 +1586,9 @@ struct CCL_INFO key_c_info[1];
 // GLOBAL: SADX 0x026dd008
 struct CCL_INFO barricade_c_info[1];
 
+// GLOBAL: SADX 0x026dd110
+struct CCL_INFO cci_sscard[2];
+
 // GLOBAL: SADX 0x026dd66c
 struct obj object_loadsfin_gards_gards[1];
 
@@ -1646,6 +1658,9 @@ struct NJS_ARGB **pFogTable_Adv01C[2];
 // GLOBAL: SADX 0x026ee1d0
 struct NJS_TEXLIST texlist_mapECH;
 
+// GLOBAL: SADX 0x026ee838
+const struct HintMessageTable *ECHintTablePointer[5] = {};
+
 // GLOBAL: SADX 0x026eedc8
 struct NJS_TEXLIST texlist_ec_tarai;
 
@@ -1708,6 +1723,12 @@ struct NJS_POINT3 DAT_0270c260;
 
 // GLOBAL: SADX 0x0270c29c
 struct NJS_POINT3 tical_pos;
+
+// GLOBAL: SADX 0x0270c530
+struct NJS_SPRITE sprite_bigfire;
+
+// GLOBAL: SADX 0x0270c550
+struct NJS_ARGB material_bigfire;
 
 // GLOBAL: SADX 0x0270c5ac
 struct NJS_ARGB material_panlight;
@@ -5582,9 +5603,6 @@ unsigned char DAT_05bafb96;
 // GLOBAL: SADX 0x05bafb9d
 unsigned char DAT_05bafb9d;
 
-// GLOBAL: SADX 0x05bafba1
-unsigned char DAT_05bafba1;
-
 // GLOBAL: SADX 0x05bafba2
 unsigned char DAT_05bafba2;
 
@@ -5611,9 +5629,6 @@ unsigned char DAT_05bafbd3;
 
 // GLOBAL: SADX 0x05bafbd5
 unsigned char DAT_05bafbd5;
-
-// GLOBAL: SADX 0x05bafbdc
-unsigned char DAT_05bafbdc;
 
 // GLOBAL: SADX 0x05bafbdd
 unsigned char DAT_05bafbdd;
@@ -5642,9 +5657,6 @@ unsigned char DAT_05bafc11;
 // GLOBAL: SADX 0x05bafc18
 unsigned char DAT_05bafc18;
 
-// GLOBAL: SADX 0x05bafc1b
-unsigned char DAT_05bafc1b;
-
 // GLOBAL: SADX 0x05bafc1c
 unsigned char DAT_05bafc1c;
 
@@ -5671,9 +5683,6 @@ unsigned char DAT_05bafc4a;
 
 // GLOBAL: SADX 0x05bafc50
 unsigned char DAT_05bafc50;
-
-// GLOBAL: SADX 0x05bafc53
-unsigned char DAT_05bafc53;
 
 // GLOBAL: SADX 0x05bafc54
 unsigned char DAT_05bafc54;
@@ -5702,9 +5711,6 @@ unsigned char DAT_05bafc92;
 // GLOBAL: SADX 0x05bafc96
 unsigned char DAT_05bafc96;
 
-// GLOBAL: SADX 0x05bafc97
-unsigned char DAT_05bafc97;
-
 // GLOBAL: SADX 0x05bafc98
 unsigned char DAT_05bafc98;
 
@@ -5725,9 +5731,6 @@ unsigned char DAT_05bafcc9;
 
 // GLOBAL: SADX 0x05bafccc
 unsigned char DAT_05bafccc;
-
-// GLOBAL: SADX 0x05bafcd2
-unsigned char DAT_05bafcd2;
 
 // GLOBAL: SADX 0x05bafcd3
 unsigned char DAT_05bafcd3;
@@ -7088,6 +7091,9 @@ int DAT_060b55f4;
 // GLOBAL: SADX 0x060b56a0
 int DAT_060b56a0;
 
+// GLOBAL: SADX 0x060b5fdc
+unsigned char DAT_060b5fdc;
+
 // GLOBAL: SADX 0x060b5fe0
 int DAT_060b5fe0;
 
@@ -7150,9 +7156,6 @@ int DAT_060b8afc;
 
 // GLOBAL: SADX 0x060b8b04
 int DAT_060b8b04;
-
-// GLOBAL: SADX 0x060b9068
-int DAT_060b9068;
 
 // GLOBAL: SADX 0x060b907c
 int DAT_060b907c;
@@ -8593,6 +8596,9 @@ struct obj *DAT_060eea98;
 
 // GLOBAL: SADX 0x060eea9c
 struct obj *DAT_060eea9c;
+
+// GLOBAL: SADX 0x060eeaa0
+struct NJS_TEXLIST *DAT_060eeaa0;
 
 // GLOBAL: SADX 0x060eeaa4
 struct obj *DAT_060eeaa4;

@@ -20,6 +20,11 @@ void dispSSShop1Dentou(struct task *tp)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x0068d240
+void dispSSShop1Lamp(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0068d300
 void ObjectSSShop1Dentou(struct task *tp)
 {

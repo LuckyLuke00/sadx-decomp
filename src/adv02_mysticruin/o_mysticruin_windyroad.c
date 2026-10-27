@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
+void late_DrawModelClip(struct NJS_MODEL *mdl, int flgs, float clipScl);
+extern int DAT_05b9d838;
 extern unsigned char DAT_05bafb94;
 extern unsigned char DAT_05bafbd3;
 extern unsigned char DAT_05bafc90;
@@ -39,6 +42,26 @@ void Leaf1Displayer(struct task *tp)
 // STUB: SADX 0x006b1140
 void spexec_smoke(struct sp_task *tp, struct sp_link *lp)
 {
+}
+
+// FUNCTION: SADX 0x006b12d0
+void WoodyTrashDisplayer(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	float var2;
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	var2 = var1->scl.x;
+	SetObjectTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	njRotateXYZ(0, var1->ang.x, var1->ang.y, var1->ang.z);
+	FUN_0067d2d0(0, var2, var2, var2);
+	late_DrawModelClip((struct NJS_MODEL *)var1->value.ptr, 0, var2);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x006b1360

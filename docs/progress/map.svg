@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1412" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,297 of 16,524 game functions done (32.05%), accuracy 99.86%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,306 of 16,524 game functions done (32.11%), accuracy 99.86%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="598.8,1171.5 605.2,1171.5 606.9,1173 608,1174.6 602,1181.5 596,1174.6 597.1,1173" fill="#4e32f3"/>
 <polygon points="598.8,1171.5 605.2,1171.5 606.9,1173 608,1174.6 596,1174.6 597.1,1173" fill="#ffffff" fill-opacity="0.4"/>
@@ -366,13 +366,13 @@
 <rect x="0" y="28" width="6" height="6" fill="#b07d00"><title>0x00808dd0 ObjectWindyUkisima: 100%</title></rect>
 <rect x="7" y="28" width="6" height="6" fill="#b07d00"><title>0x00808e10 ObjectWindyBigFloot: 100%</title></rect>
 <rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x00808e70 ObjectWindyTateiwaS: 100%</title></rect>
-<rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x00808eb0 Draw(3): 100%</title></rect>
+<rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x00808eb0 Draw(4): 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x00808f60 ObjectWindyGrass: 100%</title></rect>
 <rect x="84" y="28" width="6" height="6" fill="#b07d00"><title>0x00809540 DispCube: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x00809ed0 ObjectWindyTreeM: 100%</title></rect>
 <rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x0080a490 FUN_0080a490: 100%</title></rect>
 <rect x="98" y="35" width="6" height="6" fill="#b07d00"><title>0x0080a810 ObjectWindyYureBri: 100%</title></rect>
-<rect x="63" y="42" width="6" height="6" fill="#b07d00"><title>0x0080d5c0 Disp(21): 100%</title></rect>
+<rect x="63" y="42" width="6" height="6" fill="#b07d00"><title>0x0080d5c0 Disp(22): 100%</title></rect>
 <rect x="70" y="42" width="6" height="6" fill="#b07d00"><title>0x0080d6a0 DrawTest: 100%</title></rect>
 <rect x="126" y="42" width="6" height="6" fill="#b07d00"><title>0x0080e1a0 ObjectWindyBridge: 100%</title></rect>
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x00810080 chkDamage(2): 100%</title></rect>
@@ -494,20 +494,20 @@
 <rect x="49" y="112" width="6" height="6" fill="#b07d00"><title>0x0087e360 ObjectCasinoCrisDraw: 100%</title></rect>
 <rect x="98" y="112" width="6" height="6" fill="#b07d00"><title>0x0087e960 ObjectCasino6Slot: 100%</title></rect>
 <rect x="28" y="119" width="6" height="6" fill="#b07d00"><title>0x0087f590 ObjectCasinoTutuA: 100%</title></rect>
-<rect x="70" y="119" width="6" height="6" fill="#b07d00"><title>0x0087f7b0 Disp(24): 100%</title></rect>
+<rect x="70" y="119" width="6" height="6" fill="#b07d00"><title>0x0087f7b0 Disp(25): 100%</title></rect>
 <rect x="84" y="119" width="6" height="6" fill="#b07d00"><title>0x0087f910 ObjectSitaAlEgg: 100%</title></rect>
 <rect x="91" y="119" width="6" height="6" fill="#b07d00"><title>0x0087f940 ObjectUeAlEgg: 100%</title></rect>
-<rect x="35" y="126" width="6" height="6" fill="#b07d00"><title>0x00880140 Disp(25): 100%</title></rect>
+<rect x="35" y="126" width="6" height="6" fill="#b07d00"><title>0x00880140 Disp(26): 100%</title></rect>
 <rect x="49" y="126" width="6" height="6" fill="#b07d00"><title>0x008803b0 Normal(7): 100%</title></rect>
 <rect x="63" y="126" width="6" height="6" fill="#b07d00"><title>0x00880470 ObjectPianPach: 100%</title></rect>
 <rect x="70" y="126" width="6" height="6" fill="#b07d00"><title>0x008804c0 ObjectPianWalk: 100%</title></rect>
 <rect x="84" y="126" width="6" height="6" fill="#b07d00"><title>0x00880560 ObjectPianSlee: 100%</title></rect>
-<rect x="112" y="126" width="6" height="6" fill="#b07d00"><title>0x008806c0 Disp(26): 100%</title></rect>
+<rect x="112" y="126" width="6" height="6" fill="#b07d00"><title>0x008806c0 Disp(27): 100%</title></rect>
 <rect x="126" y="126" width="6" height="6" fill="#b07d00"><title>0x008807d0 ObjectKazariYaji: 100%</title></rect>
 <rect x="7" y="133" width="6" height="6" fill="#b07d00"><title>0x00880ac0 FUN_00880ac0: 100%</title></rect>
 <rect x="112" y="133" width="6" height="6" fill="#b07d00"><title>0x00881e00 Normal2(4): 100%</title></rect>
 <rect x="119" y="133" width="6" height="6" fill="#b07d00"><title>0x00881e10 ObjectCardDisp: 100%</title></rect>
-<rect x="35" y="140" width="6" height="6" fill="#b07d00"><title>0x00882450 Disp(27): 100%</title></rect>
+<rect x="35" y="140" width="6" height="6" fill="#b07d00"><title>0x00882450 Disp(28): 100%</title></rect>
 <rect x="42" y="140" width="6" height="6" fill="#b07d00"><title>0x00882510 Normal(9): 100%</title></rect>
 <rect x="49" y="140" width="6" height="6" fill="#b07d00"><title>0x00882550 ObjectIdeacap: 100%</title></rect>
 <rect x="105" y="140" width="6" height="6" fill="#b07d00"><title>0x00882990 ObjectHoudaiL: 100%</title></rect>
@@ -579,7 +579,7 @@
 <rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x0085e570 ObjectIcecapHasihasi: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x0085fd70 Object_IcecapBicIwaExec: 100%</title></rect>
 <rect x="35" y="35" width="6" height="6" fill="#b07d00"><title>0x0085fe30 ObjectIcecapBicIwa: 100%</title></rect>
-<rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x00860b50 Disp(23): 100%</title></rect>
+<rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x00860b50 Disp(24): 100%</title></rect>
 <rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x00860c80 ObjectSnowBalloon01: 100%</title></rect>
 <rect x="28" y="42" width="6" height="6" fill="#b07d00"><title>0x00860cb0 ObjectSnowBalloon02: 100%</title></rect>
 <rect x="35" y="42" width="6" height="6" fill="#b07d00"><title>0x00860ce0 ObjectSnowBalloon03: 100%</title></rect>
@@ -603,8 +603,8 @@
 <rect x="84" y="56" width="6" height="6" fill="#b07d00"><title>0x00863330 ObjectMizukusaB: 100%</title></rect>
 <rect x="14" y="70" width="6" height="6" fill="#b07d00"><title>0x00865a00 ObjectIcecapTuribasiExecutor: 100%</title></rect>
 <rect x="42" y="70" width="6" height="6" fill="#b07d00"><title>0x008660c0 DoaExec: 100%</title></rect>
-<rect x="56" y="70" width="6" height="6" fill="#b07d00"><title>0x00866240 Draw(12): 100%</title></rect>
-<rect x="63" y="70" width="6" height="6" fill="#b07d00"><title>0x008662c0 Exec(23): 100%</title></rect>
+<rect x="56" y="70" width="6" height="6" fill="#b07d00"><title>0x00866240 Draw(13): 100%</title></rect>
+<rect x="63" y="70" width="6" height="6" fill="#b07d00"><title>0x008662c0 Exec(25): 100%</title></rect>
 <rect x="70" y="70" width="6" height="6" fill="#b07d00"><title>0x008662e0 ObjectGreenMokuA: 100%</title></rect>
 <rect x="77" y="70" width="6" height="6" fill="#b07d00"><title>0x00866310 ObjectGreenMokuB: 100%</title></rect>
 <rect x="91" y="70" width="6" height="6" fill="#b07d00"><title>0x00866370 ObjectGreenKiDryA: 100%</title></rect>
@@ -690,11 +690,11 @@
 <rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x0081d410 ObjectHighwayRaftA: 100%</title></rect>
 <rect x="70" y="21" width="6" height="6" fill="#b07d00"><title>0x0081d430 ObjectHighwayRaftC: 100%</title></rect>
 <rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x0081d4b0 ObjectHighwayHeliPLight: 100%</title></rect>
-<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e4b0 Draw(6): 100%</title></rect>
-<rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e510 Exec(20): 100%</title></rect>
+<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e4b0 Draw(7): 100%</title></rect>
+<rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e510 Exec(22): 100%</title></rect>
 <rect x="84" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e530 ObjectStationPlant02: 100%</title></rect>
-<rect x="91" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e550 Draw(7): 100%</title></rect>
-<rect x="98" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e5b0 Exec(21): 100%</title></rect>
+<rect x="91" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e550 Draw(8): 100%</title></rect>
+<rect x="98" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e5b0 Exec(23): 100%</title></rect>
 <rect x="105" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e5f0 ObjectStationPlant01: 100%</title></rect>
 <rect x="49" y="35" width="6" height="6" fill="#b07d00"><title>0x0081eab0 ObjectHighwayGreen: 100%</title></rect>
 <rect x="77" y="35" width="6" height="6" fill="#b07d00"><title>0x0081ebf0 ObjectHighwayGreenE: 100%</title></rect>
@@ -920,7 +920,7 @@
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x008533b0 DrawFire: 100%</title></rect>
 <rect x="7" y="49" width="6" height="6" fill="#b07d00"><title>0x00853490 FUN_00853490: 100%</title></rect>
 <rect x="21" y="49" width="6" height="6" fill="#b07d00"><title>0x008535a0 dispcNormal: 100%</title></rect>
-<rect x="63" y="49" width="6" height="6" fill="#b07d00"><title>0x00853ae0 Draw(11): 100%</title></rect>
+<rect x="63" y="49" width="6" height="6" fill="#b07d00"><title>0x00853ae0 Draw(12): 100%</title></rect>
 <rect x="70" y="49" width="6" height="6" fill="#b07d00"><title>0x00853ba0 ObjectRuinTap: 100%</title></rect>
 <rect x="0" y="56" width="6" height="6" fill="#b07d00"><title>0x00853c00 ObjectRuinLight: 100%</title></rect>
 <rect x="28" y="56" width="6" height="6" fill="#b07d00"><title>0x00853ee0 SwitchTerm: 100%</title></rect>
@@ -964,7 +964,7 @@
 <rect x="42" y="0" width="6" height="6" fill="#b07d00"><title>0x0088e1b0 ACT3_init: 100%</title></rect>
 <rect x="70" y="0" width="6" height="6" fill="#b07d00"><title>0x0088e470 ef_finalegg_pomb_exec: 100%</title></rect>
 <rect x="84" y="0" width="6" height="6" fill="#b07d00"><title>0x0088e530 TexMakeInit: 100%</title></rect>
-<rect x="98" y="0" width="6" height="6" fill="#b07d00"><title>0x0088e660 Exec(24): 100%</title></rect>
+<rect x="98" y="0" width="6" height="6" fill="#b07d00"><title>0x0088e660 Exec(26): 100%</title></rect>
 <rect x="105" y="0" width="6" height="6" fill="#b07d00"><title>0x0088e670 ObjectFinalEggTexAnime: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#b07d00"><title>0x0088ed40 GachaponDestructor: 100%</title></rect>
 <rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x0088f7a0 GachaponPartsDisplayer: 100%</title></rect>
@@ -974,7 +974,7 @@
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x00891090 FinalEggClearAppearZERO: 100%</title></rect>
 <rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x008910f0 FinalEggCheckAppearZERO: 100%</title></rect>
 <rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x00891100 FinalEggSetAppearZERO: 100%</title></rect>
-<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008913b0 DispATask(2): 100%</title></rect>
+<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008913b0 DispATask(3): 100%</title></rect>
 <rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x00891440 ObjectFinalEggLight1: 100%</title></rect>
 <rect x="77" y="21" width="6" height="6" fill="#b07d00"><title>0x00893000 hane_draw: 100%</title></rect>
 <rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x008930c0 hane_exec: 100%</title></rect>
@@ -1028,28 +1028,28 @@
 <rect x="126" y="0" width="6" height="6" fill="#b07d00"><title>0x008a2b60 InitBoxSwitch: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#b07d00"><title>0x008a3100 Init(3): 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#b07d00"><title>0x008a3130 InitTunnelManager: 100%</title></rect>
-<rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x008a3ea0 Disp(31): 100%</title></rect>
+<rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x008a3ea0 Disp(32): 100%</title></rect>
 <rect x="126" y="7" width="6" height="6" fill="#b07d00"><title>0x008a40d0 ObjShelterEnemycontainer: 100%</title></rect>
 <rect x="140" y="14" width="6" height="6" fill="#b07d00"><title>0x008a4f00 ObjShelterGate2: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x008a4f30 ObjShelterGate13: 100%</title></rect>
-<rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x008a54f0 DispATask(4): 100%</title></rect>
+<rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x008a54f0 DispATask(5): 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5560 ObjShelterWcMark2: 100%</title></rect>
-<rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5620 DispATask(5): 100%</title></rect>
+<rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5620 DispATask(6): 100%</title></rect>
 <rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5690 ObjShelterWcMark1: 100%</title></rect>
-<rect x="56" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5750 DispATask(6): 100%</title></rect>
+<rect x="56" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5750 DispATask(7): 100%</title></rect>
 <rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x008a57c0 ObjShelterKanso: 100%</title></rect>
-<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x008a59e0 DispATask(7): 100%</title></rect>
+<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x008a59e0 DispATask(8): 100%</title></rect>
 <rect x="98" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5a50 ObjShelterHikari: 100%</title></rect>
-<rect x="126" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5c70 Disp(32): 100%</title></rect>
+<rect x="126" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5c70 Disp(33): 100%</title></rect>
 <rect x="140" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5d90 ObjShelterBluelight: 100%</title></rect>
 <rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x008a5ee0 Hasigo_Display: 100%</title></rect>
-<rect x="84" y="35" width="6" height="6" fill="#b07d00"><title>0x008a7360 DispATask(8): 100%</title></rect>
+<rect x="84" y="35" width="6" height="6" fill="#b07d00"><title>0x008a7360 DispATask(9): 100%</title></rect>
 <rect x="91" y="35" width="6" height="6" fill="#b07d00"><title>0x008a73d0 ObjShelterSyoumei: 100%</title></rect>
 <rect x="49" y="56" width="6" height="6" fill="#b07d00"><title>0x008a9eb0 Disp2Task: 100%</title></rect>
 <rect x="56" y="56" width="6" height="6" fill="#b07d00"><title>0x008a9f20 Disp3Task: 100%</title></rect>
-<rect x="35" y="70" width="6" height="6" fill="#b07d00"><title>0x008abd90 DispATask(9): 100%</title></rect>
+<rect x="35" y="70" width="6" height="6" fill="#b07d00"><title>0x008abd90 DispATask(10): 100%</title></rect>
 <rect x="42" y="70" width="6" height="6" fill="#b07d00"><title>0x008abe00 ObjShelterLight3: 100%</title></rect>
-<rect x="49" y="70" width="6" height="6" fill="#b07d00"><title>0x008abec0 DispATask(10): 100%</title></rect>
+<rect x="49" y="70" width="6" height="6" fill="#b07d00"><title>0x008abec0 DispATask(11): 100%</title></rect>
 <rect x="56" y="70" width="6" height="6" fill="#b07d00"><title>0x008abf30 ObjShelterLight2: 100%</title></rect>
 <rect x="105" y="70" width="6" height="6" fill="#b07d00"><title>0x008ac5c0 destTgt: 100%</title></rect>
 <rect x="112" y="70" width="6" height="6" fill="#b07d00"><title>0x008acd90 dispFlyingHead: 100%</title></rect>
@@ -1063,12 +1063,12 @@
 <rect x="28" y="105" width="6" height="6" fill="#b07d00"><title>0x008b34e0 Pasya1Disp: 100%</title></rect>
 <rect x="49" y="105" width="6" height="6" fill="#b07d00"><title>0x008b3740 Pasya0Init: 100%</title></rect>
 <rect x="56" y="105" width="6" height="6" fill="#b07d00"><title>0x008b3770 Pasya1Init: 100%</title></rect>
-<rect x="7" y="112" width="6" height="6" fill="#b07d00"><title>0x008b4340 Disp(33): 100%</title></rect>
+<rect x="7" y="112" width="6" height="6" fill="#b07d00"><title>0x008b4340 Disp(34): 100%</title></rect>
 <rect x="14" y="112" width="6" height="6" fill="#b07d00"><title>0x008b4430 ExecNotBig: 100%</title></rect>
 <rect x="28" y="112" width="6" height="6" fill="#b07d00"><title>0x008b4730 ObjShelterSen: 100%</title></rect>
-<rect x="35" y="112" width="6" height="6" fill="#b07d00"><title>0x008b47c0 Disp(34): 100%</title></rect>
+<rect x="35" y="112" width="6" height="6" fill="#b07d00"><title>0x008b47c0 Disp(35): 100%</title></rect>
 <rect x="49" y="112" width="6" height="6" fill="#b07d00"><title>0x008b48d0 ObjShelterUkidoor: 100%</title></rect>
-<rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x008b4d40 Disp(35): 100%</title></rect>
+<rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x008b4d40 Disp(36): 100%</title></rect>
 <rect x="98" y="112" width="6" height="6" fill="#b07d00"><title>0x008b4fa0 ObjShelterAquarium: 100%</title></rect>
 <rect x="112" y="112" width="6" height="6" fill="#b07d00"><title>0x008b5090 SideExec: 100%</title></rect>
 <rect x="119" y="112" width="6" height="6" fill="#b07d00"><title>0x008b50e0 TubeDisp: 100%</title></rect>
@@ -1083,10 +1083,10 @@
 <polygon points="596,921.6 599.8,921.6 602,928.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="604.2,921.6 608,921.6 602,928.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="598.8,918.5 605.2,918.5 606.9,920 608,921.6 602,928.5 596,921.6 597.1,920" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="612" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">22%</tspan></text>
-<rect x="597" y="936" width="123" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 107 of 421 done</title></rect>
+<text x="612" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">23%</tspan></text>
+<rect x="597" y="936" width="123" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 111 of 421 done</title></rect>
 <text x="600" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Station Square</text>
-<text x="600" y="965" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
+<text x="600" y="965" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">26%</tspan></text>
 <g transform="translate(600,969)">
 <rect y="0" width="112" height="182" fill="url(#todo)"/>
 <rect y="182" width="35" height="7" fill="url(#todo)"/>
@@ -1096,6 +1096,7 @@
 <rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x006803d0 mainE102SS01: 100%</title></rect>
 <rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x00680420 mainAmySS02: 100%</title></rect>
 <rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x00680640 mainAmySS00: 100%</title></rect>
+<rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x006806a0 mainKnucklesSS02: 100%</title></rect>
 <rect x="98" y="7" width="6" height="6" fill="#b07d00"><title>0x00680770 initKnucklesSS01: 100%</title></rect>
 <rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x00680870 initMilesSS04: 100%</title></rect>
 <rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x006809d0 mainMilesSS03: 100%</title></rect>
@@ -1127,7 +1128,7 @@
 <rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x00685650 ssp_walk_man: 100%</title></rect>
 <rect x="91" y="56" width="6" height="6" fill="#b07d00"><title>0x00685bd0 ObjectSSKartchanger: 100%</title></rect>
 <rect x="28" y="63" width="6" height="6" fill="#b07d00"><title>0x006862e0 disp(1): 100%</title></rect>
-<rect x="35" y="63" width="6" height="6" fill="#b07d00"><title>0x00686350 Exec(11): 100%</title></rect>
+<rect x="35" y="63" width="6" height="6" fill="#b07d00"><title>0x00686350 Exec(12): 100%</title></rect>
 <rect x="42" y="63" width="6" height="6" fill="#b07d00"><title>0x00686470 ObjectSSChaocard: 100%</title></rect>
 <rect x="84" y="63" width="6" height="6" fill="#b07d00"><title>0x006868b0 FUN_006868b0: 100%</title></rect>
 <rect x="91" y="63" width="6" height="6" fill="#b07d00"><title>0x00686920 FUN_00686920: 100%</title></rect>
@@ -1137,8 +1138,11 @@
 <rect x="35" y="70" width="6" height="6" fill="#b07d00"><title>0x00686cd0 KeyInit: 100%</title></rect>
 <rect x="7" y="77" width="6" height="6" fill="#b07d00"><title>0x006877a0 FUN_006877a0: 100%</title></rect>
 <rect x="21" y="77" width="6" height="6" fill="#b07d00"><title>0x006879e0 ColliInit: 100%</title></rect>
-<rect x="49" y="77" width="6" height="6" fill="#b07d00"><title>0x00687c80 exitSSCard: 100%</title></rect>
-<rect x="77" y="84" width="6" height="6" fill="#b07d00"><title>0x00688fd0 SeqCheck: 100%</title></rect>
+<rect x="49" y="77" width="6" height="6" fill="#b07d00"><title>0x00687c80 exitSSCard(struct task *): 100%</title></rect>
+<rect x="84" y="77" width="6" height="6" fill="#b07d00"><title>0x00688450 exitSSCard(2): 100%</title></rect>
+<rect x="98" y="77" width="6" height="6" fill="#b07d00"><title>0x00688570 ObjectSSKeyice: 100%</title></rect>
+<rect x="105" y="77" width="6" height="6" fill="#b07d00"><title>0x00688630 Disp(struct task *): 100%</title></rect>
+<rect x="77" y="84" width="6" height="6" fill="#b07d00"><title>0x00688fd0 SeqCheck(void): 100%</title></rect>
 <rect x="35" y="91" width="6" height="6" fill="#b07d00"><title>0x006898a0 FUN_006898a0: 100%</title></rect>
 <rect x="42" y="91" width="6" height="6" fill="#b07d00"><title>0x00689900 BoxInit: 100%</title></rect>
 <rect x="7" y="98" width="6" height="6" fill="#b07d00"><title>0x0068a220 SakuDisp: 100%</title></rect>
@@ -1149,26 +1153,26 @@
 <rect x="105" y="98" width="6" height="6" fill="#b07d00"><title>0x0068ab70 ObjectDisplayMiles: 100%</title></rect>
 <rect x="0" y="105" width="6" height="6" fill="#b07d00"><title>0x0068abe0 ObjectBroken: 100%</title></rect>
 <rect x="35" y="105" width="6" height="6" fill="#b07d00"><title>0x0068aed0 ObjectDisplay(2): 100%</title></rect>
-<rect x="42" y="105" width="6" height="6" fill="#b07d00"><title>0x0068af40 ObjectMain(2): 100%</title></rect>
+<rect x="42" y="105" width="6" height="6" fill="#b07d00"><title>0x0068af40 ObjectMain(3): 100%</title></rect>
 <rect x="84" y="105" width="6" height="6" fill="#b07d00"><title>0x0068b1e0 LampDisp: 100%</title></rect>
-<rect x="70" y="112" width="6" height="6" fill="#b07d00"><title>0x0068ba90 Disp(11): 100%</title></rect>
+<rect x="70" y="112" width="6" height="6" fill="#b07d00"><title>0x0068ba90 Disp(12): 100%</title></rect>
 <rect x="77" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bb00 ObjectSSShop2boxmi: 100%</title></rect>
-<rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bb20 Disp(12): 100%</title></rect>
+<rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bb20 Disp(13): 100%</title></rect>
 <rect x="91" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bb90 ObjectSSShop2boxfuta: 100%</title></rect>
-<rect x="98" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bbb0 Disp(13): 100%</title></rect>
+<rect x="98" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bbb0 Disp(14): 100%</title></rect>
 <rect x="105" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bc20 ObjectSSShop2aorobot: 100%</title></rect>
 <rect x="63" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c2d0 FUN_0068c2d0: 100%</title></rect>
 <rect x="70" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c340 FUN_0068c340: 100%</title></rect>
-<rect x="84" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c3d0 Disp(14): 100%</title></rect>
-<rect x="91" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4a0 Exec(13): 100%</title></rect>
+<rect x="84" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c3d0 Disp(15): 100%</title></rect>
+<rect x="91" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4a0 Exec(15): 100%</title></rect>
 <rect x="98" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4c0 ObjectSSElekanban: 100%</title></rect>
-<rect x="105" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4f0 Disp(15): 100%</title></rect>
+<rect x="105" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4f0 Disp(16): 100%</title></rect>
 <rect x="0" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c560 ObjectSSShop2frame: 100%</title></rect>
-<rect x="7" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c580 Disp(16): 100%</title></rect>
+<rect x="7" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c580 Disp(17): 100%</title></rect>
 <rect x="14" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c5f0 ObjectSSShop2robot: 100%</title></rect>
-<rect x="21" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c610 Disp(17): 100%</title></rect>
+<rect x="21" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c610 Disp(18): 100%</title></rect>
 <rect x="28" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c680 ObjectSSShop2radio: 100%</title></rect>
-<rect x="35" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c690 Disp(18): 100%</title></rect>
+<rect x="35" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c690 Disp(19): 100%</title></rect>
 <rect x="42" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c700 ObjectSSShop2kaseki: 100%</title></rect>
 <rect x="105" y="126" width="6" height="6" fill="#b07d00"><title>0x0068ceb0 dispSSSignal: 100%</title></rect>
 <rect x="14" y="133" width="6" height="6" fill="#b07d00"><title>0x0068d0d0 dispSSShop1Solt: 100%</title></rect>
@@ -1189,7 +1193,7 @@
 <rect x="49" y="161" width="6" height="6" fill="#b07d00"><title>0x0068fbd0 ObjectWait: 100%</title></rect>
 <rect x="77" y="168" width="6" height="6" fill="#b07d00"><title>0x006908a0 FUN_006908a0: 100%</title></rect>
 <rect x="21" y="175" width="6" height="6" fill="#b07d00"><title>0x00690c80 ObjectDisplay(4): 100%</title></rect>
-<rect x="28" y="175" width="6" height="6" fill="#b07d00"><title>0x00690cd0 ObjectMain(4): 100%</title></rect>
+<rect x="28" y="175" width="6" height="6" fill="#b07d00"><title>0x00690cd0 ObjectMain(5): 100%</title></rect>
 <rect x="49" y="175" width="6" height="6" fill="#b07d00"><title>0x00690e40 KasyaDisplay: 100%</title></rect>
 <rect x="77" y="175" width="6" height="6" fill="#b07d00"><title>0x00691150 sstrain_adxdestruct: 100%</title></rect>
 <rect x="84" y="175" width="6" height="6" fill="#b07d00"><title>0x00691160 sstrain_adxprove: 100%</title></rect>
@@ -1198,8 +1202,8 @@
 <rect x="21" y="182" width="6" height="6" fill="#b07d00"><title>0x006aa880 initSonicSS01: 100%</title></rect>
 <rect x="28" y="182" width="6" height="6" fill="#b07d00"><title>0x006aae80 initAmySS00: 100%</title></rect>
 </g>
-<rect x="722" y="936" width="213" height="113" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Carrier: 70 of 364 done</title></rect>
-<text x="725" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Carrier <tspan font-weight="400" fill="#59636e">19%</tspan></text>
+<rect x="722" y="936" width="213" height="113" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Carrier: 73 of 364 done</title></rect>
+<text x="725" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Carrier <tspan font-weight="400" fill="#59636e">20%</tspan></text>
 <g transform="translate(725,954)">
 <rect y="0" width="203" height="84" fill="url(#todo)"/>
 <rect y="84" width="112" height="7" fill="url(#todo)"/>
@@ -1212,7 +1216,7 @@
 <rect x="147" y="0" width="6" height="6" fill="#b07d00"><title>0x006930f0 DestroyMapEC: 100%</title></rect>
 <rect x="189" y="0" width="6" height="6" fill="#b07d00"><title>0x00693830 ECPcInitInit: 100%</title></rect>
 <rect x="0" y="7" width="6" height="6" fill="#b07d00"><title>0x00693890 FUN_00693890: 100%</title></rect>
-<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x006940d0 ecp_actman: 100%</title></rect>
+<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x006940d0 ecp_actman(struct task *): 100%</title></rect>
 <rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x006944c0 JetDisplayer: 100%</title></rect>
 <rect x="175" y="7" width="6" height="6" fill="#b07d00"><title>0x00694a70 DrawMast: 100%</title></rect>
 <rect x="182" y="7" width="6" height="6" fill="#b07d00"><title>0x00694ad0 MastDisplayer: 100%</title></rect>
@@ -1244,6 +1248,9 @@
 <rect x="84" y="49" width="6" height="6" fill="#b07d00"><title>0x0069db40 FUN_0069db40: 100%</title></rect>
 <rect x="112" y="49" width="6" height="6" fill="#b07d00"><title>0x0069dc30 LoadMapECH: 100%</title></rect>
 <rect x="126" y="49" width="6" height="6" fill="#b07d00"><title>0x0069ddd0 DestroyMapECH: 100%</title></rect>
+<rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x0069e580 ecp_actman(2): 100%</title></rect>
+<rect x="21" y="56" width="6" height="6" fill="#b07d00"><title>0x0069e5d0 _ECPeopleInitialize: 100%</title></rect>
+<rect x="56" y="56" width="6" height="6" fill="#b07d00"><title>0x0069e980 EggDisplayer: 100%</title></rect>
 <rect x="105" y="56" width="6" height="6" fill="#b07d00"><title>0x0069ee20 EffectWarp: 100%</title></rect>
 <rect x="119" y="56" width="6" height="6" fill="#b07d00"><title>0x0069f040 ObjectECEggWarp: 100%</title></rect>
 <rect x="147" y="56" width="6" height="6" fill="#b07d00"><title>0x0069f1f0 ContainerDisplayer: 100%</title></rect>
@@ -1276,7 +1283,7 @@
 <rect x="98" y="84" width="6" height="6" fill="#b07d00"><title>0x006a7170 mainE102EC01: 100%</title></rect>
 <rect x="105" y="84" width="6" height="6" fill="#b07d00"><title>0x006a71d0 mainAmyEC03: 100%</title></rect>
 </g>
-<rect x="722" y="1051" width="213" height="111" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Mystic Ruins: 72 of 324 done</title></rect>
+<rect x="722" y="1051" width="213" height="111" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Mystic Ruins: 73 of 324 done</title></rect>
 <text x="725" y="1065" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Mystic Ruins <tspan font-weight="400" fill="#59636e">22%</tspan></text>
 <g transform="translate(725,1069)">
 <rect y="0" width="203" height="77" fill="url(#todo)"/>
@@ -1329,6 +1336,7 @@
 <rect x="189" y="28" width="6" height="6" fill="#b07d00"><title>0x006b0ac0 LadderDestructor: 100%</title></rect>
 <rect x="7" y="35" width="6" height="6" fill="#b07d00"><title>0x006b0d60 WindyValleyDestructor: 100%</title></rect>
 <rect x="14" y="35" width="6" height="6" fill="#b07d00"><title>0x006b0d70 chk_windyvalley: 100%</title></rect>
+<rect x="63" y="35" width="6" height="6" fill="#b07d00"><title>0x006b12d0 WoodyTrashDisplayer: 100%</title></rect>
 <rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x006b1360 FUN_006b1360: 100%</title></rect>
 <rect x="140" y="35" width="6" height="6" fill="#b07d00"><title>0x006b2500 BigGrassDisplayer: 100%</title></rect>
 <rect x="147" y="35" width="6" height="6" fill="#b07d00"><title>0x006b25c0 ObjectMysticRuinGrass: 100%</title></rect>
@@ -1354,10 +1362,10 @@
 <rect x="126" y="70" width="6" height="6" fill="#b07d00"><title>0x006bbbd0 FUN_006bbbd0: 100%</title></rect>
 <rect x="196" y="70" width="6" height="6" fill="#b07d00"><title>0x00855000 KasyaDestruct: 100%</title></rect>
 </g>
-<rect x="937" y="936" width="43" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>The Past: 30 of 113 done</title></rect>
+<rect x="937" y="936" width="43" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>The Past: 31 of 113 done</title></rect>
 <text x="940" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">The</text>
 <text x="940" y="965" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Past</text>
-<text x="940" y="980" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">26%</tspan></text>
+<text x="940" y="980" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">27%</tspan></text>
 <g transform="translate(940,984)">
 <rect y="0" width="35" height="154" fill="url(#todo)"/>
 <rect y="154" width="21" height="7" fill="url(#todo)"/>
@@ -1374,6 +1382,7 @@
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x006bd610 mainKnucklesPast01: 100%</title></rect>
 <rect x="14" y="91" width="6" height="6" fill="#b07d00"><title>0x006bf090 pastp_walk_man_eveidle: 100%</title></rect>
 <rect x="21" y="91" width="6" height="6" fill="#b07d00"><title>0x006bf0c0 pastp_walk_man: 100%</title></rect>
+<rect x="7" y="105" width="6" height="6" fill="#b07d00"><title>0x006bf800 DispPastChaosFire: 100%</title></rect>
 <rect x="14" y="105" width="6" height="6" fill="#b07d00"><title>0x006bf890 ObjectPastChaosFire: 100%</title></rect>
 <rect x="21" y="105" width="6" height="6" fill="#b07d00"><title>0x006bf900 EmeraldDisplayer: 100%</title></rect>
 <rect x="14" y="112" width="6" height="6" fill="#b07d00"><title>0x006bfb10 LampDisplayer: 100%</title></rect>
@@ -1625,8 +1634,8 @@
 <rect x="77" y="0" width="6" height="6" fill="#b07d00"><title>0x006c5a10 Egm2TikalEnd: 100%</title></rect>
 <rect x="84" y="0" width="6" height="6" fill="#b07d00"><title>0x006c5a20 Egm2TentouCounterSet: 100%</title></rect>
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x006c7000 UVScroll(1): 100%</title></rect>
-<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x006c70e0 Disp(19): 100%</title></rect>
-<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x006c7340 Exec(14): 100%</title></rect>
+<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x006c70e0 Disp(20): 100%</title></rect>
+<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x006c7340 Exec(16): 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x006c75a0 BuilGInit(2): 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x006c75e0 ObjectEgm2Casinokazari: 100%</title></rect>
 <rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x006c7d40 FUN_006c7d40: 100%</title></rect>
