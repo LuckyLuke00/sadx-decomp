@@ -379,6 +379,7 @@ def write(context: Path | None, tables: Path | None) -> int:
             used_globals.add(a)
     externs, gdefs = {}, {}
     unsized = set()  # globals that stubs give one element, though their size is unknown
+    declared_here = set()  # globals that only a declaration in this tree's files gives a type
     for a in sorted(used_globals | set(defined_globals)):
         row = dict(glob[a], name=f"DAT_{a:08x}") if a in placeholders else glob.get(a)
         name = row["name"] if row else global_name.get(a, f"DAT_{a:08x}")
@@ -398,6 +399,8 @@ def write(context: Path | None, tables: Path | None) -> int:
             options = sorted(local_vars[name])
             report_conflict(name, options)
             decl = options[0]
+            if (name, decl) in own_decls:
+                declared_here.add(a)
             externs[a] = "extern " + decl
             m = re.search(r"\[\s*\]", decl)
             definition = decl
@@ -457,7 +460,7 @@ def write(context: Path | None, tables: Path | None) -> int:
             layout[a] = sorted(local_vars[name])[0]
         elif a in last_layout:
             layout[a] = last_layout[a]
-    new, old, unknown = nested_globals(layout, set(externs), last_layout, types)
+    new, old, unknown = nested_globals(layout, set(externs), last_layout, types, declared_here)
     fatal.extend(new)
     problems.extend(old)
     if unknown:
@@ -553,24 +556,30 @@ def type_of(decl: str) -> str:
     return re.sub(r"\s+(?=\[)", "", re.sub(rf"\b{re.escape(name)}\b", "", decl, count=1)).strip()
 
 
-def nested_globals(declarations: dict[int, str], own: set[int], last: dict[int, str],
-                   types: Types) -> tuple[list[str], list[str], list[str]]:
+def nested_globals(declarations: dict[int, str], own: set[int], last: dict[int, str], types: Types,
+                   declared_here: set[int]) -> tuple[list[str], list[str], list[str]]:
     """(a line for each new global that lies inside another global, a line for each global that holds others as in
     LAST, the names of the globals whose size is unknown). Only a pair with a global in OWN counts. DECLARATIONS and
-    LAST: address: declaration. The generated layout gives every global its own object, so a global inside another
-    one splits it and moves the fields behind it."""
+    LAST: address: declaration. The line says what to change: a declaration of DECLARED_HERE, which only this tree's
+    files give. The generated layout gives every global its own object, so a global inside another one splits it and
+    moves the fields behind it."""
     sizes = {a: declared_size(d, types) for a, d in declarations.items()}
     new, held = [], collections.defaultdict(list)
     holder = None  # (end, address) of the global that reaches farthest among the lower addresses
     for a in sorted(declarations):
         if holder and a < holder[0] and (a in own or holder[1] in own):
             h = holder[1]
+            inner, outer = names.declared_name(declarations[a]), names.declared_name(declarations[h])
+            where = f"{inner}: inside {outer} ({type_of(declarations[h])}) at +{a - h}."
+            shrink = f"declare {outer} with at most {a - h} bytes"
             if all(x in last and declared_size(last[x], types) == sizes[x] for x in (a, h)):
                 held[h].append(a)
+            elif h in declared_here and a in declared_here:
+                new.append(f"{where} Remove the declaration of {inner} and reach it through {outer}, or {shrink}.")
+            elif h in declared_here:
+                new.append(f"{where} The tree declares {inner} and a file here declares {outer}: {shrink}.")
             else:
-                new.append(f"{names.declared_name(declarations[a])}: inside {names.declared_name(declarations[h])} "
-                           f"({type_of(declarations[h])}) at +{a - h}. Remove that declaration and reach it "
-                           f"through {names.declared_name(declarations[h])}.")
+                new.append(f"{where} Remove that declaration and reach it through {outer}.")
         if sizes[a] is not None and (not holder or a + sizes[a] > holder[0]):
             holder = (a + sizes[a], a)
     old = [f"{names.declared_name(declarations[h])} ({type_of(declarations[h])}) holds {len(inside)} other globals, "
