@@ -17,6 +17,13 @@ void ObjectSkydeck_cannon_b_End(struct task *tp)
 	Free(var1->timer.ptr);
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0084b3d0
+void ObjectSkydeck_cannon_b_Init(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0084b4a0
 void ObjectSkydeck_cannon_b(struct task *tp)
 {

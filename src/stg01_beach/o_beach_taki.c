@@ -1,8 +1,19 @@
 #include "decls.h"
-extern int takipapam_fallspeed;
+static void Object_beach_taki_Exec(struct task *tp);
+static void Object_beach_taki_Draw(struct task *tp);
+
+// GLOBAL: SADX 0x03a0c3e0
+static int takipapam_fallspeed;
+
+#pragma optimize("", off)
+// STUB: SADX 0x007f9b20
+static void Object_beach_taki_Draw(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007f9cf0
-void Object_beach_taki_Exec(struct task *tp)
+static void Object_beach_taki_Exec(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 

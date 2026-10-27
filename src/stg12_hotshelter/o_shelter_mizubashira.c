@@ -1,12 +1,27 @@
 #include "decls.h"
+extern struct obj object_mizubasira_pasya_ue_pasya_ue[1];
 extern struct NJS_TEXLIST texlist_shelter_column;
 extern struct obj object_mizubasira_pasya_sita_pasya_sita[];
 extern int DAT_05b9d838;
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 
-// STUB: SADX 0x008b3430
+// FUNCTION: SADX 0x008b3430
 void Pasya0Disp(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	___njSetTexture(&texlist_shelter_column);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	FUN_0067d2d0(0, 1.0f, var1->scl.y, 1.0f);
+	SetMaterial(var1->timer.f, 0.0f, 0.0f, 0.0f);
+	ds_DrawObjectClip(object_mizubasira_pasya_ue_pasya_ue, var1->scl.x > 1.2f ? var1->scl.x : 1.2f);
+	ResetMaterial();
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x008b34e0

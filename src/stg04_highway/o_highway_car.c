@@ -23,6 +23,11 @@ void ObjectCarExit(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0081c250
+void ObjectHighwayCar(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0081c430
 void ObjectHighwayCarManager(struct task *tp)
 {

@@ -78,7 +78,37 @@ void DrawSai(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x008052e0
+// FUNCTION: SADX 0x008052e0
 void ObjectWindySetSmoke(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct NJS_POINT3 vec;
+	struct task *var2;
+	vec.x = 5.0f;
+	vec.y = 4.0f;
+	vec.z = 2.0f;
+	switch (var1->mode)
+	{
+		case 0:
+			var1->mode = 1;
+			break;
+		case 1:
+			var1->btimer++;
+			vec.x += var1->scl.x;
+			vec.y += var1->scl.x;
+			vec.z += var1->scl.x;
+			if (var1->btimer > 0xf)
+			{
+				var1->btimer = 0;
+				CreateSmoke(&var1->pos, &vec, var1->scl.y + 10.0f);
+				var2 = CreateElementalTask(2, 5, ObjectWindyTorLeaf);
+				if (var2 != 0)
+				{
+					var2->twp->pos.x = var1->pos.x;
+					var2->twp->pos.y = var1->pos.y;
+					var2->twp->pos.z = var1->pos.z;
+				}
+			}
+			break;
+	}
 }

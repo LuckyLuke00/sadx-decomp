@@ -16,6 +16,11 @@ void Exit2(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0085c0a0
+void Disp1(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0085ced0
 void cDispYukikemu(struct task *ctp)
 {

@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00853490(void);
 extern struct NJS_SPRITE DAT_060d12f0;
 extern int DAT_05b9d838;
 extern struct NJS_TEXLIST tex_jet;

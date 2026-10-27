@@ -1,5 +1,24 @@
 #include "decls.h"
 
+#pragma optimize("", off)
+// STUB: SADX 0x0082a2c0
+void GCInit_Zako(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x0082a3b0
+void GC_Zako(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// STUB: SADX 0x0082a5c0
+void GCInit_ZakoB(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0082a6b0
 void FUN_0082a6b0(struct task *param_1)
 {
@@ -23,6 +42,13 @@ void FUN_0082a6b0(struct task *param_1)
 		var1->flag &= 0xfeff;
 	}
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0082a730
+void Object_Mountain_BPole_Display(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0082a800
 void GCInit_BPole(struct task *tp)

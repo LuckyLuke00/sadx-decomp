@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct taskwk *DAT_05b42a7c;
+extern unsigned char DAT_060d12b8;
+extern struct obj object_mirror_mirrorbox_1_mirrorbox_1[1];
+extern struct NJS_MODEL model_mirror_hikari_hikari_hikari[1];
 extern int DAT_05b9d838;
 void HitMirror(struct task *tp);
 extern unsigned char DAT_060d12bb;
@@ -9,9 +13,42 @@ void HitMirror(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0084fa30
+// FUNCTION: SADX 0x0084fa30
 void DrawMirror(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		njPushMatrix((float *)0);
+		njTranslateV((float *)0, &var1->pos);
+		if (*(int *)((char *)var1 + 0x1c) != 0)
+		{
+			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		}
+		if (*(int *)((char *)var1 + 0x14) != 0)
+		{
+			njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+		}
+		if (*(int *)((char *)var1 + 0x18) != 0)
+		{
+			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+		}
+		SetObjectTexture();
+		___dsDrawObject((struct obj *)&object_mirror_mirrorbox_1_mirrorbox_1);
+		if (DAT_060d12b8 == 1)
+		{
+			if (-*(int *)((char *)DAT_05b42a7c + 0x1c) != 0)
+			{
+				njRotateZ((float *)0, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x1c)));
+			}
+			if (-*(int *)((char *)DAT_05b42a7c + 0x14) != 0)
+			{
+				njRotateX((float *)0, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x14)));
+			}
+		}
+		late_DrawModelClip((struct NJS_MODEL *)&model_mirror_hikari_hikari_hikari, 0, 1.0f);
+		njPopMatrix(1);
+	}
 }
 
 // FUNCTION: SADX 0x0084fb20
