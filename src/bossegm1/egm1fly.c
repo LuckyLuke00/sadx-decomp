@@ -31,6 +31,12 @@ long InterpolateEgm1Ang(long src, long dst, float avg)
 	return (long)0;
 }
 
+// STUB: SADX 0x006c2f60
+int FUN_006c2f60(int param_1, short param_2, short param_3)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x006c2ff0
 int FUN_006c2ff0()
 {

@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct NJS_POINT3 DAT_060c4208;
+extern struct NJS_POINT3 DAT_060c36cc;
+extern struct NJS_POINT3 DAT_02b11480;
 static void objNormalR(struct task *tp);
 static void objDisplayR(struct task *tp);
 extern struct NJS_ARGB DAT_02b1148c;
@@ -17,12 +20,37 @@ static void objDisplayR(struct task *tp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x006fed20
+// FUNCTION: SADX 0x006fed20
 static void objNormalR(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct motionwk *var2 = tp->mwp;
+
+	if (var1->timer.b[0] > 0)
+	{
+		var1->timer.b[1]++;
+		if (var1->timer.b[1] > 0x14)
+		{
+			struct task *var3 = CreateElementalTask(3, 2, Chaos7BreathRipple);
+			if (var3 != 0)
+			{
+				var3->twp->timer.b[0] = var1->timer.b[0] - 1;
+			}
+			var1->timer.b[0] = 0;
+		}
+	}
+	var1->counter.f += 0.3333333432674408;
+	if (var1->counter.f >= 16.0f)
+	{
+		DestroyTask(tp);
+		return;
+	}
+	njPushMatrix((float *)&DAT_060c4208);
+	njCalcPoint((float *)0, &DAT_060c36cc, &var1->pos);
+	njCalcVector((float *)0, &DAT_02b11480, (struct NJS_POINT3 *)((char *)var2 + 4));
+	njPopMatrix(1);
+	objDisplayR(tp);
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006fedd0
 void Chaos7BreathRipple(struct task *tp)

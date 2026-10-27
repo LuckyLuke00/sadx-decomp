@@ -2667,11 +2667,6 @@ void FUN_006c1b20(struct task *)
 {
 }
 
-// STUB: SADX 0x006c1c00
-void TaskBossExec(struct task *tp)
-{
-}
-
 // STUB: SADX 0x006c1e60
 void DrawSaltWater3D_20(unsigned long *pu32SaltStat)
 {
@@ -2738,11 +2733,6 @@ long chkColli()
 	return (long)0;
 }
 
-// STUB: SADX 0x006dfdf0
-void dispTrackBeam(struct task *pTask)
-{
-}
-
 // STUB: SADX 0x006e1740
 void initPole(struct task *)
 {
@@ -2770,11 +2760,6 @@ void BossChaos2(struct task *tp)
 
 // STUB: SADX 0x006ed8e0
 void BallBubble(struct task *tp)
-{
-}
-
-// STUB: SADX 0x006edba0
-void EffMiniBallDisplay(struct task *tp)
 {
 }
 

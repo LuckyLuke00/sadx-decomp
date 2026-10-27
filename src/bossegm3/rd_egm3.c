@@ -26,3 +26,8 @@ void FUN_006cc9a0(struct task *param_1)
 	}
 	FUN_004a0520(DAT_05b3e080.x, DAT_05b3e080.y);
 }
+
+// STUB: SADX 0x006cca10
+void Rd_Bossegm3(struct task *tp)
+{
+}

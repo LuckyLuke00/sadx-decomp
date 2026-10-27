@@ -1,4 +1,5 @@
 #include "decls.h"
+void flickE102Shot(struct task *pTask);
 extern void (*DAT_05b9e0b0)();
 extern void *DAT_060c4570;
 extern int DAT_060c462c;

@@ -1,4 +1,5 @@
 #include "decls.h"
+static void TaskBossExec(struct task *tp);
 static void TikalTaskExit(struct task *tp);
 static void TaskBossEnd(struct task *tp);
 void FUN_006c1b20(struct task *param_1);
@@ -93,6 +94,13 @@ static void TaskBossEnd(struct task *tp)
 	BSetMotion(var1, (struct bosswk *)var2);
 	FreeEgm1JetTask();
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x006c1c00
+static void TaskBossExec(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006c1e20
 void setBoss_egm1()

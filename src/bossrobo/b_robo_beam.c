@@ -1,4 +1,8 @@
 #include "decls.h"
+long CheckRangeOut(struct task *pTask);
+static void dispTrackBeam(struct task *pTask);
+void init();
+void FUN_006dfc40();
 extern int DAT_060bd030;
 extern int DAT_060bd034;
 extern int DAT_060bd114;
@@ -79,6 +83,13 @@ void FUN_006dfc40()
 	}
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x006dfdf0
+static void dispTrackBeam(struct task *pTask)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x006dfef0
 void execTrackBeam(struct task *pTask)
 {
@@ -92,4 +103,9 @@ void execTrackBeam(struct task *pTask)
 	}
 	dispTrackBeam(pTask);
 	CheckRangeOut(pTask);
+}
+
+// STUB: SADX 0x006e0100
+void FUN_006e0100()
+{
 }

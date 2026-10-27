@@ -1,4 +1,5 @@
 #include "decls.h"
+void setDirC6Kaeru2(struct task *tp);
 extern unsigned short DAT_05cd296c;
 extern unsigned char DAT_060c32ab;
 

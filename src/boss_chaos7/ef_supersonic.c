@@ -1,4 +1,5 @@
 #include "decls.h"
+extern long vertex_al_hrp_reg_l[153];
 extern void *DAT_060eea60;
 struct NJS_TEXLIST;
 int FUN_006fccc0(struct taskwk *param_1);
