@@ -1,4 +1,6 @@
 #include "decls.h"
+struct AvaStgActPrmT;
+struct ModeSelPrmType;
 extern unsigned char DAT_05cd14ed;
 void FUN_006077f0(struct TrialActSelWk *param_1);
 void FUN_00606810(struct AvaStgActPrmT *param_1);
@@ -23,9 +25,18 @@ struct task *SetAdvaTrialActSelTask(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
-// STUB: SADX 0x006067b0
+// FUNCTION: SADX 0x006067b0
 void FUN_006067b0(struct task *param_1, struct ModeSelPrmType *param_2)
 {
+	struct anywk *local_8;
+
+	local_8 = param_1->awp;
+	*(int *)((char *)local_8 + 4) = *(int *)((char *)param_2 + 0);
+	*(int *)((char *)local_8 + 8) = *(int *)((char *)param_2 + 4);
+	*(float *)((char *)local_8 + 0xc) = 5800.0f;
+	*(int *)((char *)local_8 + 0) = 0;
+	*(int *)((char *)local_8 + 0x30) = (int)((char *)local_8 + 0x1c);
+	FUN_00606810((struct AvaStgActPrmT *)local_8);
 }
 
 // FUNCTION: SADX 0x00606810
@@ -85,10 +96,12 @@ void DrawTrialActSelBg(struct TrialActSelWk *wkp)
 	DrawTrialActSelRankBg(wkp);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006072f0
 void DrawTrialActSelRankBg(struct TrialActSelWk *wkp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006074c0
 void DrawTrialActSelRank(struct TrialActSelWk *wkp)

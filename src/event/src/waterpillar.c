@@ -1,6 +1,5 @@
 #include "decls.h"
 extern struct task *DAT_060cc634;
-static void execSplashTask(struct task *p_task);
 static void initWaveTask(struct task *p_task);
 static void execWaveTask(struct task *p_task);
 static void dispWaveTask(struct task *p_task);
@@ -69,12 +68,31 @@ void execSplashTask(struct task *p_task)
 {
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x007d6bf0
+// FUNCTION: SADX 0x007d6bf0
 static void execWaveTask(struct task *p_task)
 {
+	struct taskwk *var1;
+	var1 = p_task->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		var1->mode = 1;
+		break;
+	case 1:
+		var1->counter.f += var1->timer.f;
+		if ((float)(unsigned int)action_l_circle[0].motion->nbFrame <= var1->counter.f)
+		{
+			var1->mode = 2;
+			dispWaveTask(p_task);
+			return;
+		}
+		break;
+	case 2:
+		FreeTask(p_task);
+		break;
+	}
+	dispWaveTask(p_task);
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d6c70
 void initSplashTask(struct task *p_task)
@@ -144,4 +162,24 @@ void FUN_007d6e10(float param_1, float param_2, float param_3, float param_4, fl
 // STUB: SADX 0x007d7020
 void initWaterPillarTask(struct task *p_task)
 {
+}
+
+// FUNCTION: SADX 0x007d7040
+void FUN_007d7040(float param_1, float param_2, float param_3, float param_4, float param_5)
+{
+	struct task *var1;
+	struct taskwk *var2;
+
+	DAT_060cc69c = CreateElementalTask(2, 5, initWaterPillarTask);
+	var1 = DAT_060cc69c;
+	var2 = var1->twp;
+	var2->pos.x = param_1;
+	var2->mode = 0;
+	var2->pos.y = param_2;
+	var2->counter.l = 0;
+	var2->pos.z = param_3;
+	var2->scl.x = param_5;
+	var2->scl.y = param_5;
+	var2->scl.z = param_5;
+	var2->timer.f = param_4;
 }

@@ -2,6 +2,24 @@
 extern void TutorialMsgTask(struct task *tp);
 extern unsigned char DAT_05b367f8;
 
+// FUNCTION: SADX 0x00495270
+void ghDrawPvrSpriteS(short *pvrspr, int flag, float x, float y, float z, float sx, float sy)
+{
+	int var1;
+	short *var2;
+	var1 = 0;
+	var2 = pvrspr + 1;
+	if (var1 < pvrspr[0])
+	{
+		while (var1 < pvrspr[0])
+		{
+			ghDrawPvrTextureS(var2[0], x + (float)var2[1] * sx, y + (float)var2[2] * sy, z, sx, sy);
+			var1++;
+			var2 += 3;
+		}
+	}
+}
+
 // STUB: SADX 0x00495300
 int ChgTutorialMsgPage(struct task *tp, int flag)
 {

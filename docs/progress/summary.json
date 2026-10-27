@@ -12076,9 +12076,9 @@
   {
    "address": "0x00495270",
    "name": "ghDrawPvrSpriteS",
-   "accuracy": 0.03773584905660377,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -12263,6 +12263,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00496a90",
+   "name": "DisplayMissionTutoBg",
+   "accuracy": 0.034482758620689655,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -12500,7 +12508,7 @@
   {
    "address": "0x0049a110",
    "name": "IsMissionStatus",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 0.36363636363636365,
    "effective": false,
    "stub": true,
    "library": false
@@ -12684,9 +12692,9 @@
   {
    "address": "0x0049baf0",
    "name": "sakana_exit",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -15380,9 +15388,9 @@
   {
    "address": "0x004b6cd0",
    "name": "SetAdvaFileSelTask",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -16372,9 +16380,9 @@
   {
    "address": "0x004c2d60",
    "name": "MSG_WinFadeIn",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29818,6 +29826,14 @@
    "library": false
   },
   {
+   "address": "0x0059ebf0",
+   "name": "DrawTxCharName",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0059ed90",
    "name": "DrawVal",
    "accuracy": 0.08333333333333333,
@@ -29988,9 +30004,9 @@
   {
    "address": "0x0059f900",
    "name": "SetAdvaSerifu",
-   "accuracy": 0.5,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -30140,9 +30156,9 @@
   {
    "address": "0x005a4120",
    "name": "DrawSkyBg",
-   "accuracy": 0.25806451612903225,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -30284,9 +30300,9 @@
   {
    "address": "0x005a47b0",
    "name": "AvaGetTrialBestRing",
-   "accuracy": 0.20512820512820512,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36300,7 +36316,15 @@
   {
    "address": "0x005e8510",
    "name": "SetAdvaPutiTask",
-   "accuracy": 0.5,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005e8530",
+   "name": "FExec(3)",
+   "accuracy": 0.06349206349206349,
    "effective": false,
    "stub": true,
    "library": false
@@ -36332,9 +36356,9 @@
   {
    "address": "0x005e8760",
    "name": "FreeAdvaPutiTask",
-   "accuracy": 0.6666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36620,9 +36644,9 @@
   {
    "address": "0x005f2090",
    "name": "FUN_005f2090",
-   "accuracy": 0.1702127659574468,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36804,7 +36828,23 @@
   {
    "address": "0x005f4e60",
    "name": "FUN_005f4e60",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005f4ee0",
+   "name": "InitLB",
+   "accuracy": 0.013377926421404682,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f5a70",
+   "name": "DrawLB",
+   "accuracy": 0.0017837235228539577,
    "effective": false,
    "stub": true,
    "library": false
@@ -36820,7 +36860,15 @@
   {
    "address": "0x005fa160",
    "name": "SetAdvaTitleMenuTask_LB",
-   "accuracy": 0.1951219512195122,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005fa1e0",
+   "name": "title_menu_exec(5)",
+   "accuracy": 0.06153846153846154,
    "effective": false,
    "stub": true,
    "library": false
@@ -36829,6 +36877,14 @@
    "address": "0x005fa3a0",
    "name": "FUN_005fa3a0",
    "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005fac40",
+   "name": "title_menu_disp(7)",
+   "accuracy": 0.03755868544600939,
    "effective": false,
    "stub": true,
    "library": false
@@ -36915,7 +36971,7 @@
   },
   {
    "address": "0x005fbbc0",
-   "name": "title_menu_exec(5)",
+   "name": "title_menu_exec(6)",
    "accuracy": 0.06153846153846154,
    "effective": false,
    "stub": true,
@@ -36931,7 +36987,7 @@
   },
   {
    "address": "0x005fca60",
-   "name": "title_menu_disp(7)",
+   "name": "title_menu_disp(8)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -36978,6 +37034,14 @@
    "library": false
   },
   {
+   "address": "0x005fd120",
+   "name": "DrawTvsettingDialogSub",
+   "accuracy": 0.08888888888888889,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005fd240",
    "name": "SetAdvaTvSettingTask",
    "accuracy": 1.0,
@@ -36988,9 +37052,9 @@
   {
    "address": "0x005fd2b0",
    "name": "FUN_005fd2b0",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37300,9 +37364,9 @@
   {
    "address": "0x00600f10",
    "name": "FUN_00600f10",
-   "accuracy": 0.23529411764705882,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37420,9 +37484,9 @@
   {
    "address": "0x006023d0",
    "name": "FUN_006023d0",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37436,9 +37500,9 @@
   {
    "address": "0x00602430",
    "name": "FUN_00602430",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37564,31 +37628,39 @@
   {
    "address": "0x00602f40",
    "name": "DrawVibSetting",
-   "accuracy": 0.13559322033898305,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00602ff0",
    "name": "SetAdvaOptionSelTask",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00603060",
    "name": "FUN_00603060",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x006030c0",
    "name": "FUN_006030c0",
    "accuracy": 0.18604651162790697,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00603150",
+   "name": "FUN_00603150",
+   "accuracy": 0.06451612903225806,
    "effective": false,
    "stub": true,
    "library": false
@@ -37788,9 +37860,9 @@
   {
    "address": "0x006067b0",
    "name": "FUN_006067b0",
-   "accuracy": 0.23529411764705882,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37908,17 +37980,17 @@
   {
    "address": "0x00607be0",
    "name": "SetAdvaCharSelTask",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00607c50",
    "name": "FUN_00607c50",
-   "accuracy": 0.21621621621621623,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37927,6 +37999,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00607cf0",
+   "name": "char_sel_exec",
+   "accuracy": 0.056338028169014086,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -48156,6 +48236,22 @@
    "library": false
   },
   {
+   "address": "0x007188d0",
+   "name": "evmain(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0071e830",
+   "name": "evmain(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0072a410",
    "name": "FUN_0072a410",
    "accuracy": 1.0,
@@ -48173,7 +48269,7 @@
   },
   {
    "address": "0x007318d0",
-   "name": "dispChaos0Task",
+   "name": "dispChaos0Task(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48181,7 +48277,7 @@
   },
   {
    "address": "0x00731900",
-   "name": "execChaos0Task",
+   "name": "execChaos0Task(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48205,7 +48301,15 @@
   },
   {
    "address": "0x00731bd0",
-   "name": "evmain",
+   "name": "evmain(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00734c60",
+   "name": "evmain(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48254,6 +48358,14 @@
   {
    "address": "0x0074b7f0",
    "name": "initDelObjTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00758250",
+   "name": "evmain(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48348,6 +48460,14 @@
    "library": false
   },
   {
+   "address": "0x007738d0",
+   "name": "evmain(6)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007738f0",
    "name": "FUN_007738f0",
    "accuracy": 0.05555555555555555,
@@ -48406,6 +48526,14 @@
   {
    "address": "0x0077ea50",
    "name": "shadowOn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00789770",
+   "name": "evmain(7)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48734,7 +48862,7 @@
   {
    "address": "0x007d2030",
    "name": "FUN_007d2030",
-   "accuracy": 0.03389830508474576,
+   "accuracy": 0.03225806451612903,
    "effective": false,
    "stub": true,
    "library": false
@@ -48918,9 +49046,9 @@
   {
    "address": "0x007d2f40",
    "name": "MoveChaos0",
-   "accuracy": 0.05714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49012,8 +49140,40 @@
    "library": false
   },
   {
+   "address": "0x007d30e0",
+   "name": "dispChaos0Task(2)",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007d3ac0",
    "name": "destChaos0Task",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d3b00",
+   "name": "execChaos0Task(2)",
+   "accuracy": 0.005319148936170213,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d3f70",
+   "name": "initChaos0Task(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d3f90",
+   "name": "CreateChaos0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -49470,9 +49630,9 @@
   {
    "address": "0x007d58e0",
    "name": "SetEventBirdie0",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49558,9 +49718,9 @@
   {
    "address": "0x007d6420",
    "name": "eggmoble_turn",
-   "accuracy": 0.05714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49686,9 +49846,9 @@
   {
    "address": "0x007d6bf0",
    "name": "execWaveTask(1)",
-   "accuracy": 0.04081632653061224,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49830,9 +49990,9 @@
   {
    "address": "0x007d7660",
    "name": "dispWaveTask(2)",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50124,6 +50284,14 @@
    "library": false
   },
   {
+   "address": "0x007d91a0",
+   "name": "FUN_007d91a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007d94a0",
    "name": "e102effect_init",
    "accuracy": 0.25,
@@ -50343,6 +50511,14 @@
    "address": "0x007da3a0",
    "name": "light_init",
    "accuracy": 0.06451612903225806,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007da410",
+   "name": "FUN_007da410",
+   "accuracy": 0.125,
    "effective": false,
    "stub": true,
    "library": false
@@ -50614,9 +50790,9 @@
   {
    "address": "0x007dc6e0",
    "name": "StgChaos2CtrlOff",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50870,9 +51046,9 @@
   {
    "address": "0x007ddb90",
    "name": "ChangeSpeedEggmoble1",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -51030,7 +51206,15 @@
   {
    "address": "0x007def70",
    "name": "ExecEggmissileFire",
-   "accuracy": 0.05128205128205128,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007df190",
+   "name": "eggmissile_exec",
+   "accuracy": 0.13043478260869565,
    "effective": false,
    "stub": true,
    "library": false
@@ -51038,9 +51222,9 @@
   {
    "address": "0x007df210",
    "name": "eggmissile_init",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -51142,9 +51326,9 @@
   {
    "address": "0x007e0520",
    "name": "StgChaos0CtrlOff",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -62324,6 +62508,14 @@
    "library": false
   },
   {
+   "address": "0x008b8040",
+   "name": "FUN_008b8040",
+   "accuracy": 0.045454545454545456,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008b80b0",
    "name": "LoadSnapShotTexture",
    "accuracy": 1.0,
@@ -63350,15 +63542,23 @@
   {
    "address": "0x008c5bb0",
    "name": "Effect_ChaosBrainFlame",
-   "accuracy": 0.125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x008c5c80",
    "name": "Effect_ChaosBrainFlameDisplay",
    "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c5d30",
+   "name": "SetChaosCoreDisplay",
+   "accuracy": 0.24242424242424243,
    "effective": false,
    "stub": true,
    "library": false
@@ -63422,9 +63622,9 @@
   {
    "address": "0x008c6bd0",
    "name": "moveToTarget",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -63614,6 +63814,38 @@
   {
    "address": "0x008c8990",
    "name": "SetParamDispChaosWater",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c8a40",
+   "name": "InitChaosEmerald",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c8a70",
+   "name": "SetDisplayChaosEmerald",
+   "accuracy": 0.13793103448275862,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c8f40",
+   "name": "ChaosEmeraldDisplay",
+   "accuracy": 0.1038961038961039,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008c9030",
+   "name": "ReturnChaosEmerald",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -81963,6 +82195,13 @@
    "library": false
   },
   {
+   "address": "0x00990ef8",
+   "name": "TxChPvrIdx",
+   "size": 7,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00990f50",
    "name": "AdvaBgmTbl",
    "size": 20,
@@ -81973,6 +82212,13 @@
    "address": "0x00990f64",
    "name": "AdvaCharSelSerifuTbl",
    "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00990f88",
+   "name": "AdvaSerifuTbl",
+   "size": 324,
    "match": false,
    "library": false
   },
@@ -82147,6 +82393,27 @@
   {
    "address": "0x009d4890",
    "name": "DAT_009d4890",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009e1668",
+   "name": "DAT_009e1668",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009ec7a8",
+   "name": "DAT_009ec7a8",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009f2c10",
+   "name": "DAT_009f2c10",
    "size": 1,
    "match": false,
    "library": false
@@ -85365,6 +85632,13 @@
    "library": false
   },
   {
+   "address": "0x025adc60",
+   "name": "texlist_tx_chnam",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025adc88",
    "name": "texlist_ava_trialactsel",
    "size": 8,
@@ -86285,6 +86559,13 @@
    "address": "0x02631494",
    "name": "DAT_02631494",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026314d4",
+   "name": "DAT_026314d4",
+   "size": 50,
    "match": false,
    "library": false
   },
@@ -88487,10 +88768,24 @@
    "library": false
   },
   {
+   "address": "0x02c19734",
+   "name": "__ev0176",
+   "size": 8,
+   "match": true,
+   "library": false
+  },
+  {
    "address": "0x02c21248",
    "name": "DAT_02c21248",
    "size": 4,
    "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02c21260",
+   "name": "DAT_02c21260",
+   "size": 8,
+   "match": true,
    "library": false
   },
   {
@@ -88510,6 +88805,34 @@
   {
    "address": "0x02c22c98",
    "name": "__ev00f3",
+   "size": 8,
+   "match": true,
+   "library": false
+  },
+  {
+   "address": "0x02c23890",
+   "name": "__ev00e1",
+   "size": 8,
+   "match": true,
+   "library": false
+  },
+  {
+   "address": "0x02c29870",
+   "name": "__ev009c",
+   "size": 8,
+   "match": true,
+   "library": false
+  },
+  {
+   "address": "0x02c2ff30",
+   "name": "DAT_02c2ff30",
+   "size": 8,
+   "match": true,
+   "library": false
+  },
+  {
+   "address": "0x02c33a64",
+   "name": "DAT_02c33a64",
    "size": 8,
    "match": true,
    "library": false
@@ -88707,6 +89030,34 @@
    "address": "0x02fb4578",
    "name": "_object_tr2crash_tr2crash",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02ff86c8",
+   "name": "object_wave7_wa_wa",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02ff86fc",
+   "name": "motion_wave7_wa",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02ff8c48",
+   "name": "shape_wave7_wa",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02ff8c60",
+   "name": "texlist_wave7_wa",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -93319,5 +93670,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "9bb76274c05a6a80a743aa76f2858bd0cdac10257db38194eedf5a149af733b2"
+ "inputs_sha256": "4f16f63e706021a314ff6a47eacb60d7f46b8d91c29a207642a4aad9fb05a9d6"
 }

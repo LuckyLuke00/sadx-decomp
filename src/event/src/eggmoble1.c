@@ -55,9 +55,10 @@ void JetMaxEggmoble1()
 	evChgEgm1Jet((Egm1JetCmdEnum)3);
 }
 
-// STUB: SADX 0x007ddb90
+// FUNCTION: SADX 0x007ddb90
 void ChangeSpeedEggmoble1(float speed)
 {
+	*(float *)((char *)DAT_060ccdc4->twp->value.ptr + 0x50) = speed;
 }
 
 // STUB: SADX 0x007ddcd0

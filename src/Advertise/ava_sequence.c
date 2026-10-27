@@ -1,6 +1,7 @@
 #include "decls.h"
 void FUN_0059d6b0(struct task *param_1);
 void FUN_0059d6b0(struct task *param_1);
+void FUN_0059d6b0(struct task *param_1);
 extern void (*DAT_02618a68[1])(void);
 extern int DAT_05b3e350;
 void FUN_0059da10(int param_1);

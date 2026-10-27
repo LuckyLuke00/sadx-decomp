@@ -1,4 +1,6 @@
 #include "decls.h"
+void ReSetMiStatus(unsigned char u8MissionNo, unsigned char u8Flag);
+void SetTaskMissionClear(struct task *tp);
 extern void MissionClearDest(struct task *);
 void FUN_004998c0();
 extern void *DAT_05b37394;
@@ -28,6 +30,12 @@ void MissionClearDest(struct task *tp)
 struct task *GetTargetTask(struct task *tp, unsigned short u16ObjNo)
 {
 	return (struct task *)0;
+}
+
+// STUB: SADX 0x0049a110
+unsigned char IsMissionStatus(void *ptr)
+{
+	return (unsigned char)0;
 }
 
 // STUB: SADX 0x0049a130

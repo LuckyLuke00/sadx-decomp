@@ -33,6 +33,11 @@ void light_init(struct task *tp)
 {
 }
 
+// STUB: SADX 0x007da410
+void FUN_007da410(float param_1, float param_2, float param_3)
+{
+}
+
 // FUNCTION: SADX 0x007da440
 void light_turn(struct task *tp, float x, float y, float z)
 {

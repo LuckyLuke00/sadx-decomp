@@ -1028,11 +1028,6 @@ unsigned long FUN_004951c0(unsigned long, unsigned long)
 	return (unsigned long)0;
 }
 
-// STUB: SADX 0x00495270
-void ghDrawPvrSpriteS(short *, int, float, float, float, float, float)
-{
-}
-
 // STUB: SADX 0x00496440
 void TutorialTask(struct task *tp)
 {
@@ -1061,12 +1056,6 @@ void FUN_004998c0()
 // STUB: SADX 0x00499ba0
 void MissionObject()
 {
-}
-
-// STUB: SADX 0x0049a110
-unsigned char IsMissionStatus(void *ptr)
-{
-	return (unsigned char)0;
 }
 
 // STUB: SADX 0x0049c120
@@ -1306,16 +1295,6 @@ void FUN_004c0e10(void *)
 struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex)
 {
 	return (struct MSGC *)0;
-}
-
-// STUB: SADX 0x004c1a80
-void MSG_LoadTexture2(struct MSGC *msgc)
-{
-}
-
-// STUB: SADX 0x004c3060
-extern void MSG_ThreadMainMessages(char **)
-{
 }
 
 // STUB: SADX 0x004c3180
@@ -2294,6 +2273,17 @@ extern void LoadTrialPicture()
 {
 }
 
+// STUB: SADX 0x005f4ee0
+int InitLB()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x005f5a70
+void DrawLB()
+{
+}
+
 // STUB: SADX 0x005fcd60
 void FUN_005fcd60(float)
 {
@@ -2349,10 +2339,9 @@ void DrawMiniGameSelStage(struct MiniGameSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x00604760
-struct task *FUN_00604760(struct task *, struct ModeSelPrmType *)
+// STUB: SADX 0x00603150
+void FUN_00603150(struct task *)
 {
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x006055c0
@@ -2382,6 +2371,11 @@ void DrawTrialActSelTimeOrWeight(struct TrialActSelWk *wkp)
 
 // STUB: SADX 0x00607880
 void DrawTrialActSelStage(struct TrialActSelWk *wkp)
+{
+}
+
+// STUB: SADX 0x00607cf0
+void char_sel_exec(struct task *tp)
 {
 }
 
@@ -2485,11 +2479,6 @@ void ColliSpaceEditMode(struct task *tp, unsigned short form)
 
 // STUB: SADX 0x0061d570
 void ColliOttottoRangeEditMode(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0061def0
-void FUN_0061def0(struct task *)
 {
 }
 
@@ -3153,6 +3142,11 @@ void execEggmoble1Task(struct task *p_task)
 
 // STUB: SADX 0x007de810
 void eggmoble2_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007df190
+void eggmissile_exec(struct task *tp)
 {
 }
 

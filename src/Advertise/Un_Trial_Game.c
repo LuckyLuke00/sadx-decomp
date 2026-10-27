@@ -61,10 +61,12 @@ void FUN_005f45f0(struct task *param_1)
 	FUN_005f4610(*(float *)((char *)param_1 + 0x10));
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005f4610
 void FUN_005f4610(float param_1)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005f4690
 void FreeAdvaTrialGameTask()

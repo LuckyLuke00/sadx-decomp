@@ -1,12 +1,22 @@
 #include "decls.h"
+static void FExec(struct task *tp);
+extern struct task *DAT_05edd778;
 extern int DAT_060ce75c;
 void FUN_007f2150(void);
 
-// STUB: SADX 0x005e8510
+// FUNCTION: SADX 0x005e8510
 struct task *SetAdvaPutiTask(struct ModeSelPrmType *prmp)
 {
-	return (struct task *)0;
+	DAT_05edd778 = CreateElementalTask(0, 4, FExec);
+	return DAT_05edd778;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x005e8530
+static void FExec(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005e86e0
 void FUN_005e86e0(void *param_1)
@@ -40,7 +50,8 @@ void FDest(struct task *tp)
 	return;
 }
 
-// STUB: SADX 0x005e8760
+// FUNCTION: SADX 0x005e8760
 void FreeAdvaPutiTask()
 {
+	FreeTask(DAT_05edd778);
 }

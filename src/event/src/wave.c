@@ -9,12 +9,19 @@ void execWaveCtrlTask(struct task *p_task);
 extern struct task *DAT_060cc7d0[];
 void FreeTask(struct task *tp);
 
-#pragma optimize("", off)
-// STUB: SADX 0x007d7660
+// FUNCTION: SADX 0x007d7660
 static void dispWaveTask(struct task *p_task)
 {
+	struct taskwk *var1 = p_task->twp;
+	struct motionwk *var2 = (struct motionwk *)var1->value.ptr;
+
+	___njSetTexture(&texlist_wave7_wa);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	FUN_0067d2d0(0, var2->spd.x, 1.0f, var2->spd.x);
+	___dsDrawShapeMotion((const struct obj *)&object_wave7_wa_wa, (const struct NJS_MOTION *)&motion_wave7_wa, (const struct NJS_MOTION *)&shape_wave7_wa, *(float *)((char *)var1 + 8));
+	njPopMatrix(1);
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d76e0
 void stopWaveCtrl(int id)

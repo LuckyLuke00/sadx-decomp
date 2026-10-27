@@ -1,6 +1,5 @@
 #include "decls.h"
 extern unsigned char DAT_04c2e568[7];
-static void StaffRollTask(struct task *tp);
 extern int DAT_04c2e570[8];
 extern int DAT_05b3ea10;
 extern int DAT_05b3e350;
@@ -48,6 +47,12 @@ unsigned long GetAllStaffInterval(struct STAFFROLL_DATA *data)
 unsigned long GetStaffIntervalFotLogoStaff(struct STAFFROLL_DATA *data)
 {
 	return (unsigned long)0;
+}
+
+// STUB: SADX 0x008b8040
+int FUN_008b8040(int param_1)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x008b80b0

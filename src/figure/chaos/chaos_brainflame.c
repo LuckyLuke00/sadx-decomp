@@ -4,31 +4,62 @@ extern float DAT_05b3df40;
 extern struct NJS_TEXANIM anim_c2_brain[1];
 extern struct NJS_SPRITE sprite_c2_brain;
 
-// STUB: SADX 0x008c5bb0
+// FUNCTION: SADX 0x008c5bb0
 void Effect_ChaosBrainFlame(struct task *tp)
-{
-}
-
-// STUB: SADX 0x008c5c80
-void Effect_ChaosBrainFlameDisplay(struct task *tp)
 {
 	struct taskwk *local_8;
 	local_8 = tp->twp;
-	if (DAT_05b9d838 != 0)
+	switch (local_8->mode)
 	{
-		return;
+	case 0:
+		local_8->timer.l = 0;
+		local_8->mode = 1;
+		sprite_c2_brain.sy = 1.0;
+		sprite_c2_brain.sx = sprite_c2_brain.sy;
+		tp->disp = Effect_ChaosBrainFlameDisplay;
+		break;
+	case 1:
+		local_8->timer.w[0]++;
+		if (local_8->timer.w[0] >= 2)
+		{
+			local_8->timer.w[0] -= 2;
+			local_8->timer.w[1]++;
+			if (local_8->timer.w[1] >= 0x10)
+			{
+				DestroyTask(tp);
+				return;
+			}
+		}
+		break;
 	}
+	Effect_ChaosBrainFlameDisplay(tp);
+}
+
+// FUNCTION: SADX 0x008c5c80
+void Effect_ChaosBrainFlameDisplay(struct task *tp)
+{
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (DAT_05b9d838 != 0)
+		return;
 	njPushMatrix(0);
 	njTranslateV(0, &local_8->pos);
 	___njColorBlendingMode(0, 0xa);
 	___njColorBlendingMode(1, 0xa);
 	anim_c2_brain[0].texid = local_8->timer.w[1];
-	*(float *)&DAT_05b3df40 = 50.0f;
+	DAT_05b3df40 = 50.0f;
 	late_DrawSprite3D(&sprite_c2_brain, 0, 0x30, 4);
-	*(float *)&DAT_05b3df40 = 0.0f;
+	DAT_05b3df40 = 0.0f;
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
 	njPopMatrix(1);
+}
+
+// STUB: SADX 0x008c5d30
+struct task *SetChaosCoreDisplay(struct task *ctp, float size, struct NJS_POINT3 *pos, struct NJS_POINT3 *ofs)
+{
+	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x008c5d90
