@@ -78,7 +78,8 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
     fakes = {"read_source": lambda path: ('#include "decls.h"\n', False),
              "write_source": lambda path, text, crlf: kept.append(text), "snapshot": lambda paths: {},
              "tree_warnings": lambda config: set(), "load_types": lambda config: None, "first_prompt": first_prompt,
-             "file_best": lambda *args: None, "decls": lambda config: ("", 0), "exe_contains": lambda: IMAGE.__contains__}
+             "file_best": lambda *args: None, "decls": lambda config: ("", 0), "exe_contains": lambda: IMAGE.__contains__,
+             "exe_literal": lambda: lambda address, width: None}
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
