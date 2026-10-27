@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct PDS_PERIPHERAL DAT_05b932e8[8];
+extern long action_button;
 extern int DAT_060eea5c;
 struct playerwk;
 void FUN_00547070(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
@@ -87,6 +89,11 @@ void FUN_005488e0(char *param_1, char *param_2, char *param_3)
 		local_8 = 0x2d9;
 	}
 	PSetLoopSECallForTheMode((long)local_8, (unsigned char)param_1[8], (short)(signed char)*param_1);
+}
+
+// STUB: SADX 0x00548980
+void FUN_00548980(struct taskwk *twp)
+{
 }
 
 // STUB: SADX 0x00548b90
@@ -199,10 +206,30 @@ long SonicCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *
 	}
 }
 
-// STUB: SADX 0x0054c480
+// FUNCTION: SADX 0x0054c480
 long SonicCheckStartSpin(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (DAT_05b932e8[twp->counter.b[0]].press & action_button)
+	{
+		twp->mode = 4;
+		ChangeMotionSonicSpin(pwp);
+		twp->flag |= 0x500;
+		*(short *)((char *)pwp + 0x7e) = 0;
+		if (pwp->spd.x > 2.0)
+		{
+			pwp->work.f = pwp->spd.x;
+		}
+		else
+		{
+			pwp->work.f = 2.0f;
+		}
+		dsPlay_timer(0x2ff, (int)twp, 1, 0, 2);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0054c520

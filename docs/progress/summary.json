@@ -23258,6 +23258,14 @@
    "library": false
   },
   {
+   "address": "0x00548980",
+   "name": "FUN_00548980",
+   "accuracy": 0.05,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00548b90",
    "name": "SonicHomeOnTarget",
    "accuracy": 0.0975609756097561,
@@ -23300,9 +23308,9 @@
   {
    "address": "0x0054c480",
    "name": "SonicCheckStartSpin",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35199,6 +35207,30 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005d5870",
+   "name": "AmyBirdInit",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005d5920",
+   "name": "AmyBirdDisplay",
+   "accuracy": 0.07142857142857142,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005d5a70",
+   "name": "AmyBirdExe",
+   "accuracy": 0.02072538860103627,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -71612,6 +71644,14 @@
    "library": false
   },
   {
+   "address": "0x00906170",
+   "name": "motionSakana",
+   "accuracy": 0.047619047619047616,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00906200",
    "name": "FUN_00906200",
    "accuracy": 0.04081632653061224,
@@ -94327,5 +94367,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "fa9e9ebb73ae706fc82d906f74f8412372685a4fb6f79096ef58c073eafe0f5e"
+ "inputs_sha256": "b8c3c403a8fd13731fda57361d07a4e0580be1949f7cb9db3aa19dee1296b79f"
 }

@@ -17,6 +17,11 @@ void FUN_00906150(void)
 	}
 }
 
+// STUB: SADX 0x00906170
+void motionSakana(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00906200
 void FUN_00906200(struct task *param_1)
 {
