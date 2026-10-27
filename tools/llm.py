@@ -215,6 +215,9 @@ DIFF_LINE = re.compile(r"^(?:0x[0-9a-f]+)?\s*: ([-+])(.*)$", re.M)  # a changed 
 SOURCE_LINE = re.compile(r"\s+\([^()\s]+:\d+\)$")  # such as "	(ef_flash.c:128)" after a line of our build
 HUNK = re.compile(r"^@@ -(0x[0-9a-f]+),", re.M)  # opens a hunk of reccmp's diff: the exe address of its first line
 EQUAL_LINE = re.compile(r"^0x[0-9a-f]+ : [^-+]", re.M)  # an instruction that the exe and our build both have
+# words of C that name no symbol: a decls line that shares only these with a reply is not about it
+C_WORDS = fakematch.KEYWORDS | {"void", "char", "short", "int", "long", "float", "double", "signed", "unsigned",
+                                "const", "volatile", "static", "extern", "struct", "union", "enum"}
 # decls lines that say the tree declares a name in another way: name, then the tree's way(s)
 CLASH_CONTEXT = re.compile(r"^decls: (\w+): (.+) in the context tree\. Declare it that way too\.$")
 CLASH_TREE = re.compile(r"^decls: (\w+): the tree declares it `([^`]*)`, a file here declares it `([^`]*)`")
@@ -579,6 +582,14 @@ def tool_lines(text, known):
     """The scoring output without decls' summary line of the functions it declared and the KNOWN decls lines."""
     return [line for line in text.splitlines()
             if not (line.startswith("decls:") and ("functions (" in line or line in known))]
+
+
+def about_reply(text, decls, func):
+    """The build output TEXT without the decls lines that name no word of DECLS and FUNC, the reply's code, other
+    than a C keyword or type: such a line is about the tree, which the reply cannot change."""
+    words = set(re.findall(r"[A-Za-z_]\w*", names.strip_code("\n".join(decls + func)))) - C_WORDS
+    return "\n".join(line for line in text.split("\n")
+                     if not line.startswith("decls:") or words & set(re.findall(r"[A-Za-z_]\w*", line[6:])))
 
 
 def build_errors(text, known):
@@ -1456,9 +1467,11 @@ def solve_function(args, file, address, transcript):
         return result
 
     def rebuild(decls, func):
-        """(the file with DECLS and FUNC in place of the function, its percent or None, the build output)."""
+        """(the file with DECLS and FUNC in place of the function, its percent or None, the build output without the
+        decls lines about the tree)."""
         text = apply_function(before, address, decls, func)
-        return text, *scored(text)
+        percent, output = scored(text)
+        return text, percent, about_reply(output, decls, func)
 
     types = load_types(config) if args.structs else None
     repair_types = types or load_types(config)  # the byte offset and pointer cast repairs read layouts either way
