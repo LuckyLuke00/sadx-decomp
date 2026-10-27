@@ -133,6 +133,9 @@ def compare_data(build: Build, spans: list[range]) -> list[dict]:
     from reccmp.project.detect import RecCmpProject
     from reccmp.types import ImageId
 
+    import folds
+
+    folds.install()
     target = RecCmpProject.from_directory(build.folder).get(build.target)
     log = logging.getLogger("reccmp")
     level = log.level

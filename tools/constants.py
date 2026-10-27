@@ -80,6 +80,8 @@ from reccmp.formats import detect_image
 from reccmp.tools import asmcmp
 from reccmp.types import ImageId
 
+import folds
+
 HEX = re.compile(r"0x[0-9a-f]+")
 MEMORY = re.compile(r"\[([^\]]*)\]")  # a memory operand, such as [eax + 0x400018]
 HANDLER_START = (b"\xb8", b"\x8b\x54\x24\x08")  # mov eax, offset FuncInfo; or mov edx, [esp + 8] for cookie checks
@@ -262,6 +264,7 @@ def run_reccmp(args: list[str]) -> int:
         find_floats(db, image_id, binfile)
 
     core.create_analysis_floats = add_rows_then_find_floats
+    folds.install()
     # reccmp prints a sparkle emoji, which the code page of a pipe on Windows may not have.
     sys.stdout.reconfigure(errors="replace")
     sys.argv = ["reccmp-reccmp", *args]
