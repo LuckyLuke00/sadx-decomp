@@ -85,6 +85,7 @@ import cfix
 import check
 import ci
 import declgen
+import facts
 import fakematch
 import llmclient
 import names
@@ -128,6 +129,8 @@ PLAIN_FORMS = {  # what to write in place of each fakematch kind, for --refuse-f
     "empty_statement": "leave it out, or write the loop's work in its body",
     "unused_local": "leave it out",
     "address_number": "write the number itself: the exe uses it as a flag or a count, not as a global's address",
+    "constant_global": "drop the declaration and write `{literal}` in its place: the compiler puts the source's "
+                       "literals in read-only data",
 }
 RESULT_FIELDS = ["file", "address", "size", "tries", "best", "wall_s", "prompt_tokens", "completion_tokens", "model",
                  "think_tries", "repeats"]
@@ -1034,9 +1037,10 @@ def feedback(percent, text, address, known, types=None, prefix=False):
             + "Reply with one cpp block again: the declarations and the whole function with the changes.")
 
 
-def refusal(refused, name_at=lambda address: None):
-    """The note on a 100% try with the REFUSED lines, the (kind, line) pairs that fakematch.found gives. NAME_AT gives
-    the name of the symbol at an address, or None: a raw address's note names it."""
+def refusal(refused, name_at=lambda address: None, literal_at=lambda address, width: None):
+    """The note on a 100% try with the REFUSED lines, the (kind, line) pairs that fakematch.found and
+    fakematch.constant_globals give. NAME_AT gives the name of the symbol at an address, or None: a raw address's note
+    names it. LITERAL_AT gives the literal at an address and width: a constant global's note names it."""
     lines = []
     for kind, line in refused:
         what = f"the local `{line}`" if kind == "unused_local" else f"`{line}`"
@@ -1046,6 +1050,8 @@ def refusal(refused, name_at=lambda address: None):
                      for m in re.finditer(r"0x[0-9a-fA-F]{6,8}\b", line) if name_at(int(m.group(0), 16))]
             if known:
                 form = "use it by its name, and declare it: " + ", ".join(known)
+        if kind == "constant_global":
+            form = form.format(literal=literal_at(*fakematch.float_global(line)))
         lines.append(f"- {what} ({kind}): {form}")
     return ("Score 100.00%, but these lines are not plain C, so the match is refused:\n" + "\n".join(lines) + "\n"
             "Reply with one cpp block again: the declarations and the whole function in plain C.")
@@ -1054,6 +1060,14 @@ def refusal(refused, name_at=lambda address: None):
 def exe_contains():
     """Whether an address is in the exe's sections: fakematch.found's test for a raw address."""
     return pe.Image(project.require_game()).contains
+
+
+def exe_literal():
+    """The float or double literal at an address and width of the exe's read-only data, or None:
+    fakematch.constant_globals' test."""
+    image = pe.Image(project.require_game())
+    return lambda address, width: (facts.float_literal(image.read(address, width))
+                                   if image.is_read_only_data(address) else None)
 
 
 def matched_functions():
@@ -1486,6 +1500,7 @@ def solve_function(args, file, address, transcript):
     best = file_best(scored, before, address, known, types, args.prefix_feedback)
     restore(generated)
     in_image = exe_contains() if args.refuse_fakematch else None
+    literal_at = exe_literal() if args.refuse_fakematch else None
     fallback = None  # the first refused 100% try: the file keeps it when no try matches in plain C
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
@@ -1562,9 +1577,11 @@ def solve_function(args, file, address, transcript):
                 if repairs.renamed:
                     shown = "```cpp\n" + "\n".join(model.decls + [""] + model.func) + "\n```"
                 if in_image and percent == 100:
-                    refused = fakematch.found(build.func, signature_index(build.func), in_image)
+                    refused = (fakematch.found(build.func, signature_index(build.func), in_image)
+                               + fakematch.constant_globals(build.decls, literal_at))
                 if refused:
-                    note = repairs.note() + refusal(refused, lambda a: symbol_at(table_symbols(config["tables"]), a))
+                    note = repairs.note() + refusal(refused, lambda a: symbol_at(table_symbols(config["tables"]), a),
+                                                    literal_at)
                 else:
                     note = repairs.note() + feedback(percent, build.output, address, known, types, args.prefix_feedback)
                 seen[attempt_key(parsed)] = (tries, note)
