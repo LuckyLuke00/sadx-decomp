@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_00689420(struct task *param_1);
+void FUN_006898a0(struct task *param_1);
+void Exec(struct task *tp);
 static void Exec(struct task *tp);
 void FUN_00689420(struct task *param_1);
 long SeqCheckTenbou();
@@ -95,5 +98,10 @@ void ObjectSSTenbouele(struct task *tp)
 
 // STUB: SADX 0x00689a90
 void ObjectSSHotelele(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00689b00
+void ObjectSSHighwayele(struct task *tp)
 {
 }

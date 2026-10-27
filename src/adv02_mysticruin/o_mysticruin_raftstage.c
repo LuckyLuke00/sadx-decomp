@@ -31,8 +31,3 @@ void FUN_006ad260(void)
 	SetPositionP(0, -110.0f, 65.0f, 1138.0f);
 	SetRotationP(0, 0, 0x9800, 0);
 }
-
-// STUB: SADX 0x006ad2b0
-void LadderDisplayer(struct task *tp)
-{
-}

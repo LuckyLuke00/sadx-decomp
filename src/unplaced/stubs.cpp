@@ -2561,11 +2561,6 @@ void dispSSBigClock(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0068dc80
-void Object_Ssadv_KomonoDraw(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00692030
 void CreamManager(struct task *tp)
 {
@@ -2579,6 +2574,11 @@ long Object_EgaGun1DrawStat(struct task *tp)
 
 // STUB: SADX 0x0069c990
 void ObjectECCommonDoorS(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0069e010
+void EC_CPcDelete()
 {
 }
 
@@ -2649,11 +2649,6 @@ void pastpc_exec(struct task *task_p)
 
 // STUB: SADX 0x006bef70
 void pastp_walk_man_1st(struct task *task_p)
-{
-}
-
-// STUB: SADX 0x006bf800
-void DispPastChaosFire(struct task *tp)
 {
 }
 

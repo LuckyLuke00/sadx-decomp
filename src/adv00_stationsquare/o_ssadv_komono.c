@@ -1,4 +1,5 @@
 #include "decls.h"
+extern long CheckRangeOut(struct task *pTask);
 extern struct obj object_ssobj_roomlight_roomlight[];
 extern struct obj object_ssobj_roomlight_roomlight[1];
 extern struct obj object_bin_bin_bin;
@@ -9,6 +10,13 @@ extern struct obj object_ssobj_isua_isua[1];
 extern struct CCL_INFO object_komono_isua_info[1];
 extern struct obj object_ssobj_exit_exit[1];
 extern struct CCL_INFO object_komono_exit_info[1];
+
+#pragma optimize("", off)
+// STUB: SADX 0x0068dc80
+void Object_Ssadv_KomonoDraw(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x0068dd30
 void ObjectSsadvKomonoKeikoto(struct task *tp)
