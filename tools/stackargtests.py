@@ -9,10 +9,11 @@ import collections
 import tempfile
 from pathlib import Path
 
+import dossier
 import names
 import stackargs
 import x86
-from facttests import CODE, build, callees, described
+from facttests import CALLEE, CODE, DATA, build, callees, described, namer_of
 
 F = "call 0x402000"  # a call to the first callee
 
@@ -193,23 +194,454 @@ def check_verdict() -> list[str]:
 
 def check_unexplained_registers() -> list[str]:
     """unexplained_registers gives the registers that a function reads at its entry that its declared convention
-    does not pass: ecx for __thiscall, ecx and edx for __fastcall, none for the rest. /GL passes the others."""
+    does not pass: ecx for __thiscall, ecx and edx for __fastcall as far as it has parameters in them, none for the
+    rest. A method passes its this in ecx unless it declares __fastcall or the like. /GL passes the others."""
     cases = [
-        (x86.ECX, "void __thiscall f(struct a *p)", 0),
-        (x86.ECX | x86.EDX, "void __fastcall f(int a, int b)", 0),
-        (x86.ECX, "void f(struct taskwk *twp)", x86.ECX),
-        (x86.ESI | x86.EDX, "void __thiscall f(struct a *p, int b)", x86.ESI | x86.EDX),
-        (0, "void f(void)", 0),
+        (x86.ECX, "void __thiscall f(struct a *p)", False, 0),
+        (x86.ECX | x86.EDX, "void __fastcall f(int a, int b)", False, 0),
+        (x86.ECX, "void f(struct taskwk *twp)", False, x86.ECX),
+        (x86.ESI | x86.EDX, "void __thiscall f(struct a *p, int b)", False, x86.ESI | x86.EDX),
+        (0, "void f(void)", False, 0),
+        (x86.ECX | x86.EDX, "void __fastcall f(int a)", False, x86.EDX),
+        (x86.ECX, "void __fastcall f(void)", False, x86.ECX),
+        (x86.ECX | x86.EDX, "void __fastcall f(float a, int b)", False, x86.EDX),
+        (x86.ECX, "int A::f()", True, 0),
+        (x86.ECX | x86.EDX, "int A::f(int a)", True, x86.EDX),
+        (x86.ECX, "int __thiscall A::f()", True, 0),
+        (x86.ECX | x86.EDX, "int __fastcall A::f(int a)", True, x86.EDX),
     ]
-    return [f"unexplained_registers gives {found} for {registers} and {proto}, not {wanted}"
-            for registers, proto, wanted in cases
-            if (found := stackargs.unexplained_registers(registers, proto)) != wanted]
+    types = names.Types(Path("no-such-types.h"))
+    return [f"unexplained_registers gives {found} for {registers}, {proto} and method {method}, not {wanted}"
+            for registers, proto, method, wanted in cases
+            if (found := stackargs.unexplained_registers(registers, proto, types, method)) != wanted]
+
+
+def check_members_of() -> list[str]:
+    """members_of gives the classes and structs that the sources define with a body, through a base class too, and
+    the names of the static functions that they declare. A forward declaration and a template parameter are none."""
+    sources = {"a.h": "class File;\ntemplate<class T> class Singleton\n{\n};\nclass A : public Base\n{\n"
+                      "\ttemplate<class T> static T Uniform(T param_1);\n\tint f();\n};\nstruct b {\n};\n",
+               "a.c": "static void FUN_00401000(void)\n{\n\tstatic int count = f(1);\n}\n"}
+    found = stackargs.members_of(sources)
+    wanted = ({"Singleton", "A", "b"}, {"Uniform", "FUN_00401000"})
+    return [] if found == wanted else [f"members_of gives {found}, not {wanted}"]
+
+
+def check_is_method() -> list[str]:
+    """is_method says whether a prototype defines a member function of a known class that takes a this: a
+    constructor, a destructor and one that returns a qualified type count, a static member and a function of a
+    namespace do not, and neither does a free function with a qualified parameter type."""
+    classes, statics = {"A", "Timer"}, {"Uniform"}
+    cases = [("int A::f()", True), ("A::A()", True), ("A::~A()", True), ("double Magic::Base::Timer::f()", True),
+             ("float A::Uniform(float a)", False), ("int Magic::f()", False), ("int f(const std::string& a)", False),
+             ("int f(void)", False)]
+    return [f"is_method gives {found} for {proto}, not {wanted}" for proto, wanted in cases
+            if (found := stackargs.is_method(proto, classes, statics)) != wanted]
+
+
+def check_returned_type() -> list[str]:
+    """returned_type gives the type that a prototype returns, without name and convention, or None without a
+    parameter list."""
+    cases = [("float f(int a)", "float"), ("double __cdecl f(void)", "double"), ("struct task *f()", "struct task *"),
+             ("void __fastcall Foo::f(int a)", "void"), ("int x", None)]
+    return [f"returned_type gives {found!r} for `{proto}`, not {wanted!r}" for proto, wanted in cases
+            if (found := stackargs.returned_type(proto)) != wanted and (found or "").strip() != wanted]
+
+
+def check_register_parameters() -> list[str]:
+    """register_parameters gives the indexes of the parameters that travel in registers."""
+    cases = [(["int"], [4], "__thiscall", [0]), ([], [], "__thiscall", []), (["int"], [4], None, []),
+             (["int", "int", "int"], [4, 4, 4], "__fastcall", [0, 1]), (["float", "int"], [4, 4], "__fastcall", [1]),
+             (["double", "int", "int"], [8, 4, 4], "__fastcall", [1, 2]), (["int"], [4], "__fastcall", [0]),
+             (["struct a"], [None], "__fastcall", [0]), (["struct a"], [12], "__fastcall", [])]
+    return [f"register_parameters gives {found} for {kinds}, {sizes} and {convention}, not {wanted}"
+            for kinds, sizes, convention, wanted in cases
+            if (found := stackargs.register_parameters(kinds, sizes, convention)) != wanted]
+
+
+def check_x87_change() -> list[str]:
+    """x87_change gives how far an x87 instruction moves the top of the stack: a load up one, a store that pops or
+    an operation that pops down one or two, the rest none. An instruction it does not know gives None."""
+    cases = [("fld", 1), ("fldz", 1), ("fild", 1), ("fstp", -1), ("fist", 0), ("fadd", 0), ("faddp", -1),
+             ("fcomp", -1), ("fcompp", -2), ("fucompp", -2), ("fxch", 0), ("fchs", 0), ("fnstsw", 0), ("fldcw", 0),
+             ("fscale", None), ("fprem", None)]
+    return [f"x87_change gives {found} for {mnemonic}, not {wanted}" for mnemonic, wanted in cases
+            if (found := stackargs.x87_change(mnemonic)) != wanted]
+
+
+def check_library_change() -> list[str]:
+    """library_change gives how far a library call moves the top of the x87 stack."""
+    cases = [("_ftol2", -1), ("_ftol2_sse", -1), ("_CIpow", -1), ("_CIatan2", -1), ("_CIsin", 0), ("floor", 1),
+             ("atan2", 1), ("memcpy", 0)]
+    return [f"library_change gives {found} for {name}, not {wanted}" for name, wanted in cases
+            if (found := stackargs.library_change(name)) != wanted]
+
+
+def check_x87_exits() -> list[str]:
+    """x87_exits gives the x87 depth before each instruction and the Exit at each ret and each jump out: the depth
+    there and the open result, the game function whose float may still sit in st0 (None for none, UNKNOWN for a
+    call to something else). A library call takes its effect from the library table, the cookie check leaves st0 as
+    it was, and a callee that the answers name adds the float it leaves. An x87 instruction that is no load uses an
+    open result on an empty stack, and a control instruction keeps it. A path ends in UNCLEAR at a load or a
+    non-empty stack that meets an open result and at an unknown x87 instruction, and the other paths go on. It
+    gives None for two depths at one instruction and a function with no exit."""
+    load, store = "fld dword ptr [0x500000]", "fstp dword ptr [0x500000]"
+    cookie, ftol, unknown = {0x409000: "__security_check_cookie"}, {0x409000: "_ftol2"}, stackargs.UNKNOWN
+    leaves, leaves_none = {CALLEE: True}, {CALLEE: False}
+    exit_, unclear = stackargs.Exit, stackargs.UNCLEAR
+    cases = [
+        ([load, "ret"], {}, {}, {exit_(1, None)}),
+        (["ret"], {}, {}, {exit_(0, None)}),
+        ([load, store, "ret"], {}, {}, {exit_(0, None)}),
+        ([F, "ret"], {}, {}, {exit_(0, CALLEE)}),
+        ([F, store, "ret"], {}, {}, {exit_(0, None)}),
+        ([F, "fchs", "ret"], {}, {}, {exit_(1, None)}),
+        ([F, "mov eax, 1", "ret"], {}, {}, {exit_(0, CALLEE)}),
+        ([F, "fnstsw ax", "ret"], {}, {}, {exit_(0, CALLEE)}),
+        (["jmp 0x402000"], {}, {}, {exit_(0, CALLEE)}),
+        ([load, "call 0x409000", "ret"], ftol, {}, {exit_(0, None)}),
+        (["call 0x409000", "ret"], {}, {}, {exit_(0, unknown)}),
+        ([F, "call 0x409000", "ret"], cookie, {}, {exit_(0, CALLEE)}),
+        (["test eax, eax", "je @4", F, "ret", "ret"], {}, {}, {exit_(0, CALLEE), exit_(0, None)}),
+        ([F, "ret"], {}, leaves, {exit_(1, None)}),
+        ([F, load, "faddp st(1), st0", "ret"], {}, leaves, {exit_(1, None)}),
+        ([F, load, store, "ret"], {}, leaves_none, {exit_(0, None)}),
+        (["jmp 0x402000"], {}, leaves, {exit_(1, None)}),
+        ([F, load, store, "ret"], {}, {}, {unclear}),
+        ([load, F, "fchs", "ret"], {}, {}, {unclear}),
+        (["test eax, eax", "je @4", F, load, "ret"], {}, {}, {unclear, exit_(0, None)}),
+        (["fscale", "ret"], {}, {}, {unclear}),
+        (["test eax, eax", "je @4", load, "nop", "ret"], {}, {}, None),
+        (["jmp @0"], {}, {}, None),
+    ]
+    failures = []
+    for lines, library, found_before, wanted in cases:
+        decoder, _ = callees(f=["ret"])
+        function = build(lines)
+        found = stackargs.x87_exits(function, {CODE: function, **decoder.functions}, library, found_before)
+        if (found and found[1]) != wanted and not (found is None and wanted is None):
+            failures.append(f"x87_exits gives {found} for {described(lines)} with {library} and {found_before}, "
+                            f"not {wanted}")
+    function = build([load, "nop", store, "ret"])
+    depths = stackargs.x87_exits(function, {CODE: function}, {}, {})
+    if depths is None or depths[0] != {CODE: 0, CODE + 1: 1, CODE + 2: 1, CODE + 3: 0}:
+        failures.append(f"x87_exits gives {depths} for a load and a store, not the depths 0, 1, 1, 0")
+    decoder, _ = callees(f=["ret"])
+    function = build([load, store, F, load, "ret"])
+    depths = stackargs.x87_exits(function, {CODE: function, **decoder.functions}, {}, {})
+    if depths is None or depths[0] != {CODE: 0, CODE + 1: 1, CODE + 2: 0, CODE + 3: 0}:
+        failures.append(f"x87_exits gives {depths} for a load after a call, not the depths 0, 1, 0, 0 up to it")
+    return failures
+
+
+def check_settle() -> list[str]:
+    """settle says per function whether every exit leaves a float in st0 (True) or none does (False). An open result
+    adds what its callee leaves. A function with exits that disagree, two values, a result of something unknown, a
+    callee left out, an open float over a value, an UNCLEAR exit, or no flow is left out."""
+    exit_, unknown = stackargs.Exit, stackargs.UNKNOWN
+    flows = {1: ({}, {exit_(1, None)}), 2: ({}, {exit_(0, None)}), 3: ({}, {exit_(0, 1)}), 4: ({}, {exit_(0, 5)}),
+             5: None, 6: ({}, {exit_(1, None), exit_(0, None)}), 7: ({}, {exit_(2, None)}),
+             8: ({}, {exit_(0, unknown)}), 9: ({}, {exit_(0, 10)}), 10: ({}, {exit_(0, 9)}),
+             11: ({}, {exit_(0, 3)}), 12: ({}, {exit_(0, 2)}), 13: ({}, {exit_(1, 2)}), 14: ({}, {exit_(1, 1)}),
+             15: ({}, {exit_(0, None), stackargs.UNCLEAR})}
+    found = {}
+    stackargs.settle(flows, found)
+    wanted = {1: True, 2: False, 3: True, 11: True, 12: False, 13: True}
+    return [] if found == wanted else [f"settle gives {found}, not {wanted}"]
+
+
+def check_leaves_float() -> list[str]:
+    """leaves_float follows again the functions without an answer once a round answers more, so a load after a call
+    to a callee that leaves a float or none is cleared. It gives the flow of each function too."""
+    load, store = "fld dword ptr [0x500000]", "fstp dword ptr [0x500000]"
+    cases = [([load, "ret"], [F, load, "faddp st(1), st0", "ret"], True),
+             (["ret"], [F, load, "ret"], True), (["ret"], [F, load, store, "ret"], False)]
+    failures = []
+    for callee_lines, lines, wanted in cases:
+        decoder, _ = callees(f=callee_lines)
+        function = build(lines)
+        found, flows = stackargs.leaves_float({CODE: function, **decoder.functions}, {})
+        if found.get(CODE) != wanted or flows.get(CODE) is None:
+            failures.append(f"leaves_float gives {found} and {flows} for {described(lines)} after a callee "
+                            f"{described(callee_lines)}, not {wanted} for the function")
+    return failures
+
+
+def check_reads_float_result() -> list[str]:
+    """reads_float_result says whether the first x87 instruction after a call uses st0: any that is no load. A call,
+    a ret and a load end a path, a control instruction does not, and one path is enough."""
+    load, store = "fld dword ptr [0x500000]", "fstp dword ptr [0x500000]"
+    cases = [([F, store, "ret"], True), ([F, load, store, "ret"], False), ([F, "ret"], False),
+             ([F, "mov eax, 1", "fadd dword ptr [0x500000]", "ret"], True), ([F, F, store, "ret"], False),
+             ([F, "fnstsw ax", "fchs", "ret"], True), ([F, "test eax, eax", "je @4", "fchs", "ret"], True),
+             ([F, "test eax, eax", "je @4", load, "ret"], False)]
+    return [f"reads_float_result gives {found} for {described(lines)}, not {wanted}" for lines, wanted in cases
+            if (found := stackargs.reads_float_result(function := build(lines), function.code[0])) != wanted]
+
+
+def check_float_callers() -> list[str]:
+    """float_callers counts, per game function that a call reaches, the calls that use st0 right after it returns
+    and all the calls. A call with a value on the x87 stack already, or in a function whose x87 stack is unclear,
+    does not count as using st0."""
+    store = "fstp dword ptr [0x500000]"
+    callee = build(["ret"], CALLEE)
+    lines = [F, store, F, store, "ret"]
+    function = build(lines)
+    functions = {CODE: function, CALLEE: callee}
+    exits = {stackargs.Exit(0, None)}
+    cases = [({CODE: ({CODE: 0, CODE + 2: 0}, exits), CALLEE: None}, (2, 2)),
+             ({CODE: ({CODE: 0, CODE + 2: 1}, exits), CALLEE: None}, (1, 2)),
+             ({CODE: None, CALLEE: None}, (0, 2))]
+    return [f"float_callers gives {found} for {described(lines)} with {flows}, not {{{CALLEE}: {wanted}}}"
+            for flows, wanted in cases if (found := stackargs.float_callers(functions, flows)) != {CALLEE: wanted}]
+
+
+def check_float_verdict() -> list[str]:
+    """float_verdict says float-return when the declaration returns no float and a call uses st0, and
+    no-float-return when it returns a float, no call uses st0 and the function leaves none."""
+    cases = [(False, True, 2, "float-return"), (False, None, 1, "float-return"), (False, False, 0, None),
+             (False, True, 0, None), (True, False, 0, "no-float-return"), (True, None, 0, None),
+             (True, False, 1, None), (True, True, 0, None)]
+    return [f"float_verdict gives {found} for {args}, not {wanted}" for *args, wanted in cases
+            if (found := stackargs.float_verdict(*args)) != wanted]
+
+
+def check_first_read() -> list[str]:
+    """first_read gives the lowest address that reads a register before any write to it, and None when nothing
+    does. A call may change ecx, so a read after it is no read of the argument."""
+    cases = [(["mov eax, ecx", "ret"], x86.ECX, 0), (["mov ecx, 1", "mov eax, ecx", "ret"], x86.ECX, None),
+             (["test eax, eax", "je @4", "mov ecx, 1", "nop", "mov eax, ecx", "ret"], x86.ECX, 4),
+             (["mov edx, 1", "mov eax, ecx", "mov ebx, edx", "ret"], x86.EDX, None),
+             ([F, "mov eax, ecx", "ret"], x86.ECX, None), (["ret"], x86.ECX, None),
+             (["mov eax, dword ptr [edx + 8]", "ret"], x86.EDX, 0)]
+    return [f"first_read gives {found} for {described(lines)} and {register}, not {wanted}"
+            for lines, register, wanted in cases
+            if (found := stackargs.first_read(build(lines), register)) != (None if wanted is None else CODE + wanted)]
+
+
+def check_declared_scalar() -> list[str]:
+    """declared_scalar gives the bytes, the kind and whether it is an array for a scalar declaration, and None for
+    a struct."""
+    cases = [("int DAT_1", (4, "int", False)), ("float DAT_1[4]", (4, "float", True)),
+             ("unsigned char DAT_1", (1, "int", False)), ("struct task *DAT_1", (4, "int", False)),
+             ("double DAT_1", (8, "float", False)), ("static const int DAT_1", (4, "int", False)),
+             ("short DAT_1[2][3]", (2, "int", True)), ("struct Foo DAT_1", None), ("struct Foo DAT_1[2]", None)]
+    return [f"declared_scalar gives {found} for `{decl}`, not {wanted}" for decl, wanted in cases
+            if (found := stackargs.declared_scalar(decl, "DAT_1")) != wanted]
+
+
+def check_use_fits() -> list[str]:
+    """use_fits says whether an access can be to a scalar of a size and kind: the same width and kind, an int move
+    of a float, or a dword int move of half a double."""
+    use = stackargs.Use
+    cases = [(use(0, 4, "float", False), 4, "float", True), (use(0, 4, "int", False), 4, "float", True),
+             (use(0, 4, "float", False), 4, "int", False), (use(0, 1, "int", False), 4, "int", False),
+             (use(0, 4, "int", False), 8, "float", True), (use(0, 4, "float", False), 8, "float", False),
+             (use(0, 8, "float", False), 8, "float", True), (use(0, 8, "float", False), 4, "float", False)]
+    return [f"use_fits gives {found} for {a_use}, {size} and {value}, not {wanted}"
+            for a_use, size, value, wanted in cases if (found := stackargs.use_fits(a_use, size, value)) != wanted]
+
+
+def check_width_conflict() -> list[str]:
+    """width_conflict says a global is declared wrong when it has reads and none fits its width and kind. Writes do
+    not count, and neither do the dword reads of an array of bytes or words."""
+    use = stackargs.Use
+    cases = [((4, "int", False), {use(0, 1, "int", False): [1]}, True),
+             ((4, "int", False), {use(0, 1, "int", True): [1]}, False),
+             ((4, "int", False), {use(0, 1, "int", False): [1], use(0, 4, "int", False): [2]}, False),
+             ((1, "int", True), {use(0, 4, "int", False): [1]}, False),
+             ((1, "int", False), {use(0, 4, "int", False): [1]}, True),
+             ((4, "int", False), {use(0, 4, "float", False): [1]}, True),
+             ((4, "float", False), {use(0, 2, "int", False): [1]}, True), ((4, "int", False), {}, False)]
+    return [f"width_conflict gives {found} for {declared} and {uses}, not {wanted}"
+            for declared, uses, wanted in cases if (found := stackargs.width_conflict(declared, uses)) != wanted]
+
+
+def check_uses_text() -> list[str]:
+    """uses_text names the kinds of access once each, in order."""
+    use = stackargs.Use
+    found = stackargs.uses_text({use(0, 4, "float", True): [1], use(0, 1, "int", False): [1],
+                                 use(2, 1, "int", False): [2]})
+    return [] if found == "byte int read, dword float written" else [f"uses_text gives {found!r}"]
+
+
+def check_global_uses() -> list[str]:
+    """global_uses gives, per known global, each kind of access to its bytes by an absolute address with the
+    functions that make it: the offset, the width, int or float and whether it is only a write. A lea is no access."""
+    namer = namer_of([dossier.Global(DATA, 4, "Foo", "int Foo")])
+    use = stackargs.Use
+    first = build(["mov eax, dword ptr [0x501000]", "mov byte ptr [0x501002], 1", "lea eax, [0x501000]",
+                   "mov eax, dword ptr [0x509000]", "ret"])
+    second = build(["fld dword ptr [0x501000]", "mov eax, dword ptr [0x501000]", "ret"], CALLEE)
+    found = stackargs.global_uses({CODE: first, CALLEE: second}, namer)
+    wanted = {DATA: {use(0, 4, "int", False): [CODE, CALLEE], use(2, 1, "int", True): [CODE],
+                     use(0, 4, "float", False): [CALLEE]}}
+    return [] if found == wanted else [f"global_uses gives {found}, not {wanted}"]
+
+
+TASK_TYPES = """struct task {
+    struct task *next;
+    void (*exec)(struct task *);
+    struct taskwk *twp;
+};
+static_assert(sizeof(task) == 0xc, "sizeof task");
+static_assert(offsetof(task, next) == 0x0, "task::next");
+static_assert(offsetof(task, exec) == 0x4, "task::exec");
+static_assert(offsetof(task, twp) == 0x8, "task::twp");
+
+struct taskwk {
+    signed char mode;
+    signed char smode;
+    short flag;
+    union {
+        unsigned char b[4];
+        float f;
+    } counter;
+};
+static_assert(sizeof(taskwk) == 0x8, "sizeof taskwk");
+static_assert(offsetof(taskwk, mode) == 0x0, "taskwk::mode");
+static_assert(offsetof(taskwk, smode) == 0x1, "taskwk::smode");
+static_assert(offsetof(taskwk, flag) == 0x2, "taskwk::flag");
+static_assert(offsetof(taskwk, counter) == 0x4, "taskwk::counter");
+
+struct Bits {
+    int a : 3;
+};
+static_assert(sizeof(Bits) == 0x4, "sizeof Bits");
+static_assert(offsetof(Bits, a) == 0x0, "Bits::a");
+
+struct Hole {
+    struct Missing m;
+};
+static_assert(sizeof(Hole) == 0x4, "sizeof Hole");
+static_assert(offsetof(Hole, m) == 0x0, "Hole::m");
+
+struct Unplaced {
+    int a;
+};
+static_assert(sizeof(Unplaced) == 0x4, "sizeof Unplaced");
+"""
+
+
+def with_task_types(check) -> list[str]:
+    """The failures of CHECK, which takes a names.Types of TASK_TYPES."""
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text(TASK_TYPES, encoding="utf-8")
+        return check(names.Types(path))
+
+
+def check_struct_leaves() -> list[str]:
+    """struct_leaves gives the scalars of a struct with their offsets: a pointer for a pointer or function pointer,
+    each member of a union from the union's start, and None for a bit field, a member of unknown layout, a member
+    without an offsetof assert and a struct that is not there."""
+    leaf = stackargs.Leaf
+    cases = [("task", [leaf(0, 4, "pointer"), leaf(4, 4, "pointer"), leaf(8, 4, "pointer")]),
+             ("taskwk", [leaf(0, 1, "int"), leaf(1, 1, "int"), leaf(2, 2, "int"), leaf(4, 1, "int"),
+                         leaf(5, 1, "int"), leaf(6, 1, "int"), leaf(7, 1, "int"), leaf(4, 4, "float")]),
+             ("Bits", None), ("Hole", None), ("Unplaced", None), ("Nothing", None)]
+
+    def check(types):
+        return [f"struct_leaves gives {found} for {name}, not {wanted}" for name, wanted in cases
+                if (found := stackargs.struct_leaves(types, name)) != wanted]
+    return with_task_types(check)
+
+
+def check_fits_struct() -> list[str]:
+    """fits_struct says an access can be to a struct when a float access meets a float scalar of the same offset
+    and width, an int access lies over scalars, and a byte or a word lies over no pointer."""
+    use = stackargs.Use
+    cases = [(use(4, 4, "float", False), False, True), (use(0, 1, "int", False), False, True),
+             (use(0, 4, "int", False), True, True), (use(8, 4, "int", False), True, False),
+             (use(1, 4, "int", False), True, True), (use(0xc, 4, "int", False), False, False),
+             (use(4, 2, "int", False), False, True), (use(8, 2, "int", False), False, False),
+             (use(6, 4, "float", False), False, False)]
+
+    def check(types):
+        failures = []
+        for a_use, on_task, on_taskwk in cases:
+            for name, wanted in (("task", on_task), ("taskwk", on_taskwk)):
+                found = stackargs.fits_struct(stackargs.struct_leaves(types, name), a_use)
+                if found != wanted:
+                    failures.append(f"fits_struct gives {found} for {a_use} on {name}, not {wanted}")
+        return failures
+    return with_task_types(check)
+
+
+def check_struct_confusion() -> list[str]:
+    """struct_confusion gives the other struct of the task and taskwk pair when every access fits it and one does
+    not fit the declared one. It gives None when the accesses fit both or neither, when there are none and when a
+    layout is unknown."""
+    use = stackargs.Use
+    cases = [("task", {use(4, 4, "float", False)}, "taskwk"), ("task", {use(0, 1, "int", False)}, "taskwk"),
+             ("task", {use(0, 4, "int", False)}, None), ("task", {use(0x10, 4, "int", False)}, None),
+             ("task", set(), None), ("taskwk", {use(8, 4, "int", False)}, "task"),
+             ("taskwk", {use(4, 4, "float", False)}, None), ("taskwk", {use(0xc, 4, "int", False)}, None),
+             ("taskwk", {use(8, 4, "int", False), use(4, 4, "float", False)}, None)]
+
+    def check(types):
+        failures = []
+        for declared, uses, wanted in cases:
+            if (found := stackargs.struct_confusion(declared, uses, types)) != wanted:
+                failures.append(f"struct_confusion gives {found} for {declared} and {uses}, not {wanted}")
+        return failures
+    return with_task_types(check)
+
+
+def check_pointer_uses() -> list[str]:
+    """pointer_uses gives the accesses through the pointer that a function takes at a stack slot: the offset from
+    the pointer, the width and int or float. It follows a copy of the pointer in a register, reads the slot at
+    [ebp + n] with a frame and at [esp + n - 4] without, and ignores the other parameters. It gives None without a
+    frame when ebp is used for something else, and when two paths reach one instruction with different esp."""
+    use = stackargs.Use
+    frame = ["push ebp", "mov ebp, esp"]
+    cases = [
+        (frame + ["mov eax, dword ptr [ebp + 8]", "fld dword ptr [eax + 4]", "movzx ecx, byte ptr [eax + 1]",
+                  "mov edx, dword ptr [ebp + 0xc]", "mov ecx, dword ptr [edx]", "pop ebp", "ret"], 8,
+         {use(4, 4, "float", False), use(1, 1, "int", False)}),
+        (frame + ["mov eax, dword ptr [ebp + 0xc]", "mov esi, eax", "mov ecx, dword ptr [esi + 0x10]", "pop ebp",
+                  "ret"], 0xc, {use(0x10, 4, "int", False)}),
+        (frame + ["mov eax, dword ptr [ebp + 8]", "pop ebp", "ret"], 8, set()),
+        (["mov eax, dword ptr [esp + 4]", "fld dword ptr [eax + 8]", "ret"], 8, {use(8, 4, "float", False)}),
+        (["mov eax, dword ptr [esp + 8]", "mov ecx, dword ptr [eax]", "ret"], 0xc, {use(0, 4, "int", False)}),
+        (["mov eax, dword ptr [ebp + 8]", "ret"], 8, None),
+        (["test eax, eax", "je @3", "push eax", "ret"], 8, None),
+    ]
+    failures = []
+    for lines, slot, wanted in cases:
+        decoder, sizes = callees()
+        found = stackargs.pointer_uses(build(lines), decoder, sizes, slot)
+        if found != wanted:
+            failures.append(f"pointer_uses gives {found} for {described(lines)} at {slot}, not {wanted}")
+    return failures
+
+
+def check_pointer_slots() -> list[str]:
+    """pointer_slots gives the struct and the [ebp + n] slot of each parameter declared as a pointer to a task or a
+    taskwk, with the sizes of the parameters before it counted. It is empty for a convention that passes registers
+    and stops at a parameter of unknown size."""
+    cases = [("void f(struct task *tp, int a, struct taskwk *twp)", [("task", 8), ("taskwk", 16)]),
+             ("void f(struct taskwk *twp)", [("taskwk", 8)]), ("void __fastcall f(struct task *tp)", []),
+             ("void __thiscall f(struct task *tp)", []), ("void f(double d, struct task *tp)", [("task", 16)]),
+             ("void f(struct Unknown u, struct task *tp)", []), ("void f(const struct task *tp)", [("task", 8)]),
+             ("void f(struct task **tpp)", []), ("void f(void)", []), ("int x", [])]
+
+    def check(types):
+        return [f"pointer_slots gives {found} for `{proto}`, not {wanted}" for proto, wanted in cases
+                if (found := stackargs.pointer_slots(proto, types)) != wanted]
+    return with_task_types(check)
 
 
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
     for check in (check_saved_offset, check_arguments_passed, check_arguments_read, check_parameter_bytes,
-                  check_verdict, check_unexplained_registers):
+                  check_verdict, check_unexplained_registers, check_members_of, check_is_method,
+                  check_returned_type, check_register_parameters, check_x87_change, check_library_change,
+                  check_x87_exits, check_settle, check_leaves_float,
+                  check_reads_float_result, check_float_callers, check_float_verdict, check_first_read,
+                  check_declared_scalar, check_use_fits, check_width_conflict, check_uses_text, check_global_uses,
+                  check_struct_leaves, check_fits_struct, check_struct_confusion, check_pointer_uses,
+                  check_pointer_slots):
         failures += check()
     return failures
