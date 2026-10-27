@@ -57,10 +57,12 @@ void punchColliSet()
 	DAT_060bcea4 = (int)var1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006df170
 void RoboPunch_Init()
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006df1f0
 void FUN_006df1f0()

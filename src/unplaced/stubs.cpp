@@ -2172,6 +2172,11 @@ void PoliceMoveToHome(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
+// STUB: SADX 0x005d0b30
+void SetDisplayBossName(char *str, int xpos, int ypos, int time)
+{
+}
+
 // STUB: SADX 0x005d1430
 void late_ChaosLifeGaugeDisplay(struct task *)
 {
@@ -2734,6 +2739,11 @@ void DrawSaltWater3D_20(unsigned long *pu32SaltStat)
 {
 }
 
+// STUB: SADX 0x006c2010
+void InitIndirectEffect3D_20()
+{
+}
+
 // STUB: SADX 0x006c4150
 void egm1bakuhatsu_exec(struct task *)
 {
@@ -2741,16 +2751,6 @@ void egm1bakuhatsu_exec(struct task *)
 
 // STUB: SADX 0x006c4a00
 void egm1ground_clay_exec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x006c71d0
-void BuilGDisp(struct task *tp)
-{
-}
-
-// STUB: SADX 0x006c73e0
-void BuilGExec(struct task *tp)
 {
 }
 
@@ -2794,11 +2794,6 @@ void EffSmoke(struct NJS_POINT3 *pPos, float fScale)
 {
 }
 
-// STUB: SADX 0x006dd200
-void FUN_006dd200(void *)
-{
-}
-
 // STUB: SADX 0x006df750
 long chkColli()
 {
@@ -2832,6 +2827,11 @@ void Chaos2ColumnDispay(struct task *tp)
 
 // STUB: SADX 0x006eae60
 void BossChaos2(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006ed8e0
+void BallBubble(struct task *tp)
 {
 }
 
@@ -2911,11 +2911,6 @@ void CameraChaos7_0Adv(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
-// STUB: SADX 0x00701cc0
-void objDisplayR(struct task *tp)
-{
-}
-
 // STUB: SADX 0x007021c0
 void execChaos7Object(struct task *tp)
 {
@@ -2933,11 +2928,6 @@ void execChaos7Road(struct task *tp)
 
 // STUB: SADX 0x00703b70
 void execChaos7Building(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00706930
-void SetE101(void)
 {
 }
 

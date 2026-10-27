@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct obj *DAT_02833c70;
+extern struct NJS_TEXLIST texlist_egm3mdl;
+extern int DAT_05b9d838;
 extern struct obj *egm3_object_list[];
 extern struct anywk *DAT_060ba008;
 extern float DAT_060ba100[16];
@@ -40,14 +43,42 @@ void EV_EggViperEggmanHikkomu()
 	*(char *)(DAT_060ba008->work.ptr[8]) = 3;
 }
 
-// STUB: SADX 0x00903140
+// FUNCTION: SADX 0x00903140
 void EV_EggViperJoushou()
 {
+	*(char *)DAT_060ba008->work.ptr[8] = 4;
 }
 
-// STUB: SADX 0x00903490
+// FUNCTION: SADX 0x00903490
 void EV_EggmanDraw(struct task *tp)
 {
+	struct taskwk *var1;
+	struct anywk *var2;
+
+	var1 = tp->twp;
+	var2 = tp->awp;
+	if (DAT_05b9d838 == 0)
+	{
+		SaveConstantAttr();
+		___njSetTexture(&texlist_egm3mdl);
+		njPushMatrix(0);
+		FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
+		if (var1->ang.y != 0)
+		{
+			njRotateY(0, (unsigned short)var1->ang.y);
+		}
+		if (var1->ang.x != 0)
+		{
+			njRotateX(0, (unsigned short)var1->ang.x);
+		}
+		if (var1->ang.z != 0)
+		{
+			njRotateZ(0, (unsigned short)var1->ang.z);
+		}
+		FUN_004a8800(DAT_02833c70, *(struct NJS_MOTION **)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1.0f);
+		njPopMatrix(1);
+		LoadConstantAttr();
+	}
 }
 
 // FUNCTION: SADX 0x009035a0

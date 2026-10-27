@@ -27,3 +27,8 @@ void egm1missile_disp(struct task *tp)
 	late_DrawObjectClipEx((struct obj *)&object_egg_m1_em_mis_em_mis, 0, 1.0f);
 	njPopMatrix(1);
 }
+
+// STUB: SADX 0x006c50b0
+void FUN_006c50b0(struct NJS_POINT3 *posp)
+{
+}

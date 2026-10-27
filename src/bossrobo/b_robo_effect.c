@@ -1,4 +1,8 @@
 #include "decls.h"
+void FUN_006dcd30(struct task *param_1);
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
+void *MAlloc(unsigned int size);
+void exec_ElectSegment(struct task *pTask);
 void disp_Emission(struct task *pTask);
 extern struct NJS_TEXLIST texlist_erobo;
 struct GHSPRITE_INIT_INFO {
@@ -80,10 +84,12 @@ void exec_Emission(struct task *pTask)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006dce70
 void disp_ElectSegment(struct task *pTask)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006dcec0
 void exec_ElectSegment(struct task *pTask)
@@ -103,6 +109,11 @@ void exec_ElectSegment(struct task *pTask)
 	{
 		disp_ElectSegment(pTask);
 	}
+}
+
+// STUB: SADX 0x006dcef0
+void EffElectSegment(struct NJS_POINT3 *pPos, float fRadius)
+{
 }
 
 // FUNCTION: SADX 0x006dd0b0
@@ -134,6 +145,13 @@ void disp_HandSpark(struct task *pTask)
 void exec_HandSpark(struct task *pTask)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x006dd200
+void FUN_006dd200(void *pSpr)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006dd280
 void EffHandSpark_Init()

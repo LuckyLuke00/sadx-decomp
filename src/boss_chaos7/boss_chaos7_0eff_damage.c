@@ -1,4 +1,6 @@
 #include "decls.h"
+static void objNormalR(struct task *tp);
+static void objDisplayR(struct task *tp);
 static void Display(struct task *tp);
 extern struct NJS_ARGB DAT_02b7ee4c;
 extern struct NJS_ARGB DAT_02b7ee5c;
@@ -102,8 +104,15 @@ void SetMistDisplayTask(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x00701cc0
+static void objDisplayR(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x00701dd0
-void objNormalR(struct task *tp)
+static void objNormalR(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	var1->counter.f = var1->counter.f + 0.33333334f;

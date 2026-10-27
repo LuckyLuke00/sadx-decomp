@@ -1,4 +1,6 @@
 #include "decls.h"
+static void objNormalR(struct task *tp);
+static void objDisplayR(struct task *tp);
 extern struct NJS_ARGB DAT_02b1148c;
 extern struct NJS_SPRITE sprite_breathp;
 extern struct NJS_TEXANIM anim_breathp[1];
@@ -8,9 +10,28 @@ extern struct NJS_TEXLIST texlist_chaos7_0breath;
 extern int DAT_060c36c4;
 extern int DAT_05b9d838;
 
-// STUB: SADX 0x006fedd0
+#pragma optimize("", off)
+// STUB: SADX 0x006feba0
+static void objDisplayR(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x006fed20
+static void objNormalR(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x006fedd0
 void Chaos7BreathRipple(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->counter.f = 0.0f;
+	var1->timer.b[1] = 0;
+	tp->exec = objNormalR;
+	tp->disp = objDisplayR;
 }
 
 // FUNCTION: SADX 0x006fedf0

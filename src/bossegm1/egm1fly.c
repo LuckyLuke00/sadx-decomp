@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct taskwk *DAT_05baf368[8];
 
 // STUB: SADX 0x006c2e40
 long GetVsPlayerAng(struct taskwk *twp)
