@@ -96,7 +96,54 @@ void LockedEnemyDead(struct task *tp)
 	tp->dest(tp);
 }
 
+// FUNCTION: SADX 0x007ebdf0
+int FUN_007ebdf0(int param_1)
+{
+	int *var1;
+
+	var1 = &DAT_060ce45c;
+	do
+	{
+		if (*var1 == param_1)
+		{
+			return 1;
+		}
+		var1++;
+	}
+	while ((int)var1 < 0x60ce474);
+	return 0;
+}
+
 // STUB: SADX 0x007ebe20
 void FUN_007ebe20(void)
 {
+}
+
+// FUNCTION: SADX 0x007ebe80
+void LockOnDead(struct task *tp)
+{
+	int var3;
+	struct task *var1;
+	struct taskwk *var2;
+	var3 = 0;
+	while (var3 < 6)
+	{
+		if ((*(int *)((char *)&DAT_060ce45c + var3 * 4) == 0) || (*(int *)((char *)&DAT_060ce45c + var3 * 4) != (int)tp->ptp))
+		{
+			var3 = var3 + 1;
+		}
+		else
+		{
+			*(int *)((char *)&DAT_060ce45c + var3 * 4) = 0;
+			break;
+		}
+	}
+	var1 = tp->ptp;
+	if (var1->awp != 0)
+	{
+		var2 = tp->twp;
+		var1->dest = (void (*)(struct task *))var2->counter.ptr;
+		var1->awp = 0;
+	}
+	tp->ptp = 0;
 }

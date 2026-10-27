@@ -3145,6 +3145,11 @@ void TornadeLifeGauge(struct task *tp)
 {
 }
 
+// STUB: SADX 0x007ecd30
+void FUN_007ecd30(struct task *)
+{
+}
+
 // STUB: SADX 0x007eecb0
 void KumoDisp(struct task *tp)
 {
@@ -3152,11 +3157,6 @@ void KumoDisp(struct task *tp)
 
 // STUB: SADX 0x007efca0
 void Tama1(struct task *tp)
-{
-}
-
-// STUB: SADX 0x007efec0
-void KumoInit(struct task *tp)
 {
 }
 
@@ -3864,7 +3864,7 @@ extern unsigned char FUN_0090cc60(int)
 }
 
 // STUB: SADX 0x0090ccb0
-unsigned char FUN_0090ccb0(int)
+extern unsigned char FUN_0090ccb0(int)
 {
 	return (unsigned char)0;
 }
@@ -3876,7 +3876,7 @@ int FUN_0090ccd0(int)
 }
 
 // STUB: SADX 0x0090ccf0
-void FUN_0090ccf0(int, int)
+extern void FUN_0090ccf0(int, int)
 {
 }
 

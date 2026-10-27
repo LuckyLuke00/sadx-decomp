@@ -4,6 +4,11 @@ extern float DAT_060ce60c;
 extern float DAT_060ce610;
 extern float DAT_060ce614;
 
+// STUB: SADX 0x007f0480
+void BossFire(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x007f0650
 void FUN_007f0650()
 {

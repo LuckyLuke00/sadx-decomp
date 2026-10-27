@@ -1,4 +1,5 @@
 #include "decls.h"
+extern float _nj_unit_matrix_[16];
 extern void njPushMatrix(float *);
 void njTranslateV(float *, struct NJS_POINT3 *);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
@@ -102,7 +103,20 @@ void Hodai2Set(struct task *tp)
 {
 }
 
-// STUB: SADX 0x007ee720
+// FUNCTION: SADX 0x007ee720
 void YarareMove(struct task *tp)
 {
+	struct taskwk *var1;
+	struct taskwk *var2;
+	struct NJS_POINT3 cpos;
+	cpos.x = 0.0f;
+	var1 = tp->twp;
+	cpos.y = -324.0f;
+	cpos.z = -1849.0f;
+	var2 = tp->ptp->twp;
+	njPushMatrix(_nj_unit_matrix_);
+	njTranslateV(0, &var2->pos);
+	njRotateXYZ(0, var2->ang.x, var2->ang.y, var2->ang.z);
+	njCalcPoint(0, &cpos, &var1->pos);
+	njPopMatrix(1);
 }
