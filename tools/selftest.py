@@ -18,6 +18,7 @@ from pathlib import Path
 
 import coff
 import declgen
+import library
 import link
 import names
 import osutil
@@ -70,6 +71,7 @@ def run() -> int:
     failures += check_declaration_keys()
     failures += check_decls_trees()
     failures += check_nested_globals()
+    failures += check_decls_aliases()
     failures += check_extern_of()
     failures += check_reached_types()
     failures += check_clone()
@@ -447,6 +449,31 @@ def check_nested_globals() -> list[str]:
         found, output, _ = run_decls(files, context_files, [], [], argb)
         if found != code or line not in output or (code == 0 and "inside" in output):
             failures.append(f"decls for {case} gives exit {found}, not {code}, and prints {output!r}, not {line!r}")
+    return failures
+
+
+def check_decls_aliases() -> list[str]:
+    """decls names the library function at a FUN_ address, as memset for the model's FUN_008e3350."""
+    target = project.game_config().target
+    functions = [("0x00402000", "FUN_00402000", "G", "src/lib.c", "o_lib.obj"),
+                 ("0x00403000", "DispX", "L", "src/x.c", "o_x.obj")]
+    globals_ = [("0x00501000", "obj_c_info", "o_x.obj"), ("0x00502000", "obj_c_info", "o_y.obj")]
+    clears = {"src/w.c": "void *FUN_00402000(void *, int, unsigned int);\nvoid Clear(void)\n{\n"
+                         "\tFUN_00402000(0, 0, 4);\n}\n"}
+    # (case, files, exit code, a line of the output, a line it must not print)
+    cases = [("a library function's address", clears, 0, "FUN_00402000 has the name memset: use that", None)]
+    saved = project.library_rows
+    project.library_rows = lambda: [library.Row(0x00402000, "memset", "_memset", "library")]
+    failures = []
+    try:
+        for case, files, code, line, absent in cases:
+            found, output, generated = run_decls(files, {}, functions, globals_)
+            externs = generated.get(names.GLOBALS_H, "")
+            if ((code is not None and found != code) or line not in output or (absent and absent in output)
+                    or case.endswith("not mean") and "DAT_00501000[]" not in externs):
+                failures.append(f"decls for {case} gives exit {found}, not {code}, and prints {output!r}")
+    finally:
+        project.library_rows = saved
     return failures
 
 
