@@ -401,11 +401,35 @@ struct NJS_ACTION action_train_base[1];
 // GLOBAL: SADX 0x01ccfb28
 struct NJS_TEXLIST texlist_ss_casino;
 
+// GLOBAL: SADX 0x01cd1970
+struct obj object_cajinoobj_casinostar_casinostar[1];
+
 // GLOBAL: SADX 0x01cd411c
 struct obj object_casinoobj_builg_builg[1];
 
+// GLOBAL: SADX 0x01cd4360
+union NJS_COLOR vuvS_0_casinoobj_builh_builhkabe[96];
+
+// GLOBAL: SADX 0x01cd5ae0
+struct obj object_casinoobj_builh_builh[1];
+
+// GLOBAL: SADX 0x01cd5ba4
+union NJS_COLOR vuvS_1_casinoobj_casinobuil_nc_casinoneon[12];
+
+// GLOBAL: SADX 0x01cd5fb0
+union NJS_COLOR vuvS_1_casinoobj_casinobuil_nc_casinosim[16];
+
+// GLOBAL: SADX 0x01cd5ff0
+union NJS_COLOR vuvS_2_casinoobj_casinobuil_nc_casinosim[70];
+
+// GLOBAL: SADX 0x01cd67e0
+union NJS_COLOR vuvS_2_casinoobj_casinobuil_es_casinoyane[16];
+
 // GLOBAL: SADX 0x01cd73bc
 struct obj object_casinoobj_casinobuil_casinobuil[1];
+
+// GLOBAL: SADX 0x01cd8000
+struct obj object_casinoobj_casinoji_casinoji[1];
 
 // GLOBAL: SADX 0x01e55450
 long TexBankList[6][3];
@@ -1525,9 +1549,6 @@ struct NJS_TEXLIST texlist_mapSS;
 
 // GLOBAL: SADX 0x026daf1c
 struct Tex_anim_land_work *land_works[7];
-
-// GLOBAL: SADX 0x026daf38
-struct obj *objs[4];
 
 // GLOBAL: SADX 0x026dcc68
 struct CCL_INFO obj_c_info[2];
