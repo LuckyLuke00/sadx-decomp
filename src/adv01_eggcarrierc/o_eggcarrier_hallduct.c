@@ -1,5 +1,12 @@
 #include "decls.h"
 
+#pragma optimize("", off)
+// STUB: SADX 0x006a3be0
+void DuctDisplayer(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x006a3c70
 void ObjectECHallDuct(struct task *tp)
 {

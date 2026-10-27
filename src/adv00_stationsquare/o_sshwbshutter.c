@@ -20,12 +20,25 @@ void ObjectDisplayMiles(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0068abe0
+// FUNCTION: SADX 0x0068abe0
 void ObjectBroken(struct task *tp)
 {
+	if (FUN_004c39c0(tp) != 0)
+	{
+		ObjectDisplayMiles(tp);
+	}
+	else if (CheckRangeOut(tp) == 0)
+	{
+		ObjectDisplayMiles(tp);
+	}
 }
 
 // STUB: SADX 0x0068ac10
 void ObjectMainMiles(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0068ada0
+void ObjectSSHwbshutter(struct task *tp)
 {
 }

@@ -6,10 +6,12 @@ void Object_EgaGun1Draw(struct task *tp)
 	Object_EgaGun1DrawStat(tp);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00698110
 void Object_EgaGun1Init(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00698170
 void ObjectEgaGun1(struct task *tp)

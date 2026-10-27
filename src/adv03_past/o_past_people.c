@@ -17,6 +17,11 @@ void pastp_exec_eveidle(struct task *task_p)
 {
 }
 
+// STUB: SADX 0x006bee20
+void ObjectPASTPeopleWait(struct task *task_p)
+{
+}
+
 // FUNCTION: SADX 0x006bf090
 void pastp_walk_man_eveidle(struct task *task_p)
 {

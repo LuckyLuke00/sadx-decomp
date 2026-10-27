@@ -1,9 +1,4 @@
 #include "decls.h"
-extern struct obj object_sscasinosikake_hnakagen_hnakagen[];
-extern struct obj object_sscasinosikake_hnakagen_2_hnakagen[];
-extern struct NJS_ACTION action_sscasinosikake_hnakagen[];
-extern short DAT_05b9d744;
-extern int DAT_05b9d838;
 extern unsigned char DAT_05bafb86;
 extern unsigned char DAT_05bafbc2;
 extern unsigned char DAT_05bafc02;

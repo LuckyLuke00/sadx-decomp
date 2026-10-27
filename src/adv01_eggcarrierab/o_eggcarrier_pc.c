@@ -16,10 +16,19 @@ void ECPcInitInit()
 	DAT_060b8328 = 0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00693850
 void ECPcDelete()
 {
 }
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x00693fd0
+void ECPcSet()
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006940d0
 void ecp_actman(struct task *task_p)

@@ -1,4 +1,6 @@
 #include "decls.h"
+static void Exec(struct task *tp);
+void FUN_00689420(struct task *param_1);
 long SeqCheckTenbou();
 void BoxInit(struct task *tp);
 
@@ -17,6 +19,37 @@ long SeqCheckTenbou()
 // STUB: SADX 0x00689580
 void ColliSet(struct taskwk *twp)
 {
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x006895f0
+static void Exec(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x006898a0
+void FUN_006898a0(struct task *param_1)
+{
+	struct taskwk *var1 = param_1->twp;
+
+	if (CheckRangeOut(param_1) == 0)
+	{
+		if (FUN_004c39c0(param_1) == 0)
+		{
+			if (var1->timer.ptr != 0)
+			{
+				if (((int (*)(void))var1->timer.ptr)() != 0)
+				{
+					var1->mode = 0;
+					param_1->exec = Exec;
+				}
+			}
+			EntryColliList(var1);
+			LoopTaskC(param_1);
+		}
+		FUN_00689420(param_1);
+	}
 }
 
 // FUNCTION: SADX 0x00689900

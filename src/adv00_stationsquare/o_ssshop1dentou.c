@@ -1,5 +1,4 @@
 #include "decls.h"
-extern struct obj object_ssshop1dentou_dentou;
 
 // FUNCTION: SADX 0x0068d1d0
 void dispSSShop1Dentou(struct task *tp)
@@ -19,4 +18,9 @@ void dispSSShop1Dentou(struct task *tp)
 	___njSetTexture((struct NJS_TEXLIST *)var1->value.ptr);
 	ds_DrawObjectClip((struct obj *)var1->counter.ptr, 1.0f);
 	njPopMatrix(1);
+}
+
+// STUB: SADX 0x0068d300
+void ObjectSSShop1Dentou(struct task *tp)
+{
 }
