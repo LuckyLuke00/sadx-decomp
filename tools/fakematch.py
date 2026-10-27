@@ -12,6 +12,8 @@ The kinds:
   empty_statement  a lone ;, or an if, for or while (not the end of a do) with an empty body
   empty_block      { then } inside a function body
   unused_local     a local that is declared and never used again: it only fills the frame
+  address_number   the address of a DAT_ that is not a multiple of 4 cast to an integer, such as (int)&DAT_04000002:
+                   such a number is nearly always a flag or a count, not the address of a global
 
 llm.py --refuse-fakematch refuses a 100% try with one of them. Standard library only.
 """
@@ -41,6 +43,7 @@ PATTERNS = {
                             r"\s*&?\s*(?:\w+|\(\s*\w+\s*\))\s*\)\s*\("
                             r"|reinterpret_cast\s*<[^<>]*\(\s*(?:__\w+\s*)?\*\s*\)[^<>]*>\s*\(\s*&?\s*\w+\s*\)\s*\("),
     "constant_test": re.compile(r"\b(?:if\s*\(\s*[01]\s*\)|while\s*\(\s*0\s*\))"),
+    "address_number": re.compile(r"\(\s*(?:unsigned\s+)?(?:int|long)\s*\)\s*&\s*DAT_[0-9a-fA-F]{7}[^\W048cC]\b"),
 }
 HEAD = re.compile(r"\s*(?:if|for|while)\s*\(")
 
