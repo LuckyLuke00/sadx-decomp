@@ -342,32 +342,41 @@ def write(context: Path | None, tables: Path | None) -> int:
 
     # Globals: every canonical or address name that a source uses.
     global_name = {a: n for n, a in gnames.items()}
-    used_globals = set()
-    for tok in tokens:
-        if tok in gnames:
-            used_globals.add(gnames[tok])
-        elif re.fullmatch(r"DAT_[0-9a-f]{8}", tok):
-            a = int(tok[4:], 16)
-            if a in glob:
-                problems.append(f"{tok} has the name {glob[a]['name']}: use that")
-            used_globals.add(a)
     # A name that several addresses share is one static in each object: a file means the one in an object it defines
     # functions of.
     objects = collections.defaultdict(set)
     for a, d in list(defined_funcs.items()) + list(context_funcs.items()):
         if a in funcs and funcs[a].get("object"):
             objects[d[0]].add(funcs[a]["object"])
-    context_shared = set()  # the addresses that the context's files mean by a shared name
-    for tokens_of, used in ((file_tokens, used_globals), (context_tokens, context_shared)):
+
+    def meant(name, rel):
+        """The address that rel means by name, a name several globals share, else None."""
+        here = [a for a in shared_globals[name] if glob[a].get("object") in objects[rel]]
+        return here[0] if len(here) == 1 else None
+
+    # The addresses that this tree's files, and the context's, mean by a shared name.
+    resolved, context_shared = set(), set()
+    for tokens_of, used in ((file_tokens, resolved), (context_tokens, context_shared)):
         for rel, found in tokens_of.items():
-            for tok in found & shared_globals.keys():
-                here = [a for a in shared_globals[tok] if glob[a].get("object") in objects[rel]]
-                if len(here) == 1:
-                    used.add(here[0])
+            used |= {meant(tok, rel) for tok in found & shared_globals.keys()} - {None}
+    used_globals = set(resolved)
+    placeholders = set()  # the DAT_ names whose shared name a file that uses them would not mean them by: they stay
+    for tok in tokens:
+        if tok in gnames:
+            used_globals.add(gnames[tok])
+        elif re.fullmatch(r"DAT_[0-9a-f]{8}", tok):
+            a = int(tok[4:], 16)
+            name = glob[a]["name"] if a in glob else None
+            if (name in shared_globals and a not in resolved
+                    and any(meant(name, rel) != a for rel, found in file_tokens.items() if tok in found)):
+                placeholders.add(a)
+            elif name:
+                problems.append(f"{tok} has the name {name}: use that")
+            used_globals.add(a)
     externs, gdefs = {}, {}
     unsized = set()  # globals that stubs give one element, though their size is unknown
     for a in sorted(used_globals | set(defined_globals)):
-        row = glob.get(a)
+        row = dict(glob[a], name=f"DAT_{a:08x}") if a in placeholders else glob.get(a)
         name = row["name"] if row else global_name.get(a, f"DAT_{a:08x}")
         d = defined_globals.get(a)
         if d:

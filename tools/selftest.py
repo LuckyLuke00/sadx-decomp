@@ -453,15 +453,23 @@ def check_nested_globals() -> list[str]:
 
 
 def check_decls_aliases() -> list[str]:
-    """decls names the library function at a FUN_ address, as memset for the model's FUN_008e3350."""
+    """decls names the library function at a FUN_ address, as memset for the model's FUN_008e3350. A data name that
+    two objects share stays DAT_ in a file that would not mean that address by it: no notice, and the extern keeps
+    the DAT_ name. A file that would mean it gets the notice."""
     target = project.game_config().target
     functions = [("0x00402000", "FUN_00402000", "G", "src/lib.c", "o_lib.obj"),
                  ("0x00403000", "DispX", "L", "src/x.c", "o_x.obj")]
     globals_ = [("0x00501000", "obj_c_info", "o_x.obj"), ("0x00502000", "obj_c_info", "o_y.obj")]
     clears = {"src/w.c": "void *FUN_00402000(void *, int, unsigned int);\nvoid Clear(void)\n{\n"
                          "\tFUN_00402000(0, 0, 4);\n}\n"}
+    shared = {"src/w.c": "extern int DAT_00501000[];\nvoid Use(void)\n{\n\tDAT_00501000[0] = 1;\n}\n"}
+    meant = {"src/x.c": f"// FUNCTION: {target} 0x00403000\nstatic void DispX(struct task *tp)\n{{\n"
+                        "\tDAT_00501000[0] = 1;\n}\n"}
+    notice = "DAT_00501000 has the name obj_c_info: use that"
     # (case, files, exit code, a line of the output, a line it must not print)
-    cases = [("a library function's address", clears, 0, "FUN_00402000 has the name memset: use that", None)]
+    cases = [("a library function's address", clears, 0, "FUN_00402000 has the name memset: use that", None),
+             ("a shared data name that the file would not mean", shared, 0, "decls:", notice),
+             ("a shared data name that the file would mean", meant, None, notice, None)]
     saved = project.library_rows
     project.library_rows = lambda: [library.Row(0x00402000, "memset", "_memset", "library")]
     failures = []
