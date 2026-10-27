@@ -1,10 +1,14 @@
 #include "decls.h"
+extern int DAT_00a57ba4;
+void FUN_00907d40(void);
 int FUN_007f2180();
 int FUN_007f2190();
 
-// STUB: SADX 0x00906d90
+// FUNCTION: SADX 0x00906d90
 void __fastcall FUN_00906d90(void *param_1)
 {
+	*(int *)param_1 = (int)&DAT_00a57ba4;
+	FUN_00907d40();
 }
 
 // FUNCTION: SADX 0x00906db0

@@ -2,7 +2,6 @@
 
 #pragma once
 
-extern float DAT_00956608;
 extern short DAT_00956b1c[13];
 extern const unsigned long nbMaxEntry[11];
 extern int DAT_0095c0a0[256];
@@ -86,7 +85,11 @@ extern struct NJS_POINT3 posRoundCenter;
 extern void (*DAT_00a34538[5])(struct task *);
 extern void (*DAT_00a34568[4])(struct task *);
 extern void (*DAT_00a357e8[3])(struct task *);
+extern int DAT_00a443c4;
+extern int DAT_00a57ba4;
+extern int DAT_00a57f84;
 extern int DAT_00a5a974;
+extern int DAT_00a5aa00;
 extern unsigned int DAT_01c6e428;
 extern unsigned int DAT_01c6e42c;
 extern short DAT_01c6e868[13];

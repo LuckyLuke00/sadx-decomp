@@ -1,4 +1,7 @@
 #include "decls.h"
+struct SandSmokeParam {
+	int h;
+};
 extern char DAT_035af758[1];
 extern char DAT_035af714[1];
 extern void njPushMatrix(float *);
@@ -69,4 +72,9 @@ void dispWorm(struct task *task_p)
 void destWorm(struct task *task_p)
 {
 	MirenObjFreeMobileLandObject(task_p, *(struct obj **)((char *)task_p->mwp + 0xc));
+}
+
+// STUB: SADX 0x007e9180
+void controlEffect(struct task *task_p)
+{
 }

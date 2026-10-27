@@ -21,12 +21,12 @@ char FUN_00908790(int param_1)
 }
 
 // STUB: SADX 0x00908890
-void __fastcall FUN_00908890(struct FUN_00908890_0 *param_1, unsigned int param_2)
+void __fastcall FUN_00908890(struct FUN_00908890_0 *param_1, unsigned int param_2, int param_3)
 {
 }
 
 // STUB: SADX 0x009088c0
-void __fastcall FUN_009088c0(int param_1, int param_2)
+void __fastcall FUN_009088c0(int param_1, int param_2, int param_3)
 {
 }
 

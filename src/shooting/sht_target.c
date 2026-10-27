@@ -53,6 +53,39 @@ void InvertPos(struct task *tp)
 	njPopMatrix(1);
 }
 
+// FUNCTION: SADX 0x007ebc00
+void LockOnDisp(struct task *tp)
+{
+	struct taskwk *var1;
+	struct NJS_POINT2 pd;
+
+	var1 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		if (StageEventCheck() == 0)
+		{
+			if (ChkPause() == 0)
+			{
+				njPushMatrix(NULL);
+				___njColorBlendingMode(0, 10);
+				___njColorBlendingMode(1, 10);
+				SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+				___njSetTexture(&lock_mk_list);
+				njProjectScreen(NULL, &var1->pos, &pd);
+				lock_mk_spr.p.x = pd.x;
+				lock_mk_spr.p.y = pd.y;
+				lock_mk_spr.sx = *(float *)((char *)var1 + 0x30) * ScreenRaitoY;
+				lock_mk_spr.sy = *(float *)((char *)var1 + 0x30) * ScreenRaitoY;
+				FUN_00472980(&lock_mk_spr, 2, 1000.0f, 0x22);
+				njPopMatrix(1);
+				___njColorBlendingMode(0, 8);
+				___njColorBlendingMode(1, 6);
+				ResetMaterial();
+			}
+		}
+	}
+}
+
 // FUNCTION: SADX 0x007ebd90
 void LockedEnemyDead(struct task *tp)
 {

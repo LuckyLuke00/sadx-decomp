@@ -2,9 +2,6 @@
 
 #include "decls.h"
 
-// GLOBAL: SADX 0x00956608
-float DAT_00956608;
-
 // GLOBAL: SADX 0x00956b1c
 short DAT_00956b1c[13];
 
@@ -167,9 +164,6 @@ struct ActionParam DAT_009c8ba8;
 // GLOBAL: SADX 0x009d4890
 char DAT_009d4890[1];
 
-// GLOBAL: SADX 0x00a098cc
-struct TaskInfo RdTaskInfo;
-
 // GLOBAL: SADX 0x00a09c28
 struct TaskInfo DAT_00a09c28;
 
@@ -199,9 +193,6 @@ struct ActionParam DAT_00a09fb0;
 
 // GLOBAL: SADX 0x00a0a32c
 struct TaskInfo DAT_00a0a32c;
-
-// GLOBAL: SADX 0x00a0a360
-struct TaskInfo DAT_00a0a360;
 
 // GLOBAL: SADX 0x00a0a678
 struct TaskInfo DAT_00a0a678;
@@ -242,8 +233,20 @@ void (*DAT_00a34568[4])(struct task *);
 // GLOBAL: SADX 0x00a357e8
 void (*DAT_00a357e8[3])(struct task *);
 
+// GLOBAL: SADX 0x00a443c4
+int DAT_00a443c4;
+
+// GLOBAL: SADX 0x00a57ba4
+int DAT_00a57ba4;
+
+// GLOBAL: SADX 0x00a57f84
+int DAT_00a57f84;
+
 // GLOBAL: SADX 0x00a5a974
 int DAT_00a5a974;
+
+// GLOBAL: SADX 0x00a5aa00
+int DAT_00a5aa00;
 
 // GLOBAL: SADX 0x01c6e428
 unsigned int DAT_01c6e428;

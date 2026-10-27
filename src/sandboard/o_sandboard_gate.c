@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05b9d838;
 extern struct TaskInfo DAT_00a0a940;
 extern struct ActionParam DAT_0353aef0;
 
