@@ -4,7 +4,6 @@ extern void stSetBaseMatrix(float (*)[16]);
 extern void njStartMotionObj(struct NJS_MOTION const *param_1, float param_2);
 extern void _njCnkPushPopMotion(struct cnkobj const *);
 void FUN_0041b120(int param_1,int param_2);
-void njStartMotionObj(struct param_1 const *, float);
 void _njCnkPushPopMotion(struct cnkobj const *);
 extern void _njCnkDrawObject(struct cnkobj *param_1);
 extern void FUN_0041b120(int param_1, int param_2);
