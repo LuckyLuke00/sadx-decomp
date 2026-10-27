@@ -1,11 +1,16 @@
 #include "decls.h"
+void FUN_007d21b0(...);
 extern struct NJS_TEXLIST texlist_al_odekake_menu;
 extern struct taskwk *DAT_05baf368[8];
 extern int DAT_05b33088;
 
-// STUB: SADX 0x0047a770
+// FUNCTION: SADX 0x0047a770
 void _al_odekake_epilog()
 {
+	___OutputDebugString("ChaoStgOdekake Epilog\n");
+	FUN_007d21b0();
+	AlgKinderAdExit();
+	PauseEnable();
 }
 
 // FUNCTION: SADX 0x0047a790
@@ -71,7 +76,11 @@ void AL_OdekakeStage(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0047a9c0
+// FUNCTION: SADX 0x0047a9c0
 void _al_odekake_prolog()
 {
+	___OutputDebugString("ChaoStgOdekake Prolog\n");
+	CreateElementalTask(2, 3, AL_OdekakeStage);
+	AlgKinderAdInit();
+	FUN_007d21b0();
 }

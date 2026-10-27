@@ -18,10 +18,12 @@ short FUN_00457a80(struct task *param_1)
 	return *(short *)((char *)param_1->twp + 0x6a6);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00457b90
 void AL_FaceSetMouth(struct task *tp, enum eAL_MOUTH_NUM MouthNum, long timer)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00457bf0
 short AL_FaceGetMouthDefaultNum(struct task *tp)

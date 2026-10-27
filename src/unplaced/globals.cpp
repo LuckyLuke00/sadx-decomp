@@ -32,6 +32,9 @@ const struct NJS_TEXANIM anim_dialog[32] = {};
 // GLOBAL: SADX 0x009617c4
 struct AlrData alrdata;
 
+// GLOBAL: SADX 0x00961adc
+struct TaskInfo DAT_00961adc;
+
 // GLOBAL: SADX 0x00961ed8
 long (*DAT_00961ed8[6])(struct task *, struct task *, signed char);
 
@@ -152,9 +155,6 @@ struct NJS_POINT3 DAT_009c610c;
 // GLOBAL: SADX 0x009c6620
 const char gsAdTexFilename[21] = {};
 
-// GLOBAL: SADX 0x009c8b18
-struct TaskInfo DAT_009c8b18;
-
 // GLOBAL: SADX 0x009c8b34
 struct ActionParam DAT_009c8b34;
 
@@ -172,9 +172,6 @@ struct TaskInfo RdTaskInfo;
 
 // GLOBAL: SADX 0x00a09c28
 struct TaskInfo DAT_00a09c28;
-
-// GLOBAL: SADX 0x00a09e8c
-struct TaskInfo DAT_00a09e8c;
 
 // GLOBAL: SADX 0x00a09ea4
 void *DAT_00a09ea4;
@@ -197,6 +194,9 @@ struct TaskInfo DAT_00a09ee8;
 // GLOBAL: SADX 0x00a09f08
 struct TaskInfo DAT_00a09f08;
 
+// GLOBAL: SADX 0x00a09fb0
+struct ActionParam DAT_00a09fb0;
+
 // GLOBAL: SADX 0x00a0a32c
 struct TaskInfo DAT_00a0a32c;
 
@@ -214,6 +214,15 @@ struct ActionParam DAT_00a0a970;
 
 // GLOBAL: SADX 0x00a0a978
 struct ActionParam DAT_00a0a978;
+
+// GLOBAL: SADX 0x00a0a9ac
+struct ActionParam DAT_00a0a9ac;
+
+// GLOBAL: SADX 0x00a0a9bc
+struct ActionParam DAT_00a0a9bc;
+
+// GLOBAL: SADX 0x00a0aa18
+struct ActionParam DAT_00a0aa18;
 
 // GLOBAL: SADX 0x00a0aa2c
 struct TaskInfo CactusTaskInfo;
@@ -4139,8 +4148,29 @@ void *DAT_05b06824;
 // GLOBAL: SADX 0x05b06828
 struct task *DAT_05b06828;
 
+// GLOBAL: SADX 0x05b08830
+void *DAT_05b08830;
+
+// GLOBAL: SADX 0x05b08834
+void *DAT_05b08834;
+
+// GLOBAL: SADX 0x05b08838
+void *DAT_05b08838;
+
+// GLOBAL: SADX 0x05b0883c
+void *DAT_05b0883c;
+
+// GLOBAL: SADX 0x05b08840
+void *DAT_05b08840;
+
 // GLOBAL: SADX 0x05b08844
 void *DAT_05b08844;
+
+// GLOBAL: SADX 0x05b08848
+void *DAT_05b08848;
+
+// GLOBAL: SADX 0x05b0884c
+void *DAT_05b0884c;
 
 // GLOBAL: SADX 0x05b28890
 int DAT_05b28890;
@@ -4160,6 +4190,18 @@ char DAT_05b288a8[1];
 // GLOBAL: SADX 0x05b288b0
 char DAT_05b288b0[5];
 
+// GLOBAL: SADX 0x05b289d1
+char DAT_05b289d1;
+
+// GLOBAL: SADX 0x05b289d2
+char DAT_05b289d2;
+
+// GLOBAL: SADX 0x05b289d3
+char DAT_05b289d3;
+
+// GLOBAL: SADX 0x05b289d4
+char DAT_05b289d4;
+
 // GLOBAL: SADX 0x05b2ca04
 int DAT_05b2ca04;
 
@@ -4168,6 +4210,9 @@ char DAT_05b2ca08[2];
 
 // GLOBAL: SADX 0x05b2ca64
 int DAT_05b2ca64[1];
+
+// GLOBAL: SADX 0x05b2cab8
+struct NJS_TEXNAME DAT_05b2cab8;
 
 // GLOBAL: SADX 0x05b2cae4
 void *DAT_05b2cae4;
@@ -4237,6 +4282,9 @@ struct task *DAT_05b33104;
 
 // GLOBAL: SADX 0x05b33108
 struct AlrReal *DAT_05b33108;
+
+// GLOBAL: SADX 0x05b33110
+int DAT_05b33110;
 
 // GLOBAL: SADX 0x05b33291
 char DAT_05b33291;

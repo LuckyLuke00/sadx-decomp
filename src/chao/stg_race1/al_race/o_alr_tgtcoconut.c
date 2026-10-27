@@ -1,4 +1,9 @@
 #include "decls.h"
+extern struct TaskInfo DAT_00961f14;
+static void destObject(struct task *task_p);
+static void dispObject(struct task *task_p);
+static void execObject(struct task *param_1);
+static void initObject(struct task *task_p, void *param_p);
 extern NJS_POINT3 DAT_05b35c58[8];
 
 // FUNCTION: SADX 0x004900e0
@@ -48,8 +53,22 @@ long GetTargetCoconutPosition(struct NJS_POINT3 *pos_p, int chaoId)
 	return 0;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x00490180
+static void initObject(struct task *param_1, void *param_2)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x00490270
+static void dispObject(struct task *param_1)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x00490310
-void destObject(struct task *task_p)
+static void destObject(struct task *task_p)
 {
 	AlrCommuSendChaoCommand((struct task *)*(int **)((char *)task_p->mwp + 0x18), task_p, 0, 1);
 }
@@ -60,8 +79,18 @@ float FUN_00490330(struct task *tp)
 	return (float)0;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x00490380
+static void execObject(struct task *param_1)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x00490490
 struct task *SetTargetCoconut(int id, const struct NJS_POINT3 *pos_p, const struct Angle3 *ang_p, struct task *chaoTask_p)
 {
 	return (struct task *)0;
 }
+
+// GLOBAL: SADX 0x00961f14
+static struct TaskInfo DAT_00961f14 = {32, 2, initObject, execObject, dispObject, destObject};

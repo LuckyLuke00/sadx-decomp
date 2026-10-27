@@ -3,6 +3,8 @@
 void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
 void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
 void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
+void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
+void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2);
 
 // FUNCTION: SADX 0x00486880
 void Alr_SetWorkData(struct Alr *___this, struct taskwk *twp, struct alifewk *awp)
@@ -66,10 +68,14 @@ void Alr_ExeWaterEff(struct Alr *___this, struct NJS_POINT3 *trans, struct NJS_P
 	AlrEff_Exe(&___this->eff, trans, velo);
 }
 
-// STUB: SADX 0x004869a0
+// FUNCTION: SADX 0x004869a0
 int Alr_CheckRace(const struct Alr *___this)
 {
-	return (int)0;
+	if (___this->mode >= 4 && (___this->mode <= 9 || ___this->mode == 16))
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x004869c0
@@ -216,15 +222,28 @@ long Alr_SetTaskCommunication(struct Alr *___this, signed char command, struct t
 	return (long)0;
 }
 
-// STUB: SADX 0x004873a0
+// FUNCTION: SADX 0x004873a0
 void FUN_004873a0(void *param_1)
 {
+	*(int *)param_1 = 0;
+	*(int *)((char *)param_1 + 4) = (int)FUN_007d21b0;
 }
 
-// STUB: SADX 0x00487aa0
+// FUNCTION: SADX 0x00487aa0
 void *Alr_SetId(struct Alr *___this, int id)
 {
-	return (void *)0;
+	___this->flag |= 1;
+	if (___this->flag & 2)
+	{
+		___this->flag = (___this->flag & 0xfffd) | 4;
+	}
+	else
+	{
+		___this->awp = NULL;
+		___this->twp = NULL;
+	}
+	Alr_Clear(___this, id);
+	return ___this;
 }
 
 // FUNCTION: SADX 0x00487b00

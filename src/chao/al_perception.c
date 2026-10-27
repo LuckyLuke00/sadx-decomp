@@ -1,5 +1,12 @@
 #include "decls.h"
 
+#pragma optimize("", off)
+// STUB: SADX 0x004629f0
+void AL_ClearPerceptionAll(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x004632f0
 long AL_CalcPerceptionAll(struct task *tp)
 {
@@ -103,10 +110,23 @@ int FUN_00463450(int param_1)
 	return (int)0;
 }
 
-// STUB: SADX 0x00463490
+// FUNCTION: SADX 0x00463490
 struct task *AL_GetFoundToyTask(struct task *tp)
 {
-	return (struct task *)0;
+	struct task *var1 = (struct task *)FUN_00463450((int)tp);
+	if (var1 != 0)
+	{
+		struct task *var2 = (struct task *)var1->dest;
+		if (var2 != 0)
+		{
+			struct task *var3 = (struct task *)*(int *)((char *)var2 + 0x3c);
+			if (var3 != 0)
+			{
+				return var3;
+			}
+		}
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x004634c0

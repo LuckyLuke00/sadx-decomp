@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct TaskInfo DAT_00961adc;
 struct task *AlrObjSetTask(const struct TaskInfo *info_p, void *param_p);
 extern struct task *DAT_05b35c50;
 
@@ -32,8 +33,8 @@ void AlrObjSetTaskWork(struct taskwk *taskWk_p, const struct obj *obj_p)
 {
 }
 
-// STUB: SADX 0x0048a950
+// FUNCTION: SADX 0x0048a950
 struct task *AlrObjSetManageTask()
 {
-	return (struct task *)0;
+	return MirenSetTask((enum tasklevel)3, &DAT_00961adc, 0);
 }

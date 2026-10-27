@@ -1,6 +1,19 @@
 #include "decls.h"
 void __fastcall FUN_00713b10(enum eCHAO_STAGE_NUMBER param_1);
 
+// STUB: SADX 0x00713ab0
+int AL_SeqGetPlayerId()
+{
+	return (int)0;
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x00713b10
+void __fastcall FUN_00713b10(enum eCHAO_STAGE_NUMBER param_1)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x00713b30
 void FUN_00713b30()
 {

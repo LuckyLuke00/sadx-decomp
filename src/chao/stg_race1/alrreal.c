@@ -153,10 +153,12 @@ void AlrReal_controlColliMode(struct AlrReal *___this)
 	CL_ColPolListUpModeSetAll();
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004826f0
 void AlrReal_controlMode(struct AlrReal *___this)
 {
 }
+#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00483070
@@ -239,10 +241,12 @@ void AlrReal_SetCameraMode(struct AlrReal *___this,int mode)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00483a40
 void AlrReal_controlCamera(struct AlrReal *___this)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00483f00
 void AlrReal_incLook(struct AlrReal *___this)
@@ -258,10 +262,12 @@ void AlrReal_decLook(struct AlrReal *___this)
  if(--___this->look<0) ___this->look=7;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00483fa0
 void AlrReal_dspHead(struct AlrReal *___this)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00484060
 int AlrReal_offSonic(struct AlrReal *___this)

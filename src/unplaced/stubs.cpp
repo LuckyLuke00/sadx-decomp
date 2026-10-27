@@ -88,7 +88,7 @@ long njLoadTexturePvmMemory(unsigned char *,struct NJS_TEXLIST *)
 }
 
 // STUB: SADX 0x00423f70
-void njPrintD(int,int,int)
+void njPrintD(int, int, int)
 {
 }
 
@@ -285,6 +285,16 @@ void stSetFogTable(float *)
 {
 }
 
+// STUB: SADX 0x00435ad0
+void njSetTextureInfo(int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x00435b00
+void njSetTextureName(int, int, int, int)
+{
+}
+
 // STUB: SADX 0x00435b60
 void njGenerateFogTable3(float * const,float,float)
 {
@@ -347,23 +357,6 @@ long AL_EmotionGetValue(struct task *tp, unsigned long EmotionNum)
 	return (long)0;
 }
 
-// STUB: SADX 0x0043d8e0
-void ALW_ClearEntry()
-{
-}
-
-// STUB: SADX 0x0043d950
-struct task *ALW_GetTask(unsigned short category, unsigned short num)
-{
-	return (struct task *)0;
-}
-
-// STUB: SADX 0x0043d980
-struct task *ALW_GetTaskCount(unsigned short category, unsigned short count)
-{
-	return (struct task *)0;
-}
-
 // STUB: SADX 0x0043dd90
 long ALW_Entry2(unsigned short category, struct task *tp, unsigned short kind, void *pSaveInfo)
 {
@@ -391,6 +384,11 @@ void AL_PackageItemSaveInfo(long category)
 {
 }
 
+// STUB: SADX 0x00441d80
+void AL_GBAManagerExecutor(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00441fb0
 extern void FUN_00441fb0()
 {
@@ -412,26 +410,25 @@ long AL_GetRandomAttrPos(enum eLANDMARK_ATTR attr, struct NJS_POINT3 *pPos)
 	return (long)0;
 }
 
-// STUB: SADX 0x00443b80
-long AL_GetnbPlayer()
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x00443c20
-enum eCourseNumDX AL_GetCourseNum()
-{
-	return (enum eCourseNumDX)0;
-}
-
 // STUB: SADX 0x00448240
 void AL_GeneCreate(struct AL_GENE *pGene)
+{
+}
+
+// STUB: SADX 0x00449b80
+void AL_GeneAnalyzeCommon(struct AL_GENE *pGene, struct CHAO_PARAM_GC *pParam)
 {
 }
 
 // STUB: SADX 0x0044a470
 void AL_SetBehaviorWithTimer(struct task *tp, long (*Func)(struct task *), long ReserveTimer)
 {
+}
+
+// STUB: SADX 0x0044ab00
+long ALBHV_SitSleep(struct task *tp)
+{
+	return (long)0;
 }
 
 // STUB: SADX 0x0044b270
@@ -458,6 +455,11 @@ void FUN_0044d460(unsigned short *)
 
 // STUB: SADX 0x0044e3d0
 void AlMsgWinClear(struct SAlMsgWin *self)
+{
+}
+
+// STUB: SADX 0x0044ead0
+void AlgKinderOrthoQuadDraw(const struct SAlgKinderOrthoQuad *q, unsigned long color)
 {
 }
 
@@ -523,6 +525,12 @@ long AL_MoveHoldingObject(struct task *pChaoTask)
 	return (long)0;
 }
 
+// STUB: SADX 0x0045d590
+long AL_CheckDamage(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0045d6e0
 long ALBHV_Nade(struct task *tp)
 {
@@ -564,6 +572,24 @@ long ALBHV_TurnToFruit(struct task *tp)
 	return (long)0;
 }
 
+// STUB: SADX 0x00461560
+long AL_CheckWater(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00461c80
+long ALBHV_Mayu(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00461eb0
+long ALBHV_Dead(struct task *tp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00462140
 long ALBHV_Think(struct task *tp)
 {
@@ -574,11 +600,6 @@ long ALBHV_Think(struct task *tp)
 long ALBHV_GoToAim(struct task *tp)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x004629f0
-void AL_ClearPerceptionAll(struct task *tp)
-{
 }
 
 // STUB: SADX 0x00462a30
@@ -829,8 +850,23 @@ void AL_Garden01Master(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0047e880
-void CreateGuideButton(unsigned short id, float xpos, float ypos, unsigned short WaitTime)
+// STUB: SADX 0x0047e0b0
+void DecideButtonExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047e360
+void DecideButtonDisplayer(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047e610
+void GuideButtonExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0047e750
+void GuideButtonDisplayer(struct task *tp)
 {
 }
 
@@ -854,6 +890,16 @@ void CategoryBarDisplayer(struct task *tp)
 {
 }
 
+// STUB: SADX 0x004805d0
+void ToridasuPortWindowExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00480960
+void ToridasuPortWindowDisplayer(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00481030
 void OdekakePortWindowExecutor(struct task *tp)
 {
@@ -861,16 +907,6 @@ void OdekakePortWindowExecutor(struct task *tp)
 
 // STUB: SADX 0x004813a0
 void OdekakePortWindowDisplayer(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00484af0
-void ADV1_AL_LimitChao()
-{
-}
-
-// STUB: SADX 0x00484bd0
-void FUN_00484bd0()
 {
 }
 
@@ -896,6 +932,11 @@ void Alr_pushBall(struct Alr *___this)
 
 // STUB: SADX 0x00487820
 void Alr_useToy(struct Alr *___this)
+{
+}
+
+// STUB: SADX 0x004879e0
+void Alr_Clear(struct Alr *___this, int id)
 {
 }
 
@@ -958,11 +999,6 @@ void ALR_Executor(struct task *tp)
 
 // STUB: SADX 0x0048fad0
 void AlrEff_Exe(struct AlrEff *___this, struct NJS_POINT3 *trans, struct NJS_POINT3 *velo)
-{
-}
-
-// STUB: SADX 0x0048fc60
-void AlrEff_SetFlag(struct AlrEff *___this, unsigned char flag)
 {
 }
 
@@ -1736,11 +1772,6 @@ void _Exec(struct task *tp)
 
 // STUB: SADX 0x00571790
 void EffectWater(struct sp_task *tp, struct sp_link *lp)
-{
-}
-
-// STUB: SADX 0x00572210
-void MirenObjEditDrawCollision(const struct colliwk *)
 {
 }
 
@@ -2950,6 +2981,11 @@ void changere101rend()
 {
 }
 
+// STUB: SADX 0x00710e60
+void FTaskExec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00711100
 void ALO_RingWinAdd(long)
 {
@@ -2962,11 +2998,6 @@ void AlMsgTelopClear(struct SAlMsgTelop *self)
 
 // STUB: SADX 0x00713930
 void DrawSaltWater3D_39()
-{
-}
-
-// STUB: SADX 0x00713b10
-void __fastcall FUN_00713b10(enum eCHAO_STAGE_NUMBER)
 {
 }
 
@@ -3207,6 +3238,11 @@ void startDushCheck(struct task *tp)
 
 // STUB: SADX 0x007e5020
 void CartRacePrepareRace()
+{
+}
+
+// STUB: SADX 0x007e5960
+void FUN_007e5960(struct task *)
 {
 }
 

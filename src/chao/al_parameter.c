@@ -40,10 +40,16 @@ long AL_IsHero2(struct task *pChaoTask)
 	return 0;
 }
 
-// STUB: SADX 0x00438990
+// FUNCTION: SADX 0x00438990
 long AL_IsDark2(struct task *pChaoTask)
 {
-	return (long)0;
+	char *var1 = *(char **)((char *)pChaoTask->twp + 0x6c);
+	int var2 = (int)(unsigned char)(*(unsigned char *)(var1 + 0x80));
+	if (var2 >= 7 && var2 < 0x17 && (var2 - 7) % 3 == 0)
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x004389d0

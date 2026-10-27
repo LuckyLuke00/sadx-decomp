@@ -34,10 +34,12 @@ unsigned short AL_KW_GetPlayerDistance(struct task *pChaoTask)
 	return (unsigned short)0;
 }
 
-// STUB: SADX 0x0043cf70
+// FUNCTION: SADX 0x0043cf70
 unsigned short AL_KW_GetPlayerMeet(struct task *pChaoTask)
 {
-	return (unsigned short)0;
+	struct CHAO_PARAM_GC *var1 = (struct CHAO_PARAM_GC *)(*(int **)((char *)pChaoTask->twp + 0x6c));
+	unsigned short var2 = AL_KW_GetPlayerCharacterNum();
+	return *(unsigned short *)((char *)var1 + 0x500 + var2 * 6);
 }
 
 // STUB: SADX 0x0043cf90

@@ -13,3 +13,9 @@ long AL_GetChaoEntryNum()
 {
 	return DAT_05b36090;
 }
+
+// STUB: SADX 0x00493720
+struct chao_colliwk *AL_IsHitCC(struct taskwk *twp, struct alifewk *awp, long num)
+{
+	return (struct chao_colliwk *)0;
+}

@@ -48,6 +48,7 @@ struct al_model;
 struct al_motion_table;
 struct al_object;
 struct AL_PARTS;
+struct AL_RACE_INFO;
 struct AL_RACE_PERSONAL_INFO;
 struct AL_RACE_PERSONAL_INFO_DX;
 struct AL_ST_POS;
@@ -57,6 +58,8 @@ struct AL_VERTEX_INFO;
 struct ALERT_PARAM;
 struct ALERT_TASK_WORK;
 struct alifewk;
+struct ALK_BWINDOW_TABLE;
+struct ALK_WINDOW_TABLE;
 struct Alr;
 struct AlrCam;
 struct AlrCamAround;
@@ -906,6 +909,44 @@ static_assert(offsetof(ALERT_PARAM, offset) == 0x8, "ALERT_PARAM::offset");
 static_assert(offsetof(ALERT_PARAM, pos) == 0xc, "ALERT_PARAM::pos");
 static_assert(offsetof(ALERT_PARAM, color) == 0x18, "ALERT_PARAM::color");
 static_assert(offsetof(ALERT_PARAM, globalindex) == 0x1c, "ALERT_PARAM::globalindex");
+
+struct ALK_BWINDOW_TABLE {
+    long bu_tanim_num;
+    unsigned long bcolor;
+    float bscale;
+    float buttonX1;
+    float buttonY1;
+    float buttonX2;
+    float buttonY2;
+};
+static_assert(sizeof(ALK_BWINDOW_TABLE) == 0x1c, "sizeof ALK_BWINDOW_TABLE");
+static_assert(offsetof(ALK_BWINDOW_TABLE, bu_tanim_num) == 0x0, "ALK_BWINDOW_TABLE::bu_tanim_num");
+static_assert(offsetof(ALK_BWINDOW_TABLE, bcolor) == 0x4, "ALK_BWINDOW_TABLE::bcolor");
+static_assert(offsetof(ALK_BWINDOW_TABLE, bscale) == 0x8, "ALK_BWINDOW_TABLE::bscale");
+static_assert(offsetof(ALK_BWINDOW_TABLE, buttonX1) == 0xc, "ALK_BWINDOW_TABLE::buttonX1");
+static_assert(offsetof(ALK_BWINDOW_TABLE, buttonY1) == 0x10, "ALK_BWINDOW_TABLE::buttonY1");
+static_assert(offsetof(ALK_BWINDOW_TABLE, buttonX2) == 0x14, "ALK_BWINDOW_TABLE::buttonX2");
+static_assert(offsetof(ALK_BWINDOW_TABLE, buttonY2) == 0x18, "ALK_BWINDOW_TABLE::buttonY2");
+
+struct ALK_WINDOW_TABLE {
+    float posX;
+    float posY;
+    float posZ;
+    unsigned long color;
+    float sizeX;
+    float sizeY;
+    unsigned long attr;
+    unsigned long work[20];
+};
+static_assert(sizeof(ALK_WINDOW_TABLE) == 0x6c, "sizeof ALK_WINDOW_TABLE");
+static_assert(offsetof(ALK_WINDOW_TABLE, posX) == 0x0, "ALK_WINDOW_TABLE::posX");
+static_assert(offsetof(ALK_WINDOW_TABLE, posY) == 0x4, "ALK_WINDOW_TABLE::posY");
+static_assert(offsetof(ALK_WINDOW_TABLE, posZ) == 0x8, "ALK_WINDOW_TABLE::posZ");
+static_assert(offsetof(ALK_WINDOW_TABLE, color) == 0xc, "ALK_WINDOW_TABLE::color");
+static_assert(offsetof(ALK_WINDOW_TABLE, sizeX) == 0x10, "ALK_WINDOW_TABLE::sizeX");
+static_assert(offsetof(ALK_WINDOW_TABLE, sizeY) == 0x14, "ALK_WINDOW_TABLE::sizeY");
+static_assert(offsetof(ALK_WINDOW_TABLE, attr) == 0x18, "ALK_WINDOW_TABLE::attr");
+static_assert(offsetof(ALK_WINDOW_TABLE, work) == 0x1c, "ALK_WINDOW_TABLE::work");
 
 struct AL_BODY_INFO {
     float HPos;
