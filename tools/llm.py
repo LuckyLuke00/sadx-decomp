@@ -478,7 +478,9 @@ def kept_alive(text, address, shared):
 
 
 def stub_functions(text, addresses):
-    """TEXT with the definitions at ADDRESSES as stubs, and without the top-of-file declarations only they used."""
+    """TEXT with the definitions at ADDRESSES as stubs, and without the top-of-file declarations only they used. A
+    global's definition under its GLOBAL annotation and an explicit template instantiation always stay: they emit
+    a variable or functions."""
     lines = text.split("\n")
     for address in addresses:
         block = definition_block(lines, address)
@@ -488,7 +490,9 @@ def stub_functions(text, addresses):
             stub = "\n".join(stub).split("\n")
             lines[block[0]:block[1] + 1] = wrap_stub(stub, sig, lines, block)
     top = first_function_line(lines)
-    declared = [names.declared_name(line[:-1]) if i < top and line.endswith(";") else None for i, line in enumerate(lines)]
+    declared = [names.declared_name(line[:-1]) if i < top and line.endswith(";")
+                and not (i and lines[i - 1].startswith("// GLOBAL:")) and not line.startswith("template ")
+                else None for i, line in enumerate(lines)]
     used = collections.Counter()
     for line, name in zip(lines, declared):
         used.update(set(re.findall(r"\w+", line)) - {name})
