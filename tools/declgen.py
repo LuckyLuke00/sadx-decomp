@@ -179,7 +179,7 @@ def write(context: Path | None, tables: Path | None) -> int:
         for tag in PLACEHOLDER_TAG.findall(code):
             fatal.append(f"{rel}: `{tag}` names a placeholder variable, not a type: write the real type")
         found = re.findall(r"[A-Za-z_]\w*", code)
-        file_tokens[rel] = set(found)
+        file_tokens[rel] = collections.Counter(found)
         tokens |= set(found)
         counts.update(found)
         lf, lv = names.local_declarations(text)
@@ -196,7 +196,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     context_tokens = {}
     for rel, text in context_sources.items():
         found = re.findall(r"[A-Za-z_]\w*", names.strip_code(text))
-        context_tokens[rel] = set(found)
+        context_tokens[rel] = collections.Counter(found)
         context_counts.update(found)
         for kind, address, sig in names.parse_annotations(text):
             if kind in names.FUNCTION_KINDS:
@@ -266,7 +266,7 @@ def write(context: Path | None, tables: Path | None) -> int:
         for tok in found & fnames.keys():
             for a in meaning(tok, rel):
                 users[a].add(rel)
-                if a not in defined_funcs or counts[tok] > 1:
+                if a not in defined_funcs or rel != defined_funcs[a][0] or found[tok] > 1:
                     used_funcs.add(a)
     for tok in tokens:
         if re.fullmatch(r"FUN_[0-9a-f]{8}", tok):
@@ -330,7 +330,22 @@ def write(context: Path | None, tables: Path | None) -> int:
                              f"way too.")
     # functions.h declares each function for every file, so only global overloads may share a name. In the context,
     # the same holds for the functions its files or these files define, once a name occurs a second time there with
-    # these files.
+    # these files. A global function that the original made static may still share one while functions.h leaves it
+    # out (see left_out), as when its caller is not ported yet.
+    def left_out(name, group):
+        """Whether one function of GROUP is global, one of scope L that this tree or the context defines and that
+        functions.h leaves out: no file but its own names it, and that one only in its definition. Each other function
+        is static, and each other file that names it defines one of them, so every file means its own."""
+        outside = [a for a in group if not (defined_funcs.get(a) or context_funcs.get(a) or ("", "", False))[2]]
+        if len(outside) != 1 or outside[0] in decls:
+            return False
+        own = (defined_funcs.get(outside[0]) or context_funcs[outside[0]])[0]
+        statics = {(defined_funcs.get(a) or context_funcs[a])[0] for a in group if a != outside[0]}
+        namers = {rel: found[name] for tokens in (file_tokens, context_tokens) for rel, found in tokens.items()
+                  if name in found}
+        return (funcs[outside[0]]["scope"] == "L" and namers.get(own) == 1
+                and all(rel == own or rel in statics for rel in namers))
+
     declared = {funcs[a]["name"] for a in decls}
     for a, d in list(context_funcs.items()) + list(defined_funcs.items()):
         name = funcs[a]["name"] if a in funcs else ""
@@ -338,7 +353,7 @@ def write(context: Path | None, tables: Path | None) -> int:
             declared.add(name)
     for name in sorted(declared & fnames.keys()):
         group = [a for a in fnames[name] if a in decls or a in defined_funcs or a in context_funcs]
-        if len(group) > 1 and any(funcs[a]["scope"] != "G" for a in group):
+        if len(group) > 1 and any(funcs[a]["scope"] != "G" for a in group) and not left_out(name, group):
             where = ", ".join(f"0x{a:08x} ({funcs[a]['file']})" for a in group)
             shared.append(f"{name}: {where} share the name. Make each one static in its own file, "
                           f"with a STUB annotation until it is ported.")
@@ -362,7 +377,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     resolved, context_shared = set(), set()
     for tokens_of, used in ((file_tokens, resolved), (context_tokens, context_shared)):
         for rel, found in tokens_of.items():
-            used |= {meant(tok, rel) for tok in found & shared_globals.keys()} - {None}
+            used |= {meant(tok, rel) for tok in shared_globals.keys() & found} - {None}
     used_globals = set(resolved)
     placeholders = set()  # the DAT_ names whose shared name a file that uses them would not mean them by: they stay
     for tok in tokens:

@@ -353,7 +353,9 @@ def check_decls_trees() -> list[str]:
     that function, also when the file holds a folded copy of another file's function. A global name that two objects
     share means the one in the object that the using file defines functions of, and a second file that uses the
     other one fails, also when that file is in the context, unless it defines its own static. A function here that a
-    context file declares another way and calls fails."""
+    context file declares another way and calls fails. A global function that the original made static may share its
+    name with static ones while only its definition names it, as when its caller is not ported: functions.h then
+    leaves it out, also when either file is the context's. Once its own file calls it, they share the name."""
     target = project.game_config().target
     exec_here = f"// FUNCTION: {target} 0x00401000\nstatic void Exec(struct task *tp)\n{{\n}}\n"
     exec_there = f"// FUNCTION: {target} 0x00402000\nvoid Exec(struct task *tp)\n{{\n}}\n"
@@ -363,7 +365,9 @@ def check_decls_trees() -> list[str]:
                  ("0x00403000", "DispX", "L", "src/x.c", "o_x.obj"),
                  ("0x00404000", "DispY", "L", "src/y.c", "o_y.obj"),
                  ("0x00405000", "Helper", "L", "src/z.c", "o_z.obj"),
-                 ("0x00406000", "Exec", "L", "src/z.c", "o_z.obj")]
+                 ("0x00406000", "Exec", "L", "src/z.c", "o_z.obj"),
+                 ("0x00407000", "Kill", "L", "src/x.c", "o_x.obj"),
+                 ("0x00408000", "Kill", "L", "src/y.c", "o_y.obj")]
     globals_ = [("0x00501000", "obj_c_info", "o_x.obj"), ("0x00502000", "obj_c_info", "o_y.obj"),
                 ("0x00503000", "DAT_00503000", "o_z.obj")]
     own_static = f"// GLOBAL: {target} 0x00502000\nstatic int obj_c_info[2];\n\n"
@@ -376,6 +380,10 @@ def check_decls_trees() -> list[str]:
     def fill(address, name):
         return f"// FUNCTION: {target} {address}\nstatic void {name}(struct task *tp)\n{{\n\tDAT_00503000[0] = 1;\n}}\n"
 
+    kill_here = (f"// FUNCTION: {target} 0x00407000\nstatic void Kill(struct task *tp)\n{{\n}}\n\n"
+                 f"// FUNCTION: {target} 0x00403000\nvoid DispX(struct task *tp)\n{{\n\tKill(tp);\n}}\n")
+    kill_there = f"// FUNCTION: {target} 0x00408000\nvoid Kill(struct task *tp)\n{{\n}}\n"
+    kill_called = kill_there + f"\n// FUNCTION: {target} 0x00404000\nvoid DispY(struct task *tp)\n{{\n\tKill(tp);\n}}\n"
     sized = "extern char DAT_00503000[8];\n\n"
     unsized = "extern char DAT_00503000[];\n"
 
@@ -389,6 +397,16 @@ def check_decls_trees() -> list[str]:
               {"src/emblem.c": exec_there, "src/y.c": "void DispX(struct task *tp);\n" + disp_y_calls}, 1,
               "share the name", None),
              ("a static function with no context", {"src/x.c": exec_here}, {}, 0, "", []),
+             ("a static function and a file-local global one that only its definition names",
+              {"src/x.c": kill_here, "src/y.c": kill_there}, {}, 0, "", []),
+             ("a static function and a file-local global one that its own file calls",
+              {"src/x.c": kill_here, "src/y.c": kill_called}, {}, 2, "share the name", None),
+             ("a static function and a file-local global one in the context", {"src/x.c": kill_here},
+              {"src/y.c": kill_there}, 0, "", []),
+             ("a static function and a file-local global one that its own file calls in the context",
+              {"src/x.c": kill_here}, {"src/y.c": kill_called}, 2, "share the name", None),
+             ("a static function and a file-local global one, both in the context", {"src/z.c": folded},
+              {"src/x.c": kill_here, "src/y.c": kill_there}, 0, "", []),
              ("a static function beside a folded copy from another file", {"src/x.c": exec_here + "\n" + folded}, {},
               0, "", []),
              ("a global name that two objects share", {"src/x.c": disp("0x00403000", "DispX")}, {}, 0, "",
