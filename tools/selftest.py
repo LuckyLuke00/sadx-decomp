@@ -734,7 +734,8 @@ def check_units() -> list[str]:
     """The unit tests of the repairs in llm.py and cfix.py, of the try loop in llm.py, of the dossier facts in
     facts.py, of the trick finder in tricks.py, of the site pages in pages.py, of the data scores in scoring.py, of
     the split in link.py, of the recipe checks in recipes.py, of the type search in retype.py, of the rewrites in
-    permute.py, of the stack argument audit in stackargs.py and of the names in dossier.py, one module each."""
+    permute.py, of the stack argument audit in stackargs.py, of the fold rule in folds.py and of the names in
+    dossier.py, one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
@@ -743,6 +744,7 @@ def check_units() -> list[str]:
     import decltests
     import dossiertests
     import facttests
+    import foldtests
     import linktests
     import permutetests
     import progresstests
@@ -753,7 +755,7 @@ def check_units() -> list[str]:
     import stackargtests
     import tricktests
     modules = (ctexttests, bytetests, casttests, decltests, dossiertests, benchtests, solvetests, facttests, tricktests,
-               sitetests, progresstests, linktests, recipetests, retypetests, permutetests, stackargtests)
+               sitetests, progresstests, linktests, recipetests, retypetests, permutetests, stackargtests, foldtests)
     return [failure for module in modules for failure in module.run()]
 
 

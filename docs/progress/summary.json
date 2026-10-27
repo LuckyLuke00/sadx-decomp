@@ -54070,7 +54070,7 @@
   {
    "address": "0x008105a0",
    "name": "_exec(3)",
-   "accuracy": 0.9927536231884058,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -93670,5 +93670,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4a9d6d06e0d181fe19ef6e4aae627fa6141fe50f6f86d199258b0fcdf8837a03"
+ "inputs_sha256": "124e4ca98e50ef9ad3fed2866663cd6566d49e044c9727bac878a61c619b87b5"
 }
