@@ -6,8 +6,23 @@ void AlrEff_Ini(struct AlrEff *___this, struct AlrEffData *data, void (*init)(st
 {
 }
 
+// STUB: SADX 0x0048fad0
+void AlrEff_Exe(struct AlrEff *___this, struct NJS_POINT3 *trans, struct NJS_POINT3 *velo)
+{
+}
+
+// STUB: SADX 0x0048fb70
+void AlrEff_Dsp(struct AlrEff *___this)
+{
+}
+
 // STUB: SADX 0x0048fc60
 void AlrEff_SetFlag(struct AlrEff *___this, unsigned char flag)
+{
+}
+
+// STUB: SADX 0x0048fca0
+void FUN_0048fca0(float *param_1, float param_2, float param_3)
 {
 }
 

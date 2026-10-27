@@ -258,6 +258,13 @@ void StageMasterInit(struct task *tp)
 	}
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0043e530
+void AL_ChangeStage(enum eCHAO_STAGE_NUMBER NextStage)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0043e5f0
 void AL_ChangeStageLater(enum eCHAO_STAGE_NUMBER NextStage)
 {

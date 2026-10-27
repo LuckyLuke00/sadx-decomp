@@ -1,78 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1414" width="1000" height="1414">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1413" width="1000" height="1413">
 <title>Sonic Adventure DX.exe decompilation progress</title>
-<rect x="0.5" y="0.5" width="999" height="1413" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="0.5" y="0.5" width="999" height="1412" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,284 of 16,524 game functions done (31.97%), accuracy 99.86%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,297 of 16,524 game functions done (32.05%), accuracy 99.86%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
-<polygon points="597.8,1171.5 604.2,1171.5 605.9,1173 607,1174.6 601,1181.5 595,1174.6 596.1,1173" fill="#4e32f3"/>
-<polygon points="597.8,1171.5 604.2,1171.5 605.9,1173 607,1174.6 595,1174.6 596.1,1173" fill="#ffffff" fill-opacity="0.4"/>
-<polygon points="597.8,1171.5 604.2,1171.5 601,1174.6" fill="#ffffff" fill-opacity="0.35"/>
-<polygon points="595,1174.6 598.8,1174.6 601,1181.5" fill="#ffffff" fill-opacity="0.15"/>
-<polygon points="603.2,1174.6 607,1174.6 601,1181.5" fill="#000000" fill-opacity="0.25"/>
-<polygon points="597.8,1171.5 604.2,1171.5 605.9,1173 607,1174.6 601,1181.5 595,1174.6 596.1,1173" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="611" y="1181" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Characters <tspan font-weight="400" fill="#59636e">33%</tspan></text>
-<rect x="681" y="1189" width="123" height="80" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sonic: 51 of 119 done</title></rect>
-<text x="684" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sonic <tspan font-weight="400" fill="#59636e">42%</tspan></text>
-<g transform="translate(684,1207)">
-<rect y="0" width="112" height="49" fill="url(#todo)"/>
-<rect y="49" width="49" height="7" fill="url(#todo)"/>
+<polygon points="598.8,1171.5 605.2,1171.5 606.9,1173 608,1174.6 602,1181.5 596,1174.6 597.1,1173" fill="#4e32f3"/>
+<polygon points="598.8,1171.5 605.2,1171.5 606.9,1173 608,1174.6 596,1174.6 597.1,1173" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="598.8,1171.5 605.2,1171.5 602,1174.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="596,1174.6 599.8,1174.6 602,1181.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="604.2,1174.6 608,1174.6 602,1181.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="598.8,1171.5 605.2,1171.5 606.9,1173 608,1174.6 602,1181.5 596,1174.6 597.1,1173" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
+<text x="612" y="1181" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Characters <tspan font-weight="400" fill="#59636e">33%</tspan></text>
+<rect x="683" y="1189" width="125" height="80" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sonic: 51 of 119 done</title></rect>
+<text x="686" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sonic <tspan font-weight="400" fill="#59636e">42%</tspan></text>
+<g transform="translate(686,1207)">
+<rect y="0" width="119" height="49" fill="url(#todo)"/>
 <rect x="14" y="0" width="6" height="6" fill="#b07d00"><title>0x00547040 FUN_00547040: 100%</title></rect>
 <rect x="21" y="0" width="6" height="6" fill="#b07d00"><title>0x00547070 FUN_00547070: 100%</title></rect>
 <rect x="35" y="0" width="6" height="6" fill="#b07d00"><title>0x005471b0 SonicDestruct: 100%</title></rect>
 <rect x="98" y="0" width="6" height="6" fill="#b07d00"><title>0x005488e0 FUN_005488e0: 100%</title></rect>
-<rect x="49" y="7" width="6" height="6" fill="#b07d00"><title>0x00549ed0 SonicCheckJumpCancel: 100%</title></rect>
-<rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x0054bdd0 SonicCheckInputInSnowBoard: 100%</title></rect>
-<rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x0054c330 SonicCheckBeInTheAir: 100%</title></rect>
-<rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x0054c3e0 SonicCheckStop: 100%</title></rect>
-<rect x="98" y="7" width="6" height="6" fill="#b07d00"><title>0x0054c480 SonicCheckStartSpin: 100%</title></rect>
-<rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x0054ca40 FUN_0054ca40: 100%</title></rect>
-<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x0054d870 SonicHoldOnPillar: 100%</title></rect>
-<rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x0054dce0 SonicFaceMotion: 100%</title></rect>
-<rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ea70 PSetDashEffect: 100%</title></rect>
-<rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eab0 FUN_0054eab0: 100%</title></rect>
-<rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eaf0 FUN_0054eaf0: 100%</title></rect>
-<rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eb30 PSetSpinDSEffect: 100%</title></rect>
-<rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eb70 FUN_0054eb70: 100%</title></rect>
-<rect x="56" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ebb0 FUN_0054ebb0: 100%</title></rect>
-<rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ebf0 FUN_0054ebf0: 100%</title></rect>
-<rect x="70" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ec30 FUN_0054ec30: 100%</title></rect>
-<rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ed00 ManageSonicLightSpinChargeExit: 100%</title></rect>
-<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ed30 SonicSnowBoard: 100%</title></rect>
-<rect x="0" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f150 SuperSonicStatusManager: 100%</title></rect>
-<rect x="7" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f210 SuperSonicStatusManagerDestructor: 100%</title></rect>
-<rect x="14" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f280 SuperSonicStatusManagerExecutor: 100%</title></rect>
-<rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f2e0 SonicCanselSpinDashForIcecap: 100%</title></rect>
-<rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f760 ChangeMotionSonicRush: 100%</title></rect>
-<rect x="49" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f7b0 FUN_0054f7b0: 100%</title></rect>
-<rect x="56" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f7d0 ChangeMotionSonicLaunch: 100%</title></rect>
-<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f810 ChangeMotionSonicRun: 100%</title></rect>
-<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f850 FUN_0054f850: 100%</title></rect>
-<rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f890 ChangeMotionSonicSpin: 100%</title></rect>
-<rect x="91" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f910 FUN_0054f910: 100%</title></rect>
-<rect x="98" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f920 FUN_0054f920: 100%</title></rect>
-<rect x="0" y="35" width="6" height="6" fill="#b07d00"><title>0x0054fa60 FUN_0054fa60: 100%</title></rect>
-<rect x="14" y="35" width="6" height="6" fill="#b07d00"><title>0x0054fc20 IsSonicWhistling: 100%</title></rect>
-<rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x0054fc80 _sonicmot_init: 100%</title></rect>
-<rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x005ae5b0 AwaEnd: 100%</title></rect>
-<rect x="35" y="35" width="6" height="6" fill="#b07d00"><title>0x005ae5e0 FUN_005ae5e0: 100%</title></rect>
-<rect x="42" y="35" width="6" height="6" fill="#b07d00"><title>0x005af750 FUN_005af750: 100%</title></rect>
-<rect x="49" y="35" width="6" height="6" fill="#b07d00"><title>0x005af870 EffectSpin: 100%</title></rect>
-<rect x="56" y="35" width="6" height="6" fill="#b07d00"><title>0x005af8b0 EffectSpinDS: 100%</title></rect>
-<rect x="63" y="35" width="6" height="6" fill="#b07d00"><title>0x005af8f0 EffectStartHoming: 100%</title></rect>
-<rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x005b0560 EffectDash: 100%</title></rect>
-<rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x005b0d80 FUN_005b0d80: 100%</title></rect>
-<rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x005b1820 EffectDestructRibbon: 100%</title></rect>
-<rect x="7" y="49" width="6" height="6" fill="#b07d00"><title>0x005b1c50 EffectSpinRibbonDisplay: 100%</title></rect>
-<rect x="21" y="49" width="6" height="6" fill="#b07d00"><title>0x005b1fc0 SetSonicIce: 100%</title></rect>
-<rect x="28" y="49" width="6" height="6" fill="#b07d00"><title>0x005b1ff0 SonicIce: 100%</title></rect>
-<rect x="35" y="49" width="6" height="6" fill="#b07d00"><title>0x005b2080 SonicIceDisplay: 100%</title></rect>
-<rect x="42" y="49" width="6" height="6" fill="#b07d00"><title>0x005b2380 SonicIcePieceExecute: 100%</title></rect>
+<rect x="42" y="7" width="6" height="6" fill="#b07d00"><title>0x00549ed0 SonicCheckJumpCancel: 100%</title></rect>
+<rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x0054bdd0 SonicCheckInputInSnowBoard: 100%</title></rect>
+<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x0054c330 SonicCheckBeInTheAir: 100%</title></rect>
+<rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x0054c3e0 SonicCheckStop: 100%</title></rect>
+<rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x0054c480 SonicCheckStartSpin: 100%</title></rect>
+<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x0054ca40 FUN_0054ca40: 100%</title></rect>
+<rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x0054d870 SonicHoldOnPillar: 100%</title></rect>
+<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x0054dce0 SonicFaceMotion: 100%</title></rect>
+<rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ea70 PSetDashEffect: 100%</title></rect>
+<rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eab0 FUN_0054eab0: 100%</title></rect>
+<rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eaf0 FUN_0054eaf0: 100%</title></rect>
+<rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eb30 PSetSpinDSEffect: 100%</title></rect>
+<rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x0054eb70 FUN_0054eb70: 100%</title></rect>
+<rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ebb0 FUN_0054ebb0: 100%</title></rect>
+<rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ebf0 FUN_0054ebf0: 100%</title></rect>
+<rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ec30 FUN_0054ec30: 100%</title></rect>
+<rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ed00 ManageSonicLightSpinChargeExit: 100%</title></rect>
+<rect x="70" y="21" width="6" height="6" fill="#b07d00"><title>0x0054ed30 SonicSnowBoard: 100%</title></rect>
+<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x0054f150 SuperSonicStatusManager: 100%</title></rect>
+<rect x="98" y="21" width="6" height="6" fill="#b07d00"><title>0x0054f210 SuperSonicStatusManagerDestructor: 100%</title></rect>
+<rect x="105" y="21" width="6" height="6" fill="#b07d00"><title>0x0054f280 SuperSonicStatusManagerExecutor: 100%</title></rect>
+<rect x="112" y="21" width="6" height="6" fill="#b07d00"><title>0x0054f2e0 SonicCanselSpinDashForIcecap: 100%</title></rect>
+<rect x="14" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f760 ChangeMotionSonicRush: 100%</title></rect>
+<rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f7b0 FUN_0054f7b0: 100%</title></rect>
+<rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f7d0 ChangeMotionSonicLaunch: 100%</title></rect>
+<rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f810 ChangeMotionSonicRun: 100%</title></rect>
+<rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f850 FUN_0054f850: 100%</title></rect>
+<rect x="49" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f890 ChangeMotionSonicSpin: 100%</title></rect>
+<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f910 FUN_0054f910: 100%</title></rect>
+<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x0054f920 FUN_0054f920: 100%</title></rect>
+<rect x="84" y="28" width="6" height="6" fill="#b07d00"><title>0x0054fa60 FUN_0054fa60: 100%</title></rect>
+<rect x="98" y="28" width="6" height="6" fill="#b07d00"><title>0x0054fc20 IsSonicWhistling: 100%</title></rect>
+<rect x="105" y="28" width="6" height="6" fill="#b07d00"><title>0x0054fc80 _sonicmot_init: 100%</title></rect>
+<rect x="112" y="28" width="6" height="6" fill="#b07d00"><title>0x005ae5b0 AwaEnd: 100%</title></rect>
+<rect x="0" y="35" width="6" height="6" fill="#b07d00"><title>0x005ae5e0 FUN_005ae5e0: 100%</title></rect>
+<rect x="7" y="35" width="6" height="6" fill="#b07d00"><title>0x005af750 FUN_005af750: 100%</title></rect>
+<rect x="14" y="35" width="6" height="6" fill="#b07d00"><title>0x005af870 EffectSpin: 100%</title></rect>
+<rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x005af8b0 EffectSpinDS: 100%</title></rect>
+<rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x005af8f0 EffectStartHoming: 100%</title></rect>
+<rect x="98" y="35" width="6" height="6" fill="#b07d00"><title>0x005b0560 EffectDash: 100%</title></rect>
+<rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x005b0d80 FUN_005b0d80: 100%</title></rect>
+<rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x005b1820 EffectDestructRibbon: 100%</title></rect>
+<rect x="77" y="42" width="6" height="6" fill="#b07d00"><title>0x005b1c50 EffectSpinRibbonDisplay: 100%</title></rect>
+<rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x005b1fc0 SetSonicIce: 100%</title></rect>
+<rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x005b1ff0 SonicIce: 100%</title></rect>
+<rect x="105" y="42" width="6" height="6" fill="#b07d00"><title>0x005b2080 SonicIceDisplay: 100%</title></rect>
+<rect x="112" y="42" width="6" height="6" fill="#b07d00"><title>0x005b2380 SonicIcePieceExecute: 100%</title></rect>
 </g>
-<rect x="916" y="1189" width="64" height="107" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Tails: 19 of 75 done</title></rect>
-<text x="919" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Tails</text>
-<text x="919" y="1218" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
-<g transform="translate(919,1222)">
+<rect x="915" y="1189" width="65" height="106" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Tails: 19 of 75 done</title></rect>
+<text x="918" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Tails</text>
+<text x="918" y="1218" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
+<g transform="translate(918,1222)">
 <rect y="0" width="56" height="63" fill="url(#todo)"/>
 <rect y="63" width="21" height="7" fill="url(#todo)"/>
 <rect x="14" y="7" width="6" height="6" fill="#b07d00"><title>0x005360c0 Board_AddScore: 100%</title></rect>
@@ -95,9 +94,9 @@
 <rect x="49" y="56" width="6" height="6" fill="#b07d00"><title>0x0054fc40 IsTailsPutting: 100%</title></rect>
 <rect x="0" y="63" width="6" height="6" fill="#b07d00"><title>0x0054fc60 IsTailsShakingTree: 100%</title></rect>
 </g>
-<rect x="806" y="1189" width="108" height="81" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Knuckles: 29 of 95 done</title></rect>
-<text x="809" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Knuckles <tspan font-weight="400" fill="#59636e">30%</tspan></text>
-<g transform="translate(809,1207)">
+<rect x="810" y="1273" width="103" height="76" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Knuckles: 29 of 95 done</title></rect>
+<text x="813" y="1287" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Knuckles <tspan font-weight="400" fill="#59636e">30%</tspan></text>
+<g transform="translate(813,1291)">
 <rect y="0" width="98" height="42" fill="url(#todo)"/>
 <rect y="42" width="77" height="7" fill="url(#todo)"/>
 <rect x="35" y="0" width="6" height="6" fill="#b07d00"><title>0x00527600 KnucklesDestruct: 100%</title></rect>
@@ -130,9 +129,9 @@
 <rect x="56" y="42" width="6" height="6" fill="#b07d00"><title>0x005d87d0 KnuEffectHormTubeReset: 100%</title></rect>
 <rect x="63" y="42" width="6" height="6" fill="#b07d00"><title>0x005d87e0 FUN_005d87e0: 100%</title></rect>
 </g>
-<rect x="806" y="1272" width="108" height="78" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Amy: 30 of 92 done</title></rect>
-<text x="809" y="1286" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Amy <tspan font-weight="400" fill="#59636e">32%</tspan></text>
-<g transform="translate(809,1290)">
+<rect x="810" y="1189" width="103" height="82" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Amy: 30 of 92 done</title></rect>
+<text x="813" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Amy <tspan font-weight="400" fill="#59636e">32%</tspan></text>
+<g transform="translate(813,1207)">
 <rect y="0" width="98" height="42" fill="url(#todo)"/>
 <rect y="42" width="56" height="7" fill="url(#todo)"/>
 <rect x="21" y="0" width="6" height="6" fill="#b07d00"><title>0x0051afc0 AmyDestruct: 100%</title></rect>
@@ -166,9 +165,9 @@
 <rect x="42" y="42" width="6" height="6" fill="#b07d00"><title>0x005d6c10 AmyEffectHammerWaveColor: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x005d6cf0 AmyEffectHammerWaveColorDisplayer: 100%</title></rect>
 </g>
-<rect x="596" y="1189" width="83" height="161" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Big: 46 of 176 done</title></rect>
-<text x="599" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Big <tspan font-weight="400" fill="#59636e">26%</tspan></text>
-<g transform="translate(599,1207)">
+<rect x="597" y="1189" width="84" height="160" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Big: 46 of 176 done</title></rect>
+<text x="600" y="1203" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Big <tspan font-weight="400" fill="#59636e">26%</tspan></text>
+<g transform="translate(600,1207)">
 <rect y="0" width="77" height="112" fill="url(#todo)"/>
 <rect x="21" y="0" width="6" height="6" fill="#b07d00"><title>0x00508980 BigDestruct: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#b07d00"><title>0x00509a00 BigCheckAtack_W: 100%</title></rect>
@@ -217,57 +216,57 @@
 <rect x="0" y="105" width="6" height="6" fill="#b07d00"><title>0x00906150 FUN_00906150: 100%</title></rect>
 <rect x="70" y="105" width="6" height="6" fill="#b07d00"><title>0x00906cc0 sakana00: 100%</title></rect>
 </g>
-<rect x="681" y="1271" width="123" height="79" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-102 Gamma: 41 of 106 done</title></rect>
-<text x="684" y="1285" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-102 Gamma <tspan font-weight="400" fill="#59636e">38%</tspan></text>
-<g transform="translate(684,1289)">
-<rect y="0" width="112" height="42" fill="url(#todo)"/>
-<rect y="42" width="70" height="7" fill="url(#todo)"/>
+<rect x="683" y="1271" width="125" height="78" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-102 Gamma: 41 of 106 done</title></rect>
+<text x="686" y="1285" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-102 Gamma <tspan font-weight="400" fill="#59636e">38%</tspan></text>
+<g transform="translate(686,1289)">
+<rect y="0" width="119" height="42" fill="url(#todo)"/>
+<rect y="42" width="28" height="7" fill="url(#todo)"/>
 <rect x="14" y="0" width="6" height="6" fill="#b07d00"><title>0x005125a0 FUN_005125a0: 100%</title></rect>
 <rect x="84" y="0" width="6" height="6" fill="#b07d00"><title>0x005146a0 E102CheckBeInTheAir: 100%</title></rect>
 <rect x="91" y="0" width="6" height="6" fill="#b07d00"><title>0x00514730 E102CheckStop: 100%</title></rect>
 <rect x="98" y="0" width="6" height="6" fill="#b07d00"><title>0x005147e0 FUN_005147e0: 100%</title></rect>
-<rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x00515a50 chkE102EnableLaser: 100%</title></rect>
-<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x00515a70 FUN_00515a70: 100%</title></rect>
-<rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x00515a90 FUN_00515a90: 100%</title></rect>
-<rect x="98" y="7" width="6" height="6" fill="#b07d00"><title>0x00515c30 FUN_00515c30: 100%</title></rect>
-<rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x00515c60 FUN_00515c60: 100%</title></rect>
-<rect x="28" y="14" width="6" height="6" fill="#b07d00"><title>0x005161d0 SE_RDASH_ON: 100%</title></rect>
-<rect x="35" y="14" width="6" height="6" fill="#b07d00"><title>0x00516210 SE_RDASH_OFF: 100%</title></rect>
-<rect x="42" y="14" width="6" height="6" fill="#b07d00"><title>0x00516260 IsE102Whistling: 100%</title></rect>
-<rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x00516280 IsE102ShakingTree: 100%</title></rect>
-<rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x005b98e0 FUN_005b98e0: 100%</title></rect>
-<rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9900 FUN_005b9900: 100%</title></rect>
-<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9950 FUN_005b9950: 100%</title></rect>
-<rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9960 E102Hit_Exit: 100%</title></rect>
-<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9b20 AddTimeComboAfter: 100%</title></rect>
-<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9d40 E102AddRestTime: 100%</title></rect>
-<rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x005b9db0 E102AddRestTimeNew: 100%</title></rect>
-<rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x005ba1d0 AddTimeComboAfterDest: 100%</title></rect>
-<rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x005ba3b0 E102AddSecTotalNewDest: 100%</title></rect>
-<rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x005d2910 SetE102DashPanelAccel: 100%</title></rect>
-<rect x="0" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3470 E102BeamDisplay: 100%</title></rect>
-<rect x="14" y="28" width="6" height="6" fill="#b07d00"><title>0x005d35b0 E102BeamAto: 100%</title></rect>
-<rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3950 SetE102BeamNoHorming: 100%</title></rect>
-<rect x="49" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3b00 FUN_005d3b00: 100%</title></rect>
-<rect x="56" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3b80 FUN_005d3b80: 100%</title></rect>
-<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3e20 CheckEnemyAddTime: 100%</title></rect>
-<rect x="98" y="28" width="6" height="6" fill="#b07d00"><title>0x005d4540 E102EnemyDest: 100%</title></rect>
-<rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x005d4e60 CreateShotsmoke: 100%</title></rect>
-<rect x="42" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5090 initShotsmoke: 100%</title></rect>
-<rect x="56" y="35" width="6" height="6" fill="#b07d00"><title>0x005d51b0 FUN_005d51b0: 100%</title></rect>
-<rect x="63" y="35" width="6" height="6" fill="#b07d00"><title>0x005d51e0 DrawWireModel: 100%</title></rect>
-<rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5210 InitLockOnCursor: 100%</title></rect>
-<rect x="77" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5250 DeleteLockOnCursor: 100%</title></rect>
-<rect x="105" y="35" width="6" height="6" fill="#b07d00"><title>0x005e54f0 DispMultiDigit: 100%</title></rect>
-<rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x005e5750 GetE102LockCsTaskPointer: 100%</title></rect>
-<rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x005e5860 E102LockOnCursor_dis: 100%</title></rect>
-<rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x005e5bb0 E102KillCursorOnly: 100%</title></rect>
-<rect x="63" y="42" width="6" height="6" fill="#b07d00"><title>0x0061f0f0 ctrlE102ChangeRun: 100%</title></rect>
+<rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x00515a50 chkE102EnableLaser: 100%</title></rect>
+<rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x00515a70 FUN_00515a70: 100%</title></rect>
+<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x00515a90 FUN_00515a90: 100%</title></rect>
+<rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x00515c30 FUN_00515c30: 100%</title></rect>
+<rect x="98" y="7" width="6" height="6" fill="#b07d00"><title>0x00515c60 FUN_00515c60: 100%</title></rect>
+<rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x005161d0 SE_RDASH_ON: 100%</title></rect>
+<rect x="21" y="14" width="6" height="6" fill="#b07d00"><title>0x00516210 SE_RDASH_OFF: 100%</title></rect>
+<rect x="28" y="14" width="6" height="6" fill="#b07d00"><title>0x00516260 IsE102Whistling: 100%</title></rect>
+<rect x="35" y="14" width="6" height="6" fill="#b07d00"><title>0x00516280 IsE102ShakingTree: 100%</title></rect>
+<rect x="42" y="14" width="6" height="6" fill="#b07d00"><title>0x005b98e0 FUN_005b98e0: 100%</title></rect>
+<rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9900 FUN_005b9900: 100%</title></rect>
+<rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9950 FUN_005b9950: 100%</title></rect>
+<rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9960 E102Hit_Exit: 100%</title></rect>
+<rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9b20 AddTimeComboAfter: 100%</title></rect>
+<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9d40 E102AddRestTime: 100%</title></rect>
+<rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x005b9db0 E102AddRestTimeNew: 100%</title></rect>
+<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x005ba1d0 AddTimeComboAfterDest: 100%</title></rect>
+<rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x005ba3b0 E102AddSecTotalNewDest: 100%</title></rect>
+<rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x005d2910 SetE102DashPanelAccel: 100%</title></rect>
+<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x005d3470 E102BeamDisplay: 100%</title></rect>
+<rect x="105" y="21" width="6" height="6" fill="#b07d00"><title>0x005d35b0 E102BeamAto: 100%</title></rect>
+<rect x="7" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3950 SetE102BeamNoHorming: 100%</title></rect>
+<rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3b00 FUN_005d3b00: 100%</title></rect>
+<rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3b80 FUN_005d3b80: 100%</title></rect>
+<rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x005d3e20 CheckEnemyAddTime: 100%</title></rect>
+<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x005d4540 E102EnemyDest: 100%</title></rect>
+<rect x="112" y="28" width="6" height="6" fill="#b07d00"><title>0x005d4e60 CreateShotsmoke: 100%</title></rect>
+<rect x="7" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5090 initShotsmoke: 100%</title></rect>
+<rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x005d51b0 FUN_005d51b0: 100%</title></rect>
+<rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x005d51e0 DrawWireModel: 100%</title></rect>
+<rect x="35" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5210 InitLockOnCursor: 100%</title></rect>
+<rect x="42" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5250 DeleteLockOnCursor: 100%</title></rect>
+<rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x005e54f0 DispMultiDigit: 100%</title></rect>
+<rect x="84" y="35" width="6" height="6" fill="#b07d00"><title>0x005e5750 GetE102LockCsTaskPointer: 100%</title></rect>
+<rect x="91" y="35" width="6" height="6" fill="#b07d00"><title>0x005e5860 E102LockOnCursor_dis: 100%</title></rect>
+<rect x="98" y="35" width="6" height="6" fill="#b07d00"><title>0x005e5bb0 E102KillCursorOnly: 100%</title></rect>
+<rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x0061f0f0 ctrlE102ChangeRun: 100%</title></rect>
 </g>
-<rect x="916" y="1298" width="64" height="52" rx="3" fill="#ffffff" stroke="#b07d00" stroke-width="1.5"><title>Shared: 12 of 12 done</title></rect>
-<text x="919" y="1312" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Shared</text>
-<text x="919" y="1327" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">100%</tspan></text>
-<g transform="translate(919,1331)">
+<rect x="915" y="1297" width="65" height="52" rx="3" fill="#ffffff" stroke="#b07d00" stroke-width="1.5"><title>Shared: 12 of 12 done</title></rect>
+<text x="918" y="1311" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Shared</text>
+<text x="918" y="1326" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">100%</tspan></text>
+<g transform="translate(918,1330)">
 <rect y="0" width="56" height="7" fill="url(#todo)"/>
 <rect y="7" width="28" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x00573d20 GetAdvertisePlayerNumber: 100%</title></rect>
@@ -1078,126 +1077,126 @@
 <rect x="105" y="119" width="6" height="6" fill="#b07d00"><title>0x008b61f0 CamHot_SetE105: 100%</title></rect>
 <rect x="119" y="119" width="6" height="6" fill="#b07d00"><title>0x008b6340 StartCameraHot_TgtDeath: 100%</title></rect>
 </g>
-<polygon points="597.8,918.5 604.2,918.5 605.9,920 607,921.6 601,928.5 595,921.6 596.1,920" fill="#17f073"/>
-<polygon points="597.8,918.5 604.2,918.5 605.9,920 607,921.6 595,921.6 596.1,920" fill="#ffffff" fill-opacity="0.4"/>
-<polygon points="597.8,918.5 604.2,918.5 601,921.6" fill="#ffffff" fill-opacity="0.35"/>
-<polygon points="595,921.6 598.8,921.6 601,928.5" fill="#ffffff" fill-opacity="0.15"/>
-<polygon points="603.2,921.6 607,921.6 601,928.5" fill="#000000" fill-opacity="0.25"/>
-<polygon points="597.8,918.5 604.2,918.5 605.9,920 607,921.6 601,928.5 595,921.6 596.1,920" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="611" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">22%</tspan></text>
-<rect x="596" y="936" width="124" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 107 of 421 done</title></rect>
-<text x="599" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Station Square</text>
-<text x="599" y="965" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
-<g transform="translate(599,969)">
-<rect y="0" width="119" height="168" fill="url(#todo)"/>
-<rect y="168" width="91" height="7" fill="url(#todo)"/>
+<polygon points="598.8,918.5 605.2,918.5 606.9,920 608,921.6 602,928.5 596,921.6 597.1,920" fill="#17f073"/>
+<polygon points="598.8,918.5 605.2,918.5 606.9,920 608,921.6 596,921.6 597.1,920" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="598.8,918.5 605.2,918.5 602,921.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="596,921.6 599.8,921.6 602,928.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="604.2,921.6 608,921.6 602,928.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="598.8,918.5 605.2,918.5 606.9,920 608,921.6 602,928.5 596,921.6 597.1,920" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
+<text x="612" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">22%</tspan></text>
+<rect x="597" y="936" width="123" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 107 of 421 done</title></rect>
+<text x="600" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Station Square</text>
+<text x="600" y="965" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
+<g transform="translate(600,969)">
+<rect y="0" width="112" height="182" fill="url(#todo)"/>
+<rect y="182" width="35" height="7" fill="url(#todo)"/>
 <rect x="49" y="0" width="6" height="6" fill="#b07d00"><title>0x0067f690 LoadMapSS: 100%</title></rect>
 <rect x="63" y="0" width="6" height="6" fill="#b07d00"><title>0x0067f8b0 DestroyMapSS: 100%</title></rect>
-<rect x="42" y="7" width="6" height="6" fill="#b07d00"><title>0x006801e0 mainBigSS02: 100%</title></rect>
-<rect x="56" y="7" width="6" height="6" fill="#b07d00"><title>0x006803d0 mainE102SS01: 100%</title></rect>
-<rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x00680420 mainAmySS02: 100%</title></rect>
-<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x00680640 mainAmySS00: 100%</title></rect>
-<rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x00680770 initKnucklesSS01: 100%</title></rect>
-<rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x00680870 initMilesSS04: 100%</title></rect>
-<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x006809d0 mainMilesSS03: 100%</title></rect>
-<rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x00680ae0 mainMilesSS01: 100%</title></rect>
-<rect x="21" y="14" width="6" height="6" fill="#b07d00"><title>0x00680bb0 initSonicSS08: 100%</title></rect>
-<rect x="28" y="14" width="6" height="6" fill="#b07d00"><title>0x00680be0 mainSonicSS08: 100%</title></rect>
-<rect x="35" y="14" width="6" height="6" fill="#b07d00"><title>0x00680c60 initSonicSS07: 100%</title></rect>
-<rect x="42" y="14" width="6" height="6" fill="#b07d00"><title>0x00680c90 mainSonicSS07: 100%</title></rect>
-<rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x00680e30 mainSonicSS05: 100%</title></rect>
-<rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x00680e80 SetPositionS_WhenHeGetShoes: 100%</title></rect>
-<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00680eb0 initSetPositionS_WhenHeGetShoes: 100%</title></rect>
-<rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x00680ec0 initSonicSS03: 100%</title></rect>
-<rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x00681100 mainSonicSS01: 100%</title></rect>
-<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x00681150 getSsHotelPoolDoorMode: 100%</title></rect>
-<rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x00681160 SeqCheckFront: 100%</title></rect>
-<rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x006811d0 SeqCheckBack: 100%</title></rect>
-<rect x="112" y="21" width="6" height="6" fill="#b07d00"><title>0x00681e30 ObjectSSTwrouka: 100%</title></rect>
-<rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x00682040 CreateSSTwrouka: 100%</title></rect>
-<rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x00682190 CreateSSTexAnim: 100%</title></rect>
-<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x00682270 Disp(9): 100%</title></rect>
-<rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x00682460 DispDay: 100%</title></rect>
-<rect x="84" y="28" width="6" height="6" fill="#b07d00"><title>0x006824d0 Exec(9): 100%</title></rect>
-<rect x="98" y="28" width="6" height="6" fill="#b07d00"><title>0x00682740 ExecDay: 100%</title></rect>
-<rect x="105" y="28" width="6" height="6" fill="#b07d00"><title>0x00682750 BuilGInit(1): 100%</title></rect>
-<rect x="112" y="28" width="6" height="6" fill="#b07d00"><title>0x00682790 ObjectSSCasinokazari: 100%</title></rect>
-<rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x00683410 KurumaDestructor: 100%</title></rect>
-<rect x="77" y="49" width="6" height="6" fill="#b07d00"><title>0x00685360 ObjectSSPeopleWait: 100%</title></rect>
-<rect x="98" y="49" width="6" height="6" fill="#b07d00"><title>0x00685610 ssp_walk_man_eveidle: 100%</title></rect>
-<rect x="105" y="49" width="6" height="6" fill="#b07d00"><title>0x00685650 ssp_walk_man: 100%</title></rect>
-<rect x="35" y="56" width="6" height="6" fill="#b07d00"><title>0x00685bd0 ObjectSSKartchanger: 100%</title></rect>
-<rect x="84" y="56" width="6" height="6" fill="#b07d00"><title>0x006862e0 disp(1): 100%</title></rect>
-<rect x="91" y="56" width="6" height="6" fill="#b07d00"><title>0x00686350 Exec(11): 100%</title></rect>
-<rect x="98" y="56" width="6" height="6" fill="#b07d00"><title>0x00686470 ObjectSSChaocard: 100%</title></rect>
-<rect x="21" y="63" width="6" height="6" fill="#b07d00"><title>0x006868b0 FUN_006868b0: 100%</title></rect>
-<rect x="28" y="63" width="6" height="6" fill="#b07d00"><title>0x00686920 FUN_00686920: 100%</title></rect>
-<rect x="42" y="63" width="6" height="6" fill="#b07d00"><title>0x006869a0 DispPut: 100%</title></rect>
-<rect x="56" y="63" width="6" height="6" fill="#b07d00"><title>0x00686aa0 KeyDisp: 100%</title></rect>
-<rect x="63" y="63" width="6" height="6" fill="#b07d00"><title>0x00686b10 ExecPut: 100%</title></rect>
-<rect x="84" y="63" width="6" height="6" fill="#b07d00"><title>0x00686cd0 KeyInit: 100%</title></rect>
-<rect x="49" y="70" width="6" height="6" fill="#b07d00"><title>0x006877a0 FUN_006877a0: 100%</title></rect>
-<rect x="63" y="70" width="6" height="6" fill="#b07d00"><title>0x006879e0 ColliInit: 100%</title></rect>
-<rect x="91" y="70" width="6" height="6" fill="#b07d00"><title>0x00687c80 exitSSCard: 100%</title></rect>
-<rect x="112" y="77" width="6" height="6" fill="#b07d00"><title>0x00688fd0 SeqCheck: 100%</title></rect>
-<rect x="63" y="84" width="6" height="6" fill="#b07d00"><title>0x006898a0 FUN_006898a0: 100%</title></rect>
-<rect x="70" y="84" width="6" height="6" fill="#b07d00"><title>0x00689900 BoxInit: 100%</title></rect>
-<rect x="28" y="91" width="6" height="6" fill="#b07d00"><title>0x0068a220 SakuDisp: 100%</title></rect>
-<rect x="49" y="91" width="6" height="6" fill="#b07d00"><title>0x0068a3a0 E_MatoDisp: 100%</title></rect>
-<rect x="56" y="91" width="6" height="6" fill="#b07d00"><title>0x0068a410 MatoDisp: 100%</title></rect>
-<rect x="63" y="91" width="6" height="6" fill="#b07d00"><title>0x0068a4d0 SakuExec: 100%</title></rect>
-<rect x="84" y="91" width="6" height="6" fill="#b07d00"><title>0x0068a7c0 MatoInit: 100%</title></rect>
-<rect x="7" y="98" width="6" height="6" fill="#b07d00"><title>0x0068ab70 ObjectDisplayMiles: 100%</title></rect>
-<rect x="14" y="98" width="6" height="6" fill="#b07d00"><title>0x0068abe0 ObjectBroken: 100%</title></rect>
-<rect x="49" y="98" width="6" height="6" fill="#b07d00"><title>0x0068aed0 ObjectDisplay(2): 100%</title></rect>
-<rect x="56" y="98" width="6" height="6" fill="#b07d00"><title>0x0068af40 ObjectMain(2): 100%</title></rect>
-<rect x="98" y="98" width="6" height="6" fill="#b07d00"><title>0x0068b1e0 LampDisp: 100%</title></rect>
-<rect x="77" y="105" width="6" height="6" fill="#b07d00"><title>0x0068ba90 Disp(11): 100%</title></rect>
-<rect x="84" y="105" width="6" height="6" fill="#b07d00"><title>0x0068bb00 ObjectSSShop2boxmi: 100%</title></rect>
-<rect x="91" y="105" width="6" height="6" fill="#b07d00"><title>0x0068bb20 Disp(12): 100%</title></rect>
-<rect x="98" y="105" width="6" height="6" fill="#b07d00"><title>0x0068bb90 ObjectSSShop2boxfuta: 100%</title></rect>
-<rect x="105" y="105" width="6" height="6" fill="#b07d00"><title>0x0068bbb0 Disp(13): 100%</title></rect>
-<rect x="112" y="105" width="6" height="6" fill="#b07d00"><title>0x0068bc20 ObjectSSShop2aorobot: 100%</title></rect>
-<rect x="63" y="112" width="6" height="6" fill="#b07d00"><title>0x0068c2d0 FUN_0068c2d0: 100%</title></rect>
-<rect x="70" y="112" width="6" height="6" fill="#b07d00"><title>0x0068c340 FUN_0068c340: 100%</title></rect>
-<rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x0068c3d0 Disp(14): 100%</title></rect>
-<rect x="91" y="112" width="6" height="6" fill="#b07d00"><title>0x0068c4a0 Exec(13): 100%</title></rect>
-<rect x="98" y="112" width="6" height="6" fill="#b07d00"><title>0x0068c4c0 ObjectSSElekanban: 100%</title></rect>
-<rect x="105" y="112" width="6" height="6" fill="#b07d00"><title>0x0068c4f0 Disp(15): 100%</title></rect>
-<rect x="112" y="112" width="6" height="6" fill="#b07d00"><title>0x0068c560 ObjectSSShop2frame: 100%</title></rect>
-<rect x="0" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c580 Disp(16): 100%</title></rect>
-<rect x="7" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c5f0 ObjectSSShop2robot: 100%</title></rect>
-<rect x="14" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c610 Disp(17): 100%</title></rect>
-<rect x="21" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c680 ObjectSSShop2radio: 100%</title></rect>
-<rect x="28" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c690 Disp(18): 100%</title></rect>
-<rect x="35" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c700 ObjectSSShop2kaseki: 100%</title></rect>
-<rect x="98" y="119" width="6" height="6" fill="#b07d00"><title>0x0068ceb0 dispSSSignal: 100%</title></rect>
-<rect x="0" y="126" width="6" height="6" fill="#b07d00"><title>0x0068d0d0 dispSSShop1Solt: 100%</title></rect>
-<rect x="7" y="126" width="6" height="6" fill="#b07d00"><title>0x0068d160 ObjectSSShop1Solt: 100%</title></rect>
-<rect x="14" y="126" width="6" height="6" fill="#b07d00"><title>0x0068d1d0 dispSSShop1Dentou: 100%</title></rect>
-<rect x="35" y="126" width="6" height="6" fill="#b07d00"><title>0x0068d400 dispSSShop2Saku: 100%</title></rect>
-<rect x="56" y="126" width="6" height="6" fill="#b07d00"><title>0x0068dbc0 ObjectSSBigClock: 100%</title></rect>
-<rect x="77" y="126" width="6" height="6" fill="#b07d00"><title>0x0068dd60 ObjectSsadvKomonoRoomlight: 100%</title></rect>
-<rect x="84" y="126" width="6" height="6" fill="#b07d00"><title>0x0068dd90 Object_Ssadv_KomonoExec: 100%</title></rect>
-<rect x="98" y="126" width="6" height="6" fill="#b07d00"><title>0x0068de20 ObjectSsadvKomonoExit: 100%</title></rect>
-<rect x="105" y="126" width="6" height="6" fill="#b07d00"><title>0x0068de70 ObjectSsadvKomonoIsua: 100%</title></rect>
-<rect x="112" y="126" width="6" height="6" fill="#b07d00"><title>0x0068dec0 ObjectSsadvKomonoIsub: 100%</title></rect>
-<rect x="7" y="133" width="6" height="6" fill="#b07d00"><title>0x0068df80 ObjectDisplayOn: 100%</title></rect>
-<rect x="21" y="133" width="6" height="6" fill="#b07d00"><title>0x0068e1b0 ObjectMainOn: 100%</title></rect>
-<rect x="63" y="140" width="6" height="6" fill="#b07d00"><title>0x0068f040 ObjectDisplay(3): 100%</title></rect>
-<rect x="42" y="147" width="6" height="6" fill="#b07d00"><title>0x0068f680 FUN_0068f680: 100%</title></rect>
-<rect x="105" y="147" width="6" height="6" fill="#b07d00"><title>0x0068fa50 FUN_0068fa50: 100%</title></rect>
-<rect x="7" y="154" width="6" height="6" fill="#b07d00"><title>0x0068fbd0 ObjectWait: 100%</title></rect>
-<rect x="28" y="161" width="6" height="6" fill="#b07d00"><title>0x006908a0 FUN_006908a0: 100%</title></rect>
-<rect x="84" y="161" width="6" height="6" fill="#b07d00"><title>0x00690c80 ObjectDisplay(4): 100%</title></rect>
-<rect x="91" y="161" width="6" height="6" fill="#b07d00"><title>0x00690cd0 ObjectMain(4): 100%</title></rect>
-<rect x="112" y="161" width="6" height="6" fill="#b07d00"><title>0x00690e40 KasyaDisplay: 100%</title></rect>
-<rect x="21" y="168" width="6" height="6" fill="#b07d00"><title>0x00691150 sstrain_adxdestruct: 100%</title></rect>
-<rect x="28" y="168" width="6" height="6" fill="#b07d00"><title>0x00691160 sstrain_adxprove: 100%</title></rect>
-<rect x="63" y="168" width="6" height="6" fill="#b07d00"><title>0x00691b20 CreamManagerDestruct: 100%</title></rect>
-<rect x="70" y="168" width="6" height="6" fill="#b07d00"><title>0x006922a0 CreateCreamManager: 100%</title></rect>
-<rect x="77" y="168" width="6" height="6" fill="#b07d00"><title>0x006aa880 initSonicSS01: 100%</title></rect>
-<rect x="84" y="168" width="6" height="6" fill="#b07d00"><title>0x006aae80 initAmySS00: 100%</title></rect>
+<rect x="49" y="7" width="6" height="6" fill="#b07d00"><title>0x006801e0 mainBigSS02: 100%</title></rect>
+<rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x006803d0 mainE102SS01: 100%</title></rect>
+<rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x00680420 mainAmySS02: 100%</title></rect>
+<rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x00680640 mainAmySS00: 100%</title></rect>
+<rect x="98" y="7" width="6" height="6" fill="#b07d00"><title>0x00680770 initKnucklesSS01: 100%</title></rect>
+<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x00680870 initMilesSS04: 100%</title></rect>
+<rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x006809d0 mainMilesSS03: 100%</title></rect>
+<rect x="28" y="14" width="6" height="6" fill="#b07d00"><title>0x00680ae0 mainMilesSS01: 100%</title></rect>
+<rect x="35" y="14" width="6" height="6" fill="#b07d00"><title>0x00680bb0 initSonicSS08: 100%</title></rect>
+<rect x="42" y="14" width="6" height="6" fill="#b07d00"><title>0x00680be0 mainSonicSS08: 100%</title></rect>
+<rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x00680c60 initSonicSS07: 100%</title></rect>
+<rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x00680c90 mainSonicSS07: 100%</title></rect>
+<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00680e30 mainSonicSS05: 100%</title></rect>
+<rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x00680e80 SetPositionS_WhenHeGetShoes: 100%</title></rect>
+<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x00680eb0 initSetPositionS_WhenHeGetShoes: 100%</title></rect>
+<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x00680ec0 initSonicSS03: 100%</title></rect>
+<rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x00681100 mainSonicSS01: 100%</title></rect>
+<rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x00681150 getSsHotelPoolDoorMode: 100%</title></rect>
+<rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x00681160 SeqCheckFront: 100%</title></rect>
+<rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x006811d0 SeqCheckBack: 100%</title></rect>
+<rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x00681e30 ObjectSSTwrouka: 100%</title></rect>
+<rect x="49" y="28" width="6" height="6" fill="#b07d00"><title>0x00682040 CreateSSTwrouka: 100%</title></rect>
+<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x00682190 CreateSSTexAnim: 100%</title></rect>
+<rect x="91" y="28" width="6" height="6" fill="#b07d00"><title>0x00682270 Disp(9): 100%</title></rect>
+<rect x="105" y="28" width="6" height="6" fill="#b07d00"><title>0x00682460 DispDay: 100%</title></rect>
+<rect x="0" y="35" width="6" height="6" fill="#b07d00"><title>0x006824d0 Exec(9): 100%</title></rect>
+<rect x="14" y="35" width="6" height="6" fill="#b07d00"><title>0x00682740 ExecDay: 100%</title></rect>
+<rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x00682750 BuilGInit(1): 100%</title></rect>
+<rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x00682790 ObjectSSCasinokazari: 100%</title></rect>
+<rect x="105" y="35" width="6" height="6" fill="#b07d00"><title>0x00683410 KurumaDestructor: 100%</title></rect>
+<rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x00685360 ObjectSSPeopleWait: 100%</title></rect>
+<rect x="35" y="56" width="6" height="6" fill="#b07d00"><title>0x00685610 ssp_walk_man_eveidle: 100%</title></rect>
+<rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x00685650 ssp_walk_man: 100%</title></rect>
+<rect x="91" y="56" width="6" height="6" fill="#b07d00"><title>0x00685bd0 ObjectSSKartchanger: 100%</title></rect>
+<rect x="28" y="63" width="6" height="6" fill="#b07d00"><title>0x006862e0 disp(1): 100%</title></rect>
+<rect x="35" y="63" width="6" height="6" fill="#b07d00"><title>0x00686350 Exec(11): 100%</title></rect>
+<rect x="42" y="63" width="6" height="6" fill="#b07d00"><title>0x00686470 ObjectSSChaocard: 100%</title></rect>
+<rect x="84" y="63" width="6" height="6" fill="#b07d00"><title>0x006868b0 FUN_006868b0: 100%</title></rect>
+<rect x="91" y="63" width="6" height="6" fill="#b07d00"><title>0x00686920 FUN_00686920: 100%</title></rect>
+<rect x="105" y="63" width="6" height="6" fill="#b07d00"><title>0x006869a0 DispPut: 100%</title></rect>
+<rect x="7" y="70" width="6" height="6" fill="#b07d00"><title>0x00686aa0 KeyDisp: 100%</title></rect>
+<rect x="14" y="70" width="6" height="6" fill="#b07d00"><title>0x00686b10 ExecPut: 100%</title></rect>
+<rect x="35" y="70" width="6" height="6" fill="#b07d00"><title>0x00686cd0 KeyInit: 100%</title></rect>
+<rect x="7" y="77" width="6" height="6" fill="#b07d00"><title>0x006877a0 FUN_006877a0: 100%</title></rect>
+<rect x="21" y="77" width="6" height="6" fill="#b07d00"><title>0x006879e0 ColliInit: 100%</title></rect>
+<rect x="49" y="77" width="6" height="6" fill="#b07d00"><title>0x00687c80 exitSSCard: 100%</title></rect>
+<rect x="77" y="84" width="6" height="6" fill="#b07d00"><title>0x00688fd0 SeqCheck: 100%</title></rect>
+<rect x="35" y="91" width="6" height="6" fill="#b07d00"><title>0x006898a0 FUN_006898a0: 100%</title></rect>
+<rect x="42" y="91" width="6" height="6" fill="#b07d00"><title>0x00689900 BoxInit: 100%</title></rect>
+<rect x="7" y="98" width="6" height="6" fill="#b07d00"><title>0x0068a220 SakuDisp: 100%</title></rect>
+<rect x="28" y="98" width="6" height="6" fill="#b07d00"><title>0x0068a3a0 E_MatoDisp: 100%</title></rect>
+<rect x="35" y="98" width="6" height="6" fill="#b07d00"><title>0x0068a410 MatoDisp: 100%</title></rect>
+<rect x="42" y="98" width="6" height="6" fill="#b07d00"><title>0x0068a4d0 SakuExec: 100%</title></rect>
+<rect x="63" y="98" width="6" height="6" fill="#b07d00"><title>0x0068a7c0 MatoInit: 100%</title></rect>
+<rect x="105" y="98" width="6" height="6" fill="#b07d00"><title>0x0068ab70 ObjectDisplayMiles: 100%</title></rect>
+<rect x="0" y="105" width="6" height="6" fill="#b07d00"><title>0x0068abe0 ObjectBroken: 100%</title></rect>
+<rect x="35" y="105" width="6" height="6" fill="#b07d00"><title>0x0068aed0 ObjectDisplay(2): 100%</title></rect>
+<rect x="42" y="105" width="6" height="6" fill="#b07d00"><title>0x0068af40 ObjectMain(2): 100%</title></rect>
+<rect x="84" y="105" width="6" height="6" fill="#b07d00"><title>0x0068b1e0 LampDisp: 100%</title></rect>
+<rect x="70" y="112" width="6" height="6" fill="#b07d00"><title>0x0068ba90 Disp(11): 100%</title></rect>
+<rect x="77" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bb00 ObjectSSShop2boxmi: 100%</title></rect>
+<rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bb20 Disp(12): 100%</title></rect>
+<rect x="91" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bb90 ObjectSSShop2boxfuta: 100%</title></rect>
+<rect x="98" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bbb0 Disp(13): 100%</title></rect>
+<rect x="105" y="112" width="6" height="6" fill="#b07d00"><title>0x0068bc20 ObjectSSShop2aorobot: 100%</title></rect>
+<rect x="63" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c2d0 FUN_0068c2d0: 100%</title></rect>
+<rect x="70" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c340 FUN_0068c340: 100%</title></rect>
+<rect x="84" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c3d0 Disp(14): 100%</title></rect>
+<rect x="91" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4a0 Exec(13): 100%</title></rect>
+<rect x="98" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4c0 ObjectSSElekanban: 100%</title></rect>
+<rect x="105" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c4f0 Disp(15): 100%</title></rect>
+<rect x="0" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c560 ObjectSSShop2frame: 100%</title></rect>
+<rect x="7" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c580 Disp(16): 100%</title></rect>
+<rect x="14" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c5f0 ObjectSSShop2robot: 100%</title></rect>
+<rect x="21" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c610 Disp(17): 100%</title></rect>
+<rect x="28" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c680 ObjectSSShop2radio: 100%</title></rect>
+<rect x="35" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c690 Disp(18): 100%</title></rect>
+<rect x="42" y="126" width="6" height="6" fill="#b07d00"><title>0x0068c700 ObjectSSShop2kaseki: 100%</title></rect>
+<rect x="105" y="126" width="6" height="6" fill="#b07d00"><title>0x0068ceb0 dispSSSignal: 100%</title></rect>
+<rect x="14" y="133" width="6" height="6" fill="#b07d00"><title>0x0068d0d0 dispSSShop1Solt: 100%</title></rect>
+<rect x="21" y="133" width="6" height="6" fill="#b07d00"><title>0x0068d160 ObjectSSShop1Solt: 100%</title></rect>
+<rect x="28" y="133" width="6" height="6" fill="#b07d00"><title>0x0068d1d0 dispSSShop1Dentou: 100%</title></rect>
+<rect x="49" y="133" width="6" height="6" fill="#b07d00"><title>0x0068d400 dispSSShop2Saku: 100%</title></rect>
+<rect x="70" y="133" width="6" height="6" fill="#b07d00"><title>0x0068dbc0 ObjectSSBigClock: 100%</title></rect>
+<rect x="91" y="133" width="6" height="6" fill="#b07d00"><title>0x0068dd60 ObjectSsadvKomonoRoomlight: 100%</title></rect>
+<rect x="98" y="133" width="6" height="6" fill="#b07d00"><title>0x0068dd90 Object_Ssadv_KomonoExec: 100%</title></rect>
+<rect x="0" y="140" width="6" height="6" fill="#b07d00"><title>0x0068de20 ObjectSsadvKomonoExit: 100%</title></rect>
+<rect x="7" y="140" width="6" height="6" fill="#b07d00"><title>0x0068de70 ObjectSsadvKomonoIsua: 100%</title></rect>
+<rect x="14" y="140" width="6" height="6" fill="#b07d00"><title>0x0068dec0 ObjectSsadvKomonoIsub: 100%</title></rect>
+<rect x="28" y="140" width="6" height="6" fill="#b07d00"><title>0x0068df80 ObjectDisplayOn: 100%</title></rect>
+<rect x="42" y="140" width="6" height="6" fill="#b07d00"><title>0x0068e1b0 ObjectMainOn: 100%</title></rect>
+<rect x="91" y="147" width="6" height="6" fill="#b07d00"><title>0x0068f040 ObjectDisplay(3): 100%</title></rect>
+<rect x="77" y="154" width="6" height="6" fill="#b07d00"><title>0x0068f680 FUN_0068f680: 100%</title></rect>
+<rect x="28" y="161" width="6" height="6" fill="#b07d00"><title>0x0068fa50 FUN_0068fa50: 100%</title></rect>
+<rect x="49" y="161" width="6" height="6" fill="#b07d00"><title>0x0068fbd0 ObjectWait: 100%</title></rect>
+<rect x="77" y="168" width="6" height="6" fill="#b07d00"><title>0x006908a0 FUN_006908a0: 100%</title></rect>
+<rect x="21" y="175" width="6" height="6" fill="#b07d00"><title>0x00690c80 ObjectDisplay(4): 100%</title></rect>
+<rect x="28" y="175" width="6" height="6" fill="#b07d00"><title>0x00690cd0 ObjectMain(4): 100%</title></rect>
+<rect x="49" y="175" width="6" height="6" fill="#b07d00"><title>0x00690e40 KasyaDisplay: 100%</title></rect>
+<rect x="77" y="175" width="6" height="6" fill="#b07d00"><title>0x00691150 sstrain_adxdestruct: 100%</title></rect>
+<rect x="84" y="175" width="6" height="6" fill="#b07d00"><title>0x00691160 sstrain_adxprove: 100%</title></rect>
+<rect x="7" y="182" width="6" height="6" fill="#b07d00"><title>0x00691b20 CreamManagerDestruct: 100%</title></rect>
+<rect x="14" y="182" width="6" height="6" fill="#b07d00"><title>0x006922a0 CreateCreamManager: 100%</title></rect>
+<rect x="21" y="182" width="6" height="6" fill="#b07d00"><title>0x006aa880 initSonicSS01: 100%</title></rect>
+<rect x="28" y="182" width="6" height="6" fill="#b07d00"><title>0x006aae80 initAmySS00: 100%</title></rect>
 </g>
 <rect x="722" y="936" width="213" height="113" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Carrier: 70 of 364 done</title></rect>
 <text x="725" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Carrier <tspan font-weight="400" fill="#59636e">19%</tspan></text>
@@ -1400,10 +1399,10 @@
 <polygon points="27.2,965.6 31,965.6 25,972.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="21.8,962.5 28.2,962.5 29.9,964 31,965.6 25,972.5 19,965.6 20.1,964" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="35" y="972" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Bosses <tspan font-weight="400" fill="#59636e">27%</tspan></text>
-<rect x="234" y="1208" width="92" height="81" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 0: 15 of 62 done</title></rect>
-<text x="237" y="1222" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 0</text>
-<text x="237" y="1237" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">24%</tspan></text>
-<g transform="translate(237,1241)">
+<rect x="234" y="1207" width="92" height="80" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 0: 15 of 62 done</title></rect>
+<text x="237" y="1221" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 0</text>
+<text x="237" y="1236" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">24%</tspan></text>
+<g transform="translate(237,1240)">
 <rect y="0" width="84" height="35" fill="url(#todo)"/>
 <rect y="35" width="14" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x006e2710 FUN_006e2710: 100%</title></rect>
@@ -1422,9 +1421,9 @@
 <rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x006e6a60 ObjectC0Grass3: 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x006e6a90 changeHeadColorChaos0: 100%</title></rect>
 </g>
-<rect x="119" y="1284" width="113" height="66" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 2: 14 of 69 done</title></rect>
-<text x="122" y="1298" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 2 <tspan font-weight="400" fill="#59636e">20%</tspan></text>
-<g transform="translate(122,1302)">
+<rect x="119" y="1283" width="113" height="66" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 2: 14 of 69 done</title></rect>
+<text x="122" y="1297" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 2 <tspan font-weight="400" fill="#59636e">20%</tspan></text>
+<g transform="translate(122,1301)">
 <rect y="0" width="105" height="28" fill="url(#todo)"/>
 <rect y="28" width="63" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x006e7500 RdChaos2Init: 100%</title></rect>
@@ -1442,9 +1441,9 @@
 <rect x="49" y="28" width="6" height="6" fill="#b07d00"><title>0x00902fb0 EvChaos2Water2Human: 100%</title></rect>
 <rect x="56" y="28" width="6" height="6" fill="#b07d00"><title>0x00902fd0 EvChaos2Action: 100%</title></rect>
 </g>
-<rect x="227" y="1108" width="99" height="98" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 4: 28 of 108 done</title></rect>
-<text x="230" y="1122" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 4 <tspan font-weight="400" fill="#59636e">25%</tspan></text>
-<g transform="translate(230,1126)">
+<rect x="227" y="1107" width="99" height="98" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 4: 28 of 108 done</title></rect>
+<text x="230" y="1121" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 4 <tspan font-weight="400" fill="#59636e">25%</tspan></text>
+<g transform="translate(230,1125)">
 <rect y="0" width="91" height="56" fill="url(#todo)"/>
 <rect y="56" width="28" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x006ede20 FUN_006ede20: 100%</title></rect>
@@ -1476,9 +1475,9 @@
 <rect x="56" y="42" width="6" height="6" fill="#b07d00"><title>0x006f25b0 Dsp_damage_ball: 100%</title></rect>
 <rect x="56" y="49" width="6" height="6" fill="#b07d00"><title>0x006f3b30 Dsp_Chaos4KamaTame: 100%</title></rect>
 </g>
-<rect x="119" y="1208" width="113" height="74" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 6: 16 of 93 done</title></rect>
-<text x="122" y="1222" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 6 <tspan font-weight="400" fill="#59636e">17%</tspan></text>
-<g transform="translate(122,1226)">
+<rect x="119" y="1207" width="113" height="74" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 6: 16 of 93 done</title></rect>
+<text x="122" y="1221" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 6 <tspan font-weight="400" fill="#59636e">17%</tspan></text>
+<g transform="translate(122,1225)">
 <rect y="0" width="105" height="42" fill="url(#todo)"/>
 <rect y="42" width="21" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x006f44f0 DisplaySky: 100%</title></rect>
@@ -1498,7 +1497,7 @@
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x00903000 EvChaos6Human2Water: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x00903020 EvChaos6Water2Human: 100%</title></rect>
 </g>
-<rect x="20" y="980" width="107" height="126" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Perfect Chaos: 54 of 163 done</title></rect>
+<rect x="20" y="980" width="107" height="125" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Perfect Chaos: 54 of 163 done</title></rect>
 <text x="23" y="994" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Perfect Chaos</text>
 <text x="23" y="1009" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">33%</tspan></text>
 <g transform="translate(23,1013)">
@@ -1559,10 +1558,10 @@
 <rect x="49" y="77" width="6" height="6" fill="#b07d00"><title>0x00903040 EvChaos7Howl1: 100%</title></rect>
 <rect x="56" y="77" width="6" height="6" fill="#b07d00"><title>0x00903060 EvChaos7Breath: 100%</title></rect>
 </g>
-<rect x="119" y="1108" width="106" height="98" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Hornet: 46 of 104 done</title></rect>
-<text x="122" y="1122" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Hornet</text>
-<text x="122" y="1137" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">44%</tspan></text>
-<g transform="translate(122,1141)">
+<rect x="119" y="1107" width="106" height="98" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Hornet: 46 of 104 done</title></rect>
+<text x="122" y="1121" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Hornet</text>
+<text x="122" y="1136" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">44%</tspan></text>
+<g transform="translate(122,1140)">
 <rect y="0" width="98" height="49" fill="url(#todo)"/>
 <rect y="49" width="42" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x006c12f0 FUN_006c12f0: 100%</title></rect>
@@ -1612,10 +1611,10 @@
 <rect x="28" y="49" width="6" height="6" fill="#b07d00"><title>0x007e0020 evFreeEgm1JetTask: 100%</title></rect>
 <rect x="35" y="49" width="6" height="6" fill="#b07d00"><title>0x007e0040 evChgEgm1Jet: 100%</title></rect>
 </g>
-<rect x="20" y="1235" width="97" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Walker: 32 of 124 done</title></rect>
-<text x="23" y="1249" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Walker</text>
-<text x="23" y="1264" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
-<g transform="translate(23,1268)">
+<rect x="20" y="1234" width="97" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Walker: 32 of 124 done</title></rect>
+<text x="23" y="1248" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Walker</text>
+<text x="23" y="1263" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
+<g transform="translate(23,1267)">
 <rect y="0" width="91" height="63" fill="url(#todo)"/>
 <rect y="63" width="49" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x006c55e0 Bg_Bossegm2: 100%</title></rect>
@@ -1651,7 +1650,7 @@
 <rect x="56" y="56" width="6" height="6" fill="#b07d00"><title>0x006cbb70 Dsp_car: 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#b07d00"><title>0x006cbbe0 Dsp_car_broken: 100%</title></rect>
 </g>
-<rect x="229" y="980" width="97" height="126" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Viper: 31 of 135 done</title></rect>
+<rect x="229" y="980" width="97" height="125" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Viper: 31 of 135 done</title></rect>
 <text x="232" y="994" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Viper</text>
 <text x="232" y="1009" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">22%</tspan></text>
 <g transform="translate(232,1013)">
@@ -1690,7 +1689,7 @@
 <rect x="21" y="70" width="6" height="6" fill="#b07d00"><title>0x009035a0 EV_Egm3: 100%</title></rect>
 <rect x="28" y="70" width="6" height="6" fill="#b07d00"><title>0x009036c0 EV_Egm3EggmanHikkomu: 100%</title></rect>
 </g>
-<rect x="129" y="980" width="98" height="126" rx="3" fill="#ffffff" stroke="#d0d7de"><title>ZERO: 42 of 164 done</title></rect>
+<rect x="129" y="980" width="98" height="125" rx="3" fill="#ffffff" stroke="#d0d7de"><title>ZERO: 42 of 164 done</title></rect>
 <text x="132" y="994" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">ZERO <tspan font-weight="400" fill="#59636e">25%</tspan></text>
 <g transform="translate(132,998)">
 <rect y="0" width="91" height="84" fill="url(#todo)"/>
@@ -1738,10 +1737,10 @@
 <rect x="63" y="77" width="6" height="6" fill="#b07d00"><title>0x006e1a80 RoboLockOnCursor: 100%</title></rect>
 <rect x="49" y="84" width="6" height="6" fill="#b07d00"><title>0x0070b6a0 changere101rinit: 100%</title></rect>
 </g>
-<rect x="234" y="1291" width="92" height="59" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 Beta: 14 of 35 done</title></rect>
-<text x="237" y="1305" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-101 Beta</text>
-<text x="237" y="1320" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">40%</tspan></text>
-<g transform="translate(237,1324)">
+<rect x="234" y="1289" width="92" height="60" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 Beta: 14 of 35 done</title></rect>
+<text x="237" y="1303" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-101 Beta</text>
+<text x="237" y="1318" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">40%</tspan></text>
+<g transform="translate(237,1322)">
 <rect y="0" width="84" height="14" fill="url(#todo)"/>
 <rect y="14" width="77" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x0067fa10 RdBossEnd: 100%</title></rect>
@@ -1760,10 +1759,10 @@
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x007071f0 SetE101HoverSmoke: 100%</title></rect>
 <rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00837890 updownHeight(2): 100%</title></rect>
 </g>
-<rect x="20" y="1108" width="97" height="125" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 mkII: 33 of 134 done</title></rect>
-<text x="23" y="1122" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-101 mkII</text>
-<text x="23" y="1137" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">24%</tspan></text>
-<g transform="translate(23,1141)">
+<rect x="20" y="1107" width="97" height="125" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 mkII: 33 of 134 done</title></rect>
+<text x="23" y="1121" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-101 mkII</text>
+<text x="23" y="1136" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">24%</tspan></text>
+<g transform="translate(23,1140)">
 <rect y="0" width="91" height="70" fill="url(#todo)"/>
 <rect y="70" width="28" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x00707370 FUN_00707370: 100%</title></rect>
@@ -1807,7 +1806,7 @@
 <polygon points="341.2,547.6 345,547.6 339,554.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="335.8,544.5 342.2,544.5 343.9,546 345,547.6 339,554.5 333,547.6 334.1,546" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="349" y="554" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Mini-games <tspan font-weight="400" fill="#59636e">42%</tspan></text>
-<rect x="334" y="793" width="108" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sky Chase: 43 of 168 done</title></rect>
+<rect x="334" y="793" width="109" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sky Chase: 43 of 168 done</title></rect>
 <text x="337" y="807" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sky Chase <tspan font-weight="400" fill="#59636e">25%</tspan></text>
 <g transform="translate(337,811)">
 <rect y="0" width="98" height="84" fill="url(#todo)"/>
@@ -1855,11 +1854,11 @@
 <rect x="49" y="77" width="6" height="6" fill="#b07d00"><title>0x007f1be0 FUN_007f1be0: 100%</title></rect>
 <rect x="56" y="77" width="6" height="6" fill="#b07d00"><title>0x007f1c40 HodaiTamaDraw: 100%</title></rect>
 </g>
-<rect x="591" y="793" width="67" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sand Hill: 33 of 59 done</title></rect>
-<text x="594" y="807" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sand</text>
-<text x="594" y="822" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hill</text>
-<text x="594" y="837" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">55%</tspan></text>
-<g transform="translate(594,841)">
+<rect x="592" y="793" width="67" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sand Hill: 33 of 59 done</title></rect>
+<text x="595" y="807" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sand</text>
+<text x="595" y="822" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hill</text>
+<text x="595" y="837" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">55%</tspan></text>
+<g transform="translate(595,841)">
 <rect y="0" width="56" height="49" fill="url(#todo)"/>
 <rect y="49" width="21" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x007e6e40 Bg_SandBoard: 100%</title></rect>
@@ -1896,11 +1895,11 @@
 <rect x="7" y="49" width="6" height="6" fill="#b07d00"><title>0x007e8fe0 dispWorm: 100%</title></rect>
 <rect x="14" y="49" width="6" height="6" fill="#b07d00"><title>0x007e9090 destWorm: 100%</title></rect>
 </g>
-<rect x="444" y="793" width="76" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Twinkle Circuit: 35 of 73 done</title></rect>
-<text x="447" y="807" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Twinkle</text>
-<text x="447" y="822" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Circuit</text>
-<text x="447" y="837" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">47%</tspan></text>
-<g transform="translate(447,841)">
+<rect x="445" y="793" width="75" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Twinkle Circuit: 35 of 73 done</title></rect>
+<text x="448" y="807" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Twinkle</text>
+<text x="448" y="822" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Circuit</text>
+<text x="448" y="837" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">47%</tspan></text>
+<g transform="translate(448,841)">
 <rect y="0" width="70" height="49" fill="url(#todo)"/>
 <rect y="49" width="21" height="7" fill="url(#todo)"/>
 <rect x="14" y="0" width="6" height="6" fill="#b07d00"><title>0x007e4230 destBg: 100%</title></rect>
@@ -1940,19 +1939,19 @@
 <rect x="7" y="49" width="6" height="6" fill="#b07d00"><title>0x007e6a60 CartLapDisplayLap: 100%</title></rect>
 <rect x="14" y="49" width="6" height="6" fill="#b07d00"><title>0x007f2e70 mc_bgmcontrol: 100%</title></rect>
 </g>
-<rect x="522" y="793" width="67" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Hedgehog Hammer: 4 of 37 done</title></rect>
+<rect x="522" y="793" width="68" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Hedgehog Hammer: 4 of 37 done</title></rect>
 <text x="525" y="807" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hedgehog</text>
 <text x="525" y="822" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hammer</text>
 <text x="525" y="837" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">10%</tspan></text>
 <g transform="translate(525,841)">
-<rect y="0" width="56" height="28" fill="url(#todo)"/>
-<rect y="28" width="35" height="7" fill="url(#todo)"/>
-<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x007f2fc0 FUN_007f2fc0: 100%</title></rect>
-<rect x="7" y="14" width="6" height="6" fill="#b07d00"><title>0x007f2ff0 FUN_007f2ff0: 100%</title></rect>
-<rect x="21" y="14" width="6" height="6" fill="#b07d00"><title>0x007f30c0 FUN_007f30c0: 100%</title></rect>
-<rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x007f4560 EndMoguraScore: 100%</title></rect>
+<rect y="0" width="63" height="28" fill="url(#todo)"/>
+<rect y="28" width="7" height="7" fill="url(#todo)"/>
+<rect x="49" y="7" width="6" height="6" fill="#b07d00"><title>0x007f2fc0 FUN_007f2fc0: 100%</title></rect>
+<rect x="56" y="7" width="6" height="6" fill="#b07d00"><title>0x007f2ff0 FUN_007f2ff0: 100%</title></rect>
+<rect x="7" y="14" width="6" height="6" fill="#b07d00"><title>0x007f30c0 FUN_007f30c0: 100%</title></rect>
+<rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x007f4560 EndMoguraScore: 100%</title></rect>
 </g>
-<rect x="334" y="562" width="324" height="229" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Game Gear games: 585 of 1,300 done</title></rect>
+<rect x="334" y="562" width="325" height="229" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Game Gear games: 585 of 1,300 done</title></rect>
 <text x="337" y="576" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Game Gear games <tspan font-weight="400" fill="#59636e">45%</tspan></text>
 <g transform="translate(337,580)">
 <rect y="0" width="315" height="196" fill="url(#todo)"/>
@@ -2543,18 +2542,18 @@
 <rect x="273" y="189" width="6" height="6" fill="#b07d00"><title>0x0091b1d0 FUN_0091b1d0: 100%</title></rect>
 <rect x="308" y="189" width="6" height="6" fill="#b07d00"><title>0x0091b2d0 FUN_0091b2d0: 100%</title></rect>
 </g>
-<polygon points="667.8,544.5 674.2,544.5 675.9,546 677,547.6 671,554.5 665,547.6 666.1,546" fill="#3cbaea"/>
-<polygon points="667.8,544.5 674.2,544.5 675.9,546 677,547.6 665,547.6 666.1,546" fill="#ffffff" fill-opacity="0.4"/>
-<polygon points="667.8,544.5 674.2,544.5 671,547.6" fill="#ffffff" fill-opacity="0.35"/>
-<polygon points="665,547.6 668.8,547.6 671,554.5" fill="#ffffff" fill-opacity="0.15"/>
-<polygon points="673.2,547.6 677,547.6 671,554.5" fill="#000000" fill-opacity="0.25"/>
-<polygon points="667.8,544.5 674.2,544.5 675.9,546 677,547.6 671,554.5 665,547.6 666.1,546" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="681" y="554" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">35%</tspan></text>
-<rect x="666" y="562" width="314" height="245" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 508 of 1,342 done</title></rect>
-<text x="669" y="576" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">37%</tspan></text>
-<g transform="translate(669,580)">
+<polygon points="668.8,544.5 675.2,544.5 676.9,546 678,547.6 672,554.5 666,547.6 667.1,546" fill="#3cbaea"/>
+<polygon points="668.8,544.5 675.2,544.5 676.9,546 678,547.6 666,547.6 667.1,546" fill="#ffffff" fill-opacity="0.4"/>
+<polygon points="668.8,544.5 675.2,544.5 672,547.6" fill="#ffffff" fill-opacity="0.35"/>
+<polygon points="666,547.6 669.8,547.6 672,554.5" fill="#ffffff" fill-opacity="0.15"/>
+<polygon points="674.2,547.6 678,547.6 672,554.5" fill="#000000" fill-opacity="0.25"/>
+<polygon points="668.8,544.5 675.2,544.5 676.9,546 678,547.6 672,554.5 666,547.6 667.1,546" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
+<text x="682" y="554" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">36%</tspan></text>
+<rect x="667" y="562" width="313" height="246" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 520 of 1,348 done</title></rect>
+<text x="670" y="576" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">38%</tspan></text>
+<g transform="translate(670,580)">
 <rect y="0" width="308" height="210" fill="url(#todo)"/>
-<rect y="210" width="154" height="7" fill="url(#todo)"/>
+<rect y="210" width="196" height="7" fill="url(#todo)"/>
 <rect x="203" y="0" width="6" height="6" fill="#b07d00"><title>0x00437110 FUN_00437110: 100%</title></rect>
 <rect x="210" y="0" width="6" height="6" fill="#b07d00"><title>0x00437120 FUN_00437120: 100%</title></rect>
 <rect x="217" y="0" width="6" height="6" fill="#b07d00"><title>0x00437140 FUN_00437140: 100%</title></rect>
@@ -2776,6 +2775,7 @@
 <rect x="14" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c4b0 FUN_0044c4b0: 100%</title></rect>
 <rect x="21" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c4c0 AlMsgStrEmbed: 100%</title></rect>
 <rect x="28" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c520 AlMsgStrLoad: 100%</title></rect>
+<rect x="49" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c830 AlMsgWarnCreate: 100%</title></rect>
 <rect x="63" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c940 AlMsgWarnGetStatus: 100%</title></rect>
 <rect x="77" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c990 AlMsgWarnClear: 100%</title></rect>
 <rect x="91" y="70" width="6" height="6" fill="#b07d00"><title>0x0044c9f0 AlMsgWarnWaitCont: 100%</title></rect>
@@ -2811,6 +2811,7 @@
 <rect x="210" y="84" width="6" height="6" fill="#b07d00"><title>0x004507f0 AL_IsExistPartsChild: 100%</title></rect>
 <rect x="217" y="84" width="6" height="6" fill="#b07d00"><title>0x00450820 AL_IsExistPartsAdult: 100%</title></rect>
 <rect x="224" y="84" width="6" height="6" fill="#b07d00"><title>0x00450850 AL_ClearPartsSub: 100%</title></rect>
+<rect x="231" y="84" width="6" height="6" fill="#b07d00"><title>0x00450890 AL_ClearParts: 100%</title></rect>
 <rect x="245" y="84" width="6" height="6" fill="#b07d00"><title>0x00450a50 AL_RemoveMinimalParts: 100%</title></rect>
 <rect x="273" y="84" width="6" height="6" fill="#b07d00"><title>0x00450bd0 AL_SetItemParallelLeftHand: 100%</title></rect>
 <rect x="280" y="84" width="6" height="6" fill="#b07d00"><title>0x00450c00 AL_SetItemParallelRightHand: 100%</title></rect>
@@ -2838,6 +2839,7 @@
 <rect x="273" y="91" width="6" height="6" fill="#b07d00"><title>0x00451c60 ALBHV_BoxDance: 100%</title></rect>
 <rect x="21" y="98" width="6" height="6" fill="#b07d00"><title>0x00452660 ALO_RakugakiDestructor: 100%</title></rect>
 <rect x="154" y="98" width="6" height="6" fill="#b07d00"><title>0x00454540 ALO_ShabonDestructor: 100%</title></rect>
+<rect x="245" y="98" width="6" height="6" fill="#b07d00"><title>0x004552c0 AL_DecideBehaviorSToy: 100%</title></rect>
 <rect x="252" y="98" width="6" height="6" fill="#b07d00"><title>0x004553b0 ALBHV_Kaoarau: 100%</title></rect>
 <rect x="28" y="105" width="6" height="6" fill="#b07d00"><title>0x00455ed0 ALBHV_PyonPyon: 100%</title></rect>
 <rect x="35" y="105" width="6" height="6" fill="#b07d00"><title>0x00455f80 ALBHV_Fukkin2: 100%</title></rect>
@@ -2852,6 +2854,7 @@
 <rect x="217" y="105" width="6" height="6" fill="#b07d00"><title>0x00457e20 AL_FaceChangeMouth: 100%</title></rect>
 <rect x="224" y="105" width="6" height="6" fill="#b07d00"><title>0x00457e40 AL_FaceReturnDefaultEye: 100%</title></rect>
 <rect x="231" y="105" width="6" height="6" fill="#b07d00"><title>0x00457e60 AL_FaceReturnDefaultMouth: 100%</title></rect>
+<rect x="245" y="105" width="6" height="6" fill="#b07d00"><title>0x00458070 AL_FaceControl: 100%</title></rect>
 <rect x="273" y="105" width="6" height="6" fill="#b07d00"><title>0x004582e0 MOV_ClearVelo: 100%</title></rect>
 <rect x="280" y="105" width="6" height="6" fill="#b07d00"><title>0x00458300 MOV_ClearAcc: 100%</title></rect>
 <rect x="287" y="105" width="6" height="6" fill="#b07d00"><title>0x00458320 MOV_SetGravity: 100%</title></rect>
@@ -2906,6 +2909,7 @@
 <rect x="77" y="140" width="6" height="6" fill="#b07d00"><title>0x00469f20 ALBHV_GoToHorse: 100%</title></rect>
 <rect x="84" y="140" width="6" height="6" fill="#b07d00"><title>0x00469fa0 ALBHV_GoToBox: 100%</title></rect>
 <rect x="224" y="140" width="6" height="6" fill="#b07d00"><title>0x0046b990 AL_WalkSelect: 100%</title></rect>
+<rect x="245" y="140" width="6" height="6" fill="#b07d00"><title>0x0046c210 ALO_NestFlowerExecutor: 100%</title></rect>
 <rect x="252" y="140" width="6" height="6" fill="#b07d00"><title>0x0046c2a0 ALO_NestFlowerDisplayer: 100%</title></rect>
 <rect x="273" y="140" width="6" height="6" fill="#b07d00"><title>0x0046c570 ALO_CreateNest: 100%</title></rect>
 <rect x="14" y="147" width="6" height="6" fill="#b07d00"><title>0x0046ccf0 AL_MinimalDestructor: 100%</title></rect>
@@ -2918,8 +2922,8 @@
 <rect x="133" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e2e0 ALO_BlackmarketHangyoCreate: 100%</title></rect>
 <rect x="140" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e300 FBuyerDisp: 100%</title></rect>
 <rect x="154" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e4b0 ALO_BlackmarketBuyerCreate: 100%</title></rect>
-<rect x="161" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e4d0 FDisp: 100%</title></rect>
-<rect x="168" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e530 FExec(2): 100%</title></rect>
+<rect x="161" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e4d0 FDisp(1): 100%</title></rect>
+<rect x="168" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e530 FExec(3): 100%</title></rect>
 <rect x="175" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e580 ALO_BlackmarketLampCreate: 100%</title></rect>
 <rect x="217" y="147" width="6" height="6" fill="#b07d00"><title>0x0046e620 FUN_0046e620: 100%</title></rect>
 <rect x="63" y="154" width="6" height="6" fill="#b07d00"><title>0x0046ea30 FUN_0046ea30: 100%</title></rect>
@@ -2932,267 +2936,275 @@
 <rect x="77" y="161" width="6" height="6" fill="#b07d00"><title>0x00471cd0 AL_EntranceMasterDest: 100%</title></rect>
 <rect x="84" y="161" width="6" height="6" fill="#b07d00"><title>0x00471ee0 _alg_entrance_prolog: 100%</title></rect>
 <rect x="91" y="161" width="6" height="6" fill="#b07d00"><title>0x00471f10 _alg_entrance_epilog: 100%</title></rect>
-<rect x="98" y="161" width="6" height="6" fill="#b07d00"><title>0x004720d0 ALO_EntDoorOpen: 100%</title></rect>
-<rect x="105" y="161" width="6" height="6" fill="#b07d00"><title>0x004728c0 AL_EntranceMenuManagerDestructor: 100%</title></rect>
-<rect x="112" y="161" width="6" height="6" fill="#b07d00"><title>0x00472900 AL_EntranceMenuCreate: 100%</title></rect>
-<rect x="119" y="161" width="6" height="6" fill="#b07d00"><title>0x004729d0 AlEntAnimArrayInit: 100%</title></rect>
-<rect x="126" y="161" width="6" height="6" fill="#b07d00"><title>0x00472a10 AL_EntranceDrawSprite2D: 100%</title></rect>
-<rect x="133" y="161" width="6" height="6" fill="#b07d00"><title>0x00472a90 AL_EntCameraFunc: 100%</title></rect>
-<rect x="140" y="161" width="6" height="6" fill="#b07d00"><title>0x00472b10 AL_EntCameraSet: 100%</title></rect>
-<rect x="147" y="161" width="6" height="6" fill="#b07d00"><title>0x00472b50 ALBHV_Oshaburiburi: 100%</title></rect>
-<rect x="154" y="161" width="6" height="6" fill="#b07d00"><title>0x00473cb0 PersonalRecordWindowDestructor: 100%</title></rect>
-<rect x="161" y="161" width="6" height="6" fill="#b07d00"><title>0x004741c0 BlueButtonModoruDestructor: 100%</title></rect>
-<rect x="168" y="161" width="6" height="6" fill="#b07d00"><title>0x004741d0 CreateBlueButtonModoru: 100%</title></rect>
-<rect x="175" y="161" width="6" height="6" fill="#b07d00"><title>0x004746b0 CreateBlueButtonModoruCS: 100%</title></rect>
-<rect x="182" y="161" width="6" height="6" fill="#b07d00"><title>0x00474720 CreateCourseSelectMenuBeginner: 100%</title></rect>
-<rect x="189" y="161" width="6" height="6" fill="#b07d00"><title>0x00474930 MessageBarClear: 100%</title></rect>
-<rect x="196" y="161" width="6" height="6" fill="#b07d00"><title>0x00474df0 AL_EntranceMenuLargeTitleBarDisplayerPost: 100%</title></rect>
-<rect x="203" y="161" width="6" height="6" fill="#b07d00"><title>0x00474e00 AL_EntranceMenuLargeTitleBarDisplayer: 100%</title></rect>
-<rect x="210" y="161" width="6" height="6" fill="#b07d00"><title>0x00474e20 AL_EntranceMenuLargeTitleBarDestructor: 100%</title></rect>
-<rect x="217" y="161" width="6" height="6" fill="#b07d00"><title>0x004750e0 CreateLargeTitleBar(struct task *, unsigned short): 100%</title></rect>
-<rect x="224" y="161" width="6" height="6" fill="#b07d00"><title>0x00475550 AL_EntranceMenuSmallTitleBarDestructor: 100%</title></rect>
-<rect x="231" y="161" width="6" height="6" fill="#b07d00"><title>0x004757d0 CreateSmallTitleBar: 100%</title></rect>
-<rect x="238" y="161" width="6" height="6" fill="#b07d00"><title>0x00476560 CreateBackGround: 100%</title></rect>
-<rect x="245" y="161" width="6" height="6" fill="#b07d00"><title>0x00476b00 AL_G00_MsgListGet: 100%</title></rect>
-<rect x="252" y="161" width="6" height="6" fill="#b07d00"><title>0x00476b10 _alg_garden00_ss_epilog: 100%</title></rect>
-<rect x="266" y="161" width="6" height="6" fill="#b07d00"><title>0x00476be0 AL_Garden00MasterDestructor: 100%</title></rect>
-<rect x="280" y="161" width="6" height="6" fill="#b07d00"><title>0x00476fd0 _alg_garden00_ss_prolog: 100%</title></rect>
-<rect x="287" y="161" width="6" height="6" fill="#b07d00"><title>0x00477000 ObjectDisplay(1): 100%</title></rect>
-<rect x="21" y="168" width="6" height="6" fill="#b07d00"><title>0x00477250 ObjectALGardenDoor: 100%</title></rect>
-<rect x="98" y="168" width="6" height="6" fill="#b07d00"><title>0x004775a0 AloG00BldoorWakuDisp: 100%</title></rect>
-<rect x="147" y="168" width="6" height="6" fill="#b07d00"><title>0x00477b80 ghUnitVector: 100%</title></rect>
-<rect x="154" y="168" width="6" height="6" fill="#b07d00"><title>0x00477c00 FUN_00477c00: 100%</title></rect>
-<rect x="252" y="168" width="6" height="6" fill="#b07d00"><title>0x00478480 hintbox_edit_print: 100%</title></rect>
-<rect x="28" y="175" width="6" height="6" fill="#b07d00"><title>0x00478a00 AloG00FountainDest: 100%</title></rect>
-<rect x="42" y="175" width="6" height="6" fill="#b07d00"><title>0x00478a80 AloG00FountainExec: 100%</title></rect>
-<rect x="98" y="175" width="6" height="6" fill="#b07d00"><title>0x00478ba0 FUN_00478ba0: 100%</title></rect>
-<rect x="168" y="175" width="6" height="6" fill="#b07d00"><title>0x00479840 FUN_00479840: 100%</title></rect>
-<rect x="189" y="175" width="6" height="6" fill="#9e8d72"><title>0x00479910 FUN_00479910: 66.7%</title></rect>
-<rect x="217" y="175" width="6" height="6" fill="#b07d00"><title>0x00479ac0 AloG00HintmenuOver: 100%</title></rect>
-<rect x="231" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b30 FUN_00479b30: 100%</title></rect>
-<rect x="238" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b50 _alg_garden01_ec_epilog: 100%</title></rect>
-<rect x="245" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b70 AL_Garden01MasterExecutor: 100%</title></rect>
-<rect x="252" y="175" width="6" height="6" fill="#b07d00"><title>0x00479bb0 AL_Garden01MasterDestructor: 100%</title></rect>
-<rect x="266" y="175" width="6" height="6" fill="#b07d00"><title>0x00479df0 _alg_garden01_ec_prolog: 100%</title></rect>
-<rect x="273" y="175" width="6" height="6" fill="#b07d00"><title>0x00479e20 _alg_garden02_mr_epilog: 100%</title></rect>
-<rect x="280" y="175" width="6" height="6" fill="#b07d00"><title>0x00479e40 AL_Garden02MasterExecutor: 100%</title></rect>
-<rect x="287" y="175" width="6" height="6" fill="#b07d00"><title>0x00479ed0 AL_Garden02MasterDisplayer: 100%</title></rect>
-<rect x="294" y="175" width="6" height="6" fill="#b07d00"><title>0x00479ee0 AL_Garden02MasterDestructor: 100%</title></rect>
-<rect x="7" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a1d0 _alg_garden02_mr_daytime_epilog: 100%</title></rect>
-<rect x="21" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a390 _alg_garden02_mr_evening_epilog: 100%</title></rect>
-<rect x="35" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a550 _alg_garden02_mr_night_epilog: 100%</title></rect>
-<rect x="63" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a770 _al_odekake_epilog: 100%</title></rect>
-<rect x="70" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a790 AL_OdekakeStageExecutor: 100%</title></rect>
-<rect x="77" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a7f0 AL_OdekakeStageDestructor: 100%</title></rect>
-<rect x="84" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a830 CameraFunc: 100%</title></rect>
-<rect x="91" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a8a0 FUN_0047a8a0: 100%</title></rect>
-<rect x="105" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a9c0 _al_odekake_prolog: 100%</title></rect>
-<rect x="112" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a9f0 FUN_0047a9f0: 100%</title></rect>
-<rect x="126" y="182" width="6" height="6" fill="#b07d00"><title>0x0047aab0 AL_OdekakeMenuMasterDestructor: 100%</title></rect>
-<rect x="133" y="182" width="6" height="6" fill="#b07d00"><title>0x0047aae0 AL_OdeMenuSetNextStage: 100%</title></rect>
-<rect x="140" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ab00 AL_OdeMenuChangeStage: 100%</title></rect>
-<rect x="147" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ab80 AL_OdeMenuGetMode: 100%</title></rect>
-<rect x="154" y="182" width="6" height="6" fill="#b07d00"><title>0x0047aba0 AL_OdeMenuSetMode: 100%</title></rect>
-<rect x="161" y="182" width="6" height="6" fill="#b07d00"><title>0x0047abd0 AL_OdeMenuIsEnd: 100%</title></rect>
-<rect x="168" y="182" width="6" height="6" fill="#b07d00"><title>0x0047abe0 AL_OdeMenuSetEnd: 100%</title></rect>
-<rect x="175" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ac00 AL_OdeMenuGetState: 100%</title></rect>
-<rect x="182" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ac20 AL_OdeMenuSetStateBusy: 100%</title></rect>
-<rect x="189" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ac40 CreateOdekakeMenuMaster: 100%</title></rect>
-<rect x="217" y="182" width="6" height="6" fill="#b07d00"><title>0x0047b360 FUN_0047b360: 100%</title></rect>
-<rect x="280" y="182" width="6" height="6" fill="#b07d00"><title>0x0047be10 FUN_0047be10: 100%</title></rect>
-<rect x="294" y="182" width="6" height="6" fill="#b07d00"><title>0x0047c660 FUN_0047c660: 100%</title></rect>
-<rect x="14" y="189" width="6" height="6" fill="#b07d00"><title>0x0047ddb0 BGExecutor: 100%</title></rect>
-<rect x="35" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e070 BGDestructor: 100%</title></rect>
-<rect x="42" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e080 CreateOdeBG: 100%</title></rect>
-<rect x="63" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e5c0 CreateDecideButton: 100%</title></rect>
-<rect x="84" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e880 CreateGuideButton: 100%</title></rect>
-<rect x="91" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e8c0 CreateKetteiButton: 100%</title></rect>
-<rect x="98" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e910 CreateCancelButton: 100%</title></rect>
-<rect x="119" y="189" width="6" height="6" fill="#b07d00"><title>0x0047f000 SayounaraWindowDestructor: 100%</title></rect>
-<rect x="147" y="189" width="6" height="6" fill="#b07d00"><title>0x0047fb20 ChaoParamWindowDestructor: 100%</title></rect>
-<rect x="154" y="189" width="6" height="6" fill="#b07d00"><title>0x0047fb50 ChaoParamWindowSetDecidedFlag: 100%</title></rect>
-<rect x="182" y="189" width="6" height="6" fill="#b07d00"><title>0x00480110 CreateLargeTitleBar(long, float, float): 100%</title></rect>
-<rect x="203" y="189" width="6" height="6" fill="#b07d00"><title>0x00480580 CreateCategoryBar: 100%</title></rect>
-<rect x="224" y="189" width="6" height="6" fill="#b07d00"><title>0x00480fc0 ToridasuPortWindowDestructor: 100%</title></rect>
-<rect x="231" y="189" width="6" height="6" fill="#b07d00"><title>0x00480ff0 CreateToridasuPortWindow: 100%</title></rect>
-<rect x="252" y="189" width="6" height="6" fill="#b07d00"><title>0x00481790 OdekakePortWindowDestructor: 100%</title></rect>
-<rect x="259" y="189" width="6" height="6" fill="#b07d00"><title>0x004817c0 CreateOdekakePortWindow: 100%</title></rect>
-<rect x="294" y="189" width="6" height="6" fill="#b07d00"><title>0x00481a10 AL_OdeTelopDelete: 100%</title></rect>
-<rect x="301" y="189" width="6" height="6" fill="#b07d00"><title>0x00481a20 FUN_00481a20: 100%</title></rect>
-<rect x="28" y="196" width="6" height="6" fill="#b07d00"><title>0x00494170 chCnkSetOffsetAlpha: 100%</title></rect>
-<rect x="35" y="196" width="6" height="6" fill="#b07d00"><title>0x004941d0 chCnkDrawObject: 100%</title></rect>
-<rect x="42" y="196" width="6" height="6" fill="#b07d00"><title>0x004941f0 chCnkDrawMotion: 100%</title></rect>
-<rect x="49" y="196" width="6" height="6" fill="#b07d00"><title>0x00494220 saCnkDrawMotionSA: 100%</title></rect>
-<rect x="56" y="196" width="6" height="6" fill="#b07d00"><title>0x00494250 saCnkDrawMotionLinkSA: 100%</title></rect>
-<rect x="70" y="196" width="6" height="6" fill="#b07d00"><title>0x00494650 GbaStatus: 100%</title></rect>
-<rect x="77" y="196" width="6" height="6" fill="#b07d00"><title>0x00494670 GbaCheck: 100%</title></rect>
-<rect x="91" y="196" width="6" height="6" fill="#b07d00"><title>0x007108c0 AlgKinderAdInit: 100%</title></rect>
-<rect x="98" y="196" width="6" height="6" fill="#b07d00"><title>0x007108f0 AlgKinderAdExit: 100%</title></rect>
-<rect x="105" y="196" width="6" height="6" fill="#b07d00"><title>0x00710910 AlgKinderAdSetTexture: 100%</title></rect>
-<rect x="112" y="196" width="6" height="6" fill="#b07d00"><title>0x00710920 AlgKinderAdGetTexlist: 100%</title></rect>
-<rect x="161" y="196" width="6" height="6" fill="#b07d00"><title>0x007110e0 ALO_RingWinDelete: 100%</title></rect>
-<rect x="175" y="196" width="6" height="6" fill="#b07d00"><title>0x00711140 FUN_00711140: 100%</title></rect>
-<rect x="182" y="196" width="6" height="6" fill="#b07d00"><title>0x00711160 ALO_RingWinSetPos: 100%</title></rect>
-<rect x="189" y="196" width="6" height="6" fill="#b07d00"><title>0x007111c0 ALO_RingWinCreate: 100%</title></rect>
-<rect x="224" y="196" width="6" height="6" fill="#b07d00"><title>0x00711950 ALK_BaseWindowCreate: 100%</title></rect>
-<rect x="252" y="196" width="6" height="6" fill="#b07d00"><title>0x00711c20 FUN_00711c20: 100%</title></rect>
-<rect x="259" y="196" width="6" height="6" fill="#b07d00"><title>0x00711c50 FUN_00711c50: 100%</title></rect>
-<rect x="287" y="196" width="6" height="6" fill="#b07d00"><title>0x00712650 ChaoSelectMenuManagerDestructor: 100%</title></rect>
-<rect x="294" y="196" width="6" height="6" fill="#b07d00"><title>0x00712670 FUN_00712670: 100%</title></rect>
-<rect x="301" y="196" width="6" height="6" fill="#b07d00"><title>0x00712680 AL_GetChaoSelectMenuStatus: 100%</title></rect>
-<rect x="0" y="203" width="6" height="6" fill="#b07d00"><title>0x00712690 AL_ChaoMenuIsEnd: 100%</title></rect>
-<rect x="7" y="203" width="6" height="6" fill="#b07d00"><title>0x007126a0 FUN_007126a0: 100%</title></rect>
-<rect x="14" y="203" width="6" height="6" fill="#b07d00"><title>0x007126c0 AL_ChaoMenuSetBusy: 100%</title></rect>
-<rect x="21" y="203" width="6" height="6" fill="#b07d00"><title>0x007126e0 FUN_007126e0: 100%</title></rect>
-<rect x="28" y="203" width="6" height="6" fill="#b07d00"><title>0x00712700 FUN_00712700: 100%</title></rect>
-<rect x="35" y="203" width="6" height="6" fill="#b07d00"><title>0x00712710 AL_ChaoSelectMenuIsFocusedModoru: 100%</title></rect>
-<rect x="42" y="203" width="6" height="6" fill="#b07d00"><title>0x00712730 AL_ChaoSelectMenuIsFocusedKettei: 100%</title></rect>
-<rect x="77" y="203" width="6" height="6" fill="#b07d00"><title>0x00712ca0 ADV1_ALR_ClearEntryStatus: 100%</title></rect>
-<rect x="84" y="203" width="6" height="6" fill="#b07d00"><title>0x00712cc0 ADV1_ALR_GetEntryStatus: 100%</title></rect>
-<rect x="119" y="203" width="6" height="6" fill="#b07d00"><title>0x007137a0 AlMsgTelopSetPos: 100%</title></rect>
-<rect x="126" y="203" width="6" height="6" fill="#b07d00"><title>0x007137c0 AlMsgTelopSetSize: 100%</title></rect>
-<rect x="140" y="203" width="6" height="6" fill="#b07d00"><title>0x007137f0 AlMsgTelopAddLineC: 100%</title></rect>
-<rect x="189" y="203" width="6" height="6" fill="#b07d00"><title>0x00713b30 FUN_00713b30: 100%</title></rect>
-<rect x="273" y="203" width="6" height="6" fill="#b07d00"><title>0x007149a0 ALO_OdekakeMachineDestructor: 100%</title></rect>
-<rect x="294" y="203" width="6" height="6" fill="#b07d00"><title>0x00714bb0 ALO_OdekakeMachineCreate: 100%</title></rect>
-<rect x="301" y="203" width="6" height="6" fill="#b07d00"><title>0x00714bf0 FUN_00714bf0: 100%</title></rect>
-<rect x="0" y="210" width="6" height="6" fill="#b07d00"><title>0x00714c00 ALCAM_SetLookingFlag: 100%</title></rect>
-<rect x="21" y="210" width="6" height="6" fill="#b07d00"><title>0x007151f0 AL_NormalCameraDestructor: 100%</title></rect>
-<rect x="35" y="210" width="6" height="6" fill="#b07d00"><title>0x00715330 ALCAM_CameraManagerExecutor: 100%</title></rect>
-<rect x="42" y="210" width="6" height="6" fill="#b07d00"><title>0x00715340 ALCAM_ClearCameraWork: 100%</title></rect>
-<rect x="84" y="210" width="6" height="6" fill="#b07d00"><title>0x00716200 AL_ChaoParamWindowDestructor: 100%</title></rect>
-<rect x="98" y="210" width="6" height="6" fill="#b07d00"><title>0x00716300 AL_DrawStopChaoParamWindow: 100%</title></rect>
-<rect x="105" y="210" width="6" height="6" fill="#b07d00"><title>0x00716310 AL_LoadMessageTable: 100%</title></rect>
-<rect x="112" y="210" width="6" height="6" fill="#b07d00"><title>0x00716330 AL_ReleaseMessageTable: 100%</title></rect>
-<rect x="119" y="210" width="6" height="6" fill="#b07d00"><title>0x00716350 AL_GetMessage: 100%</title></rect>
-<rect x="140" y="210" width="6" height="6" fill="#b07d00"><title>0x00717030 ChaoSelectWindowDestructor: 100%</title></rect>
+<rect x="98" y="161" width="6" height="6" fill="#b07d00"><title>0x00471fb0 FDest(1): 100%</title></rect>
+<rect x="105" y="161" width="6" height="6" fill="#b07d00"><title>0x00471fe0 FDisp(2): 100%</title></rect>
+<rect x="112" y="161" width="6" height="6" fill="#b07d00"><title>0x00472090 FUN_00472090: 100%</title></rect>
+<rect x="119" y="161" width="6" height="6" fill="#b07d00"><title>0x004720d0 ALO_EntDoorOpen: 100%</title></rect>
+<rect x="126" y="161" width="6" height="6" fill="#b07d00"><title>0x00472180 FDisp(3): 100%</title></rect>
+<rect x="133" y="161" width="6" height="6" fill="#b07d00"><title>0x00472240 FExec(4): 100%</title></rect>
+<rect x="140" y="161" width="6" height="6" fill="#b07d00"><title>0x00472270 FUN_00472270: 100%</title></rect>
+<rect x="147" y="161" width="6" height="6" fill="#b07d00"><title>0x004728c0 AL_EntranceMenuManagerDestructor: 100%</title></rect>
+<rect x="154" y="161" width="6" height="6" fill="#b07d00"><title>0x00472900 AL_EntranceMenuCreate: 100%</title></rect>
+<rect x="161" y="161" width="6" height="6" fill="#b07d00"><title>0x004729d0 AlEntAnimArrayInit: 100%</title></rect>
+<rect x="168" y="161" width="6" height="6" fill="#b07d00"><title>0x00472a10 AL_EntranceDrawSprite2D: 100%</title></rect>
+<rect x="175" y="161" width="6" height="6" fill="#b07d00"><title>0x00472a90 AL_EntCameraFunc: 100%</title></rect>
+<rect x="182" y="161" width="6" height="6" fill="#b07d00"><title>0x00472b10 AL_EntCameraSet: 100%</title></rect>
+<rect x="189" y="161" width="6" height="6" fill="#b07d00"><title>0x00472b50 ALBHV_Oshaburiburi: 100%</title></rect>
+<rect x="196" y="161" width="6" height="6" fill="#b07d00"><title>0x00473cb0 PersonalRecordWindowDestructor: 100%</title></rect>
+<rect x="203" y="161" width="6" height="6" fill="#b07d00"><title>0x004741c0 BlueButtonModoruDestructor: 100%</title></rect>
+<rect x="210" y="161" width="6" height="6" fill="#b07d00"><title>0x004741d0 CreateBlueButtonModoru: 100%</title></rect>
+<rect x="217" y="161" width="6" height="6" fill="#b07d00"><title>0x004746b0 CreateBlueButtonModoruCS: 100%</title></rect>
+<rect x="224" y="161" width="6" height="6" fill="#b07d00"><title>0x00474720 CreateCourseSelectMenuBeginner: 100%</title></rect>
+<rect x="231" y="161" width="6" height="6" fill="#b07d00"><title>0x00474930 MessageBarClear: 100%</title></rect>
+<rect x="238" y="161" width="6" height="6" fill="#b07d00"><title>0x00474df0 AL_EntranceMenuLargeTitleBarDisplayerPost: 100%</title></rect>
+<rect x="245" y="161" width="6" height="6" fill="#b07d00"><title>0x00474e00 AL_EntranceMenuLargeTitleBarDisplayer: 100%</title></rect>
+<rect x="252" y="161" width="6" height="6" fill="#b07d00"><title>0x00474e20 AL_EntranceMenuLargeTitleBarDestructor: 100%</title></rect>
+<rect x="259" y="161" width="6" height="6" fill="#b07d00"><title>0x004750e0 CreateLargeTitleBar(struct task *, unsigned short): 100%</title></rect>
+<rect x="266" y="161" width="6" height="6" fill="#b07d00"><title>0x00475550 AL_EntranceMenuSmallTitleBarDestructor: 100%</title></rect>
+<rect x="273" y="161" width="6" height="6" fill="#b07d00"><title>0x004757d0 CreateSmallTitleBar: 100%</title></rect>
+<rect x="280" y="161" width="6" height="6" fill="#b07d00"><title>0x00476560 CreateBackGround: 100%</title></rect>
+<rect x="287" y="161" width="6" height="6" fill="#b07d00"><title>0x00476b00 AL_G00_MsgListGet: 100%</title></rect>
+<rect x="294" y="161" width="6" height="6" fill="#b07d00"><title>0x00476b10 _alg_garden00_ss_epilog: 100%</title></rect>
+<rect x="301" y="161" width="6" height="6" fill="#b07d00"><title>0x00476b30 AL_Garden00MasterExecutor: 100%</title></rect>
+<rect x="0" y="168" width="6" height="6" fill="#b07d00"><title>0x00476be0 AL_Garden00MasterDestructor: 100%</title></rect>
+<rect x="14" y="168" width="6" height="6" fill="#b07d00"><title>0x00476fd0 _alg_garden00_ss_prolog: 100%</title></rect>
+<rect x="21" y="168" width="6" height="6" fill="#b07d00"><title>0x00477000 ObjectDisplay(1): 100%</title></rect>
+<rect x="63" y="168" width="6" height="6" fill="#b07d00"><title>0x00477250 ObjectALGardenDoor: 100%</title></rect>
+<rect x="140" y="168" width="6" height="6" fill="#b07d00"><title>0x004775a0 AloG00BldoorWakuDisp: 100%</title></rect>
+<rect x="189" y="168" width="6" height="6" fill="#b07d00"><title>0x00477b80 ghUnitVector: 100%</title></rect>
+<rect x="196" y="168" width="6" height="6" fill="#b07d00"><title>0x00477c00 FUN_00477c00: 100%</title></rect>
+<rect x="294" y="168" width="6" height="6" fill="#b07d00"><title>0x00478480 hintbox_edit_print: 100%</title></rect>
+<rect x="70" y="175" width="6" height="6" fill="#b07d00"><title>0x00478a00 AloG00FountainDest: 100%</title></rect>
+<rect x="84" y="175" width="6" height="6" fill="#b07d00"><title>0x00478a80 AloG00FountainExec: 100%</title></rect>
+<rect x="140" y="175" width="6" height="6" fill="#b07d00"><title>0x00478ba0 FUN_00478ba0: 100%</title></rect>
+<rect x="210" y="175" width="6" height="6" fill="#b07d00"><title>0x00479840 FUN_00479840: 100%</title></rect>
+<rect x="231" y="175" width="6" height="6" fill="#9e8d72"><title>0x00479910 FUN_00479910: 66.7%</title></rect>
+<rect x="259" y="175" width="6" height="6" fill="#b07d00"><title>0x00479ac0 AloG00HintmenuOver: 100%</title></rect>
+<rect x="273" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b30 FUN_00479b30: 100%</title></rect>
+<rect x="280" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b50 _alg_garden01_ec_epilog: 100%</title></rect>
+<rect x="287" y="175" width="6" height="6" fill="#b07d00"><title>0x00479b70 AL_Garden01MasterExecutor: 100%</title></rect>
+<rect x="294" y="175" width="6" height="6" fill="#b07d00"><title>0x00479bb0 AL_Garden01MasterDestructor: 100%</title></rect>
+<rect x="0" y="182" width="6" height="6" fill="#b07d00"><title>0x00479df0 _alg_garden01_ec_prolog: 100%</title></rect>
+<rect x="7" y="182" width="6" height="6" fill="#b07d00"><title>0x00479e20 _alg_garden02_mr_epilog: 100%</title></rect>
+<rect x="14" y="182" width="6" height="6" fill="#b07d00"><title>0x00479e40 AL_Garden02MasterExecutor: 100%</title></rect>
+<rect x="21" y="182" width="6" height="6" fill="#b07d00"><title>0x00479ed0 AL_Garden02MasterDisplayer: 100%</title></rect>
+<rect x="28" y="182" width="6" height="6" fill="#b07d00"><title>0x00479ee0 AL_Garden02MasterDestructor: 100%</title></rect>
+<rect x="49" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a1d0 _alg_garden02_mr_daytime_epilog: 100%</title></rect>
+<rect x="63" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a390 _alg_garden02_mr_evening_epilog: 100%</title></rect>
+<rect x="77" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a550 _alg_garden02_mr_night_epilog: 100%</title></rect>
+<rect x="105" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a770 _al_odekake_epilog: 100%</title></rect>
+<rect x="112" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a790 AL_OdekakeStageExecutor: 100%</title></rect>
+<rect x="119" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a7f0 AL_OdekakeStageDestructor: 100%</title></rect>
+<rect x="126" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a830 CameraFunc: 100%</title></rect>
+<rect x="133" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a8a0 FUN_0047a8a0: 100%</title></rect>
+<rect x="147" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a9c0 _al_odekake_prolog: 100%</title></rect>
+<rect x="154" y="182" width="6" height="6" fill="#b07d00"><title>0x0047a9f0 FUN_0047a9f0: 100%</title></rect>
+<rect x="168" y="182" width="6" height="6" fill="#b07d00"><title>0x0047aab0 AL_OdekakeMenuMasterDestructor: 100%</title></rect>
+<rect x="175" y="182" width="6" height="6" fill="#b07d00"><title>0x0047aae0 AL_OdeMenuSetNextStage: 100%</title></rect>
+<rect x="182" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ab00 AL_OdeMenuChangeStage: 100%</title></rect>
+<rect x="189" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ab80 AL_OdeMenuGetMode: 100%</title></rect>
+<rect x="196" y="182" width="6" height="6" fill="#b07d00"><title>0x0047aba0 AL_OdeMenuSetMode: 100%</title></rect>
+<rect x="203" y="182" width="6" height="6" fill="#b07d00"><title>0x0047abd0 AL_OdeMenuIsEnd: 100%</title></rect>
+<rect x="210" y="182" width="6" height="6" fill="#b07d00"><title>0x0047abe0 AL_OdeMenuSetEnd: 100%</title></rect>
+<rect x="217" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ac00 AL_OdeMenuGetState: 100%</title></rect>
+<rect x="224" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ac20 AL_OdeMenuSetStateBusy: 100%</title></rect>
+<rect x="231" y="182" width="6" height="6" fill="#b07d00"><title>0x0047ac40 CreateOdekakeMenuMaster: 100%</title></rect>
+<rect x="259" y="182" width="6" height="6" fill="#b07d00"><title>0x0047b360 FUN_0047b360: 100%</title></rect>
+<rect x="14" y="189" width="6" height="6" fill="#b07d00"><title>0x0047be10 FUN_0047be10: 100%</title></rect>
+<rect x="28" y="189" width="6" height="6" fill="#b07d00"><title>0x0047c660 FUN_0047c660: 100%</title></rect>
+<rect x="56" y="189" width="6" height="6" fill="#b07d00"><title>0x0047ddb0 BGExecutor: 100%</title></rect>
+<rect x="77" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e070 BGDestructor: 100%</title></rect>
+<rect x="84" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e080 CreateOdeBG: 100%</title></rect>
+<rect x="105" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e5c0 CreateDecideButton: 100%</title></rect>
+<rect x="126" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e880 CreateGuideButton: 100%</title></rect>
+<rect x="133" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e8c0 CreateKetteiButton: 100%</title></rect>
+<rect x="140" y="189" width="6" height="6" fill="#b07d00"><title>0x0047e910 CreateCancelButton: 100%</title></rect>
+<rect x="161" y="189" width="6" height="6" fill="#b07d00"><title>0x0047f000 SayounaraWindowDestructor: 100%</title></rect>
+<rect x="189" y="189" width="6" height="6" fill="#b07d00"><title>0x0047fb20 ChaoParamWindowDestructor: 100%</title></rect>
+<rect x="196" y="189" width="6" height="6" fill="#b07d00"><title>0x0047fb50 ChaoParamWindowSetDecidedFlag: 100%</title></rect>
+<rect x="224" y="189" width="6" height="6" fill="#b07d00"><title>0x00480110 CreateLargeTitleBar(long, float, float): 100%</title></rect>
+<rect x="245" y="189" width="6" height="6" fill="#b07d00"><title>0x00480580 CreateCategoryBar: 100%</title></rect>
+<rect x="266" y="189" width="6" height="6" fill="#b07d00"><title>0x00480fc0 ToridasuPortWindowDestructor: 100%</title></rect>
+<rect x="273" y="189" width="6" height="6" fill="#b07d00"><title>0x00480ff0 CreateToridasuPortWindow: 100%</title></rect>
+<rect x="294" y="189" width="6" height="6" fill="#b07d00"><title>0x00481790 OdekakePortWindowDestructor: 100%</title></rect>
+<rect x="301" y="189" width="6" height="6" fill="#b07d00"><title>0x004817c0 CreateOdekakePortWindow: 100%</title></rect>
+<rect x="28" y="196" width="6" height="6" fill="#b07d00"><title>0x00481a10 AL_OdeTelopDelete: 100%</title></rect>
+<rect x="35" y="196" width="6" height="6" fill="#b07d00"><title>0x00481a20 FUN_00481a20: 100%</title></rect>
+<rect x="70" y="196" width="6" height="6" fill="#b07d00"><title>0x00494170 chCnkSetOffsetAlpha: 100%</title></rect>
+<rect x="77" y="196" width="6" height="6" fill="#b07d00"><title>0x004941d0 chCnkDrawObject: 100%</title></rect>
+<rect x="84" y="196" width="6" height="6" fill="#b07d00"><title>0x004941f0 chCnkDrawMotion: 100%</title></rect>
+<rect x="91" y="196" width="6" height="6" fill="#b07d00"><title>0x00494220 saCnkDrawMotionSA: 100%</title></rect>
+<rect x="98" y="196" width="6" height="6" fill="#b07d00"><title>0x00494250 saCnkDrawMotionLinkSA: 100%</title></rect>
+<rect x="112" y="196" width="6" height="6" fill="#b07d00"><title>0x00494650 GbaStatus: 100%</title></rect>
+<rect x="119" y="196" width="6" height="6" fill="#b07d00"><title>0x00494670 GbaCheck: 100%</title></rect>
+<rect x="133" y="196" width="6" height="6" fill="#b07d00"><title>0x007108c0 AlgKinderAdInit: 100%</title></rect>
+<rect x="140" y="196" width="6" height="6" fill="#b07d00"><title>0x007108f0 AlgKinderAdExit: 100%</title></rect>
+<rect x="147" y="196" width="6" height="6" fill="#b07d00"><title>0x00710910 AlgKinderAdSetTexture: 100%</title></rect>
+<rect x="154" y="196" width="6" height="6" fill="#b07d00"><title>0x00710920 AlgKinderAdGetTexlist: 100%</title></rect>
+<rect x="203" y="196" width="6" height="6" fill="#b07d00"><title>0x007110e0 ALO_RingWinDelete: 100%</title></rect>
+<rect x="217" y="196" width="6" height="6" fill="#b07d00"><title>0x00711140 FUN_00711140: 100%</title></rect>
+<rect x="224" y="196" width="6" height="6" fill="#b07d00"><title>0x00711160 ALO_RingWinSetPos: 100%</title></rect>
+<rect x="231" y="196" width="6" height="6" fill="#b07d00"><title>0x007111c0 ALO_RingWinCreate: 100%</title></rect>
+<rect x="266" y="196" width="6" height="6" fill="#b07d00"><title>0x00711950 ALK_BaseWindowCreate: 100%</title></rect>
+<rect x="294" y="196" width="6" height="6" fill="#b07d00"><title>0x00711c20 FUN_00711c20: 100%</title></rect>
+<rect x="301" y="196" width="6" height="6" fill="#b07d00"><title>0x00711c50 FUN_00711c50: 100%</title></rect>
+<rect x="21" y="203" width="6" height="6" fill="#b07d00"><title>0x00712650 ChaoSelectMenuManagerDestructor: 100%</title></rect>
+<rect x="28" y="203" width="6" height="6" fill="#b07d00"><title>0x00712670 FUN_00712670: 100%</title></rect>
+<rect x="35" y="203" width="6" height="6" fill="#b07d00"><title>0x00712680 AL_GetChaoSelectMenuStatus: 100%</title></rect>
+<rect x="42" y="203" width="6" height="6" fill="#b07d00"><title>0x00712690 AL_ChaoMenuIsEnd: 100%</title></rect>
+<rect x="49" y="203" width="6" height="6" fill="#b07d00"><title>0x007126a0 FUN_007126a0: 100%</title></rect>
+<rect x="56" y="203" width="6" height="6" fill="#b07d00"><title>0x007126c0 AL_ChaoMenuSetBusy: 100%</title></rect>
+<rect x="63" y="203" width="6" height="6" fill="#b07d00"><title>0x007126e0 FUN_007126e0: 100%</title></rect>
+<rect x="70" y="203" width="6" height="6" fill="#b07d00"><title>0x00712700 FUN_00712700: 100%</title></rect>
+<rect x="77" y="203" width="6" height="6" fill="#b07d00"><title>0x00712710 AL_ChaoSelectMenuIsFocusedModoru: 100%</title></rect>
+<rect x="84" y="203" width="6" height="6" fill="#b07d00"><title>0x00712730 AL_ChaoSelectMenuIsFocusedKettei: 100%</title></rect>
+<rect x="119" y="203" width="6" height="6" fill="#b07d00"><title>0x00712ca0 ADV1_ALR_ClearEntryStatus: 100%</title></rect>
+<rect x="126" y="203" width="6" height="6" fill="#b07d00"><title>0x00712cc0 ADV1_ALR_GetEntryStatus: 100%</title></rect>
+<rect x="161" y="203" width="6" height="6" fill="#b07d00"><title>0x007137a0 AlMsgTelopSetPos: 100%</title></rect>
+<rect x="168" y="203" width="6" height="6" fill="#b07d00"><title>0x007137c0 AlMsgTelopSetSize: 100%</title></rect>
+<rect x="182" y="203" width="6" height="6" fill="#b07d00"><title>0x007137f0 AlMsgTelopAddLineC: 100%</title></rect>
+<rect x="231" y="203" width="6" height="6" fill="#b07d00"><title>0x00713b30 FUN_00713b30: 100%</title></rect>
+<rect x="7" y="210" width="6" height="6" fill="#b07d00"><title>0x007149a0 ALO_OdekakeMachineDestructor: 100%</title></rect>
+<rect x="28" y="210" width="6" height="6" fill="#b07d00"><title>0x00714bb0 ALO_OdekakeMachineCreate: 100%</title></rect>
+<rect x="35" y="210" width="6" height="6" fill="#b07d00"><title>0x00714bf0 FUN_00714bf0: 100%</title></rect>
+<rect x="42" y="210" width="6" height="6" fill="#b07d00"><title>0x00714c00 ALCAM_SetLookingFlag: 100%</title></rect>
+<rect x="63" y="210" width="6" height="6" fill="#b07d00"><title>0x007151f0 AL_NormalCameraDestructor: 100%</title></rect>
+<rect x="77" y="210" width="6" height="6" fill="#b07d00"><title>0x00715330 ALCAM_CameraManagerExecutor: 100%</title></rect>
+<rect x="84" y="210" width="6" height="6" fill="#b07d00"><title>0x00715340 ALCAM_ClearCameraWork: 100%</title></rect>
+<rect x="126" y="210" width="6" height="6" fill="#b07d00"><title>0x00716200 AL_ChaoParamWindowDestructor: 100%</title></rect>
+<rect x="140" y="210" width="6" height="6" fill="#b07d00"><title>0x00716300 AL_DrawStopChaoParamWindow: 100%</title></rect>
+<rect x="147" y="210" width="6" height="6" fill="#b07d00"><title>0x00716310 AL_LoadMessageTable: 100%</title></rect>
+<rect x="154" y="210" width="6" height="6" fill="#b07d00"><title>0x00716330 AL_ReleaseMessageTable: 100%</title></rect>
+<rect x="161" y="210" width="6" height="6" fill="#b07d00"><title>0x00716350 AL_GetMessage: 100%</title></rect>
+<rect x="182" y="210" width="6" height="6" fill="#b07d00"><title>0x00717030 ChaoSelectWindowDestructor: 100%</title></rect>
 </g>
-<rect x="666" y="809" width="314" height="100" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 120 of 418 done</title></rect>
-<text x="669" y="823" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Race <tspan font-weight="400" fill="#59636e">28%</tspan></text>
-<g transform="translate(669,827)">
+<rect x="667" y="810" width="313" height="99" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 121 of 412 done</title></rect>
+<text x="670" y="824" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Race <tspan font-weight="400" fill="#59636e">29%</tspan></text>
+<g transform="translate(670,828)">
 <rect y="0" width="308" height="63" fill="url(#todo)"/>
-<rect y="63" width="154" height="7" fill="url(#todo)"/>
-<rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x00482130 AL_RaceMasterDest: 100%</title></rect>
-<rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x00482160 AL_RaceMasterExec: 100%</title></rect>
-<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x004821b0 AL_RaceMaster: 100%</title></rect>
-<rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x00482260 _alg_race_prolog: 100%</title></rect>
-<rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x004822a0 _alg_race_epilog: 100%</title></rect>
-<rect x="98" y="7" width="6" height="6" fill="#b07d00"><title>0x00482320 AlrReal_Exe: 100%</title></rect>
-<rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x004823a0 AlrReal_exe_for_Race: 100%</title></rect>
-<rect x="112" y="7" width="6" height="6" fill="#b07d00"><title>0x00482480 AlrReal_Dsp: 100%</title></rect>
-<rect x="119" y="7" width="6" height="6" fill="#b07d00"><title>0x004824d0 AlrReal_Destructor: 100%</title></rect>
-<rect x="126" y="7" width="6" height="6" fill="#b07d00"><title>0x00482520 GetChaoId: 100%</title></rect>
-<rect x="133" y="7" width="6" height="6" fill="#b07d00"><title>0x004825a0 FUN_004825a0: 100%</title></rect>
-<rect x="140" y="7" width="6" height="6" fill="#b07d00"><title>0x004826e0 AlrReal_controlColliMode: 100%</title></rect>
-<rect x="147" y="7" width="6" height="6" fill="#b07d00"><title>0x00483240 AlrReal_createChao: 100%</title></rect>
-<rect x="154" y="7" width="6" height="6" fill="#b07d00"><title>0x004833e0 A_Life_for_ALR: 100%</title></rect>
-<rect x="161" y="7" width="6" height="6" fill="#b07d00"><title>0x00483490 AlrReal_calcAverage: 100%</title></rect>
-<rect x="168" y="7" width="6" height="6" fill="#b07d00"><title>0x00483f00 AlrReal_incLook: 100%</title></rect>
-<rect x="175" y="7" width="6" height="6" fill="#b07d00"><title>0x00483f50 AlrReal_decLook: 100%</title></rect>
-<rect x="182" y="7" width="6" height="6" fill="#b07d00"><title>0x00484060 AlrReal_offSonic: 100%</title></rect>
-<rect x="189" y="7" width="6" height="6" fill="#b07d00"><title>0x004840a0 AlrReal_onSonic: 100%</title></rect>
-<rect x="196" y="7" width="6" height="6" fill="#b07d00"><title>0x004840e0 AlrFanFan_clear: 100%</title></rect>
-<rect x="203" y="7" width="6" height="6" fill="#b07d00"><title>0x00484150 AlrFanFan_checkFanFan: 100%</title></rect>
-<rect x="210" y="7" width="6" height="6" fill="#b07d00"><title>0x004849a0 AlrReal_checkSaveJewel: 100%</title></rect>
-<rect x="217" y="7" width="6" height="6" fill="#b07d00"><title>0x00484a90 AlrReal_checkCommendation: 100%</title></rect>
-<rect x="224" y="7" width="6" height="6" fill="#b07d00"><title>0x00484ac0 ADV1_AL_GetRaceTimeRam: 100%</title></rect>
-<rect x="231" y="7" width="6" height="6" fill="#b07d00"><title>0x00484ad0 FUN_00484ad0: 100%</title></rect>
-<rect x="238" y="7" width="6" height="6" fill="#b07d00"><title>0x00484c20 AL_DeleteChaoList: 100%</title></rect>
-<rect x="245" y="7" width="6" height="6" fill="#b07d00"><title>0x00484c50 AL_ChaoListControl: 100%</title></rect>
-<rect x="252" y="7" width="6" height="6" fill="#b07d00"><title>0x00484c70 ADV1_AL_InitChaoList: 100%</title></rect>
-<rect x="259" y="7" width="6" height="6" fill="#b07d00"><title>0x00484cb0 CameraALRcam: 100%</title></rect>
-<rect x="266" y="7" width="6" height="6" fill="#b07d00"><title>0x00484d10 CameraALRlok: 100%</title></rect>
-<rect x="273" y="7" width="6" height="6" fill="#b07d00"><title>0x00484d80 AlrCam_Ini: 100%</title></rect>
-<rect x="280" y="7" width="6" height="6" fill="#b07d00"><title>0x00484d90 FUN_00484d90: 100%</title></rect>
-<rect x="287" y="7" width="6" height="6" fill="#b07d00"><title>0x00484da0 AlrCam_CheckAndRelease: 100%</title></rect>
-<rect x="294" y="7" width="6" height="6" fill="#b07d00"><title>0x004861e0 AlrCam_ConstraintAroundAng: 100%</title></rect>
-<rect x="301" y="7" width="6" height="6" fill="#b07d00"><title>0x00486880 Alr_SetWorkData: 100%</title></rect>
-<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x004868c0 Alr_Close: 100%</title></rect>
-<rect x="7" y="14" width="6" height="6" fill="#b07d00"><title>0x004868e0 Alr_Kill: 100%</title></rect>
-<rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x00486910 Alr_CheckOpen: 100%</title></rect>
-<rect x="21" y="14" width="6" height="6" fill="#b07d00"><title>0x00486930 Alr_GetAwp: 100%</title></rect>
-<rect x="28" y="14" width="6" height="6" fill="#b07d00"><title>0x00486950 Alr_GetTwp: 100%</title></rect>
-<rect x="35" y="14" width="6" height="6" fill="#b07d00"><title>0x00486970 Alr_ExeWaterEff: 100%</title></rect>
-<rect x="42" y="14" width="6" height="6" fill="#b07d00"><title>0x004869a0 Alr_CheckRace: 100%</title></rect>
-<rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a00 Alr_GetCommand: 100%</title></rect>
-<rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a30 Alr_CheckLookAtMe: 100%</title></rect>
-<rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a60 Alr_EndEx: 100%</title></rect>
-<rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a90 FUN_00486a90: 100%</title></rect>
-<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x00486bb0 FUN_00486bb0: 100%</title></rect>
-<rect x="126" y="14" width="6" height="6" fill="#b07d00"><title>0x00486d50 Alr_StopAim: 100%</title></rect>
-<rect x="140" y="14" width="6" height="6" fill="#b07d00"><title>0x00486e50 FUN_00486e50: 100%</title></rect>
-<rect x="147" y="14" width="6" height="6" fill="#b07d00"><title>0x00486e60 AlrEvent_Set: 100%</title></rect>
-<rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x00486e90 AlrEvent_SetForce: 100%</title></rect>
-<rect x="217" y="14" width="6" height="6" fill="#b07d00"><title>0x004873a0 FUN_004873a0: 100%</title></rect>
-<rect x="287" y="14" width="6" height="6" fill="#b07d00"><title>0x00487aa0 Alr_SetId: 100%</title></rect>
-<rect x="294" y="14" width="6" height="6" fill="#b07d00"><title>0x00487b00 Alr_GetCurrentEvent: 100%</title></rect>
-<rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x00487e80 FUN_00487e80: 100%</title></rect>
-<rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x00487ea0 FUN_00487ea0: 100%</title></rect>
-<rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x00488150 AlrTimer_Clear: 100%</title></rect>
-<rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x004881d0 FUN_004881d0: 100%</title></rect>
-<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x00488680 AlrRank_GetId: 100%</title></rect>
-<rect x="126" y="21" width="6" height="6" fill="#b07d00"><title>0x00488c80 AllClearEntryDialog: 100%</title></rect>
-<rect x="133" y="21" width="6" height="6" fill="#b07d00"><title>0x00488cc0 SetCommandToDialog: 100%</title></rect>
-<rect x="140" y="21" width="6" height="6" fill="#b07d00"><title>0x00488cf0 FUN_00488cf0: 100%</title></rect>
-<rect x="147" y="21" width="6" height="6" fill="#b07d00"><title>0x00488d60 dialog_select: 100%</title></rect>
-<rect x="154" y="21" width="6" height="6" fill="#b07d00"><title>0x00488da0 FUN_00488da0: 100%</title></rect>
-<rect x="161" y="21" width="6" height="6" fill="#b07d00"><title>0x00488db0 FUN_00488db0: 100%</title></rect>
-<rect x="168" y="21" width="6" height="6" fill="#b07d00"><title>0x00488e30 dialog_dsp: 100%</title></rect>
-<rect x="175" y="21" width="6" height="6" fill="#b07d00"><title>0x00488f90 ClearPanel: 100%</title></rect>
-<rect x="182" y="21" width="6" height="6" fill="#b07d00"><title>0x00488fb0 Jewel_new: 100%</title></rect>
-<rect x="189" y="21" width="6" height="6" fill="#b07d00"><title>0x00489180 WinDestructor: 100%</title></rect>
-<rect x="196" y="21" width="6" height="6" fill="#b07d00"><title>0x004891b0 dialog_new: 100%</title></rect>
-<rect x="203" y="21" width="6" height="6" fill="#b07d00"><title>0x00489260 Jewel_Create: 100%</title></rect>
-<rect x="210" y="21" width="6" height="6" fill="#b07d00"><title>0x00489300 dialog_create: 100%</title></rect>
-<rect x="217" y="21" width="6" height="6" fill="#b07d00"><title>0x00489360 FUN_00489360: 100%</title></rect>
-<rect x="224" y="21" width="6" height="6" fill="#b07d00"><title>0x00489390 CallStart: 100%</title></rect>
-<rect x="231" y="21" width="6" height="6" fill="#b07d00"><title>0x004893c0 CallGoalin: 100%</title></rect>
-<rect x="238" y="21" width="6" height="6" fill="#b07d00"><title>0x004893f0 CallCool: 100%</title></rect>
-<rect x="245" y="21" width="6" height="6" fill="#b07d00"><title>0x00489420 CallJewelGet: 100%</title></rect>
-<rect x="266" y="21" width="6" height="6" fill="#b07d00"><title>0x00489650 AlrRoot_GetGoal: 100%</title></rect>
-<rect x="280" y="21" width="6" height="6" fill="#b07d00"><title>0x004896f0 AlrRoot_Del: 100%</title></rect>
-<rect x="287" y="21" width="6" height="6" fill="#b07d00"><title>0x00489710 AlrRoot_Clear: 100%</title></rect>
-<rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x00489c90 ObjectAlrCracker_Start: 100%</title></rect>
-<rect x="84" y="28" width="6" height="6" fill="#b07d00"><title>0x00489cb0 ObjectAlrCracker_GetFlag: 100%</title></rect>
-<rect x="105" y="28" width="6" height="6" fill="#b07d00"><title>0x00489dd0 shotTape: 100%</title></rect>
-<rect x="210" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a7f0 AlrObjFreeManageTask: 100%</title></rect>
-<rect x="217" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a810 AlrObjSetTask: 100%</title></rect>
-<rect x="245" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a950 AlrObjSetManageTask: 100%</title></rect>
-<rect x="252" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a970 CreateChao_for_ALR_ALRE: 100%</title></rect>
-<rect x="35" y="35" width="6" height="6" fill="#b07d00"><title>0x0048b540 ALR_ALRE_Happy: 100%</title></rect>
-<rect x="0" y="42" width="6" height="6" fill="#b07d00"><title>0x0048f770 GetIdLookChao: 100%</title></rect>
-<rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x0048f790 GetVoiceMode: 100%</title></rect>
-<rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x0048f7e0 GetHomeTownFromId: 100%</title></rect>
-<rect x="35" y="42" width="6" height="6" fill="#b07d00"><title>0x0048f8b0 GetRacerInfoFromRank: 100%</title></rect>
-<rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x0048fd30 AlrEffUnit_iniWater: 100%</title></rect>
-<rect x="126" y="42" width="6" height="6" fill="#b07d00"><title>0x00490040 AlrCommuSendObjCommand: 100%</title></rect>
-<rect x="133" y="42" width="6" height="6" fill="#ab8234"><title>0x00490080 FUN_00490080: 90.9%</title></rect>
-<rect x="147" y="42" width="6" height="6" fill="#b07d00"><title>0x004900e0 SendTargetCoconutCommand: 100%</title></rect>
-<rect x="154" y="42" width="6" height="6" fill="#b07d00"><title>0x00490140 GetTargetCoconutPosition: 100%</title></rect>
-<rect x="175" y="42" width="6" height="6" fill="#b07d00"><title>0x00490310 destObject(1): 100%</title></rect>
-<rect x="231" y="42" width="6" height="6" fill="#b07d00"><title>0x00490650 destToy: 100%</title></rect>
-<rect x="119" y="49" width="6" height="6" fill="#b07d00"><title>0x00492060 SendTargetPalmCommand: 100%</title></rect>
-<rect x="168" y="49" width="6" height="6" fill="#b07d00"><title>0x00492460 SetOuterNeonLogo: 100%</title></rect>
-<rect x="203" y="49" width="6" height="6" fill="#b07d00"><title>0x004925f0 AL_GetALifewk: 100%</title></rect>
-<rect x="224" y="49" width="6" height="6" fill="#b07d00"><title>0x00492ac0 ADV1_AL_SetMouseNum: 100%</title></rect>
-<rect x="231" y="49" width="6" height="6" fill="#b07d00"><title>0x00492b00 FUN_00492b00: 100%</title></rect>
-<rect x="245" y="49" width="6" height="6" fill="#b07d00"><title>0x00492b50 ADV1_AL_SetEyelidAng: 100%</title></rect>
-<rect x="252" y="49" width="6" height="6" fill="#b07d00"><title>0x00492b80 FUN_00492b80: 100%</title></rect>
-<rect x="266" y="49" width="6" height="6" fill="#b07d00"><title>0x00492c60 ADV1_AL_InitGroundCollision: 100%</title></rect>
-<rect x="280" y="49" width="6" height="6" fill="#b07d00"><title>0x004931f0 ADV1_AL_PreserveHomePosition: 100%</title></rect>
-<rect x="287" y="49" width="6" height="6" fill="#b07d00"><title>0x00493220 ADV1_AL_PreservePreviousPosition: 100%</title></rect>
-<rect x="0" y="56" width="6" height="6" fill="#b07d00"><title>0x004932f0 ADV1_AL_InitIcon: 100%</title></rect>
-<rect x="77" y="56" width="6" height="6" fill="#b07d00"><title>0x00493570 FUN_00493570: 100%</title></rect>
-<rect x="126" y="56" width="6" height="6" fill="#b07d00"><title>0x00493700 AL_GetObjectEntryList: 100%</title></rect>
-<rect x="133" y="56" width="6" height="6" fill="#b07d00"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
-<rect x="189" y="56" width="6" height="6" fill="#b07d00"><title>0x00717130 ObjectAlrBowChao: 100%</title></rect>
-<rect x="210" y="56" width="6" height="6" fill="#b07d00"><title>0x00717230 execObject(2): 100%</title></rect>
-<rect x="28" y="63" width="6" height="6" fill="#b07d00"><title>0x007176c0 dispObject(3): 100%</title></rect>
-<rect x="35" y="63" width="6" height="6" fill="#b07d00"><title>0x00717730 execObject(3): 100%</title></rect>
-<rect x="49" y="63" width="6" height="6" fill="#b07d00"><title>0x00717790 ObjectAlrCoconut: 100%</title></rect>
-<rect x="112" y="63" width="6" height="6" fill="#b07d00"><title>0x00717b10 execFrame: 100%</title></rect>
-<rect x="119" y="63" width="6" height="6" fill="#b07d00"><title>0x00717b40 destFrame: 100%</title></rect>
-<rect x="140" y="63" width="6" height="6" fill="#b07d00"><title>0x00717dd0 ObjectAlrEntryButton: 100%</title></rect>
+<rect y="63" width="112" height="7" fill="url(#todo)"/>
+<rect x="21" y="7" width="6" height="6" fill="#b07d00"><title>0x00482130 AL_RaceMasterDest: 100%</title></rect>
+<rect x="28" y="7" width="6" height="6" fill="#b07d00"><title>0x00482160 AL_RaceMasterExec: 100%</title></rect>
+<rect x="35" y="7" width="6" height="6" fill="#b07d00"><title>0x004821b0 AL_RaceMaster: 100%</title></rect>
+<rect x="42" y="7" width="6" height="6" fill="#b07d00"><title>0x00482260 _alg_race_prolog: 100%</title></rect>
+<rect x="49" y="7" width="6" height="6" fill="#b07d00"><title>0x004822a0 _alg_race_epilog: 100%</title></rect>
+<rect x="56" y="7" width="6" height="6" fill="#b07d00"><title>0x00482320 AlrReal_Exe: 100%</title></rect>
+<rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x004823a0 AlrReal_exe_for_Race: 100%</title></rect>
+<rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x00482480 AlrReal_Dsp: 100%</title></rect>
+<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x004824d0 AlrReal_Destructor: 100%</title></rect>
+<rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x00482520 GetChaoId: 100%</title></rect>
+<rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x004825a0 FUN_004825a0: 100%</title></rect>
+<rect x="98" y="7" width="6" height="6" fill="#b07d00"><title>0x004826e0 AlrReal_controlColliMode: 100%</title></rect>
+<rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x00483240 AlrReal_createChao: 100%</title></rect>
+<rect x="112" y="7" width="6" height="6" fill="#b07d00"><title>0x004833e0 A_Life_for_ALR: 100%</title></rect>
+<rect x="119" y="7" width="6" height="6" fill="#b07d00"><title>0x00483490 AlrReal_calcAverage: 100%</title></rect>
+<rect x="126" y="7" width="6" height="6" fill="#b07d00"><title>0x00483f00 AlrReal_incLook: 100%</title></rect>
+<rect x="133" y="7" width="6" height="6" fill="#b07d00"><title>0x00483f50 AlrReal_decLook: 100%</title></rect>
+<rect x="140" y="7" width="6" height="6" fill="#b07d00"><title>0x00484060 AlrReal_offSonic: 100%</title></rect>
+<rect x="147" y="7" width="6" height="6" fill="#b07d00"><title>0x004840a0 AlrReal_onSonic: 100%</title></rect>
+<rect x="154" y="7" width="6" height="6" fill="#b07d00"><title>0x004840e0 AlrFanFan_clear: 100%</title></rect>
+<rect x="161" y="7" width="6" height="6" fill="#b07d00"><title>0x00484150 AlrFanFan_checkFanFan: 100%</title></rect>
+<rect x="168" y="7" width="6" height="6" fill="#b07d00"><title>0x004849a0 AlrReal_checkSaveJewel: 100%</title></rect>
+<rect x="175" y="7" width="6" height="6" fill="#b07d00"><title>0x00484a90 AlrReal_checkCommendation: 100%</title></rect>
+<rect x="182" y="7" width="6" height="6" fill="#b07d00"><title>0x00484ac0 ADV1_AL_GetRaceTimeRam: 100%</title></rect>
+<rect x="189" y="7" width="6" height="6" fill="#b07d00"><title>0x00484ad0 FUN_00484ad0: 100%</title></rect>
+<rect x="196" y="7" width="6" height="6" fill="#b07d00"><title>0x00484c20 AL_DeleteChaoList: 100%</title></rect>
+<rect x="203" y="7" width="6" height="6" fill="#b07d00"><title>0x00484c50 AL_ChaoListControl: 100%</title></rect>
+<rect x="210" y="7" width="6" height="6" fill="#b07d00"><title>0x00484c70 ADV1_AL_InitChaoList: 100%</title></rect>
+<rect x="217" y="7" width="6" height="6" fill="#b07d00"><title>0x00484cb0 CameraALRcam: 100%</title></rect>
+<rect x="224" y="7" width="6" height="6" fill="#b07d00"><title>0x00484d10 CameraALRlok: 100%</title></rect>
+<rect x="231" y="7" width="6" height="6" fill="#b07d00"><title>0x00484d80 AlrCam_Ini: 100%</title></rect>
+<rect x="238" y="7" width="6" height="6" fill="#b07d00"><title>0x00484d90 FUN_00484d90: 100%</title></rect>
+<rect x="245" y="7" width="6" height="6" fill="#b07d00"><title>0x00484da0 AlrCam_CheckAndRelease: 100%</title></rect>
+<rect x="252" y="7" width="6" height="6" fill="#b07d00"><title>0x004861e0 AlrCam_ConstraintAroundAng: 100%</title></rect>
+<rect x="259" y="7" width="6" height="6" fill="#b07d00"><title>0x00486880 Alr_SetWorkData: 100%</title></rect>
+<rect x="266" y="7" width="6" height="6" fill="#b07d00"><title>0x004868c0 Alr_Close: 100%</title></rect>
+<rect x="273" y="7" width="6" height="6" fill="#b07d00"><title>0x004868e0 Alr_Kill: 100%</title></rect>
+<rect x="280" y="7" width="6" height="6" fill="#b07d00"><title>0x00486910 Alr_CheckOpen: 100%</title></rect>
+<rect x="287" y="7" width="6" height="6" fill="#b07d00"><title>0x00486930 Alr_GetAwp: 100%</title></rect>
+<rect x="294" y="7" width="6" height="6" fill="#b07d00"><title>0x00486950 Alr_GetTwp: 100%</title></rect>
+<rect x="301" y="7" width="6" height="6" fill="#b07d00"><title>0x00486970 Alr_ExeWaterEff: 100%</title></rect>
+<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x004869a0 Alr_CheckRace: 100%</title></rect>
+<rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a00 Alr_GetCommand: 100%</title></rect>
+<rect x="21" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a30 Alr_CheckLookAtMe: 100%</title></rect>
+<rect x="28" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a60 Alr_EndEx: 100%</title></rect>
+<rect x="35" y="14" width="6" height="6" fill="#b07d00"><title>0x00486a90 FUN_00486a90: 100%</title></rect>
+<rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x00486bb0 FUN_00486bb0: 100%</title></rect>
+<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x00486d50 Alr_StopAim: 100%</title></rect>
+<rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x00486e50 FUN_00486e50: 100%</title></rect>
+<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x00486e60 AlrEvent_Set: 100%</title></rect>
+<rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x00486e90 AlrEvent_SetForce: 100%</title></rect>
+<rect x="175" y="14" width="6" height="6" fill="#b07d00"><title>0x004873a0 FUN_004873a0: 100%</title></rect>
+<rect x="245" y="14" width="6" height="6" fill="#b07d00"><title>0x00487aa0 Alr_SetId: 100%</title></rect>
+<rect x="252" y="14" width="6" height="6" fill="#b07d00"><title>0x00487b00 Alr_GetCurrentEvent: 100%</title></rect>
+<rect x="280" y="14" width="6" height="6" fill="#b07d00"><title>0x00487e80 FUN_00487e80: 100%</title></rect>
+<rect x="287" y="14" width="6" height="6" fill="#b07d00"><title>0x00487ea0 FUN_00487ea0: 100%</title></rect>
+<rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x00488150 AlrTimer_Clear: 100%</title></rect>
+<rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x004881d0 FUN_004881d0: 100%</title></rect>
+<rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x00488680 AlrRank_GetId: 100%</title></rect>
+<rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x00488c80 AllClearEntryDialog: 100%</title></rect>
+<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x00488cc0 SetCommandToDialog: 100%</title></rect>
+<rect x="98" y="21" width="6" height="6" fill="#b07d00"><title>0x00488cf0 FUN_00488cf0: 100%</title></rect>
+<rect x="105" y="21" width="6" height="6" fill="#b07d00"><title>0x00488d60 dialog_select: 100%</title></rect>
+<rect x="112" y="21" width="6" height="6" fill="#b07d00"><title>0x00488da0 FUN_00488da0: 100%</title></rect>
+<rect x="119" y="21" width="6" height="6" fill="#b07d00"><title>0x00488db0 FUN_00488db0: 100%</title></rect>
+<rect x="126" y="21" width="6" height="6" fill="#b07d00"><title>0x00488e30 dialog_dsp: 100%</title></rect>
+<rect x="133" y="21" width="6" height="6" fill="#b07d00"><title>0x00488f90 ClearPanel: 100%</title></rect>
+<rect x="140" y="21" width="6" height="6" fill="#b07d00"><title>0x00488fb0 Jewel_new: 100%</title></rect>
+<rect x="147" y="21" width="6" height="6" fill="#b07d00"><title>0x00489180 WinDestructor: 100%</title></rect>
+<rect x="154" y="21" width="6" height="6" fill="#b07d00"><title>0x004891b0 dialog_new: 100%</title></rect>
+<rect x="161" y="21" width="6" height="6" fill="#b07d00"><title>0x00489260 Jewel_Create: 100%</title></rect>
+<rect x="168" y="21" width="6" height="6" fill="#b07d00"><title>0x00489300 dialog_create: 100%</title></rect>
+<rect x="175" y="21" width="6" height="6" fill="#b07d00"><title>0x00489360 FUN_00489360: 100%</title></rect>
+<rect x="182" y="21" width="6" height="6" fill="#b07d00"><title>0x00489390 CallStart: 100%</title></rect>
+<rect x="189" y="21" width="6" height="6" fill="#b07d00"><title>0x004893c0 CallGoalin: 100%</title></rect>
+<rect x="196" y="21" width="6" height="6" fill="#b07d00"><title>0x004893f0 CallCool: 100%</title></rect>
+<rect x="203" y="21" width="6" height="6" fill="#b07d00"><title>0x00489420 CallJewelGet: 100%</title></rect>
+<rect x="224" y="21" width="6" height="6" fill="#b07d00"><title>0x00489650 AlrRoot_GetGoal: 100%</title></rect>
+<rect x="238" y="21" width="6" height="6" fill="#b07d00"><title>0x004896f0 AlrRoot_Del: 100%</title></rect>
+<rect x="245" y="21" width="6" height="6" fill="#b07d00"><title>0x00489710 AlrRoot_Clear: 100%</title></rect>
+<rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x00489c90 ObjectAlrCracker_Start: 100%</title></rect>
+<rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x00489cb0 ObjectAlrCracker_GetFlag: 100%</title></rect>
+<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x00489dd0 shotTape: 100%</title></rect>
+<rect x="168" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a7f0 AlrObjFreeManageTask: 100%</title></rect>
+<rect x="175" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a810 AlrObjSetTask: 100%</title></rect>
+<rect x="203" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a950 AlrObjSetManageTask: 100%</title></rect>
+<rect x="210" y="28" width="6" height="6" fill="#b07d00"><title>0x0048a970 CreateChao_for_ALR_ALRE: 100%</title></rect>
+<rect x="301" y="28" width="6" height="6" fill="#b07d00"><title>0x0048b540 ALR_ALRE_Happy: 100%</title></rect>
+<rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x0048ba20 ALR_ALRE_Dance: 100%</title></rect>
+<rect x="266" y="35" width="6" height="6" fill="#b07d00"><title>0x0048f770 GetIdLookChao: 100%</title></rect>
+<rect x="273" y="35" width="6" height="6" fill="#b07d00"><title>0x0048f790 GetVoiceMode: 100%</title></rect>
+<rect x="280" y="35" width="6" height="6" fill="#b07d00"><title>0x0048f7e0 GetHomeTownFromId: 100%</title></rect>
+<rect x="301" y="35" width="6" height="6" fill="#b07d00"><title>0x0048f8b0 GetRacerInfoFromRank: 100%</title></rect>
+<rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x0048fd30 AlrEffUnit_iniWater: 100%</title></rect>
+<rect x="84" y="42" width="6" height="6" fill="#b07d00"><title>0x00490040 AlrCommuSendObjCommand: 100%</title></rect>
+<rect x="91" y="42" width="6" height="6" fill="#ab8234"><title>0x00490080 FUN_00490080: 90.9%</title></rect>
+<rect x="105" y="42" width="6" height="6" fill="#b07d00"><title>0x004900e0 SendTargetCoconutCommand: 100%</title></rect>
+<rect x="112" y="42" width="6" height="6" fill="#b07d00"><title>0x00490140 GetTargetCoconutPosition: 100%</title></rect>
+<rect x="133" y="42" width="6" height="6" fill="#b07d00"><title>0x00490310 destObject(1): 100%</title></rect>
+<rect x="189" y="42" width="6" height="6" fill="#b07d00"><title>0x00490650 destToy: 100%</title></rect>
+<rect x="77" y="49" width="6" height="6" fill="#b07d00"><title>0x00492060 SendTargetPalmCommand: 100%</title></rect>
+<rect x="126" y="49" width="6" height="6" fill="#b07d00"><title>0x00492460 SetOuterNeonLogo: 100%</title></rect>
+<rect x="161" y="49" width="6" height="6" fill="#b07d00"><title>0x004925f0 AL_GetALifewk: 100%</title></rect>
+<rect x="182" y="49" width="6" height="6" fill="#b07d00"><title>0x00492ac0 ADV1_AL_SetMouseNum: 100%</title></rect>
+<rect x="189" y="49" width="6" height="6" fill="#b07d00"><title>0x00492b00 FUN_00492b00: 100%</title></rect>
+<rect x="203" y="49" width="6" height="6" fill="#b07d00"><title>0x00492b50 ADV1_AL_SetEyelidAng: 100%</title></rect>
+<rect x="210" y="49" width="6" height="6" fill="#b07d00"><title>0x00492b80 FUN_00492b80: 100%</title></rect>
+<rect x="224" y="49" width="6" height="6" fill="#b07d00"><title>0x00492c60 ADV1_AL_InitGroundCollision: 100%</title></rect>
+<rect x="238" y="49" width="6" height="6" fill="#b07d00"><title>0x004931f0 ADV1_AL_PreserveHomePosition: 100%</title></rect>
+<rect x="245" y="49" width="6" height="6" fill="#b07d00"><title>0x00493220 ADV1_AL_PreservePreviousPosition: 100%</title></rect>
+<rect x="266" y="49" width="6" height="6" fill="#b07d00"><title>0x004932f0 ADV1_AL_InitIcon: 100%</title></rect>
+<rect x="35" y="56" width="6" height="6" fill="#b07d00"><title>0x00493570 FUN_00493570: 100%</title></rect>
+<rect x="84" y="56" width="6" height="6" fill="#b07d00"><title>0x00493700 AL_GetObjectEntryList: 100%</title></rect>
+<rect x="91" y="56" width="6" height="6" fill="#b07d00"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
+<rect x="147" y="56" width="6" height="6" fill="#b07d00"><title>0x00717130 ObjectAlrBowChao: 100%</title></rect>
+<rect x="168" y="56" width="6" height="6" fill="#b07d00"><title>0x00717230 execObject(2): 100%</title></rect>
+<rect x="294" y="56" width="6" height="6" fill="#b07d00"><title>0x007176c0 dispObject(4): 100%</title></rect>
+<rect x="301" y="56" width="6" height="6" fill="#b07d00"><title>0x00717730 execObject(3): 100%</title></rect>
+<rect x="7" y="63" width="6" height="6" fill="#b07d00"><title>0x00717790 ObjectAlrCoconut: 100%</title></rect>
+<rect x="70" y="63" width="6" height="6" fill="#b07d00"><title>0x00717b10 execFrame: 100%</title></rect>
+<rect x="77" y="63" width="6" height="6" fill="#b07d00"><title>0x00717b40 destFrame: 100%</title></rect>
+<rect x="98" y="63" width="6" height="6" fill="#b07d00"><title>0x00717dd0 ObjectAlrEntryButton: 100%</title></rect>
 </g>
 <polygon points="335.8,918.5 342.2,918.5 343.9,920 345,921.6 339,928.5 333,921.6 334.1,920" fill="#bcb9bb"/>
 <polygon points="335.8,918.5 342.2,918.5 343.9,920 345,921.6 333,921.6 334.1,920" fill="#ffffff" fill-opacity="0.4"/>
@@ -3201,7 +3213,7 @@
 <polygon points="341.2,921.6 345,921.6 339,928.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="335.8,918.5 342.2,918.5 343.9,920 345,921.6 339,928.5 333,921.6 334.1,920" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="349" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Story and menus <tspan font-weight="400" fill="#59636e">45%</tspan></text>
-<rect x="334" y="936" width="254" height="207" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 327 of 834 done</title></rect>
+<rect x="334" y="936" width="255" height="207" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 327 of 834 done</title></rect>
 <text x="337" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Story <tspan font-weight="400" fill="#59636e">39%</tspan></text>
 <g transform="translate(337,954)">
 <rect y="0" width="245" height="161" fill="url(#todo)"/>
@@ -3536,7 +3548,7 @@
 <rect x="189" y="161" width="6" height="6" fill="#b07d00"><title>0x008c9030 ReturnChaosEmerald: 100%</title></rect>
 <rect x="196" y="161" width="6" height="6" fill="#b07d00"><title>0x008cb190 EggmanDestruct: 100%</title></rect>
 </g>
-<rect x="334" y="1145" width="184" height="205" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 296 of 544 done</title></rect>
+<rect x="334" y="1145" width="185" height="204" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 296 of 544 done</title></rect>
 <text x="337" y="1159" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Menus <tspan font-weight="400" fill="#59636e">54%</tspan></text>
 <g transform="translate(337,1163)">
 <rect y="0" width="175" height="147" fill="url(#todo)"/>
@@ -3705,7 +3717,7 @@
 <rect x="154" y="70" width="6" height="6" fill="#b07d00"><title>0x005e8510 SetAdvaPutiTask: 100%</title></rect>
 <rect x="168" y="70" width="6" height="6" fill="#b07d00"><title>0x005e86e0 FUN_005e86e0: 100%</title></rect>
 <rect x="0" y="77" width="6" height="6" fill="#b07d00"><title>0x005e8700 FUN_005e8700: 100%</title></rect>
-<rect x="7" y="77" width="6" height="6" fill="#b07d00"><title>0x005e8710 FDest: 100%</title></rect>
+<rect x="7" y="77" width="6" height="6" fill="#b07d00"><title>0x005e8710 FDest(struct task *): 100%</title></rect>
 <rect x="14" y="77" width="6" height="6" fill="#b07d00"><title>0x005e8760 FreeAdvaPutiTask: 100%</title></rect>
 <rect x="21" y="77" width="6" height="6" fill="#b07d00"><title>0x005e8780 SetAdvaOpCreditsTask: 100%</title></rect>
 <rect x="56" y="77" width="6" height="6" fill="#b07d00"><title>0x005e8ef0 FUN_005e8ef0: 100%</title></rect>
@@ -3840,10 +3852,10 @@
 <rect x="119" y="147" width="6" height="6" fill="#b07d00"><title>0x008b81d0 StaffRollExit: 100%</title></rect>
 <rect x="126" y="147" width="6" height="6" fill="#9a8f81"><title>0x008b8630 CreateStaffRollTask: 59.6%</title></rect>
 </g>
-<rect x="520" y="1145" width="68" height="205" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Missions: 36 of 72 done</title></rect>
-<text x="523" y="1159" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Missions</text>
-<text x="523" y="1174" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">50%</tspan></text>
-<g transform="translate(523,1178)">
+<rect x="521" y="1145" width="68" height="204" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Missions: 36 of 72 done</title></rect>
+<text x="524" y="1159" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Missions</text>
+<text x="524" y="1174" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">50%</tspan></text>
+<g transform="translate(524,1178)">
 <rect y="0" width="63" height="56" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x00497340 IsDisplayMiClearStatus: 100%</title></rect>
 <rect x="7" y="0" width="6" height="6" fill="#b07d00"><title>0x00497350 DispMiClearStatusOn: 100%</title></rect>
@@ -5682,23 +5694,23 @@
 <rect x="273" y="357" width="6" height="6" fill="#b07d00"><title>0x00902f40 njLinear: 100%</title></rect>
 <rect x="0" y="364" width="6" height="6" fill="#b07d00"><title>0x00903550 FUN_00903550: 100%</title></rect>
 </g>
-<rect x="10" y="1361" width="594" height="22" rx="4" fill="#ffffff" stroke="#d0d7de"/>
-<rect x="16" y="1367" width="10" height="10" rx="2" fill="#e6eaef"/>
-<text x="31" y="1376" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">not started</text>
-<rect x="128" y="1367" width="10" height="10" rx="2" fill="#6f9ff0"/>
-<rect x="140" y="1367" width="10" height="10" rx="2" fill="#779dde"/>
-<rect x="152" y="1367" width="10" height="10" rx="2" fill="#7f9bcc"/>
-<rect x="164" y="1367" width="10" height="10" rx="2" fill="#8699b9"/>
-<rect x="176" y="1367" width="10" height="10" rx="2" fill="#8d96a7"/>
-<rect x="188" y="1367" width="10" height="10" rx="2" fill="#939394"/>
-<rect x="200" y="1367" width="10" height="10" rx="2" fill="#9a8f80"/>
-<rect x="212" y="1367" width="10" height="10" rx="2" fill="#a08c6b"/>
-<rect x="224" y="1367" width="10" height="10" rx="2" fill="#a58754"/>
-<rect x="236" y="1367" width="10" height="10" rx="2" fill="#ab8239"/>
-<text x="251" y="1376" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">partly matching, 0% to 99%</text>
-<rect x="456" y="1367" width="10" height="10" rx="2" fill="#b07d00"/>
-<text x="471" y="1376" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">done</text>
-<rect x="518" y="1367" width="10" height="10" rx="2" fill="#ffffff" stroke="#b07d00" stroke-width="1.5"/>
-<text x="533" y="1376" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">area done</text>
-<text x="16" y="1398" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">Library code is left out: it needs no decompiling.</text>
+<rect x="10" y="1360" width="594" height="22" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="16" y="1366" width="10" height="10" rx="2" fill="#e6eaef"/>
+<text x="31" y="1375" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">not started</text>
+<rect x="128" y="1366" width="10" height="10" rx="2" fill="#6f9ff0"/>
+<rect x="140" y="1366" width="10" height="10" rx="2" fill="#779dde"/>
+<rect x="152" y="1366" width="10" height="10" rx="2" fill="#7f9bcc"/>
+<rect x="164" y="1366" width="10" height="10" rx="2" fill="#8699b9"/>
+<rect x="176" y="1366" width="10" height="10" rx="2" fill="#8d96a7"/>
+<rect x="188" y="1366" width="10" height="10" rx="2" fill="#939394"/>
+<rect x="200" y="1366" width="10" height="10" rx="2" fill="#9a8f80"/>
+<rect x="212" y="1366" width="10" height="10" rx="2" fill="#a08c6b"/>
+<rect x="224" y="1366" width="10" height="10" rx="2" fill="#a58754"/>
+<rect x="236" y="1366" width="10" height="10" rx="2" fill="#ab8239"/>
+<text x="251" y="1375" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">partly matching, 0% to 99%</text>
+<rect x="456" y="1366" width="10" height="10" rx="2" fill="#b07d00"/>
+<text x="471" y="1375" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">done</text>
+<rect x="518" y="1366" width="10" height="10" rx="2" fill="#ffffff" stroke="#b07d00" stroke-width="1.5"/>
+<text x="533" y="1375" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">area done</text>
+<text x="16" y="1397" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">Library code is left out: it needs no decompiling.</text>
 </svg>

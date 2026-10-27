@@ -5642,6 +5642,14 @@
    "library": false
   },
   {
+   "address": "0x0043fd60",
+   "name": "AL_InitChaoSaveInfo",
+   "accuracy": 0.031746031746031744,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043ffa0",
    "name": "AL_GetLocalChaoCount",
    "accuracy": 0.06666666666666667,
@@ -5698,6 +5706,14 @@
    "library": false
   },
   {
+   "address": "0x00440450",
+   "name": "AL_CreateHoldingChao",
+   "accuracy": 0.02631578947368421,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00440540",
    "name": "AL_SetHoldingChaoInfo",
    "accuracy": 1.0,
@@ -5751,6 +5767,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00440cd0",
+   "name": "AL_PackageTreeSaveInfo",
+   "accuracy": 0.029411764705882353,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -6362,6 +6386,14 @@
    "library": false
   },
   {
+   "address": "0x00449b00",
+   "name": "AL_CreateChildGene",
+   "accuracy": 0.05,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00449b80",
    "name": "AL_GeneAnalyzeCommon",
    "accuracy": 0.01279317697228145,
@@ -6381,6 +6413,14 @@
    "address": "0x0044a220",
    "name": "AL_GeneAnalyze",
    "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0044a260",
+   "name": "AL_GeneCreatePlane",
+   "accuracy": 0.03571428571428571,
    "effective": false,
    "stub": true,
    "library": false
@@ -6628,9 +6668,9 @@
   {
    "address": "0x0044c830",
    "name": "AlMsgWarnCreate",
-   "accuracy": 0.03636363636363636,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6831,6 +6871,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0044df80",
+   "name": "FExec(struct task *)",
+   "accuracy": 0.03278688524590164,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -7130,6 +7178,14 @@
    "library": false
   },
   {
+   "address": "0x00450610",
+   "name": "AL_MatSwitchModelEnvironmentMapping",
+   "accuracy": 0.029850746268656716,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004506e0",
    "name": "AL_MaterialInit",
    "accuracy": 0.15384615384615385,
@@ -7196,6 +7252,14 @@
   {
    "address": "0x00450850",
    "name": "AL_ClearPartsSub",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00450890",
+   "name": "AL_ClearParts",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -7636,9 +7700,9 @@
   {
    "address": "0x004552c0",
    "name": "AL_DecideBehaviorSToy",
-   "accuracy": 0.028985507246376812,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7818,6 +7882,14 @@
    "library": false
   },
   {
+   "address": "0x00457c00",
+   "name": "AL_FaceEyeLidControl",
+   "accuracy": 0.014598540145985401,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00457e00",
    "name": "AL_FaceChangeEye",
    "accuracy": 1.0,
@@ -7855,6 +7927,14 @@
    "accuracy": 0.046875,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00458070",
+   "name": "AL_FaceControl",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -8844,9 +8924,9 @@
   {
    "address": "0x0046c210",
    "name": "ALO_NestFlowerExecutor",
-   "accuracy": 0.03773584905660377,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9043,7 +9123,7 @@
   },
   {
    "address": "0x0046e4d0",
-   "name": "FDisp",
+   "name": "FDisp(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9051,7 +9131,7 @@
   },
   {
    "address": "0x0046e530",
-   "name": "FExec(2)",
+   "name": "FExec(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9250,8 +9330,64 @@
    "library": false
   },
   {
+   "address": "0x00471fb0",
+   "name": "FDest(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00471fe0",
+   "name": "FDisp(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00472030",
+   "name": "FUN_00472030",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00472090",
+   "name": "FUN_00472090",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004720d0",
    "name": "ALO_EntDoorOpen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00472180",
+   "name": "FDisp(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00472240",
+   "name": "FExec(4)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00472270",
+   "name": "FUN_00472270",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9572,9 +9708,9 @@
   {
    "address": "0x00476b30",
    "name": "AL_Garden00MasterExecutor",
-   "accuracy": 0.03773584905660377,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -11164,7 +11300,7 @@
   {
    "address": "0x004881e0",
    "name": "AlrTimer_Dsp",
-   "accuracy": 0.0273972602739726,
+   "accuracy": 0.02857142857142857,
    "effective": false,
    "stub": true,
    "library": false
@@ -11508,9 +11644,9 @@
   {
    "address": "0x0048ba20",
    "name": "ALR_ALRE_Dance",
-   "accuracy": 0.028169014084507043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -11533,6 +11669,14 @@
    "address": "0x0048c3d0",
    "name": "ALR_Clear",
    "accuracy": 0.0625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0048c430",
+   "name": "Alr_chaoCalcSpeed",
+   "accuracy": 0.03333333333333333,
    "effective": false,
    "stub": true,
    "library": false
@@ -11636,7 +11780,15 @@
   {
    "address": "0x0048fad0",
    "name": "AlrEff_Exe",
-   "accuracy": 0.1016949152542373,
+   "accuracy": 0.03571428571428571,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0048fb70",
+   "name": "AlrEff_Dsp",
+   "accuracy": 0.027777777777777776,
    "effective": false,
    "stub": true,
    "library": false
@@ -11645,6 +11797,14 @@
    "address": "0x0048fc60",
    "name": "AlrEff_SetFlag",
    "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0048fca0",
+   "name": "FUN_0048fca0",
+   "accuracy": 0.044444444444444446,
    "effective": false,
    "stub": true,
    "library": false
@@ -11823,6 +11983,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00492190",
+   "name": "dispObject(struct task *)",
+   "accuracy": 0.04,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00492240",
+   "name": "fallCoconut",
+   "accuracy": 0.03333333333333333,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -36643,7 +36819,7 @@
   },
   {
    "address": "0x005e8530",
-   "name": "FExec(3)",
+   "name": "FExec(5)",
    "accuracy": 0.06349206349206349,
    "effective": false,
    "stub": true,
@@ -36667,7 +36843,7 @@
   },
   {
    "address": "0x005e8710",
-   "name": "FDest",
+   "name": "FDest(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48028,11 +48204,43 @@
    "library": false
   },
   {
+   "address": "0x007116d0",
+   "name": "ALK_ChangeMaterial",
+   "accuracy": 0.04081632653061224,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00711950",
    "name": "ALK_BaseWindowCreate",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007119c0",
+   "name": "ALK_SelectWindowExec",
+   "accuracy": 0.029850746268656716,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00711a90",
+   "name": "ALK_SelectWindowDraw",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00711b70",
+   "name": "ALK_SelectWindowCreate",
+   "accuracy": 0.029411764705882353,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -48429,7 +48637,7 @@
   },
   {
    "address": "0x007171c0",
-   "name": "dispObject(2)",
+   "name": "dispObject(3)",
    "accuracy": 0.05405405405405406,
    "effective": false,
    "stub": true,
@@ -48453,7 +48661,7 @@
   },
   {
    "address": "0x007176c0",
-   "name": "dispObject(3)",
+   "name": "dispObject(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48485,7 +48693,7 @@
   },
   {
    "address": "0x00717820",
-   "name": "dispObject(4)",
+   "name": "dispObject(5)",
    "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
@@ -52205,7 +52413,7 @@
   },
   {
    "address": "0x007e60f0",
-   "name": "dispObject(5)",
+   "name": "dispObject(6)",
    "accuracy": 0.018867924528301886,
    "effective": false,
    "stub": true,
@@ -52421,7 +52629,7 @@
   },
   {
    "address": "0x007e7900",
-   "name": "dispObject(6)",
+   "name": "dispObject(7)",
    "accuracy": 0.05714285714285714,
    "effective": false,
    "stub": true,
@@ -85580,6 +85788,13 @@
    "library": false
   },
   {
+   "address": "0x01e763c0",
+   "name": "ALBHV_SToyFunc",
+   "size": 128,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x01fb19b0",
    "name": "pPartsObjectListAdult",
    "size": 4,
@@ -85715,6 +85930,34 @@
   {
    "address": "0x0221fb98",
    "name": "motion_crch_nc_door_all",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02223c38",
+   "name": "object_crch_nc_projector_a_nc_projector_a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02223ec0",
+   "name": "motion_crch_nc_projector_a",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02225468",
+   "name": "object_crch_nc_projector_b_nc_projector_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x022256f0",
+   "name": "motion_crch_nc_projector_b",
    "size": 12,
    "match": false,
    "library": false
@@ -94367,5 +94610,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b8c3c403a8fd13731fda57361d07a4e0580be1949f7cb9db3aa19dee1296b79f"
+ "inputs_sha256": "a885fbf60a95f948dd1cceffac9ca610ac5002116206a35cbfd6d4031245e069"
 }

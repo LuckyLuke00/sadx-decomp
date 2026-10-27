@@ -35,6 +35,29 @@ void AL_ClearPartsSub(struct al_object *pObject)
 	}
 }
 
+// FUNCTION: SADX 0x00450890
+void AL_ClearParts(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x11c) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4e4) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x11d) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4e5) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x11e) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4e6) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x11f) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4e7) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x120) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4e8) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x121) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4e9) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x122) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4ea) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x123) = -1;
+	*(char *)((char *)*(void **)((char *)var1 + 0x6c) + 0x4eb) = -1;
+	AL_ClearPartsSub((struct al_object *)*(void **)((char *)var1 + 0x524));
+}
+
 // FUNCTION: SADX 0x00450a50
 void AL_RemoveMinimalParts(struct task *tp, long PartsKind)
 {

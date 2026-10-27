@@ -22,6 +22,11 @@ void FUN_004881d0(struct AlrTimer *param_1)
 	FUN_00487ea0((unsigned char *)param_1);
 }
 
+// STUB: SADX 0x004881e0
+void AlrTimer_Dsp(struct AlrTimer *___this)
+{
+}
+
 // STUB: SADX 0x004882d0
 void AlrRank_Clear(struct AlrRank *___this)
 {

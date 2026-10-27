@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 struct task;
 struct taskwk;
 
@@ -38,9 +39,34 @@ void ALR_ALRE_Happy(struct taskwk *twp, struct alifewk *awp)
 	*(unsigned short *)((char *)awp + 0x814) = 2;
 }
 
-// STUB: SADX 0x0048ba20
+// FUNCTION: SADX 0x0048ba20
 void ALR_ALRE_Dance(struct taskwk *twp, struct alifewk *awp)
 {
+	switch (twp->smode)
+	{
+		case 0:
+		{
+			float var1 = (float)rand() * 3.0517578125e-05f;
+			ADV1toADV2_SetMotionLink(awp, (int)(var1 * 4.0f + 32.0f));
+			*(float *)((char *)awp + 0x144) = 7.0f;
+			twp->smode++;
+			twp->wtimer = 0;
+			float var2 = (float)rand() * 3.0517578125e-05f;
+			twp->btimer = (unsigned char)(var2 * 30.0f + 0.0f);
+			ADV1_AL_SetMouseNum(awp, 3, 0x23);
+		}
+		break;
+		case 1:
+			break;
+		default:
+			return;
+	}
+	awp->acc.x = awp->acc.x - (awp->velo.x * 0.125f);
+	awp->acc.z = awp->acc.z - (awp->velo.z * 0.125f);
+	if (twp->btimer > 0x32)
+	{
+		twp->smode = 0;
+	}
 }
 
 // STUB: SADX 0x0048c3a0
@@ -51,6 +77,12 @@ void ALR_Destructor(struct task *tp)
 // STUB: SADX 0x0048c3d0
 void ALR_Clear(struct task *tp)
 {
+}
+
+// STUB: SADX 0x0048c430
+float Alr_chaoCalcSpeed(struct Alr *param_1, float para, float min, float max)
+{
+	return (float)0;
 }
 
 // STUB: SADX 0x0048c4f0

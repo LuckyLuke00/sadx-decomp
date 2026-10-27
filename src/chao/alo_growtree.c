@@ -51,3 +51,8 @@ void ALO_GrowTreeDestructor(struct task *tp)
 		tp->mwp = 0;
 	}
 }
+
+// STUB: SADX 0x00440cd0
+void AL_PackageTreeSaveInfo(struct task *pTreeTask)
+{
+}

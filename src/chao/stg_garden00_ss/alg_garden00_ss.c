@@ -15,9 +15,39 @@ void _alg_garden00_ss_epilog()
 	___OutputDebugString("ChaoStgGarden00SS Epilog end\n");
 }
 
-// STUB: SADX 0x00476b30
+// FUNCTION: SADX 0x00476b30
 void AL_Garden00MasterExecutor(struct task *tp)
 {
+	struct taskwk *var1;
+
+	LoopTaskC(tp);
+	var1 = DAT_05baf368[0];
+	if (var1->pos.z < -160.0f)
+	{
+		AL_ChangeStageLater((enum eCHAO_STAGE_NUMBER)2);
+	}
+	if (var1->pos.z > 160.0f)
+	{
+		if (var1->pos.x < -40.0f)
+		{
+			AL_ChangeStageLater((enum eCHAO_STAGE_NUMBER)7);
+		}
+		else
+		{
+			SetEntranceNumber(4);
+			AL_ExitToStage(0x1a, 4);
+		}
+	}
+	if (var1->pos.y > 56.0)
+	{
+		var1->pos.y = 56.0f;
+	}
+	if (var1->pos.y < -16.0f)
+	{
+		var1->pos.x = 0.0f;
+		var1->pos.y = 0.0f;
+		var1->pos.z = 0.0f;
+	}
 }
 
 // FUNCTION: SADX 0x00476be0
