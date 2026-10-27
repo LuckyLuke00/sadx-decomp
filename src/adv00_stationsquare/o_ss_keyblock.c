@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct obj object_sssikake_blockbase_blockbase[];
 extern int DAT_05b9d838;
 extern struct CCL_INFO key_c_info[1];
 
@@ -67,4 +68,9 @@ void KeyInit(struct task *tp)
 	CCL_Init(tp, key_c_info, 2, 4);
 	tp->exec = KeyExec;
 	tp->disp = KeyDisp;
+}
+
+// STUB: SADX 0x00686d10
+void ObjectSSKeyblock(struct task *tp)
+{
 }

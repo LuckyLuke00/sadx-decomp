@@ -2598,6 +2598,11 @@ void KeyExec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00689420
+void FUN_00689420(struct task *)
+{
+}
+
 // STUB: SADX 0x0068d980
 void dispSSBigClock(struct task *tp)
 {
@@ -2610,11 +2615,6 @@ void Object_Ssadv_KomonoDraw(struct task *tp)
 
 // STUB: SADX 0x00692030
 void CreamManager(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00693fd0
-void ECPcSet()
 {
 }
 
@@ -2654,11 +2654,6 @@ void ObjectChaoWarpExecutor(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006a3be0
-void DuctDisplayer(struct task *tp)
-{
-}
-
 // STUB: SADX 0x006a4b90
 void ButtonDisp(struct task *tp)
 {
@@ -2684,18 +2679,8 @@ void ButtonExec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006a9b80
-void MRPcInit()
-{
-}
-
 // STUB: SADX 0x006ab950
 void ObjectMysticRuinHandyKey(struct task *tp)
-{
-}
-
-// STUB: SADX 0x006b2500
-void BigGrassDisplayer(struct task *tp)
 {
 }
 
@@ -2721,11 +2706,6 @@ void DispPastChaosFire(struct task *tp)
 
 // STUB: SADX 0x006c0a00
 void KnucklesTreeDisplayer(struct task *tp)
-{
-}
-
-// STUB: SADX 0x006c0fa0
-void DisplaySnake(struct task *tp)
 {
 }
 

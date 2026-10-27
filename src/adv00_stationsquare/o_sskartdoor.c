@@ -21,3 +21,10 @@ void FUN_006908a0(struct task *param_1)
 void ObjectColliSet(struct taskwk *twp)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x00690a90
+void ObjectOpen(struct task *tp)
+{
+}
+#pragma optimize("", on)

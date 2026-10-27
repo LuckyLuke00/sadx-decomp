@@ -27,3 +27,8 @@ void mrpc_exec_always(struct task *task_p)
 void mrpc_talk(struct task *task_p)
 {
 }
+
+// STUB: SADX 0x006a9b80
+void MRPcInit()
+{
+}

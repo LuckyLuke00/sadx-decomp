@@ -278,15 +278,6 @@ void *DAT_01c76fa0;
 // GLOBAL: SADX 0x01c77460
 void (*DAT_01c77460[256])(int);
 
-// GLOBAL: SADX 0x01c7e3ec
-struct obj object_sscasinosikake_hnakagen_hnakagen[1];
-
-// GLOBAL: SADX 0x01c7e50c
-struct NJS_ACTION action_sscasinosikake_hnakagen[1];
-
-// GLOBAL: SADX 0x01c813c4
-struct obj object_sscasinosikake_hnakagen_2_hnakagen[1];
-
 // GLOBAL: SADX 0x01c818d4
 struct obj object_sssikake_pole_pole[1];
 
@@ -301,6 +292,9 @@ struct NJS_ACTION action_sssikake_uradoor[1];
 
 // GLOBAL: SADX 0x01c8982c
 struct NJS_ACTION action_sssikake_twbdoor[1];
+
+// GLOBAL: SADX 0x01c8b4ec
+struct NJS_ACTION action_sssikake_gesuielebox[1];
 
 // GLOBAL: SADX 0x01c8b98c
 struct obj object_bin_bin_bin;
@@ -323,6 +317,9 @@ struct obj object_ssobj_bigclock_bigclock[1];
 // GLOBAL: SADX 0x01c92964
 struct obj object_ssobj_shop1solt_shop1solt[1];
 
+// GLOBAL: SADX 0x01c95164
+struct obj object_ssobj_shop2_kaseki_shop2_kaseki[1];
+
 // GLOBAL: SADX 0x01c9574c
 struct obj object_ssobj_shop2_radio_shop2_radio[1];
 
@@ -338,8 +335,14 @@ struct obj object_ssobj_elekanban_elekanban[1];
 // GLOBAL: SADX 0x01c984fc
 struct obj object_ssobj_twtesuri_twtesuri[1];
 
+// GLOBAL: SADX 0x01c98e4c
+struct obj object_ssobj_shop2aorobot_shop2aorobot[1];
+
 // GLOBAL: SADX 0x01c991e4
 struct obj object_ssobj_shop2boxmi_shop2boxmi[1];
+
+// GLOBAL: SADX 0x01c993a4
+struct obj object_ssobj_shop2boxfuta_shop2boxfuta[1];
 
 // GLOBAL: SADX 0x01c9d500
 struct obj object_sssikake_eggstand_eggstand[1];
@@ -5411,9 +5414,6 @@ char DAT_05bafb84;
 // GLOBAL: SADX 0x05bafb86
 unsigned char DAT_05bafb86;
 
-// GLOBAL: SADX 0x05bafb89
-unsigned char DAT_05bafb89;
-
 // GLOBAL: SADX 0x05bafb8d
 char DAT_05bafb8d;
 
@@ -5435,6 +5435,9 @@ unsigned char DAT_05bafb9d;
 // GLOBAL: SADX 0x05bafba1
 unsigned char DAT_05bafba1;
 
+// GLOBAL: SADX 0x05bafba2
+unsigned char DAT_05bafba2;
+
 // GLOBAL: SADX 0x05bafba3
 unsigned char DAT_05bafba3;
 
@@ -5446,9 +5449,6 @@ unsigned char DAT_05bafbc1;
 
 // GLOBAL: SADX 0x05bafbc2
 unsigned char DAT_05bafbc2;
-
-// GLOBAL: SADX 0x05bafbc7
-unsigned char DAT_05bafbc7;
 
 // GLOBAL: SADX 0x05bafbcf
 unsigned char DAT_05bafbcf;
@@ -5465,6 +5465,9 @@ unsigned char DAT_05bafbd5;
 // GLOBAL: SADX 0x05bafbdc
 unsigned char DAT_05bafbdc;
 
+// GLOBAL: SADX 0x05bafbdd
+unsigned char DAT_05bafbdd;
+
 // GLOBAL: SADX 0x05bafbde
 unsigned char DAT_05bafbde;
 
@@ -5473,9 +5476,6 @@ unsigned char DAT_05bafc01;
 
 // GLOBAL: SADX 0x05bafc02
 unsigned char DAT_05bafc02;
-
-// GLOBAL: SADX 0x05bafc05
-unsigned char DAT_05bafc05;
 
 // GLOBAL: SADX 0x05bafc0b
 unsigned char DAT_05bafc0b;
@@ -5495,6 +5495,9 @@ unsigned char DAT_05bafc18;
 // GLOBAL: SADX 0x05bafc1b
 unsigned char DAT_05bafc1b;
 
+// GLOBAL: SADX 0x05bafc1c
+unsigned char DAT_05bafc1c;
+
 // GLOBAL: SADX 0x05bafc1d
 unsigned char DAT_05bafc1d;
 
@@ -5510,9 +5513,6 @@ unsigned char DAT_05bafc40;
 // GLOBAL: SADX 0x05bafc41
 unsigned char DAT_05bafc41;
 
-// GLOBAL: SADX 0x05bafc44
-unsigned char DAT_05bafc44;
-
 // GLOBAL: SADX 0x05bafc49
 unsigned char DAT_05bafc49;
 
@@ -5525,14 +5525,14 @@ unsigned char DAT_05bafc50;
 // GLOBAL: SADX 0x05bafc53
 unsigned char DAT_05bafc53;
 
+// GLOBAL: SADX 0x05bafc54
+unsigned char DAT_05bafc54;
+
 // GLOBAL: SADX 0x05bafc55
 unsigned char DAT_05bafc55;
 
 // GLOBAL: SADX 0x05bafc80
 unsigned char DAT_05bafc80;
-
-// GLOBAL: SADX 0x05bafc83
-unsigned char DAT_05bafc83;
 
 // GLOBAL: SADX 0x05bafc87
 unsigned char DAT_05bafc87;
@@ -5555,6 +5555,9 @@ unsigned char DAT_05bafc96;
 // GLOBAL: SADX 0x05bafc97
 unsigned char DAT_05bafc97;
 
+// GLOBAL: SADX 0x05bafc98
+unsigned char DAT_05bafc98;
+
 // GLOBAL: SADX 0x05bafc99
 unsigned char DAT_05bafc99;
 
@@ -5563,9 +5566,6 @@ unsigned char DAT_05bafcc0;
 
 // GLOBAL: SADX 0x05bafcc1
 unsigned char DAT_05bafcc1;
-
-// GLOBAL: SADX 0x05bafcc2
-unsigned char DAT_05bafcc2;
 
 // GLOBAL: SADX 0x05bafcc8
 unsigned char DAT_05bafcc8;
@@ -5579,11 +5579,11 @@ unsigned char DAT_05bafccc;
 // GLOBAL: SADX 0x05bafcd2
 unsigned char DAT_05bafcd2;
 
+// GLOBAL: SADX 0x05bafcd3
+unsigned char DAT_05bafcd3;
+
 // GLOBAL: SADX 0x05bafcd4
 unsigned char DAT_05bafcd4;
-
-// GLOBAL: SADX 0x05bafcd7
-unsigned char DAT_05bafcd7;
 
 // GLOBAL: SADX 0x05bafce4
 unsigned char DAT_05bafce4;

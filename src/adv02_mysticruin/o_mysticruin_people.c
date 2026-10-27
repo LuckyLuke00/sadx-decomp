@@ -35,10 +35,12 @@ void mrp_exec_eveidle(struct task *task_p)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006b0410
 void mrp_walk_man_1st(struct task *task_p)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006b0480
 void mrp_walk_man_eveidle(struct task *task_p)

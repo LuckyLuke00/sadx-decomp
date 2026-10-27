@@ -22,3 +22,8 @@ long SeqCheck()
 	}
 	return 0;
 }
+
+// STUB: SADX 0x00689210
+void ObjectSSBarricade(struct task *tp)
+{
+}

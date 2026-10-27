@@ -33,3 +33,8 @@ void ExecDay(struct task *tp)
 {
 	DispDay(tp);
 }
+
+// STUB: SADX 0x00682790
+void ObjectSSCasinokazari(struct task *tp)
+{
+}

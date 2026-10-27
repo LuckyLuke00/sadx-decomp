@@ -1,4 +1,5 @@
 #include "decls.h"
+void late_ActionEx(NJS_ACTION *action, float frame, int flgs);
 extern struct NJS_TEXLIST texlist_ec_sky;
 void late_ActionEx(NJS_ACTION *action, float frame, int flgs);
 

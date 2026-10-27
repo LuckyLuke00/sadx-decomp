@@ -20,3 +20,8 @@ void EmeraldDisplayer(struct task *tp)
 	late_DrawObjectClipMesh(DAT_060b97f4[var1->smode], 1, 1.0f);
 	njPopMatrix(1);
 }
+
+// STUB: SADX 0x006bf990
+void ObjectPastChaosEmerald(struct task *tp)
+{
+}

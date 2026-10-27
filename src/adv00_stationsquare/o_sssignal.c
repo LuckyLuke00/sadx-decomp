@@ -22,3 +22,8 @@ void dispSSSignal(struct task *tp)
 	njPopMatrix(1);
 	npSetZCompare();
 }
+
+// STUB: SADX 0x0068cf20
+void ObjectSSSignal(struct task *tp)
+{
+}
