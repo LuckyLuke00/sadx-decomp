@@ -22,8 +22,8 @@ void FinalEggDisplayer(struct task *tp)
 	{
 		njRotateY(0, var1->ang.y);
 	}
-	___dsAction((struct NJS_ACTION *)(*(int *)((char *)DAT_060eeaac + 0x0)), var1->scl.x, 1.0f);
-	___dsAction((struct NJS_ACTION *)(*(int *)((char *)DAT_060eeaac + 0x78)), var1->scl.y, 1.0f);
+	ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)DAT_060eeaac + 0x0)), var1->scl.x, 1.0f);
+	ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)DAT_060eeaac + 0x78)), var1->scl.y, 1.0f);
 	njPopMatrix(1);
 	___njFogEnable();
 	FUN_004a0520(DAT_05b3e050.x, DAT_05b3e050.y);

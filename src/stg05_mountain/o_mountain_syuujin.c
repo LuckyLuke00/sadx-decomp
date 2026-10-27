@@ -23,7 +23,7 @@ void Object_Mountain_Syuujin_Display(struct task *tp)
 			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		njScaleV((float *)0, &var1->scl);
-		late_ActionMesh((struct NJS_ACTION *)var1->counter.ptr, *(float *)((char *)var1 + 0xc), 4, FUN_004a1e90((float *)&var1->scl));
+		late_ActionClipMesh((struct NJS_ACTION *)var1->counter.ptr, *(float *)((char *)var1 + 0xc), 4, FUN_004a1e90((float *)&var1->scl));
 		njPopMatrix(1);
 	}
 }

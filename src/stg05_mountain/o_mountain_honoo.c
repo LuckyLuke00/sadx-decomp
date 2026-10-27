@@ -36,7 +36,7 @@ void o_mountain_honoo_Display(struct task *tp)
 		}
 		FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
 		dsScaleLight(var1->scl.x);
-		___dsAction((struct NJS_ACTION *)var1->counter.ptr, (float)var1->wtimer, var1->scl.x);
+		ds_ActionClip((struct NJS_ACTION *)var1->counter.ptr, (float)var1->wtimer, var1->scl.x);
 		dsReScaleLight();
 		njPopMatrix(1);
 	}

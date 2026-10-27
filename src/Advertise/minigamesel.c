@@ -4,7 +4,7 @@ extern unsigned char DAT_05cd14ed;
 extern struct task *DAT_05edd9b0;
 
 // FUNCTION: SADX 0x00600e90
-struct task *FUN_00600e90(struct ModeSelPrmType *param_1)
+struct task *SetAdvaMiniGameSelTask(struct ModeSelPrmType *prmp)
 {
 	void *local_cg;
 	struct task *local_8g;
@@ -15,7 +15,7 @@ struct task *FUN_00600e90(struct ModeSelPrmType *param_1)
 	{
 		local_cg = CAlloc(1, 0xd0);
 		local_8g->awp = (struct anywk *)local_cg;
-		SetAdvaMiniGameSelTask(local_8g, param_1);
+		FUN_00600f10(local_8g, prmp);
 		local_8g->exec = minigame_sel_exec;
 		local_8g->disp = minigame_sel_disp;
 	}
@@ -23,7 +23,7 @@ struct task *FUN_00600e90(struct ModeSelPrmType *param_1)
 }
 
 // STUB: SADX 0x00600f10
-void SetAdvaMiniGameSelTask(struct task *param_1, struct ModeSelPrmType *param_2)
+void FUN_00600f10(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 }
 
@@ -69,7 +69,7 @@ void DrawMiniGameSelBg(struct MiniGameSelWk *wkp)
 	ghSetPvrTexMaterial(-1);
 	___njSetTexture(&texlist_ava_trialactsel);
 	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoY * 32.0f, wkp->BaseZ + -8.0f, ScreenRaitoX * 565.0f, ScreenRaitoY * 42.0f);
-	ghDrawPvrTexture(0xe, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(0xe, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
 	DrawMiniGameSelRankBg(wkp);
 }
 

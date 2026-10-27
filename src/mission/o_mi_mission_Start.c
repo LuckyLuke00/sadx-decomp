@@ -23,7 +23,7 @@ static void Disp(struct task *tp)
 			njRotateY(0, (unsigned short)var2->ang.y);
 		}
 		njScaleV(0, &var2->scl);
-		___dsAction((struct NJS_ACTION *)var2->counter.ptr, var2->timer.f, 1.0f);
+		ds_ActionClip((struct NJS_ACTION *)var2->counter.ptr, var2->timer.f, 1.0f);
 		njPopMatrix(1);
 	}
 }

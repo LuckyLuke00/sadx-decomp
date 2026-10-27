@@ -1,7 +1,7 @@
 #include "decls.h"
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
 void ghSetPvrTexMaterial(unsigned long color);
-void ghDrawPvrSprite(short *param_1, int param_2, float param_3, float param_4, float param_5, float param_6, float param_7);
+void ghDrawPvrSpriteS(short *pvrspr, int flag, float x, float y, float z, float sx, float sy);
 extern struct NJS_TEXLIST texlist_ava_back;
 extern float ScreenRaitoX;
 extern float ScreenRaitoY;

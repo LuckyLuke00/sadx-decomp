@@ -16,7 +16,7 @@ void hallgate_draw(struct task *task_p)
 	{
 		njRotateY(0, var1->ang.y);
 	}
-	___dsAction(action_hallgate, var1->counter.f, 1.0f);
+	ds_ActionClip(action_hallgate, var1->counter.f, 1.0f);
 	njPopMatrix(1);
 }
 

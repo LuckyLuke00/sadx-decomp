@@ -1408,36 +1408,36 @@ void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, 
 }
 
 // STUB: SADX 0x004a89c0
-void ___dsAction(struct NJS_ACTION *param_1, float param_2, float param_3)
+void ds_ActionClip(struct NJS_ACTION *param_1, float param_2, float param_3)
 {
 }
 
 // FUNCTION: SADX 0x004a89f0
-void FUN_004a89f0(NJS_ACTION *param_1, float param_2, int param_3)
+void late_Action(NJS_ACTION *action, float frame, int flgs)
 {
 	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
-	DrawAction(param_1, param_2, param_3, 0.0, (void *)lateDrawModel);
+	DrawAction(action, frame, flgs, 0.0, (void *)lateDrawModel);
 }
 
 // FUNCTION: SADX 0x004a8a20
-void late_Action(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
+void late_ActionClip(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
 	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
-	DrawAction(param_1, param_2, param_3, param_4, (void *)lateDrawModel);
+	DrawAction(action, frame, flgs, clipScl, (void *)lateDrawModel);
 }
 
 // FUNCTION: SADX 0x004a8a50
-void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3)
+void late_ActionEx(NJS_ACTION *action, float frame, int flgs)
 {
 	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
-	DrawAction(param_1, param_2, param_3, 0.0f, (void *)DrawModelEx);
+	DrawAction(action, frame, flgs, 0.0f, (void *)DrawModelEx);
 }
 
 // FUNCTION: SADX 0x004a8a80
-void late_ActionEx(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
+void late_ActionClipEx(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
 	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
-	DrawAction(param_1, param_2, param_3, param_4, (void *)DrawModelEx);
+	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelEx);
 }
 
 // STUB: SADX 0x004a8ab0
@@ -1446,21 +1446,21 @@ void late_ActionMS(NJS_ACTION *action, float frame, int flgs)
 }
 
 // FUNCTION: SADX 0x004a8ae0
-void FUN_004a8ae0(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
+void late_ActionClipMS(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
 	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
-	DrawAction(param_1, param_2, param_3, param_4, (void *)DrawModelMS);
+	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelMS);
 }
 
 // FUNCTION: SADX 0x004a8b10
-void FUN_004a8b10(NJS_ACTION *param_1, float param_2, int param_3)
+void late_ActionMesh(NJS_ACTION *action, float frame, int flgs)
 {
 	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
-	DrawAction(param_1, param_2, param_3, 0.0, (void *)DrawModelMesh);
+	DrawAction(action, frame, flgs, 0.0, (void *)DrawModelMesh);
 }
 
 // STUB: SADX 0x004a8b40
-void late_ActionMesh(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
+void late_ActionClipMesh(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
 {
 }
 

@@ -98,7 +98,7 @@ void DrawEmblemViewBg(struct EmblemViewWk *wkp)
 	ghSetPvrTexMaterial(-1);
 	___njSetTexture(&texlist_ava_emblemview);
 	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoY * 32.0f, wkp->BaseZ + -8.0f, ScreenRaitoX * 565.0f, ScreenRaitoY * 42.0f);
-	ghDrawPvrTexture(0, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(0, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
 }
 
 // FUNCTION: SADX 0x00600aa0

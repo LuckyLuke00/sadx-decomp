@@ -16,7 +16,7 @@ struct task *SetAdvaTrialActSelTask(struct ModeSelPrmType *prmp)
 	{
 		local_cg = CAlloc(1, 0xd0);
 		local_8g->awp = (struct anywk *)local_cg;
-		ChgSubModeToStay(local_8g, prmp);
+		FUN_006067b0(local_8g, prmp);
 		local_8g->exec = trial_act_sel_exec;
 		local_8g->disp = trial_act_sel_disp;
 	}
@@ -24,7 +24,7 @@ struct task *SetAdvaTrialActSelTask(struct ModeSelPrmType *prmp)
 }
 
 // STUB: SADX 0x006067b0
-void ChgSubModeToStay(struct task *param_1, struct ModeSelPrmType *param_2)
+void FUN_006067b0(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 }
 
@@ -70,7 +70,7 @@ void trial_act_sel_disp(struct task *tp)
 	ghSetPvrTexBaseColor(local_8->BaseCol);
 	DrawSkyBg(local_8->BaseZ + -2.0);
 	DrawTrialActSelBg(local_8);
-	FUN_006074c0(local_8);
+	DrawTrialActSelRank(local_8);
 	DrawBCharName((enum AvaCharEnum)DAT_05cd14ed, -1, 158.0f, 90.0f, local_8->BaseZ + -14.0);
 	DrawTrialActSelStage(local_8);
 }
@@ -81,7 +81,7 @@ void DrawTrialActSelBg(struct TrialActSelWk *wkp)
 	ghSetPvrTexMaterial(-1);
 	___njSetTexture(&texlist_ava_trialactsel);
 	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoY * 32.0f, wkp->BaseZ + -8.0f, ScreenRaitoX * 565.0f, ScreenRaitoY * 42.0f);
-	ghDrawPvrTexture(9, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(9, ScreenRaitoX * 32.0f, ScreenRaitoY * 42.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
 	DrawTrialActSelRankBg(wkp);
 }
 
@@ -91,12 +91,12 @@ void DrawTrialActSelRankBg(struct TrialActSelWk *wkp)
 }
 
 // FUNCTION: SADX 0x006074c0
-void FUN_006074c0(struct TrialActSelWk *param_1)
+void DrawTrialActSelRank(struct TrialActSelWk *wkp)
 {
-	DrawTrialActSelEmblem(param_1);
-	DrawTrialActSelRank(param_1);
-	DrawTrialActSelTimeOrWeight(param_1);
-	FUN_006077f0(param_1);
+	DrawTrialActSelEmblem(wkp);
+	FUN_006075f0(wkp);
+	DrawTrialActSelTimeOrWeight(wkp);
+	FUN_006077f0(wkp);
 }
 
 // FUNCTION: SADX 0x00607500
@@ -121,11 +121,11 @@ void DrawTrialActSelEmblem(struct TrialActSelWk *wkp)
 }
 
 // FUNCTION: SADX 0x006075f0
-void DrawTrialActSelRank(struct TrialActSelWk *wkp)
+void FUN_006075f0(struct TrialActSelWk *param_1)
 {
 	long local_8;
-	local_8 = AvaGetTrialBestScore((enum AvaCharEnum)DAT_05cd14ed, wkp->NowStgActPrm.StgActPtr[wkp->SelStg].Stg);
-	DrawValTrialS(local_8, 6, 0, 463.0f, 260.0f, wkp->BaseZ + -12.0, 0.5f, 0.5f);
+	local_8 = AvaGetTrialBestScore((enum AvaCharEnum)DAT_05cd14ed, param_1->NowStgActPrm.StgActPtr[param_1->SelStg].Stg);
+	DrawValTrialS(local_8, 6, 0, 463.0f, 260.0f, param_1->BaseZ + -12.0, 0.5f, 0.5f);
 }
 
 // FUNCTION: SADX 0x006077f0

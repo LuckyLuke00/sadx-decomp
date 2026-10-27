@@ -17,6 +17,6 @@ void ArmDisp(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
 	njRotateXYZ(0, var1->ang.x, var1->ang.y, var1->ang.z);
 	___njSetTexture(&texlist_shooting0);
-	___dsAction((struct NJS_ACTION *)&action_edv_f_arm, var1->counter.f, 1.0f);
+	ds_ActionClip((struct NJS_ACTION *)&action_edv_f_arm, var1->counter.f, 1.0f);
 	njPopMatrix(1);
 }

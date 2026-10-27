@@ -50,7 +50,7 @@ static void dispWaveTask(struct task *p_task)
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
 	njScaleV(0, &var1->scl);
-	late_ActionMesh(&action_l_circle[0], var1->counter.f, 0, FUN_004a1e90((float *)&var1->scl));
+	late_ActionClipMesh(&action_l_circle[0], var1->counter.f, 0, FUN_004a1e90((float *)&var1->scl));
 	njPopMatrix(1);
 }
 

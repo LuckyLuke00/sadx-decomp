@@ -3,7 +3,7 @@ void FUN_00576c10(struct task *param_1);
 void FUN_005779c0(signed char param_1);
 void FUN_00576bf0(struct task *param_1);
 void SetDialogNoKeyTime(short time);
-void ghDrawPvrTexture(int param_1, float param_2, float param_3, float param_4, float param_5, float param_6);
+void ghDrawPvrTextureS(int index, float x, float y, float z, float sx, float sy);
 void FUN_00576a60(int param_1);
 extern struct task *DAT_05cd2600;
 
@@ -18,9 +18,9 @@ void DrawPanelC(unsigned long col, float x, float y, float z, float magx, float 
 {
 	___njSetTexture(&texlist_ava_csr);
 	ghSetPvrTexMaterial(col);
-	ghDrawPvrTexture(0x4000002, x, y, z + -0.3f, magx, magy);
+	ghDrawPvrTextureS(0x4000002, x, y, z + -0.3f, magx, magy);
 	ghSetPvrTexMaterial((col & 0xff000000) | 0xffffff);
-	ghDrawPvrTexture(0x4000001, x, y, z + -0.6f, magx, magy);
+	ghDrawPvrTextureS(0x4000001, x, y, z + -0.6f, magx, magy);
 }
 
 // FUNCTION: SADX 0x00576010
@@ -28,9 +28,9 @@ void DrawSquareC(unsigned long col, float x, float y, float z, float magx, float
 {
 	___njSetTexture(&texlist_ava_square);
 	ghSetPvrTexMaterial((col & 0xff000000) | 0xffffff);
-	ghDrawPvrTexture(0x4000001, x * ScreenRaitoX, y * ScreenRaitoY, z, magx * 1.0460431575775146 * ScreenRaitoX, magy * 1.177024483680725 * ScreenRaitoY);
+	ghDrawPvrTextureS(0x4000001, x * ScreenRaitoX, y * ScreenRaitoY, z, magx * 1.0460431575775146 * ScreenRaitoX, magy * 1.177024483680725 * ScreenRaitoY);
 	ghSetPvrTexMaterial(col);
-	ghDrawPvrTexture(0x4000000, x * ScreenRaitoX, y * ScreenRaitoY, z + -0.30000001192092896, magx * ScreenRaitoX, magy * ScreenRaitoY);
+	ghDrawPvrTextureS(0x4000000, x * ScreenRaitoX, y * ScreenRaitoY, z + -0.30000001192092896, magx * ScreenRaitoX, magy * ScreenRaitoY);
 }
 
 // STUB: SADX 0x00576130

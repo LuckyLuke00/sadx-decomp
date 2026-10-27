@@ -13,7 +13,7 @@ void FUN_006908a0(struct task *param_1)
 		njRotateY(0, var1->ang.y);
 	}
 	SetObjectTexture();
-	___dsAction((struct NJS_ACTION *)&action_sssikake_kartdoor, *(float *)((char *)var1 + 8), 1.0f);
+	ds_ActionClip((struct NJS_ACTION *)&action_sssikake_kartdoor, *(float *)((char *)var1 + 8), 1.0f);
 	njPopMatrix(1);
 }
 

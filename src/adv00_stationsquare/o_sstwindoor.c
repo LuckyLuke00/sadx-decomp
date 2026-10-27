@@ -14,7 +14,7 @@ void FUN_0068fa50(struct task *param_1)
 	{
 		njRotateY(0, var1->ang.y);
 	}
-	___dsAction(action_sssikake_twindoor, *(float *)((char *)var1 + 8), 1.0f);
+	ds_ActionClip(action_sssikake_twindoor, *(float *)((char *)var1 + 8), 1.0f);
 	njPopMatrix(1);
 }
 

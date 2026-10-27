@@ -24,7 +24,7 @@ void DisplayTree(struct task *tp)
 	}
 	else
 	{
-		late_ActionEx((struct NJS_ACTION *)(*(struct obj **)((char *)DAT_060eea54 + 0x20)), var1->value.f, 1, 1.0f);
+		late_ActionClipEx((struct NJS_ACTION *)(*(struct obj **)((char *)DAT_060eea54 + 0x20)), var1->value.f, 1, 1.0f);
 	}
 	njPopMatrix(1);
 }

@@ -23,7 +23,7 @@ void RelaypointDraw(struct task *tp)
 		{
 			njRotateY(0, (unsigned short)*(short *)((char *)var1 + 0x18));
 		}
-		___dsAction(action_kasshatyuukei1a_st, var1->scl.x, 1.0f);
+		ds_ActionClip(action_kasshatyuukei1a_st, var1->scl.x, 1.0f);
 		njPopMatrix(1);
 	}
 }

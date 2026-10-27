@@ -2,7 +2,7 @@
 extern void njPushMatrix(float *);
 void njTranslateV(float *, struct NJS_POINT3 *);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
-void FUN_004a8a50(struct NJS_ACTION *param_1, float param_2, int param_3);
+void late_ActionEx(struct NJS_ACTION *action, float frame, int flgs);
 extern struct NJS_ACTION action_beamev_s_beam[1];
 struct task;
 extern int DAT_05b9d838;
@@ -16,7 +16,7 @@ void njPushMatrix(float *param_1);
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
 void njRotateXYZ(long param_1, long param_2, long param_3, long param_4);
 void FUN_004a88c0(NJS_ACTION *param_1, float param_2);
-void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3);
+void late_ActionEx(NJS_ACTION *action, float frame, int flgs);
 void njPopMatrix(int param_1);
 void npSetZCompare();
 
@@ -36,7 +36,7 @@ void EggDisp(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
 	njRotateXYZ(0, var1->ang.x, var1->ang.y, var1->ang.z);
 	FUN_004a88c0(&action_shot_bf_s_bodya, var1->value.f);
-	FUN_004a8a50(&action_shot_s_ecfire, var1->counter.f, 4);
+	late_ActionEx(&action_shot_s_ecfire, var1->counter.f, 4);
 	njPopMatrix(1);
 	npSetZCompare();
 }
@@ -70,7 +70,7 @@ void EggDisp2(struct task *tp)
 	njRotateXYZ(0, var1->ang.x, var1->ang.y, var1->ang.z);
 	FUN_0067d2d0(0, 0.5, 0.5, 0.5);
 	FUN_004a88c0(&action_shot_bf_s_bodya, var1->value.f);
-	FUN_004a8a50(&action_shot_s_ecfire, var1->counter.f, 4);
+	late_ActionEx(&action_shot_s_ecfire, var1->counter.f, 4);
 	njPopMatrix(1);
 	LoadConstantAttr();
 }
@@ -93,7 +93,7 @@ void ef_TameDisp(struct task *tp)
 	njTranslateV(0, (struct NJS_POINT3 *)((char *)var2->twp + 0x20));
 	FUN_0067d2d0(0, 0.5f, 0.5f, 0.5f);
 	njTranslateV(0, &var1->pos);
-	FUN_004a8a50((struct NJS_ACTION *)&action_beamev_s_beam, var1->value.f, 4);
+	late_ActionEx((struct NJS_ACTION *)&action_beamev_s_beam, var1->value.f, 4);
 	njPopMatrix(1);
 }
 

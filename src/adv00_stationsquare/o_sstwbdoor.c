@@ -14,7 +14,7 @@ static void ObjectDisplay(struct task *tp)
 	{
 		njRotateY(0, var1->ang.y);
 	}
-	___dsAction(action_sssikake_twbdoor, var1->counter.f, 1.0f);
+	ds_ActionClip(action_sssikake_twbdoor, var1->counter.f, 1.0f);
 	njPopMatrix(1);
 }
 

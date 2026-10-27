@@ -17,6 +17,6 @@ void KiraiDisp(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
 	___njSetTexture(&texlist_shooting0);
 	FUN_0067d2d0(0, 2.0f, 2.0f, 2.0f);
-	late_ActionEx((struct NJS_ACTION *)&action_stene_s_kibody, var1->counter.f, 0, 2.0f);
+	late_ActionClipEx((struct NJS_ACTION *)&action_stene_s_kibody, var1->counter.f, 0, 2.0f);
 	njPopMatrix(1);
 }

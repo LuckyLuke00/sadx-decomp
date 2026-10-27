@@ -14,13 +14,13 @@ void DrawMCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y, 
 	{
 		___njSetTexture(&texlist_ava_metal);
 		ghSetPvrTexMaterial(col);
-		ghDrawPvrTexture(0x4000002, x * ScreenRaitoX, y * ScreenRaitoY, z, magx * ScreenRaitoX, magy * ScreenRaitoY);
+		ghDrawPvrTextureS(0x4000002, x * ScreenRaitoX, y * ScreenRaitoY, z, magx * ScreenRaitoX, magy * ScreenRaitoY);
 	}
 	else
 	{
 		___njSetTexture(&texlist_m_chnam);
 		ghSetPvrTexMaterial(col);
-		ghDrawPvrTexture((MChPvrIdx[chnum] | 0x4000000), x * ScreenRaitoX, y * ScreenRaitoY, z, magx * ScreenRaitoX, magy * ScreenRaitoY);
+		ghDrawPvrTextureS((MChPvrIdx[chnum] | 0x4000000), x * ScreenRaitoX, y * ScreenRaitoY, z, magx * ScreenRaitoX, magy * ScreenRaitoY);
 	}
 }
 
@@ -63,7 +63,7 @@ void DrawEbmlem(float x, float y, float z)
 {
 	___njSetTexture(&texlist_ava_emblem);
 	ghSetPvrTexMaterial(0xffffffff);
-	ghDrawPvrTexture(0x4000000, x * ScreenRaitoX, y * ScreenRaitoY, z, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(0x4000000, x * ScreenRaitoX, y * ScreenRaitoY, z, ScreenRaitoX, ScreenRaitoY);
 }
 
 // STUB: SADX 0x0059f120
@@ -77,8 +77,8 @@ void DrawSankaku(int muki, float x, float y, float z)
 	muki = (muki != 0 ? 0x46000000 : 0) + 0x1000000;
 	___njSetTexture(&texlist_ava_san);
 	ghSetPvrTexMaterial(0xffffffff);
-	ghDrawPvrTexture(muki | 1, x * ScreenRaitoX, y * ScreenRaitoY, z, ScreenRaitoX, ScreenRaitoY);
-	ghDrawPvrTexture(muki, x * ScreenRaitoX, y * ScreenRaitoY, z + -0.30000001192092896, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(muki | 1, x * ScreenRaitoX, y * ScreenRaitoY, z, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(muki, x * ScreenRaitoX, y * ScreenRaitoY, z + -0.30000001192092896, ScreenRaitoX, ScreenRaitoY);
 }
 
 // STUB: SADX 0x0059f490

@@ -185,5 +185,5 @@ void EvBossDispHitPoint(struct __HPPOS *hppos)
 	FUN_007d21b0((void *)1);
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
-	FUN_00574140(*(int *)((char *)hppos + 0xc), *(float *)((char *)hppos + 0x0) * ScreenRaitoX, *(float *)((char *)hppos + 0x4) * ScreenRaitoY, *(float *)((char *)hppos + 0x8));
+	ghDrawPvrTexture(*(int *)((char *)hppos + 0xc), *(float *)((char *)hppos + 0x0) * ScreenRaitoX, *(float *)((char *)hppos + 0x4) * ScreenRaitoY, *(float *)((char *)hppos + 0x8));
 }

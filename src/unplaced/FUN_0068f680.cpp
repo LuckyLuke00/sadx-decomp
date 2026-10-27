@@ -13,6 +13,6 @@ void FUN_0068f680(struct task *param_1)
 	{
 		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
 	}
-	___dsAction(action_sssikake_uradoor, *(float *)((char *)var1 + 8), 1.0f);
+	ds_ActionClip(action_sssikake_uradoor, *(float *)((char *)var1 + 8), 1.0f);
 	njPopMatrix(1);
 }

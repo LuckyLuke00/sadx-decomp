@@ -26,7 +26,7 @@ void ObjectCasinoSlotArmDraw(struct task *tp)
 	}
 	else
 	{
-		___dsAction(action_cas_obj_slot_arm, var1->counter.f, 1.0f);
+		ds_ActionClip(action_cas_obj_slot_arm, var1->counter.f, 1.0f);
 	}
 	njPopMatrix(1);
 }

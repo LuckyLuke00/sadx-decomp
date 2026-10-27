@@ -52,7 +52,7 @@ void DrawIconFileSel(struct _OptionSelWk *wkp)
 			local_9 = 2;
 			break;
 	}
-	ghDrawPvrTexture(local_9 + 0x2c, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(local_9 + 0x2c, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // STUB: SADX 0x00602dd0
@@ -69,7 +69,7 @@ void DrawLangSel(struct _OptionSelWk *wkp)
 	local_8 = (void *)((char *)(*(void **)((char *)wkp + 0x48)) + 0xc0);
 	ghSetPvrTexMaterial(0xffffffff);
 	___njSetTexture(&texlist_ava_option);
-	ghDrawPvrTexture(*(unsigned char *)((char *)wkp + 0x3f) + 0x24, *(float *)((char *)local_8 + 0x0) * ScreenRaitoX, *(float *)((char *)local_8 + 0x4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(*(unsigned char *)((char *)wkp + 0x3f) + 0x24, *(float *)((char *)local_8 + 0x0) * ScreenRaitoX, *(float *)((char *)local_8 + 0x4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // FUNCTION: SADX 0x00602e90
@@ -84,7 +84,7 @@ void DrawTvSetting(struct _OptionSelWk *wkp)
 		local_9 = 1;
 	if (local_9 > 3)
 		local_9 = 0;
-	ghDrawPvrTexture(local_9 + 0x20, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(local_9 + 0x20, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // STUB: SADX 0x00602f40
@@ -93,13 +93,13 @@ void DrawVibSetting(struct _OptionSelWk *wkp)
 }
 
 // STUB: SADX 0x00602ff0
-struct task *FUN_00602ff0(struct ModeSelPrmType *param_1)
+struct task *SetAdvaOptionSelTask(struct ModeSelPrmType *param_1)
 {
 	return (struct task *)0;
 }
 
 // STUB: SADX 0x00603060
-void SetAdvaOptionSelTask(struct task *param_1, struct ModeSelPrmType *param_2)
+void FUN_00603060(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 }
 

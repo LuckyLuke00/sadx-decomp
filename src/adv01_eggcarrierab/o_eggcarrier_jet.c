@@ -1,13 +1,13 @@
 #include "decls.h"
 extern struct NJS_TEXLIST texlist_ec_sky;
-void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3);
+void late_ActionEx(NJS_ACTION *action, float frame, int flgs);
 
 // FUNCTION: SADX 0x006944c0
 void JetDisplayer(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	___njSetTexture(&texlist_ec_sky);
-	FUN_004a8a50((NJS_ACTION *)var1->timer.ptr, var1->value.f, 4);
+	late_ActionEx((NJS_ACTION *)var1->timer.ptr, var1->value.f, 4);
 }
 
 // STUB: SADX 0x006944f0

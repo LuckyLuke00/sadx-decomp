@@ -17,7 +17,7 @@ static void Disp(struct task *tp)
 		{
 			njRotateY(0, (unsigned short)var1->ang.y);
 		}
-		late_Action((struct NJS_ACTION *)&action_kowaresuisou_hikari_sin, var1->counter.f, 4, 1.0f);
+		late_ActionClip((struct NJS_ACTION *)&action_kowaresuisou_hikari_sin, var1->counter.f, 4, 1.0f);
 		njPopMatrix(1);
 	}
 }
