@@ -515,6 +515,9 @@ long NullMergeTreeList[15];
 // GLOBAL: SADX 0x01e6e4c0
 long PartsObjectListNumber[8][2];
 
+// GLOBAL: SADX 0x01e763c0
+long (*ALBHV_SToyFunc[32])(struct task *);
+
 // GLOBAL: SADX 0x01fb19b0
 struct cnkobj **pPartsObjectListAdult[1];
 
@@ -574,6 +577,18 @@ struct obj object_crch_nc_door_all_nc_door_all[1];
 
 // GLOBAL: SADX 0x0221fb98
 struct NJS_MOTION motion_crch_nc_door_all[1];
+
+// GLOBAL: SADX 0x02223c38
+struct obj object_crch_nc_projector_a_nc_projector_a[1];
+
+// GLOBAL: SADX 0x02223ec0
+struct NJS_MOTION motion_crch_nc_projector_a[1];
+
+// GLOBAL: SADX 0x02225468
+struct obj object_crch_nc_projector_b_nc_projector_b[1];
+
+// GLOBAL: SADX 0x022256f0
+struct NJS_MOTION motion_crch_nc_projector_b[1];
 
 // GLOBAL: SADX 0x02225808
 struct CCL_INFO ccinfo[1];
@@ -4342,6 +4357,9 @@ int DAT_05b2ca04;
 
 // GLOBAL: SADX 0x05b2ca08
 char DAT_05b2ca08[2];
+
+// GLOBAL: SADX 0x05b2ca50
+char DAT_05b2ca50[1];
 
 // GLOBAL: SADX 0x05b2ca64
 int DAT_05b2ca64[1];

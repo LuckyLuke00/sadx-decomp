@@ -5,6 +5,32 @@ void AL_MatSetChaoColor(struct task *tp, short ColorNum)
 {
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x00450370
+void AL_MatChangeModelTexture(struct al_model *pModel, unsigned short TexId)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x00450460
+void AL_MatResetModelTexture(struct al_model *pModel)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x00450540
+void AL_MatChangeModelTexture2(struct al_model *pModel, const unsigned short *TexIdList, long nbTex)
+{
+}
+#pragma optimize("", on)
+
+// STUB: SADX 0x00450610
+void AL_MatSwitchModelEnvironmentMapping(struct al_model *pModel, long mode)
+{
+}
+
 // STUB: SADX 0x004506e0
 void AL_MaterialInit(struct task *tp)
 {

@@ -352,17 +352,6 @@ long AL_EmotionGetValue(struct task *tp, unsigned long EmotionNum)
 	return (long)0;
 }
 
-// STUB: SADX 0x0043dd90
-long ALW_Entry2(unsigned short category, struct task *tp, unsigned short kind, void *pSaveInfo)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x0043e530
-void AL_ChangeStage(enum eCHAO_STAGE_NUMBER)
-{
-}
-
 // STUB: SADX 0x0043ea30
 void AL__EditCancelMode(struct task *)
 {
@@ -469,28 +458,13 @@ void AL_ShapeControl(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00450370
-void AL_MatChangeModelTexture(struct al_model *pModel, unsigned short TexId)
-{
-}
-
-// STUB: SADX 0x00450460
-void AL_MatResetModelTexture(struct al_model *pModel)
-{
-}
-
-// STUB: SADX 0x00450540
-void AL_MatChangeModelTexture2(struct al_model *pModel, const unsigned short *TexIdList, long nbTex)
-{
-}
-
 // STUB: SADX 0x00450940
 void AL_SetMiminalParts(struct task *, long, long)
 {
 }
 
-// STUB: SADX 0x00457a90
-void AL_FaceSetEye(struct task *tp, enum eAL_EYE_NUM EyeNum, long timer)
+// STUB: SADX 0x00457c00
+void AL_FaceEyeLidControl(struct task *)
 {
 }
 
@@ -770,6 +744,11 @@ void AL_ENT_DelayedTaskAdd(struct task *tp, void (*func)(struct task *))
 {
 }
 
+// STUB: SADX 0x00472030
+void FUN_00472030(struct task *)
+{
+}
+
 // STUB: SADX 0x00472290
 void AL_EntranceMenuManagerExecutor(struct task *tp)
 {
@@ -945,11 +924,6 @@ void Alr_Exe(struct Alr *___this, struct AlrRoot *root, int cup)
 {
 }
 
-// STUB: SADX 0x004881e0
-void AlrTimer_Dsp(struct AlrTimer *___this)
-{
-}
-
 // STUB: SADX 0x004886a0
 void AlrRank_Dsp(struct AlrRank *___this, struct Alr *alr, int look)
 {
@@ -989,11 +963,6 @@ struct alifewk *ALR_Init(struct task *tp)
 
 // STUB: SADX 0x0048f680
 void ALR_Executor(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0048fad0
-void AlrEff_Exe(struct AlrEff *___this, struct NJS_POINT3 *trans, struct NJS_POINT3 *velo)
 {
 }
 

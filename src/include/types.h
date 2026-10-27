@@ -59,6 +59,7 @@ struct ALERT_PARAM;
 struct ALERT_TASK_WORK;
 struct alifewk;
 struct ALK_BWINDOW_TABLE;
+struct ALK_SWINDOW_TABLE;
 struct ALK_WINDOW_TABLE;
 struct Alr;
 struct AlrCam;
@@ -932,6 +933,14 @@ static_assert(offsetof(ALK_BWINDOW_TABLE, buttonX1) == 0xc, "ALK_BWINDOW_TABLE::
 static_assert(offsetof(ALK_BWINDOW_TABLE, buttonY1) == 0x10, "ALK_BWINDOW_TABLE::buttonY1");
 static_assert(offsetof(ALK_BWINDOW_TABLE, buttonX2) == 0x14, "ALK_BWINDOW_TABLE::buttonX2");
 static_assert(offsetof(ALK_BWINDOW_TABLE, buttonY2) == 0x18, "ALK_BWINDOW_TABLE::buttonY2");
+
+struct ALK_SWINDOW_TABLE {
+    unsigned long select_color;
+    signed char *checkID;
+};
+static_assert(sizeof(ALK_SWINDOW_TABLE) == 0x8, "sizeof ALK_SWINDOW_TABLE");
+static_assert(offsetof(ALK_SWINDOW_TABLE, select_color) == 0x0, "ALK_SWINDOW_TABLE::select_color");
+static_assert(offsetof(ALK_SWINDOW_TABLE, checkID) == 0x4, "ALK_SWINDOW_TABLE::checkID");
 
 struct ALK_WINDOW_TABLE {
     float posX;

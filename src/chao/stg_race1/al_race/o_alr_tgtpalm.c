@@ -34,3 +34,13 @@ long SendTargetPalmCommand(struct task *objTask_p, struct task *chaoTask_p, sign
 	}
 	return var2;
 }
+
+// STUB: SADX 0x00492190
+void dispObject(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x00492240
+void fallCoconut(struct task *task_p)
+{
+}

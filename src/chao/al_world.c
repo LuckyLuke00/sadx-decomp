@@ -310,6 +310,14 @@ long ALW_SendCommand(struct task *tp, short command)
 	return 0;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0043dd90
+long ALW_Entry2(unsigned short category, struct task *tp, unsigned short kind, void *pSaveInfo)
+{
+	return (long)0;
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0043de30
 long ALW_CancelEntry(struct task *tp)
 {

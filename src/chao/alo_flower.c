@@ -4,9 +4,37 @@ extern struct cnkobj object_breedingflower00_breedingflower00[1];
 extern struct cnkobj object_breedingflower01_breedingflower01[1];
 extern struct NJS_TEXLIST texlist_al_object;
 
-// STUB: SADX 0x0046c210
+// FUNCTION: SADX 0x0046c210
 void ALO_NestFlowerExecutor(struct task *tp)
 {
+	struct task *var1;
+	struct taskwk *var2;
+	struct taskwk *var3;
+	float var4;
+
+	var1 = tp->ptp;
+	var2 = var1->twp;
+	var3 = tp->twp;
+	if (var2->ang.x != 0)
+	{
+		var4 = var3->scl.x + 0.10000000149011612;
+		var3->scl.x = var4;
+		if (var4 > 1.0f)
+		{
+			var3->scl.x = 1.0f;
+		}
+	}
+	else
+	{
+		var4 = var3->scl.x - 0.029999999329447746;
+		var3->scl.x = var4;
+		if (var4 < 0.0f)
+		{
+			var3->scl.x = 0.0f;
+			FreeTask(tp);
+		}
+	}
+	tp->disp(tp);
 }
 
 // FUNCTION: SADX 0x0046c2a0

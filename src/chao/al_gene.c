@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x00449b00
+void AL_CreateChildGene(struct task *pMotherTask, struct task *pFatherTask, struct AL_GENE *pChildGene)
+{
+}
+
 // FUNCTION: SADX 0x0044a1e0
 void AL_GeneAnalyze2(struct AL_GENE *pGene, struct CHAO_PARAM_GC *pParam)
 {
@@ -16,5 +21,10 @@ void AL_GeneAnalyze2(struct AL_GENE *pGene, struct CHAO_PARAM_GC *pParam)
 
 // STUB: SADX 0x0044a220
 void AL_GeneAnalyze(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0044a260
+void AL_GeneCreatePlane(struct AL_GENE *pGene)
 {
 }

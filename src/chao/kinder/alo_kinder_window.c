@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x007116d0
+void ALK_ChangeMaterial(unsigned long color)
+{
+}
+
 // FUNCTION: SADX 0x00711950
 struct task *ALK_BaseWindowCreate(struct task *ptp, const struct ALK_WINDOW_TABLE *pTable, const struct ALK_BWINDOW_TABLE *bTable)
 {
@@ -26,4 +31,22 @@ struct task *ALK_BaseWindowCreate(struct task *ptp, const struct ALK_WINDOW_TABL
 		return local_8;
 	}
 	return 0;
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x007119c0
+void ALK_SelectWindowExec(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// STUB: SADX 0x00711a90
+void ALK_SelectWindowDraw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00711b70
+struct task *ALK_SelectWindowCreate(struct task *ptp, long id, const struct ALK_WINDOW_TABLE *pTable, const struct ALK_SWINDOW_TABLE *sTable)
+{
+	return (struct task *)0;
 }

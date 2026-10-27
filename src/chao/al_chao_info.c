@@ -1,7 +1,13 @@
 #include "decls.h"
+void FUN_00440050(void);
 extern struct chao_save_info *DAT_05b067b0[4];
 extern int DAT_05b067ac;
 extern int DAT_05b067a8;
+
+// STUB: SADX 0x0043fd60
+void AL_InitChaoSaveInfo()
+{
+}
 
 // STUB: SADX 0x0043ffa0
 long AL_GetLocalChaoCount(long garden)
@@ -55,6 +61,12 @@ struct chao_save_info *AL_SetHoldingEggBM(long EggColor)
 	}
 	DAT_05b067a8 = (int)var1;
 	return var1;
+}
+
+// STUB: SADX 0x00440450
+struct task *AL_CreateHoldingChao()
+{
+	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x00440540
