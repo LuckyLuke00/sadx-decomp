@@ -213,7 +213,6 @@ CAST_BROKEN = re.compile(r"error C(?:2059|2143|2061|2146|2065):")  # what a cast
 SCORE = re.compile(r"^(0x[0-9a-f]{8}) \S.*?: (?:(\d+(?:\.\d+)?)% match|(stub))", re.M)
 DECLARED = re.compile(r"^(?:prototype:|locals:|  \w+ 0x[0-9a-f]{8} ).*", re.M)  # a dossier's typed lines
 TAG = re.compile(r"\b(?:struct|union|enum)\s+(\w+)")
-OFFSET = re.compile(r"static_assert\(offsetof\(\w+, (\w+)\) == (0x[0-9a-f]+)")
 MISSING_MEMBER = re.compile(r"C2039: '\w+' : is not a member of '(\w+)'")
 DIFF_LINE = re.compile(r"^(?:0x[0-9a-f]+)?\s*: ([-+])(.*)$", re.M)  # a changed line of reccmp's diff: sign, text
 SOURCE_LINE = re.compile(r"\s+\([^()\s]+:\d+\)$")  # such as "	(ef_flash.c:128)" after a line of our build
@@ -917,13 +916,13 @@ def load_types(config):
 
 def render_type(types, name):
     """(the type's block as C with a /* +0xN */ comment on each member that has an offset, its member line count)."""
-    offsets = dict(OFFSET.findall(types.blocks[name]))
+    offsets = types.offsets(name)
     lines = types.blocks[name].splitlines()
     start, end = next(i for i, line in enumerate(lines) if line.endswith("{")), lines.index("};")
     for i in range(start + 1, end):
-        offset = re.match(r" {4}\S.*;$", lines[i]) and offsets.get(names.declared_name(lines[i].strip()[:-1]))
-        if offset:
-            lines[i] += f"  /* +{offset} */"
+        member = re.match(r" {4}\S.*;$", lines[i]) and names.declared_name(lines[i].strip()[:-1])
+        if member in offsets:
+            lines[i] += f"  /* +0x{offsets[member]:x} */"
     return "\n".join(lines[:end + 1]), end - start - 1
 
 

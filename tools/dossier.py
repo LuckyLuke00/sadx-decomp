@@ -102,11 +102,15 @@ def library_annotations(sources: dict[str, str]) -> dict[int, str]:
 
 def known_globals(tables: Path | None, sources: dict[str, str], before: names.Previous,
                   types: names.Types) -> list[Global]:
-    """The globals with a name, by address: the tables first, then the tree, then the last generated ones."""
+    """The globals with a name, by address: the tables first, then the tree, then the last generated ones. A name
+    that several rows share stays DAT_: a file means only one of them by it, and decls gives the name where it does."""
     found = {}
     if tables:
-        for r in names.table_rows(tables / "globals.tsv"):
+        rows = names.table_rows(tables / "globals.tsv")
+        counts = collections.Counter(r["name"] for r in rows)
+        for r in rows:
             a = int(r["address"], 16)
+            r = dict(r, name=f"DAT_{a:08x}") if counts[r["name"]] > 1 else r
             found[a] = Global(a, int(r["size"] or 0), r["name"], names.row_declaration(r))
     definitions = [(address, sig) for text in sources.values()
                    for kind, address, sig in names.parse_annotations(text) if kind == "GLOBAL"]
@@ -120,12 +124,40 @@ def known_globals(tables: Path | None, sources: dict[str, str], before: names.Pr
 
 def global_size(definition: str, name: str, types: names.Types) -> int:
     """The bytes a definition takes, or 0 when a type's size is unknown."""
-    head, _, tail = definition.partition(name)
-    element = names.element_size(re.sub(r"\b(?:static|extern)\b", "", head).strip(), types)
-    counts = re.findall(r"\[\s*(\w*)\s*\]", tail)
-    if element is None or not all(count.isdigit() for count in counts):
+    _, element, counts = element_layout(definition, name, types)
+    if element is None or None in counts:
         return 0
-    return element * math.prod(int(count) for count in counts)
+    return element * math.prod(counts)
+
+
+def element_layout(definition: str, name: str, types: names.Types) -> tuple[str, int | None, list[int | None]]:
+    """(the element type of a definition, its size or None when unknown, the count in each of its array brackets:
+    decimal or hex, else None)."""
+    head, _, tail = definition.partition(name)
+    base = re.sub(r"\b(?:static|extern)\b", "", head).strip()
+    counts = [int(count, 0) if re.fullmatch(r"[1-9]\d*|0[xX][0-9a-fA-F]+", count) else None
+              for count in re.findall(r"\[\s*(\w*)\s*\]", tail)]
+    return base, names.element_size(base, types), counts
+
+
+def member_path(g: Global, offset: int, types: names.Types) -> str | None:
+    """The element and member of G that OFFSET falls in, such as name[2].speed or name[0].pos+0x4, or None when G is
+    no array and its type has no known layout."""
+    base, element, counts = element_layout(g.decl, g.name, types)
+    if element is None or None in counts[1:]:
+        return None
+    path, rest = g.name, offset
+    for i in range(len(counts)):
+        stride = element * math.prod(counts[i + 1:])
+        path, rest = f"{path}[{rest // stride}]", rest % stride
+    tag = re.fullmatch(r"(?:const\s+)?struct\s+(\w+)", base)  # a union's members all start at 0
+    at = {offset: member for member, offset in types.offsets(tag.group(1)).items()} if tag else {}
+    start = max((o for o in at if o <= rest), default=None)
+    if start is not None:
+        path, rest = f"{path}.{at[start]}", rest - start
+    if path == g.name:
+        return None
+    return path if rest == 0 else f"{path}+0x{rest:x}"
 
 
 class Namer:
@@ -195,7 +227,18 @@ def disassembler() -> capstone.Cs:
     return md
 
 
-def disassemble(image: pe.Image, namer: Namer, address: int, size: int) -> list[str]:
+def data_note(namer: Namer, address: int, types: names.Types) -> str | None:
+    """The name of the data at ADDRESS for a note: the element and member it falls in when its holder's layout is
+    known, else namer.data's name."""
+    name = namer.data(address)  # it also lists the holder under the names used
+    held = namer.holder(address)
+    path = member_path(*held, types) if held and held[1] else None
+    return path or name
+
+
+def disassemble(image: pe.Image, namer: Namer, address: int, size: int, types: names.Types) -> list[str]:
+    """The lines of the function's assembly, each with a note that names its call target, global, string or float
+    constant. A memory operand with a base register and a data address, as in [esi + 0x5b93488], names it too."""
     lines = []
     for ins in disassembler().disasm(image.read(address, size), address):
         note = []
@@ -214,9 +257,14 @@ def disassemble(image: pe.Image, namer: Namer, address: int, size: int) -> list[
             for op in ins.operands:
                 if op.type == capstone.x86.X86_OP_MEM and op.mem.base == 0 and op.mem.disp:
                     target = op.mem.disp & 0xFFFFFFFF
-                    name = namer.data(target)
+                    name = data_note(namer, target, types)
                     if name is None and ins.mnemonic.startswith("f") and op.size in (4, 8):
                         name = namer.constant(target, op.size)
+                    if name:
+                        note.append(name)
+                elif (op.type == capstone.x86.X86_OP_MEM and image.contains(op.mem.disp)
+                      and not image.is_code(op.mem.disp)):
+                    name = data_note(namer, op.mem.disp, types)
                     if name:
                         note.append(name)
                 elif op.type == capstone.x86.X86_OP_IMM and op.imm > 0x400000:
@@ -275,19 +323,27 @@ def callers_of(image: pe.Image, sizes: dict[int, int], target: int) -> str:
     return ", ".join(found) or "none"
 
 
-def ghidra_c(address: int, drafts: Path, functions: dict[int, Function], globals_: list[Global]) -> str:
+def ghidra_c(address: int, drafts: Path, functions: dict[int, Function], namer: Namer, types: names.Types) -> str:
+    """Ghidra's draft with the known names. An address inside a known global becomes its element and member, else
+    keeps Ghidra's name with a comment that names the holder."""
     path = drafts / f"{address:08x}.c"
     if not path.exists():
         return f"(no Ghidra draft: {path} is missing)"
     text = path.read_text(encoding="utf-8")
-    global_names = {g.address: g.name for g in globals_}
 
     def fun(m):
         f = functions.get(int(m.group(1), 16))
         return f.name if f else m.group(0)
 
     def dat(m):
-        return global_names.get(int(m.group(1), 16), m.group(0))
+        held = namer.holder(int(m.group(1), 16))
+        if held is None:
+            return m.group(0)
+        g, offset = held
+        if offset == 0:
+            return g.name
+        member = member_path(g, offset, types)  # a member path with a +0xN rest is no C
+        return member if member and "+" not in member else f"{m.group(0)} /* {g.name}+0x{offset:x} */"
 
     text = re.sub(r"\bFUN_([0-9a-f]{8})\b", fun, text)
     text = re.sub(r"\b(?:DAT|PTR_DAT|PTR)_([0-9a-f]{8})\b", dat, text)
@@ -331,7 +387,7 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
             continue
         f = functions.get(address, Function(library.get(address, f"FUN_{address:08x}"), "", False, "", ""))
         group = progress.codegen_group(groups, address)
-        code = disassemble(image, namer, address, size)
+        code = disassemble(image, namer, address, size, types)
         print(f"== 0x{address:08x} {f.name}  ({size} bytes)")
         print(f"prototype: {f.proto or '(none known: choose the types from the code)'}")
         if f.locals:
@@ -371,6 +427,6 @@ def show(game: Path, addresses: list[int], draft: bool, callers: bool, tables: P
             print("\ncallers:", callers_of(image, sizes, address))
         if draft:
             print("\nGhidra draft (types and names are guesses; the assembly is the truth):")
-            print(ghidra_c(address, drafts or DRAFTS, functions, globals_))
+            print(ghidra_c(address, drafts or DRAFTS, functions, namer, types))
         print()
     return 1 if missing else 0
