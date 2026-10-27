@@ -1,4 +1,10 @@
 #include "decls.h"
+float njSin(int param_1);
+void FUN_008babc0(struct obj *param_1);
+void FUN_008bac40(struct taskwk *param_1);
+void FUN_008bad70(struct obj *param_1);
+void FUN_008bae10(struct obj *param_1);
+void FUN_008bad70(struct obj *param_1);
 void FUN_008babc0(struct obj *param_1);
 void FUN_008bac40(struct taskwk *param_1);
 void FUN_008bad70(struct obj *param_1);

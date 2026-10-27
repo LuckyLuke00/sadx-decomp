@@ -121,6 +121,11 @@ void CameraBuilding(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
+// STUB: SADX 0x00561680
+void CameraSnowSlide(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
 // STUB: SADX 0x005618c0
 void CameraSnowboardSpecial1(struct _OBJ_CAMERAPARAM *pParam)
 {

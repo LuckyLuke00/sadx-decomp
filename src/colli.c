@@ -1,4 +1,8 @@
 #include "decls.h"
+struct CL_ObjInfo;
+struct CL_Poly;
+struct CL_PolyInfo;
+struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *param_1, struct CL_Poly *param_2);
 extern "C" double atan2(double v, double u);
 extern void *DAT_05bb5620;
 extern void *DAT_05bb00d8;
@@ -232,6 +236,12 @@ void GetAngleZXV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_z)
 int FUN_004fbb70(int *param_1)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x004fbd10
+struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *obj, struct CL_Poly *poly)
+{
+	return (struct CL_PolyInfo *)0;
 }
 
 // STUB: SADX 0x004fcd10

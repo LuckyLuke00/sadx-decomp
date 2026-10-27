@@ -1,4 +1,11 @@
 #include "decls.h"
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
+extern int DAT_05b3e05c;
+void CameraSetEventCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), unsigned char ucAdjustType, signed char scCameraDirect);
+void CameraStay(struct _OBJ_CAMERAPARAM *pParam);
+void GGMessageMain(struct task *tp);
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 extern void syFree(void *param_1);
 extern void FUN_004c3310(int *param_1);
 extern void FUN_004c1c20();
@@ -27,10 +34,26 @@ long isCheckGGApper_Emblem()
 	return (long)0;
 }
 
-// STUB: SADX 0x0056f770
+// FUNCTION: SADX 0x0056f770
 long InitGGMessage()
 {
-	return (long)0;
+	struct task *local_cg;
+	struct taskwk *local_8g;
+	DAT_05ccdf08 = 0;
+	local_cg = CreateElementalTask(2, 8, GGMessageMain);
+	if (local_cg == 0)
+	{
+		return 0;
+	}
+	local_8g = local_cg->twp;
+	local_8g->mode = 0;
+	DAT_05ccdf08 = 1;
+	local_cg->dest = GGMessageDest;
+	if ((DAT_05b9d724 << 8 | DAT_05b9d744) != 0x902 && DAT_05b3e05c != 0x16)
+	{
+		CameraSetEventCameraFunc(CameraStay, 0, 0);
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0056f800
@@ -51,4 +74,10 @@ void GGMessageDest(struct task *tp)
 unsigned char isGGMessageEnable()
 {
 	return DAT_05ccdf08;
+}
+
+// STUB: SADX 0x0056fb80
+long GetGGName(char *pString, unsigned char u8No)
+{
+	return (long)0;
 }

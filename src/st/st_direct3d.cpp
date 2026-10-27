@@ -11,6 +11,11 @@ extern int DAT_05ab7c00;
 extern void (*DAT_01c77460[256])(int);
 extern int DAT_05ab45e0;
 
+// STUB: SADX 0x0041a6c0
+void stDirect3DInit(void)
+{
+}
+
 // STUB: SADX 0x00426520
 void stFinishVertex(void)
 {
@@ -38,6 +43,13 @@ void FUN_00426580(int param_1)
 	}
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x00426740
+void FUN_00426740(void)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x00426980
 void FUN_00426980(void)
 {
@@ -54,6 +66,11 @@ void FUN_00426980(void)
 
 // STUB: SADX 0x004269a0
 void FUN_004269a0(void)
+{
+}
+
+// STUB: SADX 0x00426ec0
+void stChunkDrawVlistD8(long *param_1)
 {
 }
 

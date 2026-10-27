@@ -6251,6 +6251,15 @@ int DAT_05cd14fc;
 // GLOBAL: SADX 0x05cd2588
 int DAT_05cd2588;
 
+// GLOBAL: SADX 0x05cd258c
+float DAT_05cd258c;
+
+// GLOBAL: SADX 0x05cd259c
+float DAT_05cd259c;
+
+// GLOBAL: SADX 0x05cd25a0
+float DAT_05cd25a0;
+
 // GLOBAL: SADX 0x05cd25a4
 long DAT_05cd25a4[20];
 
@@ -6259,6 +6268,9 @@ unsigned long DAT_05cd25f4;
 
 // GLOBAL: SADX 0x05cd25f8
 long DAT_05cd25f8;
+
+// GLOBAL: SADX 0x05cd25fc
+int DAT_05cd25fc;
 
 // GLOBAL: SADX 0x05cd2600
 struct task *DAT_05cd2600;

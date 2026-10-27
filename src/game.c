@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "decls.h"
+extern short ssPauseEnable;
 extern struct GM_EVENT_TABLE starteventtable[1];
 extern int DAT_05cd0f28;
 extern int DAT_05cd0f2c;
@@ -369,6 +370,11 @@ void FUN_004c76e0()
 	DAT_05b9d774 = 0;
 }
 
+// STUB: SADX 0x004c76f0
+void InitializeStage()
+{
+}
+
 // FUNCTION: SADX 0x004c7950
 void FUN_004c7950()
 {
@@ -628,6 +634,11 @@ void WaitLandPlayer(struct task *tp)
 {
 }
 
+// STUB: SADX 0x004c8e80
+void SetPlayer()
+{
+}
+
 // FUNCTION: SADX 0x004c91e0
 void SetPlayerNumberForGame(unsigned short pno)
 {
@@ -799,6 +810,13 @@ signed char GetEntranceNumber()
 	return (signed char)DAT_05b9d720;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x004c9a20
+void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x004c9c90
 void FUN_004c9c90()
 {
@@ -871,6 +889,12 @@ void FUN_004cacc0()
 	FUN_004c8770();
 	ReleaseMissionObject();
 	FUN_007d21b0();
+}
+
+// STUB: SADX 0x004cace0
+int GameQuitYesNo(int sw, int meskind)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x004caf50

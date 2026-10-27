@@ -1,4 +1,7 @@
 #include "decls.h"
+char *FUN_004cdab0(char *param_1, unsigned int param_2);
+char *FUN_004cdaf0(char *param_1, unsigned int param_2);
+char *FUN_004cdb40(char *param_1, unsigned int param_2);
 static struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum);
 float njSin(int param_1);
 extern float DAT_05b9d860;
@@ -368,6 +371,12 @@ void initSpriteSub(struct NJS_SPRITE *sp, const struct NJS_TEXLIST *list, const 
 	sp->p.x = 0.0f;
 	sp->p.y = 0.0f;
 	sp->p.z = 0.0f;
+}
+
+// STUB: SADX 0x004cd6e0
+int VSPrintf(char *s, const char *format, char *arg)
+{
+	return (int)0;
 }
 
 // FUNCTION: SADX 0x004cdab0

@@ -104,6 +104,13 @@ struct task *FUN_004f3870(long param_1, void (*param_2)(struct task *))
 	return (struct task *)0;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x004f39c0
+void DestroyTask(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x004f3be0
 void FreeTask(struct task *tp)
 {
@@ -268,9 +275,32 @@ void GenocideTask()
 	}
 }
 
-// STUB: SADX 0x004f3f60
+// FUNCTION: SADX 0x004f3f60
 void FUN_004f3f60(void *param_1)
 {
+	int local_8g;
+	struct task *local_14;
+	struct task *local_cj;
+	struct task *local_10;
+
+	for (local_8g = 0; local_8g < 8; local_8g++)
+	{
+		if (local_8g == 8)
+		{
+			local_8g = 7;
+		}
+		local_14 = (struct task *)DAT_05baf4d0[local_8g];
+		while (local_14 != 0)
+		{
+			local_cj = (struct task *)local_14->exec;
+			local_10 = local_14->next;
+			if (local_cj != 0 && local_14->thp == param_1)
+			{
+				FreeTask(local_14);
+			}
+			local_14 = local_10;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004f3fe0

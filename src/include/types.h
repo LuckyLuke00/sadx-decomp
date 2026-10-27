@@ -115,6 +115,8 @@ struct CharMdlWk;
 struct CharSelWk;
 struct childtaskset;
 struct CL_ObjInfo;
+struct CL_Poly;
+struct CL_PolyInfo;
 struct cloud_scroll;
 struct cloudtbl;
 struct CMoviePolyData;
