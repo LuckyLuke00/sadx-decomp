@@ -1160,6 +1160,9 @@ struct CCL_INFO CLI_MobleDamageCsn[1];
 // GLOBAL: SADX 0x0263cba8
 struct CCL_INFO relbox_switch_colli_info[1];
 
+// GLOBAL: SADX 0x0263d680
+struct NJS_SPRITE sprite_hitodama[1];
+
 // GLOBAL: SADX 0x0263d6f0
 int DAT_0263d6f0;
 
@@ -5672,6 +5675,9 @@ int DAT_05cc3628;
 // GLOBAL: SADX 0x05cc3631
 char DAT_05cc3631;
 
+// GLOBAL: SADX 0x05cc3b18
+int DAT_05cc3b18;
+
 // GLOBAL: SADX 0x05cc3fe0
 int DAT_05cc3fe0;
 
@@ -8299,6 +8305,9 @@ int DAT_060eeaac;
 
 // GLOBAL: SADX 0x060eeab4
 struct NJS_MODEL **DAT_060eeab4;
+
+// GLOBAL: SADX 0x060eeab8
+struct task **DAT_060eeab8;
 
 // GLOBAL: SADX 0x060eeac8
 int DAT_060eeac8;

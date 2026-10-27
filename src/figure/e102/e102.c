@@ -61,10 +61,38 @@ long E102CheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 	}
 }
 
-// STUB: SADX 0x00514730
+// FUNCTION: SADX 0x00514730
 long E102CheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if ((unsigned short)*(unsigned short *)((char *)pwp + 0x124) == 9)
+	{
+		return 0;
+	}
+	if (PCheckPower(twp, 0, 0) == 0 && pwp->spd.x == 0.0f)
+	{
+		if ((twp->flag & 0x800) != 0)
+		{
+			if ((PCheckHoldObject(twp) & 0xc00) != 0)
+			{
+				twp->mode = 0x12;
+				*(short *)((char *)pwp + 0x124) = 0x1e;
+			}
+			else
+			{
+				twp->mode = 0x11;
+				*(short *)((char *)pwp + 0x124) = 0x19;
+			}
+		}
+		else
+		{
+			FUN_005125a0(twp, mwp, pwp);
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x005147e0
@@ -100,10 +128,12 @@ long FUN_005149c0(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	return (long)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00515140
 void E102ThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x00515550
 long E102CalcHover(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)

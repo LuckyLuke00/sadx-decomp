@@ -73,10 +73,22 @@ long MilesCheckDamage(struct taskwk *twp, struct playerwk *pwp)
 	return (long)0;
 }
 
-// STUB: SADX 0x00538480
+// FUNCTION: SADX 0x00538480
 int FUN_00538480(void *param_1, void *param_2)
 {
-	return (int)0;
+	if (DAT_05b932e8[*(unsigned char *)((char *)param_1 + 8)].press & action_button)
+	{
+		*(char *)param_1 = 0xa;
+		FUN_004e2f70(0, (int)param_2);
+		*(short *)((char *)param_2 + 0x124) = 0x13;
+		*(float *)param_2 = 0.0f;
+		*(short *)((char *)param_1 + 4) &= ~0x500;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x005394e0
@@ -91,16 +103,64 @@ long MilesCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struc
 	return (long)0;
 }
 
-// STUB: SADX 0x0053a180
+// FUNCTION: SADX 0x0053a180
 long MilesCheckBeInTheAir(struct taskwk *twp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (((twp->flag & 3) == 0))
+	{
+		if ((twp->flag & 0x100) != 0)
+		{
+			twp->mode = 6;
+			return 1;
+		}
+		else if ((0x800 & twp->flag) != 0)
+		{
+			if ((PCheckHoldObject(twp) & 0x200) != 0)
+			{
+				twp->mode = 0x1c;
+				*(unsigned short *)((char *)pwp + 0x124) = 0x52;
+				return 1;
+			}
+			MilesThrowTheObjectOut(twp, pwp);
+		}
+		twp->mode = 0xa;
+		*(unsigned short *)((char *)pwp + 0x124) = 0x13;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
-// STUB: SADX 0x0053a220
-long FUN_0053a220(struct taskwk *twp, struct playerwk *pwp)
+// FUNCTION: SADX 0x0053a220
+long FUN_0053a220(struct taskwk *param_1, struct playerwk *param_2)
 {
-	return (long)0;
+	if (PCheckPower(param_1, 0, 0) == 0 && param_2->spd.x == 0.0f)
+	{
+		if ((param_1->flag & 0x800) != 0)
+		{
+			if ((PCheckHoldObject(param_1) & 0xc00) != 0)
+			{
+				param_1->mode = 0x18;
+				*(short *)((char *)param_2 + 0x124) = 0x4f;
+			}
+			else
+			{
+				param_1->mode = 0x17;
+				*(short *)((char *)param_2 + 0x124) = 0x3e;
+			}
+		}
+		else
+		{
+			FUN_005360f0(param_1, param_2);
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0053a2c0
@@ -126,9 +186,32 @@ void MilesThrowTheObjectOut(struct taskwk *twp, struct playerwk *pwp)
 {
 }
 
-// STUB: SADX 0x0053b090
+// FUNCTION: SADX 0x0053b090
 void MilesHoldOnPillar(struct taskwk *twp, struct playerwk *pwp)
 {
+	int local_ci;
+	int local_8g;
+	float local_10;
+
+	local_ci = *(int *)((char *)pwp->htp + 0x20);
+	local_8g = *(int *)((char *)pwp->htp + 0x24);
+	if (local_ci == 0)
+	{
+		twp->mode = 1;
+	}
+	else
+	{
+		if (local_8g == 0)
+		{
+			local_10 = 30.0f;
+		}
+		else
+		{
+			local_10 = *(float *)((char *)local_8g + 0x34);
+		}
+		twp->pos.x = *(float *)((char *)local_ci + 0x20) - njCos(*(long *)((char *)twp + 0x18)) * local_10;
+		twp->pos.z = *(float *)((char *)local_ci + 0x28) - njSin(*(long *)((char *)twp + 0x18)) * local_10;
+	}
 }
 
 // STUB: SADX 0x0053b120

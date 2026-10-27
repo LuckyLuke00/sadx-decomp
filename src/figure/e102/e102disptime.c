@@ -39,9 +39,26 @@ void DispDigitTotal(long digit, float scl, struct NJS_POINT3 *pos)
 {
 }
 
-// STUB: SADX 0x005b9d40
+// FUNCTION: SADX 0x005b9d40
 void E102AddRestTime(int add_time)
 {
+	struct task *local_8;
+
+	if (DAT_05edc134 == 0)
+	{
+		local_8 = CreateElementalTask(2, 2, E102AddSecTotalNew);
+		if (local_8 == 0)
+		{
+			AddTime(1);
+			dsPlay_oneshot(4, 0, 0, 0);
+			return;
+		}
+	}
+	else
+	{
+		local_8 = (struct task *)DAT_05edc134;
+	}
+	local_8->twp->timer.b[1]++;
 }
 
 // FUNCTION: SADX 0x005b9db0

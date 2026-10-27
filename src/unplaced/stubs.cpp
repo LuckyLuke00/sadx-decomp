@@ -1520,8 +1520,8 @@ void FUN_00503160()
 {
 }
 
-// STUB: SADX 0x0050b7b0
-void BigThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+// STUB: SADX 0x00508e30
+void BigChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
@@ -1547,6 +1547,11 @@ void KnucklesTheEchidna(struct task *tp)
 
 // STUB: SADX 0x00528560
 void KnucklesChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x0052e1b0
+void KnucklesDirectAhead(struct task *tp)
 {
 }
 
@@ -1580,18 +1585,8 @@ void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct
 {
 }
 
-// STUB: SADX 0x0054edd0
-void ExecuteSonicSnowBoard(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0054ef10
 void DisplaySonicSnowBoard(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0054fab0
-void DrawBlurOfMetalSonic(struct task *tp)
 {
 }
 
@@ -2215,11 +2210,6 @@ void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005e30b0
 void EnemyCheckWall(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x005e5770
-void FUN_005e5770(struct task *)
 {
 }
 

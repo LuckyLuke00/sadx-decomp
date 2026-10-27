@@ -5,6 +5,12 @@ void E102ResetDelayAnalogKey(struct E102WK *ewk, int pno)
 {
 }
 
+// STUB: SADX 0x005d28c0
+int E102LaserStatus(struct task *tp)
+{
+	return (int)0;
+}
+
 // FUNCTION: SADX 0x005d2910
 void SetE102DashPanelAccel(int pno)
 {

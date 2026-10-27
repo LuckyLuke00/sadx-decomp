@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05b9d838;
 void DispMultiDigitDisplay(struct task *tp);
 void FUN_005e5770(struct task *param_1);
 
@@ -7,9 +8,23 @@ void E102LockOnCursor_dest(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005e54f0
+// FUNCTION: SADX 0x005e54f0
 void DispMultiDigit(struct task *tp)
 {
+	struct taskwk *local_8 = tp->twp;
+
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	switch (local_8->mode)
+	{
+	case 0:
+		tp->disp = DispMultiDigitDisplay;
+		local_8->mode = 1;
+		break;
+	}
+	DispMultiDigitDisplay(tp);
 }
 
 // STUB: SADX 0x005e5540
@@ -24,6 +39,13 @@ struct task *GetE102LockCsTaskPointer(struct task *beam_tp)
 		return NULL;
 	return (struct task *)beam_tp->twp->value.ptr;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x005e5770
+void FUN_005e5770(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005e5860
 void E102LockOnCursor_dis(struct task *tp)

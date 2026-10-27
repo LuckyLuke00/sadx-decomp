@@ -1,4 +1,10 @@
 #include "decls.h"
+extern int DAT_060eea5c;
+struct playerwk;
+void FUN_00547070(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
+extern short DAT_05b9d724;
+void FUN_004e2f70(int param_1, int param_2);
+int FUN_0054f7b0(struct playerwk *param_1, int param_2);
 extern int sonic_snowboard_design;
 extern struct NJS_TEXLIST texlist_s_sboard;
 extern struct NJS_TEXLIST texlist_sb[2];
@@ -11,6 +17,14 @@ extern unsigned char DAT_05bb00a9;
 int FUN_0054f7b0(struct playerwk *param_1, unsigned short param_2);
 int FUN_0054f920(int param_1);
 extern struct taskwk *DAT_05baf368[8];
+
+// FUNCTION: SADX 0x00547070
+void FUN_00547070(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
+{
+	param_1->mode = 1;
+	param_3->waittimer = 0;
+	SonicChangeWaitingMotion(param_1, param_2, param_3);
+}
 
 // FUNCTION: SADX 0x005471b0
 void SonicDestruct(struct task *tp)
@@ -33,7 +47,7 @@ void SonicDestruct(struct task *tp)
 }
 
 // STUB: SADX 0x00547230
-void FUN_00547230(struct task *tp)
+void FUN_00547230(struct task *tp, int param_2, int param_3)
 {
 }
 
@@ -80,16 +94,49 @@ void SonicHomeOnTarget(struct taskwk *twp, struct motionwk2 *mwp, struct playerw
 {
 }
 
-// STUB: SADX 0x00549ed0
+// FUNCTION: SADX 0x00549ed0
 long SonicCheckJumpCancel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (DAT_05b932e8[twp->counter.b[0]].press & action_button)
+	{
+		twp->mode = 0xc;
+		FUN_004e2f70(0, (int)pwp);
+		*(short *)((char *)pwp + 0x124) = 0x12;
+		pwp->work.f = 0.0f;
+		twp->flag &= ~0x500;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
-// STUB: SADX 0x0054bdd0
+// FUNCTION: SADX 0x0054bdd0
 long SonicCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if ((twp->flag & 0x1000) == 0)
+	{
+		return 0;
+	}
+	if (twp->smode == 0x18)
+	{
+		twp->mode = 0xc;
+		*(unsigned short *)((char *)pwp + 0x124) = 0x12;
+		return 1;
+	}
+	else if (twp->smode == 0x13)
+	{
+		SonicThrowTheObjectOut(twp, mwp, pwp);
+		twp->mode = 0x14;
+		*(unsigned short *)((char *)pwp + 0x124) = 0x4b;
+		*(int *)((char *)twp + 0x1c) = 0;
+		*(int *)((char *)twp + 0x14) = 0;
+		FUN_004e2f70((int)mwp, (int)pwp);
+		twp->flag = twp->flag & ~0x2000;
+		return 1;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x0054c330
@@ -170,10 +217,31 @@ int FUN_0054c9d0(unsigned char *param_1, int param_2, int param_3)
 	return (int)0;
 }
 
-// STUB: SADX 0x0054ca40
-long FUN_0054ca40(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+// FUNCTION: SADX 0x0054ca40
+long FUN_0054ca40(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
-	return (long)0;
+	long local_8;
+
+	PAdjustHoldingPosition(param_1, param_2, param_3);
+	if (param_3->mj.nframe >= 6.0f)
+	{
+		local_8 = PCheckHoldObject(param_1);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(param_1, param_2))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					param_1->mode = 0x48;
+					return 1;
+				}
+				break;
+			}
+			FUN_00547070(param_1, param_2, param_3);
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0054cae0
@@ -188,10 +256,24 @@ long SonicCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	return (long)0;
 }
 
+// STUB: SADX 0x0054cd40
+long SonicCheckThrowObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0054d2d0
+long SonicCheckTouch(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+#pragma optimize("", off)
 // STUB: SADX 0x0054d450
 void SonicThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0054d870
 void SonicHoldOnPillar(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
@@ -326,9 +408,19 @@ void FUN_0054ebf0(struct taskwk *param_1)
 	}
 }
 
-// STUB: SADX 0x0054ec30
+// FUNCTION: SADX 0x0054ec30
 void FUN_0054ec30(struct taskwk *param_1, int param_2, struct taskwk *param_3)
 {
+	struct task *local_8;
+	local_8 = CreateElementalTask(8, 0, ManageSonicLightSpinCharge);
+	if (local_8)
+	{
+		*(struct taskwk **)(local_8->awp) = param_1;
+		*(int *)((char *)local_8->awp + 4) = (int)param_3;
+		*(float *)((char *)local_8->awp + 8) = *(float *)((char *)param_3 + 0xac);
+		*(float *)((char *)param_3 + 0xac) = 0.5f;
+		local_8->dest = ManageSonicLightSpinChargeExit;
+	}
 }
 
 // STUB: SADX 0x0054eca0
@@ -371,9 +463,38 @@ void SonicSnowBoard(struct task *tp)
 	tp->disp = DisplaySonicSnowBoard;
 }
 
-// STUB: SADX 0x0054f150
+#pragma optimize("", off)
+// STUB: SADX 0x0054edd0
+void ExecuteSonicSnowBoard(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x0054f150
 void SuperSonicStatusManager(struct task *tp)
 {
+	struct anywk *local_10;
+	struct playerwk *local_8g;
+	unsigned char local_9;
+	local_10 = tp->awp;
+	local_9 = *(unsigned char *)local_10;
+	local_8g = GetPlayerWorkPointer(local_9);
+	if (local_8g == 0)
+	{
+		DestroyTask(tp);
+	}
+	else
+	{
+		*(float *)((char *)local_10 + 4) = *(float *)((char *)local_8g + 0xf0);
+		*(float *)((char *)local_10 + 8) = *(float *)((char *)local_8g + 0xec);
+		*(float *)((char *)local_10 + 0xc) = *(float *)((char *)local_8g + 0xdc);
+		*(float *)((char *)local_8g + 0xf0) = -0.001f;
+		*(float *)((char *)local_8g + 0xec) = -0.002f;
+		*(float *)((char *)local_8g + 0xdc) = 0.05f;
+		*(float *)((char *)local_8g + 0x11c) = 6.4f;
+		tp->dest = SuperSonicStatusManagerDestructor;
+		tp->exec = SuperSonicStatusManagerExecutor;
+	}
 }
 
 // FUNCTION: SADX 0x0054f210
@@ -423,9 +544,26 @@ void SonicCanselSpinDashForIcecap(struct taskwk *twp, struct playerwk *pwp)
 	}
 }
 
-// STUB: SADX 0x0054f760
+// STUB: SADX 0x0054f570
+void DrawSonicMotionLink(struct playerwk *pwp)
+{
+}
+
+// FUNCTION: SADX 0x0054f760
 void ChangeMotionSonicRush(struct playerwk *pwp)
 {
+	if (DAT_05bb00a9 != 0)
+	{
+		if (FUN_0054f7b0(pwp, 0x92) == 0)
+		{
+			FUN_0054f920(5);
+		}
+		*(short *)((char *)pwp + 0x124) = 0x92;
+	}
+	else
+	{
+		*(short *)((char *)pwp + 0x124) = 0xc;
+	}
 }
 
 // FUNCTION: SADX 0x0054f7b0
@@ -530,6 +668,13 @@ void FUN_0054fa60(struct task *param_1)
 		FreeTask(param_1);
 	}
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0054fab0
+void DrawBlurOfMetalSonic(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0054fc20
 long IsSonicWhistling(struct taskwk *twp)
