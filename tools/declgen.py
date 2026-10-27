@@ -65,6 +65,7 @@ CALL_ARGUMENTS = r"\((?:[^()]|\([^()]*\))*\)"  # with one level of nested parent
 MEMBER_STEP = r"(?:->|\[[^\]]*\]\s*(?:\.|->))"  # `->`, or an index and then `.` or `->`
 REACHED_THROUGH = re.compile(rf"(\w+)(?=\s*(?:{CALL_ARGUMENTS}\s*)?{MEMBER_STEP})")
 RETURNS_POINTER_TO = re.compile(r"(?:const\s+)?(?:struct|union)\s+(\w+)\s*\*")  # a signature's pointed-to return type
+PLACEHOLDER_TAG = re.compile(r"\b(?:struct|union|enum)\s+(?:(?:param|local)_\w+|[a-z]*Var\d+)\b")  # a variable's name
 
 
 def load_tables(library: set[str], tables: Path | None) -> tuple[dict, dict, dict, dict, dict]:
@@ -174,7 +175,10 @@ def write(context: Path | None, tables: Path | None) -> int:
                 if address in defined_globals:
                     problems.append(f"{rel}: GLOBAL 0x{address:08x} is also defined in {defined_globals[address][0]}")
                 defined_globals[address] = (rel, sig)
-        found = re.findall(r"[A-Za-z_]\w*", names.strip_code(text))
+        code = names.strip_code(text)
+        for tag in PLACEHOLDER_TAG.findall(code):
+            fatal.append(f"{rel}: `{tag}` names a placeholder variable, not a type: write the real type")
+        found = re.findall(r"[A-Za-z_]\w*", code)
         file_tokens[rel] = set(found)
         tokens |= set(found)
         counts.update(found)
