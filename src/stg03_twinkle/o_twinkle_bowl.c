@@ -1,4 +1,5 @@
 #include "decls.h"
+extern void dispDoor(struct task *tp);
 
 // FUNCTION: SADX 0x00817870
 void dispPin(struct task *tp)
@@ -49,6 +50,11 @@ void dispDoor(struct task *tp)
 	}
 	ds_DrawModelClip((struct NJS_MODEL *)var2->normals, 1.0f);
 	njPopMatrix(1);
+}
+
+// STUB: SADX 0x00817d10
+void execDoor(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x00818100

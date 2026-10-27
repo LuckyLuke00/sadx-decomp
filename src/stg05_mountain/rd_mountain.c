@@ -16,8 +16,18 @@ void SetTableBg_mountain(int c_level)
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_Stg05 + local_8))[c_level];
 }
 
+// STUB: SADX 0x00827b70
+void mt_gdcontrol(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00827e80
 void Object_Mountain_KN_Display(struct task *tp)
 {
 	tp->twp->timer.ptr = object_soto_ec_kazecolijon_ec_kazecolijon;
+}
+
+// STUB: SADX 0x008284e0
+void Object_Mountain_Knuckles(struct task *tp)
+{
 }

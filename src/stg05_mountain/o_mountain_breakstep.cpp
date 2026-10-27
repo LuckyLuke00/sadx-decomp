@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x008310d0
-void DesertAChildTask(struct task *p_task)
+void DesertAChildTask(struct task *tp)
 {
-	Free(p_task->twp->value.ptr);
+	Free(tp->twp->value.ptr);
 }

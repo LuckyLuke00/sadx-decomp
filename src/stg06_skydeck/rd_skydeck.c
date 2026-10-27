@@ -1,4 +1,13 @@
 #include "decls.h"
+extern short DAT_05b9d724;
+extern int DAT_060d0a5c;
+void FUN_008895d0(struct task *param_1);
+extern struct taskwk *DAT_05baf368[8];
+extern struct CCL_INFO object_actchg_info[1];
+void FUN_008895d0(struct task *param_1);
+extern "C" int rand(void);
+extern short DAT_05b9d744;
+extern int DAT_05cbef64;
 void FUN_008895d0(struct task *param_1);
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
 void FUN_008895d0(struct task *param_1);
@@ -91,9 +100,25 @@ void FUN_00838aa0()
 	DAT_060cf474 = 0;
 }
 
-// STUB: SADX 0x008391c0
+// FUNCTION: SADX 0x008391c0
 void FUN_008391c0()
 {
+	float var1;
+	float var2;
+
+	var1 = DAT_05b42a7c->pos.x;
+	var2 = DAT_05b42a7c->pos.z;
+	if ((char)DAT_05b9d744 == 0)
+	{
+		DAT_05cbef64 = 1;
+		if (211.0 < var1)
+		{
+			if (var2 < 3570.0)
+			{
+				DAT_05cbef64 = 0;
+			}
+		}
+	}
 }
 
 // FUNCTION: SADX 0x00839980
@@ -134,9 +159,25 @@ void ObjectSkydeck_hangpole_Exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0083a560
+// FUNCTION: SADX 0x0083a560
 void ObjectSkydeck_hangpole_s_Display(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct obj *var2 = *(struct obj **)((char *)com_objtbl + (var1->smode << 4));
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	___njSetTexture(&texlist_obj_skydeck);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, var1->ang.y);
+	}
+	ds_DrawObjectClip(var2, 1.0f);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x0083a5e0
@@ -290,9 +331,48 @@ void FUN_0083bdd0(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0083c150
+// FUNCTION: SADX 0x0083c150
 void SysSkydeck_actchanger(struct task *tp)
 {
+	struct taskwk *var1;
+	struct colliwk *var2;
+	struct playerwk *var3;
+
+	var1 = tp->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		if (FUN_004c39c0(tp) == 0)
+		{
+			CCL_Init(tp, object_actchg_info, 1, 4);
+		}
+		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		var1->mode = 1;
+		break;
+	case 1:
+		if (FUN_004c39c0(tp) == 0)
+		{
+			var2 = var1->cwp;
+			if ((var2->flag & 1) != 0)
+			{
+				if (var2->hit_cwp->id == 0)
+				{
+					LandChangeStage(1);
+					AddSetStage(1);
+					AddCameraStage(1);
+					AdvanceAct(1);
+					SetPlayerInitialPosition((struct taskwk *)DAT_05baf368[0]);
+				}
+			}
+			var3 = GetPlayerWorkPointer(0);
+			if (var3->htp != tp)
+			{
+				EntryColliList(var1);
+				return;
+			}
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x0083c200
@@ -368,19 +448,58 @@ void ObjectSkydeck_fence_s(struct task *tp)
 	CCL_Init(tp, (struct CCL_INFO *)&colli_info_S, 1, 4);
 }
 
-// STUB: SADX 0x0083c840
+// FUNCTION: SADX 0x0083c840
 void ObjectSkydeck_hang_c(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct task *var2;
+
+	tp->exec = ObjectSkydeck_hang_c_Exec;
+	tp->dest = ObjectSkydeck_radder_Exit;
+	if (FUN_004c39c0(tp) == 0)
+	{
+		var2 = CreateChildTask(2, PathworkGoWithHangingDownFromBars, tp);
+		*(unsigned short *)((char *)var2->twp + 0xc) = (unsigned short)(DAT_05b9d724 << 8 | DAT_05b9d744);
+		var2->twp->ang.x = 0;
+		var2->twp->ang.y = var1->ang.y;
+		var2->twp->ang.z = 0;
+		DAT_060d0a5c = 0;
+		var1->timer.ptr = MAlloc(0xa0);
+		var1->value.ptr = MAlloc(0x10);
+		var2->twp->value.ptr = var1->value.ptr;
+		ObjectSkydeck_hang_c_Repos(tp);
+	}
 }
 
-// STUB: SADX 0x0083c8e0
+// FUNCTION: SADX 0x0083c8e0
 void ObjectSkydeck_trail(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	int var2 = rand();
+	float var3 = var2 * 3.0517578125e-05f;
+	var1->timer.l = (long)(30.0f + var3 * 30.0f);
+	tp->exec = ObjectSkydeck_trail_Exec;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }
 
-// STUB: SADX 0x0083ca60
+// FUNCTION: SADX 0x0083ca60
 void ObjectSkydeck_flap_Exec(struct task *tp)
 {
+	struct taskwk *var1;
+	int var2;
+
+	var1 = tp->twp;
+	dsPlay_Dolby_time(0xa6, (int)tp, 1, 0x20, 2, var1);
+	if (SkydeckCheck_break(var1->pos.x, var1->pos.y, var1->pos.z) != 0)
+	{
+		var1->pos.y -= 1.7999999523162842;
+		var1->pos.x += 0.800000011920929;
+	}
+	var2 = (int)(njSin(DAT_060d0a40 + 0x1000) * 2048.0);
+	*(int *)((char *)var1 + 0x1c) = var2;
+	ObjectSkydeck_com_Display(tp);
+	ObjectSkydeck_com_GC(tp);
+	*(int *)((char *)*(void **)((char *)var1 + 8) + 0x1c) = *(int *)((char *)var1 + 0x1c);
 }
 
 // FUNCTION: SADX 0x0083caf0

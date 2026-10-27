@@ -7,6 +7,11 @@ void ObjectHighwayGreen(struct task *tp)
 	ObjectNormal(tp);
 }
 
+// STUB: SADX 0x0081eb30
+void ObjectHighwayGreenB(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0081ebf0
 void ObjectHighwayGreenE(struct task *tp)
 {

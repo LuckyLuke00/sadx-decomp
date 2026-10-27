@@ -22,6 +22,11 @@ void DispBTask(struct task *tp)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x008af2d0
+void ShutterParts(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008af650
 void FUN_008af650(struct task *tp)
 {

@@ -4,6 +4,11 @@ extern struct obj object_fujiyou_fujiy_fujiy[1];
 extern struct NJS_TEXLIST texlist_yougan_anim;
 extern int DAT_05b9d838;
 
+// STUB: SADX 0x00829bd0
+void o_yougan_Display(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x00829c50
 void YougunSetDisplay(struct task *tp)
 {
@@ -35,6 +40,11 @@ void YougunSetDisplayE102(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	ds_DrawModelClip(object_youUPan_yogun_yogun.model, 1.0f);
 	njPopMatrix(1);
+}
+
+// STUB: SADX 0x00829d70
+void ObjectMountainTexChange(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00829fe0

@@ -106,3 +106,30 @@ void GCInit_DownDeka(struct task *tp)
 	var1->sibling = *(struct obj **)((char *)var2->timer.ptr + 0x30);
 	RegisterCollisionEntry(0x8000000, tp, var1);
 }
+
+// FUNCTION: SADX 0x0082d5b0
+void GC_DownDeka(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	float var3 = 60.0f - *(float *)((char *)var1 + 0x34);
+	if (var3 < 0.0f)
+	{
+		var3 = 0.0f;
+	}
+	struct OBJ_CONDITION *var2 = (struct OBJ_CONDITION *)var1->counter.ptr;
+	if (var2 != 0)
+	{
+		*(float *)((char *)var2 + 8) = var1->pos.x;
+		*(float *)((char *)var2 + 0xc) = var1->pos.y + var3;
+		*(float *)((char *)var2 + 0x10) = var1->pos.z;
+		*(long *)((char *)var2 + 0x14) = var1->ang.x;
+		*(long *)((char *)var2 + 0x18) = var1->ang.y;
+		*(long *)((char *)var2 + 0x1c) = var1->ang.z;
+		if (CheckCollisionP(&var1->pos, 200.0f))
+		{
+			var1->flag |= 0x100;
+			return;
+		}
+		var1->flag &= 0xfeff;
+	}
+}

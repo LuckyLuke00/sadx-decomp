@@ -1,4 +1,5 @@
 #include "decls.h"
+struct taskwk *var1;
 
 // FUNCTION: SADX 0x00843640
 void dispSkyFalling(struct task *tp)
@@ -54,4 +55,9 @@ void dispSkyChamber(struct task *tp)
 		njEasyDrawObject((struct obj *)var1->timer.ptr);
 		njPopMatrix(1);
 	}
+}
+
+// STUB: SADX 0x00843eb0
+void execSkyDoor(struct task *tp)
+{
 }

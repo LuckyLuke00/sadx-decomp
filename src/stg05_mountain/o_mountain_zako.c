@@ -1,8 +1,27 @@
 #include "decls.h"
 
-// STUB: SADX 0x0082a6b0
-void FUN_0082a6b0(struct task *tp)
+// FUNCTION: SADX 0x0082a6b0
+void FUN_0082a6b0(struct task *param_1)
 {
+	struct taskwk *var1 = param_1->twp;
+	struct OBJ_CONDITION *var2 = (struct OBJ_CONDITION *)var1->counter.ptr;
+	if (var2 != 0)
+	{
+		float var3;
+		*(float *)((char *)var2 + 8) = var1->pos.x;
+		*(float *)((char *)var2 + 0xc) = var1->pos.y;
+		*(float *)((char *)var2 + 0x10) = var1->pos.z;
+		*(long *)((char *)var2 + 0x14) = var1->ang.x;
+		*(long *)((char *)var2 + 0x18) = var1->ang.y;
+		*(long *)((char *)var2 + 0x1c) = var1->ang.z;
+		var3 = var1->scl.y;
+		if (CheckCollisionP(&var1->pos, *(float *)((char *)var2->pTask + 0x24) * var3 + 20.0f))
+		{
+			var1->flag |= 0x100;
+			return;
+		}
+		var1->flag &= 0xfeff;
+	}
 }
 
 // FUNCTION: SADX 0x0082a800

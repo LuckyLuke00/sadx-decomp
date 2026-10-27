@@ -24,3 +24,8 @@ void pin_side_search_obj(struct obj *obj_p, struct obj *target_obj_p, struct NJS
 		obj_p = var1;
 	} while (obj_p != 0);
 }
+
+// STUB: SADX 0x00894620
+void pin_side_lamp_exec(struct task *task_p)
+{
+}

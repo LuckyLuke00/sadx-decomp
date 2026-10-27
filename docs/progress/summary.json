@@ -12274,6 +12274,14 @@
    "library": false
   },
   {
+   "address": "0x00497210",
+   "name": "SetClip_0500",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00497340",
    "name": "IsDisplayMiClearStatus",
    "accuracy": 1.0,
@@ -35482,6 +35490,14 @@
    "library": false
   },
   {
+   "address": "0x005ded90",
+   "name": "PathworkGoWithHangingDownFromBars",
+   "accuracy": 0.019704433497536946,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005df800",
    "name": "PathworkCameraTube",
    "accuracy": 1.0,
@@ -52868,11 +52884,19 @@
    "library": false
   },
   {
-   "address": "0x007fa170",
-   "name": "ObjectBeachAttackOrukaSummon",
-   "accuracy": 0.42857142857142855,
+   "address": "0x007fa0c0",
+   "name": "Exec(15)",
+   "accuracy": 0.028985507246376812,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007fa170",
+   "name": "ObjectBeachAttackOrukaSummon",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -52926,6 +52950,30 @@
   {
    "address": "0x007fedf0",
    "name": "ObjectBeachCoralB",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007fee90",
+   "name": "ObjectBeachFenceC",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007feed0",
+   "name": "ObjectBeachFenceD",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007ffe70",
+   "name": "Draw3",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -52990,9 +53038,9 @@
   {
    "address": "0x008028c0",
    "name": "A_Exec",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -53006,9 +53054,9 @@
   {
    "address": "0x00802950",
    "name": "A_Init",
-   "accuracy": 0.029411764705882353,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -53052,17 +53100,33 @@
    "library": false
   },
   {
-   "address": "0x00803db0",
-   "name": "ObjectBeachWatertube",
-   "accuracy": 0.18181818181818182,
+   "address": "0x00803ad0",
+   "name": "Disp(19)",
+   "accuracy": 0.02531645569620253,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
+   "address": "0x00803bf0",
+   "name": "Exec(16)",
+   "accuracy": 0.013986013986013986,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00803db0",
+   "name": "ObjectBeachWatertube",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00803dd0",
    "name": "CreateBeachWatertube",
-   "accuracy": 0.05128205128205128,
+   "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
    "library": false
@@ -53183,6 +53247,14 @@
    "address": "0x00805f80",
    "name": "CheckGameClear",
    "accuracy": 0.03333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00806270",
+   "name": "RotateObj",
+   "accuracy": 0.04580152671755725,
    "effective": false,
    "stub": true,
    "library": false
@@ -53372,6 +53444,14 @@
    "library": false
   },
   {
+   "address": "0x00808e70",
+   "name": "ObjectWindyTateiwaS",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00808eb0",
    "name": "Draw(3)",
    "accuracy": 1.0,
@@ -53452,11 +53532,27 @@
    "library": false
   },
   {
+   "address": "0x0080d5c0",
+   "name": "Disp(20)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0080d6a0",
    "name": "DrawTest",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0080d9f0",
+   "name": "PieceInit",
+   "accuracy": 0.015267175572519083,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -53468,11 +53564,19 @@
    "library": false
   },
   {
-   "address": "0x0080e1a0",
-   "name": "ObjectWindyBridge",
-   "accuracy": 0.3333333333333333,
+   "address": "0x0080dfc0",
+   "name": "Exec(17)",
+   "accuracy": 0.0125,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0080e1a0",
+   "name": "ObjectWindyBridge",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -53601,6 +53705,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00810d40",
+   "name": "WindyMidExplosion",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -53916,6 +54028,14 @@
    "library": false
   },
   {
+   "address": "0x00817d10",
+   "name": "execDoor",
+   "accuracy": 0.014705882352941176,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00818100",
    "name": "dispPanel",
    "accuracy": 1.0,
@@ -54054,9 +54174,9 @@
   {
    "address": "0x0081a940",
    "name": "ObjectCarManagerExit",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -54109,8 +54229,16 @@
   },
   {
    "address": "0x0081cc10",
-   "name": "Exec(15)",
+   "name": "Exec(18)",
    "accuracy": 0.0226628895184136,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0081d060",
+   "name": "ObjectHighwayForRaftA",
+   "accuracy": 0.05714285714285714,
    "effective": false,
    "stub": true,
    "library": false
@@ -54150,41 +54278,41 @@
   {
    "address": "0x0081d180",
    "name": "ObjectHighwayGroupFF",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0081d1b0",
    "name": "ObjectHighwayGroupRaftA",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0081d1e0",
    "name": "ObjectHighwayGroupRaftC",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0081d210",
    "name": "ObjectHighwayGroupGreenA",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0081d240",
    "name": "ObjectHighwayGroupGreenB",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -54261,7 +54389,7 @@
   },
   {
    "address": "0x0081e510",
-   "name": "Exec(16)",
+   "name": "Exec(19)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -54285,7 +54413,7 @@
   },
   {
    "address": "0x0081e5b0",
-   "name": "Exec(17)",
+   "name": "Exec(20)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -54308,6 +54436,14 @@
    "library": false
   },
   {
+   "address": "0x0081eb30",
+   "name": "ObjectHighwayGreenB",
+   "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0081ebf0",
    "name": "ObjectHighwayGreenE",
    "accuracy": 1.0,
@@ -54326,7 +54462,7 @@
   {
    "address": "0x0081fcb0",
    "name": "Draw(8)",
-   "accuracy": 0.9113924050632911,
+   "accuracy": 0.425531914893617,
    "effective": false,
    "stub": true,
    "library": false
@@ -54334,7 +54470,7 @@
   {
    "address": "0x0081ff60",
    "name": "Hit",
-   "accuracy": 0.9702970297029703,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -54524,6 +54660,14 @@
    "library": false
   },
   {
+   "address": "0x008221e0",
+   "name": "ObjectHighwaySlight",
+   "accuracy": 0.05714285714285714,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00822d00",
    "name": "dispSignboard",
    "accuracy": 1.0,
@@ -54567,6 +54711,14 @@
    "address": "0x008244f0",
    "name": "GlassBroken",
    "accuracy": 0.04081632653061224,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008246e0",
+   "name": "ObjectHighwayGlassAct2",
+   "accuracy": 0.02531645569620253,
    "effective": false,
    "stub": true,
    "library": false
@@ -54668,11 +54820,27 @@
    "library": false
   },
   {
+   "address": "0x00827b70",
+   "name": "mt_gdcontrol",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00827e80",
    "name": "Object_Mountain_KN_Display",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008284e0",
+   "name": "Object_Mountain_Knuckles",
+   "accuracy": 0.045454545454545456,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -54694,9 +54862,9 @@
   {
    "address": "0x00828d50",
    "name": "MiddleRockDisplayer",
-   "accuracy": 0.03125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -54732,6 +54900,14 @@
    "library": false
   },
   {
+   "address": "0x00829bd0",
+   "name": "o_yougan_Display",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00829c50",
    "name": "YougunSetDisplay",
    "accuracy": 1.0,
@@ -54745,6 +54921,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00829d70",
+   "name": "ObjectMountainTexChange",
+   "accuracy": 0.05263157894736842,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -54790,9 +54974,9 @@
   {
    "address": "0x0082a6b0",
    "name": "FUN_0082a6b0",
-   "accuracy": 0.046511627906976744,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -54924,6 +55108,22 @@
    "library": false
   },
   {
+   "address": "0x0082d5b0",
+   "name": "GC_DownDeka",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0082db20",
+   "name": "ObjectMountainHago",
+   "accuracy": 0.0273972602739726,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0082dc00",
    "name": "batDisplay",
    "accuracy": 0.029850746268656716,
@@ -54969,6 +55169,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0082ed70",
+   "name": "ObjectMountainAsiba1",
+   "accuracy": 0.015151515151515152,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -55022,9 +55230,9 @@
   {
    "address": "0x0082f390",
    "name": "Object_Mountain_Syuujin_Move_R",
-   "accuracy": 0.05,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55086,9 +55294,9 @@
   {
    "address": "0x0082fb90",
    "name": "DstrMtnSpiderA",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55142,9 +55350,9 @@
   {
    "address": "0x00832060",
    "name": "ObjectMountainRelaypoint",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55185,6 +55393,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008343a0",
+   "name": "HanmaInit",
+   "accuracy": 0.07142857142857142,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -55358,9 +55574,9 @@
   {
    "address": "0x008391c0",
    "name": "FUN_008391c0",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55369,6 +55585,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00839bc0",
+   "name": "ObjectSkydeck_com_GC",
+   "accuracy": 0.014388489208633094,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -55422,9 +55646,9 @@
   {
    "address": "0x0083a560",
    "name": "ObjectSkydeck_hangpole_s_Display",
-   "accuracy": 0.05128205128205128,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55508,9 +55732,25 @@
    "library": false
   },
   {
+   "address": "0x0083ad50",
+   "name": "ObjectSkydeck_hang_c_Repos",
+   "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0083ae70",
    "name": "FUN_0083ae70",
    "accuracy": 0.047619047619047616,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0083af40",
+   "name": "ObjectSkydeck_trail_Exec",
+   "accuracy": 0.020618556701030927,
    "effective": false,
    "stub": true,
    "library": false
@@ -55574,9 +55814,9 @@
   {
    "address": "0x0083c150",
    "name": "SysSkydeck_actchanger",
-   "accuracy": 0.03333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55670,17 +55910,17 @@
   {
    "address": "0x0083c840",
    "name": "ObjectSkydeck_hang_c",
-   "accuracy": 0.0425531914893617,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0083c8e0",
    "name": "ObjectSkydeck_trail",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55694,9 +55934,9 @@
   {
    "address": "0x0083ca60",
    "name": "ObjectSkydeck_flap_Exec",
-   "accuracy": 0.0425531914893617,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55828,6 +56068,22 @@
    "library": false
   },
   {
+   "address": "0x0083eba0",
+   "name": "SetCloudSkydeck",
+   "accuracy": 0.0625,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0083ec00",
+   "name": "CutCloudSkydeck",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0083edf0",
    "name": "ObjectSkydeck_vent_Draw",
    "accuracy": 0.03773584905660377,
@@ -55871,6 +56127,14 @@
    "address": "0x0083f580",
    "name": "ObjectSkydeck_signal",
    "accuracy": 0.02857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0083f650",
+   "name": "ObjectSkydeck_wings_init",
+   "accuracy": 0.1,
    "effective": false,
    "stub": true,
    "library": false
@@ -56020,6 +56284,14 @@
    "library": false
   },
   {
+   "address": "0x00841530",
+   "name": "dispSkyPassageWMotion",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00842940",
    "name": "dispSkyEV",
    "accuracy": 1.0,
@@ -56065,6 +56337,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00843eb0",
+   "name": "execSkyDoor",
+   "accuracy": 0.017094017094017096,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -56438,9 +56718,9 @@
   {
    "address": "0x0084be90",
    "name": "CreateEffSmallBomb1",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -56765,7 +57045,7 @@
   },
   {
    "address": "0x00850c00",
-   "name": "Disp(19)",
+   "name": "Disp(21)",
    "accuracy": 0.02247191011235955,
    "effective": false,
    "stub": true,
@@ -56797,7 +57077,7 @@
   },
   {
    "address": "0x00851090",
-   "name": "Exec(18)",
+   "name": "Exec(21)",
    "accuracy": 0.01904761904761905,
    "effective": false,
    "stub": true,
@@ -56902,6 +57182,14 @@
   {
    "address": "0x008533b0",
    "name": "DrawFire",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00853490",
+   "name": "FUN_00853490",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -57518,7 +57806,7 @@
   {
    "address": "0x0085fdb0",
    "name": "Object_IcecapBicIwaInit",
-   "accuracy": 0.044444444444444446,
+   "accuracy": 0.041666666666666664,
    "effective": false,
    "stub": true,
    "library": false
@@ -57526,14 +57814,14 @@
   {
    "address": "0x0085fe30",
    "name": "ObjectIcecapBicIwa",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
   },
   {
    "address": "0x00860b50",
-   "name": "Disp(20)",
+   "name": "Disp(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -57550,9 +57838,9 @@
   {
    "address": "0x00860c80",
    "name": "ObjectSnowBalloon01",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -57668,6 +57956,30 @@
    "library": false
   },
   {
+   "address": "0x00862d80",
+   "name": "Object_IcecapFuusya1Draw",
+   "accuracy": 0.02040816326530612,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00862eb0",
+   "name": "Object_IcecapFuusya1Exec",
+   "accuracy": 0.044444444444444446,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00862f50",
+   "name": "ObjectIcecapFuusya1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00862f90",
    "name": "Object_IcecapIta02Draw",
    "accuracy": 1.0,
@@ -57756,6 +58068,14 @@
    "library": false
   },
   {
+   "address": "0x00865ac0",
+   "name": "ObjectIcecapTuribasi1",
+   "accuracy": 0.1,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00865ba0",
    "name": "DoaDraw",
    "accuracy": 0.015228426395939087,
@@ -57789,7 +58109,7 @@
   },
   {
    "address": "0x008662c0",
-   "name": "Exec(19)",
+   "name": "Exec(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -58004,6 +58324,14 @@
    "library": false
   },
   {
+   "address": "0x00869d60",
+   "name": "FUN_00869d60",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00869e30",
    "name": "RdCasinoCheckAct1toAct3",
    "accuracy": 1.0,
@@ -58036,11 +58364,27 @@
    "library": false
   },
   {
+   "address": "0x0086a1e0",
+   "name": "late_DisplayBalls",
+   "accuracy": 0.023809523809523808,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0086a3b0",
    "name": "SetObjectTexture2",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0086a550",
+   "name": "DisplayBalls",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -58078,9 +58422,9 @@
   {
    "address": "0x0086aff0",
    "name": "CheckBallSpeed",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -58684,6 +59028,14 @@
    "library": false
   },
   {
+   "address": "0x00875a30",
+   "name": "ObjectCasinoFanfan",
+   "accuracy": 0.07692307692307693,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00876e20",
    "name": "Init(2)",
    "accuracy": 0.07894736842105263,
@@ -58734,9 +59086,9 @@
   {
    "address": "0x008783b0",
    "name": "DispMot3",
-   "accuracy": 0.027777777777777776,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -59174,7 +59526,7 @@
   {
    "address": "0x0087f530",
    "name": "ObjectCasinoTutuAInit",
-   "accuracy": 0.06896551724137931,
+   "accuracy": 0.0625,
    "effective": false,
    "stub": true,
    "library": false
@@ -59182,7 +59534,7 @@
   {
    "address": "0x0087f590",
    "name": "ObjectCasinoTutuA",
-   "accuracy": 0.5217391304347826,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -59205,7 +59557,7 @@
   },
   {
    "address": "0x0087f7b0",
-   "name": "Disp(21)",
+   "name": "Disp(23)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59236,6 +59588,14 @@
    "library": false
   },
   {
+   "address": "0x0087fcf0",
+   "name": "ObjectKazariStarNeon",
+   "accuracy": 0.125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0087fd20",
    "name": "ObjectKazariYajiNeon",
    "accuracy": 0.3013698630136986,
@@ -59253,7 +59613,7 @@
   },
   {
    "address": "0x00880140",
-   "name": "Disp(22)",
+   "name": "Disp(24)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59292,11 +59652,27 @@
    "library": false
   },
   {
-   "address": "0x008807d0",
-   "name": "ObjectKazariYaji",
-   "accuracy": 0.2222222222222222,
+   "address": "0x008806c0",
+   "name": "Disp(25)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00880790",
+   "name": "Normal(8)",
+   "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008807d0",
+   "name": "ObjectKazariYaji",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -59340,8 +59716,32 @@
    "library": false
   },
   {
+   "address": "0x00882450",
+   "name": "Disp(26)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00882510",
+   "name": "Normal(9)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00882550",
+   "name": "ObjectIdeacap",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00882820",
-   "name": "Disp(23)",
+   "name": "Disp(27)",
    "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
@@ -59372,8 +59772,40 @@
    "library": false
   },
   {
+   "address": "0x00882e80",
+   "name": "Disp(28)",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00882ea0",
+   "name": "Normal(10)",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00882ec0",
+   "name": "ObjectKurokabe",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00882ef0",
    "name": "Disp1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00882fe0",
+   "name": "Disp2(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59396,8 +59828,32 @@
    "library": false
   },
   {
+   "address": "0x008830b0",
+   "name": "Normal2(5)",
+   "accuracy": 0.03125,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008831a0",
    "name": "ObjectNeon",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008831e0",
+   "name": "ObjectNeonkabe",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00883320",
+   "name": "TenmetuSub",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59407,6 +59863,14 @@
    "address": "0x00883da0",
    "name": "cNormal1",
    "accuracy": 0.029850746268656716,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008841a0",
+   "name": "ObjectRightLane",
+   "accuracy": 0.10526315789473684,
    "effective": false,
    "stub": true,
    "library": false
@@ -59460,6 +59924,22 @@
    "library": false
   },
   {
+   "address": "0x00884590",
+   "name": "ObjectRollUpR",
+   "accuracy": 0.09523809523809523,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008845e0",
+   "name": "ObjectRollUpL",
+   "accuracy": 0.09090909090909091,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00884630",
    "name": "ObjectRollDownL",
    "accuracy": 0.09523809523809523,
@@ -59468,9 +59948,17 @@
    "library": false
   },
   {
+   "address": "0x00885010",
+   "name": "cCameraReturn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00885060",
    "name": "cNormal",
-   "accuracy": 0.028985507246376812,
+   "accuracy": 0.030303030303030304,
    "effective": false,
    "stub": true,
    "library": false
@@ -59517,7 +60005,7 @@
   },
   {
    "address": "0x00887ea0",
-   "name": "Normal(8)",
+   "name": "Normal(11)",
    "accuracy": 0.011904761904761904,
    "effective": false,
    "stub": true,
@@ -59633,14 +60121,6 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
-  },
-  {
-   "address": "0x00889bd0",
-   "name": "FUN_00889bd0",
-   "accuracy": 0.1111111111111111,
-   "effective": false,
-   "stub": true,
    "library": false
   },
   {
@@ -60165,7 +60645,7 @@
   },
   {
    "address": "0x0088e550",
-   "name": "Disp(24)",
+   "name": "Disp(29)",
    "accuracy": 0.024691358024691357,
    "effective": false,
    "stub": true,
@@ -60173,7 +60653,7 @@
   },
   {
    "address": "0x0088e660",
-   "name": "Exec(20)",
+   "name": "Exec(23)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60228,11 +60708,27 @@
    "library": false
   },
   {
+   "address": "0x0088f450",
+   "name": "QSortGachapon",
+   "accuracy": 0.05504587155963303,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0088f7a0",
    "name": "GachaponPartsDisplayer",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0088feb0",
+   "name": "ColliGachapon",
+   "accuracy": 0.028169014084507043,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -60246,9 +60742,9 @@
   {
    "address": "0x008903d0",
    "name": "GachaponManager",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -60444,6 +60940,14 @@
    "library": false
   },
   {
+   "address": "0x00894620",
+   "name": "pin_side_lamp_exec",
+   "accuracy": 0.05263157894736842,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00894790",
    "name": "target_silenang_set",
    "accuracy": 1.0,
@@ -60478,9 +60982,9 @@
   {
    "address": "0x00894980",
    "name": "target_end",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -60772,11 +61276,19 @@
    "library": false
   },
   {
-   "address": "0x008a1ff0",
-   "name": "FEGG_DrawBrokenPiece",
-   "accuracy": 0.10526315789473684,
+   "address": "0x008a1f70",
+   "name": "FEGG_SetBrokenPiece",
+   "accuracy": 0.05714285714285714,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008a1ff0",
+   "name": "FEGG_DrawBrokenPiece",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -60793,6 +61305,22 @@
    "accuracy": 0.029850746268656716,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008a2110",
+   "name": "FEGG_TaskActBounce",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008a2130",
+   "name": "FEGG_TaskCheckGround",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -60893,7 +61421,7 @@
   },
   {
    "address": "0x008a2ee0",
-   "name": "Exec(21)",
+   "name": "Exec(24)",
    "accuracy": 0.012048192771084338,
    "effective": false,
    "stub": true,
@@ -60917,7 +61445,7 @@
   },
   {
    "address": "0x008a3ea0",
-   "name": "Disp(25)",
+   "name": "Disp(30)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60925,7 +61453,7 @@
   },
   {
    "address": "0x008a3f20",
-   "name": "Exec(22)",
+   "name": "Exec(25)",
    "accuracy": 0.0196078431372549,
    "effective": false,
    "stub": true,
@@ -61053,7 +61581,7 @@
   },
   {
    "address": "0x008a5c70",
-   "name": "Disp(26)",
+   "name": "Disp(31)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61061,7 +61589,7 @@
   },
   {
    "address": "0x008a5ce0",
-   "name": "Exec(23)",
+   "name": "Exec(26)",
    "accuracy": 0.03571428571428571,
    "effective": false,
    "stub": true,
@@ -61158,9 +61686,9 @@
   {
    "address": "0x008ac5c0",
    "name": "destTgt",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -61172,8 +61700,24 @@
    "library": false
   },
   {
+   "address": "0x008acb20",
+   "name": "callback_E105D",
+   "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008acd90",
    "name": "dispFlyingHead",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008ace50",
+   "name": "execFlyingHead",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61209,6 +61753,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af2d0",
+   "name": "ShutterParts",
+   "accuracy": 0.02197802197802198,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -61257,14 +61809,6 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
-  },
-  {
-   "address": "0x008b2d60",
-   "name": "PieceInit",
-   "accuracy": 0.03225806451612903,
-   "effective": false,
-   "stub": true,
    "library": false
   },
   {
@@ -61333,7 +61877,7 @@
   },
   {
    "address": "0x008b4340",
-   "name": "Disp(27)",
+   "name": "Disp(32)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61349,7 +61893,7 @@
   },
   {
    "address": "0x008b4440",
-   "name": "Exec(24)",
+   "name": "Exec(27)",
    "accuracy": 0.024691358024691357,
    "effective": false,
    "stub": true,
@@ -61365,7 +61909,7 @@
   },
   {
    "address": "0x008b47c0",
-   "name": "Disp(28)",
+   "name": "Disp(33)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61373,7 +61917,7 @@
   },
   {
    "address": "0x008b4810",
-   "name": "Exec(25)",
+   "name": "Exec(28)",
    "accuracy": 0.03225806451612903,
    "effective": false,
    "stub": true,
@@ -61404,11 +61948,27 @@
    "library": false
   },
   {
-   "address": "0x008b4fa0",
-   "name": "ObjShelterAquarium",
-   "accuracy": 0.05555555555555555,
+   "address": "0x008b4d40",
+   "name": "Disp(34)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b4da0",
+   "name": "Exec(29)",
+   "accuracy": 0.012195121951219513,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008b4fa0",
+   "name": "ObjShelterAquarium",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -61454,15 +62014,15 @@
   {
    "address": "0x008b5370",
    "name": "TubeInit",
-   "accuracy": 0.03333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x008b55d0",
    "name": "ObjShelterBtsuimen",
-   "accuracy": 0.024691358024691357,
+   "accuracy": 0.02564102564102564,
    "effective": false,
    "stub": true,
    "library": false
@@ -61513,6 +62073,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b6ef0",
+   "name": "ObjShelterKowareeff",
+   "accuracy": 0.09090909090909091,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008b7800",
+   "name": "ObjShelterAqusuimen",
+   "accuracy": 0.07142857142857142,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -61733,7 +62309,7 @@
   },
   {
    "address": "0x008b9be0",
-   "name": "Exec(26)",
+   "name": "Exec(30)",
    "accuracy": 0.0273972602739726,
    "effective": false,
    "stub": true,
@@ -84078,6 +84654,13 @@
    "library": false
   },
   {
+   "address": "0x023b7114",
+   "name": "DAT_023b7114",
+   "size": 20480,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0257cfe4",
    "name": "texlist_kariobj",
    "size": 8,
@@ -88187,6 +88770,13 @@
    "library": false
   },
   {
+   "address": "0x03984694",
+   "name": "object_seaobj_yashi04_yashi04",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0398620c",
    "name": "object_seaobj_bungalow_bungalow",
    "size": 52,
@@ -88208,8 +88798,29 @@
    "library": false
   },
   {
+   "address": "0x0398dc14",
+   "name": "object_col_hasi_a_hasi_a",
+   "size": 104,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x039cafc4",
    "name": "object_seaobj_parasol03_parasol03",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x039dfa5c",
+   "name": "object_seaobj_tesuric_tesuric",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x039dfd5c",
+   "name": "object_seaobj_tesurie_tesurie",
    "size": 52,
    "match": false,
    "library": false
@@ -88309,6 +88920,34 @@
    "address": "0x03a0c3e0",
    "name": "takipapam_fallspeed",
    "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03a0c8d8",
+   "name": "DAT_03a0c8d8",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03a0c908",
+   "name": "DAT_03a0c908",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03a0cb98",
+   "name": "hasi_a0_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03a0cc58",
+   "name": "hasi_a1_info",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -88446,6 +89085,13 @@
    "library": false
   },
   {
+   "address": "0x03b430a4",
+   "name": "object_wvobj_tateiwa_s_tateiwa_s",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b45f50",
    "name": "model_wvobj_wara_wara",
    "size": 44,
@@ -88463,6 +89109,20 @@
    "address": "0x03b4e2f0",
    "name": "obj",
    "size": 40,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b4e378",
+   "name": "texlist_mexplosion_windy",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b4ec40",
+   "name": "object_mexplosion_windy",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -88526,6 +89186,13 @@
    "address": "0x03b75660",
    "name": "alpha",
    "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b75728",
+   "name": "DAT_03b75728",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -88680,6 +89347,13 @@
    "address": "0x03e39bec",
    "name": "object_tai_dai_tai_dai_tai_dai",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03e39ec0",
+   "name": "model_glass_cube_1_cube_1",
+   "size": 44,
    "match": false,
    "library": false
   },
@@ -89181,6 +89855,13 @@
    "library": false
   },
   {
+   "address": "0x03fec350",
+   "name": "object_actchg_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03fec504",
    "name": "colli_info_L",
    "size": 48,
@@ -89342,6 +90023,13 @@
    "library": false
   },
   {
+   "address": "0x0436c46c",
+   "name": "texlist_sw_panel",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04376698",
    "name": "model_lwobj_snake02_snake02",
    "size": 44,
@@ -89352,13 +90040,6 @@
    "address": "0x0437a058",
    "name": "model_l02_lightway_h_lightway_h",
    "size": 44,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04386d18",
-   "name": "object_togedai_togedai_togedai",
-   "size": 52,
    "match": false,
    "library": false
   },
@@ -89400,6 +90081,13 @@
   {
    "address": "0x04390408",
    "name": "object_lwobj_lwswitch_lwswitch",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x043935a4",
+   "name": "object_lwobj_lwdoor_lwdoor",
    "size": 52,
    "match": false,
    "library": false
@@ -89457,6 +90145,13 @@
    "address": "0x043ac538",
    "name": "c_info_switch",
    "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x043ac5c8",
+   "name": "anim_jet",
+   "size": 20,
    "match": false,
    "library": false
   },
@@ -89944,9 +90639,9 @@
    "library": false
   },
   {
-   "address": "0x047731a8",
-   "name": "model_card_doa_a_doa_a",
-   "size": 44,
+   "address": "0x04774880",
+   "name": "motion_card_obj_ideacp",
+   "size": 12,
    "match": false,
    "library": false
   },
@@ -90329,6 +91024,13 @@
    "library": false
   },
   {
+   "address": "0x048093da",
+   "name": "DAT_048093da",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x048094e4",
    "name": "sprite_black",
    "size": 32,
@@ -90616,6 +91318,27 @@
    "library": false
   },
   {
+   "address": "0x0480c960",
+   "name": "model_name",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0480cf04",
+   "name": "pos_table",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0480cfe0",
+   "name": "InitialTable2",
+   "size": 72,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0480e444",
    "name": "DAT_0480e444",
    "size": 4,
@@ -90840,6 +91563,13 @@
    "library": false
   },
   {
+   "address": "0x04a66a44",
+   "name": "action_boxana_boxana",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04a72674",
    "name": "model_tv_clash_base_tv_clash_base",
    "size": 44,
@@ -90875,13 +91605,6 @@
    "library": false
   },
   {
-   "address": "0x04a772c0",
-   "name": "texlist_HotShelter0",
-   "size": 8,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x04a790f4",
    "name": "object_ukidoor_ukidoor_ukidoor",
    "size": 52,
@@ -90891,6 +91614,13 @@
   {
    "address": "0x04a7a098",
    "name": "object_syoumei_syoumei1h_syoumei1h",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04a7eeac",
+   "name": "object_suisou_taki_o_garass_o_garass",
    "size": 52,
    "match": false,
    "library": false
@@ -92193,5 +92923,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "884793f31420d184b83f383a34b778e2e348cd958d2e68851176983cac87f422"
+ "inputs_sha256": "1f67e16ad9f5b22de55d6599e612c23b26d76e879c12f4ee89d1b4d2bc69a346"
 }

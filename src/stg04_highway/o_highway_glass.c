@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_MODEL model_glass_cube_1_cube_1[];
 
 // FUNCTION: SADX 0x00824330
 void DrawGlass(struct task *tp)
@@ -16,5 +17,10 @@ void DrawGlass(struct task *tp)
 
 // STUB: SADX 0x008244f0
 void GlassBroken(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008246e0
+void ObjectHighwayGlassAct2(struct task *tp)
 {
 }

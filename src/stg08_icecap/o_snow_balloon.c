@@ -43,9 +43,16 @@ static void Normal(struct task *tp)
 }
 #pragma optimize("", on)
 
-// STUB: SADX 0x00860c80
+// FUNCTION: SADX 0x00860c80
 void ObjectSnowBalloon01(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->timer.f = 1.0;
+	var1->counter.l = 0x66;
+	var1->btimer = 0;
+	tp->exec = Normal;
+	tp->disp = Disp;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }
 
 // FUNCTION: SADX 0x00860cb0

@@ -25,10 +25,14 @@ void SetDropRing(unsigned char RingCount)
 {
 }
 
-// STUB: SADX 0x0086aff0
+// FUNCTION: SADX 0x0086aff0
 float CheckBallSpeed(float NowSpeed)
 {
-	return (float)0;
+	if (NowSpeed > 8.0f)
+	{
+		NowSpeed = 8.0f;
+	}
+	return NowSpeed;
 }
 
 // FUNCTION: SADX 0x0086b020

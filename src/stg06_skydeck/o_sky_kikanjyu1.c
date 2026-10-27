@@ -1,5 +1,12 @@
 #include "decls.h"
 
+#pragma optimize("", off)
+// STUB: SADX 0x0083d9b0
+void ObjectSkydeck_kikanjyu1_End(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x0083da10
 void ObjectSkydeck_kikanjyu1_Draw(struct task *tp)
 {

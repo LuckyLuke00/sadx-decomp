@@ -179,6 +179,7 @@ struct LegModel;
 struct LightInfo;
 struct MC_AudioSystemFactory;
 struct MDHANDLE;
+struct MID_EXPLOSION_INFO;
 struct MiMsg;
 struct MiniGameSelWk;
 struct MirrorPlane;
@@ -3113,6 +3114,32 @@ static_assert(offsetof(LightInfo, nrang) == 0x38, "LightInfo::nrang");
 static_assert(offsetof(LightInfo, frang) == 0x3c, "LightInfo::frang");
 static_assert(offsetof(LightInfo, iang) == 0x40, "LightInfo::iang");
 static_assert(offsetof(LightInfo, oang) == 0x44, "LightInfo::oang");
+
+struct MID_EXPLOSION_INFO {
+    struct NJS_POINT3 *pPos;
+    int flag;
+    int nLightStartTime;
+    int nLightEndTime;
+    float fLightLength;
+    long angLightSpd;
+    int nExpStartTime;
+    int nExpGrowEndTime;
+    int nExpEndTime;
+    int nExpTailTime;
+    float fExpMaxRadius;
+};
+static_assert(sizeof(MID_EXPLOSION_INFO) == 0x2c, "sizeof MID_EXPLOSION_INFO");
+static_assert(offsetof(MID_EXPLOSION_INFO, pPos) == 0x0, "MID_EXPLOSION_INFO::pPos");
+static_assert(offsetof(MID_EXPLOSION_INFO, flag) == 0x4, "MID_EXPLOSION_INFO::flag");
+static_assert(offsetof(MID_EXPLOSION_INFO, nLightStartTime) == 0x8, "MID_EXPLOSION_INFO::nLightStartTime");
+static_assert(offsetof(MID_EXPLOSION_INFO, nLightEndTime) == 0xc, "MID_EXPLOSION_INFO::nLightEndTime");
+static_assert(offsetof(MID_EXPLOSION_INFO, fLightLength) == 0x10, "MID_EXPLOSION_INFO::fLightLength");
+static_assert(offsetof(MID_EXPLOSION_INFO, angLightSpd) == 0x14, "MID_EXPLOSION_INFO::angLightSpd");
+static_assert(offsetof(MID_EXPLOSION_INFO, nExpStartTime) == 0x18, "MID_EXPLOSION_INFO::nExpStartTime");
+static_assert(offsetof(MID_EXPLOSION_INFO, nExpGrowEndTime) == 0x1c, "MID_EXPLOSION_INFO::nExpGrowEndTime");
+static_assert(offsetof(MID_EXPLOSION_INFO, nExpEndTime) == 0x20, "MID_EXPLOSION_INFO::nExpEndTime");
+static_assert(offsetof(MID_EXPLOSION_INFO, nExpTailTime) == 0x24, "MID_EXPLOSION_INFO::nExpTailTime");
+static_assert(offsetof(MID_EXPLOSION_INFO, fExpMaxRadius) == 0x28, "MID_EXPLOSION_INFO::fExpMaxRadius");
 
 struct MJOIN_VERTEX {
     short numVertex;

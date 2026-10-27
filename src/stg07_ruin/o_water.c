@@ -1,5 +1,4 @@
 #include "decls.h"
-static void Wait(struct task *tp);
 
 // STUB: SADX 0x00858420
 void Wait(struct task *tp)
