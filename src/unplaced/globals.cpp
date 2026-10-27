@@ -2414,6 +2414,12 @@ struct NJS_ACTION action_beam_beam_tr1[1];
 // GLOBAL: SADX 0x0370fc7c
 struct NJS_ACTION action_beamev_laser[1];
 
+// GLOBAL: SADX 0x03710ecc
+char DAT_03710ecc[1];
+
+// GLOBAL: SADX 0x03710f14
+struct NJS_SPRITE DAT_03710f14;
+
 // GLOBAL: SADX 0x03711014
 struct NJS_TEXLIST lock_mk_list;
 

@@ -1,4 +1,12 @@
 #include "decls.h"
+static void KumoInit(struct task *tp);
+
+#pragma optimize("", off)
+// STUB: SADX 0x007efec0
+void KumoInit(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007f0100
 void EffectKumo(struct task *tp)

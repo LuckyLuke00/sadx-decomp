@@ -823,6 +823,8 @@ extern struct NJS_CACTION sht_caction_cam_int1[];
 extern struct NJS_TEXLIST texlist_shooting1;
 extern struct NJS_ACTION action_beam_beam_tr1[1];
 extern struct NJS_ACTION action_beamev_laser[1];
+extern char DAT_03710ecc[1];
+extern struct NJS_SPRITE DAT_03710f14;
 extern struct NJS_TEXLIST lock_mk_list;
 extern struct NJS_SPRITE lock_mk_spr;
 extern struct NJS_POINT3 point[];
