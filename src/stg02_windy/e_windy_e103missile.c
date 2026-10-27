@@ -96,6 +96,7 @@ static void updownHeight(struct task *pTask)
 	local_4->y = local_8;
 }
 
+// FUNCTION: SADX 0x00810290
 static void FUN_00810290(struct NJS_POINT3 *param_1, float param_2)
 {
 	float local_8 = param_1->x * param_1->x + param_1->y * param_1->y + param_1->z * param_1->z;
