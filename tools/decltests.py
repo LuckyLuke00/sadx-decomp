@@ -152,6 +152,24 @@ def check_stub_functions_wrap() -> list[str]:
     return failures
 
 
+def check_stub_functions_keeps_globals() -> list[str]:
+    """stub_functions drops the top-of-file declarations that only the stubbed functions used, and keeps a global's
+    definition under its GLOBAL annotation and an explicit template instantiation with the type it names: the build
+    would lose the variable at that address, or the template's functions."""
+    text = "\n".join(['#include "x.h"', "extern int Count;", "struct Item;", "template class std::vector<Item *>;",
+                      "// GLOBAL: SADX 0x05b92e20", "struct MSGC *Msg = 0;", "",
+                      "// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "\tCount = 1;", "\tMsg = 0;", "}", ""])
+    found = llm.stub_functions(text, [0x1000]).split("\n")
+    failures = []
+    if "extern int Count;" in found:
+        failures.append(f"stub_functions keeps a declaration only the stub used in {found}")
+    if "struct MSGC *Msg = 0;" not in found:
+        failures.append(f"stub_functions drops a global's definition under its annotation in {found}")
+    if "struct Item;" not in found or "template class std::vector<Item *>;" not in found:
+        failures.append(f"stub_functions drops an explicit template instantiation or its type in {found}")
+    return failures
+
+
 def check_cast_calls() -> list[str]:
     """Each call to a clashed name goes through a pointer of the type its declaration gives, without `extern`, with
     parameter names dropped. Other names, members, names with a longer name round them, and names not clashed stay.
@@ -527,7 +545,8 @@ def check_names_only() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     checks = [check_signature_index, check_without_static, check_kept_alive, check_wrapped_stubs,
-              check_definition_block, check_stub_functions_wrap, check_cast_calls, check_one_edit_apart,
+              check_definition_block, check_stub_functions_wrap, check_stub_functions_keeps_globals,
+              check_cast_calls, check_one_edit_apart,
               check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_ftol,
               check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime, check_with_earlier,
               check_without_declarations, check_tool_lines, check_build_errors, check_error_count, check_names_only]
