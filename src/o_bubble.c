@@ -1,4 +1,10 @@
 #include "decls.h"
+struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
+void DestroyTask(struct task *tp);
+void *MAlloc(unsigned int size);
+void FUN_005b5aa0(...);
+void bbl_ripple_exec(struct task *task_p);
+void bbl_ripple_draw(struct task *task_p);
 void FUN_008d94c0(struct taskwk *param_1, int param_2);
 void FUN_008d94c0(struct taskwk *param_1, int param_2);
 extern void ___njColorBlendingMode(int, int);
@@ -91,20 +97,24 @@ struct o_bubble *FUN_008d9740(struct o_bubble *param_1, struct o_bubble *param_2
 	return (struct o_bubble *)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x008d97e0
 void FUN_008d97e0(struct taskwk *twp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x008d9820
 void FUN_008d9820(int param_1, float *param_2, int *param_3, float param_4, float param_5, float param_6, float param_7)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x008d98c0
 void bubble_draw_sprite(struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, float scale_x, float scale_y)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x008d9b10
 int FUN_008d9b10(int param_1, void *param_2, float param_3, float param_4, float param_5)
@@ -127,9 +137,30 @@ void FUN_008d9f50(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008da020
+// FUNCTION: SADX 0x008da020
 void bbl_ripple_set(struct NJS_POINT3 *pos_p, float speed, float fade, float size)
 {
+	struct task *local_8g;
+	struct anywk *local_cg;
+	local_8g = CreateElementalTask(0, 6, bbl_ripple_exec);
+	local_8g->disp = bbl_ripple_draw;
+	local_8g->dest = (void (__cdecl *)(struct task *))FUN_005b5aa0;
+	local_8g->awp = (struct anywk *)MAlloc(0x24);
+	if (local_8g->awp != NULL)
+	{
+		local_cg = local_8g->awp;
+		*(struct NJS_POINT3 *)((char *)local_cg) = *pos_p;
+		local_cg->work.f[6] = speed;
+		local_cg->work.f[7] = size;
+		local_cg->work.f[8] = size;
+		local_cg->work.f[5] = fade;
+		local_cg->work.ul[3] = 0;
+		local_cg->work.f[4] = (fade + 1.0f) / 30.0f;
+	}
+	else
+	{
+		DestroyTask(local_8g);
+	}
 }
 
 // STUB: SADX 0x008da0e0

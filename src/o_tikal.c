@@ -1,4 +1,15 @@
 #include "decls.h"
+extern int DAT_05b9d838;
+extern unsigned char DAT_025acd84;
+extern int tikal_sw;
+extern float DAT_05b3df40;
+extern long tikal_int;
+extern struct NJS_SPRITE sprite_o_tikal;
+void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, long frame, float scale);
+void FUN_005bb770(struct task *param_1);
+void FUN_005bb770(struct task *param_1);
+void FUN_005bb7e0(struct task *param_1);
+void FUN_005bb200(struct task *param_1);
 void FUN_005bb770(struct task *param_1);
 void FUN_005bb7e0(struct task *param_1);
 void FUN_005bb200(struct task *param_1);
@@ -83,9 +94,21 @@ void tikal_tubu_draw(struct task *task_p)
 	tikal_draw_sprite(&sprite_tikal_tubu, (NJS_POINT3 *)((char *)local_8 + 0x20), (NJS_ARGB *)((char *)local_8 + 8), 0, 0.03125f);
 }
 
-// STUB: SADX 0x005bb770
-void FUN_005bb770(struct task *ptp)
+// FUNCTION: SADX 0x005bb770
+void FUN_005bb770(struct task *param_1)
 {
+	struct taskwk *local_8g = param_1->twp;
+	long local_cg;
+
+	if (tikal_int == 1)
+	{
+		local_cg = (long)(signed char)local_8g->btimer >> 1;
+	}
+	else
+	{
+		local_cg = (long)(signed char)local_8g->btimer;
+	}
+	tikal_draw_sprite(&sprite_o_tikal, &local_8g->pos, (NJS_ARGB *)((char *)local_8g + 8), local_cg, local_8g->scl.x * 0.03125f);
 }
 
 // FUNCTION: SADX 0x005bb7e0
@@ -106,6 +129,7 @@ void tikal_dispSwitch(int sw)
 	tikal_sw = sw;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005bb820
 void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, long frame, float scale)
 {
@@ -137,11 +161,14 @@ void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struc
 	___njColorBlendingMode(1, 6);
 	ResetMaterial();
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005bb910
 void FUN_005bb910(struct task *task_p, struct NJS_POINT3 *pos_p, void *ptr_p, int bt)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005bb9d0
 void FUN_005bb9d0(struct task *task_p)

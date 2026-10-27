@@ -13,15 +13,19 @@ void EffectCrash(struct task *tp)
 	FUN_0049e8b0(tp);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b4500
 void CrashInit(struct taskwk *twp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b4600
 void CrashStarGenerate(struct taskwk *twp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005b4730
 void CrashStar(struct task *tp)
@@ -56,7 +60,9 @@ void FUN_005b47c0(struct taskwk *param_1)
 	param_1->mode = 1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b47d0
 void CrashStarDraw(struct taskwk *twp)
 {
 }
+#pragma optimize("", on)

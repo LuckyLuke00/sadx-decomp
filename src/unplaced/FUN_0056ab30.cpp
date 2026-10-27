@@ -15,7 +15,3 @@ int FUN_0056ab50(int *param_1)
 	return (int)0;
 }
 
-// STUB: SADX 0x0056ab80
-void FUN_0056ab80(int *param_1, void (*param_2)(void (*)(int)))
-{
-}

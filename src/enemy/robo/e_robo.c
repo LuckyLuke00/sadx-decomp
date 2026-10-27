@@ -1,4 +1,14 @@
 #include "decls.h"
+void FUN_005536c0(struct particle_info *param_1);
+void FUN_005be2d0(struct taskwk *, struct enemywk *);
+void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
+long EnemyCalcPlayerAngle(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum);
+float njSin(int);
+void RoboDraw(struct taskwk *twp, struct enemywk *ewp);
+void FUN_005be2d0(struct taskwk *param_1, struct enemywk *param_2);
+extern struct NJS_POINT3 DAT_0264dbac;
+extern struct NJS_POINT3 DAT_0264dbb8;
+void RoboHeadChase(struct task *tp, struct enemywk *ewp);
 void njGetMatrix(float *param_1);
 void njMultiMatrix(float *param_1, struct NJS_POINT3 *param_2);
 void njUnitMatrix(float *param_1);
@@ -50,6 +60,7 @@ void RoboHeadDisplayer(struct task *tp)
 	RoboHeadDraw(local_cg, local_8g);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005bc0f0
 void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -85,6 +96,7 @@ void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
 	LoadControl3D();
 	___dsSetPalette(0);
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005bc260
 void RoboHeadExecutor(struct task *tp)
@@ -129,13 +141,22 @@ void RoboHeadTakeOff(struct task *tp, struct enemywk *ewp)
 	RoboHeadDraw(local_cg, ewp);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005bc560
 void RoboHeadSmokeSide(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005bc6a0
 void RoboHeadSmokeUnder(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
+
+// STUB: SADX 0x005bc780
+void RoboHeadChase(struct task *tp, struct enemywk *ewp)
 {
 }
 
@@ -266,26 +287,25 @@ void RoboEditMode(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x005bde30
+// FUNCTION: SADX 0x005bde30
 void FUN_005bde30(struct task *param_1, struct OBJ_CONDITION *param_2, void *param_3)
 {
-	struct OBJ_EDITENTRY *local_cg;
+	struct taskwk *local_cg;
 	void *local_8g;
-
-	local_cg = *(struct OBJ_EDITENTRY **)((char *)param_2 + 0xc);
-	local_8g = *(void **)((char *)local_cg + 0x10);
+	local_cg = (struct taskwk *)param_2->unionStatus.pObjSleepCondition;
+	local_8g = local_cg->value.ptr;
 	if (local_8g != 0)
 	{
 		Free(local_8g);
 	}
 	Free(local_cg);
-	*(void **)((char *)param_2 + 0xc) = 0;
-	((void (*)(struct task *, struct OBJ_CONDITION *, void *))FUN_005b5aa0)(param_1, param_2, param_3);
+	param_2->unionStatus.pObjSleepCondition = 0;
+	FUN_005b5aa0(param_1, param_2, param_3);
 	DeadOut(param_1);
 }
 
 // FUNCTION: SADX 0x005bdea0
-void FUN_005bdea0(struct taskwk *param_1)
+void FUN_005bdea0(struct taskwk *param_1, int param_2)
 {
 	CreateFlash2(param_1->pos.x, param_1->pos.y + 5.0f, param_1->pos.z, 1.4f);
 	CreateExpSpring(param_1, 8);
@@ -313,9 +333,28 @@ void RoboSmokeSide(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005beca0
+// FUNCTION: SADX 0x005beca0
 void RoboSmokeUnder(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 pos;
+	struct NJS_POINT3 tpos;
+	struct NJS_POINT3 tmp_velo;
+	struct NJS_POINT3 velo;
+	tpos.x = 0.0f;
+	tpos.y = -4.3f;
+	tpos.z = 0.0f;
+	tmp_velo.x = 0.0f;
+	tmp_velo.y = -0.7f;
+	tmp_velo.z = 0.0f;
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njSetMatrix(0, ewp->mat);
+	njCalcVector(0, &tmp_velo, &velo);
+	njCalcPoint(0, &tpos, &pos);
+	njPopMatrix(1);
+	robo_smoke5.velo = velo;
+	robo_smoke5.pos = pos;
+	FUN_005536c0(&robo_smoke5);
 }
 
 // STUB: SADX 0x005bed80
@@ -336,9 +375,35 @@ void FUN_005bf0d0(void *param_1, void *param_2)
 	*(int *)((char *)param_1 + 0x18) = AdjustAngle(*(int *)((char *)param_1 + 0x18), *(int *)((char *)param_2 + 0x1c0), *(int *)((char *)param_2 + 0x1b8));
 }
 
-// STUB: SADX 0x005bf130
+// FUNCTION: SADX 0x005bf130
 void RoboThrow(struct task *tp, struct enemywk *ewp)
 {
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	if (((local_8->flag & 0x200) != 0) && ((local_8->flag & 0x800) == 0))
+	{
+		ewp->old_mode = local_8->mode;
+		local_8->mode = 4;
+		local_8->wtimer = 0;
+		if (tp->ctp != 0)
+		{
+			*(NJS_POINT3 *)((char *)ewp + 0x5c) = *(NJS_POINT3 *)((char *)tp->ctp->twp + 0x20);
+		}
+		*(int *)((char *)ewp + 0x1c4) = 0x500;
+		*(int *)((char *)ewp + 0x1b8) = 0x3b0;
+		*(int *)((char *)local_8->cwp->info + 0x34) |= 0x10;
+	}
+	FUN_005bf2c0(local_8, ewp);
+	FUN_005be280((int)local_8, (int)ewp);
+	FUN_005be2d0(local_8, ewp);
+	EnemyCalcPlayerAngle(local_8, ewp, 0);
+	FUN_005bf0d0(local_8, ewp);
+	*(int *)((char *)ewp + 0x1c8) += 0x220;
+	*(int *)((char *)ewp + 0x1b0) += 0x1b0;
+	ewp->nframe = (float)(njSin(*(int *)((char *)ewp + 0x1c8)) + 8.0);
+	*(float *)((char *)ewp + 0x78) = njSin(*(int *)((char *)ewp + 0x1b0)) * 0.5f;
+	EnemyCheckGroundCollision(local_8, ewp);
+	RoboDraw(local_8, ewp);
 }
 
 // FUNCTION: SADX 0x005bf2c0
@@ -375,6 +440,19 @@ void RoboDash(struct task *tp, struct enemywk *ewp)
 // STUB: SADX 0x005bf6e0
 void RoboSmokeGround(struct taskwk *twp, struct enemywk *ewp)
 {
+}
+
+// FUNCTION: SADX 0x005bf870
+void FUN_005bf870(int param_1, int param_2)
+{
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njSetMatrix(0, (float *)(param_2 + 0x1fc));
+	njCalcVector(0, &DAT_0264dbb8, &robo_jet.velo);
+	njCalcPoint(0, &DAT_0264dbac, &robo_jet.pos);
+	njPopMatrix(1);
+	njAddVector(&robo_jet.velo, (struct NJS_POINT3 *)(param_2 + 4));
+	CreateJet(&robo_jet);
 }
 
 // FUNCTION: SADX 0x005bf8f0
@@ -416,10 +494,12 @@ void RoboBrake(struct taskwk *twp, struct enemywk *ewp)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005bfab0
 void RoboSmokeSide2(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005bfbf0
 void RoboDocking(struct task *tp, struct enemywk *ewp)

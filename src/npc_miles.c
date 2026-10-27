@@ -18,10 +18,17 @@ void NpcMilesControlDestructor(struct task *tp)
 	EV_NpcMilesStandByOff();
 }
 
-// STUB: SADX 0x005aca80
+// FUNCTION: SADX 0x005aca80
 int FUN_005aca80(void)
 {
-	return (int)0;
+	int local_8;
+	local_8 = DAT_05cd14f8;
+	if (local_8 == 0)
+	{
+		return 0;
+	}
+	*(char *)*(int **)((char *)local_8 + 0x20) = 0;
+	return 1;
 }
 
 // STUB: SADX 0x005acab0

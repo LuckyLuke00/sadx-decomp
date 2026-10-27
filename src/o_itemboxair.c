@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_005b6f80(struct task *param_1);
 extern char DAT_05edbe94[64];
 void FUN_005b6820();
 void FUN_005b6f80(struct task *param_1);
@@ -66,7 +67,7 @@ void itembox_airCollisitonBefore(struct task *tp)
 }
 
 // FUNCTION: SADX 0x005b6680
-void FUN_005b6680(void)
+void FUN_005b6680(int param_1)
 {
 	*(int *)((char *)DAT_05edbe84 + 0x14) += 0x222;
 }

@@ -1,5 +1,10 @@
 #include "decls.h"
 #include <math.h>
+void motion_init_param(struct NJS_MOTION *motion, float frame);
+void njSetZUpdateMode(long param_1);
+void njSetZUpdateMode(long param_1);
+void late_DrawObject(struct obj *obj, int flgs);
+void ___DrawObject(struct obj *obj);
 extern void (*DAT_05b39df8)(struct obj *obj);
 void set_motion_func(struct obj *object);
 extern unsigned short DAT_05b39e84;
@@ -413,16 +418,20 @@ void ___SAnjSimpleDrawObject(struct obj *obj)
 }
 
 __declspec(safebuffers)
+#pragma optimize("", off)
 // STUB: SADX 0x004a0ae0
 void ___dsDrawModel(NJS_MODEL *model)
 {
 }
+#pragma optimize("", on)
 
 __declspec(safebuffers)
+#pragma optimize("", off)
 // STUB: SADX 0x004a0c10
 void ___dsDrawObject(struct obj *obj)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004a0d10
 void ___DrawObject(struct obj *obj)
@@ -662,10 +671,12 @@ void ___DrawObject(struct obj *obj)
 }
 
 __declspec(safebuffers)
+#pragma optimize("", off)
 // STUB: SADX 0x004a1290
 void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 {
 }
+#pragma optimize("", on)
 
 __declspec(safebuffers)
 // STUB: SADX 0x004a1420
@@ -967,30 +978,36 @@ void late_DrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr, int 
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a45e0
 void late_DrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr, int flgs)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004a4710
 void late_SetFunc(void (*fnc)(void *), void *arg, float zprio, int flgs)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a47d0
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004a4820
 void late_DrawObject(struct obj *obj, int flgs)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a4ff0
 void late_DrawModelClip(struct NJS_MODEL *mdl, int flgs, float clipScl)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004a5080
 void late_DrawModel(struct NJS_MODEL *mdl, int flgs)
@@ -1012,25 +1029,31 @@ void late_DrawModelEx(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a5aa0
 void late_DrawModelClipEx(struct NJS_MODEL *mdl, int flgs, float clipScl)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a5c80
 void FUN_004a5c80(struct obj *param_1, int param_2)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004a5cd0
 void late_DrawObjectClipMS(struct obj *obj, int flgs, float clipScl)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a64a0
 void late_DrawModelMS(struct NJS_MODEL *mdl, int flgs)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004a6530
 void late_DrawModelClipMS(struct NJS_MODEL *mdl, int flgs, float clipScl)
@@ -1054,10 +1077,12 @@ void late_DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a7160
 void late_DrawModelMesh(struct NJS_MODEL *mdl, int flgs)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004a71f0
 void late_DrawModelClipMesh(struct NJS_MODEL *mdl, int flgs, float clipScl)
@@ -1259,6 +1284,12 @@ void njMotionData4(struct obj *obj)
 	DAT_05b39e90 = iVar1;
 }
 
+// FUNCTION: SADX 0x004a7cb0
+void FUN_004a7cb0(struct obj *param_1, struct NJS_MOTION *param_2, float param_3)
+{
+	DrawMotion(param_1, param_2, param_3, 0, 0, ___DrawModel);
+}
+
 // FUNCTION: SADX 0x004a7ce0
 void ___DrawModel(struct NJS_MODEL *model)
 {
@@ -1275,8 +1306,20 @@ void ___DrawModel(struct NJS_MODEL *model)
 	}
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x004a7d20
+void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x004a7db0
 void dsPushPopMotion(struct obj *obj)
+{
+}
+
+// STUB: SADX 0x004a7f60
+void motion_init_param(struct NJS_MOTION *motion, float frame)
 {
 }
 
@@ -1397,19 +1440,25 @@ void late_DrawMotionClipMesh(struct obj *object, struct NJS_MOTION *motion, floa
 	DrawMotion(object, motion, frame, flgs, clipScl, DrawModelMesh);
 }
 
-// STUB: SADX 0x004a88c0
+// FUNCTION: SADX 0x004a88c0
 void FUN_004a88c0(NJS_ACTION *param_1, float param_2)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(param_1, param_2, 0, 0.0, ___DrawModel);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a88f0
 void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, void *drwMdlFnc)
 {
 }
+#pragma optimize("", on)
 
-// STUB: SADX 0x004a89c0
-void ds_ActionClip(struct NJS_ACTION *param_1, float param_2, float param_3)
+// FUNCTION: SADX 0x004a89c0
+void ds_ActionClip(NJS_ACTION *action, float frame, float clipScl)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(action, frame, 0, clipScl, (void *)___DrawModel);
 }
 
 // FUNCTION: SADX 0x004a89f0
@@ -1440,9 +1489,11 @@ void late_ActionClipEx(NJS_ACTION *action, float frame, int flgs, float clipScl)
 	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelEx);
 }
 
-// STUB: SADX 0x004a8ab0
+// FUNCTION: SADX 0x004a8ab0
 void late_ActionMS(NJS_ACTION *action, float frame, int flgs)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(action, frame, flgs, 0.0, (void *)DrawModelMS);
 }
 
 // FUNCTION: SADX 0x004a8ae0
@@ -1459,9 +1510,11 @@ void late_ActionMesh(NJS_ACTION *action, float frame, int flgs)
 	DrawAction(action, frame, flgs, 0.0, (void *)DrawModelMesh);
 }
 
-// STUB: SADX 0x004a8b40
-void late_ActionClipMesh(NJS_ACTION *param_1, float param_2, int param_3, float param_4)
+// FUNCTION: SADX 0x004a8b40
+void late_ActionClipMesh(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
+	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
+	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelMesh);
 }
 
 // STUB: SADX 0x004a8b70
@@ -1488,15 +1541,37 @@ void njShapeData1n(struct obj *obj)
 {
 }
 
-// STUB: SADX 0x004a90c0
+// FUNCTION: SADX 0x004a90c0
 void InterpolatesNormal(const float *srca, const float *srcb, float *dst, float t)
 {
+	float local_8g;
+	float local_cg;
+
+	dst[0] = (1.0f - t) * srca[0] + srcb[0] * t;
+	dst[1] = (1.0f - t) * srca[1] + srcb[1] * t;
+	dst[2] = (1.0f - t) * srca[2] + srcb[2] * t;
+	local_8g = dst[0] * dst[0] + dst[1] * dst[1] + dst[2] * dst[2];
+	if (local_8g > 9.999999747378752e-06f)
+	{
+		local_cg = 1.0f / sqrtf(local_8g);
+		dst[0] = dst[0] * local_cg;
+		dst[1] = dst[1] * local_cg;
+		dst[2] = dst[2] * local_cg;
+	}
+	else
+	{
+		dst[0] = 0.0f;
+		dst[1] = 0.0f;
+		dst[2] = 1.0f;
+	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004a9660
 void DrawShapeMotion(struct obj *object, struct NJS_MOTION *motion, struct NJS_MOTION *shape, float frame, int flgs, float clpScl, void *drawModel)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004a99c0
 void ___dsDrawShapeMotion(const struct obj *object, const struct NJS_MOTION *motion, const struct NJS_MOTION *shape, float frame)

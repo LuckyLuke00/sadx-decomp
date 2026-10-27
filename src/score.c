@@ -1,4 +1,9 @@
 #include "decls.h"
+void FUN_0055de60(struct _SC_NUMBERS *param_1);
+void FUN_0055de60(struct _SC_NUMBERS *param_1);
+long GetPlayerNumber();
+void FUN_0055de60(struct _SC_NUMBERS *param_1);
+void FUN_0055de60(struct _SC_NUMBERS *);
 void DisplayCalcEnemyScore(struct task *tp);
 extern int DAT_05b3ea78[15];
 void DisplayCalcLettersSC(struct task *tp);
@@ -30,6 +35,8 @@ void FUN_00554a50(void);
 void FUN_00554c80(void);
 extern unsigned long DAT_05b3ea20;
 void FUN_00554a10();
+extern char score_sc[32];
+void FUN_0055de60(struct _SC_NUMBERS *param_1);
 
 // FUNCTION: SADX 0x00554a00
 void InitScore()
@@ -387,9 +394,30 @@ void DisplayCalcTime(struct task *tp)
 	DrawSNumbersTime(ScreenRaitoX * 320.0 + -32.0, ScreenRaitoY * 240.0 + -144.0);
 }
 
-// STUB: SADX 0x0055b710
+// FUNCTION: SADX 0x0055b680
+void FUN_0055b680(struct task *param_1)
+{
+	DisplayCalcTime(param_1);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (int)DAT_05b3ebb8;
+	*(float *)(score_sc + 0xc) = 320.0f;
+	*(float *)(score_sc + 0x10) = 156.0f;
+	*(float *)(score_sc + 0xc) = *(float *)(score_sc + 0xc) - 320.0 + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = *(float *)(score_sc + 0x10) - 240.0 + ScreenRaitoY * 240.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
+}
+
+// FUNCTION: SADX 0x0055b710
 void DisplayCalcEnemyScore(struct task *tp)
 {
+	FUN_0055b680(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.x;
+	*(float *)(score_sc + 0xc) = 320.0f;
+	*(float *)(score_sc + 0x10) = 228.0f;
+	*(float *)(score_sc + 0xc) = *(float *)(score_sc + 0xc) - 320.0 + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = *(float *)(score_sc + 0x10) - 240.0 + ScreenRaitoY * 240.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // STUB: SADX 0x0055b7c0
@@ -397,14 +425,33 @@ void DisplayCalcTimeScore(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0055b870
+// FUNCTION: SADX 0x0055b870
 void DisplayCalcRingScore(struct task *tp)
 {
+	if (GetPlayerNumber() == 7)
+		DisplayCalcTimeScore(tp);
+	else
+		DisplayCalcTimeScore(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)*(float *)((char *)tp->twp + 0x34);
+	*(float *)(score_sc + 0xc) = 320.0f;
+	*(float *)(score_sc + 0x10) = 320.0f;
+	*(float *)(score_sc + 0xc) = *(float *)(score_sc + 0xc) - 320.0 + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = *(float *)(score_sc + 0x10) - 240.0 + ScreenRaitoY * 240.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055b940
-void FUN_0055b940(struct task *tp)
+// FUNCTION: SADX 0x0055b940
+void FUN_0055b940(struct task *param_1)
 {
+	DisplayCalcRingScore(param_1);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)param_1->twp->timer.f;
+	*(float *)(score_sc + 0xc) = 320.0f;
+	*(float *)(score_sc + 0x10) = 384.0f;
+	*(float *)(score_sc + 0xc) = *(float *)(score_sc + 0xc) - 320.0 + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = *(float *)(score_sc + 0x10) - 240.0 + ScreenRaitoY * 240.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // STUB: SADX 0x0055c5b0
@@ -417,9 +464,15 @@ void DisplayCalcTimeScoreSB(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0055c6d0
+// FUNCTION: SADX 0x0055c6d0
 void DisplayCalcRingScoreSB(struct task *tp)
 {
+	DisplayCalcTimeScoreSB(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.z;
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0 + 32.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // STUB: SADX 0x0055c760
@@ -443,9 +496,17 @@ void DisplayCalcEnemyScoreSC(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0055cf70
-void FUN_0055cf70(struct task *tp)
+// FUNCTION: SADX 0x0055cf70
+void FUN_0055cf70(struct task *param_1)
 {
+	struct taskwk *local_8;
+	local_8 = param_1->twp;
+	DisplayCalcEnemyScoreSC(param_1);
+	*(int *)(score_sc + 4) = 0x64;
+	*(int *)(score_sc + 8) = (unsigned int)local_8->scl.y;
+	*(float *)(score_sc + 0xc) = ScreenRaitoY * 240.0 + 144.0;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0 + 32.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // STUB: SADX 0x0055db30

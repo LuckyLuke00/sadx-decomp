@@ -1,4 +1,7 @@
 #include "decls.h"
+void RingNumRunning(float xpos, float ypos, float zpos, int num);
+extern struct NJS_TEXLIST texlist_ring;
+extern struct NJS_TEXANIM anim_ring[1];
 extern int DAT_05b9d838;
 extern float DAT_05b3df40;
 extern int DAT_05b3df4c;
@@ -83,15 +86,24 @@ void dispTobitiri1(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005a7e10
-void FUN_005a7e10(struct NJS_TEXLIST *texlist)
+// FUNCTION: SADX 0x005a7e10
+void FUN_005a7e10(struct NJS_TEXLIST *param_1, int param_2)
 {
+	*(struct NJS_TEXLIST **)((char *)param_2 + 0x18) = &texlist_ring;
+	*(struct NJS_TEXANIM **)((char *)param_2 + 0x1c) = (struct NJS_TEXANIM *)&anim_ring;
+	*(float *)((char *)param_2 + 0xc) = 1.0f;
+	*(float *)((char *)param_2 + 0x10) = 1.0f;
+	*(float *)((char *)param_2 + 8) = 0.0f;
+	*(float *)((char *)param_2 + 4) = 0.0f;
+	*(float *)param_2 = 0.0f;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005a7e50
 void RingDrawShadow(struct task *tp, float tempy, float pushx, float pushz)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005a82d0
 void RingNumRunning(float xpos, float ypos, float zpos, int num)

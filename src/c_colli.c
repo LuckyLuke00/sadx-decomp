@@ -1,5 +1,8 @@
 #include "decls.h"
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
+int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
+extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
+int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 int FUN_004d97c0(struct taskwk *param_1, int param_2);
 void FUN_004d9850(int param_1);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
@@ -18,7 +21,7 @@ int FUN_004d9a50(int param_1);
 extern struct taskwk *DAT_05b9ecd8[16];
 extern struct taskwk *DAT_05ba2490[16];
 int FUN_004da3f0(char *param_1);
-extern int DAT_025d9b40[256];
+extern int DAT_025d9b40[10];
 extern int DAT_05ba0bb0[256];
 extern int DAT_05b9e0b8;
 extern short DAT_05b9e0bc;
@@ -49,22 +52,82 @@ extern int DAT_05ba247c;
 extern int DAT_05ba2480;
 extern int DAT_05ba2484;
 
-// STUB: SADX 0x004cfb80
+// FUNCTION: SADX 0x004cfb80
 long CCL_Init(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id)
 {
-	return (long)0;
+	struct colliwk *local_8g;
+	struct CCL_INFO *local_cg;
+
+	if (tp->twp == 0)
+	{
+		return 0;
+	}
+	if (tp->twp->cwp != 0)
+	{
+		FUN_004da910((int)tp->twp);
+	}
+	local_8g = (struct colliwk *)CAlloc(1, 0xa8);
+	if (local_8g == 0)
+	{
+		return 0;
+	}
+	local_cg = (struct CCL_INFO *)CAlloc(nbInfo, 0x30);
+	if (local_cg == 0)
+	{
+		FUN_004da8f0((int)tp);
+		return 0;
+	}
+	memcpy(local_cg, info, nbInfo * 0x30);
+	local_8g->info = local_cg;
+	local_8g->flag |= 0x8000;
+	if (id == 2 || id == 3 || id == 7)
+	{
+		local_8g->flag |= 0x40;
+	}
+	local_8g->id = id;
+	local_8g->nbInfo = (short)nbInfo;
+	tp->twp->cwp = local_8g;
+	local_8g->mytask = tp;
+	CCL_ClearInfo(tp->twp);
+	CCL_CalcRange(tp->twp);
+	return 1;
 }
 
-// STUB: SADX 0x004cfcb0
+// FUNCTION: SADX 0x004cfcb0
 long CCL_InitShare(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned char id)
 {
-	return (long)0;
+	struct colliwk *local_8;
+
+	if (tp->twp == (struct taskwk *)0)
+	{
+		return 0;
+	}
+	local_8 = (struct colliwk *)CAlloc(1, 0xa8);
+	if (local_8 == (struct colliwk *)0)
+	{
+		return 0;
+	}
+	*(int *)((char *)local_8 + 0xc) = (int)info;
+	local_8->flag = (short)(local_8->flag & ~0x8000);
+	if (id == 2 || id == 3 || id == 7)
+	{
+		local_8->flag = (short)(local_8->flag | 0x40);
+	}
+	local_8->id = id;
+	local_8->nbInfo = (unsigned short)nbInfo;
+	tp->twp->cwp = local_8;
+	local_8->mytask = tp;
+	CCL_ClearInfo(tp->twp);
+	CCL_CalcRange(tp->twp);
+	return 1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004cfd90
 void CCL_ClearInfo(struct taskwk *twp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004d0320
 void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
@@ -205,10 +268,12 @@ void CCL_Analyze()
 	FUN_004d0520();
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004d0930
 void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004d0a20
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
@@ -424,10 +489,12 @@ void CCL_CalcColliPW(struct taskwk *twp1, struct taskwk *twp2)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004d8d20
 void CCL_E2CheckColli()
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004d8e80
 void CCL_OCheckColli()
@@ -469,10 +536,12 @@ void CCL_O2CheckColli()
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004d8f80
 void CCL_CalcRange(struct taskwk *twp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004d90f0
 void CalcColliRange(struct colliwk *cwp)
@@ -684,10 +753,33 @@ struct c_colli_hit_info *CCL_IsHitKindEx(struct taskwk *twp, unsigned char kind)
 	return (struct c_colli_hit_info *)0;
 }
 
-// STUB: SADX 0x004d9d50
-int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3)
+// FUNCTION: SADX 0x004d9d50
+int FUN_004d9d50(struct taskwk *param_1, void *param_2, int param_3)
 {
-	return (int)0;
+	if (DAT_05ba2478 != (int)param_1)
+	{
+		DAT_05ba2478 = (int)param_1;
+		DAT_05ba247c = 0;
+		DAT_05ba2484 = -1;
+		DAT_05ba2480 = -1;
+	}
+	if (DAT_05ba247c != (int)param_2)
+	{
+		DAT_05ba247c = (int)param_2;
+		DAT_05ba2484 = -1;
+		DAT_05ba2480 = -1;
+	}
+	if (DAT_05ba2484 != param_3)
+	{
+		DAT_05ba2484 = -1;
+		DAT_05ba2480 = -1;
+	}
+	DAT_05ba2480 = DAT_05ba2480 + 1;
+	if (DAT_05ba2480 > 0x10)
+	{
+		DAT_05ba2480 = 0x10;
+	}
+	return DAT_05ba2480;
 }
 
 // FUNCTION: SADX 0x004d9e00
@@ -875,9 +967,9 @@ int FUN_004da550()
 }
 
 // FUNCTION: SADX 0x004da560
-void CCL_Entry(struct task *tp)
+long CCL_Entry(struct task *tp)
 {
-	EntryColliList(tp->twp);
+	return EntryColliList(tp->twp);
 }
 
 // FUNCTION: SADX 0x004da8f0

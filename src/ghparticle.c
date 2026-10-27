@@ -1,4 +1,7 @@
 #include "decls.h"
+struct GHPARTICLE_UNIT;
+int FUN_0060fb90(struct GHPARTICLE_UNIT *param_1, struct GHPARTICLE_INFO *param_2, struct GHSPRITE_ANIM_TABLE *param_3);
+void control_disp(struct task *pTask);
 void FUN_0060fb20(int param_1, int param_2);
 struct GHPARTICLE_INFO;
 struct GHSPRITE_ANIM_TABLE;
@@ -9,10 +12,12 @@ void ghParticleUnitInit(struct GHPARTICLE_UNIT *pUnit, struct NJS_POINT3 *pPos, 
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0060f750
 void ghParticleMove(struct GHPARTICLE_UNIT *pPart, struct GHPARTICLE_INFO *pInfo)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x0060f7e0
 void ghParticleSet(struct task *pTask, struct NJS_POINT3 *pPos, struct NJS_POINT3 *pVec, float fStartFrame, float fOffsetZ)

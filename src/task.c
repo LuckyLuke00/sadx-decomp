@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_05baf520;
+extern void ___OutputDebugString(char *str, ...);
 struct task;
 struct task *FUN_004f3870(long level, void (*exec)(struct task *));
 extern void *DAT_05baf4f4;
@@ -112,9 +114,44 @@ void FreeTask(struct task *tp)
 	tp->exec = DestroyTask;
 }
 
-// STUB: SADX 0x004f3c10
+// FUNCTION: SADX 0x004f3c10
 void ExecTask(long level)
 {
+	struct task *local_10;
+	void (*local_8g)(struct task *);
+	struct task *local_cj;
+
+	if (level == 8)
+	{
+		level = 7;
+	}
+	local_10 = (struct task *)DAT_05baf4d0[level];
+	if (local_10 == 0)
+	{
+		return;
+	}
+	while (1)
+	{
+		local_8g = *(void (**)(struct task *))((char *)local_10 + 0x10);
+		local_cj = local_10->next;
+		if (local_cj == local_10)
+		{
+			___OutputDebugString("???????????????[?[?[?[?[?[!!!");
+		}
+		DAT_05baf520 = local_8g;
+		if (local_8g != 0)
+		{
+			DAT_05baf524 = *(void **)((char *)local_10 + 0x30);
+			local_8g(local_10);
+			DAT_05baf524 = 0;
+		}
+		DAT_05baf520 = 0;
+		local_10 = local_cj;
+		if (local_10 == 0)
+		{
+			return;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004f3cc0
@@ -153,10 +190,12 @@ void FUN_004f3cc0(int param_1)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004f3d40
 void FUN_004f3d40(void *param_1)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f3db0
 void FUN_004f3db0(int param_1)
@@ -350,10 +389,12 @@ void *CAlloc(unsigned int num, unsigned int size)
 	return (void *)local_cj;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004f4400
 void Free(void *mp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004f45c0
 struct task *CreateChildTask(unsigned short im, void (*exec)(struct task *), struct task *tp)

@@ -135,3 +135,4 @@ address,from,to,reason
 0x004f3c10,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
 0x004f3d40,100.00%,0.00%,"matched only through code that is not plain C; back to a stub for an honest match"
 0x004251f0,100.00%,96.30%,"matched only through the address of the global before an array, a fake; plain C scores 96.30% until the build places globals at the exe's addresses"
+0x0057d490,95.65%,95.61%,"its std::list globals and the call to FUN_005b5aa0 now have their real types, with no casts; the frame is 4 bytes smaller"

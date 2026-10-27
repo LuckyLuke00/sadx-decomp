@@ -151,13 +151,20 @@ void FUN_005e70e0(void)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005e71b0
 void putTubu(long no)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005e7310
 void init_tubu()
+{
+}
+
+// STUB: SADX 0x005e7430
+void tikalManager(struct task *tp)
 {
 }
 

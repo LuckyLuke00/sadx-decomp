@@ -1,4 +1,11 @@
 #include "decls.h"
+static void InitializeGround();
+extern unsigned char DAT_05b3e065;
+extern void FUN_004fdaf0();
+extern void FUN_004feb40();
+extern void FUN_004fdae0(struct task *param_1);
+extern void FUN_004feb30(struct task *param_1);
+extern void LandLoad(long stage, long act);
 void FUN_004fdaf0();
 void FUN_004feb40();
 void FUN_004fdae0(struct task *param_1);
@@ -29,9 +36,32 @@ extern short DAT_05cbaf48;
 extern int DAT_05cbef54;
 extern int DAT_05cbef58;
 
-// STUB: SADX 0x004fcd50
+// FUNCTION: SADX 0x004fcd50
 void SetLandform(struct task *pTask)
 {
+	struct taskwk *local_8g;
+
+	local_8g = pTask->twp;
+	switch (local_8g->mode)
+	{
+		case 0:
+			InitializeLandWork(pTask);
+			DAT_05cbaf4c = (int)local_8g;
+			FUN_004fed30();
+			pTask->disp = ManageGroundDisplayer;
+			pTask->dest = EndGround;
+			SetMleriRangeRad(400.0f);
+			DAT_05b3e065 = 0;
+		case 2:
+			InitializeGround();
+			local_8g->mode = 1;
+		case 1:
+			ManageGround(pTask);
+			break;
+		default:
+			local_8g->mode = 0;
+			break;
+	}
 }
 
 // FUNCTION: SADX 0x004fcdf0
@@ -57,10 +87,12 @@ void LandLoad(long stage, long act)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004fd020
 void LandRelease(long stage, long act)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004fd1e0
 void LandChangeStage(short ssGap)
@@ -183,15 +215,19 @@ float FUN_004fd8e0(float *param_1, float *param_2)
 	return fVar1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004fd940
 void DrawMotionGround()
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x004fda40
 void MotionGround()
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004fdae0
 void FUN_004fdae0(struct task *param_1)

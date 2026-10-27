@@ -18,6 +18,19 @@ void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp);
 void EnemyPreservePreviousPosition(struct taskwk *twp, struct enemywk *ewp);
 
+// FUNCTION: SADX 0x00609820
+void SnowmanDestructor(struct task *tp)
+{
+	struct taskwk *local_cg;
+	struct motionwk *local_8g;
+	local_cg = tp->twp;
+	local_8g = tp->mwp;
+	if (local_8g != NULL)
+	{
+		FUN_005b5aa0(tp, local_cg, local_8g);
+	}
+}
+
 // STUB: SADX 0x00609ad0
 void FUN_00609ad0(struct task *param_1, struct enemywk *param_2)
 {
@@ -34,9 +47,25 @@ void FUN_00609b40(int param_1)
 	*(float *)(param_1 + 0x2c) = 2.0f - *(float *)(param_1 + 0x30);
 }
 
-// STUB: SADX 0x00609ba0
+// FUNCTION: SADX 0x00609ba0
 void FUN_00609ba0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	struct taskwk *local_8g;
+	float local_cg;
+
+	local_8g = DAT_05baf368[0];
+	local_cg = (local_8g->pos.x - param_1->pos.x) * (local_8g->pos.x - param_1->pos.x) +
+	           (local_8g->pos.z - param_1->pos.z) * (local_8g->pos.z - param_1->pos.z);
+	if (local_cg < param_2->radius * param_2->radius)
+	{
+		if (param_1->mode != -1)
+		{
+			param_1->mode = 1;
+			param_1->smode = 0;
+		}
+		dsPlay_oneshot(0x36d, 0, 0, 0);
+	}
+	SnowmanRectifyPosition(param_1, param_2);
 }
 
 // FUNCTION: SADX 0x00609c40
@@ -68,6 +97,13 @@ void SnowmanRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 // STUB: SADX 0x00609d20
 void FUN_00609d20(struct taskwk *twp, struct enemywk *ewp)
 {
+}
+
+// FUNCTION: SADX 0x00609e40
+void FUN_00609e40(int param_1, int param_2)
+{
+	*(int *)(param_2 + 0x1b4) += *(int *)(param_2 + 0x1ac);
+	*(float *)(param_2 + 0x38) = njSin(*(int *)(param_2 + 0x1b4)) * *(float *)(param_1 + 0x10);
 }
 
 // FUNCTION: SADX 0x0060a0c0
@@ -146,7 +182,7 @@ void snowmanTurn(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x0060a7c0
-void FUN_0060a7c0(char *param_1)
+void FUN_0060a7c0(char *param_1, int param_2)
 {
 }
 
@@ -236,10 +272,12 @@ void DrawSnowmanRange(struct NJS_POINT3 *pos, float radius)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0060c300
 void SnowmanBackSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0060c4e0
 void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struct NJS_POINT3 *spd, float scl)

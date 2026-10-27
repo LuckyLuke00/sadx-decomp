@@ -123,9 +123,16 @@ void hintbox_exec_message(struct task *task_p)
 	}
 }
 
-// STUB: SADX 0x0055f0c0
+// FUNCTION: SADX 0x0055f0c0
 void hintbox_end(struct task *task_p)
 {
+	struct taskwk *local_cg;
+	struct anywk *local_8g;
+	local_cg = task_p->twp;
+	local_8g = task_p->awp;
+	FUN_0055e510(*(void **)((char *)local_8g + 0x20));
+	InputHookDelete(task_p);
+	Free(local_cg->value.ptr);
 }
 
 // FUNCTION: SADX 0x0055f110
@@ -145,4 +152,10 @@ static struct task *hintbox_monitor_set(struct task *task_p, enum monitor_mode m
 // STUB: SADX 0x0055f280
 void hintbox_monitor_exec(struct task *montask_p)
 {
+}
+
+// FUNCTION: SADX 0x0055f390
+long FUN_0055f390(struct task *param_1)
+{
+	return (long)hintbox_monitor_set(param_1, (enum monitor_mode)1);
 }

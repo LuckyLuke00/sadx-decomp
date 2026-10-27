@@ -1,4 +1,11 @@
 #include "decls.h"
+extern int DAT_05cd0f24;
+void SeqNext();
+extern char DAT_05bafb83;
+extern char DAT_05bafb84;
+extern char DAT_05bafb8d;
+extern unsigned char DAT_05bafc87;
+extern unsigned char DAT_05bafc89;
 extern int DAT_05ccde10;
 void dsLoadEVBossSound();
 struct task *GetPlayerTaskPointer(unsigned char pno);
@@ -103,9 +110,50 @@ void SeqSetPlayer(int no)
 	DAT_05baf544 = (int)SeqGetSectionList(DAT_05bafd18);
 }
 
-// STUB: SADX 0x004f4c40
+// FUNCTION: SADX 0x004f4c40
 void SeqSetSection(int sec)
 {
+	if (FUN_004f4bb0() == 0)
+		return;
+	if (DAT_05baf544 == 0)
+		return;
+	if (*(short *)((char *)DAT_05b3ea28 + 2) == 0 && *(short *)((char *)DAT_05b3ea28 + 4) == 0)
+	{
+		int local_8 = *(short *)((char *)DAT_05b3ea28 + 4) * 0x28 + DAT_05baf544;
+		SetEntranceNumber(*(signed char *)((char *)local_8 + 6));
+		SetStageNumber(*(unsigned char *)((char *)local_8 + 4), *(unsigned char *)((char *)local_8 + 5));
+		*(short *)((char *)DAT_05b3ea28 + 8) = (short)((*(unsigned char *)((char *)local_8 + 4) << 8) | *(unsigned char *)((char *)local_8 + 5));
+		*(short *)((char *)DAT_05b3ea28 + 6) = *(short *)((char *)local_8 + 6);
+		*(short *)((char *)DAT_05b3ea28 + 10) = (short)((DAT_05b9d724 << 8) | DAT_05b9d744);
+	}
+	else if (*(short *)((char *)DAT_05b3ea28 + 4) < 0)
+	{
+		if (DAT_05bafd18 == 4)
+		{
+			SeqResetLastScenario();
+		}
+		else
+		{
+			SetEntranceNumber(0);
+			SetStageNumber(0x1a, 3);
+		}
+	}
+	else
+	{
+		SetStageNumber((unsigned char)((*(unsigned short *)((char *)DAT_05b3ea28 + 8)) >> 8), (unsigned char)((*(unsigned short *)((char *)DAT_05b3ea28 + 8)) & 0xff));
+		SetEntranceNumber(*(signed char *)((char *)DAT_05b3ea28 + 6));
+	}
+	slEventBossName = 0xffffffff;
+	if (GetPlayerNumber() == 0 && (unsigned char)DAT_05bafb83 == 1 && (unsigned char)DAT_05bafb84 == 0 && (unsigned char)DAT_05bafb8d == 1)
+	{
+		SetEntranceNumber(0);
+		SetStageNumber(0x1a, 2);
+	}
+	if (GetPlayerNumber() == 6 && DAT_05bafc87 == 0 && DAT_05bafc89 == 1)
+	{
+		SetEntranceNumber(0);
+		SetStageNumber(0x20, 0);
+	}
 }
 
 // STUB: SADX 0x004f4e10
@@ -368,15 +416,37 @@ long CheckEggCarrierInTheSea(void)
 	return SeqCheckFlag(flgEggCarrierInTheSea[GetPlayerNumber()]);
 }
 
-// STUB: SADX 0x004f5830
+// FUNCTION: SADX 0x004f5830
 void EV_PcNpcInit()
 {
+	if (DAT_05cd0f24 != 0)
+		return;
+	switch (((DAT_05b9d724 << 8 | DAT_05b9d744) >> 8) & 0xff)
+	{
+		case 0x1a:
+			SSPcInit();
+			break;
+		case 0x1d:
+			ECPcSet();
+			break;
+		case 0x20:
+			EC_CPcSet();
+			break;
+		case 0x21:
+			MRPcInit();
+			break;
+		case 0x22:
+			PASTPcInit();
+			break;
+	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004f58c0
 void EV_PcNpcEnd()
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f5950
 void SeqTaskFadeIn(struct task *tp)
@@ -412,10 +482,12 @@ void SeqTaskFadeIn(struct task *tp)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004f5a10
 void DisplayFade(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f5ac0
 void SeqTaskFadeOut(struct task *tp)

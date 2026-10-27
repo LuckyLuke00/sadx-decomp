@@ -120,10 +120,12 @@ void FUN_005945c0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00594630
 void SpinnaNormalA(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005946c0
 void FUN_005946c0(struct taskwk *param_1, struct enemywk *param_2)
@@ -138,10 +140,12 @@ void FUN_005946c0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00594710
 void FUN_00594710(void *param_1, void *param_2)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00594c00
 void FUN_00594c00(struct taskwk *param_1, struct enemywk *param_2)
@@ -150,10 +154,12 @@ void FUN_00594c00(struct taskwk *param_1, struct enemywk *param_2)
 	SpinnaDraw(param_1, param_2);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00594c30
 void SpinnaDamage(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x00594d30
 void EnemySpinnaB(struct task *tp)

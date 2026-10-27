@@ -1,4 +1,5 @@
 #include "decls.h"
+void ef_random_ring(struct taskwk *twp);
 extern struct NJS_POINT3 DAT_009c610c;
 extern struct CCL_INFO itembox_colli_info0[1];
 void FUN_005ddc80(struct task *param_1);

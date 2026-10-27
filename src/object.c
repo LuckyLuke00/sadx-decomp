@@ -377,10 +377,12 @@ long ObjectScaleNormal(struct task *tp)
 	return 0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00500ae0
 void ObjectScaleDisplay(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x00500c70
 float FUN_00500c70(float param_1, float param_2, float param_3)
@@ -711,6 +713,19 @@ void ObjectGCollisionExecute___Mesh(struct task *tp)
 	{
 		FUN_00501770((struct taskwk *)tp);
 	}
+}
+
+// FUNCTION: SADX 0x00501770
+void FUN_00501770(struct taskwk *param_1)
+{
+	struct taskwk *local_8 = *(struct taskwk **)((char *)param_1 + 0x20);
+	if (DAT_05b9d838 != 0)
+		return;
+	if (0 == SetObjectTexture())
+	{
+		___njSetTexture((struct NJS_TEXLIST *)*(int **)((char *)local_8 + 0x10));
+	}
+	occ_DrawObject(local_8, (struct obj *)*(int **)((char *)local_8 + 8), 1.0f);
 }
 
 // STUB: SADX 0x005017c0

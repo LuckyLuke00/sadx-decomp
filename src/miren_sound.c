@@ -55,9 +55,22 @@ void MirenSoundStartBgm(int bgmId)
 	RoundBGM_Play(bgmId);
 }
 
-// STUB: SADX 0x0056f0a0
+// FUNCTION: SADX 0x0056f0a0
 void MirenSoundPlayOneShotSE(int se, const struct NJS_POINT3 *pos_p, const struct VolumeInfo *info_p)
 {
+	struct NJS_POINT3 *local_8g;
+	int local_cg;
+
+	if (DAT_05b42a7c == NULL)
+	{
+		dsPlay_oneshot(se, 0, 0, 0);
+	}
+	else
+	{
+		local_8g = (struct NJS_POINT3 *)((char *)DAT_05b42a7c + 0x20);
+		local_cg = MirenSoundGetVolumeOffset(pos_p, info_p);
+		dsPlay_oneshot_v(se, 0, 0, local_cg, local_8g->x, local_8g->y, local_8g->z);
+	}
 }
 
 // FUNCTION: SADX 0x0056f120

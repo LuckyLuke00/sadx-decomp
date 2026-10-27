@@ -57,15 +57,19 @@ void PoliceWait(struct taskwk *twp, struct enemywk *ewp)
 	twp->ang.z = AdjustAngle(twp->ang.z, 0, 0xb0);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005cf6d0
 void PoliceCheckTerritory(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005cf800
 void PoliceMove(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005cfd80
 void PoliceScramble(struct taskwk *twp, struct enemywk *ewp)
@@ -144,4 +148,9 @@ void PoliceReturn(struct taskwk *twp, struct enemywk *ewp)
 	ewp->nframe += 0.2f;
 	matlist_nisepat_nisepat_grid1[0].attrflags |= 0x10000000;
 	matlist_nisepat_nisepat_grid3[0].attrflags |= 0x10000000;
+}
+
+// STUB: SADX 0x005d0ac0
+void FUN_005d0ac0(struct taskwk *twp, struct enemywk *ewp)
+{
 }

@@ -1,6 +1,16 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+extern short DAT_05b9d724;
+extern short DAT_05b9d744;
+void PConvertVector_P2G(struct taskwk *twp, struct NJS_POINT3 *vp);
+extern long PCheckPower(struct taskwk *twp, long *angle, float *stroke);
+extern float DAT_05b3ebc8;
+extern float DAT_05b3ebcc;
+extern float DAT_05b3ebd0;
+void PConvertVector_G2P(struct taskwk *twp, struct NJS_POINT3 *vp);
+long PCheckPower(struct taskwk *twp, long *angle, float *stroke);
+void PAdjustAngleYS(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, long angy);
 long PCheckColliAngle(struct taskwk *twp, struct motionwk2 *mwp);
 void PlayerFaceModelInterpolateSub(struct obj *objbufp, struct PL_FACE *pfp, short *ip);
 void EffectBarrier(struct task *tp);
@@ -192,13 +202,47 @@ void PGetAccelerationFly(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 {
 }
 
-// STUB: SADX 0x004df400
+// FUNCTION: SADX 0x004df400
 void PGetAccelerationGliK(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	long angle;
+	float accel;
+	struct NJS_POINT3 v;
+	if (twp->flag & 0x4000)
+	{
+		return;
+	}
+	mwp->acc.y = *(float *)((char *)pwp + 0x114) * 0.949999988079071;
+	v = mwp->acc;
+	v.x = DAT_05b3ebc8 * *(float *)((char *)pwp + 0x114) + v.x;
+	v.y = DAT_05b3ebcc * *(float *)((char *)pwp + 0x114) + v.y;
+	v.z = DAT_05b3ebd0 * *(float *)((char *)pwp + 0x114) + v.z;
+	PConvertVector_G2P(twp, &v);
+	v.x = *(float *)((char *)pwp + 0xf0) * 0.5 * *(float *)((char *)pwp + 0x38) + v.x;
+	v.y = *(float *)((char *)pwp + 0xf4) * 0.5 * *(float *)((char *)pwp + 0x3c) + v.y;
+	v.z = *(float *)((char *)pwp + 0xf8) * 0.5 * *(float *)((char *)pwp + 0x40) + v.z;
+	if (PCheckPower(twp, &angle, &accel) == 0)
+	{
+		accel = 0.0;
+		*(int *)((char *)mwp + 0x20) = twp->ang.y;
+	}
+	else
+	{
+		accel = *(float *)((char *)pwp + 0xdc) * accel;
+		*(int *)((char *)mwp + 0x20) = angle;
+		PAdjustAngleY(twp, mwp, pwp, *(int *)((char *)mwp + 0x20));
+	}
+	v.x = v.x + accel;
+	pwp->acc = v;
 }
 
 // STUB: SADX 0x004df580
 void FUN_004df580(struct task *tp, int param_2, struct NJS_POINT3 *out)
+{
+}
+
+// STUB: SADX 0x004e0580
+void FUN_004e0580(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
@@ -222,9 +266,22 @@ void PResetAngle(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp
 {
 }
 
-// STUB: SADX 0x004e23a0
+// FUNCTION: SADX 0x004e23a0
 void PResetAngleForBuilding(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	struct NJS_POINT3 v2;
+	float local_18;
+	v2 = pwp->spd;
+	local_18 = v2.x * v2.x + v2.y * v2.y + v2.z * v2.z;
+	if (*(float *)((char *)pwp + 0xd0) * *(float *)((char *)pwp + 0xd0) < local_18)
+	{
+		return;
+	}
+	PConvertVector_P2G(twp, &v2);
+	twp->ang.x = AdjustAngle(twp->ang.x, 0, 0x800);
+	twp->ang.z = AdjustAngle(twp->ang.z, 0xc000, 0x800);
+	PConvertVector_G2P(twp, &v2);
+	pwp->spd = v2;
 }
 
 // FUNCTION: SADX 0x004e2770
@@ -311,15 +368,19 @@ long PSetPositionOn1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk
 	return (long)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004ebeb0
 void PConvertVector_G2P(struct taskwk *twp, struct NJS_POINT3 *vp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x004ebf90
 void PConvertVector_P2G(struct taskwk *twp, struct NJS_POINT3 *vp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x004ec070
 void PConvertVector_G2N(struct NJS_POINT3 *np, struct NJS_POINT3 *vp, long angy)
@@ -542,10 +603,12 @@ void KillHimByFallingDownP(unsigned char pno)
 	ExecFallingDownP(pno);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004f0160
 void ExecFallingDownP(unsigned char pno)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f02a0
 void FUN_004f02a0(struct task *param_1, unsigned char param_2)
@@ -655,9 +718,21 @@ int FUN_004f07f0(int param_1)
 	return local_10;
 }
 
-// STUB: SADX 0x004f0860
+// FUNCTION: SADX 0x004f0860
 void FUN_004f0860(unsigned char param_1, float param_2, float param_3)
 {
+	if (DAT_05baf368[param_1] == 0)
+	{
+		return;
+	}
+	int local_8;
+	local_8 = (int)DAT_05baf368[param_1]->ewp;
+	*(unsigned char *)(local_8 + 0x24) = 2;
+	*(float *)(local_8 + 0x28) = param_2;
+	*(float *)(local_8 + 0x30) = param_3;
+	*(float *)(local_8 + 0x34) = 0.0f;
+	*(float *)(local_8 + 0x38) = 0.0f;
+	DAT_05baf368[param_1]->flag |= 0x4000;
 }
 
 // FUNCTION: SADX 0x004f08e0
@@ -784,9 +859,27 @@ void PlayerLookingAt(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004f0c20
+// FUNCTION: SADX 0x004f0c20
 void KeepPlayersEyesOnThePointP(unsigned char pno, struct NJS_POINT3 *point, unsigned long count)
 {
+	struct task *local_8g;
+
+	if (DAT_05baf368[pno] == 0)
+	{
+		return;
+	}
+	if (point == 0)
+	{
+		return;
+	}
+	local_8g = CreateElementalTask(8, 5, PlayerLookingAt);
+	if (local_8g != 0)
+	{
+		local_8g->dest = PlayerLookingAtDestructor;
+		local_8g->awp->work.ub[0] = pno;
+		local_8g->awp->work.ul[2] = count;
+		SetLookingPointP(pno, point);
+	}
 }
 
 // FUNCTION: SADX 0x004f0c90
@@ -840,10 +933,12 @@ void SetInputP(unsigned char pno, signed char mode)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004f0e00
 void SetVelocityP(unsigned char pno, float x, float y, float z)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f0f00
 void SetSpringVelocityP(unsigned char pno, float x, float y, float z)
@@ -893,9 +988,27 @@ void SetVelocityAndRotationAndNoconTimeP(unsigned char pno, struct NJS_POINT3 *v
 {
 }
 
-// STUB: SADX 0x004f12d0
+// FUNCTION: SADX 0x004f12d0
 void SetVelocityAndRotationAndNoconTimeWithSpinDashP(unsigned char pno, struct NJS_POINT3 *v, long *ang, long tm)
 {
+	struct NJS_POINT3 w;
+	struct taskwk *local_20;
+	int local_1c;
+	int local_18;
+	local_20 = DAT_05baf368[pno];
+	local_18 = DAT_05ba3328[pno];
+	local_1c = DAT_05ba9348[pno];
+	*(short *)((char *)local_1c + 0xa) = (short)tm;
+	local_20->flag = local_20->flag | 0x1000;
+	local_20->smode = 0x19;
+	*(struct NJS_POINT3 *)((char *)local_1c + 0x38) = *v;
+	local_20->ang.x = *ang;
+	local_20->ang.y = 0x4000 - ang[1];
+	*(int *)((char *)local_18 + 0x20) = local_20->ang.y;
+	local_20->ang.z = ang[2];
+	w = *v;
+	PConvertVector_P2G(local_20, &w);
+	*(struct NJS_POINT3 *)((char *)local_18 + 4) = w;
 }
 
 // FUNCTION: SADX 0x004f13d0
@@ -912,10 +1025,12 @@ void SetRotationP(unsigned char pno, long angx, long angy, long angz)
 	*(int *)(local_cg + 0x1c) = angz;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004f1430
 void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f15e0
 void SetAscendPowerP(unsigned char pno, float x, float y, float z)
@@ -1146,9 +1261,30 @@ void GetSpeedUpP(unsigned char pno)
 	}
 }
 
-// STUB: SADX 0x004f1fc0
-static void PlayerSpeedUp(struct task *tp)
+// FUNCTION: SADX 0x004f1fc0
+void PlayerSpeedUp(struct task *tp)
 {
+	int local_8;
+	local_8 = DAT_05ba9348[tp->awp->work.ub[0]];
+	if (local_8 == 0)
+	{
+		FreeTask(tp);
+	}
+	else
+	{
+		tp->awp->work.f[1] = *(float *)(local_8 + 0xd8);
+		tp->awp->work.f[2] = *(float *)(local_8 + 0xac);
+		tp->awp->work.f[3] = *(float *)(local_8 + 0x104);
+		*(float *)(local_8 + 0xd8) = *(float *)(local_8 + 0xd8) * 2.0f;
+		*(float *)(local_8 + 0xac) = *(float *)(local_8 + 0xac) * 2.0f;
+		*(float *)(local_8 + 0x104) = *(float *)(local_8 + 0x104) * 2.0f;
+		if (((DAT_05b9d724 << 8) | DAT_05b9d744) != 0x401)
+		{
+			Jingle_Play(0x55);
+		}
+		tp->exec = PlayerSpeedUpMan;
+		tp->dest = PlayerSpeedUpDest;
+	}
 }
 
 // FUNCTION: SADX 0x004f20a0

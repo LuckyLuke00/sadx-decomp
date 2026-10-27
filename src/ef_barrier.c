@@ -26,10 +26,12 @@ void ThunderB(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b5280
 void ef_barrier_DrawModel(struct NJS_MODEL *mdl)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005b5300
 void EffectBarrier(struct task *tp)
@@ -40,10 +42,12 @@ void EffectBarrier(struct task *tp)
 	NBarrier(tp);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b5340
 void NBarrier(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005b5430
 void NormalB(struct task *tp)
@@ -131,10 +135,12 @@ void MutekiDisp(struct task *tp)
 	njPopMatrix(1);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b56b0
 void Muteki(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005b5830
 void CMuteki(struct task *tp)

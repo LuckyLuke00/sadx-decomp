@@ -1,8 +1,9 @@
 #include "decls.h"
+extern int DAT_0629c724;
 unsigned long FUN_005750b0(float *param_1);
 unsigned long FUN_004951c0(unsigned long param_1, unsigned long param_2);
 extern unsigned long DAT_05cd25f4;
-extern long DAT_05cd25a4[24];
+extern long DAT_05cd25a4[20];
 extern int DAT_05cd2588;
 extern long DAT_05cd25f8;
 
@@ -96,9 +97,25 @@ unsigned long FUN_005750b0(float *param_1)
 	return (unsigned long)0;
 }
 
-// STUB: SADX 0x00575150
+// FUNCTION: SADX 0x00575150
 void ghGetPvrTextureSize(struct NJS_TEXLIST *texlist, int index, int *w, int *h)
 {
+	int local_8g;
+	int local_cg;
+	if (texlist == 0)
+	{
+		texlist = (struct NJS_TEXLIST *)DAT_0629c724;
+	}
+	local_8g = texlist->textures[index].texaddr;
+	local_cg = local_8g + 0x18;
+	if (w != 0)
+	{
+		*w = *(int *)(local_cg + 0xc);
+	}
+	if (h != 0)
+	{
+		*h = *(int *)(local_cg + 0x10);
+	}
 }
 
 // STUB: SADX 0x005751b0

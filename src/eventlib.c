@@ -353,6 +353,13 @@ void EV_Exec2()
 	DAT_05cda168 = 0;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0056ab80
+void FUN_0056ab80(int *param_1, void (*param_2)(void (*)(int)))
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0056ac20
 void EV_Destruct()
 {
@@ -655,9 +662,19 @@ void FUN_0056b810(int param_1, unsigned char *param_2)
 {
 }
 
-// STUB: SADX 0x0056b940
+// FUNCTION: SADX 0x0056b940
 void EV_LookObject(struct task *tp, struct task *target, float x, float y, float z)
 {
+	struct eventwk *local_8;
+	if (tp != 0)
+	{
+		local_8 = tp->twp->ewp;
+		local_8->look.mode = 3;
+		*(struct task **)((char *)local_8 + 0x20) = target;
+		local_8->look.pos.x = x;
+		local_8->look.pos.y = y;
+		local_8->look.pos.z = z;
+	}
 }
 
 // FUNCTION: SADX 0x0056b990
@@ -744,10 +761,12 @@ void FUN_0056bb50(struct task *param_1)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0056bd10
 void CalcEventCameraPers()
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x0056bdc0
 int HokanInt(int mode, int time, int count, int va, int vb)
@@ -821,10 +840,12 @@ void EV_CameraPos(int mode, int time, float x, float y, float z)
 	FUN_0056ccc0(time);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0056ccc0
 void FUN_0056ccc0(int param_1)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x0056cd10
 void EV_CameraPosORY(int mode, int time, struct task *tp, float x, float y, float z)
@@ -841,9 +862,18 @@ void EV_CameraChaseRM(int mode, int time, struct task *tp, float height, long x0
 {
 }
 
-// STUB: SADX 0x0056d010
+// FUNCTION: SADX 0x0056d010
 void EV_CameraPerspective(int mode, int time, long ang)
 {
+	int *local_8;
+	local_8 = (int *)&DAT_05ccdd28;
+	*(char *)((char *)local_8 + 0xac) = (char)mode;
+	*(short *)((char *)local_8 + 0xae) = (short)time;
+	*(short *)((char *)local_8 + 0xb0) = 0;
+	*(int *)((char *)local_8 + 0xb8) = *(int *)((char *)local_8 + 0xb4);
+	*(int *)((char *)local_8 + 0xbc) = (int)ang;
+	if (time == 0)
+		CalcEventCameraPers();
 }
 
 // STUB: SADX 0x0056d070

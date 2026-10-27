@@ -1,4 +1,13 @@
 #include "decls.h"
+extern void SetInputP(unsigned char pno, signed char mode);
+extern void CharColliOn(struct taskwk *twp);
+void GetRocketBarOfs(struct taskwk *twp, struct NJS_ACTION *anm, float fnum, struct NJS_POINT3 *vec_ans);
+void GetAngleYZV(const struct NJS_POINT3 *vec, long *ang_y, long *ang_z);
+extern float DAT_05b3ec0c;
+extern float DAT_05b3ec10;
+extern float DAT_05b3ec14;
+float njSqrt(float param_1);
+extern "C" double atan2(double v, double u);
 extern struct NJS_MODEL *DAT_05a86a68;
 extern struct NJS_MODEL DAT_05a86ed4;
 extern "C" int rand(void);
@@ -37,9 +46,39 @@ void ClrRocketTaskWorkBuff()
 	}
 }
 
-// STUB: SADX 0x005b7c60
+// FUNCTION: SADX 0x005b7c60
 void InitRocketBase_H(struct task *tp)
 {
+	struct taskwk *local_8g;
+	struct anywk *local_10g;
+	struct obj *local_cg;
+
+	local_8g = tp->twp;
+	local_10g = tp->awp;
+	local_8g->counter.ptr = &DAT_05a86ed4;
+	tp->disp = DrawRocketBase;
+	tp->dest = DstrRocketBase;
+	local_8g->mode = 1;
+	local_8g->smode = local_8g->ang.x & 0xf;
+	local_8g->ang.x = 0;
+	DAT_05b3ec0c = local_8g->scl.x - local_8g->pos.x;
+	DAT_05b3ec10 = local_8g->scl.y - local_8g->pos.y;
+	DAT_05b3ec14 = local_8g->scl.z - local_8g->pos.z;
+	GetAngleYZV((const struct NJS_POINT3 *)&DAT_05b3ec0c, &local_8g->ang.y, (long *)&local_10g->work.ul[1]);
+	local_10g->work.f[0] = DAT_05b3ec0c * DAT_05b3ec0c + DAT_05b3ec14 * DAT_05b3ec14;
+	local_cg = EntryMobileLandCollsion(tp, DAT_05a86a68);
+	if (local_cg != 0)
+	{
+		local_8g->timer.l = (long)local_cg;
+		SetMobileLandCollsionData(local_8g, local_cg);
+	}
+}
+
+// FUNCTION: SADX 0x005b7d60
+void GetAngleYZV(const struct NJS_POINT3 *vec, long *ang_y, long *ang_z)
+{
+	*ang_y = -(long)(atan2((double)vec->z, (double)vec->x) * 65536.0 / 6.283184);
+	*ang_z = (long)(atan2((double)vec->y, (double)njSqrt(vec->z * vec->z + vec->x * vec->x)) * 65536.0 / 6.283184);
 }
 
 // FUNCTION: SADX 0x005b7e00
@@ -138,14 +177,34 @@ void ObjectRocket_Wait(struct task *tp)
 	CCL_Init(tp, (struct CCL_INFO *)&rocket_colli_info, 1, 4);
 }
 
-// STUB: SADX 0x005b8590
-void FUN_005b8590(struct taskwk *twp, struct motionwk *mwp)
+// FUNCTION: SADX 0x005b8590
+void FUN_005b8590(struct taskwk *param_1, struct motionwk *param_2)
 {
+	float local_8;
+
+	local_8 = param_2->weight - 1.0f;
+	param_2->weight = local_8;
+	if (local_8 > 0.0f)
+	{
+		param_1->pos.y += param_2->spd.y;
+	}
+	else
+	{
+		param_1->mode = 2;
+		GetRocketBarOfs(param_1, (struct NJS_ACTION *)param_1->counter.ptr, param_1->timer.f, (struct NJS_POINT3 *)&DAT_05b3ec0c);
+		param_2->acc.x = param_1->pos.x + DAT_05b3ec0c;
+		param_2->acc.y = param_1->pos.y + DAT_05b3ec10;
+		param_2->acc.z = param_1->pos.z + DAT_05b3ec14;
+	}
 }
 
-// STUB: SADX 0x005b8900
+// FUNCTION: SADX 0x005b8900
 void ObjectRocket_Move_Pl(struct task *tp)
 {
+	void (*local_8)(struct task *);
+	Rocket_Move_Pl(tp);
+	local_8 = tp->disp;
+	local_8(tp);
 }
 
 // FUNCTION: SADX 0x005b8ae0
@@ -157,9 +216,37 @@ void ObjectRocket_Change(struct task *tp)
 	local_8(tp);
 }
 
-// STUB: SADX 0x005b8c90
+// FUNCTION: SADX 0x005b8c90
 void ObjectRocket_Move(struct task *tp)
 {
+	struct taskwk *local_8g;
+	int local_cj;
+	void (*local_10)(struct task *);
+
+	local_8g = tp->twp;
+	if ((local_8g->btimer & 8) != 0)
+	{
+		local_cj = *(int *)((char *)local_8g->value.ptr + 0x20);
+		tp->exec = FUN_0049e8b0;
+		local_8g->mode = 8;
+		SetInputP(*(unsigned char *)(local_cj + 8), 0x18);
+		CharColliOn((struct taskwk *)local_cj);
+	}
+	else
+	{
+		if ((local_8g->btimer & 0x10) == 0)
+		{
+			Rocket_Hold_H(tp);
+		}
+		else
+		{
+			Rocket_Hold_V(tp);
+		}
+		local_10 = tp->disp;
+		local_10(tp);
+		SetRocketSmoke(tp);
+		Move_Rocket(tp);
+	}
 }
 
 // STUB: SADX 0x005b8d40
@@ -184,6 +271,11 @@ void ObjectRocketV_Fade(struct task *tp)
 
 // STUB: SADX 0x005b9060
 void ObjectRocketV_Dead(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005b93c0
+void FUN_005b93c0(struct task *param_1)
 {
 }
 

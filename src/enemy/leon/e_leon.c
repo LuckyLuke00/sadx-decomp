@@ -1,4 +1,9 @@
 #include "decls.h"
+void FUN_005c0440(struct task *param_1, struct enemywk *param_2);
+void FUN_005c0a60(struct taskwk *param_1, struct enemywk *param_2);
+void FUN_008d8710(struct taskwk *param_1, struct enemywk *param_2);
+void FUN_005c0b80(struct taskwk *param_1, struct enemywk *param_2);
+void LeonDraw(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005c09e0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005c0a60(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005c0b80(struct taskwk *param_1, struct enemywk *param_2);
@@ -30,7 +35,7 @@ void FUN_005c04d0(void *param_1, struct enemywk *param_2)
 }
 
 // FUNCTION: SADX 0x005c0950
-void FUN_005c0950(struct taskwk *param_1)
+void FUN_005c0950(struct taskwk *param_1, int param_2)
 {
 	CreateFlash2(param_1->pos.x, param_1->pos.y + 5.0f, param_1->pos.z, 1.4f);
 	CreateExpSpring(param_1, 8);
@@ -52,13 +57,22 @@ void FUN_005c09e0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005c0a60
 void FUN_005c0a60(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005c0b80
 void FUN_005c0b80(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
+
+// STUB: SADX 0x005c0d20
+void FUN_005c0d20(void *param_1, void *param_2)
 {
 }
 

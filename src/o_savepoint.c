@@ -43,6 +43,11 @@ void *FUN_005a5a20()
 	return (void *)0;
 }
 
+// STUB: SADX 0x005a5a70
+void rotateBall(struct obj *obj)
+{
+}
+
 // STUB: SADX 0x005a5cf0
 void FUN_005a5cf0(struct task *tp, struct taskwk *twp)
 {

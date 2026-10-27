@@ -1,9 +1,10 @@
 #include "decls.h"
+void FUN_0056dc40(struct MSGC *param_1);
+void FUN_0056db40(struct MSGC *param_1, long param_2, long param_3);
 extern void disp_message_get(struct MSGC *msgc_p, char *message_p);
 extern void disp_message_after(struct MSGC *msgc_p);
 void FUN_0056dc40(struct MSGC *param_1);
 void FUN_0056db40(struct MSGC *param_1, long param_2, long param_3);
-static void disp_message_wait(const struct HintMessageString *message_p);
 extern int DAT_05b9d838;
 void FUN_0056dc40(struct MSGC *param_1);
 void FUN_0056db40(struct MSGC *param_1, long param_2, long param_3);
@@ -216,10 +217,18 @@ int FUN_0056d7e0(short param_1)
 	return (int)param_1 & local_8;
 }
 
-// STUB: SADX 0x0056d800
+// FUNCTION: SADX 0x0056d800
 short * FUN_0056d800(short *param_1)
 {
-	return (short *)0;
+	while (*param_1 != -1)
+	{
+		if (*param_1 == -2)
+		{
+			return param_1;
+		}
+		param_1 = param_1 + 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0056d830
@@ -238,10 +247,12 @@ void disp_message_get(struct MSGC *msgc_p, char *message_p)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0056da30
 void field_msg_front_fade(struct MSGC *msgc_p, long time, long rate)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0056daf0
 void field_msg_back_fade(struct MSGC *msgc_p, long time, long rate)
@@ -264,10 +275,12 @@ void disp_message_after(struct MSGC *msgc_p)
 	PauseEnable();
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0056dc40
 void FUN_0056dc40(struct MSGC *msgc)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x0056dcc0
 void disp_message_draw_wait_button(struct MSGC *msgc_p)
@@ -284,10 +297,12 @@ void disp_main_messageTime(char * *message)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0056e210
 void field_msg_create_man(void (*thread_func)(void *), void *arg_p, long adx_use)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0056e2b0
 void field_msg_wait_message_loop(struct task *task_p)

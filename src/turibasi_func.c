@@ -1,6 +1,8 @@
 #include "decls.h"
 void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
 unsigned char FUN_008dcc50(struct taskwk *param_1, struct NJS_POINT3 *param_2);
+void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
+unsigned char FUN_008dcc50(struct taskwk *param_1, struct NJS_POINT3 *param_2);
 void BridgeCheckCollision(struct taskwk *twp);
 void BridgeDeform(struct taskwk *twp);
 void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
@@ -124,7 +126,27 @@ void BridgeDeform(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x008dd2e0
+// FUNCTION: SADX 0x008dd2e0
 void ObjectTuribasiDestructor(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (local_8->counter.ptr != 0)
+	{
+		if (*(void **)((char *)local_8->counter.ptr + 4) != 0)
+		{
+			if (**(void ***)((char *)local_8->counter.ptr + 4) != 0)
+				Free(**(void ***)((char *)local_8->counter.ptr + 4));
+			Free(*(void **)((char *)local_8->counter.ptr + 4));
+		}
+		WithdrawCollisionEntry(tp, (struct obj *)local_8->counter.ptr);
+		ReleaseMobileLandObject((struct obj *)local_8->counter.ptr);
+		local_8->counter.ptr = 0;
+	}
+	if (local_8->timer.ptr != 0)
+	{
+		Free(local_8->timer.ptr);
+		local_8->timer.ptr = 0;
+	}
 }
