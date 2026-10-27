@@ -386,6 +386,14 @@ def apply_function(text, address, decls, func):
         lines += func
     if re.match(r"static\b", sig):
         decls = decls + [sig + ";"]  # callers above it need a prototype, and decls never declares a static function
+    return with_declarations("\n".join(lines) + "\n", decls)
+
+
+def with_declarations(text, decls):
+    """TEXT with each line of DECLS it lacks after its includes."""
+    lines = text.split("\n")
+    if lines[-1] == "":
+        lines.pop()
     includes = [i for i, line in enumerate(lines[:first_function_line(lines)]) if line.startswith("#include")]
     seen = {line.strip() for line in lines}
     new = [d for d in dict.fromkeys(decls) if d.strip() not in seen]
