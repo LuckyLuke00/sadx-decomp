@@ -23,9 +23,40 @@ static void Disp(struct task *tp)
 	npSetZCompare();
 }
 
-// STUB: SADX 0x0049c320
+// FUNCTION: SADX 0x0049c320
 static void Exec(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct NJS_POINT3 pos;
+	if (!CheckRangeOut(tp))
+	{
+		if (!IsMissionDispFlag(tp))
+		{
+			DestroyTask(tp);
+			return;
+		}
+		switch (var1->mode)
+		{
+		case 0:
+			if (isRangeMission((struct NJS_POINT3 *)((char *)DAT_05baf368[0] + 0x20), &var1->pos, 1600.0f))
+			{
+				pos.x = var1->pos.x;
+				pos.y = var1->pos.y + 5.0;
+				pos.z = var1->pos.z;
+				SetLookingPointP(0, &pos);
+				var1->mode = 1;
+			}
+			break;
+		case 1:
+			if (!isRangeMission((struct NJS_POINT3 *)((char *)DAT_05baf368[0] + 0x20), &var1->pos, 1640.0f))
+			{
+				CancelLookingAtP(0);
+				var1->mode = 0;
+			}
+			break;
+		}
+		Disp(tp);
+	}
 }
 
 // FUNCTION: SADX 0x0049c420

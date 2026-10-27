@@ -1043,6 +1043,9 @@ struct NJS_TEXLIST texlist_sb[2];
 // GLOBAL: SADX 0x025dea94
 int sonic_snowboard_design;
 
+// GLOBAL: SADX 0x025deb04
+struct particle_entry particle_kiran;
+
 // GLOBAL: SADX 0x025deb14
 long boolCheckRangeIn;
 
@@ -7022,6 +7025,12 @@ struct task *DAT_05edd784;
 // GLOBAL: SADX 0x05edd7bc
 struct task *DAT_05edd7bc;
 
+// GLOBAL: SADX 0x05edd820
+unsigned char DAT_05edd820;
+
+// GLOBAL: SADX 0x05edd821
+unsigned char DAT_05edd821;
+
 // GLOBAL: SADX 0x05edd870
 struct task *DAT_05edd870;
 
@@ -7037,8 +7046,14 @@ struct task *DAT_05edd888;
 // GLOBAL: SADX 0x05edd88c
 void *DAT_05edd88c;
 
+// GLOBAL: SADX 0x05edd898
+void *DAT_05edd898;
+
 // GLOBAL: SADX 0x05edd89c
 struct task *DAT_05edd89c;
+
+// GLOBAL: SADX 0x05edd8a0
+void *DAT_05edd8a0;
 
 // GLOBAL: SADX 0x05edd91c
 struct task *DAT_05edd91c;
@@ -7921,6 +7936,9 @@ struct task *DAT_060cc4c8;
 
 // GLOBAL: SADX 0x060cc57c
 struct task *DAT_060cc57c;
+
+// GLOBAL: SADX 0x060cc600
+struct obj DAT_060cc600;
 
 // GLOBAL: SADX 0x060cc634
 struct task *DAT_060cc634;

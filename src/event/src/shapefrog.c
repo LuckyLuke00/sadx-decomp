@@ -6,6 +6,13 @@ void chg_frogshape(signed char shapeNo)
 {
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x007d7b30
+void BufferModelRestore()
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x007d7bc0
 void shapefrog_dest(struct task *tp)
 {

@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1412" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,394 of 16,524 game functions done (32.64%), accuracy 99.86%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,402 of 16,524 game functions done (32.69%), accuracy 99.86%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="598.8,1171.5 605.2,1171.5 606.9,1173 608,1174.6 602,1181.5 596,1174.6 597.1,1173" fill="#4e32f3"/>
 <polygon points="598.8,1171.5 605.2,1171.5 606.9,1173 608,1174.6 596,1174.6 597.1,1173" fill="#ffffff" fill-opacity="0.4"/>
@@ -3309,8 +3309,8 @@
 <polygon points="333,921.6 336.8,921.6 339,928.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="341.2,921.6 345,921.6 339,928.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="335.8,918.5 342.2,918.5 343.9,920 345,921.6 339,928.5 333,921.6 334.1,920" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="349" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Story and menus <tspan font-weight="400" fill="#59636e">45%</tspan></text>
-<rect x="334" y="936" width="255" height="207" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 327 of 834 done</title></rect>
+<text x="349" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Story and menus <tspan font-weight="400" fill="#59636e">46%</tspan></text>
+<rect x="334" y="936" width="255" height="207" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 331 of 834 done</title></rect>
 <text x="337" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Story <tspan font-weight="400" fill="#59636e">39%</tspan></text>
 <g transform="translate(337,954)">
 <rect y="0" width="245" height="161" fill="url(#todo)"/>
@@ -3398,6 +3398,7 @@
 <rect x="84" y="70" width="6" height="6" fill="#b07d00"><title>0x007ce580 FUN_007ce580: 100%</title></rect>
 <rect x="126" y="70" width="6" height="6" fill="#b07d00"><title>0x007ce8e0 FUN_007ce8e0: 100%</title></rect>
 <rect x="147" y="70" width="6" height="6" fill="#b07d00"><title>0x007d0bd0 FUN_007d0bd0: 100%</title></rect>
+<rect x="224" y="70" width="6" height="6" fill="#b07d00"><title>0x007d1bd0 moveObjectRightHand: 100%</title></rect>
 <rect x="7" y="77" width="6" height="6" fill="#b07d00"><title>0x007d1ce0 FUN_007d1ce0: 100%</title></rect>
 <rect x="14" y="77" width="6" height="6" fill="#b07d00"><title>0x007d1cf0 FUN_007d1cf0: 100%</title></rect>
 <rect x="49" y="77" width="6" height="6" fill="#b07d00"><title>0x007d1ff0 FUN_007d1ff0: 100%</title></rect>
@@ -3479,6 +3480,7 @@
 <rect x="217" y="98" width="6" height="6" fill="#b07d00"><title>0x007d6700 ChgSphereBombMode: 100%</title></rect>
 <rect x="224" y="98" width="6" height="6" fill="#b07d00"><title>0x007d6720 FUN_007d6720: 100%</title></rect>
 <rect x="231" y="98" width="6" height="6" fill="#b07d00"><title>0x007d6760 dispSplashTask: 100%</title></rect>
+<rect x="0" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6850 dispPillarTask: 100%</title></rect>
 <rect x="7" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6940 FUN_007d6940: 100%</title></rect>
 <rect x="14" y="105" width="6" height="6" fill="#b07d00"><title>0x007d6960 dispWaveTask(1): 100%</title></rect>
 <rect x="21" y="105" width="6" height="6" fill="#b07d00"><title>0x007d69d0 WaterPillarOff: 100%</title></rect>
@@ -3514,6 +3516,8 @@
 <rect x="112" y="112" width="6" height="6" fill="#b07d00"><title>0x007d8120 FUN_007d8120: 100%</title></rect>
 <rect x="126" y="112" width="6" height="6" fill="#b07d00"><title>0x007d84b0 destChaos4Task: 100%</title></rect>
 <rect x="140" y="112" width="6" height="6" fill="#b07d00"><title>0x007d8710 initChaos4Task: 100%</title></rect>
+<rect x="154" y="112" width="6" height="6" fill="#b07d00"><title>0x007d8840 ev_effectKiran2: 100%</title></rect>
+<rect x="161" y="112" width="6" height="6" fill="#b07d00"><title>0x007d88f0 EvCreateKiran2: 100%</title></rect>
 <rect x="182" y="112" width="6" height="6" fill="#b07d00"><title>0x007d8b60 ef_e102lightning_loop: 100%</title></rect>
 <rect x="203" y="112" width="6" height="6" fill="#b07d00"><title>0x007d8d30 Delete_e102lightning: 100%</title></rect>
 <rect x="217" y="112" width="6" height="6" fill="#b07d00"><title>0x007d8d80 deleteBoot: 100%</title></rect>
@@ -3645,7 +3649,7 @@
 <rect x="189" y="161" width="6" height="6" fill="#b07d00"><title>0x008c9030 ReturnChaosEmerald: 100%</title></rect>
 <rect x="196" y="161" width="6" height="6" fill="#b07d00"><title>0x008cb190 EggmanDestruct: 100%</title></rect>
 </g>
-<rect x="334" y="1145" width="185" height="204" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 296 of 544 done</title></rect>
+<rect x="334" y="1145" width="185" height="204" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 299 of 544 done</title></rect>
 <text x="337" y="1159" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Menus <tspan font-weight="400" fill="#59636e">54%</tspan></text>
 <g transform="translate(337,1163)">
 <rect y="0" width="175" height="147" fill="url(#todo)"/>
@@ -3826,6 +3830,8 @@
 <rect x="147" y="77" width="6" height="6" fill="#b07d00"><title>0x005eb250 FreeAdvaHow2PlayTask: 100%</title></rect>
 <rect x="154" y="77" width="6" height="6" fill="#b07d00"><title>0x005eb270 FUN_005eb270: 100%</title></rect>
 <rect x="161" y="77" width="6" height="6" fill="#b07d00"><title>0x005eb290 DrawOptionMenuSubDlgSub: 100%</title></rect>
+<rect x="168" y="77" width="6" height="6" fill="#b07d00"><title>0x005eb2b0 DisplayControl: 100%</title></rect>
+<rect x="21" y="84" width="6" height="6" fill="#b07d00"><title>0x005ebb90 DisplayStaff: 100%</title></rect>
 <rect x="63" y="84" width="6" height="6" fill="#b07d00"><title>0x005ee430 SetAdvaOptionMenuTask: 100%</title></rect>
 <rect x="105" y="84" width="6" height="6" fill="#b07d00"><title>0x005f0b00 FUN_005f0b00: 100%</title></rect>
 <rect x="126" y="84" width="6" height="6" fill="#b07d00"><title>0x005f1010 FUN_005f1010: 100%</title></rect>
@@ -3842,6 +3848,7 @@
 <rect x="105" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3480 SetAdvaTrialGameTask: 100%</title></rect>
 <rect x="140" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3b60 title_menu_disp(6): 100%</title></rect>
 <rect x="154" y="91" width="6" height="6" fill="#b07d00"><title>0x005f45f0 FUN_005f45f0: 100%</title></rect>
+<rect x="168" y="91" width="6" height="6" fill="#b07d00"><title>0x005f4690 FreeAdvaTrialGameTask: 100%</title></rect>
 <rect x="0" y="98" width="6" height="6" fill="#b07d00"><title>0x005f4760 FUN_005f4760: 100%</title></rect>
 <rect x="14" y="98" width="6" height="6" fill="#b07d00"><title>0x005f4e40 DrawMainMenuDlgSub_LB: 100%</title></rect>
 <rect x="21" y="98" width="6" height="6" fill="#b07d00"><title>0x005f4e60 FUN_005f4e60: 100%</title></rect>
@@ -3949,9 +3956,9 @@
 <rect x="119" y="147" width="6" height="6" fill="#b07d00"><title>0x008b81d0 StaffRollExit: 100%</title></rect>
 <rect x="126" y="147" width="6" height="6" fill="#9a8f81"><title>0x008b8630 CreateStaffRollTask: 59.6%</title></rect>
 </g>
-<rect x="521" y="1145" width="68" height="204" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Missions: 36 of 72 done</title></rect>
+<rect x="521" y="1145" width="68" height="204" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Missions: 37 of 72 done</title></rect>
 <text x="524" y="1159" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Missions</text>
-<text x="524" y="1174" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">50%</tspan></text>
+<text x="524" y="1174" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">51%</tspan></text>
 <g transform="translate(524,1178)">
 <rect y="0" width="63" height="56" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x00497340 IsDisplayMiClearStatus: 100%</title></rect>
@@ -3983,6 +3990,7 @@
 <rect x="49" y="35" width="6" height="6" fill="#b07d00"><title>0x0049bb20 sakanaGeneraterExit: 100%</title></rect>
 <rect x="56" y="35" width="6" height="6" fill="#b07d00"><title>0x0049c270 ObjectMiSakana: 100%</title></rect>
 <rect x="0" y="42" width="6" height="6" fill="#b07d00"><title>0x0049c290 Disp(3): 100%</title></rect>
+<rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x0049c320 Exec(4): 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x0049c420 ObjectMiKanban: 100%</title></rect>
 <rect x="35" y="42" width="6" height="6" fill="#b07d00"><title>0x0049c780 ObjectMiKinka: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#b07d00"><title>0x0049c7d0 Disp(5): 100%</title></rect>

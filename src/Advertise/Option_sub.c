@@ -1,4 +1,6 @@
 #include "decls.h"
+extern unsigned char DAT_05edd821;
+extern unsigned char DAT_05edd820;
 void DestroyControl();
 static void title_menu_disp(struct task *tp);
 static void title_menu_exec(struct task *tp);
@@ -11,10 +13,35 @@ void DrawOptionMenuSubDlgSub(struct DDlgType *dlgp)
 	ghSetPvrTexMaterial(0xffffffff);
 }
 
-// STUB: SADX 0x005eb2b0
+// FUNCTION: SADX 0x005eb2b0
 int DisplayControl()
 {
-	return (int)0;
+	if (DAT_05edd820 == 2 && (DAT_05b92e44 & 2) != 0)
+	{
+		dsPlay_oneshot(3, 0, 0, 0);
+		DAT_05edd820 = 3;
+	}
+	switch (DAT_05edd820)
+	{
+	case 0:
+		return 0;
+	case 1:
+		if (InitControl() == 0)
+		{
+			DAT_05edd820 = 0;
+			return 0;
+		}
+		DAT_05edd820 = 2;
+		break;
+	case 2:
+		DrawControl();
+		break;
+	case 3:
+		DestroyControl();
+		DAT_05edd820 = 0;
+		return 2;
+	}
+	return 1;
 }
 
 // STUB: SADX 0x005eba60
@@ -22,10 +49,35 @@ void DestroyControl()
 {
 }
 
-// STUB: SADX 0x005ebb90
+// FUNCTION: SADX 0x005ebb90
 int DisplayStaff()
 {
-	return (int)0;
+	if ((DAT_05edd821 == 2 || DAT_05edd821 == 3) && (DAT_05b92e44 & 2) != 0)
+	{
+		dsPlay_oneshot(3, 0, 0, 0);
+		DAT_05edd821 = 4;
+	}
+	switch (DAT_05edd821)
+	{
+	case 0:
+		return 0;
+	case 1:
+		if (InitStaff() == 0)
+		{
+			DAT_05edd821 = 0;
+			return 0;
+		}
+		DAT_05edd821 = 2;
+		break;
+	case 2:
+		DrawStaff();
+		break;
+	case 4:
+		DestroyStaff();
+		DAT_05edd821 = 0;
+		return 2;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x005ee430
