@@ -2202,6 +2202,33 @@ void FUN_005e8f10(float)
 {
 }
 
+// STUB: SADX 0x005eb350
+int InitControl()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x005eb6d0
+void DrawControl()
+{
+}
+
+// STUB: SADX 0x005ebea0
+int InitStaff()
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x005edc30
+void DrawStaff()
+{
+}
+
+// STUB: SADX 0x005ee3d0
+void DestroyStaff()
+{
+}
+
 // STUB: SADX 0x005f10a0
 void trial_game_exec(struct task *tp)
 {
@@ -2914,6 +2941,11 @@ void tornado_exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x007d1460
+void initMoveObjTask(struct task *)
+{
+}
+
 // STUB: SADX 0x007d1ef0
 void execModelTask(struct task *p_task)
 {
@@ -2930,17 +2962,12 @@ void effect_disp(struct task *)
 }
 
 // STUB: SADX 0x007d2420
-void effect_disp2(struct task *tp)
+void effect_disp2(struct task *)
 {
 }
 
 // STUB: SADX 0x007d4270
 void execRotaryEmeraldTask(struct task *task_p)
-{
-}
-
-// STUB: SADX 0x007d4590
-void createRotaryEmeraldTask(struct NJS_POINT3 center_pos, struct task * *eme_task_p)
 {
 }
 
@@ -2975,12 +3002,7 @@ void execPillarTask(struct task *p_task)
 }
 
 // STUB: SADX 0x007d7090
-void effect2_disp(struct task *tp)
-{
-}
-
-// STUB: SADX 0x007d7b30
-void BufferModelRestore()
+void effect2_disp(struct task *)
 {
 }
 

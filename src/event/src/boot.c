@@ -1,4 +1,5 @@
 #include "decls.h"
+void createBoot(int wait_frame, int sstorm_frame, int poweron_frame, int adjust_frame);
 void FUN_007d91a0(void);
 void initBootTask(struct task *p_task);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));

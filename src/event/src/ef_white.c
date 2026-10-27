@@ -1,4 +1,5 @@
 #include "decls.h"
+void initEfWhiteTask(struct task *p_task);
 
 // STUB: SADX 0x007d5380
 void dispEfWhiteTask(struct task *p_task)

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_05edd898;
+extern void *DAT_05edd8a0;
 extern unsigned char DAT_0267b758;
 extern void LoadTrialPicture();
 extern void FUN_005f45f0(struct task *param_1);
@@ -68,9 +70,34 @@ void FUN_005f4610(float param_1)
 }
 #pragma optimize("", on)
 
-// STUB: SADX 0x005f4690
+// FUNCTION: SADX 0x005f4690
 void FreeAdvaTrialGameTask()
 {
+	void *local_8g;
+	void *local_cj;
+	void *local_14;
+	void *local_10;
+
+	if (DAT_05edd89c != 0)
+	{
+		DestroyTask(DAT_05edd89c);
+	}
+	if (DAT_05edd898 != 0)
+	{
+		FUN_0041c2d0(DAT_05edd898);
+		local_cj = DAT_05edd898;
+		local_8g = local_cj;
+		local_8g ? (*(void *(__thiscall *)(void *, int))**(void ***)local_8g)(local_8g, 1) : 0;
+		DAT_05edd898 = 0;
+	}
+	if (DAT_05edd8a0 != 0)
+	{
+		FUN_0041c2d0(DAT_05edd8a0);
+		local_14 = DAT_05edd8a0;
+		local_10 = local_14;
+		local_10 ? (*(void *(__thiscall *)(void *, int))**(void ***)local_10)(local_10, 1) : 0;
+		DAT_05edd8a0 = 0;
+	}
 }
 
 // FUNCTION: SADX 0x005f4760

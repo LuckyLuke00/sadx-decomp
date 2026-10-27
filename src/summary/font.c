@@ -34,6 +34,11 @@ void ghSelectFont(struct GH_FONT_INFO *font)
 	DAT_05b9d800 = *font;
 }
 
+// STUB: SADX 0x004cb3d0
+void FUN_004cb3d0(char c, float x, float y, float scale)
+{
+}
+
 // STUB: SADX 0x004cb630
 void ghFontPuts(char *str, float x, float y, float z)
 {

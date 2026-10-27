@@ -39,6 +39,11 @@ int FUN_005f4e60()
 	return 1;
 }
 
+// STUB: SADX 0x005f5940
+void FUN_005f5940(void)
+{
+}
+
 // STUB: SADX 0x005fa060
 void FUN_005fa060(void)
 {

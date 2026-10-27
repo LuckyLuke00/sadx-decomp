@@ -1,4 +1,6 @@
 #include "decls.h"
+void effect_exec2(struct task *tp);
+void effect_disp2(struct task *tp);
 void effect_exec(struct task *tp);
 void effect_disp(struct task *tp);
 extern struct task *DAT_060cc0b0[];

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float g_RotaryCircleR;
+void initRotaryEmeraldTask(struct task *task_p);
 void FUN_007d4120(int param_1);
 extern struct task *DAT_060cc154;
 
@@ -45,6 +47,13 @@ void initRotaryEmeraldTask(struct task *task_p)
 	task_p->disp = 0;
 	task_p->dest = destRotaryEmeraldTask;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x007d4590
+void createRotaryEmeraldTask(struct NJS_POINT3 center_pos, struct task **eme_task_p)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d4670
 void CreateRotaryEmerald(float pos_x, float pos_y, float pos_z, float r, long rot_spd, struct task *eme1_task_p, struct task *eme2_task_p, struct task *eme3_task_p, struct task *eme4_task_p, struct task *eme5_task_p, struct task *eme6_task_p, struct task *eme7_task_p)

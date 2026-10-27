@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct obj DAT_060cc600;
+static void dispPillarTask(struct task *p_task);
 extern struct task *DAT_060cc634;
 static void initWaveTask(struct task *p_task);
 static void execWaveTask(struct task *p_task);
@@ -26,9 +28,21 @@ void textureUVScroll()
 {
 }
 
-// STUB: SADX 0x007d6850
-void dispPillarTask(struct task *p_task)
+// FUNCTION: SADX 0x007d6850
+static void dispPillarTask(struct task *p_task)
 {
+	struct taskwk *var1;
+	struct NJS_POINT3 *var2;
+	var1 = p_task->twp;
+	var2 = (struct NJS_POINT3 *)var1->value.ptr;
+	___njSetTexture(&texlist_l_sibuki);
+	SetMaterial(0, 0, 0, 0);
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	FUN_0067d2d0(0, var1->scl.x * var2->x, var1->scl.y * var2->y, var1->scl.x * var2->z);
+	late_DrawObjectClipMesh(&DAT_060cc600, 0, FUN_00500c70(var1->scl.x * var2->x, var1->scl.y * var2->y, var1->scl.x * var2->z));
+	njPopMatrix(1);
+	SetMaterial(0, 0, 0, 0);
 }
 
 // FUNCTION: SADX 0x007d6940

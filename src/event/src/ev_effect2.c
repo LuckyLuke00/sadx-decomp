@@ -1,4 +1,7 @@
 #include "decls.h"
+void effect2_disp(struct task *tp);
+void effect2_exec(struct task *tp);
+void effect2_dest(struct task *tp);
 extern int DAT_060cc790[1];
 
 // FUNCTION: SADX 0x007d72a0
