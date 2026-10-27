@@ -6,9 +6,16 @@ void __fastcall FUN_0090a010(void *param_1, void *param_2)
 {
 }
 
-// STUB: SADX 0x0090a090
-void __fastcall FUN_0090a090(int param_1, int param_2)
+// FUNCTION: SADX 0x0090a090
+void __fastcall FUN_0090a090(int param_1, int param_2, int param_3)
 {
+	int var1;
+
+	var1 = *(int *)(param_1 + param_3 * 4 + 0x1c);
+	if (var1 != 0)
+	{
+		FUN_00909e30(var1);
+	}
 }
 
 // FUNCTION: SADX 0x0090a0b0

@@ -12,6 +12,11 @@ void CartRaceDestroyManageTask()
 	}
 }
 
+// STUB: SADX 0x007e5020
+void CartRacePrepareRace()
+{
+}
+
 // FUNCTION: SADX 0x007e5050
 signed char CartRaceGetMode()
 {

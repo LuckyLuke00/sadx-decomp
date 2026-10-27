@@ -12,6 +12,96 @@ void FUN_0090ccf0(int param_1, int param_2);
 extern char *DAT_060ee5b8;
 int FUN_0090cd50();
 
+#pragma optimize("", off)
+// STUB: SADX 0x0090cd50
+int FUN_0090cd50()
+{
+	return (int)0;
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x0090cd70
+void di()
+{
+	char *var1 = DAT_060ee5b8;
+	*(int *)(var1 + 0x40) = 0;
+	*(int *)(var1 + 0x3c) = 0;
+	*(int *)(var1 + 0x50) = 4;
+}
+
+// FUNCTION: SADX 0x0090cd90
+void im_0()
+{
+	char *var1 = DAT_060ee5b8;
+	*(int *)(var1 + 0x44) = 0;
+	*(int *)(var1 + 0x50) = 8;
+}
+
+// FUNCTION: SADX 0x0090cdb0
+void im_1()
+{
+	int *var1 = (int *)DAT_060ee5b8;
+	var1[0x11] = 1;
+	var1[0x14] = 8;
+}
+
+// FUNCTION: SADX 0x0090cdd0
+void im_2()
+{
+	char *var1 = DAT_060ee5b8;
+	*(int *)(var1 + 0x44) = 2;
+	*(int *)(var1 + 0x50) = 8;
+}
+
+// FUNCTION: SADX 0x0090cdf0
+void ld_b_c()
+{
+	char *var1 = (char *)DAT_060ee5b8;
+	var1[5] = var1[4];
+	*(int *)(var1 + 0x50) = 4;
+}
+
+// FUNCTION: SADX 0x0090ce10
+void ld_b_d()
+{
+	char *pcVar1;
+
+	pcVar1 = (char *)DAT_060ee5b8;
+	*(char *)(pcVar1 + 5) = *(char *)(pcVar1 + 9);
+	*(int *)(pcVar1 + 0x50) = 4;
+	return;
+}
+
+// FUNCTION: SADX 0x0090ce30
+void ld_b_e()
+{
+	char *pcVar1;
+
+	pcVar1 = (char *)DAT_060ee5b8;
+	*(char *)(pcVar1 + 5) = *(char *)(pcVar1 + 8);
+	*(int *)(pcVar1 + 0x50) = 4;
+}
+
+// FUNCTION: SADX 0x0090ce50
+void ld_b_h()
+{
+	char *pcVar1;
+
+	pcVar1 = (char *)DAT_060ee5b8;
+	pcVar1[5] = pcVar1[0xd];
+	*(int *)(pcVar1 + 0x50) = 4;
+}
+
+// FUNCTION: SADX 0x0090ce70
+void ld_b_l()
+{
+	char *pcVar1;
+
+	pcVar1 = (char *)DAT_060ee5b8;
+	pcVar1[5] = pcVar1[0xc];
+	*(int *)(pcVar1 + 0x50) = 4;
+}
+
 // FUNCTION: SADX 0x0090ce90
 void ld_b_xhl()
 {
@@ -76,9 +166,16 @@ void ld_c_l()
 	*(int *)(var1 + 0x50) = 4;
 }
 
-// STUB: SADX 0x0090cf80
+// FUNCTION: SADX 0x0090cf80
 void ld_c_xhl()
 {
+	char *var1;
+	unsigned char var2;
+
+	var2 = FUN_0090ccb0(*(unsigned short *)((char *)DAT_060ee5b8 + 0xc));
+	var1 = DAT_060ee5b8;
+	*(unsigned char *)(var1 + 4) = var2;
+	*(int *)(var1 + 0x50) = 7;
 }
 
 // FUNCTION: SADX 0x0090cfb0
@@ -2464,14 +2561,38 @@ void ret_c()
 	}
 }
 
-// STUB: SADX 0x00912670
+// FUNCTION: SADX 0x00912670
 void ret_z()
 {
+	if (*(unsigned char *)DAT_060ee5b8 & 0x40)
+	{
+		int var2 = FUN_0090ccd0(*(unsigned short *)((char *)DAT_060ee5b8 + 0x24));
+		char *var1 = DAT_060ee5b8;
+		*(unsigned short *)(var1 + 0x24) += 2;
+		*(unsigned short *)(var1 + 0x20) = var2;
+		*(int *)(var1 + 0x50) = 0xb;
+	}
+	else
+	{
+		*(int *)((char *)DAT_060ee5b8 + 0x50) = 5;
+	}
 }
 
-// STUB: SADX 0x009126b0
+// FUNCTION: SADX 0x009126b0
 void ret_p()
 {
+	if (*(unsigned char *)DAT_060ee5b8 & 4)
+	{
+		int var2 = FUN_0090ccd0(*(unsigned short *)((char *)DAT_060ee5b8 + 0x24));
+		char *var1 = DAT_060ee5b8;
+		*(unsigned short *)(var1 + 0x24) += 2;
+		*(unsigned short *)(var1 + 0x20) = (unsigned short)var2;
+		*(int *)(var1 + 0x50) = 0xb;
+	}
+	else
+	{
+		*(int *)((char *)DAT_060ee5b8 + 0x50) = 5;
+	}
 }
 
 // STUB: SADX 0x009126f0
@@ -2479,14 +2600,41 @@ void ret_s()
 {
 }
 
-// STUB: SADX 0x00912730
+// FUNCTION: SADX 0x00912730
 void ret_nc()
 {
+	if ((*DAT_060ee5b8 & 1) == 0)
+	{
+		int var2 = FUN_0090ccd0(*(unsigned short *)((char *)DAT_060ee5b8 + 0x24));
+		char *var1 = DAT_060ee5b8;
+		*(unsigned short *)(var1 + 0x24) = *(unsigned short *)(var1 + 0x24) + 2;
+		*(unsigned short *)(var1 + 0x20) = (unsigned short)var2;
+		*(int *)(var1 + 0x50) = 0xb;
+	}
+	else
+	{
+		*(int *)((char *)DAT_060ee5b8 + 0x50) = 5;
+	}
 }
 
-// STUB: SADX 0x00912770
+// FUNCTION: SADX 0x00912770
 void ret_nz()
 {
+	char *var1 = DAT_060ee5b8;
+	int iVar1;
+
+	if ((*(unsigned char *)var1 & 0x40) == 0)
+	{
+		iVar1 = FUN_0090ccd0(*(unsigned short *)(var1 + 0x24));
+		var1 = DAT_060ee5b8;
+		*(unsigned short *)(var1 + 0x24) += 2;
+		*(unsigned short *)(var1 + 0x20) = (unsigned short)iVar1;
+		*(int *)(var1 + 0x50) = 0xb;
+	}
+	else
+	{
+		*(int *)(var1 + 0x50) = 5;
+	}
 }
 
 // FUNCTION: SADX 0x009127b0
@@ -2835,9 +2983,19 @@ void in_l_c()
 	*(int *)(var1 + 0x50) = 0xb;
 }
 
-// STUB: SADX 0x009132a0
+// FUNCTION: SADX 0x009132a0
 void ini()
 {
+	unsigned char uVar2;
+	char *var1;
+
+	uVar2 = FUN_0090cc60(*(unsigned char *)((char *)DAT_060ee5b8 + 4));
+	FUN_0090ccf0(*(unsigned short *)((char *)DAT_060ee5b8 + 0xc), uVar2);
+	var1 = DAT_060ee5b8;
+	*(unsigned char *)(var1 + 5) = *(unsigned char *)(var1 + 5) - 1;
+	*(unsigned short *)(var1 + 0xc) = *(unsigned short *)(var1 + 0xc) + 1;
+	*(unsigned char *)var1 = (unsigned char)((*(unsigned char *)(var1 + 5) != 0) - 1 & 0x40 | *(unsigned char *)var1 & 0x97 | 2);
+	*(int *)(var1 + 0x50) = 0x10;
 }
 
 // FUNCTION: SADX 0x00913300
@@ -5566,8 +5724,23 @@ void ld_iyl_n()
 	*(int *)(var1 + 0x50) = 9;
 }
 
+// STUB: SADX 0x00918710
+void inc_ixh()
+{
+}
+
 // STUB: SADX 0x00918760
 void inc_ixl()
+{
+}
+
+// STUB: SADX 0x009187b0
+void inc_iyh()
+{
+}
+
+// STUB: SADX 0x00918800
+void inc_iyl()
 {
 }
 
@@ -5601,38 +5774,155 @@ void add_a_ixl()
 {
 }
 
+// STUB: SADX 0x00918ab0
+void add_a_iyh()
+{
+}
+
 // STUB: SADX 0x00918b20
 void add_a_iyl()
 {
 }
 
-// STUB: SADX 0x00918b90
+// FUNCTION: SADX 0x00918b90
 void adc_a_ixh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = (*(unsigned char *)var1 & 1) + *(unsigned char *)(var1 + 1) + *(unsigned char *)(var1 + 0x29);
+	var3 = ((*(unsigned char *)(var1 + 1) >> 5) ^ ~(*(unsigned char *)(var1 + 0x29) >> 5)) & ((var2 >> 5) ^ (*(unsigned char *)(var1 + 0x29) >> 5)) & 4;
+	var4 = (*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x29) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	*(unsigned char *)var1 = var3;
+	*(unsigned char *)(var1 + 1) = (unsigned char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00918c70
+// FUNCTION: SADX 0x00918c00
+void adc_a_iyh()
+{
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = (*(unsigned char *)var1 & 1) + *(unsigned char *)(var1 + 1) + *(unsigned char *)(var1 + 0x2d);
+	var3 = ((*(unsigned char *)(var1 + 1) >> 5) ^ ~(*(unsigned char *)(var1 + 0x2d) >> 5)) & ((var2 >> 5) ^ (*(unsigned char *)(var1 + 0x2d) >> 5)) & 4;
+	var4 = (*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2d) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	*(unsigned char *)var1 = var3;
+	*(unsigned char *)(var1 + 1) = (unsigned char)var2;
+	*(int *)(var1 + 0x50) = 9;
+}
+
+// FUNCTION: SADX 0x00918c70
 void adc_a_iyl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = (*(unsigned char *)var1 & 1) + *(unsigned char *)(var1 + 1) + *(unsigned char *)(var1 + 0x2c);
+	var3 = ((*(unsigned char *)(var1 + 1) >> 5) ^ ~(*(unsigned char *)(var1 + 0x2c) >> 5)) & ((var2 >> 5) ^ (*(unsigned char *)(var1 + 0x2c) >> 5)) & 4;
+	var4 = (*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2c) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	*(unsigned char *)var1 = var3;
+	*(unsigned char *)(var1 + 1) = (unsigned char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00918ce0
+// FUNCTION: SADX 0x00918ce0
 void sub_a_ixh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x29);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x29)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x29)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(unsigned char *)(var1 + 1) = (unsigned char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00918d40
+// FUNCTION: SADX 0x00918d40
 void sub_a_ixl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x28);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x28)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x28)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(unsigned char *)(var1 + 1) = (unsigned char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00918da0
+// FUNCTION: SADX 0x00918da0
 void sub_a_iyh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x2d);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2d)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2d)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(unsigned char *)(var1 + 1) = (unsigned char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00918e00
+// FUNCTION: SADX 0x00918e00
 void sub_a_iyl()
+{
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x2c);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2c)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2c)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(unsigned char *)(var1 + 1) = (unsigned char)var2;
+	*(int *)(var1 + 0x50) = 9;
+}
+
+// STUB: SADX 0x00918e60
+void sbc_a_ixh()
 {
 }
 
@@ -5641,29 +5931,64 @@ void sbc_a_ixl()
 {
 }
 
-// STUB: SADX 0x00919020
+// STUB: SADX 0x00918f40
+void sbc_a_iyh()
+{
+}
+
+// STUB: SADX 0x00918fb0
+void sbc_a_iyl()
+{
+}
+
+// FUNCTION: SADX 0x00919020
 void and_a_ixh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (unsigned char)var1[1] & (unsigned char)var1[0x29];
+	*(unsigned char *)var1 = (unsigned char)DAT_060ee5c0[var2] | 0x10;
+	var1[1] = (char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00919050
+// FUNCTION: SADX 0x00919050
 void and_a_ixl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (unsigned char)var1[1] & (unsigned char)var1[0x28];
+	*(unsigned char *)var1 = (unsigned char)DAT_060ee5c0[var2] | 0x10;
+	var1[1] = (char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00919080
+// FUNCTION: SADX 0x00919080
 void and_a_iyh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (unsigned char)var1[1] & (unsigned char)var1[0x2d];
+	*(unsigned char *)var1 = (unsigned char)DAT_060ee5c0[var2] | 0x10;
+	var1[1] = (char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x009190b0
+// FUNCTION: SADX 0x009190b0
 void and_a_iyl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (var1[1] & var1[0x2c]) & 0xff;
+	var1[0] = DAT_060ee5c0[var2] | 0x10;
+	var1[1] = var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x009190e0
+// FUNCTION: SADX 0x009190e0
 void xor_a_ixh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (unsigned char)var1[1] ^ (unsigned char)var1[0x29];
+	var1[0] = DAT_060ee5c0[var2];
+	var1[1] = (char)var2;
+	*(int *)(var1 + 0x50) = 9;
 }
 
 // FUNCTION: SADX 0x00919110
@@ -5736,24 +6061,80 @@ void or_a_iyl()
 	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00919260
+// FUNCTION: SADX 0x00919260
 void cp_a_ixh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x29);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x29)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x29)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x009192c0
+// FUNCTION: SADX 0x009192c0
 void cp_a_ixl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x28);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x28)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x28)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00919320
+// FUNCTION: SADX 0x00919320
 void cp_a_iyh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x2d);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2d)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2d)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(int *)(var1 + 0x50) = 9;
 }
 
-// STUB: SADX 0x00919380
+// FUNCTION: SADX 0x00919380
 void cp_a_iyl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2;
+	unsigned char var3;
+	unsigned char var4;
+
+	var2 = *(unsigned char *)(var1 + 1) - *(unsigned char *)(var1 + 0x2c);
+	var3 = ((var2 >> 5) ^ (*(unsigned char *)(var1 + 1) >> 5)) & ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2c)) >> 5) & 4;
+	var4 = ((*(unsigned char *)(var1 + 1) ^ *(unsigned char *)(var1 + 0x2c)) ^ (unsigned char)var2) & 0x10;
+	var3 |= var4;
+	var3 |= DAT_060ee6c8[var2 & 0xff];
+	var3 |= (var2 >> 8) & 1;
+	var3 |= 2;
+	*(unsigned char *)var1 = var3;
+	*(int *)(var1 + 0x50) = 9;
 }
 
 // STUB: SADX 0x009193e0
@@ -5798,6 +6179,11 @@ void rrc_iyl()
 
 // STUB: SADX 0x009195a0
 void rl_ixh()
+{
+}
+
+// STUB: SADX 0x009195e0
+void rl_ixl()
 {
 }
 
@@ -5986,9 +6372,13 @@ void bit_7_ixh()
 	*(int *)(var1 + 0x50) = 0xd;
 }
 
-// STUB: SADX 0x00919c60
+// FUNCTION: SADX 0x00919c60
 void bit_0_ixl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (var1[0x28] & 1) != 0;
+	*var1 = (var2 ? 0xbc : 0) + 0x44 | *var1 & 1 | 0x10;
+	*(int *)(var1 + 0x50) = 0xd;
 }
 
 // FUNCTION: SADX 0x00919c90
@@ -6014,9 +6404,13 @@ void bit_2_ixl()
 	*(int *)(var1 + 0x50) = 0xd;
 }
 
-// STUB: SADX 0x00919cf0
+// FUNCTION: SADX 0x00919cf0
 void bit_3_ixl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (var1[0x28] & 8) != 0;
+	*var1 = (var2 ? 0xbc : 0) + 0x44 | *var1 & 1 | 0x10;
+	*(int *)(var1 + 0x50) = 0xd;
 }
 
 // FUNCTION: SADX 0x00919d20
@@ -6048,9 +6442,13 @@ void bit_6_ixl()
 	*(int *)(var1 + 0x50) = 0xd;
 }
 
-// STUB: SADX 0x00919db0
+// FUNCTION: SADX 0x00919db0
 void bit_7_ixl()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (var1[0x28] & 0x80) != 0;
+	*var1 = (var2 ? 0x3c : 0) + 0x44 | *var1 & 1 | 0x10;
+	*(int *)(var1 + 0x50) = 0xd;
 }
 
 // FUNCTION: SADX 0x00919de0
@@ -6084,9 +6482,13 @@ void bit_2_iyh()
 	*(int *)(var1 + 0x50) = 0xd;
 }
 
-// STUB: SADX 0x00919e70
+// FUNCTION: SADX 0x00919e70
 void bit_3_iyh()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = (var1[0x2d] & 8) != 0;
+	*var1 = (var2 ? 0xbc : 0) + 0x44 | *var1 & 1 | 0x10;
+	*(int *)(var1 + 0x50) = 0xd;
 }
 
 // FUNCTION: SADX 0x00919ea0

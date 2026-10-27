@@ -1,5 +1,4 @@
 #include "decls.h"
-extern float DAT_00956608;
 extern unsigned int DAT_01c6e428;
 extern unsigned int DAT_01c6e42c;
 extern int DAT_05edf7e0;
@@ -34,6 +33,6 @@ void DrawMovieTex(int max_width, int max_height)
 {
 	if (DAT_05edf7e0 != 0)
 	{
-		RenderTexture(0, 0, DAT_01c6e428, DAT_01c6e42c, DAT_00956608, (Magic::RenderCore::Texture *)DAT_05edf7e0, 0.0f, 0.0f, 1.0f, 1.0f, -1);
+		RenderTexture(0, 0, DAT_01c6e428, DAT_01c6e42c, 0.9f, (Magic::RenderCore::Texture *)DAT_05edf7e0, 0.0f, 0.0f, 1.0f, 1.0f, -1);
 	}
 }

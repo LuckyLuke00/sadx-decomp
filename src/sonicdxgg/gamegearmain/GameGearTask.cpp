@@ -16,15 +16,19 @@ void __fastcall FUN_009096d0(int *param_1)
 	FUN_00907d40();
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x009097a0
 void __fastcall FUN_009097a0(int param_1)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x00909810
 void __fastcall FUN_00909810(int param_1)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00909e30
 void __fastcall FUN_00909e30(int param_1)

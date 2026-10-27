@@ -3196,23 +3196,8 @@ void fegg_zangai_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x007e43c0
-void execRound(struct task *task_p)
-{
-}
-
 // STUB: SADX 0x007e48b0
 void endCheckSeq(struct task *tp)
-{
-}
-
-// STUB: SADX 0x007e4eb0
-void startDushCheck(struct task *tp)
-{
-}
-
-// STUB: SADX 0x007e5020
-void CartRacePrepareRace()
 {
 }
 
@@ -4029,12 +4014,6 @@ void FUN_0090ccf0(int, int)
 // STUB: SADX 0x0090cd20
 void Z80_Write2(unsigned short, unsigned short)
 {
-}
-
-// STUB: SADX 0x0090cd50
-int FUN_0090cd50()
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x00924470

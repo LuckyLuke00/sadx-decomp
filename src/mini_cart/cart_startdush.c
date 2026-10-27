@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void setDashParam(struct task *tp);
+void setDashParam(struct task *tp);
 void SetCartBonusAdd(float spd);
 void FreeTask(struct task *tp);
 extern float DAT_060cd270;
@@ -17,6 +19,13 @@ void setDashParam(struct task *tp)
 		FreeTask(tp);
 	}
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x007e4eb0
+void startDushCheck(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007e4f60
 void InitStartDushCheck()
