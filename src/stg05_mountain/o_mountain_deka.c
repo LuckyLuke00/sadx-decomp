@@ -24,7 +24,7 @@ void Object_Mountain_Deka_Display(struct task *tp)
 		}
 		FUN_0067d2d0(0, 0.1f, 0.1f, 0.1f);
 		dsScaleLight(0.1f);
-		___dsAction(action_taoreiwam_dai, var2 * 2.0f, 0.1f);
+		ds_ActionClip(action_taoreiwam_dai, var2 * 2.0f, 0.1f);
 		dsReScaleLight();
 		njPopMatrix(1);
 	}

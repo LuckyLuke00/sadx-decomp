@@ -11,7 +11,7 @@ extern unsigned char DAT_025d4cad;
 void _SOCFree(void *param_1, const char *param_2, int param_3);
 void FUN_004b6c50(struct FileSelWk *param_1);
 void FUN_004b7800(struct FileSelWk *param_1);
-void FUN_004b83c0(struct task *param_1);
+void file_sel_disp(struct task *tp);
 void FUN_004b9c10(struct FileSelWk *param_1);
 void FUN_0041c2d0(void *param_1);
 
@@ -63,13 +63,13 @@ void FUN_004b6ca0(void)
 }
 
 // STUB: SADX 0x004b6cd0
-struct task *FUN_004b6cd0(struct ModeSelPrmType *param_1)
+struct task *SetAdvaFileSelTask(struct ModeSelPrmType *param_1)
 {
 	return (struct task *)0;
 }
 
 // FUNCTION: SADX 0x004b6d40
-void SetAdvaFileSelTask(struct task *param_1, struct ModeSelPrmType *param_2)
+void FUN_004b6d40(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 	struct FileSelWk *local_8;
 
@@ -165,11 +165,11 @@ void FUN_004b7800(struct FileSelWk *param_1)
 }
 
 // FUNCTION: SADX 0x004b83c0
-void FUN_004b83c0(struct task *param_1)
+void file_sel_disp(struct task *tp)
 {
 	struct FileSelWk *local_8;
 
-	local_8 = (struct FileSelWk *)param_1->awp;
+	local_8 = (struct FileSelWk *)tp->awp;
 	if (local_8->BaseCol == 0)
 	{
 		return;
@@ -184,7 +184,7 @@ void FUN_004b83c0(struct task *param_1)
 	DrawFileSelCsr(local_8);
 	DrawFileSelBg(local_8);
 	DrawFileEmblem(local_8);
-	file_sel_disp((struct task *)local_8);
+	FUN_004b9330((struct task *)local_8);
 	DrawStartChiten(local_8);
 	DrawSaishuuClear(local_8);
 	DrawPlayTime(local_8);
@@ -219,15 +219,15 @@ void DrawFileEmblem(struct FileSelWk *wkp)
 }
 
 // FUNCTION: SADX 0x004b9330
-void file_sel_disp(struct task *tp)
+void FUN_004b9330(struct task *param_1)
 {
 	if (!DAT_025d4cad)
 	{
 		return;
 	}
 	DrawMCharName(AvaGetlastPlayer(), 0xffffffff,
-		*(float *)((char *)tp + 0x34) + 248.0 + 160.0, 122.0f,
-		*(float *)((char *)tp + 0x0c) + -12.0, 0.7f, 0.7f);
+		*(float *)((char *)param_1 + 0x34) + 248.0 + 160.0, 122.0f,
+		*(float *)((char *)param_1 + 0x0c) + -12.0, 0.7f, 0.7f);
 }
 
 // FUNCTION: SADX 0x004b9bc0

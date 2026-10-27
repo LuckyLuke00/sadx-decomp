@@ -1,6 +1,6 @@
 #include "decls.h"
 void FUN_0058d680();
-void dispHandleTexture(float *param_1, float *param_2);
+void dispDistanceLure(float *rod_pos_p, float *line_pos_p);
 extern struct NJS_TEXANIM dust_anim[1];
 extern int DAT_05cd2978;
 extern int DAT_05cd2970;
@@ -9,7 +9,7 @@ extern float DAT_05cd2988;
 extern float DAT_05cd298c;
 double njScalor(struct NJS_POINT3 *);
 extern struct NJS_TEXLIST texlist_fishing;
-void FUN_0058d570(float param_1);
+void dispDistanceNum(float dist);
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern float DAT_05cd29a8;
@@ -121,11 +121,11 @@ void dispFishingLureSwitch(struct task *tp)
 }
 
 // FUNCTION: SADX 0x0058d490
-void dispHandleTexture(float *param_1, float *param_2)
+void dispDistanceLure(float *rod_pos_p, float *line_pos_p)
 {
-	float sprite;
-	sprite = njSqrt((param_1[0] - param_2[0]) * (param_1[0] - param_2[0]) + (param_1[1] - param_2[1]) * (param_1[1] - param_2[1]) + (param_1[2] - param_2[2]) * (param_1[2] - param_2[2]));
-	DAT_05cd29a4 = sprite;
+	float local_8;
+	local_8 = njSqrt((rod_pos_p[0] - line_pos_p[0]) * (rod_pos_p[0] - line_pos_p[0]) + (rod_pos_p[1] - line_pos_p[1]) * (rod_pos_p[1] - line_pos_p[1]) + (rod_pos_p[2] - line_pos_p[2]) * (rod_pos_p[2] - line_pos_p[2]));
+	DAT_05cd29a4 = local_8;
 	if (DAT_05cd29a4 > DAT_05cd29a8)
 	{
 		DAT_05cd29a8 = DAT_05cd29a4;
@@ -134,11 +134,11 @@ void dispHandleTexture(float *param_1, float *param_2)
 	{
 		DAT_05cd29a8 = DAT_05cd29a4 + 5.0f;
 	}
-	FUN_0058d570(DAT_05cd29a8);
+	dispDistanceNum(DAT_05cd29a8);
 }
 
 // STUB: SADX 0x0058d570
-void FUN_0058d570(float param_1)
+void dispDistanceNum(float param_1)
 {
 }
 

@@ -1,7 +1,7 @@
 #include "decls.h"
 extern int DAT_060eeac8;
 extern int DAT_060eeaac;
-void FUN_004a8b10(NJS_ACTION *param_1, float param_2, int param_3);
+void late_ActionMesh(NJS_ACTION *action, float frame, int flgs);
 
 // FUNCTION: SADX 0x006bb800
 void FUN_006bb800(struct task *param_1)
@@ -17,7 +17,7 @@ void FUN_006bb800(struct task *param_1)
 		{
 			njRotateY(0, var1->ang.y);
 		}
-		FUN_004a8b10(*(NJS_ACTION **)((char *)DAT_060eeaac + 0x3c), *(float *)((char *)var1 + 0x10), 1);
+		late_ActionMesh(*(NJS_ACTION **)((char *)DAT_060eeaac + 0x3c), *(float *)((char *)var1 + 0x10), 1);
 		njPopMatrix(1);
 	}
 }

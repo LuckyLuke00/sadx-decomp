@@ -20,11 +20,11 @@ void tornado_disp(struct task *tp)
 		njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
 	}
 	___njSetTexture(&texlist_ev_s_t2c_body);
-	late_ActionMesh((struct NJS_ACTION *)&action_ev_s_t2c_body, var1->value.f, 0, 1.0f);
+	late_ActionClipMesh((struct NJS_ACTION *)&action_ev_s_t2c_body, var1->value.f, 0, 1.0f);
 	FUN_0067d830((float *)0, 0.0f, 2.8f, -2.6f);
 	njRotateY((float *)0, 0x4000);
 	___njSetTexture(&texlist_ev_s_t2c_body);
-	___dsAction((struct NJS_ACTION *)&action_m_with_tr2_miles, var1->counter.f, 1.0f);
+	ds_ActionClip((struct NJS_ACTION *)&action_m_with_tr2_miles, var1->counter.f, 1.0f);
 	njPopMatrix(1);
 }
 

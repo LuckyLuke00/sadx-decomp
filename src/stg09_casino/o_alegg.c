@@ -20,7 +20,7 @@ static void Disp(struct task *tp)
 			njRotateY(0, (unsigned short)DAT_05b42a7c->ang.y);
 		}
 		DAT_05b3df40 = 250.0f;
-		late_ActionEx((struct NJS_ACTION *)&action_alegg_body_o, var1->counter.f, 4, 1.0f);
+		late_ActionClipEx((struct NJS_ACTION *)&action_alegg_body_o, var1->counter.f, 4, 1.0f);
 		DAT_05b3df40 = 0.0f;
 		njPopMatrix(1);
 	}

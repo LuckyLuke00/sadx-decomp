@@ -48,6 +48,6 @@ void HodaiTamaDraw(struct task *tp)
 	njRotateXYZ(0, var1->ang.x, var1->ang.y, var1->ang.z);
 	FUN_0067d2d0(0, 1.0, 1.0, -1.0);
 	___njSetTexture(&texlist_shooting0);
-	late_ActionEx((struct NJS_ACTION *)&action_tekkyu_s_tekkyu, var1->counter.f, 4, 1.0);
+	late_ActionClipEx((struct NJS_ACTION *)&action_tekkyu_s_tekkyu, var1->counter.f, 4, 1.0);
 	njPopMatrix(1);
 }

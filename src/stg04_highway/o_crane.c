@@ -55,7 +55,7 @@ void dispCage(struct task *tp)
 	}
 	SetObjectTexture();
 	FUN_0067d830(var2, 0.0f, 0.0f, -30.0f);
-	late_ActionMesh((struct NJS_ACTION *)var1->timer.ptr, *(float *)((char *)var1 + 0x2c), 0, 1.0f);
+	late_ActionClipMesh((struct NJS_ACTION *)var1->timer.ptr, *(float *)((char *)var1 + 0x2c), 0, 1.0f);
 	njPopMatrix(1);
 	ResetMaterial();
 	LoadControl3D();

@@ -1045,7 +1045,7 @@ unsigned long FUN_004951c0(unsigned long, unsigned long)
 }
 
 // STUB: SADX 0x00495270
-void ghDrawPvrSprite(short *, int, float, float, float, float, float)
+void ghDrawPvrSpriteS(short *, int, float, float, float, float, float)
 {
 }
 
@@ -1813,12 +1813,12 @@ void MirenObjEditDrawCollision(const struct colliwk *)
 }
 
 // STUB: SADX 0x00574140
-void FUN_00574140(int, float, float, float)
+void ghDrawPvrTexture(int, float, float, float)
 {
 }
 
 // STUB: SADX 0x00574950
-void ghDrawPvrTexture(int, float, float, float, float, float)
+void ghDrawPvrTextureS(int, float, float, float, float, float)
 {
 }
 
@@ -2391,7 +2391,7 @@ void DrawMiniGameSelStage(struct MiniGameSelWk *wkp)
 }
 
 // STUB: SADX 0x00604760
-struct task *SetAdvaSndTestTask(struct task *, struct ModeSelPrmType *)
+struct task *FUN_00604760(struct task *, struct ModeSelPrmType *)
 {
 	return (struct task *)0;
 }

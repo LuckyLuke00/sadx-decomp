@@ -3,8 +3,8 @@ extern struct NJS_TEXLIST texlist_shooting1;
 extern struct NJS_ACTION action_beam_beam_tr1[1];
 extern struct NJS_ACTION action_beamev_laser[1];
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
-void FUN_004a8b10(NJS_ACTION *param_1, float param_2, int param_3);
-void FUN_004a8a50(NJS_ACTION *param_1, float param_2, int param_3);
+void late_ActionMesh(NJS_ACTION *action, float frame, int flgs);
+void late_ActionEx(NJS_ACTION *action, float frame, int flgs);
 
 // FUNCTION: SADX 0x007eda40
 void DeadDisp(struct task *tp)
@@ -14,12 +14,12 @@ void DeadDisp(struct task *tp)
 	njPushMatrix(0);
 	FUN_0067d830(0, 0.0f, 0.0f, 0.0f);
 	___njSetTexture(&texlist_shooting1);
-	FUN_004a8b10(&action_beam_beam_tr1[0], var1->counter.f, 4);
+	late_ActionMesh(&action_beam_beam_tr1[0], var1->counter.f, 4);
 	njPopMatrix(1);
 	njPushMatrix(0);
 	FUN_0067d830(0, 0.0f, 0.0f, 0.0f);
 	___njSetTexture(&texlist_shooting1);
-	FUN_004a8a50(&action_beamev_laser[0], var1->counter.f, 4);
+	late_ActionEx(&action_beamev_laser[0], var1->counter.f, 4);
 	njPopMatrix(1);
 }
 
@@ -34,13 +34,13 @@ void TornadeDisp(struct task *tp)
 	___njSetTexture(&texlist_shooting0);
 	FUN_0067d2d0(NULL, 0.5f, 0.5f, 0.5f);
 	FUN_004a88c0((struct NJS_ACTION *)&action_shot_bf_s_bodya, 0.0f);
-	late_ActionEx((struct NJS_ACTION *)&action_shot_s_ecfire, var1->counter.f, 4, 1.0f);
+	late_ActionClipEx((struct NJS_ACTION *)&action_shot_s_ecfire, var1->counter.f, 4, 1.0f);
 	njPopMatrix(1);
 	njPushMatrix(NULL);
 	FUN_0067d830(NULL, 0.0f, 0.0f, 0.0f);
 	___njSetTexture(&texlist_shooting2);
 	___dsSetPalette(2);
-	FUN_004a8b10((struct NJS_ACTION *)&action_tr2henkei_tr2_tf_event_s_tr2rt, var1->counter.f, 4);
+	late_ActionMesh((struct NJS_ACTION *)&action_tr2henkei_tr2_tf_event_s_tr2rt, var1->counter.f, 4);
 	___dsSetPalette(0);
 	njPopMatrix(1);
 }

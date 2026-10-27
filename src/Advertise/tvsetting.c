@@ -1,12 +1,12 @@
 #include "decls.h"
 extern struct task *DAT_05cda18c;
 void FUN_005fd5d0(struct anywk *param_1);
-void FUN_00574140(int param_1, float param_2, float param_3, float param_4);
+void ghDrawPvrTexture(int index, float x, float y, float z);
 void FUN_005fd510(int param_1, int param_2);
 void FUN_005fd320(struct task *param_1);
 
 // FUNCTION: SADX 0x005fd240
-struct task *FUN_005fd240(struct ModeSelPrmType *param_1)
+struct task *SetAdvaTvSettingTask(struct ModeSelPrmType *prmp)
 {
 	void *local_cg;
 	struct task *local_8g;
@@ -17,7 +17,7 @@ struct task *FUN_005fd240(struct ModeSelPrmType *param_1)
 	{
 		local_cg = CAlloc(1, 0x38);
 		local_8g->awp = (struct anywk *)local_cg;
-		SetAdvaTvSettingTask(local_8g, param_1);
+		FUN_005fd2b0(local_8g, prmp);
 		local_8g->exec = FUN_005fd320;
 		local_8g->disp = FUN_005fd760;
 	}
@@ -25,7 +25,7 @@ struct task *FUN_005fd240(struct ModeSelPrmType *param_1)
 }
 
 // STUB: SADX 0x005fd2b0
-void SetAdvaTvSettingTask(struct task *param_1, struct ModeSelPrmType *param_2)
+void FUN_005fd2b0(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 }
 
@@ -119,7 +119,7 @@ void FUN_005fd7e0(struct TvSettingWk *param_1)
 {
 	ghSetPvrTexMaterial(0xffffffff);
 	___njSetTexture(&texlist_tvsetting);
-	FUN_00574140(0x16, 32.0f, 42.0f, *(float *)((char *)param_1 + 0xc) + -12.0);
+	ghDrawPvrTexture(0x16, 32.0f, 42.0f, *(float *)((char *)param_1 + 0xc) + -12.0);
 	DrawTitleBack(0.0f, 32.0f, *(float *)((char *)param_1 + 0xc) + -10.0, 565.0f, 42.0f);
 }
 

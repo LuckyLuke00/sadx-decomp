@@ -16,6 +16,6 @@ void dispCatapult(struct task *tp)
 	{
 		njRotateY(0, var1->ang.y);
 	}
-	___dsAction((struct NJS_ACTION *)var1->timer.ptr, var1->scl.y, 1.0f);
+	ds_ActionClip((struct NJS_ACTION *)var1->timer.ptr, var1->scl.y, 1.0f);
 	njPopMatrix(1);
 }

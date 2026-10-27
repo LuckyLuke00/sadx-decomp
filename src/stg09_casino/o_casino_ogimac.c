@@ -423,7 +423,7 @@ static void DispH(struct task *tp)
 	}
 	if (var1->value.f != 0.0f)
 	{
-		___dsAction((struct NJS_ACTION *)var1->counter.ptr, var1->value.f, 1.0f);
+		ds_ActionClip((struct NJS_ACTION *)var1->counter.ptr, var1->value.f, 1.0f);
 		njPopMatrix(1);
 	}
 	else

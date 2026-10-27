@@ -1,5 +1,5 @@
 #include "decls.h"
-struct task *SetAdvaSndTestTask(struct task *param_1, struct ModeSelPrmType *param_2);
+struct task *FUN_00604760(struct task *param_1, struct ModeSelPrmType *param_2);
 extern struct task *DAT_05edd9b8;
 
 // FUNCTION: SADX 0x006046d0
@@ -12,7 +12,7 @@ void FUN_006046d0(void)
 }
 
 // FUNCTION: SADX 0x006046f0
-struct task *FUN_006046f0(struct ModeSelPrmType *param_1)
+struct task *SetAdvaSndTestTask(struct ModeSelPrmType *prmp)
 {
 	void *local_cg;
 	struct task *local_8g;
@@ -23,7 +23,7 @@ struct task *FUN_006046f0(struct ModeSelPrmType *param_1)
 	{
 		local_cg = CAlloc(1, 0x48);
 		local_8g->awp = (struct anywk *)local_cg;
-		SetAdvaSndTestTask(local_8g, param_1);
+		FUN_00604760(local_8g, prmp);
 		local_8g->exec = snd_test_exec;
 		local_8g->disp = snd_test_disp;
 	}

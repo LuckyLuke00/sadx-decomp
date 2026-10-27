@@ -25,7 +25,7 @@ static void Normal1(struct task *pTask)
 		njRotateY(0, var1->ang.y);
 	}
 	njScaleV(0, var3);
-	___dsAction(action_obj_m_kusa_a, var2, FUN_004a1e90((float *)var3));
+	ds_ActionClip(action_obj_m_kusa_a, var2, FUN_004a1e90((float *)var3));
 	njPopMatrix(1);
 	var2 += 1.0;
 	if (var2 >= 29.0)
@@ -56,7 +56,7 @@ static void Normal2(struct task *pTask)
 			njRotateY(0, var1->ang.y);
 		}
 		njScaleV(0, var3);
-		___dsAction(action_obj_m_kusa_b, var2, FUN_004a1e90((float *)var3));
+		ds_ActionClip(action_obj_m_kusa_b, var2, FUN_004a1e90((float *)var3));
 		njPopMatrix(1);
 	}
 	var2 += 1.0;

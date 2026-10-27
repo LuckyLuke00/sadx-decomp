@@ -170,10 +170,10 @@ void draw_sndeff_arrow(unsigned long colu, unsigned long cold, int udflg, float 
 	int local_8 = (udflg != 0 ? 0x40000000 : 0);
 	___njSetTexture(&texlist_ava_sndtest);
 	ghSetPvrTexMaterial(0xffffffff);
-	ghDrawPvrTexture(local_8 | 0x4000005, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z + -0.30000001192092896, mag, mag);
-	ghDrawPvrTexture(local_8 | 0x4000004, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z, mag, mag);
+	ghDrawPvrTextureS(local_8 | 0x4000005, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z + -0.30000001192092896, mag, mag);
+	ghDrawPvrTextureS(local_8 | 0x4000004, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z, mag, mag);
 	ghSetPvrTexVertexColor(colu, cold, colu, cold);
-	ghDrawPvrTexture(local_8 | 0x4000003, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z + -0.6000000238418579, mag, mag);
+	ghDrawPvrTextureS(local_8 | 0x4000003, x - 320.0f + ScreenRaitoX * 320.0f, y - 240.0f + ScreenRaitoY * 240.0f, z + -0.6000000238418579, mag, mag);
 }
 
 // FUNCTION: SADX 0x00606240
@@ -182,5 +182,5 @@ void DrawSndTestBg(struct SndTestWk *wkp)
 	___njSetTexture(&texlist_ava_sndtest);
 	ghSetPvrTexMaterial(-1);
 	DrawTitleBack(0.0f * ScreenRaitoX, ScreenRaitoY * 32.0f, wkp->BaseZ + -8.0f, ScreenRaitoX * 565.0f, ScreenRaitoY * 42.0f);
-	ghDrawPvrTexture(0xc, ScreenRaitoX * 32.0f, ScreenRaitoY * 40.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(0xc, ScreenRaitoX * 32.0f, ScreenRaitoY * 40.0f, wkp->BaseZ + -14.0f, ScreenRaitoX, ScreenRaitoY);
 }

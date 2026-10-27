@@ -7,7 +7,7 @@ void ___njSetTexture(struct NJS_TEXLIST *texlist);
 void njPushMatrix(float *);
 void njTranslateV(float *, struct NJS_POINT3 *);
 void njRotateY(float *, unsigned short);
-void FUN_004a8ae0(NJS_ACTION *param_1, float param_2, int param_3, float param_4);
+void late_ActionClipMS(NJS_ACTION *action, float frame, int flgs, float clipScl);
 void njPopMatrix(int param_1);
 extern int DAT_05b9d838;
 extern int DAT_05b3df4c;
@@ -69,7 +69,7 @@ void Dsp_small_leaf(struct task *pTask)
 		{
 			njRotateY(0, (unsigned short)var1->ang.y);
 		}
-		FUN_004a8ae0((struct NJS_ACTION *)&action_c4_s_skusa, var1->counter.f, 1, 1.0f);
+		late_ActionClipMS((struct NJS_ACTION *)&action_c4_s_skusa, var1->counter.f, 1, 1.0f);
 		njPopMatrix(1);
 	}
 }

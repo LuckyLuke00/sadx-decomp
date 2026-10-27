@@ -15,7 +15,7 @@ void frog_disp(struct task *tp)
 	}
 	___njSetTexture(&texlist_frog);
 	MJoinVertexes(_action_f_f0001_frog[0].object, _action_f_f0001_frog[0].motion, 0.0, &DAT_0317857c);
-	___dsAction((struct NJS_ACTION *)&_action_f_f0001_frog, 0.0, 6.0);
+	ds_ActionClip((struct NJS_ACTION *)&_action_f_f0001_frog, 0.0, 6.0);
 	njPopMatrix(1);
 }
 

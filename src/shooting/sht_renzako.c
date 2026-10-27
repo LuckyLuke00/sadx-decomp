@@ -24,7 +24,7 @@ void RenzakoDisp(struct task *tp)
 				njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
 			}
 			___njSetTexture(&texlist_shooting0);
-			late_ActionEx(&action_stene_s_renzako[0], var1->value.f, 4, 1.0);
+			late_ActionClipEx(&action_stene_s_renzako[0], var1->value.f, 4, 1.0);
 			njPopMatrix(1);
 		}
 	}

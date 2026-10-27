@@ -11427,7 +11427,7 @@
   },
   {
    "address": "0x00495270",
-   "name": "ghDrawPvrSprite",
+   "name": "ghDrawPvrSpriteS",
    "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
@@ -13531,7 +13531,7 @@
   },
   {
    "address": "0x004a89c0",
-   "name": "___dsAction",
+   "name": "ds_ActionClip",
    "accuracy": 0.36363636363636365,
    "effective": false,
    "stub": true,
@@ -13539,14 +13539,6 @@
   },
   {
    "address": "0x004a89f0",
-   "name": "FUN_004a89f0",
-   "accuracy": 1.0,
-   "effective": false,
-   "stub": false,
-   "library": false
-  },
-  {
-   "address": "0x004a8a20",
    "name": "late_Action",
    "accuracy": 1.0,
    "effective": false,
@@ -13554,8 +13546,16 @@
    "library": false
   },
   {
+   "address": "0x004a8a20",
+   "name": "late_ActionClip",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004a8a50",
-   "name": "FUN_004a8a50",
+   "name": "late_ActionEx",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -13563,7 +13563,7 @@
   },
   {
    "address": "0x004a8a80",
-   "name": "late_ActionEx",
+   "name": "late_ActionClipEx",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -13579,7 +13579,7 @@
   },
   {
    "address": "0x004a8ae0",
-   "name": "FUN_004a8ae0",
+   "name": "late_ActionClipMS",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -13587,7 +13587,7 @@
   },
   {
    "address": "0x004a8b10",
-   "name": "FUN_004a8b10",
+   "name": "late_ActionMesh",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -13595,7 +13595,7 @@
   },
   {
    "address": "0x004a8b40",
-   "name": "late_ActionMesh",
+   "name": "late_ActionClipMesh",
    "accuracy": 0.34782608695652173,
    "effective": false,
    "stub": true,
@@ -14707,7 +14707,7 @@
   },
   {
    "address": "0x004b6cd0",
-   "name": "FUN_004b6cd0",
+   "name": "SetAdvaFileSelTask",
    "accuracy": 0.2,
    "effective": false,
    "stub": true,
@@ -14715,7 +14715,7 @@
   },
   {
    "address": "0x004b6d40",
-   "name": "SetAdvaFileSelTask",
+   "name": "FUN_004b6d40",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -14755,7 +14755,7 @@
   },
   {
    "address": "0x004b83c0",
-   "name": "FUN_004b83c0",
+   "name": "file_sel_disp",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -14811,7 +14811,7 @@
   },
   {
    "address": "0x004b9330",
-   "name": "file_sel_disp",
+   "name": "FUN_004b9330",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -26315,7 +26315,7 @@
   },
   {
    "address": "0x00574140",
-   "name": "FUN_00574140",
+   "name": "ghDrawPvrTexture",
    "accuracy": 0.02572347266881029,
    "effective": false,
    "stub": true,
@@ -26323,7 +26323,7 @@
   },
   {
    "address": "0x00574950",
-   "name": "ghDrawPvrTexture",
+   "name": "ghDrawPvrTextureS",
    "accuracy": 0.024539877300613498,
    "effective": false,
    "stub": true,
@@ -27091,7 +27091,7 @@
   },
   {
    "address": "0x0058d490",
-   "name": "dispHandleTexture",
+   "name": "dispDistanceLure",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -27099,7 +27099,7 @@
   },
   {
    "address": "0x0058d570",
-   "name": "FUN_0058d570",
+   "name": "dispDistanceNum",
    "accuracy": 0.1,
    "effective": false,
    "stub": true,
@@ -35731,7 +35731,7 @@
   },
   {
    "address": "0x005fd240",
-   "name": "FUN_005fd240",
+   "name": "SetAdvaTvSettingTask",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -35739,7 +35739,7 @@
   },
   {
    "address": "0x005fd2b0",
-   "name": "SetAdvaTvSettingTask",
+   "name": "FUN_005fd2b0",
    "accuracy": 0.26666666666666666,
    "effective": false,
    "stub": true,
@@ -36043,7 +36043,7 @@
   },
   {
    "address": "0x00600e90",
-   "name": "FUN_00600e90",
+   "name": "SetAdvaMiniGameSelTask",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -36051,7 +36051,7 @@
   },
   {
    "address": "0x00600f10",
-   "name": "SetAdvaMiniGameSelTask",
+   "name": "FUN_00600f10",
    "accuracy": 0.23529411764705882,
    "effective": false,
    "stub": true,
@@ -36163,7 +36163,7 @@
   },
   {
    "address": "0x00602360",
-   "name": "FUN_00602360",
+   "name": "SetAdvaExplainTask",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -36171,7 +36171,7 @@
   },
   {
    "address": "0x006023d0",
-   "name": "SetAdvaExplainTask",
+   "name": "FUN_006023d0",
    "accuracy": 0.26666666666666666,
    "effective": false,
    "stub": true,
@@ -36323,7 +36323,7 @@
   },
   {
    "address": "0x00602ff0",
-   "name": "FUN_00602ff0",
+   "name": "SetAdvaOptionSelTask",
    "accuracy": 0.2,
    "effective": false,
    "stub": true,
@@ -36331,7 +36331,7 @@
   },
   {
    "address": "0x00603060",
-   "name": "SetAdvaOptionSelTask",
+   "name": "FUN_00603060",
    "accuracy": 0.25,
    "effective": false,
    "stub": true,
@@ -36395,7 +36395,7 @@
   },
   {
    "address": "0x006046f0",
-   "name": "FUN_006046f0",
+   "name": "SetAdvaSndTestTask",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -36403,7 +36403,7 @@
   },
   {
    "address": "0x00604760",
-   "name": "SetAdvaSndTestTask",
+   "name": "FUN_00604760",
    "accuracy": 0.18181818181818182,
    "effective": false,
    "stub": true,
@@ -36539,7 +36539,7 @@
   },
   {
    "address": "0x006067b0",
-   "name": "ChgSubModeToStay",
+   "name": "FUN_006067b0",
    "accuracy": 0.23529411764705882,
    "effective": false,
    "stub": true,
@@ -36603,7 +36603,7 @@
   },
   {
    "address": "0x006074c0",
-   "name": "FUN_006074c0",
+   "name": "DrawTrialActSelRank",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -36619,7 +36619,7 @@
   },
   {
    "address": "0x006075f0",
-   "name": "DrawTrialActSelRank",
+   "name": "FUN_006075f0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -41044,7 +41044,7 @@
   },
   {
    "address": "0x006ad970",
-   "name": "ObjectMysticRuinTailsDoor",
+   "name": "FUN_006ad970",
    "accuracy": 0.09090909090909091,
    "effective": false,
    "stub": true,
@@ -42308,7 +42308,7 @@
   },
   {
    "address": "0x006c56d0",
-   "name": "Rd_Bossegm2",
+   "name": "FUN_006c56d0",
    "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
@@ -51373,7 +51373,7 @@
   },
   {
    "address": "0x00804340",
-   "name": "Rd_Windy",
+   "name": "FUN_00804340",
    "accuracy": 0.07407407407407407,
    "effective": false,
    "stub": true,
@@ -52277,7 +52277,7 @@
   },
   {
    "address": "0x00819d00",
-   "name": "RdHighwayCheckArriveAtTheBuilding",
+   "name": "FUN_00819d00",
    "accuracy": 0.05263157894736842,
    "effective": false,
    "stub": true,
@@ -89971,5 +89971,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e76bea4f2f45e6d419a1ef11ace239f0593ae704e9d8b8981abcff996ebfae80"
+ "inputs_sha256": "3da4d32e268b2dae25e1933381b183437ec7cce0a223b8e95c6038ab80c8cfbd"
 }
