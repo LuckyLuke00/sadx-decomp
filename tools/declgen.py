@@ -146,8 +146,8 @@ def extern_of(definition: str) -> str:
 
 def write(context: Path | None, tables: Path | None) -> int:
     target = project.game_config().target
-    library = {row.name for row in project.library_rows() if row.kind == "library"}
-    funcs, fnames, glob, gnames, shared_globals = load_tables(library, tables)
+    runtime = {row.address: row.name for row in project.library_rows() if row.kind == "library"}  # address: name
+    funcs, fnames, glob, gnames, shared_globals = load_tables(set(runtime.values()), tables)
     types = Types(tables / "types.h" if tables else ROOT / names.TYPES_H)
     before = names.previous(ROOT)
     sources = names.read_sources(ROOT)
@@ -269,8 +269,10 @@ def write(context: Path | None, tables: Path | None) -> int:
             a = int(tok[4:], 16)
             if a in funcs and (a not in defined_funcs or counts[tok] > 1):
                 used_funcs.add(a)
-                if funcs[a]["name"] != tok:
-                    problems.append(f"{tok} has the name {funcs[a]['name']}: use that")
+                library_name = runtime.get(a, "")  # a library function such as memset: the tables may not name it
+                name = library_name if re.fullmatch(r"[A-Za-z_]\w*", library_name) else funcs[a]["name"]
+                if name != tok:
+                    problems.append(f"{tok} has the name {name}: use that")
     decls, stubs = {}, {}
     for a in sorted(used_funcs):
         row = funcs[a]
