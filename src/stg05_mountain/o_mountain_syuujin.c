@@ -33,9 +33,23 @@ void Object_Mountain_Syuujin_Move_B(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0082f390
+// FUNCTION: SADX 0x0082f390
 void Object_Mountain_Syuujin_Move_R(struct task *tp)
 {
+	float var1;
+	if (CheckRangeOut(tp) == 0)
+	{
+		struct taskwk *var2 = tp->twp;
+		var1 = (float)(*(int *)((char *)var2 + 0x1c) * 0.1);
+		var2->timer.f = var1 + var2->timer.f;
+		if (var2->timer.f > 29.0)
+		{
+			var2->timer.f = 0.0;
+		}
+		var2->wtimer += 0x570;
+		*(float *)((char *)var2 + 0x30) = njSin(var2->wtimer) * 0.10000000149011612 + 1.0;
+		Object_Mountain_Syuujin_Display(tp);
+	}
 }
 
 // STUB: SADX 0x0082f410

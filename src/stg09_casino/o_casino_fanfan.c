@@ -15,3 +15,8 @@ long ObjCasino_GetFanStatus(signed char ID)
 void EndKuzu(struct taskwk *twp)
 {
 }
+
+// STUB: SADX 0x00875a30
+void ObjectCasinoFanfan(struct task *tp)
+{
+}

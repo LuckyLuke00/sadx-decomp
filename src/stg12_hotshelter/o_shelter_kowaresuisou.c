@@ -58,11 +58,6 @@ void BubbleExec(struct task *tp)
 	BubbleDisp(tp);
 }
 
-// STUB: SADX 0x008b2d60
-void PieceInit(struct task *tp)
-{
-}
-
 // FUNCTION: SADX 0x008b2e50
 void BubbleInit(struct task *tp)
 {

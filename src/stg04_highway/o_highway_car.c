@@ -7,9 +7,15 @@ extern float DAT_060cf080;
 extern struct NJS_TEXLIST *DAT_060cf088;
 extern struct NJS_TEXANIM *DAT_060cf08c;
 
-// STUB: SADX 0x0081a940
+// FUNCTION: SADX 0x0081a940
 void ObjectCarManagerExit(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	FreeTaskC(tp);
+	if ((var1->smode & 0x80) != 0)
+	{
+		dsStop_id((int)var1);
+	}
 }
 
 // STUB: SADX 0x0081c0f0

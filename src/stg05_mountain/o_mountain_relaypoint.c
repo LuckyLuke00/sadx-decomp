@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_ACTION action_kasshatyuukei1a_st[];
 extern struct NJS_ACTION action_kasshatyuukei1a_st[1];
 
 // FUNCTION: SADX 0x00831f50
@@ -48,7 +49,14 @@ void RelaypointExec(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00832060
+// FUNCTION: SADX 0x00832060
 void ObjectMountainRelaypoint(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->scl.x = 0.0;
+	var1->scl.y = (float)(unsigned int)action_kasshatyuukei1a_st[0].motion->nbFrame;
+	tp->exec = RelaypointExec;
+	tp->disp = RelaypointDraw;
+	var1->scl.z = 1.0;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }

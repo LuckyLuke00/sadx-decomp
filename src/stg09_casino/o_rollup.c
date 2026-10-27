@@ -134,6 +134,16 @@ void NormalDL(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00884590
+void ObjectRollUpR(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008845e0
+void ObjectRollUpL(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00884630
 void ObjectRollDownL(struct task *tp)
 {

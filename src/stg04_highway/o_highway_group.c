@@ -94,29 +94,54 @@ void ObjectHighwayGroupPinpin(struct task *tp)
 	tp->exec = Exec;
 }
 
-// STUB: SADX 0x0081d180
+// FUNCTION: SADX 0x0081d180
 void ObjectHighwayGroupFF(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = (long)ObjectFence;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
 }
 
-// STUB: SADX 0x0081d1b0
+// FUNCTION: SADX 0x0081d1b0
 void ObjectHighwayGroupRaftA(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = (long)ObjectHighwayForRaftA;
+	var1->value.l = 6;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
 }
 
-// STUB: SADX 0x0081d1e0
+// FUNCTION: SADX 0x0081d1e0
 void ObjectHighwayGroupRaftC(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = (long)ObjectHighwayRaftC;
+	var1->value.l = 6;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
 }
 
-// STUB: SADX 0x0081d210
+// FUNCTION: SADX 0x0081d210
 void ObjectHighwayGroupGreenA(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = 0x81ead0;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
 }
 
-// STUB: SADX 0x0081d240
+// FUNCTION: SADX 0x0081d240
 void ObjectHighwayGroupGreenB(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->timer.l = (long)ObjectHighwayGreenB;
+	var1->value.l = 2;
+	tp->dest = ExplosionRockDestructor;
+	tp->exec = Exec;
 }
 
 // FUNCTION: SADX 0x0081d270

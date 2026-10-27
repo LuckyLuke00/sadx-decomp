@@ -3,6 +3,11 @@ extern short DAT_05b9d744;
 extern float DAT_060d0da0;
 extern float DAT_060d0da4;
 
+// STUB: SADX 0x0083f650
+void ObjectSkydeck_wings_init()
+{
+}
+
 // STUB: SADX 0x0083f690
 int SkydeckCheck_break(float posx, float posy, float posz)
 {

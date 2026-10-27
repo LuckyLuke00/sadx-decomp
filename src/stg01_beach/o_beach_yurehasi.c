@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct obj object_col_hasi_a_hasi_a[2];
+extern struct CCL_INFO hasi_a0_info[1];
+extern struct CCL_INFO hasi_a1_info[1];
+extern float DAT_060cedec[4];
 extern int DAT_05b9d838;
 extern struct obj object_seaobj_hasi_b_hasi_b[];
 extern struct task *DAT_060cee5c;
@@ -58,9 +62,17 @@ void B_Disp(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x008028c0
+// FUNCTION: SADX 0x008028c0
 void A_Exec(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	A_Disp(tp);
+	{
+		float var2 = DAT_060cedec[var1->btimer];
+		var1->pos.y = var2;
+		*(float *)((char *)var1->counter.ptr + 0xc) = var2;
+	}
+	EntryColliList(var1);
 }
 
 // STUB: SADX 0x00802900
@@ -68,9 +80,49 @@ void B_Exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00802950
+// FUNCTION: SADX 0x00802950
 void A_Init(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct forcewk *var2 = tp->fwp;
+	struct obj *var3;
+
+	var1->smode = 0;
+	var2->pos_spd.x = 0.0f;
+	var2->pos_spd.y = 0.0f;
+	var2->pos_spd.z = 0.0f;
+	var2->ang_spd.x = 0;
+	var2->ang_spd.y = 0;
+	var2->ang_spd.z = 0;
+	var3 = GetMobileLandObject();
+	var1->counter.ptr = var3;
+	var3->scl[0] = 1.0f;
+	var3->scl[1] = 1.0f;
+	var3->scl[2] = 1.0f;
+	var3->evalflags = 0x10;
+	var3->ang[0] = 0;
+	var3->ang[1] = var1->ang.y;
+	var3->ang[2] = 0;
+	var3->pos[0] = var1->pos.x;
+	var3->pos[1] = var1->pos.y;
+	var3->pos[2] = var1->pos.z;
+	var3->model = object_col_hasi_a_hasi_a[0].model;
+	var3->child = 0;
+	var3->sibling = 0;
+	RegisterCollisionEntry(0x68000001, tp, var3);
+	var1->flag |= 0x100;
+	if (var1->btimer == 0)
+	{
+		CCL_Init(tp, hasi_a0_info, 4, 4);
+	}
+	else
+	{
+		CCL_Init(tp, hasi_a1_info, 4, 4);
+	}
+	SET_COLLI_RANGE(var1->cwp, 80.0f);
+	tp->exec = A_Exec;
+	tp->disp = A_Disp;
+	tp->dest = FUN_00825de0;
 }
 
 // STUB: SADX 0x00802a30

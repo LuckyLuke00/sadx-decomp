@@ -1,4 +1,8 @@
 #include "decls.h"
+extern int DAT_060dd058;
+extern int DAT_060dd05c;
+void ColliGachapon();
+void QSortGachapon();
 extern struct NJS_TEXLIST texlist_gachapon;
 extern struct obj DAT_05a862dc;
 
@@ -58,9 +62,25 @@ void InitGachaponTask(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008903d0
+// FUNCTION: SADX 0x008903d0
 void GachaponManager(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	switch (var1->mode)
+	{
+		case 0:
+			var1->mode = 1;
+			break;
+		case 1:
+			if (DAT_060dd058 != 0)
+			{
+				ColliGachapon();
+				QSortGachapon();
+			}
+			break;
+	}
+	DAT_060dd058 = 0;
+	DAT_060dd05c = 0;
 }
 
 // STUB: SADX 0x008909c0

@@ -25,3 +25,8 @@ void Norm(struct task *tp)
 	Draw(tp);
 	var1->wtimer++;
 }
+
+// STUB: SADX 0x008221e0
+void ObjectHighwaySlight(struct task *tp)
+{
+}

@@ -20,3 +20,8 @@ void HanmaExec(struct task *tp)
 	njPopMatrix(1);
 	EntryColliList(var1);
 }
+
+// STUB: SADX 0x008343a0
+void HanmaInit(struct task *tp)
+{
+}

@@ -1,4 +1,5 @@
 #include "decls.h"
+void late_DisplayBalls();
 extern struct NJS_TEXLIST texlist_balls;
 extern struct NJS_TEXLIST texlist_obj_casino;
 extern struct NJS_TEXLIST texlist_obj_casino2;
@@ -79,6 +80,43 @@ void ReleaseTextureOnCasino(long No)
 			late_ReleaseTexture(&texlist_balls);
 		}
 	}
+}
+
+// FUNCTION: SADX 0x00869d60
+void FUN_00869d60(struct task *param_1)
+{
+	if (ChkGameMode() == 0)
+	{
+		return;
+	}
+	if (GetPlayerCharacterName(0) == 3)
+	{
+		return;
+	}
+	if (DAT_060dbc34 != 3)
+	{
+		return;
+	}
+	ADX_Close();
+	if (DAT_060dbcb0 & 0x40000000)
+	{
+		DAT_060dbcb0 &= 0xbfffffff;
+		late_ReleaseTexture(&texlist_obj_casino9);
+	}
+	if (DAT_060dbcb0 & 0x80000000)
+	{
+		DAT_060dbcb0 &= 0x7fffffff;
+		late_ReleaseTexture(&texlist_obj_casino8);
+	}
+	DAT_05cd14d4 = 1;
+	LandChangeStage(2);
+	AddSetStage(2);
+	AddCameraStage(2);
+	AdvanceAct(2);
+	SetPlayerInitialPosition(DAT_05baf368[0]);
+	*(unsigned char *)param_1->twp = 0;
+	DAT_060dbc34 = 0;
+	DAT_048093d9 = 3;
 }
 
 // FUNCTION: SADX 0x00869e30
@@ -191,4 +229,13 @@ void SetPlayerPinball(struct task *tp)
 // STUB: SADX 0x0086a3b0
 void SetObjectTexture2(long No)
 {
+}
+
+// FUNCTION: SADX 0x0086a550
+void DisplayBalls(struct task *tp)
+{
+	if (tp->twp->mode == 4 || tp->twp->mode == 5)
+	{
+		late_SetFunc((void (__cdecl *)(void *))late_DisplayBalls, (void *)0, -1.1f, 1);
+	}
 }

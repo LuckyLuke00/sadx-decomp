@@ -50,9 +50,10 @@ void target_draw_wheel(struct task *task_p)
 	}
 }
 
-// STUB: SADX 0x00894980
+// FUNCTION: SADX 0x00894980
 void target_end(struct task *task_p)
 {
+	*(int *)((char *)task_p->ptp->twp + 8) = 0;
 }
 
 // STUB: SADX 0x008949a0

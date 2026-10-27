@@ -1,4 +1,7 @@
 #include "decls.h"
+static void Normal2(struct task *tp);
+static void Disp2(struct task *tp);
+extern void *InitialTable2[6][3];
 static void Disp1(struct task *tp);
 static void Normal1(struct task *tp);
 extern struct NJS_MODEL model_casi_nc_neoor_neoor[1];
@@ -31,6 +34,14 @@ static void Disp1(struct task *tp)
 	njRotateY(0, 0xf38f);
 	late_DrawModel((struct NJS_MODEL *)var1->value.ptr, 9);
 	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x00882fe0
+static void Disp2(struct task *tp)
+{
+	tp->twp->flag &= 0xfeff;
+	SetObjectTexture2(0x22);
+	LoopTaskC(tp);
 }
 
 // FUNCTION: SADX 0x00883010
@@ -72,6 +83,13 @@ void cNormal2(struct task *ctp)
 	___dsDrawModel((struct NJS_MODEL *)var1->value.ptr);
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x008830b0
+static void Normal2(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x008831a0
 void ObjectNeon(struct task *tp)
 {
@@ -82,5 +100,52 @@ void ObjectNeon(struct task *tp)
 	var1->value.ptr = &model_casi_nc_neoor_c_neoor_c;
 	tp->exec = Normal1;
 	tp->disp = Disp1;
+	tp->dest = ExplosionRockDestructor;
+}
+
+// FUNCTION: SADX 0x008831e0
+void ObjectNeonkabe(struct task *tp)
+{
+	struct task *var1;
+	struct taskwk *var2;
+
+	var1 = CreateChildTask(2, cNormal2, tp);
+	var2 = var1->twp;
+	var2->counter.ptr = InitialTable2[0][0];
+	var2->timer.ptr = InitialTable2[0][1];
+	var2->value.ptr = InitialTable2[0][2];
+	var2->mode = 0;
+	var1 = CreateChildTask(2, cNormal2, tp);
+	var2 = var1->twp;
+	var2->counter.ptr = InitialTable2[1][0];
+	var2->timer.ptr = InitialTable2[1][1];
+	var2->value.ptr = InitialTable2[1][2];
+	var2->mode = 1;
+	var1 = CreateChildTask(2, cNormal2, tp);
+	var2 = var1->twp;
+	var2->counter.ptr = InitialTable2[2][0];
+	var2->timer.ptr = InitialTable2[2][1];
+	var2->value.ptr = InitialTable2[2][2];
+	var2->mode = 2;
+	var1 = CreateChildTask(2, cNormal2, tp);
+	var2 = var1->twp;
+	var2->counter.ptr = InitialTable2[3][0];
+	var2->timer.ptr = InitialTable2[3][1];
+	var2->value.ptr = InitialTable2[3][2];
+	var2->mode = 3;
+	var1 = CreateChildTask(2, cNormal2, tp);
+	var2 = var1->twp;
+	var2->counter.ptr = InitialTable2[4][0];
+	var2->timer.ptr = InitialTable2[4][1];
+	var2->value.ptr = InitialTable2[4][2];
+	var2->mode = 4;
+	var1 = CreateChildTask(2, cNormal2, tp);
+	var2 = var1->twp;
+	var2->counter.ptr = InitialTable2[5][0];
+	var2->timer.ptr = InitialTable2[5][1];
+	var2->value.ptr = InitialTable2[5][2];
+	var2->mode = 5;
+	tp->exec = Normal2;
+	tp->disp = Disp2;
 	tp->dest = ExplosionRockDestructor;
 }

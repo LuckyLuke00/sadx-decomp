@@ -1,6 +1,16 @@
 #include "decls.h"
 void FUN_007d21b0(...);
 
+// STUB: SADX 0x0083eba0
+void SetCloudSkydeck(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0083ec00
+void CutCloudSkydeck(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0083edf0
 void ObjectSkydeck_vent_Draw(struct task *tp)
 {

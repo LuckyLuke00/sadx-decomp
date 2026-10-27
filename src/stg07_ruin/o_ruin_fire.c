@@ -33,6 +33,18 @@ void DrawFire(struct task *tp)
 	___njColorBlendingMode(1, 6);
 }
 
+// FUNCTION: SADX 0x00853490
+void FUN_00853490(void)
+{
+	DAT_060d12f0.sx = 0.35f;
+	DAT_060d12f0.tlist = &tex_jet;
+	DAT_060d12f0.sy = 0.35f;
+	DAT_060d12f0.tanim = anim_jet;
+	DAT_060d12f0.p.x = 0.0f;
+	DAT_060d12f0.p.y = 0.0f;
+	DAT_060d12f0.p.z = 0.0f;
+}
+
 // STUB: SADX 0x008534d0
 void ObjectRuinFire(struct task *tp)
 {

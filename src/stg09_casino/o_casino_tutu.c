@@ -15,10 +15,12 @@ void ObjectCasinoTutuCDraw(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0087f530
 void ObjectCasinoTutuAInit(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0087f590
 void ObjectCasinoTutuA(struct task *tp)

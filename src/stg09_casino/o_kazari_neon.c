@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x0087fcf0
+void ObjectKazariStarNeon(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0087fd20
 void ObjectKazariYajiNeon(struct task *tp)
 {

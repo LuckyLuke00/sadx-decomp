@@ -45,3 +45,8 @@ void ObjectIcecapTuribasiExecutor(struct task *tp)
 		break;
 	}
 }
+
+// STUB: SADX 0x00865ac0
+void ObjectIcecapTuribasi1(struct task *tp)
+{
+}

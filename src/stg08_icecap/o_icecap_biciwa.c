@@ -19,10 +19,12 @@ void Object_IcecapBicIwaExec(struct task *tp)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0085fdb0
 void Object_IcecapBicIwaInit(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0085fe30
 void ObjectIcecapBicIwa(struct task *tp)

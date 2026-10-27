@@ -30,9 +30,14 @@ void DrawMtnSpiderA(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0082fb90
-void DstrMtnSpiderA(struct task *p_task)
+// FUNCTION: SADX 0x0082fb90
+void DstrMtnSpiderA(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (var1->value.ptr != NULL)
+	{
+		Free(var1->value.ptr);
+	}
 }
 
 // FUNCTION: SADX 0x0082fd90
