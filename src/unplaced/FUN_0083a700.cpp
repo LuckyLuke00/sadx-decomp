@@ -1,8 +1,26 @@
 #include "decls.h"
 
-// STUB: SADX 0x0083a700
+// FUNCTION: SADX 0x0083a700
 void FUN_0083a700(struct task *param_1)
 {
+	struct taskwk *var1 = param_1->twp;
+	struct obj *var2 = *(struct obj **)((char *)com_objtbl + (var1->smode << 4));
+	if (DAT_05b9d838 == 0)
+	{
+		___njSetTexture(&texlist_obj_skydeck);
+		njPushMatrix((float *)0);
+		njTranslateV((float *)0, &var1->pos);
+		if (*(int *)((char *)var1 + 0x1c) != 0)
+		{
+			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		}
+		if (*(int *)((char *)var1 + 0x18) != 0)
+		{
+			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+		}
+		___dsDrawObject(var2);
+		njPopMatrix(1);
+	}
 }
 
 // FUNCTION: SADX 0x0083a790

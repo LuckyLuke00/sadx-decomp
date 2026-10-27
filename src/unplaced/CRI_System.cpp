@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_006207b0();
+void FUN_00620430();
 void FUN_006207b0(void);
 void FUN_00620430(void);
 int FUN_00924470();
@@ -9,6 +11,14 @@ int FUN_00924460()
 {
 	return FUN_00634f10();
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x00924470
+int FUN_00924470()
+{
+	return (int)0;
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x009244d0
 void FUN_009244d0(void)

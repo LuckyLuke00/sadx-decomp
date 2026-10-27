@@ -92,6 +92,21 @@ void __fastcall FUN_00925ec0(int param_1)
 	*(int *)(param_1 + 0x10) = 0;
 }
 
+// STUB: SADX 0x00925ee0
+void __fastcall FUN_00925ee0(int param_1)
+{
+}
+
+// STUB: SADX 0x00925fa0
+void __fastcall FUN_00925fa0(struct HWND__ *param_1, float *param_2)
+{
+}
+
+// STUB: SADX 0x00926040
+void __fastcall FUN_00926040(int param_1)
+{
+}
+
 // STUB: SADX 0x009260c0
 void __fastcall FUN_009260c0(int param_1, int param_2, int param_3)
 {

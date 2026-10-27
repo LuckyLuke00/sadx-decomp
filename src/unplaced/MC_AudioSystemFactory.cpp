@@ -1,7 +1,41 @@
 #include "decls.h"
+void FUN_00924940(void *param_1);
 struct FUN_00924db0_t;
 struct MC_AudioSystemFactory * __fastcall FUN_00924b10(struct MC_AudioSystemFactory *param_1, int param_2);
 struct MC_AudioSystemFactory;
+
+// STUB: SADX 0x009247e0
+int __stdcall FUN_009247e0(int *param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00924840
+int FUN_00924840(int param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00924860
+int FUN_00924860(int param_1)
+{
+	return (int)0;
+}
+
+// STUB: SADX 0x00924870
+void FUN_00924870(void *param_1)
+{
+}
+
+// STUB: SADX 0x00924940
+void FUN_00924940(void *param_1)
+{
+}
+
+// STUB: SADX 0x00924980
+void FUN_00924980(float *param_1, float param_2)
+{
+}
 
 // STUB: SADX 0x00924ae0
 void __fastcall FUN_00924ae0(MC_AudioSystemFactory *param_1, int param_2)
@@ -30,6 +64,11 @@ int __fastcall FUN_00924d50(int *param_1, int param_2)
 int __fastcall FUN_00924db0(FUN_00924db0_t *param_1, int param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x00924e70
+void __fastcall FUN_00924e70(int param_1, int param_2)
+{
 }
 
 // FUNCTION: SADX 0x00924eb0

@@ -3812,6 +3812,12 @@ unsigned char (*z80_op_dd_cb[256])(void);
 // GLOBAL: SADX 0x04cbb1e0
 char DAT_04cbb1e0[11];
 
+// GLOBAL: SADX 0x05a43644
+int *DAT_05a43644;
+
+// GLOBAL: SADX 0x05a43694
+int DAT_05a43694;
+
 // GLOBAL: SADX 0x05a6401c
 struct NJS_MODEL DAT_05a6401c;
 
@@ -6932,6 +6938,9 @@ void *DAT_05edd884;
 // GLOBAL: SADX 0x05edd888
 struct task *DAT_05edd888;
 
+// GLOBAL: SADX 0x05edd88c
+void *DAT_05edd88c;
+
 // GLOBAL: SADX 0x05edd89c
 struct task *DAT_05edd89c;
 
@@ -6940,6 +6949,12 @@ struct task *DAT_05edd91c;
 
 // GLOBAL: SADX 0x05edd940
 unsigned char DAT_05edd940;
+
+// GLOBAL: SADX 0x05edd944
+void *DAT_05edd944;
+
+// GLOBAL: SADX 0x05edd954
+void *DAT_05edd954;
 
 // GLOBAL: SADX 0x05edd990
 struct task *DAT_05edd990;
@@ -7189,6 +7204,15 @@ int DAT_060b9ab4;
 
 // GLOBAL: SADX 0x060b9ae4
 int DAT_060b9ae4;
+
+// GLOBAL: SADX 0x060b9b00
+float DAT_060b9b00;
+
+// GLOBAL: SADX 0x060b9b04
+float DAT_060b9b04;
+
+// GLOBAL: SADX 0x060b9b08
+float DAT_060b9b08;
 
 // GLOBAL: SADX 0x060b9b10
 struct taskwk *DAT_060b9b10;
@@ -8200,6 +8224,12 @@ char DAT_060d0df8[0x4b0];
 
 // GLOBAL: SADX 0x060d12a8
 struct task *DAT_060d12a8;
+
+// GLOBAL: SADX 0x060d12ac
+int DAT_060d12ac;
+
+// GLOBAL: SADX 0x060d12b0
+void *DAT_060d12b0;
 
 // GLOBAL: SADX 0x060d12b4
 short DAT_060d12b4;

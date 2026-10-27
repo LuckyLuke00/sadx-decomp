@@ -74,3 +74,9 @@ void * __fastcall FUN_004190f0(void *param_1, int param_2)
 {
 	return (void *)0;
 }
+
+// STUB: SADX 0x00419120
+float * __stdcall FUN_00419120(float param_1, float param_2, float param_3, float param_4)
+{
+	return (float *)0;
+}

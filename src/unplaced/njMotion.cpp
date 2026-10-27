@@ -63,6 +63,11 @@ void njStartMotionObj(struct NJS_MOTION const *param_1,float param_2)
 	njStartMotionObjEx(param_1,param_2);
 }
 
+// STUB: SADX 0x00425640
+void njMotionTransformEx(struct obj const *param_1)
+{
+}
+
 // STUB: SADX 0x004258c0
 void _njPushPopGetMotionDataArray(struct obj const *param_1)
 {

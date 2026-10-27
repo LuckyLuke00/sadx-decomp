@@ -120,6 +120,11 @@ void __stdcall FUN_0092a060(int param_1)
 	*(int **)(param_1 + 0xc) = 0;
 }
 
+// STUB: SADX 0x0092a090
+void __stdcall FUN_0092a090(int param_1)
+{
+}
+
 // FUNCTION: SADX 0x0092a0b0
 void __stdcall FUN_0092a0b0(int param_1)
 {

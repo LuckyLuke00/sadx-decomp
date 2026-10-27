@@ -1,4 +1,6 @@
 #include "decls.h"
+extern int DAT_05a43694;
+extern int *DAT_05a43644;
 
 // FUNCTION: SADX 0x0091dce0
 int __stdcall FUN_0091dce0(int param_1, int param_2, int param_3, int param_4, int param_5)
@@ -76,10 +78,10 @@ void FUN_0091e7d0(int *param_1)
 {
 }
 
-// STUB: SADX 0x0091e7f0
+// FUNCTION: SADX 0x0091e7f0
 int __fastcall FUN_0091e7f0(void *param_1)
 {
-	return (int)0;
+	return *(int *)(*(int **)((char *)param_1 + 0x48) + 1);
 }
 
 // FUNCTION: SADX 0x0091e800
@@ -108,6 +110,11 @@ void __fastcall FUN_0091ea10(int param_1, int param_2, int param_3, int param_4,
 {
 }
 
+// STUB: SADX 0x0091ea60
+void __fastcall FUN_0091ea60(int param_1, int param_2, int param_3, int param_4, int param_5)
+{
+}
+
 // STUB: SADX 0x0091eab0
 void __fastcall FUN_0091eab0(int param_1, int param_2, float param_3, int param_4, int *param_5)
 {
@@ -125,6 +132,11 @@ void __fastcall FUN_0091eba0(int param_1, int param_2)
 
 // STUB: SADX 0x0091ec10
 void FUN_0091ec10(void *param_1, int param_2)
+{
+}
+
+// STUB: SADX 0x0091f110
+void __fastcall FUN_0091f110(struct FUN_0091f110_struct *param_1, int param_2, int param_3, int param_4)
 {
 }
 
@@ -197,10 +209,22 @@ void __stdcall FUN_0091f7d0(int *param_1)
 {
 }
 
-// STUB: SADX 0x0091f8a0
+// FUNCTION: SADX 0x0091f8a0
 int __fastcall FUN_0091f8a0(int param_1)
 {
-	return (int)0;
+	int var1 = 0;
+	if (DAT_05a43694 > 0)
+	{
+		while (var1 < DAT_05a43694)
+		{
+			if (*(int *)(param_1 + 0x14) == DAT_05a43644[var1 * 2 + 1])
+			{
+				return DAT_05a43644[var1 * 2];
+			}
+			var1++;
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0091f8e0

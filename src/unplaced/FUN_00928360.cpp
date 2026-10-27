@@ -26,6 +26,12 @@ void FUN_009283a0(LARGE_INTEGER *param_1)
 {
 }
 
+// STUB: SADX 0x009283c0
+double __fastcall FUN_009283c0(int param_1)
+{
+	return (double)0;
+}
+
 // FUNCTION: SADX 0x00928400
 void FUN_00928400(void *param_1)
 {

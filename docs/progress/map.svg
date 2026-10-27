@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1413" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,273 of 16,524 game functions done (31.91%), accuracy 99.86%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,282 of 16,524 game functions done (31.96%), accuracy 99.86%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1171.5 604.2,1171.5 605.9,1173 607,1174.6 601,1181.5 595,1174.6 596.1,1173" fill="#4e32f3"/>
 <polygon points="597.8,1171.5 604.2,1171.5 605.9,1173 607,1174.6 595,1174.6 596.1,1173" fill="#ffffff" fill-opacity="0.4"/>
@@ -805,8 +805,8 @@
 <rect x="28" y="105" width="6" height="6" fill="#b07d00"><title>0x00838670 StartCameraMountain_TgtDeath: 100%</title></rect>
 <rect x="42" y="105" width="6" height="6" fill="#b07d00"><title>0x008629d0 Die: 100%</title></rect>
 </g>
-<rect x="359" y="87" width="174" height="137" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sky Deck: 83 of 340 done</title></rect>
-<text x="362" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sky Deck <tspan font-weight="400" fill="#59636e">24%</tspan></text>
+<rect x="359" y="87" width="174" height="137" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Sky Deck: 85 of 340 done</title></rect>
+<text x="362" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Sky Deck <tspan font-weight="400" fill="#59636e">25%</tspan></text>
 <g transform="translate(362,105)">
 <rect y="0" width="168" height="98" fill="url(#todo)"/>
 <rect y="98" width="28" height="7" fill="url(#todo)"/>
@@ -818,6 +818,7 @@
 <rect x="56" y="0" width="6" height="6" fill="#b07d00"><title>0x008391c0 FUN_008391c0: 100%</title></rect>
 <rect x="84" y="0" width="6" height="6" fill="#b07d00"><title>0x00839980 Bg_Skydeck_cloud_Exit: 100%</title></rect>
 <rect x="0" y="7" width="6" height="6" fill="#b07d00"><title>0x0083a560 ObjectSkydeck_hangpole_s_Display: 100%</title></rect>
+<rect x="21" y="7" width="6" height="6" fill="#b07d00"><title>0x0083a700 FUN_0083a700: 100%</title></rect>
 <rect x="28" y="7" width="6" height="6" fill="#b07d00"><title>0x0083a790 FUN_0083a790: 100%</title></rect>
 <rect x="42" y="7" width="6" height="6" fill="#b07d00"><title>0x0083a880 ObjectSkydeck_radder_Exit: 100%</title></rect>
 <rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x0083ac30 ObjectSkydeck_hang_a_Display: 100%</title></rect>
@@ -892,6 +893,7 @@
 <rect x="49" y="91" width="6" height="6" fill="#b07d00"><title>0x0084ce50 TaskInit: 100%</title></rect>
 <rect x="112" y="91" width="6" height="6" fill="#b07d00"><title>0x0084dd60 ObjectSkydeck_enegymissile1: 100%</title></rect>
 <rect x="154" y="91" width="6" height="6" fill="#b07d00"><title>0x0084e210 ObjectSkydeck_eff_hahen1: 100%</title></rect>
+<rect x="0" y="98" width="6" height="6" fill="#b07d00"><title>0x0084e430 FUN_0084e430: 100%</title></rect>
 <rect x="14" y="98" width="6" height="6" fill="#b07d00"><title>0x0084e780 FUN_0084e780: 100%</title></rect>
 </g>
 <rect x="301" y="376" width="88" height="159" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Lost World: 45 of 183 done</title></rect>
@@ -1608,7 +1610,7 @@
 <rect x="28" y="49" width="6" height="6" fill="#b07d00"><title>0x007e0020 evFreeEgm1JetTask: 100%</title></rect>
 <rect x="35" y="49" width="6" height="6" fill="#b07d00"><title>0x007e0040 evChgEgm1Jet: 100%</title></rect>
 </g>
-<rect x="20" y="1235" width="97" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Walker: 31 of 124 done</title></rect>
+<rect x="20" y="1235" width="97" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Walker: 32 of 124 done</title></rect>
 <text x="23" y="1249" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Walker</text>
 <text x="23" y="1264" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">25%</tspan></text>
 <g transform="translate(23,1268)">
@@ -1626,6 +1628,7 @@
 <rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x006c7340 Exec(14): 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x006c75a0 BuilGInit(2): 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x006c75e0 ObjectEgm2Casinokazari: 100%</title></rect>
+<rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x006c7d40 FUN_006c7d40: 100%</title></rect>
 <rect x="56" y="21" width="6" height="6" fill="#b07d00"><title>0x006c7df0 egm2_sky_display: 100%</title></rect>
 <rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x006c7e80 Egm2CameraYurashi: 100%</title></rect>
 <rect x="77" y="21" width="6" height="6" fill="#b07d00"><title>0x006c7f70 Egm2CameraHumiCameraGet: 100%</title></rect>
@@ -3196,7 +3199,7 @@
 <polygon points="341.2,921.6 345,921.6 339,928.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="335.8,918.5 342.2,918.5 343.9,920 345,921.6 339,928.5 333,921.6 334.1,920" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="349" y="928" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Story and menus <tspan font-weight="400" fill="#59636e">45%</tspan></text>
-<rect x="334" y="936" width="254" height="207" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 326 of 834 done</title></rect>
+<rect x="334" y="936" width="254" height="207" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Story: 327 of 834 done</title></rect>
 <text x="337" y="950" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Story <tspan font-weight="400" fill="#59636e">39%</tspan></text>
 <g transform="translate(337,954)">
 <rect y="0" width="245" height="161" fill="url(#todo)"/>
@@ -3206,6 +3209,7 @@
 <rect x="56" y="0" width="6" height="6" fill="#b07d00"><title>0x0056a2b0 FUN_0056a2b0: 100%</title></rect>
 <rect x="63" y="0" width="6" height="6" fill="#b07d00"><title>0x0056a2c0 FUN_0056a2c0: 100%</title></rect>
 <rect x="84" y="0" width="6" height="6" fill="#b07d00"><title>0x0056ab30 FUN_0056ab30: 100%</title></rect>
+<rect x="91" y="0" width="6" height="6" fill="#b07d00"><title>0x0056ab50 FUN_0056ab50: 100%</title></rect>
 <rect x="112" y="0" width="6" height="6" fill="#b07d00"><title>0x0056b2f0 FUN_0056b2f0: 100%</title></rect>
 <rect x="119" y="0" width="6" height="6" fill="#b07d00"><title>0x0056b320 FUN_0056b320: 100%</title></rect>
 <rect x="126" y="0" width="6" height="6" fill="#b07d00"><title>0x0056b370 FUN_0056b370: 100%</title></rect>
@@ -3530,7 +3534,7 @@
 <rect x="189" y="161" width="6" height="6" fill="#b07d00"><title>0x008c9030 ReturnChaosEmerald: 100%</title></rect>
 <rect x="196" y="161" width="6" height="6" fill="#b07d00"><title>0x008cb190 EggmanDestruct: 100%</title></rect>
 </g>
-<rect x="334" y="1145" width="184" height="205" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 294 of 544 done</title></rect>
+<rect x="334" y="1145" width="184" height="205" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 296 of 544 done</title></rect>
 <text x="337" y="1159" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Menus <tspan font-weight="400" fill="#59636e">54%</tspan></text>
 <g transform="translate(337,1163)">
 <rect y="0" width="175" height="147" fill="url(#todo)"/>
@@ -3722,6 +3726,7 @@
 <rect x="35" y="91" width="6" height="6" fill="#b07d00"><title>0x005f22c0 FUN_005f22c0: 100%</title></rect>
 <rect x="77" y="91" width="6" height="6" fill="#b07d00"><title>0x005f32f0 FUN_005f32f0: 100%</title></rect>
 <rect x="84" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3310 FUN_005f3310: 100%</title></rect>
+<rect x="91" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3390 FUN_005f3390: 100%</title></rect>
 <rect x="98" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3460 FUN_005f3460: 100%</title></rect>
 <rect x="105" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3480 SetAdvaTrialGameTask: 100%</title></rect>
 <rect x="140" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3b60 title_menu_disp(6): 100%</title></rect>
@@ -3731,6 +3736,7 @@
 <rect x="21" y="98" width="6" height="6" fill="#b07d00"><title>0x005f4e60 FUN_005f4e60: 100%</title></rect>
 <rect x="63" y="98" width="6" height="6" fill="#b07d00"><title>0x005fa160 SetAdvaTitleMenuTask_LB: 100%</title></rect>
 <rect x="105" y="98" width="6" height="6" fill="#b07d00"><title>0x005fb390 FUN_005fb390: 100%</title></rect>
+<rect x="119" y="98" width="6" height="6" fill="#b07d00"><title>0x005fb760 FUN_005fb760: 100%</title></rect>
 <rect x="126" y="98" width="6" height="6" fill="#b07d00"><title>0x005fb820 FUN_005fb820: 100%</title></rect>
 <rect x="154" y="98" width="6" height="6" fill="#b07d00"><title>0x005fba70 FUN_005fba70: 100%</title></rect>
 <rect x="168" y="98" width="6" height="6" fill="#b07d00"><title>0x005fbb40 FUN_005fbb40: 100%</title></rect>
@@ -5123,7 +5129,7 @@
 <rect x="42" y="231" width="6" height="6" fill="#b07d00"><title>0x008ddd00 ERSetColli: 100%</title></rect>
 <rect x="49" y="231" width="6" height="6" fill="#b07d00"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 </g>
-<rect x="541" y="353" width="242" height="182" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 158 of 686 done</title></rect>
+<rect x="541" y="353" width="242" height="182" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 159 of 686 done</title></rect>
 <text x="544" y="367" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ninja graphics <tspan font-weight="400" fill="#59636e">23%</tspan></text>
 <g transform="translate(544,371)">
 <rect y="0" width="231" height="140" fill="url(#todo)"/>
@@ -5214,6 +5220,7 @@
 <rect x="0" y="84" width="6" height="6" fill="#b07d00"><title>0x0042b3b0 syMalloc: 100%</title></rect>
 <rect x="7" y="84" width="6" height="6" fill="#b07d00"><title>0x0042b3d0 syCalloc: 100%</title></rect>
 <rect x="14" y="84" width="6" height="6" fill="#b07d00"><title>0x0042b400 syFree: 100%</title></rect>
+<rect x="84" y="84" width="6" height="6" fill="#b07d00"><title>0x0042b810 _njTransformObject: 100%</title></rect>
 <rect x="91" y="84" width="6" height="6" fill="#b07d00"><title>0x0042b8c0 FUN_0042b8c0: 100%</title></rect>
 <rect x="105" y="84" width="6" height="6" fill="#b07d00"><title>0x0042ba90 njSetMaterialCallBackFunc: 100%</title></rect>
 <rect x="70" y="91" width="6" height="6" fill="#b07d00"><title>0x0042e530 njDirectReleaseAll: 100%</title></rect>
@@ -5290,8 +5297,8 @@
 <rect x="126" y="140" width="6" height="6" fill="#b07d00"><title>0x0067ec20 njSetPvmTextureList: 100%</title></rect>
 <rect x="147" y="140" width="6" height="6" fill="#b07d00"><title>0x0067ee70 njSetScreen: 100%</title></rect>
 </g>
-<rect x="778" y="87" width="202" height="264" rx="3" fill="#ffffff" stroke="#d0d7de"><title>PC port: 237 of 919 done</title></rect>
-<text x="781" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">PC port <tspan font-weight="400" fill="#59636e">25%</tspan></text>
+<rect x="778" y="87" width="202" height="264" rx="3" fill="#ffffff" stroke="#d0d7de"><title>PC port: 239 of 919 done</title></rect>
+<text x="781" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">PC port <tspan font-weight="400" fill="#59636e">26%</tspan></text>
 <g transform="translate(781,105)">
 <rect y="0" width="196" height="224" fill="url(#todo)"/>
 <rect y="224" width="161" height="7" fill="url(#todo)"/>
@@ -5461,10 +5468,12 @@
 <rect x="35" y="84" width="6" height="6" fill="#b07d00"><title>0x0091d600 FUN_0091d600: 100%</title></rect>
 <rect x="189" y="84" width="6" height="6" fill="#b07d00"><title>0x0091dce0 FUN_0091dce0: 100%</title></rect>
 <rect x="35" y="91" width="6" height="6" fill="#b07d00"><title>0x0091e1b0 FUN_0091e1b0: 100%</title></rect>
+<rect x="126" y="91" width="6" height="6" fill="#b07d00"><title>0x0091e7f0 FUN_0091e7f0: 100%</title></rect>
 <rect x="133" y="91" width="6" height="6" fill="#b07d00"><title>0x0091e800 FUN_0091e800: 100%</title></rect>
 <rect x="154" y="98" width="6" height="6" fill="#b07d00"><title>0x0091f720 FUN_0091f720: 100%</title></rect>
 <rect x="168" y="98" width="6" height="6" fill="#b07d00"><title>0x0091f7b0 FUN_0091f7b0: 100%</title></rect>
 <rect x="175" y="98" width="6" height="6" fill="#b07d00"><title>0x0091f7c0 FUN_0091f7c0: 100%</title></rect>
+<rect x="0" y="105" width="6" height="6" fill="#b07d00"><title>0x0091f8a0 FUN_0091f8a0: 100%</title></rect>
 <rect x="119" y="105" width="6" height="6" fill="#b07d00"><title>0x0091fb00 FUN_0091fb00: 100%</title></rect>
 <rect x="126" y="105" width="6" height="6" fill="#b07d00"><title>0x0091fb10 FUN_0091fb10: 100%</title></rect>
 <rect x="133" y="105" width="6" height="6" fill="#b07d00"><title>0x0091fb20 FUN_0091fb20: 100%</title></rect>

@@ -27,6 +27,11 @@ void __stdcall FUN_0091fb20(int param_1, int param_2)
 	return;
 }
 
+// STUB: SADX 0x0091fb30
+void __fastcall FUN_0091fb30(int param_1, float *param_2)
+{
+}
+
 // STUB: SADX 0x0091fbe0
 void FUN_0091fbe0(void *param_1, void *param_2)
 {
