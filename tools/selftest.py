@@ -426,7 +426,8 @@ def check_decls_trees() -> list[str]:
 def check_nested_globals() -> list[str]:
     """A global at an address inside another global's span splits it: decls fails on the new one, as the model's
     `extern unsigned char DAT_05b3e04c;` did inside `struct NJS_ARGB DAT_05b3e040`. A global behind the span is fine,
-    and so is a pair that the context's last layout already had."""
+    and so is a pair that the context's last layout already had. The line says to shrink the holder when only a file
+    here declares it, and gives both ways when a file here declares both."""
     target = project.game_config().target
     argb = ("struct NJS_ARGB {\n    float a;\n    float r;\n    float g;\n    float b;\n};\n"
             'static_assert(sizeof(NJS_ARGB) == 0x10, "sizeof NJS_ARGB");\n')
@@ -443,7 +444,13 @@ def check_nested_globals() -> list[str]:
              ("a global behind a struct global", fog("DAT_05b3e050"), holder, 0, "decls: 0 functions"),
              ("a pair that the context's layout had", fog("DAT_05b3e04c"),
               holder | {"src/unplaced/globals.cpp": layout}, 0,
-              "decls: DAT_05b3e040 (struct NJS_ARGB) holds 1 other globals, as in the last layout: DAT_05b3e04c at +12")]
+              "decls: DAT_05b3e040 (struct NJS_ARGB) holds 1 other globals, as in the last layout: DAT_05b3e04c at +12"),
+             ("a struct global here over the context's global", holder, fog("DAT_05b3e04c"), 1,
+              "at +12. The tree declares DAT_05b3e04c and a file here declares DAT_05b3e040: declare DAT_05b3e040 "
+              "with at most 12 bytes."),
+             ("a struct global and a global inside it, both here", holder | fog("DAT_05b3e04c"), {}, 1,
+              "at +12. Remove the declaration of DAT_05b3e04c and reach it through DAT_05b3e040, or declare "
+              "DAT_05b3e040 with at most 12 bytes.")]
     failures = []
     for case, files, context_files, code, line in cases:
         found, output, _ = run_decls(files, context_files, [], [], argb)
