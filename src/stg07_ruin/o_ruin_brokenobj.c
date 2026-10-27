@@ -28,11 +28,6 @@ static void ColliOnly(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00850e30
-void PieceExec(struct task *tp)
-{
-}
-
 #pragma optimize("", off)
 // STUB: SADX 0x00851090
 static void Exec(struct task *tp)

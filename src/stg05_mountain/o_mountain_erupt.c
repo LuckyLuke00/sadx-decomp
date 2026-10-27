@@ -43,7 +43,30 @@ void LavaBall(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00832a30
+// FUNCTION: SADX 0x00832a30
 void ColliEruptExplosion(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		CCL_Init(tp, (struct CCL_INFO *)&erupt_expl_cinfo, 1, 4);
+		*(float *)((char *)var1 + 0x2c) = 10.0f;
+		var1->value.f = 3.2f;
+		var1->mode = 1;
+		var1->wtimer = 0;
+		break;
+	case 1:
+		var1->value.f *= 0.8999999761581421;
+		*(float *)((char *)var1 + 0x2c) += var1->value.f;
+		var1->cwp->info->a = *(float *)((char *)var1 + 0x2c);
+		if (var1->wtimer++ == 0x1e)
+		{
+			FreeTask(tp);
+			return;
+		}
+		EntryColliList(var1);
+		return;
+	}
+	EntryColliList(var1);
 }

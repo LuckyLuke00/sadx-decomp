@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 
 // FUNCTION: SADX 0x00818f40
@@ -48,7 +49,19 @@ void dispTPBrokenBarrel(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x00819230
+// FUNCTION: SADX 0x00819230
 void createBarrelSpark(struct task *tp)
 {
+	struct NJS_POINT3 local_20;
+	struct NJS_POINT3 local_14;
+
+	local_20 = tp->twp->pos;
+	local_20.y += 20.0;
+	local_14.x = (float)rand() * 0.000030517578125;
+	local_14.x = (local_14.x - 0.5f) * 1.2f;
+	local_14.y = (float)rand() * 0.000030517578125;
+	local_14.y = (local_14.y + 0.2f) * 0.9f;
+	local_14.z = (float)rand() * 0.000030517578125;
+	local_14.z = (local_14.z - 0.5f) * 1.2f;
+	CreateSpark(&local_20, &local_14, 1.0f);
 }

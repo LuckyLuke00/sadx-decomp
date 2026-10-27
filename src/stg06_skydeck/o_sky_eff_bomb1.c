@@ -1,5 +1,17 @@
 #include "decls.h"
 
+// STUB: SADX 0x0084bb10
+void EffBombThrowPlayer(struct taskwk *twp)
+{
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x0084bd50
+void ObjectSkydeck_eff_bomb1_Init(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x0084be30
 void FUN_0084be30(struct task *tp)
 {

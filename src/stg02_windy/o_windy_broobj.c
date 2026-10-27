@@ -1,7 +1,15 @@
 #include "decls.h"
+static void PieceDisp(struct task *tp);
 extern struct NJS_MODEL *DAT_03b26f48;
 extern struct NJS_MODEL *DAT_03b273a0;
 extern struct NJS_MODEL *DAT_03b27828;
+
+#pragma optimize("", off)
+// STUB: SADX 0x00809490
+static void PieceDisp(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00809540
 void DispCube(struct task *tp)
@@ -39,4 +47,28 @@ void DispCube(struct task *tp)
 		}
 		njPopMatrix(1);
 	}
+}
+
+// FUNCTION: SADX 0x00809660
+void PieceExec(struct task *tp)
+{
+	struct motionwk *var1;
+	struct taskwk *var2;
+	var2 = tp->twp;
+	var1 = tp->mwp;
+	var2->pos.x = var1->spd.x + var2->pos.x;
+	var2->pos.y = var1->spd.y + var2->pos.y;
+	var2->pos.z = var1->spd.z + var2->pos.z;
+	var1->spd.y = var1->spd.y - 0.10000000149011612;
+	*(int *)((char *)var2 + 0x18) = *(int *)((char *)var2 + 0x18) + *(int *)((char *)var1 + 0x2c);
+	*(int *)((char *)var2 + 0x14) = *(int *)((char *)var2 + 0x14) + *(int *)((char *)var1 + 0x28);
+	if (var2->wtimer > 0x14)
+	{
+		var2->value.f = var2->value.f - 0.019999999552965164;
+	}
+	else
+	{
+		var2->wtimer = var2->wtimer + 1;
+	}
+	PieceDisp(tp);
 }

@@ -77,6 +77,22 @@ void ObjectPianWalk(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x00880510
+void ObjectPianFish(struct task *tp)
+{
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, 1000000.0f) == 0)
+	{
+		var1->counter.ptr = &action_pian_fishing_karada;
+		var1->value.f = 0.0f;
+		tp->exec = Normal;
+		tp->disp = Disp;
+		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+	}
+}
+
 // FUNCTION: SADX 0x00880560
 void ObjectPianSlee(struct task *tp)
 {

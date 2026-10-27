@@ -5,6 +5,11 @@ static void ExecuteBg(struct task *tp);
 static void DisplayBg(struct task *tp);
 static void DestructBg(struct task *tp);
 
+// STUB: SADX 0x00803e40
+void SetTableBg()
+{
+}
+
 // FUNCTION: SADX 0x00803fa0
 static void DestructBg(struct task *tp)
 {

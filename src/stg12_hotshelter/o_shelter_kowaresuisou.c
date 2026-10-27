@@ -1,4 +1,5 @@
 #include "decls.h"
+#include <stdlib.h>
 extern int DAT_05b9d838;
 extern "C" int rand(void);
 
@@ -68,4 +69,9 @@ void BubbleInit(struct task *tp)
 	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 	var1->timer.f = (float)var2 * 3.0517578125e-05f;
 	var1->timer.f = var1->timer.f * 0.5f + 0.2f;
+}
+
+// STUB: SADX 0x008b32d0
+void ObjShelterKowaresuisou(struct task *tp)
+{
 }

@@ -2,6 +2,13 @@
 void standlight_exec(struct task *task_p);
 void standlight_draw(struct task *task_p);
 
+#pragma optimize("", off)
+// STUB: SADX 0x00894310
+void standlight_draw(struct task *task_p)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x008943d0
 void standlight_exec(struct task *task_p)
 {

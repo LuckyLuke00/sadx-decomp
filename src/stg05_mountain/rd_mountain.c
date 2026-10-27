@@ -1,4 +1,5 @@
 #include "decls.h"
+extern short DAT_05b9d744;
 extern struct obj object_soto_ec_kazecolijon_ec_kazecolijon[1];
 extern struct NJS_ARGB *pFogTable_Stg05[];
 extern struct NJS_POINT2 *pClipSky_Stg05[];
@@ -29,5 +30,10 @@ void Object_Mountain_KN_Display(struct task *tp)
 
 // STUB: SADX 0x008284e0
 void Object_Mountain_Knuckles(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00828560
+void Object_Mountain_CL_Display(struct task *tp)
 {
 }

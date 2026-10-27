@@ -1,4 +1,6 @@
 #include "decls.h"
+void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl);
+static void ExecH(struct task *tp);
 void FUN_00422560(int param_1);
 void FUN_0087ea70(struct task *, float);
 void njPrintC(int, char const *);
@@ -396,9 +398,21 @@ void ExecR(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0088a6b0
+// FUNCTION: SADX 0x0088a6b0
 void ObjCasino_InitR(struct task *tp, struct obj *pobject, long rotY)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, 360010.0f) != 0)
+	{
+		return;
+	}
+	tp->disp = DispRObj;
+	tp->exec = ExecR;
+	var1->timer.l = (long)pobject;
+	var1->counter.w[0] = 0;
+	var1->counter.w[1] = (short)rotY;
 }
 
 // FUNCTION: SADX 0x0088a700
@@ -433,7 +447,14 @@ static void DispH(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0088aa20
+#pragma optimize("", off)
+// STUB: SADX 0x0088a7c0
+static void ExecH(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x0088aa20
 void ObjCasino_InitH(struct task *tp, struct obj *pobject, struct CCL_INFO *pinfo, struct NJS_ACTION *paction)
 {
 	struct taskwk *var1 = tp->twp;
@@ -447,10 +468,10 @@ void ObjCasino_InitH(struct task *tp, struct obj *pobject, struct CCL_INFO *pinf
 			CCL_Init(tp, pinfo, 1, 4);
 		}
 		tp->disp = DispH;
-		tp->exec = (void (__cdecl *)(struct task *))0x88a7c0;
+		tp->exec = ExecH;
 		var1->value.f = 0.0f;
-		var1->timer.l = (long)pobject;
-		var1->counter.l = (long)paction;
+		var1->timer.ptr = pobject;
+		var1->counter.ptr = paction;
 	}
 }
 

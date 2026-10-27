@@ -138,6 +138,7 @@ struct DialogPrmType;
 struct DialogWk;
 struct DlgSndPrmType;
 struct dummy_crushwk;
+struct EFFENEMYBOMBINFO;
 struct EFFENEMYBOMBPARAM;
 struct eggmoble_effect;
 struct Egm1SmokeManWk;

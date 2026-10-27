@@ -31,12 +31,34 @@ static void Exec(struct task *tp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x008a4040
+// FUNCTION: SADX 0x008a4040
 static void DoorInit(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct obj *var2;
+
+	((int *)var1)[5] = 0;
+	((int *)var1)[7] = 0;
+	var2 = GetMobileLandObject();
+	var1->counter.ptr = var2;
+	var2->scl[0] = 1.0f;
+	var2->scl[1] = 1.0f;
+	var2->scl[2] = 1.0f;
+	var2->evalflags = 0x10;
+	var2->ang[0] = 0;
+	var2->ang[1] = var1->ang.y;
+	var2->ang[2] = 0;
+	var2->pos[0] = var1->pos.x;
+	var2->pos[1] = var1->pos.y;
+	var2->pos[2] = var1->pos.z;
+	var2->model = object_enecrg_cl_enehuta_cl_enehuta[0].model;
+	var2->child = 0;
+	var2->sibling = 0;
+	RegisterCollisionEntry(0x28000000, tp, var2);
+	var1->flag |= 0x100;
+	tp->exec = (void (__cdecl *)(struct task *))FUN_007d21b0;
+	tp->dest = FUN_00825de0;
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008a40d0
 void ObjShelterEnemycontainer(struct task *tp)

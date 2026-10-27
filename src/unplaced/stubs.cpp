@@ -3207,11 +3207,6 @@ float FUN_007f6280(struct NJS_POINT3 *)
 	return (float)0;
 }
 
-// STUB: SADX 0x007f9b20
-void Object_beach_taki_Draw(struct task *tp)
-{
-}
-
 // STUB: SADX 0x007f9f90
 void FUN_007f9f90(struct task *)
 {
@@ -3240,6 +3235,11 @@ void ObjectBeachAttackoruka(struct task *tp)
 
 // STUB: SADX 0x00803a60
 void ObjectBeachPathoruka(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00804e80
+void ObjectWindyTorLeaf(struct task *tp)
 {
 }
 
@@ -3334,21 +3334,6 @@ void Object_Mountain_Zako_Display(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0082a2c0
-void GCInit_Zako(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0082a3b0
-void GC_Zako(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0082a730
-void Object_Mountain_BPole_Display(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0082e780
 void Disp02(struct task *tp)
 {
@@ -3419,18 +3404,8 @@ void ObjectSkydeck_crane_hang(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00840f30
-void ObjectSkydeck_cannon_h2_Init(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00840fe0
 void dispSkyPower(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00841230
-void dispSkyEscalator(struct task *tp)
 {
 }
 
@@ -3489,11 +3464,6 @@ void ObjectSkydeck_c_talap1_Draw(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008489d0
-void ObjectSkydeck_c_connect_Init(struct task *tp)
-{
-}
-
 // STUB: SADX 0x008491f0
 void ObjectSkydeck_c_talap0_Init(struct task *tp)
 {
@@ -3506,16 +3476,6 @@ void ObjectSkydeck_cannon_s_Draw(struct task *)
 
 // STUB: SADX 0x0084a250
 void ObjectSkydeck_cannon_s_Exec(struct task *)
-{
-}
-
-// STUB: SADX 0x0084b3d0
-void ObjectSkydeck_cannon_b_Init(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0084bd50
-void ObjectSkydeck_eff_bomb1_Init(struct task *tp)
 {
 }
 
@@ -3577,11 +3537,6 @@ void Object_IcecapBigturaraInit(struct task *tp)
 
 // STUB: SADX 0x00862d80
 void Object_IcecapFuusya1Draw(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00862eb0
-void Object_IcecapFuusya1Exec(struct task *tp)
 {
 }
 
@@ -3650,11 +3605,6 @@ void ObjectCasinoSlotArmExec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00878480
-void ExecCM(struct task *)
-{
-}
-
 // STUB: SADX 0x00878e40
 void FUN_00878e40()
 {
@@ -3682,11 +3632,6 @@ void ObjectCasinoLionInit(struct task *tp)
 
 // STUB: SADX 0x0087ccf0
 void ObjectCasinoHyoujikiInit(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0087d350
-void ObjectCasinoManfInit(struct task *tp)
 {
 }
 
@@ -3720,6 +3665,12 @@ extern void DispUV2ObjSE(struct task *)
 {
 }
 
+// STUB: SADX 0x0088bd50
+struct EFFENEMYBOMBINFO *CreateEffEnemyBomb(struct NJS_POINT3 *posorg, struct Angle3 *angle, struct NJS_POINT3 *vecofs, struct NJS_POINT3 *vecacc, float wallposy, struct EFFENEMYBOMBPARAM *pefparam)
+{
+	return (struct EFFENEMYBOMBINFO *)0;
+}
+
 // STUB: SADX 0x0088c800
 void ObjectCasinoMizuExec(struct task *tp)
 {
@@ -3750,18 +3701,8 @@ void FUN_00893670(struct task *)
 {
 }
 
-// STUB: SADX 0x00894310
-void standlight_draw(struct task *)
-{
-}
-
 // STUB: SADX 0x00894ff0
 void uptarget_sonic_draw(struct task *task_p)
-{
-}
-
-// STUB: SADX 0x00895340
-extern void dummytarget_init(struct task *)
 {
 }
 

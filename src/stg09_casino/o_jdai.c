@@ -1,4 +1,6 @@
 #include "decls.h"
+extern int DAT_060dbcb0;
+extern unsigned char DAT_060dbca7;
 
 // FUNCTION: SADX 0x00885010
 void cCameraReturn(struct task *ctp)
