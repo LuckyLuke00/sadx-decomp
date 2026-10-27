@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_060eea78;
+extern int DAT_05cc3b18;
 void FUN_0050ce80(char *param_1, int param_2, char *param_3);
 long PAdjustHoldingPosition(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 long PCheckHoldObject(struct taskwk *twp);
@@ -133,10 +135,34 @@ long BigCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct player
 	}
 }
 
-// STUB: SADX 0x0050ab80
+// FUNCTION: SADX 0x0050ab80
 long BigCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (PCheckPower(twp, 0, 0) == 0 && pwp->spd.x == 0.0f)
+	{
+		if ((twp->flag & 0x800) != 0)
+		{
+			if (twp->mode == 0xa || twp->mode == 0x1c || twp->mode == 0x1a)
+			{
+				twp->mode = 0x12;
+				*(short *)((char *)pwp + 0x124) = 0x24;
+			}
+			else
+			{
+				twp->mode = 0x11;
+				BigChangeWaitingMotion(twp, mwp, pwp);
+			}
+		}
+		else
+		{
+			FUN_0050ce80((char *)twp, (int)mwp, (char *)pwp);
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0050ac30
@@ -178,14 +204,34 @@ long BigCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct player
 	return (long)0;
 }
 
+// STUB: SADX 0x0050af80
+long BigCheckThrowObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x0050b670
+long BigCheckTouch(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x0050b7b0
+void BigThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x0050bc80
 void BigGetFloat(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
-// STUB: SADX 0x0050c310
+// FUNCTION: SADX 0x0050c310
 void BigEarsSwingEnd(struct task *tp)
 {
+	*(int *)((char *)*(void **)((char *)DAT_060eea78 + 0x6c) + 4) = DAT_05cc3b18;
 }
 
 // STUB: SADX 0x0050c330
@@ -217,7 +263,7 @@ int FUN_0050cbb0(char *param_1)
 }
 
 // STUB: SADX 0x0050cbf0
-void FUN_0050cbf0(struct playerwk *pwp)
+void FUN_0050cbf0(struct playerwk *pwp, int param_2, int param_3)
 {
 }
 

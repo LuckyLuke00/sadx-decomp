@@ -1,4 +1,9 @@
 #include "decls.h"
+void FUN_005b0e20(struct task *param_1);
+extern struct taskwk *DAT_05b42a7c;
+extern struct NJS_SPRITE sprite_hitodama[];
+extern int DAT_05b9d838;
+extern float DAT_05b3df40;
 extern "C" double asin(double param_1);
 extern "C" double atan2(double v, double u);
 void FUN_005b5aa0(...);
@@ -112,35 +117,43 @@ void EffectStartHoming(struct task *tp)
 	EffectStartHomingDisplay(tp);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005afdf0
 void EffectStartHomingInit(struct taskwk *twp)
 {
 }
+#pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x005aff20
 void EffectSpinDisplay(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005b0120
 void EffectSpinExecute(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b0180
 void EffectSpinDSDisplay(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005b0300
 void EffectSpinDSExecute(struct task *tp)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x005b03b0
 void EffectStartHomingDisplay(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x005b04f0
 void EffectStartHomingExecute(struct task *tp)
@@ -232,9 +245,39 @@ void EffectFadeRibbon(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b1c50
+// FUNCTION: SADX 0x005b1c50
 void EffectSpinRibbonDisplay(struct task *tp)
 {
+	struct taskwk *local_cg;
+	float local_8g;
+
+	local_cg = tp->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 10);
+	njPushMatrix(0);
+	njTranslateV(0, &local_cg->pos);
+	local_8g = (float)local_cg->timer.l / 32.0;
+	if (*(long *)((char *)DAT_05b42a7c + 0x18) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)DAT_05b42a7c + 0x18));
+	}
+	if (*(long *)((char *)DAT_05b42a7c + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)DAT_05b42a7c + 0x14));
+	}
+	FUN_0067d2d0(0, local_8g, local_8g, local_8g);
+	___njFogDisable();
+	DAT_05b3df40 = 1000.0f;
+	late_DrawSprite3D(&sprite_hitodama[local_cg->btimer], 0, 0x20, 4);
+	DAT_05b3df40 = 0.0f;
+	___njFogEnable();
+	njPopMatrix(1);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // FUNCTION: SADX 0x005b1fc0

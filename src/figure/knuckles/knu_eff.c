@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <stdlib.h>
 void FUN_005d7240(struct task *param_1);
+void FUN_005d7240(struct task *param_1);
 extern struct NJS_SPRITE sprite_tsuchi_kake;
 extern struct NJS_SPRITE sprite_rader;
 extern struct NJS_TEXLIST texlist_knu_eff;
@@ -53,7 +54,7 @@ void dispEffectKnuHadoken(struct task *tp)
 }
 
 // STUB: SADX 0x005d7140
-void FUN_005d7140(struct NJS_POINT3 *pos)
+void FUN_005d7140(struct NJS_POINT3 *pos, int param_2)
 {
 }
 
@@ -276,7 +277,7 @@ void KnuEffectHormTubeReset()
 }
 
 // FUNCTION: SADX 0x005d87e0
-void FUN_005d87e0(int param_1, int param_2, int param_3)
+void FUN_005d87e0(int param_1, int param_2, int param_3, int param_4)
 {
 	if ((DAT_05edcbb4 & 1) == 0)
 	{

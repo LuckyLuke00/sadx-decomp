@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct PDS_PERIPHERAL DAT_05b932e8[8];
+extern long action_button;
+extern struct task **DAT_060eeab8;
+extern struct obj *DAT_060eea50;
 long GetAmyMovableYButton(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 extern short DAT_05b9d724;
@@ -59,10 +63,22 @@ long AmyCheckDamage(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *
 	return (long)0;
 }
 
-// STUB: SADX 0x0051c960
-long FUN_0051c960(struct taskwk *twp, int param_2, int param_3)
+// FUNCTION: SADX 0x0051c960
+long FUN_0051c960(struct taskwk *param_1, int param_2, int param_3)
 {
-	return (long)0;
+	if ((DAT_05b932e8[param_1->counter.b[0]].press & action_button) != 0)
+	{
+		*(char *)(param_3 + 0x83) = 0;
+		param_1->mode = 0x16;
+		*(short *)(param_3 + 0x124) = 0x63;
+		dsPlay_oneshot(0x500, 0, 0, 0);
+		VibShot(param_1->counter.b[0], 0);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0051c9d0
@@ -133,10 +149,34 @@ void AmyThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct play
 {
 }
 
-// STUB: SADX 0x0051f0a0
+// FUNCTION: SADX 0x0051f0a0
 long AmyCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (((twp->flag & 3) == 0))
+	{
+		if ((twp->flag & 0x100) != 0)
+		{
+			twp->mode = 5;
+			return 1;
+		}
+		else if ((0x800 & twp->flag) != 0)
+		{
+			if ((PCheckHoldObject(twp) & 0x200) != 0)
+			{
+				twp->mode = 0x1e;
+				*(unsigned short *)((char *)pwp + 0x124) = 0x41;
+				return 1;
+			}
+			AmyThrowTheObjectOut(twp, mwp, pwp);
+		}
+		twp->mode = 8;
+		*(unsigned short *)((char *)pwp + 0x124) = 0x12;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0051f150
@@ -169,8 +209,24 @@ long AmyCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 	}
 }
 
-// STUB: SADX 0x0051f1f0
-long FUN_0051f1f0(struct taskwk *twp, int param_2, int param_3)
+// FUNCTION: SADX 0x0051f1f0
+long FUN_0051f1f0(struct taskwk *param_1, int param_2, int param_3)
+{
+	if ((DAT_05b932e8[param_1->counter.b[0]].press & action_button) != 0)
+	{
+		param_1->mode = 0x15;
+		*(short *)((char *)param_3 + 0x124) = 0x5d;
+		dsPlay_oneshot(0x509, 0, 0, 0);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+// STUB: SADX 0x0051f240
+long AmyCheckStartHammer(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	return (long)0;
 }
@@ -213,9 +269,23 @@ long FUN_00520610(long param_1, long *param_2)
 	return (long)0;
 }
 
-// STUB: SADX 0x00520bd0
+// FUNCTION: SADX 0x00520bd0
 void AmyFaceMotion(struct task *tp)
 {
+	struct motionwk *local_8;
+
+	local_8 = (struct motionwk *)CAlloc(1, 0x20);
+	if (local_8 == 0)
+	{
+		return;
+	}
+	tp->mwp = local_8;
+	*(long *)((char *)local_8 + 0x10) = *(long *)((char *)DAT_060eea50 + 0x78);
+	*(long *)((char *)local_8 + 0x14) = *(long *)((char *)DAT_060eea50 + 0x7c);
+	*(long *)((char *)local_8 + 0x18) = *(long *)((char *)DAT_060eea50 + 0x80);
+	*(long *)((char *)local_8 + 0x1c) = *(long *)DAT_060eeab8;
+	tp->dest = PlayerFaceMotionEnd;
+	tp->exec = PlayerFaceMotionExec;
 }
 
 // STUB: SADX 0x00520c50
@@ -252,10 +322,25 @@ void AmyBalanceGameStartChecker(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00521550
+// FUNCTION: SADX 0x00521550
 long AmyForEventHammerScaleIm(unsigned char playernmb, float scale)
 {
-	return (long)0;
+	struct playerwk *local_8;
+
+	local_8 = GetPlayerWorkPointer(playernmb);
+	if (local_8 == 0)
+		return 0;
+	if (scale <= 0.0)
+	{
+		local_8->free.ub[5] = 0;
+	}
+	else
+	{
+		local_8->free.ub[5] = 1;
+		local_8->free.f[6] = scale;
+		local_8->free.f[7] = scale;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x005215c0

@@ -20986,6 +20986,14 @@
    "library": false
   },
   {
+   "address": "0x00508e30",
+   "name": "BigChangeWaitingMotion",
+   "accuracy": 0.038461538461538464,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005090e0",
    "name": "BigChangeRunningMotion",
    "accuracy": 0.06015037593984962,
@@ -21068,9 +21076,9 @@
   {
    "address": "0x0050ab80",
    "name": "BigCheckStop",
-   "accuracy": 0.14492753623188406,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21093,6 +21101,22 @@
    "address": "0x0050ae10",
    "name": "BigCheckPickObject",
    "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0050af80",
+   "name": "BigCheckThrowObject",
+   "accuracy": 0.08064516129032258,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0050b670",
+   "name": "BigCheckTouch",
+   "accuracy": 0.09803921568627451,
    "effective": false,
    "stub": true,
    "library": false
@@ -21124,9 +21148,9 @@
   {
    "address": "0x0050c310",
    "name": "BigEarsSwingEnd",
-   "accuracy": 0.6666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21308,9 +21332,9 @@
   {
    "address": "0x00514730",
    "name": "E102CheckStop",
-   "accuracy": 0.15625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21532,9 +21556,9 @@
   {
    "address": "0x0051c960",
    "name": "FUN_0051c960",
-   "accuracy": 0.2631578947368421,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21604,9 +21628,9 @@
   {
    "address": "0x0051f0a0",
    "name": "AmyCheckBeInTheAir",
-   "accuracy": 0.17857142857142858,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21620,7 +21644,15 @@
   {
    "address": "0x0051f1f0",
    "name": "FUN_0051f1f0",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0051f240",
+   "name": "AmyCheckStartHammer",
+   "accuracy": 0.20833333333333334,
    "effective": false,
    "stub": true,
    "library": false
@@ -21684,9 +21716,9 @@
   {
    "address": "0x00520bd0",
    "name": "AmyFaceMotion",
-   "accuracy": 0.1951219512195122,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21740,9 +21772,9 @@
   {
    "address": "0x00521550",
    "name": "AmyForEventHammerScaleIm",
-   "accuracy": 0.2702702702702703,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21852,9 +21884,9 @@
   {
    "address": "0x005293e0",
    "name": "FUN_005293e0",
-   "accuracy": 0.24390243902439024,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21900,9 +21932,9 @@
   {
    "address": "0x0052bb80",
    "name": "KnucklesCheckBeInTheAir",
-   "accuracy": 0.17857142857142858,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21916,9 +21948,9 @@
   {
    "address": "0x0052bcd0",
    "name": "FUN_0052bcd0",
-   "accuracy": 0.30303030303030304,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22002,6 +22034,22 @@
    "library": false
   },
   {
+   "address": "0x0052e120",
+   "name": "FUN_0052e120",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0052e1b0",
+   "name": "KnucklesDirectAhead",
+   "accuracy": 0.019417475728155338,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0052e6c0",
    "name": "KnucklesDirectAheadEnd",
    "accuracy": 0.13793103448275862,
@@ -22036,9 +22084,9 @@
   {
    "address": "0x0052ea20",
    "name": "KnucklesTouchWallInit",
-   "accuracy": 0.14035087719298245,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22236,9 +22284,9 @@
   {
    "address": "0x00538480",
    "name": "FUN_00538480",
-   "accuracy": 0.2702702702702703,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22260,17 +22308,17 @@
   {
    "address": "0x0053a180",
    "name": "MilesCheckBeInTheAir",
-   "accuracy": 0.18518518518518517,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0053a220",
    "name": "FUN_0053a220",
-   "accuracy": 0.17857142857142858,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22308,9 +22356,9 @@
   {
    "address": "0x0053b090",
    "name": "MilesHoldOnPillar",
-   "accuracy": 0.1568627450980392,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22564,17 +22612,17 @@
   {
    "address": "0x00549ed0",
    "name": "SonicCheckJumpCancel",
-   "accuracy": 0.2702702702702703,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0054bdd0",
    "name": "SonicCheckInputInSnowBoard",
-   "accuracy": 0.16129032258064516,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22620,9 +22668,9 @@
   {
    "address": "0x0054ca40",
    "name": "FUN_0054ca40",
-   "accuracy": 0.1724137931034483,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22637,6 +22685,22 @@
    "address": "0x0054cc20",
    "name": "SonicCheckPickObject",
    "accuracy": 0.10869565217391304,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054cd40",
+   "name": "SonicCheckThrowObject",
+   "accuracy": 0.08771929824561403,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054d2d0",
+   "name": "SonicCheckTouch",
+   "accuracy": 0.08547008547008547,
    "effective": false,
    "stub": true,
    "library": false
@@ -22756,9 +22820,9 @@
   {
    "address": "0x0054ec30",
    "name": "FUN_0054ec30",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22804,9 +22868,9 @@
   {
    "address": "0x0054f150",
    "name": "SuperSonicStatusManager",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22834,11 +22898,19 @@
    "library": false
   },
   {
-   "address": "0x0054f760",
-   "name": "ChangeMotionSonicRush",
-   "accuracy": 0.2857142857142857,
+   "address": "0x0054f570",
+   "name": "DrawSonicMotionLink",
+   "accuracy": 0.058394160583941604,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054f760",
+   "name": "ChangeMotionSonicRush",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -31292,9 +31364,9 @@
   {
    "address": "0x005b1c50",
    "name": "EffectSpinRibbonDisplay",
-   "accuracy": 0.0851063829787234,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32372,9 +32444,9 @@
   {
    "address": "0x005b9d40",
    "name": "E102AddRestTime",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34154,6 +34226,14 @@
    "library": false
   },
   {
+   "address": "0x005d28c0",
+   "name": "E102LaserStatus",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005d2910",
    "name": "SetE102DashPanelAccel",
    "accuracy": 1.0,
@@ -35572,9 +35652,9 @@
   {
    "address": "0x005e54f0",
    "name": "DispMultiDigit",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -38999,6 +39079,14 @@
    "accuracy": 0.1568627450980392,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061f0f0",
+   "name": "ctrlE102ChangeRun",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -84493,6 +84581,13 @@
    "library": false
   },
   {
+   "address": "0x0263d680",
+   "name": "sprite_hitodama",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0263d6f0",
    "name": "DAT_0263d6f0",
    "size": 4,
@@ -91292,5 +91387,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "505d788a93cea93f9dbbb7b5897ac62466973cefe0429886225bc1cb1f492445"
+ "inputs_sha256": "e586bbb007589445bff5bf81de924d7d40237cc1df539326ced8cc06a26dc615"
 }
