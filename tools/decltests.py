@@ -486,6 +486,24 @@ def check_tool_lines() -> list[str]:
             for text, kn, wanted in cases if (found := llm.tool_lines(text, kn)) != wanted]
 
 
+def check_about_reply() -> list[str]:
+    """The build output keeps every line that is not a decls line, and the decls lines that name a word of the
+    reply's code. A decls line that shares only a C keyword or type, a number or a comment's word with the reply
+    goes: it is about the tree."""
+    decls = ["extern int Count;"]
+    func = ["// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "\tCount = FUN_00402000(4); // the name", "}"]
+    text = "\n".join(["decls: Count: sources declare it in 2 ways: int, short",
+                      "decls: FUN_00402000 has the name memset: use that",
+                      "decls: DAT_00500000: inside DAT_00500100 (int[4]) at +4. Remove that declaration",
+                      "decls: Other has the name Thing: use that",
+                      "a.c(1) : error C2065: 'x' : undeclared"])
+    wanted = ["decls: Count: sources declare it in 2 ways: int, short",
+              "decls: FUN_00402000 has the name memset: use that",
+              "a.c(1) : error C2065: 'x' : undeclared"]
+    found = llm.about_reply(text, decls, func).split("\n")
+    return [] if found == wanted else [f"about_reply gives {found}, not {wanted}"]
+
+
 def check_build_errors() -> list[str]:
     """The lines that say why the build failed are the error lines, the fatal lines and the decls lines that are not
     summaries or known, in order, at most ERROR_LINES of them. Without such a line the last ERROR_LINES lines
@@ -549,5 +567,6 @@ def run() -> list[str]:
               check_cast_calls, check_one_edit_apart,
               check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_ftol,
               check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime, check_with_earlier,
-              check_without_declarations, check_tool_lines, check_build_errors, check_error_count, check_names_only]
+              check_without_declarations, check_tool_lines, check_about_reply, check_build_errors, check_error_count,
+              check_names_only]
     return [failure for check in checks for failure in check()]
