@@ -2048,6 +2048,9 @@ struct ___stcFog *pFogTable_E101r[1];
 // GLOBAL: SADX 0x02c0d1c0
 struct NJS_TEXLIST _texlist_e101r;
 
+// GLOBAL: SADX 0x02c0eba8
+struct GHSPRITE_ANIM_TABLE animtable_waveaccume[5];
+
 // GLOBAL: SADX 0x02c0ee60
 struct GHSPRITE_ANIM_TABLE animtable_flick_part[5];
 
@@ -7049,6 +7052,9 @@ long DAT_060b97f0;
 // GLOBAL: SADX 0x060b97f4
 struct obj *DAT_060b97f4[4];
 
+// GLOBAL: SADX 0x060b9908
+int DAT_060b9908;
+
 // GLOBAL: SADX 0x060b990c
 int DAT_060b990c;
 
@@ -7144,6 +7150,9 @@ union NJS_COLOR DAT_060bb188[12];
 
 // GLOBAL: SADX 0x060bb1d0
 int DAT_060bb1d0;
+
+// GLOBAL: SADX 0x060bb218
+void *DAT_060bb218;
 
 // GLOBAL: SADX 0x060bb21c
 unsigned char DAT_060bb21c;
@@ -8274,7 +8283,7 @@ int DAT_060dd888;
 int DAT_060dd88c;
 
 // GLOBAL: SADX 0x060dd890
-unsigned long DAT_060dd890;
+float DAT_060dd890;
 
 // GLOBAL: SADX 0x060df308
 int DAT_060df308;

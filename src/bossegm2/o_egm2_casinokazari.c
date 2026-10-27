@@ -1,4 +1,7 @@
 #include "decls.h"
+static void BuilGInit(struct task *tp);
+static void BuilGExec(struct task *tp);
+static void BuilGDisp(struct task *tp);
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 extern short DAT_05b9d724;
@@ -13,14 +16,28 @@ static void Disp(struct task *tp)
 #pragma optimize("", on)
 
 #pragma optimize("", off)
+// STUB: SADX 0x006c71d0
+static void BuilGDisp(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
 // STUB: SADX 0x006c7340
 static void Exec(struct task *tp)
 {
 }
 #pragma optimize("", on)
 
+#pragma optimize("", off)
+// STUB: SADX 0x006c73e0
+static void BuilGExec(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x006c75a0
-void BuilGInit(struct task *tp)
+static void BuilGInit(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	var1->ang.x = 0;

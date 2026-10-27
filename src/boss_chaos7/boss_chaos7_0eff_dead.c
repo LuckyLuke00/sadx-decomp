@@ -46,10 +46,12 @@ void Chaos7DeadEffect2(struct task *tp)
 	tp->disp = Display2;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x007012d0
 void Display3(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007013d0
 void Normal3(struct task *tp)

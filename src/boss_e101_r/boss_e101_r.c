@@ -12,9 +12,20 @@ void _boss_e101_r_epilog()
 	syFree(DAT_060c4574);
 }
 
-// STUB: SADX 0x00707670
+// FUNCTION: SADX 0x00707670
 void destE101R(struct task *pTask)
 {
+	struct anywk *var1 = pTask->awp;
+	struct taskwk *var2 = pTask->twp;
+
+	E101R_EfShotFlickExit();
+	E101R_BarrierExit();
+	FUN_007d21b0();
+	E101R_EfWaveAccumeExit();
+	E101R_NozzleLightExit();
+	*(short *)((char *)var1 + 4) = 0xe;
+	BSetMotion(var2, (struct bosswk *)var1);
+	TikalBossKill();
 }
 
 // STUB: SADX 0x007078a0

@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_0070e240(struct GHPARTICLE *param_1);
 void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2);
 void FUN_0070e240(struct GHPARTICLE *param_1);
 void FUN_0060d560(struct NJS_POINT3 *, float);
@@ -65,6 +66,16 @@ void E101R_Bomb(struct NJS_POINT3 *pPos, float fRadius)
 long moveWaveAccume(struct GHPARTICLE *pPart, struct GHPARTICLE_INFO *pInfo, struct GHSPRITE_ANIM_TABLE *pAnimTable)
 {
 	return (long)0;
+}
+
+// FUNCTION: SADX 0x0070dff0
+void E101R_EfWaveAccumeInit()
+{
+	struct GHPARTICLE_INFO info;
+	ghSpriteAnimTableInit(&_texlist_e101r, &animtable_waveaccume[0], 0);
+	info.fLife = 0.03f;
+	info.fLifeEnd = 0.0f;
+	DAT_060c4aa0 = ghParticleControlSet(0x64, &info, &animtable_waveaccume[0], moveWaveAccume);
 }
 
 // FUNCTION: SADX 0x0070e040

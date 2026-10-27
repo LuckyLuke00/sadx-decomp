@@ -73,14 +73,17 @@ void SetEgm1AtkSmoke(struct NJS_POINT3 *posp)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006c4830
 void egm1one_clay_disp(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
-// STUB: SADX 0x006c48b0
+// FUNCTION: SADX 0x006c48b0
 void ChgEgm1ClayStat(unsigned char mode)
 {
+	*(unsigned char *)((char *)((struct task *)DAT_060b99f4)->awp + 0x10) = mode;
 }
 
 // FUNCTION: SADX 0x006c48c0

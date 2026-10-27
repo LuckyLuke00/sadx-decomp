@@ -15,3 +15,8 @@ void callbackTgt(struct obj *obj)
 		}
 	}
 }
+
+// STUB: SADX 0x00706930
+void SetE101()
+{
+}

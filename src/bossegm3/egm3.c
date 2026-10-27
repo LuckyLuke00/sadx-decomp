@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_060bb218;
+extern struct LE_LIGHT_ENV DAT_05b39bf0[4];
 extern struct obj *DAT_02833c70;
 extern struct obj *egm3_object_list[];
 extern int DAT_060ba04c;
@@ -25,6 +27,11 @@ static void TikalTaskExit(struct task *tp)
 
 // STUB: SADX 0x006ce190
 void Egm3komaDraw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006ce280
+void Egm3komaHakai(struct task *tp)
 {
 }
 
@@ -167,9 +174,15 @@ void Egm3_iroiroExit(struct task *tp)
 		vuvS_0_kemuri_boss_boss[var1] = DAT_060bb188[var1];
 }
 
-// STUB: SADX 0x006ced40
+// FUNCTION: SADX 0x006ced40
 void Egm3_bakucolorExit(struct task *tp)
 {
+	DAT_060bb290 = 0;
+	if (DAT_060bb218 != NULL)
+	{
+		*(struct LE_LIGHT_ENV *)DAT_05b39bf0 = *(struct LE_LIGHT_ENV *)DAT_060bb218;
+	}
+	DAT_05b39bf0[1].flgs = 0;
 }
 
 // STUB: SADX 0x006cf670
