@@ -43,6 +43,8 @@ def check_declared_name() -> list[str]:
              ("int DAT_00501000[4] = {1, 2};", "DAT_00501000"),
              ("void (*f)(int)", "f"),
              ("void Foo::Bar(int a)", "Foo::Bar"),
+             ("SOCFileStream::~SOCFileStream()", "SOCFileStream::~SOCFileStream"),
+             ("Magic::RenderCore::Texture::~Texture()", "Magic::RenderCore::Texture::~Texture"),
              ("static __declspec(safebuffers) void Camera(struct _OBJ_CAMERAPARAM *pParam)", "Camera"),
              ("__declspec(safebuffers) void Y(int a)", "Y"),
              ("__declspec( naked ) void F(void)", "F"),

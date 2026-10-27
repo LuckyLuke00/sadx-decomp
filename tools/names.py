@@ -94,7 +94,7 @@ def declared_name(sig: str) -> str | None:
     head = re.sub(r"\[[^\]]*\]", "", head)
     if "(" in head:
         head = head[:head.index("(")]
-    ids = re.findall(r"[A-Za-z_][\w:]*", head)
+    ids = re.findall(r"[A-Za-z_][\w:]*(?:~[A-Za-z_]\w*)?", head)  # a destructor keeps its ~
     return ids[-1] if ids else None
 
 
