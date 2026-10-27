@@ -112,11 +112,6 @@ void stInitVertex(unsigned long, unsigned long, void *)
 {
 }
 
-// STUB: SADX 0x00426740
-void FUN_00426740(void)
-{
-}
-
 // STUB: SADX 0x00426820
 void FUN_00426820(void)
 {
@@ -1265,7 +1260,7 @@ void FUN_004bac60()
 }
 
 // STUB: SADX 0x004bd5a0
-void CameraViewSet(struct taskwk *pTaskWork)
+void CameraViewSet(struct taskwk *)
 {
 }
 
@@ -1333,11 +1328,6 @@ void SetPlayerInitialPosition(struct taskwk *twp)
 {
 }
 
-// STUB: SADX 0x004c9a20
-void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
-{
-}
-
 // STUB: SADX 0x004cbf50
 void CalculatePlaneNormals(struct NJS_MODEL *dp)
 {
@@ -1375,11 +1365,6 @@ int LoadFileWithMalloc(char *, void **)
 long __GetFileSize(const char *fname)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x004d0670
-void CCL_PCheckColli()
-{
 }
 
 // STUB: SADX 0x004d8860
@@ -1435,11 +1420,6 @@ void PAdjustAngleY(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 {
 }
 
-// STUB: SADX 0x004e2cb0
-void FUN_004e2cb0(struct task *, struct NJS_POINT3 *, struct taskwk *)
-{
-}
-
 // STUB: SADX 0x004e3130
 void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
@@ -1452,11 +1432,6 @@ void PSetMotion(struct mtnjvwk *mjp)
 
 // STUB: SADX 0x004ef250
 void PlayerFaceMotionExec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x004f39c0
-void DestroyTask(struct task *)
 {
 }
 
@@ -1483,11 +1458,6 @@ long CL_ListUpPolygonsInObject(struct obj *obp, unsigned long ulattr, struct CL_
 	return (long)0;
 }
 
-// STUB: SADX 0x004fd4e0
-void DrawGround()
-{
-}
-
 // STUB: SADX 0x004fdb00
 void ListGroundForDrawing()
 {
@@ -1505,6 +1475,11 @@ void ExtraDisplayExecutor(struct task *tp)
 
 // STUB: SADX 0x004ffab0
 void ObjectMovableSRegularExecute(struct task *tp)
+{
+}
+
+// STUB: SADX 0x004ffef0
+void ObjectMovableMRegularExecute(struct task *tp)
 {
 }
 
@@ -1682,11 +1657,6 @@ void FUN_0055de60(struct _SC_NUMBERS *)
 {
 }
 
-// STUB: SADX 0x0055f6f0
-void inputhook_exec(struct task *task_p)
-{
-}
-
 // STUB: SADX 0x00561ed0
 void gravDispose3(struct _OBJ_CAMERAPARAM *pParam)
 {
@@ -1735,6 +1705,11 @@ void CalcEventCameraAng()
 
 // STUB: SADX 0x0056dd30
 void disp_npc_message_wait(const char * *message_p)
+{
+}
+
+// STUB: SADX 0x0056f860
+void GGMessageMain(struct task *)
 {
 }
 

@@ -1,5 +1,5 @@
 #include "decls.h"
-static void InitializeGround();
+extern long boolLandCollision;
 extern unsigned char DAT_05b3e065;
 extern void FUN_004fdaf0();
 extern void FUN_004feb40();
@@ -196,6 +196,13 @@ void ManageGroundDisplayer(struct task *pTask)
 	ResetMaterial();
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x004fd4e0
+void DrawGround()
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x004fd700
 void land_DrawObject(struct obj *obj, struct _OBJ_LANDENTRY *landEnt)
 {
@@ -307,6 +314,11 @@ void SetDefaultGravity()
 
 // STUB: SADX 0x004feea0
 void SetUserGravityXZ(long angx, long angz)
+{
+}
+
+// STUB: SADX 0x004fefb0
+void MakeLandCollLandEntryALL()
 {
 }
 

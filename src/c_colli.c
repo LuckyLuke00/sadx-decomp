@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_004d1730(struct taskwk *param_1, struct CCL_INFO *param_2, struct NJS_POINT3 *param_3);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
@@ -128,6 +129,16 @@ void CCL_ClearInfo(struct taskwk *twp)
 {
 }
 #pragma optimize("", on)
+
+// STUB: SADX 0x004cfe90
+void CCL_CalcColliCenterS(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
+{
+}
+
+// STUB: SADX 0x004d00f0
+void CCL_CalcColliCenterSEX(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
+{
+}
 
 // FUNCTION: SADX 0x004d0320
 void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
@@ -269,6 +280,13 @@ void CCL_Analyze()
 }
 
 #pragma optimize("", off)
+// STUB: SADX 0x004d0670
+void CCL_PCheckColli()
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
 // STUB: SADX 0x004d0930
 void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
 {
@@ -311,6 +329,11 @@ int FUN_004d0ca0(int param_1, int param_2, int param_3, int param_4)
 	return 0;
 }
 
+// STUB: SADX 0x004d10b0
+void FUN_004d10b0(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
+}
+
 // STUB: SADX 0x004d1330
 long CCL_CheckPushOut(struct colliwk *cwp1, struct CCL_INFO *info1, struct colliwk *cwp2, struct CCL_INFO *info2)
 {
@@ -319,6 +342,16 @@ long CCL_CheckPushOut(struct colliwk *cwp1, struct CCL_INFO *info1, struct colli
 
 // STUB: SADX 0x004d13e0
 void CCL_CheckDamage(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
+}
+
+// STUB: SADX 0x004d1520
+void CCL_ExchangeInfo(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
+}
+
+// STUB: SADX 0x004d1730
+void FUN_004d1730(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
 {
 }
 
@@ -331,6 +364,12 @@ void CCL_SetRideFlag(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk 
 long CCL_GetRectSideNum(struct NJS_POINT3 *pos, float a, float c)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x004d2660
+int FUN_004d2660(void *param_1, void *param_2, void *param_3, void *param_4, float *param_5, void *param_6, float param_7)
+{
+	return (int)0;
 }
 
 // STUB: SADX 0x004d28b0
@@ -467,6 +506,11 @@ void FUN_004d5330(char *param_1, int param_2, struct NJS_POINT3 *param_3)
 		SetPlayerPosition(*(unsigned char *)(*(int *)(*(int *)(param_2 + 0x9c) + 0x20) + 8), 0, param_3, 0);
 		break;
 	}
+}
+
+// STUB: SADX 0x004d5370
+void FUN_004d5370(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+{
 }
 
 // STUB: SADX 0x004d7dd0

@@ -1,4 +1,8 @@
 #include "decls.h"
+extern int DAT_05cd25fc;
+extern float DAT_05cd259c;
+extern float DAT_05cd25a0;
+extern float DAT_05cd258c;
 extern int DAT_0629c724;
 unsigned long FUN_005750b0(float *param_1);
 unsigned long FUN_004951c0(unsigned long param_1, unsigned long param_2);
@@ -7,9 +11,28 @@ extern long DAT_05cd25a4[20];
 extern int DAT_05cd2588;
 extern long DAT_05cd25f8;
 
-// STUB: SADX 0x00573e60
+// FUNCTION: SADX 0x00573e60
 void ghInitPvrTexture()
 {
+	int local_8;
+	for (local_8 = 0; local_8 < 4; local_8++)
+	{
+		*(int *)((char *)DAT_05cd25a4 + local_8 * 0x18) = 0xffffffff;
+	}
+	DAT_05cd259c = 0.0f;
+	DAT_05cd25a0 = 0.0f;
+	*(float *)((char *)DAT_05cd25a4 + 0x10) = 0.0f;
+	*(float *)((char *)DAT_05cd25a4 + 0x14) = 1.0f;
+	*(float *)((char *)DAT_05cd25a4 + 0x28) = 1.0f;
+	*(float *)((char *)DAT_05cd25a4 + 0x2c) = 0.0f;
+	*(float *)((char *)DAT_05cd25a4 + 0x40) = 1.0f;
+	*(float *)((char *)DAT_05cd25a4 + 0x44) = 1.0f;
+	DAT_05cd25f8 = 0xffffffff;
+	DAT_05cd25a4[19] = 0;
+	DAT_05cd25fc = 1;
+	DAT_05cd25f4 = 0;
+	DAT_05cd258c = 1.0f;
+	DAT_05cd2588 = 0;
 }
 
 // FUNCTION: SADX 0x00573f10

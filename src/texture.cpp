@@ -1,4 +1,5 @@
 #include "decls.h"
+void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo);
 void late_ReleaseTexture(struct NJS_TEXLIST *tl);
 extern struct TEX_PVMTABLE *ListofPlayersPvmList[9];
 extern char DAT_05cc3554[9];
@@ -103,6 +104,11 @@ void ReleaseAllPlayersTexture()
 
 // STUB: SADX 0x00501ce0
 void LoadTextureForEachGameMode(long gamemode)
+{
+}
+
+// STUB: SADX 0x00501f20
+void LoadTexture()
 {
 }
 

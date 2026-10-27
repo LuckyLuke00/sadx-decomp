@@ -16,6 +16,11 @@ extern int DAT_05b93588;
 extern unsigned char ucInputStatus;
 extern unsigned char DAT_05b92ec8[768];
 
+// STUB: SADX 0x004c3340
+void mouseshot()
+{
+}
+
 // FUNCTION: SADX 0x004c3890
 int KeyGetPress(int keycode)
 {

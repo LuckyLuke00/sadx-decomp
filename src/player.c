@@ -1,6 +1,8 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+extern long PCheckPushAngle(struct taskwk *twp, struct motionwk2 *mwp);
+extern void PConvertVector_G2P(struct taskwk *twp, struct NJS_POINT3 *vp);
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 void PConvertVector_P2G(struct taskwk *twp, struct NJS_POINT3 *vp);
@@ -192,8 +194,18 @@ void PGetAccelerationAir(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 {
 }
 
+// STUB: SADX 0x004de880
+void PGetAccelerationAirAuto(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x004dec40
 void PGetAcceleration1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004ded90
+void PGetAccelerationPushPull(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
@@ -246,6 +258,11 @@ void FUN_004e0580(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 {
 }
 
+// STUB: SADX 0x004e16d0
+void PGetInertia(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x004e1920
 void PGetGravity(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
@@ -258,6 +275,11 @@ void PRotatedByGravity(struct taskwk *twp, struct motionwk2 *mwp, struct playerw
 
 // STUB: SADX 0x004e1e40
 void PRotatedByGravityS(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x004e2010
+void PRotatedByGravityAsPinball(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
 
@@ -299,6 +321,13 @@ void PAdjustAngleYQ(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *
 void PAdjustAngleYS(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, long angy)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x004e2cb0
+void FUN_004e2cb0(struct task *tp, struct NJS_POINT3 *p, struct taskwk *twp)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x004e2ec0
 void FUN_004e2ec0(struct taskwk *twp, struct NJS_POINT3 *v)
