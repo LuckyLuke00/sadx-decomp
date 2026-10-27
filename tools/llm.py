@@ -127,6 +127,7 @@ PLAIN_FORMS = {  # what to write in place of each fakematch kind, for --refuse-f
     "empty_block": "leave it out, or test the opposite condition",
     "empty_statement": "leave it out, or write the loop's work in its body",
     "unused_local": "leave it out",
+    "address_number": "write the number itself: the exe uses it as a flag or a count, not as a global's address",
 }
 RESULT_FIELDS = ["file", "address", "size", "tries", "best", "wall_s", "prompt_tokens", "completion_tokens", "model",
                  "think_tries", "repeats"]

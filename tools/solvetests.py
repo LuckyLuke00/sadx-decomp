@@ -298,7 +298,9 @@ def check_fakematch_kinds() -> list[str]:
              ("empty_block", ["\tif (x)", "\t{", "\t}", "\telse", "\t\tx = 1;"], "{",
               ["\tif (x)", "\t{", "\t\tx = 1;", "\t}"]),
              ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tint y = x;", "\treturn y;"]),
-             ("unused_local", ["\tint *y = p->y;", "\treturn x;"], "y", ["\tint *y = p->y;", "\treturn *y;"])]
+             ("unused_local", ["\tint *y = p->y;", "\treturn x;"], "y", ["\tint *y = p->y;", "\treturn *y;"]),
+             ("address_number", ["\tFoo((int)&DAT_04000002, x);"], "Foo((int)&DAT_04000002, x);",
+              ["\tFoo((int)&DAT_0400000c, x);"])]
     failures = []
     for kind, hit, line, plain in cases:
         for body, wanted in ((hit, [(kind, line)]), (plain, [])):
