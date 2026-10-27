@@ -325,6 +325,25 @@ def check_refusal_names() -> list[str]:
     return failures
 
 
+def check_constant_globals() -> list[str]:
+    """A float or double DAT_ that the reply declares where the exe holds a literal in read-only data is refused, and
+    the refusal names the literal. Another type, an array, a named global or an address with no literal is not."""
+    literals = {(0x0095cbf8, 4): "0.5f", (0x00956608, 8): "2.0"}
+
+    def literal_at(address, width):
+        return literals.get((address, width))
+
+    decls = ["extern float DAT_0095cbf8;", "extern const double DAT_00956608;", "extern int DAT_0095cbf8;",
+             "extern float DAT_0095cbf8[2];", "extern float Scale;", "extern float DAT_00a00000;"]
+    found = fakematch.constant_globals(decls, literal_at)
+    wanted = [("constant_global", "extern float DAT_0095cbf8;"), ("constant_global", "extern const double DAT_00956608;")]
+    failures = [] if found == wanted else [f"constant_globals gives {found}, not {wanted}"]
+    note = llm.refusal(found[:1], literal_at=literal_at)
+    if "write `0.5f` in its place" not in note:
+        failures.append(f"the refusal of a constant global is {note!r}, without its literal")
+    return failures
+
+
 def check_annotation_below_signature() -> list[str]:
     """A reply with the annotation between the signature and the body parses as if the annotation were above it."""
     below = "\n".join(["```cpp", "int Foo(void)", llm.function_line(ADDRESS), "{", "\treturn 1;", "}", "```"])
@@ -485,7 +504,8 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_refusal_names, check_annotation_below_signature, check_live,
+                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_refusal_names,
+                  check_constant_globals, check_annotation_below_signature, check_live,
                   check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures

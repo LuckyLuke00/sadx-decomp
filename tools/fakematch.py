@@ -14,6 +14,8 @@ The kinds:
   unused_local     a local that is declared and never used again: it only fills the frame
   address_number   the address of a DAT_ that is not a multiple of 4 cast to an integer, such as (int)&DAT_04000002:
                    such a number is nearly always a flag or a count, not the address of a global
+  constant_global  a float or double DAT_ declared at an address of read-only data (constant_globals): the compiler
+                   puts the source's literals there, so the source wrote a literal
 
 llm.py --refuse-fakematch refuses a 100% try with one of them. Standard library only.
 """
@@ -46,6 +48,7 @@ PATTERNS = {
     "address_number": re.compile(r"\(\s*(?:unsigned\s+)?(?:int|long)\s*\)\s*&\s*DAT_[0-9a-fA-F]{7}[^\W048cC]\b"),
 }
 HEAD = re.compile(r"\s*(?:if|for|while)\s*\(")
+FLOAT_GLOBAL = re.compile(r"^\s*(?:extern\s+)?(?:const\s+)?(float|double)\s+(?:const\s+)?DAT_([0-9a-fA-F]{8})\s*;\s*$")
 
 
 def empty_head(line: str) -> bool:
@@ -88,6 +91,18 @@ def declared(line: str) -> list[tuple[str, str]]:
         stars = d.group(1).replace(" ", "")
         found.append((d.group(2), f"{base} {stars}".strip() if stars else base))
     return found
+
+
+def float_global(line: str) -> tuple[int, int] | None:
+    """(address, width) of the float or double DAT_ that the declaration LINE declares, else None."""
+    m = FLOAT_GLOBAL.match(line)
+    return (int(m.group(2), 16), 4 if m.group(1) == "float" else 8) if m else None
+
+
+def constant_globals(decls: list[str], literal_at: Callable[[int, int], str | None]) -> list[tuple[str, str]]:
+    """[("constant_global", line)] of the declarations in DECLS of a float or double DAT_ that LITERAL_AT, given
+    its address and width, finds a literal at: it gives None for an address that is not read-only data."""
+    return [("constant_global", line.strip()) for line in decls if (at := float_global(line)) and literal_at(*at)]
 
 
 def variable_types(func_lines: list[str], at: int) -> tuple[dict[str, str], list[tuple[str, int]]]:
