@@ -2136,6 +2136,16 @@ void late_ChaosLifeGaugeDisplay(struct task *)
 {
 }
 
+// STUB: SADX 0x005d5920
+void AmyBirdDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005d5a70
+void AmyBirdExe(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005d6680
 void AmyEffectPiyoPiyoDraw(struct task *tp)
 {
