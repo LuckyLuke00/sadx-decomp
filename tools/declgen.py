@@ -164,6 +164,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     local_funcs = collections.defaultdict(set)
     local_vars = collections.defaultdict(set)
     own_decls = set()  # (name, declaration) pairs from this tree's files, not the context's
+    own_copies = {}  # file: the names of the static functions it defines with no annotation
     file_tokens = {}
     for rel, text in sources.items():
         for kind, address, sig in names.parse_annotations(text):
@@ -180,6 +181,7 @@ def write(context: Path | None, tables: Path | None) -> int:
             fatal.append(f"{rel}: `{tag}` names a placeholder variable, not a type: write the real type")
         found = re.findall(r"[A-Za-z_]\w*", code)
         file_tokens[rel] = collections.Counter(found)
+        own_copies[rel] = names.unannotated_statics(text)
         tokens |= set(found)
         counts.update(found)
         lf, lv = names.local_declarations(text)
@@ -263,7 +265,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     used_funcs = set()
     users = collections.defaultdict(set)  # address: the files that use it by name
     for rel, found in file_tokens.items():
-        for tok in found & fnames.keys():
+        for tok in (fnames.keys() & found) - own_copies[rel]:  # a file's own copy means that copy
             for a in meaning(tok, rel):
                 users[a].add(rel)
                 if a not in defined_funcs or rel != defined_funcs[a][0] or found[tok] > 1:

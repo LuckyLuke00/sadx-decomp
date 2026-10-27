@@ -187,6 +187,14 @@ def parse_annotations(text: str) -> list[tuple[str, int, str]]:
     return found
 
 
+def unannotated_statics(text: str) -> set[str]:
+    """The names of the static functions that TEXT defines with no annotation: copies that the game's link folded
+    into another file's copy (tools/folds.py)."""
+    code = re.sub(r"__declspec\s*\([^()]*\)", "", strip_code(text))
+    defined = {m.group(1) for m in re.finditer(r"^static\b[^;{}=()]*?\b([A-Za-z_]\w*)\s*\([^;{}=]*\)\s*\{", code, re.M)}
+    return defined - {declared_name(sig) for kind, _, sig in parse_annotations(text) if kind in FUNCTION_KINDS}
+
+
 def local_declarations(text: str) -> tuple[list[tuple[str, str]], list[tuple[str, str]]]:
     """File-scope declarations: `ret name(args);` and `extern type name...;`."""
     funcs, vars_ = [], []
