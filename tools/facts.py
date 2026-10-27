@@ -40,6 +40,11 @@ CHAIN_NEUTRAL = ("push", "pop", "mov", "movsx", "movzx", "lea")  # may sit insid
 CHAIN_GAP = 6  # most such instructions between a step and its jump, or a je and the next step
 CAST_REACH = 6  # how far before the `jns` of an unsigned cast the `fild` may sit
 TABLE_JUMP_REACH = 3  # how many instructions after a switch's range check may hold the table jump
+CONVERSION_REACH = 13  # how many instructions after `fnstcw` may hold the rest of a float to unsigned conversion
+TRUNCATE_BITS = ("eax, 0xc00", "ah, 0xc")  # the `or` that sets the rounding mode of the control word to truncate
+# The unsigned type of a float converted with `fistp`, from the width of the store and of the first read of its slot.
+UNSIGNED_TYPES = {("dword", "byte"): "unsigned char", ("dword", "word"): "unsigned short",
+                  ("qword", "dword"): "unsigned int"}
 
 
 class Memory(NamedTuple):
@@ -621,14 +626,56 @@ def minus_one_fact(code: list[x86.Instruction]) -> str | None:
             "Write the multiply by -1. Do not write `-x`, which gives `neg`.")
 
 
+def unsigned_conversion(code: list[x86.Instruction], n: int) -> str | None:
+    """The unsigned type of the inline float conversion that the `fnstcw` at code[N] starts: `or` of the truncate
+    bits, `fldcw`, `fistp`, and a read of the `fistp` slot, all before the next `fnstcw`."""
+    window = code[n + 1:n + 1 + CONVERSION_REACH]
+    window = window[:next((k for k, i in enumerate(window) if i.mnemonic == "fnstcw"), len(window))]
+    steps = [lambda i: i.mnemonic == "or" and i.operands in TRUNCATE_BITS,
+             lambda i: i.mnemonic == "fldcw",
+             lambda i: i.mnemonic == "fistp" and i.operands.startswith(("dword ptr", "qword ptr"))]
+    at = 0
+    for step in steps:
+        found = next((k for k in range(at, len(window)) if step(window[k])), None)
+        if found is None:
+            return None
+        at = found + 1
+    width, _, slot = window[at - 1].operands.partition(" ptr ")
+    for read in window[at:]:
+        if slot in read.operands:
+            _, _, source = read.operands.partition(", ")
+            source_width, _, source_slot = source.partition(" ptr ")
+            if read.mnemonic in ("mov", "movzx") and source_slot == slot:
+                return UNSIGNED_TYPES.get((width, source_width))
+            return None
+    return None
+
+
+def float_to_unsigned_fact(code: list[x86.Instruction]) -> str | None:
+    """`fnstcw`, `or` of 0xc00, `fldcw`, `fistp`, `fldcw` converts a float to an unsigned type. The width of the
+    first read of the `fistp` slot gives the type."""
+    sites = [(i.address, unsigned_conversion(code, n)) for n, i in enumerate(code) if i.mnemonic == "fnstcw"]
+    sites = [(address, kind) for address, kind in sites if kind]
+    if not sites:
+        return None
+    kinds = list(dict.fromkeys(kind for _, kind in sites))
+    chunks = []
+    for kind in kinds:
+        places = [f"0x{address:x}" for address, found in sites if found == kind]
+        chunks.append(f"{listed(places)} {'is a float' if len(places) == 1 else 'are floats'} converted to {kind}")
+    casts = " or ".join(f"`({kind})x`" for kind in kinds)
+    return (f"`fnstcw`, `or 0xc00`, `fldcw`, `fistp` and `fldcw` at {listed(chunks)} inline. Write {casts} on the "
+            "float itself. `(int)x` or a signed cast calls `__ftol2_sse` instead.")
+
+
 def idiom_lines(code: list[x86.Instruction], flags: str, unsigned: dict[int, int]) -> list[str | None]:
     """The compiler idioms that the code shows, each with the C that gives it. Each one holds only at the
     optimization level that it names."""
     if "/Od" in flags:
         found = [float_argument_fact(code), compare_chain_fact(code), switch_base_fact(code), bit_clear_fact(code),
-                 left_constant_fact(code), minus_one_fact(code)]
+                 left_constant_fact(code), minus_one_fact(code), float_to_unsigned_fact(code)]
     else:
-        found = [unsigned_float_fact(unsigned), switch_chain_fact(code)]
+        found = [unsigned_float_fact(unsigned), switch_chain_fact(code), float_to_unsigned_fact(code)]
     return [float_compare_fact(code)] + found
 
 
