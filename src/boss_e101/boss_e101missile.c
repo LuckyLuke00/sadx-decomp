@@ -252,7 +252,7 @@ void EnemyBossE101Missile(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct
 	}
 }
 
-// FUNCTION: SADX 0x00810290
+// The game's link folded this copy into the one of e_windy_e103missile.c (0x00810290).
 static void FUN_00810290(struct NJS_POINT3 *param_1, float param_2)
 {
 	float local_8 = param_1->x * param_1->x + param_1->y * param_1->y + param_1->z * param_1->z;
