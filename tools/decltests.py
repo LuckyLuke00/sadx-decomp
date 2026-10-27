@@ -94,19 +94,23 @@ def pragma_lines(text: str) -> list[str]:
 
 
 def check_wrapped_stubs() -> list[str]:
-    """A static STUB that apply_function writes sits between pragma optimize off and on. A function replaces it
-    together with the pair, a second stub goes above the pair of a later one, a rewritten stub keeps one pair, and a
-    global stub gets none. No definition is left unclosed."""
+    """A static STUB that apply_function writes sits between pragma optimize off and on, and so does a global STUB
+    that its file calls. A function replaces it together with the pair, a second stub goes above the pair of a later
+    one, a rewritten stub keeps one pair, and a global stub that nothing in its file names gets none. No definition
+    is left unclosed."""
     one = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "static void Draw(void)"))
     two = llm.apply_function(one, 0x300, [], stub_lines(0x300, "static void Disp(void)"))
     function = ["// FUNCTION: SADX 0x00000500", "static void Draw(void)", "{", "\tmarker();", "}"]
     rewritten = llm.apply_function(two, 0x500, [], stub_lines(0x500, "static void Draw(void)"))
     global_stub = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "void Draw(void)"))
+    called = llm.apply_function(WRAP_BASE.replace("{\n}", "{\n\tDraw();\n}"), 0x500, [],
+                                stub_lines(0x500, "void Draw(void)"))
     cases = [("one stub", pragma_lines(one), WRAPPED),
              ("a second stub above the first", pragma_lines(two), WRAPPED * 2),
              ("a function over a stub", pragma_lines(llm.apply_function(two, 0x500, [], function)), WRAPPED),
              ("a stub over a stub", pragma_lines(rewritten), WRAPPED * 2),
-             ("a global stub", pragma_lines(global_stub), [])]
+             ("a global stub", pragma_lines(global_stub), []),
+             ("a global stub that its file calls", pragma_lines(called), WRAPPED)]
     failures = [f"apply_function leaves {found} for {what}, not {wanted}" for what, found, wanted in cases
                 if found != wanted]
     if llm.unclosed_definitions(two.split("\n")):
@@ -128,7 +132,8 @@ def check_definition_block() -> list[str]:
 
 
 def check_stub_functions_wrap() -> list[str]:
-    """stub_functions wraps the stub of a static function, and not the stub of a global one."""
+    """stub_functions wraps the stub of a static function and of a global one that its file calls, and not the stub
+    of a global one that nothing in its file names. A call in a comment does not count."""
     failures = []
     stubbed = llm.stub_functions(WRAP_BASE, [0x1000])
     if pragma_lines(stubbed):
@@ -136,6 +141,14 @@ def check_stub_functions_wrap() -> list[str]:
     static = llm.stub_functions(WRAP_BASE.replace("void Exec", "static void Exec"), [0x1000])
     if pragma_lines(static) != WRAPPED:
         failures.append(f"stub_functions leaves {pragma_lines(static)} for a static function, not a wrapped stub")
+    caller = ["", "// FUNCTION: SADX 0x00002000", "void Run(void)", "{", "\tExec();", "}", ""]
+    called = llm.stub_functions(WRAP_BASE.rstrip("\n") + "\n" + "\n".join(caller), [0x1000])
+    if pragma_lines(called) != WRAPPED:
+        failures.append(f"stub_functions leaves {pragma_lines(called)} for a global function its file calls, "
+                        "not a wrapped stub")
+    commented = llm.stub_functions(WRAP_BASE.rstrip("\n") + "\n// Exec() is set up elsewhere\n", [0x1000])
+    if pragma_lines(commented):
+        failures.append(f"stub_functions wraps a global stub that only a comment names in {commented!r}")
     return failures
 
 
