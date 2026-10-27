@@ -770,6 +770,43 @@ def check_unsigned_float() -> list[str]:
     return failures
 
 
+def check_float_to_unsigned_fact() -> list[str]:
+    """float_to_unsigned_fact names the type of each `fnstcw`, `or`, `fldcw`, `fistp`, `fldcw` conversion from the
+    width of the store and of the first read of its slot: a dword store and a byte read is unsigned char, a word
+    read unsigned short, and a qword store and a dword read unsigned int. A read of another width, a read of
+    another slot, a write of the slot, a missing step and a store that sits past CONVERSION_REACH say nothing, and
+    one fact lists several sites. A `fnstcw` ends the window of the one before it."""
+    def convert(store, read, rounding="or eax, 0xc00"):
+        return ["fnstcw word ptr [ebp - 2]", "movzx eax, word ptr [ebp - 2]", rounding,
+                "mov dword ptr [ebp - 8], eax", "fldcw word ptr [ebp - 8]", store, "fldcw word ptr [ebp - 2]", read]
+    byte = convert("fistp dword ptr [ebp - 0xc]", "mov al, byte ptr [ebp - 0xc]")
+    word = convert("fistp dword ptr [ebp - 0xc]", "movzx edx, word ptr [ebp - 0xc]")
+    qword = convert("fistp qword ptr [ebp - 0xc]", "mov eax, dword ptr [ebp - 0xc]")
+    reach = lambda count: byte[:5] + ["nop"] * count + byte[5:]  # COUNT nops before the `fistp`
+    return check_text_cases(facts.float_to_unsigned_fact, [
+        (byte + ["ret"], "`fnstcw`, `or 0xc00`, `fldcw`, `fistp` and `fldcw` at 0x401000 is a float converted to "
+                         "unsigned char inline. Write `(unsigned char)x` on the float itself. `(int)x` or a signed "
+                         "cast calls `__ftol2_sse` instead."),
+        (word + ["ret"], "0x401000 is a float converted to unsigned short inline. Write `(unsigned short)x`"),
+        (qword + ["ret"], "0x401000 is a float converted to unsigned int inline. Write `(unsigned int)x`"),
+        (convert("fistp dword ptr [ebp - 0xc]", "mov al, byte ptr [ebp - 0xc]", "or ah, 0xc") + ["ret"],
+         "(unsigned char)x"),
+        (byte + byte + ["ret"], "0x401000 and 0x401008 are floats converted to unsigned char inline. Write"),
+        (byte + qword + ["ret"], "0x401000 is a float converted to unsigned char and 0x401008 is a float converted "
+                                 "to unsigned int inline. Write `(unsigned char)x` or `(unsigned int)x` on"),
+        (convert("fistp dword ptr [ebp - 0xc]", "mov eax, dword ptr [ebp - 0xc]") + ["ret"], None),
+        (convert("fistp qword ptr [ebp - 0xc]", "mov eax, dword ptr [ebp - 8]") + ["ret"], None),
+        (convert("fistp dword ptr [ebp - 0xc]", "mov byte ptr [ebp - 0xc], al") + ["ret"], None),
+        (convert("fistp dword ptr [ebp - 0xc]", "mov al, byte ptr [ebp - 0xc]", "or eax, 0x400") + ["ret"], None),
+        (convert("fistp word ptr [ebp - 0xc]", "mov al, byte ptr [ebp - 0xc]") + ["ret"], None),
+        (convert("fist dword ptr [ebp - 0xc]", "mov al, byte ptr [ebp - 0xc]") + ["ret"], None),
+        (byte[:4] + byte[5:] + ["ret"], None),
+        (reach(facts.CONVERSION_REACH - 7) + ["ret"], "0x401000 is a float converted to unsigned char inline."),
+        (reach(facts.CONVERSION_REACH - 6) + ["ret"], None),
+        (byte[:5] + byte + ["ret"], "`fldcw` at 0x401005 is a float converted to unsigned char inline."),
+    ])
+
+
 def check_idiom_lines() -> list[str]:
     """idiom_lines gives the /Od idioms only for /Od code, and the optimized ones only for other code."""
     code = build(["imul eax, eax, -1", "mov ecx, esi", "sub ecx, 1", "je @6", "dec ecx", "je @6", "ret"]).code
@@ -874,7 +911,8 @@ def run() -> list[str]:
                   check_pointer_facts, check_bodiless_fact, check_float_literal, check_constant_fact,
                   check_float_compare_fact, check_float_argument_fact, check_switch_chain_fact,
                   check_compare_chain_fact, check_switch_base_fact, check_bit_clear_fact, check_left_constant_fact,
-                  check_minus_one_fact, check_unsigned_float, check_idiom_lines, check_fact_lines,
+                  check_minus_one_fact, check_unsigned_float, check_float_to_unsigned_fact,
+                  check_idiom_lines, check_fact_lines,
                   check_fact_lines_idioms, check_library_annotations):
         failures += check()
     return failures
