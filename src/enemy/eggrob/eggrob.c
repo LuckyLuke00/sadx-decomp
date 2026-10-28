@@ -60,6 +60,12 @@ void FUN_00610650(int *param_1)
 {
 }
 
+// STUB: SADX 0x00610680
+struct task *Eggrob_GenerateEggrob(struct erctrlstr *cmd)
+{
+	return (struct task *)0;
+}
+
 // FUNCTION: SADX 0x006109b0
 void Eggrob_Init(struct task *tp)
 {
@@ -144,11 +150,40 @@ int FUN_00612b80(float param_1)
 	return (int)0;
 }
 
+// STUB: SADX 0x00612c20
+void FUN_00612c20(struct task *param_1)
+{
+}
+
+// STUB: SADX 0x00612ec0
+long Eggrob_MakeXYZHitBuf(struct xyyzzxsdwstr *ans, struct NJS_POINT3 *pos, float rad)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00613130
+long Eggrob_FindAmy(struct task *tp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00613350
+void Eggrob_EyesBall(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00613680
 float FUN_00613680(float *param_1)
 {
 	return (float)0;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x00613710
+void Eggrob_Display(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00613a80
@@ -234,6 +269,11 @@ void DisplayerEggrob_HatenaDisplay(struct task *tp)
 
 // STUB: SADX 0x006162c0
 void Eggrob_HatenaDisplay(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00616350
+void Eggrob_ShindohaWave(struct task *tp)
 {
 }
 

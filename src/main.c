@@ -117,7 +117,45 @@ void Clear()
 	njExitTexture();
 }
 
-// STUB: SADX 0x004adcc0
+// FUNCTION: SADX 0x004adcc0
 void Reset()
 {
+	unsigned int local_8;
+	voicevolresume();
+	npSetZCompareMode(1);
+	pdVibMxStop(0);
+	DAT_05b3e388 = 0;
+	DAT_05ccde90 = 0;
+	late_execCancel();
+	BGM_RequestClear();
+	Serif_RequestClear();
+	dsStop_all();
+	StopPCM(-1);
+	wmastop(0);
+	wmastop(1);
+	Draw_Reset();
+	MSG_Disp(0);
+	InitMemory();
+	InitTask();
+	for (local_8 = 0; local_8 <= 9; local_8++)
+	{
+		ReleaseModule(local_8);
+	}
+	l_edit_Init();
+	if (DAT_05cda188 != 0)
+	{
+		syFree(DAT_05cda188);
+		DAT_05cda188 = 0;
+	}
+	if (DAT_05b92e20 != 0)
+	{
+		syFree(DAT_05b92e20);
+		DAT_05b92e20 = 0;
+	}
+	FUN_005b5aa0(-1);
+	FUN_005b5aa0(0xff12);
+	FUN_005b5aa0(&DAT_05b3e0e0);
+	FUN_005b5aa0(&DAT_05b3e0e0);
+	___njFogEnable();
+	srand(0xdead0cab);
 }

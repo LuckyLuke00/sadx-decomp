@@ -199,6 +199,7 @@ struct motionwk2;
 struct MSGC;
 struct mtnjvwk;
 struct neon_info;
+struct NEXT_ADVENTURE;
 struct NJS_ACTION;
 struct NJS_ACTION_LINK;
 struct NJS_ARGB;
@@ -3318,6 +3319,26 @@ static_assert(sizeof(MirrorPlane) == 0x28, "sizeof MirrorPlane");
 static_assert(offsetof(MirrorPlane, pos) == 0x0, "MirrorPlane::pos");
 static_assert(offsetof(MirrorPlane, normal) == 0x18, "MirrorPlane::normal");
 static_assert(offsetof(MirrorPlane, neibor) == 0x24, "MirrorPlane::neibor");
+
+struct NEXT_ADVENTURE {
+    signed char mu_bi_;
+    unsigned char stage;
+    unsigned char stg1;
+    unsigned char act1;
+    unsigned char entrance1;
+    unsigned char stg2;
+    unsigned char act2;
+    unsigned char entrance2;
+};
+static_assert(sizeof(NEXT_ADVENTURE) == 0x8, "sizeof NEXT_ADVENTURE");
+static_assert(offsetof(NEXT_ADVENTURE, mu_bi_) == 0x0, "NEXT_ADVENTURE::mu_bi_");
+static_assert(offsetof(NEXT_ADVENTURE, stage) == 0x1, "NEXT_ADVENTURE::stage");
+static_assert(offsetof(NEXT_ADVENTURE, stg1) == 0x2, "NEXT_ADVENTURE::stg1");
+static_assert(offsetof(NEXT_ADVENTURE, act1) == 0x3, "NEXT_ADVENTURE::act1");
+static_assert(offsetof(NEXT_ADVENTURE, entrance1) == 0x4, "NEXT_ADVENTURE::entrance1");
+static_assert(offsetof(NEXT_ADVENTURE, stg2) == 0x5, "NEXT_ADVENTURE::stg2");
+static_assert(offsetof(NEXT_ADVENTURE, act2) == 0x6, "NEXT_ADVENTURE::act2");
+static_assert(offsetof(NEXT_ADVENTURE, entrance2) == 0x7, "NEXT_ADVENTURE::entrance2");
 
 struct NJS_CACTION {
     struct NJS_CAMERA *camera;

@@ -1,5 +1,8 @@
 #include "decls.h"
 #include <string.h>
+void *TH_GetWork(struct thread *tp);
+void EV_Destruct();
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 void ___njSetPerspective(long a);
 int HokanInt(int mode, int time, int count, int va, int vb);
 void FUN_0056ccc0(int param_1);

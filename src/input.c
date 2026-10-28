@@ -21,6 +21,11 @@ void mouseshot()
 {
 }
 
+// STUB: SADX 0x004c3770
+void SaveKeyCheckData(int sw)
+{
+}
+
 // FUNCTION: SADX 0x004c3890
 int KeyGetPress(int keycode)
 {

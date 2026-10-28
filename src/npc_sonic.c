@@ -1,4 +1,8 @@
 #include "decls.h"
+int FUN_005ab4a0();
+void FUN_005ab800(unsigned long param_1);
+void InitSonic2PControl(struct task *tp);
+void InitMoble2PControl(struct task *tp);
 extern const long *MPT_MRaceEachStage[10];
 void FUN_005a92d0(struct taskwk *param_1);
 void FUN_005a9290(struct taskwk *param_1);
@@ -38,6 +42,11 @@ float njSqrt(float param_1);
 extern float DAT_05b3ec0c;
 extern float DAT_05b3ec10;
 extern float DAT_05b3ec14;
+
+// STUB: SADX 0x005a8390
+void Set_NPC_Sonic(unsigned short pl_kind, short pl_num, short stg_num)
+{
+}
 
 // STUB: SADX 0x005a8640
 void InitSonic2PControl(struct task *tp)

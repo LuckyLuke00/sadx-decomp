@@ -13,6 +13,11 @@ void FUN_008d69e0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_ACTION action_walk_ene_s_amb_root[1];
 extern struct NJS_ACTION action_run_ene_s_amb_root[1];
 
+// STUB: SADX 0x008d5bd0
+void EnemyPondSkater(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008d6040
 void FUN_008d6040(struct NJS_POINT3 *point)
 {
@@ -118,6 +123,13 @@ void FUN_008d63e0(struct taskwk *twp, struct enemywk *ewp)
 #pragma optimize("", off)
 // STUB: SADX 0x008d6480
 void FUN_008d6480(struct taskwk *param_1, struct enemywk *param_2)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x008d6640
+void FUN_008d6640(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 #pragma optimize("", on)

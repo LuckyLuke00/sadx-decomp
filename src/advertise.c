@@ -3,6 +3,8 @@
 #include <new>
 #include <windows.h>
 #include "advertise.h"
+void *FUN_0058a5d0(unsigned int param_1);
+extern float ScreenRaitoY;
 void late_DrawMap(void *arg);
 void FUN_0057cd30();
 long InitMap();
@@ -19,6 +21,13 @@ void split2(void *param_1, void *param_2);
 extern struct NJS_TEXLIST DAT_05cd2664;
 void FUN_00588890(int param_1);
 extern unsigned char DAT_05cd2786;
+
+#pragma optimize("", off)
+// STUB: SADX 0x00579ab0
+void late_displayMission(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x00579e00
 void InitDisplayStart()
@@ -82,6 +91,13 @@ void FUN_0057aa00(enum PAUSE_TEXTURE_ID param_1, long param_2, long param_3, lon
 {
 	printMenu2(param_1, 0xf0, param_2 + 0xf0, param_3);
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0057aa30
+void printMenu2(enum PAUSE_TEXTURE_ID id, long pos_x, long pos_y, long flag)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x0057ae10
 signed char PausePrev(signed char sel)
@@ -234,6 +250,14 @@ void FUN_0057cf20()
 void late_DrawMap(void *arg)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0057d220
+int cameramodechange(int sw)
+{
+	return (int)0;
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0057d490
 int padconfig(int sw)
@@ -1913,6 +1937,11 @@ void __fastcall FUN_00589c10(void *param_1, int param_2, char param_3)
 int FUN_0058a010(int *param_1, int param_2)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x0058a090
+void FUN_0058a090(void *param_1, int param_2, int param_3)
+{
 }
 
 // STUB: SADX 0x0058a490

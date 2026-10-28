@@ -1,4 +1,7 @@
 #include "decls.h"
+float EnemyDist2FromPlayer(struct taskwk *twp, int num);
+long AdjustAngle(long ang0, long ang1, long dang);
+void RoboBumpSide(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005536c0(struct particle_info *param_1);
 void FUN_005be2d0(struct taskwk *, struct enemywk *);
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
@@ -272,8 +275,18 @@ void RoboHeadReturn(struct task *tp, struct enemywk *ewp)
 {
 }
 
+// STUB: SADX 0x005bd410
+void RoboHeadDocking(struct task *tp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005bd920
 void RoboDestructor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005bd990
+void RoboExecutor(struct task *tp)
 {
 }
 
@@ -312,8 +325,18 @@ void FUN_005bdea0(struct taskwk *param_1, int param_2)
 	CreateAnimal(8, param_1->pos.x, param_1->pos.y + 15.0f, param_1->pos.z);
 }
 
+// STUB: SADX 0x005bdf30
+void RoboSwing(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005be1b0
 void RoboBumpSide(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005be720
+void RoboSleep(struct task *tp, struct enemywk *ewp)
 {
 }
 

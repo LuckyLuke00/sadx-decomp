@@ -1,4 +1,7 @@
 #include "decls.h"
+float njSin(int param_1);
+unsigned long GetGlobalTime();
+void SpinnaEditDraw(struct taskwk *twp, float xpos, float ypos, float zpos);
 float EnemyDist2FromHome(struct taskwk *twp, struct enemywk *ewp);
 void FUN_00594710(void *, void *);
 extern void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
@@ -32,6 +35,11 @@ void SpinnaDead(struct taskwk *twp)
 	}
 	CreateExpSpring(twp, 8);
 	twp->mode = 5;
+}
+
+// STUB: SADX 0x00593f60
+void SpinnaDisplayer(struct task *tp)
+{
 }
 
 // STUB: SADX 0x005941f0
@@ -147,6 +155,13 @@ void FUN_00594710(void *param_1, void *param_2)
 }
 #pragma optimize("", on)
 
+#pragma optimize("", off)
+// STUB: SADX 0x005948e0
+void SpinnaDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x00594c00
 void FUN_00594c00(struct taskwk *param_1, struct enemywk *param_2)
 {
@@ -163,6 +178,11 @@ void SpinnaDamage(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x00594d30
 void EnemySpinnaB(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00594f10
+void SpinnaEditModeB(struct task *tp, struct taskwk *twp)
 {
 }
 
@@ -196,5 +216,10 @@ void SpinnaNormalB(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005952e0
 void EnemySpinnaC(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005954e0
+void SpinnaEditModeC(struct task *tp, struct taskwk *twp)
 {
 }

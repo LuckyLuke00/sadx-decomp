@@ -1,5 +1,18 @@
 #include "decls.h"
+struct CCL_INFO;
+struct CCL_INFO *FUN_004da260(struct CCL_INFO *param_1, int param_2, int param_3, int param_4);
+void FUN_004d5370(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
+void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
 void FUN_004d1730(struct taskwk *param_1, struct CCL_INFO *param_2, struct NJS_POINT3 *param_3);
+void ConvertPositionGlobalToLocal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v);
+void ConvertPositionLocalToGlobal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v);
+void njPushMatrixEx();
+void njPopMatrixEx();
+void njTranslateEx(void *param_1);
+void njRotateY(float *param_1, unsigned short param_2);
+void njRotateX(float *param_1, unsigned short param_2);
+void njRotateZ(float *param_1, int param_2);
+void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
@@ -9,7 +22,6 @@ void FUN_004d9850(int param_1);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 void FUN_004d0b30(struct taskwk *param_1, struct taskwk *param_2, float param_3);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
-void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 void njPushMatrix(float *param_1);
@@ -533,6 +545,30 @@ void CCL_CalcColliPW(struct taskwk *twp1, struct taskwk *twp2)
 {
 }
 
+// STUB: SADX 0x004d8330
+void FUN_004d8330(struct taskwk *param_1, struct taskwk *param_2, struct CCL_INFO *param_3, struct CCL_INFO *param_4)
+{
+}
+
+// STUB: SADX 0x004d86d0
+void FUN_004d86d0(struct taskwk *twp, struct CCL_INFO *info, struct taskwk *twp2, struct CCL_INFO *info2)
+{
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x004d8860
+void CCL_BCheckColli()
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x004d8ab0
+void CCL_CCheckColli()
+{
+}
+#pragma optimize("", on)
+
 #pragma optimize("", off)
 // STUB: SADX 0x004d8d20
 void CCL_E2CheckColli()
@@ -911,6 +947,12 @@ struct taskwk *CCL_IsHitWithNum(struct taskwk *twp, long info_num)
 struct c_colli_hit_info *CCL_IsHitWithNumEx(struct taskwk *twp, long info_num)
 {
 	return (struct c_colli_hit_info *)0;
+}
+
+// STUB: SADX 0x004da260
+struct CCL_INFO *FUN_004da260(struct CCL_INFO *param_1, int param_2, int param_3, int param_4)
+{
+	return (struct CCL_INFO *)0;
 }
 
 // FUNCTION: SADX 0x004da3f0

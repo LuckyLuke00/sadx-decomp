@@ -1228,8 +1228,8 @@ void FUN_004bac60()
 {
 }
 
-// STUB: SADX 0x004bd5a0
-void CameraViewSet(struct taskwk *)
+// STUB: SADX 0x004bc280
+void CameraCameraMode(struct taskwk *)
 {
 }
 
@@ -1282,16 +1282,6 @@ void GameInit()
 {
 }
 
-// STUB: SADX 0x004c81c0
-void GameLoop_with_SyoriOchiTaisaku()
-{
-}
-
-// STUB: SADX 0x004c89a0
-void SetFinishAction()
-{
-}
-
 // STUB: SADX 0x004c9650
 void SetPlayerInitialPosition(struct taskwk *twp)
 {
@@ -1336,16 +1326,6 @@ long __GetFileSize(const char *fname)
 	return (long)0;
 }
 
-// STUB: SADX 0x004d8860
-void CCL_BCheckColli()
-{
-}
-
-// STUB: SADX 0x004d8ab0
-void CCL_CCheckColli()
-{
-}
-
 // STUB: SADX 0x004d9130
 signed char _GetColliFaceNormalPO(struct taskwk *twp1, struct NJS_POINT3 *v)
 {
@@ -1363,12 +1343,6 @@ void PInitialize(long num, struct task *tp)
 {
 }
 
-// STUB: SADX 0x004db110
-long PCheckHoldObject(struct taskwk *)
-{
-	return (long)0;
-}
-
 // STUB: SADX 0x004dbe50
 void PGetAcceleration(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
@@ -1384,16 +1358,6 @@ void PGetRotation(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 {
 }
 
-// STUB: SADX 0x004e2480
-void PAdjustAngleY(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, long angy)
-{
-}
-
-// STUB: SADX 0x004e3130
-void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
-{
-}
-
 // STUB: SADX 0x004ec740
 void PSetMotion(struct mtnjvwk *mjp)
 {
@@ -1402,12 +1366,6 @@ void PSetMotion(struct mtnjvwk *mjp)
 // STUB: SADX 0x004ef250
 void PlayerFaceMotionExec(struct task *tp)
 {
-}
-
-// STUB: SADX 0x004f46a0
-struct task *CreateChildrenTask(struct childtaskset *ctsp, struct task *tp)
-{
-	return (struct task *)0;
 }
 
 // STUB: SADX 0x004f5fe0
@@ -1606,21 +1564,6 @@ void DisplayScoreAction()
 {
 }
 
-// STUB: SADX 0x005561c0
-void late_DisplayTotalScore(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0055b0b0
-void DisplayCalcLetters(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0055b4b0
-void DrawSNumbersTime(float h, float v)
-{
-}
-
 // STUB: SADX 0x0055de60
 void FUN_0055de60(struct _SC_NUMBERS *)
 {
@@ -1645,11 +1588,6 @@ void calcAddAngle(int hit_flag)
 signed char calcCameraPos(int coli_on)
 {
 	return (signed char)0;
-}
-
-// STUB: SADX 0x00563b70
-void CameraLocalPath(struct _OBJ_CAMERAPARAM *pParam)
-{
 }
 
 // STUB: SADX 0x0056aea0
@@ -1677,24 +1615,8 @@ void disp_npc_message_wait(const char * *message_p)
 {
 }
 
-// STUB: SADX 0x0056f860
-void GGMessageMain(struct task *)
-{
-}
-
-// STUB: SADX 0x005704f0
-float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct NJS_POINT3 *onpnt3, float *onpos)
-{
-	return (float)0;
-}
-
 // STUB: SADX 0x005709b0
 void _Exec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00571790
-void EffectWater(struct sp_task *tp, struct sp_link *lp)
 {
 }
 
@@ -1708,18 +1630,8 @@ void ghDrawPvrTextureS(int, float, float, float, float, float)
 {
 }
 
-// STUB: SADX 0x00575490
-void DrawShadowWindow(float x, float y, float z, float w, float h)
-{
-}
-
 // STUB: SADX 0x00576220
 void dialog_exec(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00576c10
-void FUN_00576c10(struct task *)
 {
 }
 
@@ -1732,22 +1644,6 @@ int InitStaff2()
 // STUB: SADX 0x00579960
 void FUN_00579960(struct MSGC*, int*, int*)
 {
-}
-
-// STUB: SADX 0x00579ab0
-void late_displayMission(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0057aa30
-void printMenu2(enum PAUSE_TEXTURE_ID id, long pos_x, long pos_y, long flag)
-{
-}
-
-// STUB: SADX 0x0057d220
-int cameramodechange(int sw)
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x00582b10
@@ -1818,11 +1714,6 @@ void BigDisplayFishWeight(struct task *tp)
 
 // STUB: SADX 0x00593840
 void BigChkHighScore()
-{
-}
-
-// STUB: SADX 0x005948e0
-void SpinnaDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -1911,18 +1802,8 @@ void FUN_005a4fe0(int, int, int, int)
 {
 }
 
-// STUB: SADX 0x005a6590
-void SpLoop()
-{
-}
-
 // STUB: SADX 0x005a67c0
 void SpLoopOnlyDisplay()
-{
-}
-
-// STUB: SADX 0x005a7180
-void RingDone(struct taskwk *twp)
 {
 }
 
@@ -2070,26 +1951,6 @@ void SaruBombExplosion(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005c9ab0
-void SaruBombCountDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x005cca00
-void UniTogeCDraw(struct taskwk *, struct enemywk *)
-{
-}
-
-// STUB: SADX 0x005cdd60
-void PoliceDraw(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
-// STUB: SADX 0x005cf9c0
-void PoliceRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
-{
-}
-
 // STUB: SADX 0x005d07a0
 void PoliceMoveToHome(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -2174,11 +2035,6 @@ struct task *EventBossSonicSet(struct BOSSPLAYER_CREATE_PARAM *Param)
 
 // STUB: SADX 0x005e1e20
 void SetRingForPlayerBossStage(struct task *tp, struct BOSSPLAYER_CREATE_PARAM *Param)
-{
-}
-
-// STUB: SADX 0x005e2d50
-void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -2375,11 +2231,6 @@ void DrawCharSelFixedFile(struct CharSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x0060c7c0
-void SnowmanFootSmoke(struct taskwk *, struct enemywk *)
-{
-}
-
 // STUB: SADX 0x0060d0e0
 extern void EffectHit(struct sp_task *, struct sp_link *)
 {
@@ -2400,29 +2251,8 @@ void ghSpriteDraw_Unit3D_BillBoard(struct NJS_POINT3 *psPos, struct GHPARTICLE_U
 {
 }
 
-// STUB: SADX 0x0060fd30
-void EffectSpark(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00610120
-void SphericalExplosionInit()
-{
-}
-
-// STUB: SADX 0x00610680
-struct task *Eggrob_GenerateEggrob(struct erctrlstr *)
-{
-	return (struct task *)0;
-}
-
 // STUB: SADX 0x00610bd0
 void Eggrob(struct task *tp)
-{
-}
-
-// STUB: SADX 0x00613710
-void Eggrob_Display(struct task *tp)
 {
 }
 
@@ -3798,29 +3628,14 @@ void FUN_008cfbb0(int, int)
 {
 }
 
-// STUB: SADX 0x008d1560
-void drawEgo(struct task *tp)
-{
-}
-
 // STUB: SADX 0x008d5b90
 long OpenCartSplineData(void *src_adr, long size)
 {
 	return (long)0;
 }
 
-// STUB: SADX 0x008d6640
-void FUN_008d6640(struct taskwk *, struct enemywk *)
-{
-}
-
 // STUB: SADX 0x008d69e0
 void FUN_008d69e0(struct taskwk *, struct enemywk *)
-{
-}
-
-// STUB: SADX 0x008d8110
-void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 

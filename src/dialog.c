@@ -125,6 +125,13 @@ void FUN_00576bf0(struct task *param_1)
 	*(int *)((char *)param_1 + 4) = 2;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x00576c10
+void FUN_00576c10(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x00576d20
 void DrawDialogBg(struct DialogWk *wkp)
 {

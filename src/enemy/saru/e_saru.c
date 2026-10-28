@@ -1,4 +1,12 @@
 #include "decls.h"
+#include <math.h>
+#include <stdlib.h>
+void SaruBombAExecutor(struct task *tp);
+void SaruBombADisplayer(struct task *tp);
+void SaruTraceCircle(struct taskwk *twp, struct enemywk *ewp);
+void SaruRoundSmoke(struct taskwk *twp, struct enemywk *ewp);
+long SaruCheckInterrupt(struct taskwk *twp, struct enemywk *ewp);
+void SaruDecideAimPos(struct taskwk *twp, struct enemywk *ewp);
 extern struct NJS_TEXLIST DAT_02684a9c;
 void SphericalExplosionUV(long v0);
 void SphericalExplosionPos(float rate);
@@ -6,6 +14,11 @@ void SphericalExplosionAlpha(float a);
 void SphericalExplosionDraw();
 void FUN_005c9d00(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005c9060(struct taskwk *param_1, struct enemywk *param_2);
+
+// STUB: SADX 0x005c5b40
+void EnemySaru(struct task *tp)
+{
+}
 
 // FUNCTION: SADX 0x005c5dd0
 void SaruTraceCircle(struct taskwk *twp, struct enemywk *ewp)
@@ -25,8 +38,18 @@ void SaruTraceCircle(struct taskwk *twp, struct enemywk *ewp)
 	twp->pos.z = twp->pos.z + ewp->home.z;
 }
 
+// STUB: SADX 0x005c6020
+void SaruExecutor(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005c62a0
 void FUN_005c62a0(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c6330
+void SaruEditMode(struct task *tp)
 {
 }
 
@@ -84,6 +107,21 @@ void SaruTurnR(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
+// STUB: SADX 0x005c7740
+void SaruTurnP(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c7a80
+void FUN_005c7a80(struct task *tp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c7ff0
+void FUN_005c7ff0(struct task *tp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005c8300
 void FUN_005c8300(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -91,6 +129,11 @@ void FUN_005c8300(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005c84d0
 void SaruThrow(struct task *tp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005c8b50
+void SaruBombA(struct task *tp)
 {
 }
 
@@ -176,6 +219,13 @@ void SaruBombCollision(struct taskwk *twp, struct enemywk *ewp)
 void SaruBombCountDown(struct taskwk *twp, struct enemywk *ewp)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x005c9ab0
+void SaruBombCountDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005c9d00
 void FUN_005c9d00(struct taskwk *param_1, struct enemywk *param_2)

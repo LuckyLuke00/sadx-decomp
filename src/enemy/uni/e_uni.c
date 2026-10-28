@@ -1,4 +1,23 @@
 #include "decls.h"
+extern void njPushMatrix(float *param_1);
+void ___njSetTexture(struct NJS_TEXLIST *texlist);
+void ___dsDrawObject(struct obj *obj);
+extern void njRotateY(float *param_1, unsigned short param_2);
+float njCos(int param_1);
+float njSin(int param_1);
+void EnemyUniC(struct task *tp);
+void njPushMatrix(float *);
+void njTranslateV(float *, struct NJS_POINT3 *);
+void njRotateY(float *, unsigned short);
+void njRotateZ(float *, int);
+void njRotateX(float *, unsigned short);
+void njPopMatrix(int);
+float njCos(int);
+float njSin(int);
+void UniTogeADraw(struct taskwk *, struct enemywk *);
+void UniAExecutor(struct task *tp);
+void UniADisplayer(struct task *tp);
+void UniTogeA(struct task *tp);
 extern struct obj object_uni_c_unibody_unibody[1];
 void njPushMatrix(float *param_1);
 void njTranslateV(float *param_1, struct NJS_POINT3 *param_2);
@@ -40,6 +59,16 @@ signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToPlayer(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum);
 
+// STUB: SADX 0x005c9ea0
+void EnemyUniA(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005ca100
+void UniTogeA(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005ca330
 void UniTogeAExecutor(struct task *tp)
 {
@@ -47,6 +76,11 @@ void UniTogeAExecutor(struct task *tp)
 
 // STUB: SADX 0x005ca420
 void FUN_005ca420(struct task *tp, int param_2)
+{
+}
+
+// STUB: SADX 0x005ca460
+void UniTogeARound(struct task *tp, struct enemywk *ewp)
 {
 }
 
@@ -111,6 +145,11 @@ void FUN_005caab0(struct task *tp, struct task *param_2)
 {
 }
 #pragma optimize("", on)
+
+// STUB: SADX 0x005cab40
+void UniEditModeA(struct task *tp)
+{
+}
 
 // FUNCTION: SADX 0x005cad80
 void FUN_005cad80(struct task *param_1, struct taskwk *param_2, struct motionwk *param_3)
@@ -247,6 +286,16 @@ void FUN_005cb270(struct taskwk *param_1, struct enemywk *param_2)
 	UniADraw(param_1, param_2);
 }
 
+// STUB: SADX 0x005cb330
+void EnemyUniB(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005cb580
+void UniTogeB(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005cb7b0
 void UniTogeADisplayer(struct task *tp)
 {
@@ -306,6 +355,11 @@ void UniTogeADraw(struct taskwk *twp, struct enemywk *ewp)
 	njPopMatrix(1);
 }
 
+// STUB: SADX 0x005cbc50
+void FUN_005cbc50(struct task *tp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x005cbe60
 void FUN_005cbe60(struct task *param_1, struct taskwk *param_2)
 {
@@ -357,6 +411,16 @@ void FUN_005cc0a0(struct task *param_1, struct enemywk *param_2)
 	UniADraw((struct taskwk *)param_1, param_2);
 }
 
+// STUB: SADX 0x005cc150
+void EnemyUniC(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005cc3c0
+void UniTogeC(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x005cc5f0
 void UniTogeCDisplayer(struct task *tp)
 {
@@ -386,6 +450,18 @@ void UniTogeCDisplayer(struct task *tp)
 void FUN_005cc6c0(struct task *param_1)
 {
 }
+
+// STUB: SADX 0x005cc7f0
+void FUN_005cc7f0(struct task *tp, struct enemywk *ewp)
+{
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x005cca00
+void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x005ccc50
 void CheckParentDeath(struct task *tp, struct enemywk *ewp)
@@ -478,6 +554,11 @@ static void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005cd540
 void UniCExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005cd6a0
+void UniEditModeC(struct task *tp)
 {
 }
 

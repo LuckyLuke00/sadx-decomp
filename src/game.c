@@ -1,5 +1,9 @@
 #include <stdlib.h>
 #include "decls.h"
+extern unsigned char DAT_05bafb48;
+extern unsigned char DAT_05bafb49;
+extern unsigned char DAT_05bafb4c;
+extern unsigned char DAT_05bafb4d;
 extern short ssPauseEnable;
 extern struct GM_EVENT_TABLE starteventtable[1];
 extern int DAT_05cd0f28;
@@ -455,6 +459,13 @@ short FUN_004c8190(void)
 	return local_cg;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x004c81c0
+void GameLoop_with_SyoriOchiTaisaku()
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x004c8330
 short GameLoop()
 {
@@ -627,6 +638,11 @@ void GM_BGM_Play(long bgm)
 		local_8->awp->work.sl[1] = bgm;
 		local_8->awp->work.sl[2] = 0;
 	}
+}
+
+// STUB: SADX 0x004c89a0
+void SetFinishAction()
+{
 }
 
 // STUB: SADX 0x004c8c90
@@ -810,12 +826,104 @@ signed char GetEntranceNumber()
 	return (signed char)DAT_05b9d720;
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x004c9a20
+// FUNCTION: SADX 0x004c9a20
 void GM_SetNextAdventureStage(unsigned short stage, unsigned short act)
 {
+	struct NEXT_ADVENTURE *local_8g;
+	int local_cg;
+
+	if (stage == 0x23)
+	{
+		DAT_05b9d748 = 0x1a;
+		DAT_05b9d770 = 5;
+		DAT_05b9d720 = 2;
+		return;
+	}
+	local_8g = nextadv_table[DAT_05b9d718];
+	DAT_05b9d748 = 0x1a;
+	DAT_05b9d770 = 0;
+	DAT_05b9d720 = 0;
+	while (local_8g->stage != 0xffff)
+	{
+		if (local_8g->stage == stage)
+		{
+			if (DAT_05baf548[DAT_05b9d718 * 0x2b + stage] == 1)
+			{
+				DAT_05b9d748 = local_8g->stg1;
+				DAT_05b9d770 = local_8g->act1;
+				DAT_05b9d720 = local_8g->entrance1;
+			}
+			else if (local_8g->stg2 != 0)
+			{
+				DAT_05b9d748 = local_8g->stg2;
+				DAT_05b9d770 = local_8g->act2;
+				DAT_05b9d720 = local_8g->entrance2;
+			}
+			else
+			{
+				DAT_05b9d748 = local_8g->stg1;
+				DAT_05b9d770 = local_8g->act1;
+				DAT_05b9d720 = local_8g->entrance1;
+			}
+			if (DAT_05b3ea28)
+			{
+				*(unsigned short *)((char *)DAT_05b3ea28 + 8) = (unsigned short)((DAT_05b9d748 << 8) | DAT_05b9d770);
+				*(unsigned short *)((char *)DAT_05b3ea28 + 6) = DAT_05b9d720;
+				if (DAT_05cc3574 == 0)
+				{
+					DAT_05cc3631 = 1;
+				}
+				else
+				{
+					CreateSaveData();
+				}
+			}
+			return;
+		}
+		local_8g = local_8g + 1;
+		local_cg = local_8g->mu_bi_;
+		switch (DAT_05b9d718)
+		{
+		case 0:
+			if (DAT_05bafb48)
+			{
+				local_cg = 0;
+			}
+			break;
+		case 2:
+			if (DAT_05bafb49)
+			{
+				local_cg = 0;
+			}
+			break;
+		case 3:
+			if (DAT_05bafb4a)
+			{
+				local_cg = 0;
+			}
+			break;
+		case 5:
+			if (DAT_05bafb4b)
+			{
+				local_cg = 0;
+			}
+			break;
+		case 6:
+			if (DAT_05bafb4c)
+			{
+				local_cg = 0;
+			}
+			break;
+		case 7:
+			if (DAT_05bafb4d)
+			{
+				local_cg = 0;
+			}
+			break;
+		}
+		DAT_05cda154 = local_cg;
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c9c90
 void FUN_004c9c90()

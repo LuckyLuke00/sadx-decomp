@@ -63,6 +63,13 @@ void RingDoneDisplayer(struct task *tp)
 	RingDone(tp->twp);
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x005a7180
+void RingDone(struct taskwk *twp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x005a73c0
 void DamegeRingScatter(unsigned char pno)
 {

@@ -197,12 +197,37 @@ void FUN_004f3cc0(int param_1)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x004f3d40
+// FUNCTION: SADX 0x004f3d40
 void FUN_004f3d40(void *param_1)
 {
+	struct task *local_8g;
+	struct task *local_10;
+	void (*local_cj)(struct task *);
+
+	local_8g = (struct task *)*(int *)((char *)param_1 + 0xc);
+	if (local_8g == 0)
+	{
+		return;
+	}
+	while (1)
+	{
+		local_cj = *(void (**)(struct task *))((char *)local_8g + 0x14);
+		local_10 = local_8g->next;
+		if (local_cj != 0)
+		{
+			local_cj(local_8g);
+		}
+		if (local_8g->ctp != 0)
+		{
+			FUN_004f3d40(local_8g);
+		}
+		local_8g = local_10;
+		if (local_8g == 0)
+		{
+			return;
+		}
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f3db0
 void FUN_004f3db0(int param_1)
@@ -428,6 +453,12 @@ void Free(void *mp)
 
 // STUB: SADX 0x004f45c0
 struct task *CreateChildTask(unsigned short im, void (*exec)(struct task *), struct task *tp)
+{
+	return (struct task *)0;
+}
+
+// STUB: SADX 0x004f46a0
+struct task *CreateChildrenTask(struct childtaskset *ctsp, struct task *tp)
 {
 	return (struct task *)0;
 }

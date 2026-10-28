@@ -292,6 +292,13 @@ void FUN_00563b50(void)
 	}
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x00563b70
+void CameraLocalPath(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x00563e90
 void CameraStay(struct _OBJ_CAMERAPARAM *pParam)
 {

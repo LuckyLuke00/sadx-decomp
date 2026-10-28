@@ -1,4 +1,5 @@
 #include "decls.h"
+void ghSetPvrTexUV(int flipflag);
 extern int DAT_05cd25fc;
 extern float DAT_05cd259c;
 extern float DAT_05cd25a0;
@@ -91,6 +92,11 @@ void ghSetPvrTexBaseColor(unsigned long color)
 {
 }
 
+// STUB: SADX 0x00574600
+void ghDrawPvrTextureWH(int index, float x, float y, float z, float w, float h)
+{
+}
+
 // STUB: SADX 0x00574e40
 void ghSetPvrTexUV(int flipflag)
 {
@@ -109,9 +115,17 @@ unsigned long ghGetColor2Color(long mode, unsigned long sc, unsigned long dc, fl
 	return (unsigned long)0;
 }
 
-// STUB: SADX 0x00575050
-void FUN_00575050(int param_1, float *param_2)
+// FUNCTION: SADX 0x00575050
+void FUN_00575050(unsigned int param_1, float *param_2)
 {
+	int local_8g;
+	int local_cg;
+	local_8g = (unsigned char)param_1;
+	param_2[3] = (float)local_8g;
+	local_cg = (unsigned char)(param_1 >> 8);
+	param_2[2] = (float)local_cg;
+	param_2[1] = (float)((unsigned char)(param_1 >> 0x10));
+	*param_2 = (float)((unsigned char)(param_1 >> 0x18));
 }
 
 // STUB: SADX 0x005750b0
@@ -166,6 +180,11 @@ void ghFade(float rate)
 
 // STUB: SADX 0x00575360
 void ghAdvertiseCamera(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00575490
+void DrawShadowWindow(float x, float y, float z, float w, float h)
 {
 }
 

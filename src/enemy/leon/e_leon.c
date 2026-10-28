@@ -8,6 +8,11 @@ void FUN_005c09e0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005c0a60(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005c0b80(struct taskwk *param_1, struct enemywk *param_2);
 
+// STUB: SADX 0x005bfe40
+void EnemyLeon(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005c0440
 void FUN_005c0440(struct task *param_1, struct enemywk *param_2)
 {
@@ -32,6 +37,11 @@ void FUN_005c04d0(void *param_1, struct enemywk *param_2)
 			param_2->argb.a = 0.0f;
 		}
 	}
+}
+
+// STUB: SADX 0x005c0560
+void LeonEditMode(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x005c0950
