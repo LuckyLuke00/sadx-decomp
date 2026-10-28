@@ -39763,7 +39763,7 @@
   },
   {
    "address": "0x0060eca0",
-   "name": "objNormal",
+   "name": "objNormal(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -47064,6 +47064,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006eb690",
+   "name": "objNormal(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006eb780",
+   "name": "Object_c2_table",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -96477,5 +96493,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b29df0a9820a608cc2be1eee26e5bee3c6176ce19c75785871671610e04b2377"
+ "inputs_sha256": "5c4d19b29d28319f780665360c3b924d42e04b82dd74b5bd8b8d98ddf323779e"
 }
