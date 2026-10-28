@@ -41506,6 +41506,14 @@
    "library": false
   },
   {
+   "address": "0x00681770",
+   "name": "ObjectClosed",
+   "accuracy": 0.058823529411764705,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x006817d0",
    "name": "ObjectWaitKeyblock",
    "accuracy": 0.03508771929824561,
@@ -96466,5 +96474,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b5c02290fbfba3753999c730e5dca0399e0a381515d75aac6b53567dd560be32"
+ "inputs_sha256": "fb2adccc4ae5c3338d765c54bb8af81fb3cdc569b25c0ec982fc349efbe7c42f"
 }

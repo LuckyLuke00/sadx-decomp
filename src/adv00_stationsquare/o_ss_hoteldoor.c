@@ -75,6 +75,11 @@ void ObjectColliSet2(struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x00681770
+void ObjectClosed(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006817d0
 void ObjectWaitKeyblock(struct task *tp)
 {
