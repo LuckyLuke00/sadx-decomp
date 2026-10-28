@@ -47,6 +47,11 @@ long SegaLogo()
 	return (long)0;
 }
 
+// STUB: SADX 0x00573790
+void dsGoDemoLoop()
+{
+}
+
 // STUB: SADX 0x005739a0
 void dsInitTitle()
 {

@@ -872,6 +872,9 @@ unsigned char DAT_025addd8;
 // GLOBAL: SADX 0x025d4cad
 unsigned char DAT_025d4cad;
 
+// GLOBAL: SADX 0x025d4f3c
+long boolCameraCollision;
+
 // GLOBAL: SADX 0x025d59f0
 long action_button;
 
@@ -907,6 +910,9 @@ unsigned long BackColorList[43][3];
 
 // GLOBAL: SADX 0x025d77e8
 void (*DAT_025d77e8[43])(struct task *);
+
+// GLOBAL: SADX 0x025d7a78
+struct NEXT_ADVENTURE *nextadv_table[8];
 
 // GLOBAL: SADX 0x025d7b20
 struct __MYMEM_DATA *DAT_025d7b20;
@@ -5087,6 +5093,9 @@ struct task *DAT_05b42530;
 // GLOBAL: SADX 0x05b4259c
 int DAT_05b4259c;
 
+// GLOBAL: SADX 0x05b425a0
+int DAT_05b425a0;
+
 // GLOBAL: SADX 0x05b425c8
 int DAT_05b425c8;
 
@@ -5119,6 +5128,9 @@ float DAT_05b428a0;
 
 // GLOBAL: SADX 0x05b428a4
 float DAT_05b428a4;
+
+// GLOBAL: SADX 0x05b428a8
+void *DAT_05b428a8;
 
 // GLOBAL: SADX 0x05b428e8
 int DAT_05b428e8;
@@ -5642,11 +5654,23 @@ unsigned char DAT_05bafb45;
 // GLOBAL: SADX 0x05bafb46
 unsigned char DAT_05bafb46;
 
+// GLOBAL: SADX 0x05bafb48
+unsigned char DAT_05bafb48;
+
+// GLOBAL: SADX 0x05bafb49
+unsigned char DAT_05bafb49;
+
 // GLOBAL: SADX 0x05bafb4a
 unsigned char DAT_05bafb4a;
 
 // GLOBAL: SADX 0x05bafb4b
 unsigned char DAT_05bafb4b;
+
+// GLOBAL: SADX 0x05bafb4c
+unsigned char DAT_05bafb4c;
+
+// GLOBAL: SADX 0x05bafb4d
+unsigned char DAT_05bafb4d;
 
 // GLOBAL: SADX 0x05bafb80
 unsigned char DAT_05bafb80;

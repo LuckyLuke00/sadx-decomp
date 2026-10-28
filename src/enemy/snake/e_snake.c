@@ -1,4 +1,5 @@
 #include "decls.h"
+void SnakePartsFire(struct taskwk *twp);
 void FUN_008da730(struct task *param_1);
 
 // STUB: SADX 0x008da2a0
@@ -44,6 +45,11 @@ void SnakePartsDisplayer(struct task *tp)
 	struct taskwk *local_8;
 	local_8 = tp->twp;
 	SnakePartsDraw(local_8);
+}
+
+// STUB: SADX 0x008daa80
+void SnakePartsFire(struct taskwk *twp)
+{
 }
 
 // FUNCTION: SADX 0x008dacb0

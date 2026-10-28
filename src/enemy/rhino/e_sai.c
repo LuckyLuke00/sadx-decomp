@@ -1,6 +1,22 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+void FUN_008d8580(int param_1, char *param_2);
+void FUN_008d76c0(int *param_1, int *param_2);
+void FUN_008d7730(struct taskwk *param_1);
+void FUN_008d8710(struct taskwk *param_1, struct enemywk *param_2);
+void FUN_008d8800(int param_1, int param_2, int param_3);
+void CalcAimAngle(struct taskwk *twp, struct enemywk *ewp);
+void SaiSearch(struct taskwk *twp, struct enemywk *ewp, struct taskwk *ptwp);
+void SaiScramble(struct taskwk *twp, struct taskwk *ptwp, struct enemywk *ewp);
+void SaiDash(struct taskwk *twp, struct enemywk *ewp);
+void CreateSaiCatSmoke(struct taskwk *param_1, struct enemywk *param_2);
+void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp);
+void SaiMove(struct taskwk *twp, struct enemywk *ewp);
+void SaiDraw(struct taskwk *twp, struct enemywk *ewp);
+void SaiNormal(struct taskwk *twp, struct enemywk *ewp);
+void SaiDisplayer(struct task *tp);
+void SaiEditMode(struct taskwk *twp);
 void FUN_008d7d30(struct taskwk *param_1);
 void CreateFlash2(float x, float y, float z, float scl);
 void CreateExpParts(struct taskwk *twp, struct NJS_MODEL **model, struct NJS_TEXLIST *tex);
@@ -14,6 +30,11 @@ extern struct obj object_rhino_jet[1];
 void FUN_008d75c0(int param_1, char *param_2);
 void FUN_008d88b0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_MATERIAL matlist_rhino_jet[1];
+
+// STUB: SADX 0x008d6ec0
+void EnemySai(struct task *tp)
+{
+}
 
 // STUB: SADX 0x008d74f0
 void CalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
@@ -66,6 +87,11 @@ void SaiScramble(struct taskwk *twp, struct taskwk *ptwp, struct enemywk *ewp)
 {
 }
 
+// STUB: SADX 0x008d7990
+void CreateSaiJetSmoke(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x008d7be0
 void SaiDash(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -114,6 +140,18 @@ void SaiMove(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 #pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x008d8110
+void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
+
+// STUB: SADX 0x008d8330
+void SaiJetDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
 
 // FUNCTION: SADX 0x008d8580
 void FUN_008d8580(int param_1, char *param_2)

@@ -226,3 +226,8 @@ void dsDispFadeBlack()
 void dsDispFadeWhite()
 {
 }
+
+// STUB: SADX 0x0059b9c0
+void dsDispFadeLoading()
+{
+}

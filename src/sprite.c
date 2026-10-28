@@ -99,6 +99,11 @@ void SpFreeLink(struct sp_link *link)
 	link->sysflag |= 2;
 }
 
+// STUB: SADX 0x005a6590
+void SpLoop()
+{
+}
+
 // FUNCTION: SADX 0x005a6940
 void SpDestroyAll()
 {

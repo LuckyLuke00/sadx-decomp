@@ -34,6 +34,13 @@ void FUN_005e2cc0(struct taskwk *twp, struct enemywk *ewp)
 }
 #pragma optimize("", on)
 
+#pragma optimize("", off)
+// STUB: SADX 0x005e2d50
+void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x005e3b40
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp)
 {

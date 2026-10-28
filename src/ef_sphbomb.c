@@ -3,6 +3,11 @@ extern int DAT_05b9d838;
 extern struct NJS_MODEL model_expoly;
 void late_DrawModel(struct NJS_MODEL *mdl, int flgs);
 
+// STUB: SADX 0x00610120
+void SphericalExplosionInit()
+{
+}
+
 // STUB: SADX 0x006103c0
 void SphericalExplosionUV(long v0)
 {

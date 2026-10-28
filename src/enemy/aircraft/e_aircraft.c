@@ -140,6 +140,11 @@ long MissleCollision(struct taskwk *twp, struct enemywk *ewp)
 	return (long)0;
 }
 
+// STUB: SADX 0x005c3c30
+void MissleDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x005c3ee0
 void FUN_005c3ee0(int param_1, int param_2)
 {

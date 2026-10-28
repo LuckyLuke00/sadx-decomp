@@ -127,6 +127,11 @@ void reviseBuyonPosition(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008e11e0
+void checkBuyonColli(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008e1430
 long searchPlayer(struct task *tp)
 {

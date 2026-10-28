@@ -1,4 +1,5 @@
 #include "decls.h"
+void SetStatusEntry();
 void ProcessStatusTable1P();
 void ProcessStatusTable2P();
 extern int DAT_05cc8664;
@@ -98,6 +99,11 @@ void SwitchStatusTable(struct taskwk *pTaskWork)
 
 // STUB: SADX 0x00550d90
 void FUN_00550d90(void)
+{
+}
+
+// STUB: SADX 0x00550e00
+void SetStatusEntry()
 {
 }
 

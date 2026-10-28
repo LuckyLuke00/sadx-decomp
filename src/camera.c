@@ -1,12 +1,27 @@
 #include "decls.h"
+void ___njSetPerspective(long a);
+void FUN_004bec60(short param_1, unsigned char param_2);
+struct _OBJ_CAMERAENTRY *local_8g;
+long local_10;
+double njScalor(struct NJS_POINT3 *param_1);
+extern void *DAT_05b428a8;
+extern int DAT_05b425a0;
+extern int DAT_05b42a84;
+extern long boolCameraCollision;
+extern struct taskwk *pOldTaskWork;
+void late_execCancel();
+long CameraManagerMi();
+void CameraCameraMode(struct taskwk *pTaskWork);
+void CameraViewSet(struct taskwk *pTaskWork);
+void ResetMaterial();
+struct playerwk *GetPlayerWorkPointer(unsigned char pno);
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 struct NJS_POINT3;
 struct NJS_LINE {
 };
 void FUN_004bf070(int param_1);
-void FUN_004bec60(short param_1, unsigned char param_2);
 void FUN_004bb340();
 void CameraManager();
-void CameraViewSet(struct taskwk *pTaskWork);
 void FUN_004bddd0();
 void CameraSetNormalCamera(short ssCameraMode, unsigned char ucAdjustType);
 void CameraReleaseEventCamera();
@@ -175,9 +190,81 @@ void AddCameraStage(short ssStep)
 	DAT_05b428e8 = 0;
 }
 
-// STUB: SADX 0x004bb130
+// FUNCTION: SADX 0x004bb130
 void Camera(struct task *pTask)
 {
+	struct taskwk *local_8g = pTask->twp;
+	int local_cg;
+	ResetMaterial();
+	switch (local_8g->mode)
+	{
+	case 0:
+		memset(&DAT_05b428a8, 0, 0x40);
+		DAT_05b42a7c = local_8g;
+		local_8g->mode = 1;
+		boolCameraCollision = 1;
+		late_execCancel();
+		DAT_05b42a84 = 0;
+		break;
+	case 1:
+		if (DAT_05b42978 != -1)
+		{
+			CameraSetNormalCamera((short)DAT_05b42978, 0);
+		}
+		FUN_004bb340();
+		FUN_004bf1b0();
+		FUN_004bf260();
+		CameraCameraMode(local_8g);
+		CameraViewSet(local_8g);
+		local_8g->mode = 2;
+		pTask->disp = cameraDisplay;
+		FUN_004c0320();
+		late_execCancel();
+		DAT_05b42a84 = 0;
+		break;
+	case 2:
+		DAT_05b425a0 = DAT_05b425a0 + 1;
+		if (DAT_05b4259c == 2)
+		{
+			DAT_05b4259c = 0;
+			CameraReleaseEventCamera();
+		}
+		FUN_004bf1e0();
+		FUN_004bf290();
+		if (CameraManagerMi() == 0)
+		{
+			CameraManager();
+		}
+		if (*(int *)pCameraSystemWork == 0)
+		{
+			*(int *)((char *)pCameraSystemWork + 0x14) = *(int *)((char *)pCameraSystemWork + 0x14) + 1;
+		}
+		else
+		{
+			*(int *)((char *)pCameraSystemWork + 0x14) = 0;
+			*(int *)pCameraSystemWork = 0;
+			if (GetAdjustMode() == 0 && DAT_05b42990 != 0)
+			{
+				local_cg = (int)GetPlayerWorkPointer(0);
+				*(short *)((char *)local_cg + 0xa) = 0x1e;
+			}
+		}
+		DAT_05b42990 = 0;
+		CameraCameraMode(local_8g);
+		CameraViewSet(local_8g);
+		cameraDisplay(pTask);
+		FUN_004bf0b0((struct _CameraSystemWork *)local_8g, (struct _CameraSystemWork *)pOldTaskWork);
+		setChaseRingBuffer();
+		FUN_004bddd0();
+		if (DAT_05b4259c == 1)
+		{
+			DAT_05b4259c = 2;
+		}
+		DAT_05b42a84 = 1;
+		break;
+	}
+	DAT_05b429a0 = DAT_05b429a0 + 1;
+	DAT_05b428e8 = DAT_05b428e8 + 1;
 }
 
 // STUB: SADX 0x004bb340
@@ -189,6 +276,14 @@ void FUN_004bb340()
 void CameraManager()
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x004bb690
+long CameraManagerMi()
+{
+	return (long)0;
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x004bb800
 long CameraCollisionShpere(struct _OBJ_CAMERAENTRY *pCameraEntry)
@@ -349,6 +444,13 @@ void setdistdata()
 void calcfreecamerapos()
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x004bd5a0
+void CameraViewSet(struct taskwk *pTaskWork)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004bd800
 long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry)

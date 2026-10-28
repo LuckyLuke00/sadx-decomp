@@ -1,8 +1,8 @@
 #include "decls.h"
+extern long bWake;
 void FUN_0055de60(struct _SC_NUMBERS *param_1);
-void FUN_0055de60(struct _SC_NUMBERS *param_1);
+extern signed char DAT_05b3ea16;
 long GetPlayerNumber();
-void FUN_0055de60(struct _SC_NUMBERS *param_1);
 void FUN_0055de60(struct _SC_NUMBERS *);
 void DisplayCalcEnemyScore(struct task *tp);
 extern int DAT_05b3ea78[15];
@@ -36,7 +36,6 @@ void FUN_00554c80(void);
 extern unsigned long DAT_05b3ea20;
 void FUN_00554a10();
 extern char score_sc[32];
-void FUN_0055de60(struct _SC_NUMBERS *param_1);
 
 // FUNCTION: SADX 0x00554a00
 void InitScore()
@@ -203,6 +202,11 @@ void DisplayScore()
 	}
 }
 
+// STUB: SADX 0x005551a0
+void DisplaySNumbers(struct NJS_SPRITE *spp, long number, unsigned char fig)
+{
+}
+
 // FUNCTION: SADX 0x00555490
 short GetNumPlayer()
 {
@@ -333,10 +337,22 @@ void CalcTotalScore(struct task *tp)
 	late_DisplayTotalScore(tp);
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x005561c0
+void late_DisplayTotalScore(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x00559b60
 int FUN_00559b60(int param_1, int param_2, int param_3)
 {
 	return (int)0;
+}
+
+// STUB: SADX 0x00559c40
+void DisplayCalcLettersHH(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00559fa0
@@ -354,9 +370,17 @@ void DisplayCalcEggManScoreHH(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0055a160
-void FUN_0055a160(struct task *tp)
+// FUNCTION: SADX 0x0055a160
+void FUN_0055a160(struct task *param_1)
 {
+	DisplayCalcEggManScoreHH(param_1);
+	*(int *)(score_sc + 4) = 0xf4240;
+	{
+		*(int *)(score_sc + 8) = (unsigned int)param_1->twp->timer.f;
+	}
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0f;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0f + 96.0f;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // FUNCTION: SADX 0x0055af20
@@ -387,12 +411,26 @@ int FUN_0055b000(int param_1, char param_2)
 	return (int)0;
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0055b0b0
+void DisplayCalcLetters(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0055b450
 void DisplayCalcTime(struct task *tp)
 {
 	DisplayCalcLetters(tp);
 	DrawSNumbersTime(ScreenRaitoX * 320.0 + -32.0, ScreenRaitoY * 240.0 + -144.0);
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0055b4b0
+void DrawSNumbersTime(float h, float v)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0055b680
 void FUN_0055b680(struct task *param_1)
@@ -454,6 +492,11 @@ void FUN_0055b940(struct task *param_1)
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
+// STUB: SADX 0x0055c250
+void DisplayCalcLettersSB(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0055c5b0
 void DisplayCalcBoardScoreSB(struct task *tp)
 {
@@ -507,6 +550,11 @@ void FUN_0055cf70(struct task *param_1)
 	*(float *)(score_sc + 0xc) = ScreenRaitoY * 240.0 + 144.0;
 	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0 + 32.0;
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
+}
+
+// STUB: SADX 0x0055d510
+void DisplayCalcLettersTC(struct task *tp)
+{
 }
 
 // STUB: SADX 0x0055db30

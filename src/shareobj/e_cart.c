@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct obj object_b_cart_cart_cart[];
+extern struct obj object_e_cart_cart_cart[];
+extern struct obj object_sarucart_sarucart_sarucart[];
 extern int *DAT_060dfeb0;
 extern int DAT_04c38b98[4];
 void FUN_008d0810(void);
@@ -341,3 +344,10 @@ void ego(struct task *tp)
 		FreeTask(tp);
 	}
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x008d1560
+void drawEgo(struct task *tp)
+{
+}
+#pragma optimize("", on)

@@ -1,4 +1,29 @@
 #include "decls.h"
+#include <math.h>
+void snowfaceRunaway(struct taskwk *twp, struct enemywk *ewp);
+void SnowfaceAction(struct taskwk *twp, struct enemywk *ewp);
+void SnowfaceRectifyPosition(struct taskwk *twp, struct enemywk *ewp);
+long AdjustAngle(long ang0, long ang1, long dang);
+float njSin(int);
+extern struct taskwk *DAT_05baf368[8];
+void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2);
+void FUN_0060a5e0(struct taskwk *param_1, struct enemywk *param_2);
+void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2);
+extern void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2);
+extern void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2);
+extern void FUN_00609e40(int param_1, int param_2);
+void FUN_00609ad0(struct task *param_1, struct enemywk *param_2);
+void FUN_00609b40(int param_1);
+void FUN_00609ba0(struct taskwk *param_1, struct enemywk *param_2);
+void FUN_00609d20(struct taskwk *param_1, struct enemywk *param_2);
+void snowmanChase(struct taskwk *twp, struct enemywk *ewp);
+void snowmanTurn(struct taskwk *twp, struct enemywk *ewp);
+void FUN_0060a7c0(char *param_1, int param_2);
+void snowmanDestroy(struct taskwk *twp, struct enemywk *ewp);
+void SnowMobile(struct task *tp);
+void FUN_0060b190(struct task *param_1);
+void SnowfaceDisplayer(struct task *tp);
+int dsPlay_oneshot(int tone, int id, int pri, int volofs);
 extern struct particle_entry particle_pom;
 extern "C" int rand(void);
 void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struct NJS_POINT3 *spd, float scl);
@@ -6,9 +31,7 @@ void DisplaySnowface(struct taskwk *twp, struct enemywk *ewp);
 void DisplaySnowMobile(struct taskwk *twp, struct enemywk *ewp);
 void DrawSnowmanRange(struct NJS_POINT3 *pos, float radius);
 void FUN_0060b2f0(struct taskwk *param_1, struct enemywk *param_2);
-void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2);
 void SnowmanTurnToAim(struct taskwk *twp, struct enemywk *ewp);
-void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2);
 void SnowmanMove(struct taskwk *twp, struct enemywk *ewp);
 void SnowmanRectifyPosition(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToPlayer(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum);
@@ -17,6 +40,11 @@ void SnowmanFootSmoke(struct taskwk *twp, struct enemywk *ewp);
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp);
 void EnemyPreservePreviousPosition(struct taskwk *twp, struct enemywk *ewp);
+
+// STUB: SADX 0x006095a0
+void EnemySnowman(struct task *tp)
+{
+}
 
 // FUNCTION: SADX 0x00609820
 void SnowmanDestructor(struct task *tp)
@@ -29,6 +57,11 @@ void SnowmanDestructor(struct task *tp)
 	{
 		FUN_005b5aa0(tp, local_cg, local_8g);
 	}
+}
+
+// STUB: SADX 0x00609860
+void SnowmanRegular(struct task *tp)
+{
 }
 
 // STUB: SADX 0x00609ad0
@@ -106,6 +139,11 @@ void FUN_00609e40(int param_1, int param_2)
 	*(float *)(param_2 + 0x38) = njSin(*(int *)(param_2 + 0x1b4)) * *(float *)(param_1 + 0x10);
 }
 
+// STUB: SADX 0x00609e80
+void snowmanChase(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x0060a0c0
 void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2)
 {
@@ -154,6 +192,11 @@ void FUN_0060a360(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
+// STUB: SADX 0x0060a3d0
+void snowmanWalk(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x0060a5e0
 void FUN_0060a5e0(struct taskwk *param_1, struct enemywk *param_2)
 {
@@ -186,8 +229,18 @@ void FUN_0060a7c0(char *param_1, int param_2)
 {
 }
 
+// STUB: SADX 0x0060a800
+void snowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // STUB: SADX 0x0060aa40
 void snowmanDestroy(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x0060ad20
+void DisplaySnowman(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
@@ -225,6 +278,11 @@ void FUN_0060b2f0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
+// STUB: SADX 0x0060b380
+void snowfaceEscape(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
 // FUNCTION: SADX 0x0060b590
 void SnowfaceRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -240,6 +298,16 @@ void SnowfaceRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 		EnemyTurnToPlayer(twp, ewp, 0);
 	}
 	EnemyPreservePreviousPosition(twp, ewp);
+}
+
+// STUB: SADX 0x0060b620
+void snowfaceRunaway(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x0060b8a0
+void SnowfaceAction(struct taskwk *twp, struct enemywk *ewp)
+{
 }
 
 // STUB: SADX 0x0060bb60
@@ -309,6 +377,13 @@ void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struc
 void EffectPom(struct sp_task *tp, struct sp_link *lp)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0060c7c0
+void SnowmanFootSmoke(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
 
 // STUB: SADX 0x0060c9d0
 void SnowmanBreathe(struct taskwk *twp, struct enemywk *ewp)

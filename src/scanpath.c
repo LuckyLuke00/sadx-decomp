@@ -50,6 +50,12 @@ void SetPathWork()
 {
 }
 
+// STUB: SADX 0x0056ff10
+long GetStatusOnPath(struct pathtag *tag, struct pathinfo *pi)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00570230
 void CalcPNNPntParam(struct pathtag *tag, struct pathinfo *pi, long pnmb, struct pathtbl *pt)
 {
@@ -65,4 +71,10 @@ long SCPathOnposToPntnmb(struct pathtag *tag, float onpos, unsigned long *pntnmb
 long SCPathPntnmbToOnpos(struct pathtag *tag, unsigned long pntnmb, float *onpos)
 {
 	return (long)0;
+}
+
+// STUB: SADX 0x005704f0
+float SCPathPntNearToOnpos(struct pathtag *tag, struct NJS_POINT3 *pnt, struct NJS_POINT3 *onpnt3, float *onpos)
+{
+	return (float)0;
 }

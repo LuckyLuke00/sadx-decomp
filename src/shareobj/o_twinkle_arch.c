@@ -90,3 +90,8 @@ void ObjectTPLightI(struct task *tp)
 void ObjectTPLightII(struct task *tp)
 {
 }
+
+// STUB: SADX 0x008d4100
+void ObjectTPPole(struct task *tp)
+{
+}

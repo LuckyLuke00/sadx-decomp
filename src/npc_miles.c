@@ -183,6 +183,12 @@ long NpcCheckBothDamage(struct task *tp1, struct task *tp2)
 	return 0;
 }
 
+// STUB: SADX 0x005adcc0
+long NpcMilesCanBorn()
+{
+	return (long)0;
+}
+
 // FUNCTION: SADX 0x005adf30
 int FUN_005adf30()
 {

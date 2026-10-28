@@ -1,4 +1,5 @@
 #include "decls.h"
+long AdjustAngle(long ang0, long ang1, long dang);
 extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid1[1];
 extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid3[1];
 extern struct taskwk *DAT_05baf368[8];
@@ -13,8 +14,25 @@ void PoliceDisplayer(struct task *tp)
 	PoliceDraw(local_cg, local_8g);
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x005cdd60
+void PoliceDraw(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x005ced40
 void dispPoliceShadow(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005cef00
+void PoliceExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005cf280
+void PoliceEditMode(struct task *tp)
 {
 }
 
@@ -71,6 +89,13 @@ void PoliceMove(struct taskwk *twp, struct enemywk *ewp)
 }
 #pragma optimize("", on)
 
+#pragma optimize("", off)
+// STUB: SADX 0x005cf9c0
+void PoliceRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x005cfd80
 void PoliceScramble(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -107,6 +132,11 @@ void PoliceChase(struct taskwk *twp, struct enemywk *ewp)
 
 // STUB: SADX 0x005d01b0
 void PoliceTurn(struct taskwk *twp, struct enemywk *ewp)
+{
+}
+
+// STUB: SADX 0x005d02b0
+void PoliceForward(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 

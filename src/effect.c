@@ -1,4 +1,6 @@
 #include "decls.h"
+void ___njColorBlendingMode(int tgt, int mode);
+void late_DrawBoxFill2D(float x, float y, float x2, float y2, float pri, unsigned long argb, int flgs);
 void FUN_00598fc0(char param_1);
 void FUN_00598e20();
 extern float ScreenRaitoX;
@@ -90,6 +92,12 @@ void EndGameOver()
 	late_ReleaseTexture(&DAT_02604ab8);
 	DAT_05cda0c0 = 0xff;
 	DAT_05cda0b9 = 0;
+}
+
+// STUB: SADX 0x00599190
+short GameOver(long sel)
+{
+	return (short)0;
 }
 
 // FUNCTION: SADX 0x005999b0
