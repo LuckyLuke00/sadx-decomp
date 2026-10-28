@@ -2498,9 +2498,6 @@ struct obj object_seaobj_hasi_b_hasi_b[1];
 // GLOBAL: SADX 0x0398dc14
 struct obj object_col_hasi_a_hasi_a[2];
 
-// GLOBAL: SADX 0x039cafc4
-struct obj object_seaobj_parasol03_parasol03[1];
-
 // GLOBAL: SADX 0x039dfa5c
 struct obj object_seaobj_tesuric_tesuric[1];
 
@@ -3029,9 +3026,6 @@ struct CCL_INFO object_cannon_s_info[1];
 // GLOBAL: SADX 0x0435db0c
 struct obj object_l01_wt_hebimizu_wt_hebimizu[1];
 
-// GLOBAL: SADX 0x0436c46c
-struct NJS_TEXLIST texlist_sw_panel;
-
 // GLOBAL: SADX 0x0437271c
 struct obj object_hebi_asiba01_hebi_asiba01_hebi_asiba01[1];
 
@@ -3070,9 +3064,6 @@ struct obj object_lwobj_lwswitch_button[1];
 
 // GLOBAL: SADX 0x04390408
 struct obj object_lwobj_lwswitch_lwswitch[1];
-
-// GLOBAL: SADX 0x043935a4
-struct obj object_lwobj_lwdoor_lwdoor[1];
 
 // GLOBAL: SADX 0x0439abb0
 struct NJS_MODEL model_lwobj_prop_a01_prop_a01[1];
