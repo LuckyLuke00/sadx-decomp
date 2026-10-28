@@ -608,11 +608,17 @@ struct NJS_TEXLIST texlist_Garden00SSObj;
 // GLOBAL: SADX 0x02228b44
 struct obj object_stch_bldoor_waku_waku[1];
 
+// GLOBAL: SADX 0x0222a344
+struct obj object_stch_elegate_waku_waku[1];
+
 // GLOBAL: SADX 0x0222bf24
 struct obj object_stch_racegate_waku_waku[1];
 
 // GLOBAL: SADX 0x0222d178
 struct NJS_MOTION motion_stch_bldoor_waku[1];
+
+// GLOBAL: SADX 0x0222d238
+struct NJS_MOTION motion_stch_elegate_waku[1];
 
 // GLOBAL: SADX 0x0222d2f8
 struct NJS_MOTION motion_stch_racegate_waku[1];

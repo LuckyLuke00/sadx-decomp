@@ -9770,9 +9770,17 @@
    "library": false
   },
   {
+   "address": "0x004772f0",
+   "name": "ObjectDisplay(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00477570",
    "name": "AloG00ElegateWakuCreate",
-   "accuracy": 0.1,
+   "accuracy": 0.11764705882352941,
    "effective": false,
    "stub": true,
    "library": false
@@ -12138,11 +12146,35 @@
    "library": false
   },
   {
-   "address": "0x004936e0",
-   "name": "ObjectAlrZone",
+   "address": "0x00493630",
+   "name": "initObject(2)",
    "accuracy": 0.18181818181818182,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00493660",
+   "name": "dispObject(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00493690",
+   "name": "execObject(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004936e0",
+   "name": "ObjectAlrZone",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -27538,6 +27570,14 @@
    "library": false
   },
   {
+   "address": "0x00572210",
+   "name": "MirenObjEditDrawCollision",
+   "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00572380",
    "name": "FUN_00572380",
    "accuracy": 1.0,
@@ -42075,7 +42115,7 @@
   },
   {
    "address": "0x0068aed0",
-   "name": "ObjectDisplay(2)",
+   "name": "ObjectDisplay(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42467,7 +42507,7 @@
   },
   {
    "address": "0x0068f040",
-   "name": "ObjectDisplay(3)",
+   "name": "ObjectDisplay(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42539,7 +42579,7 @@
   },
   {
    "address": "0x00690c80",
-   "name": "ObjectDisplay(4)",
+   "name": "ObjectDisplay(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -49605,30 +49645,6 @@
   },
   {
    "address": "0x00717150",
-   "name": "initObject(2)",
-   "accuracy": 0.05555555555555555,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
-   "address": "0x007171c0",
-   "name": "dispObject(3)",
-   "accuracy": 0.05405405405405406,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
-   "address": "0x00717230",
-   "name": "execObject(2)",
-   "accuracy": 1.0,
-   "effective": false,
-   "stub": false,
-   "library": false
-  },
-  {
-   "address": "0x00717660",
    "name": "initObject(3)",
    "accuracy": 0.05555555555555555,
    "effective": false,
@@ -49636,8 +49652,32 @@
    "library": false
   },
   {
-   "address": "0x007176c0",
+   "address": "0x007171c0",
    "name": "dispObject(4)",
+   "accuracy": 0.05405405405405406,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00717230",
+   "name": "execObject(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00717660",
+   "name": "initObject(4)",
+   "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007176c0",
+   "name": "dispObject(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -49645,7 +49685,7 @@
   },
   {
    "address": "0x00717730",
-   "name": "execObject(3)",
+   "name": "execObject(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -49661,7 +49701,7 @@
   },
   {
    "address": "0x007177b0",
-   "name": "initObject(4)",
+   "name": "initObject(5)",
    "accuracy": 0.14634146341463414,
    "effective": false,
    "stub": true,
@@ -49669,7 +49709,7 @@
   },
   {
    "address": "0x00717820",
-   "name": "dispObject(5)",
+   "name": "dispObject(6)",
    "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
@@ -49677,7 +49717,7 @@
   },
   {
    "address": "0x00717890",
-   "name": "execObject(4)",
+   "name": "execObject(5)",
    "accuracy": 0.029850746268656716,
    "effective": false,
    "stub": true,
@@ -53357,7 +53397,7 @@
   },
   {
    "address": "0x007e58c0",
-   "name": "initObject(5)",
+   "name": "initObject(6)",
    "accuracy": 0.03278688524590164,
    "effective": false,
    "stub": true,
@@ -53381,7 +53421,7 @@
   },
   {
    "address": "0x007e5a40",
-   "name": "execObject(5)",
+   "name": "execObject(6)",
    "accuracy": 0.046511627906976744,
    "effective": false,
    "stub": true,
@@ -53413,7 +53453,7 @@
   },
   {
    "address": "0x007e6060",
-   "name": "initObject(6)",
+   "name": "initObject(7)",
    "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
@@ -53429,7 +53469,7 @@
   },
   {
    "address": "0x007e60f0",
-   "name": "dispObject(6)",
+   "name": "dispObject(7)",
    "accuracy": 0.018867924528301886,
    "effective": false,
    "stub": true,
@@ -53437,7 +53477,7 @@
   },
   {
    "address": "0x007e6240",
-   "name": "execObject(6)",
+   "name": "execObject(7)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -53645,7 +53685,7 @@
   },
   {
    "address": "0x007e7900",
-   "name": "dispObject(7)",
+   "name": "dispObject(8)",
    "accuracy": 0.05714285714285714,
    "effective": false,
    "stub": true,
@@ -53661,7 +53701,7 @@
   },
   {
    "address": "0x007e7a10",
-   "name": "initObject(7)",
+   "name": "initObject(8)",
    "accuracy": 0.06451612903225806,
    "effective": false,
    "stub": true,
@@ -53669,7 +53709,7 @@
   },
   {
    "address": "0x007e7b00",
-   "name": "execObject(7)",
+   "name": "execObject(8)",
    "accuracy": 0.022388059701492536,
    "effective": false,
    "stub": true,
@@ -84335,6 +84375,13 @@
    "library": false
   },
   {
+   "address": "0x00962fb8",
+   "name": "DAT_00962fb8",
+   "size": 24,
+   "match": true,
+   "library": false
+  },
+  {
    "address": "0x00982ec0",
    "name": "DAT_00982ec0",
    "size": 1,
@@ -87541,6 +87588,13 @@
    "library": false
   },
   {
+   "address": "0x0222a344",
+   "name": "object_stch_elegate_waku_waku",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0222bf24",
    "name": "object_stch_racegate_waku_waku",
    "size": 52,
@@ -87550,6 +87604,13 @@
   {
    "address": "0x0222d178",
    "name": "motion_stch_bldoor_waku",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0222d238",
+   "name": "motion_stch_elegate_waku",
    "size": 12,
    "match": false,
    "library": false
@@ -96405,5 +96466,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c47c758fafb43428d005a2137b712c32902942a848a8fb444571a675a495ca75"
+ "inputs_sha256": "b5c02290fbfba3753999c730e5dca0399e0a381515d75aac6b53567dd560be32"
 }

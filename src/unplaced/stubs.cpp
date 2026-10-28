@@ -1610,6 +1610,11 @@ void _Exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00572210
+void MirenObjEditDrawCollision(const struct colliwk *)
+{
+}
+
 // STUB: SADX 0x00574140
 void ghDrawPvrTexture(int, float, float, float)
 {

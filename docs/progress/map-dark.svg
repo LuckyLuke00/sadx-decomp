@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1415" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,411 of 16,524 game functions done (32.74%), accuracy 99.86%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,415 of 16,524 game functions done (32.77%), accuracy 99.86%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 601,1180.5 595,1173.6 596.1,1172" fill="#4e32f3"/>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 595,1173.6 596.1,1172" fill="#ffffff" fill-opacity="0.4"/>
@@ -1191,7 +1191,7 @@
 <rect x="84" y="91" width="6" height="6" fill="#ffd700"><title>0x0068a7c0 MatoInit: 100%</title></rect>
 <rect x="7" y="98" width="6" height="6" fill="#ffd700"><title>0x0068ab70 ObjectDisplayMiles: 100%</title></rect>
 <rect x="14" y="98" width="6" height="6" fill="#ffd700"><title>0x0068abe0 ObjectBroken: 100%</title></rect>
-<rect x="49" y="98" width="6" height="6" fill="#ffd700"><title>0x0068aed0 ObjectDisplay(2): 100%</title></rect>
+<rect x="49" y="98" width="6" height="6" fill="#ffd700"><title>0x0068aed0 ObjectDisplay(3): 100%</title></rect>
 <rect x="56" y="98" width="6" height="6" fill="#ffd700"><title>0x0068af40 ObjectMain(3): 100%</title></rect>
 <rect x="98" y="98" width="6" height="6" fill="#ffd700"><title>0x0068b1e0 LampDisp: 100%</title></rect>
 <rect x="77" y="105" width="6" height="6" fill="#ffd700"><title>0x0068ba90 Disp(12): 100%</title></rect>
@@ -1226,12 +1226,12 @@
 <rect x="112" y="126" width="6" height="6" fill="#ffd700"><title>0x0068dec0 ObjectSsadvKomonoIsub: 100%</title></rect>
 <rect x="7" y="133" width="6" height="6" fill="#ffd700"><title>0x0068df80 ObjectDisplayOn: 100%</title></rect>
 <rect x="21" y="133" width="6" height="6" fill="#ffd700"><title>0x0068e1b0 ObjectMainOn: 100%</title></rect>
-<rect x="63" y="140" width="6" height="6" fill="#ffd700"><title>0x0068f040 ObjectDisplay(3): 100%</title></rect>
+<rect x="63" y="140" width="6" height="6" fill="#ffd700"><title>0x0068f040 ObjectDisplay(4): 100%</title></rect>
 <rect x="42" y="147" width="6" height="6" fill="#ffd700"><title>0x0068f680 FUN_0068f680: 100%</title></rect>
 <rect x="105" y="147" width="6" height="6" fill="#ffd700"><title>0x0068fa50 FUN_0068fa50: 100%</title></rect>
 <rect x="7" y="154" width="6" height="6" fill="#ffd700"><title>0x0068fbd0 ObjectWait: 100%</title></rect>
 <rect x="28" y="161" width="6" height="6" fill="#ffd700"><title>0x006908a0 FUN_006908a0: 100%</title></rect>
-<rect x="84" y="161" width="6" height="6" fill="#ffd700"><title>0x00690c80 ObjectDisplay(4): 100%</title></rect>
+<rect x="84" y="161" width="6" height="6" fill="#ffd700"><title>0x00690c80 ObjectDisplay(5): 100%</title></rect>
 <rect x="91" y="161" width="6" height="6" fill="#ffd700"><title>0x00690cd0 ObjectMain(5): 100%</title></rect>
 <rect x="112" y="161" width="6" height="6" fill="#ffd700"><title>0x00690e40 KasyaDisplay: 100%</title></rect>
 <rect x="21" y="168" width="6" height="6" fill="#ffd700"><title>0x00691150 sstrain_adxdestruct: 100%</title></rect>
@@ -1994,7 +1994,7 @@
 <rect x="42" y="49" width="6" height="6" fill="#ffd700"><title>0x007e5d00 ObjectCartGoalRobot: 100%</title></rect>
 <rect x="21" y="56" width="6" height="6" fill="#ffd700"><title>0x007e6020 ObjectCartStartRobot: 100%</title></rect>
 <rect x="28" y="56" width="6" height="6" fill="#ffd700"><title>0x007e6040 ObjectCartDial: 100%</title></rect>
-<rect x="35" y="56" width="6" height="6" fill="#ffd700"><title>0x007e6240 execObject(6): 100%</title></rect>
+<rect x="35" y="56" width="6" height="6" fill="#ffd700"><title>0x007e6240 execObject(7): 100%</title></rect>
 <rect x="42" y="56" width="6" height="6" fill="#ffd700"><title>0x007e62d0 CartTimeDisplayTitle: 100%</title></rect>
 <rect x="49" y="56" width="6" height="6" fill="#ffd700"><title>0x007e6a60 CartLapDisplayLap: 100%</title></rect>
 <rect x="0" y="63" width="6" height="6" fill="#ffd700"><title>0x007f2e70 mc_bgmcontrol: 100%</title></rect>
@@ -2643,7 +2643,7 @@
 <polygon points="671.2,549.6 675,549.6 669,556.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="665.8,546.5 672.2,546.5 673.9,548 675,549.6 669,556.5 663,549.6 664.1,548" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="679" y="556" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Chao <tspan font-weight="400" fill="#8b949e">36%</tspan></text>
-<rect x="664" y="564" width="316" height="244" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Gardens: 520 of 1,348 done</title></rect>
+<rect x="664" y="564" width="316" height="244" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Gardens: 521 of 1,348 done</title></rect>
 <text x="667" y="578" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Gardens <tspan font-weight="400" fill="#8b949e">38%</tspan></text>
 <g transform="translate(667,582)">
 <rect y="0" width="308" height="210" fill="url(#todo)"/>
@@ -3064,6 +3064,7 @@
 <rect x="14" y="168" width="6" height="6" fill="#ffd700"><title>0x00476fd0 _alg_garden00_ss_prolog: 100%</title></rect>
 <rect x="21" y="168" width="6" height="6" fill="#ffd700"><title>0x00477000 ObjectDisplay(1): 100%</title></rect>
 <rect x="63" y="168" width="6" height="6" fill="#ffd700"><title>0x00477250 ObjectALGardenDoor: 100%</title></rect>
+<rect x="84" y="168" width="6" height="6" fill="#ffd700"><title>0x004772f0 ObjectDisplay(struct task *): 100%</title></rect>
 <rect x="140" y="168" width="6" height="6" fill="#ffd700"><title>0x004775a0 AloG00BldoorWakuDisp: 100%</title></rect>
 <rect x="189" y="168" width="6" height="6" fill="#ffd700"><title>0x00477b80 ghUnitVector: 100%</title></rect>
 <rect x="196" y="168" width="6" height="6" fill="#ffd700"><title>0x00477c00 FUN_00477c00: 100%</title></rect>
@@ -3172,8 +3173,8 @@
 <rect x="161" y="210" width="6" height="6" fill="#ffd700"><title>0x00716350 AL_GetMessage: 100%</title></rect>
 <rect x="182" y="210" width="6" height="6" fill="#ffd700"><title>0x00717030 ChaoSelectWindowDestructor: 100%</title></rect>
 </g>
-<rect x="664" y="810" width="316" height="98" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 121 of 412 done</title></rect>
-<text x="667" y="824" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Race <tspan font-weight="400" fill="#8b949e">29%</tspan></text>
+<rect x="664" y="810" width="316" height="98" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 124 of 412 done</title></rect>
+<text x="667" y="824" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Race <tspan font-weight="400" fill="#8b949e">30%</tspan></text>
 <g transform="translate(667,828)">
 <rect y="0" width="308" height="63" fill="url(#todo)"/>
 <rect y="63" width="112" height="7" fill="url(#todo)"/>
@@ -3289,12 +3290,15 @@
 <rect x="245" y="49" width="6" height="6" fill="#ffd700"><title>0x00493220 ADV1_AL_PreservePreviousPosition: 100%</title></rect>
 <rect x="266" y="49" width="6" height="6" fill="#ffd700"><title>0x004932f0 ADV1_AL_InitIcon: 100%</title></rect>
 <rect x="35" y="56" width="6" height="6" fill="#ffd700"><title>0x00493570 FUN_00493570: 100%</title></rect>
+<rect x="63" y="56" width="6" height="6" fill="#ffd700"><title>0x00493660 dispObject(3): 100%</title></rect>
+<rect x="70" y="56" width="6" height="6" fill="#ffd700"><title>0x00493690 execObject(2): 100%</title></rect>
+<rect x="77" y="56" width="6" height="6" fill="#ffd700"><title>0x004936e0 ObjectAlrZone: 100%</title></rect>
 <rect x="84" y="56" width="6" height="6" fill="#ffd700"><title>0x00493700 AL_GetObjectEntryList: 100%</title></rect>
 <rect x="91" y="56" width="6" height="6" fill="#ffd700"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
 <rect x="147" y="56" width="6" height="6" fill="#ffd700"><title>0x00717130 ObjectAlrBowChao: 100%</title></rect>
-<rect x="168" y="56" width="6" height="6" fill="#ffd700"><title>0x00717230 execObject(2): 100%</title></rect>
-<rect x="294" y="56" width="6" height="6" fill="#ffd700"><title>0x007176c0 dispObject(4): 100%</title></rect>
-<rect x="301" y="56" width="6" height="6" fill="#ffd700"><title>0x00717730 execObject(3): 100%</title></rect>
+<rect x="168" y="56" width="6" height="6" fill="#ffd700"><title>0x00717230 execObject(3): 100%</title></rect>
+<rect x="294" y="56" width="6" height="6" fill="#ffd700"><title>0x007176c0 dispObject(5): 100%</title></rect>
+<rect x="301" y="56" width="6" height="6" fill="#ffd700"><title>0x00717730 execObject(4): 100%</title></rect>
 <rect x="7" y="63" width="6" height="6" fill="#ffd700"><title>0x00717790 ObjectAlrCoconut: 100%</title></rect>
 <rect x="70" y="63" width="6" height="6" fill="#ffd700"><title>0x00717b10 execFrame: 100%</title></rect>
 <rect x="77" y="63" width="6" height="6" fill="#ffd700"><title>0x00717b40 destFrame: 100%</title></rect>

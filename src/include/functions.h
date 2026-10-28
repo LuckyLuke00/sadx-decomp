@@ -1582,6 +1582,7 @@ long MirenObjCheckCollisionP(struct taskwk *taskWk_p, float dist);
 void MirenObjFreeMobileLandObject(struct task *task_p, struct obj *obj_p);
 void FUN_005720e0(struct obj *param_1, float param_2);
 void FUN_00572100(struct NJS_TEXLIST *param_1);
+void MirenObjEditDrawCollision(const struct colliwk *);
 void FUN_00572380(struct obj *param_1, struct obj *param_2);
 void FUN_005723e0(float param_1);
 void FUN_00572f90(struct obj *param_1, struct obj *param_2);
