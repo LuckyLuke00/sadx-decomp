@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1415" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,416 of 16,524 game functions done (32.77%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,417 of 16,524 game functions done (32.78%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 601,1180.5 595,1173.6 596.1,1172" fill="#4e32f3"/>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 595,1173.6 596.1,1172" fill="#ffffff" fill-opacity="0.4"/>
@@ -1469,8 +1469,8 @@
 <rect x="0" y="28" width="6" height="6" fill="#ffd700"><title>0x006e6a60 ObjectC0Grass3: 100%</title></rect>
 <rect x="7" y="28" width="6" height="6" fill="#ffd700"><title>0x006e6a90 changeHeadColorChaos0: 100%</title></rect>
 </g>
-<rect x="510" y="779" width="101" height="67" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 2: 14 of 69 done</title></rect>
-<text x="513" y="793" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chaos 2 <tspan font-weight="400" fill="#8b949e">20%</tspan></text>
+<rect x="510" y="779" width="101" height="67" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 2: 15 of 69 done</title></rect>
+<text x="513" y="793" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chaos 2 <tspan font-weight="400" fill="#8b949e">21%</tspan></text>
 <g transform="translate(513,797)">
 <rect y="0" width="91" height="35" fill="url(#todo)"/>
 <rect y="35" width="28" height="7" fill="url(#todo)"/>
@@ -1481,6 +1481,7 @@
 <rect x="63" y="0" width="6" height="6" fill="#ffd700"><title>0x006e7c60 Chaos2ColumnMain: 100%</title></rect>
 <rect x="42" y="14" width="6" height="6" fill="#ffd700"><title>0x006ea190 changeHeadColorChaos2Callback: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#ffd700"><title>0x006eb1e0 setChaos2: 100%</title></rect>
+<rect x="28" y="21" width="6" height="6" fill="#ffd700"><title>0x006eb690 objNormal(struct task *): 100%</title></rect>
 <rect x="77" y="21" width="6" height="6" fill="#ffd700"><title>0x006ec4c0 Chaos2MiniBallHeadDisplay: 100%</title></rect>
 <rect x="0" y="28" width="6" height="6" fill="#ffd700"><title>0x006ec7d0 DisplayChaosBallShadow: 100%</title></rect>
 <rect x="63" y="28" width="6" height="6" fill="#ffd700"><title>0x006edb00 SetBallBubble: 100%</title></rect>
@@ -5174,7 +5175,7 @@
 <rect x="91" y="203" width="6" height="6" fill="#ffd700"><title>0x0060e220 NpcGetCameraPos: 100%</title></rect>
 <rect x="98" y="203" width="6" height="6" fill="#ffd700"><title>0x0060e240 EventBossCameraSetFunc: 100%</title></rect>
 <rect x="105" y="203" width="6" height="6" fill="#ffd700"><title>0x0060ea20 Object_HitMark: 100%</title></rect>
-<rect x="112" y="203" width="6" height="6" fill="#ffd700"><title>0x0060eca0 objNormal: 100%</title></rect>
+<rect x="112" y="203" width="6" height="6" fill="#ffd700"><title>0x0060eca0 objNormal(1): 100%</title></rect>
 <rect x="119" y="203" width="6" height="6" fill="#ffd700"><title>0x0060ee70 ghSpriteAnimInit: 100%</title></rect>
 <rect x="126" y="203" width="6" height="6" fill="#ffd700"><title>0x0060f5e0 spriteAutoDisp: 100%</title></rect>
 <rect x="133" y="203" width="6" height="6" fill="#ffd700"><title>0x0060f620 spriteAutoExec: 100%</title></rect>
