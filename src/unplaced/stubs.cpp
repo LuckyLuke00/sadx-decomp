@@ -1255,18 +1255,6 @@ void FUN_004c0e10(void *)
 {
 }
 
-// STUB: SADX 0x004c1870
-struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex)
-{
-	return (struct MSGC *)0;
-}
-
-// STUB: SADX 0x004c3180
-struct MSGC *NH_MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex, char *buf)
-{
-	return (struct MSGC *)0;
-}
-
 // STUB: SADX 0x004c3d70
 void GetSwitchData()
 {
@@ -1735,11 +1723,6 @@ struct MDHANDLE *MDHeaderOpen(char *fname, int flag)
 
 // STUB: SADX 0x0059d540
 void sequence_init(struct task *tp, struct SeqPrmType *prmp)
-{
-}
-
-// STUB: SADX 0x0059d770
-void sequence_exec(struct task *tp)
 {
 }
 
