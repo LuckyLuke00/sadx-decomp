@@ -13074,6 +13074,14 @@
    "library": false
   },
   {
+   "address": "0x0049d0d0",
+   "name": "ObjectMiMission_End",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0049d140",
    "name": "Disp(6)",
    "accuracy": 1.0,
@@ -16666,6 +16674,14 @@
    "library": false
   },
   {
+   "address": "0x004c2390",
+   "name": "MSG_Font",
+   "accuracy": 0.08602150537634409,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004c24e0",
    "name": "SOCMSG_Font",
    "accuracy": 1.0,
@@ -16701,6 +16717,22 @@
    "address": "0x004c2a30",
    "name": "FUN_004c2a30",
    "accuracy": 0.14814814814814814,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c2ad0",
+   "name": "MSG_PutsCenter",
+   "accuracy": 0.0898876404494382,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c2be0",
+   "name": "MSG_PutsBlockCenter",
+   "accuracy": 0.06611570247933884,
    "effective": false,
    "stub": true,
    "library": false
@@ -96493,5 +96525,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5c4d19b29d28319f780665360c3b924d42e04b82dd74b5bd8b8d98ddf323779e"
+ "inputs_sha256": "f698fd8612e602937816f651309b041ea765dac02d67cec3d77feecb6336ee76"
 }

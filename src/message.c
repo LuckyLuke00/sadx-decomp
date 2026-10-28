@@ -1,4 +1,8 @@
 #include "decls.h"
+int FUN_004c2610(int param_1);
+void FUN_004c2a30(struct MSGC *param_1, char *param_2);
+extern unsigned char DAT_05b42e20[0x50000];
+extern struct MSGC *DAT_05b92e20;
 extern int DAT_05cd14d4;
 extern unsigned int *DAT_05b93264;
 extern int DAT_05b42c34;
@@ -57,6 +61,12 @@ int FUN_004c1800(const unsigned char *param_1)
 		}
 	}
 	return local_cj;
+}
+
+// STUB: SADX 0x004c1870
+struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex)
+{
+	return (struct MSGC *)0;
 }
 
 // FUNCTION: SADX 0x004c1a60
@@ -138,6 +148,12 @@ void MSG_Cls(struct MSGC *msgc)
 	DAT_05cd14d4 = 1;
 	FUN_005a4d70();
 	DAT_05cd14d4 = 0;
+}
+
+// STUB: SADX 0x004c2390
+void *MSG_Font(int c)
+{
+	return (void *)0;
 }
 
 // FUNCTION: SADX 0x004c24e0
@@ -232,6 +248,16 @@ void MSG_Puts(struct MSGC *msgc, char *str)
 
 // STUB: SADX 0x004c2a30
 void FUN_004c2a30(struct MSGC *param_1, char *param_2)
+{
+}
+
+// STUB: SADX 0x004c2ad0
+void MSG_PutsCenter(struct MSGC *msgc, char *str)
+{
+}
+
+// STUB: SADX 0x004c2be0
+void MSG_PutsBlockCenter(struct MSGC *msgc, char *str)
 {
 }
 
@@ -378,3 +404,11 @@ int MSG_CheckMainMessage()
 {
 	return DAT_05b42c1d;
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x004c3180
+struct MSGC *NH_MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex, char *buf)
+{
+	return (struct MSGC *)0;
+}
+#pragma optimize("", on)

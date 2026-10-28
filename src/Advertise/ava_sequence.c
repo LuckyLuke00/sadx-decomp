@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct task *DAT_05cda18c;
+void FUN_0059da70(struct task *param_1);
+void AvaReleaseTexForAll();
 void FUN_0059d6b0(struct task *param_1);
 void FUN_0059d6b0(struct task *param_1);
 void FUN_0059d6b0(struct task *param_1);
@@ -59,6 +62,13 @@ void FUN_0059d6b0(struct task *tp)
 void FUN_0059d700(void *param_1)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0059d770
+void sequence_exec(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0059d9d0
 void sequence_end(struct task *tp)
