@@ -1,4 +1,8 @@
 #include "decls.h"
+void EffectExecuteRibbon(struct task *tp);
+void EffectDrawRibbon(struct task *tp);
+void EffectDestructRibbon(struct task *tp);
+struct _AWAINFO;
 void FUN_005b0e20(struct task *param_1);
 extern struct taskwk *DAT_05b42a7c;
 extern struct NJS_SPRITE sprite_hitodama[];
@@ -55,6 +59,12 @@ void FUN_005ae5e0(struct taskwk *param_1, void *param_2)
 // STUB: SADX 0x005af370
 void CalcPosVec(int pnum, struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct NJS_POINT3 *posr)
 {
+}
+
+// STUB: SADX 0x005af460
+struct _AWAINFO *PlaceAwa(struct taskwk *twp)
+{
+	return (struct _AWAINFO *)0;
 }
 
 // FUNCTION: SADX 0x005af750
@@ -116,6 +126,20 @@ void EffectStartHoming(struct task *tp)
 	tp->disp = EffectStartHomingDisplay;
 	EffectStartHomingDisplay(tp);
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x005af930
+void EffectSpinInit(struct taskwk *twp)
+{
+}
+#pragma optimize("", on)
+
+#pragma optimize("", off)
+// STUB: SADX 0x005afba0
+void EffectSpinDSInit(struct taskwk *twp)
+{
+}
+#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x005afdf0
@@ -209,6 +233,16 @@ void FUN_005b0e20(struct task *param_1)
 {
 }
 
+// STUB: SADX 0x005b0e90
+void SonicChargeBodyDisplay(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x005b10a0
+void EffectRibbon(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005b1340
 void EffectDrawRibbon(struct task *tp)
 {
@@ -278,6 +312,11 @@ void EffectSpinRibbonDisplay(struct task *tp)
 	njPopMatrix(1);
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
+}
+
+// STUB: SADX 0x005b1d80
+void EffectSpinRibbon(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x005b1fc0

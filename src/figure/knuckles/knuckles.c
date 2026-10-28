@@ -338,6 +338,12 @@ void KnucklesTouchWallInit(struct taskwk *twp, struct motionwk2 *mwp, struct pla
 	dsStop_num(0x30c);
 }
 
+// STUB: SADX 0x0052ead0
+long Knuckles_KakeraGameInit()
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x0052ed90
 void Knuckles_KakeraGame(struct task *tp)
 {
