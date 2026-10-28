@@ -23050,6 +23050,14 @@
    "library": false
   },
   {
+   "address": "0x0052ead0",
+   "name": "Knuckles_KakeraGameInit",
+   "accuracy": 0.05434782608695652,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0052ed90",
    "name": "Knuckles_KakeraGame",
    "accuracy": 0.16,
@@ -23554,6 +23562,14 @@
    "library": false
   },
   {
+   "address": "0x00547b40",
+   "name": "SonicChangeHangingMotion",
+   "accuracy": 0.028469750889679714,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005488e0",
    "name": "FUN_005488e0",
    "accuracy": 1.0,
@@ -23573,6 +23589,38 @@
    "address": "0x00548b90",
    "name": "SonicHomeOnTarget",
    "accuracy": 0.0975609756097561,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00549320",
+   "name": "SonicLSAOnTarget",
+   "accuracy": 0.03690036900369004,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00549660",
+   "name": "SonicHomingOnRings",
+   "accuracy": 0.03065134099616858,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00549970",
+   "name": "SonicCheckDamage",
+   "accuracy": 0.046511627906976744,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00549c60",
+   "name": "SonicCheckJump",
+   "accuracy": 0.049019607843137254,
    "effective": false,
    "stub": true,
    "library": false
@@ -23621,6 +23669,14 @@
    "address": "0x0054c520",
    "name": "SonicCheckStartLSDorLSA",
    "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054c720",
+   "name": "FUN_0054c720",
+   "accuracy": 0.049019607843137254,
    "effective": false,
    "stub": true,
    "library": false
@@ -23677,6 +23733,14 @@
    "address": "0x0054d450",
    "name": "SonicThrowTheObjectOut",
    "accuracy": 0.11428571428571428,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0054d520",
+   "name": "SonicHoldObject",
+   "accuracy": 0.031007751937984496,
    "effective": false,
    "stub": true,
    "library": false
@@ -23863,6 +23927,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0054f320",
+   "name": "DrawSonicMotion",
+   "accuracy": 0.04790419161676647,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -32306,6 +32378,14 @@
    "library": false
   },
   {
+   "address": "0x005af460",
+   "name": "PlaceAwa",
+   "accuracy": 0.045662100456621,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005af750",
    "name": "FUN_005af750",
    "accuracy": 1.0,
@@ -32466,6 +32546,22 @@
    "library": false
   },
   {
+   "address": "0x005b0e90",
+   "name": "SonicChargeBodyDisplay",
+   "accuracy": 0.04878048780487805,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005b10a0",
+   "name": "EffectRibbon",
+   "accuracy": 0.03686635944700461,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005b1340",
    "name": "EffectDrawRibbon",
    "accuracy": 0.11428571428571428,
@@ -32503,6 +32599,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005b1d80",
+   "name": "EffectSpinRibbon",
+   "accuracy": 0.0425531914893617,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -96301,5 +96405,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4c8876bbe689596f9e3a5be8fe9e482818b3b5a42d33a8b23896d30882ced5b8"
+ "inputs_sha256": "c47c758fafb43428d005a2137b712c32902942a848a8fb444571a675a495ca75"
 }

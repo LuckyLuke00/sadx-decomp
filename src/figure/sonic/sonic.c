@@ -1,4 +1,5 @@
 #include "decls.h"
+void SonicThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 extern struct PDS_PERIPHERAL DAT_05b932e8[8];
 extern long action_button;
 extern int DAT_060eea5c;
@@ -63,6 +64,11 @@ void FUN_00547a80(struct task *param_1, struct task *param_2, struct taskwk *par
 {
 }
 
+// STUB: SADX 0x00547b40
+void SonicChangeHangingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // FUNCTION: SADX 0x005488e0
 void FUN_005488e0(char *param_1, char *param_2, char *param_3)
 {
@@ -99,6 +105,29 @@ void FUN_00548980(struct taskwk *twp)
 // STUB: SADX 0x00548b90
 void SonicHomeOnTarget(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+}
+
+// STUB: SADX 0x00549320
+long SonicLSAOnTarget(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00549660
+void SonicHomingOnRings(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
+// STUB: SADX 0x00549970
+long SonicCheckDamage(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x00549c60
+long SonicCheckJump(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
 }
 
 // FUNCTION: SADX 0x00549ed0
@@ -238,6 +267,12 @@ long SonicCheckStartLSDorLSA(struct taskwk *twp, struct motionwk2 *mwp, struct p
 	return (long)0;
 }
 
+// STUB: SADX 0x0054c720
+int FUN_0054c720(struct taskwk *twp, int param_2, struct taskwk *twp2)
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x0054c9d0
 int FUN_0054c9d0(unsigned char *param_1, int param_2, int param_3)
 {
@@ -302,6 +337,11 @@ void SonicThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 }
 #pragma optimize("", on)
 
+// STUB: SADX 0x0054d520
+void SonicHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // FUNCTION: SADX 0x0054d870
 void SonicHoldOnPillar(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
@@ -327,6 +367,13 @@ void SonicHoldOnPillar(struct taskwk *twp, struct motionwk2 *mwp, struct playerw
 void SonicHoldOnIcicle(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
+
+#pragma optimize("", off)
+// STUB: SADX 0x0054da60
+void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0054dce0
 void SonicFaceMotion(struct task *tp)
@@ -497,6 +544,13 @@ void ExecuteSonicSnowBoard(struct task *tp)
 }
 #pragma optimize("", on)
 
+#pragma optimize("", off)
+// STUB: SADX 0x0054ef10
+void DisplaySonicSnowBoard(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0054f150
 void SuperSonicStatusManager(struct task *tp)
 {
@@ -569,6 +623,11 @@ void SonicCanselSpinDashForIcecap(struct taskwk *twp, struct playerwk *pwp)
 		*(unsigned short *)((char *)pwp + 0x124) = 0x1d;
 		twp->flag &= 0xfffffaff;
 	}
+}
+
+// STUB: SADX 0x0054f320
+void DrawSonicMotion(struct playerwk *pwp, unsigned long action)
+{
 }
 
 // STUB: SADX 0x0054f570

@@ -1497,16 +1497,6 @@ void SonicChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct 
 {
 }
 
-// STUB: SADX 0x0054da60
-void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
-{
-}
-
-// STUB: SADX 0x0054ef10
-void DisplaySonicSnowBoard(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0054ffb0
 void drawEffectKiran2(struct task *tp)
 {
@@ -1827,16 +1817,6 @@ long StageNameModeInit(long time)
 long StageNameMode(void *Param)
 {
 	return (long)0;
-}
-
-// STUB: SADX 0x005af930
-void EffectSpinInit(struct taskwk *twp)
-{
-}
-
-// STUB: SADX 0x005afba0
-void EffectSpinDSInit(struct taskwk *twp)
-{
 }
 
 // STUB: SADX 0x005b0870
