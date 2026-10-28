@@ -2063,7 +2063,7 @@ void BSetMotion(struct taskwk *twp, struct bosswk *bwp);
 void FUN_005dbda0(int param_1);
 void PutItem_ItemBox(struct NJS_POINT3 *putpos, long putItem);
 void ObjectItemBox(struct task *);
-void FUN_005ddc80(struct task *);
+void FUN_005ddc80(struct task *param_1);
 void FUN_005de120(struct taskwk *param_1);
 void Dead_ItemBox(struct task *tp);
 void ef_random_ring(struct taskwk *twp);

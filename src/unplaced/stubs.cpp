@@ -2007,11 +2007,6 @@ void ObjectItemBox(struct task *)
 {
 }
 
-// STUB: SADX 0x005ddc80
-void FUN_005ddc80(struct task *)
-{
-}
-
 // STUB: SADX 0x005ded90
 void PathworkGoWithHangingDownFromBars(struct task *tp)
 {
