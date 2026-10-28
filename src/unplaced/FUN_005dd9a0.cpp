@@ -38,3 +38,13 @@ void FUN_005ddbf0(struct task *param_1)
 	CCL_Init(param_1, itembox_colli_info1, 2, 4);
 	local_8->mode = 4;
 }
+
+// STUB: SADX 0x005ddc80
+void FUN_005ddc80(struct task *param_1)
+{
+}
+
+// STUB: SADX 0x005ddea0
+void FUN_005ddea0(struct task *param_1)
+{
+}
