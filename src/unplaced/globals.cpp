@@ -263,6 +263,9 @@ int DAT_00a5a974;
 // GLOBAL: SADX 0x00a5aa00
 int DAT_00a5aa00;
 
+// GLOBAL: SADX 0x00a5dd7c
+int DAT_00a5dd7c;
+
 // GLOBAL: SADX 0x01c6e428
 unsigned int DAT_01c6e428;
 
@@ -325,6 +328,9 @@ struct obj object_ssobj_isua_isua[1];
 
 // GLOBAL: SADX 0x01c8d41c
 struct obj object_ssobj_isub_isub[1];
+
+// GLOBAL: SADX 0x01c8ddac
+struct obj object_keikoto_keikoto_keikoto[1];
 
 // GLOBAL: SADX 0x01c8e258
 struct obj object_ssobj_roomlight_roomlight[1];

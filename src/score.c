@@ -518,9 +518,17 @@ void DisplayCalcRingScoreSB(struct task *tp)
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055c760
-void FUN_0055c760(struct task *tp)
+// FUNCTION: SADX 0x0055c760
+void FUN_0055c760(struct task *param_1)
 {
+	DisplayCalcRingScoreSB(param_1);
+	*(int *)(score_sc + 4) = 0xf4240;
+	{
+		*(int *)(score_sc + 8) = (unsigned int)param_1->twp->timer.f;
+	}
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0f;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0f + 96.0f;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // STUB: SADX 0x0055c7f0
