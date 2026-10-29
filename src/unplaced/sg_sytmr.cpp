@@ -22,6 +22,12 @@ void syTmrInit(void)
 	DAT_05ad95d4 = 0;
 }
 
+// STUB: SADX 0x004230a0
+int syTmrGetCount()
+{
+	return (int)0;
+}
+
 // STUB: SADX 0x004230e0
 int syTmrDiffCount(int param_1, int param_2)
 {

@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1414" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,433 of 16,524 game functions done (32.87%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,435 of 16,524 game functions done (32.89%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1169.5 604.2,1169.5 605.9,1171 607,1172.6 601,1179.5 595,1172.6 596.1,1171" fill="#4e32f3"/>
 <polygon points="597.8,1169.5 604.2,1169.5 605.9,1171 607,1172.6 595,1172.6 596.1,1171" fill="#ffffff" fill-opacity="0.4"/>
@@ -5267,7 +5267,7 @@
 <rect x="133" y="224" width="6" height="6" fill="#b07d00"><title>0x008ddd00 ERSetColli: 100%</title></rect>
 <rect x="140" y="224" width="6" height="6" fill="#b07d00"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 </g>
-<rect x="538" y="353" width="238" height="185" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 160 of 686 done</title></rect>
+<rect x="538" y="353" width="238" height="185" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 162 of 686 done</title></rect>
 <text x="541" y="367" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ninja graphics <tspan font-weight="400" fill="#59636e">23%</tspan></text>
 <g transform="translate(541,371)">
 <rect y="0" width="231" height="140" fill="url(#todo)"/>
@@ -5275,7 +5275,9 @@
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x0040ade0 FUN_0040ade0: 100%</title></rect>
 <rect x="7" y="0" width="6" height="6" fill="#b07d00"><title>0x0040adf0 FUN_0040adf0: 100%</title></rect>
 <rect x="56" y="0" width="6" height="6" fill="#b07d00"><title>0x00419690 _stCreateDevice: 100%</title></rect>
+<rect x="77" y="0" width="6" height="6" fill="#b07d00"><title>0x004198d0 SOCGetInputLayout: 100%</title></rect>
 <rect x="126" y="0" width="6" height="6" fill="#b07d00"><title>0x00419ac0 FUN_00419ac0: 100%</title></rect>
+<rect x="133" y="0" width="6" height="6" fill="#b07d00"><title>0x00419ae0 FUN_00419ae0: 100%</title></rect>
 <rect x="140" y="0" width="6" height="6" fill="#b07d00"><title>0x00419b00 FUN_00419b00: 100%</title></rect>
 <rect x="147" y="0" width="6" height="6" fill="#b07d00"><title>0x00419b20 FUN_00419b20: 100%</title></rect>
 <rect x="154" y="0" width="6" height="6" fill="#b07d00"><title>0x00419b40 FUN_00419b40: 100%</title></rect>

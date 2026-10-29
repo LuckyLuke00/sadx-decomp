@@ -59,20 +59,9 @@ void FUN_00422560(int)
 {
 }
 
-// STUB: SADX 0x00422590
-void njSetZUpdateMode(long)
-{
-}
-
 // STUB: SADX 0x00422730
 void stHWWaitVSync()
 {
-}
-
-// STUB: SADX 0x004230a0
-int syTmrGetCount()
-{
-	return (int)0;
 }
 
 // STUB: SADX 0x00423b40

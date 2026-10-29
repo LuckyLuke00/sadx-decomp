@@ -11,6 +11,11 @@ void gjGXSetBlendMode(long param_1)
 {
 }
 
+// STUB: SADX 0x00422590
+void njSetZUpdateMode(long param_1)
+{
+}
+
 // FUNCTION: SADX 0x004225b0
 void njSetWaitVsyncCount(int param_1)
 {
