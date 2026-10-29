@@ -40717,9 +40717,9 @@
   {
    "address": "0x0061ccb0",
    "name": "ColliSpaceEditMode",
-   "accuracy": 0.01873536299765808,
+   "accuracy": 0.909952606635071,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -40747,6 +40747,14 @@
    "library": false
   },
   {
+   "address": "0x0061d3a0",
+   "name": "ColliWall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0061d430",
    "name": "ColliCircle",
    "accuracy": 1.0,
@@ -40765,14 +40773,30 @@
   {
    "address": "0x0061d570",
    "name": "ColliOttottoRangeEditMode",
-   "accuracy": 0.03225806451612903,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0061d8b0",
    "name": "ColliBigWaterJumpRange",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061d950",
+   "name": "ColliNoWaterRange",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061db50",
+   "name": "CS_CheckCollisionPlayer2NoWater",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -88741,6 +88765,20 @@
    "library": false
   },
   {
+   "address": "0x025d8ce4",
+   "name": "object_cylinder01",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025d8f54",
+   "name": "object_no_name_cuuube01_cuuube01",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025d9b40",
    "name": "DAT_025d9b40",
    "size": 40,
@@ -90213,6 +90251,13 @@
   {
    "address": "0x026ba280",
    "name": "circle_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026ba2b0",
+   "name": "camera_sphere_info",
    "size": 48,
    "match": false,
    "library": false
@@ -95363,6 +95408,13 @@
    "library": false
   },
   {
+   "address": "0x048a5720",
+   "name": "cinfo_root",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x048a58f0",
    "name": "cinfo_drum",
    "size": 48,
@@ -96905,5 +96957,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "37717cbfadf15380d6fa04b45a17522628d9a1290bf75f040ba46a88b5afafad"
+ "inputs_sha256": "f806f584d230bdf3300418ff67f44fd295822fc902e5a2b178b460b75c6fa1ad"
 }

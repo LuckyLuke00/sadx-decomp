@@ -953,6 +953,12 @@ char *last_initial;
 // GLOBAL: SADX 0x025d88d8
 struct obj object_sphere01;
 
+// GLOBAL: SADX 0x025d8ce4
+struct obj object_cylinder01[1];
+
+// GLOBAL: SADX 0x025d8f54
+struct obj object_no_name_cuuube01_cuuube01[1];
+
 // GLOBAL: SADX 0x025d9b40
 int DAT_025d9b40[10];
 
@@ -1585,6 +1591,9 @@ struct CCL_INFO cuberange_info[1];
 
 // GLOBAL: SADX 0x026ba280
 struct CCL_INFO circle_info[1];
+
+// GLOBAL: SADX 0x026ba2b0
+struct CCL_INFO camera_sphere_info[1];
 
 // GLOBAL: SADX 0x026bb9a8
 int EBankNumTbl[34];
@@ -3686,6 +3695,9 @@ struct obj object_bl_nc_bllight_nc_bllight[1];
 // GLOBAL: SADX 0x048a54a8
 struct NJS_TEXLIST texlist_unyo;
 
+// GLOBAL: SADX 0x048a5720
+struct CCL_INFO cinfo_root[1];
+
 // GLOBAL: SADX 0x048a58f0
 struct CCL_INFO cinfo_drum[1];
 
@@ -5101,6 +5113,9 @@ unsigned char DAT_05b4252c;
 
 // GLOBAL: SADX 0x05b42530
 struct task *DAT_05b42530;
+
+// GLOBAL: SADX 0x05b42598
+long DAT_05b42598;
 
 // GLOBAL: SADX 0x05b4259c
 int DAT_05b4259c;
