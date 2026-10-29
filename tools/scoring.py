@@ -56,7 +56,8 @@ def state_text(entry: dict | None) -> str:
 def find_regressions(baseline: dict, current: dict, accepted: set[tuple[str, str, str]] = frozenset()) -> list[str]:
     """Every function whose score dropped, and every global that matched and no longer does. A removed annotation
     scores zero, so a removed stub drops nothing. A summary from before data scoring has no data list. ACCEPTED holds
-    the drops that count as none: (address, old score, new score), the scores as this function prints them."""
+    the drops that count as none: (address, old score, new score), the scores as this function prints them. For a
+    global, the old score is "matched" and the new one "differs" or "gone"."""
     now = {entry["address"]: entry for entry in current["functions"]}
     problems = []
     for old in baseline["functions"]:
@@ -69,8 +70,9 @@ def find_regressions(baseline: dict, current: dict, accepted: set[tuple[str, str
     data_now = {entry["address"]: entry for entry in current.get("data", [])}
     for old in baseline.get("data", []):
         new = data_now.get(old["address"])
-        if old["match"] and not (new and new["match"]):
-            problems.append(f"{old['address']} {old['name']}: data matched -> {'gone' if new is None else 'differs'}")
+        result = "gone" if new is None else "differs"
+        if old["match"] and not (new and new["match"]) and (old["address"], "matched", result) not in accepted:
+            problems.append(f"{old['address']} {old['name']}: data matched -> {result}")
     return problems
 
 

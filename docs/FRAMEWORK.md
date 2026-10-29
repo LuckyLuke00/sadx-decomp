@@ -34,7 +34,7 @@ The game files:
 | `data/source-files.csv`, `data/classes.csv` | Functions that use each source path in the exe, and each class's vtable, methods and users. `check.py sources` writes them. |
 | `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the sections of the progress map and the name the map shows for each area. A `map` section can have a `color`, a quoted `"#rrggbb"`, for the gem before its title. `check.py areas` writes the guess to `areas.csv`. |
 | `src/library.csv` | Runtime library functions and their globals, matched by name. |
-| `data/accepted-drops.csv` | Optional. The score drops that are on purpose: `address`, `from` and `to` as the gate prints them (`100.00%`, `76.26%`), and the `reason`. A row covers only that exact drop. |
+| `data/accepted-drops.csv` | Optional. The score drops that are on purpose: `address`, `from` and `to` as the gate prints them (`100.00%`, `76.26%`), and the `reason`. For a global, `from` is `matched` and `to` is `differs` or `gone`. A row covers only that exact drop. |
 | `data/llm-hints.txt` | Optional. The game's facts for the system prompt of `tools/llm.py`, such as which release the exe is. |
 | `src/header-functions.h` | `LIBRARY` annotations for header functions the linker kept in game code, such as `swprintf`. Written by hand in a header. The lint rejects them in a `.cpp`. |
 | `CLAUDE.md` | Imports `docs/CLAUDE-GENERIC.md`, then adds the game's facts for Claude. |
@@ -67,7 +67,7 @@ Constants compare by value. reccmp finds a float or string literal only where a 
 
 **Game functions** are the functions in `data/functions.csv` in a `game` range of `data/codegen-groups.csv`. Functions in `library` ranges do not count. Compiler-made code, such as the `Unwind@` funclets, does not count either. It gets a `library` range of its own. A function's catch blocks and the filters and handlers of its SEH `__try` blocks are part of it. Runtime functions listed in `src/library.csv` show apart. Game functions with a `LIBRARY` annotation also show apart. Every function annotation must be at the start of a game function, or the annotation lint fails. A `STUB` is the one exception. It can start any function in `data/functions.csv`, such as a library function that game code calls. The totals skip stubs.
 
-The same source always gives the same score. `docs/progress/summary.json` keeps the last accepted score of every function. `check.py gate` fails if any score drops. The one exception is a drop that `data/accepted-drops.csv` names with its exact old and new score, such as a trick taken out of a function. CI reads the same file.
+The same source always gives the same score. `docs/progress/summary.json` keeps the last accepted score of every function. `check.py gate` fails if any score drops. The one exception is a drop that `data/accepted-drops.csv` names with its exact old and new score, such as a trick taken out of a function. A global that stops matching needs a row too, with `matched` and `differs` or `gone`. CI reads the same file.
 
 Three checks show that the toolchain is the game's own:
 

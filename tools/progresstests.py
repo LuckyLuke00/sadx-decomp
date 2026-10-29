@@ -61,6 +61,23 @@ def check_accepted_drops() -> list[str]:
     return failures
 
 
+def check_accepted_data_drops() -> list[str]:
+    """A row for a global accepts only its own drop: matched to differs, or matched to gone. A row with scores, as for a
+    function, accepts no drop of a global."""
+    old = summary(("0x00a00000", 4, True))
+    differs, gone = summary(("0x00a00000", 4, False)), summary()
+    cases = [("a differs row and a global that differs", ("matched", "differs"), differs, 0),
+             ("a differs row and a global that is gone", ("matched", "differs"), gone, 1),
+             ("a gone row and a global that is gone", ("matched", "gone"), gone, 0),
+             ("a row with scores", ("100.00%", "0.00%"), differs, 1)]
+    failures = []
+    for name, row, current, wanted in cases:
+        found = scoring.find_regressions(old, current, {("0x00a00000", *row)})
+        if len(found) != wanted:
+            failures.append(f"find_regressions finds {len(found)} drops for {name}, not {wanted}")
+    return failures
+
+
 def check_emblems() -> list[str]:
     """An area emblem needs all of the area's code bytes."""
     found = scoring.emblems([("Area", scoring.Bytes(10, 10, 10)), ("Other", scoring.Bytes(10, 9, 10))])
@@ -92,7 +109,7 @@ def check_score_changes() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_count_text, check_data_share, check_data_regressions, check_accepted_drops, check_emblems,
-                  check_score_changes):
+    for check in (check_count_text, check_data_share, check_data_regressions, check_accepted_drops,
+                  check_accepted_data_drops, check_emblems, check_score_changes):
         failures += check()
     return failures
