@@ -1,8 +1,5 @@
 #include "decls.h"
 extern long action_button;
-struct NJS_LINE {
-	struct NJS_POINT3 b;
-};
 void FUN_0053e4f0(struct taskwk *param_1, int param_2, int param_3);
 struct task;
 extern struct NJS_TEXLIST texlist_m_sboard_snowboard;

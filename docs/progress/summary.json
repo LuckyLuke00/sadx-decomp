@@ -59094,8 +59094,16 @@
    "library": false
   },
   {
+   "address": "0x0084c000",
+   "name": "ObjectSkydeck_OCM_Exec",
+   "accuracy": 0.05555555555555555,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0084c050",
-   "name": "ObjectSkydeck_OCM",
+   "name": "ObjectSkydeck_OCM_End",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59103,7 +59111,7 @@
   },
   {
    "address": "0x0084c070",
-   "name": "OCMref",
+   "name": "ObjectSkydeck_OCM",
    "accuracy": 0.25,
    "effective": false,
    "stub": true,
@@ -67007,7 +67015,7 @@
   },
   {
    "address": "0x008d7d30",
-   "name": "FUN_008d7d30",
+   "name": "CreateSaiCatSmoke",
    "accuracy": 0.07142857142857142,
    "effective": false,
    "stub": true,
@@ -67015,7 +67023,7 @@
   },
   {
    "address": "0x008d7e80",
-   "name": "CreateSaiCatSmoke",
+   "name": "FUN_008d7e80",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -96578,5 +96586,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6128f133a98df2817db5add204d6c5a1e1c6b97704d73b741ad5d3df5460901c"
+ "inputs_sha256": "c575f8d2d336f42a8c12e200aab3de65b0f1dcd775219db84682c8d6c16126d2"
 }

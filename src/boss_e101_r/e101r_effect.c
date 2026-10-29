@@ -6,8 +6,8 @@ void FUN_0060d560(struct NJS_POINT3 *, float);
 extern "C" int rand(void);
 static void exec_Lightning(struct task *pTask);
 struct GHPARTICLE_INFO {
-	float fLife;
-	float fLifeEnd;
+	float fFriction;
+	float fGravity;
 };
 void FUN_0070e240(struct GHPARTICLE *param_1);
 extern struct task *DAT_060c4a9c;
@@ -73,8 +73,8 @@ void E101R_EfWaveAccumeInit()
 {
 	struct GHPARTICLE_INFO info;
 	ghSpriteAnimTableInit(&_texlist_e101r, &animtable_waveaccume[0], 0);
-	info.fLife = 0.03f;
-	info.fLifeEnd = 0.0f;
+	info.fFriction = 0.03f;
+	info.fGravity = 0.0f;
 	DAT_060c4aa0 = ghParticleControlSet(0x64, &info, &animtable_waveaccume[0], moveWaveAccume);
 }
 
@@ -127,8 +127,8 @@ void E101R_EfShotFlickInit()
 	struct GHPARTICLE_INFO local_c;
 	ghSpriteAnimTableInit(&_texlist_e101r, &animtable_flick[0], 0);
 	ghSpriteAnimTableInit(&_texlist_e101r, &animtable_flick_part[0], 0);
-	local_c.fLife = 0.03f;
-	local_c.fLifeEnd = 0.0f;
+	local_c.fFriction = 0.03f;
+	local_c.fGravity = 0.0f;
 	DAT_060c4a9c = ghParticleControlSet(0x14, &local_c, &animtable_flick_part[0], 0);
 }
 

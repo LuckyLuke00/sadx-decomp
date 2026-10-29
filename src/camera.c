@@ -17,8 +17,6 @@ void ResetMaterial();
 struct playerwk *GetPlayerWorkPointer(unsigned char pno);
 extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 struct NJS_POINT3;
-struct NJS_LINE {
-};
 void FUN_004bf070(int param_1);
 void FUN_004bb340();
 void CameraManager();

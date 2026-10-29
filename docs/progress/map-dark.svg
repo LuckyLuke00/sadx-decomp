@@ -911,7 +911,7 @@
 <rect x="14" y="84" width="6" height="6" fill="#ffd700"><title>0x0084b4a0 ObjectSkydeck_cannon_b: 100%</title></rect>
 <rect x="63" y="84" width="6" height="6" fill="#ffd700"><title>0x0084be90 CreateEffSmallBomb1: 100%</title></rect>
 <rect x="70" y="84" width="6" height="6" fill="#ffd700"><title>0x0084bed0 ObjectSkydeck_eff_bomb1: 100%</title></rect>
-<rect x="91" y="84" width="6" height="6" fill="#ffd700"><title>0x0084c050 ObjectSkydeck_OCM: 100%</title></rect>
+<rect x="91" y="84" width="6" height="6" fill="#ffd700"><title>0x0084c050 ObjectSkydeck_OCM_End: 100%</title></rect>
 <rect x="119" y="84" width="6" height="6" fill="#ffd700"><title>0x0084c130 OCMsearchRideobj: 100%</title></rect>
 <rect x="140" y="84" width="6" height="6" fill="#ffd700"><title>0x0084c4d0 OCMsearchObjByTypeFlagmaskNum: 100%</title></rect>
 <rect x="147" y="84" width="6" height="6" fill="#ffd700"><title>0x0084c520 RegisterAnimCallbackFunc: 100%</title></rect>
@@ -4181,7 +4181,7 @@
 <rect x="35" y="119" width="6" height="6" fill="#ffd700"><title>0x008d76c0 FUN_008d76c0: 100%</title></rect>
 <rect x="42" y="119" width="6" height="6" fill="#ffd700"><title>0x008d7730 FUN_008d7730: 100%</title></rect>
 <rect x="77" y="119" width="6" height="6" fill="#ffd700"><title>0x008d7d00 FUN_008d7d00: 100%</title></rect>
-<rect x="7" y="126" width="6" height="6" fill="#ffd700"><title>0x008d7e80 CreateSaiCatSmoke: 100%</title></rect>
+<rect x="7" y="126" width="6" height="6" fill="#ffd700"><title>0x008d7e80 FUN_008d7e80: 100%</title></rect>
 <rect x="14" y="126" width="6" height="6" fill="#ffd700"><title>0x008d8580 FUN_008d8580: 100%</title></rect>
 <rect x="21" y="126" width="6" height="6" fill="#ffd700"><title>0x008d8710 FUN_008d8710: 100%</title></rect>
 <rect x="28" y="126" width="6" height="6" fill="#ffd700"><title>0x008d8730 SaiEditMode: 100%</title></rect>

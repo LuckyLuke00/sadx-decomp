@@ -1,7 +1,4 @@
 #include "decls.h"
-struct SandSmokeParam {
-	int h;
-};
 extern char DAT_035af758[1];
 extern char DAT_035af714[1];
 extern void njPushMatrix(float *);

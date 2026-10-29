@@ -2,7 +2,7 @@
 extern struct taskwk *DAT_05b42a7c;
 struct StartBgmParam {
 	int bgmId;
-	int time;
+	int timer;
 };
 extern struct TaskInfo StartBgmTaskInfo;
 struct StartBgmParam;
@@ -17,7 +17,7 @@ struct task *MirenSoundSetStartBgmTask(int bgmId, int time)
 	if (DAT_05ccdeb0 == NULL)
 	{
 		param.bgmId = bgmId;
-		param.time = time;
+		param.timer = time;
 		local_8g = MirenSetTask((enum tasklevel)0, &StartBgmTaskInfo, &param);
 		DAT_05ccdeb0 = local_8g;
 	}
