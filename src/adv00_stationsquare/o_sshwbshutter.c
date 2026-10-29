@@ -38,11 +38,6 @@ void ObjectMainMiles(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0068acb0
-void ObjectMain(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0068ada0
 void ObjectSSHwbshutter(struct task *tp)
 {
