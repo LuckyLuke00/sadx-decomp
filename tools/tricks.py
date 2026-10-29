@@ -3,7 +3,7 @@
 A trick is one of these:
 - inline assembly, `__emit`, `__declspec(naked)`, `#pragma` or `__pragma` in the function: forbidden(), the words
   the local model's harness refuses;
-- `volatile` or `__declspec(safebuffers)` in the function;
+- `volatile`, `__restrict`, `__declspec(safebuffers)` or `__declspec(noinline)` in the function;
 - a global declared `volatile` at file level in any source, used in the function;
 - a place after a file-level pragma that changes the code, such as `#pragma auto_inline(off)`, and before the pragma
   that resets it.
@@ -22,7 +22,7 @@ from pathlib import Path
 import names
 
 FORBIDDEN = re.compile(r"\b(?:__asm|_asm|asm|__emit|__pragma)\b|__declspec\s*\(\s*naked\s*\)|#\s*pragma\b")  # not C
-KEYWORDS = re.compile(r"\bvolatile\b|__declspec\s*\(\s*safebuffers\s*\)")
+KEYWORDS = re.compile(r"\bvolatile\b|\b__restrict\b|__declspec\s*\(\s*(?:safebuffers|noinline)\s*\)")
 VOLATILE = re.compile(r"\bvolatile\b")
 PRAGMA = re.compile(r"^\s*(?:#\s*pragma\s+|__pragma\s*\(\s*)(\w+)\s*(?:\((.*?)\))?")
 HARMLESS_PRAGMAS = {"once", "warning", "push_macro", "pop_macro", "pack"}  # they change no function's code
