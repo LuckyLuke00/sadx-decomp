@@ -48704,8 +48704,7 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x007071b0",
@@ -96616,5 +96615,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b7490b5a31702a233f06dbc00d2b6a6f5bc943fcd003855d9db755917369dd2c"
+ "inputs_sha256": "e36d96c55cc4b2ab974ace4ef229f71f48952e9329f128aad3136870eb32e22e"
 }
