@@ -4905,10 +4905,10 @@ unsigned char DAT_05b3e356;
 Magic::RenderCore::Texture* DAT_05b3e36c;
 
 // GLOBAL: SADX 0x05b3e378
-void *DAT_05b3e378;
+Magic::RenderCore::Texture *DAT_05b3e378;
 
 // GLOBAL: SADX 0x05b3e37c
-void *DAT_05b3e37c;
+Magic::RenderCore::Texture *DAT_05b3e37c;
 
 // GLOBAL: SADX 0x05b3e388
 int DAT_05b3e388;
@@ -7059,22 +7059,22 @@ struct task *DAT_05edd870;
 void *DAT_05edd874;
 
 // GLOBAL: SADX 0x05edd884
-void *DAT_05edd884;
+Magic::RenderCore::Texture *DAT_05edd884;
 
 // GLOBAL: SADX 0x05edd888
 struct task *DAT_05edd888;
 
 // GLOBAL: SADX 0x05edd88c
-void *DAT_05edd88c;
+Magic::RenderCore::Texture *DAT_05edd88c;
 
 // GLOBAL: SADX 0x05edd898
-void *DAT_05edd898;
+Magic::RenderCore::Texture *DAT_05edd898;
 
 // GLOBAL: SADX 0x05edd89c
 struct task *DAT_05edd89c;
 
 // GLOBAL: SADX 0x05edd8a0
-void *DAT_05edd8a0;
+Magic::RenderCore::Texture *DAT_05edd8a0;
 
 // GLOBAL: SADX 0x05edd91c
 struct task *DAT_05edd91c;
@@ -7083,10 +7083,10 @@ struct task *DAT_05edd91c;
 unsigned char DAT_05edd940;
 
 // GLOBAL: SADX 0x05edd944
-void *DAT_05edd944;
+Magic::RenderCore::Texture *DAT_05edd944;
 
 // GLOBAL: SADX 0x05edd954
-void *DAT_05edd954;
+Magic::RenderCore::Texture *DAT_05edd954;
 
 // GLOBAL: SADX 0x05edd990
 struct task *DAT_05edd990;
