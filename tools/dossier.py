@@ -111,38 +111,17 @@ def known_globals(tables: Path | None, sources: dict[str, str], before: names.Pr
             a = int(r["address"], 16)
             r = dict(r, name=f"DAT_{a:08x}") if counts[r["name"]] > 1 else r
             found[a] = Global(a, int(r["size"] or 0), r["name"], names.row_declaration(r))
-    definitions = [(address, sig) for text in sources.values()
-                   for kind, address, sig in names.parse_annotations(text) if kind == "GLOBAL"]
-    for address, sig in definitions + list(before.globals.items()):
-        definition = sig.split("=")[0].strip()
+    for address, definition in names.global_definitions(sources, before):
         name = names.declared_name(definition)
         if name:
-            found.setdefault(address, Global(address, global_size(definition, name, types), name, definition))
+            found.setdefault(address, Global(address, names.global_size(definition, name, types), name, definition))
     return sorted(found.values())
-
-
-def global_size(definition: str, name: str, types: names.Types) -> int:
-    """The bytes a definition takes, or 0 when a type's size is unknown."""
-    _, element, counts = element_layout(definition, name, types)
-    if element is None or None in counts:
-        return 0
-    return element * math.prod(counts)
-
-
-def element_layout(definition: str, name: str, types: names.Types) -> tuple[str, int | None, list[int | None]]:
-    """(the element type of a definition, its size or None when unknown, the count in each of its array brackets:
-    decimal or hex, else None)."""
-    head, _, tail = definition.partition(name)
-    base = re.sub(r"\b(?:static|extern)\b", "", head).strip()
-    counts = [int(count, 0) if re.fullmatch(r"[1-9]\d*|0[xX][0-9a-fA-F]+", count) else None
-              for count in re.findall(r"\[\s*(\w*)\s*\]", tail)]
-    return base, names.element_size(base, types), counts
 
 
 def member_path(g: Global, offset: int, types: names.Types) -> str | None:
     """The element and member of G that OFFSET falls in, such as name[2].speed or name[0].pos+0x4, or None when G is
     no array and its type has no known layout."""
-    base, element, counts = element_layout(g.decl, g.name, types)
+    base, element, counts = names.element_layout(g.decl, g.name, types)
     if element is None or None in counts[1:]:
         return None
     path, rest = g.name, offset

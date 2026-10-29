@@ -205,7 +205,7 @@ def watched(texts: dict[str, str], addresses: list[int], in_image) -> tuple[int,
     puns = others = 0
     for address in addresses:
         func = definition(texts, address)
-        kinds = [kind for kind, _ in fakematch.found(func, llm.signature_index(func), in_image)]
+        kinds = [kind for kind, _ in fakematch.found(func, names.signature_index(func), in_image)]
         puns += kinds.count("address_pun")
         others += len(kinds) - kinds.count("address_pun")
     return puns, others

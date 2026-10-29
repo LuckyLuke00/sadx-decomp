@@ -19,7 +19,7 @@ def check_signature_index() -> list[str]:
              ([ANN, "// void Bar(void)", "static int Foo(int a)", "{", "// not a signature", "}"], 2)]
     failures = []
     for func, wanted in cases:
-        found = llm.signature_index(func)
+        found = names.signature_index(func)
         if found != wanted:
             failures.append(f"signature_index gives {found} for {func}, not {wanted}")
             continue

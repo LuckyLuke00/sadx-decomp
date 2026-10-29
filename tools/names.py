@@ -7,6 +7,7 @@ Standard library only.
 
 import csv
 import functools
+import math
 import re
 import sys
 from pathlib import Path
@@ -58,6 +59,12 @@ def blank_literals(text: str) -> str:
 def definition_end(lines: list[str], start: int) -> int | None:
     """Index of the first line that is exactly "}" from START on, or None."""
     return next((i for i in range(start, len(lines)) if lines[i] == "}"), None)
+
+
+def signature_index(func: list[str]) -> int:
+    """Index in FUNC, a definition's lines from its annotation on, of the signature: the first line after the
+    annotation that is not blank or a `//` comment, as parse_annotations reads it."""
+    return next(i for i, line in enumerate(func) if i > 0 and line.strip() and not line.lstrip().startswith("//"))
 
 
 def read_sources(root: Path) -> dict[str, str]:
@@ -230,6 +237,14 @@ def previous(root: Path) -> Previous:
     return Previous(stubs, definitions, externs)
 
 
+def global_definitions(sources: dict[str, str], before: Previous) -> list[tuple[int, str]]:
+    """(address, definition without its initializer) of each global in the GLOBAL annotations of SOURCES, path: text,
+    then in the files declgen.py wrote last."""
+    found = [(address, sig) for text in sources.values()
+             for kind, address, sig in parse_annotations(text) if kind == "GLOBAL"]
+    return [(address, sig.split("=")[0].strip()) for address, sig in found + list(before.globals.items())]
+
+
 def table_rows(path: Path) -> list[dict]:
     with open(path, encoding="utf-8", newline="") as f:
         return list(csv.DictReader(f, delimiter="\t"))
@@ -287,3 +302,21 @@ def element_size(base: str, types: Types) -> int | None:
     if t.startswith("enum "):
         return 4
     return None
+
+
+def global_size(definition: str, name: str, types: Types) -> int:
+    """The bytes a definition takes, or 0 when a type's size is unknown."""
+    _, element, counts = element_layout(definition, name, types)
+    if element is None or None in counts:
+        return 0
+    return element * math.prod(counts)
+
+
+def element_layout(definition: str, name: str, types: Types) -> tuple[str, int | None, list[int | None]]:
+    """(the element type of a definition, its size or None when unknown, the count in each of its array brackets:
+    decimal or hex, else None)."""
+    head, _, tail = definition.partition(name)
+    base = re.sub(r"\b(?:static|extern)\b", "", head).strip()
+    counts = [int(count, 0) if re.fullmatch(r"[1-9]\d*|0[xX][0-9a-fA-F]+", count) else None
+              for count in re.findall(r"\[\s*(\w*)\s*\]", tail)]
+    return base, element_size(base, types), counts
