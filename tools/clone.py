@@ -379,11 +379,19 @@ def check_locals(template_locals: str, copy_locals: str, definition: list[str]) 
             raise Skip("locals differ", f"the copy's locals lack `{decl}`")
 
 
-def check_globals(pairs: dict[str, Pair], shared: set[str]) -> None:
-    """The copy must not use a global whose name is in SHARED, the names that several globals have."""
+def check_globals(pairs: dict[str, Pair], shared: set[str], shared_names: dict[int, str], words: set[str]) -> None:
+    """The copy must not use a global whose name is in SHARED, the names that several globals have. SHARED_NAMES
+    gives such a name by address for the tables' globals, which the namer spells as DAT_: decls wants each of them
+    static, also as DAT_. A template whose body, with the names WORDS, spells one by the name passes it to the copy:
+    no rename reaches it."""
     for pair in pairs.values():
-        if pair.kind == "global" and pair.new in shared:
+        if pair.kind != "global":
+            continue
+        if pair.new in shared or pair.copy in shared_names:
             raise Skip("shared name", f"{pair.new} 0x{pair.copy:08x} is a global with the name of others")
+        if shared_names.get(pair.template) in words:
+            name = shared_names[pair.template]
+            raise Skip("shared name", f"the template spells {name} 0x{pair.template:08x}, a name of several globals")
 
 
 class Tree:
@@ -397,6 +405,9 @@ class Tree:
         globals_ = dossier.known_globals(tables, sources, before, types)
         count = collections.Counter(g.name for g in globals_)
         self.shared_globals = {name for name, number in count.items() if number > 1}
+        runtime = {row.name for row in project.library_rows() if row.kind == "library"}
+        shared = declgen.load_tables(runtime, tables)[4]  # decls's own: name: addresses
+        self.shared_names = {a: name for name, addresses in shared.items() for a in addresses}
         rows = progress.load_functions()
         self.sizes = {f["address"]: f["size"] for f in rows}
         library = {row.address: row.name for row in project.library_rows()}
@@ -474,9 +485,10 @@ class Tree:
     def plan(self, address: int, template: int) -> Copy:
         """The copy at ADDRESS, written from TEMPLATE."""
         pairs = name_map(self.namer, self.image, self.shape(template), self.shape(address))
-        check_globals(pairs, self.shared_globals)
-        template_file = self.defined[template][0]
         definition = self.definition(template)
+        words = set(NAME.findall(names.strip_code("\n".join(definition))))
+        check_globals(pairs, self.shared_globals, self.shared_names, words)
+        template_file = self.defined[template][0]
         template_sig = names.parse_annotations("\n".join(definition))[0][2]
         own = self.functions.get(address)
         name = self.name(address)

@@ -692,20 +692,30 @@ def check_clone_stubs(clone) -> list[str]:
 
 def check_clone_globals(clone) -> list[str]:
     """A copy is skipped when it uses a global whose name several globals have, also when the template's name is the
-    same (decls then fails on two copies). A function with such a name, or a global with a name of its own, passes."""
-    shared = {"missile_smoke"}
+    same (decls then fails on two copies). The namer spells a global that the tables give such a name as DAT_, so a
+    copy is also skipped when its global has such a name, even as DAT_, or when the template's body spells the
+    template's global by such a name, which no rename reaches. A template's DAT_ for one, a function with such a name,
+    or a global with a name of its own, passes."""
+    shared, shared_names = {"missile_smoke"}, {0x2C0CAE0: "texuvinfo", 0x3B76128: "texuvinfo"}
     smoke = clone.Pair("missile_smoke", "global", 0x2C0CAE0, 0x3B76128)
-    cases = [({"missile_smoke": smoke}, True), ({"missile_smoke": smoke._replace(kind="function")}, False),
-             ({"missile_smoke": smoke._replace(new="DAT_03b76128")}, False), ({}, False)]
+    spelled = smoke._replace(new="DAT_03b76128")
+    unshared = spelled._replace(new="DAT_00600010", copy=0x600010)
+    own = clone.Pair("DAT_00600010", "global", 0x600000, 0x600010)
+    cases = [({"missile_smoke": smoke}, set(), True),
+             ({"missile_smoke": smoke._replace(kind="function")}, set(), False),
+             ({"DAT_02c0cae0": spelled}, {"tp", "DAT_02c0cae0"}, True),
+             ({"DAT_02c0cae0": unshared}, {"tp", "texuvinfo"}, True),
+             ({"DAT_02c0cae0": unshared}, {"tp", "DAT_02c0cae0"}, False),
+             ({"DAT_00600000": own}, {"texuvinfo"}, False), ({}, set(), False)]
     failures = []
-    for pairs, skipped in cases:
+    for pairs, words, skipped in cases:
         try:
-            clone.check_globals(pairs, shared)
+            clone.check_globals(pairs, shared, shared_names, words)
             found = False
         except clone.Skip as skip:
             found = skip.kind == "shared name"
         if found != skipped:
-            failures.append(f"clone global check {'skips' if found else 'passes'} {pairs}")
+            failures.append(f"clone global check {'skips' if found else 'passes'} {pairs} with {sorted(words)}")
     return failures
 
 
