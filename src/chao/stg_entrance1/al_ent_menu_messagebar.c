@@ -1,5 +1,20 @@
 #include "decls.h"
+static void FDisp(struct task *tp);
 extern struct task *DAT_05b33048;
+
+#pragma optimize("", off)
+// STUB: SADX 0x00474760
+static void FDisp(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x00474820
+void FExec(struct task *tp)
+{
+	AlMsgTelopExec((struct SAlMsgTelop *)tp->awp->work.ptr[0]);
+	FDisp(tp);
+}
 
 // STUB: SADX 0x00474840
 struct task *MessageBarCreate(struct task *parent_tp)

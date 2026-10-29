@@ -2600,6 +2600,7 @@ void ALO_RingWinSetPos(float px, float py, unsigned long flag);
 void FUN_00711c20();
 struct al_status *ADV1_ALR_GetEntryStatus(int num);
 void AlMsgTelopClear(struct SAlMsgTelop *self);
+void AlMsgTelopExec(struct SAlMsgTelop *self);
 void DrawSaltWater3D_39();
 void __fastcall FUN_00713b10(enum eCHAO_STAGE_NUMBER param_1);
 void ALO_OdekakeMachine(struct task *tp);

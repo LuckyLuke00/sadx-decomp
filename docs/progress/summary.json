@@ -9546,6 +9546,22 @@
    "library": false
   },
   {
+   "address": "0x00474760",
+   "name": "FDisp(4)",
+   "accuracy": 0.037037037037037035,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00474820",
+   "name": "FExec(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00474840",
    "name": "MessageBarCreate",
    "accuracy": 0.02857142857142857,
@@ -37500,7 +37516,7 @@
   },
   {
    "address": "0x005e8530",
-   "name": "FExec(4)",
+   "name": "FExec(5)",
    "accuracy": 0.06349206349206349,
    "effective": false,
    "stub": true,
@@ -96620,5 +96636,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3922d819d141be3324e77d9a6c4aa577a07c95aeaf4406f19597a25efb292d94"
+ "inputs_sha256": "b12eec34f8915de371b35aa27781dde9b3d0312abd310ed9e179ce2003d6dda5"
 }
