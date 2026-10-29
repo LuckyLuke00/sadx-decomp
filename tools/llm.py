@@ -305,12 +305,6 @@ def unclosed_definitions(lines):
     return unclosed
 
 
-def signature_index(func):
-    """Index in FUNC, a definition's lines from its annotation on, of the signature: the first line after the
-    annotation that is not blank or a `//` comment, as names.parse_annotations reads it."""
-    return next(i for i, line in enumerate(func) if i > 0 and line.strip() and not line.lstrip().startswith("//"))
-
-
 def defined_name(text, address):
     """The name of TEXT's definition at ADDRESS, or None when it has none."""
     lines = text.split("\n")
@@ -455,7 +449,7 @@ def shared_names(tables):
 def without_static(func, shared):
     """FUNC's lines without `static` before its signature, or None when its signature has none or its name may be
     in SHARED (None: unknown). A function without `static` clashes with any other function of its name."""
-    at = signature_index(func)
+    at = names.signature_index(func)
     if not re.match(r"static\s", func[at]):
         return None
     signature = re.sub(r"^static\s+", "", func[at])
@@ -474,7 +468,7 @@ def kept_alive(text, address, shared):
     if span is None:
         return text
     func = lines[span[0]:span[1] + 1]
-    signature = func[signature_index(func)]
+    signature = func[names.signature_index(func)]
     name = names.declared_name(signature)
     if not re.match(r"static\s", signature) or shared is not None and name not in shared:
         return text
@@ -645,7 +639,7 @@ def cast_calls(func, decls, clashed):
     `((void (*)(int, int))f)(a, b)`. The call then builds whatever the tree declares, and compiles to the same code."""
     types = {name: re.sub(rf"\b{name}\s*\(", "(*)(", re.sub(r"^(extern|static)\s+", "", decl), count=1)
              for d in decls for name, decl in line_declarations(d) if name in clashed}
-    at = signature_index(func)
+    at = names.signature_index(func)
     body = func[at + 1:]
     for name, pointer in types.items():
         call = re.compile(rf"(?<![\w.>&]){name}\s*\(")
@@ -724,7 +718,7 @@ def cast_globals(func, decls, dropped):
     the same code."""
     pointers = {name: re.sub(rf"\b{name}\b", "(*)", decl, count=1)
                 for d in decls for name, decl in names.local_declarations(d)[1] if name in dropped}
-    at = signature_index(func)
+    at = names.signature_index(func)
     body, changed = func[at + 1:], set()
     for name, pointer in pointers.items():
         use = re.compile(rf"(?<![\w.])(?<!->){name}\b(?!\s*\()")
@@ -778,7 +772,7 @@ def declared_scope(func, decls, attempt, wanted, headers):
         if declared:
             scope.setdefault(*declared)
 
-    span = names.parameter_span(func[signature_index(func)])
+    span = names.parameter_span(func[names.signature_index(func)])
     for parameter in span[2] if span else ():
         add(parameter)
     for line in func[1:] + decls + attempt[:first_function_line(attempt)]:
@@ -848,7 +842,7 @@ def add_casts(func, attempt, text, path, address, kinds, refused=()):
     neither does a Conversion in REFUSED. KINDS is the kind of each tag in the tree, for tagged."""
     lines = attempt.split("\n")
     span = definition_span(lines, address)
-    first = signature_index(func)
+    first = names.signature_index(func)
     continued = cfix.continued_lines(func)
     cast, applied = list(func), []
     for conversion in conversions(text) if span else []:
@@ -1576,7 +1570,7 @@ def solve_function(args, file, address, transcript):
                 if repairs.renamed:
                     shown = "```cpp\n" + "\n".join(model.decls + [""] + model.func) + "\n```"
                 if in_image and percent == 100:
-                    refused = (fakematch.found(build.func, signature_index(build.func), in_image)
+                    refused = (fakematch.found(build.func, names.signature_index(build.func), in_image)
                                + fakematch.constant_globals(build.decls, literal_at))
                 if refused:
                     note = repairs.note() + refusal(refused, lambda a: symbol_at(table_symbols(config["tables"]), a),

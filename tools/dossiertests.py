@@ -31,7 +31,7 @@ def check_global_size() -> list[str]:
     cases = [("char DAT_x[0x400]", 0x400), ("int DAT_x[10]", 40), ("struct work DAT_x[2][3]", 48),
              ("int DAT_x[]", 0), ("struct task DAT_x", 0)]
     return [f"global_size gives {found} for {definition!r}, not {wanted}" for definition, wanted in cases
-            if (found := dossier.global_size(definition, "DAT_x", types)) != wanted]
+            if (found := names.global_size(definition, "DAT_x", types)) != wanted]
 
 
 def check_member_path() -> list[str]:
