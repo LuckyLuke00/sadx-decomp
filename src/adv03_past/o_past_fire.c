@@ -1,10 +1,10 @@
 #include "decls.h"
 extern float DAT_05b3df40;
-static __declspec(noinline) void DispPastChaosFire(struct task *tp);
+static void DispPastChaosFire(struct task *tp);
 extern long DAT_060b97f0;
 
 // FUNCTION: SADX 0x006bf800
-static __declspec(noinline) void DispPastChaosFire(struct task *tp)
+static void DispPastChaosFire(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
