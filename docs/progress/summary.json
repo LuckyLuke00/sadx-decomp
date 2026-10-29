@@ -63541,14 +63541,22 @@
   {
    "address": "0x00890b20",
    "name": "FUN_00890b20",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00890b60",
    "name": "FEGG_ResetAmysFakeRoot",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00890c10",
+   "name": "ColliFinalEggFakeRoot",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63573,6 +63581,22 @@
   {
    "address": "0x00891100",
    "name": "FinalEggSetAppearZERO",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00891110",
+   "name": "FUN_00891110",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00891150",
+   "name": "ObjectFinalEggRelease",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63621,9 +63645,33 @@
   {
    "address": "0x00893130",
    "name": "ObjectFinalEggHane",
-   "accuracy": 0.041666666666666664,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008933d0",
+   "name": "DrawBoxColli",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008934d0",
+   "name": "ColliFinalEggAppearZERO",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00893580",
+   "name": "ColliFinalEggKillZERO",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -95447,6 +95495,13 @@
    "library": false
   },
   {
+   "address": "0x048a58c0",
+   "name": "cinfo_appear",
+   "size": 48,
+   "match": true,
+   "library": false
+  },
+  {
    "address": "0x048a58f0",
    "name": "cinfo_drum",
    "size": 48,
@@ -96989,5 +97044,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b946426944c89e72f15fc7faf1c801a0c9a80c37cceaa9e72ab6bb8b029999f8"
+ "inputs_sha256": "1874e4b7e317a533bcd6f7cca11a40613fc622d36e6d59acd4b9055509621ff1"
 }

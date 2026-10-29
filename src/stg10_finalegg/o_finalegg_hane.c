@@ -44,7 +44,16 @@ void hane_exec(struct task *task_p)
 	dsPlay_timer_v(0x3ed, (int)task_p, 1, 0, 2, var1->pos.x, var1->pos.y, var1->pos.z);
 }
 
-// STUB: SADX 0x00893130
+// FUNCTION: SADX 0x00893130
 void ObjectFinalEggHane(struct task *task_p)
 {
+	struct taskwk *var1 = task_p->twp;
+	var1->value.l = var1->ang.x ? var1->ang.x : 0xb6;
+	var1->ang.x = 0;
+	var1->scl.x = var1->scl.x < 0.01f ? 1.0f : var1->scl.x;
+	var1->scl.y = var1->scl.y < 0.01f ? 1.0f : var1->scl.y;
+	var1->scl.z = var1->scl.z < 0.01f ? 1.0f : var1->scl.z;
+	task_p->exec = hane_exec;
+	task_p->disp = hane_draw;
+	task_p->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }
