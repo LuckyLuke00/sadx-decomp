@@ -14,8 +14,7 @@ decompiled: a tables row's prototype still shows.
 
 Names come from the tree's annotations, the files `check.py decls` wrote last,
 src/library.csv and the --tables folder (tools/declgen.py says what it holds). A LIBRARY annotation's
-name wins over a tables row: the build checks it, and a row can carry the name of another function with the
-same code. --context
+name wins over a tables row: the build checks it. --context
 adds another checkout's annotations and last decls files, as decls does: this tree's own win.
 Needs capstone, so it runs in .venv.
 """

@@ -651,7 +651,7 @@ static_assert(offsetof(ADV1_AL_FACE, mouse2_default_num) == 0x42, "ADV1_AL_FACE:
 static_assert(offsetof(ADV1_AL_FACE, mouse1_request_num) == 0x44, "ADV1_AL_FACE::mouse1_request_num");
 static_assert(offsetof(ADV1_AL_FACE, mouse2_request_num) == 0x46, "ADV1_AL_FACE::mouse2_request_num");
 
-// Some offsets are wrong for this exe: check them against the code.
+// Some offsets may be wrong: check them against the code.
 struct NJS_BGRA {
     unsigned char a;
     unsigned char r;
@@ -664,7 +664,7 @@ static_assert(offsetof(NJS_BGRA, r) == 0x1, "NJS_BGRA::r");
 static_assert(offsetof(NJS_BGRA, g) == 0x2, "NJS_BGRA::g");
 static_assert(offsetof(NJS_BGRA, b) == 0x3, "NJS_BGRA::b");
 
-// Some offsets are wrong for this exe: check them against the code.
+// Some offsets may be wrong: check them against the code.
 struct NJS_TEX {
     short v;
     short u;

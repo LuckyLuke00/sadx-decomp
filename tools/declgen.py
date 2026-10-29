@@ -19,12 +19,12 @@ library's headers.
 
 A tables folder holds tab-separated files with a header row, for names the tree
 does not know yet. Other columns are ignored.
-  functions.tsv  address, name, proto, scope (G global, L static), file (the source file it belongs in),
+  functions.tsv  address, name, proto, scope (G global, L static), file (the tree file it goes in),
                  note (a line `check.py dossier` prints), locals (local declarations,
-                 `; `-separated, which `check.py dossier` prints; optional), object (the object file
-                 the function is in; optional)
+                 `; `-separated, which `check.py dossier` prints; optional), object (an id that groups the
+                 functions and globals of one file; optional)
   globals.tsv    address, name, decl ({} where the name goes), base, dims (comma-separated, ? when unknown), size,
-                 object (the object file the global is in; optional)
+                 object (as in functions.tsv; optional)
   types.h        struct, union and enum definitions, a blank line between blocks, with sizeof static_asserts
 
 A global name that several addresses share, such as one static in each object, means the address in an object that
