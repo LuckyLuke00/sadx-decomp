@@ -21804,9 +21804,9 @@
   {
    "address": "0x00501ec0",
    "name": "ReleaseTextureForEachGameMode",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21820,9 +21820,9 @@
   {
    "address": "0x00502210",
    "name": "SetRegularTexture",
-   "accuracy": 0.5263157894736842,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -33403,6 +33403,14 @@
    "library": false
   },
   {
+   "address": "0x005b7170",
+   "name": "objDisplay(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005b7490",
    "name": "CheckDynamiteBroken",
    "accuracy": 0.20408163265306123,
@@ -39780,7 +39788,7 @@
   },
   {
    "address": "0x0060ea40",
-   "name": "objDisplay",
+   "name": "objDisplay(2)",
    "accuracy": 0.04519774011299435,
    "effective": false,
    "stub": true,
@@ -96477,6 +96485,13 @@
    "library": false
   },
   {
+   "address": "0x05a9014c",
+   "name": "DAT_05a9014c",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x05a91394",
    "name": "DAT_05a91394",
    "size": 52,
@@ -96605,5 +96620,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a182b2e3c280d69595b6871aa80b5819340be90c80d7cc18f007356949e02c0f"
+ "inputs_sha256": "cdf72375238bcc7001a87eaa16e43f3f63ccf05e27c46a2b6e7cd55fd0d5a082"
 }

@@ -3977,6 +3977,9 @@ struct obj DAT_05a8c05c;
 // GLOBAL: SADX 0x05a8c248
 struct obj DAT_05a8c248;
 
+// GLOBAL: SADX 0x05a9014c
+struct obj DAT_05a9014c;
+
 // GLOBAL: SADX 0x05a91394
 struct obj DAT_05a91394;
 
@@ -5905,6 +5908,9 @@ int DAT_05cc25a8;
 
 // GLOBAL: SADX 0x05cc25b0
 struct NJS_TEXLIST *DAT_05cc25b0[1];
+
+// GLOBAL: SADX 0x05cc34c0
+struct NJS_TEXLIST *DAT_05cc34c0[5];
 
 // GLOBAL: SADX 0x05cc3540
 struct NJS_TEXLIST *DAT_05cc3540[5];
