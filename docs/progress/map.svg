@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1414" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,436 of 16,524 game functions done (32.89%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,437 of 16,524 game functions done (32.90%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1169.5 604.2,1169.5 605.9,1171 607,1172.6 601,1179.5 595,1172.6 596.1,1171" fill="#4e32f3"/>
 <polygon points="597.8,1169.5 604.2,1169.5 605.9,1171 607,1172.6 595,1172.6 596.1,1171" fill="#ffffff" fill-opacity="0.4"/>
@@ -1124,7 +1124,7 @@
 <polygon points="603.2,920.6 607,920.6 601,927.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="597.8,917.5 604.2,917.5 605.9,919 607,920.6 601,927.5 595,920.6 596.1,919" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="611" y="927" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">23%</tspan></text>
-<rect x="596" y="935" width="124" height="225" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 112 of 421 done</title></rect>
+<rect x="596" y="935" width="124" height="225" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 113 of 421 done</title></rect>
 <text x="599" y="949" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Station Square</text>
 <text x="599" y="964" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">26%</tspan></text>
 <g transform="translate(599,968)">
@@ -1193,7 +1193,7 @@
 <rect x="7" y="98" width="6" height="6" fill="#b07d00"><title>0x0068ab70 ObjectDisplayMiles: 100%</title></rect>
 <rect x="14" y="98" width="6" height="6" fill="#b07d00"><title>0x0068abe0 ObjectBroken: 100%</title></rect>
 <rect x="49" y="98" width="6" height="6" fill="#b07d00"><title>0x0068aed0 ObjectDisplay(3): 100%</title></rect>
-<rect x="56" y="98" width="6" height="6" fill="#b07d00"><title>0x0068af40 ObjectMain(2): 100%</title></rect>
+<rect x="56" y="98" width="6" height="6" fill="#b07d00"><title>0x0068af40 ObjectMain(3): 100%</title></rect>
 <rect x="98" y="98" width="6" height="6" fill="#b07d00"><title>0x0068b1e0 LampDisp: 100%</title></rect>
 <rect x="77" y="105" width="6" height="6" fill="#b07d00"><title>0x0068ba90 Disp(12): 100%</title></rect>
 <rect x="84" y="105" width="6" height="6" fill="#b07d00"><title>0x0068bb00 ObjectSSShop2boxmi: 100%</title></rect>
@@ -1214,6 +1214,7 @@
 <rect x="21" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c680 ObjectSSShop2radio: 100%</title></rect>
 <rect x="28" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c690 Disp(19): 100%</title></rect>
 <rect x="35" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c700 ObjectSSShop2kaseki: 100%</title></rect>
+<rect x="70" y="119" width="6" height="6" fill="#b07d00"><title>0x0068c8d0 dispSSCard(struct task *): 100%</title></rect>
 <rect x="98" y="119" width="6" height="6" fill="#b07d00"><title>0x0068ceb0 dispSSSignal: 100%</title></rect>
 <rect x="0" y="126" width="6" height="6" fill="#b07d00"><title>0x0068d0d0 dispSSShop1Solt: 100%</title></rect>
 <rect x="7" y="126" width="6" height="6" fill="#b07d00"><title>0x0068d160 ObjectSSShop1Solt: 100%</title></rect>
@@ -1234,7 +1235,7 @@
 <rect x="7" y="154" width="6" height="6" fill="#b07d00"><title>0x0068fbd0 ObjectWait: 100%</title></rect>
 <rect x="28" y="161" width="6" height="6" fill="#b07d00"><title>0x006908a0 FUN_006908a0: 100%</title></rect>
 <rect x="84" y="161" width="6" height="6" fill="#b07d00"><title>0x00690c80 ObjectDisplay(5): 100%</title></rect>
-<rect x="91" y="161" width="6" height="6" fill="#b07d00"><title>0x00690cd0 ObjectMain(4): 100%</title></rect>
+<rect x="91" y="161" width="6" height="6" fill="#b07d00"><title>0x00690cd0 ObjectMain(5): 100%</title></rect>
 <rect x="112" y="161" width="6" height="6" fill="#b07d00"><title>0x00690e40 KasyaDisplay: 100%</title></rect>
 <rect x="21" y="168" width="6" height="6" fill="#b07d00"><title>0x00691150 sstrain_adxdestruct: 100%</title></rect>
 <rect x="28" y="168" width="6" height="6" fill="#b07d00"><title>0x00691160 sstrain_adxprove: 100%</title></rect>

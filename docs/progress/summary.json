@@ -41555,6 +41555,14 @@
    "library": false
   },
   {
+   "address": "0x006816d0",
+   "name": "ObjectMain(struct task *)",
+   "accuracy": 0.03571428571428571,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00681770",
    "name": "ObjectClosed",
    "accuracy": 0.058823529411764705,
@@ -41566,6 +41574,14 @@
    "address": "0x006817d0",
    "name": "ObjectWaitKeyblock",
    "accuracy": 0.03508771929824561,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00681900",
+   "name": "ObjectSSHotelback",
+   "accuracy": 0.03125,
    "effective": false,
    "stub": true,
    "library": false
@@ -41924,8 +41940,8 @@
   },
   {
    "address": "0x00688370",
-   "name": "dispSSCard",
-   "accuracy": 0.02666666666666667,
+   "name": "dispSSCard(1)",
+   "accuracy": 0.02564102564102564,
    "effective": false,
    "stub": true,
    "library": false
@@ -42156,7 +42172,7 @@
   },
   {
    "address": "0x0068af40",
-   "name": "ObjectMain(2)",
+   "name": "ObjectMain(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42371,6 +42387,14 @@
    "library": false
   },
   {
+   "address": "0x0068c8d0",
+   "name": "dispSSCard(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0068ceb0",
    "name": "dispSSSignal",
    "accuracy": 1.0,
@@ -42548,7 +42572,7 @@
   },
   {
    "address": "0x0068f2b0",
-   "name": "ObjectMain(3)",
+   "name": "ObjectMain(4)",
    "accuracy": 0.045454545454545456,
    "effective": false,
    "stub": true,
@@ -42580,7 +42604,7 @@
   },
   {
    "address": "0x0068fb40",
-   "name": "ObjectClose",
+   "name": "ObjectClose(1)",
    "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
@@ -42611,6 +42635,14 @@
    "library": false
   },
   {
+   "address": "0x00690990",
+   "name": "ObjectClose(struct task *)",
+   "accuracy": 0.03773584905660377,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00690c80",
    "name": "ObjectDisplay(5)",
    "accuracy": 1.0,
@@ -42620,7 +42652,7 @@
   },
   {
    "address": "0x00690cd0",
-   "name": "ObjectMain(4)",
+   "name": "ObjectMain(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87002,6 +87034,27 @@
    "library": false
   },
   {
+   "address": "0x01c7e3ec",
+   "name": "object_sscasinosikake_hnakagen_hnakagen",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01c7e50c",
+   "name": "action_sscasinosikake_hnakagen",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01c813c4",
+   "name": "object_sscasinosikake_hnakagen_2_hnakagen",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x01c818d4",
    "name": "object_sssikake_pole_pole",
    "size": 52,
@@ -96636,5 +96689,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b12eec34f8915de371b35aa27781dde9b3d0312abd310ed9e179ce2003d6dda5"
+ "inputs_sha256": "413f8c739be293959af11e59b46d945481f7b88ab5b0e2d0bfc0a88c14f84269"
 }

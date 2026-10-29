@@ -1,4 +1,9 @@
 #include "decls.h"
+extern struct obj object_sscasinosikake_hnakagen_hnakagen[];
+extern struct obj object_sscasinosikake_hnakagen_2_hnakagen[];
+extern struct NJS_ACTION action_sscasinosikake_hnakagen[];
+extern short DAT_05b9d744;
+extern int DAT_05b9d838;
 extern unsigned char DAT_05bafb86;
 extern unsigned char DAT_05bafbc2;
 extern unsigned char DAT_05bafc02;
@@ -75,6 +80,13 @@ void ObjectColliSet2(struct taskwk *twp)
 {
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x006816d0
+void ObjectMain(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
 // STUB: SADX 0x00681770
 void ObjectClosed(struct task *tp)
 {
@@ -82,5 +94,10 @@ void ObjectClosed(struct task *tp)
 
 // STUB: SADX 0x006817d0
 void ObjectWaitKeyblock(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00681900
+void ObjectSSHotelback(struct task *tp)
 {
 }

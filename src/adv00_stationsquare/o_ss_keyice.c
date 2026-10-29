@@ -1,4 +1,5 @@
 #include "decls.h"
+static void dispSSCard(struct task *tp);
 static void exitSSCard(struct task *tp);
 static long SeqCheck();
 static void Exec(struct task *tp);
@@ -12,10 +13,12 @@ static long SeqCheck()
 }
 #pragma optimize("", on)
 
+#pragma optimize("", off)
 // STUB: SADX 0x00688370
-void dispSSCard(struct task *tp)
+static void dispSSCard(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00688450
 static void exitSSCard(struct task *tp)
