@@ -35,6 +35,6 @@ void FUN_008c2030(int param_1)
 {
 	if (*(int *)param_1 != 0)
 	{
-		njRotateX(0, *(short *)param_1);
+		njRotateX(0, (Uint16)*(short *)param_1);
 	}
 }

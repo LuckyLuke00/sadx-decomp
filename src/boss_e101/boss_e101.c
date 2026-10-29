@@ -1,5 +1,4 @@
 #include "decls.h"
-extern void njRotateY(float *, unsigned short);
 extern struct obj object_e101old_kihon0_e101old_e_head[];
 extern struct obj object_e101old_kihon0_e101old_e_head[1];
 extern struct NJS_MODEL *DAT_060c451c;

@@ -18,7 +18,7 @@ void ObjectCasinoHagurumaDraw(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	SetObjectTexture2(0xc);
 	ds_DrawObjectClip(object_csn_obj_haguruma_obj_haguruma, 1.0f);

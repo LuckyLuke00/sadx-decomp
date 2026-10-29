@@ -14,7 +14,7 @@ void FUN_00694d30(struct task *param_1)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawObjectClip((struct obj *)var1->counter.ptr, 1.0f);
 	njPopMatrix(1);

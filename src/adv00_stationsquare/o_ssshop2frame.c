@@ -18,7 +18,7 @@ static void Disp(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	SetObjectTexture();
 	ds_DrawObjectClip((struct obj *)&object_ssobj_shop2frame_shop2frame, 1.0f);

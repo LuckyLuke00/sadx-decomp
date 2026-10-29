@@ -2,21 +2,21 @@
 extern int DAT_0629c518;
 
 // FUNCTION: SADX 0x0067d350
-void njTranslateV(float *param_1, struct NJS_POINT3 *param_2)
+void njTranslateV(float *m, struct NJS_POINT3 *v)
 {
 	float fVar1;
 	float fVar2;
 	float fVar3;
 
-	fVar1 = param_2->x;
-	fVar2 = param_2->y;
-	fVar3 = param_2->z;
-	if (param_1 == NULL)
+	fVar1 = v->x;
+	fVar2 = v->y;
+	fVar3 = v->z;
+	if (m == NULL)
 	{
-		param_1 = (float *)DAT_0629c518;
+		m = (float *)DAT_0629c518;
 	}
-	param_1[12] += fVar1 * param_1[0] + fVar2 * param_1[4] + fVar3 * param_1[8];
-	param_1[13] += fVar1 * param_1[1] + fVar2 * param_1[5] + fVar3 * param_1[9];
-	param_1[14] += fVar1 * param_1[2] + fVar2 * param_1[6] + fVar3 * param_1[10];
-	param_1[15] += fVar1 * param_1[3] + fVar2 * param_1[7] + fVar3 * param_1[11];
+	m[12] += fVar1 * m[0] + fVar2 * m[4] + fVar3 * m[8];
+	m[13] += fVar1 * m[1] + fVar2 * m[5] + fVar3 * m[9];
+	m[14] += fVar1 * m[2] + fVar2 * m[6] + fVar3 * m[10];
+	m[15] += fVar1 * m[3] + fVar2 * m[7] + fVar3 * m[11];
 }

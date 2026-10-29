@@ -4,7 +4,6 @@ void snowfaceRunaway(struct taskwk *twp, struct enemywk *ewp);
 void SnowfaceAction(struct taskwk *twp, struct enemywk *ewp);
 void SnowfaceRectifyPosition(struct taskwk *twp, struct enemywk *ewp);
 long AdjustAngle(long ang0, long ang1, long dang);
-float njSin(int);
 extern struct taskwk *DAT_05baf368[8];
 void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_0060a5e0(struct taskwk *param_1, struct enemywk *param_2);

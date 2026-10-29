@@ -15,7 +15,7 @@ void DrawJumpdai(struct task *tp)
 		}
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		ds_DrawModelClip(*(struct NJS_MODEL **)((char *)var1->counter.ptr + 4), 1.0f);
 		njPopMatrix(1);

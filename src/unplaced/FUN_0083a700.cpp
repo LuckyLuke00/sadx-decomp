@@ -8,7 +8,7 @@ void FUN_0083a700(struct task *param_1)
 	if (DAT_05b9d838 == 0)
 	{
 		___njSetTexture(&texlist_obj_skydeck);
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, &var1->pos);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
@@ -16,7 +16,7 @@ void FUN_0083a700(struct task *param_1)
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		___dsDrawObject(var2);
 		njPopMatrix(1);

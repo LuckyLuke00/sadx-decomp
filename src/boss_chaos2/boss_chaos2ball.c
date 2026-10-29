@@ -4,8 +4,6 @@ void late_DrawSprite3D(struct NJS_SPRITE *sp, int n, unsigned long atr, int flgs
 void SetMaterial(float a, float r, float g, float b);
 void ResetMaterial();
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
-void njRotateX(float *param_1, unsigned short param_2);
-void njPopMatrix(int param_1);
 extern struct NJS_SPRITE sprite_chaos_bshadow;
 extern float DAT_05b3df40;
 extern struct PL_ACTION *DAT_05edd134;
@@ -26,7 +24,7 @@ void Chaos2MiniBallHeadDisplay(struct task *tp)
 		SaveConstantAttr();
 		ResetMaterial();
 		___njSetTexture(&texlist_chaos2);
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, &var1->pos);
 		if (DAT_060bd800 != 0)
 		{

@@ -1,14 +1,6 @@
 #include "decls.h"
 extern int DAT_05b9d838;
 extern struct obj **DAT_060eea88;
-void njPushMatrix(float *param_1);
-void njPopMatrix(int param_1);
-void njTranslateV(float *param_1, struct NJS_POINT3 *param_2);
-void njRotateY(float *param_1, unsigned short param_2);
-void njSubVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
-double njScalor(struct NJS_POINT3 *param_1);
-double njTan(int param_1);
-void njCalcVector(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 void FUN_00825de0(struct task *param_1);
 
 // FUNCTION: SADX 0x00694a70
@@ -21,7 +13,7 @@ static void DrawMast(struct taskwk *twp)
 		njTranslateV(0, &twp->pos);
 		if (((struct obj *)twp->counter.ptr)->ang[1] != 0)
 		{
-			njRotateY(0, ((struct obj *)twp->counter.ptr)->ang[1]);
+			njRotateY(0, (Uint16)((struct obj *)twp->counter.ptr)->ang[1]);
 		}
 		ds_DrawObjectClip(DAT_060eea88[0x22], 1.0f);
 		njPopMatrix(1);
@@ -79,10 +71,10 @@ void ObjectECMast(struct task *tp)
 			local_14.x = njScalor(&local_14) * njTan(0x80);
 			local_14.y = 0.0f;
 			local_14.z = 0.05f;
-			njPushMatrix(_nj_unit_matrix_);
+			njPushMatrix(&_nj_unit_matrix_);
 			if (var1->ang.y - 0x80 != 0)
 			{
-				njRotateY(0, var1->ang.y - 0x80);
+				njRotateY(0, (Uint16)(var1->ang.y - 0x80));
 			}
 			njCalcVector(0, &local_14, &local_14);
 			njPopMatrix(1);

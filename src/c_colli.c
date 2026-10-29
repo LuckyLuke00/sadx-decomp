@@ -6,13 +6,6 @@ void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskw
 void FUN_004d1730(struct taskwk *param_1, struct CCL_INFO *param_2, struct NJS_POINT3 *param_3);
 void ConvertPositionGlobalToLocal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v);
 void ConvertPositionLocalToGlobal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v);
-void njPushMatrixEx();
-void njPopMatrixEx();
-void njTranslateEx(void *param_1);
-void njRotateY(float *param_1, unsigned short param_2);
-void njRotateX(float *param_1, unsigned short param_2);
-void njRotateZ(float *param_1, int param_2);
-void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
@@ -24,8 +17,6 @@ void FUN_004d0b30(struct taskwk *param_1, struct taskwk *param_2, float param_3)
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
-void njPushMatrix(float *param_1);
-void njPopMatrix(int param_1);
 extern float _nj_unit_matrix_[16];
 void FUN_004da910(int param_1);
 extern int DAT_05b9e4c0;
@@ -162,7 +153,7 @@ void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_
 		center->z = info->center.z;
 		return;
 	}
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	njTranslateEx(&twp->pos);
 	if ((info->attr & 0x8000) == 0)
 	{
@@ -170,7 +161,7 @@ void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_
 		{
 			if (twp->ang.y != 0)
 			{
-				njRotateY(0, twp->ang.y);
+				njRotateY(0, (Uint16)twp->ang.y);
 			}
 			if (twp->ang.z != 0)
 			{
@@ -178,7 +169,7 @@ void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_
 			}
 			if (twp->ang.x != 0)
 			{
-				njRotateX(0, twp->ang.x);
+				njRotateX(0, (Uint16)twp->ang.x);
 			}
 		}
 		else
@@ -189,11 +180,11 @@ void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_
 			}
 			if (twp->ang.x != 0)
 			{
-				njRotateX(0, twp->ang.x);
+				njRotateX(0, (Uint16)twp->ang.x);
 			}
 			if (twp->ang.y != 0)
 			{
-				njRotateY(0, twp->ang.y);
+				njRotateY(0, (Uint16)twp->ang.y);
 			}
 		}
 	}
@@ -398,10 +389,10 @@ void ConvertPositionGlobalToLocal(struct NJS_POINT3 *center1, struct NJS_POINT3 
 	v1.x = center1->x - center2->x;
 	v1.y = center1->y - center2->y;
 	v1.z = center1->z - center2->z;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (angy != 0)
 	{
-		njRotateY(0, angy);
+		njRotateY(0, (Uint16)angy);
 	}
 	njCalcVector(0, &v1, &v2);
 	njPopMatrix(1);
@@ -423,7 +414,7 @@ void FUN_004d3180(void *param_1, void *param_2, float *param_3)
 	local_14.x = 0.0f;
 	local_14.y = 1.0f;
 	local_14.z = 0.0f;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	njTranslateEx((char *)param_1 + 0x20);
 	if ((*(int *)((char *)param_2 + 4) & 0x200) != 0)
 	{
@@ -431,7 +422,7 @@ void FUN_004d3180(void *param_1, void *param_2, float *param_3)
 		{
 			if (*(int *)((char *)param_1 + 0x18) != 0)
 			{
-				njRotateY(0, *(short *)((char *)param_1 + 0x18));
+				njRotateY(0, (Uint16)*(short *)((char *)param_1 + 0x18));
 			}
 			if (*(int *)((char *)param_1 + 0x1c) != 0)
 			{
@@ -439,12 +430,12 @@ void FUN_004d3180(void *param_1, void *param_2, float *param_3)
 			}
 			if (*(int *)((char *)param_1 + 0x14) != 0)
 			{
-				njRotateX(0, *(short *)((char *)param_1 + 0x14));
+				njRotateX(0, (Uint16)*(short *)((char *)param_1 + 0x14));
 			}
 		}
 		if (*(int *)((char *)param_2 + 0x28) != 0)
 		{
-			njRotateY(0, *(short *)((char *)param_2 + 0x28));
+			njRotateY(0, (Uint16)*(short *)((char *)param_2 + 0x28));
 		}
 		if (*(int *)((char *)param_2 + 0x2c) != 0)
 		{
@@ -452,7 +443,7 @@ void FUN_004d3180(void *param_1, void *param_2, float *param_3)
 		}
 		if (*(int *)((char *)param_2 + 0x24) != 0)
 		{
-			njRotateX(0, *(short *)((char *)param_2 + 0x24));
+			njRotateX(0, (Uint16)*(short *)((char *)param_2 + 0x24));
 		}
 	}
 	else
@@ -465,11 +456,11 @@ void FUN_004d3180(void *param_1, void *param_2, float *param_3)
 			}
 			if (*(int *)((char *)param_1 + 0x14) != 0)
 			{
-				njRotateX(0, *(short *)((char *)param_1 + 0x14));
+				njRotateX(0, (Uint16)*(short *)((char *)param_1 + 0x14));
 			}
 			if (*(int *)((char *)param_1 + 0x18) != 0)
 			{
-				njRotateY(0, *(short *)((char *)param_1 + 0x18));
+				njRotateY(0, (Uint16)*(short *)((char *)param_1 + 0x18));
 			}
 		}
 		if (*(int *)((char *)param_2 + 0x2c) != 0)
@@ -478,11 +469,11 @@ void FUN_004d3180(void *param_1, void *param_2, float *param_3)
 		}
 		if (*(int *)((char *)param_2 + 0x24) != 0)
 		{
-			njRotateX(0, *(short *)((char *)param_2 + 0x24));
+			njRotateX(0, (Uint16)*(short *)((char *)param_2 + 0x24));
 		}
 		if (*(int *)((char *)param_2 + 0x28) != 0)
 		{
-			njRotateY(0, *(short *)((char *)param_2 + 0x28));
+			njRotateY(0, (Uint16)*(short *)((char *)param_2 + 0x28));
 		}
 	}
 	njCalcVector(0, &local_14, (struct NJS_POINT3 *)param_3);

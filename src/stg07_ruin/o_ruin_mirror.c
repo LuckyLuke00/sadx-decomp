@@ -19,7 +19,7 @@ void DrawMirror(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 	if (DAT_05b9d838 == 0)
 	{
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, &var1->pos);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
@@ -27,11 +27,11 @@ void DrawMirror(struct task *tp)
 		}
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
-			njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		SetObjectTexture();
 		___dsDrawObject((struct obj *)&object_mirror_mirrorbox_1_mirrorbox_1);
@@ -43,7 +43,7 @@ void DrawMirror(struct task *tp)
 			}
 			if (-*(int *)((char *)DAT_05b42a7c + 0x14) != 0)
 			{
-				njRotateX((float *)0, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x14)));
+				njRotateX(NULL, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x14)));
 			}
 		}
 		late_DrawModelClip((struct NJS_MODEL *)&model_mirror_hikari_hikari_hikari, 0, 1.0f);
@@ -65,7 +65,7 @@ void DrawMrSnake(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawModelClip(model_lwobj_snake02_snake02, 1.0f);
 	njPopMatrix(1);
@@ -107,11 +107,11 @@ void DrawFogHasira(struct task *tp)
 	}
 	if (var1->ang.x)
 	{
-		njRotateX(0, var1->ang.x);
+		njRotateX(0, (Uint16)var1->ang.x);
 	}
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawModelClip(model_l02_lightway_h_lightway_h, 1.0f);
 	njPopMatrix(1);

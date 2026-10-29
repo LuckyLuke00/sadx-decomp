@@ -15,7 +15,7 @@ static void DispATask(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawObjectClip(object_wc_mark2a_m2a_m2a, 1.0f);
 	njPopMatrix(1);

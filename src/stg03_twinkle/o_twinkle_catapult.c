@@ -14,7 +14,7 @@ void dispCatapult(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_ActionClip((struct NJS_ACTION *)var1->timer.ptr, var1->scl.y, 1.0f);
 	njPopMatrix(1);

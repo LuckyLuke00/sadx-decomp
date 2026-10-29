@@ -14,7 +14,7 @@ void SakuDisp(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawObjectClip(object_sssikake_kaigansaku_kaigansaku, 1.0f);
 	njPopMatrix(1);
@@ -34,7 +34,7 @@ void E_MatoDisp(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawObjectClip(object_sssikake_kaiganmato_kaiganmato, 1.0f);
 	njPopMatrix(1);

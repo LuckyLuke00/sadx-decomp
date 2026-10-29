@@ -5,7 +5,6 @@ long ALW_CommunicationOff(struct task *tp);
 extern float DAT_05ade380[16];
 extern float DAT_05aea9f0[16];
 extern int DAT_05aeaa34;
-void njInvertMatrix(float *param_1);
 extern unsigned short DAT_05aeaa30;
 extern int DAT_05ade3c0[0x100];
 
@@ -357,7 +356,7 @@ void ALW_Displayer(struct task *tp)
 {
 	njGetMatrix(DAT_05ade380);
 	njGetMatrix(DAT_05aea9f0);
-	njInvertMatrix(DAT_05aea9f0);
+	njInvertMatrix(&DAT_05aea9f0);
 	DAT_05aeaa34 = 0;
 }
 

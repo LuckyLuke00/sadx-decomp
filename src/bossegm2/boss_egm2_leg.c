@@ -13,7 +13,7 @@ void leg_disp(struct LegModel *legmodel)
 {
 	do
 	{
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		FUN_0067d830((float *)0, *(float *)legmodel, *(float *)((char *)legmodel + 4), *(float *)((char *)legmodel + 8));
 		if (*(int *)((char *)legmodel + 0x14) != 0)
 		{
@@ -21,11 +21,11 @@ void leg_disp(struct LegModel *legmodel)
 		}
 		if (*(int *)((char *)legmodel + 0x10) != 0)
 		{
-			njRotateY((float *)0, *(unsigned short *)((char *)legmodel + 0x10));
+			njRotateY(NULL, *(unsigned short *)((char *)legmodel + 0x10));
 		}
 		if (*(int *)((char *)legmodel + 0xc) != 0)
 		{
-			njRotateX((float *)0, *(unsigned short *)((char *)legmodel + 0xc));
+			njRotateX(NULL, *(unsigned short *)((char *)legmodel + 0xc));
 		}
 		FUN_0067d2d0((float *)0, *(float *)((char *)legmodel + 0x18), *(float *)((char *)legmodel + 0x1c), *(float *)((char *)legmodel + 0x20));
 		struct NJS_MODEL *var1 = (struct NJS_MODEL *)*(int *)((char *)legmodel + 0x24);

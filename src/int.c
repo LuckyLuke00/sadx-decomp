@@ -3,7 +3,6 @@ extern int DAT_05b9d844;
 extern int DAT_05b9d834;
 extern int DAT_05b9d838;
 extern int DAT_05a922f4;
-void njSetVSyncFunction(void (*fun)());
 
 // FUNCTION: SADX 0x004cb7d0
 void dsInitInt(int vsync, int loop)

@@ -6,7 +6,6 @@ void GetAngleYZV(const struct NJS_POINT3 *vec, long *ang_y, long *ang_z);
 extern float DAT_05b3ec0c;
 extern float DAT_05b3ec10;
 extern float DAT_05b3ec14;
-float njSqrt(float param_1);
 extern "C" double atan2(double v, double u);
 extern struct NJS_MODEL *DAT_05a86a68;
 extern struct NJS_MODEL DAT_05a86ed4;

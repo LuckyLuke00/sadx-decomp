@@ -3,7 +3,6 @@
 
 extern struct NJS_POINT3 *DAT_060c453c;
 extern struct NJS_POINT3 DAT_060c4544;
-float njSqrt(float param_1);
 void CameraSetEventCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), unsigned char ucAdjustType, signed char scCameraDirect);
 
 // FUNCTION: SADX 0x00707080

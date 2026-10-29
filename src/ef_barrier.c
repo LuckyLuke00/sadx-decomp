@@ -179,11 +179,11 @@ void CMutekiDisp(struct task *tp)
 		njTranslateV(0, &local_8->pos);
 		if (local_8->ang.y != 0)
 		{
-			njRotateY(0, local_8->ang.y);
+			njRotateY(0, (Uint16)local_8->ang.y);
 		}
 		if (local_8->ang.x != 0)
 		{
-			njRotateX(0, local_8->ang.x);
+			njRotateX(0, (Uint16)local_8->ang.x);
 		}
 		FUN_0067d2d0(0, local_8->scl.x, local_8->scl.x, local_8->scl.x);
 		ef_barrier_DrawModel(&DAT_05a7989c);

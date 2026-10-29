@@ -15,9 +15,9 @@ void jumppanel_for_cartDisplay(struct task *tp)
 	if (local_8->ang.z != 0)
 		njRotateZ(0, (unsigned short)local_8->ang.z);
 	if (local_8->ang.x != 0)
-		njRotateX(0, local_8->ang.x);
+		njRotateX(0, (Uint16)local_8->ang.x);
 	if (local_8->ang.y != 0)
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	___njSetTexture(&texlist_obj_shareobj);
 	___dsDrawObject(&object_tpobj_jumpdai_jumpdai[0]);
 	njPopMatrix(1);

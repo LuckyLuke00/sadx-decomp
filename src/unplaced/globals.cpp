@@ -4490,9 +4490,6 @@ char DAT_05b2ca50[1];
 // GLOBAL: SADX 0x05b2ca64
 int DAT_05b2ca64[1];
 
-// GLOBAL: SADX 0x05b2cab8
-struct NJS_TEXNAME DAT_05b2cab8;
-
 // GLOBAL: SADX 0x05b2cae4
 void *DAT_05b2cae4;
 
@@ -7635,7 +7632,7 @@ float DAT_060c2154;
 unsigned char DAT_060c32ab;
 
 // GLOBAL: SADX 0x060c32b8
-struct NJS_POINT3 DAT_060c32b8;
+float DAT_060c32b8[16];
 
 // GLOBAL: SADX 0x060c3350
 unsigned char DAT_060c3350;

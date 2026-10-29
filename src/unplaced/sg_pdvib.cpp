@@ -19,11 +19,11 @@ void _pdVibMxFinish(void)
 }
 
 // STUB: SADX 0x004352b0
-void pdVibMxStart(int param_1, int *param_2)
+void pdVibMxStart(int port, int *param)
 {
 }
 
 // STUB: SADX 0x00435370
-void pdVibMxStop(int param_1)
+void pdVibMxStop(int port)
 {
 }

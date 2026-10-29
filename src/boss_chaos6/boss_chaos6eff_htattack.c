@@ -4,7 +4,7 @@ extern float c60_taileffpos_x;
 extern float DAT_060c3358;
 extern float DAT_060c335c;
 extern long DAT_060c3354;
-extern struct NJS_POINT3 DAT_060c32b8;
+extern float DAT_060c32b8[16];
 extern unsigned char DAT_060c3350;
 
 // FUNCTION: SADX 0x006f86b0

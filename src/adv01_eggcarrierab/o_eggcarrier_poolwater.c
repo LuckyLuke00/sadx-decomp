@@ -1,15 +1,11 @@
 #include "decls.h"
 extern float DAT_05b3df40;
-void njPushMatrix(float *param_1);
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl);
-void njPopMatrix(int param_1);
 extern struct obj **DAT_060eea88;
 extern struct NJS_TEXLIST texlist_ec_water;
-void njPushMatrix(float *);
 void ___njSetTexture(struct NJS_TEXLIST *);
 void late_DrawObjectClip(struct obj *, int, float);
-void njPopMatrix(int);
 
 // FUNCTION: SADX 0x006959f0
 void WaterDisplayer(struct task *tp)

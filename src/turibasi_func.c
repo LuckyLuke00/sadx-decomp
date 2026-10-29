@@ -20,7 +20,7 @@ void BridgeEditMode(struct taskwk *twp)
 	njPushMatrix(0);
 	njTranslateV(0, &twp->pos);
 	if (twp->ang.y != 0)
-		njRotateY(0, twp->ang.y);
+		njRotateY(0, (Uint16)twp->ang.y);
 	___dsDrawModel(*(struct NJS_MODEL **)((int)twp->value.ptr + 0x4c));
 	njPopMatrix(1);
 }
@@ -56,9 +56,9 @@ void ObjectBridgeShitaDisplayer(struct task *tp)
 	njPushMatrix(0);
 	njTranslateV(0, &local_cg->pos);
 	if (local_cg->ang.y != 0)
-		njRotateY(0, local_cg->ang.y);
+		njRotateY(0, (Uint16)local_cg->ang.y);
 	if (local_cg->ang.x != 0)
-		njRotateX(0, local_cg->ang.x);
+		njRotateX(0, (Uint16)local_cg->ang.x);
 	FUN_0067d2d0(0, local_8g, local_8g, local_8g);
 	ds_DrawModelClip((struct NJS_MODEL *)local_cg->counter.ptr, 1.0f);
 	njPopMatrix(1);

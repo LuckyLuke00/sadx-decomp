@@ -1,6 +1,5 @@
 #include "decls.h"
 extern long TexBankList[6][3];
-void njSetPaletteBankNum(unsigned long param_1, long param_2);
 
 // FUNCTION: SADX 0x00437b50
 void AL_PaletteInit(struct task *tp)

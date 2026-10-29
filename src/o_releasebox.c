@@ -75,7 +75,7 @@ void relbox_end(struct task *task_p)
 	njTranslateV(0, &local_8->pos);
 	if (local_8->ang.y != 0)
 	{
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	}
 	if (local_8->mode == 0)
 	{

@@ -10,7 +10,7 @@ void ArcadeDisplayer(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	late_DrawObject((struct obj *)var1->counter.ptr, 1);
 	njPopMatrix(1);

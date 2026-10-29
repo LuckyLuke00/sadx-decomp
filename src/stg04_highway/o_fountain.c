@@ -19,7 +19,7 @@ void calcPushUp(struct task *tp)
 		p.y = var1->scl.y;
 		p.z = var1->scl.z;
 	}
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (*(int *)((char *)var1 + 0x1c) != 0)
 	{
 		njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));

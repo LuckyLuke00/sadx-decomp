@@ -3,7 +3,6 @@ void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl);
 static void ExecH(struct task *tp);
 void FUN_00422560(int param_1);
 void FUN_0087ea70(struct task *, float);
-void njPrintC(int, char const *);
 long CheckRangeOutWithR(struct task *tp, float fRange);
 void late_ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum);
 extern void DispUV2ObjSE(struct task *tp);
@@ -208,7 +207,7 @@ void DispSVObj(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_0067d2d0(0, var1->scl.x + 1.0f, var1->scl.y + 1.0f, var1->scl.z + 1.0f);
 	ds_DrawObjectClip((struct obj *)var1->timer.ptr, FUN_00500c70(var1->scl.x + 1.0f, var1->scl.y + 1.0f, var1->scl.z + 1.0f));
@@ -289,7 +288,7 @@ void DispObjV(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawObjectClip((struct obj *)var1->timer.ptr, 1.0f);
 	njPopMatrix(1);
@@ -330,7 +329,7 @@ void DispObj(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawObjectClip((struct obj *)var1->timer.ptr, 1.0f);
 	njPopMatrix(1);
@@ -433,7 +432,7 @@ static void DispH(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	if (var1->value.f != 0.0f)
 	{

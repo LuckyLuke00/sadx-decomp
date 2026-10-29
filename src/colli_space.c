@@ -116,11 +116,11 @@ static void ColliSpaceEditMode(struct task *tp, unsigned short form)
 		local_28z.z = 0.0f;
 		for (local_18o = 0; local_18o < 32; local_18o++)
 		{
-			njPushMatrix(_nj_unit_matrix_);
+			njPushMatrix(&_nj_unit_matrix_);
 			njRotateY(0, local_18o << 11);
 			njCalcPoint(0, &local_28z, &local_34h);
 			njPopMatrix(1);
-			njPushMatrix(_nj_unit_matrix_);
+			njPushMatrix(&_nj_unit_matrix_);
 			njRotateY(0, (local_18o + 1) << 11);
 			njCalcPoint(0, &local_28z, &local_40h);
 			njPopMatrix(1);

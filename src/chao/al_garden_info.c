@@ -2,7 +2,6 @@
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 void FUN_0043ede0();
 void FUN_0043ee00();
-int syTmrGetCount();
 unsigned long chRandomU32(void);
 void FUN_0043eea0();
 void FUN_0043f5a0(int param_1);

@@ -64,9 +64,9 @@ void DrawCmnKusa(struct task *tp)
 	if (local_8->ang.z != 0)
 		njRotateZ(0, (unsigned short)local_8->ang.z);
 	if (local_8->ang.x != 0)
-		njRotateX(0, local_8->ang.x);
+		njRotateX(0, (Uint16)local_8->ang.x);
 	if (local_8->ang.y != 0)
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	late_DrawObjectMesh((struct obj *)local_8->counter.ptr, 0);
 	njPopMatrix(1);
 }
@@ -91,9 +91,9 @@ void DrawCmnKusaParts(struct task *tp)
 	if (local_8->ang.z != 0)
 		njRotateZ(0, (unsigned short)local_8->ang.z);
 	if (local_8->ang.x != 0)
-		njRotateX(0, local_8->ang.x);
+		njRotateX(0, (Uint16)local_8->ang.x);
 	if (local_8->ang.y != 0)
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	SaveConstantAttr();
 	OnConstantAttr(0, 0x100000);
 	SetMaterial(*(float *)&local_8->timer, 0.0f, 0.0f, 0.0f);

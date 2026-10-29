@@ -17,7 +17,7 @@ void ObjectSampleSRegular(struct task *tp)
 	njPushMatrix(0);
 	FUN_0067d830(0, local_cg->pos.x, local_cg->pos.y + 2.5f, local_cg->pos.z);
 	if (local_cg->ang.y != 0)
-		njRotateY(0, local_cg->ang.y);
+		njRotateY(0, (Uint16)local_cg->ang.y);
 	FUN_0067d2d0(0, 0.25f, 0.25f, 0.25f);
 	___dsDrawObject((struct obj *)local_cg->counter.ptr);
 	njPopMatrix(1);
@@ -39,7 +39,7 @@ void ObjectSampleMRegular(struct task *tp)
 	njPushMatrix(0);
 	FUN_0067d830(0, local_cg->pos.x, local_cg->pos.y + 5.0f, local_cg->pos.z);
 	if (local_cg->ang.y != 0)
-		njRotateY(0, local_cg->ang.y);
+		njRotateY(0, (Uint16)local_cg->ang.y);
 	FUN_0067d2d0(0, 0.5f, 0.5f, 0.5f);
 	___dsDrawObject((struct obj *)local_cg->counter.ptr);
 	njPopMatrix(1);
@@ -61,7 +61,7 @@ void ObjectSampleLRegular(struct task *tp)
 	njPushMatrix(0);
 	FUN_0067d830(0, local_cg->pos.x, local_cg->pos.y + 15.0f, local_cg->pos.z);
 	if (local_cg->ang.y != 0)
-		njRotateY(0, local_cg->ang.y);
+		njRotateY(0, (Uint16)local_cg->ang.y);
 	FUN_0067d2d0(0, 1.5f, 1.5f, 1.5f);
 	___dsDrawObject((struct obj *)local_cg->counter.ptr);
 	njPopMatrix(1);

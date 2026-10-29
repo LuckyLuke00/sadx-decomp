@@ -15,39 +15,39 @@ extern void (*DAT_0629c730)(int);
 extern int DAT_0629c738;
 
 // FUNCTION: SADX 0x00425150
-void njSetTextureMemorySize(unsigned long param_1)
+void njSetTextureMemorySize(unsigned long size)
 {
-	DAT_0629c4a0 = param_1;
+	DAT_0629c4a0 = size;
 }
 
 // FUNCTION: SADX 0x00425160
-void njSetVSyncFunction(void (*param_1)(void))
+void njSetVSyncFunction(void (*func)(void))
 {
-	DAT_0629c734 = param_1;
+	DAT_0629c734 = func;
 }
 
 // FUNCTION: SADX 0x00425170
-void njControl3D(unsigned long param_1)
+void njControl3D(unsigned long flag)
 {
-	DAT_0629c6c8 = param_1;
+	DAT_0629c6c8 = flag;
 }
 
 // FUNCTION: SADX 0x00425180
-void njSetConstantAttr(int param_1, int param_2)
+void njSetConstantAttr(int and_attr, int or_attr)
 {
-	DAT_0629c540 = param_1;
-	DAT_0629c6c4 = param_2;
+	DAT_0629c540 = and_attr;
+	DAT_0629c6c4 = or_attr;
 }
 
 // FUNCTION: SADX 0x004251a0
-void njSetConstantMaterial(NJS_ARGB *param_1)
+void njSetConstantMaterial(NJS_ARGB *mat)
 {
-	if (param_1)
+	if (mat)
 	{
-		DAT_0629c4f0 = ((int *)param_1)[0];
-		DAT_0629c4f4 = ((int *)param_1)[1];
-		DAT_0629c4f8 = ((int *)param_1)[2];
-		DAT_0629c4fc = ((int *)param_1)[3];
+		DAT_0629c4f0 = ((int *)mat)[0];
+		DAT_0629c4f4 = ((int *)mat)[1];
+		DAT_0629c4f8 = ((int *)mat)[2];
+		DAT_0629c4fc = ((int *)mat)[3];
 	}
 }
 

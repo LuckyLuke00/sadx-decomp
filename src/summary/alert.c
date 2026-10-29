@@ -1,6 +1,5 @@
 #include "decls.h"
 void FUN_004c3310(int *param_1);
-void syFree(void *param_1);
 void drawmessage(struct ALERT_TASK_WORK *wk);
 extern void *DAT_05cda188;
 

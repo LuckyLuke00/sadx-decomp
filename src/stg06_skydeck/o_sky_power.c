@@ -15,7 +15,7 @@ void ObjectSkyMeka(struct task *tp)
 		njTranslateV(0, &var1->pos);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		SetObjectTexture();
 		ds_DrawObjectClip(object_skymain_nc_obj_meka_obj_meka, 1.0f);
@@ -57,7 +57,7 @@ void ObjectSkyTutu(struct task *tp)
 		njTranslateV(0, &var1->pos);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		SetObjectTexture();
 		ds_DrawObjectClip(object_skymain_nc_obj_tutu_obj_tutu, 1.0f);

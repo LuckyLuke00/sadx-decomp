@@ -59,7 +59,7 @@ void DispVectorZXV(struct NJS_POINT3 *bp, struct NJS_POINT3 *vec)
 	if (ang[2] != 0)
 		njRotateZ(0, (unsigned short)ang[2]);
 	if (ang[0] != 0)
-		njRotateX(0, ang[0]);
+		njRotateX(0, (Uint16)ang[0]);
 	FUN_0067d2d0(0, 1.0f, local_18, 1.0f);
 	___dsDrawObject(&object_Arrow_Y);
 	njPopMatrix(1);

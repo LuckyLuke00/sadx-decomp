@@ -1,10 +1,6 @@
 #include "decls.h"
 extern int DAT_05b9d838;
-void njPushMatrix(float *);
-void njTranslateV(float *, struct NJS_POINT3 *);
-void njRotateXYZ(long, long, long, long);
 void late_DrawObjectClipEx(struct obj *, int, float);
-void njPopMatrix(int);
 
 // STUB: SADX 0x006a2520
 void MonorailAnimater(struct task *tp)

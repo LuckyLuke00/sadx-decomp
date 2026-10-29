@@ -38,7 +38,7 @@ void Pasya1Disp(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_0067d2d0(0, var1->scl.x, 1.2f, var1->scl.x);
 	ds_DrawObjectClip(object_mizubasira_pasya_sita_pasya_sita, var1->scl.x > 1.2f ? var1->scl.x : 1.2f);

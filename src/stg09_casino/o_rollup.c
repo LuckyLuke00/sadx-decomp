@@ -24,7 +24,7 @@ void DispUR(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawModelClip((struct NJS_MODEL *)&model_casi_tuure01a_tuure01a, 1.0f);
 	ds_DrawModelClip((struct NJS_MODEL *)&model_casi_tuure02a_tuure02a, 1.0f);
@@ -49,7 +49,7 @@ void DispUL(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawModelClip((struct NJS_MODEL *)&model_casi_tuule01a_tuule01a, 1.0f);
 	ds_DrawModelClip((struct NJS_MODEL *)&model_casi_tuule02a_tuule02a, 1.0f);
@@ -70,7 +70,7 @@ void DispDL(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawModelClip((struct NJS_MODEL *)&model_casi_tuule01b_tuule01b, 1.0f);
 	ds_DrawModelClip((struct NJS_MODEL *)&model_casi_tuule02b_tuule02b, 1.0f);

@@ -15,7 +15,7 @@ void Disp2Task(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	late_DrawModelClip(model_hasi_enhasi_bmerge1, 1, 1.0f);
 	njPopMatrix(1);

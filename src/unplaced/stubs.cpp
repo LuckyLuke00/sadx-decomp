@@ -50,7 +50,7 @@ void _njDirectDrawModel(struct NJS_MODEL *)
 }
 
 // STUB: SADX 0x00421500
-void njQuadTextureStart(long)
+void njQuadTextureStart(Sint32 trans)
 {
 }
 
@@ -65,24 +65,24 @@ void stHWWaitVSync()
 }
 
 // STUB: SADX 0x00423b40
-long njLoadTexture(struct NJS_TEXLIST *)
+Sint32 njLoadTexture(NJS_TEXLIST *texlist)
 {
-	return (long)0;
+	return (Sint32)0;
 }
 
 // STUB: SADX 0x00423c50
-long njLoadTexturePvmMemory(unsigned char *,struct NJS_TEXLIST *)
+Sint32 njLoadTexturePvmMemory(Uint8 *addr, NJS_TEXLIST *texlist)
 {
-	return (long)0;
+	return (Sint32)0;
 }
 
 // STUB: SADX 0x00423f70
-void njPrintD(int, int, int)
+void njPrintD(Int loc, Int val, Int digit)
 {
 }
 
 // STUB: SADX 0x00424240
-void njSetCamera(struct NJS_CAMERA *)
+void njSetCamera(NJS_CAMERA *c)
 {
 }
 
@@ -213,35 +213,37 @@ void _gjTrans3D(enum GJ_DEV_BLEND)
 }
 
 // STUB: SADX 0x00430b70
-extern void njPushMatrix(float *)
+Bool njPushMatrix(NJS_MATRIX *m)
 {
+	return (Bool)0;
 }
 
 // STUB: SADX 0x00431950
-float njCos(int)
+Float njCos(Angle n)
 {
-	return (float)0;
+	return (Float)0;
 }
 
 // STUB: SADX 0x00431ac0
-float njSin(int)
+Float njSin(Angle n)
 {
-	return (float)0;
+	return (Float)0;
 }
 
 // STUB: SADX 0x00432d10
-void njScaleEx(void *)
+void njScaleEx(NJS_VECTOR *v)
 {
 }
 
 // STUB: SADX 0x00432d90
-void njRotateEx(long *, int)
+void njRotateEx(Angle *ang, Sint32 lv)
 {
 }
 
 // STUB: SADX 0x00433770
-void njPushMatrixEx()
+Bool njPushMatrixEx(void)
 {
+	return (Bool)0;
 }
 
 // STUB: SADX 0x00433f40
@@ -270,28 +272,29 @@ void stSetFogTable(float *)
 }
 
 // STUB: SADX 0x00435ad0
-void njSetTextureInfo(int, int, int, int, int)
+void njSetTextureInfo(NJS_TEXINFO *info, Uint16 *tex, Sint32 Type, Sint32 nWidth, Sint32 nHeight)
 {
 }
 
 // STUB: SADX 0x00435b00
-void njSetTextureName(int, int, int, int)
+void njSetTextureName(NJS_TEXNAME *texname, void *addr, Uint32 globalIndex, Uint32 attr)
 {
 }
 
 // STUB: SADX 0x00435b60
-void njGenerateFogTable3(float * const,float,float)
+void njGenerateFogTable3(NJS_FOG_TABLE fog, Float n, Float f)
 {
 }
 
 // STUB: SADX 0x00436240
-void njMultiMatrix(float *, struct NJS_POINT3 *)
+void njMultiMatrix(NJS_MATRIX *md, NJS_MATRIX *ms)
 {
 }
 
 // STUB: SADX 0x004364a0
-void njInvertMatrix(float *)
+Bool njInvertMatrix(NJS_MATRIX *m)
 {
+	return (Bool)0;
 }
 
 // STUB: SADX 0x00438140
@@ -2278,38 +2281,38 @@ void FUN_006411b0(int, int)
 }
 
 // STUB: SADX 0x0067d080
-extern void njRotateY(float *, unsigned short)
+void njRotateY(NJS_MATRIX *m, Angle ang)
 {
 }
 
 // STUB: SADX 0x0067d190
-void njProjectScreen(float (*)[16],struct NJS_POINT3 *,struct NJS_POINT2 *)
+void njProjectScreen(NJS_MATRIX *m, NJS_POINT3 *p3, NJS_POINT2 *p2)
 {
 }
 
 // STUB: SADX 0x0067d290
-float njInnerProduct(struct NJS_POINT3 *, struct NJS_POINT3 *)
+Float njInnerProduct(NJS_VECTOR *v1, NJS_VECTOR *v2)
 {
-	return (float)0;
+	return (Float)0;
 }
 
 // STUB: SADX 0x0067d4c0
-extern void njRotateX(float *, unsigned short)
+void njRotateX(NJS_MATRIX *m, Angle ang)
 {
 }
 
 // STUB: SADX 0x0067d5a0
-extern void njRotateXYZ(long, long, long, long)
+void njRotateXYZ(NJS_MATRIX *m, Angle angx, Angle angy, Angle angz)
 {
 }
 
 // STUB: SADX 0x0067d9e0
-void njUnitMatrix(float *)
+void njUnitMatrix(NJS_MATRIX *m)
 {
 }
 
 // STUB: SADX 0x0067e600
-void njRotateZXY(long, long, long, long)
+void njRotateZXY(NJS_MATRIX *m, Angle angx, Angle angy, Angle angz)
 {
 }
 

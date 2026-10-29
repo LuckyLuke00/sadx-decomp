@@ -1,6 +1,4 @@
 #include "decls.h"
-extern void *syCalloc(unsigned int param_1, unsigned int param_2);
-extern void syFree(void *param_1);
 extern void (*DAT_01c77460[256])(int);
 extern int DAT_05ada440;
 

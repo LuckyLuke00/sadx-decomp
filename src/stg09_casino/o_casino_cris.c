@@ -20,7 +20,7 @@ void ObjectCasinoCrisDraw(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (*(int *)((char *)var1 + 8) + *(int *)((char *)var1 + 0x18))
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 8) + *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (Uint16)(*(unsigned short *)((char *)var1 + 8) + *(unsigned short *)((char *)var1 + 0x18)));
 	}
 	ds_DrawModelClip(object_cas_obj_cris_cris.model, 1.0f);
 	njPopMatrix(1);

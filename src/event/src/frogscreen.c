@@ -11,7 +11,7 @@ void frog_disp(struct task *tp)
 	FUN_0067d2d0(0, 6.0, 6.0, 1.5);
 	if (tp->twp->ang.y)
 	{
-		njRotateY(0, tp->twp->ang.y);
+		njRotateY(0, (Uint16)tp->twp->ang.y);
 	}
 	___njSetTexture(&texlist_frog);
 	MJoinVertexes(_action_f_f0001_frog[0].object, _action_f_f0001_frog[0].motion, 0.0, &DAT_0317857c);

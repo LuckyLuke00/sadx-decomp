@@ -16,13 +16,13 @@ void njFogDisable(void)
 }
 
 // FUNCTION: SADX 0x00435b40
-void njSetFogColor(unsigned long param_1)
+void njSetFogColor(unsigned long c)
 {
-	stFogColor(param_1);
+	stFogColor(c);
 }
 
 // FUNCTION: SADX 0x00435b50
-void njSetFogTable(float * const param_1)
+void njSetFogTable(float * const fog)
 {
-	stSetFogTable(param_1);
+	stSetFogTable(fog);
 }

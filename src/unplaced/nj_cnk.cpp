@@ -15,21 +15,21 @@ extern int DAT_05ada5b8;
 void FUN_0041b120(int param_1, int param_2);
 
 // STUB: SADX 0x00435fd0
-void njCnkDrawMotion(struct cnkobj const *param_1, struct NJS_MOTION const *param_2, float param_3)
+void njCnkDrawMotion(struct cnkobj const *object, struct NJS_MOTION const *motion, float frame)
 {
 	void (__thiscall *fp)(int, int);
 
-	njStartMotionObj(param_2, param_3);
+	njStartMotionObj(motion, frame);
 	DAT_05ada5b8 = 1;
 	stSetBaseMatrix((float (*)[16])DAT_0629c518);
 	fp = (void (__thiscall *)(int, int))FUN_0041b120;
 	((void (__thiscall *)(void *, int, int))fp)(DAT_05ab39ac, 0, 0);
 	((void (__thiscall *)(void *, int, int))fp)(DAT_05ab39ac, 1, 0);
-	_njCnkPushPopMotion(param_1);
+	_njCnkPushPopMotion(object);
 }
 
 // STUB: SADX 0x00436030
-void njCnkDrawMotionLink(struct cnkobj const *param_1, struct NJS_MOTION_LINK const *param_2, float param_3)
+void njCnkDrawMotionLink(struct cnkobj const *object, struct NJS_MOTION_LINK const *motionlink, float frame)
 {
 }
 
@@ -44,11 +44,11 @@ void _njCnkDrawObject(struct cnkobj *param_1)
 }
 
 // STUB: SADX 0x004361a0
-void njCnkDrawModel(struct NJS_CNK_MODEL *param_1)
+void njCnkDrawModel(struct NJS_CNK_MODEL *model)
 {
 }
 
 // STUB: SADX 0x00436200
-void njCnkDrawObject(struct cnkobj *param_1)
+void njCnkDrawObject(struct cnkobj *object)
 {
 }

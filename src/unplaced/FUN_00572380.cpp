@@ -1,12 +1,8 @@
 #include "decls.h"
 struct NJS_MODEL;
-extern void njRotateZ(float *param_1, int param_2);
 void FUN_00571b20(int param_1);
 struct obj;
-extern void njPushMatrix(float *);
-extern void njRotateZ(float *, int);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
-void njPopMatrix(int param_1);
 extern struct NJS_ARGB DAT_0098bf28[4];
 void FUN_00572380(struct obj *param_1, struct obj *param_2);
 void FUN_005723e0(float param_1);
@@ -20,7 +16,7 @@ void FUN_00572380(struct obj *param_1, struct obj *param_2)
 	float local_8;
 
 	local_8 = *(float *)((char *)param_1 + 0x14) * 0.10000000149011612;
-	njPushMatrix((float *)0);
+	njPushMatrix(NULL);
 	FUN_00572f90(param_1, param_2);
 	FUN_005723e0(local_8);
 	FUN_00573060(object_sphere01.model, param_1);

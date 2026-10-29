@@ -20,7 +20,7 @@ void ObjectWatageDisplay(struct task *tp)
 	FUN_0067d830(0, var2->scl.x + var1->pos.x, var2->scl.y + var1->pos.y, var2->scl.z + var1->pos.z);
 	if (DAT_05b42a7c->ang.y)
 	{
-		njRotateY(0, DAT_05b42a7c->ang.y);
+		njRotateY(0, (Uint16)DAT_05b42a7c->ang.y);
 	}
 	late_DrawObjectClip(&object_wvobj_watage_watage, 1, 1.0f);
 	njPopMatrix(1);

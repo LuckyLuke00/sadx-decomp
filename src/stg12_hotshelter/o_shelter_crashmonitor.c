@@ -16,7 +16,7 @@ void DispBTask(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	late_DrawModelClip((struct NJS_MODEL *)&model_tv_clash_base_tv_clash_base, 1, 1.0f);
 	njPopMatrix(1);

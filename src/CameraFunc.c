@@ -1,25 +1,16 @@
 #include "decls.h"
 extern float DAT_05ccdb04;
-void njAddVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
 extern float DAT_05ccdb34;
 extern float DAT_05ccdb38;
 extern float DAT_05ccdb3c;
 extern int DAT_05ccdc10;
 extern int DAT_05ccdc14;
 extern int DAT_05ccdc18;
-extern void njPushMatrix(float *);
-extern void njRotateY(float *, unsigned short);
-extern void njRotateX(float *, unsigned short);
-extern void njPopMatrix(int);
 struct _OBJ_CAMERAPARAM;
 struct pathinfo {
 };
 struct NJS_POINT3;
 struct pathtag;
-void njPushMatrix(float *);
-void njRotateY(float *, unsigned short);
-void njCalcVector(float *, struct NJS_POINT3 *, struct NJS_POINT3 *);
-void njPopMatrix(int);
 void CameraReleaseEventCamera(void);
 void CameraSetEventCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), unsigned char ucAdjustType, signed char scCameraDirect);
 long DiffAngle(long ang0, long ang1);
@@ -60,8 +51,6 @@ extern float DAT_05ccdadc;
 extern float DAT_05ccdbe8;
 extern float DAT_05ccdbec;
 extern float DAT_05ccdbf0;
-void njPushMatrix(float *param_1);
-void njPopMatrix(int param_1);
 extern float _nj_unit_matrix_[16];
 extern char DAT_05ccdc28;
 extern float DAT_05ccdbf8;
@@ -214,7 +203,7 @@ void CCSI_CalcTargetPos(float dist, struct NJS_POINT3 *ans)
 	vs.x = 0.0f;
 	vs.y = 0.0f;
 	vs.z = dist;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (*(int *)((char *)camcont_wp + 0x28) != 0)
 	{
 		njRotateY(0, *(unsigned short *)((char *)camcont_wp + 0x28));
@@ -363,7 +352,7 @@ void PathCamera2Core(struct _OBJ_CAMERAPARAM *pParam)
 // FUNCTION: SADX 0x005656f0
 void calcModerateVector(struct Angle3 *ang, struct NJS_POINT3 *vec)
 {
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (ang->z != 0)
 	{
 		njRotateZ(0, (unsigned short)ang->z);

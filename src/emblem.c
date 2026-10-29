@@ -267,7 +267,7 @@ void dispEmblem(struct task *tp)
 	njTranslateV(0, &local_8->pos);
 	if (local_8->ang.y)
 	{
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	}
 	late_DrawObjectMesh((struct obj *)local_8->counter.ptr, 0);
 	njPopMatrix(1);
@@ -421,7 +421,7 @@ static void Disp(struct task *tp)
 	njTranslateV(0, &local_cg->pos);
 	if (local_cg->ang.y)
 	{
-		njRotateY(0, local_cg->ang.y);
+		njRotateY(0, (Uint16)local_cg->ang.y);
 	}
 	FUN_0067d2d0(0, local_8g, local_8g, local_8g);
 	late_DrawObjectMesh(object_o_emblm_emblm, 0);

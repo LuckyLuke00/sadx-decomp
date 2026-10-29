@@ -11,15 +11,15 @@ void DispAllHahens(struct TMyWork *MyWork)
 	var1 = (struct TMyWork *)((char *)var1 + 0x20);
 	for (var3 = 4; var3 != 0; var3--)
 	{
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, (struct NJS_POINT3 *)var1);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateY((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateX((float *)0, (unsigned short)*(short *)((char *)var1 + 0x18));
+			njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
 		}
 		if (*(int *)((char *)var1 + 0x20) != 0)
 		{

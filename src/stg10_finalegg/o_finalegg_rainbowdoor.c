@@ -44,7 +44,7 @@ void ColliFinalEggFakeRoot(struct task *tp)
 		FUN_0067d830(0, var1->pos.x, var1->pos.y + 30.0, var1->pos.z);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		FUN_0067d2d0(0, 6.0f, 6.0f, 2.0f);
 		SetMaterial(0.05f, 1.0f, 0.0f, 0.0f);

@@ -20,7 +20,7 @@ void FinalEggDisplayer(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)DAT_060eeaac + 0x0)), var1->scl.x, 1.0f);
 	ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)DAT_060eeaac + 0x78)), var1->scl.y, 1.0f);

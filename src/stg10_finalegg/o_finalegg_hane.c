@@ -20,7 +20,7 @@ void hane_draw(struct task *task_p)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_0067d2d0(0, var1->scl.x, var1->scl.y, var1->scl.z);
 	ds_DrawObjectClip(DAT_04a08338, FUN_00500c70(var1->scl.x, var1->scl.y, var1->scl.z));

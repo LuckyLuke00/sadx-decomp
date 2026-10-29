@@ -15,7 +15,6 @@ int dsCheckViewV(struct NJS_POINT3 *ft, float radius);
 void dsPushPopMotion(struct obj *obj);
 extern struct NJS_TEXLIST *DAT_05b3ded0;
 void njSetZUpdateMode(long param_1);
-extern void njRotateXYZ(long param_1, long param_2, long param_3, long param_4);
 extern void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
 void *late_setOdr(int sz, int odr, int no, int flgs);
 void npSetZCompare();
@@ -61,12 +60,6 @@ int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
 void FUN_004a27c0();
 void FUN_004a2960();
 extern int DAT_05b39df4;
-void njScaleEx(void *param_1);
-void njTranslateEx(void *param_1);
-void njPushMatrixEx();
-void njPopMatrixEx();
-void njRotateXYZ(long param_1, long param_2, long param_3, long param_4);
-void njRotateZXY(long param_1, long param_2, long param_3, long param_4);
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl);
 int isTextureNG(NJS_TEXLIST *tl, int numChk);
 extern int DAT_05b3dee0;
@@ -79,10 +72,8 @@ extern float DAT_05b3df38;
 void late_DrawModelClip(struct NJS_MODEL *, int, float);
 int isTextureNG(struct NJS_TEXLIST *, int);
 long dsSimpleDrawModel(struct NJS_MODEL *);
-void njDrawModel(struct NJS_MODEL *);
 extern unsigned char DAT_02608e24;
 extern float DAT_05b3df40;
-void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 extern float DAT_05a922f8;
 extern float DAT_05a922fc;
 extern float DAT_0629c6e0;
@@ -93,9 +84,6 @@ extern int DAT_05cd4078;
 int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
 extern NJS_ARGB DAT_05b3df28;
 extern float DAT_05b3df3c;
-
-void njSetPerspective(long param_1);
-void njSetConstantMaterial(NJS_ARGB *param_1);
 
 extern long DAT_06298c64;
 extern long DAT_05b39e6c;
@@ -452,7 +440,7 @@ void ___DrawObject(struct obj *obj)
 			{
 				njRotateXYZ(0, obj->ang[0], obj->ang[1], obj->ang[2]);
 			}
-			njScaleEx(&obj->scl[0]);
+			njScaleEx((NJS_VECTOR *)obj->scl);
 			if ((local_8 & 8) == 0)
 			{
 				unsigned long local_c = (unsigned long)obj->model;
@@ -484,7 +472,7 @@ void ___DrawObject(struct obj *obj)
 			{
 				njRotateXYZ(0, obj->ang[0], obj->ang[1], obj->ang[2]);
 			}
-			njScaleEx(&obj->scl[0]);
+			njScaleEx((NJS_VECTOR *)obj->scl);
 			if ((local_8 & 8) == 0)
 			{
 				unsigned long local_10 = (unsigned long)obj->model;
@@ -509,7 +497,7 @@ void ___DrawObject(struct obj *obj)
 		case 2:
 			njPushMatrixEx();
 			njTranslateEx(&obj->pos[0]);
-			njScaleEx(&obj->scl[0]);
+			njScaleEx((NJS_VECTOR *)obj->scl);
 			if ((local_8 & 8) == 0)
 			{
 				unsigned long local_14 = (unsigned long)obj->model;
@@ -533,7 +521,7 @@ void ___DrawObject(struct obj *obj)
 			break;
 		case 3:
 			njPushMatrixEx();
-			njScaleEx(&obj->scl[0]);
+			njScaleEx((NJS_VECTOR *)obj->scl);
 			if ((local_8 & 8) == 0)
 			{
 				unsigned long local_18 = (unsigned long)obj->model;

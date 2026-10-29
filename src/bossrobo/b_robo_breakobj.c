@@ -1,7 +1,6 @@
 #include "decls.h"
 void dispUnit(struct obj *pObj, struct OBJ_UNIT **ppUnit);
 extern int DAT_05b9d838;
-void njMultiMatrix(float *, struct NJS_POINT3 *);
 
 // FUNCTION: SADX 0x006e0a20
 void calcModelNum(struct obj *pObj, int *pNum)
@@ -28,7 +27,7 @@ void dispUnit(struct obj *pObj, struct OBJ_UNIT * *ppUnit)
 			{
 				njPushMatrix(0);
 				njTranslateV(0, (struct NJS_POINT3 *)((char *)*ppUnit + 0x40));
-				njMultiMatrix(0, (struct NJS_POINT3 *)*ppUnit);
+				njMultiMatrix(0, (NJS_MATRIX *)*ppUnit);
 				ds_DrawModelClip(pObj->model, 1.0f);
 				njPopMatrix(1);
 			}

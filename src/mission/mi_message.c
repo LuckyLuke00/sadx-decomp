@@ -1,12 +1,10 @@
 #include "decls.h"
-extern void syFree(void *param_1);
 extern void ReleaseMiMessage();
 void ReleaseMiMessage();
 void FUN_004c3310(int *param_1);
 void FUN_004c1c20();
 void MSG_Close(struct MSGC *msgc);
 void MSG_Disp(struct MSGC *msgc);
-void syFree(void *param_1);
 extern struct MiMsg *DAT_05b3730c;
 
 // FUNCTION: SADX 0x00498b00

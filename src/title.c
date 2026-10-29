@@ -20,17 +20,11 @@ void dsSetFade(int fade_lev);
 void ___njSetBackColor(unsigned long c0, unsigned long c1, unsigned long c2);
 void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo);
 void dsLoadStageSound();
-void njPushMatrix(float *);
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
-void njRotateY(float *, unsigned short);
-void njCalcPoint(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
-void njPopMatrix(int param_1);
 extern int DAT_05b92eb8;
 extern int DAT_05cda0ec;
 int dsPlay_oneshot(int tone, int id, int pri, int volofs);
 extern unsigned char DAT_05cda0c4;
-extern void njPrintColor(unsigned long);
-extern void njPrintC(int, char const *);
 extern int DAT_05cda0c8;
 extern int DAT_05cda0e4;
 
@@ -62,7 +56,7 @@ void InitTitle()
 	u.x = -6613.85986328125f;
 	u.y = -10572.419921875f;
 	u.z = -1697.969970703125f;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	FUN_0067d830(0, -1482.6300048828125f, -4582.89013671875f, 5921.56005859375f);
 	if (1)
 	{

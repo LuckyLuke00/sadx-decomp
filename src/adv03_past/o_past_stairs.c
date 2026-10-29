@@ -14,7 +14,7 @@ void PyramidStairsDisplayer(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	var2 = njSqrt((var1->pos.x - DAT_05b42a7c->pos.x) * (var1->pos.x - DAT_05b42a7c->pos.x) + (var1->pos.y - DAT_05b42a7c->pos.y) * (var1->pos.y - DAT_05b42a7c->pos.y) + (var1->pos.z - DAT_05b42a7c->pos.z) * (var1->pos.z - DAT_05b42a7c->pos.z));
 	if (var2 < 400.0)
@@ -40,7 +40,7 @@ void BigStairsDisplayer(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	var2 = njSqrt((var1->pos.x - DAT_05b42a7c->pos.x) * (var1->pos.x - DAT_05b42a7c->pos.x) + (var1->pos.y - DAT_05b42a7c->pos.y) * (var1->pos.y - DAT_05b42a7c->pos.y) + (var1->pos.z - DAT_05b42a7c->pos.z) * (var1->pos.z - DAT_05b42a7c->pos.z));
 	if (var2 < 400.0f)

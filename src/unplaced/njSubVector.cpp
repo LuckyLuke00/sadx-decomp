@@ -1,9 +1,9 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x0067e350
-void njSubVector(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2)
+void njSubVector(struct NJS_POINT3 *vd, struct NJS_POINT3 *vs)
 {
-	param_1->x = param_1->x - param_2->x;
-	param_1->y = param_1->y - param_2->y;
-	param_1->z = param_1->z - param_2->z;
+	vd->x = vd->x - vs->x;
+	vd->y = vd->y - vs->y;
+	vd->z = vd->z - vs->z;
 }

@@ -226,6 +226,7 @@ struct NJS_RGB;
 struct NJS_SPRITE;
 struct NJS_TEX;
 struct NJS_TEXANIM;
+struct NJS_TEXINFO;
 struct NJS_TEXLIST;
 struct NJS_TEXMEMLIST;
 struct NJS_TEXNAME;

@@ -1,7 +1,4 @@
 #include "decls.h"
-extern struct NJS_TEXNAME DAT_05b2cab8;
-void njSetTextureInfo(int param_1, int param_2, int param_3, int param_4, int param_5);
-void njSetTextureName(int param_1, int param_2, int param_3, int param_4);
 void FUN_0044d460(unsigned short *param_1);
 void WcConvFromCStr(unsigned short *wstr, const char *cstr, long ja);
 long AlMsgFontCreateWStr_Thread(struct SAlMsgFontStr *self, const unsigned short *wstr, int sx);
@@ -14,15 +11,18 @@ extern struct NJS_TEXLIST DAT_05b30ff4;
 extern int DAT_05b31398;
 void FPpInit();
 
+// GLOBAL: SADX 0x05b2cab8
+struct NJS_TEXINFO DAT_05b2cab8;
+
 // FUNCTION: SADX 0x0044caf0
 void AlMsgFontInit()
 {
-	struct NJS_TEXNAME *var1;
+	Uint16 *var1;
 
-	var1 = (struct NJS_TEXNAME *)syCalloc(0x40000, 1);
+	var1 = (Uint16 *)syCalloc(0x40000, 1);
 	DAT_05b2cae4 = var1;
-	njSetTextureInfo((int)&DAT_05b2cab8, (int)var1, 0x902, 0x200, 0x100);
-	njSetTextureName((int)&DAT_05b31040, (int)&DAT_05b2cab8, 0x30d36, 0x40800000);
+	njSetTextureInfo(&DAT_05b2cab8, var1, 0x902, 0x200, 0x100);
+	njSetTextureName(&DAT_05b31040, &DAT_05b2cab8, 0x30d36, 0x40800000);
 	DAT_05b30ff4.textures = &DAT_05b31040;
 	DAT_05b30ff4.nbTexture = 1;
 	njLoadTexture(&DAT_05b30ff4);

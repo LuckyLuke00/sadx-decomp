@@ -66,10 +66,10 @@ void ZRotateYXZ(float *matp, struct Angle3 *angp)
 	}
 	if (angp->x != 0)
 	{
-		njRotateX(matp, (unsigned short)angp->x);
+		njRotateX((NJS_MATRIX *)matp, (unsigned short)angp->x);
 	}
 	if (angp->y != 0)
 	{
-		njRotateY(matp, (unsigned short)angp->y);
+		njRotateY((NJS_MATRIX *)matp, (unsigned short)angp->y);
 	}
 }
