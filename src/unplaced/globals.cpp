@@ -2543,12 +2543,6 @@ struct obj object_seaobj_rock2_rock2[1];
 // GLOBAL: SADX 0x03a0c380
 struct CCL_INFO object_seki_info[2];
 
-// GLOBAL: SADX 0x03a0c8d8
-struct CCL_INFO DAT_03a0c8d8;
-
-// GLOBAL: SADX 0x03a0c908
-struct CCL_INFO DAT_03a0c908[1];
-
 // GLOBAL: SADX 0x03a0cb98
 struct CCL_INFO hasi_a0_info[1];
 
@@ -2659,9 +2653,6 @@ struct CCL_INFO hasi_colli_info2[3];
 
 // GLOBAL: SADX 0x03b75660
 float alpha;
-
-// GLOBAL: SADX 0x03b75728
-struct CCL_INFO DAT_03b75728[1];
 
 // GLOBAL: SADX 0x03b757e8
 struct CCL_INFO object_uki_info[2];
@@ -3100,9 +3091,6 @@ struct NJS_TEXANIM anim_jet[1];
 
 // GLOBAL: SADX 0x043ac64c
 struct CCL_INFO tap_c_info[1];
-
-// GLOBAL: SADX 0x043ac9f0
-struct CCL_INFO object_c_info[5];
 
 // GLOBAL: SADX 0x043adfcc
 struct NJS_TEXLIST texlist_piece[1];

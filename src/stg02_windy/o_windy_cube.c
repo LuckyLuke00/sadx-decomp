@@ -1,5 +1,7 @@
 #include "decls.h"
-extern struct CCL_INFO DAT_03b75728[];
+
+// GLOBAL: SADX 0x03b75698
+static struct CCL_INFO object_c_info[7];
 
 // FUNCTION: SADX 0x00808dd0
 void ObjectWindyUkisima(struct task *tp)
@@ -25,7 +27,7 @@ void ObjectWindyTateiwaS(struct task *tp)
 	tp->twp->counter.ptr = object_wvobj_tateiwa_s_tateiwa_s;
 	if (!FUN_004c39c0(tp))
 	{
-		CCL_Init(tp, DAT_03b75728, 1, 4);
+		CCL_Init(tp, &object_c_info[3], 1, 4);
 	}
 	ObjectCCollision_setWZ(tp);
 	ObjectCCollision(tp);
