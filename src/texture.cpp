@@ -1,4 +1,6 @@
 #include "decls.h"
+void ___njSetTexture(struct NJS_TEXLIST *texlist);
+extern struct NJS_TEXLIST *DAT_05cc34c0[5];
 void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo);
 void late_ReleaseTexture(struct NJS_TEXLIST *tl);
 extern struct TEX_PVMTABLE *ListofPlayersPvmList[9];
@@ -107,15 +109,42 @@ void LoadTextureForEachGameMode(long gamemode)
 {
 }
 
+// FUNCTION: SADX 0x00501ec0
+void ReleaseTextureForEachGameMode()
+{
+	struct NJS_TEXLIST **local_8;
+
+	if (DAT_05cc3540[0] != 0)
+	{
+		late_ReleaseTexture(DAT_05cc3540[0]);
+		DAT_05cc3540[0] = 0;
+	}
+	local_8 = DAT_05cc34c0;
+	while (*local_8 != 0)
+	{
+		late_ReleaseTexture(*local_8);
+		*local_8 = 0;
+		local_8 = local_8 + 1;
+	}
+}
+
 // STUB: SADX 0x00501f20
 void LoadTexture()
 {
 }
 
-// STUB: SADX 0x00502210
+// FUNCTION: SADX 0x00502210
 long SetRegularTexture()
 {
-	return (long)0;
+	if (DAT_05cc3540[0] != 0)
+	{
+		___njSetTexture(DAT_05cc3540[0]);
+	}
+	else
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x00502240

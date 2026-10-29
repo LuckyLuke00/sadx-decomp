@@ -1409,11 +1409,6 @@ void FUN_005015e0(void *)
 {
 }
 
-// STUB: SADX 0x00501ec0
-void ReleaseTextureForEachGameMode()
-{
-}
-
 // STUB: SADX 0x00502cd0
 int FUN_00502cd0()
 {
