@@ -396,6 +396,7 @@ def write(context: Path | None, tables: Path | None) -> int:
             used_globals.add(a)
     externs, gdefs = {}, {}
     unsized = set()  # globals that stubs give one element, though their size is unknown
+    file_local = set()  # defined globals that no file but their own names: globals.h leaves them out
     declared_here = set()  # globals that only a declaration in this tree's files gives a type
     for a in sorted(used_globals | set(defined_globals)):
         row = dict(glob[a], name=f"DAT_{a:08x}") if a in placeholders else glob.get(a)
@@ -405,6 +406,10 @@ def write(context: Path | None, tables: Path | None) -> int:
             if re.match(r"static\b", d[1]):
                 continue
             externs[a] = extern_of(d[1].split("=")[0].strip())
+            # Its type may need headers that only its own file includes, such as a std::list of a class.
+            if all(rel == d[0] for tokens_of in (file_tokens, context_tokens) for rel, found in tokens_of.items()
+                   if name in found or f"DAT_{a:08x}" in found):
+                file_local.add(a)
             continue
         c = context_globals.get(a)
         if c and not re.match(r"static\b", c[1]):
@@ -529,7 +534,8 @@ def write(context: Path | None, tables: Path | None) -> int:
     out[names.FUNCTIONS_H] = "\n".join(flines) + "\n"
     glines = [HEADER, "#pragma once", ""]
     for a, ext in sorted(externs.items()):
-        glines.append(f"{ext};")
+        if a not in file_local:
+            glines.append(f"{ext};")
     out[names.GLOBALS_H] = "\n".join(glines) + "\n"
     slines = [HEADER, '#include "decls.h"', ""]
     for a, sig in sorted(stubs.items()):
