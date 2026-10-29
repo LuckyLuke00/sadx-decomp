@@ -28,10 +28,11 @@ import scoring
 ROOT = progress.ROOT
 # The repo files and tools that can change a score. summary.json stores their hash.
 BUILD_INPUTS = ["src", "CMakeLists.txt", "game.cmake", "data/codegen-groups.csv", "data/functions.csv",
-                "reccmp-project.yml", "requirements.txt", "tools/check.py", "tools/codegen.py", "tools/constants.py",
-                "tools/datafiles.py", "tools/libobjects.py", "tools/library.py", "tools/names.py", "tools/osutil.py",
-                "tools/pe.py", "tools/progress.py", "tools/project.py", "tools/report.py", "tools/runner.py",
-                "tools/scoring.py", "tools/selftest.py", "tools/toolchain.py", "tools/tricks.py"]
+                "reccmp-project.yml", "requirements.txt", "tools/accesses.py", "tools/check.py", "tools/codegen.py",
+                "tools/constants.py", "tools/datafiles.py", "tools/fakematch.py", "tools/libobjects.py",
+                "tools/library.py", "tools/names.py", "tools/osutil.py", "tools/pe.py", "tools/progress.py",
+                "tools/project.py", "tools/report.py", "tools/runner.py", "tools/scoring.py", "tools/selftest.py",
+                "tools/toolchain.py", "tools/tricks.py"]
 BINARY_SUFFIXES = {".exe", ".dll", ".pdb", ".lib", ".obj", ".ilk", ".iso", ".msi"}
 MAX_FILE_BYTES = 10 * 1024 * 1024
 MAX_LINES = 10  # problem lines a check prints before it sums up the rest

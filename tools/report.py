@@ -6,6 +6,7 @@ score_library() counts the runtime library functions that match.
 
 from pathlib import Path
 
+import fakematch
 import project
 import runner
 import tricks
@@ -16,7 +17,8 @@ def score_functions(addresses: list[int], game: Path) -> int:
     runner.require_our_game()
     functions = runner.score_target(runner.game_build(), game)
     unmatched = runner.unmatched_library_rows(functions, game)
-    tricked = {address: reasons for address, (_, reasons) in tricks.scan(project.ROOT).items()}
+    fakes = fakematch.checker(project.ROOT, game)
+    tricked = {address: reasons for address, (_, reasons) in tricks.scan(project.ROOT, fakes).items()}
     matched = 0
     for address in addresses:
         if report_function(address, functions.get(address), unmatched.get(address), tricked.get(address)):

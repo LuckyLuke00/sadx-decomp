@@ -298,6 +298,14 @@ class Types:
         return {member: int(offset, 16) for member, offset in
                 re.findall(r"static_assert\(offsetof\(\w+, (\w+)\) == (0x[0-9a-f]+)", self.blocks.get(name, ""))}
 
+    def member(self, base: str, member: str) -> str | None:
+        """The declaration of MEMBER in BASE, a struct or union of this header, such as `float x`. None when the header
+        does not know BASE, or no line of its own declares the member."""
+        m = re.fullmatch(r"(?:(?:struct|union)\s+)?(\w+)", re.sub(r"\b(?:const|volatile)\b", "", base).strip())
+        body = self.blocks.get(m[1], "").split("};", 1)[0] if m else ""
+        found = re.search(rf"^[ \t]*([^;{{}}\n]*(?<![\w.]){re.escape(member)}\s*(?:\[[^\]\n]*\]\s*)*);", body, re.M)
+        return found[1].rstrip() if found else None
+
 
 def element_size(base: str, types: Types) -> int | None:
     t = re.sub(r"\bconst\b|\bvolatile\b", "", base).strip()
