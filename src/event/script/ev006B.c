@@ -1,6 +1,9 @@
 #include "decls.h"
 extern char DAT_009ec7a8[1];
-extern struct TEX_PVMTABLE DAT_060cba24[];
+
+// GLOBAL: SADX 0x060cba24
+struct TEX_PVMTABLE DAT_060cba24[1];
+
 static void evmain(int code);
 
 // FUNCTION: SADX 0x007738d0
