@@ -25,7 +25,9 @@ def function(address, *statements, kind="FUNCTION", head=()):
 def check_file_tricks() -> list[str]:
     """Each trick counts in its own definition. A file-level pragma that changes the code counts in every definition
     after it until a reset, and a harmless pragma counts nowhere. A trick word in a comment or a string, or in a stub,
-    counts nowhere, and a definition with no closing line is left out. A word counts once per definition."""
+    counts nowhere, and a definition with no closing line is left out. A word counts once per definition. A definition
+    ends at the brace that closes its body: in a class, a member function's own, and a `}` at the start of a line inside
+    the body is no end."""
     cases = [(function(0x401000, "\tx = 1;"), {}),
              (function(0x401000, "\t__asm mov eax, ecx"), {0x401000: "__asm"}),
              (function(0x401000, "\t__asm { nop }", kind="STUB"), {}),
@@ -51,7 +53,12 @@ def check_file_tricks() -> list[str]:
              (['__pragma(optimize("", off))', "", *function(0x401000), '__pragma(optimize("", on))', "",
                *function(0x401010)], {0x401000: 'after #pragma optimize("",off)'}),
              (annotated("FUNCTION", 0x401000, "void FUN_00401000(void)", "{", "\t__asm nop"), {}),
-             (function(0x401000, "\t__asm nop", "\t__asm nop"), {0x401000: "__asm"})]
+             (function(0x401000, "\t__asm nop", "\t__asm nop"), {0x401000: "__asm"}),
+             (["class Foo", "{", "public:",
+               *annotated("FUNCTION", 0x401000, "\tvoid Bar(void)", "\t{", "\t\tx = 1;", "\t}"), "};", "",
+               *function(0x401010, "\tv = ((volatile struct task *)tp)->fwp;")], {0x401010: "volatile"}),
+             (function(0x401000, "\tswitch (x)", "\t{", "}", "\tv = ((volatile struct task *)tp)->fwp;"),
+              {0x401000: "volatile"})]
     failures = []
     for lines, wanted in cases:
         found = tricks.file_tricks("\n".join(lines))

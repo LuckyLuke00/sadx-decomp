@@ -294,8 +294,8 @@ def definition_block(lines, address):
 
 def unclosed_definitions(lines):
     """The indexes of the FUNCTION and STUB annotations in LINES whose definition has no lone "}" line before the
-    next such annotation. apply_function takes the first one after an annotation as the definition's end: with none,
-    it stops; past the next annotation, it replaces the next definition too."""
+    next such annotation. apply_function takes the line that closes the body as the definition's end, when it holds
+    only the brace: with none, it stops; past the next annotation, it replaces the next definition too."""
     starts = [i for i, line in enumerate(lines) if annotation_address(line) is not None]
     unclosed = []
     for start, after in zip(starts, starts[1:] + [len(lines)]):
