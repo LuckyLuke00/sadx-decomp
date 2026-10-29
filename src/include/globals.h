@@ -2611,7 +2611,6 @@ extern struct TEX_PVMTABLE DAT_060cb8ac[];
 extern struct task *DAT_060cb8d0;
 extern struct task *DAT_060cb8d4;
 extern struct task *DAT_060cba14;
-extern struct TEX_PVMTABLE DAT_060cba24[];
 extern struct task *DAT_060cba34;
 extern struct task *DAT_060cba88[16];
 extern struct TEX_PVMTABLE DAT_060cbb04[];

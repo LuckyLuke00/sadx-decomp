@@ -7820,9 +7820,6 @@ struct task *DAT_060cb8d4;
 // GLOBAL: SADX 0x060cba14
 struct task *DAT_060cba14;
 
-// GLOBAL: SADX 0x060cba24
-struct TEX_PVMTABLE DAT_060cba24[1];
-
 // GLOBAL: SADX 0x060cba34
 struct task *DAT_060cba34;
 
