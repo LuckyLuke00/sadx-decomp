@@ -47,7 +47,7 @@ KEYWORDS = {"return", "goto", "else", "case", "default", "break", "continue", "d
             "sizeof", "delete", "new", "throw"}
 QUALIFIER = r"(?:(?:const|unsigned|signed|struct|union|enum|volatile|register)\s+)*"
 DECLARATOR = re.compile(r"\s*((?:\*\s*)*)([A-Za-z_]\w*)\s*((?:\[[^\]]*\]\s*)*)(?:=.*)?$", re.S)
-DECLARATION = re.compile(rf"^\s*({QUALIFIER}[A-Za-z_]\w*)\s*(\*?[\s*]*[A-Za-z_].*);\s*$")
+DECLARATION = re.compile(rf"^\s*({QUALIFIER}[A-Za-z_]\w*)\b\s*(\*?[\s*]*[A-Za-z_].*);\s*$")
 PATTERNS = {
     # A cast right before the address, a pointer cast on a sum in parentheses that holds it, a pointer cast on a value
     # that the address is added to, or the address plus a scaled index, either way round.

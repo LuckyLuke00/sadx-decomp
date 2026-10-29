@@ -350,6 +350,7 @@ def check_fakematch_kinds() -> list[str]:
              ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tint y = x;", "\treturn y;"]),
              ("unused_local", ["\tint *y = p->y;", "\treturn x;"], "y", ["\tint *y = p->y;", "\treturn *y;"]),
              ("unused_local", ["\tint y; int z;", "\treturn z;"], "y", ["\tint y; int z;", "\treturn y + z;"]),
+             ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tgx = x;"]),
              ("self_assignment", ["\tp[0] = p[0];"], "p[0] = p[0];", ["\tp[0] = p[1];"]),
              ("self_assignment", ["\tq->a.b = q->a.b;"], "q->a.b = q->a.b;", ["\tq->a.b = q->a.b + 1;"]),
              ("unused_label", ["\tfld:", "\treturn x;"], "fld:",
