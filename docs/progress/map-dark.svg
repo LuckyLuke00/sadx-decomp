@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1415" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,419 of 16,524 game functions done (32.79%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,420 of 16,524 game functions done (32.80%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 601,1180.5 595,1173.6 596.1,1172" fill="#4e32f3"/>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 595,1173.6 596.1,1172" fill="#ffffff" fill-opacity="0.4"/>
@@ -923,7 +923,7 @@
 <rect x="0" y="98" width="6" height="6" fill="#ffd700"><title>0x0084e430 FUN_0084e430: 100%</title></rect>
 <rect x="14" y="98" width="6" height="6" fill="#ffd700"><title>0x0084e780 FUN_0084e780: 100%</title></rect>
 </g>
-<rect x="299" y="377" width="88" height="160" rx="3" fill="#21262d" stroke="#30363d"><title>Lost World: 54 of 184 done</title></rect>
+<rect x="299" y="377" width="88" height="160" rx="3" fill="#21262d" stroke="#30363d"><title>Lost World: 55 of 184 done</title></rect>
 <text x="302" y="391" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Lost World</text>
 <text x="302" y="406" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">29%</tspan></text>
 <g transform="translate(302,410)">
@@ -964,7 +964,7 @@
 <rect x="56" y="70" width="6" height="6" fill="#ffd700"><title>0x00855220 Object_Ruin_BurningArrow_Display: 100%</title></rect>
 <rect x="63" y="70" width="6" height="6" fill="#ffd700"><title>0x00855280 Object_Ruin_BurningBow_Display: 100%</title></rect>
 <rect x="70" y="77" width="6" height="6" fill="#ffd700"><title>0x00855c20 ObjectGakekusa: 100%</title></rect>
-<rect x="0" y="91" width="6" height="6" fill="#cec173"><title>0x00856630 Initial: 78.8%</title></rect>
+<rect x="0" y="91" width="6" height="6" fill="#ffd700"><title>0x00856630 Initial: 100%</title></rect>
 <rect x="7" y="91" width="6" height="6" fill="#ffd700"><title>0x008566a0 ObjectHasira1: 100%</title></rect>
 <rect x="14" y="91" width="6" height="6" fill="#ffd700"><title>0x008566c0 ObjectHasira2: 100%</title></rect>
 <rect x="21" y="91" width="6" height="6" fill="#ffd700"><title>0x008566e0 ObjectSekicyuu: 100%</title></rect>
