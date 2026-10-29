@@ -2548,7 +2548,7 @@
   {
    "address": "0x004251f0",
    "name": "njDeleteWaitVSyncFunc",
-   "accuracy": 0.9629629629629629,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -70800,7 +70800,7 @@
   {
    "address": "0x008eea50",
    "name": "_mtdeletelocks",
-   "accuracy": 0.9428571428571428,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -70944,7 +70944,7 @@
   {
    "address": "0x008ef992",
    "name": "cvtdate",
-   "accuracy": 0.9885057471264368,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -73136,7 +73136,7 @@
   {
    "address": "0x00902aee",
    "name": "std::_Init_locks::_Init_locks",
-   "accuracy": 0.9473684210526315,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -73144,7 +73144,7 @@
   {
    "address": "0x00902b1f",
    "name": "std::_Init_locks::~_Init_locks",
-   "accuracy": 0.9285714285714286,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -96578,5 +96578,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "39cfafd23542acbb731095624bca8b1438b10a11f132c32fb9871d44c89192ee"
+ "inputs_sha256": "3cce789c528cb633b58d0984e1ec63c8513cba7ebff4a1ba67e78dc25e0d81b0"
 }

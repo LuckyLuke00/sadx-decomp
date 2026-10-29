@@ -222,14 +222,10 @@ Tell the user to commit everything in `git status` (it never shows game files). 
 - Local names. At /Od, VC++ 2010 orders the locals of each scope by a hash of the name. A renamed local can move its stack slot and break a match.
 - `__FILE__` paths. CMake passes absolute paths to `cl`, so `__FILE__` holds our path, not the game's. Write the game's path as a string literal, with doubled backslashes. Write its line as a number. `src/shinobi/sg_maloc.c` does this. Don't use `#line`. It renumbers every later line, so reccmp no longer finds the annotations below it. Also, if the `#line` path names the source file itself, `cl` gives our absolute path anyway. Example: `..\\src\\x.c` seen from `build`.
 - Missing headers. `.toolchain` has no D3DX, MFC or ATL headers or libraries. A function calling such an API needs its own declaration and import library. The other way is the DirectX SDK as a new pinned download. That is its own task, so ask the user first.
-- CRT functions below 100%. SADX: 658 of the 685 functions that `check.py library` scores reach 100%. Each of the other 27 has a known cause in reccmp or the game's link, not in our library. Don't chase them:
+- CRT functions below 100%. SADX: 662 of the 685 functions that `check.py library` scores reach 100%. Each of the other 23 has a known cause in reccmp or the game's link, not in our library. Don't chase them:
   - reccmp names the target of a `call` or `jmp` only. A conditional jump to another function shows as a distance that differs with the layout (13 functions). Example: `jne _fast_exit` in the math functions.
   - A file-static CRT function with a repeated name, for example `write_char`, gets no row in `src/library.csv`. reccmp matches rows by name and cannot tell same-name statics apart. A call to it shows as an address placeholder on the game's side. On ours it shows `write_char(1)` (6, for example `_output_l`).
   - The game's link folded identical functions into one copy. Ours keeps them apart, each with its name (`/OPT:NOICF` in `CMakeLists.txt`). Where the game calls `_ValidateRead`, ours calls `_ValidateWrite` (2: `__BuildCatchObject` and `__BuildCatchObjectHelper`).
-  - Three kinds of use name the variable at that spot in our build (4, for example `std::_Init_locks::_Init_locks`):
-    - a compare with an array's end
-    - a load from just below a table
-    - any use of a variable next to the one used
   - `call [reg + disp]` shows the table's raw address, which differs between builds (`_setlocale_set_cat`).
   - `_time64` pushes 10,000,000, which equals an address in the game's data, so the game's side shows a placeholder.
 - Header functions. A header function, for example a `std::basic_string` constructor, can have its one kept copy in game code. A library function's call to it shows as a placeholder on the game's side. That stays until the game function gets a `LIBRARY` annotation. SADX: `src/header-functions.h` holds four, which bring 8 CRT functions to 100%. Write it in a header under `src/` (lint rejects it in a `.cpp`). The next line names the function:

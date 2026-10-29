@@ -80,6 +80,7 @@ from reccmp.formats import detect_image
 from reccmp.tools import asmcmp
 from reccmp.types import ImageId
 
+import endrefs
 import folds
 
 HEX = re.compile(r"0x[0-9a-f]+")
@@ -265,6 +266,7 @@ def run_reccmp(args: list[str]) -> int:
 
     core.create_analysis_floats = add_rows_then_find_floats
     folds.install()
+    endrefs.install()
     # reccmp prints a sparkle emoji, which the code page of a pipe on Windows may not have.
     sys.stdout.reconfigure(errors="replace")
     sys.argv = ["reccmp-reccmp", *args]
