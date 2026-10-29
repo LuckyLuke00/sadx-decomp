@@ -4,8 +4,13 @@ extern char DAT_060d0df8[0x4b0];
 void ObjectSkydeck_OCM(struct task *tp);
 extern struct task *DAT_060d12a8;
 
+// STUB: SADX 0x0084c000
+void ObjectSkydeck_OCM_Exec(struct task *tp)
+{
+}
+
 // FUNCTION: SADX 0x0084c050
-void ObjectSkydeck_OCM(struct task *tp)
+void ObjectSkydeck_OCM_End(struct task *tp)
 {
 	if (DAT_060d12a8 == tp)
 	{
@@ -14,7 +19,7 @@ void ObjectSkydeck_OCM(struct task *tp)
 }
 
 // STUB: SADX 0x0084c070
-void OCMref(struct task *tp)
+void ObjectSkydeck_OCM(struct task *tp)
 {
 }
 

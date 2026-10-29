@@ -10,21 +10,19 @@ void CalcAimAngle(struct taskwk *twp, struct enemywk *ewp);
 void SaiSearch(struct taskwk *twp, struct enemywk *ewp, struct taskwk *ptwp);
 void SaiScramble(struct taskwk *twp, struct taskwk *ptwp, struct enemywk *ewp);
 void SaiDash(struct taskwk *twp, struct enemywk *ewp);
-void CreateSaiCatSmoke(struct taskwk *param_1, struct enemywk *param_2);
+void CreateSaiCatSmoke(struct taskwk *twp);
 void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp);
 void SaiMove(struct taskwk *twp, struct enemywk *ewp);
 void SaiDraw(struct taskwk *twp, struct enemywk *ewp);
 void SaiNormal(struct taskwk *twp, struct enemywk *ewp);
 void SaiDisplayer(struct task *tp);
 void SaiEditMode(struct taskwk *twp);
-void FUN_008d7d30(struct taskwk *param_1);
 void CreateFlash2(float x, float y, float z, float scl);
 void CreateExpParts(struct taskwk *twp, struct NJS_MODEL **model, struct NJS_TEXLIST *tex);
 void CreateExpSpring(struct taskwk *twp, unsigned char num);
 extern struct NJS_TEXLIST texlist_e_sai;
 extern struct NJS_MODEL *sai_model;
 void FUN_008d75f0(struct enemywk *param_1, struct taskwk *param_2);
-void FUN_008d7d30(struct taskwk *param_1);
 extern struct NJS_ACTION *action_rhino;
 extern struct obj object_rhino_jet[1];
 void FUN_008d75c0(int param_1, char *param_2);
@@ -108,17 +106,17 @@ void FUN_008d7d00(int param_1, char *param_2)
 }
 
 // STUB: SADX 0x008d7d30
-void FUN_008d7d30(struct taskwk *twp)
+void CreateSaiCatSmoke(struct taskwk *twp)
 {
 }
 
 // FUNCTION: SADX 0x008d7e80
-void CreateSaiCatSmoke(struct taskwk *param_1, struct taskwk *param_2)
+void FUN_008d7e80(struct taskwk *param_1, struct taskwk *param_2)
 {
 	FUN_008d75c0((int)param_1, (char *)param_2);
 	*(int *)((char *)param_2 + 0x1a8) = 0;
 	((float *)((char *)param_2 + 0x0))[3] = -0.15f; // data + 0xc
-	FUN_008d7d30(param_1);
+	CreateSaiCatSmoke(param_1);
 	if (*(float *)((char *)param_2 + 4) < 0.5f)
 	{
 		*(float *)((char *)param_2 + 4) = 0.0f;
