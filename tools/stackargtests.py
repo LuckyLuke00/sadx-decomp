@@ -421,13 +421,16 @@ def check_first_read() -> list[str]:
 
 def check_declared_scalar() -> list[str]:
     """declared_scalar gives the bytes, the kind and whether it is an array for a scalar declaration, and None for
-    a struct."""
+    a struct. The type can hold the name too, as the c of `unsigned char c`."""
     cases = [("int DAT_1", (4, "int", False)), ("float DAT_1[4]", (4, "float", True)),
              ("unsigned char DAT_1", (1, "int", False)), ("struct task *DAT_1", (4, "int", False)),
              ("double DAT_1", (8, "float", False)), ("static const int DAT_1", (4, "int", False)),
              ("short DAT_1[2][3]", (2, "int", True)), ("struct Foo DAT_1", None), ("struct Foo DAT_1[2]", None)]
-    return [f"declared_scalar gives {found} for `{decl}`, not {wanted}" for decl, wanted in cases
-            if (found := stackargs.declared_scalar(decl, "DAT_1")) != wanted]
+    named = [("unsigned char c", "c", (1, "int", False)), ("long g", "g", (4, "int", False)),
+             ("int i[4]", "i", (4, "int", True)), ("struct x *x", "x", (4, "int", False))]
+    return [f"declared_scalar gives {found} for `{decl}`, not {wanted}"
+            for decl, name, wanted in [(decl, "DAT_1", wanted) for decl, wanted in cases] + named
+            if (found := stackargs.declared_scalar(decl, name)) != wanted]
 
 
 def check_use_fits() -> list[str]:

@@ -557,7 +557,7 @@ def global_uses(functions: dict[int, x86.Function], namer: dossier.Namer) -> dic
 def declared_scalar(decl: str, name: str) -> tuple[int, str, bool] | None:
     """(bytes, "int" or "float", whether it is an array) of the scalar, or array of a scalar, that a declaration
     declares, a pointer counting as an int. None for any other type."""
-    head, _, tail = decl.partition(name)
+    head, tail = names.split_declarator(decl, name)
     head = re.sub(r"\b(?:static|extern|const|volatile)\b", "", head).strip()
     size = 4 if "*" in head else names.SCALAR_SIZES.get(head)
     return None if size is None else (size, "float" if head in ("float", "double") else "int", "[" in tail)
