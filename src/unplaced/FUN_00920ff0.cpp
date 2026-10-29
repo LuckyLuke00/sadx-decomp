@@ -131,7 +131,7 @@ void FUN_009212f0(int *param_1)
 }
 
 // STUB: SADX 0x009213a0
-int __fastcall FUN_009213a0(int ecx, int edx, int esi)
+int __fastcall FUN_009213a0(int param_1, int param_2, int param_3)
 {
 	return (int)0;
 }

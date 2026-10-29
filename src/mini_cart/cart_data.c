@@ -14,7 +14,7 @@ void CartDataSetLapTime(signed char lap, long time)
 }
 
 // STUB: SADX 0x007e4c10
-int FUN_007e4c10(struct BEST3_CART *cartData_p)
+int FUN_007e4c10(struct BEST3_CART *param_1)
 {
 	return (int)0;
 }

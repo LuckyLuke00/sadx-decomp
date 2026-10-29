@@ -158,7 +158,7 @@ void DstrRocketBase(struct task *tp)
 }
 
 // STUB: SADX 0x005b8450
-void FUN_005b8450(struct task *tp)
+void FUN_005b8450(struct task *param_1)
 {
 }
 

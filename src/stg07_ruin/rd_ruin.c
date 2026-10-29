@@ -24,7 +24,7 @@ void RuinBgmControl(struct task *tp)
 }
 
 // STUB: SADX 0x0084eb00
-void FUN_0084eb00(struct task *tp)
+void FUN_0084eb00(struct task *param_1)
 {
 }
 

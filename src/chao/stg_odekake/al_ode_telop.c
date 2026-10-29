@@ -25,6 +25,6 @@ void AL_OdeTelopClear()
 }
 
 // STUB: SADX 0x004820e0
-void AL_OdeTelopAdd(int id, float counter_f, short wtimer, int smode, float timer_f)
+void AL_OdeTelopAdd(int param_1, float param_2, short param_3, int param_4, float param_5)
 {
 }

@@ -268,7 +268,7 @@ int FUN_00927410(int *param_1)
 }
 
 // STUB: SADX 0x00927450
-void * __fastcall FUN_00927450(void *pThis, int param_2)
+void * __fastcall FUN_00927450(void *param_1, int param_2)
 {
 	return (void *)0;
 }

@@ -224,7 +224,7 @@ void TikalTask(struct task *tp)
 }
 
 // STUB: SADX 0x006d11a0
-void FUN_006d11a0(struct task *tp)
+void FUN_006d11a0(struct task *param_1)
 {
 }
 

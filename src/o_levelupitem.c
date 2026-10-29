@@ -76,7 +76,7 @@ void displayEffectGet(struct task *tp)
 }
 
 // STUB: SADX 0x005e64e0
-void FUN_005e64e0(struct task *tp)
+void FUN_005e64e0(struct task *param_1)
 {
 }
 

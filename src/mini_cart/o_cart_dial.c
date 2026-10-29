@@ -13,7 +13,7 @@ void ObjectCartDial(struct task *task_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007e6060
-static void initObject(struct task *param_1, void *param_2)
+static void initObject(struct task *task_p, void *param_p)
 {
 }
 #pragma optimize("", on)

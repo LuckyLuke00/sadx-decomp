@@ -19,7 +19,7 @@ void EnemyPondSkater(struct task *tp)
 }
 
 // STUB: SADX 0x008d6040
-void FUN_008d6040(struct NJS_POINT3 *point)
+void FUN_008d6040(struct NJS_POINT3 *param_1)
 {
 }
 
@@ -115,7 +115,7 @@ void FUN_008d6360(struct taskwk *param_1, struct enemywk *param_2)
 
 #pragma optimize("", off)
 // STUB: SADX 0x008d63e0
-void FUN_008d63e0(struct taskwk *twp, struct enemywk *ewp)
+void FUN_008d63e0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 #pragma optimize("", on)
@@ -201,6 +201,6 @@ void FUN_008d6dc0(struct taskwk *param_1, struct enemywk *param_2)
 }
 
 // STUB: SADX 0x008d6e50
-void FUN_008d6e50(struct taskwk *twp, struct enemywk *ewp)
+void FUN_008d6e50(struct taskwk *param_1, struct enemywk *param_2)
 {
 }

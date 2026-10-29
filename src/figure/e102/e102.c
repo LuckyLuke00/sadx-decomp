@@ -186,7 +186,7 @@ void FUN_00515c60(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 }
 
 // STUB: SADX 0x00515c90
-void E102MotionCallback(struct obj *param_1)
+void E102MotionCallback(struct obj *obj)
 {
 }
 
@@ -197,7 +197,7 @@ int ChkTimeOverDead(struct taskwk *twp, struct playerwk *pwp)
 }
 
 // STUB: SADX 0x00516140
-void FUN_00516140(struct taskwk *twp, struct E102WK *ewk, struct E102WK *ewk2)
+void FUN_00516140(struct taskwk *param_1, struct E102WK *param_2, struct E102WK *param_3)
 {
 }
 

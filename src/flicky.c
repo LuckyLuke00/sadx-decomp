@@ -133,7 +133,7 @@ void Flicky_New(struct task *tp, int id)
 #pragma optimize("", on)
 
 // STUB: SADX 0x00617e60
-void FUN_00617e60(struct task *tp)
+void FUN_00617e60(struct task *param_1)
 {
 }
 
@@ -298,29 +298,29 @@ void FUN_0061a180(int param_1, struct taskwk *param_2, struct task *param_3)
 #pragma optimize("", on)
 
 // STUB: SADX 0x0061a280
-void FUN_0061a280(struct Flicky *__this, struct taskwk *twp, int param_3)
+void FUN_0061a280(struct Flicky *param_1, struct taskwk *param_2, int param_3)
 {
 }
 
 // STUB: SADX 0x0061a3c0
-void FUN_0061a3c0(struct Flicky *__this, struct taskwk *twp, int param_3)
+void FUN_0061a3c0(struct Flicky *param_1, struct taskwk *param_2, int param_3)
 {
 }
 
 // STUB: SADX 0x0061a500
-void FUN_0061a500(struct taskwk *tp, int param_2, int param_3)
+void FUN_0061a500(struct taskwk *param_1, int param_2, int param_3)
 {
 }
 
 #pragma optimize("", off)
 // STUB: SADX 0x0061a590
-void FUN_0061a590(int f, struct taskwk *twp)
+void FUN_0061a590(int param_1, struct taskwk *param_2)
 {
 }
 #pragma optimize("", on)
 
 // STUB: SADX 0x0061a600
-void FUN_0061a600(struct task *tp, struct taskwk *tw, unsigned short angle)
+void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short param_3)
 {
 }
 
@@ -330,7 +330,7 @@ void Flicky_dsp(struct Flicky *__this, struct taskwk *twp)
 }
 
 // STUB: SADX 0x0061a7b0
-void FUN_0061a7b0(struct taskwk *twp, struct CCL_INFO *info)
+void FUN_0061a7b0(struct taskwk *param_1, struct CCL_INFO *param_2)
 {
 }
 

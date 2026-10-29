@@ -108,7 +108,7 @@ void EntryItemBoxPanel(long panel)
 }
 
 // STUB: SADX 0x005b67b0
-void FUN_005b67b0(struct task *tp)
+void FUN_005b67b0(struct task *param_1)
 {
 }
 

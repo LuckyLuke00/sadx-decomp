@@ -35,7 +35,7 @@ void ghSelectFont(struct GH_FONT_INFO *font)
 }
 
 // STUB: SADX 0x004cb3d0
-void FUN_004cb3d0(char c, float x, float y, float scale)
+void FUN_004cb3d0(char param_1, float param_2, float param_3, float param_4)
 {
 }
 

@@ -4,7 +4,7 @@ void * __fastcall FUN_0040cf10(unsigned int param_1);
 void FUN_0040c3a0(int param_1);
 
 // STUB: SADX 0x0040c300
-void __fastcall FUN_0040c300(void *ptr, int dummy, int free_flag)
+void __fastcall FUN_0040c300(void *param_1, int param_2, int param_3)
 {
 }
 

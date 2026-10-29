@@ -165,7 +165,7 @@ void MissleBombDraw(struct taskwk *twp, struct enemywk *ewp)
 #pragma optimize("", on)
 
 // STUB: SADX 0x005c40f0
-void FUN_005c40f0(struct task *tp)
+void FUN_005c40f0(struct task *param_1)
 {
 }
 
@@ -330,7 +330,7 @@ void FUN_005c5540(struct task *param_1)
 }
 
 // STUB: SADX 0x005c55d0
-void FUN_005c55d0(struct taskwk *twp, struct enemywk *ewp)
+void FUN_005c55d0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 

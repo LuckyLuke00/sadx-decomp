@@ -36,6 +36,6 @@ void execBg(struct task *task_p)
 }
 
 // STUB: SADX 0x007e4360
-void FUN_007e4360(struct task *task_p)
+void FUN_007e4360(struct task *param_1)
 {
 }

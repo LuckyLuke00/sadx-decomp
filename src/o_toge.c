@@ -12,6 +12,6 @@ void TogeExecutor(struct task *tp)
 }
 
 // STUB: SADX 0x008bc5e0
-void FUN_008bc5e0(struct anywk *awp)
+void FUN_008bc5e0(struct anywk *param_1)
 {
 }

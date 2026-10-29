@@ -82,7 +82,7 @@ int FUN_008d93f0(float *param_1)
 }
 
 // STUB: SADX 0x008d94c0
-void FUN_008d94c0(struct taskwk *twp, int num)
+void FUN_008d94c0(struct taskwk *param_1, int param_2)
 {
 }
 
@@ -99,7 +99,7 @@ struct o_bubble *FUN_008d9740(struct o_bubble *param_1, struct o_bubble *param_2
 
 #pragma optimize("", off)
 // STUB: SADX 0x008d97e0
-void FUN_008d97e0(struct taskwk *twp)
+void FUN_008d97e0(struct taskwk *param_1)
 {
 }
 #pragma optimize("", on)
@@ -128,12 +128,12 @@ void FUN_008d9d80(float *param_1)
 }
 
 // STUB: SADX 0x008d9e40
-void FUN_008d9e40(struct task *task_p)
+void FUN_008d9e40(struct task *param_1)
 {
 }
 
 // STUB: SADX 0x008d9f50
-void FUN_008d9f50(struct task *tp)
+void FUN_008d9f50(struct task *param_1)
 {
 }
 

@@ -38,13 +38,13 @@ void FUN_008c9960(struct NJS_POINT3 *param_1, struct Angle3 *param_2)
 }
 
 // STUB: SADX 0x008c9a00
-int FUN_008c9a00(struct task *tp)
+int FUN_008c9a00(struct task *param_1)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x008c9a60
-int FUN_008c9a60(struct task *tp)
+int FUN_008c9a60(struct task *param_1)
 {
 	return (int)0;
 }

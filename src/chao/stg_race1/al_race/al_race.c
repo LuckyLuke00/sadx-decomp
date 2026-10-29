@@ -80,7 +80,7 @@ void ALR_Clear(struct task *tp)
 }
 
 // STUB: SADX 0x0048c430
-float Alr_chaoCalcSpeed(struct Alr *param_1, float para, float min, float max)
+float Alr_chaoCalcSpeed(struct Alr *___this, float para, float min, float max)
 {
 	return (float)0;
 }
@@ -91,7 +91,7 @@ void FUN_0048c4f0(struct Alr *param_1, struct AlrEffUnit *param_2)
 }
 
 // STUB: SADX 0x0048c610
-float FUN_0048c610(struct al_race *ar)
+float FUN_0048c610(struct al_race *param_1)
 {
 	return (float)0;
 }

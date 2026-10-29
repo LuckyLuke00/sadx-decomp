@@ -59,7 +59,7 @@ void AL_FreeChaoObject(struct al_object *pObject)
 }
 
 // STUB: SADX 0x0044f6d0
-float FUN_0044f6d0(struct task *pObjTask, struct task *pOther, int param_3, float param_4)
+float FUN_0044f6d0(struct task *param_1, struct task *param_2, int param_3, float param_4)
 {
 	return (float)0;
 }

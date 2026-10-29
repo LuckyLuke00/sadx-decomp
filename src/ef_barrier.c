@@ -17,7 +17,7 @@ void EffectThunderBarrier(struct task *tp)
 }
 
 // STUB: SADX 0x005b4db0
-void FUN_005b4db0(struct obj *obj, struct csts *cstsp)
+void FUN_005b4db0(struct obj *param_1, struct csts *param_2)
 {
 }
 

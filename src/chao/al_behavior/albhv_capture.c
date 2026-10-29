@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // STUB: SADX 0x0045e4e0
-void FUN_0045e4e0(struct task *tp)
+void FUN_0045e4e0(struct task *param_1)
 {
 }
 

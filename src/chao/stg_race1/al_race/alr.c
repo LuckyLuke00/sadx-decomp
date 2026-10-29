@@ -144,7 +144,7 @@ int FUN_00486bb0(struct Alr *param_1)
 }
 
 // STUB: SADX 0x00486bc0
-void FUN_00486bc0(struct Alr *___this, struct NJS_POINT3 *param_2)
+void FUN_00486bc0(struct Alr *param_1, struct NJS_POINT3 *param_2)
 {
 }
 
@@ -159,7 +159,7 @@ void Alr_checkCamera(struct Alr *___this)
 }
 
 // STUB: SADX 0x00486cd0
-void FUN_00486cd0(struct Alr *___this)
+void FUN_00486cd0(struct Alr *param_1)
 {
 }
 

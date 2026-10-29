@@ -40,7 +40,7 @@ void subRd_Destruct(struct task *tp)
 }
 
 // STUB: SADX 0x00819d00
-void FUN_00819d00(struct task *tp)
+void FUN_00819d00(struct task *param_1)
 {
 }
 

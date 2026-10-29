@@ -46,6 +46,6 @@ void Rd_Bossegm1(struct task *tp)
 }
 
 // STUB: SADX 0x006c14e0
-void FUN_006c14e0(struct task *tp)
+void FUN_006c14e0(struct task *param_1)
 {
 }

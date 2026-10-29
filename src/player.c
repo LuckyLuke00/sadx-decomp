@@ -79,7 +79,7 @@ void PSetupInput(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp
 }
 
 // STUB: SADX 0x004db050
-void FUN_004db050(unsigned char pno)
+void FUN_004db050(unsigned char param_1)
 {
 }
 
@@ -259,12 +259,12 @@ void PGetAccelerationGliK(struct taskwk *twp, struct motionwk2 *mwp, struct play
 }
 
 // STUB: SADX 0x004df580
-void FUN_004df580(struct task *tp, int param_2, struct NJS_POINT3 *out)
+void FUN_004df580(struct task *param_1, int param_2, struct NJS_POINT3 *param_3)
 {
 }
 
 // STUB: SADX 0x004e0580
-void FUN_004e0580(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+void FUN_004e0580(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
 }
 
@@ -405,7 +405,7 @@ void FUN_004e2cb0(struct task *param_1, struct NJS_POINT3 *param_2, struct taskw
 }
 
 // STUB: SADX 0x004e2ec0
-void FUN_004e2ec0(struct taskwk *twp, struct NJS_POINT3 *v)
+void FUN_004e2ec0(struct taskwk *param_1, struct NJS_POINT3 *param_2)
 {
 }
 
@@ -444,7 +444,7 @@ void PGetSpeedGliK(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 }
 
 // STUB: SADX 0x004e4110
-void FUN_004e4110(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+void FUN_004e4110(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
 }
 
@@ -565,7 +565,7 @@ void PSetMotion_SetStartFrame(struct mtnjvwk *mjp)
 }
 
 // STUB: SADX 0x004ed210
-void FUN_004ed210(struct mtnjvwk *mjp)
+void FUN_004ed210(struct mtnjvwk *param_1)
 {
 }
 
@@ -1628,7 +1628,7 @@ void EntryIslandForP(float x, float y, float z, float r)
 }
 
 // STUB: SADX 0x004f2dc0
-void FUN_004f2dc0(struct NJS_POINT3 *arg1, struct NJS_POINT3 *arg2, struct NJS_POINT3 *arg3)
+void FUN_004f2dc0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3)
 {
 }
 

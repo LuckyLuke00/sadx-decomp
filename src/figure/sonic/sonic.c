@@ -50,7 +50,7 @@ void SonicDestruct(struct task *tp)
 }
 
 // STUB: SADX 0x00547230
-void FUN_00547230(struct task *tp, int param_2, int param_3)
+void FUN_00547230(struct task *param_1, int param_2, int param_3)
 {
 }
 
@@ -98,7 +98,7 @@ void FUN_005488e0(char *param_1, char *param_2, char *param_3)
 }
 
 // STUB: SADX 0x00548980
-void FUN_00548980(struct taskwk *twp)
+void FUN_00548980(struct taskwk *param_1)
 {
 }
 
@@ -268,7 +268,7 @@ long SonicCheckStartLSDorLSA(struct taskwk *twp, struct motionwk2 *mwp, struct p
 }
 
 // STUB: SADX 0x0054c720
-int FUN_0054c720(struct taskwk *twp, int param_2, struct taskwk *twp2)
+int FUN_0054c720(struct taskwk *param_1, int param_2, struct taskwk *param_3)
 {
 	return (int)0;
 }

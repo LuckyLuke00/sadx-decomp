@@ -51,7 +51,7 @@ void breakLightning(struct task *pTask)
 }
 
 // STUB: SADX 0x0080e350
-int FUN_0080e350(struct task *pTask, float fVar)
+int FUN_0080e350(struct task *param_1, float param_2)
 {
 	return (int)0;
 }
@@ -63,17 +63,17 @@ long chkBattleZone(struct task *pTask)
 }
 
 // STUB: SADX 0x0080e4a0
-void FUN_0080e4a0(int param_1, struct task *pTask)
+void FUN_0080e4a0(int param_1, struct task *param_2)
 {
 }
 
 // STUB: SADX 0x0080e520
-void FUN_0080e520(struct task *pTask)
+void FUN_0080e520(struct task *param_1)
 {
 }
 
 // STUB: SADX 0x0080e590
-int FUN_0080e590(struct task *pTask)
+int FUN_0080e590(struct task *param_1)
 {
 	return (int)0;
 }
@@ -84,7 +84,7 @@ void jump(struct task *pTask)
 }
 
 // STUB: SADX 0x0080f4e0
-void FUN_0080f4e0(struct task *pTask)
+void FUN_0080f4e0(struct task *param_1)
 {
 }
 

@@ -23,12 +23,12 @@ void CmnKusaParts(struct task *tp)
 }
 
 // STUB: SADX 0x008bbd00
-void FUN_008bbd00(struct task *tp, struct taskwk *twp, struct forcewk *fwp)
+void FUN_008bbd00(struct task *param_1, struct taskwk *param_2, struct forcewk *param_3)
 {
 }
 
 // STUB: SADX 0x008bbea0
-void FUN_008bbea0(struct taskwk *twp, struct forcewk *fwp)
+void FUN_008bbea0(struct taskwk *param_1, struct forcewk *param_2)
 {
 }
 

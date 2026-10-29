@@ -1,6 +1,6 @@
 #include "decls.h"
 static void Normal2(struct task *tp);
-static void Normal1(struct task *pTask);
+static void Normal1(struct task *tp);
 
 // STUB: SADX 0x00700f90
 void Display1(struct task *tp)

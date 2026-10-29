@@ -85,7 +85,7 @@ long CheckRangeP2XYZRP(float *pf, float rx0, float ry0, float rz0, float R, floa
 }
 
 // STUB: SADX 0x00550c10
-int FUN_00550c10(float *fPos, float fX, float fY, float fZ, float fRangeSq)
+int FUN_00550c10(float *param_1, float param_2, float param_3, float param_4, float param_5)
 {
 	return (int)0;
 }

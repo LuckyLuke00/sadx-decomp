@@ -29,7 +29,7 @@ void EnemyGetShadow(struct taskwk *twp, struct enemywk *ewp)
 
 #pragma optimize("", off)
 // STUB: SADX 0x005e2cc0
-void FUN_005e2cc0(struct taskwk *twp, struct enemywk *ewp)
+void FUN_005e2cc0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 #pragma optimize("", on)

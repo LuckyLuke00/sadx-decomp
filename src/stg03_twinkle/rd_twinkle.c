@@ -7,7 +7,7 @@ void setTPFog(unsigned char mode)
 }
 
 // STUB: SADX 0x008117a0
-void FUN_008117a0(struct taskwk *twp)
+void FUN_008117a0(struct taskwk *param_1)
 {
 }
 

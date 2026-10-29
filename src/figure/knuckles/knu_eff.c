@@ -54,12 +54,12 @@ void dispEffectKnuHadoken(struct task *tp)
 }
 
 // STUB: SADX 0x005d7140
-void FUN_005d7140(struct NJS_POINT3 *pos, int param_2)
+void FUN_005d7140(struct NJS_POINT3 *param_1, int param_2)
 {
 }
 
 // STUB: SADX 0x005d7240
-void FUN_005d7240(struct task *tp)
+void FUN_005d7240(struct task *param_1)
 {
 }
 

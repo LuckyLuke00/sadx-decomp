@@ -25,6 +25,6 @@ void FUN_00880ac0(struct task *param_1)
 }
 
 // STUB: SADX 0x00880b50
-void FUN_00880b50(struct task *tp)
+void FUN_00880b50(struct task *param_1)
 {
 }

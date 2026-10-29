@@ -38,6 +38,6 @@ void initModelTaskEC(struct task *p_task)
 }
 
 // STUB: SADX 0x007d20f0
-void FUN_007d20f0(float pos_x, float pos_y, float pos_z, long ang_x, long ang_y, long ang_z, float scl_x, float scl_y, float scl_z, void *ptr_1, void *ptr_2, int idx)
+void FUN_007d20f0(float param_1, float param_2, float param_3, long param_4, long param_5, long param_6, float param_7, float param_8, float param_9, void *param_10, void *param_11, int param_12)
 {
 }

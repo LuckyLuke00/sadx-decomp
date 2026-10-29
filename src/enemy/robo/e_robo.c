@@ -291,7 +291,7 @@ void RoboExecutor(struct task *tp)
 }
 
 // STUB: SADX 0x005bdc30
-void FUN_005bdc30(struct taskwk *twp, struct enemywk *ewp)
+void FUN_005bdc30(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 

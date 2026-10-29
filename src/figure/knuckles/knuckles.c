@@ -50,7 +50,7 @@ void FUN_00529090(int param_1, int param_2, int param_3)
 }
 
 // STUB: SADX 0x005290f0
-int FUN_005290f0(struct taskwk *tpw, int param_2, struct taskwk *tpw2)
+int FUN_005290f0(struct taskwk *param_1, int param_2, struct taskwk *param_3)
 {
 	return (int)0;
 }
@@ -221,7 +221,7 @@ long KnucklesCheckStartPunch(struct taskwk *twp, struct motionwk2 *mwp, struct p
 }
 
 // STUB: SADX 0x0052bda0
-long FUN_0052bda0(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+long FUN_0052bda0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
 	return (long)0;
 }
@@ -257,7 +257,7 @@ long KnuckCheckOnWall(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk
 }
 
 // STUB: SADX 0x0052d2d0
-void FUN_0052d2d0(struct task *tp, int param_2)
+void FUN_0052d2d0(struct task *param_1, int param_2)
 {
 }
 

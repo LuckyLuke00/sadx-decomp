@@ -75,7 +75,7 @@ void disp_Emission(struct task *pTask)
 }
 
 // STUB: SADX 0x006dcd30
-void FUN_006dcd30(struct task *pTask)
+void FUN_006dcd30(struct task *param_1)
 {
 }
 
@@ -148,7 +148,7 @@ void exec_HandSpark(struct task *pTask)
 
 #pragma optimize("", off)
 // STUB: SADX 0x006dd200
-void FUN_006dd200(void *pSpr)
+void FUN_006dd200(void *param_1)
 {
 }
 #pragma optimize("", on)

@@ -63,7 +63,7 @@ void FUN_00606a00(struct AvaStgActPrmT *param_1)
 }
 
 // STUB: SADX 0x00606a50
-void FUN_00606a50(struct task *task)
+void FUN_00606a50(struct task *param_1)
 {
 }
 

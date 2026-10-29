@@ -175,7 +175,7 @@ void snd_test_disp(struct task *tp)
 }
 
 // STUB: SADX 0x00605830
-void FUN_00605830(unsigned long c0, unsigned long c1, float avg)
+void FUN_00605830(unsigned long param_1, unsigned long param_2, float param_3)
 {
 }
 

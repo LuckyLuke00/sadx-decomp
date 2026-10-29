@@ -3,7 +3,7 @@ extern unsigned short DAT_05cd296c;
 extern int DAT_05cd297c;
 
 // STUB: SADX 0x009058b0
-void FUN_009058b0(struct task *tp)
+void FUN_009058b0(struct task *param_1)
 {
 }
 
@@ -28,7 +28,7 @@ void FUN_00906200(struct task *param_1)
 }
 
 // STUB: SADX 0x00906290
-void FUN_00906290(struct task *tp)
+void FUN_00906290(struct task *param_1)
 {
 }
 

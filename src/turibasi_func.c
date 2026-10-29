@@ -96,7 +96,7 @@ void FUN_008dc030(void *param_1)
 }
 
 // STUB: SADX 0x008dc120
-void FUN_008dc120(struct task *tp)
+void FUN_008dc120(struct task *param_1)
 {
 }
 
@@ -106,12 +106,12 @@ void BridgeCheckCollision(struct taskwk *twp)
 }
 
 // STUB: SADX 0x008dcb90
-void FUN_008dcb90(struct taskwk *twp, struct NJS_POINT3 *out)
+void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2)
 {
 }
 
 // STUB: SADX 0x008dcc50
-unsigned char FUN_008dcc50(struct taskwk *twp, struct NJS_POINT3 *pnt)
+unsigned char FUN_008dcc50(struct taskwk *param_1, struct NJS_POINT3 *param_2)
 {
 	return (unsigned char)0;
 }

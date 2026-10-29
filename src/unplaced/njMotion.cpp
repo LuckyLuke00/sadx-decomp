@@ -1,7 +1,7 @@
 #include "decls.h"
 extern struct NJS_MOTION *DAT_0629c400;
 extern float DAT_0629c444;
-void _njPushPopGetMotionDataArray(struct obj const *obj);
+void _njPushPopGetMotionDataArray(struct obj const *param_1);
 extern float *DAT_0629c440;
 void njStartMotionObjEx(struct NJS_MOTION const *,float);
 extern void (*DAT_05ada214)(struct obj *);

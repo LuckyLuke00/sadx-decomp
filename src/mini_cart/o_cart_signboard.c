@@ -1,7 +1,7 @@
 #include "decls.h"
 void FUN_007e5960(struct task *param_1);
 static void destObject(struct task *task_p);
-static void execObject(struct task *param_1);
+static void execObject(struct task *task_p);
 static void initObject(struct task *task_p, void *param_p);
 extern void *DAT_00a09ec8;
 extern void *DAT_00a09ebc;
@@ -42,7 +42,7 @@ void ObjectCartSignboard5(struct task *task_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007e58c0
-static void initObject(struct task *param_1, void *param_2)
+static void initObject(struct task *task_p, void *param_p)
 {
 }
 #pragma optimize("", on)
@@ -55,7 +55,7 @@ static void destObject(struct task *task_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007e5a40
-static void execObject(struct task *param_1)
+static void execObject(struct task *task_p)
 {
 }
 #pragma optimize("", on)

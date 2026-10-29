@@ -25,35 +25,35 @@ void _njSetMDataCnt(int param_1)
 }
 
 // FUNCTION: SADX 0x00432ab0
-void _njCnkPushPopMotion(struct cnkobj const *cnkobj)
+void _njCnkPushPopMotion(struct cnkobj const *param_1)
 {
 	do
 	{
 		njPushMatrixEx();
-		njMotionTransformEx((struct obj const *)cnkobj);
+		njMotionTransformEx((struct obj const *)param_1);
 		if (DAT_05ada218)
 		{
-			DAT_05ada218(cnkobj);
+			DAT_05ada218(param_1);
 		}
-		if (cnkobj->model && (cnkobj->evalflags & 8) == 0)
+		if (param_1->model && (param_1->evalflags & 8) == 0)
 		{
-			_njCnkDrawModel(cnkobj->model);
+			_njCnkDrawModel(param_1->model);
 		}
-		if (cnkobj->child)
+		if (param_1->child)
 		{
-			_njCnkPushPopMotion(cnkobj->child);
+			_njCnkPushPopMotion(param_1->child);
 		}
 		njPopMatrixEx();
-		cnkobj = cnkobj->sibling;
-	} while (cnkobj);
+		param_1 = param_1->sibling;
+	} while (param_1);
 }
 
 // FUNCTION: SADX 0x00432b10
-void _njCnkPushPopMotionLink(struct cnkobj const *cnkobj)
+void _njCnkPushPopMotionLink(struct cnkobj const *param_1)
 {
 	struct cnkobj const *var1;
 
-	var1 = cnkobj;
+	var1 = param_1;
 	do
 	{
 		njPushMatrixEx();
@@ -76,27 +76,27 @@ void _njCnkPushPopMotionLink(struct cnkobj const *cnkobj)
 }
 
 // FUNCTION: SADX 0x00432b70
-void _njPushPopMotion(struct obj const *obj)
+void _njPushPopMotion(struct obj const *param_1)
 {
 	do
 	{
 		njPushMatrixEx();
-		njMotionTransformEx(obj);
+		njMotionTransformEx(param_1);
 		if (DAT_05ada214)
 		{
-			DAT_05ada214((struct obj *)obj);
+			DAT_05ada214((struct obj *)param_1);
 		}
-		if (obj->model && (obj->evalflags & 8) == 0)
+		if (param_1->model && (param_1->evalflags & 8) == 0)
 		{
-			(*(void (**)(struct NJS_MODEL *))((char *)DAT_01c76fa0 + 0xc))(obj->model);
+			(*(void (**)(struct NJS_MODEL *))((char *)DAT_01c76fa0 + 0xc))(param_1->model);
 		}
-		if (obj->child)
+		if (param_1->child)
 		{
-			_njPushPopMotion(obj->child);
+			_njPushPopMotion(param_1->child);
 		}
 		njPopMatrixEx();
-		obj = obj->sibling;
-	} while (obj);
+		param_1 = param_1->sibling;
+	} while (param_1);
 }
 
 // STUB: SADX 0x00432bd0

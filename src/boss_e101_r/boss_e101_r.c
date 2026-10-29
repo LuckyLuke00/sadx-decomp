@@ -50,7 +50,7 @@ void calcAttackStartPos(struct task *pTask)
 }
 
 // STUB: SADX 0x00708820
-void FUN_00708820(struct task *pTask, struct taskwk *pWork)
+void FUN_00708820(struct task *param_1, struct taskwk *param_2)
 {
 }
 

@@ -7,7 +7,7 @@ extern int DAT_05b9d838;
 extern struct NJS_ARGB DAT_02671d74;
 
 // STUB: SADX 0x005d2d60
-long FUN_005d2d60(struct task *tp, struct taskwk *tw, int param_3)
+long FUN_005d2d60(struct task *param_1, struct taskwk *param_2, int param_3)
 {
 	return (long)0;
 }

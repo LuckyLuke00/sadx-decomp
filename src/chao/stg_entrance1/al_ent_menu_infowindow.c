@@ -2,7 +2,7 @@
 void FUN_00473940(struct task *param_1, float param_2, float param_3);
 
 // STUB: SADX 0x00473940
-void FUN_00473940(struct task *tp, float param_2, float param_3)
+void FUN_00473940(struct task *param_1, float param_2, float param_3)
 {
 }
 

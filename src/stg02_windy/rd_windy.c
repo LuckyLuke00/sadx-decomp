@@ -36,7 +36,7 @@ void CheckGravity(struct task *tp)
 }
 
 // STUB: SADX 0x00804340
-void FUN_00804340(struct task *tp)
+void FUN_00804340(struct task *param_1)
 {
 }
 

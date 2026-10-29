@@ -88,7 +88,7 @@ void E101R_EfWaveAccumeExit()
 }
 
 // STUB: SADX 0x0070e240
-void FUN_0070e240(struct GHPARTICLE *pParticle)
+void FUN_0070e240(struct GHPARTICLE *param_1)
 {
 }
 

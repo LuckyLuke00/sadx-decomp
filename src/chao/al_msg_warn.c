@@ -4,7 +4,7 @@ void FUN_0044c7e0(struct task *param_1);
 extern int DAT_05b2ca64[1];
 
 // STUB: SADX 0x0044c7e0
-void FUN_0044c7e0(struct task *tp)
+void FUN_0044c7e0(struct task *param_1)
 {
 }
 

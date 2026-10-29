@@ -5,7 +5,7 @@ extern struct TaskInfo PillarTaskInfo;
 extern struct ActionParam DAT_00a0a9ac;
 static void destObject(struct task *task_p);
 static void dispObject(struct task *task_p);
-static void execObject(struct task *param_1);
+static void execObject(struct task *task_p);
 static void initObject(struct task *task_p, void *param_p);
 
 // FUNCTION: SADX 0x007e78a0
@@ -28,7 +28,7 @@ void ObjectPillarL(struct task *task_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007e7900
-static void dispObject(struct task *param_1)
+static void dispObject(struct task *task_p)
 {
 }
 #pragma optimize("", on)
@@ -41,14 +41,14 @@ static void destObject(struct task *task_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007e7a10
-static void initObject(struct task *param_1, void *param_2)
+static void initObject(struct task *task_p, void *param_p)
 {
 }
 #pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007e7b00
-static void execObject(struct task *param_1)
+static void execObject(struct task *task_p)
 {
 }
 #pragma optimize("", on)

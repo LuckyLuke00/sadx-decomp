@@ -136,7 +136,7 @@ void FUN_006a8680(void *param_1)
 }
 
 // STUB: SADX 0x006a8690
-void FUN_006a8690(struct task *pt)
+void FUN_006a8690(struct task *param_1)
 {
 }
 

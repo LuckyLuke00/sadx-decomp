@@ -215,7 +215,7 @@ void FUN_006155e0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2)
 }
 
 // STUB: SADX 0x00615a00
-void FUN_00615a00(struct NJS_POINT3 *pos, float rad)
+void FUN_00615a00(struct NJS_POINT3 *param_1, float param_2)
 {
 }
 

@@ -25,7 +25,7 @@ void AmyDestruct(struct task *tp)
 }
 
 // STUB: SADX 0x0051b730
-long FUN_0051b730(struct taskwk *twp, int *out1, float *out2)
+long FUN_0051b730(struct taskwk *param_1, int *param_2, float *param_3)
 {
 	return (long)0;
 }
@@ -88,7 +88,7 @@ long AmyCheckStartHandle(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 }
 
 // STUB: SADX 0x0051ca90
-long FUN_0051ca90(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *plp)
+long FUN_0051ca90(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
 	return (long)0;
 }
@@ -368,7 +368,7 @@ long AmyBlindEntry()
 }
 
 // STUB: SADX 0x00521640
-void FUN_00521640(struct task *ptp, struct taskwk *twp, struct motionwk *mwp)
+void FUN_00521640(struct task *param_1, struct taskwk *param_2, struct motionwk *param_3)
 {
 }
 

@@ -1694,7 +1694,7 @@ void FUN_004aa390(void *param_1)
 }
 
 // STUB: SADX 0x004aa630
-void FUN_004aa630(int *p1, int *p2, int w, int h, int *out)
+void FUN_004aa630(int *param_1, int *param_2, int param_3, int param_4, int *param_5)
 {
 }
 

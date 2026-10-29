@@ -24,22 +24,22 @@ void ObjectBaloon(struct task *tp)
 }
 
 // STUB: SADX 0x008babc0
-void FUN_008babc0(struct obj *obj)
+void FUN_008babc0(struct obj *param_1)
 {
 }
 
 // STUB: SADX 0x008bac40
-void FUN_008bac40(struct taskwk *twp)
+void FUN_008bac40(struct taskwk *param_1)
 {
 }
 
 // STUB: SADX 0x008bad70
-void FUN_008bad70(struct obj *obj_p)
+void FUN_008bad70(struct obj *param_1)
 {
 }
 
 // STUB: SADX 0x008bae10
-void FUN_008bae10(struct obj *obj_p)
+void FUN_008bae10(struct obj *param_1)
 {
 }
 

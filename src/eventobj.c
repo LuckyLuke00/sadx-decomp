@@ -136,7 +136,7 @@ void ExecEventFace(struct taskwk *twp)
 }
 
 // STUB: SADX 0x005b3270
-int FUN_005b3270(struct taskwk *twp)
+int FUN_005b3270(struct taskwk *param_1)
 {
 	return (int)0;
 }

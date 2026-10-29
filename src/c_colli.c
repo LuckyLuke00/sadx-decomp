@@ -342,7 +342,7 @@ int FUN_004d0ca0(int param_1, int param_2, int param_3, int param_4)
 }
 
 // STUB: SADX 0x004d10b0
-void FUN_004d10b0(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+void FUN_004d10b0(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
 {
 }
 
@@ -363,7 +363,7 @@ void CCL_ExchangeInfo(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk
 }
 
 // STUB: SADX 0x004d1730
-void FUN_004d1730(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
+void FUN_004d1730(struct taskwk *param_1, struct CCL_INFO *param_2, struct NJS_POINT3 *param_3)
 {
 }
 
@@ -521,7 +521,7 @@ void FUN_004d5330(char *param_1, int param_2, struct NJS_POINT3 *param_3)
 }
 
 // STUB: SADX 0x004d5370
-void FUN_004d5370(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+void FUN_004d5370(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
 {
 }
 
@@ -531,7 +531,7 @@ void CCL_CalcColliPO(struct taskwk *twp1, struct taskwk *twp2)
 }
 
 // STUB: SADX 0x004d7f60
-void FUN_004d7f60(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+void FUN_004d7f60(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
 {
 }
 
@@ -551,7 +551,7 @@ void FUN_004d8330(struct taskwk *param_1, struct taskwk *param_2, struct CCL_INF
 }
 
 // STUB: SADX 0x004d86d0
-void FUN_004d86d0(struct taskwk *twp, struct CCL_INFO *info, struct taskwk *twp2, struct CCL_INFO *info2)
+void FUN_004d86d0(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
 {
 }
 

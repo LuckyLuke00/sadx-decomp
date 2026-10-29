@@ -128,7 +128,7 @@ void SnowmanRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x00609d20
-void FUN_00609d20(struct taskwk *twp, struct enemywk *ewp)
+void FUN_00609d20(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
@@ -188,7 +188,7 @@ void SnowmanTurnToAim(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x0060a360
-void FUN_0060a360(struct taskwk *twp, struct enemywk *ewp)
+void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
@@ -250,7 +250,7 @@ void SnowMobile(struct task *tp)
 }
 
 // STUB: SADX 0x0060b190
-void FUN_0060b190(struct task *tp)
+void FUN_0060b190(struct task *param_1)
 {
 }
 

@@ -1,5 +1,5 @@
 #include "decls.h"
-static void Init(struct task *param_1, struct TENSHOUSEINFO *param_2);
+static void Init(struct task *tp, struct TENSHOUSEINFO *tensinfo);
 extern struct TENSHOUSEINFO tensinfo[];
 
 #pragma optimize("", off)

@@ -181,6 +181,6 @@ void PoliceReturn(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x005d0ac0
-void FUN_005d0ac0(struct taskwk *twp, struct enemywk *ewp)
+void FUN_005d0ac0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }

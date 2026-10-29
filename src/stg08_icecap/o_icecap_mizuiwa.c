@@ -1,5 +1,5 @@
 #include "decls.h"
-static void Init(struct task *param_1, struct obj *param_2);
+static void Init(struct task *tp, struct obj *pobj);
 
 #pragma optimize("", off)
 // STUB: SADX 0x00862b80
