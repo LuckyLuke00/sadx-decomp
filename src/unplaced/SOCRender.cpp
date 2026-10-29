@@ -1,13 +1,34 @@
 #include "decls.h"
 #include <new>
+extern int DAT_05ab3998;
+extern int DAT_05ab39a0;
+extern int DAT_05ab39a4;
+extern int DAT_05ab41f4;
+extern int DAT_05ab421c;
+extern int DAT_05ab4220;
 void FUN_004207b0(void);
 void UnknowTochar(char *param_1, unsigned long param_2);
 extern unsigned char DAT_05ab4243;
 
-// STUB: SADX 0x004198d0
+// FUNCTION: SADX 0x004198d0
 int SOCGetInputLayout(int param_1)
 {
-	return (int)0;
+	switch (param_1)
+	{
+		case 66:
+			return DAT_05ab4220;
+		case 68:
+			return DAT_05ab39a4;
+		case 82:
+			return DAT_05ab3998;
+		case 322:
+			return DAT_05ab39a0;
+		case 324:
+			return DAT_05ab421c;
+		case 338:
+			return DAT_05ab41f4;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x00419ac0
@@ -17,9 +38,11 @@ void __fastcall FUN_00419ac0(void *param_1, int param_2, int param_3)
 	DAT_05ab4243 = 0;
 }
 
-// STUB: SADX 0x00419ae0
+// FUNCTION: SADX 0x00419ae0
 void __fastcall FUN_00419ae0(void *param_1, void *param_2, int param_3)
 {
+	*(void **)((char *)param_1 + 8) = (void *)param_3;
+	DAT_05ab4243 = 0;
 }
 
 // FUNCTION: SADX 0x00419b00

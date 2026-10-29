@@ -1412,9 +1412,9 @@
   {
    "address": "0x004198d0",
    "name": "SOCGetInputLayout",
-   "accuracy": 0.05128205128205128,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -1436,9 +1436,9 @@
   {
    "address": "0x00419ae0",
    "name": "FUN_00419ae0",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -1916,7 +1916,7 @@
   {
    "address": "0x00422590",
    "name": "njSetZUpdateMode",
-   "accuracy": 0.5333333333333333,
+   "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
    "library": false
@@ -2108,7 +2108,7 @@
   {
    "address": "0x004230a0",
    "name": "syTmrGetCount",
-   "accuracy": 0.27586206896551724,
+   "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
    "library": false
@@ -96620,5 +96620,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "cdf72375238bcc7001a87eaa16e43f3f63ccf05e27c46a2b6e7cd55fd0d5a082"
+ "inputs_sha256": "3922d819d141be3324e77d9a6c4aa577a07c95aeaf4406f19597a25efb292d94"
 }

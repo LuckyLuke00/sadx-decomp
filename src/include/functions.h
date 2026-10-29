@@ -47,7 +47,7 @@ void njDrawTriangle2D(struct NJS_POINT2COL *param_1, int param_2, float param_3,
 void njColorBlendingMode(int param_1, int param_2);
 void gjGXSetBlendMode(long param_1);
 void FUN_00422560(int);
-void njSetZUpdateMode(long);
+void njSetZUpdateMode(long param_1);
 void njSetWaitVsyncCount(int param_1);
 void njPolygonCullingMode(int param_1);
 void stHWSetVSync(int param_1);

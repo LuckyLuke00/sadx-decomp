@@ -4025,8 +4025,26 @@ void * DAT_05ab25b0;
 // GLOBAL: SADX 0x05ab25b4
 unsigned int DAT_05ab25b4;
 
+// GLOBAL: SADX 0x05ab3998
+int DAT_05ab3998;
+
+// GLOBAL: SADX 0x05ab39a0
+int DAT_05ab39a0;
+
+// GLOBAL: SADX 0x05ab39a4
+int DAT_05ab39a4;
+
 // GLOBAL: SADX 0x05ab39ac
 void *DAT_05ab39ac;
+
+// GLOBAL: SADX 0x05ab41f4
+int DAT_05ab41f4;
+
+// GLOBAL: SADX 0x05ab421c
+int DAT_05ab421c;
+
+// GLOBAL: SADX 0x05ab4220
+int DAT_05ab4220;
 
 // GLOBAL: SADX 0x05ab4225
 unsigned char DAT_05ab4225;
