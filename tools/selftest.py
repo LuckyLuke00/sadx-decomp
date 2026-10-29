@@ -67,6 +67,7 @@ def run() -> int:
     failures += check_misplaced_annotations()
     failures += check_unclosed_definitions()
     failures += check_local_declarations()
+    failures += check_element_size()
     failures += check_tree_conflicts()
     failures += check_declaration_keys()
     failures += check_decls_trees()
@@ -305,6 +306,19 @@ def check_local_declarations() -> list[str]:
     found = [name for name, _ in names.local_declarations(text)[0]]
     wanted = ["Bar", "Baz"]
     return [] if found == wanted else [f"local_declarations finds {found}, not {wanted}"]
+
+
+def check_element_size() -> list[str]:
+    """element_size knows a struct or an enum named without its keyword, as C++ allows. A name that the types header
+    does not know gives None."""
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text("struct NJS_POINT3 {\n\tfloat x, y, z;\n};\nstatic_assert(sizeof(NJS_POINT3) == 0xc);\n\n"
+                        "enum eKIND {\n\tKIND_A,\n};\n", encoding="utf-8")
+        types = names.Types(path)
+    cases = {"struct NJS_POINT3": 12, "NJS_POINT3": 12, "const NJS_POINT3": 12, "eKIND": 4, "NJS_LINE": None}
+    return [f"element_size gives {found} for `{base}`, not {wanted}"
+            for base, wanted in cases.items() if (found := names.element_size(base, types)) != wanted]
 
 
 def check_tree_conflicts() -> list[str]:

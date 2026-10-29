@@ -296,6 +296,8 @@ def element_size(base: str, types: Types) -> int | None:
         return 4
     if t in SCALAR_SIZES:
         return SCALAR_SIZES[t]
+    if t in types.kind:  # a type named without its keyword, as C++ allows
+        t = f"{types.kind[t]} {t}"
     m = re.fullmatch(r"(?:struct|union)\s+(\w+)", t)
     if m:
         return types.size.get(m.group(1))

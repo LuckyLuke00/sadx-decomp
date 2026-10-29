@@ -215,8 +215,6 @@ def stack_size(kind: str, types: names.Types) -> int | None:
     if "[" in kind or kind.endswith("&"):
         return 4  # an array or a reference passes a pointer
     size = names.element_size(kind, types)
-    if size is None and kind in types.kind:  # a type named without its keyword, as C++ allows
-        size = names.element_size(f"{types.kind[kind]} {kind}", types)
     return None if size is None else (size + 3) // 4 * 4
 
 
