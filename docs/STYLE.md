@@ -169,7 +169,7 @@ A scratch build of the two examples shows that the repo's VC++ 2010 SP1 compiler
 
 ## 6. Types and formatting
 
-- **Sega typedefs.** Use the Sega types from tier 1 in SDK-facing code once a header defines them. The repo has no such header yet. `Angle` is `Sint32` with 65536 units per turn [official].
+- **Sega typedefs.** Use the Sega types from tier 1 in SDK-facing code. `src/include/shinobi.h` and `src/include/ninja.h` define them. `Angle` is `Sint32` with 65536 units per turn [official].
 - **`long` or `int`.** Sega's `sg_xpt.h` (Shinobi 1.01, 1999) defines `Sint32` as `signed long`, `Uint32` as `unsigned long` and `Bool` as `Sint32` [official]. Whether this PC exe kept `long` stays open, and the exe can't settle it. It changes only C++ name mangling: VC++ writes `long` as `J` and `int` as `H`. A test compile gave the same instructions for both, so a score can't tell them apart. The exe exports nothing and its RTTI names no game template, so it holds no mangled game name [official]. Use `long`, as the SDK does.
 - **SDK structs.** Sega uses two forms: `typedef struct { ... } NJS_TEX;` and, with a tag, `typedef struct obj { ... } NJS_OBJECT;`. Copy the form of the header that defines the struct. Align member comments in a column and use `/* */` comments, as Sega's headers do [official].
 - **Layout.** Indent with tabs. Put each opening brace on its own line. The existing files do both.
