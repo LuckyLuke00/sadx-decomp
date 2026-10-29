@@ -109,6 +109,7 @@ class Copy(NamedTuple):
     decls: list[str]  # the top-of-file declarations it needs
     names: frozenset[str]  # its own name, the names it uses that the template does not, and its shared names
     shared: frozenset[str]  # the names it uses or defines that several static functions have
+    globals_at: frozenset[int]  # the addresses of the globals it uses
 
 
 class Stub(NamedTuple):
@@ -518,7 +519,8 @@ class Tree:
         else:
             file = f"src/unplaced/FUN_{address:08x}{Path(template_file).suffix}"
         new_names = frozenset({name} | {pair.new for old, pair in pairs.items() if pair.new != old})
-        return Copy(address, name, template, file, lines, decls, new_names | shared, shared)
+        globals_at = frozenset(pair.copy for pair in pairs.values() if pair.kind == "global")
+        return Copy(address, name, template, file, lines, decls, new_names | shared, shared, globals_at)
 
     def shared(self, name: str, own: int) -> bool:
         """Whether several static functions have NAME. Each must then be static where the tree defines it, and each
@@ -669,18 +671,21 @@ def write_file(rel: str, parts: list[Copy | Stub], original: bytes | None) -> No
 
 def culprits(lines: list[str], kept: dict[str, list[Copy]]) -> dict[int, str]:
     """The copies in KEPT that the lines blame, each with the first line that blames it. A line that names a copy's
-    file blames the copies there it points at. A line that names no such file blames the copies that use a name in it."""
+    file blames the copies there it points at. A line that names no such file blames the copies that use a name in it
+    or a global at an address it names: decls names a holder by its address too."""
     found = {}
     for line in lines:
         lower = line.lower()  # the compiler writes paths in lower case
         words = set(NAME.findall(line))
+        addresses = {int(digits, 16) for digits in re.findall(r"0x([0-9a-f]{8})", lower)}
         blamed = []
         for rel, copies in kept.items():
             at = re.search(re.escape(rel.lower()) + r"(?:\((\d+)\))?(?!\w)", lower)
             if at or f"{Path(rel).name.lower()}.obj" in lower:
                 blamed += pointed_at(rel, copies, int(at.group(1)) if at and at.group(1) else None, words)
         if not blamed:
-            blamed = [copy for copies in kept.values() for copy in copies if copy.names & words]
+            blamed = [copy for copies in kept.values() for copy in copies
+                      if copy.names & words or copy.globals_at & addresses]
         for copy in blamed:
             found.setdefault(copy.address, line)
     return found

@@ -494,7 +494,7 @@ def check_about_reply() -> list[str]:
     func = ["// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "\tCount = FUN_00402000(4); // the name", "}"]
     text = "\n".join(["decls: Count: sources declare it in 2 ways: int, short",
                       "decls: FUN_00402000 has the name memset: use that",
-                      "decls: DAT_00500000: inside DAT_00500100 (int[4]) at +4. Remove that declaration",
+                      "decls: DAT_00500000: inside DAT_00500100 (0x00500100, int[4]) at +4. Remove that declaration",
                       "decls: Other has the name Thing: use that",
                       "a.c(1) : error C2065: 'x' : undeclared"])
     wanted = ["decls: Count: sources declare it in 2 ways: int, short",

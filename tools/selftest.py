@@ -324,8 +324,8 @@ def check_tree_conflicts() -> list[str]:
              "`void FUN_004f8070(void *, int)`. Remove that declaration: a second signature is a C++ overload that "
              "never links.",
              "decls: DAT_05b932f0: sources declare it in 2 ways: char DAT_05b932f0[1024] | long DAT_05b932f0[16]",
-             "decls: DAT_05b3e04c: inside DAT_05b3e040 (struct NJS_ARGB) at +12. Remove that declaration and reach it "
-             "through DAT_05b3e040."]
+             "decls: DAT_05b3e04c: inside DAT_05b3e040 (0x05b3e040, struct NJS_ARGB) at +12. Remove that declaration "
+             "and reach it through DAT_05b3e040."]
     wanted = (["extern short DAT_05b42998;", "extern unsigned char DAT_05b3e04c;", "void FUN_004f8070(void *param_1,",
                "    int param_2);"],
               {"DAT_05baf368": ["short *DAT_05baf368"], "DAT_05cda1b0": ["unsigned long DAT_05cda1b0"],
@@ -476,7 +476,7 @@ def check_nested_globals() -> list[str]:
                      [("0x05b3e040", "struct NJS_ARGB DAT_05b3e040"), ("0x05b3e04c", "unsigned char DAT_05b3e04c")])
     # (case, own files, the context's files, exit code, text of the output)
     cases = [("a global inside a struct global", fog("DAT_05b3e04c"), holder, 1,
-              "decls: DAT_05b3e04c: inside DAT_05b3e040 (struct NJS_ARGB) at +12."),
+              "decls: DAT_05b3e04c: inside DAT_05b3e040 (0x05b3e040, struct NJS_ARGB) at +12."),
              ("a global behind a struct global", fog("DAT_05b3e050"), holder, 0, "decls: 0 functions"),
              ("a pair that the context's layout had", fog("DAT_05b3e04c"),
               holder | {"src/unplaced/globals.cpp": layout}, 0,
@@ -618,7 +618,8 @@ def check_clone() -> list[str]:
             found = clone.copy_body(["// FUNCTION: X 0x00401000", template] + body, renames | names)
             if found != wanted_body:
                 failures.append(f"clone body {found}, not {wanted_body}")
-    return failures + check_clone_types(clone) + check_clone_stubs(clone) + check_clone_globals(clone)
+    return failures + check_clone_types(clone) + check_clone_stubs(clone) + check_clone_globals(clone) + \
+        check_clone_culprits(clone)
 
 
 def check_clone_types(clone) -> list[str]:
@@ -678,7 +679,8 @@ def check_clone_stubs(clone) -> list[str]:
     uses = {"a.c": {"Exec"}, "b.c": set(), "c.c": set(), "e.c": set(), "f.c": set()}
 
     def copy(address: int, file: str, shared: str) -> clone.Copy:
-        return clone.Copy(address, f"FUN_{address:08x}", 0x400000, file, [], [], frozenset(), frozenset({shared}))
+        return clone.Copy(address, f"FUN_{address:08x}", 0x400000, file, [], [], frozenset(), frozenset({shared}),
+                          frozenset())
 
     cases = [([copy(0x408000, "b.c", "Exec"), copy(0x403000, "c.c", "Exec")], [0x401000, 0x402000]),
              ([copy(0x409000, "f.c", "Lone")], [])]
@@ -716,6 +718,25 @@ def check_clone_globals(clone) -> list[str]:
             found = skip.kind == "shared name"
         if found != skipped:
             failures.append(f"clone global check {'skips' if found else 'passes'} {pairs} with {sorted(words)}")
+    return failures
+
+
+def check_clone_culprits(clone) -> list[str]:
+    """A line that names no file blames the copies that use a name in it, or whose globals it names by address: decls
+    names a holder by its address, while the copy may spell the holder by another name."""
+    def copy(address: int, names: set[str], globals_at: set[int]) -> clone.Copy:
+        return clone.Copy(address, f"FUN_{address:08x}", 0x400000, "src/a.c", [], [], frozenset(names), frozenset(),
+                          frozenset(globals_at))
+
+    kept = {"src/a.c": [copy(0x401000, {"DAT_03a0c878"}, {0x3A0C878}), copy(0x402000, {"DAT_03a0c908"}, {0x3A0C908}),
+                        copy(0x403000, {"DAT_00600000"}, {0x600000})]}
+    inside = "decls: DAT_03a0c908: inside object_c_info (0x03a0c878, struct CCL_INFO[5]) at +144."
+    cases = [(inside, [0x401000, 0x402000]), ("decls: object_c_info has no size", [])]
+    failures = []
+    for line, wanted in cases:
+        found = sorted(clone.culprits([line], kept))
+        if found != wanted:
+            failures.append(f"clone culprits {[hex(a) for a in found]} for `{line}`, not {[hex(a) for a in wanted]}")
     return failures
 
 
