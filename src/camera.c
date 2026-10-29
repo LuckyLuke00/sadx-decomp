@@ -474,7 +474,7 @@ long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry)
 }
 
 // STUB: SADX 0x004bd880
-int FUN_004bd880(struct taskwk *twp)
+int FUN_004bd880(struct taskwk *param_1)
 {
 	return (int)0;
 }
@@ -764,7 +764,7 @@ void CameraSetCollisionCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), u
 }
 
 // STUB: SADX 0x004bec60
-void FUN_004bec60(short ucAdjustType, unsigned char ucCameraDirect)
+void FUN_004bec60(short param_1, unsigned char param_2)
 {
 }
 

@@ -50,13 +50,13 @@ void FUN_00477cf0(int param_1)
 }
 
 // STUB: SADX 0x00477ef0
-int FUN_00477ef0(struct task *tp)
+int FUN_00477ef0(struct task *param_1)
 {
 	return (int)0;
 }
 
 // STUB: SADX 0x00478180
-void FUN_00478180(struct task *tp)
+void FUN_00478180(struct task *param_1)
 {
 }
 
@@ -67,7 +67,7 @@ long FUN_00478350(int param_1)
 }
 
 // STUB: SADX 0x00478360
-void FUN_00478360(struct task *task_p)
+void FUN_00478360(struct task *param_1)
 {
 }
 
@@ -80,7 +80,7 @@ void hintbox_edit_print()
 }
 
 // STUB: SADX 0x004785b0
-void FUN_004785b0(struct task *task_p)
+void FUN_004785b0(struct task *param_1)
 {
 }
 

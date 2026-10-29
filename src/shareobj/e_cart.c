@@ -112,7 +112,7 @@ void cartTakeSonic(struct task *tp, struct taskwk *twp)
 }
 
 // STUB: SADX 0x008cf620
-void FUN_008cf620(struct task *tp, int param_2)
+void FUN_008cf620(struct task *param_1, int param_2)
 {
 }
 
@@ -237,7 +237,7 @@ void FUN_008d0af0(struct taskwk *param_1, int param_2)
 }
 
 // STUB: SADX 0x008d0b60
-void FUN_008d0b60(struct task *tp, int param_2)
+void FUN_008d0b60(struct task *param_1, int param_2)
 {
 }
 

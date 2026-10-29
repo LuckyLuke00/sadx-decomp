@@ -28,7 +28,7 @@ void ShutterParts(struct task *tp)
 }
 
 // STUB: SADX 0x008af650
-void FUN_008af650(struct task *tp)
+void FUN_008af650(struct task *param_1)
 {
 }
 

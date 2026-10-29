@@ -64,7 +64,7 @@ void AL_MatChangeObjectTexture2(struct al_object *pObject, const unsigned short 
 }
 
 // STUB: SADX 0x00450770
-void FUN_00450770(struct al_model *pModel)
+void FUN_00450770(struct al_model *param_1)
 {
 }
 

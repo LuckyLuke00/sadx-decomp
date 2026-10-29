@@ -23,7 +23,7 @@ void SnakeParts(struct task *tp)
 }
 
 // STUB: SADX 0x008da730
-void FUN_008da730(struct task *tp)
+void FUN_008da730(struct task *param_1)
 {
 }
 
@@ -70,7 +70,7 @@ void FUN_008dacb0(int param_1)
 }
 
 // STUB: SADX 0x008dad00
-void FUN_008dad00(struct task *tp)
+void FUN_008dad00(struct task *param_1)
 {
 }
 

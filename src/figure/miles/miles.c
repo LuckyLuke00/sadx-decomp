@@ -47,7 +47,7 @@ void MilesDestruct(struct task *tp)
 }
 
 // STUB: SADX 0x00536270
-void FUN_00536270(struct task *tp, void *param_2)
+void FUN_00536270(struct task *param_1, void *param_2)
 {
 }
 
@@ -215,7 +215,7 @@ void MilesHoldOnPillar(struct taskwk *twp, struct playerwk *pwp)
 }
 
 // STUB: SADX 0x0053b120
-int FUN_0053b120(struct task *tp)
+int FUN_0053b120(struct task *param_1)
 {
 	return (int)0;
 }

@@ -66,7 +66,7 @@ void __fastcall FUN_0091fd10(int param_1, int param_2)
 }
 
 // STUB: SADX 0x0091fd60
-void __fastcall FUN_0091fd60(void *pThis, void *param_2)
+void __fastcall FUN_0091fd60(void *param_1, void *param_2)
 {
 }
 

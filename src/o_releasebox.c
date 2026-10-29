@@ -150,7 +150,7 @@ void FUN_005ac150(int param_1)
 }
 
 // STUB: SADX 0x005ac1a0
-void FUN_005ac1a0(struct task *task_p)
+void FUN_005ac1a0(struct task *param_1)
 {
 }
 

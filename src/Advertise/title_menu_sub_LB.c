@@ -77,7 +77,7 @@ static void title_menu_exec(struct task *tp)
 #pragma optimize("", on)
 
 // STUB: SADX 0x005fa3a0
-void FUN_005fa3a0(struct DDlgType *dlgp)
+void FUN_005fa3a0(struct DDlgType *param_1)
 {
 }
 

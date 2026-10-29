@@ -2,17 +2,17 @@
 extern int DAT_05cd2968;
 
 // STUB: SADX 0x0049b3e0
-void FUN_0049b3e0(struct NJS_MODEL *model)
+void FUN_0049b3e0(struct NJS_MODEL *param_1)
 {
 }
 
 // STUB: SADX 0x0049b910
-void FUN_0049b910(struct task *tp)
+void FUN_0049b910(struct task *param_1)
 {
 }
 
 // STUB: SADX 0x0049b990
-void FUN_0049b990(struct obj *objp)
+void FUN_0049b990(struct obj *param_1)
 {
 }
 

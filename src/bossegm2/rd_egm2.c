@@ -12,6 +12,6 @@ void Bg_Bossegm2(struct task *tp)
 }
 
 // STUB: SADX 0x006c56d0
-void FUN_006c56d0(struct task *tp)
+void FUN_006c56d0(struct task *param_1)
 {
 }

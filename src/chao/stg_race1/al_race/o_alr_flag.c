@@ -6,7 +6,7 @@ extern int DAT_05b9d838;
 
 #pragma optimize("", off)
 // STUB: SADX 0x00717660
-static void initObject(struct task *param_1, void *param_2)
+static void initObject(struct task *task_p, void *param_p)
 {
 }
 #pragma optimize("", on)

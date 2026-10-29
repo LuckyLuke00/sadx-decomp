@@ -1,7 +1,7 @@
 #include "decls.h"
 static void initObject(struct task *task_p, const struct ActionParam *param_p);
 static void dispObject(struct task *task_p);
-static void execObject(struct task *param_1);
+static void execObject(struct task *task_p);
 extern struct TaskInfo DAT_009c8b18;
 extern struct ActionParam DAT_009c8b34;
 
@@ -20,14 +20,14 @@ static void initObject(struct task *task_p, const struct ActionParam *param_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00717820
-static void dispObject(struct task *param_1)
+static void dispObject(struct task *task_p)
 {
 }
 #pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00717890
-static void execObject(struct task *param_1)
+static void execObject(struct task *task_p)
 {
 }
 #pragma optimize("", on)

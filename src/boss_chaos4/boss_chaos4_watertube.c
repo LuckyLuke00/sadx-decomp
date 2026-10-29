@@ -12,7 +12,7 @@ void Dsp_Chaos4WaterTube(struct task *pTask)
 }
 
 // STUB: SADX 0x006f10d0
-void FUN_006f10d0(struct taskwk *twp)
+void FUN_006f10d0(struct taskwk *param_1)
 {
 }
 

@@ -13,6 +13,6 @@ void Rd_E101_R(struct task *tp)
 }
 
 // STUB: SADX 0x007075e0
-void FUN_007075e0(struct task *tp)
+void FUN_007075e0(struct task *param_1)
 {
 }

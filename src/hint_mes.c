@@ -277,7 +277,7 @@ void disp_message_after(struct MSGC *msgc_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x0056dc40
-void FUN_0056dc40(struct MSGC *msgc)
+void FUN_0056dc40(struct MSGC *param_1)
 {
 }
 #pragma optimize("", on)

@@ -263,7 +263,7 @@ int FUN_0050cbb0(char *param_1)
 }
 
 // STUB: SADX 0x0050cbf0
-void FUN_0050cbf0(struct playerwk *pwp, int param_2, int param_3)
+void FUN_0050cbf0(struct playerwk *param_1, int param_2, int param_3)
 {
 }
 

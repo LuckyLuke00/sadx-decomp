@@ -239,7 +239,7 @@ int FUN_004fbb70(int *param_1)
 }
 
 // STUB: SADX 0x004fbd10
-struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *obj, struct CL_Poly *poly)
+struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *param_1, struct CL_Poly *param_2)
 {
 	return (struct CL_PolyInfo *)0;
 }

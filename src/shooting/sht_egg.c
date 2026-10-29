@@ -77,7 +77,7 @@ void EggDisp2(struct task *tp)
 }
 
 // STUB: SADX 0x007ee140
-void FUN_007ee140(struct task *cTask)
+void FUN_007ee140(struct task *param_1)
 {
 }
 

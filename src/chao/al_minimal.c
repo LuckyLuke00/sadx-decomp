@@ -28,7 +28,7 @@ void AL_MinimalDestructor(struct task *tp)
 }
 
 // STUB: SADX 0x0046cdf0
-void FUN_0046cdf0(struct MOTION_TABLE *tp, int var1)
+void FUN_0046cdf0(struct MOTION_TABLE *param_1, int var1)
 {
 }
 

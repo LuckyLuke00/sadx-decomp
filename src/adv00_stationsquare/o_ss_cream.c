@@ -19,7 +19,7 @@ void CreamManagerDestruct(struct task *tp)
 }
 
 // STUB: SADX 0x00691d60
-void FUN_00691d60(void *ptr)
+void FUN_00691d60(void *param_1)
 {
 }
 

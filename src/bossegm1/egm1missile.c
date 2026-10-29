@@ -29,6 +29,6 @@ void egm1missile_disp(struct task *tp)
 }
 
 // STUB: SADX 0x006c50b0
-void FUN_006c50b0(struct NJS_POINT3 *posp)
+void FUN_006c50b0(struct NJS_POINT3 *param_1)
 {
 }

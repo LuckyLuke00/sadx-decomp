@@ -52,7 +52,7 @@ void FUN_0044ce30()
 }
 
 // STUB: SADX 0x0044cf90
-int FUN_0044cf90(short ax)
+int FUN_0044cf90(short param_1)
 {
 	return (int)0;
 }

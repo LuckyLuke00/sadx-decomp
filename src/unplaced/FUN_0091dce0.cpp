@@ -141,7 +141,7 @@ void __fastcall FUN_0091f110(struct FUN_0091f110_struct *param_1, int param_2, i
 }
 
 // STUB: SADX 0x0091f190
-void __fastcall FUN_0091f190(void *this_ptr, int param_2, int param_3, int param_4)
+void __fastcall FUN_0091f190(void *param_1, int param_2, int param_3, int param_4)
 {
 }
 

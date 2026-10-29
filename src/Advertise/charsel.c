@@ -53,7 +53,7 @@ void FUN_00607cc0(int param_1)
 }
 
 // STUB: SADX 0x00607ed0
-void FUN_00607ed0(struct ModeSelPrmType *prmp)
+void FUN_00607ed0(struct ModeSelPrmType *param_1)
 {
 }
 
@@ -64,7 +64,7 @@ int FUN_00607f80()
 }
 
 // STUB: SADX 0x00607f90
-int FUN_00607f90(enum AvaCharEnum chnum)
+int FUN_00607f90(enum AvaCharEnum param_1)
 {
 	return (int)0;
 }
@@ -104,7 +104,7 @@ void char_sel_disp(struct task *tp)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00608f80
-void FUN_00608f80(struct ModeSelPrmType *prmp)
+void FUN_00608f80(struct ModeSelPrmType *param_1)
 {
 }
 #pragma optimize("", on)

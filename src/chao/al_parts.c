@@ -154,7 +154,7 @@ void FUN_00450ce0(struct al_object *param_1)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00450d20
-void FUN_00450d20(struct al_object *pObject)
+void FUN_00450d20(struct al_object *param_1)
 {
 }
 #pragma optimize("", on)

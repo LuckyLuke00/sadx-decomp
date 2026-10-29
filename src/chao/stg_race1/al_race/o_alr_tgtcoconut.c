@@ -2,7 +2,7 @@
 extern struct TaskInfo DAT_00961f14;
 static void destObject(struct task *task_p);
 static void dispObject(struct task *task_p);
-static void execObject(struct task *param_1);
+static void execObject(struct task *task_p);
 static void initObject(struct task *task_p, void *param_p);
 extern NJS_POINT3 DAT_05b35c58[8];
 
@@ -55,14 +55,14 @@ long GetTargetCoconutPosition(struct NJS_POINT3 *pos_p, int chaoId)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00490180
-static void initObject(struct task *param_1, void *param_2)
+static void initObject(struct task *task_p, void *param_p)
 {
 }
 #pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00490270
-static void dispObject(struct task *param_1)
+static void dispObject(struct task *task_p)
 {
 }
 #pragma optimize("", on)
@@ -74,14 +74,14 @@ static void destObject(struct task *task_p)
 }
 
 // STUB: SADX 0x00490330
-float FUN_00490330(struct task *tp)
+float FUN_00490330(struct task *param_1)
 {
 	return (float)0;
 }
 
 #pragma optimize("", off)
 // STUB: SADX 0x00490380
-static void execObject(struct task *param_1)
+static void execObject(struct task *task_p)
 {
 }
 #pragma optimize("", on)

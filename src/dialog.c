@@ -127,7 +127,7 @@ void FUN_00576bf0(struct task *param_1)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00576c10
-void FUN_00576c10(struct task *tp)
+void FUN_00576c10(struct task *param_1)
 {
 }
 #pragma optimize("", on)

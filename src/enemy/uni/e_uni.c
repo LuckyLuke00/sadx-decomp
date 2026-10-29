@@ -75,7 +75,7 @@ void UniTogeAExecutor(struct task *tp)
 }
 
 // STUB: SADX 0x005ca420
-void FUN_005ca420(struct task *tp, int param_2)
+void FUN_005ca420(struct task *param_1, int param_2)
 {
 }
 
@@ -90,7 +90,7 @@ void UniTogeAThrown(struct task *tp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x005ca750
-void FUN_005ca750(struct task *tp, struct taskwk *twp)
+void FUN_005ca750(struct task *param_1, struct taskwk *param_2)
 {
 }
 
@@ -141,7 +141,7 @@ void UniAExecutor(struct task *tp)
 
 #pragma optimize("", off)
 // STUB: SADX 0x005caab0
-void FUN_005caab0(struct task *tp, struct task *param_2)
+void FUN_005caab0(struct task *param_1, struct task *param_2)
 {
 }
 #pragma optimize("", on)
@@ -265,7 +265,7 @@ void FUN_005cb140(struct taskwk *param_1, struct enemywk *param_2)
 
 #pragma optimize("", off)
 // STUB: SADX 0x005cb190
-void FUN_005cb190(struct task *tp, struct enemywk *ewp)
+void FUN_005cb190(struct task *param_1, struct enemywk *param_2)
 {
 }
 #pragma optimize("", on)
@@ -326,7 +326,7 @@ void UniTogeBExecutor(struct task *tp)
 }
 
 // STUB: SADX 0x005cb980
-void FUN_005cb980(struct task *tp, struct enemywk *ewp)
+void FUN_005cb980(struct task *param_1, struct enemywk *param_2)
 {
 }
 
@@ -356,7 +356,7 @@ void UniTogeADraw(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x005cbc50
-void FUN_005cbc50(struct task *tp, struct enemywk *ewp)
+void FUN_005cbc50(struct task *param_1, struct enemywk *param_2)
 {
 }
 
@@ -452,7 +452,7 @@ void FUN_005cc6c0(struct task *param_1)
 }
 
 // STUB: SADX 0x005cc7f0
-void FUN_005cc7f0(struct task *tp, struct enemywk *ewp)
+void FUN_005cc7f0(struct task *param_1, struct enemywk *param_2)
 {
 }
 
@@ -469,12 +469,12 @@ void CheckParentDeath(struct task *tp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x005ccf30
-void FUN_005ccf30(struct task *tp, struct motionwk *mwp)
+void FUN_005ccf30(struct task *param_1, struct motionwk *param_2)
 {
 }
 
 // STUB: SADX 0x005cd0c0
-void FUN_005cd0c0(struct task *tp, struct motionwk *mwp)
+void FUN_005cd0c0(struct task *param_1, struct motionwk *param_2)
 {
 }
 

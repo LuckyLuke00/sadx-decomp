@@ -44,7 +44,7 @@ void SaruExecutor(struct task *tp)
 }
 
 // STUB: SADX 0x005c62a0
-void FUN_005c62a0(struct taskwk *twp, struct enemywk *ewp)
+void FUN_005c62a0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
@@ -83,7 +83,7 @@ long SaruCheckInterrupt(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x005c7050
-void FUN_005c7050(struct taskwk *twp, struct enemywk *ewp)
+void FUN_005c7050(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
@@ -113,17 +113,17 @@ void SaruTurnP(struct taskwk *twp, struct enemywk *ewp)
 }
 
 // STUB: SADX 0x005c7a80
-void FUN_005c7a80(struct task *tp, struct enemywk *ewp)
+void FUN_005c7a80(struct task *param_1, struct enemywk *param_2)
 {
 }
 
 // STUB: SADX 0x005c7ff0
-void FUN_005c7ff0(struct task *tp, struct enemywk *ewp)
+void FUN_005c7ff0(struct task *param_1, struct enemywk *param_2)
 {
 }
 
 // STUB: SADX 0x005c8300
-void FUN_005c8300(struct taskwk *twp, struct enemywk *ewp)
+void FUN_005c8300(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 

@@ -13,7 +13,7 @@ void ObjectSkydeck_eff_bomb1_Init(struct task *tp)
 #pragma optimize("", on)
 
 // STUB: SADX 0x0084be30
-void FUN_0084be30(struct task *tp)
+void FUN_0084be30(struct task *param_1)
 {
 }
 

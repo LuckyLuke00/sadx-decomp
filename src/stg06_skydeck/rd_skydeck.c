@@ -327,7 +327,7 @@ void ObjectSkydeck_homing_Exec(struct task *tp)
 }
 
 // STUB: SADX 0x0083bdd0
-void FUN_0083bdd0(struct task *tp)
+void FUN_0083bdd0(struct task *param_1)
 {
 }
 

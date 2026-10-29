@@ -32,7 +32,7 @@ void DestroyMapPAST(unsigned short act)
 }
 
 // STUB: SADX 0x006bc860
-void FUN_006bc860(struct task *tp)
+void FUN_006bc860(struct task *param_1)
 {
 }
 

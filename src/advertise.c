@@ -1899,7 +1899,7 @@ char * FUN_00588c90(char *param_1, char *param_2, int param_3, int param_4)
 }
 
 // STUB: SADX 0x00588db0
-void FUN_00588db0(struct obj *obj, int param_2)
+void FUN_00588db0(struct obj *param_1, int param_2)
 {
 }
 
@@ -1919,7 +1919,7 @@ void FUN_00589930()
 }
 
 // STUB: SADX 0x00589a70
-void FUN_00589a70(char *param_0, int param_1, int param_2)
+void FUN_00589a70(char *param_1, int param_2, int param_3)
 {
 }
 

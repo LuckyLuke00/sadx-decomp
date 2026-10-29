@@ -140,7 +140,7 @@ void dispDistanceLure(float *rod_pos_p, float *line_pos_p)
 
 #pragma optimize("", off)
 // STUB: SADX 0x0058d570
-void dispDistanceNum(float param_1)
+void dispDistanceNum(float dist)
 {
 }
 #pragma optimize("", on)
@@ -269,7 +269,7 @@ int FUN_0058ffa0(void)
 }
 
 // STUB: SADX 0x00590050
-void FUN_00590050(struct task *tp)
+void FUN_00590050(struct task *param_1)
 {
 }
 
@@ -399,7 +399,7 @@ void BigDisplayHit(struct task *tp)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00592520
-void FUN_00592520(struct task *tp)
+void FUN_00592520(struct task *param_1)
 {
 }
 #pragma optimize("", on)

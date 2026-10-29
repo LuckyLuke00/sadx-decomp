@@ -26,7 +26,7 @@ void FUN_007e6e70(void)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007e6f50
-static void execRound(struct task *param_1)
+static void execRound(struct task *task_p)
 {
 }
 #pragma optimize("", on)

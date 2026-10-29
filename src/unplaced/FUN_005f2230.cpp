@@ -49,7 +49,7 @@ void FUN_005f22c0(struct task *param_1, struct ModeSelPrmType *param_2)
 }
 
 // STUB: SADX 0x005f2320
-void FUN_005f2320(struct task *tp)
+void FUN_005f2320(struct task *param_1)
 {
 }
 

@@ -32,6 +32,6 @@ void TamaDead(struct task *tp)
 }
 
 // STUB: SADX 0x007efc60
-void FUN_007efc60(struct task *tp)
+void FUN_007efc60(struct task *param_1)
 {
 }
