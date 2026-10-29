@@ -2513,6 +2513,9 @@ struct obj object_seaobj_hasi_b_hasi_b[1];
 // GLOBAL: SADX 0x0398dc14
 struct obj object_col_hasi_a_hasi_a[2];
 
+// GLOBAL: SADX 0x039cafc4
+struct obj object_seaobj_parasol03_parasol03[1];
+
 // GLOBAL: SADX 0x039dfa5c
 struct obj object_seaobj_tesuric_tesuric[1];
 
@@ -2672,6 +2675,9 @@ float alpha;
 // GLOBAL: SADX 0x03b757e8
 struct CCL_INFO object_uki_info[2];
 
+// GLOBAL: SADX 0x03b75b50
+struct CCL_INFO c_info_dummy[1];
+
 // GLOBAL: SADX 0x03c67068
 struct obj object_geta_cubar_cubar[1];
 
@@ -2770,6 +2776,12 @@ struct NJS_MODEL model_knbn_01_kanban01_kanban01[1];
 
 // GLOBAL: SADX 0x03e44b28
 struct NJS_MODEL model_knbn_02_kanban02_kanban02[1];
+
+// GLOBAL: SADX 0x03e44dbc
+struct NJS_MODEL model_ss_bkt_bkt_bkt_bkt[1];
+
+// GLOBAL: SADX 0x03e45194
+struct NJS_MODEL model_ss_bkt_huta_bkt_huta[1];
 
 // GLOBAL: SADX 0x03e453a0
 struct NJS_MODEL model_ss_hyd_hydbase[1];
@@ -3032,6 +3044,9 @@ struct CCL_INFO object_cannon_s_info[1];
 // GLOBAL: SADX 0x0435db0c
 struct obj object_l01_wt_hebimizu_wt_hebimizu[1];
 
+// GLOBAL: SADX 0x0436c46c
+struct NJS_TEXLIST texlist_sw_panel;
+
 // GLOBAL: SADX 0x0437271c
 struct obj object_hebi_asiba01_hebi_asiba01_hebi_asiba01[1];
 
@@ -3056,6 +3071,9 @@ struct NJS_MODEL model_l02_lightway_h_lightway_h[1];
 // GLOBAL: SADX 0x0438b3d4
 struct obj object_los_nc_gakeshoku_nc_gakeshoku[1];
 
+// GLOBAL: SADX 0x0438c6f4
+struct NJS_MODEL model_los_nc_happa_nc_happa[1];
+
 // GLOBAL: SADX 0x0438cae8
 struct obj object_lwobj_arrow_arrow[1];
 
@@ -3070,6 +3088,9 @@ struct obj object_lwobj_lwswitch_button[1];
 
 // GLOBAL: SADX 0x04390408
 struct obj object_lwobj_lwswitch_lwswitch[1];
+
+// GLOBAL: SADX 0x043935a4
+struct obj object_lwobj_lwdoor_lwdoor[1];
 
 // GLOBAL: SADX 0x0439abb0
 struct NJS_MODEL model_lwobj_prop_a01_prop_a01[1];
@@ -3124,6 +3145,9 @@ struct NJS_MODEL model_sky_h_hahen02a_h_hahen02a[1];
 
 // GLOBAL: SADX 0x0459880c
 struct obj object_jpdai_all1_jpdai01_jpdai01[1];
+
+// GLOBAL: SADX 0x045a8e04
+struct NJS_MODEL model__obj_hasira_c_obj_hasira_c[1];
 
 // GLOBAL: SADX 0x045aa390
 struct obj object_obj_house_d_house_d[1];
@@ -3233,18 +3257,6 @@ struct NJS_TEXLIST texlist_obj_casino2;
 // GLOBAL: SADX 0x04720288
 struct obj object_cas_cl_kinko_wall_kinko_wall[1];
 
-// GLOBAL: SADX 0x04721030
-struct NJS_MODEL model_casi_sank01a_sank01a[1];
-
-// GLOBAL: SADX 0x04721878
-struct NJS_MODEL model_casi_sank01a_k_sank01a_k[1];
-
-// GLOBAL: SADX 0x047220c0
-struct NJS_MODEL model_casi_sank02a_sank02a[1];
-
-// GLOBAL: SADX 0x04722908
-struct NJS_MODEL model_casi_sank02a_k_sank02a_k[1];
-
 // GLOBAL: SADX 0x04723380
 struct NJS_MODEL model_casi_tuule01a_tuule01a[1];
 
@@ -3307,6 +3319,9 @@ struct NJS_MODEL model_casi_nc_neoor_b_neoor_b[1];
 
 // GLOBAL: SADX 0x04732c80
 struct NJS_MODEL model_casi_nc_neoor_c_neoor_c[1];
+
+// GLOBAL: SADX 0x047731a8
+struct NJS_MODEL model_card_doa_a_doa_a[1];
 
 // GLOBAL: SADX 0x04774880
 struct NJS_MOTION motion_card_obj_ideacp[1];
@@ -3424,6 +3439,9 @@ struct obj object_cas_obj_slot_arm_slot_arm[1];
 
 // GLOBAL: SADX 0x047d89fc
 struct NJS_ACTION action_cas_obj_slot_arm[1];
+
+// GLOBAL: SADX 0x047d9b18
+struct obj object_cas_obj_mball_mball[1];
 
 // GLOBAL: SADX 0x047da09c
 struct obj object_cas_obj_map_2f_map_2f[1];
@@ -3595,6 +3613,9 @@ struct CCL_INFO object_c_info_capsule[1];
 
 // GLOBAL: SADX 0x0480b7d8
 struct TENSHOUSEINFO tensinfo[1];
+
+// GLOBAL: SADX 0x0480b978
+struct CCL_INFO object_c_info[1];
 
 // GLOBAL: SADX 0x0480ba50
 struct CCL_INFO coll_sl[1];
@@ -3787,6 +3808,9 @@ struct NJS_SPRITE sprite_o_bubble;
 
 // GLOBAL: SADX 0x04c2c408
 struct CCL_INFO c_info_a[1];
+
+// GLOBAL: SADX 0x04c2c63c
+struct NJS_SPRITE sprite_fade;
 
 // GLOBAL: SADX 0x04c2d3b8
 struct NJS_TEXLIST texlist_endbg_logo;

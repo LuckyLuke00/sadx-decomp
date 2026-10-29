@@ -49,6 +49,22 @@ void DispCube(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x00809620
+void ColliOnly(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		var1->mode = 1;
+		CCL_Init(tp, &c_info_dummy[0], 1, 4);
+		break;
+	case 1:
+		EntryColliList(var1);
+		break;
+	}
+}
+
 // FUNCTION: SADX 0x00809660
 void PieceExec(struct task *tp)
 {
@@ -71,4 +87,9 @@ void PieceExec(struct task *tp)
 		var2->wtimer = var2->wtimer + 1;
 	}
 	PieceDisp(tp);
+}
+
+// STUB: SADX 0x00809b40
+void ObjectWindyBrokenCubes(struct task *tp)
+{
 }
