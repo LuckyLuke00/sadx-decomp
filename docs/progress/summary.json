@@ -42861,11 +42861,10 @@
   {
    "address": "0x00694ae0",
    "name": "ObjectECMast",
-   "accuracy": 1.0,
-   "effective": false,
+   "accuracy": 0.9806451612903225,
+   "effective": true,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x00694d30",
@@ -96617,5 +96616,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "f9209ee2a63b86f32077b98c172eac62bf329564d8c7473b62b007e292804ab1"
+ "inputs_sha256": "1db074164585258f7a1d7c8028de7e228476db8652cadf532ae5d28482b56dd5"
 }
