@@ -31,7 +31,7 @@ void Robo_SetPosHand(enum HAND_NUM nNum, struct NJS_POINT3 *pPos)
 long Robo_GetAngle()
 {
 	char *var1 = (char *)DAT_060bb8cc;
-	char *var2 = (char *)*(long *)(var1 + 0x20); // Wait, mov ecx, [eax+20] loads a dword.
+	char *var2 = (char *)*(long *)(var1 + 0x20);
 	return *(long *)(var2 + 0x18);
 }
 
