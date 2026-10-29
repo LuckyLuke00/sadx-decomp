@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1414" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,446 of 16,524 game functions done (32.95%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,450 of 16,524 game functions done (32.98%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="597.8,1169.5 604.2,1169.5 605.9,1171 607,1172.6 601,1179.5 595,1172.6 596.1,1171" fill="#4e32f3"/>
 <polygon points="597.8,1169.5 604.2,1169.5 605.9,1171 607,1172.6 595,1172.6 596.1,1171" fill="#ffffff" fill-opacity="0.4"/>
@@ -4213,7 +4213,7 @@
 <rect x="35" y="140" width="6" height="6" fill="#ffd700"><title>0x008dfa00 execBuyonBornB: 100%</title></rect>
 <rect x="42" y="140" width="6" height="6" fill="#ffd700"><title>0x008e07d0 exitBuyonManager: 100%</title></rect>
 </g>
-<rect x="538" y="87" width="237" height="264" rx="3" fill="#21262d" stroke="#30363d"><title>Engine: 1,059 of 1,078 done</title></rect>
+<rect x="538" y="87" width="237" height="264" rx="3" fill="#21262d" stroke="#30363d"><title>Engine: 1,063 of 1,078 done</title></rect>
 <text x="541" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Engine <tspan font-weight="400" fill="#8b949e">98%</tspan></text>
 <g transform="translate(541,105)">
 <rect y="0" width="231" height="224" fill="url(#todo)"/>
@@ -5229,12 +5229,17 @@
 <rect x="126" y="210" width="6" height="6" fill="#ffd700"><title>0x00618630 Flicky_transformBaloon: 100%</title></rect>
 <rect x="133" y="210" width="6" height="6" fill="#ffd700"><title>0x0061c030 E102EggLiftCollisionDest: 100%</title></rect>
 <rect x="140" y="210" width="6" height="6" fill="#ffd700"><title>0x0061cc20 ColliSphere: 100%</title></rect>
+<rect x="147" y="210" width="6" height="6" fill="#eace49"><title>0x0061ccb0 ColliSpaceEditMode: 91.0%</title></rect>
 <rect x="154" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d220 FUN_0061d220: 100%</title></rect>
 <rect x="161" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d280 ColliCylinder: 100%</title></rect>
 <rect x="168" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d310 ColliCube: 100%</title></rect>
+<rect x="175" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d3a0 ColliWall: 100%</title></rect>
 <rect x="182" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d430 ColliCircle: 100%</title></rect>
 <rect x="189" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d4d0 ColliOttottoRange: 100%</title></rect>
+<rect x="196" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d570 ColliOttottoRangeEditMode: 100%</title></rect>
 <rect x="203" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d8b0 ColliBigWaterJumpRange: 100%</title></rect>
+<rect x="210" y="210" width="6" height="6" fill="#ffd700"><title>0x0061d950 ColliNoWaterRange: 100%</title></rect>
+<rect x="217" y="210" width="6" height="6" fill="#ffd700"><title>0x0061db50 CS_CheckCollisionPlayer2NoWater: 100%</title></rect>
 <rect x="224" y="210" width="6" height="6" fill="#ffd700"><title>0x0061fb00 saito_exit: 100%</title></rect>
 <rect x="0" y="217" width="6" height="6" fill="#ffd700"><title>0x0061fb10 G_GetMovieSystem: 100%</title></rect>
 <rect x="7" y="217" width="6" height="6" fill="#ffd700"><title>0x0061fc20 DrawMovieTex: 100%</title></rect>

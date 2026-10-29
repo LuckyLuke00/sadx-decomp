@@ -2230,16 +2230,6 @@ struct task *EventBossKnucklesSet(struct BOSSPLAYER_CREATE_PARAM *Param)
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x0061ccb0
-void ColliSpaceEditMode(struct task *tp, unsigned short form)
-{
-}
-
-// STUB: SADX 0x0061d570
-void ColliOttottoRangeEditMode(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0061e310
 void DispCharMdls(struct CharMdlWk *wkp)
 {
