@@ -520,6 +520,8 @@ def write(context: Path | None, tables: Path | None) -> int:
     forward = set()
     for sig in list(decls.values()) + list(externs.values()):
         forward |= set(n for n in re.findall(r"\b(?:struct|union)\s+(\w+)", sig))
+        # A typedef'd struct, as in Sega's headers, goes without the keyword.
+        forward |= {n for n in re.findall(r"\w+", sig) if types.kind.get(n) in ("struct", "union")}
         used_enums = set(n for n in re.findall(r"\benum\s+(\w+)", sig))
         defined_types |= types.closure(used_enums)
     for n in list(defined_types):

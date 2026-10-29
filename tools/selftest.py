@@ -77,6 +77,7 @@ def run() -> int:
     failures += check_decls_aliases()
     failures += check_extern_of()
     failures += check_reached_types()
+    failures += check_bare_struct_names()
     failures += check_clone()
     failures += check_link()
     failures += check_units()
@@ -601,11 +602,25 @@ def check_reached_types() -> list[str]:
     return []
 
 
+def check_bare_struct_names() -> list[str]:
+    """A table prototype that names a struct without the keyword, as Sega's typedef'd structs go, gets the struct's
+    forward declaration in types.h, and no layout."""
+    target = project.game_config().target
+    files = {"src/x.c": f"// FUNCTION: {target} 0x00402000\nvoid Run(void)\n{{\n\tSetPad(0);\n}}\n"}
+    functions = [("0x00401000", "SetPad", "G", "src/w.c", "o_w.obj", "void SetPad(pad *p);"),
+                 ("0x00402000", "Run", "G", "src/x.c", "o_x.obj")]
+    code, output, generated = run_decls(files, {}, functions, [], "struct pad {\n    int on;\n};\n")
+    types = generated.get(names.TYPES_H, "")
+    if code != 0 or "struct pad;" not in types or "struct pad {" in types:
+        return [f"decls for a struct named without the keyword gives exit {code}, not 0, and types.h {types!r}"]
+    return []
+
+
 def run_decls(files: dict, context_files: dict, functions: list, globals_: list,
               types: str = "") -> tuple[int, str, dict]:
     """(exit code, output, generated files) of decls in a throwaway tree of FILES, with a throwaway context tree and
-    the given rows of the tables: functions (address, name, scope, file, object) and globals (address, name, object),
-    and the TYPES header."""
+    the given rows of the tables: functions (address, name, scope, file, object, and a prototype or none for
+    `void name(struct task *tp);`) and globals (address, name, object), and the TYPES header."""
     def tsv(header, rows):
         return "\n".join("\t".join(row) for row in [header, *rows]) + "\n"
 
@@ -618,7 +633,8 @@ def run_decls(files: dict, context_files: dict, functions: list, globals_: list,
         tables.mkdir()
         (tables / "functions.tsv").write_text(
             tsv(["address", "name", "proto", "scope", "file", "object"],
-                [(a, n, f"void {n}(struct task *tp);", s, f, o) for a, n, s, f, o in functions]), encoding="utf-8")
+                [(a, n, *(proto or [f"void {n}(struct task *tp);"]), s, f, o) for a, n, s, f, o, *proto in functions]),
+            encoding="utf-8")
         (tables / "globals.tsv").write_text(
             tsv(["address", "name", "decl", "base", "dims", "size", "object"],
                 [(a, n, "int {}[?]", "int", "?", "8", o) for a, n, o in globals_]), encoding="utf-8")
