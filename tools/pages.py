@@ -7,15 +7,16 @@ Reads only committed files: docs/progress/summary.json and history.csv,
 data/areas.yml and areas.csv, data/functions.csv and
 data/codegen-groups.csv, and the sources under src. The GitHub link comes
 from git's origin remote. Writes the home page, a page for each area, the
-Help out page and shields.io endpoint badges to DIR (default _site). The
-areas come from tools/areas.py, as on the progress map, so run as a script
-it reruns itself in .venv.
+Help out page, the tab icon and shields.io endpoint badges to DIR (default
+_site). The areas come from tools/areas.py, as on the progress map, so run
+as a script it reruns itself in .venv.
 """
 
 import argparse
 import collections
 import html
 import json
+import math
 import random
 from collections.abc import Iterable
 from pathlib import Path
@@ -33,6 +34,8 @@ WATER_TILE = (600, 450)  # the size of one tile of the water pattern, in px
 WATER_BLEED = 20  # how far a blurred cell may lie outside its tile and still show in it, in px
 TAB_CURVE = ("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 40' preserveAspectRatio='none'>"
              "<path d='M0 0 C18 0 16 40 34 40 L0 40 Z' fill='{}'/></svg>")  # the S-curve edge of a file tab
+RING = [("transparent", 40), ("#000000", 41), ("#554411", 46), ("#ccaa33", 54), ("#f0e070", 63), ("#ccaa33", 72),
+        ("#554411", 80), ("#000000", 86), ("transparent", 87)]  # the gold ring's bands: a colour, then its place in %
 
 
 def caustics(seed: int, opacity: float, inset: tuple[float, float], blur: float) -> str:
@@ -70,7 +73,7 @@ def caustics(seed: int, opacity: float, inset: tuple[float, float], blur: float)
 STYLE = """
 :root { color-scheme: dark; --royal: #0c14e8; --violet: #3a1490; --sky: #1a8cf6; --sky-light: #7cc4fa;
   --ink: #001062; --yellow: #ffff00; --gold: #ffb408; --emblem-light: #f8c048; --emblem: #f8b800;
-  --emblem-dark: #f88800; --ring-light: #f0e070; --ring: #ccaa33; --ring-dark: #554411; --window: rgba(0, 0, 0, 0.74);
+  --emblem-dark: #f88800; --window: rgba(0, 0, 0, 0.74);
   --tab-blue: #0a50ff; --tab-yellow: #ffb000; --orange: #ff6a00; --cyan: #66dde0;
   --heavy: italic 900 1rem/1.2 "Arial Black", "Segoe UI", system-ui, sans-serif; }
 * { box-sizing: border-box; }
@@ -102,8 +105,7 @@ main { padding-bottom: 48px; }
   font-weight: 700; text-shadow: 0 1px 0 #000000, 0 0 3px #000000; }
 .game:hover, .game:focus-visible { color: var(--yellow); }
 .ring { display: inline-block; width: 1.1em; height: 1.1em; border-radius: 50%; animation: spin 1.8s linear infinite;
-  background: radial-gradient(circle, transparent 40%, #000000 41%, var(--ring-dark) 46%, var(--ring) 54%,
-    var(--ring-light) 63%, var(--ring) 72%, var(--ring-dark) 80%, #000000 86%, transparent 87%); }
+  background: radial-gradient(circle, RING_BANDS); }
 @keyframes spin { to { transform: rotateY(360deg); } }
 @media (prefers-reduced-motion: reduce) { .ring { animation: none; } }
 .kicker { margin: 10px 0 0; color: var(--yellow); font: var(--heavy); font-size: 0.95rem;
@@ -148,12 +150,8 @@ h2 + p, .lead { margin: 12px 0 0; font-weight: 600; text-shadow: 0 1px 0 #000000
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2); }
 .shape::after { top: 0; right: 0; bottom: 0; width: calc(var(--step) + 12px);
   background-image: var(--step-fill, var(--fill)); clip-path: polygon(0 100%, 0 12px, 12px 0, 100% 0, 100% 100%); }
-.bar::before { content: ""; position: absolute; left: -6px; top: 17px; width: 34px; height: 34px;
-  border: 4px solid #ffffff; border-radius: 50%; opacity: 0; box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
-  mask: conic-gradient(#000 0 170deg, transparent 170deg 190deg, #000 190deg 350deg, transparent 350deg); }
 a.bar:hover, a.bar:focus-visible { --fill: linear-gradient(180deg, #ffffff 0 55%, #dfe6f6); color: var(--ink);
   outline: none; }
-a.bar:hover::before, a.bar:focus-visible::before { opacity: 1; }
 .bar.done { --fill: linear-gradient(180deg, #fff4b0 0 2px, #ffe080 3px, var(--gold) 55%, var(--emblem-dark));
   color: var(--ink); }
 .name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -204,6 +202,7 @@ STYLE = (STYLE.replace("NEAR_WATER", layout.svg_url(caustics(seed=7, opacity=0.3
          .replace("FAR_WATER", layout.svg_url(caustics(seed=11, opacity=0.16, inset=(3, 6), blur=3.5)))
          .replace("BLUE_CURVE", layout.svg_url(TAB_CURVE.format("#0a50ff")))
          .replace("YELLOW_CURVE", layout.svg_url(TAB_CURVE.format("#ffb000")))
+         .replace("RING_BANDS", ", ".join(f"{color} {offset}%" for color, offset in RING))
          .replace("STAR", STAR))
 
 # the button icons, on a 16 px grid; the wrench is filled, the rest are lines
@@ -287,12 +286,14 @@ class Site:
 
 def frame(site: Site, title: str, kicker: str, body: str, hints: str) -> str:
     """A page in the frame of the game's menus: the sky, a top band with the game's name, the HINTS and the TITLE,
-    then the body, and a bottom band with the HINTS again. The name comes from the exe and links home. KICKER, BODY
-    and HINTS are HTML."""
+    then the body, and a bottom band with the HINTS again. The name comes from the exe and links home, and the
+    browser tab shows the ring. KICKER, BODY and HINTS are HTML."""
     game = Path(site.summary["exe"]).stem
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-            f"<title>{e(game)} decomp: {e(title)}</title>\n<style>{STYLE}</style>\n</head>\n<body>\n"
+            f"<title>{e(game)} decomp: {e(title)}</title>\n"
+            '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n'
+            f"<style>{STYLE}</style>\n</head>\n<body>\n"
             '<div class="sky" aria-hidden="true"><span class="arc one"></span><span class="arc two"></span></div>\n'
             f'<header class="band top"><div class="inner">\n<div class="topline"><a class="game" href="index.html">'
             f'<span class="ring" aria-hidden="true"></span>{e(game)} decomp</a>\n'
@@ -308,7 +309,7 @@ def frame(site: Site, title: str, kicker: str, body: str, hints: str) -> str:
 
 def hint(icon: str, label: str, href: str) -> str:
     """A link as one of the game's round buttons with an icon, then its label."""
-    return (f'<a class="hint" href="{e(href)}"><span class="icon {icon}" aria-hidden="true">'
+    return (f'<a class="hint" {layout.link_attributes(href)}><span class="icon {icon}" aria-hidden="true">'
             f'<svg viewBox="0 0 16 16">{ICONS[icon]}</svg></span>{e(label)}</a>')
 
 
@@ -398,8 +399,8 @@ def near_bar(site: Site, repo: str, address: int) -> str:
     inner = (f'{SHAPE}<span class="name"><code>{hex_address(address)}</code>{site.sizes[address]:,} bytes</span>'
              f'<span class="step"><span class="pct">{scoring.state_text(site.entries[address])}</span></span>')
     if files:
-        return (f'<li><a class="bar near" href="{e(repo)}/blob/HEAD/{e(files[0])}" title="{e(files[0])}">'
-                f"{inner}</a></li>\n")
+        url = f"{repo}/blob/HEAD/{files[0]}"
+        return f'<li><a class="bar near" {layout.link_attributes(url)} title="{e(files[0])}">{inner}</a></li>\n'
     return f'<li><span class="bar near">{inner}</span></li>\n'
 
 
@@ -408,7 +409,7 @@ def near_bars(site: Site, repo: str, near: list[int]) -> str:
 
 
 def guide_link(repo: str) -> str:
-    return f'<a href="{e(repo)}/blob/HEAD/docs/FIRST-FUNCTION.md">The guide</a>'
+    return f'<a {layout.link_attributes(f"{repo}/blob/HEAD/docs/FIRST-FUNCTION.md")}>The guide</a>'
 
 
 def file_card(repo: str, rel: str, declared: list[str | None]) -> str:
@@ -419,7 +420,8 @@ def file_card(repo: str, rel: str, declared: list[str | None]) -> str:
     unnamed = len(declared) - len(named)
     if unnamed:
         items += f'<li class="unnamed">{unnamed:,} without a name yet</li>'
-    return f'<li class="file"><a href="{e(repo)}/blob/HEAD/{e(rel)}">{e(Path(rel).name)}</a><ul>{items}</ul></li>'
+    link = layout.link_attributes(f"{repo}/blob/HEAD/{rel}")
+    return f'<li class="file"><a {link}>{e(Path(rel).name)}</a><ul>{items}</ul></li>'
 
 
 def area_page(site: Site, repo: str, area: str, addresses: list[int]) -> str:
@@ -494,8 +496,18 @@ def badge_files(site: Site) -> dict[str, str]:
     return files
 
 
+def ring_icon() -> str:
+    """The ring of the top band as an SVG for the browser tab. As with CSS radial-gradient(circle, ...), the gradient
+    reaches the corners of the box, and the circle cuts it off at the edge."""
+    stops = "".join(f"<stop offset='{offset}%' stop-color='{color}'/>" for color, offset in RING)
+    return ("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>"
+            f"<radialGradient id='g' r='{50 * math.sqrt(2):.2f}%'>{stops}</radialGradient>"
+            "<circle cx='16' cy='16' r='16' fill='url(#g)'/></svg>\n")
+
+
 def render_all(site: Site, repo: str) -> dict[str, str]:
-    files = {"index.html": index_page(site, repo), "near-misses.html": near_misses_page(site, repo)}
+    files = {"index.html": index_page(site, repo), "near-misses.html": near_misses_page(site, repo),
+             "favicon.svg": ring_icon()}
     for area, addresses in site.areas().items():
         files[f"area-{area}.html"] = area_page(site, repo, area, addresses)
     files.update(badge_files(site))

@@ -1,9 +1,11 @@
-"""Checks for tools/pages.py: the badge colours, the near misses, the home page, an area page and a file card. Also
-the layout helpers its art uses, the remote's web link from tools/osutil.py and the measures of
+"""Checks for tools/pages.py: the badge colours, the near misses, the home page, an area page, a file card and the tab
+icon. Also the layout helpers its art uses, the remote's web link from tools/osutil.py and the measures of
 tools/objdiffreport.py."""
 
 import json
+import re
 from types import SimpleNamespace
+from xml.etree import ElementTree
 
 import layout
 import objdiffreport
@@ -43,10 +45,16 @@ def check_near_misses() -> list[str]:
     return [] if found == wanted else [f"near_misses gives {[hex(a) for a in found]}, not {[hex(a) for a in wanted]}"]
 
 
+def new_tab_failures(page: str, text: str) -> list[str]:
+    """A link to another site opens in a new tab, and a link within the site does not."""
+    return [f"{page} has the link {tag}" for tag in re.findall(r"<a [^>]*>", text)
+            if ('href="https://' in tag) != ('target="_blank" rel="noopener"' in tag)]
+
+
 def check_index_page() -> list[str]:
     """The HUD shows the code share, the functions, the emblems and the gain. Each area links to its page. A complete
     area gets a gold emblem, an area below 100% an empty slot, and the unsorted area none. Only a section with a colour
-    gets a gem. The page escapes the names."""
+    gets a gem. The page escapes the names, its GitHub links open in a new tab, and its tab shows the ring icon."""
     codes = {"done": scoring.Bytes(8, 8, 8), "open": scoring.Bytes(8, 2, 8), "unsorted": scoring.Bytes(4, 1, 4)}
     fake = SimpleNamespace(
         summary={"exe": "Game.exe"}, code=scoring.Bytes(20, 11, 20), stats=SimpleNamespace(matched=3, game_total=7),
@@ -61,7 +69,7 @@ def check_index_page() -> list[str]:
     failures = [f"index_page does not show {wanted!r}"
                 for wanted in ("<dd>55.00%</dd>", "<dd>3 <small>/ 7</small></dd>", "<dd>1 <small>/ 2</small></dd>",
                                '+55.00% of the code since <span class="nowrap">2026-10-01</span>', "done &lt;b&gt;",
-                               "S&lt;1&gt;",
+                               "S&lt;1&gt;", '<link rel="icon" href="favicon.svg" type="image/svg+xml">',
                                'href="area-done.html"', 'href="area-unsorted.html"')
                 if wanted not in text]
     if text.count('class="emblem earned"') != 1 or text.count('class="emblem locked"') != 1:
@@ -70,13 +78,15 @@ def check_index_page() -> list[str]:
         failures.append("index_page does not give exactly the section with a colour a gem")
     if "<b>" in text:
         failures.append("index_page does not escape the area names")
-    return failures
+    if text.count('href="https://example.com/r" target="_blank"') != 2:
+        failures.append("index_page does not give its two GitHub links a new tab")
+    return failures + new_tab_failures("index_page", text)
 
 
 def check_area_page() -> list[str]:
     """An area page shows its text, escaped, with a paragraph per line, its matched functions by file with their names
     and a count of those without one, its near misses highest score first, and how many functions are left. The
-    unsorted area has no emblem, and an area without a text shows none."""
+    unsorted area has no emblem, and an area without a text shows none. Its links to GitHub open in a new tab."""
     entries = {1: entry(1.0), 2: entry(1.0), 3: entry(1.0), 4: entry(0.91), 5: entry(0.97), 6: entry(0.5)}
     fake = SimpleNamespace(
         summary={"exe": "Game.exe"}, history=[{"date": "2026-10-02"}], entries=entries,
@@ -102,7 +112,7 @@ def check_area_page() -> list[str]:
                  if wanted not in unsorted]
     if "<dt>Emblem</dt>" in unsorted or "Whales" in unsorted:
         failures.append("area_page gives the unsorted area an emblem or another area's text")
-    return failures
+    return failures + new_tab_failures("area_page", text)
 
 
 def check_file_card() -> list[str]:
@@ -116,9 +126,21 @@ def check_file_card() -> list[str]:
     return failures
 
 
+def check_ring_icon() -> list[str]:
+    """The tab icon is an SVG of the ring in the top band: a circle filled with the ring's bands."""
+    svg = ElementTree.fromstring(pages.ring_icon())
+    stops = [(stop.get("stop-color"), stop.get("offset")) for stop in svg.iter("{http://www.w3.org/2000/svg}stop")]
+    wanted = [(color, f"{offset}%") for color, offset in pages.RING]
+    failures = [] if stops == wanted else [f"ring_icon has the stops {stops}, not {wanted}"]
+    if svg.find("{http://www.w3.org/2000/svg}circle") is None:
+        failures.append("ring_icon draws no circle")
+    return failures
+
+
 def check_layout_helpers() -> list[str]:
     """Clipping keeps the part of a polygon on the inner side of a line, a cell ends inset from the halfway line to
-    its neighbour, a count names its noun in the plural unless it is 1, and an SVG URL escapes # and double quotes."""
+    its neighbour, a count names its noun in the plural unless it is 1, an SVG URL escapes # and double quotes, and a
+    link escapes its URL and opens another site in a new tab."""
     failures = []
     half = sorted(layout.clip_polygon([(0, 0), (2, 0), (2, 2), (0, 2)], (1, 0), 1))
     if half != [(0, 0), (0, 2), (1.0, 0.0), (1.0, 2.0)]:
@@ -132,6 +154,9 @@ def check_layout_helpers() -> list[str]:
     url = layout.svg_url("<svg fill='#fff' id=\"a\"/>")
     if "#" in url or url.count('"') != 2:
         failures.append(f"svg_url gives {url}, which does not escape # and double quotes")
+    links = [layout.link_attributes("area-a.html"), layout.link_attributes("https://example.com/r?a=1&b=2")]
+    if links != ['href="area-a.html"', 'href="https://example.com/r?a=1&amp;b=2" target="_blank" rel="noopener"']:
+        failures.append(f"link_attributes gives {links}")
     return failures
 
 
@@ -167,6 +192,6 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_share_color, check_badge, check_near_misses, check_index_page, check_area_page,
-                  check_file_card, check_layout_helpers, check_web_url, check_objdiff_measures):
+                  check_file_card, check_ring_icon, check_layout_helpers, check_web_url, check_objdiff_measures):
         failures += check()
     return failures
