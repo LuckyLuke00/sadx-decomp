@@ -149,7 +149,7 @@ struct CHAO_PARAM_GC *AL_GBAManagerGetChaoParam()
 {
 	if (DAT_05b06828)
 	{
-		return *(struct CHAO_PARAM_GC **)(&DAT_05b06828->disp);
+		return (struct CHAO_PARAM_GC *)DAT_05b06828->disp;
 	}
 	return NULL;
 }

@@ -236,7 +236,7 @@ void KnucklesHeadSpikesShakeEnd(struct task *tp)
 // FUNCTION: SADX 0x0052c350
 void KnucklesChargeEffect(struct task *tp)
 {
-	*(void (**)(struct task *))(void *)(&tp->dest) = (void (*)(struct task *))FUN_005b5aa0;
+	tp->dest = (void (*)(struct task *))FUN_005b5aa0;
 	tp->exec = KnucklesChargeEffectExe;
 }
 

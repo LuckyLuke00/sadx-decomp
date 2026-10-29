@@ -73,7 +73,7 @@ void Object_Mountain_Syuujin_B(struct task *tp)
 	{
 		var1->scl.z = 1.0f;
 	}
-	*(struct NJS_TEXLIST **)(&var1->value.f) = &texlist_obj_mountain;
+	var1->value.ptr = &texlist_obj_mountain;
 	*(struct NJS_ACTION **)((char *)var1 + 8) = &action_shu_jin02m_null1;
 	if (FUN_004c39c0(tp))
 	{
