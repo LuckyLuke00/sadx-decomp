@@ -2383,7 +2383,6 @@ void DispPut(struct task *tp);
 void KeyDisp(struct task *tp);
 void KeyExec(struct task *tp);
 long FUN_006877a0(struct task *param_1);
-void dispSSCard(struct task *tp);
 long SeqCheckTenbou();
 void FUN_00689420(struct task *);
 void FUN_006898a0(struct task *param_1);
