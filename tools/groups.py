@@ -2,8 +2,9 @@
 
 `check.py groups` runs it. For each row it counts the tells that docs/PORTING.md
 section 6 lists, and names each function whose tells contradict the row's flags.
-It also follows register arguments. One passed into a later row proves /GL. Those
-passed inside one row tie functions to one source file, unless /GL or the linker's
+It also follows register arguments. One passed between two rows proves /GL only if
+no fold of identical static functions fits it (see cross_row_lines). Those passed
+inside one row tie functions to one source file, unless /GL or the linker's
 folding of identical static functions joins two files: it writes these clusters
 to data/file-clusters.csv.
 
@@ -58,8 +59,8 @@ def report(game: Path, names: dict[int, str]) -> int:
             contradictions += print_game_row(index, row, reading)
         else:
             print(f"{label(row)}  library: {sum(row['start'] <= address < row['end'] for address in addresses)} functions")
-    for line in cross_row_lines(sites, functions, rows):
-        print(f"/GL  {line}")
+    for line in cross_row_lines(sites, rows, reading):
+        print(line)
     report_clusters(sites, functions)
     return 1 if contradictions else 0
 
@@ -224,23 +225,46 @@ def register_argument_sites(functions: dict[int, x86.Function], names: dict[int,
     return sites
 
 
-def cross_row_lines(sites: list[Site], functions: dict[int, x86.Function], rows: list[dict]) -> list[str]:
-    """One line for each pair of rows that register arguments cross into a later row.
+def cross_row_lines(sites: list[Site], rows: list[dict], reading: Reading) -> list[str]:
+    """One line for each pair of rows, and each set of blockers, that register arguments cross.
 
-    A call back to an earlier row proves nothing: /OPT:ICF folds identical static functions
-    into the first object's copy, so a static's caller can land in an earlier object."""
+    Without /GL a callee takes register arguments only from callers in its own file. /OPT:ICF can
+    fold identical static copies from two files into one. With two copies it keeps the later
+    object's, so a call into a later row fits a fold, and a call back into an earlier row needs
+    three or more copies. A /GL line has blockers that rule a fold out. A fold line has none."""
+    called_by = direct_callers(reading.functions)
     pairs = collections.defaultdict(list)
     for site in sites:
-        caller, callee = functions[site.caller].row, functions[site.callee].row
-        if caller != callee and site.callee > site.caller:
-            pairs[caller, callee].append(site)
+        caller, callee = reading.functions[site.caller], reading.functions[site.callee]
+        if caller.row != callee.row:
+            blockers = fold_blockers(callee, rows[caller.row], called_by[callee.address], reading)
+            pairs[caller.row, callee.row, blockers].append(site)
     lines = []
-    for (caller, callee), found in sorted(pairs.items()):
+    for (caller, callee, blockers), found in sorted(pairs.items()):
         callers = sorted({site.caller for site in found})
         callees = sorted({site.callee for site in found})
-        lines.append(f"{label(rows[caller])} -> {label(rows[callee])}: {len(callers)} callers ({show(callers)}), "
-                     f"{len(callees)} callees ({show(callees)})")
+        if blockers:
+            kind, why = "/GL  ", "; ".join(blockers)
+        elif caller < callee:
+            kind, why = "fold ", "fits a fold of two copies"
+        else:
+            kind, why = "fold ", "fits only a fold of three or more copies"
+        lines.append(f"{kind}{label(rows[caller])} -> {label(rows[callee])}: {len(callers)} callers ({show(callers)}), "
+                     f"{len(callees)} callees ({show(callees)}): {why}")
     return lines
+
+
+def fold_blockers(callee: x86.Function, caller_row: dict, callers: set[int], reading: Reading) -> tuple[str, ...]:
+    """What rules a fold out behind a register argument from caller_row to callee. The copy that
+    /OPT:ICF keeps sits in an object that calls it, so a function of the callee's row must call it.
+    The caller's file holds an identical copy, so the caller row's flags must make its code."""
+    blockers = []
+    if not any(reading.functions[caller].row == callee.row for caller in callers - {callee.address}):
+        blockers.append("no function of its row calls it")
+    tells = codetells.Tells.of(callee, reading.cookie, reading.strings)
+    for rule, _ in contradicting(caller_row["flags"].split(), [tells], reading.cookie):
+        blockers.append(f"the caller row's flags can't make its code ({rule})")
+    return tuple(blockers)
 
 
 def file_clusters(sites: list[Site], functions: dict[int, x86.Function]) -> list[list[int]]:
