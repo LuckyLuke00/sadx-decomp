@@ -2164,7 +2164,6 @@ extern int DAT_05cd279c;
 extern unsigned char DAT_05cd27e8;
 extern int DAT_05cd27ec;
 extern int DAT_05cd27f0;
-extern int DAT_05cd27f4[3];
 extern float DAT_05cd2824;
 extern float DAT_05cd2854;
 extern int DAT_05cd2864;
