@@ -43,6 +43,7 @@ import ci
 import codegen
 import datafiles
 import declgen
+import fakematch
 import library
 import link
 import names
@@ -453,7 +454,7 @@ def score_game(game: Path) -> dict | None:
     html = project.BUILD / "report.html"
     build = runner.game_build()
     functions = runner.score_target(build, game, "--html", str(html))
-    current = runner.summarize(build.target, functions, set(tricks.scan(ROOT)))
+    current = runner.summarize(build.target, functions, set(tricks.scan(ROOT, fakematch.checker(ROOT, game))))
     spans = pe.initialized_data(game)
     current["data"] = runner.compare_data(build, spans)
     current["data_bytes"] = sum(len(span) for span in spans)

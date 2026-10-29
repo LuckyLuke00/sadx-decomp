@@ -146,6 +146,25 @@ def check_volatile_globals() -> list[str]:
     return failures
 
 
+def check_fake_tricks() -> list[str]:
+    """With FAKES, the kinds of a definition's fake-match lines are tricks too, each once. FAKES gets the lines from the
+    annotation to the closing one, and never a stub's."""
+    seen = []
+
+    def fakes(func):
+        seen.append(func[0])
+        return ["unused_local", "raw_address", "unused_local"] if "\tint y;" in func else []
+
+    text = "\n".join([*function(0x401000, "\tint y;", "\tx = 0x450000;", head=["__declspec(safebuffers)"]),
+                      *function(0x401010, "\tx = 1;"), *function(0x401020, "\tint y;", kind="STUB")])
+    found = tricks.file_tricks(text, fakes=fakes)
+    wanted = {0x401000: "__declspec(safebuffers), fake match unused_local, fake match raw_address"}
+    failures = [] if found == wanted else [f"file_tricks with fakes gives {found}, not {wanted}"]
+    if seen != [f"// FUNCTION: {TARGET} 0x00401000", f"// FUNCTION: {TARGET} 0x00401010"]:
+        failures.append(f"fakes got the definitions that start {seen}")
+    return failures
+
+
 def check_scan_needs_src() -> list[str]:
     """A scan of a root with no src folder stops, so a wrong root can't turn every trick function into a match."""
     with tempfile.TemporaryDirectory() as empty:
@@ -160,6 +179,6 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_forbidden, check_file_tricks, check_declarator_start, check_report_function,
-                  check_volatile_globals, check_scan_needs_src):
+                  check_volatile_globals, check_fake_tricks, check_scan_needs_src):
         failures += check()
     return failures

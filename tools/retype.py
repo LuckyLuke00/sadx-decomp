@@ -200,12 +200,12 @@ def definition(texts: dict[str, str], address: int) -> list[str]:
     sys.exit(f"no file of the spec defines 0x{address:08x}")
 
 
-def watched(texts: dict[str, str], addresses: list[int], in_image) -> tuple[int, int]:
+def watched(texts: dict[str, str], addresses: list[int], in_image, tree) -> tuple[int, int]:
     """(address_pun lines, other fake lines) in the functions at ADDRESSES, which must all be in TEXTS."""
     puns = others = 0
     for address in addresses:
         func = definition(texts, address)
-        kinds = [kind for kind, _ in fakematch.found(func, names.signature_index(func), in_image)]
+        kinds = [kind for kind, _ in fakematch.found(func, names.signature_index(func), in_image, tree)]
         puns += kinds.count("address_pun")
         others += len(kinds) - kinds.count("address_pun")
     return puns, others
@@ -226,14 +226,15 @@ def failure(spec: dict, context: Path | None, tables: Path | None) -> str | None
 
 def evaluate(name: str, spec: dict, edits: list[dict], game: Path, context: Path | None, tables: Path | None,
              in_image) -> Result:
-    """Build and score the tree with EDITS, then put the files back."""
+    """Build and score the tree with EDITS, then put the files back. The fake lines are read with the globals that
+    decls wrote for the edits: an edit can resize one."""
     started = time.time()
     saved = llm.snapshot([project.ROOT / rel for rel in spec["files"]] + llm.generated_files())
     try:
         texts = write_edits(spec["files"], edits)
-        puns, others = watched(texts, [int(a, 16) for a in spec["watch"]], in_image)
         casts = sum(count_casts(text, s) for text in texts.values() for s in symbols(spec))
         error = failure(spec, context, tables)
+        puns, others = watched(texts, [int(a, 16) for a in spec["watch"]], in_image, llm.known_tree())
         scores = {} if error else {a: e["matching"] for a, e in runner.score_target(runner.game_build(), game).items()}
     finally:
         llm.restore(saved)

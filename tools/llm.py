@@ -125,9 +125,12 @@ PLAIN_FORMS = {  # what to write in place of each fakematch kind, for --refuse-f
     "address_pun": "declare the variable with the type that the code reads it as",
     "cast_call": "call the function as the tree declares it",
     "constant_test": "write the code that runs, without the test",
+    "self_assignment": "leave it out: it does nothing",
     "empty_block": "leave it out, or test the opposite condition",
     "empty_statement": "leave it out, or write the loop's work in its body",
+    "lone_conditional": "write an if in its place, or the delete that it stands for",
     "unused_local": "leave it out",
+    "unused_label": "leave it out: no goto names it",
     "address_number": "write the number itself: the exe uses it as a flag or a count, not as a global's address",
     "constant_global": "drop the declaration and write `{literal}` in its place: the compiler puts the source's "
                        "literals in read-only data",
@@ -1063,6 +1066,12 @@ def exe_literal():
                                    if image.is_read_only_data(address) else None)
 
 
+def known_tree():
+    """The functions and globals the tree knows: fakematch.found's test for a bare number, and the sizes its test for
+    a moved address needs."""
+    return fakematch.read_tree(ROOT)
+
+
 def matched_functions():
     """address: name of each function that docs/progress/summary.json counts as matched: at 100% in plain C."""
     summary = json.loads(progress.SUMMARY_JSON.read_text(encoding="utf-8"))
@@ -1494,6 +1503,7 @@ def solve_function(args, file, address, transcript):
     restore(generated)
     in_image = exe_contains() if args.refuse_fakematch else None
     literal_at = exe_literal() if args.refuse_fakematch else None
+    tree = known_tree() if args.refuse_fakematch else None
     fallback = None  # the first refused 100% try: the file keeps it when no try matches in plain C
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
@@ -1570,8 +1580,10 @@ def solve_function(args, file, address, transcript):
                 if repairs.renamed:
                     shown = "```cpp\n" + "\n".join(model.decls + [""] + model.func) + "\n```"
                 if in_image and percent == 100:
-                    refused = (fakematch.found(build.func, names.signature_index(build.func), in_image)
-                               + fakematch.constant_globals(build.decls, literal_at))
+                    refused = (fakematch.found(build.func, names.signature_index(build.func), in_image,
+                                               tree.with_decls(build.decls))
+                               + fakematch.constant_globals(build.decls, literal_at, "\n".join(build.func),
+                                                            tree.is_debug_function(build.func)))
                 if refused:
                     note = repairs.note() + refusal(refused, lambda a: symbol_at(table_symbols(config["tables"]), a),
                                                     literal_at)

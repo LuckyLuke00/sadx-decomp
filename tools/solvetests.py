@@ -18,9 +18,13 @@ from pathlib import Path
 from typing import NamedTuple
 from unittest import mock
 
+import accesses
 import fakematch
 import llm
 import llmclient
+import names
+import progress
+import project
 
 ADDRESS = 0x00401000
 FILE = "src/foo.c"
@@ -35,6 +39,12 @@ DIFF = ("---\n+++\n@@ -0x401000,4 +0x405900,4 @@\n"  # reccmp's diff: two instru
         "0x401006 : ret\n\n"
         "0x00401000 foo: 80.00% match. Diff above (- original, + ours).")
 IMAGE = range(0x400000, 0x800000)  # the fake exe's sections
+KNOWN = {0x00450000, 0x00600008}  # a function and a byte of a global in the fake exe
+DEBUG = 0x00402000  # a function that the fake tree builds with /Od
+# the fake tree's globals: an int, a char, 16 ints, one of a struct the types header does not size, and a pointer
+TREE = fakematch.Tree(KNOWN.__contains__, {"g": "int g", "c": "unsigned char c", "big": "int big[16]",
+                                           "s": "struct S s", "gp": "void *gp"}, names.Types(Path("no/types.h")),
+                      {DEBUG}.__contains__)
 
 
 class Run(NamedTuple):
@@ -79,7 +89,7 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
              "write_source": lambda path, text, crlf: kept.append(text), "snapshot": lambda paths: {},
              "tree_warnings": lambda config: set(), "load_types": lambda config: None, "first_prompt": first_prompt,
              "file_best": lambda *args: None, "decls": lambda config: ("", 0), "exe_contains": lambda: IMAGE.__contains__,
-             "exe_literal": lambda: lambda address, width: None}
+             "exe_literal": lambda: lambda address, width: None, "known_tree": lambda: TREE}
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
@@ -279,12 +289,51 @@ def check_fakematch_kinds() -> list[str]:
     """fakematch.found finds each kind on its line, and not on a plain line like it."""
     cases = [("raw_address", ["\treturn *(int *)0x00500000;"], "return *(int *)0x00500000;",
               ["\treturn *(int *)0x00900000;"]),
+             ("raw_address", ["\treturn *(int *)(x * 0x1c + 0x00500000);"], "return *(int *)(x * 0x1c + 0x00500000);",
+              ["\treturn *(int *)(x * 0x1c + 0x00900000);"]),
+             ("raw_address", ["\treturn *(char *)((char *)(x * 0x14) + 0x00500000);"],
+              "return *(char *)((char *)(x * 0x14) + 0x00500000);",
+              ["\treturn *(char *)((char *)(x * 0x14) + 0x00900000);"]),
+             ("raw_address", ["\treturn (int)((char *)p[x] + 0x00500000);"], "return (int)((char *)p[x] + 0x00500000);",
+              ["\treturn (int)((char *)p[x] + 0x00900000);"]),
+             ("raw_address", ["\treturn (int)((char *)g + 0x00500000);"], "return (int)((char *)g + 0x00500000);",
+              ["\treturn (int)((char *)gp + 0x00500000);", "\treturn (int)((char *)p + 0x00500000);"]),
+             ("raw_address", ["\tint q = x;", "\treturn (int)((char *)q + 0x00500000);"],
+              "return (int)((char *)q + 0x00500000);",
+              ["\tstruct task *tp,", "\t\t*q = (struct task *)p;",
+               "\treturn (int)((char *)q + 0x00500000) + (int)tp;"]),
+             ("raw_address", ["\tint", "\t\tq = x;", "\treturn (int)((char *)q + 0x00500000);"],
+              "return (int)((char *)q + 0x00500000);",
+              ["\tstruct task", "\t\t*q = (struct task *)p;", "\treturn (int)((char *)q + 0x00500000);"]),
+             ("raw_address", ["\tx = 0x00500000 + (int)p[0] * 0xc;"], "x = 0x00500000 + (int)p[0] * 0xc;",
+              ["\tx = 0x00900000 + (int)p[0] * 0xc;"]),
+             ("raw_address", ["\treturn x * 0x1c + 0x00500000;"], "return x * 0x1c + 0x00500000;",
+              ["\treturn x * 0x1c + 0x00900000;"]),
+             ("raw_address", ["\tp[1] = 0x450000;"], "p[1] = 0x450000;", ["\tp[1] = 0x450010;"]),
+             ("raw_address", ["\treturn 6291464;"], "return 6291464;", ["\treturn 6291460;"]),
              ("index_game", ["\treturn *(&p[1] - 1);"], "return *(&p[1] - 1);", ["\treturn p[0] & 1;"]),
              ("neighbor_address", ["\treturn *(&p + 1);"], "return *(&p + 1);", ["\treturn *(p + 1);"]),
              ("neighbor_address", ["\treturn (&x)[1];"], "return (&x)[1];", ["\treturn (x & 1) + 1;"]),
              ("neighbor_address", ["\tp = &x - 0x2;"], "p = &x - 0x2;", ["\tp = &x;"]),
+             ("neighbor_address", ["\treturn *(int *)((char *)&g + p[0] * 4);"],
+              "return *(int *)((char *)&g + p[0] * 4);", ["\treturn *(int *)((char *)&x + p[0] * 4);"]),
+             ("neighbor_address", ["\tFoo((int)&g + 4);"], "Foo((int)&g + 4);", ["\tFoo((int)&g + 3);"]),
+             ("neighbor_address", ["\treturn *((char *)&g - 1);"], "return *((char *)&g - 1);",
+              ["\treturn *((short *)&g + 1);"]),
+             ("neighbor_address", ["\treturn *((int *)&g + 1);"], "return *((int *)&g + 1);",
+              ["\treturn *(float *)((char *)&big + 0x20);"]),
+             ("neighbor_address", ["\treturn *((char *)&c + 1);"], "return *((char *)&c + 1);",
+              ["\treturn *((char *)&s + 0x40);"]),
+             ("neighbor_address", ["\treturn *(int *)((char *)&big + x * 0x40 + 4);"],
+              "return *(int *)((char *)&big + x * 0x40 + 4);", ["\treturn *(int *)((char *)&big + x * 4 + 2);"]),
              ("address_pun", ["\treturn *(int *)&x;"], "return *(int *)&x;", ["\treturn *p;"]),
              ("address_pun", ["\treturn (*(int (*)[1])&x)[0];"], "return (*(int (*)[1])&x)[0];", ["\treturn p[0];"]),
+             ("address_pun", ["\t*(void (**)(struct task *))(void *)(&tp->dest) = f;"],
+              "*(void (**)(struct task *))(void *)(&tp->dest) = f;", ["\t*(void (**)(struct task *))tp->dest = f;"]),
+             ("address_pun", ["\t*(int *)(void *)&tp->x = 1;"], "*(int *)(void *)&tp->x = 1;",
+              ["\t*(int *)(void *)tp->x = 1;"]),
+             ("address_pun", ["\treturn *(int *)(&p[x]);"], "return *(int *)(&p[x]);",
+              ["\treturn *(int *)(p + x);", "\treturn *(int *)p;"]),
              ("cast_call", ["\t((void (*)(int))Foo)(x);"], "((void (*)(int))Foo)(x);", ["\tFoo(p, x);"]),
              ("cast_call", ["\t(*(void (*)(int))Foo)(x);"], "(*(void (*)(int))Foo)(x);", ["\t(*Foo)(p, x);"]),
              ("cast_call", ["\t((Bar)Foo)(x);"], "((Bar)Foo)(x);", ["\t(*(void (*)(int))p->f)(x);"]),
@@ -300,16 +349,142 @@ def check_fakematch_kinds() -> list[str]:
               ["\tif (x)", "\t{", "\t\tx = 1;", "\t}"]),
              ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tint y = x;", "\treturn y;"]),
              ("unused_local", ["\tint *y = p->y;", "\treturn x;"], "y", ["\tint *y = p->y;", "\treturn *y;"]),
+             ("unused_local", ["\tint y; int z;", "\treturn z;"], "y", ["\tint y; int z;", "\treturn y + z;"]),
+             ("self_assignment", ["\tp[0] = p[0];"], "p[0] = p[0];", ["\tp[0] = p[1];"]),
+             ("self_assignment", ["\tq->a.b = q->a.b;"], "q->a.b = q->a.b;", ["\tq->a.b = q->a.b + 1;"]),
+             ("unused_label", ["\tfld:", "\treturn x;"], "fld:",
+              ["\tfld:", "\tif (x--)", "\t\tgoto fld;", "\treturn x;"]),
+             ("unused_label", ["\tdone:", "\treturn x;"], "done:",
+              ["\tswitch (x)", "\t{", "\tdefault:", "\t\treturn 1;", "\t}", "\treturn x;"]),
              ("address_number", ["\tFoo((int)&DAT_04000002, x);"], "Foo((int)&DAT_04000002, x);",
-              ["\tFoo((int)&DAT_0400000c, x);"])]
+              ["\tFoo((int)&DAT_0400000c, x);"]),
+             ("lone_conditional", ["\tp ? Foo(p, x) : 0;"], "p ? Foo(p, x) : 0;",
+              ["\tx = p ? Foo(p, x) : 0;", "\tFoo(p, x > 1 ? x : 1);", "\treturn x == 1 ? 2 : 3;"]),
+             ("lone_conditional", ["\tx == 1 ? Foo(p, 1) : Foo(p, 2);"], "x == 1 ? Foo(p, 1) : Foo(p, 2);",
+              ["\tx <<= x > 1 ? 1 : 2;", "\tx += x != 1 ? 1 : 2;"])]
     failures = []
     for kind, hit, line, plain in cases:
         for body, wanted in ((hit, [(kind, line)]), (plain, [])):
             func = [llm.function_line(ADDRESS), "int Foo(int *p, int x)", "{", *body, "}"]
-            found = fakematch.found(func, 1, IMAGE.__contains__)
+            found = fakematch.found(func, 1, IMAGE.__contains__, TREE)
             if found != wanted:
                 failures.append(f"{kind}: {body} gives {found}, not {wanted}")
     return failures
+
+
+def check_debug_kinds() -> list[str]:
+    """In a function that builds with /Od, an unused local and a self-assignment are plain C: every local gets a stack
+    slot, and x = x; loads and stores. The other kinds still count. fakematch.debug_test reads the /Od flag of the
+    function's codegen group."""
+    cases = [(["\tp[0] = p[0];"], []), (["\tint y;", "\treturn x;"], []),
+             (["\tif (0) x = 1;"], [("constant_test", "if (0) x = 1;")])]
+    failures = []
+    for body, wanted in cases:
+        func = [llm.function_line(DEBUG), "int Foo(int *p, int x)", "{", *body, "}"]
+        found = fakematch.found(func, 1, IMAGE.__contains__, TREE)
+        if found != wanted:
+            failures.append(f"/Od: {body} gives {found}, not {wanted}")
+    is_debug = fakematch.debug_test(progress.parse_codegen_groups([
+        {"start": "0x00401000", "end": "0x00402000", "flags": "/O2 /GS"},
+        {"start": "0x00402000", "end": "0x00403000", "flags": "/Od /Ob1 /GS"}]))
+    return failures + [f"debug_test gives {not wanted} for 0x{address:08x}, not {wanted}"
+                       for address, wanted in {0x00401000: False, 0x00402000: True, 0x00500000: False}.items()
+                       if is_debug(address) != wanted]
+
+
+def check_exe_targets() -> list[str]:
+    """A bare number that the exe reads or writes as an address is a raw address, even when the tree declares no
+    global there yet, in hex or decimal. A taken address or a register offset is not one: the same number can be a
+    flag."""
+    rows = [accesses.Access(0x05AB159C, 4, "int", "direct", 0, 1, [ADDRESS]),
+            accesses.Access(0x02000000, 0, "int", "address", 1, 0, [ADDRESS]),
+            accesses.Access(0x05AB1600, 4, "int", "[reg+]", 1, 0, [ADDRESS])]
+    targets = fakematch.direct_targets(rows)
+    failures = [] if targets == {0x05AB159C} else [f"direct_targets gives {targets}, not {{0x05ab159c}}"]
+    tree = TREE.with_addresses(targets)
+    cases = [("return 0x5ab159c;", [("raw_address", "return 0x5ab159c;")]),
+             ("return 95098268;", [("raw_address", "return 95098268;")]),
+             ("return 0x2000000;", []), ("return 0x5ab1600;", [])]
+    for line, wanted in cases:
+        found = fakematch.found([llm.function_line(ADDRESS), "int Foo(void)", "{", "\t" + line, "}"], 1,
+                                IMAGE.__contains__, tree)
+        if found != wanted:
+            failures.append(f"{line} gives {found}, not {wanted}")
+    return failures
+
+
+def check_member_path() -> list[str]:
+    """The cast form judges the address of a global's member by the member's bytes: one past a float member is a
+    neighbor address, a byte inside it is not. A member of a member counts the same."""
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text("struct NJS_POINT3 {\n    float x;\n    float y;\n    float z;\n};\n"
+                        "static_assert(sizeof(NJS_POINT3) == 0xc);\n\n"
+                        "struct OBJ {\n    int id;\n    struct NJS_POINT3 pos;\n};\n"
+                        "static_assert(sizeof(OBJ) == 0x10);\n", encoding="utf-8")
+        tree = TREE._replace(definitions={"v": "struct NJS_POINT3 v", "o": "struct OBJ o"}, types=names.Types(path))
+    cases = {"return *((char *)&v.x + 4);": True, "return *((char *)&v.x + 2);": False,
+             "return *((char *)&v + 4);": False, "return *((char *)&o.pos + 0xc);": True,
+             "return *((char *)&o.pos.y + 2);": False}
+    failures = []
+    for line, flagged in cases.items():
+        found = fakematch.found([llm.function_line(ADDRESS), "int Foo(void)", "{", "\t" + line, "}"], 1,
+                                IMAGE.__contains__, tree)
+        wanted = [("neighbor_address", line)] if flagged else []
+        if found != wanted:
+            failures.append(f"{line} gives {found}, not {wanted}")
+    return failures
+
+
+def check_try_globals() -> list[str]:
+    """Tree.with_decls knows the globals that a try declares: a number added to its pointer is an offset, and the
+    address of its DAT_ is a raw address. The tree alone knows neither."""
+    tree = TREE.with_decls(["extern int *DAT_00600020;", "extern int DAT_00600010;", "void Bar(int);"])
+    added = "return (int)((char *)DAT_00600020 + 0x00500000);"
+    cases = [(added, tree, []), (added, TREE, [("raw_address", added)]),
+             ("return 0x00600010;", tree, [("raw_address", "return 0x00600010;")]), ("return 0x00600010;", TREE, [])]
+    failures = []
+    for line, known, wanted in cases:
+        found = fakematch.found([llm.function_line(ADDRESS), "int Foo(void)", "{", "\t" + line, "}"], 1,
+                                IMAGE.__contains__, known)
+        if found != wanted:
+            failures.append(f"{line} gives {found} {'with' if known is tree else 'without'} the try's globals, "
+                            f"not {wanted}")
+    return failures
+
+
+def check_address_test() -> list[str]:
+    """fakematch.address_test knows a function's start, and a global's start, each of its bytes and its end. A global
+    of size 0, whose size is unknown, counts only at its start."""
+    known = fakematch.address_test({0x00401000}, [(0x00600000, 0x10), (0x00600100, 4), (0x00600200, 0),
+                                                  (0x00600204, 4)])
+    cases = {0x00400fff: False, 0x00401000: True, 0x00401001: False, 0x00600000: True, 0x0060000c: True,
+             0x00600010: True, 0x00600011: False, 0x00600100: True, 0x00600104: True, 0x00600105: False,
+             0x00600200: True, 0x00600201: False, 0x00600204: True, 0x00600208: True}
+    return [f"address_test gives {known(address)} for 0x{address:08x}, not {wanted}"
+            for address, wanted in cases.items() if known(address) != wanted]
+
+
+def check_read_tree() -> list[str]:
+    """fakematch.read_tree sizes the globals of a source's GLOBAL annotation, initializer and all, and of the
+    definitions that decls wrote, and knows the functions of data/functions.csv."""
+    target = project.game_config().target
+    first = progress.load_functions()[0]["address"]
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        (root / names.GLOBALS_CPP).parent.mkdir(parents=True)
+        (root / "src/a.c").write_text(f"// GLOBAL: {target} 0x00600400\nchar Name[0x10] = {{\n\t1,\n}};\n",
+                                      encoding="utf-8")
+        (root / names.GLOBALS_CPP).write_text(f"// GLOBAL: {target} 0x00600000\nint DAT_00600000[4];\n",
+                                              encoding="utf-8")
+        tree = fakematch.read_tree(root)
+        cases = {first: True, 0x00600010: True, 0x00600011: False, 0x00600410: True, 0x00600411: False}
+        failures = [f"read_tree gives {tree.is_address(address)} for 0x{address:08x}, not {wanted}"
+                    for address, wanted in cases.items() if tree.is_address(address) != wanted]
+        sizes = {"Name": (0x10, True), "DAT_00600000": (0x10, True), "Other": (0, False)}
+        return failures + [f"read_tree gives {name} {tree.size(name)} bytes, pointer {tree.is_pointer(name)}, "
+                           f"not {wanted}" for name, wanted in sizes.items()
+                           if (tree.size(name), tree.is_pointer(name)) != wanted]
 
 
 def check_refusal_names() -> list[str]:
@@ -342,6 +517,32 @@ def check_constant_globals() -> list[str]:
     note = llm.refusal(found[:1], literal_at=literal_at)
     if "write `0.5f` in its place" not in note:
         failures.append(f"the refusal of a constant global is {note!r}, without its literal")
+    return failures
+
+
+def check_debug_constants() -> list[str]:
+    """At /Od, a float literal in arithmetic or a comparison compiles to a qword operand, so a float DAT_ that the code
+    uses there is a float object, not a literal. A float literal in a plain load is a dword, and a double literal is a
+    qword everywhere: those still count."""
+    failures = []
+    for text, wanted in [("x = y * DAT_0095cbf8;", True), ("x = DAT_0095cbf8 * y;", True),
+                         ("x += DAT_0095cbf8;", True), ("if (DAT_0095cbf8 < x)", True),
+                         ("x = DAT_0095cbf8 == y;", True), ("x = -DAT_0095cbf8;", True),
+                         ("x = y * (float)DAT_0095cbf8;", True), ("x = (DAT_0095cbf8) * y;", True),
+                         ("x = DAT_0095cbf8;\ny = z * DAT_0095cbf8;", True), ("x = DAT_0095cbf8;", False),
+                         ("return DAT_0095cbf8;", False), ("f(a, DAT_0095cbf8);", False),
+                         ("x = f(DAT_0095cbf8) * y;", False), ("x = (float)DAT_0095cbf8;", False),
+                         ("x = a ? DAT_0095cbf8 : b;", False), ("x = DAT_0095cbf8; // y * DAT_0095cbf8", False)]:
+        if fakematch.in_arithmetic(text, "DAT_0095cbf8") != wanted:
+            failures.append(f"in_arithmetic gives {not wanted} for {text!r}")
+    literals = {(0x0095cbf8, 4): "0.5f", (0x00956608, 8): "2.0"}
+    decls = ["extern const float DAT_0095cbf8;", "extern const double DAT_00956608;"]
+    for text, debug, wanted in [("x = DAT_0095cbf8 * DAT_00956608;", True, decls[1:]),
+                                ("x = DAT_0095cbf8 * DAT_00956608;", False, decls),
+                                ("x = DAT_0095cbf8;\ny = DAT_00956608;", True, decls)]:
+        found = [line for _, line in fakematch.constant_globals(decls, lambda *at: literals.get(at), text, debug)]
+        if found != wanted:
+            failures.append(f"constant_globals gives {found} for {text!r} with debug {debug}, not {wanted}")
     return failures
 
 
@@ -505,8 +706,10 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds, check_refusal_names,
-                  check_constant_globals, check_annotation_below_signature, check_live,
-                  check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
+                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
+                  check_debug_kinds, check_exe_targets, check_member_path, check_try_globals, check_address_test,
+                  check_read_tree, check_refusal_names, check_constant_globals, check_debug_constants,
+                  check_annotation_below_signature, check_live, check_live_ends, check_stream_events,
+                  check_full_context_restart, check_shared_context):
         failures += check()
     return failures

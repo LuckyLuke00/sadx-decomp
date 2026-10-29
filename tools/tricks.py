@@ -6,7 +6,8 @@ A trick is one of these:
 - `volatile`, `__restrict`, `__declspec(safebuffers)` or `__declspec(noinline)` in the function;
 - a global declared `volatile` at file level in any source, used in the function;
 - a place after a file-level pragma that changes the code, such as `#pragma auto_inline(off)`, and before the pragma
-  that resets it.
+  that resets it;
+- a fake-match line (tools/fakematch.py), when the scan gets FAKES.
 
 Such a function keeps the score reccmp gives it, but it does not count as matched until it is plain C.
 
@@ -17,9 +18,12 @@ Standard library only.
 
 import re
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
+import fakematch
 import names
+import project
 
 FORBIDDEN = re.compile(r"\b(?:__asm|_asm|asm|__emit|__pragma)\b|__declspec\s*\(\s*naked\s*\)|#\s*pragma\b")  # not C
 KEYWORDS = re.compile(r"\bvolatile\b|\b__restrict\b|__declspec\s*\(\s*(?:safebuffers|noinline)\s*\)")
@@ -81,10 +85,12 @@ def is_definition(annotation: re.Match | None) -> bool:
     return bool(annotation) and annotation[1] in names.FUNCTION_KINDS and annotation[1] != "STUB"
 
 
-def file_tricks(text: str, volatiles: set[str] = frozenset()) -> dict[int, str]:
+def file_tricks(text: str, volatiles: set[str] = frozenset(),
+                fakes: Callable[[list[str]], list[str]] | None = None) -> dict[int, str]:
     """address: the tricks of each function definition in TEXT that has one, in the order they appear. A definition
     runs from its declarator_start to the first line that is exactly "}". A stub is left out: it counts as nothing
-    anyway. VOLATILES: the globals declared `volatile` in any source, from volatile_globals."""
+    anyway. VOLATILES: the globals declared `volatile` in any source, from volatile_globals. FAKES gives the kinds of
+    the fake-match lines in a definition's lines from its annotation on (fakematch.checker)."""
     lines = text.split("\n")
     blank = names.blank_literals(text).split("\n")
     opened = {}  # pragma name: its normalized text, while it is set
@@ -101,21 +107,23 @@ def file_tricks(text: str, volatiles: set[str] = frozenset()) -> dict[int, str]:
         reasons = list(dict.fromkeys(words(FORBIDDEN, body) + words(KEYWORDS, body)))
         reasons += [f"volatile global {name}" for name in sorted(volatiles & set(re.findall(r"\w+", body)))]
         reasons += [f"after {setting}" for setting in opened.values()]
+        if fakes:
+            reasons += [f"fake match {kind}" for kind in dict.fromkeys(fakes(lines[i:end + 1]))]
         if reasons:
             found[int(annotation[2], 16)] = ", ".join(reasons)
     return found
 
 
-def scan(root: Path) -> dict[int, tuple[str, str]]:
-    """address: (file, tricks) of each function in root/src that has a trick."""
+def scan(root: Path, fakes: Callable[[list[str]], list[str]] | None = None) -> dict[int, tuple[str, str]]:
+    """address: (file, tricks) of each function in root/src that has a trick. FAKES: as in file_tricks."""
     sources = names.read_sources(root)
     volatiles = set().union(*map(volatile_globals, sources.values()))
     return {address: (rel, reasons) for rel, text in sources.items()
-            for address, reasons in file_tricks(text, volatiles).items()}
+            for address, reasons in file_tricks(text, volatiles, fakes).items()}
 
 
 def main() -> int:
-    found = scan(names.ROOT)
+    found = scan(names.ROOT, fakematch.checker(names.ROOT, project.require_game()))
     for address, (rel, reasons) in sorted(found.items()):
         print(f"0x{address:08x} {rel}: {reasons}")
     print(f"{len(found)} functions with a trick")

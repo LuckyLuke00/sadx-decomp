@@ -27,9 +27,11 @@ import sys
 from pathlib import Path
 
 import check
+import fakematch
 import llm
 import llmclient
 import names
+import project
 import tricks
 
 TEACHER = llm.PROMPTS / "teacher.md"
@@ -104,7 +106,7 @@ def check_folder(args, config):
     recorded = json.loads(folder.joinpath("sources.json").read_text(encoding="utf-8"))
     percent, _ = llm.score(config, address)
     problems = [] if percent == 100 else [f"it scores {'nothing' if percent is None else f'{percent:.2f}%'}"]
-    found = tricks.scan(llm.ROOT).get(address)
+    found = tricks.scan(llm.ROOT, fakematch.checker(llm.ROOT, project.require_game())).get(address)
     if found:
         problems.append(f"it matches through a trick: {found[1]}")
     now = source_hashes(llm.ROOT)
