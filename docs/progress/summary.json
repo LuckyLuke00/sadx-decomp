@@ -44899,6 +44899,22 @@
    "library": false
   },
   {
+   "address": "0x006c0ba0",
+   "name": "FUN_006c0ba0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006c0be0",
+   "name": "CollisionPastSceneChanger",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006c0d10",
    "name": "DisplayWell",
    "accuracy": 1.0,
@@ -68160,6 +68176,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008e1c90",
+   "name": "CollisionSceneChanger",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008e1dc0",
+   "name": "CollisionSceneChangerRegular",
+   "accuracy": 0.050955414012738856,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -96957,5 +96989,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "f806f584d230bdf3300418ff67f44fd295822fc902e5a2b178b460b75c6fa1ad"
+ "inputs_sha256": "b946426944c89e72f15fc7faf1c801a0c9a80c37cceaa9e72ab6bb8b029999f8"
 }
