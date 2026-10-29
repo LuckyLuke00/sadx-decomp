@@ -3796,7 +3796,7 @@
   {
    "address": "0x00435370",
    "name": "pdVibMxStop",
-   "accuracy": 0.08333333333333333,
+   "accuracy": 0.16,
    "effective": false,
    "stub": true,
    "library": false
@@ -97067,5 +97067,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "79848cb5a4ec2181664a9fa2ff5d16fc0b05ddf3af39128950dca4d43ed52c5d"
+ "inputs_sha256": "557efafd8ab24c433ccf1e7e34473be7db713eedcccb5acfab266866f46d6826"
 }

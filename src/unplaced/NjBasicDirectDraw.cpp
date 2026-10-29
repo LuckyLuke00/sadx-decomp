@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x00421370
-void njDrawObject(struct obj *obj)
+void njDrawObject(NJS_OBJECT *obj)
 {
 	_njBeginModel();
 	_njTransformObject(obj, _njDirectDrawModel);
@@ -9,7 +9,7 @@ void njDrawObject(struct obj *obj)
 }
 
 // FUNCTION: SADX 0x00421390
-void njDrawModel(struct NJS_MODEL *model)
+void njDrawModel(NJS_MODEL *model)
 {
 	_njBeginModel();
 	_njDirectDrawModel(model);

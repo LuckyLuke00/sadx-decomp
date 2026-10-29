@@ -14,7 +14,7 @@ long FUN_00423db0(const char *param_1, struct NJS_TEXLIST *param_2)
 	if (var2)
 	{
 		_njCheckFileName(var1, param_1, ".pvm");
-		void *var3 = njOpenBinary(var1);
+		Sint8 *var3 = njOpenBinary(var1);
 		DAT_05ad95e0 = 1;
 		long var4 = njLoadTexturePvmMemory((unsigned char *)var3, param_2);
 		DAT_05ad95e0 = 0;

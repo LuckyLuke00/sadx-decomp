@@ -1,13 +1,13 @@
 #include "decls.h"
 
 // STUB: SADX 0x004314b0
-void *njOpenBinary(void *fname)
+Sint8 *njOpenBinary(const char *fname)
 {
-	return (void *)0;
+	return (Sint8 *)0;
 }
 
 // FUNCTION: SADX 0x00431550
-void njCloseBinary(void *wbuff)
+void njCloseBinary(Sint8 *wbuff)
 {
 	syFree(wbuff);
 }

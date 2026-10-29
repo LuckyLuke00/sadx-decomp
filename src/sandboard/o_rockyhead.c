@@ -33,7 +33,7 @@ void dispRockyHead(struct task *task_p)
 	struct motionwk *var2 = task_p->mwp;
 	float var3 = *(float *)((char *)task_p->ptp->mwp + 0x1c);
 	njPushMatrix(NULL);
-	njTranslateV((float *)0, &var1->pos);
+	njTranslateV(NULL, &var1->pos);
 	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
 		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));

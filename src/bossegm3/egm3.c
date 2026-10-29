@@ -151,7 +151,7 @@ void EggmanBoomerangDraw(struct task *tp)
 			}
 			if (*(int *)((char *)var1 + 0x1c) != 0)
 			{
-				njRotateZ((float *)0, *(unsigned short *)((char *)var1 + 0x1c));
+				njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
 			}
 			late_DrawMotionClipEx(DAT_02833c70, (struct NJS_MOTION *)*(int *)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1, 1.0f);
 			njPopMatrix(1);

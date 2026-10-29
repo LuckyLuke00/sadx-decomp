@@ -17,7 +17,7 @@ void leg_disp(struct LegModel *legmodel)
 		FUN_0067d830((float *)0, *(float *)legmodel, *(float *)((char *)legmodel + 4), *(float *)((char *)legmodel + 8));
 		if (*(int *)((char *)legmodel + 0x14) != 0)
 		{
-			njRotateZ((float *)0, *(unsigned short *)((char *)legmodel + 0x14));
+			njRotateZ(NULL, *(unsigned short *)((char *)legmodel + 0x14));
 		}
 		if (*(int *)((char *)legmodel + 0x10) != 0)
 		{

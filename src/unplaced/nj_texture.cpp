@@ -40,7 +40,7 @@ void njSetPaletteData(long offset, long count, void *data)
 }
 
 // FUNCTION: SADX 0x00423200
-long njSetTexture(struct NJS_TEXLIST *texlist)
+Sint32 njSetTexture(NJS_TEXLIST *texlist)
 {
 	DAT_0629c724 = (int)texlist;
 	if (texlist != (struct NJS_TEXLIST *)0)
@@ -52,7 +52,7 @@ long njSetTexture(struct NJS_TEXLIST *texlist)
 }
 
 // FUNCTION: SADX 0x00423230
-long njSetTextureNum(unsigned long n)
+Sint32 njSetTextureNum(Uint32 n)
 {
 	if (DAT_0629c724 != 0)
 	{
@@ -82,7 +82,7 @@ void njInitTexture(struct NJS_TEXMEMLIST *addr, unsigned long n)
 }
 
 // FUNCTION: SADX 0x00423490
-void njSetPaletteBankNum(unsigned long n, long bank)
+void njSetPaletteBankNum(Uint32 n, Sint32 bank)
 {
 	if (DAT_0629c724 != 0)
 	{
@@ -154,7 +154,7 @@ long njReLoadTextureNumG(unsigned long globalIndex, void *texaddr, unsigned long
 }
 
 // STUB: SADX 0x00423920
-long njReleaseTexture(struct NJS_TEXLIST *texlist)
+Sint32 njReleaseTexture(NJS_TEXLIST *texlist)
 {
 	return (long)0;
 }

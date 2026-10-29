@@ -6,7 +6,7 @@ void tornado_disp(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	njPushMatrix(NULL);
-	njTranslateV((float *)0, &var1->pos);
+	njTranslateV(NULL, &var1->pos);
 	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
 		njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
@@ -17,7 +17,7 @@ void tornado_disp(struct task *tp)
 	}
 	if (*(int *)((char *)var1 + 0x1c) != 0)
 	{
-		njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
 	}
 	___njSetTexture(&texlist_ev_s_t2c_body);
 	late_ActionClipMesh((struct NJS_ACTION *)&action_ev_s_t2c_body, var1->value.f, 0, 1.0f);

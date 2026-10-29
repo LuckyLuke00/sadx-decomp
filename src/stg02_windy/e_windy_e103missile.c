@@ -234,7 +234,7 @@ static void _exec(struct task *pTask)
 	{
 		njRotateY(&local_48, (Uint16)local_c->ang.y);
 	}
-	njCalcPoint(local_48, &local_60, &local_54);
+	njCalcPoint(&local_48, &local_60, &local_54);
 	local_8->x += local_54.x;
 	local_8->z = local_8->z + local_54.z;
 	FUN_00810290(local_8, 1.0f);

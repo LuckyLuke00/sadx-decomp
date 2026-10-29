@@ -38,7 +38,7 @@ static void disp(struct task *pTask)
 		___njColorBlendingMode(0, 8);
 		___njColorBlendingMode(1, 6);
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, (struct NJS_POINT3 *)&DAT_060bd1a0);
+		njTranslateV(NULL, (struct NJS_POINT3 *)&DAT_060bd1a0);
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
 			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));

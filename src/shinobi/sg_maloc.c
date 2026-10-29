@@ -6,13 +6,13 @@ void *_SOCMalloc(unsigned int param_1, const char *param_2, int param_3);
 void _SOCFree(void *param_1, const char *param_2, int param_3);
 
 // FUNCTION: SADX 0x0042b3b0
-void *syMalloc(unsigned int nbytes)
+Void *syMalloc(Uint32 nbytes)
 {
 	return _SOCMalloc(nbytes, "..\\src\\shinobi\\sg_maloc.c", 209);
 }
 
 // FUNCTION: SADX 0x0042b3d0
-void *syCalloc(unsigned int nobj, unsigned int size)
+void *syCalloc(Uint32 nobj, Uint32 size)
 {
 	unsigned int var1 = nobj * size;
 	void *var2;
@@ -22,7 +22,7 @@ void *syCalloc(unsigned int nobj, unsigned int size)
 }
 
 // FUNCTION: SADX 0x0042b400
-void syFree(void *ap)
+Void syFree(Void *ap)
 {
 	if (ap != 0)
 	{

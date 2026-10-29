@@ -2,7 +2,7 @@
 extern int DAT_0629c518;
 
 // FUNCTION: SADX 0x00430aa0
-void njRotateZ(float *m, int ang)
+void njRotateZ(NJS_MATRIX *m, Angle ang)
 {
 	float local_10;
 	float local_c;
@@ -20,7 +20,7 @@ void njRotateZ(float *m, int ang)
 	}
 	else
 	{
-		var2 = m;
+		var2 = *m;
 	}
 	local_8 = var2[0];
 	local_14 = var2[1];

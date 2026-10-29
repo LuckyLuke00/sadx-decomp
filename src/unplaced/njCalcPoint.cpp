@@ -2,7 +2,7 @@
 extern int DAT_0629c518;
 
 // FUNCTION: SADX 0x00430bb0
-void njCalcPoint(float *m, struct NJS_POINT3 *ps, struct NJS_POINT3 *pd)
+void njCalcPoint(NJS_MATRIX *m, NJS_POINT3 *ps, NJS_POINT3 *pd)
 {
 	float local_8;
 	float var1;
@@ -12,7 +12,7 @@ void njCalcPoint(float *m, struct NJS_POINT3 *ps, struct NJS_POINT3 *pd)
 	local_8 = ps->x;
 	var1 = ps->y;
 	local_c = ps->z;
-	var2 = m;
+	var2 = *m;
 	if (var2 == 0)
 	{
 		var2 = (float *)DAT_0629c518;

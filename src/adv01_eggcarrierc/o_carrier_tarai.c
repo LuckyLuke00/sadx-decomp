@@ -87,14 +87,14 @@ void HugeTaraiDisp(struct task *tp)
 	{
 		___njSetTexture(&texlist_ec_tarai);
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
 			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ((float *)0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
 		}
 		FUN_0067d2d0((float *)0, var1->scl.x, var1->scl.y, var1->scl.z);
 		SetMaterial(var1->value.f, 0.0f, 0.0f, 0.0f);

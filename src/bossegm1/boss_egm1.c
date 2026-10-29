@@ -50,7 +50,7 @@ void SetEgm1DispMatrix(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	struct anywk *var2 = tp->awp;
-	njTranslateV((float *)0, &var1->pos);
+	njTranslateV(NULL, &var1->pos);
 	if (GetBossAngMode(tp) != 0)
 	{
 		njRotateZXY(0, var1->ang.x, var1->ang.y, var1->ang.z);
@@ -65,7 +65,7 @@ void SetEgm1DispMatrix(struct task *tp)
 	}
 	if (*(int *)((char *)var2 + 0xa8) != 0)
 	{
-		njRotateZ((float *)0, (unsigned short)*(short *)((char *)var2 + 0xa8));
+		njRotateZ(NULL, (unsigned short)*(short *)((char *)var2 + 0xa8));
 	}
 	FUN_0067d2d0((float *)0, 2.0f, 2.0f, 2.0f);
 }

@@ -10,14 +10,14 @@ void ShutterPartsDisplayer(struct task *tp)
 	{
 		SetObjectTexture();
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
 			njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
 		}
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
 		}
 		___dsDrawModel((struct NJS_MODEL *)var1->counter.ptr);
 		njPopMatrix(1);
@@ -32,7 +32,7 @@ void BrokenPieceDisplayer(struct task *tp)
 	{
 		SetObjectTexture();
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
 			njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
@@ -43,7 +43,7 @@ void BrokenPieceDisplayer(struct task *tp)
 		}
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
 		}
 		FUN_0067d2d0((float *)0, *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c));
 		FEGG_DrawBrokenPiece(var1);

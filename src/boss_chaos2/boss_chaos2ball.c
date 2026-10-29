@@ -25,7 +25,7 @@ void Chaos2MiniBallHeadDisplay(struct task *tp)
 		ResetMaterial();
 		___njSetTexture(&texlist_chaos2);
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (DAT_060bd800 != 0)
 		{
 			if (*(unsigned char *)((char *)DAT_05edd134 + 0x38) & 1)

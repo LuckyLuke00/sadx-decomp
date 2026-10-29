@@ -340,11 +340,11 @@ float *getObjectMatrix(float *mat, struct obj *obj, int num)
 
 	if (mat == 0)
 	{
-		njGetMatrix(tmp);
+		njGetMatrix(&tmp);
 	}
 	else
 	{
-		njSetMatrix(tmp, mat);
+		njSetMatrix(&tmp, (NJS_MATRIX *)mat);
 	}
 	mbp = DAT_05b9d860[0];
 	scanObjectSub(&mbp, obj, tmp);
@@ -354,7 +354,7 @@ float *getObjectMatrix(float *mat, struct obj *obj, int num)
 // FUNCTION: SADX 0x004cd670
 void getObjectMatrixBuf(float *mat, int num)
 {
-	njSetMatrix(mat, DAT_05b9d860[num]);
+	njSetMatrix((NJS_MATRIX *)mat, &DAT_05b9d860[num]);
 }
 
 // FUNCTION: SADX 0x004cd690

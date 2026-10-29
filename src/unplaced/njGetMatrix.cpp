@@ -2,7 +2,7 @@
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 
 // FUNCTION: SADX 0x0067d3f0
-void njGetMatrix(float *m)
+void njGetMatrix(NJS_MATRIX *m)
 {
 	memcpy(m, (float *)DAT_0629c518, 0x40);
 }

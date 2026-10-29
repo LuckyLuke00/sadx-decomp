@@ -33,7 +33,7 @@ void ArmTestDisplay(struct obj *obj)
 		FUN_0067d830((float *)0, obj->pos[0], obj->pos[1], obj->pos[2]);
 		if (obj->ang[2] != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)obj->ang[2]);
+			njRotateZ(NULL, (unsigned short)obj->ang[2]);
 		}
 		if (obj->ang[0] != 0)
 		{

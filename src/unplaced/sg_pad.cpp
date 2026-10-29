@@ -3,7 +3,7 @@ extern int DAT_01c6eea0[4];
 extern struct PDS_PERIPHERAL DAT_05ad9db8[4];
 
 // FUNCTION: SADX 0x00430e60
-void *pdGetPeripheral(int port)
+const PDS_PERIPHERAL *pdGetPeripheral(Uint32 port)
 {
 	int var1;
 	int *var2;

@@ -10,7 +10,7 @@ void egm1missile_disp(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 	___njSetTexture(&texlist_egm1mis);
 	njPushMatrix(NULL);
-	njTranslateV((float *)0, &var1->pos);
+	njTranslateV(NULL, &var1->pos);
 	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
 		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));

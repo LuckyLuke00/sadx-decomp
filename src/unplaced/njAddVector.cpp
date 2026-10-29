@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x0067d8c0
-void njAddVector(struct NJS_POINT3 *vd, struct NJS_POINT3 *vs)
+void njAddVector(NJS_VECTOR *vd, NJS_VECTOR *vs)
 {
 	vd->x = vd->x + vs->x;
 	vd->y = vd->y + vs->y;

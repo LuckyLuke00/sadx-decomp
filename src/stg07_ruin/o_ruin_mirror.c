@@ -20,10 +20,10 @@ void DrawMirror(struct task *tp)
 	if (DAT_05b9d838 == 0)
 	{
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
 		}
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
@@ -39,7 +39,7 @@ void DrawMirror(struct task *tp)
 		{
 			if (-*(int *)((char *)DAT_05b42a7c + 0x1c) != 0)
 			{
-				njRotateZ((float *)0, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x1c)));
+				njRotateZ(NULL, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x1c)));
 			}
 			if (-*(int *)((char *)DAT_05b42a7c + 0x14) != 0)
 			{

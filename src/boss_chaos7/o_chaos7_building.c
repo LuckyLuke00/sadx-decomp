@@ -26,7 +26,7 @@ void dispChaos7Building(struct task *tp)
 	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
 	var2 = (float *)0;
 	njPushMatrix((NJS_MATRIX *)var2);
-	njTranslateV(var2, &var1->pos);
+	njTranslateV((NJS_MATRIX *)var2, &var1->pos);
 	if (var1->ang.y != 0)
 	{
 		njRotateY((NJS_MATRIX *)var2, (unsigned short)var1->ang.y);

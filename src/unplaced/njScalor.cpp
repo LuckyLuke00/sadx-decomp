@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x0067d150
-double njScalor(struct NJS_POINT3 *v)
+double njScalor(NJS_VECTOR *v)
 {
 	float local_8;
 	float var1;

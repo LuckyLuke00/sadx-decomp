@@ -11,7 +11,7 @@ void Draw3(struct task *tp)
 		njTranslateEx(&var1->pos);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
 		}
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{

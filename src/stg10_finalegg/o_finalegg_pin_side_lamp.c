@@ -13,7 +13,7 @@ void pin_side_search_obj(struct obj *obj_p, struct obj *target_obj_p, struct NJS
 		njRotateXYZ(0, obj_p->ang[0], obj_p->ang[1], obj_p->ang[2]);
 		if (obj_p == target_obj_p)
 		{
-			njGetTranslation(0, (float *)pos_p);
+			njGetTranslation(0, pos_p);
 		}
 		else if (obj_p->child != 0)
 		{

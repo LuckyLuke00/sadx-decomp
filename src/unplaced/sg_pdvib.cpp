@@ -24,6 +24,7 @@ void pdVibMxStart(int port, int *param)
 }
 
 // STUB: SADX 0x00435370
-void pdVibMxStop(int port)
+Sint32 pdVibMxStop(Uint32 port)
 {
+	return (Sint32)0;
 }

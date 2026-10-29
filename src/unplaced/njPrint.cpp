@@ -26,13 +26,13 @@ void njPrintSize(unsigned short size)
 }
 
 // FUNCTION: SADX 0x00423ed0
-void njPrintColor(unsigned long c)
+void njPrintColor(Uint32 c)
 {
 	DAT_05ad95ec = c;
 }
 
 // STUB: SADX 0x00423ee0
-void njPrintC(int loc, char const *s)
+void njPrintC(Int loc, const char *s)
 {
 }
 

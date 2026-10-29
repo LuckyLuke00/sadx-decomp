@@ -27,13 +27,13 @@ void njSetVSyncFunction(void (*func)(void))
 }
 
 // FUNCTION: SADX 0x00425170
-void njControl3D(unsigned long flag)
+void njControl3D(Uint32 flag)
 {
 	DAT_0629c6c8 = flag;
 }
 
 // FUNCTION: SADX 0x00425180
-void njSetConstantAttr(int and_attr, int or_attr)
+void njSetConstantAttr(Uint32 and_attr, Uint32 or_attr)
 {
 	DAT_0629c540 = and_attr;
 	DAT_0629c6c4 = or_attr;

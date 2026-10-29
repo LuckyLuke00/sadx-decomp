@@ -76,7 +76,7 @@ void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
 		njRotateY(0, 0x4000);
 	}
 	FUN_0067d2d0(0, 1.5f, 1.5f, 1.5f);
-	njGetMatrix(ewp->mat);
+	njGetMatrix(&ewp->mat);
 	njPopMatrix(1);
 	njPushMatrix(0);
 	njMultiMatrix(0, &ewp->mat);
@@ -358,7 +358,7 @@ void RoboSmokeUnder(struct taskwk *twp, struct enemywk *ewp)
 	tmp_velo.z = 0.0f;
 	njPushMatrix(0);
 	njUnitMatrix(0);
-	njSetMatrix(0, ewp->mat);
+	njSetMatrix(0, &ewp->mat);
 	njCalcVector(0, &tmp_velo, &velo);
 	njCalcPoint(0, &tpos, &pos);
 	njPopMatrix(1);
@@ -457,7 +457,7 @@ void FUN_005bf870(int param_1, int param_2)
 {
 	njPushMatrix(0);
 	njUnitMatrix(0);
-	njSetMatrix(0, (float *)(param_2 + 0x1fc));
+	njSetMatrix(0, (NJS_MATRIX *)(param_2 + 0x1fc));
 	njCalcVector(0, &DAT_0264dbb8, &robo_jet.velo);
 	njCalcPoint(0, &DAT_0264dbac, &robo_jet.pos);
 	njPopMatrix(1);
