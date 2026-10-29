@@ -50,11 +50,6 @@ def data_ranges(image: pe.Image) -> list[tuple[int, int]]:
     return sorted((start, start + size) for start, size, section in image.sections if not section.flags & EXECUTE)
 
 
-def in_data(ranges: list[tuple[int, int]], address: int) -> bool:
-    i = bisect.bisect_right(ranges, (address, float("inf"))) - 1
-    return i >= 0 and ranges[i][0] <= address < ranges[i][1]
-
-
 def operand_access(ins, op) -> tuple[int, int, str, str, int, int] | None:
     """(target, size, value, form, reads, writes) of one operand, or None when it holds no address."""
     if op.type == capstone.x86.X86_OP_IMM:
@@ -92,7 +87,7 @@ def scan(image: pe.Image, sizes: dict[int, int]) -> list[Access]:
     counts = collections.defaultdict(lambda: [0, 0, set()])
     for start, size in sizes.items():
         for found in function_accesses(md, image.read(start, size), start):
-            if not in_data(ranges, found[0]):
+            if not pe.in_ranges(ranges, found[0]):
                 continue
             entry = counts[found[:4]]
             entry[0] += found[4]

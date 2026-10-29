@@ -1,5 +1,6 @@
 """Read and patch the parts of a 32-bit PE file that the tools need. Standard library only."""
 
+import bisect
 import struct
 import sys
 from pathlib import Path
@@ -193,6 +194,12 @@ class Image:
     def is_read_only_data(self, address: int) -> bool:
         return any(start <= address < start + length and not section.flags & (CODE | WRITABLE)
                    for start, length, section in self.sections)
+
+
+def in_ranges(ranges: list[tuple[int, int]], address: int) -> bool:
+    """Whether ADDRESS is in one of RANGES: sorted (start, end) pairs, end excluded, that do not overlap."""
+    i = bisect.bisect_right(ranges, (address, float("inf"))) - 1
+    return i >= 0 and ranges[i][0] <= address < ranges[i][1]
 
 
 def rich_entries(path: Path) -> dict[tuple[int, int], int]:
