@@ -63652,7 +63652,7 @@
   },
   {
    "address": "0x008933d0",
-   "name": "DrawBoxColli",
+   "name": "DrawBoxColli(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -64517,6 +64517,22 @@
   {
    "address": "0x008abf30",
    "name": "ObjShelterLight2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008ac3f0",
+   "name": "DrawBoxColli(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008ac4b0",
+   "name": "ColliShelterSwitch",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -95775,6 +95791,13 @@
    "library": false
   },
   {
+   "address": "0x04ad7ed4",
+   "name": "cinfo_appear",
+   "size": 48,
+   "match": true,
+   "library": false
+  },
+  {
    "address": "0x04ad8624",
    "name": "sprite_o_bubble",
    "size": 32,
@@ -97044,5 +97067,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "1874e4b7e317a533bcd6f7cca11a40613fc622d36e6d59acd4b9055509621ff1"
+ "inputs_sha256": "fa513ef9ac3d91c9f2c9fc2a7d95867dce12101872c8b43a3cce6daf543d734a"
 }
