@@ -4,6 +4,9 @@ extern int DAT_05cd27f0;
 extern int DAT_05cd14d4;
 extern float DAT_05b36808;
 
+// GLOBAL: SADX 0x0234f5ec
+static unsigned char DAT_0234f5ec[7] = {5, 4, 3, 0, 1, 2, 20};
+
 // FUNCTION: SADX 0x004960c0
 long TutorialExit(void *Param)
 {
@@ -64,7 +67,7 @@ void TutorialBgmTask(struct task *tp)
 	}
 	if (iVar1 != -1)
 	{
-		BGM_Play(*(unsigned char *)(iVar1 + 0x234f5ec));
+		BGM_Play(DAT_0234f5ec[iVar1]);
 	}
 	FreeTask(tp);
 }

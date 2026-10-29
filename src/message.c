@@ -8,6 +8,16 @@ extern unsigned int *DAT_05b93264;
 extern int DAT_05b42c34;
 extern int DAT_05b42c38;
 extern int DAT_05b3ebbc;
+struct BMPLANG {
+	const unsigned char *transtable;
+	const char *pitchdata;
+	const char *bmpdata;
+	const char *sbmpdata;
+	unsigned char shifton;
+	unsigned char shiftoff;
+};
+// GLOBAL: SADX 0x025d5978
+static struct BMPLANG DAT_025d5978[6];
 extern void MSG_ThreadMainMessages(char **message);
 extern struct thread *TH_Create(void *func, void *pParam, unsigned int stack_size);
 void FUN_004c2fa0(struct MSGC *param_1, int param_2);
@@ -164,8 +174,8 @@ void *SOCMSG_Font(int c)
 	int local_14;
 	int local_8g;
 
-	local_ci = (int)(*(unsigned char *)((char *)(0x14 * DAT_05b3ebbc) + 0x25d5988) & 0xff);
-	local_8g = (int)(*(unsigned char *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5989) & 0xff);
+	local_ci = DAT_025d5978[DAT_05b3ebbc].shifton & 0xff;
+	local_8g = DAT_025d5978[DAT_05b3ebbc].shiftoff & 0xff;
 	if (c < 0x100)
 	{
 		if (c > local_8g)
@@ -177,15 +187,15 @@ void *SOCMSG_Font(int c)
 		{
 			c = 0;
 		}
-		if (*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) != 0)
+		if (DAT_025d5978[DAT_05b3ebbc].transtable != 0)
 		{
-			c = (int)*(unsigned char *)(*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) + c) - 0x20;
+			c = DAT_025d5978[DAT_05b3ebbc].transtable[c] - 0x20;
 		}
 		return (void *)(DAT_05b42c34 + 0x9000 + c * 0x480);
 	}
 	else
 	{
-		if (*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5984) != 0)
+		if (DAT_025d5978[DAT_05b3ebbc].sbmpdata != 0)
 		{
 			local_10m = ((c >> 8) & 0xff);
 			local_14 = (int)(c & 0xff);
@@ -214,19 +224,19 @@ int FUN_004c2610(int param_1)
 	int local_cg;
 	int local_8g;
 
-	local_cg = (int)(*(unsigned char *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5988) & 0xff);
-	local_8g = (int)(*(unsigned char *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5989) & 0xff);
+	local_cg = DAT_025d5978[DAT_05b3ebbc].shifton & 0xff;
+	local_8g = DAT_025d5978[DAT_05b3ebbc].shiftoff & 0xff;
 	if (param_1 < 0x100)
 	{
 		if (param_1 > local_8g)
 		{
 			param_1 -= local_8g - local_cg;
 		}
-		if (*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) != 0)
+		if (DAT_025d5978[DAT_05b3ebbc].transtable != 0)
 		{
-			param_1 = (int)*(unsigned char *)(*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d5978) + param_1 - 0x20);
+			param_1 = DAT_025d5978[DAT_05b3ebbc].transtable[param_1 - 0x20];
 		}
-		return (char)*(char *)(*(int *)((char *)(DAT_05b3ebbc * 0x14) + 0x25d597c) + param_1 - 0x20) + 1;
+		return DAT_025d5978[DAT_05b3ebbc].pitchdata[param_1 - 0x20] + 1;
 	}
 	else
 	{

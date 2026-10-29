@@ -2,7 +2,7 @@
 struct DialogPrmType;
 enum DiaTypeEnum;
 void OpenDialog(struct DialogPrmType *, int);
-extern struct DialogPrmType DAT_009919e0;
+extern struct DialogPrmType DAT_009919e0[31];
 extern int DAT_05b3ebbc;
 extern char *DAT_026313ac[];
 extern char *DAT_02631474[];
@@ -27,19 +27,19 @@ void DialogJimakuProcDel(struct DDlgType *ddltype)
 // FUNCTION: SADX 0x005a3fc0
 void AdvaOpenDialog(enum DiaTypeEnum dialog_type)
 {
-	OpenDialog((struct DialogPrmType *)((int)&DAT_009919e0 + dialog_type * 0x3c), 0);
+	OpenDialog(&DAT_009919e0[dialog_type], 0);
 	return;
 }
 
 // FUNCTION: SADX 0x005a3fe0
 void AdvaOpenDialogCsrLet(enum DiaTypeEnum dialog_type, signed char csr, signed char *csrp)
 {
-	OpenDialogCsrLet((struct DialogPrmType *)((char *)&DAT_009919e0 + dialog_type * 0x3c), csr, csrp);
+	OpenDialogCsrLet(&DAT_009919e0[dialog_type], csr, csrp);
 }
 
 // FUNCTION: SADX 0x005a4010
 void AdvaOpenDialogQuick(enum DiaTypeEnum dialog_type, signed char csr, signed char *csrp)
 {
-	OpenDialogQuick((struct DialogPrmType *)((char *)&DAT_009919e0 + dialog_type * 0x3c), csr, csrp);
+	OpenDialogQuick(&DAT_009919e0[dialog_type], csr, csrp);
 	return;
 }

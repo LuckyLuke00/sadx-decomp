@@ -28,7 +28,7 @@ void SetChaosLifeGauge(int xpos, int ypos, int max)
 		local_8g->pos.y = ScreenRaitoY * 48.0 + 10.0;
 	}
 	DAT_05edc418 = (unsigned char)max;
-	*(unsigned char *)((char *)&DAT_05edc418 + 1) = DAT_05edc418;
+	DAT_05edc419 = DAT_05edc418;
 	DAT_05edc424 = (float)max;
 }
 

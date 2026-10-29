@@ -603,7 +603,7 @@ void CCL_O2CheckColli()
 	struct taskwk **local_10m;
 	struct taskwk **local_14;
 
-	local_cj = (struct taskwk **)((char *)&DAT_05ba248c + DAT_05ba2ea4 * 4);
+	local_cj = &DAT_05ba2490[DAT_05ba2ea4 - 1];
 	local_14 = DAT_05ba2490;
 	for (; local_14 < local_cj; local_14++)
 	{

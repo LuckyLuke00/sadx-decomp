@@ -1,5 +1,6 @@
 #include "decls.h"
 extern int flg_transform[8];
+extern unsigned char DAT_05bafb00[];
 extern unsigned char DAT_05bafb90;
 extern unsigned char DAT_05bafbcf;
 extern unsigned char DAT_05bafc0b;
@@ -51,8 +52,8 @@ int lift_active()
 // FUNCTION: SADX 0x00692da0
 void FUN_00692da0()
 {
-	unsigned char *var1 = (unsigned char *)flg_transform[GetPlayerNumber()] + 0x5bafb00;
-	*var1 = (*var1 == 0);
+	int var1 = flg_transform[GetPlayerNumber()];
+	DAT_05bafb00[var1] = (DAT_05bafb00[var1] == 0);
 }
 
 // FUNCTION: SADX 0x00693060

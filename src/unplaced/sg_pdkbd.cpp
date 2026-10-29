@@ -1,6 +1,6 @@
 #include "decls.h"
 extern int DAT_01c6eea0[4];
-extern int DAT_05ada1d0;
+extern int DAT_05ada1d0[4][3];
 
 // FUNCTION: SADX 0x00432550
 int *pdKbdGetData(int param_1)
@@ -13,7 +13,7 @@ int *pdKbdGetData(int param_1)
 	{
 		if (*var2 == param_1)
 		{
-			return (int *)&DAT_05ada1d0 + var1 * 3;
+			return DAT_05ada1d0[var1];
 		}
 		var1++;
 		var2++;

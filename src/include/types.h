@@ -267,6 +267,7 @@ struct SEQ_CLEAR_EQUIV;
 struct SEQ_SECTION;
 struct SEQ_SECTIONTBL;
 struct SeqPrmType;
+struct SEQUENCE;
 struct shadowwk;
 struct sMobleCtrl;
 struct sMRacePath;

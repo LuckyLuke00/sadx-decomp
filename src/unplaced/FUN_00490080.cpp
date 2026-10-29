@@ -9,7 +9,7 @@ int FUN_00490080(int param_1)
 		int param_2 = *(int *)(param_1 + 0x9c);
 		if (param_2 != 0)
 		{
-			if (*(int *)(param_2 + 0x18) == 0x7d21b0)
+			if (*(int *)(param_2 + 0x18) == (int)FUN_007d21b0)
 			{
 				var1 = *(int *)(param_2 + 0x20);
 			}

@@ -58,7 +58,7 @@ static void Exec(struct task *tp)
 void ObjectHighwayGroupFence(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	var1->timer.l = 0x81e690;
+	var1->timer.l = (long)ObjectHighwayFence;
 	var1->value.l = 2;
 	tp->dest = ExplosionRockDestructor;
 	tp->exec = Exec;
@@ -78,7 +78,7 @@ void ObjectHighwayGroupCurb(struct task *tp)
 void ObjectHighwayGroupFence02(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	var1->timer.l = 0x81ec10;
+	var1->timer.l = (long)ObjectFence02;
 	var1->value.l = 2;
 	tp->dest = ExplosionRockDestructor;
 	tp->exec = Exec;
@@ -88,7 +88,7 @@ void ObjectHighwayGroupFence02(struct task *tp)
 void ObjectHighwayGroupPinpin(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	var1->timer.l = 0x81f5f0;
+	var1->timer.l = (long)ObjectPinPin;
 	var1->value.l = 2;
 	tp->dest = ExplosionRockDestructor;
 	tp->exec = Exec;
@@ -128,7 +128,7 @@ void ObjectHighwayGroupRaftC(struct task *tp)
 void ObjectHighwayGroupGreenA(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	var1->timer.l = 0x81ead0;
+	var1->timer.l = (long)ObjectHighwayGreenA;
 	var1->value.l = 2;
 	tp->dest = ExplosionRockDestructor;
 	tp->exec = Exec;
@@ -148,7 +148,7 @@ void ObjectHighwayGroupGreenB(struct task *tp)
 void ObjectHighwayGroupGreenD(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	var1->timer.l = 0x81eb90;
+	var1->timer.l = (long)ObjectHighwayGreenD;
 	var1->value.l = 2;
 	tp->dest = ExplosionRockDestructor;
 	tp->exec = Exec;
@@ -158,7 +158,7 @@ void ObjectHighwayGroupGreenD(struct task *tp)
 void ObjectHighwayGroupClight(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	var1->timer.l = 0x81fbe0;
+	var1->timer.l = (long)ObjectHighwayClight;
 	var1->value.l = 2;
 	tp->dest = ExplosionRockDestructor;
 	tp->exec = Exec;
