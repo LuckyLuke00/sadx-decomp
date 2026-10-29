@@ -39,7 +39,7 @@ void Alr_Kill(struct Alr *___this)
 // FUNCTION: SADX 0x00486910
 int Alr_CheckOpen(struct Alr *___this)
 {
-	return *(unsigned char *)(&___this->flag) >> 2 & 1;
+	return (unsigned char)___this->flag >> 2 & 1;
 }
 
 // FUNCTION: SADX 0x00486930

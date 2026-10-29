@@ -10,7 +10,6 @@ void FUN_006c7d40(void)
 	struct _camcontwk *var1;
 	struct _camcontwk *var2;
 	struct _camcontwk *var3;
-	fld:
 	var1 = camcont_wp;
 	if (*(float *)((char *)var1 + 0x10) < 2.5f)
 	{
