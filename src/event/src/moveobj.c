@@ -1,9 +1,18 @@
 #include "decls.h"
+static void initMoveObjTask(struct task *p_task);
 int FUN_007d0bd0(void);
 void initMoveObjTask(struct task *p_task);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 void *MAlloc(unsigned int size);
 extern int DAT_060cbfb4[10];
+
+// FUNCTION: SADX 0x007d1460
+static void initMoveObjTask(struct task *p_task)
+{
+	p_task->exec = execMoveObjTask;
+	p_task->disp = (void (__cdecl *)(struct task *))FUN_007d21b0;
+	p_task->dest = DstrMtnSpiderA;
+}
 
 // STUB: SADX 0x007d1480
 void moveObject(struct task *obj, float st_x, float st_y, float st_z, float end_x, float end_y, float end_z, int frame)

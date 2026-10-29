@@ -25100,9 +25100,9 @@
   {
    "address": "0x0055c760",
    "name": "FUN_0055c760",
-   "accuracy": 0.20512820512820512,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -42469,9 +42469,9 @@
   {
    "address": "0x0068dd30",
    "name": "ObjectSsadvKomonoKeikoto",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50451,11 +50451,19 @@
    "library": false
   },
   {
-   "address": "0x007d1460",
-   "name": "initMoveObjTask",
-   "accuracy": 0.2222222222222222,
+   "address": "0x007d0c70",
+   "name": "execMoveObjTask",
+   "accuracy": 0.008438818565400843,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d1460",
+   "name": "initMoveObjTask",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -81581,9 +81589,9 @@
   {
    "address": "0x0091d7e0",
    "name": "FUN_0091d7e0",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -86505,6 +86513,13 @@
    "library": false
   },
   {
+   "address": "0x00a5dd7c",
+   "name": "DAT_00a5dd7c",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00a5e008",
    "name": "??_R4exception@std@@6B@",
    "size": 20,
@@ -87060,6 +87075,13 @@
   {
    "address": "0x01c8d41c",
    "name": "object_ssobj_isub_isub",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01c8ddac",
+   "name": "object_keikoto_keikoto_keikoto",
    "size": 52,
    "match": false,
    "library": false
@@ -96615,5 +96637,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e36d96c55cc4b2ab974ace4ef229f71f48952e9329f128aad3136870eb32e22e"
+ "inputs_sha256": "b3ea6fbf3890ab73acb204de2fa7ceb742b3df4beef675f1a3eda84d5c07ad7e"
 }

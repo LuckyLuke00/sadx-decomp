@@ -2734,8 +2734,8 @@ void tornado_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x007d1460
-void initMoveObjTask(struct task *)
+// STUB: SADX 0x007d0c70
+void execMoveObjTask(struct task *p_task)
 {
 }
 

@@ -18,9 +18,18 @@ void Object_Ssadv_KomonoDraw(struct task *tp)
 }
 #pragma optimize("", on)
 
-// STUB: SADX 0x0068dd30
+// FUNCTION: SADX 0x0068dd30
 void ObjectSsadvKomonoKeikoto(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		var1->counter.l = (long)object_keikoto_keikoto_keikoto;
+		tp->disp = Object_Ssadv_KomonoDraw;
+		tp->exec = Object_Ssadv_KomonoDraw;
+	}
 }
 
 // FUNCTION: SADX 0x0068dd60
