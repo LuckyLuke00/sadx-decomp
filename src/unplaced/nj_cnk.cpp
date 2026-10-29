@@ -15,7 +15,7 @@ extern int DAT_05ada5b8;
 void FUN_0041b120(int param_1, int param_2);
 
 // STUB: SADX 0x00435fd0
-void njCnkDrawMotion(struct cnkobj const *object, struct NJS_MOTION const *motion, float frame)
+void njCnkDrawMotion(const NJS_CNK_OBJECT *object, const NJS_MOTION *motion, Float frame)
 {
 	void (__thiscall *fp)(int, int);
 
@@ -29,7 +29,7 @@ void njCnkDrawMotion(struct cnkobj const *object, struct NJS_MOTION const *motio
 }
 
 // STUB: SADX 0x00436030
-void njCnkDrawMotionLink(struct cnkobj const *object, struct NJS_MOTION_LINK const *motionlink, float frame)
+void njCnkDrawMotionLink(const NJS_CNK_OBJECT *object, const NJS_MOTION_LINK *motionlink, Float frame)
 {
 }
 
@@ -49,6 +49,6 @@ void njCnkDrawModel(struct NJS_CNK_MODEL *model)
 }
 
 // STUB: SADX 0x00436200
-void njCnkDrawObject(struct cnkobj *object)
+void njCnkDrawObject(NJS_CNK_OBJECT *object)
 {
 }

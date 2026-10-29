@@ -62,7 +62,7 @@ void FUN_00572f90(struct obj *param_1, struct obj *param_2)
 
 	if ((local_8g & 0x20) == 0)
 	{
-		njTranslateV((float *)0, (struct NJS_POINT3 *)((char *)param_2 + 0x20));
+		njTranslateV(NULL, (struct NJS_POINT3 *)((char *)param_2 + 0x20));
 		if ((local_8g & 0x8000) == 0)
 		{
 			local_cg = (int)((char *)param_2 + 0x14);
@@ -80,7 +80,7 @@ void FUN_00572f90(struct obj *param_1, struct obj *param_2)
 			}
 		}
 	}
-	njTranslateV((float *)0, (struct NJS_POINT3 *)((char *)param_1 + 8));
+	njTranslateV(NULL, (struct NJS_POINT3 *)((char *)param_1 + 8));
 }
 
 // FUNCTION: SADX 0x00573040

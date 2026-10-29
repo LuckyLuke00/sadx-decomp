@@ -23,9 +23,9 @@ void syTmrInit(void)
 }
 
 // STUB: SADX 0x004230a0
-int syTmrGetCount()
+Uint32 syTmrGetCount(void)
 {
-	return (int)0;
+	return (Uint32)0;
 }
 
 // STUB: SADX 0x004230e0

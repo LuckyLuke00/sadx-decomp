@@ -10,10 +10,10 @@ static void Disp(struct task *tp)
 	{
 		SetObjectTexture2(0x22);
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ((float *)0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
 		}
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
@@ -23,7 +23,7 @@ static void Disp(struct task *tp)
 		{
 			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
-		njScaleV((float *)0, &var1->scl);
+		njScaleV(NULL, &var1->scl);
 		DAT_05b3df40 = -37952.0f;
 		late_DrawModelClip(model_name[*(signed char *)((char *)var1)], 4, FUN_004a1e90((float *)&var1->scl));
 		DAT_05b3df40 = 0.0f;

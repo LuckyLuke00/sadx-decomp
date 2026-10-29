@@ -369,7 +369,7 @@ void FUN_004a0980(const struct obj *param_1, const struct NJS_MOTION *param_2, c
 }
 
 // FUNCTION: SADX 0x004a0a10
-void njEasyDrawObject(struct obj *obj)
+void njEasyDrawObject(NJS_OBJECT *obj)
 {
 	njSetConstantMaterial(&DAT_05b3df28);
 	FUN_004a0920(obj);
@@ -431,7 +431,7 @@ void ___DrawObject(struct obj *obj)
 		{
 		case 0:
 			njPushMatrixEx();
-			njTranslateEx(&obj->pos[0]);
+			njTranslateEx((NJS_VECTOR *)obj->pos);
 			if (local_8 & 0x20)
 			{
 				njRotateZXY(0, obj->ang[0], obj->ang[1], obj->ang[2]);
@@ -496,7 +496,7 @@ void ___DrawObject(struct obj *obj)
 			break;
 		case 2:
 			njPushMatrixEx();
-			njTranslateEx(&obj->pos[0]);
+			njTranslateEx((NJS_VECTOR *)obj->pos);
 			njScaleEx((NJS_VECTOR *)obj->scl);
 			if ((local_8 & 8) == 0)
 			{
@@ -545,7 +545,7 @@ void ___DrawObject(struct obj *obj)
 			break;
 		case 4:
 			njPushMatrixEx();
-			njTranslateEx(&obj->pos[0]);
+			njTranslateEx((NJS_VECTOR *)obj->pos);
 			if (local_8 & 0x20)
 			{
 				njRotateZXY(0, obj->ang[0], obj->ang[1], obj->ang[2]);
@@ -608,7 +608,7 @@ void ___DrawObject(struct obj *obj)
 			break;
 		case 6:
 			njPushMatrixEx();
-			njTranslateEx(&obj->pos[0]);
+			njTranslateEx((NJS_VECTOR *)obj->pos);
 			if ((local_8 & 8) == 0)
 			{
 				unsigned long local_24 = (unsigned long)obj->model;

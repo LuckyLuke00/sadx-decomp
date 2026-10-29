@@ -9,6 +9,6 @@ long GetMMMatrix(unsigned long srcnmb, float *ansmat)
 	{
 		return 0;
 	}
-	njSetMatrix(ansmat, (float *)((char *)DAT_05cced18 + srcnmb * 0x40));
+	njSetMatrix((NJS_MATRIX *)ansmat, (NJS_MATRIX *)((char *)DAT_05cced18 + srcnmb * 0x40));
 	return 1;
 }

@@ -29,7 +29,7 @@ void _njTransformObject(struct obj *param_1, void (*param_2)(struct NJS_MODEL *)
 			njPushMatrixEx();
 			if ((var1 & 1) == 0)
 			{
-				njTranslateEx(&param_1->pos);
+				njTranslateEx((NJS_VECTOR *)param_1->pos);
 			}
 			if ((var1 & 2) == 0)
 			{

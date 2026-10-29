@@ -12,7 +12,7 @@ void DispAllHahens(struct TMyWork *MyWork)
 	for (var3 = 4; var3 != 0; var3--)
 	{
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, (struct NJS_POINT3 *)var1);
+		njTranslateV(NULL, (struct NJS_POINT3 *)var1);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
 			njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
@@ -23,7 +23,7 @@ void DispAllHahens(struct TMyWork *MyWork)
 		}
 		if (*(int *)((char *)var1 + 0x20) != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x20));
+			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x20));
 		}
 		ds_DrawModelClip(var2->Obj->model, 1.0f);
 		njPopMatrix(1);

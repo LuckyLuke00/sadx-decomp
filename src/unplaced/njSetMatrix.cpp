@@ -2,11 +2,11 @@
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 
 // FUNCTION: SADX 0x0067dba0
-void njSetMatrix(float *md, float *ms)
+void njSetMatrix(NJS_MATRIX *md, NJS_MATRIX *ms)
 {
-	if (md == (float *)0x0)
+	if (md == NULL)
 	{
-		md = (float *)DAT_0629c518;
+		md = (NJS_MATRIX *)DAT_0629c518;
 	}
 	memcpy(md, ms, 0x40);
 }

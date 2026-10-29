@@ -415,7 +415,7 @@ void FUN_004d3180(void *param_1, void *param_2, float *param_3)
 	local_14.y = 1.0f;
 	local_14.z = 0.0f;
 	njPushMatrix(&_nj_unit_matrix_);
-	njTranslateEx((char *)param_1 + 0x20);
+	njTranslateEx((NJS_VECTOR *)((char *)param_1 + 0x20));
 	if ((*(int *)((char *)param_2 + 4) & 0x200) != 0)
 	{
 		if (((*(int *)((char *)param_2 + 4) & 0x20) == 0) && ((*(int *)((char *)param_2 + 4) & 0x8000) == 0))

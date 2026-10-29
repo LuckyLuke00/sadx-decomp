@@ -2,7 +2,7 @@
 void FUN_0042b090(long param_1);
 
 // FUNCTION: SADX 0x00421470
-void njDrawTexture(struct NJS_TEXTURE_VTX *polygon, int count, int tex, int flag)
+void njDrawTexture(NJS_TEXTURE_VTX *polygon, Int count, Int tex, Int flag)
 {
 	_gjTrans2D(flag);
 	_gjRender2DSet();
@@ -24,7 +24,7 @@ void njQuadTextureEnd(void)
 }
 
 // FUNCTION: SADX 0x00421560
-void njSetQuadTexture(long texid, unsigned long col)
+void njSetQuadTexture(Sint32 texid, Uint32 col)
 {
 	stSetQuadColor(col);
 	FUN_0042b090(texid);
@@ -94,6 +94,6 @@ void njDrawQuadTexture(struct NJS_QUAD_TEXTURE *q, float z)
 }
 
 // STUB: SADX 0x004220c0
-void njDrawTriangle2D(struct NJS_POINT2COL *p, int n, float pri, unsigned long attr)
+void njDrawTriangle2D(NJS_POINT2COL *p, Int n, Float pri, Uint32 attr)
 {
 }

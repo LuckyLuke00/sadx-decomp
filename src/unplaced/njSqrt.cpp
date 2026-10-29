@@ -2,7 +2,7 @@
 extern "C" double sqrt(double param_1);
 
 // FUNCTION: SADX 0x00431900
-float njSqrt(float n)
+Float njSqrt(Float n)
 {
 	if (n < 0.0)
 	{

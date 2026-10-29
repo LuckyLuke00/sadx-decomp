@@ -46,8 +46,8 @@ static void objNormalR(struct task *tp)
 		return;
 	}
 	njPushMatrix((NJS_MATRIX *)&DAT_060c4208);
-	njCalcPoint((float *)0, &DAT_060c36cc, &var1->pos);
-	njCalcVector((float *)0, &DAT_02b11480, (struct NJS_POINT3 *)((char *)var2 + 4));
+	njCalcPoint(NULL, &DAT_060c36cc, &var1->pos);
+	njCalcVector(NULL, &DAT_02b11480, (struct NJS_POINT3 *)((char *)var2 + 4));
 	njPopMatrix(1);
 	objDisplayR(tp);
 }
@@ -110,14 +110,14 @@ void objDisplayBT(struct task *tp)
 		___njSetTexture(&texlist_chaos7_0breath);
 		*(int *)((char *)object_c7_breath_tame_breath_tame.model->mats + 0xc) = *(short *)((char *)var1 + 0xe) + 0x23;
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
 			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		if (DAT_060c36c4 != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)DAT_060c36c4);
+			njRotateZ(NULL, (unsigned short)DAT_060c36c4);
 		}
 		FUN_0067d2d0((float *)0, 5.0f, 5.0f, 5.0f);
 		late_DrawObject(&object_c7_breath_tame_breath_tame, 4);

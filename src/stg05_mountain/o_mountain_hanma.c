@@ -7,7 +7,7 @@ void HanmaExec(struct task *tp)
 	struct taskwk *var2 = tp->ptp->twp;
 	njPushMatrix(NULL);
 	njUnitMatrix(NULL);
-	njTranslateV((float *)0, &var2->pos);
+	njTranslateV(NULL, &var2->pos);
 	if (*(int *)((char *)var2 + 0x18) != 0)
 	{
 		njRotateY(NULL, (unsigned short)*(short *)((char *)var2 + 0x18));
@@ -16,7 +16,7 @@ void HanmaExec(struct task *tp)
 	{
 		njRotateX(NULL, (unsigned short)(short)var2->counter.f);
 	}
-	njCalcPoint((float *)0, &var1->scl, &var1->pos);
+	njCalcPoint(NULL, &var1->scl, &var1->pos);
 	njPopMatrix(1);
 	EntryColliList(var1);
 }

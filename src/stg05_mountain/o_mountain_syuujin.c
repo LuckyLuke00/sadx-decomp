@@ -13,7 +13,7 @@ void Object_Mountain_Syuujin_Display(struct task *tp)
 	{
 		___njSetTexture(&texlist_obj_mountain);
 		njPushMatrix(NULL);
-		njTranslateV((float *)0, &var1->pos);
+		njTranslateV(NULL, &var1->pos);
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
 			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
@@ -22,7 +22,7 @@ void Object_Mountain_Syuujin_Display(struct task *tp)
 		{
 			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
-		njScaleV((float *)0, &var1->scl);
+		njScaleV(NULL, &var1->scl);
 		late_ActionClipMesh((struct NJS_ACTION *)var1->counter.ptr, *(float *)((char *)var1 + 0xc), 4, FUN_004a1e90((float *)&var1->scl));
 		njPopMatrix(1);
 	}

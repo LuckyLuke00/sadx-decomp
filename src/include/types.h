@@ -208,7 +208,6 @@ struct NJS_CACTION;
 struct NJS_CAMERA;
 struct NJS_CNK_MODEL;
 union NJS_COLOR;
-struct NJS_LIGHT;
 struct NJS_MATERIAL;
 struct NJS_MESHSET;
 struct NJS_MKEY_A;

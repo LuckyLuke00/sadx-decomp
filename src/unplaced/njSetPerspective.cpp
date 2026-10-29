@@ -3,7 +3,7 @@ extern float DAT_0629c6e4;
 extern float DAT_0629c6e0;
 
 // FUNCTION: SADX 0x0067e550
-void njSetPerspective(long ang)
+void njSetPerspective(Angle ang)
 {
 	double local_c;
 	local_c = (double)DAT_0629c6e4;

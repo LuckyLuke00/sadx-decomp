@@ -19,7 +19,7 @@ void AL_SetCurrMatrixSub(struct al_object *pObject)
 		njPushMatrixEx();
 		njTranslateV(0, (struct NJS_POINT3 *)&pObject->Pos[0]);
 		njRotateXYZ(0, pObject->Ang[0], pObject->Ang[1], pObject->Ang[2]);
-		njGetMatrix((float *)pObject->pOldMatrix);
+		njGetMatrix(pObject->pOldMatrix);
 		if (pObject->pChild != 0)
 		{
 			AL_SetCurrMatrixSub(pObject->pChild);

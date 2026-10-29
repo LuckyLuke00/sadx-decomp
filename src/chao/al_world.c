@@ -354,8 +354,8 @@ void ALW_Control(struct task *tp)
 // FUNCTION: SADX 0x0043def0
 void ALW_Displayer(struct task *tp)
 {
-	njGetMatrix(DAT_05ade380);
-	njGetMatrix(DAT_05aea9f0);
+	njGetMatrix(&DAT_05ade380);
+	njGetMatrix(&DAT_05aea9f0);
 	njInvertMatrix(&DAT_05aea9f0);
 	DAT_05aeaa34 = 0;
 }

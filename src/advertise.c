@@ -263,7 +263,7 @@ int cameramodechange(int sw)
 int padconfig(int sw)
 {
 	int local_22ci;
-	void *local_230;
+	const PDS_PERIPHERAL *local_230;
 	NJS_POINT3 local_23cv;
 	unsigned long local_240g;
 	NJS_POINT2 local_248j;
@@ -359,7 +359,7 @@ int padconfig(int sw)
 			local_230 = pdGetPeripheral(0);
 			if (DAT_05cd287c == -2)
 			{
-				if (*(unsigned int *)((char *)local_230 + 8) != 0)
+				if (local_230->on != 0)
 					break;
 				else
 					DAT_05cd287c = -1;

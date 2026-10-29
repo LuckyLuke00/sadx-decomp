@@ -10,7 +10,7 @@ void BgDisplayer(struct task *tp)
 	___njSetTexture(&texlist_egm1sora);
 	njPushMatrix(NULL);
 	FUN_0067d830((float *)0, DAT_05b42a7c->pos.x, 0.0f, DAT_05b42a7c->pos.z);
-	njScaleV((float *)0, &DAT_05b3e074);
+	njScaleV(NULL, &DAT_05b3e074);
 	ds_DrawObjectClip((struct obj *)&object_mra_s_sora_hare_s_sora_hare, FUN_004a1e90((float *)&DAT_05b3e074));
 	njPopMatrix(1);
 	___njFogEnable();

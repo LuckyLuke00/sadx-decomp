@@ -12,7 +12,7 @@ static void Draw(struct task *tp)
 		FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
-			njRotateZ((float *)0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
 		}
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{

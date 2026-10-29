@@ -35,7 +35,7 @@ void dispTPBrokenBarrel(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 	SetObjectTexture();
 	njPushMatrix(NULL);
-	njTranslateV((float *)0, &var1->pos);
+	njTranslateV(NULL, &var1->pos);
 	if (*(int *)((char *)var1 + 0x14) != 0)
 	{
 		njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));

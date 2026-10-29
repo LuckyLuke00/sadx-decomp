@@ -18,7 +18,7 @@ void njWaitVSync(void)
 }
 
 // FUNCTION: SADX 0x004245a0
-void njSetBackColor(unsigned long col1, unsigned long col2, unsigned long col3)
+void njSetBackColor(Uint32 col1, Uint32 col2, Uint32 col3)
 {
 	DAT_05ad9604 = col1;
 	DAT_05ad9608 = col2;
