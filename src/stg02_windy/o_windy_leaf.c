@@ -20,7 +20,7 @@ void WireClothWindDisplayer(struct task *tp)
 				FUN_0067d830(0, var1->pos.x, var1->pos.y + var1->value.f, var1->pos.z);
 				if (var1->ang.y)
 				{
-					njRotateY(0, var1->ang.y);
+					njRotateY(0, (Uint16)var1->ang.y);
 				}
 				FUN_0067d2d0(0, var1->scl.x, 1.0f, var1->scl.x);
 				late_DrawObjectClip(object_wvobj_ha_red_ha_red, 0, var1->scl.x > 1.0f ? var1->scl.x : 1.0f);

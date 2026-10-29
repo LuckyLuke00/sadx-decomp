@@ -22,7 +22,7 @@ void ObjectIronBallDisplay(struct task *tp)
 	if (local_8->ang.z != 0)
 		njRotateZ(0, (unsigned short)local_8->ang.z);
 	if (local_8->ang.x != 0)
-		njRotateX(0, local_8->ang.x);
+		njRotateX(0, (Uint16)local_8->ang.x);
 	ds_DrawModelClip(*(struct NJS_MODEL **)((char *)local_8->counter.ptr + 4), 1.0f);
 	njPopMatrix(1);
 	LoadConstantAttr();

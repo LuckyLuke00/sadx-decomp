@@ -8,7 +8,6 @@ extern int DAT_05cd2970;
 extern float DAT_05cd2984;
 extern float DAT_05cd2988;
 extern float DAT_05cd298c;
-double njScalor(struct NJS_POINT3 *);
 extern struct NJS_TEXLIST texlist_fishing;
 void dispDistanceNum(float dist);
 extern short DAT_05b9d724;

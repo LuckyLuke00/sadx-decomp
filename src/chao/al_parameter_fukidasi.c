@@ -1,6 +1,5 @@
 #include "decls.h"
 extern struct task *DAT_05b314d8;
-void syFree(void *param_1);
 
 // FUNCTION: SADX 0x0045cac0
 void ParamFukidasiDestructor(struct task *tp)

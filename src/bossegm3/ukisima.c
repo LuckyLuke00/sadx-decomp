@@ -24,11 +24,11 @@ void UkisimaDraw(struct task *tp)
 		njControl3D(0x10);
 		SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
 		var3 = (float *)0;
-		njPushMatrix(var3);
+		njPushMatrix((NJS_MATRIX *)var3);
 		FUN_0067d830(var3, var1->pos.x, var1->pos.y, var1->pos.z);
 		if (var1->ang.y != 0)
 		{
-			njRotateY(var3, (unsigned short)var1->ang.y);
+			njRotateY((NJS_MATRIX *)var3, (unsigned short)var1->ang.y);
 		}
 		ds_DrawObjectClip((struct obj *)var2->work.ptr[0], 1.0f);
 		njPopMatrix(1);

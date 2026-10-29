@@ -1,5 +1,4 @@
 #include "decls.h"
-void syFree(void *param_1);
 extern void *DAT_05b39bb4;
 extern void *DAT_05b42898;
 extern void *DAT_05b4296c;

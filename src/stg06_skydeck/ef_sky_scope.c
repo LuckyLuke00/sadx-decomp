@@ -1,12 +1,8 @@
 #include "decls.h"
 extern int DAT_05b9d838;
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
-void njScaleV(float *param_1, struct NJS_POINT3 *param_2);
 float FUN_004a1e90(float *param_1);
 void ds_DrawObjectClip(struct obj *obj, float clipScl);
-void njRotateY(float *, unsigned short);
-void njPopMatrix(int param_1);
-void njPushMatrix(float *);
 long SetObjectTexture();
 
 // FUNCTION: SADX 0x0083e370
@@ -22,7 +18,7 @@ void dispSkyScope(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y + 0.5, var1->pos.z);
 	if ((var1->btimer & 2) && var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	if (var1->btimer & 4)
 	{

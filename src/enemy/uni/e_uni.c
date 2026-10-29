@@ -1,30 +1,12 @@
 #include "decls.h"
-extern void njPushMatrix(float *param_1);
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
 void ___dsDrawObject(struct obj *obj);
-extern void njRotateY(float *param_1, unsigned short param_2);
-float njCos(int param_1);
-float njSin(int param_1);
 void EnemyUniC(struct task *tp);
-void njPushMatrix(float *);
-void njTranslateV(float *, struct NJS_POINT3 *);
-void njRotateY(float *, unsigned short);
-void njRotateZ(float *, int);
-void njRotateX(float *, unsigned short);
-void njPopMatrix(int);
-float njCos(int);
-float njSin(int);
 void UniTogeADraw(struct taskwk *, struct enemywk *);
 void UniAExecutor(struct task *tp);
 void UniADisplayer(struct task *tp);
 void UniTogeA(struct task *tp);
 extern struct obj object_uni_c_unibody_unibody[1];
-void njPushMatrix(float *param_1);
-void njTranslateV(float *param_1, struct NJS_POINT3 *param_2);
-void njRotateY(float *param_1, unsigned short param_2);
-void njRotateZ(float *param_1, int param_2);
-void njRotateX(float *param_1, unsigned short param_2);
-void njPopMatrix(int param_1);
 void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005cd0c0(struct task *param_1, struct motionwk *param_2);
 void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
@@ -313,7 +295,7 @@ void UniTogeADisplayer(struct task *tp)
 	}
 	if (local_cg->ang.x != 0)
 	{
-		njRotateX(0, local_cg->ang.x);
+		njRotateX(0, (Uint16)local_cg->ang.x);
 	}
 	___dsDrawObject(&object_togeball_togeball_togeball);
 	njPopMatrix(1);

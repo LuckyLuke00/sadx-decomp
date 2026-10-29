@@ -1,10 +1,8 @@
 #include "decls.h"
 extern int DAT_0629c518;
-float njSin(int param_1);
-float njCos(int param_1);
 
 // FUNCTION: SADX 0x00430aa0
-void njRotateZ(float *param_1, int param_2)
+void njRotateZ(float *m, int ang)
 {
 	float local_10;
 	float local_c;
@@ -14,15 +12,15 @@ void njRotateZ(float *param_1, int param_2)
 	float var1;
 	float *var2;
 
-	local_10 = njSin(param_2);
-	local_c = njCos(param_2);
-	if (param_1 == 0)
+	local_10 = njSin(ang);
+	local_c = njCos(ang);
+	if (m == 0)
 	{
 		var2 = (float *)DAT_0629c518;
 	}
 	else
 	{
-		var2 = param_1;
+		var2 = m;
 	}
 	local_8 = var2[0];
 	local_14 = var2[1];

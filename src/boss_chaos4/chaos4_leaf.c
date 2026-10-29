@@ -4,11 +4,7 @@ extern struct NJS_TEXLIST texlist_chaos4_object;
 extern struct NJS_ACTION action_c4_s_skusa[];
 void Tmit_MaterialInit();
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
-void njPushMatrix(float *);
-void njTranslateV(float *, struct NJS_POINT3 *);
-void njRotateY(float *, unsigned short);
 void late_ActionClipMS(NJS_ACTION *action, float frame, int flgs, float clipScl);
-void njPopMatrix(int param_1);
 extern int DAT_05b9d838;
 extern int DAT_05b3df4c;
 extern float DAT_05b3df40;
@@ -22,7 +18,7 @@ void Dsp_Leaf(struct task *pTask)
 	{
 		Tmit_MaterialInit();
 		___njSetTexture(&texlist_chaos4_object);
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, &var1->pos);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
@@ -30,11 +26,11 @@ void Dsp_Leaf(struct task *pTask)
 		}
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
-			njRotateX((float *)0, (unsigned short)*(short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY((float *)0, (unsigned short)*(short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
 		}
 		if (DAT_05b3df4c != 0)
 		{

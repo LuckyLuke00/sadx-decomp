@@ -2,14 +2,14 @@
 extern void *DAT_01c76fa0;
 
 // FUNCTION: SADX 0x0067e380
-void njActionOld(struct NJS_ACTION const *param_1, float param_2)
+void njActionOld(struct NJS_ACTION const *action, float frame)
 {
 	struct obj *var1;
 	struct NJS_MOTION *var2;
 
-	var1 = param_1->object;
-	var2 = param_1->motion;
-	njStartMotionObj(var2, param_2);
+	var1 = action->object;
+	var2 = action->motion;
+	njStartMotionObj(var2, frame);
 	*(void **)((char *)DAT_01c76fa0 + 0xc) = _njDrawModel;
 	_njBeginModel();
 	_njPushPopMotion(var1);
@@ -17,26 +17,26 @@ void njActionOld(struct NJS_ACTION const *param_1, float param_2)
 }
 
 // FUNCTION: SADX 0x0067e3c0
-void njGetDrawMotion(struct obj const *param_1, struct NJS_MOTION const *param_2, struct NJS_MOTION_DATA *param_3, float param_4)
+void njGetDrawMotion(struct obj const *object, struct NJS_MOTION const *motion, struct NJS_MOTION_DATA *data, float frame)
 {
-	*(void **)((char *)DAT_01c76fa0 + 0x0) = param_3->pos;
-	*(void **)((char *)DAT_01c76fa0 + 0x8) = param_3->ang;
-	*(void **)((char *)DAT_01c76fa0 + 0x4) = param_3->scl;
-	njStartMotionObj(param_2, param_4);
-	_njPushPopGetMotionDataArray(param_1);
+	*(void **)((char *)DAT_01c76fa0 + 0x0) = data->pos;
+	*(void **)((char *)DAT_01c76fa0 + 0x8) = data->ang;
+	*(void **)((char *)DAT_01c76fa0 + 0x4) = data->scl;
+	njStartMotionObj(motion, frame);
+	_njPushPopGetMotionDataArray(object);
 }
 
 // FUNCTION: SADX 0x0067e410
-void njGetAction(struct NJS_ACTION const *param_1, struct NJS_MOTION_DATA *param_2, float param_3)
+void njGetAction(struct NJS_ACTION const *action, struct NJS_MOTION_DATA *data, float frame)
 {
 	struct obj *var1;
 	struct NJS_MOTION *var2;
 
-	var1 = param_1->object;
-	var2 = param_1->motion;
-	*(void **)((char *)DAT_01c76fa0 + 0x0) = param_2->pos;
-	*(void **)((char *)DAT_01c76fa0 + 0x8) = param_2->ang;
-	*(void **)((char *)DAT_01c76fa0 + 0x4) = param_2->scl;
-	njStartMotionObj(var2, param_3);
+	var1 = action->object;
+	var2 = action->motion;
+	*(void **)((char *)DAT_01c76fa0 + 0x0) = data->pos;
+	*(void **)((char *)DAT_01c76fa0 + 0x8) = data->ang;
+	*(void **)((char *)DAT_01c76fa0 + 0x4) = data->scl;
+	njStartMotionObj(var2, frame);
 	_njPushPopGetMotionDataArray(var1);
 }

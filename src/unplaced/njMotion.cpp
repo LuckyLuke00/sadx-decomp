@@ -28,9 +28,9 @@ void njSetCurMotionInfoSlot(int param_1)
 }
 
 // FUNCTION: SADX 0x004253c0
-void njSetMotionCallback(void (*param_1)(struct obj *))
+void njSetMotionCallback(void (*func)(struct obj *))
 {
-	DAT_05ada214 = param_1;
+	DAT_05ada214 = func;
 }
 
 #pragma optimize("", off)
@@ -51,9 +51,9 @@ void njStartMotionLink(struct NJS_MOTION_LINK const *param_1,float param_2)
 }
 
 // FUNCTION: SADX 0x004254c0
-void njInitShape(float *param_1)
+void njInitShape(float *buf)
 {
-	DAT_0629c440 = param_1;
+	DAT_0629c440 = buf;
 }
 
 // FUNCTION: SADX 0x00425610

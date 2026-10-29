@@ -24,7 +24,7 @@ void dispStep(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	___dsDrawObject(*(struct obj **)((char *)var1 + 8));
 	njPopMatrix(1);
@@ -58,7 +58,7 @@ void dispFlyingStepSub(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_004a88c0((NJS_ACTION *)var1->value.ptr, var1->timer.f);
 	njPopMatrix(1);

@@ -18,7 +18,7 @@ void DrawMtnSpiderA(struct task *tp)
 		}
 		if (var1->ang.x != 0)
 		{
-			njRotateX(0, var1->ang.x);
+			njRotateX(0, (Uint16)var1->ang.x);
 		}
 		FUN_0067d2d0(0, var2, var2, var2);
 		ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)var1 + 8)), var1->timer.f, var2);
@@ -56,11 +56,11 @@ void DrawMtnSpiderB(struct task *tp)
 		}
 		if (var1->ang.x != 0)
 		{
-			njRotateX(0, var1->ang.x);
+			njRotateX(0, (Uint16)var1->ang.x);
 		}
 		if (var1->ang.y != 0)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		FUN_0067d2d0(0, var2, var2, var2);
 		ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)var1 + 8)), var1->timer.f, var2);

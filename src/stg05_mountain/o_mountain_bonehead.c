@@ -16,11 +16,11 @@ void DrawBonehead(struct task *tp)
 		}
 		if (var1->ang.x != 0)
 		{
-			njRotateX(0, var1->ang.x);
+			njRotateX(0, (Uint16)var1->ang.x);
 		}
 		if (var1->ang.y != 0)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		FUN_0067d2d0(0, var1->scl.x + 1.0f, var1->scl.x + 1.0f, var1->scl.x + 1.0f);
 		ds_DrawModelClip((struct NJS_MODEL *)&model_haka1a_gaikotu_gaikotu, var1->scl.x + 1.0f);

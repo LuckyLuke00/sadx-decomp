@@ -1,6 +1,5 @@
 #include "decls.h"
 extern void (*DAT_05b9e0b0)();
-void *syMalloc(unsigned int param_1);
 void _boss_robo_epilog();
 void changerroboinit();
 extern struct NJS_POINT3 *DAT_060bb8cc;

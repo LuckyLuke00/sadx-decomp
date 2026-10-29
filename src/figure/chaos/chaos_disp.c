@@ -2,19 +2,13 @@
 extern short DAT_060dfc80;
 extern "C" double atan2(double v, double u);
 extern struct task *DAT_060dfe30;
-extern void njPushMatrix(float *param_1);
-extern void njPopMatrix(int param_1);
 extern void CHAOS_SetMeshMode(int sw);
 extern void CHAOS_DrawObject(struct obj *o);
 void ChaosSurfacePatternChange(struct chaoswk *chwp);
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
-void njPushMatrix(float *);
-void njTranslateV(float *, struct NJS_POINT3 *);
 void effectWaterMove(struct taskwk *twp, struct chaoswk *cwp, struct obj *obj);
-void njScaleV(float *, struct NJS_POINT3 *);
 void CHAOS_SetMeshMode(int sw);
 void CHAOS_DrawObject(struct obj *o);
-void njPopMatrix(int);
 extern struct obj object_c0_manju_c0_manju[1];
 
 // STUB: SADX 0x008c83f0

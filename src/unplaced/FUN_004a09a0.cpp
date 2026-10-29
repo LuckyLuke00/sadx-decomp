@@ -3,7 +3,6 @@
 extern NJS_ARGB DAT_05b3df28;
 extern NJS_ARGB DAT_05b39de4;
 
-void njSetConstantMaterial(NJS_ARGB *param_1);
 void FUN_004a0940(struct NJS_MODEL *param_1);
 void FUN_004a0960(struct obj *param_1, struct NJS_MOTION *param_2, float param_3);
 

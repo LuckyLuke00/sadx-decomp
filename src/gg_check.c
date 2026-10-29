@@ -6,13 +6,11 @@ void CameraSetEventCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), unsig
 void CameraStay(struct _OBJ_CAMERAPARAM *pParam);
 void GGMessageMain(struct task *tp);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
-extern void syFree(void *param_1);
 extern void FUN_004c3310(int *param_1);
 extern void FUN_004c1c20();
 extern void MSG_Disp(struct MSGC *msgc);
 extern void *DAT_05ccdebc;
 extern int DAT_05ccdec0;
-void syFree(void *param_1);
 void GGMessageDest(struct task *tp);
 extern char DAT_05ccdf08;
 

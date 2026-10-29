@@ -3260,7 +3260,7 @@
   {
    "address": "0x00430b70",
    "name": "njPushMatrix",
-   "accuracy": 0.32,
+   "accuracy": 0.3076923076923077,
    "effective": false,
    "stub": true,
    "library": false
@@ -3652,7 +3652,7 @@
   {
    "address": "0x00433770",
    "name": "njPushMatrixEx",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 0.10526315789473684,
    "effective": false,
    "stub": true,
    "library": false
@@ -3980,7 +3980,7 @@
   {
    "address": "0x004364a0",
    "name": "njInvertMatrix",
-   "accuracy": 0.014925373134328358,
+   "accuracy": 0.0148975791433892,
    "effective": false,
    "stub": true,
    "library": false
@@ -40717,7 +40717,7 @@
   {
    "address": "0x0061ccb0",
    "name": "ColliSpaceEditMode",
-   "accuracy": 0.909952606635071,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -48749,7 +48749,7 @@
   {
    "address": "0x00706de0",
    "name": "_exec(2)",
-   "accuracy": 1.0,
+   "accuracy": 0.9583333333333334,
    "effective": false,
    "stub": false,
    "library": false
@@ -55981,7 +55981,7 @@
   {
    "address": "0x008105a0",
    "name": "_exec(3)",
-   "accuracy": 1.0,
+   "accuracy": 0.9565217391304348,
    "effective": false,
    "stub": false,
    "library": false
@@ -97067,5 +97067,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "fdcca39db6fdff390e61cf7d13fe5f6bc31c1ca1de54ce10e61125c5e5f08e24"
+ "inputs_sha256": "79848cb5a4ec2181664a9fa2ff5d16fc0b05ddf3af39128950dca4d43ed52c5d"
 }

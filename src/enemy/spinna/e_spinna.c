@@ -1,5 +1,4 @@
 #include "decls.h"
-float njSin(int param_1);
 unsigned long GetGlobalTime();
 void SpinnaEditDraw(struct taskwk *twp, float xpos, float ypos, float zpos);
 float EnemyDist2FromHome(struct taskwk *twp, struct enemywk *ewp);
@@ -9,10 +8,7 @@ extern struct NJS_TEXLIST texlist_supi_supi;
 extern struct obj object_supi_supi_supi;
 extern void ___njSetTexture(struct NJS_TEXLIST *texlist);
 extern void ___dsSetPalette(long no);
-extern void njPushMatrix(float *param_1);
-extern void njRotateY(float *param_1, unsigned short param_2);
 extern void ___dsDrawObject(struct obj *obj);
-extern void njPopMatrix(int param_1);
 
 // STUB: SADX 0x00593ba0
 void EnemySpinnaA(struct task *tp)
@@ -56,7 +52,7 @@ void SpinnaEditDraw(struct taskwk *twp, float xpos, float ypos, float zpos)
 	FUN_0067d830(0, xpos, ypos, zpos);
 	if (twp->ang.y != 0)
 	{
-		njRotateY(0, twp->ang.y);
+		njRotateY(0, (Uint16)twp->ang.y);
 	}
 	___dsDrawObject(&object_supi_supi_supi);
 	njPopMatrix(1);

@@ -4,8 +4,6 @@
 extern int DAT_060cef14;
 void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2);
 void FUN_005e5770(struct task *param_1);
-float njSqrt(float param_1);
-void njUnitMatrix(float *param_1);
 static __inline void death(struct task *pTask, float fSize);
 static void chkDamage(struct task *pTask);
 static void updownHeight(struct task *pTask);
@@ -115,13 +113,13 @@ static void smoke(struct task *pTask)
 {
 	struct taskwk *local_8 = pTask->twp;
 	struct NJS_POINT3 pos;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	pos.z = 0.0f;
 	if (local_8->ang.y)
 	{
 		pos.y = 0.0f;
 		pos.x = 2.0f;
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	}
 	else
 	{
@@ -130,7 +128,7 @@ static void smoke(struct task *pTask)
 	}
 	if (local_8->ang.x)
 	{
-		njRotateX(0, local_8->ang.x);
+		njRotateX(0, (Uint16)local_8->ang.x);
 	}
 	njCalcPoint(0, &pos, &missile_smoke.velo);
 	njPopMatrix(1);
@@ -154,11 +152,11 @@ static void disp(struct task *pTask)
 		njTranslateV(0, &local_8->pos);
 		if (local_8->ang.y - 0x4000)
 		{
-			njRotateY(0, local_8->ang.y - 0x4000);
+			njRotateY(0, (Uint16)(local_8->ang.y - 0x4000));
 		}
 		if (local_8->ang.x + 0x4000)
 		{
-			njRotateX(0, local_8->ang.x + 0x4000);
+			njRotateX(0, (Uint16)(local_8->ang.x + 0x4000));
 		}
 		___dsDrawObject(object_03_misile_03_misile_03_misile);
 		njPopMatrix(1);
@@ -176,11 +174,11 @@ static void disp(struct task *pTask)
 	njTranslateV(0, &local_8->pos);
 	if (local_8->ang.y - 0x4000)
 	{
-		njRotateY(0, local_8->ang.y - 0x4000);
+		njRotateY(0, (Uint16)(local_8->ang.y - 0x4000));
 	}
 	if (local_8->ang.x + 0x4000)
 	{
-		njRotateX(0, local_8->ang.x + 0x4000);
+		njRotateX(0, (Uint16)(local_8->ang.x + 0x4000));
 	}
 	njDrawObject(object_03_misile_03_misile_03_misile);
 	njPopMatrix(1);
@@ -211,7 +209,7 @@ static void _exec(struct task *pTask)
 	long local_14;
 	struct NJS_POINT3 local_60;
 	struct NJS_POINT3 local_54;
-	float local_48[16];
+	NJS_MATRIX local_48;
 	float local_64;
 	((int *)local_8)[3]--;
 	chkDamage(pTask);
@@ -231,10 +229,10 @@ static void _exec(struct task *pTask)
 	updownHeight(pTask);
 	local_60.x = -0.4f;
 	local_60.y = local_60.z = 0.0f;
-	njUnitMatrix(local_48);
+	njUnitMatrix(&local_48);
 	if (local_c->ang.y)
 	{
-		njRotateY(local_48, local_c->ang.y);
+		njRotateY(&local_48, (Uint16)local_c->ang.y);
 	}
 	njCalcPoint(local_48, &local_60, &local_54);
 	local_8->x += local_54.x;

@@ -10,7 +10,7 @@ void dispElevator(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	___dsDrawModel(*(struct NJS_MODEL **)((char *)var1->counter.ptr + 4));
 	njPopMatrix(1);
@@ -27,7 +27,7 @@ void dispEvStep(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	___dsDrawModel(*(struct NJS_MODEL **)((char *)var2 + 4));
 	njPushMatrix(0);

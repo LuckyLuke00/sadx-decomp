@@ -14,7 +14,6 @@ void FUN_005b5aa0(...);
 extern void *DAT_060eea60;
 int FUN_005b05b0(struct taskwk *local_8);
 void FUN_005b0e20(struct task *param_1);
-void njScaleV(float *, struct NJS_POINT3 *);
 void FUN_005ae5e0(struct taskwk *param_1, void *param_2);
 
 // STUB: SADX 0x005ae4f0

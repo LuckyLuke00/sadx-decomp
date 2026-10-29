@@ -31,7 +31,7 @@ void shotTape(struct task *pTask)
 	struct taskwk *var1 = pTask->twp;
 	struct NJS_POINT3 local_20;
 	struct NJS_POINT3 local_14;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (var1->ang.x)
 	{
 		njRotateX(0, (unsigned short)var1->ang.x);

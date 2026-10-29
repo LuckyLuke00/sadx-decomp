@@ -10,7 +10,7 @@ void FUN_006908a0(struct task *param_1)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	SetObjectTexture();
 	ds_ActionClip((struct NJS_ACTION *)&action_sssikake_kartdoor, *(float *)((char *)var1 + 8), 1.0f);

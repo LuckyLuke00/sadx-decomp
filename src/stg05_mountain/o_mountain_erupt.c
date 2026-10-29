@@ -1,7 +1,6 @@
 #include "decls.h"
 extern struct obj object_fun_test_funkaball_funkaball;
 extern void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
-extern void njRotateZ(float *param_1, int param_2);
 
 // STUB: SADX 0x00828ab0
 void DisplayStone(struct task *tp)

@@ -9,7 +9,6 @@ extern struct obj DAT_05a83f08;
 extern float DAT_05b3ec0c;
 void FUN_005a8ae0(float *param_1, float *param_2, float *param_3);
 void GetAngleXYV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_y);
-double njScalor(struct NJS_POINT3 *param_1);
 
 // STUB: SADX 0x008bb230
 void ObjectCmnDushRing(struct task *tp)
@@ -104,9 +103,9 @@ void DrawCmnDushRing(struct task *tp)
 	njPushMatrix(0);
 	njTranslateV(0, &local_8->pos);
 	if (local_8->ang.x != 0)
-		njRotateX(0, local_8->ang.x);
+		njRotateX(0, (Uint16)local_8->ang.x);
 	if (local_8->ang.y != 0)
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	if (local_8->ang.z != 0)
 		njRotateZ(0, (unsigned short)local_8->ang.z);
 	ds_DrawObjectClip(&DAT_05a83f08, 1.0f);

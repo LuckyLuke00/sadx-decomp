@@ -12,7 +12,7 @@ void Object_Ruin_BurningArrow_Display(struct task *tp)
 	SetObjectTexture();
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	___dsDrawModel(object_lwobj_arrow_arrow[0].model);
 	njPopMatrix(1);
@@ -32,7 +32,7 @@ void Object_Ruin_BurningBow_Display(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawModelClip(object_lwobj_bow_bow[0].model, 1.0f);
 	njPopMatrix(1);

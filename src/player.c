@@ -37,7 +37,6 @@ static void MomentMuteki(struct task *tp);
 static void PlayerSpeedUp(struct task *tp);
 static void LoopSECallForTheMode(struct task *tp);
 extern long DAT_05ba32e0[4];
-void pdVibMxStop(int param_1);
 extern char DAT_05ba3320[1];
 extern int DAT_05ba32b8[8];
 extern int DAT_05baf3a8[8];

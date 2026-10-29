@@ -16,7 +16,7 @@ void Object_Mountain_Kumonosu_Display(struct task *tp)
 		}
 		if (var1->ang.x != 0)
 		{
-			njRotateX(0, var1->ang.x);
+			njRotateX(0, (Uint16)var1->ang.x);
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{

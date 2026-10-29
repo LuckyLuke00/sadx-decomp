@@ -1,5 +1,4 @@
 #include "decls.h"
-void njRotateEx(long *param_1, int param_2);
 extern void *DAT_05ad9a9c;
 
 // STUB: SADX 0x0042b7e0
@@ -38,7 +37,7 @@ void _njTransformObject(struct obj *param_1, void (*param_2)(struct NJS_MODEL *)
 			}
 			if ((var1 & 4) == 0)
 			{
-				njScaleEx(&param_1->scl);
+				njScaleEx((NJS_VECTOR *)param_1->scl);
 			}
 			if ((var1 & 8) == 0)
 			{

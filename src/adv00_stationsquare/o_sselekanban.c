@@ -20,7 +20,7 @@ static void Disp(struct task *tp)
 			OnConstantAttr(0, 0x2000000);
 			OffConstantAttr(0x2000000, 0);
 		}
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, &var1->pos);
 		if (*(int *)((char *)var1 + 0x1c) != 0)
 		{
@@ -28,7 +28,7 @@ static void Disp(struct task *tp)
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		SetObjectTexture();
 		FUN_00422560(3);

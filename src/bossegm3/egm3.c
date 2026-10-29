@@ -58,7 +58,7 @@ void Egm3_laser1Draw(struct task *tp)
 		FUN_0067d830(NULL, var1->pos.x, var1->pos.y, var1->pos.z);
 		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, var1->ang.y);
+			njRotateY(NULL, (Uint16)var1->ang.y);
 		}
 		if (var1->ang.x != 0)
 		{
@@ -112,11 +112,11 @@ void EggmanEnergyDraw(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	if (var1->ang.x)
 	{
-		njRotateX(0, var1->ang.x);
+		njRotateX(0, (Uint16)var1->ang.x);
 	}
 	if (*(int *)((char *)var1 + 0x1c) != 0)
 	{
@@ -139,15 +139,15 @@ void EggmanBoomerangDraw(struct task *tp)
 		{
 			SaveConstantAttr();
 			___njSetTexture(&texlist_egm3mdl);
-			njPushMatrix((float *)0);
+			njPushMatrix(NULL);
 			FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
 			if (*(int *)((char *)var1 + 0x18) != 0)
 			{
-				njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+				njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 			}
 			if (*(int *)((char *)var1 + 0x14) != 0)
 			{
-				njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+				njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
 			}
 			if (*(int *)((char *)var1 + 0x1c) != 0)
 			{

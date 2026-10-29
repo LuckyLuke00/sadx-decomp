@@ -13,7 +13,7 @@ void ObjectSkydeck_crane_Draw(struct task *tp)
 		njTranslateV(0, &var1->pos);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		ds_DrawObjectClip(object_skymain_kr_skymain_kr, 1.0f);
 		njPopMatrix(1);

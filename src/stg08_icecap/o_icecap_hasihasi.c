@@ -18,7 +18,7 @@ void Object_IcecapHasihasiDraw(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_0067d2d0(0, var1->scl.x + 1.0f, var1->scl.y + 1.0f, var1->scl.z + 1.0f);
 	ds_DrawObjectClip(object_snow_sn_h_hasi01a_sn_h_hasi01a, FUN_00500c70(var1->scl.x + 1.0f, var1->scl.y + 1.0f, var1->scl.z + 1.0f));

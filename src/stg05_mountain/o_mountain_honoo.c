@@ -7,11 +7,11 @@ void Mountain_Honoo_Fire(struct task *tp, struct NJS_POINT3 tmpp, struct NJS_POI
 	struct taskwk *local_8 = tp->twp;
 	struct NJS_POINT3 local_14;
 	struct NJS_POINT3 local_20;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	njTranslateV(0, &local_8->pos);
 	if (local_8->ang.y)
 	{
-		njRotateY(0, local_8->ang.y);
+		njRotateY(0, (Uint16)local_8->ang.y);
 	}
 	FUN_0067d2d0(0, local_8->scl.x, local_8->scl.x, local_8->scl.x);
 	njCalcPoint(0, &tmpp, &local_14);
@@ -32,7 +32,7 @@ void o_mountain_honoo_Display(struct task *tp)
 		njTranslateV(0, &var1->pos);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
 		dsScaleLight(var1->scl.x);

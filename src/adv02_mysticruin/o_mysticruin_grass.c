@@ -26,7 +26,7 @@ void BigGrassDisplayer(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	DAT_05b3df40 = -37952.0f;
 	if (var1->flag & 0x100)

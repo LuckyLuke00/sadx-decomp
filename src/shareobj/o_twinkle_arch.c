@@ -24,9 +24,9 @@ void dispTPArch(struct task *tp)
 	if (local_8g->ang.z != 0)
 		njRotateZ(0, (unsigned short)local_8g->ang.z);
 	if (local_8g->ang.x != 0)
-		njRotateX(0, local_8g->ang.x);
+		njRotateX(0, (Uint16)local_8g->ang.x);
 	if (local_8g->ang.y != 0)
-		njRotateY(0, local_8g->ang.y);
+		njRotateY(0, (Uint16)local_8g->ang.y);
 	if ((local_8g->counter.ptr == &object_tpobj_slight1_slight1[0]) || (local_8g->counter.ptr == &object_tpobj_slight2_slight2[0]))
 		late_DrawObjectEx((struct obj *)local_8g->counter.ptr, 0);
 	else

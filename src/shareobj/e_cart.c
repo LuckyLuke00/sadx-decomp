@@ -159,7 +159,7 @@ void calcComponentVector(struct Angle3 *ang, struct NJS_POINT3 *vec)
 	{
 		return;
 	}
-	njPushMatrix(&_nj_unit_matrix_[0]);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (ang->z != 0)
 	{
 		njRotateZ(0, (unsigned short)ang->z);

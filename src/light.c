@@ -15,13 +15,6 @@ extern int DAT_05b39bec;
 extern int DAT_05b39dac;
 
 int __fastcall FUN_004199f0(void *param_1, float param_2);
-void njPushMatrix(float *param_1);
-void njTranslateV(float *param_1, struct NJS_POINT3 *param_2);
-void njRotateZ(float *param_1, int param_2);
-void njRotateX(float *param_1, unsigned short param_2);
-void njRotateY(float *param_1, unsigned short param_2);
-void njCalcVector(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
-void njPopMatrixEx();
 void FUN_007d21b0(...);
 void FUN_005b5aa0(...);
 
@@ -81,7 +74,7 @@ struct task *asSetLight(struct task *tp, struct NJS_LIGHT *glp, struct LightInfo
 		{
 			struct NJS_POINT3 local_20g;
 			struct NJS_POINT3 local_2c = lip->pos;
-			njPushMatrix(_nj_unit_matrix_);
+			njPushMatrix(&_nj_unit_matrix_);
 			njTranslateV(0, &local_10->pos);
 			if (local_10->ang.z)
 			{
@@ -89,11 +82,11 @@ struct task *asSetLight(struct task *tp, struct NJS_LIGHT *glp, struct LightInfo
 			}
 			if (local_10->ang.x)
 			{
-				njRotateX(0, local_10->ang.x);
+				njRotateX(0, (Uint16)local_10->ang.x);
 			}
 			if (local_10->ang.y)
 			{
-				njRotateY(0, local_10->ang.y);
+				njRotateY(0, (Uint16)local_10->ang.y);
 			}
 			njCalcVector(0, &local_2c, &local_20g);
 			njPopMatrixEx();

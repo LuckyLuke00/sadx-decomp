@@ -1,5 +1,4 @@
 #include "decls.h"
-void njPrintD(int, int, int);
 void AL__EditCancelMode(struct task *tp);
 extern signed char DAT_05b92ea0;
 extern unsigned char DAT_05b92e4c;

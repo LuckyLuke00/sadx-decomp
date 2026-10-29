@@ -215,7 +215,6 @@ extern int DAT_05cd2908;
 bool FUN_0040ae00();
 int FUN_0040b010(const void*, const void*);
 void FUN_004208c0(int, int, const wchar_t*, int, float, float);
-void* pdGetPeripheral(int);
 void* FUN_00424960();
 int FUN_0040b8a0();
 void FUN_004b23e0(void*, void*, int, const char*, int);

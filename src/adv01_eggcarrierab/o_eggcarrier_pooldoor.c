@@ -34,7 +34,7 @@ static void DispATask(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_0067d830(0, 0.0f, 0.0f, var1->cwp->info->center.z);
 	ds_DrawModelClip(DAT_060f4ad4[7], 1.0f);

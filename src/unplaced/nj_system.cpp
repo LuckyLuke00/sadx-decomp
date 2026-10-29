@@ -1,5 +1,4 @@
 #include "decls.h"
-void syFree(void *param_1);
 extern void *DAT_05ad9640;
 extern int DAT_05ad9634;
 extern unsigned long DAT_05ad9604;
@@ -19,12 +18,12 @@ void njWaitVSync(void)
 }
 
 // FUNCTION: SADX 0x004245a0
-void njSetBackColor(unsigned long param_1, unsigned long param_2, unsigned long param_3)
+void njSetBackColor(unsigned long col1, unsigned long col2, unsigned long col3)
 {
-	DAT_05ad9604 = param_1;
-	DAT_05ad9608 = param_2;
-	DAT_05ad960c = param_3;
-	DAT_05ad9610 = param_3;
+	DAT_05ad9604 = col1;
+	DAT_05ad9608 = col2;
+	DAT_05ad960c = col3;
+	DAT_05ad9610 = col3;
 }
 
 // FUNCTION: SADX 0x00424810
@@ -39,34 +38,34 @@ void njExitSystem(void)
 }
 
 // FUNCTION: SADX 0x00424840
-void njInitVertexBuffer(long param_1, long param_2, long param_3, long param_4, long param_5)
+void njInitVertexBuffer(long op, long om, long tp, long tm, long pt)
 {
 	if (DAT_05ad9640)
 	{
 		syFree(DAT_05ad9640);
 		DAT_05ad9640 = 0;
 	}
-	if (param_1 < 0)
+	if (op < 0)
 	{
-		param_1 = 0;
+		op = 0;
 	}
-	if (param_2 < 0)
+	if (om < 0)
 	{
-		param_2 = 0;
+		om = 0;
 	}
-	if (param_3 < 0)
+	if (tp < 0)
 	{
-		param_3 = 0;
+		tp = 0;
 	}
-	if (param_4 < 0)
+	if (tm < 0)
 	{
-		param_4 = 0;
+		tm = 0;
 	}
-	if (param_5 < 0)
+	if (pt < 0)
 	{
-		param_5 = 0;
+		pt = 0;
 	}
-	DAT_05ad9634 = (param_1 + param_2 + param_3 + param_4 + param_5) * 4;
+	DAT_05ad9634 = (op + om + tp + tm + pt) * 4;
 	if (DAT_05ad9634 != 0)
 	{
 		DAT_05ad9640 = (void (__cdecl *)(struct obj *))syMalloc(DAT_05ad9634);

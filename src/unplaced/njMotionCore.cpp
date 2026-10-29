@@ -1,9 +1,7 @@
 #include "decls.h"
 extern void *DAT_01c76fa0;
 extern void (*DAT_05ada214)(struct obj *);
-void njPushMatrixEx();
 void njMotionTransformEx(struct obj const *);
-void njPopMatrixEx();
 extern void (*DAT_05ada218)(struct cnkobj const *);
 extern int DAT_0629c3b0;
 

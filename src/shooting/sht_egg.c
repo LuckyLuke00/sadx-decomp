@@ -1,7 +1,5 @@
 #include "decls.h"
 extern float _nj_unit_matrix_[16];
-extern void njPushMatrix(float *);
-void njTranslateV(float *, struct NJS_POINT3 *);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 void late_ActionEx(struct NJS_ACTION *action, float frame, int flgs);
 extern struct NJS_ACTION action_beamev_s_beam[1];
@@ -13,12 +11,9 @@ extern struct NJS_ACTION action_shot_s_ecfire;
 void FUN_00422560(int param_1);
 void ___njFogDisable();
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
-void njPushMatrix(float *param_1);
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
-void njRotateXYZ(long param_1, long param_2, long param_3, long param_4);
 void FUN_004a88c0(NJS_ACTION *param_1, float param_2);
 void late_ActionEx(NJS_ACTION *action, float frame, int flgs);
-void njPopMatrix(int param_1);
 void npSetZCompare();
 
 // FUNCTION: SADX 0x007ede30
@@ -114,7 +109,7 @@ void YarareMove(struct task *tp)
 	cpos.y = -324.0f;
 	cpos.z = -1849.0f;
 	var2 = tp->ptp->twp;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	njTranslateV(0, &var2->pos);
 	njRotateXYZ(0, var2->ang.x, var2->ang.y, var2->ang.z);
 	njCalcPoint(0, &cpos, &var1->pos);

@@ -1,8 +1,6 @@
 #include "decls.h"
 extern struct obj *DAT_060eeaa4;
 extern struct Angle3 DAT_05ccdd40;
-extern void njRotateY(float *, unsigned short);
-extern void njRotateX(float *, unsigned short);
 void FUN_007d4790(struct task *param_1);
 
 // FUNCTION: SADX 0x007d4700
@@ -21,11 +19,11 @@ void EVAlifeMotionCallBack(struct obj *obj)
 	{
 		if (DAT_05ccdd40.y != 0)
 		{
-			njRotateY(0, DAT_05ccdd40.y);
+			njRotateY(0, (Uint16)DAT_05ccdd40.y);
 		}
 		if (DAT_05ccdd40.x != 0)
 		{
-			njRotateX(0, DAT_05ccdd40.x);
+			njRotateX(0, (Uint16)DAT_05ccdd40.x);
 		}
 	}
 }

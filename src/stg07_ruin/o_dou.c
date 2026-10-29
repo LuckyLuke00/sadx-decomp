@@ -11,7 +11,7 @@ static void Normal(struct task *pTask)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	njPopMatrix(1);
 }

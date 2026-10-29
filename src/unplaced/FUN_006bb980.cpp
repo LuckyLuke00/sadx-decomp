@@ -15,7 +15,7 @@ void FUN_006bbbd0(struct task *param_1)
 		njTranslateV(0, &var1->pos);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		late_ActionMesh(*(NJS_ACTION **)((char *)DAT_060eeaac + 0x40), *(float *)((char *)var1 + 0x10), 1);
 		njPopMatrix(1);

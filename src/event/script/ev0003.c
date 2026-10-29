@@ -5,15 +5,15 @@ extern struct task *DAT_060cbf58;
 void tornado_disp(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	njPushMatrix((float *)0);
+	njPushMatrix(NULL);
 	njTranslateV((float *)0, &var1->pos);
 	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
-		njRotateY((float *)0, (unsigned short)*(short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
 	}
 	if (*(int *)((char *)var1 + 0x14) != 0)
 	{
-		njRotateX((float *)0, (unsigned short)*(short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
 	}
 	if (*(int *)((char *)var1 + 0x1c) != 0)
 	{
@@ -22,7 +22,7 @@ void tornado_disp(struct task *tp)
 	___njSetTexture(&texlist_ev_s_t2c_body);
 	late_ActionClipMesh((struct NJS_ACTION *)&action_ev_s_t2c_body, var1->value.f, 0, 1.0f);
 	FUN_0067d830((float *)0, 0.0f, 2.8f, -2.6f);
-	njRotateY((float *)0, 0x4000);
+	njRotateY(NULL, 0x4000);
 	___njSetTexture(&texlist_ev_s_t2c_body);
 	ds_ActionClip((struct NJS_ACTION *)&action_m_with_tr2_miles, var1->counter.f, 1.0f);
 	njPopMatrix(1);

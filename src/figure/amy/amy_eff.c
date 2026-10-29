@@ -195,7 +195,7 @@ void AmyEffectHammerWaveColorDisplayer(struct task *tp)
 		}
 		if (local_8g->ang.x != 0)
 		{
-			njRotateX(0, local_8g->ang.x);
+			njRotateX(0, (Uint16)local_8g->ang.x);
 		}
 		njScaleV(0, &local_8g->scl);
 		local_cg = *(struct obj **)((char *)DAT_060eea50 + 0x74);

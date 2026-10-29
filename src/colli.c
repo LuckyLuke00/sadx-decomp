@@ -6,7 +6,6 @@ struct CL_PolyInfo;
 extern "C" double atan2(double v, double u);
 extern void *DAT_05bb5620;
 extern void *DAT_05bb00d8;
-float njInnerProduct(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2);
 extern void FUN_004f6ef0(void);
 extern void FUN_004f8070(void *param_1);
 void FUN_004f76a0(void *param_1);

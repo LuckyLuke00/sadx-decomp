@@ -27,10 +27,10 @@ void SaruTraceCircle(struct taskwk *twp, struct enemywk *ewp)
 	tmp_pos.x = twp->scl.z;
 	tmp_pos.y = twp->pos.y;
 	tmp_pos.z = 0.0f;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (twp->ang.x != 0)
 	{
-		njRotateY(0, twp->ang.x);
+		njRotateY(0, (Uint16)twp->ang.x);
 	}
 	njCalcPoint(0, &tmp_pos, &twp->pos);
 	njPopMatrix(1);

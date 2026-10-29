@@ -2,7 +2,6 @@
 extern void *DAT_060b5fec;
 extern unsigned char DAT_060b5fe4;
 extern unsigned char DAT_060b5fe5;
-void syFree(void *param_1);
 
 // FUNCTION: SADX 0x00691b20
 void CreamManagerDestruct(struct task *tp)

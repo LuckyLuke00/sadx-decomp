@@ -29,7 +29,7 @@ void ArmTestDisplay(struct obj *obj)
 {
 	do
 	{
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		FUN_0067d830((float *)0, obj->pos[0], obj->pos[1], obj->pos[2]);
 		if (obj->ang[2] != 0)
 		{
@@ -37,11 +37,11 @@ void ArmTestDisplay(struct obj *obj)
 		}
 		if (obj->ang[0] != 0)
 		{
-			njRotateX((float *)0, (unsigned short)obj->ang[0]);
+			njRotateX(NULL, (unsigned short)obj->ang[0]);
 		}
 		if (obj->ang[1] != 0)
 		{
-			njRotateY((float *)0, (unsigned short)obj->ang[1]);
+			njRotateY(NULL, (unsigned short)obj->ang[1]);
 		}
 		FUN_0067d2d0((float *)0, obj->scl[0], obj->scl[1], obj->scl[2]);
 		if (obj->model != 0)

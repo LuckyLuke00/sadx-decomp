@@ -2,16 +2,16 @@
 extern int DAT_0629c518;
 
 // FUNCTION: SADX 0x004333e0
-void njTranslateEx(void *param_1)
+void njTranslateEx(void *v)
 {
 	float local_8;
 	float var1;
 	float local_c;
 	float *var2;
 
-	local_8 = *(float *)param_1;
-	var1 = *(float *)((char *)param_1 + 4);
-	local_c = *(float *)((char *)param_1 + 8);
+	local_8 = *(float *)v;
+	var1 = *(float *)((char *)v + 4);
+	local_c = *(float *)((char *)v + 8);
 	var2 = (float *)DAT_0629c518;
 	var2[12] = var1 * var2[4] + local_8 * var2[0] + local_c * var2[8] + var2[12];
 	var2[13] = var2[5] * var1 + var2[1] * local_8 + var2[9] * local_c + var2[13];

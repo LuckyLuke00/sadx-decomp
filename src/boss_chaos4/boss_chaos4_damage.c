@@ -6,14 +6,9 @@ extern struct obj object_chaos4ball_s;
 void MirenEffSaveState();
 void MirenEffLoadState();
 void MirenEffChangeAlpha(float alpha);
-float njSin(int);
-float njCos(int);
-void njPushMatrix(float *);
-void njTranslateV(float *, struct NJS_POINT3 *);
 void FUN_0067d2d0(float *, float, float, float);
 float FUN_004a1e90(float *);
 void late_DrawObjectClip(struct obj *, int, float);
-void njPopMatrix(int);
 void ___njSetTexture(struct NJS_TEXLIST *);
 
 // FUNCTION: SADX 0x006f25b0

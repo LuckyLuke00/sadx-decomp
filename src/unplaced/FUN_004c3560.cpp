@@ -7,11 +7,7 @@ extern int DAT_05b93294;
 extern float DAT_0629c6ec;
 extern float DAT_0629c6f0;
 
-void njPushMatrix(float *param_1);
-void njRotateZ(float *param_1, int param_2);
-void njCalcVector(float *param_1, struct NJS_POINT3 *param_2, struct NJS_POINT3 *param_3);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
-void njPopMatrix(int param_1);
 
 // FUNCTION: SADX 0x004c3560
 void FUN_004c3560()
@@ -31,7 +27,7 @@ void FUN_004c3560()
 		local_74.p = local_24s;
 		local_74.col = (union NJS_COLOR *)local_64;
 		local_74.num = 3;
-		njPushMatrix(_nj_unit_matrix_);
+		njPushMatrix(&_nj_unit_matrix_);
 		if ((local_8 & 0xffff) != 0)
 		{
 			njRotateZ(0, (unsigned short)(local_8 & 0xffff));

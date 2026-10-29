@@ -45,7 +45,7 @@ static void objNormalR(struct task *tp)
 		DestroyTask(tp);
 		return;
 	}
-	njPushMatrix((float *)&DAT_060c4208);
+	njPushMatrix((NJS_MATRIX *)&DAT_060c4208);
 	njCalcPoint((float *)0, &DAT_060c36cc, &var1->pos);
 	njCalcVector((float *)0, &DAT_02b11480, (struct NJS_POINT3 *)((char *)var2 + 4));
 	njPopMatrix(1);
@@ -109,11 +109,11 @@ void objDisplayBT(struct task *tp)
 		___njFogDisable();
 		___njSetTexture(&texlist_chaos7_0breath);
 		*(int *)((char *)object_c7_breath_tame_breath_tame.model->mats + 0xc) = *(short *)((char *)var1 + 0xe) + 0x23;
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, &var1->pos);
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		if (DAT_060c36c4 != 0)
 		{

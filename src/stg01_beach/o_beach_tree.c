@@ -15,11 +15,11 @@ void Draw3(struct task *tp)
 		}
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
-			njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		late_DrawObjectClipEx(&object_seaobj_yashi04_yashi04[0], 1, 1.0f);
 		njPopMatrixEx();

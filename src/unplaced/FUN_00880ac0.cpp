@@ -17,7 +17,7 @@ void FUN_00880ac0(struct task *param_1)
 	njTranslateV(0, &var1->pos);
 	if (DAT_05b42a7c->ang.y)
 	{
-		njRotateY(0, DAT_05b42a7c->ang.y);
+		njRotateY(0, (Uint16)DAT_05b42a7c->ang.y);
 	}
 	FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
 	___njDrawSprite3D(&DAT_060dc468, var1->btimer, 0x20);

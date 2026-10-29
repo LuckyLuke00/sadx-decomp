@@ -61,7 +61,7 @@ void SetEgm1DispMatrix(struct task *tp)
 	}
 	if (*(int *)((char *)var2 + 0xa0) != 0)
 	{
-		njRotateX((float *)0, (unsigned short)*(short *)((char *)var2 + 0xa0));
+		njRotateX(NULL, (unsigned short)*(short *)((char *)var2 + 0xa0));
 	}
 	if (*(int *)((char *)var2 + 0xa8) != 0)
 	{

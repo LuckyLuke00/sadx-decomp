@@ -14,7 +14,7 @@ void eggmissile_draw(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 	FUN_00422560(3);
 	___njSetTexture(&texlist_egg_missile);
-	njPushMatrix((float *)0);
+	njPushMatrix(NULL);
 	njTranslateV((float *)0, &var1->pos);
 	if (*(int *)((char *)var1 + 0x1c) != 0)
 	{
@@ -22,11 +22,11 @@ void eggmissile_draw(struct task *tp)
 	}
 	if (*(int *)((char *)var1 + 0x14) != 0)
 	{
-		njRotateX((float *)0, (unsigned short)*(short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
 	}
 	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
-		njRotateY((float *)0, (unsigned short)*(short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
 	}
 	FUN_0067d2d0((float *)0, var1->scl.x, var1->scl.y, var1->scl.z);
 	FUN_004a0520(-1.0f, -65535.0f);

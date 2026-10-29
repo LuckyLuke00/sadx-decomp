@@ -14,7 +14,7 @@ void dispCrane(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	late_DrawModelClipMesh(*(struct NJS_MODEL **)((char *)var1->counter.ptr + 4), 1, 1.0f);
 	njPopMatrix(1);
@@ -47,11 +47,11 @@ void dispCage(struct task *tp)
 	njControl3D(0x10);
 	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
 	var2 = (float *)0;
-	njPushMatrix(var2);
+	njPushMatrix((NJS_MATRIX *)var2);
 	njTranslateV(var2, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(var2, (unsigned short)var1->ang.y);
+		njRotateY((NJS_MATRIX *)var2, (unsigned short)var1->ang.y);
 	}
 	SetObjectTexture();
 	FUN_0067d830(var2, 0.0f, 0.0f, -30.0f);

@@ -1,5 +1,4 @@
 #include "decls.h"
-void njPrintC(int param_1, char const *param_2);
 extern int DAT_060dc264;
 extern float DAT_060dc260;
 

@@ -12,11 +12,11 @@ void exitSkyEscalatorManager(struct task *tp)
 void dispSkyEscalator(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	njPushMatrix((float *)0);
+	njPushMatrix(NULL);
 	njTranslateV((float *)0, &var1->pos);
 	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
-		njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 	}
 	SetObjectTexture();
 	FUN_004a88c0((NJS_ACTION *)(*(int *)((char *)var1 + 8)), *(float *)((char *)var1 + 0xc));

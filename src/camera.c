@@ -3,7 +3,6 @@ void ___njSetPerspective(long a);
 void FUN_004bec60(short param_1, unsigned char param_2);
 struct _OBJ_CAMERAENTRY *local_8g;
 long local_10;
-double njScalor(struct NJS_POINT3 *param_1);
 extern void *DAT_05b428a8;
 extern int DAT_05b425a0;
 extern int DAT_05b42a84;

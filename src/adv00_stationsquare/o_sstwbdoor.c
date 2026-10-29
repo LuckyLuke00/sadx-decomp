@@ -12,7 +12,7 @@ static void ObjectDisplay(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_ActionClip(action_sssikake_twbdoor, var1->counter.f, 1.0f);
 	njPopMatrix(1);

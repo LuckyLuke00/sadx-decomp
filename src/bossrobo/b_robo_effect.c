@@ -64,7 +64,7 @@ void disp_Emission(struct task *pTask)
 		njControl3D(0x10);
 		SetMaterial(*(float *)((char *)var1 + 0x10), 1.0f, 1.0f, 1.0f);
 		var2 = (float *)0;
-		njPushMatrix(var2);
+		njPushMatrix((NJS_MATRIX *)var2);
 		njTranslateV(var2, (struct NJS_POINT3 *)(*(int *)((char *)var1 + 4)));
 		___njSetTexture(&texlist_erobo);
 		late_DrawObjectClipEx((struct obj *)var1->work.ptr[0], 1, 1.0f);

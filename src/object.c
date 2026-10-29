@@ -68,18 +68,18 @@ void OConvertVector_O2G(struct taskwk *twp, struct NJS_POINT3 *vp)
 	v.x = vp->x;
 	v.y = vp->y;
 	v.z = vp->z;
-	njPushMatrix(_nj_unit_matrix_);
+	njPushMatrix(&_nj_unit_matrix_);
 	if (twp->ang.z != 0)
 	{
 		njRotateZ(0, (unsigned short)twp->ang.z);
 	}
 	if (twp->ang.x != 0)
 	{
-		njRotateX(0, twp->ang.x);
+		njRotateX(0, (Uint16)twp->ang.x);
 	}
 	if (twp->ang.y != 0)
 	{
-		njRotateY(0, twp->ang.y);
+		njRotateY(0, (Uint16)twp->ang.y);
 	}
 	njCalcVector(0, &v, vp);
 	njPopMatrix(1);

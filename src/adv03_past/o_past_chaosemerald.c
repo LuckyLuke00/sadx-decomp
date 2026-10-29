@@ -15,7 +15,7 @@ void EmeraldDisplayer(struct task *tp)
 	FUN_0067d830(0, var1->pos.x, var1->pos.y + var1->value.f, var1->pos.z);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	late_DrawObjectClipMesh(DAT_060b97f4[var1->smode], 1, 1.0f);
 	njPopMatrix(1);

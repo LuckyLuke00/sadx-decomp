@@ -6,17 +6,11 @@ void FUN_005536c0(struct particle_info *param_1);
 void FUN_005be2d0(struct taskwk *, struct enemywk *);
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
 long EnemyCalcPlayerAngle(struct taskwk *twp, struct enemywk *ewp, unsigned char pnum);
-float njSin(int);
 void RoboDraw(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005be2d0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_POINT3 DAT_0264dbac;
 extern struct NJS_POINT3 DAT_0264dbb8;
 void RoboHeadChase(struct task *tp, struct enemywk *ewp);
-void njGetMatrix(float *param_1);
-void njMultiMatrix(float *param_1, struct NJS_POINT3 *param_2);
-void njUnitMatrix(float *param_1);
-void njPushMatrix(float *param_1);
-void njRotateY(float *param_1, unsigned short param_2);
 void FUN_005bc3f0(void *param_1, void *param_2);
 void RoboHeadTakeOff(struct task *tp, struct enemywk *ewp);
 void RoboHeadWait(struct task *tp, struct enemywk *ewp);
@@ -26,15 +20,8 @@ int dsCheckViewV(struct NJS_POINT3 *ft, float radius);
 void ___dsSetPalette(long no);
 void ResetMaterial();
 void SaveControl3D();
-void njControl3D(unsigned long param_1);
 void SetMaterial(float a, float r, float g, float b);
-void njPushMatrix(float *);
-void njUnitMatrix(float *);
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
-void njRotateY(float *, unsigned short);
-void njGetMatrix(float *);
-void njPopMatrix(int param_1);
-void njMultiMatrix(float *, struct NJS_POINT3 *);
 void late_DrawModel(struct NJS_MODEL *mdl, int flgs);
 void LoadControl3D();
 extern struct NJS_TEXLIST texlist_e_robo;
@@ -82,7 +69,7 @@ void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
 	FUN_0067d830(0, twp->pos.x, twp->pos.y, twp->pos.z);
 	if (twp->ang.y != 0)
 	{
-		njRotateY(0, twp->ang.y);
+		njRotateY(0, (Uint16)twp->ang.y);
 	}
 	if (1)
 	{
@@ -92,7 +79,7 @@ void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
 	njGetMatrix(ewp->mat);
 	njPopMatrix(1);
 	njPushMatrix(0);
-	njMultiMatrix(0, (struct NJS_POINT3 *)ewp->mat);
+	njMultiMatrix(0, &ewp->mat);
 	late_DrawModel((struct NJS_MODEL *)&model_sorsar_karada_1_atama1, 1);
 	njPopMatrix(1);
 	ResetMaterial();

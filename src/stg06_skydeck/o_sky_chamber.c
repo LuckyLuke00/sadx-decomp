@@ -16,11 +16,11 @@ void dispSkyFalling(struct task *tp)
 		}
 		if (var1->ang.x)
 		{
-			njRotateX(0, var1->ang.x);
+			njRotateX(0, (Uint16)var1->ang.x);
 		}
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		SetObjectTexture();
 		___dsDrawObject((struct obj *)(*(int *)((char *)var1 + 8)));
@@ -43,11 +43,11 @@ void dispSkyFallingWMotion(struct task *tp)
 		}
 		if (var1->ang.x)
 		{
-			njRotateX(0, var1->ang.x);
+			njRotateX(0, (Uint16)var1->ang.x);
 		}
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		SetObjectTexture();
 		FUN_004a88c0((NJS_ACTION *)(*(int *)((char *)var1 + 8)), *(float *)((char *)var1 + 0xc));
@@ -81,7 +81,7 @@ void dispSkyChamber(struct task *tp)
 		njTranslateV(0, &var1->pos);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		SetObjectTexture();
 		njEasyDrawObject((struct obj *)var1->timer.ptr);

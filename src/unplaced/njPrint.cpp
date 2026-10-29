@@ -1,12 +1,11 @@
 #include "decls.h"
 extern float DAT_05ad95e4;
 extern void *DAT_05ad95e8;
-extern void *syMalloc(unsigned int param_1);
 extern void gjPrintInit(void *,unsigned long,unsigned long);
 extern int DAT_05ad95ec;
 
 // FUNCTION: SADX 0x00423e60
-void njInitPrint(unsigned long *param_1, unsigned long param_2, unsigned long param_3)
+void njInitPrint(unsigned long *texture, unsigned long size, unsigned long attr)
 {
 	DAT_05ad95e4 = 8.0f;
 	DAT_05ad95ec = 0xffbfbfbf;
@@ -21,28 +20,28 @@ void njExitPrint(void)
 }
 
 // FUNCTION: SADX 0x00423eb0
-void njPrintSize(unsigned short param_1)
+void njPrintSize(unsigned short size)
 {
-	DAT_05ad95e4 = (float)param_1;
+	DAT_05ad95e4 = (float)size;
 }
 
 // FUNCTION: SADX 0x00423ed0
-void njPrintColor(unsigned long param_1)
+void njPrintColor(unsigned long c)
 {
-	DAT_05ad95ec = param_1;
+	DAT_05ad95ec = c;
 }
 
 // STUB: SADX 0x00423ee0
-void njPrintC(int param_1, char const *param_2)
+void njPrintC(int loc, char const *s)
 {
 }
 
 // STUB: SADX 0x00424080
-void njPrintH(int param_1, unsigned long param_2, int param_3)
+void njPrintH(int loc, unsigned long val, int digit)
 {
 }
 
 // STUB: SADX 0x004240e0
-void njPrintF(int param_1, float param_2, int param_3)
+void njPrintF(int loc, float val, int digit)
 {
 }

@@ -10,7 +10,7 @@ void KnucklesStutueDisplayer(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_004a88c0(*(NJS_ACTION **)((char *)DAT_060eeaac + 0x20), var1->value.f);
 	njPopMatrix(1);

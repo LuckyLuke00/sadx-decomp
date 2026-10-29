@@ -29,7 +29,7 @@ int syTmrGetCount()
 }
 
 // STUB: SADX 0x004230e0
-int syTmrDiffCount(int param_1, int param_2)
+int syTmrDiffCount(int count1, int count2)
 {
 	return (int)0;
 }

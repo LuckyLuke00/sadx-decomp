@@ -128,3 +128,5 @@ address,from,to,reason
 0x0057d490,95.65%,95.61%,"its std::list globals and the call to FUN_005b5aa0 now have typed declarations, with no casts; the frame is 4 bytes smaller"
 0x0057d490,95.61%,94.33%,"the credits lines are a real std::vector<std::wstring>, not an int[3] behind a cast; the cast gave a frame closer to the original by chance"
 0x00694ae0,100.00%,98.06%,"plain C without the __restrict pointer and volatile casts; two load orders differ"
+0x00706de0,100.00%,95.83%,"njRotateY takes an Angle as the Ninja headers declare it, with the (Uint16) cast that gives the movzx; the old unsigned short prototype matched only through the x87 operand order of three later adds"
+0x008105a0,100.00%,95.65%,"njRotateY takes an Angle as the Ninja headers declare it, with the (Uint16) cast that gives the movzx; the old unsigned short prototype matched only through the x87 operand order of three later adds"

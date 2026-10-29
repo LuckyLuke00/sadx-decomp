@@ -16,7 +16,7 @@ void Dsp_car(struct task *pTask)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	ds_DrawObjectClip(object_sssikake_ccar_before_ccar_before, 1.0f);
 	njPopMatrix(1);
@@ -37,11 +37,11 @@ void Dsp_car_broken(struct task *pTask)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	if (var1->ang.x)
 	{
-		njRotateX(0, var1->ang.x);
+		njRotateX(0, (Uint16)var1->ang.x);
 	}
 	if (*(int *)((char *)var1 + 0x1c) != 0)
 	{

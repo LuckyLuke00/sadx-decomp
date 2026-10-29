@@ -1,7 +1,6 @@
 #include "decls.h"
 extern unsigned long DAT_05cced10;
 extern float DAT_05cced18[64];
-void njSetMatrix(float *param_1, float *param_2);
 
 // FUNCTION: SADX 0x00571750
 long GetMMMatrix(unsigned long srcnmb, float *ansmat)

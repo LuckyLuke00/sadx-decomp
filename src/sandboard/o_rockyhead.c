@@ -32,15 +32,15 @@ void dispRockyHead(struct task *task_p)
 	struct taskwk *var1 = task_p->twp;
 	struct motionwk *var2 = task_p->mwp;
 	float var3 = *(float *)((char *)task_p->ptp->mwp + 0x1c);
-	njPushMatrix((float *)0);
+	njPushMatrix(NULL);
 	njTranslateV((float *)0, &var1->pos);
 	if (*(int *)((char *)var1 + 0x18) != 0)
 	{
-		njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 	}
 	if (*(int *)((char *)var1 + 0x14) != 0)
 	{
-		njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+		njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
 	}
 	FUN_0067d2d0((float *)0, var3, var3, var3);
 	SetObjectTexture();

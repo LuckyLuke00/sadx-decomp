@@ -25,7 +25,7 @@ void SwitchDraw(struct task *tp)
 	njTranslateV(0, &var1->pos);
 	if (var1->ang.y)
 	{
-		njRotateY(0, var1->ang.y);
+		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	SetObjectTexture();
 	ds_DrawObjectClip(&object_lwobj_lwswitch_lwswitch[0], 1.0f);

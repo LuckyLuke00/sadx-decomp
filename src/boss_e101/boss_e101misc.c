@@ -3,8 +3,6 @@
 
 // GLOBAL: SADX 0x02c0cb1c
 static struct particle_info land_smoke;
-float njCos(int param_1);
-float njSin(int param_1);
 void CreateAddSmoke(struct particle_info *effect);
 
 // FUNCTION: SADX 0x007071f0

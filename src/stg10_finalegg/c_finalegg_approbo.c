@@ -22,7 +22,7 @@ static void DrawBoxColli(struct taskwk *twp)
 	FUN_0067d830(0, twp->pos.x, twp->pos.y + twp->scl.y, twp->pos.z);
 	if (twp->ang.y)
 	{
-		njRotateY(0, twp->ang.y);
+		njRotateY(0, (Uint16)twp->ang.y);
 	}
 	FUN_0067d2d0(0, local_c, local_10, local_14);
 	SetMaterial(0.05f, 0.05f, 0.0f, 0.0f);

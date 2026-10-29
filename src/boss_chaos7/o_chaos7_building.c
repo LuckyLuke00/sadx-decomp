@@ -25,11 +25,11 @@ void dispChaos7Building(struct task *tp)
 	njControl3D(0x10);
 	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
 	var2 = (float *)0;
-	njPushMatrix(var2);
+	njPushMatrix((NJS_MATRIX *)var2);
 	njTranslateV(var2, &var1->pos);
 	if (var1->ang.y != 0)
 	{
-		njRotateY(var2, (unsigned short)var1->ang.y);
+		njRotateY((NJS_MATRIX *)var2, (unsigned short)var1->ang.y);
 	}
 	ds_DrawObjectClip((struct obj *)var1->timer.ptr, 1.0f);
 	njPopMatrix(1);

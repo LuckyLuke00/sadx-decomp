@@ -13,7 +13,7 @@ void Object_Mountain_Futa_Display(struct task *tp)
 		FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
 		if (var1->ang.y)
 		{
-			njRotateY(0, var1->ang.y);
+			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		ds_DrawModelClip(*(struct NJS_MODEL **)((char *)var1->counter.ptr + 4), 1.0f);
 		njPopMatrix(1);

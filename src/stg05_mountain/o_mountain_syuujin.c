@@ -12,15 +12,15 @@ void Object_Mountain_Syuujin_Display(struct task *tp)
 	if (DAT_05b9d838 == 0)
 	{
 		___njSetTexture(&texlist_obj_mountain);
-		njPushMatrix((float *)0);
+		njPushMatrix(NULL);
 		njTranslateV((float *)0, &var1->pos);
 		if (*(int *)((char *)var1 + 0x14) != 0)
 		{
-			njRotateX((float *)0, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
 		}
 		if (*(int *)((char *)var1 + 0x18) != 0)
 		{
-			njRotateY((float *)0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
 		}
 		njScaleV((float *)0, &var1->scl);
 		late_ActionClipMesh((struct NJS_ACTION *)var1->counter.ptr, *(float *)((char *)var1 + 0xc), 4, FUN_004a1e90((float *)&var1->scl));

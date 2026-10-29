@@ -38,7 +38,6 @@ void FUN_005a9290(struct taskwk *param_1);
 void FUN_005a92d0(struct taskwk *param_1);
 extern int DAT_05edbdac;
 extern int DAT_05edbd04;
-float njSqrt(float param_1);
 extern float DAT_05b3ec0c;
 extern float DAT_05b3ec10;
 extern float DAT_05b3ec14;
