@@ -587,7 +587,7 @@ def nested_globals(declarations: dict[int, str], own: set[int], last: dict[int, 
         if holder and a < holder[0] and (a in own or holder[1] in own):
             h = holder[1]
             inner, outer = names.declared_name(declarations[a]), names.declared_name(declarations[h])
-            where = f"{inner}: inside {outer} ({type_of(declarations[h])}) at +{a - h}."
+            where = f"{inner}: inside {outer} (0x{h:08x}, {type_of(declarations[h])}) at +{a - h}."
             shrink = f"declare {outer} with at most {a - h} bytes"
             if all(x in last and declared_size(last[x], types) == sizes[x] for x in (a, h)):
                 held[h].append(a)
