@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1415" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,417 of 16,524 game functions done (32.78%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,416 of 16,524 game functions done (32.77%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 601,1180.5 595,1173.6 596.1,1172" fill="#4e32f3"/>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 595,1173.6 596.1,1172" fill="#ffffff" fill-opacity="0.4"/>
@@ -1402,10 +1402,10 @@
 <rect x="126" y="70" width="6" height="6" fill="#b07d00"><title>0x006bbbd0 FUN_006bbbd0: 100%</title></rect>
 <rect x="196" y="70" width="6" height="6" fill="#b07d00"><title>0x00855000 KasyaDestruct: 100%</title></rect>
 </g>
-<rect x="937" y="935" width="43" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>The Past: 31 of 113 done</title></rect>
+<rect x="937" y="935" width="43" height="226" rx="3" fill="#ffffff" stroke="#d0d7de"><title>The Past: 30 of 113 done</title></rect>
 <text x="940" y="949" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">The</text>
 <text x="940" y="964" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Past</text>
-<text x="940" y="979" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">27%</tspan></text>
+<text x="940" y="979" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">26%</tspan></text>
 <g transform="translate(940,983)">
 <rect y="0" width="35" height="154" fill="url(#todo)"/>
 <rect y="154" width="21" height="7" fill="url(#todo)"/>
@@ -1422,7 +1422,7 @@
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x006bd610 mainKnucklesPast01: 100%</title></rect>
 <rect x="14" y="91" width="6" height="6" fill="#b07d00"><title>0x006bf090 pastp_walk_man_eveidle: 100%</title></rect>
 <rect x="21" y="91" width="6" height="6" fill="#b07d00"><title>0x006bf0c0 pastp_walk_man: 100%</title></rect>
-<rect x="7" y="105" width="6" height="6" fill="#b07d00"><title>0x006bf800 DispPastChaosFire: 100%</title></rect>
+<rect x="7" y="105" width="6" height="6" fill="#ab8239"><title>0x006bf800 DispPastChaosFire: 100%, through a trick</title></rect>
 <rect x="14" y="105" width="6" height="6" fill="#b07d00"><title>0x006bf890 ObjectPastChaosFire: 100%</title></rect>
 <rect x="21" y="105" width="6" height="6" fill="#b07d00"><title>0x006bf900 EmeraldDisplayer: 100%</title></rect>
 <rect x="14" y="112" width="6" height="6" fill="#b07d00"><title>0x006bfb10 LampDisplayer: 100%</title></rect>
