@@ -71,6 +71,7 @@ def run() -> int:
     failures += check_declaration_keys()
     failures += check_decls_trees()
     failures += check_static_users()
+    failures += check_file_local_globals()
     failures += check_nested_globals()
     failures += check_decls_aliases()
     failures += check_extern_of()
@@ -456,6 +457,29 @@ def check_static_users() -> list[str]:
         _, output, _ = run_decls({"src/z.c": helper, "src/y.c": caller}, {}, functions, [])
         if (notice in output) != wanted:
             failures.append(f"decls for a call to {case} prints {output!r}, {'not ' if wanted else ''}{notice!r}")
+    return failures
+
+
+def check_file_local_globals() -> list[str]:
+    """globals.h leaves out a global that no file but its own names, as advertise.c's lists of a class type that only
+    its own file includes. Once another file names it, here or in the context, globals.h declares it."""
+    target = project.game_config().target
+    own = (f"// GLOBAL: {target} 0x00503000\nint DAT_00503000[2];\n\n// FUNCTION: {target} 0x00403000\n"
+           f"static void DispX(struct task *tp)\n{{\n\tDAT_00503000[0] = 1;\n}}\n")
+    other = f"// FUNCTION: {target} 0x00404000\nstatic void DispY(struct task *tp)\n{{\n\tDAT_00503000[1] = 1;\n}}\n"
+    functions = [("0x00403000", "DispX", "L", "src/x.c", "o_x.obj"), ("0x00404000", "DispY", "L", "src/y.c", "o_y.obj")]
+    globals_ = [("0x00503000", "DAT_00503000", "o_x.obj")]
+    # (case, files, the context's files, whether globals.h declares it)
+    cases = [("only its own file", {"src/x.c": own}, {}, False),
+             ("another file here", {"src/x.c": own, "src/y.c": other}, {}, True),
+             ("a context file", {"src/x.c": own}, {"src/y.c": other}, True)]
+    failures = []
+    for case, files, context_files, wanted in cases:
+        code, output, generated = run_decls(files, context_files, functions, globals_)
+        found = "DAT_00503000" in generated.get(names.GLOBALS_H, "")
+        if code != 0 or found != wanted:
+            failures.append(f"decls for a global that {case} names gives exit {code} and "
+                            f"{'declares' if found else 'leaves out'} it in globals.h: {output!r}")
     return failures
 
 
