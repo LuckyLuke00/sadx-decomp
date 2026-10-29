@@ -312,10 +312,17 @@ def global_size(definition: str, name: str, types: Types) -> int:
     return element * math.prod(counts)
 
 
+def split_declarator(definition: str, name: str) -> tuple[str, str]:
+    """(the text before NAME in a definition, the text after it). The name is the last whole word NAME: the type can
+    hold it too, as in `struct work work` or the c of `unsigned char c`."""
+    declarator = list(re.finditer(rf"(?<!\w){re.escape(name)}(?!\w)", definition))[-1]
+    return definition[:declarator.start()], definition[declarator.end():]
+
+
 def element_layout(definition: str, name: str, types: Types) -> tuple[str, int | None, list[int | None]]:
     """(the element type of a definition, its size or None when unknown, the count in each of its array brackets:
     decimal or hex, else None)."""
-    head, _, tail = definition.partition(name)
+    head, tail = split_declarator(definition, name)
     base = re.sub(r"\b(?:static|extern)\b", "", head).strip()
     counts = [int(count, 0) if re.fullmatch(r"[1-9]\d*|0[xX][0-9a-fA-F]+", count) else None
               for count in re.findall(r"\[\s*(\w*)\s*\]", tail)]

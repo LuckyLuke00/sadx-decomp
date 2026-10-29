@@ -26,12 +26,14 @@ def types_of(text: str) -> names.Types:
 
 
 def check_global_size() -> list[str]:
-    """A definition's size counts decimal and hex array lengths. An unknown length or type gives 0."""
+    """A definition's size counts decimal and hex array lengths. An unknown length or type gives 0. A type that holds
+    the name, as a word or inside one, does not change it."""
     types = types_of(WORK)
-    cases = [("char DAT_x[0x400]", 0x400), ("int DAT_x[10]", 40), ("struct work DAT_x[2][3]", 48),
-             ("int DAT_x[]", 0), ("struct task DAT_x", 0)]
-    return [f"global_size gives {found} for {definition!r}, not {wanted}" for definition, wanted in cases
-            if (found := names.global_size(definition, "DAT_x", types)) != wanted]
+    cases = [("char DAT_x[0x400]", "DAT_x", 0x400), ("int DAT_x[10]", "DAT_x", 40),
+             ("struct work DAT_x[2][3]", "DAT_x", 48), ("int DAT_x[]", "DAT_x", 0), ("struct task DAT_x", "DAT_x", 0),
+             ("unsigned char c", "c", 1), ("struct work work[2]", "work", 16)]
+    return [f"global_size gives {found} for {definition!r}, not {wanted}" for definition, name, wanted in cases
+            if (found := names.global_size(definition, name, types)) != wanted]
 
 
 def check_member_path() -> list[str]:
