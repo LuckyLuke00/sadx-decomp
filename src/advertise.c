@@ -194,12 +194,13 @@ extern int DAT_05cd279c;
 extern unsigned char DAT_05cd27e8;
 extern int DAT_05cd27ec;
 extern int DAT_05cd27f0;
-extern int DAT_05cd27f4[3];
+// GLOBAL: SADX 0x05cd27f4
+std::vector<std::wstring> DAT_05cd27f4;
 // GLOBAL: SADX 0x05cd2820
-static std::list<LBOnData>::iterator DAT_05cd2820;
+std::list<LBOnData>::iterator DAT_05cd2820;
 extern float DAT_05cd2824;
 // GLOBAL: SADX 0x05cd2828
-static std::list<LBOnData> DAT_05cd2828;
+std::list<LBOnData> DAT_05cd2828;
 extern float DAT_05cd2854;
 extern int DAT_05cd2864;
 extern int DAT_05cd2868;
@@ -1142,12 +1143,12 @@ int padconfig(int sw)
 			local_3b0o = (float)((double)DAT_01c6e428 / (double)920.0);
 			local_3acq = (float)((double)DAT_01c6e42c / (double)690.0);
 			RenderTexture(0, 0, (int)((local_3b0o * 920.0) + 1.0f), (int)(local_3acq * 690.0), 0.02f, DAT_05cd274c, 0.0f, 0.0f, 0.89453125f, 0.6728515625f, -1);
-			local_3a8g = (int)((reinterpret_cast<std::vector<std::wstring>*>(&DAT_05cd27f4)->size() * 52) * (double)local_3acq);
+			local_3a8g = (int)((DAT_05cd27f4.size() * 52) * (double)local_3acq);
 			if (DAT_05cd2824 + 640.0 > -local_3a8g)
 			{
-				for (local_3b4x = 0; local_3b4x < reinterpret_cast<std::vector<std::wstring>*>(&DAT_05cd27f4)->size(); local_3b4x = local_3b4x + 1)
+				for (local_3b4x = 0; local_3b4x < DAT_05cd27f4.size(); local_3b4x = local_3b4x + 1)
 				{
-					local_3b8n = (const wchar_t *)(*reinterpret_cast<std::vector<std::wstring>*>(&DAT_05cd27f4))[local_3b4x].c_str();
+					local_3b8n = (const wchar_t *)DAT_05cd27f4[local_3b4x].c_str();
 					local_3bcr = 0;
 					local_3c0x = 0;
 					if (*local_3b8n == 0x2a)
