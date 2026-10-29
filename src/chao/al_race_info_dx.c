@@ -1,5 +1,5 @@
 #include "decls.h"
-extern char DAT_060ca138;
+extern struct al_status DAT_060ca138[8];
 extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 
 // STUB: SADX 0x00712c30
@@ -17,5 +17,5 @@ void ADV1_ALR_ClearEntryStatus()
 // FUNCTION: SADX 0x00712cc0
 struct al_status *ADV1_ALR_GetEntryStatus(int num)
 {
-	return (al_status *)((char *)&DAT_060ca138 + num * 0x198);
+	return &DAT_060ca138[num];
 }

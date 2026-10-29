@@ -57,6 +57,18 @@ extern int DAT_05baf544;
 void FUN_004f5550(int param_1);
 extern long slSeqRunning;
 extern int DAT_05b3ea28;
+extern signed char DAT_05baf900[0x200];
+struct SEQUENCE {
+	signed char time;
+	signed char emerald;
+	short seqno;
+	short sec;
+	short nextsec;
+	unsigned short stage;
+	unsigned short destination;
+};
+// GLOBAL: SADX 0x05baf6a0
+struct SEQUENCE DAT_05baf6a0[8];
 extern int DAT_05bafd4c;
 
 // STUB: SADX 0x004f49f0
@@ -106,7 +118,7 @@ void SeqSetPlayer(int no)
 		SeqClrFlag(0x58);
 		DAT_05bafd18 = (short)no;
 	}
-	DAT_05b3ea28 = 0x5baf6a0 + (int)DAT_05bafd18 * 0xc;
+	DAT_05b3ea28 = (int)&DAT_05baf6a0[DAT_05bafd18];
 	DAT_05baf544 = (int)SeqGetSectionList(DAT_05bafd18);
 }
 
@@ -532,6 +544,6 @@ void SeqResetLastScenario()
 	*(short *)(DAT_05b3ea28 + 10) = (short)(DAT_05b9d724 << 8 | DAT_05b9d744);
 	for (local_8g = 0; last_eventlist[local_8g] != 0; local_8g++)
 	{
-		*(char *)(last_eventlist[local_8g] + 0x5baf900) = 0;
+		DAT_05baf900[last_eventlist[local_8g]] = 0;
 	}
 }

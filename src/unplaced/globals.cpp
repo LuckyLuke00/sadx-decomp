@@ -108,7 +108,7 @@ const int AdvaCharSelSerifuTbl[8] = {};
 const int AdvaSerifuTbl[9][9] = {};
 
 // GLOBAL: SADX 0x009919e0
-struct DialogPrmType DAT_009919e0;
+struct DialogPrmType DAT_009919e0[31];
 
 // GLOBAL: SADX 0x009921c0
 struct u4s DAT_009921c0[1];
@@ -4010,6 +4010,15 @@ float ScreenRaitoX;
 // GLOBAL: SADX 0x05ab1560
 float ScreenRaitoY;
 
+// GLOBAL: SADX 0x05ab1584
+int DAT_05ab1584;
+
+// GLOBAL: SADX 0x05ab1594
+int DAT_05ab1594;
+
+// GLOBAL: SADX 0x05ab159c
+int DAT_05ab159c;
+
 // GLOBAL: SADX 0x05ab25ac
 void * DAT_05ab25ac;
 
@@ -4239,52 +4248,7 @@ int DAT_05ad9ac4;
 int DAT_05ad9ac8;
 
 // GLOBAL: SADX 0x05ad9ad0
-int DAT_05ad9ad0;
-
-// GLOBAL: SADX 0x05ad9ad4
-int DAT_05ad9ad4;
-
-// GLOBAL: SADX 0x05ad9ad8
-int DAT_05ad9ad8;
-
-// GLOBAL: SADX 0x05ad9adc
-int DAT_05ad9adc;
-
-// GLOBAL: SADX 0x05ad9ae0
-int DAT_05ad9ae0;
-
-// GLOBAL: SADX 0x05ad9ae4
-int DAT_05ad9ae4;
-
-// GLOBAL: SADX 0x05ad9ae8
-int DAT_05ad9ae8;
-
-// GLOBAL: SADX 0x05ad9aec
-int DAT_05ad9aec;
-
-// GLOBAL: SADX 0x05ad9af0
-int DAT_05ad9af0;
-
-// GLOBAL: SADX 0x05ad9af4
-int DAT_05ad9af4;
-
-// GLOBAL: SADX 0x05ad9af8
-int DAT_05ad9af8;
-
-// GLOBAL: SADX 0x05ad9afc
-int DAT_05ad9afc;
-
-// GLOBAL: SADX 0x05ad9b00
-int DAT_05ad9b00;
-
-// GLOBAL: SADX 0x05ad9b04
-int DAT_05ad9b04;
-
-// GLOBAL: SADX 0x05ad9b08
-int DAT_05ad9b08;
-
-// GLOBAL: SADX 0x05ad9b0c
-int DAT_05ad9b0c;
+int DAT_05ad9ad0[16];
 
 // GLOBAL: SADX 0x05ad9b20
 int DAT_05ad9b20;
@@ -4296,13 +4260,13 @@ char DAT_05ad9ba8[1];
 char DAT_05ad9cb0[1];
 
 // GLOBAL: SADX 0x05ad9db8
-char DAT_05ad9db8;
+struct PDS_PERIPHERAL DAT_05ad9db8[4];
 
 // GLOBAL: SADX 0x05ada118
 int DAT_05ada118;
 
 // GLOBAL: SADX 0x05ada1d0
-int DAT_05ada1d0;
+int DAT_05ada1d0[4][3];
 
 // GLOBAL: SADX 0x05ada210
 int DAT_05ada210;
@@ -4365,7 +4329,7 @@ int DAT_05aeb694;
 int DAT_05aeb698;
 
 // GLOBAL: SADX 0x05aeb6a0
-char DAT_05aeb6a0;
+char DAT_05aeb6a0[2][0xc820];
 
 // GLOBAL: SADX 0x05b067a8
 int DAT_05b067a8;
@@ -4707,7 +4671,7 @@ int DAT_05b39df4;
 void (*DAT_05b39df8)(struct obj *obj);
 
 // GLOBAL: SADX 0x05b39e08
-void *DAT_05b39e08[1];
+void (*DAT_05b39e08[2])(struct obj *);
 
 // GLOBAL: SADX 0x05b39e10
 unsigned char DAT_05b39e10;
@@ -4721,6 +4685,9 @@ LATE_FAR_Z_T DAT_05b39e18;
 // GLOBAL: SADX 0x05b39e2c
 int DAT_05b39e2c;
 
+// GLOBAL: SADX 0x05b39e30
+char DAT_05b39e30[2][0x1c];
+
 // GLOBAL: SADX 0x05b39e68
 void (*DAT_05b39e68)(struct obj *obj);
 
@@ -4728,7 +4695,7 @@ void (*DAT_05b39e68)(struct obj *obj);
 long DAT_05b39e6c;
 
 // GLOBAL: SADX 0x05b39e78
-void *DAT_05b39e78[1];
+void (*DAT_05b39e78[2])(struct obj *);
 
 // GLOBAL: SADX 0x05b39e84
 unsigned short DAT_05b39e84;
@@ -4764,7 +4731,7 @@ int DAT_05b3ded8;
 int DAT_05b3dee0;
 
 // GLOBAL: SADX 0x05b3dee4
-void *DAT_05b3dee4[1];
+void (*DAT_05b3dee4[2])(struct obj *);
 
 // GLOBAL: SADX 0x05b3df00
 void (*DAT_05b3df00)(struct obj *obj);
@@ -5451,7 +5418,7 @@ int DAT_05b9d848;
 int DAT_05b9d84c;
 
 // GLOBAL: SADX 0x05b9d860
-float DAT_05b9d860;
+float DAT_05b9d860[32][16];
 
 // GLOBAL: SADX 0x05b9e060
 int DAT_05b9e060;
@@ -5884,6 +5851,9 @@ int DAT_05cb5624;
 
 // GLOBAL: SADX 0x05cb562c
 int DAT_05cb562c;
+
+// GLOBAL: SADX 0x05cb5630
+unsigned char DAT_05cb5630[256];
 
 // GLOBAL: SADX 0x05cb5730
 short DAT_05cb5730;
@@ -6561,22 +6531,7 @@ int DAT_05cd2908;
 unsigned char DAT_05cd290c[48];
 
 // GLOBAL: SADX 0x05cd2948
-int DAT_05cd2948;
-
-// GLOBAL: SADX 0x05cd294c
-int DAT_05cd294c;
-
-// GLOBAL: SADX 0x05cd2950
-int DAT_05cd2950;
-
-// GLOBAL: SADX 0x05cd2954
-int DAT_05cd2954;
-
-// GLOBAL: SADX 0x05cd2958
-int DAT_05cd2958;
-
-// GLOBAL: SADX 0x05cd295c
-int DAT_05cd295c;
+int DAT_05cd2948[8];
 
 // GLOBAL: SADX 0x05cd2968
 int DAT_05cd2968;
@@ -6786,7 +6741,7 @@ int DAT_05cda1d0;
 int DAT_05cda1d4;
 
 // GLOBAL: SADX 0x05cda1d8
-int DAT_05cda1d8;
+char DAT_05cda1d8[0x200000];
 
 // GLOBAL: SADX 0x05eda1d8
 void *DAT_05eda1d8;
@@ -7782,7 +7737,7 @@ int DAT_060c6130;
 int DAT_060c6134;
 
 // GLOBAL: SADX 0x060ca138
-char DAT_060ca138;
+struct al_status DAT_060ca138[8];
 
 // GLOBAL: SADX 0x060cae24
 int DAT_060cae24;
@@ -7901,6 +7856,9 @@ int DAT_060cbbbc;
 // GLOBAL: SADX 0x060cbc00
 int DAT_060cbc00;
 
+// GLOBAL: SADX 0x060cbc04
+struct obj DAT_060cbc04;
+
 // GLOBAL: SADX 0x060cbcb0
 struct obj *DAT_060cbcb0;
 
@@ -7912,6 +7870,9 @@ int DAT_060cbcb8;
 
 // GLOBAL: SADX 0x060cbe74
 int DAT_060cbe74;
+
+// GLOBAL: SADX 0x060cbe78
+struct obj DAT_060cbe78;
 
 // GLOBAL: SADX 0x060cbeec
 int DAT_060cbeec;
@@ -8109,22 +8070,7 @@ unsigned char DAT_060ce44d;
 float DAT_060ce450;
 
 // GLOBAL: SADX 0x060ce45c
-int DAT_060ce45c;
-
-// GLOBAL: SADX 0x060ce460
-int DAT_060ce460;
-
-// GLOBAL: SADX 0x060ce464
-int DAT_060ce464;
-
-// GLOBAL: SADX 0x060ce468
-int DAT_060ce468;
-
-// GLOBAL: SADX 0x060ce46c
-int DAT_060ce46c;
-
-// GLOBAL: SADX 0x060ce470
-int DAT_060ce470;
+int DAT_060ce45c[6];
 
 // GLOBAL: SADX 0x060ce4a8
 int DAT_060ce4a8;

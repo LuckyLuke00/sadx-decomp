@@ -1,6 +1,7 @@
 #include "decls.h"
 extern long boolLandCollision;
 extern unsigned char DAT_05b3e065;
+extern unsigned char DAT_05cb5630[256];
 extern void FUN_004fdaf0();
 extern void FUN_004feb40();
 extern void FUN_004fdae0(struct task *param_1);
@@ -277,7 +278,7 @@ void FUN_004fed30()
 
 	for (sVar1 = 0xff; sVar1 >= 0; sVar1--)
 	{
-		*(char *)(sVar1 + 0x5cb5630) = 0;
+		DAT_05cb5630[sVar1] = 0;
 	}
 }
 
@@ -298,7 +299,7 @@ void ReleaseMobileLandObject(struct obj *pObjLandObject)
 	}
 	if (local_8 >= 0)
 	{
-		*(char *)(local_8 + 0x5cb5630) = 0;
+		DAT_05cb5630[local_8] = 0;
 	}
 }
 

@@ -4,7 +4,7 @@ char *FUN_004cdaf0(char *param_1, unsigned int param_2);
 char *FUN_004cdb40(char *param_1, unsigned int param_2);
 static struct obj *SearchTheObjectForTheObject(struct obj *pobj, struct obj *obj, long *pnum);
 float njSin(int param_1);
-extern float DAT_05b9d860;
+extern float DAT_05b9d860[32][16];
 void njGetMatrix(float *param_1);
 void njSetMatrix(float *param_1, float *param_2);
 struct obj *scanObjectSub(float **mbp, struct obj *obj, float *m);
@@ -349,15 +349,15 @@ float *getObjectMatrix(float *mat, struct obj *obj, int num)
 	{
 		njSetMatrix(tmp, mat);
 	}
-	mbp = &DAT_05b9d860;
+	mbp = DAT_05b9d860[0];
 	scanObjectSub(&mbp, obj, tmp);
-	return (float *)((char *)&DAT_05b9d860 + num * 64);
+	return DAT_05b9d860[num];
 }
 
 // FUNCTION: SADX 0x004cd670
 void getObjectMatrixBuf(float *mat, int num)
 {
-	njSetMatrix(mat, (float *)((char *)&DAT_05b9d860 + num * 64));
+	njSetMatrix(mat, DAT_05b9d860[num]);
 }
 
 // FUNCTION: SADX 0x004cd690

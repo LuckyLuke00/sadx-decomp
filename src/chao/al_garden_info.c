@@ -8,7 +8,7 @@ void FUN_0043eea0();
 void FUN_0043f5a0(int param_1);
 extern int FUN_0043ed90();
 extern int DAT_05aeb698;
-extern char DAT_05aeb6a0;
+extern char DAT_05aeb6a0[2][0xc820];
 extern int DAT_05aeb694;
 int FUN_0043ed90();
 extern int DAT_05aeb690;
@@ -16,13 +16,13 @@ extern int DAT_05aeb690;
 // FUNCTION: SADX 0x0043edb0
 struct CHAO_GARDEN_INFO *AL_GetAnotherGardenInfo()
 {
-	return (struct CHAO_GARDEN_INFO *)((char *)&DAT_05aeb6a0 + (~ALMC_GetSystemSlot() & 1) * 0xc820);
+	return (struct CHAO_GARDEN_INFO *)DAT_05aeb6a0[~ALMC_GetSystemSlot() & 1];
 }
 
 // FUNCTION: SADX 0x0043edd0
 char *FUN_0043edd0(int param_1)
 {
-	return &DAT_05aeb6a0 + param_1 * 0xc820;
+	return DAT_05aeb6a0[param_1];
 }
 
 // FUNCTION: SADX 0x0043ede0

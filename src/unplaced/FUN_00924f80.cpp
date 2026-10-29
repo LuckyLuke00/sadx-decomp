@@ -3,6 +3,9 @@
 #include <stdio.h>
 void FUN_00926590(int param_1, int param_2);
 struct FUN_00924f80_S;
+extern int DAT_05ab1584;
+extern int DAT_05ab1594;
+extern int DAT_05ab159c;
 
 // STUB: SADX 0x00924f80
 void __fastcall FUN_00924f80(struct FUN_00924f80_S *param_1, int param_2, float *param_3)
@@ -244,9 +247,9 @@ void FUN_00927340(float *param_1, float *param_2)
 }
 
 // FUNCTION: SADX 0x009273a0
-int FUN_009273a0()
+int *FUN_009273a0()
 {
-	return 0x5ab159c;
+	return &DAT_05ab159c;
 }
 
 // STUB: SADX 0x009273b0
@@ -304,9 +307,9 @@ void __fastcall FUN_00927650(int param_1)
 }
 
 // FUNCTION: SADX 0x00927e20
-int FUN_00927e20()
+int *FUN_00927e20()
 {
-	return 0x5ab1594;
+	return &DAT_05ab1594;
 }
 
 // STUB: SADX 0x00927e30
@@ -316,9 +319,9 @@ int FUN_00927e30()
 }
 
 // FUNCTION: SADX 0x00927e40
-int FUN_00927e40()
+int *FUN_00927e40()
 {
-	return 0x5ab1584;
+	return &DAT_05ab1584;
 }
 
 // STUB: SADX 0x00927e50

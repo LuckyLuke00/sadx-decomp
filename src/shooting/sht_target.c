@@ -2,12 +2,7 @@
 extern struct NJS_SPRITE lock_mk_spr;
 extern float DAT_0629c6ec;
 extern float DAT_0629c6f0;
-extern int DAT_060ce45c;
-extern int DAT_060ce460;
-extern int DAT_060ce464;
-extern int DAT_060ce468;
-extern int DAT_060ce46c;
-extern int DAT_060ce470;
+extern int DAT_060ce45c[6];
 
 // FUNCTION: SADX 0x007eb680
 void TargetDisp2(struct task *tp)
@@ -30,12 +25,12 @@ void TargetDisp2(struct task *tp)
 // FUNCTION: SADX 0x007eb7c0
 void LockOnListInit()
 {
-	DAT_060ce45c = 0;
-	DAT_060ce460 = 0;
-	DAT_060ce464 = 0;
-	DAT_060ce468 = 0;
-	DAT_060ce46c = 0;
-	DAT_060ce470 = 0;
+	DAT_060ce45c[0] = 0;
+	DAT_060ce45c[1] = 0;
+	DAT_060ce45c[2] = 0;
+	DAT_060ce45c[3] = 0;
+	DAT_060ce45c[4] = 0;
+	DAT_060ce45c[5] = 0;
 }
 
 // FUNCTION: SADX 0x007ebba0
@@ -99,18 +94,15 @@ void LockedEnemyDead(struct task *tp)
 // FUNCTION: SADX 0x007ebdf0
 int FUN_007ebdf0(int param_1)
 {
-	int *var1;
+	int var1;
 
-	var1 = &DAT_060ce45c;
-	do
+	for (var1 = 0; var1 < 6; var1++)
 	{
-		if (*var1 == param_1)
+		if (DAT_060ce45c[var1] == param_1)
 		{
 			return 1;
 		}
-		var1++;
 	}
-	while ((int)var1 < 0x60ce474);
 	return 0;
 }
 
@@ -128,13 +120,13 @@ void LockOnDead(struct task *tp)
 	var3 = 0;
 	while (var3 < 6)
 	{
-		if ((*(int *)((char *)&DAT_060ce45c + var3 * 4) == 0) || (*(int *)((char *)&DAT_060ce45c + var3 * 4) != (int)tp->ptp))
+		if ((DAT_060ce45c[var3] == 0) || (DAT_060ce45c[var3] != (int)tp->ptp))
 		{
 			var3 = var3 + 1;
 		}
 		else
 		{
-			*(int *)((char *)&DAT_060ce45c + var3 * 4) = 0;
+			DAT_060ce45c[var3] = 0;
 			break;
 		}
 	}

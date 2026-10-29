@@ -15,7 +15,7 @@ void FUN_00550f60(int param_1);
 void FUN_00550170(char *param_1);
 void FUN_00550280(void);
 extern char DAT_05cc8668;
-extern int DAT_05cd2948;
+extern int DAT_05cd2948[8];
 extern int DAT_05ccc678;
 
 // FUNCTION: SADX 0x005500d0
@@ -249,6 +249,6 @@ signed char GetUserFlag(struct task *tp)
 // FUNCTION: SADX 0x00551670
 void SetObjEditTable(void *pTable)
 {
-	*(int *)((char *)&DAT_05cd2948 + (int)DAT_05cc8668 * 4) = (int)pTable;
+	DAT_05cd2948[DAT_05cc8668] = (int)pTable;
 	DAT_05ccc678 = 1;
 }

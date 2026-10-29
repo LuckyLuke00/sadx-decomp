@@ -24,9 +24,6 @@ void *late_alloca(unsigned int sz);
 struct LATE_PO2D_RQ;
 extern void *late_alloca(unsigned int sz);
 extern struct LATE_FAR_Z_T late_far_z_dflt;
-extern void *DAT_05b39e08[1];
-extern void *DAT_05b39e78[1];
-extern void *DAT_05b3dee4[1];
 extern unsigned char DAT_05b3df51;
 void FUN_004a5c80(struct obj *param_1, int param_2);
 extern int DAT_05b3df64;
@@ -40,9 +37,10 @@ extern float DAT_05b3df14[3];
 extern int DAT_05b39eb8[9];
 extern float DAT_05b39dc0[9];
 extern int DAT_05b39db8;
-extern void *DAT_05b39e78[];
-extern void *DAT_05b39e08[];
-extern void *DAT_05b3dee4[];
+extern void (*DAT_05b39e78[2])(struct obj *);
+extern void (*DAT_05b39e08[2])(struct obj *);
+extern void (*DAT_05b3dee4[2])(struct obj *);
+extern char DAT_05b39e30[2][0x1c];
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
 extern int DAT_05b39e90;
@@ -1606,54 +1604,54 @@ void late_DrawShapeMotionMesh(struct obj *object, struct NJS_MOTION *motion, str
 // FUNCTION: SADX 0x004a9ab0
 void MotLnkData0(struct obj *obj)
 {
-	(*(void (*)(struct obj *))DAT_05b39e78[DAT_05b39db8])(obj);
-	(*(void (*)(struct obj *))DAT_05b39e08[DAT_05b39db8])(obj);
-	(*(void (*)(struct obj *))DAT_05b3dee4[DAT_05b39db8])(obj);
+	DAT_05b39e78[DAT_05b39db8](obj);
+	DAT_05b39e08[DAT_05b39db8](obj);
+	DAT_05b3dee4[DAT_05b39db8](obj);
 }
 
 // FUNCTION: SADX 0x004a9b00
 void MotLnkData1(struct obj *obj)
 {
 	int local_8;
-	local_8 = *(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30);
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e44) = local_8;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e48) = local_8 + 4;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e38) = 0;
-	(*(void (**)(struct obj *))(&DAT_05b39e78[DAT_05b39db8]))(obj);
-	(*(void (**)(struct obj *))(&DAT_05b39e08[DAT_05b39db8]))(obj);
-	(*(void (**)(struct obj *))(&DAT_05b3dee4[DAT_05b39db8]))(obj);
+	local_8 = *(int *)DAT_05b39e30[DAT_05b39db8];
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x14) = local_8;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x18) = local_8 + 4;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 8) = 0;
+	DAT_05b39e78[DAT_05b39db8](obj);
+	DAT_05b39e08[DAT_05b39db8](obj);
+	DAT_05b3dee4[DAT_05b39db8](obj);
 	local_8 += 8;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30) = local_8;
+	*(int *)DAT_05b39e30[DAT_05b39db8] = local_8;
 }
 
 // FUNCTION: SADX 0x004a9bb0
 void MotLnkData2(struct obj *obj)
 {
 	int local_8;
-	local_8 = *(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30);
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e44) = local_8;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e48) = local_8 + 8;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e38) = 0;
-	(*(void (*)(struct obj *))DAT_05b39e78[DAT_05b39db8])(obj);
-	(*(void (*)(struct obj *))DAT_05b39e08[DAT_05b39db8])(obj);
-	(*(void (*)(struct obj *))DAT_05b3dee4[DAT_05b39db8])(obj);
+	local_8 = *(int *)DAT_05b39e30[DAT_05b39db8];
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x14) = local_8;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x18) = local_8 + 8;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 8) = 0;
+	DAT_05b39e78[DAT_05b39db8](obj);
+	DAT_05b39e08[DAT_05b39db8](obj);
+	DAT_05b3dee4[DAT_05b39db8](obj);
 	local_8 = local_8 + 0x10;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30) = local_8;
+	*(int *)DAT_05b39e30[DAT_05b39db8] = local_8;
 }
 
 // FUNCTION: SADX 0x004a9c60
 void MotLnkData3(struct obj *obj)
 {
 	int local_8;
-	local_8 = *(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30);
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e44) = local_8;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e48) = local_8 + 0xc;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e38) = 0;
-	(*(void (**)(struct obj *))(&DAT_05b39e78[DAT_05b39db8]))(obj);
-	(*(void (**)(struct obj *))(&DAT_05b39e08[DAT_05b39db8]))(obj);
-	(*(void (**)(struct obj *))(&DAT_05b3dee4[DAT_05b39db8]))(obj);
+	local_8 = *(int *)DAT_05b39e30[DAT_05b39db8];
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x14) = local_8;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x18) = local_8 + 0xc;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 8) = 0;
+	DAT_05b39e78[DAT_05b39db8](obj);
+	DAT_05b39e08[DAT_05b39db8](obj);
+	DAT_05b3dee4[DAT_05b39db8](obj);
 	local_8 += 0x18;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30) = local_8;
+	*(int *)DAT_05b39e30[DAT_05b39db8] = local_8;
 }
 
 // FUNCTION: SADX 0x004a9d10
@@ -1661,15 +1659,15 @@ void MotLnkData4(struct obj *obj)
 {
 	int local_8;
 
-	local_8 = *(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30);
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e44) = local_8;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e48) = local_8 + 0x10;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e38) = 0;
-	(*(void (*)(struct obj *))DAT_05b39e78[DAT_05b39db8])(obj);
-	(*(void (*)(struct obj *))DAT_05b39e08[DAT_05b39db8])(obj);
-	(*(void (*)(struct obj *))DAT_05b3dee4[DAT_05b39db8])(obj);
+	local_8 = *(int *)DAT_05b39e30[DAT_05b39db8];
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x14) = local_8;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 0x18) = local_8 + 0x10;
+	*(int *)(DAT_05b39e30[DAT_05b39db8] + 8) = 0;
+	DAT_05b39e78[DAT_05b39db8](obj);
+	DAT_05b39e08[DAT_05b39db8](obj);
+	DAT_05b3dee4[DAT_05b39db8](obj);
 	local_8 = local_8 + 0x20;
-	*(int *)(DAT_05b39db8 * 0x1c + 0x5b39e30) = local_8;
+	*(int *)DAT_05b39e30[DAT_05b39db8] = local_8;
 }
 
 // FUNCTION: SADX 0x004a9dc0

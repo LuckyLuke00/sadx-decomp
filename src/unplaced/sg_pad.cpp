@@ -1,6 +1,6 @@
 #include "decls.h"
 extern int DAT_01c6eea0[4];
-extern char DAT_05ad9db8;
+extern struct PDS_PERIPHERAL DAT_05ad9db8[4];
 
 // FUNCTION: SADX 0x00430e60
 void *pdGetPeripheral(int param_1)
@@ -13,7 +13,7 @@ void *pdGetPeripheral(int param_1)
 	{
 		if (*var2 == param_1)
 		{
-			return (char *)&DAT_05ad9db8 + var1 * 0x34;
+			return &DAT_05ad9db8[var1];
 		}
 		var1++;
 		var2++;

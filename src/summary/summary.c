@@ -2,6 +2,9 @@
 extern int DAT_05b360c8;
 extern int DAT_05cd14d4;
 
+// GLOBAL: SADX 0x02346a00
+static unsigned char DAT_02346a00[7] = {94, 93, 92, 89, 90, 91, 20};
+
 // STUB: SADX 0x00494750
 void calcvsyncsyoriochi()
 {
@@ -47,7 +50,7 @@ void SummaryBgmTask(struct task *tp)
 	iVar1 = GetAdvertisePlayerNumber((unsigned char)GetPlayerNumber());
 	if (iVar1 != -1)
 	{
-		BGM_Play(*(unsigned char *)(iVar1 + 0x2346a00));
+		BGM_Play(DAT_02346a00[iVar1]);
 	}
 	FreeTask(tp);
 }
