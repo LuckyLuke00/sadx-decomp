@@ -1,6 +1,7 @@
 #include "decls.h"
-extern void *DAT_05edd88c;
-extern void *DAT_05edd884;
+#include "../advertise.h"
+extern Magic::RenderCore::Texture *DAT_05edd88c;
+extern Magic::RenderCore::Texture *DAT_05edd884;
 void FUN_005f24e0(void *param_1);
 void FUN_005f34f0(void *param_1);
 void FUN_005f3310(float);
@@ -74,18 +75,13 @@ void FUN_005f3310(float param_1)
 	ghSetPvrTexMaterial(0xffffffff);
 	local_cg = 0.0f;
 	local_8g = -18.0f;
-	DrawTexture(0, 0, 0x280, 0x1e0, 0.99f, (Magic::RenderCore::Texture *)DAT_05edd884, 0.0f, 0.0f, 1.0f, 1.0f, -1);
+	DrawTexture(0, 0, 0x280, 0x1e0, 0.99f, DAT_05edd884, 0.0f, 0.0f, 1.0f, 1.0f, -1);
 	___njSetTexture(&texlist_ava_new_menu);
 }
 
 // FUNCTION: SADX 0x005f3390
 void FUN_005f3390()
 {
-	void *local_8g;
-	void *local_cj;
-	void *local_14;
-	void *local_10;
-
 	if (DAT_05edd888)
 	{
 		DestroyTask(DAT_05edd888);
@@ -93,17 +89,13 @@ void FUN_005f3390()
 	if (DAT_05edd884)
 	{
 		FUN_0041c2d0(DAT_05edd884);
-		local_cj = DAT_05edd884;
-		local_8g = local_cj;
-		local_8g ? (*(void *(__thiscall *)(void *, int))**(void ***)local_8g)(local_8g, 1) : 0;
+		delete DAT_05edd884;
 		DAT_05edd884 = 0;
 	}
 	if (DAT_05edd88c)
 	{
 		FUN_0041c2d0(DAT_05edd88c);
-		local_14 = DAT_05edd88c;
-		local_10 = local_14;
-		local_10 ? (*(void *(__thiscall *)(void *, int))**(void ***)local_10)(local_10, 1) : 0;
+		delete DAT_05edd88c;
 		DAT_05edd88c = 0;
 	}
 }

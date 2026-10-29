@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1415" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,371 of 16,524 game functions done (32.50%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,376 of 16,524 game functions done (32.53%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 601,1180.5 595,1173.6 596.1,1172" fill="#4e32f3"/>
 <polygon points="597.8,1170.5 604.2,1170.5 605.9,1172 607,1173.6 595,1173.6 596.1,1172" fill="#ffffff" fill-opacity="0.4"/>
@@ -3652,8 +3652,8 @@
 <rect x="189" y="161" width="6" height="6" fill="#b07d00"><title>0x008c9030 ReturnChaosEmerald: 100%</title></rect>
 <rect x="196" y="161" width="6" height="6" fill="#b07d00"><title>0x008cb190 EggmanDestruct: 100%</title></rect>
 </g>
-<rect x="336" y="1146" width="183" height="206" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 288 of 544 done</title></rect>
-<text x="339" y="1160" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Menus <tspan font-weight="400" fill="#59636e">52%</tspan></text>
+<rect x="336" y="1146" width="183" height="206" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 293 of 544 done</title></rect>
+<text x="339" y="1160" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Menus <tspan font-weight="400" fill="#59636e">53%</tspan></text>
 <g transform="translate(339,1164)">
 <rect y="0" width="175" height="147" fill="url(#todo)"/>
 <rect y="147" width="133" height="7" fill="url(#todo)"/>
@@ -3706,7 +3706,7 @@
 <rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x004b6cd0 SetAdvaFileSelTask: 100%</title></rect>
 <rect x="119" y="14" width="6" height="6" fill="#b07d00"><title>0x004b6d40 FUN_004b6d40: 100%</title></rect>
 <rect x="126" y="14" width="6" height="6" fill="#a3895d"><title>0x004b6d90 file_sel_exec: 76.3%</title></rect>
-<rect x="140" y="14" width="6" height="6" fill="#ab8239"><title>0x004b7800 FUN_004b7800: 100%, through a trick</title></rect>
+<rect x="140" y="14" width="6" height="6" fill="#b07d00"><title>0x004b7800 FUN_004b7800: 100%</title></rect>
 <rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x004b83c0 file_sel_disp: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x004b9330 FUN_004b9330: 100%</title></rect>
 <rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x004b9bc0 FreeAdvaFileSelTask: 100%</title></rect>
@@ -3846,18 +3846,19 @@
 <rect x="35" y="91" width="6" height="6" fill="#b07d00"><title>0x005f22c0 FUN_005f22c0: 100%</title></rect>
 <rect x="77" y="91" width="6" height="6" fill="#b07d00"><title>0x005f32f0 FUN_005f32f0: 100%</title></rect>
 <rect x="84" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3310 FUN_005f3310: 100%</title></rect>
-<rect x="91" y="91" width="6" height="6" fill="#ab8239"><title>0x005f3390 FUN_005f3390: 100%, through a trick</title></rect>
+<rect x="91" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3390 FUN_005f3390: 100%</title></rect>
 <rect x="98" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3460 FUN_005f3460: 100%</title></rect>
 <rect x="105" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3480 SetAdvaTrialGameTask: 100%</title></rect>
 <rect x="140" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3b60 title_menu_disp(6): 100%</title></rect>
 <rect x="154" y="91" width="6" height="6" fill="#b07d00"><title>0x005f45f0 FUN_005f45f0: 100%</title></rect>
-<rect x="168" y="91" width="6" height="6" fill="#ab8239"><title>0x005f4690 FreeAdvaTrialGameTask: 100%, through a trick</title></rect>
+<rect x="161" y="91" width="6" height="6" fill="#b07d00"><title>0x005f4610 FUN_005f4610: 100%</title></rect>
+<rect x="168" y="91" width="6" height="6" fill="#b07d00"><title>0x005f4690 FreeAdvaTrialGameTask: 100%</title></rect>
 <rect x="0" y="98" width="6" height="6" fill="#b07d00"><title>0x005f4760 FUN_005f4760: 100%</title></rect>
 <rect x="14" y="98" width="6" height="6" fill="#b07d00"><title>0x005f4e40 DrawMainMenuDlgSub_LB: 100%</title></rect>
 <rect x="21" y="98" width="6" height="6" fill="#b07d00"><title>0x005f4e60 FUN_005f4e60: 100%</title></rect>
 <rect x="63" y="98" width="6" height="6" fill="#b07d00"><title>0x005fa160 SetAdvaTitleMenuTask_LB: 100%</title></rect>
 <rect x="105" y="98" width="6" height="6" fill="#b07d00"><title>0x005fb390 FUN_005fb390: 100%</title></rect>
-<rect x="119" y="98" width="6" height="6" fill="#ab8239"><title>0x005fb760 FUN_005fb760: 100%, through a trick</title></rect>
+<rect x="119" y="98" width="6" height="6" fill="#b07d00"><title>0x005fb760 FUN_005fb760: 100%</title></rect>
 <rect x="126" y="98" width="6" height="6" fill="#b07d00"><title>0x005fb820 FUN_005fb820: 100%</title></rect>
 <rect x="154" y="98" width="6" height="6" fill="#b07d00"><title>0x005fba70 FUN_005fba70: 100%</title></rect>
 <rect x="168" y="98" width="6" height="6" fill="#b07d00"><title>0x005fbb40 FUN_005fbb40: 100%</title></rect>

@@ -1,34 +1,26 @@
 #include "decls.h"
+#include "../advertise.h"
 #include <new>
-extern void *DAT_05edd944;
-extern void *DAT_05edd954;
+extern Magic::RenderCore::Texture *DAT_05edd944;
+extern Magic::RenderCore::Texture *DAT_05edd954;
 extern struct task *DAT_05edd91c;
 
 // FUNCTION: SADX 0x005fb760
 void FUN_005fb760()
 {
-	void *local_8g;
-	void *local_cj;
-	void *local_14;
-	void *local_10;
-
 	if (DAT_05edd91c)
 	{
 		DestroyTask(DAT_05edd91c);
 	}
 	if (DAT_05edd944)
 	{
-		local_cj = DAT_05edd944;
-		local_8g = local_cj;
-		local_8g ? (*(void *(__thiscall *)(void *, int))**(void ***)local_8g)(local_8g, 1) : 0;
+		delete DAT_05edd944;
 		DAT_05edd944 = 0;
 	}
 	if (DAT_05edd954)
 	{
 		FUN_0041c2d0(DAT_05edd954);
-		local_14 = DAT_05edd954;
-		local_10 = local_14;
-		local_10 ? (*(void *(__thiscall *)(void *, int))**(void ***)local_10)(local_10, 1) : 0;
+		delete DAT_05edd954;
 		DAT_05edd954 = 0;
 	}
 	FUN_005fa060();

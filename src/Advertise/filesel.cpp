@@ -1,4 +1,5 @@
 #include "decls.h"
+#include "../advertise.h"
 extern float ScreenRaitoX;
 extern float ScreenRaitoY;
 struct FileSelWk;
@@ -29,8 +30,8 @@ extern unsigned char DAT_05b3e356;
 extern struct task *DAT_05b42524;
 extern struct task *DAT_05b42520;
 extern struct task *DAT_05b42530;
-extern void *DAT_05b3e378;
-extern void *DAT_05b3e37c;
+extern Magic::RenderCore::Texture *DAT_05b3e378;
+extern Magic::RenderCore::Texture *DAT_05b3e37c;
 
 // STUB: SADX 0x004b6b50
 void DrawFileDelDlgSub(struct DDlgType *dlgp)
@@ -156,25 +157,16 @@ void file_sel_exec(struct task *tp)
 // FUNCTION: SADX 0x004b7800
 void FUN_004b7800(struct FileSelWk *param_1)
 {
-	void *local_8g;
-	void *local_cj;
-	void *local_14;
-	void *local_10;
-
 	if (DAT_05b3e378)
 	{
 		FUN_0041c2d0(DAT_05b3e378);
-		local_cj = DAT_05b3e378;
-		local_8g = local_cj;
-		local_8g ? (*(void *(__thiscall *)(void *, int))**(void ***)local_8g)(local_8g, 1) : 0;
+		delete DAT_05b3e378;
 		DAT_05b3e378 = 0;
 	}
 	if (DAT_05b3e37c)
 	{
 		FUN_0041c2d0(DAT_05b3e37c);
-		local_14 = DAT_05b3e37c;
-		local_10 = local_14;
-		local_10 ? (*(void *(__thiscall *)(void *, int))**(void ***)local_10)(local_10, 1) : 0;
+		delete DAT_05b3e37c;
 		DAT_05b3e37c = 0;
 	}
 }
