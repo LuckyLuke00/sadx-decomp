@@ -79,6 +79,53 @@ void NormalC(struct task *tp)
 {
 }
 
+// FUNCTION: SADX 0x008863a0
+void NormalL(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	struct NJS_POINT3 Velo;
+	long Ang[3];
+	if (DAT_060dbcb0 & 2)
+	{
+		if (var1->cwp->flag & 1)
+		{
+			Velo.x = 5.0f;
+			Velo.y = 0.0f;
+			Velo.z = 0.0f;
+			Ang[0] = 0;
+			Ang[1] = 0x8000;
+			Ang[2] = 0;
+			SetVelocityAndRotationAndNoconTimeP(0, &Velo, Ang, 0);
+			dsPlay_oneshot(9, 0, 0, 0);
+			SetGetRing(8);
+			DAT_060dbcb0 &= 0xfffffffd;
+		}
+		if (var1->ang.x != 0)
+		{
+			var1->ang.x += 0x100;
+			if (var1->ang.x > 0)
+			{
+				var1->ang.x = 0;
+			}
+		}
+	}
+	else
+	{
+		if (var1->ang.x != 0xffffedde)
+		{
+			var1->ang.x -= 0x100;
+			if (var1->ang.x < (long)0xffffedde)
+			{
+				var1->ang.x = 0xffffedde;
+			}
+		}
+	}
+	EntryColliList(var1);
+	ObjectSetupInput(var1, 0);
+	DispLR(tp);
+	LoopTaskC(tp);
+}
+
 // FUNCTION: SADX 0x008864a0
 void NormalR(struct task *tp)
 {
