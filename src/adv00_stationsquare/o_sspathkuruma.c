@@ -1,10 +1,5 @@
 #include "decls.h"
 
-// STUB: SADX 0x006828a0
-void Exec(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00683120
 void CarBumpPlayer(struct taskwk *twp)
 {

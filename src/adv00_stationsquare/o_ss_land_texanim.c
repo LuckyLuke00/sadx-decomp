@@ -3,11 +3,6 @@ extern struct Tex_anim_land_work *land_works[7];
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 
-// STUB: SADX 0x00682060
-void Draw(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00682130
 void SSTexAnim(struct task *tp)
 {
