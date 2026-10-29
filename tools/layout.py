@@ -6,6 +6,7 @@ along the shorter side takes the next size only while that keeps the strip's wor
 Standard library only.
 """
 
+import html
 import math
 import urllib.parse
 from typing import NamedTuple
@@ -152,3 +153,11 @@ def rounded_path(corners: list[Point]) -> str:
 def svg_url(svg: str) -> str:
     """An SVG as a CSS url() of a data URI, its whitespace runs cut to one space."""
     return 'url("data:image/svg+xml,' + urllib.parse.quote(" ".join(svg.split()), safe=" =:/'") + '")'
+
+
+def link_attributes(url: str) -> str:
+    """The attributes of an HTML link to URL. A link to another site opens in a new tab, so the page stays open."""
+    attributes = f'href="{html.escape(url)}"'
+    if urllib.parse.urlsplit(url).scheme:
+        attributes += ' target="_blank" rel="noopener"'
+    return attributes
