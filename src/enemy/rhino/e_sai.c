@@ -155,7 +155,7 @@ void SaiJetDraw(struct taskwk *twp, struct enemywk *ewp)
 void FUN_008d8580(int param_1, char *param_2)
 {
 	matlist_rhino_jet[0].attr_texId = (int)((unsigned char)(*(char *)(param_1 + 3)) % 3);
-	matlist_rhino_jet[0].diffuse.argb.b = (char)((char)*param_2 + 3);
+	matlist_rhino_jet[0].diffuse.argb.a = (char)((char)*param_2 + 3);
 }
 
 // STUB: SADX 0x008d85b0

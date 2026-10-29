@@ -60,10 +60,10 @@ short FadeIn()
 void FUN_00598fc0(char param_1)
 {
 	union NJS_COLOR local_8;
-	local_8.argb.b = (unsigned char)param_1;
-	local_8.argb.g = 0;
+	local_8.argb.a = (unsigned char)param_1;
 	local_8.argb.r = 0;
-	local_8.argb.a = 0;
+	local_8.argb.g = 0;
+	local_8.argb.b = 0;
 	SetOffsetColor(&local_8);
 }
 

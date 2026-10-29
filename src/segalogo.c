@@ -21,10 +21,10 @@ void InitSegaLogo()
 	DAT_05cd0f18 = 0;
 	dsInitInt(1, 1);
 	njSetWaitVsyncCount(1);
-	col.argb.b = 0;
-	col.argb.g = 0;
-	col.argb.r = 0;
 	col.argb.a = 0;
+	col.argb.r = 0;
+	col.argb.g = 0;
+	col.argb.b = 0;
 	SetOffsetColor(&col);
 	ghInitPvrTexture();
 	FUN_007d21b0((void *)3);

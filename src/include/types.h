@@ -652,27 +652,25 @@ static_assert(offsetof(ADV1_AL_FACE, mouse2_default_num) == 0x42, "ADV1_AL_FACE:
 static_assert(offsetof(ADV1_AL_FACE, mouse1_request_num) == 0x44, "ADV1_AL_FACE::mouse1_request_num");
 static_assert(offsetof(ADV1_AL_FACE, mouse2_request_num) == 0x46, "ADV1_AL_FACE::mouse2_request_num");
 
-// Some offsets may be wrong: check them against the code.
 struct NJS_BGRA {
-    unsigned char a;
-    unsigned char r;
-    unsigned char g;
     unsigned char b;
+    unsigned char g;
+    unsigned char r;
+    unsigned char a;
 };
 static_assert(sizeof(NJS_BGRA) == 0x4, "sizeof NJS_BGRA");
-static_assert(offsetof(NJS_BGRA, a) == 0x0, "NJS_BGRA::a");
-static_assert(offsetof(NJS_BGRA, r) == 0x1, "NJS_BGRA::r");
-static_assert(offsetof(NJS_BGRA, g) == 0x2, "NJS_BGRA::g");
-static_assert(offsetof(NJS_BGRA, b) == 0x3, "NJS_BGRA::b");
+static_assert(offsetof(NJS_BGRA, b) == 0x0, "NJS_BGRA::b");
+static_assert(offsetof(NJS_BGRA, g) == 0x1, "NJS_BGRA::g");
+static_assert(offsetof(NJS_BGRA, r) == 0x2, "NJS_BGRA::r");
+static_assert(offsetof(NJS_BGRA, a) == 0x3, "NJS_BGRA::a");
 
-// Some offsets may be wrong: check them against the code.
 struct NJS_TEX {
-    short v;
     short u;
+    short v;
 };
 static_assert(sizeof(NJS_TEX) == 0x4, "sizeof NJS_TEX");
-static_assert(offsetof(NJS_TEX, v) == 0x0, "NJS_TEX::v");
-static_assert(offsetof(NJS_TEX, u) == 0x2, "NJS_TEX::u");
+static_assert(offsetof(NJS_TEX, u) == 0x0, "NJS_TEX::u");
+static_assert(offsetof(NJS_TEX, v) == 0x2, "NJS_TEX::v");
 
 union NJS_COLOR {
     unsigned long color;

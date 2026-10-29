@@ -480,21 +480,21 @@ void EV_Msg(char *str)
 	{
 		NH_MSG_OpenMain(local_cg);
 		local_cg->kind = 1;
-		local_cg->fc.argb.b = 0;
-		local_cg->bc.argb.b = 0;
+		local_cg->fc.argb.a = 0;
+		local_cg->bc.argb.a = 0;
 		if (local_cg->bitmap == 0)
 		{
 			return;
 		}
 	}
-	else if (local_cg->fc.argb.b != 0)
+	else if (local_cg->fc.argb.a != 0)
 	{
 		MSG_FadeOut(local_cg);
 	}
 	MSG_Cls(local_cg);
 	MSG_Puts(local_cg, str);
 	MSG_LoadTexture(local_cg);
-	if (local_cg->bc.argb.b == 0)
+	if (local_cg->bc.argb.a == 0)
 	{
 		MSG_WinFadeIn(local_cg);
 	}
