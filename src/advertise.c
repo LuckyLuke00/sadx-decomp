@@ -344,7 +344,7 @@ int padconfig(int sw)
 			break;
 		case 1:
 			MSG_Open(&DAT_05cd28b8, 64, 220, 512, 56, 0xd0000020);
-			DAT_05cd28b8.bc.argb.b = 0x80;
+			DAT_05cd28b8.bc.argb.a = 0x80;
 			MSG_Puts(&DAT_05cd28b8, DAT_02606ba0[DAT_05b3ebbc]);
 			MSG_LoadTexture2(&DAT_05cd28b8);
 			DAT_05cd2904 = 2;
@@ -466,7 +466,7 @@ int padconfig(int sw)
 			late_ReleaseTexture(&texlist_ava_csr);
 			DAT_05cd2904 = 0;
 			MSG_Open(&DAT_05cd28b8, 64, 420, 512, 56, 0xd0000020);
-			DAT_05cd28b8.bc.argb.b = 0x80;
+			DAT_05cd28b8.bc.argb.a = 0x80;
 			MSG_Puts(&DAT_05cd28b8, DAT_02606b78[DAT_05b3ebbc]);
 			MSG_LoadTexture2(&DAT_05cd28b8);
 			DisplayTask();
@@ -477,7 +477,7 @@ int padconfig(int sw)
 			MSG_Disp(0);
 			FUN_004c1c20();
 			MSG_Open(&DAT_05cd28b8, 64, 420, 512, 56, 0xd0000020);
-			DAT_05cd28b8.bc.argb.b = 0x80;
+			DAT_05cd28b8.bc.argb.a = 0x80;
 			MSG_Puts(&DAT_05cd28b8, DAT_02606b78[DAT_05b3ebbc]);
 			MSG_LoadTexture2(&DAT_05cd28b8);
 			DAT_05cd2904 = 0;
@@ -486,7 +486,7 @@ int padconfig(int sw)
 			break;
 		case 9:
 			MSG_Open(&DAT_05cd28b8, 64, 220, 512, 56, 0xd0000020);
-			DAT_05cd28b8.bc.argb.b = 0x80;
+			DAT_05cd28b8.bc.argb.a = 0x80;
 			DAT_05cd28b8.sx = 0;
 			MSG_Puts(&DAT_05cd28b8, DAT_02606b64[DAT_05b3ebbc]);
 			MSG_LoadTexture(&DAT_05cd28b8);
@@ -1783,7 +1783,7 @@ int padconfig(int sw)
 			DAT_05cd2904 = 0;
 			DAT_05cd2900 = 0;
 			MSG_Open(&DAT_05cd28b8, 64, 420, 512, 56, 0xd0000020);
-			DAT_05cd28b8.bc.argb.b = 0x80;
+			DAT_05cd28b8.bc.argb.a = 0x80;
 			MSG_Puts(&DAT_05cd28b8, DAT_02606b78[DAT_05b3ebbc]);
 			MSG_LoadTexture2(&DAT_05cd28b8);
 		}

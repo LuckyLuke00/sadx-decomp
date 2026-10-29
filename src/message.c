@@ -343,7 +343,7 @@ void MSG_FadeIn(struct MSGC *msgc)
 
 	for (local_8 = 8; local_8 != 0; local_8--)
 	{
-		msgc->fc.argb.b = FUN_004c2e10(msgc->fc.argb.b + 0x20);
+		msgc->fc.argb.a = FUN_004c2e10(msgc->fc.argb.a + 0x20);
 		MSG_Disp(msgc);
 		FUN_005a4d70();
 	}

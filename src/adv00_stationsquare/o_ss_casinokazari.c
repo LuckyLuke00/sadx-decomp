@@ -132,7 +132,7 @@ static void UVScroll(struct neon_info *neon)
 				short var6 = neon->info[var4].uv_num;
 				for (int var7 = 0; var7 < var6; var7++)
 				{
-					var5->tex.v += var3;
+					var5->tex.u += var3;
 					var5++;
 				}
 			}
@@ -145,7 +145,7 @@ static void UVScroll(struct neon_info *neon)
 				short var6 = neon->info[var4].uv_num;
 				for (int var7 = 0; var7 < var6; var7++)
 				{
-					var5->tex.u += var3;
+					var5->tex.v += var3;
 					var5++;
 				}
 			}
