@@ -28,6 +28,7 @@ TYPE_WORDS = {"void", "char", "short", "int", "long", "float", "double", "signed
               "struct", "union", "enum", "class", "const", "volatile"}
 LITERAL = re.compile(r"\"(?:\\.|[^\"\\\n])*\"|'(?:\\.|[^'\\\n])*'|//[^\n]*|/\*.*?\*/",
                      re.S)  # a string, a character or a comment, also over lines
+BRACE = re.compile(rf"{LITERAL.pattern}|[{{}}]", re.S)  # a brace, or a literal that hides the braces in it
 
 
 class Previous(NamedTuple):
@@ -57,8 +58,16 @@ def blank_literals(text: str) -> str:
 
 
 def definition_end(lines: list[str], start: int) -> int | None:
-    """Index of the first line that is exactly "}" from START on, or None."""
-    return next((i for i in range(start, len(lines)) if lines[i] == "}"), None)
+    """Index of the line that closes the body of the definition from START on, when that line holds only the `}`,
+    else None. A brace in a string, a character or a comment does not count."""
+    text = "\n".join(lines[start:])
+    depth = 0
+    for m in BRACE.finditer(text):
+        depth += (m[0] == "{") - (m[0] == "}")
+        if m[0] == "}" and depth == 0:
+            end = start + text.count("\n", 0, m.start())
+            return end if lines[end].strip() == "}" else None
+    return None
 
 
 def signature_index(func: list[str]) -> int:
