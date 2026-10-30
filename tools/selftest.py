@@ -75,6 +75,7 @@ def run() -> int:
     failures += check_file_local_globals()
     failures += check_nested_globals()
     failures += check_decls_aliases()
+    failures += check_shared_global_sizes()
     failures += check_extern_of()
     failures += check_reached_types()
     failures += check_bare_struct_names()
@@ -534,6 +535,26 @@ def check_nested_globals() -> list[str]:
     return failures
 
 
+def check_shared_global_sizes() -> list[str]:
+    """globals.h leaves out the array size of a name that two objects share: the other object's file may define its
+    own static of another size, and a sized extern would not let that file build."""
+    target = project.game_config().target
+    functions = [("0x00403000", "DispX", "L", "src/x.c", "o_x.obj"),
+                 ("0x00404000", "DispY", "L", "src/y.c", "o_y.obj")]
+    globals_ = [("0x00501000", "obj_c_info", "o_x.obj"), ("0x00502000", "obj_c_info", "o_y.obj")]
+    uses = {"src/x.c": f"// FUNCTION: {target} 0x00403000\nstatic void DispX(struct task *tp)\n{{\n"
+                       "\tobj_c_info[0] = 1;\n}\n"}
+    own = {"src/y.c": f"// GLOBAL: {target} 0x00502000\nstatic int obj_c_info[6];\n\n"
+                      f"// FUNCTION: {target} 0x00404000\nstatic void DispY(struct task *tp)\n{{\n"
+                      "\tobj_c_info[0] = 1;\n}\n"}
+    code, output, generated = run_decls(uses, own, functions, globals_, dims={"0x00501000": "4", "0x00502000": "6"})
+    header = generated.get("src/include/globals.h", "")
+    if code != 0 or "extern int obj_c_info[];" not in header:
+        return [f"decls for a shared name of known size gives exit {code} and globals.h {header!r}, "
+                f"not exit 0 and `extern int obj_c_info[];`"]
+    return []
+
+
 def check_decls_aliases() -> list[str]:
     """decls names the library function at a FUN_ address, as memset for the model's FUN_008e3350. A data name that
     two objects share stays DAT_ in a file that would not mean that address by it: no notice, and the extern keeps
@@ -617,10 +638,12 @@ def check_bare_struct_names() -> list[str]:
 
 
 def run_decls(files: dict, context_files: dict, functions: list, globals_: list,
-              types: str = "") -> tuple[int, str, dict]:
+              types: str = "", dims: dict | None = None) -> tuple[int, str, dict]:
     """(exit code, output, generated files) of decls in a throwaway tree of FILES, with a throwaway context tree and
     the given rows of the tables: functions (address, name, scope, file, object, and a prototype or none for
-    `void name(struct task *tp);`) and globals (address, name, object), and the TYPES header."""
+    `void name(struct task *tp);`) and globals (address, name, object), and the TYPES header. DIMS gives a global's
+    int array length by address; the table does not know the others'."""
+    dims = dims or {}
     def tsv(header, rows):
         return "\n".join("\t".join(row) for row in [header, *rows]) + "\n"
 
@@ -637,7 +660,8 @@ def run_decls(files: dict, context_files: dict, functions: list, globals_: list,
             encoding="utf-8")
         (tables / "globals.tsv").write_text(
             tsv(["address", "name", "decl", "base", "dims", "size", "object"],
-                [(a, n, "int {}[?]", "int", "?", "8", o) for a, n, o in globals_]), encoding="utf-8")
+                [(a, n, f"int {{}}[{dims.get(a, '?')}]", "int", dims.get(a, "?"),
+                  str(4 * int(dims[a])) if a in dims else "8", o) for a, n, o in globals_]), encoding="utf-8")
         if types:
             (tables / "types.h").write_text(types, encoding="utf-8")
         saved, declgen.ROOT = declgen.ROOT, root
