@@ -440,7 +440,9 @@ def write(context: Path | None, tables: Path | None) -> int:
                 fatal.append(f"{name}: no known type. Declare it `extern <type> {name};` at the top of the file that uses it.")
             continue
         dims = row["dims"].split(",") if row["dims"] else []
-        externs[a] = "extern " + names.row_declaration(row)
+        decl = names.row_declaration(row)
+        # Another object's file may define its own static of a shared name with another size.
+        externs[a] = extern_of(decl) if name in shared_globals else "extern " + decl
         definition = row["decl"].replace("{}", name)
         if dims and dims[0] in ("?", "0", ""):
             elem = names.element_size(row["base"], types)
