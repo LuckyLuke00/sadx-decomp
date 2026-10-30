@@ -1265,6 +1265,7 @@ extern struct NJS_TEXLIST texlist_HotShelter2;
 extern struct NJS_ACTION action_boxana_boxana[1];
 extern struct NJS_MODEL model_tv_clash_base_tv_clash_base[];
 extern struct NJS_TEXLIST texlist_shelter_column;
+extern struct NJS_ACTION action_kowaresuisou_mizu_ef[];
 extern struct NJS_TEXLIST texlist_shelter_suimen;
 extern struct obj object_suimen_wt_j2h_wt_j2h[];
 extern struct obj object_mizubasira_pasya_sita_pasya_sita[];

@@ -3544,6 +3544,11 @@ void ObjShelterMizubashira(struct task *)
 {
 }
 
+// STUB: SADX 0x008b3ed0
+void ObjShelterSensuimen(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008b4c70
 void ObjShelterColsuimen(struct task *tp)
 {
