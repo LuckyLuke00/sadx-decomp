@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1436" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,494 of 16,524 game functions done (33.24%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,505 of 16,524 game functions done (33.31%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 611,1202.5 605,1195.6 606.1,1194" fill="#4e32f3"/>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 605,1195.6 606.1,1194" fill="#ffffff" fill-opacity="0.4"/>
@@ -1144,10 +1144,10 @@
 <polygon points="605,935.6 608.8,935.6 611,942.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="613.2,935.6 617,935.6 611,942.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="607.8,932.5 614.2,932.5 615.9,934 617,935.6 611,942.5 605,935.6 606.1,934" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="621" y="942" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Adventure Fields <tspan font-weight="400" fill="#8b949e">23%</tspan></text>
-<rect x="606" y="950" width="120" height="233" rx="3" fill="#21262d" stroke="#30363d"><title>Station Square: 113 of 421 done</title></rect>
+<text x="621" y="942" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Adventure Fields <tspan font-weight="400" fill="#8b949e">24%</tspan></text>
+<rect x="606" y="950" width="120" height="233" rx="3" fill="#21262d" stroke="#30363d"><title>Station Square: 124 of 421 done</title></rect>
 <text x="609" y="964" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Station Square</text>
-<text x="609" y="979" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">26%</tspan></text>
+<text x="609" y="979" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">29%</tspan></text>
 <g transform="translate(609,983)">
 <rect y="0" width="112" height="182" fill="url(#todo)"/>
 <rect y="182" width="35" height="7" fill="url(#todo)"/>
@@ -1174,6 +1174,8 @@
 <rect x="7" y="21" width="6" height="6" fill="#ffd700"><title>0x00681150 getSsHotelPoolDoorMode: 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#ffd700"><title>0x00681160 SeqCheckFront: 100%</title></rect>
 <rect x="21" y="21" width="6" height="6" fill="#ffd700"><title>0x006811d0 SeqCheckBack: 100%</title></rect>
+<rect x="35" y="21" width="6" height="6" fill="#ffd700"><title>0x00681290 ObjectDisplay(3): 100%</title></rect>
+<rect x="98" y="21" width="6" height="6" fill="#ffd700"><title>0x00681880 ObjectSSHotelfront: 100%</title></rect>
 <rect x="21" y="28" width="6" height="6" fill="#ffd700"><title>0x00681e30 ObjectSSTwrouka: 100%</title></rect>
 <rect x="49" y="28" width="6" height="6" fill="#ffd700"><title>0x00682040 CreateSSTwrouka: 100%</title></rect>
 <rect x="70" y="28" width="6" height="6" fill="#ffd700"><title>0x00682190 CreateSSTexAnim: 100%</title></rect>
@@ -1213,7 +1215,7 @@
 <rect x="63" y="98" width="6" height="6" fill="#ffd700"><title>0x0068a7c0 MatoInit: 100%</title></rect>
 <rect x="105" y="98" width="6" height="6" fill="#ffd700"><title>0x0068ab70 ObjectDisplayMiles: 100%</title></rect>
 <rect x="0" y="105" width="6" height="6" fill="#ffd700"><title>0x0068abe0 ObjectBroken: 100%</title></rect>
-<rect x="35" y="105" width="6" height="6" fill="#ffd700"><title>0x0068aed0 ObjectDisplay(3): 100%</title></rect>
+<rect x="35" y="105" width="6" height="6" fill="#ffd700"><title>0x0068aed0 ObjectDisplay(4): 100%</title></rect>
 <rect x="42" y="105" width="6" height="6" fill="#ffd700"><title>0x0068af40 ObjectMain(3): 100%</title></rect>
 <rect x="84" y="105" width="6" height="6" fill="#ffd700"><title>0x0068b1e0 LampDisp: 100%</title></rect>
 <rect x="70" y="112" width="6" height="6" fill="#ffd700"><title>0x0068ba90 Disp(12): 100%</title></rect>
@@ -1250,13 +1252,22 @@
 <rect x="14" y="140" width="6" height="6" fill="#ffd700"><title>0x0068dec0 ObjectSsadvKomonoIsub: 100%</title></rect>
 <rect x="28" y="140" width="6" height="6" fill="#ffd700"><title>0x0068df80 ObjectDisplayOn: 100%</title></rect>
 <rect x="42" y="140" width="6" height="6" fill="#ffd700"><title>0x0068e1b0 ObjectMainOn: 100%</title></rect>
-<rect x="91" y="147" width="6" height="6" fill="#ffd700"><title>0x0068f040 ObjectDisplay(4): 100%</title></rect>
+<rect x="91" y="147" width="6" height="6" fill="#ffd700"><title>0x0068f040 ObjectDisplay(5): 100%</title></rect>
+<rect x="28" y="154" width="6" height="6" fill="#ffd700"><title>0x0068f360 ObjectDisplay(6): 100%</title></rect>
+<rect x="70" y="154" width="6" height="6" fill="#ffd700"><title>0x0068f640 ObjectSSTwadoor: 100%</title></rect>
 <rect x="77" y="154" width="6" height="6" fill="#ffd700"><title>0x0068f680 FUN_0068f680: 100%</title></rect>
 <rect x="28" y="161" width="6" height="6" fill="#ffd700"><title>0x0068fa50 FUN_0068fa50: 100%</title></rect>
 <rect x="49" y="161" width="6" height="6" fill="#ffd700"><title>0x0068fbd0 ObjectWait: 100%</title></rect>
+<rect x="63" y="161" width="6" height="6" fill="#ffd700"><title>0x0068fcd0 ObjectMain(6): 100%</title></rect>
+<rect x="77" y="161" width="6" height="6" fill="#ffd700"><title>0x0068fdc0 ObjectSSTwindoor: 100%</title></rect>
+<rect x="21" y="168" width="6" height="6" fill="#ffd700"><title>0x006903c0 ObjectDisplay(7): 100%</title></rect>
+<rect x="63" y="168" width="6" height="6" fill="#ffd700"><title>0x006907f0 ObjectSSShop1door: 100%</title></rect>
+<rect x="70" y="168" width="6" height="6" fill="#ffd700"><title>0x00690830 SeqCheck(4): 100%</title></rect>
 <rect x="77" y="168" width="6" height="6" fill="#ffd700"><title>0x006908a0 FUN_006908a0: 100%</title></rect>
-<rect x="21" y="175" width="6" height="6" fill="#ffd700"><title>0x00690c80 ObjectDisplay(5): 100%</title></rect>
-<rect x="28" y="175" width="6" height="6" fill="#ffd700"><title>0x00690cd0 ObjectMain(5): 100%</title></rect>
+<rect x="7" y="175" width="6" height="6" fill="#ffd700"><title>0x00690bc0 FUN_00690bc0: 100%</title></rect>
+<rect x="14" y="175" width="6" height="6" fill="#ffd700"><title>0x00690c30 ObjectSSKartdoor: 100%</title></rect>
+<rect x="21" y="175" width="6" height="6" fill="#ffd700"><title>0x00690c80 ObjectDisplay(8): 100%</title></rect>
+<rect x="28" y="175" width="6" height="6" fill="#ffd700"><title>0x00690cd0 ObjectMain(9): 100%</title></rect>
 <rect x="49" y="175" width="6" height="6" fill="#ffd700"><title>0x00690e40 KasyaDisplay: 100%</title></rect>
 <rect x="77" y="175" width="6" height="6" fill="#ffd700"><title>0x00691150 sstrain_adxdestruct: 100%</title></rect>
 <rect x="84" y="175" width="6" height="6" fill="#ffd700"><title>0x00691160 sstrain_adxprove: 100%</title></rect>
