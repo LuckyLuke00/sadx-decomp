@@ -2698,6 +2698,14 @@
    "library": false
   },
   {
+   "address": "0x00425a50",
+   "name": "SOCAudio::FUN_00425a50",
+   "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00425ac0",
    "name": "FUN_00425ac0",
    "accuracy": 1.0,
@@ -2717,6 +2725,30 @@
    "address": "0x00425ce0",
    "name": "FUN_00425ce0",
    "accuracy": 0.02857142857142857,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00425d70",
+   "name": "SOCAudio::FUN_00425d70",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004262b0",
+   "name": "SOCAudio::~SOCAudio",
+   "accuracy": 0.04081632653061224,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00426350",
+   "name": "SOCAudio::FUN_00426350",
+   "accuracy": 0.041666666666666664,
    "effective": false,
    "stub": true,
    "library": false
@@ -28506,19 +28538,27 @@
    "library": false
   },
   {
-   "address": "0x00577e40",
-   "name": "InitStaff2",
-   "accuracy": 0.006968641114982578,
+   "address": "0x00577bc0",
+   "name": "trim2",
+   "accuracy": 0.06666666666666667,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
+   "address": "0x00577e40",
+   "name": "InitStaff2",
+   "accuracy": 0.34727143869596033,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00579960",
    "name": "FUN_00579960",
-   "accuracy": 0.08333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37936,6 +37976,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005ebc40",
+   "name": "FUN_005ebc40",
+   "accuracy": 0.10112359550561797,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -98119,5 +98167,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "50c57e1fac16aec3844e626859756eeb271f9c8d504963719922ddfd71127de2"
+ "inputs_sha256": "da4f09d06695ec3ea6e60e1885548053aba5e200c53469f87304ec9c1d9e098e"
 }

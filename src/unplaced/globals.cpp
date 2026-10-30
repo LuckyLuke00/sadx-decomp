@@ -4946,6 +4946,9 @@ int DAT_05b3dfc4;
 // GLOBAL: SADX 0x05b3dfd0
 int DAT_05b3dfd0;
 
+// GLOBAL: SADX 0x05b3dfdc
+class SOCAudio *DAT_05b3dfdc;
+
 // GLOBAL: SADX 0x05b3dfe0
 int DAT_05b3dfe0;
 
@@ -4954,6 +4957,9 @@ int DAT_05b3dfe4;
 
 // GLOBAL: SADX 0x05b3dfec
 int DAT_05b3dfec;
+
+// GLOBAL: SADX 0x05b3dff4
+int DAT_05b3dff4;
 
 // GLOBAL: SADX 0x05b3dff8
 int DAT_05b3dff8[4];
@@ -6636,13 +6642,13 @@ Magic::RenderCore::Texture* DAT_05cd2744;
 Magic::RenderCore::Texture* DAT_05cd2748;
 
 // GLOBAL: SADX 0x05cd274c
-Magic::RenderCore::Texture* DAT_05cd274c;
+Magic::RenderCore::Texture *DAT_05cd274c;
 
 // GLOBAL: SADX 0x05cd2750
-Magic::RenderCore::Texture* DAT_05cd2750;
+Magic::RenderCore::Texture *DAT_05cd2750;
 
 // GLOBAL: SADX 0x05cd2754
-Magic::RenderCore::Texture* DAT_05cd2754;
+Magic::RenderCore::Texture *DAT_05cd2754;
 
 // GLOBAL: SADX 0x05cd2758
 Magic::RenderCore::Texture* DAT_05cd2758;

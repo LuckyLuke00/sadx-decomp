@@ -198,6 +198,15 @@ public:
 	bool FUN_00433c20(const std::string& param_1, int param_2);
 };
 
+class SOCAudio
+{
+public:
+	void FUN_00425a50();
+	~SOCAudio();
+	bool FUN_00426350(const std::string& param_1);
+	void FUN_00425d70(float param_1, int param_2);
+};
+
 class SOCIniFile : public Magic::Base::IniFile
 {
 public:

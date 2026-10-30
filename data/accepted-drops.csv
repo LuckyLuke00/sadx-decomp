@@ -132,3 +132,4 @@ address,from,to,reason
 0x008105a0,100.00%,95.65%,"njRotateY takes an Angle as the Ninja headers declare it, with the (Uint16) cast that gives the movzx; the old unsigned short prototype matched only through the x87 operand order of three later adds"
 0x0057d490,94.33%,81.85%,"Texture now derives from its real base class, whose vtable and deleting destructor prove a virtual destructor; this flips one std::string inlining choice and shifts the stack frame"
 0x0042b460,97.83%,85.39%,"File's constructor and destructor are not confirmed, so they are placeholder functions called by hand; the compiler no longer writes those calls and their unwind code"
+0x00577e40,48.66%,34.73%,"File's constructor and destructor are not confirmed, so they are placeholder functions called by hand; the compiler no longer writes those calls and their unwind code"
