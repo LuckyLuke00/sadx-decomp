@@ -1754,6 +1754,12 @@ struct NJS_POINT3 DAT_026f1b20;
 // GLOBAL: SADX 0x02709244
 struct NJS_ACTION action_g_g0023_eggman[1];
 
+// GLOBAL: SADX 0x0270a134
+struct NJS_TEXLIST texlist_mr_egg;
+
+// GLOBAL: SADX 0x0270a810
+struct obj object_tamago_e2_tama_e2_tama[1];
+
 // GLOBAL: SADX 0x0270aec0
 int MRLockSeqVarID[8][4];
 
@@ -7363,6 +7369,9 @@ int DAT_060b8b04;
 
 // GLOBAL: SADX 0x060b907c
 int DAT_060b907c;
+
+// GLOBAL: SADX 0x060b90fc
+struct task *DAT_060b90fc;
 
 // GLOBAL: SADX 0x060b9104
 int DAT_060b9104;
