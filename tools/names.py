@@ -307,6 +307,17 @@ class Types:
         return found[1].rstrip() if found else None
 
 
+def header_blocks(folder: Path) -> dict[str, str]:
+    """name: block of each struct, union and enum that the hand-written headers of FOLDER lay out, such as Sega's
+    Ninja types in ninja.h. The generated headers hold only what the tables have."""
+    generated = {Path(rel).name for rel in GENERATED}
+    found = {}
+    for header in sorted(folder.glob("*.h")):
+        if header.name not in generated:
+            found.update(Types(header).blocks)
+    return found
+
+
 def element_size(base: str, types: Types) -> int | None:
     t = re.sub(r"\bconst\b|\bvolatile\b", "", base).strip()
     if t.endswith("*") or "(*" in t:

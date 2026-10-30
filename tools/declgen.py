@@ -65,6 +65,7 @@ CALL_ARGUMENTS = r"\((?:[^()]|\([^()]*\))*\)"  # with one level of nested parent
 MEMBER_STEP = r"(?:->|\[[^\]]*\]\s*(?:\.|->))"  # `->`, or an index and then `.` or `->`
 REACHED_THROUGH = re.compile(rf"(\w+)(?=\s*(?:{CALL_ARGUMENTS}\s*)?{MEMBER_STEP})")
 RETURNS_POINTER_TO = re.compile(r"(?:const\s+)?(?:struct|union)\s+(\w+)\s*\*")  # a signature's pointed-to return type
+BY_VALUE = re.compile(r"\b(struct|union)\s+(\w+)\b(?!(?:\s*\b(?:const|volatile)\b)*\s*\*)")  # one passed by value
 PLACEHOLDER_TAG = re.compile(r"\b(?:struct|union|enum)\s+(?:(?:param|local)_\w+|[a-z]*Var\d+)\b")  # a variable's name
 
 
@@ -542,6 +543,11 @@ def write(context: Path | None, tables: Path | None) -> int:
             glines.append(f"{ext};")
     out[names.GLOBALS_H] = "\n".join(glines) + "\n"
     slines = [HEADER, '#include "decls.h"', ""]
+    laid = defined_types | set(names.header_blocks((ROOT / names.TYPES_H).parent))
+    unlaid = sorted({(kind, n) for sig in stubs.values() for kind, n in BY_VALUE.findall(sig) if n not in laid})
+    if unlaid:
+        slines += ["// No header lays these out. Each stub only needs them complete, so any layout serves."]
+        slines += [f"{kind} {n} {{ int unknown; }};" for kind, n in unlaid] + [""]
     for a, sig in sorted(stubs.items()):
         slines += [f"// STUB: {target} 0x{a:08x}", sig, stub_body(sig), ""]
     out[names.STUBS_CPP] = "\n".join(slines)
