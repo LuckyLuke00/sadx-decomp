@@ -48,9 +48,24 @@ long TutorialExit(void *Param)
 	return 1;
 }
 
-// STUB: SADX 0x00496390
+// FUNCTION: SADX 0x00496390
 void TutorialTaskDestructor(struct task *tp)
 {
+	struct taskwk *var1;
+	struct task *var2;
+	struct task *var3;
+
+	var1 = tp->twp;
+	var2 = (struct task *)(*(int *)((char *)var1 + 0x14));
+	var3 = (struct task *)(*(int *)((char *)var1 + 0x18));
+	if (var2 != 0)
+	{
+		FreeTask(var2);
+	}
+	if (var3 != 0)
+	{
+		FreeTask(var3);
+	}
 }
 
 // FUNCTION: SADX 0x004963c0

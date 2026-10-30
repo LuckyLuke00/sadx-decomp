@@ -12364,9 +12364,9 @@
   {
    "address": "0x00495400",
    "name": "GetTutoMsgPurposePage",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -12460,9 +12460,9 @@
   {
    "address": "0x00496390",
    "name": "TutorialTaskDestructor",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -97795,5 +97795,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e63d7780fac6de0d91f2958071582e1066457acce0c6d96f825777434fe1d45d"
+ "inputs_sha256": "ae8d0a75d0ce92e35f44f206ead2b42e8eac42568e0a020f5624f85d7f01c8f7"
 }
