@@ -2369,6 +2369,11 @@ void dispSSBigClock(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0068fd70
+void FUN_0068fd70(struct task *)
+{
+}
+
 // STUB: SADX 0x00692030
 void CreamManager(struct task *tp)
 {

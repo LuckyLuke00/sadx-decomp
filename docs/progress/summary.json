@@ -41595,6 +41595,14 @@
    "library": false
   },
   {
+   "address": "0x00681290",
+   "name": "ObjectDisplay(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006814b0",
    "name": "ObjectColliSet2",
    "accuracy": 0.1111111111111111,
@@ -41604,7 +41612,7 @@
   },
   {
    "address": "0x006816d0",
-   "name": "ObjectMain(struct task *)",
+   "name": "ObjectMain(2)",
    "accuracy": 0.03571428571428571,
    "effective": false,
    "stub": true,
@@ -41624,6 +41632,14 @@
    "accuracy": 0.03508771929824561,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00681880",
+   "name": "ObjectSSHotelfront",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -42212,7 +42228,7 @@
   },
   {
    "address": "0x0068aed0",
-   "name": "ObjectDisplay(3)",
+   "name": "ObjectDisplay(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42612,7 +42628,7 @@
   },
   {
    "address": "0x0068f040",
-   "name": "ObjectDisplay(4)",
+   "name": "ObjectDisplay(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42635,11 +42651,43 @@
    "library": false
   },
   {
+   "address": "0x0068f360",
+   "name": "ObjectDisplay(6)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0068f5d0",
+   "name": "ObjectMain(5)",
+   "accuracy": 0.045454545454545456,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0068f640",
+   "name": "ObjectSSTwadoor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0068f680",
    "name": "FUN_0068f680",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0068f9b0",
+   "name": "SeqCheck(3)",
+   "accuracy": 0.0392156862745098,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -42661,6 +42709,70 @@
   {
    "address": "0x0068fbd0",
    "name": "ObjectWait",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0068fc40",
+   "name": "ObjectOpen",
+   "accuracy": 0.037037037037037035,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0068fcd0",
+   "name": "ObjectMain(6)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0068fd70",
+   "name": "FUN_0068fd70",
+   "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0068fdc0",
+   "name": "ObjectSSTwindoor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006903c0",
+   "name": "ObjectDisplay(7)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00690730",
+   "name": "ObjectMain(7)",
+   "accuracy": 0.03278688524590164,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006907f0",
+   "name": "ObjectSSShop1door",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00690830",
+   "name": "SeqCheck(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42691,8 +42803,32 @@
    "library": false
   },
   {
+   "address": "0x00690b20",
+   "name": "ObjectMain(8)",
+   "accuracy": 0.03636363636363636,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00690bc0",
+   "name": "FUN_00690bc0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00690c30",
+   "name": "ObjectSSKartdoor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00690c80",
-   "name": "ObjectDisplay(5)",
+   "name": "ObjectDisplay(8)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -42700,7 +42836,7 @@
   },
   {
    "address": "0x00690cd0",
-   "name": "ObjectMain(5)",
+   "name": "ObjectMain(9)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87373,6 +87509,13 @@
    "library": false
   },
   {
+   "address": "0x01c84844",
+   "name": "action_sssikake_shop1door",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x01c87034",
    "name": "action_sssikake_twindoor",
    "size": 8,
@@ -87382,6 +87525,13 @@
   {
    "address": "0x01c87f8c",
    "name": "action_sssikake_uradoor",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01c88c74",
+   "name": "action_sssikake_twadoor",
    "size": 8,
    "match": false,
    "library": false
@@ -88075,7 +88225,7 @@
   {
    "address": "0x02225808",
    "name": "ccinfo",
-   "size": 48,
+   "size": 432,
    "match": false,
    "library": false
   },
@@ -90474,6 +90624,13 @@
    "library": false
   },
   {
+   "address": "0x026dac20",
+   "name": "ccinfo",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026daf1c",
    "name": "land_works",
    "size": 28,
@@ -90602,6 +90759,34 @@
   {
    "address": "0x026de678",
    "name": "object_komono_isub_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026de888",
+   "name": "ccinfo",
+   "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026de918",
+   "name": "ccinfo",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026debf0",
+   "name": "ccinfo",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026dec50",
+   "name": "ccinfo",
    "size": 48,
    "match": false,
    "library": false
@@ -97161,5 +97346,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a464194905bab8c311fb3ddd40b3fc3b66eda0bea538d93696578a6a01f1e7ce"
+ "inputs_sha256": "69d80714935c5cfc1941e1039f1a0ff49885116360d08ac6233a14d6d95ed7df"
 }

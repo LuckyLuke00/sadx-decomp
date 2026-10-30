@@ -314,11 +314,17 @@ struct obj object_sssikake_pole_pole[1];
 // GLOBAL: SADX 0x01c8288c
 struct NJS_ACTION action_sssikake_kartdoor[1];
 
+// GLOBAL: SADX 0x01c84844
+struct NJS_ACTION action_sssikake_shop1door[1];
+
 // GLOBAL: SADX 0x01c87034
 struct NJS_ACTION action_sssikake_twindoor[1];
 
 // GLOBAL: SADX 0x01c87f8c
 struct NJS_ACTION action_sssikake_uradoor[1];
+
+// GLOBAL: SADX 0x01c88c74
+struct NJS_ACTION action_sssikake_twadoor[1];
 
 // GLOBAL: SADX 0x01c8982c
 struct NJS_ACTION action_sssikake_twbdoor[1];
@@ -5738,6 +5744,9 @@ unsigned char DAT_05bafb86;
 // GLOBAL: SADX 0x05bafb89
 unsigned char DAT_05bafb89;
 
+// GLOBAL: SADX 0x05bafb8a
+unsigned char DAT_05bafb8a;
+
 // GLOBAL: SADX 0x05bafb8d
 char DAT_05bafb8d;
 
@@ -5774,6 +5783,9 @@ unsigned char DAT_05bafbc2;
 // GLOBAL: SADX 0x05bafbc7
 unsigned char DAT_05bafbc7;
 
+// GLOBAL: SADX 0x05bafbc8
+unsigned char DAT_05bafbc8;
+
 // GLOBAL: SADX 0x05bafbcf
 unsigned char DAT_05bafbcf;
 
@@ -5800,6 +5812,9 @@ unsigned char DAT_05bafc02;
 
 // GLOBAL: SADX 0x05bafc05
 unsigned char DAT_05bafc05;
+
+// GLOBAL: SADX 0x05bafc06
+unsigned char DAT_05bafc06;
 
 // GLOBAL: SADX 0x05bafc0b
 unsigned char DAT_05bafc0b;
@@ -5837,6 +5852,9 @@ unsigned char DAT_05bafc41;
 // GLOBAL: SADX 0x05bafc44
 unsigned char DAT_05bafc44;
 
+// GLOBAL: SADX 0x05bafc45
+unsigned char DAT_05bafc45;
+
 // GLOBAL: SADX 0x05bafc49
 unsigned char DAT_05bafc49;
 
@@ -5857,6 +5875,9 @@ unsigned char DAT_05bafc80;
 
 // GLOBAL: SADX 0x05bafc83
 unsigned char DAT_05bafc83;
+
+// GLOBAL: SADX 0x05bafc84
+unsigned char DAT_05bafc84;
 
 // GLOBAL: SADX 0x05bafc87
 unsigned char DAT_05bafc87;
@@ -5890,6 +5911,9 @@ unsigned char DAT_05bafcc1;
 
 // GLOBAL: SADX 0x05bafcc2
 unsigned char DAT_05bafcc2;
+
+// GLOBAL: SADX 0x05bafcc3
+unsigned char DAT_05bafcc3;
 
 // GLOBAL: SADX 0x05bafcc8
 unsigned char DAT_05bafcc8;

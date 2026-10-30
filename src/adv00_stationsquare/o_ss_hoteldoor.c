@@ -1,4 +1,11 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026dac20
+static struct CCL_INFO ccinfo[9];
+
+static void ObjectMain(struct task *tp);
+static void ObjectDisplay(struct task *tp);
+extern void ObjectClosed(struct task *tp);
 extern struct obj object_sscasinosikake_hnakagen_hnakagen[];
 extern struct obj object_sscasinosikake_hnakagen_2_hnakagen[];
 extern struct NJS_ACTION action_sscasinosikake_hnakagen[];
@@ -75,6 +82,52 @@ long SeqCheckPool()
 	return (long)0;
 }
 
+// FUNCTION: SADX 0x00681290
+static void ObjectDisplay(struct task *tp)
+{
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		njPushMatrix(NULL);
+		njTranslateV(NULL, &var1->pos);
+		if (var1->ang.y != 0)
+		{
+			njRotateY(NULL, (unsigned short)var1->ang.y);
+		}
+		if (DAT_05b9d744 == 1 || DAT_05b9d744 == 3)
+		{
+			action_sscasinosikake_hnakagen[0].object = &object_sscasinosikake_hnakagen_2_hnakagen[0];
+		}
+		else
+		{
+			if (var1->timer.l == (long)SeqCheckPool && checkInSsHodel() == 0)
+			{
+				action_sscasinosikake_hnakagen[0].object = &object_sscasinosikake_hnakagen_2_hnakagen[0];
+			}
+			else
+			{
+				action_sscasinosikake_hnakagen[0].object = &object_sscasinosikake_hnakagen_hnakagen[0];
+			}
+		}
+		SetObjectTexture();
+		if (var1->timer.l == (long)SeqCheckPool && checkInSsHodel() == 0)
+		{
+			late_ActionClipEx(&action_sscasinosikake_hnakagen[0], var1->counter.f, 0, 1.0f);
+			njPopMatrix(1);
+		}
+		else
+		{
+			SaveConstantAttr();
+			OnConstantAttr(0, 0x2000000);
+			late_ActionClipEx(&action_sscasinosikake_hnakagen[0], var1->counter.f, 0, 1.0f);
+			LoadConstantAttr();
+			njPopMatrix(1);
+		}
+	}
+}
+
 // STUB: SADX 0x006814b0
 void ObjectColliSet2(struct taskwk *twp)
 {
@@ -82,7 +135,7 @@ void ObjectColliSet2(struct taskwk *twp)
 
 #pragma optimize("", off)
 // STUB: SADX 0x006816d0
-void ObjectMain(struct task *tp)
+static void ObjectMain(struct task *tp)
 {
 }
 #pragma optimize("", on)
@@ -95,6 +148,32 @@ void ObjectClosed(struct task *tp)
 // STUB: SADX 0x006817d0
 void ObjectWaitKeyblock(struct task *tp)
 {
+}
+
+// FUNCTION: SADX 0x00681880
+void ObjectSSHotelfront(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		if (FUN_004c39c0(tp) == 0)
+		{
+			CCL_Init(tp, &ccinfo[0], 9, 4);
+		}
+		var1->btimer = 0;
+		var1->counter.f = 0.0f;
+		var1->timer.ptr = (void *)SeqCheckFront;
+		if (SeqCheckFront() != 0)
+		{
+			tp->exec = ObjectMain;
+		}
+		else
+		{
+			tp->exec = ObjectClosed;
+		}
+		tp->disp = ObjectDisplay;
+		tp->dest = ExplosionRockDestructor;
+	}
 }
 
 // STUB: SADX 0x00681900
