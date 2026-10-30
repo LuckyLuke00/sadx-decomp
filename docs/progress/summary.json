@@ -55887,7 +55887,7 @@
    "name": "ObjectWindySakuC",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55903,7 +55903,7 @@
    "name": "ObjectWindyHaneB",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55911,7 +55911,7 @@
    "name": "ObjectWindyBigFlootB",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55963,11 +55963,19 @@
    "library": false
   },
   {
-   "address": "0x00809220",
-   "name": "ObjectWindyGate",
-   "accuracy": 0.03636363636363636,
+   "address": "0x00808fa0",
+   "name": "DrawGate",
+   "accuracy": 0.010638297872340425,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00809220",
+   "name": "ObjectWindyGate",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -93491,6 +93499,13 @@
    "library": false
   },
   {
+   "address": "0x03b32804",
+   "name": "object_windobj_saku_c_saku_c",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b3d430",
    "name": "object_wvobj_flower_a_flower_a",
    "size": 52,
@@ -93519,9 +93534,23 @@
    "library": false
   },
   {
+   "address": "0x03b43ea8",
+   "name": "object_windobj_haneobj_b_haneobj_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b45f50",
    "name": "model_wvobj_wara_wara",
    "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b4a048",
+   "name": "object_windobj_bigflootb_bigflootb",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -93610,6 +93639,27 @@
    "library": false
   },
   {
+   "address": "0x03b75568",
+   "name": "DAT_03b75568",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b75598",
+   "name": "DAT_03b75598",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b75628",
+   "name": "DAT_03b75628",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b75660",
    "name": "alpha",
    "size": 4,
@@ -93627,6 +93677,13 @@
    "address": "0x03b757e8",
    "name": "object_uki_info",
    "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b75848",
+   "name": "object_c_info",
+   "size": 336,
    "match": false,
    "library": false
   },
@@ -97623,5 +97680,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "78163decd08ef597d293812b9a45fb7a35affd505a05cceec5b32ad0d5deefbd"
+ "inputs_sha256": "27c5a20944a5b5294d55b014938f071141e23b17f47339e296d53860e19b856e"
 }

@@ -1,4 +1,9 @@
 #include "decls.h"
+extern struct CCL_INFO DAT_03b75628[];
+extern struct obj object_windobj_bigflootb_bigflootb[];
+extern struct CCL_INFO DAT_03b75598[];
+extern struct CCL_INFO DAT_03b75568[];
+extern struct obj object_windobj_saku_c_saku_c[];
 static void Draw(struct task *tp);
 
 #pragma optimize("", off)
@@ -62,13 +67,13 @@ void ObjectWindyHasiEnd(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00808520
+// FUNCTION: SADX 0x00808520
 void ObjectWindySakuC(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	var1->value.ptr = (void *)0x3b32804;
-	CCL_Init(tp, (struct CCL_INFO *)0x3b75568, 1, 4);
+	var1->value.ptr = &object_windobj_saku_c_saku_c;
+	CCL_Init(tp, (struct CCL_INFO *)&DAT_03b75568, 1, 4);
 	var1->timer.b[0] = 1;
 	tp->exec = Exec;
 	tp->disp = Draw;
@@ -79,25 +84,25 @@ void ObjectWindyHaneA(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008085a0
+// FUNCTION: SADX 0x008085a0
 void ObjectWindyHaneB(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	var1->value.ptr = (void *)0x3b43ea8;
-	CCL_Init(tp, (struct CCL_INFO *)0x3b75598, 1, 4);
+	var1->value.ptr = &object_windobj_haneobj_b_haneobj_b;
+	CCL_Init(tp, DAT_03b75598, 1, 4);
 	var1->timer.b[0] = 1;
 	tp->exec = Exec;
 	tp->disp = Draw;
 }
 
-// STUB: SADX 0x008085e0
+// FUNCTION: SADX 0x008085e0
 void ObjectWindyBigFlootB(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	var1->value.ptr = (void *)0x3b4a048;
-	CCL_Init(tp, (struct CCL_INFO *)0x3b75628, 1, 4);
+	var1->value.ptr = &object_windobj_bigflootb_bigflootb;
+	CCL_Init(tp, DAT_03b75628, 1, 4);
 	var1->timer.b[0] = 1;
 	tp->exec = Exec;
 	tp->disp = Draw;
