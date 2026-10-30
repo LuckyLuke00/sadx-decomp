@@ -34,12 +34,105 @@ struct NJS_TEXINFO {
     NJS_TEXSURFACE texsurface;
 };
 
-// ninjastr.h: no file needs these layouts yet.
-struct NJS_MOTION_LINK;
-struct NJS_QUAD_TEXTURE;
+struct NJS_TEXMEMLIST {
+    Uint32 globalIndex;
+    Uint32 bank;
+    Uint32 tspparambuffer;
+    Uint32 texparambuffer;
+    Uint32 texaddr;
+    NJS_TEXINFO texinfo;
+    Uint16 count;
+    Uint16 dummy;
+};
+
+struct NJS_TEXPALETTE {
+    void *palette;
+    Uint16 mode;
+    Sint16 bank;
+    Sint16 offset;
+    Sint16 count;
+};
+
+struct NJS_LINE {
+    Float px;
+    Float py;
+    Float pz;
+    Float vx;
+    Float vy;
+    Float vz;
+};
+typedef struct NJS_LINE NJS_PLANE;
+typedef struct NJS_LINE NJS_PVECTOR;
+
+struct NJS_MOTION_LINK {
+    struct NJS_MOTION *motion[2];
+    Float frame[2];
+};
+
+struct NJS_ACTION_LINK {
+    NJS_OBJECT *object;
+    NJS_MOTION_LINK *motionlink;
+};
+
+struct NJS_CMOTION_DATA {
+    Float *pos;
+    Float *vect;
+    Angle *roll;
+    Angle *ang;
+};
+
+struct NJS_POLYGON_VTX {
+    Float x;
+    Float y;
+    Float z;
+    Uint32 col;
+};
+
+struct NJS_TEXTURE_VTX {
+    Float x;
+    Float y;
+    Float z;
+    Float u;
+    Float v;
+    Uint32 col;
+};
+
+struct NJS_QUAD_TEXTURE {
+    Float x1;
+    Float y1;
+    Float x2;
+    Float y2;
+    Float u1;
+    Float v1;
+    Float u2;
+    Float v2;
+};
+
+struct NJS_QUAD_TEXTURE_EX {
+    Float x;
+    Float y;
+    Float z;
+    Float vx1;
+    Float vy1;
+    Float vx2;
+    Float vy2;
+    Uint32 dmy;
+    Float u;
+    Float v;
+    Float vu1;
+    Float vv1;
+    Float vu2;
+    Float vv2;
+    Uint32 dmy2[2];
+};
+
+struct NJS_QUATERNION {
+    float re;
+    float im[3];
+};
+
+// ninjastr.h: no file needs these layouts yet. NJS_SPHERE holds an NJS_POINT3, which types.h lays out after this file.
 struct NJS_SCREEN;
+struct NJS_SPHERE;
 struct NJS_SPLINE;
-struct NJS_TEXMEMLIST;
-struct NJS_TEXPALETTE;
-struct NJS_TEXTURE_VTX;
 struct NJS_VERTEX_BUF;
