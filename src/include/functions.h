@@ -615,7 +615,7 @@ void ___beforecnk();
 void ___aftercnk();
 void chCnkDrawObject(struct cnkobj *pObject);
 void chCalcWorldPosFromScreenPos(struct NJS_POINT3 *pScreenPos, struct NJS_POINT3 *pWorldPos);
-unsigned long FUN_004951c0(unsigned long, unsigned long);
+unsigned long FUN_004951c0(unsigned long param_1, unsigned long param_2);
 void ghDrawPvrSpriteS(short *pvrspr, int flag, float x, float y, float z, float sx, float sy);
 void TutorialMsgTask(struct task *tp);
 void ReleaseTutorialBookTexture(int advplno);

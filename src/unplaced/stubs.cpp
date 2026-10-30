@@ -978,12 +978,6 @@ void ___aftercnk()
 {
 }
 
-// STUB: SADX 0x004951c0
-unsigned long FUN_004951c0(unsigned long, unsigned long)
-{
-	return (unsigned long)0;
-}
-
 // STUB: SADX 0x00496440
 void TutorialTask(struct task *tp)
 {

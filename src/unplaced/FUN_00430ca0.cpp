@@ -27,7 +27,28 @@ void FUN_00430d00(void)
 {
 }
 
-// STUB: SADX 0x00430d20
+// FUNCTION: SADX 0x00430d20
 void FUN_00430d20(int param_1)
 {
+	int *var1;
+	int var2;
+	var1 = &DAT_05ad9ad0[0];
+	do
+	{
+		if (*var1 == param_1)
+		{
+			return;
+		}
+		var1++;
+	} while (var1 != &DAT_05ad9ad0[0x10]);
+	var2 = 0;
+	do
+	{
+		if (DAT_05ad9ad0[var2] == 0)
+		{
+			DAT_05ad9ad0[var2] = param_1;
+			return;
+		}
+		var2++;
+	} while (var2 != 0x10);
 }
