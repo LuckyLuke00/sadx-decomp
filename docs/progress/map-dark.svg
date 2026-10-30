@@ -5039,7 +5039,7 @@
 <rect x="112" y="133" width="6" height="6" fill="#ffd700"><title>0x0057cd00 MapDispOn: 100%</title></rect>
 <rect x="119" y="133" width="6" height="6" fill="#ffd700"><title>0x0057cd20 FUN_0057cd20: 100%</title></rect>
 <rect x="126" y="133" width="6" height="6" fill="#ffd700"><title>0x0057cd40 FUN_0057cd40: 100%</title></rect>
-<rect x="133" y="133" width="6" height="6" fill="#f2d12e"><title>0x0057d490 padconfig: 94.3%</title></rect>
+<rect x="133" y="133" width="6" height="6" fill="#d5c46a"><title>0x0057d490 padconfig: 81.8%</title></rect>
 <rect x="140" y="133" width="6" height="6" fill="#ffd700"><title>0x00582ad0 FUN_00582ad0: 100%</title></rect>
 <rect x="147" y="133" width="6" height="6" fill="#ffd700"><title>0x00583720 FUN_00583720: 100%</title></rect>
 <rect x="154" y="133" width="6" height="6" fill="#ffd700"><title>0x0058a560 FUN_0058a560: 100%</title></rect>
@@ -5766,6 +5766,8 @@
 <rect x="56" y="105" width="6" height="6" fill="#ffd700"><title>0x00922820 FUN_00922820: 100%</title></rect>
 <rect x="77" y="105" width="6" height="6" fill="#ffd700"><title>0x00922850 FUN_00922850: 100%</title></rect>
 <rect x="91" y="105" width="6" height="6" fill="#ffd700"><title>0x00922870 FUN_00922870: 100%</title></rect>
+<rect x="119" y="105" width="6" height="6" fill="#e4cb56"><title>0x00922900 Magic::RenderCore::Texture::Load: 88.4%</title></rect>
+<rect x="147" y="105" width="6" height="6" fill="#eed03b"><title>0x00922c80 Magic::RenderCore::Texture::Texture: 92.8%</title></rect>
 <rect x="154" y="105" width="6" height="6" fill="#ffd700"><title>0x00922d50 FUN_00922d50: 100%</title></rect>
 <rect x="182" y="105" width="6" height="6" fill="#ffd700"><title>0x00922e00 FUN_00922e00: 100%</title></rect>
 <rect x="63" y="112" width="6" height="6" fill="#ffd700"><title>0x009238a0 FUN_009238a0: 100%</title></rect>

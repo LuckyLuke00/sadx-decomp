@@ -28644,7 +28644,7 @@
   {
    "address": "0x0057d490",
    "name": "padconfig",
-   "accuracy": 0.9433339802057055,
+   "accuracy": 0.8184908225696805,
    "effective": false,
    "stub": false,
    "library": false,
@@ -83292,8 +83292,8 @@
   },
   {
    "address": "0x009211b0",
-   "name": "FUN_009211b0",
-   "accuracy": 0.034482758620689655,
+   "name": "Magic::RenderCore::Resource::~Resource",
+   "accuracy": 0.3373493975903614,
    "effective": false,
    "stub": true,
    "library": false
@@ -83531,6 +83531,14 @@
    "library": false
   },
   {
+   "address": "0x00922750",
+   "name": "Magic::RenderCore::Texture::FUN_00922750",
+   "accuracy": 0.06451612903225806,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009227b0",
    "name": "FUN_009227b0",
    "accuracy": 1.0,
@@ -83613,15 +83621,15 @@
   {
    "address": "0x00922900",
    "name": "Magic::RenderCore::Texture::Load",
-   "accuracy": 0.03636363636363636,
+   "accuracy": 0.8837209302325582,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00922bf0",
    "name": "Magic::RenderCore::Texture::~Texture",
-   "accuracy": 0.0425531914893617,
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -83629,9 +83637,9 @@
   {
    "address": "0x00922c80",
    "name": "Magic::RenderCore::Texture::Texture",
-   "accuracy": 0.027777777777777776,
+   "accuracy": 0.927536231884058,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -98024,5 +98032,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c164524bb6fd447227a438b6596f8cace42e15953eb76f5b76579f5b16e6a331"
+ "inputs_sha256": "81bbf58fe89fe52bd70d0fd1b212c71c0b8d71e53c2f85d0d14df5056bfdbb3d"
 }
