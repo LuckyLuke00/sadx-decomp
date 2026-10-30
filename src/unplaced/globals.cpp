@@ -1193,6 +1193,12 @@ unsigned char DAT_0260553f;
 // GLOBAL: SADX 0x02605a24
 int DAT_02605a24;
 
+// GLOBAL: SADX 0x02605a3c
+struct NJS_TEXLIST DAT_02605a3c;
+
+// GLOBAL: SADX 0x02605a48
+struct NJS_TEXANIM DAT_02605a48;
+
 // GLOBAL: SADX 0x02606b18
 unsigned char DAT_02606b18;
 
@@ -1219,6 +1225,9 @@ char* DAT_02606ba0[5];
 
 // GLOBAL: SADX 0x02606c48
 char *KindMes[5];
+
+// GLOBAL: SADX 0x02606c90
+struct _OBJ_ITEMTABLE *objItemTable[43][8];
 
 // GLOBAL: SADX 0x02607368
 struct NJS_TEXANIM dust_anim[1];
@@ -3947,6 +3956,9 @@ struct obj object_rhino_jet[1];
 // GLOBAL: SADX 0x04c6a430
 struct NJS_MODEL *sai_model;
 
+// GLOBAL: SADX 0x04c6a464
+struct NJS_ARGB default_argb;
+
 // GLOBAL: SADX 0x04c71f9c
 struct NJS_ACTION action_l_walk_s_pyo_born_b[1];
 
@@ -6079,6 +6091,9 @@ int DAT_05cc7fe8;
 
 // GLOBAL: SADX 0x05cc7ff8
 int DAT_05cc7ff8;
+
+// GLOBAL: SADX 0x05cc8660
+struct _OBJ_ITEMTABLE *DAT_05cc8660;
 
 // GLOBAL: SADX 0x05cc8664
 int DAT_05cc8664;

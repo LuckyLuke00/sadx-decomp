@@ -453,12 +453,28 @@ void EV_PcNpcInit()
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x004f58c0
+// FUNCTION: SADX 0x004f58c0
 void EV_PcNpcEnd()
 {
+	switch (((DAT_05b9d724 << 8 | DAT_05b9d744) >> 8) & 0xff)
+	{
+		case 0x1a:
+			SSPcEnd();
+			break;
+		case 0x1d:
+			ECPcDelete();
+			break;
+		case 0x20:
+			EC_CPcDelete();
+			break;
+		case 0x21:
+			MRPcEnd();
+			break;
+		case 0x22:
+			PASTPcEnd();
+			break;
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f5950
 void SeqTaskFadeIn(struct task *tp)

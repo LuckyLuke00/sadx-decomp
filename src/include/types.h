@@ -15,6 +15,7 @@ struct _eventobjwk;
 struct _OBJ_ADJUSTPARAM;
 struct _OBJ_CAMERAENTRY;
 struct _OBJ_CAMERAPARAM;
+struct _OBJ_ITEMTABLE;
 struct _OBJ_LANDTABLE;
 struct _OptionSelWk;
 struct _SC_NUMBERS;

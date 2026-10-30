@@ -35,9 +35,31 @@ void DrawLine(float x1, float y1, float z1, float x2, float y2, float z2)
 {
 }
 
-// STUB: SADX 0x004cb1f0
+// FUNCTION: SADX 0x004cb1f0
 void DrawLineV(struct NJS_POINT3 *pos1, struct NJS_POINT3 *pos2)
 {
+	struct NJS_POINT3COL p;
+	struct NJS_POINT3 local_20h[2];
+	union NJS_COLOR local_38g[2];
+	local_20h[0].x = pos1->x;
+	local_20h[0].y = pos1->y;
+	local_20h[0].z = pos1->z;
+	local_20h[1].x = pos2->x;
+	local_20h[1].y = pos2->y;
+	local_20h[1].z = pos2->z;
+	local_38g[0].argb.a = 0xff;
+	local_38g[0].argb.r = 0xff;
+	local_38g[0].argb.g = 0xff;
+	local_38g[0].argb.b = 0xff;
+	local_38g[1].argb.a = 0xff;
+	local_38g[1].argb.r = 0x88;
+	local_38g[1].argb.g = 0x88;
+	local_38g[1].argb.b = 0xbb;
+	p.p = local_20h;
+	p.col = local_38g;
+	p.tex = 0;
+	p.num = 2;
+	___njDrawLine3D(&p, 1, 0);
 }
 
 // FUNCTION: SADX 0x004cb290

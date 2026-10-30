@@ -272,9 +272,18 @@ void PGetInertia(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp
 {
 }
 
-// STUB: SADX 0x004e1920
+// FUNCTION: SADX 0x004e1920
 void PGetGravity(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	struct NJS_POINT3 v;
+	v = mwp->acc;
+	if (twp->flag & 0x4000)
+		return;
+	v.x = DAT_05b3ebc8 * pwp->p.weight + v.x;
+	v.y = DAT_05b3ebcc * pwp->p.weight + v.y;
+	v.z = DAT_05b3ebd0 * pwp->p.weight + v.z;
+	PConvertVector_G2P(twp, &v);
+	pwp->acc = v;
 }
 
 // STUB: SADX 0x004e1c60
@@ -540,9 +549,15 @@ void PResetPositionForBuilding(struct taskwk *twp, struct motionwk2 *mwp, struct
 {
 }
 
-// STUB: SADX 0x004ed0e0
+// FUNCTION: SADX 0x004ed0e0
 void PSetMotion_Next(struct mtnjvwk *mjp, unsigned short patno)
 {
+	*(unsigned short *)((char *)mjp + 4) = *(unsigned char *)((char *)*(struct PL_ACTION **)((char *)mjp + 0x20) + patno * 0x10 + 6);
+	*(unsigned short *)((char *)mjp + 6) = *(unsigned short *)((char *)mjp + 4);
+	*(short *)((char *)mjp + 0) = *(char *)((char *)*(struct PL_ACTION **)((char *)mjp + 0x20) + *(unsigned short *)((char *)mjp + 6) * 0x10 + 5);
+	*(unsigned short *)((char *)mjp + 0xa) = *(unsigned char *)((char *)*(struct PL_ACTION **)((char *)mjp + 0x20) + *(unsigned short *)((char *)mjp + 4) * 0x10 + 6);
+	*(short *)((char *)mjp + 0xe) = *(short *)((char *)mjp + 0xe) | 1;
+	PSetMotion_SetStartFrame(mjp);
 }
 
 // FUNCTION: SADX 0x004ed170

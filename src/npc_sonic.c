@@ -330,9 +330,16 @@ void FUN_005ab160(int param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x005ab220
+// FUNCTION: SADX 0x005ab220
 void VibrateMoble(struct taskwk *twp, struct sMobleCtrl *moble_ctrl)
 {
+	float local_8;
+
+	local_8 = njSin(*(int *)((char *)moble_ctrl + 0x24)) * 3.0;
+	twp->pos.y = twp->pos.y - *(float *)((char *)moble_ctrl + 0x28);
+	twp->pos.y = twp->pos.y + local_8;
+	*(int *)((char *)moble_ctrl + 0x24) = *(int *)((char *)moble_ctrl + 0x24) + 0x400;
+	*(float *)((char *)moble_ctrl + 0x28) = local_8;
 }
 
 // STUB: SADX 0x005ab280

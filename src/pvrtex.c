@@ -87,9 +87,27 @@ long FUN_00574040(long *param_1)
 	return local_8;
 }
 
-// STUB: SADX 0x005740a0
+// FUNCTION: SADX 0x005740a0
 void ghSetPvrTexBaseColor(unsigned long color)
 {
+	int local_8g;
+	unsigned long local_cg;
+
+	DAT_05cd25f8 = color;
+	local_cg = 0xff000000;
+	for (local_8g = 0; local_8g < 4; local_8g++)
+	{
+		*(long *)((char *)DAT_05cd25a4 + local_8g * 0x18) = FUN_004951c0(*(long *)((char *)DAT_05cd25a4 + local_8g * 0x18), color);
+		local_cg &= *(long *)((char *)DAT_05cd25a4 + local_8g * 0x18);
+	}
+	if ((local_cg & 0xff000000) == 0xff000000)
+	{
+		DAT_05cd25a4[19] = 0;
+	}
+	else
+	{
+		DAT_05cd25a4[19] = 1;
+	}
 }
 
 // STUB: SADX 0x00574600
@@ -128,10 +146,10 @@ void FUN_00575050(unsigned int param_1, float *param_2)
 	*param_2 = (float)((unsigned char)(param_1 >> 0x18));
 }
 
-// STUB: SADX 0x005750b0
+// FUNCTION: SADX 0x005750b0
 unsigned long FUN_005750b0(float *param_1)
 {
-	return (unsigned long)0;
+	return (unsigned long)(unsigned char)param_1[0] << 0x18 | (unsigned long)(unsigned char)param_1[1] << 0x10 | (unsigned long)(unsigned char)param_1[2] << 8 | (unsigned long)(unsigned char)param_1[3];
 }
 
 // FUNCTION: SADX 0x00575150

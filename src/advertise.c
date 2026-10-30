@@ -3,6 +3,8 @@
 #include <new>
 #include <windows.h>
 #include "advertise.h"
+extern struct NJS_TEXLIST DAT_02605a3c;
+extern struct NJS_TEXANIM DAT_02605a48;
 void *FUN_0058a5d0(unsigned int param_1);
 extern float ScreenRaitoY;
 void late_DrawMap(void *arg);
@@ -72,12 +74,26 @@ void late_DisplayPress(struct task *tp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x0057a860
+// FUNCTION: SADX 0x0057a860
 void printPauseTexture(enum PAUSE_TEXTURE_ID id, struct NJS_POINT3 *pos, struct NJS_POINT2 *scl)
 {
+	struct NJS_SPRITE sprite;
+	float local_2cg;
+
+	sprite.tlist = &DAT_02605a3c;
+	sprite.tanim = &DAT_02605a48;
+	sprite.p.x = pos->x * ScreenRaitoX;
+	sprite.p.y = pos->y * ScreenRaitoY;
+	sprite.sx = scl->x * ScreenRaitoX;
+	sprite.sy = scl->y * ScreenRaitoY;
+	sprite.p.z = -1.0001f;
+	local_2cg = sprite.p.z;
+	if (local_2cg >= -3.0f && local_2cg < 12048.0f)
+	{
+		local_2cg = local_2cg + 22048.0f;
+	}
+	late_DrawSprite2D(&sprite, id, local_2cg, 0x22, 4);
 }
-#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x0057a920
@@ -92,12 +108,72 @@ void FUN_0057aa00(enum PAUSE_TEXTURE_ID param_1, long param_2, long param_3, lon
 	printMenu2(param_1, 0xf0, param_2 + 0xf0, param_3);
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x0057aa30
+// FUNCTION: SADX 0x0057aa30
 void printMenu2(enum PAUSE_TEXTURE_ID id, long pos_x, long pos_y, long flag)
 {
+	struct NJS_POINT2 _scl;
+	struct NJS_POINT3 _pos;
+
+	if (flag != 0)
+	{
+		_scl.x = 1.5;
+		_scl.y = 1.5;
+		_pos.x = (float)pos_x + -16.0 + 8.0;
+		_pos.y = (float)pos_y + -8.0 + 8.0;
+	}
+	else
+	{
+		_scl.x = 1.25;
+		_scl.y = 1.0;
+		_pos.x = (float)pos_x + 8.0;
+		_pos.y = (float)pos_y + 8.0;
+	}
+	printPauseTexture((enum PAUSE_TEXTURE_ID)1, &_pos, &_scl);
+	SetMaterial(1.0, 1.0, 1.0, 1.0);
+	if (flag != 0)
+	{
+		_pos.x = (float)pos_x + -16.0;
+		_pos.y = (float)pos_y + -8.0;
+	}
+	else
+	{
+		_pos.x = (float)pos_x;
+		_pos.y = (float)pos_y;
+	}
+	SetMaterial(1.0, 0.6f, 0.6f, 1.0);
+	printPauseTexture((enum PAUSE_TEXTURE_ID)0, &_pos, &_scl);
+	SetMaterial(1.0, 1.0, 1.0, 1.0);
+	if (flag != 0)
+	{
+		_pos.x = (float)pos_x + -16.0;
+		_pos.y = (float)pos_y + -8.0 + 2.0;
+		_scl.x = 1.5;
+		_scl.y = 1.5;
+	}
+	else
+	{
+		long local_24;
+		long local_20;
+
+		local_20 = pos_x + 0x10;
+		_pos.x = (float)local_20;
+		local_24 = pos_y + 2;
+		_pos.y = (float)local_24;
+		_scl.y = 1.0;
+		_scl.x = _scl.y;
+	}
+	printPauseTexture(id, &_pos, &_scl);
+	SetMaterial(1.0, 1.0, 1.0, 1.0);
+	if (flag != 0)
+	{
+		SetMaterial(1.0, 1.0, 1.0, njSin(DAT_05b3e320[6] << 0xb));
+		_pos.x = (float)pos_x + -16.0;
+		_pos.y = (float)pos_y + -8.0;
+		printPauseTexture((enum PAUSE_TEXTURE_ID)2, &_pos, &_scl);
+		SetMaterial(1.0, 1.0, 1.0, 1.0);
+	}
 }
-#pragma optimize("", on)
+
 
 // STUB: SADX 0x0057ae10
 signed char PausePrev(signed char sel)
@@ -229,10 +305,35 @@ void FUN_0057cd30()
 {
 }
 
-// STUB: SADX 0x0057cd40
+// FUNCTION: SADX 0x0057cd40
 int FUN_0057cd40()
 {
-	return (int)0;
+	if (DAT_05cd2786 == 2 && (DAT_05b92e44 & 2) != 0)
+	{
+		dsPlay_oneshot(3, 0, 0, 0);
+		DAT_05cd2786 = 3;
+	}
+	switch (DAT_05cd2786)
+	{
+	case 0:
+		return 0;
+	case 1:
+		if (InitMap() == 0)
+		{
+			DAT_05cd2786 = 0;
+			return 0;
+		}
+		DAT_05cd2786 = 2;
+		break;
+	case 2:
+		late_SetFunc((void (__cdecl *)(void *))FUN_0057cd30, NULL, 22047.998f, 1);
+		break;
+	case 3:
+		FUN_0057cf20();
+		DAT_05cd2786 = 0;
+		return 2;
+	}
+	return 1;
 }
 
 // STUB: SADX 0x0057ce00
