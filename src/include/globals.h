@@ -1074,6 +1074,7 @@ extern struct NJS_MODEL model_sky_h_hahen01a_h_hahen01a[];
 extern struct NJS_MODEL model_sky_h_hahen02a_h_hahen02a[];
 extern struct obj object_jpdai_all1_jpdai01_jpdai01[];
 extern struct NJS_MODEL model__obj_hasira_c_obj_hasira_c[];
+extern struct obj object__obj_hasira10c_obj_hasira10c[];
 extern struct obj object_obj_house_d_house_d[];
 extern struct obj object_obj_house_c_house_c[];
 extern struct obj object_obj_house_b_house_b[];

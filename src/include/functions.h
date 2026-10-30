@@ -2988,6 +2988,7 @@ void Object_IcecapIta02Exec(struct task *tp);
 void Object_IcecapIta01Draw(struct task *tp);
 void Object_IcecapIta01Exec(struct task *tp);
 void DoaDraw(struct task *tp);
+void Normal0(struct task *tp);
 void BombExp(struct task *tp);
 void DispBomb(struct task *tp);
 void BombDown(struct task *tp);
