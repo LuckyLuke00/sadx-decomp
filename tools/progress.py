@@ -403,7 +403,7 @@ def map_header(summary: dict, stats: Totals, height: int, theme: Theme) -> list[
         f'<text x="{MARGIN}" y="28" font-family="{FONT}" font-size="18" font-weight="600" fill="{theme.text}">'
         f'{escape(summary["exe"])}</text>',
         f'<text x="{WIDTH - MARGIN}" y="28" text-anchor="end" font-family="{FONT}" font-size="12" '
-        f'fill="{theme.muted}">one square per function</text>',
+        f'fill="{theme.muted}">one square per function, shares in code bytes</text>',
         f'<text x="{MARGIN}" y="50" font-family="{FONT}" font-size="13" fill="{theme.muted}">{escape(stats_text)}</text>',
     ]
 
@@ -438,10 +438,16 @@ def gem(x: float, y: float, color: str, edge: str) -> list[str]:
                'stroke-linejoin="round"/>'])
 
 
-def section_title(section: Section, outer: Rect, entries: dict[int, dict], theme: Theme) -> list[str]:
-    """The section's gem, name and done share."""
+def byte_share(summary: dict, cells: list[int], sizes: dict[int, int]) -> str:
+    """The share of the code bytes of CELLS that match, as the progress site gives an area."""
+    code = code_bytes(summary, set(cells), sizes)
+    return whole_percent(code.matched, code.game)
+
+
+def section_title(section: Section, outer: Rect, summary: dict, sizes: dict[int, int], theme: Theme) -> list[str]:
+    """The section's gem, name and done share of code bytes."""
     cells = [address for block in section.blocks for address in block.cells]
-    share = whole_percent(done_count(cells, entries), len(cells))
+    share = byte_share(summary, cells, sizes)
     x, baseline = outer.x + SECTION_GAP, outer.y + TITLE - 7
     parts = gem(x + GEM_WIDTH / 2, baseline - 4.5, section.color, theme.muted) if section.color else []
     parts.append(f'<text x="{x + title_indent(section)}" y="{baseline}" font-family="{FONT}" '
@@ -507,14 +513,15 @@ def block_border(done: bool, theme: Theme) -> str:
     return f' stroke="{theme.done}" stroke-width="1.5"' if done else f' stroke="{theme.border}"'
 
 
-def block_parts(block: Block, rect: Rect, entries: dict[int, dict], theme: Theme) -> list[str]:
-    """A block's background with its tooltip, its name and its cells."""
+def block_parts(block: Block, rect: Rect, summary: dict, sizes: dict[int, int], theme: Theme) -> list[str]:
+    """A block's background with its tooltip, its name with its done share of code bytes, and its cells."""
+    entries = entries_by_address(summary)
     done = done_count(block.cells, entries)
-    tip = escape(f"{block.name}: {done:,} of {len(block.cells):,} done")
+    tip = escape(f"{block.name}: {done:,} of {len(block.cells):,} functions done")
     parts = [f'<rect x="{rect.x + 1}" y="{rect.y + 1}" width="{rect.width - 2}" height="{rect.height - 2}" rx="3" '
              f'fill="{theme.block}"{block_border(done == len(block.cells), theme)}><title>{tip}</title></rect>']
     lines, columns = block_grid(block, rect)
-    parts += name_text(lines, whole_percent(done, len(block.cells)), rect, theme)
+    parts += name_text(lines, byte_share(summary, block.cells, sizes), rect, theme)
     parts.append(f'<g transform="translate({rect.x + PAD},{rect.y + PAD + len(lines) * NAME_LINE_HEIGHT})">')
     parts += todo_cells(len(block.cells), columns)
     parts += scored_cells(block.cells, entries, columns, theme)
@@ -546,16 +553,15 @@ def map_legend(height: int, theme: Theme) -> list[str]:
             "Library code is left out: it needs no decompiling.</text>"]
 
 
-def render_map(summary: dict, stats: Totals, sections: list[Section], theme: Theme) -> str:
-    entries = entries_by_address(summary)
+def render_map(summary: dict, stats: Totals, sections: list[Section], sizes: dict[int, int], theme: Theme) -> str:
     placed = map_layout(sections)
     height = max((outer.y + outer.height for outer, _ in placed), default=HEADER) + FOOTER
     parts = map_header(summary, stats, height, theme)
     parts.append(todo_pattern(theme))
     for section, (outer, rects) in zip(sections, placed):
-        parts += section_title(section, outer, entries, theme)
+        parts += section_title(section, outer, summary, sizes, theme)
         for block, rect in zip(section.blocks, rects):
-            parts += block_parts(block, rect, entries, theme)
+            parts += block_parts(block, rect, summary, sizes, theme)
     parts += map_legend(height, theme)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
@@ -816,7 +822,7 @@ def render_all() -> dict[Path, str]:
     shown = map_sections(area_of, sections)
     files = {HISTORY_CSV: render_history_csv(history)}
     for suffix, theme in THEMES.items():
-        files[PROGRESS / f"map{suffix}.svg"] = render_map(summary, stats, shown, theme)
+        files[PROGRESS / f"map{suffix}.svg"] = render_map(summary, stats, shown, sizes, theme)
         files[PROGRESS / f"card{suffix}.svg"] = render_card(stats, code, areas, data_share(summary), history,
                                                             summary["exe"], theme)
         files[PROGRESS / f"history{suffix}.svg"] = render_history(history, theme)

@@ -196,7 +196,7 @@ def check_empty_map() -> list[str]:
     """A game with no game functions yet, such as a new port, gets a map of just its header and colour key."""
     summary = {"exe": "GAME.EXE", "functions": []}
     sections = progress.map_sections({}, [("Stages", None, {"stage": "Stages"})])
-    svg = progress.render_map(summary, scoring.totals(summary, set()), sections, progress.LIGHT)
+    svg = progress.render_map(summary, scoring.totals(summary, set()), sections, {}, progress.LIGHT)
     height = progress.HEADER + progress.FOOTER
     if f'viewBox="0 0 {progress.WIDTH} {height}"' in svg:
         return []
