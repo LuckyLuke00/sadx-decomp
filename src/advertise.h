@@ -21,18 +21,38 @@
 extern const float DAT_0098fa14;
 extern const float DAT_0098fc50;
 
+// VTABLE: SADX 0x00956bb4
 class SOCController
 {
 public:
 	enum ControllerButton { AXIS_LX = 11, AXIS_LY = 12 };
-	virtual ~SOCController();
-	virtual void Update();
-	virtual bool IsPress(ControllerButton) const;
-	virtual bool IsDown(ControllerButton) const;
-	virtual float GetValue(ControllerButton) const;
-	virtual bool VibStart(int, int);
-	virtual bool VibStop();
-	virtual bool Vib(int, int, double);
+	virtual ~SOCController() {}
+	virtual void FUN_004321e0();
+	virtual bool FUN_00431c60(ControllerButton) const;
+	virtual bool FUN_00431d10(ControllerButton) const;
+	virtual float FUN_00431e50(ControllerButton) const;
+	virtual bool FUN_00432010(int, int);
+	virtual bool FUN_00431e90();
+	virtual bool FUN_00432100(int, int, double);
+	virtual bool FUN_00431ee0();
+	virtual void* FUN_00431f00(void*);
+	virtual void* FUN_00431fa0(void*);
+private:
+	char local_4[0x24];
+};
+
+// VTABLE: SADX 0x00956be4
+class SOCControllerAll : public SOCController
+{
+public:
+	virtual void FUN_004321e0() {}
+	virtual bool FUN_00431c60(ControllerButton) const;
+	virtual bool FUN_00431d10(ControllerButton) const;
+	virtual float FUN_00431e50(ControllerButton) const { return 0.0f; }
+	virtual bool FUN_00432010(int, int) { return false; }
+	virtual bool FUN_00431e90() { return false; }
+	virtual bool FUN_00432100(int, int, double) { return false; }
+	virtual bool FUN_00431ee0() { return false; }
 };
 
 namespace Magic
@@ -50,7 +70,9 @@ public:
 private:
 	friend class Magic::Base::Singleton<SOCInput>;
 	SOCInput();
-	char local_0[0x4c];
+	int local_0;
+	SOCController* local_4[8];
+	char local_24[0x28];
 };
 
 struct LBOnData

@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,553 of 16,524 game functions done (33.60%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,554 of 16,524 game functions done (33.61%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="596.8,1184.5 603.2,1184.5 604.9,1186 606,1187.6 600,1194.5 594,1187.6 595.1,1186" fill="#4e32f3"/>
 <polygon points="596.8,1184.5 603.2,1184.5 604.9,1186 606,1187.6 594,1187.6 595.1,1186" fill="#ffffff" fill-opacity="0.4"/>
@@ -5389,7 +5389,7 @@
 <rect x="168" y="196" width="6" height="6" fill="#b07d00"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 <rect x="175" y="196" width="6" height="6" fill="#b07d00"><title>0x008e1c90 CollisionSceneChanger: 100%</title></rect>
 </g>
-<rect x="795" y="87" width="185" height="238" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 163 of 686 functions done</title></rect>
+<rect x="795" y="87" width="185" height="238" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 164 of 686 functions done</title></rect>
 <text x="798" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ninja graphics <tspan font-weight="400" fill="#59636e">5%</tspan></text>
 <g transform="translate(798,105)">
 <rect y="0" width="175" height="189" fill="url(#todo)"/>
@@ -5459,6 +5459,7 @@
 <rect x="28" y="70" width="6" height="6" fill="#b07d00"><title>0x00424960 SOCFileStream::FUN_00424960: 100%</title></rect>
 <rect x="49" y="70" width="6" height="6" fill="#b07d00"><title>0x00424a70 FUN_00424a70: 100%</title></rect>
 <rect x="56" y="70" width="6" height="6" fill="#b07d00"><title>0x00424a80 FUN_00424a80: 100%</title></rect>
+<rect x="98" y="70" width="6" height="6" fill="#b07d00"><title>0x00424b40 SOCInput::FUN_00424b40: 100%</title></rect>
 <rect x="119" y="70" width="6" height="6" fill="#b07d00"><title>0x00425150 njSetTextureMemorySize: 100%</title></rect>
 <rect x="126" y="70" width="6" height="6" fill="#b07d00"><title>0x00425160 njSetVSyncFunction: 100%</title></rect>
 <rect x="133" y="70" width="6" height="6" fill="#b07d00"><title>0x00425170 njControl3D: 100%</title></rect>
