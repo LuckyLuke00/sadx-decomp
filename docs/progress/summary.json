@@ -28572,9 +28572,9 @@
   {
    "address": "0x0057a920",
    "name": "printPause",
-   "accuracy": 0.11594202898550725,
+   "accuracy": 0.921875,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -28668,9 +28668,9 @@
   {
    "address": "0x0057d220",
    "name": "cameramodechange",
-   "accuracy": 0.0546448087431694,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -28733,17 +28733,17 @@
   {
    "address": "0x00587960",
    "name": "DrawButtonACBB",
-   "accuracy": 0.03125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00587d10",
    "name": "DrawButtonXUBB",
-   "accuracy": 0.03007518796992481,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -31725,9 +31725,9 @@
   {
    "address": "0x005a67c0",
    "name": "SpLoopOnlyDisplay",
-   "accuracy": 0.06722689075630252,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -98088,5 +98088,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d9860542139473bcea276298cee0ddc9d0c76f24a8fe6ed2388789184c9baeef"
+ "inputs_sha256": "3c0c1169a26d08a642464f16d195e838cd26d67ecd10d35a4c347445060136e2"
 }

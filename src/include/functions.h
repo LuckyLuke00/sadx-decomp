@@ -887,6 +887,7 @@ long CameraManagerMi();
 void CameraReleaseCollisionCamera();
 void InitFreeCamera();
 void SetFreeCameraMode(long sw);
+void SetFreeCamera(long sw);
 long GetFreeCamera();
 void CameraCameraMode(struct taskwk *);
 void CameraViewSet(struct taskwk *pTaskWork);

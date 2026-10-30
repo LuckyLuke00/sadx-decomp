@@ -6695,6 +6695,12 @@ float DAT_05cd2824;
 // GLOBAL: SADX 0x05cd2854
 float DAT_05cd2854;
 
+// GLOBAL: SADX 0x05cd285c
+int DAT_05cd285c;
+
+// GLOBAL: SADX 0x05cd2860
+int DAT_05cd2860;
+
 // GLOBAL: SADX 0x05cd2864
 int DAT_05cd2864;
 
@@ -7000,6 +7006,12 @@ int DAT_05edbc88;
 
 // GLOBAL: SADX 0x05edbc8c
 int DAT_05edbc8c;
+
+// GLOBAL: SADX 0x05edbc90
+struct NJS_SPRITE DAT_05edbc90;
+
+// GLOBAL: SADX 0x05edbcb0
+int DAT_05edbcb0;
 
 // GLOBAL: SADX 0x05edbcb4
 struct sp_task *DAT_05edbcb4;
