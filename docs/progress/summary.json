@@ -58267,6 +58267,38 @@
    "library": false
   },
   {
+   "address": "0x00837a10",
+   "name": "disp(5)",
+   "accuracy": 0.015503875968992248,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00837bc0",
+   "name": "dest(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00837bf0",
+   "name": "_exec(4)",
+   "accuracy": 0.04225352112676056,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00837db0",
+   "name": "EnemyMountainTgtMissile",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00838100",
    "name": "dispBigBomb",
    "accuracy": 1.0,
@@ -94461,6 +94493,13 @@
    "library": false
   },
   {
+   "address": "0x03febac0",
+   "name": "colliInfo",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03febdf0",
    "name": "com_objtbl",
    "size": 1296,
@@ -97795,5 +97834,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ae8d0a75d0ce92e35f44f206ead2b42e8eac42568e0a020f5624f85d7f01c8f7"
+ "inputs_sha256": "eee7436119eabbeaf2d756c40bcfc5d85f6ed4c16e740372ab61e690d7988654"
 }

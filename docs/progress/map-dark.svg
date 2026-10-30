@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1426" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,544 of 16,524 game functions done (33.55%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,546 of 16,524 game functions done (33.56%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="596.8,1183.5 603.2,1183.5 604.9,1185 606,1186.6 600,1193.5 594,1186.6 595.1,1185" fill="#4e32f3"/>
 <polygon points="596.8,1183.5 603.2,1183.5 604.9,1185 606,1186.6 594,1186.6 595.1,1185" fill="#ffffff" fill-opacity="0.4"/>
@@ -781,8 +781,8 @@
 <rect x="56" y="77" width="6" height="6" fill="#ffd700"><title>0x00825d40 dispElevator: 100%</title></rect>
 <rect x="63" y="77" width="6" height="6" fill="#ffd700"><title>0x00825e10 dispEvStep: 100%</title></rect>
 </g>
-<rect x="379" y="87" width="135" height="149" rx="3" fill="#21262d" stroke="#30363d"><title>Red Mountain: 67 of 262 done</title></rect>
-<text x="382" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Red Mountain <tspan font-weight="400" fill="#8b949e">25%</tspan></text>
+<rect x="379" y="87" width="135" height="149" rx="3" fill="#21262d" stroke="#30363d"><title>Red Mountain: 69 of 262 done</title></rect>
+<text x="382" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Red Mountain <tspan font-weight="400" fill="#8b949e">26%</tspan></text>
 <g transform="translate(382,105)">
 <rect y="0" width="126" height="98" fill="url(#todo)"/>
 <rect y="98" width="70" height="7" fill="url(#todo)"/>
@@ -849,6 +849,8 @@
 <rect x="112" y="84" width="6" height="6" fill="#ffd700"><title>0x00835fa0 Object_Mountain_Kumonosu: 100%</title></rect>
 <rect x="0" y="91" width="6" height="6" fill="#ffd700"><title>0x008362c0 Mountain_Honoo_Fire: 100%</title></rect>
 <rect x="7" y="91" width="6" height="6" fill="#ffd700"><title>0x008363b0 o_mountain_honoo_Display: 100%</title></rect>
+<rect x="91" y="91" width="6" height="6" fill="#ffd700"><title>0x00837bc0 dest(3): 100%</title></rect>
+<rect x="105" y="91" width="6" height="6" fill="#ffd700"><title>0x00837db0 EnemyMountainTgtMissile: 100%</title></rect>
 <rect x="7" y="98" width="6" height="6" fill="#ffd700"><title>0x00838100 dispBigBomb: 100%</title></rect>
 <rect x="35" y="98" width="6" height="6" fill="#ffd700"><title>0x00838530 SetCameraMountain_TgtDeathExpSize: 100%</title></rect>
 <rect x="49" y="98" width="6" height="6" fill="#ffd700"><title>0x00838670 StartCameraMountain_TgtDeath: 100%</title></rect>
