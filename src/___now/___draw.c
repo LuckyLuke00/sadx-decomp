@@ -250,9 +250,15 @@ int FUN_004a0620(int param_1)
 	return local_10;
 }
 
-// STUB: SADX 0x004a0690
+// The original reserves 12 stack bytes that this body does not use.
+// FUNCTION: SADX 0x004a0690
 void late_ReleaseTexture(NJS_TEXLIST *tl)
 {
+	if (isTextureNG(tl, 0))
+	{
+		return;
+	}
+	njReleaseTexture(tl);
 }
 
 // FUNCTION: SADX 0x004a06c0
