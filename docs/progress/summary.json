@@ -47203,6 +47203,30 @@
    "library": false
   },
   {
+   "address": "0x006e5c60",
+   "name": "ObjectDisplay(9)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006e5cb0",
+   "name": "ObjectMain(10)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006e5cf0",
+   "name": "ObjectC0Pole",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006e6570",
    "name": "ObjectPatoRegular",
    "accuracy": 0.030303030303030304,
@@ -91819,6 +91843,13 @@
    "library": false
   },
   {
+   "address": "0x0286e0dc",
+   "name": "ccinfo",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0286e2a0",
    "name": "pScale_Chaos02",
    "size": 4,
@@ -97680,5 +97711,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "27c5a20944a5b5294d55b014938f071141e23b17f47339e296d53860e19b856e"
+ "inputs_sha256": "479a5254030b2e56e28abbb518b17cadab56258f4b181855b51d665b152cb35d"
 }
