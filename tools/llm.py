@@ -219,6 +219,7 @@ DECLARED = re.compile(r"^(?:prototype:|locals:|  \w+ 0x[0-9a-f]{8} ).*", re.M)  
 TAG = re.compile(r"\b(?:struct|union|enum)\s+(\w+)")
 TYPE_NAME = re.compile(r"\b(?:(?:struct|union|enum)\s+(\w+)|(\w+)(?=\s*\*|\s+\w))")  # a tag, or a word before a name
 TYPEDEF = re.compile(r"^typedef\s[^;{}()]*;", re.M)  # a one-line typedef that is not of a function
+LAID_OUT = re.compile(r"^(?:struct|union)\s+(\w+)\s*\{", re.M)  # a struct or union with its members
 MISSING_MEMBER = re.compile(r"C2039: '\w+' : is not a member of '(\w+)'")
 DIFF_LINE = re.compile(r"^(?:0x[0-9a-f]+)?\s*: ([-+])(.*)$", re.M)  # a changed line of reccmp's diff: sign, text
 SOURCE_LINE = re.compile(r"\s+\([^()\s]+:\d+\)$")  # such as "	(ef_flash.c:128)" after a line of our build
@@ -1010,11 +1011,20 @@ def named_types(types, typedefs, text):
     return lines, found
 
 
-def struct_section(types, dossier_text, typedefs):
+def laid_out(texts):
+    """The struct and union tags that TEXTS lay out."""
+    return {tag for text in texts for tag in LAID_OUT.findall(text)}
+
+
+def struct_section(types, dossier_text, typedefs, laid=frozenset()):
     """The Structs section: the typedefs and types that the dossier's prototype, locals and names used lines mention,
-    then their member types down to STRUCT_DEPTH, until STRUCT_LINES member lines are shown. "" when there is none of
-    these."""
+    then their member types down to STRUCT_DEPTH, until STRUCT_LINES member lines are shown. Then a request for the
+    layout of each struct that these lines use by value and neither TYPES, TYPEDEFS nor LAID lays out: the code
+    needs it complete. "" when there is none of these."""
     declared = "\n".join(DECLARED.findall(dossier_text))
+    unlaid = "".join(f"No file lays out {kind} {name}. Define it before the function, with members at the offsets "
+                     "that the code uses.\n" for kind, name in dict.fromkeys(declgen.BY_VALUE.findall(declared))
+                     if name not in types.blocks and name not in typedefs and name not in laid)
     aliases, level = named_types(types, typedefs, declared)
     seen, shown, left, count = set(level), [], 0, len(aliases)
     for _ in range(STRUCT_DEPTH + 1):
@@ -1030,11 +1040,11 @@ def struct_section(types, dossier_text, typedefs):
             seen.update(below)
         level = below
     if not aliases and not shown:
-        return ""
+        return unlaid
     more = f"{left} more types do not fit and are left out.\n" if left else ""
     blocks = (["\n".join(aliases)] if aliases else []) + shown
     return ("Structs (a `/* +0xN */` comment is the member's offset):\n```cpp\n" + "\n\n".join(blocks) + "\n```\n"
-            + more)
+            + more + unlaid)
 
 
 def missing_members(types, errors):
@@ -1247,8 +1257,9 @@ def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), si
     decompiled."""
     facts = dossier(config, address, '--c', '--callers', *extra, *(["--hide-own"] if hide_own else []))
     headers = (ROOT / names.TYPES_H).parent
+    laid = laid_out([h.read_text(encoding="utf-8") for h in headers.glob("*.h")] + [read_source(ROOT / file)[0]])
     structs = ("" if types is None
-               else struct_section(header_types(headers, types), facts, header_typedefs(headers)))
+               else struct_section(header_types(headers, types), facts, header_typedefs(headers), laid))
     task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}{recipe_section(recipe)}"
             f"Write the function. Reply with one cpp block with the `{function_line(address)}` line.")
     shown = examples(config, file, address, count, extra, similar, allowed)

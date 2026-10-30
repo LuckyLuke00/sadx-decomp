@@ -476,6 +476,26 @@ def check_header_layouts() -> list[str]:
     return failures + ([f"struct_section gives {section!r}, not {wanted!r}"] if section != wanted else [])
 
 
+def check_unlaid_structs() -> list[str]:
+    """The Structs section asks once for the layout of each struct that the dossier uses by value when no table,
+    header or the file lays it out. A struct that the code only points to needs none."""
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text("struct obj {\n    int id;\n};\n", encoding="utf-8")
+        types = names.Types(path)
+    laid = llm.laid_out(["struct NJS_TEXINFO {\n    void *texaddr;\n};\n", "struct Mine { int x; };\n"])
+    facts = ("prototype: void Foo(struct SCORE_TIME t, struct obj o, struct NJS_TEXINFO i, struct Opaque *p);\n"
+             "locals: struct CartDispTime c, union Mine m\n  function 0x00401000 void Show(struct SCORE_TIME t);")
+    section = llm.struct_section(types, facts, {}, laid)
+    wanted = ("No file lays out struct SCORE_TIME. Define it before the function, with members at the offsets that "
+              "the code uses.\nNo file lays out struct CartDispTime. Define it before the function, with members at "
+              "the offsets that the code uses.\n")
+    failures = [f"laid_out gives {sorted(laid)}"] if laid != {"NJS_TEXINFO", "Mine"} else []
+    if not section.startswith("Structs (") or not section.endswith("```\n" + wanted):
+        failures.append(f"struct_section gives {section!r}, not the obj layout and then {wanted!r}")
+    return failures
+
+
 def check_try_globals() -> list[str]:
     """Tree.with_decls knows the globals that a try declares: a number added to its pointer is an offset, and the
     address of its DAT_ is a raw address. The tree alone knows neither."""
@@ -767,8 +787,9 @@ def run() -> list[str]:
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
                   check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
-                  check_try_globals, check_address_test, check_read_tree, check_refusal_names, check_constant_globals,
-                  check_debug_constants, check_annotation_below_signature, check_struct_in_reply, check_live,
-                  check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
+                  check_unlaid_structs, check_try_globals, check_address_test, check_read_tree, check_refusal_names,
+                  check_constant_globals, check_debug_constants, check_annotation_below_signature,
+                  check_struct_in_reply, check_live, check_live_ends, check_stream_events, check_full_context_restart,
+                  check_shared_context):
         failures += check()
     return failures
