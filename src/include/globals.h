@@ -2804,6 +2804,7 @@ extern float DAT_060cf0f4;
 extern float DAT_060cf0f8;
 extern float DAT_060cf0fc;
 extern struct NJS_TEXLIST DAT_060cf104;
+extern int DAT_060cf238;
 extern int DAT_060cf23c;
 extern float DAT_060cf240;
 extern int DAT_060cf244;
