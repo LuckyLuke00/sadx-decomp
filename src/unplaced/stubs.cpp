@@ -1596,17 +1596,6 @@ void dialog_exec(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00577e40
-int InitStaff2()
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x00579960
-void FUN_00579960(struct MSGC*, int*, int*)
-{
-}
-
 // STUB: SADX 0x00582b10
 int InitLBOn()
 {

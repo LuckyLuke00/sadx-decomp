@@ -25,6 +25,187 @@ extern struct NJS_TEXLIST DAT_05cd2664;
 void FUN_00588890(int param_1);
 extern unsigned char DAT_05cd2786;
 
+extern class SOCAudio *DAT_05b3dfdc;
+void FUN_004b5e70(int param_1);
+extern Magic::RenderCore::Texture *DAT_05cd274c;
+extern Magic::RenderCore::Texture *DAT_05cd2750;
+extern Magic::RenderCore::Texture *DAT_05cd2754;
+
+extern std::vector<std::wstring> DAT_05cd27f4;
+extern unsigned int DAT_01c6e42c;
+extern float DAT_05cd2824;
+extern float DAT_05cd2854;
+extern int DAT_02605a24;
+extern int DAT_05cd2780;
+extern int DAT_05b42a90;
+extern int DAT_05b3dff4;
+extern unsigned char DAT_0260553c;
+extern unsigned char DAT_0260553d;
+std::wstring trim2(const std::wstring& param_1);
+std::vector<std::wstring, std::allocator<std::wstring> > FUN_005ebc40(const std::wstring& param_1, const std::wstring& param_2, bool param_3);
+void FUN_004b23e0(void*, void*, int, const char*, int);
+
+// GLOBAL: SADX 0x05cd2834
+std::vector<std::wstring>::iterator DAT_05cd2834;
+
+// The original inlines different string and iterator temporaries and deletion checks.
+// FUNCTION: SADX 0x00577e40
+int InitStaff2()
+{
+	SOCFile* local_448o = new SOCFile;
+	local_448o->FUN_00928790();
+	int local_458h = 0;
+	if (local_448o->FUN_00433c20(".\\system\\SonicADV_Socstaff.bin", 1))
+	{
+		local_458h = local_448o->FUN_009285c0();
+		local_448o->FUN_00928630(0, 0);
+	}
+	else
+	{
+		local_448o->FUN_00928740();
+		delete local_448o;
+		local_448o = 0;
+		return 0;
+	}
+	wchar_t* local_450g = new wchar_t[(local_458h + 2) / 2];
+	wchar_t* local_45c = 0;
+	local_45c = local_450g;
+	unsigned long local_444w = 0;
+	bool local_449q = local_448o->FUN_009286c0(local_45c, local_458h, &local_444w);
+	if (!local_449q)
+	{
+		local_448o->FUN_00928740();
+		delete local_448o;
+		local_448o = 0;
+		delete[] local_450g;
+		return 0;
+	}
+	UnknowTochar((char*)local_450g, local_458h);
+	local_450g[local_458h / 2] = 0;
+	DAT_05cd27f4 = FUN_005ebc40(local_450g + 1, L"\n", true);
+	unsigned int local_454g;
+	for (local_454g = 0; local_454g < DAT_05cd27f4.size(); local_454g = local_454g + 1)
+	{
+		DAT_05cd27f4[local_454g] = trim2(DAT_05cd27f4[local_454g]);
+	}
+	DAT_05cd2834 = DAT_05cd27f4.begin() + 426;
+	int local_440i = 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Patch"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"LITTLE STONE SOFTWARE"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Jeff Astor"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Peter Bratcher"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Adam Hooley"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Ben Watson"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Sean Workman"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"SEGA OF EUROPE"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*ASSOCIATE PRODUCER"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Jessica Padkin"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*PROJECT LEAD"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Andrew Sparks"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*FUNCTIONALITY QA LEAD"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Christopher Dadswell"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*SENIOR TESTER"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Wing-Pui Chung"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*TESTER"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Finlay Milligan"), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
+	local_448o->FUN_00928740();
+	delete local_448o;
+	delete[] local_450g;
+	DAT_05cd2824 = DAT_01c6e42c;
+	DAT_05cd2854 = DAT_01c6e42c;
+	DAT_02605a24 = -1;
+	DAT_05cd2780 = 0;
+	if (DAT_05cd274c == 0)
+	{
+		SOCFileStream local_464;
+		if (local_464.ReadFile("system\\DC\\Credits_BG.dds"))
+		{
+			DAT_05cd274c = new Magic::RenderCore::Texture;
+			DAT_05cd274c->Load(local_464.FUN_00424960(), 1, local_464.FUN_0040b8a0(), 0, 1, 0);
+		}
+	}
+	if (DAT_05cd2750 == 0)
+	{
+		SOCFileStream local_46c;
+		switch (DAT_05b42a90)
+		{
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+			if (local_46c.ReadFile("system\\LeaderBoards\\Credits_Logo_e.dds"))
+			{
+				DAT_05cd2750 = new Magic::RenderCore::Texture;
+				DAT_05cd2750->Load(local_46c.FUN_00424960(), 1, local_46c.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+		default:
+			if (local_46c.ReadFile("system\\LeaderBoards\\Credits_Logo.dds"))
+			{
+				DAT_05cd2750 = new Magic::RenderCore::Texture;
+				DAT_05cd2750->Load(local_46c.FUN_00424960(), 1, local_46c.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+		}
+	}
+	if (DAT_05cd2754 == 0)
+	{
+		SOCFileStream local_474;
+		if (local_474.ReadFile("system\\LeaderBoards\\Border_S.dds"))
+		{
+			DAT_05cd2754 = new Magic::RenderCore::Texture;
+			DAT_05cd2754->Load(local_474.FUN_00424960(), 1, local_474.FUN_0040b8a0(), 0, 1, 0);
+			FUN_004b23e0(&DAT_05cd2754, local_474.FUN_00424960(), local_474.FUN_0040b8a0(), "system_LeaderBoards_Border_S", 1);
+		}
+	}
+	DAT_0260553c = 1;
+	DAT_0260553d = 1;
+	if (DAT_05b3dfdc != 0)
+	{
+		((SOCAudio*)DAT_05b3dfdc)->FUN_00426350("SoundData\\BGM\\WMA\\title.adx");
+		((SOCAudio*)DAT_05b3dfdc)->FUN_00425d70((float)(DAT_05b3dff4 ? -1000000 : -420), 1);
+	}
+	return 1;
+}
+
+// FUNCTION: SADX 0x00579960
+void FUN_00579960(struct MSGC *param_1, int *param_2, int *param_3)
+{
+	if (DAT_05b3dfdc != 0)
+	{
+		DAT_05b3dfdc->FUN_00425a50();
+		DAT_05b3dfdc->SOCAudio::~SOCAudio();
+	}
+	MSG_Close(param_1);
+	FUN_004c1c20();
+	dsPlay_oneshot(3, 0, 0, 0);
+	*param_2 = 14;
+	*param_3 = 3;
+	FUN_0041c2d0(DAT_05cd274c);
+	delete DAT_05cd274c;
+	DAT_05cd274c = 0;
+	FUN_0041c2d0(DAT_05cd2750);
+	delete DAT_05cd2750;
+	DAT_05cd2750 = 0;
+	FUN_004b5e70((int)&DAT_05cd2754);
+	FUN_0041c2d0(DAT_05cd2754);
+	delete DAT_05cd2754;
+	DAT_05cd2754 = 0;
+	DisplayTask();
+	SpLoopOnlyDisplay();
+}
+
 #pragma optimize("", off)
 // STUB: SADX 0x00579ab0
 void late_displayMission(struct task *tp)
