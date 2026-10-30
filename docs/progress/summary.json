@@ -13580,9 +13580,9 @@
   {
    "address": "0x004a0690",
    "name": "late_ReleaseTexture",
-   "accuracy": 0.36363636363636365,
+   "accuracy": 0.9411764705882353,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -16660,9 +16660,9 @@
   {
    "address": "0x004c1c20",
    "name": "FUN_004c1c20",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 0.9298245614035088,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -97880,5 +97880,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "55822ce52277cb5de7e6ad6b132053de6d83698d3432d8d03332bedf9a719174"
+ "inputs_sha256": "22416745e6bdf853be3cc312d76552ab36052af970f85f88609d70f81ee227b9"
 }
