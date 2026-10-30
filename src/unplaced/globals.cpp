@@ -3131,6 +3131,12 @@ struct NJS_MODEL model_lwobj_snake02_snake02[1];
 // GLOBAL: SADX 0x0437a058
 struct NJS_MODEL model_l02_lightway_h_lightway_h[1];
 
+// GLOBAL: SADX 0x04383290
+struct obj object_hebi_clhebigate_clhebigate[1];
+
+// GLOBAL: SADX 0x04384834
+struct NJS_ACTION action_hebigate_hebikuchi[1];
+
 // GLOBAL: SADX 0x0438b3d4
 struct obj object_los_nc_gakeshoku_nc_gakeshoku[1];
 
