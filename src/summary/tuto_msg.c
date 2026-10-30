@@ -26,10 +26,10 @@ int ChgTutorialMsgPage(struct task *tp, int flag)
 	return (int)0;
 }
 
-// STUB: SADX 0x00495400
+// FUNCTION: SADX 0x00495400
 int GetTutoMsgPurposePage(struct task *tp)
 {
-	return (int)0;
+	return *(unsigned short *)((char *)tp->twp->value.ptr + 2);
 }
 
 // FUNCTION: SADX 0x00495410
