@@ -1,5 +1,8 @@
 #include "decls.h"
 #include <new>
+#include "../advertise.h"
+#include <wchar.h>
+#include <string.h>
 extern int DAT_05ab3998;
 extern int DAT_05ab39a0;
 extern int DAT_05ab39a4;
@@ -29,6 +32,11 @@ int SOCGetInputLayout(int param_1)
 			return DAT_05ab41f4;
 	}
 	return 0;
+}
+
+// STUB: SADX 0x004199b0
+void SOCRender::FUN_004199b0(bool param_1)
+{
 }
 
 // FUNCTION: SADX 0x00419ac0
@@ -82,6 +90,27 @@ void __fastcall FUN_00419d80(int param_1, int param_2)
 {
 }
 
+struct FUN_0041b7e0_0
+{
+	float local_0;
+	float local_4;
+	float local_8;
+	float local_c;
+	unsigned long local_10;
+	float local_14;
+	float local_18;
+};
+
+extern void *DAT_05ab39ac;
+extern unsigned char DAT_05ab4239;
+extern unsigned char DAT_05ab423b;
+extern class Magic::RenderCore::VertexBuffer *DAT_05ab4284;
+extern class Magic::RenderCore::Material *DAT_05ab4278;
+extern unsigned int DAT_05ab4288;
+extern void *DAT_05ab8060;
+
+
+
 // STUB: SADX 0x0041a170
 void UnknowTochar(char *param_1, unsigned long param_2)
 {
@@ -101,6 +130,42 @@ bool SOCGetZwrite(void)
 // STUB: SADX 0x0041b120
 void FUN_0041b120(int param_1, int param_2)
 {
+}
+
+// FUNCTION: SADX 0x0041b7e0
+void RenderTexture(int param_1, int param_2, int param_3, int param_4, float param_5, Magic::RenderCore::Texture *param_6, float param_7, float param_8, float param_9, float param_10, int param_11)
+{
+	DAT_05ab423b = 1;
+	float local_8 = (float)param_1;
+	float local_c = (float)param_2;
+	float var1 = (float)param_3;
+	float var2 = (float)param_4;
+	if (*(Magic::RenderCore::Texture **)((char *)DAT_05ab39ac + 0x168) != param_6)
+	{
+		*(Magic::RenderCore::Texture **)((char *)DAT_05ab39ac + 0x168) = param_6;
+	}
+	*(int *)((char *)DAT_05ab39ac + 0x150) = 2;
+	*(int *)((char *)DAT_05ab39ac + 0x14c) = 2;
+	DAT_05ab4239 = 0;
+	*(int *)((char *)DAT_05ab39ac + 0x154) = 2;
+	FUN_0041b7e0_0 local_7c[4] = {
+		{local_8, local_c + var2, param_5, 1.0f, (unsigned long)param_11, param_7, param_10},
+		{local_8, local_c, param_5, 1.0f, (unsigned long)param_11, param_7, param_8},
+		{local_8 + var1, local_c + var2, param_5, 1.0f, (unsigned long)param_11, param_9, param_10},
+		{local_8 + var1, local_c, param_5, 1.0f, (unsigned long)param_11, param_9, param_8}
+	};
+	void *var3 = 0;
+	if (DAT_05ab4284->FUN_00921dd0(&var3, DAT_05ab4288, 112, 0))
+	{
+		memcpy(var3, local_7c, sizeof(local_7c));
+		DAT_05ab4284->FUN_00921da0();
+	}
+	((SOCRender *)DAT_05ab39ac)->FUN_0041b2d0();
+	DAT_05ab4278->FUN_00921f80();
+	((void (__thiscall *)(void *, int, Magic::RenderCore::VertexBuffer *, unsigned int, int, int, int, int))(*(void ***)DAT_05ab8060)[14])(DAT_05ab8060, DAT_05ab421c, DAT_05ab4284, DAT_05ab4288 / 28, 4, 0, 0, 0);
+	DAT_05ab4288 += 112;
+	if (DAT_05ab4288 >= 112000)
+		DAT_05ab4288 = 0;
 }
 
 // STUB: SADX 0x0041ca20
@@ -150,18 +215,27 @@ void __fastcall FUN_0041d130(void *param_1, void *param_2, int param_3)
 {
 }
 
+// FUNCTION: SADX 0x0041dc60
+void GetTextSize(const wchar_t *param_1, int& param_2, int& param_3)
+{
+	DAT_05ab4280->FUN_0040e170(param_1, FUN_0040e170_0(), param_2, param_3);
+	param_2 = (int)(param_2 * ScreenRaitoX);
+	param_3 = (int)(param_3 * ScreenRaitoY);
+}
+
 // STUB: SADX 0x0041ddb0
 void __fastcall FUN_0041ddb0(int *param_1, int param_2, int param_3)
 {
 }
 
+extern struct FUN_0040e170_1 *DAT_05ab4280;
+
+
+
+
+
 // STUB: SADX 0x0041e270
 void __fastcall FUN_0041e270(void *param_1, void *param_2, int param_3, int param_4)
-{
-}
-
-// STUB: SADX 0x004204d0
-void __fastcall FUN_004204d0(int *param_1, int param_2, int param_3)
 {
 }
 
@@ -175,12 +249,67 @@ void FUN_004207c0(void)
 {
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x004208c0
+struct FUN_004208c0_0
+{
+	int local_0;
+	int local_4;
+	int local_8;
+	int local_c;
+	int local_10;
+	float local_14;
+	float local_18;
+};
+
+template class std::vector<FUN_004208c0_0>;
+
+extern int DAT_05ab42ac;
+extern wchar_t DAT_05ab39b0[1024];
+// GLOBAL: SADX 0x05ab42cc
+static std::vector<FUN_004208c0_0> DAT_05ab42cc;
+
+// FUNCTION: SADX 0x004208c0
 void FUN_004208c0(int param_1, int param_2, const wchar_t *param_3, int param_4, float param_5, float param_6)
 {
+	int var1 = wcslen(param_3);
+	int var2 = DAT_05ab42ac + var1;
+	if (var2 <= 1024)
+	{
+		FUN_004208c0_0 local_24;
+		local_24.local_0 = param_1;
+		local_24.local_18 = param_6;
+		local_24.local_4 = param_2;
+		local_24.local_14 = param_5;
+		local_24.local_8 = DAT_05ab42ac;
+		local_24.local_c = var2;
+		local_24.local_10 = param_4;
+		memcpy(&DAT_05ab39b0[DAT_05ab42ac], param_3, var1 * 2);
+		DAT_05ab42ac = var2;
+		DAT_05ab42cc.push_back(local_24);
+	}
 }
-#pragma optimize("", on)
+
+extern unsigned char DAT_05ab423b;
+// GLOBAL: SADX 0x05ab42dc
+std::vector<struct FUN_00420960_0, std::allocator<struct FUN_00420960_0> > DAT_05ab42dc;
+
+// FUNCTION: SADX 0x00420960
+void DrawTexture(int param_1, int param_2, int param_3, int param_4, float param_5, Magic::RenderCore::Texture *param_6, float param_7, float param_8, float param_9, float param_10, int param_11)
+{
+	DAT_05ab423b = 1;
+	FUN_00420960_0 local_30;
+	local_30.local_0 = param_1;
+	local_30.local_4 = param_2;
+	local_30.local_8 = param_3;
+	local_30.local_c = param_4;
+	local_30.local_10 = param_5;
+	local_30.local_14 = param_6;
+	local_30.local_18 = param_7;
+	local_30.local_1c = param_8;
+	local_30.local_20 = param_9;
+	local_30.local_24 = param_10;
+	local_30.local_28 = param_11;
+	DAT_05ab42dc.push_back(local_30);
+}
 
 // FUNCTION: SADX 0x00421180
 void DrawStringW(int param_1, int param_2, const wchar_t *param_3, int param_4, float param_5)

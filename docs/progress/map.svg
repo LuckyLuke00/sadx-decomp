@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,558 of 16,524 game functions done (33.63%), accuracy 99.86%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,562 of 16,524 game functions done (33.66%), accuracy 99.85%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="596.8,1184.5 603.2,1184.5 604.9,1186 606,1187.6 600,1194.5 594,1187.6 595.1,1186" fill="#4e32f3"/>
 <polygon points="596.8,1184.5 603.2,1184.5 604.9,1186 606,1187.6 594,1187.6 595.1,1186" fill="#ffffff" fill-opacity="0.4"/>
@@ -5389,7 +5389,7 @@
 <rect x="168" y="196" width="6" height="6" fill="#b07d00"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 <rect x="175" y="196" width="6" height="6" fill="#b07d00"><title>0x008e1c90 CollisionSceneChanger: 100%</title></rect>
 </g>
-<rect x="795" y="87" width="185" height="238" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 167 of 686 functions done</title></rect>
+<rect x="795" y="87" width="185" height="238" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 171 of 686 functions done</title></rect>
 <text x="798" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ninja graphics <tspan font-weight="400" fill="#59636e">6%</tspan></text>
 <g transform="translate(798,105)">
 <rect y="0" width="175" height="189" fill="url(#todo)"/>
@@ -5410,8 +5410,14 @@
 <rect x="91" y="14" width="6" height="6" fill="#819bc8"><title>0x0041a800 FUN_0041a800: 22.2%</title></rect>
 <rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x0041a870 FUN_0041a870: 100%</title></rect>
 <rect x="161" y="14" width="6" height="6" fill="#b07d00"><title>0x0041ab70 FUN_0041ab70: 100%</title></rect>
+<rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x0041b7e0 RenderTexture: 100%</title></rect>
 <rect x="140" y="21" width="6" height="6" fill="#b07d00"><title>0x0041c2d0 FUN_0041c2d0: 100%</title></rect>
 <rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x0041caa0 FUN_0041caa0: 100%</title></rect>
+<rect x="154" y="28" width="6" height="6" fill="#b07d00"><title>0x0041dc60 GetTextSize: 100%</title></rect>
+<rect x="0" y="35" width="6" height="6" fill="#ad8023"><title>0x0041de30 std::vector&lt;FUN_00420960_0,std::allocator&lt;FUN_00420960_0&gt; &gt;::_Reserve: 93.9%</title></rect>
+<rect x="105" y="35" width="6" height="6" fill="#ae7f18"><title>0x004204d0 std::vector&lt;FUN_004208c0_0,std::allocator&lt;FUN_004208c0_0&gt; &gt;::push_back(struct FUN_004208c0_0 const &amp;): 95.7%</title></rect>
+<rect x="147" y="35" width="6" height="6" fill="#b07d00"><title>0x004208c0 FUN_004208c0: 100%</title></rect>
+<rect x="154" y="35" width="6" height="6" fill="#b07d00"><title>0x00420960 DrawTexture: 100%</title></rect>
 <rect x="168" y="35" width="6" height="6" fill="#b07d00"><title>0x00421180 DrawStringW: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x00421370 njDrawObject: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x00421390 njDrawModel: 100%</title></rect>

@@ -29,21 +29,6 @@ int __fastcall FUN_004199f0(void *, float)
 	return (int)0;
 }
 
-// STUB: SADX 0x0041b7e0
-void RenderTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int)
-{
-}
-
-// STUB: SADX 0x0041dc60
-void GetTextSize(wchar_t const *,int &,int &)
-{
-}
-
-// STUB: SADX 0x00420960
-void DrawTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int)
-{
-}
-
 // STUB: SADX 0x004211b0
 void _njDirectDrawModel(struct NJS_MODEL *)
 {

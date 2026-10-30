@@ -1,21 +1,21 @@
 #include "decls.h"
-extern void *DAT_05ab42dc;
-extern void *DAT_05ab42e0;
+#include "../advertise.h"
+extern std::vector<struct FUN_00420960_0, std::allocator<struct FUN_00420960_0> > DAT_05ab42dc;
 
 // FUNCTION: SADX 0x0041c2d0
 void FUN_0041c2d0(void *param_1)
 {
-	int var1;
-	var1 = (int)DAT_05ab42dc;
-	if (DAT_05ab42dc != DAT_05ab42e0)
+	std::vector<FUN_00420960_0>::iterator var1;
+	var1 = DAT_05ab42dc.begin();
+	if (DAT_05ab42dc.begin() != DAT_05ab42dc.end())
 	{
 		do
 		{
-			if (*(int *)(var1 + 0x14) == (int)param_1)
+			if (var1->local_14 == param_1)
 			{
-				*(int *)(var1 + 0x14) = 0;
+				var1->local_14 = 0;
 			}
-			var1 += 0x2c;
-		} while (var1 != (int)DAT_05ab42e0);
+			++var1;
+		} while (var1 != DAT_05ab42dc.end());
 	}
 }
