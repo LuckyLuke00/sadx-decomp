@@ -63099,6 +63099,14 @@
    "library": false
   },
   {
+   "address": "0x00886060",
+   "name": "Exit(6)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00886090",
    "name": "DispC",
    "accuracy": 1.0,
@@ -63132,7 +63140,7 @@
   },
   {
    "address": "0x008863a0",
-   "name": "NormalL(struct task *)",
+   "name": "NormalL(2)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63141,6 +63149,14 @@
   {
    "address": "0x008864a0",
    "name": "NormalR(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008865f0",
+   "name": "ObjectStoperL",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -96154,6 +96170,13 @@
    "library": false
   },
   {
+   "address": "0x0480d5d0",
+   "name": "object_c_info",
+   "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0480e444",
    "name": "DAT_0480e444",
    "size": 4,
@@ -97857,5 +97880,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c0aa5ded93785e9d7ba396432bb78b3320b4437cdb37105aca59ce22b15a33b7"
+ "inputs_sha256": "943d1360799bd9c62c3d773e610c78a2e50d92084bb9e3bee6e82163b798f155"
 }
