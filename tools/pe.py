@@ -196,10 +196,16 @@ class Image:
                    for start, length, section in self.sections)
 
 
+def range_index(ranges: list[tuple[int, int]], address: int) -> int | None:
+    """The index of the one of RANGES that holds ADDRESS, or None. RANGES are sorted (start, end) pairs, end excluded,
+    that do not overlap."""
+    i = bisect.bisect_right(ranges, (address, float("inf"))) - 1
+    return i if i >= 0 and ranges[i][0] <= address < ranges[i][1] else None
+
+
 def in_ranges(ranges: list[tuple[int, int]], address: int) -> bool:
     """Whether ADDRESS is in one of RANGES: sorted (start, end) pairs, end excluded, that do not overlap."""
-    i = bisect.bisect_right(ranges, (address, float("inf"))) - 1
-    return i >= 0 and ranges[i][0] <= address < ranges[i][1]
+    return range_index(ranges, address) is not None
 
 
 def rich_entries(path: Path) -> dict[tuple[int, int], int]:

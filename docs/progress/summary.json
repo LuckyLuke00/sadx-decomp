@@ -42853,7 +42853,7 @@
   {
    "address": "0x00690d10",
    "name": "ObjectSSPole",
-   "accuracy": 0.9411764705882353,
+   "accuracy": 1.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -63005,7 +63005,7 @@
   {
    "address": "0x008841a0",
    "name": "ObjectRightLane",
-   "accuracy": 0.9333333333333333,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -88561,7 +88561,7 @@
   {
    "address": "0x02225808",
    "name": "ccinfo",
-   "size": 432,
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -90962,7 +90962,7 @@
   {
    "address": "0x026dac20",
    "name": "ccinfo",
-   "size": 96,
+   "size": 432,
    "match": false,
    "library": false
   },
@@ -91102,14 +91102,14 @@
   {
    "address": "0x026de888",
    "name": "ccinfo",
-   "size": 144,
+   "size": 96,
    "match": false,
    "library": false
   },
   {
    "address": "0x026de918",
    "name": "ccinfo",
-   "size": 96,
+   "size": 240,
    "match": false,
    "library": false
   },
@@ -91123,7 +91123,7 @@
   {
    "address": "0x026dec50",
    "name": "ccinfo",
-   "size": 480,
+   "size": 240,
    "match": false,
    "library": false
   },
@@ -91200,14 +91200,14 @@
   {
    "address": "0x026ed434",
    "name": "ColliInfo",
-   "size": 144,
+   "size": 48,
    "match": false,
    "library": false
   },
   {
    "address": "0x026ed570",
    "name": "ColliInfo",
-   "size": 96,
+   "size": 144,
    "match": false,
    "library": false
   },
@@ -91340,14 +91340,14 @@
   {
    "address": "0x0270a848",
    "name": "ColliInfo",
-   "size": 48,
+   "size": 96,
    "match": false,
    "library": false
   },
   {
    "address": "0x0270aab8",
    "name": "ccinfo",
-   "size": 48,
+   "size": 480,
    "match": false,
    "library": false
   },
@@ -96114,7 +96114,7 @@
   {
    "address": "0x0480c808",
    "name": "object_c_info",
-   "size": 96,
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -96149,7 +96149,7 @@
   {
    "address": "0x0480d240",
    "name": "object_c_info",
-   "size": 48,
+   "size": 192,
    "match": false,
    "library": false
   },
@@ -97857,5 +97857,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "8c38bd2ce438c2ee6eb832600680b9b9e8bd914a469672e209e209742746ee09"
+ "inputs_sha256": "c0aa5ded93785e9d7ba396432bb78b3320b4437cdb37105aca59ce22b15a33b7"
 }
