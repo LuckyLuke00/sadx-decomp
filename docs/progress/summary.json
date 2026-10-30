@@ -2484,9 +2484,9 @@
   {
    "address": "0x00424b40",
    "name": "SOCInput::FUN_00424b40",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3533,6 +3533,102 @@
    "address": "0x00431ac0",
    "name": "njSin",
    "accuracy": 0.06666666666666667,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00431c60",
+   "name": "SOCController::FUN_00431c60",
+   "accuracy": 0.10126582278481013,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00431d10",
+   "name": "SOCController::FUN_00431d10",
+   "accuracy": 0.06201550387596899,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00431e50",
+   "name": "SOCController::FUN_00431e50",
+   "accuracy": 0.2702702702702703,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00431e90",
+   "name": "SOCController::FUN_00431e90",
+   "accuracy": 0.0975609756097561,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00431ee0",
+   "name": "SOCController::FUN_00431ee0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00431f00",
+   "name": "SOCController::FUN_00431f00",
+   "accuracy": 0.12307692307692308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00431fa0",
+   "name": "SOCController::FUN_00431fa0",
+   "accuracy": 0.16326530612244897,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00432010",
+   "name": "SOCController::FUN_00432010",
+   "accuracy": 0.14736842105263157,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00432100",
+   "name": "SOCController::FUN_00432100",
+   "accuracy": 0.13186813186813187,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004321e0",
+   "name": "SOCController::FUN_004321e0",
+   "accuracy": 0.13953488372093023,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004322d0",
+   "name": "SOCControllerAll::FUN_00431c60",
+   "accuracy": 0.14285714285714285,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00432380",
+   "name": "SOCControllerAll::FUN_00431d10",
+   "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
    "library": false
@@ -97896,5 +97992,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c0384678297de24727f94466677843d5e5d0b4638d5c06b486060f44b3e84f69"
+ "inputs_sha256": "a85e338f0f62d920b4e1535c5014fefddfe020598682b0cdd700e6cfcf9c67f0"
 }

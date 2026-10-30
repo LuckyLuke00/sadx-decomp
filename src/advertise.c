@@ -610,8 +610,8 @@ int padconfig(int sw)
     if (DAT_05cd2767 != 1) {
         local_35es = false;
         local_35dh = false;
-        local_35cr = FUN_00405f00()->FUN_00424b40()->GetValue(SOCController::AXIS_LX);
-        local_364m = FUN_00405f00()->FUN_00424b40()->GetValue(SOCController::AXIS_LY);
+        local_35cr = FUN_00405f00()->FUN_00424b40()->FUN_00431e50(SOCController::AXIS_LX);
+        local_364m = FUN_00405f00()->FUN_00424b40()->FUN_00431e50(SOCController::AXIS_LY);
         if (local_35cr != 0.0f) {
             if (local_35cr < -0.5 || local_35cr > 0.5) {
                 local_368i = Magic::MATH::Math::AngleUniform<float>(atanf(local_364m / local_35cr));
@@ -1437,7 +1437,7 @@ int padconfig(int sw)
 				{
 				case 0:
 					gu8Vibration = '\x01';
-					FUN_00405f00()->FUN_00424b40()->Vib(30000,30000,500.0);
+					FUN_00405f00()->FUN_00424b40()->FUN_00432100(30000,30000,500.0);
 					DAT_05cd2904 = 0x11;
 					DAT_05cd2900 = 0;
 					dsPlay_oneshot(3,0,0,0);
@@ -1768,7 +1768,7 @@ int padconfig(int sw)
 				DAT_05cd2758 = 0;
 				break;
 			}
-			if (FUN_00405f00()->FUN_00424b40()->IsPress((SOCController::ControllerButton)7))
+			if (FUN_00405f00()->FUN_00424b40()->FUN_00431c60((SOCController::ControllerButton)7))
 			{
 			}
 			break;
