@@ -531,6 +531,60 @@ def table_callees(tables):
     return callees
 
 
+def kept_copy(roots, row, address):
+    """The definition at ADDRESS in ROW's file, as a copy that the game's link folded into it: static, with a comment
+    in place of its annotation. From the first of ROOTS that defines it with FUNCTION, else None."""
+    for root in roots:
+        path = root / row["file"]
+        lines = read_source(path)[0].split("\n") if path.is_file() else []
+        span = definition_span(lines, address)
+        if span is None or not lines[span[0]].lstrip().startswith("// FUNCTION"):
+            continue
+        func = lines[span[0]:span[1] + 1]
+        at = names.signature_index(func)
+        if not re.match(r"static\s", func[at]):
+            func[at] = "static " + func[at]
+        return [f"// The game's link folded this copy into the one of {Path(row['file']).name} ({hexa(address)}).",
+                *func[1:]]
+    return None
+
+
+def fold_copies(text, rel, roots, tables):
+    """TEXT, the file REL, with a copy after its includes of each static function of another file that a function of
+    TEXT uses by a name several functions share, when TEXT defines no function of that name and no function of REL
+    has it: the game's link folded REL's copy into the other file's (tools/folds.py). The copy is kept_copy, and a use
+    of it scores as one of the other file's function when the build holds that. With no kept_copy in the tree yet, a
+    use does not build: a placeholder could not stay in the tree, and the file of a partial result must build."""
+    if not tables:
+        return text
+    rows, shared = function_rows(tables), shared_names(tables)
+    used = set(re.findall(r"[A-Za-z_]\w*", names.strip_code(text)))
+    annotations = names.parse_annotations(text)
+    defined = {names.declared_name(sig) for kind, _, sig in annotations if kind in names.FUNCTION_KINDS}
+    defined |= names.unannotated_statics(text) | {r["name"] for r in rows.values() if r["file"] == rel}
+    copies = {}
+    for _, caller, _ in annotations:
+        for callee in sorted(table_callees(tables).get(caller, ())):
+            row = rows.get(callee)
+            if (not row or row["scope"] != "L" or row["name"] not in shared or row["name"] not in used
+                    or row["name"] in defined or row["name"] in copies):
+                continue
+            copy = kept_copy(roots, row, callee)
+            if copy:
+                copies[row["name"]] = copy
+    if not copies:
+        return text
+    return with_block(text, [line for copy in copies.values() for line in ["", *copy]])
+
+
+def with_block(text, block):
+    """TEXT with BLOCK, lines that start with an empty one, after its includes."""
+    lines = text.split("\n")
+    at = after_includes(lines)
+    lines[at:at] = block + ([""] if lines[at:at + 1] != [""] else [])
+    return "\n".join(lines)
+
+
 def own_stubs(text, rel, tables):
     """TEXT, the file REL, with a static STUB in address order of each function of REL that a function of TEXT uses
     by a name several functions share, when TEXT defines no function of that name: the stubs that decls writes cannot
@@ -553,6 +607,11 @@ def own_stubs(text, rel, tables):
             text = apply_function(text, callee, [], stub.split("\n"))
             defined.add(row["name"])
     return text
+
+
+def tree_code(text, rel, roots, tables):
+    """TEXT, the file REL, with the code of the game that its uses need there: own_stubs, then fold_copies."""
+    return fold_copies(own_stubs(text, rel, tables), rel, roots, tables)
 
 
 def stub_functions(text, addresses):
@@ -1611,11 +1670,12 @@ def solve_function(args, file, address, transcript):
     restore(generated)
 
     shared = shared_names(config["tables"])
+    roots = tree_roots(config)
 
     def scored(text):
         """(the percent of TEXT as the file, or None, the build output). The file is TEXT again afterwards: the
-        global of kept_alive and the stubs of own_stubs are only for the build."""
-        built = own_stubs(text, file, config["tables"])
+        global of kept_alive and the code of tree_code are only for the build."""
+        built = tree_code(text, file, roots, config["tables"])
         write_source(path, kept_alive(built, address, shared), crlf)
         restore(generated)
         result = score(config, address)
@@ -1778,8 +1838,8 @@ def solve_function(args, file, address, transcript):
         if fallback and not (best and best.percent == 100):
             best = fallback
             log.write(json.dumps({"kept_refused": True}) + "\n")
-    # The file keeps the stubs of own_stubs: a use of one can match.
-    write_source(path, own_stubs(best.text, file, config["tables"]) if best else before, crlf)
+    # The file keeps the code of tree_code: a use of it can match.
+    write_source(path, tree_code(best.text, file, roots, config["tables"]) if best else before, crlf)
     restore(generated)
     decls(config)
     return {"tries": tries, "best": best.percent if best else 0.0, "wall_s": time.time() - started, **totals}

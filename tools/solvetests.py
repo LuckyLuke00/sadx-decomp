@@ -496,6 +496,38 @@ def check_unlaid_structs() -> list[str]:
     return failures
 
 
+def check_fold_copies() -> list[str]:
+    """fold_copies writes after the includes a copy of another file's static function that a function uses by a name
+    several functions share: static, with a comment in place of its annotation. It writes none when the file defines
+    the name, when another function of the file has it, or when no tree defines the copy with FUNCTION."""
+    target = project.game_config().target
+    rows = [("0x00401000", "Caller", "G", "src/a.c"), ("0x00402000", "Fold", "L", "src/b.c"),
+            ("0x00402100", "Fold", "L", "src/x.c"), ("0x00403000", "Open", "L", "src/c.c"),
+            ("0x00403100", "Open", "L", "src/x.c"), ("0x00404000", "Own", "L", "src/x.c"),
+            ("0x00404100", "Own", "L", "src/a.c"), ("0x00405000", "Mine", "L", "src/x.c"),
+            ("0x00405100", "Mine", "L", "src/y.c")]
+    text = (f'#include "a.h"\n\nstatic void Mine(void)\n{{\n}}\n\n// FUNCTION: {target} 0x00401000\nvoid Caller(void)\n'
+            "{\n\tFold(1);\n\tOpen();\n\tOwn();\n\tMine();\n}\n")
+    wanted = text.replace("\n\nstatic void Mine", "\n\n// The game's link folded this copy into the one of b.c "
+                          "(0x00402000).\nstatic void Fold(int x)\n{\n\tx++;\n}\n\nstatic void Mine")
+    with tempfile.TemporaryDirectory() as folder:
+        root, tables = Path(folder) / "tree", Path(folder) / "tables"
+        (root / "src").mkdir(parents=True)
+        tables.mkdir()
+        table = "address\tname\tscope\tfile\n" + "".join("\t".join(row) + "\n" for row in rows)
+        (tables / "functions.tsv").write_text(table, encoding="utf-8")
+        (tables / "callers.tsv").write_text("0x00402000\t0x00401000 (ref)\n0x00403000\t0x00401000\n"
+                                            "0x00404000\t0x00401000\n0x00405000\t0x00401000\n", encoding="utf-8")
+        (root / "src/b.c").write_text(f'#include "b.h"\n\n// FUNCTION: {target} 0x00402000\nvoid Fold(int x)\n'
+                                      "{\n\tx++;\n}\n", encoding="utf-8")
+        (root / "src/c.c").write_text(f"// STUB: {target} 0x00403000\nstatic void Open(void)\n{{\n}}\n",
+                                      encoding="utf-8")
+        found = llm.fold_copies(text, "src/a.c", [Path(folder) / "none", root], str(tables))
+        again = llm.fold_copies(found, "src/a.c", [root], str(tables))
+    failures = [f"fold_copies gives {found!r}, not {wanted!r}"] if found != wanted else []
+    return failures + ([f"fold_copies of its own output gives {again!r}"] if again != found else [])
+
+
 def check_own_stubs() -> list[str]:
     """own_stubs writes a static STUB in address order, with its prototype at the top, of each function of the file
     that a function uses by a name several functions share. It writes none for a name one function has, or when the
@@ -821,9 +853,9 @@ def run() -> list[str]:
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
                   check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
-                  check_unlaid_structs, check_own_stubs, check_try_globals, check_address_test, check_read_tree,
-                  check_refusal_names, check_constant_globals, check_debug_constants, check_annotation_below_signature,
-                  check_struct_in_reply, check_live, check_live_ends, check_stream_events, check_full_context_restart,
-                  check_shared_context):
+                  check_unlaid_structs, check_fold_copies, check_own_stubs, check_try_globals, check_address_test,
+                  check_read_tree, check_refusal_names, check_constant_globals, check_debug_constants,
+                  check_annotation_below_signature, check_struct_in_reply, check_live, check_live_ends,
+                  check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures
