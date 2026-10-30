@@ -262,9 +262,7 @@ def ledger(path: Path):
         requests = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
         requests = {key: r for key, r in requests.items() if osutil.alive(r["pid"])}
         yield requests
-        temporary = path.with_suffix(".tmp")
-        temporary.write_text(json.dumps(requests), encoding="utf-8")
-        temporary.replace(path)  # a client stopped while it writes leaves the old file whole
+        osutil.write_whole(path, json.dumps(requests))  # a client stopped while it writes leaves the old file whole
 
 
 def ledger_path(config: dict) -> Path:
