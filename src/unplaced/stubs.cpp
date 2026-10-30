@@ -13,6 +13,12 @@ int FUN_00407e30()
 	return (int)0;
 }
 
+// STUB: SADX 0x0040efd0
+void *FUN_0040efd0()
+{
+	return (void *)0;
+}
+
 // STUB: SADX 0x00418a70
 extern void FUN_00418a70(void)
 {
@@ -1149,13 +1155,8 @@ void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {
 }
 
-// STUB: SADX 0x004b23e0
-void FUN_004b23e0(void*, void*, int, const char*, int)
-{
-}
-
-// STUB: SADX 0x004b5e70
-void FUN_004b5e70(int)
+// STUB: SADX 0x004b38e0
+void FUN_004b38e0(struct FUN_004b2330_0 *)
 {
 }
 

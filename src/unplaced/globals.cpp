@@ -891,10 +891,13 @@ struct NJS_TEXLIST texlist_ava_san;
 void *(*DAT_025add48[5])[2];
 
 // GLOBAL: SADX 0x025add78
-enum AvaTexLdEnum *DAT_025add78[27];
+enum AvaTexLdEnum *DAT_025add78[24];
 
 // GLOBAL: SADX 0x025addd8
 unsigned char DAT_025addd8;
+
+// GLOBAL: SADX 0x025adde0
+char DAT_025adde0[0x20e][0x12c];
 
 // GLOBAL: SADX 0x025d4cad
 unsigned char DAT_025d4cad;
@@ -5168,6 +5171,9 @@ int DAT_05b40a48;
 // GLOBAL: SADX 0x05b40a4c
 struct NJS_ARGB DAT_05b40a4c;
 
+// GLOBAL: SADX 0x05b422d8
+char **DAT_05b422d8;
+
 // GLOBAL: SADX 0x05b422dc
 char **DAT_05b422dc;
 
@@ -8980,6 +8986,12 @@ int DAT_062992fc;
 
 // GLOBAL: SADX 0x06299468
 int DAT_06299468;
+
+// GLOBAL: SADX 0x0629948c
+char *DAT_0629948c;
+
+// GLOBAL: SADX 0x06299490
+char *DAT_06299490;
 
 // GLOBAL: SADX 0x062994b8
 int DAT_062994b8;

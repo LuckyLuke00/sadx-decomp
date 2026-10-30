@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1422" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,566 of 16,524 game functions done (33.68%), accuracy 99.85%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,566 of 16,524 game functions done (33.68%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="590.8,1177.5 597.2,1177.5 598.9,1179 600,1180.6 594,1187.5 588,1180.6 589.1,1179" fill="#4e32f3"/>
 <polygon points="590.8,1177.5 597.2,1177.5 598.9,1179 600,1180.6 588,1180.6 589.1,1179" fill="#ffffff" fill-opacity="0.4"/>
@@ -5857,9 +5857,11 @@
 <rect x="84" y="84" width="6" height="6" fill="#b07d00"><title>0x004addf0 FUN_004addf0: 100%</title></rect>
 <rect x="98" y="84" width="6" height="6" fill="#b07d00"><title>0x004ae9c0 FUN_004ae9c0: 100%</title></rect>
 <rect x="189" y="84" width="6" height="6" fill="#b07d00"><title>0x004b1a80 FUN_004b1a80: 100%</title></rect>
+<rect x="217" y="84" width="6" height="6" fill="#a48858"><title>0x004b23e0 FUN_004b23e0: 78.2%</title></rect>
 <rect x="231" y="84" width="6" height="6" fill="#b07d00"><title>0x004b2860 FUN_004b2860: 100%</title></rect>
 <rect x="280" y="84" width="6" height="6" fill="#b07d00"><title>0x004b3210 FUN_004b3210: 100%</title></rect>
 <rect x="28" y="91" width="6" height="6" fill="#b07d00"><title>0x004b5ad0 FUN_004b5ad0: 100%</title></rect>
+<rect x="35" y="91" width="6" height="6" fill="#a18b67"><title>0x004b5e70 FUN_004b5e70: 71.6%</title></rect>
 <rect x="56" y="91" width="6" height="6" fill="#b07d00"><title>0x004b6520 FUN_004b6520: 100%</title></rect>
 <rect x="63" y="91" width="6" height="6" fill="#b07d00"><title>0x004b6590 std::vector&lt;FUN_004b6590_0 *,std::allocator&lt;FUN_004b6590_0 *&gt; &gt;::clear: 100%</title></rect>
 <rect x="77" y="91" width="6" height="6" fill="#b07d00"><title>0x004b66c0 FUN_004b66c0: 100%</title></rect>
