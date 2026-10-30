@@ -42,12 +42,27 @@ static void Disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x00877880
+// FUNCTION: SADX 0x00877880
 static void Exec(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	if (CheckRangeOutWithR(tp, 490010.0f) == 0)
+	{
+		Disp(tp);
+		var1->ang.y += (int)((var1->scl.x + 2.0) * 65536.0 / 360.0);
+		if (FUN_004c39c0(tp) != 0)
+		{
+			njPrintC(0x120013, "-> RotSpd ");
+			return;
+		}
+		EntryColliList(var1);
+		if (var1->value.w[0] == (DAT_05b9d724 << 8 | DAT_05b9d744))
+		{
+			DAT_05b39be8 = var1->ang.y;
+		}
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00877920
 void ObjectCasinoMBall(struct task *tp)
