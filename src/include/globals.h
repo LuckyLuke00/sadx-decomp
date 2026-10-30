@@ -854,6 +854,7 @@ extern struct obj object_seaobj_floot_floot[];
 extern struct obj object_seaobj_hasi_b_hasi_b[];
 extern struct obj object_col_hasi_a_hasi_a[2];
 extern struct obj object_seaobj_parasol03_parasol03[];
+extern struct obj object_seaobj_beachbed_beachbed[];
 extern struct obj object_seaobj_tesuric_tesuric[];
 extern struct obj object_seaobj_tesurie_tesurie[];
 extern struct obj object_seaobj_rock_rock[];

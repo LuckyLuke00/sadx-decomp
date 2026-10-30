@@ -1,4 +1,9 @@
 #include "decls.h"
+static void Exec(struct task *tp);
+
+// GLOBAL: SADX 0x03a0c200
+static struct CCL_INFO object_c_info[2];
+
 static void Disp(struct task *tp);
 extern struct obj object_seaobj_parasol03_parasol03[];
 extern int DAT_05b9d838;
@@ -24,7 +29,7 @@ static void Disp(struct task *tp)
 }
 
 // FUNCTION: SADX 0x007f92e0
-void Exec(struct task *tp)
+static void Exec(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
@@ -38,7 +43,17 @@ void Exec(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x007f9320
+// FUNCTION: SADX 0x007f9320
 void ObjectBeachKasa(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->ang.x = 0;
+	var1->ang.z = 0;
+	if (FUN_004c39c0(tp) == 0)
+	{
+		CCL_Init(tp, object_c_info, 2, 4);
+	}
+	tp->exec = Exec;
+	tp->disp = Disp;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }
