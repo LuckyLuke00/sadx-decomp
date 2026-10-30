@@ -2031,6 +2031,7 @@ extern int DAT_05cbf194;
 extern struct task *DAT_05cc25a4;
 extern int DAT_05cc25a8;
 extern struct NJS_TEXLIST *DAT_05cc25b0[1];
+extern struct NJS_TEXNAME DAT_05cc26b0[300];
 extern struct NJS_TEXLIST *DAT_05cc34c0[5];
 extern struct NJS_TEXLIST *DAT_05cc3540[5];
 extern char DAT_05cc3554[9];

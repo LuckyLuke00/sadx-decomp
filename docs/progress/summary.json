@@ -21898,11 +21898,19 @@
    "library": false
   },
   {
-   "address": "0x00502980",
-   "name": "texLoadTexturePvmFile",
-   "accuracy": 0.09195402298850575,
+   "address": "0x005024b0",
+   "name": "LoadPvmMEM",
+   "accuracy": 0.027491408934707903,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00502980",
+   "name": "texLoadTexturePvmFile",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -97888,5 +97896,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5ba7d3b9a7e25f5e8a8750e8c671f35b67867023932c29e3a79db0bff7ec7d5d"
+ "inputs_sha256": "c0384678297de24727f94466677843d5e5d0b4638d5c06b486060f44b3e84f69"
 }
