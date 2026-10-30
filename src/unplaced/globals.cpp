@@ -2663,6 +2663,9 @@ struct obj object_windobj_bigfloot_bigfloot[1];
 // GLOBAL: SADX 0x03b2c0c4
 struct obj object_wvobj_watage_watage;
 
+// GLOBAL: SADX 0x03b32804
+struct obj object_windobj_saku_c_saku_c[1];
+
 // GLOBAL: SADX 0x03b3d430
 struct obj object_wvobj_flower_a_flower_a[1];
 
@@ -2675,8 +2678,14 @@ struct obj object_wvobj_busshu_busshu[1];
 // GLOBAL: SADX 0x03b430a4
 struct obj object_wvobj_tateiwa_s_tateiwa_s[1];
 
+// GLOBAL: SADX 0x03b43ea8
+struct obj object_windobj_haneobj_b_haneobj_b[1];
+
 // GLOBAL: SADX 0x03b45f50
 struct NJS_MODEL model_wvobj_wara_wara[1];
+
+// GLOBAL: SADX 0x03b4a048
+struct obj object_windobj_bigflootb_bigflootb[1];
 
 // GLOBAL: SADX 0x03b4ad9c
 struct obj object_windobj_isibasi_isibasi[1];
@@ -2713,6 +2722,15 @@ struct CCL_INFO hasi_colli_info[1];
 
 // GLOBAL: SADX 0x03b75448
 struct CCL_INFO hasi_colli_info2[3];
+
+// GLOBAL: SADX 0x03b75568
+struct CCL_INFO DAT_03b75568[1];
+
+// GLOBAL: SADX 0x03b75598
+struct CCL_INFO DAT_03b75598[1];
+
+// GLOBAL: SADX 0x03b75628
+struct CCL_INFO DAT_03b75628[1];
 
 // GLOBAL: SADX 0x03b75660
 float alpha;

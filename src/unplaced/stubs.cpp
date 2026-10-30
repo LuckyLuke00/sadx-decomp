@@ -3051,6 +3051,11 @@ void DrawHasiEnd(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00808fa0
+void DrawGate(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00810f90
 long ChkE104ColliLandXZ(struct NJS_POINT3 *pPos, float fDistChk, float *pfGroundY, struct NJS_POINT3 *pVec)
 {

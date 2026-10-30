@@ -2828,6 +2828,7 @@ void TornadeInUpObject(struct task *tp);
 void PopoDisplay(struct task *tp);
 void ObjectWindyTuribasiExecutor(struct task *tp);
 void DrawHasiEnd(struct task *tp);
+void DrawGate(struct task *tp);
 void WireClothWindDisplayer(struct task *tp);
 void FUN_0080e4a0(int param_1, struct task *param_2);
 void FUN_0080f4e0(struct task *param_1);
