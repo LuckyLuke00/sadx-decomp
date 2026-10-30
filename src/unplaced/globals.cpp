@@ -2552,6 +2552,9 @@ struct obj object_col_hasi_a_hasi_a[2];
 // GLOBAL: SADX 0x039cafc4
 struct obj object_seaobj_parasol03_parasol03[1];
 
+// GLOBAL: SADX 0x039d064c
+struct obj object_seaobj_beachbed_beachbed[1];
+
 // GLOBAL: SADX 0x039dfa5c
 struct obj object_seaobj_tesuric_tesuric[1];
 
