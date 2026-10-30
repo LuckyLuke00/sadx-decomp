@@ -66,9 +66,40 @@ void EnemyAir(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005c3320
+// FUNCTION: SADX 0x005c3320
 void AirMissle(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct enemywk *local_8g;
+
+	local_cg = tp->twp;
+	CCL_Init(tp, missle_info, 2, 3);
+	local_8g = EnemyInitialize(tp, local_cg);
+	local_8g->flag |= 2;
+	local_cg->btimer |= 1;
+	local_cg->wtimer = 0;
+	local_8g->height = 0.0f;
+	local_8g->angy_spd = 0xe0;
+	local_8g->aim_angle = local_cg->ang.y;
+	local_8g->nframe = 0.0f;
+	local_8g->colli_center.x = 0.0f;
+	local_8g->colli_center.y = 0.0f;
+	local_8g->colli_center.z = 0.0f;
+	local_8g->colli_top = 5.0f;
+	local_8g->colli_radius = 5.0f;
+	local_8g->colli_bottom = -5.0f;
+	local_8g->cliff_height = 50.0f;
+	local_8g->bound_side = 0.0f;
+	local_8g->bound_floor = 0.0f;
+	local_8g->bound_ceiling = 0.0f;
+	local_8g->shadow_scl = 1.0f;
+	local_8g->shadow_scl_ratio = 1.0f;
+	local_cg->ang.x = 0;
+	local_cg->ang.z = 0;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_005c34a0;
+	tp->exec = MissleExecutor;
+	local_cg->flag |= 0x100;
+	local_cg->flag = local_cg->flag;
 }
 
 // FUNCTION: SADX 0x005c34a0
@@ -231,9 +262,59 @@ void AirMove(struct taskwk *twp, struct enemywk *ewp)
 }
 #pragma optimize("", on)
 
-// STUB: SADX 0x005c4e30
+// FUNCTION: SADX 0x005c4e30
 void AirRun(struct taskwk *twp, struct enemywk *ewp)
 {
+	*(int *)((char *)ewp + 0x1b4) = AdjustAngle(*(int *)((char *)ewp + 0x1b4), 0, 0x10);
+	switch (twp->smode)
+	{
+	case 0:
+		if (twp->wtimer > 0x1e)
+		{
+			ewp->old_mode = twp->mode;
+			twp->mode = 4;
+			twp->wtimer = 0;
+		}
+		break;
+	case 1:
+		if (twp->wtimer > 0x1e)
+		{
+			ewp->old_mode = twp->mode;
+			twp->mode = 5;
+			twp->wtimer = 0;
+		}
+		break;
+	case 2:
+		if (twp->wtimer > 0xa)
+		{
+			ewp->old_mode = twp->mode;
+			twp->mode = 6;
+			twp->wtimer = 0;
+		}
+		break;
+	}
+	if (ewp->acc.x < 8.0f)
+	{
+		ewp->acc.x += 0.5f;
+	}
+	if (*(float *)((char *)ewp + 0x7c) > 0.0f)
+	{
+		ewp->weight = njSin(ewp->sub_angle[0]) * *(float *)((char *)ewp + 0x7c);
+		ewp->sub_angle[0] += 0x6500;
+		*(float *)((char *)ewp + 0x7c) -= 0.003f;
+	}
+	else
+	{
+		ewp->weight = 0.0f;
+	}
+	AirMove(twp, ewp);
+	AirCollision(twp, ewp);
+	AirDraw(twp, ewp);
+	AirSmokeGround(twp, ewp);
+	if (twp->flag & 0x100)
+	{
+		EntryColliList(twp);
+	}
 }
 
 // STUB: SADX 0x005c4fd0
@@ -241,9 +322,37 @@ void AirSmokeGround(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005c5160
+// FUNCTION: SADX 0x005c5160
 void AirTakeOff(struct taskwk *twp, struct enemywk *ewp)
 {
+	*(long *)((char *)ewp + 0x1b4) = AdjustAngle(*(long *)((char *)ewp + 0x1b4), 0x1800, 0xb0);
+	ewp->acc.x = njCos(twp->ang.y) * 0.10000000149011612f;
+	ewp->acc.z = njSin(-twp->ang.y) * 0.10000000149011612f;
+	AirMove(twp, ewp);
+	AirCollision(twp, ewp);
+	AirDraw(twp, ewp);
+	switch (twp->smode)
+	{
+	case 0:
+		ewp->old_mode = twp->mode;
+		twp->mode = 4;
+		twp->wtimer = 0;
+		break;
+	case 1:
+		ewp->old_mode = twp->mode;
+		twp->mode = 5;
+		twp->wtimer = 0;
+		break;
+	case 2:
+		ewp->old_mode = twp->mode;
+		twp->mode = 6;
+		twp->wtimer = 0;
+		break;
+	}
+	if ((twp->flag & 0x100) != 0)
+	{
+		EntryColliList(twp);
+	}
 }
 
 // FUNCTION: SADX 0x005c5280
@@ -329,9 +438,37 @@ void FUN_005c5540(struct task *param_1)
 	AirDraw(local_cg, local_8g);
 }
 
-// STUB: SADX 0x005c55d0
+// FUNCTION: SADX 0x005c55d0
 void FUN_005c55d0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	param_2->aim = DAT_05baf368[0]->pos;
+	int local_8;
+	local_8 = FUN_005e3d10(param_1, param_2);
+	param_2->sub_angle[1] = AdjustAngle(param_2->sub_angle[1], 0xfe00, 0x10);
+	if (param_2->acc.x < 6.0f)
+	{
+		param_2->acc.x += 0.5f;
+	}
+	if (local_8 < 0x1555)
+	{
+		param_2->old_mode = param_1->mode;
+		param_1->mode = 8;
+		param_1->wtimer = 0;
+		param_1->flag |= 0x400;
+	}
+	else if (param_1->pos.y < *(float *)((char *)param_2 + 0x54) + 150.0f)
+	{
+		param_2->old_mode = param_1->mode;
+		param_1->mode = 8;
+		param_1->wtimer = 0;
+	}
+	AirMove(param_1, param_2);
+	AirCollision(param_1, param_2);
+	AirDraw(param_1, param_2);
+	if (param_1->flag & 0x100)
+	{
+		EntryColliList(param_1);
+	}
 }
 
 // STUB: SADX 0x005c5710
