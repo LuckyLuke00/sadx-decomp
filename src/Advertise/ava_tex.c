@@ -1,5 +1,5 @@
 #include "decls.h"
-extern enum AvaTexLdEnum *DAT_025add78[27];
+extern enum AvaTexLdEnum *DAT_025add78[24];
 int FUN_004b0a10(int param_1);
 void FUN_004b0a50(int param_1);
 void FUN_004b6520(int param_1);
