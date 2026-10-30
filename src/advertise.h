@@ -108,6 +108,7 @@ public:
 	IniFile();
 	~IniFile();
 	int FUN_0092b1b0(const std::string&, const std::string&, const std::string&);
+	int FUN_0092b2b0(const std::string&);
 private:
 	File* Fini;
 	std::map<std::string, std::string> FileMap;

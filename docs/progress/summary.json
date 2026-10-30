@@ -41453,9 +41453,9 @@
   {
    "address": "0x0067edf0",
    "name": "SOCIniFile::FUN_0067edf0",
-   "accuracy": 0.23076923076923078,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -85125,7 +85125,7 @@
   {
    "address": "0x0092b030",
    "name": "FUN_0092b030",
-   "accuracy": 0.2702702702702703,
+   "accuracy": 0.06666666666666667,
    "effective": false,
    "stub": true,
    "library": false
@@ -85133,7 +85133,7 @@
   {
    "address": "0x0092b080",
    "name": "FUN_0092b080",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -85141,7 +85141,7 @@
   {
    "address": "0x0092b110",
    "name": "FUN_0092b110",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 0.18181818181818182,
    "effective": false,
    "stub": true,
    "library": false
@@ -85149,15 +85149,23 @@
   {
    "address": "0x0092b130",
    "name": "Magic::Base::IniFile::IniFile",
-   "accuracy": 0.1388888888888889,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0092b1b0",
    "name": "Magic::Base::IniFile::FUN_0092b1b0",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 0.39263803680981596,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0092b2b0",
+   "name": "Magic::Base::IniFile::FUN_0092b2b0",
+   "accuracy": 0.004016064257028112,
    "effective": false,
    "stub": true,
    "library": false
@@ -85165,7 +85173,7 @@
   {
    "address": "0x0092b960",
    "name": "Magic::Base::IniFile::~IniFile",
-   "accuracy": 0.04521739130434783,
+   "accuracy": 0.09847198641765705,
    "effective": false,
    "stub": false,
    "library": true
@@ -85173,7 +85181,7 @@
   {
    "address": "0x0092c090",
    "name": "FUN_0092c090",
-   "accuracy": 0.22857142857142856,
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -98016,5 +98024,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "690aed767c71d701e9840f85be7ccf6bb578c90012b7ac305f0d7e2c24922629"
+ "inputs_sha256": "c164524bb6fd447227a438b6596f8cace42e15953eb76f5b76579f5b16e6a331"
 }
