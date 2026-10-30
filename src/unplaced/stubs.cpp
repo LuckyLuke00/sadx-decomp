@@ -1400,6 +1400,12 @@ void FUN_005015e0(void *)
 {
 }
 
+// STUB: SADX 0x005024b0
+long LoadPvmMEM(const char *, struct NJS_TEXLIST *)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00502cd0
 int FUN_00502cd0()
 {

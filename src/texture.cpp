@@ -1,4 +1,5 @@
 #include "decls.h"
+#include <string.h>
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
 extern struct NJS_TEXLIST *DAT_05cc34c0[5];
 void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo);
@@ -9,6 +10,8 @@ void PvrLoadtexture(struct NJS_TEXLIST *texlist);
 long FUN_00423e50(const char *param_1, struct NJS_TEXLIST *param_2);
 extern struct NJS_TEXLIST *DAT_05cc3540[5];
 extern struct NJS_TEXLIST *DAT_05cc25b0[1];
+extern struct NJS_TEXNAME DAT_05cc26b0[300];
+long LoadPvmMEM(const char *filename, struct NJS_TEXLIST *texlist);
 
 #pragma optimize("", off)
 // STUB: SADX 0x005019e0
@@ -204,12 +207,38 @@ long ReleasePvmT(unsigned short stgact)
 	return (long)0;
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x00502980
+// FUNCTION: SADX 0x00502980
 void texLoadTexturePvmFile(char *fname, struct NJS_TEXLIST *ptlo)
 {
+	char filename[300][28];
+	struct NJS_TEXLIST texlist;
+	int local_14g;
+	struct NJS_TEXNAME *local_18g;
+	int local_8g;
+
+	if (strcmp(fname, "SS_MIZUGI") == 0)
+	{
+		___OutputDebugString("SS_MIZUGI\n");
+	}
+	if (ptlo == 0)
+	{
+		___OutputDebugString("%s %d : ptlo == 0\n", "..\\..\\src\\texture.cpp", 2908);
+		return;
+	}
+	njSetPvmTextureList((int*)&texlist, (int*)DAT_05cc26b0, (int)filename, 300);
+	if (LoadPvmMEM(fname, &texlist) == -1)
+	{
+		return;
+	}
+	local_8g = ptlo->nbTexture;
+	local_18g = ptlo->textures;
+	for (local_14g = 0; local_14g < local_8g; local_14g++)
+	{
+		local_18g[local_14g].texaddr = DAT_05cc26b0[local_14g].texaddr;
+		local_18g[local_14g].attr = DAT_05cc26b0[local_14g].attr;
+	}
+	FUN_004b6460(ptlo, fname);
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00502a90
 long LoadPvmMEM2(const char *filename, struct NJS_TEXLIST *texlist)
