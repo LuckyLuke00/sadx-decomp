@@ -236,6 +236,8 @@ public:
 class SOCRender
 {
 public:
+	void FUN_004199b0(bool param_1);
+	void FUN_0041b2d0();
 	// FUNCTION: SADX 0x00419cf0
 	void FUN_00419cf0(int param_1)
 	{
@@ -261,5 +263,56 @@ inline class SOCTimer* FUN_0041a800()
 {
 	return ((Magic::Base::Singleton<SOCTimer>*)&DAT_05ab4304)->GetSubject();
 }
+
+struct FUN_0040e170_0
+{
+	std::string local_0;
+	int local_1c;
+	int local_20;
+	FUN_0040e170_0()
+	{
+		local_0 = "ASCII";
+		local_1c = 0;
+		local_20 = 0;
+	}
+};
+
+struct FUN_0040e170_1
+{
+	void FUN_0040e170(const wchar_t *param_1, const FUN_0040e170_0& param_2, int& param_3, int& param_4);
+};
+
+namespace Magic
+{
+namespace RenderCore
+{
+class VertexBuffer
+{
+public:
+	bool FUN_00921dd0(void **param_1, int param_2, int param_3, int param_4);
+	void FUN_00921da0();
+};
+class Material
+{
+public:
+	void FUN_00921f80();
+};
+}
+}
+
+struct FUN_00420960_0
+{
+	int local_0;
+	int local_4;
+	int local_8;
+	int local_c;
+	float local_10;
+	Magic::RenderCore::Texture *local_14;
+	float local_18;
+	float local_1c;
+	float local_20;
+	float local_24;
+	int local_28;
+};
 
 static_assert(sizeof(Magic::Base::File) == 0x20, "sizeof File");

@@ -61,3 +61,9 @@
 
 // TEMPLATE: SADX 0x004b6860
 // std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::_Grow_to
+
+// TEMPLATE: SADX 0x004204d0
+// ?push_back@?$vector@UFUN_004208c0_0@@V?$allocator@UFUN_004208c0_0@@@std@@@std@@QAEXABUFUN_004208c0_0@@@Z
+
+// TEMPLATE: SADX 0x0041de30
+// std::vector<FUN_00420960_0,std::allocator<FUN_00420960_0> >::_Reserve

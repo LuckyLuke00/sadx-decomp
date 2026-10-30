@@ -4151,6 +4151,9 @@ int DAT_05ab39a4;
 // GLOBAL: SADX 0x05ab39ac
 void *DAT_05ab39ac;
 
+// GLOBAL: SADX 0x05ab39b0
+wchar_t DAT_05ab39b0[1024];
+
 // GLOBAL: SADX 0x05ab41f4
 int DAT_05ab41f4;
 
@@ -4166,14 +4169,29 @@ unsigned char DAT_05ab4225;
 // GLOBAL: SADX 0x05ab4226
 unsigned char DAT_05ab4226;
 
+// GLOBAL: SADX 0x05ab4239
+unsigned char DAT_05ab4239;
+
+// GLOBAL: SADX 0x05ab423b
+unsigned char DAT_05ab423b;
+
 // GLOBAL: SADX 0x05ab4243
 unsigned char DAT_05ab4243;
 
-// GLOBAL: SADX 0x05ab42dc
-void *DAT_05ab42dc;
+// GLOBAL: SADX 0x05ab4278
+class Magic::RenderCore::Material *DAT_05ab4278;
 
-// GLOBAL: SADX 0x05ab42e0
-void *DAT_05ab42e0;
+// GLOBAL: SADX 0x05ab4280
+struct FUN_0040e170_1 *DAT_05ab4280;
+
+// GLOBAL: SADX 0x05ab4284
+class Magic::RenderCore::VertexBuffer *DAT_05ab4284;
+
+// GLOBAL: SADX 0x05ab4288
+unsigned int DAT_05ab4288;
+
+// GLOBAL: SADX 0x05ab42ac
+int DAT_05ab42ac;
 
 // GLOBAL: SADX 0x05ab4304
 void* DAT_05ab4304;
@@ -4198,6 +4216,9 @@ int DAT_05ab6ec0;
 
 // GLOBAL: SADX 0x05ab7c00
 int DAT_05ab7c00;
+
+// GLOBAL: SADX 0x05ab8060
+void *DAT_05ab8060;
 
 // GLOBAL: SADX 0x05ab8288
 int DAT_05ab8288;

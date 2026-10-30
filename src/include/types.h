@@ -161,6 +161,8 @@ struct Flicky;
 struct FlickyData;
 struct FlickyEff;
 struct forcewk;
+struct FUN_0040e170_1;
+struct FUN_00420960_0;
 struct GH_FONT_INFO;
 struct GHPARTICLE;
 struct GHPARTICLE_INFO;

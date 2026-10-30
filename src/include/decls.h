@@ -13,6 +13,6 @@ namespace std
 #include "shinobi.h"
 #include "ninja.h"
 #include "types.h"
-namespace Magic { namespace RenderCore { class Texture; } }
+namespace Magic { namespace RenderCore { class Texture; class VertexBuffer; class Material; } }
 #include "functions.h"
 #include "globals.h"

@@ -922,6 +922,14 @@
    "library": false
   },
   {
+   "address": "0x0040e170",
+   "name": "FUN_0040e170_1::FUN_0040e170",
+   "accuracy": 0.038338658146964855,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0040e960",
    "name": "FUN_0040e960",
    "accuracy": 0.034482758620689655,
@@ -1418,6 +1426,14 @@
    "library": false
   },
   {
+   "address": "0x004199b0",
+   "name": "SOCRender::FUN_004199b0",
+   "accuracy": 0.09090909090909091,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004199f0",
    "name": "FUN_004199f0",
    "accuracy": 0.5714285714285714,
@@ -1634,11 +1650,19 @@
    "library": false
   },
   {
-   "address": "0x0041b7e0",
-   "name": "RenderTexture",
-   "accuracy": 0.055944055944055944,
+   "address": "0x0041b2d0",
+   "name": "SOCRender::FUN_0041b2d0",
+   "accuracy": 0.078125,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041b7e0",
+   "name": "RenderTexture",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -1716,9 +1740,9 @@
   {
    "address": "0x0041dc60",
    "name": "GetTextSize",
-   "accuracy": 0.11428571428571428,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -1727,6 +1751,14 @@
    "accuracy": 0.037037037037037035,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041de30",
+   "name": "std::vector<FUN_00420960_0,std::allocator<FUN_00420960_0> >::_Reserve",
+   "accuracy": 0.9387755102040817,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -1739,10 +1771,10 @@
   },
   {
    "address": "0x004204d0",
-   "name": "FUN_004204d0",
-   "accuracy": 0.041666666666666664,
+   "name": "std::vector<FUN_004208c0_0,std::allocator<FUN_004208c0_0> >::push_back(struct FUN_004208c0_0 const &)",
+   "accuracy": 0.9574468085106383,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -1764,17 +1796,17 @@
   {
    "address": "0x004208c0",
    "name": "FUN_004208c0",
-   "accuracy": 0.13793103448275862,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00420960",
    "name": "DrawTexture",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -83475,6 +83507,30 @@
    "library": false
   },
   {
+   "address": "0x00921da0",
+   "name": "Magic::RenderCore::VertexBuffer::FUN_00921da0",
+   "accuracy": 0.08333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00921dd0",
+   "name": "Magic::RenderCore::VertexBuffer::FUN_00921dd0",
+   "accuracy": 0.2,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00921f80",
+   "name": "Magic::RenderCore::Material::FUN_00921f80",
+   "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009225a0",
    "name": "FUN_009225a0",
    "accuracy": 1.0,
@@ -98032,5 +98088,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "81bbf58fe89fe52bd70d0fd1b212c71c0b8d71e53c2f85d0d14df5056bfdbb3d"
+ "inputs_sha256": "d9860542139473bcea276298cee0ddc9d0c76f24a8fe6ed2388789184c9baeef"
 }
