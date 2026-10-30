@@ -32,7 +32,7 @@ BUILD_INPUTS = ["src", "CMakeLists.txt", "game.cmake", "data/codegen-groups.csv"
                 "tools/constants.py", "tools/datafiles.py", "tools/endrefs.py", "tools/fakematch.py",
                 "tools/libobjects.py", "tools/library.py", "tools/names.py", "tools/osutil.py", "tools/pe.py",
                 "tools/progress.py", "tools/project.py", "tools/report.py", "tools/runner.py", "tools/scoring.py",
-                "tools/selftest.py", "tools/toolchain.py", "tools/tricks.py"]
+                "tools/selftest.py", "tools/toolchain.py", "tools/tricks.py", "tools/varfiles.py"]
 BINARY_SUFFIXES = {".exe", ".dll", ".pdb", ".lib", ".obj", ".ilk", ".iso", ".msi"}
 MAX_FILE_BYTES = 10 * 1024 * 1024
 MAX_LINES = 10  # problem lines a check prints before it sums up the rest

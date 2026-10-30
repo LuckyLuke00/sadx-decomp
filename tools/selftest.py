@@ -870,7 +870,8 @@ def check_units() -> list[str]:
     facts.py, of the trick finder in tricks.py, of the site pages in pages.py, of the data scores in scoring.py, of
     the split in link.py, of the recipe checks in recipes.py, of the type search in retype.py, of the rewrites in
     permute.py, of the stack argument audit in stackargs.py, of the fold rule in folds.py, of the array-end names
-    in endrefs.py, of the fold test in groups.py and of the names in dossier.py, one module each."""
+    in endrefs.py, of the fold test in groups.py, of the names in dossier.py and of the variable pairs in varfiles.py,
+    one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
@@ -891,9 +892,10 @@ def check_units() -> list[str]:
     import solvetests
     import stackargtests
     import tricktests
+    import varfilestests
     modules = (ctexttests, bytetests, casttests, decltests, dossiertests, benchtests, solvetests, facttests, tricktests,
                sitetests, progresstests, linktests, recipetests, retypetests, permutetests, stackargtests, foldtests,
-               endrefstests, groupstests)
+               endrefstests, groupstests, varfilestests)
     return [failure for module in modules for failure in module.run()]
 
 
