@@ -437,6 +437,45 @@ def check_member_path() -> list[str]:
     return failures
 
 
+def check_struct_section() -> list[str]:
+    """The Structs section shows a type that a prototype names without the struct keyword, and a typedef's line
+    after the lines of the typedefs it names, with the struct it names. A parameter name is no type."""
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "types.h"
+        path.write_text("struct NJS_POINT3 {\n    float x;\n};\n\nstruct obj {\n    int id;\n};\n", encoding="utf-8")
+        (Path(folder) / "sega.h").write_text("typedef float Float;\ntypedef Float NJS_MATRIX[16];\n"
+                                             "typedef struct NJS_POINT3 NJS_VECTOR;\ntypedef void (*HOOK)(int);\n",
+                                             encoding="utf-8")
+        typedefs = llm.header_typedefs(Path(folder))
+        section = llm.struct_section(names.Types(path), "prototype: void Foo(NJS_MATRIX *m, NJS_VECTOR *v, int obj);",
+                                     typedefs)
+    wanted = ("Structs (a `/* +0xN */` comment is the member's offset):\n```cpp\ntypedef float Float;\n"
+              "typedef Float NJS_MATRIX[16];\ntypedef struct NJS_POINT3 NJS_VECTOR;\n\n"
+              "struct NJS_POINT3 {\n    float x;\n};\n```\n")
+    failures = [f"header_typedefs gives {sorted(typedefs)}"] if sorted(typedefs) != ["Float", "NJS_MATRIX",
+                                                                                     "NJS_VECTOR"] else []
+    return failures + ([f"struct_section gives {section!r}, not {wanted!r}"] if section != wanted else [])
+
+
+def check_header_layouts() -> list[str]:
+    """The Structs section shows a layout that a hand-written header gives, such as ninja.h's NJS_LINE, also through
+    a typedef of it. A generated header holds only what the tables have, so header_types does not read it."""
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "tables.h"
+        path.write_text("struct NJS_POINT3 {\n    float x;\n};\n", encoding="utf-8")
+        (Path(folder) / "ninja.h").write_text("// ninjastr.h\nstruct NJS_LINE {\n    float px;\n};\n"
+                                              "typedef struct NJS_LINE NJS_PLANE;\n", encoding="utf-8")
+        (Path(folder) / Path(names.TYPES_H).name).write_text("struct Stale {\n    int a;\n};\n", encoding="utf-8")
+        types = llm.header_types(Path(folder), names.Types(path))
+        section = llm.struct_section(types, "prototype: void Foo(NJS_PLANE *p);\nlocals: struct NJS_LINE l",
+                                     llm.header_typedefs(Path(folder)))
+    wanted = ("Structs (a `/* +0xN */` comment is the member's offset):\n```cpp\n"
+              "typedef struct NJS_LINE NJS_PLANE;\n\n// ninjastr.h\nstruct NJS_LINE {\n    float px;\n};\n```\n")
+    failures = [f"header_types reads {sorted(types.blocks)}"] if sorted(types.blocks) != ["NJS_LINE",
+                                                                                          "NJS_POINT3"] else []
+    return failures + ([f"struct_section gives {section!r}, not {wanted!r}"] if section != wanted else [])
+
+
 def check_try_globals() -> list[str]:
     """Tree.with_decls knows the globals that a try declares: a number added to its pointer is an offset, and the
     address of its DAT_ is a raw address. The tree alone knows neither."""
@@ -727,9 +766,9 @@ def run() -> list[str]:
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
                   check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
-                  check_debug_kinds, check_exe_targets, check_member_path, check_try_globals, check_address_test,
-                  check_read_tree, check_refusal_names, check_constant_globals, check_debug_constants,
-                  check_annotation_below_signature, check_struct_in_reply, check_live, check_live_ends,
-                  check_stream_events, check_full_context_restart, check_shared_context):
+                  check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
+                  check_try_globals, check_address_test, check_read_tree, check_refusal_names, check_constant_globals,
+                  check_debug_constants, check_annotation_below_signature, check_struct_in_reply, check_live,
+                  check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures

@@ -72,6 +72,7 @@ replaces it with a try that scores higher.
 
 import argparse
 import collections
+import copy
 import csv
 import functools
 import json
@@ -216,6 +217,8 @@ CAST_BROKEN = re.compile(r"error C(?:2059|2143|2061|2146|2065):")  # what a cast
 SCORE = re.compile(r"^(0x[0-9a-f]{8}) \S.*?: (?:(\d+(?:\.\d+)?)% match|(stub))", re.M)
 DECLARED = re.compile(r"^(?:prototype:|locals:|  \w+ 0x[0-9a-f]{8} ).*", re.M)  # a dossier's typed lines
 TAG = re.compile(r"\b(?:struct|union|enum)\s+(\w+)")
+TYPE_NAME = re.compile(r"\b(?:(?:struct|union|enum)\s+(\w+)|(\w+)(?=\s*\*|\s+\w))")  # a tag, or a word before a name
+TYPEDEF = re.compile(r"^typedef\s[^;{}()]*;", re.M)  # a one-line typedef that is not of a function
 MISSING_MEMBER = re.compile(r"C2039: '\w+' : is not a member of '(\w+)'")
 DIFF_LINE = re.compile(r"^(?:0x[0-9a-f]+)?\s*: ([-+])(.*)$", re.M)  # a changed line of reccmp's diff: sign, text
 SOURCE_LINE = re.compile(r"\s+\([^()\s]+:\d+\)$")  # such as "	(ef_flash.c:128)" after a line of our build
@@ -969,12 +972,51 @@ def member_types(types, name):
     return [t for t in dict.fromkeys(found) if t != name and t in types.blocks]
 
 
-def struct_section(types, dossier_text):
-    """The Structs section: the types that the dossier's prototype, locals and names used lines mention, then their
-    member types down to STRUCT_DEPTH, until STRUCT_LINES member lines are shown. "" when the dossier names no
-    defined type."""
-    level = [t for t in dict.fromkeys(TAG.findall("\n".join(DECLARED.findall(dossier_text)))) if t in types.blocks]
-    seen, shown, left, count = set(level), [], 0, 0
+def header_typedefs(folder):
+    """name: line of each one-line typedef in the headers of FOLDER."""
+    found = {}
+    for header in sorted(folder.glob("*.h")):
+        for line in TYPEDEF.findall(header.read_text(encoding="utf-8")):
+            found[re.findall(r"\w+", line.split("[", 1)[0])[-1]] = line
+    return found
+
+
+def header_types(folder, types):
+    """TYPES with the struct and union layouts of the hand-written headers of FOLDER, such as Sega's Ninja types in
+    ninja.h: the code can use them, so the prompt shows them."""
+    found = copy.copy(types)
+    found.blocks = names.header_blocks(folder) | types.blocks
+    return found
+
+
+def named_types(types, typedefs, text):
+    """(the TYPEDEFS lines, the defined types) that TEXT names, with or without the struct keyword, in order. A
+    typedef brings the types its line names, before itself."""
+    lines, found, seen = [], [], set()
+
+    def visit(word):
+        if word in seen:
+            return
+        seen.add(word)
+        if word in types.blocks:
+            found.append(word)
+        elif word in typedefs:
+            for inner in re.findall(r"\w+", typedefs[word]):
+                visit(inner)
+            lines.append(typedefs[word])
+
+    for tag, bare in TYPE_NAME.findall(text):
+        visit(tag or bare)
+    return lines, found
+
+
+def struct_section(types, dossier_text, typedefs):
+    """The Structs section: the typedefs and types that the dossier's prototype, locals and names used lines mention,
+    then their member types down to STRUCT_DEPTH, until STRUCT_LINES member lines are shown. "" when there is none of
+    these."""
+    declared = "\n".join(DECLARED.findall(dossier_text))
+    aliases, level = named_types(types, typedefs, declared)
+    seen, shown, left, count = set(level), [], 0, len(aliases)
     for _ in range(STRUCT_DEPTH + 1):
         below = []
         for name in level:
@@ -987,10 +1029,12 @@ def struct_section(types, dossier_text):
             below += [t for t in member_types(types, name) if t not in seen]
             seen.update(below)
         level = below
-    if not shown:
+    if not aliases and not shown:
         return ""
     more = f"{left} more types do not fit and are left out.\n" if left else ""
-    return "Structs (a `/* +0xN */` comment is the member's offset):\n```cpp\n" + "\n\n".join(shown) + "\n```\n" + more
+    blocks = (["\n".join(aliases)] if aliases else []) + shown
+    return ("Structs (a `/* +0xN */` comment is the member's offset):\n```cpp\n" + "\n\n".join(blocks) + "\n```\n"
+            + more)
 
 
 def missing_members(types, errors):
@@ -1202,7 +1246,9 @@ def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), si
     the dossier leaves out the prototype that the function's own definition gives, as for a function not yet
     decompiled."""
     facts = dossier(config, address, '--c', '--callers', *extra, *(["--hide-own"] if hide_own else []))
-    structs = "" if types is None else struct_section(types, facts)
+    headers = (ROOT / names.TYPES_H).parent
+    structs = ("" if types is None
+               else struct_section(header_types(headers, types), facts, header_typedefs(headers)))
     task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}{recipe_section(recipe)}"
             f"Write the function. Reply with one cpp block with the `{function_line(address)}` line.")
     shown = examples(config, file, address, count, extra, similar, allowed)
