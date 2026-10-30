@@ -1,7 +1,7 @@
 #include "decls.h"
 extern void stFileServer(void);
 void stReadFileReq(int param_1, int param_2, int param_3, int param_4);
-int FUN_00928740();
+#include "../advertise.h"
 
 // STUB: SADX 0x004353b0
 void stInitFile(unsigned int param_1)
@@ -9,9 +9,9 @@ void stInitFile(unsigned int param_1)
 }
 
 // FUNCTION: SADX 0x00435420
-int FUN_00435420()
+void Magic::Base::File::FUN_00435420()
 {
-	return FUN_00928740();
+	FUN_00928740();
 }
 
 // FUNCTION: SADX 0x00435430

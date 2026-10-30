@@ -130,3 +130,4 @@ address,from,to,reason
 0x00694ae0,100.00%,98.06%,"plain C without the __restrict pointer and volatile casts; two load orders differ"
 0x00706de0,100.00%,95.83%,"njRotateY takes an Angle as the Ninja headers declare it, with the (Uint16) cast that gives the movzx; the old unsigned short prototype matched only through the x87 operand order of three later adds"
 0x008105a0,100.00%,95.65%,"njRotateY takes an Angle as the Ninja headers declare it, with the (Uint16) cast that gives the movzx; the old unsigned short prototype matched only through the x87 operand order of three later adds"
+0x0042b460,97.83%,85.39%,"File's constructor and destructor are not confirmed, so they are placeholder functions called by hand; the compiler no longer writes those calls and their unwind code"
