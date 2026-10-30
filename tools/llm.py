@@ -585,6 +585,54 @@ def with_block(text, block):
     return "\n".join(lines)
 
 
+@functools.cache
+def global_rows(tables):
+    """name: the rows of TABLES' globals.tsv with that name."""
+    rows = collections.defaultdict(list)
+    for r in names.table_rows(Path(tables) / "globals.tsv"):
+        rows[r["name"]].append(r)
+    return rows
+
+
+@functools.cache
+def object_files(tables):
+    """object: the files of its functions in TABLES' functions.tsv."""
+    files = collections.defaultdict(set)
+    for r in function_rows(tables).values():
+        if r["object"]:
+            files[r["object"]].add(r["file"])
+    return files
+
+
+def own_globals(text, rel, tables, types):
+    """TEXT, the file REL, with a static definition under a GLOBAL annotation after its includes of each global that
+    TEXT uses by a name several globals share, when REL's object, of which REL is the only file, has one of them:
+    each object of the game has its own static of that name, and globals.h can declare only one. None comes when
+    TEXT defines the global already, or a static of its name. TEXT's top-of-file declarations of a defined name go:
+    the table's type wins, and another type would not build."""
+    if not tables:
+        return text
+    objects = {o for o, files in object_files(tables).items() if files == {rel}}
+    code = names.strip_code(text)
+    annotated = {a for kind, a, _ in names.parse_annotations(text) if kind == "GLOBAL"}
+    block, defined = [], set()
+    for name in sorted(set(re.findall(r"[A-Za-z_]\w*", code))):
+        rows = global_rows(tables).get(name, [])
+        own = [r for r in rows if r["object"] in objects]
+        if (len(rows) < 2 or len(own) != 1 or int(own[0]["address"], 16) in annotated
+                or re.search(rf"^static\b[^;{{}}]*\b{name}\b", code, re.M)):
+            continue
+        block += ["", f"// GLOBAL: {project.game_config().target} {hexa(int(own[0]['address'], 16))}",
+                  f"static {names.row_definition(own[0], types)};"]
+        defined.add(name)
+    if not block:
+        return text
+    lines = text.split("\n")
+    top = first_function_line(lines)
+    kept = [line for i, line in enumerate(lines) if i >= top or not any(declares(line, name) for name in defined)]
+    return with_block("\n".join(kept), block)
+
+
 def own_stubs(text, rel, tables):
     """TEXT, the file REL, with a static STUB in address order of each function of REL that a function of TEXT uses
     by a name several functions share, when TEXT defines no function of that name: the stubs that decls writes cannot
@@ -609,9 +657,10 @@ def own_stubs(text, rel, tables):
     return text
 
 
-def tree_code(text, rel, roots, tables):
-    """TEXT, the file REL, with the code of the game that its uses need there: own_stubs, then fold_copies."""
-    return fold_copies(own_stubs(text, rel, tables), rel, roots, tables)
+def tree_code(text, rel, roots, tables, types):
+    """TEXT, the file REL, with the code of the game that its uses need there: own_stubs, fold_copies, then
+    own_globals."""
+    return own_globals(fold_copies(own_stubs(text, rel, tables), rel, roots, tables), rel, tables, types)
 
 
 def stub_functions(text, addresses):
@@ -1671,11 +1720,12 @@ def solve_function(args, file, address, transcript):
 
     shared = shared_names(config["tables"])
     roots = tree_roots(config)
+    table_types = load_types(config)
 
     def scored(text):
         """(the percent of TEXT as the file, or None, the build output). The file is TEXT again afterwards: the
         global of kept_alive and the code of tree_code are only for the build."""
-        built = tree_code(text, file, roots, config["tables"])
+        built = tree_code(text, file, roots, config["tables"], table_types)
         write_source(path, kept_alive(built, address, shared), crlf)
         restore(generated)
         result = score(config, address)
@@ -1689,7 +1739,7 @@ def solve_function(args, file, address, transcript):
         percent, output = scored(text)
         return text, percent, about_reply(output, decls, func)
 
-    types = load_types(config) if args.structs else None
+    types = table_types if args.structs else None
     repair_types = types or load_types(config)  # the byte offset and pointer cast repairs read layouts either way
     extra = dossier_flags(args)
     count = EXAMPLES
@@ -1839,7 +1889,7 @@ def solve_function(args, file, address, transcript):
             best = fallback
             log.write(json.dumps({"kept_refused": True}) + "\n")
     # The file keeps the code of tree_code: a use of it can match.
-    write_source(path, tree_code(best.text, file, roots, config["tables"]) if best else before, crlf)
+    write_source(path, tree_code(best.text, file, roots, config["tables"], table_types) if best else before, crlf)
     restore(generated)
     decls(config)
     return {"tries": tries, "best": best.percent if best else 0.0, "wall_s": time.time() - started, **totals}

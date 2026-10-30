@@ -440,19 +440,10 @@ def write(context: Path | None, tables: Path | None) -> int:
             else:
                 fatal.append(f"{name}: no known type. Declare it `extern <type> {name};` at the top of the file that uses it.")
             continue
-        dims = row["dims"].split(",") if row["dims"] else []
         decl = names.row_declaration(row)
         # Another object's file may define its own static of a shared name with another size.
         externs[a] = extern_of(decl) if name in shared_globals else "extern " + decl
-        definition = row["decl"].replace("{}", name)
-        if dims and dims[0] in ("?", "0", ""):
-            elem = names.element_size(row["base"], types)
-            inner = 1
-            for x in dims[1:]:
-                inner *= int(x) if x.isdigit() else 1
-            count = int(row["size"]) // (elem * inner) if elem and row["size"] else 1
-            definition = re.sub(r"\[[\w?]*\]", f"[{max(count, 1)}]", definition, count=1)
-        gdefs[a] = (definition, row["base"].startswith("const"))
+        gdefs[a] = (names.row_definition(row, types), row["base"].startswith("const"))
     # globals.h declares each global for every file, so a name serves one address. In the context, the same holds for
     # the globals its files define or mean by a shared name, once these files are in it.
     addresses_of = collections.defaultdict(set)

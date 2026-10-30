@@ -562,6 +562,42 @@ def check_own_stubs() -> list[str]:
     return failures + ([f"own_stubs of its own output gives {again!r}"] if again != found else [])
 
 
+def check_own_globals() -> list[str]:
+    """own_globals writes after the includes a static definition under a GLOBAL annotation of a global that the file
+    uses by a name several globals share, when the file's object, of which it is the only file, has one, sized from
+    the row's bytes, and drops the file's own declaration of it. It writes none for a name one global has, when the
+    file defines the name, or when another file has functions of the object."""
+    target = project.game_config().target
+    functions = [("0x00401000", "Caller", "a.obj", "src/a.c"), ("0x00401100", "Other", "c.obj", "src/c.c"),
+                 ("0x00401200", "More", "c.obj", "src/d.c")]
+    shared = [("0x00600000", "info", "struct INFO {}[?]", "struct INFO", "?", "24", "a.obj"),
+              ("0x00600100", "info", "struct INFO {}[?]", "struct INFO", "?", "8", "b.obj"),
+              ("0x00600200", "once", "int {}", "int", "", "4", "a.obj"),
+              ("0x00600300", "mine", "int {}", "int", "", "4", "a.obj"),
+              ("0x00600400", "mine", "int {}", "int", "", "4", "b.obj"),
+              ("0x00600500", "theirs", "int {}", "int", "", "4", "c.obj"),
+              ("0x00600600", "theirs", "int {}", "int", "", "4", "b.obj")]
+    text = (f'#include "a.h"\nextern struct INFO *info;\n\nstatic int mine;\n\n// FUNCTION: {target} 0x00401000\n'
+            "int Caller(void)\n{\n\treturn info[0].x + once + mine + theirs;\n}\n")
+    wanted = text.replace("\nextern struct INFO *info;\n\nstatic int mine", f"\n\n// GLOBAL: {target} 0x00600000\n"
+                          "static struct INFO info[3];\n\nstatic int mine")
+    with tempfile.TemporaryDirectory() as folder:
+        tables = Path(folder)
+        (tables / "functions.tsv").write_text("address\tname\tobject\tfile\n" + "".join(
+            "\t".join(row) + "\n" for row in functions), encoding="utf-8")
+        (tables / "globals.tsv").write_text("address\tname\tdecl\tbase\tdims\tsize\tobject\n" + "".join(
+            "\t".join(row) + "\n" for row in shared), encoding="utf-8")
+        (tables / "types.h").write_text("struct INFO {\n    int x;\n    int y;\n};\nstatic_assert(sizeof(INFO) == 0x8);"
+                                        "\n", encoding="utf-8")
+        types = names.Types(tables / "types.h")
+        found = llm.own_globals(text, "src/a.c", str(tables), types)
+        again = llm.own_globals(found, "src/a.c", str(tables), types)
+        other = llm.own_globals(text, "src/c.c", str(tables), types)
+    failures = [f"own_globals gives {found!r}, not {wanted!r}"] if found != wanted else []
+    failures += [f"own_globals of its own output gives {again!r}"] if again != found else []
+    return failures + ([f"own_globals of a file that shares its object gives {other!r}"] if other != text else [])
+
+
 def check_try_globals() -> list[str]:
     """Tree.with_decls knows the globals that a try declares: a number added to its pointer is an offset, and the
     address of its DAT_ is a raw address. The tree alone knows neither."""
@@ -853,9 +889,9 @@ def run() -> list[str]:
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
                   check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
-                  check_unlaid_structs, check_fold_copies, check_own_stubs, check_try_globals, check_address_test,
-                  check_read_tree, check_refusal_names, check_constant_globals, check_debug_constants,
-                  check_annotation_below_signature, check_struct_in_reply, check_live, check_live_ends,
-                  check_stream_events, check_full_context_restart, check_shared_context):
+                  check_unlaid_structs, check_fold_copies, check_own_stubs, check_own_globals, check_try_globals,
+                  check_address_test, check_read_tree, check_refusal_names, check_constant_globals,
+                  check_debug_constants, check_annotation_below_signature, check_struct_in_reply, check_live,
+                  check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures
