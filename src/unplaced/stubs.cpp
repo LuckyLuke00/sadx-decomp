@@ -1617,16 +1617,6 @@ void DrawLBOn()
 {
 }
 
-// STUB: SADX 0x00587960
-void DrawButtonACBB()
-{
-}
-
-// STUB: SADX 0x00587d10
-void DrawButtonXUBB()
-{
-}
-
 // STUB: SADX 0x0058ac40
 void FUN_0058ac40(struct task *)
 {
@@ -1754,11 +1744,6 @@ void FUN_005a4e10(void *)
 
 // STUB: SADX 0x005a4fe0
 void FUN_005a4fe0(int, int, int, int)
-{
-}
-
-// STUB: SADX 0x005a67c0
-void SpLoopOnlyDisplay()
 {
 }
 

@@ -1,4 +1,5 @@
 #include "decls.h"
+#include "advertise.h"
 extern struct sp_task *DAT_05edbcc0;
 extern int DAT_05edbc8c;
 extern struct sp_task *DAT_05edbcb4;
@@ -7,6 +8,8 @@ extern struct sp_link *DAT_05edbcb8;
 extern int DAT_05edbcbc;
 extern void FUN_005a63e0(struct sp_task *param_1, unsigned long param_2);
 extern float DAT_05edbcc8;
+extern struct NJS_SPRITE DAT_05edbc90;
+extern int DAT_05edbcb0;
 
 // FUNCTION: SADX 0x005a6390
 void SpInitialize(struct sp_task *buffer, unsigned long size)
@@ -102,6 +105,52 @@ void SpFreeLink(struct sp_link *link)
 // STUB: SADX 0x005a6590
 void SpLoop()
 {
+}
+
+// FUNCTION: SADX 0x005a67c0
+void SpLoopOnlyDisplay()
+{
+	int local_8g = 0;
+	struct NJS_SPRITE *local_cg;
+	struct sp_link *local_10g;
+
+	___njFogDisable();
+	((SOCRender*)DAT_05ab39ac)->FUN_004199b0(false);
+	local_10g = DAT_05edbcb8;
+	while (local_10g != 0)
+	{
+		struct sp_info *local_14g = local_10g->info;
+		struct sp_task *local_18g = local_10g->head;
+		local_cg = &DAT_05edbc90;
+		local_cg->tlist = local_14g->texlist;
+		local_cg->tanim = local_14g->texanim;
+		___njColorBlendingMode(0, local_14g->srcblend);
+		___njColorBlendingMode(1, local_14g->dstblend);
+		while (local_18g != 0)
+		{
+			if (local_18g->exec != 0)
+			{
+				float local_1cg;
+				___njSetConstantMaterial(&local_18g->argb);
+				local_cg->p = local_18g->pos;
+				local_cg->sy = local_18g->scl;
+				local_cg->sx = local_cg->sy;
+				local_cg->ang = local_18g->ang;
+				local_1cg = local_18g->offset;
+				DAT_05b3df40 = local_1cg;
+				late_DrawSprite3D(local_cg, local_18g->no, 0x33, local_18g->wrtZflg | 4);
+				DAT_05b3df40 = 0.0f;
+				local_8g = local_8g + 1;
+			}
+			local_18g = local_18g->next;
+		}
+		local_10g = local_10g->next;
+	}
+	ResetMaterial();
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	___njFogEnable();
+	DAT_05edbcb0 = local_8g;
 }
 
 // FUNCTION: SADX 0x005a6940

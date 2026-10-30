@@ -7,6 +7,7 @@ extern struct NJS_TEXLIST DAT_02605a3c;
 extern struct NJS_TEXANIM DAT_02605a48;
 void *FUN_0058a5d0(unsigned int param_1);
 extern float ScreenRaitoY;
+extern int DAT_05b3e05c;
 void late_DrawMap(void *arg);
 void FUN_0057cd30();
 long InitMap();
@@ -95,12 +96,45 @@ void printPauseTexture(enum PAUSE_TEXTURE_ID id, struct NJS_POINT3 *pos, struct 
 	late_DrawSprite2D(&sprite, id, local_2cg, 0x22, 4);
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x0057a920
+// The original emits a constant loop test after setting the material.
+// FUNCTION: SADX 0x0057a920
 void printPause(float ofsy)
 {
+	NJS_POINT2 local_20;
+	NJS_POINT3 local_18;
+	PAUSE_TEXTURE_ID local_8g;
+
+	local_18.x = 192.0f;
+	local_18.y = 72.0f;
+	local_18.z = 11.0f;
+	local_20.x = 1.0f;
+	local_20.y = 1.0f;
+	{
+		NJS_ARGB local_30;
+		local_30.a = 1.0f;
+		local_30.r = 1.0f;
+		local_30.g = 1.0f;
+		local_30.b = 1.0f;
+		___njSetConstantMaterial(&local_30);
+	}
+	local_18.y += ofsy;
+	if (DAT_05b3e05c == 10)
+	{
+		local_8g = (PAUSE_TEXTURE_ID)44;
+		local_18.y -= 58.0;
+	}
+	else if (DAT_05b3e05c == 9)
+	{
+		local_8g = (PAUSE_TEXTURE_ID)43;
+		local_18.y -= 56.0;
+	}
+	else
+	{
+		local_8g = (PAUSE_TEXTURE_ID)3;
+		local_18.y -= 55.0;
+	}
+	printPauseTexture(local_8g, &local_18, &local_20);
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0057aa00
 void FUN_0057aa00(enum PAUSE_TEXTURE_ID param_1, long param_2, long param_3, long param_4)
@@ -352,13 +386,80 @@ void late_DrawMap(void *arg)
 {
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x0057d220
+extern int DAT_05cd285c;
+extern int DAT_05cd2860;
+
+// FUNCTION: SADX 0x0057d220
 int cameramodechange(int sw)
 {
-	return (int)0;
+	struct NJS_POINT3 _pos;
+	float local_24;
+	float local_20;
+	struct NJS_POINT2 _scl;
+	local_24 = DAT_01c6e428 / 920.0;
+	local_20 = DAT_01c6e42c / 690.0;
+	switch (sw)
+	{
+	case 0:
+		if (DAT_05cd2860 == 0)
+			break;
+		_pos.x = 112.0;
+		_pos.y = 224.0;
+		_scl.x = 26.0;
+		_scl.y = 4.0;
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+		SetMaterial(0.5, 0.0, 0.0, 1.0);
+		printPauseTexture((enum PAUSE_TEXTURE_ID)8, &_pos, &_scl);
+		SetMaterial(1.0, 1.0, 1.0, 1.0);
+		printMenu2((enum PAUSE_TEXTURE_ID)0xb, 0x90, 0xf0, DAT_05cd285c == 0);
+		printMenu2((enum PAUSE_TEXTURE_ID)0xc, 0x150, 0xf0, DAT_05cd285c);
+		ResetMaterial();
+		DrawButtonACBB();
+		if (DAT_05b92e44 & 0x40)
+		{
+			if (DAT_05cd285c != 0)
+			{
+				dsPlay_oneshot(1, 0, 0, 0);
+				DAT_05cd285c = 0;
+			}
+		}
+		else if (DAT_05b92e44 & 0x80)
+		{
+			if (DAT_05cd285c == 0)
+			{
+				dsPlay_oneshot(1, 0, 0, 0);
+				DAT_05cd285c = 1;
+			}
+		}
+		if (IsSOCAVAPress(0, 2) != 0)
+		{
+			dsPlay_oneshot(3, 0, 0, 0);
+			DAT_05cd2860 = 0;
+		}
+		else if (IsSOCAVAPress(0, 4) != 0 || IsSOCAVAPress(0, 8) != 0)
+		{
+			dsPlay_oneshot(3, 0, 0, 0);
+			SetFreeCamera(DAT_05cd285c);
+			DAT_05cd2860 = 0;
+		}
+		DisplayTask();
+		SpLoopOnlyDisplay();
+		return 1;
+		break;
+	case 1:
+		if (DAT_05cd2860 == 0)
+		{
+			DAT_05cd2860 = 1;
+			DAT_05cd285c = GetFreeCamera();
+		}
+		break;
+	case 2:
+		DAT_05cd2860 = 0;
+		break;
+	}
+	return 0;
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0057d490
 int padconfig(int sw)
@@ -1965,6 +2066,34 @@ int FUN_00583720()
 // STUB: SADX 0x00587710
 void DestroyLBOn()
 {
+}
+
+// FUNCTION: SADX 0x00587960
+void DrawButtonACBB()
+{
+	if (DAT_05cd273c != 0)
+	{
+		float local_cj = DAT_01c6e428 / 920.0;
+		float local_8g = DAT_01c6e42c / 690.0;
+		DrawTexture((int)(local_cj * 334.0), (int)(local_8g * 619.0), (int)(DAT_05cd273c[0].Windth * local_cj), (int)(DAT_05cd273c[0].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[0].PosX / 512.0), (float)(DAT_05cd273c[0].PosY / 512.0), (float)((DAT_05cd273c[0].PosX + DAT_05cd273c[0].Windth) / 512.0), (float)((DAT_05cd273c[0].PosY + DAT_05cd273c[0].Height) / 512.0), -1);
+		DrawTexture((int)(local_cj * 374.0), (int)(local_8g * 619.0), (int)(DAT_05cd273c[4].Windth * local_cj), (int)(DAT_05cd273c[4].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[4].PosX / 512.0), (float)(DAT_05cd273c[4].PosY / 512.0), (float)((DAT_05cd273c[4].PosX + DAT_05cd273c[4].Windth) / 512.0), (float)((DAT_05cd273c[4].PosY + DAT_05cd273c[4].Height) / 512.0), -1);
+		DrawTexture((int)(local_cj * 490.0), (int)(local_8g * 619.0), (int)(DAT_05cd273c[2].Windth * local_cj), (int)(DAT_05cd273c[2].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[2].PosX / 512.0), (float)(DAT_05cd273c[2].PosY / 512.0), (float)((DAT_05cd273c[2].PosX + DAT_05cd273c[2].Windth) / 512.0), (float)((DAT_05cd273c[2].PosY + DAT_05cd273c[2].Height) / 512.0), -1);
+		DrawTexture((int)(local_cj * 530.0), (int)(local_8g * 619.0), (int)(DAT_05cd273c[13].Windth * local_cj), (int)(DAT_05cd273c[13].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[13].PosX / 512.0), (float)(DAT_05cd273c[13].PosY / 512.0), (float)((DAT_05cd273c[13].PosX + DAT_05cd273c[13].Windth) / 512.0), (float)((DAT_05cd273c[13].PosY + DAT_05cd273c[13].Height) / 512.0), -1);
+	}
+}
+
+// FUNCTION: SADX 0x00587d10
+void DrawButtonXUBB()
+{
+	if (DAT_05cd273c != 0)
+	{
+		float local_cj = DAT_01c6e428 / 920.0;
+		float local_8g = DAT_01c6e42c / 690.0;
+		DrawTexture((int)(local_cj * 270.0 + 14.0), (int)(local_8g * 636.0 - 12.0 + 30.0), (int)(DAT_05cd273c[3].Windth * local_cj), (int)(DAT_05cd273c[3].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[3].PosX / 512.0), (float)(DAT_05cd273c[3].PosY / 512.0), (float)((DAT_05cd273c[3].PosX + DAT_05cd273c[3].Windth) / 512.0), (float)((DAT_05cd273c[3].PosY + DAT_05cd273c[3].Height) / 512.0), -1);
+		DrawTexture((int)(local_cj * 310.0 + 14.0), (int)(local_8g * 636.0 - 12.0 + 30.0), (int)(DAT_05cd273c[8].Windth * local_cj), (int)(DAT_05cd273c[8].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[8].PosX / 512.0), (float)(DAT_05cd273c[8].PosY / 512.0), (float)((DAT_05cd273c[8].PosX + DAT_05cd273c[8].Windth) / 512.0), (float)((DAT_05cd273c[8].PosY + DAT_05cd273c[8].Height) / 512.0), -1);
+		DrawTexture((int)(local_cj * 530.0), (int)(local_8g * 636.0 - 12.0 + 30.0), (int)(DAT_05cd273c[2].Windth * local_cj), (int)(DAT_05cd273c[2].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[2].PosX / 512.0), (float)(DAT_05cd273c[2].PosY / 512.0), (float)((DAT_05cd273c[2].PosX + DAT_05cd273c[2].Windth) / 512.0), (float)((DAT_05cd273c[2].PosY + DAT_05cd273c[2].Height) / 512.0), -1);
+		DrawTexture((int)(local_cj * 570.0), (int)(local_8g * 636.0 - 12.0 + 30.0), (int)(DAT_05cd273c[13].Windth * local_cj), (int)(DAT_05cd273c[13].Height * local_8g), 0.01f, DAT_05b3e36c, (float)(DAT_05cd273c[13].PosX / 512.0), (float)(DAT_05cd273c[13].PosY / 512.0), (float)((DAT_05cd273c[13].PosX + DAT_05cd273c[13].Windth) / 512.0), (float)((DAT_05cd273c[13].PosY + DAT_05cd273c[13].Height) / 512.0), -1);
+	}
 }
 
 // STUB: SADX 0x00588800
