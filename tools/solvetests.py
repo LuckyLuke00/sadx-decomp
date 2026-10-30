@@ -555,6 +555,25 @@ def check_annotation_below_signature() -> list[str]:
     return [] if found == wanted else [f"an annotation below the signature gives {found}, not {wanted}"]
 
 
+def check_struct_in_reply() -> list[str]:
+    """A struct that the reply defines over several lines above the function is one declaration, and it lands whole
+    after the includes even when the file holds some of its lines. A file that holds it already gets no copy."""
+    struct = ["struct SCORE_TIME", "{", "\tint a;", "\tfloat x; // seconds", "};"]
+    func = [llm.function_line(ADDRESS), "void Foo(struct SCORE_TIME t)", "{", "\tint a;", "}"]
+    reply = "\n".join(["```cpp", *struct, "extern int g;", *func, "```"])
+    wanted = (["\n".join(struct), "extern int g;"], func)
+    found = llm.parse_reply(reply, ADDRESS)
+    if found != wanted:
+        return [f"a reply with a struct over several lines gives {found}, not {wanted}"]
+    base = '#include "decls.h"\n\nvoid Bar(void)\n{\n\tint a;\n};\n'
+    landed = llm.apply_function(base, ADDRESS, *found)
+    if not landed.startswith('#include "decls.h"\n' + "\n".join(struct) + "\nextern int g;\n"):
+        return [f"the struct does not land whole after the includes:\n{landed}"]
+    if llm.with_declarations(landed, found[0]) != landed:
+        return ["a file that holds the struct already gets another copy"]
+    return []
+
+
 def check_live() -> list[str]:
     """The live file holds the last try: its header, the reply as the client handed it over, then its result."""
     live = solved(2, never_too_long).live
@@ -710,7 +729,7 @@ def run() -> list[str]:
                   check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_try_globals, check_address_test,
                   check_read_tree, check_refusal_names, check_constant_globals, check_debug_constants,
-                  check_annotation_below_signature, check_live, check_live_ends, check_stream_events,
-                  check_full_context_restart, check_shared_context):
+                  check_annotation_below_signature, check_struct_in_reply, check_live, check_live_ends,
+                  check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()
     return failures

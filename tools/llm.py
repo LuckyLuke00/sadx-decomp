@@ -345,9 +345,28 @@ def parse_reply(reply, address, name=None):
             func = lines[span[0]:span[1] + 1]
             sig = next(i for i, line in enumerate(func) if i and line and not line.endswith(";") and line[:2] != "//")
             inner = [i for i in range(1, sig) if func[i].endswith(";")]
-            decls = [d for d in lines[:span[0]] if d and not d.startswith("//")] + [func[i] for i in inner]
+            decls = statements([d for d in lines[:span[0]] if d and not d.startswith("//")]) + [func[i] for i in inner]
             return decls, [line for i, line in enumerate(func) if i not in inner]
     return None
+
+
+def statements(lines):
+    """LINES as whole statements (see statement_spans)."""
+    return ["\n".join(lines[first:last + 1]) for first, last in statement_spans(lines)]
+
+
+def statement_spans(lines):
+    """(first, last) line index of each statement of LINES: a definition over several lines, such as a struct's, is
+    one. A statement ends outside braces, at a line that ends with `;` or `}` or a preprocessor line. A line without
+    code outside a statement is one of its own."""
+    spans, start, depth = [], 0, 0
+    for i, line in enumerate(lines):
+        code = names.strip_code(line).strip()
+        depth += code.count("{") - code.count("}")
+        if depth <= 0 and (code.endswith((";", "}")) or code.startswith("#") or (not code and start == i)):
+            spans.append((start, i))
+            start, depth = i + 1, 0
+    return spans + ([(start, len(lines) - 1)] if start < len(lines) else [])
 
 
 def annotation_first(lines, address):
@@ -397,16 +416,27 @@ def apply_function(text, address, decls, func):
 
 
 def with_declarations(text, decls):
-    """TEXT with each line of DECLS it lacks after its includes."""
+    """TEXT with each of DECLS it lacks after its includes. One over several lines is there when TEXT holds its lines
+    in a row."""
     lines = text.split("\n")
     if lines[-1] == "":
         lines.pop()
-    includes = [i for i, line in enumerate(lines[:first_function_line(lines)]) if line.startswith("#include")]
-    seen = {line.strip() for line in lines}
-    new = [d for d in dict.fromkeys(decls) if d.strip() not in seen]
-    at = includes[-1] + 1 if includes else 0
+    held = stripped_lines(lines)
+    new = [d for d in dict.fromkeys(decls) if stripped_lines(d.split("\n")) not in held]
+    at = after_includes(lines)
     lines[at:at] = new
     return "\n".join(lines) + "\n"
+
+
+def stripped_lines(lines):
+    """LINES stripped, each between newlines: a search finds only whole lines in a row."""
+    return "\n" + "\n".join(line.strip() for line in lines) + "\n"
+
+
+def after_includes(lines):
+    """Index of the line after the last #include above the first function of LINES, else 0."""
+    includes = [i for i, line in enumerate(lines[:first_function_line(lines)]) if line.startswith("#include")]
+    return includes[-1] + 1 if includes else 0
 
 
 @functools.cache
@@ -493,13 +523,23 @@ def stub_functions(text, addresses):
             stub = "\n".join(stub).split("\n")
             lines[block[0]:block[1] + 1] = wrap_stub(stub, sig, lines, block)
     top = first_function_line(lines)
-    declared = [names.declared_name(line[:-1]) if i < top and line.endswith(";")
-                and not (i and lines[i - 1].startswith("// GLOBAL:")) and not line.startswith("template ")
-                else None for i, line in enumerate(lines)]
+    units = [(lines[first:last + 1], top_declared(lines, first, last)) for first, last in statement_spans(lines[:top])]
+    units += [([line], None) for line in lines[top:]]
     used = collections.Counter()
-    for line, name in zip(lines, declared):
-        used.update(set(re.findall(r"\w+", line)) - {name})
-    return "\n".join(line for line, name in zip(lines, declared) if name is None or used[name])
+    for unit, name in units:
+        used.update(set(re.findall(r"\w+", "\n".join(unit))) - {name})
+    return "\n".join(line for unit, name in units if name is None or used[name] for line in unit)
+
+
+def top_declared(lines, first, last):
+    """The name that the top-of-file statement on LINES FIRST to LAST declares, such as a struct's tag, or None for
+    one that always stays: no declaration, a global's definition under its GLOBAL annotation or an explicit template
+    instantiation."""
+    statement = "\n".join(lines[first:last + 1])
+    if (not statement.endswith(";") or (first and lines[first - 1].startswith("// GLOBAL:"))
+            or statement.startswith("template ")):
+        return None
+    return names.declared_name(re.sub(r"\{.*\}", "{}", statement[:-1], flags=re.S))
 
 
 def read_source(path):

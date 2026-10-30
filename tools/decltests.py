@@ -170,6 +170,18 @@ def check_stub_functions_keeps_globals() -> list[str]:
     return failures
 
 
+def check_stub_functions_whole_structs() -> list[str]:
+    """stub_functions keeps or drops a struct definition over several lines as a whole: a member line whose name
+    nothing else uses stays while the struct stays, and a struct that only the stubbed function used goes."""
+    used = ["struct Used", "{", "\tint a;", "\tfloat x;", "};"]
+    text = "\n".join(['#include "x.h"', *used, "struct Mine {", "\tint b;", "};", "struct Empty {", "};", "",
+                      "// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "\tstruct Mine m;", "}", "",
+                      "// FUNCTION: SADX 0x00002000", "void Draw(struct Used *u)", "{", "}", ""])
+    found = llm.stub_functions(text, [0x1000]).split("\n")
+    wanted = ['#include "x.h"', *used, ""]
+    return [] if found[:len(wanted)] == wanted else [f"stub_functions leaves the top of the file as {found}"]
+
+
 def check_cast_calls() -> list[str]:
     """Each call to a clashed name goes through a pointer of the type its declaration gives, without `extern`, with
     parameter names dropped. Other names, members, names with a longer name round them, and names not clashed stay.
@@ -564,6 +576,7 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     checks = [check_signature_index, check_without_static, check_kept_alive, check_wrapped_stubs,
               check_definition_block, check_stub_functions_wrap, check_stub_functions_keeps_globals,
+              check_stub_functions_whole_structs,
               check_cast_calls, check_one_edit_apart,
               check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_ftol,
               check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime, check_with_earlier,
