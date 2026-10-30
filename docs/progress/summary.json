@@ -23100,9 +23100,9 @@
   {
    "address": "0x0052e760",
    "name": "Knuckles_Status",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -97857,5 +97857,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ad0e461db09f6e0db32674a68d0fc985c2f6ae6791e0fdca4841278b5e661990"
+ "inputs_sha256": "8c38bd2ce438c2ee6eb832600680b9b9e8bd914a469672e209e209742746ee09"
 }

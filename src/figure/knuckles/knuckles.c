@@ -309,10 +309,37 @@ void KnucklesDirectAheadEnd(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0052e760
+// FUNCTION: SADX 0x0052e760
 long Knuckles_Status(long plnmb)
 {
-	return (long)0;
+	struct taskwk *local_8;
+
+	local_8 = DAT_05baf368[plnmb];
+	if ((local_8 == 0) || (local_8->counter.b[1] != 3))
+	{
+		return 0;
+	}
+	if ((local_8->mode >= 0x13) && (local_8->mode <= 0x15))
+	{
+		return local_8->mode - 0x12;
+	}
+	if (local_8->mode == 0x1a)
+	{
+		return local_8->mode - 0x16;
+	}
+	if (local_8->mode == 0x18)
+	{
+		return 5;
+	}
+	if (local_8->mode == 0x19)
+	{
+		return 6;
+	}
+	if ((local_8->mode == 0xb) || (local_8->mode == 0xc))
+	{
+		return 7;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0052e890
