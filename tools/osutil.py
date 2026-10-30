@@ -1,6 +1,7 @@
 """Helpers that know nothing about the decomp: run a command, catch a step's output, run git in another repository
 than a hook's, link a git remote, hash a file, copy and delete folders, read counts from the command line, tell how
-alike two counts are, count differing bytes, escape a Markdown table cell, tell whether a process runs, lock a file.
+alike two counts are, count differing bytes, escape a Markdown table cell, tell whether a process runs, lock a file,
+write a file whole.
 
 Standard library only.
 """
@@ -24,6 +25,7 @@ from pathlib import Path
 POWERSHELL = ["powershell", "-NoProfile", "-NonInteractive", "-Command"]
 PROCESS_QUERY_LIMITED_INFORMATION, STILL_ACTIVE = 0x1000, 259
 LOCK_POLL_SECONDS = 0.1
+REPLACE_TRIES = 50  # a reader holds a file open for milliseconds
 
 
 def run(command: list, cwd: Path | None = None, env: dict | None = None) -> subprocess.CompletedProcess:
@@ -84,6 +86,19 @@ def write_if_changed(path: Path, text: str) -> None:
     if not path.exists() or path.read_text(encoding="utf-8") != text:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text, encoding="utf-8")
+
+
+def write_whole(path: Path, text: str) -> None:
+    """Write TEXT to PATH through a rename, so another process reads the old text or the new one, never a part."""
+    temp = path.with_name(path.name + ".new")
+    temp.write_text(text, encoding="utf-8")
+    for _ in range(REPLACE_TRIES - 1):
+        try:
+            os.replace(temp, path)
+            return
+        except PermissionError:  # Windows refuses the rename while a reader has PATH open
+            time.sleep(LOCK_POLL_SECONDS)
+    os.replace(temp, path)
 
 
 def powershell(script: str) -> str:
