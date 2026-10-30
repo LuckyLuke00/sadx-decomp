@@ -17,10 +17,20 @@ extern int DAT_05edbde4;
 extern int DAT_05edbde0;
 extern void (*DAT_0099613c[4])(struct task *);
 
-// STUB: SADX 0x005aba60
+// FUNCTION: SADX 0x005aba60
 long GetReleaseBoxOpenID()
 {
-	return (long)0;
+	long local_8;
+
+	if (DAT_05edbde4 != 0)
+	{
+		local_8 = *(int *)((char *)DAT_05edbde4 + 0x20);
+		return (long)*(char *)((char *)local_8 + 3);
+	}
+	else
+	{
+		return -2;
+	}
 }
 
 // FUNCTION: SADX 0x005aba90

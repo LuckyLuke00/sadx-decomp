@@ -1,4 +1,11 @@
 #include "decls.h"
+
+
+
+// GLOBAL: SADX 0x026093e8
+static struct NJS_TEXANIM anim_title[6];
+
+
 extern int DAT_05cd14d4;
 extern int DAT_05cda0d8;
 extern int DAT_05cda0dc;
@@ -66,9 +73,31 @@ void InitTitle()
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0059a560
+// FUNCTION: SADX 0x0059a560
 void DisplayTitle()
 {
+	struct NJS_SPRITE Sprite;
+	int local_8g;
+	Sprite.tlist = &texlist_title;
+	Sprite.tanim = (struct NJS_TEXANIM *)&anim_title;
+	___njSetTexture(Sprite.tlist);
+	Sprite.sx = 1.0;
+	Sprite.sy = 1.0;
+	Sprite.p.x = 320.0;
+	Sprite.p.y = 0.0;
+	for (local_8g = 0; local_8g < 6; local_8g++)
+	{
+		float local_30;
+		local_30 = -1.0;
+		if (local_30 >= -3.0)
+		{
+			if (local_30 < 12048.0)
+			{
+				local_30 += 22048.0;
+			}
+		}
+		late_DrawSprite2D(&Sprite, local_8g, local_30, 0, 4);
+	}
 }
 
 // STUB: SADX 0x0059a620
@@ -121,9 +150,56 @@ void dsChrCursorMove()
 	}
 }
 
-// STUB: SADX 0x0059acb0
+// FUNCTION: SADX 0x0059acb0
 void TitleSetStageNumber()
 {
+	unsigned char local_5i;
+	unsigned char local_6g;
+
+	if ((char)DAT_05cda0c4 == 4)
+	{
+		local_6g = 1;
+		local_5i = 2;
+	}
+	else if ((char)DAT_05cda0c4 == 2)
+	{
+		local_6g = 0xc;
+		local_5i = 0;
+	}
+	else if ((char)DAT_05cda0c4 == 3)
+	{
+		local_6g = 2;
+		local_5i = 0;
+	}
+	else if ((char)DAT_05cda0c4 == 5)
+	{
+		local_6g = 5;
+		local_5i = 2;
+	}
+	else if ((char)DAT_05cda0c4 == 1)
+	{
+		local_6g = 8;
+		local_5i = 2;
+	}
+	else
+	{
+		local_6g = 4;
+		local_5i = 0;
+	}
+	SetStageNumber(local_6g, local_5i);
+	if (((*(unsigned int *)((char *)DAT_05b93264 + 8)) & 4) != 0)
+	{
+		DAT_05cda170 = 2;
+	}
+	if (((*(unsigned int *)((char *)DAT_05b93264 + 8)) & 2) != 0)
+	{
+		DAT_05cda170 = 1;
+	}
+	DAT_05cd0f28 = -1;
+	DAT_05cd0f24 = 1;
+	InitScore();
+	SeqInit();
+	FUN_00573740();
 }
 
 // STUB: SADX 0x0059b280

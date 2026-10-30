@@ -1,4 +1,5 @@
 #include "decls.h"
+void DisplayCalcLettersHH(struct task *tp);
 extern long bWake;
 void FUN_0055de60(struct _SC_NUMBERS *param_1);
 extern signed char DAT_05b3ea16;
@@ -355,9 +356,15 @@ void DisplayCalcLettersHH(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00559fa0
+// FUNCTION: SADX 0x00559fa0
 void DisplayCalcSonicScoreHH(struct task *tp)
 {
+	DisplayCalcLettersHH(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.x;
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0 + -64.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // STUB: SADX 0x0055a030
@@ -458,9 +465,17 @@ void DisplayCalcEnemyScore(struct task *tp)
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055b7c0
+// FUNCTION: SADX 0x0055b7c0
 void DisplayCalcTimeScore(struct task *tp)
 {
+	DisplayCalcEnemyScore(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)*(float *)((char *)tp->twp + 0x30);
+	*(float *)(score_sc + 0xc) = 320.0f;
+	*(float *)(score_sc + 0x10) = 274.0f;
+	*(float *)(score_sc + 0xc) = *(float *)(score_sc + 0xc) - 320.0 + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = *(float *)(score_sc + 0x10) - 240.0 + ScreenRaitoY * 240.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // FUNCTION: SADX 0x0055b870
@@ -542,9 +557,15 @@ void DisplayCalcLettersSC(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0055cee0
+// FUNCTION: SADX 0x0055cee0
 void DisplayCalcEnemyScoreSC(struct task *tp)
 {
+	DisplayCalcLettersSC(tp);
+	*(int *)(score_sc + 4) = 0x1869f;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.x;
+	*(float *)(score_sc + 0xc) = ScreenRaitoX * 320.0f + 32.0f;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0f + -48.0f;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // FUNCTION: SADX 0x0055cf70

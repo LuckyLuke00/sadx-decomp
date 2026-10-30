@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct _OBJ_ITEMTABLE *DAT_05cc8660;
+static void InitStatusTable();
 void SetStatusEntry();
 void ProcessStatusTable1P();
 void ProcessStatusTable2P();
@@ -57,12 +59,34 @@ void FUN_00550170(char *param_1)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x005501a0
-void InitStatusTable()
+// FUNCTION: SADX 0x005501a0
+static void InitStatusTable()
 {
+	unsigned short local_8;
+
+	local_8 = (unsigned short)((DAT_05b9d724 << 8) | DAT_05b9d744);
+	DAT_05cc8669 = (char)((local_8 & 0xff00) >> 8);
+	DAT_05cc8668 = (char)(local_8 & 0xff);
+	FUN_00550d90();
+	DAT_05cc8660 = objItemTable[DAT_05cc8669][DAT_05cc8668];
+	if (DAT_05cc8660 == 0)
+	{
+		___OutputDebugString("\nBad STAGE-ACT Number!\n\n");
+		DAT_05cc8660 = objItemTable[DAT_05cc8669][0];
+	}
+	DAT_05cc8664 = DAT_05cd2948[DAT_05cc8668];
+	if (DAT_05cc8664 == 0)
+	{
+		DAT_05cc8670 = 0;
+		DAT_05cc8674 = 0;
+	}
+	else
+	{
+		DAT_05cc8670 = DAT_05cc8664;
+		DAT_05cc8674 = DAT_05cc8664 + 0x20;
+	}
+	SetStatusEntry();
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00550280
 void FUN_00550280(void)

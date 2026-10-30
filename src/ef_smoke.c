@@ -3,9 +3,28 @@ struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *
 void EffectSmoke(struct sp_task *tp, struct sp_link *lp);
 extern "C" int rand(void);
 
-// STUB: SADX 0x005533c0
+// FUNCTION: SADX 0x005533c0
 void EffectSmokeExp(struct sp_task *tp, struct sp_link *lp)
 {
+	*(short *)((char *)tp + 0xa) = (short)(int)*(float *)((char *)tp + 0x10);
+	if (*(short *)((char *)tp + 0xa) >= *(short *)((char *)*(int *)((char *)lp + 0x10) + 8))
+	{
+		*(short *)((char *)tp + 0xa) = *(short *)((char *)*(int *)((char *)lp + 0x10) + 8) - 1;
+		SpFreeTask(tp);
+		return;
+	}
+	if (*(float *)((char *)tp + 0x10) < 6.0)
+	{
+		*(float *)((char *)tp + 0x10) += 0.1899999976158142;
+	}
+	else
+	{
+		*(float *)((char *)tp + 0x10) += 0.5699999928474426;
+	}
+	*(float *)((char *)tp + 0x14) += 0.00570000009611249;
+	*(float *)((char *)tp + 0x1c) += 0.30000001192092896;
+	*(float *)((char *)tp + 0x20) += 0.10000000149011612;
+	return;
 }
 
 // FUNCTION: SADX 0x00553480

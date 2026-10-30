@@ -1,4 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x04c6a490
+static struct NJS_SPRITE sprite_o_bubble;
+
+extern struct NJS_ARGB default_argb;
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 void DestroyTask(struct task *tp);
 void *MAlloc(unsigned int size);
@@ -109,12 +114,24 @@ void FUN_008d9820(int param_1, float *param_2, int *param_3, float param_4, floa
 {
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x008d98c0
+// FUNCTION: SADX 0x008d98c0
 void bubble_draw_sprite(struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, float scale_x, float scale_y)
 {
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (argb_p == NULL)
+	{
+		argb_p = &default_argb;
+	}
+	___njSetConstantMaterial(argb_p);
+	sprite_o_bubble.p = *pos_p;
+	sprite_o_bubble.sx = scale_x * 0.03125f;
+	sprite_o_bubble.sy = scale_y * 0.03125f;
+	___njDrawSprite3D(&sprite_o_bubble, 0, 0x32);
+	ResetMaterial();
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x008d9b10
 int FUN_008d9b10(int param_1, void *param_2, float param_3, float param_4, float param_5)

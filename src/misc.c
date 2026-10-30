@@ -419,10 +419,14 @@ char *FUN_004cdb40(char *param_1, unsigned int param_2)
 	return param_1;
 }
 
-// STUB: SADX 0x004cdb90
+// FUNCTION: SADX 0x004cdb90
 int SPrintf(char *s, const char *format, ...)
 {
-	return (int)0;
+	char *args;
+	args = (char *)(&format) + 4;
+	int local_cg = VSPrintf(s, format, args);
+	args = 0;
+	return local_cg;
 }
 
 // FUNCTION: SADX 0x004cdbd0

@@ -171,10 +171,26 @@ float ghUnitVectorXZ(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5)
 	return (float)0;
 }
 
-// STUB: SADX 0x005e26d0
+// FUNCTION: SADX 0x005e26d0
 long EvBossCheckColliThrough(struct EVBOSS_WORK *bwk)
 {
-	return (long)0;
+	struct EVBOSS_WORK *local_8;
+	local_8 = NULL;
+	if ((*(float *)((char *)bwk + 0x94) - *(float *)((char *)*(int *)((char *)bwk + 0x48) + 0x24)) > 5.0)
+	{
+		*(float *)((char *)*(int *)((char *)bwk + 0x48) + 0x24) = *(float *)((char *)bwk + 0x94);
+		SetPlayerPosition(1, 0, (struct NJS_POINT3 *)((char *)bwk + 0x90), 0);
+		SetVelocityP(1, 0.0, 0.0, 0.0);
+		SetAccelerationP(1, 0.0, 0.0, 0.0);
+	}
+	if ((*(float *)((char *)bwk + 0x94) - *(float *)((char *)*(int *)((char *)bwk + 0x58) + 0x24)) > 5.0)
+	{
+		*(float *)((char *)*(int *)((char *)bwk + 0x58) + 0x24) = *(float *)((char *)bwk + 0x94);
+		SetPlayerPosition(0, 0, (struct NJS_POINT3 *)((char *)bwk + 0x90), 0);
+		SetVelocityP(0, 0.0, 0.0, 0.0);
+		SetAccelerationP(0, 0.0, 0.0, 0.0);
+	}
+	return (long)local_8;
 }
 
 // FUNCTION: SADX 0x005e27e0

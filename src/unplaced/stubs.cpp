@@ -2316,6 +2316,17 @@ void njRotateZXY(NJS_MATRIX *m, Angle angx, Angle angy, Angle angz)
 {
 }
 
+// STUB: SADX 0x0067ef00
+Int njCollisionCheckSS(NJS_SPHERE *sphere1, NJS_SPHERE *sphere2)
+{
+	return (Int)0;
+}
+
+// STUB: SADX 0x0067fc20
+void SSPcEnd()
+{
+}
+
 // STUB: SADX 0x006800d0
 void SSPcInit()
 {
