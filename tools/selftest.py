@@ -79,6 +79,7 @@ def run() -> int:
     failures += check_extern_of()
     failures += check_reached_types()
     failures += check_bare_struct_names()
+    failures += check_by_value_placeholders()
     failures += check_clone()
     failures += check_link()
     failures += check_units()
@@ -634,6 +635,31 @@ def check_bare_struct_names() -> list[str]:
     types = generated.get(names.TYPES_H, "")
     if code != 0 or "struct pad;" not in types or "struct pad {" in types:
         return [f"decls for a struct named without the keyword gives exit {code}, not 0, and types.h {types!r}"]
+    return []
+
+
+def check_by_value_placeholders() -> list[str]:
+    """stubs.cpp gives a placeholder layout to a struct or union that a stub takes or returns by value when types.h
+    does not lay it out: the stub needs it complete. A struct that types.h or a hand-written header lays out, or one
+    a stub only points to, even through a const pointer, gets none."""
+    target = project.game_config().target
+    files = {"src/x.c": f"// FUNCTION: {target} 0x00405000\nvoid Run(struct work *wp)\n{{\n\twp->speed = 1;\n"
+                        "\tShow(Now());\n\tSetPad(0);\n\tMove(*wp);\n\tLink(0, 0);\n\tHit(*(struct line *)0);\n}\n",
+             names.TYPES_H.replace("types.h", "sega.h"): "struct line {\n    float px;\n};\n"}
+    functions = [("0x00401000", "Show", "G", "src/w.c", "o_w.obj", "void Show(struct when t);"),
+                 ("0x00402000", "Now", "G", "src/w.c", "o_w.obj", "union when2 Now(void);"),
+                 ("0x00403000", "SetPad", "G", "src/w.c", "o_w.obj", "void SetPad(struct pad *p);"),
+                 ("0x00404000", "Move", "G", "src/w.c", "o_w.obj", "void Move(struct work w);"),
+                 ("0x00406000", "Link", "G", "src/w.c", "o_w.obj", "void Link(struct link const *,float);"),
+                 ("0x00407000", "Hit", "G", "src/w.c", "o_w.obj", "void Hit(struct line l);"),
+                 ("0x00405000", "Run", "G", "src/x.c", "o_x.obj", "void Run(struct work *wp);")]
+    code, output, generated = run_decls(files, {}, functions, [], "struct work {\n    float speed;\n};\n")
+    stubs = generated.get(names.STUBS_CPP, "")
+    wanted = ["struct when { int unknown; };", "union when2 { int unknown; };"]
+    found = [line for line in stubs.splitlines() if line.endswith("{ int unknown; };")]
+    if code != 0 or found != wanted:
+        return [f"decls for stubs that take or return structs by value gives exit {code}, not 0, and the placeholders "
+                f"{found}, not {wanted}"]
     return []
 
 
