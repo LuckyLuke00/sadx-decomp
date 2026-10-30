@@ -1241,6 +1241,11 @@ void FUN_004c0e10(void *)
 {
 }
 
+// STUB: SADX 0x004c26f0
+void MSG_Putc(struct MSGC *, int)
+{
+}
+
 // STUB: SADX 0x004c3d70
 void GetSwitchData()
 {
