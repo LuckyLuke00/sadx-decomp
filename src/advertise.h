@@ -1,6 +1,7 @@
 #pragma once
 
 #include <math.h>
+#include <stdio.h>
 #include <string>
 #pragma push_macro("_HAS_TR1")
 #pragma push_macro("_HAS_TR1_IMPORTS")
@@ -87,7 +88,20 @@ namespace Magic
 {
 namespace Base
 {
-class File;
+class File
+{
+public:
+	void FUN_00928790();
+	void FUN_00928740();
+	long FUN_009285c0();
+	bool FUN_00928810(const std::string& param_1, int param_2);
+	void FUN_00435420();
+	bool FUN_00928630(int param_1, int param_2);
+	bool FUN_009286c0(void* param_1, size_t param_2, unsigned long* param_3);
+private:
+	FILE** local_0;
+	char local_4[0x1c];
+};
 class IniFile
 {
 public:
@@ -152,6 +166,12 @@ private:
 }
 }
 
+class SOCFile : public Magic::Base::File
+{
+public:
+	bool FUN_00433c20(const std::string& param_1, int param_2);
+};
+
 class SOCIniFile : public Magic::Base::IniFile
 {
 public:
@@ -215,3 +235,5 @@ inline class SOCTimer* FUN_0041a800()
 {
 	return ((Magic::Base::Singleton<SOCTimer>*)&DAT_05ab4304)->GetSubject();
 }
+
+static_assert(sizeof(Magic::Base::File) == 0x20, "sizeof File");

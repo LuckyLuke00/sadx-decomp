@@ -3004,25 +3004,25 @@
   {
    "address": "0x0042b420",
    "name": "SOCFileStream::SOCFileStream",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0042b430",
    "name": "SOCFileStream::~SOCFileStream",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0042b460",
    "name": "SOCFileStream::ReadFile",
-   "accuracy": 0.14,
+   "accuracy": 0.8539325842696629,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -3770,6 +3770,14 @@
    "library": false
   },
   {
+   "address": "0x00433c20",
+   "name": "SOCFile::FUN_00433c20",
+   "accuracy": 0.0821917808219178,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00433f40",
    "name": "stVSRelease",
    "accuracy": 0.26666666666666666,
@@ -3907,7 +3915,7 @@
   },
   {
    "address": "0x00435420",
-   "name": "FUN_00435420",
+   "name": "Magic::Base::File::FUN_00435420",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -84604,7 +84612,7 @@
   },
   {
    "address": "0x009285c0",
-   "name": "FUN_009285c0",
+   "name": "Magic::Base::File::FUN_009285c0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -84612,8 +84620,8 @@
   },
   {
    "address": "0x00928630",
-   "name": "FUN_00928630",
-   "accuracy": 0.058823529411764705,
+   "name": "Magic::Base::File::FUN_00928630",
+   "accuracy": 0.11764705882352941,
    "effective": false,
    "stub": true,
    "library": false
@@ -84628,8 +84636,8 @@
   },
   {
    "address": "0x009286c0",
-   "name": "FUN_009286c0",
-   "accuracy": 0.0,
+   "name": "Magic::Base::File::FUN_009286c0",
+   "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
    "library": false
@@ -84652,16 +84660,24 @@
   },
   {
    "address": "0x00928740",
-   "name": "FUN_00928740",
-   "accuracy": 0.06666666666666667,
+   "name": "Magic::Base::File::FUN_00928740",
+   "accuracy": 0.06896551724137931,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
    "address": "0x00928790",
-   "name": "FUN_00928790",
+   "name": "Magic::Base::File::FUN_00928790",
    "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00928810",
+   "name": "Magic::Base::File::FUN_00928810",
+   "accuracy": 0.09523809523809523,
    "effective": false,
    "stub": true,
    "library": false
@@ -85182,6 +85198,14 @@
    "address": "0x0092ca10",
    "name": "FUN_0092ca10",
    "accuracy": 0.15384615384615385,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0092cd20",
+   "name": "FUN_0092cd20",
+   "accuracy": 0.2857142857142857,
    "effective": false,
    "stub": true,
    "library": false
@@ -97992,5 +98016,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a85e338f0f62d920b4e1535c5014fefddfe020598682b0cdd700e6cfcf9c67f0"
+ "inputs_sha256": "690aed767c71d701e9840f85be7ccf6bb578c90012b7ac305f0d7e2c24922629"
 }

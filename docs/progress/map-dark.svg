@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,554 of 16,524 game functions done (33.61%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,556 of 16,524 game functions done (33.62%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="596.8,1184.5 603.2,1184.5 604.9,1186 606,1187.6 600,1194.5 594,1187.6 595.1,1186" fill="#4e32f3"/>
 <polygon points="596.8,1184.5 603.2,1184.5 604.9,1186 606,1187.6 594,1187.6 595.1,1186" fill="#ffffff" fill-opacity="0.4"/>
@@ -5389,7 +5389,7 @@
 <rect x="168" y="196" width="6" height="6" fill="#ffd700"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 <rect x="175" y="196" width="6" height="6" fill="#ffd700"><title>0x008e1c90 CollisionSceneChanger: 100%</title></rect>
 </g>
-<rect x="795" y="87" width="185" height="238" rx="3" fill="#21262d" stroke="#30363d"><title>Ninja graphics: 164 of 686 functions done</title></rect>
+<rect x="795" y="87" width="185" height="238" rx="3" fill="#21262d" stroke="#30363d"><title>Ninja graphics: 166 of 686 functions done</title></rect>
 <text x="798" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Ninja graphics <tspan font-weight="400" fill="#8b949e">5%</tspan></text>
 <g transform="translate(798,105)">
 <rect y="0" width="175" height="189" fill="url(#todo)"/>
@@ -5483,6 +5483,9 @@
 <rect x="147" y="105" width="6" height="6" fill="#ffd700"><title>0x0042b3b0 syMalloc: 100%</title></rect>
 <rect x="154" y="105" width="6" height="6" fill="#ffd700"><title>0x0042b3d0 syCalloc: 100%</title></rect>
 <rect x="161" y="105" width="6" height="6" fill="#ffd700"><title>0x0042b400 syFree: 100%</title></rect>
+<rect x="168" y="105" width="6" height="6" fill="#ffd700"><title>0x0042b420 SOCFileStream::SOCFileStream: 100%</title></rect>
+<rect x="0" y="112" width="6" height="6" fill="#ffd700"><title>0x0042b430 SOCFileStream::~SOCFileStream: 100%</title></rect>
+<rect x="7" y="112" width="6" height="6" fill="#ddc85f"><title>0x0042b460 SOCFileStream::ReadFile: 85.4%</title></rect>
 <rect x="56" y="112" width="6" height="6" fill="#ffd700"><title>0x0042b810 _njTransformObject: 100%</title></rect>
 <rect x="63" y="112" width="6" height="6" fill="#ffd700"><title>0x0042b8c0 FUN_0042b8c0: 100%</title></rect>
 <rect x="77" y="112" width="6" height="6" fill="#ffd700"><title>0x0042ba90 njSetMaterialCallBackFunc: 100%</title></rect>
@@ -5582,7 +5585,7 @@
 <rect x="161" y="28" width="6" height="6" fill="#ffd700"><title>0x00426580 FUN_00426580: 100%</title></rect>
 <rect x="168" y="28" width="6" height="6" fill="#ffd700"><title>0x00426980 FUN_00426980: 100%</title></rect>
 <rect x="175" y="28" width="6" height="6" fill="#ffd700"><title>0x004273a0 stDrawModel: 100%</title></rect>
-<rect x="182" y="28" width="6" height="6" fill="#ffd700"><title>0x00435420 FUN_00435420: 100%</title></rect>
+<rect x="182" y="28" width="6" height="6" fill="#ffd700"><title>0x00435420 Magic::Base::File::FUN_00435420: 100%</title></rect>
 <rect x="189" y="28" width="6" height="6" fill="#ffd700"><title>0x00435430 stGetFileSize: 100%</title></rect>
 <rect x="196" y="28" width="6" height="6" fill="#ffd700"><title>0x004a0220 ___njSetPerspective: 100%</title></rect>
 <rect x="203" y="28" width="6" height="6" fill="#ffd700"><title>0x004a0250 ds_GetPerspective: 100%</title></rect>
@@ -5787,7 +5790,7 @@
 <rect x="203" y="140" width="6" height="6" fill="#ffd700"><title>0x00928400 FUN_00928400: 100%</title></rect>
 <rect x="217" y="140" width="6" height="6" fill="#ffd700"><title>0x00928440 FUN_00928440: 100%</title></rect>
 <rect x="224" y="140" width="6" height="6" fill="#ffd700"><title>0x00928450 FUN_00928450: 100%</title></rect>
-<rect x="14" y="147" width="6" height="6" fill="#ffd700"><title>0x009285c0 FUN_009285c0: 100%</title></rect>
+<rect x="14" y="147" width="6" height="6" fill="#ffd700"><title>0x009285c0 Magic::Base::File::FUN_009285c0: 100%</title></rect>
 <rect x="56" y="147" width="6" height="6" fill="#ffd700"><title>0x00928720 FUN_00928720: 100%</title></rect>
 <rect x="84" y="147" width="6" height="6" fill="#ffd700"><title>0x00928840 FUN_00928840: 100%</title></rect>
 <rect x="98" y="147" width="6" height="6" fill="#ffd700"><title>0x009288c0 FUN_009288c0: 100%</title></rect>

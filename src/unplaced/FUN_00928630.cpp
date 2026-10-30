@@ -1,9 +1,10 @@
 #include "decls.h"
 #include <stdio.h>
 #include <windows.h>
+#include "../advertise.h"
 
 // STUB: SADX 0x00928630
-int __fastcall FUN_00928630(struct SADX_file *param_1, int param_2, int param_3, int param_4)
+bool Magic::Base::File::FUN_00928630(int param_1, int param_2)
 {
 	return (int)0;
 }
@@ -15,7 +16,7 @@ int __fastcall FUN_00928680(int *param_1, int param_2, void *param_3, int param_
 }
 
 // STUB: SADX 0x009286c0
-int __fastcall FUN_009286c0(int param_1, void *param_2, size_t param_3, size_t *param_4)
+bool Magic::Base::File::FUN_009286c0(void *param_1, size_t param_2, unsigned long *param_3)
 {
 	return (int)0;
 }
@@ -33,12 +34,17 @@ int FUN_00928720(void *param_1)
 }
 
 // STUB: SADX 0x00928740
-int FUN_00928740()
+void Magic::Base::File::FUN_00928740()
 {
-	return (int)0;
 }
 
 // STUB: SADX 0x00928790
-void __fastcall FUN_00928790(int param_1)
+void Magic::Base::File::FUN_00928790()
 {
+}
+
+// STUB: SADX 0x00928810
+bool Magic::Base::File::FUN_00928810(const std::string& param_1, int param_2)
+{
+	return false;
 }

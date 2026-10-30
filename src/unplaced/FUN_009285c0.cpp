@@ -1,14 +1,15 @@
 #include "decls.h"
 #include <stdio.h>
+#include "../advertise.h"
 
 // FUNCTION: SADX 0x009285c0
-long __fastcall FUN_009285c0(FILE ***param_1)
+long Magic::Base::File::FUN_009285c0()
 {
 	FILE **var1;
 	long var2;
 	long var3;
 
-	var1 = *param_1;
+	var1 = local_0;
 	if (*var1 == NULL)
 		return -1;
 

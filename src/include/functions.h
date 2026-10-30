@@ -3322,7 +3322,7 @@ int FUN_00924470();
 void FUN_00924940(void *param_1);
 struct MC_AudioSystemFactory * __fastcall FUN_00924b10(struct MC_AudioSystemFactory *param_1, int param_2);
 void FUN_00926590(int param_1, int param_2);
-int FUN_00928740();
 void FUN_009288d0(void *param_1);
 void __stdcall FUN_00929140(int *param_1);
+std::string FUN_0092cd20(const std::string& param_1);
 extern void FUN_0094bac0(void);
