@@ -333,9 +333,44 @@ long RoboHearSound(struct taskwk *twp, struct enemywk *ewp)
 	return (long)0;
 }
 
-// STUB: SADX 0x005be9b0
+// FUNCTION: SADX 0x005be9b0
 void RoboWakeUp(struct taskwk *twp, struct enemywk *ewp)
 {
+	unsigned short local_8;
+	FUN_005be280((int)twp, (int)ewp);
+	FUN_005be2d0(twp, ewp);
+	*(int *)((char *)ewp + 0x1b4) = AdjustAngle(*(int *)((char *)ewp + 0x1b4), 0, 0xb0);
+	if (*(float *)((char *)ewp + 0x7c) < 2.1f)
+	{
+		*(float *)((char *)ewp + 0x7c) += 0.05f;
+	}
+	*(int *)((char *)ewp + 0x1b0) += 0x190;
+	*(float *)((char *)ewp + 0x78) = njSin(*(int *)((char *)ewp + 0x1b0)) * 0.5f;
+	if (*(float *)((char *)ewp + 0x1e0) < 9.0f)
+	{
+		*(float *)((char *)ewp + 0x1e0) += 0.22f;
+	}
+	EnemyCheckGroundCollision(twp, ewp);
+	RoboDraw(twp, ewp);
+	local_8 = (unsigned short)(twp->wtimer % 0x32);
+	if ((local_8 == 0) || (local_8 == 0x11))
+	{
+		twp->btimer = 0;
+	}
+	if (twp->btimer++ < 0xa)
+	{
+		RoboSmokeSide(twp, ewp);
+	}
+	RoboSmokeUnder(twp, ewp);
+	if (twp->wtimer > 0x28)
+	{
+		*(int *)((char *)ewp + 0x1c8) = 0x4000;
+		ewp->old_mode = twp->mode;
+		twp->mode = 2;
+		twp->wtimer = 0;
+		*(int *)((char *)ewp + 0x1c4) = 0x1a0;
+		*(int *)((char *)ewp + 0x1b8) = 0x70;
+	}
 }
 
 // STUB: SADX 0x005beb60
@@ -367,9 +402,29 @@ void RoboSmokeUnder(struct taskwk *twp, struct enemywk *ewp)
 	FUN_005536c0(&robo_smoke5);
 }
 
-// STUB: SADX 0x005bed80
+// FUNCTION: SADX 0x005bed80
 void RoboSearch(struct taskwk *twp, struct enemywk *ewp)
 {
+	if (RoboSearchPlayer(twp, ewp) != 0)
+	{
+		ewp->old_mode = twp->mode;
+		twp->mode = 3;
+		twp->wtimer = 0;
+		twp->flag &= ~0x100;
+		*(long *)((char *)ewp + 0x1c4) = 0x1a0;
+		*(long *)((char *)ewp + 0x1b8) = 0xb0;
+	}
+	ewp->acc.x = njCos(*(long *)((char *)twp + 0x18)) * ewp->weight * 0.02f;
+	*(float *)((char *)ewp + 0x18) = njSin(-*(long *)((char *)twp + 0x18)) * ewp->weight * 0.02f;
+	FUN_005bf0d0(twp, ewp);
+	FUN_005be280((int)twp, (int)ewp);
+	FUN_005be2d0(twp, ewp);
+	*(long *)((char *)ewp + 0x1c8) += 0x300;
+	*(long *)((char *)ewp + 0x1b0) += 0x1b0;
+	ewp->nframe = njSin(*(long *)((char *)ewp + 0x1c8)) + 8.0;
+	*(float *)((char *)ewp + 0x78) = njSin(*(long *)((char *)ewp + 0x1b0)) * 0.5f;
+	EnemyCheckGroundCollision(twp, ewp);
+	RoboDraw(twp, ewp);
 }
 
 // STUB: SADX 0x005beef0

@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct NJS_ACTION action_reon2_walk2_reon2[];
+void LeonWalk(struct taskwk *twp, struct enemywk *ewp);
+void LeonTurnHead(struct taskwk *twp, struct enemywk *ewp);
+void LeonDecideAim(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005c0440(struct task *param_1, struct enemywk *param_2);
 void FUN_005c0a60(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d8710(struct taskwk *param_1, struct enemywk *param_2);
@@ -97,9 +101,50 @@ void FUN_005c1a30(int param_1)
 	*(float *)(param_1 + 0x2c) = 2.0f - *(float *)(param_1 + 0x30);
 }
 
-// STUB: SADX 0x005c1a90
+// FUNCTION: SADX 0x005c1a90
 void LeonWalk(struct taskwk *twp, struct enemywk *ewp)
 {
+	LeonDecideAim(twp, ewp);
+	FUN_005c1c80(twp, ewp);
+	LeonTurnHead(twp, ewp);
+	FUN_005c1ca0((int)twp, (int)ewp);
+	FUN_005c0a60(twp, ewp);
+	FUN_008d8710(twp, ewp);
+	switch (twp->smode)
+	{
+	case 0:
+		FUN_005c0b80(twp, ewp);
+		LeonDrawLink(twp, ewp);
+		break;
+	case 1:
+		FUN_005c0b80(twp, ewp);
+		if (ewp->argb.a > -0.9900000095367432)
+		{
+			LeonDraw(twp, ewp);
+		}
+		break;
+	}
+	if ((twp->wtimer > 0x3c) && (EnemyDist2FromAim(twp, ewp) < *(float *)((char *)ewp + 0x78) * *(float *)((char *)ewp + 0x78)))
+	{
+		if (((twp->flag & 0x4000) != 0) && ((twp->flag & 0x1000) != 0))
+		{
+			twp->flag |= 0x2000;
+			twp->flag &= ~0x1000;
+			EnemyCalcPlayerAngle(twp, ewp, 0);
+			*(int *)((char *)twp + 0x18) = ewp->aim_angle;
+		}
+	}
+	if (((twp->flag & 0x1000) == 0) && (ewp->argb.a > -0.10000000149011612))
+	{
+		ewp->old_mode = twp->mode;
+		twp->mode = 2;
+		twp->wtimer = 0;
+		twp->btimer = 0;
+		ewp->actp = (struct NJS_ACTION *)&action_reon2_walk2_reon2;
+		ewp->linkactp = (struct NJS_ACTION *)&action_reon2_kihon_reon2;
+		twp->smode = 0;
+		twp->flag &= ~0x200;
+	}
 }
 
 // STUB: SADX 0x005c1d30
@@ -107,9 +152,31 @@ void LeonTurnHead(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005c2840
+// FUNCTION: SADX 0x005c2840
 void LeonDecideAim(struct taskwk *twp, struct enemywk *ewp)
 {
+	if (EnemyCheckFrameIn((struct NJS_POINT3 *)&twp->pos))
+	{
+		twp->flag |= 0x4000;
+	}
+	else
+	{
+		twp->flag &= ~0x6000;
+	}
+	if (twp->flag & 0x2000)
+	{
+		ewp->aim = DAT_05baf368[0]->pos;
+	}
+	else
+	{
+		EnemyAimAroundPlayer(twp, ewp, 0, ewp->aim_num);
+	}
+	if (njSqrt((ewp->home.x - twp->pos.x) * (ewp->home.x - twp->pos.x) +
+	          (ewp->home.y - twp->pos.y) * (ewp->home.y - twp->pos.y) +
+	          (ewp->home.z - twp->pos.z) * (ewp->home.z - twp->pos.z)) > *(float *)((char *)ewp + 0x7c) + 100.0)
+	{
+		ewp->aim = ewp->home;
+	}
 }
 
 // STUB: SADX 0x005c2970

@@ -29575,7 +29575,7 @@
    "name": "FUN_00594450",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34253,9 +34253,9 @@
   {
    "address": "0x005be9b0",
    "name": "RoboWakeUp",
-   "accuracy": 0.06060606060606061,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34277,9 +34277,9 @@
   {
    "address": "0x005bed80",
    "name": "RoboSearch",
-   "accuracy": 0.07207207207207207,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34469,9 +34469,9 @@
   {
    "address": "0x005c1a90",
    "name": "LeonWalk",
-   "accuracy": 0.04878048780487805,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34509,9 +34509,9 @@
   {
    "address": "0x005c2840",
    "name": "LeonDecideAim",
-   "accuracy": 0.07547169811320754,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34605,9 +34605,9 @@
   {
    "address": "0x005c3320",
    "name": "AirMissle",
-   "accuracy": 0.0761904761904762,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34773,9 +34773,9 @@
   {
    "address": "0x005c4e30",
    "name": "AirRun",
-   "accuracy": 0.056338028169014086,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34789,9 +34789,9 @@
   {
    "address": "0x005c5160",
    "name": "AirTakeOff",
-   "accuracy": 0.07920792079207921,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34821,9 +34821,9 @@
   {
    "address": "0x005c55d0",
    "name": "FUN_005c55d0",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34957,9 +34957,9 @@
   {
    "address": "0x005c71d0",
    "name": "SaruRoundSmoke",
-   "accuracy": 0.0898876404494382,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -89963,6 +89963,20 @@
    "library": false
   },
   {
+   "address": "0x02655994",
+   "name": "action_reon2_kihon_reon2",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02658f14",
+   "name": "action_reon2_walk2_reon2",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02660324",
    "name": "object_sky_obj_lift_a_obj_lift_a",
    "size": 52,
@@ -89973,6 +89987,13 @@
    "address": "0x026616e0",
    "name": "lift_info",
    "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02661770",
+   "name": "missle_info",
+   "size": 96,
    "match": false,
    "library": false
   },
@@ -90001,6 +90022,13 @@
    "address": "0x0266c000",
    "name": "saru_model",
    "size": 36,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0266c024",
+   "name": "saru_smoke1",
+   "size": 60,
    "match": false,
    "library": false
   },
@@ -97133,5 +97161,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5d534a14f3a9040295acceb41b72037c694fe4c8870a7f98d9f9279de959cd9a"
+ "inputs_sha256": "a464194905bab8c311fb3ddd40b3fc3b66eda0bea538d93696578a6a01f1e7ce"
 }

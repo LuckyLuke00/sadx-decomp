@@ -65,14 +65,14 @@ void FUN_00594430(int param_1, int param_2, int param_3)
 	FUN_005b5aa0(param_1, param_2, param_3);
 }
 
-// STUB: SADX 0x00594450
+// FUNCTION: SADX 0x00594450
 void FUN_00594450(struct task *param_1, int param_2, int param_3)
 {
 	if (GM_CheckMode() == 2)
 	{
 		CreateAnimal(5, *(float *)(param_2 + 0x20), *(float *)(param_2 + 0x24), *(float *)(param_2 + 0x28));
 	}
-	((void (*)(struct task *, int, int))FUN_005b5aa0)(param_1, param_2, param_3);
+	FUN_005b5aa0(param_1, param_2, param_3);
 	DeadOut(param_1);
 }
 

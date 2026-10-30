@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+struct enemywk;
 void SaruBombAExecutor(struct task *tp);
 void SaruBombADisplayer(struct task *tp);
 void SaruTraceCircle(struct taskwk *twp, struct enemywk *ewp);
@@ -87,9 +88,35 @@ void FUN_005c7050(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
-// STUB: SADX 0x005c71d0
+// FUNCTION: SADX 0x005c71d0
 void SaruRoundSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 local_3c;
+	struct NJS_POINT3 local_30g;
+	struct NJS_POINT3 local_24g;
+	struct NJS_POINT3 local_18;
+	int local_8g;
+	local_30g.x = 1.0f;
+	local_30g.y = -2.0f;
+	local_30g.z = 0.0f;
+	local_24g.x = 0.5f;
+	local_24g.y = 0.0f;
+	local_24g.z = 0.0f;
+	for (local_8g = 0; local_8g < 8; local_8g++)
+	{
+		njPushMatrix(&_nj_unit_matrix_);
+		if ((local_8g << 0xd) != 0)
+		{
+			njRotateY(0, (unsigned short)(local_8g << 0xd));
+		}
+		njCalcVector(0, &local_24g, &local_18);
+		njCalcPoint(0, &local_30g, &local_3c);
+		njPopMatrix(1);
+		saru_smoke1.velo = local_18;
+		njAddVector(&local_3c, &twp->pos);
+		saru_smoke1.pos = local_3c;
+		FUN_005536c0(&saru_smoke1);
+	}
 }
 
 // STUB: SADX 0x005c72f0

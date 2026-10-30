@@ -1412,11 +1412,20 @@ struct NJS_TEXLIST texlist_e_snake;
 // GLOBAL: SADX 0x0264e554
 struct obj object_snake_head_head[1];
 
+// GLOBAL: SADX 0x02655994
+struct NJS_ACTION action_reon2_kihon_reon2[1];
+
+// GLOBAL: SADX 0x02658f14
+struct NJS_ACTION action_reon2_walk2_reon2[1];
+
 // GLOBAL: SADX 0x02660324
 struct obj object_sky_obj_lift_a_obj_lift_a;
 
 // GLOBAL: SADX 0x026616e0
 struct CCL_INFO lift_info[3];
+
+// GLOBAL: SADX 0x02661770
+struct CCL_INFO missle_info[2];
 
 // GLOBAL: SADX 0x02661a88
 struct NJS_TEXLIST texlist_e_saru;
@@ -1429,6 +1438,9 @@ struct obj object_togeball_togeball_togeball;
 
 // GLOBAL: SADX 0x0266c000
 struct NJS_MODEL *saru_model[9];
+
+// GLOBAL: SADX 0x0266c024
+struct particle_info saru_smoke1;
 
 // GLOBAL: SADX 0x0266c084
 struct NJS_TEXLIST texlist_uni_a_unibody;
