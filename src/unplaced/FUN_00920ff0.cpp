@@ -1,4 +1,5 @@
 #include "decls.h"
+#include "../advertise.h"
 extern int DAT_062992fc;
 
 // STUB: SADX 0x00920ff0
@@ -93,7 +94,7 @@ void __fastcall FUN_00921150(int param_1, int param_2)
 }
 
 // STUB: SADX 0x009211b0
-void __fastcall FUN_009211b0(int *param_1)
+Magic::RenderCore::Resource::~Resource()
 {
 }
 

@@ -155,14 +155,39 @@ public:
 
 namespace RenderCore
 {
-class Texture
+class Resource
+{
+public:
+	Resource() : local_4(11), local_8(1), local_c(0), local_10(0) {}
+	virtual ~Resource();
+protected:
+	int local_4;
+	int local_8;
+	int local_c;
+	int local_10;
+	std::string local_14;
+	std::string local_30;
+};
+
+// VTABLE: SADX 0x00a5ce08
+class Texture : public Resource
 {
 public:
 	Texture();
 	virtual ~Texture();
 	bool Load(void*, int, int, int, int, int);
+	void FUN_00922750();
 private:
-	char local_4[0x70];
+	int local_4c;
+	int local_50;
+	int local_54;
+	int local_58;
+	int local_5c;
+	int local_60;
+	int local_64;
+	int local_68;
+	int local_6c;
+	bool local_70;
 };
 }
 }
