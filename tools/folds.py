@@ -9,8 +9,8 @@ name, so such a call shows as UVScroll(2) where the game's shows UVScroll(1),
 and the caller can't match.
 
 alias_folds() names such a copy after the copy the game kept. A copy qualifies
-when it is static, matches no function of the game, shares its name with
-exactly one function that does, and is the same code as that one. Same code is
+when it is static, matches no function of the game, and is the same code as
+exactly one function that does and shares its name. Same code is
 the same size, the same instructions and the same targets, where an address
 inside each function counts as its offset from the start. A call to a copy that
 folds counts as a call to the copy it folds into, so a chain of copies folds
@@ -36,21 +36,25 @@ def alias_folds(db, image) -> dict[int, int]:
     for entity in functions:
         if entity.matched:
             matched.setdefault(entity.name, []).append(entity)
-    pairs = [(entity, matched[entity.name][0]) for entity in functions
-             if not entity.matched and entity.get("symbol") is None and len(matched.get(entity.name, [])) == 1
-             and entity.size(ImageId.RECOMP) == matched[entity.name][0].size(ImageId.RECOMP)]
-    folds = {}
+    copies = [(entity, [kept for kept in matched.get(entity.name, [])
+                        if kept.size(ImageId.RECOMP) == entity.size(ImageId.RECOMP)])
+              for entity in functions if not entity.matched and entity.get("symbol") is None]
+    folds, kept_copies = {}, {}
     changed = True
     while changed:
         changed = False
-        for copy, kept in pairs:
-            if copy.recomp_addr not in folds and code(image, copy, folds) == code(image, kept, folds):
-                folds[copy.recomp_addr] = kept.recomp_addr
+        for copy, candidates in copies:
+            if copy.recomp_addr in folds or not candidates:
+                continue
+            mine = code(image, copy, folds)
+            same = [kept for kept in candidates if code(image, kept, folds) == mine]
+            if len(same) == 1:
+                folds[copy.recomp_addr] = same[0].recomp_addr
+                kept_copies[copy.recomp_addr] = same[0]
                 changed = True
     with db.batch() as batch:
-        for copy, kept in pairs:
-            if copy.recomp_addr in folds:
-                batch.set(ImageId.RECOMP, copy.recomp_addr, computed_name=kept.best_name())
+        for address, kept in kept_copies.items():
+            batch.set(ImageId.RECOMP, address, computed_name=kept.best_name())
     return folds
 
 
