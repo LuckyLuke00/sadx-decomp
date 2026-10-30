@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1436" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,523 of 16,524 game functions done (33.42%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,527 of 16,524 game functions done (33.44%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 611,1202.5 605,1195.6 606.1,1194" fill="#4e32f3"/>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 605,1195.6 606.1,1194" fill="#ffffff" fill-opacity="0.4"/>
@@ -1033,7 +1033,7 @@
 <rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x00891100 FinalEggSetAppearZERO: 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x00891110 FUN_00891110: 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x00891150 ObjectFinalEggRelease: 100%</title></rect>
-<rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x008913b0 DispATask(3): 100%</title></rect>
+<rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x008913b0 DispATask(4): 100%</title></rect>
 <rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x00891440 ObjectFinalEggLight1: 100%</title></rect>
 <rect x="70" y="21" width="6" height="6" fill="#b07d00"><title>0x00891720 Object_finalegg_saku_End: 100%</title></rect>
 <rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x00893000 hane_draw: 100%</title></rect>
@@ -1099,26 +1099,26 @@
 <rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x008a40d0 ObjShelterEnemycontainer: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x008a4f00 ObjShelterGate2: 100%</title></rect>
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x008a4f30 ObjShelterGate13: 100%</title></rect>
-<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x008a54f0 DispATask(5): 100%</title></rect>
+<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x008a54f0 DispATask(6): 100%</title></rect>
 <rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5560 ObjShelterWcMark2: 100%</title></rect>
-<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5620 DispATask(6): 100%</title></rect>
+<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5620 DispATask(7): 100%</title></rect>
 <rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5690 ObjShelterWcMark1: 100%</title></rect>
-<rect x="119" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5750 DispATask(7): 100%</title></rect>
+<rect x="119" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5750 DispATask(8): 100%</title></rect>
 <rect x="126" y="14" width="6" height="6" fill="#b07d00"><title>0x008a57c0 ObjShelterKanso: 100%</title></rect>
-<rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x008a59e0 DispATask(8): 100%</title></rect>
+<rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x008a59e0 DispATask(9): 100%</title></rect>
 <rect x="161" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5a50 ObjShelterHikari: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5c70 Disp(38): 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5d90 ObjShelterBluelight: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5e60 Exec(34): 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5e90 ObjShelterGateside: 100%</title></rect>
 <rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5ee0 Hasigo_Display: 100%</title></rect>
-<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x008a7360 DispATask(9): 100%</title></rect>
+<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x008a7360 DispATask(10): 100%</title></rect>
 <rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x008a73d0 ObjShelterSyoumei: 100%</title></rect>
 <rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x008a9eb0 Disp2Task: 100%</title></rect>
 <rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x008a9f20 Disp3Task: 100%</title></rect>
-<rect x="182" y="49" width="6" height="6" fill="#b07d00"><title>0x008abd90 DispATask(10): 100%</title></rect>
+<rect x="182" y="49" width="6" height="6" fill="#b07d00"><title>0x008abd90 DispATask(11): 100%</title></rect>
 <rect x="0" y="56" width="6" height="6" fill="#b07d00"><title>0x008abe00 ObjShelterLight3: 100%</title></rect>
-<rect x="7" y="56" width="6" height="6" fill="#b07d00"><title>0x008abec0 DispATask(11): 100%</title></rect>
+<rect x="7" y="56" width="6" height="6" fill="#b07d00"><title>0x008abec0 DispATask(12): 100%</title></rect>
 <rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x008abf30 ObjShelterLight2: 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#b07d00"><title>0x008ac3f0 DrawBoxColli(2): 100%</title></rect>
 <rect x="70" y="56" width="6" height="6" fill="#b07d00"><title>0x008ac4b0 ColliShelterSwitch: 100%</title></rect>
@@ -1161,7 +1161,7 @@
 <polygon points="605,935.6 608.8,935.6 611,942.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="613.2,935.6 617,935.6 611,942.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="607.8,932.5 614.2,932.5 615.9,934 617,935.6 611,942.5 605,935.6 606.1,934" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="621" y="942" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">24%</tspan></text>
+<text x="621" y="942" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">25%</tspan></text>
 <rect x="606" y="950" width="120" height="233" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 124 of 421 done</title></rect>
 <text x="609" y="964" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Station Square</text>
 <text x="609" y="979" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">29%</tspan></text>
@@ -1285,7 +1285,7 @@
 <rect x="14" y="175" width="6" height="6" fill="#b07d00"><title>0x00690c30 ObjectSSKartdoor: 100%</title></rect>
 <rect x="21" y="175" width="6" height="6" fill="#b07d00"><title>0x00690c80 ObjectDisplay(8): 100%</title></rect>
 <rect x="28" y="175" width="6" height="6" fill="#b07d00"><title>0x00690cd0 ObjectMain(9): 100%</title></rect>
-<rect x="49" y="175" width="6" height="6" fill="#b07d00"><title>0x00690e40 KasyaDisplay: 100%</title></rect>
+<rect x="49" y="175" width="6" height="6" fill="#b07d00"><title>0x00690e40 KasyaDisplay(struct task *): 100%</title></rect>
 <rect x="77" y="175" width="6" height="6" fill="#b07d00"><title>0x00691150 sstrain_adxdestruct: 100%</title></rect>
 <rect x="84" y="175" width="6" height="6" fill="#b07d00"><title>0x00691160 sstrain_adxprove: 100%</title></rect>
 <rect x="7" y="182" width="6" height="6" fill="#b07d00"><title>0x00691b20 CreamManagerDestruct: 100%</title></rect>
@@ -1373,8 +1373,8 @@
 <rect x="182" y="84" width="6" height="6" fill="#b07d00"><title>0x006a7170 mainE102EC01: 100%</title></rect>
 <rect x="189" y="84" width="6" height="6" fill="#b07d00"><title>0x006a71d0 mainAmyEC03: 100%</title></rect>
 </g>
-<rect x="728" y="1068" width="207" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Mystic Ruins: 73 of 324 done</title></rect>
-<text x="731" y="1082" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Mystic Ruins <tspan font-weight="400" fill="#59636e">22%</tspan></text>
+<rect x="728" y="1068" width="207" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Mystic Ruins: 77 of 324 done</title></rect>
+<text x="731" y="1082" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Mystic Ruins <tspan font-weight="400" fill="#59636e">23%</tspan></text>
 <g transform="translate(731,1086)">
 <rect y="0" width="196" height="77" fill="url(#todo)"/>
 <rect y="77" width="112" height="7" fill="url(#todo)"/>
@@ -1411,7 +1411,7 @@
 <rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x006aaf10 mainSonicMR04: 100%</title></rect>
 <rect x="112" y="7" width="6" height="6" fill="#b07d00"><title>0x006aafb0 mainSonicMR03: 100%</title></rect>
 <rect x="119" y="7" width="6" height="6" fill="#b07d00"><title>0x006ab2f0 InitInitHandykey: 100%</title></rect>
-<rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x006ac750 DesertATask: 100%</title></rect>
+<rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x006ac750 DesertATask(struct task *): 100%</title></rect>
 <rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x006ad0e0 fade_screen: 100%</title></rect>
 <rect x="126" y="14" width="6" height="6" fill="#b07d00"><title>0x006ad260 FUN_006ad260: 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x006aded0 GetBreakRockState: 100%</title></rect>
@@ -1422,6 +1422,9 @@
 <rect x="140" y="28" width="6" height="6" fill="#b07d00"><title>0x006b0480 mrp_walk_man_eveidle: 100%</title></rect>
 <rect x="147" y="28" width="6" height="6" fill="#b07d00"><title>0x006b04c0 mrp_walk_man: 100%</title></rect>
 <rect x="161" y="28" width="6" height="6" fill="#b07d00"><title>0x006b05c0 mrp_actman: 100%</title></rect>
+<rect x="175" y="28" width="6" height="6" fill="#b07d00"><title>0x006b0790 DispATask(3): 100%</title></rect>
+<rect x="182" y="28" width="6" height="6" fill="#b07d00"><title>0x006b0800 DesertATask(2): 100%</title></rect>
+<rect x="0" y="35" width="6" height="6" fill="#b07d00"><title>0x006b0940 ObjectMysticRuinEgg: 100%</title></rect>
 <rect x="7" y="35" width="6" height="6" fill="#b07d00"><title>0x006b0a20 Tornado2Displayer: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x006b0ac0 LadderDestructor: 100%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#b07d00"><title>0x006b0d60 WindyValleyDestructor: 100%</title></rect>
@@ -1438,6 +1441,7 @@
 <rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x006b2d50 PalmDisplayer: 100%</title></rect>
 <rect x="56" y="42" width="6" height="6" fill="#b07d00"><title>0x006b2dd0 ObjectMysticRuinPalm: 100%</title></rect>
 <rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x006b3550 BedDisplayer: 100%</title></rect>
+<rect x="7" y="49" width="6" height="6" fill="#b07d00"><title>0x006b4640 KasyaInit: 100%</title></rect>
 <rect x="21" y="49" width="6" height="6" fill="#b07d00"><title>0x006b4a70 mrtrain_adxdestruct: 100%</title></rect>
 <rect x="28" y="49" width="6" height="6" fill="#b07d00"><title>0x006b4a80 mrtrain_adxprove: 100%</title></rect>
 <rect x="112" y="49" width="6" height="6" fill="#b07d00"><title>0x006b5950 KnucklesStutueDisplayer: 100%</title></rect>
