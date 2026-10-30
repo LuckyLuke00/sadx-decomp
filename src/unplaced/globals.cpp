@@ -3785,6 +3785,9 @@ struct NJS_MODEL model_tv_clash_base_tv_clash_base[1];
 // GLOBAL: SADX 0x04a72a58
 struct NJS_TEXLIST texlist_shelter_column;
 
+// GLOBAL: SADX 0x04a7383c
+struct NJS_ACTION action_kowaresuisou_mizu_ef[1];
+
 // GLOBAL: SADX 0x04a738f0
 struct NJS_TEXLIST texlist_shelter_suimen;
 
