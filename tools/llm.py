@@ -514,6 +514,47 @@ def kept_alive(text, address, shared):
     return text.rstrip("\n") + f"\n\nvoid *llm_keep_{address:08x} = (void *){name};\n"
 
 
+@functools.cache
+def function_rows(tables):
+    """address: row of each function in TABLES' functions.tsv."""
+    return {int(r["address"], 16): r for r in names.table_rows(Path(tables) / "functions.tsv")}
+
+
+@functools.cache
+def table_callees(tables):
+    """address: the functions that each function of TABLES' callers.tsv calls, jumps to or takes the address of."""
+    callees = collections.defaultdict(set)
+    for line in (Path(tables) / "callers.tsv").read_text(encoding="utf-8").splitlines():
+        callee, users = line.split("\t")
+        for user in users.split(","):
+            callees[int(user.split()[0], 16)].add(int(callee, 16))
+    return callees
+
+
+def own_stubs(text, rel, tables):
+    """TEXT, the file REL, with a static STUB in address order of each function of REL that a function of TEXT uses
+    by a name several functions share, when TEXT defines no function of that name: the stubs that decls writes cannot
+    have the name, so the use would mean another file's function. apply_function declares each one at the top."""
+    if not tables:
+        return text
+    rows, shared = function_rows(tables), shared_names(tables)
+    used = set(re.findall(r"[A-Za-z_]\w*", names.strip_code(text)))
+    annotations = names.parse_annotations(text)
+    defined = {names.declared_name(sig) for kind, _, sig in annotations if kind in names.FUNCTION_KINDS}
+    defined |= names.unannotated_statics(text)
+    for _, caller, _ in annotations:
+        for callee in sorted(table_callees(tables).get(caller, ())):
+            row = rows.get(callee)
+            if (not row or row["file"] != rel or row["scope"] != "L" or row["name"] not in shared
+                    or row["name"] not in used or row["name"] in defined or not row["proto"]):
+                continue
+            sig = "static " + row["proto"].rstrip(";")
+            stub = "\n".join([f"// STUB: {project.game_config().target} {hexa(callee)}", sig, declgen.stub_body(sig)])
+            text = apply_function(text, callee, [], stub.split("\n"))
+            defined.add(row["name"])
+    return text
+
+
 def stub_functions(text, addresses):
     """TEXT with the definitions at ADDRESSES as stubs, and without the top-of-file declarations only they used. A
     global's definition under its GLOBAL annotation and an explicit template instantiation always stay: they emit
@@ -1573,8 +1614,9 @@ def solve_function(args, file, address, transcript):
 
     def scored(text):
         """(the percent of TEXT as the file, or None, the build output). The file is TEXT again afterwards: the
-        global of kept_alive is only for the build."""
-        write_source(path, kept_alive(text, address, shared), crlf)
+        global of kept_alive and the stubs of own_stubs are only for the build."""
+        built = own_stubs(text, file, config["tables"])
+        write_source(path, kept_alive(built, address, shared), crlf)
         restore(generated)
         result = score(config, address)
         write_source(path, text, crlf)
@@ -1736,7 +1778,8 @@ def solve_function(args, file, address, transcript):
         if fallback and not (best and best.percent == 100):
             best = fallback
             log.write(json.dumps({"kept_refused": True}) + "\n")
-    write_source(path, best.text if best else before, crlf)
+    # The file keeps the stubs of own_stubs: a use of one can match.
+    write_source(path, own_stubs(best.text, file, config["tables"]) if best else before, crlf)
     restore(generated)
     decls(config)
     return {"tries": tries, "best": best.percent if best else 0.0, "wall_s": time.time() - started, **totals}

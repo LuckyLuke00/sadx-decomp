@@ -496,6 +496,40 @@ def check_unlaid_structs() -> list[str]:
     return failures
 
 
+def check_own_stubs() -> list[str]:
+    """own_stubs writes a static STUB in address order, with its prototype at the top, of each function of the file
+    that a function uses by a name several functions share. It writes none for a name one function has, or when the
+    file defines the name."""
+    target = project.game_config().target
+    rows = [("0x00401000", "Caller", "G", "src/a.c", "void Caller(struct task *tp);"),
+            ("0x00400800", "Normal", "L", "src/a.c", "void Normal(struct task *tp);"),
+            ("0x00402000", "Normal", "L", "src/b.c", "void Normal(struct task *tp);"),
+            ("0x00401800", "Done", "L", "src/a.c", "int Done(void);"),
+            ("0x00402100", "Done", "L", "src/b.c", "int Done(void);"),
+            ("0x00401900", "Unique", "L", "src/a.c", "void Unique(void);"),
+            ("0x00401a00", "Ported", "L", "src/a.c", "void Ported(void);"),
+            ("0x00402200", "Ported", "L", "src/b.c", "void Ported(void);")]
+    text = (f'#include "a.h"\n\n// FUNCTION: {target} 0x00401000\nvoid Caller(struct task *tp)\n'
+            "{\n\ttp->exec = Normal;\n\tUnique();\n\tPorted();\n\tDone();\n}\n\n"
+            f"// FUNCTION: {target} 0x00401a00\nstatic void Ported(void)\n{{\n}}\n")
+    wanted = (f'#include "a.h"\nstatic int Done(void);\nstatic void Normal(struct task *tp);\n\n{llm.OFF}\n'
+              f"// STUB: {target} 0x00400800\nstatic void Normal(struct task *tp)\n{{\n}}\n{llm.ON}\n\n"
+              f"// FUNCTION: {target} 0x00401000\nvoid Caller(struct task *tp)\n"
+              "{\n\ttp->exec = Normal;\n\tUnique();\n\tPorted();\n\tDone();\n}\n\n"
+              f"{llm.OFF}\n// STUB: {target} 0x00401800\nstatic int Done(void)\n{{\n\treturn (int)0;\n}}\n{llm.ON}\n\n"
+              f"// FUNCTION: {target} 0x00401a00\nstatic void Ported(void)\n{{\n}}\n")
+    with tempfile.TemporaryDirectory() as folder:
+        tables = Path(folder)
+        (tables / "functions.tsv").write_text("address\tname\tscope\tfile\tproto\n" + "".join(
+            "\t".join(row) + "\n" for row in rows), encoding="utf-8")
+        (tables / "callers.tsv").write_text("0x00400800\t0x00401000 (ref)\n0x00401800\t0x00401000\n"
+                                            "0x00401900\t0x00401000\n0x00401a00\t0x00401000\n", encoding="utf-8")
+        found = llm.own_stubs(text, "src/a.c", str(tables))
+        again = llm.own_stubs(found, "src/a.c", str(tables))
+    failures = [f"own_stubs gives {found!r}, not {wanted!r}"] if found != wanted else []
+    return failures + ([f"own_stubs of its own output gives {again!r}"] if again != found else [])
+
+
 def check_try_globals() -> list[str]:
     """Tree.with_decls knows the globals that a try declares: a number added to its pointer is an offset, and the
     address of its DAT_ is a raw address. The tree alone knows neither."""
@@ -787,8 +821,8 @@ def run() -> list[str]:
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
                   check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
-                  check_unlaid_structs, check_try_globals, check_address_test, check_read_tree, check_refusal_names,
-                  check_constant_globals, check_debug_constants, check_annotation_below_signature,
+                  check_unlaid_structs, check_own_stubs, check_try_globals, check_address_test, check_read_tree,
+                  check_refusal_names, check_constant_globals, check_debug_constants, check_annotation_below_signature,
                   check_struct_in_reply, check_live, check_live_ends, check_stream_events, check_full_context_restart,
                   check_shared_context):
         failures += check()
