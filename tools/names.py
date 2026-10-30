@@ -268,6 +268,21 @@ def row_declaration(row: dict) -> str:
     return decl
 
 
+def row_definition(row: dict, types: "Types") -> str:
+    """A globals table row's definition, with a first size from the row's byte size when the table does not know it,
+    and one element when the size of an element is unknown."""
+    definition = row["decl"].replace("{}", row["name"])
+    dims = row["dims"].split(",") if row["dims"] else []
+    if dims and dims[0] in ("?", "0", ""):
+        elem = element_size(row["base"], types)
+        inner = 1
+        for x in dims[1:]:
+            inner *= int(x) if x.isdigit() else 1
+        count = int(row["size"]) // (elem * inner) if elem and row["size"] else 1
+        definition = re.sub(r"\[[\w?]*\]", f"[{max(count, 1)}]", definition, count=1)
+    return definition
+
+
 class Types:
     """Blocks of a types header: each struct, union or enum with its static_asserts."""
 
