@@ -16620,9 +16620,9 @@
   {
    "address": "0x004c1870",
    "name": "MSG_Open",
-   "accuracy": 0.07194244604316546,
+   "accuracy": 0.8014981273408239,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -16636,9 +16636,9 @@
   {
    "address": "0x004c1a80",
    "name": "MSG_LoadTexture2",
-   "accuracy": 0.09411764705882353,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -16722,11 +16722,19 @@
    "library": false
   },
   {
-   "address": "0x004c2940",
-   "name": "MSG_Puts",
-   "accuracy": 0.1038961038961039,
+   "address": "0x004c26f0",
+   "name": "MSG_Putc",
+   "accuracy": 0.0427807486631016,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c2940",
+   "name": "MSG_Puts",
+   "accuracy": 0.7916666666666666,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -97880,5 +97888,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "22416745e6bdf853be3cc312d76552ab36052af970f85f88609d70f81ee227b9"
+ "inputs_sha256": "5ba7d3b9a7e25f5e8a8750e8c671f35b67867023932c29e3a79db0bff7ec7d5d"
 }
