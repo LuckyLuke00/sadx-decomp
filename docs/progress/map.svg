@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1437" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,549 of 16,524 game functions done (33.58%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,551 of 16,524 game functions done (33.59%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 611,1202.5 605,1195.6 606.1,1194" fill="#4e32f3"/>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 605,1195.6 606.1,1194" fill="#ffffff" fill-opacity="0.4"/>
@@ -404,7 +404,7 @@
 <rect x="63" y="49" width="6" height="6" fill="#b07d00"><title>0x00811360 StartCameraWindy_TgtDeath: 100%</title></rect>
 <rect x="70" y="49" width="6" height="6" fill="#b07d00"><title>0x00837700 death(2): 100%</title></rect>
 </g>
-<rect x="20" y="87" width="199" height="203" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Casinopolis: 181 of 633 done</title></rect>
+<rect x="20" y="87" width="199" height="203" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Casinopolis: 183 of 633 done</title></rect>
 <text x="23" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Casinopolis <tspan font-weight="400" fill="#59636e">28%</tspan></text>
 <g transform="translate(23,105)">
 <rect y="0" width="189" height="161" fill="url(#todo)"/>
@@ -555,10 +555,12 @@
 <rect x="70" y="119" width="6" height="6" fill="#b07d00"><title>0x008843c0 NormalUR: 100%</title></rect>
 <rect x="77" y="119" width="6" height="6" fill="#b07d00"><title>0x00884430 NormalUL: 100%</title></rect>
 <rect x="161" y="119" width="6" height="6" fill="#b07d00"><title>0x00885010 cCameraReturn: 100%</title></rect>
+<rect x="49" y="126" width="6" height="6" fill="#b07d00"><title>0x00886060 Exit(6): 100%</title></rect>
 <rect x="56" y="126" width="6" height="6" fill="#b07d00"><title>0x00886090 DispC: 100%</title></rect>
 <rect x="63" y="126" width="6" height="6" fill="#b07d00"><title>0x00886150 DispLR: 100%</title></rect>
-<rect x="84" y="126" width="6" height="6" fill="#b07d00"><title>0x008863a0 NormalL(struct task *): 100%</title></rect>
+<rect x="84" y="126" width="6" height="6" fill="#b07d00"><title>0x008863a0 NormalL(2): 100%</title></rect>
 <rect x="91" y="126" width="6" height="6" fill="#b07d00"><title>0x008864a0 NormalR(struct task *): 100%</title></rect>
+<rect x="105" y="126" width="6" height="6" fill="#b07d00"><title>0x008865f0 ObjectStoperL: 100%</title></rect>
 <rect x="112" y="133" width="6" height="6" fill="#b07d00"><title>0x00888080 CameraPinball: 100%</title></rect>
 <rect x="7" y="140" width="6" height="6" fill="#b07d00"><title>0x008894a0 ObjCasino_CheckUpperY: 100%</title></rect>
 <rect x="21" y="140" width="6" height="6" fill="#b07d00"><title>0x008895d0 FUN_008895d0: 100%</title></rect>

@@ -3039,6 +3039,7 @@ void cNormal2(struct task *ctp);
 void DispUR(struct task *tp);
 void DispUL(struct task *tp);
 void DispLR(struct task *tp);
+void cNormalLR(struct task *ctp);
 void ObjCasino_InitGColl(struct task *tp, struct obj *pobj, float rad, long attr);
 void FUN_008895d0(struct task *param_1);
 void ObjCasino_DrawSphere(struct NJS_POINT3 *center, float scl);
