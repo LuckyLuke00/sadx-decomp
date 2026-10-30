@@ -3373,6 +3373,11 @@ void DoaDraw(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008666c0
+void Normal0(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00868fa0
 void ObjectIcecap_eff_lines1_Exec(struct task *tp)
 {

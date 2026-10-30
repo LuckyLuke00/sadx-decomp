@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1436" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,534 of 16,524 game functions done (33.49%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,537 of 16,524 game functions done (33.50%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 611,1202.5 605,1195.6 606.1,1194" fill="#4e32f3"/>
 <polygon points="607.8,1192.5 614.2,1192.5 615.9,1194 617,1195.6 605,1195.6 606.1,1194" fill="#ffffff" fill-opacity="0.4"/>
@@ -520,7 +520,7 @@
 <rect x="112" y="91" width="6" height="6" fill="#b07d00"><title>0x0087f7b0 Disp(29): 100%</title></rect>
 <rect x="126" y="91" width="6" height="6" fill="#b07d00"><title>0x0087f910 ObjectSitaAlEgg: 100%</title></rect>
 <rect x="133" y="91" width="6" height="6" fill="#b07d00"><title>0x0087f940 ObjectUeAlEgg: 100%</title></rect>
-<rect x="0" y="98" width="6" height="6" fill="#b07d00"><title>0x0087fde0 Exit(3): 100%</title></rect>
+<rect x="0" y="98" width="6" height="6" fill="#b07d00"><title>0x0087fde0 Exit(4): 100%</title></rect>
 <rect x="21" y="98" width="6" height="6" fill="#b07d00"><title>0x0087ffb0 ObjectCardUV: 100%</title></rect>
 <rect x="35" y="98" width="6" height="6" fill="#b07d00"><title>0x00880140 Disp(31): 100%</title></rect>
 <rect x="49" y="98" width="6" height="6" fill="#b07d00"><title>0x008803b0 Normal(12): 100%</title></rect>
@@ -546,7 +546,7 @@
 <rect x="140" y="112" width="6" height="6" fill="#b07d00"><title>0x008831a0 ObjectNeon: 100%</title></rect>
 <rect x="147" y="112" width="6" height="6" fill="#b07d00"><title>0x008831e0 ObjectNeonkabe: 100%</title></rect>
 <rect x="154" y="112" width="6" height="6" fill="#b07d00"><title>0x00883320 TenmetuSub: 100%</title></rect>
-<rect x="0" y="119" width="6" height="6" fill="#b07d00"><title>0x00883c50 Exit(4): 100%</title></rect>
+<rect x="0" y="119" width="6" height="6" fill="#b07d00"><title>0x00883c50 Exit(5): 100%</title></rect>
 <rect x="42" y="119" width="6" height="6" fill="#ad8026"><title>0x008841a0 ObjectRightLane: 93.3%</title></rect>
 <rect x="49" y="119" width="6" height="6" fill="#b07d00"><title>0x008841e0 DispUR: 100%</title></rect>
 <rect x="56" y="119" width="6" height="6" fill="#b07d00"><title>0x008842b0 DispUL: 100%</title></rect>
@@ -590,8 +590,8 @@
 <rect x="42" y="161" width="6" height="6" fill="#b07d00"><title>0x0088d8a0 ObjectCasinoEarthShake: 100%</title></rect>
 <rect x="49" y="161" width="6" height="6" fill="#b07d00"><title>0x0088d8b0 CreateEarthShake_Casino: 100%</title></rect>
 </g>
-<rect x="370" y="238" width="144" height="122" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ice Cap: 62 of 252 done</title></rect>
-<text x="373" y="252" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ice Cap <tspan font-weight="400" fill="#59636e">24%</tspan></text>
+<rect x="370" y="238" width="144" height="122" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ice Cap: 65 of 252 done</title></rect>
+<text x="373" y="252" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ice Cap <tspan font-weight="400" fill="#59636e">25%</tspan></text>
 <g transform="translate(373,256)">
 <rect y="0" width="133" height="91" fill="url(#todo)"/>
 <rect y="91" width="35" height="7" fill="url(#todo)"/>
@@ -647,7 +647,10 @@
 <rect x="77" y="63" width="6" height="6" fill="#b07d00"><title>0x00866580 ObjectHouse_b: 100%</title></rect>
 <rect x="84" y="63" width="6" height="6" fill="#b07d00"><title>0x008665a0 ObjectHouse_c: 100%</title></rect>
 <rect x="91" y="63" width="6" height="6" fill="#b07d00"><title>0x008665c0 ObjectHouse_d: 100%</title></rect>
+<rect x="98" y="63" width="6" height="6" fill="#b07d00"><title>0x008665e0 Exit(3): 100%</title></rect>
 <rect x="119" y="63" width="6" height="6" fill="#b07d00"><title>0x00866a50 Normal1(struct task *): 100%</title></rect>
+<rect x="0" y="70" width="6" height="6" fill="#b07d00"><title>0x00866c20 ObjectHasira1b: 100%</title></rect>
+<rect x="14" y="70" width="6" height="6" fill="#b07d00"><title>0x00866cb0 ObjectHasira10c: 100%</title></rect>
 <rect x="84" y="70" width="6" height="6" fill="#b07d00"><title>0x00866ec0 ObjectIcicleDisplay: 100%</title></rect>
 <rect x="105" y="70" width="6" height="6" fill="#b07d00"><title>0x00867130 ObjectIcecapJump: 100%</title></rect>
 <rect x="105" y="77" width="6" height="6" fill="#b07d00"><title>0x00868400 BombExp: 100%</title></rect>

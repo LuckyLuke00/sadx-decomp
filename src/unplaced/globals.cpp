@@ -3212,6 +3212,9 @@ struct obj object_jpdai_all1_jpdai01_jpdai01[1];
 // GLOBAL: SADX 0x045a8e04
 struct NJS_MODEL model__obj_hasira_c_obj_hasira_c[1];
 
+// GLOBAL: SADX 0x045a9c14
+struct obj object__obj_hasira10c_obj_hasira10c[1];
+
 // GLOBAL: SADX 0x045aa390
 struct obj object_obj_house_d_house_d[1];
 
