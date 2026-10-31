@@ -495,6 +495,20 @@ def without_static(func, shared):
     return func[:at] + [signature] + func[at + 1:]
 
 
+def with_static(func):
+    """FUNC's lines with `static` before its signature, or None when its signature has it."""
+    at = names.signature_index(func)
+    if re.match(r"static\s", func[at]):
+        return None
+    return func[:at] + ["static " + func[at]] + func[at + 1:]
+
+
+def defined_twice(output, func):
+    """Whether the build OUTPUT has the linker find a second definition of the function that FUNC defines."""
+    name = names.declared_name(func[names.signature_index(func)])
+    return any("error LNK2005:" in line and f"(?{name}@@" in line for line in output.split("\n"))
+
+
 def kept_alive(text, address, shared):
     """TEXT with a global that holds the address of its static definition at ADDRESS, when nothing else in TEXT names
     it and its name may be in SHARED (None: unknown), so it cannot lose its `static` (see without_static): the
@@ -1476,6 +1490,7 @@ class Repairs:
         self.offsets = []  # the lines that got `(char *)` for a byte offset
         self.pointer_casts = []  # {"before": line, "after": line} for each line that got a cast
         self.unstatic = False  # whether the function lost its `static`
+        self.made_static = False  # whether the function got `static`
 
     def tree_ways(self):
         """name: the tree's declarations of it, as the model reads them."""
@@ -1508,6 +1523,9 @@ class Repairs:
         if self.unstatic:
             note += ("Your `static` was dropped: nothing in the build calls the function, so the compiler "
                      "left it out.\n")
+        if self.made_static:
+            note += ("Your function got `static`: the original is static, and another file defines a function of "
+                     "the same name.\n")
         return note
 
     def latest(self, outcome):
@@ -1533,6 +1551,8 @@ class Repairs:
             prefixes.append(f"was built with these names changed: {swaps}, and ")
         if self.unstatic:
             prefixes.append("was built without `static` and ")
+        if self.made_static:
+            prefixes.append("was built with `static` and ")
         if self.pointer_casts:
             prefixes.append("was built with casts on the pointer conversions and ")
         return "".join(prefixes) + outcome
@@ -1541,6 +1561,7 @@ class Repairs:
         """What the code got, as the console line shows it."""
         trim = f" (without its declaration of {', '.join(self.dropped)})" if self.dropped else ""
         trim += " (without static)" if self.unstatic else ""
+        trim += " (with static)" if self.made_static else ""
         trim += f" (casts on {', '.join(self.casts)})" if self.casts else ""
         trim += f" (pointer casts on {len(self.pointer_casts)} lines)" if self.pointer_casts else ""
         trim += f" (casts on uses of {', '.join(self.gcasts)})" if self.gcasts else ""
@@ -1552,9 +1573,9 @@ class Repairs:
 
     def logged(self):
         """The repairs that changed something, under the transcript's keys."""
-        repairs = {"dropped": self.dropped, "unstatic": self.unstatic, "casts": self.casts,
-                   "pointer_casts": self.pointer_casts, "gcasts": self.gcasts, "runtime": self.runtime,
-                   "carried": self.carried, "renamed": self.renamed, "bytes": self.offsets}
+        repairs = {"dropped": self.dropped, "unstatic": self.unstatic, "made_static": self.made_static,
+                   "casts": self.casts, "pointer_casts": self.pointer_casts, "gcasts": self.gcasts,
+                   "runtime": self.runtime, "carried": self.carried, "renamed": self.renamed, "bytes": self.offsets}
         return {key: value for key, value in repairs.items() if value}
 
 
@@ -1587,6 +1608,7 @@ class Bench:
         build, repairs.carried = self.repair_earlier(build)
         build, repairs.offsets = self.repair_offsets(build)
         build, repairs.pointer_casts = self.repair_pointers(build)
+        build, repairs.made_static = self.repair_linkage(build)
         build, repairs.unstatic = self.repair_static(build)
         return model, trimmed, build, repairs
 
@@ -1691,6 +1713,22 @@ class Bench:
                                                       build.output, self.path, self.address, self.types.kind)
         changes = [{"before": was.strip(), "after": now.strip()} for was, now in zip(build.func, func) if was != now]
         return Build(build.decls, func, source, percent, output), changes
+
+    def repair_linkage(self, build):
+        """`static` comes when the linker finds a second definition of the function's name and the tables give the
+        function file scope: the original is static, and two global functions of one name never link. Kept when the
+        try then builds."""
+        tables = self.config["tables"]
+        if build.percent is not None or not tables or not defined_twice(build.output, build.func):
+            return build, False
+        row = function_rows(tables).get(self.address)
+        func = with_static(build.func)
+        if not row or row["scope"] != "L" or func is None:
+            return build, False
+        retry = self.build(build.decls, func)
+        if retry.percent is None:
+            return build, False
+        return retry, True
 
     def repair_static(self, build):
         """`static` goes when the build holds no code for the function: the compiler leaves out a static function
