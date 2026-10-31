@@ -41,6 +41,15 @@ struct TaskInfo NeonLogoTaskInfo;
 // GLOBAL: SADX 0x00962da8
 struct ActionParam DAT_00962da8;
 
+// GLOBAL: SADX 0x00962f40
+struct ActionParam DAT_00962f40;
+
+// GLOBAL: SADX 0x00962f6c
+struct ActionParam DAT_00962f6c;
+
+// GLOBAL: SADX 0x00962f98
+struct ActionParam DAT_00962f98;
+
 // GLOBAL: SADX 0x00982ec0
 unsigned char DAT_00982ec0[1];
 

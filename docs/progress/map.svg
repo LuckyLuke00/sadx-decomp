@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1447" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,641 of 16,524 game functions done (34.13%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,644 of 16,524 game functions done (34.15%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="599.8,1201.5 606.2,1201.5 607.9,1203 609,1204.6 603,1211.5 597,1204.6 598.1,1203" fill="#4e32f3"/>
 <polygon points="599.8,1201.5 606.2,1201.5 607.9,1203 609,1204.6 597,1204.6 598.1,1203" fill="#ffffff" fill-opacity="0.4"/>
@@ -2724,7 +2724,7 @@
 <polygon points="19,996.6 22.8,996.6 25,1003.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="27.2,996.6 31,996.6 25,1003.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="21.8,993.5 28.2,993.5 29.9,995 31,996.6 25,1003.5 19,996.6 20.1,995" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="35" y="1003" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">8%</tspan></text>
+<text x="35" y="1003" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Chao <tspan font-weight="400" fill="#59636e">9%</tspan></text>
 <rect x="20" y="1011" width="313" height="273" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Gardens: 524 of 1,351 functions done</title></rect>
 <text x="23" y="1025" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Gardens <tspan font-weight="400" fill="#59636e">8%</tspan></text>
 <g transform="translate(23,1029)">
@@ -3258,7 +3258,7 @@
 <rect x="182" y="210" width="6" height="6" fill="#b07d00"><title>0x00716350 AL_GetMessage: 100%</title></rect>
 <rect x="203" y="210" width="6" height="6" fill="#b07d00"><title>0x00717030 ChaoSelectWindowDestructor: 100%</title></rect>
 </g>
-<rect x="20" y="1286" width="313" height="98" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 125 of 408 functions done</title></rect>
+<rect x="20" y="1286" width="313" height="98" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chao Race: 128 of 408 functions done</title></rect>
 <text x="23" y="1300" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chao Race <tspan font-weight="400" fill="#59636e">10%</tspan></text>
 <g transform="translate(23,1304)">
 <rect y="0" width="308" height="63" fill="url(#todo)"/>
@@ -3374,6 +3374,9 @@
 <rect x="210" y="49" width="6" height="6" fill="#b07d00"><title>0x004931f0 ADV1_AL_PreserveHomePosition: 100%</title></rect>
 <rect x="217" y="49" width="6" height="6" fill="#b07d00"><title>0x00493220 ADV1_AL_PreservePreviousPosition: 100%</title></rect>
 <rect x="238" y="49" width="6" height="6" fill="#b07d00"><title>0x004932f0 ADV1_AL_InitIcon: 100%</title></rect>
+<rect x="245" y="49" width="6" height="6" fill="#b07d00"><title>0x00493310 ObjectAlrWateringCan: 100%</title></rect>
+<rect x="259" y="49" width="6" height="6" fill="#b07d00"><title>0x00493380 ObjectAlrBugle: 100%</title></rect>
+<rect x="280" y="49" width="6" height="6" fill="#b07d00"><title>0x00493410 ObjectAlrScoop: 100%</title></rect>
 <rect x="7" y="56" width="6" height="6" fill="#b07d00"><title>0x00493570 FUN_00493570: 100%</title></rect>
 <rect x="35" y="56" width="6" height="6" fill="#b07d00"><title>0x00493660 dispObject(3): 100%</title></rect>
 <rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x00493690 execObject(2): 100%</title></rect>

@@ -12362,6 +12362,30 @@
    "library": false
   },
   {
+   "address": "0x00493310",
+   "name": "ObjectAlrWateringCan",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00493380",
+   "name": "ObjectAlrBugle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00493410",
+   "name": "ObjectAlrScoop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00493570",
    "name": "FUN_00493570",
    "accuracy": 1.0,
@@ -85814,6 +85838,48 @@
    "library": false
   },
   {
+   "address": "0x00962f28",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00962f40",
+   "name": "DAT_00962f40",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00962f54",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00962f6c",
+   "name": "DAT_00962f6c",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00962f80",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00962f98",
+   "name": "DAT_00962f98",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00962fb8",
    "name": "DAT_00962fb8",
    "size": 24,
@@ -98570,5 +98636,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "70b3fdb6adda9bd06a8894ee3f00838e3bdbf7237e0900d4e224a9d9badc4e7e"
+ "inputs_sha256": "14094efcd516caa06fc39481eeb129144aa0ab655f04621b361e242c26acf066"
 }
