@@ -1745,6 +1745,9 @@ struct NJS_TEXLIST texlist_ec_water;
 // GLOBAL: SADX 0x026e0bb4
 struct NJS_TEXLIST texlist_ec_sky;
 
+// GLOBAL: SADX 0x026e0f18
+struct NJS_TEXLIST texlist_ec_ikada;
+
 // GLOBAL: SADX 0x026ed2f0
 struct CCL_INFO cinfo_palm[1];
 
