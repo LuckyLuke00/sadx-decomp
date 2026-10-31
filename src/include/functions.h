@@ -2389,7 +2389,7 @@ void FUN_006411b0(int, int);
 void njRotateY(NJS_MATRIX *m, Angle ang);
 double njScalor(NJS_VECTOR *v);
 void njProjectScreen(NJS_MATRIX *m, NJS_POINT3 *p3, NJS_POINT2 *p2);
-Float njInnerProduct(NJS_VECTOR *v1, NJS_VECTOR *v2);
+float njInnerProduct(NJS_VECTOR *v1, NJS_VECTOR *v2);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 void njTranslateV(NJS_MATRIX *m, NJS_VECTOR *v);
 void njGetMatrix(NJS_MATRIX *m);
@@ -3229,6 +3229,7 @@ void FUN_008c9ae0(struct NJS_POINT3 *param_1, struct Angle3 *param_2, int param_
 void MirenPlyInitPlayerPos(signed char player);
 void Eggman(struct task *tp);
 void MirenGameChangeAct(int actDiff, int bgmId);
+void SetCartVelocity(struct task *tp, struct NJS_POINT3 *spd);
 void SetCartBonusAdd(float spd);
 void InitSnatchPlayerInfo();
 void reflexiveModel(struct obj *object, long scan_type);

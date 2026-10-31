@@ -2282,24 +2282,8 @@ void FUN_006411b0(int, int)
 {
 }
 
-// STUB: SADX 0x0067d080
-void njRotateY(NJS_MATRIX *m, Angle ang)
-{
-}
-
 // STUB: SADX 0x0067d190
 void njProjectScreen(NJS_MATRIX *m, NJS_POINT3 *p3, NJS_POINT2 *p2)
-{
-}
-
-// STUB: SADX 0x0067d290
-Float njInnerProduct(NJS_VECTOR *v1, NJS_VECTOR *v2)
-{
-	return (Float)0;
-}
-
-// STUB: SADX 0x0067d4c0
-void njRotateX(NJS_MATRIX *m, Angle ang)
 {
 }
 

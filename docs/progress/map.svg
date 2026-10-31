@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1441" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,625 of 16,524 game functions done (34.04%), accuracy 99.83%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,630 of 16,524 game functions done (34.07%), accuracy 99.83%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="595.8,1195.5 602.2,1195.5 603.9,1197 605,1198.6 599,1205.5 593,1198.6 594.1,1197" fill="#4e32f3"/>
 <polygon points="595.8,1195.5 602.2,1195.5 603.9,1197 605,1198.6 593,1198.6 594.1,1197" fill="#ffffff" fill-opacity="0.4"/>
@@ -4087,8 +4087,8 @@
 <polygon points="531,72.6 534.8,72.6 537,79.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="539.2,72.6 543,72.6 537,79.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="533.8,69.5 540.2,69.5 541.9,71 543,72.6 537,79.5 531,72.6 532.1,71" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="547" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Shared code <tspan font-weight="400" fill="#59636e">30%</tspan></text>
-<rect x="881" y="370" width="99" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Objects: 43 of 258 functions done</title></rect>
+<text x="547" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Shared code <tspan font-weight="400" fill="#59636e">31%</tspan></text>
+<rect x="881" y="370" width="99" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Objects: 44 of 258 functions done</title></rect>
 <text x="884" y="384" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Objects <tspan font-weight="400" fill="#59636e">6%</tspan></text>
 <g transform="translate(884,388)">
 <rect y="0" width="91" height="133" fill="url(#todo)"/>
@@ -4131,6 +4131,7 @@
 <rect x="49" y="112" width="6" height="6" fill="#b07d00"><title>0x008d48b0 ObjectTPMeteoriteII: 100%</title></rect>
 <rect x="56" y="112" width="6" height="6" fill="#b07d00"><title>0x008d48e0 ObjectTPMeteoriteIII: 100%</title></rect>
 <rect x="70" y="112" width="6" height="6" fill="#b07d00"><title>0x008d4a90 dashpanel_for_cartDisplay: 100%</title></rect>
+<rect x="84" y="112" width="6" height="6" fill="#b07d00"><title>0x008d4c40 FUN_008d4c40: 100%</title></rect>
 <rect x="7" y="119" width="6" height="6" fill="#b07d00"><title>0x008d4f20 jumppanel_for_cartDisplay: 100%</title></rect>
 <rect x="35" y="119" width="6" height="6" fill="#b07d00"><title>0x008d54c0 ObjectTPPanel: 100%</title></rect>
 <rect x="84" y="119" width="6" height="6" fill="#b07d00"><title>0x008d9000 FUN_008d9000: 100%</title></rect>
@@ -5434,8 +5435,8 @@
 <rect x="210" y="238" width="6" height="6" fill="#b07d00"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 <rect x="217" y="238" width="6" height="6" fill="#b07d00"><title>0x008e1c90 CollisionSceneChanger: 100%</title></rect>
 </g>
-<rect x="532" y="370" width="242" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 171 of 686 functions done</title></rect>
-<text x="535" y="384" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ninja graphics <tspan font-weight="400" fill="#59636e">6%</tspan></text>
+<rect x="532" y="370" width="242" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 175 of 686 functions done</title></rect>
+<text x="535" y="384" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ninja graphics <tspan font-weight="400" fill="#59636e">7%</tspan></text>
 <g transform="translate(535,388)">
 <rect y="0" width="231" height="140" fill="url(#todo)"/>
 <rect y="140" width="182" height="7" fill="url(#todo)"/>
@@ -5548,6 +5549,7 @@
 <rect x="70" y="98" width="6" height="6" fill="#b07d00"><title>0x00430bb0 njCalcPoint: 100%</title></rect>
 <rect x="77" y="98" width="6" height="6" fill="#b07d00"><title>0x00430c40 stOptionInit: 100%</title></rect>
 <rect x="84" y="98" width="6" height="6" fill="#b07d00"><title>0x00430ca0 FUN_00430ca0: 100%</title></rect>
+<rect x="91" y="98" width="6" height="6" fill="#b07d00"><title>0x00430d00 FUN_00430d00: 100%</title></rect>
 <rect x="98" y="98" width="6" height="6" fill="#b07d00"><title>0x00430d20 FUN_00430d20: 100%</title></rect>
 <rect x="105" y="98" width="6" height="6" fill="#b07d00"><title>0x00430d60 stHWVSyncServerDelete: 100%</title></rect>
 <rect x="119" y="98" width="6" height="6" fill="#b07d00"><title>0x00430db0 FUN_00430db0: 100%</title></rect>
@@ -5589,12 +5591,15 @@
 <rect x="35" y="133" width="6" height="6" fill="#b07d00"><title>0x0067c9c0 chSetBillboardBlendNormal: 100%</title></rect>
 <rect x="42" y="133" width="6" height="6" fill="#b07d00"><title>0x0067c9d0 chResetBillboardColor: 100%</title></rect>
 <rect x="49" y="133" width="6" height="6" fill="#b07d00"><title>0x0067c9e0 chSetBillboardColor: 100%</title></rect>
+<rect x="77" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d080 njRotateY: 100%</title></rect>
 <rect x="84" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d150 njScalor: 100%</title></rect>
+<rect x="98" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d290 njInnerProduct: 100%</title></rect>
 <rect x="105" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d2d0 FUN_0067d2d0: 100%</title></rect>
 <rect x="112" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d350 njTranslateV: 100%</title></rect>
 <rect x="119" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d3f0 njGetMatrix: 100%</title></rect>
 <rect x="126" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d410 chInitRandom: 100%</title></rect>
 <rect x="140" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d490 njGetTranslation: 100%</title></rect>
+<rect x="147" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d4c0 njRotateX: 100%</title></rect>
 <rect x="161" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d800 njPopMatrix: 100%</title></rect>
 <rect x="168" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d830 FUN_0067d830: 100%</title></rect>
 <rect x="175" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d8c0 njAddVector: 100%</title></rect>
