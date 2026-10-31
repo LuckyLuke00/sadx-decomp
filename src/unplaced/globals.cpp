@@ -3626,6 +3626,9 @@ struct obj object_csn_t_light_a_t_light_a[1];
 // GLOBAL: SADX 0x047f2db8
 struct obj object_csn_t_light_b_t_light_b[1];
 
+// GLOBAL: SADX 0x047f355c
+struct obj object_cas_gb_lht_gb_lht[1];
+
 // GLOBAL: SADX 0x048093d8
 char DAT_048093d8;
 
@@ -3765,7 +3768,7 @@ struct CCL_INFO object_c_info_sphere[1];
 struct TEXUVINFO2 texuv2info[1];
 
 // GLOBAL: SADX 0x0480c960
-struct NJS_MODEL *model_name[6];
+struct NJS_MODEL *model_name[4];
 
 // GLOBAL: SADX 0x0480cf04
 float pos_table[5][3];
