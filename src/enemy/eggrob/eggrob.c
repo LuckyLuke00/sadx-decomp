@@ -176,19 +176,15 @@ float FUN_00613680(float *param_1)
 	return (float)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00613710
 void Eggrob_Display(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x00613a80
 void Eggrob_BeamInit()
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x006145a0
 float FUN_006145a0(struct NJS_POINT3 *param_1, const struct NJS_POINT3 *param_2)

@@ -153,19 +153,15 @@ void AlrReal_controlColliMode(struct AlrReal *___this)
 	CL_ColPolListUpModeSetAll();
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004826f0
 void AlrReal_controlMode(struct AlrReal *___this)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x00483070
 static void AlrReal_changeAct_for_Race(struct AlrReal *___this)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00483140
 void AlrReal_changeAct_for_Entrance(struct AlrReal *___this)
@@ -188,13 +184,11 @@ int AlrReal_createChao(struct AlrReal *___this, int alr_or_alre_or_demo)
 	return 1;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00483270
 int AlrReal_createChaoALR(struct AlrReal *___this)
 {
 	return (int)0;
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004833e0
 void A_Life_for_ALR(struct task *tp)
@@ -204,12 +198,10 @@ void A_Life_for_ALR(struct task *tp)
 	*(void (**)(struct task *))((char *)tp + 0x18) = ALR_Destructor;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00483410
 void AlrReal_setRanking(struct AlrReal *___this)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00483490
 void AlrReal_calcAverage(struct AlrReal *___this)
@@ -229,24 +221,20 @@ void AlrReal_checkGoal(struct AlrReal *___this)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00483930
 void AlrReal_raceEndAlr(struct AlrReal *___this)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00483a00
 void AlrReal_SetCameraMode(struct AlrReal *___this,int mode)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00483a40
 void AlrReal_controlCamera(struct AlrReal *___this)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00483f00
 void AlrReal_incLook(struct AlrReal *___this)
@@ -262,12 +250,10 @@ void AlrReal_decLook(struct AlrReal *___this)
  if(--___this->look<0) ___this->look=7;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00483fa0
 void AlrReal_dspHead(struct AlrReal *___this)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00484060
 int AlrReal_offSonic(struct AlrReal *___this)

@@ -63,12 +63,10 @@ void FUN_0059d700(void *param_1)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0059d770
 void sequence_exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0059d9d0
 void sequence_end(struct task *tp)

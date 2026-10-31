@@ -51,9 +51,7 @@ static void title_menu_disp(struct task *tp)
 	DAT_05cd265c = 1;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005fcac0
 static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp)
 {
 }
-#pragma optimize("", on)

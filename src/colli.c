@@ -28,12 +28,10 @@ void FUN_004f6ef0(void)
 	FUN_004f6f70(&DAT_05bb00d8, 0x100);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004f6f20
 void FUN_004f6f20(void *param_1, int param_2)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f6f70
 void FUN_004f6f70(void *param_1, int param_2)

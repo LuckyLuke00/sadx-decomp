@@ -13,12 +13,10 @@ extern struct NJS_TEXLIST *DAT_05cc25b0[1];
 extern struct NJS_TEXNAME DAT_05cc26b0[300];
 long LoadPvmMEM(const char *filename, struct NJS_TEXLIST *texlist);
 
-#pragma optimize("", off)
 // STUB: SADX 0x005019e0
 void PvrLoadtexture(struct NJS_TEXLIST *texlist)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00501b40
 void LoadPlayersTexture(long pno)

@@ -126,12 +126,10 @@ void FUN_008952a0(struct obj *param_1, struct obj *param_2, int param_3, int par
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00895340
 void dummytarget_init(struct task *task_p)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00895430
 void target_draw_object(struct task *task_p, struct obj *obj, int *index)

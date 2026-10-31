@@ -24,9 +24,7 @@ void CreateKiran2(struct NJS_POINT3 *pos, float scl, float spd)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0054ff40
 void effectKiran2(struct task *tp)
 {
 }
-#pragma optimize("", on)

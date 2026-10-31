@@ -16,12 +16,10 @@ struct GHPARTICLE;
 extern struct task *DAT_060c4aa0;
 extern struct task *DAT_060c4aa4;
 
-#pragma optimize("", off)
 // STUB: SADX 0x0070dab0
 static void exec_Lightning(struct task *pTask)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0070dbc0
 void E101R_Lightning(struct NJS_POINT3 *pPos)

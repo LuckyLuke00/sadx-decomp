@@ -88,12 +88,10 @@ void LandLoad(long stage, long act)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004fd020
 void LandRelease(long stage, long act)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004fd1e0
 void LandChangeStage(short ssGap)
@@ -197,12 +195,10 @@ void ManageGroundDisplayer(struct task *pTask)
 	ResetMaterial();
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004fd4e0
 void DrawGround()
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x004fd700
 void land_DrawObject(struct obj *obj, struct _OBJ_LANDENTRY *landEnt)
@@ -223,19 +219,15 @@ float FUN_004fd8e0(float *param_1, float *param_2)
 	return fVar1;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004fd940
 void DrawMotionGround()
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x004fda40
 void MotionGround()
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004fdae0
 void FUN_004fdae0(struct task *param_1)

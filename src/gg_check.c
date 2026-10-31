@@ -74,12 +74,10 @@ unsigned char isGGMessageEnable()
 	return DAT_05ccdf08;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0056f860
 void GGMessageMain(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0056fb80
 long GetGGName(char *pString, unsigned char u8No)

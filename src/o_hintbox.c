@@ -55,13 +55,11 @@ void hintbox_exec_wait(struct task *task_p)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0055e8c0
 static long hintbox_test_range(struct task *task_p, float range)
 {
 	return (long)0;
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0055ea20
 void FUN_0055ea20(void *param_1)
@@ -141,13 +139,11 @@ long FUN_0055f110(struct task *param_1)
 	return (long)hintbox_monitor_set(param_1, (enum monitor_mode)0);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0055f130
 static struct task *hintbox_monitor_set(struct task *task_p, enum monitor_mode mode)
 {
 	return (struct task *)0;
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0055f280
 void hintbox_monitor_exec(struct task *montask_p)

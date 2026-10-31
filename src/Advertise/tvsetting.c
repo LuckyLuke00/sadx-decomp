@@ -119,19 +119,15 @@ void FUN_005fd4e0(int param_1)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005fd510
 void FUN_005fd510(int param_1, int param_2)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005fd5d0
 void FUN_005fd5d0(struct anywk *param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005fd760
 void FUN_005fd760(struct task *param_1)

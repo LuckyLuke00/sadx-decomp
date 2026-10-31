@@ -864,9 +864,7 @@ void dsPlay_Dolby_timer_vq(int tone, int id, int pri, int volofs, int timer, flo
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004b0600
 void dsDolbySound()
 {
 }
-#pragma optimize("", on)

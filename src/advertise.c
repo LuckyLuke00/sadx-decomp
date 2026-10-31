@@ -206,12 +206,10 @@ void FUN_00579960(struct MSGC *param_1, int *param_2, int *param_3)
 	SpLoopOnlyDisplay();
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00579ab0
 void late_displayMission(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00579e00
 void InitDisplayStart()
@@ -249,12 +247,10 @@ void DisplayPress(struct task *tp)
 	late_SetFunc((void (*)(void *))late_DisplayPress, tp, 22047.998f, 1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0057a6a0
 void late_DisplayPress(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0057a860
 void printPauseTexture(enum PAUSE_TEXTURE_ID id, struct NJS_POINT3 *pos, struct NJS_POINT2 *scl)

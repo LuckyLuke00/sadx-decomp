@@ -2,11 +2,13 @@
 
 extern int DAT_05b3ebbc;
 
+#pragma optimize("", off)
 // STUB: SADX 0x0044c420
 const unsigned long *AlMsgStrLoadLang(const char *name, int lang)
 {
 	return (const unsigned long *)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0044c4c0
 int AlMsgStrEmbed(char *dst, const char *format, const char * *suite)

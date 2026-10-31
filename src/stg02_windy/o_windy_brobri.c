@@ -85,12 +85,10 @@ void BrokenBridgePos(struct NJS_POINT3 *pos, int flag, struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0080dfc0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0080e1a0
 void ObjectWindyBridge(struct task *tp)

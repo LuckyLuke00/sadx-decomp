@@ -42,12 +42,10 @@ void lig_resetGjPaletteNo(int no)
 	FUN_00598720((no & 0x7f) >> 1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00598740
 void FUN_00598740(int param_1)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00598890
 void lig_flashPalette(int no)

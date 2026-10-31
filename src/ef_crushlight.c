@@ -11,12 +11,10 @@ void execCrushLight(struct task *pTask)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008c22b0
 void rotate(struct CRUSHLIGHT_WK *pCrushWk)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008c23b0
 void execDeathCrushLight(struct task *pTask)
@@ -33,12 +31,10 @@ void execDeathCrushLight(struct task *pTask)
 	dispCrushLight(pTask);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008c2420
 void dispCrushLight(struct task *pTask)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x008c2830
 float FUN_008c2830(float *param_1, float *param_2, float param_3, float param_4)

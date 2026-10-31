@@ -3,12 +3,10 @@ extern void (*DAT_00a34538[5])(struct task *);
 extern int DAT_060df308;
 extern void (*DAT_00a34568[4])(struct task *);
 
-#pragma optimize("", off)
 // STUB: SADX 0x008b8fa0
 void ObjectTikalHint(struct task *task_p)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x008b9160
 struct task *ObjectTikalBoss(const struct HintMessageString *mes_p, const long adx_index)

@@ -9,19 +9,15 @@ extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern int DAT_060b9138;
 
-#pragma optimize("", off)
 // STUB: SADX 0x006b4290
 static void KasyaDisplay(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x006b45e0
 static void KasyaMain(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006b4640
 void KasyaInit(struct task *tp)

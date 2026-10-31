@@ -32,12 +32,10 @@ void SnakePartsInit(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008da900
 void SnakePartsDraw(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008daa60
 void SnakePartsDisplayer(struct task *tp)

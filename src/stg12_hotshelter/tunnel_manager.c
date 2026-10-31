@@ -6,12 +6,10 @@ extern short DAT_05b9d744;
 extern int DAT_060dd3c0;
 extern int DAT_060dd3c4;
 
-#pragma optimize("", off)
 // STUB: SADX 0x008a2ee0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008a3100
 static void Init(struct task *tp)

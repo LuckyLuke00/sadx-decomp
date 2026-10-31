@@ -11,12 +11,10 @@ struct task *SetAdvaPutiTask(struct ModeSelPrmType *prmp)
 	return DAT_05edd778;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005e8530
 static void FExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005e86e0
 void FUN_005e86e0(void *param_1)

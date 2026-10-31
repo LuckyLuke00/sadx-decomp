@@ -63,12 +63,10 @@ void RingDoneDisplayer(struct task *tp)
 	RingDone(tp->twp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005a7180
 void RingDone(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005a73c0
 void DamegeRingScatter(unsigned char pno)
@@ -105,12 +103,10 @@ void FUN_005a7e10(struct NJS_TEXLIST *param_1, int param_2)
 	*(float *)param_2 = 0.0f;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005a7e50
 void RingDrawShadow(struct task *tp, float tempy, float pushx, float pushz)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005a82d0
 void RingNumRunning(float xpos, float ypos, float zpos, int num)

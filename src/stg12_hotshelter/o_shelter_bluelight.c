@@ -22,12 +22,10 @@ static void Disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008a5ce0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008a5d90
 void ObjShelterBluelight(struct task *tp)

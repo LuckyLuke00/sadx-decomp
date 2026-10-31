@@ -24,12 +24,10 @@ void ColliSet(struct taskwk *twp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006895f0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006898a0
 void FUN_006898a0(struct task *param_1)

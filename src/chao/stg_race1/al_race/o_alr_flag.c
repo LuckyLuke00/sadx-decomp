@@ -4,12 +4,10 @@ static void execObject(struct task *task_p);
 static void initObject(struct task *task_p, void *param_p);
 extern int DAT_05b9d838;
 
-#pragma optimize("", off)
 // STUB: SADX 0x00717660
 static void initObject(struct task *task_p, void *param_p)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007176c0
 static void dispObject(struct task *task_p)

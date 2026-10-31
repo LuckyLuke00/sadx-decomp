@@ -235,24 +235,20 @@ void SaruBombDisplayer(struct task *tp)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c9750
 void SaruBombCollision(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005c9950
 void SaruBombCountDown(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c9ab0
 void SaruBombCountDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005c9d00
 void FUN_005c9d00(struct taskwk *param_1, struct enemywk *param_2)
@@ -260,12 +256,10 @@ void FUN_005c9d00(struct taskwk *param_1, struct enemywk *param_2)
 	SaruBombExplosionDraw(param_1, param_2);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c9d20
 void SaruBombExplosionDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005c9e30
 void SaruBombADisplayer(struct task *tp)

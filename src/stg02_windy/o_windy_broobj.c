@@ -10,12 +10,10 @@ extern struct NJS_MODEL *DAT_03b26f48;
 extern struct NJS_MODEL *DAT_03b273a0;
 extern struct NJS_MODEL *DAT_03b27828;
 
-#pragma optimize("", off)
 // STUB: SADX 0x00809340
 static void Disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00809490
@@ -107,12 +105,10 @@ void ObjectWindyBrokenCubes(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00809c30
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00809da0
 void ObjectWindyBrokenObj(struct task *tp)

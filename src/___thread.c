@@ -79,12 +79,10 @@ void FUN_005a4d90(void)
 	FUN_005a4db0(DAT_05eda1d8);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005a4e00
 void FUN_005a4e00()
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005a4ef0
 void TH_DestroyAll()
@@ -114,12 +112,10 @@ void TH_SetFunc(struct thread *tp, void (*func)(void *), void *pParam)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005a4f80
 void FUN_005a4f80(void *param_1, void *param_2, void *param_3)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005a4fa0
 struct thread *TH_Create(void *func, void *pParam, unsigned int stack_size)

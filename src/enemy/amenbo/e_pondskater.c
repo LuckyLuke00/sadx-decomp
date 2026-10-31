@@ -122,40 +122,30 @@ void FUN_008d6360(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d63e0
 void FUN_008d63e0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d6480
 void FUN_008d6480(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d6640
 void FUN_008d6640(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d68e0
 void FUN_008d68e0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d6b70
 void PondDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008d6c70
 void PondRectifyPosition(struct taskwk *twp, struct enemywk *ewp)

@@ -1,10 +1,12 @@
 #include "decls.h"
 
+#pragma optimize("", off)
 // STUB: SADX 0x0043cd80
 unsigned short AL_KW_GetPlayerCharacterNum()
 {
 	return (unsigned short)0;
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x0043cde0
 void AL_KW_InitPlayerKnowledgeDX(struct task *pChaoTask)

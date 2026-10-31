@@ -104,11 +104,13 @@ struct al_perception_link *AL_GetFoundTree(struct task *tp)
 	return var2;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00463450
 int FUN_00463450(int param_1)
 {
 	return (int)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00463490
 struct task *AL_GetFoundToyTask(struct task *tp)

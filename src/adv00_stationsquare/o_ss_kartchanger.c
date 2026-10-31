@@ -2,12 +2,10 @@
 static void Exec(struct task *tp);
 void FUN_007d21b0(...);
 
-#pragma optimize("", off)
 // STUB: SADX 0x00685a60
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00685bd0
 void ObjectSSKartchanger(struct task *tp)

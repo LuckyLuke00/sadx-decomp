@@ -92,12 +92,10 @@ void CngMotFlyChaos0()
 	DAT_060cc140->twp->mode = 10;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007d30e0
 static void dispChaos0Task(struct task *p_task)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d3ac0
 void destChaos0Task(struct task *p_task)
@@ -112,12 +110,10 @@ void destChaos0Task(struct task *p_task)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007d3b00
 static void execChaos0Task(struct task *p_task)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d3f70
 static void initChaos0Task(struct task *p_task)

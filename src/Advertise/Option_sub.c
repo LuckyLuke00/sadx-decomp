@@ -120,12 +120,10 @@ void FUN_005f0b00(struct task *param_1)
 	DisplayTitleNew(*(float *)((char *)param_1 + 0x10));
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005f0b20
 static void DisplayTitleNew(float basez)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005f0ee0
 void FreeAdvaOptionMenuTask()

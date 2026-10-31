@@ -16,12 +16,10 @@ void ObjectAlrBowChao(struct task *task_p)
 	MirenInitTask(task_p, &ObjectTaskInfo, &DAT_009c8a78);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00717150
 static void initObject(struct task *task_p, void *param_p)
 {
 }
-#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x007171c0

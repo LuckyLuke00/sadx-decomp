@@ -15,12 +15,10 @@ void PoliceDisplayer(struct task *tp)
 	PoliceDraw(local_cg, local_8g);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005cdd60
 void PoliceDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005ced40
 void dispPoliceShadow(struct taskwk *twp, struct enemywk *ewp)
@@ -76,26 +74,20 @@ void PoliceWait(struct taskwk *twp, struct enemywk *ewp)
 	twp->ang.z = AdjustAngle(twp->ang.z, 0, 0xb0);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005cf6d0
 void PoliceCheckTerritory(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005cf800
 void PoliceMove(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005cf9c0
 void PoliceRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005cfd80
 void PoliceScramble(struct taskwk *twp, struct enemywk *ewp)

@@ -114,12 +114,10 @@ int FUN_00550c10(float *param_1, float param_2, float param_3, float param_4, fl
 	return (int)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00550cc0
 void SwitchStatusTable(struct taskwk *pTaskWork)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00550d90
 void FUN_00550d90(void)

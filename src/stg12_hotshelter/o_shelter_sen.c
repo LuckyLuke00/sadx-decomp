@@ -38,12 +38,10 @@ static void ExecNotBig(struct task *tp)
 	Disp(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008b4440
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008b4730
 void ObjShelterSen(struct task *tp)

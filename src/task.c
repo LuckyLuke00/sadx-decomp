@@ -161,12 +161,10 @@ struct task *FUN_004f3870(long param_1, void (*param_2)(struct task *))
 	return local_cg;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004f39c0
 void DestroyTask(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f3be0
 void FreeTask(struct task *tp)
@@ -501,12 +499,10 @@ void *CAlloc(unsigned int num, unsigned int size)
 	return (void *)local_cj;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004f4400
 void Free(void *mp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x004f45c0
 struct task *CreateChildTask(unsigned short im, void (*exec)(struct task *), struct task *tp)

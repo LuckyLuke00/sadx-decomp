@@ -12,12 +12,10 @@ void ghParticleUnitInit(struct GHPARTICLE_UNIT *pUnit, struct NJS_POINT3 *pPos, 
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0060f750
 void ghParticleMove(struct GHPARTICLE_UNIT *pPart, struct GHPARTICLE_INFO *pInfo)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0060f7e0
 void ghParticleSet(struct task *pTask, struct NJS_POINT3 *pPos, struct NJS_POINT3 *pVec, float fStartFrame, float fOffsetZ)

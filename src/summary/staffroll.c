@@ -37,11 +37,13 @@ unsigned long GetNextStaffInterval(struct STAFFROLL_DATA *data, unsigned long st
 	return (unsigned long)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x008b7c70
 unsigned long GetAllStaffInterval(struct STAFFROLL_DATA *data)
 {
 	return (unsigned long)0;
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x008b7d40
 unsigned long GetStaffIntervalFotLogoStaff(struct STAFFROLL_DATA *data)

@@ -5,12 +5,10 @@ static void Initial(struct task *tp);
 // GLOBAL: SADX 0x043ac9f0
 static struct CCL_INFO object_c_info[5];
 
-#pragma optimize("", off)
 // STUB: SADX 0x00856510
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00856630
 static void Initial(struct task *tp)

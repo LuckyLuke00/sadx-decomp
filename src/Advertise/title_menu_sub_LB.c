@@ -69,24 +69,20 @@ struct task *SetAdvaTitleMenuTask_LB(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005fa1e0
 static void title_menu_exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005fa3a0
 void FUN_005fa3a0(struct DDlgType *param_1)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005fac40
 static void title_menu_disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005fb390
 void FUN_005fb390(struct task *param_1)
@@ -94,9 +90,7 @@ void FUN_005fb390(struct task *param_1)
 	DisplayTitleNew(*(float *)((char *)param_1 + 0x10));
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005fb3b0
 static void DisplayTitleNew(float basez)
 {
 }
-#pragma optimize("", on)

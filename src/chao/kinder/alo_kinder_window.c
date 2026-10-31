@@ -33,12 +33,10 @@ struct task *ALK_BaseWindowCreate(struct task *ptp, const struct ALK_WINDOW_TABL
 	return 0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007119c0
 void ALK_SelectWindowExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00711a90
 void ALK_SelectWindowDraw(struct task *tp)

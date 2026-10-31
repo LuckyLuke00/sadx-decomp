@@ -216,12 +216,10 @@ long BigCheckTouch(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 	return (long)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0050b7b0
 void BigThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0050bc80
 void BigGetFloat(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)

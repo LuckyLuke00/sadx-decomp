@@ -47,12 +47,10 @@ void ObjectForCurbCurb(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0081cc10
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0081d0c0
 void ObjectHighwayGroupFence(struct task *tp)

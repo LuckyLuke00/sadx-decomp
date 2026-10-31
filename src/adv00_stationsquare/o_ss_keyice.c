@@ -13,12 +13,10 @@ static long SeqCheck()
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x00688370
 static void dispSSCard(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00688450
 static void exitSSCard(struct task *tp)
@@ -27,12 +25,10 @@ static void exitSSCard(struct task *tp)
 	DAT_060b5fdc = 0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00688470
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00688570
 void ObjectSSKeyice(struct task *tp)

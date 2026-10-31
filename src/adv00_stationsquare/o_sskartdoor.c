@@ -57,19 +57,15 @@ void ObjectColliSet(struct taskwk *twp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00690990
 void ObjectClose(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x00690b20
 static void ObjectMain(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00690bc0
 void FUN_00690bc0(struct task *param_1)

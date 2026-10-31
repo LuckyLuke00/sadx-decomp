@@ -10,12 +10,10 @@ void Object_HitMark(struct task *tp)
 	tp->disp = objDisplay;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0060ea40
 static void objDisplay(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0060eca0
 static void objNormal(struct task *tp)

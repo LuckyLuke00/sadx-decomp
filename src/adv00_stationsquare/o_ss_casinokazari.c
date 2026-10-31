@@ -76,12 +76,10 @@ static void Disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00682330
 static void BuilGDisp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00682460
 void DispDay(struct task *tp)
@@ -194,12 +192,10 @@ static void Exec(struct task *tp)
 	LoopTaskC(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00682580
 static void BuilGExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00682740
 void ExecDay(struct task *tp)

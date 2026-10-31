@@ -17,12 +17,10 @@ static void Exit(struct task *tp)
 	WithdrawCollisionEntry(tp, var2);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00856f90
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00857080
 void ObjectAshiba01(struct task *tp)

@@ -6,12 +6,10 @@ extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern unsigned char DAT_045d9f51;
 
-#pragma optimize("", off)
 // STUB: SADX 0x0085de40
 static void Disp2(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0085df60
 void late_Disp2(struct task *tp)

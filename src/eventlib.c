@@ -356,12 +356,10 @@ void EV_Exec2()
 	DAT_05cda168 = 0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0056ab80
 void FUN_0056ab80(int *param_1, void (*param_2)(void (*)(int)))
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0056ac20
 void EV_Destruct()
@@ -764,12 +762,10 @@ void FUN_0056bb50(struct task *param_1)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0056bd10
 void CalcEventCameraPers()
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0056bdc0
 int HokanInt(int mode, int time, int count, int va, int vb)
@@ -843,12 +839,10 @@ void EV_CameraPos(int mode, int time, float x, float y, float z)
 	FUN_0056ccc0(time);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0056ccc0
 void FUN_0056ccc0(int param_1)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0056cd10
 void EV_CameraPosORY(int mode, int time, struct task *tp, float x, float y, float z)

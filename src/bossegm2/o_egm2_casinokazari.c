@@ -112,12 +112,10 @@ static void Disp(struct task *tp)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006c71d0
 static void BuilGDisp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006c7340
 static void Exec(struct task *tp)
@@ -157,12 +155,10 @@ static void Exec(struct task *tp)
 	LoopTaskC(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006c73e0
 static void BuilGExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006c75a0
 static void BuilGInit(struct task *tp)

@@ -29,12 +29,10 @@ void EnemyAirLift(struct task *tp)
 	*(short *)((char *)local_8 + 4) = *(short *)((char *)local_8 + 4) & ~0x100;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c2c10
 void AirLiftDraw(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005c2e00
 void AirLiftDestructor(struct task *tp)
@@ -188,12 +186,10 @@ void FUN_005c3f90(struct taskwk *param_1, struct enemywk *param_2)
 	EntryColliList(param_1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c3fc0
 void MissleBombDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005c40f0
 void FUN_005c40f0(struct task *param_1)
@@ -238,12 +234,10 @@ void FUN_005c4420(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c44b0
 void AirCollision(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005c4ab0
 void AirWingLightDraw(struct taskwk *twp)
@@ -255,12 +249,10 @@ void FUN_005c4c10(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c4d60
 void AirMove(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005c4e30
 void AirRun(struct taskwk *twp, struct enemywk *ewp)

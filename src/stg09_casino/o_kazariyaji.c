@@ -31,12 +31,10 @@ static void Disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00880790
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008807d0
 void ObjectKazariYaji(struct task *tp)

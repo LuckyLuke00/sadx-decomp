@@ -150,12 +150,10 @@ void FUN_00603060(struct task *param_1, struct ModeSelPrmType *param_2)
 	FUN_006030c0((struct task *)local_8);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006030c0
 void FUN_006030c0(struct task *param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006032f0
 void FUN_006032f0(struct task *param_1)
@@ -192,16 +190,12 @@ void option_sel_disp(struct task *tp)
 	DispOptionSelCsr(local_8);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00604340
 void DispOptionSelCsr(struct _OptionSelWk *wkp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x00604500
 void DrawOptionSelBg(struct _OptionSelWk *wkp)
 {
 }
-#pragma optimize("", on)

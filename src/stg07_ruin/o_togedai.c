@@ -33,12 +33,10 @@ static void Disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00855cd0
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00856090
 void ObjectTogedai1(struct task *tp)

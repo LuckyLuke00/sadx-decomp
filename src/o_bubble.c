@@ -102,12 +102,10 @@ struct o_bubble *FUN_008d9740(struct o_bubble *param_1, struct o_bubble *param_2
 	return (struct o_bubble *)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d97e0
 void FUN_008d97e0(struct taskwk *param_1)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x008d9820
 void FUN_008d9820(int param_1, float *param_2, int *param_3, float param_4, float param_5, float param_6, float param_7)

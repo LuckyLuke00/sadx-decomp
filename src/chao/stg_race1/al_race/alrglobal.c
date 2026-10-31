@@ -61,11 +61,13 @@ int GetAlrRealDebugMode()
 	return (int)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0048f880
 int __fastcall FUN_0048f880(int param_1)
 {
 	return (int)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0048f8b0
 int GetRacerInfoFromRank(int rank, enum Alr_Info info)

@@ -159,10 +159,12 @@ bool Magic::RenderCore::Texture::Load(void* param_1, int param_2, int param_3, i
 	return false;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00922bf0
 Magic::RenderCore::Texture::~Texture()
 {
 }
+#pragma optimize("", on)
 
 // Member initialization and list registration code still differ.
 // FUNCTION: SADX 0x00922c80

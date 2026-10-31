@@ -128,12 +128,10 @@ long FUN_005149c0(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	return (long)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00515140
 void E102ThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00515550
 long E102CalcHover(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)

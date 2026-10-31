@@ -175,12 +175,10 @@ void FUN_0058b470(int param_1)
 		*(short *)(param_1 + 0xa) = 1;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0058b4e0
 void FUN_0058b4e0(struct task *param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0058b530
 void FUN_0058b530(int param_1, int param_2)

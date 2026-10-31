@@ -53,19 +53,15 @@ long GetTargetCoconutPosition(struct NJS_POINT3 *pos_p, int chaoId)
 	return 0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00490180
 static void initObject(struct task *task_p, void *param_p)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x00490270
 static void dispObject(struct task *task_p)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00490310
 static void destObject(struct task *task_p)
@@ -79,12 +75,10 @@ float FUN_00490330(struct task *param_1)
 	return (float)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00490380
 static void execObject(struct task *task_p)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00490490
 struct task *SetTargetCoconut(int id, const struct NJS_POINT3 *pos_p, const struct Angle3 *ang_p, struct task *chaoTask_p)

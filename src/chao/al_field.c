@@ -45,11 +45,13 @@ void FUN_004517b0(struct task *param_1, int param_2)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004517d0
 struct task *AL_AllFieldCreateTT(unsigned long kind, struct NJS_POINT3 *pPos, float radius, long WaitTime, long ActiveTime)
 {
 	return (struct task *)0;
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x00451850
 struct task *AL_ChildFieldCreateT(struct task *pParentTask, unsigned long kind, struct NJS_POINT3 *pPos, float radius, long time)

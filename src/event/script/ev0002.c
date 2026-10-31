@@ -2,12 +2,10 @@
 extern struct task *DAT_060cbf64;
 static void initChaos0Task(struct task *p_task);
 
-#pragma optimize("", off)
 // STUB: SADX 0x007ce8c0
 static void initChaos0Task(struct task *p_task)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007ce8e0
 void FUN_007ce8e0(float param_1, float param_2, float param_3, long param_4)

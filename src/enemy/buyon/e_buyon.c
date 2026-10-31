@@ -22,12 +22,10 @@ void dispBuyonSub(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008dea80
 void dispBuyon(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008deaf0
 void execBuyonJel(struct task *tp)

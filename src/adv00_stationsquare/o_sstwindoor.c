@@ -34,12 +34,10 @@ void FUN_0068fa50(struct task *param_1)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0068fb40
 static void ObjectClose(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0068fbd0
 void ObjectWait(struct task *tp)
@@ -66,12 +64,10 @@ void ObjectWait(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0068fc40
 static void ObjectOpen(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0068fcd0
 static void ObjectMain(struct task *tp)
