@@ -474,6 +474,7 @@ void _alg_entrance_prolog();
 void _alg_entrance_epilog();
 void AL_ENT_DelayedTaskAdd(struct task *tp, void (*func)(struct task *));
 void FUN_00472030(struct task *);
+void FUN_00472120(struct task *param_1);
 void AL_EntranceMenuManagerExecutor(struct task *tp);
 void AL_EntranceMenuManagerDestructor(struct task *tp);
 void FUN_00472980(struct NJS_SPRITE *param_1, int param_2, float param_3, unsigned long param_4);
