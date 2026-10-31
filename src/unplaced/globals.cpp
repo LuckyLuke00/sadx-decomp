@@ -4958,6 +4958,9 @@ float DAT_05b3df3c;
 // GLOBAL: SADX 0x05b3df40
 float DAT_05b3df40;
 
+// GLOBAL: SADX 0x05b3df44
+float DAT_05b3df44;
+
 // GLOBAL: SADX 0x05b3df48
 int DAT_05b3df48;
 

@@ -1930,6 +1930,22 @@
    "library": false
   },
   {
+   "address": "0x00422330",
+   "name": "njDrawPolygon3D",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004223f0",
+   "name": "njDrawTriangle3D",
+   "accuracy": 0.09876543209876543,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004224d0",
    "name": "njColorBlendingMode",
    "accuracy": 0.044444444444444446,
@@ -13756,7 +13772,7 @@
   {
    "address": "0x004a0690",
    "name": "late_ReleaseTexture",
-   "accuracy": 0.9411764705882353,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -13948,17 +13964,17 @@
   {
    "address": "0x004a2010",
    "name": "___njDrawLine3D",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004a2080",
    "name": "___njDrawTriangle3D",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -13972,9 +13988,9 @@
   {
    "address": "0x004a2180",
    "name": "___njDrawPolygon3D",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -14236,15 +14252,23 @@
   {
    "address": "0x004a47d0",
    "name": "late_DrawObjectClip",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004a4820",
    "name": "late_DrawObject",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004a4870",
+   "name": "lateDrawObject",
+   "accuracy": 0.011661807580174927,
    "effective": false,
    "stub": true,
    "library": false
@@ -14276,15 +14300,23 @@
   {
    "address": "0x004a51f0",
    "name": "late_DrawObjectClipEx",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004a5240",
    "name": "late_DrawObjectEx",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004a5290",
+   "name": "DrawObjectClipEx",
+   "accuracy": 0.011661807580174927,
    "effective": false,
    "stub": true,
    "library": false
@@ -14316,15 +14348,23 @@
   {
    "address": "0x004a5c80",
    "name": "FUN_004a5c80",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004a5cd0",
    "name": "late_DrawObjectClipMS",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004a5d20",
+   "name": "DrawObjectMS",
+   "accuracy": 0.011661807580174927,
    "effective": false,
    "stub": true,
    "library": false
@@ -14364,15 +14404,23 @@
   {
    "address": "0x004a6940",
    "name": "late_DrawObjectMesh",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x004a6990",
    "name": "late_DrawObjectClipMesh",
-   "accuracy": 0.26666666666666666,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004a69e0",
+   "name": "DrawObjectClipMesh",
+   "accuracy": 0.011661807580174927,
    "effective": false,
    "stub": true,
    "library": false
@@ -98327,5 +98375,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "79a761d966ef4680f8ce90355fab611c3e1dc489db9dca8d0fb6ce4134c9c79f"
+ "inputs_sha256": "1d3f46f5985fccbac00ad35d3cb3cbcc46206adfc04f22b176ce0e55669f062b"
 }

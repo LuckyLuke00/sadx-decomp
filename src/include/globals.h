@@ -1657,6 +1657,7 @@ extern NJS_ARGB DAT_05b3df28;
 extern float DAT_05b3df38;
 extern float DAT_05b3df3c;
 extern float DAT_05b3df40;
+extern float DAT_05b3df44;
 extern int DAT_05b3df48;
 extern int DAT_05b3df4c;
 extern unsigned char DAT_05b3df51;
