@@ -114,6 +114,18 @@ def declared_name(sig: str) -> str | None:
     return ids[-1] if ids else None
 
 
+def declares(line: str, name: str) -> bool:
+    """Whether LINE declares NAME at file scope, unlike an indented call or struct member."""
+    return line[:1] not in " \t" and line.endswith(";") and declared_name(line[:-1]) == name
+
+
+def code_outside(lines: list[str], name: str, span: tuple[int, int] | None = None) -> str:
+    """The code of LINES, without comments and strings, outside SPAN (a definition's first and last line index) and
+    outside the file-scope declarations of NAME."""
+    rest = lines if span is None else lines[:span[0]] + lines[span[1] + 1:]
+    return strip_code("\n".join(line for line in rest if not declares(line, name)))
+
+
 def without_parameter_name(param: str) -> str:
     """One parameter's type: `struct task *tp` gives `struct task *`, `void (*f)(int)` gives `void (*)(int)`."""
     param = " ".join(param.split())

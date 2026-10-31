@@ -6,6 +6,7 @@ run() returns the failures as "<helper> gives <found> for <input>, not <wanted>"
 
 import llm
 import names
+import stubpairs
 
 ANN = "// FUNCTION: SADX 0x00401000"
 
@@ -80,7 +81,8 @@ def check_kept_alive() -> list[str]:
 
 
 WRAP_BASE = "\n".join(['#include "x.h"', "", "// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "}", ""])
-WRAPPED = [llm.OFF, llm.ON]
+WRAPPED = [stubpairs.OFF, stubpairs.ON]
+CALLS_BOTH = WRAP_BASE.replace("{\n}", "{\n\tDraw();\n\tDisp();\n}")
 
 
 def stub_lines(address: int, sig: str) -> list[str]:
@@ -94,25 +96,46 @@ def pragma_lines(text: str) -> list[str]:
 
 
 def check_wrapped_stubs() -> list[str]:
-    """A static STUB that apply_function writes sits between pragma optimize off and on, and so does a global STUB
-    that its file calls. A function replaces it together with the pair, a second stub goes above the pair of a later
-    one, a rewritten stub keeps one pair, and a global stub that nothing in its file names gets none. No definition
-    is left unclosed."""
-    one = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "static void Draw(void)"))
-    two = llm.apply_function(one, 0x300, [], stub_lines(0x300, "static void Disp(void)"))
+    """A STUB that apply_function writes sits between pragma optimize off and on when its file calls it, static or
+    not, and has no pair when nothing calls it or the file only takes its address. A function replaces it together
+    with the pair, a second stub goes above the pair of a later one, and a rewritten stub keeps one pair. A function
+    that calls a stub gives it the pair, and one that stops calling it takes the pair away. A constructor's stub has
+    one when its file makes the class with `new`. In /Od code no stub has one, and pair_stubs of its own output
+    changes nothing. No definition is left unclosed."""
+    draw, disp = stub_lines(0x500, "static void Draw(void)"), stub_lines(0x300, "static void Disp(void)")
+    one = llm.apply_function(CALLS_BOTH, 0x500, [], draw)
+    two = llm.apply_function(one, 0x300, [], disp)
     function = ["// FUNCTION: SADX 0x00000500", "static void Draw(void)", "{", "\tmarker();", "}"]
-    rewritten = llm.apply_function(two, 0x500, [], stub_lines(0x500, "static void Draw(void)"))
-    global_stub = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "void Draw(void)"))
-    called = llm.apply_function(WRAP_BASE.replace("{\n}", "{\n\tDraw();\n}"), 0x500, [],
-                                stub_lines(0x500, "void Draw(void)"))
-    cases = [("one stub", pragma_lines(one), WRAPPED),
+    rewritten = llm.apply_function(two, 0x500, [], draw)
+    uncalled = llm.apply_function(WRAP_BASE, 0x500, [], draw)
+    caller = ["// FUNCTION: SADX 0x00001000", "void Exec(void)", "{", "\tDraw();", "}"]
+    called = llm.apply_function(uncalled, 0x1000, [], caller)
+    address = llm.apply_function(WRAP_BASE.replace("{\n}", "{\n\tsetup(Draw);\n}"), 0x500, [], draw)
+    maker = WRAP_BASE.replace("void Exec(void)\n{\n}", "void Exec(void)\n{\n\tnew Item;\n}")
+    constructor = llm.apply_function(maker, 0x500, [], stub_lines(0x500, "Item::Item(void)"))
+    cases = [("one stub that its file calls", pragma_lines(one), WRAPPED),
              ("a second stub above the first", pragma_lines(two), WRAPPED * 2),
              ("a function over a stub", pragma_lines(llm.apply_function(two, 0x500, [], function)), WRAPPED),
              ("a stub over a stub", pragma_lines(rewritten), WRAPPED * 2),
-             ("a global stub", pragma_lines(global_stub), []),
-             ("a global stub that its file calls", pragma_lines(called), WRAPPED)]
+             ("a static stub that nothing calls", pragma_lines(uncalled), []),
+             ("a global stub that nothing calls",
+              pragma_lines(llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "void Draw(void)"))), []),
+             ("a global stub that its file calls",
+              pragma_lines(llm.apply_function(CALLS_BOTH, 0x500, [], stub_lines(0x500, "void Draw(void)"))), WRAPPED),
+             ("a stub whose address its file takes", pragma_lines(address), []),
+             ("a new caller of a stub", pragma_lines(called), WRAPPED),
+             ("a caller that stops calling a stub",
+              pragma_lines(llm.apply_function(called, 0x1000, [], caller[:3] + caller[4:])), []),
+             ("a constructor's stub", pragma_lines(constructor), WRAPPED),
+             ("a constructor's stub that only another member's name scopes",
+              pragma_lines(stubpairs.pair_stubs(constructor.replace("\tnew Item;", "\tItem::Count = 0;"), None)), []),
+             ("a file without functions",
+              pragma_lines(stubpairs.pair_stubs(constructor.replace("// FUNCTION", "// STUB"), None)), []),
+             ("/Od code", pragma_lines(stubpairs.pair_stubs(two, "/Od /GS")), [])]
     failures = [f"apply_function leaves {found} for {what}, not {wanted}" for what, found, wanted in cases
                 if found != wanted]
+    if stubpairs.pair_stubs(two, None) != two:
+        failures.append(f"pair_stubs changes its own output {two!r}")
     if llm.unclosed_definitions(two.split("\n")):
         failures.append(f"apply_function leaves an unclosed definition in {two!r}")
     return failures
@@ -120,7 +143,7 @@ def check_wrapped_stubs() -> list[str]:
 
 def check_definition_block() -> list[str]:
     """definition_block is a wrapped stub's definition_span plus its pair, and the span of a definition without one."""
-    lines = llm.apply_function(WRAP_BASE, 0x500, [], stub_lines(0x500, "static void Draw(void)")).split("\n")
+    lines = llm.apply_function(CALLS_BOTH, 0x500, [], stub_lines(0x500, "static void Draw(void)")).split("\n")
     failures = []
     block, span = llm.definition_block(lines, 0x500), llm.definition_span(lines, 0x500)
     if block != (span[0] - 1, span[1] + 1):
@@ -132,20 +155,22 @@ def check_definition_block() -> list[str]:
 
 
 def check_stub_functions_wrap() -> list[str]:
-    """stub_functions wraps the stub of a static function and of a global one that its file calls, and not the stub
-    of a global one that nothing in its file names. A call in a comment does not count."""
+    """stub_functions wraps the stub of a function that its file calls, static or not, and not the stub of one that
+    nothing in its file calls. A call in a comment does not count."""
     failures = []
     stubbed = llm.stub_functions(WRAP_BASE, [0x1000])
     if pragma_lines(stubbed):
         failures.append(f"stub_functions wraps a global stub in {stubbed!r}")
     static = llm.stub_functions(WRAP_BASE.replace("void Exec", "static void Exec"), [0x1000])
-    if pragma_lines(static) != WRAPPED:
-        failures.append(f"stub_functions leaves {pragma_lines(static)} for a static function, not a wrapped stub")
+    if pragma_lines(static):
+        failures.append(f"stub_functions wraps a static stub that nothing calls in {static!r}")
     caller = ["", "// FUNCTION: SADX 0x00002000", "void Run(void)", "{", "\tExec();", "}", ""]
-    called = llm.stub_functions(WRAP_BASE.rstrip("\n") + "\n" + "\n".join(caller), [0x1000])
-    if pragma_lines(called) != WRAPPED:
-        failures.append(f"stub_functions leaves {pragma_lines(called)} for a global function its file calls, "
-                        "not a wrapped stub")
+    for kind in ("void Exec", "static void Exec"):
+        called = llm.stub_functions(WRAP_BASE.replace("void Exec", kind).rstrip("\n") + "\n" + "\n".join(caller),
+                                    [0x1000])
+        if pragma_lines(called) != WRAPPED:
+            failures.append(f"stub_functions leaves {pragma_lines(called)} for `{kind}` that its file calls, "
+                            "not a wrapped stub")
     commented = llm.stub_functions(WRAP_BASE.rstrip("\n") + "\n// Exec() is set up elsewhere\n", [0x1000])
     if pragma_lines(commented):
         failures.append(f"stub_functions wraps a global stub that only a comment names in {commented!r}")
