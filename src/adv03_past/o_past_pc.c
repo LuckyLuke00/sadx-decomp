@@ -1,9 +1,21 @@
 #include "decls.h"
+extern int DAT_060b96b4;
+extern struct task *DAT_060b9680[4];
 extern const struct pastpc_data pastpc_data_tbl[1];
 
-// STUB: SADX 0x006bcbd0
+// FUNCTION: SADX 0x006bcbd0
 void PASTPcEnd()
 {
+	while (DAT_060b96b4 != 0)
+	{
+		struct task *var1 = DAT_060b9680[DAT_060b96b4];
+		DAT_060b96b4 = DAT_060b96b4 - 1;
+		if (var1 != 0)
+		{
+			DestroyTask(var1);
+			*(int *)((char *)DAT_060b9680 + 4 + DAT_060b96b4 * 4) = 0;
+		}
+	}
 }
 
 // STUB: SADX 0x006bcc90

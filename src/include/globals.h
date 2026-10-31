@@ -2538,6 +2538,8 @@ extern int DAT_060b9104;
 extern int DAT_060b9138;
 extern struct NJS_MOTION DAT_060b9144[16];
 extern int DAT_060b9224;
+extern struct task *DAT_060b9680[4];
+extern int DAT_060b96b4;
 extern long DAT_060b97f0;
 extern struct obj *DAT_060b97f4[4];
 extern int DAT_060b9908;

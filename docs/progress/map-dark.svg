@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1450" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,656 of 16,524 game functions done (34.22%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,657 of 16,524 game functions done (34.23%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 592,1206.5 586,1199.6 587.1,1198" fill="#4e32f3"/>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 586,1199.6 587.1,1198" fill="#ffffff" fill-opacity="0.4"/>
@@ -1489,8 +1489,8 @@
 <rect x="56" y="105" width="6" height="6" fill="#ffd700"><title>0x006bbbd0 FUN_006bbbd0: 100%</title></rect>
 <rect x="126" y="105" width="6" height="6" fill="#ffd700"><title>0x00855000 KasyaDestruct: 100%</title></rect>
 </g>
-<rect x="831" y="1120" width="149" height="67" rx="3" fill="#21262d" stroke="#30363d"><title>The Past: 33 of 115 functions done</title></rect>
-<text x="834" y="1134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">The Past <tspan font-weight="400" fill="#8b949e">19%</tspan></text>
+<rect x="831" y="1120" width="149" height="67" rx="3" fill="#21262d" stroke="#30363d"><title>The Past: 34 of 115 functions done</title></rect>
+<text x="834" y="1134" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">The Past <tspan font-weight="400" fill="#8b949e">20%</tspan></text>
 <g transform="translate(834,1138)">
 <rect y="0" width="140" height="35" fill="url(#todo)"/>
 <rect y="35" width="105" height="7" fill="url(#todo)"/>
@@ -1499,6 +1499,7 @@
 <rect x="56" y="0" width="6" height="6" fill="#ffd700"><title>0x006bc5b0 FUN_006bc5b0: 100%</title></rect>
 <rect x="63" y="0" width="6" height="6" fill="#ffd700"><title>0x006bc660 LoadMapPAST: 100%</title></rect>
 <rect x="77" y="0" width="6" height="6" fill="#ffd700"><title>0x006bc840 DestroyMapPAST: 100%</title></rect>
+<rect x="133" y="0" width="6" height="6" fill="#ffd700"><title>0x006bcbd0 PASTPcEnd: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x006bce20 pastpc_end: 100%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x006bcec0 pastpc_talk: 100%</title></rect>
 <rect x="63" y="7" width="6" height="6" fill="#ffd700"><title>0x006bd170 mainLastPast01: 100%</title></rect>
