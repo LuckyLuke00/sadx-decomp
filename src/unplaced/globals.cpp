@@ -3020,6 +3020,9 @@ struct obj object_royasaku_royasaku_royasaku[1];
 // GLOBAL: SADX 0x03f610c4
 struct obj object_sotosaku_qsaku_qsaku[1];
 
+// GLOBAL: SADX 0x03f67bdc
+struct NJS_ACTION action_kassha1st_st[1];
+
 // GLOBAL: SADX 0x03f71b7c
 struct obj object_fun_test_funkaball_funkaball;
 

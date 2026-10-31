@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1450" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,652 of 16,524 game functions done (34.20%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,654 of 16,524 game functions done (34.21%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 592,1206.5 586,1199.6 587.1,1198" fill="#4e32f3"/>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 586,1199.6 587.1,1198" fill="#ffffff" fill-opacity="0.4"/>
@@ -648,7 +648,7 @@
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x00863330 ObjectMizukusaB: 100%</title></rect>
 <rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x00865a00 ObjectIcecapTuribasiExecutor: 100%</title></rect>
 <rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x008660c0 DoaExec: 100%</title></rect>
-<rect x="56" y="56" width="6" height="6" fill="#b07d00"><title>0x00866240 Draw(17): 100%</title></rect>
+<rect x="56" y="56" width="6" height="6" fill="#b07d00"><title>0x00866240 Draw(18): 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#b07d00"><title>0x008662c0 Exec(29): 100%</title></rect>
 <rect x="70" y="56" width="6" height="6" fill="#b07d00"><title>0x008662e0 ObjectGreenMokuA: 100%</title></rect>
 <rect x="77" y="56" width="6" height="6" fill="#b07d00"><title>0x00866310 ObjectGreenMokuB: 100%</title></rect>
@@ -789,7 +789,7 @@
 <rect x="56" y="77" width="6" height="6" fill="#b07d00"><title>0x00825d40 dispElevator: 100%</title></rect>
 <rect x="63" y="77" width="6" height="6" fill="#b07d00"><title>0x00825e10 dispEvStep: 100%</title></rect>
 </g>
-<rect x="389" y="87" width="135" height="149" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Red Mountain: 69 of 262 functions done</title></rect>
+<rect x="389" y="87" width="135" height="149" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Red Mountain: 71 of 262 functions done</title></rect>
 <text x="392" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Red Mountain <tspan font-weight="400" fill="#59636e">11%</tspan></text>
 <g transform="translate(392,105)">
 <rect y="0" width="126" height="98" fill="url(#todo)"/>
@@ -845,6 +845,8 @@
 <rect x="119" y="63" width="6" height="6" fill="#b07d00"><title>0x00832250 ObjectMountainGear: 100%</title></rect>
 <rect x="14" y="70" width="6" height="6" fill="#b07d00"><title>0x00832500 DisplayLavaBall: 100%</title></rect>
 <rect x="42" y="70" width="6" height="6" fill="#b07d00"><title>0x00832a30 ColliEruptExplosion: 100%</title></rect>
+<rect x="112" y="70" width="6" height="6" fill="#b07d00"><title>0x00833700 Draw(16): 100%</title></rect>
+<rect x="119" y="70" width="6" height="6" fill="#b07d00"><title>0x008337e0 ObjectMountainGliding: 100%</title></rect>
 <rect x="7" y="77" width="6" height="6" fill="#b07d00"><title>0x00833b30 ObjectMountainLightB: 100%</title></rect>
 <rect x="35" y="77" width="6" height="6" fill="#b07d00"><title>0x00833fb0 HanmaExec: 100%</title></rect>
 <rect x="35" y="84" width="6" height="6" fill="#b07d00"><title>0x008355e0 DrawBonehead: 100%</title></rect>
@@ -988,7 +990,7 @@
 <rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x008533b0 DrawFire: 100%</title></rect>
 <rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x00853490 FUN_00853490: 100%</title></rect>
 <rect x="105" y="21" width="6" height="6" fill="#b07d00"><title>0x008535a0 dispcNormal: 100%</title></rect>
-<rect x="147" y="21" width="6" height="6" fill="#b07d00"><title>0x00853ae0 Draw(16): 100%</title></rect>
+<rect x="147" y="21" width="6" height="6" fill="#b07d00"><title>0x00853ae0 Draw(17): 100%</title></rect>
 <rect x="0" y="28" width="6" height="6" fill="#b07d00"><title>0x00853ba0 ObjectRuinTap: 100%</title></rect>
 <rect x="7" y="28" width="6" height="6" fill="#b07d00"><title>0x00853c00 ObjectRuinLight: 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x00853ee0 SwitchTerm: 100%</title></rect>
