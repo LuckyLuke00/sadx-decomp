@@ -247,12 +247,10 @@ void disp_message_get(struct MSGC *msgc_p, char *message_p)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0056da30
 void field_msg_front_fade(struct MSGC *msgc_p, long time, long rate)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0056daf0
 void field_msg_back_fade(struct MSGC *msgc_p, long time, long rate)
@@ -275,12 +273,10 @@ void disp_message_after(struct MSGC *msgc_p)
 	PauseEnable();
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0056dc40
 void FUN_0056dc40(struct MSGC *param_1)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0056dcc0
 void disp_message_draw_wait_button(struct MSGC *msgc_p)
@@ -297,12 +293,10 @@ void disp_main_messageTime(char * *message)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0056e210
 void field_msg_create_man(void (*thread_func)(void *), void *arg_p, long adx_use)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0056e2b0
 void field_msg_wait_message_loop(struct task *task_p)

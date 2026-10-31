@@ -43,12 +43,10 @@ void ADC_Displayer(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005d5350
 static void ADC_DrumCanExe(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005d5510
 long ADC_SetDrumCan()

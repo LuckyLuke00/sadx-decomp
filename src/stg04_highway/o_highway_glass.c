@@ -93,12 +93,10 @@ void Break(struct task *tp)
 	Hit(tp, 0x3c);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008247e0
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008248b0
 void ObjectHighwayGlass(struct task *tp)

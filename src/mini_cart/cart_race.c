@@ -39,11 +39,13 @@ signed char CartRaceGetDialState()
 	return var1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x007e5320
 long CartRaceInitTime()
 {
 	return (long)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007e54d0
 void initRace(struct task *task_p, const void *param_p)

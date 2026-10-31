@@ -1,11 +1,9 @@
 #include "decls.h"
 
-#pragma optimize("", off)
 // STUB: SADX 0x00862eb0
 void Object_IcecapFuusya1Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00862f50
 void ObjectIcecapFuusya1(struct task *tp)

@@ -144,12 +144,10 @@ void FUN_00576bf0(struct task *param_1)
 	*(int *)((char *)param_1 + 4) = 2;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00576c10
 void FUN_00576c10(struct task *param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00576d20
 void DrawDialogBg(struct DialogWk *wkp)
@@ -181,12 +179,10 @@ struct task *SetDialogTask()
 	return local_8g;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005778c0
 void SetDialogLocalPrm(struct DialogWk *wkp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00577930
 void FreeDialogTask()
@@ -209,12 +205,10 @@ void OpenDialogQuick(struct DialogPrmType *dp, signed char csr, signed char *dis
 	FUN_00576bf0((struct task *)DAT_05cd2600->awp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005779c0
 void FUN_005779c0(signed char param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00577a40
 void OpenDialogCsrLet(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)

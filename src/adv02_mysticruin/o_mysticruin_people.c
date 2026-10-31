@@ -71,11 +71,13 @@ void mrp_walk_man(struct task *task_p)
 	LoopTaskC(task_p);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006b04e0
 struct task *mrp_walk_act_init(long act_num)
 {
 	return (struct task *)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006b05c0
 void mrp_actman(struct task *task_p)

@@ -47,26 +47,20 @@ signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp)
 	return (signed char)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005e2b60
 void EnemyGetShadow(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005e2cc0
 void FUN_005e2cc0(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005e2d50
 void EnemyCheckFloor(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005e3b40
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp)

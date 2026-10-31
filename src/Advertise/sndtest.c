@@ -23,13 +23,11 @@ struct task *SetAdvaSndTestTask(struct ModeSelPrmType *prmp)
 	return local_8g;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00604760
 struct task *FUN_00604760(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 	return (struct task *)0;
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006047e0
 void FUN_006047e0(int param_1)
@@ -179,12 +177,10 @@ void FUN_00605830(unsigned long param_1, unsigned long param_2, float param_3)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006058a0
 void DrawSndTestSubMenuBg(struct SndTestWk *wkp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00605aa0
 void FUN_00605aa0(unsigned long param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4, float param_5)

@@ -69,12 +69,10 @@ void InputHookDelete(struct task *del_task_p)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0055f6f0
 static void inputhook_exec(struct task *task_p)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0055f990
 void FUN_0055f990(struct task *param_1)

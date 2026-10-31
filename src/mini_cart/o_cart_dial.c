@@ -11,12 +11,10 @@ void ObjectCartDial(struct task *task_p)
 	MirenInitTask(task_p, &ObjectTaskInfo, &DAT_00a09fb0);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007e6060
 static void initObject(struct task *task_p, void *param_p)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x007e6080
 void FUN_007e6080(char param_1)

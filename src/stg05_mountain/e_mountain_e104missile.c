@@ -9,12 +9,10 @@ extern "C" double atan2(double v, double u);
 extern int DAT_060cf238;
 static void dest(struct task *pTask);
 
-#pragma optimize("", off)
 // STUB: SADX 0x00837a10
 static void disp(struct task *pTask)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00837bc0
 static void dest(struct task *pTask)
@@ -30,12 +28,10 @@ static void dest(struct task *pTask)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00837bf0
 static void _exec(struct task *pTask)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00837db0
 void EnemyMountainTgtMissile(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct colliwk *pIgnoreColliWk)

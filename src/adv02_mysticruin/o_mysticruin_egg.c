@@ -38,12 +38,10 @@ static void DesertATask(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006b0820
 static void ExecATask(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006b0940
 void ObjectMysticRuinEgg(struct task *tp)

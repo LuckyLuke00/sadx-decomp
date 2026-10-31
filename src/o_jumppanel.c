@@ -113,12 +113,10 @@ void ObjectJumpPanel(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005b3db0
 void ObjectJumpPanelSetNumber(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005b3e10
 void ObjectJumpPanelRegular(struct task *tp)
@@ -150,12 +148,10 @@ void ObjectJumpPanelRegular(struct task *tp)
 	ObjectJumpPanelDisplay(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005b3ee0
 void FUN_005b3ee0(struct task *param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005b3f80
 void ObjectJumpPanelDisplay(struct task *tp)
@@ -233,12 +229,10 @@ void EffectJumpPannel(struct task *tp)
 	EffJPDisp(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005b41e0
 void EffJPDisp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005b42f0
 void EffJPExec(struct task *tp)

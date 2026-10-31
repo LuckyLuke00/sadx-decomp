@@ -131,12 +131,10 @@ long cameraLRSupport(void)
 	return (long)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00562930
 void calcCamTargetPos(int flag)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00562cc0
 void CameraChaos(struct _OBJ_CAMERAPARAM *pParam)
@@ -281,12 +279,10 @@ void FUN_00563b50(void)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00563b70
 void CameraLocalPath(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00563e90
 void CameraStay(struct _OBJ_CAMERAPARAM *pParam)
@@ -467,12 +463,10 @@ void FUN_00566760(struct _OBJ_CAMERAPARAM *param_1)
 	cameraDebugMake(param_1, local_cg, local_8g);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00566790
 void cameraDebugMake(struct _OBJ_CAMERAPARAM *pParam, struct NJS_POINT3 *_pos, struct NJS_POINT3 *_tgt)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00567060
 void adjustChange()
@@ -548,12 +542,10 @@ void FUN_00567400(struct _OBJ_CAMERAPARAM *param_1)
 	cameraSonicMain(param_1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00567470
 void cameraSonicMain(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005675c0
 void FUN_005675c0(void)

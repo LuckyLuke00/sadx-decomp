@@ -71,19 +71,15 @@ void FUN_005c09e0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c0a60
 void FUN_005c0a60(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005c0b80
 void FUN_005c0b80(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005c0d20
 void FUN_005c0d20(void *param_1, void *param_2)

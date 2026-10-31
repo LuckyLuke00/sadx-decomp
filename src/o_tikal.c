@@ -129,7 +129,6 @@ void tikal_dispSwitch(int sw)
 	tikal_sw = sw;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005bb820
 void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, long frame, float scale)
 {
@@ -161,14 +160,11 @@ void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struc
 	___njColorBlendingMode(1, 6);
 	ResetMaterial();
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005bb910
 void FUN_005bb910(struct task *param_1, struct NJS_POINT3 *param_2, void *param_3, int param_4)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005bb9d0
 void FUN_005bb9d0(struct task *param_1)

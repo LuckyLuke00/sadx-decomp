@@ -11,19 +11,15 @@ static void InitATask(struct task *tp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008a4bd0
 static void DispATask(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008a4cc0
 static void ExecATask(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008a4f00
 void ObjShelterGate2(struct task *tp)

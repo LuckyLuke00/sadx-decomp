@@ -83,12 +83,10 @@ void cNormal2(struct task *ctp)
 	___dsDrawModel((struct NJS_MODEL *)var1->value.ptr);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008830b0
 static void Normal2(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008831a0
 void ObjectNeon(struct task *tp)

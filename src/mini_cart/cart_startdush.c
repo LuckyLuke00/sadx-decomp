@@ -20,12 +20,10 @@ void setDashParam(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007e4eb0
 void startDushCheck(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007e4f60
 void InitStartDushCheck()

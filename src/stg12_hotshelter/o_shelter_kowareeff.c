@@ -22,12 +22,10 @@ static void Disp(struct task *tp)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008b6da0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008b6ef0
 void ObjShelterKowareeff(struct task *tp)

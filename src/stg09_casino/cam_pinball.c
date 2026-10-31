@@ -3,12 +3,10 @@ extern struct taskwk *DAT_05b42a7c;
 extern unsigned char DAT_060dbca7;
 static void Normal(struct task *tp);
 
-#pragma optimize("", off)
 // STUB: SADX 0x00887ea0
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00888080
 void CameraPinball(struct task *tp)

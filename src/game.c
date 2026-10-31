@@ -468,12 +468,10 @@ short FUN_004c8190(void)
 	return local_cg;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004c81c0
 void GameLoop_with_SyoriOchiTaisaku()
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c8330
 short GameLoop()
@@ -850,12 +848,10 @@ void AdvanceAct(short ssActAddition)
 	AdvanceActLocal(ssActAddition);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004c94f0
 void AdvanceActLocal(short ssActAddition)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c9630
 void SetEntranceNumber(signed char number)

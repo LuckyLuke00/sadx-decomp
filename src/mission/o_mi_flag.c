@@ -23,12 +23,10 @@ static void Disp(struct task *tp)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0049c860
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0049ca00
 void ObjectMiFlag(struct task *tp)

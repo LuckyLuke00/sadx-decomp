@@ -33,12 +33,10 @@ void stopWaveCtrl(int id)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007d7710
 static void execWaveTask(struct task *p_task)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d7790
 static void initWaveTask(struct task *p_task)

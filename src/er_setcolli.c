@@ -10,12 +10,10 @@ void ERSetColli(struct task *tp)
 	tp->exec = ERSC_CommonExec;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008ddd40
 void ERSC_CorrectParameter(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x008de700
 void ERSC_DisplayEditInfo(struct task *tp)

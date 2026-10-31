@@ -22,12 +22,10 @@ static void ObjectDisplay(struct task *tp)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00690730
 static void ObjectMain(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006907f0
 void ObjectSSShop1door(struct task *tp)

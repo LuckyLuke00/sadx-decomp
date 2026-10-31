@@ -11,19 +11,15 @@ static void Exit(struct task *tp)
 	FUN_007d21b0(&texuv2info[0], 7);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0087fdf0
 static void Disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x0087ff90
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0087ffb0
 void ObjectCardUV(struct task *tp)

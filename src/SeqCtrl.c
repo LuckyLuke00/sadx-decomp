@@ -510,12 +510,10 @@ void SeqTaskFadeIn(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004f5a10
 void DisplayFade(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f5ac0
 void SeqTaskFadeOut(struct task *tp)

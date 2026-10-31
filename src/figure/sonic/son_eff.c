@@ -152,57 +152,45 @@ void EffectStartHoming(struct task *tp)
 	EffectStartHomingDisplay(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005af930
 void EffectSpinInit(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005afba0
 void EffectSpinDSInit(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005afdf0
 void EffectStartHomingInit(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005aff20
 void EffectSpinDisplay(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005b0120
 void EffectSpinExecute(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005b0180
 void EffectSpinDSDisplay(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005b0300
 void EffectSpinDSExecute(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005b03b0
 void EffectStartHomingDisplay(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005b04f0
 void EffectStartHomingExecute(struct task *tp)

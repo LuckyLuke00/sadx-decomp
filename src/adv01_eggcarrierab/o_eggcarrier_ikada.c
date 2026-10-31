@@ -58,12 +58,10 @@ static void Disp(struct task *tp)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00694920
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006949f0
 void ObjectECIkada(struct task *tp)

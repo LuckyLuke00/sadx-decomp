@@ -189,12 +189,10 @@ void drawEffectChaos0EffectB(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008c5960
 void SetObjectAlpha(struct obj **list, float a)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008c5a10
 struct task *SetChangeAlpha(struct task *tp, struct obj **list, float a0, float a1, int time)

@@ -30,12 +30,10 @@ void ChangeSuperSonic(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006fb200
 static void chaos_gdcontrol(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006fb370
 void rdChaos7ChangeBgm()

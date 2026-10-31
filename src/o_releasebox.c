@@ -164,9 +164,7 @@ void FUN_005ac1a0(struct task *param_1)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005ac270
 void relbox_crush_draw(struct task *task_p)
 {
 }
-#pragma optimize("", on)

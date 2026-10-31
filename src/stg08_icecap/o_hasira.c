@@ -54,12 +54,10 @@ void Normal1(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00866b20
 static void Normal2(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00866c20
 void ObjectHasira1b(struct task *tp)

@@ -68,11 +68,13 @@ unsigned char __fastcall FUN_0040af90(int param_1)
 	return *(unsigned char *)(param_1 + 0xc);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0040afa0
 int FUN_0040afa0(char *param_1, char *param_2)
 {
 	return (int)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0040b010
 int FUN_0040b010(const void *param_1, const void *param_2)

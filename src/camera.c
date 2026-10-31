@@ -151,12 +151,10 @@ void FUN_004bafb0(void)
 	DAT_05b42a80 = DAT_05b42968;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004bafe0
 void cameraModeInit()
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004bb090
 void CameraEnd(struct task *pTask)
@@ -274,13 +272,11 @@ void CameraManager()
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004bb690
 long CameraManagerMi()
 {
 	return (long)0;
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x004bb800
 long CameraCollisionShpere(struct _OBJ_CAMERAENTRY *pCameraEntry)
@@ -442,12 +438,10 @@ void calcfreecamerapos()
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004bd5a0
 void CameraViewSet(struct taskwk *pTaskWork)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004bd800
 long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry)

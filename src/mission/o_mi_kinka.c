@@ -2,19 +2,15 @@
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 
-#pragma optimize("", off)
 // STUB: SADX 0x0049c460
 static void Disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x0049c4f0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0049c780
 void ObjectMiKinka(struct task *tp)

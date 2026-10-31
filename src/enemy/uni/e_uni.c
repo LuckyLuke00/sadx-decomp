@@ -86,7 +86,6 @@ void UniADisplayer(struct task *tp)
 	UniADraw(local_cg, local_8g);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005ca7f0
 void UniADraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -114,19 +113,16 @@ void UniADraw(struct taskwk *twp, struct enemywk *ewp)
 	njPopMatrix(1);
 	dispPoliceShadow(twp, ewp);
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005ca8f0
 void UniAExecutor(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005caab0
 void FUN_005caab0(struct task *param_1, struct task *param_2)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005cab40
 void UniEditModeA(struct task *tp)
@@ -245,12 +241,10 @@ void FUN_005cb140(struct taskwk *param_1, struct enemywk *param_2)
 		param_1->flag &= 0xfffffbff;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005cb190
 void FUN_005cb190(struct task *param_1, struct enemywk *param_2)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005cb270
 void FUN_005cb270(struct taskwk *param_1, struct enemywk *param_2)
@@ -438,12 +432,10 @@ void FUN_005cc7f0(struct task *param_1, struct enemywk *param_2)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005cca00
 void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005ccc50
 void CheckParentDeath(struct task *tp, struct enemywk *ewp)
@@ -504,7 +496,6 @@ void UniCDisplayer(struct task *tp)
 	UniCDraw(local_cg, local_8g);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005cd440
 static void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -532,7 +523,6 @@ static void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 	njPopMatrix(1);
 	dispPoliceShadow(twp, ewp);
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005cd540
 void UniCExecutor(struct task *tp)

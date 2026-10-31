@@ -14,26 +14,20 @@ void EffEnemyBombReflectPlayerSmall(struct taskwk *twp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0088c2d0
 static void TaskEnd(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x0088c310
 static void TaskDisp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x0088c320
 static void TaskExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0088c360
 static void TaskInit(struct task *tp)

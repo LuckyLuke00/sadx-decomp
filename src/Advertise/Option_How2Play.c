@@ -59,12 +59,10 @@ void FUN_005eaa00(struct task *param_1)
 	DAT_05cd265c = 1;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005eaa60
 static void DisplayTitleMenuCsr(struct TitleMenuWk *wkp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005eae90
 static void title_menu_disp(struct task *tp)
@@ -72,12 +70,10 @@ static void title_menu_disp(struct task *tp)
 	DisplayTitleNew(*(float *)((char *)tp + 0x10));
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005eaeb0
 static void DisplayTitleNew(float basez)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005eb250
 void FreeAdvaHow2PlayTask()

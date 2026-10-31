@@ -53,12 +53,10 @@ static void disp(struct task *pTask)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006e1880
 static void _exec(struct task *pTask)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006e1a80
 void RoboLockOnCursor()

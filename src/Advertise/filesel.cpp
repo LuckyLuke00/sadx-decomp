@@ -205,33 +205,25 @@ void file_sel_disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004b84d0
 void DrawStartChiten(struct FileSelWk *wkp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x004b85b0
 void DrawSaishuuClear(struct FileSelWk *wkp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x004b8710
 void DrawPlayTime(struct FileSelWk *wkp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x004b8860
 void DrawFileEmblem(struct FileSelWk *wkp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004b9330
 void FUN_004b9330(struct task *param_1)

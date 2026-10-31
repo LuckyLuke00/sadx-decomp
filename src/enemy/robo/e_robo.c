@@ -51,7 +51,6 @@ void RoboHeadDisplayer(struct task *tp)
 	RoboHeadDraw(local_cg, local_8g);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005bc0f0
 void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
 {
@@ -87,7 +86,6 @@ void RoboHeadDraw(struct taskwk *twp, struct enemywk *ewp)
 	LoadControl3D();
 	___dsSetPalette(0);
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005bc260
 void RoboHeadExecutor(struct task *tp)
@@ -671,12 +669,10 @@ void RoboBrake(struct taskwk *twp, struct enemywk *ewp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005bfab0
 void RoboSmokeSide2(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005bfbf0
 void RoboDocking(struct task *tp, struct enemywk *ewp)

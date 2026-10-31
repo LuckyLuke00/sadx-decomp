@@ -19,9 +19,7 @@ void CreateSpark(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0060fd30
 void EffectSpark(struct task *tp)
 {
 }
-#pragma optimize("", on)

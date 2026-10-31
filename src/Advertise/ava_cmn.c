@@ -52,12 +52,10 @@ void DrawTxCharName(enum AvaCharEnum chnum, unsigned long col, float x, float y,
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0059ed90
 void DrawVal(long val, long keta, unsigned char zflg, float x, float y, float z, float mag)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0059eec0
 int FUN_0059eec0(int param_1)
@@ -77,12 +75,10 @@ void DrawValLf(long val, float x, float y, float z)
 	DrawVal(val, FUN_0059eec0(val), 1, x, y, z, 1.0f);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0059ef30
 void DrawValTrialS(long val, long keta, unsigned char zflg, float x, float y, float z, float magx, float magy)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0059f060
 void DrawValTrialLf(long val, float x, float y, float z, float magx, float magy)

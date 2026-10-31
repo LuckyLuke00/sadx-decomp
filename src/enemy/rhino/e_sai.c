@@ -125,26 +125,20 @@ void FUN_008d7e80(struct taskwk *param_1, struct taskwk *param_2)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d7ef0
 void SaiCatAnimation(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d8030
 void SaiMove(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d8110
 void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x008d8330
 void SaiJetDraw(struct taskwk *twp, struct enemywk *ewp)

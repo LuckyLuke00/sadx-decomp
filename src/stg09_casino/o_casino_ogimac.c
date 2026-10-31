@@ -446,12 +446,10 @@ static void DispH(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0088a7c0
 static void ExecH(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0088aa20
 void ObjCasino_InitH(struct task *tp, struct obj *pobject, struct CCL_INFO *pinfo, struct NJS_ACTION *paction)

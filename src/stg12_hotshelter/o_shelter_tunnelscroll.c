@@ -2,19 +2,15 @@
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 
-#pragma optimize("", off)
 // STUB: SADX 0x008b5f70
 static void Disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008b6060
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008b6190
 void ObjShelterTunnelscroll(struct task *tp)

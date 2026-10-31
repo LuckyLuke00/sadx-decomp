@@ -40,12 +40,10 @@ struct task *GetE102LockCsTaskPointer(struct task *beam_tp)
 	return (struct task *)beam_tp->twp->value.ptr;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005e5770
 void FUN_005e5770(struct task *param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005e5860
 void E102LockOnCursor_dis(struct task *tp)

@@ -24,12 +24,10 @@ void FUN_007e6e70(void)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007e6f50
 static void execRound(struct task *task_p)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007e6fd0
 void Rd_SandBoard(struct task *task_p)

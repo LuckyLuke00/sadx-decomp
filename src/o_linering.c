@@ -19,12 +19,10 @@ void ObjectLinering(struct task *tp)
 	tp->dest = (void (__cdecl *)(struct task *))FUN_008b9f60;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008b9be0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008b9f60
 void FUN_008b9f60(struct task *param_1, int param_2)

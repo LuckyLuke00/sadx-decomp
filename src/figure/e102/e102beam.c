@@ -64,12 +64,10 @@ void E102BeamAto(struct task *tp)
 	E102BeamAtoDisplay(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005d3630
 void E102BeamAtoDisplay(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x005d37c0
 int calcE102ShotDir(struct taskwk *twp, struct taskwk *cwp)

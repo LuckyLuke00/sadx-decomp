@@ -528,12 +528,10 @@ void FUN_004e3110(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	PGetPushSpeed(param_1, param_2, param_3);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004e3130
 void PGetPushSpeed(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004e3420
 void FUN_004e3420(struct task *param_1, struct NJS_POINT3 *param_2, struct taskwk *param_3)
@@ -624,12 +622,10 @@ long PSetPositionOn1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk
 	return (long)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004ebeb0
 void PConvertVector_G2P(struct taskwk *twp, struct NJS_POINT3 *vp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004ebf90
 void PConvertVector_P2G(struct taskwk *twp, struct NJS_POINT3 *vp)
@@ -947,12 +943,10 @@ void KillHimByFallingDownP(unsigned char pno)
 	ExecFallingDownP(pno);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004f0160
 void ExecFallingDownP(unsigned char pno)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f02a0
 void FUN_004f02a0(struct task *param_1, unsigned char param_2)
@@ -1277,12 +1271,10 @@ void SetInputP(unsigned char pno, signed char mode)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004f0e00
 void SetVelocityP(unsigned char pno, float x, float y, float z)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f0f00
 void SetSpringVelocityP(unsigned char pno, float x, float y, float z)
@@ -1369,12 +1361,10 @@ void SetRotationP(unsigned char pno, long angx, long angy, long angz)
 	*(int *)(local_cg + 0x1c) = angz;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004f1430
 void SetRotationByVectorP(unsigned char pno, float x, float y, float z)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004f15e0
 void SetAscendPowerP(unsigned char pno, float x, float y, float z)

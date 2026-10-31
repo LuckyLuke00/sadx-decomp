@@ -330,12 +330,10 @@ long SonicCheckTouch(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk 
 	return (long)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0054d450
 void SonicThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0054d520
 void SonicHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
@@ -368,12 +366,10 @@ void SonicHoldOnIcicle(struct taskwk *twp, struct motionwk2 *mwp, struct playerw
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0054da60
 void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0054dce0
 void SonicFaceMotion(struct task *tp)
@@ -537,19 +533,15 @@ void SonicSnowBoard(struct task *tp)
 	tp->disp = DisplaySonicSnowBoard;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0054edd0
 void ExecuteSonicSnowBoard(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x0054ef10
 void DisplaySonicSnowBoard(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0054f150
 void SuperSonicStatusManager(struct task *tp)

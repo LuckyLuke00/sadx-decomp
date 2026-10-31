@@ -96,12 +96,10 @@ void DrawTrialActSelBg(struct TrialActSelWk *wkp)
 	DrawTrialActSelRankBg(wkp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006072f0
 void DrawTrialActSelRankBg(struct TrialActSelWk *wkp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006074c0
 void DrawTrialActSelRank(struct TrialActSelWk *wkp)

@@ -9,12 +9,10 @@ static struct TEXANIMINFO texanim[2];
 extern struct obj object_cas_gb_lht_gb_lht[1];
 void FUN_00889bd0(struct TEXANIMINFO *param_1, int param_2);
 
-#pragma optimize("", off)
 // STUB: SADX 0x00872e00
 static void End(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00872e10
 static void Disp(struct task *tp)
@@ -49,12 +47,10 @@ static void Disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00872ef0
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00873050
 void ObjectCasinoLhtG(struct task *tp)

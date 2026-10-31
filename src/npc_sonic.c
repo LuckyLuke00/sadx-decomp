@@ -151,19 +151,15 @@ void Highway_Nomal(struct task *tp, struct sMobleCtrl *moble_ctrl)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005a9060
 void FUN_005a9060(short param_1)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x005a9100
 void FUN_005a9100(int param_1, unsigned short param_2, struct sMobleCtrl *param_3)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x005a9290
 void FUN_005a9290(struct taskwk *param_1)

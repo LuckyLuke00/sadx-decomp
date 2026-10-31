@@ -22,10 +22,12 @@ void AL_GBAManagerKill()
 	DestroyTask(var1);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004419d0
 void FUN_004419d0(void *param_1)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00441a00
 void AL_ClearSaveInfo(struct chao_save_info *pInfo)

@@ -28,12 +28,10 @@ static void dispShadowTask(struct task *p_task)
 	njPopMatrix(1);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0077e9a0
 static void execShadowTask(struct task *p_task)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0077ea20
 static void initShadowTask(struct task *p_task)

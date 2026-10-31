@@ -407,12 +407,10 @@ long ObjectScaleNormal(struct task *tp)
 	return 0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00500ae0
 void ObjectScaleDisplay(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00500c70
 float FUN_00500c70(float param_1, float param_2, float param_3)

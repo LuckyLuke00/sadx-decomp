@@ -78,12 +78,10 @@ void execFlyingHead(struct task *pTask)
 	dispFlyingHead(pTask);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008adb00
 static void execTgt(struct task *pTask)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008adb80
 void execTgt_waitPlayerTask(struct task *pTask)

@@ -18,11 +18,13 @@ void dispScanLineTask(struct task *p_task)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x007d5120
 int FUN_007d5120()
 {
 	return (int)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007d5140
 int FUN_007d5140()

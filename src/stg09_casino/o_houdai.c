@@ -3,26 +3,20 @@ static void NormalR(struct task *tp);
 static void NormalL(struct task *tp);
 static void Disp(struct task *tp);
 
-#pragma optimize("", off)
 // STUB: SADX 0x00882820
 static void Disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x00882840
 static void NormalL(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x008828a0
 static void NormalR(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00882990
 void ObjectHoudaiL(struct task *tp)

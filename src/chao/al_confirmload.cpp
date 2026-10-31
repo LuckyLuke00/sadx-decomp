@@ -16,12 +16,10 @@ long AL_ConfirmLoadIsLoaded()
 	return DAT_05b288a0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00442dd0
 static void FExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00443320
 void AL_ConfirmLoadStart()

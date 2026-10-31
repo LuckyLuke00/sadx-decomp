@@ -7,12 +7,10 @@ void Display1(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00701080
 static void Normal1(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00701110
 void Chaos7DeadEffect1(struct task *tp)
@@ -29,12 +27,10 @@ void Display2(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00701220
 static void Normal2(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007012b0
 void Chaos7DeadEffect2(struct task *tp)

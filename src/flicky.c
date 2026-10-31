@@ -125,12 +125,10 @@ void FlickyRako_New(struct task *tp)
 	Flicky_New(tp, 2);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00617d10
 void Flicky_New(struct task *tp, int id)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00617e60
 void FUN_00617e60(struct task *param_1)
@@ -290,12 +288,10 @@ void Flicky_moveStep(struct Flicky *__this, struct taskwk *twp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0061a180
 void FUN_0061a180(int param_1, struct taskwk *param_2, struct task *param_3)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0061a280
 void FUN_0061a280(struct Flicky *param_1, struct taskwk *param_2, int param_3)
@@ -312,12 +308,10 @@ void FUN_0061a500(struct taskwk *param_1, int param_2, int param_3)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0061a590
 void FUN_0061a590(int param_1, struct taskwk *param_2)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0061a600
 void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short param_3)
@@ -334,9 +328,7 @@ void FUN_0061a7b0(struct taskwk *param_1, struct CCL_INFO *param_2)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0061aa60
 void BaloonScale_force(struct NJS_POINT3 *__this, int flag)
 {
 }
-#pragma optimize("", on)

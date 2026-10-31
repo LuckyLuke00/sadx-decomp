@@ -38,12 +38,10 @@ void DispMot3(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00878480
 void ExecCM(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00878510
 void FUN_00878510(struct task *param_1)

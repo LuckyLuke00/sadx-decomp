@@ -126,12 +126,10 @@ long CCL_InitShare(struct task *tp, struct CCL_INFO *info, long nbInfo, unsigned
 	return 1;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004cfd90
 void CCL_ClearInfo(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x004cfe90
 void CCL_CalcColliCenterS(struct taskwk *twp, struct CCL_INFO *info, struct NJS_POINT3 *center)
@@ -282,19 +280,15 @@ void CCL_Analyze()
 	FUN_004d0520();
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004d0670
 void CCL_PCheckColli()
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x004d0930
 void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x004d0a20
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
@@ -546,26 +540,20 @@ void FUN_004d86d0(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskw
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004d8860
 void CCL_BCheckColli()
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x004d8ab0
 void CCL_CCheckColli()
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x004d8d20
 void CCL_E2CheckColli()
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004d8e80
 void CCL_OCheckColli()
@@ -607,12 +595,10 @@ void CCL_O2CheckColli()
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004d8f80
 void CCL_CalcRange(struct taskwk *twp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004d90f0
 void CalcColliRange(struct colliwk *cwp)

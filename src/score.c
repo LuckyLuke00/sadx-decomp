@@ -338,12 +338,10 @@ void CalcTotalScore(struct task *tp)
 	late_DisplayTotalScore(tp);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x005561c0
 void late_DisplayTotalScore(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x00559b60
 int FUN_00559b60(int param_1, int param_2, int param_3)
@@ -418,12 +416,10 @@ int FUN_0055b000(int param_1, char param_2)
 	return (int)0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0055b0b0
 void DisplayCalcLetters(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0055b450
 void DisplayCalcTime(struct task *tp)
@@ -432,12 +428,10 @@ void DisplayCalcTime(struct task *tp)
 	DrawSNumbersTime(ScreenRaitoX * 320.0 + -32.0, ScreenRaitoY * 240.0 + -144.0);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0055b4b0
 void DrawSNumbersTime(float h, float v)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0055b680
 void FUN_0055b680(struct task *param_1)

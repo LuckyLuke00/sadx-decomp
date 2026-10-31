@@ -6,12 +6,10 @@ void Bg_MiniCart(struct task *task_p)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x007e4160
 void dispBg(struct task *task_p)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007e4230
 void destBg(struct task *task_p)

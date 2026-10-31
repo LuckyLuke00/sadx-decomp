@@ -22,9 +22,7 @@ void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0060d600
 static void EffectBomb(struct sp_task *tp, struct sp_link *lp)
 {
 }
-#pragma optimize("", on)

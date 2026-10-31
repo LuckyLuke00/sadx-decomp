@@ -102,12 +102,10 @@ void char_sel_disp(struct task *tp)
 	DrawCharSelFixedFile(local_8);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00608f80
 void FUN_00608f80(struct ModeSelPrmType *param_1)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00609560
 void FreeAdvaCharSelTask()

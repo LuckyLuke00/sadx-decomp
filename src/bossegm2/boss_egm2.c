@@ -18,19 +18,15 @@ void Egm2ShadowDraw(struct task *tp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006c6400
 static void TaskBossDisp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x006c65c0
 static void TaskBossExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006c66f0
 void setBoss_egm2()

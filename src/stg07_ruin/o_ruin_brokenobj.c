@@ -5,12 +5,10 @@ static void Disp(struct task *tp);
 void FUN_00850d10(struct task *param_1);
 extern struct CCL_INFO c_info01[2];
 
-#pragma optimize("", off)
 // STUB: SADX 0x00850c00
 static void Disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00850df0
 static void ColliOnly(struct task *tp)
@@ -28,12 +26,10 @@ static void ColliOnly(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00851090
 static void Exec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008511d0
 void ObjectRuinBrokenObj(struct task *tp)

@@ -532,12 +532,10 @@ struct MSGC *NH_MSG_OpenMain(struct MSGC *msgc)
 	return NH_MSG_Open(msgc, 0x46, 0x180, 0x1f4, 0x34, 0xd0000004, (char *)DAT_05b42e20);
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004c3060
 void MSG_ThreadMainMessages(char * *message)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c3150
 void MSG_MainMessages(char **message)
@@ -552,10 +550,8 @@ int MSG_CheckMainMessage()
 	return DAT_05b42c1d;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x004c3180
 struct MSGC *NH_MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex, char *buf)
 {
 	return (struct MSGC *)0;
 }
-#pragma optimize("", on)

@@ -26,12 +26,10 @@ static void Disp(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0087f840
 static void Normal(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0087f910
 void ObjectSitaAlEgg(struct task *tp)

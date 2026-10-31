@@ -31,26 +31,20 @@ int CountObjElements(struct obj *pobject)
 	return var1;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0084cdd0
 static void TaskEnd(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x0084ce00
 static void TaskDisp(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
 // STUB: SADX 0x0084ce10
 static void TaskExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0084ce50
 void TaskInit(struct task *tp)

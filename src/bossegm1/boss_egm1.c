@@ -95,12 +95,10 @@ static void TaskBossEnd(struct task *tp)
 	FreeEgm1JetTask();
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x006c1c00
 static void TaskBossExec(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006c1e20
 void setBoss_egm1()

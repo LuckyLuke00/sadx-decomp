@@ -66,11 +66,13 @@ float MOV_Dist2FromAim(struct task *tp)
 	return (float)0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00458400
 long FUN_00458400(int param_1)
 {
 	return (long)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00458430
 long MOV_TurnToAim2(struct task *tp, long rot_spd)
@@ -99,11 +101,13 @@ float MOV_Dist2FromPlayer(struct task *tp, long player_num)
 	return (var2->pos.x - var1->pos.x) * (var2->pos.x - var1->pos.x) + (var2->pos.y - var1->pos.y) * (var2->pos.y - var1->pos.y) + (var2->pos.z - var1->pos.z) * (var2->pos.z - var1->pos.z);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004584b0
 long MOV_CalcPlayerAngle(struct task *tp, long player_num)
 {
 	return (long)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004584f0
 long MOV_TurnToPlayer2(struct task *tp, long rot_spd, long player_num)

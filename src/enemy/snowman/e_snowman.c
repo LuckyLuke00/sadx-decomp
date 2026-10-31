@@ -466,12 +466,10 @@ void DrawSnowmanRange(struct NJS_POINT3 *pos, float radius)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0060c300
 void SnowmanBackSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0060c4e0
 void create_whitesmoke(struct particle_info *info, struct NJS_POINT3 *pos, struct NJS_POINT3 *spd, float scl)
@@ -504,12 +502,10 @@ void EffectPom(struct sp_task *tp, struct sp_link *lp)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x0060c7c0
 void SnowmanFootSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0060c9d0
 void SnowmanBreathe(struct taskwk *twp, struct enemywk *ewp)

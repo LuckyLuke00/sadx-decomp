@@ -34,11 +34,13 @@ long AL_IsOnScreen2(struct task *tp, float radius, float OffsetY)
 	return AL_IsOnScreen3(tp, radius, radius, OffsetY);
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x004383c0
 long AL_CalcTaskAngle(struct task *pMyTask, struct task *pTargetTask)
 {
 	return (long)0;
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00438400
 long AL_TurnToTask(struct task *pMyTask, struct task *pTargetTask, long RotSpd)

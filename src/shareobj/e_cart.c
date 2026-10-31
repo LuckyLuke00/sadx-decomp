@@ -91,12 +91,10 @@ void reflexiveModel(struct obj *object, long scan_type)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008ccde0
 void reflexiveMaterial(struct NJS_MODEL *model, long scan_type)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008cd6a0
 void cartShadowPos(struct task *tp, struct taskwk *twp)
@@ -148,12 +146,10 @@ void FUN_008d0250(int param_1)
 {
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d02a0
 void returnSonicCollision(struct task *tp)
 {
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x008d0460
 void calcComponentVector(struct Angle3 *ang, struct NJS_POINT3 *vec)
@@ -393,9 +389,7 @@ void ego(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x008d1560
 void drawEgo(struct task *tp)
 {
 }
-#pragma optimize("", on)

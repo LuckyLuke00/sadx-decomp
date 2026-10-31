@@ -19,9 +19,7 @@ void ObjectWaterripple(struct task *tp)
 	tp->dest = (void (__cdecl *)(struct task *))FUN_005b5aa0;
 }
 
-#pragma optimize("", off)
 // STUB: SADX 0x00570a90
 static void Disp(struct task *tp)
 {
 }
-#pragma optimize("", on)
