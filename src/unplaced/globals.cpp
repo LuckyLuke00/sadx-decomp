@@ -2585,11 +2585,20 @@ struct obj object_seaobj_hasi_b_hasi_b[1];
 // GLOBAL: SADX 0x0398dc14
 struct obj object_col_hasi_a_hasi_a[2];
 
+// GLOBAL: SADX 0x0398dd0c
+struct obj object_col_hasi_b_hasi_b[1];
+
 // GLOBAL: SADX 0x039cafc4
 struct obj object_seaobj_parasol03_parasol03[1];
 
 // GLOBAL: SADX 0x039d064c
 struct obj object_seaobj_beachbed_beachbed[1];
+
+// GLOBAL: SADX 0x039df2cc
+struct obj object_seaobj_tesuri_tesuri[1];
+
+// GLOBAL: SADX 0x039df5cc
+struct obj object_seaobj_tesurib_tesurib[1];
 
 // GLOBAL: SADX 0x039dfa5c
 struct obj object_seaobj_tesuric_tesuric[1];
@@ -2641,6 +2650,9 @@ struct CCL_INFO hasi_a0_info[1];
 
 // GLOBAL: SADX 0x03a0cc58
 struct CCL_INFO hasi_a1_info[1];
+
+// GLOBAL: SADX 0x03a0cd18
+struct CCL_INFO hasi_b_info[2];
 
 // GLOBAL: SADX 0x03b14fd8
 struct NJS_TEXLIST texlist_windy_back;
