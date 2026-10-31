@@ -608,6 +608,12 @@ struct obj object_crch_nc_door_all_nc_door_all[1];
 // GLOBAL: SADX 0x0221fb98
 struct NJS_MOTION motion_crch_nc_door_all[1];
 
+// GLOBAL: SADX 0x022224e0
+struct obj object_crch_nc_spotlight_all_nc_spotlight_all[1];
+
+// GLOBAL: SADX 0x02222690
+struct NJS_MOTION motion_crch_nc_spotlight_all[1];
+
 // GLOBAL: SADX 0x02223c38
 struct obj object_crch_nc_projector_a_nc_projector_a[1];
 

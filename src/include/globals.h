@@ -206,6 +206,8 @@ extern long angx;
 extern char objLandTableChaoEntrance[36];
 extern struct obj object_crch_nc_door_all_nc_door_all[];
 extern struct NJS_MOTION motion_crch_nc_door_all[];
+extern struct obj object_crch_nc_spotlight_all_nc_spotlight_all[];
+extern struct NJS_MOTION motion_crch_nc_spotlight_all[];
 extern struct obj object_crch_nc_projector_a_nc_projector_a[];
 extern struct NJS_MOTION motion_crch_nc_projector_a[];
 extern struct obj object_crch_nc_projector_b_nc_projector_b[];

@@ -9554,8 +9554,32 @@
    "library": false
   },
   {
-   "address": "0x00472180",
+   "address": "0x004720e0",
    "name": "FDisp(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00472120",
+   "name": "FUN_00472120",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00472160",
+   "name": "FUN_00472160",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00472180",
+   "name": "FDisp(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9739,7 +9763,7 @@
   },
   {
    "address": "0x00474760",
-   "name": "FDisp(4)",
+   "name": "FDisp(5)",
    "accuracy": 0.037037037037037035,
    "effective": false,
    "stub": true,
@@ -89003,6 +89027,20 @@
    "library": false
   },
   {
+   "address": "0x022224e0",
+   "name": "object_crch_nc_spotlight_all_nc_spotlight_all",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02222690",
+   "name": "motion_crch_nc_spotlight_all",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02223c38",
    "name": "object_crch_nc_projector_a_nc_projector_a",
    "size": 52,
@@ -98532,5 +98570,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a4f0fc2bc7889bd307515f8a697ddab9a2d0974aaab95894725e613d53f4de49"
+ "inputs_sha256": "70b3fdb6adda9bd06a8894ee3f00838e3bdbf7237e0900d4e224a9d9badc4e7e"
 }
