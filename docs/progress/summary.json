@@ -61651,6 +61651,22 @@
    "library": false
   },
   {
+   "address": "0x00867e10",
+   "name": "Normal2(5)",
+   "accuracy": 0.037037037037037035,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00867f60",
+   "name": "ObjectHyochu4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008683b0",
    "name": "ObjectDd",
    "accuracy": 0.09523809523809523,
@@ -63292,7 +63308,7 @@
   },
   {
    "address": "0x00881e00",
-   "name": "Normal2(5)",
+   "name": "Normal2(6)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63428,7 +63444,7 @@
   },
   {
    "address": "0x008830b0",
-   "name": "Normal2(6)",
+   "name": "Normal2(7)",
    "accuracy": 0.03125,
    "effective": false,
    "stub": true,
@@ -63476,7 +63492,7 @@
   },
   {
    "address": "0x00883fe0",
-   "name": "Normal2(7)",
+   "name": "Normal2(8)",
    "accuracy": 0.02564102564102564,
    "effective": false,
    "stub": true,
@@ -95984,6 +96000,13 @@
    "library": false
   },
   {
+   "address": "0x045dadd8",
+   "name": "object_c_info",
+   "size": 192,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x045daed4",
    "name": "colli_bomb",
    "size": 48,
@@ -98758,5 +98781,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "93d39f90c15882271cb3ba001f53878291801374ae469c6b9fe917cb8c251bec"
+ "inputs_sha256": "5353fdd64caf8b4fb7d23ae34122f72293b9b4b401196b888f59cd6b31aa294d"
 }
