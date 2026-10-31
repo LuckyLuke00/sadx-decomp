@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1441" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,630 of 16,524 game functions done (34.07%), accuracy 99.83%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,634 of 16,524 game functions done (34.09%), accuracy 99.83%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="595.8,1195.5 602.2,1195.5 603.9,1197 605,1198.6 599,1205.5 593,1198.6 594.1,1197" fill="#4e32f3"/>
 <polygon points="595.8,1195.5 602.2,1195.5 603.9,1197 605,1198.6 593,1198.6 594.1,1197" fill="#ffffff" fill-opacity="0.4"/>
@@ -290,8 +290,8 @@
 <polygon points="27.2,72.6 31,72.6 25,79.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="21.8,69.5 28.2,69.5 29.9,71 31,72.6 25,79.5 19,72.6 20.1,71" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="35" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Action Stages <tspan font-weight="400" fill="#59636e">9%</tspan></text>
-<rect x="226" y="359" width="160" height="103" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Emerald Coast: 49 of 213 functions done</title></rect>
-<text x="229" y="373" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Emerald Coast <tspan font-weight="400" fill="#59636e">4%</tspan></text>
+<rect x="226" y="359" width="160" height="103" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Emerald Coast: 53 of 213 functions done</title></rect>
+<text x="229" y="373" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Emerald Coast <tspan font-weight="400" fill="#59636e">5%</tspan></text>
 <g transform="translate(229,377)">
 <rect y="0" width="154" height="63" fill="url(#todo)"/>
 <rect y="63" width="105" height="7" fill="url(#todo)"/>
@@ -332,8 +332,11 @@
 <rect x="70" y="42" width="6" height="6" fill="#b07d00"><title>0x007fedb0 ObjectBeachGrassD: 100%</title></rect>
 <rect x="77" y="42" width="6" height="6" fill="#b07d00"><title>0x007fedd0 ObjectBeachCoralA: 100%</title></rect>
 <rect x="84" y="42" width="6" height="6" fill="#b07d00"><title>0x007fedf0 ObjectBeachCoralB: 100%</title></rect>
+<rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x007fee10 ObjectBeachFenceA: 100%</title></rect>
+<rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x007fee50 ObjectBeachFenceB: 100%</title></rect>
 <rect x="105" y="42" width="6" height="6" fill="#b07d00"><title>0x007fee90 ObjectBeachFenceC: 100%</title></rect>
 <rect x="112" y="42" width="6" height="6" fill="#b07d00"><title>0x007feed0 ObjectBeachFenceD: 100%</title></rect>
+<rect x="35" y="49" width="6" height="6" fill="#b07d00"><title>0x007ffb60 GiroColliOnly: 100%</title></rect>
 <rect x="63" y="49" width="6" height="6" fill="#b07d00"><title>0x007ffe70 Draw3: 100%</title></rect>
 <rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x008014a0 FUN_008014a0: 100%</title></rect>
 <rect x="56" y="56" width="6" height="6" fill="#b07d00"><title>0x008018f0 CreateRippleSource25: 100%</title></rect>
@@ -342,6 +345,7 @@
 <rect x="119" y="56" width="6" height="6" fill="#b07d00"><title>0x00802460 B_Disp: 100%</title></rect>
 <rect x="133" y="56" width="6" height="6" fill="#b07d00"><title>0x008028c0 A_Exec: 100%</title></rect>
 <rect x="147" y="56" width="6" height="6" fill="#b07d00"><title>0x00802950 A_Init: 100%</title></rect>
+<rect x="0" y="63" width="6" height="6" fill="#b07d00"><title>0x00802a30 B_Init: 100%</title></rect>
 <rect x="14" y="63" width="6" height="6" fill="#b07d00"><title>0x00802bf0 CreateYurehasi: 100%</title></rect>
 <rect x="91" y="63" width="6" height="6" fill="#b07d00"><title>0x00803db0 ObjectBeachWatertube: 100%</title></rect>
 </g>

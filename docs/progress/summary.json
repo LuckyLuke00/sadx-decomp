@@ -55771,6 +55771,22 @@
    "library": false
   },
   {
+   "address": "0x007fee10",
+   "name": "ObjectBeachFenceA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007fee50",
+   "name": "ObjectBeachFenceB",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007fee90",
    "name": "ObjectBeachFenceC",
    "accuracy": 1.0,
@@ -55781,6 +55797,14 @@
   {
    "address": "0x007feed0",
    "name": "ObjectBeachFenceD",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007ffb60",
+   "name": "GiroColliOnly",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -55877,9 +55901,9 @@
   {
    "address": "0x00802a30",
    "name": "B_Init",
-   "accuracy": 0.03571428571428571,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -93847,6 +93871,13 @@
    "library": false
   },
   {
+   "address": "0x0398dd0c",
+   "name": "object_col_hasi_b_hasi_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x039cafc4",
    "name": "object_seaobj_parasol03_parasol03",
    "size": 52,
@@ -93856,6 +93887,20 @@
   {
    "address": "0x039d064c",
    "name": "object_seaobj_beachbed_beachbed",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x039df2cc",
+   "name": "object_seaobj_tesuri_tesuri",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x039df5cc",
+   "name": "object_seaobj_tesurib_tesurib",
    "size": 52,
    "match": false,
    "library": false
@@ -93994,6 +94039,13 @@
    "library": false
   },
   {
+   "address": "0x03a0c968",
+   "name": "object_c_info",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03a0cb98",
    "name": "hasi_a0_info",
    "size": 48,
@@ -94004,6 +94056,13 @@
    "address": "0x03a0cc58",
    "name": "hasi_a1_info",
    "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03a0cd18",
+   "name": "hasi_b_info",
+   "size": 96,
    "match": false,
    "library": false
   },
@@ -98420,5 +98479,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "01e28155fb45e1fea96751a54436f83608a24ea78c7feda7db4fc998750edfff"
+ "inputs_sha256": "b4f9dabe5a7c82fc51ed3ce85104481dd16086d4323dd70113a96331a82730e9"
 }

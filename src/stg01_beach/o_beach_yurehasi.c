@@ -125,9 +125,41 @@ void A_Init(struct task *tp)
 	tp->dest = FUN_00825de0;
 }
 
-// STUB: SADX 0x00802a30
+// FUNCTION: SADX 0x00802a30
 void B_Init(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct forcewk *var2 = tp->fwp;
+	struct obj *var3;
+
+	var1->smode = 0;
+	var2->pos_spd.x = 0.0f;
+	var2->pos_spd.y = 0.0f;
+	var2->pos_spd.z = 0.0f;
+	var2->ang_spd.x = 0;
+	var2->ang_spd.y = 0;
+	var2->ang_spd.z = 0;
+	var3 = GetMobileLandObject();
+	var1->counter.ptr = var3;
+	var3->scl[0] = 1.0f;
+	var3->scl[1] = 1.0f;
+	var3->scl[2] = 1.0f;
+	var3->evalflags = 0x10;
+	var3->ang[0] = 0;
+	var3->ang[1] = var1->ang.y;
+	var3->ang[2] = 0;
+	var3->pos[0] = var1->pos.x;
+	var3->pos[1] = var1->pos.y;
+	var3->pos[2] = var1->pos.z;
+	var3->model = object_col_hasi_b_hasi_b[0].model;
+	var3->child = 0;
+	var3->sibling = 0;
+	RegisterCollisionEntry(0x68000001, tp, var3);
+	var1->flag |= 0x100;
+	CCL_Init(tp, hasi_b_info, 2, 4);
+	tp->exec = B_Exec;
+	tp->disp = B_Disp;
+	tp->dest = FUN_00825de0;
 }
 
 // FUNCTION: SADX 0x00802bf0
