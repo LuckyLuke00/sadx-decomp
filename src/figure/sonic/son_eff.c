@@ -55,9 +55,35 @@ void FUN_005ae5e0(struct taskwk *param_1, void *param_2)
 	Free(param_2);
 }
 
-// STUB: SADX 0x005af370
+// FUNCTION: SADX 0x005af370
 void CalcPosVec(int pnum, struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct NJS_POINT3 *posr)
 {
+	struct taskwk *local_cg;
+	int local_8g;
+
+	local_cg = DAT_05baf368[pnum];
+	local_8g = *(int *)(*(int *)((char *)local_cg + 0x38) + 0xc);
+	njPushMatrix((NJS_MATRIX *)_nj_unit_matrix_);
+	njTranslateV(0, (NJS_VECTOR *)((char *)local_8g + 8));
+	if (*(int *)((char *)local_cg + 0x1c) != 0)
+	{
+		njRotateZ(0, *(unsigned short *)((char *)local_cg + 0x1c));
+	}
+	if (*(int *)((char *)local_cg + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)local_cg + 0x14));
+	}
+	if (0x8000 - *(int *)((char *)local_cg + 0x18) != 0)
+	{
+		njRotateY(0, (unsigned short)(0x8000 - *(int *)((char *)local_cg + 0x18)));
+	}
+	njCalcPoint(0, pos, pos);
+	njCalcVector(0, vec, vec);
+	if (posr != 0)
+	{
+		njCalcPoint(0, posr, posr);
+	}
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005af460
