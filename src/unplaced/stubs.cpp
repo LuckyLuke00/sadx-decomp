@@ -3474,6 +3474,11 @@ void FUN_0087ea70(struct task *, float)
 {
 }
 
+// STUB: SADX 0x00889bd0
+void FUN_00889bd0(struct TEXANIMINFO *, int)
+{
+}
+
 // STUB: SADX 0x00889e30
 void DispS3Obj(struct task *tp)
 {
