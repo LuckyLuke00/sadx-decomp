@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1450" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,655 of 16,524 game functions done (34.22%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,656 of 16,524 game functions done (34.22%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 592,1206.5 586,1199.6 587.1,1198" fill="#4e32f3"/>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 586,1199.6 587.1,1198" fill="#ffffff" fill-opacity="0.4"/>
@@ -1405,7 +1405,7 @@
 <rect x="70" y="154" width="6" height="6" fill="#ffd700"><title>0x006a7170 mainE102EC01: 100%</title></rect>
 <rect x="77" y="154" width="6" height="6" fill="#ffd700"><title>0x006a71d0 mainAmyEC03: 100%</title></rect>
 </g>
-<rect x="831" y="959" width="149" height="159" rx="3" fill="#21262d" stroke="#30363d"><title>Mystic Ruins: 77 of 324 functions done</title></rect>
+<rect x="831" y="959" width="149" height="159" rx="3" fill="#21262d" stroke="#30363d"><title>Mystic Ruins: 78 of 324 functions done</title></rect>
 <text x="834" y="973" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Mystic Ruins <tspan font-weight="400" fill="#8b949e">8%</tspan></text>
 <g transform="translate(834,977)">
 <rect y="0" width="140" height="112" fill="url(#todo)"/>
@@ -1458,6 +1458,7 @@
 <rect x="126" y="42" width="6" height="6" fill="#ffd700"><title>0x006b0800 DesertATask(2): 100%</title></rect>
 <rect x="0" y="49" width="6" height="6" fill="#ffd700"><title>0x006b0940 ObjectMysticRuinEgg: 100%</title></rect>
 <rect x="7" y="49" width="6" height="6" fill="#ffd700"><title>0x006b0a20 Tornado2Displayer: 100%</title></rect>
+<rect x="14" y="49" width="6" height="6" fill="#ffd700"><title>0x006b0a90 ObjectMysticRuinTornado2: 100%</title></rect>
 <rect x="21" y="49" width="6" height="6" fill="#ffd700"><title>0x006b0ac0 LadderDestructor: 100%</title></rect>
 <rect x="42" y="49" width="6" height="6" fill="#ffd700"><title>0x006b0d60 WindyValleyDestructor: 100%</title></rect>
 <rect x="49" y="49" width="6" height="6" fill="#ffd700"><title>0x006b0d70 chk_windyvalley: 100%</title></rect>

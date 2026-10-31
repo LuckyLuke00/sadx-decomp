@@ -2500,6 +2500,7 @@ void mrp_walk_man_1st(struct task *task_p);
 void mrp_walk_man_eveidle(struct task *task_p);
 void mrp_walk_man(struct task *task_p);
 struct task *mrp_walk_act_init(long act_num);
+void Tornado2Displayer(struct task *tp);
 void GrassDisplayer(struct task *tp);
 void BigGrassDisplayer(struct task *tp);
 void FinalEggDisplayer(struct task *tp);
