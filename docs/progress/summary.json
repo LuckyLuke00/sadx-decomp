@@ -3380,9 +3380,9 @@
   {
    "address": "0x00430d00",
    "name": "FUN_00430d00",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -41381,9 +41381,9 @@
   {
    "address": "0x0067d080",
    "name": "njRotateY",
-   "accuracy": 0.0898876404494382,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -41405,9 +41405,9 @@
   {
    "address": "0x0067d290",
    "name": "njInnerProduct",
-   "accuracy": 0.32,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -41461,9 +41461,9 @@
   {
    "address": "0x0067d4c0",
    "name": "njRotateX",
-   "accuracy": 0.0898876404494382,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67800,6 +67800,14 @@
    "accuracy": 0.125,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008d4c40",
+   "name": "FUN_008d4c40",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -98412,5 +98420,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6377a9f8d2968ff7dbe4b90d8353e63f1cb68bc1b21ba176e09ffd9cbe838bab"
+ "inputs_sha256": "01e28155fb45e1fea96751a54436f83608a24ea78c7feda7db4fc998750edfff"
 }

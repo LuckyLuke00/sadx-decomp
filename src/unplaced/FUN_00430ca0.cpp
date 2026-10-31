@@ -22,9 +22,21 @@ void FUN_00430ca0(void)
 	DAT_05ad9ad0[15] = 0;
 }
 
-// STUB: SADX 0x00430d00
+// FUNCTION: SADX 0x00430d00
 void FUN_00430d00(void)
 {
+	void (*var1)(void);
+	int *var2;
+	var2 = &DAT_05ad9ad0[0];
+	do
+	{
+		var1 = (void (*)(void))(*var2);
+		if (var1 != (void (*)(void))0)
+		{
+			var1();
+		}
+		var2++;
+	} while (var2 != &DAT_05ad9ad0[0x10]);
 }
 
 // FUNCTION: SADX 0x00430d20
