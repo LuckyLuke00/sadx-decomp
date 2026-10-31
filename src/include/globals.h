@@ -585,6 +585,7 @@ extern int flg_transform[8];
 extern struct NJS_TEXLIST texlist_mapEC;
 extern struct NJS_TEXLIST texlist_ec_water;
 extern struct NJS_TEXLIST texlist_ec_sky;
+extern struct NJS_TEXLIST texlist_ec_ikada;
 extern struct CCL_INFO cinfo_palm[];
 extern struct CCL_INFO ColliInfo[];
 extern struct CCL_INFO object_c_info_head[];
