@@ -5,6 +5,79 @@ struct NJS_SPHERE
 	float r;
 };
 
+// FUNCTION: SADX 0x005d8d20
+void DrawCustomObject(struct obj *top_object, struct CUSTOM_OBJ *custom)
+{
+	int local_8;
+
+	njPushMatrix(0);
+	if (top_object->model)
+	{
+		local_8 = 0;
+		while (custom[local_8].obj)
+		{
+			if (custom[local_8].obj == top_object)
+			{
+				break;
+			}
+			local_8++;
+		}
+		if (!custom[local_8].obj)
+		{
+			if (!DAT_05b9d838)
+			{
+				njTranslateV(0, (struct NJS_POINT3 *)top_object->pos);
+				if (top_object->ang[2])
+				{
+					njRotateZ(0, (unsigned short)top_object->ang[2]);
+				}
+				if (top_object->ang[0])
+				{
+					njRotateX(0, (unsigned short)top_object->ang[0]);
+				}
+				if (top_object->ang[1])
+				{
+					njRotateY(0, (unsigned short)top_object->ang[1]);
+				}
+				njScaleV(0, (struct NJS_POINT3 *)top_object->scl);
+				___dsDrawModel(top_object->model);
+			}
+		}
+		else if (custom[local_8].exad)
+		{
+			custom[local_8].exad(top_object);
+		}
+	}
+	else
+	{
+		njTranslateV(0, (struct NJS_POINT3 *)top_object->pos);
+		if (top_object->ang[2])
+		{
+			njRotateZ(0, (unsigned short)top_object->ang[2]);
+		}
+		if (top_object->ang[0])
+		{
+			njRotateX(0, (unsigned short)top_object->ang[0]);
+		}
+		if (top_object->ang[1])
+		{
+			njRotateY(0, (unsigned short)top_object->ang[1]);
+		}
+		njScaleV(0, (struct NJS_POINT3 *)top_object->scl);
+	}
+	if (top_object->child)
+	{
+		njPushMatrix(0);
+		DrawCustomObject(top_object->child, custom);
+		njPopMatrix(1);
+	}
+	njPopMatrix(1);
+	if (top_object->sibling)
+	{
+		DrawCustomObject(top_object->sibling, custom);
+	}
+}
+
 // FUNCTION: SADX 0x005d91c0
 long CheckBallColli(struct NJS_POINT3 *point1, float r1, struct NJS_POINT3 *point2, float r2)
 {

@@ -42,9 +42,25 @@ long FUN_00573f10()
 	return DAT_05cd25f8;
 }
 
-// STUB: SADX 0x00573f20
+// FUNCTION: SADX 0x00573f20
 void ghSetPvrTexMaterial(unsigned long color)
 {
+	unsigned long local_cg;
+	int local_8g;
+
+	local_cg = FUN_004951c0(color, DAT_05cd25f8);
+	for (local_8g = 0; local_8g < 4; local_8g++)
+	{
+		*(long *)((char *)DAT_05cd25a4 + local_8g * 0x18) = local_cg;
+	}
+	if ((local_cg & 0xff000000) == 0xff000000)
+	{
+		DAT_05cd25a4[19] = 0;
+	}
+	else
+	{
+		DAT_05cd25a4[19] = 1;
+	}
 }
 
 // FUNCTION: SADX 0x00573f90

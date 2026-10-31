@@ -31,10 +31,20 @@ int FUN_005aca80(void)
 	return 1;
 }
 
-// STUB: SADX 0x005acab0
+// FUNCTION: SADX 0x005acab0
 long ComeBackNpcMiles()
 {
-	return (long)0;
+	int local_8;
+
+	local_8 = DAT_05cd14f8;
+	if (local_8 == 0)
+	{
+		return 0;
+	}
+	SetInputP(1, 0x18);
+	PadReadOffP(1);
+	*(char *)(*(int **)((char *)local_8 + 0x20)) = 2;
+	return 1;
 }
 
 // STUB: SADX 0x005acaf0

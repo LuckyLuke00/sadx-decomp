@@ -1,4 +1,5 @@
 #include "decls.h"
+void RefreshJumpPanel();
 extern struct obj DAT_05a8c05c;
 extern struct obj DAT_05a8c248;
 void FUN_005b3ee0(struct task *param_1);
@@ -32,10 +33,38 @@ long CheckCollisionedForJumpPanel(struct taskwk *ptwp)
 	return 1;
 }
 
-// STUB: SADX 0x005b3640
+// FUNCTION: SADX 0x005b3640
 long CanIMakePanelJump(struct taskwk *ptwp)
 {
-	return (long)0;
+	struct colliwk *local_8g;
+	struct taskwk *local_cg;
+
+	if (CheckCollisionedForJumpPanel(ptwp) == 0)
+	{
+		if (ptwp->counter.b[0] == 0)
+		{
+			RefreshJumpPanel();
+		}
+		return 0;
+	}
+	local_8g = ptwp->cwp->hit_cwp;
+	local_cg = local_8g->mytask->twp;
+	if (local_cg->wtimer == 0)
+	{
+		RefreshJumpPanel();
+		return -1;
+	}
+	if (ptwp->cwp->hit_num != 1)
+	{
+		RefreshJumpPanel();
+		return 0;
+	}
+	if (local_cg->timer.l >= 30.0f)
+	{
+		RefreshJumpPanel();
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x005b36e0

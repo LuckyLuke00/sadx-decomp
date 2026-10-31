@@ -208,9 +208,45 @@ void PGetAccelerationAirAuto(struct taskwk *twp, struct motionwk2 *mwp, struct p
 {
 }
 
-// STUB: SADX 0x004dec40
+// FUNCTION: SADX 0x004dec40
 void PGetAcceleration1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	float local_18;
+	struct NJS_POINT3 v;
+	long local_1c;
+	if ((twp->flag & 0x4000) != 0)
+	{
+		return;
+	}
+	v.x = v.y = v.z = 0.0f;
+	v.x = DAT_05b3ebc8 * *(float *)((char *)pwp + 0x114) + v.x;
+	v.y = DAT_05b3ebcc * *(float *)((char *)pwp + 0x114) + v.y;
+	v.z = DAT_05b3ebd0 * *(float *)((char *)pwp + 0x114) + v.z;
+	PConvertVector_G2P(twp, &v);
+	v.x = *(float *)((char *)pwp + 0xf0) * pwp->spd.x + v.x;
+	local_1c = PCheckPower(twp, 0, &local_18);
+	if (local_1c == 0)
+	{
+		local_18 = *(float *)((char *)pwp + 0xe0);
+	}
+	else
+	{
+		local_18 = *(float *)((char *)pwp + 0xd8) * local_18;
+	}
+	v.x = v.x + local_18;
+	if (pwp->spd.x == 0.0f)
+	{
+		float local_20;
+		local_20 = v.y * *(float *)((char *)pwp + 0x104);
+		if (local_1c == 0)
+		{
+			if (v.x < local_20 && v.x > -local_20)
+			{
+				v.x = 0.0f;
+			}
+		}
+	}
+	pwp->acc = v;
 }
 
 // STUB: SADX 0x004ded90
@@ -324,12 +360,76 @@ void PResetAngleForBuilding(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 	pwp->spd = v2;
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x004e2480
+// FUNCTION: SADX 0x004e2480
 void PAdjustAngleY(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, long angy)
 {
+	float local_18;
+	struct NJS_POINT3 v2;
+	long local_1c;
+	v2 = pwp->spd;
+	PConvertVector_P2G(twp, &v2);
+	local_1c = DiffAngle(twp->ang.y, angy);
+	if (local_1c > 0x2000)
+	{
+		twp->ang.y = AdjustAngle(twp->ang.y, angy, 0x800);
+	}
+	else if (local_1c > 0x1000)
+	{
+		local_1c >>= 2;
+		twp->ang.y = AdjustAngle(twp->ang.y, angy, local_1c);
+	}
+	else
+	{
+		local_1c >>= 3;
+		twp->ang.y = AdjustAngle(twp->ang.y, angy, local_1c);
+	}
+	PConvertVector_G2P(twp, &v2);
+	if ((twp->flag & 3) == 0)
+	{
+		pwp->spd.x = pwp->spd.x * 0.10000000149011612 + v2.x * 0.8999999761581421;
+		pwp->spd.y = pwp->spd.y * 0.10000000149011612 + v2.y * 0.8999999761581421;
+		pwp->spd.z = pwp->spd.z * 0.10000000149011612 + v2.z * 0.8999999761581421;
+	}
+	else
+	{
+		if (0 == PCheckPower(twp, 0, 0))
+		{
+			local_18 = 0.05f;
+			if (mwp->frict < 1.0f)
+			{
+				local_18 *= mwp->frict;
+			}
+			pwp->spd.x = pwp->spd.x * local_18 + v2.x * (1.0f - local_18);
+			pwp->spd.y = pwp->spd.y * local_18 + v2.y * (1.0f - local_18);
+			pwp->spd.z = pwp->spd.z * local_18 + v2.z * (1.0f - local_18);
+		}
+		else
+		{
+			if (pwp->dotp > 0.4000000059604645)
+			{
+				local_18 = 0.9900000095367432;
+				if (mwp->frict < 1.0f)
+				{
+					local_18 *= mwp->frict;
+				}
+				pwp->spd.x = pwp->spd.x * local_18 + v2.x * (1.0f - local_18);
+				pwp->spd.y = pwp->spd.y * local_18 + v2.y * (1.0f - local_18);
+				pwp->spd.z = pwp->spd.z * local_18 + v2.z * (1.0f - local_18);
+			}
+			else
+			{
+				local_18 = 0.5;
+				if (mwp->frict < 1.0f)
+				{
+					local_18 *= mwp->frict;
+				}
+				pwp->spd.x = pwp->spd.x * local_18 + v2.x * (1.0f - local_18);
+				pwp->spd.y = pwp->spd.y * local_18 + v2.y * (1.0f - local_18);
+				pwp->spd.z = pwp->spd.z * local_18 + v2.z * (1.0f - local_18);
+			}
+		}
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004e2770
 void PAdjustAngleYQ(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp, long angy)
@@ -451,9 +551,18 @@ void PGetSpeedGliK(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 {
 }
 
-// STUB: SADX 0x004e4110
+// FUNCTION: SADX 0x004e4110
 void FUN_004e4110(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
+	if (((DAT_05b9d724 << 8) | DAT_05b9d744) == 0x902 || ((DAT_05b9d724 << 8) | DAT_05b9d744) == 0x903)
+	{
+		PSGCollisionPinball(param_1, param_2, param_3);
+		return;
+	}
+	else
+	{
+		PSGCollision(param_1, param_2, param_3);
+	}
 }
 
 // STUB: SADX 0x004e60d0
@@ -522,12 +631,36 @@ void PConvertVector_G2P(struct taskwk *twp, struct NJS_POINT3 *vp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x004ebf90
+// FUNCTION: SADX 0x004ebf90
 void PConvertVector_P2G(struct taskwk *twp, struct NJS_POINT3 *vp)
 {
+	struct NJS_POINT3 v;
+	struct NJS_POINT3 *local_18;
+	local_18 = vp;
+	if (twp == 0)
+		return;
+	v.x = local_18->x;
+	local_18 = (struct NJS_POINT3 *)((char *)local_18 + 4);
+	v.y = local_18->x;
+	local_18 = (struct NJS_POINT3 *)((char *)local_18 + 4);
+	v.z = local_18->x;
+	njPushMatrixEx();
+	njUnitMatrix(0);
+	if (twp->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)twp->ang.z);
+	}
+	if (twp->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)twp->ang.x);
+	}
+	if (-twp->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)(-twp->ang.y));
+	}
+	njCalcVector(0, &v, vp);
+	njPopMatrix(1);
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x004ec070
 void PConvertVector_G2N(struct NJS_POINT3 *np, struct NJS_POINT3 *vp, long angy)
@@ -624,9 +757,57 @@ void PAdjustAngleFacingTo(struct pheadeyewk *phewp)
 	phewp->headobjptr->ang[2] = phewp->angz_ahead & 0xffff;
 }
 
-// STUB: SADX 0x004ef080
+// FUNCTION: SADX 0x004ef080
 void PAdjustAngleStaringEyes(struct pheadeyewk *phewp)
 {
+	long local_8;
+	local_8 = AdjustAngle(phewp->angy_leye, phewp->angy_eye, 0x800);
+	if (local_8 & 0x8000)
+	{
+		local_8 = local_8 | 0xffff0000;
+	}
+	if (local_8 > phewp->angy_leye_max)
+	{
+		local_8 = phewp->angy_leye_max;
+	}
+	else if (local_8 < phewp->angy_leye_min)
+	{
+		local_8 = phewp->angy_leye_min;
+	}
+	phewp->angy_leye = local_8;
+	phewp->leyeobjptr->ang[1] = phewp->angy_leye;
+	local_8 = AdjustAngle(phewp->angy_reye, phewp->angy_eye, 0x800);
+	if (local_8 & 0x8000)
+	{
+		local_8 = local_8 | 0xffff0000;
+	}
+	if (local_8 < phewp->angy_reye_min)
+	{
+		local_8 = phewp->angy_reye_min;
+	}
+	else if (local_8 > phewp->angy_reye_max)
+	{
+		local_8 = phewp->angy_reye_max;
+	}
+	phewp->angy_reye = local_8;
+	phewp->reyeobjptr->ang[1] = phewp->angy_reye;
+	local_8 = AdjustAngle(phewp->angz_leye, phewp->angz_eye, 0x800);
+	if (local_8 & 0x8000)
+	{
+		local_8 = local_8 | 0xffff0000;
+	}
+	if (local_8 < phewp->angz_reye_min)
+	{
+		local_8 = phewp->angz_reye_min;
+	}
+	else if (local_8 > phewp->angz_reye_max)
+	{
+		local_8 = phewp->angz_reye_max;
+	}
+	phewp->angz_leye = local_8;
+	phewp->leyeobjptr->ang[2] = phewp->angz_leye;
+	phewp->angz_reye = local_8;
+	phewp->reyeobjptr->ang[2] = phewp->angz_reye;
 }
 
 // FUNCTION: SADX 0x004ef210

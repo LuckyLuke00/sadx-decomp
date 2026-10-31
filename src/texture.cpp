@@ -163,10 +163,18 @@ long CheckObjectTexture()
 	}
 }
 
-// STUB: SADX 0x00502260
+// FUNCTION: SADX 0x00502260
 long SetObjectTexture()
 {
-	return (long)0;
+	if (DAT_05cc3540[1] != 0)
+	{
+		___njSetTexture(DAT_05cc3540[1]);
+	}
+	else
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x00502290

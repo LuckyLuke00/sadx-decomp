@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct task *DAT_05baf518;
 extern void *DAT_05baf520;
 extern void ___OutputDebugString(char *str, ...);
 struct task;
@@ -98,10 +99,66 @@ struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(str
 	return (struct task *)0;
 }
 
-// STUB: SADX 0x004f3870
+// FUNCTION: SADX 0x004f3870
 struct task *FUN_004f3870(long param_1, void (*param_2)(struct task *))
 {
-	return (struct task *)0;
+	struct task *local_cg;
+	struct task *local_8g;
+	if (DAT_05baf518 == 0)
+	{
+		return 0;
+	}
+	if (param_1 < 0 || param_1 >= 9)
+	{
+		return 0;
+	}
+	local_cg = DAT_05baf518;
+	local_8g = local_cg->next;
+	if (local_8g != 0)
+	{
+		local_8g->last = 0;
+	}
+	DAT_05baf518 = local_8g;
+	if (param_2 != 0)
+	{
+		local_cg->exec = param_2;
+	}
+	else
+	{
+		local_cg->exec = (void (__cdecl *)(struct task *))FUN_005b5aa0;
+	}
+	if (param_1 != 7)
+	{
+		if (param_1 == 8)
+		{
+			param_1 = 7;
+		}
+		if (DAT_05baf4d0[param_1] == 0)
+		{
+			DAT_05baf4d0[param_1] = (int)local_cg;
+			local_cg->next = 0;
+			local_cg->last = 0;
+		}
+		else
+		{
+			local_8g = (struct task *)DAT_05baf4d0[param_1];
+			local_cg->last = 0;
+			local_cg->next = local_8g;
+			local_8g->last = local_cg;
+			DAT_05baf4d0[param_1] = (int)local_cg;
+		}
+	}
+	local_cg->ocp = 0;
+	local_cg->twp = 0;
+	local_cg->mwp = 0;
+	local_cg->fwp = 0;
+	local_cg->awp = 0;
+	local_cg->disp = 0;
+	local_cg->dest = 0;
+	local_cg->ctp = 0;
+	local_cg->ptp = 0;
+	local_cg->thp = 0;
+	return local_cg;
 }
 
 #pragma optimize("", off)

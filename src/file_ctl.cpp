@@ -78,9 +78,34 @@ void ReleaseCamFile()
 	}
 }
 
-// STUB: SADX 0x004cf3a0
+// FUNCTION: SADX 0x004cf3a0
 void LoadSetFile(char *pcFileName, unsigned long u32SetType)
 {
+	char aFileName[32];
+	char *local_8g;
+
+	if (u32SetType == 0)
+	{
+		ReleaseSetFile();
+	}
+	local_8g = GetFnamesPlayerStr();
+	strcpy(aFileName, "set");
+	strcat(aFileName, pcFileName);
+	strcat(aFileName, local_8g);
+	strcat(aFileName, ".bin");
+	if (LoadFileWithMalloc(aFileName, (void **)&DAT_05b3e320[u32SetType]) == -1)
+	{
+		if (DAT_05b3e320[u32SetType] != 0)
+		{
+			syFree((void *)DAT_05b3e320[u32SetType]);
+		}
+		local_8g = characterinitial[0];
+		strcpy(aFileName, "set");
+		strcat(aFileName, pcFileName);
+		strcat(aFileName, local_8g);
+		strcat(aFileName, ".bin");
+		LoadFileWithMalloc(aFileName, (void **)&DAT_05b3e320[u32SetType]);
+	}
 }
 
 // FUNCTION: SADX 0x004cf4c0

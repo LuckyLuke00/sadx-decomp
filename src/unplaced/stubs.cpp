@@ -1323,6 +1323,18 @@ void PGetRotation(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 {
 }
 
+// STUB: SADX 0x004e4180
+long PSGCollision(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004e9170
+long PSGCollisionPinball(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x004ec740
 void PSetMotion(struct mtnjvwk *mjp)
 {
@@ -2148,11 +2160,6 @@ void DrawCharSelFixedFile(struct CharSelWk *wkp)
 
 // STUB: SADX 0x0060d0e0
 extern void EffectHit(struct sp_task *, struct sp_link *)
-{
-}
-
-// STUB: SADX 0x0060d560
-void FUN_0060d560(struct NJS_POINT3 *, float)
 {
 }
 

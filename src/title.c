@@ -1,6 +1,5 @@
 #include "decls.h"
-
-
+extern float DAT_05cda0e0;
 
 // GLOBAL: SADX 0x026093e8
 static struct NJS_TEXANIM anim_title[6];
@@ -202,9 +201,33 @@ void TitleSetStageNumber()
 	FUN_00573740();
 }
 
-// STUB: SADX 0x0059b280
+// FUNCTION: SADX 0x0059b280
 void DisplayTitle_ss()
 {
+	struct NJS_SPRITE Sprite;
+	int local_cg;
+	float local_8g;
+	float local_34t;
+
+	local_8g = DAT_05cda0e0;
+	Sprite.tlist = &texlist_title;
+	Sprite.tanim = anim_title;
+	___njSetTexture(Sprite.tlist);
+	SetMaterial(0.0f, local_8g, local_8g, local_8g);
+	Sprite.sx = 1.0f;
+	Sprite.sy = 1.0f;
+	Sprite.p.x = 320.0f;
+	Sprite.p.y = 0.0f;
+	for (local_cg = 0; local_cg < 6; local_cg = local_cg + 1)
+	{
+		local_34t = -1.0f;
+		if (local_34t >= -3.0f && local_34t < 12048.0f)
+		{
+			local_34t = local_34t + 22048.0f;
+		}
+		late_DrawSprite2D(&Sprite, local_cg, local_34t, 2, 4);
+	}
+	ResetMaterial();
 }
 
 // STUB: SADX 0x0059b370

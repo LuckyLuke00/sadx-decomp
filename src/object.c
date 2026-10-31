@@ -31,10 +31,40 @@ void ObjectCCollision_setMeshNWZ(struct task *tp)
 	tp->twp->flag |= 0xa000;
 }
 
-// STUB: SADX 0x004ff9a0
+// FUNCTION: SADX 0x004ff9a0
 long ObjectMovableInitialize(struct taskwk *twp, struct motionwk *mwp, unsigned long mode)
 {
-	return (long)0;
+	if (mwp == 0)
+	{
+		return 0;
+	}
+	switch (mode)
+	{
+		case 4:
+			mwp->rad = 5.0f;
+			mwp->weight = 0.02f;
+			twp->flag = (short)(twp->flag | 0x240);
+			break;
+		case 5:
+			mwp->rad = 20.0f;
+			mwp->weight = 0.1f;
+			twp->flag = (short)(twp->flag | 0x640);
+			break;
+		case 6:
+			mwp->rad = 30.0f;
+			mwp->weight = 0.2f;
+			twp->flag = (short)(twp->flag | 0x640);
+			break;
+		case 7:
+			mwp->rad = 5.0f;
+			mwp->weight = 1.0f;
+			twp->flag = (short)(twp->flag | 0x840);
+			break;
+		default:
+			return 0;
+	}
+	twp->id = (unsigned char)mode;
+	return 1;
 }
 
 // FUNCTION: SADX 0x00500320
