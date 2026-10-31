@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1450" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,654 of 16,524 game functions done (34.21%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,655 of 16,524 game functions done (34.22%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 592,1206.5 586,1199.6 587.1,1198" fill="#4e32f3"/>
 <polygon points="588.8,1196.5 595.2,1196.5 596.9,1198 598,1199.6 586,1199.6 587.1,1198" fill="#ffffff" fill-opacity="0.4"/>
@@ -539,7 +539,7 @@
 <rect x="14" y="98" width="6" height="6" fill="#ffd700"><title>0x008806c0 Disp(37): 100%</title></rect>
 <rect x="28" y="98" width="6" height="6" fill="#ffd700"><title>0x008807d0 ObjectKazariYaji: 100%</title></rect>
 <rect x="56" y="98" width="6" height="6" fill="#ffd700"><title>0x00880ac0 FUN_00880ac0: 100%</title></rect>
-<rect x="161" y="98" width="6" height="6" fill="#ffd700"><title>0x00881e00 Normal2(5): 100%</title></rect>
+<rect x="161" y="98" width="6" height="6" fill="#ffd700"><title>0x00881e00 Normal2(6): 100%</title></rect>
 <rect x="168" y="98" width="6" height="6" fill="#ffd700"><title>0x00881e10 ObjectCardDisp: 100%</title></rect>
 <rect x="35" y="105" width="6" height="6" fill="#ffd700"><title>0x00882450 Disp(38): 100%</title></rect>
 <rect x="42" y="105" width="6" height="6" fill="#ffd700"><title>0x00882510 Normal(16): 100%</title></rect>
@@ -600,7 +600,7 @@
 <rect x="77" y="154" width="6" height="6" fill="#ffd700"><title>0x0088d8a0 ObjectCasinoEarthShake: 100%</title></rect>
 <rect x="84" y="154" width="6" height="6" fill="#ffd700"><title>0x0088d8b0 CreateEarthShake_Casino: 100%</title></rect>
 </g>
-<rect x="377" y="238" width="147" height="119" rx="3" fill="#21262d" stroke="#30363d"><title>Ice Cap: 65 of 252 functions done</title></rect>
+<rect x="377" y="238" width="147" height="119" rx="3" fill="#21262d" stroke="#30363d"><title>Ice Cap: 66 of 252 functions done</title></rect>
 <text x="380" y="252" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Ice Cap <tspan font-weight="400" fill="#8b949e">8%</tspan></text>
 <g transform="translate(380,256)">
 <rect y="0" width="140" height="84" fill="url(#todo)"/>
@@ -663,6 +663,7 @@
 <rect x="84" y="63" width="6" height="6" fill="#ffd700"><title>0x00866cb0 ObjectHasira10c: 100%</title></rect>
 <rect x="14" y="70" width="6" height="6" fill="#ffd700"><title>0x00866ec0 ObjectIcicleDisplay: 100%</title></rect>
 <rect x="35" y="70" width="6" height="6" fill="#ffd700"><title>0x00867130 ObjectIcecapJump: 100%</title></rect>
+<rect x="112" y="70" width="6" height="6" fill="#ffd700"><title>0x00867f60 ObjectHyochu4: 100%</title></rect>
 <rect x="28" y="77" width="6" height="6" fill="#ffd700"><title>0x00868400 BombExp: 100%</title></rect>
 <rect x="35" y="77" width="6" height="6" fill="#ffd700"><title>0x00868430 DispBomb: 100%</title></rect>
 <rect x="42" y="77" width="6" height="6" fill="#ffd700"><title>0x008684a0 BombDown: 100%</title></rect>
