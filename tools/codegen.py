@@ -94,6 +94,14 @@ def read_source(path: Path) -> str:
     return text
 
 
+def code_flags(text: str) -> str | None:
+    """The flags of the code group of TEXT's first FUNCTION, TEMPLATE or SYNTHETIC, or None when it has none or
+    that address is in no group. Unlike file_group it never stops: the build checks the file."""
+    first = function_marker().search(text)
+    group = first and progress.codegen_group(progress.load_codegen_groups(), int(first.group(1), 16))
+    return group["flags"] if group else None
+
+
 def file_group(source: str, text: str, groups: list[dict]) -> dict | None:
     """The game code group of a file's FUNCTIONs, or None if it has none. Stops if they are not all in one."""
     found = {}  # group name: (group, first address in it)

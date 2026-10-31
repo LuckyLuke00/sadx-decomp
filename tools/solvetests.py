@@ -25,6 +25,7 @@ import llmclient
 import names
 import progress
 import project
+import stubpairs
 
 ADDRESS = 0x00401000
 FILE = "src/foo.c"
@@ -544,11 +545,12 @@ def check_own_stubs() -> list[str]:
     text = (f'#include "a.h"\n\n// FUNCTION: {target} 0x00401000\nvoid Caller(struct task *tp)\n'
             "{\n\ttp->exec = Normal;\n\tUnique();\n\tPorted();\n\tDone();\n}\n\n"
             f"// FUNCTION: {target} 0x00401a00\nstatic void Ported(void)\n{{\n}}\n")
-    wanted = (f'#include "a.h"\nstatic int Done(void);\nstatic void Normal(struct task *tp);\n\n{llm.OFF}\n'
-              f"// STUB: {target} 0x00400800\nstatic void Normal(struct task *tp)\n{{\n}}\n{llm.ON}\n\n"
+    wanted = (f'#include "a.h"\nstatic int Done(void);\nstatic void Normal(struct task *tp);\n\n'
+              f"// STUB: {target} 0x00400800\nstatic void Normal(struct task *tp)\n{{\n}}\n\n"
               f"// FUNCTION: {target} 0x00401000\nvoid Caller(struct task *tp)\n"
               "{\n\ttp->exec = Normal;\n\tUnique();\n\tPorted();\n\tDone();\n}\n\n"
-              f"{llm.OFF}\n// STUB: {target} 0x00401800\nstatic int Done(void)\n{{\n\treturn (int)0;\n}}\n{llm.ON}\n\n"
+              f"{stubpairs.OFF}\n// STUB: {target} 0x00401800\nstatic int Done(void)\n{{\n\treturn (int)0;\n}}\n"
+              f"{stubpairs.ON}\n\n"
               f"// FUNCTION: {target} 0x00401a00\nstatic void Ported(void)\n{{\n}}\n")
     with tempfile.TemporaryDirectory() as folder:
         tables = Path(folder)

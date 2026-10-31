@@ -11,6 +11,7 @@
   python tools/check.py groups                recount the evidence for data/codegen-groups.csv
   python tools/check.py areas                 sort functions into the game's areas, such as its stages
   python tools/check.py decls                 write the declarations and stubs that the sources use
+  python tools/check.py pairs [--fix]         list (or fix) the pragma pairs around stubs that a call needs or not
   python tools/check.py dossier 0x00401000    what an agent needs to decompile a function
   python tools/check.py access 0x00800000     how the exe reads and writes a global, for its type
   python tools/check.py args [0x00401000]     functions whose callers pass stack bytes that disagree
@@ -55,6 +56,7 @@ import report
 import runner
 import scoring
 import selftest
+import stubpairs
 import toolchain
 import tricks
 
@@ -79,6 +81,8 @@ def main() -> int:
         return areas.write(project.require_game())
     if args.command == "decls":
         return declgen.write(args.context, args.tables)
+    if args.command == "pairs":
+        return fix_stub_pairs(args.fix)
     if args.command == "dossier":
         # Only .venv has capstone.
         import dossier
@@ -128,6 +132,7 @@ def parse_args() -> argparse.Namespace:
     decls = commands.add_parser("decls")
     decls.add_argument("--context", type=Path, help="another checkout whose files give signatures and globals")
     decls.add_argument("--tables", type=Path, help="a folder of name tables: tools/declgen.py says what it holds")
+    commands.add_parser("pairs").add_argument("--fix", action="store_true", help="write the fixes")
     dossier = commands.add_parser("dossier")
     dossier.add_argument("addresses", nargs="+", type=lambda value: int(value, 16), help="e.g. 0x00401000")
     dossier.add_argument("--c", action="store_true", help="add Ghidra's draft C")
@@ -283,6 +288,18 @@ def build() -> None:
 
 
 # Checks
+
+
+def fix_stub_pairs(fix: bool) -> int:
+    """Print each source file whose stub pairs stubpairs.tree_fixes changes, and with FIX write the fixes with LF line
+    ends, as git stores them. Returns 1 when it leaves a file to fix."""
+    fixes = stubpairs.tree_fixes()
+    for path, text, added, removed in fixes:
+        print(f"{path.relative_to(ROOT).as_posix()}: {added} to add, {removed} to remove")
+        if fix:
+            path.write_bytes(text.encode("utf-8"))
+    print(f"{len(fixes)} files {'fixed' if fix else 'to fix'}")
+    return int(bool(fixes) and not fix)
 
 
 def run_ci(base: str | None) -> int:

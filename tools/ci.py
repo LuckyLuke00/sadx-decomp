@@ -6,6 +6,7 @@
    commits, so a fresh render proves it matches them.
 4. Every function in data/functions.csv is in exactly one code group and ends inside it.
 5. No binaries and no file over 10 MB are in the repo.
+6. The pragma pair around each STUB sits where a call needs it, and nowhere else (tools/stubpairs.py).
 
 Before the first `check.py save` there is no summary.json: that fails, and only
 checks 4 and 5 run. The base defaults to the branch's upstream. Without a base,
@@ -24,6 +25,7 @@ from pathlib import Path
 import osutil
 import progress
 import scoring
+import stubpairs
 
 ROOT = progress.ROOT
 # The repo files and tools that can change a score. summary.json stores their hash.
@@ -166,6 +168,15 @@ def check_groups() -> list[str]:
     return problems
 
 
+def check_stub_pairs() -> list[str]:
+    """Every STUB that a call of its file needs the pragma pair for has it, and no other has one."""
+    problems = [f"{path.relative_to(ROOT).as_posix()}: {added} to add, {removed} to remove"
+                for path, _, added, removed in stubpairs.tree_fixes()]
+    if len(problems) > MAX_LINES:
+        problems[MAX_LINES:] = [f"and {len(problems) - MAX_LINES} more"]
+    return problems + ["run `python tools/check.py pairs --fix`"] if problems else []
+
+
 def check_no_binaries() -> list[str]:
     problems = []
     for path in repo_files("."):
@@ -193,6 +204,7 @@ def run_checks(base: str | None) -> int:
     checks += [
         ("history and visuals are current", check_visuals),
         ("every function is in one code group", check_groups),
+        ("every stub pair sits where a call needs it", check_stub_pairs),
         ("no binaries or large files", check_no_binaries),
     ]
     failed = report(checks)

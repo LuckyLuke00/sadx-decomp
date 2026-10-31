@@ -85,6 +85,7 @@ from pathlib import Path
 import cfix
 import check
 import ci
+import codegen
 import declgen
 import facts
 import fakematch
@@ -95,6 +96,7 @@ import pe
 import progress
 import project
 import scoring
+import stubpairs
 import tricks
 
 ROOT = project.ROOT
@@ -114,7 +116,6 @@ STOP_AFTER = 2  # --stop-below looks at the best after this many tries
 TEMPERATURE_STEP, TEMPERATURE_MAX = 0.3, 1.2  # added after each repeated attempt
 EXAMPLES = 2
 CAST_ROUNDS = 3  # builds of a try with casts added on the pointer conversions the compiler refused
-OFF, ON = '#pragma optimize("", off)', '#pragma optimize("", on)'  # around a STUB that its own file calls
 STRUCT_LINES = 120  # member lines in the first prompt's Structs section
 STRUCT_DEPTH = 2  # levels of member types below the types the dossier names
 STRUCTS_RULE = ("The Structs section lists members with their offsets: "
@@ -275,26 +276,13 @@ def definition_span(lines, address):
     return None if end is None else (start, end)
 
 
-def wrap_stub(func, sig, lines, span=None):
-    """FUNC, a definition's lines with the signature SIG, between OFF and ON when it is a STUB that is static or that
-    the code of LINES outside SPAN names: the compiler drops a call to an empty function of its own file, and keeps a
-    call to a function that is compiled without optimization, as it does for a function of another file. Any other
-    FUNC as it is."""
-    if not func[0].startswith("// STUB"):
-        return func
-    name = names.declared_name(sig)
-    if re.match(r"static\b", sig) or re.search(rf"\b{re.escape(name)}\b", code_outside(lines, name, span)):
-        return [OFF, *func, ON]
-    return func
-
-
 def definition_block(lines, address):
     """definition_span, widened over the OFF and ON lines around the definition: the lines to cut or replace."""
     span = definition_span(lines, address)
     if span is None:
         return None
     first, last = span
-    if first and lines[first - 1] == OFF and last + 1 < len(lines) and lines[last + 1] == ON:
+    if first and lines[first - 1] == stubpairs.OFF and last + 1 < len(lines) and lines[last + 1] == stubpairs.ON:
         return first - 1, last + 1
     return span
 
@@ -322,18 +310,6 @@ def defined_name(text, address):
 def first_function_line(lines):
     """Index of the first annotated line: the top-of-file declarations end there."""
     return next((i for i, line in enumerate(lines) if annotation_address(line) is not None), len(lines))
-
-
-def declares(line, name):
-    """Whether LINE declares NAME at file scope, unlike an indented call or struct member."""
-    return line[:1] not in " \t" and line.endswith(";") and names.declared_name(line[:-1]) == name
-
-
-def code_outside(lines, name, span=None):
-    """The code of LINES, without comments and strings, outside SPAN (a definition's first and last line index) and
-    outside the file-scope declarations of NAME."""
-    rest = lines if span is None else lines[:span[0]] + lines[span[1] + 1:]
-    return names.strip_code("\n".join(line for line in rest if not declares(line, name)))
 
 
 def parse_reply(reply, address, name=None):
@@ -392,7 +368,8 @@ def annotated_definition(lines, address, name):
 
 
 def apply_function(text, address, decls, func):
-    """TEXT with the function in address order (replacing its old definition) and the new declarations after the includes."""
+    """TEXT with the function in address order (replacing its old definition), the new declarations after the
+    includes, and the stub pairs that stubpairs.pair_stubs gives."""
     lines = text.split("\n")
     if lines[-1] == "":
         lines.pop()
@@ -401,13 +378,12 @@ def apply_function(text, address, decls, func):
     same = next((i for i, a in annotated if a == address), None)
     later = next((i for i, a in annotated if a > address), None)
     block = None if same is None else definition_block(lines, address)
-    func = wrap_stub(func, sig, lines, block)
     if same is not None:
         if block is None:
             sys.exit(f"the definition at {hexa(address)} has no closing brace line")
         lines[block[0]:block[1] + 1] = func
     elif later is not None:
-        if lines[later - 1] == OFF:
+        if lines[later - 1] == stubpairs.OFF:
             later -= 1  # a wrapped STUB starts at its OFF line
         lines[later:later] = func + [""]
     else:
@@ -416,7 +392,8 @@ def apply_function(text, address, decls, func):
         lines += func
     if re.match(r"static\b", sig):
         decls = decls + [sig + ";"]  # callers above it need a prototype, and decls never declares a static function
-    return with_declarations("\n".join(lines) + "\n", decls)
+    text = with_declarations("\n".join(lines) + "\n", decls)
+    return stubpairs.pair_stubs(text, codegen.code_flags(text))
 
 
 def with_declarations(text, decls):
@@ -523,7 +500,7 @@ def kept_alive(text, address, shared):
     name = names.declared_name(signature)
     if not re.match(r"static\s", signature) or shared is not None and name not in shared:
         return text
-    if re.search(rf"\b{re.escape(name)}\b", code_outside(lines, name, span)):
+    if re.search(rf"\b{re.escape(name)}\b", names.code_outside(lines, name, span)):
         return text
     return text.rstrip("\n") + f"\n\nvoid *llm_keep_{address:08x} = (void *){name};\n"
 
@@ -643,7 +620,7 @@ def own_globals(text, rel, tables, types):
         return text
     lines = text.split("\n")
     top = first_function_line(lines)
-    kept = [line for i, line in enumerate(lines) if i >= top or not any(declares(line, name) for name in defined)]
+    kept = [line for i, line in enumerate(lines) if i >= top or not any(names.declares(line, name) for name in defined)]
     return with_block("\n".join(kept), block)
 
 
@@ -680,7 +657,7 @@ def tree_code(text, rel, roots, tables, types):
 def stub_functions(text, addresses):
     """TEXT with the definitions at ADDRESSES as stubs, and without the top-of-file declarations only they used. A
     global's definition under its GLOBAL annotation and an explicit template instantiation always stay: they emit
-    a variable or functions."""
+    a variable or functions. The stub pairs are the ones that stubpairs.pair_stubs gives."""
     lines = text.split("\n")
     for address in addresses:
         block = definition_block(lines, address)
@@ -688,14 +665,15 @@ def stub_functions(text, addresses):
             sig = names.parse_annotations("\n".join(lines[block[0]:block[1] + 1]))[0][2]
             stub = [f"// STUB: {project.game_config().target} {hexa(address)}", sig, declgen.stub_body(sig)]
             stub = "\n".join(stub).split("\n")
-            lines[block[0]:block[1] + 1] = wrap_stub(stub, sig, lines, block)
+            lines[block[0]:block[1] + 1] = stub
     top = first_function_line(lines)
     units = [(lines[first:last + 1], top_declared(lines, first, last)) for first, last in statement_spans(lines[:top])]
     units += [([line], None) for line in lines[top:]]
     used = collections.Counter()
     for unit, name in units:
         used.update(set(re.findall(r"\w+", "\n".join(unit))) - {name})
-    return "\n".join(line for unit, name in units if name is None or used[name] for line in unit)
+    text = "\n".join(line for unit, name in units if name is None or used[name] for line in unit)
+    return stubpairs.pair_stubs(text, codegen.code_flags(text))
 
 
 def top_declared(lines, first, last):
