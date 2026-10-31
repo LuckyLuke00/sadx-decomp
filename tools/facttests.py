@@ -656,6 +656,25 @@ def check_float_argument_fact() -> list[str]:
     ])
 
 
+def check_unused_frame_fact() -> list[str]:
+    """unused_frame_fact names a frame that `sub esp, N` or `push ecx` reserves and `mov esp, ebp` gives back when no
+    instruction touches an [ebp - N] slot, read, written, indexed or taken by `lea`. Without `mov esp, ebp`, the
+    `push ecx` makes room for an argument, and code with a `rep` string op gives no fact."""
+    frame = lambda step, *body: ["push ebp", "mov ebp, esp", step, *body, "call @3", "mov esp, ebp", "pop ebp", "ret"]
+    return check_text_cases(facts.unused_frame_fact, [
+        (frame("sub esp, 0xc", "cmp dword ptr [0x5b9d838], 0"), "reserves 12 bytes of locals"),
+        (frame("sub esp, 0xc", "cmp dword ptr [0x5b9d838], 0"), "such as 3 `int` locals"),
+        (frame("push ecx", "push 0"), "such as 1 `int` local:"),
+        (frame("sub esp, 0xc", "mov dword ptr [ebp - 4], eax"), None),
+        (frame("sub esp, 0xc", "lea eax, [ebp - 0xc]"), None),
+        (frame("sub esp, 0x10", "mov eax, dword ptr [ebp + ecx*4 - 0x10]"), None),
+        (frame("push ecx", "mov ecx, 0xa", "rep movsd dword ptr es:[edi], dword ptr [esi]"), None),
+        (["push ebp", "mov ebp, esp", "push ecx", "fld dword ptr [0x5b39d10]", "fstp dword ptr [esp]", "call @6",
+          "pop ebp", "ret"], None),
+        (["push ebp", "mov ebp, esp", "push esi", "call @4", "pop esi", "mov esp, ebp", "pop ebp", "ret"], None),
+    ])
+
+
 def check_switch_chain_fact() -> list[str]:
     """switch_chain_fact gives the case values of two or more `sub R, K` or `dec R` steps on one register, each
     with je or jne, as running sums. A neutral instruction may sit inside the chain, at most CHAIN_GAP of them
@@ -909,7 +928,7 @@ def run() -> list[str]:
                   check_exit_pops, check_printed_keyword, check_amount, check_listed, check_offsets_text,
                   check_convention_fact, check_frame_slot, check_transfer, check_pointer_globals,
                   check_pointer_facts, check_bodiless_fact, check_float_literal, check_constant_fact,
-                  check_float_compare_fact, check_float_argument_fact, check_switch_chain_fact,
+                  check_float_compare_fact, check_float_argument_fact, check_unused_frame_fact, check_switch_chain_fact,
                   check_compare_chain_fact, check_switch_base_fact, check_bit_clear_fact, check_left_constant_fact,
                   check_minus_one_fact, check_unsigned_float, check_float_to_unsigned_fact,
                   check_idiom_lines, check_fact_lines,
