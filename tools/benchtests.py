@@ -258,6 +258,34 @@ def check_repair_static() -> list[str]:
     return failures
 
 
+def check_repair_linkage() -> list[str]:
+    """When the linker finds a second definition of the function's name and the tables give the function file scope,
+    it gets `static`. The retry is kept when it builds. A function of global scope, a second definition of another
+    name, a function that has `static`, a try that builds and no tables give no build."""
+    twice = ('foo.c.obj : error LNK2005: "void __cdecl Run(void)" (?Run@@YAXXZ) already defined in bar.c.obj\n'
+             "game.exe : fatal error LNK1169: one or more multiply defined symbols found")
+    start = failed(["\tx = 1;"], twice)
+    made = code_of(start, SIGNATURE, "static " + SIGNATURE)
+    has_static = failed(["\tx = 1;"], twice, signature="static " + SIGNATURE)
+    other_name = start._replace(output=twice.replace("Run", "Walk"))
+    cases = [("a retry that builds", start, "L", [("static " + SIGNATURE, 80.0, "")], (made, True, 1)),
+             ("a retry that still fails", start, "L", [("static " + SIGNATURE, None, OTHER)],
+              (code_of(start), False, 1)),
+             ("global scope", start, "G", [], (code_of(start), False, 0)),
+             ("another name", other_name, "L", [], (code_of(start), False, 0)),
+             ("a function that has static", has_static, "L", [], (code_of(has_static), False, 0)),
+             ("a try that builds", start._replace(percent=90.0), "L", [], (code_of(start), False, 0)),
+             ("no tables", start, None, [], (code_of(start), False, 0))]
+    failures = []
+    for case, attempt, scope, rules, wanted in cases:
+        with tempfile.TemporaryDirectory() as folder:
+            (Path(folder) / "functions.tsv").write_text(f"address\tname\tscope\n0x00401000\tRun\t{scope}\n",
+                                                        encoding="utf-8")
+            bench, built = fake_bench(rules, tables=folder if scope else None)
+            failures += judged("repair_linkage", case, bench.repair_linkage(attempt), built, wanted)
+    return failures
+
+
 def check_repair() -> list[str]:
     """repair runs the repairs in turn on what the one before kept, and gives (the model's code with its names
     fixed, that code without the tree's clashes, the last build, the Repairs)."""
@@ -284,12 +312,14 @@ def check_repairs_text() -> list[str]:
     every.renamed, every.dropped, every.casts, every.gcasts = {"a": "b"}, {"F": ["int F"]}, ["G"], ["H"]
     every.runtime, every.carried, every.offsets = ["int r;"], ["int c;"], ["x = (char *)p + 1;"]
     every.pointer_casts, every.unstatic = [{"before": "p = q;", "after": "p = (char *)q;"}], True
+    every.made_static = True
     latest = every.latest("scored 9%")
     if not latest.startswith("was built without your declaration of F (the tree declares it as `int F`) and was "
                              "built with casts on the calls to G and ") or not latest.endswith(
             "was built with casts on the pointer conversions and scored 9%"):
         failures.append(f"the latest line with every repair is {latest!r}")
-    keys = ["dropped", "unstatic", "casts", "pointer_casts", "gcasts", "runtime", "carried", "renamed", "bytes"]
+    keys = ["dropped", "unstatic", "made_static", "casts", "pointer_casts", "gcasts", "runtime", "carried", "renamed",
+            "bytes"]
     if list(every.logged()) != keys:
         failures.append(f"the transcript keys with every repair are {list(every.logged())}, not {keys}")
     return failures
@@ -299,7 +329,7 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_guard, check_repair_names, check_repair_clashes, check_repair_calls, check_repair_globals,
-                  check_repair_runtime_and_earlier, check_repair_offsets, check_repair_pointers, check_repair_static,
-                  check_repair, check_repairs_text):
+                  check_repair_runtime_and_earlier, check_repair_offsets, check_repair_pointers, check_repair_linkage,
+                  check_repair_static, check_repair, check_repairs_text):
         failures += check()
     return failures
