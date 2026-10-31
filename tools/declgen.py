@@ -66,6 +66,8 @@ MEMBER_STEP = r"(?:->|\[[^\]]*\]\s*(?:\.|->))"  # `->`, or an index and then `.`
 REACHED_THROUGH = re.compile(rf"(\w+)(?=\s*(?:{CALL_ARGUMENTS}\s*)?{MEMBER_STEP})")
 RETURNS_POINTER_TO = re.compile(r"(?:const\s+)?(?:struct|union)\s+(\w+)\s*\*")  # a signature's pointed-to return type
 BY_VALUE = re.compile(r"\b(struct|union)\s+(\w+)\b(?!(?:\s*\b(?:const|volatile)\b)*\s*\*)")  # one passed by value
+STD_HEADERS = {"allocator": "memory", "basic_string": "string", "char_traits": "string", "string": "string",
+               "vector": "vector", "wstring": "string"}  # the header of each standard name that decls.h declares
 PLACEHOLDER_TAG = re.compile(r"\b(?:struct|union|enum)\s+(?:(?:param|local)_\w+|[a-z]*Var\d+)\b")  # a variable's name
 
 
@@ -127,16 +129,28 @@ class Types(names.Types):
         return "\n".join(lines)
 
 
-def stub_body(sig: str) -> str:
+def return_type(sig: str) -> str:
+    """SIG's return type, without its storage class, inline and calling convention."""
     ret = sig.split("(")[0]
     name = names.declared_name(sig) or ""
     ret = ret[: ret.rfind(name)].strip() if name else ret
     ret = re.sub(r"\b(extern|static|inline|__inline|__cdecl|__stdcall|__fastcall|__thiscall)\b", "", ret)
-    ret = " ".join(ret.split())
+    return " ".join(ret.split())
+
+
+def returns_std_value(ret: str) -> bool:
+    """Whether the return type RET is a standard class by value, as std::string or std::vector<int *> is."""
+    return re.match(r"(const\s+)?std::", ret) is not None and not re.search(r"[*&]", re.sub(r"<.*>", "", ret))
+
+
+def stub_body(sig: str) -> str:
+    ret = return_type(sig)
     if ret == "void" or ret.endswith("void") and "*" not in ret:
         return "{\n}"
     if re.match(r"(const\s+)?(struct|union)\b", ret) and "*" not in ret:
         return f"{{\n\t{ret} r = {{}};\n\treturn r;\n}}"
+    if returns_std_value(ret):  # a class: 0 does not cast to it, and `= {}` needs C++11
+        return f"{{\n\t{ret} r;\n\treturn r;\n}}"
     return f"{{\n\treturn ({ret})0;\n}}"
 
 
@@ -533,7 +547,9 @@ def write(context: Path | None, tables: Path | None) -> int:
         if a not in file_local:
             glines.append(f"{ext};")
     out[names.GLOBALS_H] = "\n".join(glines) + "\n"
-    slines = [HEADER, '#include "decls.h"', ""]
+    std_returns = [ret for ret in map(return_type, stubs.values()) if returns_std_value(ret)]
+    headers = sorted({STD_HEADERS[n] for ret in std_returns for n in re.findall(r"\bstd::(\w+)", ret)})
+    slines = [HEADER, '#include "decls.h"', *(f"#include <{h}>" for h in headers), ""]  # decls.h only declares them
     laid = defined_types | set(names.header_blocks((ROOT / names.TYPES_H).parent))
     unlaid = sorted({(kind, n) for sig in stubs.values() for kind, n in BY_VALUE.findall(sig) if n not in laid})
     if unlaid:

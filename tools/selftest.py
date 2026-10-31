@@ -80,6 +80,7 @@ def run() -> int:
     failures += check_reached_types()
     failures += check_bare_struct_names()
     failures += check_by_value_placeholders()
+    failures += check_std_value_stubs()
     failures += check_clone()
     failures += check_link()
     failures += check_units()
@@ -660,6 +661,30 @@ def check_by_value_placeholders() -> list[str]:
     if code != 0 or found != wanted:
         return [f"decls for stubs that take or return structs by value gives exit {code}, not 0, and the placeholders "
                 f"{found}, not {wanted}"]
+    return []
+
+
+def check_std_value_stubs() -> list[str]:
+    """A stub that returns a standard class by value returns a default-constructed one, and stubs.cpp includes the
+    header of each standard name in that type, since decls.h only declares them: (std::string)0 does not build. A
+    stub that returns a pointer to one keeps the cast and needs no header."""
+    target = project.game_config().target
+    files = {"src/x.cpp": f"// FUNCTION: {target} 0x00405000\nvoid Run(void)\n{{\n\tName();\n\tWords();\n"
+                          "\tFirst();\n}\n"}
+    functions = [("0x00401000", "Name", "G", "src/w.cpp", "o_w.obj", "std::string Name(void);"),
+                 ("0x00402000", "Words", "G", "src/w.cpp", "o_w.obj",
+                  "std::vector<std::wstring, std::allocator<std::wstring> > Words(void);"),
+                 ("0x00403000", "First", "G", "src/w.cpp", "o_w.obj", "std::string * First(void);"),
+                 ("0x00405000", "Run", "G", "src/x.cpp", "o_x.obj", "void Run(void);")]
+    code, output, generated = run_decls(files, {}, functions, [])
+    stubs = generated.get(names.STUBS_CPP, "")
+    wanted = ['#include "decls.h"', "#include <memory>", "#include <string>", "#include <vector>"]
+    found = [line for line in stubs.splitlines() if line.startswith("#include")]
+    bodies = ["\tstd::string r;\n\treturn r;", "\tstd::vector<std::wstring, std::allocator<std::wstring> > r;\n",
+              "\treturn (std::string *)0;"]
+    if code != 0 or found != wanted or not all(body in stubs for body in bodies):
+        return [f"decls for stubs that return standard classes gives exit {code}, not 0, the includes {found}, not "
+                f"{wanted}, or stubs.cpp {stubs!r} lacks {bodies}"]
     return []
 
 
