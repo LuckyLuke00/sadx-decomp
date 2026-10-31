@@ -3179,6 +3179,9 @@ struct obj object_hebi_clhebigate_clhebigate[1];
 // GLOBAL: SADX 0x04384834
 struct NJS_ACTION action_hebigate_hebikuchi[1];
 
+// GLOBAL: SADX 0x04386d18
+struct obj object_togedai_togedai_togedai[1];
+
 // GLOBAL: SADX 0x0438b3d4
 struct obj object_los_nc_gakeshoku_nc_gakeshoku[1];
 

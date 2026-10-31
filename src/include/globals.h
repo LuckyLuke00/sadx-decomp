@@ -1063,6 +1063,7 @@ extern struct NJS_MODEL model_lwobj_snake02_snake02[1];
 extern struct NJS_MODEL model_l02_lightway_h_lightway_h[];
 extern struct obj object_hebi_clhebigate_clhebigate[];
 extern struct NJS_ACTION action_hebigate_hebikuchi[];
+extern struct obj object_togedai_togedai_togedai[];
 extern struct obj object_los_nc_gakeshoku_nc_gakeshoku[];
 extern struct NJS_MODEL model_los_nc_happa_nc_happa[];
 extern struct obj object_lwobj_arrow_arrow[1];
