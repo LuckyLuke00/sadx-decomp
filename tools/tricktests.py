@@ -128,6 +128,25 @@ def check_report_function() -> list[str]:
     return failures
 
 
+def check_report_miss_without_diff() -> list[str]:
+    """`check.py fn --no-diff` gives a miss its score line and runs no reccmp for its diff."""
+    entry = {"name": "FUN_00401000", "matching": 0.5}
+    calls = []
+    reccmp = report.runner.reccmp
+    report.runner.reccmp = lambda *args, cwd: calls.append(args) or ("", [])
+    out = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(out):
+            found = report.report_function(0x401000, entry, None, None, diffs=False)
+    finally:
+        report.runner.reccmp = reccmp
+    wanted = "0x00401000 FUN_00401000: 50.00% match.\n"
+    if (found, out.getvalue(), calls) != (False, wanted, []):
+        return [f"report_function without diffs gives {found}, {out.getvalue()!r} and {len(calls)} reccmp runs, "
+                f"not False, {wanted!r} and none"]
+    return []
+
+
 def check_volatile_globals() -> list[str]:
     """A file-level declaration with `volatile` gives its name; a volatile local, a volatile member, a comment and a
     string give none. A function that uses such a global has the trick, one that doesn't has none."""
@@ -179,6 +198,6 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_forbidden, check_file_tricks, check_declarator_start, check_report_function,
-                  check_volatile_globals, check_fake_tricks, check_scan_needs_src):
+                  check_report_miss_without_diff, check_volatile_globals, check_fake_tricks, check_scan_needs_src):
         failures += check()
     return failures
