@@ -67405,9 +67405,9 @@
   {
    "address": "0x008cd6a0",
    "name": "cartShadowPos",
-   "accuracy": 0.23529411764705882,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67501,9 +67501,9 @@
   {
    "address": "0x008d0500",
    "name": "FUN_008d0500",
-   "accuracy": 0.0851063829787234,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67573,9 +67573,9 @@
   {
    "address": "0x008d0ca0",
    "name": "distCheck",
-   "accuracy": 0.21739130434782608,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67677,9 +67677,9 @@
   {
    "address": "0x008d3560",
    "name": "execTPArchIISub",
-   "accuracy": 0.07272727272727272,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67709,9 +67709,9 @@
   {
    "address": "0x008d3fa0",
    "name": "ObjectTPLightII",
-   "accuracy": 0.07692307692307693,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67808,6 +67808,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d54c0",
+   "name": "ObjectTPPanel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d55f0",
+   "name": "dispTPPanel",
+   "accuracy": 0.0898876404494382,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -97246,8 +97262,22 @@
    "library": false
   },
   {
+   "address": "0x04c520ec",
+   "name": "object_tpobj_arch02b_arch02b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c525f4",
    "name": "object_tpobj_jumpdai_jumpdai",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c53f74",
+   "name": "object_tpobj_paneru_paneru",
    "size": 52,
    "match": false,
    "library": false
@@ -97263,6 +97293,13 @@
    "address": "0x04c5680c",
    "name": "object_tpobj_slight2_slight2",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c57bd0",
+   "name": "CartParameter",
+   "size": 60,
    "match": false,
    "library": false
   },
@@ -98375,5 +98412,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "1d3f46f5985fccbac00ad35d3cb3cbcc46206adfc04f22b176ce0e55669f062b"
+ "inputs_sha256": "6377a9f8d2968ff7dbe4b90d8353e63f1cb68bc1b21ba176e09ffd9cbe838bab"
 }

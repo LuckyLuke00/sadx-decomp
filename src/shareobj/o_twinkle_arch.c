@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct obj object_tpobj_arch02b_arch02b[1];
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern int DAT_05b9d838;
@@ -39,9 +40,40 @@ void dispTPArchI(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008d3560
+// FUNCTION: SADX 0x008d3560
 void execTPArchIISub(struct task *tp)
 {
+	struct taskwk *local_8g;
+
+	local_8g = tp->twp;
+	switch (local_8g->mode)
+	{
+		case 0:
+			local_8g->mode = 1;
+			local_8g->timer.l = (long)((tp->ptp->twp->scl.z * 65536.0) / 360.0);
+			if (local_8g->flag == 2)
+				local_8g->timer.l = (0x10000 - local_8g->timer.l) & 0xffff;
+			local_8g->counter.ptr = &object_tpobj_arch02b_arch02b[0];
+			tp->disp = dispTPArch;
+			tp->dest = FUN_0049e8b0;
+			break;
+		case 1:
+			switch (local_8g->smode)
+			{
+				case 0:
+					local_8g->value.l = AdjustAngle(local_8g->value.l, local_8g->timer.l, 0x40);
+					if (DiffAngle(local_8g->value.l, local_8g->timer.l) < 0x40)
+						local_8g->smode = 1;
+					break;
+				case 1:
+					local_8g->value.l = AdjustAngle(local_8g->value.l, -local_8g->timer.l, 0x40);
+					if (DiffAngle(local_8g->value.l, -local_8g->timer.l) < 0x40)
+						local_8g->smode = 0;
+					break;
+			}
+			dispTPArchIISub(tp);
+			break;
+	}
 }
 
 // STUB: SADX 0x008d36b0
@@ -86,9 +118,44 @@ void ObjectTPLightI(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x008d3fa0
+// FUNCTION: SADX 0x008d3fa0
 void ObjectTPLightII(struct task *tp)
 {
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	if (CheckRangeOutWithR(tp, 9060100.0f) != 0)
+		return;
+	if (((DAT_05b9d724 << 8) | DAT_05b9d744) != 0x300)
+	{
+		if ((((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) != 0x2300)
+			return;
+	}
+	if (CheckEditMode() != 0)
+	{
+		local_8->counter.ptr = &object_tpobj_slight2_slight2[0];
+		dispTPArch(tp);
+		if (FUN_004c39c0(tp) != 0)
+		{
+			njPrintC(0x110014, "> Y ROT RATE");
+			local_8->value.l = (long)(local_8->scl.y * 65536.0 / 360.0);
+			local_8->ang.y += local_8->value.l;
+		}
+		return;
+	}
+	switch (local_8->mode)
+	{
+		case 0:
+			local_8->mode = 1;
+			local_8->value.l = (long)(local_8->scl.y * 65536.0 / 360.0);
+			local_8->counter.ptr = &object_tpobj_slight2_slight2[0];
+			tp->disp = dispTPArch;
+			tp->dest = FUN_0049e8b0;
+			break;
+		case 1:
+			local_8->ang.y += local_8->value.l;
+			dispTPArch(tp);
+			break;
+	}
 }
 
 // STUB: SADX 0x008d4100

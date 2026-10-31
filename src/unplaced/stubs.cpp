@@ -3631,6 +3631,11 @@ void FUN_008cfbb0(int, int)
 {
 }
 
+// STUB: SADX 0x008d55f0
+void dispTPPanel(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008d5b90
 long OpenCartSplineData(void *src_adr, long size)
 {

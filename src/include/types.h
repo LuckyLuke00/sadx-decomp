@@ -104,6 +104,7 @@ struct BUBBLE_TABLE;
 struct ButtonInfo;
 struct C7ACAM_PARAM;
 struct c_colli_hit_info;
+struct CART_PLAYER_PARAMETER;
 struct CCL_INFO;
 struct chao_colliwk;
 struct CHAO_GARDEN_INFO;
@@ -1889,6 +1890,40 @@ static_assert(offsetof(C7ACAM_PARAM, campos_dst) == 0xc, "C7ACAM_PARAM::campos_d
 static_assert(offsetof(C7ACAM_PARAM, tgtposofs_y_src) == 0x18, "C7ACAM_PARAM::tgtposofs_y_src");
 static_assert(offsetof(C7ACAM_PARAM, tgtposofs_y_dst) == 0x1c, "C7ACAM_PARAM::tgtposofs_y_dst");
 static_assert(offsetof(C7ACAM_PARAM, nframe) == 0x20, "C7ACAM_PARAM::nframe");
+
+struct CART_PLAYER_PARAMETER {
+    float max_spd;
+    float min_spd;
+    float max_back_spd;
+    float slide_spd;
+    float gravitation;
+    float gravitation_max;
+    float hover_point;
+    float grip;
+    float spd_accell;
+    float spd_break;
+    float spd_masatu;
+    long max_vitality;
+    long smoke_vitality;
+    float cart_handle;
+    float drift_rate;
+};
+static_assert(sizeof(CART_PLAYER_PARAMETER) == 0x3c, "sizeof CART_PLAYER_PARAMETER");
+static_assert(offsetof(CART_PLAYER_PARAMETER, max_spd) == 0x0, "CART_PLAYER_PARAMETER::max_spd");
+static_assert(offsetof(CART_PLAYER_PARAMETER, min_spd) == 0x4, "CART_PLAYER_PARAMETER::min_spd");
+static_assert(offsetof(CART_PLAYER_PARAMETER, max_back_spd) == 0x8, "CART_PLAYER_PARAMETER::max_back_spd");
+static_assert(offsetof(CART_PLAYER_PARAMETER, slide_spd) == 0xc, "CART_PLAYER_PARAMETER::slide_spd");
+static_assert(offsetof(CART_PLAYER_PARAMETER, gravitation) == 0x10, "CART_PLAYER_PARAMETER::gravitation");
+static_assert(offsetof(CART_PLAYER_PARAMETER, gravitation_max) == 0x14, "CART_PLAYER_PARAMETER::gravitation_max");
+static_assert(offsetof(CART_PLAYER_PARAMETER, hover_point) == 0x18, "CART_PLAYER_PARAMETER::hover_point");
+static_assert(offsetof(CART_PLAYER_PARAMETER, grip) == 0x1c, "CART_PLAYER_PARAMETER::grip");
+static_assert(offsetof(CART_PLAYER_PARAMETER, spd_accell) == 0x20, "CART_PLAYER_PARAMETER::spd_accell");
+static_assert(offsetof(CART_PLAYER_PARAMETER, spd_break) == 0x24, "CART_PLAYER_PARAMETER::spd_break");
+static_assert(offsetof(CART_PLAYER_PARAMETER, spd_masatu) == 0x28, "CART_PLAYER_PARAMETER::spd_masatu");
+static_assert(offsetof(CART_PLAYER_PARAMETER, max_vitality) == 0x2c, "CART_PLAYER_PARAMETER::max_vitality");
+static_assert(offsetof(CART_PLAYER_PARAMETER, smoke_vitality) == 0x30, "CART_PLAYER_PARAMETER::smoke_vitality");
+static_assert(offsetof(CART_PLAYER_PARAMETER, cart_handle) == 0x34, "CART_PLAYER_PARAMETER::cart_handle");
+static_assert(offsetof(CART_PLAYER_PARAMETER, drift_rate) == 0x38, "CART_PLAYER_PARAMETER::drift_rate");
 
 struct CCL_INFO {
     unsigned char kind;

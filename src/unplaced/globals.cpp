@@ -3998,14 +3998,23 @@ struct obj object_tp_obj_planet03_planet03[1];
 // GLOBAL: SADX 0x04c5041c
 struct obj object_tpobj7_dpaneru_dpaneru[1];
 
+// GLOBAL: SADX 0x04c520ec
+struct obj object_tpobj_arch02b_arch02b[1];
+
 // GLOBAL: SADX 0x04c525f4
 struct obj object_tpobj_jumpdai_jumpdai[1];
+
+// GLOBAL: SADX 0x04c53f74
+struct obj object_tpobj_paneru_paneru[1];
 
 // GLOBAL: SADX 0x04c558c4
 struct obj object_tpobj_slight1_slight1[1];
 
 // GLOBAL: SADX 0x04c5680c
 struct obj object_tpobj_slight2_slight2[1];
+
+// GLOBAL: SADX 0x04c57bd0
+struct CART_PLAYER_PARAMETER CartParameter[1];
 
 // GLOBAL: SADX 0x04c58234
 struct NJS_POINT3 *CartCamDemoLine;
@@ -8911,6 +8920,9 @@ int DAT_060dfe78[7];
 
 // GLOBAL: SADX 0x060dfea8
 int DAT_060dfea8;
+
+// GLOBAL: SADX 0x060dfeac
+int DAT_060dfeac;
 
 // GLOBAL: SADX 0x060dfeb0
 int *DAT_060dfeb0;

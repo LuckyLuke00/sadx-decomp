@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct CART_PLAYER_PARAMETER CartParameter[1];
+extern int DAT_060dfeac;
 extern struct obj object_b_cart_cart_cart[];
 extern struct obj object_e_cart_cart_cart[];
 extern struct obj object_sarucart_sarucart_sarucart[];
@@ -96,9 +98,10 @@ void reflexiveMaterial(struct NJS_MODEL *model, long scan_type)
 }
 #pragma optimize("", on)
 
-// STUB: SADX 0x008cd6a0
+// FUNCTION: SADX 0x008cd6a0
 void cartShadowPos(struct task *tp, struct taskwk *twp)
 {
+	*(float *)((char *)DAT_060dfeb4 + 0x44) = GetShadowPos(twp->pos.x, CartParameter[DAT_060dfeac].hover_point + twp->pos.y, twp->pos.z, (struct Angle3 *)((char *)DAT_060dfeb4 + 0x54));
 }
 
 // STUB: SADX 0x008cef80
@@ -176,9 +179,44 @@ void calcComponentVector(struct Angle3 *ang, struct NJS_POINT3 *vec)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x008d0500
+// FUNCTION: SADX 0x008d0500
 void FUN_008d0500(float *param_1, float param_2)
 {
+	if (*param_1 > 0.0f)
+	{
+		*param_1 -= param_2;
+		if (*param_1 < 0.0f)
+		{
+			*param_1 = 0.0f;
+		}
+	}
+	else if (*param_1 < 0.0f)
+	{
+		*param_1 += param_2;
+		if (*param_1 > 0.0f)
+		{
+			*param_1 = 0.0f;
+		}
+	}
+	if ((*(int *)DAT_060dfeb4 & 2) == 0)
+	{
+		if (param_1[2] > 0.0f)
+		{
+			param_1[2] -= param_2;
+			if (param_1[2] < 0.0f)
+			{
+				param_1[2] = 0.0f;
+			}
+		}
+		else if (param_1[2] < 0.0f)
+		{
+			param_1[2] += param_2;
+			if (param_1[2] > 0.0f)
+			{
+				param_1[2] = 0.0f;
+			}
+		}
+	}
 }
 
 // STUB: SADX 0x008d0600
@@ -241,10 +279,20 @@ void FUN_008d0b60(struct task *param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x008d0ca0
+// FUNCTION: SADX 0x008d0ca0
 long distCheck(struct task *tp)
 {
-	return (long)0;
+	struct NJS_POINT3 _diff;
+	struct taskwk *local_18g;
+	local_18g = tp->twp;
+	_diff.x = local_18g->pos.x - DAT_05b42a7c->pos.x;
+	_diff.y = local_18g->pos.y - DAT_05b42a7c->pos.y;
+	_diff.z = local_18g->pos.z - DAT_05b42a7c->pos.z;
+	if (njScalor(&_diff) < 500.0)
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x008d0d20
