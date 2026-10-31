@@ -431,6 +431,31 @@ def float_argument_fact(code: list[x86.Instruction]) -> str | None:
             "not after it. Each such argument gets its own slot below all your locals. `sub esp` counts these slots.")
 
 
+def unused_frame_fact(code: list[x86.Instruction]) -> str | None:
+    """/Od: a frame that `sub esp, N` or one `push ecx` reserves after the prologue and `mov esp, ebp` gives back,
+    while no instruction reads, writes or takes the address of an [ebp - N] slot, holds only locals that the source
+    declares and never uses: /Od gives each declared local a slot. Without `mov esp, ebp`, that `push ecx` or `sub esp`
+    makes room for an argument. A `rep` string op can make such a slot by itself, as a struct copy does, so code with
+    one gives no fact."""
+    if not x86.has_frame(code) or not any((i.mnemonic, i.operands) == ("mov", "esp, ebp") for i in code):
+        return None
+    step = code[[(i.mnemonic, i.operands) for i in code].index(("mov", "ebp, esp")) + 1]
+    size = x86.number(step.operands.removeprefix("esp, ")) if step.mnemonic == "sub" else None
+    if (step.mnemonic, step.operands) == ("push", "ecx"):
+        size = 4
+    if not size or any(i.mnemonic.startswith("rep") for i in code):
+        return None
+    if any(m.base == "ebp" and m.disp < 0 for i in code for m in memory_operands(i.operands)):
+        return None
+    ints = size // 4
+    example = f"{ints} `int` local{'s' if ints > 1 else ''}" if size % 4 == 0 else f"a `char` array of {size}"
+    return (f"`{step.mnemonic} {step.operands}` after `mov ebp, esp` reserves {size} bytes of locals, and no "
+            "instruction reads, writes or takes the address of an [ebp - N] slot. At /Od the compiler gives each "
+            f"declared local a slot, even one that the code never uses. So the source declared {size} bytes of locals "
+            f"that it never uses, such as {example}: declare them, or the frame comes out smaller. The code shows "
+            "neither their names nor their types.")
+
+
 def last_write(code: list[x86.Instruction], n: int, bit: int) -> x86.Instruction | None:
     """The last instruction before code[N] that may change the register BIT, in address order."""
     return next((i for i in reversed(code[:n]) if x86.changes(i) & bit), None)
@@ -673,7 +698,7 @@ def idiom_lines(code: list[x86.Instruction], flags: str, unsigned: dict[int, int
     optimization level that it names."""
     if "/Od" in flags:
         found = [float_argument_fact(code), compare_chain_fact(code), switch_base_fact(code), bit_clear_fact(code),
-                 left_constant_fact(code), minus_one_fact(code), float_to_unsigned_fact(code)]
+                 left_constant_fact(code), minus_one_fact(code), float_to_unsigned_fact(code), unused_frame_fact(code)]
     else:
         found = [unsigned_float_fact(unsigned), switch_chain_fact(code), float_to_unsigned_fact(code)]
     return [float_compare_fact(code)] + found
