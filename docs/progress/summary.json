@@ -29861,9 +29861,9 @@
   {
    "address": "0x00594710",
    "name": "FUN_00594710",
-   "accuracy": 0.05405405405405406,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34285,25 +34285,25 @@
   {
    "address": "0x005bc560",
    "name": "RoboHeadSmokeSide",
-   "accuracy": 0.08247422680412371,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005bc6a0",
    "name": "RoboHeadSmokeUnder",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005bc780",
    "name": "RoboHeadChase",
-   "accuracy": 0.05228758169934641,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34557,9 +34557,9 @@
   {
    "address": "0x005bf360",
    "name": "RoboScramble",
-   "accuracy": 0.05970149253731343,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34757,9 +34757,9 @@
   {
    "address": "0x005c2970",
    "name": "LeonAttack",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35069,9 +35069,9 @@
   {
    "address": "0x005c5710",
    "name": "AirFlyAway",
-   "accuracy": 0.08888888888888889,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35861,9 +35861,9 @@
   {
    "address": "0x005cfef0",
    "name": "PoliceTurnSlow",
-   "accuracy": 0.10256410256410256,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35877,17 +35877,17 @@
   {
    "address": "0x005d0080",
    "name": "PoliceChase",
-   "accuracy": 0.07476635514018691,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005d01b0",
    "name": "PoliceTurn",
-   "accuracy": 0.10256410256410256,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39741,9 +39741,9 @@
   {
    "address": "0x0060a690",
    "name": "snowmanTurn",
-   "accuracy": 0.07692307692307693,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39765,9 +39765,9 @@
   {
    "address": "0x0060aa40",
    "name": "snowmanDestroy",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39829,9 +39829,9 @@
   {
    "address": "0x0060b8a0",
    "name": "SnowfaceAction",
-   "accuracy": 0.037383177570093455,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39869,9 +39869,9 @@
   {
    "address": "0x0060c0f0",
    "name": "SnowmanOnEdit",
-   "accuracy": 0.08791208791208792,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67861,9 +67861,9 @@
   {
    "address": "0x008d6040",
    "name": "FUN_008d6040",
-   "accuracy": 0.21052631578947367,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68867,6 +68867,22 @@
    "library": false
   },
   {
+   "address": "0x008deaf0",
+   "name": "execBuyonJel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008dec90",
+   "name": "dispBuyonBodySub",
+   "accuracy": 0.019851116625310174,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008df8f0",
    "name": "dispBuyonSub_Jel",
    "accuracy": 0.14814814814814814,
@@ -68893,9 +68909,9 @@
   {
    "address": "0x008dfb80",
    "name": "execBuyonBornA",
-   "accuracy": 0.061068702290076333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -90749,6 +90765,20 @@
    "library": false
   },
   {
+   "address": "0x0264da34",
+   "name": "robo_smoke1",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0264da70",
+   "name": "robo_smoke2",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0264db34",
    "name": "robo_smoke5",
    "size": 60,
@@ -91081,6 +91111,34 @@
    "address": "0x0267d1b8",
    "name": "demopictures",
    "size": 4048,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02681370",
+   "name": "texlist_snowman",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02682960",
+   "name": "object_snowball_m_atama_atama",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02682eb4",
+   "name": "action_snowball_m_atama",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026843c4",
+   "name": "object_snowball_m_tank_tank",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -97175,6 +97233,13 @@
    "library": false
   },
   {
+   "address": "0x04c5e3c8",
+   "name": "object_ene_s_amb_root_s_amb_root",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c618cc",
    "name": "action_mihari_ene_s_amb_root",
    "size": 8,
@@ -97259,6 +97324,20 @@
    "library": false
   },
   {
+   "address": "0x04c7104c",
+   "name": "action_l_walk_s_pyo_jel",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c717f4",
+   "name": "action_l_walk_s_pyo_born_a",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c71f9c",
    "name": "action_l_walk_s_pyo_born_b",
    "size": 8,
@@ -97266,8 +97345,36 @@
    "library": false
   },
   {
+   "address": "0x04c75534",
+   "name": "action_stol_s_pyo_jel",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c76294",
+   "name": "action_stol_s_pyo_born_a",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c76ff4",
    "name": "action_stol_s_pyo_born_b",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c79a54",
+   "name": "action_ltos_s_pyo_jel",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c7a274",
+   "name": "action_ltos_s_pyo_born_a",
    "size": 8,
    "match": false,
    "library": false
@@ -98220,5 +98327,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ddb805510cfee6bc58e6951083803c70e5637122c8a7559e8b521a53cc308887"
+ "inputs_sha256": "79a761d966ef4680f8ce90355fab611c3e1dc489db9dca8d0fb6ce4134c9c79f"
 }

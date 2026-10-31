@@ -3647,6 +3647,11 @@ void ERSC_CommonExec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008dec90
+void dispBuyonBodySub(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00903380
 extern void EV_Egm3Draw(struct task *)
 {

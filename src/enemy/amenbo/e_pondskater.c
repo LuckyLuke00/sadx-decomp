@@ -18,9 +18,18 @@ void EnemyPondSkater(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008d6040
+// FUNCTION: SADX 0x008d6040
 void FUN_008d6040(struct NJS_POINT3 *param_1)
 {
+	___njSetTexture(&texlist_e_amenbo);
+	njPushMatrix(0);
+	njTranslateV(0, (struct NJS_POINT3 *)((char *)param_1 + 0x20));
+	if (*(long *)((char *)param_1 + 0x18) + 0x4000 != 0)
+	{
+		njRotateY(0, (unsigned short)(*(long *)((char *)param_1 + 0x18) + 0x4000));
+	}
+	___dsDrawObject(&object_ene_s_amb_root_s_amb_root[0]);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x008d60b0

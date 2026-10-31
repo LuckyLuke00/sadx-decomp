@@ -471,9 +471,36 @@ void FUN_005c55d0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-// STUB: SADX 0x005c5710
+// FUNCTION: SADX 0x005c5710
 void AirFlyAway(struct taskwk *twp, struct enemywk *ewp)
 {
+	if (DiffAngle(twp->ang.y, 0) == 0)
+	{
+		*(long *)((char *)ewp + 0x1c4) += 0x10;
+		if (*(long *)((char *)ewp + 0x1c4) > 0x180)
+		{
+			*(long *)((char *)ewp + 0x1c4) = 0x180;
+		}
+		*(long *)((char *)ewp + 0x1bc) += *(long *)((char *)ewp + 0x1c4);
+	}
+	else
+	{
+		twp->ang.y = AdjustAngle(twp->ang.y, 0, 0x60);
+	}
+	if (twp->pos.y < 235.0f)
+	{
+		*(long *)((char *)ewp + 0x1b4) = AdjustAngle(*(long *)((char *)ewp + 0x1b4), 0x800, 0x20);
+	}
+	else
+	{
+		*(long *)((char *)ewp + 0x1b4) = AdjustAngle(*(long *)((char *)ewp + 0x1b4), 0, 0x20);
+	}
+	if (ewp->acc.x < 8.0)
+	{
+		ewp->acc.x += 0.5f;
+	}
+	AirMove(twp, ewp);
+	AirDraw(twp, ewp);
 }
 
 // FUNCTION: SADX 0x005c5830

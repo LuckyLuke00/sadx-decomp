@@ -1406,6 +1406,12 @@ struct NJS_SPRITE sprite_robo_beam;
 // GLOBAL: SADX 0x0264d9f8
 struct particle_info robo_jet;
 
+// GLOBAL: SADX 0x0264da34
+struct particle_info robo_smoke1;
+
+// GLOBAL: SADX 0x0264da70
+struct particle_info robo_smoke2;
+
 // GLOBAL: SADX 0x0264db34
 struct particle_info robo_smoke5;
 
@@ -1549,6 +1555,18 @@ unsigned char DAT_0267b758;
 
 // GLOBAL: SADX 0x0267d1b8
 struct DEMOPICTUREINFO demopictures[46];
+
+// GLOBAL: SADX 0x02681370
+struct NJS_TEXLIST texlist_snowman;
+
+// GLOBAL: SADX 0x02682960
+struct obj object_snowball_m_atama_atama;
+
+// GLOBAL: SADX 0x02682eb4
+struct NJS_ACTION action_snowball_m_atama[1];
+
+// GLOBAL: SADX 0x026843c4
+struct obj object_snowball_m_tank_tank;
 
 // GLOBAL: SADX 0x02684534
 struct particle_entry particle_pom;
@@ -3995,6 +4013,9 @@ struct NJS_POINT3 *CartCamDemoLine;
 // GLOBAL: SADX 0x04c5acb8
 struct NJS_TEXLIST texlist_e_amenbo;
 
+// GLOBAL: SADX 0x04c5e3c8
+struct obj object_ene_s_amb_root_s_amb_root[1];
+
 // GLOBAL: SADX 0x04c618cc
 struct NJS_ACTION action_mihari_ene_s_amb_root[1];
 
@@ -4028,11 +4049,29 @@ struct NJS_MODEL *sai_model;
 // GLOBAL: SADX 0x04c6a464
 struct NJS_ARGB default_argb;
 
+// GLOBAL: SADX 0x04c7104c
+struct NJS_ACTION action_l_walk_s_pyo_jel[1];
+
+// GLOBAL: SADX 0x04c717f4
+struct NJS_ACTION action_l_walk_s_pyo_born_a[1];
+
 // GLOBAL: SADX 0x04c71f9c
 struct NJS_ACTION action_l_walk_s_pyo_born_b[1];
 
+// GLOBAL: SADX 0x04c75534
+struct NJS_ACTION action_stol_s_pyo_jel[1];
+
+// GLOBAL: SADX 0x04c76294
+struct NJS_ACTION action_stol_s_pyo_born_a[1];
+
 // GLOBAL: SADX 0x04c76ff4
 struct NJS_ACTION action_stol_s_pyo_born_b[1];
+
+// GLOBAL: SADX 0x04c79a54
+struct NJS_ACTION action_ltos_s_pyo_jel[1];
+
+// GLOBAL: SADX 0x04c7a274
+struct NJS_ACTION action_ltos_s_pyo_born_a[1];
 
 // GLOBAL: SADX 0x04c7aa94
 struct NJS_ACTION action_ltos_s_pyo_born_b[1];

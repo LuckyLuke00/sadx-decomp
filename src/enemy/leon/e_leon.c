@@ -179,9 +179,33 @@ void LeonDecideAim(struct taskwk *twp, struct enemywk *ewp)
 	}
 }
 
-// STUB: SADX 0x005c2970
+// FUNCTION: SADX 0x005c2970
 void LeonAttack(struct taskwk *twp, struct enemywk *ewp)
 {
+	ewp->aim = DAT_05baf368[0]->pos;
+	LeonTurnHead(twp, ewp);
+	FUN_008d8710(twp, ewp);
+	switch (twp->smode)
+	{
+	case 0:
+		LeonDrawLink(twp, ewp);
+		break;
+	case 1:
+		FUN_005c0b80(twp, ewp);
+		LeonDraw(twp, ewp);
+		if (twp->btimer > 2 || (twp->flag & 0x200) == 0)
+		{
+			ewp->old_mode = twp->mode;
+			twp->mode = 1;
+			twp->wtimer = 0;
+			twp->btimer = 0;
+			ewp->linkactp = (struct NJS_ACTION *)&action_reon2_walk2_reon2;
+			twp->smode = 0;
+			twp->flag &= ~0x200;
+			twp->flag |= 0x1000;
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x005c2a80
