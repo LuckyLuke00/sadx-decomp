@@ -78,12 +78,31 @@ void FUN_00576a10(int param_1)
 	*(int *)(param_1 + 0x3c) = -1;
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x00576a60
+// FUNCTION: SADX 0x00576a60
 void FUN_00576a60(int param_1)
 {
+	struct anywk *local_cg;
+	int local_8g;
+
+	local_cg = DAT_05cd2600->awp;
+	local_8g = 0;
+	if (param_1 != 0)
+	{
+		do
+		{
+			local_cg->work.ub[local_8g + 0x2a] = *(unsigned char *)param_1;
+			local_8g++;
+		}
+		while (*(signed char *)param_1++ >= 0);
+	}
+	else
+	{
+		for (local_8g = 0; local_8g < 0x10; local_8g++)
+		{
+			local_cg->work.ub[local_8g + 0x2a] = 0xff;
+		}
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00576ae0
 long FUN_00576ae0(char *param_1, char param_2)

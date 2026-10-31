@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05edbe90;
 void FUN_005b6f80(struct task *param_1);
 extern char DAT_05edbe94[64];
 void FUN_005b6820();
@@ -117,9 +118,22 @@ void FUN_005b6820(void)
 {
 }
 
-// STUB: SADX 0x005b6940
+// FUNCTION: SADX 0x005b6940
 void FUN_005b6940()
 {
+	int local_8;
+	for (local_8 = 0; local_8 < DAT_05edbe8c; local_8++)
+	{
+		*(float *)(DAT_05edbe94 + local_8 * 0x10 + 8) += 0.20000000298023224;
+		if (*(float *)(DAT_05edbe94 + local_8 * 0x10 + 8) > 2.0)
+			*(float *)(DAT_05edbe94 + local_8 * 0x10 + 8) = 2.0;
+	}
+	DAT_05edbe90++;
+	if ((unsigned)DAT_05edbe90 > 0x3c)
+	{
+		DAT_05edbe90 = 0x3c;
+		DAT_05edbe88 = 3;
+	}
 }
 
 // STUB: SADX 0x005b69e0

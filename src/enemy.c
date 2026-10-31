@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_POINT3 DAT_026791b4[8];
 extern "C" int rand(void);
 extern "C" double atan2(double v, double u);
 void FUN_005e4370(struct enemywk *param_1);
@@ -8,10 +9,36 @@ void EnemyBaneDraw(struct taskwk *twp);
 void EnemyBaneDisplayer(struct task *tp);
 void FUN_005e2cc0(struct taskwk *param_1, struct enemywk *param_2);
 
-// STUB: SADX 0x005e28c0
+// FUNCTION: SADX 0x005e28c0
 struct enemywk *EnemyInitialize(struct task *tp, struct taskwk *twp)
 {
-	return (struct enemywk *)0;
+	struct enemywk *local_8g;
+
+	local_8g = (struct enemywk *)CAlloc(1, 0x23c);
+	if (local_8g == 0)
+	{
+		FreeTask(tp);
+		return 0;
+	}
+	tp->mwp = (struct motionwk *)local_8g;
+	local_8g->home = twp->pos;
+	local_8g->colli_radius = 15.0f;
+	*(float *)((char *)local_8g + 0xa0) = 5.0f;
+	local_8g->colli_top = 10.0f;
+	*(float *)((char *)local_8g + 0xb0) = -1.0f;
+	*(float *)((char *)local_8g + 0xb4) = 50.0f;
+	local_8g->bound_floor = 0.9f;
+	local_8g->bound_friction = 0.8f;
+	local_8g->bound_ceiling = 0.1f;
+	local_8g->bound_side = 0.7f;
+	local_8g->bound_add_angle = 0x400;
+	local_8g->view_angle = 0x38e3;
+	local_8g->view_range = 22500.0f;
+	local_8g->hear_range = 1225.0f;
+	*(long *)((char *)local_8g + 0x1a8) = 0x100;
+	local_8g->flag = local_8g->flag | 0x480;
+	local_8g->flag = local_8g->flag & ~0x3000;
+	return local_8g;
 }
 
 // STUB: SADX 0x005e2a10
@@ -180,9 +207,31 @@ signed char EnemyCheckFrameIn(struct NJS_POINT3 *pos)
 	return 0;
 }
 
-// STUB: SADX 0x005e4120
+// FUNCTION: SADX 0x005e4120
 void EnemyAimAroundPlayer(struct taskwk *twp, struct enemywk *ewp, int pnum, int aim_num)
 {
+	struct NJS_POINT3 aim_pos;
+	struct taskwk *local_8g;
+	local_8g = DAT_05baf368[pnum];
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	if (*(int *)((char *)DAT_05b42a7c + 0x18) != 0)
+	{
+		njRotateY(0, (unsigned short)(*(int *)((char *)DAT_05b42a7c + 0x18)));
+	}
+	njCalcPoint(0, &DAT_026791b4[aim_num], &aim_pos);
+	njPopMatrix(1);
+	if (local_8g == 0)
+	{
+		___OutputDebugString("%s %d:playertwp=0\n", "..\\..\\src\\enemy.c", 0x380);
+		*(NJS_POINT3 *)((char *)ewp + 0x5c) = aim_pos;
+	}
+	else
+	{
+		((NJS_POINT3 *)((char *)ewp + 0x5c))->x = local_8g->pos.x + aim_pos.x;
+		((NJS_POINT3 *)((char *)ewp + 0x5c))->y = local_8g->pos.y + aim_pos.y;
+		((NJS_POINT3 *)((char *)ewp + 0x5c))->z = local_8g->pos.z + aim_pos.z;
+	}
 }
 
 // STUB: SADX 0x005e4210

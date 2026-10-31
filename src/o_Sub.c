@@ -178,9 +178,19 @@ void CharColliOn(struct taskwk *twp)
 	}
 }
 
-// STUB: SADX 0x0056eb90
+// FUNCTION: SADX 0x0056eb90
 void CharColliOff(struct taskwk *twp)
 {
+	struct CCL_INFO *local_10;
+	int local_8g;
+	unsigned short local_cj;
+	local_cj = twp->cwp->nbInfo;
+	local_10 = twp->cwp->info;
+	for (local_8g = 0; local_8g < (int)local_cj; local_8g++)
+	{
+		local_10->attr |= 0x10;
+		local_10++;
+	}
 }
 
 // FUNCTION: SADX 0x0056ebf0

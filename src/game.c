@@ -1,5 +1,16 @@
 #include <stdlib.h>
 #include "decls.h"
+extern char DAT_05baf56b[];
+extern char DAT_05baf54b;
+extern char DAT_05baf56e;
+extern char DAT_05baf5c1;
+extern char DAT_05baf5c4;
+extern char DAT_05baf5ec;
+extern char DAT_05baf622;
+extern char DAT_05baf66d;
+extern char DAT_05baf678;
+extern int DAT_05ccca0c;
+void SetDefaultNumPlayer();
 extern unsigned char DAT_05bafb48;
 extern unsigned char DAT_05bafb49;
 extern unsigned char DAT_05bafb4c;
@@ -560,12 +571,46 @@ short FUN_004c85d0()
 	return local_8;
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x004c8600
+// FUNCTION: SADX 0x004c8600
 void ActionEnd()
 {
+	unsigned char local_5;
+
+	FUN_004c8770();
+	if (DAT_05b9d73c == 5 || DAT_05b9d73c == 0xe)
+	{
+		if (DAT_05b9d724 <= 0x19 || DAT_05b9d724 == 0x24 || DAT_05b9d724 == 0x25 || DAT_05b9d724 == 0x26 || DAT_05b9d724 == 0x23)
+		{
+			local_5 = DAT_05baf548[DAT_05b9d718 * 0x2b + DAT_05b9d724];
+			if (local_5 < 0x100)
+			{
+				local_5++;
+			}
+			DAT_05baf548[DAT_05b9d718 * 0x2b + DAT_05b9d724] = local_5;
+			if (DAT_05b9d724 == 3)
+			{
+				local_5 = DAT_05baf56b[DAT_05b9d718 * 0x2b];
+				if (local_5 == 0)
+				{
+					local_5 = 1;
+				}
+				DAT_05baf56b[DAT_05b9d718 * 0x2b] = local_5;
+			}
+			if (DAT_05baf54b != 0 && DAT_05baf622 != 0 && DAT_05baf678 != 0)
+			{
+				DAT_05baf66d = 1;
+				DAT_05baf5c1 = DAT_05baf66d;
+				DAT_05baf5ec = DAT_05baf5c1;
+			}
+			if (DAT_05b9d724 == 0x26 && DAT_05baf56e == 0 && DAT_05baf5c4 == 1)
+			{
+				DAT_05baf56e = 1;
+			}
+			DAT_05ccca0c = DAT_05b9d724;
+			SetDefaultNumPlayer();
+		}
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x004c8770
 void FUN_004c8770()

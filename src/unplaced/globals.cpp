@@ -1538,6 +1538,9 @@ struct CCL_INFO itembox_colli_info1[2];
 // GLOBAL: SADX 0x02679030
 struct NJS_SPRITE sprite_lensflare;
 
+// GLOBAL: SADX 0x026791b4
+struct NJS_POINT3 DAT_026791b4[8];
+
 // GLOBAL: SADX 0x026795dc
 struct particle_entry particle_flash;
 
@@ -1561,6 +1564,12 @@ struct NJS_TEXLIST tex_jet;
 
 // GLOBAL: SADX 0x02684818
 struct particle_entry particle_jet;
+
+// GLOBAL: SADX 0x02684984
+struct particle_entry particle_bomb;
+
+// GLOBAL: SADX 0x02684994
+struct particle_info default_bomb;
 
 // GLOBAL: SADX 0x02684a60
 long o_hit_spd1;
@@ -5714,6 +5723,9 @@ void *DAT_05baf4f4;
 // GLOBAL: SADX 0x05baf4f8
 int DAT_05baf4f8[8];
 
+// GLOBAL: SADX 0x05baf518
+struct task *DAT_05baf518;
+
 // GLOBAL: SADX 0x05baf51c
 void *DAT_05baf51c;
 
@@ -5734,6 +5746,33 @@ int DAT_05baf544;
 
 // GLOBAL: SADX 0x05baf548
 char DAT_05baf548[0x2b * 4];
+
+// GLOBAL: SADX 0x05baf54b
+char DAT_05baf54b;
+
+// GLOBAL: SADX 0x05baf56b
+char DAT_05baf56b[1];
+
+// GLOBAL: SADX 0x05baf56e
+char DAT_05baf56e;
+
+// GLOBAL: SADX 0x05baf5c1
+char DAT_05baf5c1;
+
+// GLOBAL: SADX 0x05baf5c4
+char DAT_05baf5c4;
+
+// GLOBAL: SADX 0x05baf5ec
+char DAT_05baf5ec;
+
+// GLOBAL: SADX 0x05baf622
+char DAT_05baf622;
+
+// GLOBAL: SADX 0x05baf66d
+char DAT_05baf66d;
+
+// GLOBAL: SADX 0x05baf678
+char DAT_05baf678;
 
 // GLOBAL: SADX 0x05baf6b8
 char DAT_05baf6b8;
@@ -6232,6 +6271,9 @@ int DAT_05ccc678;
 
 // GLOBAL: SADX 0x05ccc67c
 int DAT_05ccc67c;
+
+// GLOBAL: SADX 0x05ccca0c
+int DAT_05ccca0c;
 
 // GLOBAL: SADX 0x05ccca10
 long DAT_05ccca10;
@@ -6848,6 +6890,9 @@ int DAT_05cda0d8;
 // GLOBAL: SADX 0x05cda0dc
 int DAT_05cda0dc;
 
+// GLOBAL: SADX 0x05cda0e0
+float DAT_05cda0e0;
+
 // GLOBAL: SADX 0x05cda0e4
 int DAT_05cda0e4;
 
@@ -7099,6 +7144,9 @@ int DAT_05edbe88;
 
 // GLOBAL: SADX 0x05edbe8c
 int DAT_05edbe8c;
+
+// GLOBAL: SADX 0x05edbe90
+int DAT_05edbe90;
 
 // GLOBAL: SADX 0x05edbe94
 char DAT_05edbe94[64];

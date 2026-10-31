@@ -132,6 +132,7 @@ struct CPlayableInfo;
 struct CRUSHLIGHT_DATA;
 struct CRUSHLIGHT_WK;
 struct csts;
+struct CUSTOM_OBJ;
 struct DAT_0044e380_0;
 struct DDlgType;
 struct DEMOPICTUREINFO;
@@ -2486,6 +2487,14 @@ static_assert(offsetof(CRUSHLIGHT_DATA, color) == 0xc, "CRUSHLIGHT_DATA::color")
 static_assert(offsetof(CRUSHLIGHT_DATA, angMaxSpd) == 0x14, "CRUSHLIGHT_DATA::angMaxSpd");
 static_assert(offsetof(CRUSHLIGHT_DATA, fLength) == 0x18, "CRUSHLIGHT_DATA::fLength");
 static_assert(offsetof(CRUSHLIGHT_DATA, fLengthGrowRate) == 0x1c, "CRUSHLIGHT_DATA::fLengthGrowRate");
+
+struct CUSTOM_OBJ {
+    struct obj *obj;
+    void (*exad)(struct obj *);
+};
+static_assert(sizeof(CUSTOM_OBJ) == 0x8, "sizeof CUSTOM_OBJ");
+static_assert(offsetof(CUSTOM_OBJ, obj) == 0x0, "CUSTOM_OBJ::obj");
+static_assert(offsetof(CUSTOM_OBJ, exad) == 0x4, "CUSTOM_OBJ::exad");
 
 struct CharSelWk {
     enum AdvaStatEnum Stat;

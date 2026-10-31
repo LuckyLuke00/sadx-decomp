@@ -17492,9 +17492,9 @@
   {
    "address": "0x004c8600",
    "name": "ActionEnd",
-   "accuracy": 0.08888888888888889,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -18372,9 +18372,9 @@
   {
    "address": "0x004cf3a0",
    "name": "LoadSetFile",
-   "accuracy": 0.08791208791208792,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -19284,9 +19284,9 @@
   {
    "address": "0x004dec40",
    "name": "PGetAcceleration1D",
-   "accuracy": 0.07207207207207207,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -19404,9 +19404,9 @@
   {
    "address": "0x004e2480",
    "name": "PAdjustAngleY",
-   "accuracy": 0.03088803088803089,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -19500,7 +19500,15 @@
   {
    "address": "0x004e4110",
    "name": "FUN_004e4110",
-   "accuracy": 0.21052631578947367,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004e4180",
+   "name": "PSGCollision",
+   "accuracy": 0.0041928721174004195,
    "effective": false,
    "stub": true,
    "library": false
@@ -19562,6 +19570,14 @@
    "library": false
   },
   {
+   "address": "0x004e9170",
+   "name": "PSGCollisionPinball",
+   "accuracy": 0.0064,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004ea1a0",
    "name": "PSSGCollisionedWallNoBrake",
    "accuracy": 0.03076923076923077,
@@ -19596,9 +19612,9 @@
   {
    "address": "0x004ebf90",
    "name": "PConvertVector_P2G",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -19684,9 +19700,9 @@
   {
    "address": "0x004ef080",
    "name": "PAdjustAngleStaringEyes",
-   "accuracy": 0.05925925925925926,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -20492,9 +20508,9 @@
   {
    "address": "0x004f3870",
    "name": "FUN_004f3870",
-   "accuracy": 0.10989010989010989,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -21700,9 +21716,9 @@
   {
    "address": "0x004ff9a0",
    "name": "ObjectMovableInitialize",
-   "accuracy": 0.11904761904761904,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22060,9 +22076,9 @@
   {
    "address": "0x00502260",
    "name": "SetObjectTexture",
-   "accuracy": 0.5263157894736842,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -24700,9 +24716,9 @@
   {
    "address": "0x005538c0",
    "name": "EffectFire",
-   "accuracy": 0.08888888888888889,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -27324,9 +27340,9 @@
   {
    "address": "0x0056eb90",
    "name": "CharColliOff",
-   "accuracy": 0.22857142857142856,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -28156,9 +28172,9 @@
   {
    "address": "0x00573f20",
    "name": "ghSetPvrTexMaterial",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -28396,9 +28412,9 @@
   {
    "address": "0x00576a60",
    "name": "FUN_00576a60",
-   "accuracy": 0.18604651162790697,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -30413,9 +30429,9 @@
   {
    "address": "0x0059b280",
    "name": "DisplayTitle_ss",
-   "accuracy": 0.10126582278481013,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32509,9 +32525,9 @@
   {
    "address": "0x005acab0",
    "name": "ComeBackNpcMiles",
-   "accuracy": 0.35714285714285715,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -33125,9 +33141,9 @@
   {
    "address": "0x005b3640",
    "name": "CanIMakePanelJump",
-   "accuracy": 0.17543859649122806,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -33589,9 +33605,9 @@
   {
    "address": "0x005b6940",
    "name": "FUN_005b6940",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36659,6 +36675,14 @@
    "library": false
   },
   {
+   "address": "0x005d8d20",
+   "name": "DrawCustomObject",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005d91c0",
    "name": "CheckBallColli",
    "accuracy": 1.0,
@@ -37189,9 +37213,9 @@
   {
    "address": "0x005e28c0",
    "name": "EnemyInitialize",
-   "accuracy": 0.11494252873563218,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -37357,9 +37381,9 @@
   {
    "address": "0x005e4120",
    "name": "EnemyAimAroundPlayer",
-   "accuracy": 0.1038961038961039,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39981,7 +40005,15 @@
   {
    "address": "0x0060d560",
    "name": "FUN_0060d560",
-   "accuracy": 0.16,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060d600",
+   "name": "EffectBomb(1)",
+   "accuracy": 0.14285714285714285,
    "effective": false,
    "stub": true,
    "library": false
@@ -40925,9 +40957,9 @@
   {
    "address": "0x0061bf50",
    "name": "E102EggLiftCollisionInit",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -64692,7 +64724,7 @@
   },
   {
    "address": "0x00897bf0",
-   "name": "EffectBomb",
+   "name": "EffectBomb(struct sp_task *, struct sp_link *)",
    "accuracy": 0.03278688524590164,
    "effective": false,
    "stub": true,
@@ -91025,6 +91057,13 @@
    "library": false
   },
   {
+   "address": "0x026791b4",
+   "name": "DAT_026791b4",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026795dc",
    "name": "particle_flash",
    "size": 16,
@@ -91077,6 +91116,20 @@
    "address": "0x02684818",
    "name": "particle_jet",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02684984",
+   "name": "particle_bomb",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02684994",
+   "name": "default_bomb",
+   "size": 60,
    "match": false,
    "library": false
   },
@@ -98167,5 +98220,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "993df88afa0e24a92516ef2b161253f3a2596d85dbfaed4bec2c5539887ee710"
+ "inputs_sha256": "ddb805510cfee6bc58e6951083803c70e5637122c8a7559e8b521a53cc308887"
 }
