@@ -115,6 +115,8 @@ def parse_args() -> argparse.Namespace:
     fn = commands.add_parser("fn")
     fn.add_argument("addresses", nargs="+", type=lambda value: int(value, 16),
                     help="original addresses, e.g. 0x00401000")
+    fn.add_argument("--no-diff", action="store_true",
+                    help="only the score lines: each miss's diff costs one more reccmp run")
     ci_command = commands.add_parser("ci")
     ci_command.add_argument("--base", help="commit to compare scores with (default: the upstream)")
     commands.add_parser("gate")
@@ -183,7 +185,7 @@ def run_with_game(args: argparse.Namespace) -> int:
         return link.run(game, args.files)
     runner.write_constants(game)
     if args.command == "fn":
-        return report.score_functions(args.addresses, game)
+        return report.score_functions(args.addresses, game, diffs=not args.no_diff)
     if args.command == "permute":
         # It imports this module back, through llm.
         import permute
