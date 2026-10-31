@@ -1,8 +1,21 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03b75a30
+static struct CCL_INFO c_info01[2];
+
+static void Exec(struct task *tp);
+static void Disp(struct task *tp);
 static void PieceDisp(struct task *tp);
 extern struct NJS_MODEL *DAT_03b26f48;
 extern struct NJS_MODEL *DAT_03b273a0;
 extern struct NJS_MODEL *DAT_03b27828;
+
+#pragma optimize("", off)
+// STUB: SADX 0x00809340
+static void Disp(struct task *tp)
+{
+}
+#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00809490
@@ -92,4 +105,29 @@ void PieceExec(struct task *tp)
 // STUB: SADX 0x00809b40
 void ObjectWindyBrokenCubes(struct task *tp)
 {
+}
+
+#pragma optimize("", off)
+// STUB: SADX 0x00809c30
+static void Exec(struct task *tp)
+{
+}
+#pragma optimize("", on)
+
+// FUNCTION: SADX 0x00809da0
+void ObjectWindyBrokenObj(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	EnemyInitialize(tp, var1);
+	var1->counter.f = 0.0f;
+	var1->mode = 0;
+	var1->wtimer = 0;
+	if (FUN_004c39c0(tp) == 0)
+	{
+		CCL_Init(tp, &c_info01[1], 1, 2);
+	}
+	tp->exec = Exec;
+	tp->disp = Disp;
+	tp->dest = FUN_00850d10;
 }
