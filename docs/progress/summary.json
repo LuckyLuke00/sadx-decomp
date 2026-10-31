@@ -58555,6 +58555,22 @@
    "library": false
   },
   {
+   "address": "0x00833700",
+   "name": "Draw(16)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008337e0",
+   "name": "ObjectMountainGliding",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00833b30",
    "name": "ObjectMountainLightB",
    "accuracy": 1.0,
@@ -60500,7 +60516,7 @@
   },
   {
    "address": "0x00853ae0",
-   "name": "Draw(16)",
+   "name": "Draw(17)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61492,7 +61508,7 @@
   },
   {
    "address": "0x00866240",
-   "name": "Draw(17)",
+   "name": "Draw(18)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -95121,6 +95137,13 @@
    "library": false
   },
   {
+   "address": "0x03f67bdc",
+   "name": "action_kassha1st_st",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03f71b7c",
    "name": "object_fun_test_funkaball_funkaball",
    "size": 52,
@@ -95257,6 +95280,13 @@
    "address": "0x03feb220",
    "name": "erupt_expl_cinfo",
    "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03feb4a8",
+   "name": "object_c_info",
+   "size": 240,
    "match": false,
    "library": false
   },
@@ -98728,5 +98758,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "cabc72047bdb115bdb78def0d8d2e1d4c28180c9b60e482567550cc37f14c915"
+ "inputs_sha256": "93d39f90c15882271cb3ba001f53878291801374ae469c6b9fe917cb8c251bec"
 }

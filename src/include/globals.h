@@ -1010,6 +1010,7 @@ extern struct obj object_sotolight_light_light[];
 extern struct obj object_saku_saku_saku[1];
 extern struct obj object_royasaku_royasaku_royasaku[];
 extern struct obj object_sotosaku_qsaku_qsaku[];
+extern struct NJS_ACTION action_kassha1st_st[1];
 extern struct obj object_fun_test_funkaball_funkaball;
 extern struct NJS_ACTION action_kasshatyuukei1a_st[1];
 extern struct obj object_danger01_danger1a_danger1a[];
