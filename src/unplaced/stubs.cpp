@@ -45,6 +45,16 @@ void njQuadTextureStart(Sint32 trans)
 {
 }
 
+// STUB: SADX 0x00422330
+void njDrawPolygon3D(NJS_POINT3COL *, Int, Uint32)
+{
+}
+
+// STUB: SADX 0x004223f0
+void njDrawTriangle3D(NJS_POINT3COL *p, Int n, Uint32 attr)
+{
+}
+
 // STUB: SADX 0x00422560
 void FUN_00422560(int)
 {
@@ -1024,8 +1034,18 @@ void late_exec()
 {
 }
 
+// STUB: SADX 0x004a4870
+void lateDrawObject(struct obj *obj, int flgs, float clipScl)
+{
+}
+
 // STUB: SADX 0x004a5110
 void lateDrawModel(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a5290
+void DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
 {
 }
 
@@ -1034,8 +1054,18 @@ void DrawModelEx(struct NJS_MODEL *mdl, int flgs)
 {
 }
 
+// STUB: SADX 0x004a5d20
+void DrawObjectMS(struct obj *obj, int flgs, float clipScl)
+{
+}
+
 // STUB: SADX 0x004a65c0
 void DrawModelMS(struct NJS_MODEL *mdl, int flgs)
+{
+}
+
+// STUB: SADX 0x004a69e0
+void DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
 {
 }
 
