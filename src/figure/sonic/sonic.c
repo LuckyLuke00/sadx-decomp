@@ -712,10 +712,17 @@ void ChangeMotionSonicSpin(struct playerwk *pwp)
 	*(short *)((char *)pwp + 0x124) = 0xe;
 }
 
-// STUB: SADX 0x0054f8d0
-long CreateBlurManagerForMetalSonic(long timer)
+// FUNCTION: SADX 0x0054f8d0
+void CreateBlurManagerForMetalSonic(long timer)
 {
-	return (long)0;
+	if (DAT_05bb00a9 != 0)
+	{
+		if (FUN_0054f7b0((struct playerwk *)timer, 0x49) == 0)
+		{
+			FUN_0054f920(0x14);
+		}
+	}
+	*(short *)((char *)timer + 0x124) = 0x49;
 }
 
 // FUNCTION: SADX 0x0054f910
@@ -755,12 +762,48 @@ void FUN_0054fa60(struct task *param_1)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x0054fab0
+// FUNCTION: SADX 0x0054fab0
 void DrawBlurOfMetalSonic(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct playerwk *local_8g;
+
+	local_cg = tp->twp;
+	local_8g = GetPlayerWorkPointer(0);
+	if (local_8g == 0)
+	{
+		return;
+	}
+	if (dsCheckViewV(&local_cg->pos, 15.0f) == 0)
+	{
+		return;
+	}
+	SaveConstantAttr();
+	OnConstantAttr(0, 0x100000);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 10);
+	SetMaterial(local_cg->counter.f - 1.0, 1.0f, 1.0f, 1.0f);
+	njPushMatrix(0);
+	njTranslateV(0, &local_cg->pos);
+	if (*(long *)((char *)local_cg + 0x1c) != 0)
+	{
+		njRotateZ(0, *(unsigned short *)((char *)local_cg + 0x1c));
+	}
+	if (*(long *)((char *)local_cg + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)local_cg + 0x14));
+	}
+	if (0x8000 - *(int *)((char *)local_cg + 0x18) != 0)
+	{
+		njRotateY(0, (unsigned short)(0x8000 - *(int *)((char *)local_cg + 0x18)));
+	}
+	DrawSonicMotion(local_8g, *(unsigned short *)((char *)local_8g + 0x124));
+	njPopMatrix(1);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	ResetMaterial();
+	LoadConstantAttr();
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0054fc20
 long IsSonicWhistling(struct taskwk *twp)

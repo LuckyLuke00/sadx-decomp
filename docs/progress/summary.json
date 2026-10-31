@@ -24396,9 +24396,9 @@
   {
    "address": "0x0054f8d0",
    "name": "CreateBlurManagerForMetalSonic",
-   "accuracy": 0.32,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -24436,9 +24436,9 @@
   {
    "address": "0x0054fab0",
    "name": "DrawBlurOfMetalSonic",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32789,9 +32789,9 @@
   {
    "address": "0x005af370",
    "name": "CalcPosVec",
-   "accuracy": 0.0975609756097561,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -98682,5 +98682,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ee65c947647d7414990d5eec886dc401bab144a7325cba2d0e8551df0f526d2c"
+ "inputs_sha256": "3e62a498f2cc94ff1dd6883326571c866a2c6730c53338530fb264cdf46ce78e"
 }

@@ -1387,6 +1387,7 @@ void ExecuteSonicSnowBoard(struct task *tp);
 void DisplaySonicSnowBoard(struct task *tp);
 void SuperSonicStatusManagerDestructor(struct task *tp);
 void SuperSonicStatusManagerExecutor(struct task *tp);
+void DrawSonicMotion(struct playerwk *pwp, unsigned long action);
 int FUN_0054f7b0(struct playerwk *param_1, int param_2);
 void FUN_0054f850(struct playerwk *param_1);
 void ChangeMotionSonicSpin(struct playerwk *pwp);
