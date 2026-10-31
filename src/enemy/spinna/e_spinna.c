@@ -144,12 +144,42 @@ void FUN_005946c0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x00594710
+// FUNCTION: SADX 0x00594710
 void FUN_00594710(void *param_1, void *param_2)
 {
+	float local_8;
+	local_8 = *(float *)((char *)DAT_05baf368[0] + 0x24) + 6.0f;
+	*(float *)((char *)param_2 + 0x4) = *(float *)((char *)param_2 + 0x4) + *(float *)((char *)param_2 + 0x10);
+	*(float *)((char *)param_2 + 0xc) = *(float *)((char *)param_2 + 0xc) + *(float *)((char *)param_2 + 0x18);
+	if (*(float *)((char *)param_2 + 0x4) > 0.4f)
+	{
+		*(float *)((char *)param_2 + 0x4) = 0.4f;
+	}
+	else if (*(float *)((char *)param_2 + 0x4) < 0.1f)
+	{
+		*(float *)((char *)param_2 + 0x4) = 0.1f;
+	}
+	if (local_8 > *(float *)((char *)param_2 + 0x78))
+	{
+		*(float *)((char *)param_2 + 0x78) = *(float *)((char *)param_2 + 0x78) + 0.2f;
+	}
+	else
+	{
+		*(float *)((char *)param_2 + 0x78) = *(float *)((char *)param_2 + 0x78) - 0.2f;
+	}
+	if (*(float *)((char *)param_2 + 0x78) > *(float *)((char *)param_2 + 0x54) + 20.0f)
+	{
+		*(float *)((char *)param_2 + 0x78) = *(float *)((char *)param_2 + 0x54) + 20.0f;
+	}
+	else if (*(float *)((char *)param_2 + 0x78) < *(float *)((char *)param_2 + 0x54) - 20.0f)
+	{
+		*(float *)((char *)param_2 + 0x78) = *(float *)((char *)param_2 + 0x54) - 20.0f;
+	}
+	*(float *)((char *)param_1 + 0x20) = njCos(*(int *)((char *)param_1 + 0x18)) * *(float *)((char *)param_2 + 0x4) + njSin(*(int *)((char *)param_1 + 0x18)) * *(float *)((char *)param_2 + 0xc) + *(float *)((char *)param_1 + 0x20);
+	*(float *)((char *)param_1 + 0x24) = *(float *)((char *)param_2 + 0x78) + njSin(*(int *)((char *)param_2 + 0x1c4)) * 1.6f;
+	*(float *)((char *)param_1 + 0x28) = -(njSin(*(int *)((char *)param_1 + 0x18)) * *(float *)((char *)param_2 + 0x4)) + njCos(*(int *)((char *)param_1 + 0x18)) * *(float *)((char *)param_2 + 0xc) + *(float *)((char *)param_1 + 0x28);
+	*(int *)((char *)param_2 + 0x1c4) = *(int *)((char *)param_2 + 0x1c4) + 0x280;
 }
-#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x005948e0

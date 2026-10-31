@@ -1,5 +1,9 @@
 #include "decls.h"
 #include <math.h>
+extern struct NJS_TEXLIST texlist_snowman;
+extern struct obj object_snowball_m_atama_atama;
+extern struct obj object_snowball_m_tank_tank;
+extern struct NJS_ACTION action_snowball_m_atama[1];
 void snowfaceRunaway(struct taskwk *twp, struct enemywk *ewp);
 void SnowfaceAction(struct taskwk *twp, struct enemywk *ewp);
 void SnowfaceRectifyPosition(struct taskwk *twp, struct enemywk *ewp);
@@ -218,9 +222,36 @@ void FUN_0060a5e0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-// STUB: SADX 0x0060a690
+// FUNCTION: SADX 0x0060a690
 void snowmanTurn(struct taskwk *twp, struct enemywk *ewp)
 {
+	switch (twp->smode)
+	{
+	case 0:
+		twp->smode = 1;
+		ewp->angx_spd = 0x280;
+		ewp->angy_spd = 0x180;
+		break;
+	}
+	twp->timer.w[0] += 0x10;
+	twp->timer.w[1] += 0x100;
+	FUN_0060a360(twp, ewp);
+	FUN_005e3d10(twp, ewp);
+	SnowmanTurnToAim(twp, ewp);
+	if (DiffAngle(ewp->aim_angle, *(long *)((char *)twp + 0x18)) == 0 && twp->mode != -1)
+	{
+		twp->mode = 3;
+		twp->smode = 0;
+	}
+	FUN_0060a0c0(twp, ewp);
+	if ((twp->flag & 0x100) != 0 && twp->mode != -1)
+	{
+		twp->mode = 2;
+		twp->smode = 0;
+	}
+	FUN_00609e40((int)twp, (int)ewp);
+	SnowmanMove(twp, ewp);
+	SnowmanRectifyPosition(twp, ewp);
 }
 
 // STUB: SADX 0x0060a7c0
@@ -233,9 +264,30 @@ void snowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060aa40
+// FUNCTION: SADX 0x0060aa40
 void snowmanDestroy(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct CCL_INFO *local_8;
+
+	local_8 = twp->cwp->info;
+	*(long *)((char *)ewp + 0x1bc) = *(long *)((char *)twp + 0x18);
+	ewp->aim = twp->pos;
+	twp->pos.y += 5.8f;
+	*(long *)((char *)twp + 0x18) = *(long *)((char *)ewp + 0x1b0);
+	ewp->velo.x = 0.0f;
+	ewp->velo.y = 0.0f;
+	ewp->velo.z = 0.0f;
+	ewp->colli_center.x = 0.0f;
+	ewp->colli_center.y = 3.2f;
+	ewp->colli_center.z = 0.0f;
+	ewp->colli_bottom = -3.2f;
+	ewp->colli_radius = 3.7f;
+	ewp->shadow_scl = 1.0f;
+	ewp->shadow_scl_ratio = 1.0f;
+	ewp->actp = action_snowball_m_atama;
+	ewp->nframe = 0.0f;
+	EnemyPreservePreviousPosition(twp, ewp);
+	EnemyCheckGroundCollision(twp, ewp);
 }
 
 // STUB: SADX 0x0060ad20
@@ -304,9 +356,63 @@ void snowfaceRunaway(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060b8a0
+// FUNCTION: SADX 0x0060b8a0
 void SnowfaceAction(struct taskwk *twp, struct enemywk *ewp)
 {
+	float local_8;
+	local_8 = njSqrt(ewp->velo.x * ewp->velo.x + ewp->velo.z * ewp->velo.z) * 1.5;
+	switch (twp->mode)
+	{
+	case 4:
+		if (ewp->acc.x == 0.0 && ewp->acc.z == 0.0)
+		{
+			local_8 = 1.0;
+			if (ewp->nframe != 0.0 && ewp->nframe != 10.0)
+			{
+				ewp->nframe = ewp->nframe + local_8;
+				if (ewp->nframe >= 20.0)
+				{
+					ewp->nframe = 0.0;
+				}
+				else if (ewp->nframe >= 10.0)
+				{
+					if (ewp->nframe < 11.0)
+					{
+						ewp->nframe = 10.0f;
+					}
+				}
+			}
+		}
+		else
+		{
+			if (local_8 < 0.4f)
+			{
+				local_8 = 0.4f;
+			}
+			ewp->nframe = ewp->nframe + local_8;
+			njPushMatrix(0);
+			njUnitMatrix(0);
+			njTranslateV(0, &twp->pos);
+			if (twp->ang.y + 0x4000 != 0)
+			{
+				njRotateY(0, (unsigned short)(twp->ang.y + 0x4000));
+			}
+			if (ewp->pframe < 10.0 && ewp->nframe >= 10.0)
+			{
+				SnowfaceRightFootSmoke(twp, ewp);
+				dsPlay_oneshot_v(0x36c, 0, 0, 0x1e, twp->pos.x, twp->pos.y, twp->pos.z);
+			}
+			if (ewp->pframe < 20.0 && ewp->nframe >= 20.0)
+			{
+				SnowfaceLeftFootSmoke(twp, ewp);
+				ewp->nframe = ewp->nframe - 20.0;
+				dsPlay_oneshot_v(0x36c, 0, 0, 0x1e, twp->pos.x, twp->pos.y, twp->pos.z);
+			}
+			njPopMatrix(1);
+		}
+		ewp->pframe = ewp->nframe;
+		break;
+	}
 }
 
 // STUB: SADX 0x0060bb60
@@ -329,9 +435,30 @@ void DisplaySnowMobile(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060c0f0
+// FUNCTION: SADX 0x0060c0f0
 void SnowmanOnEdit(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	___njSetTexture(&texlist_snowman);
+	ResetMaterial();
+	njPushMatrix(0);
+	njTranslateV(0, &local_8->pos);
+	if (local_8->ang.y + 0x4000 != 0)
+	{
+		njRotateY(0, (unsigned short)(local_8->ang.y + 0x4000));
+	}
+	FUN_0067d2d0(0, 1.0, 1.0, 1.0);
+	njPushMatrix(0);
+	FUN_0067d830(0, 0.0, 9.0, 0.0);
+	late_DrawObjectMesh(&object_snowball_m_atama_atama, 0);
+	njPopMatrix(1);
+	njPushMatrix(0);
+	___dsDrawObject(&object_snowball_m_tank_tank);
+	njPopMatrix(1);
+	njPopMatrix(1);
+	DrawSnowmanRange(&local_8->pos, local_8->scl.x);
 }
 
 // STUB: SADX 0x0060c200

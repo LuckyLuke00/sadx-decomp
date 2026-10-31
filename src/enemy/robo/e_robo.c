@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct particle_info robo_smoke1;
 float EnemyDist2FromPlayer(struct taskwk *twp, int num);
 long AdjustAngle(long ang0, long ang1, long dang);
 void RoboBumpSide(struct taskwk *twp, struct enemywk *ewp);
@@ -131,23 +132,103 @@ void RoboHeadTakeOff(struct task *tp, struct enemywk *ewp)
 	RoboHeadDraw(local_cg, ewp);
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x005bc560
+// FUNCTION: SADX 0x005bc560
 void RoboHeadSmokeSide(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 local_3c;
+	struct NJS_POINT3 local_30g;
+	struct NJS_POINT3 local_24g;
+	struct NJS_POINT3 local_18;
+	int local_8g;
+	local_30g.x = 5.0f;
+	local_30g.y = 1.5f;
+	local_30g.z = 0.0f;
+	local_24g.x = 0.7f;
+	local_24g.y = -0.05f;
+	local_24g.z = 0.0f;
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njSetMatrix(0, (NJS_MATRIX *)((char *)ewp + 0x1fc));
+	for (local_8g = 0; local_8g < 8; local_8g++)
+	{
+		njPushMatrix(0);
+		if ((local_8g << 0xd) != 0)
+		{
+			njRotateY(0, (unsigned short)(local_8g << 0xd));
+		}
+		njCalcVector(0, &local_24g, &local_18);
+		njCalcPoint(0, &local_30g, &local_3c);
+		FUN_005536c0(&robo_smoke1);
+		robo_smoke1.velo = local_18;
+		robo_smoke1.pos = local_3c;
+		njPopMatrix(1);
+	}
+	njPopMatrix(1);
 }
-#pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x005bc6a0
+// FUNCTION: SADX 0x005bc6a0
 void RoboHeadSmokeUnder(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 pos;
+	struct NJS_POINT3 tpos;
+	struct NJS_POINT3 tmp_velo;
+	struct NJS_POINT3 velo;
+	tpos.x = 0.0f;
+	tpos.y = 1.0f;
+	tpos.z = 0.0f;
+	tmp_velo.x = 0.0f;
+	tmp_velo.y = -0.5f;
+	tmp_velo.z = 0.0f;
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njSetMatrix(0, &ewp->mat);
+	njCalcVector(0, &tmp_velo, &velo);
+	njCalcPoint(0, &tpos, &pos);
+	njPopMatrix(1);
+	robo_smoke2.velo = velo;
+	robo_smoke2.pos = pos;
+	FUN_005536c0(&robo_smoke2);
 }
-#pragma optimize("", on)
 
-// STUB: SADX 0x005bc780
+// FUNCTION: SADX 0x005bc780
 void RoboHeadChase(struct task *tp, struct enemywk *ewp)
 {
+	struct taskwk *local_cg;
+	struct taskwk *local_8g;
+	local_cg = tp->twp;
+	local_8g = DAT_05baf368[0];
+	ewp->aim = local_8g->pos;
+	FUN_005e3d10(local_cg, ewp);
+	ewp->acc.x = njCos(local_cg->ang.y) * ewp->force.x;
+	ewp->acc.z = njSin(-local_cg->ang.y) * ewp->force.x;
+	RoboHeadUp(local_cg, ewp);
+	FUN_005bc940(local_cg, ewp);
+	EnemyCheckGroundCollision(local_cg, ewp);
+	RoboHeadDraw(local_cg, ewp);
+	if (RoboHeadCaptureBeam(tp, ewp) != 0)
+	{
+		ewp->old_mode = local_cg->mode;
+		local_cg->mode = 3;
+		local_cg->wtimer = 0;
+		tp->ptp->twp->flag |= 0x200;
+		local_cg->flag |= 0x8000;
+		SetInputP(local_cg->cwp->hit_cwp->mytask->twp->counter.b[0], 0x21);
+	}
+	if (local_cg->wtimer > 0x12c)
+	{
+		ewp->old_mode = local_cg->mode;
+		local_cg->mode = 3;
+		local_cg->wtimer = 0;
+		tp->ptp->twp->flag |= 0x200;
+	}
+	if (local_cg->wtimer > 0x3c)
+	{
+		EntryColliList(local_cg);
+	}
+	else
+	{
+		local_cg->cwp->flag &= ~0x1;
+	}
 }
 
 // FUNCTION: SADX 0x005bc940
@@ -492,9 +573,40 @@ void FUN_005bf2c0(struct taskwk *param_1, void *param_2)
 	}
 }
 
-// STUB: SADX 0x005bf360
+// FUNCTION: SADX 0x005bf360
 void RoboScramble(struct taskwk *twp, struct enemywk *ewp)
 {
+	EnemyCalcAimAngle(twp, ewp);
+	*(int *)((char *)ewp + 0x1c0) = AdjustAngle(*(int *)((char *)ewp + 0x1c0), ewp->aim_angle, 0x1a0);
+	*(int *)((char *)twp + 0x18) = AdjustAngle(*(int *)((char *)twp + 0x18), *(int *)((char *)ewp + 0x1c0), 0xb0);
+	ewp->angz_spd = AdjustAngle(ewp->angz_spd, 0, 0x100);
+	*(int *)((char *)ewp + 0x1b4) -= 0x100;
+	if ((*(int *)((char *)ewp + 0x1b4) + 0x8000 & 0xffff) < 0x5800)
+	{
+		*(int *)((char *)ewp + 0x1b4) = 0xd800;
+	}
+	ewp->sub_angle[0] += 0x3800;
+	*(float *)((char *)ewp + 0x78) = njSin(ewp->sub_angle[0]) * 0.5f;
+	if (ewp->nframe < 15.0f)
+	{
+		ewp->nframe += 0.09f;
+	}
+	if (*(float *)((char *)ewp + 0x7c) > 1.5f)
+	{
+		*(float *)((char *)ewp + 0x7c) -= 0.04f;
+	}
+	FUN_005be280((int)twp, (int)ewp);
+	FUN_005be2d0(twp, ewp);
+	EnemyCheckGroundCollision(twp, ewp);
+	RoboDraw(twp, ewp);
+	if (twp->wtimer > 0x3c)
+	{
+		ewp->old_mode = twp->mode;
+		twp->mode = 5;
+		twp->wtimer = 0;
+		*(int *)((char *)ewp + 0x1c4) = 0x300;
+		*(int *)((char *)ewp + 0x1b8) = 0x1d0;
+	}
 }
 
 // STUB: SADX 0x005bf530

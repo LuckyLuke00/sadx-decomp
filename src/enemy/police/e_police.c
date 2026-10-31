@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" double atan2(double v, double u);
 long AdjustAngle(long ang0, long ang1, long dang);
 extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid1[1];
 extern struct NJS_MATERIAL matlist_nisepat_nisepat_grid3[1];
@@ -101,9 +102,29 @@ void PoliceScramble(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005cfef0
+// FUNCTION: SADX 0x005cfef0
 void PoliceTurnSlow(struct taskwk *twp, struct enemywk *ewp)
 {
+	long local_ci;
+	long local_8g;
+	long local_10;
+
+	FUN_005e3d10(twp, ewp);
+	local_10 = twp->ang.y;
+	local_8g = (long)(atan2(*(float *)((char *)ewp + 0x5c) - *(float *)((char *)twp + 0x20), *(float *)((char *)ewp + 0x64) - *(float *)((char *)twp + 0x28)) * 65536.0 / 6.283184) - 0x4000;
+	local_ci = SubAngle(local_8g, local_10);
+	if (local_ci < -0x80)
+	{
+		ewp->view_angle = AdjustAngle(ewp->view_angle, 0xfffff800, 0x30);
+	}
+	else if (local_ci > 0x80)
+	{
+		ewp->view_angle = AdjustAngle(ewp->view_angle, 0x800, 0x30);
+	}
+	else
+	{
+		ewp->view_angle = AdjustAngle(ewp->view_angle, 0, 0x80);
+	}
 }
 
 // FUNCTION: SADX 0x005cfff0
@@ -125,14 +146,59 @@ void PoliceTurnHead(struct taskwk *twp, struct enemywk *ewp)
 	ewp->sub_angle[1] = AdjustAngle(ewp->sub_angle[1], -local_8g, 0x360);
 }
 
-// STUB: SADX 0x005d0080
+// FUNCTION: SADX 0x005d0080
 void PoliceChase(struct taskwk *twp, struct enemywk *ewp)
 {
+	if (EnemyCheckFrameIn(&twp->pos))
+	{
+		ewp->aim = DAT_05baf368[0]->pos;
+	}
+	else
+	{
+		EnemyAimAroundPlayer(twp, ewp, 0, ewp->aim_num);
+	}
+	PoliceCheckTerritory(twp, ewp);
+	PoliceRectifyPosition(twp, ewp);
+	PoliceTurn(twp, ewp);
+	PoliceForward(twp, ewp);
+	PoliceMove(twp, ewp);
+	PoliceTurnHead(twp, ewp);
+	PoliceDraw(twp, ewp);
+	if ((twp->flag & 0x400) == 0)
+	{
+		if (EnemyDist2FromHome(twp, ewp) < 100.0)
+		{
+			ewp->old_mode = twp->mode;
+			twp->mode = 4;
+			twp->wtimer = 0;
+		}
+	}
+	ewp->nframe = ewp->nframe + 0.800000011920929;
 }
 
-// STUB: SADX 0x005d01b0
+// FUNCTION: SADX 0x005d01b0
 void PoliceTurn(struct taskwk *twp, struct enemywk *ewp)
 {
+	long local_8g;
+	long local_10;
+	long local_cj;
+
+	FUN_005e3d10(twp, ewp);
+	local_10 = *(long *)((char *)twp + 0x18);
+	local_8g = (long)(atan2((double)(ewp->aim.x - twp->pos.x), (double)(ewp->aim.z - twp->pos.z)) * 65536.0 / 6.283184) - 0x4000;
+	local_cj = SubAngle(local_8g, local_10);
+	if (local_cj < -0x80)
+	{
+		ewp->view_angle = AdjustAngle(ewp->view_angle, 0xffffe600, 0x60);
+	}
+	else if (local_cj > 0x80)
+	{
+		ewp->view_angle = AdjustAngle(ewp->view_angle, 0x1a00, 0x60);
+	}
+	else
+	{
+		ewp->view_angle = AdjustAngle(ewp->view_angle, 0, 0xc0);
+	}
 }
 
 // STUB: SADX 0x005d02b0
