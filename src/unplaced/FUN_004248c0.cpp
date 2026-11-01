@@ -24,9 +24,10 @@ int __fastcall FUN_00424910(int *param_1, int param_2, int param_3)
 	return (int)0;
 }
 
-// STUB: SADX 0x00424950
-void __fastcall FUN_00424950(int *param_1, int param_2)
+// FUNCTION: SADX 0x00424950
+void __fastcall FUN_00424950(int *param_1, int param_2, int param_3)
 {
+	*param_1 = param_3;
 }
 
 // FUNCTION: SADX 0x00424960

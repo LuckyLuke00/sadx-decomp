@@ -33,9 +33,27 @@ int FUN_00928720(void *param_1)
 	return (int)(DeleteFileA((LPCSTR)(*(void **)((char *)param_1 + 0x14) >= (void *)0x10 ? *(void **)param_1 : param_1)) != 0);
 }
 
-// STUB: SADX 0x00928740
+// FUNCTION: SADX 0x00928740
 void Magic::Base::File::FUN_00928740()
 {
+	void *var1 = *(void **)((char *)this + 0);
+	if (var1 != 0)
+	{
+		FILE *var2 = *(FILE **)((char *)var1 + 0);
+		if (var2 != 0)
+		{
+			fclose(var2);
+			*(FILE **)((char *)var1 + 0) = 0;
+		}
+		operator delete(var1);
+	}
+	if (*(void **)((char *)this + 0x18) >= (void *)0x10)
+	{
+		operator delete(*(void **)((char *)this + 4));
+	}
+	*(void **)((char *)this + 0x18) = (void *)0xf;
+	*(void **)((char *)this + 0x14) = 0;
+	*(char *)((char *)this + 4) = 0;
 }
 
 // STUB: SADX 0x00928790

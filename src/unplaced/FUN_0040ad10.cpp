@@ -93,9 +93,44 @@ void __stdcall FUN_0040b050(int *param_1)
 {
 }
 
-// STUB: SADX 0x0040b180
-void __fastcall FUN_0040b180(int param_1, int param_2)
+// FUNCTION: SADX 0x0040b180
+void __fastcall FUN_0040b180(int param_1, int param_2, int param_3)
 {
+	int iVar1;
+	int iVar2;
+	int iVar3;
+	int iVar4;
+
+	iVar1 = *(int *)(param_1 + 8);
+	iVar2 = *(int *)iVar1;
+	*(int *)(param_1 + 8) = iVar2;
+	iVar3 = *(int *)iVar1;
+	if (*(char *)(iVar3 + 0x15) == 0)
+	{
+		*(int *)(iVar3 + 4) = param_1;
+	}
+	*(int *)(iVar1 + 4) = *(int *)(param_1 + 4);
+	iVar4 = *(int *)(param_3 + 4);
+	iVar2 = *(int *)(iVar4 + 4);
+	if (param_1 == iVar2)
+	{
+		*(int *)(iVar4 + 4) = iVar1;
+		*(int *)iVar1 = param_1;
+		*(int *)(param_1 + 4) = iVar1;
+		return;
+	}
+	iVar2 = *(int *)(param_1 + 4);
+	iVar4 = *(int *)iVar2;
+	if (param_1 == iVar4)
+	{
+		*(int *)iVar2 = iVar1;
+		*(int *)iVar1 = param_1;
+		*(int *)(param_1 + 4) = iVar1;
+		return;
+	}
+	*(int *)(iVar2 + 8) = iVar1;
+	*(int *)iVar1 = param_1;
+	*(int *)(param_1 + 4) = iVar1;
 }
 
 // STUB: SADX 0x0040b1e0

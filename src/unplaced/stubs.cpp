@@ -1185,6 +1185,11 @@ void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {
 }
 
+// STUB: SADX 0x004b1cb0
+void FUN_004b1cb0(int, int, int, int)
+{
+}
+
 // STUB: SADX 0x004b38e0
 void FUN_004b38e0(struct FUN_004b2330_0 *)
 {
@@ -3496,11 +3501,6 @@ void ObjectCasino6SlotInit(struct task *tp)
 
 // STUB: SADX 0x0087ea70
 void FUN_0087ea70(struct task *, float)
-{
-}
-
-// STUB: SADX 0x00889bd0
-void FUN_00889bd0(struct TEXANIMINFO *, int)
 {
 }
 
