@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1448" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,921 of 16,524 game functions done (35.83%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,922 of 16,524 game functions done (35.83%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 599,1200.5 593,1193.6 594.1,1192" fill="#4e32f3"/>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 593,1193.6 594.1,1192" fill="#ffffff" fill-opacity="0.4"/>
@@ -1142,7 +1142,7 @@
 <rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x008590d0 EndC: 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#b07d00"><title>0x008e1b50 FUN_008e1b50: 100%</title></rect>
 </g>
-<rect x="222" y="87" width="156" height="148" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Final Egg: 66 of 363 functions done</title></rect>
+<rect x="222" y="87" width="156" height="148" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Final Egg: 67 of 363 functions done</title></rect>
 <text x="225" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Final Egg <tspan font-weight="400" fill="#59636e">7%</tspan></text>
 <g transform="translate(225,105)">
 <rect y="0" width="147" height="119" fill="url(#todo)"/>
@@ -1185,6 +1185,7 @@
 <rect x="63" y="35" width="6" height="6" fill="#b07d00"><title>0x00893e40 Hasigo_Exec: 100%</title></rect>
 <rect x="84" y="35" width="6" height="6" fill="#b07d00"><title>0x00894140 eggkanban_end: 100%</title></rect>
 <rect x="119" y="35" width="6" height="6" fill="#b07d00"><title>0x008943d0 standlight_exec: 100%</title></rect>
+<rect x="126" y="35" width="6" height="6" fill="#b07d00"><title>0x00894430 ObjectFinalEggStandlight: 100%</title></rect>
 <rect x="140" y="35" width="6" height="6" fill="#b07d00"><title>0x00894590 pin_side_search_obj: 100%</title></rect>
 <rect x="28" y="42" width="6" height="6" fill="#b07d00"><title>0x00894790 target_silenang_set: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x00894900 target_man_exec_nop: 100%</title></rect>

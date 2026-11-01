@@ -3956,6 +3956,9 @@ struct NJS_TEXLIST texlist_unyo;
 // GLOBAL: SADX 0x048a5720
 struct CCL_INFO cinfo_root[1];
 
+// GLOBAL: SADX 0x048a59b4
+struct CCL_INFO standlight_colli_info[1];
+
 // GLOBAL: SADX 0x048a5a74
 struct CCL_INFO uptarget_colli_info[1];
 

@@ -65957,9 +65957,9 @@
   {
    "address": "0x00894430",
    "name": "ObjectFinalEggStandlight",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -99636,6 +99636,13 @@
    "library": false
   },
   {
+   "address": "0x048a59b4",
+   "name": "standlight_colli_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x048a5a74",
    "name": "uptarget_colli_info",
    "size": 48,
@@ -101297,5 +101304,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4790380a8d2504c54302da07d1885dca2b84c737b1e8761b999b5d2570064917"
+ "inputs_sha256": "4877d54d37da5ddc39bcd1757f88bb3aa6ec4f29315cc2b574b7cae1497e1d1d"
 }
