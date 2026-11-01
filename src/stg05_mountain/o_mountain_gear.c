@@ -9,12 +9,28 @@ static void Norm(struct task *tp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x008321a0
+// FUNCTION: SADX 0x008321a0
 static void Draw(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (dsCheckViewV(&var1->pos, 1500.0f))
+	{
+		___njSetTexture(&texlist_obj_mountain);
+		njPushMatrix(0);
+		njTranslateV(0, &var1->pos);
+		if (var1->ang.y)
+		{
+			njRotateY(0, (Uint16)var1->ang.y);
+		}
+		ds_ActionClip(action_gearset_qnaka_wall, var1->counter.f, 1.0f);
+		njPopMatrix(1);
+		var1->counter.f += 0.5;
+		if (var1->counter.f >= 49.0f)
+		{
+			var1->counter.f -= 49.0f;
+		}
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00832250
 void ObjectMountainGear(struct task *tp)

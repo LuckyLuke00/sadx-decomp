@@ -7,12 +7,36 @@ void GCInit_Zako(struct task *tp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x0082a3b0
+// FUNCTION: SADX 0x0082a3b0
 void GC_Zako(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct OBJ_CONDITION *var2 = (struct OBJ_CONDITION *)var1->counter.ptr;
+	if (var2 != 0)
+	{
+		*(float *)((char *)var2 + 8) = var1->pos.x;
+		*(float *)((char *)var2 + 0xc) = var1->pos.y;
+		*(float *)((char *)var2 + 0x10) = var1->pos.z;
+		*(long *)((char *)var2 + 0x14) = var1->ang.x;
+		*(long *)((char *)var2 + 0x18) = var1->ang.y;
+		*(long *)((char *)var2 + 0x1c) = var1->ang.z;
+		float var3;
+		if (var1->scl.x > var1->scl.y)
+		{
+			var3 = var1->scl.x;
+		}
+		else
+		{
+			var3 = var1->scl.y;
+		}
+		if (CheckCollisionP(&var1->pos, *(float *)((char *)var2->pTask + 0x24) * var3 + 20.0f))
+		{
+			var1->flag |= 0x100;
+			return;
+		}
+		var1->flag &= 0xfeff;
+	}
 }
-#pragma optimize("", on)
 
 // STUB: SADX 0x0082a5c0
 void GCInit_ZakoB(struct task *tp)

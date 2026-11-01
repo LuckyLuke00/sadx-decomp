@@ -1,4 +1,5 @@
 #include "decls.h"
+static void Object_Mountain_Syuujin_Move_G(struct task *tp);
 extern struct NJS_TEXLIST texlist_obj_mountain;
 extern struct NJS_ACTION action_shu_jin02m_null1;
 int FUN_004c39c0(...);
@@ -28,9 +29,23 @@ void Object_Mountain_Syuujin_Display(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0082f310
+// FUNCTION: SADX 0x0082f310
 void Object_Mountain_Syuujin_Move_B(struct task *tp)
 {
+	float var1;
+	if (CheckRangeOut(tp) == 0)
+	{
+		struct taskwk *var2 = tp->twp;
+		var1 = (float)(*(int *)((char *)var2 + 0x1c) * 0.1);
+		var2->timer.f = var1 + var2->timer.f;
+		if (var2->timer.f > 29.0)
+		{
+			var2->timer.f = 0.0;
+		}
+		var2->wtimer += 0x570;
+		*(float *)((char *)var2 + 0x2c) = njSin(var2->wtimer) * 0.10000000149011612 + 1.0;
+		Object_Mountain_Syuujin_Display(tp);
+	}
 }
 
 // FUNCTION: SADX 0x0082f390
@@ -52,9 +67,21 @@ void Object_Mountain_Syuujin_Move_R(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0082f410
-void Object_Mountain_Syuujin_Move_G(struct task *tp)
+// FUNCTION: SADX 0x0082f410
+static void Object_Mountain_Syuujin_Move_G(struct task *tp)
 {
+	float var1;
+	if (CheckRangeOut(tp) == 0)
+	{
+		struct taskwk *var2 = tp->twp;
+		var1 = (float)(*(int *)((char *)var2 + 0x1c) * 0.1);
+		var2->timer.f = var1 + var2->timer.f;
+		if (var2->timer.f > 29.0)
+		{
+			var2->timer.f = 0.0;
+		}
+		Object_Mountain_Syuujin_Display(tp);
+	}
 }
 
 // FUNCTION: SADX 0x0082f470
