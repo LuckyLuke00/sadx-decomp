@@ -28,6 +28,7 @@ import project
 import stubpairs
 
 ADDRESS = 0x00401000
+SIZE = 64  # bytes: small, so a try's reply limit stays MAX_TOKENS
 FILE = "src/foo.c"
 SEED = 5
 MAX_TOKENS = 1500
@@ -66,10 +67,10 @@ def never_too_long(messages) -> bool:
     return False
 
 
-def solved(tries, too_long, reply="no code", **flags) -> Run:
-    """A run of TRIES against a server that refuses the chats for which TOO_LONG is true, else answers REPLY, or
-    with a list of replies the next one, and its last one after the list. FLAGS override the run's other flags, such
-    as stop_below=70."""
+def solved(tries, too_long, reply="no code", size=SIZE, **flags) -> Run:
+    """A run of TRIES on a function of SIZE bytes against a server that refuses the chats for which TOO_LONG is
+    true, else answers REPLY, or with a list of replies the next one, and its last one after the list. FLAGS
+    override the run's other flags, such as stop_below=70."""
     asks, kept = [], []
     replies = [reply] if isinstance(reply, str) else reply
 
@@ -101,7 +102,7 @@ def solved(tries, too_long, reply="no code", **flags) -> Run:
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
         transcript, live = Path(folder) / "transcript.jsonl", Path(folder) / "live.jsonl"
         with mock.patch.object(llm, "LIVE", live):
-            result = llm.solve_function(args, FILE, ADDRESS, transcript)
+            result = llm.solve_function(args, FILE, ADDRESS, size, transcript)
         logged = [json.loads(line) for line in transcript.read_text(encoding="utf-8").splitlines()]
         shown = [json.loads(line) for line in live.read_text(encoding="utf-8").splitlines()] if live.exists() else []
     return Run([ask[0] for ask in asks], sum(not ask[1] for ask in asks), result["tries"],
@@ -143,16 +144,20 @@ def check_stop_below() -> list[str]:
 
 def check_try_tokens() -> list[str]:
     """--try-tokens sets each try's max_tokens in turn, and its last value holds for the tries after it. A chat too
-    long for the server is the same try again, so it keeps that try's limit. Without the flag every try gets the
-    config's max_tokens."""
+    long for the server is the same try again, so it keeps that try's limit. Without the flag every try gets 3
+    tokens per byte of the function, at least the config's max_tokens and at most 4000."""
     full = f"{llm.EXAMPLES} examples"
-    cases = [("--try-tokens 600,1000", 3, never_too_long, {"try_tokens": [600, 1000]}, [600, 1000, 1000]),
+    cases = [("--try-tokens 600,1000", 3, never_too_long, {"try_tokens": [600, 1000]}, SIZE, [600, 1000, 1000]),
              ("--try-tokens 600,1000 and a first prompt too long", 2, lambda messages: messages[1]["content"] == full,
-              {"try_tokens": [600, 1000]}, [600, 600, 1000]),
-             ("no --try-tokens", 2, never_too_long, {}, [MAX_TOKENS, MAX_TOKENS])]
+              {"try_tokens": [600, 1000]}, SIZE, [600, 600, 1000]),
+             ("--try-tokens 600,1000 for 2000 bytes", 2, never_too_long, {"try_tokens": [600, 1000]}, 2000,
+              [600, 1000]),
+             ("no --try-tokens", 2, never_too_long, {}, SIZE, [MAX_TOKENS, MAX_TOKENS]),
+             ("no --try-tokens for 900 bytes", 2, never_too_long, {}, 900, [2700, 2700]),
+             ("no --try-tokens for 2000 bytes", 2, never_too_long, {}, 2000, [4000, 4000])]
     failures = []
-    for case, tries, too_long, flags, wanted in cases:
-        found = solved(tries, too_long, **flags).limits
+    for case, tries, too_long, flags, size, wanted in cases:
+        found = solved(tries, too_long, size=size, **flags).limits
         if found != wanted:
             failures.append(f"{case} gives the limits {found}, not {wanted}")
     return failures
