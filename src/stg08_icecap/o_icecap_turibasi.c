@@ -1,4 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x045da780
+static struct CCL_INFO hasi_colli_info[1];
+
+extern struct bridge_model_info icecap_bridge_01;
 extern short DAT_05ccde90;
 
 // FUNCTION: SADX 0x00865a00
@@ -46,7 +51,12 @@ void ObjectIcecapTuribasiExecutor(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00865ac0
+// FUNCTION: SADX 0x00865ac0
 void ObjectIcecapTuribasi1(struct task *tp)
 {
+	tp->twp->value.ptr = &icecap_bridge_01;
+	CCL_Init(tp, hasi_colli_info, 1, 4);
+	tp->twp->cwp->colli_range = 500.0f;
+	ObjectTuribasi(tp);
+	tp->exec = ObjectIcecapTuribasiExecutor;
 }

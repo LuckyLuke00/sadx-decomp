@@ -36,9 +36,23 @@ static void Disp(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x00860c00
+// FUNCTION: SADX 0x00860c00
 static void Normal(struct task *tp)
 {
+	struct taskwk *var1;
+	float var2;
+	var1 = tp->twp;
+	var2 = njSqrt((DAT_05b42a7c->pos.x - var1->pos.x) * (DAT_05b42a7c->pos.x - var1->pos.x) + (DAT_05b42a7c->pos.y - var1->pos.y) * (DAT_05b42a7c->pos.y - var1->pos.y) + (DAT_05b42a7c->pos.z - var1->pos.z) * (DAT_05b42a7c->pos.z - var1->pos.z));
+	if (var2 < 3000.0f)
+	{
+		var1->ang.y += (long)var1->counter.l;
+		var1->pos.y += var1->timer.f;
+		Disp(tp);
+	}
+	else
+	{
+		DeadOut(tp);
+	}
 }
 
 // FUNCTION: SADX 0x00860c80
