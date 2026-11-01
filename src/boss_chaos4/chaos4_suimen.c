@@ -41,9 +41,24 @@ void C4HamonMake(struct NJS_POINT3 *pos)
 {
 }
 
-// STUB: SADX 0x006f0830
+// FUNCTION: SADX 0x006f0830
 void Dsp_first_pond(struct task *pTask)
 {
+	struct NJS_ARGB argb;
+
+	if (DAT_060c2154 > -1.0f)
+	{
+		if (DAT_05b9d838 == 0)
+		{
+			___njSetTexture(&texlist_numa_f);
+			argb.a = DAT_060c2154;
+			argb.b = 0.0f;
+			argb.g = 0.0f;
+			argb.r = 0.0f;
+			___njSetConstantMaterial(&argb);
+			ResetMaterial();
+		}
+	}
 }
 
 // FUNCTION: SADX 0x006f0a20

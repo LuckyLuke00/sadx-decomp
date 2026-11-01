@@ -48357,9 +48357,9 @@
   {
    "address": "0x006eef70",
    "name": "setChaos4ColliParam",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -48477,9 +48477,9 @@
   {
    "address": "0x006f0830",
    "name": "Dsp_first_pond",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -94596,6 +94596,13 @@
    "library": false
   },
   {
+   "address": "0x02910a58",
+   "name": "colliparam_tbl",
+   "size": 14,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02912a48",
    "name": "texture_chaos4_numa",
    "size": 144,
@@ -101150,5 +101157,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "81417ba709588cae185dc2db3c317bd151f88903b91183e051f9e5871c2c9ac0"
+ "inputs_sha256": "ee7a2320b3d540b7ee5e64d26103a3d3f59b8a1e87238a42cd51325c23085a35"
 }
