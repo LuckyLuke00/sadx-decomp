@@ -2500,6 +2500,7 @@ void CreateCreamManager(unsigned long idx);
 void ECPcDelete();
 void ECPcSet();
 void MastDisplayer(struct task *tp);
+void BookRegular(struct task *tp);
 void GiantPalmDisplayer(struct task *tp);
 long Object_EgaGun1DrawStat(struct task *tp);
 void Object_EgaGun1Init(struct task *tp);

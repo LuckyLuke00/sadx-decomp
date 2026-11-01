@@ -1781,6 +1781,9 @@ int flg_transform[8];
 // GLOBAL: SADX 0x026df7a0
 struct NJS_TEXLIST texlist_mapEC;
 
+// GLOBAL: SADX 0x026dfe18
+const struct HintMessageTable *ECHintTablePointer[5] = {};
+
 // GLOBAL: SADX 0x026e0b40
 struct NJS_TEXLIST texlist_ec_water;
 
@@ -1792,6 +1795,9 @@ struct NJS_TEXLIST texlist_ec_ikada;
 
 // GLOBAL: SADX 0x026ed2f0
 struct CCL_INFO cinfo_palm[1];
+
+// GLOBAL: SADX 0x026edc08
+struct CCL_INFO cinfo_attack[1];
 
 // GLOBAL: SADX 0x026edd28
 struct CCL_INFO object_c_info_head[1];
@@ -9292,6 +9298,9 @@ struct task **DAT_060eeab8;
 
 // GLOBAL: SADX 0x060eeac8
 int DAT_060eeac8;
+
+// GLOBAL: SADX 0x060eeacc
+struct NJS_ACTION *DAT_060eeacc;
 
 // GLOBAL: SADX 0x060f4ad4
 struct NJS_MODEL **DAT_060f4ad4;

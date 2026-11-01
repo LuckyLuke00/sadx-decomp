@@ -25,9 +25,15 @@ void ObjectECBook1(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00694e40
+// FUNCTION: SADX 0x00694e40
 void ObjectECBook2(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct obj *var2 = (struct obj *)DAT_060eea88;
+
+	var1->counter.ptr = var2->child;
+	var1->smode = 0;
+	tp->exec = BookRegular;
 }
 
 // STUB: SADX 0x00694e60

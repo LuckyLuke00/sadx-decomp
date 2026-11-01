@@ -43612,7 +43612,7 @@
   },
   {
    "address": "0x006940d0",
-   "name": "ecp_actman(struct task *)",
+   "name": "ecp_actman(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -43621,9 +43621,9 @@
   {
    "address": "0x00694120",
    "name": "ECPeopleInitialize",
-   "accuracy": 0.0392156862745098,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -43707,6 +43707,14 @@
    "library": false
   },
   {
+   "address": "0x00694da0",
+   "name": "BookRegular",
+   "accuracy": 0.044444444444444446,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00694e20",
    "name": "ObjectECBook1",
    "accuracy": 0.2222222222222222,
@@ -43717,9 +43725,9 @@
   {
    "address": "0x00694e40",
    "name": "ObjectECBook2",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -43843,6 +43851,14 @@
    "library": false
   },
   {
+   "address": "0x00698440",
+   "name": "FUN_00698440",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00698b20",
    "name": "MonorailCarDestructor",
    "accuracy": 1.0,
@@ -43917,9 +43933,9 @@
   {
    "address": "0x0069c370",
    "name": "CollisionAttackBox",
-   "accuracy": 0.0392156862745098,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -93381,6 +93397,13 @@
    "library": false
   },
   {
+   "address": "0x026dfe18",
+   "name": "ECHintTablePointer",
+   "size": 20,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026e0b40",
    "name": "texlist_ec_water",
    "size": 8,
@@ -93426,6 +93449,13 @@
    "address": "0x026ed570",
    "name": "ColliInfo",
    "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026edc08",
+   "name": "cinfo_attack",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -100957,5 +100987,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "204433a532c27ef7e5f7ee567b71a3ede6cf85716569ecac17e9161faa43df3f"
+ "inputs_sha256": "09ca675279b9616a8a8da467fd56f1d38d58f52f39a85b53036946168671f874"
 }

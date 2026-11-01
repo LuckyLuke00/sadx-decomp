@@ -1,4 +1,6 @@
 #include "decls.h"
+static void ecp_actman(struct task *task_p);
+extern const struct HintMessageTable *ECHintTablePointer[5];
 extern short DAT_05b9d744;
 void ECPcSet();
 void ECPcDelete();
@@ -31,7 +33,7 @@ void ECPcSet()
 #pragma optimize("", on)
 
 // FUNCTION: SADX 0x006940d0
-void ecp_actman(struct task *task_p)
+static void ecp_actman(struct task *task_p)
 {
 	struct anywk *var1;
 	int var2;
@@ -50,7 +52,44 @@ void ecp_actman(struct task *task_p)
 	}
 }
 
-// STUB: SADX 0x00694120
+// FUNCTION: SADX 0x00694120
 void ECPeopleInitialize()
 {
+	struct task *local_8;
+	void *local_4;
+	int local_0;
+
+	DAT_060b8320 = 0;
+	DAT_060b8324 = 0;
+	DAT_060b8328 = 0;
+	HintMessageDataInit(ECHintTablePointer[DAT_05b3ebbc]);
+	local_8 = CreateElementalTask(0, 1, ecp_actman);
+	if (local_8 != 0)
+	{
+		local_4 = CAlloc(1, 8);
+		if (local_4 != 0)
+		{
+			local_8->awp = (struct anywk *)local_4;
+			if (*(int *)local_4 == 0)
+			{
+				local_0 = (short)DAT_05b9d744 & 0xff;
+				ECPcSet();
+				*(int *)((char *)local_4 + 4) = local_0;
+				*(int *)local_4 = 1;
+			}
+			else
+			{
+				local_0 = (short)DAT_05b9d744 & 0xff;
+				if (*(int *)((char *)local_4 + 4) != local_0)
+				{
+					ECPcDelete();
+					*(int *)local_4 = 0;
+				}
+			}
+		}
+		else
+		{
+			DestroyTask(local_8);
+		}
+	}
 }
