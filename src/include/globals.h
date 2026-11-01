@@ -273,6 +273,7 @@ extern struct obj object_mi_3dasu_fat_d[];
 extern struct NJS_TEXLIST texlist_mi_3dasu;
 extern struct CCL_INFO mi_kinka_colli_info[];
 extern struct CCL_INFO mi_flag_colli_info[];
+extern struct CCL_INFO mi_baloon_colli_info[];
 extern struct CCL_INFO mission01_colli_info[];
 extern struct NJS_TEXLIST texlist_emblem;
 extern struct obj object_o_emblm_emblm[];

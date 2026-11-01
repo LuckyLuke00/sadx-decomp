@@ -809,6 +809,9 @@ struct CCL_INFO mi_kinka_colli_info[1];
 // GLOBAL: SADX 0x025a2b60
 struct CCL_INFO mi_flag_colli_info[1];
 
+// GLOBAL: SADX 0x025a2b90
+struct CCL_INFO mi_baloon_colli_info[3];
+
 // GLOBAL: SADX 0x025a2c50
 struct CCL_INFO mission01_colli_info[1];
 
