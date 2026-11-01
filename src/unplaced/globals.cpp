@@ -7829,8 +7829,17 @@ char DAT_060b9a1c;
 // GLOBAL: SADX 0x060b9a8c
 int DAT_060b9a8c;
 
+// GLOBAL: SADX 0x060b9aa0
+int DAT_060b9aa0;
+
+// GLOBAL: SADX 0x060b9ab0
+int DAT_060b9ab0;
+
 // GLOBAL: SADX 0x060b9ab4
 int DAT_060b9ab4;
+
+// GLOBAL: SADX 0x060b9abc
+int DAT_060b9abc;
 
 // GLOBAL: SADX 0x060b9ae4
 int DAT_060b9ae4;

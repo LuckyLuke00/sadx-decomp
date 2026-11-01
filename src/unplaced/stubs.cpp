@@ -2542,6 +2542,31 @@ void egm1ground_clay_exec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006c7650
+void egm2_player_position()
+{
+}
+
+// STUB: SADX 0x006c77d0
+void egm2_near_camera()
+{
+}
+
+// STUB: SADX 0x006c7aa0
+void egm2_calc_camera()
+{
+}
+
+// STUB: SADX 0x006c7ea0
+void FUN_006c7ea0()
+{
+}
+
+// STUB: SADX 0x006c8380
+void egm2_far_camera()
+{
+}
+
 // STUB: SADX 0x006ca190
 void Exe_bomb(struct task *pTask)
 {

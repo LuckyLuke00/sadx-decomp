@@ -1,4 +1,9 @@
 #include "decls.h"
+extern int DAT_060b9aa0;
+extern int DAT_060b9ab0;
+void FUN_006c7ea0();
+extern "C" double atan2(double v, double u);
+extern int DAT_060b9abc;
 extern struct _camcontwk *camcont_wp;
 extern struct NJS_TEXLIST texlist_egm2_sky;
 extern struct obj object_boss_em2_sky_n_sky_n[1];
@@ -10,6 +15,13 @@ extern int DAT_060b9a8c;
 extern int DAT_060b9ae4;
 extern float DAT_060b9b2c;
 extern int DAT_060b9b34;
+
+#pragma optimize("", off)
+// STUB: SADX 0x006c7740
+void FUN_006c7740(void)
+{
+}
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006c7df0
 void egm2_sky_display()
@@ -62,4 +74,26 @@ struct taskwk *Egm2StartPositionTask(struct NJS_POINT3 *pos)
 		return var2;
 	}
 	return 0;
+}
+
+// FUNCTION: SADX 0x006c8420
+void egm2_camera(struct _OBJ_CAMERAPARAM *pParam)
+{
+	DAT_060b9ab0 = -16384 - (int)((double)atan2(*(float *)((char *)camcont_wp + 0x20) - *(float *)((char *)camcont_wp + 0x14), *(float *)((char *)camcont_wp + 0x18) - *(float *)((char *)camcont_wp + 0xc)) * 65536.0 / 6.283184);
+	egm2_player_position();
+	FUN_006c7740();
+	if (DAT_060b9abc == 1 || DAT_060b9ab4 == 1)
+	{
+		egm2_near_camera();
+	}
+	else
+	{
+		egm2_far_camera();
+	}
+	FUN_006c7ea0();
+	egm2_calc_camera();
+	FUN_006c7d40();
+	DAT_060b9aa0 = 0;
+	DAT_060b9ab4 = 0;
+	DAT_060b9ae4 = 0;
 }
