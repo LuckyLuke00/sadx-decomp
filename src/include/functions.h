@@ -1395,6 +1395,7 @@ void FUN_00547070(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 void SonicChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 void SonicThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 void SonicInterpolateFeetModel(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
+void SonicDirectAhead(struct task *tp);
 void ManageSonicLightSpinCharge(struct task *tp);
 void ManageSonicLightSpinChargeExit(struct task *tp);
 void SonicSnowBoard(struct task *tp);

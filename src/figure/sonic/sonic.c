@@ -273,10 +273,28 @@ int FUN_0054c720(struct taskwk *param_1, int param_2, struct taskwk *param_3)
 	return (int)0;
 }
 
-// STUB: SADX 0x0054c9d0
+// FUNCTION: SADX 0x0054c9d0
 int FUN_0054c9d0(unsigned char *param_1, int param_2, int param_3)
 {
-	return (int)0;
+	if (*(float *)(param_3 + 0x38) < *(float *)(param_3 + 0xc4))
+	{
+		if (*(float *)(param_3 + 0x38) <= 0.0f)
+		{
+			*param_1 = 1;
+			*(unsigned short *)(param_3 + 0xe) = 0;
+			*(unsigned short *)(param_3 + 0x124) = 0x1d;
+		}
+		else
+		{
+			*param_1 = 2;
+			*(unsigned short *)(0x124 + param_3) = 0x1d;
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0054ca40
@@ -395,10 +413,32 @@ void SonicHeadSpikesShakeEnd(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0054e480
+// FUNCTION: SADX 0x0054e480
 int FUN_0054e480(char param_1, float *param_2)
 {
-	return (int)0;
+	struct task *local_cg;
+	struct motionwk *local_8g;
+
+	local_cg = CreateElementalTask(2, 2, SonicDirectAhead);
+	if (local_cg != (struct task *)0x0)
+	{
+		local_8g = (struct motionwk *)MAlloc(0x88);
+		if (local_8g == (struct motionwk *)0x0)
+		{
+			FreeTask(local_cg);
+			return 0;
+		}
+		local_cg->mwp = local_8g;
+		local_cg->twp->counter.b[0] = param_1;
+		*(int *)((char *)local_8g + 0x58) = *(int *)param_2;
+		*(int *)((char *)local_8g + 0x5c) = *(int *)(param_2 + 1);
+		*(int *)((char *)local_8g + 0x60) = *(int *)(param_2 + 2);
+	}
+	else
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0054ea70
