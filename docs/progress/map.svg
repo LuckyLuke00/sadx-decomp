@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,898 of 16,524 game functions done (35.69%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,900 of 16,524 game functions done (35.70%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 604,1194.5 598,1187.6 599.1,1186" fill="#4e32f3"/>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 598,1187.6 599.1,1186" fill="#ffffff" fill-opacity="0.4"/>
@@ -1714,8 +1714,8 @@
 <rect x="14" y="35" width="6" height="6" fill="#b07d00"><title>0x00902fb0 EvChaos2Water2Human: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x00902fd0 EvChaos2Action: 100%</title></rect>
 </g>
-<rect x="562" y="696" width="96" height="92" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 4: 29 of 108 functions done</title></rect>
-<text x="565" y="710" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 4 <tspan font-weight="400" fill="#59636e">7%</tspan></text>
+<rect x="562" y="696" width="96" height="92" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 4: 31 of 108 functions done</title></rect>
+<text x="565" y="710" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 4 <tspan font-weight="400" fill="#59636e">8%</tspan></text>
 <g transform="translate(565,714)">
 <rect y="0" width="91" height="56" fill="url(#todo)"/>
 <rect y="56" width="28" height="7" fill="url(#todo)"/>
@@ -1728,6 +1728,7 @@
 <rect x="42" y="7" width="6" height="6" fill="#b07d00"><title>0x006eec20 Tmit_MaterialInit: 100%</title></rect>
 <rect x="56" y="7" width="6" height="6" fill="#b07d00"><title>0x006eec60 Chaos4EffectInit: 100%</title></rect>
 <rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x006eeef0 Chaos4Splash_A_Set: 100%</title></rect>
+<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x006eef70 setChaos4ColliParam: 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x006f0300 setChaos4: 100%</title></rect>
 <rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x006f0320 TubeCounterInit: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x006f0330 TubeCountUp: 100%</title></rect>
@@ -1736,6 +1737,7 @@
 <rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x006f0360 HamonCountUp: 100%</title></rect>
 <rect x="56" y="21" width="6" height="6" fill="#b07d00"><title>0x006f0370 HamonCountDown: 100%</title></rect>
 <rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x006f0380 HamonCountGet: 100%</title></rect>
+<rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x006f0830 Dsp_first_pond: 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x006f0a20 Exe_side_collision: 100%</title></rect>
 <rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x006f0a50 End_side_collision: 100%</title></rect>
 <rect x="56" y="28" width="6" height="6" fill="#b07d00"><title>0x006f0b30 FUN_006f0b30: 100%</title></rect>
