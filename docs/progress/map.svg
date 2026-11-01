@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1448" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,918 of 16,524 game functions done (35.81%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,919 of 16,524 game functions done (35.82%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 599,1200.5 593,1193.6 594.1,1192" fill="#4e32f3"/>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 593,1193.6 594.1,1192" fill="#ffffff" fill-opacity="0.4"/>
@@ -2062,7 +2062,7 @@
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x007071f0 SetE101HoverSmoke: 100%</title></rect>
 <rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00837890 updownHeight(2): 100%</title></rect>
 </g>
-<rect x="342" y="704" width="104" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 mkII: 34 of 134 functions done</title></rect>
+<rect x="342" y="704" width="104" height="116" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 mkII: 35 of 134 functions done</title></rect>
 <text x="345" y="718" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-101 mkII</text>
 <text x="345" y="733" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">4%</tspan></text>
 <g transform="translate(345,737)">
@@ -2084,6 +2084,7 @@
 <rect x="14" y="28" width="6" height="6" fill="#b07d00"><title>0x0070abf0 CamE101R_GetAngle: 100%</title></rect>
 <rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x0070b400 CameraE101R: 100%</title></rect>
 <rect x="14" y="35" width="6" height="6" fill="#b07d00"><title>0x0070dbc0 E101R_Lightning: 100%</title></rect>
+<rect x="35" y="35" width="6" height="6" fill="#b07d00"><title>0x0070de30 E101R_CrushLight: 100%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#b07d00"><title>0x0070de60 E101R_Bomb: 100%</title></rect>
 <rect x="56" y="35" width="6" height="6" fill="#b07d00"><title>0x0070dff0 E101R_EfWaveAccumeInit: 100%</title></rect>
 <rect x="63" y="35" width="6" height="6" fill="#b07d00"><title>0x0070e040 E101R_EfWaveAccumeExit: 100%</title></rect>

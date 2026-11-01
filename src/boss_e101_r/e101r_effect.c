@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x02c0eb88
+static struct CRUSHLIGHT_DATA cl_data;
+
 void FUN_0070e240(struct GHPARTICLE *param_1);
 void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2);
 void FUN_0070e240(struct GHPARTICLE *param_1);
@@ -38,6 +42,14 @@ void E101R_Lightning(struct NJS_POINT3 *pPos)
 // STUB: SADX 0x0070dbf0
 void E101R_Spark(struct NJS_POINT3 *pPos, float fRange)
 {
+}
+
+// FUNCTION: SADX 0x0070de30
+void E101R_CrushLight(struct NJS_POINT3 *pPos, float fLength)
+{
+	cl_data.angMaxSpd = 0x36;
+	cl_data.fLength = fLength;
+	CreateCrushLight(pPos, &cl_data);
 }
 
 // FUNCTION: SADX 0x0070de60
