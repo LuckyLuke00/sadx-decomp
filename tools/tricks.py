@@ -80,6 +80,11 @@ def volatile_globals(text: str) -> set[str]:
             if line[:1].strip() and line.rstrip().endswith(";") and VOLATILE.search(line)} - {None}
 
 
+def all_volatile_globals(sources: dict[str, str]) -> set[str]:
+    """The names any of SOURCES (path: text) declares `volatile` at file level, from volatile_globals."""
+    return set().union(*map(volatile_globals, sources.values()))
+
+
 def is_definition(annotation: re.Match | None) -> bool:
     """True for the annotation of a function definition that is not a stub."""
     return bool(annotation) and annotation[1] in names.FUNCTION_KINDS and annotation[1] != "STUB"
@@ -89,7 +94,7 @@ def file_tricks(text: str, volatiles: set[str] = frozenset(),
                 fakes: Callable[[list[str]], list[str]] | None = None) -> dict[int, str]:
     """address: the tricks of each function definition in TEXT that has one, in the order they appear. A definition
     runs from its declarator_start to the first line that is exactly "}". A stub is left out: it counts as nothing
-    anyway. VOLATILES: the globals declared `volatile` in any source, from volatile_globals. FAKES gives the kinds of
+    anyway. VOLATILES: the globals declared `volatile` in any source, from all_volatile_globals. FAKES gives the kinds of
     the fake-match lines in a definition's lines from its annotation on (fakematch.checker)."""
     lines = text.split("\n")
     blank = names.blank_literals(text).split("\n")
@@ -117,7 +122,7 @@ def file_tricks(text: str, volatiles: set[str] = frozenset(),
 def scan(root: Path, fakes: Callable[[list[str]], list[str]] | None = None) -> dict[int, tuple[str, str]]:
     """address: (file, tricks) of each function in root/src that has a trick. FAKES: as in file_tricks."""
     sources = names.read_sources(root)
-    volatiles = set().union(*map(volatile_globals, sources.values()))
+    volatiles = all_volatile_globals(sources)
     return {address: (rel, reasons) for rel, text in sources.items()
             for address, reasons in file_tricks(text, volatiles, fakes).items()}
 

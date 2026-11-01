@@ -270,10 +270,46 @@ def check_search():
             if set(found) != {wanted}]
 
 
+def check_tricked_try():
+    """A try with a trick counts as one that does not build, with no write and no build: check.py fn would never
+    count it as matched."""
+    import tempfile
+    from pathlib import Path
+    from unittest import mock
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / "a.c"
+        path.write_text("x\n", encoding="utf-8")
+        with mock.patch.object(permute.check, "build", side_effect=AssertionError("built")):
+            found = permute.try_function(path, ["{", "}"], (0, 1), ["{", "\t((void (*)())f)();", "}"], False,
+                                         0x401000, lambda text: "fake match cast_call")
+        text = path.read_text(encoding="utf-8")
+    return [] if found is None and text == "x\n" else [f"a try with a trick gives {found} and leaves {text!r}"]
+
+
+def check_trick_test():
+    """trick_test gives the tricks of its own address only, with the volatile globals of every source and the gate's
+    fake-match checker."""
+    from unittest import mock
+
+    def fakes(lines):
+        return ["cast_call"] if any("(*)" in line for line in lines) else []
+
+    sources = {"src/a.c": "extern volatile int g_tick;\n"}
+    with (mock.patch.object(permute, "read_sources", return_value=sources),
+          mock.patch.object(permute.project, "require_game"),
+          mock.patch.object(permute.fakematch, "checker", return_value=fakes)):
+        tricked = permute.trick_test(0x401000)
+    wanted = {"\tg();": None, "\t((void (*)())g)();": "fake match cast_call", "\tg_tick = 1;": "volatile global g_tick"}
+    found = {line: tricked(f"// FUNCTION: SADX 0x00401000\nvoid f(void)\n{{\n{line}\n}}\n") for line in wanted}
+    other = tricked("// FUNCTION: SADX 0x00402000\nvoid h(void)\n{\n\t((void (*)())g)();\n}\n")
+    return [] if found == wanted and other is None else [f"trick_test gives {found}, and {other} for another address"]
+
+
 def run():
     return [failure for check in (check_inline_temp, check_inline_temp_refuses, check_inline_temp_covered,
                                   check_invert_else_if, check_ternary, check_else_tail, check_else_tail_refuses,
-                                  check_nest_return, check_fall_through, check_change_comparison, check_search)
+                                  check_nest_return, check_fall_through, check_change_comparison, check_search,
+                                  check_tricked_try, check_trick_test)
             for failure in check()]
 
 
