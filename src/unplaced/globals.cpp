@@ -9239,6 +9239,9 @@ int *DAT_060dfeb0;
 // GLOBAL: SADX 0x060dfeb4
 struct OBJ_CONDITION *DAT_060dfeb4;
 
+// GLOBAL: SADX 0x060dfee0
+int DAT_060dfee0;
+
 // GLOBAL: SADX 0x060dff60
 int DAT_060dff60;
 

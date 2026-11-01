@@ -3085,6 +3085,7 @@ extern int DAT_060dfea8;
 extern int DAT_060dfeac;
 extern int *DAT_060dfeb0;
 extern struct OBJ_CONDITION *DAT_060dfeb4;
+extern int DAT_060dfee0;
 extern int DAT_060dff60;
 extern int DAT_060dff64;
 extern int DAT_060dff68;
