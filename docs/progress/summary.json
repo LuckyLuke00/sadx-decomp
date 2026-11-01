@@ -34599,7 +34599,7 @@
    "name": "RoboHeadWait",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -101297,5 +101297,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "1d0cf6e71fece216f830bb94db3f461ca622a4c1b1a3f2f4ad970a78f3fd8ea4"
+ "inputs_sha256": "4790380a8d2504c54302da07d1885dca2b84c737b1e8761b999b5d2570064917"
 }

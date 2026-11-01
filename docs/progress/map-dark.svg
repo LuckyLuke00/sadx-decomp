@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1448" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,920 of 16,524 game functions done (35.82%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,921 of 16,524 game functions done (35.83%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 599,1200.5 593,1193.6 594.1,1192" fill="#4e32f3"/>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 593,1193.6 594.1,1192" fill="#ffffff" fill-opacity="0.4"/>
@@ -4372,8 +4372,8 @@
 <rect x="42" y="112" width="6" height="6" fill="#ffd700"><title>0x008d9050 FUN_008d9050: 100%</title></rect>
 <rect x="49" y="119" width="6" height="6" fill="#ffd700"><title>0x008dd790 FUN_008dd790: 100%</title></rect>
 </g>
-<rect x="878" y="372" width="102" height="182" rx="3" fill="#21262d" stroke="#30363d"><title>Enemies: 166 of 267 functions done</title></rect>
-<text x="881" y="386" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Enemies <tspan font-weight="400" fill="#8b949e">37%</tspan></text>
+<rect x="878" y="372" width="102" height="182" rx="3" fill="#21262d" stroke="#30363d"><title>Enemies: 167 of 267 functions done</title></rect>
+<text x="881" y="386" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Enemies <tspan font-weight="400" fill="#8b949e">38%</tspan></text>
 <g transform="translate(881,390)">
 <rect y="0" width="91" height="140" fill="url(#todo)"/>
 <rect y="140" width="49" height="7" fill="url(#todo)"/>
@@ -4397,6 +4397,7 @@
 <rect x="56" y="14" width="6" height="6" fill="#ffd700"><title>0x005bc780 RoboHeadChase: 100%</title></rect>
 <rect x="63" y="14" width="6" height="6" fill="#ffd700"><title>0x005bc940 FUN_005bc940: 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#ffd700"><title>0x005bd0b0 RoboHeadUp: 100%</title></rect>
+<rect x="21" y="21" width="6" height="6" fill="#ffd700"><title>0x005bd170 RoboHeadWait: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#ffd700"><title>0x005bde30 FUN_005bde30: 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#ffd700"><title>0x005bdea0 FUN_005bdea0: 100%</title></rect>
 <rect x="42" y="21" width="6" height="6" fill="#ffd700"><title>0x005be9b0 RoboWakeUp: 100%</title></rect>
