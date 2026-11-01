@@ -12,6 +12,11 @@ struct task *SandObjSetChildTask(const struct TaskInfo *info_p, void *param_p)
 	return MirenSetChildTask(DAT_060cd388, info_p, param_p);
 }
 
+// STUB: SADX 0x007e7170
+void initObject(struct task *task_p, const void *param_p)
+{
+}
+
 // FUNCTION: SADX 0x007e7220
 struct task *SandObjSetManageTask()
 {
