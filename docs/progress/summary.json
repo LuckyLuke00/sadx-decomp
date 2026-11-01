@@ -50091,6 +50091,14 @@
    "library": false
   },
   {
+   "address": "0x0070de30",
+   "name": "E101R_CrushLight",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0070de60",
    "name": "E101R_Bomb",
    "accuracy": 1.0,
@@ -95078,6 +95086,13 @@
    "library": false
   },
   {
+   "address": "0x02c0eb88",
+   "name": "cl_data",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02c0eba8",
    "name": "animtable_waveaccume",
    "size": 220,
@@ -101275,5 +101290,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c156211e54c7e3e3ecb8fd4d77f8bfcc94946394af1e9c5eea7394d259bdb434"
+ "inputs_sha256": "d65a4a6a4f3e6744bbf548b04fbf76a3de357715b239910565ff19ddf0b9d96f"
 }
