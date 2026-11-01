@@ -68869,9 +68869,9 @@
   {
    "address": "0x008cbd30",
    "name": "cartSnatchPlayerInfo",
-   "accuracy": 0.5,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69117,9 +69117,9 @@
   {
    "address": "0x008d1380",
    "name": "cartColliRangeChange",
-   "accuracy": 0.27586206896551724,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -101213,5 +101213,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "31cf2d6c141a07749d2a5b07f2e912b99b77ef85c6ff40557139a4bd60fd3358"
+ "inputs_sha256": "31816d88360e34fae1e910ae46c300caa5e484f9d3790eca86d1edb82fc4398c"
 }

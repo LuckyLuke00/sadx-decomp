@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_060dfee0;
 extern struct CART_PLAYER_PARAMETER CartParameter[1];
 extern int DAT_060dfeac;
 extern struct obj object_b_cart_cart_cart[];
@@ -47,9 +48,17 @@ void SetCartBonusAdd(float spd)
 	*(float *)((char *)DAT_060dfeb4 + 0x7c) = spd;
 }
 
-// STUB: SADX 0x008cbd30
+// FUNCTION: SADX 0x008cbd30
 void cartSnatchPlayerInfo(struct task *tp)
 {
+	if ((DAT_05baf368[0]->cwp->flag & 1) != 0)
+	{
+		DAT_060dfee0 = 1;
+	}
+	else
+	{
+		DAT_060dfee0 = 0;
+	}
 }
 
 // STUB: SADX 0x008cccc0
@@ -330,9 +339,14 @@ void FUN_008d1350(int param_1, char *param_2)
 	}
 }
 
-// STUB: SADX 0x008d1380
+// FUNCTION: SADX 0x008d1380
 void cartColliRangeChange(struct task *tp)
 {
+	SetMleriRangeRad(2000.0f);
+	if (tp->twp->mode++ > 10)
+	{
+		FreeTask(tp);
+	}
 }
 
 // FUNCTION: SADX 0x008d13d0
