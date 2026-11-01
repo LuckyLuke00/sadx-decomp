@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026de828
+static struct CCL_INFO ccinfo[2];
+
 static void ObjectMain(struct task *tp);
 static void ObjectDisplay(struct task *tp);
 
@@ -23,12 +27,12 @@ static void ObjectMain(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0068f320
+// FUNCTION: SADX 0x0068f320
 void ObjectSSTwbdoor(struct task *tp)
 {
 	if (CheckRangeOut(tp) == 0)
 	{
-		CCL_Init(tp, (struct CCL_INFO *)0x26de828, 2, 4);
+		CCL_Init(tp, ccinfo, 2, 4);
 		tp->exec = ObjectMain;
 		tp->disp = ObjectDisplay;
 	}

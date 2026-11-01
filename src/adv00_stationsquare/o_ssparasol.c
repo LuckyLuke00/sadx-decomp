@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026ddec8
+static struct CCL_INFO ccinfo[1];
+
 static void ObjectMain(struct task *tp);
 static void ObjectDisplay(struct task *tp);
 
@@ -39,12 +43,12 @@ static void ObjectMain(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0068af80
+// FUNCTION: SADX 0x0068af80
 void ObjectSSParasol(struct task *tp)
 {
 	if (CheckRangeOut(tp) == 0)
 	{
-		CCL_Init(tp, (struct CCL_INFO *)0x26ddec8, 1, 4);
+		CCL_Init(tp, ccinfo, 1, 4);
 		tp->exec = ObjectMain;
 		tp->disp = ObjectDisplay;
 	}

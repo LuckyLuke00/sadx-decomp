@@ -1,5 +1,8 @@
 #include "decls.h"
 
+// GLOBAL: SADX 0x026dd970
+static struct CCL_INFO object_c_info[1];
+
 // FUNCTION: SADX 0x0068a220
 void SakuDisp(struct task *tp)
 {
@@ -100,4 +103,17 @@ void MatoInit(struct task *tp)
 // STUB: SADX 0x0068a800
 void E_MatoExec(struct task *tp)
 {
+}
+
+// FUNCTION: SADX 0x0068a8c0
+void E_MatoInit(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	EnemyInitialize(tp, var1);
+	var1->mode = 0;
+	CCL_Init(tp, object_c_info, 1, 2);
+	tp->exec = E_MatoExec;
+	tp->disp = E_MatoDisp;
+	tp->dest = FUN_00850d10;
 }
