@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int DAT_05b2c9f4;
+extern void *DAT_05b9326c;
+long AL_GetCurrLandAttr(struct NJS_POINT3 *pPos);
 void AL__EditCancelMode(struct task *tp);
 extern signed char DAT_05b92ea0;
 extern unsigned char DAT_05b92e4c;
@@ -93,9 +96,16 @@ void AL_PartsBTLEdit(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00445e40
+// FUNCTION: SADX 0x00445e40
 void AL_LandmarkEdit(struct task *tp)
 {
+	if (DAT_05b92e4c & 2)
+	{
+		AL__EditCancelMode(tp);
+	}
+	njPrintC(0x190014, "LANDMARK");
+	njPrintD(0x230014, AL_GetCurrLandAttr(&DAT_05baf368[0]->pos), 2);
+	njPrintColor(0xffffffff);
 }
 
 // FUNCTION: SADX 0x00445ea0
@@ -166,7 +176,58 @@ void AL_LifeEdit(struct task *tp)
 {
 }
 
-// STUB: SADX 0x004463e0
+// FUNCTION: SADX 0x004463e0
 void AL_JingleEdit(struct task *tp)
 {
+	struct taskwk *var1;
+	int var2;
+	unsigned char var3;
+
+	var1 = tp->twp;
+	if (DAT_05b92e4c & 2)
+	{
+		AL__EditCancelMode(tp);
+	}
+	if (*(unsigned char *)((char *)var1 + 1) == 0)
+	{
+		var2 = 0;
+		DAT_05b2c9f4 = var2;
+		*(unsigned char *)((char *)var1 + 1) = 1;
+	}
+	else
+	{
+		var2 = DAT_05b2c9f4;
+	}
+	var3 = DAT_05b92e4c;
+	if (var3 & 0x40)
+	{
+		if (var2 > 0)
+		{
+			var2 = var2 - 1;
+		}
+		else
+		{
+			var2 = 0xc;
+		}
+		DAT_05b2c9f4 = var2;
+	}
+	if ((signed char)var3 < 0)
+	{
+		if (var2 < 0xc)
+		{
+			var2 = var2 + 1;
+		}
+		else
+		{
+			var2 = 0;
+		}
+		DAT_05b2c9f4 = var2;
+	}
+	if (*(unsigned char *)((char *)DAT_05b9326c + 0x10) & 4)
+	{
+		Jingle_Play(var2 + 0x70);
+	}
+	njPrintC(0xa0014, "JINGLE No.");
+	njPrintD(0x140014, DAT_05b2c9f4, 4);
+	njPrintC(0x1a0014, szJingleName[DAT_05b2c9f4]);
 }

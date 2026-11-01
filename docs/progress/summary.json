@@ -4236,9 +4236,9 @@
   {
    "address": "0x00438030",
    "name": "AL_DrawRectangle2",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4820,17 +4820,17 @@
   {
    "address": "0x0043ce60",
    "name": "AL_KW_GetPlayerLike",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0043ce80",
    "name": "AL_KW_GetPlayerFear",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5596,9 +5596,9 @@
   {
    "address": "0x0043ee00",
    "name": "FUN_0043ee00",
-   "accuracy": 0.041666666666666664,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -5618,9 +5618,17 @@
    "library": false
   },
   {
+   "address": "0x0043ef90",
+   "name": "FUN_0043ef90",
+   "accuracy": 0.04081632653061224,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0043f000",
    "name": "FUN_0043f000",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 0.08,
    "effective": false,
    "stub": true,
    "library": false
@@ -5645,6 +5653,14 @@
    "address": "0x0043f0e0",
    "name": "FUN_0043f0e0",
    "accuracy": 0.25,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0043f100",
+   "name": "FUN_0043f100",
+   "accuracy": 0.021739130434782608,
    "effective": false,
    "stub": true,
    "library": false
@@ -5820,9 +5836,9 @@
   {
    "address": "0x0043fb50",
    "name": "FUN_0043fb50",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6076,9 +6092,9 @@
   {
    "address": "0x00441c20",
    "name": "FUN_00441c20",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6266,6 +6282,14 @@
    "library": false
   },
   {
+   "address": "0x004428a0",
+   "name": "AL_GetCurrLandAttr",
+   "accuracy": 0.013513513513513514,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00442c50",
    "name": "AL_ConfirmSaveStart",
    "accuracy": 0.14285714285714285,
@@ -6388,9 +6412,9 @@
   {
    "address": "0x00443bc0",
    "name": "AL_SetRacePlayed",
-   "accuracy": 0.3333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6452,9 +6476,9 @@
   {
    "address": "0x00443c50",
    "name": "AL_SetCourseChallengedLevel",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6516,9 +6540,9 @@
   {
    "address": "0x00445e40",
    "name": "AL_LandmarkEdit",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6540,9 +6564,9 @@
   {
    "address": "0x004463e0",
    "name": "AL_JingleEdit",
-   "accuracy": 0.03571428571428571,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6932,9 +6956,9 @@
   {
    "address": "0x0044ca80",
    "name": "AlMsgWarnExit",
-   "accuracy": 0.06451612903225806,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7068,9 +7092,9 @@
   {
    "address": "0x0044e0e0",
    "name": "AlMsgSelectSetCStr",
-   "accuracy": 0.08333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9132,9 +9156,9 @@
   {
    "address": "0x0046c350",
    "name": "ALO_CreateNestFlower",
-   "accuracy": 0.03773584905660377,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -10324,6 +10348,22 @@
   {
    "address": "0x0047a550",
    "name": "_alg_garden02_mr_night_epilog",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0047a710",
+   "name": "FExec(5)",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0047a740",
+   "name": "ALG_G02_WaterfallCreate",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -37908,7 +37948,7 @@
   },
   {
    "address": "0x005e8530",
-   "name": "FExec(5)",
+   "name": "FExec(6)",
    "accuracy": 0.06349206349206349,
    "effective": false,
    "stub": true,
@@ -41472,6 +41512,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0067ced0",
+   "name": "chDrawBillboardColorRectangle",
+   "accuracy": 0.04054054054054054,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -50397,9 +50445,9 @@
   {
    "address": "0x00715370",
    "name": "ALCAM_ModeSystem",
-   "accuracy": 0.05128205128205128,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -89766,9 +89814,23 @@
    "library": false
   },
   {
+   "address": "0x01e5a908",
+   "name": "TreeInitSaveInfoDX",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x01e5f844",
    "name": "value",
    "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x01e5fa2c",
+   "name": "szJingleName",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -90657,6 +90719,13 @@
   {
    "address": "0x025d4f3c",
    "name": "boolCameraCollision",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025d4f40",
+   "name": "DAT_025d4f40",
    "size": 4,
    "match": false,
    "library": false
@@ -100135,5 +100204,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "353368c1f8fadcf2558f43bbd9c0558e0896422785cda63f6c7dd4c42be94688"
+ "inputs_sha256": "992c4a66914bf2d56f78026e6e6dc30ae8a91d53ba2e7ca2428bcfcbc4db7639"
 }

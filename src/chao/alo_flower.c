@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 extern int DAT_05b9d838;
 extern struct cnkobj object_breedingflower00_breedingflower00[1];
 extern struct cnkobj object_breedingflower01_breedingflower01[1];
@@ -72,10 +73,32 @@ void ALO_NestFlowerDisplayer(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0046c350
+// FUNCTION: SADX 0x0046c350
 struct task *ALO_CreateNestFlower(struct task *pNestTask, struct NJS_POINT3 *pPos)
 {
-	return (struct task *)0;
+	struct task *var1;
+	struct taskwk *var2;
+	float var3;
+	int var4;
+
+	var1 = CreateChildTask(2, ALO_NestFlowerExecutor, pNestTask);
+	var1->disp = ALO_NestFlowerDisplayer;
+	var1->dest = (void (*)(struct task *))FUN_007d21b0;
+	var2 = var1->twp;
+	var2->pos = *pPos;
+	var3 = (float)rand() * 3.0517578125e-05;
+	var4 = (int)(var3 * 360.0 * 65536.0 / 360.0);
+	var2->ang.y = var4;
+	var3 = (float)rand() * 3.0517578125e-05;
+	if (var3 < 0.5f)
+	{
+		var2->smode = 0;
+	}
+	else
+	{
+		var2->smode = 1;
+	}
+	return var1;
 }
 
 // FUNCTION: SADX 0x0046c570

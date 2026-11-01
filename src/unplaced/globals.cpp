@@ -533,8 +533,14 @@ struct AL_ST_POS AL_StartPosMR_Warp;
 // GLOBAL: SADX 0x01e5a8e8
 struct AL_ST_POS AL_StartPosMR_Odekake;
 
+// GLOBAL: SADX 0x01e5a908
+struct TREE_SAVE_INFO TreeInitSaveInfoDX;
+
 // GLOBAL: SADX 0x01e5f844
 float value;
+
+// GLOBAL: SADX 0x01e5fa2c
+char *szJingleName[13];
 
 // GLOBAL: SADX 0x01e679c0
 long gsChaoLevel;
@@ -904,6 +910,9 @@ unsigned char DAT_025d4cad;
 
 // GLOBAL: SADX 0x025d4f3c
 long boolCameraCollision;
+
+// GLOBAL: SADX 0x025d4f40
+float DAT_025d4f40;
 
 // GLOBAL: SADX 0x025d59f0
 long action_button;
@@ -4616,6 +4625,9 @@ int DAT_05b288a4;
 // GLOBAL: SADX 0x05b288a8
 char DAT_05b288a8[1];
 
+// GLOBAL: SADX 0x05b288ab
+char DAT_05b288ab[5];
+
 // GLOBAL: SADX 0x05b288b0
 char DAT_05b288b0[5];
 
@@ -4631,17 +4643,26 @@ char DAT_05b289d3;
 // GLOBAL: SADX 0x05b289d4
 char DAT_05b289d4;
 
+// GLOBAL: SADX 0x05b2c9f4
+int DAT_05b2c9f4;
+
 // GLOBAL: SADX 0x05b2ca04
 int DAT_05b2ca04;
 
 // GLOBAL: SADX 0x05b2ca08
 char DAT_05b2ca08[2];
 
+// GLOBAL: SADX 0x05b2ca48
+struct task *DAT_05b2ca48;
+
 // GLOBAL: SADX 0x05b2ca50
 char DAT_05b2ca50[1];
 
 // GLOBAL: SADX 0x05b2ca64
 int DAT_05b2ca64[1];
+
+// GLOBAL: SADX 0x05b2cab0
+int DAT_05b2cab0;
 
 // GLOBAL: SADX 0x05b2cae4
 void *DAT_05b2cae4;
@@ -4663,6 +4684,9 @@ int DAT_05b31398;
 
 // GLOBAL: SADX 0x05b313a0
 struct task *DAT_05b313a0;
+
+// GLOBAL: SADX 0x05b313bc
+char DAT_05b313bc[64];
 
 // GLOBAL: SADX 0x05b314b8
 int DAT_05b314b8;
@@ -5548,6 +5572,9 @@ int DAT_05b93248;
 
 // GLOBAL: SADX 0x05b93264
 unsigned int *DAT_05b93264;
+
+// GLOBAL: SADX 0x05b9326c
+void *DAT_05b9326c;
 
 // GLOBAL: SADX 0x05b93270
 int DAT_05b93270;
@@ -8107,6 +8134,9 @@ int DAT_060cae30;
 
 // GLOBAL: SADX 0x060cae34
 long DAT_060cae34;
+
+// GLOBAL: SADX 0x060cae38
+float DAT_060cae38;
 
 // GLOBAL: SADX 0x060cae58
 float DAT_060cae58;

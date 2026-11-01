@@ -13,16 +13,20 @@ void AL_KW_InitPlayerKnowledgeDX(struct task *pChaoTask)
 {
 }
 
-// STUB: SADX 0x0043ce60
+// FUNCTION: SADX 0x0043ce60
 signed char AL_KW_GetPlayerLike(struct task *pChaoTask)
 {
-	return (signed char)0;
+	struct CHAO_PARAM_GC *var1 = (struct CHAO_PARAM_GC *)(*(int **)((char *)pChaoTask->twp + 0x6c));
+	unsigned short var2 = AL_KW_GetPlayerCharacterNum();
+	return *(signed char *)((char *)var1 + 0x4fc + var2 * 6);
 }
 
-// STUB: SADX 0x0043ce80
+// FUNCTION: SADX 0x0043ce80
 unsigned char AL_KW_GetPlayerFear(struct task *pChaoTask)
 {
-	return (unsigned char)0;
+	struct CHAO_PARAM_GC *var1 = (struct CHAO_PARAM_GC *)(*(int **)((char *)pChaoTask->twp + 0x6c));
+	unsigned short var2 = AL_KW_GetPlayerCharacterNum();
+	return *(unsigned char *)((char *)var1 + 0x4fd + var2 * 6);
 }
 
 // STUB: SADX 0x0043cea0

@@ -304,6 +304,7 @@ struct THahenInfo;
 struct thread;
 struct TitleMenuWk;
 struct TitleNewWk;
+struct TREE_SAVE_INFO;
 struct TrialActSelWk;
 struct TvSettingWk;
 struct u4s;
@@ -3939,6 +3940,22 @@ struct THahenInfo {
 };
 static_assert(sizeof(THahenInfo) == 0x4, "sizeof THahenInfo");
 static_assert(offsetof(THahenInfo, Obj) == 0x0, "THahenInfo::Obj");
+
+struct TREE_SAVE_INFO {
+    unsigned char kind;
+    unsigned char state;
+    unsigned char param;
+    unsigned char water;
+    signed char FruitGrowth[3];
+    unsigned char angy_pos;
+};
+static_assert(sizeof(TREE_SAVE_INFO) == 0x8, "sizeof TREE_SAVE_INFO");
+static_assert(offsetof(TREE_SAVE_INFO, kind) == 0x0, "TREE_SAVE_INFO::kind");
+static_assert(offsetof(TREE_SAVE_INFO, state) == 0x1, "TREE_SAVE_INFO::state");
+static_assert(offsetof(TREE_SAVE_INFO, param) == 0x2, "TREE_SAVE_INFO::param");
+static_assert(offsetof(TREE_SAVE_INFO, water) == 0x3, "TREE_SAVE_INFO::water");
+static_assert(offsetof(TREE_SAVE_INFO, FruitGrowth) == 0x4, "TREE_SAVE_INFO::FruitGrowth");
+static_assert(offsetof(TREE_SAVE_INFO, angy_pos) == 0x7, "TREE_SAVE_INFO::angy_pos");
 
 struct TaskInfo {
     unsigned int size;

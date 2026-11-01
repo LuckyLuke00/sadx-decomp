@@ -1,4 +1,5 @@
 #include "decls.h"
+extern char DAT_05b288ab[5];
 extern char DAT_05b289d3;
 extern char DAT_05b289d2;
 extern char DAT_05b288a8[];
@@ -48,9 +49,13 @@ void AL_SetRaceNew(enum eRaceNum num)
 	}
 }
 
-// STUB: SADX 0x00443bc0
+// FUNCTION: SADX 0x00443bc0
 void AL_SetRacePlayed(enum eRaceNum num)
 {
+	if ((unsigned int)num <= 2)
+	{
+		DAT_05b288a8[num] = 3;
+	}
 }
 
 // FUNCTION: SADX 0x00443be0
@@ -95,9 +100,23 @@ long AL_GetCourseLevel()
 	return (long)(char)DAT_05b289d3;
 }
 
-// STUB: SADX 0x00443c50
+// FUNCTION: SADX 0x00443c50
 void AL_SetCourseChallengedLevel(enum eCourseNumDX num, long lev)
 {
+	int var1;
+	long var2;
+
+	var1 = (int)num;
+	var2 = lev;
+	if (var2 <= (long)(char)DAT_05b288ab[var1])
+		return;
+	if (var1 < 0)
+		return;
+	if (var1 > 4)
+		return;
+	if (var2 > 5)
+		return;
+	DAT_05b288ab[var1] = (char)var2;
 }
 
 // FUNCTION: SADX 0x00443c80

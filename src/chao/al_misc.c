@@ -6,9 +6,15 @@ float ___njUnitVector(struct NJS_POINT3 *p)
 	return (float)0;
 }
 
-// STUB: SADX 0x00438030
+// FUNCTION: SADX 0x00438030
 void AL_DrawRectangle2(int x1, int y1, int x2, int y2, unsigned long color, float depth)
 {
+	union NJS_COLOR var1;
+	var1.argb.a = (unsigned char)(color >> 0x18);
+	var1.argb.r = (unsigned char)(color >> 0x10);
+	var1.argb.g = (unsigned char)(color >> 8);
+	var1.argb.b = (unsigned char)color;
+	chDrawBillboardColorRectangle(var1, (float)x1, (float)y1, (float)x2, (float)y2, depth);
 }
 
 // FUNCTION: SADX 0x00438090

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct task *DAT_05b2ca48;
+extern int DAT_05b2cab0;
 extern char DAT_05b2ca50[];
 void FUN_0044c7e0(struct task *param_1);
 extern int DAT_05b2ca64[1];
@@ -70,7 +72,32 @@ void AlMsgWarnInit()
 {
 }
 
-// STUB: SADX 0x0044ca80
+// FUNCTION: SADX 0x0044ca80
 void AlMsgWarnExit()
 {
+	char *pcVar1;
+
+	DAT_05b2cab0 = DAT_05b2cab0 + -1;
+	if (DAT_05b2cab0 == 0)
+	{
+		pcVar1 = (char *)&DAT_05b2ca50;
+		do
+		{
+			if (*pcVar1 != '\0')
+			{
+				AlMsgWinDelete(*(struct SAlMsgWin **)(pcVar1 + 0x14));
+				Free(*(void **)(pcVar1 + 0x14));
+				*pcVar1 = '\0';
+			}
+			pcVar1 = pcVar1 + 0x18;
+		}
+		while ((int)pcVar1 < (int)(char *)&DAT_05b2cab0);
+		if (DAT_05b2ca48 != 0)
+		{
+			AL_WaitForSaveHookRemove(DAT_05b2ca48);
+			FreeTask(DAT_05b2ca48);
+			DAT_05b2ca48 = 0;
+		}
+	}
+	return;
 }

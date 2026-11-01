@@ -1,4 +1,7 @@
 #include "decls.h"
+extern "C" int rand(void);
+void FUN_0043ef90();
+void FUN_0043f100();
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 void FUN_0043ede0();
 void FUN_0043ee00();
@@ -32,9 +35,40 @@ void FUN_0043ede0()
 	var1[1] = chRandomU32();
 }
 
-// STUB: SADX 0x0043ee00
+// FUNCTION: SADX 0x0043ee00
 void FUN_0043ee00()
 {
+	int var1;
+	int var2;
+	int var3;
+	int var4;
+	int var5;
+	float var6;
+	float var7;
+	struct TREE_SAVE_INFO *var8;
+	var1 = 0;
+	while (var1 < 0x78)
+	{
+		var2 = FUN_0043ed90();
+		var8 = (struct TREE_SAVE_INFO *)((char *)var2 + var1 + 0x1c);
+		var3 = 5;
+		while (var3 != 0)
+		{
+			*var8 = TreeInitSaveInfoDX;
+			var4 = rand();
+			var6 = (float)var4 * 3.0517578125e-05f;
+			var7 = var6 * 79.9999008178711f;
+			var8->FruitGrowth[0] = (signed char)var7;
+			var5 = rand();
+			var6 = (float)var5 * 3.0517578125e-05f;
+			var7 = var6 * 99.9999008178711f;
+			var8->FruitGrowth[1] = (signed char)var7;
+			var8->FruitGrowth[2] = -10;
+			var8 = (struct TREE_SAVE_INFO *)((char *)var8 + 8);
+			var3 = var3 - 1;
+		}
+		var1 = var1 + 0x28;
+	}
 }
 
 // STUB: SADX 0x0043eea0
@@ -48,10 +82,12 @@ void AL_SetAnotherGardenLoaded()
 	DAT_05aeb698 = 1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0043f000
 void FUN_0043f000()
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x0043f060
 void AL_ExtractKinderSaveInfo()
@@ -288,9 +324,17 @@ void FUN_0043fae0()
 {
 }
 
-// STUB: SADX 0x0043fb50
+// FUNCTION: SADX 0x0043fb50
 void FUN_0043fb50()
 {
+	FUN_0043ef90();
+	FUN_0043f8e0();
+	FUN_0043f000();
+	if (AL_GetStageNumber() - 1 == 0)
+	{
+		FUN_0043f0a0();
+	}
+	FUN_0043f100();
 }
 
 // STUB: SADX 0x0043fb80

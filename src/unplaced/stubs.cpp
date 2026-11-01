@@ -350,6 +350,16 @@ void AL__EditCancelMode(struct task *)
 {
 }
 
+// STUB: SADX 0x0043ef90
+void FUN_0043ef90()
+{
+}
+
+// STUB: SADX 0x0043f100
+void FUN_0043f100()
+{
+}
+
 // STUB: SADX 0x0043f290
 long AL_CheckSaveDataCrc2(struct CHAO_GARDEN_INFO *info)
 {
@@ -383,6 +393,12 @@ void AL_InitLandMark()
 
 // STUB: SADX 0x004427b0
 long AL_GetRandomAttrPos(enum eLANDMARK_ATTR attr, struct NJS_POINT3 *pPos)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x004428a0
+long AL_GetCurrLandAttr(struct NJS_POINT3 *)
 {
 	return (long)0;
 }
@@ -2289,6 +2305,11 @@ int FUN_00634f10()
 
 // STUB: SADX 0x006411b0
 void FUN_006411b0(int, int)
+{
+}
+
+// STUB: SADX 0x0067ced0
+void chDrawBillboardColorRectangle(union NJS_COLOR,float,float,float,float,float)
 {
 }
 
