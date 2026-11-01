@@ -3041,6 +3041,7 @@ void ObjectSkydeck_cannon_s_Draw(struct task *);
 void ObjectSkydeck_cannon_s_Exec(struct task *);
 void ObjectSkydeck_cannon_s_Init(struct task *tp);
 void ObjectSkydeck_cannon_b_Init(struct task *tp);
+void ObjectSkydeck_eff_smallbomb1_Exec(struct task *tp);
 void ObjectSkydeck_eff_bomb1_Init(struct task *tp);
 void FUN_0084be30(struct task *param_1);
 void ObjectSkydeck_OCM(struct task *tp);

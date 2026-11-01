@@ -3374,6 +3374,11 @@ void ObjectSkydeck_cannon_s_Exec(struct task *)
 {
 }
 
+// STUB: SADX 0x0084b9c0
+void ObjectSkydeck_eff_smallbomb1_Exec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0084dc60
 void ObjectSkydeck_enegymissile1_Init(struct task *tp)
 {

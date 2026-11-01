@@ -1093,6 +1093,7 @@ extern struct CCL_INFO object_cannon_m_info[];
 extern struct CCL_INFO object_cannon_s2_info[];
 extern struct CCL_INFO object_cannon_s1_info[];
 extern struct CCL_INFO object_cannon_s_info[1];
+extern struct CCL_INFO object_eff_smallbomb1_info[];
 extern struct obj object_l01_wt_hebimizu_wt_hebimizu[];
 extern struct NJS_TEXLIST texlist_sw_panel;
 extern struct obj object_hebi_asiba01_hebi_asiba01_hebi_asiba01[];

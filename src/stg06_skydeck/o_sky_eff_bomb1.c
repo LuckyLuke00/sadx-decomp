@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct CCL_INFO object_eff_smallbomb1_info[];
 
 // STUB: SADX 0x0084bb10
 void EffBombThrowPlayer(struct taskwk *twp)
@@ -12,9 +13,24 @@ void ObjectSkydeck_eff_bomb1_Init(struct task *tp)
 }
 #pragma optimize("", on)
 
-// STUB: SADX 0x0084be30
+// FUNCTION: SADX 0x0084be30
 void FUN_0084be30(struct task *param_1)
 {
+	struct taskwk *var1;
+
+	if (CheckRangeOutWithR(param_1, 2250100.0f) == 0)
+	{
+		var1 = param_1->twp;
+		if (FUN_004c39c0(param_1) == 0)
+		{
+			CCL_Init(param_1, &object_eff_smallbomb1_info[0], 1, 4);
+		}
+		param_1->exec = ObjectSkydeck_eff_smallbomb1_Exec;
+		var1->value.f = 1.0f;
+		var1->wtimer = 0;
+		var1->counter.f = 0.0f;
+		var1->mode = 1;
+	}
 }
 
 // FUNCTION: SADX 0x0084be90

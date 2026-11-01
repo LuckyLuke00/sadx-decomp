@@ -60643,6 +60643,14 @@
    "library": false
   },
   {
+   "address": "0x0084b9c0",
+   "name": "ObjectSkydeck_eff_smallbomb1_Exec",
+   "accuracy": 0.019230769230769232,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0084bb10",
    "name": "EffBombThrowPlayer",
    "accuracy": 0.02631578947368421,
@@ -60661,9 +60669,9 @@
   {
    "address": "0x0084be30",
    "name": "FUN_0084be30",
-   "accuracy": 0.05714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -97658,6 +97666,13 @@
    "library": false
   },
   {
+   "address": "0x041ecf40",
+   "name": "object_eff_smallbomb1_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0435db0c",
    "name": "object_l01_wt_hebimizu_wt_hebimizu",
    "size": 52,
@@ -101335,5 +101350,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6f7167890e39ab6eb2c1282cc6bead2b61b99577892d48c50cf4fcf2e86ff4b0"
+ "inputs_sha256": "ef8da43a9c8624dd6f806bf331239737d37ec1d11c8b45ebc914947b85a000af"
 }
