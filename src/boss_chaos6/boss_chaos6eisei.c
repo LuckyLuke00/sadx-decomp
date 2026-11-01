@@ -1,8 +1,20 @@
 #include "decls.h"
+extern int DAT_060c3540[16];
 
-// STUB: SADX 0x006f9380
+// FUNCTION: SADX 0x006f9380
 void objExit(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	EraseDolbyCtrl(var1);
+	if (var1->value.b[0] >= 0)
+	{
+		DAT_060c3540[var1->value.b[0]] = 0;
+	}
+	*(short *)(DAT_060c3540 + 7) -= 1;
+	if (*(short *)(DAT_060c3540 + 7) < 0)
+	{
+		*(short *)(DAT_060c3540 + 7) = 0;
+	}
 }
 
 // FUNCTION: SADX 0x006f95e0

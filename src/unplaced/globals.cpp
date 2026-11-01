@@ -8108,6 +8108,9 @@ float DAT_060c3358;
 // GLOBAL: SADX 0x060c335c
 float DAT_060c335c;
 
+// GLOBAL: SADX 0x060c3540
+int DAT_060c3540[16];
+
 // GLOBAL: SADX 0x060c35f0
 unsigned char DAT_060c35f0;
 

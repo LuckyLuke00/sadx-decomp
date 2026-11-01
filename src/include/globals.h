@@ -2708,6 +2708,7 @@ extern unsigned char DAT_060c3350;
 extern long DAT_060c3354;
 extern float DAT_060c3358;
 extern float DAT_060c335c;
+extern int DAT_060c3540[16];
 extern unsigned char DAT_060c35f0;
 extern unsigned char DAT_060c3645;
 extern struct C7ACAM_PARAM *DAT_060c3654;
