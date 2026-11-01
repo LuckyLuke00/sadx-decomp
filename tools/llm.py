@@ -29,7 +29,8 @@ N tries that repeated an earlier try), --give-up (the run ends after
 GIVE_UP_STALE tries without a new best, or after STUCK_TRIES when the best is below
 GIVE_UP_BELOW%), --stop-below P (the run ends after STOP_AFTER tries when the best is below P%,
 or when nothing built), --try-tokens N,N,... (the reply limit of each try in turn, the last one for
-the tries after it; a thinking try keeps its own), --stale-built-only (a try that does not build
+the tries after it, in place of one that grows with the function's size; a thinking try keeps its own),
+--stale-built-only (a try that does not build
 does not count toward STUCK_TRIES, nor toward --give-up), --similar-examples (the first example is the matched function
 whose instructions are most like the function's), --prefix-feedback (the feedback says how many instructions
 match from the function's start before the first difference), --refuse-fakematch (a 100% try with a line that
@@ -113,6 +114,7 @@ ERROR_LINES = 40
 STUCK_TRIES = 3  # tries without a new best before the model thinks
 GIVE_UP_STALE, GIVE_UP_BELOW = 4, 60  # --give-up ends a run at this many stale tries, or at STUCK_TRIES below this %
 STOP_AFTER = 2  # --stop-below looks at the best after this many tries
+REPLY_TOKENS_PER_BYTE, REPLY_MAX_TOKENS = 3, 4000  # a try's reply limit by its function's size (see reply_limit)
 TEMPERATURE_STEP, TEMPERATURE_MAX = 0.3, 1.2  # added after each repeated attempt
 EXAMPLES = 2
 CAST_ROUNDS = 3  # builds of a try with casts added on the pointer conversions the compiler refused
@@ -1451,12 +1453,14 @@ def thinks(stale, config):
     return stale >= STUCK_TRIES and bool(config["think_on"])
 
 
-def reply_limit(args, config, tries):
-    """The max_tokens of the try after TRIES tries: its --try-tokens value, the last one for the tries after the list,
-    else the config's."""
-    if not args.try_tokens:
-        return config["max_tokens"]
-    return args.try_tokens[min(tries, len(args.try_tokens) - 1)]
+def reply_limit(args, config, tries, size):
+    """The max_tokens of the try after TRIES tries of a function of SIZE bytes: its --try-tokens value, the last one
+    for the tries after the list. Else REPLY_TOKENS_PER_BYTE per byte, at least the config's and at most
+    REPLY_MAX_TOKENS: at 1500, 32% of the tries from 800 to 999 bytes hit it, and a bigger limit lets fewer
+    requests share the server's context."""
+    if args.try_tokens:
+        return args.try_tokens[min(tries, len(args.try_tokens) - 1)]
+    return max(config["max_tokens"], min(REPLY_MAX_TOKENS, REPLY_TOKENS_PER_BYTE * size))
 
 
 def end_live(result):
@@ -1732,8 +1736,9 @@ class Bench:
         return retry, True
 
 
-def solve_function(args, file, address, transcript):
-    """Run the loop for one function. Returns tries, best, wall_s, prompt_tokens, completion_tokens, think_tries, repeats."""
+def solve_function(args, file, address, size, transcript):
+    """Run the loop for the function at ADDRESS of SIZE bytes. Returns tries, best, wall_s, prompt_tokens,
+    completion_tokens, think_tries, repeats."""
     config = args.settings
     started = time.time()
     path = ROOT / file
@@ -1807,7 +1812,7 @@ def solve_function(args, file, address, transcript):
                         live.write(json.dumps([kind, text]) + "\n")
                         live.flush()
 
-                    reply = llmclient.chat({**config, "max_tokens": reply_limit(args, config, tries)}, messages,
+                    reply = llmclient.chat({**config, "max_tokens": reply_limit(args, config, tries, size)}, messages,
                                            temperature, thinking, seed, show)
             except llmclient.ServerError as e:
                 if e.status != 400 or "context" not in str(e).lower():
@@ -1939,7 +1944,7 @@ def solve_and_log(args, file, address, size):
     results = folder / "results.tsv"
     if results.exists() and results.read_text(encoding="utf-8").splitlines()[0].split("\t") != RESULT_FIELDS:
         sys.exit(f"{results} has other columns than {RESULT_FIELDS}: log to another tag")
-    result = solve_function(args, file, address, folder / "transcripts" / f"{address:08x}.jsonl")
+    result = solve_function(args, file, address, size, folder / "transcripts" / f"{address:08x}.jsonl")
     log_result(results, file, address, size, result, args.settings["model"])
     print(f"{hexa(address)}: best {result['best']:.2f}% in {result['tries']} tries "
           f"({result['think_tries']} thinking), {result['wall_s']:.0f}s", flush=True)
