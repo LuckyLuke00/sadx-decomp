@@ -1,9 +1,15 @@
 #include "decls.h"
 extern struct task *DAT_060cc9ac;
 
-// STUB: SADX 0x007d94a0
+// FUNCTION: SADX 0x007d94a0
 void e102effect_init(struct task *tp)
 {
+	struct taskwk *var1;
+	var1 = tp->twp;
+	var1->mode = 0;
+	var1->btimer = 0;
+	tp->exec = e102effect_exec;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }
 
 // FUNCTION: SADX 0x007d94c0

@@ -6,6 +6,21 @@ struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(str
 void *MAlloc(unsigned int size);
 extern int DAT_060cbfb4[10];
 
+// FUNCTION: SADX 0x007d0c40
+void FUN_007d0c40(void)
+{
+	int var1;
+
+	for (var1 = 0; var1 < 10; var1++)
+	{
+		if (DAT_060cbfb4[var1] != 0)
+		{
+			DestroyTask((struct task *)DAT_060cbfb4[var1]);
+			DAT_060cbfb4[var1] = 0;
+		}
+	}
+}
+
 // FUNCTION: SADX 0x007d1460
 static void initMoveObjTask(struct task *p_task)
 {

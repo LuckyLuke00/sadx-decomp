@@ -1718,6 +1718,9 @@ int EBankNumTblE[34];
 // GLOBAL: SADX 0x026d7ec8
 int DAT_026d7ec8;
 
+// GLOBAL: SADX 0x026d8278
+struct NJS_POINT3 *pScale_Adv00[1];
+
 // GLOBAL: SADX 0x026d8348
 struct NJS_TEXLIST texlist_mapSS;
 
@@ -2371,6 +2374,9 @@ struct MJOIN_VERTEX pj2[1];
 
 // GLOBAL: SADX 0x02f8aca4
 struct NJS_TEXLIST texlist_l_sibuki;
+
+// GLOBAL: SADX 0x02f8be00
+struct NJS_ACTION action_l_sibuki[1];
 
 // GLOBAL: SADX 0x02f8c05c
 struct NJS_ACTION action_l_circle[1];
