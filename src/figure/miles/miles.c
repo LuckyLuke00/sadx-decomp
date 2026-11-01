@@ -1,4 +1,7 @@
 #include "decls.h"
+struct taskwk;
+struct NJS_POINT3;
+	struct NJS_POINT3 b;
 extern long action_button;
 void FUN_0053e4f0(struct taskwk *param_1, int param_2, int param_3);
 struct task;
@@ -254,10 +257,32 @@ void FUN_0053ba40(void)
 	*(int *)((char *)*(void **)((char *)DAT_06298ccc + 0x34) + 4) = *(int *)((char *)DAT_06276c34 + 0x18);
 }
 
-// STUB: SADX 0x0053be50
+// FUNCTION: SADX 0x0053be50
 int FUN_0053be50(char param_1, struct NJS_POINT3 *param_2)
 {
-	return (int)0;
+	struct task *local_cg;
+	struct motionwk *local_8g;
+
+	local_cg = CreateElementalTask(2, 2, MilesDirectAhead);
+	if (local_cg != 0)
+	{
+		local_8g = (struct motionwk *)MAlloc(0x88);
+		if (local_8g == 0)
+		{
+			FreeTask(local_cg);
+			return 0;
+		}
+		local_cg->mwp = local_8g;
+		local_cg->twp->counter.b[0] = param_1;
+		*(long *)((char *)local_8g + 0x58) = *(long *)param_2;
+		*(long *)((char *)local_8g + 0x5c) = *(long *)((char *)param_2 + 4);
+		*(long *)((char *)local_8g + 0x60) = *(long *)((char *)param_2 + 8);
+	}
+	else
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // STUB: SADX 0x0053bee0
@@ -293,9 +318,32 @@ void MilesFaceMotion(struct task *tp)
 	tp->exec = MilesFaceMotionExec;
 }
 
-// STUB: SADX 0x0053de50
+// FUNCTION: SADX 0x0053de50
 void MilesFaceMotionExec(struct task *tp)
 {
+	struct motionwk *local_cg;
+	struct taskwk *local_8g;
+
+	local_cg = tp->mwp;
+	local_8g = DAT_05baf368[tp->twp->counter.b[0]];
+	if (local_cg == (struct motionwk *)0x0 || local_8g == (struct taskwk *)0x0)
+	{
+		FreeTask(tp);
+		return;
+	}
+	if (((local_8g->timer.b[3] & 0x20) == 0) || EV_CheckCansel() == 0)
+	{
+		*(void **)((char *)*(void **)((char *)DAT_06298ccc + 0x110) + 0x30) = *(void **)((char *)DAT_06298ccc + 0x114);
+		*(int *)((char *)local_cg + 0x10) = *(int *)((char *)DAT_06298ccc + 0x108);
+		*(int *)((char *)local_cg + 0x14) = *(int *)((char *)DAT_06298ccc + 0x10c);
+	}
+	else
+	{
+		*(void **)((char *)*(void **)((char *)DAT_06298ccc + 0x108) + 0x30) = *(void **)((char *)DAT_06298ccc + 0x10c);
+		*(int *)((char *)local_cg + 0x10) = *(int *)((char *)DAT_06298ccc + 0x110);
+		*(int *)((char *)local_cg + 0x14) = *(int *)((char *)DAT_06298ccc + 0x114);
+	}
+	PlayerFaceMotionExec(tp);
 }
 
 // FUNCTION: SADX 0x0053df40

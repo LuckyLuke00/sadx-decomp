@@ -1526,6 +1526,11 @@ void MilesChangeWaitingMotion(struct taskwk *twp, struct playerwk *pwp)
 {
 }
 
+// STUB: SADX 0x0053bf70
+void MilesDirectAhead(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0053e0e0
 void DisplayMilesSnowBoard(struct task *tp)
 {

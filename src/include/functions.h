@@ -1384,6 +1384,7 @@ void FUN_005360f0(struct taskwk *param_1, struct playerwk *param_2);
 void MilesChangeWaitingMotion(struct taskwk *twp, struct playerwk *pwp);
 void MilesThrowTheObjectOut(struct taskwk *twp, struct playerwk *pwp);
 void FUN_0053ba40(void);
+void MilesDirectAhead(struct task *tp);
 void MilesFaceMotionExec(struct task *tp);
 void MilesSnowBoard(struct task *tp);
 void ExecuteMilesSnowBoard(struct task *tp);
