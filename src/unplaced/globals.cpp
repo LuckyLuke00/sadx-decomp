@@ -3269,6 +3269,9 @@ struct CCL_INFO object_cannon_s1_info[1];
 // GLOBAL: SADX 0x041ecca8
 struct CCL_INFO object_cannon_s_info[1];
 
+// GLOBAL: SADX 0x041ecf40
+struct CCL_INFO object_eff_smallbomb1_info[1];
+
 // GLOBAL: SADX 0x0435db0c
 struct obj object_l01_wt_hebimizu_wt_hebimizu[1];
 
