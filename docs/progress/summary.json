@@ -56493,7 +56493,7 @@
   {
    "address": "0x00806270",
    "name": "RotateObj",
-   "accuracy": 0.04580152671755725,
+   "accuracy": 0.015625,
    "effective": false,
    "stub": true,
    "library": false
@@ -56501,15 +56501,15 @@
   {
    "address": "0x00806440",
    "name": "TornadeInUpObject",
-   "accuracy": 0.037037037037037035,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x008064d0",
    "name": "ObjectWindySetInEff",
-   "accuracy": 0.024691358024691357,
+   "accuracy": 0.02564102564102564,
    "effective": false,
    "stub": true,
    "library": false
@@ -56639,7 +56639,7 @@
    "name": "ObjectWindyHasiEnd",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -56653,9 +56653,9 @@
   {
    "address": "0x00808560",
    "name": "ObjectWindyHaneA",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -56699,6 +56699,14 @@
    "library": false
   },
   {
+   "address": "0x00808e30",
+   "name": "ObjectWindyTateiwaL",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00808e70",
    "name": "ObjectWindyTateiwaS",
    "accuracy": 1.0,
@@ -56733,6 +56741,22 @@
   {
    "address": "0x00809220",
    "name": "ObjectWindyGate",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008092c0",
+   "name": "ObjectWindyIshiA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00809300",
+   "name": "ObjectWindyIshiB",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -56813,6 +56837,22 @@
   {
    "address": "0x00809ed0",
    "name": "ObjectWindyTreeM",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00809f50",
+   "name": "ObjectWindySakuA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00809f90",
+   "name": "ObjectWindySakuB",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -95750,8 +95790,43 @@
    "library": false
   },
   {
+   "address": "0x03b3133c",
+   "name": "object_windobj_saku_a_saku_a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b3184c",
+   "name": "object_windobj_saku_b_saku_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b32804",
    "name": "object_windobj_saku_c_saku_c",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b3805c",
+   "name": "object_windobj_haneobj_a_haneobj_a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b3bdc8",
+   "name": "object_wvobj_sekichu_a_sekichu_a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b3ce0c",
+   "name": "object_wvobj_sekichu_b_sekichu_b",
    "size": 52,
    "match": false,
    "library": false
@@ -95773,6 +95848,13 @@
   {
    "address": "0x03b41280",
    "name": "object_wvobj_busshu_busshu",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b4284c",
+   "name": "object_wvobj_tateiwa_l_tateiwa_l",
    "size": 52,
    "match": false,
    "library": false
@@ -95862,6 +95944,13 @@
    "library": false
   },
   {
+   "address": "0x03b75110",
+   "name": "rotate_model",
+   "size": 40,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b75358",
    "name": "windy_bridge_01",
    "size": 96,
@@ -95890,6 +95979,13 @@
    "library": false
   },
   {
+   "address": "0x03b75508",
+   "name": "object_c_info",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b75568",
    "name": "DAT_03b75568",
    "size": 48,
@@ -95899,6 +95995,13 @@
   {
    "address": "0x03b75598",
    "name": "DAT_03b75598",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b755c8",
+   "name": "DAT_03b755c8",
    "size": 48,
    "match": false,
    "library": false
@@ -95939,6 +96042,13 @@
    "library": false
   },
   {
+   "address": "0x03b75998",
+   "name": "object_c_info",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b75a30",
    "name": "c_info01",
    "size": 96,
@@ -95949,6 +96059,13 @@
    "address": "0x03b75b50",
    "name": "c_info_dummy",
    "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03b75b80",
+   "name": "object_c_info",
+   "size": 96,
    "match": false,
    "library": false
   },
@@ -100645,5 +100762,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b8f8835fe2cbfd8395e3e753fbee82a5212485f5927e86ce12fa4ea1e5e8cf0b"
+ "inputs_sha256": "f46fcd363e2421976cb76f9e809242d7aa02fea905df48051a757e09fb49eefb"
 }

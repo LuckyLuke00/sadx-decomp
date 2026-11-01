@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1426" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,840 of 16,524 game functions done (35.34%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,848 of 16,524 game functions done (35.39%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -354,8 +354,8 @@
 <rect x="14" y="63" width="6" height="6" fill="#b07d00"><title>0x00802bf0 CreateYurehasi: 100%</title></rect>
 <rect x="91" y="63" width="6" height="6" fill="#b07d00"><title>0x00803db0 ObjectBeachWatertube: 100%</title></rect>
 </g>
-<rect x="392" y="356" width="133" height="100" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Windy Valley: 51 of 144 functions done</title></rect>
-<text x="395" y="370" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Windy Valley <tspan font-weight="400" fill="#59636e">13%</tspan></text>
+<rect x="392" y="356" width="133" height="100" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Windy Valley: 59 of 144 functions done</title></rect>
+<text x="395" y="370" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Windy Valley <tspan font-weight="400" fill="#59636e">14%</tspan></text>
 <g transform="translate(395,374)">
 <rect y="0" width="126" height="56" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#b07d00"><title>0x007062a0 exec_Lightning(1): 100%</title></rect>
@@ -368,6 +368,7 @@
 <rect x="28" y="7" width="6" height="6" fill="#b07d00"><title>0x008052e0 ObjectWindySetSmoke: 100%</title></rect>
 <rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x008059d0 TornadeFinish: 100%</title></rect>
 <rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x00805f40 FUN_00805f40: 100%</title></rect>
+<rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x00806440 TornadeInUpObject: 100%</title></rect>
 <rect x="28" y="14" width="6" height="6" fill="#b07d00"><title>0x008067b0 ObjectWatageDisplay: 100%</title></rect>
 <rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x00806d30 ObjectWindyFlowerA: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x00806d50 ObjectWindyFlowerB: 100%</title></rect>
@@ -378,21 +379,28 @@
 <rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x00807e60 ObjectWindyTuriBroken: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x00807ea0 ObjectWindyTuriBroken2: 100%</title></rect>
 <rect x="56" y="21" width="6" height="6" fill="#b07d00"><title>0x00808400 Exec(23): 100%</title></rect>
+<rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x00808490 ObjectWindyHasiEnd: 100%</title></rect>
 <rect x="70" y="21" width="6" height="6" fill="#b07d00"><title>0x00808520 ObjectWindySakuC: 100%</title></rect>
+<rect x="77" y="21" width="6" height="6" fill="#b07d00"><title>0x00808560 ObjectWindyHaneA: 100%</title></rect>
 <rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x008085a0 ObjectWindyHaneB: 100%</title></rect>
 <rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x008085e0 ObjectWindyBigFlootB: 100%</title></rect>
 <rect x="98" y="21" width="6" height="6" fill="#b07d00"><title>0x00808620 DrawBall: 100%</title></rect>
 <rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x00808dd0 ObjectWindyUkisima: 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x00808e10 ObjectWindyBigFloot: 100%</title></rect>
+<rect x="42" y="28" width="6" height="6" fill="#b07d00"><title>0x00808e30 ObjectWindyTateiwaL: 100%</title></rect>
 <rect x="49" y="28" width="6" height="6" fill="#b07d00"><title>0x00808e70 ObjectWindyTateiwaS: 100%</title></rect>
 <rect x="56" y="28" width="6" height="6" fill="#b07d00"><title>0x00808eb0 Draw(4): 100%</title></rect>
 <rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x00808f60 ObjectWindyGrass: 100%</title></rect>
 <rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x00809220 ObjectWindyGate: 100%</title></rect>
+<rect x="84" y="28" width="6" height="6" fill="#b07d00"><title>0x008092c0 ObjectWindyIshiA: 100%</title></rect>
+<rect x="91" y="28" width="6" height="6" fill="#b07d00"><title>0x00809300 ObjectWindyIshiB: 100%</title></rect>
 <rect x="112" y="28" width="6" height="6" fill="#b07d00"><title>0x00809540 DispCube: 100%</title></rect>
 <rect x="119" y="28" width="6" height="6" fill="#b07d00"><title>0x00809620 ColliOnly(struct task *): 100%</title></rect>
 <rect x="0" y="35" width="6" height="6" fill="#b07d00"><title>0x00809660 PieceExec: 100%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#b07d00"><title>0x00809da0 ObjectWindyBrokenObj: 100%</title></rect>
 <rect x="56" y="35" width="6" height="6" fill="#b07d00"><title>0x00809ed0 ObjectWindyTreeM: 100%</title></rect>
+<rect x="63" y="35" width="6" height="6" fill="#b07d00"><title>0x00809f50 ObjectWindySakuA: 100%</title></rect>
+<rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x00809f90 ObjectWindySakuB: 100%</title></rect>
 <rect x="105" y="35" width="6" height="6" fill="#b07d00"><title>0x0080a490 FUN_0080a490: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x0080a810 ObjectWindyYureBri: 100%</title></rect>
 <rect x="56" y="42" width="6" height="6" fill="#b07d00"><title>0x0080bb70 WireClothWindDisplayer: 100%</title></rect>
