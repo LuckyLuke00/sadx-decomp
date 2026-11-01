@@ -2598,6 +2598,7 @@ void End_bomb(struct task *pTask);
 void Exe_bomb(struct task *pTask);
 void Dsp_car_broken(struct task *pTask);
 void FUN_006cc5e0(struct task *param_1);
+void Egm3_laser1ponDraw(struct task *tp);
 void FUN_006cea80(void *param_1);
 extern void egm3CalcObjMatrix(struct obj *, float *);
 void Egm3_bakucolorExit(struct task *tp);

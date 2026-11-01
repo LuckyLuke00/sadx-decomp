@@ -47037,7 +47037,7 @@
   {
    "address": "0x006ce5a0",
    "name": "Egm3_laser1ponDraw",
-   "accuracy": 0.030303030303030304,
+   "accuracy": 0.028985507246376812,
    "effective": false,
    "stub": true,
    "library": false
@@ -47133,9 +47133,9 @@
   {
    "address": "0x006d11a0",
    "name": "FUN_006d11a0",
-   "accuracy": 0.058823529411764705,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -94330,6 +94330,13 @@
    "library": false
   },
   {
+   "address": "0x02833cc4",
+   "name": "egm3_effect_motionlist",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02833cdc",
    "name": "egm3_effect_texlist_list",
    "size": 4,
@@ -101290,5 +101297,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d65a4a6a4f3e6744bbf548b04fbf76a3de357715b239910565ff19ddf0b9d96f"
+ "inputs_sha256": "1d0cf6e71fece216f830bb94db3f461ca622a4c1b1a3f2f4ad970a78f3fd8ea4"
 }
