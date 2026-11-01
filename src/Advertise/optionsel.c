@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_0099b0a8;
 extern struct NJS_TEXLIST texlist_ava_option;
 extern float ScreenRaitoX;
 extern float ScreenRaitoY;
@@ -150,9 +151,26 @@ void FUN_00603060(struct task *param_1, struct ModeSelPrmType *param_2)
 	FUN_006030c0((struct task *)local_8);
 }
 
-// STUB: SADX 0x006030c0
+// FUNCTION: SADX 0x006030c0
 void FUN_006030c0(struct task *param_1)
 {
+	param_1->dest = 0;
+	*(int *)((char *)param_1 + 0x38) = 0;
+	*(float *)((char *)param_1 + 0x34) = 1.0f;
+	*(char *)((char *)param_1 + 0x3c) = 0xff;
+	*(int *)((char *)param_1 + 0x24) = 0;
+	*(char *)((char *)param_1 + 0x28) = 0;
+	*(char *)((char *)param_1 + 0x29) = 0;
+	*(char *)((char *)param_1 + 0x3e) = 0;
+	*(char *)((char *)param_1 + 0x3f) = 0;
+	*(char *)((char *)param_1 + 0x2a) = 0;
+	*(char *)((char *)param_1 + 0x2b) = 0;
+	*(char *)((char *)param_1 + 0x2c) = 0;
+	*(char *)((char *)param_1 + 0x2d) = 0;
+	*(char *)((char *)param_1 + 0x43) = 0;
+	*(char *)((char *)param_1 + 0x42) = 0;
+	*(int *)((char *)param_1 + 0x48) = (int)&DAT_0099b0a8;
+	*(int *)((char *)param_1 + 0x4c) = 6;
 }
 
 // FUNCTION: SADX 0x006032f0

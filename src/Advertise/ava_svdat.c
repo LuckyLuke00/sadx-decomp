@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05cccf54[8];
 extern unsigned short DAT_05cccf3c[8];
 struct SAVE_DATA *GetSDp();
 extern int DAT_05cccef4[7];
@@ -256,8 +257,45 @@ void AvaGetMiniGameBossTime(struct CLEAR_TIME *ctp, enum AvaCharEnum chnum, unsi
 {
 }
 
-// STUB: SADX 0x005a49e0
+// FUNCTION: SADX 0x005a49e0
 long AvaGetMiniGameScore(enum AvaCharEnum chnum, unsigned char stg, int rank)
 {
-	return (long)0;
+	long sc;
+	struct SAVE_DATA *local_8;
+
+	local_8 = GetSDp();
+	if (DAT_05cd14ed == 6)
+	{
+		switch (stg)
+		{
+		case 8:
+			sc = DAT_05cccf54[rank];
+			break;
+		case 0x26:
+			sc = DAT_05cccf54[3 + rank];
+			break;
+		}
+	}
+	else
+	{
+		switch (stg)
+		{
+		case 0x24:
+			sc = *(int *)((char *)local_8 + 0x144 + chnum * 0xc + rank * 4);
+			break;
+		case 0x25:
+			sc = *(int *)((char *)local_8 + 0x15c + chnum * 0xc + rank * 4);
+			break;
+		case 8:
+			sc = *(int *)((char *)local_8 + 0x174 + chnum * 0xc + rank * 4);
+			break;
+		case 0x26:
+			sc = *(int *)((char *)local_8 + 0x18c + chnum * 0xc + rank * 4);
+			break;
+		case 0:
+			sc = *(int *)((char *)local_8 + 0x1a4 + rank * 4);
+			break;
+		}
+	}
+	return sc;
 }
