@@ -123,9 +123,22 @@ void initStartBgm(struct task *task_p, const struct StartBgmParam *param_p)
 	*(int *)((char *)local_8 + 4) = *(int *)((char *)param_p + 4);
 }
 
-// STUB: SADX 0x0056f3f0
+// FUNCTION: SADX 0x0056f3f0
 void execStartBgm(struct task *task_p)
 {
+	struct StartBgmParam *local_8;
+
+	local_8 = (struct StartBgmParam *)task_p->mwp;
+	if (local_8->timer > 0)
+	{
+		local_8->timer--;
+	}
+	else
+	{
+		DAT_05ccdeb0 = NULL;
+		MirenSoundInitBgm(local_8->bgmId);
+		DestroyTask(task_p);
+	}
 }
 
 // FUNCTION: SADX 0x0056f440

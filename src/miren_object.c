@@ -78,10 +78,21 @@ void MirenObjEntryMobileLandObject(struct task *task_p, struct obj *obj_p, long 
 {
 }
 
-// STUB: SADX 0x00571d40
+// FUNCTION: SADX 0x00571d40
 long MirenObjCheckCollisionP(struct taskwk *taskWk_p, float dist)
 {
-	return (long)0;
+	long local_8;
+
+	local_8 = (CheckCollisionP(&taskWk_p->pos, dist) != 0);
+	if (local_8 != 0)
+	{
+		taskWk_p->flag = taskWk_p->flag | 0x100;
+	}
+	else
+	{
+		taskWk_p->flag = taskWk_p->flag & ~0x100;
+	}
+	return local_8;
 }
 
 // FUNCTION: SADX 0x00571da0

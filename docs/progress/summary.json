@@ -580,9 +580,9 @@
   {
    "address": "0x004096f0",
    "name": "FUN_004096f0",
-   "accuracy": 0.058823529411764705,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -14692,9 +14692,9 @@
   {
    "address": "0x004a7d20",
    "name": "DrawMotion",
-   "accuracy": 0.16326530612244897,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -27652,9 +27652,9 @@
   {
    "address": "0x0056f3f0",
    "name": "execStartBgm",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -27972,9 +27972,9 @@
   {
    "address": "0x00571d40",
    "name": "MirenObjCheckCollisionP",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -30381,9 +30381,9 @@
   {
    "address": "0x005989a0",
    "name": "lig_cpyPalette",
-   "accuracy": 0.32,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36941,6 +36941,14 @@
   {
    "address": "0x005db230",
    "name": "FUN_005db230",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005db370",
+   "name": "MirenScoreDisplayScoreTitle",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87352,6 +87360,20 @@
    "library": false
   },
   {
+   "address": "0x00997a48",
+   "name": "DAT_00997a48",
+   "size": 20,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00997a5c",
+   "name": "DAT_00997a5c",
+   "size": 20,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00997b60",
    "name": "seq_item_flag",
    "size": 72,
@@ -92969,6 +92991,13 @@
    "address": "0x026b9c08",
    "name": "sprite_er_hatena",
    "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026b9cfc",
+   "name": "texlist_board_score",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -100920,5 +100949,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "17bf72e40f9f1c768fa6ebe1ec9ca4606007cf7635ecc5cc231e4bf3032e41dc"
+ "inputs_sha256": "d6a90996d32752f8ea446d77bf7781c9d02dd348e9b4c1f7a3b09060bd3fba70"
 }

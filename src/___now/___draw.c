@@ -1,5 +1,9 @@
 #include "decls.h"
 #include <math.h>
+extern void *DAT_05b3dedc;
+extern int DAT_05b3df24;
+extern float DAT_05b39eb0;
+static int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
 extern float DAT_05b3df44;
 void njDrawPolygon3D(NJS_POINT3COL *p, Int n, Uint32 attr);
 void motion_init_param(struct NJS_MOTION *motion, float frame);
@@ -1408,9 +1412,33 @@ void ___DrawModel(struct NJS_MODEL *model)
 	}
 }
 
-// STUB: SADX 0x004a7d20
+// FUNCTION: SADX 0x004a7d20
 void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
 {
+	int local_10s;
+	int local_14h;
+	int local_8g;
+	int local_18;
+	int local_cj;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if ((unsigned long)object < 0x100000 || (unsigned long)motion < 0x100000)
+	{
+		return;
+	}
+	if (isTextureNG(DAT_05b3ded0, 0) != 0)
+	{
+		return;
+	}
+	DAT_05b3dedc = drwMdlFnc;
+	DAT_05b3df24 = flgs;
+	DAT_05b39eb0 = 0.0f;
+	motion_init_param(motion, frame);
+	set_motion_func(object);
+	dsPushPopMotion(object);
+	DAT_05b39eb0 = 0.0f;
 }
 
 // STUB: SADX 0x004a7db0
