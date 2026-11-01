@@ -87,10 +87,18 @@ long AmyCheckStartHandle(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 	return (long)0;
 }
 
-// STUB: SADX 0x0051ca90
+// FUNCTION: SADX 0x0051ca90
 long FUN_0051ca90(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
-	return (long)0;
+	if (((*(char *)((char *)param_3 + 0x82) & 1) == 0) || (DAT_05b932e8[param_1->counter.b[0]].press & (jump_button | action_button)) != 0)
+	{
+		FUN_0051b800(param_1, param_2, param_3);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0051caf0
@@ -263,10 +271,33 @@ void AmySkirtShapeEnd(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00520610
+// FUNCTION: SADX 0x00520610
 long FUN_00520610(long param_1, long *param_2)
 {
-	return (long)0;
+	struct task *local_cg;
+	struct motionwk *local_8g;
+
+	local_cg = CreateElementalTask(2, 2, AmyDirectAhead);
+	if (local_cg != (struct task *)0x0)
+	{
+		local_8g = (struct motionwk *)MAlloc(0x88);
+		if (local_8g == (struct motionwk *)0x0)
+		{
+			FreeTask(local_cg);
+			return 0;
+		}
+		*(struct motionwk **)((char *)local_cg + 0x24) = local_8g;
+		local_cg->twp->counter.b[0] = (unsigned char)param_1;
+		*(int *)((char *)local_8g + 0x58) = param_2[0];
+		*(int *)(*(int *)param_2) = *(int *)(*(int *)param_2) & ~0x2;
+		*(int *)((char *)local_8g + 0x5c) = param_2[1];
+		*(int *)((char *)local_8g + 0x60) = param_2[2];
+	}
+	else
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x00520bd0

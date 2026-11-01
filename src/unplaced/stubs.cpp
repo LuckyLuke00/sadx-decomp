@@ -1496,6 +1496,11 @@ void AmyChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 {
 }
 
+// STUB: SADX 0x005206b0
+void AmyDirectAhead(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00521ac0
 void KnucklesTheEchidna(struct task *tp)
 {
