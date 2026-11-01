@@ -2406,6 +2406,11 @@ void CreamManager(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00694da0
+void BookRegular(struct task *tp)
+{
+}
+
 // STUB: SADX 0x006978b0
 long Object_EgaGun1DrawStat(struct task *tp)
 {

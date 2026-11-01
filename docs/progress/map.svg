@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1438" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,879 of 16,524 game functions done (35.57%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,883 of 16,524 game functions done (35.60%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="604.8,1193.5 611.2,1193.5 612.9,1195 614,1196.6 608,1203.5 602,1196.6 603.1,1195" fill="#4e32f3"/>
 <polygon points="604.8,1193.5 611.2,1193.5 612.9,1195 614,1196.6 602,1196.6 603.1,1195" fill="#ffffff" fill-opacity="0.4"/>
@@ -1295,7 +1295,7 @@
 <polygon points="602,939.6 605.8,939.6 608,946.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="610.2,939.6 614,939.6 608,946.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="604.8,936.5 611.2,936.5 612.9,938 614,939.6 608,946.5 602,939.6 603.1,938" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="618" y="946" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">11%</tspan></text>
+<text x="618" y="946" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Adventure Fields <tspan font-weight="400" fill="#59636e">12%</tspan></text>
 <rect x="603" y="954" width="121" height="230" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Station Square: 137 of 421 functions done</title></rect>
 <text x="606" y="968" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Station Square</text>
 <text x="606" y="983" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">16%</tspan></text>
@@ -1440,8 +1440,8 @@
 <rect x="21" y="182" width="6" height="6" fill="#b07d00"><title>0x006aa880 initSonicSS01: 100%</title></rect>
 <rect x="28" y="182" width="6" height="6" fill="#b07d00"><title>0x006aae80 initAmySS00: 100%</title></rect>
 </g>
-<rect x="726" y="954" width="209" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Carrier: 78 of 364 functions done</title></rect>
-<text x="729" y="968" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Carrier <tspan font-weight="400" fill="#59636e">8%</tspan></text>
+<rect x="726" y="954" width="209" height="115" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Carrier: 82 of 364 functions done</title></rect>
+<text x="729" y="968" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Carrier <tspan font-weight="400" fill="#59636e">9%</tspan></text>
 <g transform="translate(729,972)">
 <rect y="0" width="203" height="84" fill="url(#todo)"/>
 <rect y="84" width="112" height="7" fill="url(#todo)"/>
@@ -1454,7 +1454,8 @@
 <rect x="147" y="0" width="6" height="6" fill="#b07d00"><title>0x006930f0 DestroyMapEC: 100%</title></rect>
 <rect x="189" y="0" width="6" height="6" fill="#b07d00"><title>0x00693830 ECPcInitInit: 100%</title></rect>
 <rect x="0" y="7" width="6" height="6" fill="#b07d00"><title>0x00693890 FUN_00693890: 100%</title></rect>
-<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x006940d0 ecp_actman(struct task *): 100%</title></rect>
+<rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x006940d0 ecp_actman(1): 100%</title></rect>
+<rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x00694120 ECPeopleInitialize: 100%</title></rect>
 <rect x="105" y="7" width="6" height="6" fill="#b07d00"><title>0x006944c0 JetDisplayer: 100%</title></rect>
 <rect x="147" y="7" width="6" height="6" fill="#b07d00"><title>0x00694840 SeqCheck(6): 100%</title></rect>
 <rect x="154" y="7" width="6" height="6" fill="#b07d00"><title>0x006948b0 Disp(21): 100%</title></rect>
@@ -1463,6 +1464,7 @@
 <rect x="182" y="7" width="6" height="6" fill="#b07d00"><title>0x00694ad0 MastDisplayer: 100%</title></rect>
 <rect x="189" y="7" width="6" height="6" fill="#af7e0b"><title>0x00694ae0 ObjectECMast: 98.1%</title></rect>
 <rect x="0" y="14" width="6" height="6" fill="#b07d00"><title>0x00694d30 FUN_00694d30: 100%</title></rect>
+<rect x="21" y="14" width="6" height="6" fill="#b07d00"><title>0x00694e40 ObjectECBook2: 100%</title></rect>
 <rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x00695510 DrawGiantPalm: 100%</title></rect>
 <rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x00695570 GiantPalmDisplayer: 100%</title></rect>
 <rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x00695580 ObjectECGiantPalm: 100%</title></rect>
@@ -1474,6 +1476,7 @@
 <rect x="133" y="21" width="6" height="6" fill="#b07d00"><title>0x00696a90 ObjectECLivingLight: 100%</title></rect>
 <rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x00698100 Object_EgaGun1Draw: 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x00698170 ObjectEgaGun1: 100%</title></rect>
+<rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x00698440 FUN_00698440: 100%</title></rect>
 <rect x="112" y="28" width="6" height="6" fill="#b07d00"><title>0x00698b20 MonorailCarDestructor: 100%</title></rect>
 <rect x="140" y="28" width="6" height="6" fill="#b07d00"><title>0x00698ce0 StepsLand: 100%</title></rect>
 <rect x="49" y="35" width="6" height="6" fill="#b07d00"><title>0x00699a90 chk_active: 100%</title></rect>
@@ -1482,6 +1485,7 @@
 <rect x="35" y="42" width="6" height="6" fill="#b07d00"><title>0x0069bce0 FUN_0069bce0: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#b07d00"><title>0x0069bd30 FUN_0069bd30: 100%</title></rect>
 <rect x="56" y="42" width="6" height="6" fill="#b07d00"><title>0x0069bdf0 Term: 100%</title></rect>
+<rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x0069c370 CollisionAttackBox: 100%</title></rect>
 <rect x="161" y="42" width="6" height="6" fill="#b07d00"><title>0x0069cbf0 ObjectECCommonDoor: 100%</title></rect>
 <rect x="189" y="42" width="6" height="6" fill="#b07d00"><title>0x0069d160 ExecD: 100%</title></rect>
 <rect x="196" y="42" width="6" height="6" fill="#b07d00"><title>0x0069d190 HeadInit: 100%</title></rect>
