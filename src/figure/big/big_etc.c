@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 void dispDistanceNum(float dist);
 void FUN_0058d680(int param_1);
 void dispDistanceLure(float *rod_pos_p, float *line_pos_p);
@@ -178,9 +179,78 @@ long chkKabeAngle2(struct task *tp, struct Angle3 *angle3_p)
 	return (long)0;
 }
 
-// STUB: SADX 0x0058e9d0
+// FUNCTION: SADX 0x0058e9d0
 void setLureSpd_D(struct task *tp)
 {
+	struct motionwk *local_8g;
+	int local_cj;
+	float local_10;
+
+	local_8g = tp->mwp;
+	if (local_8g->spd.x > 0.0f)
+	{
+		local_8g->spd.x -= 0.05f;
+	}
+	if (local_8g->spd.x < 0.0f)
+	{
+		local_8g->spd.x += 0.05f;
+	}
+	if (local_8g->spd.x < 0.1f && local_8g->spd.x > -0.1f)
+	{
+		local_8g->spd.x = 0.0f;
+	}
+	if (local_8g->spd.z > 0.0f)
+	{
+		local_8g->spd.z -= 0.05f;
+	}
+	if (local_8g->spd.z < 0.0f)
+	{
+		local_8g->spd.z += 0.05f;
+	}
+	if (local_8g->spd.z < 0.1f && local_8g->spd.z > -0.1f)
+	{
+		local_8g->spd.z = 0.0f;
+	}
+	if (DAT_05cd296c & 1)
+	{
+		if (DAT_05cd296c & 0x10)
+		{
+			local_8g->spd.y = 0.1f;
+		}
+		else
+		{
+			local_cj = rand();
+			local_10 = (float)local_cj / 32768.0f;
+			if (local_10 < 0.8f)
+			{
+				local_8g->spd.y = -0.05f;
+			}
+			else
+			{
+				local_8g->spd.y = 0.05f;
+			}
+		}
+	}
+	else
+	{
+		local_8g->spd.y -= 0.005f;
+		if ((DAT_05b9d724 << 8 | DAT_05b9d744) == 0x803)
+		{
+			if (local_8g->spd.y < -0.1f)
+			{
+				local_8g->spd.y = -0.1f;
+			}
+		}
+		else if (local_8g->spd.y < -0.05f)
+		{
+			local_8g->spd.y = -0.05f;
+		}
+	}
+	if (DAT_05cd296c & 0x10)
+	{
+		local_8g->spd.y = 0.0f;
+	}
+	dsStop_num(0x34d);
 }
 
 // FUNCTION: SADX 0x0058f980
@@ -303,9 +373,42 @@ void moveFishingRotZ(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00591260
+// FUNCTION: SADX 0x00591260
 void CalcHookPos(struct NJS_POINT3 *ret)
 {
+	struct NJS_POINT3 pos;
+	float mtrx[16];
+	struct taskwk *local_50;
+
+	if (DAT_05cd2980 == 0)
+	{
+		ret->z = 0.0f;
+		ret->y = 0.0f;
+		ret->x = 0.0f;
+		return;
+	}
+	local_50 = *(struct taskwk **)((char *)DAT_05cd2980 + 0x20);
+	pos.x = 0.6f;
+	pos.y = -0.45000002f;
+	pos.z = 0.0f;
+	njUnitMatrix((NJS_MATRIX (*))mtrx);
+	if (local_50->ang.z != 0)
+	{
+		njRotateZ((NJS_MATRIX (*))mtrx, (unsigned short)local_50->ang.z);
+	}
+	if (local_50->ang.x != 0)
+	{
+		njRotateX((NJS_MATRIX (*))mtrx, (unsigned short)local_50->ang.x);
+	}
+	if (-local_50->ang.y != 0)
+	{
+		njRotateY((NJS_MATRIX (*))mtrx, (unsigned short)(-local_50->ang.y));
+	}
+	njCalcVector((NJS_MATRIX (*))mtrx, &pos, ret);
+	ret->x = ret->x + local_50->pos.x;
+	ret->y = ret->y + local_50->pos.y;
+	ret->z = ret->z + local_50->pos.z;
+	FUN_005b5aa0(ret, 0xff0000ff);
 }
 
 // STUB: SADX 0x00591390
@@ -333,9 +436,35 @@ void setCameraFishingTgt(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00591910
+// FUNCTION: SADX 0x00591910
 void setCatchCameraPos(struct task *tp)
 {
+	struct NJS_POINT3 local_20g;
+	struct NJS_POINT3 local_14m;
+	struct taskwk *local_24;
+
+	local_24 = DAT_05baf368[0];
+	njPushMatrix(&_nj_unit_matrix_);
+	if (local_24->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)local_24->ang.z);
+	}
+	if (local_24->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)local_24->ang.x);
+	}
+	if (0x8000 - local_24->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)(0x8000 - local_24->ang.y));
+	}
+	local_20g.x = 100.0f;
+	local_20g.y = 0.0f;
+	local_20g.z = 0.0f;
+	njCalcVector(0, &local_20g, &local_14m);
+	njPopMatrix(1);
+	DAT_05b42914 = local_14m.x + local_24->pos.x;
+	DAT_05b42918 = local_14m.y + local_24->pos.y;
+	DAT_05b4291c = local_14m.z + local_24->pos.z;
 }
 
 // STUB: SADX 0x00591a00

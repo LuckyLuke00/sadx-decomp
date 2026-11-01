@@ -232,10 +232,32 @@ void BigEarsSwingEnd(struct task *tp)
 	*(int *)((char *)*(void **)((char *)DAT_060eea78 + 0x6c) + 4) = DAT_05cc3b18;
 }
 
-// STUB: SADX 0x0050c330
+// FUNCTION: SADX 0x0050c330
 long FUN_0050c330(long param_1, float *param_2)
 {
-	return (long)0;
+	struct task *local_cg;
+	void *local_8g;
+
+	local_cg = CreateElementalTask(2, 2, BigDirectAhead);
+	if (local_cg != (struct task *)0x0)
+	{
+		local_8g = MAlloc(0x88);
+		if (local_8g == (void *)0x0)
+		{
+			FreeTask(local_cg);
+			return 0;
+		}
+		local_cg->mwp = (struct motionwk *)local_8g;
+		*(char *)((char *)local_cg->twp + 8) = (char)param_1;
+		*(int *)((char *)local_8g + 0x58) = *(int *)param_2;
+		*(int *)((char *)local_8g + 0x5c) = *(int *)((char *)param_2 + 4);
+		*(int *)((char *)local_8g + 0x60) = *(int *)((char *)param_2 + 8);
+	}
+	else
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // STUB: SADX 0x0050c8b0
@@ -254,10 +276,14 @@ long ChkFishingThrowNow(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x0050cbb0
+// FUNCTION: SADX 0x0050cbb0
 int FUN_0050cbb0(char *param_1)
 {
-	return (int)0;
+	if (((*param_1 >= '#') && (*param_1 <= '%')) || ((*param_1 >= '+') && (*param_1 <= '-')))
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0050cbf0
