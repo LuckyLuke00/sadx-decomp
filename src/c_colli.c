@@ -1,4 +1,6 @@
 #include "decls.h"
+extern signed char DAT_025d9b68[10];
+extern signed char DAT_025d9b74[10];
 struct CCL_INFO;
 struct CCL_INFO *FUN_004da260(struct CCL_INFO *param_1, int param_2, int param_3, int param_4);
 void FUN_004d5370(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
@@ -290,10 +292,41 @@ void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
 {
 }
 
-// STUB: SADX 0x004d0a20
+// FUNCTION: SADX 0x004d0a20
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
 {
-	return (int)0;
+	float local_ci;
+	float local_18;
+	float local_14;
+	float local_10;
+	float local_24;
+	float local_20;
+	float local_1c;
+	int local_8g;
+
+	local_8g = 0;
+	if (param_1 != 0)
+	{
+		if (param_1->cwp != 0)
+		{
+			if (param_2 != 0)
+			{
+				if (param_2->cwp != 0)
+				{
+					local_10 = param_1->cwp->colli_range;
+					local_14 = param_2->cwp->colli_range;
+					local_18 = (local_10 + local_14) * (local_10 + local_14);
+					local_ci = FUN_004d0ad0((float *)&param_1->pos, (float *)&param_2->pos);
+					if (local_ci < local_18)
+					{
+						local_8g = 1;
+					}
+					FUN_004d0b30(param_1, param_2, local_ci);
+				}
+			}
+		}
+	}
+	return local_8g;
 }
 
 // STUB: SADX 0x004d0ad0
@@ -331,10 +364,38 @@ void FUN_004d10b0(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskw
 {
 }
 
-// STUB: SADX 0x004d1330
+// FUNCTION: SADX 0x004d1330
 long CCL_CheckPushOut(struct colliwk *cwp1, struct CCL_INFO *info1, struct colliwk *cwp2, struct CCL_INFO *info2)
 {
-	return (long)0;
+	int local_14;
+	int local_ci;
+	unsigned short local_10;
+	unsigned short local_8g;
+
+	local_14 = cwp1->id;
+	local_ci = cwp2->id;
+	local_10 = info1->push;
+	local_8g = info2->push;
+	if ((local_8g & DAT_025d9b74[local_14]) == 0)
+	{
+		return 0;
+	}
+	if ((info1->attr & 0x4000) != 0)
+	{
+		if ((info2->attr & 0x4000) != 0)
+		{
+			if ((info2->damage & 0x10) != 0)
+			{
+				return 0;
+			}
+		}
+	}
+	if ((local_10 & DAT_025d9b68[local_ci]) != 0)
+	{
+		return 0;
+	}
+	cwp1->flag |= 0x10;
+	return 1;
 }
 
 // STUB: SADX 0x004d13e0

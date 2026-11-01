@@ -24,7 +24,16 @@ void CreateKiran2(struct NJS_POINT3 *pos, float scl, float spd)
 	}
 }
 
-// STUB: SADX 0x0054ff40
+// FUNCTION: SADX 0x0054ff40
 void effectKiran2(struct task *tp)
 {
+	struct taskwk *local_8;
+	local_8 = tp->twp;
+	local_8->scl.z += local_8->value.f;
+	if ((unsigned int)local_8->scl.z >= 7)
+	{
+		FreeTask(tp);
+		return;
+	}
+	drawEffectKiran2(tp);
 }

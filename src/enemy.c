@@ -52,9 +52,21 @@ void EnemyGetShadow(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005e2cc0
+// FUNCTION: SADX 0x005e2cc0
 void FUN_005e2cc0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	float local_cg;
+	float *local_8g;
+
+	local_cg = *(float *)((char *)param_2 + 0xd8) + param_2->colli_top;
+	local_8g = (float *)((char *)param_2 + 0x140);
+	param_2->flag &= ~0x8;
+	if (local_cg > local_8g[4])
+	{
+		*(float *)((char *)param_2 + 8) = 0.0f;
+		*(float *)((char *)param_1 + 0x24) = *(float *)((char *)param_1 + 0x24) - (local_cg - local_8g[4]) * 0.3f;
+		param_2->flag |= 8;
+	}
 }
 
 // STUB: SADX 0x005e2d50
@@ -142,10 +154,17 @@ float EnemyDist2FromHome(struct taskwk *twp, struct enemywk *ewp)
 	return local_8;
 }
 
-// STUB: SADX 0x005e3e30
+// FUNCTION: SADX 0x005e3e30
 long EnemyCalcHomeAngle(struct taskwk *twp, struct enemywk *ewp)
 {
-	return (long)0;
+	long local_cg;
+	long local_8g;
+
+	local_cg = twp->ang.y;
+	ewp->aim_angle = (long)(atan2(*(float *)((char *)ewp + 0x50) - *(float *)((char *)twp + 0x20), *(float *)((char *)ewp + 0x58) - *(float *)((char *)twp + 0x28)) * 65536.0 / 6.283184) - 0x4000;
+	local_8g = DiffAngle(ewp->aim_angle, local_cg);
+	local_8g &= 0xffff;
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x005e3ec0

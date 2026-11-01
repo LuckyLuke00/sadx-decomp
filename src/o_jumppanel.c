@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x0263d728
+static struct CCL_INFO object_c_info[4];
+
 void RefreshJumpPanel();
 extern struct obj DAT_05a8c05c;
 extern struct obj DAT_05a8c248;
@@ -108,9 +112,31 @@ int FUN_005b3c80(void)
 	return local_cg;
 }
 
-// STUB: SADX 0x005b3ce0
+// FUNCTION: SADX 0x005b3ce0
 void ObjectJumpPanel(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	local_8->id = 8;
+	if (FUN_004c39c0(tp) == 0)
+	{
+		ObjectJumpPanelSetNumber(tp);
+		if (local_8->wtimer == 0)
+		{
+			CCL_Init(tp, &object_c_info[3], 1, 4);
+			SET_COLLI_RANGE(local_8->cwp, 10.3f);
+		}
+		else
+		{
+			CCL_Init(tp, &object_c_info[0], 2, 4);
+			SET_COLLI_RANGE(local_8->cwp, 10.3f);
+		}
+		DAT_05edbe48[local_8->wtimer] = (int)tp;
+	}
+	tp->dest = ObjectJumpPanelExit;
+	tp->disp = ObjectJumpPanelDisplay;
+	tp->exec = ObjectJumpPanelRegular;
 }
 
 // STUB: SADX 0x005b3db0

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_05edd6e0;
 extern const long seq_item_flag[18];
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
@@ -10,9 +11,28 @@ void FUN_005e7120(void);
 void putTubu(long no);
 extern short DAT_00997d78[4];
 
-// STUB: SADX 0x005e5f80
+// FUNCTION: SADX 0x005e5f80
 void levelupitemDisplay(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (dsCheckViewV(&local_8->pos, 20.0f) == 0)
+	{
+		return;
+	}
+	DAT_05edd6e0 = *(int *)(tp->awp);
+	switch (local_8->mode)
+	{
+	case 1:
+		displayEffectGet(tp);
+		displayEffectNormal(tp);
+		break;
+	case 2:
+		FUN_005e64e0(tp);
+		displayEffectNormal(tp);
+		break;
+	}
 }
 
 // STUB: SADX 0x005e6010

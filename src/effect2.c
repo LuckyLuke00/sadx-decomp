@@ -30,9 +30,31 @@ void ResetMaterial()
 	___njSetConstantMaterial(&DAT_05b9d7ec);
 }
 
-// STUB: SADX 0x004cb160
+// FUNCTION: SADX 0x004cb160
 void DrawLine(float x1, float y1, float z1, float x2, float y2, float z2)
 {
+	struct NJS_POINT3COL p;
+	struct NJS_POINT3 local_20h[2];
+	union NJS_COLOR local_38g[2];
+	local_20h[0].x = x1;
+	local_20h[0].y = y1;
+	local_20h[0].z = z1;
+	local_20h[1].x = x2;
+	local_20h[1].y = y2;
+	local_20h[1].z = z2;
+	local_38g[0].argb.a = 0xff;
+	local_38g[0].argb.r = 0xff;
+	local_38g[0].argb.g = 0xff;
+	local_38g[0].argb.b = 0xff;
+	local_38g[1].argb.a = 0xff;
+	local_38g[1].argb.r = 0x88;
+	local_38g[1].argb.g = 0x88;
+	local_38g[1].argb.b = 0xbb;
+	p.p = local_20h;
+	p.col = local_38g;
+	p.tex = 0;
+	p.num = 2;
+	___njDrawLine3D(&p, 1, 0);
 }
 
 // FUNCTION: SADX 0x004cb1f0

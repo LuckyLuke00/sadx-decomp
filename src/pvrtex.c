@@ -212,9 +212,40 @@ void ghFade(float rate)
 {
 }
 
-// STUB: SADX 0x00575360
+// FUNCTION: SADX 0x00575360
 void ghAdvertiseCamera(struct task *tp)
 {
+	struct NJS_POINT3 local_20g;
+	struct NJS_POINT3 local_14m;
+	struct taskwk *local_24;
+	local_24 = tp->twp;
+	local_14m.x = 0.0f;
+	local_14m.y = 0.0f;
+	local_14m.z = -1.0f;
+	njPushMatrix(&_nj_unit_matrix_);
+	if (*(unsigned short *)((char *)local_24 + 0x18) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)local_24 + 0x18));
+	}
+	if (*(unsigned short *)((char *)local_24 + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)local_24 + 0x14));
+	}
+	if ((unsigned short)(-*(int *)((char *)local_24 + 0x1c)) != 0)
+	{
+		njRotateZ(0, (unsigned short)(-*(int *)((char *)local_24 + 0x1c)));
+	}
+	njCalcVector(0, &local_14m, &local_20g);
+	njPopMatrix(1);
+	DAT_06298c48.roll = -*(int *)((char *)local_24 + 0x1c);
+	DAT_06298c48.px = local_24->pos.x;
+	DAT_06298c48.py = local_24->pos.y;
+	DAT_06298c48.pz = local_24->pos.z;
+	DAT_06298c48.vx = local_20g.x;
+	DAT_06298c48.vy = local_20g.y;
+	DAT_06298c48.vz = local_20g.z;
+	njSetCamera(&DAT_06298c48);
+	FUN_005b5aa0();
 }
 
 // STUB: SADX 0x00575490

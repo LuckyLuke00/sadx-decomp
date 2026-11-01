@@ -1,6 +1,10 @@
 #include "decls.h"
 struct taskwk *local_8;
 struct motionwk *local_4;
+extern void ObjectSampleSWRegular(struct task *tp);
+
+// GLOBAL: SADX 0x04c2e8f8
+static struct CCL_INFO object_c_info[8];
 
 // FUNCTION: SADX 0x008c18f0
 void ObjectSampleSRegular(struct task *tp)
@@ -66,4 +70,20 @@ void ObjectSampleLRegular(struct task *tp)
 	___dsDrawObject((struct obj *)local_cg->counter.ptr);
 	njPopMatrix(1);
 	ResetMaterial();
+}
+
+// FUNCTION: SADX 0x008c1cc0
+void ObjectSampleSW(struct task *tp)
+{
+	struct taskwk *local_cg;
+	struct motionwk *local_8g;
+
+	local_cg = tp->twp;
+	local_8g = tp->mwp;
+	local_cg->counter.ptr = &object_cylinder01[0];
+	if (FUN_004c39c0(tp) == 0)
+		CCL_Init(tp, &object_c_info[6], 2, 4);
+	ObjectMovableInitialize(local_cg, local_8g, 7);
+	tp->dest = (void (__cdecl *)(struct task *))FUN_008be060;
+	tp->exec = ObjectSampleSWRegular;
 }

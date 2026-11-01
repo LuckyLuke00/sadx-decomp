@@ -849,9 +849,43 @@ void EraseDolbyCtrl(struct taskwk *twp)
 	}
 }
 
-// STUB: SADX 0x004b01c0
+// FUNCTION: SADX 0x004b01c0
 void dsPlay_oneshot_Dolby(int tone, int id, int pri, int volofs, int time, struct taskwk *pTaskwk)
 {
+	struct _SEcallbuf *local_cg;
+	int local_8g;
+
+	if (pTaskwk == 0)
+	{
+		return;
+	}
+	local_8g = dsCheckHandle(pri, tone);
+	if (local_8g < 0)
+	{
+		return;
+	}
+	local_cg = &DAT_05b3e468[local_8g];
+	local_cg->timer = time;
+	local_cg->pri = -1;
+	local_cg->id = id;
+	local_cg->mode = 0x111;
+	if (Get3Dmode() != 0)
+	{
+		local_cg->mode = local_cg->mode | 0x4000;
+	}
+	else
+	{
+		local_cg->mode = local_cg->mode | 0x20;
+	}
+	local_cg->tone = tone;
+	local_cg->angle = 0;
+	local_cg->vol = volofs;
+	local_cg->volmax = volofs;
+	local_cg->pitch = 0;
+	local_cg->pos.x = pTaskwk->pos.x;
+	local_cg->pos.y = pTaskwk->pos.y;
+	local_cg->pos.z = pTaskwk->pos.z;
+	DAT_05b3e938[local_8g] = (int)pTaskwk;
 }
 
 // STUB: SADX 0x004b02c0

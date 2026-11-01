@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" double atan2(double v, double u);
 char *FUN_004cdab0(char *param_1, unsigned int param_2);
 char *FUN_004cdaf0(char *param_1, unsigned int param_2);
 char *FUN_004cdb40(char *param_1, unsigned int param_2);
@@ -237,9 +238,20 @@ int FUN_004ccc60(int param_1, int *param_2)
 	return *param_2;
 }
 
-// STUB: SADX 0x004cccf0
+// FUNCTION: SADX 0x004cccf0
 void GetZYAngleForTheTargetPoint(struct NJS_POINT3 *tvp, struct NJS_POINT3 *bvp, long *ang)
 {
+	float local_8;
+
+	local_8 = njSqrt(tvp->x * tvp->x + tvp->z * tvp->z);
+	ang[1] = (long)(atan2(tvp->x, -tvp->z) * 65536.0 / 6.283184);
+	ang[2] = (long)(atan2(-tvp->y, local_8) * 65536.0 / 6.283184);
+	if (bvp != NULL)
+	{
+		local_8 = njSqrt(bvp->x * bvp->x + bvp->z * bvp->z);
+		ang[1] = ang[1] - ((long)(atan2(bvp->x, -bvp->z) * 65536.0 / 6.283184));
+		ang[2] = ang[2] - ((long)(atan2(-bvp->y, local_8) * 65536.0 / 6.283184));
+	}
 }
 
 // FUNCTION: SADX 0x004cce50

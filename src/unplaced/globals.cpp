@@ -971,6 +971,12 @@ struct obj object_no_name_cuuube01_cuuube01[1];
 // GLOBAL: SADX 0x025d9b40
 int DAT_025d9b40[10];
 
+// GLOBAL: SADX 0x025d9b68
+signed char DAT_025d9b68[10];
+
+// GLOBAL: SADX 0x025d9b74
+signed char DAT_025d9b74[10];
+
 // GLOBAL: SADX 0x025da4b0
 long slSeqRunning;
 
@@ -1241,6 +1247,24 @@ unsigned char DAT_02608e24;
 // GLOBAL: SADX 0x02608f00
 struct NJS_TEXLIST texlist_title;
 
+// GLOBAL: SADX 0x02608f98
+struct NJS_TEXLIST texlist_c_select1;
+
+// GLOBAL: SADX 0x02609030
+struct NJS_TEXLIST texlist_c_select2;
+
+// GLOBAL: SADX 0x02609460
+struct NJS_TEXANIM anim_c_select[24];
+
+// GLOBAL: SADX 0x02609658
+struct NJS_TEXLIST *hinttexlist[6];
+
+// GLOBAL: SADX 0x02609670
+struct NJS_TEXANIM anim_hint1[6];
+
+// GLOBAL: SADX 0x026096e8
+struct NJS_TEXANIM anim_hint2[6];
+
 // GLOBAL: SADX 0x02618a68
 void (*DAT_02618a68[1])(void);
 
@@ -1366,6 +1390,9 @@ struct NJS_ACTION action_f_f0021_frog[1];
 
 // GLOBAL: SADX 0x0264963c
 struct NJS_ACTION action_f_f0023_frog[1];
+
+// GLOBAL: SADX 0x026496d0
+struct NJS_SPRITE sprite_eme_kiran;
 
 // GLOBAL: SADX 0x02649720
 struct NJS_POINT3COL tridai[1];
@@ -5075,6 +5102,21 @@ int DAT_05b3ebd8;
 // GLOBAL: SADX 0x05b3ebdc
 int DAT_05b3ebdc;
 
+// GLOBAL: SADX 0x05b3ebe0
+float DAT_05b3ebe0;
+
+// GLOBAL: SADX 0x05b3ebe4
+float DAT_05b3ebe4;
+
+// GLOBAL: SADX 0x05b3ebe8
+float DAT_05b3ebe8;
+
+// GLOBAL: SADX 0x05b3ebec
+float DAT_05b3ebec;
+
+// GLOBAL: SADX 0x05b3ebf8
+float DAT_05b3ebf8;
+
 // GLOBAL: SADX 0x05b3ec04
 unsigned long DAT_05b3ec04;
 
@@ -6818,6 +6860,9 @@ int DAT_05cda0e8;
 // GLOBAL: SADX 0x05cda0ec
 int DAT_05cda0ec;
 
+// GLOBAL: SADX 0x05cda0f0
+float DAT_05cda0f0[6];
+
 // GLOBAL: SADX 0x05cda108
 int DAT_05cda108;
 
@@ -7168,6 +7213,9 @@ int DAT_05edd2d8;
 
 // GLOBAL: SADX 0x05edd2e0
 char DAT_05edd2e0[0x400];
+
+// GLOBAL: SADX 0x05edd6e0
+int DAT_05edd6e0;
 
 // GLOBAL: SADX 0x05edd6e4
 int DAT_05edd6e4;

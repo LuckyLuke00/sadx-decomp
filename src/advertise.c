@@ -2356,9 +2356,34 @@ void FUN_0058a490(int param_1, int param_2, int param_3)
 {
 }
 
-// STUB: SADX 0x0058a4b0
+// FUNCTION: SADX 0x0058a4b0
 void FUN_0058a4b0(int param_1, int param_2, int param_3)
 {
+	int local_1cp;
+	int local_8gk;
+	int local_64j;
+	int local_2cx;
+	int local_18o;
+	int local_60j;
+	int local_38gj;
+	int local_34h;
+	int local_5c;
+	int local_4c;
+	int local_3cgq;
+	int local_44s;
+	int local_54g;
+	int local_28k;
+	int local_50j;
+	int local_24k;
+	int local_20i;
+	int local_40u;
+	int local_14s;
+	int local_10l;
+	int local_48q;
+	int local_ci;
+	int local_30r;
+	int local_58p;
+	FUN_0058a7d0((void *)param_2, (void *)param_3);
 }
 
 // FUNCTION: SADX 0x0058a560

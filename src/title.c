@@ -1,4 +1,8 @@
 #include "decls.h"
+extern float DAT_05cda0f0[6];
+extern struct NJS_TEXANIM anim_hint2[6];
+extern struct NJS_TEXLIST *hinttexlist[6];
+extern struct NJS_TEXANIM anim_hint1[6];
 extern float DAT_05cda0e0;
 
 // GLOBAL: SADX 0x026093e8
@@ -99,19 +103,110 @@ void DisplayTitle()
 	}
 }
 
-// STUB: SADX 0x0059a620
+// FUNCTION: SADX 0x0059a620
 void DisplaySelectingCharacter()
 {
+	struct NJS_SPRITE Sprite;
+	int local_cg;
+	int local_8g;
+	float local_34t;
+
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	for (local_cg = 0; local_cg < 6; local_cg = local_cg + 1)
+	{
+		if ((char)DAT_05cda0c4 == local_cg)
+		{
+			DAT_05cda0f0[local_cg] = 1.0f;
+		}
+		else
+		{
+			DAT_05cda0f0[local_cg] = DAT_05cda0f0[local_cg] - 0.2f;
+			if (DAT_05cda0f0[local_cg] < 0.0f)
+			{
+				DAT_05cda0f0[local_cg] = 0.0f;
+			}
+		}
+		if (local_cg == 0 || local_cg == 1 || local_cg == 5)
+		{
+			Sprite.tlist = &texlist_c_select1;
+		}
+		else
+		{
+			Sprite.tlist = &texlist_c_select2;
+		}
+		Sprite.tanim = anim_c_select;
+		___njSetTexture(Sprite.tlist);
+		SetMaterial(DAT_05cda0f0[local_cg], 1.0f, 1.0f, 1.0f);
+		for (local_8g = 0; local_8g < 4; local_8g = local_8g + 1)
+		{
+			Sprite.sx = 1.25f;
+			Sprite.sy = 1.0f;
+			Sprite.p.x = 320.0f;
+			Sprite.p.y = 0.0f;
+			local_34t = -10.0f - DAT_05cda0f0[local_cg];
+			if (local_34t >= -3.0f && local_34t < 12048.0f)
+			{
+				local_34t = local_34t + 22048.0f;
+			}
+			late_DrawSprite2D(&Sprite, local_cg * 4 + local_8g, local_34t, 0x22, 4);
+		}
+	}
+	ResetMaterial();
 }
 
-// STUB: SADX 0x0059a7d0
+// FUNCTION: SADX 0x0059a7d0
 void DisplayHint1()
 {
+	struct NJS_SPRITE Sprite;
+	int local_8g;
+	Sprite.tlist = hinttexlist[(int)(char)DAT_05cda0c4];
+	Sprite.tanim = (struct NJS_TEXANIM *)&anim_hint1;
+	___njSetTexture(Sprite.tlist);
+	Sprite.sx = 1.0;
+	Sprite.sy = 1.0;
+	Sprite.p.x = 320.0;
+	Sprite.p.y = 0.0;
+	for (local_8g = 0; local_8g < 6; local_8g++)
+	{
+		float local_30;
+		local_30 = -1.0;
+		if (local_30 >= -3.0)
+		{
+			if (local_30 < 12048.0)
+			{
+				local_30 += 22048.0;
+			}
+		}
+		late_DrawSprite2D(&Sprite, local_8g, local_30, 0, 4);
+	}
 }
 
-// STUB: SADX 0x0059a8a0
+// FUNCTION: SADX 0x0059a8a0
 void DisplayHint2()
 {
+	struct NJS_SPRITE Sprite;
+	int local_8g;
+	Sprite.tlist = hinttexlist[(int)(char)DAT_05cda0c4];
+	Sprite.tanim = anim_hint2;
+	___njSetTexture(Sprite.tlist);
+	Sprite.sx = 1.0;
+	Sprite.sy = 1.0;
+	Sprite.p.x = 320.0;
+	Sprite.p.y = 0.0;
+	for (local_8g = 0; local_8g < 6; local_8g++)
+	{
+		float local_30;
+		local_30 = -1.0;
+		if (local_30 >= -3.0)
+		{
+			if (local_30 < 12048.0)
+			{
+				local_30 += 22048.0;
+			}
+		}
+		late_DrawSprite2D(&Sprite, local_8g, local_30, 0, 4);
+	}
 }
 
 // FUNCTION: SADX 0x0059abe0
