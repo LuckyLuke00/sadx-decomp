@@ -1886,6 +1886,9 @@ struct NJS_SPRITE sprite_bigfire;
 // GLOBAL: SADX 0x0270c550
 struct NJS_ARGB material_bigfire;
 
+// GLOBAL: SADX 0x0270c560
+struct CCL_INFO cinfo_emerald[1];
+
 // GLOBAL: SADX 0x0270c5ac
 struct NJS_ARGB material_panlight;
 

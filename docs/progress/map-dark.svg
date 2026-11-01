@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,885 of 16,524 game functions done (35.61%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,889 of 16,524 game functions done (35.63%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 604,1194.5 598,1187.6 599.1,1186" fill="#4e32f3"/>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 598,1187.6 599.1,1186" fill="#ffffff" fill-opacity="0.4"/>
@@ -1614,10 +1614,10 @@
 <rect x="126" y="70" width="6" height="6" fill="#ffd700"><title>0x006bbbd0 FUN_006bbbd0: 100%</title></rect>
 <rect x="196" y="70" width="6" height="6" fill="#ffd700"><title>0x00855000 KasyaDestruct: 100%</title></rect>
 </g>
-<rect x="937" y="947" width="43" height="228" rx="3" fill="#21262d" stroke="#30363d"><title>The Past: 35 of 115 functions done</title></rect>
+<rect x="937" y="947" width="43" height="228" rx="3" fill="#21262d" stroke="#30363d"><title>The Past: 39 of 115 functions done</title></rect>
 <text x="940" y="961" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">The</text>
 <text x="940" y="976" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Past</text>
-<text x="940" y="991" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">20%</tspan></text>
+<text x="940" y="991" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">23%</tspan></text>
 <g transform="translate(940,995)">
 <rect y="0" width="35" height="161" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#ffd700"><title>0x006801d0 initKnucklesPast01: 100%</title></rect>
@@ -1632,12 +1632,16 @@
 <rect x="28" y="35" width="6" height="6" fill="#ffd700"><title>0x006bd170 mainLastPast01: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#ffd700"><title>0x006bd330 mainE102Past01: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#ffd700"><title>0x006bd3d0 mainAmyPast01: 100%</title></rect>
+<rect x="21" y="42" width="6" height="6" fill="#ffd700"><title>0x006bd4c0 mainKnucklesPast03: 100%</title></rect>
 <rect x="0" y="49" width="6" height="6" fill="#ffd700"><title>0x006bd610 mainKnucklesPast01: 100%</title></rect>
+<rect x="14" y="49" width="6" height="6" fill="#ffd700"><title>0x006bd760 mainSonicPast01: 100%</title></rect>
 <rect x="14" y="91" width="6" height="6" fill="#ffd700"><title>0x006bf090 pastp_walk_man_eveidle: 100%</title></rect>
 <rect x="21" y="91" width="6" height="6" fill="#ffd700"><title>0x006bf0c0 pastp_walk_man: 100%</title></rect>
 <rect x="7" y="105" width="6" height="6" fill="#ffd700"><title>0x006bf800 DispPastChaosFire: 100%</title></rect>
 <rect x="14" y="105" width="6" height="6" fill="#ffd700"><title>0x006bf890 ObjectPastChaosFire: 100%</title></rect>
-<rect x="21" y="105" width="6" height="6" fill="#ffd700"><title>0x006bf900 EmeraldDisplayer: 100%</title></rect>
+<rect x="21" y="105" width="6" height="6" fill="#ffd700"><title>0x006bf900 EmeraldDisplayer(struct task *): 100%</title></rect>
+<rect x="0" y="112" width="6" height="6" fill="#ffd700"><title>0x006bfa00 EmeraldDisplayer(2): 100%</title></rect>
+<rect x="7" y="112" width="6" height="6" fill="#ffd700"><title>0x006bfa90 ObjectPastMasterEmerald: 100%</title></rect>
 <rect x="14" y="112" width="6" height="6" fill="#ffd700"><title>0x006bfb10 LampDisplayer: 100%</title></rect>
 <rect x="21" y="112" width="6" height="6" fill="#ffd700"><title>0x006bfc00 ObjectPastKnucklesLamp: 100%</title></rect>
 <rect x="0" y="133" width="6" height="6" fill="#ffd700"><title>0x006c0760 KnucklesDoorDisplayer: 100%</title></rect>
