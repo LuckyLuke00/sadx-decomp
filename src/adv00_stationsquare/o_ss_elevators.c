@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct obj object_sssikake_hotelele_hotelele[1];
+extern struct CCL_INFO door_c_info[1];
 void FUN_00689420(struct task *param_1);
 void FUN_006898a0(struct task *param_1);
 void Exec(struct task *tp);
@@ -94,9 +96,24 @@ void ObjectSSTenbouele(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00689a90
+// FUNCTION: SADX 0x00689a90
 void ObjectSSHotelele(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	var1->scl.x = 0.0;
+	var1->ang.x = 0;
+	var1->ang.z = 0;
+	var1->btimer = 0x27;
+	*(unsigned short *)((char *)var1) = 0;
+	var1->counter.ptr = &object_sssikake_hotelele_hotelele;
+	if (FUN_004c39c0(tp) == 0)
+	{
+		CCL_Init(tp, door_c_info, 5, 4);
+		CreateChildTask(6, BoxInit, tp);
+	}
+	tp->exec = Exec;
+	tp->disp = FUN_00689420;
+	tp->dest = ExplosionRockDestructor;
 }
 
 // STUB: SADX 0x00689b00

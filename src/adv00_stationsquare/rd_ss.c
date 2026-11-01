@@ -7,9 +7,25 @@ int checkInSsHodel()
 	return (int)0;
 }
 
-// STUB: SADX 0x0067f640
+// FUNCTION: SADX 0x0067f640
 void ss_bgmcontrol(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	var1->wtimer--;
+	if ((short)var1->wtimer < 0)
+	{
+		if (dsCheckBGMActive())
+		{
+			RoundBGM_Play(var1->mode);
+		}
+		if ((char)DAT_05b9d744 == 5)
+		{
+			Serif_Play(0x627);
+		}
+		DestroyTask(tp);
+	}
 }
 
 // FUNCTION: SADX 0x0067f690

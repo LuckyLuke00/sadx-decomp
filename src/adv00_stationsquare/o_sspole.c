@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026ded40
+static struct CCL_INFO ccinfo[1];
+
 static void ObjectMain(struct task *tp);
 static void ObjectDisplay(struct task *tp);
 extern int DAT_05b9d838;
@@ -37,12 +41,12 @@ static void ObjectMain(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00690d10
+// FUNCTION: SADX 0x00690d10
 void ObjectSSPole(struct task *tp)
 {
 	if (CheckRangeOut(tp) == 0)
 	{
-		CCL_Init(tp, (struct CCL_INFO *)0x26ded40, 1, 4);
+		CCL_Init(tp, ccinfo, 1, 4);
 		tp->exec = ObjectMain;
 		tp->disp = ObjectDisplay;
 	}

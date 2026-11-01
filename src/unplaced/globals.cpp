@@ -398,6 +398,9 @@ struct obj object_ssobj_shop2boxmi_shop2boxmi[1];
 // GLOBAL: SADX 0x01c993a4
 struct obj object_ssobj_shop2boxfuta_shop2boxfuta[1];
 
+// GLOBAL: SADX 0x01c9c8c4
+struct NJS_MODEL model_ssobj_syoukaki_syoukaki[1];
+
 // GLOBAL: SADX 0x01c9d500
 struct obj object_sssikake_eggstand_eggstand[1];
 
@@ -418,6 +421,9 @@ struct obj object_sssikake_hwbhutter_blkn_hwbhutter_blkn[1];
 
 // GLOBAL: SADX 0x01ca7e34
 struct NJS_ACTION action_ssobj_keyice[1];
+
+// GLOBAL: SADX 0x01ca9df4
+struct obj object_sssikake_hotelele_hotelele[1];
 
 // GLOBAL: SADX 0x01caa334
 struct obj object_sssikake_blockbase_blockbase[1];
@@ -1723,6 +1729,9 @@ struct CCL_INFO barricade_c_info[1];
 
 // GLOBAL: SADX 0x026dd66c
 struct obj object_loadsfin_gards_gards[1];
+
+// GLOBAL: SADX 0x026dd6a0
+struct CCL_INFO door_c_info[1];
 
 // GLOBAL: SADX 0x026de588
 struct CCL_INFO object_komono_bin_info;
