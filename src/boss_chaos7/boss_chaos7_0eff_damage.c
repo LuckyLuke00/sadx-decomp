@@ -89,14 +89,28 @@ void Sprite_Chaos7DamageS2(struct task *tp)
 	tp->twp->timer.l = 0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00701860
 void DisplayMist(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
-// STUB: SADX 0x00701950
+// FUNCTION: SADX 0x00701950
 void NormalMist(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct motionwk *var2 = tp->mwp;
+	var1->ang.x += *(long *)((char *)var1 + 0x18);
+	if (var1->ang.x >= 0x8000)
+	{
+		tp->exec = Sprite_Chaos7Mist;
+	}
+	else
+	{
+		njAddVector(&var1->pos, &var2->spd);
+		DisplayMist(tp);
+	}
 }
 
 // STUB: SADX 0x00701c50

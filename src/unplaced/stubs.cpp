@@ -2714,6 +2714,11 @@ void CameraChaos7_0Adv(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
+// STUB: SADX 0x00701990
+void Sprite_Chaos7Mist(struct task *tp)
+{
+}
+
 // STUB: SADX 0x007021c0
 void execChaos7Object(struct task *tp)
 {

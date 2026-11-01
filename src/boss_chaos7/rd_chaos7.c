@@ -30,9 +30,19 @@ void ChangeSuperSonic(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x006fb200
-static void chaos_gdcontrol(struct task *tp)
+// FUNCTION: SADX 0x006fb200
+void chaos_gdcontrol(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	var1->wtimer--;
+	if ((short)var1->wtimer < 0)
+	{
+		ADXTaskInit();
+		RoundBGM_Play(var1->mode);
+		DestroyTask(tp);
+	}
 }
 
 // FUNCTION: SADX 0x006fb370

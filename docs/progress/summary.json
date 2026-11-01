@@ -48949,9 +48949,9 @@
   {
    "address": "0x006fb200",
    "name": "chaos_gdcontrol",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49413,7 +49413,7 @@
   {
    "address": "0x00701860",
    "name": "DisplayMist",
-   "accuracy": 0.03333333333333333,
+   "accuracy": 0.031746031746031744,
    "effective": false,
    "stub": true,
    "library": false
@@ -49421,7 +49421,15 @@
   {
    "address": "0x00701950",
    "name": "NormalMist",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00701990",
+   "name": "Sprite_Chaos7Mist",
+   "accuracy": 0.011049723756906077,
    "effective": false,
    "stub": true,
    "library": false
@@ -101213,5 +101221,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "31816d88360e34fae1e910ae46c300caa5e484f9d3790eca86d1edb82fc4398c"
+ "inputs_sha256": "947b3089c2833f948bbd2689c2a847fd8ac475c9d6f75690619624092805aab1"
 }
