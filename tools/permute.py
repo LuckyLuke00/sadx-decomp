@@ -36,7 +36,9 @@ minutes.
 The best function goes into FILE when its score is higher than at the start; otherwise, and on an
 error or Ctrl+C, FILE is left as it was. build/permute/ADDRESS.c keeps the best try either way.
 When only the names of globals or functions differ from the original, no shape can help: the
-declarations need work, so it says so and stops.
+declarations need work, so it says so and stops. A try with a trick (tools/tricks.py), such as a call
+through a cast, counts as a try that does not build, and it costs no build: check.py fn never counts
+such a function as matched. A function with a trick at the start gets no search.
 """
 
 import collections
@@ -46,10 +48,14 @@ import sys
 import time
 
 import check
+import fakematch
 import llm
 import osutil
 import project
 import runner
+import tricks
+
+from names import read_sources
 
 OUT = project.BUILD / "permute"
 Score = collections.namedtuple("Score", "percent exact lines structural")
@@ -970,11 +976,22 @@ def describe(result):
     return f"{result.percent:.2f}% {kind}, {result.lines} differing lines"
 
 
-def try_function(path, lines, span, function, crlf, address):
-    """Build the file with FUNCTION in SPAN and score it: (Score, diff), or None when it does not build."""
-    llm.write_source(path, "\n".join(lines[:span[0]] + function + lines[span[1] + 1:]) + "\n", crlf)
+def try_function(path, lines, span, function, crlf, address, tricked):
+    """Build the file with FUNCTION in SPAN and score it: (Score, diff), or None when it does not build or when
+    TRICKED finds a trick in the file's text at ADDRESS. A try with a trick is not built."""
+    text = "\n".join(lines[:span[0]] + function + lines[span[1] + 1:]) + "\n"
+    if tricked(text):
+        return None
+    llm.write_source(path, text, crlf)
     worked, _ = osutil.caught(check.build)
     return score(address) if worked else None
+
+
+def trick_test(address):
+    """A test of a file's text: the tricks of its function at ADDRESS, as check.py fn finds them, or None."""
+    volatiles = tricks.all_volatile_globals(read_sources(project.ROOT))
+    fakes = fakematch.checker(project.ROOT, project.require_game())
+    return lambda text: tricks.file_tricks(text, volatiles, fakes).get(address)
 
 
 def fresh_change(body, seen, rng, changes):
@@ -1057,9 +1074,13 @@ def permute(path, address, tries, minutes, seed, rank_key):
         sys.exit(f"{path} has no definition at {hex(address)} with its opening brace on a line of its own")
     opening = lines.index("{", span[0])
     head, body = lines[span[0]:opening + 1], lines[opening + 1:span[1]]
+    tricked = trick_test(address)
+    if trick := tricked(source):
+        print(f"{hex(address)} has a trick ({trick}): check.py fn counts no try of it as matched")
+        return 1
 
     def build_and_score(new_body):
-        return try_function(path, lines, span, head + new_body + ["}"], crlf, address)
+        return try_function(path, lines, span, head + new_body + ["}"], crlf, address, tricked)
 
     kept = False
     try:
