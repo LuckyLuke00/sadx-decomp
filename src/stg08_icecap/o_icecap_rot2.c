@@ -55,6 +55,15 @@ void ObjectGreenMokuB(struct task *tp)
 	tp->twp->timer.ptr = &object_green_moku_b_moku_b[0];
 }
 
+// FUNCTION: SADX 0x00866340
+void ObjectGreenMokuC(struct task *tp)
+{
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+	tp->exec = Exec;
+	tp->disp = Draw;
+	tp->twp->timer.l = (long)object_green_moku_c_moku_c;
+}
+
 // FUNCTION: SADX 0x00866370
 void ObjectGreenKiDryA(struct task *tp)
 {
@@ -64,7 +73,11 @@ void ObjectGreenKiDryA(struct task *tp)
 	tp->twp->timer.l = (long)&object_green_ki_drya_ki_drya;
 }
 
-// STUB: SADX 0x008663a0
+// FUNCTION: SADX 0x008663a0
 void ObjectGreenKiDryB(struct task *tp)
 {
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+	tp->exec = Exec;
+	tp->disp = Draw;
+	tp->twp->timer.ptr = &object_green_ki_dryb_ki_dryb[0];
 }

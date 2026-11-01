@@ -61211,6 +61211,14 @@
    "library": false
   },
   {
+   "address": "0x0085e210",
+   "name": "FUN_0085e210",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0085e430",
    "name": "Object_IcecapHasihasiDraw",
    "accuracy": 1.0,
@@ -61293,9 +61301,9 @@
   {
    "address": "0x00860c00",
    "name": "Normal(10)",
-   "accuracy": 0.043478260869565216,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -61325,6 +61333,38 @@
   {
    "address": "0x00860d10",
    "name": "ObjectSnowBalloon04",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00860d40",
+   "name": "Disp(32)",
+   "accuracy": 0.023255813953488372,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00860e50",
+   "name": "Normal(11)",
+   "accuracy": 0.013888888888888888,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00861090",
+   "name": "ObjectSuisyouB",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008610c0",
+   "name": "ObjectSuisyouBM",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61533,9 +61573,9 @@
   {
    "address": "0x00865ac0",
    "name": "ObjectIcecapTuribasi1",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -61595,6 +61635,14 @@
    "library": false
   },
   {
+   "address": "0x00866340",
+   "name": "ObjectGreenMokuC",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00866370",
    "name": "ObjectGreenKiDryA",
    "accuracy": 1.0,
@@ -61605,9 +61653,49 @@
   {
    "address": "0x008663a0",
    "name": "ObjectGreenKiDryB",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008663d0",
+   "name": "ObjectMaruta",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866400",
+   "name": "ObjectBigIta",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866430",
+   "name": "ObjectKareki01",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866460",
+   "name": "ObjectKareki02",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866490",
+   "name": "ObjectKareki03",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -61691,6 +61779,78 @@
    "library": false
   },
   {
+   "address": "0x00866d10",
+   "name": "ObjectSaku01",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866d40",
+   "name": "ObjectSaku01b",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866d70",
+   "name": "ObjectSaku02",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866da0",
+   "name": "ObjectSaku02b",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866dd0",
+   "name": "ObjectEle",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866e00",
+   "name": "ObjectFiw4m",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866e30",
+   "name": "ObjectFiw5m",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866e60",
+   "name": "ObjectFiw6m",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00866e90",
+   "name": "ObjectHako",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00866ec0",
    "name": "ObjectIcicleDisplay",
    "accuracy": 1.0,
@@ -61707,6 +61867,14 @@
    "library": false
   },
   {
+   "address": "0x00867dd0",
+   "name": "Normal1(4)",
+   "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00867e10",
    "name": "Normal2(5)",
    "accuracy": 0.0392156862745098,
@@ -61715,8 +61883,48 @@
    "library": false
   },
   {
+   "address": "0x00867ea0",
+   "name": "ObjectHyochu1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00867ee0",
+   "name": "ObjectHyochu2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00867f20",
+   "name": "ObjectHyochu3",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00867f60",
    "name": "ObjectHyochu4",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00867fa0",
+   "name": "ObjectHyochu5",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00867fe0",
+   "name": "ObjectHyochu6",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61789,9 +61997,9 @@
   {
    "address": "0x00868f20",
    "name": "ObjectIcecap_eff_lines1_End",
-   "accuracy": 0.047619047619047616,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -62476,7 +62684,7 @@
   },
   {
    "address": "0x00872e10",
-   "name": "Disp(32)",
+   "name": "Disp(33)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62508,7 +62716,7 @@
   },
   {
    "address": "0x008730b0",
-   "name": "Disp(33)",
+   "name": "Disp(34)",
    "accuracy": 0.02702702702702703,
    "effective": false,
    "stub": true,
@@ -62628,7 +62836,7 @@
   },
   {
    "address": "0x008749b0",
-   "name": "Disp(34)",
+   "name": "Disp(35)",
    "accuracy": 0.029411764705882353,
    "effective": false,
    "stub": true,
@@ -62692,7 +62900,7 @@
   },
   {
    "address": "0x008769f0",
-   "name": "Disp(35)",
+   "name": "Disp(36)",
    "accuracy": 0.03571428571428571,
    "effective": false,
    "stub": true,
@@ -62748,7 +62956,7 @@
   },
   {
    "address": "0x008777f0",
-   "name": "Disp(36)",
+   "name": "Disp(37)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62876,7 +63084,7 @@
   },
   {
    "address": "0x008786a0",
-   "name": "Disp(37)",
+   "name": "Disp(38)",
    "accuracy": 0.034482758620689655,
    "effective": false,
    "stub": true,
@@ -63356,7 +63564,7 @@
   },
   {
    "address": "0x0087f660",
-   "name": "Disp(38)",
+   "name": "Disp(39)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63364,7 +63572,7 @@
   },
   {
    "address": "0x0087f6d0",
-   "name": "Normal(11)",
+   "name": "Normal(12)",
    "accuracy": 0.037037037037037035,
    "effective": false,
    "stub": true,
@@ -63380,7 +63588,7 @@
   },
   {
    "address": "0x0087f7b0",
-   "name": "Disp(39)",
+   "name": "Disp(40)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63388,7 +63596,7 @@
   },
   {
    "address": "0x0087f840",
-   "name": "Normal(12)",
+   "name": "Normal(13)",
    "accuracy": 0.03125,
    "effective": false,
    "stub": true,
@@ -63444,7 +63652,7 @@
   },
   {
    "address": "0x0087fdf0",
-   "name": "Disp(40)",
+   "name": "Disp(41)",
    "accuracy": 0.01680672268907563,
    "effective": false,
    "stub": true,
@@ -63452,7 +63660,7 @@
   },
   {
    "address": "0x0087ff90",
-   "name": "Normal(13)",
+   "name": "Normal(14)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -63468,7 +63676,7 @@
   },
   {
    "address": "0x00880140",
-   "name": "Disp(41)",
+   "name": "Disp(42)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63476,7 +63684,7 @@
   },
   {
    "address": "0x008803b0",
-   "name": "Normal(14)",
+   "name": "Normal(15)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63516,7 +63724,7 @@
   },
   {
    "address": "0x008805b0",
-   "name": "Disp(42)",
+   "name": "Disp(43)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63524,7 +63732,7 @@
   },
   {
    "address": "0x00880650",
-   "name": "Normal(15)",
+   "name": "Normal(16)",
    "accuracy": 0.08695652173913043,
    "effective": false,
    "stub": true,
@@ -63540,7 +63748,7 @@
   },
   {
    "address": "0x008806c0",
-   "name": "Disp(43)",
+   "name": "Disp(44)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63548,7 +63756,7 @@
   },
   {
    "address": "0x00880790",
-   "name": "Normal(16)",
+   "name": "Normal(17)",
    "accuracy": 0.08695652173913043,
    "effective": false,
    "stub": true,
@@ -63604,7 +63812,7 @@
   },
   {
    "address": "0x008822e0",
-   "name": "Disp(44)",
+   "name": "Disp(45)",
    "accuracy": 0.0273972602739726,
    "effective": false,
    "stub": true,
@@ -63612,7 +63820,7 @@
   },
   {
    "address": "0x008823d0",
-   "name": "Normal(17)",
+   "name": "Normal(18)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63628,7 +63836,7 @@
   },
   {
    "address": "0x00882450",
-   "name": "Disp(45)",
+   "name": "Disp(46)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63636,7 +63844,7 @@
   },
   {
    "address": "0x00882510",
-   "name": "Normal(18)",
+   "name": "Normal(19)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63652,7 +63860,7 @@
   },
   {
    "address": "0x00882820",
-   "name": "Disp(46)",
+   "name": "Disp(47)",
    "accuracy": 0.2222222222222222,
    "effective": false,
    "stub": true,
@@ -63692,7 +63900,7 @@
   },
   {
    "address": "0x00882e80",
-   "name": "Disp(47)",
+   "name": "Disp(48)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -63700,7 +63908,7 @@
   },
   {
    "address": "0x00882ea0",
-   "name": "Normal(19)",
+   "name": "Normal(20)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -63732,7 +63940,7 @@
   },
   {
    "address": "0x00883010",
-   "name": "Normal1(4)",
+   "name": "Normal1(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63988,7 +64196,7 @@
   },
   {
    "address": "0x00887060",
-   "name": "Disp(48)",
+   "name": "Disp(49)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -64012,7 +64220,7 @@
   },
   {
    "address": "0x00887da0",
-   "name": "Normal(20)",
+   "name": "Normal(21)",
    "accuracy": 0.03636363636363636,
    "effective": false,
    "stub": true,
@@ -64028,7 +64236,7 @@
   },
   {
    "address": "0x00887ea0",
-   "name": "Normal(21)",
+   "name": "Normal(22)",
    "accuracy": 0.012121212121212121,
    "effective": false,
    "stub": true,
@@ -64732,7 +64940,7 @@
   },
   {
    "address": "0x0088e550",
-   "name": "Disp(49)",
+   "name": "Disp(50)",
    "accuracy": 0.024691358024691357,
    "effective": false,
    "stub": true,
@@ -65604,7 +65812,7 @@
   },
   {
    "address": "0x008a3ea0",
-   "name": "Disp(50)",
+   "name": "Disp(51)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -65740,7 +65948,7 @@
   },
   {
    "address": "0x008a5c70",
-   "name": "Disp(51)",
+   "name": "Disp(52)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -65764,7 +65972,7 @@
   },
   {
    "address": "0x008a5db0",
-   "name": "Disp(52)",
+   "name": "Disp(53)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -66100,7 +66308,7 @@
   },
   {
    "address": "0x008b3f90",
-   "name": "Disp(53)",
+   "name": "Disp(54)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66124,7 +66332,7 @@
   },
   {
    "address": "0x008b4340",
-   "name": "Disp(54)",
+   "name": "Disp(55)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66156,7 +66364,7 @@
   },
   {
    "address": "0x008b47c0",
-   "name": "Disp(55)",
+   "name": "Disp(56)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66196,7 +66404,7 @@
   },
   {
    "address": "0x008b4d40",
-   "name": "Disp(56)",
+   "name": "Disp(57)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66300,7 +66508,7 @@
   },
   {
    "address": "0x008b5f70",
-   "name": "Disp(57)",
+   "name": "Disp(58)",
    "accuracy": 0.02857142857142857,
    "effective": false,
    "stub": true,
@@ -66348,7 +66556,7 @@
   },
   {
    "address": "0x008b6cd0",
-   "name": "Disp(58)",
+   "name": "Disp(59)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -96305,6 +96513,69 @@
    "library": false
   },
   {
+   "address": "0x045a3c8c",
+   "name": "object_obj_hako_obj_hako",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a45c4",
+   "name": "object_obj_ele_obj_ele",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a4d58",
+   "name": "object_snow_fiw_4m_fiw_4m",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a5500",
+   "name": "object_snow_fiw_5m_fiw_5m",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a5cb8",
+   "name": "object_snow_fiw_6m_fiw_6m",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a6794",
+   "name": "object_snow_saku01_saku01",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a73fc",
+   "name": "object_snow_saku01_b_saku01_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a7e5c",
+   "name": "object_snow_saku02_saku02",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045a8c84",
+   "name": "object_snow_saku02_b_saku02_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x045a8e04",
    "name": "model__obj_hasira_c_obj_hasira_c",
    "size": 44,
@@ -96347,8 +96618,50 @@
    "library": false
   },
   {
+   "address": "0x045adc58",
+   "name": "object_kareki_all1_ktree01_ktree01",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045aea60",
+   "name": "object_kareki_all1_ktree02_ktree02",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045af918",
+   "name": "object_kareki_all1_ktree03_ktree03",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045afaec",
+   "name": "object_big_ita_a_big_ita_a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045b0624",
+   "name": "object_maruta_all_maruta01_maruta01",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x045b0808",
    "name": "object_green_ki_drya_ki_drya",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045b0c7c",
+   "name": "object_green_ki_dryb_ki_dryb",
    "size": 52,
    "match": false,
    "library": false
@@ -96363,6 +96676,13 @@
   {
    "address": "0x045b1074",
    "name": "object_green_moku_b_moku_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045b135c",
+   "name": "object_green_moku_c_moku_c",
    "size": 52,
    "match": false,
    "library": false
@@ -96487,6 +96807,20 @@
    "library": false
   },
   {
+   "address": "0x045da0c0",
+   "name": "texlist_kaos_eme_eff",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045da0c8",
+   "name": "anim_kaos_eme",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x045da104",
    "name": "object_hasihasi_info",
    "size": 48,
@@ -96494,9 +96828,72 @@
    "library": false
   },
   {
+   "address": "0x045da208",
+   "name": "object_c_info",
+   "size": 288,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045da780",
+   "name": "hasi_colli_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045da7f8",
+   "name": "icecap_bridge_01",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045da9e8",
+   "name": "object_c_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045daa18",
+   "name": "object_c_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045daa48",
+   "name": "object_c_info",
+   "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x045dab08",
    "name": "object_c_info",
    "size": 240,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045dabf8",
+   "name": "object_c_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045dac28",
+   "name": "object_c_info",
+   "size": 192,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045dace8",
+   "name": "object_c_info",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -99436,5 +99833,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "cd60efa9ad58cda80ece38db2a8173e71839a61f3cbda07877d1ba95ffdf1768"
+ "inputs_sha256": "395cb2a7286557ff28b3dd329bc118eb1690b554752b012973a04c60fb5870be"
 }
