@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1448" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,924 of 16,524 game functions done (35.85%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,925 of 16,524 game functions done (35.85%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 599,1200.5 593,1193.6 594.1,1192" fill="#4e32f3"/>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 593,1193.6 594.1,1192" fill="#ffffff" fill-opacity="0.4"/>
@@ -2114,11 +2114,12 @@
 <polygon points="27.2,987.6 31,987.6 25,994.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="21.8,984.5 28.2,984.5 29.9,986 31,987.6 25,994.5 19,987.6 20.1,986" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="35" y="994" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Mini-games <tspan font-weight="400" fill="#8b949e">19%</tspan></text>
-<rect x="20" y="1267" width="107" height="118" rx="3" fill="#21262d" stroke="#30363d"><title>Sky Chase: 48 of 168 functions done</title></rect>
+<rect x="20" y="1267" width="107" height="118" rx="3" fill="#21262d" stroke="#30363d"><title>Sky Chase: 49 of 168 functions done</title></rect>
 <text x="23" y="1281" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sky Chase <tspan font-weight="400" fill="#8b949e">13%</tspan></text>
 <g transform="translate(23,1285)">
 <rect y="0" width="98" height="84" fill="url(#todo)"/>
 <rect x="35" y="0" width="6" height="6" fill="#ffd700"><title>0x007ea050 TornadeDestruct: 100%</title></rect>
+<rect x="70" y="0" width="6" height="6" fill="#ffd700"><title>0x007ea3d0 CheckLockMode: 100%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x007eaf20 ScoreDisp: 100%</title></rect>
 <rect x="42" y="7" width="6" height="6" fill="#ffd700"><title>0x007eaff0 ShtScoreAdd: 100%</title></rect>
 <rect x="49" y="7" width="6" height="6" fill="#ffd700"><title>0x007eb060 HitNumAdd: 100%</title></rect>

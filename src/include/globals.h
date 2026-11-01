@@ -2881,6 +2881,7 @@ extern float DAT_060cd270;
 extern struct task *DAT_060cd274;
 extern struct task *DAT_060cd388;
 extern char DAT_060cd39c[4];
+extern int DAT_060ce3fc;
 extern int DAT_060ce404;
 extern int DAT_060ce418;
 extern float DAT_060ce43c;
