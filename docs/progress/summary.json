@@ -45595,8 +45595,24 @@
    "library": false
   },
   {
+   "address": "0x006bd4c0",
+   "name": "mainKnucklesPast03",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006bd610",
    "name": "mainKnucklesPast01",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006bd760",
+   "name": "mainSonicPast01",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -45692,7 +45708,7 @@
   },
   {
    "address": "0x006bf900",
-   "name": "EmeraldDisplayer",
+   "name": "EmeraldDisplayer(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -45704,6 +45720,22 @@
    "accuracy": 0.05128205128205128,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006bfa00",
+   "name": "EmeraldDisplayer(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006bfa90",
+   "name": "ObjectPastMasterEmerald",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -93684,8 +93716,22 @@
    "library": false
   },
   {
+   "address": "0x0270c274",
+   "name": "pos_tical",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0270c29c",
    "name": "tical_pos",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0270c2c4",
+   "name": "pos_tical",
    "size": 12,
    "match": false,
    "library": false
@@ -93701,6 +93747,13 @@
    "address": "0x0270c550",
    "name": "material_bigfire",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0270c560",
+   "name": "cinfo_emerald",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -100994,5 +101047,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "8ac87b6aea125a3d379e82a33495d85703bdc5471de68070ca1cd82162537b8d"
+ "inputs_sha256": "4308240f627d9f08f67b9c3d27f1f3330d108b11cc19dcb431d3c1a8849728e4"
 }

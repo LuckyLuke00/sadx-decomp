@@ -632,6 +632,7 @@ extern struct NJS_POINT3 DAT_0270c260;
 extern struct NJS_POINT3 tical_pos;
 extern struct NJS_SPRITE sprite_bigfire;
 extern struct NJS_ARGB material_bigfire;
+extern struct CCL_INFO cinfo_emerald[];
 extern struct NJS_ARGB material_panlight;
 extern struct NJS_SPRITE sprite_panlight;
 extern struct CCL_INFO cinfo_well[];
