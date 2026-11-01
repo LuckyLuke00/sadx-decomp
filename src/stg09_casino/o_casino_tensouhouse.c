@@ -1,5 +1,6 @@
 #include "decls.h"
 static void Init(struct task *tp, struct TENSHOUSEINFO *tensinfo);
+static void Init(struct task *tp, struct TENSHOUSEINFO *tensinfo);
 extern struct TENSHOUSEINFO tensinfo[];
 
 #pragma optimize("", off)
@@ -15,7 +16,8 @@ void ObjectCasinoTensS(struct task *tp)
 	Init(tp, &tensinfo[0]);
 }
 
-// STUB: SADX 0x00876f20
+// FUNCTION: SADX 0x00876f20
 void ObjectCasinoTensC(struct task *tp)
 {
+	Init(tp, &tensinfo[1]);
 }

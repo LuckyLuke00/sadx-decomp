@@ -3394,6 +3394,11 @@ void ObjectCasinoKinkaiInit(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0086df60
+void ExecHosin(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0086e3c0
 void ExecMudout(struct task *tp)
 {
@@ -3424,8 +3429,23 @@ void ExecCapsule(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00877a70
+void ObjectCasinoTsdoorDraw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00877c10
+void ObjectCasinoTsdoorExec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008781e0
 void ObjectCasinoSlotArmExec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00878ab0
+void ObjectCasinoFirelightExec(struct task *tp)
 {
 }
 
@@ -3434,8 +3454,8 @@ void FUN_00878e40()
 {
 }
 
-// STUB: SADX 0x00879630
-void ObjectCasinoKinkaInit(struct task *tp)
+// STUB: SADX 0x00879440
+void ObjectCasinoKinkaDraw(struct task *tp)
 {
 }
 

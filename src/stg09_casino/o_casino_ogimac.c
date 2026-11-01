@@ -43,10 +43,12 @@ long ObjCasino_CheckUpperY(float ypos)
 	return 0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x008894f0
 void ObjCasino_InitGColl(struct task *tp, struct obj *pobj, float rad, long attr)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00889860
 void ObjCasino_DrawSphere(struct NJS_POINT3 *center, float scl)
@@ -351,9 +353,19 @@ void ExecG(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0088a4e0
+// FUNCTION: SADX 0x0088a4e0
 void ObjCasino_InitG(struct task *tp, struct obj *pobject)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, 360010.0f))
+		return;
+	var1->wtimer = (short)(pobject->model->r + 20.0 + njScalor(&pobject->model->center));
+	tp->disp = DispObj;
+	tp->exec = ExecG;
+	tp->dest = FUN_008895d0;
+	var1->timer.l = (long)pobject;
+	if (FUN_004c39c0(tp) == 0)
+		ObjCasino_InitGColl(tp, pobject, (float)var1->wtimer, 0);
 }
 
 // FUNCTION: SADX 0x0088a590

@@ -9,9 +9,10 @@ static struct TEXANIMINFO texanim[2];
 extern struct obj object_cas_gb_lht_gb_lht[1];
 void FUN_00889bd0(struct TEXANIMINFO *param_1, int param_2);
 
-// STUB: SADX 0x00872e00
+// FUNCTION: SADX 0x00872e00
 static void End(struct task *tp)
 {
+	FUN_007d21b0(&texanim[0], 2);
 }
 
 // FUNCTION: SADX 0x00872e10
