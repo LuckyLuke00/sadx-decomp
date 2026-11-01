@@ -96,8 +96,10 @@ def brief(args, config):
 def score(args, config):
     percent, output = llm.score(config, args.address)
     print(output.strip())
-    print(f"{llm.hexa(args.address)}: " + ("did not build" if percent is None else f"{percent:.2f}%"))
-    return 0 if percent == 100 else 1
+    tricked = llm.fn_tricks(output, args.address)
+    print(f"{llm.hexa(args.address)}: " + ("did not build" if percent is None else f"{percent:.2f}%")
+          + (f", but only through a trick ({tricked})" if tricked else ""))
+    return 0 if percent == 100 and not tricked else 1
 
 
 def check_folder(args, config):
@@ -127,11 +129,11 @@ def check_folder(args, config):
 
 def winning_reply(transcript, address):
     """(the fenced C, the try) of the first try in TRANSCRIPT, an llm.py transcript, that reached 100% with a block
-    that holds the function and no tricks.forbidden word, or None."""
+    that holds the function, no tricks.forbidden word and no refused line, or None."""
     for line in transcript.read_text(encoding="utf-8").splitlines():
         record = json.loads(line)
         result = re.match(r"\d+(?:\.\d+)?", record.get("result", ""))
-        if "try" in record and result and float(result.group()) >= 100:
+        if "try" in record and result and float(result.group()) >= 100 and not record.get("refused"):
             block = llm.cpp_block(record["reply"], address)
             if block is not None and not tricks.forbidden(block.split("\n")):
                 return block, record["try"]

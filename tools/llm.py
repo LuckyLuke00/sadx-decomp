@@ -64,8 +64,8 @@ rounds) and no `static` on a function that nothing calls. The note to the model 
 After STUCK_TRIES tries without a new best, the tries think until the best moves again.
 With --refuse-fakematch, a 100% try with a line that is not plain C, such as a cast on a raw address, is
 refused: the note names each such line and its plain form, and the run goes on. The file keeps the first
-refused try only when no try matches in plain C. Nor do calls and variables go through the model's type then:
-those casts are not plain C either.
+refused try only when no plain-C try scores, the file's own code included. Nor do calls and variables go
+through the model's type then: those casts are not plain C either.
 When the file already holds the function, that code is the first best: a solve only
 replaces it with a try that scores higher.
 """
@@ -136,6 +136,7 @@ PLAIN_FORMS = {  # what to write in place of each fakematch kind, for --refuse-f
     "address_number": "write the number itself: the exe uses it as a flag or a count, not as a global's address",
     "constant_global": "drop the declaration and write `{literal}` in its place: the compiler puts the source's "
                        "literals in read-only data",
+    "trick": "write the function without it: check.py does not count a function with a trick as matched",
 }
 RESULT_FIELDS = ["file", "address", "size", "tries", "best", "wall_s", "prompt_tokens", "completion_tokens", "model",
                  "think_tries", "repeats"]
@@ -215,7 +216,9 @@ CONVERSION = re.compile(r"^(.+?)\((\d+)\) : error C(?:2440|2664): '([^']*)' : ca
 CONVERTED = {"=", "initializing", "return"}  # what C2440 can name when one expression is converted
 ERROR_AT = re.compile(r"^(.+?)\((\d+)\) : error ")
 CAST_BROKEN = re.compile(r"error C(?:2059|2143|2061|2146|2065):")  # what a cast the compiler cannot parse causes
-SCORE = re.compile(r"^(0x[0-9a-f]{8}) \S.*?: (?:(\d+(?:\.\d+)?)% match|(stub))", re.M)
+SCORE = re.compile(r"^(0x[0-9a-f]{8}) \S.*?: (?:(\d+(?:\.\d+)?)%(?: match|, but only through a trick)|(stub))", re.M)
+# check.py fn on a function at 100% only through a trick: group 2 is the tricks, such as "fake match raw_address"
+TRICK = re.compile(r"^(0x[0-9a-f]{8}) \S.*?: 100%, but only through a trick \((.*)\)\. ", re.M)
 DECLARED = re.compile(r"^(?:prototype:|locals:|  \w+ 0x[0-9a-f]{8} ).*", re.M)  # a dossier's typed lines
 TAG = re.compile(r"\b(?:struct|union|enum)\s+(\w+)")
 TYPE_NAME = re.compile(r"\b(?:(?:struct|union|enum)\s+(\w+)|(\w+)(?=\s*\*|\s+\w))")  # a tag, or a word before a name
@@ -740,11 +743,18 @@ def decls(config):
 
 
 def score(config, address):
-    """(percent, or None when nothing built or decls failed, the output of decls and the scoring)."""
+    """(percent, or None when nothing built or decls failed, the output of decls and the scoring). A function at
+    100% only through a trick gets 100: fn_tricks tells it apart."""
     declared, failed = decls(config)
     text, _ = run_check("fn", hexa(address))
     scores = {int(m.group(1), 16): 0.0 if m.group(3) else float(m.group(2)) for m in SCORE.finditer(text)}
     return (None if failed else scores.get(address)), declared + text
+
+
+def fn_tricks(output, address):
+    """The tricks that check.py fn names in OUTPUT for the function at ADDRESS, such as "fake match raw_address":
+    it scores 100% only through them, so it is no match. None when fn names none."""
+    return next((m.group(2) for m in TRICK.finditer(output) if int(m.group(1), 16) == address), None)
 
 
 def dossier(config, address, *flags):
@@ -1423,14 +1433,14 @@ def next_turn(best, improved, reply, note, latest):
 
 
 def file_best(scored, text, address, known, types, prefix=False):
-    """The function's definition in TEXT, the file, as a Best when it has one that builds, else None. SCORED gives
-    the percent or None and the build output of a file's text."""
+    """The function's definition in TEXT, the file, as a Best when it has one that builds without a trick (see
+    fn_tricks), else None. SCORED gives the percent or None and the build output of a file's text."""
     lines = text.split("\n")
     span = definition_span(lines, address)
     if span is None or lines[span[0]].lstrip().startswith("// STUB"):
         return None
     percent, output = scored(text)
-    if percent is None:
+    if percent is None or fn_tricks(output, address):
         return None
     code = "\n".join(lines[span[0]:span[1] + 1])
     return Best(percent, f"```cpp\n{code}\n```", feedback(percent, output, address, known, types, prefix), text)
@@ -1769,7 +1779,7 @@ def solve_function(args, file, address, transcript):
     in_image = exe_contains() if args.refuse_fakematch else None
     literal_at = exe_literal() if args.refuse_fakematch else None
     tree = known_tree() if args.refuse_fakematch else None
-    fallback = None  # the first refused 100% try: the file keeps it when no try matches in plain C
+    fallback = None  # the first refused 100% try: the file keeps it when no plain-C try scores
     messages, seen = base, {}  # seen: key -> (try, note)
     declared_before = {}  # name: the line an earlier try declared it with; a later try often leaves the line out
     bench = Bench(rebuild, config, path, address, known, args.tree_wins, repair_types, declared_before,
@@ -1849,6 +1859,8 @@ def solve_function(args, file, address, transcript):
                                                tree.with_decls(build.decls))
                                + fakematch.constant_globals(build.decls, literal_at, "\n".join(build.func),
                                                             tree.is_debug_function(build.func)))
+                if percent == 100 and not refused and (tricked := fn_tricks(build.output, address)):
+                    refused = [("trick", trick) for trick in tricked.split(", ")]
                 if refused:
                     note = repairs.note() + refusal(refused, lambda a: symbol_at(table_symbols(config["tables"]), a),
                                                     literal_at)
@@ -1901,7 +1913,7 @@ def solve_function(args, file, address, transcript):
                                                                          or (thinking and repeat is not None)):
                 break
             messages = base + next_turn(best, improved, shown, note, latest)
-        if fallback and not (best and best.percent == 100):
+        if fallback and not best:
             best = fallback
             log.write(json.dumps({"kept_refused": True}) + "\n")
     # The file keeps the code of tree_code: a use of it can match.
