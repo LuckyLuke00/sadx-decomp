@@ -18,9 +18,20 @@ void ObjectCarManagerExit(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0081c0f0
+// FUNCTION: SADX 0x0081c0f0
 void ObjectCarExit(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct obj *var2 = (struct obj *)var1->value.ptr;
+	if (var2 != 0)
+	{
+		WithdrawCollisionEntry(tp, var2);
+		ReleaseMobileLandObject(var2);
+	}
+	if ((var1->mode & 0x80) != 0)
+	{
+		dsStop_id((int)var1);
+	}
 }
 
 // STUB: SADX 0x0081c250

@@ -2807,6 +2807,9 @@ struct obj object_obj_post1_post1[1];
 // GLOBAL: SADX 0x03e3f104
 struct obj object_obj_post4_post4[1];
 
+// GLOBAL: SADX 0x03e42370
+struct obj object_obj_bench_bench_bench[1];
+
 // GLOBAL: SADX 0x03e42a14
 struct obj object_neon1_neon_a_neon_a[1];
 
@@ -2849,14 +2852,47 @@ struct obj object_ss_hyd_hyd[1];
 // GLOBAL: SADX 0x03e463a8
 struct obj object_green_g_belt_g_belt[1];
 
+// GLOBAL: SADX 0x03e46978
+struct obj object_st_green_basin_a_basin_a[1];
+
+// GLOBAL: SADX 0x03e46fa4
+struct obj object_st_green_basin_b_basin_b[1];
+
+// GLOBAL: SADX 0x03e48984
+struct obj object_lmp_lmpb_lmpb[1];
+
+// GLOBAL: SADX 0x03e491e4
+struct obj object_lmpc_lmpc_lmpc[1];
+
+// GLOBAL: SADX 0x03e4d424
+struct obj object_pin_pin_pin[1];
+
 // GLOBAL: SADX 0x03e5269c
 struct obj object_curb_curb01_curb01[1];
+
+// GLOBAL: SADX 0x03e52edc
+struct obj object_fence02_fen02_fen02[1];
+
+// GLOBAL: SADX 0x03e53380
+struct obj object_obj_siba2_siba2[1];
+
+// GLOBAL: SADX 0x03e5364c
+struct obj object_obj_siba1_siba1[1];
+
+// GLOBAL: SADX 0x03e53ec4
+struct obj object_fence00_fen01_fen01[1];
+
+// GLOBAL: SADX 0x03e54bb4
+struct obj object_gate_gate00_gate00[1];
 
 // GLOBAL: SADX 0x03e550c8
 struct obj object_green_g_belt_a_g_belt_a[1];
 
 // GLOBAL: SADX 0x03e57994
 struct obj object_hwobj_portlght_portlght[1];
+
+// GLOBAL: SADX 0x03e57efc
+struct obj object_ss_tunagidai_tunagidai[1];
 
 // GLOBAL: SADX 0x03e59350
 struct obj object_stobj_fplant01_fplant01[1];
