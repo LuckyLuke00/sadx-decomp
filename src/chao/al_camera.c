@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float DAT_025d4f40;
+extern float DAT_060cae38;
 extern long DAT_060cae34;
 extern float DAT_060cae58;
 extern float DAT_060cae5c;
@@ -48,9 +50,28 @@ void ALCAM_ClearCameraWork()
 	DAT_060caea8 = -1.0;
 }
 
-// STUB: SADX 0x00715370
+// FUNCTION: SADX 0x00715370
 void ALCAM_ModeSystem(struct _OBJ_CAMERAPARAM *pParam)
 {
+	char *var1;
+	if (DAT_060cb31c != 0)
+	{
+		var1 = (char *)*(int *)((char *)DAT_060cb31c + 0x20);
+	}
+	else
+	{
+		var1 = (char *)&DAT_060cae38;
+	}
+	*(float *)((char *)camcont_wp + 0xc) = *(float *)(var1 + 0x20);
+	*(float *)((char *)camcont_wp + 0x10) = *(float *)(var1 + 0x24);
+	*(float *)((char *)camcont_wp + 0x14) = *(float *)(var1 + 0x28);
+	*(float *)((char *)camcont_wp + 0x18) = *(float *)(var1 + 0x68);
+	*(float *)((char *)camcont_wp + 0x1c) = *(float *)(var1 + 0x6c);
+	*(float *)((char *)camcont_wp + 0x20) = *(float *)(var1 + 0x70);
+	*(int *)((char *)camcont_wp + 0x24) = *(int *)(var1 + 0x14);
+	*(int *)((char *)camcont_wp + 0x28) = *(int *)(var1 + 0x18);
+	*(int *)((char *)camcont_wp + 0x2c) = *(int *)(var1 + 0x1c);
+	*(float *)((char *)camcont_wp + 8) = *(float *)(var1 + 0x80) * DAT_025d4f40;
 }
 
 // STUB: SADX 0x00715410

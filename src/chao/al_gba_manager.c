@@ -66,9 +66,26 @@ long AL_GBAManagerIsSelected(int PortNum, int ItemNum)
 	return 0;
 }
 
-// STUB: SADX 0x00441c20
+// FUNCTION: SADX 0x00441c20
 void FUN_00441c20(int param_1, int param_2)
 {
+	struct task *var1;
+
+	var1 = DAT_05b06828;
+	if (var1 != 0)
+	{
+		if (AL_GBAManagerIsExist(param_1, param_2) != 0)
+		{
+			if (AL_GBAManagerIsSelected(param_1, param_2) != 0)
+			{
+				*(int *)((char *)var1 + 0x30 + (param_1 * 0x421 + param_2) * 4) = 0;
+			}
+			else
+			{
+				*(int *)((char *)var1 + 0x30 + (param_1 * 0x421 + param_2) * 4) = 1;
+			}
+		}
+	}
 }
 
 // FUNCTION: SADX 0x00441f60
