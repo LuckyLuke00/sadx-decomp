@@ -47269,9 +47269,9 @@
   {
    "address": "0x006d69a0",
    "name": "Robo_GetPosHand",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47397,7 +47397,7 @@
   {
    "address": "0x006dce00",
    "name": "exec_Emission",
-   "accuracy": 0.06896551724137931,
+   "accuracy": 0.0625,
    "effective": false,
    "stub": true,
    "library": false
@@ -47405,9 +47405,9 @@
   {
    "address": "0x006dce70",
    "name": "disp_ElectSegment",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47485,9 +47485,9 @@
   {
    "address": "0x006dd500",
    "name": "EffAll_Init",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -47725,9 +47725,9 @@
   {
    "address": "0x006e0f00",
    "name": "PoleSet_Death",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67907,6 +67907,14 @@
    "library": false
   },
   {
+   "address": "0x008c2b20",
+   "name": "DrawWideLineTex2",
+   "accuracy": 0.2222222222222222,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008c2b70",
    "name": "FUN_008c2b70",
    "accuracy": 1.0,
@@ -87486,6 +87494,13 @@
    "library": false
   },
   {
+   "address": "0x009c1798",
+   "name": "DAT_009c1798",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x009c2d58",
    "name": "DAT_009c2d58",
    "size": 4,
@@ -94220,9 +94235,51 @@
    "library": false
   },
   {
+   "address": "0x0286c48c",
+   "name": "wline_segment",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0286c4bc",
+   "name": "DAT_0286c4bc",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0286c4f8",
    "name": "animtable_HandSpark",
    "size": 396,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0286c6c0",
+   "name": "wline_thunder",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0286c6f3",
+   "name": "DAT_0286c6f3",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0286c6f7",
+   "name": "DAT_0286c6f7",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0286c718",
+   "name": "animtable_spark",
+   "size": 44,
    "match": false,
    "library": false
   },
@@ -101047,5 +101104,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4308240f627d9f08f67b9c3d27f1f3330d108b11cc19dcb431d3c1a8849728e4"
+ "inputs_sha256": "e6fa720666fed787797cbd081b3c5fa7d754fdcb77a9ba5b45aaa52b2367816b"
 }

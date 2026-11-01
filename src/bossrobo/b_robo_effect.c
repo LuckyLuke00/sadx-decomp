@@ -1,4 +1,15 @@
 #include "decls.h"
+extern unsigned char DAT_0286c6f3;
+extern unsigned char DAT_0286c6f7;
+extern struct WIDELINE_TEXDATA wline_thunder[1];
+extern struct GHSPRITE_ANIM_TABLE animtable_spark[1];
+extern struct WIDELINE_TEXDATA wline_segment;
+extern int DAT_0286c4bc[4];
+extern const float DAT_009c1798[2];
+
+// GLOBAL: SADX 0x0286c430
+static struct CRUSHLIGHT_DATA cl_data;
+
 void FUN_006dcd30(struct task *param_1);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 void *MAlloc(unsigned int size);
@@ -79,17 +90,27 @@ void FUN_006dcd30(struct task *param_1)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006dce00
 void exec_Emission(struct task *pTask)
 {
 }
+#pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x006dce70
+// FUNCTION: SADX 0x006dce70
 void disp_ElectSegment(struct task *pTask)
 {
+	struct anywk *var1;
+
+	var1 = pTask->awp;
+	if (DAT_05b9d838 == 0)
+	{
+		wline_segment.index = DAT_0286c4bc[*(int *)((char *)var1 + 0x18) * 2];
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 0xa);
+		DrawWideLineTex2((struct NJS_POINT3 *)var1, (struct NJS_POINT3 *)((char *)var1 + 0xc), DAT_009c1798, &wline_segment);
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006dcec0
 void exec_ElectSegment(struct task *pTask)
@@ -181,9 +202,16 @@ void EffSpark(struct GHSPRITE *spr, struct NJS_POINT3 *pPos, float fScale, int f
 {
 }
 
-// STUB: SADX 0x006dd500
+// FUNCTION: SADX 0x006dd500
 void EffAll_Init(struct task *pTask)
 {
+	exec_Emission((struct task *)((char *)pTask->twp + 0x20));
+	EffHandSpark_Init();
+	DAT_0286c6f7 = 0xff;
+	DAT_0286c6f3 = 0xff;
+	*(unsigned char *)((char *)wline_thunder + 0xb) = 0xff;
+	*(unsigned char *)((char *)wline_thunder + 0x7) = 0xff;
+	ghSpriteAnimTableInit(&texlist_erobo, &animtable_spark[0], 0);
 }
 
 // FUNCTION: SADX 0x006dd540

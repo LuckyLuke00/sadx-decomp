@@ -3636,6 +3636,11 @@ extern void FUN_008c26f0(int, int, int)
 {
 }
 
+// STUB: SADX 0x008c2b20
+void DrawWideLineTex2(struct NJS_POINT3 *pPos1, struct NJS_POINT3 *pPos2, const float *pWidthTable, const struct WIDELINE_TEXDATA *data)
+{
+}
+
 // STUB: SADX 0x008c51b0
 void drawEffectChaos0LightParticle(struct task *tp)
 {

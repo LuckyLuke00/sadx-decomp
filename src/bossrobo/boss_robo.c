@@ -16,9 +16,13 @@ void _boss_robo_epilog()
 	}
 }
 
-// STUB: SADX 0x006d69a0
+// FUNCTION: SADX 0x006d69a0
 void Robo_GetPosHand(enum HAND_NUM nNum, struct NJS_POINT3 *pPos)
 {
+	float *var1 = *(float **)((char *)DAT_060bb8cc + 0x2c);
+	pPos->x = var1[nNum * 3 + 0x33];
+	pPos->y = var1[nNum * 3 + 0xd0 / 4];
+	pPos->z = var1[nNum * 3 + 0xd4 / 4];
 }
 
 // STUB: SADX 0x006d69e0
