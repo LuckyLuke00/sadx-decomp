@@ -137,6 +137,12 @@ void (*DAT_0099613c[4])(struct task *);
 // GLOBAL: SADX 0x00996dd0
 const struct CCL_INFO rocket_colli_info[1] = {};
 
+// GLOBAL: SADX 0x00997a48
+struct NJS_TEXANIM DAT_00997a48;
+
+// GLOBAL: SADX 0x00997a5c
+struct NJS_TEXANIM DAT_00997a5c;
+
 // GLOBAL: SADX 0x00997b60
 const long seq_item_flag[18] = {};
 
@@ -1687,6 +1693,9 @@ struct NJS_SPRITE sprite_er_hirame;
 
 // GLOBAL: SADX 0x026b9c08
 struct NJS_SPRITE sprite_er_hatena;
+
+// GLOBAL: SADX 0x026b9cfc
+struct NJS_TEXLIST texlist_board_score;
 
 // GLOBAL: SADX 0x026ba120
 struct obj object_ecb_bosscl_bosscl[1];
@@ -5039,6 +5048,9 @@ int DAT_05b39e98;
 // GLOBAL: SADX 0x05b39ea4
 int DAT_05b39ea4;
 
+// GLOBAL: SADX 0x05b39eb0
+float DAT_05b39eb0;
+
 // GLOBAL: SADX 0x05b39eb4
 int DAT_05b39eb4;
 
@@ -5053,6 +5065,9 @@ int DAT_05b3ded4;
 
 // GLOBAL: SADX 0x05b3ded8
 int DAT_05b3ded8;
+
+// GLOBAL: SADX 0x05b3dedc
+void *DAT_05b3dedc;
 
 // GLOBAL: SADX 0x05b3dee0
 int DAT_05b3dee0;
@@ -5074,6 +5089,9 @@ float DAT_05b3df10[3];
 
 // GLOBAL: SADX 0x05b3df14
 float DAT_05b3df14[3];
+
+// GLOBAL: SADX 0x05b3df24
+int DAT_05b3df24;
 
 // GLOBAL: SADX 0x05b3df28
 NJS_ARGB DAT_05b3df28;
@@ -7402,6 +7420,15 @@ unsigned long DAT_05edcbb4;
 
 // GLOBAL: SADX 0x05edcc38
 struct task *DAT_05edcc38;
+
+// GLOBAL: SADX 0x05edcc3c
+struct NJS_SPRITE DAT_05edcc3c;
+
+// GLOBAL: SADX 0x05edcc5c
+struct NJS_SPRITE DAT_05edcc5c;
+
+// GLOBAL: SADX 0x05edcc7c
+int DAT_05edcc7c;
 
 // GLOBAL: SADX 0x05edcc80
 struct NJS_SPRITE DAT_05edcc80;

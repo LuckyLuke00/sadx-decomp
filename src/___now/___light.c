@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 extern char DAT_05cd4080[24612];
 void lig_flashPalette(int no);
 void lig_calcPalette(int no);
@@ -67,9 +68,13 @@ void lig_fillOffsetPalette(int no, unsigned long spe, int num)
 {
 }
 
-// STUB: SADX 0x005989a0
+// FUNCTION: SADX 0x005989a0
 void lig_cpyPalette(int dstNo, int srcNo)
 {
+	int local_cg;
+	int local_8g;
+	memcpy((char *)DAT_05cd4080 + (dstNo << 0xb), (char *)DAT_05cd4080 + (srcNo << 0xb), 0x800);
+	lig_flashPalette(dstNo);
 }
 
 // STUB: SADX 0x005989e0
