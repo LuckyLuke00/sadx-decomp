@@ -2955,7 +2955,6 @@ void Disp02(struct task *tp);
 void Object_Mountain_Syuujin_Display(struct task *tp);
 void Object_Mountain_Syuujin_Move_B(struct task *tp);
 void Object_Mountain_Syuujin_Move_R(struct task *tp);
-void Object_Mountain_Syuujin_Move_G(struct task *tp);
 void DstrMtnSpiderA(struct task *tp);
 void DesertAChildTask(struct task *tp);
 void RelaypointDraw(struct task *tp);

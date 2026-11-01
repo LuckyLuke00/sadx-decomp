@@ -3044,6 +3044,12 @@ struct NJS_MODEL model_haka1a_gaikotu_gaikotu[1];
 // GLOBAL: SADX 0x03f5c010
 struct obj object_sotolight_light_light[1];
 
+// GLOBAL: SADX 0x03f5cea4
+struct obj object_pipe_set_pipebox_pipebox[1];
+
+// GLOBAL: SADX 0x03f5d4ec
+struct obj object_pipe_set_pipe_i_pipe_i[1];
+
 // GLOBAL: SADX 0x03f5efa4
 struct obj object_saku_saku_saku[1];
 
@@ -3073,6 +3079,9 @@ struct obj object_mt_mtasiba_mtasiba[1];
 
 // GLOBAL: SADX 0x03f8f6f4
 struct obj object_mt_sotosaku_sotosaku[1];
+
+// GLOBAL: SADX 0x03f9f69c
+struct NJS_ACTION action_gearset_qnaka_wall[1];
 
 // GLOBAL: SADX 0x03fa221c
 struct obj object_ki01_ki01_ki01[1];
@@ -3113,11 +3122,20 @@ struct bridge_model_info mountain_bridge_03;
 // GLOBAL: SADX 0x03feaa78
 struct bridge_model_info mountain_bridge_04;
 
+// GLOBAL: SADX 0x03feac58
+struct CCL_INFO futa_colli[1];
+
+// GLOBAL: SADX 0x03feacc8
+struct childtaskset cts_mount_futa[3];
+
 // GLOBAL: SADX 0x03feb220
 struct CCL_INFO erupt_expl_cinfo[1];
 
 // GLOBAL: SADX 0x03feb5c8
 struct CCL_INFO object_c2_info[1];
+
+// GLOBAL: SADX 0x03feb658
+struct CCL_INFO object_c_info[4];
 
 // GLOBAL: SADX 0x03feb9b0
 struct obj *untei_objtbl[4];

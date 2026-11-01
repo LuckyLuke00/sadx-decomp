@@ -58541,9 +58541,9 @@
   {
    "address": "0x0082a3b0",
    "name": "GC_Zako",
-   "accuracy": 0.037037037037037035,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -58813,9 +58813,9 @@
   {
    "address": "0x0082f310",
    "name": "Object_Mountain_Syuujin_Move_B",
-   "accuracy": 0.05,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -58829,9 +58829,9 @@
   {
    "address": "0x0082f410",
    "name": "Object_Mountain_Syuujin_Move_G",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -58869,9 +58869,9 @@
   {
    "address": "0x0082fa30",
    "name": "Object_Mountain_Futa",
-   "accuracy": 0.038461538461538464,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -58957,9 +58957,9 @@
   {
    "address": "0x008321a0",
    "name": "Draw(15)",
-   "accuracy": 0.03278688524590164,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -59037,9 +59037,17 @@
   {
    "address": "0x00834760",
    "name": "ObjectMountainPipeI",
-   "accuracy": 0.07692307692307693,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008347a0",
+   "name": "ObjectMountainPipeBox",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -96728,6 +96736,20 @@
    "library": false
   },
   {
+   "address": "0x03f5cea4",
+   "name": "object_pipe_set_pipebox_pipebox",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03f5d4ec",
+   "name": "object_pipe_set_pipe_i_pipe_i",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03f5efa4",
    "name": "object_saku_saku_saku",
    "size": 52,
@@ -96794,6 +96816,13 @@
    "address": "0x03f8f6f4",
    "name": "object_mt_sotosaku_sotosaku",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03f9f69c",
+   "name": "action_gearset_qnaka_wall",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -96889,6 +96918,20 @@
    "library": false
   },
   {
+   "address": "0x03feac58",
+   "name": "futa_colli",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03feacc8",
+   "name": "cts_mount_futa",
+   "size": 108,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03feb220",
    "name": "erupt_expl_cinfo",
    "size": 48,
@@ -96906,6 +96949,13 @@
    "address": "0x03feb5c8",
    "name": "object_c2_info",
    "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03feb658",
+   "name": "object_c_info",
+   "size": 192,
    "match": false,
    "library": false
   },
@@ -100762,5 +100812,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "f46fcd363e2421976cb76f9e809242d7aa02fea905df48051a757e09fb49eefb"
+ "inputs_sha256": "0be9a0745356accc1c1e8669d5352b6cb68a62dfc771b4461eea0953037c424a"
 }
