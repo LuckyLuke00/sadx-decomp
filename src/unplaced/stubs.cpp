@@ -1541,6 +1541,11 @@ void SonicChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct 
 {
 }
 
+// STUB: SADX 0x0054e510
+void SonicDirectAhead(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0054ffb0
 void drawEffectKiran2(struct task *tp)
 {
