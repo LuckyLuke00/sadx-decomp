@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,776 of 16,524 game functions done (34.95%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,791 of 16,524 game functions done (35.04%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="600.8,1179.5 607.2,1179.5 608.9,1181 610,1182.6 604,1189.5 598,1182.6 599.1,1181" fill="#4e32f3"/>
 <polygon points="600.8,1179.5 607.2,1179.5 608.9,1181 610,1182.6 598,1182.6 599.1,1181" fill="#ffffff" fill-opacity="0.4"/>
@@ -775,8 +775,8 @@
 <rect x="42" y="112" width="6" height="6" fill="#b07d00"><title>0x00819950 dispTPMonitor: 100%</title></rect>
 <rect x="14" y="119" width="6" height="6" fill="#b07d00"><title>0x00842d60 dispTPFoothold: 100%</title></rect>
 </g>
-<rect x="227" y="238" width="146" height="122" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Speed Highway: 73 of 232 functions done</title></rect>
-<text x="230" y="252" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Speed Highway <tspan font-weight="400" fill="#59636e">11%</tspan></text>
+<rect x="227" y="238" width="146" height="122" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Speed Highway: 88 of 232 functions done</title></rect>
+<text x="230" y="252" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Speed Highway <tspan font-weight="400" fill="#59636e">13%</tspan></text>
 <g transform="translate(230,256)">
 <rect y="0" width="140" height="77" fill="url(#todo)"/>
 <rect y="77" width="84" height="7" fill="url(#todo)"/>
@@ -785,6 +785,7 @@
 <rect x="91" y="0" width="6" height="6" fill="#b07d00"><title>0x0081a840 Rd_Highway: 100%</title></rect>
 <rect x="105" y="0" width="6" height="6" fill="#b07d00"><title>0x0081a920 Bg_Highway: 100%</title></rect>
 <rect x="112" y="0" width="6" height="6" fill="#b07d00"><title>0x0081a940 ObjectCarManagerExit: 100%</title></rect>
+<rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x0081c0f0 ObjectCarExit: 100%</title></rect>
 <rect x="91" y="7" width="6" height="6" fill="#b07d00"><title>0x0081c430 ObjectHighwayCarManager: 100%</title></rect>
 <rect x="7" y="14" width="6" height="6" fill="#b07d00"><title>0x0081ca40 DrawForCurb: 100%</title></rect>
 <rect x="14" y="14" width="6" height="6" fill="#b07d00"><title>0x0081cac0 ObjectForCurbCurb: 100%</title></rect>
@@ -803,6 +804,7 @@
 <rect x="133" y="14" width="6" height="6" fill="#b07d00"><title>0x0081d350 ObjectHighwayRingAct2: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x0081d410 ObjectHighwayRaftA: 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x0081d430 ObjectHighwayRaftC: 100%</title></rect>
+<rect x="14" y="21" width="6" height="6" fill="#b07d00"><title>0x0081d450 ObjectHighwayTunagi: 100%</title></rect>
 <rect x="21" y="21" width="6" height="6" fill="#b07d00"><title>0x0081d4b0 ObjectHighwayHeliPLight: 100%</title></rect>
 <rect x="126" y="21" width="6" height="6" fill="#b07d00"><title>0x0081e4b0 Draw(7): 100%</title></rect>
 <rect x="133" y="21" width="6" height="6" fill="#b07d00"><title>0x0081e510 Exec(26): 100%</title></rect>
@@ -810,9 +812,20 @@
 <rect x="7" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e550 Draw(8): 100%</title></rect>
 <rect x="14" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e5b0 Exec(27): 100%</title></rect>
 <rect x="21" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e5f0 ObjectStationPlant01: 100%</title></rect>
+<rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e650 ObjectHighwayGate: 100%</title></rect>
+<rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x0081e690 ObjectHighwayFence: 100%</title></rect>
+<rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x0081ea10 ObjectHighwaySiba1: 100%</title></rect>
+<rect x="77" y="28" width="6" height="6" fill="#b07d00"><title>0x0081ea70 ObjectHighwaySiba2: 100%</title></rect>
 <rect x="84" y="28" width="6" height="6" fill="#b07d00"><title>0x0081eab0 ObjectHighwayGreen: 100%</title></rect>
+<rect x="91" y="28" width="6" height="6" fill="#b07d00"><title>0x0081ead0 ObjectHighwayGreenA: 100%</title></rect>
+<rect x="98" y="28" width="6" height="6" fill="#b07d00"><title>0x0081eb30 ObjectHighwayGreenB: 100%</title></rect>
 <rect x="112" y="28" width="6" height="6" fill="#b07d00"><title>0x0081ebf0 ObjectHighwayGreenE: 100%</title></rect>
+<rect x="119" y="28" width="6" height="6" fill="#b07d00"><title>0x0081ec10 ObjectFence02: 100%</title></rect>
+<rect x="126" y="28" width="6" height="6" fill="#b07d00"><title>0x0081ec70 ObjectCurbCurb: 100%</title></rect>
 <rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x0081f1f0 Normal(struct task *): 100%</title></rect>
+<rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x0081f5f0 ObjectPinPin: 100%</title></rect>
+<rect x="84" y="35" width="6" height="6" fill="#b07d00"><title>0x0081f800 ObjectHighwayLamp01: 100%</title></rect>
+<rect x="91" y="35" width="6" height="6" fill="#b07d00"><title>0x0081f840 ObjectHighwayLamp02: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x0081ff60 Hit(struct task *): 100%</title></rect>
 <rect x="35" y="42" width="6" height="6" fill="#b07d00"><title>0x00820210 Draw(struct task *): 100%</title></rect>
 <rect x="77" y="42" width="6" height="6" fill="#b07d00"><title>0x008207a0 DrawA: 100%</title></rect>
@@ -826,6 +839,7 @@
 <rect x="21" y="49" width="6" height="6" fill="#b07d00"><title>0x00820d10 ObjectHighwayNeon03: 100%</title></rect>
 <rect x="28" y="49" width="6" height="6" fill="#b07d00"><title>0x00820d50 ObjectHighwayNeon04: 100%</title></rect>
 <rect x="35" y="49" width="6" height="6" fill="#b07d00"><title>0x00820d90 ObjectFence: 100%</title></rect>
+<rect x="42" y="49" width="6" height="6" fill="#b07d00"><title>0x00820dd0 ObjectBench: 100%</title></rect>
 <rect x="84" y="49" width="6" height="6" fill="#b07d00"><title>0x00821070 Normal(2): 100%</title></rect>
 <rect x="91" y="49" width="6" height="6" fill="#b07d00"><title>0x00821120 ObjectPost1: 100%</title></rect>
 <rect x="98" y="49" width="6" height="6" fill="#b07d00"><title>0x00821150 ObjectPost4: 100%</title></rect>
@@ -835,7 +849,8 @@
 <rect x="7" y="56" width="6" height="6" fill="#b07d00"><title>0x00821610 dispFlyingStepSub: 100%</title></rect>
 <rect x="49" y="56" width="6" height="6" fill="#b07d00"><title>0x00821d00 FUN_00821d00: 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#b07d00"><title>0x00821e60 ArcadeDisplayer: 100%</title></rect>
-<rect x="105" y="56" width="6" height="6" fill="#b07d00"><title>0x00822190 Norm(struct task *): 100%</title></rect>
+<rect x="105" y="56" width="6" height="6" fill="#b07d00"><title>0x00822190 Norm(1): 100%</title></rect>
+<rect x="112" y="56" width="6" height="6" fill="#b07d00"><title>0x008221e0 ObjectHighwaySlight: 100%</title></rect>
 <rect x="21" y="63" width="6" height="6" fill="#b07d00"><title>0x00822d00 dispSignboard: 100%</title></rect>
 <rect x="56" y="63" width="6" height="6" fill="#b07d00"><title>0x00823570 dispTank: 100%</title></rect>
 <rect x="77" y="63" width="6" height="6" fill="#b07d00"><title>0x00823740 exitTank: 100%</title></rect>

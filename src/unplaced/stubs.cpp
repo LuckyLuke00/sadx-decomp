@@ -3113,28 +3113,8 @@ void ObjectHighwayForRaftA(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0081e690
-void ObjectHighwayFence(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0081ead0
-void ObjectHighwayGreenA(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0081eb90
 void ObjectHighwayGreenD(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0081ec10
-void ObjectFence02(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0081f5f0
-void ObjectPinPin(struct task *tp)
 {
 }
 
