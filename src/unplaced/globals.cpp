@@ -164,6 +164,9 @@ struct NJS_POINT3 DAT_009bfd58;
 // GLOBAL: SADX 0x009bfdd8
 const struct Egm2CarData egm2_car_data[64] = {};
 
+// GLOBAL: SADX 0x009c1798
+const float DAT_009c1798[2] = {};
+
 // GLOBAL: SADX 0x009c2d58
 int DAT_009c2d58[1];
 
@@ -2054,11 +2057,26 @@ struct NJS_TEXLIST texlist_b_robo_bg;
 // GLOBAL: SADX 0x0286c3fc
 struct obj object_ecsc_s_sora_hare_robo;
 
-// GLOBAL: SADX 0x0286c430
-struct CRUSHLIGHT_DATA cl_data;
+// GLOBAL: SADX 0x0286c48c
+struct WIDELINE_TEXDATA wline_segment;
+
+// GLOBAL: SADX 0x0286c4bc
+int DAT_0286c4bc[4];
 
 // GLOBAL: SADX 0x0286c4f8
 struct GHSPRITE_ANIM_TABLE animtable_HandSpark[9];
+
+// GLOBAL: SADX 0x0286c6c0
+struct WIDELINE_TEXDATA wline_thunder[1];
+
+// GLOBAL: SADX 0x0286c6f3
+unsigned char DAT_0286c6f3;
+
+// GLOBAL: SADX 0x0286c6f7
+unsigned char DAT_0286c6f7;
+
+// GLOBAL: SADX 0x0286c718
+struct GHSPRITE_ANIM_TABLE animtable_spark[1];
 
 // GLOBAL: SADX 0x0286c878
 struct CCL_INFO colliInfoPunch[1];
