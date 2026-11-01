@@ -3,10 +3,22 @@ struct Alr;
 extern long (*DAT_00961ed8[6])(struct task *, struct task *, signed char);
 struct task;
 
-// STUB: SADX 0x0048ffc0
+// FUNCTION: SADX 0x0048ffc0
 struct task *AlrCommuGetColliTask(const struct colliwk *colliWk_p)
 {
-	return (struct task *)0;
+	struct task *var1 = NULL;
+	if ((colliWk_p->flag & 1) != 0)
+	{
+		struct colliwk *param_2 = colliWk_p->hit_cwp;
+		if (param_2 != NULL)
+		{
+			if (param_2->id == 9)
+			{
+				var1 = param_2->mytask;
+			}
+		}
+	}
+	return var1;
 }
 
 // STUB: SADX 0x0048fff0

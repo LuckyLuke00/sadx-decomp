@@ -11858,11 +11858,19 @@
    "library": false
   },
   {
-   "address": "0x0048a000",
-   "name": "ObjectAlrCracker_Init",
-   "accuracy": 0.045454545454545456,
+   "address": "0x00489f70",
+   "name": "ObjectAlrCracker",
+   "accuracy": 0.05,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0048a000",
+   "name": "ObjectAlrCracker_Init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -12076,9 +12084,9 @@
   {
    "address": "0x0048fc60",
    "name": "AlrEff_SetFlag",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -12100,9 +12108,9 @@
   {
    "address": "0x0048ffc0",
    "name": "AlrCommuGetColliTask",
-   "accuracy": 0.3076923076923077,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -12418,6 +12426,14 @@
    "library": false
   },
   {
+   "address": "0x00493330",
+   "name": "SendWateringcanCommand",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00493380",
    "name": "ObjectAlrBugle",
    "accuracy": 1.0,
@@ -12426,8 +12442,24 @@
    "library": false
   },
   {
+   "address": "0x004933a0",
+   "name": "SendBugleCommand",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00493410",
    "name": "ObjectAlrScoop",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00493430",
+   "name": "SendScoopCommand",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -50555,6 +50587,54 @@
    "library": false
   },
   {
+   "address": "0x007172c0",
+   "name": "ObjectAlrCheerChao",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00717450",
+   "name": "ObjectAlrStartMark",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00717470",
+   "name": "ObjectAlrSmallScreen",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00717490",
+   "name": "ObjectAlrIslet",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00717570",
+   "name": "ObjectAlrWhiteFlower",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00717590",
+   "name": "ObjectAlrPurpleFlower",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00717660",
    "name": "initObject(4)",
    "accuracy": 0.06060606060606061,
@@ -50611,11 +50691,19 @@
    "library": false
   },
   {
+   "address": "0x00717940",
+   "name": "ObjectAlrPalm",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00717aa0",
    "name": "initFrame",
-   "accuracy": 0.0392156862745098,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -87084,6 +87172,55 @@
    "library": false
   },
   {
+   "address": "0x009c8a8c",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8aa4",
+   "name": "DAT_009c8aa4",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8ab8",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8ad0",
+   "name": "DAT_009c8ad0",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8ad8",
+   "name": "DAT_009c8ad8",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8adc",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8af4",
+   "name": "DAT_009c8af4",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x009c8afc",
    "name": "ObjectTaskInfo",
    "size": 24,
@@ -87100,6 +87237,20 @@
   {
    "address": "0x009c8b34",
    "name": "DAT_009c8b34",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8b50",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x009c8b68",
+   "name": "DAT_009c8b68",
    "size": 8,
    "match": false,
    "library": false
@@ -90188,6 +90339,34 @@
    "address": "0x022ae2ac",
    "name": "startPosCracker",
    "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x022deac0",
+   "name": "object_cr4_nc_crk_nc_crk",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0233ccec",
+   "name": "object_cr4_nc_crk2_nc_crk2",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0233cd20",
+   "name": "object_cr4_nc_crk3_nc_crk3",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0233cd54",
+   "name": "object_cr4_nc_crk4_nc_crk4",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -100204,5 +100383,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "992c4a66914bf2d56f78026e6e6dc30ae8a91d53ba2e7ca2428bcfcbc4db7639"
+ "inputs_sha256": "62b4cd5729543ad23fc30c3a4801f011a281f4708169e238b9354937fceaf5b5"
 }

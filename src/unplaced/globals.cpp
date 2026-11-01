@@ -164,8 +164,23 @@ struct NJS_POINT3 DAT_009c610c;
 // GLOBAL: SADX 0x009c6620
 const char gsAdTexFilename[21] = {};
 
+// GLOBAL: SADX 0x009c8aa4
+struct ActionParam DAT_009c8aa4;
+
+// GLOBAL: SADX 0x009c8ad0
+struct ActionParam DAT_009c8ad0;
+
+// GLOBAL: SADX 0x009c8ad8
+struct ActionParam DAT_009c8ad8;
+
+// GLOBAL: SADX 0x009c8af4
+struct ActionParam DAT_009c8af4;
+
 // GLOBAL: SADX 0x009c8b34
 struct ActionParam DAT_009c8b34;
+
+// GLOBAL: SADX 0x009c8b68
+struct ActionParam DAT_009c8b68;
 
 // GLOBAL: SADX 0x009c8b90
 struct TaskInfo DAT_009c8b90;
@@ -691,6 +706,18 @@ struct NJS_POINT3 unitVecCracker;
 
 // GLOBAL: SADX 0x022ae2ac
 struct NJS_POINT3 startPosCracker;
+
+// GLOBAL: SADX 0x022deac0
+struct obj object_cr4_nc_crk_nc_crk[1];
+
+// GLOBAL: SADX 0x0233ccec
+struct obj object_cr4_nc_crk2_nc_crk2[1];
+
+// GLOBAL: SADX 0x0233cd20
+struct obj object_cr4_nc_crk3_nc_crk3[1];
+
+// GLOBAL: SADX 0x0233cd54
+struct obj object_cr4_nc_crk4_nc_crk4[1];
 
 // GLOBAL: SADX 0x0233e790
 struct NJS_TEXLIST texlist_chao_hyouji;

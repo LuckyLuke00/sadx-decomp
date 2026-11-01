@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1424" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,806 of 16,524 game functions done (35.13%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,820 of 16,524 game functions done (35.22%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1180.5 607.2,1180.5 608.9,1182 610,1183.6 604,1190.5 598,1183.6 599.1,1182" fill="#4e32f3"/>
 <polygon points="600.8,1180.5 607.2,1180.5 608.9,1182 610,1183.6 598,1183.6 599.1,1182" fill="#ffffff" fill-opacity="0.4"/>
@@ -3369,8 +3369,8 @@
 <rect x="210" y="210" width="6" height="6" fill="#ffd700"><title>0x00716350 AL_GetMessage: 100%</title></rect>
 <rect x="231" y="210" width="6" height="6" fill="#ffd700"><title>0x00717030 ChaoSelectWindowDestructor: 100%</title></rect>
 </g>
-<rect x="667" y="818" width="313" height="98" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 128 of 406 functions done</title></rect>
-<text x="670" y="832" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Race <tspan font-weight="400" fill="#8b949e">10%</tspan></text>
+<rect x="667" y="818" width="313" height="98" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 142 of 406 functions done</title></rect>
+<text x="670" y="832" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Race <tspan font-weight="400" fill="#8b949e">11%</tspan></text>
 <g transform="translate(670,836)">
 <rect y="0" width="308" height="63" fill="url(#todo)"/>
 <rect y="63" width="70" height="7" fill="url(#todo)"/>
@@ -3457,6 +3457,7 @@
 <rect x="301" y="21" width="6" height="6" fill="#ffd700"><title>0x00489c90 ObjectAlrCracker_Start: 100%</title></rect>
 <rect x="0" y="28" width="6" height="6" fill="#ffd700"><title>0x00489cb0 ObjectAlrCracker_GetFlag: 100%</title></rect>
 <rect x="21" y="28" width="6" height="6" fill="#ffd700"><title>0x00489dd0 shotTape: 100%</title></rect>
+<rect x="42" y="28" width="6" height="6" fill="#ffd700"><title>0x0048a000 ObjectAlrCracker_Init: 100%</title></rect>
 <rect x="126" y="28" width="6" height="6" fill="#ffd700"><title>0x0048a7f0 AlrObjFreeManageTask: 100%</title></rect>
 <rect x="133" y="28" width="6" height="6" fill="#ffd700"><title>0x0048a810 AlrObjSetTask: 100%</title></rect>
 <rect x="161" y="28" width="6" height="6" fill="#ffd700"><title>0x0048a950 AlrObjSetManageTask: 100%</title></rect>
@@ -3467,7 +3468,9 @@
 <rect x="231" y="35" width="6" height="6" fill="#ffd700"><title>0x0048f790 GetVoiceMode: 100%</title></rect>
 <rect x="238" y="35" width="6" height="6" fill="#ffd700"><title>0x0048f7e0 GetHomeTownFromId: 100%</title></rect>
 <rect x="259" y="35" width="6" height="6" fill="#ffd700"><title>0x0048f8b0 GetRacerInfoFromRank: 100%</title></rect>
+<rect x="301" y="35" width="6" height="6" fill="#ffd700"><title>0x0048fc60 AlrEff_SetFlag: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#ffd700"><title>0x0048fd30 AlrEffUnit_iniWater: 100%</title></rect>
+<rect x="28" y="42" width="6" height="6" fill="#ffd700"><title>0x0048ffc0 AlrCommuGetColliTask: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#ffd700"><title>0x00490040 AlrCommuSendObjCommand: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#ffd700"><title>0x00490080 FUN_00490080: 100%</title></rect>
 <rect x="63" y="42" width="6" height="6" fill="#ffd700"><title>0x004900e0 SendTargetCoconutCommand: 100%</title></rect>
@@ -3486,8 +3489,11 @@
 <rect x="203" y="49" width="6" height="6" fill="#ffd700"><title>0x00493220 ADV1_AL_PreservePreviousPosition: 100%</title></rect>
 <rect x="224" y="49" width="6" height="6" fill="#ffd700"><title>0x004932f0 ADV1_AL_InitIcon: 100%</title></rect>
 <rect x="231" y="49" width="6" height="6" fill="#ffd700"><title>0x00493310 ObjectAlrWateringCan: 100%</title></rect>
+<rect x="238" y="49" width="6" height="6" fill="#ffd700"><title>0x00493330 SendWateringcanCommand: 100%</title></rect>
 <rect x="245" y="49" width="6" height="6" fill="#ffd700"><title>0x00493380 ObjectAlrBugle: 100%</title></rect>
+<rect x="252" y="49" width="6" height="6" fill="#ffd700"><title>0x004933a0 SendBugleCommand: 100%</title></rect>
 <rect x="266" y="49" width="6" height="6" fill="#ffd700"><title>0x00493410 ObjectAlrScoop: 100%</title></rect>
+<rect x="273" y="49" width="6" height="6" fill="#ffd700"><title>0x00493430 SendScoopCommand: 100%</title></rect>
 <rect x="301" y="49" width="6" height="6" fill="#ffd700"><title>0x00493570 FUN_00493570: 100%</title></rect>
 <rect x="21" y="56" width="6" height="6" fill="#ffd700"><title>0x00493660 dispObject(3): 100%</title></rect>
 <rect x="28" y="56" width="6" height="6" fill="#ffd700"><title>0x00493690 execObject(2): 100%</title></rect>
@@ -3496,9 +3502,17 @@
 <rect x="49" y="56" width="6" height="6" fill="#ffd700"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
 <rect x="105" y="56" width="6" height="6" fill="#ffd700"><title>0x00717130 ObjectAlrBowChao: 100%</title></rect>
 <rect x="126" y="56" width="6" height="6" fill="#ffd700"><title>0x00717230 execObject(3): 100%</title></rect>
+<rect x="133" y="56" width="6" height="6" fill="#ffd700"><title>0x007172c0 ObjectAlrCheerChao: 100%</title></rect>
+<rect x="161" y="56" width="6" height="6" fill="#ffd700"><title>0x00717450 ObjectAlrStartMark: 100%</title></rect>
+<rect x="168" y="56" width="6" height="6" fill="#ffd700"><title>0x00717470 ObjectAlrSmallScreen: 100%</title></rect>
+<rect x="175" y="56" width="6" height="6" fill="#ffd700"><title>0x00717490 ObjectAlrIslet: 100%</title></rect>
+<rect x="210" y="56" width="6" height="6" fill="#ffd700"><title>0x00717570 ObjectAlrWhiteFlower: 100%</title></rect>
+<rect x="217" y="56" width="6" height="6" fill="#ffd700"><title>0x00717590 ObjectAlrPurpleFlower: 100%</title></rect>
 <rect x="252" y="56" width="6" height="6" fill="#ffd700"><title>0x007176c0 dispObject(5): 100%</title></rect>
 <rect x="259" y="56" width="6" height="6" fill="#ffd700"><title>0x00717730 execObject(4): 100%</title></rect>
 <rect x="273" y="56" width="6" height="6" fill="#ffd700"><title>0x00717790 ObjectAlrCoconut: 100%</title></rect>
+<rect x="301" y="56" width="6" height="6" fill="#ffd700"><title>0x00717940 ObjectAlrPalm: 100%</title></rect>
+<rect x="21" y="63" width="6" height="6" fill="#ffd700"><title>0x00717aa0 initFrame: 100%</title></rect>
 <rect x="28" y="63" width="6" height="6" fill="#ffd700"><title>0x00717b10 execFrame: 100%</title></rect>
 <rect x="35" y="63" width="6" height="6" fill="#ffd700"><title>0x00717b40 destFrame: 100%</title></rect>
 <rect x="56" y="63" width="6" height="6" fill="#ffd700"><title>0x00717dd0 ObjectAlrEntryButton: 100%</title></rect>
