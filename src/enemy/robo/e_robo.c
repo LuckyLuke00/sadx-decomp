@@ -314,11 +314,14 @@ void RoboHeadUp(struct taskwk *twp, struct enemywk *ewp)
 	}
 }
 
-// STUB: SADX 0x005bd170
+// FUNCTION: SADX 0x005bd170
 void RoboHeadWait(struct task *tp, struct enemywk *ewp)
 {
-	struct taskwk *local_cg = tp->twp;
-	struct enemywk *local_8g = (struct enemywk *)DAT_05baf368[0];
+	struct taskwk *local_cg;
+	struct taskwk *local_8g;
+
+	local_cg = tp->twp;
+	local_8g = DAT_05baf368[0];
 	*(int *)((char *)local_cg + 0x18) -= 0x400;
 	*(float *)((char *)ewp + 0x10) -= *(float *)((char *)ewp + 4) * 0.05f;
 	*(float *)((char *)ewp + 0x18) -= *(float *)((char *)ewp + 0xc) * 0.05f;
