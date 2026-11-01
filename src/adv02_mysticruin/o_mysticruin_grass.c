@@ -5,12 +5,33 @@ extern struct obj *DAT_060eea9c;
 extern int DAT_060eeaac;
 void FUN_007d21b0(...);
 
-#pragma optimize("", off)
-// STUB: SADX 0x006b2450
+// FUNCTION: SADX 0x006b2450
 void GrassDisplayer(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	SetObjectTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, (Uint16)var1->ang.y);
+	}
+	if (var1->flag & 0x100)
+	{
+		var1->flag &= 0xfeff;
+		late_ActionClipEx((struct NJS_ACTION *)(*(int *)((char *)DAT_060eeaac + 0x80)), var1->value.f, 0, 1.0f);
+	}
+	else
+	{
+		late_DrawObjectClipEx((struct obj *)*(int *)((char *)DAT_060eea9c + 0x190), 0, 1.0f);
+	}
+	njPopMatrix(1);
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006b2500
 void BigGrassDisplayer(struct task *tp)
