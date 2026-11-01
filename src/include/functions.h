@@ -2139,6 +2139,7 @@ void CreateAnimal(short e_num, float xpos, float ypos, float zpos);
 void DrawCustomObject(struct obj *top_object, struct CUSTOM_OBJ *custom);
 void StopBlowingWind(struct task *tp);
 void BlowingWind(struct task *);
+void MirenSaveDataLoadCartData(struct BEST3_CART *cartData_p);
 long MirenScoreCheckDisplayCartTime();
 void BSetMotion(struct taskwk *twp, struct bosswk *bwp);
 void FUN_005dbda0(int param_1);

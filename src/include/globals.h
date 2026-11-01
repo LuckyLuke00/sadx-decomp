@@ -75,6 +75,7 @@ extern char DAT_009e1668[1];
 extern char DAT_009ec7a8[1];
 extern char DAT_009f2c10[1];
 extern struct TaskInfo DAT_00a09c28;
+extern struct ActionParam DAT_00a09e7c;
 extern void *DAT_00a09ea4;
 extern void *DAT_00a09eb0;
 extern void *DAT_00a09ebc;

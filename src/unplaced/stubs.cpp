@@ -1989,6 +1989,11 @@ void BlowingWind(struct task *)
 {
 }
 
+// STUB: SADX 0x005db0e0
+void MirenSaveDataLoadCartData(struct BEST3_CART *cartData_p)
+{
+}
+
 // STUB: SADX 0x005db5a0
 long MirenScoreCheckDisplayCartTime()
 {
