@@ -44693,9 +44693,9 @@
   {
    "address": "0x006a9ed0",
    "name": "mainBigMR02",
-   "accuracy": 0.03278688524590164,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -45189,9 +45189,9 @@
   {
    "address": "0x006b2450",
    "name": "GrassDisplayer",
-   "accuracy": 0.037037037037037035,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -101213,5 +101213,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a6a27c950d7d2c3a20d1c944bfb548f9e7cdeee705c2933d41963c1792b96bcf"
+ "inputs_sha256": "31cf2d6c141a07749d2a5b07f2e912b99b77ef85c6ff40557139a4bd60fd3358"
 }
