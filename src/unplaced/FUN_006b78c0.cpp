@@ -38,3 +38,16 @@ void FUN_006b78c0(struct task *param_1)
 void FUN_006b7990(struct task *param_1)
 {
 }
+
+// FUNCTION: SADX 0x006b7a00
+void __fastcall FUN_006b7a00(struct task *param_1, struct task *param_2)
+{
+	struct taskwk *var1 = param_2->twp;
+	unsigned char var2 = (unsigned char)var1->scl.x;
+	var1->btimer = var2;
+	if (var2 >= 7)
+	{
+		var1->btimer = 6;
+	}
+	FUN_006b78c0(param_2);
+}

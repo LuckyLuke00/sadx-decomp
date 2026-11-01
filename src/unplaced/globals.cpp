@@ -1961,6 +1961,18 @@ struct NJS_TEXLIST *egm3_effect_texlist_list;
 // GLOBAL: SADX 0x02833cf0
 struct NJS_TEXLIST *egm3_texlist_list[4];
 
+// GLOBAL: SADX 0x0286a290
+struct NJS_POINT3 *pScale_Robo[1];
+
+// GLOBAL: SADX 0x0286a294
+struct ___stcClip *pClipSky_Robo[1];
+
+// GLOBAL: SADX 0x0286a298
+struct ___stcClip *pClipMap_Robo[1];
+
+// GLOBAL: SADX 0x0286a29c
+struct ___stcFog *pFogTable_Robo[1];
+
 // GLOBAL: SADX 0x0286a87c
 struct NJS_TEXLIST texlist_erobo;
 
@@ -4442,6 +4454,9 @@ void (*DAT_05ada218)(struct cnkobj const *);
 // GLOBAL: SADX 0x05ada440
 int DAT_05ada440;
 
+// GLOBAL: SADX 0x05ada448
+int DAT_05ada448[24];
+
 // GLOBAL: SADX 0x05ada5b4
 int DAT_05ada5b4;
 
@@ -5224,6 +5239,9 @@ struct NJS_ARGB DAT_05b42404;
 
 // GLOBAL: SADX 0x05b42414
 unsigned int DAT_05b42414;
+
+// GLOBAL: SADX 0x05b42418
+char DAT_05b42418[0x104];
 
 // GLOBAL: SADX 0x05b42520
 struct task *DAT_05b42520;
@@ -7532,6 +7550,12 @@ struct NJS_MOTION DAT_060b9144[16];
 // GLOBAL: SADX 0x060b9224
 int DAT_060b9224;
 
+// GLOBAL: SADX 0x060b9540
+struct task *DAT_060b9540;
+
+// GLOBAL: SADX 0x060b9560
+struct task *DAT_060b9560;
+
 // GLOBAL: SADX 0x060b9680
 struct task *DAT_060b9680[4];
 
@@ -8156,6 +8180,18 @@ int DAT_060cbc00;
 // GLOBAL: SADX 0x060cbc04
 struct obj DAT_060cbc04;
 
+// GLOBAL: SADX 0x060cbc74
+struct obj *DAT_060cbc74;
+
+// GLOBAL: SADX 0x060cbc78
+struct obj *DAT_060cbc78;
+
+// GLOBAL: SADX 0x060cbca0
+struct obj *DAT_060cbca0;
+
+// GLOBAL: SADX 0x060cbca4
+struct obj *DAT_060cbca4;
+
 // GLOBAL: SADX 0x060cbcb0
 struct obj *DAT_060cbcb0;
 
@@ -8423,6 +8459,9 @@ float DAT_060cea18;
 // GLOBAL: SADX 0x060cea1c
 struct task *DAT_060cea1c;
 
+// GLOBAL: SADX 0x060ceaa4
+int DAT_060ceaa4;
+
 // GLOBAL: SADX 0x060ceab0
 float DAT_060ceab0[96];
 
@@ -8524,6 +8563,9 @@ float DAT_060cf0fc;
 
 // GLOBAL: SADX 0x060cf104
 struct NJS_TEXLIST DAT_060cf104;
+
+// GLOBAL: SADX 0x060cf10c
+int DAT_060cf10c;
 
 // GLOBAL: SADX 0x060cf238
 int DAT_060cf238;

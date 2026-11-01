@@ -3,6 +3,8 @@
 #include <new>
 #include <vector>
 #include "../advertise.h"
+extern char DAT_05b42418[0x104];
+void FUN_004b1cb0(int param_1, int param_2, int param_3, int param_4);
 void *FUN_004b6ae0(unsigned int param_1);
 void __fastcall FUN_004b66c0(void **param_1);
 struct FUN_004b6590_0
@@ -291,9 +293,27 @@ void FUN_004b5e70(int param_1)
 	}
 }
 
-// STUB: SADX 0x004b6460
+// FUNCTION: SADX 0x004b6460
 void FUN_004b6460(struct NJS_TEXLIST *param_1, char *param_2)
 {
+	struct NJS_TEXLIST *local_8 = param_1;
+	if (local_8 != 0 && param_2 != 0)
+	{
+		for (unsigned int local_c = 0; local_c < local_8->nbTexture; local_c++)
+		{
+			struct NJS_TEXNAME *local_10 = *(struct NJS_TEXNAME **)((char *)local_8->textures + local_c * 0xc + 8);
+			if (local_10 != 0)
+			{
+				int local_14 = *(int *)((char *)local_10 + 0x34);
+				if (local_14 != 0)
+				{
+					memset(DAT_05b42418, 0, 0x104);
+					sprintf_s(DAT_05b42418, 0x104, "%s_%d_", param_2, local_c);
+					FUN_004b1cb0((int)((char *)local_10 + 0x34), local_14, (int)DAT_05b42418, 1);
+				}
+			}
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004b6520

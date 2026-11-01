@@ -120,9 +120,16 @@ void __stdcall FUN_0092a060(int param_1)
 	*(int **)(param_1 + 0xc) = 0;
 }
 
-// STUB: SADX 0x0092a090
+// FUNCTION: SADX 0x0092a090
 void __stdcall FUN_0092a090(int param_1)
 {
+	int var1;
+	int var2;
+	void (__stdcall *v3)(int);
+	var1 = (int)(*(int **)(param_1 + 0xc));
+	var2 = (int)(*(int **)var1);
+	v3 = (void (__stdcall *)(int))(*(int **)(var2 + 0x30));
+	v3(var1);
 }
 
 // FUNCTION: SADX 0x0092a0b0
@@ -142,9 +149,16 @@ int __fastcall FUN_0092a0e0(struct FUN_0092a0e0_0 *param_1, int param_2, int par
 	return (int)0;
 }
 
-// STUB: SADX 0x0092a1c0
+// FUNCTION: SADX 0x0092a1c0
 void __stdcall FUN_0092a1c0(int param_1)
 {
+	int var1;
+	int var2;
+	void (__stdcall *v3)(int);
+	var1 = (int)(*(int **)(param_1 + 0xc));
+	var2 = (int)(*(int **)var1);
+	v3 = (void (__stdcall *)(int))(*(int **)(var2 + 0x30));
+	v3(var1);
 }
 
 // FUNCTION: SADX 0x0092a1e0
