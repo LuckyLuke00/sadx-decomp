@@ -22604,7 +22604,15 @@
   {
    "address": "0x0050c330",
    "name": "FUN_0050c330",
-   "accuracy": 0.18518518518518517,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0050c3c0",
+   "name": "BigDirectAhead",
+   "accuracy": 0.020671834625323,
    "effective": false,
    "stub": true,
    "library": false
@@ -22636,9 +22644,9 @@
   {
    "address": "0x0050cbb0",
    "name": "FUN_0050cbb0",
-   "accuracy": 0.35714285714285715,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29581,9 +29589,9 @@
   {
    "address": "0x0058e9d0",
    "name": "setLureSpd_D",
-   "accuracy": 0.05194805194805195,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29661,9 +29669,9 @@
   {
    "address": "0x00591260",
    "name": "CalcHookPos",
-   "accuracy": 0.0761904761904762,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29701,9 +29709,9 @@
   {
    "address": "0x00591910",
    "name": "setCatchCameraPos",
-   "accuracy": 0.10126582278481013,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -100949,5 +100957,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d6a90996d32752f8ea446d77bf7781c9d02dd348e9b4c1f7a3b09060bd3fba70"
+ "inputs_sha256": "204433a532c27ef7e5f7ee567b71a3ede6cf85716569ecac17e9161faa43df3f"
 }

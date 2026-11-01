@@ -1476,6 +1476,11 @@ void BigChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 {
 }
 
+// STUB: SADX 0x0050c3c0
+void BigDirectAhead(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0050d370
 void E102(struct task *tp)
 {

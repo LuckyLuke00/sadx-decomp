@@ -1357,6 +1357,7 @@ void BigChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 long BigCheckWater(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 void BigThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
+void BigDirectAhead(struct task *tp);
 void FUN_0050ce80(char *param_1, int param_2, char *param_3);
 void E102(struct task *tp);
 void FUN_005125a0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
