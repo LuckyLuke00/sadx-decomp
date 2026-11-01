@@ -81,10 +81,12 @@ void Egm3_laser1Draw(struct task *tp)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006ce5a0
 void Egm3_laser1ponDraw(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006ce670
 void Egm3_energyballExit(struct task *tp)
@@ -223,9 +225,28 @@ void TikalTask(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x006d11a0
+// FUNCTION: SADX 0x006d11a0
 void FUN_006d11a0(struct task *param_1)
 {
+	struct taskwk *var1 = param_1->twp;
+	struct anywk *var2 = param_1->awp;
+
+	if (var1->mode == 0)
+	{
+		param_1->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		param_1->disp = Egm3_laser1ponDraw;
+		var2->work.ptr[27] = egm3_effect_motionlist[1];
+		var2->work.f[30] = 0.0f;
+		var2->work.f[0] = 0.0f;
+		var2->work.f[31] = 1.0f;
+		var1->mode++;
+	}
+	var2->work.f[0] += 0.10000000149011612f;
+	if (var2->work.f[0] > 1.0f)
+	{
+		FreeTask(param_1);
+	}
+	Egm3_laser1ponDraw(param_1);
 }
 
 // STUB: SADX 0x006d1210
