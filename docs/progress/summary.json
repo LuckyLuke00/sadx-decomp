@@ -55277,9 +55277,9 @@
   {
    "address": "0x007ea3d0",
    "name": "CheckLockMode",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -101335,5 +101335,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "9cbbd3405269e825defa70add73a47c3a98c648872441542ca7d120ca46de007"
+ "inputs_sha256": "6f7167890e39ab6eb2c1282cc6bead2b61b99577892d48c50cf4fcf2e86ff4b0"
 }

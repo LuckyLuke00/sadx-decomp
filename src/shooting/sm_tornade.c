@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_060ce3fc;
 
 // FUNCTION: SADX 0x007ea050
 void TornadeDestruct(struct task *tp)
@@ -12,10 +13,17 @@ long TornadeCheckInput(struct taskwk *twp, struct motionwk2 *mwp, struct playerw
 	return (long)0;
 }
 
-// STUB: SADX 0x007ea3d0
+// FUNCTION: SADX 0x007ea3d0
 int CheckLockMode()
 {
-	return (int)0;
+	if ((DAT_05b932e8[0].on & (jump_button | action_button)) != 0)
+	{
+		if (DAT_060ce3fc++ > 0x1e)
+		{
+			return 1;
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x007ea4c0

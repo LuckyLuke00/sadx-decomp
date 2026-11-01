@@ -8627,6 +8627,9 @@ struct task *DAT_060cd388;
 // GLOBAL: SADX 0x060cd39c
 char DAT_060cd39c[4];
 
+// GLOBAL: SADX 0x060ce3fc
+int DAT_060ce3fc;
+
 // GLOBAL: SADX 0x060ce404
 int DAT_060ce404;
 
