@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" double atan2(double v, double u);
 extern struct NJS_ACTION action_kowaresuisou_hikari_sin[1];
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
@@ -22,9 +23,24 @@ static void Disp(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x008a5ce0
+// FUNCTION: SADX 0x008a5ce0
 static void Exec(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		float var2 = var1->counter.f + 1.0f;
+		var1->counter.f = var2;
+		float var3 = (float)(unsigned int)(action_kowaresuisou_hikari_sin[0].motion->nbFrame - 1);
+		if (var3 <= var2)
+		{
+			var1->counter.f = var2 - var3;
+		}
+		float var4 = DAT_05b42a7c->pos.x - var1->pos.x;
+		float var5 = *(float *)((char *)DAT_05b42a7c + 0x28) - *(float *)((char *)var1 + 0x28);
+		*(int *)((char *)var1 + 0x18) = (int)(atan2(var4, var5) * 65536.0f / 6.283184);
+		Disp(tp);
+	}
 }
 
 // FUNCTION: SADX 0x008a5d90

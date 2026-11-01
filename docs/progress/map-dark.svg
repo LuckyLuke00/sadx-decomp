@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1426" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,862 of 16,524 game functions done (35.47%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,868 of 16,524 game functions done (35.51%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -1200,8 +1200,8 @@
 <rect x="63" y="112" width="6" height="6" fill="#ffd700"><title>0x008a2130 FEGG_TaskCheckGround: 100%</title></rect>
 <rect x="70" y="112" width="6" height="6" fill="#ffd700"><title>0x008a2170 FEGG_SetDynamicsWork: 100%</title></rect>
 </g>
-<rect x="20" y="288" width="204" height="137" rx="3" fill="#21262d" stroke="#30363d"><title>Hot Shelter: 72 of 398 functions done</title></rect>
-<text x="23" y="302" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Hot Shelter <tspan font-weight="400" fill="#8b949e">9%</tspan></text>
+<rect x="20" y="288" width="204" height="137" rx="3" fill="#21262d" stroke="#30363d"><title>Hot Shelter: 78 of 398 functions done</title></rect>
+<text x="23" y="302" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Hot Shelter <tspan font-weight="400" fill="#8b949e">10%</tspan></text>
 <g transform="translate(23,306)">
 <rect y="0" width="196" height="98" fill="url(#todo)"/>
 <rect y="98" width="42" height="7" fill="url(#todo)"/>
@@ -1231,6 +1231,7 @@
 <rect x="140" y="14" width="6" height="6" fill="#ffd700"><title>0x008a59e0 DispATask(10): 100%</title></rect>
 <rect x="147" y="14" width="6" height="6" fill="#ffd700"><title>0x008a5a50 ObjShelterHikari: 100%</title></rect>
 <rect x="175" y="14" width="6" height="6" fill="#ffd700"><title>0x008a5c70 Disp(54): 100%</title></rect>
+<rect x="182" y="14" width="6" height="6" fill="#ffd700"><title>0x008a5ce0 Exec(43): 100%</title></rect>
 <rect x="189" y="14" width="6" height="6" fill="#ffd700"><title>0x008a5d90 ObjShelterBluelight: 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#ffd700"><title>0x008a5e60 Exec(44): 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#ffd700"><title>0x008a5e90 ObjShelterGateside: 100%</title></rect>
@@ -1239,9 +1240,10 @@
 <rect x="42" y="28" width="6" height="6" fill="#ffd700"><title>0x008a73d0 ObjShelterSyoumei: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#ffd700"><title>0x008a9eb0 Disp2Task: 100%</title></rect>
 <rect x="56" y="42" width="6" height="6" fill="#ffd700"><title>0x008a9f20 Disp3Task: 100%</title></rect>
-<rect x="133" y="49" width="6" height="6" fill="#ffd700"><title>0x008abd90 DispATask(12): 100%</title></rect>
+<rect x="161" y="42" width="6" height="6" fill="#ffd700"><title>0x008aaf20 ObjShelterGate1: 100%</title></rect>
+<rect x="133" y="49" width="6" height="6" fill="#ffd700"><title>0x008abd90 DispATask(13): 100%</title></rect>
 <rect x="140" y="49" width="6" height="6" fill="#ffd700"><title>0x008abe00 ObjShelterLight3: 100%</title></rect>
-<rect x="147" y="49" width="6" height="6" fill="#ffd700"><title>0x008abec0 DispATask(13): 100%</title></rect>
+<rect x="147" y="49" width="6" height="6" fill="#ffd700"><title>0x008abec0 DispATask(14): 100%</title></rect>
 <rect x="154" y="49" width="6" height="6" fill="#ffd700"><title>0x008abf30 ObjShelterLight2: 100%</title></rect>
 <rect x="7" y="56" width="6" height="6" fill="#ffd700"><title>0x008ac3f0 DrawBoxColli(2): 100%</title></rect>
 <rect x="14" y="56" width="6" height="6" fill="#ffd700"><title>0x008ac4b0 ColliShelterSwitch: 100%</title></rect>
@@ -1270,12 +1272,16 @@
 <rect x="112" y="84" width="6" height="6" fill="#ffd700"><title>0x008b4fa0 ObjShelterAquarium: 100%</title></rect>
 <rect x="126" y="84" width="6" height="6" fill="#ffd700"><title>0x008b5090 SideExec: 100%</title></rect>
 <rect x="133" y="84" width="6" height="6" fill="#ffd700"><title>0x008b50e0 TubeDisp: 100%</title></rect>
+<rect x="161" y="84" width="6" height="6" fill="#ffd700"><title>0x008b52f0 TubeExec: 100%</title></rect>
 <rect x="168" y="84" width="6" height="6" fill="#ffd700"><title>0x008b5370 TubeInit: 100%</title></rect>
+<rect x="189" y="84" width="6" height="6" fill="#ffd700"><title>0x008b56e0 Disp(60): 100%</title></rect>
+<rect x="7" y="91" width="6" height="6" fill="#ffd700"><title>0x008b5890 ObjShelterFade: 100%</title></rect>
 <rect x="42" y="91" width="6" height="6" fill="#ffd700"><title>0x008b5f40 CreateTunnelcol: 100%</title></rect>
 <rect x="63" y="91" width="6" height="6" fill="#ffd700"><title>0x008b6190 ObjShelterTunnelscroll: 100%</title></rect>
 <rect x="70" y="91" width="6" height="6" fill="#ffd700"><title>0x008b61f0 CamHot_SetE105: 100%</title></rect>
 <rect x="84" y="91" width="6" height="6" fill="#ffd700"><title>0x008b6340 StartCameraHot_TgtDeath: 100%</title></rect>
-<rect x="175" y="91" width="6" height="6" fill="#ffd700"><title>0x008b6cd0 Disp(61): 100%</title></rect>
+<rect x="168" y="91" width="6" height="6" fill="#ffd700"><title>0x008b6cb0 E105_CrushLight: 100%</title></rect>
+<rect x="175" y="91" width="6" height="6" fill="#ffd700"><title>0x008b6cd0 Disp(62): 100%</title></rect>
 <rect x="189" y="91" width="6" height="6" fill="#ffd700"><title>0x008b6ef0 ObjShelterKowareeff: 100%</title></rect>
 </g>
 <polygon points="600.8,926.5 607.2,926.5 608.9,928 610,929.6 604,936.5 598,929.6 599.1,928" fill="#17f073"/>
