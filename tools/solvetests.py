@@ -612,8 +612,9 @@ def check_own_stubs() -> list[str]:
 
 def check_own_globals() -> list[str]:
     """own_globals writes after the includes a static definition under a GLOBAL annotation of a global that the file
-    uses by a name several globals share, when the file's object, of which it is the only file, has one, sized from
-    the row's bytes, and drops the file's own declaration of it. It writes none for a name one global has, when the
+    uses by a name several globals share, when the file's object, of which it is the only file, has one, and drops
+    the file's own declaration of it. The definition has that declaration's type, with the row's size when it leaves
+    the size out, else the row's, sized from the row's bytes. It writes none for a name one global has, when the
     file defines the name, or when another file has functions of the object."""
     target = project.game_config().target
     functions = [("0x00401000", "Caller", "a.obj", "src/a.c"), ("0x00401100", "Other", "c.obj", "src/c.c"),
@@ -624,11 +625,17 @@ def check_own_globals() -> list[str]:
               ("0x00600300", "mine", "int {}", "int", "", "4", "a.obj"),
               ("0x00600400", "mine", "int {}", "int", "", "4", "b.obj"),
               ("0x00600500", "theirs", "int {}", "int", "", "4", "c.obj"),
-              ("0x00600600", "theirs", "int {}", "int", "", "4", "b.obj")]
-    text = (f'#include "a.h"\nextern struct INFO *info;\n\nstatic int mine;\n\n// FUNCTION: {target} 0x00401000\n'
-            "int Caller(void)\n{\n\treturn info[0].x + once + mine + theirs;\n}\n")
-    wanted = text.replace("\nextern struct INFO *info;\n\nstatic int mine", f"\n\n// GLOBAL: {target} 0x00600000\n"
-                          "static struct INFO info[3];\n\nstatic int mine")
+              ("0x00600600", "theirs", "int {}", "int", "", "4", "b.obj"),
+              ("0x00600700", "kept", "const struct INFO {}[?]", "const struct INFO", "?", "8", "a.obj"),
+              ("0x00600800", "kept", "const struct INFO {}[?]", "const struct INFO", "?", "8", "b.obj"),
+              ("0x00600900", "sized", "struct INFO {}[?]", "struct INFO", "?", "16", "a.obj"),
+              ("0x00600a00", "sized", "struct INFO {}[?]", "struct INFO", "?", "8", "b.obj")]
+    declarations = "\nextern struct INFO kept;\nextern struct INFO sized[];\n\nstatic int mine"
+    text = (f'#include "a.h"{declarations};\n\n// FUNCTION: {target} 0x00401000\n'
+            "int Caller(void)\n{\n\treturn info[0].x + kept.x + sized[1].y + once + mine + theirs;\n}\n")
+    wanted = text.replace(declarations, f"\n\n// GLOBAL: {target} 0x00600000\nstatic struct INFO info[3];\n\n"
+                          f"// GLOBAL: {target} 0x00600700\nstatic struct INFO kept;\n\n"
+                          f"// GLOBAL: {target} 0x00600900\nstatic struct INFO sized[2];\n\nstatic int mine")
     with tempfile.TemporaryDirectory() as folder:
         tables = Path(folder)
         (tables / "functions.tsv").write_text("address\tname\tobject\tfile\n" + "".join(
