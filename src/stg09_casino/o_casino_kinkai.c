@@ -1,10 +1,21 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x048099b0
+static struct TEXUVINFO2 texuv2info[1];
+
 extern unsigned int DAT_060dbc38;
 extern struct task *DAT_060dc25c;
 
-// STUB: SADX 0x0086caa0
+// FUNCTION: SADX 0x0086caa0
 void ObjectCasinoKinkaiEnd(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	FUN_008895d0(tp);
+	if (DAT_060dc25c == (struct task *)var1)
+	{
+		DAT_060dc25c = NULL;
+	}
+	FUN_007d21b0(&texuv2info, 2);
 }
 
 // FUNCTION: SADX 0x0086cc20

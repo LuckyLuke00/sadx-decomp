@@ -1,8 +1,35 @@
 #include "decls.h"
 
-// STUB: SADX 0x0087a570
+// FUNCTION: SADX 0x0087a570
 void KazariDisp(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, 62510.0f) == 0 && DAT_05b9d838 == 0)
+	{
+		SetObjectTexture2(0xc);
+		njPushMatrix(0);
+		njTranslateV(0, &var1->pos);
+		if (*(int *)((char *)var1 + 0x18) != 0)
+		{
+			njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		}
+		if (*(char *)((char *)var1 + 1))
+		{
+			if (*(unsigned short *)((char *)var1 + 8))
+			{
+				njRotateX(0, *(unsigned short *)((char *)var1 + 8));
+			}
+		}
+		else
+		{
+			if (*(unsigned short *)((char *)var1 + 8))
+			{
+				njRotateZ(0, *(unsigned short *)((char *)var1 + 8));
+			}
+		}
+		ds_DrawModelClip((struct NJS_MODEL *)*(int *)((char *)var1 + 0xc), 1.0f);
+		njPopMatrix(1);
+	}
 }
 
 // FUNCTION: SADX 0x0087a9a0

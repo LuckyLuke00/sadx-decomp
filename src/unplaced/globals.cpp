@@ -3290,6 +3290,9 @@ struct NJS_TEXLIST texlist_obj_casino2;
 // GLOBAL: SADX 0x04720288
 struct obj object_cas_cl_kinko_wall_kinko_wall[1];
 
+// GLOBAL: SADX 0x04720814
+struct obj object_casi_fulip02a_fulip02a[1];
+
 // GLOBAL: SADX 0x04723380
 struct NJS_MODEL model_casi_tuule01a_tuule01a[1];
 
@@ -3512,6 +3515,9 @@ struct obj object_cas_obj_neon_kabe_neon_kabe[1];
 // GLOBAL: SADX 0x047e46a4
 struct obj object_cas_hashgo_hashgo[1];
 
+// GLOBAL: SADX 0x047e5ea4
+struct obj object_cas_fook_fook[1];
+
 // GLOBAL: SADX 0x047f1dcc
 struct obj object_cas_obj_slot_isu_slot_isu[1];
 
@@ -3640,6 +3646,9 @@ struct CCL_INFO coll_0[4];
 
 // GLOBAL: SADX 0x0480c6c8
 struct CCL_INFO object_c_info_sphere[1];
+
+// GLOBAL: SADX 0x0480c798
+struct TEXUVINFO texuvinfo[3];
 
 // GLOBAL: SADX 0x0480cf04
 float pos_table[5][3];
@@ -8660,6 +8669,12 @@ struct task *DAT_060dc29c;
 // GLOBAL: SADX 0x060dc408
 long DAT_060dc408[5];
 
+// GLOBAL: SADX 0x060dc41c
+void *DAT_060dc41c;
+
+// GLOBAL: SADX 0x060dc420
+int DAT_060dc420;
+
 // GLOBAL: SADX 0x060dc428
 int DAT_060dc428;
 
@@ -8671,6 +8686,27 @@ short DAT_060dc444;
 
 // GLOBAL: SADX 0x060dc468
 struct NJS_SPRITE DAT_060dc468;
+
+// GLOBAL: SADX 0x060dc4a4
+float DAT_060dc4a4;
+
+// GLOBAL: SADX 0x060dc4a8
+float DAT_060dc4a8;
+
+// GLOBAL: SADX 0x060dc4ac
+float DAT_060dc4ac;
+
+// GLOBAL: SADX 0x060dc4b0
+float DAT_060dc4b0;
+
+// GLOBAL: SADX 0x060dc4b4
+float DAT_060dc4b4;
+
+// GLOBAL: SADX 0x060dc4bc
+struct NJS_TEXLIST *DAT_060dc4bc;
+
+// GLOBAL: SADX 0x060dc4c0
+struct NJS_TEXANIM *DAT_060dc4c0;
 
 // GLOBAL: SADX 0x060dc4dc
 int DAT_060dc4dc;

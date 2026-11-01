@@ -16,9 +16,30 @@ void CasinoClearCollisionDest(struct task *tp)
 	WithdrawCollisionEntry(tp, (struct obj *)&object_cas_cl_kinko_wall_kinko_wall);
 }
 
-// STUB: SADX 0x0087a440
+// FUNCTION: SADX 0x0087a440
 void CasinoClearCollisionInit(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct obj *var2;
+
+	var2 = GetMobileLandObject();
+	*(struct obj **)((char *)var1 + 8) = var2;
+	var2->scl[0] = 1.0f;
+	var2->scl[1] = 1.0f;
+	var2->scl[2] = 1.0f;
+	var2->evalflags = 0x10;
+	var2->ang[2] = 0;
+	var2->pos[2] = 0.0f;
+	var2->ang[1] = 0;
+	var2->pos[1] = 0.0f;
+	var2->ang[0] = 0;
+	var2->pos[0] = 0.0f;
+	var2->model = object_cas_cl_kinko_wall_kinko_wall[0].model;
+	var2->child = object_cas_cl_kinko_wall_kinko_wall[0].child;
+	var2->sibling = object_cas_cl_kinko_wall_kinko_wall[0].sibling;
+	RegisterCollisionEntry(0x18000001, tp, var2);
+	tp->exec = CasinoClearCollisionExec;
+	tp->dest = CasinoClearCollisionDest;
 }
 
 // FUNCTION: SADX 0x0087a520
