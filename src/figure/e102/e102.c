@@ -30,10 +30,20 @@ long E102CheckJump(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 	return (long)0;
 }
 
-// STUB: SADX 0x00513ad0
+// FUNCTION: SADX 0x00513ad0
 int FUN_00513ad0(struct taskwk *param_1, int param_2, struct motionwk2 *param_3)
 {
-	return (int)0;
+	if (DAT_05b932e8[param_1->counter.b[0]].press & jump_button)
+	{
+		*(float *)((char *)param_3 + 0x40) = 0.0f;
+		*(float *)((char *)param_3 + 0x3c) = 0.0f;
+		*(float *)((char *)param_3 + 0x38) = 0.0f;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x005146a0
@@ -122,10 +132,39 @@ long FUN_005147e0(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	return 0;
 }
 
-// STUB: SADX 0x005149c0
+// FUNCTION: SADX 0x005149c0
 long FUN_005149c0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
-	return (long)0;
+	long local_8;
+
+	PAdjustHoldingPosition(param_1, param_2, param_3);
+	if (param_3->mj.nframe >= 12.0f)
+	{
+		local_8 = PCheckHoldObject(param_1);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(param_1, param_2))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					param_1->mode = 0x11;
+					if (DAT_05cc43a0 != 0)
+					{
+						dsPlay_oneshot(0x513, 0, 0, 0);
+					}
+					param_3->htp = param_1->cwp->hit_cwp->mytask;
+					param_3->htp->twp->flag = param_3->htp->twp->flag | 0x1000;
+					param_1->flag = param_1->flag | 0x800;
+					param_1->flag = param_1->flag & ~0x8;
+					return 1;
+				}
+				break;
+			}
+			FUN_005125a0(param_1, param_2, param_3);
+		}
+	}
+	return 0;
 }
 
 // STUB: SADX 0x00515140
