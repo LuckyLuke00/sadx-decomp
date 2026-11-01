@@ -1,8 +1,11 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x02606c48
+static char *KindMes[5];
+
 static void ExecATask(struct task *tp);
 extern int DAT_05b3e05c;
 extern unsigned char *DAT_05b37314;
-extern char *KindMes[5];
 void FUN_0058ac40(struct task *param_1);
 void FUN_0058acd0(struct task *param_1);
 void FUN_0058afb0(struct task *param_1);

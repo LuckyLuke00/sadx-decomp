@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x0480c960
+static struct NJS_MODEL *model_name[4];
+
 static void Normal(struct task *tp);
 static void Disp(struct task *tp);
 

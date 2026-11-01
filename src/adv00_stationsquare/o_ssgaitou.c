@@ -1,6 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026ddf6c
+static struct NJS_SPRITE sprite_lamp;
+
 static void Disp(struct task *tp);
-extern struct NJS_SPRITE sprite_lamp;
 extern int DAT_05b9d838;
 
 #pragma optimize("", off)

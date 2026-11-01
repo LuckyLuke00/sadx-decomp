@@ -1,7 +1,10 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x027dbbd0
+static struct CCL_INFO colli_info[20];
+
 extern struct NJS_POINT3 DAT_060b9d58[1];
 extern float DAT_060b9f38[16];
-extern struct CCL_INFO colli_info[20];
 
 // FUNCTION: SADX 0x006c9a30
 void Egm2ColisionInit(struct task *tp)

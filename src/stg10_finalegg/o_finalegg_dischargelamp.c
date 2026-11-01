@@ -1,5 +1,7 @@
 #include "decls.h"
-extern struct THahenInfo HahenInfo[4];
+
+// GLOBAL: SADX 0x048a6280
+static struct THahenInfo HahenInfo[4];
 
 // FUNCTION: SADX 0x0089e140
 void DispAllHahens(struct TMyWork *MyWork)

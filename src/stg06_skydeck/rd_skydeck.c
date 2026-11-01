@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03fec5c4
+static struct CCL_INFO wall_info[1];
+
 extern short DAT_05b9d724;
 extern int DAT_060d0a5c;
 void FUN_008895d0(struct task *param_1);
@@ -23,7 +27,6 @@ extern struct obj *com_objtbl[324];
 extern struct NJS_TEXLIST texlist_obj_skydeck;
 void ObjectSkydeck_hangpole_s_Display(struct task *tp);
 void ObjectSkydeck_c_top_Exec(struct task *tp);
-extern struct CCL_INFO wall_info[1];
 extern float DAT_060cf4a4;
 extern int DAT_060d0a40;
 extern int DAT_060d0a44;

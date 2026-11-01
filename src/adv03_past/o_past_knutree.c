@@ -1,5 +1,7 @@
 #include "decls.h"
-extern struct CCL_INFO cinfo_tree[1];
+
+// GLOBAL: SADX 0x0270c748
+static struct CCL_INFO cinfo_tree[1];
 
 // FUNCTION: SADX 0x006c0b40
 void ObjectPastKnucklesTree(struct task *tp)

@@ -1,7 +1,10 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x02b76514
+static const struct HintMessageString *chaos_message000[5];
+
 extern int DAT_060c44d8;
 extern int DAT_05b3ebbc;
-extern const struct HintMessageString *chaos_message000[5];
 long GetCountKilledPlayer();
 
 // FUNCTION: SADX 0x00700f30

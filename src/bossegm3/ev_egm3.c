@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x04c7d76c
+static void (*egm3_exec[5])(struct task *);
+
 extern struct obj *DAT_02833c70;
 extern struct NJS_TEXLIST texlist_egm3mdl;
 extern int DAT_05b9d838;
@@ -8,7 +12,6 @@ extern float DAT_060ba100[16];
 extern struct NJS_MOTION *egm3_motion_list[8];
 extern int DAT_060e3ac8;
 extern int DAT_060e3ae0;
-extern void (*egm3_exec[5])(struct task *);
 extern void egm3CalcObjMatrix(struct obj *object, float *matbuf);
 extern void EV_Egm3Draw(struct task *tp);
 extern struct obj *egm3_object_list[1];

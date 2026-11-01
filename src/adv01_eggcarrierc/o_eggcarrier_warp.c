@@ -1,5 +1,8 @@
 #include "decls.h"
-extern struct CCL_INFO WarpColliInfo[4];
+
+// GLOBAL: SADX 0x009b8010
+static struct CCL_INFO WarpColliInfo[4];
+
 void FUN_007d21b0(...);
 
 // FUNCTION: SADX 0x0069ee20

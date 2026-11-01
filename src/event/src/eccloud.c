@@ -1,4 +1,11 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x031e2aa0
+static struct cloud_scroll main_cloud;
+
+// GLOBAL: SADX 0x031e2ad0
+static struct cloud_scroll main_cloud2;
+
 extern struct task *DAT_060ccb80;
 extern void *DAT_060ccb78;
 extern void *DAT_060ccb7c;

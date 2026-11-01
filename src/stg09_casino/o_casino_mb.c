@@ -1,7 +1,10 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x0480b978
+static struct CCL_INFO object_c_info[1];
+
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
-extern struct CCL_INFO object_c_info[];
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern int DAT_05b39be8;

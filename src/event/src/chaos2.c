@@ -1,5 +1,8 @@
 #include "decls.h"
-extern struct PL_JOIN_VERTEX chaos2_jv_list[1];
+
+// GLOBAL: SADX 0x031b2478
+static struct PL_JOIN_VERTEX chaos2_jv_list[1];
+
 extern struct NJS_ACTION action_c2_wait0[1];
 
 // FUNCTION: SADX 0x007dbc00

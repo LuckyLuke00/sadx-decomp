@@ -1,7 +1,10 @@
 #include "decls.h"
 #include <math.h>
+
+// GLOBAL: SADX 0x026ba1f0
+static struct CCL_INFO cube_info[1];
+
 extern struct CCL_INFO cuberange_info[1];
-extern struct CCL_INFO cube_info[1];
 extern struct CCL_INFO cylinder_info[1];
 extern struct CCL_INFO sphere_info[1];
 extern long DAT_05b42598;

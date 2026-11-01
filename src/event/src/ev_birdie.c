@@ -1,5 +1,8 @@
 #include "decls.h"
-extern struct CCL_INFO cinfo[1];
+
+// GLOBAL: SADX 0x02f01670
+static struct CCL_INFO cinfo[1];
+
 static void ev_birdie_exec(struct task *tp, struct MJOIN_VERTEX *pj);
 extern struct MJOIN_VERTEX pj0[1];
 extern struct MJOIN_VERTEX pj2[1];

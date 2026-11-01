@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x048a58f0
+static struct CCL_INFO cinfo_drum[1];
+
 void FUN_00893670(struct task *param_1);
 
 // FUNCTION: SADX 0x00893620

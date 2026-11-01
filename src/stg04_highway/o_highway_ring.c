@@ -1,6 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03e71478
+static struct CCL_INFO ring_colli_info[1];
+
 extern struct NJS_MODEL DAT_05a7b20c;
-extern struct CCL_INFO ring_colli_info[1];
 
 // FUNCTION: SADX 0x0081d2d0
 void RingDrawAct2(struct task *tp)

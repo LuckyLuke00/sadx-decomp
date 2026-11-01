@@ -1,9 +1,12 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x045d9e98
+static struct NJS_SPRITE sprite_yukikemu;
+
 extern long SetObjectTexture();
 extern char DAT_060dba68;
 extern struct taskwk *DAT_05b42a7c;
 extern int DAT_05b9d838;
-extern struct NJS_SPRITE sprite_yukikemu;
 
 // STUB: SADX 0x0085c040
 void Exit2(struct task *tp)

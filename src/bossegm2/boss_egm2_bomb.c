@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x0280b734
+static struct CCL_INFO colliInfo[1];
+
 extern struct NJS_TEXLIST texlist_egm2_common;
 extern struct obj object_egm2_mine[1];
 extern int DAT_05b9d838;
