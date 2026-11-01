@@ -849,9 +849,11 @@ void EV_CameraPosORY(int mode, int time, struct task *tp, float x, float y, floa
 {
 }
 
-// STUB: SADX 0x0056ceb0
+// FUNCTION: SADX 0x0056ceb0
 void EV_CameraChaseFree()
 {
+	int *local_8 = (int *)&DAT_05ccdd28;
+	*(char *)((char *)local_8 + 0x68) = 0;
 }
 
 // STUB: SADX 0x0056cf40

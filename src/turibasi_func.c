@@ -1,4 +1,5 @@
 #include "decls.h"
+void BridgeCalcForce(struct taskwk *twp);
 void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
 unsigned char FUN_008dcc50(struct taskwk *param_1, struct NJS_POINT3 *param_2);
 void FUN_008dcb90(struct taskwk *param_1, struct NJS_POINT3 *param_2);
@@ -39,9 +40,20 @@ void BridgeNormal(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008db620
+// FUNCTION: SADX 0x008db620
 void BridgeNormal2(struct task *tp)
 {
+	struct taskwk *local_8g;
+	local_8g = tp->twp;
+	BridgeDraw2(local_8g);
+	BridgeCheckCollision(local_8g);
+	BridgeCalcForce(local_8g);
+	BridgeDeform(local_8g);
+	if (CheckCollisionP(&local_8g->pos, *(float *)((char *)(*(int *)((char *)local_8g->counter.ptr + 4)) + 0x24) + 800.0f))
+		local_8g->flag |= 0x100;
+	else
+		local_8g->flag &= ~0x100;
+	CheckRangeOutWithR(tp, 4000000.0f);
 }
 
 // FUNCTION: SADX 0x008db6e0

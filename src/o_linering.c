@@ -1,4 +1,5 @@
 #include "decls.h"
+static void LineringInit(struct task *tp);
 static void Exec(struct task *tp);
 extern int DAT_05b9d838;
 extern struct obj object_sphere01;
@@ -31,7 +32,7 @@ void FUN_008b9f60(struct task *param_1, int param_2)
 }
 
 // STUB: SADX 0x008b9f80
-void LineringInit(struct task *tp)
+static void LineringInit(struct task *tp)
 {
 }
 

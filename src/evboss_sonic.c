@@ -165,10 +165,20 @@ void EvBossMakeCrashBothCollisionedPlayersP(unsigned char pno0, unsigned char pn
 {
 }
 
-// STUB: SADX 0x005e2660
+// FUNCTION: SADX 0x005e2660
 float ghUnitVectorXZ(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5)
 {
-	return (float)0;
+	float local_ci;
+	float local_8g;
+	float local_10;
+
+	local_ci = r4->x;
+	local_8g = r4->z;
+	local_10 = local_ci * local_ci + 0.0f + local_8g * local_8g;
+	local_10 = 1.0f / njSqrt(local_10);
+	r5->x = local_ci * local_10;
+	r5->z = local_8g * local_10;
+	return local_10;
 }
 
 // FUNCTION: SADX 0x005e26d0

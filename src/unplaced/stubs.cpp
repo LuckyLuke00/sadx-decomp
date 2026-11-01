@@ -1613,11 +1613,6 @@ void disp_npc_message_wait(const char * *message_p)
 {
 }
 
-// STUB: SADX 0x005709b0
-void _Exec(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00572210
 void MirenObjEditDrawCollision(const struct colliwk *)
 {
@@ -1821,6 +1816,11 @@ void EventObject(struct task *tp)
 {
 }
 
+// STUB: SADX 0x005b4340
+void PGetAngleXZFromNormal(float, float, float, long *, long *)
+{
+}
+
 // STUB: SADX 0x005b4c90
 void TBarrier(struct task *tp)
 {
@@ -1950,6 +1950,11 @@ void KnuEffectRingSpring(struct task *tp)
 
 // STUB: SADX 0x005d8640
 void dispKnuEffectChargeScl(struct task *)
+{
+}
+
+// STUB: SADX 0x005da940
+void BlowingWind(struct task *)
 {
 }
 
@@ -3575,6 +3580,11 @@ void displayToge(struct taskwk *twp)
 {
 }
 
+// STUB: SADX 0x008c1d40
+extern void ObjectSampleSWRegular(struct task *)
+{
+}
+
 // STUB: SADX 0x008c26f0
 extern void FUN_008c26f0(int, int, int)
 {
@@ -3663,6 +3673,11 @@ void BridgeDraw(struct taskwk *)
 
 // STUB: SADX 0x008dc880
 void BridgeDraw2(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x008dce50
+void BridgeCalcForce(struct taskwk *)
 {
 }
 

@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+void PGetAngleXZFromNormal(float x, float y, float z, long *ax, long *az);
 void FUN_004e2cb0(struct task *param_1, struct NJS_POINT3 *param_2, struct taskwk *param_3);
 void FUN_004e2ec0(struct taskwk *param_1, struct NJS_POINT3 *param_2);
 void PGetAccelerationAirAuto(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
@@ -622,9 +623,33 @@ long PSetPositionOn1D(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk
 	return (long)0;
 }
 
-// STUB: SADX 0x004ebeb0
+// FUNCTION: SADX 0x004ebeb0
 void PConvertVector_G2P(struct taskwk *twp, struct NJS_POINT3 *vp)
 {
+	struct NJS_POINT3 v;
+	struct NJS_POINT3 *local_18;
+	local_18 = vp;
+	v.x = local_18->x;
+	local_18 = (struct NJS_POINT3 *)((char *)local_18 + 4);
+	v.y = local_18->x;
+	local_18 = (struct NJS_POINT3 *)((char *)local_18 + 4);
+	v.z = local_18->x;
+	njPushMatrixEx();
+	njUnitMatrix(0);
+	if (twp->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)twp->ang.y);
+	}
+	if (-twp->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)(-twp->ang.x));
+	}
+	if (-twp->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)(-twp->ang.z));
+	}
+	njCalcVector(0, &v, vp);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x004ebf90
@@ -658,14 +683,68 @@ void PConvertVector_P2G(struct taskwk *twp, struct NJS_POINT3 *vp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x004ec070
+// FUNCTION: SADX 0x004ec070
 void PConvertVector_G2N(struct NJS_POINT3 *np, struct NJS_POINT3 *vp, long angy)
 {
+	struct NJS_POINT3 v;
+	long local_20;
+	long local_18;
+	struct NJS_POINT3 *local_1c;
+	local_1c = vp;
+	v.x = local_1c->x;
+	local_1c = (struct NJS_POINT3 *)((char *)local_1c + 4);
+	v.y = local_1c->x;
+	local_1c = (struct NJS_POINT3 *)((char *)local_1c + 4);
+	v.z = local_1c->x;
+	PGetAngleXZFromNormal(np->x, np->y, np->z, &local_18, &local_20);
+	njPushMatrixEx();
+	njUnitMatrix(0);
+	if (angy != 0)
+	{
+		njRotateY(0, (unsigned short)angy);
+	}
+	if (-local_18 != 0)
+	{
+		njRotateX(0, (unsigned short)(-local_18));
+	}
+	if (-local_20 != 0)
+	{
+		njRotateZ(0, (unsigned short)(-local_20));
+	}
+	njCalcVector(0, &v, vp);
+	njPopMatrix(1);
 }
 
-// STUB: SADX 0x004ec160
+// FUNCTION: SADX 0x004ec160
 void PConvertVector_N2G(struct NJS_POINT3 *np, struct NJS_POINT3 *vp, long angy)
 {
+	long local_20;
+	long local_18;
+	struct NJS_POINT3 v;
+	struct NJS_POINT3 *local_1c;
+	local_1c = vp;
+	v.x = local_1c->x;
+	local_1c = (struct NJS_POINT3 *)((char *)local_1c + 4);
+	v.y = local_1c->x;
+	local_1c = (struct NJS_POINT3 *)((char *)local_1c + 4);
+	v.z = local_1c->x;
+	PGetAngleXZFromNormal(np->x, np->y, np->z, &local_18, &local_20);
+	njPushMatrixEx();
+	njUnitMatrix(0);
+	if (local_20 != 0)
+	{
+		njRotateZ(0, (unsigned short)local_20);
+	}
+	if (local_18 != 0)
+	{
+		njRotateX(0, (unsigned short)local_18);
+	}
+	if (-angy != 0)
+	{
+		njRotateY(0, (unsigned short)(-angy));
+	}
+	njCalcVector(0, &v, vp);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x004ec250
@@ -1309,9 +1388,29 @@ void SetTrampolineVelocityP(unsigned char pno, unsigned char time, float x, floa
 	SetVelocityP(pno, x, y, z);
 }
 
-// STUB: SADX 0x004f0fe0
+// FUNCTION: SADX 0x004f0fe0
 void SetVelocityYAndRotationAndNoconTimeP(unsigned char pno, float y, long *ang, long tm)
 {
+	struct NJS_POINT3 v;
+	struct taskwk *local_20;
+	int local_18;
+	int local_1c;
+	local_20 = DAT_05baf368[pno];
+	local_18 = DAT_05ba3328[pno];
+	local_1c = DAT_05ba9348[pno];
+	*(short *)((char *)local_1c + 0x0a) = tm;
+	local_20->flag = local_20->flag | 0x1000;
+	local_20->smode = 4;
+	v.x = 0.0f;
+	v.y = y;
+	v.z = 0.0f;
+	*(struct NJS_POINT3 *)((char *)local_1c + 0x38) = v;
+	local_20->ang.x = ang[0];
+	local_20->ang.y = 0x4000 - ang[1];
+	*(int *)((char *)local_18 + 0x20) = local_20->ang.y;
+	local_20->ang.z = ang[2];
+	PConvertVector_P2G(local_20, &v);
+	*(struct NJS_POINT3 *)((char *)local_18 + 4) = v;
 }
 
 // STUB: SADX 0x004f10d0
@@ -1319,9 +1418,25 @@ void SetParabolicMotionP(unsigned char pno, float spd, struct NJS_POINT3 *v)
 {
 }
 
-// STUB: SADX 0x004f11f0
+// FUNCTION: SADX 0x004f11f0
 void SetVelocityAndRotationAndNoconTimeP(unsigned char pno, struct NJS_POINT3 *v, long *ang, long tm)
 {
+	struct NJS_POINT3 w;
+	struct taskwk *local_20;
+	int local_18;
+	int local_1c;
+	local_20 = DAT_05baf368[pno];
+	local_18 = DAT_05ba3328[pno];
+	local_1c = DAT_05ba9348[pno];
+	*(short *)((char *)local_1c + 0xa) = (short)tm;
+	*(struct NJS_POINT3 *)((char *)local_1c + 0x38) = *v;
+	local_20->ang.x = ang[0];
+	local_20->ang.y = 0x4000 - ang[1];
+	*(int *)((char *)local_18 + 0x20) = local_20->ang.y;
+	local_20->ang.z = ang[2];
+	w = *v;
+	PConvertVector_P2G(local_20, &w);
+	*(struct NJS_POINT3 *)((char *)local_18 + 4) = w;
 }
 
 // FUNCTION: SADX 0x004f12d0

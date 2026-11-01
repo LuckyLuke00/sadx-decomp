@@ -64,9 +64,35 @@ void InputHookRelease(void)
 	PadReadOnP(0xff);
 }
 
-// STUB: SADX 0x0055f670
+// FUNCTION: SADX 0x0055f670
 void InputHookDelete(struct task *del_task_p)
 {
+	struct task *local_8g;
+	struct task *local_cj;
+	struct task *local_10;
+
+	if (FUN_0055f9f0(del_task_p, &local_8g))
+	{
+		local_cj = local_8g->next;
+		local_10 = local_8g->last;
+		if (local_8g == DAT_05ccdacc)
+		{
+			InputHookRelease();
+		}
+		if (local_cj)
+		{
+			local_cj->last = local_10;
+		}
+		else
+		{
+			DAT_05ccdac8 = local_10;
+		}
+		if (local_10)
+		{
+			local_10->next = local_cj;
+		}
+		Free(local_8g);
+	}
 }
 
 // STUB: SADX 0x0055f6f0

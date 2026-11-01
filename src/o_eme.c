@@ -1,4 +1,5 @@
 #include "decls.h"
+void DisplayEmeKiran(struct task *tp);
 extern void *DAT_05a8167c;
 
 // FUNCTION: SADX 0x005ba3f0
@@ -38,9 +39,43 @@ void ObjectEmeraldP(struct task *tp)
 	tp->exec = ObjectEmeraldPRegular;
 }
 
-// STUB: SADX 0x005bac00
+// FUNCTION: SADX 0x005bac00
 void DisplayEmeKiran(struct task *tp)
 {
+	struct taskwk *local_8g;
+	int local_cg;
+
+	local_8g = tp->twp;
+	tp->disp = DisplayEmeKiran;
+	if (ChkPause() == 0)
+	{
+		local_8g->counter.f += 1.0666667222976685;
+	}
+	if (local_8g->counter.f >= 4.0)
+	{
+		FreeTask(tp);
+		return;
+	}
+	if (DAT_05b9d838 == 0)
+	{
+		SetMaterial(0.5f, 1.0f, 1.0f, 1.0f);
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 10);
+		SetRegularTexture();
+		njPushMatrix(0);
+		njTranslateV(0, &local_8g->pos);
+		FUN_0067d2d0(0, local_8g->scl.x, local_8g->scl.x, local_8g->scl.x);
+		local_cg = (unsigned int)local_8g->counter.f;
+		late_DrawSprite3D(&sprite_eme_kiran, local_cg, 0x32, 4);
+		njPopMatrix(1);
+		ResetMaterial();
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+	}
+	if (ChkPause() == 0)
+	{
+		CheckRangeOut(tp);
+	}
 }
 
 // FUNCTION: SADX 0x005bad70

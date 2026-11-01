@@ -1,4 +1,9 @@
 #include "decls.h"
+extern float DAT_05b3ebe0;
+extern float DAT_05b3ebe4;
+extern float DAT_05b3ebe8;
+extern float DAT_05b3ebec;
+extern float DAT_05b3ebf8;
 extern void SetInputP(unsigned char pno, signed char mode);
 extern void CharColliOn(struct taskwk *twp);
 void GetRocketBarOfs(struct taskwk *twp, struct NJS_ACTION *anm, float fnum, struct NJS_POINT3 *vec_ans);
@@ -17,9 +22,21 @@ void FUN_005b9490(struct task *param_1);
 extern const struct CCL_INFO rocket_colli_info[1];
 extern int DAT_05edc104[10];
 
-// STUB: SADX 0x005b76c0
-void FUN_005b76c0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2)
+// FUNCTION: SADX 0x005b76c0
+void FUN_005b76c0(struct taskwk *param_1, struct obj *param_2)
 {
+	if ((param_1->btimer & 2) != 0)
+	{
+		return;
+	}
+	if (CheckCollisionP(&param_1->pos, param_2->model->r + 20.0) != 0)
+	{
+		param_1->flag = param_1->flag | 0x100;
+	}
+	else
+	{
+		param_1->flag = param_1->flag & ~0x100;
+	}
 }
 
 // STUB: SADX 0x005b7730
@@ -283,9 +300,41 @@ void DrawRocketJet(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b96b0
+// FUNCTION: SADX 0x005b96b0
 void SetRocketSmoke(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct motionwk *local_8g;
+	struct anywk *local_10g;
+	local_cg = tp->twp;
+	local_8g = tp->mwp;
+	local_10g = tp->awp;
+	if (*(unsigned char *)local_10g != 0)
+	{
+		if (DAT_05b9d838 == 0)
+		{
+			njPushMatrix((NJS_MATRIX (*))_nj_unit_matrix_);
+			if (*(int *)((char *)local_cg + 0x18) != 0)
+			{
+				njRotateY(0, (int)*(unsigned short *)((char *)local_cg + 0x18));
+			}
+			if (*(int *)((char *)local_cg + 0x1c) != 0)
+			{
+				njRotateZ(0, (int)*(unsigned short *)((char *)local_cg + 0x1c));
+			}
+			DAT_05b3ebe0 = -(local_8g->acc.x + 3.0);
+			DAT_05b3ebe4 = 0.0f;
+			DAT_05b3ebe8 = 0.0f;
+			njCalcPoint(0, (NJS_POINT3 *)&DAT_05b3ebe0, (NJS_POINT3 *)&DAT_05b3ebec);
+			FUN_005a8990(&local_cg->pos.x, &DAT_05b3ebec, &DAT_05b3ebe0);
+			DAT_05b3ec0c = local_8g->acc.x;
+			DAT_05b3ec10 = 0.0f;
+			DAT_05b3ec14 = 0.0f;
+			njCalcVector(0, (NJS_VECTOR *)&DAT_05b3ec0c, (NJS_VECTOR *)&DAT_05b3ebf8);
+			njPopMatrix(1);
+			CreateRocketSmoke((NJS_POINT3 *)&DAT_05b3ebe0, (NJS_POINT3 *)&DAT_05b3ebf8, 0.8f);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x005b97e0

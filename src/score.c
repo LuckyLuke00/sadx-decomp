@@ -1,4 +1,5 @@
 #include "decls.h"
+static void DisplayCalcBoardScoreSB(struct task *tp);
 void DisplayCalcLettersHH(struct task *tp);
 extern long bWake;
 void FUN_0055de60(struct _SC_NUMBERS *param_1);
@@ -365,9 +366,15 @@ void DisplayCalcSonicScoreHH(struct task *tp)
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055a030
+// FUNCTION: SADX 0x0055a030
 void DisplayCalcSuperSonicScoreHH(struct task *tp)
 {
+	DisplayCalcSonicScoreHH(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.y;
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0 + -16.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // STUB: SADX 0x0055a0c0
@@ -394,10 +401,34 @@ double FUN_0055af20()
 	return (double)DAT_05b3ebd4;
 }
 
-// STUB: SADX 0x0055af30
+// FUNCTION: SADX 0x0055af30
 float FUN_0055af30()
 {
-	return (float)0;
+	float local_8g;
+	float local_cj;
+	int local_10g;
+	local_8g = 5000.0f;
+	if (GetPlayerNumber() == 6)
+	{
+		if ((int)(signed char)DAT_05b3ea17 < 3)
+		{
+			local_10g = (int)(signed char)DAT_05b3ea17 * 0x3c + (int)(signed char)DAT_05b3ea27;
+			local_8g = (float)local_10g * 25.0;
+		}
+	}
+	else
+	{
+		local_cj = (float)((int)(signed char)DAT_05b3ea17 * 0x3c + (int)(signed char)DAT_05b3ea27) * 10.0;
+		if ((int)(signed char)DAT_05b3ea17 != 0)
+		{
+			local_8g = local_8g - local_cj;
+			if (local_8g < 0.0)
+			{
+				local_8g = 0.0f;
+			}
+		}
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x0055afd0
@@ -506,14 +537,26 @@ void DisplayCalcLettersSB(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0055c5b0
-void DisplayCalcBoardScoreSB(struct task *tp)
+// FUNCTION: SADX 0x0055c5b0
+static void DisplayCalcBoardScoreSB(struct task *tp)
 {
+	DisplayCalcLettersSB(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.x;
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0 + -64.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055c640
+// FUNCTION: SADX 0x0055c640
 void DisplayCalcTimeScoreSB(struct task *tp)
 {
+	DisplayCalcBoardScoreSB(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.y;
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0 + -16.0;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
 // FUNCTION: SADX 0x0055c6d0

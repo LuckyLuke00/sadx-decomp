@@ -173,10 +173,25 @@ void SeqInitStage()
 {
 }
 
-// STUB: SADX 0x004f4f20
+// FUNCTION: SADX 0x004f4f20
 int chk_advstage()
 {
-	return (int)0;
+	int local_8;
+
+	local_8 = *(unsigned char *)((char *)DAT_05baf544 + 4 + (short)*(short *)((char *)DAT_05b3ea28 + 4) * 0x28);
+	switch (((DAT_05b9d724 << 8 | DAT_05b9d744) >> 8))
+	{
+		case 0x1a:
+			return local_8 == 0x1a;
+		case 0x1d:
+		case 0x20:
+			return local_8 == 0x1d || local_8 == 0x20;
+		case 0x21:
+			return local_8 == 0x21;
+		case 0x22:
+			return local_8 == 0x22;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x004f4fe0

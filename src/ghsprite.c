@@ -36,10 +36,33 @@ int ghSpriteExec(struct GHSPRITE *pSpr)
 	return (int)0;
 }
 
-// STUB: SADX 0x0060f550
+// FUNCTION: SADX 0x0060f550
 struct task *ghSpriteSet(struct NJS_POINT3 *pPos, struct GHSPRITE_INIT_INFO *pInit, int flag)
 {
-	return (struct task *)0;
+	struct task *local_8g;
+	struct GHSPRITE *local_cg;
+
+	local_8g = CreateElementalTask(2, 4, spriteAutoExec);
+	if (local_8g != 0)
+	{
+		local_cg = (struct GHSPRITE *)MAlloc(0x44);
+		if (local_cg != 0)
+		{
+			local_8g->awp = (struct anywk *)local_cg;
+			ghSpriteInit(local_cg, pPos, pInit, flag);
+			if (*(int *)local_cg != 0)
+			{
+				local_8g->exec = spriteAutoExec_Exec;
+			}
+			local_8g->disp = spriteAutoDisp;
+		}
+		else
+		{
+			DestroyTask(local_8g);
+			local_8g = 0;
+		}
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x0060f5e0

@@ -173,6 +173,7 @@ struct GHPARTICLE_UNIT;
 struct GHSPRITE;
 struct GHSPRITE_ANIM;
 struct GHSPRITE_ANIM_TABLE;
+struct GHSPRITE_INIT_INFO;
 struct GM_EVENT_TABLE;
 struct GM_START_POSANG;
 struct HintMessageMemory;
