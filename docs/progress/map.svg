@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,896 of 16,524 game functions done (35.68%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">5,898 of 16,524 game functions done (35.69%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 604,1194.5 598,1187.6 599.1,1186" fill="#4e32f3"/>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 598,1187.6 599.1,1186" fill="#ffffff" fill-opacity="0.4"/>
@@ -134,7 +134,7 @@
 <rect x="14" y="49" width="6" height="6" fill="#b07d00"><title>0x005d87d0 KnuEffectHormTubeReset: 100%</title></rect>
 <rect x="21" y="49" width="6" height="6" fill="#b07d00"><title>0x005d87e0 FUN_005d87e0: 100%</title></rect>
 </g>
-<rect x="815" y="1202" width="102" height="83" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Amy: 30 of 92 functions done</title></rect>
+<rect x="815" y="1202" width="102" height="83" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Amy: 32 of 92 functions done</title></rect>
 <text x="818" y="1216" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Amy <tspan font-weight="400" fill="#59636e">5%</tspan></text>
 <g transform="translate(818,1220)">
 <rect y="0" width="91" height="49" fill="url(#todo)"/>
@@ -143,10 +143,12 @@
 <rect x="49" y="0" width="6" height="6" fill="#b07d00"><title>0x0051b7b0 FUN_0051b7b0: 100%</title></rect>
 <rect x="56" y="0" width="6" height="6" fill="#b07d00"><title>0x0051b800 FUN_0051b800: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#b07d00"><title>0x0051c960 FUN_0051c960: 100%</title></rect>
+<rect x="35" y="7" width="6" height="6" fill="#b07d00"><title>0x0051ca90 FUN_0051ca90: 100%</title></rect>
 <rect x="77" y="7" width="6" height="6" fill="#b07d00"><title>0x0051e350 FUN_0051e350: 100%</title></rect>
 <rect x="42" y="14" width="6" height="6" fill="#b07d00"><title>0x0051f0a0 AmyCheckBeInTheAir: 100%</title></rect>
 <rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x0051f150 AmyCheckStop: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x0051f1f0 FUN_0051f1f0: 100%</title></rect>
+<rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x00520610 FUN_00520610: 100%</title></rect>
 <rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x00520bd0 AmyFaceMotion: 100%</title></rect>
 <rect x="7" y="28" width="6" height="6" fill="#b07d00"><title>0x005210f0 FUN_005210f0: 100%</title></rect>
 <rect x="28" y="28" width="6" height="6" fill="#b07d00"><title>0x00521550 AmyForEventHammerScaleIm: 100%</title></rect>

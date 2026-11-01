@@ -23028,9 +23028,9 @@
   {
    "address": "0x0051ca90",
    "name": "FUN_0051ca90",
-   "accuracy": 0.3125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23164,7 +23164,15 @@
   {
    "address": "0x00520610",
    "name": "FUN_00520610",
-   "accuracy": 0.16393442622950818,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005206b0",
+   "name": "AmyDirectAhead",
+   "accuracy": 0.01937046004842615,
    "effective": false,
    "stub": true,
    "library": false
@@ -101142,5 +101150,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0b884e529ccee20a9b71e0f5a4344be234532615a00f462e1991ddba91d15e88"
+ "inputs_sha256": "81417ba709588cae185dc2db3c317bd151f88903b91183e051f9e5871c2c9ac0"
 }

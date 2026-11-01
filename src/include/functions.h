@@ -1367,6 +1367,7 @@ long GetAmyMovableYButton(struct taskwk *twp, struct motionwk2 *mwp, struct play
 void FUN_0051b800(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 void AmyChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 void AmyThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
+void AmyDirectAhead(struct task *tp);
 long Amy_Status(long plnmb);
 void AmyBalanceGameStartChecker(struct task *tp);
 void KnucklesTheEchidna(struct task *tp);
