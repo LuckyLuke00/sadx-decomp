@@ -266,8 +266,8 @@ struct ActionParam DAT_00a0a9bc;
 // GLOBAL: SADX 0x00a0aa18
 struct ActionParam DAT_00a0aa18;
 
-// GLOBAL: SADX 0x00a0c8d8
-struct TaskInfo ObjectTaskInfo;
+// GLOBAL: SADX 0x00a0c8f0
+struct TaskInfo RockyHeadTaskInfo;
 
 // GLOBAL: SADX 0x00a21cf8
 const char DAT_00a21cf8[1] = {};
@@ -2542,6 +2542,9 @@ struct ActionParam DAT_035af6d8;
 
 // GLOBAL: SADX 0x035af6f4
 struct ActionParam DAT_035af6f4;
+
+// GLOBAL: SADX 0x035af710
+char DAT_035af710[4];
 
 // GLOBAL: SADX 0x035af714
 char DAT_035af714[1];
@@ -8611,6 +8614,9 @@ struct task *DAT_060cd274;
 
 // GLOBAL: SADX 0x060cd388
 struct task *DAT_060cd388;
+
+// GLOBAL: SADX 0x060cd39c
+char DAT_060cd39c[4];
 
 // GLOBAL: SADX 0x060ce404
 int DAT_060ce404;

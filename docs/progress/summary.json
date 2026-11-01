@@ -54875,6 +54875,14 @@
    "library": false
   },
   {
+   "address": "0x007e7170",
+   "name": "initObject(struct task *, void const *)",
+   "accuracy": 0.06896551724137931,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007e7220",
    "name": "SandObjSetManageTask",
    "accuracy": 1.0,
@@ -54964,7 +54972,7 @@
   },
   {
    "address": "0x007e7a10",
-   "name": "initObject(8)",
+   "name": "initObject(9)",
    "accuracy": 0.022222222222222223,
    "effective": false,
    "stub": true,
@@ -55107,6 +55115,14 @@
    "library": false
   },
   {
+   "address": "0x007e8a00",
+   "name": "execObject(struct task *)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007e8ad0",
    "name": "dispRockyHead",
    "accuracy": 1.0,
@@ -55176,6 +55192,14 @@
    "accuracy": 0.03125,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e9730",
+   "name": "SandOutVibrate",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -87954,6 +87978,13 @@
    "library": false
   },
   {
+   "address": "0x00a0c8f0",
+   "name": "RockyHeadTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00a0ee64",
    "name": "ObjectTaskInfo",
    "size": 24,
@@ -95647,6 +95678,13 @@
    "library": false
   },
   {
+   "address": "0x035af710",
+   "name": "DAT_035af710",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x035af714",
    "name": "DAT_035af714",
    "size": 1,
@@ -101221,5 +101259,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "947b3089c2833f948bbd2689c2a847fd8ac475c9d6f75690619624092805aab1"
+ "inputs_sha256": "4c419bd0573ae7dcf61cafdbc3452757a712afd186942d1449db126a8bc0388b"
 }

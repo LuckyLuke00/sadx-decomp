@@ -1,4 +1,10 @@
 #include "decls.h"
+extern char DAT_035af710[4];
+extern char DAT_060cd39c[4];
+
+// GLOBAL: SADX 0x00a0c8d8
+static struct TaskInfo ObjectTaskInfo;
+
 extern struct ActionParam DAT_035af6f4;
 extern struct ActionParam DAT_035af6bc;
 extern int DAT_05b9d838;
@@ -20,6 +26,44 @@ struct task *SetRockyHead02Task()
 struct task *SetRockyHead03Task()
 {
 	return SandObjSetChildTask(&ObjectTaskInfo, &DAT_035af6f4);
+}
+
+// FUNCTION: SADX 0x007e8a00
+void execObject(struct task *task_p)
+{
+	struct motionwk *var1 = task_p->mwp;
+	switch (var1->work.b[0])
+	{
+	case 0:
+		if (CheckCollisionP((struct NJS_POINT3 *)(*(int *)((char *)var1 + 0x24)), 2000.0f) != 0)
+		{
+			MirenSetChildTask(task_p, &RockyHeadTaskInfo, &DAT_060cd39c);
+			var1->work.b[0] = 1;
+		}
+		break;
+	case 2:
+		if (CheckCollisionP((struct NJS_POINT3 *)(*(int *)((char *)var1 + 0x24)), 2000.0f) != 0)
+		{
+			MirenSetChildTask(task_p, &RockyHeadTaskInfo, &DAT_035af710);
+			var1->work.b[0] = 1;
+		}
+		break;
+	default:
+		if (CheckCollisionP((struct NJS_POINT3 *)(*(int *)((char *)var1 + 0x24)), 2500.0f) == 0)
+		{
+			FreeTaskC(task_p);
+			var1->work.b[0] = 2;
+		}
+		else
+		{
+			LoopTaskC(task_p);
+			if (task_p->ctp == 0)
+			{
+				var1->work.b[0] = 0;
+			}
+		}
+		break;
+	}
 }
 
 // FUNCTION: SADX 0x007e8ad0
