@@ -15,9 +15,20 @@ void RdChaos6Init(struct task *tp)
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_Chaos06 + local_8))[DAT_05b3e0d0];
 }
 
-// STUB: SADX 0x006f4c10
+// FUNCTION: SADX 0x006f4c10
 void chaos6_gdcontrol(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	var1->wtimer--;
+	if ((short)var1->wtimer < 0)
+	{
+		ADXTaskInit();
+		RoundBGM_Play(var1->mode);
+		DestroyTask(tp);
+		___njFogDisable();
+	}
 }
 
 // STUB: SADX 0x006f4c50

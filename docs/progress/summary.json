@@ -48685,9 +48685,9 @@
   {
    "address": "0x006f4c10",
    "name": "chaos6_gdcontrol",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -48797,9 +48797,9 @@
   {
    "address": "0x006f9380",
    "name": "objExit",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -101157,5 +101157,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ee7a2320b3d540b7ee5e64d26103a3d3f59b8a1e87238a42cd51325c23085a35"
+ "inputs_sha256": "820dc90e7c567748051687328bdf745ba147ccbd11761efd92b0f207be9bf6ac"
 }

@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,900 of 16,524 game functions done (35.70%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,902 of 16,524 game functions done (35.71%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 604,1194.5 598,1187.6 599.1,1186" fill="#4e32f3"/>
 <polygon points="600.8,1184.5 607.2,1184.5 608.9,1186 610,1187.6 598,1187.6 599.1,1186" fill="#ffffff" fill-opacity="0.4"/>
@@ -1668,7 +1668,7 @@
 <polygon points="340,559.6 343.8,559.6 346,566.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="348.2,559.6 352,559.6 346,566.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="342.8,556.5 349.2,556.5 350.9,558 352,559.6 346,566.5 340,559.6 341.1,558" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="356" y="566" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Bosses <tspan font-weight="400" fill="#8b949e">7%</tspan></text>
+<text x="356" y="566" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Bosses <tspan font-weight="400" fill="#8b949e">8%</tspan></text>
 <rect x="514" y="860" width="100" height="60" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 0: 18 of 62 functions done</title></rect>
 <text x="517" y="874" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chaos 0 <tspan font-weight="400" fill="#8b949e">6%</tspan></text>
 <g transform="translate(517,878)">
@@ -1751,7 +1751,7 @@
 <rect x="56" y="42" width="6" height="6" fill="#ffd700"><title>0x006f25b0 Dsp_damage_ball: 100%</title></rect>
 <rect x="56" y="49" width="6" height="6" fill="#ffd700"><title>0x006f3b30 Dsp_Chaos4KamaTame: 100%</title></rect>
 </g>
-<rect x="448" y="790" width="64" height="130" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 6: 16 of 93 functions done</title></rect>
+<rect x="448" y="790" width="64" height="130" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 6: 18 of 93 functions done</title></rect>
 <text x="451" y="804" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chaos 6</text>
 <text x="451" y="819" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">5%</tspan></text>
 <g transform="translate(451,823)">
@@ -1759,6 +1759,7 @@
 <rect y="77" width="35" height="7" fill="url(#todo)"/>
 <rect x="0" y="0" width="6" height="6" fill="#ffd700"><title>0x006f44f0 DisplaySky: 100%</title></rect>
 <rect x="0" y="7" width="6" height="6" fill="#ffd700"><title>0x006f4b60 RdChaos6Init: 100%</title></rect>
+<rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x006f4c10 chaos6_gdcontrol: 100%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x006f4f00 FUN_006f4f00: 100%</title></rect>
 <rect x="42" y="21" width="6" height="6" fill="#ffd700"><title>0x006f6510 Chaos6AttackStatus: 100%</title></rect>
 <rect x="0" y="28" width="6" height="6" fill="#ffd700"><title>0x006f66c0 Chaos6ChangeMode: 100%</title></rect>
@@ -1767,6 +1768,7 @@
 <rect x="35" y="42" width="6" height="6" fill="#ffd700"><title>0x006f8780 objNormalT: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#ffd700"><title>0x006f8810 Chaos6HTtaileff: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#ffd700"><title>0x006f8830 Chaos6HTtaileffDisappear: 100%</title></rect>
+<rect x="21" y="56" width="6" height="6" fill="#ffd700"><title>0x006f9380 objExit: 100%</title></rect>
 <rect x="42" y="56" width="6" height="6" fill="#ffd700"><title>0x006f95e0 EFF_C6IceFloor_disp: 100%</title></rect>
 <rect x="49" y="56" width="6" height="6" fill="#ffd700"><title>0x006f96a0 EFF_C6IceFloor: 100%</title></rect>
 <rect x="7" y="70" width="6" height="6" fill="#ffd700"><title>0x006fa6d0 FUN_006fa6d0: 100%</title></rect>
