@@ -22,7 +22,13 @@ void standlight_exec(struct task *task_p)
 	standlight_draw(task_p);
 }
 
-// STUB: SADX 0x00894430
+// FUNCTION: SADX 0x00894430
 void ObjectFinalEggStandlight(struct task *task_p)
 {
+	struct taskwk *var1 = task_p->twp;
+	*(long *)((char *)var1 + 0x8) = (long)(*(float *)((char *)var1 + 0x2c) * 65536.0 / 360.0);
+	CCL_Init(task_p, standlight_colli_info, 1, 4);
+	task_p->exec = standlight_exec;
+	task_p->disp = standlight_draw;
+	task_p->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }

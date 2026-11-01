@@ -1322,6 +1322,7 @@ extern struct obj object_ligpfr_light01_light01[];
 extern struct obj object_bl_nc_bllight_nc_bllight[];
 extern struct NJS_TEXLIST texlist_unyo;
 extern struct CCL_INFO cinfo_root[];
+extern struct CCL_INFO standlight_colli_info[];
 extern struct CCL_INFO uptarget_colli_info[1];
 extern struct obj *DAT_04a08338;
 extern struct NJS_ACTION action_hallgate[];
