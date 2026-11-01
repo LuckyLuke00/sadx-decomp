@@ -16996,7 +16996,7 @@
   {
    "address": "0x004c1870",
    "name": "MSG_Open",
-   "accuracy": 0.8014981273408239,
+   "accuracy": 0.846441947565543,
    "effective": false,
    "stub": false,
    "library": false
@@ -17108,7 +17108,7 @@
   {
    "address": "0x004c2940",
    "name": "MSG_Puts",
-   "accuracy": 0.7916666666666666,
+   "accuracy": 0.8194444444444444,
    "effective": false,
    "stub": false,
    "library": false
@@ -31645,9 +31645,9 @@
   {
    "address": "0x005a49e0",
    "name": "AvaGetMiniGameScore",
-   "accuracy": 0.06557377049180328,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39381,9 +39381,9 @@
   {
    "address": "0x006030c0",
    "name": "FUN_006030c0",
-   "accuracy": 0.18604651162790697,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -87412,6 +87412,13 @@
    "library": false
   },
   {
+   "address": "0x0099b0a8",
+   "name": "DAT_0099b0a8",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0099b698",
    "name": "flickydata",
    "size": 300,
@@ -100987,5 +100994,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "09ca675279b9616a8a8da467fd56f1d38d58f52f39a85b53036946168671f874"
+ "inputs_sha256": "8ac87b6aea125a3d379e82a33495d85703bdc5471de68070ca1cd82162537b8d"
 }

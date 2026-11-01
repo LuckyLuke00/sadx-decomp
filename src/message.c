@@ -80,11 +80,11 @@ struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, un
 {
 	int local_18;
 	int local_14;
-	int local_8g;
+	int local_ci;
 	int local_28;
 	int local_24;
 	int local_10;
-	unsigned char *local_cj;
+	unsigned char *local_8g;
 	int local_20;
 	void *local_1c;
 
@@ -98,36 +98,36 @@ struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, un
 	{
 		local_14 = 0x200;
 	}
-	local_8g = local_18;
-	local_28 = local_14;
-	if (local_8g < 0x100)
+	local_ci = local_18;
+	local_24 = local_14;
+	if (local_ci < 0x100)
 	{
-		local_8g = 0x100;
+		local_ci = 0x100;
 	}
-	if (local_28 < 0x100)
+	if (local_24 < 0x100)
 	{
-		local_28 = 0x100;
+		local_24 = 0x100;
 	}
-	local_24 = local_8g;
-	local_10 = local_28;
-	msgc->buf_width2 = local_24;
+	local_28 = local_ci;
+	local_10 = local_24;
+	msgc->buf_width2 = local_28;
 	msgc->buf_height2 = local_10;
-	local_cj = DAT_05b42e20;
+	local_8g = DAT_05b42e20;
 	if (((unsigned int)DAT_05b42e20 & 0x1f) == 0)
 	{
-		local_cj = DAT_05b42e20;
+		local_8g = DAT_05b42e20;
 	}
 	else
 	{
-		local_cj = (unsigned char *)((unsigned int)(DAT_05b42e20 + 0x20) & ~0x1f);
+		local_8g = (unsigned char *)((unsigned int)(DAT_05b42e20 + 0x20) & ~0x1f);
 	}
-	local_20 = local_24 * local_10 * 2;
+	local_20 = local_28 * local_10 * 2;
 	local_1c = MAlloc(local_20);
 	if (local_1c == 0)
 	{
-		if (local_cj + local_20 < (unsigned char *)&DAT_05b92e20)
+		if (local_8g + local_20 < (unsigned char *)&DAT_05b92e20)
 		{
-			local_1c = local_cj;
+			local_1c = local_8g;
 		}
 		else
 		{
@@ -366,8 +366,8 @@ void MSG_LF(struct MSGC *msgc)
 void MSG_Puts(struct MSGC *msgc, char *str)
 {
 	int local_10;
+	int local_ci;
 	int local_8g;
-	int local_cj;
 
 	if (*str == 9)
 	{
@@ -380,15 +380,15 @@ void MSG_Puts(struct MSGC *msgc, char *str)
 	else
 	{
 		local_10 = DAT_025d5978[DAT_05b3ebbc].shifton & 0xff;
-		local_8g = DAT_025d5978[DAT_05b3ebbc].shiftoff & 0xff;
-		while ((local_cj = *(unsigned char *)str++) != 0)
+		local_ci = DAT_025d5978[DAT_05b3ebbc].shiftoff & 0xff;
+		while ((local_8g = *(unsigned char *)str++) != 0)
 		{
-			if (local_cj >= local_10 && local_cj <= local_8g)
+			if (local_8g >= local_10 && local_8g <= local_ci)
 			{
-				local_cj = (local_cj << 8) | *(unsigned char *)str;
+				local_8g = (local_8g << 8) | *(unsigned char *)str;
 				str++;
 			}
-			MSG_Putc(msgc, local_cj);
+			MSG_Putc(msgc, local_8g);
 		}
 	}
 }

@@ -149,6 +149,9 @@ const long seq_item_flag[18] = {};
 // GLOBAL: SADX 0x00997d78
 short DAT_00997d78[4];
 
+// GLOBAL: SADX 0x0099b0a8
+int DAT_0099b0a8;
+
 // GLOBAL: SADX 0x0099b698
 const struct FlickyData flickydata[15] = {};
 
@@ -6520,6 +6523,9 @@ int DAT_05cccef4[7];
 
 // GLOBAL: SADX 0x05cccf3c
 unsigned short DAT_05cccf3c[8];
+
+// GLOBAL: SADX 0x05cccf54
+int DAT_05cccf54[8];
 
 // GLOBAL: SADX 0x05cccf84
 unsigned long DAT_05cccf84;
