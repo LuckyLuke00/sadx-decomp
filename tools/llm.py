@@ -600,17 +600,30 @@ def object_files(tables):
     return files
 
 
+def own_definition(declaration, row, types):
+    """The static definition of ROW's global in a file that declares it DECLARATION, or None: that declaration,
+    which the file's code builds with, given the table's first size when it leaves that out, else the table's
+    definition."""
+    table = names.row_definition(row, types)
+    if declaration is None:
+        return table
+    size = re.search(r"\[\w+\]", table)
+    return re.sub(r"\[\s*\]", size.group(0) if size else "[1]", declaration, count=1)
+
+
 def own_globals(text, rel, tables, types):
     """TEXT, the file REL, with a static definition under a GLOBAL annotation after its includes of each global that
     TEXT uses by a name several globals share, when REL's object, of which REL is the only file, has one of them:
     each object of the game has its own static of that name, and globals.h can declare only one. None comes when
-    TEXT defines the global already, or a static of its name. TEXT's top-of-file declarations of a defined name go:
-    the table's type wins, and another type would not build."""
+    TEXT defines the global already, or a static of its name. Its type is that of TEXT's own declaration
+    (own_definition), which then goes with the other top-of-file declarations of the name: a static after them would
+    not build."""
     if not tables:
         return text
     objects = {o for o, files in object_files(tables).items() if files == {rel}}
     code = names.strip_code(text)
     annotated = {a for kind, a, _ in names.parse_annotations(text) if kind == "GLOBAL"}
+    declared = dict(names.local_declarations(text)[1])
     block, defined = [], set()
     for name in sorted(set(re.findall(r"[A-Za-z_]\w*", code))):
         rows = global_rows(tables).get(name, [])
@@ -619,7 +632,7 @@ def own_globals(text, rel, tables, types):
                 or re.search(rf"^static\b[^;{{}}]*\b{name}\b", code, re.M)):
             continue
         block += ["", f"// GLOBAL: {project.game_config().target} {hexa(int(own[0]['address'], 16))}",
-                  f"static {names.row_definition(own[0], types)};"]
+                  f"static {own_definition(declared.get(name), own[0], types)};"]
         defined.add(name)
     if not block:
         return text
