@@ -1,4 +1,9 @@
 #include "decls.h"
+void ObjectAlrCracker(struct task *pTask);
+extern struct obj object_cr4_nc_crk_nc_crk[1];
+extern struct obj object_cr4_nc_crk2_nc_crk2[1];
+extern struct obj object_cr4_nc_crk3_nc_crk3[1];
+extern struct obj object_cr4_nc_crk4_nc_crk4[1];
 void shotConfetti(struct task *pTask);
 void shotTape(struct task *pTask);
 extern struct NJS_POINT3 unitVecCracker;
@@ -54,7 +59,32 @@ void shotTape(struct task *pTask)
 	ObjectAlrTape(&local_20, &local_14);
 }
 
-// STUB: SADX 0x0048a000
+// FUNCTION: SADX 0x0048a000
 void ObjectAlrCracker_Init()
 {
+	const struct obj *table[4];
+	DAT_05b35c48 = 0;
+	table[0] = (const struct obj *)&object_cr4_nc_crk_nc_crk;
+	table[1] = (const struct obj *)&object_cr4_nc_crk2_nc_crk2;
+	table[2] = (const struct obj *)&object_cr4_nc_crk3_nc_crk3;
+	table[3] = (const struct obj *)&object_cr4_nc_crk4_nc_crk4;
+	unsigned int var1;
+	for (var1 = 0; var1 < 4; var1++)
+	{
+		const struct obj *var2 = table[var1];
+		struct task *var3 = CreateElementalTask(2, 4, ObjectAlrCracker);
+		if (var3)
+		{
+			struct taskwk *var4 = var3->twp;
+			var4->pos.x = var2->pos[0];
+			var4->pos.y = var2->pos[1];
+			var4->pos.z = var2->pos[2];
+			var4->ang.x = var2->ang[0];
+			var4->ang.y = var2->ang[1];
+			var4->ang.z = var2->ang[2];
+			var4->scl.x = 1.5f;
+			var4->scl.y = 15.0f;
+			var4->scl.z = 0.0f;
+		}
+	}
 }

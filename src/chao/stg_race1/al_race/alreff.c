@@ -16,9 +16,17 @@ void AlrEff_Dsp(struct AlrEff *___this)
 {
 }
 
-// STUB: SADX 0x0048fc60
+// FUNCTION: SADX 0x0048fc60
 void AlrEff_SetFlag(struct AlrEff *___this, unsigned char flag)
 {
+	int var1;
+
+	var1 = 0;
+	while (var1 < ___this->unit_num)
+	{
+		___this->unit[var1].flag |= flag;
+		var1 = var1 + 1;
+	}
 }
 
 // STUB: SADX 0x0048fca0

@@ -964,6 +964,11 @@ void AlrStage00_Exe(struct AlrReal *___this)
 {
 }
 
+// STUB: SADX 0x00489f70
+void ObjectAlrCracker(struct task *)
+{
+}
+
 // STUB: SADX 0x0048c150
 struct alifewk *ALR_Init(struct task *tp)
 {
