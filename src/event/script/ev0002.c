@@ -1,10 +1,25 @@
 #include "decls.h"
+static void dispChaos0Task(struct task *p_task);
+static void execChaos0Task(struct task *p_task);
 extern struct task *DAT_060cbf64;
 static void initChaos0Task(struct task *p_task);
 
-// STUB: SADX 0x007ce8c0
+// STUB: SADX 0x007ce640
+static void dispChaos0Task(struct task *p_task)
+{
+}
+
+// STUB: SADX 0x007ce6a0
+static void execChaos0Task(struct task *p_task)
+{
+}
+
+// FUNCTION: SADX 0x007ce8c0
 static void initChaos0Task(struct task *p_task)
 {
+	p_task->exec = execChaos0Task;
+	p_task->disp = dispChaos0Task;
+	p_task->dest = FUN_007d6940;
 }
 
 // FUNCTION: SADX 0x007ce8e0

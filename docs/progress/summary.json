@@ -51013,9 +51013,9 @@
   {
    "address": "0x0074b7a0",
    "name": "execDelObjTask",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -51213,9 +51213,9 @@
   {
    "address": "0x0078da40",
    "name": "gattai_exec",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -51427,11 +51427,27 @@
    "library": false
   },
   {
-   "address": "0x007ce8c0",
-   "name": "initChaos0Task(2)",
-   "accuracy": 0.3333333333333333,
+   "address": "0x007ce640",
+   "name": "dispChaos0Task(2)",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007ce6a0",
+   "name": "execChaos0Task(2)",
+   "accuracy": 0.013422818791946308,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007ce8c0",
+   "name": "initChaos0Task(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -51453,6 +51469,14 @@
   {
    "address": "0x007d0bf0",
    "name": "FUN_007d0bf0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007d0c40",
+   "name": "FUN_007d0c40",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -51836,7 +51860,7 @@
   },
   {
    "address": "0x007d30e0",
-   "name": "dispChaos0Task(2)",
+   "name": "dispChaos0Task(3)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -51852,7 +51876,7 @@
   },
   {
    "address": "0x007d3b00",
-   "name": "execChaos0Task(2)",
+   "name": "execChaos0Task(3)",
    "accuracy": 0.005361930294906166,
    "effective": false,
    "stub": true,
@@ -52149,9 +52173,9 @@
   {
    "address": "0x007d5170",
    "name": "createScanLine",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -52525,9 +52549,9 @@
   {
    "address": "0x007d69f0",
    "name": "execSplashTask",
-   "accuracy": 0.0425531914893617,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -53003,11 +53027,19 @@
    "library": false
   },
   {
-   "address": "0x007d94a0",
-   "name": "e102effect_init",
-   "accuracy": 0.25,
+   "address": "0x007d9480",
+   "name": "e102effect_exec",
+   "accuracy": 0.11764705882352941,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d94a0",
+   "name": "e102effect_init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -92970,6 +93002,13 @@
    "library": false
   },
   {
+   "address": "0x026d8278",
+   "name": "pScale_Adv00",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026d8348",
    "name": "texlist_mapSS",
    "size": 8,
@@ -94932,6 +94971,13 @@
   {
    "address": "0x02f8aca4",
    "name": "texlist_l_sibuki",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02f8be00",
+   "name": "action_l_sibuki",
    "size": 8,
    "match": false,
    "library": false
@@ -100812,5 +100858,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0be9a0745356accc1c1e8669d5352b6cb68a62dfc771b4461eea0953037c424a"
+ "inputs_sha256": "32c83eafb49cd9c22ede70da87a147df728f9a9b58d861f0c74d6923fb98771d"
 }

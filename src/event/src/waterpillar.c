@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_ACTION action_l_sibuki[1];
+static void execSplashTask(struct task *p_task);
 extern struct obj DAT_060cc600;
 static void dispPillarTask(struct task *p_task);
 extern struct task *DAT_060cc634;
@@ -77,9 +79,31 @@ void WaterPillarOff()
 	}
 }
 
-// STUB: SADX 0x007d69f0
-void execSplashTask(struct task *p_task)
+// FUNCTION: SADX 0x007d69f0
+static void execSplashTask(struct task *p_task)
 {
+	struct taskwk *var1;
+	var1 = p_task->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		var1->mode = 1;
+		break;
+	case 1:
+		var1->counter.f += var1->timer.f;
+		if ((float)(unsigned int)action_l_sibuki[0].motion->nbFrame <= var1->counter.f)
+		{
+			var1->mode = 2;
+			dispSplashTask(p_task);
+			return;
+		}
+		break;
+	case 2:
+		FreeTask(p_task);
+		DAT_060cc634 = 0;
+		break;
+	}
+	dispSplashTask(p_task);
 }
 
 // FUNCTION: SADX 0x007d6bf0

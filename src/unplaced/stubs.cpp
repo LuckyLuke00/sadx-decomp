@@ -2824,6 +2824,11 @@ void execChaos4Task(struct task *p_task)
 {
 }
 
+// STUB: SADX 0x007d9480
+void e102effect_exec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x007d96c0
 void capturebeam_exec(struct task *tp)
 {

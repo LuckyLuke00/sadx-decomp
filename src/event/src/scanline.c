@@ -40,7 +40,18 @@ void initScanLineTask(struct task *p_task)
 	p_task->dest = FUN_007d6940;
 }
 
-// STUB: SADX 0x007d5170
+// FUNCTION: SADX 0x007d5170
 void createScanLine(unsigned char a, unsigned char r, unsigned char g, unsigned char b, int res)
 {
+	DAT_060cc340 = CreateElementalTask(2, 5, initScanLineTask);
+	unsigned char *var1 = (unsigned char *)MAlloc(8);
+	struct taskwk *var2 = DAT_060cc340->twp;
+	var2->value.ptr = var1;
+	var2->mode = 0;
+	var2->counter.l = 0;
+	var1[3] = a;
+	var1[2] = r;
+	var1[1] = g;
+	var1[0] = b;
+	*(int *)(var1 + 4) = res;
 }

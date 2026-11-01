@@ -1,9 +1,15 @@
 #include "decls.h"
+extern struct NJS_POINT3 *pScale_Adv00[];
 extern struct task *DAT_060cbb94;
 
-// STUB: SADX 0x0078da40
+// FUNCTION: SADX 0x0078da40
 void gattai_exec(struct task *tp)
 {
+	int var1 = DAT_05b9d744;
+	struct NJS_POINT3 *var2 = pScale_Adv00[var1 & 0xff];
+	struct NJS_POINT3 *var3 = &var2[DAT_05b3e0d0];
+
+	DAT_05b3e074 = *var3;
 }
 
 // FUNCTION: SADX 0x0078da80
