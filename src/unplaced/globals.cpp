@@ -215,6 +215,9 @@ char DAT_009f2c10[1];
 // GLOBAL: SADX 0x00a09c28
 struct TaskInfo DAT_00a09c28;
 
+// GLOBAL: SADX 0x00a09e7c
+struct ActionParam DAT_00a09e7c;
+
 // GLOBAL: SADX 0x00a09ea4
 void *DAT_00a09ea4;
 

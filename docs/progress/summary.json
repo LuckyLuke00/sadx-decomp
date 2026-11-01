@@ -36939,6 +36939,14 @@
    "library": false
   },
   {
+   "address": "0x005db0e0",
+   "name": "MirenSaveDataLoadCartData",
+   "accuracy": 0.3076923076923077,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x005db1a0",
    "name": "FUN_005db1a0",
    "accuracy": 1.0,
@@ -54381,9 +54389,9 @@
   {
    "address": "0x007e4c10",
    "name": "FUN_007e4c10",
-   "accuracy": 0.0851063829787234,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -54517,6 +54525,22 @@
   {
    "address": "0x007e5620",
    "name": "CartStateIntrptToCentiSec",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007e5700",
+   "name": "ObjectCartPreviousZone",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007e5720",
+   "name": "ObjectCartNextZone",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87676,6 +87700,20 @@
    "library": false
   },
   {
+   "address": "0x00a09e64",
+   "name": "ObjectTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a09e7c",
+   "name": "DAT_00a09e7c",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00a09e8c",
    "name": "DAT_00a09e8c",
    "size": 24,
@@ -101104,5 +101142,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e6fa720666fed787797cbd081b3c5fa7d754fdcb77a9ba5b45aaa52b2367816b"
+ "inputs_sha256": "0b884e529ccee20a9b71e0f5a4344be234532615a00f462e1991ddba91d15e88"
 }

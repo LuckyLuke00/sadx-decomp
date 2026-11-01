@@ -93,6 +93,7 @@ struct AvaStgActPrmT;
 struct AvaStgActT;
 struct bankdata;
 struct bankdatalist;
+struct BEST3_CART;
 struct BgTask;
 struct BOSSPLAYER_CREATE_PARAM;
 struct bosswk;
