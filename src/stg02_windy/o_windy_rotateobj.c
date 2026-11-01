@@ -1,4 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03b75508
+static struct CCL_INFO object_c_info[7];
+
+extern struct CCL_INFO DAT_03b755c8[1];
 extern struct CCL_INFO DAT_03b75628[];
 extern struct obj object_windobj_bigflootb_bigflootb[];
 extern struct CCL_INFO DAT_03b75598[];
@@ -41,7 +46,7 @@ static void Exec(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00808490
+// FUNCTION: SADX 0x00808490
 void ObjectWindyHasiEnd(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
@@ -52,10 +57,10 @@ void ObjectWindyHasiEnd(struct task *tp)
 		case 0:
 			var1->mode = 1;
 			tp->disp = DrawHasiEnd;
-			CCL_Init(tp, (struct CCL_INFO *)0x3b75508, 2, 4);
+			CCL_Init(tp, object_c_info, 2, 4);
 			break;
 		case 1:
-			var1->counter.f = *(float *)((char *)var1 + 0x2c) + var1->counter.f;
+			var1->counter.f = var1->scl.x + var1->counter.f;
 			if (FUN_004c39c0(tp))
 			{
 				njPrintC(0x110013, "<- ROTATE_SPEED");
@@ -79,9 +84,16 @@ void ObjectWindySakuC(struct task *tp)
 	tp->disp = Draw;
 }
 
-// STUB: SADX 0x00808560
+// FUNCTION: SADX 0x00808560
 void ObjectWindyHaneA(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	var1->value.ptr = &object_windobj_haneobj_a_haneobj_a;
+	CCL_Init(tp, DAT_03b755c8, 2, 4);
+	var1->timer.b[0] = 2;
+	tp->exec = Exec;
+	tp->disp = Draw;
 }
 
 // FUNCTION: SADX 0x008085a0

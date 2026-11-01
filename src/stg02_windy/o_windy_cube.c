@@ -21,6 +21,18 @@ void ObjectWindyBigFloot(struct task *tp)
 	ObjectGCollision(tp);
 }
 
+// FUNCTION: SADX 0x00808e30
+void ObjectWindyTateiwaL(struct task *tp)
+{
+	tp->twp->counter.ptr = object_wvobj_tateiwa_l_tateiwa_l;
+	if (!FUN_004c39c0(tp))
+	{
+		CCL_Init(tp, (struct CCL_INFO *)&object_c_info[4].kind, 3, 4);
+	}
+	ObjectCCollision_setWZ(tp);
+	ObjectCCollision(tp);
+}
+
 // FUNCTION: SADX 0x00808e70
 void ObjectWindyTateiwaS(struct task *tp)
 {

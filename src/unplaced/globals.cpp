@@ -2714,8 +2714,23 @@ struct obj object_windobj_bigfloot_bigfloot[1];
 // GLOBAL: SADX 0x03b2c0c4
 struct obj object_wvobj_watage_watage;
 
+// GLOBAL: SADX 0x03b3133c
+struct obj object_windobj_saku_a_saku_a[1];
+
+// GLOBAL: SADX 0x03b3184c
+struct obj object_windobj_saku_b_saku_b[1];
+
 // GLOBAL: SADX 0x03b32804
 struct obj object_windobj_saku_c_saku_c[1];
+
+// GLOBAL: SADX 0x03b3805c
+struct obj object_windobj_haneobj_a_haneobj_a[1];
+
+// GLOBAL: SADX 0x03b3bdc8
+struct obj object_wvobj_sekichu_a_sekichu_a[1];
+
+// GLOBAL: SADX 0x03b3ce0c
+struct obj object_wvobj_sekichu_b_sekichu_b[1];
 
 // GLOBAL: SADX 0x03b3d430
 struct obj object_wvobj_flower_a_flower_a[1];
@@ -2725,6 +2740,9 @@ struct obj object_wvobj_flower_b_flower_b[1];
 
 // GLOBAL: SADX 0x03b41280
 struct obj object_wvobj_busshu_busshu[1];
+
+// GLOBAL: SADX 0x03b4284c
+struct obj object_wvobj_tateiwa_l_tateiwa_l[1];
 
 // GLOBAL: SADX 0x03b430a4
 struct obj object_wvobj_tateiwa_s_tateiwa_s[1];
@@ -2756,6 +2774,9 @@ struct NJS_TEXLIST texlist_e103;
 // GLOBAL: SADX 0x03b57b7c
 struct obj object_03_misile_03_misile_03_misile[1];
 
+// GLOBAL: SADX 0x03b75110
+struct NJS_MODEL *rotate_model[10];
+
 // GLOBAL: SADX 0x03b75358
 struct bridge_model_info windy_bridge_01;
 
@@ -2770,6 +2791,9 @@ struct CCL_INFO DAT_03b75568[1];
 
 // GLOBAL: SADX 0x03b75598
 struct CCL_INFO DAT_03b75598[1];
+
+// GLOBAL: SADX 0x03b755c8
+struct CCL_INFO DAT_03b755c8[1];
 
 // GLOBAL: SADX 0x03b75628
 struct CCL_INFO DAT_03b75628[1];

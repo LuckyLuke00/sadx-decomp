@@ -2900,6 +2900,7 @@ void CreateYurehasi(void);
 void ObjectBeachAttackoruka(struct task *tp);
 void ObjectBeachPathoruka(struct task *tp);
 void ObjectWindyTorLeaf(struct task *tp);
+void RotateObj(struct task *tp);
 void TornadeInUpObject(struct task *tp);
 void PopoDisplay(struct task *tp);
 void ObjectWindyTuribasiExecutor(struct task *tp);
