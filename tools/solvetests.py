@@ -253,20 +253,22 @@ def cpp(*body) -> str:
 
 def check_refuse_fakematch() -> list[str]:
     """--refuse-fakematch: a 100% try with a fakematch line does not end the run. Its note names the line, and the
-    run asks again. A later clean 100% ends the run and stays in the file. When none comes, the file keeps the first
-    refused try and the run's best is 100. A refused match counts as 100 for --stop-below. Without the flag the
-    first 100% ends the run."""
+    run asks again. A later clean 100% ends the run and stays in the file. When none comes, the file keeps the best
+    plain-C try, or the first refused try when no plain-C try scored, and the run's best is that try's. A refused
+    match counts as 100 for --stop-below. Without the flag the first 100% ends the run."""
     dirty, other, clean = (cpp("\treturn *(int *)0x00500000;"), cpp("\treturn *(int *)0x00500004;"),
                            cpp("\treturn Bar;"))
+    partial = cpp("\treturn Baz;")
     code = "\n".join(llm.parse_reply(dirty, ADDRESS)[1])
 
     def build(self, decls, func):
-        return llm.Build(decls, func, "\n".join(func), 100.0, "")
+        return llm.Build(decls, func, "\n".join(func), 80.0 if "Baz" in "\n".join(func) else 100.0, "")
 
     with mock.patch.object(llm.Bench, "build", build):
         off = solved(3, never_too_long, dirty)
         refused = solved(3, never_too_long, [dirty, other], refuse_fakematch=True)
         then_clean = solved(3, never_too_long, [dirty, clean], refuse_fakematch=True)
+        partial_first = solved(3, never_too_long, [partial, dirty, other], refuse_fakematch=True)
         stop_below = solved(3, never_too_long, ["no code", dirty, other], refuse_fakematch=True, stop_below=70.0)
     note = "`return *(int *)0x00500000;` (raw_address)"
     cases = [("the flag off", (off.tries, off.kept), (1, code)),
@@ -279,10 +281,49 @@ def check_refuse_fakematch() -> list[str]:
              ("a clean try after a refused one", (then_clean.tries, then_clean.kept.strip().split("\n")[-2]),
               (2, "\treturn Bar;")),
              ("no kept refused try after a clean one", {"kept_refused": True} in then_clean.entries, False),
+             ("a plain-C try below 100% before refused ones", (partial_first.tries, partial_first.results,
+                                                               partial_first.best,
+                                                               partial_first.kept.strip().split("\n")[-2],
+                                                               {"kept_refused": True} in partial_first.entries),
+              (3, ["80.00%", "100.00%", "100.00%"], 80.0, "\treturn Baz;", False)),
              ("--stop-below 70", stop_below.tries, 3),
              ("--refuse-fakematch", parsed(["solve", "--refuse-fakematch", FILE, "0x00401000"], "refuse_fakematch"),
               True),
              ("no --refuse-fakematch", parsed(["solve", FILE, "0x00401000"], "refuse_fakematch"), False)]
+    return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
+
+
+def check_fn_trick() -> list[str]:
+    """check.py fn's line for a function at 100% only through a trick: score reads 100 and fn_tricks the tricks. A
+    floor with a trick is no floor. A try with a trick that fakematch does not see is refused as a trick even
+    without --refuse-fakematch: its note names the trick, and a later clean 100% ends the run and stays in the file."""
+    trick = ("0x00401000 Foo: 100%, but only through a trick (volatile, __declspec(noinline)). It does not count as "
+             "matched until it is plain C.")
+    clean = "0x00401000 Foo: 100% match."
+    tricked, plain = cpp("\tvolatile int x = 0;", "\treturn x;"), cpp("\treturn 0;")
+
+    def build(self, decls, func):
+        return llm.Build(decls, func, "\n".join(func), 100.0, trick if "volatile" in "\n".join(func) else clean)
+
+    with (mock.patch.object(llm, "decls", lambda config: ("", False)),
+          mock.patch.object(llm, "run_check", lambda *args: (trick + "\n", 1))):
+        scored = llm.score({}, ADDRESS)[0]
+    with mock.patch.object(llm.Bench, "build", build):
+        refused = solved(3, never_too_long, [tricked, plain])
+    floor = "int Foo(void)\n{\n\treturn 0;\n}"
+    text = f"{llm.function_line(ADDRESS)}\n{floor}\n"
+    cases = [("the score of a trick line", scored, 100.0),
+             ("the tricks", llm.fn_tricks(trick, ADDRESS), "volatile, __declspec(noinline)"),
+             ("the tricks of another function", llm.fn_tricks(trick, ADDRESS + 16), None),
+             ("the tricks of a clean line", llm.fn_tricks(clean, ADDRESS), None),
+             ("a floor with a trick", llm.file_best(lambda text: (100.0, trick), text, ADDRESS, set(), None), None),
+             ("a clean floor", llm.file_best(lambda text: (100.0, clean), text, ADDRESS, set(), None).percent, 100.0),
+             ("a trick, then a clean try", (refused.tries, refused.results, refused.best,
+                                            refused.kept.strip().split("\n")[-2]),
+              (2, ["100.00%", "100.00%"], 100.0, "\treturn 0;")),
+             ("the refused tricks in the transcript", [e.get("refused") for e in refused.entries if "try" in e],
+              [[["trick", "volatile"], ["trick", "__declspec(noinline)"]], None]),
+             ("the next prompt", "`volatile` (trick)" in refused.lasts[1], True)]
     return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
 
 
@@ -889,7 +930,8 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fakematch_kinds,
+                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fn_trick,
+                  check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
                   check_unlaid_structs, check_fold_copies, check_own_stubs, check_own_globals, check_try_globals,
                   check_address_test, check_read_tree, check_refusal_names, check_constant_globals,
