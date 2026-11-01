@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1448" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,922 of 16,524 game functions done (35.83%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,923 of 16,524 game functions done (35.84%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 599,1200.5 593,1193.6 594.1,1192" fill="#4e32f3"/>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 593,1193.6 594.1,1192" fill="#ffffff" fill-opacity="0.4"/>
@@ -102,13 +102,14 @@
 <rect x="56" y="49" width="6" height="6" fill="#ffd700"><title>0x0054fc40 IsTailsPutting: 100%</title></rect>
 <rect x="0" y="56" width="6" height="6" fill="#ffd700"><title>0x0054fc60 IsTailsShakingTree: 100%</title></rect>
 </g>
-<rect x="739" y="1306" width="113" height="79" rx="3" fill="#21262d" stroke="#30363d"><title>Knuckles: 30 of 96 functions done</title></rect>
+<rect x="739" y="1306" width="113" height="79" rx="3" fill="#21262d" stroke="#30363d"><title>Knuckles: 31 of 96 functions done</title></rect>
 <text x="742" y="1320" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Knuckles <tspan font-weight="400" fill="#8b949e">4%</tspan></text>
 <g transform="translate(742,1324)">
 <rect y="0" width="105" height="42" fill="url(#todo)"/>
 <rect y="42" width="42" height="7" fill="url(#todo)"/>
 <rect x="35" y="0" width="6" height="6" fill="#ffd700"><title>0x00527600 KnucklesDestruct: 100%</title></rect>
 <rect x="56" y="0" width="6" height="6" fill="#ffd700"><title>0x00528530 FUN_00528530: 100%</title></rect>
+<rect x="91" y="0" width="6" height="6" fill="#ffd700"><title>0x00529090 FUN_00529090: 100%</title></rect>
 <rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x005293e0 FUN_005293e0: 100%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x0052aea0 FUN_0052aea0: 100%</title></rect>
 <rect x="84" y="7" width="6" height="6" fill="#ffd700"><title>0x0052bb80 KnucklesCheckBeInTheAir: 100%</title></rect>

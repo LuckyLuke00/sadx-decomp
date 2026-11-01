@@ -44,9 +44,16 @@ void KnucklesChangeRunningMotion(struct taskwk *twp, struct motionwk2 *mwp, stru
 {
 }
 
-// STUB: SADX 0x00529090
+// FUNCTION: SADX 0x00529090
 void FUN_00529090(int param_1, int param_2, int param_3)
 {
+	if (*(float *)((char *)param_3 + 0x38) <= *(float *)((char *)param_3 + 0xc4))
+	{
+		*(float *)((char *)param_3 + 0x38) = *(float *)((char *)param_3 + 0xc4);
+	}
+	*(float *)((char *)param_3 + 0x3c) = 0.0f;
+	*(short *)((char *)param_3 + 0x82) = 0;
+	dsPlay_oneshot(0x317, 0, 0, 0);
 }
 
 // STUB: SADX 0x005290f0
