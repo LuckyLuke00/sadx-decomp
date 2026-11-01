@@ -1,5 +1,7 @@
 #include "decls.h"
-extern struct TEXUVINFO texuvinfo[];
+
+// GLOBAL: SADX 0x0480a700
+static struct TEXUVINFO texuvinfo[3];
 
 // FUNCTION: SADX 0x00873340
 void ObjectCasino6Slot2End(struct task *tp)

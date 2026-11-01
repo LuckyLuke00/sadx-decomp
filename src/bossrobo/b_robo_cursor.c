@@ -1,8 +1,11 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x0286d288
+static struct NJS_POINT3COL locursor[1];
+
 static void disp(struct task *pTask);
 static void _exec(struct task *pTask);
 extern struct taskwk *DAT_05baf368[8];
-extern struct NJS_POINT3COL locursor[];
 extern int DAT_05b9d838;
 extern int DAT_060bd1ac;
 extern float DAT_060bd1a0;

@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x0270b570
+static int SeqVarID[8][2];
+
 struct taskwk;
 struct NJS_ACTION;
 

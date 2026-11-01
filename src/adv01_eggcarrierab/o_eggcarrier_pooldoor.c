@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026ed434
+static struct CCL_INFO ColliInfo[1];
+
 extern unsigned char DAT_05bafc0d;
 extern struct NJS_MODEL **DAT_060f4ad4;
 

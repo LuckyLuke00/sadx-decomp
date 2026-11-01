@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03b75418
+static struct CCL_INFO hasi_colli_info[1];
+
 extern struct bridge_model_info windy_bridge_01;
 
 // FUNCTION: SADX 0x00807560

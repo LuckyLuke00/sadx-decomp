@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x043ac5c8
+static struct NJS_TEXANIM anim_jet[1];
+
 void FUN_00853490(void);
 extern struct NJS_SPRITE DAT_060d12f0;
 extern int DAT_05b9d838;

@@ -1,5 +1,8 @@
 #include "decls.h"
-extern struct NJS_POINT3 posRoundCenter;
+
+// GLOBAL: SADX 0x00a316d8
+static struct NJS_POINT3 posRoundCenter;
+
 static void execTgt(struct task *pTask);
 extern struct obj object_e105_105_a_105_a;
 

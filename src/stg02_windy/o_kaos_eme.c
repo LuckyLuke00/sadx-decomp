@@ -1,6 +1,11 @@
 #include "decls.h"
-extern struct NJS_TEXLIST texlist_kaos_eme_eff;
-extern struct NJS_TEXANIM anim_kaos_eme[1];
+
+// GLOBAL: SADX 0x03b750d4
+static struct NJS_TEXANIM anim_kaos_eme[1];
+
+// GLOBAL: SADX 0x03b750cc
+static struct NJS_TEXLIST texlist_kaos_eme_eff;
+
 extern float DAT_060cee78;
 extern float DAT_060cee7c;
 extern float DAT_060cee80;

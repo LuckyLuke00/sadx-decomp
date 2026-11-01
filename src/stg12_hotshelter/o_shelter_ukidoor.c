@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x04c2c408
+static struct CCL_INFO c_info_a[1];
+
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 extern short DAT_05b9d724;

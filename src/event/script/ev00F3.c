@@ -1,4 +1,11 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x02c22c38
+static struct TEX_PVMTABLE evpvm[12];
+
+// GLOBAL: SADX 0x02c22c20
+static char * *strtbl[5];
+
 extern struct task *DAT_060cb654;
 extern struct task *DAT_060cb658;
 extern unsigned char DAT_05bafb25;
@@ -11,7 +18,6 @@ extern struct NJS_ACTION DAT_060cc858;
 extern struct NJS_ACTION DAT_060cc860;
 extern struct NJS_ACTION DAT_060cc878;
 extern struct NJS_ACTION DAT_060cc890;
-extern struct TEX_PVMTABLE evpvm[];
 void FUN_0056a2a0();
 void FUN_0056a2b0();
 void FUN_0056a2c0();

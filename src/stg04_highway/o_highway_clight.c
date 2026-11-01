@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03e71b40
+static struct NJS_TEXANIM anim_clight[1];
+
 extern struct NJS_TEXLIST DAT_060cf104;
 extern float DAT_060cf0f8;
 extern float DAT_060cf0fc;

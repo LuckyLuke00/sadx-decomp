@@ -1,9 +1,12 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x0480c868
+static struct TEXUVINFO2 texuv2info[7];
+
 static void Normal(struct task *tp);
 static void Exit(struct task *tp);
 extern short DAT_060dc444;
 static void Disp(struct task *tp);
-extern struct TEXUVINFO2 texuv2info[];
 
 // FUNCTION: SADX 0x0087fde0
 static void Exit(struct task *tp)

@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x045db000
+static struct NJS_TEXANIM anim_bomb[10];
+
 extern float DAT_060dbc00;
 extern float DAT_060dbc04;
 extern struct NJS_TEXLIST *DAT_060dbc0c;

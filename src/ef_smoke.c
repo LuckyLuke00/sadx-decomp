@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x025dec38
+static struct particle_info default_smoke;
+
 struct sp_task *SpCreateTask(struct sp_link *link, void (*exec)(struct sp_task *, struct sp_link *));
 void EffectSmoke(struct sp_task *tp, struct sp_link *lp);
 extern "C" int rand(void);

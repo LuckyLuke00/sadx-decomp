@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03e715c8
+static struct CCL_INFO colli[1];
+
 static void Exec(struct task *tp);
 extern struct obj object_stobj_fplant01_fplant01[];
 static void Draw(struct task *tp);

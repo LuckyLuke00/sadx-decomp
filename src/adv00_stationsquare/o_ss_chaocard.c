@@ -1,4 +1,11 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026dccc8
+static char *get_message[2];
+
+// GLOBAL: SADX 0x026dcc68
+static struct CCL_INFO obj_c_info[2];
+
 extern int DAT_05b9d838;
 extern struct taskwk *DAT_05baf368[8];
 

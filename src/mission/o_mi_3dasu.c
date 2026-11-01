@@ -1,9 +1,11 @@
 #include "decls.h"
 
+// GLOBAL: SADX 0x025a2a78
+static struct CCL_INFO cinfo_mannequin[3];
+
 extern struct obj object_mi_3dasu_fat_d[];
 extern struct NJS_TEXLIST texlist_mi_3dasu;
 extern struct obj DAT_05a862dc;
-extern struct CCL_INFO cinfo_mannequin[];
 
 // FUNCTION: SADX 0x0049a770
 static void Disp(struct task *tp)

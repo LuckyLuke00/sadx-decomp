@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x00a0aa2c
+static struct TaskInfo CactusTaskInfo;
+
 extern struct CCL_INFO DAT_0353af70[];
 extern struct CCL_INFO DAT_0353af30;
 extern int DAT_05b9d838;

@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026dd110
+static struct CCL_INFO cci_sscard[2];
+
 static void dispSSCard(struct task *tp);
 static void exitSSCard(struct task *tp);
 static long SeqCheck();

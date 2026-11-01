@@ -1,4 +1,20 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x04809a30
+static struct CCL_INFO coll_1[1];
+
+// GLOBAL: SADX 0x04809a60
+static struct CCL_INFO coll_2[1];
+
+// GLOBAL: SADX 0x04809a90
+static struct CCL_INFO coll_3[2];
+
+// GLOBAL: SADX 0x04809af0
+static struct CCL_INFO coll_4;
+
+// GLOBAL: SADX 0x04809b50
+static struct CCL_INFO coll_6[1];
+
 extern struct TEXUVINFO DAT_0480a06c;
 extern struct TEXUVINFO DAT_0480a118;
 extern struct obj object_csn_showerhead_showerhead[1];
@@ -28,9 +44,7 @@ extern struct NJS_ACTION action_cas_obj_gomi_r[1];
 extern struct obj object_cas_obj_fune_gbox_fune_gbox[];
 extern struct CCL_INFO coll_7[];
 extern struct obj object_cas_obj_fune_hako_fune_hako[1];
-extern struct CCL_INFO coll_6[1];
 extern struct obj object_cas_obj_taru_taru;
-extern struct CCL_INFO coll_4;
 extern struct obj object_cas_obj_slot_isu_slot_isu[1];
 extern struct CCL_INFO coll_slotisu[1];
 extern struct obj object_cas_obj_fune_kdan_b_fune_kdan_b[1];

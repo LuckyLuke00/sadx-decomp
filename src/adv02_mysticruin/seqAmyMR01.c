@@ -1,5 +1,8 @@
 #include "decls.h"
 
+// GLOBAL: SADX 0x026f1ac4
+static struct NJS_POINT3 pos_finalegg;
+
 // FUNCTION: SADX 0x006aa3c0
 void mainAmyMR01(int seqno)
 {

@@ -1,4 +1,11 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x02603650
+static struct Angle3 chaoscam_angacc_lim_def;
+
+// GLOBAL: SADX 0x0260365c
+static struct Angle3 chaoscam_angspd_lim_def;
+
 extern float DAT_05ccdb04;
 extern float DAT_05ccdb34;
 extern float DAT_05ccdb38;
@@ -24,8 +31,6 @@ extern struct strCamCartData camCartData[1];
 extern struct Angle3 DAT_05b42920;
 float FUN_005642f0(float *param_1, float *param_2);
 void CCSI_CalcTargetPos(float dist, struct NJS_POINT3 *ans);
-extern struct Angle3 chaoscam_angacc_lim_def;
-extern struct Angle3 chaoscam_angspd_lim_def;
 extern struct NJS_POINT3 chaoscam_camspd_lim_def;
 extern struct Angle3 DAT_05ccdb8c;
 extern struct Angle3 DAT_05ccdb7c;

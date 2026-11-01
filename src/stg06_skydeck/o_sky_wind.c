@@ -1,5 +1,8 @@
 #include "decls.h"
-extern struct NJS_SPRITE sprite_wing_light;
+
+// GLOBAL: SADX 0x041eb7bc
+static struct NJS_SPRITE sprite_wing_light;
+
 extern struct obj object_skydeck_vent_vent[1];
 void FUN_007d21b0(...);
 

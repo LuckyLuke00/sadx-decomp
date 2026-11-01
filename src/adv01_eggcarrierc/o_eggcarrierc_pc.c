@@ -1,7 +1,10 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026ee838
+static const struct HintMessageTable *ECHintTablePointer[5];
+
 static void ecp_actman(struct task *task_p);
 extern int DAT_05b3ebbc;
-extern const struct HintMessageTable *ECHintTablePointer[5];
 
 // FUNCTION: SADX 0x0069e580
 static void ecp_actman(struct task *task_p)

@@ -1,5 +1,9 @@
 #include "decls.h"
 #include <stdlib.h>
+
+// GLOBAL: SADX 0x04ad8624
+static struct NJS_SPRITE sprite_o_bubble;
+
 extern int DAT_05b9d838;
 extern "C" int rand(void);
 
