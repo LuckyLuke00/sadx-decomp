@@ -3334,6 +3334,11 @@ void FUN_00853a90()
 {
 }
 
+// STUB: SADX 0x00853c20
+void dispObjectRuinLightEff(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00854610
 void PanelExec(struct task *tp)
 {

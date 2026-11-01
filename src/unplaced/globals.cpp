@@ -254,6 +254,9 @@ struct ActionParam DAT_00a0aa18;
 // GLOBAL: SADX 0x00a0c8d8
 struct TaskInfo ObjectTaskInfo;
 
+// GLOBAL: SADX 0x00a21cf8
+const char DAT_00a21cf8[1] = {};
+
 // GLOBAL: SADX 0x00a34538
 void (*DAT_00a34538[5])(struct task *);
 
@@ -3200,6 +3203,9 @@ struct obj object_hebi_clhebigate_clhebigate[1];
 // GLOBAL: SADX 0x04384834
 struct NJS_ACTION action_hebigate_hebikuchi[1];
 
+// GLOBAL: SADX 0x043852c0
+struct obj object_lostobj_togetoge_togetoge[1];
+
 // GLOBAL: SADX 0x04386d18
 struct obj object_togedai_togedai_togedai[1];
 
@@ -3217,6 +3223,9 @@ struct obj object_lwobj_bow_bow[1];
 
 // GLOBAL: SADX 0x0438de80
 struct obj object_lwobj_jumpdai_jumpdai[1];
+
+// GLOBAL: SADX 0x0438ea90
+struct NJS_MODEL model_lwobj_lwrock_lwrock[1];
 
 // GLOBAL: SADX 0x0438fe98
 struct obj object_lwobj_lwswitch_button[1];

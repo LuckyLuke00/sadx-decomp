@@ -3038,6 +3038,7 @@ void SwitchDisp(struct task *tp);
 void SwitchExec(struct task *tp);
 void FUN_00853490(void);
 void FUN_00853a90();
+void dispObjectRuinLightEff(struct task *tp);
 void PanelExec(struct task *tp);
 void DispExp(struct task *tp);
 void KasyaDestruct(struct task *tp);

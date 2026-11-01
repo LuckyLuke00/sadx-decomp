@@ -1,4 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x043ac2ec
+static struct CCL_INFO object_c_info[1];
+
+extern const char DAT_00a21cf8[];
 extern struct taskwk *DAT_05b42a7c;
 extern unsigned char DAT_060d12b8;
 extern struct obj object_mirror_mirrorbox_1_mirrorbox_1[1];
@@ -123,24 +128,24 @@ void ObjectRuinBigMirror(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00850b90
+// FUNCTION: SADX 0x00850b90
 void ObjectRuinFogHasira(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	switch (var1->mode)
 	{
-		case 0:
-			var1->mode = 1;
-			CCL_Init(tp, (struct CCL_INFO *)0x043ac2ec, 1, 4);
-			tp->disp = DrawFogHasira;
-			break;
-		case 1:
-			if (FUN_004c39c0(tp) != 0)
-			{
-				njPrintC(0x110014, "<-AIM ID");
-			}
-			DrawFogHasira(tp);
-			EntryColliList(var1);
-			break;
+	case 0:
+		var1->mode = 1;
+		CCL_Init(tp, &object_c_info[0], 1, 4);
+		tp->disp = DrawFogHasira;
+		break;
+	case 1:
+		if (FUN_004c39c0(tp))
+		{
+			njPrintC(0x110014, DAT_00a21cf8);
+		}
+		DrawFogHasira(tp);
+		EntryColliList(var1);
+		break;
 	}
 }

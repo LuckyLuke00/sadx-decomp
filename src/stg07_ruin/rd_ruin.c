@@ -23,9 +23,23 @@ void RuinBgmControl(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0084eb00
+// FUNCTION: SADX 0x0084eb00
 void FUN_0084eb00(struct task *param_1)
 {
+	struct taskwk *var1;
+	float var2;
+	var1 = DAT_05baf368[0];
+	var2 = njSqrt((-2421.0 - var1->pos.y) * (-2421.0 - var1->pos.y) + (6441.0 - var1->pos.x) * (6441.0 - var1->pos.x) + (1162.0 - var1->pos.z) * (1162.0 - var1->pos.z));
+	if (var2 < 50.0)
+	{
+		ADX_Close();
+		LandChangeStage(1);
+		AddSetStage(1);
+		AddCameraStage(1);
+		AdvanceAct(1);
+		SetPlayerInitialPosition(DAT_05baf368[0]);
+		param_1->twp->mode = 0;
+	}
 }
 
 // FUNCTION: SADX 0x0084ec10

@@ -1,8 +1,16 @@
 #include "decls.h"
+static void Exit(struct task *tp);
+
+// GLOBAL: SADX 0x043ace60
+static struct CCL_INFO object_c_info[1];
+
+static void Normal(struct task *tp);
+extern struct NJS_MODEL model_lwobj_lwrock_lwrock[];
+static void Disp(struct task *tp);
 void CreateSmoke(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl);
 
 // FUNCTION: SADX 0x008587a0
-void Exit(struct task *tp)
+static void Exit(struct task *tp)
 {
 	SetFreeCameraMode(1);
 	FreeTaskC(tp);
@@ -24,6 +32,22 @@ void C_Fire(struct task *cTask)
 		var1->scl.x = var2->scl.x;
 		CreateFire(&PointTmp, &var1->scl, *(float *)((char *)var2 + 0x34));
 	}
+}
+
+// FUNCTION: SADX 0x00858850
+static void Disp(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.z)
+	{
+		njRotateZ(0, (Uint16)var1->ang.z);
+	}
+	SetObjectTexture();
+	ds_DrawModelClip((struct NJS_MODEL *)&model_lwobj_lwrock_lwrock, 1.0f);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x008588b0
@@ -61,7 +85,23 @@ void SmokeInit(struct taskwk *twp, float FF, long AA)
 {
 }
 
-// STUB: SADX 0x00858ea0
+// STUB: SADX 0x00858a20
+static void Normal(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x00858ea0
 void ObjectRockRoll(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	CCL_Init(tp, (struct CCL_INFO *)&object_c_info, 1, 3);
+	var1->scl.x = 0.0f;
+	var1->scl.y = 0.0f;
+	var1->btimer = 0;
+	var1->scl.z = 0.5f;
+	var1->counter.l = 0;
+	var1->flag = 0xfcff;
+	tp->exec = Normal;
+	tp->disp = Disp;
+	tp->dest = Exit;
 }
