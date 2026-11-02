@@ -142,9 +142,42 @@ long SDCheckRangeOut(struct task *pTask)
 	return (long)0;
 }
 
-// STUB: SADX 0x00839f40
+// FUNCTION: SADX 0x00839f40
 void SysSkydeck_GoAct2(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		if (FUN_004c39c0(tp) == 0)
+		{
+			var1->mode = 1;
+		}
+		var1->wtimer = 0x3c;
+		if (GetPlayerNumber() == 0)
+		{
+			if (DAT_05bb00a9 == 0)
+			{
+				dsPlay_oneshot(0x5d5, 0, 0, 0);
+			}
+		}
+		break;
+	case 1:
+		var1->wtimer--;
+		if (var1->wtimer == 0)
+		{
+			ADX_Close();
+			LandChangeStage(1);
+			AddSetStage(1);
+			AddCameraStage(1);
+			AdvanceAct(1);
+			SetPlayerInitialPosition((struct taskwk *)DAT_05baf368[0]);
+			DestroyTask(tp);
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x00839fe0
@@ -188,9 +221,27 @@ void ObjectSkydeck_hangpole_t_Display(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0083a670
+// FUNCTION: SADX 0x0083a670
 void ObjectSkydeck_radder_Display(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct obj *var2 = *(struct obj **)((char *)com_objtbl + (var1->smode << 4));
+	if (DAT_05b9d838 == 0)
+	{
+		___njSetTexture(&texlist_obj_skydeck);
+		njPushMatrix(NULL);
+		njTranslateV(NULL, &var1->pos);
+		if (*(int *)((char *)var1 + 0x1c) != 0)
+		{
+			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		}
+		if (*(int *)((char *)var1 + 0x18) != 0)
+		{
+			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+		}
+		ds_DrawObjectClip(var2, 1.0f);
+		njPopMatrix(1);
+	}
 }
 
 // STUB: SADX 0x0083a7f0

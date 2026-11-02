@@ -3325,11 +3325,6 @@ void ObjectSkydeck_crane_hang(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00840fe0
-void dispSkyPower(struct task *tp)
-{
-}
-
 // STUB: SADX 0x00844ce0
 void ObjectSkydeck_cannon_m_Draw(struct task *tp)
 {
@@ -3400,8 +3395,18 @@ void ObjectSkydeck_cannon_s_Exec(struct task *)
 {
 }
 
+// STUB: SADX 0x0084b4c0
+void ObjectSkydeck_eff_bomb1_Draw(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0084b9c0
 void ObjectSkydeck_eff_smallbomb1_Exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0084bc10
+void ObjectSkydeck_eff_bomb1_Exec(struct task *tp)
 {
 }
 

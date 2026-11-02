@@ -3353,6 +3353,21 @@ struct obj object_skymain_kr_skymain_kr[1];
 // GLOBAL: SADX 0x0418ce54
 struct obj object_sky_cl_obj_maruyoko_obj_maruyoko[1];
 
+// GLOBAL: SADX 0x0419f478
+struct obj object_sky_h_bakuha01a_h_bakuha01a[1];
+
+// GLOBAL: SADX 0x0419f6fc
+struct obj object_sky_h_bakuha02a_h_bakuha02a[1];
+
+// GLOBAL: SADX 0x0419f808
+struct obj object_sky_h_bakuha03a_h_bakuha03a[1];
+
+// GLOBAL: SADX 0x0419fe80
+struct obj object_sky_h_bakuha04a_h_bakuha04a[1];
+
+// GLOBAL: SADX 0x041a017c
+struct obj object_sky_h_bakuha05a_h_bakuha05a[1];
+
 // GLOBAL: SADX 0x041af64c
 struct obj object_skymain_nc_obj_meka_obj_meka[1];
 
@@ -3382,6 +3397,9 @@ struct CCL_INFO object_cannon_s1_info[1];
 
 // GLOBAL: SADX 0x041ecca8
 struct CCL_INFO object_cannon_s_info[1];
+
+// GLOBAL: SADX 0x041ecf10
+struct CCL_INFO object_eff_bomb1_info[1];
 
 // GLOBAL: SADX 0x041ecf40
 struct CCL_INFO object_eff_smallbomb1_info[1];
@@ -9025,6 +9043,12 @@ int DAT_060d0a58;
 
 // GLOBAL: SADX 0x060d0a5c
 int DAT_060d0a5c;
+
+// GLOBAL: SADX 0x060d0ac4
+struct task *DAT_060d0ac4;
+
+// GLOBAL: SADX 0x060d0ac8
+struct task *DAT_060d0ac8;
 
 // GLOBAL: SADX 0x060d0acc
 int DAT_060d0acc;

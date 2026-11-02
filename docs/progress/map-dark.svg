@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,028 of 16,524 game functions done (36.48%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,033 of 16,524 game functions done (36.51%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -312,7 +312,7 @@
 <polygon points="19,72.6 22.8,72.6 25,79.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="27.2,72.6 31,72.6 25,79.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="21.8,69.5 28.2,69.5 29.9,71 31,72.6 25,79.5 19,72.6 20.1,71" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="35" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Action Stages <tspan font-weight="400" fill="#8b949e">10%</tspan></text>
+<text x="35" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Action Stages <tspan font-weight="400" fill="#8b949e">11%</tspan></text>
 <rect x="225" y="357" width="164" height="99" rx="3" fill="#21262d" stroke="#30363d"><title>Emerald Coast: 54 of 213 functions done</title></rect>
 <text x="228" y="371" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Emerald Coast <tspan font-weight="400" fill="#8b949e">5%</tspan></text>
 <g transform="translate(228,375)">
@@ -981,8 +981,8 @@
 <rect x="84" y="91" width="6" height="6" fill="#ffd700"><title>0x00838670 StartCameraMountain_TgtDeath: 100%</title></rect>
 <rect x="98" y="91" width="6" height="6" fill="#ffd700"><title>0x008629d0 Die: 100%</title></rect>
 </g>
-<rect x="20" y="428" width="203" height="117" rx="3" fill="#21262d" stroke="#30363d"><title>Sky Deck: 91 of 340 functions done</title></rect>
-<text x="23" y="442" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sky Deck <tspan font-weight="400" fill="#8b949e">9%</tspan></text>
+<rect x="20" y="428" width="203" height="117" rx="3" fill="#21262d" stroke="#30363d"><title>Sky Deck: 96 of 340 functions done</title></rect>
+<text x="23" y="442" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sky Deck <tspan font-weight="400" fill="#8b949e">10%</tspan></text>
 <g transform="translate(23,446)">
 <rect y="0" width="196" height="84" fill="url(#todo)"/>
 <rect y="84" width="28" height="7" fill="url(#todo)"/>
@@ -993,7 +993,9 @@
 <rect x="42" y="0" width="6" height="6" fill="#ffd700"><title>0x00838aa0 FUN_00838aa0: 100%</title></rect>
 <rect x="56" y="0" width="6" height="6" fill="#ffd700"><title>0x008391c0 FUN_008391c0: 100%</title></rect>
 <rect x="84" y="0" width="6" height="6" fill="#ffd700"><title>0x00839980 Bg_Skydeck_cloud_Exit: 100%</title></rect>
+<rect x="126" y="0" width="6" height="6" fill="#ffd700"><title>0x00839f40 SysSkydeck_GoAct2: 100%</title></rect>
 <rect x="168" y="0" width="6" height="6" fill="#ffd700"><title>0x0083a560 ObjectSkydeck_hangpole_s_Display: 100%</title></rect>
+<rect x="182" y="0" width="6" height="6" fill="#ffd700"><title>0x0083a670 ObjectSkydeck_radder_Display: 100%</title></rect>
 <rect x="189" y="0" width="6" height="6" fill="#ffd700"><title>0x0083a700 FUN_0083a700: 100%</title></rect>
 <rect x="0" y="7" width="6" height="6" fill="#ffd700"><title>0x0083a790 FUN_0083a790: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x0083a880 ObjectSkydeck_radder_Exit: 100%</title></rect>
@@ -1012,6 +1014,7 @@
 <rect x="49" y="28" width="6" height="6" fill="#ffd700"><title>0x0083d930 ObjectSkydeck_tcolli: 100%</title></rect>
 <rect x="56" y="28" width="6" height="6" fill="#ffd700"><title>0x0083d950 ObjectSkydeck_flap01: 100%</title></rect>
 <rect x="63" y="28" width="6" height="6" fill="#ffd700"><title>0x0083d980 ObjectSkydeck_flap02: 100%</title></rect>
+<rect x="70" y="28" width="6" height="6" fill="#ffd700"><title>0x0083d9b0 ObjectSkydeck_kikanjyu1_End: 100%</title></rect>
 <rect x="91" y="28" width="6" height="6" fill="#ffd700"><title>0x0083de50 ObjectSkydeck_kikanjyu1: 100%</title></rect>
 <rect x="112" y="28" width="6" height="6" fill="#ffd700"><title>0x0083e370 dispSkyScope: 100%</title></rect>
 <rect x="126" y="28" width="6" height="6" fill="#ffd700"><title>0x0083e500 dispSkyLever: 100%</title></rect>
@@ -1026,6 +1029,7 @@
 <rect x="140" y="35" width="6" height="6" fill="#ffd700"><title>0x00840030 SoundSkydeck_engine: 100%</title></rect>
 <rect x="175" y="35" width="6" height="6" fill="#ffd700"><title>0x00840550 ObjectSkydeck_cannon_h2_End: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#ffd700"><title>0x00840fc0 ObjectSkydeck_cannon_h2: 100%</title></rect>
+<rect x="14" y="42" width="6" height="6" fill="#ffd700"><title>0x00840fe0 dispSkyPower: 100%</title></rect>
 <rect x="21" y="42" width="6" height="6" fill="#ffd700"><title>0x008410b0 ObjectSkyMeka: 100%</title></rect>
 <rect x="28" y="42" width="6" height="6" fill="#ffd700"><title>0x00841180 ObjectSkyTutu: 100%</title></rect>
 <rect x="35" y="42" width="6" height="6" fill="#ffd700"><title>0x00841230 dispSkyEscalator: 100%</title></rect>
@@ -1063,6 +1067,7 @@
 <rect x="7" y="70" width="6" height="6" fill="#ffd700"><title>0x0084a830 ObjectSkydeck_cannon_s: 100%</title></rect>
 <rect x="35" y="70" width="6" height="6" fill="#ffd700"><title>0x0084ab20 ObjectSkydeck_cannon_b_End: 100%</title></rect>
 <rect x="70" y="70" width="6" height="6" fill="#ffd700"><title>0x0084b4a0 ObjectSkydeck_cannon_b: 100%</title></rect>
+<rect x="105" y="70" width="6" height="6" fill="#ffd700"><title>0x0084bd50 ObjectSkydeck_eff_bomb1_Init: 100%</title></rect>
 <rect x="112" y="70" width="6" height="6" fill="#ffd700"><title>0x0084be30 FUN_0084be30: 100%</title></rect>
 <rect x="119" y="70" width="6" height="6" fill="#ffd700"><title>0x0084be90 CreateEffSmallBomb1: 100%</title></rect>
 <rect x="126" y="70" width="6" height="6" fill="#ffd700"><title>0x0084bed0 ObjectSkydeck_eff_bomb1: 100%</title></rect>
