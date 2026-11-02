@@ -228,9 +228,50 @@ void KnuEffectChargeUpStay(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x005d82c0
+// FUNCTION: SADX 0x005d82c0
 void KnuEffectComboFire(struct task *tp)
 {
+	struct taskwk *local_cg;
+	float local_8g;
+
+	local_cg = tp->twp;
+	if (local_cg->value.f < 25.0f)
+	{
+		local_8g = (local_cg->value.f - 20.0f) * 0.15000000596046448f;
+	}
+	else
+	{
+		local_8g = (30.0f - local_cg->value.f) * 0.15000000596046448f;
+	}
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	SetMaterial(local_8g, 1.0f, 1.0f, 1.0f);
+	njPushMatrix(NULL);
+	njTranslateV(NULL, &local_cg->pos);
+	if (local_cg->ang.z != 0)
+	{
+		njRotateZ(NULL, (unsigned short)local_cg->ang.z);
+	}
+	if (local_cg->ang.x != 0)
+	{
+		njRotateX(NULL, (unsigned short)local_cg->ang.x);
+	}
+	if (0x8000 - local_cg->ang.y != 0)
+	{
+		njRotateY(NULL, (unsigned short)(0x8000 - local_cg->ang.y));
+	}
+	if ((long)(local_cg->value.f * 6553.60009765625f) != 0)
+	{
+		njRotateX(NULL, (unsigned short)(long)(local_cg->value.f * 6553.60009765625f));
+	}
+	FUN_0067d2d0(NULL, 1.0f, 2.0f, 2.0f);
+	___njSetTexture(&texlist_knu_eff);
+	late_DrawObject(*(struct obj **)((char *)DAT_06274af0 + 0xb8), 4);
+	njPopMatrix(1);
+	ResetMaterial();
+	FreeTask(tp);
 }
 
 // FUNCTION: SADX 0x005d8560
