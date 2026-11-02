@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 
 // FUNCTION: SADX 0x004516c0
 void AL_FieldExecutor(struct task *tp)
@@ -16,9 +17,28 @@ void AL_FieldExecutor(struct task *tp)
 	CCL_Entry(tp);
 }
 
-// STUB: SADX 0x004516f0
+// FUNCTION: SADX 0x004516f0
 void AL_FieldDisplayer(struct task *tp)
 {
+	struct taskwk *var1;
+	float var2;
+
+	var1 = tp->twp;
+	var2 = var1->scl.x;
+	if (ChaoGlobal.DispField == 0)
+	{
+		return;
+	}
+	SaveControl3D();
+	OnControl3D(0x10);
+	OffControl3D(0x200);
+	SetMaterial(0.25f, 0.0f, 0.0f, 1.0f);
+	njPushMatrixEx();
+	njTranslateEx(&var1->pos);
+	FUN_0067d2d0((float *)0, var2, var2, var2);
+	njPopMatrixEx();
+	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+	LoadControl3D();
 }
 
 // FUNCTION: SADX 0x00451790

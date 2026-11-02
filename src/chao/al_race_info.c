@@ -1,4 +1,6 @@
 #include "decls.h"
+extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
+extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 extern char DAT_05b288ab[5];
 extern char DAT_05b289d3;
 extern char DAT_05b289d2;
@@ -8,6 +10,24 @@ extern char DAT_05b289d4;
 extern char DAT_05b288a8[1];
 extern char DAT_05b288b0[5];
 extern char DAT_05b288b0[];
+
+// FUNCTION: SADX 0x00443af0
+void AL_InitRaceInfo()
+{
+	int var1;
+	void *var2;
+
+	memset(DAT_05b288a8, 0, 0x4130);
+	var2 = (void *)FUN_0043f310();
+	memcpy(DAT_05b288a8, var2, 0x126);
+	if (AL_GetStageNumber() - 1 == 0)
+	{
+		for (var1 = 0; var1 < 8; var1++)
+		{
+			AL_SetSelectedChaoSaveInfo(var1, 0);
+		}
+	}
+}
 
 // FUNCTION: SADX 0x00443b40
 struct AL_RACE_INFO *AL_GetRaceInfo()
@@ -125,9 +145,19 @@ long AL_GetCourseClearedLevel(enum eCourseNumDX num)
 	return (long)(char)DAT_05b288b0[num];
 }
 
-// STUB: SADX 0x00443c90
+// FUNCTION: SADX 0x00443c90
 void AL_CourseClearedLevelUp(enum eCourseNumDX num)
 {
+	int var1;
+
+	var1 = (int)num;
+	if (var1 < 0)
+		return;
+	if (var1 > 4)
+		return;
+	if (DAT_05b288b0[var1] >= 5)
+		return;
+	DAT_05b288b0[var1] += 1;
 }
 
 // STUB: SADX 0x00443cb0

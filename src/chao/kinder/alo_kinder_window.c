@@ -33,9 +33,41 @@ struct task *ALK_BaseWindowCreate(struct task *ptp, const struct ALK_WINDOW_TABL
 	return 0;
 }
 
-// STUB: SADX 0x007119c0
+// FUNCTION: SADX 0x007119c0
 void ALK_SelectWindowExec(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct anywk *var2 = tp->awp;
+	if ((var1->flag & 1) == 0)
+	{
+		if ((var2->work.ub[0x18] & 1) != 0 && var1->id == *(char *)(var2->work.ptr[8]))
+		{
+			*(float *)((char *)var1 + 0x30) = 0.1f;
+			var1->flag |= 1;
+			return;
+		}
+	}
+	else
+	{
+		if (*(float *)((char *)var1 + 0x30) > 0.0f)
+		{
+			var1->ang.x += 0x2000;
+			var1->scl.x = njSin(var1->ang.x) * *(float *)((char *)var1 + 0x30) + 1.0f;
+			*(float *)((char *)var1 + 0x30) *= 0.8999999761581421;
+			if (*(float *)((char *)var1 + 0x30) < 0.01f)
+			{
+				var1->ang.x = 0;
+				*(float *)((char *)var1 + 0x30) = 0.0f;
+				var1->scl.x = 1.0f;
+			}
+		}
+		if ((var2->work.ub[0x18] & 1) != 0 && var1->id != *(char *)(var2->work.ptr[8]))
+		{
+			var1->flag &= 0xfffe;
+			var1->scl.x = 1.0f;
+			var1->ang.x = 0;
+		}
+	}
 }
 
 // STUB: SADX 0x00711a90

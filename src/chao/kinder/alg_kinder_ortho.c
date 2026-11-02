@@ -15,6 +15,13 @@ void AlgKinderOrthoEnd()
 	njSetZUpdateMode(1);
 }
 
+#pragma optimize("", off)
+// STUB: SADX 0x0044ead0
+void AlgKinderOrthoQuadDraw(const struct SAlgKinderOrthoQuad *q, unsigned long color)
+{
+}
+#pragma optimize("", on)
+
 // FUNCTION: SADX 0x0044ebd0
 void FUN_0044ebd0(const struct SAlgKinderOrthoQuad *param_1, int param_2, unsigned long param_3)
 {
@@ -30,9 +37,28 @@ void FUN_0044ebd0(const struct SAlgKinderOrthoQuad *param_1, int param_2, unsign
 	}
 }
 
-// STUB: SADX 0x0044ec00
+// FUNCTION: SADX 0x0044ec00
 void AlgKinderOrthoQuadDrawArrayOffset(const struct SAlgKinderOrthoQuad *q, int len, unsigned long color, int ox, int oy)
 {
+	int var1;
+	struct SAlgKinderOrthoQuad local_18;
+
+	if (len > 0) {
+		var1 = len;
+		do {
+			local_18.x0 = q->x0 + ox;
+			local_18.x1 = q->x1 + ox;
+			local_18.y0 = q->y0 + oy;
+			local_18.y1 = q->y1 + oy;
+			local_18.u0 = q->u0;
+			local_18.u1 = q->u1;
+			local_18.v0 = q->v0;
+			local_18.v1 = q->v1;
+			AlgKinderOrthoQuadDraw(&local_18, color);
+			q = (const struct SAlgKinderOrthoQuad *)((char *)q + 0x10);
+			var1--;
+		} while (var1 != 0);
+	}
 }
 
 // FUNCTION: SADX 0x0044eec0

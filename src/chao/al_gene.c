@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 
 // STUB: SADX 0x00449b00
 void AL_CreateChildGene(struct task *pMotherTask, struct task *pFatherTask, struct AL_GENE *pChildGene)
@@ -24,7 +25,36 @@ void AL_GeneAnalyze(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0044a260
+// FUNCTION: SADX 0x0044a260
 void AL_GeneCreatePlane(struct AL_GENE *pGene)
 {
+	int var1;
+	int var2;
+	int var3;
+	int var4;
+	float var5;
+	float var6;
+	float var7;
+	AL_GeneCreate(pGene);
+	var1 = rand();
+	var5 = (float)var1 * 3.0517578125e-05f;
+	var6 = var5 - 0.5f;
+	var7 = var6 * 0.8999999761581421f;
+	var2 = (int)(var7 * 45.0f);
+	pGene->Personality[1][1] = (signed char)var2;
+	pGene->Personality[1][0] = (signed char)var2;
+	var3 = rand();
+	var5 = (float)var3 * 3.0517578125e-05f;
+	var6 = var5 - 0.5f;
+	var7 = var6 * 0.8999999761581421f;
+	var4 = (int)(var7 * 45.0f);
+	pGene->Personality[2][1] = (signed char)var4;
+	pGene->Personality[2][0] = (signed char)var4;
+	var1 = rand();
+	var5 = (float)var1 * 3.0517578125e-05f;
+	var6 = var5 - 0.5f;
+	var7 = var6 * 0.8999999761581421f;
+	var2 = (int)(var7 * 45.0f);
+	pGene->Personality[0][1] = (signed char)var2;
+	pGene->Personality[0][0] = (signed char)var2;
 }

@@ -28,9 +28,18 @@ void AlMsgWarnCreate(int winid, float px, float py, float sx, float sy)
 	}
 }
 
-// STUB: SADX 0x0044c900
+// FUNCTION: SADX 0x0044c900
 void AlMsgWarnDelete(int winid)
 {
+	char *var1;
+
+	var1 = (char *)DAT_05b2ca50 + winid * 24;
+	if (*var1 != 0)
+	{
+		AlMsgWinDelete(*(struct SAlMsgWin **)(var1 + 0x14));
+		Free(*(void **)(var1 + 0x14));
+		*var1 = 0;
+	}
 }
 
 // FUNCTION: SADX 0x0044c940

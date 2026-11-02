@@ -1,9 +1,11 @@
 #include "decls.h"
 
+#pragma optimize("", off)
 // STUB: SADX 0x00450310
 void AL_MatSetChaoColor(struct task *tp, short ColorNum)
 {
 }
+#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00450370
@@ -31,9 +33,14 @@ void AL_MatSwitchModelEnvironmentMapping(struct al_model *pModel, long mode)
 {
 }
 
-// STUB: SADX 0x004506e0
+// FUNCTION: SADX 0x004506e0
 void AL_MaterialInit(struct task *tp)
 {
+	int *var1 = (int *)tp->twp;
+	if (*(char *)(var1[0x6c / 4] + 0xd8) != 0)
+	{
+		AL_MatSetChaoColor(tp, *(unsigned char *)(var1[0x6c / 4] + 0xd8));
+	}
 }
 
 // FUNCTION: SADX 0x00450710

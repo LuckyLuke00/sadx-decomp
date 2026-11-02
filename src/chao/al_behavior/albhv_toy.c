@@ -47,9 +47,47 @@ long ALBHV_Hanabi(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x00454b10
+// FUNCTION: SADX 0x00454b10
 void BookExecutor(struct task *tp)
 {
+	struct taskwk *var1;
+	float var2;
+
+	var1 = tp->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		var2 = var1->scl.y + 0.10000000149011612f;
+		var1->scl.y = var2;
+		if (var2 > 1.0f)
+		{
+			var1->scl.y = 1.0f;
+			var1->mode = 1;
+		}
+		break;
+	case 1:
+		var1->scl.x = 15.0f;
+		break;
+	case 2:
+		var2 = var1->scl.x + 0.15000000596046448f;
+		var1->scl.x = var2;
+		if (var2 > 23.0f)
+		{
+			var1->scl.x = 23.0f;
+			var1->mode = 1;
+		}
+		break;
+	case 4:
+		var2 = var1->scl.y - 0.10000000149011612f;
+		var1->scl.y = var2;
+		if (var2 < 0.0f)
+		{
+			var1->scl.y = 0.0f;
+			FreeTask(tp);
+		}
+		break;
+	}
+	tp->disp(tp);
 }
 
 // STUB: SADX 0x00454c10
