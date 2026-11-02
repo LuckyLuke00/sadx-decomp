@@ -50,6 +50,57 @@ void FUN_00606810(struct AvaStgActPrmT *param_1)
 	*(char *)((char *)param_1 + 0xcc) = -1;
 }
 
+// FUNCTION: SADX 0x00606860
+void trial_act_sel_exec(struct task *tp)
+{
+	struct TrialActSelWk *local_8;
+
+	local_8 = (struct TrialActSelWk *)tp->awp;
+	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 3 && *(int *)local_8 == 0)
+	{
+		FUN_00606a00((struct AvaStgActPrmT *)local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 1;
+	}
+	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 3 && *(int *)local_8 == 2)
+	{
+		FUN_00606a50((struct task *)local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 3;
+	}
+	switch (*(int *)local_8)
+	{
+	case 0:
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)((char *)local_8 + 0x14) = 0;
+		break;
+	case 1:
+		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			*(int *)local_8 = 2;
+		}
+		break;
+	case 2:
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
+		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 3;
+		trial_act_sel_sub_exec(local_8);
+		break;
+	case 3:
+		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			AvaReleaseTexForEachMode((AdvaModeEnum)3);
+			*(char *)((char *)DAT_05cda18c->awp + 0x1f) = 1;
+			*(int *)local_8 = 0;
+		}
+		break;
+	}
+}
+
 // FUNCTION: SADX 0x00606a00
 void FUN_00606a00(struct AvaStgActPrmT *param_1)
 {

@@ -39005,9 +39005,9 @@
   {
    "address": "0x005fe160",
    "name": "inetdemo_exec",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39109,9 +39109,9 @@
   {
    "address": "0x005ffa00",
    "name": "emblem_view_exec",
-   "accuracy": 0.06349206349206349,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39213,9 +39213,9 @@
   {
    "address": "0x00601030",
    "name": "minigame_sel_exec",
-   "accuracy": 0.06666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39224,6 +39224,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00601210",
+   "name": "minigame_sel_sub_exec",
+   "accuracy": 0.017429193899782137,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -39485,9 +39493,9 @@
   {
    "address": "0x00603150",
    "name": "FUN_00603150",
-   "accuracy": 0.06451612903225806,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39496,6 +39504,22 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00603340",
+   "name": "FUN_00603340",
+   "accuracy": 0.04371584699453552,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00603570",
+   "name": "option_sel_sub_exec",
+   "accuracy": 0.008898776418242492,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -39565,9 +39589,9 @@
   {
    "address": "0x00604800",
    "name": "snd_test_exec",
-   "accuracy": 0.06504065040650407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39576,6 +39600,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00604a00",
+   "name": "snd_test_sub_exec",
+   "accuracy": 0.012558869701726845,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -39701,9 +39733,9 @@
   {
    "address": "0x00606860",
    "name": "trial_act_sel_exec",
-   "accuracy": 0.06349206349206349,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39718,6 +39750,14 @@
    "address": "0x00606a50",
    "name": "FUN_00606a50",
    "accuracy": 0.27586206896551724,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00606ac0",
+   "name": "trial_act_sel_sub_exec",
+   "accuracy": 0.017582417582417582,
    "effective": false,
    "stub": true,
    "library": false
@@ -41405,9 +41445,9 @@
   {
    "address": "0x0061def0",
    "name": "FUN_0061def0",
-   "accuracy": 0.14814814814814814,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -101964,5 +102004,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3550287adb4d3fb4336eaff5f84fa071b73a581a1874aa05b32385e27dcc7233"
+ "inputs_sha256": "e9fbfb4df79c9b0cf5a12b4a83a3cf90bac70f507e49f6e603c675118e450eeb"
 }

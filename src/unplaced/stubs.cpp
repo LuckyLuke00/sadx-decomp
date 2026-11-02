@@ -2143,18 +2143,8 @@ void DrawTvSettingWnd(struct TvSettingWk *wkp)
 {
 }
 
-// STUB: SADX 0x005fe160
-void inetdemo_exec(struct task *tp)
-{
-}
-
 // STUB: SADX 0x005fe450
 void DisplayDemoPictures(struct NJS_TEXLIST *ptexlist, struct InetDemoWk *wkp, float basez, struct DEMOPICTUREINFO *pdemopictureinfo, int count)
-{
-}
-
-// STUB: SADX 0x005ffa00
-void emblem_view_exec(struct task *tp)
 {
 }
 
@@ -2168,8 +2158,8 @@ void DrawEmblemViewChar(struct EmblemViewWk *wkp)
 {
 }
 
-// STUB: SADX 0x00601030
-void minigame_sel_exec(struct task *tp)
+// STUB: SADX 0x00601210
+void minigame_sel_sub_exec(struct MiniGameSelWk *)
 {
 }
 
@@ -2188,8 +2178,18 @@ void DrawMiniGameSelStage(struct MiniGameSelWk *wkp)
 {
 }
 
-// STUB: SADX 0x00603150
-void FUN_00603150(struct task *)
+// STUB: SADX 0x00603340
+void FUN_00603340(struct anywk *)
+{
+}
+
+// STUB: SADX 0x00603570
+void option_sel_sub_exec(struct _OptionSelWk *)
+{
+}
+
+// STUB: SADX 0x00604a00
+void snd_test_sub_exec(struct SndTestWk *wkp)
 {
 }
 
@@ -2208,8 +2208,8 @@ void DrawSndTestEffMenuBg(struct SndTestWk *wkp)
 {
 }
 
-// STUB: SADX 0x00606860
-void trial_act_sel_exec(struct task *tp)
+// STUB: SADX 0x00606ac0
+void trial_act_sel_sub_exec(struct TrialActSelWk *wkp)
 {
 }
 
