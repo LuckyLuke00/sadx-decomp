@@ -25,9 +25,15 @@ void __fastcall FUN_00908890(struct FUN_00908890_0 *param_1, unsigned int param_
 {
 }
 
-// STUB: SADX 0x009088c0
+// FUNCTION: SADX 0x009088c0
 void __fastcall FUN_009088c0(int param_1, int param_2, int param_3)
 {
+	if ((unsigned)param_3 <= 7)
+	{
+		int *var1 = (int *)(param_1 + 8 + param_3 * 0x16c);
+		*var1 = 0;
+		var1[1] = 0;
+	}
 }
 
 // FUNCTION: SADX 0x009088f0

@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1417" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,995 of 16,524 game functions done (36.28%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,004 of 16,524 game functions done (36.33%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="592.8,1180.5 599.2,1180.5 600.9,1182 602,1183.6 596,1190.5 590,1183.6 591.1,1182" fill="#4e32f3"/>
 <polygon points="592.8,1180.5 599.2,1180.5 600.9,1182 602,1183.6 590,1183.6 591.1,1182" fill="#ffffff" fill-opacity="0.4"/>
@@ -2306,7 +2306,7 @@
 <rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x007f30c0 FUN_007f30c0: 100%</title></rect>
 <rect x="105" y="7" width="6" height="6" fill="#ffd700"><title>0x007f4560 EndMoguraScore: 100%</title></rect>
 </g>
-<rect x="20" y="977" width="301" height="248" rx="3" fill="#21262d" stroke="#30363d"><title>Game Gear games: 621 of 1,300 functions done</title></rect>
+<rect x="20" y="977" width="301" height="248" rx="3" fill="#21262d" stroke="#30363d"><title>Game Gear games: 630 of 1,300 functions done</title></rect>
 <text x="23" y="991" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Game Gear games <tspan font-weight="400" fill="#8b949e">24%</tspan></text>
 <g transform="translate(23,995)">
 <rect y="0" width="294" height="210" fill="url(#todo)"/>
@@ -2332,6 +2332,7 @@
 <rect x="189" y="14" width="6" height="6" fill="#ffd700"><title>0x00907da0 FUN_00907da0: 100%</title></rect>
 <rect x="231" y="14" width="6" height="6" fill="#ffd700"><title>0x00908040 FUN_00908040: 100%</title></rect>
 <rect x="77" y="21" width="6" height="6" fill="#ffd700"><title>0x00908780 FUN_00908780: 100%</title></rect>
+<rect x="126" y="21" width="6" height="6" fill="#ffd700"><title>0x009088c0 FUN_009088c0: 100%</title></rect>
 <rect x="133" y="21" width="6" height="6" fill="#ffd700"><title>0x009088f0 FUN_009088f0: 100%</title></rect>
 <rect x="252" y="21" width="6" height="6" fill="#ffd700"><title>0x00908d90 FUN_00908d90: 100%</title></rect>
 <rect x="287" y="21" width="6" height="6" fill="#ffd700"><title>0x00908fb0 FUN_00908fb0: 100%</title></rect>
@@ -2587,7 +2588,15 @@
 <rect x="224" y="105" width="6" height="6" fill="#ffd700"><title>0x00913300 inir: 100%</title></rect>
 <rect x="231" y="105" width="6" height="6" fill="#ffd700"><title>0x00913370 ind: 100%</title></rect>
 <rect x="238" y="105" width="6" height="6" fill="#ffd700"><title>0x009133c0 indr: 100%</title></rect>
+<rect x="133" y="112" width="6" height="6" fill="#ffd700"><title>0x00913ae0 rl_d: 100%</title></rect>
+<rect x="189" y="112" width="6" height="6" fill="#ffd700"><title>0x00913d60 rrc_a: 100%</title></rect>
+<rect x="196" y="112" width="6" height="6" fill="#ffd700"><title>0x00913da0 rrc_b: 100%</title></rect>
+<rect x="203" y="112" width="6" height="6" fill="#ffd700"><title>0x00913de0 rrc_c: 100%</title></rect>
+<rect x="210" y="112" width="6" height="6" fill="#ffd700"><title>0x00913e20 rrc_d: 100%</title></rect>
+<rect x="217" y="112" width="6" height="6" fill="#ffd700"><title>0x00913e60 rrc_e: 100%</title></rect>
 <rect x="224" y="112" width="6" height="6" fill="#ffd700"><title>0x00913ea0 rrc_h: 100%</title></rect>
+<rect x="231" y="112" width="6" height="6" fill="#ffd700"><title>0x00913ee0 rrc_l: 100%</title></rect>
+<rect x="259" y="112" width="6" height="6" fill="#ffd700"><title>0x00914060 rrca: 100%</title></rect>
 <rect x="49" y="126" width="6" height="6" fill="#ffd700"><title>0x00914f40 bit_0_a: 100%</title></rect>
 <rect x="56" y="126" width="6" height="6" fill="#ffd700"><title>0x00914f70 bit_1_a: 100%</title></rect>
 <rect x="63" y="126" width="6" height="6" fill="#ffd700"><title>0x00914fa0 bit_2_a: 100%</title></rect>
