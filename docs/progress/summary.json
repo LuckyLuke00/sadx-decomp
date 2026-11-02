@@ -22836,9 +22836,9 @@
   {
    "address": "0x00515140",
    "name": "E102ThrowTheObjectOut",
-   "accuracy": 0.0851063829787234,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22916,9 +22916,9 @@
   {
    "address": "0x00515c90",
    "name": "E102MotionCallback",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34261,9 +34261,9 @@
   {
    "address": "0x005b9bc0",
    "name": "DispDigitTotal",
-   "accuracy": 0.06611570247933884,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36333,9 +36333,9 @@
   {
    "address": "0x005d3630",
    "name": "E102BeamAtoDisplay",
-   "accuracy": 0.06451612903225806,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36429,9 +36429,9 @@
   {
    "address": "0x005d4f50",
    "name": "EffectShotsmoke",
-   "accuracy": 0.07339449541284404,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -92668,6 +92668,13 @@
    "library": false
   },
   {
+   "address": "0x0263f7a8",
+   "name": "sprite_digit",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0264494c",
    "name": "action_f_f0021_frog",
    "size": 8,
@@ -92936,6 +92943,13 @@
   {
    "address": "0x02671d74",
    "name": "DAT_02671d74",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02671d84",
+   "name": "DAT_02671d84",
    "size": 16,
    "match": false,
    "library": false
@@ -101350,5 +101364,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ef9739d1a4ca3b9f9eb9712c503b13acb5cf2c9cfe5d91c9f2917aac9c43ce97"
+ "inputs_sha256": "4f560f280d699cf42677ca8d8b44c60e212fe36a21c5a5792ba6e7c845fdefaa"
 }

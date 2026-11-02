@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_SPRITE sprite_digit;
 void E102AddSecTotalNew(struct task *tp);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
 void AddTime(int sec);
@@ -34,9 +35,46 @@ void AddTimeComboAfter(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x005b9bc0
+// FUNCTION: SADX 0x005b9bc0
 void DispDigitTotal(long digit, float scl, struct NJS_POINT3 *pos)
 {
+	long local_10l;
+	float local_ci;
+	float local_8g;
+	float local_14;
+
+	local_10l = digit;
+	local_ci = scl * 24.0f;
+	local_8g = scl * 24.0f;
+	sprite_digit.p.x = pos->x;
+	if (digit > 99)
+	{
+		sprite_digit.p.x = sprite_digit.p.x + local_ci;
+	}
+	else if (digit > 9)
+	{
+		sprite_digit.p.x = local_ci * 0.5f + sprite_digit.p.x;
+	}
+	sprite_digit.p.y = pos->y - local_8g * 0.30000001192092896f;
+	sprite_digit.sy = scl;
+	sprite_digit.sx = sprite_digit.sy;
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	SetMaterial(1.0f, 1.0f, 1.0f, 0.0f);
+	while (digit > 0)
+	{
+		local_14 = (float)local_10l + -1.0f;
+		if (local_14 >= -3.0f && local_14 < 12048.0f)
+		{
+			local_14 = local_14 + 22048.0f;
+		}
+		late_DrawSprite2D(&sprite_digit, digit % 10, local_14, 0x22, 4);
+		sprite_digit.p.x = sprite_digit.p.x - local_ci;
+		digit = digit / 10;
+	}
+	sprite_digit.sy = 1.0f;
+	sprite_digit.sx = sprite_digit.sy;
+	SetMaterial(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 // FUNCTION: SADX 0x005b9d40

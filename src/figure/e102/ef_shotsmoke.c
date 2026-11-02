@@ -33,9 +33,36 @@ void CreateShotsmoke(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
 	}
 }
 
-// STUB: SADX 0x005d4f50
+// FUNCTION: SADX 0x005d4f50
 void EffectShotsmoke(struct sp_task *tp, struct sp_link *lp)
 {
+	struct sp_link *local_cg;
+	float local_8g;
+
+	local_cg = (struct sp_link *)*(int *)((char *)tp + 0x44);
+	*(short *)((char *)tp + 0xa) = (short)(int)*(float *)((char *)tp + 0x10);
+	if (*(short *)((char *)tp + 0xa) >= *(short *)((char *)*(int *)((char *)lp + 0x10) + 8))
+	{
+		*(short *)((char *)tp + 0xa) = *(short *)((char *)*(int *)((char *)lp + 0x10) + 8) - 1;
+		SpFreeTask(tp);
+		return;
+	}
+	if (DAT_05cc3554[6] == 0)
+	{
+		*(short *)((char *)tp + 0xa) = *(short *)((char *)*(int *)((char *)lp + 0x10) + 8) - 1;
+		SpFreeTask(tp);
+		return;
+	}
+	*(float *)((char *)tp + 0x10) += *(float *)((char *)local_cg + 8);
+	local_8g = *(float *)((char *)local_cg + 0xc);
+	*(float *)((char *)tp + 0x24) = -*(float *)((char *)tp + 0x24) * local_8g + *(float *)((char *)tp + 0x24);
+	*(float *)((char *)tp + 0x28) = -*(float *)((char *)tp + 0x28) * local_8g + *(float *)((char *)local_cg + 0x10) + *(float *)((char *)tp + 0x28);
+	*(float *)((char *)tp + 0x2c) = -*(float *)((char *)tp + 0x2c) * local_8g + *(float *)((char *)tp + 0x2c);
+	*(float *)((char *)tp + 0x18) += *(float *)((char *)tp + 0x24);
+	*(float *)((char *)tp + 0x1c) += *(float *)((char *)tp + 0x28);
+	*(float *)((char *)tp + 0x20) += *(float *)((char *)tp + 0x2c);
+	*(float *)((char *)tp + 0x14) += *(float *)((char *)local_cg + 4);
+	return;
 }
 
 // FUNCTION: SADX 0x005d5090

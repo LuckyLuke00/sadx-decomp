@@ -1,4 +1,6 @@
 #include "decls.h"
+extern void *DAT_05cc43a4;
+extern void *DAT_06276b18;
 struct taskwk;
 struct E102WK;
 int dsPlay_oneshot(int tone, int id, int pri, int volofs);
@@ -167,9 +169,37 @@ long FUN_005149c0(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	return 0;
 }
 
-// STUB: SADX 0x00515140
+// FUNCTION: SADX 0x00515140
 void E102ThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	struct NJS_POINT3 u;
+	if ((twp->flag & 0x800) != 0)
+	{
+		*(short *)((char *)pwp->htp->twp + 4) &= ~0x1000;
+		twp->flag &= ~0x800;
+		if ((PCheckHoldObject(twp) & 0x200) != 0)
+		{
+			u.x = 1.0f;
+			u.y = 1.0f;
+			u.z = 0.0f;
+			njPushMatrix(&_nj_unit_matrix_);
+			if (twp->ang.z != 0)
+			{
+				njRotateZ(0, (unsigned short)twp->ang.z);
+			}
+			if (twp->ang.x != 0)
+			{
+				njRotateX(0, (unsigned short)twp->ang.x);
+			}
+			if (-twp->ang.y != 0)
+			{
+				njRotateY(0, (unsigned short)(-twp->ang.y));
+			}
+			njCalcVector(0, &u, (NJS_VECTOR *)((char *)pwp->htp->mwp + 4));
+			njPopMatrix(1);
+		}
+		pwp->htp = 0;
+	}
 }
 
 // STUB: SADX 0x00515550
@@ -222,9 +252,20 @@ void FUN_00515c60(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	PGetRotation(param_1, param_2, param_3);
 }
 
-// STUB: SADX 0x00515c90
+// FUNCTION: SADX 0x00515c90
 void E102MotionCallback(struct obj *obj)
 {
+	if (obj == *(struct obj **)((char *)DAT_06276b18 + 0x30))
+	{
+		if (*(int *)((char *)DAT_05cc43a4 + 0x8c) != 0)
+		{
+			njRotateY(0, *(unsigned short *)((char *)DAT_05cc43a4 + 0x8c));
+		}
+	}
+	else if (obj == *(struct obj **)((char *)DAT_06276b18 + 0x70))
+	{
+		FUN_0067d830(0, 0.0f, *(float *)((char *)DAT_05cc43a4 + 0x90) * 2.0f, 0.0f);
+	}
 }
 
 // STUB: SADX 0x00516000
