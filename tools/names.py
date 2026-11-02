@@ -152,13 +152,41 @@ def without_parameter_names(sig: str) -> str:
 
 def declaration_key(decl: str) -> str:
     """DECL as C++ reads it, to tell whether two declarations of one name are the same: without parameter names, a
-    leading `extern`, and `struct`, `union`, `enum` or `class` before a type name, with `(void)` as `()`. Not for
-    writing: a C file needs the `struct`."""
+    leading `extern`, and `struct`, `union`, `enum` or `class` before a type name, with `(void)` as `()` and a hex
+    array bound in decimal. Not for writing: a C file needs the `struct`."""
     decl = without_parameter_names(decl)
     decl = re.sub(r"^\s*extern\b", "", decl)
     decl = re.sub(r"\b(?:struct|union|enum|class)\s+(?=\w)", "", decl)
     decl = re.sub(r"\(\s*void\s*\)", "()", decl)
-    return re.sub(r"\s", "", decl)
+    decl = re.sub(r"\s", "", decl)
+    return re.sub(r"\[(0[xX][0-9a-fA-F]+)\]", lambda m: f"[{int(m.group(1), 16)}]", decl)
+
+
+ARRAY_BOUND = re.compile(r"\[([^\]]*)\]")
+
+
+def same_declaration(a: str, b: str) -> bool:
+    """Whether C++ takes declarations A and B as one: the same declaration_key, except that one of them may leave an
+    array bound out, as `extern int x[];` does."""
+    key_a, key_b = declaration_key(a), declaration_key(b)
+    bounds = zip(ARRAY_BOUND.findall(key_a), ARRAY_BOUND.findall(key_b))
+    return (ARRAY_BOUND.sub("[]", key_a) == ARRAY_BOUND.sub("[]", key_b)
+            and all(bound_a == bound_b or not bound_a or not bound_b for bound_a, bound_b in bounds))
+
+
+def member_name(table_name: str) -> tuple[str, str] | None:
+    """(the name a source writes, the full name) of a function that a table names inside a class or namespace:
+    `A::B::f` gives ("f", "A::B::f"), and so does the decorated name `?f@B@A@@...`. None for a name outside any class
+    or namespace, and for a decorated name this does not read, such as a constructor's or a template's."""
+    if table_name.startswith("?"):
+        m = re.match(r"\?([A-Za-z_]\w*)((?:@[A-Za-z_]\w*)+)@@", table_name)
+        if not m:
+            return None
+        scopes = m.group(2)[1:].split("@")
+        return m.group(1), "::".join(reversed(scopes)) + "::" + m.group(1)
+    if "::" in table_name:
+        return table_name.rsplit("::", 1)[1], table_name
+    return None
 
 
 def parameter_span(sig: str) -> tuple[int, int, list[str]] | None:
