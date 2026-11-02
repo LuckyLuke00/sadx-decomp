@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,065 of 16,524 game functions done (36.70%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,067 of 16,524 game functions done (36.71%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -1816,9 +1816,9 @@
 <rect x="56" y="42" width="6" height="6" fill="#b07d00"><title>0x006f25b0 Dsp_damage_ball: 100%</title></rect>
 <rect x="56" y="49" width="6" height="6" fill="#b07d00"><title>0x006f3b30 Dsp_Chaos4KamaTame: 100%</title></rect>
 </g>
-<rect x="447" y="788" width="64" height="130" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 6: 18 of 93 functions done</title></rect>
+<rect x="447" y="788" width="64" height="130" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Chaos 6: 20 of 93 functions done</title></rect>
 <text x="450" y="802" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Chaos 6</text>
-<text x="450" y="817" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">5%</tspan></text>
+<text x="450" y="817" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">6%</tspan></text>
 <g transform="translate(450,821)">
 <rect y="0" width="56" height="77" fill="url(#todo)"/>
 <rect y="77" width="35" height="7" fill="url(#todo)"/>
@@ -1838,6 +1838,8 @@
 <rect x="49" y="56" width="6" height="6" fill="#b07d00"><title>0x006f96a0 EFF_C6IceFloor: 100%</title></rect>
 <rect x="7" y="70" width="6" height="6" fill="#b07d00"><title>0x006fa6d0 FUN_006fa6d0: 100%</title></rect>
 <rect x="35" y="70" width="6" height="6" fill="#b07d00"><title>0x006faab0 setCatchingC6Kaeru: 100%</title></rect>
+<rect x="7" y="77" width="6" height="6" fill="#b07d00"><title>0x006faf30 objNormal(3): 100%</title></rect>
+<rect x="14" y="77" width="6" height="6" fill="#b07d00"><title>0x006fb000 Chaos6Barrier: 100%</title></rect>
 <rect x="21" y="77" width="6" height="6" fill="#b07d00"><title>0x00903000 EvChaos6Human2Water: 100%</title></rect>
 <rect x="28" y="77" width="6" height="6" fill="#b07d00"><title>0x00903020 EvChaos6Water2Human: 100%</title></rect>
 </g>
