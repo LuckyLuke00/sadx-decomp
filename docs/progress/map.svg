@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,062 of 16,524 game functions done (36.68%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,063 of 16,524 game functions done (36.69%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -142,8 +142,8 @@
 <rect x="63" y="42" width="6" height="6" fill="#b07d00"><title>0x005d87d0 KnuEffectHormTubeReset: 100%</title></rect>
 <rect x="70" y="42" width="6" height="6" fill="#b07d00"><title>0x005d87e0 FUN_005d87e0: 100%</title></rect>
 </g>
-<rect x="814" y="1199" width="103" height="83" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Amy: 32 of 92 functions done</title></rect>
-<text x="817" y="1213" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Amy <tspan font-weight="400" fill="#59636e">5%</tspan></text>
+<rect x="814" y="1199" width="103" height="83" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Amy: 33 of 92 functions done</title></rect>
+<text x="817" y="1213" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Amy <tspan font-weight="400" fill="#59636e">6%</tspan></text>
 <g transform="translate(817,1217)">
 <rect y="0" width="98" height="42" fill="url(#todo)"/>
 <rect y="42" width="56" height="7" fill="url(#todo)"/>
@@ -172,11 +172,13 @@
 <rect x="0" y="35" width="6" height="6" fill="#b07d00"><title>0x005d55e0 ADC_ResetDrumCanTouchCheck: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5740 FUN_005d5740: 100%</title></rect>
 <rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5770 AmyHndlGetInfoStrP: 100%</title></rect>
+<rect x="35" y="35" width="6" height="6" fill="#af7e08"><title>0x005d5780 AmyBirdStart: 98.6%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#b07d00"><title>0x005d5870 AmyBirdInit: 100%</title></rect>
 <rect x="70" y="35" width="6" height="6" fill="#b07d00"><title>0x005d60d0 AmyEffectFallHeartDisplayer: 100%</title></rect>
 <rect x="91" y="35" width="6" height="6" fill="#b07d00"><title>0x005d6410 AmyEffectSpdDwnHeartDisplayer: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x005d65c0 AmyEffectPiyoPiyo: 100%</title></rect>
 <rect x="21" y="42" width="6" height="6" fill="#b07d00"><title>0x005d6890 AmyEffectPiyoPiyoEnd: 100%</title></rect>
+<rect x="35" y="42" width="6" height="6" fill="#b07d00"><title>0x005d6af0 AmyEffectHammerWaveDisplayer: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#b07d00"><title>0x005d6c10 AmyEffectHammerWaveColor: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x005d6cf0 AmyEffectHammerWaveColorDisplayer: 100%</title></rect>
 </g>
