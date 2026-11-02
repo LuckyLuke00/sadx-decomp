@@ -1343,6 +1343,9 @@ struct NJS_TEXLIST texlist_supi_supi;
 // GLOBAL: SADX 0x02608cd4
 struct obj object_supi_supi_supi;
 
+// GLOBAL: SADX 0x02608d08
+struct CCL_INFO spinna_info[3];
+
 // GLOBAL: SADX 0x02608e24
 unsigned char DAT_02608e24;
 
@@ -1522,6 +1525,9 @@ struct NJS_TEXLIST texlist_e_robo;
 
 // GLOBAL: SADX 0x0264b028
 struct NJS_MODEL model_sorsar_karada_1_atama1[1];
+
+// GLOBAL: SADX 0x0264d8ac
+struct NJS_ACTION action_sorsar_karada_1[1];
 
 // GLOBAL: SADX 0x0264d9d8
 struct NJS_SPRITE sprite_robo_beam;
