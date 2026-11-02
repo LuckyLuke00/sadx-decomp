@@ -13388,9 +13388,9 @@
   {
    "address": "0x0049c460",
    "name": "Disp(4)",
-   "accuracy": 0.046511627906976744,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -91907,6 +91907,13 @@
    "library": false
   },
   {
+   "address": "0x0257f834",
+   "name": "object_mi_kinka",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0257fecc",
    "name": "action_mi_ssobj_card",
    "size": 8,
@@ -102668,5 +102675,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "dbef47125ca35fdfe78102662efc1e743462c42bda1d7702102b2e88453381be"
+ "inputs_sha256": "50cb34d73c45ecbe830c7eccbaa162ac9ef74101c4892bbbb28645d43363ecfa"
 }
