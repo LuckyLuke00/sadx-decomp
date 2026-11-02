@@ -1,4 +1,5 @@
 #include "decls.h"
+struct taskwk;
 extern "C" int rand(void);
 void dispDistanceNum(float dist);
 void FUN_0058d680(int param_1);
@@ -305,10 +306,21 @@ void setLureSetup(struct task *tp)
 	dsStop_num(0x34d);
 }
 
-// STUB: SADX 0x0058ff60
+// FUNCTION: SADX 0x0058ff60
 long FUN_0058ff60(long param_1, long param_2)
 {
-	return (long)0;
+	if (((*(long *)(param_2 + 0x10) & 2) == 0) && ((*(long *)param_2 & 2) == 0))
+	{
+		return 0;
+	}
+	if ((*(unsigned short *)(*(long *)(*(long *)(param_1 + 0x20) + 0x38) + 4) & 1) != 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
 }
 
 // FUNCTION: SADX 0x0058ffa0
@@ -411,9 +423,42 @@ void CalcHookPos(struct NJS_POINT3 *ret)
 	FUN_005b5aa0(ret, 0xff0000ff);
 }
 
-// STUB: SADX 0x00591390
+// FUNCTION: SADX 0x00591390
 void CalcLinePos(struct NJS_POINT3 *ret)
 {
+	struct NJS_POINT3 pos;
+	float mtrx[16];
+	struct taskwk *local_50;
+
+	if (DAT_05cd2980 == 0)
+	{
+		ret->z = 0.0f;
+		ret->y = 0.0f;
+		ret->x = 0.0f;
+		return;
+	}
+	local_50 = *(struct taskwk **)((char *)DAT_05cd2980 + 0x20);
+	pos.x = -0.6f;
+	pos.y = 0.3f;
+	pos.z = 0.0f;
+	njUnitMatrix((NJS_MATRIX (*))mtrx);
+	if (-local_50->ang.y != 0)
+	{
+		njRotateY((NJS_MATRIX (*))mtrx, (unsigned short)(-local_50->ang.y));
+	}
+	if (local_50->ang.x != 0)
+	{
+		njRotateX((NJS_MATRIX (*))mtrx, (unsigned short)local_50->ang.x);
+	}
+	if (local_50->ang.z != 0)
+	{
+		njRotateZ((NJS_MATRIX (*))mtrx, (unsigned short)local_50->ang.z);
+	}
+	njCalcVector((NJS_MATRIX (*))mtrx, &pos, ret);
+	ret->x = ret->x + local_50->pos.x;
+	ret->y = ret->y + local_50->pos.y;
+	ret->z = ret->z + local_50->pos.z;
+	FUN_005b5aa0(ret, 0xff0000ff);
 }
 
 // FUNCTION: SADX 0x005914c0
