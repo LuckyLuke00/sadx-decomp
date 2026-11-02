@@ -1659,6 +1659,12 @@ void disp_npc_message_wait(const char * *message_p)
 {
 }
 
+// STUB: SADX 0x00570bf0
+long CalcMMMatrix(float (*)[16], struct NJS_ACTION *, float, unsigned long, float (*)[16])
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00572210
 void MirenObjEditDrawCollision(const struct colliwk *)
 {
@@ -3226,6 +3232,11 @@ void ObjectMountainExplosionRock2(struct task *tp)
 
 // STUB: SADX 0x0082a170
 void Object_Mountain_Zako_Display(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0082ae70
+void FUN_0082ae70(float)
 {
 }
 

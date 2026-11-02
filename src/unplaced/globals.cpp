@@ -1124,6 +1124,9 @@ struct NJS_TEXLIST texlist_fishing;
 // GLOBAL: SADX 0x025ddef8
 struct NJS_TEXLIST texlist_e102_beam;
 
+// GLOBAL: SADX 0x025ddf00
+struct NJS_TEXLIST texlist_e102_effect;
+
 // GLOBAL: SADX 0x025ddf08
 signed char e102_laser_enable_table[256];
 
@@ -2315,8 +2318,29 @@ struct NJS_TEXLIST texlist_e101;
 // GLOBAL: SADX 0x02bc4164
 struct obj object_e101old_kihon0_e101old_e_head[1];
 
+// GLOBAL: SADX 0x02bc92c4
+struct obj object_e101_fun_e101_fun_e101_fun[1];
+
 // GLOBAL: SADX 0x02bc9984
 struct obj object_01_misile_01_misile_01_misile[1];
+
+// GLOBAL: SADX 0x02be7c30
+struct NJS_POINT3 posStart;
+
+// GLOBAL: SADX 0x02be7c3c
+struct NJS_POINT3 CamEye;
+
+// GLOBAL: SADX 0x02be7c48
+struct NJS_POINT3 PosSpot[3];
+
+// GLOBAL: SADX 0x02be7c6c
+struct particle_info bsmoke_data;
+
+// GLOBAL: SADX 0x02be7ca8
+struct CCL_INFO colliInfoTgt[2];
+
+// GLOBAL: SADX 0x02be7d08
+struct PL_ACTION tgt_action[9];
 
 // GLOBAL: SADX 0x02c0cbdc
 struct NJS_POINT3 *pScale_E101r[1];
@@ -6607,6 +6631,9 @@ struct task *DAT_05ccdac8;
 
 // GLOBAL: SADX 0x05ccdacc
 struct task *DAT_05ccdacc;
+
+// GLOBAL: SADX 0x05ccdad1
+char DAT_05ccdad1;
 
 // GLOBAL: SADX 0x05ccdad4
 float DAT_05ccdad4;
