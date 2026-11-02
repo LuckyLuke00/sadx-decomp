@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_006011c0(void *param_1);
+void FUN_00606a50(struct task *param_1);
+void minigame_sel_sub_exec(struct MiniGameSelWk *wkp);
 void FUN_00600f70(void *param_1);
 extern unsigned char DAT_00982ec0[];
 extern unsigned char DAT_05cd14ed;
@@ -40,6 +43,55 @@ void FUN_00600f10(struct task *param_1, struct ModeSelPrmType *param_2)
 // STUB: SADX 0x00600fc0
 void FUN_00600fc0(void *param_1)
 {
+}
+
+// FUNCTION: SADX 0x00601030
+void minigame_sel_exec(struct task *tp)
+{
+	struct MiniGameSelWk *local_8;
+
+	local_8 = (struct MiniGameSelWk *)tp->awp;
+	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 9 && *(int *)local_8 == 0)
+	{
+		FUN_006011c0((void *)local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 1;
+	}
+	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 9 && *(int *)local_8 == 2)
+	{
+		FUN_00606a50((struct task *)local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 3;
+	}
+	switch (*(int *)local_8)
+	{
+	case 0:
+		*(int *)((char *)local_8 + 0x14) = 0;
+		break;
+	case 1:
+		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			*(int *)local_8 = 2;
+		}
+		break;
+	case 2:
+		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
+		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 9;
+		minigame_sel_sub_exec(local_8);
+		break;
+	case 3:
+		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			AvaReleaseTexForEachMode((AdvaModeEnum)9);
+			*(char *)((char *)DAT_05cda18c->awp + 0x1f) = 1;
+			*(int *)local_8 = 0;
+		}
+		break;
+	}
 }
 
 // FUNCTION: SADX 0x006011c0

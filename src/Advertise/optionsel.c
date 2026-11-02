@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_006032f0(struct task *param_1);
+void FUN_00603340(struct anywk *param_1);
+void option_sel_sub_exec(struct _OptionSelWk *wkp);
 extern int DAT_0099b0a8;
 extern struct NJS_TEXLIST texlist_ava_option;
 extern float ScreenRaitoX;
@@ -171,6 +174,56 @@ void FUN_006030c0(struct task *param_1)
 	*(char *)((char *)param_1 + 0x42) = 0;
 	*(int *)((char *)param_1 + 0x48) = (int)&DAT_0099b0a8;
 	*(int *)((char *)param_1 + 0x4c) = 6;
+}
+
+// FUNCTION: SADX 0x00603150
+void FUN_00603150(struct task *param_1)
+{
+	struct anywk *local_8;
+
+	local_8 = param_1->awp;
+	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 7 && *(int *)local_8 == 0)
+	{
+		FUN_006032f0((struct task *)local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 1;
+	}
+	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 7 && *(int *)local_8 == 2)
+	{
+		FUN_005b5aa0(local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 3;
+	}
+	FUN_00603340(local_8);
+	switch (*(int *)local_8)
+	{
+	case 0:
+		*(int *)((char *)local_8 + 0x14) = 0;
+		break;
+	case 1:
+		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			*(int *)local_8 = 2;
+		}
+		break;
+	case 2:
+		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
+		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 7;
+		option_sel_sub_exec((struct _OptionSelWk *)local_8);
+		break;
+	case 3:
+		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			AvaReleaseTexForEachMode((AdvaModeEnum)7);
+			*(char *)((char *)DAT_05cda18c->awp + 0x1f) = 1;
+			*(int *)local_8 = 0;
+		}
+		break;
+	}
 }
 
 // FUNCTION: SADX 0x006032f0

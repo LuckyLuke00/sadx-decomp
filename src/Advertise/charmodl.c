@@ -34,9 +34,30 @@ struct task *FUN_0061de70(void)
 	return local_8g;
 }
 
-// STUB: SADX 0x0061def0
+// FUNCTION: SADX 0x0061def0
 void FUN_0061def0(struct task *param_1)
 {
+	struct anywk *local_8g;
+	struct taskwk *local_cg;
+	struct task *local_10g;
+
+	local_8g = param_1->awp;
+	___dsSetPalette(2);
+	local_10g = CreateElementalTask(6, 0, ghAdvertiseCamera);
+	*(struct task **)((char *)local_8g + 0x1c) = local_10g;
+	if (local_10g != 0)
+	{
+		local_cg = ((struct task *)*(struct task **)((char *)local_8g + 0x1c))->twp;
+		local_cg->ang.z = 0;
+		local_cg->ang.y = 0;
+		local_cg->ang.x = 0;
+		local_cg->pos.z = 0.0;
+		local_cg->pos.y = 0.0;
+		local_cg->pos.x = 0.0;
+	}
+	InitCharMdls((struct CharMdlWk *)local_8g);
+	*(char *)((char *)local_8g + 0x2c) = 0;
+	*(char *)((char *)local_8g + 0x34) = 0;
 }
 
 // STUB: SADX 0x0061df90

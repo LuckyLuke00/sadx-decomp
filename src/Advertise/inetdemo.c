@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_005fe2f0(int param_1);
+void inetdemo_sub_exec(struct InetDemoWk *wkp);
 void FUN_005fe110(struct task *param_1, struct ModeSelPrmType *param_2);
 void inetdemo_disp(struct task *tp);
 void FUN_005fe110(struct task *param_1, struct ModeSelPrmType *param_2);
@@ -33,6 +35,55 @@ void FUN_005fe110(struct task *param_1, struct ModeSelPrmType *param_2)
 	*(float *)((char *)local_8 + 12) = 5400.0f;
 	*(int *)local_8 = 0;
 	*(int *)((char *)local_8 + 0x18) = 0;
+}
+
+// FUNCTION: SADX 0x005fe160
+void inetdemo_exec(struct task *tp)
+{
+	struct InetDemoWk *local_8;
+
+	local_8 = (struct InetDemoWk *)tp->awp;
+	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 0xb && *(int *)local_8 == 0)
+	{
+		FUN_005fe2f0((int)local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 1;
+	}
+	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 0xb && *(int *)local_8 == 2)
+	{
+		FUN_005b5aa0((int)local_8);
+		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		*(int *)local_8 = 3;
+	}
+	switch (*(int *)local_8)
+	{
+	case 0:
+		*(int *)((char *)local_8 + 0x14) = 0;
+		break;
+	case 1:
+		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			*(int *)local_8 = 2;
+		}
+		break;
+	case 2:
+		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
+		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 0xb;
+		inetdemo_sub_exec(local_8);
+		break;
+	case 3:
+		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
+		*(float *)((char *)local_8 + 0x10) += 0.1f;
+		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		{
+			AvaReleaseTexForEachMode((AdvaModeEnum)0xb);
+			*(char *)((char *)DAT_05cda18c->awp + 0x1f) = 1;
+			*(int *)local_8 = 0;
+		}
+		break;
+	}
 }
 
 // FUNCTION: SADX 0x005fe2f0
