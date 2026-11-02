@@ -46421,9 +46421,9 @@
   {
    "address": "0x006c2d60",
    "name": "ZRandomS",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46557,9 +46557,9 @@
   {
    "address": "0x006c4070",
    "name": "setBossColliOnOff",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -46637,9 +46637,9 @@
   {
    "address": "0x006c4830",
    "name": "egm1one_clay_disp",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -88281,6 +88281,13 @@
    "library": false
   },
   {
+   "address": "0x009be6f0",
+   "name": "colliparam_tbl",
+   "size": 21,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x009bf710",
    "name": "DAT_009bf710",
    "size": 20,
@@ -102486,5 +102493,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "fd7377b147193c5152c0fc715fd0cc24f23986d6ae2b1f395ae5e98be2604b3f"
+ "inputs_sha256": "38fe48f2c412d51c597ed44a5afbe00ec8498d6aa71fee9d9e9fca8e4f6ff7c2"
 }

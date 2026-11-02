@@ -73,12 +73,20 @@ void SetEgm1AtkSmoke(struct NJS_POINT3 *posp)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x006c4830
+// FUNCTION: SADX 0x006c4830
 void egm1one_clay_disp(struct task *tp)
 {
+	struct anywk *var1 = tp->awp;
+	struct taskwk *var2 = tp->twp;
+
+	njPushMatrix(0);
+	njTranslateV(0, &var2->pos);
+	njRotateZXY(0, var2->ang.x, var2->ang.y, var2->ang.z);
+	FUN_0067d2d0(0, var1->work.f[8], var1->work.f[8], var1->work.f[8]);
+	___njSetTexture((struct NJS_TEXLIST *)var1->work.ptr[1]);
+	ds_DrawObjectClip((struct obj *)var1->work.ptr[0], var1->work.f[8]);
+	njPopMatrix(1);
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006c48b0
 void ChgEgm1ClayStat(unsigned char mode)

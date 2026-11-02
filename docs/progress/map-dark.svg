@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,053 of 16,524 game functions done (36.63%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,056 of 16,524 game functions done (36.64%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -1902,9 +1902,9 @@
 <rect x="84" y="70" width="6" height="6" fill="#ffd700"><title>0x00903040 EvChaos7Howl1: 100%</title></rect>
 <rect x="91" y="70" width="6" height="6" fill="#ffd700"><title>0x00903060 EvChaos7Breath: 100%</title></rect>
 </g>
-<rect x="447" y="695" width="112" height="91" rx="3" fill="#21262d" stroke="#30363d"><title>Egg Hornet: 47 of 104 functions done</title></rect>
+<rect x="447" y="695" width="112" height="91" rx="3" fill="#21262d" stroke="#30363d"><title>Egg Hornet: 50 of 104 functions done</title></rect>
 <text x="450" y="709" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Egg Hornet</text>
-<text x="450" y="724" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">17%</tspan></text>
+<text x="450" y="724" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">19%</tspan></text>
 <g transform="translate(450,728)">
 <rect y="0" width="105" height="42" fill="url(#todo)"/>
 <rect y="42" width="98" height="7" fill="url(#todo)"/>
@@ -1930,6 +1930,7 @@
 <rect x="77" y="14" width="6" height="6" fill="#ffd700"><title>0x006c2ce0 ZCalcAngY: 100%</title></rect>
 <rect x="84" y="14" width="6" height="6" fill="#ffd700"><title>0x006c2d00 ZCalcAbsAngY: 100%</title></rect>
 <rect x="91" y="14" width="6" height="6" fill="#ffd700"><title>0x006c2d30 MissileCalcAngX: 100%</title></rect>
+<rect x="98" y="14" width="6" height="6" fill="#ffd700"><title>0x006c2d60 ZRandomS: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#ffd700"><title>0x006c2da0 ZCountMdl: 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#ffd700"><title>0x006c2df0 ZRotateYXZ: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#ffd700"><title>0x006c2ec0 GetBossAngMode: 100%</title></rect>
@@ -1941,12 +1942,14 @@
 <rect x="28" y="28" width="6" height="6" fill="#ffd700"><title>0x006c3f10 SetCamEgm1SpdSlowFlying: 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#ffd700"><title>0x006c3f40 SetCamEgm1SpdFastFlying: 100%</title></rect>
 <rect x="49" y="28" width="6" height="6" fill="#ffd700"><title>0x006c4030 setBossColliRot: 100%</title></rect>
+<rect x="56" y="28" width="6" height="6" fill="#ffd700"><title>0x006c4070 setBossColliOnOff: 100%</title></rect>
 <rect x="84" y="28" width="6" height="6" fill="#ffd700"><title>0x006c4260 SetEgm1Bakuhatsu: 100%</title></rect>
 <rect x="98" y="28" width="6" height="6" fill="#ffd700"><title>0x006c43b0 InitEgm1DeadFly: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#ffd700"><title>0x006c4670 egm1ground_smoke_exec: 100%</title></rect>
 <rect x="28" y="35" width="6" height="6" fill="#ffd700"><title>0x006c4730 SetEgm1GroundSmoke: 100%</title></rect>
 <rect x="35" y="35" width="6" height="6" fill="#ffd700"><title>0x006c4780 ChgEgm1SmokeStat: 100%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#ffd700"><title>0x006c4790 SetEgm1AtkSmoke: 100%</title></rect>
+<rect x="49" y="35" width="6" height="6" fill="#ffd700"><title>0x006c4830 egm1one_clay_disp: 100%</title></rect>
 <rect x="56" y="35" width="6" height="6" fill="#ffd700"><title>0x006c48b0 ChgEgm1ClayStat: 100%</title></rect>
 <rect x="63" y="35" width="6" height="6" fill="#ffd700"><title>0x006c48c0 egm1one_clay_exec: 100%</title></rect>
 <rect x="84" y="35" width="6" height="6" fill="#ffd700"><title>0x006c4b20 SetEgm1GroundClay: 100%</title></rect>
