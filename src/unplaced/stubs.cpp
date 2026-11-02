@@ -1617,6 +1617,11 @@ signed char calcCameraPos(int coli_on)
 	return (signed char)0;
 }
 
+// STUB: SADX 0x00569420
+void CameraCollisitonCheckAdj(struct NJS_POINT3 *src, struct NJS_POINT3 *dst)
+{
+}
+
 // STUB: SADX 0x0056aea0
 void FUN_0056aea0(int)
 {
@@ -1985,6 +1990,11 @@ void KnuEffectRingSpring(struct task *tp)
 
 // STUB: SADX 0x005d8640
 void dispKnuEffectChargeScl(struct task *)
+{
+}
+
+// STUB: SADX 0x005d8f00
+void DrawCustomObject_wz(struct obj *top_object, struct CUSTOM_OBJ *custom)
 {
 }
 
@@ -3677,11 +3687,6 @@ void ObjShelterAqusuimen(struct task *tp)
 
 // STUB: SADX 0x008bc650
 void displayToge(struct taskwk *twp)
-{
-}
-
-// STUB: SADX 0x008c1d40
-extern void ObjectSampleSWRegular(struct task *)
 {
 }
 

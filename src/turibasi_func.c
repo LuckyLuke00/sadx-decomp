@@ -35,9 +35,20 @@ void ObjectTuribasi(struct task *tp)
 	tp->disp = ObjectTuribasiDisplayer;
 }
 
-// STUB: SADX 0x008db560
+// FUNCTION: SADX 0x008db560
 void BridgeNormal(struct task *tp)
 {
+	struct taskwk *local_8g;
+	local_8g = tp->twp;
+	BridgeDraw(local_8g);
+	BridgeCheckCollision(local_8g);
+	BridgeCalcForce(local_8g);
+	BridgeDeform(local_8g);
+	if (CheckCollisionP(&local_8g->pos, *(float *)((char *)(*(int *)((char *)local_8g->counter.ptr + 4)) + 0x24) * 2.0f + 80.0f))
+		local_8g->flag |= 0x100;
+	else
+		local_8g->flag &= ~0x100;
+	CheckRangeOutWithR(tp, 4000000.0f);
 }
 
 // FUNCTION: SADX 0x008db620
@@ -97,9 +108,30 @@ void ObjectTuribasiDisplayer2(struct task *tp)
 	BridgeDraw2(local_8);
 }
 
-// STUB: SADX 0x008dbd70
+// FUNCTION: SADX 0x008dbd70
 void ObjectTuribasiExecutor(struct task *tp)
 {
+	struct taskwk *local_cg;
+	float local_8g;
+
+	local_cg = tp->twp;
+	local_8g = *(float *)((char *)local_cg->value.ptr + 0x40);
+	if (CheckEditMode())
+	{
+		BridgeEditMode(local_cg);
+	}
+	else
+	{
+		BridgeDraw(local_cg);
+		BridgeCheckCollision(local_cg);
+		BridgeCalcForce(local_cg);
+		BridgeDeform(local_cg);
+		if (CheckCollisionP(&local_cg->pos, *(float *)((char *)(*(int *)((char *)local_cg->counter.ptr + 4)) + 0x24) + 800.0f))
+			local_cg->flag |= 0x100;
+		else
+			local_cg->flag &= ~0x100;
+		CheckRangeOutWithR(tp, 4000000.0f);
+	}
 }
 
 // STUB: SADX 0x008dc030

@@ -21,9 +21,27 @@ void SetEventWork(struct taskwk *twp)
 	}
 }
 
-// STUB: SADX 0x005b24c0
+// FUNCTION: SADX 0x005b24c0
 void FreeEventAction(struct taskwk *twp)
 {
+	struct eventwk *local_ci;
+	struct EVENT_ACTION_LIST *local_8g;
+	struct EVENT_ACTION_LIST *local_10;
+	local_ci = twp->ewp;
+	local_8g = local_ci->action.list;
+	while (local_8g != NULL)
+	{
+		local_10 = local_8g->next;
+		Free(local_8g);
+		local_8g = local_10;
+	}
+	local_ci->action.list = NULL;
+	if (local_ci->action.old != NULL)
+	{
+		Free(local_ci->action.old);
+		local_ci->action.old = NULL;
+	}
+	local_ci->action.timer = 0.0;
 }
 
 // STUB: SADX 0x005b2540

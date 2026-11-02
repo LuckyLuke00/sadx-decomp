@@ -278,6 +278,33 @@ void (*DAT_00a34538[5])(struct task *);
 // GLOBAL: SADX 0x00a34568
 void (*DAT_00a34568[4])(struct task *);
 
+// GLOBAL: SADX 0x00a356a0
+const char DAT_00a356a0[1] = {};
+
+// GLOBAL: SADX 0x00a356b0
+const char DAT_00a356b0[1] = {};
+
+// GLOBAL: SADX 0x00a356c0
+const char DAT_00a356c0[1] = {};
+
+// GLOBAL: SADX 0x00a356cc
+const char DAT_00a356cc[1] = {};
+
+// GLOBAL: SADX 0x00a356d8
+const char DAT_00a356d8[1] = {};
+
+// GLOBAL: SADX 0x00a356ec
+const char DAT_00a356ec[1] = {};
+
+// GLOBAL: SADX 0x00a356f8
+const char DAT_00a356f8[1] = {};
+
+// GLOBAL: SADX 0x00a35704
+const char DAT_00a35704[1] = {};
+
+// GLOBAL: SADX 0x00a35710
+const char DAT_00a35710[1] = {};
+
 // GLOBAL: SADX 0x00a357e8
 void (*DAT_00a357e8[3])(struct task *);
 
@@ -1175,6 +1202,12 @@ struct particle_entry particle_fire;
 // GLOBAL: SADX 0x025ded6c
 struct particle_info default_fire;
 
+// GLOBAL: SADX 0x025dedb4
+struct NJS_TEXLIST texlist_al_barria;
+
+// GLOBAL: SADX 0x025e001c
+struct obj object_al_barria_barria[1];
+
 // GLOBAL: SADX 0x0260109c
 unsigned char gu8Vibration;
 
@@ -1435,6 +1468,9 @@ struct CPlayableInfo gPlayableInfo[1];
 
 // GLOBAL: SADX 0x0263e9b8
 int objLandTable[8][8];
+
+// GLOBAL: SADX 0x0263ef48
+struct CUSTOM_OBJ panel_model[2];
 
 // GLOBAL: SADX 0x0263f0e8
 struct particle_entry particle_rocketsmoke;
@@ -4280,6 +4316,9 @@ struct NJS_ACTION action_ltos_s_pyo_born_a[1];
 // GLOBAL: SADX 0x04c7aa94
 struct NJS_ACTION action_ltos_s_pyo_born_b[1];
 
+// GLOBAL: SADX 0x04c7bb1c
+int DAT_04c7bb1c[1];
+
 // GLOBAL: SADX 0x04c7c0c0
 int DAT_04c7c0c0;
 
@@ -4351,6 +4390,9 @@ struct obj DAT_05a91394;
 
 // GLOBAL: SADX 0x05a914a0
 struct obj DAT_05a914a0;
+
+// GLOBAL: SADX 0x05a92154
+struct CUSTOM_OBJ DAT_05a92154;
 
 // GLOBAL: SADX 0x05a922f4
 int DAT_05a922f4;

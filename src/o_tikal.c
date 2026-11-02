@@ -129,7 +129,7 @@ void tikal_dispSwitch(int sw)
 	tikal_sw = sw;
 }
 
-// STUB: SADX 0x005bb820
+// FUNCTION: SADX 0x005bb820
 void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struct NJS_ARGB *argb_p, long frame, float scale)
 {
 	if (DAT_05b9d838 != 0)
@@ -148,10 +148,10 @@ void tikal_draw_sprite(struct NJS_SPRITE *spr_p, struct NJS_POINT3 *pos_p, struc
 	}
 	if (tikal_sw != 0)
 	{
-		*(float *)&DAT_05b3df40 = 20048.0f;
+		DAT_05b3df40 = 20048.0f;
 	}
 	late_DrawSprite3D(spr_p, frame, 0x32, 1);
-	*(float *)&DAT_05b3df40 = 0.0f;
+	DAT_05b3df40 = 0.0f;
 	if (((DAT_025acd84 & 2) >> 1) != 0 && (DAT_025acd84 & 1) != 0)
 	{
 		___njFogEnable();

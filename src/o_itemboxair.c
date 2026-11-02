@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct CUSTOM_OBJ panel_model[];
+extern struct CUSTOM_OBJ DAT_05a92154;
 extern int DAT_05edbe90;
 void FUN_005b6f80(struct task *param_1);
 extern char DAT_05edbe94[64];
@@ -31,9 +33,50 @@ void PutItem_ItemBoxAir(struct NJS_POINT3 *putpos, long putItem)
 	local_8g->scl.x = (float)putItem;
 }
 
-// STUB: SADX 0x005b60c0
+// FUNCTION: SADX 0x005b60c0
 void itembox_airDisplay(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (dsCheckViewV(&local_8->pos, 20.0f) == 0)
+	{
+		return;
+	}
+	DAT_05edbe84 = (struct NJS_MODEL *)tp->awp->work.ptr[0];
+	njPushMatrix(0);
+	njTranslateV(0, &local_8->pos);
+	if (local_8->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)local_8->ang.z);
+	}
+	if (local_8->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)local_8->ang.x);
+	}
+	if (local_8->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)local_8->ang.y);
+	}
+	SetRegularTexture();
+	if (local_8->mode == 1 || local_8->mode == 0)
+	{
+		FUN_0067d2d0(0, *(float *)((char *)DAT_05edbe84 + 0x1c), *(float *)((char *)DAT_05edbe84 + 0x1c), *(float *)((char *)DAT_05edbe84 + 0x1c));
+		DrawCustomObject_wz((struct obj *)&DAT_05a92154, &panel_model[0]);
+	}
+	else
+	{
+		FUN_0067d2d0(0, *(float *)((char *)DAT_05edbe84 + 0x18), *(float *)((char *)DAT_05edbe84 + 0x18), *(float *)((char *)DAT_05edbe84 + 0x18));
+		SaveConstantAttr();
+		OnConstantAttr(0, 0x100000);
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+		SetMaterial(-(*(float *)((char *)DAT_05edbe84 + 0x18) - 1.0) * 0.25, 0.0, 0.0, 0.0);
+		DrawCustomObject_wz((struct obj *)&DAT_05a92154, &panel_model[0]);
+		ResetMaterial();
+		LoadConstantAttr();
+	}
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005b6290

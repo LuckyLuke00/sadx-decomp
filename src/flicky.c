@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct obj object_al_barria_barria[1];
+extern struct NJS_TEXLIST texlist_al_barria;
 void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short param_3);
 void FUN_00618530(struct FlickyEff *param_1, struct FlickyEff *param_2, int param_3);
 void Flicky_transformBaloon(struct Flicky *__this, struct taskwk *twp);
@@ -6,7 +8,6 @@ void FUN_0061a280(struct Flicky *param_1, struct taskwk *param_2, int param_3);
 void FUN_0061a3c0(struct Flicky *param_1, struct taskwk *param_2, int param_3);
 void FUN_0061a500(struct taskwk *param_1, int param_2, int param_3);
 void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short param_3);
-void Flicky_dsp(struct Flicky *__this, struct taskwk *twp);
 void FUN_006184e0(int param_1, char *param_2);
 void FUN_0061a500(struct taskwk *param_1, int param_2, int param_3);
 void FUN_0061a820(struct Flicky *param_1, struct taskwk *param_2);
@@ -318,9 +319,23 @@ void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short p
 {
 }
 
-// STUB: SADX 0x0061a6d0
-void Flicky_dsp(struct Flicky *__this, struct taskwk *twp)
+// FUNCTION: SADX 0x0061a6d0
+void Flicky_dsp(struct Flicky *param_1, struct taskwk *param_2, long param_3)
 {
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if ((param_2->wtimer & 0x40) != 0)
+	{
+		___njSetTexture(&texlist_al_barria);
+		njPushMatrix(0);
+		FUN_0067d830(0, param_2->pos.x, (float)((double)param_2->pos.y + 1.2000000476837158), param_2->pos.z);
+		FUN_0067d2d0(0, param_1->bscl.x, param_1->bscl.y, param_1->bscl.z);
+		njRotateXYZ(0, param_1->targetangle, param_1->targetangle + param_3, param_3);
+		late_DrawObject(&object_al_barria_barria[0], 4);
+		njPopMatrix(1);
+	}
 }
 
 // STUB: SADX 0x0061a7b0

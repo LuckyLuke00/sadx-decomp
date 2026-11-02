@@ -26460,7 +26460,15 @@
   {
    "address": "0x005692b0",
    "name": "AdjustTime",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00569420",
+   "name": "CameraCollisitonCheckAdj",
+   "accuracy": 0.04371584699453552,
    "effective": false,
    "stub": true,
    "library": false
@@ -33269,9 +33277,9 @@
   {
    "address": "0x005b24c0",
    "name": "FreeEventAction",
-   "accuracy": 0.18604651162790697,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -33789,9 +33797,9 @@
   {
    "address": "0x005b60c0",
    "name": "itembox_airDisplay",
-   "accuracy": 0.053691275167785234,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34479,7 +34487,7 @@
    "name": "tikal_draw_sprite",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36952,6 +36960,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005d8f00",
+   "name": "DrawCustomObject_wz",
+   "accuracy": 0.047619047619047616,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -41213,9 +41229,9 @@
   {
    "address": "0x0061a6d0",
    "name": "Flicky_dsp",
-   "accuracy": 0.10666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68115,6 +68131,14 @@
    "library": false
   },
   {
+   "address": "0x008c1870",
+   "name": "ObjectSampleS",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008c18f0",
    "name": "ObjectSampleSRegular",
    "accuracy": 1.0,
@@ -68123,8 +68147,24 @@
    "library": false
   },
   {
+   "address": "0x008c19e0",
+   "name": "ObjectSampleM",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008c1a60",
    "name": "ObjectSampleMRegular",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c1b50",
+   "name": "ObjectSampleL",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68149,9 +68189,9 @@
   {
    "address": "0x008c1d40",
    "name": "ObjectSampleSWRegular",
-   "accuracy": 0.08602150537634409,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70437,9 +70477,9 @@
   {
    "address": "0x008db560",
    "name": "BridgeNormal",
-   "accuracy": 0.125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70493,9 +70533,9 @@
   {
    "address": "0x008dbd70",
    "name": "ObjectTuribasiExecutor",
-   "accuracy": 0.10666666666666667,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70693,9 +70733,9 @@
   {
    "address": "0x008de700",
    "name": "ERSC_DisplayEditInfo",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -88268,6 +88308,69 @@
    "library": false
   },
   {
+   "address": "0x00a356a0",
+   "name": "DAT_00a356a0",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a356b0",
+   "name": "DAT_00a356b0",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a356c0",
+   "name": "DAT_00a356c0",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a356cc",
+   "name": "DAT_00a356cc",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a356d8",
+   "name": "DAT_00a356d8",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a356ec",
+   "name": "DAT_00a356ec",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a356f8",
+   "name": "DAT_00a356f8",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a35704",
+   "name": "DAT_00a35704",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a35710",
+   "name": "DAT_00a35710",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00a357e8",
    "name": "DAT_00a357e8",
    "size": 12,
@@ -92188,6 +92291,20 @@
    "library": false
   },
   {
+   "address": "0x025dedb4",
+   "name": "texlist_al_barria",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025e001c",
+   "name": "object_al_barria_barria",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0260109c",
    "name": "gu8Vibration",
    "size": 1,
@@ -92828,6 +92945,13 @@
    "address": "0x0263e9b8",
    "name": "objLandTable",
    "size": 256,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0263ef48",
+   "name": "panel_model",
+   "size": 16,
    "match": false,
    "library": false
   },
@@ -100679,6 +100803,13 @@
    "library": false
   },
   {
+   "address": "0x04c7bb1c",
+   "name": "DAT_04c7bb1c",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c7c0a0",
    "name": "??_R0?AVtype_info@@@8",
    "size": 24,
@@ -101505,6 +101636,13 @@
    "library": false
   },
   {
+   "address": "0x05a92154",
+   "name": "DAT_05a92154",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x05a922f4",
    "name": "DAT_05a922f4",
    "size": 4,
@@ -101619,5 +101757,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a1e64221be80fb44853d869aac6c90e5bb0b31e347774802ebe9077bf012a1f7"
+ "inputs_sha256": "1d96cdaae0f62beace191589d0fcce2813f98fb0d08a1c499a58b2a86596be52"
 }

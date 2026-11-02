@@ -636,9 +636,22 @@ void AdjustNone(struct taskwk *pTaskWork, struct taskwk *pOldTaskWork, struct _O
 {
 }
 
-// STUB: SADX 0x005692b0
+// FUNCTION: SADX 0x005692b0
 void AdjustTime(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
 {
+	float local_8 = (float)(long)*(int *)((char *)adjwp + 0x14) / 120.0;
+	if (local_8 >= 1.0)
+	{
+		local_8 = 1.0;
+		SetAdjustMode(0);
+	}
+	twp->pos.x = (twp->pos.x - ptwp->pos.x) * local_8 + ptwp->pos.x;
+	twp->pos.y = (twp->pos.y - ptwp->pos.y) * local_8 + ptwp->pos.y;
+	twp->pos.z = (twp->pos.z - ptwp->pos.z) * local_8 + ptwp->pos.z;
+	twp->ang.x = AdjustAngle(ptwp->ang.x, twp->ang.x, (long)((float)DiffAngle(twp->ang.x, ptwp->ang.x) * local_8));
+	twp->ang.y = AdjustAngle(ptwp->ang.y, twp->ang.y, (long)((float)DiffAngle(twp->ang.y, ptwp->ang.y) * local_8));
+	twp->ang.z = AdjustAngle(ptwp->ang.z, twp->ang.z, (long)((float)DiffAngle(twp->ang.z, ptwp->ang.z) * local_8));
+	CameraCollisitonCheckAdj(&ptwp->pos, &twp->pos);
 }
 
 // STUB: SADX 0x00569670
