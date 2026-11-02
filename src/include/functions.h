@@ -3130,6 +3130,7 @@ void Object_IcecapBicIwaDraw(struct task *tp);
 long Object_IcecapBicIwa_MovableMRegularExecute(struct task *tp, struct NJS_POINT3 *vecrot);
 void Object_IcecapBicIwaInit(struct task *tp);
 long GetBigturaraStatus();
+void Object_IcecapBigturaraSnowEffect(struct sp_task *tp, struct sp_link *lp);
 void Object_IcecapBigturaraInit(struct task *tp);
 void Object_IcecapFuusya1Draw(struct task *tp);
 void Object_IcecapFuusya1Exec(struct task *tp);

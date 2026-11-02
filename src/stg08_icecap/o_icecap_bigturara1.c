@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 struct sp_task *var1;
 extern int DAT_060dbbb0;
 
@@ -39,9 +40,28 @@ void Object_IcecapBigturaraEnd(struct task *tp)
 	Free(var1->value.ptr);
 }
 
-// STUB: SADX 0x00861990
+// FUNCTION: SADX 0x00861990
 void Object_IcecapBigturaraCreateSnow(struct particle_info *effect, struct NJS_POINT3 *velo, struct NJS_POINT3 *pos, float killheight)
 {
+	struct sp_task *var1;
+	float var2;
+	float var3;
+	float var4;
+	var1 = SpCreateTask(particle_snow.link, Object_IcecapBigturaraSnowEffect);
+	if (var1 != 0)
+	{
+		var1->pos = *pos;
+		var1->spd = *velo;
+		var1->scl = effect->scl;
+		var2 = (float)rand() * 3.0517578125e-05;
+		var1->frame = var2 * 2.0 + 1.0;
+		var3 = (float)rand() * 3.0517578125e-05;
+		var1->ang = 0x2000 - (int)(var3 * 4096.0);
+		var1->argb = effect->argb;
+		var1->work[0].ptr = effect;
+		var4 = (float)rand() * 3.0517578125e-05;
+		var1->work[1].f = var4 * 10.0 + killheight;
+	}
 }
 
 // FUNCTION: SADX 0x00862990

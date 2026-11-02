@@ -62611,6 +62611,14 @@
    "library": false
   },
   {
+   "address": "0x00861050",
+   "name": "ObjectSuisyouTaore",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00861090",
    "name": "ObjectSuisyouB",
    "accuracy": 1.0,
@@ -62621,6 +62629,14 @@
   {
    "address": "0x008610c0",
    "name": "ObjectSuisyouBM",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008610f0",
+   "name": "ObjectSuisyouR",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62651,11 +62667,19 @@
    "library": false
   },
   {
-   "address": "0x00861990",
-   "name": "Object_IcecapBigturaraCreateSnow",
-   "accuracy": 0.028169014084507043,
+   "address": "0x008617e0",
+   "name": "Object_IcecapBigturaraSnowEffect",
+   "accuracy": 0.013513513513513514,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00861990",
+   "name": "Object_IcecapBigturaraCreateSnow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -102493,5 +102517,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "38fe48f2c412d51c597ed44a5afbe00ec8498d6aa71fee9d9e9fca8e4f6ff7c2"
+ "inputs_sha256": "793075b7b238f8fb9a026ef67f3e52bc493a276081090fed234908929cbd3406"
 }

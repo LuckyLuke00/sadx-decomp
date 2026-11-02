@@ -3461,6 +3461,11 @@ long Object_IcecapBicIwa_MovableMRegularExecute(struct task *tp, struct NJS_POIN
 	return (long)0;
 }
 
+// STUB: SADX 0x008617e0
+void Object_IcecapBigturaraSnowEffect(struct sp_task *tp, struct sp_link *lp)
+{
+}
+
 // STUB: SADX 0x00862860
 void Object_IcecapBigturaraInit(struct task *tp)
 {

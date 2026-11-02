@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,056 of 16,524 game functions done (36.64%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,059 of 16,524 game functions done (36.66%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -668,8 +668,8 @@
 <rect x="77" y="154" width="6" height="6" fill="#ffd700"><title>0x0088d8a0 ObjectCasinoEarthShake: 100%</title></rect>
 <rect x="84" y="154" width="6" height="6" fill="#ffd700"><title>0x0088d8b0 CreateEarthShake_Casino: 100%</title></rect>
 </g>
-<rect x="376" y="235" width="148" height="120" rx="3" fill="#21262d" stroke="#30363d"><title>Ice Cap: 93 of 252 functions done</title></rect>
-<text x="379" y="249" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Ice Cap <tspan font-weight="400" fill="#8b949e">10%</tspan></text>
+<rect x="376" y="235" width="148" height="120" rx="3" fill="#21262d" stroke="#30363d"><title>Ice Cap: 96 of 252 functions done</title></rect>
+<text x="379" y="249" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Ice Cap <tspan font-weight="400" fill="#8b949e">11%</tspan></text>
 <g transform="translate(379,253)">
 <rect y="0" width="140" height="84" fill="url(#todo)"/>
 <rect y="84" width="84" height="7" fill="url(#todo)"/>
@@ -699,10 +699,13 @@
 <rect x="0" y="35" width="6" height="6" fill="#ffd700"><title>0x00860cb0 ObjectSnowBalloon02: 100%</title></rect>
 <rect x="7" y="35" width="6" height="6" fill="#ffd700"><title>0x00860ce0 ObjectSnowBalloon03: 100%</title></rect>
 <rect x="14" y="35" width="6" height="6" fill="#ffd700"><title>0x00860d10 ObjectSnowBalloon04: 100%</title></rect>
+<rect x="35" y="35" width="6" height="6" fill="#ffd700"><title>0x00861050 ObjectSuisyouTaore: 100%</title></rect>
 <rect x="42" y="35" width="6" height="6" fill="#ffd700"><title>0x00861090 ObjectSuisyouB: 100%</title></rect>
 <rect x="49" y="35" width="6" height="6" fill="#ffd700"><title>0x008610c0 ObjectSuisyouBM: 100%</title></rect>
+<rect x="56" y="35" width="6" height="6" fill="#ffd700"><title>0x008610f0 ObjectSuisyouR: 100%</title></rect>
 <rect x="63" y="35" width="6" height="6" fill="#ffd700"><title>0x00861120 GetBigturaraStatus: 100%</title></rect>
 <rect x="84" y="35" width="6" height="6" fill="#ffd700"><title>0x00861410 Object_IcecapBigturaraEnd: 100%</title></rect>
+<rect x="112" y="35" width="6" height="6" fill="#ffd700"><title>0x00861990 Object_IcecapBigturaraCreateSnow: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#ffd700"><title>0x00862990 ObjectIcecapBigturara: 100%</title></rect>
 <rect x="35" y="42" width="6" height="6" fill="#ffd700"><title>0x00862d20 ObjectIcecapMizuiwaa: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#ffd700"><title>0x00862d40 ObjectIcecapMizuiwab: 100%</title></rect>
