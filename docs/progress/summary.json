@@ -36611,6 +36611,14 @@
    "library": false
   },
   {
+   "address": "0x005d5780",
+   "name": "AmyBirdStart",
+   "accuracy": 0.9857142857142858,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005d5870",
    "name": "AmyBirdInit",
    "accuracy": 1.0,
@@ -36717,9 +36725,9 @@
   {
    "address": "0x005d6af0",
    "name": "AmyEffectHammerWaveDisplayer",
-   "accuracy": 0.08421052631578947,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -93780,6 +93788,13 @@
    "library": false
   },
   {
+   "address": "0x02675738",
+   "name": "hamon",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026757f4",
    "name": "sprite_k_kira",
    "size": 32,
@@ -102525,5 +102540,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "a129379fa110659d8a9f7779db8e61963b8b52c3a5f5dc2ef8c95ba5f80b87e0"
+ "inputs_sha256": "4d12fed5b1553e617424ae047f898b4190332b3451444e5352335f83e9cd99bd"
 }

@@ -1,4 +1,8 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x02675738
+static struct NJS_POINT3COL hamon[1];
+
 void AmyEffectFallHeartDisplayer(struct task *tp);
 extern void AmyEffectFallHeart(struct task *tp);
 extern struct NJS_TEXLIST texlist_amy_eff;
@@ -142,9 +146,43 @@ void AmyEffectHammerWave(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005d6af0
+// FUNCTION: SADX 0x005d6af0
 void AmyEffectHammerWaveDisplayer(struct task *tp)
 {
+	struct taskwk *local_8g;
+	int local_cg;
+
+	local_8g = tp->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	___njColorBlendingMode(0, 10);
+	___njColorBlendingMode(1, 10);
+	njPushMatrix(0);
+	njTranslateV(0, &local_8g->pos);
+	if (*(long *)((char *)local_8g + 0x1c) != 0)
+	{
+		njRotateZ(0, *(unsigned short *)((char *)local_8g + 0x1c));
+	}
+	if (*(long *)((char *)local_8g + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)local_8g + 0x14));
+	}
+	for (local_cg = 0; local_cg < 0xfffc; local_cg += 0x1555)
+	{
+		njPushMatrix(0);
+		if (local_cg != 0)
+		{
+			njRotateY(0, (unsigned short)local_cg);
+		}
+		njScaleV(0, &local_8g->scl);
+		late_DrawPolygon3D((struct NJS_POINT3COL *)&hamon, 4, 0x60, 4);
+		njPopMatrix(1);
+	}
+	njPopMatrix(1);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // FUNCTION: SADX 0x005d6c10
