@@ -2755,6 +2755,7 @@ void FUN_0070e240(struct GHPARTICLE *param_1);
 void E101R_NozzleLightExit();
 void E101R_EfShotFlickExit();
 void E101R_BarrierExit();
+void aiMagniExec(struct task *pTask);
 void AlgKinderAdInit();
 void AlgKinderAdExit();
 void FTaskExec(struct task *tp);

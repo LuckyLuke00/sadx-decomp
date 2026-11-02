@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1426" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,072 of 16,524 game functions done (36.74%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,073 of 16,524 game functions done (36.75%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1181.5 604.2,1181.5 605.9,1183 607,1184.6 601,1191.5 595,1184.6 596.1,1183" fill="#4e32f3"/>
 <polygon points="597.8,1181.5 604.2,1181.5 605.9,1183 607,1184.6 595,1184.6 596.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -2150,9 +2150,9 @@
 <rect x="49" y="14" width="6" height="6" fill="#b07d00"><title>0x007071f0 SetE101HoverSmoke: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x00837890 updownHeight(2): 100%</title></rect>
 </g>
-<rect x="337" y="693" width="103" height="117" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 mkII: 35 of 134 functions done</title></rect>
+<rect x="337" y="693" width="103" height="117" rx="3" fill="#ffffff" stroke="#d0d7de"><title>E-101 mkII: 36 of 134 functions done</title></rect>
 <text x="340" y="707" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">E-101 mkII</text>
-<text x="340" y="722" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">4%</tspan></text>
+<text x="340" y="722" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">5%</tspan></text>
 <g transform="translate(340,726)">
 <rect y="0" width="98" height="63" fill="url(#todo)"/>
 <rect y="63" width="56" height="7" fill="url(#todo)"/>
@@ -2188,6 +2188,7 @@
 <rect x="21" y="49" width="6" height="6" fill="#b07d00"><title>0x0070ee80 E101R_BarrierSetMode: 100%</title></rect>
 <rect x="35" y="49" width="6" height="6" fill="#b07d00"><title>0x0070ef40 E101R_BarrierDisp: 100%</title></rect>
 <rect x="42" y="49" width="6" height="6" fill="#b07d00"><title>0x0070efd0 E101R_InitAfterImagePartsPos: 100%</title></rect>
+<rect x="28" y="56" width="6" height="6" fill="#b07d00"><title>0x0070fb50 E101R_AfterImageMagni: 100%</title></rect>
 <rect x="35" y="56" width="6" height="6" fill="#b07d00"><title>0x0070fbb0 EnemyE101RMissile_Reset: 100%</title></rect>
 <rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x0070fbc0 EnemyE101RMissile_AllKill: 100%</title></rect>
 <rect x="35" y="63" width="6" height="6" fill="#b07d00"><title>0x00710630 dispMidBomb: 100%</title></rect>
