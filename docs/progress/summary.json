@@ -67459,6 +67459,14 @@
    "library": false
   },
   {
+   "address": "0x008ab900",
+   "name": "HahenDisp",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008abd90",
    "name": "DispATask(13)",
    "accuracy": 1.0,
@@ -102653,5 +102661,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "927433c406cfc5bb6557cad905f0ce34457f0eb459820e41a8251093465f189c"
+ "inputs_sha256": "cd696d12441d9e4b08af0612e7994a6f62d1e605d6ed6c7eb86b07ceac48e81b"
 }
