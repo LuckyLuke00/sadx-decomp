@@ -47845,7 +47845,7 @@
   {
    "address": "0x006dd0f0",
    "name": "disp_HandSpark",
-   "accuracy": 0.05128205128205128,
+   "accuracy": 0.047619047619047616,
    "effective": false,
    "stub": true,
    "library": false
@@ -47853,9 +47853,9 @@
   {
    "address": "0x006dd160",
    "name": "exec_HandSpark",
-   "accuracy": 0.034482758620689655,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -102690,5 +102690,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "325f2e601abb6899b7bde804a2fe3e456d3430aef641cfafd0bfb862a48c69ae"
+ "inputs_sha256": "c786d1d69fc0b6da5891bfa40fda0d952068c1c86175986454728b51586cbb78"
 }
