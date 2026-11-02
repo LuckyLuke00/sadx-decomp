@@ -2685,6 +2685,7 @@ void Dsp_Air();
 void start_demo_camera(struct _OBJ_CAMERAPARAM *pParam);
 void start_demo_camera_water(struct _OBJ_CAMERAPARAM *pParam);
 void chaos4_camera(struct _OBJ_CAMERAPARAM *pParam);
+void Chaos4HeadMode(struct taskwk *twp);
 void Tmit_MaterialInit();
 extern void Dsp_tmit_sprite(struct task *);
 void Tmit_SpriteSetBase(struct NJS_SPRITE *sprite, unsigned char frame, struct NJS_POINT3 *pos, struct NJS_POINT3 *speed, float delay);

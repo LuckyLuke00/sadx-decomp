@@ -48661,9 +48661,9 @@
   {
    "address": "0x006eebb0",
    "name": "Chaos4HeadMode",
-   "accuracy": 0.06060606060606061,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -102608,5 +102608,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "35c76b9d888d8ba9f80823ad0d052d1bcb4c7cd290693d72e1988bcc3633d8d4"
+ "inputs_sha256": "978e90b476d06fb8b11634d7256ea7d757585002bb82fcabd9a076fbef0e210c"
 }

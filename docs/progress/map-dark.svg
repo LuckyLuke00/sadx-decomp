@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1426" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,071 of 16,524 game functions done (36.74%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,072 of 16,524 game functions done (36.74%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="597.8,1181.5 604.2,1181.5 605.9,1183 607,1184.6 601,1191.5 595,1184.6 596.1,1183" fill="#4e32f3"/>
 <polygon points="597.8,1181.5 604.2,1181.5 605.9,1183 607,1184.6 595,1184.6 596.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -1781,7 +1781,7 @@
 <rect x="21" y="28" width="6" height="6" fill="#ffd700"><title>0x00902fb0 EvChaos2Water2Human: 100%</title></rect>
 <rect x="28" y="28" width="6" height="6" fill="#ffd700"><title>0x00902fd0 EvChaos2Action: 100%</title></rect>
 </g>
-<rect x="560" y="693" width="99" height="89" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 4: 31 of 108 functions done</title></rect>
+<rect x="560" y="693" width="99" height="89" rx="3" fill="#21262d" stroke="#30363d"><title>Chaos 4: 32 of 108 functions done</title></rect>
 <text x="563" y="707" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chaos 4 <tspan font-weight="400" fill="#8b949e">8%</tspan></text>
 <g transform="translate(563,711)">
 <rect y="0" width="91" height="56" fill="url(#todo)"/>
@@ -1792,6 +1792,7 @@
 <rect x="56" y="0" width="6" height="6" fill="#ffd700"><title>0x006ee390 Dsp_Air: 100%</title></rect>
 <rect x="0" y="7" width="6" height="6" fill="#ffd700"><title>0x006ee8e0 Chaos4StartDemoCameraSet: 100%</title></rect>
 <rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x006ee900 Chaos4StartDemoCameraSet2: 100%</title></rect>
+<rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x006eebb0 Chaos4HeadMode: 100%</title></rect>
 <rect x="42" y="7" width="6" height="6" fill="#ffd700"><title>0x006eec20 Tmit_MaterialInit: 100%</title></rect>
 <rect x="56" y="7" width="6" height="6" fill="#ffd700"><title>0x006eec60 Chaos4EffectInit: 100%</title></rect>
 <rect x="84" y="7" width="6" height="6" fill="#ffd700"><title>0x006eeef0 Chaos4Splash_A_Set: 100%</title></rect>
