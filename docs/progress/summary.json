@@ -60013,9 +60013,9 @@
   {
    "address": "0x00839f40",
    "name": "SysSkydeck_GoAct2",
-   "accuracy": 0.03773584905660377,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -60061,9 +60061,9 @@
   {
    "address": "0x0083a670",
    "name": "ObjectSkydeck_radder_Display",
-   "accuracy": 0.043478260869565216,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -60413,9 +60413,9 @@
   {
    "address": "0x0083d9b0",
    "name": "ObjectSkydeck_kikanjyu1_End",
-   "accuracy": 0.06451612903225806,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -60653,9 +60653,9 @@
   {
    "address": "0x00840fe0",
    "name": "dispSkyPower",
-   "accuracy": 0.027777777777777776,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -61107,6 +61107,14 @@
    "library": false
   },
   {
+   "address": "0x0084b4c0",
+   "name": "ObjectSkydeck_eff_bomb1_Draw",
+   "accuracy": 0.005479452054794521,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0084b9c0",
    "name": "ObjectSkydeck_eff_smallbomb1_Exec",
    "accuracy": 0.019230769230769232,
@@ -61123,11 +61131,19 @@
    "library": false
   },
   {
-   "address": "0x0084bd50",
-   "name": "ObjectSkydeck_eff_bomb1_Init",
-   "accuracy": 0.03278688524590164,
+   "address": "0x0084bc10",
+   "name": "ObjectSkydeck_eff_bomb1_Exec",
+   "accuracy": 0.02,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0084bd50",
+   "name": "ObjectSkydeck_eff_bomb1_Init",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -98417,6 +98433,41 @@
    "library": false
   },
   {
+   "address": "0x0419f478",
+   "name": "object_sky_h_bakuha01a_h_bakuha01a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0419f6fc",
+   "name": "object_sky_h_bakuha02a_h_bakuha02a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0419f808",
+   "name": "object_sky_h_bakuha03a_h_bakuha03a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0419fe80",
+   "name": "object_sky_h_bakuha04a_h_bakuha04a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x041a017c",
+   "name": "object_sky_h_bakuha05a_h_bakuha05a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x041af64c",
    "name": "object_skymain_nc_obj_meka_obj_meka",
    "size": 52,
@@ -98489,6 +98540,13 @@
   {
    "address": "0x041ecca8",
    "name": "object_cannon_s_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x041ecf10",
+   "name": "object_eff_bomb1_info",
    "size": 48,
    "match": false,
    "library": false
@@ -102192,5 +102250,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "23b60276cc3bcb8e5d653d1df129bba88c8689be05c9f64fe426a659f75db9c9"
+ "inputs_sha256": "0a4bacbd4d51b9333eab7e0827b7cd779deb0f893364abeaca240fecf08052bc"
 }
