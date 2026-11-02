@@ -452,6 +452,9 @@ struct obj object_sssikake_eggstand_eggstand[1];
 // GLOBAL: SADX 0x01c9da54
 struct obj object_nisetama_tamago_tamago[1];
 
+// GLOBAL: SADX 0x01c9ee88
+struct NJS_MODEL model_ssobj_poolchair_poolchair[1];
+
 // GLOBAL: SADX 0x01ca36c8
 struct NJS_MODEL model_poolparasol_poolparasol_poolparasol[1];
 
@@ -6194,9 +6197,6 @@ char DAT_05bafb84;
 // GLOBAL: SADX 0x05bafb86
 unsigned char DAT_05bafb86;
 
-// GLOBAL: SADX 0x05bafb89
-unsigned char DAT_05bafb89;
-
 // GLOBAL: SADX 0x05bafb8a
 unsigned char DAT_05bafb8a;
 
@@ -6233,9 +6233,6 @@ unsigned char DAT_05bafbc1;
 // GLOBAL: SADX 0x05bafbc2
 unsigned char DAT_05bafbc2;
 
-// GLOBAL: SADX 0x05bafbc7
-unsigned char DAT_05bafbc7;
-
 // GLOBAL: SADX 0x05bafbc8
 unsigned char DAT_05bafbc8;
 
@@ -6262,9 +6259,6 @@ unsigned char DAT_05bafc01;
 
 // GLOBAL: SADX 0x05bafc02
 unsigned char DAT_05bafc02;
-
-// GLOBAL: SADX 0x05bafc05
-unsigned char DAT_05bafc05;
 
 // GLOBAL: SADX 0x05bafc06
 unsigned char DAT_05bafc06;
@@ -6302,9 +6296,6 @@ unsigned char DAT_05bafc40;
 // GLOBAL: SADX 0x05bafc41
 unsigned char DAT_05bafc41;
 
-// GLOBAL: SADX 0x05bafc44
-unsigned char DAT_05bafc44;
-
 // GLOBAL: SADX 0x05bafc45
 unsigned char DAT_05bafc45;
 
@@ -6325,9 +6316,6 @@ unsigned char DAT_05bafc55;
 
 // GLOBAL: SADX 0x05bafc80
 unsigned char DAT_05bafc80;
-
-// GLOBAL: SADX 0x05bafc83
-unsigned char DAT_05bafc83;
 
 // GLOBAL: SADX 0x05bafc84
 unsigned char DAT_05bafc84;
@@ -6362,9 +6350,6 @@ unsigned char DAT_05bafcc0;
 // GLOBAL: SADX 0x05bafcc1
 unsigned char DAT_05bafcc1;
 
-// GLOBAL: SADX 0x05bafcc2
-unsigned char DAT_05bafcc2;
-
 // GLOBAL: SADX 0x05bafcc3
 unsigned char DAT_05bafcc3;
 
@@ -6382,9 +6367,6 @@ unsigned char DAT_05bafcd3;
 
 // GLOBAL: SADX 0x05bafcd4
 unsigned char DAT_05bafcd4;
-
-// GLOBAL: SADX 0x05bafcd7
-unsigned char DAT_05bafcd7;
 
 // GLOBAL: SADX 0x05bafce4
 unsigned char DAT_05bafce4;
