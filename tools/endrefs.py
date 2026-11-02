@@ -14,6 +14,7 @@ install() makes reccmp compare each function through renaming(). Needs reccmp an
 """
 
 import copy
+import functools
 from typing import NamedTuple
 
 import capstone
@@ -33,8 +34,10 @@ class Layout(NamedTuple):
     element: int | None  # the size of one element
 
 
+@functools.cache
 def operands(code: bytes, start: int) -> Operands:
-    """The immediates and scaled indexes in CODE at START, without the targets of calls and jumps."""
+    """The immediates and scaled indexes in CODE at START, without the targets of calls and jumps. Cached:
+    immediates.py reads them again for the same function."""
     md = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_32)
     md.detail = True
     found = Operands(set(), set())

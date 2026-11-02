@@ -672,12 +672,14 @@ def check_try_globals() -> list[str]:
 
 def check_address_test() -> list[str]:
     """fakematch.address_test knows a function's start, and a global's start, each of its bytes and its end. A global
-    of size 0, whose size is unknown, counts only at its start."""
+    of size 0, whose size is unknown, counts only at its start. A number of one bit counts only at a start."""
     known = fakematch.address_test({0x00401000}, [(0x00600000, 0x10), (0x00600100, 4), (0x00600200, 0),
-                                                  (0x00600204, 4)])
+                                                  (0x00600204, 4), (0x01fffff0, 0x20), (0x00800000, 4),
+                                                  (0x00fffff0, 0x10)])
     cases = {0x00400fff: False, 0x00401000: True, 0x00401001: False, 0x00600000: True, 0x0060000c: True,
              0x00600010: True, 0x00600011: False, 0x00600100: True, 0x00600104: True, 0x00600105: False,
-             0x00600200: True, 0x00600201: False, 0x00600204: True, 0x00600208: True}
+             0x00600200: True, 0x00600201: False, 0x00600204: True, 0x00600208: True, 0x01fffff8: True,
+             0x02000000: False, 0x00800000: True, 0x01000000: False}
     return [f"address_test gives {known(address)} for 0x{address:08x}, not {wanted}"
             for address, wanted in cases.items() if known(address) != wanted]
 

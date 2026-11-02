@@ -5740,7 +5740,7 @@
 <rect x="203" y="14" width="6" height="6" fill="#ffd700"><title>0x0041c2d0 FUN_0041c2d0: 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#ffd700"><title>0x0041caa0 FUN_0041caa0: 100%</title></rect>
 <rect x="161" y="21" width="6" height="6" fill="#ffd700"><title>0x0041dc60 GetTextSize: 100%</title></rect>
-<rect x="182" y="21" width="6" height="6" fill="#f1d132"><title>0x0041de30 std::vector&lt;FUN_00420960_0,std::allocator&lt;FUN_00420960_0&gt; &gt;::_Reserve: 93.9%</title></rect>
+<rect x="182" y="21" width="6" height="6" fill="#fad511"><title>0x0041de30 std::vector&lt;FUN_00420960_0,std::allocator&lt;FUN_00420960_0&gt; &gt;::_Reserve: 98.0%</title></rect>
 <rect x="56" y="28" width="6" height="6" fill="#f5d322"><title>0x004204d0 std::vector&lt;FUN_004208c0_0,std::allocator&lt;FUN_004208c0_0&gt; &gt;::push_back(struct FUN_004208c0_0 const &amp;): 95.7%</title></rect>
 <rect x="98" y="28" width="6" height="6" fill="#ffd700"><title>0x004208c0 FUN_004208c0: 100%</title></rect>
 <rect x="105" y="28" width="6" height="6" fill="#ffd700"><title>0x00420960 DrawTexture: 100%</title></rect>

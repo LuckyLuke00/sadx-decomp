@@ -5,6 +5,7 @@ The kinds:
   raw_address      a cast applied to an address in the exe, such as *(T *)0x5edd884 or *(T *)(i * 4 + 0x5edd884), an
                    address in the exe plus a scaled index, such as 0x5baf6a0 + i * 0xc, or a bare number that is the
                    address of a function or a global the tree knows. A number added to a pointer is an offset.
+                   A number of one bit, such as 0x2000000, inside a global or at its end is a flag.
   index_game       an index then an offset, such as *(&p[1] - 1)
   neighbor_address a variable's address moved by a number, such as *(&p + 1) or (&p)[1], or a tree global's address
                    cast and moved out of its bytes, such as (char *)&p + i * 4 with p an int: it reaches what the build
@@ -368,10 +369,11 @@ def found(func: list[str], at: int, in_image: Callable[[int], bool], tree: Tree)
 def address_test(function_starts: set[int], globals_: list[tuple[int, int]]) -> Callable[[int], bool]:
     """Whether a number is an address the tree knows: one of FUNCTION_STARTS, or the start, a byte or the end of one of
     GLOBALS_, (address, size) pairs that do not overlap. A global of size 0, whose size is unknown, counts at its start
-    alone."""
-    ranges = sorted([(address, address + 1) for address in function_starts]
-                    + [(address, address + size + 1) for address, size in globals_])
-    return lambda address: pe.in_ranges(ranges, address)
+    alone. A number of one bit counts only at a start: inside a global or at its end it is a flag, such as 0x2000000
+    in a 208-byte array at 0x1ffffd0."""
+    starts = set(function_starts) | {address for address, _ in globals_}
+    ranges = sorted((address, address + size + 1) for address, size in globals_)
+    return lambda address: address in starts or (address.bit_count() != 1 and pe.in_ranges(ranges, address))
 
 
 def debug_test(groups: list[dict]) -> Callable[[int], bool]:

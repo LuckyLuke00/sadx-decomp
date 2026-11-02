@@ -1764,7 +1764,7 @@
   {
    "address": "0x0041de30",
    "name": "std::vector<FUN_00420960_0,std::allocator<FUN_00420960_0> >::_Reserve",
-   "accuracy": 0.9387755102040817,
+   "accuracy": 0.9795918367346939,
    "effective": false,
    "stub": false,
    "library": false
@@ -71381,7 +71381,7 @@
   {
    "address": "0x008e4362",
    "name": "_time64",
-   "accuracy": 0.967741935483871,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -101350,5 +101350,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ef8da43a9c8624dd6f806bf331239737d37ec1d11c8b45ebc914947b85a000af"
+ "inputs_sha256": "7ec3f19102a6629fcc9f0e57c0af16a9148499ae542e665fc4fe530b84460a30"
 }
