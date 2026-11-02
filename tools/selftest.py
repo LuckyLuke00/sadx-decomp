@@ -908,6 +908,7 @@ def check_units() -> list[str]:
     import facttests
     import foldtests
     import groupstests
+    import immediatestests
     import linktests
     import permutetests
     import progresstests
@@ -920,7 +921,7 @@ def check_units() -> list[str]:
     import varfilestests
     modules = (ctexttests, bytetests, casttests, decltests, dossiertests, benchtests, solvetests, facttests, tricktests,
                sitetests, progresstests, linktests, recipetests, retypetests, permutetests, stackargtests, foldtests,
-               endrefstests, groupstests, varfilestests)
+               endrefstests, groupstests, varfilestests, immediatestests)
     return [failure for module in modules for failure in module.run()]
 
 
