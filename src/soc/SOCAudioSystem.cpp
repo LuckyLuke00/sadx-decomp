@@ -2,7 +2,7 @@
 #include "../advertise.h"
 
 // STUB: SADX 0x00425a50
-void SOCAudio::FUN_00425a50()
+void SOCAudio::Stop()
 {
 }
 
@@ -24,7 +24,7 @@ float FUN_00425ce0(float *param_1, float *param_2, float *param_3)
 }
 
 // STUB: SADX 0x00425d70
-void SOCAudio::FUN_00425d70(float param_1, int param_2)
+void SOCAudio::Play(float param_1, int param_2)
 {
 }
 
@@ -34,7 +34,7 @@ SOCAudio::~SOCAudio()
 }
 
 // STUB: SADX 0x00426350
-bool SOCAudio::FUN_00426350(const std::string& param_1)
+bool SOCAudio::Open(const std::string& param_1)
 {
 	return false;
 }

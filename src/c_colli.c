@@ -14,11 +14,8 @@ extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
 int FUN_004d97c0(struct taskwk *param_1, int param_2);
 void FUN_004d9850(int param_1);
-int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 void FUN_004d0b30(struct taskwk *param_1, struct taskwk *param_2, float param_3);
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2);
-int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
-int FUN_004d9d50(struct taskwk *param_1, void *param_2, unsigned char param_3);
 extern float _nj_unit_matrix_[16];
 void FUN_004da910(int param_1);
 extern int DAT_05b9e4c0;

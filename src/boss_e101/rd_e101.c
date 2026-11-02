@@ -1,13 +1,13 @@
 #include "decls.h"
 
 // GLOBAL: SADX 0x02bc0a18
-struct NJS_POINT3 *DAT_02bc0a18[1];
+struct NJS_POINT3 *pScale_E101[1];
 // GLOBAL: SADX 0x02bc0a1c
-struct NJS_POINT2 *DAT_02bc0a1c[1];
+struct NJS_POINT2 *pClipSky_E101[1];
 // GLOBAL: SADX 0x02bc0a20
-struct NJS_POINT2 *DAT_02bc0a20[1];
+struct NJS_POINT2 *pClipMap_E101[1];
 // GLOBAL: SADX 0x02bc0a24
-struct NJS_ARGB *DAT_02bc0a24[1];
+struct NJS_ARGB *pFogTable_E101[1];
 extern struct NJS_ARGB DAT_05b3e040;
 extern struct NJS_POINT2 DAT_05b3e050;
 extern struct NJS_POINT3 DAT_05b3e074;
@@ -29,11 +29,11 @@ static void RdBossEnd(struct task *tp)
 static void RdBossInit(struct task *tp)
 {
 	unsigned int local_8 = (unsigned char)DAT_05b9d744 * 4;
-	DAT_05b3e040 = (*(struct NJS_ARGB **)((char *)DAT_02bc0a24 + local_8))[DAT_05b3e0d0];
-	DAT_05b3e080 = (*(struct NJS_POINT2 **)((char *)DAT_02bc0a1c + local_8))[DAT_05b3e0d0];
+	DAT_05b3e040 = (*(struct NJS_ARGB **)((char *)pFogTable_E101 + local_8))[DAT_05b3e0d0];
+	DAT_05b3e080 = (*(struct NJS_POINT2 **)((char *)pClipSky_E101 + local_8))[DAT_05b3e0d0];
 	DAT_05b3e080.y -= 1000.0;
-	DAT_05b3e050 = (*(struct NJS_POINT2 **)((char *)DAT_02bc0a20 + local_8))[DAT_05b3e0d0];
-	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)DAT_02bc0a18 + local_8))[DAT_05b3e0d0];
+	DAT_05b3e050 = (*(struct NJS_POINT2 **)((char *)pClipMap_E101 + local_8))[DAT_05b3e0d0];
+	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_E101 + local_8))[DAT_05b3e0d0];
 }
 
 // FUNCTION: SADX 0x00705210

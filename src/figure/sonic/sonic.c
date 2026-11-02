@@ -17,7 +17,6 @@ extern void *DAT_06276b1c;
 void FUN_0054f960(struct task *param_1);
 int FUN_0054f7b0(struct playerwk *param_1, int param_2);
 extern unsigned char DAT_05bb00a9;
-int FUN_0054f7b0(struct playerwk *param_1, unsigned short param_2);
 int FUN_0054f920(int param_1);
 extern struct taskwk *DAT_05baf368[8];
 

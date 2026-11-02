@@ -923,7 +923,7 @@
   },
   {
    "address": "0x0040e170",
-   "name": "FUN_0040e170_1::FUN_0040e170",
+   "name": "FUN_0040e170_1::GetTextSize",
    "accuracy": 0.038338658146964855,
    "effective": false,
    "stub": true,
@@ -1435,7 +1435,7 @@
   },
   {
    "address": "0x004199b0",
-   "name": "SOCRender::FUN_004199b0",
+   "name": "SOCRender::SetSpecularEnable",
    "accuracy": 0.09090909090909091,
    "effective": false,
    "stub": true,
@@ -1659,7 +1659,7 @@
   },
   {
    "address": "0x0041b2d0",
-   "name": "SOCRender::FUN_0041b2d0",
+   "name": "SOCRender::UIShaderSet",
    "accuracy": 0.078125,
    "effective": false,
    "stub": true,
@@ -2715,7 +2715,7 @@
   },
   {
    "address": "0x00425a50",
-   "name": "SOCAudio::FUN_00425a50",
+   "name": "SOCAudio::Stop",
    "accuracy": 0.25,
    "effective": false,
    "stub": true,
@@ -2747,7 +2747,7 @@
   },
   {
    "address": "0x00425d70",
-   "name": "SOCAudio::FUN_00425d70",
+   "name": "SOCAudio::Play",
    "accuracy": 0.08,
    "effective": false,
    "stub": true,
@@ -2763,7 +2763,7 @@
   },
   {
    "address": "0x00426350",
-   "name": "SOCAudio::FUN_00426350",
+   "name": "SOCAudio::Open",
    "accuracy": 0.041666666666666664,
    "effective": false,
    "stub": true,
@@ -3859,7 +3859,7 @@
   },
   {
    "address": "0x00433c20",
-   "name": "SOCFile::FUN_00433c20",
+   "name": "SOCFile::Open",
    "accuracy": 0.0821917808219178,
    "effective": false,
    "stub": true,
@@ -85300,7 +85300,7 @@
   },
   {
    "address": "0x00921da0",
-   "name": "Magic::RenderCore::VertexBuffer::FUN_00921da0",
+   "name": "Magic::RenderCore::VertexBuffer::Unlock",
    "accuracy": 0.08333333333333333,
    "effective": false,
    "stub": true,
@@ -85308,7 +85308,7 @@
   },
   {
    "address": "0x00921dd0",
-   "name": "Magic::RenderCore::VertexBuffer::FUN_00921dd0",
+   "name": "Magic::RenderCore::VertexBuffer::Lock",
    "accuracy": 0.2,
    "effective": false,
    "stub": true,
@@ -85316,7 +85316,7 @@
   },
   {
    "address": "0x00921f80",
-   "name": "Magic::RenderCore::Material::FUN_00921f80",
+   "name": "Magic::RenderCore::Material::CommitDeviceShader",
    "accuracy": 0.10526315789473684,
    "effective": false,
    "stub": true,
@@ -86532,7 +86532,7 @@
   },
   {
    "address": "0x00928810",
-   "name": "Magic::Base::File::FUN_00928810",
+   "name": "Magic::Base::File::Open",
    "accuracy": 0.09523809523809523,
    "effective": false,
    "stub": true,
@@ -95028,28 +95028,28 @@
   },
   {
    "address": "0x02bc0a18",
-   "name": "DAT_02bc0a18",
+   "name": "pScale_E101",
    "size": 4,
    "match": false,
    "library": false
   },
   {
    "address": "0x02bc0a1c",
-   "name": "DAT_02bc0a1c",
+   "name": "pClipSky_E101",
    "size": 4,
    "match": false,
    "library": false
   },
   {
    "address": "0x02bc0a20",
-   "name": "DAT_02bc0a20",
+   "name": "pClipMap_E101",
    "size": 4,
    "match": false,
    "library": false
   },
   {
    "address": "0x02bc0a24",
-   "name": "DAT_02bc0a24",
+   "name": "pFogTable_E101",
    "size": 4,
    "match": false,
    "library": false
@@ -101350,5 +101350,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5d4bc1c4bb948ccad9fcb08d528f1f9a20d332c7736683aea2e418a441e9bfe3"
+ "inputs_sha256": "ef9739d1a4ca3b9f9eb9712c503b13acb5cf2c9cfe5d91c9f2917aac9c43ce97"
 }

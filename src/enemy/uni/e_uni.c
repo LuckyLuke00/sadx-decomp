@@ -10,7 +10,6 @@ extern struct obj object_uni_c_unibody_unibody[1];
 void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005cd0c0(struct task *param_1, struct motionwk *param_2);
 void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
-void FUN_005ca420(struct task *param_1);
 extern struct obj object_uni_a_unibody_unibody[];
 extern struct NJS_TEXLIST texlist_uni_a_unibody;
 void CheckParentDeath(struct task *tp, struct enemywk *ewp);

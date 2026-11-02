@@ -35,7 +35,7 @@ int SOCGetInputLayout(int param_1)
 }
 
 // STUB: SADX 0x004199b0
-void SOCRender::FUN_004199b0(bool param_1)
+void SOCRender::SetSpecularEnable(bool param_1)
 {
 }
 
@@ -155,13 +155,13 @@ void RenderTexture(int param_1, int param_2, int param_3, int param_4, float par
 		{local_8 + var1, local_c, param_5, 1.0f, (unsigned long)param_11, param_9, param_8}
 	};
 	void *var3 = 0;
-	if (DAT_05ab4284->FUN_00921dd0(&var3, DAT_05ab4288, 112, 0))
+	if (DAT_05ab4284->Lock(&var3, DAT_05ab4288, 112, 0))
 	{
 		memcpy(var3, local_7c, sizeof(local_7c));
-		DAT_05ab4284->FUN_00921da0();
+		DAT_05ab4284->Unlock();
 	}
-	((SOCRender *)DAT_05ab39ac)->FUN_0041b2d0();
-	DAT_05ab4278->FUN_00921f80();
+	((SOCRender *)DAT_05ab39ac)->UIShaderSet();
+	DAT_05ab4278->CommitDeviceShader();
 	((void (__thiscall *)(void *, int, Magic::RenderCore::VertexBuffer *, unsigned int, int, int, int, int))(*(void ***)DAT_05ab8060)[14])(DAT_05ab8060, DAT_05ab421c, DAT_05ab4284, DAT_05ab4288 / 28, 4, 0, 0, 0);
 	DAT_05ab4288 += 112;
 	if (DAT_05ab4288 >= 112000)
@@ -218,7 +218,7 @@ void __fastcall FUN_0041d130(void *param_1, void *param_2, int param_3)
 // FUNCTION: SADX 0x0041dc60
 void GetTextSize(const wchar_t *param_1, int& param_2, int& param_3)
 {
-	DAT_05ab4280->FUN_0040e170(param_1, FUN_0040e170_0(), param_2, param_3);
+	DAT_05ab4280->GetTextSize(param_1, FUN_0040e170_0(), param_2, param_3);
 	param_2 = (int)(param_2 * ScreenRaitoX);
 	param_3 = (int)(param_3 * ScreenRaitoY);
 }

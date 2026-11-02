@@ -25,7 +25,7 @@ bool SOCFileStream::ReadFile(const std::string& param_1)
 	std::string local_30 = FUN_0092cd20(param_1);
 	Magic::Base::File local_50;
 	local_50.FUN_00928790();
-	if (!local_50.FUN_00928810(local_30, 1))
+	if (!local_50.Open(local_30, 1))
 	{
 		local_50.FUN_00928740();
 		return false;

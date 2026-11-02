@@ -10,14 +10,14 @@ void CollisionSceneChanger(struct task *tp)
 	float local_10;
 	float local_14q;
 	// GLOBAL: SADX 0x04c7bda0
-	static struct CCL_INFO DAT_04c7bda0[1] =
+	static struct CCL_INFO object_c_info[1] =
 	{
 		{ 0, 3, 0xb0, 0, 0, { 0.0f, 0.0f, 0.0f }, 5.0f, 5.0f, 5.0f, 0.0f, 0, 0, 0 }
 	};
 
 	if (FUN_004c39c0(tp) == 0)
 	{
-		CCL_Init(tp, DAT_04c7bda0, 1, 6);
+		CCL_Init(tp, object_c_info, 1, 6);
 		local_cj = (local_8g->scl.x += 1.0) * 5.0;
 		local_10 = (local_8g->scl.y += 1.0) * 5.0;
 		local_14q = (local_8g->scl.z += 1.0) * 5.0;
