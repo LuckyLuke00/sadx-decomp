@@ -2728,6 +2728,7 @@ void execChaos7Object(struct task *tp);
 void destChaos7Float(struct task *);
 void execChaos7Road(struct task *tp);
 void execChaos7Building(struct task *tp);
+void DisplayTenT(struct task *tp);
 void callbackTgt(struct obj *obj);
 void breakLightning(struct task *pTask);
 void SetE101();

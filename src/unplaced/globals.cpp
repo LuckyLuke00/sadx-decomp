@@ -2336,6 +2336,27 @@ struct NJS_POINT3 DAT_02b11480;
 // GLOBAL: SADX 0x02b1148c
 struct NJS_ARGB DAT_02b1148c;
 
+// GLOBAL: SADX 0x02b76954
+struct obj object_c7_dead01_dead01[1];
+
+// GLOBAL: SADX 0x02b76dbc
+struct obj object_c7_dead02_dead02[1];
+
+// GLOBAL: SADX 0x02b78190
+struct obj object_c7_dead03_dead03[1];
+
+// GLOBAL: SADX 0x02b783ec
+struct NJS_ACTION action_c7_dead01[1];
+
+// GLOBAL: SADX 0x02b7861c
+struct NJS_ACTION action_c7_dead02[1];
+
+// GLOBAL: SADX 0x02b7884c
+struct NJS_ACTION action_c7_dead03[1];
+
+// GLOBAL: SADX 0x02b789a0
+struct NJS_TEXLIST texlist_chaos7_0dead_ptchg;
+
 // GLOBAL: SADX 0x02b7ed54
 struct NJS_TEXANIM anim_Chaos7Damage[1];
 
@@ -2353,6 +2374,9 @@ struct NJS_ARGB DAT_02b7ee4c;
 
 // GLOBAL: SADX 0x02b7ee5c
 struct NJS_ARGB DAT_02b7ee5c;
+
+// GLOBAL: SADX 0x02bc02d8
+struct NJS_SPRITE sprite_c7tt;
 
 // GLOBAL: SADX 0x02bc0bd8
 struct NJS_TEXLIST texlist_e101;

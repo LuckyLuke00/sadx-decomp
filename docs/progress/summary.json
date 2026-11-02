@@ -49573,9 +49573,9 @@
   {
    "address": "0x00700f90",
    "name": "Display1",
-   "accuracy": 0.03125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49597,9 +49597,9 @@
   {
    "address": "0x00701130",
    "name": "Display2",
-   "accuracy": 0.03076923076923077,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49621,9 +49621,9 @@
   {
    "address": "0x007012d0",
    "name": "Display3",
-   "accuracy": 0.02631578947368421,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49965,6 +49965,14 @@
   {
    "address": "0x00703e40",
    "name": "dispChaos7Panel",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00704820",
+   "name": "DisplayTenT",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -95707,6 +95715,55 @@
    "library": false
   },
   {
+   "address": "0x02b76954",
+   "name": "object_c7_dead01_dead01",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02b76dbc",
+   "name": "object_c7_dead02_dead02",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02b78190",
+   "name": "object_c7_dead03_dead03",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02b783ec",
+   "name": "action_c7_dead01",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02b7861c",
+   "name": "action_c7_dead02",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02b7884c",
+   "name": "action_c7_dead03",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02b789a0",
+   "name": "texlist_chaos7_0dead_ptchg",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02b7ed54",
    "name": "anim_Chaos7Damage",
    "size": 20,
@@ -95745,6 +95802,13 @@
    "address": "0x02b7ee5c",
    "name": "DAT_02b7ee5c",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02bc02d8",
+   "name": "sprite_c7tt",
+   "size": 32,
    "match": false,
    "library": false
   },
@@ -102303,5 +102367,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "55ef3569937b835adc898247e8866d16b11084db5ea79c67b2f05f3422576573"
+ "inputs_sha256": "9c3eac30e3305dcc7d349ed308b88a60a0b0b4c980b87259ce79e4f9a8fbe29a"
 }

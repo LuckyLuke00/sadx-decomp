@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,041 of 16,524 game functions done (36.55%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,045 of 16,524 game functions done (36.58%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -1829,9 +1829,9 @@
 <rect x="21" y="77" width="6" height="6" fill="#ffd700"><title>0x00903000 EvChaos6Human2Water: 100%</title></rect>
 <rect x="28" y="77" width="6" height="6" fill="#ffd700"><title>0x00903020 EvChaos6Water2Human: 100%</title></rect>
 </g>
-<rect x="340" y="572" width="111" height="121" rx="3" fill="#21262d" stroke="#30363d"><title>Perfect Chaos: 58 of 164 functions done</title></rect>
+<rect x="340" y="572" width="111" height="121" rx="3" fill="#21262d" stroke="#30363d"><title>Perfect Chaos: 62 of 164 functions done</title></rect>
 <text x="343" y="586" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Perfect Chaos</text>
-<text x="343" y="601" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">9%</tspan></text>
+<text x="343" y="601" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">11%</tspan></text>
 <g transform="translate(343,605)">
 <rect y="0" width="105" height="70" fill="url(#todo)"/>
 <rect y="70" width="98" height="7" fill="url(#todo)"/>
@@ -1858,8 +1858,11 @@
 <rect x="35" y="28" width="6" height="6" fill="#ffd700"><title>0x006ff130 objDisplayBT: 100%</title></rect>
 <rect x="49" y="28" width="6" height="6" fill="#ffd700"><title>0x006ff2f0 Chaos7BreathTame: 100%</title></rect>
 <rect x="98" y="35" width="6" height="6" fill="#ffd700"><title>0x00700f30 c7CheckTikalMessage: 100%</title></rect>
+<rect x="0" y="42" width="6" height="6" fill="#ffd700"><title>0x00700f90 Display1: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#ffd700"><title>0x00701110 Chaos7DeadEffect1: 100%</title></rect>
+<rect x="21" y="42" width="6" height="6" fill="#ffd700"><title>0x00701130 Display2: 100%</title></rect>
 <rect x="35" y="42" width="6" height="6" fill="#ffd700"><title>0x007012b0 Chaos7DeadEffect2: 100%</title></rect>
+<rect x="42" y="42" width="6" height="6" fill="#ffd700"><title>0x007012d0 Display3: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#ffd700"><title>0x007013d0 Normal3: 100%</title></rect>
 <rect x="56" y="42" width="6" height="6" fill="#ffd700"><title>0x00701480 Chaos7DeadEffect3: 100%</title></rect>
 <rect x="63" y="42" width="6" height="6" fill="#ffd700"><title>0x007014b0 Display(1): 100%</title></rect>
@@ -1891,6 +1894,7 @@
 <rect x="98" y="63" width="6" height="6" fill="#ffd700"><title>0x00703e00 ObjectChaos7BrownBld: 100%</title></rect>
 <rect x="0" y="70" width="6" height="6" fill="#ffd700"><title>0x00703e20 ObjectChaos7RedBld: 100%</title></rect>
 <rect x="7" y="70" width="6" height="6" fill="#ffd700"><title>0x00703e40 dispChaos7Panel: 100%</title></rect>
+<rect x="42" y="70" width="6" height="6" fill="#ffd700"><title>0x00704820 DisplayTenT: 100%</title></rect>
 <rect x="84" y="70" width="6" height="6" fill="#ffd700"><title>0x00903040 EvChaos7Howl1: 100%</title></rect>
 <rect x="91" y="70" width="6" height="6" fill="#ffd700"><title>0x00903060 EvChaos7Breath: 100%</title></rect>
 </g>
