@@ -61797,9 +61797,9 @@
   {
    "address": "0x00852c90",
    "name": "SwitchDisp",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -99173,6 +99173,13 @@
    "library": false
   },
   {
+   "address": "0x043ac4e4",
+   "name": "obj_sw",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x043ac538",
    "name": "c_info_switch",
    "size": 48,
@@ -102661,5 +102668,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5a078976cf496e21f7fccb4f964c1a1033d3ed7e25854125724bb1a2c9a82657"
+ "inputs_sha256": "dbef47125ca35fdfe78102662efc1e743462c42bda1d7702102b2e88453381be"
 }

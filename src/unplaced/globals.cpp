@@ -3548,6 +3548,9 @@ struct obj object_ukidai_ukidai_ukidai[1];
 // GLOBAL: SADX 0x043a5588
 struct obj object_lwobj_komorebi2_komorebi2[1];
 
+// GLOBAL: SADX 0x043ac4e4
+struct obj *obj_sw[3];
+
 // GLOBAL: SADX 0x043ac538
 struct CCL_INFO c_info_switch[1];
 
