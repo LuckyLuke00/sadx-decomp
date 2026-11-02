@@ -40,8 +40,19 @@ void ObjectALGardenDoor(struct task *tp)
 	tp->dest = ExplosionRockDestructor;
 }
 
-// STUB: SADX 0x00477280
+// FUNCTION: SADX 0x00477280
 struct task *AloG00RacegateWakuCreate(struct task *parent_tp)
 {
-	return (struct task *)0;
+	struct task *var1;
+	struct taskwk *var2;
+
+	var1 = CreateChildTask(2, ObjectALGardenDoor, parent_tp);
+	if (var1 != 0)
+	{
+		var2 = var1->twp;
+		var2->pos.x = 0.0f;
+		var2->pos.y = 0.0f;
+		var2->pos.z = -157.0f;
+	}
+	return var1;
 }

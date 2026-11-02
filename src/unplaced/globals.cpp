@@ -2375,6 +2375,9 @@ struct GHSPRITE_ANIM_TABLE animtable_wave[1];
 // GLOBAL: SADX 0x02c0f3c4
 struct NJS_TEXLIST gsAdTexlist;
 
+// GLOBAL: SADX 0x02c18838
+struct CCL_INFO colli_info[9];
+
 // GLOBAL: SADX 0x02c21248
 int *DAT_02c21248[1];
 
@@ -4766,6 +4769,9 @@ void *DAT_05b06824;
 // GLOBAL: SADX 0x05b06828
 struct task *DAT_05b06828;
 
+// GLOBAL: SADX 0x05b06830
+struct NJS_TEXNAME DAT_05b06830[1];
+
 // GLOBAL: SADX 0x05b08830
 void *DAT_05b08830;
 
@@ -4876,6 +4882,12 @@ int DAT_05b314c8;
 
 // GLOBAL: SADX 0x05b314d8
 struct task *DAT_05b314d8;
+
+// GLOBAL: SADX 0x05b32e4c
+struct NJS_POINT3 *DAT_05b32e4c;
+
+// GLOBAL: SADX 0x05b32e50
+struct NJS_POINT3 *DAT_05b32e50;
 
 // GLOBAL: SADX 0x05b32e54
 struct task *DAT_05b32e54;
@@ -8347,6 +8359,9 @@ struct al_status DAT_060ca138[8];
 
 // GLOBAL: SADX 0x060cae24
 int DAT_060cae24;
+
+// GLOBAL: SADX 0x060cae28
+int DAT_060cae28;
 
 // GLOBAL: SADX 0x060cae30
 int DAT_060cae30;

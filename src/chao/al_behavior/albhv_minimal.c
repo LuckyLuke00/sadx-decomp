@@ -52,10 +52,36 @@ long ALBHV_GoGoDanceMini(struct task *tp)
 	return (long)0;
 }
 
-// STUB: SADX 0x00455760
+// FUNCTION: SADX 0x00455760
 long ALBHV_Dosukoi(struct task *tp)
 {
-	return (long)0;
+	struct taskwk *var1;
+	int var2;
+	float var3;
+
+	var1 = tp->twp;
+	switch (*(unsigned short *)((char *)var1 + 0x1c6))
+	{
+	case 0:
+		AL_SetMotionLink(tp, 0x130);
+		var2 = rand();
+		var3 = (float)var2 * 3.0517578125e-05;
+		*(unsigned int *)((char *)var1 + 0x1d0) = (unsigned short)((int)(var3 * 121.0) + 0x78);
+		*(unsigned short *)((char *)var1 + 0x1c6) = *(unsigned short *)((char *)var1 + 0x1c6) + 1;
+		break;
+	case 1:
+		break;
+	default:
+		return 0;
+	}
+	var2 = *(int *)((char *)var1 + 0x1d0);
+	*(int *)((char *)var1 + 0x1d0) = var2 - 1;
+	if (var2 <= 0)
+	{
+		return 1;
+	}
+	AL_ForwardSpd(tp, 0.05f);
+	return 0;
 }
 
 // STUB: SADX 0x00455980

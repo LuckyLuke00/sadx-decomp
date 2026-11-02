@@ -451,11 +451,6 @@ void AlMsgWinClear(struct SAlMsgWin *self)
 {
 }
 
-// STUB: SADX 0x0044ead0
-void AlgKinderOrthoQuadDraw(const struct SAlgKinderOrthoQuad *q, unsigned long color)
-{
-}
-
 // STUB: SADX 0x0044fe10
 long AL_ShapeInit(struct task *tp)
 {
@@ -702,18 +697,6 @@ long ALBHV_Run2(struct task *tp)
 // STUB: SADX 0x0046c400
 void ALO_NestExecutor(struct task *tp)
 {
-}
-
-// STUB: SADX 0x0046c5c0
-long ALO_GetTVWatchPos(struct NJS_POINT3 *pPos)
-{
-	return (long)0;
-}
-
-// STUB: SADX 0x0046c680
-long ALO_GetRadicaseListenPos(struct NJS_POINT3 *pPos)
-{
-	return (long)0;
 }
 
 // STUB: SADX 0x0046cfb0
@@ -2800,8 +2783,13 @@ void DrawSaltWater3D_39()
 {
 }
 
-// STUB: SADX 0x00714b50
-void ALO_OdekakeMachine(struct task *tp)
+// STUB: SADX 0x00714140
+void ALO_OdekakeMachineExecutor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007149d0
+void ALO_OdekakeMachineDisplayerNeut(struct task *tp)
 {
 }
 

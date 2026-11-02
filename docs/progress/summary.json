@@ -6244,9 +6244,9 @@
   {
    "address": "0x00442540",
    "name": "AL_InitTexLoad",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6364,6 +6364,14 @@
   {
    "address": "0x00443ad0",
    "name": "ALO_XYButtonShow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00443af0",
+   "name": "AL_InitRaceInfo",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -6492,9 +6500,9 @@
   {
    "address": "0x00443c90",
    "name": "AL_CourseClearedLevelUp",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6636,9 +6644,9 @@
   {
    "address": "0x0044a260",
    "name": "AL_GeneCreatePlane",
-   "accuracy": 0.03571428571428571,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -6892,9 +6900,9 @@
   {
    "address": "0x0044c900",
    "name": "AlMsgWarnDelete",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7260,9 +7268,9 @@
   {
    "address": "0x0044ec00",
    "name": "AlgKinderOrthoQuadDrawArrayOffset",
-   "accuracy": 0.041666666666666664,
+   "accuracy": 0.7524752475247525,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7364,7 +7372,7 @@
   {
    "address": "0x00450310",
    "name": "AL_MatSetChaoColor",
-   "accuracy": 0.05714285714285714,
+   "accuracy": 0.05263157894736842,
    "effective": false,
    "stub": true,
    "library": false
@@ -7404,9 +7412,9 @@
   {
    "address": "0x004506e0",
    "name": "AL_MaterialInit",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7732,9 +7740,9 @@
   {
    "address": "0x004516f0",
    "name": "AL_FieldDisplayer",
-   "accuracy": 0.044444444444444446,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7884,9 +7892,9 @@
   {
    "address": "0x00454b10",
    "name": "BookExecutor",
-   "accuracy": 0.022727272727272728,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -7956,9 +7964,9 @@
   {
    "address": "0x00455760",
    "name": "ALBHV_Dosukoi",
-   "accuracy": 0.06557377049180328,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9180,17 +9188,17 @@
   {
    "address": "0x0046c5c0",
    "name": "ALO_GetTVWatchPos",
-   "accuracy": 0.034482758620689655,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0046c680",
    "name": "ALO_GetRadicaseListenPos",
-   "accuracy": 0.034482758620689655,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -10020,9 +10028,9 @@
   {
    "address": "0x00477280",
    "name": "AloG00RacegateWakuCreate",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50597,9 +50605,9 @@
   {
    "address": "0x007119c0",
    "name": "ALK_SelectWindowExec",
-   "accuracy": 0.03125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50805,9 +50813,9 @@
   {
    "address": "0x00713ab0",
    "name": "AL_SeqGetPlayerId",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -50843,6 +50851,14 @@
    "library": false
   },
   {
+   "address": "0x00714140",
+   "name": "ALO_OdekakeMachineExecutor",
+   "accuracy": 0.010050251256281407,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x007149a0",
    "name": "ALO_OdekakeMachineDestructor",
    "accuracy": 1.0,
@@ -50851,11 +50867,19 @@
    "library": false
   },
   {
-   "address": "0x00714b50",
-   "name": "ALO_OdekakeMachine",
-   "accuracy": 0.07407407407407407,
+   "address": "0x007149d0",
+   "name": "ALO_OdekakeMachineDisplayerNeut",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00714b50",
+   "name": "ALO_OdekakeMachine",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -95419,6 +95443,13 @@
    "library": false
   },
   {
+   "address": "0x02c18838",
+   "name": "colli_info",
+   "size": 432,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02c19734",
    "name": "__ev0176",
    "size": 8,
@@ -101588,5 +101619,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "cc9cc82efb9bb52338d9d822880b166f822388ade0c18eb8e8f60f833c07dfc1"
+ "inputs_sha256": "a1e64221be80fb44853d869aac6c90e5bb0b31e347774802ebe9077bf012a1f7"
 }
