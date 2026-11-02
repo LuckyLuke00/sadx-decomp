@@ -56987,6 +56987,14 @@
    "library": false
   },
   {
+   "address": "0x00800130",
+   "name": "ObjectBeachYasi3",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008009d0",
    "name": "FUN_008009d0",
    "accuracy": 1.0,
@@ -97302,6 +97310,13 @@
    "library": false
   },
   {
+   "address": "0x03a0ca38",
+   "name": "object_c_info",
+   "size": 192,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03a0cb98",
    "name": "hasi_a0_info",
    "size": 48,
@@ -102638,5 +102653,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c059bde7f1de66e08a49afcdd182c1d6f4cfd09efce8ebb8e65c4a222172444f"
+ "inputs_sha256": "927433c406cfc5bb6557cad905f0ce34457f0eb459820e41a8251093465f189c"
 }
