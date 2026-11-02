@@ -1388,6 +1388,7 @@ extern struct CCL_INFO cinfo_root[];
 extern struct CCL_INFO standlight_colli_info[];
 extern struct CCL_INFO uptarget_colli_info[1];
 extern struct obj *DAT_04a08338;
+extern struct obj object_kanban_eggkanban_eggkanban[];
 extern struct NJS_ACTION action_hallgate[];
 extern struct fe_dynamicswk default_dynamicswk;
 extern struct NJS_POINT3 *pScale_Stg12[];

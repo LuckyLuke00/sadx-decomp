@@ -4154,6 +4154,9 @@ struct CCL_INFO uptarget_colli_info[1];
 // GLOBAL: SADX 0x04a08338
 struct obj *DAT_04a08338;
 
+// GLOBAL: SADX 0x04a09554
+struct obj object_kanban_eggkanban_eggkanban[1];
+
 // GLOBAL: SADX 0x04a22560
 struct NJS_ACTION action_hallgate[1];
 
