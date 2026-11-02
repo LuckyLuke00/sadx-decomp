@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,033 of 16,524 game functions done (36.51%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,037 of 16,524 game functions done (36.53%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -11,7 +11,7 @@
 <polygon points="598,1184.6 601.8,1184.6 604,1191.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="606.2,1184.6 610,1184.6 604,1191.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="614" y="1191" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Characters <tspan font-weight="400" fill="#8b949e">5%</tspan></text>
+<text x="614" y="1191" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Characters <tspan font-weight="400" fill="#8b949e">6%</tspan></text>
 <rect x="683" y="1199" width="129" height="86" rx="3" fill="#21262d" stroke="#30363d"><title>Sonic: 56 of 120 functions done</title></rect>
 <text x="686" y="1213" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sonic <tspan font-weight="400" fill="#8b949e">6%</tspan></text>
 <g transform="translate(686,1217)">
@@ -177,11 +177,12 @@
 <rect x="42" y="42" width="6" height="6" fill="#ffd700"><title>0x005d6c10 AmyEffectHammerWaveColor: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#ffd700"><title>0x005d6cf0 AmyEffectHammerWaveColorDisplayer: 100%</title></rect>
 </g>
-<rect x="599" y="1199" width="82" height="163" rx="3" fill="#21262d" stroke="#30363d"><title>Big: 51 of 176 functions done</title></rect>
+<rect x="599" y="1199" width="82" height="163" rx="3" fill="#21262d" stroke="#30363d"><title>Big: 55 of 176 functions done</title></rect>
 <text x="602" y="1213" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Big <tspan font-weight="400" fill="#8b949e">6%</tspan></text>
 <g transform="translate(602,1217)">
 <rect y="0" width="77" height="112" fill="url(#todo)"/>
 <rect x="21" y="0" width="6" height="6" fill="#ffd700"><title>0x00508980 BigDestruct: 100%</title></rect>
+<rect x="0" y="7" width="6" height="6" fill="#ffd700"><title>0x005098c0 BigCheckWater: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x00509a00 BigCheckAtack_W: 100%</title></rect>
 <rect x="42" y="7" width="6" height="6" fill="#ffd700"><title>0x0050aa30 BigCheckBeInTheWater: 100%</title></rect>
 <rect x="56" y="7" width="6" height="6" fill="#ffd700"><title>0x0050aaf0 BigCheckBeInTheAir: 100%</title></rect>
@@ -190,6 +191,7 @@
 <rect x="56" y="14" width="6" height="6" fill="#ffd700"><title>0x0050bd30 FUN_0050bd30: 100%</title></rect>
 <rect x="70" y="14" width="6" height="6" fill="#ffd700"><title>0x0050c310 BigEarsSwingEnd: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#ffd700"><title>0x0050c330 FUN_0050c330: 100%</title></rect>
+<rect x="28" y="21" width="6" height="6" fill="#ffd700"><title>0x0050cb50 ChkFishingThrowNow: 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#ffd700"><title>0x0050cbb0 FUN_0050cbb0: 100%</title></rect>
 <rect x="56" y="21" width="6" height="6" fill="#ffd700"><title>0x0050cd80 bigActMissSet: 100%</title></rect>
 <rect x="63" y="21" width="6" height="6" fill="#ffd700"><title>0x0050ce30 BigCameraSetFishingCamera: 100%</title></rect>
@@ -205,9 +207,11 @@
 <rect x="14" y="42" width="6" height="6" fill="#ffd700"><title>0x0058e9d0 setLureSpd_D: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#ffd700"><title>0x0058f980 FUN_0058f980: 100%</title></rect>
 <rect x="70" y="42" width="6" height="6" fill="#ffd700"><title>0x0058fcb0 setLureSetup: 100%</title></rect>
+<rect x="7" y="49" width="6" height="6" fill="#ffd700"><title>0x0058ff60 FUN_0058ff60: 100%</title></rect>
 <rect x="14" y="49" width="6" height="6" fill="#ffd700"><title>0x0058ffa0 FUN_0058ffa0: 100%</title></rect>
 <rect x="56" y="49" width="6" height="6" fill="#ffd700"><title>0x00591070 moveFishingRotY: 100%</title></rect>
 <rect x="70" y="49" width="6" height="6" fill="#ffd700"><title>0x00591260 CalcHookPos: 100%</title></rect>
+<rect x="0" y="56" width="6" height="6" fill="#ffd700"><title>0x00591390 CalcLinePos: 100%</title></rect>
 <rect x="7" y="56" width="6" height="6" fill="#ffd700"><title>0x005914c0 FUN_005914c0: 100%</title></rect>
 <rect x="35" y="56" width="6" height="6" fill="#ffd700"><title>0x00591910 setCatchCameraPos: 100%</title></rect>
 <rect x="56" y="56" width="6" height="6" fill="#ffd700"><title>0x00591d30 FUN_00591d30: 100%</title></rect>

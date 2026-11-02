@@ -22508,9 +22508,9 @@
   {
    "address": "0x005098c0",
    "name": "BigCheckWater",
-   "accuracy": 0.18867924528301888,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -22676,9 +22676,9 @@
   {
    "address": "0x0050cb50",
    "name": "ChkFishingThrowNow",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29709,9 +29709,9 @@
   {
    "address": "0x0058ff60",
    "name": "FUN_0058ff60",
-   "accuracy": 0.3448275862068966,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29757,9 +29757,9 @@
   {
    "address": "0x00591390",
    "name": "CalcLinePos",
-   "accuracy": 0.0761904761904762,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -102250,5 +102250,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0a4bacbd4d51b9333eab7e0827b7cd779deb0f893364abeaca240fecf08052bc"
+ "inputs_sha256": "5b6fe809b1057de56db63449875d50ee5177794c63dbc7b615386eb9cbfc10ad"
 }

@@ -62,10 +62,25 @@ long BigCheckJump(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 	return (long)0;
 }
 
-// STUB: SADX 0x005098c0
+// FUNCTION: SADX 0x005098c0
 long BigCheckWater(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	struct NJS_POINT3 v;
+
+	if ((*(long *)((char *)pwp + 0x1e4) & 0x400002) != 0)
+	{
+		v.z = 0.0f;
+		v.x = v.z;
+		v.y = *(float *)((char *)pwp + 0x118);
+		PConvertVector_P2G(twp, &v);
+		njAddVector((NJS_VECTOR *)&v, (NJS_VECTOR *)&twp->pos);
+		if (*(float *)((char *)pwp + 0x1ec) < v.y)
+		{
+			return 1;
+		}
+		return 0;
+	}
+	return 1;
 }
 
 // STUB: SADX 0x00509950
@@ -270,10 +285,19 @@ void BigStareAt(struct pheadeyewk *phewp)
 {
 }
 
-// STUB: SADX 0x0050cb50
+// FUNCTION: SADX 0x0050cb50
 long ChkFishingThrowNow(struct task *tp)
 {
-	return (long)0;
+	struct taskwk *local_cg;
+	char *local_8g;
+
+	local_cg = tp->twp;
+	local_8g = (char *)DAT_05baf368[0];
+	if (((*local_8g >= ' ') && (*local_8g <= '%')) || ((*local_8g >= '(') && (*local_8g <= '-')))
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0050cbb0
