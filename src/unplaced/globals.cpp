@@ -3917,6 +3917,9 @@ struct obj object_csn_t_light_a_t_light_a[1];
 // GLOBAL: SADX 0x047f2db8
 struct obj object_csn_t_light_b_t_light_b[1];
 
+// GLOBAL: SADX 0x047f30cc
+struct obj object_cas_rt_lht_rt_lht[1];
+
 // GLOBAL: SADX 0x047f355c
 struct obj object_cas_gb_lht_gb_lht[1];
 
