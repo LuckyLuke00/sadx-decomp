@@ -32973,9 +32973,9 @@
   {
    "address": "0x005ae4f0",
    "name": "ObjectMizuiki",
-   "accuracy": 0.13793103448275862,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32992,6 +32992,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005ae640",
+   "name": "AwaExec",
+   "accuracy": 0.012924071082390954,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -93349,6 +93357,13 @@
    "library": false
   },
   {
+   "address": "0x0263cf50",
+   "name": "mizuikiinfos",
+   "size": 1080,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0263d680",
    "name": "sprite_hitodama",
    "size": 64,
@@ -102675,5 +102690,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "50cb34d73c45ecbe830c7eccbaa162ac9ef74101c4892bbbb28645d43363ecfa"
+ "inputs_sha256": "325f2e601abb6899b7bde804a2fe3e456d3430aef641cfafd0bfb862a48c69ae"
 }

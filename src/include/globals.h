@@ -477,6 +477,7 @@ extern const struct sMRacePath *PPT_MRaceEachStage[10];
 extern const long *MPT_MRaceEachStage[10];
 extern struct CCL_INFO CLI_MobleDamageCsn[];
 extern struct CCL_INFO relbox_switch_colli_info[1];
+extern struct MIZUIKIINFO mizuikiinfos[15];
 extern struct NJS_SPRITE sprite_hitodama[];
 extern int DAT_0263d6f0;
 extern struct CCL_INFO DAT_0263d6f4;

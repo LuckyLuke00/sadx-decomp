@@ -1421,6 +1421,9 @@ struct CCL_INFO CLI_MobleDamageCsn[1];
 // GLOBAL: SADX 0x0263cba8
 struct CCL_INFO relbox_switch_colli_info[1];
 
+// GLOBAL: SADX 0x0263cf50
+struct MIZUIKIINFO mizuikiinfos[15];
+
 // GLOBAL: SADX 0x0263d680
 struct NJS_SPRITE sprite_hitodama[2];
 
