@@ -48,6 +48,7 @@ Standard library only.
 
 import collections
 import csv
+import itertools
 import re
 from pathlib import Path
 
@@ -179,6 +180,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     local_funcs = collections.defaultdict(set)
     local_vars = collections.defaultdict(set)
     own_decls = set()  # (name, declaration) pairs from this tree's files, not the context's
+    free_decls = collections.defaultdict(set)  # name: (file, declaration) of this tree's file-scope function ones
     own_copies = {}  # file: the names of the static functions it defines with no annotation
     file_tokens = {}
     for rel, text in sources.items():
@@ -203,6 +205,8 @@ def write(context: Path | None, tables: Path | None) -> int:
         for name, decl in lf:
             local_funcs[name].add(decl)
             own_decls.add((name, decl))
+            if f"::{name}" not in decl:
+                free_decls[name].add((rel, decl))
         for name, decl in lv:
             local_vars[name].add(decl)
             own_decls.add((name, decl))
@@ -240,9 +244,10 @@ def write(context: Path | None, tables: Path | None) -> int:
         theirs = [f"{context_decls[(name, same[0])]} declares it `{same[0]}`" for same in ways.values()
                   if not any((name, o) in own_decls for o in same)]
         new = [same for same in ways.values() if not any((name, o) in context_decls for o in same)]
+        firsts = [same[0] for same in ways.values()]
         if theirs and new:
             fatal.append(f"{name}: {', '.join(theirs)} in the context tree. Declare it that way too.")
-        else:
+        elif not all(names.same_declaration(a, b) for a, b in itertools.combinations(firsts, 2)):
             shown = " | ".join(same[0] for same in ways.values())
             problems.append(f"{name}: sources declare it in {len(ways)} ways: {shown}")
 
@@ -292,8 +297,18 @@ def write(context: Path | None, tables: Path | None) -> int:
                 used_funcs.add(a)
                 library_name = runtime.get(a, "")  # a library function such as memset: the tables may not name it
                 name = library_name if re.fullmatch(r"[A-Za-z_]\w*", library_name) else funcs[a]["name"]
-                if name != tok:
-                    problems.append(f"{tok} has the name {name}: use that")
+                member = names.member_name(name)
+                if member is None:
+                    if name != tok:
+                        problems.append(f"{tok} has the name {name}: use that")
+                    continue
+                written, full = member
+                if written != tok:
+                    users_of = sorted(rel for rel, found in file_tokens.items() if tok in found)
+                    problems.append(f"{tok} is {full}: write {written} in {', '.join(users_of)}")
+                for rel, decl in sorted(free_decls.get(tok, ())):
+                    problems.append(f"{rel}: `{decl}` declares {tok} outside {full.rsplit('::', 1)[0]}: "
+                                    "remove that declaration")
     decls, stubs = {}, {}
     for a in sorted(used_funcs):
         row = funcs[a]

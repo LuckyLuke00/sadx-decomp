@@ -70,11 +70,14 @@ def run() -> int:
     failures += check_element_size()
     failures += check_tree_conflicts()
     failures += check_declaration_keys()
+    failures += check_same_declarations()
+    failures += check_member_names()
     failures += check_decls_trees()
     failures += check_static_users()
     failures += check_file_local_globals()
     failures += check_nested_globals()
     failures += check_decls_aliases()
+    failures += check_decls_members()
     failures += check_shared_global_sizes()
     failures += check_extern_of()
     failures += check_reached_types()
@@ -366,6 +369,31 @@ def check_declaration_keys() -> list[str]:
             for a, b, same in cases if (names.declaration_key(a) == names.declaration_key(b)) != same]
 
 
+def check_same_declarations() -> list[str]:
+    """Two declarations of one array declare the same thing when one leaves a bound out or both give it the same
+    value, also in another base. Two bounds of other values, a bound that is not a number or another type do not."""
+    cases = [("char x[1]", "extern char x[]", True), ("char x[0x100]", "char x[256]", True),
+             ("char x[0x2b * 4]", "char x[]", True), ("int x[2][3]", "int x[][3]", True),
+             ("char x[1]", "char x[5]", False), ("char x[N]", "char x[4]", False), ("char x[2]", "int x[2]", False),
+             ("int x[2][3]", "int x[2][4]", False)]
+    return [f"same_declaration reads `{a}` and `{b}` {'different' if same else 'the same'}"
+            for a, b, same in cases if names.same_declaration(a, b) != same]
+
+
+def check_member_names() -> list[str]:
+    """A table's name inside a class or namespace gives the name a source writes and the full name, from a plain
+    or a decorated name. A name outside any class, and a decorated constructor or template, give none."""
+    cases = [("SOCController::FUN_004321e0", ("FUN_004321e0", "SOCController::FUN_004321e0")),
+             ("Magic::Base::File::Open", ("Open", "Magic::Base::File::Open")),
+             ("?Lock@VertexBuffer@RenderCore@Magic@@QAA_NPAPAXHHH@Z",
+              ("Lock", "Magic::RenderCore::VertexBuffer::Lock")),
+             ("?Stop@SOCAudio@@QAAXXZ", ("Stop", "SOCAudio::Stop")),
+             ("FUN_00401000", None), ("memset", None), ("??0SOCAudio@@QAA@XZ", None),
+             ("?Get@?$Singleton@VSOCInput@@@Base@Magic@@SAPAVSOCInput@@XZ", None)]
+    return [f"member_name gives {names.member_name(name)} for {name}, not {wanted}"
+            for name, wanted in cases if names.member_name(name) != wanted]
+
+
 def check_decls_trees() -> list[str]:
     """decls on throwaway trees. A static function here and a global one of the same name in the context share a
     name once the context holds both, also when no file here uses the context's, and so do a global one here and a
@@ -446,7 +474,7 @@ def check_decls_trees() -> list[str]:
               {"src/y.c": "void DispX(int mode);\n" + disp_y_calls}, 0, "", []),
              ("an array that a context file declares with and without its size",
               {"src/x.c": sized + fill("0x00403000", "DispX")},
-              {"src/y.c": unsized + sized + fill("0x00404000", "DispY")}, 0, "sources declare it in 2 ways", None),
+              {"src/y.c": unsized + sized + fill("0x00404000", "DispY")}, 0, "", None),
              ("an array that a context file declares only without its size",
               {"src/x.c": sized + fill("0x00403000", "DispX")},
               {"src/y.c": unsized + "\n" + fill("0x00404000", "DispY")}, 1,
@@ -590,6 +618,29 @@ def check_decls_aliases() -> list[str]:
     finally:
         project.library_rows = saved
     return failures
+
+
+def check_decls_members() -> list[str]:
+    """A method that a source writes by the name the tables give it inside its class gets no notice. One the tables
+    give another name gets the full name, the name to write and the files that write it. A file-scope declaration of
+    a method's name outside its class gets a notice that names the file."""
+    target = project.game_config().target
+    files = {"src/x.cpp": "class Pad\n{\npublic:\n\tint FUN_00404000();\n\tint FUN_00405000();\n};\n\n"
+                          "int FUN_00404000();\n\n"
+                          f"// FUNCTION: {target} 0x00404000\nint Pad::FUN_00404000()\n{{\n\treturn 0;\n}}\n\n"
+                          f"// FUNCTION: {target} 0x00405000\nint Pad::FUN_00405000()\n{{\n\treturn 1;\n}}\n\n"
+                          f"// FUNCTION: {target} 0x00406000\nvoid Run(Pad *p)\n{{\n"
+                          "\tp->FUN_00404000();\n\tp->FUN_00405000();\n}\n"}
+    functions = [("0x00404000", "Pad::FUN_00404000", "G", "src/x.cpp", "o_x.obj", "int Pad::FUN_00404000(void);"),
+                 ("0x00405000", "?Read@Pad@@QAEHXZ", "G", "src/x.cpp", "o_x.obj", "int Pad::Read(void);"),
+                 ("0x00406000", "Run", "G", "src/x.cpp", "o_x.obj", "void Run(Pad *p);")]
+    wanted = ["decls: FUN_00405000 is Pad::Read: write Read in src/x.cpp",
+              "decls: src/x.cpp: `int FUN_00404000()` declares FUN_00404000 outside Pad: remove that declaration"]
+    code, output, _ = run_decls(files, {}, functions, [])
+    notes = sorted(line for line in output.splitlines() if "FUN_0040" in line)
+    if code != 0 or notes != wanted:
+        return [f"decls for methods gives exit {code}, not 0, and the notes {notes}, not {wanted}"]
+    return []
 
 
 def check_extern_of() -> list[str]:
