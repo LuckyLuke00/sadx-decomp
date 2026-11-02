@@ -8462,6 +8462,12 @@ float DAT_060c4ab0;
 // GLOBAL: SADX 0x060c4ab4
 int DAT_060c4ab4;
 
+// GLOBAL: SADX 0x060c5aa0
+struct NJS_POINT3 DAT_060c5aa0[1];
+
+// GLOBAL: SADX 0x060c5abc
+int DAT_060c5abc;
+
 // GLOBAL: SADX 0x060c5ac0
 int DAT_060c5ac0;
 

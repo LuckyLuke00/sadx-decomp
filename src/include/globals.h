@@ -2826,6 +2826,8 @@ extern int DAT_060c4aa8;
 extern int DAT_060c4aac;
 extern float DAT_060c4ab0;
 extern int DAT_060c4ab4;
+extern struct NJS_POINT3 DAT_060c5aa0[];
+extern int DAT_060c5abc;
 extern int DAT_060c5ac0;
 extern int DAT_060c5ac4;
 extern int DAT_060c5fc8;

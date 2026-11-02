@@ -50755,11 +50755,19 @@
    "library": false
   },
   {
-   "address": "0x0070fb50",
-   "name": "E101R_AfterImageMagni",
-   "accuracy": 0.06060606060606061,
+   "address": "0x0070fb00",
+   "name": "aiMagniExec",
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0070fb50",
+   "name": "E101R_AfterImageMagni",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -102608,5 +102616,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "978e90b476d06fb8b11634d7256ea7d757585002bb82fcabd9a076fbef0e210c"
+ "inputs_sha256": "2e17c1a1a94cfafc4d24158833b5d13c1f8c5dc2d3b4b8d0e34627e14a8e09cb"
 }

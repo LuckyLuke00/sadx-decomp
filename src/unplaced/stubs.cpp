@@ -2800,6 +2800,11 @@ void changere101rend()
 {
 }
 
+// STUB: SADX 0x0070fb00
+void aiMagniExec(struct task *pTask)
+{
+}
+
 // STUB: SADX 0x00710e60
 void FTaskExec(struct task *tp)
 {
