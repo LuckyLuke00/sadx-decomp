@@ -24,12 +24,13 @@ as a switch's shape), --top-k K,
 --top-p P and --min-p M (sent with every request, else the server picks), --tree-wins
 (a try that fails on a declaration the tree has in another way is built once more without
 the model's declaration of that name), --think-max N (the run ends when it would think after
-N thinking tries, or after a thinking try that repeated), --max-repeats N (the run ends after
-N tries that repeated an earlier try), --give-up (the run ends after
+N thinking tries, or after a thinking try that repeated), --think-after N (the tries after N think), --max-repeats N
+(the run ends after N tries that repeated an earlier try), --give-up (the run ends after
 GIVE_UP_STALE tries without a new best, or after STUCK_TRIES when the best is below
 GIVE_UP_BELOW%), --stop-below P (the run ends after STOP_AFTER tries when the best is below P%,
-or when nothing built), --try-tokens N,N,... (the reply limit of each try in turn, the last one for
-the tries after it, in place of one that grows with the function's size; a thinking try keeps its own),
+or when nothing built), --stop-first P (the same after the first try), --try-tokens N,N,... (the reply limit
+of each try in turn, the last one for the tries after it, in place of one that grows with the function's size;
+a thinking try keeps its own),
 --stale-built-only (a try that does not build
 does not count toward STUCK_TRIES, nor toward --give-up), --similar-examples (the first example is the matched function
 whose instructions are most like the function's), --prefix-feedback (the feedback says how many instructions
@@ -1461,9 +1462,11 @@ def file_best(scored, text, address, known, types, prefix=False):
     return Best(percent, f"```cpp\n{code}\n```", feedback(percent, output, address, known, types, prefix), text)
 
 
-def thinks(stale, config):
-    """Whether a try thinks: after STUCK_TRIES tries without a new best, when the server can."""
-    return stale >= STUCK_TRIES and bool(config["think_on"])
+def thinks(stale, tries, config, think_after=None):
+    """Whether the try after TRIES tries thinks: after STUCK_TRIES tries without a new best, or after THINK_AFTER
+    tries, when the server can."""
+    late = think_after is not None and tries >= think_after
+    return (late or stale >= STUCK_TRIES) and bool(config["think_on"])
 
 
 def reply_limit(args, config, tries, size):
@@ -1812,7 +1815,7 @@ def solve_function(args, file, address, size, transcript):
             print(f"{hexa(address)}: the file's code scores {best.percent:.2f}%", flush=True)
         tries = 0  # the tries that got a reply
         while tries < args.tries and not (best and best.percent == 100):  # a restored try can match already
-            thinking = thinks(stale, config)
+            thinking = thinks(stale, tries, config, args.think_after)
             asked = time.time()
             seed = None if args.seed is None else args.seed + tries + 1
             try:
@@ -1927,8 +1930,11 @@ def solve_function(args, file, address, size, transcript):
                 break
             if args.stop_below is not None and tries >= STOP_AFTER and best_percent < args.stop_below:
                 break
-            if args.think_max is not None and thinks(stale, config) and (totals["think_tries"] >= args.think_max
-                                                                         or (thinking and repeat is not None)):
+            if args.stop_first is not None and tries == 1 and best_percent < args.stop_first:
+                break
+            would_think = thinks(stale, tries, config, args.think_after)
+            if args.think_max is not None and would_think and (totals["think_tries"] >= args.think_max
+                                                               or (thinking and repeat is not None)):
                 break
             messages = base + next_turn(best, improved, shown, note, latest)
         if fallback and not best:
@@ -2084,10 +2090,14 @@ def parse_args():
     runs.add_argument("--tree-wins", action="store_true",
                       help="build a try once more without the declarations that clash with the tree")
     runs.add_argument("--think-max", type=int, help="end a run when it would think after N thinking tries")
+    runs.add_argument("--think-after", type=int, metavar="N",
+                      help="the tries after the first N think, not only stuck ones (0: every try)")
     runs.add_argument("--max-repeats", type=int, help="end a run after N tries that repeated an earlier try")
     runs.add_argument("--give-up", action="store_true", help="end a run that stopped getting better")
     runs.add_argument("--stop-below", type=float, metavar="P",
                       help=f"end a run after {STOP_AFTER} tries when the best is below P%% or nothing built")
+    runs.add_argument("--stop-first", type=float, metavar="P",
+                      help="end a run after the first try when it is below P%% or did not build")
     runs.add_argument("--try-tokens", type=osutil.positive_ints, metavar="N,N,...",
                       help="the reply limit of each try in turn, the last one for the tries after it")
     runs.add_argument("--stale-built-only", action="store_true",

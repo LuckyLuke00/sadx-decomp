@@ -95,7 +95,8 @@ def solved(tries, too_long, reply="no code", size=SIZE, **flags) -> Run:
     settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
-                   stop_below=None, try_tokens=None, think_max=None, similar_examples=False,
+                   stop_below=None, stop_first=None, try_tokens=None, think_max=None,
+                   think_after=None, similar_examples=False,
                    prefix_feedback=False, refuse_fakematch=False, recipes=None)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
@@ -129,11 +130,28 @@ def check_too_long() -> list[str]:
     return failures
 
 
+def check_thinks() -> list[str]:
+    """A try thinks after STUCK_TRIES stale tries, or after the --think-after N tries, and never when the server has
+    no think_on settings."""
+    think_on, failures = {"think_on": {"max_tokens": 1}}, []
+    cases = [("a fresh try", (0, 0, think_on), False), ("a stuck try", (llm.STUCK_TRIES, 3, think_on), True),
+             ("--think-after 0, try 1", (0, 0, think_on, 0), True),
+             ("--think-after 1, try 1", (0, 0, think_on, 1), False),
+             ("--think-after 1, try 2", (0, 1, think_on, 1), True),
+             ("--think-after 0, no think_on", (0, 0, {"think_on": None}, 0), False)]
+    for case, arguments, wanted in cases:
+        if llm.thinks(*arguments) != wanted:
+            failures.append(f"{case} gives {not wanted}, not {wanted}")
+    return failures
+
+
 def check_stop_below() -> list[str]:
-    """--stop-below P ends a run after STOP_AFTER tries when the best is below P%. Here no try builds, so the best
-    is 0%: P 70 stops it, P 0 does not, and a run of fewer tries ends as before."""
+    """--stop-below P ends a run after STOP_AFTER tries when the best is below P%, --stop-first P after the first
+    try. Here no try builds, so the best is 0%: P 70 or 50 stops it, P 0 does not, and a run of fewer tries ends as
+    before."""
     cases = [("--stop-below 70", 3, {"stop_below": 70.0}, llm.STOP_AFTER), ("no --stop-below", 3, {}, 3),
-             ("--stop-below 0", 3, {"stop_below": 0.0}, 3), ("--stop-below 70 --tries 1", 1, {"stop_below": 70.0}, 1)]
+             ("--stop-below 0", 3, {"stop_below": 0.0}, 3), ("--stop-below 70 --tries 1", 1, {"stop_below": 70.0}, 1),
+             ("--stop-first 50", 3, {"stop_first": 50.0}, 1), ("--stop-first 0", 3, {"stop_first": 0.0}, 3)]
     failures = []
     for case, tries, flags, wanted in cases:
         found = solved(tries, never_too_long, **flags).tries
@@ -943,7 +961,8 @@ def check_shared_context() -> list[str]:
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
-    for check in (check_too_long, check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
+    for check in (check_too_long, check_thinks,
+                  check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
                   check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fn_trick,
                   check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
