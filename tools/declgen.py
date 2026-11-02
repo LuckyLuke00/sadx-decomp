@@ -457,9 +457,11 @@ def write(context: Path | None, tables: Path | None) -> int:
             m = re.search(r"\[\s*\]", decl)
             definition = decl
             if m:
-                definition = decl[:m.start()] + "[1]" + decl[m.end():]
-                unsized.add(a)
-                problems.append(f"{name}: no file defines it, so stubs give it one element; define it with its real size")
+                count = names.table_count(decl, name, int(row["size"]), types) if row and row["size"] else None
+                definition = decl[:m.start()] + f"[{count or 1}]" + decl[m.end():]
+                if count is None:
+                    unsized.add(a)
+                    problems.append(f"{name}: no file defines it, so stubs give it one element; define it with its real size")
             gdefs[a] = (definition, "const" in decl.split(name)[0])
             continue
         if row is None:

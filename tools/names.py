@@ -412,3 +412,15 @@ def element_layout(definition: str, name: str, types: Types) -> tuple[str, int |
     counts = [int(count, 0) if re.fullmatch(r"[1-9]\d*|0[xX][0-9a-fA-F]+", count) else None
               for count in re.findall(r"\[\s*(\w*)\s*\]", tail)]
     return base, element_size(base, types), counts
+
+
+def table_count(decl: str, name: str, size: int, types: Types) -> int | None:
+    """The count of the empty first bracket of DECL, a declaration of NAME such as `int x[][4]`, that SIZE bytes give.
+    None when the size of an element or an inner count is unknown, or when SIZE is no whole number of elements."""
+    _, element, counts = element_layout(decl, name, types)
+    if element is None or None in counts[1:]:
+        return None
+    row = element * math.prod(counts[1:])
+    if size <= 0 or size % row:
+        return None
+    return size // row
