@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1430" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,074 of 16,524 game functions done (36.75%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,075 of 16,524 game functions done (36.76%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="596.8,1187.5 603.2,1187.5 604.9,1189 606,1190.6 600,1197.5 594,1190.6 595.1,1189" fill="#4e32f3"/>
 <polygon points="596.8,1187.5 603.2,1187.5 604.9,1189 606,1190.6 594,1190.6 595.1,1189" fill="#ffffff" fill-opacity="0.4"/>
@@ -2014,7 +2014,7 @@
 <rect x="7" y="56" width="6" height="6" fill="#b07d00"><title>0x006cbbe0 Dsp_car_broken: 100%</title></rect>
 <rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x006cbca0 Exe_car_broken: 100%</title></rect>
 </g>
-<rect x="556" y="572" width="102" height="120" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Viper: 34 of 135 functions done</title></rect>
+<rect x="556" y="572" width="102" height="120" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Egg Viper: 35 of 135 functions done</title></rect>
 <text x="559" y="586" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Egg Viper</text>
 <text x="559" y="601" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328"><tspan font-weight="400" fill="#59636e">7%</tspan></text>
 <g transform="translate(559,605)">
@@ -2027,6 +2027,7 @@
 <rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x006cdd70 FUN_006cdd70: 100%</title></rect>
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x006cdda0 TikalTaskExit(2): 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x006ce4a0 Egm3_laser1Draw: 100%</title></rect>
+<rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x006ce5a0 Egm3_laser1ponDraw: 100%</title></rect>
 <rect x="49" y="21" width="6" height="6" fill="#b07d00"><title>0x006ce670 Egm3_energyballExit: 100%</title></rect>
 <rect x="70" y="21" width="6" height="6" fill="#af7e08"><title>0x006ce8d0 EggmanEnergyDraw: 98.6%</title></rect>
 <rect x="77" y="21" width="6" height="6" fill="#b07d00"><title>0x006ce9b0 EggmanBoomerangDraw: 100%</title></rect>

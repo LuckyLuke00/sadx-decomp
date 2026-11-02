@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_TEXLIST *DAT_02833ce0;
+extern struct obj *DAT_02833cb4;
 extern void *DAT_060bb218;
 extern struct LE_LIGHT_ENV DAT_05b39bf0[4];
 extern struct obj *DAT_02833c70;
@@ -81,12 +83,32 @@ void Egm3_laser1Draw(struct task *tp)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x006ce5a0
+// FUNCTION: SADX 0x006ce5a0
 void Egm3_laser1ponDraw(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct anywk *var2 = tp->awp;
+	if (DAT_05b9d838 == 0)
+	{
+		SaveConstantAttr();
+		njSetConstantAttr(0xffffffff, 0x100000);
+		___njSetTexture(DAT_02833ce0);
+		njPushMatrix(NULL);
+		FUN_0067d830(NULL, var1->pos.x, var1->pos.y, var1->pos.z);
+		if (var1->ang.y != 0)
+		{
+			njRotateY(NULL, (Uint16)var1->ang.y);
+		}
+		if (var1->ang.x != 0)
+		{
+			njRotateX(NULL, (unsigned short)var1->ang.x);
+		}
+		FUN_0067d2d0(NULL, var2->work.f[0], var2->work.f[0], var2->work.f[0]);
+		late_DrawObjectClip(DAT_02833cb4, 4, var2->work.f[0]);
+		njPopMatrix(1);
+		LoadConstantAttr();
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x006ce670
 void Egm3_energyballExit(struct task *tp)

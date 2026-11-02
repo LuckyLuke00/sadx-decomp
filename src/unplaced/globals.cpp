@@ -2093,11 +2093,17 @@ struct NJS_MOTION *egm3_motion_list[8];
 // GLOBAL: SADX 0x02833cb0
 struct obj *egm3_effect_objectlist[1];
 
+// GLOBAL: SADX 0x02833cb4
+struct obj *DAT_02833cb4;
+
 // GLOBAL: SADX 0x02833cc4
 struct NJS_MOTION *egm3_effect_motionlist[6];
 
 // GLOBAL: SADX 0x02833cdc
 struct NJS_TEXLIST *egm3_effect_texlist_list;
+
+// GLOBAL: SADX 0x02833ce0
+struct NJS_TEXLIST *DAT_02833ce0;
 
 // GLOBAL: SADX 0x02833cf0
 struct NJS_TEXLIST *egm3_texlist_list[4];
