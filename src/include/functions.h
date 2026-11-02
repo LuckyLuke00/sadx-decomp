@@ -2963,6 +2963,7 @@ void Exec2(struct task *tp);
 void ObjectBeachWaveBG2(struct task *tp);
 void ObjectBeachWaveBG3(struct task *tp);
 void FUN_007f9f90(struct task *);
+void Draw3(struct task *tp);
 void CreateRippleSource25(struct task *tp, float pp_x, float pp_z, float start_rad, float end_rad, float scl);
 float GetWaveHeight25(struct task *tp, float pos_x, float pos_z);
 void ObjectBeachWave25(struct task *tp);
