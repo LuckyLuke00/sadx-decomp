@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <windows.h>
 #include <string>
+typedef int (__thiscall *FUN_0092a420_vt)(int, int, int, int, int);
 struct FUN_0092a020_0;
 struct FUN_00929fe0_t;
 
@@ -10,10 +11,45 @@ int FUN_00929870(void *param_1)
 	return (int)0;
 }
 
-// STUB: SADX 0x009298a0
+// FUNCTION: SADX 0x009298a0
 int FUN_009298a0(void *param_1)
 {
-	return (int)0;
+	if (*(int *)((char *)param_1 + 0x10) == 0)
+	{
+		return -1;
+	}
+	int var1 = 0;
+	const char *var2 = (const char *)param_1;
+	if (*(unsigned int *)((char *)param_1 + 0x14) >= 0x10)
+	{
+		var2 = (const char *)(*(char **)param_1);
+	}
+	DWORD var3 = GetFileAttributesA(var2);
+	if (var3 == 0xffffffff)
+	{
+		return (int)var3;
+	}
+	if ((var3 & 0x20) != 0)
+	{
+		var1 = 1;
+	}
+	if ((var3 & 0x10) != 0)
+	{
+		var1 = var1 | 2;
+	}
+	if ((var3 & 2) != 0)
+	{
+		var1 = var1 | 4;
+	}
+	if ((char)var3 < 0)
+	{
+		var1 = var1 | 8;
+	}
+	if ((var3 & 1) != 0)
+	{
+		var1 = var1 | 0x10;
+	}
+	return var1;
 }
 
 // FUNCTION: SADX 0x00929900

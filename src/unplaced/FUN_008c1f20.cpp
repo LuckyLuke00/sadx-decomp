@@ -25,9 +25,22 @@ void FUN_008c1f60(int param_1)
 	}
 }
 
-// STUB: SADX 0x008c1fb0
+// FUNCTION: SADX 0x008c1fb0
 void FUN_008c1fb0(int param_1)
 {
+	int *local_cg;
+	struct NJS_SPRITE *local_8g;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	local_8g = *(struct NJS_SPRITE **)(param_1 + 0x20);
+	local_cg = *(int **)(param_1 + 0x24);
+	njPushMatrix(0);
+	njTranslateV(0, (struct NJS_POINT3 *)((char *)local_8g + 0x20));
+	FUN_008dd760((int)((char *)local_8g + 0x14));
+	___njDrawSprite3D((struct NJS_SPRITE *)local_cg[1], *(short *)local_cg, local_cg[2]);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x008c2030

@@ -3806,6 +3806,11 @@ extern void EV_Egm3Draw(struct task *)
 {
 }
 
+// STUB: SADX 0x00904940
+void FUN_00904940(int, int)
+{
+}
+
 // STUB: SADX 0x00906b30
 void SakanaGenerater(struct task *tp)
 {

@@ -2,9 +2,19 @@
 struct task;
 struct taskwk;
 
-// STUB: SADX 0x008e1ab0
+// FUNCTION: SADX 0x008e1ab0
 void FUN_008e1ab0(struct task *param_1)
 {
+	struct taskwk *local_18;
+	struct NJS_POINT3 local_14;
+
+	local_18 = param_1->twp;
+	local_14.x = local_18->scl.x + 1.0f;
+	njPushMatrix(0);
+	FUN_0067d830(0, local_18->pos.x, local_18->pos.y, local_18->pos.z);
+	FUN_0067d2d0(0, local_14.x, local_14.x, local_14.x);
+	___dsDrawObject(&object_sphere01);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x008e1b50

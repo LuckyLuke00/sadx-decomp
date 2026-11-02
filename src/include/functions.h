@@ -3438,6 +3438,7 @@ void EvChaos6Water2Human();
 void EvChaos7Howl1();
 void EvChaos7Breath(float len);
 extern void EV_Egm3Draw(struct task *);
+void FUN_00904940(int, int);
 void SakanaGenerater(struct task *tp);
 void FUN_00907d40();
 void __fastcall FUN_009086f0(int *param_1);
