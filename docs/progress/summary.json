@@ -55725,9 +55725,9 @@
   {
    "address": "0x007eae60",
    "name": "ScoreInit",
-   "accuracy": 0.05714285714285714,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55765,9 +55765,9 @@
   {
    "address": "0x007eb0e0",
    "name": "ShtScoreTask",
-   "accuracy": 0.043478260869565216,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55875,9 +55875,17 @@
    "library": false
   },
   {
+   "address": "0x007ec8c0",
+   "name": "Zako3Move",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007ecac0",
    "name": "DirectionToPlayer",
-   "accuracy": 0.02857142857142857,
+   "accuracy": 0.0273972602739726,
    "effective": false,
    "stub": true,
    "library": false
@@ -55885,7 +55893,7 @@
   {
    "address": "0x007ecbc0",
    "name": "Zako2GunDraw",
-   "accuracy": 0.030303030303030304,
+   "accuracy": 0.028985507246376812,
    "effective": false,
    "stub": true,
    "library": false
@@ -55904,6 +55912,14 @@
    "accuracy": 0.03333333333333333,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007ecf40",
+   "name": "sht_Zako2Gun",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -96723,6 +96739,34 @@
    "library": false
   },
   {
+   "address": "0x03710ed4",
+   "name": "DAT_03710ed4",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03710ed8",
+   "name": "DAT_03710ed8",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03710edc",
+   "name": "DAT_03710edc",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03710ee4",
+   "name": "DAT_03710ee4",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03710f14",
    "name": "DAT_03710f14",
    "size": 32,
@@ -102367,5 +102411,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "9c3eac30e3305dcc7d349ed308b88a60a0b0b4c980b87259ce79e4f9a8fbe29a"
+ "inputs_sha256": "77057d27fef77dfdaa97ed78fd2d0bf3844ed07403edad56ed1e908428b17573"
 }
