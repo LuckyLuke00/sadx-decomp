@@ -1186,6 +1186,7 @@ extern struct NJS_MODEL model_lwobj_snake00_snake00[];
 extern struct obj object_lwobj_s_water_s_water[];
 extern struct obj object_ukidai_ukidai_ukidai[];
 extern struct obj object_lwobj_komorebi2_komorebi2[];
+extern struct obj *obj_sw[3];
 extern struct CCL_INFO c_info_switch[1];
 extern struct CCL_INFO tap_c_info[1];
 extern struct NJS_TEXLIST texlist_piece[];
