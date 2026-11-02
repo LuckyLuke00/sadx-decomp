@@ -71,9 +71,33 @@ void FUN_0069fc90(unsigned char *param_1)
 	}
 }
 
-// STUB: SADX 0x006a0560
+// FUNCTION: SADX 0x006a0560
 void put3Dsprite(struct NJS_SPRITE *sprite, long sprite_no, long attr)
 {
+	if (*(int *)((char *)DAT_060b867c + 0x184) <= 0)
+	{
+		___njColorBlendingMode(0, 0xa);
+		___njColorBlendingMode(1, 0xa);
+		njPushMatrix(NULL);
+		njTranslateV(NULL, (NJS_VECTOR *)((char *)DAT_060b867c + 0x16c));
+		if (*(int *)((char *)DAT_060b867c + 0x180) != 0)
+		{
+			njRotateZ(NULL, *(unsigned short *)((char *)DAT_060b867c + 0x180));
+		}
+		if (*(int *)((char *)DAT_060b867c + 0x178) != 0)
+		{
+			njRotateX(NULL, *(unsigned short *)((char *)DAT_060b867c + 0x178));
+		}
+		if (*(int *)((char *)DAT_060b867c + 0x17c) != 0)
+		{
+			njRotateY(NULL, *(unsigned short *)((char *)DAT_060b867c + 0x17c));
+		}
+		FUN_0067d2d0(NULL, 0.2f, -0.2f, 0.2f);
+		dsDrawSprite3D(sprite, sprite_no, attr);
+		njPopMatrix(1);
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+	}
 }
 
 // FUNCTION: SADX 0x006a0f90

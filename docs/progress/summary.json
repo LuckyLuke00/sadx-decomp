@@ -43763,6 +43763,14 @@
    "library": false
   },
   {
+   "address": "0x006922e0",
+   "name": "DisplayCloudSky",
+   "accuracy": 0.03333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00692b90",
    "name": "FUN_00692b90",
    "accuracy": 1.0,
@@ -44437,9 +44445,9 @@
   {
    "address": "0x006a0560",
    "name": "put3Dsprite",
-   "accuracy": 0.029850746268656716,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -102616,5 +102624,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "2e17c1a1a94cfafc4d24158833b5d13c1f8c5dc2d3b4b8d0e34627e14a8e09cb"
+ "inputs_sha256": "4d92d06e66c8b2822ae4394f19849936b780b62a25e4f17d5610bfef6104abf4"
 }
