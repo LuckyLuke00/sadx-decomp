@@ -718,6 +718,7 @@ float FUN_004a1e90(float *param_1);
 void ___njDrawSprite3D(struct NJS_SPRITE *sp, int n, unsigned long atr);
 void ___njDrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr);
 void ___njDrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr);
+void dsDrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr);
 void ds_DrawBoxFill2D(float x, float y, float x2, float y2, float pri, unsigned long argb);
 void saSetSpriteZOffset(float zoffset);
 void saDrawSprite3D(struct NJS_SPRITE *r4_sp, int r5_n, unsigned long r6_attr);
