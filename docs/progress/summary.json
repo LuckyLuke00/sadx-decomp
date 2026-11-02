@@ -27930,6 +27930,14 @@
    "library": false
   },
   {
+   "address": "0x00570bf0",
+   "name": "CalcMMMatrix",
+   "accuracy": 0.09411764705882353,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00571750",
    "name": "GetMMMatrix",
    "accuracy": 1.0,
@@ -49747,6 +49755,134 @@
    "library": false
   },
   {
+   "address": "0x00705270",
+   "name": "chkDamage(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705400",
+   "name": "FUN_00705400",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705460",
+   "name": "turnBody",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007054e0",
+   "name": "FUN_007054e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705520",
+   "name": "FUN_00705520",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705560",
+   "name": "waitPlayer",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705690",
+   "name": "FUN_00705690",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705730",
+   "name": "move",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705990",
+   "name": "normal",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705ad0",
+   "name": "jump(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705bc0",
+   "name": "hover",
+   "accuracy": 0.4434389140271493,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705d30",
+   "name": "fall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705e20",
+   "name": "damage",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00705f10",
+   "name": "attack",
+   "accuracy": 0.9908256880733946,
+   "effective": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007060a0",
+   "name": "death(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x007061a0",
+   "name": "execMode",
+   "accuracy": 0.25675675675675674,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00706270",
    "name": "callbackTgt",
    "accuracy": 1.0,
@@ -49771,16 +49907,40 @@
    "library": false
   },
   {
+   "address": "0x00706420",
+   "name": "destTgt(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00706460",
+   "name": "dispTgt",
+   "accuracy": 0.993006993006993,
+   "effective": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00706830",
+   "name": "execTgt(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00706930",
    "name": "SetE101",
-   "accuracy": 0.037037037037037035,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x007069d0",
-   "name": "death(1)",
+   "name": "death(2)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -49788,7 +49948,7 @@
   },
   {
    "address": "0x00706a20",
-   "name": "chkDamage(1)",
+   "name": "chkDamage(2)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -57244,7 +57404,7 @@
   },
   {
    "address": "0x0080ead0",
-   "name": "jump",
+   "name": "jump(struct task *)",
    "accuracy": 0.02531645569620253,
    "effective": false,
    "stub": true,
@@ -57268,7 +57428,7 @@
   },
   {
    "address": "0x00810080",
-   "name": "chkDamage(2)",
+   "name": "chkDamage(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -58867,6 +59027,14 @@
    "library": false
   },
   {
+   "address": "0x0082ae70",
+   "name": "FUN_0082ae70",
+   "accuracy": 0.044444444444444446,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0082b040",
    "name": "FUN_0082b040",
    "accuracy": 0.05128205128205128,
@@ -59404,7 +59572,7 @@
   },
   {
    "address": "0x00837700",
-   "name": "death(2)",
+   "name": "death(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66828,7 +66996,7 @@
   },
   {
    "address": "0x008ac5c0",
-   "name": "destTgt",
+   "name": "destTgt(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66868,7 +67036,7 @@
   },
   {
    "address": "0x008adb00",
-   "name": "execTgt",
+   "name": "execTgt(2)",
    "accuracy": 0.047619047619047616,
    "effective": false,
    "stub": true,
@@ -91870,6 +92038,13 @@
    "library": false
   },
   {
+   "address": "0x025ddf00",
+   "name": "texlist_e102_effect",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025ddf08",
    "name": "e102_laser_enable_table",
    "size": 256,
@@ -95083,9 +95258,58 @@
    "library": false
   },
   {
+   "address": "0x02bc92c4",
+   "name": "object_e101_fun_e101_fun_e101_fun",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02bc9984",
    "name": "object_01_misile_01_misile_01_misile",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02be7c30",
+   "name": "posStart",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02be7c3c",
+   "name": "CamEye",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02be7c48",
+   "name": "PosSpot",
+   "size": 36,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02be7c6c",
+   "name": "bsmoke_data",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02be7ca8",
+   "name": "colliInfoTgt",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02be7d08",
+   "name": "tgt_action",
+   "size": 144,
    "match": false,
    "library": false
   },
@@ -101364,5 +101588,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4f560f280d699cf42677ca8d8b44c60e212fe36a21c5a5792ba6e7c845fdefaa"
+ "inputs_sha256": "cc9cc82efb9bb52338d9d822880b166f822388ade0c18eb8e8f60f833c07dfc1"
 }
