@@ -1,4 +1,5 @@
 #include "decls.h"
+void ChaosEmerald(struct task *tp);
 extern int DAT_060dfe78[7];
 
 // FUNCTION: SADX 0x008c8a40
@@ -11,10 +12,27 @@ void InitChaosEmerald()
 	}
 }
 
-// STUB: SADX 0x008c8a70
+// FUNCTION: SADX 0x008c8a70
 struct task *SetDisplayChaosEmerald(struct NJS_POINT3 *pos, int color)
 {
-	return (struct task *)0;
+	struct task *local_8g;
+	struct taskwk *local_10;
+	struct anywk *local_cj;
+
+	if (DAT_060dfe78[color] != 0)
+		DestroyTask((struct task *)DAT_060dfe78[color]);
+	local_8g = CreateElementalTask(3, 2, ChaosEmerald);
+	if (local_8g != 0)
+	{
+		local_10 = local_8g->twp;
+		local_8g->awp = (struct anywk *)MAlloc(0x18);
+		local_10->pos = *pos;
+		local_10->value.b[0] = (signed char)(color * 3);
+		local_cj = local_8g->awp;
+		*(void **)((char *)local_cj + 0x14) = (void *)pos;
+		DAT_060dfe78[color] = (int)local_8g;
+	}
+	return local_8g;
 }
 
 // STUB: SADX 0x008c8f40

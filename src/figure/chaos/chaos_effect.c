@@ -39,9 +39,22 @@ void dispEffectChaosTracks(struct task *tp)
 {
 }
 
-// STUB: SADX 0x008c46c0
+// FUNCTION: SADX 0x008c46c0
 void setDrop(struct taskwk *twp, int num, float size, float yofs)
 {
+	int local_8g;
+	struct task *local_cg;
+	for (local_8g = 0; local_8g < num; local_8g++)
+	{
+		local_cg = CreateElementalTask(3, 5, dispChaos0DropWater);
+		if (local_cg != 0)
+		{
+			local_cg->twp->pos.x = twp->pos.x;
+			local_cg->twp->pos.y = twp->pos.y + yofs;
+			local_cg->twp->pos.z = twp->pos.z;
+			local_cg->twp->scl.z = size;
+		}
+	}
 }
 
 // STUB: SADX 0x008c4ad0

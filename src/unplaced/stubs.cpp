@@ -3717,6 +3717,11 @@ void DrawWideLineTex2(struct NJS_POINT3 *pPos1, struct NJS_POINT3 *pPos2, const 
 {
 }
 
+// STUB: SADX 0x008c4740
+void dispChaos0DropWater(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008c51b0
 void drawEffectChaos0LightParticle(struct task *tp)
 {
@@ -3734,6 +3739,11 @@ void morph_water_act(struct MORPHWK *p)
 
 // STUB: SADX 0x008c7790
 void effectWaterMove(struct taskwk *, struct chaoswk *, struct obj *)
+{
+}
+
+// STUB: SADX 0x008c8b20
+void ChaosEmerald(struct task *)
 {
 }
 

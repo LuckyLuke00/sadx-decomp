@@ -52301,9 +52301,9 @@
   {
    "address": "0x007d2c00",
    "name": "effect_size_change",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -53597,7 +53597,7 @@
   {
    "address": "0x007d8fa0",
    "name": "dispBootTask",
-   "accuracy": 0.05405405405405406,
+   "accuracy": 0.05,
    "effective": false,
    "stub": true,
    "library": false
@@ -53605,9 +53605,9 @@
   {
    "address": "0x007d9010",
    "name": "execBootTask",
-   "accuracy": 0.027777777777777776,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -54475,6 +54475,14 @@
    "library": false
   },
   {
+   "address": "0x007de470",
+   "name": "eggmoble2_draw",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x007de620",
    "name": "FUN_007de620",
    "accuracy": 1.0,
@@ -54781,9 +54789,9 @@
   {
    "address": "0x007e2800",
    "name": "fegg_zangai_draw",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68725,7 +68733,15 @@
   {
    "address": "0x008c46c0",
    "name": "setDrop",
-   "accuracy": 0.1702127659574468,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c4740",
+   "name": "dispChaos0DropWater",
+   "accuracy": 0.029304029304029304,
    "effective": false,
    "stub": true,
    "library": false
@@ -69213,7 +69229,15 @@
   {
    "address": "0x008c8a70",
    "name": "SetDisplayChaosEmerald",
-   "accuracy": 0.13793103448275862,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c8b20",
+   "name": "ChaosEmerald",
+   "accuracy": 0.024096385542168676,
    "effective": false,
    "stub": true,
    "library": false
@@ -96304,6 +96328,34 @@
    "library": false
   },
   {
+   "address": "0x03356930",
+   "name": "_object_egman_body_body",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03356a10",
+   "name": "texlist_ev_eggman_body",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03356b5c",
+   "name": "texlist_ev_eggmoble2",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03363b94",
+   "name": "action_egm02jump_egm2_body",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03363c8c",
    "name": "texlist_egg_missile",
    "size": 8,
@@ -96321,6 +96373,20 @@
    "address": "0x0336d714",
    "name": "DAT_0336d714",
    "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x033e6c98",
+   "name": "texlist_f_egg_zangai",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x033e8868",
+   "name": "ZANGAI_OBJ_TBL",
+   "size": 32,
    "match": false,
    "library": false
   },
@@ -102074,5 +102140,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "220982c21eada0b02b7209b3e7d253a57e2d1c5f658513ae94298ee9c8ac56d8"
+ "inputs_sha256": "2029b4aeeb7b123a74327537ec99d22f2f9009378c8a6beac07b856fa8d84b0a"
 }
