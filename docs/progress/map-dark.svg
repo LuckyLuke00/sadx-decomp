@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1448" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,926 of 16,524 game functions done (35.86%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">5,931 of 16,524 game functions done (35.89%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 599,1200.5 593,1193.6 594.1,1192" fill="#4e32f3"/>
 <polygon points="595.8,1190.5 602.2,1190.5 603.9,1192 605,1193.6 593,1193.6 594.1,1192" fill="#ffffff" fill-opacity="0.4"/>
@@ -234,9 +234,9 @@
 <rect x="91" y="56" width="6" height="6" fill="#ffd700"><title>0x00906150 FUN_00906150: 100%</title></rect>
 <rect x="28" y="63" width="6" height="6" fill="#ffd700"><title>0x00906cc0 sakana00: 100%</title></rect>
 </g>
-<rect x="739" y="1208" width="113" height="96" rx="3" fill="#21262d" stroke="#30363d"><title>E-102 Gamma: 43 of 106 functions done</title></rect>
+<rect x="739" y="1208" width="113" height="96" rx="3" fill="#21262d" stroke="#30363d"><title>E-102 Gamma: 48 of 106 functions done</title></rect>
 <text x="742" y="1222" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">E-102 Gamma</text>
-<text x="742" y="1237" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">6%</tspan></text>
+<text x="742" y="1237" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">9%</tspan></text>
 <g transform="translate(742,1241)">
 <rect y="0" width="105" height="49" fill="url(#todo)"/>
 <rect y="49" width="7" height="7" fill="url(#todo)"/>
@@ -246,11 +246,13 @@
 <rect x="91" y="0" width="6" height="6" fill="#ffd700"><title>0x00514730 E102CheckStop: 100%</title></rect>
 <rect x="98" y="0" width="6" height="6" fill="#ffd700"><title>0x005147e0 FUN_005147e0: 100%</title></rect>
 <rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x005149c0 FUN_005149c0: 100%</title></rect>
+<rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x00515140 E102ThrowTheObjectOut: 100%</title></rect>
 <rect x="77" y="7" width="6" height="6" fill="#ffd700"><title>0x00515a50 chkE102EnableLaser: 100%</title></rect>
 <rect x="84" y="7" width="6" height="6" fill="#ffd700"><title>0x00515a70 FUN_00515a70: 100%</title></rect>
 <rect x="91" y="7" width="6" height="6" fill="#ffd700"><title>0x00515a90 FUN_00515a90: 100%</title></rect>
 <rect x="0" y="14" width="6" height="6" fill="#ffd700"><title>0x00515c30 FUN_00515c30: 100%</title></rect>
 <rect x="7" y="14" width="6" height="6" fill="#ffd700"><title>0x00515c60 FUN_00515c60: 100%</title></rect>
+<rect x="14" y="14" width="6" height="6" fill="#ffd700"><title>0x00515c90 E102MotionCallback: 100%</title></rect>
 <rect x="42" y="14" width="6" height="6" fill="#ffd700"><title>0x005161d0 SE_RDASH_ON: 100%</title></rect>
 <rect x="49" y="14" width="6" height="6" fill="#ffd700"><title>0x00516210 SE_RDASH_OFF: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#ffd700"><title>0x00516260 IsE102Whistling: 100%</title></rect>
@@ -260,6 +262,7 @@
 <rect x="84" y="14" width="6" height="6" fill="#ffd700"><title>0x005b9950 FUN_005b9950: 100%</title></rect>
 <rect x="91" y="14" width="6" height="6" fill="#ffd700"><title>0x005b9960 E102Hit_Exit: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#ffd700"><title>0x005b9b20 AddTimeComboAfter: 100%</title></rect>
+<rect x="7" y="21" width="6" height="6" fill="#ffd700"><title>0x005b9bc0 DispDigitTotal: 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#ffd700"><title>0x005b9d40 E102AddRestTime: 100%</title></rect>
 <rect x="21" y="21" width="6" height="6" fill="#ffd700"><title>0x005b9db0 E102AddRestTimeNew: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#ffd700"><title>0x005ba1d0 AddTimeComboAfterDest: 100%</title></rect>
@@ -267,12 +270,14 @@
 <rect x="0" y="28" width="6" height="6" fill="#ffd700"><title>0x005d2910 SetE102DashPanelAccel: 100%</title></rect>
 <rect x="28" y="28" width="6" height="6" fill="#ffd700"><title>0x005d3470 E102BeamDisplay: 100%</title></rect>
 <rect x="42" y="28" width="6" height="6" fill="#ffd700"><title>0x005d35b0 E102BeamAto: 100%</title></rect>
+<rect x="49" y="28" width="6" height="6" fill="#ffd700"><title>0x005d3630 E102BeamAtoDisplay: 100%</title></rect>
 <rect x="63" y="28" width="6" height="6" fill="#ffd700"><title>0x005d3950 SetE102BeamNoHorming: 100%</title></rect>
 <rect x="77" y="28" width="6" height="6" fill="#ffd700"><title>0x005d3b00 FUN_005d3b00: 100%</title></rect>
 <rect x="84" y="28" width="6" height="6" fill="#ffd700"><title>0x005d3b80 FUN_005d3b80: 100%</title></rect>
 <rect x="98" y="28" width="6" height="6" fill="#ffd700"><title>0x005d3e20 CheckEnemyAddTime: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#ffd700"><title>0x005d4540 E102EnemyDest: 100%</title></rect>
 <rect x="63" y="35" width="6" height="6" fill="#ffd700"><title>0x005d4e60 CreateShotsmoke: 100%</title></rect>
+<rect x="70" y="35" width="6" height="6" fill="#ffd700"><title>0x005d4f50 EffectShotsmoke: 100%</title></rect>
 <rect x="77" y="35" width="6" height="6" fill="#ffd700"><title>0x005d5090 initShotsmoke: 100%</title></rect>
 <rect x="91" y="35" width="6" height="6" fill="#ffd700"><title>0x005d51b0 FUN_005d51b0: 100%</title></rect>
 <rect x="98" y="35" width="6" height="6" fill="#ffd700"><title>0x005d51e0 DrawWireModel: 100%</title></rect>

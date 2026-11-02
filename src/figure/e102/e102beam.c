@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_ARGB DAT_02671d84;
 void FUN_005d3b80(struct task *param_1);
 extern struct NJS_TEXLIST texlist_e102_beam;
 struct task;
@@ -64,9 +65,59 @@ void E102BeamAto(struct task *tp)
 	E102BeamAtoDisplay(tp);
 }
 
-// STUB: SADX 0x005d3630
+// FUNCTION: SADX 0x005d3630
 void E102BeamAtoDisplay(struct task *tp)
 {
+	struct taskwk *local_8g;
+	struct obj *local_cj;
+	struct obj *local_10;
+
+	local_8g = tp->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	SaveControl3D();
+	njControl3D(0x10);
+	njPushMatrix(0);
+	njTranslateV(0, &local_8g->pos);
+	if (local_8g->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)local_8g->ang.y);
+	}
+	if (local_8g->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)local_8g->ang.z);
+	}
+	if (local_8g->wtimer & 0x200)
+	{
+		FUN_0067d2d0(0, 2.5f, 1.25f, 1.25f);
+		DAT_02671d84.r = local_8g->counter.f;
+		DAT_02671d84.g = local_8g->counter.f;
+		DAT_02671d84.b = 1.0f;
+	}
+	else
+	{
+		FUN_0067d2d0(0, 2.5f, 1.0f, 1.0f);
+		DAT_02671d84.r = local_8g->counter.f;
+		DAT_02671d84.g = local_8g->counter.f;
+		DAT_02671d84.b = 0.0f;
+	}
+	___njSetConstantMaterial(&DAT_02671d84);
+	___njSetTexture(&texlist_e102_beam);
+	if (local_8g->smode != 0)
+	{
+		local_cj = (struct obj *)*(void **)((char *)DAT_06276b18 + 0x18);
+		late_DrawObject(local_cj, 4);
+	}
+	else
+	{
+		local_10 = (struct obj *)*(void **)((char *)DAT_06276b18 + 0x18);
+		late_DrawObject(local_10, 4);
+	}
+	njPopMatrix(1);
+	ResetMaterial();
+	LoadControl3D();
 }
 
 // STUB: SADX 0x005d37c0

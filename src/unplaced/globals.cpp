@@ -1448,6 +1448,9 @@ struct GHSPRITE_ANIM_TABLE animtable_hit[1];
 // GLOBAL: SADX 0x0263f500
 struct GHSPRITE_ANIM_TABLE animtable_part[1];
 
+// GLOBAL: SADX 0x0263f7a8
+struct NJS_SPRITE sprite_digit;
+
 // GLOBAL: SADX 0x0264494c
 struct NJS_ACTION action_f_f0021_frog[1];
 
@@ -1564,6 +1567,9 @@ struct NJS_SPRITE sprite_e102_flash;
 
 // GLOBAL: SADX 0x02671d74
 struct NJS_ARGB DAT_02671d74;
+
+// GLOBAL: SADX 0x02671d84
+struct NJS_ARGB DAT_02671d84;
 
 // GLOBAL: SADX 0x02671d94
 struct NJS_ARGB DAT_02671d94;
@@ -6473,6 +6479,9 @@ char DAT_05cc43a0;
 // GLOBAL: SADX 0x05cc43a1
 unsigned char DAT_05cc43a1;
 
+// GLOBAL: SADX 0x05cc43a4
+void *DAT_05cc43a4;
+
 // GLOBAL: SADX 0x05cc603c
 int DAT_05cc603c;
 
@@ -9379,6 +9388,9 @@ int DAT_06274af0;
 
 // GLOBAL: SADX 0x06274afc
 int DAT_06274afc;
+
+// GLOBAL: SADX 0x06276b18
+void *DAT_06276b18;
 
 // GLOBAL: SADX 0x06276b1c
 void *DAT_06276b1c;
