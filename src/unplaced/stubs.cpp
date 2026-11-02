@@ -3225,11 +3225,6 @@ void ObjectHighwayForRaftA(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0081eb90
-void ObjectHighwayGreenD(struct task *tp)
-{
-}
-
 // STUB: SADX 0x0081fbe0
 void ObjectHighwayClight(struct task *tp)
 {

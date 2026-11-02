@@ -3101,6 +3101,9 @@ struct obj object_ss_poster4_poster4[1];
 // GLOBAL: SADX 0x03e43bb4
 struct obj object_ss_pstr_03_pstr_03[1];
 
+// GLOBAL: SADX 0x03e44318
+struct obj object_ss_sign1_sign1[1];
+
 // GLOBAL: SADX 0x03e446c8
 struct NJS_MODEL model_knbn_01_kanban01_kanban01[1];
 
@@ -3127,6 +3130,9 @@ struct obj object_st_green_basin_a_basin_a[1];
 
 // GLOBAL: SADX 0x03e46fa4
 struct obj object_st_green_basin_b_basin_b[1];
+
+// GLOBAL: SADX 0x03e474b8
+struct obj object_st_green_basin_d_basin_d[1];
 
 // GLOBAL: SADX 0x03e48984
 struct obj object_lmp_lmpb_lmpb[1];

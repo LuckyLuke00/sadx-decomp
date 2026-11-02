@@ -39,6 +39,20 @@ void ObjectHighwayGreenB(struct task *tp)
 	ObjectCCollision(tp);
 }
 
+// FUNCTION: SADX 0x0081eb90
+void ObjectHighwayGreenD(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+
+	*(struct obj **)((char *)var1 + 8) = object_st_green_basin_d_basin_d;
+	if (FUN_004c39c0(tp) == 0)
+	{
+		CCL_Init(tp, &object_c_info[2], 1, 4);
+		SET_COLLI_RANGE(var1->cwp, 8.0f);
+	}
+	ObjectCCollision(tp);
+}
+
 // FUNCTION: SADX 0x0081ebf0
 void ObjectHighwayGreenE(struct task *tp)
 {

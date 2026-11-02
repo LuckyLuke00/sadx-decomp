@@ -58539,6 +58539,38 @@
    "library": false
   },
   {
+   "address": "0x0081e6d0",
+   "name": "Normal(1)",
+   "accuracy": 0.02197802197802198,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0081e800",
+   "name": "ObjectLmpa",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0081e850",
+   "name": "Normal(2)",
+   "accuracy": 0.016666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0081e9d0",
+   "name": "ObjectTokei",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0081ea10",
    "name": "ObjectHighwaySiba1",
    "accuracy": 1.0,
@@ -58581,9 +58613,9 @@
   {
    "address": "0x0081eb90",
    "name": "ObjectHighwayGreenD",
-   "accuracy": 0.0625,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -58723,6 +58755,14 @@
    "library": false
   },
   {
+   "address": "0x008209c0",
+   "name": "ObjectHighwaySign1",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00820a20",
    "name": "ObjectHighwayPoster0",
    "accuracy": 1.0,
@@ -58812,7 +58852,7 @@
   },
   {
    "address": "0x00821070",
-   "name": "Normal(2)",
+   "name": "Normal(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -58988,7 +59028,7 @@
   },
   {
    "address": "0x008247e0",
-   "name": "Normal(3)",
+   "name": "Normal(5)",
    "accuracy": 0.027777777777777776,
    "effective": false,
    "stub": true,
@@ -61628,7 +61668,7 @@
   },
   {
    "address": "0x008525c0",
-   "name": "Normal(4)",
+   "name": "Normal(6)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61924,7 +61964,7 @@
   },
   {
    "address": "0x00855cd0",
-   "name": "Normal(5)",
+   "name": "Normal(7)",
    "accuracy": 0.006666666666666667,
    "effective": false,
    "stub": true,
@@ -61948,7 +61988,7 @@
   },
   {
    "address": "0x00856150",
-   "name": "Normal(6)",
+   "name": "Normal(8)",
    "accuracy": 0.01818181818181818,
    "effective": false,
    "stub": true,
@@ -61980,7 +62020,7 @@
   },
   {
    "address": "0x00856370",
-   "name": "Normal(7)",
+   "name": "Normal(9)",
    "accuracy": 0.01834862385321101,
    "effective": false,
    "stub": true,
@@ -61996,7 +62036,7 @@
   },
   {
    "address": "0x00856510",
-   "name": "Normal(8)",
+   "name": "Normal(10)",
    "accuracy": 0.020833333333333332,
    "effective": false,
    "stub": true,
@@ -62052,7 +62092,7 @@
   },
   {
    "address": "0x00856f90",
-   "name": "Normal(9)",
+   "name": "Normal(11)",
    "accuracy": 0.024390243902439025,
    "effective": false,
    "stub": true,
@@ -62180,7 +62220,7 @@
   },
   {
    "address": "0x00858a20",
-   "name": "Normal(10)",
+   "name": "Normal(12)",
    "accuracy": 0.006042296072507553,
    "effective": false,
    "stub": true,
@@ -62412,7 +62452,7 @@
   },
   {
    "address": "0x0085e000",
-   "name": "Normal(11)",
+   "name": "Normal(13)",
    "accuracy": 0.02666666666666667,
    "effective": false,
    "stub": true,
@@ -62516,7 +62556,7 @@
   },
   {
    "address": "0x00860c00",
-   "name": "Normal(12)",
+   "name": "Normal(14)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -62564,7 +62604,7 @@
   },
   {
    "address": "0x00860e50",
-   "name": "Normal(13)",
+   "name": "Normal(15)",
    "accuracy": 0.013888888888888888,
    "effective": false,
    "stub": true,
@@ -64820,7 +64860,7 @@
   },
   {
    "address": "0x0087f6d0",
-   "name": "Normal(14)",
+   "name": "Normal(16)",
    "accuracy": 0.037037037037037035,
    "effective": false,
    "stub": true,
@@ -64844,7 +64884,7 @@
   },
   {
    "address": "0x0087f840",
-   "name": "Normal(15)",
+   "name": "Normal(17)",
    "accuracy": 0.03125,
    "effective": false,
    "stub": true,
@@ -64908,7 +64948,7 @@
   },
   {
    "address": "0x0087ff90",
-   "name": "Normal(16)",
+   "name": "Normal(18)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -64932,7 +64972,7 @@
   },
   {
    "address": "0x008803b0",
-   "name": "Normal(17)",
+   "name": "Normal(19)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -64980,7 +65020,7 @@
   },
   {
    "address": "0x00880650",
-   "name": "Normal(18)",
+   "name": "Normal(20)",
    "accuracy": 0.08695652173913043,
    "effective": false,
    "stub": true,
@@ -65004,7 +65044,7 @@
   },
   {
    "address": "0x00880790",
-   "name": "Normal(19)",
+   "name": "Normal(21)",
    "accuracy": 0.08695652173913043,
    "effective": false,
    "stub": true,
@@ -65068,7 +65108,7 @@
   },
   {
    "address": "0x008823d0",
-   "name": "Normal(20)",
+   "name": "Normal(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -65092,7 +65132,7 @@
   },
   {
    "address": "0x00882510",
-   "name": "Normal(21)",
+   "name": "Normal(23)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -65156,7 +65196,7 @@
   },
   {
    "address": "0x00882ea0",
-   "name": "Normal(22)",
+   "name": "Normal(24)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -65468,7 +65508,7 @@
   },
   {
    "address": "0x00887da0",
-   "name": "Normal(23)",
+   "name": "Normal(25)",
    "accuracy": 0.03636363636363636,
    "effective": false,
    "stub": true,
@@ -65484,7 +65524,7 @@
   },
   {
    "address": "0x00887ea0",
-   "name": "Normal(24)",
+   "name": "Normal(26)",
    "accuracy": 0.012121212121212121,
    "effective": false,
    "stub": true,
@@ -97782,6 +97822,13 @@
    "library": false
   },
   {
+   "address": "0x03e44318",
+   "name": "object_ss_sign1_sign1",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03e446c8",
    "name": "model_knbn_01_kanban01_kanban01",
    "size": 44,
@@ -97840,6 +97887,13 @@
   {
    "address": "0x03e46fa4",
    "name": "object_st_green_basin_b_basin_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03e474b8",
+   "name": "object_st_green_basin_d_basin_d",
    "size": 52,
    "match": false,
    "library": false
@@ -98006,6 +98060,20 @@
    "library": false
   },
   {
+   "address": "0x03e716b8",
+   "name": "object_c_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03e716e8",
+   "name": "object_c_info",
+   "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03e71778",
    "name": "object_c_info",
    "size": 96,
@@ -98058,6 +98126,13 @@
    "address": "0x03e71b40",
    "name": "anim_clight",
    "size": 20,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03e71bec",
+   "name": "object_c_info",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -102411,5 +102486,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "77057d27fef77dfdaa97ed78fd2d0bf3844ed07403edad56ed1e908428b17573"
+ "inputs_sha256": "fd7377b147193c5152c0fc715fd0cc24f23986d6ae2b1f395ae5e98be2604b3f"
 }
