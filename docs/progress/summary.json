@@ -11818,6 +11818,14 @@
    "library": false
   },
   {
+   "address": "0x004898a0",
+   "name": "AlrWhite_Out",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004899f0",
    "name": "AlrWhite_Init",
    "accuracy": 0.05714285714285714,
@@ -11852,9 +11860,9 @@
   {
    "address": "0x00489cd0",
    "name": "shotConfetti",
-   "accuracy": 0.02631578947368421,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -11879,6 +11887,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0048a4d0",
+   "name": "FUN_0048a4d0",
+   "accuracy": 0.023809523809523808,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -102540,5 +102556,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4d12fed5b1553e617424ae047f898b4190332b3451444e5352335f83e9cd99bd"
+ "inputs_sha256": "399866590accff7c503a8e0285f42fc4c98d23d0a1d0641a83b031edfaeab6ca"
 }

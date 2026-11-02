@@ -1702,6 +1702,7 @@ extern char DAT_05b33291;
 extern int DAT_05b33294[3];
 extern int DAT_05b332a8;
 extern struct task *DAT_05b35c28;
+extern struct DAT_05b35c40 *DAT_05b35c40;
 extern int DAT_05b35c44;
 extern int DAT_05b35c48;
 extern struct task *DAT_05b35c50;

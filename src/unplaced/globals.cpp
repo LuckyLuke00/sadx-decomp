@@ -5093,6 +5093,9 @@ int DAT_05b332a8;
 // GLOBAL: SADX 0x05b35c28
 struct task *DAT_05b35c28;
 
+// GLOBAL: SADX 0x05b35c40
+struct DAT_05b35c40 *DAT_05b35c40;
+
 // GLOBAL: SADX 0x05b35c44
 int DAT_05b35c44;
 
