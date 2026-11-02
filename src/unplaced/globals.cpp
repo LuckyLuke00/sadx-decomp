@@ -2702,6 +2702,18 @@ struct NJS_ACTION action_beamev_laser[1];
 // GLOBAL: SADX 0x03710ecc
 char DAT_03710ecc[1];
 
+// GLOBAL: SADX 0x03710ed4
+int DAT_03710ed4;
+
+// GLOBAL: SADX 0x03710ed8
+float DAT_03710ed8;
+
+// GLOBAL: SADX 0x03710edc
+float DAT_03710edc;
+
+// GLOBAL: SADX 0x03710ee4
+float DAT_03710ee4;
+
 // GLOBAL: SADX 0x03710f14
 struct NJS_SPRITE DAT_03710f14;
 
@@ -5548,6 +5560,9 @@ char DAT_05b3ebba;
 
 // GLOBAL: SADX 0x05b3ebbc
 int DAT_05b3ebbc;
+
+// GLOBAL: SADX 0x05b3ebc0
+float DAT_05b3ebc0;
 
 // GLOBAL: SADX 0x05b3ebc4
 int DAT_05b3ebc4;
@@ -8795,6 +8810,9 @@ struct task *DAT_060cd388;
 // GLOBAL: SADX 0x060cd39c
 char DAT_060cd39c[4];
 
+// GLOBAL: SADX 0x060cd3a8
+int DAT_060cd3a8;
+
 // GLOBAL: SADX 0x060ce3fc
 int DAT_060ce3fc;
 
@@ -8804,6 +8822,9 @@ int DAT_060ce404;
 // GLOBAL: SADX 0x060ce418
 int DAT_060ce418;
 
+// GLOBAL: SADX 0x060ce41c
+float DAT_060ce41c;
+
 // GLOBAL: SADX 0x060ce43c
 float DAT_060ce43c;
 
@@ -8812,6 +8833,9 @@ int DAT_060ce440;
 
 // GLOBAL: SADX 0x060ce444
 int DAT_060ce444;
+
+// GLOBAL: SADX 0x060ce448
+float DAT_060ce448;
 
 // GLOBAL: SADX 0x060ce44c
 unsigned char DAT_060ce44c;

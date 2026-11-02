@@ -1,4 +1,12 @@
 #include "decls.h"
+void SetTornadeLifeGauge(int xpos, int ypos, int max);
+extern float DAT_03710ed8;
+extern float DAT_03710edc;
+extern float DAT_03710ee4;
+extern int DAT_03710ed4;
+extern float DAT_060ce41c;
+extern float DAT_060ce448;
+extern float DAT_05b3ebc0;
 void ScoreInit();
 void ScoreDisp(struct task *tp);
 extern struct NJS_SPRITE DAT_03710f14;
@@ -11,9 +19,29 @@ extern int DAT_060ce404;
 extern int DAT_060ce440;
 extern int DAT_060ce444;
 
-// STUB: SADX 0x007eae60
+// FUNCTION: SADX 0x007eae60
 void ScoreInit()
 {
+	DAT_060ce41c = 5.0f;
+	DAT_060ce404 = 0;
+	SetTornadeLifeGauge(0x120, 0x1a4, 5);
+	int var1 = (DAT_05b9d724 << 8) | (int)DAT_05b9d744;
+	DAT_060ce444 = 0;
+	DAT_060ce440 = 1;
+	if ((var1 & 0xff00) == 0x2400)
+	{
+		DAT_060ce448 = 91.0f;
+	}
+	else
+	{
+		DAT_060ce448 = 176.0f;
+	}
+	DAT_05b3ec18 = 0;
+	DAT_060ce43c = 0.0f;
+	DAT_05b3ebc0 = 0.0f;
+	DAT_03710ed8 = ScreenRaitoX * 139.0f;
+	DAT_03710edc = ScreenRaitoY * 48.0f;
+	DAT_03710ee4 = ScreenRaitoX;
 }
 
 // FUNCTION: SADX 0x007eaf20
@@ -85,7 +113,32 @@ void ShtBossScoreAdd(int time)
 	}
 }
 
-// STUB: SADX 0x007eb0e0
+// FUNCTION: SADX 0x007eb0e0
 void ShtScoreTask(struct task *tp)
 {
+	switch (tp->twp->mode)
+	{
+	case 0:
+		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		tp->disp = ScoreDisp;
+		ScoreInit();
+		tp->twp->mode = 1;
+		break;
+	case 1:
+		DAT_060ce444--;
+		if (DAT_060ce444 <= 0)
+		{
+			DAT_060ce444 = 0;
+			DAT_060ce440 = 1;
+		}
+		DAT_03710ed4 = DAT_060ce404;
+		DAT_060ce450 = DAT_060ce41c;
+		ScoreDisp(tp);
+		DAT_05b3ebc0 = DAT_060ce43c / DAT_060ce448 * 100.0;
+		break;
+	case 2:
+		ScoreDisp(tp);
+		njPrintC(0x10000f, "GAME OVER");
+		break;
+	}
 }

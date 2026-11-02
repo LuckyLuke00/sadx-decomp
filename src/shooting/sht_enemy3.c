@@ -1,6 +1,19 @@
 #include "decls.h"
+extern int DAT_060cd3a8;
 void FUN_007ecd30(struct task *param_1);
 void FUN_007ecd30(struct task *param_1);
+
+// FUNCTION: SADX 0x007ec8c0
+int __fastcall Zako3Move(struct taskwk *twp)
+{
+	int var1 = *(char *)((char *)twp + 0x12) * 16 + DAT_060cd3a8;
+	int var2 = *(int *)(var1 + 4);
+	int var3 = *(int *)*(int *)(var1 + 8);
+	twp->pos.x = *(float *)((char *)var2 + (DAT_060ce418 - var3) * 12);
+	twp->pos.y = *(float *)((char *)var2 + (DAT_060ce418 - var3) * 12 + 4);
+	twp->pos.z = *(float *)((char *)var2 + (DAT_060ce418 - var3) * 12 + 8);
+	return 1;
+}
 
 // FUNCTION: SADX 0x007ed6d0
 void sht_Zako3Gun(struct task *tp)
