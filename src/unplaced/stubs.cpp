@@ -1514,6 +1514,11 @@ void MilesDirectAhead(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0053c430
+void MilesDirectAhead2(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0053e0e0
 void DisplayMilesSnowBoard(struct task *tp)
 {

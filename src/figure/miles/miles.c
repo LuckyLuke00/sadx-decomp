@@ -97,10 +97,44 @@ long MilesCheckAutoPilot(struct taskwk *param_1, ...)
 	return (long)0;
 }
 
-// STUB: SADX 0x0053a070
+// FUNCTION: SADX 0x0053a070
 long MilesCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if ((twp->flag & 0x1000) == 0)
+	{
+		return 0;
+	}
+	switch (twp->smode)
+	{
+		case 24:
+			twp->mode = 0xa;
+			*(short *)((char *)pwp + 0x124) = 0x13;
+			*(float *)((char *)pwp + 0x110) = 9.0f;
+			*(float *)((char *)pwp + 0x11c) = *(float *)((char *)pwp + 0x110) * 0.5;
+			break;
+		case 19:
+			twp->mode = 0x3e;
+			if (GetMRaceResult() == 1)
+			{
+				*(short *)((char *)pwp + 0x124) = 0x36;
+			}
+			else
+			{
+				*(short *)((char *)pwp + 0x124) = 0x38;
+			}
+			*(long *)((char *)twp + 0x1c) = 0;
+			*(long *)((char *)twp + 0x14) = 0;
+			mwp->spd.z = 0.0f;
+			mwp->spd.y = 0.0f;
+			mwp->spd.x = 0.0f;
+			*(float *)((char *)pwp + 0x40) = 0.0f;
+			*(float *)((char *)pwp + 0x3c) = 0.0f;
+			*(float *)((char *)pwp + 0x38) = 0.0f;
+			*(signed char *)((char *)twp + 0xf) = *(signed char *)((char *)twp + 0xf) | 8;
+			CancelLookingAtP(0);
+			break;
+	}
+	return 1;
 }
 
 // FUNCTION: SADX 0x0053a180
@@ -163,10 +197,27 @@ long FUN_0053a220(struct taskwk *param_1, struct playerwk *param_2)
 	}
 }
 
-// STUB: SADX 0x0053a2c0
+// FUNCTION: SADX 0x0053a2c0
 int FUN_0053a2c0(char *param_1, int param_2)
 {
-	return (int)0;
+	if (*(float *)(param_2 + 0x38) < *(float *)(param_2 + 0xc4))
+	{
+		if (*(float *)(param_2 + 0x38) <= 0.0f)
+		{
+			*param_1 = 1;
+			*(unsigned short *)(param_2 + 0x124) = 0x24;
+		}
+		else
+		{
+			*param_1 = 2;
+			*(unsigned short *)(param_2 + 0x124) = 0x24;
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // STUB: SADX 0x0053a330
@@ -285,10 +336,32 @@ int FUN_0053be50(char param_1, struct NJS_POINT3 *param_2)
 	return 1;
 }
 
-// STUB: SADX 0x0053bee0
+// FUNCTION: SADX 0x0053bee0
 int FUN_0053bee0(unsigned char param_1, struct NJS_POINT3 *param_2)
 {
-	return (int)0;
+	struct task *local_cg;
+	struct motionwk *local_8g;
+
+	local_cg = CreateElementalTask(2, 2, MilesDirectAhead2);
+	if (local_cg != 0)
+	{
+		local_8g = (struct motionwk *)MAlloc(0x88);
+		if (local_8g == 0)
+		{
+			FreeTask(local_cg);
+			return 0;
+		}
+		local_cg->mwp = local_8g;
+		local_cg->twp->counter.b[0] = param_1;
+		*(long *)((char *)local_8g + 0x58) = *(long *)param_2;
+		*(long *)((char *)local_8g + 0x5c) = *(long *)((char *)param_2 + 4);
+		*(long *)((char *)local_8g + 0x60) = *(long *)((char *)param_2 + 8);
+	}
+	else
+	{
+		return 0;
+	}
+	return 1;
 }
 
 // STUB: SADX 0x0053cb70
