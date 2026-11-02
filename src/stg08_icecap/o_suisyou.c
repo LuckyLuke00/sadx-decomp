@@ -16,6 +16,16 @@ static void Normal(struct task *tp)
 {
 }
 
+// FUNCTION: SADX 0x00861050
+void ObjectSuisyouTaore(struct task *tp)
+{
+	tp->twp->flag = 0xfcff;
+	CCL_Init(tp, &object_c_info[0], 2, 4);
+	tp->exec = Normal;
+	tp->disp = Disp;
+	tp->twp->mode = 0;
+}
+
 // FUNCTION: SADX 0x00861090
 void ObjectSuisyouB(struct task *tp)
 {
@@ -32,4 +42,13 @@ void ObjectSuisyouBM(struct task *tp)
 	tp->exec = Normal;
 	tp->disp = Disp;
 	tp->twp->mode = 2;
+}
+
+// FUNCTION: SADX 0x008610f0
+void ObjectSuisyouR(struct task *tp)
+{
+	CCL_Init(tp, &object_c_info[5], 1, 4);
+	tp->exec = Normal;
+	tp->disp = Disp;
+	tp->twp->mode = 4;
 }
