@@ -2708,6 +2708,18 @@ long CamBackDelay;
 // GLOBAL: SADX 0x037719f8
 long CamBackTarget;
 
+// GLOBAL: SADX 0x0387c630
+void *DAT_0387c630;
+
+// GLOBAL: SADX 0x0387c634
+void *DAT_0387c634;
+
+// GLOBAL: SADX 0x0387c638
+void *DAT_0387c638;
+
+// GLOBAL: SADX 0x0387c63c
+void *DAT_0387c63c;
+
 // GLOBAL: SADX 0x03984694
 struct obj object_seaobj_yashi04_yashi04[1];
 
@@ -6457,6 +6469,9 @@ char DAT_05cbef5d;
 
 // GLOBAL: SADX 0x05cbef64
 int DAT_05cbef64;
+
+// GLOBAL: SADX 0x05cbef80
+char DAT_05cbef80[121];
 
 // GLOBAL: SADX 0x05cbeff9
 unsigned char DAT_05cbeff9;
