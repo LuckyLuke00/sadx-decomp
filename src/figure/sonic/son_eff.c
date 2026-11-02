@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct MIZUIKIINFO mizuikiinfos[15];
 void EffectExecuteRibbon(struct task *tp);
 void EffectDrawRibbon(struct task *tp);
 void EffectDestructRibbon(struct task *tp);
@@ -16,9 +17,33 @@ int FUN_005b05b0(struct taskwk *local_8);
 void FUN_005b0e20(struct task *param_1);
 void FUN_005ae5e0(struct taskwk *param_1, void *param_2);
 
-// STUB: SADX 0x005ae4f0
+// FUNCTION: SADX 0x005ae4f0
 void ObjectMizuiki(struct task *tp)
 {
+	struct taskwk *local_cg;
+	unsigned int local_8g;
+
+	local_cg = tp->twp;
+	tp->disp = AwaDraw;
+	tp->exec = AwaExec;
+	tp->dest = AwaEnd;
+	local_cg->value.l = 0;
+	local_cg->smode = 0;
+	local_cg->wtimer = 0;
+	if (FUN_004c39c0(tp))
+	{
+		return;
+	}
+	local_cg->btimer = 0;
+	local_cg->counter.l = 0;
+	for (local_8g = 0; local_8g < 0xf; local_8g += 3)
+	{
+		if (GetPlayerCharacterName(0) == mizuikiinfos[local_8g].name)
+		{
+			local_cg->counter.l = (long)&mizuikiinfos[local_8g];
+			return;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x005ae5b0

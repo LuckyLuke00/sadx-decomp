@@ -196,6 +196,7 @@ struct MID_EXPLOSION_INFO;
 struct MiMsg;
 struct MiniGameSelWk;
 struct MirrorPlane;
+struct MIZUIKIINFO;
 struct MJOIN_VERTEX;
 struct MLT_DATA;
 struct MLT_SE;
@@ -3206,6 +3207,42 @@ static_assert(offsetof(MID_EXPLOSION_INFO, nExpGrowEndTime) == 0x1c, "MID_EXPLOS
 static_assert(offsetof(MID_EXPLOSION_INFO, nExpEndTime) == 0x20, "MID_EXPLOSION_INFO::nExpEndTime");
 static_assert(offsetof(MID_EXPLOSION_INFO, nExpTailTime) == 0x24, "MID_EXPLOSION_INFO::nExpTailTime");
 static_assert(offsetof(MID_EXPLOSION_INFO, fExpMaxRadius) == 0x28, "MID_EXPLOSION_INFO::fExpMaxRadius");
+
+struct MIZUIKIINFO {
+    long name;
+    struct NJS_POINT3 posmouth;
+    float mouthrad;
+    float spdawa;
+    long usernum;
+    float awasclmax;
+    float awasclmin;
+    float awayugami;
+    float awafraction;
+    float awafallspeed;
+    float awarandomspd;
+    float awarandom;
+    float awarotspd;
+    float awasclpitch;
+    float awagatarandom;
+    float awagataspd;
+};
+static_assert(sizeof(MIZUIKIINFO) == 0x48, "sizeof MIZUIKIINFO");
+static_assert(offsetof(MIZUIKIINFO, name) == 0x0, "MIZUIKIINFO::name");
+static_assert(offsetof(MIZUIKIINFO, posmouth) == 0x4, "MIZUIKIINFO::posmouth");
+static_assert(offsetof(MIZUIKIINFO, mouthrad) == 0x10, "MIZUIKIINFO::mouthrad");
+static_assert(offsetof(MIZUIKIINFO, spdawa) == 0x14, "MIZUIKIINFO::spdawa");
+static_assert(offsetof(MIZUIKIINFO, usernum) == 0x18, "MIZUIKIINFO::usernum");
+static_assert(offsetof(MIZUIKIINFO, awasclmax) == 0x1c, "MIZUIKIINFO::awasclmax");
+static_assert(offsetof(MIZUIKIINFO, awasclmin) == 0x20, "MIZUIKIINFO::awasclmin");
+static_assert(offsetof(MIZUIKIINFO, awayugami) == 0x24, "MIZUIKIINFO::awayugami");
+static_assert(offsetof(MIZUIKIINFO, awafraction) == 0x28, "MIZUIKIINFO::awafraction");
+static_assert(offsetof(MIZUIKIINFO, awafallspeed) == 0x2c, "MIZUIKIINFO::awafallspeed");
+static_assert(offsetof(MIZUIKIINFO, awarandomspd) == 0x30, "MIZUIKIINFO::awarandomspd");
+static_assert(offsetof(MIZUIKIINFO, awarandom) == 0x34, "MIZUIKIINFO::awarandom");
+static_assert(offsetof(MIZUIKIINFO, awarotspd) == 0x38, "MIZUIKIINFO::awarotspd");
+static_assert(offsetof(MIZUIKIINFO, awasclpitch) == 0x3c, "MIZUIKIINFO::awasclpitch");
+static_assert(offsetof(MIZUIKIINFO, awagatarandom) == 0x40, "MIZUIKIINFO::awagatarandom");
+static_assert(offsetof(MIZUIKIINFO, awagataspd) == 0x44, "MIZUIKIINFO::awagataspd");
 
 struct MJOIN_VERTEX {
     short numVertex;

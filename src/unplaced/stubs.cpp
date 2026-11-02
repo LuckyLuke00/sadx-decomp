@@ -1846,6 +1846,11 @@ long StageNameMode(void *Param)
 	return (long)0;
 }
 
+// STUB: SADX 0x005ae640
+void AwaExec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x005b0870
 void EffectDashExecute(struct task *tp)
 {
