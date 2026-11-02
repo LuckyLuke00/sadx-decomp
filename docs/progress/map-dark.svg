@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,063 of 16,524 game functions done (36.69%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,065 of 16,524 game functions done (36.70%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -3566,7 +3566,7 @@
 <rect x="224" y="210" width="6" height="6" fill="#ffd700"><title>0x00716350 AL_GetMessage: 100%</title></rect>
 <rect x="245" y="210" width="6" height="6" fill="#ffd700"><title>0x00717030 ChaoSelectWindowDestructor: 100%</title></rect>
 </g>
-<rect x="665" y="821" width="315" height="97" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 142 of 406 functions done</title></rect>
+<rect x="665" y="821" width="315" height="97" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 144 of 406 functions done</title></rect>
 <text x="668" y="835" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Race <tspan font-weight="400" fill="#8b949e">11%</tspan></text>
 <g transform="translate(668,839)">
 <rect y="0" width="308" height="63" fill="url(#todo)"/>
@@ -3651,8 +3651,10 @@
 <rect x="182" y="21" width="6" height="6" fill="#ffd700"><title>0x00489650 AlrRoot_GetGoal: 100%</title></rect>
 <rect x="196" y="21" width="6" height="6" fill="#ffd700"><title>0x004896f0 AlrRoot_Del: 100%</title></rect>
 <rect x="203" y="21" width="6" height="6" fill="#ffd700"><title>0x00489710 AlrRoot_Clear: 100%</title></rect>
+<rect x="238" y="21" width="6" height="6" fill="#ffd700"><title>0x004898a0 AlrWhite_Out: 100%</title></rect>
 <rect x="301" y="21" width="6" height="6" fill="#ffd700"><title>0x00489c90 ObjectAlrCracker_Start: 100%</title></rect>
 <rect x="0" y="28" width="6" height="6" fill="#ffd700"><title>0x00489cb0 ObjectAlrCracker_GetFlag: 100%</title></rect>
+<rect x="14" y="28" width="6" height="6" fill="#ffd700"><title>0x00489cd0 shotConfetti: 100%</title></rect>
 <rect x="21" y="28" width="6" height="6" fill="#ffd700"><title>0x00489dd0 shotTape: 100%</title></rect>
 <rect x="42" y="28" width="6" height="6" fill="#ffd700"><title>0x0048a000 ObjectAlrCracker_Init: 100%</title></rect>
 <rect x="126" y="28" width="6" height="6" fill="#ffd700"><title>0x0048a7f0 AlrObjFreeManageTask: 100%</title></rect>

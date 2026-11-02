@@ -136,6 +136,7 @@ struct CRUSHLIGHT_WK;
 struct csts;
 struct CUSTOM_OBJ;
 struct DAT_0044e380_0;
+struct DAT_05b35c40;
 struct DDlgType;
 struct DEMOPICTUREINFO;
 struct DialogPrmType;

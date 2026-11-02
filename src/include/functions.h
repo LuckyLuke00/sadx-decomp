@@ -614,6 +614,7 @@ void AlrStage00_Exe(struct AlrReal *___this);
 void shotConfetti(struct task *pTask);
 void shotTape(struct task *pTask);
 void ObjectAlrCracker(struct task *);
+void FUN_0048a4d0(struct NJS_POINT3 *, struct NJS_POINT3 *, long);
 struct task *AlrObjSetTask(const struct TaskInfo *info_p, void *param_p);
 struct alifewk *ALR_Init(struct task *tp);
 void ALR_Destructor(struct task *tp);

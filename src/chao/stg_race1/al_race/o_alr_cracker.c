@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_0048a4d0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2, long param_3);
 void ObjectAlrCracker(struct task *pTask);
 extern struct obj object_cr4_nc_crk_nc_crk[1];
 extern struct obj object_cr4_nc_crk2_nc_crk2[1];
@@ -25,9 +26,33 @@ long ObjectAlrCracker_GetFlag()
 	return DAT_05b35c48;
 }
 
-// STUB: SADX 0x00489cd0
+// FUNCTION: SADX 0x00489cd0
 void shotConfetti(struct task *pTask)
 {
+	struct taskwk *var1 = pTask->twp;
+	struct NJS_POINT3 local_20;
+	struct NJS_POINT3 local_14;
+	njPushMatrix(&_nj_unit_matrix_);
+	if (var1->ang.x)
+	{
+		njRotateX(0, (unsigned short)var1->ang.x);
+	}
+	if (var1->ang.y)
+	{
+		njRotateY(0, (unsigned short)var1->ang.y);
+	}
+	if (var1->ang.z)
+	{
+		njRotateZ(0, (unsigned short)var1->ang.z);
+	}
+	njCalcVector(0, &startPosCracker, &local_20);
+	FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
+	njCalcVector(0, &unitVecCracker, &local_14);
+	njPopMatrix(1);
+	local_20.x += var1->pos.x;
+	local_20.y += var1->pos.y;
+	local_20.z += var1->pos.z;
+	FUN_0048a4d0(&local_20, &local_14, (long)var1->scl.y);
 }
 
 // FUNCTION: SADX 0x00489dd0

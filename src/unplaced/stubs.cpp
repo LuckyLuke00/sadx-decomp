@@ -952,6 +952,11 @@ void ObjectAlrCracker(struct task *)
 {
 }
 
+// STUB: SADX 0x0048a4d0
+void FUN_0048a4d0(struct NJS_POINT3 *, struct NJS_POINT3 *, long)
+{
+}
+
 // STUB: SADX 0x0048c150
 struct alifewk *ALR_Init(struct task *tp)
 {
