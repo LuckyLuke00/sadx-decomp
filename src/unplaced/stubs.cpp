@@ -3596,6 +3596,16 @@ void ObjectCasinoHyoujikiInit(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0087d4f0
+void ObjectCasinoSrdoorDraw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0087d690
+void ObjectCasinoSrdoorExec(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0087dfa0
 void ObjectCasinoKkdoorInit(struct task *tp)
 {

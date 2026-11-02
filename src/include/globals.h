@@ -1309,6 +1309,7 @@ extern struct obj object_cas_obj_slot_isu_slot_isu[1];
 extern struct obj object_csn_dentou_dentou[];
 extern struct obj object_csn_t_light_a_t_light_a[1];
 extern struct obj object_csn_t_light_b_t_light_b[1];
+extern struct obj object_cas_rt_lht_rt_lht[];
 extern struct obj object_cas_gb_lht_gb_lht[1];
 extern char DAT_048093d8;
 extern unsigned char DAT_048093d9;

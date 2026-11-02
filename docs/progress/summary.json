@@ -63909,9 +63909,9 @@
   {
    "address": "0x008730b0",
    "name": "Disp(39)",
-   "accuracy": 0.02702702702702703,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -64587,6 +64587,30 @@
    "library": false
   },
   {
+   "address": "0x0087d4f0",
+   "name": "ObjectCasinoSrdoorDraw",
+   "accuracy": 0.016666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0087d690",
+   "name": "ObjectCasinoSrdoorExec",
+   "accuracy": 0.025423728813559324,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0087d9a0",
+   "name": "ObjectCasinoSrdoor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0087dfa0",
    "name": "ObjectCasinoKkdoorInit",
    "accuracy": 0.05555555555555555,
@@ -64664,6 +64688,14 @@
    "accuracy": 0.047619047619047616,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0087e470",
+   "name": "ObjectCasinoCris",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -65629,7 +65661,7 @@
   {
    "address": "0x0088a100",
    "name": "DispObjVL",
-   "accuracy": 0.024390243902439025,
+   "accuracy": 0.023529411764705882,
    "effective": false,
    "stub": true,
    "library": false
@@ -65637,9 +65669,9 @@
   {
    "address": "0x0088a1f0",
    "name": "ExecCVL",
-   "accuracy": 0.05405405405405406,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -99924,6 +99956,13 @@
    "library": false
   },
   {
+   "address": "0x047f30cc",
+   "name": "object_cas_rt_lht_rt_lht",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x047f355c",
    "name": "object_cas_gb_lht_gb_lht",
    "size": 52,
@@ -100330,8 +100369,22 @@
    "library": false
   },
   {
+   "address": "0x0480c5f8",
+   "name": "object_c_info",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0480c6c8",
    "name": "object_c_info_sphere",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0480c704",
+   "name": "object_c_info",
    "size": 48,
    "match": false,
    "library": false
@@ -102250,5 +102303,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5b6fe809b1057de56db63449875d50ee5177794c63dbc7b615386eb9cbfc10ad"
+ "inputs_sha256": "55ef3569937b835adc898247e8866d16b11084db5ea79c67b2f05f3422576573"
 }

@@ -257,14 +257,28 @@ void ObjCasino_InitSCV(struct task *tp, float range, struct obj *pobject, struct
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x0088a100
 void DispObjVL(struct task *tp)
 {
 }
+#pragma optimize("", on)
 
-// STUB: SADX 0x0088a1f0
+// FUNCTION: SADX 0x0088a1f0
 void ExecCVL(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, var1->value.f) == 0)
+	{
+		DispObjVL(tp);
+		if (FUN_004c39c0(tp) != 0)
+		{
+			var1->smode = (short)((long)var1->scl.x & 1);
+			njPrintC(0x120013, "-> Light Ignore");
+			return;
+		}
+		EntryColliList(var1);
+	}
 }
 
 // STUB: SADX 0x0088a250
