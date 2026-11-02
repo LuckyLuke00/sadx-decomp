@@ -1,8 +1,9 @@
 #include "decls.h"
+static void EmeraldDisplayer(struct task *tp);
 extern struct obj *DAT_060b97f4[4];
 
 // FUNCTION: SADX 0x006bf900
-void EmeraldDisplayer(struct task *tp)
+static void EmeraldDisplayer(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
@@ -21,7 +22,26 @@ void EmeraldDisplayer(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x006bf990
+// FUNCTION: SADX 0x006bf990
 void ObjectPastChaosEmerald(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		var1->smode = *(char *)((char *)var1 + 0x14);
+		if (var1->smode < 0 || var1->smode >= 7)
+		{
+			var1->smode = 0;
+		}
+		tp->disp = EmeraldDisplayer;
+		var1->mode = 1;
+		break;
+	case 1:
+		*(int *)((char *)var1 + 0x18) += 0x80;
+		var1->timer.w[0] += 0x100;
+		var1->value.f = njSin(var1->timer.w[0]);
+		break;
+	}
+	EmeraldDisplayer(tp);
 }

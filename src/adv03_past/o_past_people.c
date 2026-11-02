@@ -17,9 +17,25 @@ void pastp_exec_eveidle(struct task *task_p)
 {
 }
 
-// STUB: SADX 0x006bee20
+// FUNCTION: SADX 0x006bee20
 void ObjectPASTPeopleWait(struct task *task_p)
 {
+	struct taskwk *var1 = task_p->twp;
+	if (var1->scl.z < (float)*DAT_05b3e0d8)
+	{
+		if (pastp_new(task_p, (enum pastpmotion_type)0) != 0)
+		{
+			struct anywk *var2 = task_p->awp;
+			CCL_Init(task_p, (struct CCL_INFO *)(*(int *)((char *)var2 + 0x14) + 0x2c), 1, 4);
+			*(void (__cdecl **)(struct task *))((char *)var2 + 0x28) = (void (__cdecl *)(struct task *))pastp_control_wait;
+			task_p->dest = mrp_end;
+			return;
+		}
+	}
+	if (DAT_05ccde90 != 0)
+	{
+		pastp_debug_draw(task_p);
+	}
 }
 
 // FUNCTION: SADX 0x006bf090

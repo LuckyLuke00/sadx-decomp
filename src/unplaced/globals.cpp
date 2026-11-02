@@ -1955,6 +1955,9 @@ struct NJS_SPRITE sprite_panlight;
 // GLOBAL: SADX 0x0270c778
 struct CCL_INFO cinfo_well[1];
 
+// GLOBAL: SADX 0x0270c7d8
+struct CCL_INFO cinfo_tree[1];
+
 // GLOBAL: SADX 0x0270cb90
 struct NJS_POINT3 *pScale_Egm01[1];
 

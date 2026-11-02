@@ -1,4 +1,5 @@
 #include "decls.h"
+static struct CCL_INFO cinfo_tree[1];
 
 // FUNCTION: SADX 0x006c1190
 void DisplayPalm(struct task *tp)
@@ -25,4 +26,41 @@ void DisplayPalm(struct task *tp)
 		late_DrawObjectClipEx(*(struct obj **)((char *)DAT_060eeaa4 + 0x24), 1, 1.0f);
 	}
 	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x006c1230
+void ObjectPastPalm(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		switch (var1->mode)
+		{
+		case 0:
+			tp->disp = DisplayPalm;
+			CCL_Init(tp, cinfo_tree, 1, 4);
+			if ((unsigned char)DAT_05b9d744 == 2)
+			{
+				var1->flag |= 0x200;
+				var1->mode = 2;
+				DisplayPalm(tp);
+				EntryColliList(var1);
+				return;
+			}
+			var1->mode = 1;
+			break;
+		case 2:
+			var1->value.f = var1->value.f + 0.4000000059604645;
+			if (var1->value.f >= 15.0)
+			{
+				var1->value.f = 0.0;
+				DisplayPalm(tp);
+				EntryColliList(var1);
+				return;
+			}
+			break;
+		}
+		DisplayPalm(tp);
+		EntryColliList(var1);
+	}
 }

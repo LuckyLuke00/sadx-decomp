@@ -2511,6 +2511,23 @@ void pastpc_exec(struct task *task_p)
 {
 }
 
+// STUB: SADX 0x006be340
+long pastp_control_wait(struct task *task_p)
+{
+	return (long)0;
+}
+
+// STUB: SADX 0x006be760
+void pastp_debug_draw(struct task *task_p)
+{
+}
+
+// STUB: SADX 0x006bed40
+long pastp_new(struct task *task_p, enum pastpmotion_type init_mode)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x006bef70
 void pastp_walk_man_1st(struct task *task_p)
 {

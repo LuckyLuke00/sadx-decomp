@@ -655,6 +655,7 @@ extern struct CCL_INFO cinfo_emerald[];
 extern struct NJS_ARGB material_panlight;
 extern struct NJS_SPRITE sprite_panlight;
 extern struct CCL_INFO cinfo_well[];
+extern struct CCL_INFO cinfo_tree[];
 extern struct NJS_POINT3 *pScale_Egm01[1];
 extern struct ___stcClip *pClipSky_Egm01[1];
 extern struct ___stcClip *pClipMap_Egm01[1];
