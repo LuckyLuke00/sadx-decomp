@@ -1,10 +1,32 @@
 #include "decls.h"
+extern "C" double floor(double param_1);
 extern struct obj object_fun_test_funkaball_funkaball;
 extern void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 
-// STUB: SADX 0x00828ab0
+// FUNCTION: SADX 0x00828ab0
 void DisplayStone(struct task *tp)
 {
+	struct taskwk *local_8 = tp->twp;
+	float local_c = local_8->scl.x;
+	if (dsCheckViewV(&local_8->pos, 40.0f) != 0)
+	{
+		if (SetObjectTexture() != 0)
+		{
+			njPushMatrix(NULL);
+			njTranslateV(NULL, &local_8->pos);
+			if (local_8->ang.z != 0)
+			{
+				njRotateZ(NULL, (unsigned short)local_8->ang.z);
+			}
+			if (local_8->ang.x != 0)
+			{
+				njRotateX(NULL, (unsigned short)local_8->ang.x);
+			}
+			FUN_0067d2d0(NULL, local_c, local_c, local_c);
+			ds_DrawModelClip((struct NJS_MODEL *)(*(int *)((char *)(*(int *)((char *)local_8 + 8)) + 4)), local_c);
+			njPopMatrix(1);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x00832500

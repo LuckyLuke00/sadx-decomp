@@ -59085,9 +59085,9 @@
   {
    "address": "0x00827b70",
    "name": "mt_gdcontrol",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -59117,9 +59117,9 @@
   {
    "address": "0x00828ab0",
    "name": "DisplayStone",
-   "accuracy": 0.03278688524590164,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -59627,6 +59627,14 @@
    "library": false
   },
   {
+   "address": "0x00831ef0",
+   "name": "ObjectMountainSignboard",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00831f50",
    "name": "RelaypointDraw",
    "accuracy": 1.0,
@@ -59749,6 +59757,22 @@
   {
    "address": "0x008347a0",
    "name": "ObjectMountainPipeBox",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008347e0",
+   "name": "ObjectMountainPipeL",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00835100",
+   "name": "ObjectMountainChair",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -98008,6 +98032,13 @@
    "library": false
   },
   {
+   "address": "0x03f5705c",
+   "name": "object_denkiisu1a_denki_isu_denki_isu",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03f582b0",
    "name": "model_haka1a_gaikotu_gaikotu",
    "size": 44,
@@ -98017,6 +98048,13 @@
   {
    "address": "0x03f5c010",
    "name": "object_sotolight_light_light",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03f5c95c",
+   "name": "object_pipe_set_pipe_l_pipe_l",
    "size": 52,
    "match": false,
    "library": false
@@ -98218,6 +98256,13 @@
    "library": false
   },
   {
+   "address": "0x03feb100",
+   "name": "ColliInfo",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03feb220",
    "name": "erupt_expl_cinfo",
    "size": 48,
@@ -98242,6 +98287,13 @@
    "address": "0x03feb658",
    "name": "object_c_info",
    "size": 192,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03feb7c0",
+   "name": "object_c_info",
+   "size": 96,
    "match": false,
    "library": false
   },
@@ -102140,5 +102192,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "2029b4aeeb7b123a74327537ec99d22f2f9009378c8a6beac07b856fa8d84b0a"
+ "inputs_sha256": "23b60276cc3bcb8e5d653d1df129bba88c8689be05c9f64fe426a659f75db9c9"
 }

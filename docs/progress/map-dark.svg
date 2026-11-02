@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1425" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,023 of 16,524 game functions done (36.45%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,028 of 16,524 game functions done (36.48%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 604,1191.5 598,1184.6 599.1,1183" fill="#4e32f3"/>
 <polygon points="600.8,1181.5 607.2,1181.5 608.9,1183 610,1184.6 598,1184.6 599.1,1183" fill="#ffffff" fill-opacity="0.4"/>
@@ -892,7 +892,7 @@
 <rect x="56" y="77" width="6" height="6" fill="#ffd700"><title>0x00825d40 dispElevator: 100%</title></rect>
 <rect x="63" y="77" width="6" height="6" fill="#ffd700"><title>0x00825e10 dispEvStep: 100%</title></rect>
 </g>
-<rect x="386" y="87" width="138" height="146" rx="3" fill="#21262d" stroke="#30363d"><title>Red Mountain: 78 of 262 functions done</title></rect>
+<rect x="386" y="87" width="138" height="146" rx="3" fill="#21262d" stroke="#30363d"><title>Red Mountain: 83 of 262 functions done</title></rect>
 <text x="389" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Red Mountain <tspan font-weight="400" fill="#8b949e">13%</tspan></text>
 <g transform="translate(389,105)">
 <rect y="0" width="133" height="91" fill="url(#todo)"/>
@@ -900,7 +900,9 @@
 <rect x="0" y="0" width="6" height="6" fill="#ffd700"><title>0x00497210 SetClip_0500: 100%</title></rect>
 <rect x="7" y="0" width="6" height="6" fill="#ffd700"><title>0x008279e0 FUN_008279e0: 100%</title></rect>
 <rect x="21" y="0" width="6" height="6" fill="#ffd700"><title>0x00827ac0 SetTableBg_mountain: 100%</title></rect>
+<rect x="28" y="0" width="6" height="6" fill="#ffd700"><title>0x00827b70 mt_gdcontrol: 100%</title></rect>
 <rect x="42" y="0" width="6" height="6" fill="#ffd700"><title>0x00827e80 Object_Mountain_KN_Display: 100%</title></rect>
+<rect x="119" y="0" width="6" height="6" fill="#ffd700"><title>0x00828ab0 DisplayStone: 100%</title></rect>
 <rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x00828d40 ExplosionRockDestructor: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x00828d50 MiddleRockDisplayer: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x00828e10 EffectSteam: 100%</title></rect>
@@ -946,6 +948,7 @@
 <rect x="35" y="56" width="6" height="6" fill="#ffd700"><title>0x008310d0 DesertAChildTask: 100%</title></rect>
 <rect x="105" y="56" width="6" height="6" fill="#ffd700"><title>0x008319e0 ObjectMountainPropellerExit: 100%</title></rect>
 <rect x="7" y="63" width="6" height="6" fill="#ffd700"><title>0x00831e40 ObjectMountainSignboardDisp: 100%</title></rect>
+<rect x="14" y="63" width="6" height="6" fill="#ffd700"><title>0x00831ef0 ObjectMountainSignboard: 100%</title></rect>
 <rect x="21" y="63" width="6" height="6" fill="#ffd700"><title>0x00831f50 RelaypointDraw: 100%</title></rect>
 <rect x="28" y="63" width="6" height="6" fill="#ffd700"><title>0x00832000 RelaypointExec: 100%</title></rect>
 <rect x="35" y="63" width="6" height="6" fill="#ffd700"><title>0x00832060 ObjectMountainRelaypoint: 100%</title></rect>
@@ -959,6 +962,8 @@
 <rect x="91" y="70" width="6" height="6" fill="#ffd700"><title>0x00833fb0 HanmaExec: 100%</title></rect>
 <rect x="0" y="77" width="6" height="6" fill="#ffd700"><title>0x00834760 ObjectMountainPipeI: 100%</title></rect>
 <rect x="7" y="77" width="6" height="6" fill="#ffd700"><title>0x008347a0 ObjectMountainPipeBox: 100%</title></rect>
+<rect x="14" y="77" width="6" height="6" fill="#ffd700"><title>0x008347e0 ObjectMountainPipeL: 100%</title></rect>
+<rect x="42" y="77" width="6" height="6" fill="#ffd700"><title>0x00835100 ObjectMountainChair: 100%</title></rect>
 <rect x="84" y="77" width="6" height="6" fill="#ffd700"><title>0x008355e0 DrawBonehead: 100%</title></rect>
 <rect x="112" y="77" width="6" height="6" fill="#ffd700"><title>0x00835aa0 Object_Mountain_Untei_Display: 100%</title></rect>
 <rect x="126" y="77" width="6" height="6" fill="#ffd700"><title>0x00835d90 Object_Mountain_Untei1: 100%</title></rect>
