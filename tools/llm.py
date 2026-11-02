@@ -2035,7 +2035,7 @@ def bench(args):
             text, crlf = read_source(path)
             unmatched = [a for kind, a, _ in names.parse_annotations(text) if kind == "FUNCTION" and a not in matched]
             write_source(path, stub_functions(text, [address, *unmatched]), crlf)
-            solve_and_log(args, row["file"], address, row["size"])
+            solve_and_log(args, row["file"], address, int(row["size"]))
         finally:
             restore(saved)
     return report(args.tag)
