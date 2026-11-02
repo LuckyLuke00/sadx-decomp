@@ -1438,6 +1438,7 @@ extern struct NJS_TEXANIM anim_c0_ato[];
 extern struct NJS_TEXANIM anim_c2_brain[1];
 extern struct NJS_SPRITE sprite_c2_brain;
 extern struct obj object_c0_manju_c0_manju[1];
+extern struct obj object_c0_balia_a_balia_a[1];
 extern struct NJS_TEXLIST texlist_chaos_effect;
 extern int DAT_04c37b48[6][3];
 extern int DAT_04c38b98[4];

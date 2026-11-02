@@ -49235,6 +49235,30 @@
    "library": false
   },
   {
+   "address": "0x006fae40",
+   "name": "objDisplay(3)",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x006faf30",
+   "name": "objNormal(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006fb000",
+   "name": "Chaos6Barrier",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x006fb070",
    "name": "FUN_006fb070",
    "accuracy": 1.0,
@@ -101315,6 +101339,13 @@
    "library": false
   },
   {
+   "address": "0x04c37898",
+   "name": "object_c0_balia_a_balia_a",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c37a2c",
    "name": "texlist_chaos_effect",
    "size": 8,
@@ -102556,5 +102587,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "399866590accff7c503a8e0285f42fc4c98d23d0a1d0641a83b031edfaeab6ca"
+ "inputs_sha256": "0a8cf74134c38b562aab367c647c2563726f1d7c3b3e45de127c689c76494681"
 }

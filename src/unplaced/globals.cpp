@@ -4304,6 +4304,9 @@ struct NJS_SPRITE sprite_c2_brain;
 // GLOBAL: SADX 0x04c33554
 struct obj object_c0_manju_c0_manju[1];
 
+// GLOBAL: SADX 0x04c37898
+struct obj object_c0_balia_a_balia_a[1];
+
 // GLOBAL: SADX 0x04c37a2c
 struct NJS_TEXLIST texlist_chaos_effect;
 
