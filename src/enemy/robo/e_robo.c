@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_ACTION action_sorsar_karada_1[1];
 extern struct particle_info robo_smoke1;
 float EnemyDist2FromPlayer(struct taskwk *twp, int num);
 long AdjustAngle(long ang0, long ang1, long dang);
@@ -364,9 +365,44 @@ void FUN_005bdc30(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
-// STUB: SADX 0x005bdcb0
+// FUNCTION: SADX 0x005bdcb0
 void RoboEditMode(struct taskwk *twp)
 {
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	___dsSetPalette(6);
+	___njSetTexture(&texlist_e_robo);
+	if (0.0f <= twp->scl.x)
+	{
+		njPushMatrix(0);
+		njTranslateV(0, &twp->pos);
+		if (twp->ang.y + 0x4000 != 0)
+		{
+			njRotateY(0, (unsigned short)(twp->ang.y + 0x4000));
+		}
+		if (1 != 0)
+		{
+			njRotateX(0, 0x2000);
+		}
+		FUN_0067d2d0(0, 1.2f, 1.2f, 1.2f);
+		FUN_004a88c0((struct NJS_ACTION *)&action_sorsar_karada_1, 1.0f);
+		njPopMatrix(1);
+	}
+	else
+	{
+		njPushMatrix(0);
+		njTranslateV(0, &twp->pos);
+		if (twp->ang.y + 0x4000 != 0)
+		{
+			njRotateY(0, (unsigned short)(twp->ang.y + 0x4000));
+		}
+		FUN_0067d2d0(0, 1.2f, 1.2f, 1.2f);
+		FUN_004a88c0((struct NJS_ACTION *)&action_sorsar_karada_1, 1.0f);
+		njPopMatrix(1);
+	}
+	___dsSetPalette(0);
 }
 
 // FUNCTION: SADX 0x005bde30

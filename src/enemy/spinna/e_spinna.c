@@ -1,4 +1,7 @@
 #include "decls.h"
+extern struct CCL_INFO spinna_info[3];
+extern void SpinnaDisplayer(struct task *tp);
+extern "C" int rand(void);
 unsigned long GetGlobalTime();
 void SpinnaEditDraw(struct taskwk *twp, float xpos, float ypos, float zpos);
 float EnemyDist2FromHome(struct taskwk *twp, struct enemywk *ewp);
@@ -15,9 +18,36 @@ void EnemySpinnaA(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00593d80
+// FUNCTION: SADX 0x00593d80
 void SpinnaInit(struct task *tp, struct taskwk *twp)
 {
+	unsigned long local_8g;
+	struct enemywk *local_cj;
+	int local_10m;
+	float local_14;
+	local_8g = GetGlobalTime();
+	CCL_Init(tp, spinna_info, 3, 2);
+	local_cj = EnemyInitialize(tp, twp);
+	twp->smode = 0;
+	twp->wtimer = 0;
+	local_cj->old_smode = (signed char)(*(unsigned int *)((char *)twp + 0x1c) & 0xff);
+	*(unsigned int *)((char *)twp + 0x1c) = (*(unsigned int *)((char *)twp + 0x1c) & ~0xff) >> 8;
+	local_cj->view_range = 6400.0f;
+	local_cj->view_angle = 0x71c7;
+	local_cj->hear_range = 400.0f;
+	*(float *)((char *)local_cj + 4) = 0.4f;
+	local_cj->angy_spd = 0x180;
+	local_cj->norm.x = 1.0f;
+	local_cj->norm.y = 0.0f;
+	local_10m = rand();
+	local_14 = (float)local_10m / 32768.0f;
+	local_cj->angz_spd = (long)(local_14 * 360.0f * 65536.0f / 360.0f);
+	local_cj->angx_spd = (int)local_8g * *(int *)((char *)twp + 0x1c) + *(int *)((char *)twp + 0x14);
+	local_cj->force.y = twp->pos.y;
+	EnemyPreserveHomePosition(twp, local_cj);
+	twp->mode = 1;
+	Knuckles_KakeraGame_Set_CheckEme(local_cj->old_smode, &twp->pos);
+	tp->disp = SpinnaDisplayer;
 }
 
 // FUNCTION: SADX 0x00593ee0

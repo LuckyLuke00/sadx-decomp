@@ -30069,9 +30069,9 @@
   {
    "address": "0x00593d80",
    "name": "SpinnaInit",
-   "accuracy": 0.0784313725490196,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34725,9 +34725,9 @@
   {
    "address": "0x005bdcb0",
    "name": "RoboEditMode",
-   "accuracy": 0.06896551724137931,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -93128,6 +93128,13 @@
    "library": false
   },
   {
+   "address": "0x02608d08",
+   "name": "spinna_info",
+   "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02608e24",
    "name": "DAT_02608e24",
    "size": 1,
@@ -93558,6 +93565,13 @@
    "address": "0x0264b028",
    "name": "model_sorsar_karada_1_atama1",
    "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0264d8ac",
+   "name": "action_sorsar_karada_1",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -102587,5 +102601,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0a8cf74134c38b562aab367c647c2563726f1d7c3b3e45de127c689c76494681"
+ "inputs_sha256": "e0634b7aae93bac57e644ffb951a221251e79d90fc31a5a01fd0c5628b2a2237"
 }
