@@ -68,9 +68,16 @@ void effect_color(short ef_num, float col_a, float col_r, float col_g, float col
 	}
 }
 
-// STUB: SADX 0x007d2c00
+// FUNCTION: SADX 0x007d2c00
 void effect_size_change(short ef_num, float speed_x, float speed_y)
 {
+	if (DAT_060cc0b0[ef_num])
+	{
+		int *var1 = (int *)DAT_060cc0b0[ef_num]->twp;
+		int *var2 = (int *)var1[3];
+		*(float *)(var2 + 6) = speed_x;
+		*(float *)(var2 + 7) = speed_y;
+	}
 }
 
 // STUB: SADX 0x007d2c30

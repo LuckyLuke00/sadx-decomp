@@ -27,14 +27,66 @@ void FUN_007d8da0(void)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x007d8fa0
 void dispBootTask(struct task *p_task)
 {
 }
+#pragma optimize("", on)
 
-// STUB: SADX 0x007d9010
+// FUNCTION: SADX 0x007d9010
 void execBootTask(struct task *p_task)
 {
+	struct taskwk *var1 = p_task->twp;
+	struct OBJ_CONDITION *var2 = *(struct OBJ_CONDITION **)((char *)var1 + 0x10);
+
+	switch (var1->mode)
+	{
+	case 0:
+		var1->counter.l++;
+		if (var1->counter.l < *(int *)((char *)var2 + 4))
+			break;
+		var1->mode = 1;
+		var1->counter.l = 0;
+		dispBootTask(p_task);
+		return;
+	case 1:
+		var1->counter.l++;
+		if (var1->counter.l < *(int *)((char *)var2 + 8))
+			break;
+		var1->mode = 2;
+		var1->counter.l = 0;
+		dispBootTask(p_task);
+		return;
+	case 2:
+		var1->counter.l++;
+		if (var1->counter.l >= *(int *)((char *)var2 + 0xc))
+		{
+			var1->mode = 3;
+			var1->counter.l = 0;
+		}
+		else
+		{
+			var2->scCount -= var2->scUserFlag;
+		}
+		dispBootTask(p_task);
+		return;
+	case 3:
+		var1->counter.l++;
+		if (var1->counter.l < *(int *)((char *)var2 + 0x10))
+			break;
+		var2->scCount = 0;
+		var1->mode = 4;
+		break;
+	case 5:
+		var1->counter.l++;
+		if (var1->counter.l < *(int *)((char *)var2 + 0x14))
+			break;
+		var2->scCount = 0;
+		var1->mode = 4;
+		break;
+	}
+	dispBootTask(p_task);
 }
 
 // FUNCTION: SADX 0x007d90f0

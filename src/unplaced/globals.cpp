@@ -2567,6 +2567,18 @@ int main_cloudnum;
 // GLOBAL: SADX 0x032ad6d8
 struct obj _object_tr1_s_t1_body_s_t1_body[1];
 
+// GLOBAL: SADX 0x03356930
+struct obj _object_egman_body_body[1];
+
+// GLOBAL: SADX 0x03356a10
+struct NJS_TEXLIST texlist_ev_eggman_body;
+
+// GLOBAL: SADX 0x03356b5c
+struct NJS_TEXLIST texlist_ev_eggmoble2;
+
+// GLOBAL: SADX 0x03363b94
+struct NJS_ACTION action_egm02jump_egm2_body[1];
+
 // GLOBAL: SADX 0x03363c8c
 struct NJS_TEXLIST texlist_egg_missile;
 
@@ -2575,6 +2587,12 @@ struct obj _object_missile_body_body;
 
 // GLOBAL: SADX 0x0336d714
 struct CCL_INFO DAT_0336d714;
+
+// GLOBAL: SADX 0x033e6c98
+struct NJS_TEXLIST texlist_f_egg_zangai;
+
+// GLOBAL: SADX 0x033e8868
+struct obj *ZANGAI_OBJ_TBL[8];
 
 // GLOBAL: SADX 0x033f30f8
 long data_ele[6];
