@@ -55,7 +55,7 @@ int InitStaff2()
 	SOCFile* local_448o = new SOCFile;
 	local_448o->FUN_00928790();
 	int local_458h = 0;
-	if (local_448o->FUN_00433c20(".\\system\\SonicADV_Socstaff.bin", 1))
+	if (local_448o->Open(".\\system\\SonicADV_Socstaff.bin", 1))
 	{
 		local_458h = local_448o->FUN_009285c0();
 		local_448o->FUN_00928630(0, 0);
@@ -173,8 +173,8 @@ int InitStaff2()
 	DAT_0260553d = 1;
 	if (DAT_05b3dfdc != 0)
 	{
-		((SOCAudio*)DAT_05b3dfdc)->FUN_00426350("SoundData\\BGM\\WMA\\title.adx");
-		((SOCAudio*)DAT_05b3dfdc)->FUN_00425d70((float)(DAT_05b3dff4 ? -1000000 : -420), 1);
+		((SOCAudio*)DAT_05b3dfdc)->Open("SoundData\\BGM\\WMA\\title.adx");
+		((SOCAudio*)DAT_05b3dfdc)->Play((float)(DAT_05b3dff4 ? -1000000 : -420), 1);
 	}
 	return 1;
 }
@@ -184,7 +184,7 @@ void FUN_00579960(struct MSGC *param_1, int *param_2, int *param_3)
 {
 	if (DAT_05b3dfdc != 0)
 	{
-		DAT_05b3dfdc->FUN_00425a50();
+		DAT_05b3dfdc->Stop();
 		DAT_05b3dfdc->SOCAudio::~SOCAudio();
 	}
 	MSG_Close(param_1);
@@ -502,8 +502,6 @@ extern int DAT_05cd2908;
 bool FUN_0040ae00();
 int FUN_0040b010(const void*, const void*);
 void FUN_004208c0(int, int, const wchar_t*, int, float, float);
-void* FUN_00424960();
-int FUN_0040b8a0();
 void FUN_004b23e0(void*, void*, int, const char*, int);
 void FUN_004f3470();
 void FUN_00579960(struct MSGC*, int*, int*);

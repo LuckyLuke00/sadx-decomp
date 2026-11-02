@@ -115,7 +115,7 @@ void SpLoopOnlyDisplay()
 	struct sp_link *local_10g;
 
 	___njFogDisable();
-	((SOCRender*)DAT_05ab39ac)->FUN_004199b0(false);
+	((SOCRender*)DAT_05ab39ac)->SetSpecularEnable(false);
 	local_10g = DAT_05edbcb8;
 	while (local_10g != 0)
 	{

@@ -62,7 +62,7 @@ void Magic::Base::File::FUN_00928790()
 }
 
 // STUB: SADX 0x00928810
-bool Magic::Base::File::FUN_00928810(const std::string& param_1, int param_2)
+bool Magic::Base::File::Open(const std::string& param_1, int param_2)
 {
 	return false;
 }

@@ -94,7 +94,7 @@ public:
 	void FUN_00928790();
 	void FUN_00928740();
 	long FUN_009285c0();
-	bool FUN_00928810(const std::string& param_1, int param_2);
+	bool Open(const std::string& param_1, int param_2);
 	void FUN_00435420();
 	bool FUN_00928630(int param_1, int param_2);
 	bool FUN_009286c0(void* param_1, size_t param_2, unsigned long* param_3);
@@ -195,16 +195,16 @@ private:
 class SOCFile : public Magic::Base::File
 {
 public:
-	bool FUN_00433c20(const std::string& param_1, int param_2);
+	bool Open(const std::string& param_1, int param_2);
 };
 
 class SOCAudio
 {
 public:
-	void FUN_00425a50();
+	void Stop();
 	~SOCAudio();
-	bool FUN_00426350(const std::string& param_1);
-	void FUN_00425d70(float param_1, int param_2);
+	bool Open(const std::string& param_1);
+	void Play(float param_1, int param_2);
 };
 
 class SOCIniFile : public Magic::Base::IniFile
@@ -245,8 +245,8 @@ public:
 class SOCRender
 {
 public:
-	void FUN_004199b0(bool param_1);
-	void FUN_0041b2d0();
+	void SetSpecularEnable(bool param_1);
+	void UIShaderSet();
 	// FUNCTION: SADX 0x00419cf0
 	void FUN_00419cf0(int param_1)
 	{
@@ -288,7 +288,7 @@ struct FUN_0040e170_0
 
 struct FUN_0040e170_1
 {
-	void FUN_0040e170(const wchar_t *param_1, const FUN_0040e170_0& param_2, int& param_3, int& param_4);
+	void GetTextSize(const wchar_t *param_1, const FUN_0040e170_0& param_2, int& param_3, int& param_4);
 };
 
 namespace Magic
@@ -298,13 +298,13 @@ namespace RenderCore
 class VertexBuffer
 {
 public:
-	bool FUN_00921dd0(void **param_1, int param_2, int param_3, int param_4);
-	void FUN_00921da0();
+	bool Lock(void **param_1, int param_2, int param_3, int param_4);
+	void Unlock();
 };
 class Material
 {
 public:
-	void FUN_00921f80();
+	void CommitDeviceShader();
 };
 }
 }
