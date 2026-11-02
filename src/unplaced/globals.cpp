@@ -3200,11 +3200,17 @@ struct NJS_ACTION action_taoreiwam_dai[1];
 // GLOBAL: SADX 0x03f4c610
 struct obj object_kumonosu_kumonosu1a_kumonosu1a[1];
 
+// GLOBAL: SADX 0x03f5705c
+struct obj object_denkiisu1a_denki_isu_denki_isu[1];
+
 // GLOBAL: SADX 0x03f582b0
 struct NJS_MODEL model_haka1a_gaikotu_gaikotu[1];
 
 // GLOBAL: SADX 0x03f5c010
 struct obj object_sotolight_light_light[1];
+
+// GLOBAL: SADX 0x03f5c95c
+struct obj object_pipe_set_pipe_l_pipe_l[1];
 
 // GLOBAL: SADX 0x03f5cea4
 struct obj object_pipe_set_pipebox_pipebox[1];
@@ -3289,6 +3295,9 @@ struct CCL_INFO futa_colli[1];
 
 // GLOBAL: SADX 0x03feacc8
 struct childtaskset cts_mount_futa[3];
+
+// GLOBAL: SADX 0x03feb100
+struct CCL_INFO ColliInfo[1];
 
 // GLOBAL: SADX 0x03feb220
 struct CCL_INFO erupt_expl_cinfo[1];

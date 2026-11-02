@@ -17,9 +17,26 @@ void SetTableBg_mountain(int c_level)
 	DAT_05b3e074 = (*(struct NJS_POINT3 **)((char *)pScale_Stg05 + local_8))[c_level];
 }
 
-// STUB: SADX 0x00827b70
+// FUNCTION: SADX 0x00827b70
 void mt_gdcontrol(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (EV_CheckCansel())
+	{
+		return;
+	}
+	var1->wtimer--;
+	if ((short)var1->wtimer < 0)
+	{
+		ADXTaskInit();
+		if (GetPlayerNumber() != 2)
+		{
+			BGM_Play(var1->mode);
+		}
+		DestroyTask(tp);
+	}
 }
 
 // FUNCTION: SADX 0x00827e80
