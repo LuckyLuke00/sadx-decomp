@@ -12,16 +12,16 @@ const unsigned long nbMaxEntry[11] = {};
 int DAT_0095c0a0[256];
 
 // GLOBAL: SADX 0x0095e6d4
-const struct SAlEntAnimArray gAlEntAnimArray_title_j[1] = {};
+const struct SAlEntAnimArray gAlEntAnimArray_title_j[6] = {};
 
 // GLOBAL: SADX 0x0095e8a8
-const struct SAlEntAnimArray gAlEntAnimArray_char_j[1] = {};
+const struct SAlEntAnimArray gAlEntAnimArray_char_j[11] = {};
 
 // GLOBAL: SADX 0x0095e978
-const struct SAlEntAnimArray gAlEntAnimArray_title_e[1] = {};
+const struct SAlEntAnimArray gAlEntAnimArray_title_e[6] = {};
 
 // GLOBAL: SADX 0x0095eb38
-const struct SAlEntAnimArray gAlEntAnimArray_char_e[1] = {};
+const struct SAlEntAnimArray gAlEntAnimArray_char_e[11] = {};
 
 // GLOBAL: SADX 0x00961248
 const struct NJS_TEXANIM anim_dialog[32] = {};
@@ -597,7 +597,7 @@ long (*ALBHV_SToyFunc[32])(struct task *);
 struct cnkobj **pPartsObjectListAdult[1];
 
 // GLOBAL: SADX 0x01fb19ec
-struct cnkobj * pPartsObjectListChild[1];
+struct cnkobj * pPartsObjectListChild[15];
 
 // GLOBAL: SADX 0x01fb629c
 struct cnkobj object_breedingflower00_breedingflower00[1];
@@ -606,7 +606,7 @@ struct cnkobj object_breedingflower00_breedingflower00[1];
 struct cnkobj object_breedingflower01_breedingflower01[1];
 
 // GLOBAL: SADX 0x01ffffd0
-struct NJS_MKEY_F pos_alm_piyo_reg_r[1];
+struct NJS_MKEY_F pos_alm_piyo_reg_r[13];
 
 // GLOBAL: SADX 0x020ffe40
 long vertex_al_hrp_reg_l[153];
@@ -747,7 +747,7 @@ struct obj object_cr4_nc_crk4_nc_crk4[1];
 struct NJS_TEXLIST texlist_chao_hyouji;
 
 // GLOBAL: SADX 0x0233ea90
-unsigned char eye_tex_num[1];
+unsigned char eye_tex_num[8];
 
 // GLOBAL: SADX 0x0233ea98
 unsigned char mouse_tex_num[7][2];
@@ -834,7 +834,7 @@ char emblem_num[0x20];
 struct NJS_TEXLIST texlist_get_emblem;
 
 // GLOBAL: SADX 0x025a3690
-struct NJS_TEXANIM anim_get_emblem[1];
+struct NJS_TEXANIM anim_get_emblem[2];
 
 // GLOBAL: SADX 0x025a36b8
 char emblem_sc[32];
@@ -1377,7 +1377,7 @@ struct CCL_INFO CLI_MobleDamageCsn[1];
 struct CCL_INFO relbox_switch_colli_info[1];
 
 // GLOBAL: SADX 0x0263d680
-struct NJS_SPRITE sprite_hitodama[1];
+struct NJS_SPRITE sprite_hitodama[2];
 
 // GLOBAL: SADX 0x0263d6f0
 int DAT_0263d6f0;
@@ -1407,25 +1407,25 @@ struct NJS_TEXLIST texlist_muteki[8];
 struct NJS_TEXLIST texlist_muteki_sphere[1];
 
 // GLOBAL: SADX 0x0263ddb0
-struct SEQ_SECTIONTBL seqSectionSonic[1];
+struct SEQ_SECTIONTBL seqSectionSonic[16];
 
 // GLOBAL: SADX 0x0263e030
-struct SEQ_SECTIONTBL seqSectionMiles[1];
+struct SEQ_SECTIONTBL seqSectionMiles[12];
 
 // GLOBAL: SADX 0x0263e210
-struct SEQ_SECTIONTBL seqSectionKnuckles[1];
+struct SEQ_SECTIONTBL seqSectionKnuckles[12];
 
 // GLOBAL: SADX 0x0263e3f0
-struct SEQ_SECTIONTBL seqSectionAmy[1];
+struct SEQ_SECTIONTBL seqSectionAmy[9];
 
 // GLOBAL: SADX 0x0263e558
-struct SEQ_SECTIONTBL seqSectionE102[1];
+struct SEQ_SECTIONTBL seqSectionE102[9];
 
 // GLOBAL: SADX 0x0263e6c0
-struct SEQ_SECTIONTBL seqSectionBig[1];
+struct SEQ_SECTIONTBL seqSectionBig[8];
 
 // GLOBAL: SADX 0x0263e800
-struct SEQ_SECTIONTBL seqSectionLast[1];
+struct SEQ_SECTIONTBL seqSectionLast[4];
 
 // GLOBAL: SADX 0x0263e8a0
 struct CPlayableInfo gPlayableInfo[1];
@@ -1695,7 +1695,7 @@ struct obj object_eggrob_a_chn9_1[1];
 struct NJS_TEXLIST texlist_eggrob;
 
 // GLOBAL: SADX 0x026b9870
-struct PL_ACTION eggrob_action[1];
+struct PL_ACTION eggrob_action[21];
 
 // GLOBAL: SADX 0x026b99c0
 struct CCL_INFO eggrob_ci_info[2];
@@ -1740,7 +1740,7 @@ int EBankNumTblE[34];
 int DAT_026d7ec8;
 
 // GLOBAL: SADX 0x026d8278
-struct NJS_POINT3 *pScale_Adv00[1];
+struct NJS_POINT3 *pScale_Adv00[6];
 
 // GLOBAL: SADX 0x026d8348
 struct NJS_TEXLIST texlist_mapSS;
@@ -1989,10 +1989,10 @@ struct obj object_egman_body_body[1];
 struct obj object_egm2_mine[1];
 
 // GLOBAL: SADX 0x0280b798
-struct NJS_TEXANIM anim_kaen[1];
+struct NJS_TEXANIM anim_kaen[16];
 
 // GLOBAL: SADX 0x0280bf60
-struct NJS_TEXANIM anim_missile[1];
+struct NJS_TEXANIM anim_missile[8];
 
 // GLOBAL: SADX 0x0280e1b0
 struct obj object_sssikake_ccar_before_ccar_before[1];
@@ -2220,16 +2220,16 @@ struct obj object_ecsc_s_sora_s_sora[1];
 struct NJS_TEXLIST texlist_chaos6_bg;
 
 // GLOBAL: SADX 0x0293bb48
-struct NJS_POINT3 *pScale_Chaos06[1];
+struct NJS_POINT3 *pScale_Chaos06[2];
 
 // GLOBAL: SADX 0x0293bb50
-struct NJS_POINT2 *pClipSky_Chaos06[1];
+struct NJS_POINT2 *pClipSky_Chaos06[2];
 
 // GLOBAL: SADX 0x0293bb58
-struct NJS_POINT2 *pClipMap_Chaos06[1];
+struct NJS_POINT2 *pClipMap_Chaos06[2];
 
 // GLOBAL: SADX 0x0293bb60
-struct NJS_ARGB *pFogTable_Chaos06[1];
+struct NJS_ARGB *pFogTable_Chaos06[2];
 
 // GLOBAL: SADX 0x0297f330
 struct NJS_TEXLIST texlist_chaos6_effect;
@@ -3069,16 +3069,16 @@ struct CCL_INFO gls_colli[1];
 struct NJS_TEXLIST texlist_fountain[8];
 
 // GLOBAL: SADX 0x03e728dc
-struct NJS_POINT3 *pScale_Stg05[1];
+struct NJS_POINT3 *pScale_Stg05[3];
 
 // GLOBAL: SADX 0x03e728e8
-struct NJS_POINT2 *pClipSky_Stg05[1];
+struct NJS_POINT2 *pClipSky_Stg05[3];
 
 // GLOBAL: SADX 0x03e728f4
-struct NJS_POINT2 *pClipMap_Stg05[1];
+struct NJS_POINT2 *pClipMap_Stg05[3];
 
 // GLOBAL: SADX 0x03e72900
-struct NJS_ARGB *pFogTable_Stg05[1];
+struct NJS_ARGB *pFogTable_Stg05[3];
 
 // GLOBAL: SADX 0x03f42728
 struct NJS_TEXLIST texlist_obj_mountain;
@@ -3519,16 +3519,16 @@ struct bridge_model_info icecap_bridge_01;
 struct CCL_INFO colli_bomb[1];
 
 // GLOBAL: SADX 0x045db378
-struct NJS_POINT3 *pScale_Stg09[1];
+struct NJS_POINT3 *pScale_Stg09[4];
 
 // GLOBAL: SADX 0x045db388
-struct NJS_POINT2 *pClipSky_Stg09[1];
+struct NJS_POINT2 *pClipSky_Stg09[4];
 
 // GLOBAL: SADX 0x045db398
-struct NJS_POINT2 *pClipMap_Stg09[1];
+struct NJS_POINT2 *pClipMap_Stg09[4];
 
 // GLOBAL: SADX 0x045db3a8
-struct NJS_ARGB *pFogTable_Stg09[1];
+struct NJS_ARGB *pFogTable_Stg09[4];
 
 // GLOBAL: SADX 0x045db5c4
 struct NJS_TEXLIST texlist_balls;
@@ -3891,7 +3891,7 @@ struct CCL_INFO object_c_info_cylinder2[1];
 struct CCL_INFO object_c_info_capsule[1];
 
 // GLOBAL: SADX 0x0480b7d8
-struct TENSHOUSEINFO tensinfo[1];
+struct TENSHOUSEINFO tensinfo[2];
 
 // GLOBAL: SADX 0x0480ba50
 struct CCL_INFO coll_sl[1];
@@ -3978,16 +3978,16 @@ struct NJS_ACTION action_hallgate[1];
 struct fe_dynamicswk default_dynamicswk;
 
 // GLOBAL: SADX 0x04a27f08
-struct NJS_POINT3 *pScale_Stg12[1];
+struct NJS_POINT3 *pScale_Stg12[3];
 
 // GLOBAL: SADX 0x04a27f14
-struct NJS_POINT2 *pClipSky_Stg12[1];
+struct NJS_POINT2 *pClipSky_Stg12[3];
 
 // GLOBAL: SADX 0x04a27f20
-struct NJS_POINT2 *pClipMap_Stg12[1];
+struct NJS_POINT2 *pClipMap_Stg12[3];
 
 // GLOBAL: SADX 0x04a27f2c
-struct NJS_ARGB *pFogTable_Stg12[1];
+struct NJS_ARGB *pFogTable_Stg12[3];
 
 // GLOBAL: SADX 0x04a35664
 struct NJS_TEXLIST texlist_e105;

@@ -79,6 +79,7 @@ def run() -> int:
     failures += check_decls_aliases()
     failures += check_decls_members()
     failures += check_shared_global_sizes()
+    failures += check_table_sizes()
     failures += check_extern_of()
     failures += check_reached_types()
     failures += check_bare_struct_names()
@@ -583,6 +584,26 @@ def check_shared_global_sizes() -> list[str]:
         return [f"decls for a shared name of known size gives exit {code} and globals.h {header!r}, "
                 f"not exit 0 and `extern int obj_c_info[];`"]
     return []
+
+
+def check_table_sizes() -> list[str]:
+    """A global that a file declares `extern T x[];` and no file defines gets the count that its table size gives in
+    globals.cpp, with no note. A size that is no whole number of elements gives one element and the note."""
+    globals_ = [("0x00503000", "DAT_00503000", "o_x.obj")]  # run_decls gives it 8 bytes
+    note = "DAT_00503000: no file defines it, so stubs give it one element"
+    # (case, the declaration, a use, the definition globals.cpp holds, whether decls prints the note)
+    cases = [("a size that divides", "int DAT_00503000[]", "DAT_00503000[0]", "int DAT_00503000[2];", False),
+             ("a size that does not divide", "char DAT_00503000[][3]", "DAT_00503000[0][0]",
+              "char DAT_00503000[1][3];", True)]
+    failures = []
+    for case, decl, use, definition, noted in cases:
+        files = {"src/x.c": f"extern {decl};\nint X(void)\n{{\n\treturn {use};\n}}\n"}
+        code, output, generated = run_decls(files, {}, [], globals_)
+        found = definition in generated.get("src/unplaced/globals.cpp", "")
+        if code != 0 or not found or (note in output) != noted:
+            failures.append(f"decls for {case} gives exit {code}, {'has' if found else 'lacks'} `{definition}` in "
+                            f"globals.cpp and prints {output!r}")
+    return failures
 
 
 def check_decls_aliases() -> list[str]:

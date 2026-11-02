@@ -87252,28 +87252,28 @@
   {
    "address": "0x0095e6d4",
    "name": "gAlEntAnimArray_title_j",
-   "size": 8,
+   "size": 48,
    "match": false,
    "library": false
   },
   {
    "address": "0x0095e8a8",
    "name": "gAlEntAnimArray_char_j",
-   "size": 8,
+   "size": 88,
    "match": false,
    "library": false
   },
   {
    "address": "0x0095e978",
    "name": "gAlEntAnimArray_title_e",
-   "size": 8,
+   "size": 48,
    "match": false,
    "library": false
   },
   {
    "address": "0x0095eb38",
    "name": "gAlEntAnimArray_char_e",
-   "size": 8,
+   "size": 88,
    "match": false,
    "library": false
   },
@@ -90605,7 +90605,7 @@
   {
    "address": "0x01fb19ec",
    "name": "pPartsObjectListChild",
-   "size": 4,
+   "size": 60,
    "match": false,
    "library": false
   },
@@ -90626,7 +90626,7 @@
   {
    "address": "0x01ffffd0",
    "name": "pos_alm_piyo_reg_r",
-   "size": 16,
+   "size": 208,
    "match": false,
    "library": false
   },
@@ -90962,7 +90962,7 @@
   {
    "address": "0x0233ea90",
    "name": "eye_tex_num",
-   "size": 1,
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -91186,7 +91186,7 @@
   {
    "address": "0x025a3690",
    "name": "anim_get_emblem",
-   "size": 20,
+   "size": 40,
    "match": false,
    "library": false
   },
@@ -92495,7 +92495,7 @@
   {
    "address": "0x0263d680",
    "name": "sprite_hitodama",
-   "size": 32,
+   "size": 64,
    "match": false,
    "library": false
   },
@@ -92572,49 +92572,49 @@
   {
    "address": "0x0263ddb0",
    "name": "seqSectionSonic",
-   "size": 40,
+   "size": 640,
    "match": false,
    "library": false
   },
   {
    "address": "0x0263e030",
    "name": "seqSectionMiles",
-   "size": 40,
+   "size": 480,
    "match": false,
    "library": false
   },
   {
    "address": "0x0263e210",
    "name": "seqSectionKnuckles",
-   "size": 40,
+   "size": 480,
    "match": false,
    "library": false
   },
   {
    "address": "0x0263e3f0",
    "name": "seqSectionAmy",
-   "size": 40,
+   "size": 360,
    "match": false,
    "library": false
   },
   {
    "address": "0x0263e558",
    "name": "seqSectionE102",
-   "size": 40,
+   "size": 360,
    "match": false,
    "library": false
   },
   {
    "address": "0x0263e6c0",
    "name": "seqSectionBig",
-   "size": 40,
+   "size": 320,
    "match": false,
    "library": false
   },
   {
    "address": "0x0263e800",
    "name": "seqSectionLast",
-   "size": 40,
+   "size": 160,
    "match": false,
    "library": false
   },
@@ -93251,7 +93251,7 @@
   {
    "address": "0x026b9870",
    "name": "eggrob_action",
-   "size": 16,
+   "size": 336,
    "match": false,
    "library": false
   },
@@ -93363,7 +93363,7 @@
   {
    "address": "0x026d8278",
    "name": "pScale_Adv00",
-   "size": 4,
+   "size": 24,
    "match": false,
    "library": false
   },
@@ -94259,14 +94259,14 @@
   {
    "address": "0x0280b798",
    "name": "anim_kaen",
-   "size": 20,
+   "size": 320,
    "match": false,
    "library": false
   },
   {
    "address": "0x0280bf60",
    "name": "anim_missile",
-   "size": 20,
+   "size": 160,
    "match": false,
    "library": false
   },
@@ -94826,28 +94826,28 @@
   {
    "address": "0x0293bb48",
    "name": "pScale_Chaos06",
-   "size": 4,
+   "size": 8,
    "match": false,
    "library": false
   },
   {
    "address": "0x0293bb50",
    "name": "pClipSky_Chaos06",
-   "size": 4,
+   "size": 8,
    "match": false,
    "library": false
   },
   {
    "address": "0x0293bb58",
    "name": "pClipMap_Chaos06",
-   "size": 4,
+   "size": 8,
    "match": false,
    "library": false
   },
   {
    "address": "0x0293bb60",
    "name": "pFogTable_Chaos06",
-   "size": 4,
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -97171,28 +97171,28 @@
   {
    "address": "0x03e728dc",
    "name": "pScale_Stg05",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
   {
    "address": "0x03e728e8",
    "name": "pClipSky_Stg05",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
   {
    "address": "0x03e728f4",
    "name": "pClipMap_Stg05",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
   {
    "address": "0x03e72900",
    "name": "pFogTable_Stg05",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
@@ -98417,28 +98417,28 @@
   {
    "address": "0x045db378",
    "name": "pScale_Stg09",
-   "size": 4,
+   "size": 16,
    "match": false,
    "library": false
   },
   {
    "address": "0x045db388",
    "name": "pClipSky_Stg09",
-   "size": 4,
+   "size": 16,
    "match": false,
    "library": false
   },
   {
    "address": "0x045db398",
    "name": "pClipMap_Stg09",
-   "size": 4,
+   "size": 16,
    "match": false,
    "library": false
   },
   {
    "address": "0x045db3a8",
    "name": "pFogTable_Stg09",
-   "size": 4,
+   "size": 16,
    "match": false,
    "library": false
   },
@@ -99376,7 +99376,7 @@
   {
    "address": "0x0480b7d8",
    "name": "tensinfo",
-   "size": 32,
+   "size": 64,
    "match": false,
    "library": false
   },
@@ -99726,28 +99726,28 @@
   {
    "address": "0x04a27f08",
    "name": "pScale_Stg12",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
   {
    "address": "0x04a27f14",
    "name": "pClipSky_Stg12",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
   {
    "address": "0x04a27f20",
    "name": "pClipMap_Stg12",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
   {
    "address": "0x04a27f2c",
    "name": "pFogTable_Stg12",
-   "size": 4,
+   "size": 12,
    "match": false,
    "library": false
   },
@@ -101350,5 +101350,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "472ad90b167058f80dc9c3b4fd6ecb3e68e4a6744cd3a4539acda8285052c02f"
+ "inputs_sha256": "5d4bc1c4bb948ccad9fcb08d528f1f9a20d332c7736683aea2e418a441e9bfe3"
 }
