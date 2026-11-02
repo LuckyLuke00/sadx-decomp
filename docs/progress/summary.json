@@ -66605,9 +66605,9 @@
   {
    "address": "0x00894080",
    "name": "eggkanban_draw",
-   "accuracy": 0.03333333333333333,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -67029,9 +67029,9 @@
   {
    "address": "0x008a2110",
    "name": "FEGG_TaskActBounce",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -100940,6 +100940,13 @@
    "library": false
   },
   {
+   "address": "0x04a09554",
+   "name": "object_kanban_eggkanban_eggkanban",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04a22560",
    "name": "action_hallgate",
    "size": 8,
@@ -102601,5 +102608,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e0634b7aae93bac57e644ffb951a221251e79d90fc31a5a01fd0c5628b2a2237"
+ "inputs_sha256": "35c76b9d888d8ba9f80823ad0d052d1bcb4c7cd290693d72e1988bcc3633d8d4"
 }

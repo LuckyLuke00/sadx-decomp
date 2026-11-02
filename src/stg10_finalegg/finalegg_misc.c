@@ -35,9 +35,10 @@ void FEGG_TaskMove(struct taskwk *twp, struct motionwk *mwp)
 {
 }
 
-// STUB: SADX 0x008a2110
+// FUNCTION: SADX 0x008a2110
 void FEGG_TaskActBounce(struct taskwk *twp, struct motionwk *mwp)
 {
+	mwp->spd.y = -((struct motionwk *)mwp->work.ptr)->spd.x * mwp->spd.y;
 }
 
 // FUNCTION: SADX 0x008a2130
