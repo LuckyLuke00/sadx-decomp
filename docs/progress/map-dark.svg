@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,081 of 16,524 game functions done (36.80%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,082 of 16,524 game functions done (36.80%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="596.8,1186.5 603.2,1186.5 604.9,1188 606,1189.6 600,1196.5 594,1189.6 595.1,1188" fill="#4e32f3"/>
 <polygon points="596.8,1186.5 603.2,1186.5 604.9,1188 606,1189.6 594,1189.6 595.1,1188" fill="#ffffff" fill-opacity="0.4"/>
@@ -2064,7 +2064,7 @@
 <rect x="21" y="70" width="6" height="6" fill="#ffd700"><title>0x009035a0 EV_Egm3: 100%</title></rect>
 <rect x="28" y="70" width="6" height="6" fill="#ffd700"><title>0x009036c0 EV_Egm3EggmanHikkomu: 100%</title></rect>
 </g>
-<rect x="452" y="572" width="102" height="121" rx="3" fill="#21262d" stroke="#30363d"><title>ZERO: 47 of 164 functions done</title></rect>
+<rect x="452" y="572" width="102" height="121" rx="3" fill="#21262d" stroke="#30363d"><title>ZERO: 48 of 164 functions done</title></rect>
 <text x="455" y="586" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">ZERO <tspan font-weight="400" fill="#8b949e">5%</tspan></text>
 <g transform="translate(455,590)">
 <rect y="0" width="91" height="84" fill="url(#todo)"/>
@@ -2086,6 +2086,7 @@
 <rect x="63" y="28" width="6" height="6" fill="#ffd700"><title>0x006dcec0 exec_ElectSegment: 100%</title></rect>
 <rect x="77" y="28" width="6" height="6" fill="#ffd700"><title>0x006dd0b0 FUN_006dd0b0: 100%</title></rect>
 <rect x="84" y="28" width="6" height="6" fill="#ffd700"><title>0x006dd0d0 EffHandSpark_SetPos: 100%</title></rect>
+<rect x="7" y="35" width="6" height="6" fill="#ffd700"><title>0x006dd160 exec_HandSpark: 100%</title></rect>
 <rect x="21" y="35" width="6" height="6" fill="#ffd700"><title>0x006dd280 EffHandSpark_Init: 100%</title></rect>
 <rect x="49" y="35" width="6" height="6" fill="#ffd700"><title>0x006dd500 EffAll_Init: 100%</title></rect>
 <rect x="56" y="35" width="6" height="6" fill="#ffd700"><title>0x006dd540 EffAll_Exit: 100%</title></rect>

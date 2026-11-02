@@ -157,14 +157,47 @@ void EffHandSpark_SetPos(struct NJS_POINT3 *pPosRL)
 	}
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x006dd0f0
 void disp_HandSpark(struct task *pTask)
 {
 }
+#pragma optimize("", on)
 
-// STUB: SADX 0x006dd160
+// FUNCTION: SADX 0x006dd160
 void exec_HandSpark(struct task *pTask)
 {
+	struct anywk *var1 = pTask->awp;
+	ghSpriteExec((struct GHSPRITE *)((char *)var1 + 4));
+	switch (*(int *)var1)
+	{
+	case 1:
+		{
+			float var2 = *(float *)((char *)var1 + 0x4c) + 0.03999999910593033f;
+			*(float *)((char *)var1 + 0x4c) = var2;
+			if (var2 >= 1.0f)
+			{
+				*(float *)((char *)var1 + 0x4c) = 1.0f;
+				disp_HandSpark(pTask);
+				return;
+			}
+		}
+		break;
+	case 2:
+		{
+			float var2 = *(float *)((char *)var1 + 0x4c) - 0.019999999552965164f;
+			*(float *)((char *)var1 + 0x4c) = var2;
+			if (var2 <= 0.0f)
+			{
+				*(float *)((char *)var1 + 0x4c) = 0.0f;
+				*(int *)var1 = 0;
+				disp_HandSpark(pTask);
+				return;
+			}
+		}
+		break;
+	}
+	disp_HandSpark(pTask);
 }
 
 #pragma optimize("", off)
