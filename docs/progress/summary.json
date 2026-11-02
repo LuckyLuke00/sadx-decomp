@@ -76821,9 +76821,9 @@
   {
    "address": "0x009088c0",
    "name": "FUN_009088c0",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -80157,9 +80157,9 @@
   {
    "address": "0x00913ae0",
    "name": "rl_d",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -80221,41 +80221,41 @@
   {
    "address": "0x00913d60",
    "name": "rrc_a",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913da0",
    "name": "rrc_b",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913de0",
    "name": "rrc_c",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913e20",
    "name": "rrc_d",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913e60",
    "name": "rrc_e",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -80269,9 +80269,9 @@
   {
    "address": "0x00913ee0",
    "name": "rrc_l",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -80301,9 +80301,9 @@
   {
    "address": "0x00914060",
    "name": "rrca",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -101964,5 +101964,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "929df18b7f1cf6280d04351c265d306636e7751f73e14f8584a7e306e3ea1db0"
+ "inputs_sha256": "3550287adb4d3fb4336eaff5f84fa071b73a581a1874aa05b32385e27dcc7233"
 }
