@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" int rand(void);
 extern "C" double fabs(double param_1);
 extern "C" double atan2(double v, double u);
 extern "C" double atan2(double v, double u);
@@ -36,10 +37,17 @@ long MissileCalcAngX(struct NJS_POINT3 *vecp)
 	return (long)(atan2(vecp->y, var1) * 65536.0 / -6.283184);
 }
 
-// STUB: SADX 0x006c2d60
+// FUNCTION: SADX 0x006c2d60
 long ZRandomS(long area)
 {
-	return (long)0;
+	long var1;
+	float local_8;
+	float var2;
+
+	local_8 = (float)area;
+	var1 = rand();
+	var2 = (float)var1 * 3.0517578125e-05f;
+	return (long)(local_8 * var2 - local_8 * 0.5f);
 }
 
 // FUNCTION: SADX 0x006c2da0
