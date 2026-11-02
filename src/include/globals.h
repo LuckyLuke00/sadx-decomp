@@ -278,6 +278,7 @@ extern struct NJS_MATERIAL matlist_mi_flag[];
 extern struct obj object_mi_flag[];
 extern struct NJS_MATERIAL matlist_mi_kanban_ita3[];
 extern struct obj object_mi_kanban_ita[];
+extern struct obj object_mi_kinka[];
 extern struct NJS_ACTION action_mi_ssobj_card[];
 extern struct obj object_mi_3dasu_fat_d[];
 extern struct NJS_TEXLIST texlist_mi_3dasu;
