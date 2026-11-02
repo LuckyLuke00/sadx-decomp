@@ -36925,9 +36925,9 @@
   {
    "address": "0x005d82c0",
    "name": "KnuEffectComboFire",
-   "accuracy": 0.06153846153846154,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -102661,5 +102661,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "cd696d12441d9e4b08af0612e7994a6f62d1e605d6ed6c7eb86b07ceac48e81b"
+ "inputs_sha256": "5a078976cf496e21f7fccb4f964c1a1033d3ed7e25854125724bb1a2c9a82657"
 }
