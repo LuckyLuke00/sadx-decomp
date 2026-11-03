@@ -14380,9 +14380,9 @@
   {
    "address": "0x004a3ea0",
    "name": "late_setPo3D",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103358,5 +103358,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6bd37ea5fbe2f25ed68c6bada5c27036f94b5be917f00d99f5fed079618aa3dd"
+ "inputs_sha256": "b19af6ace313bf4d3eb146da29a39d6b831535b0bac13e72adcd3a109e5fdb2c"
 }

@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <math.h>
+extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 extern void *DAT_05b3dedc;
 extern int DAT_05b3df24;
 extern float DAT_05b39eb0;
@@ -987,10 +988,50 @@ void late_DrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr, int flgs
 {
 }
 
-// STUB: SADX 0x004a3ea0
-int late_setPo3D(struct LATE_PO3D_RQ *s, NJS_POINT3COL *p, int n, unsigned long atr)
+// FUNCTION: SADX 0x004a3ea0
+int late_setPo3D(struct LATE_PO3D_RQ *s, struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
-	return (int)0;
+	int local_8;
+
+	*(unsigned long *)((char *)s + 0x80) = atr;
+	*(int *)((char *)s + 0x84) = DAT_05b39eb4;
+	*(struct NJS_POINT3COL *)((char *)s + 0x30) = *p;
+	if (p->p != 0)
+	{
+		*(int *)((char *)s + 0x30) = (int)late_alloca(n * 0xc);
+		if (*(int *)((char *)s + 0x30) == 0)
+		{
+			return 0;
+		}
+		memcpy(*(void **)((char *)s + 0x30), p->p, n * 0xc);
+	}
+	if (p->col != 0)
+	{
+		*(int *)((char *)s + 0x34) = (int)late_alloca(n * 4);
+		if (*(int *)((char *)s + 0x34) == 0)
+		{
+			return 0;
+		}
+		for (local_8 = 0; local_8 < n; local_8++)
+		{
+			((int *)(*(int *)((char *)s + 0x34)))[local_8] = ((int *)p->col)[local_8];
+		}
+	}
+	if (p->tex != 0)
+	{
+		*(int *)((char *)s + 0x38) = (int)late_alloca(n * 4);
+		if (*(int *)((char *)s + 0x38) == 0)
+		{
+			return 0;
+		}
+		memcpy(*(void **)((char *)s + 0x38), p->tex, n * 4);
+	}
+	if ((atr & 0x80000000) == 0)
+	{
+		*(int *)((char *)s + 0xc) = 0;
+	}
+	njGetMatrix((NJS_MATRIX *)((char *)s + 0x40));
+	return 1;
 }
 
 // STUB: SADX 0x004a4000
