@@ -1391,6 +1391,7 @@ extern struct ___stcClip *DAT_0480e45c[];
 extern struct ___stcFog *DAT_0480e468[];
 extern struct NJS_TEXLIST texlist_gachapon;
 extern struct NJS_TEXLIST texlist_obj_finalegg;
+extern struct obj object_b_con_cl_conbere_cl_side[];
 extern struct obj object_lv3zc_gateF_obj_gateFz[1];
 extern struct obj object_lv3zc_gateF_obj_gateFx[1];
 extern struct obj object_lv3zc_gate_nullGB_obj_gatela[];

@@ -4163,6 +4163,9 @@ struct NJS_TEXLIST texlist_gachapon;
 // GLOBAL: SADX 0x04812ea8
 struct NJS_TEXLIST texlist_obj_finalegg;
 
+// GLOBAL: SADX 0x0481569c
+struct obj object_b_con_cl_conbere_cl_side[1];
+
 // GLOBAL: SADX 0x0484bc34
 struct obj object_lv3zc_gateF_obj_gateFz[1];
 
