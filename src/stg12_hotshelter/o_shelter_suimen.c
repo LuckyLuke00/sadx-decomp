@@ -1,6 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x04ad85b8
+static struct obj *objs[4];
+
 extern struct NJS_TEXLIST texlist_shelter_suimen;
-extern struct obj *objs[4];
 extern float DAT_05b3df40;
 extern int DAT_05b9d838;
 void ___njSetTexture(struct NJS_TEXLIST *texlist);

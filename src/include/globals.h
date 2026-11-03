@@ -621,7 +621,6 @@ extern struct ___stcFog *pFogTable_Adv01AB[7];
 extern struct NJS_POINT3 pos_passage;
 extern int flg_transform[8];
 extern struct NJS_TEXLIST texlist_mapEC;
-extern const struct HintMessageTable *ECHintTablePointer[5];
 extern struct NJS_TEXLIST texlist_ec_water;
 extern struct NJS_TEXLIST texlist_ec_sky;
 extern struct NJS_TEXLIST texlist_ec_ikada;
