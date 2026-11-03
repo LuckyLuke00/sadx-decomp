@@ -1,6 +1,9 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x026dfe18
+static const struct HintMessageTable *ECHintTablePointer[5];
+
 static void ecp_actman(struct task *task_p);
-extern const struct HintMessageTable *ECHintTablePointer[5];
 extern short DAT_05b9d744;
 void ECPcSet();
 void ECPcDelete();

@@ -1853,9 +1853,6 @@ int flg_transform[8];
 // GLOBAL: SADX 0x026df7a0
 struct NJS_TEXLIST texlist_mapEC;
 
-// GLOBAL: SADX 0x026dfe18
-const struct HintMessageTable *ECHintTablePointer[5] = {};
-
 // GLOBAL: SADX 0x026e0b40
 struct NJS_TEXLIST texlist_ec_water;
 
