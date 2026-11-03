@@ -37219,6 +37219,14 @@
    "library": false
   },
   {
+   "address": "0x005dd9e0",
+   "name": "FUN_005dd9e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005ddbf0",
    "name": "FUN_005ddbf0",
    "accuracy": 1.0,
@@ -41893,6 +41901,14 @@
   {
    "address": "0x0067d8c0",
    "name": "njAddVector",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0067d9b0",
+   "name": "njFraction",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -94415,6 +94431,13 @@
    "library": false
   },
   {
+   "address": "0x02678a70",
+   "name": "item_info",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02679030",
    "name": "sprite_lensflare",
    "size": 32,
@@ -103321,5 +103344,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "050dee0dd103f5a29d825ec6a325466799e9da02d8b424252e71bb835c0f97bc"
+ "inputs_sha256": "3fb65902dfc3b077b48188ad3a6c91908b0813b36cbcb64d81c8ede875a925aa"
 }

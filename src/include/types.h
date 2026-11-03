@@ -182,6 +182,7 @@ struct HintMessageMemory;
 struct HintMessageString;
 struct HintMessageTable;
 struct InetDemoWk;
+struct ITEM_INFOMATION;
 struct ITEM_SAVE_INFO;
 struct LATE_FAR_Z_T;
 struct LATE_LNK;
@@ -3033,6 +3034,14 @@ struct HintMessageTable {
 static_assert(sizeof(HintMessageTable) == 0x8, "sizeof HintMessageTable");
 static_assert(offsetof(HintMessageTable, code) == 0x0, "HintMessageTable::code");
 static_assert(offsetof(HintMessageTable, message) == 0x4, "HintMessageTable::message");
+
+struct ITEM_INFOMATION {
+    unsigned long texture_id;
+    void (*effect_func)(struct taskwk *);
+};
+static_assert(sizeof(ITEM_INFOMATION) == 0x8, "sizeof ITEM_INFOMATION");
+static_assert(offsetof(ITEM_INFOMATION, texture_id) == 0x0, "ITEM_INFOMATION::texture_id");
+static_assert(offsetof(ITEM_INFOMATION, effect_func) == 0x4, "ITEM_INFOMATION::effect_func");
 
 struct ITEM_SAVE_INFO {
     short kind;

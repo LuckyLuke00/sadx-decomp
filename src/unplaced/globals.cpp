@@ -1694,6 +1694,9 @@ struct CCL_INFO itembox_colli_info0[1];
 // GLOBAL: SADX 0x02678a00
 struct CCL_INFO itembox_colli_info1[2];
 
+// GLOBAL: SADX 0x02678a70
+struct ITEM_INFOMATION item_info[1];
+
 // GLOBAL: SADX 0x02679030
 struct NJS_SPRITE sprite_lensflare;
 
@@ -7813,6 +7816,9 @@ unsigned char DAT_05edd140;
 
 // GLOBAL: SADX 0x05edd144
 float DAT_05edd144;
+
+// GLOBAL: SADX 0x05edd2a0
+int DAT_05edd2a0;
 
 // GLOBAL: SADX 0x05edd2a4
 unsigned char DAT_05edd2a4;
