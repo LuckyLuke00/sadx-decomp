@@ -1,4 +1,5 @@
 #include "decls.h"
+static unsigned char stageact_tbl[76][2];
 extern float DAT_05cda0f0[6];
 extern struct NJS_TEXANIM anim_hint2[6];
 extern struct NJS_TEXLIST *hinttexlist[6];
@@ -330,9 +331,49 @@ void DisplaySelectingCharacter_ss()
 {
 }
 
-// STUB: SADX 0x0059b440
+// FUNCTION: SADX 0x0059b440
 void DisplaySelectingStage_ss()
 {
+	int local_8g;
+	int local_cj;
+	int local_10m;
+	int local_18;
+	int local_14;
+	int local_1ci;
+	int local_20;
+
+	if (DAT_05cda0e8 == 0xa)
+	{
+		local_1ci = 0xff00ff00;
+		local_20 = 0xffdfdfdf;
+	}
+	else
+	{
+		local_1ci = 0xff00bf00;
+		local_20 = 0xff7f7f7f;
+	}
+	njPrintColor((unsigned long)local_20);
+	njPrintC(0x100008, "STAGE SELECT");
+	local_10m = (char)DAT_05cda0c5 + 0x47;
+	local_8g = 0xa;
+	for (local_cj = 0; local_cj < 0xd; local_cj = local_cj + 1)
+	{
+		local_10m = local_10m % 0x4c;
+		if (local_10m == (char)DAT_05cda0c5)
+		{
+			njPrintColor((unsigned long)local_1ci);
+		}
+		else
+		{
+			njPrintColor((unsigned long)local_20);
+		}
+		local_18 = stageact_tbl[local_10m][0];
+		local_14 = stageact_tbl[local_10m][1];
+		FUN_005b5aa0(local_8g | 0x100000, (local_18 << 8) | local_14);
+		local_10m = local_10m + 1;
+		local_8g = local_8g + 1;
+	}
+	njPrintColor(0xffffffff);
 }
 
 // STUB: SADX 0x0059b550

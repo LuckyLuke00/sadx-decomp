@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int evfadeouttbl[25];
+extern int DAT_05bafd08;
+extern int evfadeintbl[77];
 extern int DAT_05cd0f24;
 void SeqNext();
 extern char DAT_05bafb83;
@@ -236,9 +239,67 @@ void SeqEndSection()
 {
 }
 
-// STUB: SADX 0x004f52e0
+// FUNCTION: SADX 0x004f52e0
 void SeqEvent(long no)
 {
+	int local_8g;
+	int *local_cj;
+	int local_10m;
+	int *local_14;
+	if (EV_CheckExec(no) != 0)
+	{
+		return;
+	}
+	local_8g = 0;
+	if (DAT_05baf53c != 0)
+	{
+		return;
+	}
+	local_cj = evfadeouttbl;
+	while (*local_cj >= 0 || local_8g != 0)
+	{
+		if (no == *local_cj)
+		{
+			local_8g = -1;
+			break;
+		}
+		local_cj++;
+	}
+	if (local_8g != 0)
+	{
+		CreateElementalTask(2, 5, SeqTaskFadeOut);
+		PadReadOff();
+		DAT_05baf53c = 0x12;
+		DAT_05bafd08 = no;
+	}
+	else
+	{
+		DAT_05baf53c = 0;
+	}
+	if (DAT_05baf53c == 0)
+	{
+		EV_Load2(no);
+		EV_Exec2();
+		local_10m = 0;
+		local_14 = evfadeintbl;
+		while (*local_14 >= 0 || local_10m != 0)
+		{
+			if (DAT_05bafd08 == *local_14)
+			{
+				local_10m = -1;
+				break;
+			}
+			local_14++;
+		}
+		if (local_10m != 0)
+		{
+			CreateElementalTask(2, 5, SeqTaskFadeIn);
+		}
+		else
+		{
+			DAT_05cd14d4 = 0;
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004f5400
