@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,162 of 16,524 game functions done (37.29%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,163 of 16,524 game functions done (37.29%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="597.8,1188.5 604.2,1188.5 605.9,1190 607,1191.6 601,1198.5 595,1191.6 596.1,1190" fill="#4e32f3"/>
 <polygon points="597.8,1188.5 604.2,1188.5 605.9,1190 607,1191.6 595,1191.6 596.1,1190" fill="#ffffff" fill-opacity="0.4"/>
@@ -4161,7 +4161,7 @@
 <rect x="189" y="161" width="6" height="6" fill="#ffd700"><title>0x008c9030 ReturnChaosEmerald: 100%</title></rect>
 <rect x="196" y="161" width="6" height="6" fill="#ffd700"><title>0x008cb190 EggmanDestruct: 100%</title></rect>
 </g>
-<rect x="338" y="1159" width="180" height="207" rx="3" fill="#21262d" stroke="#30363d"><title>Menus: 314 of 536 functions done</title></rect>
+<rect x="338" y="1159" width="180" height="207" rx="3" fill="#21262d" stroke="#30363d"><title>Menus: 315 of 536 functions done</title></rect>
 <text x="341" y="1173" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Menus <tspan font-weight="400" fill="#8b949e">13%</tspan></text>
 <g transform="translate(341,1177)">
 <rect y="0" width="175" height="147" fill="url(#todo)"/>
@@ -4391,6 +4391,7 @@
 <rect x="49" y="105" width="6" height="6" fill="#ffd700"><title>0x005fd4e0 FUN_005fd4e0: 100%</title></rect>
 <rect x="70" y="105" width="6" height="6" fill="#ffd700"><title>0x005fd760 FUN_005fd760: 100%</title></rect>
 <rect x="77" y="105" width="6" height="6" fill="#ffd700"><title>0x005fd7e0 FUN_005fd7e0: 100%</title></rect>
+<rect x="91" y="105" width="6" height="6" fill="#ffd700"><title>0x005fdb60 DrawSprite2DR: 100%</title></rect>
 <rect x="98" y="105" width="6" height="6" fill="#ffd700"><title>0x005fdd20 FUN_005fdd20: 100%</title></rect>
 <rect x="119" y="105" width="6" height="6" fill="#ffd700"><title>0x005fe0a0 SetAdvaInetDemoTask: 100%</title></rect>
 <rect x="126" y="105" width="6" height="6" fill="#ffd700"><title>0x005fe110 FUN_005fe110: 100%</title></rect>

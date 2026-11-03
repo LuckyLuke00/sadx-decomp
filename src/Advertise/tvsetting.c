@@ -158,7 +158,43 @@ void FUN_005fd7e0(struct TvSettingWk *param_1)
 	DrawTitleBack(0.0f, 32.0f, *(float *)((char *)param_1 + 0xc) + -10.0, 565.0f, 42.0f);
 }
 
-// STUB: SADX 0x005fdb60
+// FUNCTION: SADX 0x005fdb60
 void DrawSprite2DR(unsigned long material, struct NJS_TEXLIST *tlist, short pvrindex, float posx, float posy, float posz, float sclx, float scly, long rot)
 {
+	struct NJS_SPRITE texsprite;
+	struct NJS_TEXANIM texanim;
+	float local_40;
+
+	texanim.sx = 2;
+	texanim.sy = 2;
+	texanim.cx = 1;
+	texanim.cy = 1;
+	texanim.u1 = 0;
+	texanim.v1 = 0;
+	texanim.u2 = 0xff;
+	texanim.v2 = 0xff;
+	texanim.texid = pvrindex;
+	texanim.attr = 0;
+	texsprite.p.x = posx;
+	texsprite.p.y = posy;
+	texsprite.p.z = posz;
+	texsprite.sx = sclx;
+	texsprite.sy = scly;
+	texsprite.ang = rot;
+	texsprite.tlist = tlist;
+	texsprite.tanim = &texanim;
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	SaveControl3D();
+	njControl3D(0x10);
+	SetMaterial((float)((material >> 0x18) & 0xff) / 256.0, (float)((material >> 0x10) & 0xff) / 256.0, (float)((material >> 8) & 0xff) / 256.0, (float)(material & 0xff) / 256.0);
+	CalcScreenRaito_SPR2D_CR(&texsprite);
+	local_40 = -posz;
+	if (local_40 >= -3.0 && local_40 < 12048.0)
+	{
+		local_40 = local_40 + 22048.0;
+	}
+	late_DrawSprite2D(&DAT_060eea04, 0, local_40, 0x23, 4);
+	ResetMaterial();
+	LoadControl3D();
 }
