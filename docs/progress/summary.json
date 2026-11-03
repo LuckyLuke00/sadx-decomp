@@ -61549,9 +61549,9 @@
   {
    "address": "0x0084e050",
    "name": "ObjectSkydeck_eff_hahen1_Draw",
-   "accuracy": 0.031746031746031744,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103358,5 +103358,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ec429af19fcdacf3664ff0c9cbca19c62df7788957f8d40780f6aa13afd49b71"
+ "inputs_sha256": "2bf5af350a7f93c0ce274ecee831aee35f6a8aa2b68383ea021aed1e8a7864b5"
 }
