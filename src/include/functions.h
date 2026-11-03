@@ -511,7 +511,6 @@ void CreateCourseNameBarJewel(struct task *tp);
 void _alg_garden00_ss_epilog();
 void AL_Garden00Master(struct task *tp);
 void _alg_garden00_ss_prolog();
-void ObjectALGardenDoor(struct task *tp);
 inline float ghUnitVector(const struct NJS_POINT3 *r4, struct NJS_POINT3 *r5);
 void FUN_00477c40(void *param_1, void *param_2);
 void FUN_00477cf0(int param_1);

@@ -1,4 +1,5 @@
 #include "decls.h"
+static void ObjectALGardenDoor(struct task *tp);
 
 // GLOBAL: SADX 0x02225808
 static struct CCL_INFO ccinfo[2];
@@ -32,7 +33,7 @@ static void ObjectMain(struct task *tp)
 }
 
 // FUNCTION: SADX 0x00477250
-void ObjectALGardenDoor(struct task *tp)
+static void ObjectALGardenDoor(struct task *tp)
 {
 	CCL_Init(tp, (struct CCL_INFO *)&ccinfo, 2, 4);
 	tp->exec = ObjectMain;
