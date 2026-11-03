@@ -50173,7 +50173,7 @@
   {
    "address": "0x00705bc0",
    "name": "hover",
-   "accuracy": 0.4434389140271493,
+   "accuracy": 0.46153846153846156,
    "effective": false,
    "stub": false,
    "library": false
@@ -50253,8 +50253,8 @@
   {
    "address": "0x00706460",
    "name": "dispTgt",
-   "accuracy": 0.993006993006993,
-   "effective": true,
+   "accuracy": 0.9965156794425087,
+   "effective": false,
    "stub": false,
    "library": false
   },
@@ -103246,5 +103246,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "dd4d994e1fa537d7c80b7c62738036f60b987d98953aac7b158436f9ddf14d07"
+ "inputs_sha256": "aaf38aa9e33409a738e7c6466a5e442131221cfa7f9dad87e2c6db033c0fb65d"
 }

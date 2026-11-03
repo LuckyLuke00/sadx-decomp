@@ -2828,7 +2828,7 @@ extern int DAT_060c36c4;
 extern struct NJS_POINT3 DAT_060c36cc;
 extern struct NJS_POINT3 DAT_060c4208;
 extern int DAT_060c44d8;
-extern struct NJS_MODEL *DAT_060c451c;
+extern struct bosswk *DAT_060c451c;
 extern int DAT_060c4538;
 extern struct NJS_POINT3 *DAT_060c453c;
 extern struct NJS_POINT3 DAT_060c4544;
