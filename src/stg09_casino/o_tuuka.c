@@ -1,4 +1,5 @@
 #include "decls.h"
+extern unsigned char DAT_060dbca1;
 static void Exit(struct task *tp);
 
 // GLOBAL: SADX 0x0480d240
@@ -15,9 +16,47 @@ static void Exit(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00883da0
+// FUNCTION: SADX 0x00883da0
 void cNormal1(struct task *ctp)
 {
+	struct taskwk *var1 = ctp->twp;
+	struct colliwk *var2 = var1->cwp;
+	struct taskwk *var3 = ctp->ptp->twp;
+	if ((var2->flag & 1) != 0)
+	{
+		if ((var1->flag & 0x8000) == 0)
+		{
+			switch (var1->btimer)
+			{
+				case 0:
+					var3->flag |= 0x100;
+					if ((DAT_060dbcb0 & 0x400000) != 0)
+					{
+						if (DAT_060dbca1 >= 3)
+						{
+							DAT_060dbcb0 |= 0x1800;
+							DAT_060dbca1++;
+							SetGetRing((unsigned char)(DAT_060dbca1 - 2) ^ 0x50);
+						}
+					}
+					break;
+				case 1:
+					var3->flag |= 0x200;
+					break;
+				case 2:
+					var3->flag |= 0x400;
+					break;
+			}
+			SetGetRing(1);
+			var1->flag |= 0x8000;
+		}
+	}
+	else
+	{
+		var1->flag &= 0x7fff;
+	}
+	EntryColliList(var1);
+	ObjectSetupInput(var1, 0);
 }
 
 // STUB: SADX 0x00883fe0

@@ -3661,6 +3661,11 @@ extern void DispUV2ObjSE(struct task *)
 {
 }
 
+// STUB: SADX 0x0088b180
+void DispTObj(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0088bd50
 struct EFFENEMYBOMBINFO *CreateEffEnemyBomb(struct NJS_POINT3 *posorg, struct Angle3 *angle, struct NJS_POINT3 *vecofs, struct NJS_POINT3 *vecacc, float wallposy, struct EFFENEMYBOMBPARAM *pefparam)
 {

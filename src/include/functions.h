@@ -3264,6 +3264,8 @@ void ExecUV2SE(struct task *tp);
 void ObjCasino_InitUV2SE(struct task *tp, struct obj *pobject, struct TEXUVINFO2 *tui, signed char cnt, int se);
 void ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum);
 void ObjCasino_InitUVG(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum);
+void DispTObj(struct task *tp);
+void ExecTGR(struct task *tp);
 void ObjCasino_InitTGR(struct task *tp, struct obj *pobject, struct TEXANIMINFO *tui, signed char num, signed char patnum);
 void ObjCasino_InitUVC(struct task *tp, struct obj *pobject, struct CCL_INFO *pinfo, int cnum, struct TEXUVINFO *tui, signed char num, signed char patnum);
 void late_ObjCasino_InitUV(struct task *tp, struct obj *pobject, struct TEXUVINFO *tui, signed char num, signed char patnum);

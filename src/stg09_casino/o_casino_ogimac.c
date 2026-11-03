@@ -557,9 +557,36 @@ void ExecTGR(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0088b370
+// FUNCTION: SADX 0x0088b370
 void ObjCasino_InitTGR(struct task *tp, struct obj *pobject, struct TEXANIMINFO *tui, signed char num, signed char patnum)
 {
+	struct taskwk *var1;
+	int var2;
+
+	var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, 360010.0f))
+		return;
+	var1->wtimer = 0;
+	var1->mode = 0;
+	var1->smode = num;
+	var1->btimer = patnum;
+	var1->value.ptr = tui;
+	var1->timer.l = (long)pobject;
+	tp->disp = DispTObj;
+	tp->exec = ExecTGR;
+	tp->dest = FUN_008895d0;
+	var2 = num * patnum;
+	if (var2 > 0)
+	{
+		do
+		{
+			tui->orgtexid = tui->pmat->attr_texId;
+			tui++;
+			var2--;
+		}
+		while (var2 != 0);
+	}
+	ObjCasino_InitGColl(tp, pobject, pobject->model->r + 20.0 + njScalor(&pobject->model->center), 0);
 }
 
 // STUB: SADX 0x0088b430

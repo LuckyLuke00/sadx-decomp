@@ -64277,9 +64277,9 @@
   {
    "address": "0x008769f0",
    "name": "Disp(41)",
-   "accuracy": 0.03571428571428571,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -64917,9 +64917,9 @@
   {
    "address": "0x0087ee30",
    "name": "ObjectCasinoTutuADraw",
-   "accuracy": 0.03125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -65405,9 +65405,9 @@
   {
    "address": "0x00883da0",
    "name": "cNormal1",
-   "accuracy": 0.03125,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -66035,6 +66035,14 @@
    "library": false
   },
   {
+   "address": "0x0088b180",
+   "name": "DispTObj",
+   "accuracy": 0.06593406593406594,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0088b290",
    "name": "ExecTGR",
    "accuracy": 0.02702702702702703,
@@ -66045,9 +66053,9 @@
   {
    "address": "0x0088b370",
    "name": "ObjCasino_InitTGR",
-   "accuracy": 0.03389830508474576,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -100364,6 +100372,20 @@
    "library": false
   },
   {
+   "address": "0x04786eb0",
+   "name": "DAT_04786eb0",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04786ed8",
+   "name": "DAT_04786ed8",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0478bdf8",
    "name": "object_cas_obj_cris_cris",
    "size": 52,
@@ -100653,6 +100675,13 @@
   {
    "address": "0x047e0a24",
    "name": "object_cas_obj_neon_kabe_neon_kabe",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x047e11ac",
+   "name": "object_cas_obj_main1f_neon_main1f_neon",
    "size": 52,
    "match": false,
    "library": false
@@ -101032,6 +101061,13 @@
    "address": "0x0480b064",
    "name": "object_c_info",
    "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0480b368",
+   "name": "DAT_0480b368",
+   "size": 96,
    "match": false,
    "library": false
   },
@@ -103187,5 +103223,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0c250460067a7bcd704d5b28d1fd729972acaf5ab12773fdfbc98e7b9910465a"
+ "inputs_sha256": "9d0e75932d8f38f5560a4ab3186e185ab8614ec34ac726697cf8fffd9bdeffa2"
 }

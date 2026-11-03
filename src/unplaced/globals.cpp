@@ -3848,6 +3848,12 @@ struct NJS_TEXLIST texlist_obj_casino8;
 // GLOBAL: SADX 0x0478629c
 struct obj object_csn_obj_haguruma_obj_haguruma[1];
 
+// GLOBAL: SADX 0x04786eb0
+struct obj *DAT_04786eb0;
+
+// GLOBAL: SADX 0x04786ed8
+struct obj *DAT_04786ed8;
+
 // GLOBAL: SADX 0x0478bdf8
 struct obj object_cas_obj_cris_cris;
 
@@ -3974,6 +3980,9 @@ struct obj object_csn_showerhead_showerhead[1];
 // GLOBAL: SADX 0x047e0a24
 struct obj object_cas_obj_neon_kabe_neon_kabe[1];
 
+// GLOBAL: SADX 0x047e11ac
+struct obj object_cas_obj_main1f_neon_main1f_neon[1];
+
 // GLOBAL: SADX 0x047e46a4
 struct obj object_cas_hashgo_hashgo[1];
 
@@ -4099,6 +4108,9 @@ struct CCL_INFO object_c_info_cylinder2[1];
 
 // GLOBAL: SADX 0x0480a79c
 struct CCL_INFO object_c_info_capsule[1];
+
+// GLOBAL: SADX 0x0480b368
+struct CCL_INFO DAT_0480b368[2];
 
 // GLOBAL: SADX 0x0480b7d8
 struct TENSHOUSEINFO tensinfo[2];
@@ -9313,6 +9325,9 @@ int DAT_060dbc34;
 
 // GLOBAL: SADX 0x060dbc38
 unsigned int DAT_060dbc38;
+
+// GLOBAL: SADX 0x060dbca1
+unsigned char DAT_060dbca1;
 
 // GLOBAL: SADX 0x060dbca7
 unsigned char DAT_060dbca7;
