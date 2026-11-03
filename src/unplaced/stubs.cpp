@@ -2770,11 +2770,6 @@ void execChaos7Object(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00702aa0
-void destChaos7Float(struct task *)
-{
-}
-
 // STUB: SADX 0x00702d70
 void execChaos7Road(struct task *tp)
 {

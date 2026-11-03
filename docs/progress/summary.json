@@ -49957,9 +49957,9 @@
   {
    "address": "0x00702aa0",
    "name": "destChaos7Float",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103358,5 +103358,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b19af6ace313bf4d3eb146da29a39d6b831535b0bac13e72adcd3a109e5fdb2c"
+ "inputs_sha256": "ec429af19fcdacf3664ff0c9cbca19c62df7788957f8d40780f6aa13afd49b71"
 }
