@@ -404,7 +404,8 @@ def check_decls_trees() -> list[str]:
     other one fails, also when that file is in the context, unless it defines its own static. A function here that a
     context file declares another way and calls fails. A global function that the original made static may share its
     name with static ones while only its definition names it, as when its caller is not ported: functions.h then
-    leaves it out, also when either file is the context's. Once its own file calls it, they share the name."""
+    leaves it out, also when either file is the context's, and beside a folded copy of it in a third file. Once its
+    own file calls it, they share the name."""
     target = project.game_config().target
     exec_here = f"// FUNCTION: {target} 0x00401000\nstatic void Exec(struct task *tp)\n{{\n}}\n"
     exec_there = f"// FUNCTION: {target} 0x00402000\nvoid Exec(struct task *tp)\n{{\n}}\n"
@@ -433,7 +434,8 @@ def check_decls_trees() -> list[str]:
                  f"// FUNCTION: {target} 0x00403000\nvoid DispX(struct task *tp)\n{{\n\tKill(tp);\n}}\n")
     kill_there = f"// FUNCTION: {target} 0x00408000\nvoid Kill(struct task *tp)\n{{\n}}\n"
     kill_called = kill_there + f"\n// FUNCTION: {target} 0x00404000\nvoid DispY(struct task *tp)\n{{\n\tKill(tp);\n}}\n"
-    sized = "extern char DAT_00503000[8];\n\n"
+    kill_copy = "static void Kill(struct task *tp)\n{\n}\n"
+    sized ="extern char DAT_00503000[8];\n\n"
     unsized = "extern char DAT_00503000[];\n"
 
     # (case, files, the context's files, exit code, text of the output, addresses of the generated globals)
@@ -448,6 +450,10 @@ def check_decls_trees() -> list[str]:
              ("a static function with no context", {"src/x.c": exec_here}, {}, 0, "", []),
              ("a static function and a file-local global one that only its definition names",
               {"src/x.c": kill_here, "src/y.c": kill_there}, {}, 0, "", []),
+             ("a static function and a file-local global one beside a folded copy",
+              {"src/x.c": kill_here, "src/y.c": kill_there, "src/z.c": kill_copy}, {}, 0, "", []),
+             ("a static function and a file-local global one beside a folded copy in the context",
+              {"src/x.c": kill_here}, {"src/y.c": kill_there, "src/z.c": kill_copy}, 0, "", []),
              ("a static function and a file-local global one that its own file calls",
               {"src/x.c": kill_here, "src/y.c": kill_called}, {}, 2, "share the name", None),
              ("a static function and a file-local global one in the context", {"src/x.c": kill_here},

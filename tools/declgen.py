@@ -215,9 +215,11 @@ def write(context: Path | None, tables: Path | None) -> int:
     context_decls = {}  # (name, declaration): the context file that declares it
     context_counts = collections.Counter()
     context_tokens = {}
+    context_copies = {}  # file: as own_copies, for the context's files
     for rel, text in context_sources.items():
         found = re.findall(r"[A-Za-z_]\w*", names.strip_code(text))
         context_tokens[rel] = collections.Counter(found)
+        context_copies[rel] = names.unannotated_statics(text)
         context_counts.update(found)
         for kind, address, sig in names.parse_annotations(text):
             if kind in names.FUNCTION_KINDS:
@@ -367,7 +369,8 @@ def write(context: Path | None, tables: Path | None) -> int:
     def left_out(name, group):
         """Whether one function of GROUP is global, one of scope L that this tree or the context defines and that
         functions.h leaves out: no file but its own names it, and that one only in its definition. Each other function
-        is static, and each other file that names it defines one of them, so every file means its own."""
+        is static, and each other file that names it defines one of them or a folded copy, so every file means its
+        own."""
         outside = [a for a in group if not (defined_funcs.get(a) or context_funcs.get(a) or ("", "", False))[2]]
         if len(outside) != 1 or outside[0] in decls:
             return False
@@ -376,7 +379,8 @@ def write(context: Path | None, tables: Path | None) -> int:
         namers = {rel: found[name] for tokens in (file_tokens, context_tokens) for rel, found in tokens.items()
                   if name in found}
         return (funcs[outside[0]]["scope"] == "L" and namers.get(own) == 1
-                and all(rel == own or rel in statics for rel in namers))
+                and all(rel == own or rel in statics or name in own_copies.get(rel, context_copies.get(rel, ()))
+                        for rel in namers))
 
     declared = {funcs[a]["name"] for a in decls}
     for a, d in list(context_funcs.items()) + list(defined_funcs.items()):
