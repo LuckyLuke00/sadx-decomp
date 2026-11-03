@@ -702,6 +702,24 @@ def check_address_test() -> list[str]:
             for address, wanted in cases.items() if known(address) != wanted]
 
 
+def check_table_test() -> list[str]:
+    """fakematch.table_test knows a multiple of 4 in read-only data whose first 4 bytes are a function's start, as a
+    vtable's are, and not a number in writable data, a pointer to data, or an address that is not a multiple of 4."""
+    class Image:
+        words = {0x00a5d858: 0x00414360, 0x00a5d860: 0x00a5d000, 0x01ffd000: 0x00414360}
+
+        def is_read_only_data(self, address):
+            return 0x00a00000 <= address < 0x00b00000
+
+        def read(self, address, size):
+            return self.words.get(address, 0).to_bytes(4, "little")[:size]
+
+    is_table = fakematch.table_test(Image(), {0x00414360})
+    cases = {0x00a5d858: True, 0x00a5d860: False, 0x00a5d85a: False, 0x01ffd000: False, 0x02000000: False}
+    return [f"table_test gives {is_table(address)} for 0x{address:08x}, not {wanted}"
+            for address, wanted in cases.items() if is_table(address) != wanted]
+
+
 def check_read_tree() -> list[str]:
     """fakematch.read_tree sizes the globals of a source's GLOBAL annotation, initializer and all, and of the
     definitions that decls wrote, and knows the functions of data/functions.csv."""
@@ -967,7 +985,7 @@ def run() -> list[str]:
                   check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
                   check_unlaid_structs, check_fold_copies, check_own_stubs, check_own_globals, check_try_globals,
-                  check_address_test, check_read_tree, check_refusal_names, check_constant_globals,
+                  check_address_test, check_table_test, check_read_tree, check_refusal_names, check_constant_globals,
                   check_debug_constants, check_annotation_below_signature, check_struct_in_reply, check_live,
                   check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
         failures += check()

@@ -4,7 +4,8 @@ code: a fake match.
 The kinds:
   raw_address      a cast applied to an address in the exe, such as *(T *)0x5edd884 or *(T *)(i * 4 + 0x5edd884), an
                    address in the exe plus a scaled index, such as 0x5baf6a0 + i * 0xc, or a bare number that is the
-                   address of a function or a global the tree knows. A number added to a pointer is an offset.
+                   address of a function or a global the tree knows, or of a table of functions in read-only data,
+                   such as a vtable. A number added to a pointer is an offset.
                    A number of one bit, such as 0x2000000, inside a global or at its end is a flag.
   index_game       an index then an offset, such as *(&p[1] - 1)
   neighbor_address a variable's address moved by a number, such as *(&p + 1) or (&p)[1], or a tree global's address
@@ -376,6 +377,16 @@ def address_test(function_starts: set[int], globals_: list[tuple[int, int]]) -> 
     return lambda address: address in starts or (address.bit_count() != 1 and pe.in_ranges(ranges, address))
 
 
+def table_test(image: pe.Image, function_starts: set[int]) -> Callable[[int], bool]:
+    """Whether a number is the address of a table of functions, such as a vtable: a multiple of 4 in IMAGE's read-only
+    data whose first 4 bytes are one of FUNCTION_STARTS."""
+    def is_table(address: int) -> bool:
+        return (address % 4 == 0 and image.is_read_only_data(address)
+                and int.from_bytes(image.read(address, 4), "little") in function_starts)
+
+    return is_table
+
+
 def debug_test(groups: list[dict]) -> Callable[[int], bool]:
     """Whether the function at an address builds with /Od: the flags of its codegen group in GROUPS have it."""
     def is_debug(address: int) -> bool:
@@ -408,12 +419,15 @@ def read_tree(root: Path) -> Tree:
 
 def checker(root: Path, game: Path) -> Callable[[list[str]], list[str]]:
     """The fake-match kinds of a definition, given its lines from its annotation on, in the tree at ROOT against the
-    exe GAME: those of found, with the addresses the exe reads or writes as such (direct_targets), and those of
+    exe GAME: those of found, with the addresses the exe reads or writes as such (direct_targets) and of its tables of
+    functions (table_test), and those of
     constant_globals for the float or double DAT_ at read-only data that its body names."""
     import accesses  # loads capstone, so only here
 
     image = pe.Image(game)
     tree = read_tree(root).with_addresses(direct_targets(accesses.load(image)))
+    is_table = table_test(image, {function["address"] for function in progress.load_functions()})
+    tree = tree._replace(is_address=lambda address, known=tree.is_address: known(address) or is_table(address))
     floats = {name: definition + ";" for name, definition in tree.definitions.items()
               if float_global(definition + ";")}
 
