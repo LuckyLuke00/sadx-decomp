@@ -59445,9 +59445,9 @@
   {
    "address": "0x0082a730",
    "name": "Object_Mountain_BPole_Display",
-   "accuracy": 0.0273972602739726,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -59907,8 +59907,24 @@
    "library": false
   },
   {
+   "address": "0x008338d0",
+   "name": "Draw(17)",
+   "accuracy": 0.010526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00833b30",
    "name": "ObjectMountainLightB",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00833b60",
+   "name": "ObjectMountainLight",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -61900,7 +61916,7 @@
   },
   {
    "address": "0x00853ae0",
-   "name": "Draw(17)",
+   "name": "Draw(18)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63004,7 +63020,7 @@
   },
   {
    "address": "0x00866240",
-   "name": "Draw(18)",
+   "name": "Draw(19)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -99047,6 +99063,13 @@
    "library": false
   },
   {
+   "address": "0x03fea4ac",
+   "name": "bp_objtbl",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03fea620",
    "name": "object_saku2_info",
    "size": 48,
@@ -99127,6 +99150,13 @@
    "address": "0x03feb4a8",
    "name": "object_c_info",
    "size": 240,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03feb598",
+   "name": "object_c_info",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -103291,5 +103321,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0fcc225fdd6dac883bf003034981202757f880ab09f7f82dedc6e46512a24443"
+ "inputs_sha256": "050dee0dd103f5a29d825ec6a325466799e9da02d8b424252e71bb835c0f97bc"
 }
