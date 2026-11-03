@@ -10019,7 +10019,7 @@
   },
   {
    "address": "0x00477250",
-   "name": "ObjectALGardenDoor",
+   "name": "ObjectALGardenDoor(1)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -10035,7 +10035,23 @@
   },
   {
    "address": "0x004772f0",
-   "name": "ObjectDisplay(struct task *)",
+   "name": "ObjectDisplay(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00477500",
+   "name": "ObjectMain(2)",
+   "accuracy": 0.09523809523809523,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00477540",
+   "name": "ObjectALGardenDoor(2)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -10044,9 +10060,9 @@
   {
    "address": "0x00477570",
    "name": "AloG00ElegateWakuCreate",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -42316,7 +42332,7 @@
   },
   {
    "address": "0x006816d0",
-   "name": "ObjectMain(2)",
+   "name": "ObjectMain(3)",
    "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
@@ -43060,7 +43076,7 @@
   },
   {
    "address": "0x0068af40",
-   "name": "ObjectMain(3)",
+   "name": "ObjectMain(4)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -43084,7 +43100,7 @@
   },
   {
    "address": "0x0068b030",
-   "name": "ObjectMain(4)",
+   "name": "ObjectMain(5)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -43124,7 +43140,7 @@
   },
   {
    "address": "0x0068b3c0",
-   "name": "ObjectMain(5)",
+   "name": "ObjectMain(6)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -43500,7 +43516,7 @@
   },
   {
    "address": "0x0068f2b0",
-   "name": "ObjectMain(6)",
+   "name": "ObjectMain(7)",
    "accuracy": 0.04878048780487805,
    "effective": false,
    "stub": true,
@@ -43524,7 +43540,7 @@
   },
   {
    "address": "0x0068f5d0",
-   "name": "ObjectMain(7)",
+   "name": "ObjectMain(8)",
    "accuracy": 0.04878048780487805,
    "effective": false,
    "stub": true,
@@ -43588,7 +43604,7 @@
   },
   {
    "address": "0x0068fcd0",
-   "name": "ObjectMain(8)",
+   "name": "ObjectMain(9)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -43620,7 +43636,7 @@
   },
   {
    "address": "0x00690730",
-   "name": "ObjectMain(9)",
+   "name": "ObjectMain(10)",
    "accuracy": 0.034482758620689655,
    "effective": false,
    "stub": true,
@@ -43668,7 +43684,7 @@
   },
   {
    "address": "0x00690b20",
-   "name": "ObjectMain(10)",
+   "name": "ObjectMain(11)",
    "accuracy": 0.038461538461538464,
    "effective": false,
    "stub": true,
@@ -43700,7 +43716,7 @@
   },
   {
    "address": "0x00690cd0",
-   "name": "ObjectMain(11)",
+   "name": "ObjectMain(12)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -48332,7 +48348,7 @@
   },
   {
    "address": "0x006e5cb0",
-   "name": "ObjectMain(12)",
+   "name": "ObjectMain(13)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -91958,6 +91974,13 @@
    "library": false
   },
   {
+   "address": "0x02225868",
+   "name": "ccinfo",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02225a18",
    "name": "texlist_Garden00SSObj",
    "size": 8,
@@ -103223,5 +103246,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "9d0e75932d8f38f5560a4ab3186e185ab8614ec34ac726697cf8fffd9bdeffa2"
+ "inputs_sha256": "dd4d994e1fa537d7c80b7c62738036f60b987d98953aac7b158436f9ddf14d07"
 }
