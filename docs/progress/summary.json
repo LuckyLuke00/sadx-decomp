@@ -63189,9 +63189,9 @@
   {
    "address": "0x00866b20",
    "name": "Normal2(4)",
-   "accuracy": 0.022988505747126436,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103351,5 +103351,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3d69a9bed6c23248d62aec31b99afb9a9514a94286b19d0f82b4b94b9383f8ce"
+ "inputs_sha256": "e7fd120252ce6a456f719765cfb3e2cc9e3853251076c76b819869d707107103"
 }
