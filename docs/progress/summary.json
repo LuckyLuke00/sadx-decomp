@@ -80837,25 +80837,25 @@
   {
    "address": "0x00913a20",
    "name": "rl_a",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913a60",
    "name": "rl_b",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913aa0",
    "name": "rl_c",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -80869,25 +80869,25 @@
   {
    "address": "0x00913b20",
    "name": "rl_e",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913b60",
    "name": "rl_h",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00913ba0",
    "name": "rl_l",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -80917,9 +80917,9 @@
   {
    "address": "0x00913d20",
    "name": "rla",
-   "accuracy": 0.09090909090909091,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -81101,57 +81101,57 @@
   {
    "address": "0x009143e0",
    "name": "sla_a",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914410",
    "name": "sla_b",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914440",
    "name": "sla_c",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914470",
    "name": "sla_d",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009144a0",
    "name": "sla_e",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x009144d0",
    "name": "sla_h",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914500",
    "name": "sla_l",
-   "accuracy": 0.14285714285714285,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -81365,9 +81365,9 @@
   {
    "address": "0x00914c90",
    "name": "srl_d",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103130,5 +103130,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "bcb2622d19e6234890e0a142de9d3f41f4e5580da4cb344c75af162a12a64196"
+ "inputs_sha256": "c9da6d3cd9769a91201561622127d6d2a6311c3615c8e87f255b87cea6922ed1"
 }
