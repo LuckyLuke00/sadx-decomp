@@ -36797,9 +36797,9 @@
   {
    "address": "0x005d6e50",
    "name": "dispEffectKnuPunch",
-   "accuracy": 0.0898876404494382,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36853,9 +36853,9 @@
   {
    "address": "0x005d76a0",
    "name": "dispKnuEffectClod",
-   "accuracy": 0.07339449541284404,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36949,6 +36949,14 @@
   {
    "address": "0x005d82c0",
    "name": "KnuEffectComboFire",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005d8450",
+   "name": "KnuEffectPutChargeComp",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -94291,6 +94299,13 @@
    "library": false
   },
   {
+   "address": "0x026757c0",
+   "name": "sprite_knu_punch",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026757f4",
    "name": "sprite_k_kira",
    "size": 32,
@@ -94307,6 +94322,13 @@
   {
    "address": "0x02675834",
    "name": "sprite_k_charge",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02675868",
+   "name": "sprite_tsuchi",
    "size": 32,
    "match": false,
    "library": false
@@ -103246,5 +103268,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "aaf38aa9e33409a738e7c6466a5e442131221cfa7f9dad87e2c6db033c0fb65d"
+ "inputs_sha256": "9e76c38e5ee9594e8766c2de3f7e12fd10e9b1dc3015c922067855f08c569703"
 }
