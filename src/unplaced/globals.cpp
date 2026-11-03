@@ -4211,8 +4211,20 @@ struct NJS_TEXLIST texlist_HotShelter2;
 // GLOBAL: SADX 0x04a66a44
 struct NJS_ACTION action_boxana_boxana[1];
 
+// GLOBAL: SADX 0x04a66f84
+struct obj object_boxana_boxana_cori_boxana_cori[1];
+
+// GLOBAL: SADX 0x04a6bf60
+struct obj object_tv_clashSSS_corimae_corimae[1];
+
+// GLOBAL: SADX 0x04a6c434
+struct obj object_tv_clash_base_coris_base_coris[1];
+
 // GLOBAL: SADX 0x04a72674
 struct NJS_MODEL model_tv_clash_base_tv_clash_base[1];
+
+// GLOBAL: SADX 0x04a726a0
+struct obj object_tv_clash_base_tv_clash_base[1];
 
 // GLOBAL: SADX 0x04a72a58
 struct NJS_TEXLIST texlist_shelter_column;
@@ -4232,6 +4244,9 @@ struct obj object_mizubasira_pasya_sita_pasya_sita[1];
 // GLOBAL: SADX 0x04a764b4
 struct obj object_mizubasira_pasya_ue_pasya_ue[1];
 
+// GLOBAL: SADX 0x04a772c0
+struct NJS_TEXLIST texlist_HotShelter0;
+
 // GLOBAL: SADX 0x04a790f4
 struct obj object_ukidoor_ukidoor_ukidoor[1];
 
@@ -4247,6 +4262,12 @@ struct obj object_sen_sensoko_before_sensoko_before[1];
 // GLOBAL: SADX 0x04a800a8
 struct obj object_sen_sen_sen[1];
 
+// GLOBAL: SADX 0x04a8b4d8
+struct obj object_otte_grass_br_parts_br_parts[1];
+
+// GLOBAL: SADX 0x04a8b66c
+struct obj object_otte_grass_before_before[1];
+
 // GLOBAL: SADX 0x04a8bf5c
 struct obj object_ligyel_ligyy_ligyy[1];
 
@@ -4258,6 +4279,15 @@ struct NJS_MODEL model_hasi_enhasi_bmerge1[1];
 
 // GLOBAL: SADX 0x04aa1cc0
 struct NJS_MODEL model_hasi_enhasi_enhasi[1];
+
+// GLOBAL: SADX 0x04ac3ca0
+struct obj object_breakkabe_br_part_br_part[1];
+
+// GLOBAL: SADX 0x04ac52c4
+struct obj object_breakkabe_before_before[1];
+
+// GLOBAL: SADX 0x04ac7254
+struct obj object_breakkabe_after_after[1];
 
 // GLOBAL: SADX 0x04accb44
 struct obj object_hasigo_hasigo_hotsh_hasigo_hotsh[1];
@@ -4276,6 +4306,15 @@ struct obj object_wc_mark2a_m2a_m2a[1];
 
 // GLOBAL: SADX 0x04ad6a3c
 struct obj object_hikari01a_light_light[1];
+
+// GLOBAL: SADX 0x04ad6da4
+struct obj object_breakkabe_beforecoli_beforecoli[1];
+
+// GLOBAL: SADX 0x04ad74d4
+struct obj object_breakkabe_aftercoli_aftercoli[1];
+
+// GLOBAL: SADX 0x04ad8094
+float TVpos[3];
 
 // GLOBAL: SADX 0x04c2c63c
 struct NJS_SPRITE sprite_fade;
@@ -9382,6 +9421,9 @@ int DAT_060dd3c0;
 
 // GLOBAL: SADX 0x060dd3c4
 int DAT_060dd3c4;
+
+// GLOBAL: SADX 0x060dd688
+struct task *DAT_060dd688;
 
 // GLOBAL: SADX 0x060dd798
 int DAT_060dd798;
