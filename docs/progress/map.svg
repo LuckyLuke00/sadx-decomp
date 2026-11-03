@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,161 of 16,524 game functions done (37.28%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,162 of 16,524 game functions done (37.29%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1188.5 604.2,1188.5 605.9,1190 607,1191.6 601,1198.5 595,1191.6 596.1,1190" fill="#4e32f3"/>
 <polygon points="597.8,1188.5 604.2,1188.5 605.9,1190 607,1191.6 595,1191.6 596.1,1190" fill="#ffffff" fill-opacity="0.4"/>
@@ -1116,7 +1116,7 @@
 <rect x="0" y="84" width="6" height="6" fill="#b07d00"><title>0x0084e430 FUN_0084e430: 100%</title></rect>
 <rect x="14" y="84" width="6" height="6" fill="#b07d00"><title>0x0084e780 FUN_0084e780: 100%</title></rect>
 </g>
-<rect x="225" y="459" width="164" height="87" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Lost World: 71 of 186 functions done</title></rect>
+<rect x="225" y="459" width="164" height="87" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Lost World: 72 of 186 functions done</title></rect>
 <text x="228" y="473" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Lost World <tspan font-weight="400" fill="#59636e">17%</tspan></text>
 <g transform="translate(228,477)">
 <rect y="0" width="154" height="56" fill="url(#todo)"/>
@@ -1146,6 +1146,7 @@
 <rect x="70" y="21" width="6" height="6" fill="#b07d00"><title>0x00853220 SwitchInit: 100%</title></rect>
 <rect x="84" y="21" width="6" height="6" fill="#b07d00"><title>0x008533b0 DrawFire: 100%</title></rect>
 <rect x="91" y="21" width="6" height="6" fill="#b07d00"><title>0x00853490 FUN_00853490: 100%</title></rect>
+<rect x="98" y="21" width="6" height="6" fill="#b07d00"><title>0x008534d0 ObjectRuinFire: 100%</title></rect>
 <rect x="105" y="21" width="6" height="6" fill="#b07d00"><title>0x008535a0 dispcNormal: 100%</title></rect>
 <rect x="147" y="21" width="6" height="6" fill="#b07d00"><title>0x00853ae0 Draw(18): 100%</title></rect>
 <rect x="0" y="28" width="6" height="6" fill="#b07d00"><title>0x00853ba0 ObjectRuinTap: 100%</title></rect>

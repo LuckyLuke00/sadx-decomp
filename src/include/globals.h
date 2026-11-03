@@ -1198,6 +1198,7 @@ extern struct obj object_ukidai_ukidai_ukidai[];
 extern struct obj object_lwobj_komorebi2_komorebi2[];
 extern struct obj *obj_sw[3];
 extern struct CCL_INFO c_info_switch[1];
+extern struct particle_info ruin_fire;
 extern struct CCL_INFO tap_c_info[1];
 extern struct NJS_TEXLIST texlist_piece[];
 extern struct obj object_s_yukitsubu_yukitsubu[];

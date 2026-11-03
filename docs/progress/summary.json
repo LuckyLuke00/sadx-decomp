@@ -61909,9 +61909,9 @@
   {
    "address": "0x008534d0",
    "name": "ObjectRuinFire",
-   "accuracy": 0.03278688524590164,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -99709,6 +99709,13 @@
    "library": false
   },
   {
+   "address": "0x043ac5dc",
+   "name": "ruin_fire",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x043ac64c",
    "name": "tap_c_info",
    "size": 48,
@@ -103351,5 +103358,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e7fd120252ce6a456f719765cfb3e2cc9e3853251076c76b819869d707107103"
+ "inputs_sha256": "2f8e7d1544a6c36621fecbaf37a887f64eeae0e933b3e14da971ff54ebdf378d"
 }

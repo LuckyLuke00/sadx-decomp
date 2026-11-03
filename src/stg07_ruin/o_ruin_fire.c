@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct particle_info ruin_fire;
 
 // GLOBAL: SADX 0x043ac5c8
 static struct NJS_TEXANIM anim_jet[1];
@@ -50,7 +51,34 @@ void FUN_00853490(void)
 	DAT_060d12f0.p.z = 0.0f;
 }
 
-// STUB: SADX 0x008534d0
+// FUNCTION: SADX 0x008534d0
 void ObjectRuinFire(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		switch (var1->mode)
+		{
+		case 0:
+			FUN_00853490();
+			tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+			tp->disp = DrawFire;
+			var1->mode = 1;
+			break;
+		case 1:
+			if (dsCheckViewV(&var1->pos, 10.0f))
+			{
+				if (FUN_004c39c0(tp))
+				{
+					njPrintC(0x110014, "SCL Y -> FIRE SCL");
+				}
+				var1->wtimer++;
+				ruin_fire.pos = var1->pos;
+				ruin_fire.scl = (*(float *)((char *)var1 + 0x30) + 1.0) * 0.11999999731779099;
+				CreateFire2(&ruin_fire);
+				DrawFire(tp);
+			}
+			break;
+		}
+	}
 }
