@@ -70109,9 +70109,9 @@
   {
    "address": "0x008cef80",
    "name": "cartSpdForceOfNature",
-   "accuracy": 0.10810810810810811,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70285,9 +70285,9 @@
   {
    "address": "0x008d1090",
    "name": "writeSmoke",
-   "accuracy": 0.0975609756097561,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70342,6 +70342,22 @@
    "address": "0x008d1560",
    "name": "drawEgo",
    "accuracy": 0.035398230088495575,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008d2b10",
+   "name": "ObjectTPRocket",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008d2c70",
+   "name": "dispTPRocket",
+   "accuracy": 0.0182648401826484,
    "effective": false,
    "stub": true,
    "library": false
@@ -102034,6 +102050,13 @@
    "library": false
   },
   {
+   "address": "0x04c38e24",
+   "name": "DAT_04c38e24",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c3af58",
    "name": "object_b_cart_cart_cart",
    "size": 52,
@@ -103268,5 +103291,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "9e76c38e5ee9594e8766c2de3f7e12fd10e9b1dc3015c922067855f08c569703"
+ "inputs_sha256": "0fcc225fdd6dac883bf003034981202757f880ab09f7f82dedc6e46512a24443"
 }
