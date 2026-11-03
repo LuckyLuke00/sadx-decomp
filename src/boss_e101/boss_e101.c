@@ -20,7 +20,7 @@ static int FUN_00705400(struct task *param_1, float param_2);
 static void chkDamage(struct task *pTask);
 extern struct obj object_e101old_kihon0_e101old_e_head[];
 extern struct obj object_e101old_kihon0_e101old_e_head[1];
-extern struct NJS_MODEL *DAT_060c451c;
+extern struct bosswk *DAT_060c451c;
 long CalcMMMatrix(float (*inpmat)[16], struct NJS_ACTION *actptr, float motfrm, unsigned long srcnmb, float (*ansmat)[16]);
 void FUN_004a88c0(struct NJS_ACTION *param_1, float param_2);
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
@@ -431,40 +431,40 @@ static void jump(struct task *pTask)
 // FUNCTION: SADX 0x00705bc0
 static void hover(struct task *pTask)
 {
-	float *var1 = (float *)pTask->awp;
-	struct bosswk *var2 = (struct bosswk *)pTask->awp;
+	struct bosswk *var1 = (struct bosswk *)pTask->awp;
 	struct taskwk *var3 = pTask->twp;
+	struct NJS_POINT3 *var2 = (struct NJS_POINT3 *)((char *)var1 + 0x74);
 	double var4;
-	SetE101HoverSmoke(var3, var1[23] - 14.0);
+	SetE101HoverSmoke(var3, (*(float *)((char *)var1 + 0x5c)) - 14.0);
 	switch (var3->smode)
 	{
 	case 0:
-		var2->req_action = 4;
-		((int *)var1)[17] = (((int *)var1)[17] & ~2) | 9;
+		var1->req_action = 4;
+		(*(int *)((char *)var1 + 0x44)) = ((*(int *)((char *)var1 + 0x44)) & ~2) | 9;
 		var3->cwp->info->damage |= 0xc;
 		var3->smode = 1;
 		break;
 	case 1:
 		dsPlay_timer_v(0x98, (int)pTask, 1, 0, 4, var3->pos.x, var3->pos.y, var3->pos.z);
-		turnBody(pTask, &PosSpot[((int *)var1)[20]], 0x38e);
-		((int *)var1)[22] = 0;
+		turnBody(pTask, &PosSpot[(*(int *)((char *)var1 + 0x50))], 0x38e);
+		(*(int *)((char *)var1 + 0x58)) = 0;
 		if (var3->ang.x < 0x1c71)
 		{
 			var3->ang.x += 0x222;
 		}
-		var4 = 0.0f;
-		if (var1[30] >= var4)
+		var4 = 0.0;
+		if (var2->y >= 0.0f)
 		{
-			var4 = var1[30] * 0.95;
+			var4 = var2->y * (double)0.95f;
 		}
-		var1[30] = var4;
+		var2->y = var4;
 		FUN_0082ae70(0.15f);
-		if (var1[25] <= 400.0)
+		if ((*(float *)((char *)var1 + 0x64)) <= 400.0)
 		{
 			if (pTask->twp->mode != 4)
 			{
-				((int *)pTask->awp)[18] = 4;
-				((int *)pTask->awp)[19] = pTask->twp->mode;
+				*(int *)((char *)pTask->awp + 0x48) = 4;
+				*(int *)((char *)pTask->awp + 0x4c) = pTask->twp->mode;
 			}
 			var3->smode = -1;
 		}
@@ -472,9 +472,9 @@ static void hover(struct task *pTask)
 	}
 	if (var3->smode == -1)
 	{
-		((int *)var1)[17] &= ~9;
-		var1[29] = var1[29] * 0.6;
-		var1[31] = var1[31] * 0.6;
+		(*(int *)((char *)var1 + 0x44)) &= ~9;
+		var2->x *= 0.6f;
+		var2->z *= 0.6f;
 		var3->cwp->info->damage = (var3->cwp->info->damage & ~4) | 8;
 	}
 }
@@ -584,7 +584,7 @@ static void attack(struct task *pTask)
 {
 	struct taskwk *var1 = pTask->twp;
 	struct bosswk *var2 = (struct bosswk *)pTask->awp;
-	int *var3 = (int *)pTask->awp;
+	struct NJS_POINT3 *var3 = (struct NJS_POINT3 *)((char *)var2 + 0x74);
 	switch (var1->smode)
 	{
 	case 0:
@@ -592,14 +592,12 @@ static void attack(struct task *pTask)
 		{
 			if (var1->mode != 1)
 			{
-				((int *)pTask->awp)[18] = 1;
-				((int *)pTask->awp)[19] = pTask->twp->mode;
+				*(int *)((char *)pTask->awp + 0x48) = 1;
+				*(int *)((char *)pTask->awp + 0x4c) = pTask->twp->mode;
 			}
 			return;
 		}
-		((float *)var3)[31] = 0.0f;
-		((float *)var3)[30] = 0.0f;
-		((float *)var3)[29] = 0.0f;
+		var3->x = var3->y = var3->z = 0.0f;
 		var2->req_action = 5;
 		var1->smode = 1;
 		break;
@@ -613,12 +611,13 @@ static void attack(struct task *pTask)
 	case 2:
 		turnBody(pTask, &DAT_05baf368[0]->pos, 0x2d8);
 		DAT_05edd13e &= 0xfd;
-		if (((float *)var3)[4] >= 35.0f)
+		if (!(var2->nframe >= 35.0f))
 		{
-			FUN_007054e0(1, pTask);
-			DAT_05edd13e &= 0xfe;
-			var1->smode = 3;
+			break;
 		}
+		FUN_007054e0(1, pTask);
+		DAT_05edd13e &= 0xfe;
+		var1->smode = 3;
 		break;
 	case 3:
 		if (DAT_05edd13e & 1)
@@ -627,26 +626,26 @@ static void attack(struct task *pTask)
 			{
 				if (var1->mode != 2)
 				{
-					((int *)pTask->awp)[18] = 2;
-					((int *)pTask->awp)[19] = pTask->twp->mode;
+					*(int *)((char *)pTask->awp + 0x48) = 2;
+					*(int *)((char *)pTask->awp + 0x4c) = pTask->twp->mode;
 				}
 			}
 			else if (rand() < 0x3fff)
 			{
 				if (pTask->twp->mode != 2)
 				{
-					((int *)pTask->awp)[18] = 2;
-					((int *)pTask->awp)[19] = pTask->twp->mode;
+					*(int *)((char *)pTask->awp + 0x48) = 2;
+					*(int *)((char *)pTask->awp + 0x4c) = pTask->twp->mode;
 				}
 			}
 			else
 			{
 				if (pTask->twp->mode != 1)
 				{
-					((int *)pTask->awp)[18] = 1;
-					((int *)pTask->awp)[19] = pTask->twp->mode;
+					*(int *)((char *)pTask->awp + 0x48) = 1;
+					*(int *)((char *)pTask->awp + 0x4c) = pTask->twp->mode;
 				}
-				var3[16] = 0x78;
+				*(int *)((char *)var2 + 0x40) = 0x78;
 			}
 			var1->smode = -1;
 		}
@@ -654,7 +653,7 @@ static void attack(struct task *pTask)
 	}
 	if (var1->smode == -1)
 	{
-		var3[16] = 0x78;
+		*(int *)((char *)var2 + 0x40) = 0x78;
 	}
 }
 
@@ -805,8 +804,9 @@ static void dispTgt(struct task *pTask)
 	float var4;
 	struct obj *var5;
 	var3 = (var2->mtnmode != 2) ? var2->plactptr[var2->action].actptr : var2->actwkptr;
-	DAT_060c451c = (struct NJS_MODEL *)var2;
-	CalcMMMatrix(&_nj_unit_matrix_, var3, var2->nframe, 0x2d, &local_108[0]);
+	const float local_158 = var2->nframe;
+	DAT_060c451c = var2;
+	CalcMMMatrix(&_nj_unit_matrix_, var3, local_158, 0x2d, &local_108[0]);
 	GetMMMatrix(0x24, local_108[1]);
 	GetMMMatrix(0x1e, local_148);
 	GetMMMatrix(0x1f, local_88[1]);
