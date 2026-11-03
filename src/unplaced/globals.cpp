@@ -3584,6 +3584,9 @@ struct obj *obj_sw[3];
 // GLOBAL: SADX 0x043ac538
 struct CCL_INFO c_info_switch[1];
 
+// GLOBAL: SADX 0x043ac5dc
+struct particle_info ruin_fire;
+
 // GLOBAL: SADX 0x043ac64c
 struct CCL_INFO tap_c_info[1];
 
