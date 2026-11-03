@@ -1,5 +1,4 @@
 #include "decls.h"
-extern "C" double floor(double param_1);
 extern struct obj object_fun_test_funkaball_funkaball;
 extern void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
 

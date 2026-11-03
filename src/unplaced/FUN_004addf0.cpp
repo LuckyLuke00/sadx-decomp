@@ -2,12 +2,7 @@
 
 extern int DAT_05b3e058;
 extern int DAT_05b3e060;
-extern int DAT_05b3e924;
-extern int DAT_05b3ea00;
-extern int DAT_05b3ea04;
-extern struct _SEcallbuf DAT_05b3e468[20];
 
-bool FUN_004ab0b0();
 void FUN_007d21b0(...);
 void FUN_004ade40();
 
