@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct obj *bp_objtbl[2];
 
 #pragma optimize("", off)
 // STUB: SADX 0x0082a2c0
@@ -67,12 +68,39 @@ void FUN_0082a6b0(struct task *param_1)
 	}
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x0082a730
+// FUNCTION: SADX 0x0082a730
 void Object_Mountain_BPole_Display(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	char var2 = (char)(int)var1->scl.z;
+	if (var2 < 0 || var2 > 1)
+	{
+		var2 = 0;
+	}
+	var1->smode = var2;
+	struct obj *var3 = bp_objtbl[var2];
+	var1->timer.l = (long)var3;
+	if (dsCheckViewV(&var1->pos, 50.0f))
+	{
+		___njSetTexture(&texlist_obj_mountain);
+		njPushMatrix(0);
+		njTranslateV(0, &var1->pos);
+		if (*(int *)((char *)var1 + 0x1c) != 0)
+		{
+			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		}
+		if (*(int *)((char *)var1 + 0x18) != 0)
+		{
+			njRotateY(0, (unsigned short)*(short *)((char *)var1 + 0x18));
+		}
+		if (*(int *)((char *)var1 + 0x14) != 0)
+		{
+			njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
+		}
+		ds_DrawObjectClip(var3, 1.0f);
+		njPopMatrix(1);
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0082a800
 void GCInit_BPole(struct task *tp)

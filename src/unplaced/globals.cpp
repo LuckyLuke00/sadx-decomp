@@ -3347,6 +3347,9 @@ struct NJS_TEXLIST texlist_mexplosion_mountain;
 // GLOBAL: SADX 0x03fbaec8
 struct obj object_mexplosion_mountain[1];
 
+// GLOBAL: SADX 0x03fea4ac
+struct obj *bp_objtbl[2];
+
 // GLOBAL: SADX 0x03fea620
 struct CCL_INFO object_saku2_info[1];
 

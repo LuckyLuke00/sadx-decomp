@@ -1119,6 +1119,7 @@ extern struct obj object_youUPan_yogun_yogun;
 extern struct NJS_TEXLIST texlist_yougan_anim;
 extern struct NJS_TEXLIST texlist_mexplosion_mountain;
 extern struct obj object_mexplosion_mountain[1];
+extern struct obj *bp_objtbl[2];
 extern struct CCL_INFO object_saku2_info[1];
 extern struct CCL_INFO object_rouya_info[2];
 extern struct CCL_INFO object_saku_info[];
