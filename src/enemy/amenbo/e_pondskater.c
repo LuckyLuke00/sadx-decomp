@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" double fabs(double param_1);
 void FUN_008d69e0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_008d63e0(struct taskwk *param_1, struct enemywk *param_2);
 extern struct NJS_TEXLIST texlist_e_amenbo;
@@ -137,9 +138,33 @@ void FUN_008d6640(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
-// STUB: SADX 0x008d68e0
+// FUNCTION: SADX 0x008d68e0
 void FUN_008d68e0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	float local_14;
+	float local_10;
+	float local_8g;
+	float local_cj;
+	param_2->acc.x = -param_2->velo.x * 0.03999999910593033 + param_2->acc.x;
+	local_8g = param_2->velo.x;
+	local_10 = fabs(local_8g);
+	if (local_10 < 0.009999999776482582)
+	{
+		param_2->velo.x = 0.0;
+	}
+	param_2->acc.z = -param_2->velo.z * 0.03999999910593033 + param_2->acc.z;
+	local_cj = param_2->velo.z;
+	local_14 = fabs(local_cj);
+	if (local_14 < 0.009999999776482582)
+	{
+		param_2->velo.z = 0.0;
+	}
+	param_2->velo.x = param_2->velo.x + param_2->acc.x;
+	param_2->velo.z = param_2->velo.z + param_2->acc.z;
+	param_1->pos.x = param_1->pos.x + param_2->velo.x;
+	param_1->pos.z = param_1->pos.z + param_2->velo.z;
+	param_2->acc.x = 0.0;
+	param_2->acc.z = 0.0;
 }
 
 // STUB: SADX 0x008d6b70

@@ -2258,6 +2258,11 @@ void DrawCharSelFixedFile(struct CharSelWk *wkp)
 {
 }
 
+// STUB: SADX 0x0060ab50
+void SnowmanDisplayer(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0060d0e0
 extern void EffectHit(struct sp_task *, struct sp_link *)
 {

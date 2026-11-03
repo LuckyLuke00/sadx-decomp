@@ -1,6 +1,8 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+static struct NJS_POINT3 jet_pos[3];
+void SaiJetDraw(struct taskwk *twp, struct enemywk *ewp);
 void FUN_008d8580(int param_1, char *param_2);
 void FUN_008d76c0(int *param_1, int *param_2);
 void FUN_008d7730(struct taskwk *param_1);
@@ -140,9 +142,55 @@ void SaiDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x008d8330
+// FUNCTION: SADX 0x008d8330
 void SaiJetDraw(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 jpos;
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 10);
+	SetMaterial((float)(ewp->sub.b[0]) / 255.0, 1.0, 1.0, 1.0);
+	for (int local_18 = 0; local_18 < 3; local_18++)
+	{
+		___njSetTexture(&texlist_jet2);
+		njPushMatrix(&_nj_unit_matrix_);
+		njTranslateV(0, &twp->pos);
+		if (twp->ang.z != 0)
+		{
+			njRotateZ(0, (unsigned short)twp->ang.z);
+		}
+		if (twp->ang.x != 0)
+		{
+			njRotateX(0, (unsigned short)twp->ang.x);
+		}
+		if (twp->ang.y + ewp->angz_spd != 0)
+		{
+			njRotateY(0, (unsigned short)(twp->ang.y + ewp->angz_spd));
+		}
+		FUN_0067d830(0, 0.0, 0.0, ewp->height);
+		njCalcPoint(0, &jet_pos[local_18], &jpos);
+		njPopMatrix(1);
+	}
+	njPushMatrix(0);
+	njTranslateV(0, &twp->pos);
+	if (twp->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)twp->ang.z);
+	}
+	if (twp->ang.x != 0)
+	{
+		njRotateX(0, (unsigned short)twp->ang.x);
+	}
+	if (twp->ang.y + ewp->angz_spd != 0)
+	{
+		njRotateY(0, (unsigned short)(twp->ang.y + ewp->angz_spd));
+	}
+	FUN_0067d830(0, 0.0, 0.0, ewp->height);
+	___njSetTexture(&texlist_e_sai);
+	late_DrawObject(&object_rhino_jet[0], 4);
+	njPopMatrix(1);
+	ResetMaterial();
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // FUNCTION: SADX 0x008d8580

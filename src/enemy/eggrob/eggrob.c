@@ -1,4 +1,5 @@
 #include "decls.h"
+long Eggrob_MakeXYZHitBuf(struct xyyzzxsdwstr *ans, struct NJS_POINT3 *pos, float rad);
 void ___njSetTexture(struct NJS_TEXLIST *texlist);
 void Eggrob_RPunchShadow(struct task *tp);
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *));
@@ -208,9 +209,38 @@ void FUN_006155e0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2)
 {
 }
 
-// STUB: SADX 0x00615a00
+// FUNCTION: SADX 0x00615a00
 void FUN_00615a00(struct NJS_POINT3 *param_1, float param_2)
 {
+	struct xyyzzxsdwstr local_dc;
+	if (Eggrob_MakeXYZHitBuf(&local_dc, param_1, param_2) == 0)
+	{
+		return;
+	}
+	if (local_dc.hit[0].findflag == 1 && param_1->x - local_dc.hit[0].onpos < param_2)
+	{
+		param_1->x = local_dc.hit[0].onpos + param_2;
+	}
+	if (local_dc.hit[1].findflag == 1 && local_dc.hit[1].onpos - param_1->x < param_2)
+	{
+		param_1->x = local_dc.hit[1].onpos - param_2;
+	}
+	if (local_dc.hit[4].findflag == 1 && param_1->z - local_dc.hit[4].onpos < param_2)
+	{
+		param_1->z = local_dc.hit[4].onpos + param_2;
+	}
+	if (local_dc.hit[5].findflag == 1 && local_dc.hit[5].onpos - param_1->z < param_2)
+	{
+		param_1->z = local_dc.hit[5].onpos - param_2;
+	}
+	if (local_dc.hit[2].findflag == 1 && param_1->y - local_dc.hit[2].onpos < param_2)
+	{
+		param_1->y = local_dc.hit[2].onpos + param_2;
+	}
+	if (local_dc.hit[3].findflag == 1 && local_dc.hit[3].onpos - param_1->y < param_2)
+	{
+		param_1->y = local_dc.hit[3].onpos - param_2;
+	}
 }
 
 // STUB: SADX 0x00615f90
