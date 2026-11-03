@@ -1492,7 +1492,7 @@
   {
    "address": "0x00419cf0",
    "name": "SOCRender::FUN_00419cf0",
-   "accuracy": 0.5,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -3108,7 +3108,7 @@
   {
    "address": "0x0042b460",
    "name": "SOCFileStream::ReadFile",
-   "accuracy": 0.8539325842696629,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -15972,7 +15972,7 @@
   {
    "address": "0x004b23e0",
    "name": "FUN_004b23e0",
-   "accuracy": 0.7815126050420168,
+   "accuracy": 0.9369747899159664,
    "effective": false,
    "stub": false,
    "library": false
@@ -16012,7 +16012,7 @@
   {
    "address": "0x004b5e70",
    "name": "FUN_004b5e70",
-   "accuracy": 0.7164179104477612,
+   "accuracy": 0.8855721393034826,
    "effective": false,
    "stub": false,
    "library": false
@@ -28884,7 +28884,7 @@
   {
    "address": "0x00577e40",
    "name": "InitStaff2",
-   "accuracy": 0.34727143869596033,
+   "accuracy": 0.4837696335078534,
    "effective": false,
    "stub": false,
    "library": false
@@ -87684,7 +87684,7 @@
   },
   {
    "address": "0x00928740",
-   "name": "Magic::Base::File::FUN_00928740",
+   "name": "Magic::Base::File::~File",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87692,8 +87692,8 @@
   },
   {
    "address": "0x00928790",
-   "name": "Magic::Base::File::FUN_00928790",
-   "accuracy": 0.05128205128205128,
+   "name": "Magic::Base::File::File",
+   "accuracy": 0.2608695652173913,
    "effective": false,
    "stub": true,
    "library": false
@@ -88181,7 +88181,7 @@
   {
    "address": "0x0092b1b0",
    "name": "Magic::Base::IniFile::FUN_0092b1b0",
-   "accuracy": 0.39263803680981596,
+   "accuracy": 0.6783625730994152,
    "effective": false,
    "stub": false,
    "library": false
@@ -103232,5 +103232,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "313b0630366448c24932a10729d637fb0f23dd7dec1dd0c2065dc141b05015b3"
+ "inputs_sha256": "341ad195bdd99d3eca38493a3132983f6d270e7f0203cf9f9b7ad0275c0a5b28"
 }

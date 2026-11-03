@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1435" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,166 of 16,524 game functions done (37.31%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,168 of 16,524 game functions done (37.32%), accuracy 99.86%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="597.8,1194.5 604.2,1194.5 605.9,1196 607,1197.6 601,1204.5 595,1197.6 596.1,1196" fill="#4e32f3"/>
 <polygon points="597.8,1194.5 604.2,1194.5 605.9,1196 607,1197.6 595,1197.6 596.1,1196" fill="#ffffff" fill-opacity="0.4"/>
@@ -5552,7 +5552,7 @@
 <rect x="42" y="161" width="6" height="6" fill="#ffd700"><title>0x00577b30 CloseDialog: 100%</title></rect>
 <rect x="49" y="161" width="6" height="6" fill="#ffd700"><title>0x00577b80 GetDialogNoKeyTime: 100%</title></rect>
 <rect x="56" y="161" width="6" height="6" fill="#ffd700"><title>0x00577ba0 SetDialogNoKeyTime: 100%</title></rect>
-<rect x="63" y="161" width="6" height="6" fill="#6d8cb8"><title>0x00577e40 InitStaff2: 34.7%</title></rect>
+<rect x="63" y="161" width="6" height="6" fill="#8a9ea8"><title>0x00577e40 InitStaff2: 48.4%</title></rect>
 <rect x="70" y="161" width="6" height="6" fill="#ffd700"><title>0x00579960 FUN_00579960: 100%</title></rect>
 <rect x="77" y="161" width="6" height="6" fill="#ffd700"><title>0x0057a4e0 displayMission: 100%</title></rect>
 <rect x="84" y="161" width="6" height="6" fill="#ffd700"><title>0x0057a510 endDisplayMission: 100%</title></rect>
@@ -5961,7 +5961,7 @@
 <rect x="133" y="245" width="6" height="6" fill="#ffd700"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 <rect x="140" y="245" width="6" height="6" fill="#ffd700"><title>0x008e1c90 CollisionSceneChanger: 100%</title></rect>
 </g>
-<rect x="524" y="373" width="246" height="179" rx="3" fill="#21262d" stroke="#30363d"><title>Ninja graphics: 178 of 686 functions done</title></rect>
+<rect x="524" y="373" width="246" height="179" rx="3" fill="#21262d" stroke="#30363d"><title>Ninja graphics: 180 of 686 functions done</title></rect>
 <text x="527" y="387" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Ninja graphics <tspan font-weight="400" fill="#8b949e">7%</tspan></text>
 <g transform="translate(527,391)">
 <rect y="0" width="238" height="140" fill="url(#todo)"/>
@@ -5975,7 +5975,7 @@
 <rect x="140" y="0" width="6" height="6" fill="#ffd700"><title>0x00419b00 FUN_00419b00: 100%</title></rect>
 <rect x="147" y="0" width="6" height="6" fill="#ffd700"><title>0x00419b20 FUN_00419b20: 100%</title></rect>
 <rect x="154" y="0" width="6" height="6" fill="#ffd700"><title>0x00419b40 FUN_00419b40: 100%</title></rect>
-<rect x="203" y="0" width="6" height="6" fill="#8ea0a6"><title>0x00419cf0 SOCRender::FUN_00419cf0: 50.0%</title></rect>
+<rect x="203" y="0" width="6" height="6" fill="#ffd700"><title>0x00419cf0 SOCRender::FUN_00419cf0: 100%</title></rect>
 <rect x="210" y="0" width="6" height="6" fill="#ffd700"><title>0x00419d00 FUN_00419d00: 100%</title></rect>
 <rect x="189" y="7" width="6" height="6" fill="#ffd700"><title>0x0041a7d0 FUN_0041a7d0: 100%</title></rect>
 <rect x="196" y="7" width="6" height="6" fill="#ffd700"><title>0x0041a7f0 FUN_0041a7f0: 100%</title></rect>
@@ -6064,7 +6064,7 @@
 <rect x="168" y="77" width="6" height="6" fill="#ffd700"><title>0x0042b400 syFree: 100%</title></rect>
 <rect x="175" y="77" width="6" height="6" fill="#ffd700"><title>0x0042b420 SOCFileStream::SOCFileStream: 100%</title></rect>
 <rect x="182" y="77" width="6" height="6" fill="#ffd700"><title>0x0042b430 SOCFileStream::~SOCFileStream: 100%</title></rect>
-<rect x="189" y="77" width="6" height="6" fill="#ddc85f"><title>0x0042b460 SOCFileStream::ReadFile: 85.4%</title></rect>
+<rect x="189" y="77" width="6" height="6" fill="#ffd700"><title>0x0042b460 SOCFileStream::ReadFile: 100%</title></rect>
 <rect x="0" y="84" width="6" height="6" fill="#ffd700"><title>0x0042b810 _njTransformObject: 100%</title></rect>
 <rect x="7" y="84" width="6" height="6" fill="#ffd700"><title>0x0042b8c0 FUN_0042b8c0: 100%</title></rect>
 <rect x="21" y="84" width="6" height="6" fill="#ffd700"><title>0x0042ba90 njSetMaterialCallBackFunc: 100%</title></rect>
@@ -6399,7 +6399,7 @@
 <rect x="189" y="189" width="6" height="6" fill="#ffd700"><title>0x00928450 FUN_00928450: 100%</title></rect>
 <rect x="42" y="196" width="6" height="6" fill="#ffd700"><title>0x009285c0 Magic::Base::File::FUN_009285c0: 100%</title></rect>
 <rect x="84" y="196" width="6" height="6" fill="#ffd700"><title>0x00928720 FUN_00928720: 100%</title></rect>
-<rect x="91" y="196" width="6" height="6" fill="#ffd700"><title>0x00928740 Magic::Base::File::FUN_00928740: 100%</title></rect>
+<rect x="91" y="196" width="6" height="6" fill="#ffd700"><title>0x00928740 Magic::Base::File::~File: 100%</title></rect>
 <rect x="112" y="196" width="6" height="6" fill="#ffd700"><title>0x00928840 FUN_00928840: 100%</title></rect>
 <rect x="126" y="196" width="6" height="6" fill="#ffd700"><title>0x009288c0 FUN_009288c0: 100%</title></rect>
 <rect x="140" y="196" width="6" height="6" fill="#ffd700"><title>0x009288e0 FUN_009288e0: 100%</title></rect>
@@ -6421,7 +6421,7 @@
 <rect x="112" y="210" width="6" height="6" fill="#ffd700"><title>0x0092a2c0 FUN_0092a2c0: 100%</title></rect>
 <rect x="133" y="210" width="6" height="6" fill="#ffd700"><title>0x0092a3b0 FUN_0092a3b0: 100%</title></rect>
 <rect x="70" y="217" width="6" height="6" fill="#ffd700"><title>0x0092b130 Magic::Base::IniFile::IniFile: 100%</title></rect>
-<rect x="77" y="217" width="6" height="6" fill="#7692b3"><title>0x0092b1b0 Magic::Base::IniFile::FUN_0092b1b0: 39.3%</title></rect>
+<rect x="77" y="217" width="6" height="6" fill="#b5b58a"><title>0x0092b1b0 Magic::Base::IniFile::FUN_0092b1b0: 67.8%</title></rect>
 <rect x="14" y="224" width="6" height="6" fill="#ffd700"><title>0x0092c9e0 FUN_0092c9e0: 100%</title></rect>
 </g>
 <text x="19" y="571" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Not sorted yet <tspan font-weight="400" fill="#8b949e">1%</tspan></text>
@@ -6460,11 +6460,11 @@
 <rect x="175" y="77" width="6" height="6" fill="#ffd700"><title>0x004addf0 FUN_004addf0: 100%</title></rect>
 <rect x="189" y="77" width="6" height="6" fill="#ffd700"><title>0x004ae9c0 FUN_004ae9c0: 100%</title></rect>
 <rect x="273" y="77" width="6" height="6" fill="#ffd700"><title>0x004b1a80 FUN_004b1a80: 100%</title></rect>
-<rect x="0" y="84" width="6" height="6" fill="#cdc074"><title>0x004b23e0 FUN_004b23e0: 78.2%</title></rect>
+<rect x="0" y="84" width="6" height="6" fill="#f1d133"><title>0x004b23e0 FUN_004b23e0: 93.7%</title></rect>
 <rect x="14" y="84" width="6" height="6" fill="#ffd700"><title>0x004b2860 FUN_004b2860: 100%</title></rect>
 <rect x="63" y="84" width="6" height="6" fill="#ffd700"><title>0x004b3210 FUN_004b3210: 100%</title></rect>
 <rect x="105" y="84" width="6" height="6" fill="#ffd700"><title>0x004b5ad0 FUN_004b5ad0: 100%</title></rect>
-<rect x="112" y="84" width="6" height="6" fill="#beb982"><title>0x004b5e70 FUN_004b5e70: 71.6%</title></rect>
+<rect x="112" y="84" width="6" height="6" fill="#e5cb55"><title>0x004b5e70 FUN_004b5e70: 88.6%</title></rect>
 <rect x="126" y="84" width="6" height="6" fill="#ffd700"><title>0x004b6460 FUN_004b6460: 100%</title></rect>
 <rect x="133" y="84" width="6" height="6" fill="#ffd700"><title>0x004b6520 FUN_004b6520: 100%</title></rect>
 <rect x="140" y="84" width="6" height="6" fill="#ffd700"><title>0x004b6590 std::vector&lt;FUN_004b6590_0 *,std::allocator&lt;FUN_004b6590_0 *&gt; &gt;::clear: 100%</title></rect>

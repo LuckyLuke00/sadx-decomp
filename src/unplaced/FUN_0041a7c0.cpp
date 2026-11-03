@@ -1,11 +1,12 @@
 #include "decls.h"
+#include "../advertise.h"
 extern unsigned char DAT_05ab4225;
 extern unsigned char DAT_05ab4226;
 
 // FUNCTION: SADX 0x0041a7d0
 void FUN_0041a7d0(int param_1)
 {
-	*(int *)((char *)DAT_05ab39ac + 0x2798) = param_1;
+	((SOCRender *)DAT_05ab39ac)->FUN_00419cf0(param_1);
 }
 
 // FUNCTION: SADX 0x0041a7f0
