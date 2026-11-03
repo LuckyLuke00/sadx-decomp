@@ -1,4 +1,5 @@
 #include "decls.h"
+static void eggmissile_draw(struct task *tp);
 extern "C" double floor(double param_1);
 void FUN_00422560(int param_1);
 void FUN_0067d2d0(float *param_1, float param_2, float param_3, float param_4);
@@ -9,7 +10,7 @@ extern struct obj _object_missile_body_body;
 extern struct NJS_POINT2 DAT_05b3e050;
 
 // FUNCTION: SADX 0x007dec40
-void eggmissile_draw(struct task *tp)
+static void eggmissile_draw(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	FUN_00422560(3);
