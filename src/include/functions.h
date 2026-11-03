@@ -1993,6 +1993,7 @@ void CPlayable_Dest(struct task *tp);
 void CPlayable_Exec(struct task *);
 void ObjectItemboxAir(struct task *tp);
 void InitItemBoxManager();
+void EntryItemBoxPanel(long panel);
 void FUN_005b67b0(struct task *param_1);
 void FUN_005b6820(void);
 void FUN_005b6940();

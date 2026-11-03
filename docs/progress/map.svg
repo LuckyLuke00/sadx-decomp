@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1429" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,157 of 16,524 game functions done (37.26%), accuracy 99.84%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,159 of 16,524 game functions done (37.27%), accuracy 99.84%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="597.8,1188.5 604.2,1188.5 605.9,1190 607,1191.6 601,1198.5 595,1191.6 596.1,1190" fill="#4e32f3"/>
 <polygon points="597.8,1188.5 604.2,1188.5 605.9,1190 607,1191.6 595,1191.6 596.1,1190" fill="#ffffff" fill-opacity="0.4"/>
@@ -4533,8 +4533,8 @@
 <polygon points="538.2,72.6 542,72.6 536,79.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="532.8,69.5 539.2,69.5 540.9,71 542,72.6 536,79.5 530,72.6 531.1,71" fill="none" stroke="#59636e" stroke-width="0.75" stroke-linejoin="round"/>
 <text x="546" y="79" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Shared code <tspan font-weight="400" fill="#59636e">33%</tspan></text>
-<rect x="884" y="365" width="96" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Objects: 49 of 251 functions done</title></rect>
-<text x="887" y="379" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Objects <tspan font-weight="400" fill="#59636e">7%</tspan></text>
+<rect x="884" y="365" width="96" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Objects: 50 of 251 functions done</title></rect>
+<text x="887" y="379" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Objects <tspan font-weight="400" fill="#59636e">8%</tspan></text>
 <g transform="translate(887,383)">
 <rect y="0" width="91" height="133" fill="url(#todo)"/>
 <rect y="133" width="28" height="7" fill="url(#todo)"/>
@@ -4545,6 +4545,7 @@
 <rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x005ac490 FUN_005ac490: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#b07d00"><title>0x005b9490 FUN_005b9490: 100%</title></rect>
 <rect x="77" y="42" width="6" height="6" fill="#b07d00"><title>0x005dd9a0 FUN_005dd9a0: 100%</title></rect>
+<rect x="84" y="42" width="6" height="6" fill="#b07d00"><title>0x005dd9e0 FUN_005dd9e0: 100%</title></rect>
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x005ddbf0 FUN_005ddbf0: 100%</title></rect>
 <rect x="28" y="84" width="6" height="6" fill="#b07d00"><title>0x008c9960 FUN_008c9960: 100%</title></rect>
 <rect x="56" y="84" width="6" height="6" fill="#b07d00"><title>0x008c9c00 FUN_008c9c00: 100%</title></rect>
@@ -5955,7 +5956,7 @@
 <rect x="126" y="238" width="6" height="6" fill="#b07d00"><title>0x008e15f0 knhint_exec: 100%</title></rect>
 <rect x="133" y="238" width="6" height="6" fill="#b07d00"><title>0x008e1c90 CollisionSceneChanger: 100%</title></rect>
 </g>
-<rect x="531" y="365" width="242" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 177 of 686 functions done</title></rect>
+<rect x="531" y="365" width="242" height="181" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Ninja graphics: 178 of 686 functions done</title></rect>
 <text x="534" y="379" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Ninja graphics <tspan font-weight="400" fill="#59636e">7%</tspan></text>
 <g transform="translate(534,383)">
 <rect y="0" width="231" height="140" fill="url(#todo)"/>
@@ -6125,6 +6126,7 @@
 <rect x="161" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d800 njPopMatrix: 100%</title></rect>
 <rect x="168" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d830 FUN_0067d830: 100%</title></rect>
 <rect x="175" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d8c0 njAddVector: 100%</title></rect>
+<rect x="189" y="133" width="6" height="6" fill="#b07d00"><title>0x0067d9b0 njFraction: 100%</title></rect>
 <rect x="203" y="133" width="6" height="6" fill="#b07d00"><title>0x0067da10 njUnitTransPortion: 100%</title></rect>
 <rect x="217" y="133" width="6" height="6" fill="#b07d00"><title>0x0067daf0 njSubMatrix: 100%</title></rect>
 <rect x="224" y="133" width="6" height="6" fill="#b07d00"><title>0x0067dba0 njSetMatrix: 100%</title></rect>

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct ITEM_INFOMATION item_info[1];
+extern int DAT_05edd2a0;
 
 // FUNCTION: SADX 0x005dd9a0
 void FUN_005dd9a0(void *param_1)
@@ -8,6 +10,52 @@ void FUN_005dd9a0(void *param_1)
 	{
 		*(char *)param_1 = 2;
 		*(float *)((char *)param_1 + 0x34) = 1.0;
+	}
+}
+
+// FUNCTION: SADX 0x005dd9e0
+void FUN_005dd9e0(struct task *param_1)
+{
+	struct taskwk *local_cg;
+	struct colliwk *local_8g;
+
+	local_cg = param_1->twp;
+	local_8g = local_cg->cwp->hit_cwp;
+	if (CheckEditMode() == 0)
+	{
+		if (DAT_05baf368[0] == 0)
+			return;
+		if ((local_cg->cwp->flag & 1) != 0)
+		{
+			if (local_8g->id == 0 || local_8g->id == 1)
+			{
+				if (local_cg->cwp->my_num == 1)
+				{
+					local_cg->mode = 3;
+					if (local_cg->cwp->hit_cwp->mytask == GetPlayerTaskPointer(0) && (DAT_05baf368[0]->flag & 1) == 0)
+						SetVelocityP(0, 0.0f, 2.0f, 0.0f);
+					else if (local_cg->cwp->hit_cwp->mytask == GetPlayerTaskPointer(1) && (DAT_05baf368[0]->flag & 1) == 0)
+						SetVelocityP(1, 0.0f, 2.0f, 0.0f);
+				}
+				if ((local_cg->flag & 4) != 0)
+					local_cg->mode = 3;
+				if (local_cg->mode == 3 && item_info[DAT_05edd2a0].effect_func != 0)
+				{
+					if (local_cg->cwp->hit_cwp->mytask == GetPlayerTaskPointer(0)
+						|| GetPlayerNumber() == 6
+						|| GetPlayerNumber() == 7
+						|| GetPlayerNumber() == 0
+						|| (GetPlayerCharacterName(1) == 2 && GetPlayerCharacterName(0) == 0)
+						|| (GetPlayerCharacterName(0) == 2 && GetPlayerCharacterName(1) != 0))
+					{
+						item_info[DAT_05edd2a0].effect_func(local_cg);
+						EntryItemBoxPanel(DAT_05edd2a0);
+					}
+				}
+			}
+		}
+		EntryColliList(local_cg);
+		local_cg->scl.y += 3.0;
 	}
 }
 
