@@ -3707,6 +3707,31 @@ void target_draw(struct task *task_p)
 {
 }
 
+// STUB: SADX 0x008a2730
+void SHELTER_CreateSmoke(struct particle_info *effect)
+{
+}
+
+// STUB: SADX 0x008af650
+void FUN_008af650(struct task *)
+{
+}
+
+// STUB: SADX 0x008b0080
+void ObjShelterRoboMonitor(struct task *tp)
+{
+}
+
+// STUB: SADX 0x008b0b60
+void AppearZERO(struct taskwk *)
+{
+}
+
+// STUB: SADX 0x008b1850
+void FUN_008b1850(struct taskwk *)
+{
+}
+
 // STUB: SADX 0x008b3a20
 void ObjShelterMizubashira(struct task *)
 {

@@ -66972,7 +66972,7 @@
   },
   {
    "address": "0x00898630",
-   "name": "ShutterPartsDisplayer",
+   "name": "ShutterPartsDisplayer(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66980,7 +66980,7 @@
   },
   {
    "address": "0x00898800",
-   "name": "BrokenPieceDisplayer",
+   "name": "BrokenPieceDisplayer(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -67134,6 +67134,14 @@
    "address": "0x008a23d0",
    "name": "Bg_HotShelter",
    "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008a2730",
+   "name": "SHELTER_CreateSmoke",
+   "accuracy": 0.031746031746031744,
    "effective": false,
    "stub": true,
    "library": false
@@ -67428,7 +67436,7 @@
   },
   {
    "address": "0x008a9eb0",
-   "name": "Disp2Task",
+   "name": "Disp2Task(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -67595,6 +67603,78 @@
    "library": false
   },
   {
+   "address": "0x008aed70",
+   "name": "FUN_008aed70",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008aedb0",
+   "name": "DispATask(15)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008aee30",
+   "name": "DesertATask(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008aee60",
+   "name": "FUN_008aee60",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008aeee0",
+   "name": "InitATask(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008aefa0",
+   "name": "ObjShelterBoxAna",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af040",
+   "name": "FUN_008af040",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af090",
+   "name": "FUN_008af090",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af0e0",
+   "name": "DispATask(16)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x008af150",
    "name": "DispBTask",
    "accuracy": 1.0,
@@ -67603,27 +67683,83 @@
    "library": false
   },
   {
-   "address": "0x008af2d0",
-   "name": "ShutterParts",
-   "accuracy": 0.02197802197802198,
+   "address": "0x008af1c0",
+   "name": "InitBTask(1)",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af250",
+   "name": "ShutterPartsDisplayer(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af2d0",
+   "name": "ShutterParts(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af410",
+   "name": "BrokenPieceDisplayer(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af4c0",
+   "name": "CreateShutterParticles(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x008af650",
    "name": "FUN_008af650",
-   "accuracy": 0.04,
+   "accuracy": 0.03773584905660377,
    "effective": false,
    "stub": true,
    "library": false
   },
   {
-   "address": "0x008af7e0",
-   "name": "ShutterBrokenPiece",
-   "accuracy": 0.0273972602739726,
+   "address": "0x008af6f0",
+   "name": "InitATask(4)",
+   "accuracy": 0.9770992366412213,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af7e0",
+   "name": "ShutterBrokenPiece(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008af8a0",
+   "name": "CreateShutterParts(1)",
+   "accuracy": 0.615916955017301,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008afcc0",
+   "name": "ObjShelterCrashMonitor",
+   "accuracy": 0.935064935064935,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -67632,6 +67768,198 @@
    "accuracy": 0.04878048780487805,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008b0080",
+   "name": "ObjShelterRoboMonitor",
+   "accuracy": 0.020833333333333332,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008b0650",
+   "name": "ExecATask(6)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b06d0",
+   "name": "DispATask(17)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b0740",
+   "name": "ShutterPartsDisplayer(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b07c0",
+   "name": "ShutterParts(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b0910",
+   "name": "BrokenPieceDisplayer(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b09c0",
+   "name": "CreateShutterParticles(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b0b60",
+   "name": "AppearZERO",
+   "accuracy": 0.034482758620689655,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008b0c10",
+   "name": "InitATask(5)",
+   "accuracy": 0.7654320987654321,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b0ca0",
+   "name": "ShutterBrokenPiece(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b0d60",
+   "name": "CreateShutterParts(2)",
+   "accuracy": 0.5479930191972077,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b1170",
+   "name": "ObjShelterGrass",
+   "accuracy": 0.9319371727748691,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b12a0",
+   "name": "InitBTask(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b1330",
+   "name": "ExecATask(7)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b13b0",
+   "name": "FUN_008b13b0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b1400",
+   "name": "DispATask(18)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b1470",
+   "name": "Disp2Task(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b14e0",
+   "name": "ShutterPartsDisplayer(4)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b1560",
+   "name": "ShutterParts(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b16b0",
+   "name": "CreateShutterParticles(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b1850",
+   "name": "FUN_008b1850",
+   "accuracy": 0.03389830508474576,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x008b1910",
+   "name": "InitATask(6)",
+   "accuracy": 0.7654320987654321,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b19a0",
+   "name": "CreateShutterParts(3)",
+   "accuracy": 0.5549738219895288,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008b1dc0",
+   "name": "ObjShelterBreakKabe",
+   "accuracy": 0.9216589861751152,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -101127,9 +101455,37 @@
    "library": false
   },
   {
+   "address": "0x04a66f84",
+   "name": "object_boxana_boxana_cori_boxana_cori",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04a6bf60",
+   "name": "object_tv_clashSSS_corimae_corimae",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04a6c434",
+   "name": "object_tv_clash_base_coris_base_coris",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04a72674",
    "name": "model_tv_clash_base_tv_clash_base",
    "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04a726a0",
+   "name": "object_tv_clash_base_tv_clash_base",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -101176,6 +101532,13 @@
    "library": false
   },
   {
+   "address": "0x04a772c0",
+   "name": "texlist_HotShelter0",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04a790f4",
    "name": "object_ukidoor_ukidoor_ukidoor",
    "size": 52,
@@ -101211,6 +101574,20 @@
    "library": false
   },
   {
+   "address": "0x04a8b4d8",
+   "name": "object_otte_grass_br_parts_br_parts",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04a8b66c",
+   "name": "object_otte_grass_before_before",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04a8bf5c",
    "name": "object_ligyel_ligyy_ligyy",
    "size": 52,
@@ -101235,6 +101612,27 @@
    "address": "0x04aa1cc0",
    "name": "model_hasi_enhasi_enhasi",
    "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ac3ca0",
+   "name": "object_breakkabe_br_part_br_part",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ac52c4",
+   "name": "object_breakkabe_before_before",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ac7254",
+   "name": "object_breakkabe_after_after",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -101281,6 +101679,20 @@
    "library": false
   },
   {
+   "address": "0x04ad6da4",
+   "name": "object_breakkabe_beforecoli_beforecoli",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ad74d4",
+   "name": "object_breakkabe_aftercoli_aftercoli",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04ad7728",
    "name": "c_info_a",
    "size": 96,
@@ -101299,6 +101711,34 @@
    "name": "cinfo_appear",
    "size": 48,
    "match": true,
+   "library": false
+  },
+  {
+   "address": "0x04ad8094",
+   "name": "TVpos",
+   "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ad80d0",
+   "name": "shutter_smoke",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ad846c",
+   "name": "shutter_smoke",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ad84d8",
+   "name": "shutter_smoke",
+   "size": 60,
+   "match": false,
    "library": false
   },
   {
@@ -102690,5 +103130,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "51b3fce75cb9a0e0263e82ba40b85536e8c8e6c55c6ef0e35e947c229888e26f"
+ "inputs_sha256": "bcb2622d19e6234890e0a142de9d3f41f4e5580da4cb344c75af162a12a64196"
 }
