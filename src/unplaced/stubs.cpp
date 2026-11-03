@@ -3837,6 +3837,11 @@ void FUN_008cfbb0(int, int)
 {
 }
 
+// STUB: SADX 0x008d2c70
+void dispTPRocket(struct task *tp)
+{
+}
+
 // STUB: SADX 0x008d55f0
 void dispTPPanel(struct task *tp)
 {

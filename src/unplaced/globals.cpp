@@ -4409,6 +4409,9 @@ int DAT_04c37b48[6][3];
 // GLOBAL: SADX 0x04c38b98
 int DAT_04c38b98[4];
 
+// GLOBAL: SADX 0x04c38e24
+struct particle_info DAT_04c38e24;
+
 // GLOBAL: SADX 0x04c3af58
 struct obj object_b_cart_cart_cart[1];
 

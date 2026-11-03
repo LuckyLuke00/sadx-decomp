@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct particle_info DAT_04c38e24;
 extern int DAT_060dfee0;
 extern struct CART_PLAYER_PARAMETER CartParameter[1];
 extern int DAT_060dfeac;
@@ -111,9 +112,31 @@ void cartShadowPos(struct task *tp, struct taskwk *twp)
 	*(float *)((char *)DAT_060dfeb4 + 0x44) = GetShadowPos(twp->pos.x, CartParameter[DAT_060dfeac].hover_point + twp->pos.y, twp->pos.z, (struct Angle3 *)((char *)DAT_060dfeb4 + 0x54));
 }
 
-// STUB: SADX 0x008cef80
+// FUNCTION: SADX 0x008cef80
 void cartSpdForceOfNature(struct task *tp, struct taskwk *twp)
 {
+	struct NJS_POINT3 _vec;
+	float local_8g;
+	*(float *)((char *)DAT_060dfeb4 + 0x74) = -CartParameter[DAT_060dfeac].gravitation;
+	local_8g = twp->pos.y - *(float *)((char *)DAT_060dfeb4 + 0x44);
+	if (local_8g <= CartParameter[DAT_060dfeac].hover_point + 3.0f)
+	{
+		*(int *)DAT_060dfeb4 = *(int *)DAT_060dfeb4 & ~0x10;
+	}
+	else
+	{
+		*(int *)DAT_060dfeb4 = *(int *)DAT_060dfeb4 | 0x10;
+	}
+	if (((*(int *)DAT_060dfeb4) & 0x10) == 0)
+	{
+		_vec.x = 0.0f;
+		_vec.y = 0.0f;
+		_vec.z = 0.0f;
+		_vec.y = CartParameter[DAT_060dfeac].slide_spd;
+		calcComponentVector((struct Angle3 *)((char *)DAT_060dfeb4 + 0x54), &_vec);
+		*(float *)((char *)DAT_060dfeb4 + 0x70) = _vec.x;
+		*(float *)((char *)DAT_060dfeb4 + 0x78) = _vec.z;
+	}
 }
 
 // STUB: SADX 0x008cf520
@@ -318,9 +341,42 @@ void cartSELoop(struct task *tp, long se_no)
 	}
 }
 
-// STUB: SADX 0x008d1090
+// FUNCTION: SADX 0x008d1090
 void writeSmoke(struct task *tp, struct taskwk *twp)
 {
+	struct NJS_POINT3 _smoke_pos;
+	static struct particle_info _info;
+	static struct NJS_POINT3 _vec;
+	_smoke_pos.x = twp->pos.x;
+	_smoke_pos.y = *(float *)((char *)DAT_060dfeb4 + 0x44);
+	_smoke_pos.z = twp->pos.z;
+	if ((*(int *)((char *)DAT_060dfeb4 + 0x0) & 2) != 0 && *(int *)((char *)DAT_060dfeb4 + 0x40) == 0)
+	{
+		DAT_04c38e24.pos = _smoke_pos;
+		CreateSnow2(&DAT_04c38e24);
+		*(int *)((char *)DAT_060dfeb4 + 0x40) = 4;
+	}
+	else
+	{
+		*(int *)((char *)DAT_060dfeb4 + 0x40) = *(int *)((char *)DAT_060dfeb4 + 0x40) - 1;
+		if (*(int *)((char *)DAT_060dfeb4 + 0x40) < 0)
+		{
+			*(int *)((char *)DAT_060dfeb4 + 0x40) = 0;
+		}
+	}
+	if (*(int *)((char *)DAT_060dfeb4 + 0x3c) == 0)
+	{
+		if ((*(int *)((char *)DAT_060dfeb4 + 0x0) & 0x40) != 0)
+		{
+			CreateSmoke(&_smoke_pos, &DAT_009c610c, 1.0);
+			*(int *)((char *)DAT_060dfeb4 + 0x0) = *(int *)((char *)DAT_060dfeb4 + 0x0) & ~0x40;
+			*(int *)((char *)DAT_060dfeb4 + 0x3c) = 4;
+		}
+	}
+	else
+	{
+		*(int *)((char *)DAT_060dfeb4 + 0x3c) = *(int *)((char *)DAT_060dfeb4 + 0x3c) - 1;
+	}
 }
 
 // STUB: SADX 0x008d11b0

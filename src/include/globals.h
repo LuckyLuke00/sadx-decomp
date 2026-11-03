@@ -1473,6 +1473,7 @@ extern struct obj object_c0_balia_a_balia_a[1];
 extern struct NJS_TEXLIST texlist_chaos_effect;
 extern int DAT_04c37b48[6][3];
 extern int DAT_04c38b98[4];
+extern struct particle_info DAT_04c38e24;
 extern struct obj object_b_cart_cart_cart[];
 extern struct obj object_e_cart_cart_cart[];
 extern struct NJS_TEXLIST texlist_obj_shareobj;
