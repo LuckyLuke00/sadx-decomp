@@ -2606,7 +2606,6 @@ void BigGrassDisplayer(struct task *tp);
 void FinalEggDisplayer(struct task *tp);
 void TreeDisplayer(struct task *tp);
 void PalmDisplayer(struct task *tp);
-void FUN_006b56e0(struct obj *param_1);
 void FUN_006b78c0(struct task *param_1);
 void FUN_006bc4a0(int param_1, int param_2);
 void PASTPcEnd();

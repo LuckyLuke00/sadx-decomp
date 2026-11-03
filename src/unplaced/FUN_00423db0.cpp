@@ -1,6 +1,5 @@
 #include "decls.h"
 extern unsigned char DAT_05ad95e0;
-extern int DAT_04c7c0c0;
 long FUN_00423db0(const char *param_1, struct NJS_TEXLIST *param_2);
 
 // FUNCTION: SADX 0x00423db0

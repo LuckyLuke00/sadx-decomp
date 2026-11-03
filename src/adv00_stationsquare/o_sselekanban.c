@@ -1,7 +1,6 @@
 #include "decls.h"
 extern int DAT_05b9d838;
 extern struct obj object_ssobj_elekanban_elekanban[];
-extern struct NJS_MKEY_F pos_alm_piyo_reg_r[];
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 

@@ -1,7 +1,5 @@
 #include "decls.h"
 extern unsigned char DAT_05bafb00[];
-extern int DAT_060eeac8;
-extern void *DAT_06298cc8;
 
 // FUNCTION: SADX 0x006b9680
 int GetSandSwitchOnOff()

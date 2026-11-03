@@ -1,6 +1,4 @@
 #include "decls.h"
-extern float ScreenRaitoX;
-extern float ScreenRaitoY;
 
 // FUNCTION: SADX 0x00495100
 void SummaryBgDestrutor(struct task *tp)

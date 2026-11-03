@@ -1,5 +1,4 @@
 #include "decls.h"
-extern int DAT_04c7c0c0;
 extern void *DAT_05b39bb4;
 extern void *DAT_05b42898;
 extern void *DAT_05b4296c;

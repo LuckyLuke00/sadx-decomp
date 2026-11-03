@@ -1,5 +1,4 @@
 #include "decls.h"
-extern struct obj object_l01_wt_hebimizu_wt_hebimizu[];
 
 // FUNCTION: SADX 0x008535a0
 void dispcNormal(struct task *tp)

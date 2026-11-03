@@ -91295,13 +91295,6 @@
    "library": false
   },
   {
-   "address": "0x01c8b4ec",
-   "name": "action_sssikake_gesuielebox",
-   "size": 8,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x01c8b98c",
    "name": "object_bin_bin_bin",
    "size": 52,
@@ -91869,13 +91862,6 @@
    "library": false
   },
   {
-   "address": "0x01ffffd0",
-   "name": "pos_alm_piyo_reg_r",
-   "size": 208,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x020ffe40",
    "name": "vertex_al_hrp_reg_l",
    "size": 612,
@@ -92439,20 +92425,6 @@
    "address": "0x025a3688",
    "name": "texlist_get_emblem",
    "size": 8,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x025a3690",
-   "name": "anim_get_emblem",
-   "size": 40,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x025a36b8",
-   "name": "emblem_sc",
-   "size": 32,
    "match": false,
    "library": false
   },
@@ -94886,13 +94858,6 @@
    "library": false
   },
   {
-   "address": "0x026dd66c",
-   "name": "object_loadsfin_gards_gards",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x026dd6a0",
    "name": "door_c_info",
    "size": 48,
@@ -95581,13 +95546,6 @@
   {
    "address": "0x0279eea8",
    "name": "texlist_egm2_car",
-   "size": 8,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x027a25d8",
-   "name": "texlist_egm2_mesobaku",
    "size": 8,
    "match": false,
    "library": false
@@ -98078,20 +98036,6 @@
    "library": false
   },
   {
-   "address": "0x03b4e378",
-   "name": "texlist_mexplosion_windy",
-   "size": 8,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x03b4ec40",
-   "name": "object_mexplosion_windy",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x03b4ee64",
    "name": "texlist_e103",
    "size": 8,
@@ -99446,13 +99390,6 @@
    "address": "0x041ecf40",
    "name": "object_eff_smallbomb1_info",
    "size": 48,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x0435db0c",
-   "name": "object_l01_wt_hebimizu_wt_hebimizu",
-   "size": 52,
    "match": false,
    "library": false
   },
@@ -101438,34 +101375,6 @@
    "library": false
   },
   {
-   "address": "0x0484bc34",
-   "name": "object_lv3zc_gateF_obj_gateFz",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x0484c2f4",
-   "name": "object_lv3zc_gateF_obj_gateFx",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04850874",
-   "name": "object_lv3zc_gate_nullGB_obj_gatela",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04850f34",
-   "name": "object_lv3zc_gate_nullGB_obj_gatelax",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
    "address": "0x0485455c",
    "name": "object_dramcan_can_can",
    "size": 52,
@@ -101489,13 +101398,6 @@
   {
    "address": "0x0488dfa4",
    "name": "object_ligpfr_light01_light01",
-   "size": 52,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x0488e5b4",
-   "name": "object_bl_nc_bllight_nc_bllight",
    "size": 52,
    "match": false,
    "library": false
@@ -101574,34 +101476,6 @@
    "address": "0x04a27d74",
    "name": "default_dynamicswk",
    "size": 8,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04a27f08",
-   "name": "pScale_Stg12",
-   "size": 12,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04a27f14",
-   "name": "pClipSky_Stg12",
-   "size": 12,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04a27f20",
-   "name": "pClipMap_Stg12",
-   "size": 12,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04a27f2c",
-   "name": "pFogTable_Stg12",
-   "size": 12,
    "match": false,
    "library": false
   },
@@ -103358,5 +103232,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c829d5c3789b7bd279eca682c48825fe00c8e94de27645e30602c9b4e0c70a83"
+ "inputs_sha256": "313b0630366448c24932a10729d637fb0f23dd7dec1dd0c2065dc141b05015b3"
 }

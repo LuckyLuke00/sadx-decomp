@@ -1,6 +1,5 @@
 #include "decls.h"
 #include <time.h>
-extern int DAT_04c7c0c0;
 
 // FUNCTION: SADX 0x00430fc0
 long syRtcGetDate(struct _SYS_RTC_DATE *date)

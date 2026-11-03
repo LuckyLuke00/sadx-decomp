@@ -8,7 +8,6 @@ struct sp_link;
 extern struct particle_entry particle_snow;
 void CreateSnow2(struct particle_info *effect);
 extern "C" int rand(void);
-extern "C" long _ftol2_sse(float param_1);
 
 // FUNCTION: SADX 0x005b4970
 void CreateSnow(struct NJS_POINT3 *pos, struct NJS_POINT3 *velo, float scl)
