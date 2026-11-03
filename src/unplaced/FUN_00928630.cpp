@@ -34,7 +34,7 @@ int FUN_00928720(void *param_1)
 }
 
 // FUNCTION: SADX 0x00928740
-void Magic::Base::File::FUN_00928740()
+Magic::Base::File::~File()
 {
 	void *var1 = *(void **)((char *)this + 0);
 	if (var1 != 0)
@@ -56,10 +56,12 @@ void Magic::Base::File::FUN_00928740()
 	*(char *)((char *)this + 4) = 0;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00928790
-void Magic::Base::File::FUN_00928790()
+Magic::Base::File::File()
 {
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x00928810
 bool Magic::Base::File::Open(const std::string& param_1, int param_2)

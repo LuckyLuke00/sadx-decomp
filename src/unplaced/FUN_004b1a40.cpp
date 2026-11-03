@@ -85,39 +85,39 @@ FUN_004b2330_0::FUN_004b2330_0()
 // FUNCTION: SADX 0x004b23e0
 void FUN_004b23e0(void *param_1, void *param_2, int param_3, const char *param_4, int param_5)
 {
-	int *local_34 = (int *)param_1;
+	int *local_c = (int *)param_1;
 	std::string local_30(param_4);
-	int local_38;
-	char *local_3c;
-	FUN_004b2330_0 *local_40;
-	unsigned int local_44;
-	FUN_004b6590_0 *local_48;
+	int local_8c;
+	char *local_128;
+	FUN_004b2330_0 *local_dc;
+	unsigned int local_a0;
+	FUN_004b6590_0 *local_9c;
 
-	for (local_38 = 0; local_38 < 0x20e; local_38++)
+	for (local_8c = 0; local_8c < 0x20e; local_8c++)
 	{
-		local_3c = DAT_025adde0[local_38];
-		if (strcmp(local_3c + 4, param_4) == 0 && *(int *)(local_3c + 0x108) == param_5 && !FUN_004b1a80((char *)param_4, param_5))
+		local_128 = DAT_025adde0[local_8c];
+		if (strcmp(local_128 + 4, param_4) == 0 && *(int *)(local_128 + 0x108) == param_5 && !FUN_004b1a80((char *)param_4, param_5))
 		{
-			local_40 = new FUN_004b2330_0;
-			strcpy_s(local_40->local_0, 0x100, local_3c + 4);
-			local_40->local_104 = param_5;
-			local_40->local_108 = param_1;
-			local_40->local_10c = *local_34;
-			local_40->local_114 = new Magic::RenderCore::Texture;
-			local_40->local_114->Load(param_2, 1, param_3, 2, 1, 0);
-			local_40->local_118 = new Magic::RenderCore::Texture;
-			local_40->local_118->Load(param_2, 1, param_3, 2, 1, 0);
-			for (local_44 = 0; FUN_0040efd0(), local_44 < (unsigned int)((DAT_06299490 - DAT_0629948c) / 0x94); local_44++)
+			local_dc = new FUN_004b2330_0;
+			strcpy_s(local_dc->local_0, 0x100, local_128 + 4);
+			local_dc->local_104 = param_5;
+			local_dc->local_108 = param_1;
+			local_dc->local_10c = *local_c;
+			local_dc->local_114 = new Magic::RenderCore::Texture;
+			local_dc->local_114->Load(param_2, 1, param_3, 2, 1, 0);
+			local_dc->local_118 = new Magic::RenderCore::Texture;
+			local_dc->local_118->Load(param_2, 1, param_3, 2, 1, 0);
+			for (local_a0 = 0; FUN_0040efd0(), local_a0 < (unsigned int)((DAT_06299490 - DAT_0629948c) / 0x94); local_a0++)
 			{
-				local_48 = new FUN_004b6590_0;
+				local_9c = new FUN_004b6590_0;
 				FUN_0040efd0();
-				local_48->local_0 = *(NJS_ARGB *)(DAT_0629948c + local_44 * 0x94);
-				local_48->local_10 = new Magic::RenderCore::Texture;
-				local_48->local_10->Load(param_2, 1, param_3, 2, 1, 0);
-				local_40->local_11c.push_back(local_48);
+				local_9c->local_0 = *(NJS_ARGB *)(DAT_0629948c + local_a0 * 0x94);
+				local_9c->local_10 = new Magic::RenderCore::Texture;
+				local_9c->local_10->Load(param_2, 1, param_3, 2, 1, 0);
+				local_dc->local_11c.push_back(local_9c);
 			}
-			FUN_004b38e0(local_40);
-			((std::vector<FUN_004b2330_0 *> *)&DAT_05b422dc)->push_back(local_40);
+			FUN_004b38e0(local_dc);
+			((std::vector<FUN_004b2330_0 *> *)&DAT_05b422dc)->push_back(local_dc);
 			DAT_025addd8 = 1;
 		}
 	}
@@ -236,56 +236,56 @@ void FUN_004b5ad0(void)
 // FUNCTION: SADX 0x004b5e70
 void FUN_004b5e70(int param_1)
 {
-	bool local_19g;
-	unsigned int local_8g;
-	char *local_14h;
-	char *local_10m;
+	bool local_5i;
 	unsigned int local_cj;
-	char *local_18;
+	char *local_10m;
+	char *local_14;
+	unsigned int local_18i;
+	char *local_1c;
 
 	if (param_1 != 0)
 	{
-		local_19g = false;
+		local_5i = false;
 		*(std::vector<FUN_004b2330_0 *>::iterator *)&DAT_05b422d8 = ((std::vector<FUN_004b2330_0 *> *)&DAT_05b422dc)->begin();
-		for (local_8g = 0; local_8g < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); local_8g++, (*(std::vector<FUN_004b2330_0 *>::iterator *)&DAT_05b422d8)++)
+		for (local_cj = 0; local_cj < (unsigned int)(DAT_05b422e0 - DAT_05b422dc); local_cj++, (*(std::vector<FUN_004b2330_0 *>::iterator *)&DAT_05b422d8)++)
 		{
-			local_14h = DAT_05b422dc[local_8g];
-			if (local_14h != 0 && *(int *)(local_14h + 0x108) == param_1)
+			local_10m = DAT_05b422dc[local_cj];
+			if (local_10m != 0 && *(int *)(local_10m + 0x108) == param_1)
 			{
-				local_19g = true;
+				local_5i = true;
 				break;
 			}
 		}
-		if (local_19g)
+		if (local_5i)
 		{
-			local_10m = *DAT_05b422d8;
-			**(int **)(local_10m + 0x108) = *(int *)(local_10m + 0x10c);
-			if (*(Magic::RenderCore::Texture **)(local_10m + 0x114) != 0)
+			local_14 = *DAT_05b422d8;
+			**(int **)(local_14 + 0x108) = *(int *)(local_14 + 0x10c);
+			if (*(Magic::RenderCore::Texture **)(local_14 + 0x114) != 0)
 			{
-				(*(Magic::RenderCore::Texture **)(local_10m + 0x114))->FUN_00922750();
-				delete *(Magic::RenderCore::Texture **)(local_10m + 0x114);
-				*(Magic::RenderCore::Texture **)(local_10m + 0x114) = 0;
+				(*(Magic::RenderCore::Texture **)(local_14 + 0x114))->FUN_00922750();
+				delete *(Magic::RenderCore::Texture **)(local_14 + 0x114);
+				*(Magic::RenderCore::Texture **)(local_14 + 0x114) = 0;
 			}
-			if (*(Magic::RenderCore::Texture **)(local_10m + 0x118) != 0)
+			if (*(Magic::RenderCore::Texture **)(local_14 + 0x118) != 0)
 			{
-				(*(Magic::RenderCore::Texture **)(local_10m + 0x118))->FUN_00922750();
-				delete *(Magic::RenderCore::Texture **)(local_10m + 0x118);
-				*(Magic::RenderCore::Texture **)(local_10m + 0x118) = 0;
+				(*(Magic::RenderCore::Texture **)(local_14 + 0x118))->FUN_00922750();
+				delete *(Magic::RenderCore::Texture **)(local_14 + 0x118);
+				*(Magic::RenderCore::Texture **)(local_14 + 0x118) = 0;
 			}
-			if (*(Magic::RenderCore::Texture **)(local_10m + 0x110) != 0)
+			if (*(Magic::RenderCore::Texture **)(local_14 + 0x110) != 0)
 			{
-				(*(Magic::RenderCore::Texture **)(local_10m + 0x110))->FUN_00922750();
-				delete *(Magic::RenderCore::Texture **)(local_10m + 0x110);
-				*(Magic::RenderCore::Texture **)(local_10m + 0x110) = 0;
+				(*(Magic::RenderCore::Texture **)(local_14 + 0x110))->FUN_00922750();
+				delete *(Magic::RenderCore::Texture **)(local_14 + 0x110);
+				*(Magic::RenderCore::Texture **)(local_14 + 0x110) = 0;
 			}
-			for (local_cj = 0; local_cj < ((std::vector<FUN_004b6590_0 *> *)(local_10m + 0x11c))->size(); local_cj++)
+			for (local_18i = 0; local_18i < ((std::vector<FUN_004b6590_0 *> *)(local_14 + 0x11c))->size(); local_18i++)
 			{
-				local_18 = (char *)(*(std::vector<FUN_004b6590_0 *> *)(local_10m + 0x11c))[local_cj];
-				if (*(Magic::RenderCore::Texture **)(local_18 + 0x10) != 0)
+				local_1c = (char *)(*(std::vector<FUN_004b6590_0 *> *)(local_14 + 0x11c))[local_18i];
+				if (*(Magic::RenderCore::Texture **)(local_1c + 0x10) != 0)
 				{
-					(*(Magic::RenderCore::Texture **)(local_18 + 0x10))->FUN_00922750();
-					delete *(Magic::RenderCore::Texture **)(local_18 + 0x10);
-					*(Magic::RenderCore::Texture **)(local_18 + 0x10) = 0;
+					(*(Magic::RenderCore::Texture **)(local_1c + 0x10))->FUN_00922750();
+					delete *(Magic::RenderCore::Texture **)(local_1c + 0x10);
+					*(Magic::RenderCore::Texture **)(local_1c + 0x10) = 0;
 				}
 			}
 			((std::vector<FUN_004b2330_0 *> *)&DAT_05b422dc)->erase(*(std::vector<FUN_004b2330_0 *>::iterator *)&DAT_05b422d8);

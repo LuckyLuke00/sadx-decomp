@@ -91,8 +91,8 @@ namespace Base
 class File
 {
 public:
-	void FUN_00928790();
-	void FUN_00928740();
+	File();
+	~File();
 	long FUN_009285c0();
 	bool Open(const std::string& param_1, int param_2);
 	void FUN_00435420();

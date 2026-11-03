@@ -52,76 +52,72 @@ std::vector<std::wstring>::iterator DAT_05cd2834;
 // FUNCTION: SADX 0x00577e40
 int InitStaff2()
 {
-	SOCFile* local_448o = new SOCFile;
-	local_448o->FUN_00928790();
-	int local_458h = 0;
-	if (local_448o->Open(".\\system\\SonicADV_Socstaff.bin", 1))
+	SOCFile* local_448 = new SOCFile;
+	int local_440i = 0;
+	if (local_448->Open(".\\system\\SonicADV_Socstaff.bin", 1))
 	{
-		local_458h = local_448o->FUN_009285c0();
-		local_448o->FUN_00928630(0, 0);
+		local_440i = local_448->FUN_009285c0();
+		local_448->FUN_00928630(0, 0);
 	}
 	else
 	{
-		local_448o->FUN_00928740();
-		delete local_448o;
-		local_448o = 0;
+		delete local_448;
+		local_448 = 0;
 		return 0;
 	}
-	wchar_t* local_450g = new wchar_t[(local_458h + 2) / 2];
-	wchar_t* local_45c = 0;
-	local_45c = local_450g;
-	unsigned long local_444w = 0;
-	bool local_449q = local_448o->FUN_009286c0(local_45c, local_458h, &local_444w);
-	if (!local_449q)
+	wchar_t* local_44cm = new wchar_t[(local_440i + 2) / 2];
+	wchar_t* local_444j = 0;
+	local_444j = local_44cm;
+	unsigned long local_450h = 0;
+	bool local_451g = local_448->FUN_009286c0(local_444j, local_440i, &local_450h);
+	if (!local_451g)
 	{
-		local_448o->FUN_00928740();
-		delete local_448o;
-		local_448o = 0;
-		delete[] local_450g;
+		delete local_448;
+		local_448 = 0;
+		delete[] local_44cm;
 		return 0;
 	}
-	UnknowTochar((char*)local_450g, local_458h);
-	local_450g[local_458h / 2] = 0;
-	DAT_05cd27f4 = FUN_005ebc40(local_450g + 1, L"\n", true);
-	unsigned int local_454g;
-	for (local_454g = 0; local_454g < DAT_05cd27f4.size(); local_454g = local_454g + 1)
+	UnknowTochar((char*)local_44cm, local_440i);
+	local_44cm[local_440i / 2] = 0;
+	DAT_05cd27f4 = FUN_005ebc40(local_44cm + 1, L"\n", true);
+	unsigned int local_458h;
+	for (local_458h = 0; local_458h < DAT_05cd27f4.size(); local_458h = local_458h + 1)
 	{
-		DAT_05cd27f4[local_454g] = trim2(DAT_05cd27f4[local_454g]);
+		DAT_05cd27f4[local_458h] = trim2(DAT_05cd27f4[local_458h]);
 	}
 	DAT_05cd2834 = DAT_05cd27f4.begin() + 426;
-	int local_440i = 1;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Patch"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"LITTLE STONE SOFTWARE"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Jeff Astor"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Peter Bratcher"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Adam Hooley"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Ben Watson"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Sean Workman"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"SEGA OF EUROPE"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*ASSOCIATE PRODUCER"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Jessica Padkin"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*PROJECT LEAD"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Andrew Sparks"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*FUNCTIONALITY QA LEAD"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Christopher Dadswell"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*SENIOR TESTER"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Wing-Pui Chung"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"*TESTER"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L"Finlay Milligan"), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_440i, 1, L""), local_440i++;
-	local_448o->FUN_00928740();
-	delete local_448o;
-	delete[] local_450g;
+	int local_45c = 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Patch"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"LITTLE STONE SOFTWARE"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jeff Astor"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Peter Bratcher"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Adam Hooley"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Ben Watson"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Sean Workman"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"SEGA OF EUROPE"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*ASSOCIATE PRODUCER"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jessica Padkin"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*PROJECT LEAD"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Andrew Sparks"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*FUNCTIONALITY QA LEAD"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Christopher Dadswell"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*SENIOR TESTER"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Wing-Pui Chung"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*TESTER"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Finlay Milligan"), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	delete local_448;
+	delete[] local_44cm;
 	DAT_05cd2824 = DAT_01c6e42c;
 	DAT_05cd2854 = DAT_01c6e42c;
 	DAT_02605a24 = -1;

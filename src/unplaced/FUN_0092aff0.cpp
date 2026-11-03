@@ -31,11 +31,16 @@ int Magic::Base::IniFile::FUN_0092b1b0(const std::string& param_1, const std::st
 	{
 		return 2;
 	}
-	if (param_1.empty() || param_2.empty())
+	if (param_1.empty())
 	{
 		return 4;
 	}
-	FileMap[param_1 + "&" + param_2] = param_3;
+	if (param_2.empty())
+	{
+		return 4;
+	}
+	std::string local_48 = param_1 + "&" + param_2;
+	FileMap[local_48] = param_3;
 	blChanged = true;
 	return 5;
 }

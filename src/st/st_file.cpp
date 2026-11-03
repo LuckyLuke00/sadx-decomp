@@ -11,7 +11,7 @@ void stInitFile(unsigned int param_1)
 // FUNCTION: SADX 0x00435420
 void Magic::Base::File::FUN_00435420()
 {
-	FUN_00928740();
+	this->~File();
 }
 
 // FUNCTION: SADX 0x00435430
