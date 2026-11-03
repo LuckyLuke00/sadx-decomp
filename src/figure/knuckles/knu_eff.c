@@ -19,9 +19,30 @@ void EffectKnuPunch(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005d6e50
+// FUNCTION: SADX 0x005d6e50
 void dispEffectKnuPunch(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		if ((unsigned int)local_8->counter.f >= 6)
+		{
+			return;
+		}
+		SetMaterial(0.5f, 1.0f, 1.0f, 1.0f);
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 10);
+		___njSetTexture(&texlist_knu_eff);
+		njPushMatrix(0);
+		njTranslateV(0, &local_8->pos);
+		late_DrawSprite3D(&sprite_knu_punch, (unsigned int)local_8->counter.f, 0x32, 0);
+		njPopMatrix(1);
+		ResetMaterial();
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+	}
 }
 
 // STUB: SADX 0x005d6f60
@@ -94,9 +115,45 @@ void KnuEffectClod(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005d76a0
+// FUNCTION: SADX 0x005d76a0
 void dispKnuEffectClod(struct task *tp)
 {
+	struct taskwk *local_8g;
+	float local_14;
+	float local_cj;
+	float local_10;
+
+	local_8g = tp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+		___njSetTexture(&texlist_knu_eff);
+		njPushMatrix(0);
+		local_14 = *(float *)((char *)local_8g + 0x30) * 0.25;
+		if (local_14 < -0.25f)
+		{
+			local_14 = -0.25f;
+		}
+		else if (local_14 > 0.25f)
+		{
+			local_14 = 0.25f;
+		}
+		local_cj = (1.0f - local_14) * *(float *)((char *)local_8g + 8) * *(float *)((char *)local_8g + 0xc);
+		local_10 = (1.0f + local_14) * *(float *)((char *)local_8g + 8);
+		njTranslateV(0, &local_8g->pos);
+		if (DAT_05b42a7c->ang.y != 0)
+		{
+			njRotateY(0, (unsigned short)DAT_05b42a7c->ang.y);
+		}
+		if (DAT_05b42a7c->ang.x + 0x8000 != 0)
+		{
+			njRotateX(0, (unsigned short)(DAT_05b42a7c->ang.x + 0x8000));
+		}
+		FUN_0067d2d0(0, local_cj, local_10, local_cj);
+		___njDrawSprite3D(&sprite_tsuchi, 0, 0x20);
+		njPopMatrix(1);
+	}
 }
 
 // FUNCTION: SADX 0x005d7800
@@ -272,6 +329,33 @@ void KnuEffectComboFire(struct task *tp)
 	njPopMatrix(1);
 	ResetMaterial();
 	FreeTask(tp);
+}
+
+// FUNCTION: SADX 0x005d8450
+void KnuEffectPutChargeComp(struct NJS_POINT3 *pos, float rate)
+{
+	float local_8g;
+	float local_cg;
+
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	((struct obj **)((char *)DAT_06274af0 + 0xbc))[0]->model->mats->attr_texId = 1;
+	local_8g = rate * -0.6000000238418579f;
+	SetMaterial(local_8g, 1.0f, 1.0f, 1.0f);
+	njPushMatrix(NULL);
+	njTranslateV(NULL, pos);
+	local_cg = 2.0f - 1.0f * rate * rate;
+	FUN_0067d2d0(NULL, local_cg, local_cg, local_cg);
+	if ((long)(rate * 262144.0f) != 0)
+	{
+		njRotateY(NULL, (unsigned short)(long)(rate * 262144.0f));
+	}
+	___njSetTexture(&texlist_knu_eff);
+	late_DrawObject(*(struct obj **)((char *)DAT_06274af0 + 0xbc), 4);
+	njPopMatrix(1);
+	ResetMaterial();
 }
 
 // FUNCTION: SADX 0x005d8560

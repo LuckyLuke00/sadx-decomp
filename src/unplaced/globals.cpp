@@ -1658,6 +1658,9 @@ struct NJS_SPRITE sprite_amy_heart;
 // GLOBAL: SADX 0x026756d8
 struct NJS_SPRITE sprite_amy_piyo;
 
+// GLOBAL: SADX 0x026757c0
+struct NJS_SPRITE sprite_knu_punch;
+
 // GLOBAL: SADX 0x026757f4
 struct NJS_SPRITE sprite_k_kira;
 
@@ -1666,6 +1669,9 @@ struct NJS_SPRITE sprite_k_hadoken;
 
 // GLOBAL: SADX 0x02675834
 struct NJS_SPRITE sprite_k_charge;
+
+// GLOBAL: SADX 0x02675868
+struct NJS_SPRITE sprite_tsuchi;
 
 // GLOBAL: SADX 0x02675888
 struct NJS_SPRITE sprite_tsuchi_kake;
