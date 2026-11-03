@@ -2918,7 +2918,6 @@ void dispEggmoble1Task(struct task *p_task);
 void destEggmoble1Task(struct task *p_task);
 void execEggmoble1Task(struct task *p_task);
 void eggmoble2_exec(struct task *tp);
-void eggmissile_draw(struct task *tp);
 void eggmissile_exec(struct task *tp);
 void eggmissile_init(struct task *tp);
 void SOC_EventObject(struct task *tp);
