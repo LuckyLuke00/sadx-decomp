@@ -1,5 +1,9 @@
 #include "decls.h"
 #include <math.h>
+extern struct particle_info pom_breathe;
+void snowfaceEscape(struct taskwk *twp, struct enemywk *ewp);
+struct taskwk;
+struct enemywk;
 extern struct NJS_TEXLIST texlist_snowman;
 extern struct obj object_snowball_m_atama_atama;
 extern struct obj object_snowball_m_tank_tank;
@@ -44,9 +48,62 @@ void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
 long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp);
 void EnemyPreservePreviousPosition(struct taskwk *twp, struct enemywk *ewp);
 
-// STUB: SADX 0x006095a0
+// FUNCTION: SADX 0x006095a0
 void EnemySnowman(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct enemywk *local_8g;
+
+	local_cg = tp->twp;
+	if (FUN_004c39c0(tp) == 0)
+	{
+		local_8g = EnemyInitialize(tp, local_cg);
+		CCL_Init(tp, snowman_cinfo, 2, 3);
+		local_cg->cwp->info[0].attr &= ~0x10;
+		local_cg->cwp->info[1].attr |= 0x10;
+		local_cg->timer.w[0] = 0;
+		local_cg->timer.w[1] = 0;
+		local_cg->pos.y = GetShadowPos(local_cg->pos.x, local_cg->pos.y, local_cg->pos.z, &local_cg->ang);
+		local_cg->value.f = 0.0f;
+		local_8g->angx_spd = 0x200;
+		local_8g->angy_spd = 0x80;
+		local_8g->angz_spd = 0;
+		local_8g->sub_angle[0] = local_cg->ang.y;
+		local_8g->sub_angle[1] = 0;
+		local_8g->sub_angle[2] = 0;
+		local_8g->height = 0.0f;
+		local_8g->radius = local_cg->scl.x;
+		local_8g->radius = 50.0f;
+		local_8g->weight = 1.0f;
+		local_8g->view_angle = 0x2000;
+		local_8g->view_range = 6400.0f;
+		local_8g->hear_range = 400.0f;
+		local_8g->flag |= 1;
+		local_8g->flag |= 2;
+		local_8g->colli_center.x = 0.0f;
+		local_8g->colli_center.y = 5.0f;
+		local_8g->colli_center.z = 0.0f;
+		local_8g->colli_bottom = -5.0f;
+		local_8g->colli_radius = 4.0f;
+		local_8g->cliff_height = 20.0f;
+		local_8g->shadow_scl = 1.5f;
+		local_8g->shadow_scl_ratio = 1.0f;
+		EnemyPreservePreviousPosition(local_cg, local_8g);
+		EnemyPreserveHomePosition(local_cg, local_8g);
+	}
+	local_cg->scl.x = 1.0f;
+	local_cg->scl.y = 1.0f;
+	local_cg->scl.z = 0.0f;
+	if (FUN_004c39c0(tp) != 0)
+	{
+		tp->exec = SnowmanOnEdit;
+	}
+	else
+	{
+		tp->exec = SnowmanRegular;
+	}
+	tp->dest = SnowmanDestructor;
+	tp->disp = SnowmanDisplayer;
 }
 
 // FUNCTION: SADX 0x00609820
@@ -142,9 +199,59 @@ void FUN_00609e40(int param_1, int param_2)
 	*(float *)(param_2 + 0x38) = njSin(*(int *)(param_2 + 0x1b4)) * *(float *)(param_1 + 0x10);
 }
 
-// STUB: SADX 0x00609e80
+// FUNCTION: SADX 0x00609e80
 void snowmanChase(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct taskwk *local_8g;
+	float local_cg;
+	local_8g = DAT_05baf368[0];
+	local_cg = (local_8g->pos.x - twp->pos.x) * (local_8g->pos.x - twp->pos.x) + (local_8g->pos.z - twp->pos.z) * (local_8g->pos.z - twp->pos.z);
+	switch (twp->smode)
+	{
+	case 0:
+		twp->smode = 1;
+		twp->flag &= ~0x200;
+		*(float *)((char *)twp + 0x10) = 0.3f;
+		ewp->angx_spd = 0x200;
+		ewp->angy_spd = 0x100;
+		ewp->angz_spd = 0x2000;
+		break;
+	}
+	twp->timer.w[0] += 8;
+	twp->timer.w[1] += 0x100;
+	FUN_0060a360(twp, ewp);
+	EnemyTurnToPlayer(twp, ewp, 0);
+	SnowmanTurnToAim(twp, ewp);
+	FUN_0060a0c0(twp, ewp);
+	if (local_cg < 1600.0f)
+	{
+		if (DiffAngle(ewp->sub_angle[0], ewp->aim_angle) < 0x400)
+		{
+			if (DiffAngle(*(int *)((char *)twp + 0x18), ewp->aim_angle) < 0x800)
+			{
+				ewp->aim = local_8g->pos;
+				FUN_005e3d10(twp, ewp);
+				if (twp->mode != -1)
+				{
+					twp->mode = 6;
+					twp->smode = 0;
+				}
+			}
+		}
+	}
+	if ((twp->flag & 0x100) == 0)
+	{
+		if (twp->mode != -1)
+		{
+			twp->mode = 3;
+			twp->smode = 0;
+		}
+	}
+	FUN_00609e40((int)twp, (int)ewp);
+	ewp->acc.x = njCos(*(int *)((char *)twp + 0x18)) * 0.03999999910593033f;
+	ewp->acc.z = -njSin(*(int *)((char *)twp + 0x18)) * 0.03999999910593033f;
+	SnowmanMove(twp, ewp);
+	SnowmanRectifyPosition(twp, ewp);
 }
 
 // FUNCTION: SADX 0x0060a0c0
@@ -259,9 +366,72 @@ void FUN_0060a7c0(char *param_1, int param_2)
 {
 }
 
-// STUB: SADX 0x0060a800
+// FUNCTION: SADX 0x0060a800
 void snowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
 {
+	switch (twp->smode)
+	{
+		case 0:
+			twp->smode = 1;
+			*(int *)((char *)ewp + 0x1a4) = 0x200;
+			*(int *)((char *)ewp + 0x1a8) = 0x100;
+			*(float *)((char *)ewp + 0x3c) = 1.0f;
+			twp->btimer = 0;
+		case 1:
+			twp->timer.w[0] += 0x10;
+			twp->timer.w[1] += 0x100;
+			if (FUN_005e3d10(twp, ewp) == 0)
+			{
+				twp->smode = 2;
+			}
+			SnowmanTurnToAim(twp, ewp);
+			break;
+		case 2:
+			twp->timer.w[0] += 4;
+			twp->timer.w[1] += 0x80;
+			*(float *)((char *)ewp + 0x3c) += 0.05000000074505806;
+			if (twp->btimer++ == 10)
+			{
+				twp->smode = 3;
+				twp->btimer = 0;
+			}
+			break;
+		case 3:
+			if (twp->btimer++ == 15)
+			{
+				twp->smode = 4;
+				twp->btimer = 0;
+			}
+			break;
+		case 4:
+			*(float *)((char *)ewp + 0x3c) -= 0.008333333767950535;
+			if (twp->btimer++ == 60)
+			{
+				twp->btimer = 0;
+				*(float *)((char *)ewp + 0x3c) = 1.0f;
+				twp->smode = 5;
+			}
+			SnowmanBreathe(twp, ewp);
+			SnowmanBreathe(twp, ewp);
+			if ((twp->btimer & 7) == 0)
+			{
+				create_freeze_colli(twp, ewp);
+			}
+			dsPlay_timer(0x36b, (int)twp, 1, 0, 2);
+			break;
+		case 5:
+			if (twp->btimer++ == 30)
+			{
+				if (twp->mode != -1)
+				{
+					twp->mode = 3;
+					twp->smode = 0;
+				}
+			}
+			break;
+	}
+	SnowmanMove(twp, ewp);
+	SnowmanRectifyPosition(twp, ewp);
 }
 
 // FUNCTION: SADX 0x0060aa40
@@ -329,9 +499,62 @@ void FUN_0060b2f0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-// STUB: SADX 0x0060b380
+// FUNCTION: SADX 0x0060b380
 void snowfaceEscape(struct taskwk *twp, struct enemywk *ewp)
 {
+	switch (twp->smode)
+	{
+	case 0:
+		ewp->sub_angle[0] = 0;
+		twp->wtimer = 0;
+		twp->smode++;
+	case 1:
+		if (twp->wtimer++ == 0x1e)
+		{
+			twp->wtimer = 0;
+			twp->smode++;
+		}
+		break;
+	case 2:
+		ewp->sub_angle[2] = AdjustAngle(ewp->sub_angle[2], 0xffffc000, 0x400);
+		if (ewp->sub_angle[2] == 0xc000)
+		{
+			twp->smode++;
+		}
+		break;
+	case 3:
+		if (twp->wtimer++ == 0xa)
+		{
+			ewp->acc.y = 2.4f;
+			twp->smode++;
+		}
+		break;
+	case 4:
+		if (fabsf(ewp->velo.y) < 0.1f)
+		{
+			twp->smode++;
+			ewp->sub_angle[0] += 0x800;
+		}
+		SnowmanMove(twp, ewp);
+		break;
+	case 5:
+		if ((ewp->flag & 0x10) != 0 && twp->mode != -1)
+		{
+			twp->mode = 4;
+			twp->smode = 0;
+		}
+		SnowmanMove(twp, ewp);
+		break;
+	}
+	if (ewp->sub_angle[0] != 0)
+	{
+		ewp->sub_angle[0] += 0x800;
+		if (ewp->sub_angle[0] == 0x10000)
+		{
+			ewp->sub_angle[0] = 0;
+		}
+	}
+	SnowfaceRectifyPosition(twp, ewp);
 }
 
 // FUNCTION: SADX 0x0060b590
@@ -507,9 +730,27 @@ void SnowmanFootSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060c9d0
+// FUNCTION: SADX 0x0060c9d0
 void SnowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 spd;
+	struct NJS_POINT3 pos;
+
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njTranslateV(0, &twp->pos);
+	if (twp->ang.y + 0x4000 != 0)
+	{
+		njRotateY(0, (unsigned short)(twp->ang.y + 0x4000));
+	}
+	spd.x = ((float)(rand() / 32768.0) - 0.5) * 0.5;
+	spd.y = ((float)(rand() / 32768.0) - 0.5) * 0.5 + 0.30000001192092896;
+	spd.z = (float)(rand() / 32768.0) * 2.5 + 3.0;
+	pos.x = 0.0;
+	pos.y = ewp->weight * 4.599999904632568 * 1.0;
+	pos.z = ewp->weight * 4.0 * 1.0;
+	create_whitesmoke(&pom_breathe, &pos, &spd, (float)(rand() / 32768.0) * 0.05000000074505806 + 0.05000000074505806);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x0060cb30

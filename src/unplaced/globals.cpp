@@ -1706,8 +1706,14 @@ struct NJS_ACTION action_snowball_m_atama[1];
 // GLOBAL: SADX 0x026843c4
 struct obj object_snowball_m_tank_tank;
 
+// GLOBAL: SADX 0x026843f8
+struct CCL_INFO snowman_cinfo[2];
+
 // GLOBAL: SADX 0x02684534
 struct particle_entry particle_pom;
+
+// GLOBAL: SADX 0x026845bc
+struct particle_info pom_breathe;
 
 // GLOBAL: SADX 0x026846cc
 struct particle_entry particle_lightning;
@@ -4453,6 +4459,12 @@ struct NJS_MATERIAL matlist_rhino_jet[1];
 
 // GLOBAL: SADX 0x04c6a334
 struct obj object_rhino_jet[1];
+
+// GLOBAL: SADX 0x04c6a368
+struct NJS_TEXLIST texlist_jet2;
+
+// GLOBAL: SADX 0x04c6a3ac
+struct NJS_POINT3 jet_pos[3];
 
 // GLOBAL: SADX 0x04c6a430
 struct NJS_MODEL *sai_model;

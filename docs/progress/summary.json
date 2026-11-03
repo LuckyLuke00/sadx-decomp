@@ -35133,9 +35133,9 @@
   {
    "address": "0x005c2e30",
    "name": "AirLiftExecutor",
-   "accuracy": 0.06451612903225806,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36149,9 +36149,9 @@
   {
    "address": "0x005cf6d0",
    "name": "PoliceCheckTerritory",
-   "accuracy": 0.07766990291262135,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -40013,9 +40013,9 @@
   {
    "address": "0x006095a0",
    "name": "EnemySnowman",
-   "accuracy": 0.043478260869565216,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -40085,9 +40085,9 @@
   {
    "address": "0x00609e80",
    "name": "snowmanChase",
-   "accuracy": 0.043243243243243246,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -40157,9 +40157,9 @@
   {
    "address": "0x0060a800",
    "name": "snowmanBreathe",
-   "accuracy": 0.0427807486631016,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -40168,6 +40168,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0060ab50",
+   "name": "SnowmanDisplayer",
+   "accuracy": 0.05194805194805195,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -40205,9 +40213,9 @@
   {
    "address": "0x0060b380",
    "name": "snowfaceEscape",
-   "accuracy": 0.050955414012738856,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -40317,9 +40325,9 @@
   {
    "address": "0x0060c9d0",
    "name": "SnowmanBreathe",
-   "accuracy": 0.0784313725490196,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -40901,9 +40909,9 @@
   {
    "address": "0x00615a00",
    "name": "FUN_00615a00",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70661,9 +70669,9 @@
   {
    "address": "0x008d68e0",
    "name": "FUN_008d68e0",
-   "accuracy": 0.08888888888888889,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70845,9 +70853,9 @@
   {
    "address": "0x008d8330",
    "name": "SaiJetDraw",
-   "accuracy": 0.04145077720207254,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -94364,9 +94372,23 @@
    "library": false
   },
   {
+   "address": "0x026843f8",
+   "name": "snowman_cinfo",
+   "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02684534",
    "name": "particle_pom",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026845bc",
+   "name": "pom_breathe",
+   "size": 60,
    "match": false,
    "library": false
   },
@@ -102092,6 +102114,20 @@
    "library": false
   },
   {
+   "address": "0x04c6a368",
+   "name": "texlist_jet2",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c6a3ac",
+   "name": "jet_pos",
+   "size": 36,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c6a430",
    "name": "sai_model",
    "size": 4,
@@ -103130,5 +103166,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c9da6d3cd9769a91201561622127d6d2a6311c3615c8e87f255b87cea6922ed1"
+ "inputs_sha256": "6385daae694d914737cb0c0d3634af12b5c04f764d1a25a4ee12144a0168b64b"
 }

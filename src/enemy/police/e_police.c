@@ -74,9 +74,37 @@ void PoliceWait(struct taskwk *twp, struct enemywk *ewp)
 	twp->ang.z = AdjustAngle(twp->ang.z, 0, 0xb0);
 }
 
-// STUB: SADX 0x005cf6d0
+// FUNCTION: SADX 0x005cf6d0
 void PoliceCheckTerritory(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct taskwk *local_8;
+	local_8 = DAT_05baf368[0];
+	if (EnemyDist2FromHome(twp, ewp) < (twp->scl.z + 300.0f) * (twp->scl.z + 300.0f))
+	{
+		if (EnemyDist2FromPlayer(twp, 0) < 40000.0f)
+		{
+			twp->flag = twp->flag | 0x400;
+			ewp->aim = local_8->pos;
+		}
+		else
+		{
+			ewp->aim = ewp->home;
+			if (twp->mode != 0)
+			{
+				if (EnemyDist2FromHome(twp, ewp) < 900.0f)
+				{
+					ewp->old_mode = twp->mode;
+					twp->mode = 4;
+					twp->wtimer = 0;
+				}
+			}
+		}
+	}
+	else
+	{
+		ewp->aim = ewp->home;
+		twp->flag = twp->flag & ~0x400;
+	}
 }
 
 // STUB: SADX 0x005cf800

@@ -41,9 +41,61 @@ void AirLiftDestructor(struct task *tp)
 	FreeTaskC(tp);
 }
 
-// STUB: SADX 0x005c2e30
+// FUNCTION: SADX 0x005c2e30
 void AirLiftExecutor(struct task *tp)
 {
+	struct taskwk *local_10l;
+	struct taskwk *local_ci;
+	struct colliwk *local_8g;
+	short local_14h;
+	char *local_18;
+
+	local_10l = tp->twp;
+	local_ci = DAT_05baf368[0];
+	local_8g = local_10l->cwp;
+	local_14h = local_ci->flag;
+	if (CheckEditMode())
+	{
+		FUN_005c2fb0(tp);
+		return;
+	}
+	if (tp->ptp == 0)
+	{
+		if (CheckRangeOutWithR(tp, 4000000.0f))
+		{
+			return;
+		}
+	}
+	switch (local_10l->mode)
+	{
+	case 0:
+		AirLiftSleep(tp);
+		break;
+	case 1:
+		FUN_005c5830(tp);
+		break;
+	case 2:
+		FUN_005c5890(tp);
+		break;
+	case 3:
+		AirLiftWait(tp);
+		break;
+	case 4:
+		FUN_005c5a30(tp);
+		break;
+	case 5:
+		FUN_005c5ae0(tp);
+		break;
+	}
+	local_10l->wtimer++;
+	local_18 = (char *)local_8g->info;
+	*(float *)(local_18 + 0xc) = local_10l->scl.y - 5.0;
+	local_18 += 0x30;
+	*(float *)(local_18 + 0x10) = -local_10l->scl.x - 16.25;
+	local_18 += 0x30;
+	*(float *)(local_18 + 0x10) = local_10l->scl.x + 16.25;
+	EntryColliList(local_10l);
+	LoopTaskC(tp);
 }
 
 // FUNCTION: SADX 0x005c2fb0
