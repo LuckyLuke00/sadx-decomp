@@ -1079,8 +1079,14 @@ long slSeqRunning;
 // GLOBAL: SADX 0x025da4b4
 int slEventBossName;
 
+// GLOBAL: SADX 0x025da4b8
+int evfadeouttbl[25];
+
 // GLOBAL: SADX 0x025da51c
 unsigned short plboss_name[6];
+
+// GLOBAL: SADX 0x025da528
+int evfadeintbl[77];
 
 // GLOBAL: SADX 0x025da70c
 unsigned short plboss_equ[6][2];
@@ -1372,6 +1378,9 @@ struct NJS_TEXANIM anim_hint1[6];
 
 // GLOBAL: SADX 0x026096e8
 struct NJS_TEXANIM anim_hint2[6];
+
+// GLOBAL: SADX 0x02609790
+unsigned char stageact_tbl[76][2];
 
 // GLOBAL: SADX 0x02618a68
 void (*DAT_02618a68[1])(void);
@@ -6556,6 +6565,9 @@ unsigned char DAT_05bafcd4;
 
 // GLOBAL: SADX 0x05bafce4
 unsigned char DAT_05bafce4;
+
+// GLOBAL: SADX 0x05bafd08
+int DAT_05bafd08;
 
 // GLOBAL: SADX 0x05bafd0c
 char DAT_05bafd0c[8];

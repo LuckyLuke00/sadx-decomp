@@ -10,9 +10,50 @@ extern float DAT_05b3ec0c;
 void FUN_005a8ae0(float *param_1, float *param_2, float *param_3);
 void GetAngleXYV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_y);
 
-// STUB: SADX 0x008bb230
+// FUNCTION: SADX 0x008bb230
 void ObjectCmnDushRing(struct task *tp)
 {
+	struct taskwk *local_8g;
+	float local_cj;
+	void (*local_10)(struct task *);
+
+	local_8g = tp->twp;
+	if (FUN_004c39c0(tp) != 0)
+		njPrintC(0x110013, "Target Position");
+	if (CheckRangeOutWithR(tp, 2250000.0f) != 0)
+		return;
+	switch (local_8g->mode)
+	{
+	case 0:
+		if (InitCmnDushRing(tp) == 0)
+		{
+			FreeTask(tp);
+			return;
+		}
+		break;
+	case 1:
+		LoopTaskC(tp);
+		break;
+	}
+	local_10 = tp->disp;
+	local_10(tp);
+	if (CheckEditMode() != 0)
+	{
+		local_cj = GetTargetDist(tp);
+		DAT_05b3ec0c = 0.0f;
+		DAT_05b3ec10 = 0.0f;
+		DAT_05b3ec14 = -local_cj;
+		njPushMatrix((NJS_MATRIX (*))_nj_unit_matrix_);
+		if (local_8g->ang.x != 0)
+			njRotateX(0, (Uint16)local_8g->ang.x);
+		if (local_8g->ang.y != 0)
+			njRotateY(0, (Uint16)local_8g->ang.y);
+		if (local_8g->ang.z != 0)
+			njRotateZ(0, (unsigned short)local_8g->ang.z);
+		njCalcVector(0, (NJS_VECTOR *)&DAT_05b3ec0c, (NJS_VECTOR *)&DAT_05b3ebf8);
+		njPopMatrix(1);
+		DispVectorXYV(&local_8g->pos, (struct NJS_POINT3 *)&DAT_05b3ebf8);
+	}
 }
 
 // FUNCTION: SADX 0x008bb3b0

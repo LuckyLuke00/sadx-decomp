@@ -21068,9 +21068,9 @@
   {
    "address": "0x004f52e0",
    "name": "SeqEvent",
-   "accuracy": 0.0963855421686747,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -30749,9 +30749,9 @@
   {
    "address": "0x0059b440",
    "name": "DisplaySelectingStage_ss",
-   "accuracy": 0.10256410256410256,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68733,9 +68733,9 @@
   {
    "address": "0x008bb230",
    "name": "ObjectCmnDushRing",
-   "accuracy": 0.06504065040650407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68821,9 +68821,9 @@
   {
    "address": "0x008bbea0",
    "name": "FUN_008bbea0",
-   "accuracy": 0.08080808080808081,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68847,7 +68847,7 @@
    "name": "DrawCmnKusaParts",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -92860,9 +92860,23 @@
    "library": false
   },
   {
+   "address": "0x025da4b8",
+   "name": "evfadeouttbl",
+   "size": 100,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025da51c",
    "name": "plboss_name",
    "size": 12,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025da528",
+   "name": "evfadeintbl",
+   "size": 308,
    "match": false,
    "library": false
   },
@@ -93577,6 +93591,13 @@
    "address": "0x026096e8",
    "name": "anim_hint2",
    "size": 120,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02609790",
+   "name": "stageact_tbl",
+   "size": 152,
    "match": false,
    "library": false
   },
@@ -103166,5 +103187,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6385daae694d914737cb0c0d3634af12b5c04f764d1a25a4ee12144a0168b64b"
+ "inputs_sha256": "0c250460067a7bcd704d5b28d1fd729972acaf5ab12773fdfbc98e7b9910465a"
 }
