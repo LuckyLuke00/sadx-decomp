@@ -2752,7 +2752,7 @@ void DisplayMist(struct task *tp);
 void Sprite_Chaos7Mist(struct task *tp);
 void NormalS(struct task *tp);
 void execChaos7Object(struct task *tp);
-void destChaos7Float(struct task *);
+void destChaos7Float(struct task *tp);
 void execChaos7Road(struct task *tp);
 void execChaos7Building(struct task *tp);
 void DisplayTenT(struct task *tp);
