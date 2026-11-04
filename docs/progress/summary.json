@@ -41979,6 +41979,14 @@
    "library": false
   },
   {
+   "address": "0x0061e6e0",
+   "name": "GetSelectEnableChars",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0061e7f0",
    "name": "FlickyEff_Particle_New",
    "accuracy": 0.0446927374301676,
@@ -103622,5 +103630,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4119e84f7f3240818c44dc62fcfbcffeb7f9037ee4239df33f7dd1f91e09641a"
+ "inputs_sha256": "886d30310fc8ffb9226be6c7ea75ce101129cde60ede2ae6c396035b8c01d1f8"
 }
