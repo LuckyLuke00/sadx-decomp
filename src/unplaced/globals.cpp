@@ -830,6 +830,9 @@ struct obj object_mi_3dasu_fat_d[1];
 // GLOBAL: SADX 0x0258b044
 struct NJS_TEXLIST texlist_mi_3dasu;
 
+// GLOBAL: SADX 0x0258b0e0
+struct NJS_TEXLIST texlist_mi_meka_sakana;
+
 // GLOBAL: SADX 0x025a2b30
 struct CCL_INFO mi_kinka_colli_info[1];
 
