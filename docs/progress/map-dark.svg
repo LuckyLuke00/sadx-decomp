@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1436" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,200 of 16,485 game functions done (37.60%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,202 of 16,485 game functions done (37.62%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="592.8,1191.5 599.2,1191.5 600.9,1193 602,1194.6 596,1201.5 590,1194.6 591.1,1193" fill="#4e32f3"/>
 <polygon points="592.8,1191.5 599.2,1191.5 600.9,1193 602,1194.6 590,1194.6 591.1,1193" fill="#ffffff" fill-opacity="0.4"/>
@@ -11,7 +11,7 @@
 <polygon points="590,1194.6 593.8,1194.6 596,1201.5" fill="#ffffff" fill-opacity="0.15"/>
 <polygon points="598.2,1194.6 602,1194.6 596,1201.5" fill="#000000" fill-opacity="0.25"/>
 <polygon points="592.8,1191.5 599.2,1191.5 600.9,1193 602,1194.6 596,1201.5 590,1194.6 591.1,1193" fill="none" stroke="#8b949e" stroke-width="0.75" stroke-linejoin="round"/>
-<text x="606" y="1201" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Characters <tspan font-weight="400" fill="#8b949e">6%</tspan></text>
+<text x="606" y="1201" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Characters <tspan font-weight="400" fill="#8b949e">7%</tspan></text>
 <rect x="675" y="1294" width="129" height="79" rx="3" fill="#21262d" stroke="#30363d"><title>Sonic: 57 of 121 functions done</title></rect>
 <text x="678" y="1308" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Sonic <tspan font-weight="400" fill="#8b949e">7%</tspan></text>
 <g transform="translate(678,1312)">
@@ -106,8 +106,8 @@
 <rect x="56" y="49" width="6" height="6" fill="#ffd700"><title>0x0054fc40 IsTailsPutting: 100%</title></rect>
 <rect x="0" y="56" width="6" height="6" fill="#ffd700"><title>0x0054fc60 IsTailsShakingTree: 100%</title></rect>
 </g>
-<rect x="806" y="1294" width="102" height="79" rx="3" fill="#21262d" stroke="#30363d"><title>Knuckles: 35 of 96 functions done</title></rect>
-<text x="809" y="1308" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Knuckles <tspan font-weight="400" fill="#8b949e">6%</tspan></text>
+<rect x="806" y="1294" width="102" height="79" rx="3" fill="#21262d" stroke="#30363d"><title>Knuckles: 37 of 96 functions done</title></rect>
+<text x="809" y="1308" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Knuckles <tspan font-weight="400" fill="#8b949e">7%</tspan></text>
 <g transform="translate(809,1312)">
 <rect y="0" width="91" height="49" fill="url(#todo)"/>
 <rect y="49" width="35" height="7" fill="url(#todo)"/>
@@ -115,7 +115,9 @@
 <rect x="56" y="0" width="6" height="6" fill="#ffd700"><title>0x00528530 FUN_00528530: 100%</title></rect>
 <rect x="0" y="7" width="6" height="6" fill="#ffd700"><title>0x00529090 FUN_00529090: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x005293e0 FUN_005293e0: 100%</title></rect>
+<rect x="28" y="7" width="6" height="6" fill="#ffd700"><title>0x00529450 KnucklesCheckKickWall: 100%</title></rect>
 <rect x="49" y="7" width="6" height="6" fill="#ffd700"><title>0x0052aea0 FUN_0052aea0: 100%</title></rect>
+<rect x="63" y="7" width="6" height="6" fill="#ffd700"><title>0x0052b080 KnucklesCheckPickObject: 100%</title></rect>
 <rect x="7" y="14" width="6" height="6" fill="#ffd700"><title>0x0052bb80 KnucklesCheckBeInTheAir: 100%</title></rect>
 <rect x="14" y="14" width="6" height="6" fill="#ffd700"><title>0x0052bc30 FUN_0052bc30: 100%</title></rect>
 <rect x="21" y="14" width="6" height="6" fill="#ffd700"><title>0x0052bcd0 FUN_0052bcd0: 100%</title></rect>

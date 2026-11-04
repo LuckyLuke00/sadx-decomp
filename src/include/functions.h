@@ -1141,6 +1141,7 @@ void PDestruct(long num);
 long PCheckHoldObject(struct taskwk *twp);
 long PAdjustHoldingPosition(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);
 long PCheckPower(struct taskwk *twp, long *angle, float *stroke);
+long PCheckJump(struct taskwk *twp, struct playerwk *pwp);
 long PCheckColliAngle(struct taskwk *twp, struct motionwk2 *mwp);
 long PCheckPushAngle(struct taskwk *twp, struct motionwk2 *mwp);
 void PGetAcceleration(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp);

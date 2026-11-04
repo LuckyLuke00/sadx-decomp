@@ -23652,9 +23652,9 @@
   {
    "address": "0x00529450",
    "name": "KnucklesCheckKickWall",
-   "accuracy": 0.07092198581560284,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23676,9 +23676,9 @@
   {
    "address": "0x0052b080",
    "name": "KnucklesCheckPickObject",
-   "accuracy": 0.11235955056179775,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103614,5 +103614,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d1343fc0ddbc4c930f5f79714e5b1be41d6724e20ae8dca5d686b6f8cce1a306"
+ "inputs_sha256": "202fd4fdc58c785f1adcd1e588422191500cd755646fa904e880f448cad86aad"
 }
