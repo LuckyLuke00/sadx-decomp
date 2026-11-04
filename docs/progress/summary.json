@@ -77723,11 +77723,19 @@
    "library": false
   },
   {
-   "address": "0x00903a20",
-   "name": "EV_Egm3EggmanToujou",
-   "accuracy": 0.029411764705882353,
+   "address": "0x00903760",
+   "name": "EV_Eggman",
+   "accuracy": 0.04580152671755725,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00903a20",
+   "name": "EV_Egm3EggmanToujou",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -103614,5 +103622,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "25da10e46b1c047e5d70ef7dc8f2e2e9bf0d36c287b700d9899d2e8459ca7c38"
+ "inputs_sha256": "985d809153e8ebcf07d7c5beeb6c18721bb4dec2c091108cebfdf72b3d3ed3dd"
 }

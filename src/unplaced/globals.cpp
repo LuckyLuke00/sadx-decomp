@@ -9605,6 +9605,9 @@ int DAT_060dff70;
 // GLOBAL: SADX 0x060e0178
 struct NJS_POINT3 DAT_060e0178;
 
+// GLOBAL: SADX 0x060e3a90
+struct task *DAT_060e3a90;
+
 // GLOBAL: SADX 0x060e3ac8
 int DAT_060e3ac8;
 

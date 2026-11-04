@@ -3918,6 +3918,11 @@ extern void EV_Egm3Draw(struct task *)
 {
 }
 
+// STUB: SADX 0x00903760
+void EV_Eggman(struct task *tp)
+{
+}
+
 // STUB: SADX 0x00904940
 void FUN_00904940(int, int)
 {

@@ -3207,6 +3207,7 @@ extern int DAT_060dff68;
 extern int DAT_060dff6c;
 extern int DAT_060dff70;
 extern struct NJS_POINT3 DAT_060e0178;
+extern struct task *DAT_060e3a90;
 extern int DAT_060e3ac8;
 extern int DAT_060e3ae0;
 extern int DAT_060e3ae8;
