@@ -1,4 +1,4 @@
-"""Tests of tools/immediates.py: which immediates the compare keeps as numbers on the game's side.
+"""Tests of tools/immediates.py: which immediates the compare keeps as numbers.
 
 run() returns the failures as "<case> gives <found>, not <wanted>". Each check builds a small reccmp database by hand,
 with the code of one function on each side, and compares it with reccmp's FunctionComparator.
@@ -22,11 +22,14 @@ FLAG = TABLE + 0x10  # a number inside TABLE
 
 
 class FakeImage:
-    """One side's image: the code at its address, and the addresses its relocations point at."""
+    """One side's image: the code at its address, and the addresses its relocations point at. Each place in the code
+    that holds one of those addresses has a relocation."""
 
     def __init__(self, start: int, code: bytes, relocated: set[int]):
         self.start, self.code, self.relocated = start, code, relocated
         self.imagebase = 0x400000
+        self.relocations = {start + at for at in range(len(code) - 3)
+                            if struct.unpack_from("<I", code, at)[0] in relocated}
 
     def read(self, address: int, size: int) -> bytes:
         return self.code[address - self.start:][:size]
@@ -88,11 +91,30 @@ def check_addresses() -> list[str]:
     return failures
 
 
+def check_our_layout() -> list[str]:
+    """A number that falls inside our global and not the game's stays a number, unless our build relocates it."""
+    failures = []
+    for case, code in (("a mov", immediate(OURS + 0x10)), ("an or", b"\x0d" + struct.pack("<I", OURS + 0x10))):
+        result, before = compared(code + load(TABLE), code + load(OURS))
+        found = (before.match_ratio < 1.0, result.match_ratio)
+        if found != (True, 1.0):
+            failures.append(f"{case} inside our global gives {found}, not (True, 1.0)")
+    result, before = compared(immediate(OURS + 0x10) + load(TABLE), immediate(OURS + 0x10) + load(OURS), {OURS + 0x10})
+    if result.match_ratio != before.match_ratio:
+        failures.append(f"an address our build relocates gives {result.match_ratio}, not {before.match_ratio}")
+    return failures
+
+
 def check_numbers() -> list[str]:
-    """numbers() takes only the values on both sides that the game reads as an address and ours as a number."""
+    """numbers() takes only the values on both sides that one side reads as an address and no relocation of our
+    function holds."""
     compare, _ = comparator(b"", b"")
-    found = immediates.numbers(compare.orig_sanitize, compare.recomp_sanitize, {FLAG, 5, TABLE + 0x20}, {FLAG, 5})
-    return [] if found == {FLAG} else [f"numbers gives {found}, not {{FLAG}}"]
+    found = immediates.numbers(compare.orig_sanitize, compare.recomp_sanitize, {FLAG, 5, TABLE + 0x20, OURS + 0x10},
+                               {FLAG, 5, OURS + 0x10, OURS + 0x20}, set())
+    if found != {FLAG, OURS + 0x10}:
+        return [f"numbers gives {found}, not {{FLAG, OURS + 0x10}}"]
+    found = immediates.numbers(compare.orig_sanitize, compare.recomp_sanitize, {FLAG}, {FLAG}, {FLAG})
+    return [] if found == set() else [f"numbers with FLAG relocated gives {found}, not set()"]
 
 
 def check_perfect() -> list[str]:
@@ -112,6 +134,6 @@ def check_perfect() -> list[str]:
 def run() -> list[str]:
     """Every check of the number rule, in order: the failures of all."""
     failures = []
-    for check in (check_flags, check_addresses, check_numbers, check_perfect):
+    for check in (check_flags, check_addresses, check_our_layout, check_numbers, check_perfect):
         failures += check()
     return failures
