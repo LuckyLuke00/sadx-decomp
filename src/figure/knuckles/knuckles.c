@@ -1,4 +1,6 @@
 #include "decls.h"
+long PCheckJump(struct taskwk *twp, struct playerwk *pwp);
+extern "C" double atan2(double v, double u);
 void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 void FUN_00528530(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 long FUN_0052aea0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
@@ -82,10 +84,44 @@ long FUN_005293e0(struct taskwk *param_1, char *param_2, struct playerwk *param_
 	}
 }
 
-// STUB: SADX 0x00529450
+// FUNCTION: SADX 0x00529450
 long KnucklesCheckKickWall(struct taskwk *twp, struct playerwk *pwp)
 {
-	return (long)0;
+	struct NJS_POINT3 bkvec;
+	if (PCheckJump(twp, pwp))
+	{
+		twp->mode = 6;
+		pwp->spd.x = *(float *)((char *)pwp + 0xb4) * 0.5324999690055847;
+		pwp->spd.y = *(float *)((char *)pwp + 0xb4) * 0.5324999690055847;
+		pwp->spd.z = 0.0f;
+		bkvec.z = 0.0f;
+		bkvec.x = bkvec.z;
+		bkvec.y = 1.0f;
+		PConvertVector_P2G(twp, &bkvec);
+		twp->pos.x += bkvec.x * 5.0f;
+		twp->pos.y += bkvec.y * 5.0f;
+		twp->pos.z += bkvec.z * 5.0f;
+		twp->ang.x = 0;
+		twp->ang.y = (long)(atan2(bkvec.z, bkvec.x) * 65536.0 / 6.283184);
+		twp->ang.z = 0;
+		bkvec.z = 0.0f;
+		bkvec.x = bkvec.z;
+		bkvec.y = 1.0f;
+		PConvertVector_P2G(twp, &bkvec);
+		twp->pos.x -= bkvec.x * 5.0f;
+		twp->pos.y -= bkvec.y * 5.0f;
+		twp->pos.z -= bkvec.z * 5.0f;
+		*(unsigned short *)((char *)pwp + 0x124) = 0xe;
+		pwp->work.f = 2.0f;
+		twp->flag |= 0x500;
+		pwp->jumptimer = 0;
+		dsPlay_oneshot(0x11, 0, 0, 0);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0052aea0
@@ -121,10 +157,36 @@ long KnucklesCheckHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct p
 	return (long)0;
 }
 
-// STUB: SADX 0x0052b080
+// FUNCTION: SADX 0x0052b080
 long KnucklesCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	long local_8;
+
+	PAdjustHoldingPosition(twp, mwp, pwp);
+	if (pwp->mj.nframe >= 12.0f)
+	{
+		local_8 = PCheckHoldObject(twp);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(twp, mwp))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					twp->mode = 0x1d;
+					dsPlay_oneshot(0x4e9, 0, 0, 0);
+					pwp->htp = twp->cwp->hit_cwp->mytask;
+					pwp->htp->twp->flag |= 0x1000;
+					twp->flag |= 0x800;
+					twp->flag &= ~0x8;
+					return 1;
+				}
+				break;
+			}
+		}
+		FUN_00528530(twp, mwp, pwp);
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0052b190
