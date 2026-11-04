@@ -77757,9 +77757,9 @@
   {
    "address": "0x00903c70",
    "name": "FUN_00903c70",
-   "accuracy": 0.16666666666666666,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -81829,17 +81829,17 @@
   {
    "address": "0x00914cf0",
    "name": "srl_h",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914d20",
    "name": "srl_l",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103614,5 +103614,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b945154be298fd3f27cca1f69f4908d6da8453d82a42e7264e60bfdfbbdff93a"
+ "inputs_sha256": "d1343fc0ddbc4c930f5f79714e5b1be41d6724e20ae8dca5d686b6f8cce1a306"
 }
