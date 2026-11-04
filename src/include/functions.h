@@ -1750,6 +1750,7 @@ void ExecRidingTime(struct task *tp);
 void FUN_0058b860(int param_1, int param_2);
 int GetSwitchOnOff(unsigned int ID);
 void ClearAllSwitches();
+void fishingLureCtrl(struct task *tp);
 void dispDistanceLure(float *rod_pos_p, float *line_pos_p);
 void dispDistanceNum(float dist);
 void FUN_0058d680(int param_1);

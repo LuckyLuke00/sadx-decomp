@@ -1,4 +1,17 @@
 #include "decls.h"
+struct _SC_NUMBERS
+{
+	char c0;
+	char c1;
+	short c2;
+	int c3;
+	int c4;
+	float c5;
+	float c6;
+	float c7;
+	float c8;
+	int c9;
+};
 struct taskwk;
 extern "C" int rand(void);
 void dispDistanceNum(float dist);
@@ -58,10 +71,29 @@ int FUN_0058c220(int param_1, int param_2, float param_3, int param_4, float par
 	return (int)0;
 }
 
-// STUB: SADX 0x0058c3b0
+// FUNCTION: SADX 0x0058c3b0
 void *SetFishingLureTask(struct task *tp)
 {
-	return (void *)0;
+	struct task *local_8g;
+	void *local_cj;
+	void *local_10;
+
+	local_8g = CreateElementalTask(0xb, 2, fishingLureCtrl);
+	local_cj = CAlloc(1, 0x1b4);
+	local_8g->awp->work.ptr[2] = local_cj;
+	local_10 = CAlloc(5, 4);
+	if (local_8g != 0 && local_10 != 0)
+	{
+		local_8g->twp->pos = tp->twp->pos;
+		local_8g->twp->ang = tp->twp->ang;
+		local_8g->awp->work.ptr[3] = local_10;
+		if (DAT_05cd2980 != 0)
+		{
+			DAT_05cd296c = 0;
+		}
+		DAT_05cd29b4 = 0;
+	}
+	return local_8g;
 }
 
 // FUNCTION: SADX 0x0058c480
@@ -139,9 +171,28 @@ void dispDistanceLure(float *rod_pos_p, float *line_pos_p)
 	dispDistanceNum(DAT_05cd29a8);
 }
 
-// STUB: SADX 0x0058d570
+// FUNCTION: SADX 0x0058d570
 void dispDistanceNum(float dist)
 {
+	struct _SC_NUMBERS num_str;
+
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+	num_str.c0 = 0x48;
+	num_str.c1 = 0x97;
+	num_str.c2 = 0;
+	num_str.c3 = 99;
+	num_str.c4 = (int)(dist / 10.0);
+	num_str.c5 = ScreenRaitoX * 640.0 - 64.0 - 35.0 + ScreenRaitoX * (-21.0);
+	num_str.c6 = ScreenRaitoY * 328.0 + ScreenRaitoY * 90.0;
+	num_str.c7 = 0.0f;
+	num_str.c8 = 1.0f * ScreenRaitoX;
+	num_str.c9 = -1;
+	FUN_0055de60(&num_str);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	ResetMaterial();
 }
 
 // FUNCTION: SADX 0x0058d680
