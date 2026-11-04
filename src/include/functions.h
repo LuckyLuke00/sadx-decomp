@@ -3149,7 +3149,6 @@ void DispExp(struct task *tp);
 void KasyaDestruct(struct task *tp);
 void DrawJumpdai(struct task *tp);
 void ExecJumpdai(struct task *tp);
-void Wait(struct task *tp);
 void ObjectRuinSnakeEv(struct task *tp);
 void RdSnowSwitchNadareStartDestructor(struct task *tp);
 void EffectColdGeneratorMain(struct task *tp);
