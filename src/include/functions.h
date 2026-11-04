@@ -3405,6 +3405,7 @@ void FUN_008c3850(int param_1, int *param_2, int *param_3);
 void FUN_008c4130(char *param_1);
 void FUN_008c41a0(char *param_1);
 void dispChaos0DropWater(struct task *tp);
+void dispEffectChaos0LightParticle_tame_init(struct task *tp);
 void dispEffectChaos0AttackA(struct task *tp);
 void ChaosShakeBrain(struct task *tp);
 void setParticleDispTask(struct taskwk *twp);
