@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct task *DAT_060e3a90;
 
 // GLOBAL: SADX 0x04c7d76c
 static void (*egm3_exec[5])(struct task *);
@@ -162,7 +163,45 @@ void EV_Egm3EggmanHikkomu(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00903a20
+// FUNCTION: SADX 0x00903a20
 void EV_Egm3EggmanToujou(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct anywk *var2 = tp->awp;
+	int var3 = var1->smode;
+	int var4;
+	float var5;
+	float var6;
+	float var7;
+
+	switch (var3)
+	{
+		case 0:
+			*(int *)((char *)var2 + 0x70) = 0;
+			*(int *)((char *)var2 + 0x6c) = 0;
+			var1->smode = 1;
+		case 1:
+			*(void **)((char *)var2 + 0x6c) = egm3_motion_list[2];
+			*(float *)((char *)var2 + 0x78) = 0.0f;
+			*(float *)((char *)var2 + 0x7c) = 0.5f;
+			*(int *)((char *)var2 + 0x70) = 0;
+			DAT_060e3a90 = CreateElementalTask(2, 2, EV_Eggman);
+			*(void **)((char *)DAT_060e3a90 + 0x2c) = CAlloc(1, 0x80);
+			var1->smode = 2;
+		case 2:
+			var5 = *(float *)((char *)var2 + 0x7c);
+			var6 = *(float *)((char *)var2 + 0x78);
+			var7 = var5 + var6;
+			*(float *)((char *)var2 + 0x78) = var7;
+			var4 = *(int *)((char *)var2 + 0x6c);
+			var5 = (float)(unsigned int)(*(int *)((char *)var4 + 4) - 1);
+			if (var5 <= var7)
+			{
+				DAT_060e3ac8 |= 0x10;
+				*(float *)((char *)var2 + 0x78) = var5;
+				var1->mode = 1;
+				return;
+			}
+			break;
+	}
 }
