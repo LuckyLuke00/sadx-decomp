@@ -14844,9 +14844,9 @@
   {
    "address": "0x004a76f0",
    "name": "CHAOS7_MsZofsFnc",
-   "accuracy": 0.0975609756097561,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -96712,6 +96712,62 @@
    "library": false
   },
   {
+   "address": "0x02a74db0",
+   "name": "model_c7_kihon_chaos7_c7_ago_u2_in",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02a75f78",
+   "name": "model_c7_kihon_chaos7_c7_ago_u1_in",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02a76980",
+   "name": "model_c7_kihon_chaos7_c7_ago_u1",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02a76f80",
+   "name": "model_c7_kihon_chaos7_c7_ago_t_in",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02a778c0",
+   "name": "model_c7_kihon_chaos7_c7_ago_t",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02a78bc0",
+   "name": "model_c7_kihon_chaos7_c7_eye",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02a79ca0",
+   "name": "model_c7_kihon_chaos7_c7_head_in",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02a7bbd8",
+   "name": "model_c7_kihon_chaos7_c7_head",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02b0bc20",
    "name": "pScale_Chaos07",
    "size": 8,
@@ -103644,5 +103700,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "1895bb698532bcc4f9cc302792107b7411874ad3f28e21f1baf7b4ad83c35766"
+ "inputs_sha256": "fed3815fda6cc0fb6e7bb930ad79ff320349a71ed4ecb278e37eef74e32d6503"
 }

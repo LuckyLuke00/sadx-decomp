@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <math.h>
+static float CHAOS7_MsZofsFnc(struct LATE_MDL_RQ *mrq, const struct NJS_MODEL *m, float z);
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 extern void *DAT_05b3dedc;
 extern int DAT_05b3df24;
@@ -1268,10 +1269,27 @@ void CHAOS_SetChaosNo(int no)
 	}
 }
 
-// STUB: SADX 0x004a76f0
+// FUNCTION: SADX 0x004a76f0
 float CHAOS7_MsZofsFnc(struct LATE_MDL_RQ *mrq, const struct NJS_MODEL *m, float z)
 {
-	return (float)0;
+	switch (m->mats[0].attr_texId & 0xffff)
+	{
+		case 0:
+			*(unsigned char *)((char *)mrq + 8) |= 0x10;
+			return z + 10.0f;
+		case 1:
+			*(unsigned char *)((char *)mrq + 8) |= 0x10;
+			return z - 300.0f;
+		case 6:
+		case 7:
+			*(unsigned char *)((char *)mrq + 8) |= 0x10;
+			return z - 200.0f;
+	}
+	if (m == model_c7_kihon_chaos7_c7_ago_u2_in || m == model_c7_kihon_chaos7_c7_ago_u1_in || m == model_c7_kihon_chaos7_c7_ago_t_in || m == model_c7_kihon_chaos7_c7_ago_u1 || m == model_c7_kihon_chaos7_c7_eye || m == model_c7_kihon_chaos7_c7_ago_t || m == model_c7_kihon_chaos7_c7_head_in || m == model_c7_kihon_chaos7_c7_head)
+	{
+		*(unsigned char *)((char *)mrq + 8) |= 0x10;
+	}
+	return z;
 }
 
 // FUNCTION: SADX 0x004a7800
