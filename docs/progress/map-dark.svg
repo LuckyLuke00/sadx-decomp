@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1432" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,206 of 16,485 game functions done (37.64%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,207 of 16,485 game functions done (37.65%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="595.8,1192.5 602.2,1192.5 603.9,1194 605,1195.6 599,1202.5 593,1195.6 594.1,1194" fill="#4e32f3"/>
 <polygon points="595.8,1192.5 602.2,1192.5 603.9,1194 605,1195.6 593,1195.6 594.1,1194" fill="#ffffff" fill-opacity="0.4"/>
@@ -257,7 +257,7 @@
 <rect x="0" y="105" width="6" height="6" fill="#ffd700"><title>0x00906150 FUN_00906150: 100%</title></rect>
 <rect x="70" y="105" width="6" height="6" fill="#ffd700"><title>0x00906cc0 sakana00: 100%</title></rect>
 </g>
-<rect x="680" y="1292" width="127" height="77" rx="3" fill="#21262d" stroke="#30363d"><title>E-102 Gamma: 48 of 106 functions done</title></rect>
+<rect x="680" y="1292" width="127" height="77" rx="3" fill="#21262d" stroke="#30363d"><title>E-102 Gamma: 49 of 106 functions done</title></rect>
 <text x="683" y="1306" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">E-102 Gamma <tspan font-weight="400" fill="#8b949e">9%</tspan></text>
 <g transform="translate(683,1310)">
 <rect y="0" width="119" height="42" fill="url(#todo)"/>
@@ -275,6 +275,7 @@
 <rect x="91" y="7" width="6" height="6" fill="#ffd700"><title>0x00515c30 FUN_00515c30: 100%</title></rect>
 <rect x="98" y="7" width="6" height="6" fill="#ffd700"><title>0x00515c60 FUN_00515c60: 100%</title></rect>
 <rect x="105" y="7" width="6" height="6" fill="#ffd700"><title>0x00515c90 E102MotionCallback: 100%</title></rect>
+<rect x="0" y="14" width="6" height="6" fill="#ffd700"><title>0x00516000 ChkTimeOverDead: 100%</title></rect>
 <rect x="14" y="14" width="6" height="6" fill="#ffd700"><title>0x005161d0 SE_RDASH_ON: 100%</title></rect>
 <rect x="21" y="14" width="6" height="6" fill="#ffd700"><title>0x00516210 SE_RDASH_OFF: 100%</title></rect>
 <rect x="28" y="14" width="6" height="6" fill="#ffd700"><title>0x00516260 IsE102Whistling: 100%</title></rect>

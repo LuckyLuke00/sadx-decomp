@@ -1,4 +1,5 @@
 #include "decls.h"
+extern unsigned char DAT_05cc44b8;
 extern void *DAT_05cc43a4;
 extern void *DAT_06276b18;
 struct taskwk;
@@ -268,10 +269,65 @@ void E102MotionCallback(struct obj *obj)
 	}
 }
 
-// STUB: SADX 0x00516000
+// FUNCTION: SADX 0x00516000
 int ChkTimeOverDead(struct taskwk *twp, struct playerwk *pwp)
 {
-	return (int)0;
+	struct taskwk *local_8;
+
+	local_8 = *(struct taskwk **)((char *)pwp + 0x7c);
+	if ((char)DAT_05cc43a1 == 0)
+	{
+		return 0;
+	}
+	if (twp->mode == 0x31 || twp->mode == 0x33)
+	{
+		return 0;
+	}
+	if ((char)DAT_05cc44b8 == 0)
+	{
+		return 0;
+	}
+	if (*(char *)((char *)local_8 + 5) > 0)
+	{
+		return 0;
+	}
+	if (*(short *)((char *)local_8 + 8) < 0x3c)
+	{
+		return 0;
+	}
+	if (EV_CheckCansel() == 1)
+	{
+		return 0;
+	}
+	if (twp->id == 3)
+	{
+		return 0;
+	}
+	switch (twp->mode)
+	{
+		case 0x1f:
+			*(short *)((char *)pwp + 0x124) = 0x46;
+			break;
+		case 0x21:
+			*(short *)((char *)pwp + 0x124) = 0x47;
+			break;
+		default:
+			*(short *)((char *)pwp + 0x124) = 0x45;
+			break;
+	}
+	twp->mode = 0x31;
+	KillHimP(twp->counter.b[0]);
+	dsStop_id((int)twp);
+	if (DAT_05cc43a0 != 0)
+	{
+		dsPlay_oneshot(0x5a1, 0, 0, 0);
+	}
+	if (local_8->mode == 3)
+	{
+		local_8->mode = 4;
+	}
+	return 1;
+	return 0;
 }
 
 // STUB: SADX 0x00516140
