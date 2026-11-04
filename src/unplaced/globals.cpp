@@ -2333,6 +2333,30 @@ float DAT_02a6a8ec;
 // GLOBAL: SADX 0x02a71964
 struct NJS_SPRITE sprite_c6ice;
 
+// GLOBAL: SADX 0x02a74db0
+struct NJS_MODEL model_c7_kihon_chaos7_c7_ago_u2_in[1];
+
+// GLOBAL: SADX 0x02a75f78
+struct NJS_MODEL model_c7_kihon_chaos7_c7_ago_u1_in[1];
+
+// GLOBAL: SADX 0x02a76980
+struct NJS_MODEL model_c7_kihon_chaos7_c7_ago_u1[1];
+
+// GLOBAL: SADX 0x02a76f80
+struct NJS_MODEL model_c7_kihon_chaos7_c7_ago_t_in[1];
+
+// GLOBAL: SADX 0x02a778c0
+struct NJS_MODEL model_c7_kihon_chaos7_c7_ago_t[1];
+
+// GLOBAL: SADX 0x02a78bc0
+struct NJS_MODEL model_c7_kihon_chaos7_c7_eye[1];
+
+// GLOBAL: SADX 0x02a79ca0
+struct NJS_MODEL model_c7_kihon_chaos7_c7_head_in[1];
+
+// GLOBAL: SADX 0x02a7bbd8
+struct NJS_MODEL model_c7_kihon_chaos7_c7_head[1];
+
 // GLOBAL: SADX 0x02b0bc20
 struct NJS_POINT3 *pScale_Chaos07[2];
 
