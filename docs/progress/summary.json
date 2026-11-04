@@ -69773,9 +69773,9 @@
   {
    "address": "0x008c4ad0",
    "name": "SetEffectPunchTameParticle",
-   "accuracy": 0.2,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103700,5 +103700,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "fed3815fda6cc0fb6e7bb930ad79ff320349a71ed4ecb278e37eef74e32d6503"
+ "inputs_sha256": "492e9a9feb12f1e3acfffc997142e4c22b1c1b8198ab073378d5714b275b4776"
 }

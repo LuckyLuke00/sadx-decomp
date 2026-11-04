@@ -57,9 +57,23 @@ void setDrop(struct taskwk *twp, int num, float size, float yofs)
 	}
 }
 
-// STUB: SADX 0x008c4ad0
+// FUNCTION: SADX 0x008c4ad0
 void SetEffectPunchTameParticle(struct NJS_POINT3 *pos, int num)
 {
+	struct task *local_cg;
+	int local_8g;
+	if (num == 0)
+	{
+		num = 2;
+	}
+	for (local_8g = 0; local_8g < num; local_8g++)
+	{
+		local_cg = CreateElementalTask(2, 5, dispEffectChaos0LightParticle_tame_init);
+		if (local_cg != NULL)
+		{
+			local_cg->twp->pos = *pos;
+		}
+	}
 }
 
 // STUB: SADX 0x008c4b40
