@@ -5,8 +5,6 @@
 #include "../advertise.h"
 extern char DAT_05b42418[0x104];
 void FUN_004b1cb0(int param_1, int param_2, int param_3, int param_4);
-void *FUN_004b6ae0(unsigned int param_1);
-void __fastcall FUN_004b66c0(void **param_1);
 struct FUN_004b6590_0
 {
 	struct NJS_ARGB local_0;
@@ -337,75 +335,3 @@ void FUN_004b6520(int param_1)
 	}
 }
 
-// FUNCTION: SADX 0x004b66c0
-void __fastcall FUN_004b66c0(void **param_1)
-{
-	char local_5kt;
-	char local_6;
-	void *local_cgt;
-	int local_10r;
-
-	if (*param_1 != 0)
-	{
-		local_5kt = local_6;
-		local_10r = (int)((char *)param_1[2] - (char *)param_1[0]) >> 2;
-		local_cgt = *param_1;
-		operator delete(local_cgt);
-	}
-	*param_1 = 0;
-	param_1[1] = 0;
-	param_1[2] = 0;
-}
-
-// FUNCTION: SADX 0x004b6a60
-void FUN_004b6a60(int param_1, int *param_2, int *param_3)
-{
-	void *local_8g = param_2;
-	int *local_cj;
-	int *local_14;
-	void *local_10 = local_8g;
-	if (local_10)
-	{
-		*(int *)local_10 = *param_3;
-		local_14 = (int *)local_10;
-	}
-	else
-	{
-		local_14 = 0;
-	}
-	local_cj = local_14;
-}
-
-// FUNCTION: SADX 0x004b6aa0
-void FUN_004b6aa0(int param_1, int *param_2, int *param_3)
-{
-	int *local_8g;
-	int *local_cj;
-	int *local_10;
-	local_cj = param_2;
-	if (local_cj)
-	{
-		*local_cj = *param_3;
-		local_10 = local_cj;
-	}
-	else
-	{
-		local_10 = 0;
-	}
-	local_8g = local_10;
-}
-
-// FUNCTION: SADX 0x004b6ae0
-void *FUN_004b6ae0(unsigned int param_1)
-{
-	void *local_8 = 0;
-	if (param_1 <= 0)
-	{
-		param_1 = 0;
-	}
-	else if (param_1 > 0x3fffffff || (local_8 = operator new(param_1 * 4)) == 0)
-	{
-		throw std::bad_alloc(0);
-	}
-	return local_8;
-}

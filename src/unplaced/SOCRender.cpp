@@ -168,28 +168,6 @@ void RenderTexture(int param_1, int param_2, int param_3, int param_4, float par
 		DAT_05ab4288 = 0;
 }
 
-// STUB: SADX 0x0041ca20
-void FUN_0041ca20(void *param_1, void *param_2, void *param_3)
-{
-}
-
-// STUB: SADX 0x0041ca60
-void FUN_0041ca60(void *param_1, void *param_2, void *param_3)
-{
-}
-
-// FUNCTION: SADX 0x0041caa0
-void __fastcall FUN_0041caa0(int *param_1)
-{
-	if (param_1[0])
-	{
-		operator delete((void *)param_1[0]);
-	}
-	param_1[0] = 0;
-	param_1[1] = 0;
-	param_1[2] = 0;
-}
-
 // STUB: SADX 0x0041cc20
 void __fastcall FUN_0041cc20(int param_1)
 {
@@ -221,11 +199,6 @@ void GetTextSize(const wchar_t *param_1, int& param_2, int& param_3)
 	DAT_05ab4280->GetTextSize(param_1, FUN_0040e170_0(), param_2, param_3);
 	param_2 = (int)(param_2 * ScreenRaitoX);
 	param_3 = (int)(param_3 * ScreenRaitoY);
-}
-
-// STUB: SADX 0x0041ddb0
-void __fastcall FUN_0041ddb0(int *param_1, int param_2, int param_3)
-{
 }
 
 extern struct FUN_0040e170_1 *DAT_05ab4280;

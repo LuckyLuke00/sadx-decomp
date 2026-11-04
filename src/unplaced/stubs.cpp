@@ -92,6 +92,11 @@ void njMotionLinkTransformEx(struct obj const *)
 {
 }
 
+// STUB: SADX 0x00425990
+void njInitMatrix(NJS_MATRIX *m, Sint32 n, Int flag)
+{
+}
+
 // STUB: SADX 0x00426490
 void stInitVertex(unsigned long, unsigned long, void *)
 {
@@ -1201,6 +1206,11 @@ void FUN_004b1cb0(int, int, int, int)
 
 // STUB: SADX 0x004b38e0
 void FUN_004b38e0(struct FUN_004b2330_0 *)
+{
+}
+
+// STUB: SADX 0x004b6140
+void FUN_004b6140()
 {
 }
 

@@ -2,18 +2,6 @@
 #include <new>
 extern "C" double sqrt(double param_1);
 
-// STUB: SADX 0x0041a8d0
-void * __stdcall FUN_0041a8d0(int param_1)
-{
-	return (void *)0;
-}
-
-// STUB: SADX 0x0041a930
-void * __stdcall FUN_0041a930(int param_1)
-{
-	return (void *)0;
-}
-
 // STUB: SADX 0x0041a990
 void * __stdcall FUN_0041a990(int param_1)
 {

@@ -58,6 +58,14 @@
    "library": true
   },
   {
+   "address": "0x00403060",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::erase",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
    "address": "0x004030e0",
    "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Tidy",
    "accuracy": 1.0,
@@ -74,9 +82,17 @@
    "library": true
   },
   {
+   "address": "0x00403230",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Grow",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
    "address": "0x004032e0",
    "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char>> const &, unsigned int, unsigned int)",
-   "accuracy": 0.9803921568627451,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -84,18 +100,18 @@
   {
    "address": "0x004033d0",
    "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Copy",
-   "accuracy": 0.9921875,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
   },
   {
    "address": "0x00403540",
-   "name": "FUN_00403540",
-   "accuracy": 0.13793103448275862,
+   "name": "std::allocator<char>::allocate",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x004035c0",
@@ -178,17 +194,89 @@
    "library": false
   },
   {
-   "address": "0x00405f00",
-   "name": "FUN_00405f00",
-   "accuracy": 0.046511627906976744,
+   "address": "0x00405390",
+   "name": "FUN_00405390",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004054a0",
+   "name": "FUN_004054a0",
+   "accuracy": 0.009523809523809525,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00405830",
+   "name": "FUN_00405830",
+   "accuracy": 0.02247191011235955,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004059d0",
+   "name": "FUN_004059d0",
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
   },
   {
+   "address": "0x00405b40",
+   "name": "FUN_00405b40",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00405c20",
+   "name": "FUN_00405c20",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00405cc0",
+   "name": "FUN_00405cc0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00405ed0",
+   "name": "FUN_00405ed0",
+   "accuracy": 0.16666666666666666,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00405f00",
+   "name": "FUN_00405f00",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00405f80",
+   "name": "Magic::Base::Singleton<DAT_0629c340_0>::GetSubject",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
    "address": "0x00406000",
    "name": "Magic::Base::Singleton<SOCInput>::GetSubject",
-   "accuracy": 0.345679012345679,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -200,6 +288,14 @@
    "effective": false,
    "stub": true,
    "library": false
+  },
+  {
+   "address": "0x00406180",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char>> &&)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00406210",
@@ -224,6 +320,22 @@
    "effective": false,
    "stub": true,
    "library": false
+  },
+  {
+   "address": "0x004073c0",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::append(char const *, unsigned int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x004074e0",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::append(class std::basic_string<char, struct std::char_traits<char>, class std::allocator<char>> const &, unsigned int, unsigned int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00407770",
@@ -576,6 +688,14 @@
    "effective": false,
    "stub": true,
    "library": false
+  },
+  {
+   "address": "0x00409670",
+   "name": "std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >,0> >::_Erase",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x004096f0",
@@ -1572,7 +1692,7 @@
   {
    "address": "0x0041a800",
    "name": "FUN_0041a800",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -1587,18 +1707,18 @@
   },
   {
    "address": "0x0041a8d0",
-   "name": "FUN_0041a8d0",
-   "accuracy": 0.12121212121212122,
+   "name": "std::allocator<FUN_004208c0_0>::allocate",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0041a930",
-   "name": "FUN_0041a930",
-   "accuracy": 0.13333333333333333,
+   "name": "std::allocator<FUN_00420960_0>::allocate",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -1660,9 +1780,17 @@
   {
    "address": "0x0041b2d0",
    "name": "SOCRender::UIShaderSet",
-   "accuracy": 0.078125,
+   "accuracy": 0.01639344262295082,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0041b450",
+   "name": "FUN_0041b450",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -1683,23 +1811,23 @@
   },
   {
    "address": "0x0041ca20",
-   "name": "FUN_0041ca20",
-   "accuracy": 0.07692307692307693,
+   "name": "std::_Uninit_copy<FUN_004208c0_0 *,FUN_004208c0_0 *,std::allocator<FUN_004208c0_0> >",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0041ca60",
-   "name": "FUN_0041ca60",
-   "accuracy": 0.07692307692307693,
+   "name": "std::_Uninit_move<FUN_00420960_0 *,FUN_00420960_0 *,std::allocator<FUN_00420960_0>,FUN_00420960_0>",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0041caa0",
-   "name": "FUN_0041caa0",
+   "name": "std::vector<FUN_004208c0_0,std::allocator<FUN_004208c0_0> >::_Tidy",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -1746,6 +1874,22 @@
    "library": false
   },
   {
+   "address": "0x0041d2d0",
+   "name": "std::vector<FUN_004208c0_0,std::allocator<FUN_004208c0_0> >::reserve",
+   "accuracy": 0.9891304347826086,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0041d3e0",
+   "name": "std::vector<FUN_00420960_0,std::allocator<FUN_00420960_0> >::reserve",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0041dc60",
    "name": "GetTextSize",
    "accuracy": 1.0,
@@ -1755,16 +1899,16 @@
   },
   {
    "address": "0x0041ddb0",
-   "name": "FUN_0041ddb0",
-   "accuracy": 0.037037037037037035,
+   "name": "std::vector<FUN_004208c0_0,std::allocator<FUN_004208c0_0> >::_Reserve",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0041de30",
    "name": "std::vector<FUN_00420960_0,std::allocator<FUN_00420960_0> >::_Reserve",
-   "accuracy": 0.9795918367346939,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -1780,7 +1924,7 @@
   {
    "address": "0x004204d0",
    "name": "std::vector<FUN_004208c0_0,std::allocator<FUN_004208c0_0> >::push_back(struct FUN_004208c0_0 const &)",
-   "accuracy": 0.9574468085106383,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -2538,6 +2682,22 @@
    "library": false
   },
   {
+   "address": "0x00424a90",
+   "name": "SOCInput::FUN_00424a90",
+   "accuracy": 0.13333333333333333,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00424ac0",
+   "name": "SOCInput::FUN_00424ac0",
+   "accuracy": 0.0,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00424b40",
    "name": "SOCInput::FUN_00424b40",
    "accuracy": 1.0,
@@ -2714,6 +2874,14 @@
    "library": false
   },
   {
+   "address": "0x00425990",
+   "name": "njInitMatrix",
+   "accuracy": 0.25806451612903225,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00425a50",
    "name": "SOCAudio::Stop",
    "accuracy": 0.25,
@@ -2749,6 +2917,30 @@
    "address": "0x00425d70",
    "name": "SOCAudio::Play",
    "accuracy": 0.08,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00425db0",
+   "name": "DAT_0629c340_0::FUN_00425db0",
+   "accuracy": 0.05128205128205128,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00425e30",
+   "name": "DAT_0629c340_0::FUN_00425e30",
+   "accuracy": 0.04,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004261d0",
+   "name": "DAT_0629c340_0::DAT_0629c340_0",
+   "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
    "library": false
@@ -15972,7 +16164,7 @@
   {
    "address": "0x004b23e0",
    "name": "FUN_004b23e0",
-   "accuracy": 0.9369747899159664,
+   "accuracy": 0.9411764705882353,
    "effective": false,
    "stub": false,
    "library": false
@@ -16018,6 +16210,14 @@
    "library": false
   },
   {
+   "address": "0x004b6140",
+   "name": "FUN_004b6140",
+   "accuracy": 0.0380952380952381,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004b6460",
    "name": "FUN_004b6460",
    "accuracy": 1.0,
@@ -16042,8 +16242,16 @@
    "library": false
   },
   {
+   "address": "0x004b65e0",
+   "name": "std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::push_back(struct FUN_004b6590_0 *const &)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004b66c0",
-   "name": "FUN_004b66c0",
+   "name": "std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::_Tidy",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -16058,6 +16266,14 @@
    "library": false
   },
   {
+   "address": "0x004b67d0",
+   "name": "std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::_Reserve",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004b6860",
    "name": "std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::_Grow_to",
    "accuracy": 1.0,
@@ -16066,8 +16282,16 @@
    "library": false
   },
   {
+   "address": "0x004b68e0",
+   "name": "std::vector<FUN_004b6590_0 *,std::allocator<FUN_004b6590_0 *> >::reserve",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004b6a60",
-   "name": "FUN_004b6a60",
+   "name": "std::_Cons_val<std::allocator<FUN_004b6590_0 *>,FUN_004b6590_0 *,FUN_004b6590_0 * const &>",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -16075,7 +16299,7 @@
   },
   {
    "address": "0x004b6aa0",
-   "name": "FUN_004b6aa0",
+   "name": "std::_Cons_val<std::allocator<FUN_004b6590_0 *>,FUN_004b6590_0 *,FUN_004b6590_0 * &>",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -16083,7 +16307,7 @@
   },
   {
    "address": "0x004b6ae0",
-   "name": "FUN_004b6ae0",
+   "name": "std::_Allocate<FUN_004b6590_0 *>",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -28884,7 +29108,7 @@
   {
    "address": "0x00577e40",
    "name": "InitStaff2",
-   "accuracy": 0.4837696335078534,
+   "accuracy": 0.5619546247818499,
    "effective": false,
    "stub": false,
    "library": false
@@ -29148,19 +29372,19 @@
   },
   {
    "address": "0x00588800",
-   "name": "FUN_00588800",
-   "accuracy": 0.13333333333333333,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >(wchar_t const *)",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00588890",
-   "name": "FUN_00588890",
-   "accuracy": 0.27586206896551724,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::~basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x005888f0",
@@ -29180,11 +29404,11 @@
   },
   {
    "address": "0x005889a0",
-   "name": "FUN_005889a0",
-   "accuracy": 0.2962962962962963,
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::~vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x005889f0",
@@ -29211,12 +29435,20 @@
    "library": false
   },
   {
-   "address": "0x00588c90",
-   "name": "FUN_00588c90",
-   "accuracy": 0.07766990291262135,
+   "address": "0x00588b10",
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::assign(class std::basic_string<wchar_t, struct std::char_traits<wchar_t>, class std::allocator<wchar_t>> &&)",
+   "accuracy": 0.9855072463768116,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00588c90",
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::assign(class std::basic_string<wchar_t, struct std::char_traits<wchar_t>, class std::allocator<wchar_t>> const &, unsigned int, unsigned int)",
+   "accuracy": 0.9897959183673469,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00588db0",
@@ -29228,35 +29460,67 @@
   },
   {
    "address": "0x00588e00",
-   "name": "FUN_00588e00",
-   "accuracy": 0.15625,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Tidy",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00588ea0",
-   "name": "split2",
-   "accuracy": 0.0759493670886076,
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::_Assign_rv",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00588f80",
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::_Reserve",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00589020",
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::_Tidy",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x005890d0",
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::_Insert_n",
+   "accuracy": 0.9912891986062717,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00589930",
-   "name": "FUN_00589930",
-   "accuracy": 0.7272727272727273,
+   "name": "std::_Vector_val<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::~_Vector_val<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00589940",
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::assign(wchar_t const *, unsigned int)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00589a70",
-   "name": "FUN_00589a70",
-   "accuracy": 0.06741573033707865,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::erase",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x00589b70",
@@ -29268,27 +29532,59 @@
   },
   {
    "address": "0x00589c10",
-   "name": "FUN_00589c10",
-   "accuracy": 0.10752688172043011,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Grow",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00589d10",
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::push_back",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00589df0",
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::reserve",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x00589fc0",
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::clear",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0058a010",
-   "name": "FUN_0058a010",
-   "accuracy": 0.1276595744680851,
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::_Grow_to",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0058a090",
-   "name": "FUN_0058a090",
-   "accuracy": 0.029556650246305417,
+   "name": "std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >::_Copy",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0058a330",
+   "name": "std::vector<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > >::erase",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0058a420",
@@ -29308,27 +29604,35 @@
   },
   {
    "address": "0x0058a4b0",
-   "name": "FUN_0058a4b0",
+   "name": "std::_Cons_val<std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > const &>",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": true
+  },
+  {
+   "address": "0x0058a4d0",
+   "name": "std::_Cons_val<std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0058a560",
-   "name": "FUN_0058a560",
+   "name": "std::_Allocate<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": true
   },
   {
    "address": "0x0058a5d0",
-   "name": "FUN_0058a5d0",
+   "name": "std::_Allocate<wchar_t>",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": true
   },
   {
    "address": "0x0058a640",
@@ -29348,19 +29652,59 @@
   },
   {
    "address": "0x0058a710",
-   "name": "FUN_0058a710",
-   "accuracy": 0.1095890410958904,
+   "name": "std::_Uninit_fill_n<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > *,unsigned int,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0058a7d0",
-   "name": "FUN_0058a7d0",
-   "accuracy": 0.1509433962264151,
+   "name": "std::_Construct<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > const &>",
+   "accuracy": 0.9795918367346939,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0058a870",
+   "name": "std::_Uninit_move<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > *,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > *,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0058a940",
+   "name": "std::_Dest_val<std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >,std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > >",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0058a9b0",
+   "name": "std::list<LBOnData,std::allocator<LBOnData> >::list<LBOnData,std::allocator<LBOnData> >",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0058aa10",
+   "name": "std::_Allocate<std::_List_nod<LBOnData,std::allocator<LBOnData> >::_Node>",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x0058aa80",
+   "name": "std::_List_val<LBOnData,std::allocator<LBOnData> >::~_List_val<LBOnData,std::allocator<LBOnData> >",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0058aab0",
@@ -88235,6 +88579,14 @@
    "library": false
   },
   {
+   "address": "0x0092caf0",
+   "name": "Magic::Base::App::Get",
+   "accuracy": 0.03225806451612903,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0092cd20",
    "name": "FUN_0092cd20",
    "accuracy": 0.2857142857142857,
@@ -103232,5 +103584,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d01455dba4c25d090c29b0436fc4d32a92eb7688731d133beafdb139f82b96e0"
+ "inputs_sha256": "f4ebd9467ebad1884fe60aced6abac6298d5634ced97b9392dea768d52bffae6"
 }

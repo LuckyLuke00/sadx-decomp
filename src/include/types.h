@@ -241,6 +241,7 @@ struct NJS_TEXLIST;
 struct NJS_TEXMEMLIST;
 struct NJS_TEXNAME;
 struct NJS_TEXTURE_VTX;
+struct NJS_VERTEX_BUF;
 struct NpcMessageTable;
 struct obj;
 struct OBJ_CONDITION;

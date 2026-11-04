@@ -67,6 +67,8 @@ template<class T> class Singleton;
 class SOCInput
 {
 public:
+	void FUN_00424a90(int param_1, int param_2);
+	void FUN_00424ac0();
 	SOCController* FUN_00424b40();
 private:
 	friend class Magic::Base::Singleton<SOCInput>;
@@ -74,6 +76,21 @@ private:
 	int local_0;
 	SOCController* local_4[8];
 	char local_24[0x28];
+};
+
+class DAT_0629c340_0
+{
+public:
+	void FUN_00425db0();
+	void FUN_00425e30();
+private:
+	friend class Magic::Base::Singleton<DAT_0629c340_0>;
+	DAT_0629c340_0();
+	bool local_0;
+	char local_4[0x90];
+	char local_94[0x90];
+	char local_124[0x90];
+	void* local_1b4;
 };
 
 struct LBOnData
@@ -137,6 +154,11 @@ public:
 	double FUN_00929760();
 private:
 	void* local_0;
+};
+class App
+{
+public:
+	static int Get(const char* param_1);
 };
 }
 
