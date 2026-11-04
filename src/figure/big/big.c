@@ -213,10 +213,44 @@ long BigCheckHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct player
 	return (long)0;
 }
 
-// STUB: SADX 0x0050ae10
+// FUNCTION: SADX 0x0050ae10
 long BigCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	long local_8;
+
+	if (PAdjustHoldingPosition(twp, mwp, pwp) == 0)
+	{
+		FUN_0050ce80((char *)twp, (int)mwp, (char *)pwp);
+		pwp->htp = 0;
+		twp->flag = twp->flag & ~0x800;
+		return 0;
+	}
+	if (pwp->mj.nframe >= 8.0f)
+	{
+		local_8 = PCheckHoldObject(twp);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(twp, mwp))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					twp->mode = 0x11;
+					dsPlay_oneshot(0x522, 0, 0, 0);
+					pwp->htp = twp->cwp->hit_cwp->mytask;
+					pwp->htp->twp->flag = pwp->htp->twp->flag | 0x1000;
+					twp->flag = twp->flag | 0x800;
+					twp->flag = twp->flag & ~0x8;
+					return 1;
+				}
+				break;
+			}
+		}
+		FUN_0050ce80((char *)twp, (int)mwp, (char *)pwp);
+		pwp->htp = 0;
+		twp->flag = twp->flag & ~0x800;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0050af80

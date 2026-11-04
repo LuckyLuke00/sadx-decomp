@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1432" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,194 of 16,485 game functions done (37.57%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,197 of 16,485 game functions done (37.59%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="594.8,1187.5 601.2,1187.5 602.9,1189 604,1190.6 598,1197.5 592,1190.6 593.1,1189" fill="#4e32f3"/>
 <polygon points="594.8,1187.5 601.2,1187.5 602.9,1189 604,1190.6 592,1190.6 593.1,1189" fill="#ffffff" fill-opacity="0.4"/>
@@ -190,8 +190,8 @@
 <rect x="84" y="42" width="6" height="6" fill="#b07d00"><title>0x005d6c10 AmyEffectHammerWaveColor: 100%</title></rect>
 <rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x005d6cf0 AmyEffectHammerWaveColorDisplayer: 100%</title></rect>
 </g>
-<rect x="593" y="1205" width="82" height="164" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Big: 55 of 176 functions done</title></rect>
-<text x="596" y="1219" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Big <tspan font-weight="400" fill="#59636e">6%</tspan></text>
+<rect x="593" y="1205" width="82" height="164" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Big: 58 of 176 functions done</title></rect>
+<text x="596" y="1219" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Big <tspan font-weight="400" fill="#59636e">7%</tspan></text>
 <g transform="translate(596,1223)">
 <rect y="0" width="77" height="112" fill="url(#todo)"/>
 <rect x="21" y="0" width="6" height="6" fill="#b07d00"><title>0x00508980 BigDestruct: 100%</title></rect>
@@ -201,6 +201,7 @@
 <rect x="56" y="7" width="6" height="6" fill="#b07d00"><title>0x0050aaf0 BigCheckBeInTheAir: 100%</title></rect>
 <rect x="63" y="7" width="6" height="6" fill="#b07d00"><title>0x0050ab80 BigCheckStop: 100%</title></rect>
 <rect x="70" y="7" width="6" height="6" fill="#b07d00"><title>0x0050ac30 FUN_0050ac30: 100%</title></rect>
+<rect x="7" y="14" width="6" height="6" fill="#b07d00"><title>0x0050ae10 BigCheckPickObject: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x0050bd30 FUN_0050bd30: 100%</title></rect>
 <rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x0050c310 BigEarsSwingEnd: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x0050c330 FUN_0050c330: 100%</title></rect>
@@ -213,9 +214,11 @@
 <rect x="7" y="28" width="6" height="6" fill="#b07d00"><title>0x0050ceb0 IsBigWhistling: 100%</title></rect>
 <rect x="14" y="28" width="6" height="6" fill="#b07d00"><title>0x0050ced0 IsBigPutting: 100%</title></rect>
 <rect x="35" y="28" width="6" height="6" fill="#b07d00"><title>0x0050d320 _bigmot_init: 100%</title></rect>
+<rect x="49" y="28" width="6" height="6" fill="#b07d00"><title>0x0058c3b0 SetFishingLureTask: 100%</title></rect>
 <rect x="56" y="28" width="6" height="6" fill="#b07d00"><title>0x0058c480 getLureKind: 100%</title></rect>
 <rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x0058c510 chkLureDistance: 100%</title></rect>
 <rect x="14" y="35" width="6" height="6" fill="#b07d00"><title>0x0058d490 dispDistanceLure: 100%</title></rect>
+<rect x="21" y="35" width="6" height="6" fill="#b07d00"><title>0x0058d570 dispDistanceNum: 100%</title></rect>
 <rect x="28" y="35" width="6" height="6" fill="#b07d00"><title>0x0058d680 FUN_0058d680: 100%</title></rect>
 <rect x="14" y="42" width="6" height="6" fill="#b07d00"><title>0x0058e9d0 setLureSpd_D: 100%</title></rect>
 <rect x="49" y="42" width="6" height="6" fill="#b07d00"><title>0x0058f980 FUN_0058f980: 100%</title></rect>

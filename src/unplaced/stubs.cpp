@@ -1729,6 +1729,11 @@ void FUN_0058b270(struct task *)
 {
 }
 
+// STUB: SADX 0x0058c5d0
+void fishingLureCtrl(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0058d6a0
 void FUN_0058d6a0()
 {
