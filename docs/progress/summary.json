@@ -23316,9 +23316,9 @@
   {
    "address": "0x0051c9d0",
    "name": "AmyCheckStartHandle",
-   "accuracy": 0.16393442622950818,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23340,9 +23340,9 @@
   {
    "address": "0x0051ce40",
    "name": "AmyBalanceCheckBadStatus",
-   "accuracy": 0.15873015873015872,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23356,9 +23356,9 @@
   {
    "address": "0x0051e530",
    "name": "AmyCheckPickObject",
-   "accuracy": 0.10752688172043011,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103606,5 +103606,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "7a0d9c437618ace286a68e57f2e24d0cd4ac821ea7173ca0f56462c77b7e5043"
+ "inputs_sha256": "b954842d79dc17141667f19279c763ddbd256fcfb2d99dd9dba5ae91a1fb5f2e"
 }

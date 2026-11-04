@@ -1,4 +1,5 @@
 #include "decls.h"
+struct amyhndlstr *AmyHndlGetInfoStrP();
 extern struct PDS_PERIPHERAL DAT_05b932e8[8];
 extern long action_button;
 extern struct task **DAT_060eeab8;
@@ -81,10 +82,27 @@ long FUN_0051c960(struct taskwk *param_1, int param_2, int param_3)
 	}
 }
 
-// STUB: SADX 0x0051c9d0
+// FUNCTION: SADX 0x0051c9d0
 long AmyCheckStartHandle(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	struct amyhndlstr *local_8;
+	if ((((DAT_05b932e8[twp->counter.b[0]].press & action_button) != 0) && ((*(char *)((char *)pwp + 0x82) & 1) != 0)))
+	{
+		local_8 = AmyHndlGetInfoStrP();
+		if (local_8 != 0)
+		{
+			*(int *)((char *)twp + 0x18) = (-(*(int *)((char *)local_8 + 0xc)) - 0x4000) & 0xffff;
+			*(float *)((char *)twp + 0x20) = njSin(*(int *)((char *)local_8 + 0xc)) * 6.0 + *(float *)((char *)local_8 + 0x10);
+			*(float *)((char *)twp + 0x28) = njCos(*(int *)((char *)local_8 + 0xc)) * 6.0 + *(float *)((char *)local_8 + 0x18);
+		}
+		twp->mode = 0xf;
+		*(unsigned short *)((char *)pwp + 0x124) = 0x21;
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0051ca90
@@ -107,10 +125,19 @@ long AmyCheckStartBalance(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	return (long)0;
 }
 
-// STUB: SADX 0x0051ce40
+// FUNCTION: SADX 0x0051ce40
 long AmyBalanceCheckBadStatus(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if ((twp->ang.x < -0x3800) || (twp->ang.x > 0x3800) || (twp->ang.z < -0x3800) || (twp->ang.z > 0x3800))
+	{
+		twp->pos.x += njSin(twp->ang.z) * -10.0f * njCos(twp->ang.x);
+		twp->pos.y += -2.0f;
+		twp->pos.z += njSin(twp->ang.x) * 10.0f;
+		twp->mode = 8;
+		*(short *)((char *)pwp + 0x124) = 0x11;
+		return 1;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x0051e350
@@ -140,10 +167,37 @@ long FUN_0051e350(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	return 0;
 }
 
-// STUB: SADX 0x0051e530
+// FUNCTION: SADX 0x0051e530
 long AmyCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	unsigned long local_8;
+
+	PAdjustHoldingPosition(twp, mwp, pwp);
+	if (pwp->mj.nframe >= 12.0f)
+	{
+		local_8 = PCheckHoldObject(twp);
+		if (local_8 != 0)
+		{
+			switch (PCheckColliAngle(twp, mwp))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					twp->mode = 0x19;
+					dsPlay_oneshot(0x503, 0, 0, 0);
+					twp->flag |= 0x800;
+					twp->flag &= ~0x8;
+					if (twp->cwp->hit_cwp != NULL)
+						pwp->htp = twp->cwp->hit_cwp->mytask;
+					pwp->htp->twp->flag |= 0x1000;
+					return 1;
+				}
+				break;
+			}
+		}
+		FUN_0051b800(twp, mwp, pwp);
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0051e650
