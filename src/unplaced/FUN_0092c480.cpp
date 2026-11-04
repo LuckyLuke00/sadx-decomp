@@ -1,4 +1,5 @@
 #include "decls.h"
+#include "../advertise.h"
 #include <string>
 extern "C" double pow(double param_1, double param_2);
 
@@ -20,6 +21,12 @@ float FUN_0092c9e0(float param_1)
 double FUN_0092ca10(double param_1)
 {
 	return (double)0;
+}
+
+// STUB: SADX 0x0092caf0
+int Magic::Base::App::Get(const char* param_1)
+{
+	return 0;
 }
 
 // STUB: SADX 0x0092cd20

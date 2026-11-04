@@ -5,7 +5,6 @@
 #include "advertise.h"
 extern struct NJS_TEXLIST DAT_02605a3c;
 extern struct NJS_TEXANIM DAT_02605a48;
-void *FUN_0058a5d0(unsigned int param_1);
 extern float ScreenRaitoY;
 extern int DAT_05b3e05c;
 void late_DrawMap(void *arg);
@@ -13,16 +12,12 @@ void FUN_0057cd30();
 long InitMap();
 void FUN_0057cf20();
 void late_SetFunc(void (*fnc)(void *), void *arg, float zprio, int flgs);
-extern void FUN_00589a70(char *param_1, int param_2, int param_3);
-extern void __fastcall FUN_00589c10(void *param_1, int param_2, char param_3);
 void FUN_0041c2d0(void *param_1);
 int dsPlay_oneshot(int tone, int id, int pri, int volofs);
 int InitLBOn();
 void DrawLBOn();
 void DestroyLBOn();
-void split2(void *param_1, void *param_2);
 extern struct NJS_TEXLIST DAT_05cd2664;
-void FUN_00588890(int param_1);
 extern unsigned char DAT_05cd2786;
 
 extern class SOCAudio *DAT_05b3dfdc;
@@ -2267,25 +2262,10 @@ void DrawButtonXUBB()
 	}
 }
 
-// STUB: SADX 0x00588800
-void FUN_00588800(void *param_1, wchar_t *param_2)
-{
-}
-
-// STUB: SADX 0x00588890
-void FUN_00588890(int param_1)
-{
-}
-
 // STUB: SADX 0x00588920
 int FUN_00588920(struct NJS_POINT3 *param_1, int param_2)
 {
 	return (int)0;
-}
-
-// STUB: SADX 0x005889a0
-void FUN_005889a0(int param_1)
-{
 }
 
 // STUB: SADX 0x00588a30
@@ -2293,34 +2273,8 @@ void FUN_00588a30(int param_1)
 {
 }
 
-// STUB: SADX 0x00588c90
-char * FUN_00588c90(char *param_1, char *param_2, int param_3, int param_4)
-{
-	return (char *)0;
-}
-
 // STUB: SADX 0x00588db0
 void FUN_00588db0(struct obj *param_1, int param_2)
-{
-}
-
-// STUB: SADX 0x00588e00
-void __fastcall FUN_00588e00(void *param_1, char param_2, int param_3, int param_4)
-{
-}
-
-// STUB: SADX 0x00588ea0
-void split2(void *param_1, void *param_2)
-{
-}
-
-// STUB: SADX 0x00589930
-void FUN_00589930()
-{
-}
-
-// STUB: SADX 0x00589a70
-void FUN_00589a70(char *param_1, int param_2, int param_3)
 {
 }
 
@@ -2329,85 +2283,9 @@ void FUN_00589b70(void *param_1, int param_2, int param_3, short param_4)
 {
 }
 
-// STUB: SADX 0x00589c10
-void __fastcall FUN_00589c10(void *param_1, int param_2, char param_3)
-{
-}
-
-// STUB: SADX 0x0058a010
-int FUN_0058a010(int *param_1, int param_2)
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x0058a090
-void FUN_0058a090(void *param_1, int param_2, int param_3)
-{
-}
-
 // STUB: SADX 0x0058a490
 void FUN_0058a490(int param_1, int param_2, int param_3)
 {
-}
-
-// FUNCTION: SADX 0x0058a4b0
-void FUN_0058a4b0(int param_1, int param_2, int param_3)
-{
-	int local_1cp;
-	int local_8gk;
-	int local_64j;
-	int local_2cx;
-	int local_18o;
-	int local_60j;
-	int local_38gj;
-	int local_34h;
-	int local_5c;
-	int local_4c;
-	int local_3cgq;
-	int local_44s;
-	int local_54g;
-	int local_28k;
-	int local_50j;
-	int local_24k;
-	int local_20i;
-	int local_40u;
-	int local_14s;
-	int local_10l;
-	int local_48q;
-	int local_ci;
-	int local_30r;
-	int local_58p;
-	FUN_0058a7d0((void *)param_2, (void *)param_3);
-}
-
-// FUNCTION: SADX 0x0058a560
-void *FUN_0058a560(unsigned int param_1)
-{
-	void *local_8 = 0;
-	if (param_1 <= 0)
-	{
-		param_1 = 0;
-	}
-	else if (param_1 > 0x9249249 || (local_8 = operator new(param_1 * 0x1c)) == 0)
-	{
-		throw std::bad_alloc(0);
-	}
-	return local_8;
-}
-
-// FUNCTION: SADX 0x0058a5d0
-void *FUN_0058a5d0(unsigned int param_1)
-{
-	void *local_8 = 0;
-	if (param_1 <= 0)
-	{
-		param_1 = 0;
-	}
-	else if (param_1 > 0x7fffffff || (local_8 = operator new(param_1 * 2)) == 0)
-	{
-		throw std::bad_alloc(0);
-	}
-	return local_8;
 }
 
 // FUNCTION: SADX 0x0058a640
@@ -2423,15 +2301,5 @@ unsigned short * FUN_0058a640(unsigned short *param_1, unsigned short *param_2, 
 
 // STUB: SADX 0x0058a670
 void FUN_0058a670(void *param_1, void *param_2)
-{
-}
-
-// STUB: SADX 0x0058a710
-void FUN_0058a710(void *param_1, int param_2, void *param_3, void *param_4)
-{
-}
-
-// STUB: SADX 0x0058a7d0
-void FUN_0058a7d0(void *param_1, void *param_2)
 {
 }

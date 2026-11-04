@@ -21,6 +21,16 @@ char __fastcall FUN_00424a80(void *param_1)
 	return (*(int *)((char *)param_1 + 0x48) == 5) + 5;
 }
 
+// STUB: SADX 0x00424a90
+void SOCInput::FUN_00424a90(int param_1, int param_2)
+{
+}
+
+// STUB: SADX 0x00424ac0
+void SOCInput::FUN_00424ac0()
+{
+}
+
 // FUNCTION: SADX 0x00424b40
 SOCController* SOCInput::FUN_00424b40()
 {
