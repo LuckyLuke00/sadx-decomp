@@ -6719,6 +6719,9 @@ unsigned char DAT_05cc43a1;
 // GLOBAL: SADX 0x05cc43a4
 void *DAT_05cc43a4;
 
+// GLOBAL: SADX 0x05cc44b8
+unsigned char DAT_05cc44b8;
+
 // GLOBAL: SADX 0x05cc603c
 int DAT_05cc603c;
 

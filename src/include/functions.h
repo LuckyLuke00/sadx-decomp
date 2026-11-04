@@ -1165,6 +1165,7 @@ void PlayerFaceMotionEnd(struct task *tp);
 void PlayerFaceMotionExec(struct task *tp);
 void PlayerFaceModelInterpolateSub(struct obj *objbufp, struct PL_FACE *pfp, short *ip);
 void PSetLoopSECallForTheMode(long SE, unsigned char pno, short mode);
+void KillHimP(unsigned char pno);
 void KillHimByFallingDownP(unsigned char pno);
 void ExecFallingDownP(unsigned char pno);
 void DisplayBreathCounterP(struct task *tp);

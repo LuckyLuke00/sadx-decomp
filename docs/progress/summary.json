@@ -23196,9 +23196,9 @@
   {
    "address": "0x00516000",
    "name": "ChkTimeOverDead",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103622,5 +103622,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "985d809153e8ebcf07d7c5beeb6c18721bb4dec2c091108cebfdf72b3d3ed3dd"
+ "inputs_sha256": "4119e84f7f3240818c44dc62fcfbcffeb7f9037ee4239df33f7dd1f91e09641a"
 }

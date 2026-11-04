@@ -2245,6 +2245,7 @@ extern int DAT_05cc4020;
 extern char DAT_05cc43a0;
 extern unsigned char DAT_05cc43a1;
 extern void *DAT_05cc43a4;
+extern unsigned char DAT_05cc44b8;
 extern int DAT_05cc603c;
 extern int DAT_05cc6040;
 extern int DAT_05cc62c0;
