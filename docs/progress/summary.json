@@ -13516,9 +13516,9 @@
   {
    "address": "0x0049b9f0",
    "name": "sakana_disp",
-   "accuracy": 0.02631578947368421,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -92736,9 +92736,23 @@
    "library": false
   },
   {
+   "address": "0x0258b0e0",
+   "name": "texlist_mi_meka_sakana",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025a2a78",
    "name": "cinfo_mannequin",
    "size": 144,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025a2b08",
+   "name": "sakana_offset_tbl",
+   "size": 12,
    "match": false,
    "library": false
   },
@@ -103630,5 +103644,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "886d30310fc8ffb9226be6c7ea75ce101129cde60ede2ae6c396035b8c01d1f8"
+ "inputs_sha256": "1895bb698532bcc4f9cc302792107b7411874ad3f28e21f1baf7b4ad83c35766"
 }

@@ -713,6 +713,7 @@ void ___njColorBlendingMode(int tgt, int mode);
 void FUN_004a0520(float, float);
 void late_ReleaseTexture(NJS_TEXLIST *tl);
 int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
+int dsCheckView(float x, float y, float z, float radius);
 int dsCheckViewV(NJS_POINT3 *ft, float radius);
 void FUN_004a0920(struct obj *param_1);
 void FUN_004a0940(struct NJS_MODEL *param_1);

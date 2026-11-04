@@ -1,4 +1,10 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x025a2b08
+static struct NJS_POINT3 sakana_offset_tbl;
+
+extern struct NJS_TEXLIST texlist_mi_meka_sakana;
+int dsCheckView(float x, float y, float z, float radius);
 extern int DAT_05cd2968;
 
 // STUB: SADX 0x0049b3e0
@@ -16,9 +22,34 @@ void FUN_0049b990(struct obj *param_1)
 {
 }
 
-// STUB: SADX 0x0049b9f0
+// FUNCTION: SADX 0x0049b9f0
 void sakana_disp(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+
+	if (dsCheckView(var1->pos.x, var1->pos.y, var1->pos.z, 5.0f) == 0)
+	{
+		return;
+	}
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	FUN_0067d2d0(0, *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c));
+	if (*(int *)((char *)var1 + 0x18) + 0x8000 != 0)
+	{
+		njRotateY(0, (unsigned short)(0x8000 + *(short *)((char *)var1 + 0x18)));
+	}
+	if (*(int *)((char *)var1 + 0x1c) != 0)
+	{
+		njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+	}
+	if (*(int *)((char *)var1 + 0x14) != 0)
+	{
+		njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
+	}
+	njTranslateV(0, &sakana_offset_tbl);
+	___njSetTexture(&texlist_mi_meka_sakana);
+	FUN_004a88c0((NJS_ACTION *)var1->counter.ptr, var1->timer.f);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x0049baf0

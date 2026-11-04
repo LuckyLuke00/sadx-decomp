@@ -280,6 +280,7 @@ extern struct obj object_mi_kinka[];
 extern struct NJS_ACTION action_mi_ssobj_card[];
 extern struct obj object_mi_3dasu_fat_d[];
 extern struct NJS_TEXLIST texlist_mi_3dasu;
+extern struct NJS_TEXLIST texlist_mi_meka_sakana;
 extern struct CCL_INFO mi_kinka_colli_info[];
 extern struct CCL_INFO mi_flag_colli_info[];
 extern struct CCL_INFO mi_baloon_colli_info[];
