@@ -1,4 +1,5 @@
 #include "decls.h"
+struct motionwk;
 extern struct obj object_al_barria_barria[1];
 extern struct NJS_TEXLIST texlist_al_barria;
 void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short param_3);
@@ -294,14 +295,72 @@ void FUN_0061a180(int param_1, struct taskwk *param_2, struct task *param_3)
 {
 }
 
-// STUB: SADX 0x0061a280
+// FUNCTION: SADX 0x0061a280
 void FUN_0061a280(struct Flicky *param_1, struct taskwk *param_2, int param_3)
 {
+	struct motionwk *local_8g;
+	float local_cg;
+
+	local_8g = *(struct motionwk **)(param_3 + 0x24);
+	local_8g->spd.y -= 0.05000000074505806;
+	param_2->pos.x += local_8g->spd.x;
+	param_2->pos.y += local_8g->spd.y;
+	param_2->pos.z += local_8g->spd.z;
+	param_2->ang.x = 0;
+	param_2->ang.z = 0;
+	local_cg = Shadow(param_2, 0.3499999940395355);
+	param_2->pos.y -= 1.0;
+	if ((param_2->pos.y - 2.0) < local_cg)
+	{
+		param_2->pos.y = local_cg + 2.0;
+		if (local_8g->spd.y < 0.0)
+		{
+			local_8g->spd.y *= -0.6000000238418579;
+		}
+		local_8g->spd.x *= 0.699999988079071;
+		local_8g->spd.z *= 0.699999988079071;
+	}
+	if ((param_2->flag & 0x1000) != 0)
+	{
+		param_2->mode = 2;
+		param_2->wtimer = 0;
+	}
+	else
+	{
+		EntryColliList(param_2);
+	}
 }
 
-// STUB: SADX 0x0061a3c0
+// FUNCTION: SADX 0x0061a3c0
 void FUN_0061a3c0(struct Flicky *param_1, struct taskwk *param_2, int param_3)
 {
+	struct taskwk *local_8g;
+	float local_cg;
+
+	local_8g = (struct taskwk *)*(int *)((char *)param_3 + 0x24);
+	*(float *)((char *)local_8g + 8) -= 0.05000000074505806f;
+	*(float *)((char *)param_2 + 0x20) += *(float *)((char *)local_8g + 4);
+	*(float *)((char *)param_2 + 0x24) += *(float *)((char *)local_8g + 8);
+	*(float *)((char *)param_2 + 0x28) += *(float *)((char *)local_8g + 0xc);
+	*(int *)((char *)param_2 + 0x14) = 0;
+	*(int *)((char *)param_2 + 0x1c) = 0;
+	local_cg = Shadow(param_2, 0.3499999940395355f);
+	if (*(float *)((char *)param_2 + 0x24) - 2.0f < local_cg)
+	{
+		*(float *)((char *)param_2 + 0x24) = local_cg + 2.0f;
+		if (*(float *)((char *)local_8g + 8) < 0.0f)
+		{
+			*(float *)((char *)local_8g + 8) *= -0.6000000238418579f;
+		}
+		*(float *)((char *)local_8g + 4) *= 0.699999988079071f;
+		*(float *)((char *)local_8g + 0xc) *= 0.699999988079071f;
+	}
+	if (param_2->wtimer++ > 0xc8)
+	{
+		param_2->mode = 0;
+		param_2->wtimer = 0;
+	}
+	EntryColliList(param_2);
 }
 
 // STUB: SADX 0x0061a500

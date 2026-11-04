@@ -1,4 +1,19 @@
 #include "decls.h"
+void sonicCameraAvoidObstacle();
+extern int DAT_05ccdbd8;
+extern int DAT_05ccdafc;
+extern "C" double atan2(double v, double u);
+extern struct PDS_PERIPHERAL *DAT_05b93268;
+extern char DAT_05ccdad0;
+extern int DAT_05ccdb08;
+extern float DAT_05ccdb30;
+extern float DAT_05ccdb40;
+extern int DAT_05ccdb6c;
+extern int DAT_05ccdbcc;
+extern float DAT_05ccdbb4;
+extern float DAT_05ccdbb8;
+extern float DAT_05ccdbbc;
+extern float DAT_05ccdc0c;
 
 // GLOBAL: SADX 0x02603650
 static struct Angle3 chaoscam_angacc_lim_def;
@@ -216,9 +231,36 @@ void CCSI_CalcTargetPos(float dist, struct NJS_POINT3 *ans)
 	njAddVector(ans, (struct NJS_POINT3 *)((char *)camcont_wp + 0x18));
 }
 
-// STUB: SADX 0x00563130
+// FUNCTION: SADX 0x00563130
 void CameraChaosStageInit(struct _OBJ_CAMERAPARAM *pParam)
 {
+	switch (DAT_05ccdad0)
+	{
+		case 0:
+			DAT_05ccdb30 += DAT_05ccdc0c;
+			if (DAT_05ccdb30 <= DAT_05ccdb40)
+			{
+				DAT_05ccdad0 = 1;
+			}
+			break;
+		case 1:
+			DAT_05ccdb08 += DAT_05ccdbcc;
+			DAT_05ccdb6c += DAT_05ccdbcc;
+			if (DAT_05ccdb6c >= 0x4000)
+			{
+				DAT_05ccdad0 = 2;
+				DAT_05ccdad1 = 1;
+				PadReadOn();
+			}
+			break;
+		case 2:
+			return;
+	}
+	*(int *)((char *)camcont_wp + 0x28) = DAT_05ccdb08;
+	*(float *)((char *)camcont_wp + 0x18) = DAT_05ccdbb4;
+	*(float *)((char *)camcont_wp + 0x1c) = DAT_05ccdbb8;
+	*(float *)((char *)camcont_wp + 0x20) = DAT_05ccdbbc;
+	CCSI_CalcTargetPos(DAT_05ccdb30, (struct NJS_POINT3 *)((char *)camcont_wp + 0xc));
 }
 
 // STUB: SADX 0x00563230
@@ -468,9 +510,51 @@ void FUN_00566760(struct _OBJ_CAMERAPARAM *param_1)
 	cameraDebugMake(param_1, local_cg, local_8g);
 }
 
-// STUB: SADX 0x00566790
+// FUNCTION: SADX 0x00566790
 void cameraDebugMake(struct _OBJ_CAMERAPARAM *pParam, struct NJS_POINT3 *_pos, struct NJS_POINT3 *_tgt)
 {
+	short local_ci;
+	short local_10m;
+	short local_14;
+	short local_8g;
+	*(float *)((char *)camcont_wp + 0x18) = _tgt->x;
+	*(float *)((char *)camcont_wp + 0x1c) = _tgt->y;
+	*(float *)((char *)camcont_wp + 0x20) = _tgt->z;
+	*(int *)((char *)camcont_wp + 0x2c) = 0;
+	if ((DAT_05b932e8[1].on & 8) != 0)
+	{
+		local_ci = (short)(DAT_05b93268->x1 << 8);
+		local_10m = (short)(DAT_05b93268->y1 << 8);
+		if (local_ci > -5000 && local_ci < 0x1388)
+		{
+			local_ci = 0;
+		}
+		if (local_10m > -5000 && local_10m < 0x1388)
+		{
+			local_10m = 0;
+		}
+		local_14 = (short)(((unsigned short)DAT_05b93268->r << 8) - 0x8000);
+		local_8g = (short)(((unsigned short)DAT_05b93268->l << 8) - 0x8000);
+		*(int *)((char *)camcont_wp + 0x28) += (int)local_ci / 64;
+		*(int *)((char *)camcont_wp + 0x24) += (int)local_10m / 64;
+		if ((DAT_05b932e8[1].on & 0x20000) != 0)
+		{
+			*(float *)((char *)camcont_wp + 8) += 2.0;
+		}
+		else
+		{
+			if ((DAT_05b932e8[1].on & 0x10000) != 0)
+			{
+				*(float *)((char *)camcont_wp + 8) -= 2.0;
+			}
+		}
+	}
+	if (*(float *)((char *)camcont_wp + 8) < 5.0)
+	{
+		*(float *)((char *)camcont_wp + 8) = 5.0f;
+	}
+	CamcontSetCameraTGTOFST(DAT_05b42a7c);
+	*_pos = DAT_05b42a7c->pos;
 }
 
 // FUNCTION: SADX 0x00567060
@@ -573,9 +657,34 @@ void sonicCameraLR(void)
 {
 }
 
-// STUB: SADX 0x00567bd0
+// FUNCTION: SADX 0x00567bd0
 void sonicCameraAvoidObstacle()
 {
+	struct NJS_POINT3 _spdv0;
+	struct NJS_POINT3 _spdv1;
+	struct NJS_POINT3 _escape_pos;
+
+	if (DAT_05ccdbd8 == 0 && DAT_05ccdafc != 0)
+	{
+		_escape_pos.x = *(float *)((char *)camcont_wp + 0x0c);
+		_escape_pos.y = *(float *)((char *)camcont_wp + 0x10);
+		_escape_pos.z = *(float *)((char *)camcont_wp + 0x14);
+		_spdv0.x = DAT_05baf368[0]->pos.x - *(float *)((char *)camcont_wp + 0x0c);
+		_spdv0.y = DAT_05baf368[0]->pos.y + *(float *)((char *)GetPlayerWorkPointer(0) + 0x118) - *(float *)((char *)camcont_wp + 0x10);
+		_spdv0.z = DAT_05baf368[0]->pos.z - *(float *)((char *)camcont_wp + 0x14);
+		_spdv1 = _spdv0;
+		if (MSetPositionNW(&_escape_pos, &_spdv1, 0, 4.0f) != 0)
+		{
+			if ((SubAngle((long)(atan2(_spdv0.z, _spdv0.x) * 65536.0 / 6.283184), (long)(atan2(_spdv1.z, _spdv1.x) * 65536.0 / 6.283184)) & 0xffff) > 0x8000)
+			{
+				DAT_05ccdbd8 = -0x1e;
+			}
+			else
+			{
+				DAT_05ccdbd8 = 0x1e;
+			}
+		}
+	}
 }
 
 // FUNCTION: SADX 0x00567d30
@@ -693,9 +802,12 @@ void atpAdjustCameraPointWithDistance(struct taskwk *twp, struct taskwk *ptwp, s
 	twp->pos.z = (local_20g.z - local_2c.z) * DAT_05ccdb04 + local_2c.z + DAT_05baf368[0]->pos.z;
 }
 
-// STUB: SADX 0x00569c90
+// FUNCTION: SADX 0x00569c90
 void atpAdjustCameraTarget(struct taskwk *twp, struct taskwk *ptwp, struct _OBJ_ADJUSTPARAM *adjwp)
 {
+	twp->ang.x = AdjustAngle(ptwp->ang.x, twp->ang.x, (long)((float)DiffAngle(twp->ang.x, ptwp->ang.x) * DAT_05ccdb04));
+	twp->ang.y = AdjustAngle(ptwp->ang.y, twp->ang.y, (long)((float)DiffAngle(twp->ang.y, ptwp->ang.y) * DAT_05ccdb04));
+	twp->ang.z = AdjustAngle(ptwp->ang.z, twp->ang.z, (long)((float)DiffAngle(twp->ang.z, ptwp->ang.z) * DAT_05ccdb04));
 }
 
 // FUNCTION: SADX 0x00569d70

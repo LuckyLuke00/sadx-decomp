@@ -1918,11 +1918,6 @@ void Move_Rocket(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005b9310
-void GetRocketBarOfs(struct taskwk *, struct NJS_ACTION *, float, struct NJS_POINT3 *)
-{
-}
-
 // STUB: SADX 0x005b9e40
 void E102AddSecTotalNew(struct task *)
 {
@@ -3779,6 +3774,11 @@ void ObjShelterAqusuimen(struct task *tp)
 
 // STUB: SADX 0x008bc650
 void displayToge(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x008c24c0
+void DrawWideLine3D(struct NJS_POINT3 *pPos, struct Angle3 *pAng, float *pWidthTable, union NJS_COLOR *pColor, float fLength)
 {
 }
 
