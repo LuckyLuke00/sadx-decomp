@@ -48997,9 +48997,9 @@
   {
    "address": "0x006edf50",
    "name": "Bg_Chaos4",
-   "accuracy": 0.045454545454545456,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103614,5 +103614,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0d2b3cd30fe3ad7bc75cb76f81f318e99d5ef863916e2190e2f3a8d326d2c8d9"
+ "inputs_sha256": "25da10e46b1c047e5d70ef7dc8f2e2e9bf0d36c287b700d9899d2e8459ca7c38"
 }
