@@ -1406,6 +1406,12 @@ struct NJS_TEXLIST texlist_ring;
 // GLOBAL: SADX 0x02639c38
 struct NJS_TEXANIM anim_ring[1];
 
+// GLOBAL: SADX 0x0263c890
+struct NJS_TEXLIST texlist_MRaceDisp[1];
+
+// GLOBAL: SADX 0x0263c898
+struct NJS_TEXANIM TAT_m_2P_Disp[12];
+
 // GLOBAL: SADX 0x0263c988
 const struct sMRacePath *PPT_MRaceEachStage[10] = {};
 
@@ -5627,6 +5633,9 @@ int DAT_05b3ea78[15];
 // GLOBAL: SADX 0x05b3eab4
 struct task *DAT_05b3eab4;
 
+// GLOBAL: SADX 0x05b3eab8
+float DAT_05b3eab8[16];
+
 // GLOBAL: SADX 0x05b3ebb8
 short DAT_05b3ebb8;
 
@@ -5995,6 +6004,9 @@ int DAT_05b93248;
 
 // GLOBAL: SADX 0x05b93264
 unsigned int *DAT_05b93264;
+
+// GLOBAL: SADX 0x05b93268
+struct PDS_PERIPHERAL *DAT_05b93268;
 
 // GLOBAL: SADX 0x05b9326c
 void *DAT_05b9326c;
@@ -6833,6 +6845,9 @@ struct task *DAT_05ccdac8;
 // GLOBAL: SADX 0x05ccdacc
 struct task *DAT_05ccdacc;
 
+// GLOBAL: SADX 0x05ccdad0
+char DAT_05ccdad0;
+
 // GLOBAL: SADX 0x05ccdad1
 char DAT_05ccdad1;
 
@@ -6848,8 +6863,14 @@ float DAT_05ccdadc;
 // GLOBAL: SADX 0x05ccdaec
 float DAT_05ccdaec;
 
+// GLOBAL: SADX 0x05ccdafc
+int DAT_05ccdafc;
+
 // GLOBAL: SADX 0x05ccdb04
 float DAT_05ccdb04;
+
+// GLOBAL: SADX 0x05ccdb08
+int DAT_05ccdb08;
 
 // GLOBAL: SADX 0x05ccdb14
 float DAT_05ccdb14;
@@ -6860,6 +6881,9 @@ struct NJS_POINT3 DAT_05ccdb18;
 // GLOBAL: SADX 0x05ccdb24
 float DAT_05ccdb24;
 
+// GLOBAL: SADX 0x05ccdb30
+float DAT_05ccdb30;
+
 // GLOBAL: SADX 0x05ccdb34
 float DAT_05ccdb34;
 
@@ -6868,6 +6892,9 @@ float DAT_05ccdb38;
 
 // GLOBAL: SADX 0x05ccdb3c
 float DAT_05ccdb3c;
+
+// GLOBAL: SADX 0x05ccdb40
+float DAT_05ccdb40;
 
 // GLOBAL: SADX 0x05ccdb44
 struct NJS_POINT3 DAT_05ccdb44;
@@ -6884,6 +6911,9 @@ int DAT_05ccdb64;
 // GLOBAL: SADX 0x05ccdb68
 float DAT_05ccdb68;
 
+// GLOBAL: SADX 0x05ccdb6c
+int DAT_05ccdb6c;
+
 // GLOBAL: SADX 0x05ccdb7c
 struct Angle3 DAT_05ccdb7c;
 
@@ -6896,11 +6926,26 @@ long DAT_05ccdb9c;
 // GLOBAL: SADX 0x05ccdba0
 long DAT_05ccdba0;
 
+// GLOBAL: SADX 0x05ccdbb4
+float DAT_05ccdbb4;
+
+// GLOBAL: SADX 0x05ccdbb8
+float DAT_05ccdbb8;
+
+// GLOBAL: SADX 0x05ccdbbc
+float DAT_05ccdbbc;
+
 // GLOBAL: SADX 0x05ccdbc0
 struct NJS_POINT3 *DAT_05ccdbc0;
 
+// GLOBAL: SADX 0x05ccdbcc
+int DAT_05ccdbcc;
+
 // GLOBAL: SADX 0x05ccdbd0
 int DAT_05ccdbd0;
+
+// GLOBAL: SADX 0x05ccdbd8
+int DAT_05ccdbd8;
 
 // GLOBAL: SADX 0x05ccdbdc
 struct taskwk *DAT_05ccdbdc;
@@ -6934,6 +6979,9 @@ int DAT_05ccdc04;
 
 // GLOBAL: SADX 0x05ccdc08
 float DAT_05ccdc08;
+
+// GLOBAL: SADX 0x05ccdc0c
+float DAT_05ccdc0c;
 
 // GLOBAL: SADX 0x05ccdc10
 int DAT_05ccdc10;
@@ -7615,6 +7663,24 @@ char DAT_05edbd80[0x24];
 
 // GLOBAL: SADX 0x05edbdac
 int DAT_05edbdac;
+
+// GLOBAL: SADX 0x05edbdb0
+float DAT_05edbdb0;
+
+// GLOBAL: SADX 0x05edbdb4
+float DAT_05edbdb4;
+
+// GLOBAL: SADX 0x05edbdbc
+float DAT_05edbdbc;
+
+// GLOBAL: SADX 0x05edbdc0
+float DAT_05edbdc0;
+
+// GLOBAL: SADX 0x05edbdc8
+int DAT_05edbdc8;
+
+// GLOBAL: SADX 0x05edbdcc
+int DAT_05edbdcc;
 
 // GLOBAL: SADX 0x05edbdd0
 int DAT_05edbdd0;

@@ -31,9 +31,19 @@ void execDeathCrushLight(struct task *pTask)
 	dispCrushLight(pTask);
 }
 
-// STUB: SADX 0x008c2420
+// FUNCTION: SADX 0x008c2420
 void dispCrushLight(struct task *pTask)
 {
+	struct anywk *local_8g;
+	float fWidth[2];
+	local_8g = pTask->awp;
+	fWidth[0] = local_8g->work.f[3] * *(float *)((char *)local_8g + 0x44);
+	fWidth[1] = local_8g->work.f[3] * *(float *)((char *)local_8g + 0x48);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 0xa);
+	DrawWideLine3D((struct NJS_POINT3 *)local_8g->work.ptr[6], (struct Angle3 *)((char *)local_8g + 0x1c), fWidth, (union NJS_COLOR *)((char *)local_8g + 0x4c), *(float *)((char *)local_8g + 0x54) * local_8g->work.f[4]);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // STUB: SADX 0x008c2830

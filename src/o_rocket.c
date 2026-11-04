@@ -1,4 +1,5 @@
 #include "decls.h"
+extern float DAT_05b3eab8[16];
 extern float DAT_05b3ebe0;
 extern float DAT_05b3ebe4;
 extern float DAT_05b3ebe8;
@@ -288,6 +289,29 @@ void ObjectRocketV_Fade(struct task *tp)
 // STUB: SADX 0x005b9060
 void ObjectRocketV_Dead(struct task *tp)
 {
+}
+
+// FUNCTION: SADX 0x005b9310
+void GetRocketBarOfs(struct taskwk *twp, struct NJS_ACTION *anm, float fnum, struct NJS_POINT3 *vec_ans)
+{
+	struct Angle3 *local_8;
+
+	local_8 = (struct Angle3 *)&DAT_05b3eab8;
+	DAT_05b3ec0c = 0.0f;
+	DAT_05b3ec10 = 0.0f;
+	DAT_05b3ec14 = 0.0f;
+	njPushMatrix(&_nj_unit_matrix_);
+	if (twp->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)twp->ang.y);
+	}
+	if (twp->ang.z != 0)
+	{
+		njRotateZ(0, (unsigned short)twp->ang.z);
+	}
+	CalcMMMatrix(0, anm, fnum, 3, (float (*)[16])local_8);
+	njCalcPoint((NJS_MATRIX (*))local_8, (struct NJS_POINT3 *)&DAT_05b3ec0c, vec_ans);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005b93c0

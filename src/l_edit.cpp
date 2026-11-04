@@ -85,17 +85,17 @@ void DialogJimakuProcYN(struct DDlgType *ddltype)
 	}
 }
 
-// STUB: SADX 0x00502c60
+// FUNCTION: SADX 0x00502c60
 void DialogJimakuProcYNS(struct DDlgType *ddltype)
 {
 	DialogJimakuInit();
 	switch (ddltype->Csr)
 	{
 	case 0:
-		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbd0)[DAT_05b3ebbc]);
+		DialogJimakuPut(((char **)DAT_025ddbd0)[DAT_05b3ebbc]);
 		break;
 	case 1:
-		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbe4)[DAT_05b3ebbc]);
+		DialogJimakuPut(((char **)DAT_025ddbe4)[DAT_05b3ebbc]);
 		break;
 	case 2:
 		DialogJimakuPut(DAT_025ddb94[DAT_05b3ebbc]);

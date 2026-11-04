@@ -1,4 +1,10 @@
 #include "decls.h"
+extern float DAT_05edbdbc;
+extern float DAT_05edbdc0;
+extern float DAT_05edbdb0;
+extern float DAT_05edbdb4;
+extern int DAT_05edbdc8;
+extern int DAT_05edbdcc;
 int FUN_005ab4a0();
 void FUN_005ab800(unsigned long param_1);
 void InitSonic2PControl(struct task *tp);
@@ -449,7 +455,40 @@ void MRaceDispResult(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005ab930
+// FUNCTION: SADX 0x005ab930
 void DrawResult(struct task *tp)
 {
+	struct taskwk *local_10s;
+	float local_8g;
+	int local_14h;
+	int local_cj;
+	int local_18;
+	float local_1c;
+	local_10s = tp->twp;
+	local_8g = local_10s->value.f;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	___njSetTexture(texlist_MRaceDisp);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	DAT_05edbdc8 = (int)texlist_MRaceDisp;
+	DAT_05edbdcc = (int)TAT_m_2P_Disp;
+	DAT_05edbdbc = local_8g * ScreenRaitoX;
+	DAT_05edbdc0 = local_8g * ScreenRaitoY;
+	DAT_05edbdb0 = ScreenRaitoX * 320.0;
+	DAT_05edbdb4 = ScreenRaitoY * 240.0;
+	local_14h = (int)local_10s->timer.f;
+	for (local_cj = 0; local_cj < 4; local_cj++)
+	{
+		local_18 = local_14h;
+		local_1c = -1.6f;
+		if (local_1c >= -3.0f && local_1c < 12048.0f)
+		{
+			local_1c = local_1c + 22048.0f;
+		}
+		late_DrawSprite2D((struct NJS_SPRITE *)&DAT_05edbdb0, local_18, local_1c, 0x20, 4);
+		local_14h = local_14h + 1;
+	}
 }

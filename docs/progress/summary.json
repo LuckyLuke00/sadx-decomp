@@ -22646,7 +22646,7 @@
    "name": "DialogJimakuProcYNS",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26388,9 +26388,9 @@
   {
    "address": "0x00563130",
    "name": "CameraChaosStageInit",
-   "accuracy": 0.12698412698412698,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26580,9 +26580,9 @@
   {
    "address": "0x00566790",
    "name": "cameraDebugMake",
-   "accuracy": 0.06779661016949153,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26668,9 +26668,9 @@
   {
    "address": "0x00567bd0",
    "name": "sonicCameraAvoidObstacle",
-   "accuracy": 0.08163265306122448,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26788,9 +26788,9 @@
   {
    "address": "0x00569c90",
    "name": "atpAdjustCameraTarget",
-   "accuracy": 0.10126582278481013,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -32941,9 +32941,9 @@
   {
    "address": "0x005ab930",
    "name": "DrawResult",
-   "accuracy": 0.09302325581395349,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34581,9 +34581,9 @@
   {
    "address": "0x005b9310",
    "name": "GetRocketBarOfs",
-   "accuracy": 0.13559322033898305,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -41661,17 +41661,17 @@
   {
    "address": "0x0061a280",
    "name": "FUN_0061a280",
-   "accuracy": 0.08,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0061a3c0",
    "name": "FUN_0061a3c0",
-   "accuracy": 0.08080808080808081,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -69525,7 +69525,15 @@
   {
    "address": "0x008c2420",
    "name": "dispCrushLight",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008c24c0",
+   "name": "DrawWideLine3D",
+   "accuracy": 0.041666666666666664,
    "effective": false,
    "stub": true,
    "library": false
@@ -94097,6 +94105,20 @@
    "library": false
   },
   {
+   "address": "0x0263c890",
+   "name": "texlist_MRaceDisp",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0263c898",
+   "name": "TAT_m_2P_Disp",
+   "size": 240,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0263c988",
    "name": "PPT_MRaceEachStage",
    "size": 40,
@@ -103584,5 +103606,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4b1db1a59f63eaa1c6bdf5c81e1aa7e1a4129b7f46f5eaa61a56bb52c682e7a0"
+ "inputs_sha256": "7a0d9c437618ace286a68e57f2e24d0cd4ac821ea7173ca0f56462c77b7e5043"
 }
