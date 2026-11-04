@@ -2162,6 +2162,7 @@ void SetWireModel(struct WIREMODEL *wmdl);
 void FUN_005d51b0(void *param_1);
 void ADC_DrumCanIni(struct task *tp);
 void ADC_Displayer(struct task *tp);
+struct amyhndlstr *AmyHndlGetInfoStrP();
 void AmyBirdInit(struct task *tp);
 void AmyBirdDisplay(struct task *tp);
 void AmyBirdExe(struct task *tp);

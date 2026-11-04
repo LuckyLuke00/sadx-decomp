@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1432" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,191 of 16,485 game functions done (37.55%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,194 of 16,485 game functions done (37.57%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="594.8,1187.5 601.2,1187.5 602.9,1189 604,1190.6 598,1197.5 592,1190.6 593.1,1189" fill="#4e32f3"/>
 <polygon points="594.8,1187.5 601.2,1187.5 602.9,1189 604,1190.6 592,1190.6 593.1,1189" fill="#ffffff" fill-opacity="0.4"/>
@@ -147,8 +147,8 @@
 <rect x="14" y="49" width="6" height="6" fill="#ffd700"><title>0x005d87d0 KnuEffectHormTubeReset: 100%</title></rect>
 <rect x="21" y="49" width="6" height="6" fill="#ffd700"><title>0x005d87e0 FUN_005d87e0: 100%</title></rect>
 </g>
-<rect x="809" y="1205" width="101" height="83" rx="3" fill="#21262d" stroke="#30363d"><title>Amy: 34 of 92 functions done</title></rect>
-<text x="812" y="1219" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Amy <tspan font-weight="400" fill="#8b949e">6%</tspan></text>
+<rect x="809" y="1205" width="101" height="83" rx="3" fill="#21262d" stroke="#30363d"><title>Amy: 37 of 92 functions done</title></rect>
+<text x="812" y="1219" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Amy <tspan font-weight="400" fill="#8b949e">8%</tspan></text>
 <g transform="translate(812,1223)">
 <rect y="0" width="91" height="49" fill="url(#todo)"/>
 <rect y="49" width="7" height="7" fill="url(#todo)"/>
@@ -156,8 +156,11 @@
 <rect x="49" y="0" width="6" height="6" fill="#ffd700"><title>0x0051b7b0 FUN_0051b7b0: 100%</title></rect>
 <rect x="56" y="0" width="6" height="6" fill="#ffd700"><title>0x0051b800 FUN_0051b800: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x0051c960 FUN_0051c960: 100%</title></rect>
+<rect x="28" y="7" width="6" height="6" fill="#ffd700"><title>0x0051c9d0 AmyCheckStartHandle: 100%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x0051ca90 FUN_0051ca90: 100%</title></rect>
+<rect x="56" y="7" width="6" height="6" fill="#ffd700"><title>0x0051ce40 AmyBalanceCheckBadStatus: 100%</title></rect>
 <rect x="77" y="7" width="6" height="6" fill="#ffd700"><title>0x0051e350 FUN_0051e350: 100%</title></rect>
+<rect x="0" y="14" width="6" height="6" fill="#ffd700"><title>0x0051e530 AmyCheckPickObject: 100%</title></rect>
 <rect x="42" y="14" width="6" height="6" fill="#ffd700"><title>0x0051f0a0 AmyCheckBeInTheAir: 100%</title></rect>
 <rect x="49" y="14" width="6" height="6" fill="#ffd700"><title>0x0051f150 AmyCheckStop: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#ffd700"><title>0x0051f1f0 FUN_0051f1f0: 100%</title></rect>

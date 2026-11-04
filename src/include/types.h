@@ -87,6 +87,7 @@ struct AlrTimerUnit;
 struct AlrVms;
 struct AlrVmsTime;
 struct AlrZoneUnit;
+struct amyhndlstr;
 struct Angle3;
 struct anywk;
 struct AvaStgActPrmT;
