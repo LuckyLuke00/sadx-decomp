@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1436" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,202 of 16,485 game functions done (37.62%), accuracy 99.89%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,204 of 16,485 game functions done (37.63%), accuracy 99.89%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="592.8,1191.5 599.2,1191.5 600.9,1193 602,1194.6 596,1201.5 590,1194.6 591.1,1193" fill="#4e32f3"/>
 <polygon points="592.8,1191.5 599.2,1191.5 600.9,1193 602,1194.6 590,1194.6 591.1,1193" fill="#ffffff" fill-opacity="0.4"/>
@@ -75,7 +75,7 @@
 <rect x="0" y="49" width="6" height="6" fill="#ffd700"><title>0x005b2080 SonicIceDisplay: 100%</title></rect>
 <rect x="7" y="49" width="6" height="6" fill="#ffd700"><title>0x005b2380 SonicIcePieceExecute: 100%</title></rect>
 </g>
-<rect x="910" y="1209" width="70" height="108" rx="3" fill="#21262d" stroke="#30363d"><title>Tails: 24 of 75 functions done</title></rect>
+<rect x="910" y="1209" width="70" height="108" rx="3" fill="#21262d" stroke="#30363d"><title>Tails: 26 of 75 functions done</title></rect>
 <text x="913" y="1223" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Tails</text>
 <text x="913" y="1238" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">3%</tspan></text>
 <g transform="translate(913,1242)">
@@ -84,11 +84,13 @@
 <rect x="7" y="7" width="6" height="6" fill="#ffd700"><title>0x005360c0 Board_AddScore: 100%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x005360f0 FUN_005360f0: 100%</title></rect>
 <rect x="28" y="7" width="6" height="6" fill="#ffd700"><title>0x00536230 MilesDestruct: 100%</title></rect>
+<rect x="28" y="14" width="6" height="6" fill="#ffd700"><title>0x00538070 MilesSBoardSlideSECall: 100%</title></rect>
 <rect x="49" y="14" width="6" height="6" fill="#ffd700"><title>0x00538480 FUN_00538480: 100%</title></rect>
 <rect x="14" y="21" width="6" height="6" fill="#ffd700"><title>0x0053a070 MilesCheckInputInSnowBoard: 100%</title></rect>
 <rect x="21" y="21" width="6" height="6" fill="#ffd700"><title>0x0053a180 MilesCheckBeInTheAir: 100%</title></rect>
 <rect x="28" y="21" width="6" height="6" fill="#ffd700"><title>0x0053a220 FUN_0053a220: 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#ffd700"><title>0x0053a2c0 FUN_0053a2c0: 100%</title></rect>
+<rect x="49" y="21" width="6" height="6" fill="#ffd700"><title>0x0053a470 MilesCheckPickObject: 100%</title></rect>
 <rect x="28" y="28" width="6" height="6" fill="#ffd700"><title>0x0053b090 MilesHoldOnPillar: 100%</title></rect>
 <rect x="42" y="28" width="6" height="6" fill="#ffd700"><title>0x0053b210 MilesCheckStop: 100%</title></rect>
 <rect x="14" y="35" width="6" height="6" fill="#ffd700"><title>0x0053ba40 FUN_0053ba40: 100%</title></rect>

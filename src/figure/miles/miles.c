@@ -1,4 +1,5 @@
 #include "decls.h"
+struct playerwk;
 struct taskwk;
 struct NJS_POINT3;
 	struct NJS_POINT3 b;
@@ -62,9 +63,32 @@ void MilesChangeRunningMotion(struct taskwk *twp, struct motionwk2 *mwp, struct 
 {
 }
 
-// STUB: SADX 0x00538070
+// FUNCTION: SADX 0x00538070
 void MilesSBoardSlideSECall(struct taskwk *twp, struct playerwk *pwp)
 {
+	if (pwp->spd.x < *(float *)((char *)pwp + 0xc0))
+		return;
+	int local_8;
+	if ((((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) == 0x800)
+	{
+		if (pwp->attr == 4)
+		{
+			local_8 = 0xe1;
+		}
+		else if (pwp->attr == 8)
+		{
+			local_8 = 0xe3;
+		}
+		else
+		{
+			local_8 = 0xe2;
+		}
+	}
+	else
+	{
+		local_8 = 0x2d9;
+	}
+	PSetLoopSECallForTheMode((long)local_8, (unsigned char)twp->counter.b[0], (short)(signed char)twp->mode);
 }
 
 // STUB: SADX 0x00538110
@@ -226,10 +250,36 @@ long MilesCheckHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	return (long)0;
 }
 
-// STUB: SADX 0x0053a470
+// FUNCTION: SADX 0x0053a470
 long MilesCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	long local_8;
+
+	PAdjustHoldingPosition(twp, mwp, pwp);
+	if (pwp->mj.nframe >= 12.0f)
+	{
+		local_8 = PCheckHoldObject(twp);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(twp, mwp))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					twp->mode = 0x17;
+					FUN_0053e4f0(twp, 0x4d8, 0);
+					pwp->htp = twp->cwp->hit_cwp->mytask;
+					pwp->htp->twp->flag = pwp->htp->twp->flag | 0x1000;
+					twp->flag = twp->flag | 0x800;
+					twp->flag = twp->flag & ~0x8;
+					return 1;
+				}
+				break;
+			}
+		}
+		FUN_005360f0(twp, pwp);
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0053ac60
