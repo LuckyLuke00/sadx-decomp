@@ -24036,9 +24036,9 @@
   {
    "address": "0x00538070",
    "name": "MilesSBoardSlideSECall",
-   "accuracy": 0.16,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -24108,9 +24108,9 @@
   {
    "address": "0x0053a470",
    "name": "MilesCheckPickObject",
-   "accuracy": 0.11494252873563218,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103614,5 +103614,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "202fd4fdc58c785f1adcd1e588422191500cd755646fa904e880f448cad86aad"
+ "inputs_sha256": "0d2b3cd30fe3ad7bc75cb76f81f318e99d5ef863916e2190e2f3a8d326d2c8d9"
 }
