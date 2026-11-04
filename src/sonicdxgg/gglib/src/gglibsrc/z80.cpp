@@ -4193,14 +4193,24 @@ void srl_e()
 {
 }
 
-// STUB: SADX 0x00914cf0
+// FUNCTION: SADX 0x00914cf0
 void srl_h()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = ((unsigned char)var1[0xd] & 1) & 0xff;
+	var1[0xd] = (unsigned char)var1[0xd] >> 1;
+	var1[0] = (var2 != 0) | DAT_060ee5c0[(unsigned char)var1[0xd]];
+	*(int *)(var1 + 0x50) = 8;
 }
 
-// STUB: SADX 0x00914d20
+// FUNCTION: SADX 0x00914d20
 void srl_l()
 {
+	char *var1 = DAT_060ee5b8;
+	int var2 = ((unsigned char)var1[0xc] & 1) & 0xff;
+	var1[0xc] = (unsigned char)var1[0xc] >> 1;
+	var1[0] = (var2 != 0) | DAT_060ee5c0[(unsigned char)var1[0xc]];
+	*(int *)(var1 + 0x50) = 8;
 }
 
 // STUB: SADX 0x00914d50
