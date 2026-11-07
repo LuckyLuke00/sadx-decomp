@@ -13,6 +13,8 @@ import io
 import json
 import os
 import re
+import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -984,8 +986,8 @@ def check_units() -> list[str]:
     facts.py, of the trick finder in tricks.py, of the site pages in pages.py, of the data scores in scoring.py, of
     the split in link.py, of the recipe checks in recipes.py, of the type search in retype.py, of the rewrites in
     permute.py, of the stack argument audit in stackargs.py, of the fold rule in folds.py, of the array-end names
-    in endrefs.py, of the fold test in groups.py, of the names in dossier.py and of the variable pairs in varfiles.py,
-    one module each."""
+    in endrefs.py, of the fold test in groups.py, of the names in dossier.py, of the variable pairs in varfiles.py
+    and of the evidence modules in tools/evidence, one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
@@ -1012,7 +1014,13 @@ def check_units() -> list[str]:
     modules = (ctexttests, bytetests, casttests, decltests, dossiertests, benchtests, solvetests, facttests, tricktests,
                sitetests, progresstests, linktests, recipetests, retypetests, permutetests, stackargtests, foldtests,
                endrefstests, groupstests, varfilestests, immediatestests, scopestests)
-    return [failure for module in modules for failure in module.run()]
+    failures = [failure for module in modules for failure in module.run()]
+    # each evidence test runs on its own, as docs/EVIDENCE.md says: they put tools/evidence first on sys.path
+    for test in sorted((ROOT / "tools" / "evidence").glob("*tests.py")):
+        result = subprocess.run([sys.executable, "-I", str(test)], capture_output=True, text=True)
+        if result.returncode:
+            failures += [f"{test.name}: {line}" for line in (result.stdout + result.stderr).splitlines()]
+    return failures
 
 
 def without_stubs(summary: dict) -> dict:

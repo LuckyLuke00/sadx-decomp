@@ -56,6 +56,8 @@ To run all of them:
 for test in tools/evidence/*tests.py; do .venv/Scripts/python.exe -I "$test" || echo "FAILED: $test"; done
 ```
 
+The self-test runs them too, so `check.py ci` fails when one fails.
+
 The tests use made-up names. They write only to temp folders, and they need no `evidence/` folder and no `cl.exe`. `audittests.py` and `pipelinetests.py` need git, because they make a temp repository. `pdbimporttests.py` builds its program databases from bytes. It also reads `build/SELFTEST.pdb` when the self-test target was built, and says that it skips that check when not.
 
 ## Files
