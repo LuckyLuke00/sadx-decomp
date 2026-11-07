@@ -21,6 +21,18 @@ void SetEventWork(struct taskwk *twp)
 	}
 }
 
+// FUNCTION: SADX 0x005b2480
+void FUN_005b2480(int param_1)
+{
+	if (*(struct eventwk **)(param_1 + 0x3c) != 0)
+	{
+		FreeEventAction((struct taskwk *)param_1);
+		FreeEventPath((struct taskwk *)param_1);
+		Free(*(void **)(param_1 + 0x3c));
+		*(void **)(param_1 + 0x3c) = 0;
+	}
+}
+
 // FUNCTION: SADX 0x005b24c0
 void FreeEventAction(struct taskwk *twp)
 {
@@ -87,7 +99,7 @@ void EntryEventPath(struct taskwk *twp, struct EPATHTAG *path, float speed, int 
 	}
 	local_10 = (struct EVENT_PATH_LIST *)CAlloc(1, 0x10);
 	*local_8g = local_10;
-	*(unsigned char *)((char *)local_10 + 0) = (unsigned char)mode;
+	*(unsigned char *)local_10 = (unsigned char)mode;
 	*(struct EPATHTAG **)((char *)local_10 + 4) = path;
 	*(float *)((char *)local_10 + 8) = speed;
 }
@@ -115,6 +127,23 @@ void ConvRotXYZ2YXZ(struct Angle3 *ang)
 {
 }
 
+// FUNCTION: SADX 0x005b30b0
+void FUN_005b30b0(struct taskwk *param_1, char *param_2)
+{
+	char *local_8;
+
+	local_8 = (char *)param_1->ewp + 0x5c;
+	*(char **)(local_8 + 8) = param_2;
+	if (*(short *)(local_8 + 2) == 0)
+	{
+		*(short *)(local_8 + 4) = 0;
+		*(short *)(local_8 + 2) = 1;
+		*(char *)local_8 = 0;
+		*(char *)(local_8 + 1) = 0;
+	}
+	return;
+}
+
 // FUNCTION: SADX 0x005b3100
 void SetEventFace(struct taskwk *twp, int no)
 {
@@ -134,7 +163,7 @@ void SetEventFace(struct taskwk *twp, int no)
 		if (no == 0 || local_8g == 0 || local_8g->nbFrame == 0)
 		{
 			local_10m = rand();
-			local_14 = (float)((double)local_10m / 32768.0);
+			local_14 = (float)(local_10m / 32768.0);
 			if (local_14 < 0.75)
 			{
 				local_8g = faceTbl[0];

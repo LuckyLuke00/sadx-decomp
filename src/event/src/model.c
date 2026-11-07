@@ -1,5 +1,12 @@
 #include "decls.h"
+extern int DAT_060cbfdc[1];
 void FUN_007d6940(struct task *param_1);
+
+// FUNCTION: SADX 0x007d1ce0
+int FUN_007d1ce0(int param_1)
+{
+	return DAT_060cbfdc[param_1];
+}
 
 // FUNCTION: SADX 0x007d1cf0
 void FUN_007d1cf0(int param_1)

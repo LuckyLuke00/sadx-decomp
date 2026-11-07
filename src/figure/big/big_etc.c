@@ -1,16 +1,17 @@
 #include "decls.h"
+struct NJS_POINT3;
+extern struct obj DAT_05cd29bc[4];
+void FUN_005e7800(int param_1);
 struct _SC_NUMBERS
 {
-	char c0;
-	char c1;
-	short c2;
-	int c3;
-	int c4;
-	float c5;
-	float c6;
-	float c7;
-	float c8;
-	int c9;
+	unsigned char type;
+	unsigned char attr;
+	short rot;
+	unsigned long max;
+	unsigned long value;
+	NJS_POINT3 pos;
+	float scl;
+	unsigned long color;
 };
 struct taskwk;
 extern "C" int rand(void);
@@ -149,9 +150,66 @@ void exitFishingLure(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0058d290
+// FUNCTION: SADX 0x0058d290
 void dispFishingLureSwitch(struct task *tp)
 {
+	struct NJS_POINT3 local_20g;
+	struct NJS_POINT3 local_14m;
+	struct taskwk *local_28;
+	struct taskwk *local_24;
+
+	local_28 = tp->twp;
+	local_24 = DAT_05baf368[0];
+	if (DAT_05cd2980 == 0)
+	{
+		return;
+	}
+	if (GetPlayerTaskPointer(0)->exec != BigTheCat)
+	{
+		return;
+	}
+	FUN_005b5aa0(&local_28->pos, 0xffff0000);
+	CalcLinePos(&local_14m);
+	CalcRodPos(tp, &local_20g);
+	___njSetTexture(&texlist_fishing);
+	FUN_005914c0();
+	if ((DAT_05cd296c & 0x800) == 0)
+	{
+		njPushMatrix(0);
+		FUN_0067d830(0, local_28->pos.x, local_28->pos.y, local_28->pos.z);
+		if (-local_28->ang.y != 0)
+		{
+			njRotateY(0, (unsigned short)(-local_28->ang.y));
+		}
+		if (local_28->ang.x != 0)
+		{
+			njRotateX(0, (unsigned short)local_28->ang.x);
+		}
+		if (local_28->ang.z != 0)
+		{
+			njRotateZ(0, (unsigned short)local_28->ang.z);
+		}
+		if (local_28->mode < 3)
+		{
+			FUN_0067d830(0, 0.6f, -0.3f, 0.0f);
+		}
+		FUN_0067d2d0(0, 0.3f, 0.3f, 0.3f);
+		___dsDrawObject(((struct obj **)DAT_05cd29bc)[getLureKind()]);
+		njPopMatrix(1);
+	}
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (local_28->mode >= 3)
+	{
+		FUN_005e7800((int)tp->awp->work.ptr[2]);
+	}
+	if (tp->twp->mode >= 3)
+	{
+		FUN_0058d680((int)tp);
+		dispDistanceLure((float *)&local_24->pos, (float *)&local_14m);
+	}
 }
 
 // FUNCTION: SADX 0x0058d490
@@ -179,16 +237,16 @@ void dispDistanceNum(float dist)
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
 	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
-	num_str.c0 = 0x48;
-	num_str.c1 = 0x97;
-	num_str.c2 = 0;
-	num_str.c3 = 99;
-	num_str.c4 = (int)(dist / 10.0);
-	num_str.c5 = ScreenRaitoX * 640.0 - 64.0 - 35.0 + ScreenRaitoX * (-21.0);
-	num_str.c6 = ScreenRaitoY * 328.0 + ScreenRaitoY * 90.0;
-	num_str.c7 = 0.0f;
-	num_str.c8 = 1.0f * ScreenRaitoX;
-	num_str.c9 = -1;
+	num_str.type = 0x48;
+	num_str.attr = 0x97;
+	num_str.rot = 0;
+	num_str.max = 99;
+	num_str.value = (int)(dist / 10.0);
+	num_str.pos.x = ScreenRaitoX * 640.0 - 64.0 - 35.0 + ScreenRaitoX * (-21.0);
+	num_str.pos.y = ScreenRaitoY * 328.0 + ScreenRaitoY * 90.0;
+	num_str.pos.z = 0.0f;
+	num_str.scl = 1.0f * ScreenRaitoX;
+	num_str.color = -1;
 	FUN_0055de60(&num_str);
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
@@ -203,9 +261,100 @@ void FUN_0058d680(int param_1)
 	FUN_0058d6a0();
 }
 
-// STUB: SADX 0x0058dae0
+// FUNCTION: SADX 0x0058d6a0
+void FUN_0058d6a0()
+{
+	struct NJS_SPRITE local_28;
+	float local_2cg;
+
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	FUN_007d21b0(1);
+	if (DAT_05cd2980 == 0)
+	{
+		return;
+	}
+	local_28.tlist = &texlist_fishing;
+	local_28.tanim = reel_anim;
+	if (*(char *)(*(void **)((char *)DAT_05cd2980 + 0x20)) < 4 || *(char *)(*(void **)((char *)DAT_05cd2980 + 0x20)) > 6)
+	{
+		local_28.ang = 0;
+	}
+	else
+	{
+		local_28.ang = DAT_05cd29b4;
+	}
+	local_28.sx = 1.0f * ScreenRaitoX;
+	local_28.sy = 1.0f * ScreenRaitoY;
+	local_28.p.x = ScreenRaitoX * 640.0 - 64.0 - 35.0 + ScreenRaitoX * 16.0;
+	local_28.p.y = ScreenRaitoY * 328.0 + ScreenRaitoY * 66.0;
+	local_2cg = -1.8180001f;
+	if (local_2cg >= -3.0f && local_2cg < 12048.0f)
+	{
+		local_2cg = local_2cg + 22048.0f;
+	}
+	late_DrawSprite2D(&local_28, 1, local_2cg, 0x21, 4);
+}
+
+// FUNCTION: SADX 0x0058dae0
 void dispFishingLure(struct task *tp)
 {
+	struct NJS_POINT3 local_20g;
+	struct NJS_POINT3 local_14m;
+	struct taskwk *local_28;
+	struct taskwk *local_24;
+
+	local_28 = tp->twp;
+	local_24 = DAT_05baf368[0];
+	if (GetPlayerTaskPointer(0)->exec != BigTheCat)
+	{
+		return;
+	}
+	if (DAT_05b3e05c == 10)
+	{
+		if (GetMiClearStatus() != 0)
+		{
+			return;
+		}
+	}
+	FUN_005b5aa0(&local_28->pos, 0xffff0000);
+	CalcLinePos(&local_14m);
+	CalcRodPos(tp, &local_20g);
+	___njSetTexture(&texlist_fishing);
+	FUN_005914c0();
+	if ((DAT_05cd296c & 0x800) == 0)
+	{
+		njPushMatrix(0);
+		FUN_0067d830(0, local_28->pos.x, local_28->pos.y, local_28->pos.z);
+		if (-local_28->ang.y != 0)
+		{
+			njRotateY(0, (unsigned short)(-local_28->ang.y));
+		}
+		if (local_28->ang.x != 0)
+		{
+			njRotateX(0, (unsigned short)local_28->ang.x);
+		}
+		if (local_28->ang.z != 0)
+		{
+			njRotateZ(0, (unsigned short)local_28->ang.z);
+		}
+		if (local_28->mode < 3)
+		{
+			FUN_0067d830(0, 0.6f, -0.3f, 0.0f);
+		}
+		FUN_0067d2d0(0, 0.3f, 0.3f, 0.3f);
+		___dsDrawObject((struct obj *)*(int *)((char *)DAT_05cd29bc + getLureKind() * 4));
+		njPopMatrix(1);
+	}
+	if (local_28->mode >= 3)
+	{
+		FUN_005e7800(tp->awp->work.ul[2]);
+	}
+	if (tp->twp->mode >= 3)
+	{
+		FUN_0058d680((int)tp);
+		dispDistanceLure((float *)&local_24->pos, (float *)&local_14m);
+	}
 }
 
 // STUB: SADX 0x0058dce0
@@ -411,7 +560,7 @@ void moveFishingRotY(struct task *tp)
 	int local_10g;
 
 	local_8g = tp->twp->ang.y;
-	local_cg = *(int *)((char *)tp->mwp + 0x20);
+	local_cg = tp->mwp->ang_aim.y;
 	local_10g = (local_8g - local_cg) & 0xffff;
 	if (local_10g < 0x8000)
 	{
@@ -619,9 +768,36 @@ void BigDisplayHit(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00592520
+// FUNCTION: SADX 0x00592520
 void FUN_00592520(struct task *param_1)
 {
+	float local_30g;
+	float local_2c;
+	struct NJS_SPRITE local_28g;
+
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	FUN_007d21b0(1);
+	local_28g.tlist = &texlist_fishing;
+	local_28g.tanim = (struct NJS_TEXANIM *)&reel_anim;
+	local_28g.sx = 1.0f * ScreenRaitoX;
+	local_28g.sy = 1.0f * ScreenRaitoY;
+	local_28g.p.x = 320.0f * ScreenRaitoX + param_1->twp->pos.x + 8.0f;
+	local_28g.p.y = 200.0f * ScreenRaitoY + 8.0f;
+	local_2c = -1.82f;
+	if (local_2c >= -3.0f && local_2c < 12048.0f)
+	{
+		local_2c = local_2c + 22048.0f;
+	}
+	late_DrawSprite2D(&local_28g, 7, local_2c, 0x20, 4);
+	local_28g.p.x = 320.0f * ScreenRaitoX - param_1->twp->pos.x;
+	local_28g.p.y = 200.0f * ScreenRaitoY;
+	local_30g = -1.82f;
+	if (local_30g >= -3.0f && local_30g < 12048.0f)
+	{
+		local_30g = local_30g + 22048.0f;
+	}
+	late_DrawSprite2D(&local_28g, 6, local_30g, 0x20, 4);
 }
 
 // FUNCTION: SADX 0x00592680
@@ -785,6 +961,6 @@ void CreateBigDisplayFishWeight(long weight, long kind)
 	if (local_8)
 	{
 		local_8->twp->value.l = weight;
-		*(long *)((char *)local_8->twp + 8) = kind;
+		local_8->twp->counter.l = kind;
 	}
 }

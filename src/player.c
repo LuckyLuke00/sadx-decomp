@@ -98,7 +98,7 @@ long PCheckHoldSwingableObject(struct taskwk *twp, struct motionwk2 *mwp, struct
 	{
 		return 0;
 	}
-	if (*(unsigned char *)((char *)*(void **)((char *)local_8->mytask + 0x20) + 2) != 7)
+	if (local_8->mytask->twp->id != 7)
 	{
 		return 0;
 	}
@@ -158,7 +158,7 @@ long PCheckJump2(struct taskwk *twp, struct playerwk *pwp)
 	}
 	if ((DAT_05b932e8[twp->counter.b[0]].on & jump_button) != 0)
 	{
-		if (pwp->jumptimer++ < *(int *)((char *)pwp + 0x9c))
+		if (pwp->jumptimer++ < pwp->p.jump2_timer)
 		{
 			return 1;
 		}
@@ -220,25 +220,25 @@ void PGetAcceleration1D(struct taskwk *twp, struct motionwk2 *mwp, struct player
 		return;
 	}
 	v.x = v.y = v.z = 0.0f;
-	v.x = DAT_05b3ebc8 * *(float *)((char *)pwp + 0x114) + v.x;
-	v.y = DAT_05b3ebcc * *(float *)((char *)pwp + 0x114) + v.y;
-	v.z = DAT_05b3ebd0 * *(float *)((char *)pwp + 0x114) + v.z;
+	v.x = DAT_05b3ebc8 * pwp->p.weight + v.x;
+	v.y = DAT_05b3ebcc * pwp->p.weight + v.y;
+	v.z = DAT_05b3ebd0 * pwp->p.weight + v.z;
 	PConvertVector_G2P(twp, &v);
-	v.x = *(float *)((char *)pwp + 0xf0) * pwp->spd.x + v.x;
+	v.x = pwp->p.air_resist * pwp->spd.x + v.x;
 	local_1c = PCheckPower(twp, 0, &local_18);
 	if (local_1c == 0)
 	{
-		local_18 = *(float *)((char *)pwp + 0xe0);
+		local_18 = pwp->p.slow_down;
 	}
 	else
 	{
-		local_18 = *(float *)((char *)pwp + 0xd8) * local_18;
+		local_18 = pwp->p.run_accel * local_18;
 	}
 	v.x = v.x + local_18;
 	if (pwp->spd.x == 0.0f)
 	{
 		float local_20;
-		local_20 = v.y * *(float *)((char *)pwp + 0x104);
+		local_20 = v.y * pwp->p.lim_frict;
 		if (local_1c == 0)
 		{
 			if (v.x < local_20 && v.x > -local_20)
@@ -270,25 +270,25 @@ void PGetAccelerationGliK(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	{
 		return;
 	}
-	mwp->acc.y = *(float *)((char *)pwp + 0x114) * 0.949999988079071;
+	mwp->acc.y = pwp->p.weight * 0.949999988079071;
 	v = mwp->acc;
-	v.x = DAT_05b3ebc8 * *(float *)((char *)pwp + 0x114) + v.x;
-	v.y = DAT_05b3ebcc * *(float *)((char *)pwp + 0x114) + v.y;
-	v.z = DAT_05b3ebd0 * *(float *)((char *)pwp + 0x114) + v.z;
+	v.x = DAT_05b3ebc8 * pwp->p.weight + v.x;
+	v.y = DAT_05b3ebcc * pwp->p.weight + v.y;
+	v.z = DAT_05b3ebd0 * pwp->p.weight + v.z;
 	PConvertVector_G2P(twp, &v);
-	v.x = *(float *)((char *)pwp + 0xf0) * 0.5 * *(float *)((char *)pwp + 0x38) + v.x;
-	v.y = *(float *)((char *)pwp + 0xf4) * 0.5 * *(float *)((char *)pwp + 0x3c) + v.y;
-	v.z = *(float *)((char *)pwp + 0xf8) * 0.5 * *(float *)((char *)pwp + 0x40) + v.z;
+	v.x = pwp->p.air_resist * 0.5 * pwp->spd.x + v.x;
+	v.y = pwp->p.air_resist_y * 0.5 * pwp->spd.y + v.y;
+	v.z = pwp->p.air_resist_z * 0.5 * pwp->spd.z + v.z;
 	if (PCheckPower(twp, &angle, &accel) == 0)
 	{
 		accel = 0.0;
-		*(int *)((char *)mwp + 0x20) = twp->ang.y;
+		mwp->ang_aim.y = twp->ang.y;
 	}
 	else
 	{
-		accel = *(float *)((char *)pwp + 0xdc) * accel;
-		*(int *)((char *)mwp + 0x20) = angle;
-		PAdjustAngleY(twp, mwp, pwp, *(int *)((char *)mwp + 0x20));
+		accel = pwp->p.air_accel * accel;
+		mwp->ang_aim.y = angle;
+		PAdjustAngleY(twp, mwp, pwp, mwp->ang_aim.y);
 	}
 	v.x = v.x + accel;
 	pwp->acc = v;
@@ -338,9 +338,25 @@ void PRotatedByGravityAsPinball(struct taskwk *twp, struct motionwk2 *mwp, struc
 {
 }
 
-// STUB: SADX 0x004e22a0
+// FUNCTION: SADX 0x004e22a0
 void PResetAngle(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	struct NJS_POINT3 v2;
+	float local_18;
+	v2 = pwp->spd;
+	if ((pwp->equipment & 0x8000) == 0)
+	{
+		local_18 = v2.x * v2.x + v2.y * v2.y + v2.z * v2.z;
+		if (pwp->p.dash_speed * pwp->p.dash_speed < local_18)
+		{
+			return;
+		}
+	}
+	PConvertVector_P2G(twp, &v2);
+	twp->ang.x = AdjustAngle(twp->ang.x, DAT_05b3ebdc, 0x800);
+	twp->ang.z = AdjustAngle(twp->ang.z, DAT_05b3ebc4, 0x800);
+	PConvertVector_G2P(twp, &v2);
+	pwp->spd = v2;
 }
 
 // FUNCTION: SADX 0x004e23a0
@@ -350,7 +366,7 @@ void PResetAngleForBuilding(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 	float local_18;
 	v2 = pwp->spd;
 	local_18 = v2.x * v2.x + v2.y * v2.y + v2.z * v2.z;
-	if (*(float *)((char *)pwp + 0xd0) * *(float *)((char *)pwp + 0xd0) < local_18)
+	if (pwp->p.dash_speed * pwp->p.dash_speed < local_18)
 	{
 		return;
 	}
@@ -516,6 +532,23 @@ void FUN_004e2cb0(struct task *param_1, struct NJS_POINT3 *param_2, struct taskw
 // STUB: SADX 0x004e2ec0
 void FUN_004e2ec0(struct taskwk *param_1, struct NJS_POINT3 *param_2)
 {
+}
+
+// FUNCTION: SADX 0x004e2f70
+void FUN_004e2f70(int param_1, int param_2)
+{
+	if (param_2 != 0)
+	{
+		*(float *)(param_2 + 0x40) = 0.0f;
+		*(float *)(param_2 + 0x3c) = 0.0f;
+		*(float *)(param_2 + 0x38) = 0.0f;
+	}
+	if (param_1 != 0)
+	{
+		*(float *)(param_1 + 0xc) = 0.0f;
+		*(float *)(param_1 + 8) = 0.0f;
+		*(float *)(param_1 + 4) = 0.0f;
+	}
 }
 
 // STUB: SADX 0x004e2fc0
@@ -760,11 +793,11 @@ void PResetPositionForBuilding(struct taskwk *twp, struct motionwk2 *mwp, struct
 // FUNCTION: SADX 0x004ed0e0
 void PSetMotion_Next(struct mtnjvwk *mjp, unsigned short patno)
 {
-	*(unsigned short *)((char *)mjp + 4) = *(unsigned char *)((char *)*(struct PL_ACTION **)((char *)mjp + 0x20) + patno * 0x10 + 6);
-	*(unsigned short *)((char *)mjp + 6) = *(unsigned short *)((char *)mjp + 4);
-	*(short *)((char *)mjp + 0) = *(char *)((char *)*(struct PL_ACTION **)((char *)mjp + 0x20) + *(unsigned short *)((char *)mjp + 6) * 0x10 + 5);
-	*(unsigned short *)((char *)mjp + 0xa) = *(unsigned char *)((char *)*(struct PL_ACTION **)((char *)mjp + 0x20) + *(unsigned short *)((char *)mjp + 4) * 0x10 + 6);
-	*(short *)((char *)mjp + 0xe) = *(short *)((char *)mjp + 0xe) | 1;
+	mjp->reqaction = *(unsigned char *)((char *)mjp->plactptr + patno * 0x10 + 6);
+	mjp->action = mjp->reqaction;
+	*(short *)mjp = *(char *)((char *)mjp->plactptr + mjp->action * 0x10 + 5);
+	mjp->nextaction = *(unsigned char *)((char *)mjp->plactptr + mjp->reqaction * 0x10 + 6);
+	mjp->flag = mjp->flag | 1;
 	PSetMotion_SetStartFrame(mjp);
 }
 
@@ -940,7 +973,7 @@ void PSetCrashEffect(struct taskwk *twp)
 	local_8 = CreateElementalTask(2, 6, EffectCrash);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)twp + 8);
+		local_8->twp->counter.b[0] = twp->counter.b[0];
 	}
 }
 
@@ -961,9 +994,9 @@ void PSetLoopSECallForTheMode(long SE, unsigned char pno, short mode)
 	local_8 = CreateElementalTask(8, 6, LoopSECallForTheMode);
 	if (local_8)
 	{
-		*(long *)((char *)local_8->awp + 0) = SE;
-		*(unsigned char *)((char *)local_8->awp + 4) = pno;
-		*(short *)((char *)local_8->awp + 6) = mode;
+		*(long *)local_8->awp = SE;
+		local_8->awp->work.ub[4] = pno;
+		local_8->awp->work.sw[3] = mode;
 	}
 }
 
@@ -1169,13 +1202,13 @@ void SetAutoPilotForBreakP(unsigned char pno)
 void SetAutoPilotForYRotationP(unsigned char pno, long y)
 {
 	SetRotationP(pno, DAT_05baf368[pno]->ang.x, y, DAT_05baf368[pno]->ang.z);
-	*(unsigned char *)((char *)DAT_05baf368[pno]->ewp + 0x24) = 0;
+	DAT_05baf368[pno]->ewp->move.mode = 0;
 }
 
 // FUNCTION: SADX 0x004f0990
 void CancelAutoPilotP(unsigned char pno)
 {
-	*(char *)((char *)DAT_05baf368[pno]->ewp + 0x24) = 0;
+	DAT_05baf368[pno]->ewp->move.mode = 0;
 }
 
 // FUNCTION: SADX 0x004f09b0
@@ -1594,6 +1627,27 @@ long SetPlayerPosition(unsigned char pno, unsigned char frame, struct NJS_POINT3
 struct task *GetPlayerTaskPointer(unsigned char pno)
 {
 	return (struct task *)DAT_05baf388[pno];
+}
+
+// FUNCTION: SADX 0x004f1c80
+int FUN_004f1c80(int param_1)
+{
+	int local_cg;
+	int local_8g;
+	local_cg = -1;
+	if (param_1 == 0)
+	{
+		return local_cg;
+	}
+	for (local_8g = 0; local_8g < 8; local_8g++)
+	{
+		if (DAT_05baf388[local_8g] == param_1)
+		{
+			local_cg = *(unsigned char *)((char *)(*(int *)(param_1 + 0x20)) + 9);
+			break;
+		}
+	}
+	return local_cg;
 }
 
 // FUNCTION: SADX 0x004f1ce0

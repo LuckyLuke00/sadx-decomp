@@ -1,5 +1,8 @@
 #include <stdlib.h>
 #include "decls.h"
+extern void (*DAT_025d7530[43])(struct task *);
+extern struct task *DAT_05b3eab4;
+extern void (*DAT_025d77e8[43])(struct task *);
 extern char DAT_05baf56b[];
 extern char DAT_05baf54b;
 extern char DAT_05baf56e;
@@ -639,9 +642,9 @@ void GM_SECall(long se)
 	local_8 = CreateElementalTask(8, 1, GM_SEControle);
 	if (local_8 != NULL)
 	{
-		*(int *)((char *)local_8->awp + 0) = 5;
-		*(int *)((char *)local_8->awp + 4) = se;
-		*(int *)((char *)local_8->awp + 8) = 1;
+		*(int *)local_8->awp = 5;
+		local_8->awp->work.sl[1] = se;
+		local_8->awp->work.sl[2] = 1;
 	}
 }
 
@@ -694,6 +697,36 @@ void WaitLandPlayer(struct task *tp)
 // STUB: SADX 0x004c8e80
 void SetPlayer()
 {
+}
+
+// FUNCTION: SADX 0x004c9100
+void FUN_004c9100()
+{
+	if (DAT_025d7530[(short)DAT_05b9d724] != 0)
+	{
+		if ((short)DAT_05b9d724 == 0x13)
+		{
+			DAT_05b3eab4 = CreateElementalTask(2, 1, DAT_025d7530[(short)DAT_05b9d724]);
+		}
+		else
+		{
+			DAT_05b3eab4 = CreateElementalTask(2, 0, DAT_025d7530[(short)DAT_05b9d724]);
+		}
+	}
+	else
+	{
+		DAT_05b3eab4 = 0;
+	}
+}
+
+// FUNCTION: SADX 0x004c9170
+void FUN_004c9170()
+{
+	___njSetBackColor(((unsigned long (*)[3])BackColorList)[(short)DAT_05b9d724][0], ((unsigned long (*)[3])BackColorList)[(short)DAT_05b9d724][1], ((unsigned long (*)[3])BackColorList)[(short)DAT_05b9d724][2]);
+	if (DAT_025d77e8[(short)DAT_05b9d724] != 0)
+	{
+		CreateElementalTask(2, 1, DAT_025d77e8[(short)DAT_05b9d724]);
+	}
 }
 
 // FUNCTION: SADX 0x004c91e0
@@ -800,6 +833,12 @@ void ChangeStageWithFadeOut(unsigned char stg, unsigned char act)
 	SetChangeGameMode(3);
 	DAT_05b9d748 = stg;
 	DAT_05b9d770 = act;
+}
+
+// FUNCTION: SADX 0x004c93f0
+void FUN_004c93f0()
+{
+	SetChangeGameMode(4);
 }
 
 // FUNCTION: SADX 0x004c9400

@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int DAT_05b92e24;
+extern struct NJS_POINT3 DAT_05b42a98[32];
+extern struct NJS_TEXLIST DAT_05b42c40[32];
 int FUN_004c2610(int param_1);
 void FUN_004c2a30(struct MSGC *param_1, char *param_2);
 extern unsigned char DAT_05b42e20[0x50000];
@@ -74,64 +77,65 @@ int FUN_004c1800(const unsigned char *param_1)
 	return local_cj;
 }
 
-// The original includes an unused zero local that this implementation omits.
 // FUNCTION: SADX 0x004c1870
 struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex)
 {
-	int local_18;
-	int local_14;
+	int local_2cg;
+	int local_14h;
 	int local_ci;
 	int local_28;
-	int local_24;
-	int local_10;
-	unsigned char *local_8g;
-	int local_20;
-	void *local_1c;
+	int local_8g;
+	int local_10m;
+	unsigned char *local_18;
+	int local_20o;
+	void *local_24;
+	int local_1ci;
 
-	local_18 = ((width + 0xff) / 0x100) << 8;
-	local_14 = ((height + 0xff) / 0x100) << 8;
-	if (local_18 > 0x400)
+	local_2cg = ((width + 0xff) / 0x100) << 8;
+	local_14h = ((height + 0xff) / 0x100) << 8;
+	local_1ci = 0;
+	if (local_2cg > 0x400)
 	{
-		local_18 = 0x400;
+		local_2cg = 0x400;
 	}
-	if (local_14 > 0x200)
+	if (local_14h > 0x200)
 	{
-		local_14 = 0x200;
+		local_14h = 0x200;
 	}
-	local_ci = local_18;
-	local_24 = local_14;
+	local_ci = local_2cg;
+	local_8g = local_14h;
 	if (local_ci < 0x100)
 	{
 		local_ci = 0x100;
 	}
-	if (local_24 < 0x100)
+	if (local_8g < 0x100)
 	{
-		local_24 = 0x100;
+		local_8g = 0x100;
 	}
 	local_28 = local_ci;
-	local_10 = local_24;
+	local_10m = local_8g;
 	msgc->buf_width2 = local_28;
-	msgc->buf_height2 = local_10;
-	local_8g = DAT_05b42e20;
+	msgc->buf_height2 = local_10m;
+	local_18 = DAT_05b42e20;
 	if (((unsigned int)DAT_05b42e20 & 0x1f) == 0)
 	{
-		local_8g = DAT_05b42e20;
+		local_18 = DAT_05b42e20;
 	}
 	else
 	{
-		local_8g = (unsigned char *)((unsigned int)(DAT_05b42e20 + 0x20) & ~0x1f);
+		local_18 = (unsigned char *)((unsigned int)(DAT_05b42e20 + 0x20) & ~0x1f);
 	}
-	local_20 = local_28 * local_10 * 2;
-	local_1c = MAlloc(local_20);
-	if (local_1c == 0)
+	local_20o = local_28 * local_10m * 2;
+	local_24 = MAlloc(local_20o);
+	if (local_24 == 0)
 	{
-		if (local_8g + local_20 < (unsigned char *)&DAT_05b92e20)
+		if (local_18 + local_20o < (unsigned char *)&DAT_05b92e20)
 		{
-			local_1c = local_8g;
+			local_24 = local_18;
 		}
 		else
 		{
-			local_1c = 0;
+			local_24 = 0;
 		}
 	}
 	msgc->kind = 0;
@@ -139,8 +143,8 @@ struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, un
 	msgc->y = y;
 	msgc->width = width;
 	msgc->height = height;
-	msgc->buf_width = local_18;
-	msgc->buf_height = local_14;
+	msgc->buf_width = local_2cg;
+	msgc->buf_height = local_14h;
 	msgc->lx = 0;
 	msgc->ly = 0;
 	msgc->sx = 2;
@@ -148,7 +152,7 @@ struct MSGC *MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, un
 	msgc->color = 0xffff;
 	msgc->fc.color = 0xffffffff;
 	msgc->bc.color = 0;
-	msgc->bitmap = local_1c;
+	msgc->bitmap = local_24;
 	msgc->globalindex = globalindex;
 	msgc->texlist.textures = 0;
 	msgc->msgc_flag = 0;
@@ -200,10 +204,53 @@ void MSG_LoadTexture2(struct MSGC *msgc)
 	}
 }
 
+// FUNCTION: SADX 0x004c1b70
+void FUN_004c1b70(char *param_1)
+{
+	if (param_1 == 0)
+	{
+		DAT_05b92e24 = 0;
+	}
+	else
+	{
+		if (DAT_05b92e24 >= 32)
+		{
+			___OutputDebugString("MSGC_Close:?????????????\n");
+		}
+		DAT_05b42a98[DAT_05b92e24] = *(struct NJS_POINT3 *)(param_1 + 0x38);
+		DAT_05b42c40[DAT_05b92e24] = *(struct NJS_TEXLIST *)(param_1 + 0x30);
+		DAT_05b42c40[DAT_05b92e24].textures = (struct NJS_TEXNAME *)&DAT_05b42a98[DAT_05b92e24];
+		DAT_05b92e24++;
+	}
+}
+
 // FUNCTION: SADX 0x004c1c10
 void MSG_CloseRequestCls()
 {
 	FUN_004c1b70(0);
+}
+
+// FUNCTION: SADX 0x004c1c20
+void FUN_004c1c20()
+{
+	int local_20;
+	for (local_20 = 0; local_20 < DAT_05b92e24; local_20++)
+	{
+		if (DAT_05b42c40[local_20].textures != 0)
+		{
+			__try
+			{
+				late_ReleaseTexture(&DAT_05b42c40[local_20]);
+				DAT_05b42c40[local_20].textures = 0;
+				DAT_05b42c40[local_20].nbTexture = 0;
+			}
+			__except (1)
+			{
+				MAYBE_ASSERT();
+			}
+		}
+	}
+	DAT_05b92e24 = 0;
 }
 
 // FUNCTION: SADX 0x004c1cf0
@@ -361,12 +408,13 @@ void MSG_LF(struct MSGC *msgc)
 	msgc->ly += msgc->sy + 0x18;
 }
 
-// The original includes two unused zero locals that this implementation omits.
 // FUNCTION: SADX 0x004c2940
 void MSG_Puts(struct MSGC *msgc, char *str)
 {
-	int local_10;
+	int local_18;
 	int local_ci;
+	int local_14;
+	int local_10;
 	int local_8g;
 
 	if (*str == 9)
@@ -379,16 +427,18 @@ void MSG_Puts(struct MSGC *msgc, char *str)
 	}
 	else
 	{
-		local_10 = DAT_025d5978[DAT_05b3ebbc].shifton & 0xff;
+		local_10 = 0;
+		local_8g = 0;
+		local_18 = DAT_025d5978[DAT_05b3ebbc].shifton & 0xff;
 		local_ci = DAT_025d5978[DAT_05b3ebbc].shiftoff & 0xff;
-		while ((local_8g = *(unsigned char *)str++) != 0)
+		while ((local_14 = *(unsigned char *)str++) != 0)
 		{
-			if (local_8g >= local_10 && local_8g <= local_ci)
+			if (local_14 >= local_18 && local_14 <= local_ci)
 			{
-				local_8g = (local_8g << 8) | *(unsigned char *)str;
+				local_14 = (local_14 << 8) | *(unsigned char *)str;
 				str++;
 			}
-			MSG_Putc(msgc, local_8g);
+			MSG_Putc(msgc, local_14);
 		}
 	}
 }
@@ -414,24 +464,24 @@ void MSG_WinFadeIn(struct MSGC *msgc)
 	int local_8g;
 	int local_cg;
 
-	*(unsigned char *)((char *)msgc + 0x23) = 0;
-	*(unsigned char *)((char *)msgc + 0x1f) = 0;
+	msgc->bc.argb.a = 0;
+	msgc->fc.argb.a = 0;
 	local_8g = 0xa;
 	for (; local_8g != 0; local_8g--)
 	{
-		*(unsigned char *)((char *)msgc + 0x23) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x23) + 0xc);
+		msgc->bc.argb.a = FUN_004c2e10(msgc->bc.argb.a + 0xc);
 		MSG_Disp(msgc);
 		FUN_005a4d70();
 	}
-	*(unsigned char *)((char *)msgc + 0x23) = 0x80;
+	msgc->bc.argb.a = 0x80;
 	local_cg = 0xa;
 	for (; local_cg != 0; local_cg--)
 	{
-		*(unsigned char *)((char *)msgc + 0x1f) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x1f) + 0x18);
+		msgc->fc.argb.a = FUN_004c2e10(msgc->fc.argb.a + 0x18);
 		MSG_Disp(msgc);
 		FUN_005a4d70();
 	}
-	*(unsigned char *)((char *)msgc + 0x1f) = 0xff;
+	msgc->fc.argb.a = 0xff;
 }
 
 // FUNCTION: SADX 0x004c2e10
@@ -457,19 +507,19 @@ void MSG_WinFadeOut(struct MSGC *msgc)
 	local_8g = 0xa;
 	for (; local_8g != 0; local_8g--)
 	{
-		*(unsigned char *)((char *)msgc + 0x1f) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x1f) - 0x18);
+		msgc->fc.argb.a = FUN_004c2e10(msgc->fc.argb.a - 0x18);
 		MSG_Disp(msgc);
 		FUN_005a4d70();
 	}
-	*(unsigned char *)((char *)msgc + 0x1f) = 0;
+	msgc->fc.argb.a = 0;
 	local_cg = 0xa;
 	for (; local_cg != 0; local_cg--)
 	{
-		*(unsigned char *)((char *)msgc + 0x23) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x23) - 0xc);
+		msgc->bc.argb.a = FUN_004c2e10(msgc->bc.argb.a - 0xc);
 		MSG_Disp(msgc);
 		FUN_005a4d70();
 	}
-	*(unsigned char *)((char *)msgc + 0x23) = 0;
+	msgc->bc.argb.a = 0;
 	FUN_004c2fa0(msgc, 2);
 }
 
@@ -493,7 +543,7 @@ void MSG_FadeOut(struct MSGC *msgc)
 
 	for (local_8 = 8; local_8 != 0; local_8--)
 	{
-		*(unsigned char *)((char *)msgc + 0x1f) = FUN_004c2e10(*(unsigned char *)((char *)msgc + 0x1f) - 0x20);
+		msgc->fc.argb.a = FUN_004c2e10(msgc->fc.argb.a - 0x20);
 		MSG_Disp(msgc);
 		FUN_005a4d70();
 	}
@@ -554,4 +604,11 @@ int MSG_CheckMainMessage()
 struct MSGC *NH_MSG_Open(struct MSGC *msgc, int x, int y, int width, int height, unsigned long globalindex, char *buf)
 {
 	return (struct MSGC *)0;
+}
+
+// FUNCTION: SADX 0x004c3310
+void FUN_004c3310(int *param_1)
+{
+	FUN_004c1b70((char *)param_1);
+	*(int *)((char *)param_1 + 0x28) = 0;
 }

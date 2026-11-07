@@ -107,6 +107,12 @@ void Serif_Stop()
 	wmastop(1);
 }
 
+// FUNCTION: SADX 0x004f6400
+long FUN_004f6400()
+{
+	return DAT_05bb00b4;
+}
+
 // FUNCTION: SADX 0x004f6410
 void Jingle_Play(int no)
 {
@@ -119,7 +125,7 @@ void Jingle_Play(int no)
 		{
 			local_8 = CreateChildTask(2, JingleTask, DAT_05bb00c0);
 			local_8->twp->value.l = no;
-			*(int *)((char *)local_8->twp + 8) = BgmLast;
+			local_8->twp->counter.l = BgmLast;
 			DAT_05bb00bc = 1;
 		}
 	}

@@ -3,10 +3,16 @@ extern char DAT_02631488[1];
 extern char DAT_02631494[16];
 extern int DAT_05b3ebbc;
 
-// STUB: SADX 0x005a3e60
-char FUN_005a3e60(char param_1)
+// FUNCTION: SADX 0x005a3e60
+char FUN_005a3e60(int param_1)
 {
-	return (char)0;
+	char local_5;
+	local_5 = (char)(param_1 & 0xff);
+	if ((unsigned int)(param_1 & 0x1ff) >= 0x100)
+	{
+		local_5 = (char)(0xff - local_5);
+	}
+	return local_5;
 }
 
 // FUNCTION: SADX 0x005a3ea0

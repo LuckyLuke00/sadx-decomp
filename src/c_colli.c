@@ -1,9 +1,15 @@
 #include "decls.h"
+extern signed char DAT_025d9b80[];
+float FUN_004d55a0(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
+float FUN_004d5a50(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
+void FUN_004d60d0(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
+float FUN_004d6810(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
+float FUN_004d6f00(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
 extern signed char DAT_025d9b68[10];
 extern signed char DAT_025d9b74[10];
 struct CCL_INFO;
 struct CCL_INFO *FUN_004da260(struct CCL_INFO *param_1, int param_2, int param_3, int param_4);
-void FUN_004d5370(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
+float FUN_004d5370(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
 void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4);
 void FUN_004d1730(struct taskwk *param_1, struct CCL_INFO *param_2, struct NJS_POINT3 *param_3);
 void ConvertPositionGlobalToLocal(struct NJS_POINT3 *center1, struct NJS_POINT3 *center2, long angy, struct NJS_POINT3 *v);
@@ -196,13 +202,13 @@ void CCL_ColliLine2Sphere(struct taskwk *twp1, struct CCL_INFO *info1, struct ta
 	{
 		*(float *)twp2 = info1->center.x;
 		*(float *)((char *)twp2 + 4) = info1->center.y;
-		*(float *)((char *)twp2 + 8) = info1->center.z;
+		twp2->counter.f = info1->center.z;
 	}
 	else
 	{
 		*(float *)twp2 = twp1->pos.x + info1->center.x;
 		*(float *)((char *)twp2 + 4) = twp1->pos.y + info1->center.y;
-		*(float *)((char *)twp2 + 8) = twp1->pos.z + info1->center.z;
+		twp2->counter.f = twp1->pos.z + info1->center.z;
 	}
 }
 
@@ -289,6 +295,7 @@ void CCL_CalcColli(struct taskwk *twp1, struct taskwk *twp2)
 {
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004d0a20
 int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
 {
@@ -296,9 +303,6 @@ int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
 	float local_18;
 	float local_14;
 	float local_10;
-	float local_24;
-	float local_20;
-	float local_1c;
 	int local_8g;
 
 	local_8g = 0;
@@ -313,7 +317,7 @@ int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
 					local_10 = param_1->cwp->colli_range;
 					local_14 = param_2->cwp->colli_range;
 					local_18 = (local_10 + local_14) * (local_10 + local_14);
-					local_ci = FUN_004d0ad0((float *)&param_1->pos, (float *)&param_2->pos);
+					local_ci = FUN_004d0ad0(&param_1->pos, &param_2->pos);
 					if (local_ci < local_18)
 					{
 						local_8g = 1;
@@ -326,10 +330,17 @@ int FUN_004d0a20(struct taskwk *param_1, struct taskwk *param_2)
 	return local_8g;
 }
 
-// STUB: SADX 0x004d0ad0
-float FUN_004d0ad0(float *param_1, float *param_2)
+// DIFF: code: the floating-point subtractions evaluate their operands in the opposite order.
+// FUNCTION: SADX 0x004d0ad0
+float FUN_004d0ad0(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2)
 {
-	return (float)0;
+	float local_10;
+	float local_cj;
+	float local_8g;
+	local_10 = param_1->x - param_2->x;
+	local_cj = param_1->y - param_2->y;
+	local_8g = param_1->z - param_2->z;
+	return local_8g * local_8g + (local_cj * local_cj + local_10 * local_10);
 }
 
 // STUB: SADX 0x004d0b30
@@ -395,9 +406,50 @@ long CCL_CheckPushOut(struct colliwk *cwp1, struct CCL_INFO *info1, struct colli
 	return 1;
 }
 
-// STUB: SADX 0x004d13e0
+// PLACEHOLDER: UNKNOWN_DAMAGE_MACRO: likely a macro, since a do-while loop with a constant test wraps the two flag sets.
+#define UNKNOWN_DAMAGE_MACRO(param_1, param_2) \
+	do \
+	{ \
+		(param_1)->flag |= 0x20; \
+		(param_2)->damage |= 0x10; \
+	} while (0)
+
+// FUNCTION: SADX 0x004d13e0
 void CCL_CheckDamage(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
 {
+	struct colliwk *local_cg;
+	struct colliwk *local_8g;
+
+	local_cg = twp1->cwp;
+	local_8g = twp2->cwp;
+	{
+		int local_14;
+		unsigned char local_e;
+		unsigned char local_dg;
+		local_14 = local_8g->id;
+		local_e = info1->damage & 3;
+		local_dg = (info2->damage & 0xc) >> 2;
+		if ((info2->attr & 0x400) != 0 && local_e > local_dg
+			&& (info1->damage & DAT_025d9b80[local_14]) != 0)
+		{
+			UNKNOWN_DAMAGE_MACRO(local_8g, info2);
+			twp2->flag |= 4;
+		}
+	}
+	{
+		int local_1c;
+		unsigned char local_15;
+		unsigned char local_16l;
+		local_1c = local_cg->id;
+		local_15 = info2->damage & 3;
+		local_16l = (info1->damage & 0xc) >> 2;
+		if ((info1->attr & 0x400) != 0 && local_15 > local_16l
+			&& (info2->damage & DAT_025d9b80[local_1c]) != 0)
+		{
+			UNKNOWN_DAMAGE_MACRO(local_cg, info1);
+			twp1->flag |= 4;
+		}
+	}
 }
 
 // STUB: SADX 0x004d1520
@@ -405,9 +457,108 @@ void CCL_ExchangeInfo(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk
 {
 }
 
-// STUB: SADX 0x004d1730
+// PLACEHOLDER: UNKNOWN_COPY_VECTOR_MACRO: likely a macro, since the copy walks two float pointers through the vector.
+#define UNKNOWN_COPY_VECTOR_MACRO(param_1, param_2) \
+	{ \
+		float *local_cg; \
+		float *local_8g; \
+		local_cg = (float *)(param_2); \
+		local_8g = (float *)(param_1); \
+		*local_8g = *local_cg; \
+		local_8g++; \
+		local_cg++; \
+		*local_8g = *local_cg; \
+		local_8g++; \
+		local_cg++; \
+		*local_8g = *local_cg; \
+	}
+
+// PLACEHOLDER: UNKNOWN_MATRIX_MACRO: likely a macro, since a do-while loop with a constant test wraps the two matrix calls.
+#define UNKNOWN_MATRIX_MACRO() \
+	do \
+	{ \
+		njPopMatrixEx(); \
+		njPushMatrixEx(); \
+	} while (0)
+
+// PLACEHOLDER: UNKNOWN_ADD_VECTOR_MACRO: likely a macro, since the sum loads and stores the vectors through one walking float pointer.
+#define UNKNOWN_ADD_VECTOR_MACRO(param_1, param_2, param_3) \
+	{ \
+		float local_28; \
+		float local_24; \
+		float local_20; \
+		float local_1c; \
+		float local_18; \
+		float local_14; \
+		float *local_10; \
+		local_10 = (float *)(param_2); \
+		local_24 = *local_10++; \
+		local_14 = *local_10++; \
+		local_20 = *local_10++; \
+		local_10 -= 3; \
+		local_10 = (float *)(param_3); \
+		local_1c = *local_10++; \
+		local_18 = *local_10++; \
+		local_28 = *local_10++; \
+		local_10 -= 3; \
+		local_24 += local_1c; \
+		local_14 += local_18; \
+		local_20 += local_28; \
+		local_10 = (float *)(param_1); \
+		local_10 += 3; \
+		*--local_10 = local_20; \
+		*--local_10 = local_14; \
+		*--local_10 = local_24; \
+	}
+
+// FUNCTION: SADX 0x004d1730
 void FUN_004d1730(struct taskwk *param_1, struct CCL_INFO *param_2, struct NJS_POINT3 *param_3)
 {
+	if (param_2->attr & 0x20)
+	{
+		UNKNOWN_COPY_VECTOR_MACRO(param_3, &param_2->center);
+	}
+	else if (!(param_2->attr & 0x8000))
+	{
+		njUnitMatrix(0);
+		njTranslateEx(&param_1->pos);
+		if (param_2->attr & 0x200)
+		{
+			if (param_1->ang.y != 0)
+			{
+				njRotateY(0, (Uint16)param_1->ang.y);
+			}
+			if (param_1->ang.z != 0)
+			{
+				njRotateZ(0, (Uint16)param_1->ang.z);
+			}
+			if (param_1->ang.x != 0)
+			{
+				njRotateX(0, (Uint16)param_1->ang.x);
+			}
+		}
+		else
+		{
+			if (param_1->ang.z != 0)
+			{
+				njRotateZ(0, (Uint16)param_1->ang.z);
+			}
+			if (param_1->ang.x != 0)
+			{
+				njRotateX(0, (Uint16)param_1->ang.x);
+			}
+			if (param_1->ang.y != 0)
+			{
+				njRotateY(0, (Uint16)param_1->ang.y);
+			}
+		}
+		njCalcPoint(0, &param_2->center, param_3);
+		UNKNOWN_MATRIX_MACRO();
+	}
+	else
+	{
+		UNKNOWN_ADD_VECTOR_MACRO(param_3, &param_1->pos, &param_2->center);
+	}
 }
 
 // STUB: SADX 0x004d1e60
@@ -564,8 +715,9 @@ void FUN_004d5330(char *param_1, int param_2, struct NJS_POINT3 *param_3)
 }
 
 // STUB: SADX 0x004d5370
-void FUN_004d5370(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
+float FUN_004d5370(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
 {
+	return 0.0f;
 }
 
 // STUB: SADX 0x004d7dd0
@@ -578,9 +730,64 @@ void FUN_004d7f60(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskw
 {
 }
 
-// STUB: SADX 0x004d8050
+// FUNCTION: SADX 0x004d8050
 void FUN_004d8050(struct taskwk *param_1, struct CCL_INFO *param_2, struct taskwk *param_3, struct CCL_INFO *param_4)
 {
+	switch (param_2->form)
+	{
+	case 0:
+		switch (param_4->form)
+		{
+		case 0:
+			FUN_004d5370(param_1, param_2, param_3, param_4);
+			break;
+		case 1:
+			FUN_004d55a0(param_1, param_2, param_3, param_4);
+			break;
+		case 3:
+			FUN_004d60d0(param_1, param_2, param_3, param_4);
+			break;
+		case 6:
+			FUN_004d6810(param_1, param_2, param_3, param_4);
+			break;
+		}
+		break;
+	case 1:
+		switch (param_4->form)
+		{
+		case 0:
+			FUN_004d55a0(param_3, param_4, param_1, param_2);
+			break;
+		case 1:
+			FUN_004d6f00(param_1, param_2, param_3, param_4);
+			break;
+		}
+		break;
+	case 3:
+		switch (param_4->form)
+		{
+		case 0:
+			FUN_004d60d0(param_3, param_4, param_1, param_2);
+			break;
+		}
+		break;
+	case 2:
+		switch (param_4->form)
+		{
+		case 0:
+			FUN_004d5a50(param_3, param_4, param_1, param_2);
+			break;
+		}
+		break;
+	case 6:
+		switch (param_4->form)
+		{
+		case 0:
+			FUN_004d6810(param_3, param_4, param_1, param_2);
+			break;
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x004d8210

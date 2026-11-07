@@ -9,21 +9,21 @@ void capturebeam_draw(struct task *tp)
 	___njSetTexture(&texlist_capturebeam);
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)(short)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)(short)var1->ang.y);
 	}
-	if (*(int *)((char *)var1 + 8) != 0)
+	if ((int)var1->counter.l != 0)
 	{
-		njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 8));
+		njRotateY(NULL, (unsigned short)(short)var1->counter.w[0]);
 	}
 	FUN_0067d2d0((float *)0, var1->scl.x, var1->scl.y + 0.0, var1->scl.z);
 	late_DrawObjectClip((struct obj *)&object_e000c_capturebeam_capturebeam, 0, FUN_00500c70(var1->scl.x, var1->scl.y + 0.0, var1->scl.z));
@@ -67,6 +67,23 @@ struct task *CreateCaptureBeam(float x, float y, float z, long ax, long ay, long
 		return var1;
 	}
 	return 0;
+}
+
+// FUNCTION: SADX 0x007d9950
+void FUN_007d9950(struct task *param_1)
+{
+	if (param_1)
+	{
+		FreeTask(param_1);
+	}
+}
+
+// FUNCTION: SADX 0x007d9970
+void FUN_007d9970(struct task *param_1, int param_2)
+{
+	param_1->twp->mode = param_2;
+	param_1->mwp->spd.x = 0.0f;
+	param_1->mwp->spd.z = 0.0f;
 }
 
 // FUNCTION: SADX 0x007d9990

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_ARGB DAT_02671d94;
 extern struct NJS_ARGB DAT_02671d84;
 void FUN_005d3b80(struct task *param_1);
 extern struct NJS_TEXLIST texlist_e102_beam;
@@ -162,6 +163,30 @@ void FUN_005d3b00(struct task *param_1)
 			}
 	}
 	FUN_005d3b80(param_1);
+}
+
+// FUNCTION: SADX 0x005d3b80
+void FUN_005d3b80(struct task *param_1)
+{
+	struct taskwk *local_8g;
+	int local_cg;
+	local_8g = param_1->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	___njColorBlendingMode(0, 0xa);
+	___njColorBlendingMode(1, 0xa);
+	___njSetConstantMaterial(&DAT_02671d94);
+	___njSetTexture(&texlist_e102_beam);
+	njPushMatrix(0);
+	local_cg = (local_8g->wtimer & 0x200) != 0;
+	njTranslateV(0, &local_8g->pos);
+	sprite_e102_flash.sy = local_8g->counter.f;
+	sprite_e102_flash.sx = sprite_e102_flash.sy;
+	late_DrawSprite3D(&sprite_e102_flash, local_cg, 0x30, 4);
+	ResetMaterial();
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005d3c40

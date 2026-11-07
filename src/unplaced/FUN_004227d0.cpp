@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <windows.h>
+void pdExitPeripheral(void);
 void FUN_00422a30(void);
 int FUN_00422bb0(void);
 
@@ -28,10 +29,12 @@ void FUN_00422a30(void)
 {
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00422b20
 void FUN_00422b20(void)
 {
 }
+#pragma optimize("", on)
 
 #pragma optimize("", off)
 // STUB: SADX 0x00422b50
@@ -53,9 +56,16 @@ int FUN_00422bb0(void)
 	return (int)0;
 }
 
-// STUB: SADX 0x00422df0
+// FUNCTION: SADX 0x00422df0
 void G_DestroyGameLoadThread()
 {
+	gdFsFinish();
+	syRtcFinish();
+	pdExitPeripheral();
+	njExitSystem();
+	FUN_007d21b0();
+	syHwFinish();
+	FUN_00422b20();
 }
 
 // FUNCTION: SADX 0x00422e20

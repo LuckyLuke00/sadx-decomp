@@ -15,13 +15,13 @@ static void Disp(struct task *tp)
 		SetObjectTexture2(0x22);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(0, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(0, (unsigned short)var1->ang.x);
 		}
 		if (var1->ang.y != 0)
 		{
@@ -32,9 +32,18 @@ static void Disp(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00880650
+// FUNCTION: SADX 0x00880650
 static void Normal(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	char var2 = (char)var1->btimer;
+	var1->btimer = (unsigned char)(var2 - 1);
+	if (var2 == 0)
+	{
+		var1->btimer = 0x1e;
+		var1->mode = (var1->mode + 1) % 0x16;
+	}
+	Disp(tp);
 }
 
 // FUNCTION: SADX 0x00880690

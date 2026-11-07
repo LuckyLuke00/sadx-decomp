@@ -1,4 +1,6 @@
 #include "decls.h"
+void FUN_00600fc0(void *param_1);
+void GetMiniGameNowAvaStgActPrm(struct AvaStgActPrmT *stgactprmptr);
 void FUN_006011c0(void *param_1);
 void FUN_00606a50(struct task *param_1);
 void minigame_sel_sub_exec(struct MiniGameSelWk *wkp);
@@ -32,12 +34,23 @@ void FUN_00600f10(struct task *param_1, struct ModeSelPrmType *param_2)
 	struct anywk *local_8;
 
 	local_8 = param_1->awp;
-	*(void **)((char *)local_8 + 4) = *(void **)((char *)param_2 + 0);
-	*(void **)((char *)local_8 + 8) = *(void **)((char *)param_2 + 4);
-	*(float *)((char *)local_8 + 0xc) = 5100.0f;
-	*(int *)((char *)local_8 + 0) = 0;
+	local_8->work.ptr[1] = *(void **)param_2;
+	local_8->work.ptr[2] = *(void **)((char *)param_2 + 4);
+	local_8->work.f[3] = 5100.0f;
+	*(int *)local_8 = 0;
 	*(void **)((char *)local_8 + 0x30) = (void *)((char *)local_8 + 0x1c);
 	FUN_00600f70(local_8);
+}
+
+// FUNCTION: SADX 0x00600f70
+void FUN_00600f70(void *param_1)
+{
+	GetMiniGameNowAvaStgActPrm((struct AvaStgActPrmT *)((char *)param_1 + 0x30));
+	FUN_00600fc0(param_1);
+	*(int *)((char *)param_1 + 0xc8) = 0;
+	*(float *)((char *)param_1 + 0xc4) = 1.0f;
+	*(char *)((char *)param_1 + 0xcc) = 0xff;
+	*(int *)((char *)param_1 + 0x18) = 0;
 }
 
 // STUB: SADX 0x00600fc0
@@ -51,40 +64,40 @@ void minigame_sel_exec(struct task *tp)
 	struct MiniGameSelWk *local_8;
 
 	local_8 = (struct MiniGameSelWk *)tp->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 9 && *(int *)local_8 == 0)
+	if (DAT_05cda18c->awp->work.sl[1] == 9 && *(int *)local_8 == 0)
 	{
 		FUN_006011c0((void *)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 1;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 9 && *(int *)local_8 == 2)
+	if (DAT_05cda18c->awp->work.sl[2] == 9 && *(int *)local_8 == 2)
 	{
 		FUN_00606a50((struct task *)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 3;
 	}
 	switch (*(int *)local_8)
 	{
 	case 0:
-		*(int *)((char *)local_8 + 0x14) = 0;
+		local_8->BaseCol = 0;
 		break;
 	case 1:
-		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeInColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			*(int *)local_8 = 2;
 		}
 		break;
 	case 2:
-		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 9;
+		local_8->BaseCol = 0xffffffff;
+		DAT_05cda18c->awp->work.sl[3] = 9;
 		minigame_sel_sub_exec(local_8);
 		break;
 	case 3:
-		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			AvaReleaseTexForEachMode((AdvaModeEnum)9);
 			*(char *)((char *)DAT_05cda18c->awp + 0x1f) = 1;

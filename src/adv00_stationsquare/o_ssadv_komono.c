@@ -2,8 +2,8 @@
 extern long CheckRangeOut(struct task *pTask);
 extern struct obj object_ssobj_roomlight_roomlight[];
 extern struct obj object_ssobj_roomlight_roomlight[1];
-extern struct obj object_bin_bin_bin;
-extern struct CCL_INFO object_komono_bin_info;
+extern struct obj object_bin_bin_bin[1];
+extern struct CCL_INFO object_komono_bin_info[1];
 extern struct obj object_ssobj_isub_isub[1];
 extern struct CCL_INFO object_komono_isub_info[1];
 extern struct obj object_ssobj_isua_isua[1];
@@ -60,15 +60,15 @@ void Object_Ssadv_KomonoExec(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x0068ddd0
+// FUNCTION: SADX 0x0068ddd0
 void ObjectSsadvKomonoBin(struct task *tp)
 {
 	if (CheckRangeOut(tp) == 0)
 	{
-		tp->twp->counter.l = (long)&(*(struct obj (*)[1])&object_bin_bin_bin)[0];
+		tp->twp->counter.l = (long)object_bin_bin_bin;
 		if (FUN_004c39c0(tp) == 0)
 		{
-			CCL_Init(tp, &(*(struct CCL_INFO (*)[1])&object_komono_bin_info)[0], 1, 4);
+			CCL_Init(tp, object_komono_bin_info, 1, 4);
 		}
 		tp->disp = Object_Ssadv_KomonoDraw;
 		tp->exec = Object_Ssadv_KomonoExec;
@@ -95,7 +95,7 @@ void ObjectSsadvKomonoIsua(struct task *tp)
 {
 	if (CheckRangeOut(tp) == 0)
 	{
-		*(int *)((char *)tp->twp + 8) = (int)object_ssobj_isua_isua;
+		tp->twp->counter.l = (int)object_ssobj_isua_isua;
 		if (FUN_004c39c0(tp) == 0)
 		{
 			CCL_Init(tp, object_komono_isua_info, 2, 4);
@@ -110,7 +110,7 @@ void ObjectSsadvKomonoIsub(struct task *tp)
 {
 	if (CheckRangeOut(tp) == 0)
 	{
-		*(int *)((char *)tp->twp + 8) = (int)object_ssobj_isub_isub;
+		tp->twp->counter.l = (int)object_ssobj_isub_isub;
 		if (FUN_004c39c0(tp) == 0)
 		{
 			CCL_Init(tp, object_komono_isub_info, 2, 4);

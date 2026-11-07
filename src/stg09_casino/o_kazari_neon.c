@@ -1,11 +1,21 @@
 #include "decls.h"
 
+// STUB: SADX 0x0087fb50
+static void Disp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0087fc80
+static void Normal(struct task *tp)
+{
+}
+
 // STUB: SADX 0x0087fcf0
 void ObjectKazariStarNeon(struct task *tp)
 {
 }
 
-// STUB: SADX 0x0087fd20
+// FUNCTION: SADX 0x0087fd20
 void ObjectKazariYajiNeon(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
@@ -23,9 +33,9 @@ void ObjectKazariYajiNeon(struct task *tp)
 	}
 	tp->twp->counter.f = 0.0f;
 	tp->twp->btimer = 0;
-	tp->exec = (void (*)(struct task *))0x87fc80;
-	tp->disp = (void (*)(struct task *))0x87fb50;
-	tp->dest = (void (*)(struct task *))0x7d21b0;
+	tp->exec = Normal;
+	tp->disp = Disp;
+	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 }
 
 // STUB: SADX 0x0087fd80

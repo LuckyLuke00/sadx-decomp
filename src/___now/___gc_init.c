@@ -1,4 +1,7 @@
 #include "decls.h"
+void FUN_00422560(int param_1);
+void njSetZUpdateMode(long param_1);
+void ResetMaterial();
 extern unsigned char DAT_05cda0a4;
 extern int DAT_05cd14d4;
 void FUN_004a27c0();
@@ -9,6 +12,15 @@ void InitSystemTV()
 {
 	late_init();
 	input_init();
+}
+
+// FUNCTION: SADX 0x00598ba0
+void FUN_00598ba0()
+{
+	DAT_05cda0a4 = 0;
+	FUN_00422560(3);
+	njSetZUpdateMode(1);
+	ResetMaterial();
 }
 
 // STUB: SADX 0x00598bd0

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern char DAT_05cda0c6;
+extern char character_name[6][10];
 static unsigned char stageact_tbl[76][2];
 extern float DAT_05cda0f0[6];
 extern struct NJS_TEXANIM anim_hint2[6];
@@ -39,7 +41,7 @@ extern unsigned char DAT_05cda0c4;
 extern int DAT_05cda0c8;
 extern int DAT_05cda0e4;
 
-// STUB: SADX 0x00599aa0
+// FUNCTION: SADX 0x00599aa0
 void InitTitle()
 {
 	struct NJS_POINT3 u;
@@ -64,15 +66,12 @@ void InitTitle()
 	DAT_05cda0ec = 0;
 	DAT_05cda170 = 0;
 	dsLoadStageSound();
-	u.x = -6613.85986328125f;
-	u.y = -10572.419921875f;
-	u.z = -1697.969970703125f;
+	u.x = -6613.86f;
+	u.y = -10572.42f;
+	u.z = -1697.97f;
 	njPushMatrix(&_nj_unit_matrix_);
-	FUN_0067d830(0, -1482.6300048828125f, -4582.89013671875f, 5921.56005859375f);
-	if (1)
-	{
-		njRotateY(0, 0xce75);
-	}
+	FUN_0067d830(0, -1482.63f, -4582.89f, 5921.56f);
+	UNKNOWN_ROTATE_Y_MACRO(0, 0xce75);
 	njCalcPoint(0, &u, &DAT_05cda0cc);
 	njPopMatrix(1);
 }
@@ -376,9 +375,42 @@ void DisplaySelectingStage_ss()
 	njPrintColor(0xffffffff);
 }
 
-// STUB: SADX 0x0059b550
+// FUNCTION: SADX 0x0059b550
 void DisplaySelectingSequence()
 {
+	int local_8g;
+	int local_cj;
+	int local_10;
+	int local_14i;
+
+	if (DAT_05cda0e8 == 0xb)
+	{
+		local_10 = 0xff00ff00;
+		local_14i = 0xffdfdfdf;
+	}
+	else
+	{
+		local_10 = 0xff00bf00;
+		local_14i = 0xff7f7f7f;
+	}
+	njPrintColor((unsigned long)local_14i);
+	njPrintC(0x60008, "ADV SEQUENCE");
+	local_8g = 0xa;
+	for (local_cj = 0; local_cj < 6; local_cj = local_cj + 1)
+	{
+		if (local_cj == (char)DAT_05cda0c6)
+		{
+			njPrintColor((unsigned long)local_10);
+		}
+		else
+		{
+			njPrintColor((unsigned long)local_14i);
+		}
+		njPrintC(local_8g | 0x60000, &character_name[local_cj][0]);
+		njPrintC(local_8g | 0xe0000, "STORY");
+		local_8g = local_8g + 1;
+	}
+	njPrintColor(0xffffffff);
 }
 
 // FUNCTION: SADX 0x0059b630

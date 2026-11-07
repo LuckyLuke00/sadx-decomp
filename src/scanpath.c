@@ -17,7 +17,7 @@ unsigned long InitPathWork()
 	if (local_8g != 0)
 	{
 		local_cg = local_8g->twp;
-		*(unsigned short *)((char *)local_cg + 0xc) = (DAT_05b9d724 << 8) | DAT_05b9d744;
+		local_cg->timer.w[0] = (DAT_05b9d724 << 8) | DAT_05b9d744;
 		return 1;
 	}
 	return 0;
@@ -36,10 +36,10 @@ void ManagePathWork(struct task *tp)
 		break;
 	case 1:
 		local_cg = (DAT_05b9d724 << 8) | DAT_05b9d744;
-		if (*(short *)((char *)local_8g + 0xc) != local_cg)
+		if (local_8g->timer.w[0] != local_cg)
 		{
 			SetPathWork();
-			*(short *)((char *)local_8g + 0xc) = local_cg;
+			local_8g->timer.w[0] = local_cg;
 		}
 		break;
 	}
@@ -67,10 +67,26 @@ long SCPathOnposToPntnmb(struct pathtag *tag, float onpos, unsigned long *pntnmb
 	return (long)0;
 }
 
-// STUB: SADX 0x00570480
+// FUNCTION: SADX 0x00570480
 long SCPathPntnmbToOnpos(struct pathtag *tag, unsigned long pntnmb, float *onpos)
 {
-	return (long)0;
+	float local_8g;
+	struct pathtbl *local_10;
+	int local_cj;
+
+	if (pntnmb >= tag->points)
+	{
+		return 0;
+	}
+	local_8g = 0.0f;
+	local_10 = tag->tblhead;
+	for (local_cj = 0; local_cj < pntnmb; local_cj++)
+	{
+		local_10 = (struct pathtbl *)((char *)local_10 + 0x14);
+		local_8g += local_10->length;
+	}
+	*onpos = local_8g;
+	return 1;
 }
 
 // STUB: SADX 0x005704f0

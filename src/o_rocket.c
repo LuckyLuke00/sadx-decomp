@@ -94,8 +94,8 @@ void InitRocketBase_H(struct task *tp)
 // FUNCTION: SADX 0x005b7d60
 void GetAngleYZV(const struct NJS_POINT3 *vec, long *ang_y, long *ang_z)
 {
-	*ang_y = -(long)(atan2((double)vec->z, (double)vec->x) * 65536.0 / 6.283184);
-	*ang_z = (long)(atan2((double)vec->y, (double)njSqrt(vec->z * vec->z + vec->x * vec->x)) * 65536.0 / 6.283184);
+	*ang_y = -(long)(atan2(vec->z, vec->x) * 65536.0 / 6.283184);
+	*ang_z = (long)(atan2(vec->y, njSqrt(vec->z * vec->z + vec->x * vec->x)) * 65536.0 / 6.283184);
 }
 
 // FUNCTION: SADX 0x005b7e00
@@ -139,14 +139,25 @@ int FUN_005b8040(int param_1)
 	return 0;
 }
 
-// STUB: SADX 0x005b82c0
+// FUNCTION: SADX 0x005b82c0
 void FUN_005b82c0(int param_1)
 {
+	struct taskwk *local_8;
+
+	local_8 = *(struct taskwk **)((char *)param_1 + 0x20);
+	local_8->mode = 3;
+	local_8->value.f = ((struct NJS_ACTION *)local_8->counter.ptr)->motion->nbFrame - 1.0;
 }
 
-// STUB: SADX 0x005b8300
+// FUNCTION: SADX 0x005b8300
 void FUN_005b8300(int param_1)
 {
+	struct taskwk *local_8;
+
+	local_8 = *(struct taskwk **)((char *)param_1 + 0x20);
+	local_8->mode = 4;
+	local_8->value.f = ((struct NJS_ACTION *)local_8->counter.ptr)->motion->nbFrame - 1.0;
+	local_8->btimer &= ~4;
 }
 
 // FUNCTION: SADX 0x005b8350
@@ -170,8 +181,8 @@ void DstrRocketBase(struct task *tp)
 	struct taskwk *local_8;
 
 	local_8 = tp->twp;
-	WithdrawCollisionEntry(tp, *(struct obj **)((char *)local_8 + 0xc));
-	ReleaseMobileLandObject(*(struct obj **)((char *)local_8 + 0xc));
+	WithdrawCollisionEntry(tp, (struct obj *)local_8->timer.ptr);
+	ReleaseMobileLandObject((struct obj *)local_8->timer.ptr);
 }
 
 // STUB: SADX 0x005b8450
@@ -319,6 +330,14 @@ void FUN_005b93c0(struct task *param_1)
 {
 }
 
+// FUNCTION: SADX 0x005b9490
+void FUN_005b9490(struct task *param_1)
+{
+	struct taskwk *local_8 = param_1->twp;
+	param_1->ptp = 0;
+	DAT_05edc104[(int)(signed char)(local_8->smode)] = 0;
+}
+
 // STUB: SADX 0x005b94c0
 void DrawRocketJet(struct task *tp)
 {
@@ -338,13 +357,13 @@ void SetRocketSmoke(struct task *tp)
 		if (DAT_05b9d838 == 0)
 		{
 			njPushMatrix((NJS_MATRIX (*))_nj_unit_matrix_);
-			if (*(int *)((char *)local_cg + 0x18) != 0)
+			if (local_cg->ang.y != 0)
 			{
-				njRotateY(0, (int)*(unsigned short *)((char *)local_cg + 0x18));
+				njRotateY(0, (int)(unsigned short)local_cg->ang.y);
 			}
-			if (*(int *)((char *)local_cg + 0x1c) != 0)
+			if (local_cg->ang.z != 0)
 			{
-				njRotateZ(0, (int)*(unsigned short *)((char *)local_cg + 0x1c));
+				njRotateZ(0, (int)(unsigned short)local_cg->ang.z);
 			}
 			DAT_05b3ebe0 = -(local_8g->acc.x + 3.0);
 			DAT_05b3ebe4 = 0.0f;

@@ -1,5 +1,14 @@
 #include "decls.h"
 #include <string.h>
+void FUN_005b30b0(struct taskwk *param_1, char *param_2);
+struct thread;
+void FUN_0056b810(int param_1, unsigned char *param_2);
+void FUN_0056b8b0(void);
+struct thread *TH_CreateChild(struct thread *parent, void (*func)(void *), void *pParam, unsigned int stack_size);
+extern unsigned char DAT_0098b338;
+void FUN_0056b6d0(struct task *param_1);
+void FUN_0056b920(struct task *param_1);
+void FUN_004e2f70(int param_1, int param_2);
 void *TH_GetWork(struct thread *tp);
 void EV_Destruct();
 extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
@@ -48,6 +57,25 @@ static void dsEventFinish();
 static void dsEventADXReinit(struct task *tp);
 static void EV_CanselThread(void (*func)(int));
 
+// FUNCTION: SADX 0x0056a200
+void FUN_0056a200(struct task *param_1)
+{
+	struct motionwk *local_8g;
+	int local_cg;
+	if (param_1 != 0)
+	{
+		if (param_1->mwp != 0)
+		{
+			local_8g = param_1->mwp;
+			if (local_8g->work.ptr != 0)
+			{
+				local_cg = (int)local_8g->work.ptr;
+				FUN_004e2f70((int)local_8g, local_cg);
+			}
+		}
+	}
+}
+
 // FUNCTION: SADX 0x0056a250
 void EV_Init()
 {
@@ -58,6 +86,29 @@ void EV_Init()
 	DAT_05b42c1c = 1;
 	DAT_05ccddfe = 0;
 	current_event = -1;
+}
+
+// FUNCTION: SADX 0x0056a2a0
+void FUN_0056a2a0()
+{
+	PadReadOn();
+}
+
+// FUNCTION: SADX 0x0056a2b0
+void FUN_0056a2b0()
+{
+	PadReadOff();
+}
+
+// FUNCTION: SADX 0x0056a2c0
+void FUN_0056a2c0()
+{
+	void *local_8;
+	local_8 = TH_GetWork(0);
+	if (DAT_05ccde0c == 0)
+	{
+		DAT_05ccde0c = *(int *)local_8;
+	}
 }
 
 // FUNCTION: SADX 0x0056a2f0
@@ -583,6 +634,65 @@ void EV_CreateObjectFunc(struct task **tp, struct task *(*func)(), float px, flo
 	}
 }
 
+// FUNCTION: SADX 0x0056b2f0
+void FUN_0056b2f0(struct task **param_1)
+{
+	if (*param_1 != 0)
+	{
+		FreeTask(*param_1);
+	}
+	*param_1 = 0;
+}
+
+// FUNCTION: SADX 0x0056b320
+void FUN_0056b320(struct task *param_1)
+{
+	if (param_1)
+	{
+		FUN_0056b6d0(param_1);
+		EV_ClrPath(param_1);
+		FUN_0056b920(param_1);
+		EV_MoveFree(param_1);
+		EV_ClrFace(param_1);
+	}
+}
+
+// FUNCTION: SADX 0x0056b370
+void FUN_0056b370(struct task *param_1, float param_2, float param_3, float param_4)
+{
+	struct taskwk *local_8;
+
+	if (param_1 != 0)
+	{
+		local_8 = param_1->twp;
+		FUN_0056a200(param_1);
+		local_8->pos.x = param_2;
+		local_8->pos.y = param_3;
+		local_8->pos.z = param_4;
+		if (local_8->cwp != 0)
+		{
+			if (local_8->cwp->id == 0)
+			{
+				SetPlayerPosition(local_8->counter.b[0], 0, &local_8->pos, 0);
+			}
+		}
+	}
+}
+
+// FUNCTION: SADX 0x0056b3e0
+void FUN_0056b3e0(struct task *param_1, long param_2, long param_3, long param_4)
+{
+	struct taskwk *local_8;
+	if (param_1 != 0)
+	{
+		local_8 = param_1->twp;
+		FUN_0056a200(param_1);
+		local_8->ang.x = param_2;
+		local_8->ang.y = 0x4000 - param_3;
+		local_8->ang.z = param_4;
+	}
+}
+
 // FUNCTION: SADX 0x0056b430
 void EV_SetMode(struct task *tp, int mode)
 {
@@ -597,7 +707,7 @@ void EV_SetShadow(struct task *tp, float size)
 {
 	if (tp != 0)
 	{
-		*(float *)((char *)tp->twp->ewp + 0x78) = size;
+		tp->twp->ewp->shadowSize = size;
 	}
 }
 
@@ -606,7 +716,7 @@ void EV_SetColli(struct task *tp, float size)
 {
 	if (tp != 0)
 	{
-		*(float *)((char *)tp->twp->cwp->info + 0x14) = size;
+		tp->twp->cwp->info->a = size;
 	}
 }
 
@@ -625,6 +735,24 @@ void EV_InitPlayer(int n)
 {
 }
 
+// FUNCTION: SADX 0x0056b650
+void FUN_0056b650(struct task *param_1, struct NJS_ACTION *param_2, struct NJS_TEXLIST *param_3, float param_4, int param_5, int param_6)
+{
+	if (param_1 != 0)
+	{
+		EntryEventAction(param_1->twp, param_2, param_3, param_4, param_5, param_6);
+	}
+}
+
+// FUNCTION: SADX 0x0056b6d0
+void FUN_0056b6d0(struct task *param_1)
+{
+	if (param_1 != 0)
+	{
+		FreeEventAction(param_1->twp);
+	}
+}
+
 // FUNCTION: SADX 0x0056b6f0
 void FUN_0056b6f0(void *param_1)
 {
@@ -634,6 +762,15 @@ void FUN_0056b6f0(void *param_1)
 		{
 			FUN_0056aea0(1);
 		}
+	}
+}
+
+// FUNCTION: SADX 0x0056b720
+void FUN_0056b720(struct task *param_1, struct EPATHTAG *param_2, float param_3, int param_4)
+{
+	if (param_1 != 0)
+	{
+		EntryEventPath(param_1->twp, param_2, param_3, param_4);
 	}
 }
 
@@ -658,9 +795,34 @@ void FUN_0056b770(int param_1)
 	}
 }
 
+// FUNCTION: SADX 0x0056b7a0
+void FUN_0056b7a0(int param_1, int param_2)
+{
+	void *local_cg;
+	struct thread *local_8g;
+
+	FUN_0056aea0(1);
+	local_8g = TH_CreateChild(0, (void (__cdecl *)(void *))FUN_0056b8b0, 0, 0);
+	if (local_8g != 0)
+	{
+		local_cg = TH_GetWork(local_8g);
+		*(char *)local_cg = (char)param_1;
+		*(int *)((char *)local_cg + 4) = param_2;
+	}
+	FUN_0056b810(param_1, &DAT_0098b338);
+	FUN_0056aea0(1);
+}
+
 // STUB: SADX 0x0056b810
 void FUN_0056b810(int param_1, unsigned char *param_2)
 {
+}
+
+// FUNCTION: SADX 0x0056b920
+void FUN_0056b920(struct task *param_1)
+{
+	if (param_1 != 0)
+		param_1->twp->ewp->look.mode = 0;
 }
 
 // FUNCTION: SADX 0x0056b940
@@ -671,7 +833,7 @@ void EV_LookObject(struct task *tp, struct task *target, float x, float y, float
 	{
 		local_8 = tp->twp->ewp;
 		local_8->look.mode = 3;
-		*(struct task **)((char *)local_8 + 0x20) = target;
+		local_8->look.obj = target;
 		local_8->look.pos.x = x;
 		local_8->look.pos.y = y;
 		local_8->look.pos.z = z;
@@ -712,10 +874,28 @@ void EV_MoveFree(struct task *tp)
 	if (tp != 0)
 	{
 		local_8 = tp->twp->ewp;
-		*(char *)((char *)local_8 + 0x24) = 0;
-		*(float *)((char *)local_8 + 0x34) = 0.0f;
-		*(float *)((char *)local_8 + 0x38) = 0.0f;
+		local_8->move.mode = 0;
+		local_8->move.run_speed = 0.0f;
+		local_8->move.run_accel = 0.0f;
 	}
+}
+
+// FUNCTION: SADX 0x0056ba50
+void FUN_0056ba50(struct task *param_1, float param_2, float param_3, float param_4)
+{
+	struct taskwk *local_8g;
+	if (param_1 != 0)
+	{
+		local_8g = (struct taskwk *)param_1->twp->ewp;
+		FUN_0056a200(param_1);
+		*(unsigned char *)((char *)local_8g + 0x24) = 2;
+		local_8g->pos.z = param_2;
+		local_8g->scl.x = param_3;
+		local_8g->scl.y = param_4;
+		local_8g->scl.z = 0.0f;
+		*(float *)((char *)local_8g + 0x38) = 0.0f;
+	}
+	return;
 }
 
 // FUNCTION: SADX 0x0056bab0
@@ -741,10 +921,10 @@ void EV_MoveRotation(struct task *tp, long x, long y, long z)
 	if (tp != 0)
 	{
 		struct eventwk *local_8 = tp->twp->ewp;
-		*(char *)((char *)local_8 + 0x24) = 5;
-		*(long *)((char *)local_8 + 0x28) = x;
-		*(long *)((char *)local_8 + 0x2c) = y;
-		*(long *)((char *)local_8 + 0x30) = z;
+		local_8->move.mode = 5;
+		local_8->move.param.ang.x = x;
+		local_8->move.param.ang.y = y;
+		local_8->move.param.ang.z = z;
 	}
 }
 
@@ -755,10 +935,22 @@ void FUN_0056bb50(struct task *param_1)
 	if (param_1 != 0)
 	{
 		local_8 = param_1->twp->ewp;
-		while (*(unsigned char *)((char *)local_8 + 0x24) != 0)
+		while (local_8->move.mode != 0)
 		{
 			FUN_0056aea0(1);
 		}
+	}
+}
+
+// FUNCTION: SADX 0x0056bcd0
+void FUN_0056bcd0()
+{
+	int *local_8g = (int *)TH_GetWork(0);
+	int *local_cg = (int *)&DAT_05ccdd28;
+	if (*(int *)((char *)local_cg + 0xcc) == *local_8g)
+	{
+		*(int *)((char *)local_cg + 0xcc) = 0;
+		CameraReleaseEventCamera();
 	}
 }
 
@@ -832,7 +1024,7 @@ void FUN_0056cc30(int param_1)
 void EV_CameraPos(int mode, int time, float x, float y, float z)
 {
 	int *local_8 = (int *)&DAT_05ccdd28;
-	*(char *)((char *)local_8 + 0) = (char)mode;
+	*(char *)local_8 = (char)mode;
 	*(float *)((char *)local_8 + 0x3c) = x;
 	*(float *)((char *)local_8 + 0x40) = y;
 	*(float *)((char *)local_8 + 0x44) = z;
@@ -847,6 +1039,41 @@ void FUN_0056ccc0(int param_1)
 // STUB: SADX 0x0056cd10
 void EV_CameraPosORY(int mode, int time, struct task *tp, float x, float y, float z)
 {
+}
+
+// FUNCTION: SADX 0x0056cde0
+void FUN_0056cde0(void)
+{
+	int *local_8 = (int *)&DAT_05ccdd28;
+	*(char *)((char *)local_8 + 0x54) = 0;
+}
+
+// FUNCTION: SADX 0x0056ce00
+void FUN_0056ce00(char param_1, int param_2, float param_3, float param_4, float param_5, int param_6)
+{
+	int *local_8 = (int *)&DAT_05ccdd28;
+	*(char *)((char *)local_8 + 0x01) = param_1;
+	*(char *)((char *)local_8 + 0x54) = 1;
+	*(float *)((char *)local_8 + 0x58) = param_3;
+	*(float *)((char *)local_8 + 0x5c) = param_4;
+	*(float *)((char *)local_8 + 0x60) = param_5;
+	*(int *)((char *)local_8 + 0x50) = param_6;
+	FUN_0056cc30(param_2);
+}
+
+// FUNCTION: SADX 0x0056ce50
+void FUN_0056ce50(char param_1, int param_2, int param_3, float param_4, float param_5, float param_6, int param_7)
+{
+	char *local_8;
+	local_8 = (char *)&DAT_05ccdd28;
+	*(char *)(local_8 + 1) = param_1;
+	*(char *)(local_8 + 0x54) = 2;
+	*(int *)(local_8 + 0x64) = param_3;
+	*(float *)(local_8 + 0x58) = param_4;
+	*(float *)(local_8 + 0x5c) = param_5;
+	*(float *)(local_8 + 0x60) = param_6;
+	*(int *)(local_8 + 0x50) = param_7;
+	FUN_0056cc30(param_2);
 }
 
 // FUNCTION: SADX 0x0056ceb0
@@ -880,6 +1107,17 @@ void EV_CameraPath(struct cpathtag *path, float speed)
 {
 }
 
+// FUNCTION: SADX 0x0056d0b0
+void FUN_0056d0b0(struct task *param_1, char *param_2)
+{
+	struct taskwk *local_8;
+	if (param_1 != NULL)
+	{
+		local_8 = param_1->twp;
+		FUN_005b30b0(local_8, param_2);
+	}
+}
+
 // FUNCTION: SADX 0x0056d0e0
 void EV_ClrFace(struct task *tp)
 {
@@ -907,4 +1145,10 @@ void EV_SerifPlay(int id)
 {
 	EV_CameraOff();
 	Serif_Play(id);
+}
+
+// FUNCTION: SADX 0x0056d160
+void FUN_0056d160(struct AlrReal *param_1)
+{
+	Serif_Stop();
 }

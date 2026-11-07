@@ -35,9 +35,21 @@ void CheckGravity(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00804340
+// FUNCTION: SADX 0x00804340
 void FUN_00804340(struct task *param_1)
 {
+	struct taskwk *var1;
+	var1 = DAT_05baf368[0];
+	if (var1 != 0 && var1->pos.y > 2250.0f)
+	{
+		*(char *)param_1->twp = 0;
+		ADX_Close();
+		LandChangeStage(1);
+		AddSetStage(1);
+		AddCameraStage(1);
+		AdvanceAct(1);
+		SetPlayerInitialPosition(var1);
+	}
 }
 
 // FUNCTION: SADX 0x008043a0

@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float now_dist;
+extern float max_dist;
 
 // GLOBAL: SADX 0x043ac2ec
 static struct CCL_INFO object_c_info[1];
@@ -26,29 +28,29 @@ void DrawMirror(struct task *tp)
 	{
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
 		SetObjectTexture();
 		___dsDrawObject((struct obj *)&object_mirror_mirrorbox_1_mirrorbox_1);
 		if (DAT_060d12b8 == 1)
 		{
-			if (-*(int *)((char *)DAT_05b42a7c + 0x1c) != 0)
+			if (-DAT_05b42a7c->ang.z != 0)
 			{
-				njRotateZ(NULL, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x1c)));
+				njRotateZ(NULL, (unsigned short)(-(short)(short)DAT_05b42a7c->ang.z));
 			}
-			if (-*(int *)((char *)DAT_05b42a7c + 0x14) != 0)
+			if (-DAT_05b42a7c->ang.x != 0)
 			{
-				njRotateX(NULL, (unsigned short)(-(short)*(short *)((char *)DAT_05b42a7c + 0x14)));
+				njRotateX(NULL, (unsigned short)(-(short)(short)DAT_05b42a7c->ang.x));
 			}
 		}
 		late_DrawModelClip((struct NJS_MODEL *)&model_mirror_hikari_hikari_hikari, 0, 1.0f);
@@ -76,9 +78,25 @@ void DrawMrSnake(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x0084ff90
+// FUNCTION: SADX 0x0084ff90
 void ChangeFogDensity(float dist, float density_speed, struct task *tp)
 {
+	if (dist > now_dist)
+	{
+		now_dist = now_dist + density_speed;
+	}
+	else
+	{
+		now_dist = now_dist - density_speed;
+	}
+	if (now_dist > max_dist)
+	{
+		now_dist = max_dist;
+	}
+	*(int *)((char *)&DAT_05b3e040 + 8) = 0xff000000;
+	DAT_05b3e040.a = 8.0f;
+	DAT_05b3e040.r = 210.0 - now_dist;
+	___njFogEnable();
 }
 
 // STUB: SADX 0x00850010
@@ -96,7 +114,7 @@ void DrawFogHasira(struct task *tp)
 		return;
 	}
 	SetObjectTexture();
-	if (*(float *)((char *)var1 + 0x30) == (float)DAT_060d12bb)
+	if (var1->scl.y == (float)DAT_060d12bb)
 	{
 		___njFogDisable();
 	}
@@ -106,9 +124,9 @@ void DrawFogHasira(struct task *tp)
 	}
 	njPushMatrix(0);
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
-	if (*(int *)((char *)var1 + 0x1c))
+	if (var1->ang.z)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+		njRotateZ(0, (unsigned short)var1->ang.z);
 	}
 	if (var1->ang.x)
 	{

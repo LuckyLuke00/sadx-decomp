@@ -11,7 +11,7 @@ void FUN_0059da10(int param_1);
 void FUN_0059d700(void *param_1);
 void FUN_0059d6b0(struct task *param_1);
 
-// STUB: SADX 0x0059d4b0
+// FUNCTION: SADX 0x0059d4b0
 struct task *SetAdvaSequenceTask(struct SeqPrmType *prmp)
 {
 	struct task *local_8g;

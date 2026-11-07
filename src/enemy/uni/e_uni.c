@@ -9,11 +9,11 @@ void UniTogeA(struct task *tp);
 extern struct obj object_uni_c_unibody_unibody[1];
 void UniTogeCDraw(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005cd0c0(struct task *param_1, struct motionwk *param_2);
-void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
+void FUN_005ca750(struct taskwk *param_1, struct enemywk *param_2);
 extern struct obj object_uni_a_unibody_unibody[];
 extern struct NJS_TEXLIST texlist_uni_a_unibody;
 void CheckParentDeath(struct task *tp, struct enemywk *ewp);
-void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
+void FUN_005ca750(struct taskwk *param_1, struct enemywk *param_2);
 void UniTogeADraw(struct taskwk *twp, struct enemywk *ewp);
 void EnemyCheckGroundCollision(struct taskwk *twp, struct enemywk *ewp);
 void FUN_005ccf30(struct task *param_1, struct motionwk *param_2);
@@ -24,7 +24,7 @@ void FUN_005cad80(struct task *param_1, struct taskwk *param_2, struct motionwk 
 void FUN_005cae50(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005cafa0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005cad80(struct task *param_1, struct taskwk *param_2, struct motionwk *param_3);
-void FUN_005caab0(struct task *param_1, struct task *param_2);
+void FUN_005caab0(struct taskwk *param_1, struct enemywk *param_2);
 static void UniCDraw(struct taskwk *twp, struct enemywk *ewp);
 void FUN_0067d830(float *param_1, float param_2, float param_3, float param_4);
 extern struct NJS_TEXLIST texlist_uni_c_unibody;
@@ -33,7 +33,7 @@ extern struct NJS_TEXLIST texlist_togeball_togeball;
 extern struct obj object_togeball_togeball_togeball;
 struct task;
 struct enemywk;
-void FUN_005ca750(struct task *param_1, struct taskwk *param_2);
+void FUN_005ca750(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_005ca420(struct task *param_1, int param_2);
 void UniADraw(struct taskwk *twp, struct enemywk *ewp);
 signed char EnemySearchPlayer(struct taskwk *twp, struct enemywk *ewp);
@@ -65,13 +65,37 @@ void UniTogeARound(struct task *tp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005ca670
+// FUNCTION: SADX 0x005ca670
 void UniTogeAThrown(struct task *tp, struct enemywk *ewp)
 {
+	struct taskwk *local_1c;
+	struct NJS_POINT3 *local_18;
+	float local_14;
+	struct colliwk *local_10;
+	long local_cj;
+	long local_8g;
+
+	local_1c = tp->twp;
+	local_10 = local_1c->cwp;
+	local_18 = &tp->ptp->twp->pos;
+	local_cj = tp->ptp->twp->ang.y;
+	local_14 = ewp->height;
+	local_8g = ewp->sub_angle[0] & 0xffff;
+	FUN_005ca750(local_1c, ewp);
+	EnemyCheckGroundCollision(local_1c, ewp);
+	if (ewp->flag & 0x50)
+	{
+		ewp->old_mode = local_1c->mode;
+		local_1c->mode = 3;
+		local_1c->wtimer = 0;
+	}
+	UniTogeADraw(local_1c, ewp);
+	ewp->sub_angle[0] += 0x200;
+	ewp->height += 0.3f;
 }
 
 // STUB: SADX 0x005ca750
-void FUN_005ca750(struct task *param_1, struct taskwk *param_2)
+void FUN_005ca750(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
@@ -85,7 +109,7 @@ void UniADisplayer(struct task *tp)
 	UniADraw(local_cg, local_8g);
 }
 
-// STUB: SADX 0x005ca7f0
+// FUNCTION: SADX 0x005ca7f0
 void UniADraw(struct taskwk *twp, struct enemywk *ewp)
 {
 	float local_cg;
@@ -99,15 +123,9 @@ void UniADraw(struct taskwk *twp, struct enemywk *ewp)
 	___njSetTexture(&texlist_uni_a_unibody);
 	ResetMaterial();
 	njPushMatrix(0);
-	FUN_0067d830(0, twp->pos.x, njSin(ewp->sub_angle[0]) * 0.4000000059604645f + twp->pos.y, twp->pos.z);
-	if (*(int *)((char *)twp + 0x18) != 0)
-	{
-		njRotateY(0, *(unsigned short *)((char *)twp + 0x18));
-	}
-	if (1)
-	{
-		njRotateY(0, 0x8000);
-	}
+	FUN_0067d830(0, twp->pos.x, njSin(ewp->sub_angle[0]) * 0.4f + twp->pos.y, twp->pos.z);
+	UNKNOWN_ROTATE_Y_MACRO(0, twp->ang.y);
+	UNKNOWN_ROTATE_Y_MACRO(0, 0x8000);
 	___dsDrawObject((struct obj *)&object_uni_a_unibody_unibody);
 	njPopMatrix(1);
 	dispPoliceShadow(twp, ewp);
@@ -118,9 +136,28 @@ void UniAExecutor(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005caab0
-void FUN_005caab0(struct task *param_1, struct task *param_2)
+// FUNCTION: SADX 0x005caab0
+void FUN_005caab0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	short local_18;
+	short local_14;
+	struct colliwk *local_10;
+	struct taskwk *local_cj;
+	struct colliwk *local_8g;
+
+	local_cj = DAT_05baf368[0];
+	local_18 = local_cj->flag;
+	local_14 = param_1->cwp->hit_num;
+	local_10 = param_1->cwp;
+	local_8g = param_1->cwp->hit_cwp;
+	if (EnemyCheckDamage(param_1, param_2))
+	{
+		param_1->mode = 9;
+		param_1->counter.b[1] = 0;
+		param_1->counter.b[2] = 1;
+		param_1->scl.z = 0.35f;
+		param_1->cwp->mytask->disp = 0;
+	}
 }
 
 // STUB: SADX 0x005cab40
@@ -163,9 +200,9 @@ void FUN_005cae50(struct taskwk *param_1, struct enemywk *param_2)
 // FUNCTION: SADX 0x005caec0
 void FUN_005caec0(struct taskwk *param_1, struct enemywk *param_2)
 {
-	param_2->acc.x = -param_2->velo.x * 0.029999999329447746f + param_2->acc.x;
-	param_2->acc.y = -param_2->velo.y * 0.029999999329447746f + param_2->acc.y;
-	param_2->acc.z = -param_2->velo.z * 0.029999999329447746f + param_2->acc.z;
+	param_2->acc.x = -param_2->velo.x * 0.03f + param_2->acc.x;
+	param_2->acc.y = -param_2->velo.y * 0.03f + param_2->acc.y;
+	param_2->acc.z = -param_2->velo.z * 0.03f + param_2->acc.z;
 	param_2->velo.x += param_2->acc.x;
 	param_2->velo.y += param_2->acc.y;
 	param_2->velo.z += param_2->acc.z;
@@ -190,8 +227,8 @@ void FUN_005cafa0(struct taskwk *param_1, struct enemywk *param_2)
 		param_1->mode = 3;
 		param_1->wtimer = 0;
 	}
-	param_2->acc.x = njCos(param_1->ang.y) * 0.019999999552965164f;
-	param_2->acc.z = njSin(-param_1->ang.y) * 0.019999999552965164f;
+	param_2->acc.x = njCos(param_1->ang.y) * 0.02f;
+	param_2->acc.z = njSin(-param_1->ang.y) * 0.02f;
 	FUN_005caec0(param_1, param_2);
 	FUN_005cb190((struct task *)param_1, param_2);
 	UniADraw(param_1, param_2);
@@ -253,9 +290,9 @@ void FUN_005cb270(struct taskwk *param_1, struct enemywk *param_2)
 	FUN_005cb140(param_1, param_2);
 	FUN_005cb0d0(param_1, param_2);
 	FUN_005cb070(param_1, param_2);
-	FUN_005caab0((struct task *)param_1, (struct task *)param_2);
-	param_2->acc.x = njCos(param_1->ang.y) * 0.019999999552965164f;
-	param_2->acc.z = njSin(-param_1->ang.y) * 0.019999999552965164f;
+	FUN_005caab0(param_1, param_2);
+	param_2->acc.x = njCos(param_1->ang.y) * 0.02f;
+	param_2->acc.z = njSin(-param_1->ang.y) * 0.02f;
 	FUN_005caec0(param_1, param_2);
 	FUN_005cb190((struct task *)param_1, param_2);
 	UniADraw(param_1, param_2);
@@ -282,9 +319,9 @@ void UniTogeADisplayer(struct task *tp)
 	ResetMaterial();
 	njPushMatrix(0);
 	njTranslateV(0, &local_cg->pos);
-	if (*(int *)((char *)local_cg + 0x1c) != 0)
+	if (local_cg->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)local_cg + 0x1c));
+		njRotateZ(0, (unsigned short)local_cg->ang.z);
 	}
 	if (local_cg->ang.x != 0)
 	{
@@ -346,7 +383,7 @@ void FUN_005cbe60(struct task *param_1, struct taskwk *param_2)
 	{
 		((char *)param_2)[0x49] = *(char *)local_cg;
 		*(char *)local_cg = 3;
-		*(short *)((char *)local_cg + 6) = 0;
+		local_cg->wtimer = 0;
 	}
 }
 
@@ -407,13 +444,13 @@ void UniTogeCDisplayer(struct task *tp)
 	ResetMaterial();
 	njPushMatrix(0);
 	njTranslateV(0, &local_cg->pos);
-	if (*(int *)((char *)local_cg + 0x1c) != 0)
+	if (local_cg->ang.z != 0)
 	{
-		njRotateZ(0, (int)*(unsigned short *)((char *)local_cg + 0x1c));
+		njRotateZ(0, (int)(unsigned short)local_cg->ang.z);
 	}
-	if (*(int *)((char *)local_cg + 0x14) != 0)
+	if (local_cg->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)local_cg + 0x14));
+		njRotateX(0, (unsigned short)local_cg->ang.x);
 	}
 	FUN_0067d2d0(0, 0.6f, 0.6f, 0.6f);
 	___dsDrawModel((struct NJS_MODEL *)*(int *)((char *)&object_uni_c_fireball_fireball + 4));
@@ -495,7 +532,7 @@ void UniCDisplayer(struct task *tp)
 	UniCDraw(local_cg, local_8g);
 }
 
-// STUB: SADX 0x005cd440
+// FUNCTION: SADX 0x005cd440
 static void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 {
 	float local_cg;
@@ -509,15 +546,9 @@ static void UniCDraw(struct taskwk *twp, struct enemywk *ewp)
 	___njSetTexture(&texlist_uni_c_unibody);
 	ResetMaterial();
 	njPushMatrix(0);
-	FUN_0067d830(0, twp->pos.x, njSin(ewp->sub_angle[0]) * 0.4000000059604645f + twp->pos.y, twp->pos.z);
-	if (*(int *)((char *)twp + 0x18) != 0)
-	{
-		njRotateY(0, *(unsigned short *)((char *)twp + 0x18));
-	}
-	if (1)
-	{
-		njRotateY(0, 0x8000);
-	}
+	FUN_0067d830(0, twp->pos.x, njSin(ewp->sub_angle[0]) * 0.4f + twp->pos.y, twp->pos.z);
+	UNKNOWN_ROTATE_Y_MACRO(0, twp->ang.y);
+	UNKNOWN_ROTATE_Y_MACRO(0, 0x8000);
 	___dsDrawObject((struct obj *)&object_uni_c_unibody_unibody);
 	njPopMatrix(1);
 	dispPoliceShadow(twp, ewp);

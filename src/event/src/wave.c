@@ -19,7 +19,7 @@ static void dispWaveTask(struct task *p_task)
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
 	FUN_0067d2d0(0, var2->spd.x, 1.0f, var2->spd.x);
-	___dsDrawShapeMotion((const struct obj *)&object_wave7_wa_wa, (const struct NJS_MOTION *)&motion_wave7_wa, (const struct NJS_MOTION *)&shape_wave7_wa, *(float *)((char *)var1 + 8));
+	___dsDrawShapeMotion((const struct obj *)&object_wave7_wa_wa, (const struct NJS_MOTION *)&motion_wave7_wa, (const struct NJS_MOTION *)&shape_wave7_wa, var1->counter.f);
 	njPopMatrix(1);
 }
 
@@ -98,7 +98,7 @@ void initWaveCtrlTask(struct task *p_task)
 	p_task->dest = FUN_007d6940;
 }
 
-// STUB: SADX 0x007d78a0
+// FUNCTION: SADX 0x007d78a0
 void createWaveCtrl(float pos_x, float pos_y, float pos_z, float play_spd, float scale, int wave_int, int life_int, int id)
 {
 	struct task *var1;
@@ -116,7 +116,7 @@ void createWaveCtrl(float pos_x, float pos_y, float pos_z, float play_spd, float
 	var2->counter.l = 0;
 	var2->pos.z = pos_z;
 	var3->work.f[0] = play_spd;
-	*(int *)&var3->work.f[2] = wave_int;
-	*(int *)&var3->work.f[3] = life_int;
+	var3->work.sl[2] = wave_int;
+	var3->work.sl[3] = life_int;
 	var3->work.f[1] = scale;
 }

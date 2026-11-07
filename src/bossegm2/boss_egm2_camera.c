@@ -1,4 +1,10 @@
 #include "decls.h"
+extern struct taskwk *DAT_05baf368[8];
+extern struct CCL_INFO colliInfo[1];
+extern struct taskwk *DAT_060b9b10;
+extern float DAT_060b9b00;
+extern float DAT_060b9b04;
+extern float DAT_060b9b08;
 extern int DAT_060b9aa0;
 extern int DAT_060b9ab0;
 void FUN_006c7ea0();
@@ -22,6 +28,40 @@ void FUN_006c7740(void)
 {
 }
 #pragma optimize("", on)
+
+// FUNCTION: SADX 0x006c7d40
+void FUN_006c7d40(void)
+{
+	struct _camcontwk *var1;
+	struct _camcontwk *var2;
+	struct _camcontwk *var3;
+	var1 = camcont_wp;
+	if (*(float *)((char *)var1 + 0x10) < 2.5f)
+	{
+		*(float *)((char *)var1 + 0x10) = 2.5f;
+	}
+	var2 = camcont_wp;
+	if (*(float *)((char *)var2 + 0xc) < -537.0f)
+	{
+		*(float *)((char *)var2 + 0xc) = -537.0f;
+	}
+	if (*(float *)((char *)var2 + 0xc) > -350.0f)
+	{
+		*(float *)((char *)var2 + 0xc) = -350.0f;
+	}
+	var3 = camcont_wp;
+	if (*(float *)((char *)var3 + 0x14) < 910.0f)
+	{
+		*(float *)((char *)var3 + 0x14) = 910.0f;
+	}
+	if (*(float *)((char *)var3 + 0x14) > 1500.0f)
+	{
+		*(float *)((char *)var3 + 0x14) = 1500.0f;
+	}
+	DAT_060b9b00 = *(float *)((char *)var2 + 0xc);
+	DAT_060b9b04 = *(float *)((char *)var1 + 0x10);
+	DAT_060b9b08 = *(float *)((char *)var3 + 0x14);
+}
 
 // FUNCTION: SADX 0x006c7df0
 void egm2_sky_display()
@@ -59,6 +99,24 @@ void Egm2CameraTaoreSet()
 	DAT_060b9ae4 = 1;
 }
 
+// FUNCTION: SADX 0x006c82d0
+void FUN_006c82d0(void)
+{
+	struct task *local_4;
+	struct taskwk *local_8;
+
+	local_4 = CreateElementalTask(2, 3, (void (__cdecl *)(struct task *))FUN_006877a0);
+	if (local_4 != NULL)
+	{
+		local_8 = local_4->twp;
+		EnemyInitialize(local_4, local_8);
+		local_8->pos = DAT_05baf368[0]->pos;
+		local_4->exec = (void (__cdecl *)(struct task *))FUN_006877a0;
+		CCL_Init(local_4, (struct CCL_INFO *)&colliInfo, 1, 5);
+		DAT_060b9b10 = (struct taskwk *)&local_8->pos;
+	}
+}
+
 // FUNCTION: SADX 0x006c8330
 struct taskwk *Egm2StartPositionTask(struct NJS_POINT3 *pos)
 {
@@ -79,7 +137,7 @@ struct taskwk *Egm2StartPositionTask(struct NJS_POINT3 *pos)
 // FUNCTION: SADX 0x006c8420
 void egm2_camera(struct _OBJ_CAMERAPARAM *pParam)
 {
-	DAT_060b9ab0 = -16384 - (int)((double)atan2(*(float *)((char *)camcont_wp + 0x20) - *(float *)((char *)camcont_wp + 0x14), *(float *)((char *)camcont_wp + 0x18) - *(float *)((char *)camcont_wp + 0xc)) * 65536.0 / 6.283184);
+	DAT_060b9ab0 = -16384 - (int)(atan2(*(float *)((char *)camcont_wp + 0x20) - *(float *)((char *)camcont_wp + 0x14), *(float *)((char *)camcont_wp + 0x18) - *(float *)((char *)camcont_wp + 0xc)) * 65536.0 / 6.283184);
 	egm2_player_position();
 	FUN_006c7740();
 	if (DAT_060b9abc == 1 || DAT_060b9ab4 == 1)

@@ -7,9 +7,24 @@ extern unsigned char DAT_05bafc0b;
 extern unsigned char DAT_05bafc49;
 extern unsigned char DAT_05bafcc8;
 
-// STUB: SADX 0x00692ca0
+// FUNCTION: SADX 0x00692ca0
 void ec_bgmcontrol(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	if (slEventBossName == -1)
+	{
+		var1->wtimer--;
+		if ((short)var1->wtimer < 0)
+		{
+			if (dsCheckBGMActive())
+			{
+				RoundBGM_Play(var1->mode);
+			}
+			DestroyTask(tp);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x00692ce0

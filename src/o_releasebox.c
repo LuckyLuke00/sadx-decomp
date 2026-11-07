@@ -1,4 +1,6 @@
 #include "decls.h"
+int FUN_005ac4e0(int param_1);
+void FUN_005abd40(int param_1);
 void FUN_005abbc0(struct task *param_1);
 void FUN_005ac3c0(struct task *param_1);
 void FUN_005ac3c0(struct task *param_1);
@@ -69,6 +71,18 @@ void FUN_005abbc0(struct task *param_1)
 void relbox_exec_normal(struct task *task_p)
 {
 	CheckRangeOut(task_p);
+}
+
+// FUNCTION: SADX 0x005abd40
+void FUN_005abd40(int param_1)
+{
+	struct taskwk *local_8;
+
+	local_8 = ((struct task *)param_1)->twp;
+	if (local_8->counter.l != 0)
+	{
+		FUN_005ac1a0((struct task *)param_1);
+	}
 }
 
 // FUNCTION: SADX 0x005abd70
@@ -153,10 +167,10 @@ void FUN_005ac150(int param_1)
 {
 	struct taskwk *local_8;
 	local_8 = *(struct taskwk **)((char *)param_1 + 0x20);
-	*(void **)((char *)local_8 + 8) = FUN_005ac400((int)&DAT_05a8005c);
-	*(float *)((char *)local_8 + 0xc) = 255.0f;
-	*(unsigned char *)((char *)local_8 + 1) = 1;
-	*(unsigned short *)((char *)local_8 + 6) = 0x78;
+	local_8->counter.ptr = FUN_005ac400((int)&DAT_05a8005c);
+	local_8->timer.f = 255.0f;
+	local_8->smode = 1;
+	local_8->wtimer = 0x78;
 }
 
 // STUB: SADX 0x005ac1a0
@@ -167,4 +181,36 @@ void FUN_005ac1a0(struct task *param_1)
 // STUB: SADX 0x005ac270
 void relbox_crush_draw(struct task *task_p)
 {
+}
+
+// FUNCTION: SADX 0x005ac3c0
+void FUN_005ac3c0(struct task *param_1)
+{
+	struct taskwk *local_8;
+
+	local_8 = param_1->twp;
+	if (local_8->counter.l != 0)
+	{
+		Free(local_8->counter.ptr);
+		local_8->counter.l = 0;
+	}
+}
+
+// FUNCTION: SADX 0x005ac490
+int FUN_005ac490(int param_1)
+{
+	int local_8g;
+	int local_cj;
+	int local_10;
+
+	local_8g = *(int *)(param_1 + 0xc);
+	local_cj = 0;
+	local_10 = *(unsigned short *)(param_1 + 0x14);
+	do
+	{
+		local_cj = FUN_005ac4e0(local_8g) + local_cj;
+		local_8g = local_8g + 0x1c;
+		local_10 = local_10 - 1;
+	} while (local_10 != 0);
+	return local_cj;
 }

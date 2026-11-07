@@ -21,20 +21,7 @@ void FUN_005720e0(struct obj *param_1, float param_2)
 {
 	*(float *)param_1 = param_2;
 	*(float *)((char *)param_1 + 4) = param_2;
-	*(float *)((char *)param_1 + 8) = param_2;
-}
-
-// FUNCTION: SADX 0x00572100
-void FUN_00572100(struct NJS_TEXLIST *param_1)
-{
-	if (param_1 == 0)
-	{
-		SetObjectTexture();
-	}
-	else
-	{
-		___njSetTexture(param_1);
-	}
+	param_1->pos[0] = param_2;
 }
 
 // STUB: SADX 0x00572120

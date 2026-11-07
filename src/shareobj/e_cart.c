@@ -6,7 +6,7 @@ extern int DAT_060dfeac;
 extern struct obj object_b_cart_cart_cart[];
 extern struct obj object_e_cart_cart_cart[];
 extern struct obj object_sarucart_sarucart_sarucart[];
-extern int *DAT_060dfeb0;
+extern struct task *DAT_060dfeb0;
 extern int DAT_04c38b98[4];
 void FUN_008d0810(void);
 void FUN_008d0870(void);
@@ -31,7 +31,7 @@ void CartGetOffPlayer(struct task *tp)
 	local_cg = tp->twp;
 	local_8g = local_cg->cwp->info;
 	DAT_060dfeb4 = (struct OBJ_CONDITION *)tp->awp->work.ptr[0];
-	*(unsigned int *)((char *)local_8g + 4) &= 0xffffffef;
+	local_8g->attr &= 0xffffffef;
 	GetOutOfCartP(0, 0.0, 2.0, 2.0);
 	*(short *)((char *)DAT_060dfeb4 + 0x16) = 0x1e;
 	returnSonicCollision(tp);
@@ -417,19 +417,19 @@ void MakeEgo(float rate)
 	}
 }
 
-// STUB: SADX 0x008d1410
+// FUNCTION: SADX 0x008d1410
 void egoManager(struct task *tp)
 {
 	struct task *local_cg;
 	struct taskwk *local_8g;
-	if ((*(struct task *(*))&DAT_060dfeb0) == 0)
+	if (DAT_060dfeb0 == 0)
 	{
 		return;
 	}
 	local_cg = CreateElementalTask(2, 4, ego);
 	local_8g = local_cg->twp;
-	local_8g->pos = (*(struct task *(*))&DAT_060dfeb0)->twp->pos;
-	local_8g->ang = (*(struct task *(*))&DAT_060dfeb0)->twp->ang;
+	local_8g->pos = DAT_060dfeb0->twp->pos;
+	local_8g->ang = DAT_060dfeb0->twp->ang;
 	local_8g->counter.f = tp->twp->counter.f;
 	local_cg->disp = drawEgo;
 	tp->twp->counter.f -= 0.009999999776482582;

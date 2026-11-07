@@ -3,8 +3,8 @@ extern char *DAT_025ddba8[1];
 extern char *DAT_025ddbbc[1];
 extern char *DAT_025ddb80[1];
 extern char *DAT_025ddb94[1];
-extern char DAT_025ddbd0[4];
-extern char DAT_025ddbe4[4];
+extern char *DAT_025ddbd0[5];
+extern char *DAT_025ddbe4[5];
 void DialogJimakuInit();
 void DialogJimakuPut(char *str);
 extern int DAT_05b3ebbc;
@@ -70,17 +70,17 @@ void DialogJimakuProcSRF(struct DDlgType *ddltype)
 	}
 }
 
-// STUB: SADX 0x00502c00
+// FUNCTION: SADX 0x00502c00
 void DialogJimakuProcYN(struct DDlgType *ddltype)
 {
 	DialogJimakuInit();
 	switch (ddltype->Csr)
 	{
 	case 0:
-		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbd0)[DAT_05b3ebbc]);
+		DialogJimakuPut(DAT_025ddbd0[DAT_05b3ebbc]);
 		break;
 	case 1:
-		DialogJimakuPut((*(char *(*)[1])&DAT_025ddbe4)[DAT_05b3ebbc]);
+		DialogJimakuPut(DAT_025ddbe4[DAT_05b3ebbc]);
 		break;
 	}
 }
@@ -92,10 +92,10 @@ void DialogJimakuProcYNS(struct DDlgType *ddltype)
 	switch (ddltype->Csr)
 	{
 	case 0:
-		DialogJimakuPut(((char **)DAT_025ddbd0)[DAT_05b3ebbc]);
+		DialogJimakuPut(DAT_025ddbd0[DAT_05b3ebbc]);
 		break;
 	case 1:
-		DialogJimakuPut(((char **)DAT_025ddbe4)[DAT_05b3ebbc]);
+		DialogJimakuPut(DAT_025ddbe4[DAT_05b3ebbc]);
 		break;
 	case 2:
 		DialogJimakuPut(DAT_025ddb94[DAT_05b3ebbc]);

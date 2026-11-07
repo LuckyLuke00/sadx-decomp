@@ -45,6 +45,16 @@ void njQuadTextureStart(Sint32 param_1)
 {
 }
 
+// STUB: SADX 0x004217d0
+void njDrawSprite2D(NJS_SPRITE *param_1, Int param_2, Float param_3, Uint32 param_4)
+{
+}
+
+// STUB: SADX 0x00421b30
+void njDrawSprite3D(NJS_SPRITE *param_1, Int param_2, Uint32 param_3)
+{
+}
+
 // STUB: SADX 0x00422330
 void njDrawPolygon3D(NJS_POINT3COL *, Int, Uint32)
 {
@@ -224,6 +234,11 @@ Bool njPushMatrix(NJS_MATRIX *m)
 	return (Bool)0;
 }
 
+// STUB: SADX 0x00430f80
+void pdExitPeripheral(void)
+{
+}
+
 // STUB: SADX 0x00431950
 Float njCos(Angle n)
 {
@@ -391,11 +406,6 @@ void AL_ReleaseModule(enum EChaoModuleEntry kind)
 {
 }
 
-// STUB: SADX 0x00442720
-void AL_InitLandMark()
-{
-}
-
 // STUB: SADX 0x004427b0
 long AL_GetRandomAttrPos(enum eLANDMARK_ATTR attr, struct NJS_POINT3 *pPos)
 {
@@ -453,6 +463,11 @@ void FUN_0044d460(unsigned short *)
 
 // STUB: SADX 0x0044e3d0
 void AlMsgWinClear(struct SAlMsgWin *self)
+{
+}
+
+// STUB: SADX 0x0044e830
+void AlMsgWinDisp(struct SAlMsgWin *self)
 {
 }
 
@@ -803,6 +818,11 @@ void CreateCourseNameBarJewel(struct task *tp)
 
 // STUB: SADX 0x00476c20
 void AL_Garden00Master(struct task *tp)
+{
+}
+
+// STUB: SADX 0x00477620
+void AloG00BldoorWakuExec(struct task *tp)
 {
 }
 
@@ -1345,6 +1365,35 @@ long __GetFileSize(const char *fname)
 	return (long)0;
 }
 
+// STUB: SADX 0x004d55a0
+float FUN_004d55a0(struct taskwk *, struct CCL_INFO *, struct taskwk *, struct CCL_INFO *)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x004d5a50
+float FUN_004d5a50(struct taskwk *, struct CCL_INFO *, struct taskwk *, struct CCL_INFO *)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x004d60d0
+void FUN_004d60d0(struct taskwk *, struct CCL_INFO *, struct taskwk *, struct CCL_INFO *)
+{
+}
+
+// STUB: SADX 0x004d6810
+float FUN_004d6810(struct taskwk *, struct CCL_INFO *, struct taskwk *, struct CCL_INFO *)
+{
+	return (float)0;
+}
+
+// STUB: SADX 0x004d6f00
+float FUN_004d6f00(struct taskwk *, struct CCL_INFO *, struct taskwk *, struct CCL_INFO *)
+{
+	return (float)0;
+}
+
 // STUB: SADX 0x004d9130
 signed char _GetColliFaceNormalPO(struct taskwk *twp1, struct NJS_POINT3 *v)
 {
@@ -1466,6 +1515,11 @@ int FUN_00502cd0()
 
 // STUB: SADX 0x00503160
 void FUN_00503160()
+{
+}
+
+// STUB: SADX 0x005037a0
+void BigTheCat(struct task *tp)
 {
 }
 
@@ -1731,11 +1785,6 @@ void FUN_0058b270(struct task *)
 
 // STUB: SADX 0x0058c5d0
 void fishingLureCtrl(struct task *tp)
-{
-}
-
-// STUB: SADX 0x0058d6a0
-void FUN_0058d6a0()
 {
 }
 
@@ -2023,6 +2072,11 @@ void DrawCustomObject_wz(struct obj *top_object, struct CUSTOM_OBJ *custom)
 {
 }
 
+// STUB: SADX 0x005d96c0
+extern void FUN_005d96c0(void *, int, int)
+{
+}
+
 // STUB: SADX 0x005da940
 void BlowingWind(struct task *)
 {
@@ -2087,6 +2141,11 @@ void E102LockOnCursor_dis_Disp(struct task *tp)
 
 // STUB: SADX 0x005e7120
 void FUN_005e7120(void)
+{
+}
+
+// STUB: SADX 0x005e7800
+void FUN_005e7800(int)
 {
 }
 
@@ -3333,6 +3392,12 @@ void ObjectSkydeck_tcolli_Exec(struct task *tp)
 // STUB: SADX 0x0083dac0
 void ObjectSkydeck_kikanjyu1_Exec(struct task *tp)
 {
+}
+
+// STUB: SADX 0x0083ec30
+float GetWindSkydeck(float x, float z)
+{
+	return (float)0;
 }
 
 // STUB: SADX 0x0083ee90

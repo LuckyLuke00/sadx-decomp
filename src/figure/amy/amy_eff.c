@@ -31,13 +31,13 @@ void AmyEffectFallHeartDisplayer(struct task *tp)
 		___njColorBlendingMode(1, 10);
 		njPushMatrix(0);
 		njTranslateV(0, &local_8g->pos);
-		if (*(long *)((char *)local_8g + 0x18) != 0)
+		if (local_8g->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)((char *)local_8g + 0x18));
+			njRotateY(0, (unsigned short)local_8g->ang.y);
 		}
-		if (*(long *)((char *)local_8g + 0x1c) != 0)
+		if (local_8g->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)local_8g + 0x1c));
+			njRotateZ(0, (unsigned short)local_8g->ang.z);
 		}
 		late_DrawSprite3D(&sprite_amy_heart, 0, 0x22, 4);
 		njPopMatrix(1);
@@ -47,9 +47,35 @@ void AmyEffectFallHeartDisplayer(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x005d61d0
+// FUNCTION: SADX 0x005d61d0
 void AmyEffectFallHeart(struct task *tp)
 {
+	struct taskwk *local_8g;
+	float local_cg;
+
+	local_8g = tp->twp;
+	local_cg = local_8g->counter.f + 0.033333335f;
+	local_8g->counter.f = local_cg;
+	if (local_cg >= 1.0f)
+	{
+		FreeTask(tp);
+		return;
+	}
+	local_8g->scl.y += -0.05f;
+	local_8g->pos.x += local_8g->scl.x;
+	local_8g->pos.y += local_8g->scl.y;
+	local_8g->pos.z += local_8g->scl.z;
+	local_8g->ang.y += 0x400;
+	if ((local_8g->ang.z & 0xffff) > 0x8000)
+	{
+		local_8g->ang.x -= 0x100;
+	}
+	else
+	{
+		local_8g->ang.x += 0x200;
+	}
+	local_8g->ang.z += local_8g->ang.x;
+	AmyEffectFallHeartDisplayer(tp);
 }
 
 // STUB: SADX 0x005d62d0
@@ -103,14 +129,14 @@ void AmyEffectPiyoPiyo(struct task *tp)
 		tp->disp = AmyEffectPiyoPiyoDraw;
 		if (Amy_Status(0) != 9)
 		{
-			*(float *)((char *)local_8g + 0x2c) = 0.2f;
+			local_8g->scl.x = 0.2f;
 			AmyEffectPiyoPiyoEnd(tp);
 			tp->exec = AmyEffectPiyoPiyoEnd;
 		}
 		else
 		{
-			*(long *)((char *)local_8g + 0x18) += 0x200;
-			local_cg = 1.0f + njSin(*(long *)((char *)local_8g + 0x18) << 2) * 0.30000001192092896;
+			local_8g->ang.y += 0x200;
+			local_cg = 1.0f + njSin(local_8g->ang.y << 2) * 0.30000001192092896;
 			sprite_amy_piyo.sx = local_cg;
 			sprite_amy_piyo.sy = local_cg;
 			AmyEffectPiyoPiyoDraw(tp);
@@ -161,13 +187,13 @@ void AmyEffectHammerWaveDisplayer(struct task *tp)
 	___njColorBlendingMode(1, 10);
 	njPushMatrix(0);
 	njTranslateV(0, &local_8g->pos);
-	if (*(long *)((char *)local_8g + 0x1c) != 0)
+	if (local_8g->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)local_8g + 0x1c));
+		njRotateZ(0, (unsigned short)local_8g->ang.z);
 	}
-	if (*(long *)((char *)local_8g + 0x14) != 0)
+	if (local_8g->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)local_8g + 0x14));
+		njRotateX(0, (unsigned short)local_8g->ang.x);
 	}
 	for (local_cg = 0; local_cg < 0xfffc; local_cg += 0x1555)
 	{
@@ -208,8 +234,8 @@ void AmyEffectHammerWaveColor(struct task *tp)
 	else
 	{
 		local_8g->scl.x += 0.5;
-		*(float *)((char *)local_8g + 0x30) = 3.0 * njSin((int)(65536.0 * local_8g->counter.f * 0.5));
-		*(float *)((char *)local_8g + 0x34) = local_8g->scl.x;
+		local_8g->scl.y = 3.0 * njSin((int)(65536.0 * local_8g->counter.f * 0.5));
+		local_8g->scl.z = local_8g->scl.x;
 		AmyEffectHammerWaveColorDisplayer(tp);
 		CheckRangeOut(tp);
 	}
@@ -227,9 +253,9 @@ void AmyEffectHammerWaveColorDisplayer(struct task *tp)
 		ResetMaterial();
 		njPushMatrix(0);
 		njTranslateV(0, &local_8g->pos);
-		if (*(int *)((char *)local_8g + 0x1c) != 0)
+		if (local_8g->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)local_8g + 0x1c));
+			njRotateZ(0, (unsigned short)local_8g->ang.z);
 		}
 		if (local_8g->ang.x != 0)
 		{

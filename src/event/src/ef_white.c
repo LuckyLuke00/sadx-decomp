@@ -1,5 +1,16 @@
 #include "decls.h"
+extern struct task *DAT_060cc4ac;
 void initEfWhiteTask(struct task *p_task);
+
+// FUNCTION: SADX 0x007d5360
+void FUN_007d5360()
+{
+	if (DAT_060cc4ac)
+	{
+		FreeTask(DAT_060cc4ac);
+		DAT_060cc4ac = 0;
+	}
+}
 
 // STUB: SADX 0x007d5380
 void dispEfWhiteTask(struct task *p_task)
@@ -18,7 +29,7 @@ void initEfWhiteTask(struct task *p_task)
 	void *var2 = MAlloc(0x10);
 	var1->mode = 0;
 	*(int *)((char *)var2 + 0xc) = 0xffffff;
-	*(void **)((char *)var1 + 0x10) = var2;
+	var1->value.ptr = var2;
 	p_task->exec = execEfWhiteTask;
 	p_task->disp = dispEfWhiteTask;
 	p_task->dest = DesertAChildTask;

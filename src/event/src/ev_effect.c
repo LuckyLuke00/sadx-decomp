@@ -80,7 +80,18 @@ void effect_size_change(short ef_num, float speed_x, float speed_y)
 	}
 }
 
-// STUB: SADX 0x007d2c30
+// FUNCTION: SADX 0x007d2c30
 void effect_anim_speed(short ef_num, float anim_speed)
 {
+	struct task *var1;
+	struct taskwk *var2;
+	int *var3;
+
+	var1 = DAT_060cc0b0[ef_num];
+	if (var1 != 0)
+	{
+		var2 = var1->twp;
+		var3 = (int *)var2->timer.ptr;
+		*(float *)(var3 + 8) = anim_speed;
+	}
 }

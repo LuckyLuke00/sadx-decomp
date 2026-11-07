@@ -6,6 +6,51 @@ struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(str
 void *MAlloc(unsigned int size);
 extern int DAT_060cbfb4[10];
 
+// FUNCTION: SADX 0x007d0bd0
+int FUN_007d0bd0(void)
+{
+	int var1 = 0;
+	while (var1 < 10)
+	{
+		if (DAT_060cbfb4[var1] == 0)
+		{
+			return var1;
+		}
+		var1++;
+	}
+	return -1;
+}
+
+// FUNCTION: SADX 0x007d0bf0
+void FUN_007d0bf0(struct task *param_1, struct task *param_2)
+{
+	int var1;
+	struct task *var2;
+	struct taskwk *var3;
+	struct task *var4;
+
+	for (var1 = 0; var1 < 10; var1++)
+	{
+		var2 = (struct task *)DAT_060cbfb4[var1];
+		if (var2 != 0)
+		{
+			var3 = var2->twp;
+			if (var3 != 0)
+			{
+				var4 = (struct task *)var3->value.ptr;
+			}
+			if (var4 != 0)
+			{
+				if (var4->next == param_1)
+				{
+					DestroyTask(var2);
+					DAT_060cbfb4[var1] = 0;
+				}
+			}
+		}
+	}
+}
+
 // FUNCTION: SADX 0x007d0c40
 void FUN_007d0c40(void)
 {
@@ -46,7 +91,7 @@ void moveObjectRightHand(struct task *obj, int player_no, float far_x, float far
 	DAT_060cbfb4[var1] = (int)var2;
 	void *var3 = MAlloc(0x6c);
 	struct taskwk *var4 = ((struct task *)DAT_060cbfb4[var1])->twp;
-	*(void **)((char *)var4 + 0x10) = var3;
+	var4->value.ptr = var3;
 	var4->pos.x = obj->twp->pos.x;
 	var4->pos.y = obj->twp->pos.y;
 	var4->pos.z = obj->twp->pos.z;

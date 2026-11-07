@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_SPRITE DAT_026792ec;
 extern int DAT_05b9d838;
 void DispMultiDigitDisplay(struct task *tp);
 void FUN_005e5770(struct task *param_1);
@@ -27,9 +28,62 @@ void DispMultiDigit(struct task *tp)
 	DispMultiDigitDisplay(tp);
 }
 
-// STUB: SADX 0x005e5540
+// FUNCTION: SADX 0x005e5540
 void DispMultiDigitDisplay(struct task *tp)
 {
+	struct taskwk *local_8g;
+	int local_cg;
+
+	local_8g = tp->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	njPushMatrix(0);
+	njTranslateV(0, (struct NJS_POINT3 *)(local_8g->timer.ptr));
+	if (DAT_05b42a7c->ang.y != 0)
+	{
+		njRotateY(0, (unsigned short)((short)DAT_05b42a7c->ang.y));
+	}
+	if (DAT_05b42a7c->ang.x + 0x8000 != 0)
+	{
+		njRotateX(0, (unsigned short)((DAT_05b42a7c->ang.x + 0x8000)));
+	}
+	if (slEventBossName != -1)
+	{
+		FUN_0067d830(0, 0.0f, -5.0f, -10.0f);
+	}
+	else
+	{
+		FUN_0067d830(0, 0.0f, 0.0f, -10.0f);
+	}
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+	___njDrawSprite3D(&DAT_026792ec, 0xc, 0x22);
+	FUN_0067d830(0, 8.0f, 0.0f, 0.0f);
+	if (local_8g->value.b[0] >= 10)
+	{
+		local_cg = local_8g->value.b[0] / 10;
+		___njDrawSprite3D(&DAT_026792ec, local_cg, 0x22);
+		FUN_0067d830(0, 8.0f, 0.0f, 0.0f);
+	}
+	local_cg = local_8g->value.b[0] % 10;
+	___njDrawSprite3D(&DAT_026792ec, local_cg, 0x22);
+	SetMaterial(0.0f, 0.0f, 0.0f, 0.0f);
+	njPopMatrix(1);
+}
+
+// FUNCTION: SADX 0x005e5720
+int FUN_005e5720(int param_1)
+{
+	if (param_1 == 0)
+	{
+		return 0;
+	}
+	int local_8;
+	local_8 = *(int *)(param_1 + 0x2c);
+	return *(int *)(local_8 + 0x14);
 }
 
 // FUNCTION: SADX 0x005e5750

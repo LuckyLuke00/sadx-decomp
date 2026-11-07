@@ -8,6 +8,23 @@ extern int DAT_05aeaa34;
 extern unsigned short DAT_05aeaa30;
 extern int DAT_05ade3c0[0x100];
 
+// FUNCTION: SADX 0x0043d8a0
+void FUN_0043d8a0(int param_1)
+{
+	if (param_1 != 0)
+	{
+		*(short *)(param_1 + 4) = 0;
+		*(short *)(param_1 + 6) = 0;
+		*(short *)(param_1 + 0x34) = 0;
+		*(short *)(param_1 + 0x36) = 0xffff;
+		*(short *)(param_1 + 0x38) = 0;
+		*(int *)(param_1 + 0x3c) = 0;
+		*(int *)(param_1 + 0x40) = 0;
+		*(int *)(param_1 + 0xc) = -1;
+		*(int *)(param_1 + 8) = 0;
+	}
+}
+
 #pragma optimize("", off)
 // STUB: SADX 0x0043d8e0
 void ALW_ClearEntry()
@@ -153,7 +170,7 @@ long ALW_AttentionOn(struct task *tp1, struct task *tp2)
 		return 0;
 	}
 	*(void **)((char *)var1 + 0x40) = var2;
-	*(unsigned int *)((char *)var1 + 0xc) = (unsigned int)DAT_05aeaa30;
+	var1->ang_spd.z = (unsigned int)DAT_05aeaa30;
 	DAT_05aeaa30++;
 	if (DAT_05aeaa30 >= 0x100)
 	{
@@ -170,7 +187,7 @@ long ALW_AttentionOff(struct task *tp)
 	{
 		*(short *)((char *)var1 + 6) = 0;
 		*(int *)((char *)var1 + 0x40) = 0;
-		*(int *)((char *)var1 + 0xc) = -1;
+		var1->ang_spd.z = -1;
 		return 1;
 	}
 	return 0;
@@ -215,8 +232,8 @@ long ALW_CommunicationOn(struct task *tp1, struct task *tp2)
 	}
 	*(void **)((char *)var1 + 0x40) = var2;
 	*(void **)((char *)var2 + 0x40) = var1;
-	*(unsigned int *)((char *)var1 + 0xc) = (unsigned int)DAT_05aeaa30;
-	*(unsigned int *)((char *)var2 + 0xc) = (unsigned int)DAT_05aeaa30;
+	var1->ang_spd.z = (unsigned int)DAT_05aeaa30;
+	var2->ang_spd.z = (unsigned int)DAT_05aeaa30;
 	DAT_05aeaa30++;
 	if (DAT_05aeaa30 >= 0x100)
 	{
@@ -237,7 +254,7 @@ long ALW_CommunicationOff(struct task *tp)
 		var2 = (struct forcewk *)(*(int **)((char *)var1 + 0x40));
 		*(short *)((char *)var1 + 6) = 0;
 		*(int **)((char *)var1 + 0x40) = 0;
-		*(int *)((char *)var1 + 0xc) = -1;
+		var1->ang_spd.z = -1;
 		if (var2 != 0)
 		{
 			if (*(struct forcewk **)((char *)var2 + 0x40) == var1)
@@ -245,7 +262,7 @@ long ALW_CommunicationOff(struct task *tp)
 				*(short *)((char *)var2 + 6) = 0;
 				*(int **)((char *)var2 + 0x40) = 0;
 			}
-			*(int *)((char *)var2 + 0xc) = -1;
+			var2->ang_spd.z = -1;
 		}
 	}
 	return 1;
@@ -322,7 +339,7 @@ long ALW_CancelEntry(struct task *tp)
 {
 	struct OBJ_CONDITION *var1;
 
-	var1 = *(struct OBJ_CONDITION **)((char *)tp + 0x28);
+	var1 = (struct OBJ_CONDITION *)tp->fwp;
 	ALW_CommunicationOff(tp);
 	if (var1 != 0)
 	{

@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <math.h>
+extern struct NJS_MODEL *snowface_model[4];
 extern struct particle_info pom_breathe;
 void snowfaceEscape(struct taskwk *twp, struct enemywk *ewp);
 struct taskwk;
@@ -19,7 +20,7 @@ void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2);
 extern void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2);
 extern void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2);
 extern void FUN_00609e40(int param_1, int param_2);
-void FUN_00609ad0(struct task *param_1, struct enemywk *param_2);
+void FUN_00609ad0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_00609b40(int param_1);
 void FUN_00609ba0(struct taskwk *param_1, struct enemywk *param_2);
 void FUN_00609d20(struct taskwk *param_1, struct enemywk *param_2);
@@ -124,9 +125,25 @@ void SnowmanRegular(struct task *tp)
 {
 }
 
-// STUB: SADX 0x00609ad0
-void FUN_00609ad0(struct task *param_1, struct enemywk *param_2)
+// FUNCTION: SADX 0x00609ad0
+void FUN_00609ad0(struct taskwk *param_1, struct enemywk *param_2)
 {
+	struct colliwk *local_8;
+
+	local_8 = param_1->cwp->hit_cwp;
+	if (EnemyCheckDamage(param_1, param_2))
+	{
+		if (param_1->mode != -1)
+		{
+			param_1->mode = 5;
+			param_1->smode = 0;
+		}
+		param_1->btimer = 0;
+		param_1->scl.z = 0.35f;
+		param_2->velo.x = 0.0f;
+		param_2->velo.z = 0.0f;
+		param_2->weight = 1.0f;
+	}
 }
 
 // FUNCTION: SADX 0x00609b40
@@ -187,9 +204,33 @@ void SnowmanRectifyPosition(struct taskwk *twp, struct enemywk *ewp)
 	EnemyPreservePreviousPosition(twp, ewp);
 }
 
-// STUB: SADX 0x00609d20
+// FUNCTION: SADX 0x00609d20
 void FUN_00609d20(struct taskwk *param_1, struct enemywk *param_2)
 {
+	switch (param_1->smode)
+	{
+	case 0:
+		param_1->wtimer = 0;
+		param_1->value.f = 0.3f;
+		param_2->angz_spd = 0x2000;
+		param_1->smode++;
+	case 1:
+		param_1->timer.w[0] += 0x100;
+		param_1->timer.w[1] += 0x100;
+		if (param_1->wtimer++ == 5)
+		{
+			if (param_1->mode != -1)
+			{
+				param_1->mode = 2;
+				param_1->smode = 0;
+			}
+		}
+		param_2->velo.x += njCos(param_1->ang.y) * 0.08f;
+		param_2->velo.z += -njSin(param_1->ang.y) * 0.08f;
+		break;
+	}
+	FUN_00609e40((int)param_1, (int)param_2);
+	SnowmanRectifyPosition(param_1, param_2);
 }
 
 // FUNCTION: SADX 0x00609e40
@@ -211,7 +252,7 @@ void snowmanChase(struct taskwk *twp, struct enemywk *ewp)
 	case 0:
 		twp->smode = 1;
 		twp->flag &= ~0x200;
-		*(float *)((char *)twp + 0x10) = 0.3f;
+		twp->value.f = 0.3f;
 		ewp->angx_spd = 0x200;
 		ewp->angy_spd = 0x100;
 		ewp->angz_spd = 0x2000;
@@ -227,7 +268,7 @@ void snowmanChase(struct taskwk *twp, struct enemywk *ewp)
 	{
 		if (DiffAngle(ewp->sub_angle[0], ewp->aim_angle) < 0x400)
 		{
-			if (DiffAngle(*(int *)((char *)twp + 0x18), ewp->aim_angle) < 0x800)
+			if (DiffAngle(twp->ang.y, ewp->aim_angle) < 0x800)
 			{
 				ewp->aim = local_8g->pos;
 				FUN_005e3d10(twp, ewp);
@@ -248,8 +289,8 @@ void snowmanChase(struct taskwk *twp, struct enemywk *ewp)
 		}
 	}
 	FUN_00609e40((int)twp, (int)ewp);
-	ewp->acc.x = njCos(*(int *)((char *)twp + 0x18)) * 0.03999999910593033f;
-	ewp->acc.z = -njSin(*(int *)((char *)twp + 0x18)) * 0.03999999910593033f;
+	ewp->acc.x = njCos(twp->ang.y) * 0.04f;
+	ewp->acc.z = -njSin(twp->ang.y) * 0.04f;
 	SnowmanMove(twp, ewp);
 	SnowmanRectifyPosition(twp, ewp);
 }
@@ -260,13 +301,13 @@ void FUN_0060a0c0(struct taskwk *param_1, struct enemywk *param_2)
 	int local_8;
 
 	param_1->flag &= 0xfffffeff;
-	local_8 = *(int *)((char *)param_1 + 0x18);
-	*(int *)((char *)param_1 + 0x18) = *(int *)((char *)param_2 + 0x1b0);
+	local_8 = param_1->ang.y;
+	param_1->ang.y = param_2->sub_angle[0];
 	if (EnemySearchPlayer(param_1, param_2) == 1)
 	{
 		param_1->flag |= 0x100;
 	}
-	*(int *)((char *)param_1 + 0x18) = local_8;
+	param_1->ang.y = local_8;
 }
 
 // STUB: SADX 0x0060a130
@@ -280,7 +321,7 @@ void SnowmanTurnToAim(struct taskwk *twp, struct enemywk *ewp)
 	long local_8;
 
 	ewp->sub_angle[0] = AdjustAngle(ewp->sub_angle[0], ewp->aim_angle, ewp->angx_spd);
-	local_8 = ewp->sub_angle[0] - *(long *)((char *)twp + 0x18);
+	local_8 = ewp->sub_angle[0] - twp->ang.y;
 	local_8 &= 0xffff;
 	if (local_8 > 0x8000)
 	{
@@ -294,7 +335,7 @@ void SnowmanTurnToAim(struct taskwk *twp, struct enemywk *ewp)
 	{
 		local_8 = -0x2000;
 	}
-	ewp->sub_angle[0] = *(long *)((char *)twp + 0x18) + local_8;
+	ewp->sub_angle[0] = twp->ang.y + local_8;
 }
 
 // STUB: SADX 0x0060a360
@@ -302,29 +343,69 @@ void FUN_0060a360(struct taskwk *param_1, struct enemywk *param_2)
 {
 }
 
-// STUB: SADX 0x0060a3d0
+// FUNCTION: SADX 0x0060a3d0
 void snowmanWalk(struct taskwk *twp, struct enemywk *ewp)
 {
+	switch (twp->smode)
+	{
+	case 0:
+		twp->smode = 1;
+		ewp->angx_spd = 0x100;
+		ewp->angy_spd = 0x80;
+		break;
+	}
+	twp->timer.w[0] += 4;
+	twp->timer.w[1] += 0x100;
+	FUN_0060a360(twp, ewp);
+	FUN_0060a5e0(twp, ewp);
+	FUN_0060a0c0(twp, ewp);
+	if (twp->flag & 0x100)
+	{
+		if (twp->mode != -1)
+		{
+			twp->mode = 2;
+			twp->smode = 0;
+		}
+	}
+	else if (!(twp->flag & 0x400) && !(twp->flag & 0x200))
+	{
+		if (twp->mode != -1)
+		{
+			twp->mode = 4;
+			twp->smode = 0;
+		}
+		twp->flag |= 0x200;
+		EnemyCalcHomeAngle(twp, ewp);
+		ewp->aim_angle += (long)((float)(rand() / 32768.0) * 16384.0f) - 0x2000;
+		ewp->aim.x = ewp->home.x + njCos(ewp->aim_angle);
+		ewp->aim.z = ewp->home.z + njSin(ewp->aim_angle);
+		EnemyCalcAimAngle(twp, ewp);
+	}
+	FUN_00609e40((int)twp, (int)ewp);
+	ewp->acc.x = njCos(twp->ang.y) * 0.027999999f;
+	ewp->acc.z = -njSin(twp->ang.y) * 0.027999999f;
+	SnowmanMove(twp, ewp);
+	SnowmanRectifyPosition(twp, ewp);
 }
 
 // FUNCTION: SADX 0x0060a5e0
 void FUN_0060a5e0(struct taskwk *param_1, struct enemywk *param_2)
 {
-	*(int *)((char *)param_2 + 0x1b0) += *(int *)((char *)param_2 + 0x1a4);
-	if (*(int *)((char *)param_2 + 0x1a4) > 0)
+	param_2->sub_angle[0] += param_2->angx_spd;
+	if (param_2->angx_spd > 0)
 	{
-		if (*(int *)((char *)param_2 + 0x1b0) >= *(int *)((char *)param_1 + 0x18) + 0x2000)
+		if (param_2->sub_angle[0] >= param_1->ang.y + 0x2000)
 		{
-			*(int *)((char *)param_2 + 0x1b0) = *(int *)((char *)param_1 + 0x18) + 0x2000;
-			*(int *)((char *)param_2 + 0x1a4) = *(int *)((char *)param_2 + 0x1a4) * -1;
+			param_2->sub_angle[0] = param_1->ang.y + 0x2000;
+			param_2->angx_spd = param_2->angx_spd * -1;
 		}
 	}
 	else
 	{
-		if (*(int *)((char *)param_2 + 0x1b0) <= *(int *)((char *)param_1 + 0x18) - 0x2000)
+		if (param_2->sub_angle[0] <= param_1->ang.y - 0x2000)
 		{
-			*(int *)((char *)param_2 + 0x1b0) = *(int *)((char *)param_1 + 0x18) - 0x2000;
-			*(int *)((char *)param_2 + 0x1a4) = *(int *)((char *)param_2 + 0x1a4) * -1;
+			param_2->sub_angle[0] = param_1->ang.y - 0x2000;
+			param_2->angx_spd = param_2->angx_spd * -1;
 		}
 	}
 }
@@ -345,7 +426,7 @@ void snowmanTurn(struct taskwk *twp, struct enemywk *ewp)
 	FUN_0060a360(twp, ewp);
 	FUN_005e3d10(twp, ewp);
 	SnowmanTurnToAim(twp, ewp);
-	if (DiffAngle(ewp->aim_angle, *(long *)((char *)twp + 0x18)) == 0 && twp->mode != -1)
+	if (DiffAngle(ewp->aim_angle, twp->ang.y) == 0 && twp->mode != -1)
 	{
 		twp->mode = 3;
 		twp->smode = 0;
@@ -373,9 +454,9 @@ void snowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
 	{
 		case 0:
 			twp->smode = 1;
-			*(int *)((char *)ewp + 0x1a4) = 0x200;
-			*(int *)((char *)ewp + 0x1a8) = 0x100;
-			*(float *)((char *)ewp + 0x3c) = 1.0f;
+			ewp->angx_spd = 0x200;
+			ewp->angy_spd = 0x100;
+			ewp->weight = 1.0f;
 			twp->btimer = 0;
 		case 1:
 			twp->timer.w[0] += 0x10;
@@ -389,7 +470,7 @@ void snowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
 		case 2:
 			twp->timer.w[0] += 4;
 			twp->timer.w[1] += 0x80;
-			*(float *)((char *)ewp + 0x3c) += 0.05000000074505806;
+			ewp->weight += 0.05000000074505806;
 			if (twp->btimer++ == 10)
 			{
 				twp->smode = 3;
@@ -404,11 +485,11 @@ void snowmanBreathe(struct taskwk *twp, struct enemywk *ewp)
 			}
 			break;
 		case 4:
-			*(float *)((char *)ewp + 0x3c) -= 0.008333333767950535;
+			ewp->weight -= 0.008333333767950535;
 			if (twp->btimer++ == 60)
 			{
 				twp->btimer = 0;
-				*(float *)((char *)ewp + 0x3c) = 1.0f;
+				ewp->weight = 1.0f;
 				twp->smode = 5;
 			}
 			SnowmanBreathe(twp, ewp);
@@ -440,10 +521,10 @@ void snowmanDestroy(struct taskwk *twp, struct enemywk *ewp)
 	struct CCL_INFO *local_8;
 
 	local_8 = twp->cwp->info;
-	*(long *)((char *)ewp + 0x1bc) = *(long *)((char *)twp + 0x18);
+	ewp->sub_angle[3] = twp->ang.y;
 	ewp->aim = twp->pos;
 	twp->pos.y += 5.8f;
-	*(long *)((char *)twp + 0x18) = *(long *)((char *)ewp + 0x1b0);
+	twp->ang.y = ewp->sub_angle[0];
 	ewp->velo.x = 0.0f;
 	ewp->velo.y = 0.0f;
 	ewp->velo.z = 0.0f;
@@ -486,12 +567,12 @@ void FUN_0060b2f0(struct taskwk *param_1, struct enemywk *param_2)
 		if (*(signed char *)param_1 != -1)
 		{
 			*(char *)param_1 = 2;
-			*(char *)((char *)param_1 + 1) = 0;
+			param_1->smode = 0;
 		}
-		*(char *)((char *)param_1 + 3) = 0;
-		*(float *)((char *)param_1 + 0x34) = 0.35f;
-		*(float *)((char *)param_2 + 4) = 0.0f;
-		*(float *)((char *)param_2 + 0xc) = 0.0f;
+		param_1->btimer = 0;
+		param_1->scl.z = 0.35f;
+		param_2->velo.x = 0.0f;
+		param_2->velo.z = 0.0f;
 		if (*local_8 == 0)
 		{
 			SetVelocityP(0, 0.0f, 2.0f, 0.0f);
@@ -638,9 +719,12 @@ void SnowfaceAction(struct taskwk *twp, struct enemywk *ewp)
 	}
 }
 
-// STUB: SADX 0x0060bb60
-void SnowfaceRegular(struct task *tp)
+// FUNCTION: SADX 0x0060bb60
+void SnowfaceRegular(struct taskwk *tp)
 {
+	CreateFlash2(tp->pos.x, tp->pos.y + 5.0f, tp->pos.z, 1.4f);
+	CreateExpParts(tp, snowface_model, &texlist_snowman);
+	CreateAnimal(1, tp->pos.x, tp->pos.y + 15.0f, tp->pos.z);
 }
 
 // STUB: SADX 0x0060bbf0
@@ -653,9 +737,42 @@ void DisplaySnowface(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x0060bef0
+// FUNCTION: SADX 0x0060bef0
 void DisplaySnowMobile(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct obj *local_8;
+
+	ResetMaterial();
+	njPushMatrix(0);
+	njTranslateV(0, &ewp->aim);
+	UNKNOWN_ROTATE_Y_MACRO(0, ewp->sub_angle[3] + 0x4000);
+	FUN_0067d2d0(0, 1.0f, 1.0f, 1.0f);
+	FUN_0067d2d0(0, twp->scl.x, twp->scl.y, twp->scl.x);
+	local_8 = &object_snowball_m_tank_tank;
+	___njSetTexture(&texlist_snowman);
+	njPushMatrix(0);
+	njTranslateV(0, (NJS_VECTOR *)local_8->pos);
+	___dsDrawModel(local_8->model);
+	local_8 = local_8->child;
+	njPushMatrix(0);
+	njTranslateV(0, (NJS_VECTOR *)local_8->pos);
+	UNKNOWN_ROTATE_X_MACRO(0, ewp->sub_angle[2]);
+	___dsDrawModel(local_8->model);
+	njPopMatrix(1);
+	FUN_0067d830(0, 0.0f, -ewp->height, 0.0f);
+	local_8 = local_8->sibling;
+	njPushMatrix(0);
+	njTranslateV(0, (NJS_VECTOR *)local_8->pos);
+	___dsDrawModel(local_8->model);
+	njPopMatrix(1);
+	local_8 = local_8->sibling;
+	njPushMatrix(0);
+	njTranslateV(0, (NJS_VECTOR *)local_8->pos);
+	UNKNOWN_ROTATE_Y_MACRO(0, 0x8000);
+	___dsDrawModel(local_8->model);
+	njPopMatrix(1);
+	njPopMatrix(1);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x0060c0f0

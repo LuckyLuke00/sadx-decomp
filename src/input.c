@@ -32,6 +32,12 @@ int KeyGetPress(int keycode)
 	return DAT_05b92ec8[keycode * 3 + 2];
 }
 
+// FUNCTION: SADX 0x004c38b0
+int FUN_004c38b0(int param_1)
+{
+	return DAT_05b92ec8[param_1 * 3];
+}
+
 // FUNCTION: SADX 0x004c38e0
 void PadReadOn()
 {

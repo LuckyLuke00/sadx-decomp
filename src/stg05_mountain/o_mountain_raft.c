@@ -3,6 +3,16 @@
 // GLOBAL: SADX 0x03feb7c0
 static struct CCL_INFO object_c_info[2];
 
+// FUNCTION: SADX 0x008350d0
+void ObjectMountainHaka(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	var1->counter.ptr = object_haka1a_haka1a_haka1a;
+	var1->value.ptr = &texlist_obj_mountain;
+	CCL_Init(tp, (struct CCL_INFO *)&object_c_info, 1, 4);
+	ObjectCCollision(tp);
+}
+
 // FUNCTION: SADX 0x00835100
 void ObjectMountainChair(struct task *tp)
 {

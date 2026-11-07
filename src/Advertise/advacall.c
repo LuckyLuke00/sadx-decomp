@@ -1,4 +1,9 @@
 #include "decls.h"
+extern int DAT_05cd14d4;
+extern struct task *DAT_05cda18c;
+void FUN_0049f780();
+void FUN_007d21b0(...);
+int FUN_004c39c0(...);
 
 extern unsigned char DAT_05ad95e1;
 extern unsigned char DAT_05cd14e2;
@@ -83,4 +88,26 @@ long Title2Loop(void *Param)
 	}
 	FUN_005b5aa0();
 	return local_8;
+}
+
+// FUNCTION: SADX 0x004bad70
+int FUN_004bad70()
+{
+	int local_8;
+
+	GetSwitchData();
+	PadReadOn();
+	FUN_0049f780();
+	LoopTask();
+	FUN_007d21b0((void *)1);
+	___njFogDisable();
+	DisplayTask();
+	DAT_05cd14d4 = 0;
+	if (FUN_004c39c0(0))
+	{
+		local_8 = *(int *)(*(int *)((char *)DAT_05cda18c + 0x2c) + 0xc) == 5 ? 0x6c : -2;
+		GenocideTask();
+		return local_8;
+	}
+	return 0;
 }

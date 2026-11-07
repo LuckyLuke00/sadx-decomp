@@ -15,6 +15,12 @@ extern int DAT_05aeb694;
 int FUN_0043ed90();
 extern int DAT_05aeb690;
 
+// FUNCTION: SADX 0x0043ed90
+int FUN_0043ed90(void)
+{
+	return (int)DAT_05aeb6a0[ALMC_GetSystemSlot()];
+}
+
 // FUNCTION: SADX 0x0043edb0
 struct CHAO_GARDEN_INFO *AL_GetAnotherGardenInfo()
 {
@@ -56,12 +62,12 @@ void FUN_0043ee00()
 		{
 			*var8 = TreeInitSaveInfoDX;
 			var4 = rand();
-			var6 = (float)var4 * 3.0517578125e-05f;
-			var7 = var6 * 79.9999008178711f;
+			var6 = (float)var4 * 3.0517578e-5f;
+			var7 = var6 * 79.9999f;
 			var8->FruitGrowth[0] = (signed char)var7;
 			var5 = rand();
-			var6 = (float)var5 * 3.0517578125e-05f;
-			var7 = var6 * 99.9999008178711f;
+			var6 = (float)var5 * 3.0517578e-5f;
+			var7 = var6 * 99.9999f;
 			var8->FruitGrowth[1] = (signed char)var7;
 			var8->FruitGrowth[2] = -10;
 			var8 = (struct TREE_SAVE_INFO *)((char *)var8 + 8);
@@ -221,7 +227,7 @@ struct ITEM_SAVE_INFO *AL_GetItemSaveInfo(struct task *pItemTask)
 	var1 = (struct task *)pItemTask->fwp;
 	if (var1 != NULL)
 	{
-		return (struct ITEM_SAVE_INFO *)*(void **)((char *)var1 + 8);
+		return (struct ITEM_SAVE_INFO *)var1->ptp;
 	}
 	return NULL;
 }
@@ -231,7 +237,7 @@ void AL_ClearItemSaveInfoPtr(struct task *pItemTask)
 {
 	if (pItemTask->fwp != NULL)
 	{
-		*(int *)((char *)pItemTask->fwp + 8) = 0;
+		pItemTask->fwp->ang_spd.y = 0;
 	}
 }
 

@@ -1,5 +1,4 @@
 #include "decls.h"
-extern long vertex_al_hrp_reg_l[153];
 extern void *DAT_060eea60;
 struct NJS_TEXLIST;
 int FUN_006fccc0(struct taskwk *param_1);
@@ -18,22 +17,22 @@ void EffectSSSpinDSExecute(struct task *tp)
 {
 }
 
-// STUB: SADX 0x006fcb30
+// FUNCTION: SADX 0x006fcb30
 void EffectSSStartHomingDisplay(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	struct NJS_ARGB argb;
 	SaveConstantAttr();
-	OnConstantAttr(0, (unsigned long)&vertex_al_hrp_reg_l[112]);
+	OnConstantAttr(0, 0x2100000);
 	argb.b = 0.0;
 	argb.g = 0.0;
 	argb.r = 0.0;
 	argb.a = ((float)var1->wtimer * -1.0) / 10.0;
 	___njSetConstantMaterial(&argb);
-	___njSetTexture((struct NJS_TEXLIST *)(void *)(*(int *)&var1->value));
+	___njSetTexture((struct NJS_TEXLIST *)var1->value.ptr);
 	njPushMatrix(0);
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
-	FUN_0067d2d0(0, *(float *)&var1->scl, *(float *)&var1->scl, *(float *)&var1->scl);
+	FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
 	late_DrawObject(*(struct obj **)((char *)DAT_060eea60 + 0xe0), 4);
 	njPopMatrix(1);
 	ResetMaterial();

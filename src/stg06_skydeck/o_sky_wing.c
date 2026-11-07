@@ -8,10 +8,10 @@ void ObjectSkydeck_wings_init()
 {
 }
 
-// STUB: SADX 0x0083f690
+// FUNCTION: SADX 0x0083f690
 int SkydeckCheck_break(float posx, float posy, float posz)
 {
-	if (*(char *)&DAT_05b9d744 != 1)
+	if ((char)DAT_05b9d744 != 1)
 	{
 		return 0;
 	}

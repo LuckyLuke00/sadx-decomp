@@ -1,5 +1,8 @@
 #include "decls.h"
 
+// GLOBAL: SADX 0x0480ba20
+static struct CCL_INFO object_c_info[1];
+
 // FUNCTION: SADX 0x00878120
 void ObjectCasinoSlotArmDraw(struct task *tp)
 {
@@ -31,7 +34,7 @@ void ObjectCasinoSlotArmDraw(struct task *tp)
 	njPopMatrix(1);
 }
 
-// STUB: SADX 0x00878340
+// FUNCTION: SADX 0x00878340
 void ObjectCasinoSlotArm(struct task *tp)
 {
 	if (CheckRangeOutWithR(tp, 62510.0f) == 0)
@@ -40,7 +43,7 @@ void ObjectCasinoSlotArm(struct task *tp)
 
 		if (FUN_004c39c0(tp) == 0)
 		{
-			CCL_Init(tp, (struct CCL_INFO *)0x0480ba20, 1, 4);
+			CCL_Init(tp, object_c_info, 1, 4);
 		}
 		tp->disp = ObjectCasinoSlotArmDraw;
 		tp->exec = ObjectCasinoSlotArmExec;

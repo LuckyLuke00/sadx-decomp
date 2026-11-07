@@ -2,7 +2,7 @@
 extern struct CCL_INFO object_saku2_info[];
 extern struct CCL_INFO object_rouya_info[2];
 extern struct obj object_saku_saku_saku[1];
-extern struct CCL_INFO object_saku2_info[1];
+extern struct CCL_INFO object_saku2_info[4];
 extern struct NJS_TEXLIST texlist_obj_mountain;
 
 // FUNCTION: SADX 0x0082c7b0
@@ -54,12 +54,12 @@ void ObjectMountainSotoSaku(struct task *tp)
 {
 	struct taskwk *var1;
 	var1 = tp->twp;
-	*(void **)((char *)var1 + 8) = object_mt_sotosaku_sotosaku;
+	var1->counter.ptr = object_mt_sotosaku_sotosaku;
 	var1->value.ptr = &texlist_obj_mountain;
 	ObjectScaleNormal(tp);
 }
 
-// STUB: SADX 0x0082c8c0
+// FUNCTION: SADX 0x0082c8c0
 void ObjectMountainTreeBox(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
@@ -67,7 +67,7 @@ void ObjectMountainTreeBox(struct task *tp)
 	var1->value.ptr = &texlist_obj_mountain;
 	if (!FUN_004c39c0(tp))
 	{
-		CCL_Init(tp, (struct CCL_INFO *)0x03fea6b0, 1, 4);
+		CCL_Init(tp, &object_saku2_info[3], 1, 4);
 		CheckCollisionScale(var1);
 	}
 	ObjectScaleCCollision(tp);

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern void *DAT_06298ca0;
 extern void *DAT_060eea78;
 extern int DAT_05cc3b18;
 void FUN_0050ce80(char *param_1, int param_2, char *param_3);
@@ -71,7 +72,7 @@ long BigCheckWater(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 	{
 		v.z = 0.0f;
 		v.x = v.z;
-		v.y = *(float *)((char *)pwp + 0x118);
+		v.y = pwp->p.eyes_height;
 		PConvertVector_P2G(twp, &v);
 		njAddVector((NJS_VECTOR *)&v, (NJS_VECTOR *)&twp->pos);
 		if (*(float *)((char *)pwp + 0x1ec) < v.y)
@@ -94,7 +95,7 @@ long BigCheckAtack_W(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk 
 {
 	if (BigCheckWater(twp, mwp, pwp) != 0 && (DAT_05b932e8[twp->counter.b[0]].press & action_button) != 0)
 	{
-		*(short *)((char *)pwp + 0x124) = 0x42;
+		pwp->mj.reqaction = 0x42;
 		twp->mode = 0x28;
 		return 1;
 	}
@@ -113,7 +114,7 @@ long BigCheckBeInTheWater(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	if (FUN_0050aa70(twp, mwp, pwp) != 0)
 	{
 		twp->mode = 0x2f;
-		*(short *)((char *)pwp + 0x124) = 0x5c;
+		pwp->mj.reqaction = 0x5c;
 		return 1;
 	}
 	return 0;
@@ -135,13 +136,13 @@ long BigCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct player
 			if ((PCheckHoldObject(twp) & 0x200) != 0)
 			{
 				twp->mode = 0x16;
-				*(short *)((char *)pwp + 0x124) = 0x27;
+				pwp->mj.reqaction = 0x27;
 				return 1;
 			}
 			BigThrowTheObjectOut(twp, mwp, pwp);
 		}
 		twp->mode = 8;
-		*(short *)((char *)pwp + 0x124) = 0xe;
+		pwp->mj.reqaction = 0xe;
 		return 1;
 	}
 	else
@@ -160,7 +161,7 @@ long BigCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 			if (twp->mode == 0xa || twp->mode == 0x1c || twp->mode == 0x1a)
 			{
 				twp->mode = 0x12;
-				*(short *)((char *)pwp + 0x124) = 0x24;
+				pwp->mj.reqaction = 0x24;
 			}
 			else
 			{
@@ -275,6 +276,25 @@ void BigGetFloat(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp
 {
 }
 
+// FUNCTION: SADX 0x0050bd30
+void FUN_0050bd30(struct task *param_1)
+{
+	struct motionwk *local_8;
+
+	local_8 = (struct motionwk *)CAlloc(1, 0x20);
+	if (local_8 == 0)
+	{
+		return;
+	}
+	param_1->mwp = local_8;
+	*(long *)((char *)local_8 + 0x10) = *(long *)((char *)DAT_060eea78 + 0x68);
+	*(long *)((char *)local_8 + 0x14) = *(long *)((char *)DAT_060eea78 + 0x6c);
+	*(long *)((char *)local_8 + 0x18) = *(long *)((char *)DAT_060eea78 + 0x70);
+	local_8->ang_aim.x = *(long *)DAT_06298ca0;
+	param_1->dest = PlayerFaceMotionEnd;
+	param_1->exec = PlayerFaceMotionExec;
+}
+
 // FUNCTION: SADX 0x0050c310
 void BigEarsSwingEnd(struct task *tp)
 {
@@ -297,7 +317,7 @@ long FUN_0050c330(long param_1, float *param_2)
 			return 0;
 		}
 		local_cg->mwp = (struct motionwk *)local_8g;
-		*(char *)((char *)local_cg->twp + 8) = (char)param_1;
+		local_cg->twp->counter.b[0] = (char)param_1;
 		*(int *)((char *)local_8g + 0x58) = *(int *)param_2;
 		*(int *)((char *)local_8g + 0x5c) = *(int *)((char *)param_2 + 4);
 		*(int *)((char *)local_8g + 0x60) = *(int *)((char *)param_2 + 8);
@@ -353,9 +373,9 @@ void FUN_0050cbf0(struct playerwk *param_1, int param_2, int param_3)
 void bigActMissSet(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	FUN_004bee10();
-	*(float *)((char *)DAT_05b42a7c + 0x24) = DAT_05baf368[0]->pos.y + 10.0f;
-	*(float *)((char *)DAT_05b42a7c + 0x20) = (*(float *)((char *)DAT_05b42a7c + 0x20) - DAT_05baf368[0]->pos.x) * 0.009999999776482582 + DAT_05baf368[0]->pos.x;
-	*(float *)((char *)DAT_05b42a7c + 0x28) = (*(float *)((char *)DAT_05b42a7c + 0x28) - DAT_05baf368[0]->pos.z) * 0.009999999776482582 + DAT_05baf368[0]->pos.z;
+	DAT_05b42a7c->pos.y = DAT_05baf368[0]->pos.y + 10.0f;
+	DAT_05b42a7c->pos.x = (DAT_05b42a7c->pos.x - DAT_05baf368[0]->pos.x) * 0.009999999776482582 + DAT_05baf368[0]->pos.x;
+	DAT_05b42a7c->pos.z = (DAT_05b42a7c->pos.z - DAT_05baf368[0]->pos.z) * 0.009999999776482582 + DAT_05baf368[0]->pos.z;
 	pwp->mj.reqaction = 0x3f;
 	twp->mode = 0x27;
 	dsPlay_oneshot(0x350, 0, 0, 0);

@@ -1,6 +1,28 @@
 #include "decls.h"
 extern struct DAT_05b35c40 *DAT_05b35c40;
 
+// FUNCTION: SADX 0x00489870
+void AlrWhite_In(int nCount)
+{
+	struct DAT_05b35c40 *var1;
+	struct DAT_05b35c40 *var2;
+
+	var1 = DAT_05b35c40;
+	if (var1 != 0)
+	{
+		var2 = *(struct DAT_05b35c40 **)((char *)var1 + 0x20);
+		*(char *)var2 = 1;
+		if (nCount > 0)
+		{
+			*(float *)((char *)var2 + 0x30) = -*(float *)((char *)var2 + 0x2c) / (float)nCount;
+		}
+		else
+		{
+			*(float *)((char *)var2 + 0x30) = -*(float *)((char *)var2 + 0x2c);
+		}
+	}
+}
+
 // FUNCTION: SADX 0x004898a0
 void AlrWhite_Out(int nCount)
 {

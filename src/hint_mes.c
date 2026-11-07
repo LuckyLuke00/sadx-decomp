@@ -96,9 +96,9 @@ void HintMessageStart(const struct HintMessageMemory *data_p)
 // FUNCTION: SADX 0x0056d400
 void NpcMessageStart(const struct NpcMessageMemory *data_p)
 {
-	if (*(int *)((char *)data_p + 0) != 0)
+	if (*(int *)data_p != 0)
 	{
-		field_msg_create_man((void (*)(void *))disp_npc_message_wait, *(void **)((char *)data_p + 0), 0);
+		field_msg_create_man((void (*)(void *))disp_npc_message_wait, *(void **)data_p, 0);
 	}
 	FUN_0056d4a0(*(long *)((char *)data_p + 4));
 }
@@ -255,12 +255,19 @@ void field_msg_front_fade(struct MSGC *msgc_p, long time, long rate)
 // FUNCTION: SADX 0x0056daf0
 void field_msg_back_fade(struct MSGC *msgc_p, long time, long rate)
 {
-	*(unsigned char *)((char *)msgc_p + 0x23) = 0;
-	*(unsigned char *)((char *)msgc_p + 0x1f) = 0;
+	msgc_p->bc.argb.a = 0;
+	msgc_p->fc.argb.a = 0;
 	FUN_0056db40(msgc_p, 0xa, 0xc);
-	*(unsigned char *)((char *)msgc_p + 0x23) = 0x80;
+	msgc_p->bc.argb.a = 0x80;
 	field_msg_front_fade(msgc_p, 0xa, 0x18);
-	*(unsigned char *)((char *)msgc_p + 0x1f) = 0xff;
+	msgc_p->fc.argb.a = 0xff;
+}
+
+// FUNCTION: SADX 0x0056dc00
+void FUN_0056dc00()
+{
+	DAT_05ccde78 = 1;
+	PauseDisable();
 }
 
 // FUNCTION: SADX 0x0056dc20

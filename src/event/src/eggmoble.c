@@ -44,6 +44,16 @@ void FUN_007d6280(float param_1, float param_2, float param_3, long param_4, lon
 	}
 }
 
+// FUNCTION: SADX 0x007d62e0
+void FUN_007d62e0()
+{
+	if (DAT_060cc57c)
+	{
+		FreeTask(DAT_060cc57c);
+		DAT_060cc57c = 0;
+	}
+}
+
 // FUNCTION: SADX 0x007d6300
 void ChgEggMobleMod(signed char mode)
 {
@@ -62,19 +72,35 @@ void ChgEggMobleSMod(signed char smode)
 	}
 }
 
+// FUNCTION: SADX 0x007d6340
+void FUN_007d6340(float param_1, float param_2, float param_3, long param_4)
+{
+	struct taskwk *var1 = DAT_060cc57c->twp;
+	struct motionwk *var2 = (struct motionwk *)var1->counter.ptr;
+	var2->acc.z = param_1;
+	*(float *)((char *)var2 + 0x1c) = param_2;
+	*(float *)((char *)var2 + 0x20) = param_3;
+	*(float *)var2 = (param_1 - var1->pos.x) / (float)param_4;
+	var2->spd.x = (param_2 - var1->pos.y) / (float)param_4;
+	var2->spd.y = (param_3 - var1->pos.z) / (float)param_4;
+	var2->ang_aim.z = param_4;
+	var2->ang_spd.x = 0;
+	var1->mode = 1;
+}
+
 // FUNCTION: SADX 0x007d63b0
 void eggmoble_move_rapid(float x, float y, float z, long frame)
 {
 	struct taskwk *var1 = DAT_060cc57c->twp;
 	struct motionwk *var2 = (struct motionwk *)var1->counter.ptr;
-	*(float *)((char *)var2 + 0x18) = x;
+	var2->acc.z = x;
 	*(float *)((char *)var2 + 0x1c) = y;
 	*(float *)((char *)var2 + 0x20) = z;
 	*(float *)var2 = (x - var1->pos.x) / (float)frame;
-	*(float *)((char *)var2 + 4) = (y - var1->pos.y) / (float)frame;
-	*(float *)((char *)var2 + 8) = (z - var1->pos.z) / (float)frame;
-	*(long *)((char *)var2 + 0x24) = frame;
-	*(int *)((char *)var2 + 0x28) = 0;
+	var2->spd.x = (y - var1->pos.y) / (float)frame;
+	var2->spd.y = (z - var1->pos.z) / (float)frame;
+	var2->ang_aim.z = frame;
+	var2->ang_spd.x = 0;
 	var1->mode = 2;
 }
 
@@ -83,8 +109,8 @@ void eggmoble_turn(long ax, long ay, long az, long frame, signed char efmode)
 {
 	struct taskwk *var1 = DAT_060cc57c->twp;
 	struct motionwk *var2 = (struct motionwk *)var1->counter.ptr;
-	*(long *)((char *)var2 + 0x24) = frame;
-	*(int *)((char *)var2 + 0x28) = 0;
+	var2->ang_aim.z = frame;
+	var2->ang_spd.x = 0;
 	*(long *)((char *)var2 + 0xc) = ax / frame;
 	*(long *)((char *)var2 + 0x10) = ay / frame;
 	*(long *)((char *)var2 + 0x14) = az / frame;
@@ -107,17 +133,17 @@ void eggmoble_moveandturn(float x, float y, float z, long ax, long ay, long az, 
 {
 	struct taskwk *var1 = DAT_060cc57c->twp;
 	struct motionwk *var2 = (struct motionwk *)var1->counter.ptr;
-	*(float *)((char *)var2 + 0x18) = x;
+	var2->acc.z = x;
 	*(float *)((char *)var2 + 0x1c) = y;
 	*(float *)((char *)var2 + 0x20) = z;
 	*(float *)var2 = (x - var1->pos.x) / (float)frame;
-	*(float *)((char *)var2 + 4) = (y - var1->pos.y) / (float)frame;
-	*(float *)((char *)var2 + 8) = (z - var1->pos.z) / (float)frame;
+	var2->spd.x = (y - var1->pos.y) / (float)frame;
+	var2->spd.y = (z - var1->pos.z) / (float)frame;
 	*(long *)((char *)var2 + 0xc) = ax / frame;
 	*(long *)((char *)var2 + 0x10) = ay / frame;
 	*(long *)((char *)var2 + 0x14) = az / frame;
-	*(long *)((char *)var2 + 0x24) = frame;
-	*(int *)((char *)var2 + 0x28) = 0;
+	var2->ang_aim.z = frame;
+	var2->ang_spd.x = 0;
 	var1->mode = 4;
 	if (efmode == 0)
 	{

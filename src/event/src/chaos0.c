@@ -1,10 +1,20 @@
 #include "decls.h"
+void FreeTask(struct task *tp);
 static void initChaos0Task(struct task *p_task);
 static void execChaos0Task(struct task *p_task);
 static void dispChaos0Task(struct task *p_task);
 extern struct PL_JOIN_VERTEX ev_chaos0_jv_list[1];
 extern struct NJS_ACTION _action_c0_wait0[1];
 extern struct task *DAT_060cc140;
+
+// FUNCTION: SADX 0x007d2d60
+void FUN_007d2d60(void)
+{
+	if (DAT_060cc140 != NULL)
+	{
+		FreeTask(DAT_060cc140);
+	}
+}
 
 // STUB: SADX 0x007d2d80
 void Jump2Chaos0(float pos_x, float pos_y, float pos_z, float jumph, int frame)
@@ -22,12 +32,12 @@ void MoveChaos0(float pos_x, float pos_y, float pos_z, int frame)
 	struct taskwk *var1 = DAT_060cc140->twp;
 	struct motionwk *var2 = (struct motionwk *)var1->value.ptr;
 	*(float *)var2 = pos_x;
-	*(float *)((char *)var2 + 4) = pos_y;
-	*(float *)((char *)var2 + 8) = pos_z;
-	*(float *)((char *)var2 + 0x18) = (pos_x - var1->pos.x) / (float)frame;
+	var2->spd.x = pos_y;
+	var2->spd.y = pos_z;
+	var2->acc.z = (pos_x - var1->pos.x) / (float)frame;
 	*(float *)((char *)var2 + 0x1c) = (pos_y - var1->pos.y) / (float)frame;
 	*(float *)((char *)var2 + 0x20) = (pos_z - var1->pos.z) / (float)frame;
-	*(int *)((char *)var2 + 0x30) = frame;
+	var2->ang_spd.z = frame;
 	var1->mode = 6;
 	var1->counter.f = 0.0f;
 	var1->timer.l = 0;
@@ -43,6 +53,14 @@ struct task *GetChaos0()
 void ChangeMotspd(float mot_spd)
 {
 	*(float *)((char *)DAT_060cc140->twp->value.ptr + 0x3c) = mot_spd;
+}
+
+// FUNCTION: SADX 0x007d2fe0
+void FUN_007d2fe0(void)
+{
+	struct taskwk *var1 = DAT_060cc140->twp;
+	var1->timer.l = 0;
+	var1->mode = 3;
 }
 
 // FUNCTION: SADX 0x007d3020
@@ -62,6 +80,20 @@ void SetAngleChaos0(long ang_x, long ang_y, long ang_z)
 	var1->ang.x = ang_x;
 	var1->ang.y = ang_y;
 	var1->ang.z = ang_z;
+}
+
+// FUNCTION: SADX 0x007d3060
+void FUN_007d3060(void)
+{
+	char *var1 = (char *)DAT_060cc140 + 0x20;
+	char *var2 = *(char **)(var1);
+	char *var3 = *(char **)(var2 + 0x10);
+	*(float *)(var3 + 0x44) = -25.0f;
+	*(float *)(var3 + 0x64) = 1.0f;
+	*(float *)(var3 + 0x68) = 1.0f;
+	*(float *)(var3 + 0x6c) = 1.0f;
+	*(float *)(var3 + 0x70) = 0.5f;
+	*(char *)var2 = 5;
 }
 
 // FUNCTION: SADX 0x007d3090

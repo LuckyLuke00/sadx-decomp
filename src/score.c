@@ -85,9 +85,14 @@ long FUN_00554a80()
 	return DAT_05ccca10;
 }
 
-// STUB: SADX 0x00554a90
+// FUNCTION: SADX 0x00554a90
 void SetTotalRing(unsigned long num)
 {
+	if (num > 0x98967f)
+	{
+		num = 0x98967f;
+	}
+	DAT_05ccca10 = num;
 }
 
 // FUNCTION: SADX 0x00554ab0
@@ -377,9 +382,17 @@ void DisplayCalcSuperSonicScoreHH(struct task *tp)
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055a0c0
+// FUNCTION: SADX 0x0055a0c0
 void DisplayCalcEggManScoreHH(struct task *tp)
 {
+	DisplayCalcSuperSonicScoreHH(tp);
+	*(int *)(score_sc + 4) = 0xf4240;
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.z;
+	*(float *)(score_sc + 0xc) = 0.0f + ScreenRaitoX * 320.0f;
+	*(float *)(score_sc + 0x10) = ScreenRaitoY * 240.0f + 32.0f;
+	*(int *)(score_sc + 0x1c) = 0xffff0000;
+	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
+	*(int *)(score_sc + 0x1c) = 0xffffffff;
 }
 
 // FUNCTION: SADX 0x0055a160
@@ -398,7 +411,7 @@ void FUN_0055a160(struct task *param_1)
 // FUNCTION: SADX 0x0055af20
 double FUN_0055af20()
 {
-	return (double)DAT_05b3ebd4;
+	return DAT_05b3ebd4;
 }
 
 // FUNCTION: SADX 0x0055af30
@@ -495,7 +508,7 @@ void DisplayCalcTimeScore(struct task *tp)
 {
 	DisplayCalcEnemyScore(tp);
 	*(int *)(score_sc + 4) = 0xf4240;
-	*(int *)(score_sc + 8) = (unsigned int)*(float *)((char *)tp->twp + 0x30);
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.y;
 	*(float *)(score_sc + 0xc) = 320.0f;
 	*(float *)(score_sc + 0x10) = 274.0f;
 	*(float *)(score_sc + 0xc) = *(float *)(score_sc + 0xc) - 320.0 + ScreenRaitoX * 320.0;
@@ -511,7 +524,7 @@ void DisplayCalcRingScore(struct task *tp)
 	else
 		DisplayCalcTimeScore(tp);
 	*(int *)(score_sc + 4) = 0xf4240;
-	*(int *)(score_sc + 8) = (unsigned int)*(float *)((char *)tp->twp + 0x34);
+	*(int *)(score_sc + 8) = (unsigned int)tp->twp->scl.z;
 	*(float *)(score_sc + 0xc) = 320.0f;
 	*(float *)(score_sc + 0x10) = 320.0f;
 	*(float *)(score_sc + 0xc) = *(float *)(score_sc + 0xc) - 320.0 + ScreenRaitoX * 320.0;

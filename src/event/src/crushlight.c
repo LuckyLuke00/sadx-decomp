@@ -1,5 +1,16 @@
 #include "decls.h"
+extern struct task *DAT_060cc134;
 void FUN_007d6940(struct task *param_1);
+
+// FUNCTION: SADX 0x007d2c50
+void FUN_007d2c50()
+{
+	if (DAT_060cc134)
+	{
+		FreeTask(DAT_060cc134);
+		DAT_060cc134 = 0;
+	}
+}
 
 // STUB: SADX 0x007d2c70
 void execCrushLightTask(struct task *p_task)

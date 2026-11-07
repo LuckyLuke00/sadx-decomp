@@ -1,8 +1,12 @@
 #include "decls.h"
+long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry);
+long CameraCollisionPlane(struct _OBJ_CAMERAENTRY *pCameraEntry);
+void CameraSetCamera(signed char scCameraMode, short ssCameraEntry);
+void CameraCancelCamera();
+extern "C" double atan2(double v, double u);
 void ___njSetPerspective(long a);
 void FUN_004bec60(short param_1, unsigned char param_2);
-struct _OBJ_CAMERAENTRY *local_8g;
-long local_10;
+int FUN_004bd880(struct taskwk *param_1);
 extern void *DAT_05b428a8;
 extern int DAT_05b425a0;
 extern int DAT_05b42a84;
@@ -93,6 +97,27 @@ extern unsigned long DAT_05b429a0;
 extern int DAT_05b42968;
 
 extern int DAT_05b42978;
+
+// PLACEHOLDER: UNKNOWN_CAMERA_COLLISION_MACRO: likely a macro, since the code is a do-while (0) block of this switch, and CameraManagerEvent writes its other switch without one.
+#define UNKNOWN_CAMERA_COLLISION_MACRO(param_1, param_2) \
+	do \
+	{ \
+		switch (*(char *)((char *)(param_2) + 3)) \
+		{ \
+		case 0: \
+			(param_1) = CameraCollisionCube(param_2); \
+			break; \
+		case 2: \
+			(param_1) = CameraCollisionPlane(param_2); \
+			break; \
+		default: \
+			(param_1) = 0; \
+			break; \
+		} \
+	} while (0)
+
+// PLACEHOLDER: UNKNOWN_CAMERA_CONDITION: the original tests a value that is always 1 here, so its name is unknown.
+#define UNKNOWN_CAMERA_CONDITION 1
 
 // FUNCTION: SADX 0x004bade0
 void SetStartCameraMode(signed char mode)
@@ -305,9 +330,78 @@ void CameraSetCameraMi(struct _OBJ_CAMERAENTRY *pCameraEntry)
 	DAT_05b42940 = 0;
 }
 
-// STUB: SADX 0x004bba70
+// FUNCTION: SADX 0x004bba70
 void FUN_004bba70()
 {
+	if ((DAT_05b42a74 & 2) != 0)
+	{
+		if (*(char *)((char *)pCameraSystemWork + 6) == 0x40 || *(char *)((char *)pCameraSystemWork + 6) == 0x4c)
+		{
+			FUN_004bee10();
+			SetAdjustMode(5);
+		}
+	}
+	else if (current_event != -1)
+	{
+		if (*(char *)((char *)pCameraSystemWork + 6) == 0x40 || *(char *)((char *)pCameraSystemWork + 6) == 0x4c)
+		{
+			FUN_004bee10();
+			SetAdjustMode(5);
+		}
+	}
+	else
+	{
+		DAT_05b428e8++;
+		if (DAT_05b932e8[0].x2 == 0 && DAT_05b932e8[0].y2 == 0)
+		{
+			if (UNKNOWN_CAMERA_CONDITION)
+			{
+				if (*(char *)((char *)pCameraSystemWork + 6) == 0x40 || *(char *)((char *)pCameraSystemWork + 6) == 0x4c)
+				{
+					if ((DAT_05b932e8[0].on & 0x606) != 0 || (DAT_05b932e8[0].x1 << 8) != 0 || (DAT_05b932e8[0].y1 << 8) != 0 || DAT_05b4297c == 0)
+					{
+						FUN_004bee10();
+						SetAdjustMode(5);
+						if (DAT_05b3e320[8] != 0 && DAT_05b9d724 == 3 && DAT_05b9d744 == 0 && GetPlayerNumber() == 0 && *(char *)DAT_05b3e320[8] == 0x2d)
+						{
+							FUN_004bf070(0x31);
+						}
+					}
+				}
+			}
+			else if ((DAT_05b9d724 != 9 || (DAT_05b9d744 != 2 && DAT_05b9d744 != 3)) && *(char *)((char *)pCameraSystemWork + 6) != 0x4c)
+			{
+				FUN_004bec60(0x4c, 0xb);
+			}
+		}
+		else if (*(char *)((char *)pCameraSystemWork + 6) != 0x40 && *(char *)((char *)pCameraSystemWork + 8) != 2 && DAT_05b4297c != 0)
+		{
+			switch (*(char *)((char *)pCameraSystemWork + 6))
+			{
+			case 0x17:
+			case 0x18:
+			case 0x19:
+			case 0x1c:
+			case 0x1d:
+			case 0x1e:
+				break;
+			default:
+				if ((unsigned int)DAT_05b428e8 > 0x1e && *(char *)((char *)pCameraSystemWork + 8) != 4)
+				{
+					FUN_004bec60(0x40, 5);
+				}
+				break;
+			}
+		}
+		else if (*(char *)((char *)pCameraSystemWork + 6) == 0x40)
+		{
+			if ((DAT_05b932e8[0].on & 0x606) != 0 || (DAT_05b932e8[0].x1 << 8) != 0 || (DAT_05b932e8[0].y1 << 8) != 0 || DAT_05b4297c == 0)
+			{
+				FUN_004bee10();
+				SetAdjustMode(5);
+			}
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004bbcf0
@@ -325,14 +419,84 @@ void FUN_004bbd30(short param_1, struct _OBJ_CAMERAENTRY *param_2)
 {
 }
 
-// STUB: SADX 0x004bbdd0
+// FUNCTION: SADX 0x004bbdd0
 void CameraManagerRegional(short ssCameraEntry, struct _OBJ_CAMERAENTRY *pCameraEntry)
 {
+	long local_8;
+
+	if (*(short *)((char *)pCameraSystemWork + 4) == ssCameraEntry)
+	{
+		if (DAT_05baf368[0] != 0)
+		{
+			UNKNOWN_CAMERA_COLLISION_MACRO(local_8, pCameraEntry);
+			if (local_8 == 0)
+			{
+				CameraCancelCamera();
+			}
+		}
+	}
+	else if (*(char *)(DAT_05b4299c[0] + *(char *)pCameraEntry * 16 + 4) > *(char *)((char *)pCameraSystemWork + 8))
+	{
+		UNKNOWN_CAMERA_COLLISION_MACRO(local_8, pCameraEntry);
+		if (local_8 != 0)
+		{
+			CameraSetCamera(*(char *)pCameraEntry, ssCameraEntry);
+		}
+	}
+	else if (*(char *)(DAT_05b4299c[0] + *(char *)pCameraEntry * 16 + 4) == *(char *)((char *)pCameraSystemWork + 8) && DAT_05baf368[0] != 0 && *(char *)(DAT_05b42974 + *(short *)((char *)pCameraSystemWork + 4) * 64 + 1) < *(char *)((char *)pCameraEntry + 1))
+	{
+		UNKNOWN_CAMERA_COLLISION_MACRO(local_8, pCameraEntry);
+		if (local_8 != 0)
+		{
+			CameraCancelCamera();
+			CameraSetCamera(*(char *)pCameraEntry, ssCameraEntry);
+		}
+	}
 }
 
-// STUB: SADX 0x004bbf90
+// FUNCTION: SADX 0x004bbf90
 void CameraManagerEvent(short ssCameraEntry, struct _OBJ_CAMERAENTRY *pCameraEntry)
 {
+	long local_8j;
+	int local_cg;
+
+	local_8j = 0;
+	if (*(char *)(DAT_05b4299c[0] + *(char *)pCameraEntry * 16 + 4) == 4)
+	{
+		switch (*(char *)((char *)pCameraEntry + 3))
+		{
+		case 1:
+			local_8j = FUN_004bd880((struct taskwk *)pCameraEntry);
+			break;
+		}
+		if (local_8j != 0)
+		{
+			local_cg = 2;
+			while (*(int *)((char *)pCameraSystemWork + local_cg * 4 + 0x18) != 0)
+			{
+				local_cg = *(int *)((char *)pCameraSystemWork + local_cg * 4 + 0x18);
+			}
+			if (*(char *)(DAT_05b42974 + ssCameraEntry * 64) != 0x3d)
+			{
+				*(char *)((char *)pCameraSystemWork + local_cg + 0x78) = *(char *)(DAT_05b42974 + ssCameraEntry * 64);
+			}
+			*(char *)((char *)pCameraSystemWork + local_cg + 0x7e) = *(char *)(DAT_05b42974 + ssCameraEntry * 64 + 2);
+			if (*(char *)(DAT_05b42974 + ssCameraEntry * 64) != 0x3d)
+			{
+				*(int *)((char *)pCameraSystemWork + local_cg * 4 + 0x44) = *(int *)(DAT_05b4299c[0] + *(char *)pCameraEntry * 16);
+			}
+			*(int *)((char *)pCameraSystemWork + local_cg * 4 + 0x5c) = *(int *)((char *)DAT_05b4298c + *(unsigned char *)(DAT_05b42974 + ssCameraEntry * 64 + 2) * 8 + 4);
+		}
+	}
+	else if (DAT_05baf368[0] != 0 && *(char *)(DAT_05b42974 + *(short *)((char *)pCameraSystemWork + 4) * 64 + 1) < *(char *)((char *)pCameraEntry + 1))
+	{
+		UNKNOWN_CAMERA_COLLISION_MACRO(local_8j, pCameraEntry);
+		if (local_8j != 0)
+		{
+			CameraReleaseEventCamera();
+			CameraSetCamera(*(char *)pCameraEntry, ssCameraEntry);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x004bc160
@@ -492,9 +656,22 @@ void CamcontSetCameraCAMSTATUS(struct taskwk *pTaskWork)
 	pTaskWork->ang.z = *(long *)((char *)camcont_wp + 0x2c);
 }
 
-// STUB: SADX 0x004bdee0
+// FUNCTION: SADX 0x004bdee0
 void CamcontSetCameraLOOKAT(struct taskwk *pTaskWork)
 {
+	float local_10;
+	float local_8g;
+	float local_cj;
+
+	pTaskWork->pos.x = *(float *)((char *)camcont_wp + 0xc);
+	pTaskWork->pos.y = *(float *)((char *)camcont_wp + 0x10);
+	pTaskWork->pos.z = *(float *)((char *)camcont_wp + 0x14);
+	local_10 = *(float *)((char *)camcont_wp + 0xc) - *(float *)((char *)camcont_wp + 0x18);
+	local_8g = *(float *)((char *)camcont_wp + 0x14) - *(float *)((char *)camcont_wp + 0x20);
+	pTaskWork->ang.y = (long)(atan2(local_10, local_8g) * 65536.0 / 6.283184);
+	local_cj = njSqrt(local_10 * local_10 + local_8g * local_8g);
+	pTaskWork->ang.x = (long)(atan2(*(float *)((char *)camcont_wp + 0x1c) - *(float *)((char *)camcont_wp + 0x10), local_cj) * 65536.0 / 6.283184);
+	pTaskWork->ang.z = *(long *)((char *)camcont_wp + 0x2c);
 }
 
 // FUNCTION: SADX 0x004bdfe0
@@ -502,9 +679,9 @@ void CamcontSetCameraTGTOFST(struct taskwk *pTaskWork)
 {
 	float fVar1;
 	fVar1 = njCos(*(long *)((char *)camcont_wp + 0x24)) * *(float *)((char *)camcont_wp + 8);
-	*(float *)((char *)pTaskWork + 0x24) = *(float *)((char *)camcont_wp + 0x1c) - njSin(*(long *)((char *)camcont_wp + 0x24)) * *(float *)((char *)camcont_wp + 8);
-	*(float *)((char *)pTaskWork + 0x20) = njSin(*(long *)((char *)camcont_wp + 0x28)) * fVar1 + *(float *)((char *)camcont_wp + 0x18);
-	*(float *)((char *)pTaskWork + 0x28) = njCos(*(long *)((char *)camcont_wp + 0x28)) * fVar1 + *(float *)((char *)camcont_wp + 0x20);
+	pTaskWork->pos.y = *(float *)((char *)camcont_wp + 0x1c) - njSin(*(long *)((char *)camcont_wp + 0x24)) * *(float *)((char *)camcont_wp + 8);
+	pTaskWork->pos.x = njSin(*(long *)((char *)camcont_wp + 0x28)) * fVar1 + *(float *)((char *)camcont_wp + 0x18);
+	pTaskWork->pos.z = njCos(*(long *)((char *)camcont_wp + 0x28)) * fVar1 + *(float *)((char *)camcont_wp + 0x20);
 	pTaskWork->ang.x = *(long *)((char *)camcont_wp + 0x24);
 	pTaskWork->ang.y = *(long *)((char *)camcont_wp + 0x28);
 	pTaskWork->ang.z = *(long *)((char *)camcont_wp + 0x2c);

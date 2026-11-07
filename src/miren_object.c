@@ -120,3 +120,16 @@ void MirenObjFreeMobileLandObject(struct task *task_p, struct obj *obj_p)
 		ReleaseMobileLandObject(obj_p);
 	}
 }
+
+// FUNCTION: SADX 0x00572100
+void FUN_00572100(struct NJS_TEXLIST *param_1)
+{
+	if (param_1 == 0)
+	{
+		SetObjectTexture();
+	}
+	else
+	{
+		___njSetTexture(param_1);
+	}
+}

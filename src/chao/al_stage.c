@@ -20,6 +20,12 @@ extern struct task *DAT_05aeaa3c[15];
 extern struct taskwk *DAT_05baf368[8];
 
 
+// FUNCTION: SADX 0x0043dff0
+void FUN_0043dff0()
+{
+	ChaoStageNumber = ChaoNextStageNumber;
+}
+
 // FUNCTION: SADX 0x0043e000
 enum eCHAO_STAGE_NUMBER AL_GetStageNumber()
 {

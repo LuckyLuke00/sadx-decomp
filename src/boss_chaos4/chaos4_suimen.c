@@ -1,4 +1,6 @@
 #include "decls.h"
+extern float DAT_060c2158;
+extern char DAT_060c2160;
 extern int DAT_060c214c;
 extern float DAT_060c2154;
 extern struct NJS_TEXNAME texture_chaos4_numa[12];
@@ -26,9 +28,42 @@ void FUN_006f05f0(float *param_1)
 {
 }
 
-// STUB: SADX 0x006f0680
+// FUNCTION: SADX 0x006f0680
 void Dsp_SuimenYurashi(struct task *pTask)
 {
+	struct anywk *var1;
+	struct taskwk *var2;
+
+	var1 = pTask->awp;
+	var2 = pTask->twp;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (DAT_060c2158 > -1.0f)
+	{
+		*(float *)((char *)var1 + 0x154) = DAT_060c2158;
+		*(float *)((char *)var1 + 0x158) = 0.0f;
+		*(float *)((char *)var1 + 0x15c) = 0.0f;
+		*(float *)((char *)var1 + 0x160) = 0.0f;
+		___njSetConstantMaterial((struct NJS_ARGB *)((char *)var1 + 0x154));
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 0xa);
+		___njSetTexture(&texlist_chaos4_object);
+		njPushMatrix(NULL);
+		njTranslateV(NULL, &var2->pos);
+		if (DAT_05b3df4c != 0)
+		{
+			DAT_05b3df40 = -17952.0f;
+		}
+		late_DrawObjectClipMesh((struct obj *)var1->work.ptr[1], 0, 1.0f);
+		DAT_05b3df40 = 0.0f;
+		njPopMatrix(1);
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+		ResetMaterial();
+		DAT_060c2160 = 1;
+	}
 }
 
 // STUB: SADX 0x006f0770

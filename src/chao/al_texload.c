@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_TEXNAME DAT_05b07030[];
 extern struct NJS_TEXNAME DAT_05b06830[1];
 
 // STUB: SADX 0x00442460
@@ -6,12 +7,25 @@ void AL_LoadTex(char *filename, struct NJS_TEXLIST *pTexlist, unsigned short lev
 {
 }
 
-#pragma optimize("", off)
-// STUB: SADX 0x004424c0
+// FUNCTION: SADX 0x004424c0
 void AL_ReleaseTex(unsigned short lev)
 {
+	struct NJS_TEXNAME *var1;
+	struct NJS_TEXNAME *var2;
+	int var3;
+	var1 = (struct NJS_TEXNAME *)((char *)&DAT_05b06830[0] + (lev << 0xb));
+	var2 = (struct NJS_TEXNAME *)((char *)&DAT_05b07030[0] + (lev << 0xb));
+	var3 = var1->attr;
+	while (var3 != 0 && var1 < var2)
+	{
+		late_ReleaseTexture((struct NJS_TEXLIST *)var1->attr);
+		___OutputDebugString("Release TEXLIST_%s\n", var1->filename);
+		var1->attr = 0;
+		var1->filename = 0;
+		var1 = (struct NJS_TEXNAME *)((char *)var1 + 8);
+		var3 = var1->attr;
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x00442520
 void FUN_00442520()

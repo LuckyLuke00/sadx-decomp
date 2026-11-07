@@ -54,9 +54,19 @@ void FUN_00928940(void *param_1)
 {
 }
 
-// STUB: SADX 0x00928950
+// FUNCTION: SADX 0x00928950
 void __fastcall FUN_00928950(int *param_1, int param_2, double param_3)
 {
+	*(double *)((char *)param_1 + 0x68) += param_3;
+	if (*(double *)((char *)param_1 + 0x68) > *(double *)((char *)param_1 + 0x60))
+	{
+		*(byte *)((char *)param_1 + 0x70) = 1;
+		*(double *)((char *)param_1 + 0x68) = 0.0;
+	}
+	else
+	{
+		*(byte *)((char *)param_1 + 0x70) = 0;
+	}
 }
 
 // STUB: SADX 0x00928980
@@ -72,14 +82,14 @@ int __fastcall FUN_009289b0(int param_1)
 }
 
 // FUNCTION: SADX 0x009289c0
-void __fastcall FUN_009289c0(struct S *param_1, int param_2, double param_3)
+void __fastcall FUN_009289c0(struct FUN_009289c0_0 *param_1, int param_2, double param_3)
 {
 	*(byte *)((char *)param_1 + 0x44) = 1;
 	*(double *)((char *)param_1 + 0x60) = param_3;
 }
 
 // STUB: SADX 0x009289e0
-int __fastcall FUN_009289e0(struct FUN_009289e0_struct *param_1)
+int __fastcall FUN_009289e0(struct FUN_009289e0_0 *param_1)
 {
 	return (int)0;
 }
@@ -103,12 +113,12 @@ char __fastcall FUN_00928a70(void *param_1)
 }
 
 // STUB: SADX 0x00928af0
-void __fastcall FUN_00928af0(struct S *param_1)
+void __fastcall FUN_00928af0(struct FUN_009289c0_0 *param_1)
 {
 }
 
 // STUB: SADX 0x00928bc0
-double __fastcall FUN_00928bc0(struct S *param_1)
+double __fastcall FUN_00928bc0(struct FUN_009289c0_0 *param_1)
 {
 	return (double)0;
 }
@@ -151,7 +161,7 @@ void __fastcall FUN_009291a0(int param_1)
 }
 
 // STUB: SADX 0x00929210
-void __fastcall FUN_00929210(struct S *param_1)
+void __fastcall FUN_00929210(struct FUN_009289c0_0 *param_1)
 {
 }
 

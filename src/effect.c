@@ -67,9 +67,15 @@ void FUN_00598fc0(char param_1)
 	SetOffsetColor(&local_8);
 }
 
-// STUB: SADX 0x00598ff0
+// FUNCTION: SADX 0x00598ff0
 void InitFadeOut()
 {
+	char local_8[4];
+	FUN_00598dd0();
+	DAT_05cda0b9 = 1;
+	FUN_005999c0(local_8);
+	DAT_05cda0c0 = (unsigned char)local_8[3];
+	FUN_00598e20();
 }
 
 // STUB: SADX 0x00599030

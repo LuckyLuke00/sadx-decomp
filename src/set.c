@@ -91,7 +91,7 @@ static void InitStatusTable()
 // FUNCTION: SADX 0x00550280
 void FUN_00550280(void)
 {
-	if (DAT_05baf368[1] == 0 || CheckEditMode() != 0 || *(unsigned char *)((char *)DAT_05baf368[1] + 9) == 2)
+	if (DAT_05baf368[1] == 0 || CheckEditMode() != 0 || DAT_05baf368[1]->counter.b[1] == 2)
 	{
 		ProcessStatusTable1P();
 	}
@@ -226,6 +226,12 @@ void FUN_00551530(int param_1)
 void SetNoRevive(struct task *pTask)
 {
 	pTask->ocp->ssCondition |= 0x10;
+}
+
+// FUNCTION: SADX 0x00551570
+int FUN_00551570(int param_1)
+{
+	return *(short *)((char *)*(int *)(param_1 + 0x1c) + 2) & 4;
 }
 
 // FUNCTION: SADX 0x00551590

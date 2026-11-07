@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_00422560(int param_1);
 void ghDrawPvrTextureS(int index, float x, float y, float z, float sx, float sy);
 void FUN_00576a10(int param_1);
 void FUN_00576c10(struct task *param_1);
@@ -62,6 +63,17 @@ void DialogExec()
 	{
 		dialog_exec(DAT_05cd2600);
 		DAT_05cd2600->disp = 0;
+	}
+}
+
+// FUNCTION: SADX 0x005761f0
+void FUN_005761f0(void)
+{
+	if (DAT_05cd2600)
+	{
+		FUN_00422560(7);
+		FUN_00576c10(DAT_05cd2600);
+		FUN_00422560(1);
 	}
 }
 
@@ -197,7 +209,7 @@ void FreeDialogTask()
 // FUNCTION: SADX 0x00577960
 void OpenDialogQuick(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
 {
-	*(struct DialogPrmType **)((char *)DAT_05cd2600->awp + 0x0) = dp;
+	DAT_05cd2600->awp->work.ptr[0] = dp;
 	FUN_00576a60((int)dis_csr_ptr);
 	*(int *)((char *)DAT_05cd2600->awp + 0x3c) = 0xffffffff;
 	FUN_005779c0(csr);
@@ -213,8 +225,8 @@ void FUN_005779c0(signed char param_1)
 // FUNCTION: SADX 0x00577a40
 void OpenDialogCsrLet(struct DialogPrmType *dp, signed char csr, signed char *dis_csr_ptr)
 {
-	*(struct DialogPrmType **)((char *)DAT_05cd2600->awp + 0x0) = dp;
-	*(int *)((char *)DAT_05cd2600->awp + 4) = 1;
+	DAT_05cd2600->awp->work.ptr[0] = dp;
+	DAT_05cd2600->awp->work.sl[1] = 1;
 	FUN_00576a60((int)dis_csr_ptr);
 	*(int *)((char *)DAT_05cd2600->awp + 0x3c) = 0xffffffff;
 	FUN_005779c0(csr);
@@ -259,16 +271,16 @@ int CloseDialog()
 {
 	struct anywk *local_8;
 	local_8 = DAT_05cd2600->awp;
-	if (*(int *)((char *)local_8 + 4) < 2)
+	if (local_8->work.sl[1] < 2)
 	{
 		return 0;
 	}
 	else
 	{
-		if (*(int *)((char *)local_8 + 4) == 2)
+		if (local_8->work.sl[1] == 2)
 		{
 			*(short *)((char *)local_8 + 0x26) = 4;
-			*(int *)((char *)local_8 + 4) = 3;
+			local_8->work.sl[1] = 3;
 		}
 		return 1;
 	}

@@ -1,10 +1,20 @@
 #include "decls.h"
+static void ObjectWaterripple(struct task *tp);
 void ObjectWaterripple(struct task *tp);
 static void Disp(struct task *tp);
 
-// STUB: SADX 0x005708f0
+// FUNCTION: SADX 0x005708f0
 void CreateWaterripple(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, float scl)
 {
+	struct task *local_8g = CreateElementalTask(2, 6, ObjectWaterripple);
+	struct taskwk *local_cg = local_8g->twp;
+
+	local_cg->pos = *pos;
+	local_cg->value.f = vec->x;
+	local_cg->timer.f = vec->z;
+	local_cg->scl.x = scl;
+	local_cg->scl.y = 1.0f;
+	local_cg->counter.f = -0.5f;
 }
 
 // FUNCTION: SADX 0x00570970

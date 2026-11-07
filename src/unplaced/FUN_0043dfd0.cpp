@@ -10,9 +10,3 @@ void FUN_0043dfd0(enum eCHAO_STAGE_NUMBER param_1)
 		ChaoNextStageNumber = param_1;
 	}
 }
-
-// FUNCTION: SADX 0x0043dff0
-void FUN_0043dff0()
-{
-	ChaoStageNumber = ChaoNextStageNumber;
-}

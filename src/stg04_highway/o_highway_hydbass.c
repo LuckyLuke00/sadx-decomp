@@ -1,8 +1,12 @@
 #include "decls.h"
+
+// GLOBAL: SADX 0x03e71b54
+static struct CCL_INFO object_c_info[1];
+
+static void Norm(struct task *tp);
 static void Draw(struct task *tp);
 
-#pragma optimize("", off)
-// STUB: SADX 0x0081fcb0
+// FUNCTION: SADX 0x0081fcb0
 static void Draw(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
@@ -21,15 +25,14 @@ static void Draw(struct task *tp)
 	if (var1->mode == 2)
 	{
 		___dsDrawModel(model_ss_hyd_hydbase);
-		((void (*)())njPopMatrix)();
+		njPopMatrix(1);
 	}
 	else
 	{
 		___dsDrawObject(object_ss_hyd_hyd);
-		((void (*)())njPopMatrix)();
+		njPopMatrix(1);
 	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x0081ff60
 void Hit(struct task *tp)
@@ -46,4 +49,27 @@ void Hit(struct task *tp)
 	CreateWater(&var1->pos, &velo, 0.2f);
 	Draw(tp);
 	dsPlay_timer_v(0x79, (int)var1, 1, 0, 2, var1->pos.x, var1->pos.y, var1->pos.z);
+}
+
+// STUB: SADX 0x00820060
+static void Norm(struct task *tp)
+{
+}
+
+// FUNCTION: SADX 0x008201a0
+void ObjectHighwayHydbass(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOut(tp) == 0)
+	{
+		var1->counter.ptr = (void *)&object_ss_hyd_hyd[0];
+		if (FUN_004c39c0(tp) == 0)
+		{
+			CCL_Init(tp, &object_c_info[0], 1, 4);
+			SET_COLLI_RANGE(var1->cwp, 11.0f);
+		}
+		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
+		tp->disp = Draw;
+		tp->exec = Norm;
+	}
 }

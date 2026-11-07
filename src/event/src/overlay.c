@@ -41,6 +41,12 @@ struct task *FUN_007d4c80(float param_1, float param_2, float param_3, float par
 	return var1;
 }
 
+// FUNCTION: SADX 0x007d4cd0
+void FUN_007d4cd0(struct task *param_1, float param_2)
+{
+	param_1->twp->scl.y = param_2;
+}
+
 // FUNCTION: SADX 0x007d4ce0
 void COverlaySetAlpha(struct task *_this, float a)
 {

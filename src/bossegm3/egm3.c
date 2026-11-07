@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int DAT_060bb1d0;
+extern long adx_table[10];
+void Serif_Play(int no);
 extern struct NJS_TEXLIST *DAT_02833ce0;
 extern struct obj *DAT_02833cb4;
 extern void *DAT_060bb218;
@@ -20,6 +23,20 @@ extern union NJS_COLOR DAT_060bb188[12];
 void Egm3_kogeDraw(struct task *tp);
 void FreeTask(struct task *tp);
 extern unsigned char DAT_060bb21c;
+
+// FUNCTION: SADX 0x006cdd70
+void __fastcall FUN_006cdd70(int param_1)
+{
+	if (DAT_060bb24c == 0)
+	{
+		int var1 = 1 << param_1;
+		if ((DAT_060bb1d0 & var1) == 0)
+		{
+			DAT_060bb1d0 = DAT_060bb1d0 | var1;
+			Serif_Play(adx_table[param_1]);
+		}
+	}
+}
 
 // FUNCTION: SADX 0x006cdda0
 static void TikalTaskExit(struct task *tp)
@@ -142,9 +159,9 @@ void EggmanEnergyDraw(struct task *tp)
 	{
 		njRotateX(0, (Uint16)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+		njRotateZ(0, (unsigned short)var1->ang.z);
 	}
 	njRotateY(0, 0x8000);
 	late_DrawMotionClipEx(egm3_object_list[5], *(struct NJS_MOTION **)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1, 1.0f);
@@ -165,17 +182,17 @@ void EggmanBoomerangDraw(struct task *tp)
 			___njSetTexture(&texlist_egm3mdl);
 			njPushMatrix(NULL);
 			FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
-			if (*(int *)((char *)var1 + 0x18) != 0)
+			if (var1->ang.y != 0)
 			{
-				njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+				njRotateY(NULL, (unsigned short)var1->ang.y);
 			}
-			if (*(int *)((char *)var1 + 0x14) != 0)
+			if (var1->ang.x != 0)
 			{
-				njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+				njRotateX(NULL, (unsigned short)var1->ang.x);
 			}
-			if (*(int *)((char *)var1 + 0x1c) != 0)
+			if (var1->ang.z != 0)
 			{
-				njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
+				njRotateZ(NULL, (unsigned short)var1->ang.z);
 			}
 			late_DrawMotionClipEx(DAT_02833c70, (struct NJS_MOTION *)*(int *)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1, 1.0f);
 			njPopMatrix(1);
@@ -263,7 +280,7 @@ void FUN_006d11a0(struct task *param_1)
 		var2->work.f[31] = 1.0f;
 		var1->mode++;
 	}
-	var2->work.f[0] += 0.10000000149011612f;
+	var2->work.f[0] += 0.1f;
 	if (var2->work.f[0] > 1.0f)
 	{
 		FreeTask(param_1);
@@ -347,7 +364,7 @@ void FUN_006d2ae0(void *param_1)
 {
 	struct task *var1;
 	var1 = CreateElementalTask(2, 1, SousaFunou);
-	*(void **)((char *)var1->twp + 8) = param_1;
+	var1->twp->counter.ptr = param_1;
 }
 
 // FUNCTION: SADX 0x006d2b00

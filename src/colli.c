@@ -1,7 +1,8 @@
 #include "decls.h"
-struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *param_1, struct CL_Poly *param_2);
+extern int DAT_05cb5628;
+struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *param_1, struct FUN_004fbd10_0 *param_2);
 struct CL_ObjInfo;
-struct CL_Poly;
+struct FUN_004fbd10_0;
 struct CL_PolyInfo;
 extern "C" double atan2(double v, double u);
 extern void *DAT_05bb5620;
@@ -28,9 +29,18 @@ void FUN_004f6ef0(void)
 	FUN_004f6f70(&DAT_05bb00d8, 0x100);
 }
 
-// STUB: SADX 0x004f6f20
+// FUNCTION: SADX 0x004f6f20
 void FUN_004f6f20(void *param_1, int param_2)
 {
+	int *local_8;
+
+	DAT_05cb5628 = (int)param_1;
+	local_8 = (int *)param_1 + 0x10;
+	for (; param_2 > 1; param_2 = param_2 - 1, local_8 = local_8 + 0x10, param_1 = (void *)((int)param_1 + 0x40))
+	{
+		*(int *)param_1 = (int)local_8;
+	}
+	*(int *)param_1 = 0;
 }
 
 // FUNCTION: SADX 0x004f6f70
@@ -127,17 +137,17 @@ struct obj *CL_SeekObjectTree(struct obj *obp, unsigned long ulattr, struct CL_O
 
 	njPushMatrix(0);
 	njTranslateV(0, (struct NJS_POINT3 *)((char *)obp + 8));
-	if (*(int *)((char *)obp + 0x1c) != 0)
+	if (obp->ang[2] != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)obp + 0x1c));
+		njRotateZ(0, (unsigned short)obp->ang[2]);
 	}
-	if (*(int *)((char *)obp + 0x18) != 0)
+	if (obp->ang[1] != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)obp + 0x18));
+		njRotateY(0, (unsigned short)obp->ang[1]);
 	}
-	if (*(int *)((char *)obp + 0x14) != 0)
+	if (obp->ang[0] != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)obp + 0x14));
+		njRotateX(0, (unsigned short)obp->ang[0]);
 	}
 	njScaleV(0, (struct NJS_POINT3 *)((char *)obp + 0x20));
 	local_8 = obp->child;
@@ -236,7 +246,7 @@ int FUN_004fbb70(int *param_1)
 }
 
 // STUB: SADX 0x004fbd10
-struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *param_1, struct CL_Poly *param_2)
+struct CL_PolyInfo *FUN_004fbd10(struct CL_ObjInfo *param_1, struct FUN_004fbd10_0 *param_2)
 {
 	return (struct CL_PolyInfo *)0;
 }

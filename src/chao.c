@@ -1,5 +1,6 @@
 #include "decls.h"
 #include <string.h>
+extern char DAT_05cbef80[121];
 void FUN_004ff2a0(void);
 void FUN_004ff280(void);
 void FUN_004ff2a0();
@@ -47,6 +48,18 @@ void ExtraDisplay(struct task *tp)
 void ExtraDisplayInit()
 {
 	CreateElementalTask(2, 2, ExtraDisplay);
+}
+
+// FUNCTION: SADX 0x004ff8d0
+int FUN_004ff8d0(void)
+{
+	int local_8 = -1;
+	if ((int)DAT_05cbeffb > 0)
+	{
+		DAT_05cbeffb--;
+		local_8 = (int)(signed char)DAT_05cbef80[DAT_05cbeffb * 0xc];
+	}
+	return local_8;
 }
 
 // FUNCTION: SADX 0x004ff910

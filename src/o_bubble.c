@@ -1,4 +1,5 @@
 #include "decls.h"
+void FUN_008d9be0(void *param_1, float param_2, float param_3);
 
 // GLOBAL: SADX 0x04c6a490
 static struct NJS_SPRITE sprite_o_bubble;
@@ -51,7 +52,7 @@ void bubble_child_exec_appear(struct task *task_p)
 	local_8g->scl.x = local_8g->scl.x + local_8g->timer.f;
 	FUN_008d9000(local_8g, local_8g->scl.x);
 	bubble_child_exec(task_p);
-	if (*(float *)((char *)local_cg + 0x24) + 10.0f < *(float *)((char *)local_8g + 0x24))
+	if (local_cg->pos.y + 10.0f < local_8g->pos.y)
 	{
 		task_p->exec = bubble_child_exec;
 	}
@@ -64,9 +65,29 @@ void bubble_child_draw(struct task *task_p)
 	local_8 = task_p->twp;
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 0xa);
-	bubble_draw_sprite(&local_8->pos, (struct NJS_ARGB *)0, local_8->scl.x, *(float *)((char *)local_8 + 0x30) * local_8->scl.x);
+	bubble_draw_sprite(&local_8->pos, (struct NJS_ARGB *)0, local_8->scl.x, local_8->scl.y * local_8->scl.x);
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);
+}
+
+// FUNCTION: SADX 0x008d9000
+void FUN_008d9000(struct taskwk *param_1, float param_2)
+{
+	struct CCL_INFO *local_8;
+	local_8 = param_1->cwp->info;
+	local_8->a = param_2;
+	SET_COLLI_RANGE(param_1->cwp, (float)(param_2 + 8.0));
+}
+
+// FUNCTION: SADX 0x008d9050
+void FUN_008d9050(void *param_1, unsigned char param_2)
+{
+	void *local_cg;
+	void *local_8g;
+	local_cg = *(void **)((char *)(*(void **)((char *)param_1 + 8)) + 0x20);
+	local_8g = *(void **)((char *)param_1 + 0x20);
+	SetInputP(param_2, 0x24);
+	FUN_008d9be0((char *)local_8g + 0x20, *(float *)((char *)local_8g + 0x2c), *(float *)((char *)local_cg + 8));
 }
 
 // STUB: SADX 0x008d92b0
@@ -97,9 +118,9 @@ void bubble_small_new_work(struct bbl_small_taskwk *bbls_taskwk_p, float x, floa
 }
 
 // STUB: SADX 0x008d9740
-struct o_bubble *FUN_008d9740(struct o_bubble *param_1, struct o_bubble *param_2)
+struct FUN_008d9740_0 *FUN_008d9740(struct FUN_008d9740_0 *param_1, struct FUN_008d9740_0 *param_2)
 {
-	return (struct o_bubble *)0;
+	return (struct FUN_008d9740_0 *)0;
 }
 
 // STUB: SADX 0x008d97e0

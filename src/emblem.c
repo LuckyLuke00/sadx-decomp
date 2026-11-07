@@ -442,10 +442,10 @@ struct task *InitGetEmblem()
 		ADX_Close();
 		NeonuLoadTexture(&texlist_get_emblem);
 		ADXTaskInit();
-		*(short *)((char *)local_8->twp + 6) = 0;
+		local_8->twp->wtimer = 0;
 		*((char *)local_8->twp) = 0;
-		*(float *)((char *)local_8->twp + 0x20) = 320.0f;
-		*(float *)((char *)local_8->twp + 0x24) = 256.0f;
+		local_8->twp->pos.x = 320.0f;
+		local_8->twp->pos.y = 256.0f;
 		*(void **)((char *)local_8 + 0x18) = destGetEmblem;
 		return local_8;
 	}
@@ -461,4 +461,11 @@ void dispGetEmblem(struct task *tp)
 void destGetEmblem(struct task *tp)
 {
 	late_ReleaseTexture(&texlist_get_emblem);
+}
+
+// FUNCTION: SADX 0x0049f2a0
+unsigned char FUN_0049f2a0(int param_1, int param_2)
+{
+	unsigned char local_5 = (param_1 - 1) * 3 + param_2;
+	return local_5;
 }

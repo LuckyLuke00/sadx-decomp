@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 extern struct NJS_TEXMEMLIST *DAT_0629c50c;
 extern struct NJS_TEXMEMLIST *DAT_0629c544;
 extern int DAT_0629c724;
@@ -22,41 +23,41 @@ extern unsigned long DAT_0629c510;
 extern int DAT_0629c718;
 
 // FUNCTION: SADX 0x00423140
-void njInitTextureBuffer(signed char *addr, unsigned long size)
+void njInitTextureBuffer(signed char *param_1, unsigned long param_2)
 {
-	DAT_0629c53c = addr;
-	DAT_0629c510 = size & 0xfffff800;
+	DAT_0629c53c = param_1;
+	DAT_0629c510 = param_2 & 0xfffff800;
 }
 
 // FUNCTION: SADX 0x00423160
-void njSetPaletteMode(unsigned long mode)
+void njSetPaletteMode(unsigned long param_1)
 {
-	DAT_0629c718 = mode;
+	DAT_0629c718 = param_1;
 }
 
 // STUB: SADX 0x00423170
-void njSetPaletteData(long offset, long count, void *data)
+void njSetPaletteData(long param_1, long param_2, void *param_3)
 {
 }
 
 // FUNCTION: SADX 0x00423200
-Sint32 njSetTexture(NJS_TEXLIST *texlist)
+Sint32 njSetTexture(NJS_TEXLIST *param_1)
 {
-	DAT_0629c724 = (int)texlist;
-	if (texlist != (struct NJS_TEXLIST *)0)
+	DAT_0629c724 = (int)param_1;
+	if (param_1 != (struct NJS_TEXLIST *)0)
 	{
-		DAT_05ad95dc = (int)texlist->textures->texaddr;
+		DAT_05ad95dc = (int)param_1->textures->texaddr;
 		stSetTexture((struct NJS_TEXMEMLIST *)DAT_05ad95dc);
 	}
 	return 1;
 }
 
 // FUNCTION: SADX 0x00423230
-Sint32 njSetTextureNum(Uint32 n)
+Sint32 njSetTextureNum(Uint32 param_1)
 {
 	if (DAT_0629c724 != 0)
 	{
-		int var1 = *(int *)(*(int *)DAT_0629c724 + n * 12 + 8);
+		int var1 = *(int *)(*(int *)DAT_0629c724 + param_1 * 12 + 8);
 		DAT_05ad95dc = var1;
 		stSetTexture((struct NJS_TEXMEMLIST *)var1);
 		return 1;
@@ -64,11 +65,13 @@ Sint32 njSetTextureNum(Uint32 n)
 	return -1;
 }
 
+#pragma optimize("", off)
 // STUB: SADX 0x00423270
 long _njCheckFileName(char *param_1, char const *param_2, char const *param_3)
 {
 	return (long)0;
 }
+#pragma optimize("", on)
 
 // STUB: SADX 0x00423360
 struct NJS_TEXMEMLIST * _njSearchEmptyTexMemList(unsigned long param_1)
@@ -77,27 +80,52 @@ struct NJS_TEXMEMLIST * _njSearchEmptyTexMemList(unsigned long param_1)
 }
 
 // STUB: SADX 0x004233c0
-void njInitTexture(struct NJS_TEXMEMLIST *addr, unsigned long n)
+void njInitTexture(struct NJS_TEXMEMLIST *param_1, unsigned long param_2)
 {
 }
 
 // FUNCTION: SADX 0x00423490
-void njSetPaletteBankNum(Uint32 n, Sint32 bank)
+void njSetPaletteBankNum(Uint32 param_1, Sint32 param_2)
 {
 	if (DAT_0629c724 != 0)
 	{
 		int *var1 = (int *)DAT_0629c724;
 		int *var2 = (int *)*var1;
-		int *var3 = (int *)(var2 + n * 3 + 2);
+		int *var3 = (int *)(var2 + param_1 * 3 + 2);
 		int *var4 = (int *)*var3;
-		*(long *)(var4 + 1) = bank;
+		*(long *)(var4 + 1) = param_2;
 	}
 }
 
-// STUB: SADX 0x004234c0
-long njLoadPaletteFile(char const *filename, struct NJS_TEXPALETTE *pl)
+// FUNCTION: SADX 0x004234c0
+Sint32 njLoadPaletteFile(const char *param_1, NJS_TEXPALETTE *param_2)
 {
-	return (long)0;
+	char var1[256];
+	int var2;
+
+	var2 = param_1 != 0;
+	var2 = var2 & (param_2 != 0);
+	if (var2)
+	{
+		_njCheckFileName(var1, param_1, ".pvp");
+		Sint8 *var3 = njOpenBinary(var1);
+		param_2->mode = *(unsigned short *)(var3 + 8);
+		param_2->bank = *(short *)(var3 + 10);
+		param_2->offset = *(short *)(var3 + 12);
+		if ((param_2->mode & 6) == 6)
+		{
+			param_2->count = *(short *)(var3 + 14) * 4;
+			memcpy(param_2->palette, var3 + 16, *(unsigned short *)(var3 + 14) * 4);
+		}
+		else
+		{
+			param_2->count = *(short *)(var3 + 14) * 2;
+			memcpy(param_2->palette, var3 + 16, *(unsigned short *)(var3 + 14) * 2);
+		}
+		njCloseBinary(var3);
+		return 1;
+	}
+	return -1;
 }
 
 // FUNCTION: SADX 0x00423840
@@ -114,7 +142,7 @@ long njSetTextureG(unsigned long param_1)
 	{
 		do
 		{
-			if (*(int *)((char *)var1 + 0x0) == param_1)
+			if ((int)var1->globalIndex == param_1)
 			{
 				DAT_05ad95dc = (int)var1;
 				stSetTexture(var1);
@@ -129,7 +157,7 @@ long njSetTextureG(unsigned long param_1)
 }
 
 // FUNCTION: SADX 0x00423890
-long njReLoadTextureNumG(unsigned long globalIndex, void *texaddr, unsigned long attr, unsigned long lod)
+long njReLoadTextureNumG(unsigned long param_1, void *param_2, unsigned long param_3, unsigned long param_4)
 {
 	struct NJS_TEXMEMLIST *var1;
 	unsigned long var2;
@@ -140,10 +168,10 @@ long njReLoadTextureNumG(unsigned long globalIndex, void *texaddr, unsigned long
 	{
 		while (var2 < (unsigned long)DAT_0629c50c)
 		{
-			if (*(unsigned long *)((char *)var1) == globalIndex)
+			if (var1->globalIndex == param_1)
 			{
-				stSetPaletteBank(*(long *)((char *)var1 + 4));
-				stLoadTexture(var1, texaddr);
+				stSetPaletteBank((long)var1->bank);
+				stLoadTexture(var1, param_2);
 				return 1;
 			}
 			var2++;
@@ -154,7 +182,7 @@ long njReLoadTextureNumG(unsigned long globalIndex, void *texaddr, unsigned long
 }
 
 // STUB: SADX 0x00423920
-Sint32 njReleaseTexture(NJS_TEXLIST *texlist)
+Sint32 njReleaseTexture(NJS_TEXLIST *param_1)
 {
 	return (long)0;
 }

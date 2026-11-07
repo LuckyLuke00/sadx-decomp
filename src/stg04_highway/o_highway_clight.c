@@ -3,21 +3,16 @@
 // GLOBAL: SADX 0x03e71b40
 static struct NJS_TEXANIM anim_clight[1];
 
-extern struct NJS_TEXLIST DAT_060cf104;
-extern float DAT_060cf0f8;
-extern float DAT_060cf0fc;
-extern float DAT_060cf0ec;
-extern float DAT_060cf0f0;
-extern float DAT_060cf0f4;
+extern struct NJS_SPRITE DAT_060cf0ec;
 
-// STUB: SADX 0x0081fba0
+// FUNCTION: SADX 0x0081fba0
 void FUN_0081fba0(void)
 {
-	DAT_060cf104.textures = (struct NJS_TEXNAME *)&texlist_clight;
-	DAT_060cf0f8 = 0.4f;
-	*(struct NJS_TEXANIM **)&DAT_060cf104.nbTexture = (struct NJS_TEXANIM *)&anim_clight;
-	DAT_060cf0fc = 0.4f;
-	DAT_060cf0ec = 0.0f;
-	DAT_060cf0f0 = 0.0f;
-	DAT_060cf0f4 = 0.0f;
+	DAT_060cf0ec.tlist = &texlist_clight;
+	DAT_060cf0ec.sx = 0.4f;
+	DAT_060cf0ec.tanim = anim_clight;
+	DAT_060cf0ec.sy = 0.4f;
+	DAT_060cf0ec.p.x = 0.0f;
+	DAT_060cf0ec.p.y = 0.0f;
+	DAT_060cf0ec.p.z = 0.0f;
 }

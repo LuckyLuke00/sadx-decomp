@@ -19,6 +19,16 @@ void effect2_dest(struct task *tp)
 	}
 }
 
+// FUNCTION: SADX 0x007d72d0
+void FUN_007d72d0(short param_1)
+{
+	if (DAT_060cc790[param_1] != 0)
+	{
+		DestroyTask((struct task *)DAT_060cc790[param_1]);
+		DAT_060cc790[param_1] = 0;
+	}
+}
+
 // STUB: SADX 0x007d7300
 void effect2_cons(struct task *tp)
 {

@@ -1,5 +1,15 @@
 #include "decls.h"
+extern float DAT_05b39e9c;
+extern int DAT_05b39ea0;
+extern int DAT_05b39eac;
 #include <math.h>
+extern int DAT_05b3df54;
+extern int DAT_05b3df5c;
+void FUN_004a2800();
+void FUN_004a29c0();
+void FUN_005b5aa0(...);
+void FUN_004a0960(struct obj *param_1, struct NJS_MOTION *param_2, float param_3);
+void FUN_004a0940(struct NJS_MODEL *param_1);
 static float CHAOS7_MsZofsFnc(struct LATE_MDL_RQ *mrq, const struct NJS_MODEL *m, float z);
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
 extern void *DAT_05b3dedc;
@@ -7,7 +17,7 @@ extern int DAT_05b3df24;
 extern float DAT_05b39eb0;
 static int isTextureNG(struct NJS_TEXLIST *tl, int numChk);
 extern float DAT_05b3df44;
-void njDrawPolygon3D(NJS_POINT3COL *p, Int n, Uint32 attr);
+void njDrawPolygon3D(NJS_POINT3COL *param_1, Int param_2, Uint32 param_3);
 void motion_init_param(struct NJS_MOTION *motion, float frame);
 void njSetZUpdateMode(long param_1);
 void njSetZUpdateMode(long param_1);
@@ -258,13 +268,10 @@ int FUN_004a0620(int param_1)
 	return local_10;
 }
 
-// The original reserves 12 stack bytes that this body does not use.
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a0690
 void late_ReleaseTexture(NJS_TEXLIST *tl)
 {
-	int local_ci;
-	int local_10;
-	int local_8g;
 	if (isTextureNG(tl, 0))
 	{
 		return;
@@ -273,7 +280,7 @@ void late_ReleaseTexture(NJS_TEXLIST *tl)
 }
 
 // FUNCTION: SADX 0x004a06c0
-int isTextureNG(struct NJS_TEXLIST *tl, int numChk)
+static int isTextureNG(struct NJS_TEXLIST *tl, int numChk)
 {
 	struct NJS_TEXLIST *local_8g;
 	unsigned int local_cj;
@@ -285,11 +292,11 @@ int isTextureNG(struct NJS_TEXLIST *tl, int numChk)
 		return 1;
 	}
 	local_10 = *(int **)tl;
-	if (*(int *)((char *)tl + 4) == 0)
+	if ((int)tl->nbTexture == 0)
 	{
 		return 1;
 	}
-	for (local_cj = 0; local_cj < (unsigned int)*(int *)((char *)tl + 4); local_cj++)
+	for (local_cj = 0; local_cj < (unsigned int)(int)tl->nbTexture; local_cj++)
 	{
 		if (*(int *)((char *)local_10 + local_cj * 12 + 8) == 0)
 		{
@@ -385,6 +392,23 @@ void FUN_004a0980(const struct obj *param_1, const struct NJS_MOTION *param_2, c
 	___dsDrawShapeMotion(param_1, param_2, param_3, param_4);
 }
 
+// FUNCTION: SADX 0x004a09a0
+int FUN_004a09a0(struct NJS_MODEL *param_1)
+{
+	njSetConstantMaterial(&DAT_05b3df28);
+	FUN_004a0940(param_1);
+	njSetConstantMaterial(&DAT_05b39de4);
+	return 0;
+}
+
+// FUNCTION: SADX 0x004a09d0
+void FUN_004a09d0(struct obj *param_1, struct NJS_MOTION *param_2, float param_3)
+{
+	njSetConstantMaterial(&DAT_05b3df28);
+	FUN_004a0960(param_1, param_2, param_3);
+	njSetConstantMaterial(&DAT_05b39de4);
+}
+
 // FUNCTION: SADX 0x004a0a10
 void njEasyDrawObject(NJS_OBJECT *obj)
 {
@@ -420,13 +444,11 @@ void ___SAnjSimpleDrawObject(struct obj *obj)
 	FUN_004a0920(obj);
 }
 
-__declspec(safebuffers)
 // STUB: SADX 0x004a0ae0
 void ___dsDrawModel(NJS_MODEL *model)
 {
 }
 
-__declspec(safebuffers)
 // STUB: SADX 0x004a0c10
 void ___dsDrawObject(struct obj *obj)
 {
@@ -669,13 +691,11 @@ void ___DrawObject(struct obj *obj)
 	}
 }
 
-__declspec(safebuffers)
 // STUB: SADX 0x004a1290
 void ds_DrawModelClip(NJS_MODEL *mdl, float clipScl)
 {
 }
 
-__declspec(safebuffers)
 // STUB: SADX 0x004a1420
 void ds_DrawObjectClip(struct obj *obj, float clipScl)
 {
@@ -695,7 +715,7 @@ float FUN_004a1e90(float *param_1)
 // FUNCTION: SADX 0x004a1f70
 void dsDrawModel_S(struct NJS_MODEL *m)
 {
-	if (*(float *)((char *)m + 0x24) >= 900.0f)
+	if (m->r >= 900.0f)
 	{
 		ds_DrawModelClip(m, 1.0f);
 	}
@@ -719,16 +739,10 @@ void ___njDrawSprite3D(struct NJS_SPRITE *sp, int n, unsigned long atr)
 	late_DrawSprite3D(sp, n, atr, local_8);
 }
 
+// DIFF: frame: the original frame has 24 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a2010
 void ___njDrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
-	int local_14h;
-	int local_10l;
-	int local_ci;
-	int local_8g;
-	int local_1c;
-	int local_18;
-
 	if (DAT_05b9d838 != 0)
 		return;
 	if (atr & 0x80000000)
@@ -741,16 +755,10 @@ void ___njDrawLine3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 	njDrawLine3D(p, n, atr);
 }
 
+// DIFF: frame: the original frame has 24 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a2080
 void ___njDrawTriangle3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
-	int local_14h;
-	int local_10l;
-	int local_ci;
-	int local_8g;
-	int local_1c;
-	int local_18;
-
 	if (DAT_05b9d838 != 0)
 		return;
 	if (atr & 0x80000000)
@@ -768,10 +776,10 @@ void ___njDrawPolygon2D(struct NJS_POINT2COL *p, int n, float pri, unsigned long
 {
 }
 
+// DIFF: frame: the original frame has 24 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a2180
 void ___njDrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 {
-	char local_1c[0x14];
 	if (DAT_05b9d838 != 0)
 		return;
 	if ((0x80000000 & atr) != 0)
@@ -784,13 +792,11 @@ void ___njDrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr)
 	njDrawPolygon3D(p, n, atr);
 }
 
-__declspec(safebuffers)
 // STUB: SADX 0x004a21f0
 void dsDrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr)
 {
 }
 
-__declspec(safebuffers)
 // STUB: SADX 0x004a2320
 void dsDrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr)
 {
@@ -863,6 +869,18 @@ void FUN_004a2780(int param_1)
 	}
 }
 
+// FUNCTION: SADX 0x004a27c0
+void FUN_004a27c0()
+{
+	FUN_004a2800();
+	ResetMaterial();
+	FUN_004a29c0();
+	FUN_005b5aa0();
+	DAT_05b9d838 = 0;
+	DAT_05b3df54 = 0;
+	DAT_05b3df5c = 0;
+}
+
 // FUNCTION: SADX 0x004a2800
 void FUN_004a2800(void)
 {
@@ -913,8 +931,8 @@ void late_set_far_z(float nor, float ex, float mesh)
 		mesh = -1200.0f;
 	}
 	DAT_05b39e18.nor = nor;
-	*(float *)((char *)&DAT_05b39e18 + 4) = ex;
-	*(float *)((char *)&DAT_05b39e18 + 8) = mesh;
+	(&DAT_05b39e18)->ex = ex;
+	(&DAT_05b39e18)->mesh = mesh;
 }
 
 // FUNCTION: SADX 0x004a2960
@@ -966,10 +984,95 @@ void FUN_004a3890()
 	}
 }
 
-// STUB: SADX 0x004a3a50
-void *late_setOdr(int sz, int odr, int no, int flgs)
+// FUNCTION: SADX 0x004a38d0
+static void *late_addZEntry(float z, struct LATE_LNK *a, int md)
 {
-	return (void *)0;
+	int local_ci;
+	int local_8g;
+	char *local_18;
+	char *local_14;
+	char *local_10;
+
+	local_8g = 0;
+	*(float *)((char *)a + 4) = z;
+	local_ci = (int)(z + 2048.0 + DAT_05b3df40);
+	if ((*(unsigned char *)((char *)a + 8) & 0x10) == 0)
+		local_ci += 8;
+	if (local_ci > 0x7fe)
+	{
+		*(float *)((char *)a + 4) = z + DAT_05b3df40;
+		if (md == 1 && local_ci >= 10000)
+		{
+			local_ci = 0x7ff;
+			local_8g = 1;
+		}
+		else
+			local_ci = 0x7fe;
+	}
+	else if (local_ci < 5)
+	{
+		*(float *)((char *)a + 4) = z + DAT_05b3df40;
+		if (local_ci > -7952)
+			local_ci = 4;
+		else if (local_ci > -17952)
+			local_ci = 3;
+		else if (local_ci > -27952)
+			local_ci = 2;
+		else if (local_ci > -37952)
+			local_ci = 1;
+		else
+			local_ci = 0;
+		local_8g = 1;
+		md = local_8g;
+	}
+	local_10 = (char *)late_zentry + local_ci * 8;
+	for (local_18 = local_10, local_14 = *(char **)local_10; local_14 != local_10;
+		local_18 = local_14, local_14 = *(char **)local_14)
+	{
+		if (*(float *)((char *)a + 4) < *(float *)(local_14 + 4))
+		{
+			*(char **)a = local_14;
+			*(struct LATE_LNK **)local_18 = a;
+			break;
+		}
+	}
+	if (local_14 == local_10)
+	{
+		*(char **)a = local_10;
+		*(struct LATE_LNK **)local_18 = a;
+		*(struct LATE_LNK **)(local_10 + 4) = a;
+	}
+	return a;
+}
+
+// FUNCTION: SADX 0x004a3a50
+static void *late_setOdr(int sz, int odr, int no, int flgs)
+{
+	int local_8g;
+	void *local_cg;
+	NJS_ARGB *local_10g;
+
+	if (DAT_05b39e2c != 0)
+		return 0;
+	if (flgs & 8)
+		return 0;
+	local_cg = late_alloca(sz);
+	if (local_cg == 0)
+		return 0;
+	*(unsigned char *)((char *)local_cg + 8) = DAT_05b3e065 << 5 | (flgs & 1) << 4 | odr;
+	*(unsigned short *)((char *)local_cg + 0xa) = no;
+	*(NJS_TEXLIST **)((char *)local_cg + 0xc) = DAT_05b3ded0;
+	*(unsigned char *)((char *)local_cg + 9) = DAT_05b39e10;
+	*(int *)((char *)local_cg + 0x20) = DAT_0629c6c8;
+	*(int *)((char *)local_cg + 0x24) = DAT_0629c540;
+	*(int *)((char *)local_cg + 0x28) = DAT_0629c6c4;
+	local_10g = (flgs & 2) ? &DAT_05b3df28 : &DAT_05b39de4;
+	*(NJS_ARGB *)((char *)local_cg + 0x10) = *local_10g;
+	local_8g = DAT_05cd4078;
+	if (flgs & 4)
+		*(unsigned short *)((char *)local_cg + 0xa) |= 0x8000;
+	*(unsigned char *)((char *)local_cg + 8) |= local_8g << 6;
+	return local_cg;
 }
 
 // STUB: SADX 0x004a3b80
@@ -978,10 +1081,25 @@ int late_setPo2D(struct LATE_PO2D_RQ *s, struct NJS_POINT2COL *p, int n, float p
 	return (int)0;
 }
 
-// STUB: SADX 0x004a3cf0
-float nlateBegin2D(int flgs, float pri)
+// FUNCTION: SADX 0x004a3cf0
+static float nlateBegin2D(int flgs, float pri)
 {
-	return (float)0;
+	if (pri >= 10000.0 || (flgs & 0x10))
+	{
+		UNKNOWN_ZUPDATE_MACRO(7, 0);
+	}
+	else if ((flgs & 1) == 0)
+	{
+		UNKNOWN_ZUPDATE_MACRO(3, 0);
+	}
+	else
+	{
+		UNKNOWN_ZUPDATE_MACRO(3, 1);
+	}
+	njSetConstantMaterial((flgs & 2) ? &DAT_05b3df28 : &DAT_05b39de4);
+	if (pri > -1.0)
+		pri = -1.0f;
+	return pri;
 }
 
 // STUB: SADX 0x004a3db0
@@ -1035,9 +1153,18 @@ int late_setPo3D(struct LATE_PO3D_RQ *s, struct NJS_POINT3COL *p, int n, unsigne
 	return 1;
 }
 
-// STUB: SADX 0x004a4000
-void nlateBegin(int flgs)
+// FUNCTION: SADX 0x004a4000
+static void nlateBegin(int flgs)
 {
+	if ((flgs & 1) == 0)
+	{
+		UNKNOWN_ZUPDATE_MACRO(3, 0);
+	}
+	if (flgs & 0x10)
+	{
+		UNKNOWN_ZUPDATE_MACRO(7, 0);
+	}
+	njSetConstantMaterial((flgs & 2) ? &DAT_05b3df28 : &DAT_05b39de4);
 }
 
 // STUB: SADX 0x004a4070
@@ -1055,14 +1182,71 @@ void late_DrawPolygon3D(struct NJS_POINT3COL *p, int n, unsigned long atr, int f
 {
 }
 
-// STUB: SADX 0x004a44b0
+// DIFF: frame: the original frame has 48 more bytes; their source is unknown.
+// FUNCTION: SADX 0x004a44b0
 void late_DrawSprite2D(NJS_SPRITE *sp, int n, float pri, unsigned long atr, int flgs)
 {
+	void *local_8g;
+
+	if (DAT_05b9d838 != 0)
+		return;
+	if ((unsigned int)sp < 0x100000)
+		return;
+	if (isTextureNG(sp->tlist, 1) != 0)
+		return;
+	if (pri >= -2.0 && pri < 10000.0)
+		pri += 12048.0;
+	local_8g = late_setOdr(0x98, 2, n, flgs);
+	if (local_8g != 0)
+	{
+		*(float *)((char *)local_8g + 0x54) = pri;
+		*(unsigned long *)((char *)local_8g + 0x50) = atr;
+		*(NJS_SPRITE *)((char *)local_8g + 0x30) = *sp;
+		njGetMatrix((NJS_MATRIX *)((char *)local_8g + 0x58));
+		late_addZEntry(pri, (struct LATE_LNK *)local_8g, 1);
+	}
+	else
+	{
+		pri = nlateBegin2D(flgs, pri);
+		njDrawSprite2D(sp, n, pri, atr);
+		npSetZCompare();
+		njSetZUpdateMode(1);
+		ResetMaterial();
+	}
 }
 
-// STUB: SADX 0x004a45e0
+// DIFF: frame: the original frame has 44 more bytes; their source is unknown.
+// FUNCTION: SADX 0x004a45e0
 void late_DrawSprite3D(NJS_SPRITE *sp, int n, unsigned long atr, int flgs)
 {
+	float local_ci;
+	void *local_8g;
+
+	if (DAT_05b9d838 != 0)
+		return;
+	if ((unsigned int)sp < 0x100000)
+		return;
+	if (isTextureNG(sp->tlist, 1) != 0)
+		return;
+	local_8g = late_setOdr(0x98, 3, n, flgs);
+	if (local_8g != 0)
+	{
+		*(unsigned long *)((char *)local_8g + 0x50) = atr;
+		*(NJS_SPRITE *)((char *)local_8g + 0x30) = *sp;
+		njGetMatrix((NJS_MATRIX *)((char *)local_8g + 0x58));
+		local_ci = sp->p.x * *(float *)((char *)local_8g + 0x60) + sp->p.y * *(float *)((char *)local_8g + 0x70)
+			+ sp->p.z * *(float *)((char *)local_8g + 0x80) + *(float *)((char *)local_8g + 0x90);
+		local_ci = -local_ci;
+		late_addZEntry(local_ci + DAT_05b3df38, (struct LATE_LNK *)local_8g, 0);
+	}
+	else
+	{
+		nlateBegin(flgs);
+		njDrawSprite3D(sp, n, atr);
+		npSetZCompare();
+		njSetZUpdateMode(1);
+		ResetMaterial();
+	}
 }
 
 // STUB: SADX 0x004a4710
@@ -1070,12 +1254,10 @@ void late_SetFunc(void (*fnc)(void *), void *arg, float zprio, int flgs)
 {
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a47d0
 void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
 	if (DAT_05b9d838 != 0)
 		return;
 	if (isTextureNG(DAT_05b3ded0, 0) != 0)
@@ -1083,12 +1265,10 @@ void late_DrawObjectClip(struct obj *obj, int flgs, float clipScl)
 	lateDrawObject(obj, flgs, clipScl);
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a4820
 void late_DrawObject(struct obj *obj, int flgs)
 {
-	int local_10;
-	int local_ci;
-	int local_8g;
 	if (DAT_05b9d838 != 0)
 	{
 		return;
@@ -1105,17 +1285,31 @@ void late_DrawModelClip(struct NJS_MODEL *mdl, int flgs, float clipScl)
 {
 }
 
-// STUB: SADX 0x004a5080
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
+// FUNCTION: SADX 0x004a5080
 void late_DrawModel(struct NJS_MODEL *mdl, int flgs)
 {
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	if (isTextureNG(DAT_05b3ded0, 0) != 0)
+	{
+		return;
+	}
+	if (mdl != 0)
+	{
+		if (DAT_05b3df44 == 0.0f || mdl->r == 0.0f || dsCheckViewV(&mdl->center, mdl->r * DAT_05b3df44) != 0)
+		{
+			lateDrawModel(mdl, flgs);
+		}
+	}
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a51f0
 void late_DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
 	if (DAT_05b9d838 != 0)
 		return;
 	if (isTextureNG(DAT_05b3ded0, 0) != 0)
@@ -1123,12 +1317,10 @@ void late_DrawObjectClipEx(struct obj *obj, int flgs, float clipScl)
 	DrawObjectClipEx(obj, flgs, clipScl);
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a5240
 void late_DrawObjectEx(struct obj *obj, int flgs)
 {
-	int local_10;
-	int local_ci;
-	int local_8g;
 	if (DAT_05b9d838 != 0)
 	{
 		return;
@@ -1150,12 +1342,10 @@ void late_DrawModelClipEx(struct NJS_MODEL *mdl, int flgs, float clipScl)
 {
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a5c80
 void FUN_004a5c80(struct obj *param_1, int param_2)
 {
-	int local_10;
-	int local_ci;
-	int local_8g;
 	if (DAT_05b9d838 != 0)
 	{
 		return;
@@ -1167,12 +1357,10 @@ void FUN_004a5c80(struct obj *param_1, int param_2)
 	DrawObjectMS(param_1, param_2, DAT_05b3df44);
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a5cd0
 void late_DrawObjectClipMS(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
 	if (DAT_05b9d838 != 0)
 		return;
 	if (isTextureNG(DAT_05b3ded0, 0) != 0)
@@ -1197,12 +1385,10 @@ float FUN_004a6900(void *param_1, float *param_2)
 	return -local_8;
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a6940
 void late_DrawObjectMesh(struct obj *obj, int flgs)
 {
-	int local_ci;
-	int local_10;
-	int local_8g;
 	if (DAT_05b9d838 != 0)
 	{
 		return;
@@ -1214,12 +1400,10 @@ void late_DrawObjectMesh(struct obj *obj, int flgs)
 	DrawObjectClipMesh(obj, flgs, DAT_05b3df44);
 }
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a6990
 void late_DrawObjectClipMesh(struct obj *obj, int flgs, float clipScl)
 {
-	int local_8g;
-	int local_cj;
-	int local_10;
 	if (DAT_05b9d838 != 0)
 		return;
 	if (isTextureNG(DAT_05b3ded0, 0) != 0)
@@ -1471,14 +1655,10 @@ void ___DrawModel(struct NJS_MODEL *model)
 	}
 }
 
+// DIFF: frame: the original frame has 20 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a7d20
 void DrawMotion(struct obj *object, struct NJS_MOTION *motion, float frame, int flgs, float clpScl, void *drwMdlFnc)
 {
-	int local_10s;
-	int local_14h;
-	int local_8g;
-	int local_18;
-	int local_cj;
 	if (DAT_05b9d838 != 0)
 	{
 		return;
@@ -1505,9 +1685,30 @@ void dsPushPopMotion(struct obj *obj)
 {
 }
 
-// STUB: SADX 0x004a7f60
+// FUNCTION: SADX 0x004a7f60
 void motion_init_param(struct NJS_MOTION *motion, float frame)
 {
+	float local_8g;
+	unsigned long local_cg;
+
+	local_8g = frame;
+	if (motion != 0)
+	{
+		local_cg = motion->nbFrame;
+		local_8g -= (float)((unsigned long)frame / local_cg * local_cg);
+		DAT_05b39e84 = motion->inp_fn & ~0xc0;
+		DAT_05b39e14 = motion->type;
+		DAT_05b39e90 = (int)motion->mdata;
+		DAT_05b39ea0 = (int)motion->nbFrame;
+	}
+	else
+	{
+		DAT_05b39e84 = 0;
+		DAT_05b39e14 = 0;
+	}
+	DAT_05b39e9c = local_8g;
+	DAT_05b39ea4 = 0;
+	DAT_05b39eac = 0;
 }
 
 // FUNCTION: SADX 0x004a8020
@@ -1627,10 +1828,10 @@ void late_DrawMotionClipMesh(struct obj *object, struct NJS_MOTION *motion, floa
 	DrawMotion(object, motion, frame, flgs, clipScl, DrawModelMesh);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a88c0
 void FUN_004a88c0(NJS_ACTION *param_1, float param_2)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(param_1, param_2, 0, 0.0, ___DrawModel);
 }
 
@@ -1639,66 +1840,66 @@ void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, 
 {
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a89c0
 void ds_ActionClip(NJS_ACTION *action, float frame, float clipScl)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, 0, clipScl, (void *)___DrawModel);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a89f0
 void late_Action(NJS_ACTION *action, float frame, int flgs)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, 0.0, (void *)lateDrawModel);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8a20
 void late_ActionClip(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, clipScl, (void *)lateDrawModel);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8a50
 void late_ActionEx(NJS_ACTION *action, float frame, int flgs)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, 0.0f, (void *)DrawModelEx);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8a80
 void late_ActionClipEx(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelEx);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8ab0
 void late_ActionMS(NJS_ACTION *action, float frame, int flgs)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, 0.0, (void *)DrawModelMS);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8ae0
 void late_ActionClipMS(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelMS);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8b10
 void late_ActionMesh(NJS_ACTION *action, float frame, int flgs)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, 0.0, (void *)DrawModelMesh);
 }
 
+// DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8b40
 void late_ActionClipMesh(NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
-	int local_1ci; int local_20; int local_8g; int local_14h; int local_10m; int local_cj; int local_18;
 	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelMesh);
 }
 
@@ -1736,7 +1937,7 @@ void InterpolatesNormal(const float *srca, const float *srcb, float *dst, float 
 	dst[1] = (1.0f - t) * srca[1] + srcb[1] * t;
 	dst[2] = (1.0f - t) * srca[2] + srcb[2] * t;
 	local_8g = dst[0] * dst[0] + dst[1] * dst[1] + dst[2] * dst[2];
-	if (local_8g > 9.999999747378752e-06f)
+	if (local_8g > 1e-5f)
 	{
 		local_cg = 1.0f / sqrtf(local_8g);
 		dst[0] = dst[0] * local_cg;
