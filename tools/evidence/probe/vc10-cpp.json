@@ -1,0 +1,1956 @@
+{
+ "compiler": "Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 16.00.40219.01 for 80x86",
+ "flags": [
+  "/nologo",
+  "/DWIN32",
+  "/D_WINDOWS",
+  "/EHsc",
+  "/fp:precise",
+  "/DNDEBUG",
+  "/MT",
+  "/O2",
+  "/W4",
+  "/TP"
+ ],
+ "language": "cpp",
+ "cases": [
+  {
+   "kind": "int",
+   "text": "1 << 31",
+   "warnings": [],
+   "value": -2147483648,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "1 << 30",
+   "warnings": [],
+   "value": 1073741824,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "1u << 31",
+   "warnings": [],
+   "value": 2147483648,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "1 << 32",
+   "warnings": [
+    "C4293"
+   ],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "1 << 33",
+   "warnings": [
+    "C4293"
+   ],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "1u << 32",
+   "warnings": [
+    "C4293"
+   ],
+   "value": 0,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "1 << -1",
+   "warnings": [
+    "C4293"
+   ],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "1 >> 32",
+   "warnings": [
+    "C4293"
+   ],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "1i64 << 32",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "1i64 << 63",
+   "warnings": [],
+   "value": -9223372036854775808,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "1i64 << 64",
+   "warnings": [
+    "C4293"
+   ],
+   "value": 0,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "-1 >> 1",
+   "warnings": [],
+   "value": -1,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-8 >> 1",
+   "warnings": [],
+   "value": -4,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-1 >> 31",
+   "warnings": [],
+   "value": -1,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "0x80000000 >> 31",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "(-2147483647 - 1) >> 4",
+   "warnings": [],
+   "value": -134217728,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-1 << 1",
+   "warnings": [],
+   "value": -2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-1i64 >> 40",
+   "warnings": [],
+   "value": -1,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "~0x2000",
+   "warnings": [],
+   "value": -8193,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "~0",
+   "warnings": [],
+   "value": -1,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "~0u",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "~0x2000u",
+   "warnings": [],
+   "value": 4294959103,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned int)~0x2000",
+   "warnings": [],
+   "value": 4294959103,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "-0x80000000",
+   "warnings": [
+    "C4146"
+   ],
+   "value": 2147483648,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "-2147483648",
+   "warnings": [
+    "C4146"
+   ],
+   "value": 2147483648,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned long"
+  },
+  {
+   "kind": "int",
+   "text": "0x7FFFFFFF + 1",
+   "warnings": [
+    "C4307"
+   ],
+   "value": -2147483648,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "2147483647 + 1",
+   "warnings": [
+    "C4307"
+   ],
+   "value": -2147483648,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-2147483647 - 2",
+   "warnings": [
+    "C4307"
+   ],
+   "value": 2147483647,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "65536 * 65536",
+   "warnings": [
+    "C4307"
+   ],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "46341 * 46341",
+   "warnings": [
+    "C4307"
+   ],
+   "value": -2147479015,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "0xFFFF * 0xFFFF",
+   "warnings": [
+    "C4307"
+   ],
+   "value": -131071,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "0u - 1",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "5 / -2",
+   "warnings": [],
+   "value": -2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-5 / 2",
+   "warnings": [],
+   "value": -2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-5 % 3",
+   "warnings": [],
+   "value": -2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "5 % -3",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-7u / 2",
+   "warnings": [
+    "C4146"
+   ],
+   "value": 2147483644,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "1 / 0",
+   "error": "C2124"
+  },
+  {
+   "kind": "int",
+   "text": "1 % 0",
+   "error": "C2124"
+  },
+  {
+   "kind": "int",
+   "text": "(-2147483647 - 1) / -1",
+   "warnings": [],
+   "value": -2147483648,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(-2147483647 - 1) % -1",
+   "warnings": [],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "0x7FFFFFFFFFFFFFFFi64 + 1",
+   "warnings": [
+    "C4307"
+   ],
+   "value": -9223372036854775808,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "-1 < 0u",
+   "warnings": [],
+   "value": 0,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "-1 < 0ul",
+   "warnings": [],
+   "value": 0,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "-1L < 1u",
+   "warnings": [],
+   "value": 0,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "-1 < 1i64",
+   "warnings": [],
+   "value": 1,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "-1 < 1ui64",
+   "warnings": [],
+   "value": 0,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "1 ? -1 : 0u",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "0 ? 1 : 2L",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": true,
+   "type": "long"
+  },
+  {
+   "kind": "int",
+   "text": "!5",
+   "warnings": [],
+   "value": 0,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "3 && 0",
+   "warnings": [],
+   "value": 0,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "(1, 2)",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "-(unsigned short)1",
+   "warnings": [],
+   "value": -1,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "0x7FFFFFFF",
+   "warnings": [],
+   "value": 2147483647,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "0x80000000",
+   "warnings": [],
+   "value": 2147483648,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "0xFFFFFFFF",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "0x100000000",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "2147483647",
+   "warnings": [],
+   "value": 2147483647,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "2147483648",
+   "warnings": [],
+   "value": 2147483648,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned long"
+  },
+  {
+   "kind": "int",
+   "text": "4294967295",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned long"
+  },
+  {
+   "kind": "int",
+   "text": "4294967296",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "017",
+   "warnings": [],
+   "value": 15,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "037777777777",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "040000000000",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "0",
+   "warnings": [],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "0x0",
+   "warnings": [],
+   "value": 0,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "1u",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "1l",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": true,
+   "type": "long"
+  },
+  {
+   "kind": "int",
+   "text": "1ul",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned long"
+  },
+  {
+   "kind": "int",
+   "text": "1lu",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned long"
+  },
+  {
+   "kind": "int",
+   "text": "1ll",
+   "warnings": [],
+   "value": 1,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "1ull",
+   "warnings": [],
+   "value": 1,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "1i64",
+   "warnings": [],
+   "value": 1,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "1ui64",
+   "warnings": [],
+   "value": 1,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "0xFFFFFFFFi64",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "2147483648u",
+   "warnings": [],
+   "value": 2147483648,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "4294967296u",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "9223372036854775807",
+   "warnings": [],
+   "value": 9223372036854775807,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "9223372036854775808",
+   "warnings": [],
+   "value": 9223372036854775808,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "4294967296l",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "4294967296ul",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "0x100000000L",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "0x100000000u",
+   "warnings": [],
+   "value": 4294967296,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "0x8000000000000000",
+   "warnings": [],
+   "value": 9223372036854775808,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "0xFFFFFFFFFFFFFFFF",
+   "warnings": [],
+   "value": 18446744073709551615,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "18446744073709551615",
+   "warnings": [],
+   "value": 18446744073709551615,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "18446744073709551616",
+   "error": "C2177"
+  },
+  {
+   "kind": "int",
+   "text": "0x10000000000000000",
+   "error": "C2177"
+  },
+  {
+   "kind": "int",
+   "text": "'A'",
+   "warnings": [],
+   "value": 65,
+   "bits": 8,
+   "signed": null,
+   "type": "char"
+  },
+  {
+   "kind": "int",
+   "text": "'AB'",
+   "warnings": [],
+   "value": 16706,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'ABCD'",
+   "warnings": [],
+   "value": 1094861636,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'ABCDE'",
+   "error": "C2015"
+  },
+  {
+   "kind": "int",
+   "text": "'\\xff'",
+   "warnings": [],
+   "value": -1,
+   "bits": 8,
+   "signed": null,
+   "type": "char"
+  },
+  {
+   "kind": "int",
+   "text": "'\\377'",
+   "warnings": [],
+   "value": -1,
+   "bits": 8,
+   "signed": null,
+   "type": "char"
+  },
+  {
+   "kind": "int",
+   "text": "'\\0'",
+   "warnings": [],
+   "value": 0,
+   "bits": 8,
+   "signed": null,
+   "type": "char"
+  },
+  {
+   "kind": "int",
+   "text": "'\\n'",
+   "warnings": [],
+   "value": 10,
+   "bits": 8,
+   "signed": null,
+   "type": "char"
+  },
+  {
+   "kind": "int",
+   "text": "L'A'",
+   "warnings": [],
+   "value": 65,
+   "bits": 16,
+   "signed": null,
+   "type": "wchar_t"
+  },
+  {
+   "kind": "int",
+   "text": "L'\\xffff'",
+   "warnings": [],
+   "value": 65535,
+   "bits": 16,
+   "signed": null,
+   "type": "wchar_t"
+  },
+  {
+   "kind": "int",
+   "text": "L'AB'",
+   "warnings": [
+    "C4066"
+   ],
+   "value": 65,
+   "bits": 16,
+   "signed": null,
+   "type": "wchar_t"
+  },
+  {
+   "kind": "int",
+   "text": "'\\x41\\x42'",
+   "warnings": [],
+   "value": 16961,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'\\x41B'",
+   "error": "C2022"
+  },
+  {
+   "kind": "int",
+   "text": "'A\\x42'",
+   "warnings": [],
+   "value": 16706,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'\\101\\102'",
+   "warnings": [],
+   "value": 16961,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'\\nA'",
+   "warnings": [],
+   "value": 2625,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'A\\n'",
+   "warnings": [],
+   "value": 16650,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'\\x41\\x42\\x43'",
+   "warnings": [],
+   "value": 4407873,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'AB\\x43'",
+   "warnings": [],
+   "value": 4276803,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'\\xff\\x01'",
+   "warnings": [],
+   "value": 511,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'\\x41\\x42\\x43\\x44'",
+   "warnings": [],
+   "value": 1145258561,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "'A\\x42CD'",
+   "error": "C2022"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof('a')",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(L'a')",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(1 ? 'a' : 'b')",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(char)",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(short)",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(int)",
+   "warnings": [],
+   "value": 4,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(long)",
+   "warnings": [],
+   "value": 4,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(__int64)",
+   "warnings": [],
+   "value": 8,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(long long)",
+   "warnings": [],
+   "value": 8,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(float)",
+   "warnings": [],
+   "value": 4,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(double)",
+   "warnings": [],
+   "value": 8,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(long double)",
+   "warnings": [],
+   "value": 8,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(void *)",
+   "warnings": [],
+   "value": 4,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(1.0f)",
+   "warnings": [],
+   "value": 4,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(1.0)",
+   "warnings": [],
+   "value": 8,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(1.0L)",
+   "warnings": [],
+   "value": 8,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(0x80000000)",
+   "warnings": [],
+   "value": 4,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(1i64)",
+   "warnings": [],
+   "value": 8,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(wchar_t)",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(bool)",
+   "warnings": [],
+   "value": 1,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "true + 1",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "true",
+   "warnings": [],
+   "value": 1,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "(bool)5",
+   "warnings": [],
+   "value": 1,
+   "bits": 8,
+   "signed": null,
+   "type": "bool"
+  },
+  {
+   "kind": "int",
+   "text": "(short)0x18000",
+   "warnings": [
+    "C4310"
+   ],
+   "value": -32768,
+   "bits": 16,
+   "signed": null,
+   "type": "short"
+  },
+  {
+   "kind": "int",
+   "text": "(signed char)0x80",
+   "warnings": [
+    "C4310"
+   ],
+   "value": -128,
+   "bits": 8,
+   "signed": null,
+   "type": "signed char"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned char)-1",
+   "warnings": [],
+   "value": 255,
+   "bits": 8,
+   "signed": null,
+   "type": "unsigned char"
+  },
+  {
+   "kind": "int",
+   "text": "(char)200",
+   "warnings": [
+    "C4310"
+   ],
+   "value": -56,
+   "bits": 8,
+   "signed": null,
+   "type": "char"
+  },
+  {
+   "kind": "int",
+   "text": "(short)-32769",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 32767,
+   "bits": 16,
+   "signed": null,
+   "type": "short"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned short)70000",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 4464,
+   "bits": 16,
+   "signed": null,
+   "type": "unsigned short"
+  },
+  {
+   "kind": "int",
+   "text": "(int)0x80000000",
+   "warnings": [],
+   "value": -2147483648,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(int)4294967295",
+   "warnings": [],
+   "value": -1,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(long)0xFFFFFFFFi64",
+   "warnings": [
+    "C4310"
+   ],
+   "value": -1,
+   "bits": 32,
+   "signed": true,
+   "type": "long"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned int)-1",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned __int64)-1",
+   "warnings": [],
+   "value": 18446744073709551615,
+   "bits": 64,
+   "signed": false,
+   "type": "unsigned long long"
+  },
+  {
+   "kind": "int",
+   "text": "(__int64)0xFFFFFFFF",
+   "warnings": [],
+   "value": 4294967295,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "(int)2.9",
+   "warnings": [],
+   "value": 2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(int)-2.9",
+   "warnings": [],
+   "value": -2,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(int)3e9f",
+   "warnings": [
+    "C4310"
+   ],
+   "value": -1294967296,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(int)3e9",
+   "warnings": [
+    "C4310"
+   ],
+   "value": -1294967296,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(int)-3e9",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 1294967296,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned int)3e9",
+   "warnings": [],
+   "value": 3000000000,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned int)-1.0",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 4294967295,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned int)5e9",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 705032704,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "int",
+   "text": "(short)1e5",
+   "warnings": [
+    "C4310"
+   ],
+   "value": -31072,
+   "bits": 16,
+   "signed": null,
+   "type": "short"
+  },
+  {
+   "kind": "int",
+   "text": "(unsigned char)300.0",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 44,
+   "bits": 8,
+   "signed": null,
+   "type": "unsigned char"
+  },
+  {
+   "kind": "int",
+   "text": "(__int64)1e19",
+   "warnings": [],
+   "value": -8446744073709551616,
+   "bits": 64,
+   "signed": true,
+   "type": "long long"
+  },
+  {
+   "kind": "int",
+   "text": "(int)1e10f",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 1410065408,
+   "bits": 32,
+   "signed": true,
+   "type": "int"
+  },
+  {
+   "kind": "int",
+   "text": "(char)-129",
+   "warnings": [
+    "C4310"
+   ],
+   "value": 127,
+   "bits": 8,
+   "signed": null,
+   "type": "char"
+  },
+  {
+   "kind": "f32",
+   "text": "1.0f / 3.0f",
+   "warnings": [],
+   "pattern": "3eaaaaab"
+  },
+  {
+   "kind": "f64",
+   "text": "1.0 / 3.0",
+   "warnings": [],
+   "pattern": "3fd5555555555555"
+  },
+  {
+   "kind": "f64",
+   "text": "1.0f / 3.0",
+   "warnings": [],
+   "pattern": "3fd5555555555555"
+  },
+  {
+   "kind": "f32",
+   "text": "1e3f",
+   "warnings": [],
+   "pattern": "447a0000"
+  },
+  {
+   "kind": "f32",
+   "text": "0.1f + 0.2f",
+   "warnings": [],
+   "pattern": "3e99999a"
+  },
+  {
+   "kind": "f32",
+   "text": "(float)0.1",
+   "warnings": [],
+   "pattern": "3dcccccd"
+  },
+  {
+   "kind": "f32",
+   "text": "16777217.0f",
+   "warnings": [],
+   "pattern": "4b800000"
+  },
+  {
+   "kind": "f32",
+   "text": "(float)16777217",
+   "warnings": [],
+   "pattern": "4b800000"
+  },
+  {
+   "kind": "f64",
+   "text": "(double)(1.0f / 3.0f)",
+   "warnings": [],
+   "pattern": "3fd5555560000000"
+  },
+  {
+   "kind": "f32",
+   "text": "0x7FFFFFFF * 1.0f",
+   "warnings": [],
+   "pattern": "4f000000"
+  },
+  {
+   "kind": "f32",
+   "text": "3.0e38f * 10.0f",
+   "warnings": [
+    "C4056"
+   ],
+   "pattern": "7f800000"
+  },
+  {
+   "kind": "f64",
+   "text": "1e308 * 10.0",
+   "warnings": [],
+   "pattern": "7ff0000000000000"
+  },
+  {
+   "kind": "f32",
+   "text": "(float)1e39",
+   "warnings": [],
+   "pattern": "7f800000"
+  },
+  {
+   "kind": "f32",
+   "text": "1.0f / 0.0f",
+   "error": "C2124"
+  },
+  {
+   "kind": "f64",
+   "text": "0.0 / 0.0",
+   "error": "C2124"
+  },
+  {
+   "kind": "f32",
+   "text": "-0.0f",
+   "warnings": [],
+   "pattern": "80000000"
+  },
+  {
+   "kind": "f64",
+   "text": "1.0L / 3.0",
+   "warnings": [],
+   "pattern": "3fd5555555555555"
+  },
+  {
+   "kind": "f32",
+   "text": "1.17549435e-38f / 2.0f",
+   "warnings": [],
+   "pattern": "00400000"
+  },
+  {
+   "kind": "f32",
+   "text": "1.40129846e-45f",
+   "warnings": [],
+   "pattern": "00000001"
+  },
+  {
+   "kind": "f32",
+   "text": "0.5f * 3",
+   "warnings": [],
+   "pattern": "3fc00000"
+  },
+  {
+   "kind": "f64",
+   "text": "1e-320",
+   "warnings": [],
+   "pattern": "00000000000007e8"
+  },
+  {
+   "kind": "f32",
+   "text": "(float)(1 << 24) + 1.0f",
+   "warnings": [],
+   "pattern": "4b800000"
+  },
+  {
+   "kind": "f32",
+   "text": "3.14159265358979f",
+   "warnings": [],
+   "pattern": "40490fdb"
+  },
+  {
+   "kind": "f32",
+   "text": "1.0f + 1e-8f",
+   "warnings": [],
+   "pattern": "3f800000"
+  },
+  {
+   "kind": "f64",
+   "text": "2.5e-1",
+   "warnings": [],
+   "pattern": "3fd0000000000000"
+  },
+  {
+   "kind": "f64",
+   "text": ".5",
+   "warnings": [],
+   "pattern": "3fe0000000000000"
+  },
+  {
+   "kind": "f64",
+   "text": "5.",
+   "warnings": [],
+   "pattern": "4014000000000000"
+  },
+  {
+   "kind": "int",
+   "text": "PROBE_HIGH",
+   "warnings": [],
+   "value": -2147483648,
+   "bits": 32,
+   "signed": true,
+   "type": "enum probe_enum"
+  },
+  {
+   "kind": "int",
+   "text": "PROBE_NEXT",
+   "warnings": [],
+   "value": -2147483647,
+   "bits": 32,
+   "signed": true,
+   "type": "enum probe_enum"
+  },
+  {
+   "kind": "int",
+   "text": "PROBE_ALL",
+   "warnings": [],
+   "value": -1,
+   "bits": 32,
+   "signed": true,
+   "type": "enum probe_enum"
+  },
+  {
+   "kind": "int",
+   "text": "sizeof(enum probe_enum)",
+   "warnings": [],
+   "value": 4,
+   "bits": 32,
+   "signed": false,
+   "type": "unsigned int"
+  },
+  {
+   "kind": "pp",
+   "text": "0xFFFFFFFF + 1 == 0",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "0xFFFFFFFFFFFFFFFF + 1 == 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "(1 << 31) < 0",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "(1 << 63) < 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "-1 < 0u",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "-1 < 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "~0 == -1",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "~0u == 0xFFFFFFFF",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "-1 >> 1 == -1",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "-1 >> 63 == -1",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "0x7FFFFFFFFFFFFFFF + 1 < 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "2147483648 < 0",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "4294967295 == -1",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "18446744073709551615 == -1",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "'A' == 65",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "'AB' == 0x4142",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "'ABCD' == 0x41424344",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "'\\xff' < 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "L'A' == 65",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "L'\\xffff' < 0",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "1 ? 2 : 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "0 ? 1 : 0",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "1 / 0",
+   "error": "C2124"
+  },
+  {
+   "kind": "pp",
+   "text": "1 % 0",
+   "error": "C2124"
+  },
+  {
+   "kind": "pp",
+   "text": "1 || 1 / 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "0 && 1 / 0",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "UNDEFINED_NAME == 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "UNDEFINED_NAME",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "defined(_MSC_VER)",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "defined UNDEFINED_NAME",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "(-2147483647 - 1) / -1 > 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "1 << 64",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "1 << -1",
+   "warnings": [],
+   "value": 0
+  },
+  {
+   "kind": "pp",
+   "text": "-1 % 0u",
+   "error": "C2124"
+  },
+  {
+   "kind": "pp",
+   "text": "5 / -2 == -2",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "-5 % 3 == -2",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "1i64 == 1",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "0x80000000 > 0",
+   "warnings": [],
+   "value": 1
+  },
+  {
+   "kind": "pp",
+   "text": "true",
+   "error": "C1017"
+  },
+  {
+   "kind": "pp",
+   "text": "true == 1",
+   "error": "C1017"
+  }
+ ],
+ "predefines": {
+  "_MSC_VER": "1600",
+  "_MSC_FULL_VER": "160040219",
+  "_MSC_BUILD": "1",
+  "_MSC_EXTENSIONS": "1",
+  "_M_IX86": "600",
+  "_M_IX86_FP": "0",
+  "_M_X64": null,
+  "_M_AMD64": null,
+  "_M_ARM": null,
+  "_WIN32": "1",
+  "_WIN64": null,
+  "_INTEGRAL_MAX_BITS": "64",
+  "__cplusplus": "199711L",
+  "__STDC__": null,
+  "__STDC_VERSION__": null,
+  "__STDC_HOSTED__": null,
+  "_CHAR_UNSIGNED": null,
+  "_CPPRTTI": "1",
+  "_CPPUNWIND": "1",
+  "_NATIVE_WCHAR_T_DEFINED": "1",
+  "_WCHAR_T_DEFINED": "1",
+  "_MT": "1",
+  "_DLL": null,
+  "_DEBUG": null,
+  "NDEBUG": "1",
+  "WIN32": "1",
+  "_WINDOWS": "1",
+  "_MANAGED": null,
+  "__CLR_VER": null,
+  "__cplusplus_cli": null,
+  "_M_CEE": null,
+  "_OPENMP": null,
+  "_Wp64": null,
+  "_ATL_VER": null,
+  "_MFC_VER": null,
+  "_VC_NODEFAULTLIB": null,
+  "_PREFAST_": null,
+  "__midl": null,
+  "_WIN32_WCE": null,
+  "_WIN32_WINNT": null,
+  "WINVER": null,
+  "NTDDI_VERSION": null,
+  "_POSIX_": null,
+  "DBG": null,
+  "WINXP": null
+ }
+}

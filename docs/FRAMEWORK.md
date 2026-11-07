@@ -19,6 +19,7 @@ The framework builds a matching decompilation of one 32-bit Windows exe. It comp
 | `CMakeLists.txt`, `requirements.txt` | `reccmp-project.yml`, `game.cmake` |
 | `.gitignore`, `.gitattributes` | `src/`, `data/` |
 | `docs/CLAUDE-GENERIC.md`, `docs/FRAMEWORK.md`, `docs/PORTING.md` | `docs/STYLE.md`, `docs/FIRST-FUNCTION.md`, `docs/progress/` |
+| `docs/EVIDENCE.md`: the evidence tool in `tools/evidence/` | `evidence/`: its local inputs and outputs, ignored by git |
 
 To update a game's copy of the framework, run the copy command in [PORTING.md](PORTING.md#3-make-the-repo) step 3. Leave out its `mkdir`, `git init` and `git add` lines, because the command only copies. Delete by hand any file the framework dropped. Rerun the [Ghidra command](#function-list) if the copy changed `tools/ghidra`. Rerun `check.py library` in two cases. The first is a copy that changed `tools/library.py` or `tools/libobjects.py`. The second is a changed function list. Then run `check.py gate`. After a copy changes a build input such as `CMakeLists.txt` or `tools/check.py`, `gate` fails until `check.py save` records the scores again. Framework files quote SADX only as worked examples.
 
