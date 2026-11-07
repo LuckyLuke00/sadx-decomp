@@ -4,43 +4,43 @@
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#e6edf3">The last 7 days</text>
 <circle cx="21" cy="50" r="4.5" fill="#ffd700"/><text x="32" y="54" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#e6edf3">Game functions done</text>
 <line x1="64" y1="154.0" x2="984" y2="154.0" stroke="#30363d" stroke-width="1"/>
-<text x="56" y="158.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">32%</text>
+<text x="56" y="158.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">35%</text>
 <line x1="64" y1="127.3" x2="984" y2="127.3" stroke="#30363d" stroke-width="1"/>
-<text x="56" y="131.3" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">34%</text>
+<text x="56" y="131.3" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">36%</text>
 <line x1="64" y1="100.7" x2="984" y2="100.7" stroke="#30363d" stroke-width="1"/>
-<text x="56" y="104.7" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">36%</text>
+<text x="56" y="104.7" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">37%</text>
 <line x1="64" y1="74.0" x2="984" y2="74.0" stroke="#30363d" stroke-width="1"/>
 <text x="56" y="78.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">38%</text>
-<polyline points="129.7,139.9 261.1,131.5 392.6,123.7 524.0,102.5 655.4,89.9 786.9,83.0 918.3,78.3" fill="none" stroke="#ffd700" stroke-width="2.5" stroke-linejoin="round"/>
-<circle cx="129.7" cy="139.9" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
-<circle cx="261.1" cy="131.5" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
-<circle cx="392.6" cy="123.7" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
-<circle cx="524.0" cy="102.5" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
-<circle cx="655.4" cy="89.9" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
-<circle cx="786.9" cy="83.0" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
-<circle cx="918.3" cy="78.3" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
-<text x="129.7" y="127.9" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">33.05%</text>
-<text x="918.3" y="66.3" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">37.67%</text>
+<polyline points="129.7,131.0 261.1,105.8 392.6,91.9 524.0,82.6 655.4,82.6 786.9,82.6 918.3,86.7" fill="none" stroke="#ffd700" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="129.7" cy="131.0" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
+<circle cx="261.1" cy="105.8" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
+<circle cx="392.6" cy="91.9" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
+<circle cx="524.0" cy="82.6" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
+<circle cx="655.4" cy="82.6" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
+<circle cx="786.9" cy="82.6" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
+<circle cx="918.3" cy="86.7" r="4.5" fill="#ffd700" stroke="#161b22" stroke-width="2"/>
+<text x="129.7" y="119.0" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">35.86%</text>
+<text x="918.3" y="74.7" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">37.52%</text>
 <circle cx="21" cy="176" r="4.5" fill="#e6edf3"/><text x="32" y="180" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#e6edf3">Accuracy</text>
 <line x1="64" y1="240.0" x2="984" y2="240.0" stroke="#30363d" stroke-width="1"/>
 <text x="56" y="244.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">99.8%</text>
 <line x1="64" y1="200.0" x2="984" y2="200.0" stroke="#30363d" stroke-width="1"/>
 <text x="56" y="204.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">99.9%</text>
-<polyline points="129.7,208.0 261.1,228.0 392.6,204.0 524.0,204.0 655.4,212.0 786.9,216.0 918.3,204.0" fill="none" stroke="#e6edf3" stroke-width="2.5" stroke-linejoin="round"/>
-<circle cx="129.7" cy="208.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
-<circle cx="261.1" cy="228.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
-<circle cx="392.6" cy="204.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
+<polyline points="129.7,204.0 261.1,212.0 392.6,216.0 524.0,204.0 655.4,204.0 786.9,204.0 918.3,204.0" fill="none" stroke="#e6edf3" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="129.7" cy="204.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
+<circle cx="261.1" cy="212.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
+<circle cx="392.6" cy="216.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
 <circle cx="524.0" cy="204.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
-<circle cx="655.4" cy="212.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
-<circle cx="786.9" cy="216.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
+<circle cx="655.4" cy="204.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
+<circle cx="786.9" cy="204.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
 <circle cx="918.3" cy="204.0" r="4.5" fill="#e6edf3" stroke="#161b22" stroke-width="2"/>
-<text x="129.7" y="196.0" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">99.88%</text>
+<text x="129.7" y="192.0" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">99.89%</text>
 <text x="918.3" y="192.0" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">99.89%</text>
-<text x="129.7" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Oct 29</text>
-<text x="261.1" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Oct 30</text>
-<text x="392.6" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Oct 31</text>
-<text x="524.0" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 1</text>
-<text x="655.4" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 2</text>
-<text x="786.9" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 3</text>
-<text x="918.3" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 4</text>
+<text x="129.7" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 1</text>
+<text x="261.1" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 2</text>
+<text x="392.6" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 3</text>
+<text x="524.0" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 4</text>
+<text x="655.4" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 5</text>
+<text x="786.9" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 6</text>
+<text x="918.3" y="264" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e">Nov 7</text>
 </svg>

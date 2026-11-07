@@ -174,6 +174,18 @@ A scratch build of the two examples shows that the repo's VC++ 2010 SP1 compiler
 - **SDK structs.** Sega uses two forms: `typedef struct { ... } NJS_TEX;` and, with a tag, `typedef struct obj { ... } NJS_OBJECT;`. Copy the form of the header that defines the struct. Align member comments in a column and use `/* */` comments, as Sega's headers do [official].
 - **Layout.** Indent with tabs. Put each opening brace on its own line. The existing files do both.
 - **Annotations.** Use `//` comments in reccmp format directly above the function (`// FUNCTION: SADX 0x...`). Write addresses as `0x` plus 8 lower-case hex digits.
+- **Notes.** A note about the original is one line in one of the fixed forms below. It sits directly above the annotation block, or above the `#define` it names. A frame note sits directly above the annotation; other notes go above it. `tools/notes.py` holds the forms and their checks. `namecheck.py` runs the checks at each commit and fails on a note that is not in its form or place. It also fails on an untagged comment that says original, differ, unmatched, unknown, likely, placeholder, folded or reserves.
+
+  | Tag | Exact form | Written by |
+  | --- | --- | --- |
+  | frame | `// DIFF: frame: the original frame has N more bytes; their source is unknown.` (N in decimal) | a tool: the original frame minus ours |
+  | code | `// DIFF: code: <one sentence, lower-case start, full stop>` | hand |
+  | type | `// DIFF: type: <one sentence, lower-case start, full stop>` | hand |
+  | fold | `// FOLD: the game's link folded this copy into the one of <file> (<0x address>).` | `tools/llm.py` |
+  | placeholder | `// PLACEHOLDER: <NAME>: <one sentence, lower-case start, full stop>` | hand |
+
+  Find all notes of one kind with `grep -rn "// DIFF: frame:" src`, and the same for each tag.
+- **Unexplained frame bytes.** Never declare locals to fill a frame, and never mark a function `inline` only to fill one. Unused locals, a refused inline attempt and a compile flag all give the same frame, so the code can't show which one the source had. Leave the frame smaller and write the frame note.
 - **Vendor code.** Do not restyle it. CRT code goes in `src/library.csv`, as `docs/CLAUDE-GENERIC.md` says. The research suggests a `third_party` folder or `library.csv` rows for CRI, TinyXML and Steamworks, but that is not decided.
 
 ## 7. Layers of the code base

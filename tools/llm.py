@@ -36,8 +36,9 @@ does not count toward STUCK_TRIES, nor toward --give-up), --similar-examples (th
 whose instructions are most like the function's), --prefix-feedback (the feedback says how many instructions
 match from the function's start before the first difference), --refuse-fakematch (a 100% try with a line that
 tools/fakematch.py finds does not end the run, as "The loop" says), --recipes DIR (the first prompt adds the plan in
-DIR/ADDRESS/recipe.md when there is one: tools/recipes.py writes and checks them) and --tag T (default: the
-prompt's name). Every command takes --config PATH.
+DIR/ADDRESS/recipe.md when there is one: tools/recipes.py writes and checks them), --twins DIR (the first prompt adds
+DIR/ADDRESS/twin.md when there is one: the same function decompiled from another build, after any plan) and --tag T
+(default: the prompt's name). Every command takes --config PATH.
 Results go to build/llm/T/: results.tsv with a row per function and transcripts/ADDRESS.jsonl
 with every exchange.
 
@@ -93,6 +94,7 @@ import facts
 import fakematch
 import llmclient
 import names
+import notes
 import osutil
 import pe
 import progress
@@ -249,6 +251,8 @@ BYTE_STEPS = 40  # rewrites per line in byte_arith, a stop for a loop that canno
 OFFSET_LINES = 3  # lines that the note on byte offsets shows
 TASK_LEAD = "Now your function. "  # between the examples and the function's own task in the first prompt
 RECIPE_LEAD = "A plan for this function, in steps, from a decompiler that matched it:"  # before a --recipes plan
+TWIN_LEAD = ("The same function in another build of the game, decompiled by Ghidra. It shows the logic, not the code "
+             "to write. A name that starts with that build's tag and _ has no match here:")  # before a --twins file
 Conversion = collections.namedtuple("Conversion", "path line name param source target")  # param: None for a C2440
 
 
@@ -541,8 +545,7 @@ def kept_copy(roots, row, address):
         at = names.signature_index(func)
         if not re.match(r"static\s", func[at]):
             func[at] = "static " + func[at]
-        return [f"// The game's link folded this copy into the one of {Path(row['file']).name} ({hexa(address)}).",
-                *func[1:]]
+        return [notes.FOLD_NOTE.format(Path(row['file']).name, hexa(address)), *func[1:]]
     return None
 
 
@@ -1412,22 +1415,27 @@ def examples(config, file, address, count, extra=(), similar=False, allowed=None
     return shown
 
 
-def recipe_section(recipe):
-    """The part of the first prompt that holds RECIPE, a --recipes plan, or "" for none."""
-    return f"{RECIPE_LEAD}\n{recipe.strip()}\n\n" if recipe else ""
+def note_section(lead, folder, address, name):
+    """The part of the first prompt that holds the note FOLDER/ADDRESS/NAME after its LEAD line, or "" for no FOLDER,
+    no such file or an empty one."""
+    if not folder:
+        return ""
+    path = folder / hexa(address) / name
+    text = path.read_text(encoding="utf-8").strip() if path.exists() else ""
+    return f"{lead}\n{text}\n\n" if text else ""
 
 
-def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), similar=False, recipe=None,
-                 allowed=None, hide_own=False):
-    """The first user message for the function at ADDRESS. ALLOWED limits the examples, as examples() says. HIDE_OWN:
-    the dossier leaves out the prototype that the function's own definition gives, as for a function not yet
-    decompiled."""
+def first_prompt(config, file, address, types=None, count=EXAMPLES, extra=(), similar=False, notes="", allowed=None,
+                 hide_own=False):
+    """The first user message for the function at ADDRESS. NOTES: the note_section parts, after the structs. ALLOWED
+    limits the examples, as examples() says. HIDE_OWN: the dossier leaves out the prototype that the function's own
+    definition gives, as for a function not yet decompiled."""
     facts = dossier(config, address, '--c', '--callers', *extra, *(["--hide-own"] if hide_own else []))
     headers = (ROOT / names.TYPES_H).parent
     laid = laid_out([h.read_text(encoding="utf-8") for h in headers.glob("*.h")] + [read_source(ROOT / file)[0]])
     structs = ("" if types is None
                else struct_section(header_types(headers, types), facts, header_typedefs(headers), laid))
-    task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}{recipe_section(recipe)}"
+    task = (f"Function {hexa(address)}, to go in {file}. Dossier:\n```\n{facts}\n```\n{structs}{notes}"
             f"Write the function. Reply with one cpp block with the `{function_line(address)}` line.")
     shown = examples(config, file, address, count, extra, similar, allowed)
     return "\n\n".join(shown + [TASK_LEAD + task]) if shown else task
@@ -1790,9 +1798,9 @@ def solve_function(args, file, address, size, transcript):
     repair_types = types or load_types(config)  # the byte offset and pointer cast repairs read layouts either way
     extra = dossier_flags(args)
     count = EXAMPLES
-    plan = args.recipes / hexa(address) / "recipe.md" if args.recipes else None
-    recipe = plan.read_text(encoding="utf-8") if plan and plan.exists() else None
-    first = first_prompt(config, file, address, types, count, extra, args.similar_examples, recipe)
+    notes = (note_section(RECIPE_LEAD, args.recipes, address, "recipe.md")
+             + note_section(TWIN_LEAD, args.twins, address, "twin.md"))
+    first = first_prompt(config, file, address, types, count, extra, args.similar_examples, notes)
     base = [{"role": "system", "content": args.system}, {"role": "user", "content": first}]
     # the code already in the file is the floor
     best = file_best(scored, before, address, known, types, args.prefix_feedback)
@@ -1840,7 +1848,7 @@ def solve_function(args, file, address, size, transcript):
                     messages = base
                 elif count > 0:
                     count -= 1
-                    first = first_prompt(config, file, address, types, count, extra, args.similar_examples, recipe)
+                    first = first_prompt(config, file, address, types, count, extra, args.similar_examples, notes)
                     messages = base = [base[0], {"role": "user", "content": first}]
                     log.write(json.dumps({"prompt": first}) + "\n")
                 else:
@@ -2110,6 +2118,9 @@ def parse_args():
                       help="a 100%% try with a line that tools/fakematch.py finds is refused, and the run goes on")
     runs.add_argument("--recipes", type=Path, metavar="DIR",
                       help="add the plan in DIR/ADDRESS/recipe.md to the first prompt of each function that has one")
+    runs.add_argument("--twins", type=Path, metavar="DIR",
+                      help="add the other build's code in DIR/ADDRESS/twin.md to the first prompt of each function "
+                           "that has one")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
     commands = parser.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init", parents=[common])

@@ -27,8 +27,9 @@ The kinds:
   constant_global  a float or double DAT_ declared at an address of read-only data (constant_globals): the compiler
                    puts the source's literals there, so the source wrote a literal
 
-In a function that builds with /Od (Tree.is_debug), unused_local and self_assignment are plain C: every local gets a
-stack slot there, and x = x; loads and stores. A float literal in arithmetic or a comparison compiles to a qword
+In a function that builds with /Od (Tree.is_debug), self_assignment is plain C: x = x; loads and stores there. An
+unused_local still counts at /Od: it gets a stack slot, but the code cannot show that the source declared it, so it only
+fills the frame. A float literal in arithmetic or a comparison compiles to a qword
 operand there, so a float DAT_ that the code uses so is a float object (constant_globals).
 
 llm.py --refuse-fakematch refuses a 100% try with one of them. A function at 100% with one counts as matched only
@@ -89,7 +90,8 @@ ADDED_TO = re.compile(r"(?<![\w.])([A-Za-z_]\w*)\s*\)?\s*[-+]\s*$")  # a name, m
 NUMBER = re.compile(r"(?<![\w.])(0[xX][0-9a-fA-F]+|[1-9]\d*|0)[uUlL]*(?![\w.])")  # an integer, not part of a float
 LABEL = re.compile(r"^\s*([A-Za-z_]\w*)\s*:\s*;?\s*$")
 HEAD = re.compile(r"\s*(?:if|for|while)\s*\(")
-DEBUG_PLAIN = {"unused_local", "self_assignment"}  # the kinds that are plain C at /Od
+ENDLESS = re.compile(r"\s*(?:while\s*\(\s*1\s*\)|for\s*\(\s*;\s*;\s*\))\s*;?\s*$")  # an endless loop's head
+DEBUG_PLAIN = {"self_assignment"}  # the kinds that are plain C at /Od
 DAT_NAME = re.compile(r"DAT_([0-9a-f]{8})")  # a global's placeholder name, which holds its address
 FLOAT_GLOBAL = re.compile(r"^\s*(?:extern\s+)?(?:const\s+)?(float|double)\s+(?:const\s+)?DAT_([0-9a-fA-F]{8})\s*;\s*$")
 ARITHMETIC_BEFORE = re.compile(r"(?:[-+*/%<>]|[-+*/%<>=!]=)$")  # an operator or a compound assignment

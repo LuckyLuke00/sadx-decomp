@@ -663,8 +663,8 @@ def check_unused_frame_fact() -> list[str]:
     frame = lambda step, *body: ["push ebp", "mov ebp, esp", step, *body, "call @3", "mov esp, ebp", "pop ebp", "ret"]
     return check_text_cases(facts.unused_frame_fact, [
         (frame("sub esp, 0xc", "cmp dword ptr [0x5b9d838], 0"), "reserves 12 bytes of locals"),
-        (frame("sub esp, 0xc", "cmp dword ptr [0x5b9d838], 0"), "such as 3 `int` locals"),
-        (frame("push ecx", "push 0"), "such as 1 `int` local:"),
+        (frame("sub esp, 0xc", "cmp dword ptr [0x5b9d838], 0"), "Declare no local to fill them."),
+        (frame("push ecx", "push 0"), "`push ecx` after `mov ebp, esp` reserves 4 bytes"),
         (frame("sub esp, 0xc", "mov dword ptr [ebp - 4], eax"), None),
         (frame("sub esp, 0xc", "lea eax, [ebp - 0xc]"), None),
         (frame("sub esp, 0x10", "mov eax, dword ptr [ebp + ecx*4 - 0x10]"), None),

@@ -433,10 +433,10 @@ def float_argument_fact(code: list[x86.Instruction]) -> str | None:
 
 def unused_frame_fact(code: list[x86.Instruction]) -> str | None:
     """/Od: a frame that `sub esp, N` or one `push ecx` reserves after the prologue and `mov esp, ebp` gives back,
-    while no instruction reads, writes or takes the address of an [ebp - N] slot, holds only locals that the source
-    declares and never uses: /Od gives each declared local a slot. Without `mov esp, ebp`, that `push ecx` or `sub esp`
-    makes room for an argument. A `rep` string op can make such a slot by itself, as a struct copy does, so code with
-    one gives no fact."""
+    while no instruction reads, writes or takes the address of an [ebp - N] slot, holds bytes that the code cannot
+    explain: unused locals, a callee whose inline attempt failed, or a compile flag give the same frame. Without
+    `mov esp, ebp`, that `push ecx` or `sub esp` makes room for an argument. A `rep` string op can make such a slot by
+    itself, as a struct copy does, so code with one gives no fact."""
     if not x86.has_frame(code) or not any((i.mnemonic, i.operands) == ("mov", "esp, ebp") for i in code):
         return None
     step = code[[(i.mnemonic, i.operands) for i in code].index(("mov", "ebp, esp")) + 1]
@@ -447,13 +447,10 @@ def unused_frame_fact(code: list[x86.Instruction]) -> str | None:
         return None
     if any(m.base == "ebp" and m.disp < 0 for i in code for m in memory_operands(i.operands)):
         return None
-    ints = size // 4
-    example = f"{ints} `int` local{'s' if ints > 1 else ''}" if size % 4 == 0 else f"a `char` array of {size}"
     return (f"`{step.mnemonic} {step.operands}` after `mov ebp, esp` reserves {size} bytes of locals, and no "
-            "instruction reads, writes or takes the address of an [ebp - N] slot. At /Od the compiler gives each "
-            f"declared local a slot, even one that the code never uses. So the source declared {size} bytes of locals "
-            f"that it never uses, such as {example}: declare them, or the frame comes out smaller. The code shows "
-            "neither their names nor their types.")
+            "instruction reads, writes or takes the address of an [ebp - N] slot. The code cannot tell where these "
+            "bytes come from: unused locals, a callee whose inline attempt failed, or a compile flag give the same "
+            "frame. Declare no local to fill them. The frame then comes out smaller, and that is the honest result.")
 
 
 def last_write(code: list[x86.Instruction], n: int, bit: int) -> x86.Instruction | None:

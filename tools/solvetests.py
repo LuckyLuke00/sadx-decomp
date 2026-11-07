@@ -28,6 +28,8 @@ import project
 import stubpairs
 
 ADDRESS = 0x00401000
+PLAN = "1. The loop counts down.\n"  # a --recipes plan
+PLAN_SECTION = f"{llm.RECIPE_LEAD}\n{PLAN}\n"  # PLAN in the first prompt
 SIZE = 64  # bytes: small, so a try's reply limit stays MAX_TOKENS
 FILE = "src/foo.c"
 SEED = 5
@@ -84,8 +86,8 @@ def solved(tries, too_long, reply="no code", size=SIZE, **flags) -> Run:
         on_text("content", text)
         return llmclient.Reply(text, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
 
-    def first_prompt(config, file, address, types, count, extra, similar, recipe):
-        return f"{count} examples" + llm.recipe_section(recipe)
+    def first_prompt(config, file, address, types, count, extra, similar, notes):
+        return f"{count} examples{notes}"
 
     fakes = {"read_source": lambda path: ('#include "decls.h"\n', False),
              "write_source": lambda path, text, crlf: kept.append(text), "snapshot": lambda paths: {},
@@ -97,7 +99,7 @@ def solved(tries, too_long, reply="no code", size=SIZE, **flags) -> Run:
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
                    stop_below=None, stop_first=None, try_tokens=None, think_max=None,
                    think_after=None, similar_examples=False,
-                   prefix_feedback=False, refuse_fakematch=False, recipes=None)
+                   prefix_feedback=False, refuse_fakematch=False, recipes=None, twins=None)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
@@ -251,22 +253,35 @@ def check_prefix_feedback() -> list[str]:
     return [f"{case} gives {found!r}, not {wanted!r}" for case, found, wanted in cases if found != wanted]
 
 
+def noted_prompt(files, *flags) -> str:
+    """The first prompt of a run whose note folder holds FILES, name: text, at ADDRESS. Each of FLAGS, as recipes,
+    names the folder."""
+    with tempfile.TemporaryDirectory() as folder:
+        (Path(folder) / llm.hexa(ADDRESS)).mkdir()
+        for name, text in files.items():
+            (Path(folder) / llm.hexa(ADDRESS) / name).write_text(text, encoding="utf-8")
+        return solved(1, never_too_long, **{flag: Path(folder) for flag in flags}).lasts[0]
+
+
 def check_recipes() -> list[str]:
     """--recipes DIR puts the plan in DIR/ADDRESS/recipe.md into the first prompt, after its lead line. A function
     with no plan file gets the prompt without one."""
-    with tempfile.TemporaryDirectory() as folder:
-        plans = Path(folder)
-        no_plan = solved(1, never_too_long, recipes=plans).lasts[0]
-        (plans / llm.hexa(ADDRESS)).mkdir()
-        (plans / llm.hexa(ADDRESS) / "recipe.md").write_text("1. The loop counts down.\n", encoding="utf-8")
-        with_plan = solved(1, never_too_long, recipes=plans).lasts[0]
-    wanted = f"{llm.EXAMPLES} examples{llm.RECIPE_LEAD}\n1. The loop counts down.\n\n"
-    failures = []
-    if with_plan != wanted:
-        failures.append(f"the first prompt with a plan is {with_plan!r}, not {wanted!r}")
-    if no_plan != f"{llm.EXAMPLES} examples":
-        failures.append(f"the first prompt without a plan file is {no_plan!r}")
-    return failures
+    cases = [("a plan", noted_prompt({"recipe.md": PLAN}, "recipes"), f"{llm.EXAMPLES} examples{PLAN_SECTION}"),
+             ("no plan file", noted_prompt({}, "recipes"), f"{llm.EXAMPLES} examples")]
+    return [f"the first prompt with {case} is {found!r}, not {wanted!r}" for case, found, wanted in cases
+            if found != wanted]
+
+
+def check_twins() -> list[str]:
+    """--twins DIR puts DIR/ADDRESS/twin.md into the first prompt after its lead line, and after a --recipes plan. A
+    function with no twin file, or an empty one, gets the prompt without one."""
+    twin = "int f() { return 1; }"
+    cases = [("a plan and a twin", noted_prompt({"recipe.md": PLAN, "twin.md": twin + "\n"}, "recipes", "twins"),
+              f"{llm.EXAMPLES} examples{PLAN_SECTION}{llm.TWIN_LEAD}\n{twin}\n\n"),
+             ("no twin file", noted_prompt({}, "twins"), f"{llm.EXAMPLES} examples"),
+             ("an empty twin file", noted_prompt({"twin.md": " \n"}, "twins"), f"{llm.EXAMPLES} examples")]
+    return [f"the first prompt with {case} is {found!r}, not {wanted!r}" for case, found, wanted in cases
+            if found != wanted]
 
 
 def cpp(*body) -> str:
@@ -439,10 +454,10 @@ def check_fakematch_kinds() -> list[str]:
 
 
 def check_debug_kinds() -> list[str]:
-    """In a function that builds with /Od, an unused local and a self-assignment are plain C: every local gets a stack
-    slot, and x = x; loads and stores. The other kinds still count. fakematch.debug_test reads the /Od flag of the
-    function's codegen group."""
-    cases = [(["\tp[0] = p[0];"], []), (["\tint y;", "\treturn x;"], []),
+    """In a function that builds with /Od, a self-assignment is plain C: x = x; loads and stores. An unused local
+    still counts there, as do the other kinds. fakematch.debug_test reads the /Od flag of the function's codegen
+    group."""
+    cases = [(["\tp[0] = p[0];"], []), (["\tint y;", "\treturn x;"], [("unused_local", "y")]),
              (["\tif (0) x = 1;"], [("constant_test", "if (0) x = 1;")])]
     failures = []
     for body, wanted in cases:
@@ -573,7 +588,7 @@ def check_fold_copies() -> list[str]:
             ("0x00405100", "Mine", "L", "src/y.c")]
     text = (f'#include "a.h"\n\nstatic void Mine(void)\n{{\n}}\n\n// FUNCTION: {target} 0x00401000\nvoid Caller(void)\n'
             "{\n\tFold(1);\n\tOpen();\n\tOwn();\n\tMine();\n}\n")
-    wanted = text.replace("\n\nstatic void Mine", "\n\n// The game's link folded this copy into the one of b.c "
+    wanted = text.replace("\n\nstatic void Mine", "\n\n// FOLD: the game's link folded this copy into the one of b.c "
                           "(0x00402000).\nstatic void Fold(int x)\n{\n\tx++;\n}\n\nstatic void Mine")
     with tempfile.TemporaryDirectory() as folder:
         root, tables = Path(folder) / "tree", Path(folder) / "tables"
@@ -981,7 +996,7 @@ def run() -> list[str]:
     failures = []
     for check in (check_too_long, check_thinks,
                   check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
-                  check_prefix_feedback, check_recipes, check_refuse_fakematch, check_fn_trick,
+                  check_prefix_feedback, check_recipes, check_twins, check_refuse_fakematch, check_fn_trick,
                   check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
                   check_unlaid_structs, check_fold_copies, check_own_stubs, check_own_globals, check_try_globals,
