@@ -7,7 +7,7 @@ int FUN_0046ffb0();
 // FUNCTION: SADX 0x0046f6e0
 void __fastcall FUN_0046f6e0(int param_1)
 {
-	*(int *)(param_1 + 0) = 0;
+	*(int *)param_1 = 0;
 	*(int *)(param_1 + 4) = 0;
 	*(int *)(param_1 + 8) = 0;
 	*(int *)(param_1 + 0xc) = 0;

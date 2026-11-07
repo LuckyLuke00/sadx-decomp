@@ -1,9 +1,9 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x0080a490
-void __fastcall FUN_0080a490(struct stg02_poline *param_1)
+void __fastcall FUN_0080a490(struct FUN_0080a490_0 *param_1)
 {
-	struct stg02_poline *var1 = (struct stg02_poline *)DAT_05baf368[*(char *)((char *)param_1 + 1)];
+	struct FUN_0080a490_0 *var1 = (struct FUN_0080a490_0 *)DAT_05baf368[*(char *)((char *)param_1 + 1)];
 	if (var1 != NULL)
 	{
 		if ((*(char *)((char *)var1 + 4) & 3) != 0)

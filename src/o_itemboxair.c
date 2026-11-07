@@ -61,17 +61,17 @@ void itembox_airDisplay(struct task *tp)
 	SetRegularTexture();
 	if (local_8->mode == 1 || local_8->mode == 0)
 	{
-		FUN_0067d2d0(0, *(float *)((char *)DAT_05edbe84 + 0x1c), *(float *)((char *)DAT_05edbe84 + 0x1c), *(float *)((char *)DAT_05edbe84 + 0x1c));
+		FUN_0067d2d0(0, DAT_05edbe84->center.y, DAT_05edbe84->center.y, DAT_05edbe84->center.y);
 		DrawCustomObject_wz((struct obj *)&DAT_05a92154, &panel_model[0]);
 	}
 	else
 	{
-		FUN_0067d2d0(0, *(float *)((char *)DAT_05edbe84 + 0x18), *(float *)((char *)DAT_05edbe84 + 0x18), *(float *)((char *)DAT_05edbe84 + 0x18));
+		FUN_0067d2d0(0, DAT_05edbe84->center.x, DAT_05edbe84->center.x, DAT_05edbe84->center.x);
 		SaveConstantAttr();
 		OnConstantAttr(0, 0x100000);
 		___njColorBlendingMode(0, 8);
 		___njColorBlendingMode(1, 6);
-		SetMaterial(-(*(float *)((char *)DAT_05edbe84 + 0x18) - 1.0) * 0.25, 0.0, 0.0, 0.0);
+		SetMaterial(-(DAT_05edbe84->center.x - 1.0) * 0.25, 0.0, 0.0, 0.0);
 		DrawCustomObject_wz((struct obj *)&DAT_05a92154, &panel_model[0]);
 		ResetMaterial();
 		LoadConstantAttr();
@@ -143,7 +143,7 @@ void InitItemBoxManager()
 // FUNCTION: SADX 0x005b6740
 void EntryItemBoxPanel(long panel)
 {
-	*(long *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 0) = panel;
+	*(long *)(DAT_05edbe94 + (DAT_05edbe8c << 4)) = panel;
 	*(float *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 4) = -60.0f;
 	*(float *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 8) = 2.0f;
 	*(int *)(DAT_05edbe94 + (DAT_05edbe8c << 4) + 12) = DAT_05edbfe0;

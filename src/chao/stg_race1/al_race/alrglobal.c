@@ -15,7 +15,7 @@ enum Voice_Mode GetVoiceMode()
 {
 	if (DAT_05b33108 == 0)
 		return (enum Voice_Mode)0;
-	switch (*(unsigned char *)((char *)DAT_05b33108 + 0x1460))
+	switch (DAT_05b33108->alrcam.mode)
 	{
 	case 3:
 	case 4:
@@ -80,7 +80,7 @@ int GetRacerInfoFromRank(int rank, enum Alr_Info info)
 	case 0:
 		return *(unsigned char *)(var1 + 0xc4);
 	case 1:
-		return (int)(long)(double)(float)(*(float *)(var1 + 0xd0));
+		return (int)(long)(float)(*(float *)(var1 + 0xd0));
 	case 2:
 		return *(unsigned short *)(*(int *)(*(int *)(var1 + 0xec) + 0xec) + 0x10);
 	case 3:

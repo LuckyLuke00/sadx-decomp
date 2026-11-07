@@ -42,7 +42,7 @@ void objNormalT(struct task *tp)
 	switch (local_8->mode)
 	{
 	case 0:
-		local_8->counter.f = local_8->counter.f + 0.01666666753590107f;
+		local_8->counter.f = local_8->counter.f + 0.016666668f;
 		if (local_8->counter.f >= 1.0f)
 		{
 			local_8->counter.f = 1.0f;
@@ -60,7 +60,7 @@ void objNormalT(struct task *tp)
 		}
 		break;
 	case 2:
-		local_8->counter.f = local_8->counter.f - 0.01666666753590107f;
+		local_8->counter.f = local_8->counter.f - 0.016666668f;
 		if (local_8->counter.f <= 0.0f)
 		{
 			FreeTask(tp);

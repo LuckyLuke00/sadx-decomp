@@ -9,9 +9,6 @@ extern struct CCL_INFO cylinder_info[1];
 extern struct CCL_INFO sphere_info[1];
 extern long DAT_05b42598;
 
-#define njRotateX(param_1, param_2) if ((param_2) != 0) njRotateX((param_1), (unsigned short)(param_2))
-#define njRotateY(param_1, param_2) if ((param_2) != 0) njRotateY((param_1), (unsigned short)(param_2))
-
 static void ColliSpaceEditMode(struct task *tp, unsigned short form);
 static void ColliOttottoRangeEditMode(struct task *tp);
 static long CS_CheckCollisionPlayer2NoWater(struct CCL_INFO *pinf, struct taskwk *ctwp);
@@ -60,19 +57,19 @@ static void ColliSpaceEditMode(struct task *tp, unsigned short form)
 	ResetMaterial();
 	njPushMatrix(0);
 	njTranslateV(0, &local_14s->pos);
-	njRotateY(0, local_14s->ang.y);
+	UNKNOWN_ROTATE_Y_MACRO(0, local_14s->ang.y);
 	switch (form)
 	{
 	case 0:
-		FUN_0067d2d0(0, local_10l * (double)0.1f, local_10l * (double)0.1f, local_10l * (double)0.1f);
+		FUN_0067d2d0(0, local_10l * 0.1f, local_10l * 0.1f, local_10l * 0.1f);
 		njEasyDrawObject(&object_sphere01);
 		break;
 	case 1:
-		FUN_0067d2d0(0, local_10l * (double)0.1f, local_ci * (double)0.1f, local_10l * (double)0.1f);
+		FUN_0067d2d0(0, local_10l * 0.1f, local_ci * 0.1f, local_10l * 0.1f);
 		njEasyDrawObject(object_cylinder01);
 		break;
 	case 3:
-		FUN_0067d2d0(0, local_10l * (double)0.2f, local_ci * (double)0.2f, local_8g * (double)0.2f);
+		FUN_0067d2d0(0, local_10l * 0.2f, local_ci * 0.2f, local_8g * 0.2f);
 		njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 		break;
 	case 8:
@@ -83,19 +80,19 @@ static void ColliSpaceEditMode(struct task *tp, unsigned short form)
 		njPopMatrix(1);
 		njPushMatrix(0);
 		FUN_0067d830(0, 0.0f, 0.0f, 20.0f);
-		njRotateX(0, 0x2000);
+		UNKNOWN_ROTATE_X_MACRO(0, 0x2000);
 		FUN_0067d830(0, 0.0f, 0.0f, -3.0f);
 		FUN_0067d2d0(0, 0.1f, 0.1f, 0.7f);
 		njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 		njPopMatrix(1);
 		njPushMatrix(0);
 		FUN_0067d830(0, 0.0f, 0.0f, 20.0f);
-		njRotateX(0, 0xe000);
+		UNKNOWN_ROTATE_X_MACRO(0, 0xe000);
 		FUN_0067d830(0, 0.0f, 0.0f, -3.0f);
 		FUN_0067d2d0(0, 0.1f, 0.1f, 0.7f);
 		njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 		njPopMatrix(1);
-		FUN_0067d2d0(0, local_10l * (double)0.2f, local_ci * (double)0.2f, 0.1f);
+		FUN_0067d2d0(0, local_10l * 0.2f, local_ci * 0.2f, 0.1f);
 		njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 		if (FUN_004c39c0(tp))
 		{
@@ -120,11 +117,11 @@ static void ColliSpaceEditMode(struct task *tp, unsigned short form)
 		for (local_18o = 0; local_18o < 32; local_18o++)
 		{
 			njPushMatrix(&_nj_unit_matrix_);
-			njRotateY(0, local_18o << 11);
+			UNKNOWN_ROTATE_Y_MACRO(0, local_18o << 11);
 			njCalcPoint(0, &local_28z, &local_34h);
 			njPopMatrix(1);
 			njPushMatrix(&_nj_unit_matrix_);
-			njRotateY(0, (local_18o + 1) << 11);
+			UNKNOWN_ROTATE_Y_MACRO(0, (local_18o + 1) << 11);
 			njCalcPoint(0, &local_28z, &local_40h);
 			njPopMatrix(1);
 			DrawLineV(&local_34h, &local_40h);
@@ -300,26 +297,26 @@ static void ColliOttottoRangeEditMode(struct task *tp)
 	ResetMaterial();
 	njPushMatrix(0);
 	njTranslateV(0, &local_14s->pos);
-	njRotateY(0, local_14s->ang.y);
+	UNKNOWN_ROTATE_Y_MACRO(0, local_14s->ang.y);
 	njPushMatrix(0);
-	FUN_0067d2d0(0, local_10l * (double)0.2f, local_ci * (double)0.2f, local_8g * (double)0.2f);
+	FUN_0067d2d0(0, local_10l * 0.2f, local_ci * 0.2f, local_8g * 0.2f);
 	njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 	njPopMatrix(1);
 	njPushMatrix(0);
 	FUN_0067d830(0, 0.0f, 0.0f, 20.0f);
-	njRotateX(0, 0x2000);
+	UNKNOWN_ROTATE_X_MACRO(0, 0x2000);
 	FUN_0067d830(0, 0.0f, 0.0f, -3.0f);
 	FUN_0067d2d0(0, 0.1f, 0.1f, 0.7f);
 	njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 	njPopMatrix(1);
 	njPushMatrix(0);
 	FUN_0067d830(0, 0.0f, 0.0f, 20.0f);
-	njRotateX(0, 0xe000);
+	UNKNOWN_ROTATE_X_MACRO(0, 0xe000);
 	FUN_0067d830(0, 0.0f, 0.0f, -3.0f);
 	FUN_0067d2d0(0, 0.1f, 0.1f, 0.7f);
 	njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 	njPopMatrix(1);
-	FUN_0067d2d0(0, local_10l * (double)0.2f, local_ci * (double)0.2f, 0.1f);
+	FUN_0067d2d0(0, local_10l * 0.2f, local_ci * 0.2f, 0.1f);
 	njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 	if (FUN_004c39c0(tp))
 	{
@@ -385,9 +382,9 @@ void ColliNoWaterRange(struct task *tp)
 		njTranslateV(0, &local_8g->pos);
 		if (local_8g->ang.z)
 			njRotateZ(0, (unsigned short)local_8g->ang.z);
-		njRotateY(0, local_8g->ang.y);
-		njRotateX(0, local_8g->ang.x);
-		FUN_0067d2d0(0, local_8g->scl.x * (double)0.2f, local_8g->scl.y * (double)0.2f, local_8g->scl.z * (double)0.2f);
+		UNKNOWN_ROTATE_Y_MACRO(0, local_8g->ang.y);
+		UNKNOWN_ROTATE_X_MACRO(0, local_8g->ang.x);
+		FUN_0067d2d0(0, local_8g->scl.x * 0.2f, local_8g->scl.y * 0.2f, local_8g->scl.z * 0.2f);
 		njEasyDrawObject(object_no_name_cuuube01_cuuube01);
 		njPopMatrix(1);
 	}
@@ -453,8 +450,8 @@ static long CS_CheckCollisionPlayer2NoWater(struct CCL_INFO *pinf, struct taskwk
 	njUnitMatrix(0);
 	if (ctwp->ang.z)
 		njRotateZ(0, (unsigned short)ctwp->ang.z);
-	njRotateX(0, ctwp->ang.x);
-	njRotateY(0, ctwp->ang.y);
+	UNKNOWN_ROTATE_X_MACRO(0, ctwp->ang.x);
+	UNKNOWN_ROTATE_Y_MACRO(0, ctwp->ang.y);
 	njInvertMatrix(0);
 	njCalcPoint(0, &local_38gj, &local_38gj);
 	njPopMatrix(1);

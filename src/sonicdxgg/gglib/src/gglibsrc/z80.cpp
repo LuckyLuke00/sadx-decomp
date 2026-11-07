@@ -3268,7 +3268,7 @@ void daa()
 void cpl()
 {
 	char *var1 = DAT_060ee5b8;
-	*(char *)(var1 + 0) |= 0x12;
+	*(char *)var1 |= 0x12;
 	var1[1] = (char)(~var1[1]);
 	*(int *)(var1 + 0x50) = 4;
 }

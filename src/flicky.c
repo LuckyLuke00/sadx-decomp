@@ -3,7 +3,7 @@ struct motionwk;
 extern struct obj object_al_barria_barria[1];
 extern struct NJS_TEXLIST texlist_al_barria;
 void FUN_0061a600(struct task *param_1, struct taskwk *param_2, unsigned short param_3);
-void FUN_00618530(struct FlickyEff *param_1, struct FlickyEff *param_2, int param_3);
+void FUN_00618530(struct FUN_00618530_0 *param_1, struct FUN_00618530_0 *param_2, int param_3);
 void Flicky_transformBaloon(struct Flicky *__this, struct taskwk *twp);
 void FUN_0061a280(struct Flicky *param_1, struct taskwk *param_2, int param_3);
 void FUN_0061a3c0(struct Flicky *param_1, struct taskwk *param_2, int param_3);
@@ -16,7 +16,7 @@ void FUN_0061ea50(struct NJS_POINT3 *param_1, unsigned short param_2);
 void FUN_0061a180(int param_1, struct taskwk *param_2, struct task *param_3);
 void FUN_0061a590(int param_1, struct taskwk *param_2);
 void FUN_004ff320(int param_1);
-struct FlickyEff;
+struct FUN_00618530_0;
 
 // STUB: SADX 0x00617a00
 struct taskwk *Flicky_Create(float xpos, float ypos, float zpos, void (*FlickyXXXX_New)(struct task *))
@@ -212,7 +212,7 @@ void FUN_006184e0(int param_1, char *param_2)
 }
 
 // FUNCTION: SADX 0x00618530
-void FUN_00618530(struct FlickyEff *param_1, struct FlickyEff *param_2, int param_3)
+void FUN_00618530(struct FUN_00618530_0 *param_1, struct FUN_00618530_0 *param_2, int param_3)
 {
 	if (*(short *)((char *)param_2 + 0xc) > 0x1e)
 	{
@@ -338,22 +338,22 @@ void FUN_0061a3c0(struct Flicky *param_1, struct taskwk *param_2, int param_3)
 	float local_cg;
 
 	local_8g = (struct taskwk *)*(int *)((char *)param_3 + 0x24);
-	*(float *)((char *)local_8g + 8) -= 0.05000000074505806f;
-	*(float *)((char *)param_2 + 0x20) += *(float *)((char *)local_8g + 4);
-	*(float *)((char *)param_2 + 0x24) += *(float *)((char *)local_8g + 8);
-	*(float *)((char *)param_2 + 0x28) += *(float *)((char *)local_8g + 0xc);
-	*(int *)((char *)param_2 + 0x14) = 0;
-	*(int *)((char *)param_2 + 0x1c) = 0;
-	local_cg = Shadow(param_2, 0.3499999940395355f);
-	if (*(float *)((char *)param_2 + 0x24) - 2.0f < local_cg)
+	local_8g->counter.f -= 0.05f;
+	param_2->pos.x += *(float *)((char *)local_8g + 4);
+	param_2->pos.y += local_8g->counter.f;
+	param_2->pos.z += local_8g->timer.f;
+	param_2->ang.x = 0;
+	param_2->ang.z = 0;
+	local_cg = Shadow(param_2, 0.35f);
+	if (param_2->pos.y - 2.0f < local_cg)
 	{
-		*(float *)((char *)param_2 + 0x24) = local_cg + 2.0f;
-		if (*(float *)((char *)local_8g + 8) < 0.0f)
+		param_2->pos.y = local_cg + 2.0f;
+		if (local_8g->counter.f < 0.0f)
 		{
-			*(float *)((char *)local_8g + 8) *= -0.6000000238418579f;
+			local_8g->counter.f *= -0.6f;
 		}
-		*(float *)((char *)local_8g + 4) *= 0.699999988079071f;
-		*(float *)((char *)local_8g + 0xc) *= 0.699999988079071f;
+		*(float *)((char *)local_8g + 4) *= 0.7f;
+		local_8g->timer.f *= 0.7f;
 	}
 	if (param_2->wtimer++ > 0xc8)
 	{
@@ -389,7 +389,7 @@ void Flicky_dsp(struct Flicky *param_1, struct taskwk *param_2, long param_3)
 	{
 		___njSetTexture(&texlist_al_barria);
 		njPushMatrix(0);
-		FUN_0067d830(0, param_2->pos.x, (float)((double)param_2->pos.y + 1.2000000476837158), param_2->pos.z);
+		FUN_0067d830(0, param_2->pos.x, (float)(param_2->pos.y + 1.2000000476837158), param_2->pos.z);
 		FUN_0067d2d0(0, param_1->bscl.x, param_1->bscl.y, param_1->bscl.z);
 		njRotateXYZ(0, param_1->targetangle, param_1->targetangle + param_3, param_3);
 		late_DrawObject(&object_al_barria_barria[0], 4);

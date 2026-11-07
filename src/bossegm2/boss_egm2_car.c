@@ -43,9 +43,9 @@ void Dsp_car_broken(struct task *pTask)
 	{
 		njRotateX(0, (Uint16)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(0, (unsigned short)(short)var1->ang.z);
 	}
 	MirenEffSaveState();
 	MirenEffChangeAlpha(*(float *)((char *)var2 + 0x1c));
@@ -65,17 +65,17 @@ void Exe_car_broken(struct task *pTask)
 	var1->pos.x += var2->work.f[0];
 	var1->pos.y += var2->work.f[1];
 	var1->pos.z += var2->work.f[2];
-	var2->work.f[1] -= 0.027222221717238426f;
+	var2->work.f[1] -= 0.027222222f;
 	if (var1->pos.y < 0.0f)
 	{
 		var1->pos.y = 0.0f;
 		var3 = fabs(var2->work.f[1]);
-		var2->work.f[1] = var3 * 0.800000011920929f;
+		var2->work.f[1] = var3 * 0.8f;
 	}
-	var1->ang.x += *(int *)((char *)var2 + 0xc);
+	var1->ang.x += var2->work.sl[3];
 	var1->ang.y += *(int *)((char *)var2 + 0x10);
 	var1->ang.z += *(int *)((char *)var2 + 0x14);
-	var2->work.f[7] -= 0.007000000216066837f;
+	var2->work.f[7] -= 0.007f;
 	if (var2->work.f[7] < -1.0f)
 	{
 		FreeTask(pTask);

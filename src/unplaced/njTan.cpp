@@ -4,6 +4,6 @@
 double njTan(Angle n)
 {
 	double var1;
-	var1 = (double)njSin(n) / (double)njCos(n);
-	return (double)(float)var1;
+	var1 = UNKNOWN_DOUBLE_MACRO(njSin(n)) / njCos(n);
+	return (float)var1;
 }

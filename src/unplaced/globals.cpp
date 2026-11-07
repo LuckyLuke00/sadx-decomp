@@ -1485,7 +1485,7 @@ struct SEQ_SECTIONTBL seqSectionLast[4];
 struct CPlayableInfo gPlayableInfo[1];
 
 // GLOBAL: SADX 0x0263e9b8
-int objLandTable[8][8];
+struct _OBJ_LANDTABLE *objLandTable[43][8];
 
 // GLOBAL: SADX 0x0263ef48
 struct CUSTOM_OBJ panel_model[2];
@@ -4625,6 +4625,9 @@ int DAT_05ab1594;
 // GLOBAL: SADX 0x05ab159c
 int DAT_05ab159c;
 
+// GLOBAL: SADX 0x05ab16d8
+char DAT_05ab16d8[44][0x30];
+
 // GLOBAL: SADX 0x05ab25ac
 void * DAT_05ab25ac;
 
@@ -5253,7 +5256,7 @@ struct NJS_TEXLIST *DAT_05b37300;
 int DAT_05b37308;
 
 // GLOBAL: SADX 0x05b3730c
-struct MiMsg *DAT_05b3730c;
+struct DAT_05b3730c_0 *DAT_05b3730c;
 
 // GLOBAL: SADX 0x05b37311
 unsigned char DAT_05b37311;

@@ -20,7 +20,7 @@ void ZBezier3(struct NJS_POINT3 *ans, struct NJS_POINT3 *pnt3p, float t)
 // FUNCTION: SADX 0x006c2ce0
 long ZCalcAngY(struct NJS_POINT3 *vecp)
 {
-	return (long)(atan2((double)vecp->x, (double)vecp->z) * 65536.0 / 6.283184);
+	return (long)(atan2(vecp->x, vecp->z) * 65536.0 / 6.283184);
 }
 
 // FUNCTION: SADX 0x006c2d00
@@ -46,7 +46,7 @@ long ZRandomS(long area)
 
 	local_8 = (float)area;
 	var1 = rand();
-	var2 = (float)var1 * 3.0517578125e-05f;
+	var2 = (float)var1 * 3.0517578e-5f;
 	return (long)(local_8 * var2 - local_8 * 0.5f);
 }
 

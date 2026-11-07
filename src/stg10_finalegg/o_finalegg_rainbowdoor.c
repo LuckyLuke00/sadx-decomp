@@ -24,7 +24,7 @@ void FEGG_ResetAmysFakeRoot()
 	float var2;
 
 	var1 = rand();
-	var2 = (float)var1 * 3.0517578125e-05f;
+	var2 = (float)var1 * 3.0517578e-5f;
 	var1 = (long)(var2 * 5.0f);
 	DAT_060dd07c = var1;
 }

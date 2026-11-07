@@ -236,8 +236,8 @@ address|name|symbol|type
 0x008e7a21|_isleadbyte_l|__isleadbyte_l|library
 0x008e7a59|isleadbyte|_isleadbyte|library
 0x008e7a6c|_iswspace_l|__iswspace_l|library
-0x008e7a7f|Concurrency::details::UMSThreadInternalContext::operator delete|??3UMSThreadInternalContext@details@Concurrency@@CAXPAX@Z|library
-0x008e7a8a|Concurrency::details::UMSThreadInternalContext::operator new|??2UMSThreadInternalContext@details@Concurrency@@CAPAXI@Z|library
+0x008e7a7f|operator delete[]|??_V@YAXPAX@Z|library
+0x008e7a8a|operator new[]|??_U@YAPAXI@Z|library
 0x008e7a95|_vswprintf_helper|__vswprintf_helper|library
 0x008e7b8b|_vswprintf_c_l|__vswprintf_c_l|library
 0x008e7bb5|wcslen|_wcslen|library

@@ -7,18 +7,18 @@ void FUN_00821d00(struct task *param_1)
 	___njSetTexture((struct NJS_TEXLIST *)(var1->value.ptr));
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)var1->ang.y);
 	}
-	___dsDrawModel((struct NJS_MODEL *)*(int *)(*(int *)((char *)var1 + 8) + 4));
+	___dsDrawModel((struct NJS_MODEL *)*(int *)((int)var1->counter.l + 4));
 	njPopMatrix(1);
 }

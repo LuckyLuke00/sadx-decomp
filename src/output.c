@@ -42,11 +42,11 @@ void SetVibTask(unsigned long u32Time)
 	{
 		return;
 	}
-	*(int *)((char *)local_8->awp + 0) = u32Time << 2;
+	*(int *)local_8->awp = u32Time << 2;
 	DAT_05cd3014 = (struct PDS_VIBPARAM *)MAlloc(8);
 	if (DAT_05cd3014 != 0)
 	{
-		*(char *)((char *)DAT_05cd3014 + 0) = 0;
+		*(char *)DAT_05cd3014 = 0;
 		*(char *)((char *)DAT_05cd3014 + 1) = 1;
 		*(char *)((char *)DAT_05cd3014 + 2) = 0xa;
 		*(char *)((char *)DAT_05cd3014 + 3) = 0x32;

@@ -57,7 +57,7 @@ void BookExecutor(struct task *tp)
 	switch (var1->mode)
 	{
 	case 0:
-		var2 = var1->scl.y + 0.10000000149011612f;
+		var2 = var1->scl.y + 0.1f;
 		var1->scl.y = var2;
 		if (var2 > 1.0f)
 		{
@@ -69,7 +69,7 @@ void BookExecutor(struct task *tp)
 		var1->scl.x = 15.0f;
 		break;
 	case 2:
-		var2 = var1->scl.x + 0.15000000596046448f;
+		var2 = var1->scl.x + 0.15f;
 		var1->scl.x = var2;
 		if (var2 > 23.0f)
 		{
@@ -78,7 +78,7 @@ void BookExecutor(struct task *tp)
 		}
 		break;
 	case 4:
-		var2 = var1->scl.y - 0.10000000149011612f;
+		var2 = var1->scl.y - 0.1f;
 		var1->scl.y = var2;
 		if (var2 < 0.0f)
 		{

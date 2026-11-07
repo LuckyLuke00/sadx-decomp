@@ -5,7 +5,7 @@ void FUN_004c3310(int *param_1);
 void FUN_004c1c20();
 void MSG_Close(struct MSGC *msgc);
 void MSG_Disp(struct MSGC *msgc);
-extern struct MiMsg *DAT_05b3730c;
+extern struct DAT_05b3730c_0 *DAT_05b3730c;
 
 // FUNCTION: SADX 0x00498b00
 unsigned short GetMiMsgMode()
@@ -27,11 +27,11 @@ void ReleaseMiMessage()
 {
 	if (DAT_05b3730c)
 	{
-		if (*(int *)((char *)DAT_05b3730c + 0) != 0)
+		if (*(int *)DAT_05b3730c != 0)
 		{
 			FUN_004c3310((int *)((char *)DAT_05b3730c + 8));
 			FUN_004c1c20();
-			syFree(*(void **)((char *)DAT_05b3730c + 0));
+			syFree(*(void **)DAT_05b3730c);
 		}
 		else
 		{

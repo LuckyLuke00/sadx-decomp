@@ -20,11 +20,11 @@ void EffectWater(sp_task *tp, sp_link *lp)
 	{
 		if (6.0 > tp->frame)
 		{
-			tp->frame = ((float *)local_cg)[2] * 1.399999976158142f + tp->frame;
+			tp->frame = ((float *)local_cg)[2] * 1.4f + tp->frame;
 		}
 		else
 		{
-			tp->frame = ((float *)local_cg)[2] * 2.799999952316284f + tp->frame;
+			tp->frame = ((float *)local_cg)[2] * 2.8f + tp->frame;
 		}
 		local_8g = 1.0 - ((float *)local_cg)[3];
 		tp->spd.x = tp->spd.x * local_8g;
@@ -33,7 +33,7 @@ void EffectWater(sp_task *tp, sp_link *lp)
 		tp->pos.x = tp->pos.x + tp->spd.x;
 		tp->pos.y = tp->pos.y + tp->spd.y;
 		tp->pos.z = tp->pos.z + tp->spd.z;
-		tp->scl = ((float *)local_cg)[1] * 0.17000000178813934f * 1.5f + tp->scl;
+		tp->scl = ((float *)local_cg)[1] * 0.17f * 1.5f + tp->scl;
 	}
 }
 

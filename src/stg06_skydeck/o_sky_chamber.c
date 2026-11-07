@@ -1,5 +1,4 @@
 #include "decls.h"
-struct taskwk *var1;
 
 // FUNCTION: SADX 0x00843640
 void dispSkyFalling(struct task *tp)
@@ -10,9 +9,9 @@ void dispSkyFalling(struct task *tp)
 	{
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)var1->ang.z);
 		}
 		if (var1->ang.x)
 		{
@@ -23,7 +22,7 @@ void dispSkyFalling(struct task *tp)
 			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		SetObjectTexture();
-		___dsDrawObject((struct obj *)(*(int *)((char *)var1 + 8)));
+		___dsDrawObject((struct obj *)((int)var1->counter.l));
 		njPopMatrix(1);
 	}
 }
@@ -37,9 +36,9 @@ void dispSkyFallingWMotion(struct task *tp)
 	{
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)var1->ang.z);
 		}
 		if (var1->ang.x)
 		{
@@ -50,16 +49,16 @@ void dispSkyFallingWMotion(struct task *tp)
 			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		SetObjectTexture();
-		FUN_004a88c0((NJS_ACTION *)(*(int *)((char *)var1 + 8)), *(float *)((char *)var1 + 0xc));
+		FUN_004a88c0((NJS_ACTION *)((int)var1->counter.l), var1->timer.f);
 		njPopMatrix(1);
 		if (FUN_004c39c0(tp) == 0)
 		{
-			float var2 = *(float *)((char *)var1 + 0xc) + 1.0;
-			*(float *)((char *)var1 + 0xc) = var2;
-			struct NJS_MOTION *var3 = *(struct NJS_MOTION **)((char *)(*(void **)((char *)var1 + 8)) + 4);
+			float var2 = var1->timer.f + 1.0;
+			var1->timer.f = var2;
+			struct NJS_MOTION *var3 = *(struct NJS_MOTION **)((char *)(var1->counter.ptr) + 4);
 			if ((float)(unsigned int)var3->nbFrame <= var2)
 			{
-				*(float *)((char *)var1 + 0xc) = 0.0f;
+				var1->timer.f = 0.0f;
 			}
 		}
 	}

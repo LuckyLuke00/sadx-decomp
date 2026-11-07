@@ -16,13 +16,19 @@ The exe shows how VC++ 2010 SP1 compiled the code, not how the original authors 
 
 Use the first tier that has a name for the thing.
 
-A parameter, local or label with a guessed name gets a placeholder until the final naming pass:
+A parameter, local, label, type or field with a guessed name gets a placeholder until the final naming pass:
 
 - parameters: `param_1`, `param_2`, ... by position
 - locals: `local_<hex>`, the bytes below the entry stack pointer (`[ebp-0x10]` is `local_14`). Add a letter suffix `g` to `z` when the plain spelling would move the slot (`local_14g`). Use `var1`, `var2`, ... for a local with no stack slot in optimized code
 - labels: `LAB_<address>`
+- types: a struct, class, union or typedef takes the address name of the lowest address that uses it, numbered from 0 (`FUN_0040e170_0`, `DAT_0629c340_0`)
+- fields: `field_0x<hex>`, the byte offset in the struct (`field_0x24`). An array of unknown bytes takes the offset of its first byte. This is Ghidra's form, not the banned modder form `field_XX`
+
+A type, field or typedef name needs a source too, the same as a function name. Keep the source's exact spelling and namespace.
 
 Tier 2 names do not apply to parameters and locals.
+
+A Ninja function keeps its SDK header parameter names only when its PC module has a Dreamcast Ninja counterpart (one function per file, such as `njRotateX`). The PC-only Ninja modules (`nj_draw`, `nj_texture`, `NjBasicDirectDraw`, `njPrint` and the like) are new PC code, so their parameters are placeholders. Shinobi functions keep the header names, because the Shinobi library source uses them.
 
 ### Tier 1: official
 

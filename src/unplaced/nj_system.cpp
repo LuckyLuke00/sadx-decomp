@@ -18,12 +18,12 @@ void njWaitVSync(void)
 }
 
 // FUNCTION: SADX 0x004245a0
-void njSetBackColor(Uint32 col1, Uint32 col2, Uint32 col3)
+void njSetBackColor(Uint32 param_1, Uint32 param_2, Uint32 param_3)
 {
-	DAT_05ad9604 = col1;
-	DAT_05ad9608 = col2;
-	DAT_05ad960c = col3;
-	DAT_05ad9610 = col3;
+	DAT_05ad9604 = param_1;
+	DAT_05ad9608 = param_2;
+	DAT_05ad960c = param_3;
+	DAT_05ad9610 = param_3;
 }
 
 // FUNCTION: SADX 0x00424810
@@ -38,34 +38,34 @@ void njExitSystem(void)
 }
 
 // FUNCTION: SADX 0x00424840
-void njInitVertexBuffer(long op, long om, long tp, long tm, long pt)
+void njInitVertexBuffer(long param_1, long param_2, long param_3, long param_4, long param_5)
 {
 	if (DAT_05ad9640)
 	{
 		syFree(DAT_05ad9640);
 		DAT_05ad9640 = 0;
 	}
-	if (op < 0)
+	if (param_1 < 0)
 	{
-		op = 0;
+		param_1 = 0;
 	}
-	if (om < 0)
+	if (param_2 < 0)
 	{
-		om = 0;
+		param_2 = 0;
 	}
-	if (tp < 0)
+	if (param_3 < 0)
 	{
-		tp = 0;
+		param_3 = 0;
 	}
-	if (tm < 0)
+	if (param_4 < 0)
 	{
-		tm = 0;
+		param_4 = 0;
 	}
-	if (pt < 0)
+	if (param_5 < 0)
 	{
-		pt = 0;
+		param_5 = 0;
 	}
-	DAT_05ad9634 = (op + om + tp + tm + pt) * 4;
+	DAT_05ad9634 = (param_1 + param_2 + param_3 + param_4 + param_5) * 4;
 	if (DAT_05ad9634 != 0)
 	{
 		DAT_05ad9640 = (void (__cdecl *)(struct obj *))syMalloc(DAT_05ad9634);

@@ -23,7 +23,7 @@ void FUN_004c3560()
 		struct NJS_POINT2 local_24s[3];
 		struct NJS_POINT2COL local_74;
 
-		local_8 = (int)(atan2((double)DAT_05b93290, (double)DAT_05b93294) * 65536.0 / 6.283184);
+		local_8 = (int)(atan2(UNKNOWN_DOUBLE_MACRO(DAT_05b93290), DAT_05b93294) * 65536.0 / 6.283184);
 		local_74.p = local_24s;
 		local_74.col = (union NJS_COLOR *)local_64;
 		local_74.num = 3;

@@ -104,7 +104,7 @@ int __fastcall FUN_00922870(int param_1)
 	return *(int *)(param_1 + 0x58);
 }
 
-// Local placement and conditional branch code still differ.
+// DIFF: code: the local placement and the conditional branches differ from the original.
 // FUNCTION: SADX 0x00922900
 bool Magic::RenderCore::Texture::Load(void* param_1, int param_2, int param_3, int param_4, int param_5, int param_6)
 {
@@ -134,25 +134,25 @@ bool Magic::RenderCore::Texture::Load(void* param_1, int param_2, int param_3, i
 			(*(void***)DAT_062992fc)[0x138 / 4])((void*)DAT_062992fc, this, param_2, param_1, param_3,
 			&local_8, &local_c, &local_10, &local_14, &local_18, &local_1c))
 		{
-			local_50 = param_3;
-			local_4c = param_2;
+			m_TexSize = param_3;
+			m_TexType = param_2;
 			if (local_8 > 0)
-				local_58 = local_8;
+				m_Width = local_8;
 			if (local_c > 0)
-				local_5c = local_c;
+				m_Height = local_c;
 			if (local_10 > 0)
-				local_60 = local_10;
+				m_Depth = local_10;
 			if (local_14 > 0)
 			{
 				if (local_14 <= 32)
 				{
-					local_64 = local_14;
+					m_Format = local_14;
 				}
 			}
 			if (local_18 >= 0)
-				local_6c = local_18;
-			this->local_8 = 1;
-			local_54 = local_1c;
+				m_MipmapLevelCount = local_18;
+			m_ResPool = 1;
+			m_TexFlags = local_1c;
 		}
 		return ((bool (__thiscall *)(Texture*))(*(void***)this)[2])(this);
 	}
@@ -166,21 +166,21 @@ Magic::RenderCore::Texture::~Texture()
 }
 #pragma optimize("", on)
 
-// Member initialization and list registration code still differ.
+// DIFF: code: the member initialization and the list registration differ from the original.
 // FUNCTION: SADX 0x00922c80
 Magic::RenderCore::Texture::Texture()
 {
-	local_50 = 0;
-	local_54 = 0;
-	local_58 = 0;
-	local_5c = 0;
-	local_60 = 0;
-	local_64 = 0;
-	local_68 = 0;
-	local_6c = 0;
-	local_70 = false;
-	local_4 = 0;
-	local_4c = 1;
+	m_TexSize = 0;
+	m_TexFlags = 0;
+	m_Width = 0;
+	m_Height = 0;
+	m_Depth = 0;
+	m_Format = 0;
+	m_Usage = 0;
+	m_MipmapLevelCount = 0;
+	m_IsLocked = false;
+	m_ResType = 0;
+	m_TexType = 1;
 	int* var1 = *(int**)(DAT_062992fc + 8);
 	int* var2 = (int*)var1[1];
 	void* var4 = (void*)var2[1];

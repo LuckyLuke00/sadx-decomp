@@ -4,7 +4,7 @@
 // GLOBAL: SADX 0x04ad846c
 static struct particle_info shutter_smoke;
 
-// The game's link folded this copy into the one of o_shelter_boxana.c (0x008aee30).
+// FOLD: the game's link folded this copy into the one of o_shelter_boxana.c (0x008aee30).
 static void DesertATask(struct task *tp)
 {
 	struct taskwk *twp = tp->twp;
@@ -65,13 +65,13 @@ static void ShutterPartsDisplayer(struct task *tp)
 		___njSetTexture(&texlist_HotShelter0);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)var1->ang.y);
 		}
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)(short)var1->ang.z);
 		}
 		late_DrawModelClip((struct NJS_MODEL *)var1->counter.ptr, 0, 1.0f);
 		njPopMatrix(1);
@@ -102,7 +102,7 @@ static void ShutterParts(struct task *tp)
 			else
 			{
 				FEGG_TaskActBounce(var1, var2);
-				var2->ang_spd.z *= (double)0.6f;
+				var2->ang_spd.z *= UNKNOWN_DOUBLE_MACRO(0.6f);
 				if (var1->btimer == 1)
 				{
 					shutter_smoke.pos = var1->pos;
@@ -132,19 +132,19 @@ static void BrokenPieceDisplayer(struct task *tp)
 		___njSetTexture(&texlist_HotShelter0);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, (unsigned short)*(short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)(short)var1->ang.y);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(0, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(0, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)(short)var1->ang.z);
 		}
-		FUN_0067d2d0(0, *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c));
+		FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
 		FEGG_DrawBrokenPiece(var1);
 		njPopMatrix(1);
 	}
@@ -164,8 +164,8 @@ static void CreateShutterParticles(struct taskwk *twp)
 	{
 		float local_c = njSin(var1);
 		float local_10 = njCos(var1);
-		float local_14 = (float)(rand() * 0.000030517578125) * (double)0.8f + 0.5;
-		float local_8 = (float)(rand() * 0.000030517578125) * 4.0 + (double)0.8f;
+		float local_14 = (float)(rand() * 0.000030517578125) * 0.8f + 0.5;
+		float local_8 = (float)(rand() * 0.000030517578125) * 4.0 + 0.8f;
 		shutter_smoke.velo.z = local_14 * local_10;
 		shutter_smoke.velo.y = local_14 * local_c;
 		shutter_smoke.velo.x = local_8;
@@ -232,7 +232,7 @@ static void ShutterBrokenPiece(struct task *tp)
 				break;
 			}
 			FEGG_TaskActBounce(var1, var2);
-			var2->ang_spd.z *= (double)0.6f;
+			var2->ang_spd.z *= UNKNOWN_DOUBLE_MACRO(0.6f);
 		}
 		FEGG_TaskActGravity(var1, var2);
 		FEGG_TaskMove(var1, var2);

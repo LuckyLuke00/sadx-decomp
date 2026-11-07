@@ -24,7 +24,7 @@ extern float DAT_05b3ebd0;
 extern int DAT_05b3ebdc;
 extern int DAT_05b3ebc4;
 extern struct obj DAT_05cbbb50[256];
-extern int objLandTable[8][8];
+extern struct _OBJ_LANDTABLE *objLandTable[43][8];
 extern short DAT_05cba940;
 extern char DAT_05cbef5c;
 extern char DAT_05cbef5d;
@@ -115,7 +115,7 @@ void LandClearLandTable(long stage, long act)
 // FUNCTION: SADX 0x004fd250
 void LandChangeLandTable(struct _OBJ_LANDTABLE *pOLT)
 {
-	objLandTable[(int)DAT_05cbef5c][(int)DAT_05cbef5d] = (int)pOLT;
+	objLandTable[(int)DAT_05cbef5c][(int)DAT_05cbef5d] = pOLT;
 	*(char *)DAT_05cbaf4c = 2;
 	DAT_05cbef54 = 0;
 	DAT_05cbef58 = 0;

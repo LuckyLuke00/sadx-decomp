@@ -1,9 +1,8 @@
 #include "decls.h"
 #include <windows.h>
 #include <string>
-typedef int (__thiscall *FUN_0092a420_vt)(int, int, int, int, int);
 struct FUN_0092a020_0;
-struct FUN_00929fe0_t;
+struct FUN_00929fe0_0;
 
 // STUB: SADX 0x00929870
 int FUN_00929870(void *param_1)
@@ -112,7 +111,7 @@ void __stdcall FUN_00929f70(char *param_1, char *param_2, int param_3)
 }
 
 // FUNCTION: SADX 0x00929fe0
-void __stdcall FUN_00929fe0(FUN_00929fe0_t *param_1)
+void __stdcall FUN_00929fe0(FUN_00929fe0_0 *param_1)
 {
 	int var1 = (int)(*(int **)((char *)param_1 + 0xc));
 	if (var1 != 0)

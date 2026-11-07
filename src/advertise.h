@@ -39,7 +39,7 @@ public:
 	virtual void* FUN_00431f00(void*);
 	virtual void* FUN_00431fa0(void*);
 private:
-	char local_4[0x24];
+	char field_0x4[0x24];
 };
 
 // VTABLE: SADX 0x00956be4
@@ -73,9 +73,9 @@ public:
 private:
 	friend class Magic::Base::Singleton<SOCInput>;
 	SOCInput();
-	int local_0;
-	SOCController* local_4[8];
-	char local_24[0x28];
+	int m_ActiveIndex;
+	SOCController* m_pController[8];
+	char field_0x24[0x28];
 };
 
 class DAT_0629c340_0
@@ -86,11 +86,11 @@ public:
 private:
 	friend class Magic::Base::Singleton<DAT_0629c340_0>;
 	DAT_0629c340_0();
-	bool local_0;
-	char local_4[0x90];
-	char local_94[0x90];
-	char local_124[0x90];
-	void* local_1b4;
+	bool field_0x0;
+	char field_0x4[0x90];
+	char field_0x94[0x90];
+	char field_0x124[0x90];
+	void* field_0x1b4;
 };
 
 struct LBOnData
@@ -116,8 +116,8 @@ public:
 	bool FUN_00928630(int param_1, int param_2);
 	bool FUN_009286c0(void* param_1, size_t param_2, unsigned long* param_3);
 private:
-	FILE** local_0;
-	char local_4[0x1c];
+	FILE** m_pFile;
+	char m_FileName[0x1c];
 };
 class IniFile
 {
@@ -153,7 +153,7 @@ public:
 	Timer();
 	double FUN_00929760();
 private:
-	void* local_0;
+	void* m_pTimer;
 };
 class App
 {
@@ -180,15 +180,15 @@ namespace RenderCore
 class Resource
 {
 public:
-	Resource() : local_4(11), local_8(1), local_c(0), local_10(0) {}
+	Resource() : m_ResType(11), m_ResPool(1), m_pUserData(0), m_ResMask(0) {}
 	virtual ~Resource();
 protected:
-	int local_4;
-	int local_8;
-	int local_c;
-	int local_10;
-	std::string local_14;
-	std::string local_30;
+	int m_ResType;
+	int m_ResPool;
+	int m_pUserData;
+	int m_ResMask;
+	std::string m_Name;
+	std::string m_Path;
 };
 
 // VTABLE: SADX 0x00a5ce08
@@ -200,16 +200,16 @@ public:
 	bool Load(void*, int, int, int, int, int);
 	void FUN_00922750();
 private:
-	int local_4c;
-	int local_50;
-	int local_54;
-	int local_58;
-	int local_5c;
-	int local_60;
-	int local_64;
-	int local_68;
-	int local_6c;
-	bool local_70;
+	int m_TexType;
+	int m_TexSize;
+	int m_TexFlags;
+	int m_Width;
+	int m_Height;
+	int m_Depth;
+	int m_Format;
+	int m_Usage;
+	int m_MipmapLevelCount;
+	bool m_IsLocked;
 };
 }
 }
@@ -246,8 +246,8 @@ public:
 	void* FUN_00424960();
 	int FUN_0040b8a0();
 private:
-	void* local_0;
-	int local_4;
+	void* field_0x0;
+	int field_0x4;
 };
 
 class SOCSystem
@@ -269,14 +269,15 @@ class SOCRender
 public:
 	void SetSpecularEnable(bool param_1);
 	void UIShaderSet();
+	void FUN_0041b120(int param_1, int param_2);
 	// FUNCTION: SADX 0x00419cf0
 	void FUN_00419cf0(int param_1)
 	{
-		local_2798 = param_1;
+		field_0x2798 = param_1;
 	}
 private:
-	char local_0[0x2798];
-	int local_2798;
+	char field_0x0[0x2798];
+	int field_0x2798;
 };
 
 extern void* DAT_0629c344;
@@ -297,14 +298,14 @@ inline class SOCTimer* FUN_0041a800()
 
 struct FUN_0040e170_0
 {
-	std::string local_0;
-	int local_1c;
-	int local_20;
+	std::string field_0x0;
+	int field_0x1c;
+	int field_0x20;
 	FUN_0040e170_0()
 	{
-		local_0 = "ASCII";
-		local_1c = 0;
-		local_20 = 0;
+		field_0x0 = "ASCII";
+		field_0x1c = 0;
+		field_0x20 = 0;
 	}
 };
 
@@ -333,17 +334,17 @@ public:
 
 struct FUN_00420960_0
 {
-	int local_0;
-	int local_4;
-	int local_8;
-	int local_c;
-	float local_10;
-	Magic::RenderCore::Texture *local_14;
-	float local_18;
-	float local_1c;
-	float local_20;
-	float local_24;
-	int local_28;
+	int field_0x0;
+	int field_0x4;
+	int field_0x8;
+	int field_0xc;
+	float field_0x10;
+	Magic::RenderCore::Texture *field_0x14;
+	float field_0x18;
+	float field_0x1c;
+	float field_0x20;
+	float field_0x24;
+	int field_0x28;
 };
 
 static_assert(sizeof(Magic::Base::File) == 0x20, "sizeof File");

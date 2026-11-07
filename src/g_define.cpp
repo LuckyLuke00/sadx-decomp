@@ -12,7 +12,7 @@ extern void* DAT_06276c28;
 extern void* DAT_0629c338;
 
 // FUNCTION: SADX 0x00402aa0
-void LoadBosschaos0models()
+void LoadBosschaos0models(void *param)
 {
 	void* var1 = DAT_060ee7d0 = ((Magic::Base::Singleton<SOCSystem>*)&DAT_0629c338)->GetSubject()->FUN_004035e0(std::string("bosschaos0models"));
 	if (var1 != 0)

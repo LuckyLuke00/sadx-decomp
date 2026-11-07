@@ -55,7 +55,7 @@ void DispDigitTotal(long digit, float scl, struct NJS_POINT3 *pos)
 	{
 		sprite_digit.p.x = local_ci * 0.5f + sprite_digit.p.x;
 	}
-	sprite_digit.p.y = pos->y - local_8g * 0.30000001192092896f;
+	sprite_digit.p.y = pos->y - local_8g * 0.3f;
 	sprite_digit.sy = scl;
 	sprite_digit.sx = sprite_digit.sy;
 	___njColorBlendingMode(0, 8);

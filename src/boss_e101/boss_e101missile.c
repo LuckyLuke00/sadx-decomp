@@ -16,7 +16,7 @@ static struct CCL_INFO colliInfo[1];
 static struct particle_info missile_smoke;
 
 // FUNCTION: SADX 0x007069d0
-static __inline void death(struct task *pTask, float fSize)
+static void death(struct task *pTask, float fSize)
 {
 	struct taskwk *local_8 = pTask->twp;
 	FUN_0060d560(&local_8->pos, fSize);
@@ -24,15 +24,16 @@ static __inline void death(struct task *pTask, float fSize)
 	dsPlay_oneshot_v(0x9e, 0, 0, 0, local_8->pos.x, local_8->pos.y, local_8->pos.z);
 }
 
+// DIFF: code: the original has the body of death at some call sites in place of the call.
 // FUNCTION: SADX 0x00706a20
 static void chkDamage(struct task *pTask)
 {
 	struct taskwk *local_8 = pTask->twp;
 	struct enemywk *local_c = (struct enemywk *)pTask->mwp;
 	int *local_10 = (int *)pTask->awp;
-	struct colliwk *local_14;
+	struct colliwk *var4;
 	struct task *local_18;
-	struct NJS_POINT3 vecDummy;
+	struct NJS_POINT3 local_14;
 	if (DAT_060c4538 < 0)
 	{
 		FUN_005e5770(pTask);
@@ -45,20 +46,20 @@ static void chkDamage(struct task *pTask)
 		death(pTask, 0.5f);
 		return;
 	}
-	if (ChkE104ColliLandXZ(&local_8->pos, 2.0f, 0, &vecDummy) == 1)
+	if (ChkE104ColliLandXZ(&local_8->pos, 2.0f, 0, &local_14) == 1)
 	{
 		death(pTask, 0.5f);
 		return;
 	}
-	local_14 = local_8->cwp;
-	if ((local_14->flag & 1) && local_14->hit_cwp != (struct colliwk *)local_10[8])
+	var4 = local_8->cwp;
+	if ((var4->flag & 1) && var4->hit_cwp != (struct colliwk *)local_10[8])
 	{
-		if (local_14->hit_cwp->id != 1)
+		if (var4->hit_cwp->id != 1)
 		{
 			death(pTask, 0.5f);
 			return;
 		}
-		local_18 = local_14->hit_cwp->mytask;
+		local_18 = var4->hit_cwp->mytask;
 		local_18 = GetE102LockCsTaskPointer(local_18);
 		if (local_18 != 0 && local_c->lock_tp == local_18)
 		{
@@ -250,7 +251,7 @@ void EnemyBossE101Missile(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct
 	}
 }
 
-// The game's link folded this copy into the one of e_windy_e103missile.c (0x00810290).
+// FOLD: the game's link folded this copy into the one of e_windy_e103missile.c (0x00810290).
 static void FUN_00810290(struct NJS_POINT3 *param_1, float param_2)
 {
 	float local_8 = param_1->x * param_1->x + param_1->y * param_1->y + param_1->z * param_1->z;

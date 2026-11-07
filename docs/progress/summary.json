@@ -1196,7 +1196,7 @@
   {
    "address": "0x00412260",
    "name": "FUN_00412260",
-   "accuracy": 1.0,
+   "accuracy": 0.95,
    "effective": false,
    "stub": true,
    "library": false
@@ -1771,8 +1771,8 @@
   },
   {
    "address": "0x0041b120",
-   "name": "FUN_0041b120",
-   "accuracy": 0.0,
+   "name": "SOCRender::FUN_0041b120",
+   "accuracy": 0.058823529411764705,
    "effective": false,
    "stub": true,
    "library": false
@@ -4308,15 +4308,15 @@
   {
    "address": "0x00435fd0",
    "name": "njCnkDrawMotion",
-   "accuracy": 0.6896551724137931,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00436030",
    "name": "njCnkDrawMotionLink",
-   "accuracy": 0.25806451612903225,
+   "accuracy": 0.07142857142857142,
    "effective": false,
    "stub": true,
    "library": false
@@ -4324,7 +4324,7 @@
   {
    "address": "0x00436090",
    "name": "_njCnkDrawModel",
-   "accuracy": 0.38095238095238093,
+   "accuracy": 0.1111111111111111,
    "effective": false,
    "stub": true,
    "library": false
@@ -4332,7 +4332,7 @@
   {
    "address": "0x004360c0",
    "name": "_njCnkDrawObject",
-   "accuracy": 0.0963855421686747,
+   "accuracy": 0.025,
    "effective": false,
    "stub": true,
    "library": false
@@ -4340,7 +4340,7 @@
   {
    "address": "0x004361a0",
    "name": "njCnkDrawModel",
-   "accuracy": 0.23529411764705882,
+   "accuracy": 0.06451612903225806,
    "effective": false,
    "stub": true,
    "library": false
@@ -4348,7 +4348,7 @@
   {
    "address": "0x00436200",
    "name": "njCnkDrawObject",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 0.0,
    "effective": false,
    "stub": true,
    "library": false
@@ -16379,7 +16379,7 @@
   {
    "address": "0x004b6d90",
    "name": "file_sel_exec",
-   "accuracy": 0.762589928057554,
+   "accuracy": 0.7737226277372263,
    "effective": false,
    "stub": false,
    "library": false
@@ -29132,7 +29132,7 @@
   {
    "address": "0x00577e40",
    "name": "InitStaff2",
-   "accuracy": 0.5619546247818499,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -29220,7 +29220,7 @@
   {
    "address": "0x0057a920",
    "name": "printPause",
-   "accuracy": 0.921875,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -29327,8 +29327,7 @@
    "accuracy": 0.8184908225696805,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x00582ad0",
@@ -50694,7 +50693,7 @@
   {
    "address": "0x00706a20",
    "name": "chkDamage(2)",
-   "accuracy": 1.0,
+   "accuracy": 0.7577639751552795,
    "effective": false,
    "stub": false,
    "library": false
@@ -58246,7 +58245,7 @@
   {
    "address": "0x00810080",
    "name": "chkDamage(3)",
-   "accuracy": 1.0,
+   "accuracy": 0.5901639344262295,
    "effective": false,
    "stub": false,
    "library": false
@@ -73509,7 +73508,7 @@
   },
   {
    "address": "0x008e7a7f",
-   "name": "Concurrency::details::UMSThreadInternalContext::operator delete",
+   "name": "operator delete[]",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -73517,7 +73516,7 @@
   },
   {
    "address": "0x008e7a8a",
-   "name": "Concurrency::details::UMSThreadInternalContext::operator new",
+   "name": "operator new[]",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -94352,7 +94351,7 @@
   {
    "address": "0x0263e9b8",
    "name": "objLandTable",
-   "size": 256,
+   "size": 1376,
    "match": false,
    "library": false
   },
@@ -103688,6 +103687,13 @@
    "library": false
   },
   {
+   "address": "0x05ab16d8",
+   "name": "DAT_05ab16d8",
+   "size": 2112,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x05ab1fdc",
    "name": "??_R0?AVbad_cast@std@@@8",
    "size": 27,
@@ -103725,5 +103731,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d34927592c940a3512329c4065e6b36379ba74a1a5fe51de721bda1c31f51045"
+ "inputs_sha256": "2bccf038ad307587c9c13ebf180525e5b788cd293da9740308d2764986a80777"
 }

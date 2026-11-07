@@ -43,7 +43,7 @@ void FUN_004b23e0(void*, void*, int, const char*, int);
 // GLOBAL: SADX 0x05cd2834
 std::vector<std::wstring>::iterator DAT_05cd2834;
 
-// The original inlines different string and iterator temporaries and deletion checks.
+// DIFF: code: the original inlines different string and iterator temporaries and deletion checks.
 // FUNCTION: SADX 0x00577e40
 int InitStaff2()
 {
@@ -82,34 +82,63 @@ int InitStaff2()
 	}
 	DAT_05cd2834 = DAT_05cd27f4.begin() + 426;
 	int local_45c = 1;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Patch"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"LITTLE STONE SOFTWARE"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jeff Astor"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Peter Bratcher"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Adam Hooley"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Ben Watson"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Sean Workman"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"SEGA OF EUROPE"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*ASSOCIATE PRODUCER"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jessica Padkin"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*PROJECT LEAD"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Andrew Sparks"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*FUNCTIONALITY QA LEAD"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Christopher Dadswell"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*SENIOR TESTER"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Wing-Pui Chung"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*TESTER"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Finlay Milligan"), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	MAYBE_ASSERT();
 	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
 	delete local_448;
 	delete[] local_44cm;
@@ -211,7 +240,7 @@ void InitDisplayStart()
 void displayMission(struct task *tp)
 {
 	___njFogDisable();
-	late_SetFunc((void (*)(void *))late_displayMission, tp, 22047.998046875f, 1);
+	late_SetFunc((void (*)(void *))late_displayMission, tp, 22047.998f, 1);
 	___njFogEnable();
 }
 
@@ -264,7 +293,6 @@ void printPauseTexture(enum PAUSE_TEXTURE_ID id, struct NJS_POINT3 *pos, struct 
 	late_DrawSprite2D(&sprite, id, local_2cg, 0x22, 4);
 }
 
-// The original emits a constant loop test after setting the material.
 // FUNCTION: SADX 0x0057a920
 void printPause(float ofsy)
 {
@@ -277,14 +305,7 @@ void printPause(float ofsy)
 	local_18.z = 11.0f;
 	local_20.x = 1.0f;
 	local_20.y = 1.0f;
-	{
-		NJS_ARGB local_30;
-		local_30.a = 1.0f;
-		local_30.r = 1.0f;
-		local_30.g = 1.0f;
-		local_30.b = 1.0f;
-		___njSetConstantMaterial(&local_30);
-	}
+	UNKNOWN_MACRO(1.0f, 1.0f, 1.0f, 1.0f);
 	local_18.y += ofsy;
 	if (DAT_05b3e05c == 10)
 	{
@@ -1358,9 +1379,9 @@ int padconfig(int sw)
 			}
 			if (local_39cj != 0)
 			{
-				local_3a0m = (float)((double)DAT_01c6e428 / (double)640.0);
-				local_3a4x = (float)((double)DAT_01c6e42c / (double)480.0);
-			DrawTexture(0, 0, (int)(local_3a0m * 640.0), (int)(local_3a4x * 480.0), 0.01f, local_39cj, 0.0f, 0.0f, 0.8984375f, 0.673828125f, -1);
+				local_3a0m = (float)(DAT_01c6e428 / 640.0);
+				local_3a4x = (float)(DAT_01c6e42c / 480.0);
+			DrawTexture(0, 0, (int)(local_3a0m * 640.0), (int)(local_3a4x * 480.0), 0.01f, local_39cj, 0.0f, 0.0f, 0.8984375f, 0.6738281f, -1);
 			DrawTexture((int)(local_3a0m * 360.0), (int)((460.0 - DAT_05cd273c[2].Height) * local_3a4x), (int)(DAT_05cd273c[2].Windth * local_3a0m), (int)(DAT_05cd273c[2].Height * local_3a4x), 0.01f, DAT_05b3e36c, DAT_05cd273c[2].PosX / 512.0, DAT_05cd273c[2].PosY / 512.0, (DAT_05cd273c[2].PosX + DAT_05cd273c[2].Windth) / 512.0, (DAT_05cd273c[2].PosY + DAT_05cd273c[2].Height) / 512.0, -1);
 			DrawTexture((int)((340.0 - DAT_05cd273c[13].Windth) * local_3a0m), (int)((460.0 - DAT_05cd273c[2].Height) * local_3a4x), (int)(DAT_05cd273c[13].Windth * local_3a0m), (int)(DAT_05cd273c[13].Height * local_3a4x), 0.01f, DAT_05b3e36c, DAT_05cd273c[13].PosX / 512.0, DAT_05cd273c[13].PosY / 512.0, (DAT_05cd273c[13].PosX + DAT_05cd273c[13].Windth) / 512.0, (DAT_05cd273c[13].PosY + DAT_05cd273c[13].Height) / 512.0, -1);
 			}
@@ -1507,10 +1528,10 @@ int padconfig(int sw)
 	int local_3c0x;
 	float local_3c4;
 	float local_3c8o;
-			local_3b0o = (float)((double)DAT_01c6e428 / (double)920.0);
-			local_3acq = (float)((double)DAT_01c6e42c / (double)690.0);
-			RenderTexture(0, 0, (int)((local_3b0o * 920.0) + 1.0f), (int)(local_3acq * 690.0), 0.02f, DAT_05cd274c, 0.0f, 0.0f, 0.89453125f, 0.6728515625f, -1);
-			local_3a8g = (int)((DAT_05cd27f4.size() * 52) * (double)local_3acq);
+			local_3b0o = (float)(DAT_01c6e428 / 920.0);
+			local_3acq = (float)(DAT_01c6e42c / 690.0);
+			RenderTexture(0, 0, (int)((local_3b0o * 920.0) + 1.0f), (int)(local_3acq * 690.0), 0.02f, DAT_05cd274c, 0.0f, 0.0f, 0.89453125f, 0.67285156f, -1);
+			local_3a8g = (int)((DAT_05cd27f4.size() * 52) * UNKNOWN_DOUBLE_MACRO(local_3acq));
 			if (DAT_05cd2824 + 640.0 > -local_3a8g)
 			{
 				for (local_3b4x = 0; local_3b4x < DAT_05cd27f4.size(); local_3b4x = local_3b4x + 1)
@@ -1542,12 +1563,12 @@ int padconfig(int sw)
 						}
 						if (*local_3b8n == 0x2a)
 						{
-							if (local_3c8o > 0.0 && (double)DAT_01c6e42c > local_3c8o)
+							if (local_3c8o > 0.0 && UNKNOWN_DOUBLE_MACRO(DAT_01c6e42c) > local_3c8o)
 							{
 								FUN_004208c0((int)local_3c4,(int)local_3c8o,local_3b8n + 1,0xffffff80,1.0f,0.02f);
 							}
 						}
-						else if (local_3c8o > 0.0 && (double)DAT_01c6e42c > local_3c8o)
+						else if (local_3c8o > 0.0 && UNKNOWN_DOUBLE_MACRO(DAT_01c6e42c) > local_3c8o)
 						{
 							FUN_004208c0((int)local_3c4,(int)local_3c8o,local_3b8n,0xffffffff,1.0f,0.02f);
 						}
@@ -1562,12 +1583,12 @@ int padconfig(int sw)
 						}
 						if (*local_3b8n == 0x2a)
 						{
-							if (local_3c8o > 0.0 && (double)DAT_01c6e42c > local_3c8o)
+							if (local_3c8o > 0.0 && UNKNOWN_DOUBLE_MACRO(DAT_01c6e42c) > local_3c8o)
 							{
 								FUN_004208c0((int)local_3c4,(int)local_3c8o,local_3b8n + 1,0xffffff80,1.0f,0.02f);
 							}
 						}
-						else if (local_3c8o > 0.0 && (double)DAT_01c6e42c > local_3c8o)
+						else if (local_3c8o > 0.0 && UNKNOWN_DOUBLE_MACRO(DAT_01c6e42c) > local_3c8o)
 						{
 							FUN_004208c0((int)local_3c4,(int)local_3c8o,local_3b8n,0xffffffff,1.0f,0.02f);
 						}
@@ -1577,19 +1598,19 @@ int padconfig(int sw)
 			}
 			if (DAT_05cd2824 + 640.0 < -local_3a8g)
 			{
-				DrawTexture((int)(((double)DAT_01c6e428 - local_3b0o * 415.0) / 2.0), (int)DAT_05cd2854, (int)(local_3b0o * 415.0), (int)(local_3acq * 270.0), 0.02f, DAT_05cd2750, 0.0f, 0.0f, 0.810546875f, 0.52734375f, DAT_02605a24);
+				DrawTexture((int)((DAT_01c6e428 - local_3b0o * 415.0) / 2.0), (int)DAT_05cd2854, (int)(local_3b0o * 415.0), (int)(local_3acq * 270.0), 0.02f, DAT_05cd2750, 0.0f, 0.0f, 0.8105469f, 0.52734375f, DAT_02605a24);
 				if (DAT_0260553c != '\0')
 				{
-					if (((double)DAT_01c6e42c - local_3acq * 270.0) / 2.0 < DAT_05cd2854)
+					if ((DAT_01c6e42c - local_3acq * 270.0) / 2.0 < DAT_05cd2854)
 					{
 						DAT_05cd2854 = DAT_05cd2854 - 2.0;
 					}
-					if (((double)DAT_01c6e42c - local_3acq * 270.0) / 2.0 > DAT_05cd2854)
+					if ((DAT_01c6e42c - local_3acq * 270.0) / 2.0 > DAT_05cd2854)
 					{
-						DAT_05cd2854 = ((double)DAT_01c6e42c - local_3acq * 270.0) / 2.0;
+						DAT_05cd2854 = (DAT_01c6e42c - local_3acq * 270.0) / 2.0;
 					}
 				}
-				if (((double)DAT_01c6e42c - local_3acq * 270.0) / 2.0 == DAT_05cd2854)
+				if ((DAT_01c6e42c - local_3acq * 270.0) / 2.0 == DAT_05cd2854)
 				{
 					DAT_0260553c = '\0';
 					// GLOBAL: SADX 0x05cd2874
@@ -1646,7 +1667,7 @@ int padconfig(int sw)
 			switch(DAT_05b42a90)
 			{
 			case 5:
-			DrawTexture(0, (int)(local_3acq * 629.0), (int)(local_3b0o * 920.0), (int)(local_3acq * 64.0), 0.01f, DAT_05cd2754, 0.0f, 0.373046875f, 0.8984375f, 0.498046875f, -1);
+			DrawTexture(0, (int)(local_3acq * 629.0), (int)(local_3b0o * 920.0), (int)(local_3acq * 64.0), 0.01f, DAT_05cd2754, 0.0f, 0.37304688f, 0.8984375f, 0.49804688f, -1);
 				break;
 			case 4:
 			DrawTexture(0, (int)(local_3acq * 629.0), (int)(local_3b0o * 920.0), (int)(local_3acq * 64.0), 0.01f, DAT_05cd2754, 0.0f, 0.5f, 0.8984375f, 0.625f, -1);
@@ -1658,7 +1679,7 @@ int padconfig(int sw)
 			DrawTexture(0, (int)(local_3acq * 629.0), (int)(local_3b0o * 920.0), (int)(local_3acq * 64.0), 0.01f, DAT_05cd2754, 0.0f, 0.25f, 0.8984375f, 0.375f, -1);
 				break;
 			case 0:
-			DrawTexture(0, (int)(local_3acq * 629.0), (int)(local_3b0o * 920.0), (int)(local_3acq * 65.0), 0.01f, DAT_05cd2754, 0.0f, 0.125f, 0.8984375f, 0.251953125f, -1);
+			DrawTexture(0, (int)(local_3acq * 629.0), (int)(local_3b0o * 920.0), (int)(local_3acq * 65.0), 0.01f, DAT_05cd2754, 0.0f, 0.125f, 0.8984375f, 0.25195312f, -1);
 				break;
 			default:
 			DrawTexture(0, (int)(local_3acq * 629.0), (int)(local_3b0o * 920.0), (int)(local_3acq * 64.0), 0.01f, DAT_05cd2754, 0.0f, 0.0f, 0.8984375f, 0.125f, -1);
@@ -1948,8 +1969,8 @@ int padconfig(int sw)
 	int local_3ccg;
 	float local_3d0i;
 	float local_3d4y;
-			local_3d4y = (float)((double)DAT_01c6e428 / (double)920.0);
-			local_3d0i = (float)((double)DAT_01c6e42c / (double)690.0);
+			local_3d4y = (float)(DAT_01c6e428 / 920.0);
+			local_3d0i = (float)(DAT_01c6e42c / 690.0);
 			local_3ccg = 2;
 			if (IsSOCAVAPress(0,2) != 0)
 			{
@@ -2018,7 +2039,7 @@ int padconfig(int sw)
 {
 			if (DAT_05cd2758 != 0)
 			{
-				DrawTexture(0, 0, 0x280, 0x1e0, 0.01f, DAT_05cd2758, 0.0f, 0.0f, 0.8984375f, 0.673828125f, -1);
+				DrawTexture(0, 0, 0x280, 0x1e0, 0.01f, DAT_05cd2758, 0.0f, 0.0f, 0.8984375f, 0.6738281f, -1);
 				DrawButtonXUBB();
 			}
 			if (IsSOCAVAPress(0,2) != 0)
@@ -2037,6 +2058,7 @@ int padconfig(int sw)
 			}
 			if (FUN_00405f00()->FUN_00424b40()->FUN_00431c60((SOCController::ControllerButton)7))
 			{
+				UNKNOWN_NO_CODE();
 			}
 			break;
 		}

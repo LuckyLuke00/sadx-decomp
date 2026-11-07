@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x006cc5e0
-void FUN_006cc5e0(struct task *param_1)
+void FUN_006cc5e0(void)
 {
 	unsigned int local_8 = (unsigned char)DAT_05b9d744 * 4;
 	DAT_05b3e040 = (*(struct NJS_ARGB **)((char *)pFogTable_Egm03 + local_8))[DAT_05b3e0d0];

@@ -2,13 +2,13 @@
 #include <windows.h>
 #include <stdio.h>
 void FUN_00926590(int param_1, int param_2);
-struct FUN_00924f80_S;
+struct FUN_00924f80_0;
 extern int DAT_05ab1584;
 extern int DAT_05ab1594;
 extern int DAT_05ab159c;
 
 // STUB: SADX 0x00924f80
-void __fastcall FUN_00924f80(struct FUN_00924f80_S *param_1, int param_2, float *param_3)
+void __fastcall FUN_00924f80(struct FUN_00924f80_0 *param_1, int param_2, float *param_3)
 {
 }
 

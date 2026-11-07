@@ -51,8 +51,8 @@ void FUN_008c9c00(struct NJS_POINT3 *param_1, struct taskwk *param_2, int param_
 	local_14.x = 0.0;
 	local_14.y = 0.0;
 	local_14.z = 0.0;
-	local_14.z = (float)((double)njCos((long)((double)param_3 * 360.0 / (double)param_2->scl.x * 65536.0 / 360.0)) * (double)param_2->scl.y);
-	local_14.x = (float)((double)njSin((long)((double)param_3 * 360.0 / (double)param_2->scl.x * 65536.0 / 360.0)) * (double)param_2->scl.y);
+	local_14.z = (float)(njCos((long)(param_3 * 360.0 / param_2->scl.x * 65536.0 / 360.0)) * param_2->scl.y);
+	local_14.x = (float)(njSin((long)(param_3 * 360.0 / param_2->scl.x * 65536.0 / 360.0)) * param_2->scl.y);
 	njPushMatrix(&_nj_unit_matrix_);
 	njTranslateV(0, &param_2->pos);
 	if (param_2->ang.z != 0)

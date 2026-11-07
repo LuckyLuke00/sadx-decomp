@@ -21,22 +21,22 @@ void ALR_ALRE_Happy(struct taskwk *twp, struct alifewk *awp)
 		default:
 			return;
 	}
-	awp->acc.x = awp->acc.x - (awp->velo.x * 0.10000000149011612f);
-	awp->acc.z = awp->acc.z - (awp->velo.z * 0.10000000149011612f);
-	if (awp->velo.x < 0.009999999776482582f)
+	awp->acc.x = awp->acc.x - (awp->velo.x * 0.1f);
+	awp->acc.z = awp->acc.z - (awp->velo.z * 0.1f);
+	if (awp->velo.x < 0.01f)
 	{
 		awp->velo.x = 0.0f;
 	}
-	if (awp->velo.z < 0.009999999776482582f)
+	if (awp->velo.z < 0.01f)
 	{
 		awp->velo.z = 0.0f;
 	}
 	ADV1_AL_SetEyeNum(awp, 2, 2);
 	ADV1_AL_SetMouseNum(awp, 1, 2);
-	*(unsigned short *)((char *)awp + 0x812) = 5;
-	*(unsigned short *)((char *)awp + 0x848) = 0;
-	*(unsigned short *)((char *)awp + 0x888) = 0;
-	*(unsigned short *)((char *)awp + 0x814) = 2;
+	awp->icon.mode = 5;
+	awp->icon.smode_u = 0;
+	awp->icon.smode_d = 0;
+	awp->icon.timer = 2;
 }
 
 // FUNCTION: SADX 0x0048ba20
@@ -46,12 +46,12 @@ void ALR_ALRE_Dance(struct taskwk *twp, struct alifewk *awp)
 	{
 		case 0:
 		{
-			float var1 = (float)rand() * 3.0517578125e-05f;
+			float var1 = (float)rand() * 3.0517578e-5f;
 			ADV1toADV2_SetMotionLink(awp, (int)(var1 * 4.0f + 32.0f));
 			*(float *)((char *)awp + 0x144) = 7.0f;
 			twp->smode++;
 			twp->wtimer = 0;
-			float var2 = (float)rand() * 3.0517578125e-05f;
+			float var2 = (float)rand() * 3.0517578e-5f;
 			twp->btimer = (unsigned char)(var2 * 30.0f + 0.0f);
 			ADV1_AL_SetMouseNum(awp, 3, 0x23);
 		}
@@ -91,7 +91,7 @@ void FUN_0048c4f0(struct Alr *param_1, struct AlrEffUnit *param_2)
 }
 
 // STUB: SADX 0x0048c610
-float FUN_0048c610(struct al_race *param_1)
+float FUN_0048c610(struct FUN_0048c610_0 *param_1)
 {
 	return (float)0;
 }

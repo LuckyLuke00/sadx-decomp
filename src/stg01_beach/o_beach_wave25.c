@@ -13,8 +13,8 @@ void CreateRippleSource25(struct task *tp, float pp_x, float pp_z, float start_r
 		var3[0] = pp_x;
 		var3[1] = pp_z;
 		var3[2] = scl;
-		var3[3] = start_rad * 436.90667724609375f;
-		var3[4] = end_rad * 436.90667724609375f;
+		var3[3] = start_rad * 436.90668f;
+		var3[4] = end_rad * 436.90668f;
 		var3[5] = 200.0f;
 	}
 }

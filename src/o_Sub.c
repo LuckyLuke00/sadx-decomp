@@ -40,8 +40,8 @@ void DispVectorXYV(struct NJS_POINT3 *bp, struct NJS_POINT3 *vec)
 // FUNCTION: SADX 0x0056e600
 void GetAngleXYV(const struct NJS_POINT3 *vec, long *ang_x, long *ang_y)
 {
-	*ang_x = -((long)(atan2((double)vec->y, (double)vec->z) * 65536.0 / 6.283184));
-	*ang_y = ((long)(atan2((double)vec->x, (double)njSqrt(vec->y * vec->y + vec->z * vec->z)) * 65536.0 / 6.283184));
+	*ang_x = -((long)(atan2(vec->y, vec->z) * 65536.0 / 6.283184));
+	*ang_y = ((long)(atan2(vec->x, njSqrt(vec->y * vec->y + vec->z * vec->z)) * 65536.0 / 6.283184));
 }
 
 // FUNCTION: SADX 0x0056e6a0

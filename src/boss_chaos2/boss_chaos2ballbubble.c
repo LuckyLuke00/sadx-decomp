@@ -11,7 +11,7 @@ void SetBallBubble(struct task *chaos_tp, int num, float size)
 	int var1;
 
 	var2 = (float)rand() * 3.0517578125e-05;
-	var1 = (int)((var2 * 0.5f + 0.5f) * num + 0.10000000149011612f);
+	var1 = (int)((var2 * 0.5f + 0.5f) * num + 0.1f);
 	if (var1 > 0)
 	{
 		for (var3 = var1; var3 != 0; var3--)

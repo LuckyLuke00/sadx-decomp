@@ -59,7 +59,7 @@ void dispEffectKnuHadoken(struct task *tp)
 	local_cg = tp->twp;
 	if (DAT_05b9d838 == 0)
 	{
-		local_8g = local_cg->counter.f * 0.800000011920929f;
+		local_8g = local_cg->counter.f * 0.8f;
 		SetMaterial(local_8g, 1.0f, 1.0f, 1.0f);
 		___njColorBlendingMode(0, 8);
 		___njColorBlendingMode(1, 10);
@@ -130,7 +130,7 @@ void dispKnuEffectClod(struct task *tp)
 		___njColorBlendingMode(1, 6);
 		___njSetTexture(&texlist_knu_eff);
 		njPushMatrix(0);
-		local_14 = *(float *)((char *)local_8g + 0x30) * 0.25;
+		local_14 = local_8g->scl.y * 0.25;
 		if (local_14 < -0.25f)
 		{
 			local_14 = -0.25f;
@@ -139,8 +139,8 @@ void dispKnuEffectClod(struct task *tp)
 		{
 			local_14 = 0.25f;
 		}
-		local_cj = (1.0f - local_14) * *(float *)((char *)local_8g + 8) * *(float *)((char *)local_8g + 0xc);
-		local_10 = (1.0f + local_14) * *(float *)((char *)local_8g + 8);
+		local_cj = (1.0f - local_14) * local_8g->counter.f * local_8g->timer.f;
+		local_10 = (1.0f + local_14) * local_8g->counter.f;
 		njTranslateV(0, &local_8g->pos);
 		if (DAT_05b42a7c->ang.y != 0)
 		{
@@ -173,7 +173,7 @@ void KnuEffectDisplayRadar(struct NJS_POINT3 *pos, long patnmb, float scale, flo
 	sprite_rader.sx = scale;
 	sprite_rader.sy = scale;
 	___njSetTexture(&texlist_knu_eff);
-	local_8 = scale * 0.009999999776482582f + -2.0f;
+	local_8 = scale * 0.01f + -2.0f;
 	if (local_8 >= -3.0f && local_8 < 12048.0f)
 	{
 		local_8 = local_8 + 22048.0f;
@@ -205,13 +205,13 @@ void dispKnuEffectTsuchiKakeraMove(struct task *tp)
 		___njSetTexture(&texlist_knu_eff);
 		njPushMatrix(0);
 		njTranslateV(0, &local_8->pos);
-		if (*(int *)((char *)local_8 + 0x14) != 0)
+		if (local_8->ang.x != 0)
 		{
-			njRotateX(0, *(unsigned short *)((char *)local_8 + 0x14));
+			njRotateX(0, (unsigned short)local_8->ang.x);
 		}
-		if (*(int *)((char *)local_8 + 0x1c) != 0)
+		if (local_8->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)local_8 + 0x1c));
+			njRotateZ(0, (unsigned short)local_8->ang.z);
 		}
 		___njDrawSprite3D(&sprite_tsuchi_kake, 0, 0x20);
 		njPopMatrix(1);
@@ -272,7 +272,7 @@ void KnuEffectChargeUp(struct task *tp)
 void KnuEffectChargeUpStay(struct task *tp)
 {
 	struct taskwk *local_8g = tp->twp;
-	float local_cg = local_8g->timer.f + 0.1666666716337204f;
+	float local_cg = local_8g->timer.f + 0.16666667f;
 
 	local_8g->timer.f = local_cg;
 	if (local_cg >= 1.0f)
@@ -294,11 +294,11 @@ void KnuEffectComboFire(struct task *tp)
 	local_cg = tp->twp;
 	if (local_cg->value.f < 25.0f)
 	{
-		local_8g = (local_cg->value.f - 20.0f) * 0.15000000596046448f;
+		local_8g = (local_cg->value.f - 20.0f) * 0.15f;
 	}
 	else
 	{
-		local_8g = (30.0f - local_cg->value.f) * 0.15000000596046448f;
+		local_8g = (30.0f - local_cg->value.f) * 0.15f;
 	}
 	if (DAT_05b9d838 != 0)
 	{
@@ -319,9 +319,9 @@ void KnuEffectComboFire(struct task *tp)
 	{
 		njRotateY(NULL, (unsigned short)(0x8000 - local_cg->ang.y));
 	}
-	if ((long)(local_cg->value.f * 6553.60009765625f) != 0)
+	if ((long)(local_cg->value.f * 6553.6f) != 0)
 	{
-		njRotateX(NULL, (unsigned short)(long)(local_cg->value.f * 6553.60009765625f));
+		njRotateX(NULL, (unsigned short)(long)(local_cg->value.f * 6553.6f));
 	}
 	FUN_0067d2d0(NULL, 1.0f, 2.0f, 2.0f);
 	___njSetTexture(&texlist_knu_eff);
@@ -342,7 +342,7 @@ void KnuEffectPutChargeComp(struct NJS_POINT3 *pos, float rate)
 		return;
 	}
 	((struct obj **)((char *)DAT_06274af0 + 0xbc))[0]->model->mats->attr_texId = 1;
-	local_8g = rate * -0.6000000238418579f;
+	local_8g = rate * -0.6f;
 	SetMaterial(local_8g, 1.0f, 1.0f, 1.0f);
 	njPushMatrix(NULL);
 	njTranslateV(NULL, pos);
@@ -369,7 +369,7 @@ void KnuEffectPutCharge0()
 		local_c->scl.y = 6.0f;
 		local_c->scl.z = 1.2f;
 		local_c->value.f = 0.0f;
-		*(float *)((char *)local_c + 8) = -1.0f;
+		local_c->counter.f = -1.0f;
 		local_8->disp = dispKnuEffectChargeScl;
 	}
 }
@@ -390,7 +390,7 @@ void KnuEffectPutCharge1()
 		local_c->scl.y = 0.6f;
 		local_c->scl.z = 4.5f;
 		local_c->value.f = 0.0f;
-		*(float *)((char *)local_c + 8) = -1.0f;
+		local_c->counter.f = -1.0f;
 		local_8->disp = dispKnuEffectChargeScl;
 	}
 }

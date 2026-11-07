@@ -11,16 +11,16 @@
 <text x="56" y="104.7" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">37%</text>
 <line x1="64" y1="74.0" x2="984" y2="74.0" stroke="#d0d7de" stroke-width="1"/>
 <text x="56" y="78.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">38%</text>
-<polyline points="129.7,131.0 261.1,105.8 392.6,91.9 524.0,82.6 655.4,82.6 786.9,82.6 918.3,86.7" fill="none" stroke="#b07d00" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="129.7,131.0 261.1,105.8 392.6,91.9 524.0,82.6 655.4,82.6 786.9,82.6 918.3,86.5" fill="none" stroke="#b07d00" stroke-width="2.5" stroke-linejoin="round"/>
 <circle cx="129.7" cy="131.0" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
 <circle cx="261.1" cy="105.8" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
 <circle cx="392.6" cy="91.9" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
 <circle cx="524.0" cy="82.6" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
 <circle cx="655.4" cy="82.6" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
 <circle cx="786.9" cy="82.6" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
-<circle cx="918.3" cy="86.7" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
+<circle cx="918.3" cy="86.5" r="4.5" fill="#b07d00" stroke="#f6f8fa" stroke-width="2"/>
 <text x="129.7" y="119.0" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">35.86%</text>
-<text x="918.3" y="74.7" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">37.52%</text>
+<text x="918.3" y="74.5" text-anchor="middle" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">37.53%</text>
 <circle cx="21" cy="176" r="4.5" fill="#1f2328"/><text x="32" y="180" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#1f2328">Accuracy</text>
 <line x1="64" y1="240.0" x2="984" y2="240.0" stroke="#d0d7de" stroke-width="1"/>
 <text x="56" y="244.0" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#59636e">99.8%</text>

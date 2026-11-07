@@ -57,7 +57,7 @@ void EffEmission_SetMode(enum EMISSION_MODE nMode)
 {
 	if (DAT_060bbe38 != NULL)
 	{
-		*(int *)((char *)*(void **)((char *)DAT_060bbe38 + 0x2c) + 0xc) = nMode;
+		DAT_060bbe38->awp->work.sl[3] = nMode;
 	}
 }
 
@@ -76,7 +76,7 @@ void disp_Emission(struct task *pTask)
 		SetMaterial(*(float *)((char *)var1 + 0x10), 1.0f, 1.0f, 1.0f);
 		var2 = (float *)0;
 		njPushMatrix((NJS_MATRIX *)var2);
-		njTranslateV((NJS_MATRIX *)var2, (struct NJS_POINT3 *)(*(int *)((char *)var1 + 4)));
+		njTranslateV((NJS_MATRIX *)var2, (struct NJS_POINT3 *)(var1->work.sl[1]));
 		___njSetTexture(&texlist_erobo);
 		late_DrawObjectClipEx((struct obj *)var1->work.ptr[0], 1, 1.0f);
 		njPopMatrix(1);
@@ -142,7 +142,7 @@ void FUN_006dd0b0(int param_1)
 {
 	if (DAT_060bbe3c != 0)
 	{
-		int *var1 = *(int **)((char *)DAT_060bbe3c + 0x2c);
+		int *var1 = (int *)DAT_060bbe3c->awp;
 		*var1 = param_1;
 	}
 }
@@ -152,7 +152,7 @@ void EffHandSpark_SetPos(struct NJS_POINT3 *pPosRL)
 {
 	if (DAT_060bbe3c != 0)
 	{
-		struct anywk *var1 = *(struct anywk **)((char *)DAT_060bbe3c + 0x2c);
+		struct anywk *var1 = DAT_060bbe3c->awp;
 		*(int *)((char *)var1 + 0x48) = (int)pPosRL;
 	}
 }
@@ -173,7 +173,7 @@ void exec_HandSpark(struct task *pTask)
 	{
 	case 1:
 		{
-			float var2 = *(float *)((char *)var1 + 0x4c) + 0.03999999910593033f;
+			float var2 = *(float *)((char *)var1 + 0x4c) + 0.04f;
 			*(float *)((char *)var1 + 0x4c) = var2;
 			if (var2 >= 1.0f)
 			{
@@ -185,7 +185,7 @@ void exec_HandSpark(struct task *pTask)
 		break;
 	case 2:
 		{
-			float var2 = *(float *)((char *)var1 + 0x4c) - 0.019999999552965164f;
+			float var2 = *(float *)((char *)var1 + 0x4c) - 0.02f;
 			*(float *)((char *)var1 + 0x4c) = var2;
 			if (var2 <= 0.0f)
 			{

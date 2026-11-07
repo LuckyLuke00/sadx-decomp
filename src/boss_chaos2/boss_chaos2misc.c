@@ -46,7 +46,7 @@ void Chaos2BallExplode(struct task *tp)
 		tp->disp = Chaos2BallExplodeDisplay;
 		local_8->mode = 1;
 	case 1:
-		local_8->counter.f = local_8->counter.f + 0.2666666805744171f;
+		local_8->counter.f = local_8->counter.f + 0.26666668f;
 		if (local_8->counter.f >= 8.0f)
 		{
 			DestroyTask(tp);

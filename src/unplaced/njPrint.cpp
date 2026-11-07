@@ -5,7 +5,7 @@ extern void gjPrintInit(void *,unsigned long,unsigned long);
 extern int DAT_05ad95ec;
 
 // FUNCTION: SADX 0x00423e60
-void njInitPrint(unsigned long *texture, unsigned long size, unsigned long attr)
+void njInitPrint(unsigned long *param_1, unsigned long param_2, unsigned long param_3)
 {
 	DAT_05ad95e4 = 8.0f;
 	DAT_05ad95ec = 0xffbfbfbf;
@@ -20,28 +20,28 @@ void njExitPrint(void)
 }
 
 // FUNCTION: SADX 0x00423eb0
-void njPrintSize(unsigned short size)
+void njPrintSize(unsigned short param_1)
 {
-	DAT_05ad95e4 = (float)size;
+	DAT_05ad95e4 = (float)param_1;
 }
 
 // FUNCTION: SADX 0x00423ed0
-void njPrintColor(Uint32 c)
+void njPrintColor(Uint32 param_1)
 {
-	DAT_05ad95ec = c;
+	DAT_05ad95ec = param_1;
 }
 
 // STUB: SADX 0x00423ee0
-void njPrintC(Int loc, const char *s)
+void njPrintC(Int param_1, const char *param_2)
 {
 }
 
 // STUB: SADX 0x00424080
-void njPrintH(int loc, unsigned long val, int digit)
+void njPrintH(int param_1, unsigned long param_2, int param_3)
 {
 }
 
 // STUB: SADX 0x004240e0
-void njPrintF(int loc, float val, int digit)
+void njPrintF(int param_1, float param_2, int param_3)
 {
 }

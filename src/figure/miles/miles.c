@@ -66,7 +66,7 @@ void MilesChangeRunningMotion(struct taskwk *twp, struct motionwk2 *mwp, struct 
 // FUNCTION: SADX 0x00538070
 void MilesSBoardSlideSECall(struct taskwk *twp, struct playerwk *pwp)
 {
-	if (pwp->spd.x < *(float *)((char *)pwp + 0xc0))
+	if (pwp->spd.x < pwp->p.jog_speed)
 		return;
 	int local_8;
 	if ((((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) == 0x800)
@@ -132,29 +132,29 @@ long MilesCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struc
 	{
 		case 24:
 			twp->mode = 0xa;
-			*(short *)((char *)pwp + 0x124) = 0x13;
-			*(float *)((char *)pwp + 0x110) = 9.0f;
-			*(float *)((char *)pwp + 0x11c) = *(float *)((char *)pwp + 0x110) * 0.5;
+			pwp->mj.reqaction = 0x13;
+			pwp->p.height = 9.0f;
+			pwp->p.center_height = pwp->p.height * 0.5;
 			break;
 		case 19:
 			twp->mode = 0x3e;
 			if (GetMRaceResult() == 1)
 			{
-				*(short *)((char *)pwp + 0x124) = 0x36;
+				pwp->mj.reqaction = 0x36;
 			}
 			else
 			{
-				*(short *)((char *)pwp + 0x124) = 0x38;
+				pwp->mj.reqaction = 0x38;
 			}
-			*(long *)((char *)twp + 0x1c) = 0;
-			*(long *)((char *)twp + 0x14) = 0;
+			twp->ang.z = 0;
+			twp->ang.x = 0;
 			mwp->spd.z = 0.0f;
 			mwp->spd.y = 0.0f;
 			mwp->spd.x = 0.0f;
-			*(float *)((char *)pwp + 0x40) = 0.0f;
-			*(float *)((char *)pwp + 0x3c) = 0.0f;
-			*(float *)((char *)pwp + 0x38) = 0.0f;
-			*(signed char *)((char *)twp + 0xf) = *(signed char *)((char *)twp + 0xf) | 8;
+			pwp->spd.z = 0.0f;
+			pwp->spd.y = 0.0f;
+			pwp->spd.x = 0.0f;
+			twp->timer.b[3] = twp->timer.b[3] | 8;
 			CancelLookingAtP(0);
 			break;
 	}
@@ -176,13 +176,13 @@ long MilesCheckBeInTheAir(struct taskwk *twp, struct playerwk *pwp)
 			if ((PCheckHoldObject(twp) & 0x200) != 0)
 			{
 				twp->mode = 0x1c;
-				*(unsigned short *)((char *)pwp + 0x124) = 0x52;
+				pwp->mj.reqaction = 0x52;
 				return 1;
 			}
 			MilesThrowTheObjectOut(twp, pwp);
 		}
 		twp->mode = 0xa;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x13;
+		pwp->mj.reqaction = 0x13;
 		return 1;
 	}
 	else
@@ -201,12 +201,12 @@ long FUN_0053a220(struct taskwk *param_1, struct playerwk *param_2)
 			if ((PCheckHoldObject(param_1) & 0xc00) != 0)
 			{
 				param_1->mode = 0x18;
-				*(short *)((char *)param_2 + 0x124) = 0x4f;
+				param_2->mj.reqaction = 0x4f;
 			}
 			else
 			{
 				param_1->mode = 0x17;
-				*(short *)((char *)param_2 + 0x124) = 0x3e;
+				param_2->mj.reqaction = 0x3e;
 			}
 		}
 		else
@@ -310,8 +310,8 @@ void MilesHoldOnPillar(struct taskwk *twp, struct playerwk *pwp)
 		{
 			local_10 = *(float *)((char *)local_8g + 0x34);
 		}
-		twp->pos.x = *(float *)((char *)local_ci + 0x20) - njCos(*(long *)((char *)twp + 0x18)) * local_10;
-		twp->pos.z = *(float *)((char *)local_ci + 0x28) - njSin(*(long *)((char *)twp + 0x18)) * local_10;
+		twp->pos.x = *(float *)((char *)local_ci + 0x20) - njCos(twp->ang.y) * local_10;
+		twp->pos.z = *(float *)((char *)local_ci + 0x28) - njSin(twp->ang.y) * local_10;
 	}
 }
 
@@ -327,7 +327,7 @@ long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
 	if (DAT_05b932e8[twp->counter.b[0]].press & action_button)
 	{
 		twp->mode = 4;
-		*(short *)((char *)pwp + 0x124) = 0xf;
+		pwp->mj.reqaction = 0xf;
 		twp->flag |= 0x500;
 		pwp->work.f = pwp->spd.x;
 		return 1;
@@ -436,7 +436,7 @@ void MilesFaceMotion(struct task *tp)
 	}
 	tp->mwp = local_8;
 	*(long *)((char *)local_8 + 0x18) = *(long *)((char *)DAT_06298ccc + 0x118);
-	*(long *)((char *)local_8 + 0x1c) = *(long *)DAT_06298ce8;
+	local_8->ang_aim.x = *(long *)DAT_06298ce8;
 	tp->dest = PlayerFaceMotionEnd;
 	tp->exec = MilesFaceMotionExec;
 }
@@ -477,7 +477,7 @@ void MilesSnowBoard(struct task *tp)
 	local_8 = tp->twp;
 	local_8->timer.ptr = *(void **)((char *)DAT_06298ccc + 0x11c);
 	local_8->value.ptr = &texlist_m_sboard_snowboard;
-	tp->mwp->weight = 0.019999999552965164f;
+	tp->mwp->weight = 0.02f;
 	NeonuLoadTexture((struct NJS_TEXLIST *)local_8->value.ptr);
 	tp->dest = DstrReleaseTexture;
 	tp->exec = ExecuteMilesSnowBoard;
@@ -497,7 +497,7 @@ void SetMilesFinishAction()
 // FUNCTION: SADX 0x0053e4f0
 void FUN_0053e4f0(struct taskwk *param_1, int param_2, int param_3)
 {
-	if (*(unsigned char *)((char *)param_1 + 8) == 1)
+	if (param_1->counter.b[0] == 1)
 		return;
 	dsPlay_oneshot(param_2, 0, param_3, 0);
 }
@@ -513,7 +513,7 @@ void FUN_0053e520(struct taskwk *param_1)
 // FUNCTION: SADX 0x0053e560
 void FUN_0053e560(struct taskwk *param_1)
 {
-	if (*(unsigned char *)((char *)param_1 + 8) == 1)
+	if (param_1->counter.b[0] == 1)
 		return;
 	dsStop_num(0xf);
 }

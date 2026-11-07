@@ -4,9 +4,10 @@
 #include <new>
 #include <exception>
 extern void __cdecl operator delete(void *param_1);
+extern char DAT_05ab16d8[44][0x30];
 void FUN_004160c0(char *param_1, int param_2, char *param_3, char *param_4);
 void __stdcall FUN_00415a10(int param_1);
-struct FUN_004157e0_node;
+struct FUN_004157e0_0;
 
 // STUB: SADX 0x0040e960
 void FUN_0040e960(void)
@@ -107,20 +108,15 @@ void __fastcall FUN_00412230(void *param_1)
 // STUB: SADX 0x00412260
 char *FUN_00412260(char *param_1)
 {
-	char *var1;
-	int var2;
-	var2 = 0;
-	var1 = (char *)0x5ab16e4;
-	do
+	int var1;
+	for (var1 = 0; var1 < 44; var1++)
 	{
-		if (*(char **)var1 == param_1)
+		if (*(char **)(DAT_05ab16d8[var1] + 0xc) == param_1)
 		{
-			return (char *)0x5ab16d8 + var2 * 0x30;
+			return DAT_05ab16d8[var1];
 		}
-		var1 = var1 + 0x30;
-		var2 = var2 + 1;
-	} while ((int)var1 < 0x5ab1f24);
-	return (char *)0x0;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x00412290
@@ -202,7 +198,7 @@ void * __fastcall FUN_00415750(void *param_1)
 }
 
 // STUB: SADX 0x004157e0
-void __fastcall FUN_004157e0(struct FUN_004157e0_node *param_1, FILE *param_2, int param_3)
+void __fastcall FUN_004157e0(struct FUN_004157e0_0 *param_1, FILE *param_2, int param_3)
 {
 }
 

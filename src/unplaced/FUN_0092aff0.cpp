@@ -23,7 +23,7 @@ Magic::Base::IniFile::IniFile()
 	blChanged = false;
 }
 
-// STL string and map helper code generation remains unmatched.
+// DIFF: code: the code of the STL string and map helpers does not match yet.
 // FUNCTION: SADX 0x0092b1b0
 int Magic::Base::IniFile::FUN_0092b1b0(const std::string& param_1, const std::string& param_2, const std::string& param_3)
 {

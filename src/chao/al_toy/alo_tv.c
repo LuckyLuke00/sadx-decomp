@@ -13,9 +13,9 @@ long ALO_GetTVWatchPos(struct NJS_POINT3 *pPos)
 	if (DAT_05b32e4c == 0)
 		return 0;
 	var1 = (struct NJS_POINT3 *)*(int *)((char *)DAT_05b32e4c + 0x20);
-	var2 = (float)rand() * 3.0517578125e-05f;
+	var2 = (float)rand() * 3.0517578e-5f;
 	var2 = var2 * 3.0f + 10.0f;
-	var3 = (float)rand() * 3.0517578125e-05f;
+	var3 = (float)rand() * 3.0517578e-5f;
 	var4 = (int)((var3 * 80.0f - 40.0f) * 65536.0f / -360.0f);
 	var4 = *(int *)((char *)var1 + 0x18) - var4;
 	var4 += 0x8000;

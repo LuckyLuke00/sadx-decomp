@@ -6,7 +6,7 @@ extern void * DAT_05ab25ac;
 extern void * DAT_05ab25b0;
 extern unsigned int DAT_05ab25b4;
 extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3);
-struct FUN_004086f0_004086f0;
+struct FUN_004086f0_0;
 void FUN_004086c0(void *param_1, void *param_2);
 extern "C" void free(void *param_1);
 void __stdcall FUN_00408490(void *param_1, void *param_2, void *param_3, void *param_4);
@@ -125,7 +125,7 @@ void FUN_004086c0(void *param_1, void *param_2)
 }
 
 // STUB: SADX 0x004086f0
-void __fastcall FUN_004086f0(FUN_004086f0_004086f0 *param_1, FUN_004086f0_004086f0 *param_2)
+void __fastcall FUN_004086f0(FUN_004086f0_0 *param_1, FUN_004086f0_0 *param_2)
 {
 }
 

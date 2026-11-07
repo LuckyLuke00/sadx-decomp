@@ -47,7 +47,7 @@ void EnemyMountainTgtMissile(struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, str
 		local_10 = (float *)MAlloc(0x24);
 		local_8->awp = (struct anywk *)local_10;
 		local_c->pos = *pos;
-		local_c->ang.y = (long)(atan2((double)vec->z, (double)vec->x) * 65536.0 / -6.283184);
+		local_c->ang.y = (long)(atan2(vec->z, vec->x) * 65536.0 / -6.283184);
 		local_10[0] = local_10[1] = local_10[2] = 0.0f;
 		((int *)local_10)[3] = 0x1f4;
 		((int *)local_10)[5] = 0;

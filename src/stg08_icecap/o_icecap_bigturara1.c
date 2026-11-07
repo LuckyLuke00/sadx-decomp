@@ -1,6 +1,5 @@
 #include "decls.h"
 extern "C" int rand(void);
-struct sp_task *var1;
 extern int DAT_060dbbb0;
 
 // FUNCTION: SADX 0x00861120

@@ -98,7 +98,7 @@ void DispDay(struct task *tp)
 	}
 }
 
-// The game's link folded this copy into the one of o_egm2_casinokazari.c (0x006c7000).
+// FOLD: the game's link folded this copy into the one of o_egm2_casinokazari.c (0x006c7000).
 static void UVScroll(struct neon_info *neon)
 {
 	short var0 = neon->timer + 1;

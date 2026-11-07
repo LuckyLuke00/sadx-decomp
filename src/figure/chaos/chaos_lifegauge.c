@@ -44,7 +44,7 @@ void ChaosLifeGaugeDisplay(struct task *tp)
 		return;
 	if (DAT_05b3ea16 < 0)
 		return;
-	late_SetFunc((void (*)(void *))late_ChaosLifeGaugeDisplay, tp, 22047.990234375f, 1);
+	late_SetFunc((void (*)(void *))late_ChaosLifeGaugeDisplay, tp, 22047.99f, 1);
 }
 
 // FUNCTION: SADX 0x005d18e0

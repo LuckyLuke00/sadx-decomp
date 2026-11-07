@@ -54,7 +54,7 @@ void __fastcall FUN_0091e250(int param_1)
 }
 
 // STUB: SADX 0x0091e260
-void FUN_0091e260(struct FUN_0091e260_s *param_1, int param_2, char param_3, float param_4, float param_5, float param_6)
+void FUN_0091e260(struct FUN_0091e260_0 *param_1, int param_2, char param_3, float param_4, float param_5, float param_6)
 {
 }
 
@@ -136,7 +136,7 @@ void FUN_0091ec10(void *param_1, int param_2)
 }
 
 // STUB: SADX 0x0091f110
-void __fastcall FUN_0091f110(struct FUN_0091f110_struct *param_1, int param_2, int param_3, int param_4)
+void __fastcall FUN_0091f110(struct FUN_0091f110_0 *param_1, int param_2, int param_3, int param_4)
 {
 }
 

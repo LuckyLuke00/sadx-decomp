@@ -18,7 +18,7 @@ void EffMiniBall(struct task *tp)
 		tp->disp = EffMiniBallDisplay;
 		local_8->mode = 1;
 	case 1:
-		local_8->counter.f = local_8->counter.f - 0.06666667014360428f;
+		local_8->counter.f = local_8->counter.f - 0.06666667f;
 		if (local_8->counter.f <= 0.0f)
 		{
 			DestroyTask(tp);

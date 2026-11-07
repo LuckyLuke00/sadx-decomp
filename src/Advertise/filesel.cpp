@@ -103,13 +103,13 @@ void file_sel_exec(struct task *tp)
 	struct FileSelWk *local_8;
 
 	local_8 = (struct FileSelWk *)tp->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 2 && local_8->Stat == ADVA_STAT_REQWAIT)
+	if (DAT_05cda18c->awp->work.sl[1] == 2 && local_8->Stat == ADVA_STAT_REQWAIT)
 	{
 		FileSelModeWakeProcedure(local_8);
 		local_8->T = 0.0f;
 		local_8->Stat = ADVA_STAT_FADEIN;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 2 && local_8->Stat == ADVA_STAT_KEEP)
+	if (DAT_05cda18c->awp->work.sl[2] == 2 && local_8->Stat == ADVA_STAT_KEEP)
 	{
 		FUN_004b7800(local_8);
 		local_8->T = 0.0f;
@@ -122,7 +122,7 @@ void file_sel_exec(struct task *tp)
 		break;
 	case ADVA_STAT_FADEIN:
 		local_8->BaseCol = GetFadeInColFromT(local_8->T);
-		local_8->T = (float)(DAT_05b9d848 * 0.05) + local_8->T;
+		local_8->T = (float)DAT_05b9d848 * 0.05 + local_8->T;
 		if (local_8->T >= 1.0)
 		{
 			CloseDialog();
@@ -132,12 +132,12 @@ void file_sel_exec(struct task *tp)
 		break;
 	case ADVA_STAT_KEEP:
 		local_8->BaseCol = -1;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 2;
+		DAT_05cda18c->awp->work.sl[3] = 2;
 		file_sel_sub_exec(local_8);
 		break;
 	case ADVA_STAT_FADEOUT:
 		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
-		local_8->T = (float)(DAT_05b9d848 * 0.05) + local_8->T;
+		local_8->T = (float)DAT_05b9d848 * 0.05 + local_8->T;
 		if (local_8->T > 1.0)
 		{
 			local_8->T = 1.0f;
@@ -298,7 +298,7 @@ void ReleaseLineList()
 			local_8g = local_cg;
 			local_cg = *(struct _LIST_DATA **)((char *)local_cg + 0x14);
 		}
-		_SOCFree(*(void **)((char *)local_cg + 0), "..\\..\\src\\Advertise\\filesel.cpp", 0xe4b);
+		_SOCFree(*(void **)local_cg, "..\\..\\src\\Advertise\\filesel.cpp", 0xe4b);
 		_SOCFree(local_cg, "..\\..\\src\\Advertise\\filesel.cpp", 0xe4c);
 		*(struct _LIST_DATA **)((char *)local_8g + 0x14) = 0;
 	}

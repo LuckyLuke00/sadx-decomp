@@ -2,7 +2,7 @@
 void stHWSetVSync(int param_1);
 
 // STUB: SADX 0x004224d0
-void njColorBlendingMode(Int target, Int mode)
+void njColorBlendingMode(Int param_1, Int param_2)
 {
 }
 
@@ -17,12 +17,12 @@ void njSetZUpdateMode(long param_1)
 }
 
 // FUNCTION: SADX 0x004225b0
-void njSetWaitVsyncCount(Int count)
+void njSetWaitVsyncCount(Int param_1)
 {
-	stHWSetVSync(count);
+	stHWSetVSync(param_1);
 }
 
 // STUB: SADX 0x004225c0
-void njPolygonCullingMode(Int mode)
+void njPolygonCullingMode(Int param_1)
 {
 }

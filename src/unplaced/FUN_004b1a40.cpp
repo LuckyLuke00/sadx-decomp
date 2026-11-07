@@ -7,20 +7,20 @@ extern char DAT_05b42418[0x104];
 void FUN_004b1cb0(int param_1, int param_2, int param_3, int param_4);
 struct FUN_004b6590_0
 {
-	struct NJS_ARGB local_0;
-	Magic::RenderCore::Texture *local_10;
+	struct NJS_ARGB field_0x0;
+	Magic::RenderCore::Texture *field_0x10;
 };
 struct FUN_004b2330_0
 {
 	FUN_004b2330_0();
-	char local_0[0x104];
-	int local_104;
-	void *local_108;
-	int local_10c;
-	Magic::RenderCore::Texture *local_110;
-	Magic::RenderCore::Texture *local_114;
-	Magic::RenderCore::Texture *local_118;
-	std::vector<FUN_004b6590_0 *> local_11c;
+	char field_0x0[0x104];
+	int field_0x104;
+	void *field_0x108;
+	int field_0x10c;
+	Magic::RenderCore::Texture *field_0x110;
+	Magic::RenderCore::Texture *field_0x114;
+	Magic::RenderCore::Texture *field_0x118;
+	std::vector<FUN_004b6590_0 *> field_0x11c;
 };
 template class std::vector<FUN_004b6590_0 *>;
 template class std::vector<FUN_004b2330_0 *>;
@@ -79,7 +79,7 @@ FUN_004b2330_0::FUN_004b2330_0()
 {
 }
 
-// The original allocates 0x12c bytes; the final record member remains unidentified.
+// DIFF: type: the original allocates 0x12c bytes, and the last member of the record is unknown.
 // FUNCTION: SADX 0x004b23e0
 void FUN_004b23e0(void *param_1, void *param_2, int param_3, const char *param_4, int param_5)
 {
@@ -97,22 +97,22 @@ void FUN_004b23e0(void *param_1, void *param_2, int param_3, const char *param_4
 		if (strcmp(local_128 + 4, param_4) == 0 && *(int *)(local_128 + 0x108) == param_5 && !FUN_004b1a80((char *)param_4, param_5))
 		{
 			local_dc = new FUN_004b2330_0;
-			strcpy_s(local_dc->local_0, 0x100, local_128 + 4);
-			local_dc->local_104 = param_5;
-			local_dc->local_108 = param_1;
-			local_dc->local_10c = *local_c;
-			local_dc->local_114 = new Magic::RenderCore::Texture;
-			local_dc->local_114->Load(param_2, 1, param_3, 2, 1, 0);
-			local_dc->local_118 = new Magic::RenderCore::Texture;
-			local_dc->local_118->Load(param_2, 1, param_3, 2, 1, 0);
+			strcpy_s(local_dc->field_0x0, 0x100, local_128 + 4);
+			local_dc->field_0x104 = param_5;
+			local_dc->field_0x108 = param_1;
+			local_dc->field_0x10c = *local_c;
+			local_dc->field_0x114 = new Magic::RenderCore::Texture;
+			local_dc->field_0x114->Load(param_2, 1, param_3, 2, 1, 0);
+			local_dc->field_0x118 = new Magic::RenderCore::Texture;
+			local_dc->field_0x118->Load(param_2, 1, param_3, 2, 1, 0);
 			for (local_a0 = 0; FUN_0040efd0(), local_a0 < (unsigned int)((DAT_06299490 - DAT_0629948c) / 0x94); local_a0++)
 			{
 				local_9c = new FUN_004b6590_0;
 				FUN_0040efd0();
-				local_9c->local_0 = *(NJS_ARGB *)(DAT_0629948c + local_a0 * 0x94);
-				local_9c->local_10 = new Magic::RenderCore::Texture;
-				local_9c->local_10->Load(param_2, 1, param_3, 2, 1, 0);
-				local_dc->local_11c.push_back(local_9c);
+				local_9c->field_0x0 = *(NJS_ARGB *)(DAT_0629948c + local_a0 * 0x94);
+				local_9c->field_0x10 = new Magic::RenderCore::Texture;
+				local_9c->field_0x10->Load(param_2, 1, param_3, 2, 1, 0);
+				local_dc->field_0x11c.push_back(local_9c);
 			}
 			FUN_004b38e0(local_dc);
 			((std::vector<FUN_004b2330_0 *> *)&DAT_05b422dc)->push_back(local_dc);
@@ -230,7 +230,7 @@ void FUN_004b5ad0(void)
 	}
 }
 
-// The original includes an empty wait loop that this implementation omits.
+// DIFF: code: the original has an empty wait loop that this code leaves out.
 // FUNCTION: SADX 0x004b5e70
 void FUN_004b5e70(int param_1)
 {

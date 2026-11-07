@@ -1,5 +1,5 @@
 #include "decls.h"
-struct FUN_00920060_t;
+struct FUN_00920060_0;
 
 // STUB: SADX 0x0091fa80
 void FUN_0091fa80(int param_1)
@@ -71,7 +71,7 @@ void __fastcall FUN_0091fd60(void *param_1, void *param_2)
 }
 
 // STUB: SADX 0x0091fda0
-void __fastcall FUN_0091fda0(struct S0091fda0 *param_1, int param_2)
+void __fastcall FUN_0091fda0(struct FUN_0091fda0_0 *param_1, int param_2)
 {
 }
 
@@ -102,7 +102,7 @@ void __fastcall FUN_0091ffb0(int param_1, int param_2)
 }
 
 // STUB: SADX 0x00920060
-void FUN_00920060(FUN_00920060_t *param_1, int param_2, float *param_3)
+void FUN_00920060(FUN_00920060_0 *param_1, int param_2, float *param_3)
 {
 }
 

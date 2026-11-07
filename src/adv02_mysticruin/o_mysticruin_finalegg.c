@@ -64,7 +64,7 @@ void ObjectMysticRuinFinalEgg(struct task *tp)
 				var1->mode = 1;
 				break;
 			case 1:
-				var1->scl.x += 0.20000000298023224f;
+				var1->scl.x += 0.2f;
 				if (var1->scl.x >= 59.0f)
 				{
 					var1->scl.x = 0.0f;

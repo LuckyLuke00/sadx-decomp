@@ -5,29 +5,29 @@ void dispSignboard(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	ModelTurnWhite(var1, 8);
-	if (*(int *)((char *)var1 + 0x10) == 0)
+	if (var1->value.l == 0)
 	{
 		SetObjectTexture();
 	}
 	else
 	{
-		___njSetTexture((struct NJS_TEXLIST *)*(int *)((char *)var1 + 0x10));
+		___njSetTexture((struct NJS_TEXLIST *)var1->value.l);
 	}
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)(short)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)(short)var1->ang.y);
 	}
-	late_DrawModel((struct NJS_MODEL *)*(int *)(*(int *)((char *)var1 + 8) + 4), 4);
+	late_DrawModel((struct NJS_MODEL *)*(int *)((int)var1->counter.l + 4), 4);
 	njPopMatrix(1);
 	ResetMaterial();
 }

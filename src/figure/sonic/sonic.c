@@ -37,7 +37,7 @@ void SonicDestruct(struct task *tp)
 	local_10 = tp->twp;
 	local_8g = (struct motionwk2 *)tp->mwp;
 	local_cj = (struct playerwk *)local_8g->work.ptr;
-	*(unsigned short *)((char *)local_cj + 0x124) = 0;
+	local_cj->mj.reqaction = 0;
 	SonicInterpolateFeetModel(local_10, local_8g, local_cj);
 	PDestruct(local_10->counter.b[0]);
 	dsStop_id((int)local_10);
@@ -136,7 +136,7 @@ long SonicCheckJumpCancel(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	{
 		twp->mode = 0xc;
 		FUN_004e2f70(0, (int)pwp);
-		*(short *)((char *)pwp + 0x124) = 0x12;
+		pwp->mj.reqaction = 0x12;
 		pwp->work.f = 0.0f;
 		twp->flag &= ~0x500;
 		return 1;
@@ -157,16 +157,16 @@ long SonicCheckInputInSnowBoard(struct taskwk *twp, struct motionwk2 *mwp, struc
 	if (twp->smode == 0x18)
 	{
 		twp->mode = 0xc;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x12;
+		pwp->mj.reqaction = 0x12;
 		return 1;
 	}
 	else if (twp->smode == 0x13)
 	{
 		SonicThrowTheObjectOut(twp, mwp, pwp);
 		twp->mode = 0x14;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x4b;
-		*(int *)((char *)twp + 0x1c) = 0;
-		*(int *)((char *)twp + 0x14) = 0;
+		pwp->mj.reqaction = 0x4b;
+		twp->ang.z = 0;
+		twp->ang.x = 0;
 		FUN_004e2f70((int)mwp, (int)pwp);
 		twp->flag = twp->flag & ~0x2000;
 		return 1;
@@ -189,13 +189,13 @@ long SonicCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct play
 			if ((PCheckHoldObject(twp) & 0x200) != 0)
 			{
 				twp->mode = 0x1c;
-				*(unsigned short *)((char *)pwp + 0x124) = 0x39;
+				pwp->mj.reqaction = 0x39;
 				return 1;
 			}
 			SonicThrowTheObjectOut(twp, mwp, pwp);
 		}
 		twp->mode = 0xc;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x12;
+		pwp->mj.reqaction = 0x12;
 		return 1;
 	}
 	else
@@ -214,12 +214,12 @@ long SonicCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *
 			if ((PCheckHoldObject(twp) & 0xc00) != 0)
 			{
 				twp->mode = 0x18;
-				*(short *)((char *)pwp + 0x124) = 0x36;
+				pwp->mj.reqaction = 0x36;
 			}
 			else
 			{
 				twp->mode = 0x17;
-				*(short *)((char *)pwp + 0x124) = 0x25;
+				pwp->mj.reqaction = 0x25;
 			}
 		}
 		else
@@ -242,7 +242,7 @@ long SonicCheckStartSpin(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 		twp->mode = 4;
 		ChangeMotionSonicSpin(pwp);
 		twp->flag |= 0x500;
-		*(short *)((char *)pwp + 0x7e) = 0;
+		pwp->free.sw[1] = 0;
 		if (pwp->spd.x > 2.0)
 		{
 			pwp->work.f = pwp->spd.x;
@@ -374,8 +374,8 @@ void SonicHoldOnPillar(struct taskwk *twp, struct motionwk2 *mwp, struct playerw
 	{
 		local_10 = *(float *)((char *)local_8g + 0x34);
 	}
-	twp->pos.x = *(float *)((char *)local_cj + 0x20) - njCos(*(long *)((char *)twp + 0x18)) * local_10;
-	twp->pos.z = *(float *)((char *)local_cj + 0x28) - njSin(*(long *)((char *)twp + 0x18)) * local_10;
+	twp->pos.x = *(float *)((char *)local_cj + 0x20) - njCos(twp->ang.y) * local_10;
+	twp->pos.z = *(float *)((char *)local_cj + 0x28) - njSin(twp->ang.y) * local_10;
 }
 
 // STUB: SADX 0x0054d9e0
@@ -402,7 +402,7 @@ void SonicFaceMotion(struct task *tp)
 	*(long *)((char *)local_8 + 0x10) = *(long *)((char *)DAT_060eea60 + 0xb4);
 	*(long *)((char *)local_8 + 0x14) = *(long *)((char *)DAT_060eea60 + 0xb8);
 	*(long *)((char *)local_8 + 0x18) = *(long *)((char *)DAT_060eea60 + 0xbc);
-	*(long *)((char *)local_8 + 0x1c) = *(long *)DAT_06276b1c;
+	local_8->ang_aim.x = *(long *)DAT_06276b1c;
 	tp->dest = PlayerFaceMotionEnd;
 	tp->exec = PlayerFaceMotionExec;
 }
@@ -447,7 +447,7 @@ void PSetDashEffect(struct taskwk *twp)
 	local_8 = CreateElementalTask(2, 6, EffectDash);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)twp + 8);
+		local_8->twp->counter.b[0] = twp->counter.b[0];
 	}
 }
 
@@ -458,7 +458,7 @@ void FUN_0054eab0(struct taskwk *param_1)
 	local_8 = CreateElementalTask(2, 6, EffectSSDash);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)param_1 + 8);
+		local_8->twp->counter.b[0] = param_1->counter.b[0];
 	}
 }
 
@@ -469,7 +469,7 @@ void FUN_0054eaf0(struct taskwk *param_1)
 	local_8 = CreateElementalTask(2, 5, EffectSpin);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)param_1 + 8);
+		local_8->twp->counter.b[0] = param_1->counter.b[0];
 	}
 }
 
@@ -480,7 +480,7 @@ void PSetSpinDSEffect(struct taskwk *twp)
 	local_8 = CreateElementalTask(2, 5, EffectSpinDS);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)twp + 8);
+		local_8->twp->counter.b[0] = twp->counter.b[0];
 	}
 }
 
@@ -491,7 +491,7 @@ void FUN_0054eb70(struct taskwk *param_1)
 	local_8 = CreateElementalTask(2, 5, EffectSSSpinDS);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)param_1 + 8);
+		local_8->twp->counter.b[0] = param_1->counter.b[0];
 	}
 }
 
@@ -502,7 +502,7 @@ void FUN_0054ebb0(struct taskwk *param_1)
 	local_8 = CreateElementalTask(2, 5, EffectStartHoming);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)param_1 + 8);
+		local_8->twp->counter.b[0] = param_1->counter.b[0];
 	}
 }
 
@@ -513,7 +513,7 @@ void FUN_0054ebf0(struct taskwk *param_1)
 	local_8 = CreateElementalTask(2, 5, EffectSSStartHoming);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 8) = *(unsigned char *)((char *)param_1 + 8);
+		local_8->twp->counter.b[0] = param_1->counter.b[0];
 	}
 }
 
@@ -525,8 +525,8 @@ void FUN_0054ec30(struct taskwk *param_1, int param_2, struct taskwk *param_3)
 	if (local_8)
 	{
 		*(struct taskwk **)(local_8->awp) = param_1;
-		*(int *)((char *)local_8->awp + 4) = (int)param_3;
-		*(float *)((char *)local_8->awp + 8) = *(float *)((char *)param_3 + 0xac);
+		local_8->awp->work.sl[1] = (int)param_3;
+		local_8->awp->work.f[2] = *(float *)((char *)param_3 + 0xac);
 		*(float *)((char *)param_3 + 0xac) = 0.5f;
 		local_8->dest = ManageSonicLightSpinChargeExit;
 	}
@@ -541,10 +541,10 @@ void ManageSonicLightSpinCharge(struct task *tp)
 void ManageSonicLightSpinChargeExit(struct task *tp)
 {
 	struct OBJ_EDITENTRY *local_8;
-	local_8 = *(struct OBJ_EDITENTRY **)((char *)tp->awp + 4);
+	local_8 = (struct OBJ_EDITENTRY *)tp->awp->work.ptr[1];
 	if (DAT_05baf368[0] != 0)
 	{
-		*(float *)((char *)local_8 + 0xac) = *(float *)((char *)tp->awp + 8);
+		*(float *)((char *)local_8 + 0xac) = tp->awp->work.f[2];
 	}
 }
 
@@ -565,7 +565,7 @@ void SonicSnowBoard(struct task *tp)
 	{
 		local_8g->value.ptr = &texlist_sb[local_cg];
 	}
-	tp->mwp->weight = 0.019999999552965164f;
+	tp->mwp->weight = 0.02f;
 	NeonuLoadTexture((struct NJS_TEXLIST *)local_8g->value.ptr);
 	tp->dest = DstrReleaseTexture;
 	tp->exec = ExecuteSonicSnowBoard;
@@ -597,13 +597,13 @@ void SuperSonicStatusManager(struct task *tp)
 	}
 	else
 	{
-		*(float *)((char *)local_10 + 4) = *(float *)((char *)local_8g + 0xf0);
-		*(float *)((char *)local_10 + 8) = *(float *)((char *)local_8g + 0xec);
-		*(float *)((char *)local_10 + 0xc) = *(float *)((char *)local_8g + 0xdc);
-		*(float *)((char *)local_8g + 0xf0) = -0.001f;
-		*(float *)((char *)local_8g + 0xec) = -0.002f;
-		*(float *)((char *)local_8g + 0xdc) = 0.05f;
-		*(float *)((char *)local_8g + 0x11c) = 6.4f;
+		local_10->work.f[1] = local_8g->p.air_resist;
+		local_10->work.f[2] = local_8g->p.air_resist_air;
+		local_10->work.f[3] = local_8g->p.air_accel;
+		local_8g->p.air_resist = -0.001f;
+		local_8g->p.air_resist_air = -0.002f;
+		local_8g->p.air_accel = 0.05f;
+		local_8g->p.center_height = 6.4f;
 		tp->dest = SuperSonicStatusManagerDestructor;
 		tp->exec = SuperSonicStatusManagerExecutor;
 	}
@@ -620,10 +620,10 @@ void SuperSonicStatusManagerDestructor(struct task *tp)
 	local_8g = GetPlayerWorkPointer(local_9);
 	if (local_8g == 0)
 		return;
-	*(float *)((char *)local_8g + 0xac) = local_10->work.f[1];
-	*(float *)((char *)local_8g + 0xd8) = local_10->work.f[2];
-	*(float *)((char *)local_8g + 0xdc) = local_10->work.f[3];
-	*(float *)((char *)local_8g + 0x11c) = 5.4f;
+	local_8g->p.max_x_spd = local_10->work.f[1];
+	local_8g->p.run_accel = local_10->work.f[2];
+	local_8g->p.air_accel = local_10->work.f[3];
+	local_8g->p.center_height = 5.4f;
 }
 
 // FUNCTION: SADX 0x0054f280
@@ -651,7 +651,7 @@ void SonicCanselSpinDashForIcecap(struct taskwk *twp, struct playerwk *pwp)
 	if ((twp->flag & 0x100) != 0)
 	{
 		twp->mode = 2;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x1d;
+		pwp->mj.reqaction = 0x1d;
 		twp->flag &= 0xfffffaff;
 	}
 }
@@ -675,18 +675,18 @@ void ChangeMotionSonicRush(struct playerwk *pwp)
 		{
 			FUN_0054f920(5);
 		}
-		*(short *)((char *)pwp + 0x124) = 0x92;
+		pwp->mj.reqaction = 0x92;
 	}
 	else
 	{
-		*(short *)((char *)pwp + 0x124) = 0xc;
+		pwp->mj.reqaction = 0xc;
 	}
 }
 
 // FUNCTION: SADX 0x0054f7b0
 int FUN_0054f7b0(struct playerwk *param_1, int param_2)
 {
-	if (*(unsigned short *)((char *)param_1 + 0x124) == param_2)
+	if (param_1->mj.reqaction == param_2)
 		return 1;
 	return 0;
 }
@@ -701,7 +701,7 @@ void ChangeMotionSonicLaunch(struct playerwk *pwp)
 			FUN_0054f920(0x14);
 		}
 	}
-	*(short *)((char *)pwp + 0x124) = 0x10;
+	pwp->mj.reqaction = 0x10;
 }
 
 // FUNCTION: SADX 0x0054f810
@@ -714,7 +714,7 @@ void ChangeMotionSonicRun(struct playerwk *pwp)
 			FUN_0054f920(5);
 		}
 	}
-	*(short *)((char *)pwp + 0x124) = 0xb;
+	pwp->mj.reqaction = 0xb;
 }
 
 // FUNCTION: SADX 0x0054f850
@@ -740,7 +740,7 @@ void ChangeMotionSonicSpin(struct playerwk *pwp)
 			FUN_0054f920(0xa);
 		}
 	}
-	*(short *)((char *)pwp + 0x124) = 0xe;
+	pwp->mj.reqaction = 0xe;
 }
 
 // FUNCTION: SADX 0x0054f8d0
@@ -771,7 +771,7 @@ int FUN_0054f920(int param_1)
 	{
 		return 0;
 	}
-	*(int *)((char *)local_8->twp + 0xc) = param_1;
+	local_8->twp->timer.l = param_1;
 	return 1;
 }
 
@@ -816,19 +816,19 @@ void DrawBlurOfMetalSonic(struct task *tp)
 	SetMaterial(local_cg->counter.f - 1.0, 1.0f, 1.0f, 1.0f);
 	njPushMatrix(0);
 	njTranslateV(0, &local_cg->pos);
-	if (*(long *)((char *)local_cg + 0x1c) != 0)
+	if (local_cg->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)local_cg + 0x1c));
+		njRotateZ(0, (unsigned short)local_cg->ang.z);
 	}
-	if (*(long *)((char *)local_cg + 0x14) != 0)
+	if (local_cg->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)local_cg + 0x14));
+		njRotateX(0, (unsigned short)local_cg->ang.x);
 	}
-	if (0x8000 - *(int *)((char *)local_cg + 0x18) != 0)
+	if (0x8000 - local_cg->ang.y != 0)
 	{
-		njRotateY(0, (unsigned short)(0x8000 - *(int *)((char *)local_cg + 0x18)));
+		njRotateY(0, (unsigned short)(0x8000 - local_cg->ang.y));
 	}
-	DrawSonicMotion(local_8g, *(unsigned short *)((char *)local_8g + 0x124));
+	DrawSonicMotion(local_8g, local_8g->mj.reqaction);
 	njPopMatrix(1);
 	___njColorBlendingMode(0, 8);
 	___njColorBlendingMode(1, 6);

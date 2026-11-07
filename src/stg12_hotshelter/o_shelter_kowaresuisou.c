@@ -16,15 +16,15 @@ void PieceDisp(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
-		SetMaterial(*(float *)((char *)var1 + 0x10), 0.0f, 0.0f, 0.0f);
+		SetMaterial(var1->value.f, 0.0f, 0.0f, 0.0f);
 		late_DrawModelClip(*(struct NJS_MODEL **)((char *)var1->timer.ptr + 4), 0, 1.0f);
 		ResetMaterial();
 		njPopMatrix(1);
@@ -54,8 +54,8 @@ void BubbleExec(struct task *tp)
 	struct taskwk *var1;
 	float var2;
 	var1 = tp->twp;
-	var2 = var1->timer.f + *(float *)((char *)var1 + 0x24);
-	*(float *)((char *)var1 + 0x24) = var2;
+	var2 = var1->timer.f + var1->pos.y;
+	var1->pos.y = var2;
 	if (var1->counter.f < var2)
 	{
 		FreeTask(tp);
@@ -71,7 +71,7 @@ void BubbleInit(struct task *tp)
 	tp->exec = BubbleExec;
 	tp->disp = BubbleDisp;
 	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
-	var1->timer.f = (float)var2 * 3.0517578125e-05f;
+	var1->timer.f = (float)var2 * 3.0517578e-5f;
 	var1->timer.f = var1->timer.f * 0.5f + 0.2f;
 }
 

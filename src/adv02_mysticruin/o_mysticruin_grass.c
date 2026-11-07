@@ -122,7 +122,7 @@ void ObjectMysticRuinBigGrass(struct task *tp)
 				float var2;
 				if (GetPlayerRunningSpeed(0, &var2) != 0)
 				{
-					if (var2 > 0.20000000298023224f)
+					if (var2 > 0.2f)
 					{
 						var1->value.f = 0.0f;
 						dsPlay_oneshot(0x255, 0, 0, 0);

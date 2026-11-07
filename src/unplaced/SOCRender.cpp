@@ -92,13 +92,13 @@ void __fastcall FUN_00419d80(int param_1, int param_2)
 
 struct FUN_0041b7e0_0
 {
-	float local_0;
-	float local_4;
-	float local_8;
-	float local_c;
-	unsigned long local_10;
-	float local_14;
-	float local_18;
+	float field_0x0;
+	float field_0x4;
+	float field_0x8;
+	float field_0xc;
+	unsigned long field_0x10;
+	float field_0x14;
+	float field_0x18;
 };
 
 extern void *DAT_05ab39ac;
@@ -128,7 +128,7 @@ bool SOCGetZwrite(void)
 }
 
 // STUB: SADX 0x0041b120
-void FUN_0041b120(int param_1, int param_2)
+void SOCRender::FUN_0041b120(int param_1, int param_2)
 {
 }
 
@@ -224,13 +224,13 @@ void FUN_004207c0(void)
 
 struct FUN_004208c0_0
 {
-	int local_0;
-	int local_4;
-	int local_8;
-	int local_c;
-	int local_10;
-	float local_14;
-	float local_18;
+	int field_0x0;
+	int field_0x4;
+	int field_0x8;
+	int field_0xc;
+	int field_0x10;
+	float field_0x14;
+	float field_0x18;
 };
 
 template class std::vector<FUN_004208c0_0>;
@@ -248,13 +248,13 @@ void FUN_004208c0(int param_1, int param_2, const wchar_t *param_3, int param_4,
 	if (var2 <= 1024)
 	{
 		FUN_004208c0_0 local_24;
-		local_24.local_0 = param_1;
-		local_24.local_18 = param_6;
-		local_24.local_4 = param_2;
-		local_24.local_14 = param_5;
-		local_24.local_8 = DAT_05ab42ac;
-		local_24.local_c = var2;
-		local_24.local_10 = param_4;
+		local_24.field_0x0 = param_1;
+		local_24.field_0x18 = param_6;
+		local_24.field_0x4 = param_2;
+		local_24.field_0x14 = param_5;
+		local_24.field_0x8 = DAT_05ab42ac;
+		local_24.field_0xc = var2;
+		local_24.field_0x10 = param_4;
 		memcpy(&DAT_05ab39b0[DAT_05ab42ac], param_3, var1 * 2);
 		DAT_05ab42ac = var2;
 		DAT_05ab42cc.push_back(local_24);
@@ -270,17 +270,17 @@ void DrawTexture(int param_1, int param_2, int param_3, int param_4, float param
 {
 	DAT_05ab423b = 1;
 	FUN_00420960_0 local_30;
-	local_30.local_0 = param_1;
-	local_30.local_4 = param_2;
-	local_30.local_8 = param_3;
-	local_30.local_c = param_4;
-	local_30.local_10 = param_5;
-	local_30.local_14 = param_6;
-	local_30.local_18 = param_7;
-	local_30.local_1c = param_8;
-	local_30.local_20 = param_9;
-	local_30.local_24 = param_10;
-	local_30.local_28 = param_11;
+	local_30.field_0x0 = param_1;
+	local_30.field_0x4 = param_2;
+	local_30.field_0x8 = param_3;
+	local_30.field_0xc = param_4;
+	local_30.field_0x10 = param_5;
+	local_30.field_0x14 = param_6;
+	local_30.field_0x18 = param_7;
+	local_30.field_0x1c = param_8;
+	local_30.field_0x20 = param_9;
+	local_30.field_0x24 = param_10;
+	local_30.field_0x28 = param_11;
 	DAT_05ab42dc.push_back(local_30);
 }
 

@@ -48,9 +48,9 @@ static void chkDamage(struct task *pTask)
 			local_14.x = var4->twp->pos.x;
 			local_14.y = var4->twp->pos.y;
 			local_14.z = var4->twp->pos.z;
-			local_24.x = *(float *)((char *)var4->mwp + 4);
-			local_24.y = *(float *)((char *)var4->mwp + 8);
-			local_24.z = *(float *)((char *)var4->mwp + 12);
+			local_24.x = var4->mwp->spd.x;
+			local_24.y = var4->mwp->spd.y;
+			local_24.z = var4->mwp->spd.z;
 		}
 		else
 		{
@@ -109,7 +109,7 @@ static void turnBody(struct task *pTask, struct NJS_POINT3 *posTarget, long angM
 	float *var2 = (float *)pTask->awp;
 	float local_8 = var1->pos.x - posTarget->x;
 	float local_c = var1->pos.z - posTarget->z;
-	long var3 = SubAngle(var1->ang.y, (long)(atan2((double)local_c, (double)local_8) * 65536.0 / -6.283184));
+	long var3 = SubAngle(var1->ang.y, (long)(atan2(local_c, local_8) * 65536.0 / -6.283184));
 	if (var3 < -angMax)
 	{
 		var3 = -angMax;
@@ -299,7 +299,7 @@ static void move(struct task *pTask)
 			}
 			var6 = var1->pos.z - DAT_05baf368[0]->pos.z;
 			var5 = var1->pos.x - DAT_05baf368[0]->pos.x;
-			var4 = -var1->ang.y - (long)(atan2((double)var6, (double)var5) * 65536.0 / 6.283184);
+			var4 = -var1->ang.y - (long)(atan2(var6, var5) * 65536.0 / 6.283184);
 		}
 		else
 		{
@@ -455,7 +455,7 @@ static void hover(struct task *pTask)
 		var4 = 0.0;
 		if (var2->y >= 0.0f)
 		{
-			var4 = var2->y * (double)0.95f;
+			var4 = var2->y * 0.95f;
 		}
 		var2->y = var4;
 		FUN_0082ae70(0.15f);
@@ -847,7 +847,7 @@ static void dispTgt(struct task *pTask)
 		{
 			___njSetTexture(&texlist_e102_effect);
 			var5 = *(struct obj **)((char *)DAT_06276b18 + 0x34);
-			*(int *)((char *)var5->model->mats + 0xc) = ((*(int *)((char *)var2 + 0x3c) >> 1) & 3) + 8;
+			var5->model->mats->attr_texId = ((*(int *)((char *)var2 + 0x3c) >> 1) & 3) + 8;
 			var5 = *(struct obj **)((char *)DAT_06276b18 + 0x34);
 			late_DrawObject(var5, 4);
 		}

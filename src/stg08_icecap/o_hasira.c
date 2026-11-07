@@ -36,17 +36,17 @@ void Normal1(struct task *tp)
 			SetObjectTexture();
 			njPushMatrix(NULL);
 			njTranslateV(NULL, &var1->pos);
-			if (*(int *)((char *)var1 + 0x1c) != 0)
+			if (var1->ang.z != 0)
 			{
-				njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+				njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 			}
-			if (*(int *)((char *)var1 + 0x14) != 0)
+			if (var1->ang.x != 0)
 			{
-				njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
+				njRotateX(NULL, (unsigned short)(short)var1->ang.x);
 			}
-			if (*(int *)((char *)var1 + 0x18) != 0)
+			if (var1->ang.y != 0)
 			{
-				njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
+				njRotateY(NULL, (unsigned short)(short)var1->ang.y);
 			}
 			late_DrawModelClipMesh((struct NJS_MODEL *)&model__obj_hasira_c_obj_hasira_c, 0, 1.0f);
 			njPopMatrix(1);
@@ -127,7 +127,7 @@ void ObjectHasira10c(struct task *tp)
 	var2->scl[1] = 1.0f;
 	var2->scl[2] = 1.0f;
 	CCL_Init(tp, &object_c_info[2], 3, 4);
-	*(unsigned char *)((char *)var1 + 0) = 2;
+	*(unsigned char *)var1 = 2;
 	tp->exec = Normal2;
 	tp->disp = Normal2;
 	tp->dest = Exit;

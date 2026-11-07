@@ -14,7 +14,7 @@ void PoleSet_Death()
 		for (int var3 = 0; var3 < 8; var3++)
 		{
 			int var4 = rand();
-			float var5 = (float)var4 * 3.0517578125e-05f;
+			float var5 = (float)var4 * 3.0517578e-5f;
 			*var2 = (int)(var5 * 29.0f + 1.0f);
 			var2 = (int *)((char *)var2 + 0x6c);
 		}

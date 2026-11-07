@@ -47,10 +47,10 @@ void ObjectPastKnucklesLamp(struct task *tp)
 		case 1:
 			{
 				int var2 = rand();
-				float var3 = (float)var2 * 3.0517578125e-05f;
-				var3 = var3 * 0.20000000298023224f;
-				var1->scl.x = var3 + 0.800000011920929f;
-				var3 = var3 + 0.10000000149011612f;
+				float var3 = (float)var2 * 3.0517578e-5f;
+				var3 = var3 * 0.2f;
+				var1->scl.x = var3 + 0.8f;
+				var3 = var3 + 0.1f;
 				var1->scl.y = var3;
 				var1->scl.z = var3;
 				LampDisplayer(tp);

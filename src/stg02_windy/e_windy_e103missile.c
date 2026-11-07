@@ -4,7 +4,7 @@
 extern int DAT_060cef14;
 void FUN_0060d560(struct NJS_POINT3 *param_1, float param_2);
 void FUN_005e5770(struct task *param_1);
-static __inline void death(struct task *pTask, float fSize);
+static void death(struct task *pTask, float fSize);
 static void chkDamage(struct task *pTask);
 static void updownHeight(struct task *pTask);
 static void FUN_00810290(struct NJS_POINT3 *param_1, float param_2);
@@ -19,15 +19,16 @@ static struct CCL_INFO colliInfo[1];
 // GLOBAL: SADX 0x03b76128
 static struct particle_info missile_smoke;
 
+// DIFF: code: the original has the body of death at some call sites in place of the call.
 // FUNCTION: SADX 0x00810080
 static void chkDamage(struct task *pTask)
 {
 	struct taskwk *local_8 = pTask->twp;
 	struct enemywk *local_c = (struct enemywk *)pTask->mwp;
 	int *local_10 = (int *)pTask->awp;
-	struct colliwk *local_14;
+	struct colliwk *var4;
 	struct task *local_18;
-	struct NJS_POINT3 vecDummy;
+	struct NJS_POINT3 local_14;
 	if (DAT_060cef14 < 0)
 	{
 		FUN_005e5770(pTask);
@@ -40,20 +41,20 @@ static void chkDamage(struct task *pTask)
 		death(pTask, 0.5f);
 		return;
 	}
-	if (ChkE104ColliLandXZ(&local_8->pos, 2.0f, 0, &vecDummy) == 1)
+	if (ChkE104ColliLandXZ(&local_8->pos, 2.0f, 0, &local_14) == 1)
 	{
 		death(pTask, 0.5f);
 		return;
 	}
-	local_14 = local_8->cwp;
-	if ((local_14->flag & 1) && local_14->hit_cwp != (struct colliwk *)local_10[8])
+	var4 = local_8->cwp;
+	if ((var4->flag & 1) && var4->hit_cwp != (struct colliwk *)local_10[8])
 	{
-		if (local_14->hit_cwp->id != 1)
+		if (var4->hit_cwp->id != 1)
 		{
 			death(pTask, 0.5f);
 			return;
 		}
-		local_18 = local_14->hit_cwp->mytask;
+		local_18 = var4->hit_cwp->mytask;
 		local_18 = GetE102LockCsTaskPointer(local_18);
 		if (local_18 != 0 && local_c->lock_tp == local_18)
 		{
@@ -287,7 +288,7 @@ void FUN_00810760(struct NJS_POINT3 *param_1, struct NJS_POINT3 *param_2, struct
 }
 
 // FUNCTION: SADX 0x00837700
-static __inline void death(struct task *pTask, float fSize)
+static void death(struct task *pTask, float fSize)
 {
 	struct taskwk *local_8 = pTask->twp;
 	FUN_0060d560(&local_8->pos, fSize);

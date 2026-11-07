@@ -9,7 +9,7 @@ long Magic::Base::File::FUN_009285c0()
 	long var2;
 	long var3;
 
-	var1 = local_0;
+	var1 = m_pFile;
 	if (*var1 == NULL)
 		return -1;
 

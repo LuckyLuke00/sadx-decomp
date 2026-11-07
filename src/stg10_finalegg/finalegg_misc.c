@@ -27,7 +27,7 @@ void FEGG_DrawBrokenPiece(struct taskwk *twp)
 // FUNCTION: SADX 0x008a2020
 void FEGG_TaskActGravity(struct taskwk *twp, struct motionwk *mwp)
 {
-	mwp->acc.y -= 0.07999999821186066f;
+	mwp->acc.y -= 0.08f;
 }
 
 // STUB: SADX 0x008a2040

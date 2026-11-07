@@ -34,10 +34,10 @@ void FUN_00607c50(struct task *param_1, struct ModeSelPrmType *param_2)
 	struct anywk *local_8;
 
 	local_8 = param_1->awp;
-	*(int *)((char *)local_8 + 4) = *(int *)((char *)param_2 + 0);
-	*(int *)((char *)local_8 + 8) = *(int *)((char *)param_2 + 4);
-	*(float *)((char *)local_8 + 0xc) = 6000.0f;
-	*(int *)((char *)local_8 + 0) = 0;
+	local_8->work.sl[1] = *(int *)param_2;
+	local_8->work.sl[2] = *(int *)((char *)param_2 + 4);
+	local_8->work.f[3] = 6000.0f;
+	*(int *)local_8 = 0;
 	*(int *)((char *)local_8 + 0x20) = (int)DAT_05cd14eb;
 	*(char *)((char *)local_8 + 0x24) = 0;
 	*(char *)((char *)local_8 + 0x34) = 0;
@@ -76,7 +76,7 @@ void FUN_00608000(struct AlrReal *param_1)
 }
 
 // FUNCTION: SADX 0x00608010
-void FUN_00608010(struct charsel_char *param_1)
+void FUN_00608010(struct FUN_00608010_0 *param_1)
 {
 	*(unsigned int *)((char *)param_1 + 0x20) = DAT_05cd14ed;
 	DAT_05cd14eb = *(unsigned char *)((char *)param_1 + 0x20);

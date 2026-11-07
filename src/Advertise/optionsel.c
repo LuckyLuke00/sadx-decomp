@@ -64,7 +64,7 @@ void DrawIconFileSel(struct _OptionSelWk *wkp)
 			local_9 = 2;
 			break;
 	}
-	ghDrawPvrTextureS(local_9 + 0x2c, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(local_9 + 0x2c, *(float *)local_8g * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // STUB: SADX 0x00602dd0
@@ -96,7 +96,7 @@ void DrawTvSetting(struct _OptionSelWk *wkp)
 		local_9 = 1;
 	if (local_9 > 3)
 		local_9 = 0;
-	ghDrawPvrTextureS(local_9 + 0x20, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(local_9 + 0x20, *(float *)local_8g * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // FUNCTION: SADX 0x00602f40
@@ -118,7 +118,7 @@ void DrawVibSetting(struct _OptionSelWk *wkp)
 			local_9 = 1;
 			break;
 	}
-	ghDrawPvrTextureS(local_9 + 0x29, *(float *)(local_8g + 0) * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
+	ghDrawPvrTextureS(local_9 + 0x29, *(float *)local_8g * ScreenRaitoX, *(float *)(local_8g + 4) * ScreenRaitoY, *(float *)((char *)wkp + 0xc) + -6.0, ScreenRaitoX, ScreenRaitoY);
 }
 
 // FUNCTION: SADX 0x00602ff0
@@ -150,7 +150,7 @@ void FUN_00603060(struct task *param_1, struct ModeSelPrmType *param_2)
 	local_8->NextMode = *(enum AdvaModeEnum *)((char *)param_2 + 4);
 	local_8->BaseZ = 5500.0f;
 	local_8->Stat = ADVA_STAT_REQWAIT;
-	*(int *)((char *)local_8 + 0x1c) = 0;
+	local_8->CsrCol = 0;
 	FUN_006030c0((struct task *)local_8);
 }
 
@@ -182,13 +182,13 @@ void FUN_00603150(struct task *param_1)
 	struct anywk *local_8;
 
 	local_8 = param_1->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 7 && *(int *)local_8 == 0)
+	if (DAT_05cda18c->awp->work.sl[1] == 7 && *(int *)local_8 == 0)
 	{
 		FUN_006032f0((struct task *)local_8);
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
 		*(int *)local_8 = 1;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 7 && *(int *)local_8 == 2)
+	if (DAT_05cda18c->awp->work.sl[2] == 7 && *(int *)local_8 == 2)
 	{
 		FUN_005b5aa0(local_8);
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
@@ -210,7 +210,7 @@ void FUN_00603150(struct task *param_1)
 		break;
 	case 2:
 		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 7;
+		DAT_05cda18c->awp->work.sl[3] = 7;
 		option_sel_sub_exec((struct _OptionSelWk *)local_8);
 		break;
 	case 3:

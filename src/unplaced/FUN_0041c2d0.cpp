@@ -11,9 +11,9 @@ void FUN_0041c2d0(void *param_1)
 	{
 		do
 		{
-			if (var1->local_14 == param_1)
+			if (var1->field_0x14 == param_1)
 			{
-				var1->local_14 = 0;
+				var1->field_0x14 = 0;
 			}
 			++var1;
 		} while (var1 != DAT_05ab42dc.end());

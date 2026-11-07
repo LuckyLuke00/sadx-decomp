@@ -34,9 +34,9 @@ void SOCInput::FUN_00424ac0()
 // FUNCTION: SADX 0x00424b40
 SOCController* SOCInput::FUN_00424b40()
 {
-	if (local_0 >= 0 && local_0 < 8 && local_4[local_0] != 0)
+	if (m_ActiveIndex >= 0 && m_ActiveIndex < 8 && m_pController[m_ActiveIndex] != 0)
 	{
-		return local_4[local_0];
+		return m_pController[m_ActiveIndex];
 	}
 	if (DAT_05ad9668 == 0)
 	{

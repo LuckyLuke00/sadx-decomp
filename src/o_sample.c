@@ -1,6 +1,4 @@
 #include "decls.h"
-struct taskwk *local_8;
-struct motionwk *local_4;
 extern void ObjectSampleSWRegular(struct task *tp);
 
 // GLOBAL: SADX 0x04c2e8f8
