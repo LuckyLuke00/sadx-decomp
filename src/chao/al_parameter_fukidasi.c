@@ -43,8 +43,8 @@ void AL_CloseParameterFukidasiWait(struct task *pChaoTask)
 	{
 		return;
 	}
-	*(unsigned char *)((char *)var1 + 0x0) = 6;
-	*(int *)((char *)var1 + 0x4) = 0;
+	var1->work.ub[0] = 6;
+	var1->work.sl[1] = 0;
 }
 
 // STUB: SADX 0x0045cd00

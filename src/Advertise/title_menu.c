@@ -78,5 +78,5 @@ void FUN_004c1680(void)
 // FUNCTION: SADX 0x004c16a0
 void ChgSeqTitleMenu()
 {
-	*(int *)((char *)DAT_05b42a8c->awp + 4) = 0xe;
+	DAT_05b42a8c->awp->work.sl[1] = 0xe;
 }

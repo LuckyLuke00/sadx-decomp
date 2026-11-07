@@ -29,7 +29,7 @@ void FUN_005fb760()
 // FUNCTION: SADX 0x005fb820
 void FUN_005fb820()
 {
-	*(int *)((char *)DAT_05edd91c->awp + 4) = 0xe;
+	DAT_05edd91c->awp->work.sl[1] = 0xe;
 }
 
 // STUB: SADX 0x005fba20

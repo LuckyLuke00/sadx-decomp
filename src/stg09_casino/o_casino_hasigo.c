@@ -9,13 +9,13 @@ void Display(struct task *tp)
 		SetObjectTexture2(0xc);
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
 		FUN_0067d2d0((float *)0, var1->scl.x, 1.0f, 1.0f);
 		ds_DrawObjectClip((struct obj *)&object_cas_hashgo_hashgo, var1->scl.x > 1.0f ? var1->scl.x : 1.0f);

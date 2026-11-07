@@ -20,21 +20,21 @@ void Dsp_Leaf(struct task *pTask)
 		___njSetTexture(&texlist_chaos4_object);
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)(short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)(short)var1->ang.y);
 		}
 		if (DAT_05b3df4c != 0)
 		{
-			if (*(short *)((char *)var2 + 0xe) > 0)
+			if (var2->work.sw[7] > 0)
 			{
 				DAT_05b3df40 = -17952.0f;
 			}

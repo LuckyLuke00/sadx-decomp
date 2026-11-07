@@ -6,7 +6,7 @@ long AL_CanIWakeUp(struct task *tp)
 {
 	if (AL_EmotionGetValue(tp, 8) < 0x3e8)
 	{
-		if (AL_EmotionGetValue(tp, 9) < *(unsigned short *)((char *)&ChaoGlobal + 0x15a))
+		if (AL_EmotionGetValue(tp, 9) < (&ChaoGlobal)->ParamWakeUpSleepDepth)
 		{
 			return 1;
 		}

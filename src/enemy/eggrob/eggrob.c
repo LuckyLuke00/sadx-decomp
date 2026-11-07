@@ -321,9 +321,9 @@ void EggrobForEvent0(struct task *tp)
 	SetEventWork(local_8);
 	PInitialize(local_8->counter.b[0], tp);
 	texLoadTexturePvmFile("EGGROB", &texlist_eggrob);
-	*(float *)((char *)local_8 + 0x34) = 0.0f;
-	*(float *)((char *)local_8 + 0x30) = 0.0f;
-	*(float *)((char *)local_8 + 0x2c) = 0.0f;
+	local_8->scl.z = 0.0f;
+	local_8->scl.y = 0.0f;
+	local_8->scl.x = 0.0f;
 	DAT_05edecd4 = 0.0f;
 	DAT_05edece8 = 0;
 	DAT_05eded08 = (int)eggrob_action;

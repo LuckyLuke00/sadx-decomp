@@ -20,7 +20,7 @@ struct task *MirenSetTask(enum tasklevel level, const struct TaskInfo *info_p, v
 struct task *MirenSetChildTask(struct task *parent_p, const struct TaskInfo *info_p, void *param_p)
 {
 	struct task *local_8;
-	local_8 = CreateChildTask(*(int *)((char *)info_p + 4) & 0xfffffffe, *(void (**)(struct task *))((char *)info_p + 0xc), parent_p);
+	local_8 = CreateChildTask((int)info_p->initMode & 0xfffffffe, *(void (**)(struct task *))((char *)info_p + 0xc), parent_p);
 	if (local_8 != (struct task *)0x0)
 	{
 		local_8 = MirenInitTask(local_8, info_p, param_p);
@@ -51,9 +51,9 @@ struct task *MirenInitTask(struct task *task_p, const struct TaskInfo *info_p, v
 	}
 	if (task_p != (struct task *)0x0)
 	{
-		*(void **)((char *)task_p + 0x10) = *(void **)((char *)info_p + 0xc);
-		*(void **)((char *)task_p + 0x14) = *(void **)((char *)info_p + 0x10);
-		*(void **)((char *)task_p + 0x18) = *(void **)((char *)info_p + 0x14);
+		*(void **)((char *)task_p + 0x10) = info_p->exec_p;
+		*(void **)((char *)task_p + 0x14) = info_p->disp_p;
+		*(void **)((char *)task_p + 0x18) = info_p->dest_p;
 		local_10hk = info_p->init_p;
 		if (local_10hk != 0)
 		{

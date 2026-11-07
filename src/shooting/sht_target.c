@@ -69,8 +69,8 @@ void LockOnDisp(struct task *tp)
 				njProjectScreen(NULL, &var1->pos, &pd);
 				lock_mk_spr.p.x = pd.x;
 				lock_mk_spr.p.y = pd.y;
-				lock_mk_spr.sx = *(float *)((char *)var1 + 0x30) * ScreenRaitoY;
-				lock_mk_spr.sy = *(float *)((char *)var1 + 0x30) * ScreenRaitoY;
+				lock_mk_spr.sx = var1->scl.y * ScreenRaitoY;
+				lock_mk_spr.sy = var1->scl.y * ScreenRaitoY;
 				FUN_00472980(&lock_mk_spr, 2, 1000.0f, 0x22);
 				njPopMatrix(1);
 				___njColorBlendingMode(0, 8);
@@ -85,7 +85,7 @@ void LockOnDisp(struct task *tp)
 void LockedEnemyDead(struct task *tp)
 {
 	struct task *var1 = (struct task *)tp->awp;
-	tp->dest = (void (*)(struct task *))(*(int *)((char *)var1->twp + 8));
+	tp->dest = (void (*)(struct task *))((int)var1->twp->counter.l);
 	tp->awp = 0;
 	DestroyTask(var1);
 	tp->dest(tp);

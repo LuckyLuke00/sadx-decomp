@@ -16,16 +16,16 @@ long SendTargetPalmCommand(struct task *objTask_p, struct task *chaoTask_p, sign
 			var2 = 1;
 			break;
 		case 1:
-			if (*(signed char *)((char *)var1 + 0) == 1)
+			if (*(signed char *)var1 == 1)
 			{
-				*(signed char *)((char *)var1 + 0) = 2;
+				*(signed char *)var1 = 2;
 				var2 = 1;
 			}
 			break;
 		case 2:
-			if (*(signed char *)((char *)var1 + 0) == 2)
+			if (*(signed char *)var1 == 2)
 			{
-				*(signed char *)((char *)var1 + 0) = 3;
+				*(signed char *)var1 = 3;
 				*(struct task **)((char *)var1 + 0x18) = NULL;
 				var2 = 1;
 			}

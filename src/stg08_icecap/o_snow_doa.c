@@ -42,7 +42,7 @@ void DoaExec(struct task *tp)
 			var1->mode = 2;
 			var2->info->angz = 0x4000;
 		}
-		*(int *)((char *)var1 + 0x1c) = -var1->counter.l;
+		var1->ang.z = -var1->counter.l;
 		break;
 	case 2:
 		dsPlay_oneshot(0xdd, 0, 0, 0);

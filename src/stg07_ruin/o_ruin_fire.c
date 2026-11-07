@@ -74,7 +74,7 @@ void ObjectRuinFire(struct task *tp)
 				}
 				var1->wtimer++;
 				ruin_fire.pos = var1->pos;
-				ruin_fire.scl = (*(float *)((char *)var1 + 0x30) + 1.0) * 0.11999999731779099;
+				ruin_fire.scl = (var1->scl.y + 1.0) * 0.11999999731779099;
 				CreateFire2(&ruin_fire);
 				DrawFire(tp);
 			}

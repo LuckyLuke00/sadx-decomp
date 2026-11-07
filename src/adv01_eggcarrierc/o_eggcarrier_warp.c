@@ -13,7 +13,7 @@ void EffectWarp(struct task *tp)
 	var1->scl.y = 0.0;
 	var1->ang.x = 0;
 	var1->scl.z = 0.0;
-	*(int *)((char *)var1 + 0x1c) = 0;
+	var1->ang.z = 0;
 	tp->exec = EffectWarpExecutor;
 	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;
 	tp->disp = EffectWarpDisplayer;

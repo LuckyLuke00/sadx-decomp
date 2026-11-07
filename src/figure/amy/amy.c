@@ -86,17 +86,17 @@ long FUN_0051c960(struct taskwk *param_1, int param_2, int param_3)
 long AmyCheckStartHandle(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
 	struct amyhndlstr *local_8;
-	if ((((DAT_05b932e8[twp->counter.b[0]].press & action_button) != 0) && ((*(char *)((char *)pwp + 0x82) & 1) != 0)))
+	if ((((DAT_05b932e8[twp->counter.b[0]].press & action_button) != 0) && ((pwp->free.sb[6] & 1) != 0)))
 	{
 		local_8 = AmyHndlGetInfoStrP();
 		if (local_8 != 0)
 		{
-			*(int *)((char *)twp + 0x18) = (-(*(int *)((char *)local_8 + 0xc)) - 0x4000) & 0xffff;
-			*(float *)((char *)twp + 0x20) = njSin(*(int *)((char *)local_8 + 0xc)) * 6.0 + *(float *)((char *)local_8 + 0x10);
-			*(float *)((char *)twp + 0x28) = njCos(*(int *)((char *)local_8 + 0xc)) * 6.0 + *(float *)((char *)local_8 + 0x18);
+			twp->ang.y = (-(*(int *)((char *)local_8 + 0xc)) - 0x4000) & 0xffff;
+			twp->pos.x = njSin(*(int *)((char *)local_8 + 0xc)) * 6.0 + *(float *)((char *)local_8 + 0x10);
+			twp->pos.z = njCos(*(int *)((char *)local_8 + 0xc)) * 6.0 + *(float *)((char *)local_8 + 0x18);
 		}
 		twp->mode = 0xf;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x21;
+		pwp->mj.reqaction = 0x21;
 		return 1;
 	}
 	else
@@ -108,7 +108,7 @@ long AmyCheckStartHandle(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 // FUNCTION: SADX 0x0051ca90
 long FUN_0051ca90(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
-	if (((*(char *)((char *)param_3 + 0x82) & 1) == 0) || (DAT_05b932e8[param_1->counter.b[0]].press & (jump_button | action_button)) != 0)
+	if (((param_3->free.sb[6] & 1) == 0) || (DAT_05b932e8[param_1->counter.b[0]].press & (jump_button | action_button)) != 0)
 	{
 		FUN_0051b800(param_1, param_2, param_3);
 		return 1;
@@ -134,7 +134,7 @@ long AmyBalanceCheckBadStatus(struct taskwk *twp, struct motionwk2 *mwp, struct 
 		twp->pos.y += -2.0f;
 		twp->pos.z += njSin(twp->ang.x) * 10.0f;
 		twp->mode = 8;
-		*(short *)((char *)pwp + 0x124) = 0x11;
+		pwp->mj.reqaction = 0x11;
 		return 1;
 	}
 	return 0;
@@ -146,7 +146,7 @@ long FUN_0051e350(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 	unsigned long local_8;
 
 	PAdjustHoldingPosition(param_1, param_2, param_3);
-	if (*(float *)((char *)param_3 + 0x130) >= 6.0f)
+	if (param_3->mj.nframe >= 6.0f)
 	{
 		local_8 = PCheckHoldObject(param_1);
 		if (local_8 != 0)
@@ -226,13 +226,13 @@ long AmyCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct player
 			if ((PCheckHoldObject(twp) & 0x200) != 0)
 			{
 				twp->mode = 0x1e;
-				*(unsigned short *)((char *)pwp + 0x124) = 0x41;
+				pwp->mj.reqaction = 0x41;
 				return 1;
 			}
 			AmyThrowTheObjectOut(twp, mwp, pwp);
 		}
 		twp->mode = 8;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x12;
+		pwp->mj.reqaction = 0x12;
 		return 1;
 	}
 	else
@@ -251,12 +251,12 @@ long AmyCheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pw
 			if ((PCheckHoldObject(twp) & 0xc00) != 0)
 			{
 				twp->mode = 0x1a;
-				*(short *)((char *)pwp + 0x124) = 0x3e;
+				pwp->mj.reqaction = 0x3e;
 			}
 			else
 			{
 				twp->mode = 0x19;
-				*(short *)((char *)pwp + 0x124) = 0x2f;
+				pwp->mj.reqaction = 0x2f;
 			}
 		}
 		else
@@ -340,7 +340,7 @@ long FUN_00520610(long param_1, long *param_2)
 			FreeTask(local_cg);
 			return 0;
 		}
-		*(struct motionwk **)((char *)local_cg + 0x24) = local_8g;
+		local_cg->mwp = local_8g;
 		local_cg->twp->counter.b[0] = (unsigned char)param_1;
 		*(int *)((char *)local_8g + 0x58) = param_2[0];
 		*(int *)(*(int *)param_2) = *(int *)(*(int *)param_2) & ~0x2;
@@ -368,7 +368,7 @@ void AmyFaceMotion(struct task *tp)
 	*(long *)((char *)local_8 + 0x10) = *(long *)((char *)DAT_060eea50 + 0x78);
 	*(long *)((char *)local_8 + 0x14) = *(long *)((char *)DAT_060eea50 + 0x7c);
 	*(long *)((char *)local_8 + 0x18) = *(long *)((char *)DAT_060eea50 + 0x80);
-	*(long *)((char *)local_8 + 0x1c) = *(long *)DAT_060eeab8;
+	local_8->ang_aim.x = *(long *)DAT_060eeab8;
 	tp->dest = PlayerFaceMotionEnd;
 	tp->exec = PlayerFaceMotionExec;
 }
@@ -436,7 +436,7 @@ long AmyHandleEntry()
 	local_8 = GetPlayerWorkPointer(0);
 	if (local_8 == NULL)
 		return 0;
-	*(char *)((char *)local_8 + 0x82) |= 1;
+	local_8->free.sb[6] |= 1;
 	return 1;
 }
 

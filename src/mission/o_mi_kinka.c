@@ -34,8 +34,8 @@ void ObjectMiKinka(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 	if (IsMissionAppear(tp))
 	{
-		*(int *)((char *)var1 + 0x14) = 0;
-		*(int *)((char *)var1 + 0x1c) = 0;
+		var1->ang.x = 0;
+		var1->ang.z = 0;
 		CCL_Init(tp, mi_kinka_colli_info, 1, 4);
 		tp->exec = Exec;
 		tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;

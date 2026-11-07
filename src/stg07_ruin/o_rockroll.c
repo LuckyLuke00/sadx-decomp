@@ -30,7 +30,7 @@ void C_Fire(struct task *cTask)
 		PointTmp.y = njSin(var2->ang.z + var1->ang.z) * 52.0f + var2->pos.y;
 		PointTmp.z = var2->pos.z + var1->timer.f;
 		var1->scl.x = var2->scl.x;
-		CreateFire(&PointTmp, &var1->scl, *(float *)((char *)var2 + 0x34));
+		CreateFire(&PointTmp, &var1->scl, var2->scl.z);
 	}
 }
 

@@ -44,9 +44,9 @@ void njStartMotionObjEx(struct NJS_MOTION const *param_1,float param_2)
 void njStartMotionLink(struct NJS_MOTION_LINK const *param_1,float param_2)
 {
 	DAT_0629c3b0 = (int)&DAT_0629c400;
-	njStartMotionObjEx((struct NJS_MOTION const *)(*(int *)((char *)param_1 + 4)),*(float *)((char *)param_1 + 0xc));
+	njStartMotionObjEx((struct NJS_MOTION const *)(*(int *)((char *)param_1 + 4)),param_1->frame[1]);
 	DAT_0629c3b0 = (int)&DAT_0629c3c0;
-	njStartMotionObjEx((struct NJS_MOTION const *)(*(int *)param_1),*(float *)((char *)param_1 + 8));
+	njStartMotionObjEx((struct NJS_MOTION const *)(*(int *)param_1),param_1->frame[0]);
 	DAT_0629c444 = param_2;
 }
 

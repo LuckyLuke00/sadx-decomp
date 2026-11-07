@@ -43,9 +43,9 @@ void setCatchingKaeru(struct task *tp)
 {
 	struct taskwk *local_8;
 	local_8 = tp->twp;
-	*(int *)((char *)local_8 + 0x18) = 0;
-	*(int *)((char *)local_8 + 0x14) = 0;
-	*(int *)((char *)local_8 + 0x1c) = 0x4000;
+	local_8->ang.y = 0;
+	local_8->ang.x = 0;
+	local_8->ang.z = 0x4000;
 	DAT_05cd296c |= 0x400;
 	FUN_00595f80((int)tp, (int)&action_f_f0023_frog);
 }

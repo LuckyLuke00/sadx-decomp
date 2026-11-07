@@ -13,5 +13,5 @@ void FUN_007d4cf0(int param_1, float param_2, float param_3, float param_4)
 // FUNCTION: SADX 0x007d4d10
 void FUN_007d4d10(struct task *param_1, float param_2)
 {
-	*(float *)((char *)param_1->twp + 0x34) = param_2;
+	param_1->twp->scl.z = param_2;
 }

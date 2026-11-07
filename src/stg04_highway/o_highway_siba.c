@@ -8,7 +8,7 @@ void ObjectHighwaySiba1(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	*(struct obj **)((char *)var1 + 8) = object_obj_siba1_siba1;
+	var1->counter.ptr = object_obj_siba1_siba1;
 	if (FUN_004c39c0(tp) == 0)
 	{
 		CCL_Init(tp, object_c_info, 1, 4);

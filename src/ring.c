@@ -29,9 +29,9 @@ void RingDraw(struct task *tp)
 	}
 	if (local_8->btimer < 0x32)
 	{
-		if (*(float *)((char *)local_8 + 0x30) != -1000000.0f)
+		if (local_8->scl.y != -1000000.0f)
 		{
-			StaticShadow(local_8, *(float *)((char *)local_8 + 0x30));
+			StaticShadow(local_8, local_8->scl.y);
 		}
 	}
 	SaveConstantAttr();
@@ -39,9 +39,9 @@ void RingDraw(struct task *tp)
 	SetRegularTexture();
 	njPushMatrix(0);
 	FUN_0067d830(0, local_8->pos.x, local_8->pos.y, local_8->pos.z);
-	if (*(int *)((char *)local_8 + 0x18) != 0)
+	if (local_8->ang.y != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)local_8 + 0x18));
+		njRotateY(0, (unsigned short)local_8->ang.y);
 	}
 	if (DAT_05b3df4c != 0)
 	{

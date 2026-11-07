@@ -11,15 +11,15 @@ void CreateFlash(struct taskwk *twp, float scl);
 // FUNCTION: SADX 0x005e81c0
 void EffectFlash(struct sp_task *tp, struct sp_link *lp)
 {
-	*(short *)((char *)tp + 0xa) = (short)(int)*(float *)((char *)tp + 0x10);
-	if (*(short *)((char *)tp + 0xa) > 7)
+	tp->no = (short)(int)tp->frame;
+	if (tp->no > 7)
 	{
-		*(short *)((char *)tp + 0xa) = 7;
+		tp->no = 7;
 		SpFreeTask(tp);
 	}
 	else
 	{
-		*(float *)((char *)tp + 0x10) = *(float *)((char *)tp + 0x10) + 0.4f;
+		tp->frame = tp->frame + 0.4f;
 	}
 }
 
@@ -45,7 +45,7 @@ void FlashManager(struct task *tp)
 {
 	struct taskwk *local_8g;
 
-	local_8g = *(struct taskwk **)((char *)tp + 0x20);
+	local_8g = tp->twp;
 	switch (local_8g->mode)
 	{
 		case 0:
@@ -98,8 +98,8 @@ void FlashManagerNormal(struct taskwk *twp)
 	int local_2cg;
 	float local_30i;
 
-	*(float *)((char *)twp + 0x10) = *(float *)((char *)twp + 0x10) + 0.4000000059604645;
-	if (*(float *)((char *)twp + 0x10) > 7.0)
+	twp->value.f = twp->value.f + 0.4000000059604645;
+	if (twp->value.f > 7.0)
 	{
 		twp->mode = 2;
 	}

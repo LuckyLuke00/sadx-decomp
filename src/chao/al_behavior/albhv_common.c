@@ -105,7 +105,7 @@ long ALBHV_GoToLockOn(struct task *tp)
 		break;
 	case 1:
 		ALW_TurnToLockOn(tp, 0x180);
-		AL_ForwardAcc(tp, *(float *)((char *)&ChaoGlobal + 0x20) * 0.8f);
+		AL_ForwardAcc(tp, (&ChaoGlobal)->WalkAcc * 0.8f);
 		var2 = ALW_CalcDistFromLockOn(tp);
 		if (var2 < 0.0f)
 		{

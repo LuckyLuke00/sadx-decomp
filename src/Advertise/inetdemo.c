@@ -30,9 +30,9 @@ void FUN_005fe110(struct task *param_1, struct ModeSelPrmType *param_2)
 {
 	struct anywk *local_8;
 	local_8 = param_1->awp;
-	*(int *)((char *)local_8 + 4) = *(int *)param_2;
-	*(int *)((char *)local_8 + 8) = *(int *)((char *)param_2 + 4);
-	*(float *)((char *)local_8 + 12) = 5400.0f;
+	local_8->work.sl[1] = *(int *)param_2;
+	local_8->work.sl[2] = *(int *)((char *)param_2 + 4);
+	local_8->work.f[3] = 5400.0f;
 	*(int *)local_8 = 0;
 	*(int *)((char *)local_8 + 0x18) = 0;
 }
@@ -43,40 +43,40 @@ void inetdemo_exec(struct task *tp)
 	struct InetDemoWk *local_8;
 
 	local_8 = (struct InetDemoWk *)tp->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 0xb && *(int *)local_8 == 0)
+	if (DAT_05cda18c->awp->work.sl[1] == 0xb && *(int *)local_8 == 0)
 	{
 		FUN_005fe2f0((int)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 1;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 0xb && *(int *)local_8 == 2)
+	if (DAT_05cda18c->awp->work.sl[2] == 0xb && *(int *)local_8 == 2)
 	{
 		FUN_005b5aa0((int)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 3;
 	}
 	switch (*(int *)local_8)
 	{
 	case 0:
-		*(int *)((char *)local_8 + 0x14) = 0;
+		local_8->BaseCol = 0;
 		break;
 	case 1:
-		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeInColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			*(int *)local_8 = 2;
 		}
 		break;
 	case 2:
-		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 0xb;
+		local_8->BaseCol = 0xffffffff;
+		DAT_05cda18c->awp->work.sl[3] = 0xb;
 		inetdemo_sub_exec(local_8);
 		break;
 	case 3:
-		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			AvaReleaseTexForEachMode((AdvaModeEnum)0xb);
 			*(char *)((char *)DAT_05cda18c->awp + 0x1f) = 1;

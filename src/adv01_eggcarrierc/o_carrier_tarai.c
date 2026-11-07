@@ -26,21 +26,21 @@ void TaraiDisp(struct task *tp)
 		___njSetTexture(&texlist_ec_tarai);
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var2 + 0x20) != 0)
+		if (var2->ang_aim.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var2 + 0x20));
+			njRotateY(NULL, (unsigned short)var2->ang_aim.y);
 		}
-		if (*(int *)((char *)var2 + 0x28) != 0)
+		if (var2->ang_spd.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var2 + 0x28));
+			njRotateX(NULL, (unsigned short)var2->ang_spd.x);
 		}
-		if (*(int *)((char *)var2 + 0x2c) != 0)
+		if (var2->ang_spd.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var2 + 0x2c));
+			njRotateY(NULL, (unsigned short)var2->ang_spd.y);
 		}
-		if (*(int *)((char *)var2 + 0x30) != 0)
+		if (var2->ang_spd.z != 0)
 		{
-			njRotateZ(NULL, *(unsigned short *)((char *)var2 + 0x30));
+			njRotateZ(NULL, (unsigned short)var2->ang_spd.z);
 		}
 		SetMaterial(var1->value.f, 0.0f, 0.0f, 0.0f);
 		late_DrawObjectClipMesh(*(struct obj **)((char *)DAT_060eea98 + 0x18), 1, 1.0f);
@@ -63,14 +63,14 @@ void TateTaraiDisp(struct task *tp)
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
 		FUN_0067d830(NULL, -1.5f, 0.0f, 0.0f);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)var1->ang.z);
 		}
 		FUN_0067d830(NULL, 0.0f, 5.0f, 0.0f);
-		if (*(int *)((char *)var2 + 0x24) != 0)
+		if (var2->ang_aim.z != 0)
 		{
-			njRotateZ(NULL, *(unsigned short *)((char *)var2 + 0x24));
+			njRotateZ(NULL, (unsigned short)var2->ang_aim.z);
 		}
 		SetMaterial(var1->value.f, 0.0f, 0.0f, 0.0f);
 		late_DrawObject(*(struct obj **)((char *)DAT_060eea98 + 0x18), 1);
@@ -88,17 +88,17 @@ void HugeTaraiDisp(struct task *tp)
 		___njSetTexture(&texlist_ec_tarai);
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)var1->ang.z);
 		}
 		FUN_0067d2d0((float *)0, var1->scl.x, var1->scl.y, var1->scl.z);
 		SetMaterial(var1->value.f, 0.0f, 0.0f, 0.0f);
-		late_DrawObject((struct obj *)(*(int *)((char *)DAT_060eea98 + 0x18)), 1);
+		late_DrawObject((struct obj *)(DAT_060eea98->ang[1]), 1);
 		ResetMaterial();
 		njPopMatrix(1);
 	}

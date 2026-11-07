@@ -43,16 +43,16 @@ void dispWorm(struct task *task_p)
 	}
 	struct taskwk *var1 = task_p->twp;
 	struct motionwk *var2 = task_p->mwp;
-	float var3 = *(float *)((char *)task_p->ptp->mwp + 0x10);
+	float var3 = task_p->ptp->mwp->acc.x;
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)var1->ang.y);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)var1->ang.x);
 	}
 	FUN_0067d2d0((float *)0, var3, var3, var3);
 	SetObjectTexture();

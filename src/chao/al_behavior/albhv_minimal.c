@@ -217,8 +217,8 @@ long ALBHV_GoroGoro(struct task *tp)
 	{
 		return 1;
 	}
-	*(float *)((char *)var1 + 0x20) = *(float *)((char *)var1 + 0x20) + njSin(*(int *)((char *)var1 + 0x18) - 0x4000) * 0.05000000074505806;
-	*(float *)((char *)var1 + 0x28) = *(float *)((char *)var1 + 0x28) + njCos(*(int *)((char *)var1 + 0x18) - 0x4000) * 0.05000000074505806;
+	var1->pos.x = var1->pos.x + njSin(var1->ang.y - 0x4000) * 0.05000000074505806;
+	var1->pos.z = var1->pos.z + njCos(var1->ang.y - 0x4000) * 0.05000000074505806;
 	return 0;
 }
 

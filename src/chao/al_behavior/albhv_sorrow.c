@@ -16,9 +16,9 @@ long ALBHV_Sorrow(struct task *tp)
 // FUNCTION: SADX 0x00468db0
 void AL_CalcIntentionScore_Sorrow(struct task *tp, float *pMaxScore)
 {
-	if (AL_EmotionGetValue(tp, 2) > *(unsigned int *)((char *)&ChaoGlobal + 0x1d0))
+	if (AL_EmotionGetValue(tp, 2) > (&ChaoGlobal)->IntentionSorrowTrigger)
 	{
-		float local_8 = 1.0f - (float)(AL_EmotionGetValue(tp, 0x15) + 100) * 0.004999999888241291 * (1.0f - *(float *)((char *)&ChaoGlobal + 0x1d4));
+		float local_8 = 1.0f - (float)(AL_EmotionGetValue(tp, 0x15) + 100) * 0.004999999888241291 * (1.0f - (&ChaoGlobal)->IntentionSorrowMinScore);
 		if (local_8 > *pMaxScore)
 		{
 			AL_SetBehavior(tp, ALBHV_Sorrow);

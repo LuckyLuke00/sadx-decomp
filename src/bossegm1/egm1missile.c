@@ -11,13 +11,13 @@ void egm1missile_disp(struct task *tp)
 	___njSetTexture(&texlist_egm1mis);
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)var1->ang.y);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)var1->ang.x);
 	}
 	late_DrawObjectClipEx((struct obj *)&object_egg_m1_em_mis_em_mis, 0, 1.0f);
 	njPopMatrix(1);

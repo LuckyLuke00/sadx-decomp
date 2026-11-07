@@ -46,8 +46,8 @@ static void objNormal(struct task *tp)
 		}
 		break;
 	}
-	var1->pos.x = njCos(*(int *)((char *)var1 + 0x18)) * 38.0 + *(float *)((char *)DAT_05edd128 + 0x20);
-	var1->pos.z = njSin(*(int *)((char *)var1 + 0x18)) * 38.0 + *(float *)((char *)DAT_05edd128 + 0x28);
+	var1->pos.x = njCos(var1->ang.y) * 38.0 + *(float *)((char *)DAT_05edd128 + 0x20);
+	var1->pos.z = njSin(var1->ang.y) * 38.0 + *(float *)((char *)DAT_05edd128 + 0x28);
 	objDisplay(tp);
 }
 
@@ -57,9 +57,9 @@ void Chaos6Barrier(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 	float var2 = var1->pos.z - *(float *)((char *)DAT_05edd128 + 0x28);
 	float var3 = var1->pos.x - *(float *)((char *)DAT_05edd128 + 0x20);
-	*(int *)((char *)var1 + 0x18) = (int)(atan2(var2, var3) * 65536.0f / 6.283184);
+	var1->ang.y = (int)(atan2(var2, var3) * 65536.0f / 6.283184);
 	var1->counter.f = 0.0f;
-	*(int *)((char *)object_c0_balia_a_balia_a[0].model->mats + 0x10) |= 0x100000;
+	object_c0_balia_a_balia_a[0].model->mats->attrflags |= 0x100000;
 	tp->exec = objNormal;
 	tp->disp = objDisplay;
 }

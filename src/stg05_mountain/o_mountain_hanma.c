@@ -8,9 +8,9 @@ void HanmaExec(struct task *tp)
 	njPushMatrix(NULL);
 	njUnitMatrix(NULL);
 	njTranslateV(NULL, &var2->pos);
-	if (*(int *)((char *)var2 + 0x18) != 0)
+	if (var2->ang.y != 0)
 	{
-		njRotateY(NULL, (unsigned short)*(short *)((char *)var2 + 0x18));
+		njRotateY(NULL, (unsigned short)(short)var2->ang.y);
 	}
 	if ((long)var2->counter.f != 0)
 	{

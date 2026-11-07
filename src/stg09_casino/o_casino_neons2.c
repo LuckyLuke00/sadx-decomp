@@ -29,9 +29,9 @@ static void Disp(struct task *tp)
 		SetObjectTexture2(0xc);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)var1->ang.y);
 		}
 		ds_DrawObjectClip((struct obj *)&object_cas_obj_main1f_neon_main1f_neon, 1.0f);
 		njPopMatrix(1);

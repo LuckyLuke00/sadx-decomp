@@ -9,23 +9,23 @@ void dispSkyPower(struct task *tp)
 	{
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)var1->ang.y);
 		}
 		SetObjectTexture();
-		ds_ActionClip(*(struct NJS_ACTION **)((char *)var1 + 8), *(float *)((char *)var1 + 0xc), 1.0f);
+		ds_ActionClip((struct NJS_ACTION *)var1->counter.ptr, var1->timer.f, 1.0f);
 		njPopMatrix(1);
 		if (FUN_004c39c0(tp) == 0)
 		{
 			if (ChkPause() == 0)
 			{
-				float var2 = *(float *)((char *)var1 + 0xc) + 1.0;
-				*(float *)((char *)var1 + 0xc) = var2;
-				struct NJS_MOTION *var3 = *(struct NJS_MOTION **)((char *)(*(void **)((char *)var1 + 8)) + 4);
+				float var2 = var1->timer.f + 1.0;
+				var1->timer.f = var2;
+				struct NJS_MOTION *var3 = *(struct NJS_MOTION **)((char *)(var1->counter.ptr) + 4);
 				if ((float)(unsigned int)var3->nbFrame <= var2)
 				{
-					*(float *)((char *)var1 + 0xc) = 0.0f;
+					var1->timer.f = 0.0f;
 				}
 			}
 		}
@@ -59,7 +59,7 @@ void ObjectSkyMeka(struct task *tp)
 		{
 		case 0:
 			var1->mode = 1;
-			*(void **)((char *)var1 + 8) = action_skymain_nc_obj_meka;
+			var1->counter.ptr = action_skymain_nc_obj_meka;
 			tp->dest = destChaos7Float;
 			tp->disp = dispSkyPower;
 			if (var1->scl.x < 0.0f)
@@ -101,7 +101,7 @@ void ObjectSkyTutu(struct task *tp)
 		{
 		case 0:
 			var1->mode = 1;
-			*(void **)((char *)var1 + 8) = action_skymain_nc_obj_tutu;
+			var1->counter.ptr = action_skymain_nc_obj_tutu;
 			tp->dest = destChaos7Float;
 			tp->disp = dispSkyPower;
 			break;

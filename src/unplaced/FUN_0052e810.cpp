@@ -16,7 +16,7 @@ void FUN_0052e810(struct task *param_1)
 	*(long *)((char *)local_8 + 0x10) = *(long *)((char *)DAT_06274af0 + 0xd8);
 	*(long *)((char *)local_8 + 0x14) = *(long *)((char *)DAT_06274af0 + 0xdc);
 	*(long *)((char *)local_8 + 0x18) = *(long *)((char *)DAT_06274af0 + 0xe0);
-	*(long *)((char *)local_8 + 0x1c) = *(long *)DAT_06298ca8;
+	local_8->ang_aim.x = *(long *)DAT_06298ca8;
 	param_1->dest = PlayerFaceMotionEnd;
 	param_1->exec = PlayerFaceMotionExec;
 }

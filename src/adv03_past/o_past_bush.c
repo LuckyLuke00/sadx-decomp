@@ -43,7 +43,7 @@ void SotetsuDisplayer(struct task *tp)
 		njRotateZXY(0, var1->ang.x, var1->ang.y, var1->ang.z);
 		if (var1->flag & 0x200)
 		{
-			late_ActionClipEx(var2, *(float *)((char *)var1 + 0x10), 1, 1.0f);
+			late_ActionClipEx(var2, var1->value.f, 1, 1.0f);
 		}
 		else
 		{

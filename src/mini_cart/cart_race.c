@@ -34,7 +34,7 @@ signed char CartRaceGetDialState()
 	signed char var1 = 0;
 	if (DAT_060cd274 != 0)
 	{
-		var1 = *(signed char *)((char *)DAT_060cd274->mwp + 3);
+		var1 = DAT_060cd274->mwp->work.b[3];
 	}
 	return var1;
 }

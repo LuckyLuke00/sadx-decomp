@@ -6,10 +6,10 @@ void FUN_005a5450(struct NJS_TEXLIST *param_1)
 	struct NJS_TEXLIST *local_8g;
 	int local_cg;
 	local_8g = *(struct NJS_TEXLIST **)((char *)param_1 + 0x24);
-	local_cg = *(int *)((char *)local_8g + 4);
+	local_cg = (int)local_8g->nbTexture;
 	if (local_cg != 0)
 	{
 		late_ReleaseTexture((struct NJS_TEXLIST *)local_cg);
-		*(int *)((char *)local_8g + 4) = 0;
+		local_8g->nbTexture = 0;
 	}
 }

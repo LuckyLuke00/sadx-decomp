@@ -54,7 +54,7 @@ void ObjectHighwayCarManager(struct task *tp)
 	CreateCar(tp);
 	var1->smode = 0;
 	var1->wtimer = 0;
-	*(int *)((char *)var1 + 8) = (int)tp->ctp;
+	var1->counter.l = (int)tp->ctp;
 	tp->dest = ObjectCarManagerExit;
 	tp->exec = ObjectCarManagerRegular;
 }

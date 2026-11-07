@@ -112,12 +112,12 @@ void FUN_008d6360(struct taskwk *param_1, struct enemywk *param_2)
 	{
 	case 0:
 		if (param_1->wtimer == 0x46)
-			param_2->aim_angle = *(long *)((char *)param_1 + 0x18) - 0x2aaa;
+			param_2->aim_angle = param_1->ang.y - 0x2aaa;
 		param_2->angy_spd = 0x60;
 		break;
 	case 2:
 		if (param_1->wtimer == 0xf)
-			param_2->aim_angle = *(long *)((char *)param_1 + 0x18) - 0x2aaa;
+			param_2->aim_angle = param_1->ang.y - 0x2aaa;
 		param_2->angy_spd = 0x200;
 		break;
 	}

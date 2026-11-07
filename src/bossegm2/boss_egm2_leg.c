@@ -11,7 +11,7 @@ void egm2_leg_model_get(struct LegModel *legmodel, struct obj *obj, long root)
 
 	while (1)
 	{
-		*(float *)((char *)legmodel + 0) = obj->pos[0];
+		*(float *)legmodel = obj->pos[0];
 		*(long *)((char *)legmodel + 0xc) = obj->ang[0];
 		*(float *)((char *)legmodel + 0x18) = obj->scl[0];
 		*(float *)((char *)legmodel + 4) = obj->pos[1];

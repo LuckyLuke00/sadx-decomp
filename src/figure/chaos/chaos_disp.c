@@ -72,7 +72,7 @@ void SetParamDispChaosWater(struct NJS_POINT3 *pos, struct NJS_POINT3 *scale)
 	local_10 = DAT_060dfe30->twp;
 	local_ci = DAT_060dfe30->awp;
 	local_8g = (long)(atan2(pos->z - local_10->pos.z, pos->x - local_10->pos.x) * 65536.0 / 6.283184);
-	*(long *)((char *)local_10 + 0x18) = AdjustAngle(*(long *)((char *)local_10 + 0x18), local_8g, 0x38e);
+	local_10->ang.y = AdjustAngle(local_10->ang.y, local_8g, 0x38e);
 	local_10->pos = *pos;
 	*(struct NJS_POINT3 *)((char *)local_ci + 0x4c) = *scale;
 }

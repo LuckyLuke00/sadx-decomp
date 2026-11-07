@@ -6,7 +6,7 @@ int AL_SeqGetPlayerId()
 {
 	struct taskwk *var1 = DAT_05baf368[0];
 	int var2 = -1;
-	switch (*(unsigned char *)((char *)var1 + 9))
+	switch (var1->counter.b[1])
 	{
 	case 0:
 		var2 = 0;

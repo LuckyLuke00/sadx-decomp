@@ -71,7 +71,7 @@ void FUN_005ae5e0(struct taskwk *param_1, void *param_2)
 	}
 	else
 	{
-		*(struct taskwk **)((char *)param_1 + 0x10) = local_8g;
+		param_1->value.ptr = local_8g;
 	}
 	if (local_8g != NULL)
 	{
@@ -90,17 +90,17 @@ void CalcPosVec(int pnum, struct NJS_POINT3 *pos, struct NJS_POINT3 *vec, struct
 	local_8g = *(int *)(*(int *)((char *)local_cg + 0x38) + 0xc);
 	njPushMatrix((NJS_MATRIX *)_nj_unit_matrix_);
 	njTranslateV(0, (NJS_VECTOR *)((char *)local_8g + 8));
-	if (*(int *)((char *)local_cg + 0x1c) != 0)
+	if (local_cg->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)local_cg + 0x1c));
+		njRotateZ(0, (unsigned short)local_cg->ang.z);
 	}
-	if (*(int *)((char *)local_cg + 0x14) != 0)
+	if (local_cg->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)local_cg + 0x14));
+		njRotateX(0, (unsigned short)local_cg->ang.x);
 	}
-	if (0x8000 - *(int *)((char *)local_cg + 0x18) != 0)
+	if (0x8000 - local_cg->ang.y != 0)
 	{
-		njRotateY(0, (unsigned short)(0x8000 - *(int *)((char *)local_cg + 0x18)));
+		njRotateY(0, (unsigned short)(0x8000 - local_cg->ang.y));
 	}
 	njCalcPoint(0, pos, pos);
 	njCalcVector(0, vec, vec);
@@ -333,13 +333,13 @@ void EffectSpinRibbonDisplay(struct task *tp)
 	njPushMatrix(0);
 	njTranslateV(0, &local_cg->pos);
 	local_8g = (float)local_cg->timer.l / 32.0;
-	if (*(long *)((char *)DAT_05b42a7c + 0x18) != 0)
+	if (DAT_05b42a7c->ang.y != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)DAT_05b42a7c + 0x18));
+		njRotateY(0, (unsigned short)DAT_05b42a7c->ang.y);
 	}
-	if (*(long *)((char *)DAT_05b42a7c + 0x14) != 0)
+	if (DAT_05b42a7c->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)DAT_05b42a7c + 0x14));
+		njRotateX(0, (unsigned short)DAT_05b42a7c->ang.x);
 	}
 	FUN_0067d2d0(0, local_8g, local_8g, local_8g);
 	___njFogDisable();
@@ -377,7 +377,7 @@ void SonicIce(struct task *tp)
 
 	local_cg = tp->twp;
 	local_8g = GetPlayerWorkPointer(local_cg->btimer);
-	local_cg->wtimer = *(short *)((char *)local_8g + 0x124);
+	local_cg->wtimer = (short)local_8g->mj.reqaction;
 	local_cg->scl.z = 1.0f;
 	local_cg->scl.y = 1.0f;
 	local_cg->scl.x = 1.0f;
@@ -397,20 +397,20 @@ void SonicIceDisplay(struct task *tp)
 	___njSetTexture((struct NJS_TEXLIST *)local_8->value.ptr);
 	njPushMatrix(0);
 	njTranslateV(0, &local_8->pos);
-	if (*(int *)((char *)local_8 + 0x1c) != 0)
+	if (local_8->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)local_8 + 0x1c));
+		njRotateZ(0, (unsigned short)local_8->ang.z);
 	}
-	if (*(int *)((char *)local_8 + 0x14) != 0)
+	if (local_8->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)local_8 + 0x14));
+		njRotateX(0, (unsigned short)local_8->ang.x);
 	}
-	if (*(int *)((char *)local_8 + 0x18) != 0)
+	if (local_8->ang.y != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)local_8 + 0x18));
+		njRotateY(0, (unsigned short)local_8->ang.y);
 	}
 	njScaleV(0, (struct NJS_POINT3 *)((char *)local_8 + 0x2c));
-	___dsDrawObject((struct obj *)(*(int *)((char *)local_8 + 8)));
+	___dsDrawObject((struct obj *)((int)local_8->counter.l));
 	njPopMatrix(1);
 }
 
@@ -439,14 +439,14 @@ void SonicIcePieceExecute(struct task *tp)
 	{
 		return;
 	}
-	*(float *)((char *)local_8 + 0x20) = *(float *)((char *)local_8 + 0x20) + njSin(*(int *)((char *)local_8 + 0x18)) * 2.0f;
-	*(float *)((char *)local_8 + 0x28) = *(float *)((char *)local_8 + 0x28) + njCos(*(int *)((char *)local_8 + 0x18)) * 2.0f;
-	*(float *)((char *)local_8 + 0x24) = *(float *)((char *)local_8 + 0x24) + *(float *)((char *)local_8 + 0x30);
-	*(float *)((char *)local_8 + 0x30) = *(float *)((char *)local_8 + 0x30) - 0.1f;
-	if (*(float *)((char *)local_8 + 0x30) < -6.0f)
+	local_8->pos.x = local_8->pos.x + njSin(local_8->ang.y) * 2.0f;
+	local_8->pos.z = local_8->pos.z + njCos(local_8->ang.y) * 2.0f;
+	local_8->pos.y = local_8->pos.y + local_8->scl.y;
+	local_8->scl.y = local_8->scl.y - 0.1f;
+	if (local_8->scl.y < -6.0f)
 	{
-		*(float *)((char *)local_8 + 0x30) = -6.0f;
+		local_8->scl.y = -6.0f;
 	}
-	*(int *)((char *)local_8 + 0x14) = *(int *)((char *)local_8 + 0x14) + 0x100;
+	local_8->ang.x = local_8->ang.x + 0x100;
 	SonicIceDisplay(tp);
 }

@@ -86,7 +86,7 @@ struct task *SetCircleLimit(struct NJS_POINT3 *pos, struct NJS_POINT3 *center, f
 		local_8g = local_cg->twp;
 		local_8g->pos = *center;
 		local_8g->scl.x = radius;
-		*(void **)((char *)local_8g + 8) = (void *)pos;
+		local_8g->counter.ptr = (void *)pos;
 	}
 	return local_cg;
 }

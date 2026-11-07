@@ -18,19 +18,19 @@ void DrawLeaf(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(NULL);
 		FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
-		int var2 = (int)*(float *)((char *)var1 + 0x34);
+		int var2 = (int)var1->scl.z;
 		switch (var2)
 		{
 		case 0:
@@ -56,17 +56,17 @@ void DrawSai(struct task *tp)
 		___njSetTexture(&texlist_e_sai);
 		njPushMatrix(NULL);
 		FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
 		late_DrawObjectClip(&object_rhino, 1, 1.0f);
 		njPopMatrix(1);

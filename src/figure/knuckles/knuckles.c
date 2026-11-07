@@ -73,7 +73,7 @@ long FUN_005293e0(struct taskwk *param_1, char *param_2, struct playerwk *param_
 		param_3->spd.z = 0.0f;
 		param_3->spd.y = 0.0f;
 		param_3->spd.x = 0.0f;
-		*(short *)((char *)param_3 + 0x124) = 0x13;
+		param_3->mj.reqaction = 0x13;
 		param_3->work.f = 0.0f;
 		param_1->flag &= ~0x500;
 		return 1;
@@ -91,8 +91,8 @@ long KnucklesCheckKickWall(struct taskwk *twp, struct playerwk *pwp)
 	if (PCheckJump(twp, pwp))
 	{
 		twp->mode = 6;
-		pwp->spd.x = *(float *)((char *)pwp + 0xb4) * 0.5324999690055847;
-		pwp->spd.y = *(float *)((char *)pwp + 0xb4) * 0.5324999690055847;
+		pwp->spd.x = pwp->p.jmp_y_spd * 0.5324999690055847;
+		pwp->spd.y = pwp->p.jmp_y_spd * 0.5324999690055847;
 		pwp->spd.z = 0.0f;
 		bkvec.z = 0.0f;
 		bkvec.x = bkvec.z;
@@ -111,7 +111,7 @@ long KnucklesCheckKickWall(struct taskwk *twp, struct playerwk *pwp)
 		twp->pos.x -= bkvec.x * 5.0f;
 		twp->pos.y -= bkvec.y * 5.0f;
 		twp->pos.z -= bkvec.z * 5.0f;
-		*(unsigned short *)((char *)pwp + 0x124) = 0xe;
+		pwp->mj.reqaction = 0xe;
 		pwp->work.f = 2.0f;
 		twp->flag |= 0x500;
 		pwp->jumptimer = 0;
@@ -210,13 +210,13 @@ long KnucklesCheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct p
 			if ((PCheckHoldObject(twp) & 0x200) != 0)
 			{
 				twp->mode = 0x22;
-				*(unsigned short *)((char *)pwp + 0x124) = 0x5e;
+				pwp->mj.reqaction = 0x5e;
 				return 1;
 			}
 			SonicThrowTheObjectOut(twp, mwp, pwp);
 		}
 		twp->mode = 9;
-		*(unsigned short *)((char *)pwp + 0x124) = 0x13;
+		pwp->mj.reqaction = 0x13;
 		return 1;
 	}
 	else
@@ -235,12 +235,12 @@ long FUN_0052bc30(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 			if ((PCheckHoldObject(param_1) & 0xc00) != 0)
 			{
 				param_1->mode = 0x1e;
-				*(short *)((char *)param_3 + 0x124) = 0x5b;
+				param_3->mj.reqaction = 0x5b;
 			}
 			else
 			{
 				param_1->mode = 0x1d;
-				*(short *)((char *)param_3 + 0x124) = 0x4a;
+				param_3->mj.reqaction = 0x4a;
 			}
 		}
 		else
@@ -281,8 +281,8 @@ long KnucklesCheckStartPunch(struct taskwk *twp, struct motionwk2 *mwp, struct p
 		DAT_05cc63c6 = 0;
 		DAT_05cc63d6 = 0;
 		twp->mode = 0x1a;
-		*(short *)((char *)pwp + 0x124) = 0x36;
-		*(short *)((char *)pwp + 0x86) = 0;
+		pwp->mj.reqaction = 0x36;
+		pwp->free.sw[5] = 0;
 		dsStop_num(0x318);
 		return 1;
 	}
@@ -360,7 +360,7 @@ int FUN_0052e120(unsigned char param_1, const int *param_2)
 			FreeTask(local_cg);
 			return 0;
 		}
-		*(struct motionwk **)((char *)local_cg + 0x24) = local_8g;
+		local_cg->mwp = local_8g;
 		local_cg->twp->counter.b[0] = param_1;
 		*(int *)((char *)local_8g + 0x58) = param_2[0];
 		*(int *)((char *)local_8g + 0x5c) = param_2[1];
@@ -424,13 +424,13 @@ void KnucklesTouchWallInit(struct taskwk *twp, struct motionwk2 *mwp, struct pla
 	pwp->spd.x = 0.0f;
 	pwp->spd.z = 0.0f;
 	twp->ang.x = pwp->cstsp->angx;
-	*(int *)((char *)twp + 0x1c) = *(int *)((char *)pwp->cstsp + 0x38);
+	twp->ang.z = pwp->cstsp->angz;
 	twp->pos.x = pwp->cstsp->onpoly.x;
 	twp->pos.y = pwp->cstsp->onpoly.y;
 	twp->pos.z = pwp->cstsp->onpoly.z;
 	twp->flag &= ~0x400;
 	twp->mode = 0x18;
-	*(short *)((char *)pwp + 0x124) = 0x34;
+	pwp->mj.reqaction = 0x34;
 	dsStop_num(0x30c);
 }
 

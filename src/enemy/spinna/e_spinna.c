@@ -30,19 +30,19 @@ void SpinnaInit(struct task *tp, struct taskwk *twp)
 	local_cj = EnemyInitialize(tp, twp);
 	twp->smode = 0;
 	twp->wtimer = 0;
-	local_cj->old_smode = (signed char)(*(unsigned int *)((char *)twp + 0x1c) & 0xff);
-	*(unsigned int *)((char *)twp + 0x1c) = (*(unsigned int *)((char *)twp + 0x1c) & ~0xff) >> 8;
+	local_cj->old_smode = (signed char)((unsigned int)twp->ang.z & 0xff);
+	twp->ang.z = ((unsigned int)twp->ang.z & ~0xff) >> 8;
 	local_cj->view_range = 6400.0f;
 	local_cj->view_angle = 0x71c7;
 	local_cj->hear_range = 400.0f;
-	*(float *)((char *)local_cj + 4) = 0.4f;
+	local_cj->velo.x = 0.4f;
 	local_cj->angy_spd = 0x180;
 	local_cj->norm.x = 1.0f;
 	local_cj->norm.y = 0.0f;
 	local_10m = rand();
 	local_14 = (float)local_10m / 32768.0f;
 	local_cj->angz_spd = (long)(local_14 * 360.0f * 65536.0f / 360.0f);
-	local_cj->angx_spd = (int)local_8g * *(int *)((char *)twp + 0x1c) + *(int *)((char *)twp + 0x14);
+	local_cj->angx_spd = (int)local_8g * twp->ang.z + twp->ang.x;
 	local_cj->force.y = twp->pos.y;
 	EnemyPreserveHomePosition(twp, local_cj);
 	twp->mode = 1;
@@ -176,7 +176,7 @@ void FUN_005946c0(struct taskwk *param_1, struct enemywk *param_2)
 void FUN_00594710(void *param_1, void *param_2)
 {
 	float local_8;
-	local_8 = *(float *)((char *)DAT_05baf368[0] + 0x24) + 6.0f;
+	local_8 = DAT_05baf368[0]->pos.y + 6.0f;
 	*(float *)((char *)param_2 + 0x4) = *(float *)((char *)param_2 + 0x4) + *(float *)((char *)param_2 + 0x10);
 	*(float *)((char *)param_2 + 0xc) = *(float *)((char *)param_2 + 0xc) + *(float *)((char *)param_2 + 0x18);
 	if (*(float *)((char *)param_2 + 0x4) > 0.4f)
@@ -257,11 +257,11 @@ void FUN_005951a0(struct taskwk *param_1, struct enemywk *param_2)
 void SpinnaNormalB(struct taskwk *twp, struct enemywk *ewp)
 {
 	float local_8;
-	local_8 = njSin((long)GetGlobalTime() * *(long *)((char *)twp + 0x1c) + twp->ang.x);
+	local_8 = njSin((long)GetGlobalTime() * twp->ang.z + twp->ang.x);
 	twp->pos.x = twp->scl.x * local_8 + ewp->home.x;
 	twp->pos.y = twp->scl.y * local_8 + ewp->home.y;
 	twp->pos.z = twp->scl.z * local_8 + ewp->home.z;
-	ewp->angx_spd += *(long *)((char *)twp + 0x1c);
+	ewp->angx_spd += twp->ang.z;
 }
 
 // STUB: SADX 0x005952e0

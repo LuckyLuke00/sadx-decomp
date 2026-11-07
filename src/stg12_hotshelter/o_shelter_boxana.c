@@ -31,7 +31,7 @@ static void DispATask(struct task *tp)
 	{
 		njRotateY(0, (unsigned short)var1->ang.y);
 	}
-	late_ActionClipMesh(action_boxana_boxana, (float)*(unsigned char *)((char *)var1 + 9), 1, 1.0f);
+	late_ActionClipMesh(action_boxana_boxana, (float)var1->counter.b[1], 1, 1.0f);
 	njPopMatrix(1);
 }
 

@@ -13,9 +13,9 @@ void moveToTarget(struct taskwk *twp, struct motionwk2 *mwp, struct bosswk *bwp)
 	int local_cg;
 	local_8g = bwp;
 	local_cg = (int)(atan2(*(float *)((char *)local_8g + 0x6c) - twp->pos.z, *(float *)((char *)local_8g + 0x64) - twp->pos.x) * 65536.0 / 6.283184);
-	*(long *)((char *)twp + 0x18) = AdjustAngle(*(long *)((char *)twp + 0x18), local_cg, *(long *)((char *)DAT_05edd138 + 0x10));
-	twp->pos.x = njCos(*(long *)((char *)twp + 0x18)) * *(float *)((char *)DAT_05edd138 + 0xc) + twp->pos.x;
-	twp->pos.z = njSin(*(long *)((char *)twp + 0x18)) * *(float *)((char *)DAT_05edd138 + 0xc) + twp->pos.z;
+	twp->ang.y = AdjustAngle(twp->ang.y, local_cg, *(long *)((char *)DAT_05edd138 + 0x10));
+	twp->pos.x = njCos(twp->ang.y) * *(float *)((char *)DAT_05edd138 + 0xc) + twp->pos.x;
+	twp->pos.z = njSin(twp->ang.y) * *(float *)((char *)DAT_05edd138 + 0xc) + twp->pos.z;
 	DAT_05edd144 = DAT_05edd144 + *(float *)((char *)DAT_05edd138 + 0xc);
 }
 

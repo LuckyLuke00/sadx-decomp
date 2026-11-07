@@ -47,8 +47,8 @@ void SideInit2(struct task *tp)
 void TubeExec(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	float var2 = *(float *)((char *)var1 + 0x24);
-	*(float *)((char *)var1 + 0x24) = var1->value.f;
+	float var2 = var1->pos.y;
+	var1->pos.y = var1->value.f;
 	if (CheckCollisionCylinderP(&var1->pos, 110.0f, var1->timer.f))
 	{
 		var1->flag |= 0x100;
@@ -57,8 +57,8 @@ void TubeExec(struct task *tp)
 	{
 		var1->flag &= 0xfeff;
 	}
-	*(float *)((char *)var1 + 0x24) = var2;
-	*(int *)((char *)object_suimen_wt_j2h_wt_j2h[0].model->mats + 0xc) = *(signed char *)((char *)tp->ptp->twp + 1);
+	var1->pos.y = var2;
+	object_suimen_wt_j2h_wt_j2h[0].model->mats->attr_texId = tp->ptp->twp->smode;
 	TubeDisp(tp);
 }
 

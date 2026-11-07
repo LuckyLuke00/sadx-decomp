@@ -64,8 +64,8 @@ struct task *CreateNpcMilesPlayerTask()
 	local_8 = CreateElementalTask(7, 1, MilesTalesPrower);
 	if (local_8 != 0)
 	{
-		*(unsigned char *)((char *)local_8->twp + 9) = 2;
-		*(unsigned char *)((char *)local_8->twp + 8) = 1;
+		local_8->twp->counter.b[1] = 2;
+		local_8->twp->counter.b[0] = 1;
 	}
 	return local_8;
 }
@@ -123,8 +123,8 @@ void GetPlayerSidePos(struct taskwk *twp, float dist, struct NJS_POINT3 *pos)
 
 	if ((twp != 0) && (pos != 0))
 	{
-		local_8g = njSin(*(int *)((char *)twp + 0x18));
-		local_cg = njCos(*(int *)((char *)twp + 0x18));
+		local_8g = njSin(twp->ang.y);
+		local_cg = njCos(twp->ang.y);
 		pos->x = twp->pos.x - dist * local_cg;
 		pos->y = twp->pos.y;
 		pos->z = twp->pos.z - dist * local_8g;

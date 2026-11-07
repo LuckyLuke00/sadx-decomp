@@ -208,12 +208,12 @@ void AlrReal_calcAverage(struct AlrReal *___this)
 {
 	int current;
 
-	*(float *)((char *)___this + 0x1574) = 0.0f;
+	___this->average = 0.0f;
 	for (current = 0; current < 8; current++)
 	{
-		*(float *)((char *)___this + 0x1574) += *(float *)((char *)___this + current * 0xf4 + 0xd90);
+		___this->average += *(float *)((char *)___this + current * 0xf4 + 0xd90);
 	}
-	*(float *)((char *)___this + 0x1574) *= 0.125f;
+	___this->average *= 0.125f;
 }
 
 // STUB: SADX 0x00483500
@@ -258,9 +258,9 @@ void AlrReal_dspHead(struct AlrReal *___this)
 // FUNCTION: SADX 0x00484060
 int AlrReal_offSonic(struct AlrReal *___this)
 {
-	if ((*(unsigned short *)((char *)___this + 0x157c) & 2) == 0)
+	if ((___this->flag & 2) == 0)
 	{
-		*(unsigned short *)((char *)___this + 0x157c) = *(unsigned short *)((char *)___this + 0x157c) | 2;
+		___this->flag = ___this->flag | 2;
 		AL_PlayerDisable();
 		return 1;
 	}
@@ -270,9 +270,9 @@ int AlrReal_offSonic(struct AlrReal *___this)
 // FUNCTION: SADX 0x004840a0
 static int AlrReal_onSonic(struct AlrReal *___this)
 {
-	if (*(unsigned short *)((char *)___this + 0x157c) & 2)
+	if (___this->flag & 2)
 	{
-		*(unsigned short *)((char *)___this + 0x157c) &= ~2;
+		___this->flag &= ~2;
 		AL_PlayerEnable();
 		return 1;
 	}
@@ -324,7 +324,7 @@ void AlrReal_checkSaveJewel(struct AlrReal *___this)
 // FUNCTION: SADX 0x00484a90
 long AlrReal_checkCommendation(struct AlrReal *___this)
 {
-	if (*(unsigned char *)((char *)___this + 0x156e) >= 5 && *(unsigned char *)((char *)___this + 0x156e) <= 8)
+	if (___this->mode >= 5 && ___this->mode <= 8)
 	{
 		return 1;
 	}

@@ -20,7 +20,7 @@ void DisplayTree(struct task *tp)
 	}
 	if (var1->value.f <= 0.01f)
 	{
-		late_DrawObjectClipEx(*(struct obj **)((char *)DAT_060eeaa4 + 0x2c), 1, 1.0f);
+		late_DrawObjectClipEx(DAT_060eeaa4->child, 1, 1.0f);
 	}
 	else
 	{

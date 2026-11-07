@@ -63,8 +63,8 @@ void AmyBirdInit(struct task *tp)
 		FreeTask(tp);
 	}
 	local_cg->pos = local_8g->pos;
-	*(float *)((char *)local_cg + 0x24) = *(float *)((char *)local_cg + 0x24) + 12.0f;
-	*(int *)((char *)local_cg + 0x18) = 0x8000 - *(int *)((char *)local_8g + 0x18);
+	local_cg->pos.y = local_cg->pos.y + 12.0f;
+	local_cg->ang.y = 0x8000 - local_8g->ang.y;
 	tp->disp = AmyBirdDisplay;
 	if ((((DAT_05b9d724 << 8) | (short)DAT_05b9d744) & 0xff00) == 0x300)
 	{

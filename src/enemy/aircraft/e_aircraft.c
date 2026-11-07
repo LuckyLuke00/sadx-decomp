@@ -25,8 +25,8 @@ void EnemyAirLift(struct task *tp)
 	tp->dest = AirLiftDestructor;
 	tp->exec = AirLiftExecutor;
 	tp->disp = AirLiftDraw;
-	*(short *)((char *)local_8 + 4) = *(short *)((char *)local_8 + 4);
-	*(short *)((char *)local_8 + 4) = *(short *)((char *)local_8 + 4) & ~0x100;
+	local_8->flag = local_8->flag;
+	local_8->flag = local_8->flag & ~0x100;
 }
 
 // STUB: SADX 0x005c2c10
@@ -309,7 +309,7 @@ void AirMove(struct taskwk *twp, struct enemywk *ewp)
 // FUNCTION: SADX 0x005c4e30
 void AirRun(struct taskwk *twp, struct enemywk *ewp)
 {
-	*(int *)((char *)ewp + 0x1b4) = AdjustAngle(*(int *)((char *)ewp + 0x1b4), 0, 0x10);
+	ewp->sub_angle[1] = AdjustAngle(ewp->sub_angle[1], 0, 0x10);
 	switch (twp->smode)
 	{
 	case 0:
@@ -341,11 +341,11 @@ void AirRun(struct taskwk *twp, struct enemywk *ewp)
 	{
 		ewp->acc.x += 0.5f;
 	}
-	if (*(float *)((char *)ewp + 0x7c) > 0.0f)
+	if (ewp->force.z > 0.0f)
 	{
-		ewp->weight = njSin(ewp->sub_angle[0]) * *(float *)((char *)ewp + 0x7c);
+		ewp->weight = njSin(ewp->sub_angle[0]) * ewp->force.z;
 		ewp->sub_angle[0] += 0x6500;
-		*(float *)((char *)ewp + 0x7c) -= 0.003f;
+		ewp->force.z -= 0.003f;
 	}
 	else
 	{
@@ -369,9 +369,9 @@ void AirSmokeGround(struct taskwk *twp, struct enemywk *ewp)
 // FUNCTION: SADX 0x005c5160
 void AirTakeOff(struct taskwk *twp, struct enemywk *ewp)
 {
-	*(long *)((char *)ewp + 0x1b4) = AdjustAngle(*(long *)((char *)ewp + 0x1b4), 0x1800, 0xb0);
-	ewp->acc.x = njCos(twp->ang.y) * 0.10000000149011612f;
-	ewp->acc.z = njSin(-twp->ang.y) * 0.10000000149011612f;
+	ewp->sub_angle[1] = AdjustAngle(ewp->sub_angle[1], 0x1800, 0xb0);
+	ewp->acc.x = njCos(twp->ang.y) * 0.1f;
+	ewp->acc.z = njSin(-twp->ang.y) * 0.1f;
 	AirMove(twp, ewp);
 	AirCollision(twp, ewp);
 	AirDraw(twp, ewp);
@@ -404,19 +404,19 @@ void FUN_005c5280(struct taskwk *param_1, struct enemywk *param_2)
 {
 	if (param_1->wtimer > 0x96)
 	{
-		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0xffffd800, 0x20);
-		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0, 0x20);
-		*(int *)((char *)param_1 + 0x18) += 0xe3;
+		param_2->sub_angle[3] = AdjustAngle(param_2->sub_angle[3], 0xffffd800, 0x20);
+		param_2->sub_angle[1] = AdjustAngle(param_2->sub_angle[1], 0, 0x20);
+		param_1->ang.y += 0xe3;
 	}
 	else if (param_1->wtimer > 0x32)
 	{
-		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0xffffd800, 0x20);
-		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x10);
-		*(int *)((char *)param_1 + 0x18) += 0x88;
+		param_2->sub_angle[3] = AdjustAngle(param_2->sub_angle[3], 0xffffd800, 0x20);
+		param_2->sub_angle[1] = AdjustAngle(param_2->sub_angle[1], 0x800, 0x10);
+		param_1->ang.y += 0x88;
 	}
 	else
 	{
-		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x20);
+		param_2->sub_angle[1] = AdjustAngle(param_2->sub_angle[1], 0x800, 0x20);
 	}
 	if (param_2->acc.x < 6.0f)
 	{
@@ -437,19 +437,19 @@ void FUN_005c53e0(struct taskwk *param_1, struct enemywk *param_2)
 {
 	if (param_1->wtimer > 0x96)
 	{
-		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0x2800, 0x20);
-		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0, 0x10);
-		*(long *)((char *)param_1 + 0x18) -= 0xe3;
+		param_2->sub_angle[3] = AdjustAngle(param_2->sub_angle[3], 0x2800, 0x20);
+		param_2->sub_angle[1] = AdjustAngle(param_2->sub_angle[1], 0, 0x10);
+		param_1->ang.y -= 0xe3;
 	}
 	else if (param_1->wtimer > 0x32)
 	{
-		*(long *)((char *)param_2 + 0x1bc) = AdjustAngle(*(long *)((char *)param_2 + 0x1bc), 0x2800, 0x10);
-		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x10);
-		*(long *)((char *)param_1 + 0x18) -= 0x88;
+		param_2->sub_angle[3] = AdjustAngle(param_2->sub_angle[3], 0x2800, 0x10);
+		param_2->sub_angle[1] = AdjustAngle(param_2->sub_angle[1], 0x800, 0x10);
+		param_1->ang.y -= 0x88;
 	}
 	else
 	{
-		*(long *)((char *)param_2 + 0x1b4) = AdjustAngle(*(long *)((char *)param_2 + 0x1b4), 0x800, 0x20);
+		param_2->sub_angle[1] = AdjustAngle(param_2->sub_angle[1], 0x800, 0x20);
 	}
 	if (param_2->acc.x < 6.0f)
 	{
@@ -500,7 +500,7 @@ void FUN_005c55d0(struct taskwk *param_1, struct enemywk *param_2)
 		param_1->wtimer = 0;
 		param_1->flag |= 0x400;
 	}
-	else if (param_1->pos.y < *(float *)((char *)param_2 + 0x54) + 150.0f)
+	else if (param_1->pos.y < param_2->home.y + 150.0f)
 	{
 		param_2->old_mode = param_1->mode;
 		param_1->mode = 8;
@@ -520,12 +520,12 @@ void AirFlyAway(struct taskwk *twp, struct enemywk *ewp)
 {
 	if (DiffAngle(twp->ang.y, 0) == 0)
 	{
-		*(long *)((char *)ewp + 0x1c4) += 0x10;
-		if (*(long *)((char *)ewp + 0x1c4) > 0x180)
+		ewp->sub_angle[5] += 0x10;
+		if (ewp->sub_angle[5] > 0x180)
 		{
-			*(long *)((char *)ewp + 0x1c4) = 0x180;
+			ewp->sub_angle[5] = 0x180;
 		}
-		*(long *)((char *)ewp + 0x1bc) += *(long *)((char *)ewp + 0x1c4);
+		ewp->sub_angle[3] += ewp->sub_angle[5];
 	}
 	else
 	{
@@ -533,11 +533,11 @@ void AirFlyAway(struct taskwk *twp, struct enemywk *ewp)
 	}
 	if (twp->pos.y < 235.0f)
 	{
-		*(long *)((char *)ewp + 0x1b4) = AdjustAngle(*(long *)((char *)ewp + 0x1b4), 0x800, 0x20);
+		ewp->sub_angle[1] = AdjustAngle(ewp->sub_angle[1], 0x800, 0x20);
 	}
 	else
 	{
-		*(long *)((char *)ewp + 0x1b4) = AdjustAngle(*(long *)((char *)ewp + 0x1b4), 0, 0x20);
+		ewp->sub_angle[1] = AdjustAngle(ewp->sub_angle[1], 0, 0x20);
 	}
 	if (ewp->acc.x < 8.0)
 	{
@@ -569,14 +569,14 @@ void FUN_005c5890(struct task *param_1)
 	struct taskwk *local_8;
 
 	local_8 = param_1->twp;
-	*(float *)((char *)local_8 + 0x30) += 0.4f;
+	local_8->scl.y += 0.4f;
 	if ((local_8->flag & 0x100) && param_1->ctp && (*(char *)param_1->ctp->twp != 0xc))
 	{
-		*(float *)((char *)param_1->ctp->twp + 0x24) += 0.4f;
+		param_1->ctp->twp->pos.y += 0.4f;
 	}
-	if (*(float *)((char *)local_8 + 0x30) > 0.0f)
+	if (local_8->scl.y > 0.0f)
 	{
-		*(float *)((char *)local_8 + 0x30) = 0.0f;
+		local_8->scl.y = 0.0f;
 		local_8->mode = 3;
 		local_8->wtimer = 0;
 	}
@@ -605,7 +605,7 @@ void AirLiftWait(struct task *tp)
 	}
 	if (tp->ctp != NULL)
 	{
-		*(float *)((char *)tp->ctp->twp + 0x24) = *(float *)((char *)local_8 + 0x24) + 19.0f + local_8->timer.f;
+		tp->ctp->twp->pos.y = local_8->pos.y + 19.0f + local_8->timer.f;
 	}
 	if (local_8->wtimer > 5 && (local_8->flag & 0x100) != 0)
 	{
@@ -624,14 +624,14 @@ void FUN_005c5a30(struct task *param_1)
 	struct taskwk *local_8;
 
 	local_8 = param_1->twp;
-	*(float *)((char *)local_8 + 0x30) -= 0.4f;
+	local_8->scl.y -= 0.4f;
 	if ((local_8->flag & 0x100) && param_1->ctp && (*(char *)param_1->ctp->twp == 0xc))
 	{
-		*(float *)((char *)param_1->ctp->twp + 0x24) -= 0.4f;
+		param_1->ctp->twp->pos.y -= 0.4f;
 	}
-	if (*(float *)((char *)local_8 + 0x30) < -40.0f)
+	if (local_8->scl.y < -40.0f)
 	{
-		*(float *)((char *)local_8 + 0x30) = -40.0f;
+		local_8->scl.y = -40.0f;
 		local_8->mode = 5;
 		local_8->wtimer = 0;
 	}

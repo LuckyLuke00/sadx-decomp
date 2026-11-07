@@ -20,7 +20,7 @@ void dispElevator(struct task *tp)
 void dispEvStep(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
-	struct OBJ_EDITENTRY *var2 = (struct OBJ_EDITENTRY *)(*(int *)((char *)var1 + 0xc));
+	struct OBJ_EDITENTRY *var2 = (struct OBJ_EDITENTRY *)(var1->timer.l);
 	struct NJS_MODEL *var3 = (struct NJS_MODEL *)(*(int *)((char *)var2 + 0x2c));
 	SetObjectTexture();
 	njPushMatrix(0);

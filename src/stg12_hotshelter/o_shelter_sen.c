@@ -13,13 +13,13 @@ static void Disp(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(0);
 		FUN_0067d830(0, 750.0f, 75.5f, -650.0f);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)var1->ang.y);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(0, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(0, (unsigned short)var1->ang.x);
 		}
 		SaveConstantAttr();
 		OnConstantAttr(0, 0x100000);

@@ -58,13 +58,13 @@ void FUN_005fd320(struct task *param_1)
 	struct anywk *local_8;
 
 	local_8 = param_1->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 0xc && *(int *)local_8 == 0)
+	if (DAT_05cda18c->awp->work.sl[1] == 0xc && *(int *)local_8 == 0)
 	{
 		FUN_005fd4c0(local_8);
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
 		*(int *)local_8 = 1;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 0xc && *(int *)local_8 == 2)
+	if (DAT_05cda18c->awp->work.sl[2] == 0xc && *(int *)local_8 == 2)
 	{
 		FUN_005fd4e0((int)local_8);
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
@@ -87,7 +87,7 @@ void FUN_005fd320(struct task *param_1)
 	case 2:
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
 		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 0xc;
+		DAT_05cda18c->awp->work.sl[3] = 0xc;
 		FUN_005fd5d0(local_8);
 		break;
 	case 3:

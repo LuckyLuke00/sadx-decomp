@@ -14,9 +14,9 @@ static void ObjectDisplay(struct task *tp)
 	SetObjectTexture();
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18))
+	if (var1->ang.y)
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (unsigned short)var1->ang.y);
 	}
 	ds_ActionClip(action_sssikake_twadoor, var1->counter.f, 1.0f);
 	njPopMatrix(1);

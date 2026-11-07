@@ -8,7 +8,7 @@ void ObjectCurbCurb(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	*(struct obj **)((char *)var1 + 8) = object_curb_curb01_curb01;
+	var1->counter.ptr = object_curb_curb01_curb01;
 	if (FUN_004c39c0(tp) == 0)
 	{
 		CCL_Init(tp, object_c_info, 1, 4);

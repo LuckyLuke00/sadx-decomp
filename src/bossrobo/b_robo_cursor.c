@@ -42,15 +42,15 @@ static void disp(struct task *pTask)
 		___njColorBlendingMode(1, 6);
 		njPushMatrix(NULL);
 		njTranslateV(NULL, (struct NJS_POINT3 *)&DAT_060bd1a0);
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
-		FUN_0067d2d0((float *)0, *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c));
+		FUN_0067d2d0((float *)0, var1->scl.x, var1->scl.x, var1->scl.x);
 		late_DrawLine3D(&locursor[0], 6, 0, 1);
 		njPopMatrix(1);
 	}

@@ -13,7 +13,7 @@ void ObjectKareki01(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, object_c_info, 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_kareki_all1_ktree01_ktree01;
+	var1->counter.ptr = object_kareki_all1_ktree01_ktree01;
 	ObjectCCollision(tp);
 }
 
@@ -23,7 +23,7 @@ void ObjectKareki02(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, object_c_info, 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_kareki_all1_ktree02_ktree02;
+	var1->counter.ptr = object_kareki_all1_ktree02_ktree02;
 	ObjectCCollision(tp);
 }
 
@@ -33,6 +33,6 @@ void ObjectKareki03(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, object_c_info, 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_kareki_all1_ktree03_ktree03;
+	var1->counter.ptr = object_kareki_all1_ktree03_ktree03;
 	ObjectCCollision(tp);
 }

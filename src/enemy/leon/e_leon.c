@@ -120,14 +120,14 @@ void LeonWalk(struct taskwk *twp, struct enemywk *ewp)
 		}
 		break;
 	}
-	if ((twp->wtimer > 0x3c) && (EnemyDist2FromAim(twp, ewp) < *(float *)((char *)ewp + 0x78) * *(float *)((char *)ewp + 0x78)))
+	if ((twp->wtimer > 0x3c) && (EnemyDist2FromAim(twp, ewp) < ewp->force.y * ewp->force.y))
 	{
 		if (((twp->flag & 0x4000) != 0) && ((twp->flag & 0x1000) != 0))
 		{
 			twp->flag |= 0x2000;
 			twp->flag &= ~0x1000;
 			EnemyCalcPlayerAngle(twp, ewp, 0);
-			*(int *)((char *)twp + 0x18) = ewp->aim_angle;
+			twp->ang.y = ewp->aim_angle;
 		}
 	}
 	if (((twp->flag & 0x1000) == 0) && (ewp->argb.a > -0.10000000149011612))
@@ -169,7 +169,7 @@ void LeonDecideAim(struct taskwk *twp, struct enemywk *ewp)
 	}
 	if (njSqrt((ewp->home.x - twp->pos.x) * (ewp->home.x - twp->pos.x) +
 	          (ewp->home.y - twp->pos.y) * (ewp->home.y - twp->pos.y) +
-	          (ewp->home.z - twp->pos.z) * (ewp->home.z - twp->pos.z)) > *(float *)((char *)ewp + 0x7c) + 100.0)
+	          (ewp->home.z - twp->pos.z) * (ewp->home.z - twp->pos.z)) > ewp->force.z + 100.0)
 	{
 		ewp->aim = ewp->home;
 	}

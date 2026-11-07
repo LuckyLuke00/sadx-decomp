@@ -13,11 +13,11 @@ void SwitchDisp(struct task *tp)
 	___njSetTexture(&texlist_sw_panel);
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)var1->ang.y);
 	}
-	var2 = obj_sw[*(unsigned char *)((char *)var1 + 3)];
+	var2 = obj_sw[var1->btimer];
 	___dsDrawModel(var2->model);
 	var3 = var2->child;
 	FUN_0067d830(NULL, var3->pos[0], var3->pos[1], var3->pos[2]);

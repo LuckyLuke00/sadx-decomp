@@ -20,5 +20,5 @@ void FUN_005fd0e0(void)
 // FUNCTION: SADX 0x005fd100
 void FUN_005fd100(void)
 {
-	*(int *)((char *)DAT_05edd990->awp + 4) = 5;
+	DAT_05edd990->awp->work.sl[1] = 5;
 }

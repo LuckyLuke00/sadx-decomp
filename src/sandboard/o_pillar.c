@@ -34,7 +34,7 @@ static void dispObject(struct task *task_p)
 // FUNCTION: SADX 0x007e7960
 static void destObject(struct task *task_p)
 {
-	MirenObjFreeMobileLandObject(task_p, (struct obj *)(*(int *)((char *)task_p->mwp + 0x20)));
+	MirenObjFreeMobileLandObject(task_p, (struct obj *)(task_p->mwp->ang_aim.y));
 }
 
 // STUB: SADX 0x007e7a10

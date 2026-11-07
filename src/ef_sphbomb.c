@@ -35,7 +35,7 @@ void SphericalExplosionAlpha(float a)
 			a = 1.0;
 		}
 	}
-	*(unsigned char *)((char *)model_expoly.mats + 3) = (unsigned char)(a * 255.0);
+	model_expoly.mats->diffuse.argb.a = (unsigned char)(a * 255.0);
 }
 
 // FUNCTION: SADX 0x00610620

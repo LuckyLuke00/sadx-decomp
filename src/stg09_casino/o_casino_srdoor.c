@@ -12,7 +12,7 @@ void ObjectCasinoSrdoor(struct task *tp)
 		if (FUN_004c39c0(tp) == 0)
 		{
 			var1->ang.x = 0;
-			*(long *)((char *)var1 + 0x1c) = 0;
+			var1->ang.z = 0;
 			CCL_Init(tp, &object_c_info[0], 2, 4);
 		}
 		tp->disp = ObjectCasinoSrdoorDraw;

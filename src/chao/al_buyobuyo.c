@@ -38,9 +38,9 @@ void AL_SetCurrMatrix(struct task *tp)
 	njPushMatrixEx();
 	njUnitMatrix(0);
 	njTranslateV(0, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (unsigned short)var1->ang.y);
 	}
 	AL_SetCurrMatrixSub(*(struct al_object **)((char *)var1 + 0x524));
 	njPopMatrixEx();

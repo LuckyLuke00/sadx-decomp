@@ -27,17 +27,17 @@ static void Disp(struct task *tp)
 			SetObjectTexture2(0xc);
 			njPushMatrix(0);
 			njTranslateV(0, &var1->pos);
-			if (*(int *)((char *)var1 + 0x1c))
+			if (var1->ang.z)
 			{
-				njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+				njRotateZ(0, (unsigned short)(short)var1->ang.z);
 			}
-			if (*(int *)((char *)var1 + 0x14))
+			if (var1->ang.x)
 			{
-				njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
+				njRotateX(0, (unsigned short)(short)var1->ang.x);
 			}
-			if (*(int *)((char *)var1 + 0x18))
+			if (var1->ang.y)
 			{
-				njRotateY(0, (unsigned short)*(short *)((char *)var1 + 0x18));
+				njRotateY(0, (unsigned short)(short)var1->ang.y);
 			}
 			late_DrawObjectClip(&object_cas_rt_lht_rt_lht[0], 4, 1.0f);
 			njPopMatrix(1);

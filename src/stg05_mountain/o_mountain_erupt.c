@@ -22,7 +22,7 @@ void DisplayStone(struct task *tp)
 				njRotateX(NULL, (unsigned short)local_8->ang.x);
 			}
 			FUN_0067d2d0(NULL, local_c, local_c, local_c);
-			ds_DrawModelClip((struct NJS_MODEL *)(*(int *)((char *)(*(int *)((char *)local_8 + 8)) + 4)), local_c);
+			ds_DrawModelClip((struct NJS_MODEL *)(*(int *)((char *)((int)local_8->counter.l) + 4)), local_c);
 			njPopMatrix(1);
 		}
 	}
@@ -71,15 +71,15 @@ void ColliEruptExplosion(struct task *tp)
 	{
 	case 0:
 		CCL_Init(tp, (struct CCL_INFO *)&erupt_expl_cinfo, 1, 4);
-		*(float *)((char *)var1 + 0x2c) = 10.0f;
+		var1->scl.x = 10.0f;
 		var1->value.f = 3.2f;
 		var1->mode = 1;
 		var1->wtimer = 0;
 		break;
 	case 1:
 		var1->value.f *= 0.8999999761581421;
-		*(float *)((char *)var1 + 0x2c) += var1->value.f;
-		var1->cwp->info->a = *(float *)((char *)var1 + 0x2c);
+		var1->scl.x += var1->value.f;
+		var1->cwp->info->a = var1->scl.x;
 		if (var1->wtimer++ == 0x1e)
 		{
 			FreeTask(tp);

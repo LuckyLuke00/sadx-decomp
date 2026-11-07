@@ -53,7 +53,7 @@ void AL_ChildFieldDestructor(struct task *tp)
 // FUNCTION: SADX 0x004517b0
 void FUN_004517b0(struct task *param_1, int param_2)
 {
-	int *var1 = (int *)(*(int **)((char *)param_1 + 0x20));
+	int *var1 = (int *)((int *)param_1->twp);
 	if (param_2 > 0)
 	{
 		*(char *)((char *)var1 + 1) = 1;

@@ -30,7 +30,7 @@ void FUN_0068fa50(struct task *param_1)
 	{
 		njRotateY(0, (Uint16)var1->ang.y);
 	}
-	ds_ActionClip(action_sssikake_twindoor, *(float *)((char *)var1 + 8), 1.0f);
+	ds_ActionClip(action_sssikake_twindoor, var1->counter.f, 1.0f);
 	njPopMatrix(1);
 }
 
@@ -89,7 +89,7 @@ static void ObjectMain(struct task *tp)
 			dsPlay_oneshot(0x212, 0, 0, 0);
 		}
 		var2 = var1->cwp->info;
-		*(int *)((char *)var2 + 4) |= 0x10;
+		var2->attr |= 0x10;
 		*(int *)((char *)var2 + 0x34) |= 0x10;
 		*(int *)((char *)var2 + 0x64) &= 0xffffffef;
 		*(int *)((char *)var2 + 0x94) &= 0xffffffef;

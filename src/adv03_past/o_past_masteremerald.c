@@ -33,7 +33,7 @@ void ObjectPastMasterEmerald(struct task *tp)
 		var1->mode = 1;
 		break;
 	case 1:
-		*(int *)((char *)var1 + 0x18) += 0x80;
+		var1->ang.y += 0x80;
 		var1->timer.w[0] += 0x100;
 		var1->value.f = njSin(var1->timer.w[0]);
 		break;

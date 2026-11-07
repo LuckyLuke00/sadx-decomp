@@ -8,7 +8,7 @@ void ObjectHighwaySign1(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	*(struct obj **)((char *)var1 + 8) = object_ss_sign1_sign1;
+	var1->counter.ptr = object_ss_sign1_sign1;
 
 	if (FUN_004c39c0(tp) == 0)
 	{

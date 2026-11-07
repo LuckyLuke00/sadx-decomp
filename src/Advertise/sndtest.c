@@ -42,40 +42,40 @@ void snd_test_exec(struct task *tp)
 	struct SndTestWk *local_8;
 
 	local_8 = (struct SndTestWk *)tp->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 4 && *(int *)local_8 == 0)
+	if (DAT_05cda18c->awp->work.sl[1] == 4 && *(int *)local_8 == 0)
 	{
 		FUN_006049a0((int)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 1;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 4 && *(int *)local_8 == 2)
+	if (DAT_05cda18c->awp->work.sl[2] == 4 && *(int *)local_8 == 2)
 	{
 		FUN_005b5aa0((int)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 3;
 	}
 	switch (*(int *)local_8)
 	{
 	case 0:
-		*(int *)((char *)local_8 + 0x14) = 0;
+		local_8->BaseCol = 0;
 		break;
 	case 1:
-		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeInColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			*(int *)local_8 = 2;
 		}
 		break;
 	case 2:
-		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 4;
+		local_8->BaseCol = 0xffffffff;
+		DAT_05cda18c->awp->work.sl[3] = 4;
 		snd_test_sub_exec(local_8);
 		break;
 	case 3:
-		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			AvaReleaseTexForEachMode((AdvaModeEnum)4);
 			ghReleaseFontTexture((struct GH_FONT_INFO *)&Ascii16x16FontInfo);

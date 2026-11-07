@@ -203,7 +203,7 @@ void ExecTask(long level)
 		DAT_05baf520 = local_8g;
 		if (local_8g != 0)
 		{
-			DAT_05baf524 = *(void **)((char *)local_10 + 0x30);
+			DAT_05baf524 = local_10->thp;
 			local_8g(local_10);
 			DAT_05baf524 = 0;
 		}

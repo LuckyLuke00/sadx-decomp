@@ -186,7 +186,7 @@ void ReleaseTexture()
 		{
 			continue;
 		}
-		if (*(unsigned long *)((char *)DAT_05cc3540[local_8]->textures + 8) != 0)
+		if (DAT_05cc3540[local_8]->textures->texaddr != 0)
 		{
 			late_ReleaseTexture(DAT_05cc3540[local_8]);
 		}

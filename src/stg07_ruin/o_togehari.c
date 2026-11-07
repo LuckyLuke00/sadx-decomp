@@ -11,6 +11,6 @@ void ObjectTogehari(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, object_c_info, 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_lostobj_togetoge_togetoge;
+	var1->counter.ptr = object_lostobj_togetoge_togetoge;
 	ObjectCCollision(tp);
 }

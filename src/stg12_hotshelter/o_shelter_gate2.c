@@ -39,8 +39,8 @@ void ObjShelterGate13(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 	InitATask(tp);
 	var1->mode = 1;
-	*(int *)((char *)var1 + 0xc) = 0;
-	*(int *)((char *)var1 + 0x10) = 0;
+	var1->timer.l = 0;
+	var1->value.l = 0;
 	tp->exec = ExecATask;
 	tp->disp = DispATask;
 	tp->dest = (void (__cdecl *)(struct task *))FUN_007d21b0;

@@ -35,20 +35,20 @@ void EffectJet(struct sp_task *tp, struct sp_link *lp)
 	struct sp_link *local_cg;
 	float local_8g;
 
-	local_cg = (struct sp_link *)*(int *)((char *)tp + 0x44);
-	*(float *)((char *)tp + 0x30) -= *(float *)((char *)local_cg + 8) * 0.10000000149011612;
-	if (*(float *)((char *)tp + 0x30) < 0.0)
+	local_cg = (struct sp_link *)tp->work[0].l;
+	tp->argb.a -= *(float *)((char *)local_cg + 8) * 0.10000000149011612;
+	if (tp->argb.a < 0.0)
 	{
 		SpFreeTask(tp);
 		return;
 	}
 	local_8g = 1.0f - *(float *)((char *)local_cg + 0xc);
-	*(float *)((char *)tp + 0x24) = *(float *)((char *)tp + 0x24) * local_8g;
-	*(float *)((char *)tp + 0x28) = *(float *)((char *)tp + 0x28) * local_8g + *(float *)((char *)local_cg + 0x10);
-	*(float *)((char *)tp + 0x2c) = *(float *)((char *)tp + 0x2c) * local_8g;
-	*(float *)((char *)tp + 0x18) += *(float *)((char *)tp + 0x24);
-	*(float *)((char *)tp + 0x1c) += *(float *)((char *)tp + 0x28);
-	*(float *)((char *)tp + 0x20) += *(float *)((char *)tp + 0x2c);
-	*(float *)((char *)tp + 0x14) -= *(float *)((char *)tp + 0x14) * *(float *)((char *)local_cg + 4) * 0.15000000596046448 * 0.10000000149011612;
+	tp->spd.x = tp->spd.x * local_8g;
+	tp->spd.y = tp->spd.y * local_8g + *(float *)((char *)local_cg + 0x10);
+	tp->spd.z = tp->spd.z * local_8g;
+	tp->pos.x += tp->spd.x;
+	tp->pos.y += tp->spd.y;
+	tp->pos.z += tp->spd.z;
+	tp->scl -= tp->scl * *(float *)((char *)local_cg + 4) * 0.15000000596046448 * 0.10000000149011612;
 	return;
 }

@@ -16,7 +16,7 @@ void ObjectGategate(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, &object_c_info[0], 1, 4);
-	var1->counter.f = *(float *)((char *)var1 + 0x24);
+	var1->counter.f = var1->pos.y;
 	*(unsigned char *)((char *)var1 + 5) = 0;
 	tp->exec = Normal;
 	tp->disp = Normal;

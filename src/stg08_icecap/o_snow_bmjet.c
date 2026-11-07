@@ -49,12 +49,12 @@ void BombDown(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	if (var1->pos.y <= *(float *)((char *)var1 + 8))
+	if (var1->pos.y <= var1->counter.f)
 	{
 		dsPlay_oneshot_v(0xe9, 0, 0, 0x60, var1->pos.x, var1->pos.y, var1->pos.z);
 		CreateJetBomb(&var1->pos);
 		VibShot(0, 0);
-		*(int *)((char *)var1 + 0xc) = 0x28;
+		var1->timer.l = 0x28;
 		CCL_Init(tp, (struct CCL_INFO *)&colli_bomb, 1, 4);
 		tp->exec = BombExp;
 		tp->disp = 0;
@@ -70,17 +70,17 @@ void DispBmjet(struct task *tp)
 	SetObjectTexture();
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(NULL, (unsigned short)*(short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)(short)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, (unsigned short)*(short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)(short)var1->ang.y);
 	}
 	late_DrawModel(&model_jt_all1_bmjet_bmjet, 4);
 	njPopMatrix(1);

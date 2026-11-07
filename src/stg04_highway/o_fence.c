@@ -11,6 +11,6 @@ void ObjectFence(struct task *tp)
 	{
 		CCL_Init(tp, cci_fence, 1, 4);
 	}
-	*(struct obj **)((char *)var1 + 8) = object_ya_fence_body_body;
+	var1->counter.ptr = object_ya_fence_body_body;
 	ObjectCCollision(tp);
 }

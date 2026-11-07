@@ -8,9 +8,9 @@ void AL_CalcIntentionScore_Pain(struct task *tp, float *pMaxScore)
 	float score;
 
 	score = 0.0;
-	if (AL_EmotionGetValue(tp, 5) > *(unsigned int *)((char *)&ChaoGlobal + 0x1dc))
+	if (AL_EmotionGetValue(tp, 5) > (&ChaoGlobal)->IntentionPainTrigger)
 	{
-		score = 1.0f - (float)(100 - AL_EmotionGetValue(tp, 0x15)) * 0.004999999888241291 * (1.0f - *(float *)((char *)&ChaoGlobal + 0x1e0));
+		score = 1.0f - (float)(100 - AL_EmotionGetValue(tp, 0x15)) * 0.004999999888241291 * (1.0f - (&ChaoGlobal)->IntentionPainMinScore);
 		AL_ScoreRandomise(&score);
 		if (score > *pMaxScore)
 		{

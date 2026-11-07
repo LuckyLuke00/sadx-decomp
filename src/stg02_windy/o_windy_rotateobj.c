@@ -32,7 +32,7 @@ static void Exec(struct task *tp)
 		case 1:
 			if (dsCheckViewV(&var1->pos, 200.0f))
 			{
-				var1->counter.f = *(float *)((char *)var1 + 0x2c) + var1->counter.f;
+				var1->counter.f = var1->scl.x + var1->counter.f;
 				if (FUN_004c39c0(tp))
 				{
 					njPrintC(0x110013, "<- ROTATE_SPEED");

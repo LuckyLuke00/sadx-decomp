@@ -14,7 +14,7 @@ void ExecOnEdit(struct task *tp)
 	struct taskwk *var1;
 	float var2;
 	var1 = tp->twp;
-	var2 = *(float *)((char *)var1 + 0x34) + var1->counter.f;
+	var2 = var1->scl.z + var1->counter.f;
 	var1->counter.f = var2;
 	if (var2 >= 13.989999771118164)
 	{

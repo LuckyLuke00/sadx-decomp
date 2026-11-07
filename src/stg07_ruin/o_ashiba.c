@@ -60,7 +60,7 @@ void ObjectAshiba03(struct task *tp)
 	var2->scl[0] = 1.0f;
 	var2->scl[1] = 1.0f;
 	var2->scl[2] = 1.0f;
-	*(void **)((char *)var1 + 8) = var2;
+	var1->counter.ptr = var2;
 	tp->exec = Normal;
 	tp->disp = Normal;
 	tp->dest = Exit;

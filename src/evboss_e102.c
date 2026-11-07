@@ -13,7 +13,7 @@ void E102EggLiftCollisionInit(struct task *tp)
 	local_8g = tp->twp;
 	local_10 = &object_ecb_bosscl_bosscl[0];
 	local_cj = GetMobileLandObject();
-	*(struct obj **)((char *)local_8g + 8) = local_cj;
+	local_8g->counter.ptr = local_cj;
 	local_cj->evalflags = 0x10;
 	local_cj->scl[0] = 1.0f;
 	local_cj->scl[1] = 1.0f;

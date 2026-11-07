@@ -39,8 +39,8 @@ int FUN_00513ad0(struct taskwk *param_1, int param_2, struct motionwk2 *param_3)
 	if (DAT_05b932e8[param_1->counter.b[0]].press & jump_button)
 	{
 		*(float *)((char *)param_3 + 0x40) = 0.0f;
-		*(float *)((char *)param_3 + 0x3c) = 0.0f;
-		*(float *)((char *)param_3 + 0x38) = 0.0f;
+		param_3->frict = 0.0f;
+		param_3->accel = 0.0f;
 		return 1;
 	}
 	else
@@ -59,13 +59,13 @@ long E102CheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 			if ((PCheckHoldObject(twp) & 0x200) != 0)
 			{
 				twp->mode = 0x16;
-				*(short *)((char *)pwp + 0x124) = 0x21;
+				pwp->mj.reqaction = 0x21;
 				return 1;
 			}
 			E102ThrowTheObjectOut(twp, mwp, pwp);
 		}
 		twp->mode = 7;
-		*(short *)((char *)pwp + 0x124) = 8;
+		pwp->mj.reqaction = 8;
 		return 1;
 	}
 	else
@@ -77,7 +77,7 @@ long E102CheckBeInTheAir(struct taskwk *twp, struct motionwk2 *mwp, struct playe
 // FUNCTION: SADX 0x00514730
 long E102CheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	if ((unsigned short)*(unsigned short *)((char *)pwp + 0x124) == 9)
+	if ((unsigned short)pwp->mj.reqaction == 9)
 	{
 		return 0;
 	}
@@ -88,12 +88,12 @@ long E102CheckStop(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *p
 			if ((PCheckHoldObject(twp) & 0xc00) != 0)
 			{
 				twp->mode = 0x12;
-				*(short *)((char *)pwp + 0x124) = 0x1e;
+				pwp->mj.reqaction = 0x1e;
 			}
 			else
 			{
 				twp->mode = 0x11;
-				*(short *)((char *)pwp + 0x124) = 0x19;
+				pwp->mj.reqaction = 0x19;
 			}
 		}
 		else
@@ -176,7 +176,7 @@ void E102ThrowTheObjectOut(struct taskwk *twp, struct motionwk2 *mwp, struct pla
 	struct NJS_POINT3 u;
 	if ((twp->flag & 0x800) != 0)
 	{
-		*(short *)((char *)pwp->htp->twp + 4) &= ~0x1000;
+		pwp->htp->twp->flag &= ~0x1000;
 		twp->flag &= ~0x800;
 		if ((PCheckHoldObject(twp) & 0x200) != 0)
 		{
@@ -241,7 +241,7 @@ void PGetAccelerationE102_C(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 void FUN_00515c30(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
 	int local_8;
-	local_8 = *(int *)((char *)param_3 + 0x7c);
+	local_8 = param_3->free.sl[0];
 	PGetBreak(param_1, param_2, param_3);
 }
 
@@ -249,7 +249,7 @@ void FUN_00515c30(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 void FUN_00515c60(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
 	int local_8;
-	local_8 = *(int *)((char *)param_3 + 0x7c);
+	local_8 = param_3->free.sl[0];
 	PGetRotation(param_1, param_2, param_3);
 }
 
@@ -274,7 +274,7 @@ int ChkTimeOverDead(struct taskwk *twp, struct playerwk *pwp)
 {
 	struct taskwk *local_8;
 
-	local_8 = *(struct taskwk **)((char *)pwp + 0x7c);
+	local_8 = (struct taskwk *)pwp->free.ptr[0];
 	if ((char)DAT_05cc43a1 == 0)
 	{
 		return 0;
@@ -291,7 +291,7 @@ int ChkTimeOverDead(struct taskwk *twp, struct playerwk *pwp)
 	{
 		return 0;
 	}
-	if (*(short *)((char *)local_8 + 8) < 0x3c)
+	if ((short)local_8->counter.w[0] < 0x3c)
 	{
 		return 0;
 	}
@@ -306,13 +306,13 @@ int ChkTimeOverDead(struct taskwk *twp, struct playerwk *pwp)
 	switch (twp->mode)
 	{
 		case 0x1f:
-			*(short *)((char *)pwp + 0x124) = 0x46;
+			pwp->mj.reqaction = 0x46;
 			break;
 		case 0x21:
-			*(short *)((char *)pwp + 0x124) = 0x47;
+			pwp->mj.reqaction = 0x47;
 			break;
 		default:
-			*(short *)((char *)pwp + 0x124) = 0x45;
+			pwp->mj.reqaction = 0x45;
 			break;
 	}
 	twp->mode = 0x31;

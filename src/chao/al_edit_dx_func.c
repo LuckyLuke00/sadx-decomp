@@ -14,7 +14,7 @@ void AL_EnvEdit(struct task *tp)
 	void *var3;
 
 	var2 = tp->twp;
-	var1 = ALW_GetTaskCount(0, *(unsigned short *)((char *)var2 + 0x14));
+	var1 = ALW_GetTaskCount(0, (unsigned short)var2->ang.x);
 	var3 = *(void **)((char *)var1->twp + 0x6c);
 	if (DAT_05b92e4c & 2)
 	{
@@ -61,7 +61,7 @@ void AL_ColorEdit(struct task *tp)
 	void *var3;
 
 	var2 = tp->twp;
-	var1 = ALW_GetTaskCount(0, *(unsigned short *)((char *)var2 + 0x14));
+	var1 = ALW_GetTaskCount(0, (unsigned short)var2->ang.x);
 	var3 = *(void **)((char *)var1->twp + 0x6c);
 	if (DAT_05b92e4c & 2)
 	{
@@ -118,7 +118,7 @@ void AL_MotionEdit(struct task *tp)
 	int var5;
 
 	var2 = tp->twp;
-	var1 = ALW_GetTaskCount(0, *(unsigned short *)((char *)var2 + 0x14));
+	var1 = ALW_GetTaskCount(0, (unsigned short)var2->ang.x);
 	if (DAT_05b92e4c & 2)
 	{
 		AL__EditCancelMode(tp);
@@ -188,11 +188,11 @@ void AL_JingleEdit(struct task *tp)
 	{
 		AL__EditCancelMode(tp);
 	}
-	if (*(unsigned char *)((char *)var1 + 1) == 0)
+	if ((unsigned char)var1->smode == 0)
 	{
 		var2 = 0;
 		DAT_05b2c9f4 = var2;
-		*(unsigned char *)((char *)var1 + 1) = 1;
+		var1->smode = 1;
 	}
 	else
 	{

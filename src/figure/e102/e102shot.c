@@ -16,7 +16,7 @@ int CheckEnemyAddTime(struct task *tp)
 	local_8g = local_cg->cwp;
 	if (local_8g == 0)
 		return 0;
-	if ((*(int *)((char *)(*(void **)((char *)local_8g + 0xc)) + 4) & 0x800000) != 0)
+	if (((int)((local_8g->info))->attr & 0x800000) != 0)
 		return 0;
 	return 1;
 }

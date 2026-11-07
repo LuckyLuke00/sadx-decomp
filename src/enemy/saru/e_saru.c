@@ -59,7 +59,7 @@ void FUN_005c68f0(struct taskwk *param_1, int param_2)
 {
 	if (param_1->flag & 0x2000)
 	{
-		*(float *)((char *)param_1 + 0x24) = Shadow(param_1, 1.0f) + 4.0f;
+		param_1->pos.y = Shadow(param_1, 1.0f) + 4.0f;
 	}
 }
 

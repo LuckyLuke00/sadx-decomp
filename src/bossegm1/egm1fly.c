@@ -40,11 +40,11 @@ int FUN_006c2f60(int param_1, short param_2, short param_3)
 // FUNCTION: SADX 0x006c2ff0
 int FUN_006c2ff0()
 {
-	if (*(float *)((char *)*DAT_05baf368 + 0x20) < 752.0)
+	if ((*DAT_05baf368)->pos.x < 752.0)
 	{
 		return 2;
 	}
-	if (1008.0 < *(float *)((char *)*DAT_05baf368 + 0x20))
+	if (1008.0 < (*DAT_05baf368)->pos.x)
 	{
 		return 0;
 	}

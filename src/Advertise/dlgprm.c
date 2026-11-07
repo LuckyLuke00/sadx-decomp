@@ -12,7 +12,7 @@ void DialogJimakuProcDel(struct DDlgType *ddltype)
 {
 	DrawFileDelDlgSub(ddltype);
 	DialogJimakuInit();
-	switch (*(char *)((char *)ddltype + 0x14))
+	switch (ddltype->Csr)
 	{
 	case 0:
 		DialogJimakuPut(DAT_026313ac[DAT_05b3ebbc]);

@@ -24,7 +24,7 @@ void destE101R(struct task *pTask)
 	FUN_007d21b0();
 	E101R_EfWaveAccumeExit();
 	E101R_NozzleLightExit();
-	*(short *)((char *)var1 + 4) = 0xe;
+	var1->work.sw[2] = 0xe;
 	BSetMotion(var2, (struct bosswk *)var1);
 	TikalBossKill();
 }

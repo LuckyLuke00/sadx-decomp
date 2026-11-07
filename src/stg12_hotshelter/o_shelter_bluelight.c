@@ -37,8 +37,8 @@ static void Exec(struct task *tp)
 			var1->counter.f = var2 - var3;
 		}
 		float var4 = DAT_05b42a7c->pos.x - var1->pos.x;
-		float var5 = *(float *)((char *)DAT_05b42a7c + 0x28) - *(float *)((char *)var1 + 0x28);
-		*(int *)((char *)var1 + 0x18) = (int)(atan2(var4, var5) * 65536.0f / 6.283184);
+		float var5 = DAT_05b42a7c->pos.z - var1->pos.z;
+		var1->ang.y = (int)(atan2(var4, var5) * 65536.0f / 6.283184);
 		Disp(tp);
 	}
 }

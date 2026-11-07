@@ -33,18 +33,18 @@ void sakana_disp(struct task *tp)
 	}
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
-	FUN_0067d2d0(0, *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c), *(float *)((char *)var1 + 0x2c));
-	if (*(int *)((char *)var1 + 0x18) + 0x8000 != 0)
+	FUN_0067d2d0(0, var1->scl.x, var1->scl.x, var1->scl.x);
+	if (var1->ang.y + 0x8000 != 0)
 	{
-		njRotateY(0, (unsigned short)(0x8000 + *(short *)((char *)var1 + 0x18)));
+		njRotateY(0, (unsigned short)(0x8000 + (short)var1->ang.y));
 	}
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(0, (unsigned short)(short)var1->ang.z);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
+		njRotateX(0, (unsigned short)(short)var1->ang.x);
 	}
 	njTranslateV(0, &sakana_offset_tbl);
 	___njSetTexture(&texlist_mi_meka_sakana);
@@ -57,10 +57,10 @@ void sakana_exit(struct task *tp)
 {
 	if (tp->awp)
 	{
-		struct task *var1 = *(struct task **)((char *)tp->awp + 8);
+		struct task *var1 = (struct task *)tp->awp->work.ptr[2];
 		if (var1 && var1->twp)
 		{
-			*(int *)((char *)var1->twp + 0x10) = 0;
+			var1->twp->value.l = 0;
 		}
 		DAT_05cd2968--;
 	}

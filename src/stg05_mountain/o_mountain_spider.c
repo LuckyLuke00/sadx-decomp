@@ -12,16 +12,16 @@ void DrawMtnSpiderA(struct task *tp)
 		___njSetTexture(&texlist_obj_mountain);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)var1->ang.z);
 		}
 		if (var1->ang.x != 0)
 		{
 			njRotateX(0, (Uint16)var1->ang.x);
 		}
 		FUN_0067d2d0(0, var2, var2, var2);
-		ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)var1 + 8)), var1->timer.f, var2);
+		ds_ActionClip((struct NJS_ACTION *)((int)var1->counter.l), var1->timer.f, var2);
 		njPopMatrix(1);
 		if (var1->value.ptr != 0)
 		{
@@ -50,9 +50,9 @@ void DrawMtnSpiderB(struct task *tp)
 		___njSetTexture(&texlist_obj_mountain);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)var1->ang.z);
 		}
 		if (var1->ang.x != 0)
 		{
@@ -63,7 +63,7 @@ void DrawMtnSpiderB(struct task *tp)
 			njRotateY(0, (Uint16)var1->ang.y);
 		}
 		FUN_0067d2d0(0, var2, var2, var2);
-		ds_ActionClip((struct NJS_ACTION *)(*(int *)((char *)var1 + 8)), var1->timer.f, var2);
+		ds_ActionClip((struct NJS_ACTION *)((int)var1->counter.l), var1->timer.f, var2);
 		njPopMatrix(1);
 	}
 }

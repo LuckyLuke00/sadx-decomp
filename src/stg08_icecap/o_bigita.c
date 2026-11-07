@@ -11,6 +11,6 @@ void ObjectBigIta(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, object_c_info, 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_big_ita_a_big_ita_a;
+	var1->counter.ptr = object_big_ita_a_big_ita_a;
 	ObjectCCollision(tp);
 }

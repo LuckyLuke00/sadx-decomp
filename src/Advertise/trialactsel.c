@@ -31,10 +31,10 @@ void FUN_006067b0(struct task *param_1, struct ModeSelPrmType *param_2)
 	struct anywk *local_8;
 
 	local_8 = param_1->awp;
-	*(int *)((char *)local_8 + 4) = *(int *)((char *)param_2 + 0);
-	*(int *)((char *)local_8 + 8) = *(int *)((char *)param_2 + 4);
-	*(float *)((char *)local_8 + 0xc) = 5800.0f;
-	*(int *)((char *)local_8 + 0) = 0;
+	local_8->work.sl[1] = *(int *)param_2;
+	local_8->work.sl[2] = *(int *)((char *)param_2 + 4);
+	local_8->work.f[3] = 5800.0f;
+	*(int *)local_8 = 0;
 	*(int *)((char *)local_8 + 0x30) = (int)((char *)local_8 + 0x1c);
 	FUN_00606810((struct AvaStgActPrmT *)local_8);
 }
@@ -56,42 +56,42 @@ void trial_act_sel_exec(struct task *tp)
 	struct TrialActSelWk *local_8;
 
 	local_8 = (struct TrialActSelWk *)tp->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 3 && *(int *)local_8 == 0)
+	if (DAT_05cda18c->awp->work.sl[1] == 3 && *(int *)local_8 == 0)
 	{
 		FUN_00606a00((struct AvaStgActPrmT *)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 1;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 3 && *(int *)local_8 == 2)
+	if (DAT_05cda18c->awp->work.sl[2] == 3 && *(int *)local_8 == 2)
 	{
 		FUN_00606a50((struct task *)local_8);
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
+		local_8->T = 0.0f;
 		*(int *)local_8 = 3;
 	}
 	switch (*(int *)local_8)
 	{
 	case 0:
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
-		*(int *)((char *)local_8 + 0x14) = 0;
+		local_8->T = 0.0f;
+		local_8->BaseCol = 0;
 		break;
 	case 1:
-		*(int *)((char *)local_8 + 0x14) = GetFadeInColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeInColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			*(int *)local_8 = 2;
 		}
 		break;
 	case 2:
-		*(float *)((char *)local_8 + 0x10) = 0.0f;
-		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 3;
+		local_8->T = 0.0f;
+		local_8->BaseCol = 0xffffffff;
+		DAT_05cda18c->awp->work.sl[3] = 3;
 		trial_act_sel_sub_exec(local_8);
 		break;
 	case 3:
-		*(int *)((char *)local_8 + 0x14) = GetFadeOutColFromT(*(float *)((char *)local_8 + 0x10));
-		*(float *)((char *)local_8 + 0x10) += 0.1f;
-		if (*(float *)((char *)local_8 + 0x10) >= 1.0f)
+		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
+		local_8->T += 0.1f;
+		if (local_8->T >= 1.0f)
 		{
 			AvaReleaseTexForEachMode((AdvaModeEnum)3);
 			*(char *)((char *)DAT_05cda18c->awp + 0x1f) = 1;

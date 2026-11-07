@@ -39,7 +39,7 @@ void ChkEgm1Tikal(struct task *tp, struct taskwk *twp, struct bossextwk *bxwp)
 	if (var1 != 0)
 	{
 		var1->dest = TikalTaskExit;
-		*(int *)((char *)var1->twp + 8) = tikal_mes_egm1[DAT_05b3ebbc]->wait;
+		var1->twp->counter.l = tikal_mes_egm1[DAT_05b3ebbc]->wait;
 		DAT_060b990c = 1;
 		ObjectTikalBoss(tikal_mes_egm1[DAT_05b3ebbc], 0x629);
 	}
@@ -90,7 +90,7 @@ static void TaskBossEnd(struct task *tp)
 	struct anywk *var2 = tp->awp;
 
 	EraseDolbyCtrl(var1);
-	*(short *)((char *)var2 + 4) = 0xe;
+	var2->work.sw[2] = 0xe;
 	BSetMotion(var1, (struct bosswk *)var2);
 	FreeEgm1JetTask();
 }

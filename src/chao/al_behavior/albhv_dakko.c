@@ -49,7 +49,7 @@ long ALBHV_Dakko(struct task *tp)
 		}
 		if (AL_EmotionGetValue(tp, 6) < 0xa)
 		{
-			AL_ParameterAddUserLike(tp, 1, *(float *)((char *)&ChaoGlobal + 0xf0));
+			AL_ParameterAddUserLike(tp, 1, (&ChaoGlobal)->DakkoAddAttr);
 		}
 	}
 	*(int *)((char *)tp->twp + 0xb0) &= 0xfffffff7;

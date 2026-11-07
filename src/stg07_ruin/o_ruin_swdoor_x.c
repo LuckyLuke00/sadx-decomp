@@ -51,8 +51,8 @@ void ObjectRuinSwdoorX(struct task *tp)
 	var1->wtimer = 0;
 	var1->mode = 0;
 	var1->value.l = 0;
-	var1->scl.x = -njCos(*(Angle *)((char *)var1 + 0x18));
-	var1->scl.z = njSin(*(Angle *)((char *)var1 + 0x18));
+	var1->scl.x = -njCos(var1->ang.y);
+	var1->scl.z = njSin(var1->ang.y);
 	if (FUN_004c39c0(tp) == 0)
 	{
 		CCL_Init(tp, &c_info_door[0], 1, 4);

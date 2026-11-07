@@ -9,9 +9,9 @@ void DrawA(struct task *tp)
 	SetObjectTexture();
 	njPushMatrix(0);
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
-	if (*(int *)((char *)var1 + 0x18))
+	if (var1->ang.y)
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (unsigned short)var1->ang.y);
 	}
 	___dsDrawModel(model_knbn_01_kanban01_kanban01);
 	njPopMatrix(1);
@@ -25,9 +25,9 @@ void DrawB(struct task *tp)
 	SetObjectTexture();
 	njPushMatrix(0);
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
-	if (*(int *)((char *)var1 + 0x18))
+	if (var1->ang.y)
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (unsigned short)var1->ang.y);
 	}
 	___dsDrawModel(model_knbn_02_kanban02_kanban02);
 	njPopMatrix(1);

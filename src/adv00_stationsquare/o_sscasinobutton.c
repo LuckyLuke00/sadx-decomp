@@ -25,16 +25,16 @@ void Disp(struct task *tp)
 		}
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
 		ds_DrawModelClip(DAT_01cd8c58, 1.0f);
 		var2 = DAT_01cd8c80;
-		FUN_0067d830(NULL, 0.0f, 0.0f, *(float *)((char *)var1 + 8));
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		FUN_0067d830(NULL, 0.0f, 0.0f, var1->counter.f);
+		if (var1->ang.z != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateX(NULL, (unsigned short)var1->ang.z);
 		}
 		ds_DrawModelClip(var2->model, 1.0f);
 		njPopMatrix(1);

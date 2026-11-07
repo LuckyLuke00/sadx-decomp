@@ -67,7 +67,7 @@ void FUN_006bb800(struct task *param_1)
 		{
 			njRotateY(0, (Uint16)var1->ang.y);
 		}
-		late_ActionMesh(*(NJS_ACTION **)((char *)DAT_060eeaac + 0x3c), *(float *)((char *)var1 + 0x10), 1);
+		late_ActionMesh(*(NJS_ACTION **)((char *)DAT_060eeaac + 0x3c), var1->value.f, 1);
 		njPopMatrix(1);
 	}
 }

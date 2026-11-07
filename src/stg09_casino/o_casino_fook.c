@@ -28,8 +28,8 @@ void ObjectCasinoFook(struct task *tp)
 		tp->dest = ObjectCasinoManfEnd;
 		if (FUN_004c39c0(tp) == 0)
 		{
-			*(int *)((char *)var1 + 0x14) = 0;
-			*(int *)((char *)var1 + 0x1c) = 0;
+			var1->ang.x = 0;
+			var1->ang.z = 0;
 			CCL_Init(tp, &object_c_info[0], 1, 4);
 			ObjCasino_InitGColl(tp, &object_cas_fook_fook[0], 80.0f, 0);
 		}

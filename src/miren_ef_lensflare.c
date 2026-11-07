@@ -30,7 +30,7 @@ void dispLensFlare(struct task *task_p)
 {
 	if (DAT_05b9d838 == 0)
 	{
-		DrawLensFlare((struct NJS_POINT3 *)((int)(*(int **)((char *)task_p + 0x20)) + 0x20));
+		DrawLensFlare((struct NJS_POINT3 *)((int)((int *)task_p->twp) + 0x20));
 	}
 	return;
 }

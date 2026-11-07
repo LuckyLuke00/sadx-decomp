@@ -10,23 +10,23 @@ void EffectFire(struct sp_task *tp, struct sp_link *lp)
 	struct sp_link *local_cg;
 	float local_8g;
 
-	local_cg = (struct sp_link *)*(int *)((char *)tp + 0x44);
-	*(short *)((char *)tp + 0xa) = (short)(int)*(float *)((char *)tp + 0x10);
-	if (*(short *)((char *)tp + 0xa) > 9)
+	local_cg = (struct sp_link *)tp->work[0].l;
+	tp->no = (short)(int)tp->frame;
+	if (tp->no > 9)
 	{
-		*(short *)((char *)tp + 0xa) = 9;
+		tp->no = 9;
 		SpFreeTask(tp);
 		return;
 	}
-	*(float *)((char *)tp + 0x10) += *(float *)((char *)local_cg + 8);
+	tp->frame += *(float *)((char *)local_cg + 8);
 	local_8g = *(float *)((char *)local_cg + 0xc);
-	*(float *)((char *)tp + 0x24) = -*(float *)((char *)tp + 0x24) * local_8g + *(float *)((char *)tp + 0x24);
-	*(float *)((char *)tp + 0x28) = -*(float *)((char *)tp + 0x28) * local_8g + *(float *)((char *)local_cg + 0x10) + *(float *)((char *)tp + 0x28);
-	*(float *)((char *)tp + 0x2c) = -*(float *)((char *)tp + 0x2c) * local_8g + *(float *)((char *)tp + 0x2c);
-	*(float *)((char *)tp + 0x18) += *(float *)((char *)tp + 0x24);
-	*(float *)((char *)tp + 0x1c) += *(float *)((char *)tp + 0x28);
-	*(float *)((char *)tp + 0x20) += *(float *)((char *)tp + 0x2c);
-	*(float *)((char *)tp + 0x14) += *(float *)((char *)local_cg + 4) * 0.15000000596046448;
+	tp->spd.x = -tp->spd.x * local_8g + tp->spd.x;
+	tp->spd.y = -tp->spd.y * local_8g + *(float *)((char *)local_cg + 0x10) + tp->spd.y;
+	tp->spd.z = -tp->spd.z * local_8g + tp->spd.z;
+	tp->pos.x += tp->spd.x;
+	tp->pos.y += tp->spd.y;
+	tp->pos.z += tp->spd.z;
+	tp->scl += *(float *)((char *)local_cg + 4) * 0.15000000596046448;
 	return;
 }
 

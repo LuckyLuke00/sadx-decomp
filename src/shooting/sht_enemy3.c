@@ -6,7 +6,7 @@ void FUN_007ecd30(struct task *param_1);
 // FUNCTION: SADX 0x007ec8c0
 int __fastcall Zako3Move(struct taskwk *twp)
 {
-	int var1 = *(char *)((char *)twp + 0x12) * 16 + DAT_060cd3a8;
+	int var1 = twp->value.b[2] * 16 + DAT_060cd3a8;
 	int var2 = *(int *)(var1 + 4);
 	int var3 = *(int *)*(int *)(var1 + 8);
 	twp->pos.x = *(float *)((char *)var2 + (DAT_060ce418 - var3) * 12);

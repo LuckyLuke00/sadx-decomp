@@ -623,12 +623,12 @@ void ObjectGCollisionExecute(struct task *tp)
 	if (local_cg != NULL)
 	{
 		*(float *)((char *)local_cg + 8) = local_8g->pos.x;
-		*(float *)((char *)local_cg + 0xc) = local_8g->pos.y;
+		local_cg->unionStatus.fRangeOut = local_8g->pos.y;
 		*(float *)((char *)local_cg + 0x10) = local_8g->pos.z;
 		*(long *)((char *)local_cg + 0x14) = local_8g->ang.x;
 		*(long *)((char *)local_cg + 0x18) = local_8g->ang.y;
 		*(long *)((char *)local_cg + 0x1c) = local_8g->ang.z;
-		if (CheckCollisionP(&local_8g->pos, *(float *)((char *)*(void **)((char *)local_cg + 4) + 0x24) + 16.0f) != 0)
+		if (CheckCollisionP(&local_8g->pos, *(float *)((char *)local_cg->pTask + 0x24) + 16.0f) != 0)
 		{
 			local_8g->flag |= 0x100;
 		}
@@ -723,12 +723,12 @@ void ObjectGCollisionExecute___Mesh(struct task *tp)
 	if (local_cg != NULL)
 	{
 		*(float *)((char *)local_cg + 8) = local_8g->pos.x;
-		*(float *)((char *)local_cg + 0xc) = local_8g->pos.y;
+		local_cg->unionStatus.fRangeOut = local_8g->pos.y;
 		*(float *)((char *)local_cg + 0x10) = local_8g->pos.z;
 		*(long *)((char *)local_cg + 0x14) = local_8g->ang.x;
 		*(long *)((char *)local_cg + 0x18) = local_8g->ang.y;
 		*(long *)((char *)local_cg + 0x1c) = local_8g->ang.z;
-		if (CheckCollisionP(&local_8g->pos, *(float *)((char *)*(void **)((char *)local_cg + 4) + 0x24) + 16.0f) != 0)
+		if (CheckCollisionP(&local_8g->pos, *(float *)((char *)local_cg->pTask + 0x24) + 16.0f) != 0)
 		{
 			local_8g->flag |= 0x100;
 		}
@@ -751,9 +751,9 @@ void FUN_00501770(struct taskwk *param_1)
 		return;
 	if (0 == SetObjectTexture())
 	{
-		___njSetTexture((struct NJS_TEXLIST *)*(int **)((char *)local_8 + 0x10));
+		___njSetTexture((struct NJS_TEXLIST *)(int *)local_8->value.ptr);
 	}
-	occ_DrawObject(local_8, (struct obj *)*(int **)((char *)local_8 + 8), 1.0f);
+	occ_DrawObject(local_8, (struct obj *)(int *)local_8->counter.ptr, 1.0f);
 }
 
 // STUB: SADX 0x005017c0

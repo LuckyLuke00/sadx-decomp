@@ -11,6 +11,6 @@ void ObjectMaruta(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, object_c_info, 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_maruta_all_maruta01_maruta01;
+	var1->counter.ptr = object_maruta_all_maruta01_maruta01;
 	ObjectCCollision(tp);
 }

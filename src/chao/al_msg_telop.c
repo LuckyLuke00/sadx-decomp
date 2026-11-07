@@ -8,7 +8,7 @@ void AlMsgTelopCreate(struct SAlMsgTelop *self)
 // FUNCTION: SADX 0x007137a0
 void AlMsgTelopSetPos(struct SAlMsgTelop *self, float px, float py, float pz)
 {
-	*(float *)((char *)self + 0) = px;
+	*(float *)self = px;
 	*(float *)((char *)self + 4) = py;
 	*(float *)((char *)self + 8) = pz;
 }

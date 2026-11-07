@@ -18,15 +18,15 @@ void MiddleRockDisplayer(struct task *tp)
 		___njSetTexture(&texlist_obj_mountain);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
+			njRotateX(0, (unsigned short)(short)var1->ang.x);
 		}
-		ds_DrawModelClip((struct NJS_MODEL *)*(int *)(*(int *)((char *)var1 + 0xc) + 4), 1.0f);
+		ds_DrawModelClip((struct NJS_MODEL *)*(int *)(var1->timer.l + 4), 1.0f);
 		njPopMatrix(1);
 		SetMaterial(1.0f, 0.0f, 0.0f, 0.0f);
 	}

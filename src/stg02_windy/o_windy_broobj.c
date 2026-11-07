@@ -32,17 +32,17 @@ void DispCube(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
+			njRotateX(0, (unsigned short)(short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, (unsigned short)*(short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)(short)var1->ang.y);
 		}
 		switch ((int)var1->scl.x)
 		{
@@ -87,8 +87,8 @@ void PieceExec(struct task *tp)
 	var2->pos.y = var1->spd.y + var2->pos.y;
 	var2->pos.z = var1->spd.z + var2->pos.z;
 	var1->spd.y = var1->spd.y - 0.10000000149011612;
-	*(int *)((char *)var2 + 0x18) = *(int *)((char *)var2 + 0x18) + *(int *)((char *)var1 + 0x2c);
-	*(int *)((char *)var2 + 0x14) = *(int *)((char *)var2 + 0x14) + *(int *)((char *)var1 + 0x28);
+	var2->ang.y = var2->ang.y + var1->ang_spd.y;
+	var2->ang.x = var2->ang.x + var1->ang_spd.x;
 	if (var2->wtimer > 0x14)
 	{
 		var2->value.f = var2->value.f - 0.019999999552965164;

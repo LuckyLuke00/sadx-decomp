@@ -60,7 +60,7 @@ void NormalB(struct task *tp)
 	else
 	{
 		local_cg->pos = local_8g->pos;
-		local_cg->scl.x = *(float *)((char *)local_8g + 0x30) * 0.2f;
+		local_cg->scl.x = local_8g->scl.y * 0.2f;
 		NBarrierDisp(tp);
 		local_cg->btimer++;
 	}
@@ -149,7 +149,7 @@ void CMuteki(struct task *tp)
 		return;
 	}
 	local_cg->pos = local_8g->pos;
-	local_cg->scl.x = *(float *)((char *)local_8g + 0x30) * 0.20000000298023224f;
+	local_cg->scl.x = local_8g->scl.y * 0.2f;
 	CMutekiDisp(tp);
 	local_cg->btimer++;
 }

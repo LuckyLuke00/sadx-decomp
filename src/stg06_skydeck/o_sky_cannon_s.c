@@ -20,7 +20,7 @@ void ObjectSkydeck_cannon_s_Init(struct task *tp)
 		var2->scl[1] = 1.0f;
 		var2->ang[0] = 0;
 		var2->scl[2] = 1.0f;
-		var2->ang[1] = *(long *)((char *)var1 + 0x18);
+		var2->ang[1] = var1->ang.y;
 		var2->ang[2] = 0;
 		var2->pos[0] = var1->pos.x;
 		var2->pos[1] = var1->pos.y;

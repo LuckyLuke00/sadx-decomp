@@ -72,7 +72,7 @@ void ObjectTPPlanetIII(struct task *tp)
 {
 	struct taskwk *local_8;
 	local_8 = tp->twp;
-	*(unsigned char *)((char *)local_8 + 3) = 5;
+	local_8->btimer = 5;
 	execTPPlanet(tp);
 }
 
@@ -81,7 +81,7 @@ void ObjectTPMeteoriteI(struct task *tp)
 {
 	struct taskwk *local_8;
 	local_8 = tp->twp;
-	*(char *)((char *)local_8 + 3) = 0;
+	local_8->btimer = 0;
 	execTPPlanet(tp);
 }
 

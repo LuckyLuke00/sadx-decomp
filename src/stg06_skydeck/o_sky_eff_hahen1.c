@@ -17,7 +17,7 @@ void ObjectSkydeck_eff_hahen1_Draw(struct task *tp)
 	var1 = tp->twp;
 	if (CheckRangeOutWithR(tp, 2250100.0f) == 0)
 	{
-		var3 = *(int **)((char *)var1 + 0x10);
+		var3 = (int *)var1->value.ptr;
 		var2 = 0;
 		if (*var3 > 0)
 		{
@@ -36,9 +36,9 @@ void ObjectSkydeck_eff_hahen1_Draw(struct task *tp)
 				{
 					njRotateZ(NULL, *(unsigned short *)(var4 + 0x20));
 				}
-				ds_DrawObjectClip((struct obj *)*(int *)((char *)var1 + 8), 1.0f);
+				ds_DrawObjectClip((struct obj *)(int)var1->counter.l, 1.0f);
 				njPopMatrix(1);
-				var3 = *(int **)((char *)var1 + 0x10);
+				var3 = (int *)var1->value.ptr;
 				var2 = var2 + 1;
 				var5 = var5 + 0x30;
 			}

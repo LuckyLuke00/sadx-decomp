@@ -51,7 +51,7 @@ void ObjectSkydeck_crane(struct task *tp)
 			var3->twp->smode = 1;
 			break;
 		case 1:
-			*(int *)((char *)var1 + 0x18) += 0x88;
+			var1->ang.y += 0x88;
 			break;
 		}
 		ObjectSkydeck_crane_Draw(tp);

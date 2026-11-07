@@ -68,7 +68,7 @@ void DisplayS(struct task *tp)
 	___njColorBlendingMode(1, 0xa);
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
-	anim_Chaos7SDamage[0].texid = *(short *)((char *)var1 + 0xe) + 0x10;
+	anim_Chaos7SDamage[0].texid = var1->timer.w[1] + 0x10;
 	sprite_Chaos7SDamage.sy = var1->scl.x;
 	sprite_Chaos7SDamage.sx = sprite_Chaos7SDamage.sy;
 	late_DrawSprite3D(&sprite_Chaos7SDamage, 0, 0x30, 4);
@@ -101,7 +101,7 @@ void NormalMist(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	struct motionwk *var2 = tp->mwp;
-	var1->ang.x += *(long *)((char *)var1 + 0x18);
+	var1->ang.x += var1->ang.y;
 	if (var1->ang.x >= 0x8000)
 	{
 		tp->exec = Sprite_Chaos7Mist;

@@ -18,7 +18,7 @@ void ObjectWindyGate(struct task *tp)
 			break;
 		case 1:
 			var1->counter.f = var1->scl.x + var1->counter.f;
-			var1->timer.f = *(float *)((char *)var1 + 0x30) + var1->timer.f;
+			var1->timer.f = var1->scl.y + var1->timer.f;
 			if (FUN_004c39c0(tp))
 			{
 				njPrintC(0x110013, "<- ROTATEY_SPEED");

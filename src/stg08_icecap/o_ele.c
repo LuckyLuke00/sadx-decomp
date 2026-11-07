@@ -14,7 +14,7 @@ void ObjectEle(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, object_c_info, 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_obj_ele_obj_ele;
+	var1->counter.ptr = object_obj_ele_obj_ele;
 	ObjectCCollision(tp);
 }
 
@@ -24,7 +24,7 @@ void ObjectFiw4m(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, &object_c_info[1], 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_snow_fiw_4m_fiw_4m;
+	var1->counter.ptr = object_snow_fiw_4m_fiw_4m;
 	ObjectCCollision(tp);
 }
 
@@ -34,7 +34,7 @@ void ObjectFiw5m(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, &object_c_info[2], 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_snow_fiw_5m_fiw_5m;
+	var1->counter.ptr = object_snow_fiw_5m_fiw_5m;
 	ObjectCCollision(tp);
 }
 
@@ -44,6 +44,6 @@ void ObjectFiw6m(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	CCL_Init(tp, &object_c_info[3], 1, 4);
-	*(struct obj **)((char *)var1 + 8) = object_snow_fiw_6m_fiw_6m;
+	var1->counter.ptr = object_snow_fiw_6m_fiw_6m;
 	ObjectCCollision(tp);
 }

@@ -53,7 +53,7 @@ void EggDisp2(struct task *tp)
 	}
 	___njFogDisable();
 	SaveConstantAttr();
-	if (*(signed char *)((char *)var1 + 0xd) > 0)
+	if (var1->timer.b[1] > 0)
 	{
 		OnConstantAttr(0, 0x100000);
 		SetMaterial(1.0, 1.0, 1.0, 1.0);

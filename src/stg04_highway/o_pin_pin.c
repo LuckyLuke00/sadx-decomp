@@ -8,7 +8,7 @@ void ObjectPinPin(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	*(struct obj **)((char *)var1 + 8) = object_pin_pin_pin;
+	var1->counter.ptr = object_pin_pin_pin;
 	if (FUN_004c39c0(tp) == 0)
 	{
 		CCL_Init(tp, object_c_info, 3, 4);

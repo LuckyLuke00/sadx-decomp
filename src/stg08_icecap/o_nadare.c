@@ -26,13 +26,13 @@ void cDispYukikemu(struct task *ctp)
 	{
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)DAT_05b42a7c + 0x18) != 0)
+		if (DAT_05b42a7c->ang.y != 0)
 		{
-			njRotateY(NULL, (unsigned short)*(short *)((char *)DAT_05b42a7c + 0x18));
+			njRotateY(NULL, (unsigned short)(short)DAT_05b42a7c->ang.y);
 		}
-		if (*(int *)((char *)DAT_05b42a7c + 0x14) != 0)
+		if (DAT_05b42a7c->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)DAT_05b42a7c + 0x14));
+			njRotateX(NULL, (unsigned short)DAT_05b42a7c->ang.x);
 		}
 		late_DrawSprite3D(&sprite_yukikemu, var1->timer.l / 2, 0x20, 4);
 		njPopMatrix(1);
@@ -53,11 +53,11 @@ void cDispRock(struct task *ctp)
 		SetObjectTexture();
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x10) != 0)
+		if (var1->value.l != 0)
 		{
 			ds_DrawModelClip((struct NJS_MODEL *)&model_sky_h_hahen01a_h_hahen01a, 1.0f);
 		}

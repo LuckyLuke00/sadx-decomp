@@ -29,27 +29,27 @@ static void dispSSCard(struct task *tp)
 	{
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
 		SetObjectTexture();
-		late_ActionClipMesh((NJS_ACTION *)(*(int *)((char *)var1 + 8)), *(float *)((char *)var1 + 0xc), 0, 1.0f);
+		late_ActionClipMesh((NJS_ACTION *)((int)var1->counter.l), var1->timer.f, 0, 1.0f);
 		njPopMatrix(1);
 		if (FUN_004c39c0(tp) == 0)
 		{
 			if ((var1->flag & 0x1000) != 0)
 			{
-				*(float *)((char *)var1 + 0xc) = 0.0f;
-				*(int *)((char *)var1 + 0x18) = -DAT_05baf368[0]->ang.y;
+				var1->timer.f = 0.0f;
+				var1->ang.y = -DAT_05baf368[0]->ang.y;
 				return;
 			}
-			float var3 = *(float *)((char *)var1 + 0xc) + 0.5;
-			*(float *)((char *)var1 + 0xc) = var3;
-			struct NJS_MOTION *var4 = *(struct NJS_MOTION **)((char *)(*(void **)((char *)var1 + 8)) + 4);
+			float var3 = var1->timer.f + 0.5;
+			var1->timer.f = var3;
+			struct NJS_MOTION *var4 = *(struct NJS_MOTION **)((char *)(var1->counter.ptr) + 4);
 			if ((float)(unsigned int)var4->nbFrame <= var3)
 			{
-				*(float *)((char *)var1 + 0xc) = 0.0f;
+				var1->timer.f = 0.0f;
 			}
 		}
 	}

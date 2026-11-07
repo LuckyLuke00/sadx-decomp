@@ -27,16 +27,16 @@ long SendScoopCommand(struct task *objTask_p, struct task *chaoTask_p, signed ch
 			var2 = 1;
 			break;
 		case 11:
-			if (*(signed char *)((char *)var1 + 0) == 2)
+			if (*(signed char *)var1 == 2)
 			{
-				*(signed char *)((char *)var1 + 0) = 3;
+				*(signed char *)var1 = 3;
 				var2 = 1;
 			}
 			break;
 		case 12:
-			if (*(signed char *)((char *)var1 + 0) == 3)
+			if (*(signed char *)var1 == 3)
 			{
-				*(signed char *)((char *)var1 + 0) = 4;
+				*(signed char *)var1 = 4;
 				*(struct task **)((char *)var1 + 0xc) = NULL;
 				var2 = 1;
 			}

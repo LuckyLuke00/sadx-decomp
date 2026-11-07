@@ -52,19 +52,19 @@ void MatoDisp(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(0, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(0, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)var1->ang.y);
 		}
 		if (var1->mode == 1)
 		{
 			SaveConstantAttr();
 			OnConstantAttr(0, 0x100000);
-			SetMaterial(*(float *)((char *)var1 + 0xc), 0.0f, 0.0f, 0.0f);
+			SetMaterial(var1->timer.f, 0.0f, 0.0f, 0.0f);
 			ds_DrawObjectClip(object_sssikake_kaiganmato_kaiganmato, 1.0f);
 			ResetMaterial();
 			LoadConstantAttr();
@@ -95,7 +95,7 @@ void MatoInit(struct task *tp)
 	var1->counter.f = 2.6f;
 	var1->wtimer = 0;
 	var1->ang.x = 0;
-	*(int *)((char *)var1 + 0x1c) = 0x7d0;
+	var1->ang.z = 0x7d0;
 	tp->exec = MatoExec;
 	tp->disp = MatoDisp;
 }

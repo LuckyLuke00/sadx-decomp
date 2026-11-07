@@ -185,7 +185,7 @@ void FUN_005a92d0(struct taskwk *param_1)
 	local_8 = (DAT_05edbd04 << 1) * 4 + (int)MPT_MRaceEachStage;
 	param_1->counter.w[0] = (short)((*(int *)(*(int *)local_8) - 1));
 	local_8 += 4;
-	*(short *)((char *)param_1 + 0xa) = (short)((*(int *)(*(int *)local_8) - 1));
+	param_1->counter.w[1] = (short)((*(int *)(*(int *)local_8) - 1));
 	local_8 += 4;
 }
 
@@ -356,15 +356,15 @@ void MRaceSetVoice(struct anywk *awp, long type)
 	int local_10;
 	int local_cj;
 	local_cj = 0;
-	if (*(int *)((char *)awp + 4) == type)
+	if (awp->work.sl[1] == type)
 	{
 		return;
 	}
-	if (*(int *)((char *)awp + 0xc) > 0)
+	if (awp->work.sl[3] > 0)
 	{
 		return;
 	}
-	*(int *)((char *)awp + 0xc) = 0xb4;
+	awp->work.sl[3] = 0xb4;
 	if ((((DAT_05b9d724 << 8) | DAT_05b9d744) >> 8 & 0xff) != 4)
 	{
 		local_8g = (int)MRVT_Sonic;
@@ -374,13 +374,13 @@ void MRaceSetVoice(struct anywk *awp, long type)
 		local_8g = (int)MRVT_Moble;
 	}
 	local_10 = 1 << (int)type;
-	*(int *)((char *)awp + 8) = *(int *)((char *)awp + 8) ^ local_10;
-	if ((*(int *)((char *)awp + 8) & local_10) != 0)
+	awp->work.sl[2] = awp->work.sl[2] ^ local_10;
+	if ((awp->work.sl[2] & local_10) != 0)
 	{
 		local_cj = 1;
 	}
 	Serif_Play(*(int *)(local_8g + (local_cj + type * 2) * 4));
-	*(int *)((char *)awp + 4) = type;
+	awp->work.sl[1] = type;
 }
 
 // FUNCTION: SADX 0x005ab4a0

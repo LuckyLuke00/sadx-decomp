@@ -56,8 +56,8 @@ void TutorialTaskDestructor(struct task *tp)
 	struct task *var3;
 
 	var1 = tp->twp;
-	var2 = (struct task *)(*(int *)((char *)var1 + 0x14));
-	var3 = (struct task *)(*(int *)((char *)var1 + 0x18));
+	var2 = (struct task *)(var1->ang.x);
+	var3 = (struct task *)(var1->ang.y);
 	if (var2 != 0)
 	{
 		FreeTask(var2);

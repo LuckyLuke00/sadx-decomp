@@ -10,17 +10,17 @@ void Object_Mountain_Kumonosu_Display(struct task *tp)
 		___njSetTexture(&texlist_obj_mountain);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)var1->ang.z);
 		}
 		if (var1->ang.x != 0)
 		{
 			njRotateX(0, (Uint16)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)var1->ang.y);
 		}
 		FUN_0067d2d0(0, var1->scl.x, var1->scl.y, var1->scl.z);
 		ds_DrawModelClip((struct NJS_MODEL *)(*(int *)((char *)&object_kumonosu_kumonosu1a_kumonosu1a + 4)), FUN_004a1e90(&var1->scl.x));

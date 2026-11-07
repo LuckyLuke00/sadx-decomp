@@ -20,17 +20,17 @@ void calcPushUp(struct task *tp)
 		p.z = var1->scl.z;
 	}
 	njPushMatrix(&_nj_unit_matrix_);
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+		njRotateZ(0, (unsigned short)var1->ang.z);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)var1 + 0x14));
+		njRotateX(0, (unsigned short)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (unsigned short)var1->ang.y);
 	}
 	njCalcPoint(0, &p, (struct NJS_POINT3 *)var2);
 	njPopMatrix(1);
@@ -63,9 +63,9 @@ void dispRibon(struct task *tp)
 	___njSetTexture(&texlist_fountain[tp->ptp->twp->btimer]);
 	njPushMatrix(0);
 	njTranslateV(0, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (unsigned short)var1->ang.y);
 	}
 	njScaleV(0, &var1->scl);
 	late_DrawObjectClipMesh((struct obj *)var1->counter.l, 0, FUN_004a1e90((float *)&var1->scl));

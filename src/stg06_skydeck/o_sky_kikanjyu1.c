@@ -8,8 +8,8 @@ void ObjectSkydeck_kikanjyu1_End(struct task *tp)
 	struct task *var1 = DAT_060d0ac8;
 	while (var1 != 0)
 	{
-		struct task *var2 = *(struct task **)((char *)var1 + 0x20);
-		struct task *var3 = *(struct task **)((char *)var1 + 0x24);
+		struct task *var2 = (struct task *)var1->twp;
+		struct task *var3 = (struct task *)var1->mwp;
 		struct task *var4 = var3;
 		if (var2 == 0)
 		{
@@ -19,10 +19,10 @@ void ObjectSkydeck_kikanjyu1_End(struct task *tp)
 		{
 			*(struct task **)((char *)var2 + 0x24) = var3;
 		}
-		var3 = *(struct task **)((char *)var1 + 0x24);
+		var3 = (struct task *)var1->mwp;
 		if (var3 != 0)
 		{
-			*(struct task **)((char *)var3 + 0x20) = *(struct task **)((char *)var1 + 0x20);
+			*(struct task **)((char *)var3 + 0x20) = (struct task *)var1->twp;
 		}
 		Free(var1);
 		var1 = var4;

@@ -92,8 +92,8 @@ void NormalUR(struct task *tp)
 	{
 		var1->flag &= 0xfeff;
 	}
-	*(int *)((char *)var2 + 0x18) = *(int *)((char *)var1 + 0x18) + 0x80;
-	*(int *)((char *)var1 + 0x18) = *(int *)((char *)var2 + 0x18);
+	*(int *)((char *)var2 + 0x18) = var1->ang.y + 0x80;
+	var1->ang.y = *(int *)((char *)var2 + 0x18);
 	DispUR(tp);
 }
 
@@ -117,12 +117,12 @@ void NormalUL(struct task *tp)
 		DispUL(tp);
 		return;
 	}
-	*(int *)((char *)var2 + 0x18) = *(int *)((char *)var1 + 0x18) - 0x200;
-	*(int *)((char *)var1 + 0x18) = *(int *)((char *)var2 + 0x18);
-	if (((*(int *)((char *)var1 + 0x18) & 0xff00) == 0) ||
-		((*(int *)((char *)var1 + 0x18) & 0xff00) == 0x4000) ||
-		((*(int *)((char *)var1 + 0x18) & 0xff00) == 0x8000) ||
-		((*(int *)((char *)var1 + 0x18) & 0xff00) == 0xc000))
+	*(int *)((char *)var2 + 0x18) = var1->ang.y - 0x200;
+	var1->ang.y = *(int *)((char *)var2 + 0x18);
+	if (((var1->ang.y & 0xff00) == 0) ||
+		((var1->ang.y & 0xff00) == 0x4000) ||
+		((var1->ang.y & 0xff00) == 0x8000) ||
+		((var1->ang.y & 0xff00) == 0xc000))
 	{
 		var1->value.l = 0x3c;
 	}

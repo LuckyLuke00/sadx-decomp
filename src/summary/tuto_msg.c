@@ -41,7 +41,7 @@ int GetTutoMsgPage(struct task *tp)
 // FUNCTION: SADX 0x00495420
 void SetTutoMsgNextPage(struct task *tp, int next_page)
 {
-	*(int *)((char *)tp->awp + 0xc) = next_page;
+	tp->awp->work.sl[3] = next_page;
 }
 
 // FUNCTION: SADX 0x00495430

@@ -42,22 +42,22 @@ void ALK_SelectWindowExec(struct task *tp)
 	{
 		if ((var2->work.ub[0x18] & 1) != 0 && var1->id == *(char *)(var2->work.ptr[8]))
 		{
-			*(float *)((char *)var1 + 0x30) = 0.1f;
+			var1->scl.y = 0.1f;
 			var1->flag |= 1;
 			return;
 		}
 	}
 	else
 	{
-		if (*(float *)((char *)var1 + 0x30) > 0.0f)
+		if (var1->scl.y > 0.0f)
 		{
 			var1->ang.x += 0x2000;
-			var1->scl.x = njSin(var1->ang.x) * *(float *)((char *)var1 + 0x30) + 1.0f;
-			*(float *)((char *)var1 + 0x30) *= 0.8999999761581421;
-			if (*(float *)((char *)var1 + 0x30) < 0.01f)
+			var1->scl.x = njSin(var1->ang.x) * var1->scl.y + 1.0f;
+			var1->scl.y *= 0.8999999761581421;
+			if (var1->scl.y < 0.01f)
 			{
 				var1->ang.x = 0;
-				*(float *)((char *)var1 + 0x30) = 0.0f;
+				var1->scl.y = 0.0f;
 				var1->scl.x = 1.0f;
 			}
 		}

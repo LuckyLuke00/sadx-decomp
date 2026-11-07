@@ -7,17 +7,17 @@ void dispChaos7Panel(struct task *tp)
 	SetRegularTexture();
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+		njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 	}
-	if (*(int *)((char *)var1 + 0x14) != 0)
+	if (var1->ang.x != 0)
 	{
-		njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+		njRotateX(NULL, (unsigned short)var1->ang.x);
 	}
-	if (*(int *)((char *)var1 + 0x18) + 0x8000 != 0)
+	if (var1->ang.y + 0x8000 != 0)
 	{
-		njRotateY(NULL, (unsigned short)(*(short *)((char *)var1 + 0x18) + -0x8000));
+		njRotateY(NULL, (unsigned short)((short)var1->ang.y + -0x8000));
 	}
 	FUN_004a88c0((NJS_ACTION *)var1->counter.ptr, var1->timer.f);
 	njPopMatrix(1);

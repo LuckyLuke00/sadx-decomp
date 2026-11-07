@@ -50,7 +50,7 @@ long CheckPlayer1Alive(struct task *tp)
 	local_8g = *(struct task **)((char *)local_cg + 0x54);
 	if (local_8g == 0)
 		return 0;
-	if (*(char *)((char *)(*(void **)((char *)local_8g + 0x20)) + 1) == 0x32)
+	if (((local_8g->twp))->smode == 0x32)
 		return 0;
 	return 1;
 }
@@ -116,20 +116,20 @@ struct task *CreateBossPlayerTask(struct BOSSPLAYER_CREATE_PARAM *Param)
 		case 0:
 		case 1:
 			local_8 = CreateElementalTask(7, 1, SonicTheHedgehog);
-			*(char *)((char *)local_8->twp + 9) = 0;
-			*(char *)((char *)local_8->twp + 8) = 1;
+			local_8->twp->counter.b[1] = 0;
+			local_8->twp->counter.b[0] = 1;
 			break;
 		case 2:
 		case 3:
 			local_8 = CreateElementalTask(7, 1, KnucklesTheEchidna);
-			*(char *)((char *)local_8->twp + 9) = 3;
-			*(char *)((char *)local_8->twp + 8) = 1;
+			local_8->twp->counter.b[1] = 3;
+			local_8->twp->counter.b[0] = 1;
 			break;
 		case 4:
 		case 5:
 			local_8 = CreateElementalTask(7, 1, E102);
-			*(char *)((char *)local_8->twp + 9) = 6;
-			*(char *)((char *)local_8->twp + 8) = 1;
+			local_8->twp->counter.b[1] = 6;
+			local_8->twp->counter.b[0] = 1;
 			break;
 	}
 	Param->boss_tp = local_8;

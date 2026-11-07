@@ -8,7 +8,7 @@ static void Disp(struct task *tp)
 	SetObjectTexture();
 	njPushMatrix(0);
 	njTranslateV(0, (struct NJS_POINT3 *)((char *)tp->twp + 0x20));
-	FUN_004a88c0((struct NJS_ACTION *)&action_hebigate_hebikuchi, *(float *)((char *)tp->twp + 0xc));
+	FUN_004a88c0((struct NJS_ACTION *)&action_hebigate_hebikuchi, tp->twp->timer.f);
 	njPopMatrix(1);
 }
 

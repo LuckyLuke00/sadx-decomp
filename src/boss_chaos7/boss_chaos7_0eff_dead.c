@@ -20,7 +20,7 @@ void Display1(struct task *tp)
 	{
 		return;
 	}
-	*(int *)((char *)object_c7_dead01_dead01[0].model->mats + 0xc) = (int)var1->timer.b[1];
+	object_c7_dead01_dead01[0].model->mats->attr_texId = (int)var1->timer.b[1];
 	argb.a = var1->value.f;
 	argb.b = 1.0f;
 	argb.g = 1.0f;
@@ -65,7 +65,7 @@ void Display2(struct task *tp)
 	var1 = tp->twp;
 	if (DAT_05b9d838 == 0)
 	{
-		*(int *)((char *)object_c7_dead02_dead02[0].model->mats + 0xc) = var1->timer.b[1] + 8;
+		object_c7_dead02_dead02[0].model->mats->attr_texId = var1->timer.b[1] + 8;
 		argb.a = var1->value.f;
 		argb.b = 1.0f;
 		argb.g = 1.0f;
@@ -111,7 +111,7 @@ void Display3(struct task *tp)
 	var1 = tp->twp;
 	if (DAT_05b9d838 == 0)
 	{
-		*(int *)((char *)object_c7_dead03_dead03[0].model->mats + 0xc) = var1->timer.b[1] + 0x10;
+		object_c7_dead03_dead03[0].model->mats->attr_texId = var1->timer.b[1] + 0x10;
 		argb.a = var1->value.f;
 		argb.b = 1.0f;
 		argb.g = 1.0f;
@@ -177,7 +177,7 @@ void Normal3(struct task *tp)
 			return;
 		}
 	}
-	*(long *)((char *)var1 + 0x18) += 0x100;
+	var1->ang.y += 0x100;
 	Display3(tp);
 }
 
@@ -188,6 +188,6 @@ void Chaos7DeadEffect3(struct task *tp)
 	tp->exec = Normal3;
 	tp->disp = Display3;
 	var1->value.f = 0.0f;
-	*(float *)((char *)var1 + 8) = 0.0f;
+	var1->counter.f = 0.0f;
 	var1->timer.b[2] = 2;
 }

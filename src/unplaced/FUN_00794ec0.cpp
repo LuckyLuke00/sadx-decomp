@@ -14,5 +14,5 @@ void FUN_00794ec0(void)
 void FUN_00794ed0()
 {
 	struct obj *var1 = _object_tr2a_s_t2b_body_s_t2b_body[0].child;
-	*(struct obj **)((char *)var1->sibling + 0x30) = DAT_060cbbb8;
+	var1->sibling->sibling = DAT_060cbbb8;
 }

@@ -21,7 +21,7 @@ void FBuyerDisp(struct task *tp)
 	___njSetTexture(&texlist_ChaoBlackmarketObj);
 	njPushMatrixEx();
 	FUN_0067d830((float *)0, 0.0f, 0.0f, -11.9f);
-	FUN_004a7cb0((struct obj *)&object_kin_bl_buyer_buyer, (struct NJS_MOTION *)kBuyerMotionTable[*(int *)((char *)var1 + 8)], *(float *)((char *)var1 + 0xc));
+	FUN_004a7cb0((struct obj *)&object_kin_bl_buyer_buyer, (struct NJS_MOTION *)kBuyerMotionTable[var1->work.sl[2]], var1->work.f[3]);
 	njPopMatrixEx();
 }
 

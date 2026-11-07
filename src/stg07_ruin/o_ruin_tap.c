@@ -16,17 +16,17 @@ static void Draw(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(NULL);
 		FUN_0067d830((float *)0, var1->pos.x, var1->pos.y, var1->pos.z);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
 		ds_DrawModelClip((struct NJS_MODEL *)&model_lwobj_snake00_snake00, 1.0f);
 		late_DrawObjectClipMesh((struct obj *)&object_lwobj_s_water_s_water, 0, 1.0f);

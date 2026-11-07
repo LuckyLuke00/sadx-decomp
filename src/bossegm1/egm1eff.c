@@ -49,7 +49,7 @@ void SetEgm1GroundSmoke(struct NJS_POINT3 *posp)
 // FUNCTION: SADX 0x006c4780
 void ChgEgm1SmokeStat(unsigned char mode)
 {
-	*(unsigned char *)((char *)DAT_060b99f8->awp + 0xc) = mode;
+	DAT_060b99f8->awp->work.ub[12] = mode;
 }
 
 // FUNCTION: SADX 0x006c4790
@@ -127,10 +127,10 @@ void SetEgm1GroundClay(struct NJS_POINT3 *posp)
 		var2 = (struct anywk *)CAlloc(1, 0x14);
 		var1->awp = var2;
 		*(int *)(var2) = *(int *)(posp);
-		*(int *)((char *)var2 + 4) = *(int *)((char *)posp + 4);
-		*(int *)((char *)var2 + 8) = *(int *)((char *)posp + 8);
+		var2->work.sl[1] = *(int *)((char *)posp + 4);
+		var2->work.sl[2] = *(int *)((char *)posp + 8);
 		*(char *)((char *)var2 + 0x10) = 0;
-		*(int *)((char *)var2 + 0xc) = 0;
+		var2->work.sl[3] = 0;
 		var1->exec = egm1ground_clay_exec;
 	}
 }

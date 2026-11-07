@@ -131,7 +131,7 @@ void PoliceTurnSlow(struct taskwk *twp, struct enemywk *ewp)
 
 	FUN_005e3d10(twp, ewp);
 	local_10 = twp->ang.y;
-	local_8g = (long)(atan2(*(float *)((char *)ewp + 0x5c) - *(float *)((char *)twp + 0x20), *(float *)((char *)ewp + 0x64) - *(float *)((char *)twp + 0x28)) * 65536.0 / 6.283184) - 0x4000;
+	local_8g = (long)(atan2(ewp->aim.x - twp->pos.x, ewp->aim.z - twp->pos.z) * 65536.0 / 6.283184) - 0x4000;
 	local_ci = SubAngle(local_8g, local_10);
 	if (local_ci < -0x80)
 	{
@@ -204,8 +204,8 @@ void PoliceTurn(struct taskwk *twp, struct enemywk *ewp)
 	long local_cj;
 
 	FUN_005e3d10(twp, ewp);
-	local_10 = *(long *)((char *)twp + 0x18);
-	local_8g = (long)(atan2((double)(ewp->aim.x - twp->pos.x), (double)(ewp->aim.z - twp->pos.z)) * 65536.0 / 6.283184) - 0x4000;
+	local_10 = twp->ang.y;
+	local_8g = (long)(atan2((ewp->aim.x - twp->pos.x), (ewp->aim.z - twp->pos.z)) * 65536.0 / 6.283184) - 0x4000;
 	local_cj = SubAngle(local_8g, local_10);
 	if (local_cj < -0x80)
 	{

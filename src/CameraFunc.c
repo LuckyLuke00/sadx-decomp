@@ -370,12 +370,12 @@ void PathCamera2Core(struct _OBJ_CAMERAPARAM *pParam)
 {
 	struct Angle3 local_14;
 	struct NJS_POINT3 local_20;
-	*(float *)((char *)camcont_wp + 0x0c) = *(float *)((char *)DAT_05b42a7c + 0x20);
-	*(float *)((char *)camcont_wp + 0x10) = *(float *)((char *)DAT_05b42a7c + 0x24);
-	*(float *)((char *)camcont_wp + 0x14) = *(float *)((char *)DAT_05b42a7c + 0x28);
-	*(int *)((char *)camcont_wp + 0x24) = *(int *)((char *)DAT_05b42a7c + 0x14);
-	*(int *)((char *)camcont_wp + 0x28) = *(int *)((char *)DAT_05b42a7c + 0x18);
-	*(int *)((char *)camcont_wp + 0x2c) = *(int *)((char *)DAT_05b42a7c + 0x1c);
+	*(float *)((char *)camcont_wp + 0x0c) = DAT_05b42a7c->pos.x;
+	*(float *)((char *)camcont_wp + 0x10) = DAT_05b42a7c->pos.y;
+	*(float *)((char *)camcont_wp + 0x14) = DAT_05b42a7c->pos.z;
+	*(int *)((char *)camcont_wp + 0x24) = DAT_05b42a7c->ang.x;
+	*(int *)((char *)camcont_wp + 0x28) = DAT_05b42a7c->ang.y;
+	*(int *)((char *)camcont_wp + 0x2c) = DAT_05b42a7c->ang.z;
 	local_20.x = *(float *)((char *)camcont_wp + 0x0c);
 	local_20.y = *(float *)((char *)camcont_wp + 0x10);
 	local_20.z = *(float *)((char *)camcont_wp + 0x14);
@@ -610,7 +610,7 @@ void FUN_00567390(struct _OBJ_CAMERAPARAM *param_1)
 	DAT_05ccdaec = *(float *)((char *)param_1 + 0x14);
 	DAT_05ccdc08 = *(float *)((char *)param_1 + 0x18);
 	DAT_05ccdb14 = *(float *)((char *)param_1 + 0x1c);
-	DAT_05ccdc04 = *(unsigned short *)((char *)param_1 + 0);
+	DAT_05ccdc04 = *(unsigned short *)param_1;
 	DAT_05ccdbe4 = *(unsigned short *)((char *)param_1 + 2);
 	cameraSonicMain(param_1);
 }

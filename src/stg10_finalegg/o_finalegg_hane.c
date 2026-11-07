@@ -39,7 +39,7 @@ void hane_exec(struct task *task_p)
 			var1->value.l = var1->ang.x;
 		}
 	}
-	*(int *)((char *)var1 + 0x18) += var1->value.l;
+	var1->ang.y += var1->value.l;
 	hane_draw(task_p);
 	dsPlay_timer_v(0x3ed, (int)task_p, 1, 0, 2, var1->pos.x, var1->pos.y, var1->pos.z);
 }

@@ -29,7 +29,7 @@ void ObjectWatageDisplay(struct task *tp)
 // FUNCTION: SADX 0x00806d30
 void ObjectWindyFlowerA(struct task *tp)
 {
-	*(void **)((char *)tp->twp + 8) = object_wvobj_flower_a_flower_a;
+	tp->twp->counter.ptr = object_wvobj_flower_a_flower_a;
 	ObjectNormal(tp);
 	ObjectCCollision_setWZ(tp);
 }

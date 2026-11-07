@@ -23,7 +23,7 @@ void CasinoClearCollisionInit(struct task *tp)
 	struct obj *var2;
 
 	var2 = GetMobileLandObject();
-	*(struct obj **)((char *)var1 + 8) = var2;
+	var1->counter.ptr = var2;
 	var2->scl[0] = 1.0f;
 	var2->scl[1] = 1.0f;
 	var2->scl[2] = 1.0f;

@@ -16,7 +16,7 @@ static void FDisp(struct task *tp)
 	___njSetTexture(&texlist_ChaoBlackmarketObj);
 	njPushMatrixEx();
 	FUN_0067d830((float *)0, -2.4f, 3.4f, -9.0f);
-	FUN_004a7cb0((struct obj *)&object_kinblo_lamp_lamp, (struct NJS_MOTION *)&motion_kinblo_lamp, *(float *)((char *)var1 + 0x2c));
+	FUN_004a7cb0((struct obj *)&object_kinblo_lamp_lamp, (struct NJS_MOTION *)&motion_kinblo_lamp, var1->scl.x);
 	njPopMatrixEx();
 }
 

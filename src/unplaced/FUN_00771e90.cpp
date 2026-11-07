@@ -17,7 +17,7 @@ void FUN_00771e90(struct task *param_1)
 	var4->pos.x = var5->pos.x + var3->pos.x;
 	var4->pos.y = var5->pos.y + var3->pos.y;
 	var4->pos.z = var5->pos.z + var3->pos.z;
-	*(int *)((char *)var4 + 0x18) = *(int *)((char *)var5 + 0x18) + *(int *)((char *)var3 + 0x18);
+	var4->ang.y = var5->ang.y + var3->ang.y;
 }
 
 // STUB: SADX 0x00771ee0

@@ -11,7 +11,7 @@ void ObjectLinering(struct task *tp)
 	struct motionwk *local_8g;
 	local_cg = tp->twp;
 	local_8g = tp->mwp;
-	*(int *)((char *)local_cg + 0x1c) = 0;
+	local_cg->ang.z = 0;
 	local_cg->mode = 0;
 	local_cg->wtimer = 0;
 	local_cg->mode = 0;
@@ -55,7 +55,7 @@ void LineringDisp(struct task *tp)
 		return;
 	njPushMatrix(0);
 	njTranslateV(0, &local_10->pos);
-	for (local_8g = 0; local_8g < *(int *)((char *)local_10 + 0xc); local_8g++)
+	for (local_8g = 0; local_8g < local_10->timer.l; local_8g++)
 	{
 		njPushMatrix(0);
 		FUN_0067d2d0(0, 0.3f, 0.3f, 0.3f);

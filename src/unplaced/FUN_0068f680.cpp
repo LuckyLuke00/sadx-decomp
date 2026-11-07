@@ -9,10 +9,10 @@ void FUN_0068f680(struct task *param_1)
 	SetObjectTexture();
 	njPushMatrix(0);
 	njTranslateV(0, (struct NJS_POINT3 *)((char *)var1 + 0x20));
-	if (*(int *)((char *)var1 + 0x18))
+	if (var1->ang.y)
 	{
-		njRotateY(0, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(0, (unsigned short)var1->ang.y);
 	}
-	ds_ActionClip(action_sssikake_uradoor, *(float *)((char *)var1 + 8), 1.0f);
+	ds_ActionClip(action_sssikake_uradoor, var1->counter.f, 1.0f);
 	njPopMatrix(1);
 }

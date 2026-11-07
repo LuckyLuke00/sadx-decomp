@@ -20,7 +20,7 @@ void WaterDisplayer(struct task *tp)
 	}
 	var3 = (int)DAT_060eea88;
 	var1 = (struct obj *)(*(int *)((char *)var3 + 0xcc));
-	*(int *)((char *)var1->model->mats + 0xc) = var2->btimer;
+	var1->model->mats->attr_texId = var2->btimer;
 	*(int *)((char *)var1->model->mats + 0x20) = var2->btimer;
 	*(int *)((char *)var1->model->mats + 0x34) = var2->btimer;
 	___njSetTexture(&texlist_ec_water);

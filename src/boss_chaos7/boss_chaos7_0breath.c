@@ -67,7 +67,7 @@ void Chaos7BreathParticleDisplay(struct task *tp)
 {
 	struct anywk *var1 = tp->awp;
 	struct taskwk *var2 = tp->twp;
-	int var3 = *(int *)((char *)var2 + 0xc);
+	int var3 = var2->timer.l;
 
 	if (DAT_05b9d838 == 0)
 	{
@@ -108,12 +108,12 @@ void objDisplayBT(struct task *tp)
 	{
 		___njFogDisable();
 		___njSetTexture(&texlist_chaos7_0breath);
-		*(int *)((char *)object_c7_breath_tame_breath_tame.model->mats + 0xc) = *(short *)((char *)var1 + 0xe) + 0x23;
+		object_c7_breath_tame_breath_tame.model->mats->attr_texId = var1->timer.w[1] + 0x23;
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
 		if (DAT_060c36c4 != 0)
 		{

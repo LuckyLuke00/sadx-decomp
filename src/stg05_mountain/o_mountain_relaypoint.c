@@ -12,17 +12,17 @@ void RelaypointDraw(struct task *tp)
 		___njSetTexture(&texlist_obj_mountain);
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(0, (unsigned short)*(short *)((char *)var1 + 0x14));
+			njRotateX(0, (unsigned short)(short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(0, (unsigned short)*(short *)((char *)var1 + 0x18));
+			njRotateY(0, (unsigned short)(short)var1->ang.y);
 		}
 		ds_ActionClip(action_kasshatyuukei1a_st, var1->scl.x, 1.0f);
 		njPopMatrix(1);
@@ -37,7 +37,7 @@ void RelaypointExec(struct task *tp)
 	{
 		if (FUN_004c39c0(tp) == 0)
 		{
-			var1->scl.x += *(float *)((char *)var1 + 0x34);
+			var1->scl.x += var1->scl.z;
 			if (var1->scl.y <= var1->scl.x)
 			{
 				var1->scl.x -= var1->scl.y;

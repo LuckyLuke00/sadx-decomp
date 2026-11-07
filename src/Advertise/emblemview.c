@@ -30,10 +30,10 @@ void FUN_005ff920(struct task *param_1, struct ModeSelPrmType *param_2)
 	struct anywk *local_8;
 
 	local_8 = param_1->awp;
-	*(void **)((char *)local_8 + 4) = *(void **)param_2;
-	*(void **)((char *)local_8 + 8) = *(void **)((char *)param_2 + 4);
-	*(float *)((char *)local_8 + 0xc) = 5800.0f;
-	*(int *)((char *)local_8 + 0) = 0;
+	local_8->work.ptr[1] = *(void **)param_2;
+	local_8->work.ptr[2] = *(void **)((char *)param_2 + 4);
+	local_8->work.f[3] = 5800.0f;
+	*(int *)local_8 = 0;
 	FUN_005ff970(local_8);
 }
 
@@ -58,13 +58,13 @@ void emblem_view_exec(struct task *tp)
 	struct anywk *local_8;
 
 	local_8 = tp->awp;
-	if (*(int *)((char *)DAT_05cda18c->awp + 4) == 0xa && *(int *)local_8 == 0)
+	if (DAT_05cda18c->awp->work.sl[1] == 0xa && *(int *)local_8 == 0)
 	{
 		FUN_005ffba0(local_8);
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
 		*(int *)local_8 = 1;
 	}
-	if (*(int *)((char *)DAT_05cda18c->awp + 8) == 0xa && *(int *)local_8 == 2)
+	if (DAT_05cda18c->awp->work.sl[2] == 0xa && *(int *)local_8 == 2)
 	{
 		FUN_005b5aa0(local_8);
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
@@ -87,7 +87,7 @@ void emblem_view_exec(struct task *tp)
 	case 2:
 		*(float *)((char *)local_8 + 0x10) = 0.0f;
 		*(int *)((char *)local_8 + 0x14) = 0xffffffff;
-		*(int *)((char *)DAT_05cda18c->awp + 0xc) = 0xa;
+		DAT_05cda18c->awp->work.sl[3] = 0xa;
 		emblem_view_sub_exec((struct EmblemViewWk *)local_8);
 		break;
 	case 3:

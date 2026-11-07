@@ -9,7 +9,7 @@ void ObjectLineringV(struct task *tp)
 	struct motionwk *local_8g;
 	local_cg = tp->twp;
 	local_8g = tp->mwp;
-	*(int *)((char *)local_cg + 0x1c) = 0;
+	local_cg->ang.z = 0;
 	local_cg->mode = 0;
 	local_cg->wtimer = 0;
 	local_cg->mode = 0;

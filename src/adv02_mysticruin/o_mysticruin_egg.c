@@ -21,9 +21,9 @@ static void DispATask(struct task *tp)
 	___njSetTexture(&texlist_mr_egg);
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)var1->ang.y);
 	}
 	ds_DrawObjectClip((struct obj *)&object_tamago_e2_tama_e2_tama, 1.0f);
 	njPopMatrix(1);

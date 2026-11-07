@@ -39,7 +39,7 @@ void Object_Mountain_Futa(struct task *tp)
 					if (GetPlayerNumber() != 3)
 					{
 						var1->mode = 2;
-						*(int *)((char *)var1->cwp->info + 4) |= 0x10;
+						var1->cwp->info->attr |= 0x10;
 					}
 				}
 			}

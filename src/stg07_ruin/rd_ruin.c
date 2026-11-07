@@ -55,7 +55,7 @@ void LongLineRingExec()
 			}
 			break;
 		case 1:
-			if (*(float *)((char *)DAT_05baf368[0] + 0x20) < 7600.0)
+			if (DAT_05baf368[0]->pos.x < 7600.0)
 			{
 				FUN_0058b860(3, 1);
 				SetLineringEffect(0);

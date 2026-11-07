@@ -26,7 +26,7 @@ void dispStep(struct task *tp)
 	{
 		njRotateY(0, (Uint16)var1->ang.y);
 	}
-	___dsDrawObject(*(struct obj **)((char *)var1 + 8));
+	___dsDrawObject((struct obj *)var1->counter.ptr);
 	njPopMatrix(1);
 }
 

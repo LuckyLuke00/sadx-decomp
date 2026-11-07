@@ -23,10 +23,10 @@ struct enemywk *EnemyInitialize(struct task *tp, struct taskwk *twp)
 	tp->mwp = (struct motionwk *)local_8g;
 	local_8g->home = twp->pos;
 	local_8g->colli_radius = 15.0f;
-	*(float *)((char *)local_8g + 0xa0) = 5.0f;
+	local_8g->colli_center.y = 5.0f;
 	local_8g->colli_top = 10.0f;
-	*(float *)((char *)local_8g + 0xb0) = -1.0f;
-	*(float *)((char *)local_8g + 0xb4) = 50.0f;
+	local_8g->colli_bottom = -1.0f;
+	local_8g->cliff_height = 50.0f;
 	local_8g->bound_floor = 0.9f;
 	local_8g->bound_friction = 0.8f;
 	local_8g->bound_ceiling = 0.1f;
@@ -35,7 +35,7 @@ struct enemywk *EnemyInitialize(struct task *tp, struct taskwk *twp)
 	local_8g->view_angle = 0x38e3;
 	local_8g->view_range = 22500.0f;
 	local_8g->hear_range = 1225.0f;
-	*(long *)((char *)local_8g + 0x1a8) = 0x100;
+	local_8g->angy_spd = 0x100;
 	local_8g->flag = local_8g->flag | 0x480;
 	local_8g->flag = local_8g->flag & ~0x3000;
 	return local_8g;
@@ -58,13 +58,13 @@ void FUN_005e2cc0(struct taskwk *param_1, struct enemywk *param_2)
 	float local_cg;
 	float *local_8g;
 
-	local_cg = *(float *)((char *)param_2 + 0xd8) + param_2->colli_top;
+	local_cg = param_2->shadow.pos.y + param_2->colli_top;
 	local_8g = (float *)((char *)param_2 + 0x140);
 	param_2->flag &= ~0x8;
 	if (local_cg > local_8g[4])
 	{
-		*(float *)((char *)param_2 + 8) = 0.0f;
-		*(float *)((char *)param_1 + 0x24) = *(float *)((char *)param_1 + 0x24) - (local_cg - local_8g[4]) * 0.3f;
+		param_2->velo.y = 0.0f;
+		param_1->pos.y = param_1->pos.y - (local_cg - local_8g[4]) * 0.3f;
 		param_2->flag |= 8;
 	}
 }
@@ -119,7 +119,7 @@ long EnemyCalcAimAngle(struct taskwk *twp, struct enemywk *ewp)
 	long local_8g;
 
 	local_cg = twp->ang.y;
-	ewp->aim_angle = (long)(atan2(*(float *)((char *)ewp + 0x5c) - *(float *)((char *)twp + 0x20), *(float *)((char *)ewp + 0x64) - *(float *)((char *)twp + 0x28)) * 65536.0 / 6.283184) - 0x4000;
+	ewp->aim_angle = (long)(atan2(ewp->aim.x - twp->pos.x, ewp->aim.z - twp->pos.z) * 65536.0 / 6.283184) - 0x4000;
 	local_8g = DiffAngle(ewp->aim_angle, local_cg);
 	local_8g &= 0xffff;
 	return local_8g;
@@ -130,7 +130,7 @@ long FUN_005e3d10(struct taskwk *param_1, struct enemywk *param_2)
 {
 	long local_8;
 	local_8 = EnemyCalcAimAngle(param_1, param_2);
-	*(long *)((char *)param_1 + 0x18) = AdjustAngle(*(long *)((char *)param_1 + 0x18), param_2->aim_angle, param_2->angy_spd);
+	param_1->ang.y = AdjustAngle(param_1->ang.y, param_2->aim_angle, param_2->angy_spd);
 	return local_8;
 }
 
@@ -161,7 +161,7 @@ long EnemyCalcHomeAngle(struct taskwk *twp, struct enemywk *ewp)
 	long local_8g;
 
 	local_cg = twp->ang.y;
-	ewp->aim_angle = (long)(atan2(*(float *)((char *)ewp + 0x50) - *(float *)((char *)twp + 0x20), *(float *)((char *)ewp + 0x58) - *(float *)((char *)twp + 0x28)) * 65536.0 / 6.283184) - 0x4000;
+	ewp->aim_angle = (long)(atan2(ewp->home.x - twp->pos.x, ewp->home.z - twp->pos.z) * 65536.0 / 6.283184) - 0x4000;
 	local_8g = DiffAngle(ewp->aim_angle, local_cg);
 	local_8g &= 0xffff;
 	return local_8g;
@@ -172,7 +172,7 @@ long EnemyTurnToHome(struct taskwk *twp, struct enemywk *ewp)
 {
 	long local_8;
 	local_8 = EnemyCalcHomeAngle(twp, ewp);
-	*(long *)((char *)twp + 0x18) = AdjustAngle(*(long *)((char *)twp + 0x18), ewp->aim_angle, ewp->angy_spd);
+	twp->ang.y = AdjustAngle(twp->ang.y, ewp->aim_angle, ewp->angy_spd);
 	return local_8;
 }
 
@@ -205,7 +205,7 @@ long EnemyTurnToPlayer(struct taskwk *twp, struct enemywk *ewp, unsigned char pn
 {
 	long local_8;
 	local_8 = EnemyCalcPlayerAngle(twp, ewp, pnum);
-	*(long *)((char *)twp + 0x18) = AdjustAngle(*(long *)((char *)twp + 0x18), ewp->aim_angle, ewp->angy_spd);
+	twp->ang.y = AdjustAngle(twp->ang.y, ewp->aim_angle, ewp->angy_spd);
 	return local_8;
 }
 
@@ -228,16 +228,16 @@ void EnemyAimAroundPlayer(struct taskwk *twp, struct enemywk *ewp, int pnum, int
 	local_8g = DAT_05baf368[pnum];
 	njPushMatrix(0);
 	njUnitMatrix(0);
-	if (*(int *)((char *)DAT_05b42a7c + 0x18) != 0)
+	if (DAT_05b42a7c->ang.y != 0)
 	{
-		njRotateY(0, (unsigned short)(*(int *)((char *)DAT_05b42a7c + 0x18)));
+		njRotateY(0, (unsigned short)(DAT_05b42a7c->ang.y));
 	}
 	njCalcPoint(0, &DAT_026791b4[aim_num], &aim_pos);
 	njPopMatrix(1);
 	if (local_8g == 0)
 	{
 		___OutputDebugString("%s %d:playertwp=0\n", "..\\..\\src\\enemy.c", 0x380);
-		*(NJS_POINT3 *)((char *)ewp + 0x5c) = aim_pos;
+		ewp->aim = aim_pos;
 	}
 	else
 	{
@@ -258,10 +258,10 @@ void FUN_005e4370(struct enemywk *param_1)
 	*(float *)((char *)param_1 + 0x30) -= 0.089999996f;
 	*(float *)((char *)param_1 + 0x20) += *(float *)((char *)param_1 + 0x2c);
 	*(float *)((char *)param_1 + 0x24) += *(float *)((char *)param_1 + 0x30);
-	*(float *)((char *)param_1 + 0x28) += *(float *)((char *)param_1 + 0x34);
+	*(float *)((char *)param_1 + 0x28) += param_1->radius;
 	*(int *)((char *)param_1 + 0x14) += 0x200;
 	*(int *)((char *)param_1 + 0x18) += 0x1000;
-	*(int *)((char *)param_1 + 0x1c) += 0x700;
+	param_1->ang_aim.x += 0x700;
 }
 
 // FUNCTION: SADX 0x005e43f0

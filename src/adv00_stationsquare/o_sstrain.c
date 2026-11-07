@@ -18,7 +18,7 @@ void KasyaDisplay(struct task *tp)
 		{
 			njRotateY(0, (Uint16)var1->ang.y);
 		}
-		ds_ActionClip(action_train_base, *(float *)((char *)var2 + 0x10), 1.0f);
+		ds_ActionClip(action_train_base, var2->value.f, 1.0f);
 		njPopMatrix(1);
 	}
 }

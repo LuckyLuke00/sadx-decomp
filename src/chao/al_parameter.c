@@ -142,10 +142,10 @@ void AL_ParameterAddVPos(struct task *tp, float add)
 	var2 = *(struct anywk **)((char *)var1 + 0x6c);
 	var3 = *(float *)((char *)var2 + 0xac) + add;
 	*(float *)((char *)var2 + 0xac) = var3;
-	if (var3 > *(float *)((char *)&ChaoGlobal + 0x40))
-		*(float *)((char *)var2 + 0xac) = *(float *)((char *)&ChaoGlobal + 0x40);
-	if (*(float *)((char *)var2 + 0xac) < -*(float *)((char *)&ChaoGlobal + 0x40))
-		*(float *)((char *)var2 + 0xac) = -*(float *)((char *)&ChaoGlobal + 0x40);
+	if (var3 > (&ChaoGlobal)->DeformLimit)
+		*(float *)((char *)var2 + 0xac) = (&ChaoGlobal)->DeformLimit;
+	if (*(float *)((char *)var2 + 0xac) < -(&ChaoGlobal)->DeformLimit)
+		*(float *)((char *)var2 + 0xac) = -(&ChaoGlobal)->DeformLimit;
 	*(short *)((char *)var1 + 0x688) |= 2;
 }
 
@@ -191,7 +191,7 @@ void AL_ParameterAddLifeMax(struct task *tp, long add)
 	struct taskwk *var2 = *(struct taskwk **)((char *)var1 + 0x6c);
 	int var3 = *(unsigned short *)((char *)var2 + 0x8c);
 	int var4 = *(unsigned short *)((char *)var2 + 0x8a);
-	int var5 = *(unsigned short *)((char *)&ChaoGlobal + 0x36);
+	int var5 = (&ChaoGlobal)->LifeMaxLimit;
 	var3 += add;
 	if (var3 > var5)
 		var3 = var5;
@@ -278,7 +278,7 @@ void AL_ParameterControl()
 	unsigned int var1;
 	unsigned short var2;
 	var1 = (unsigned int)DAT_05ade378 + 1;
-	var2 = *(unsigned short *)((char *)&ChaoGlobal + 0x19a);
+	var2 = (&ChaoGlobal)->ChaoTimerBaseInterval;
 	DAT_05ade378 = (int)var1;
 	if (var1 >= (unsigned int)var2)
 	{

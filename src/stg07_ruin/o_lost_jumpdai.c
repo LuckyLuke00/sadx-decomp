@@ -9,9 +9,9 @@ void DrawJumpdai(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(0);
 		njTranslateV(0, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+			njRotateZ(0, (unsigned short)var1->ang.z);
 		}
 		if (var1->ang.y)
 		{
@@ -32,7 +32,7 @@ void ExecJumpdai(struct task *tp)
 		if (var2 != 0)
 		{
 			*(float *)((char *)var2 + 8) = var1->pos.x;
-			*(float *)((char *)var2 + 0xc) = var1->pos.y;
+			var2->unionStatus.fRangeOut = var1->pos.y;
 			*(float *)((char *)var2 + 0x10) = var1->pos.z;
 			*(long *)((char *)var2 + 0x14) = var1->ang.x;
 			*(long *)((char *)var2 + 0x18) = var1->ang.y;

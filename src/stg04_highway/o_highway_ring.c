@@ -15,9 +15,9 @@ void RingDrawAct2(struct task *tp)
 	SetRegularTexture();
 	njPushMatrix(0);
 	FUN_0067d830(0, var1->pos.x, var1->pos.y, var1->pos.z);
-	if (*(int *)((char *)var1 + 0x14))
+	if (var1->ang.x)
 	{
-		njRotateX(0, *(unsigned short *)((char *)var1 + 0x14));
+		njRotateX(0, (unsigned short)var1->ang.x);
 	}
 	___dsDrawModel(&DAT_05a7b20c);
 	njPopMatrix(1);

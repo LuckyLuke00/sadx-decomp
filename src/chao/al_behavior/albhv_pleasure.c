@@ -6,9 +6,9 @@ void AL_CalcIntentionScore_Pleasure(struct task *tp, float *pMaxScore)
 	float score;
 
 	score = 0.0;
-	if (AL_EmotionGetValue(tp, 0) > *(unsigned int *)((char *)&ChaoGlobal + 0x1e8))
+	if (AL_EmotionGetValue(tp, 0) > (&ChaoGlobal)->IntentionPleasureTrigger)
 	{
-		score = 1.0f - (float)(100 - AL_EmotionGetValue(tp, 0x1e)) * 0.004999999888241291 * (1.0f - *(float *)((char *)&ChaoGlobal + 0x1ec));
+		score = 1.0f - (float)(100 - AL_EmotionGetValue(tp, 0x1e)) * 0.004999999888241291 * (1.0f - (&ChaoGlobal)->IntentionPleasureMinScore);
 		AL_ScoreRandomise(&score);
 		if (score > *pMaxScore)
 		{

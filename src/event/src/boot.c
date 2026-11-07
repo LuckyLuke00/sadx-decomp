@@ -38,7 +38,7 @@ void dispBootTask(struct task *p_task)
 void execBootTask(struct task *p_task)
 {
 	struct taskwk *var1 = p_task->twp;
-	struct OBJ_CONDITION *var2 = *(struct OBJ_CONDITION **)((char *)var1 + 0x10);
+	struct OBJ_CONDITION *var2 = (struct OBJ_CONDITION *)var1->value.ptr;
 
 	switch (var1->mode)
 	{

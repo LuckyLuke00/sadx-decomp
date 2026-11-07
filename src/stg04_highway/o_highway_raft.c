@@ -22,7 +22,7 @@ void ObjectHighwayTunagi(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 
-	*(struct obj **)((char *)var1 + 8) = object_ss_tunagidai_tunagidai;
+	var1->counter.ptr = object_ss_tunagidai_tunagidai;
 
 	if (FUN_004c39c0(tp) == 0)
 	{

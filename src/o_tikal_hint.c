@@ -89,7 +89,7 @@ void tikal_hint_exec_round(struct task *task_p)
 	local_18->timer.l += 0x2b7;
 	tikal_hint_calc_round(&calc_vec, local_18->timer.l);
 	TikalGotoTarget(&local_18->pos, &calc_vec, 1.0f);
-	if (*(signed char *)((char *)local_18 + 3) == 0)
+	if ((signed char)local_18->btimer == 0)
 	{
 		CancelLookingAtP(0);
 		local_18->wtimer = 0xf0;

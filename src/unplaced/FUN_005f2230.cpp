@@ -40,11 +40,11 @@ void FUN_005f22c0(struct task *param_1, struct ModeSelPrmType *param_2)
 	struct anywk *local_8;
 
 	local_8 = param_1->awp;
-	*(int *)((char *)local_8 + 4) = *(int *)((char *)param_2 + 0);
-	*(int *)((char *)local_8 + 8) = *(int *)((char *)param_2 + 4);
-	*(int *)((char *)local_8 + 0xc) = *(int *)((char *)param_2 + 8);
+	local_8->work.sl[1] = *(int *)param_2;
+	local_8->work.sl[2] = *(int *)((char *)param_2 + 4);
+	local_8->work.sl[3] = *(int *)((char *)param_2 + 8);
 	*(float *)((char *)local_8 + 0x10) = 5300.0f;
-	*(int *)((char *)local_8 + 0) = 0;
+	*(int *)local_8 = 0;
 	*(char *)((char *)local_8 + 0x26) = 0;
 	FUN_005f34f0(local_8);
 }

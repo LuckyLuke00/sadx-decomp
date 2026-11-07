@@ -31,7 +31,7 @@ void Alr_Kill(struct Alr *___this)
 {
 	if (___this->awp)
 	{
-		DestroyTask(*(struct task **)((char *)___this->awp + 0x8cc));
+		DestroyTask(___this->awp->mytask);
 		___this->flag = 0;
 	}
 }

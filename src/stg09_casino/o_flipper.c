@@ -17,17 +17,17 @@ static void Disp(struct task *tp)
 		SetObjectTexture2(0x22);
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) + *(int *)((char *)var1 + 0xc) != 0)
+		if (var1->ang.y + var1->timer.l != 0)
 		{
-			njRotateY(NULL, (unsigned short)(*(short *)((char *)var1 + 0x18) + *(short *)((char *)var1 + 0xc)));
+			njRotateY(NULL, (unsigned short)((short)var1->ang.y + var1->timer.w[0]));
 		}
 		late_DrawModelClipEx((NJS_MODEL *)var1->counter.ptr, 1, 1.0f);
 		njPopMatrix(1);

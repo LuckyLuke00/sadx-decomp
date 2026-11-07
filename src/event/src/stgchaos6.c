@@ -13,7 +13,7 @@ void StgChaos6CtrlOff()
 		return;
 	var1 = DAT_060cc950;
 	var2 = var1->twp;
-	var3 = *(void **)((char *)var2 + 0x10);
+	var3 = var2->value.ptr;
 	*(float *)((char *)DAT_05edd128 + 0x20) = *(float *)var3;
 	*(float *)((char *)DAT_05edd128 + 0x24) = *(float *)((char *)var3 + 4);
 	*(float *)((char *)DAT_05edd128 + 0x28) = *(float *)((char *)var3 + 8);

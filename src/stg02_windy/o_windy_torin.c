@@ -20,7 +20,7 @@ void TornadeInUpObject(struct task *tp)
 			while (var2 < 10)
 			{
 				struct task *var3 = CreateChildTask(2, RotateObj, tp);
-				*(struct NJS_MODEL **)((char *)var3->twp + 0x10) = rotate_model[var2];
+				var3->twp->value.ptr = rotate_model[var2];
 				var3->twp->pos.y = var1->pos.y;
 				var2++;
 			}

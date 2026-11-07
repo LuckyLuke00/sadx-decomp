@@ -29,7 +29,7 @@ void ObjectPastChaosEmerald(struct task *tp)
 	switch (var1->mode)
 	{
 	case 0:
-		var1->smode = *(char *)((char *)var1 + 0x14);
+		var1->smode = (char)var1->ang.x;
 		if (var1->smode < 0 || var1->smode >= 7)
 		{
 			var1->smode = 0;
@@ -38,7 +38,7 @@ void ObjectPastChaosEmerald(struct task *tp)
 		var1->mode = 1;
 		break;
 	case 1:
-		*(int *)((char *)var1 + 0x18) += 0x80;
+		var1->ang.y += 0x80;
 		var1->timer.w[0] += 0x100;
 		var1->value.f = njSin(var1->timer.w[0]);
 		break;

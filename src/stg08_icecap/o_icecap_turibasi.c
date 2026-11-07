@@ -38,12 +38,12 @@ void ObjectIcecapTuribasiExecutor(struct task *tp)
 	case 2:
 		BridgeNormal2(tp);
 		{
-			int var2 = *(int *)((char *)var1 + 0x1c);
-			*(int *)((char *)var1 + 0x1c) = var2 + 1;
+			int var2 = var1->ang.z;
+			var1->ang.z = var2 + 1;
 			if (var2 > 0xc8)
 			{
 				var1->smode = 0;
-				*(int *)((char *)var1 + 0x1c) = 0;
+				var1->ang.z = 0;
 				return;
 			}
 		}

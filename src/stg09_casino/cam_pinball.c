@@ -18,8 +18,8 @@ void CameraPinball(struct task *tp)
 	DAT_05b42a7c->scl.x = var1->scl.x;
 	DAT_05b42a7c->scl.y = var1->scl.y;
 	DAT_05b42a7c->scl.z = var1->scl.z;
-	*(float *)((char *)DAT_05b42a7c + 8) = var1->pos.x;
-	*(float *)((char *)DAT_05b42a7c + 0xc) = var1->pos.y;
-	*(float *)((char *)DAT_05b42a7c + 0x10) = var1->pos.z;
+	DAT_05b42a7c->counter.f = var1->pos.x;
+	DAT_05b42a7c->timer.f = var1->pos.y;
+	DAT_05b42a7c->value.f = var1->pos.z;
 	tp->exec = Normal;
 }

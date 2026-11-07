@@ -17,7 +17,7 @@ void FUN_006b78c0(struct task *param_1)
 	((int *)var2)[3] = 0;
 	var4 = *(struct obj **)((char *)DAT_060b9144 + 0x9c + var1->btimer * 8);
 	var3 = GetMobileLandObject();
-	*(void **)((char *)var1 + 8) = var3;
+	var1->counter.ptr = var3;
 	var3->evalflags = var4->evalflags;
 	var3->scl[0] = 1.0f;
 	var3->scl[1] = 1.0f;

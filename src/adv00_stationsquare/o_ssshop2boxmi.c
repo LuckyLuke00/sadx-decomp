@@ -31,7 +31,7 @@ void ObjectSSShop2boxmi(struct task *tp)
 	struct taskwk *var1 = tp->twp;
 
 	var1->ang.x = 0;
-	*(long *)((char *)var1 + 0x1c) = 0;
+	var1->ang.z = 0;
 	var1->mode = 0;
 	tp->exec = Disp;
 	tp->disp = Disp;

@@ -23,13 +23,13 @@ void FUN_00717e20(int param_1)
 
 	var1 = (struct task *)param_1;
 	var2 = (struct taskwk *)(*(int *)((char *)var1 + 0x20));
-	var3 = *(int *)((char *)var2 + 0x10);
-	if (*(int *)((char *)var2 + 0x1c) > 0)
+	var3 = var2->value.l;
+	if (var2->ang.z > 0)
 	{
-		var4 = ((*(int *)((char *)var2 + 0x1c) - 1) * *(int *)((char *)var2 + 0x14) + *(int *)((char *)var2 + 0x18)) / *(int *)((char *)var2 + 0x1c);
+		var4 = ((var2->ang.z - 1) * var2->ang.x + var2->ang.y) / var2->ang.z;
 		dsVolume_id(var3, var4);
-		*(int *)((char *)var2 + 0x1c) = *(int *)((char *)var2 + 0x1c) - 1;
-		*(int *)((char *)var2 + 0x14) = var4;
+		var2->ang.z = var2->ang.z - 1;
+		var2->ang.x = var4;
 	}
 	if (*(int *)((char *)var2 + 0x28) > 0)
 	{
@@ -60,10 +60,10 @@ struct task *FUN_00717eb0(int param_1, int param_2)
 		var1->exec = (void (__cdecl *)(struct task *))FUN_00717e20;
 		var1->dest = (void (__cdecl *)(struct task *))FUN_00717e00;
 		var2 = var1->twp;
-		*(int *)((char *)var2 + 0x10) = (int)var1;
-		*(int *)((char *)var2 + 0x14) = 0;
-		*(int *)((char *)var2 + 0x18) = 0;
-		*(int *)((char *)var2 + 0x1c) = 0;
+		var2->value.l = (int)var1;
+		var2->ang.x = 0;
+		var2->ang.y = 0;
+		var2->ang.z = 0;
 		*(int *)((char *)var2 + 0x20) = 0;
 		*(int *)((char *)var2 + 0x24) = 0;
 		*(int *)((char *)var2 + 0x28) = 0;

@@ -13,7 +13,7 @@ void Exp(struct task *tp)
 		}
 		var1->scl.x += 1.0f;
 		var1->scl.y -= 0.2f;
-		*(float *)((char *)var1 + 0x24) += var1->scl.y;
+		var1->pos.y += var1->scl.y;
 		DispExp(tp);
 	}
 }

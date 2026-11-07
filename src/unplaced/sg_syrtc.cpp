@@ -13,7 +13,7 @@ long syRtcGetDate(struct _SYS_RTC_DATE *date)
 		var2 = _localtime64(&var1);
 		if (var2 != NULL)
 		{
-			*(short *)((char *)date + 0) = (short)(var2->tm_year + 0x76c);
+			*(short *)date = (short)(var2->tm_year + 0x76c);
 			*(char *)((char *)date + 2) = (char)(var2->tm_mon + 1);
 			*(char *)((char *)date + 3) = (char)var2->tm_mday;
 			*(char *)((char *)date + 4) = (char)var2->tm_hour;

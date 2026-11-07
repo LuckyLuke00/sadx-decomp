@@ -53,7 +53,7 @@ void target_draw_wheel(struct task *task_p)
 // FUNCTION: SADX 0x00894980
 void target_end(struct task *task_p)
 {
-	*(int *)((char *)task_p->ptp->twp + 8) = 0;
+	task_p->ptp->twp->counter.l = 0;
 }
 
 // STUB: SADX 0x008949a0
@@ -80,7 +80,7 @@ void uptarget_draw_scale_set(struct task *task_p)
 // FUNCTION: SADX 0x00894ab0
 void uptarget_draw_trans_set(struct task *task_p)
 {
-	FUN_0067d830(0, 0.0, *(float *)((char *)task_p->twp + 8), 0.0);
+	FUN_0067d830(0, 0.0, task_p->twp->counter.f, 0.0);
 }
 
 // STUB: SADX 0x00894b60

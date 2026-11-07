@@ -22,15 +22,15 @@ long SendTargetCoconutCommand(struct task *objTask_p, struct task *chaoTask_p, s
 			var2 = 1;
 			break;
 		case 3:
-			if (*(signed char *)((char *)var1 + 0) == 2)
+			if (*(signed char *)var1 == 2)
 			{
-				*(short *)((char *)var1 + 0x2) = 0;
-				*(signed char *)((char *)var1 + 0) = 3;
+				var1->work.w[1] = 0;
+				*(signed char *)var1 = 3;
 				var2 = 1;
 			}
 			break;
 		case 4:
-			if (*(signed char *)((char *)var1 + 0) == 3)
+			if (*(signed char *)var1 == 3)
 			{
 				*(struct task **)((char *)var1 + 0x18) = NULL;
 				FreeTask(objTask_p);

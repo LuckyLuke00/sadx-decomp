@@ -223,21 +223,21 @@ void ghAdvertiseCamera(struct task *tp)
 	local_14m.y = 0.0f;
 	local_14m.z = -1.0f;
 	njPushMatrix(&_nj_unit_matrix_);
-	if (*(unsigned short *)((char *)local_24 + 0x18) != 0)
+	if ((unsigned short)local_24->ang.y != 0)
 	{
-		njRotateY(0, *(unsigned short *)((char *)local_24 + 0x18));
+		njRotateY(0, (unsigned short)local_24->ang.y);
 	}
-	if (*(unsigned short *)((char *)local_24 + 0x14) != 0)
+	if ((unsigned short)local_24->ang.x != 0)
 	{
-		njRotateX(0, *(unsigned short *)((char *)local_24 + 0x14));
+		njRotateX(0, (unsigned short)local_24->ang.x);
 	}
-	if ((unsigned short)(-*(int *)((char *)local_24 + 0x1c)) != 0)
+	if ((unsigned short)(-local_24->ang.z) != 0)
 	{
-		njRotateZ(0, (unsigned short)(-*(int *)((char *)local_24 + 0x1c)));
+		njRotateZ(0, (unsigned short)(-local_24->ang.z));
 	}
 	njCalcVector(0, &local_14m, &local_20g);
 	njPopMatrix(1);
-	DAT_06298c48.roll = -*(int *)((char *)local_24 + 0x1c);
+	DAT_06298c48.roll = -local_24->ang.z;
 	DAT_06298c48.px = local_24->pos.x;
 	DAT_06298c48.py = local_24->pos.y;
 	DAT_06298c48.pz = local_24->pos.z;

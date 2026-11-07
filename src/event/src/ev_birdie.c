@@ -12,10 +12,10 @@ extern struct MJOIN_VERTEX pj1[1];
 static void ev_birdie_exec(struct task *tp, struct MJOIN_VERTEX *pj)
 {
 	struct eventwk *var1 = tp->twp->ewp;
-	struct EVENT_ACTION_LIST *var2 = (struct EVENT_ACTION_LIST *)*(int **)((char *)var1 + 0x40);
+	struct EVENT_ACTION_LIST *var2 = (struct EVENT_ACTION_LIST *)(int *)var1->action.list;
 	if (var2 != NULL)
 	{
-		MJoinVertexes(*(struct obj **)((char *)var2 + 8), *(struct NJS_MOTION **)((char *)var2 + 4), *(float *)((char *)var1 + 0x3c), pj);
+		MJoinVertexes((struct obj *)var2->action.motion, (struct NJS_MOTION *)var2->action.object, var1->action.timer, pj);
 	}
 	___dsSetPalette(2);
 	SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);

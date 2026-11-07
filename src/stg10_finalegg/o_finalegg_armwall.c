@@ -8,13 +8,13 @@ void WallPartsDisplayer(struct task *tp)
 	SetObjectTexture();
 	njPushMatrix(NULL);
 	njTranslateV(NULL, &var1->pos);
-	if (*(int *)((char *)var1 + 0x18) != 0)
+	if (var1->ang.y != 0)
 	{
-		njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+		njRotateY(NULL, (unsigned short)var1->ang.y);
 	}
-	if (*(int *)((char *)var1 + 0x1c) != 0)
+	if (var1->ang.z != 0)
 	{
-		njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x1c));
+		njRotateX(NULL, (unsigned short)var1->ang.z);
 	}
 	___dsDrawModel((struct NJS_MODEL *)var1->counter.ptr);
 	njPopMatrix(1);

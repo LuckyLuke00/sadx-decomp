@@ -48,13 +48,13 @@ void B_Disp(struct task *tp)
 			SetObjectTexture();
 			njPushMatrix(0);
 			njTranslateV(0, &var1->pos);
-			if (*(int *)((char *)var1 + 0x1c) != 0)
+			if (var1->ang.z != 0)
 			{
-				njRotateZ(0, *(unsigned short *)((char *)var1 + 0x1c));
+				njRotateZ(0, (unsigned short)var1->ang.z);
 			}
-			if (*(int *)((char *)var1 + 0x1c) != 0)
+			if (var1->ang.z != 0)
 			{
-				njRotateX(0, *(unsigned short *)((char *)var1 + 0x1c));
+				njRotateX(0, (unsigned short)var1->ang.z);
 			}
 			ds_DrawObjectClip(object_seaobj_hasi_b_hasi_b, 1.0f);
 			njPopMatrix(1);

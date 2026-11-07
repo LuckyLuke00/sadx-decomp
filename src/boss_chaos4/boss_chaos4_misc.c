@@ -23,12 +23,12 @@ void Chaos4HeadMode(struct taskwk *twp)
 		break;
 	case 2:
 		var1 = DAT_05baf368[0];
-		var2 = (int)((double)atan2(*(float *)((char *)var1 + 0x28) - *(float *)((char *)twp + 0x28), *(float *)((char *)var1 + 0x20) - *(float *)((char *)twp + 0x20)) * 65536.0 / 6.283184);
+		var2 = (int)(atan2(var1->pos.z - twp->pos.z, var1->pos.x - twp->pos.x) * 65536.0 / 6.283184);
 		break;
 	default:
 		return;
 	}
-	*(int *)((char *)twp + 0x18) = (int)((double)SubAngle(*(int *)((char *)twp + 0x18), var2) * 0.30000001192092896 + (double)*(int *)((char *)twp + 0x18));
+	twp->ang.y = (int)(SubAngle(twp->ang.y, var2) * 0.30000001192092896 + twp->ang.y);
 }
 
 // FUNCTION: SADX 0x006eec20
@@ -68,11 +68,11 @@ void Chaos4Splash_A_Set(struct NJS_POINT3 *pos)
 	{
 		struct taskwk *var2 = var1->twp;
 		var2->value.f = 0.5f;
-		*(int *)((char *)var2 + 0x1c) = 0;
-		*(int *)((char *)var2 + 0x18) = 0;
-		*(float *)((char *)var2 + 8) = 0.0f;
-		*(int *)((char *)var2 + 0x14) = 0;
-		*(int *)((char *)var2 + 0xc) = (int)&DAT_060c20ec;
+		var2->ang.z = 0;
+		var2->ang.y = 0;
+		var2->counter.f = 0.0f;
+		var2->ang.x = 0;
+		var2->timer.l = (int)&DAT_060c20ec;
 		var2->smode = 8;
 		var2->pos.x = pos->x;
 		var2->pos.y = pos->y;

@@ -11,19 +11,19 @@ void DrawHasira(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
-		FUN_0067d830((float *)0, 0.0f, *(float *)((char *)var1 + 0x30), 0.0f);
+		FUN_0067d830((float *)0, 0.0f, var1->scl.y, 0.0f);
 		ds_DrawModelClip(&model_lwobj_prop_a01_prop_a01[0], 1.0f);
 		njPopMatrix(1);
 	}
@@ -38,19 +38,19 @@ void DrawNormHasira(struct task *tp)
 		SetObjectTexture();
 		njPushMatrix(NULL);
 		njTranslateV(NULL, &var1->pos);
-		if (*(int *)((char *)var1 + 0x1c) != 0)
+		if (var1->ang.z != 0)
 		{
-			njRotateZ(NULL, (unsigned short)*(short *)((char *)var1 + 0x1c));
+			njRotateZ(NULL, (unsigned short)(short)var1->ang.z);
 		}
-		if (*(int *)((char *)var1 + 0x14) != 0)
+		if (var1->ang.x != 0)
 		{
-			njRotateX(NULL, *(unsigned short *)((char *)var1 + 0x14));
+			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
-		if (*(int *)((char *)var1 + 0x18) != 0)
+		if (var1->ang.y != 0)
 		{
-			njRotateY(NULL, *(unsigned short *)((char *)var1 + 0x18));
+			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
-		FUN_0067d830((float *)0, 0.0f, *(float *)((char *)var1 + 0x30), 0.0f);
+		FUN_0067d830((float *)0, 0.0f, var1->scl.y, 0.0f);
 		ds_DrawModelClip(&model_lwobj_prop_a02_prop_a02[0], 1.0f);
 		njPopMatrix(1);
 	}
