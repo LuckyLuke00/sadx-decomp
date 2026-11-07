@@ -17,6 +17,7 @@ The kinds:
   constant_test    if (0), if (1) or while (0); while (1) is a plain loop
   empty_statement  a lone ;, or an if, for or while (not the end of a do) with an empty body
   empty_block      { then } inside a function body
+                   The empty body of an endless loop, while (1) or for (;;), is neither: it is the hang itself.
   lone_conditional a ?: that is a whole statement, such as p ? f(p) : 0;: plain C writes an if, and the form copies
                    the code a delete compiles to
   unused_local     a local that is declared and never used again: it only fills the frame
@@ -354,9 +355,11 @@ def found(func: list[str], at: int, in_image: Callable[[int], bool], tree: Tree)
     for i in body:
         line, source = clean[i], func[i].strip()
         prior = next((clean[j].strip() for j in range(i - 1, at, -1) if clean[j].strip()), "")
-        if line.strip() == ";" or (empty_head(line) and not (line.lstrip().startswith("while") and prior == "}")):
+        if line.strip() == ";" or (empty_head(line) and not ENDLESS.match(line)
+                                   and not (line.lstrip().startswith("while") and prior == "}")):
             hits.append(("empty_statement", source))
-        if line.strip() == "{" and i > at + 1 and i + 1 < len(clean) and clean[i + 1].strip() == "}":
+        if (line.strip() == "{" and i > at + 1 and i + 1 < len(clean) and clean[i + 1].strip() == "}"
+                and not ENDLESS.match(prior)):
             hits.append(("empty_block", source))
         if lone_conditional(line):
             hits.append(("lone_conditional", source))
