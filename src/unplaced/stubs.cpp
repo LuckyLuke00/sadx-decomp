@@ -41,7 +41,7 @@ void _njDirectDrawModel(struct NJS_MODEL *)
 }
 
 // STUB: SADX 0x00421500
-void njQuadTextureStart(Sint32 trans)
+void njQuadTextureStart(Sint32 param_1)
 {
 }
 
@@ -51,7 +51,7 @@ void njDrawPolygon3D(NJS_POINT3COL *, Int, Uint32)
 }
 
 // STUB: SADX 0x004223f0
-void njDrawTriangle3D(NJS_POINT3COL *p, Int n, Uint32 attr)
+void njDrawTriangle3D(NJS_POINT3COL *param_1, Int param_2, Uint32 param_3)
 {
 }
 
@@ -66,24 +66,24 @@ void stHWWaitVSync()
 }
 
 // STUB: SADX 0x00423b40
-Sint32 njLoadTexture(NJS_TEXLIST *texlist)
+Sint32 njLoadTexture(NJS_TEXLIST *param_1)
 {
 	return (Sint32)0;
 }
 
 // STUB: SADX 0x00423c50
-Sint32 njLoadTexturePvmMemory(Uint8 *addr, NJS_TEXLIST *texlist)
+Sint32 njLoadTexturePvmMemory(Uint8 *param_1, NJS_TEXLIST *param_2)
 {
 	return (Sint32)0;
 }
 
 // STUB: SADX 0x00423f70
-void njPrintD(Int loc, Int val, Int digit)
+void njPrintD(Int param_1, Int param_2, Int param_3)
 {
 }
 
 // STUB: SADX 0x00424240
-void njSetCamera(NJS_CAMERA *c)
+void njSetCamera(NJS_CAMERA *param_1)
 {
 }
 
@@ -288,7 +288,7 @@ void njSetTextureName(NJS_TEXNAME *texname, void *addr, Uint32 globalIndex, Uint
 }
 
 // STUB: SADX 0x00435b60
-void njGenerateFogTable3(NJS_FOG_TABLE fog, Float n, Float f)
+void njGenerateFogTable3(NJS_FOG_TABLE param_1, Float param_2, Float param_3)
 {
 }
 
