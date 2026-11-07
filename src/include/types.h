@@ -14,6 +14,7 @@ struct _emtnjvwk;
 struct _eventobjwk;
 struct _OBJ_ADJUSTPARAM;
 struct _OBJ_CAMERAENTRY;
+struct _OBJ_CAMERAENTRYTABLE;
 struct _OBJ_CAMERAPARAM;
 struct _OBJ_EDITENTRY;
 struct _OBJ_ITEMENTRY;
@@ -6038,6 +6039,17 @@ static_assert(offsetof(BgTask, act) == 0x1, "BgTask::act");
 static_assert(offsetof(BgTask, mode) == 0x2, "BgTask::mode");
 static_assert(offsetof(BgTask, texList_p) == 0x4, "BgTask::texList_p");
 static_assert(offsetof(BgTask, obj_p) == 0x8, "BgTask::obj_p");
+
+// Offsets not checked against the code yet.
+struct _OBJ_CAMERAENTRYTABLE {
+    short ssCount;
+    short ssAttribute;
+    struct _OBJ_CAMERAENTRY *pObjCameraEntry;
+};
+static_assert(sizeof(_OBJ_CAMERAENTRYTABLE) == 0x8, "sizeof _OBJ_CAMERAENTRYTABLE");
+static_assert(offsetof(_OBJ_CAMERAENTRYTABLE, ssCount) == 0x0, "_OBJ_CAMERAENTRYTABLE::ssCount");
+static_assert(offsetof(_OBJ_CAMERAENTRYTABLE, ssAttribute) == 0x2, "_OBJ_CAMERAENTRYTABLE::ssAttribute");
+static_assert(offsetof(_OBJ_CAMERAENTRYTABLE, pObjCameraEntry) == 0x4, "_OBJ_CAMERAENTRYTABLE::pObjCameraEntry");
 
 struct u4s {
     unsigned char u4_ACT1 : 4;

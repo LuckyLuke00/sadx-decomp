@@ -2,7 +2,7 @@
 extern "C" char *strcat(char *param_1, const char *param_2);
 extern "C" char *strcpy(char *param_1, const char *param_2);
 void LoadSetFile(char *pcFileName, unsigned long u32SetType);
-extern unsigned long DAT_05b3e308[16];
+extern struct _OBJ_CAMERAENTRYTABLE *DAT_05b3e308[16];
 extern unsigned char DAT_05bb00a8;
 extern int DAT_05cc8670;
 extern int DAT_05cc8674;

@@ -5655,7 +5655,7 @@ int *DAT_05b3e0d8;
 int DAT_05b3e0e0;
 
 // GLOBAL: SADX 0x05b3e308
-unsigned long DAT_05b3e308[16];
+struct _OBJ_CAMERAENTRYTABLE *DAT_05b3e308[16];
 
 // GLOBAL: SADX 0x05b3e320
 int DAT_05b3e320[16];
@@ -5907,7 +5907,7 @@ float DAT_05b4282c;
 int DAT_05b42860;
 
 // GLOBAL: SADX 0x05b42894
-int DAT_05b42894;
+unsigned long *DAT_05b42894;
 
 // GLOBAL: SADX 0x05b42898
 void *DAT_05b42898;
@@ -5991,7 +5991,7 @@ int DAT_05b42968;
 void *DAT_05b4296c;
 
 // GLOBAL: SADX 0x05b42974
-int DAT_05b42974;
+struct _OBJ_CAMERAENTRY *DAT_05b42974;
 
 // GLOBAL: SADX 0x05b42978
 int DAT_05b42978;
@@ -7662,25 +7662,7 @@ struct task *DAT_05cda198;
 struct task *DAT_05cda19c;
 
 // GLOBAL: SADX 0x05cda1b0
-unsigned long DAT_05cda1b0;
-
-// GLOBAL: SADX 0x05cda1b4
-unsigned long DAT_05cda1b4;
-
-// GLOBAL: SADX 0x05cda1b8
-unsigned long DAT_05cda1b8;
-
-// GLOBAL: SADX 0x05cda1bc
-unsigned long DAT_05cda1bc;
-
-// GLOBAL: SADX 0x05cda1c0
-unsigned long DAT_05cda1c0;
-
-// GLOBAL: SADX 0x05cda1c4
-unsigned long DAT_05cda1c4;
-
-// GLOBAL: SADX 0x05cda1c8
-unsigned long DAT_05cda1c8;
+struct _OBJ_CAMERAENTRYTABLE *DAT_05cda1b0[8];
 
 // GLOBAL: SADX 0x05cda1d0
 int DAT_05cda1d0;
