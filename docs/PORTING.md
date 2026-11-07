@@ -318,7 +318,7 @@ Matching decompilation of <release> of <Game>: C and C++ source that compiles ba
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/progress/history-dark.svg">
-  <img src="docs/progress/history.svg" alt="Progress over time" width="100%">
+  <img src="docs/progress/history.svg" alt="Game functions done and accuracy, the last 7 days" width="100%">
 </picture>
 
 ## Which version do I have?

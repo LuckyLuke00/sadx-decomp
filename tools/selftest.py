@@ -57,6 +57,7 @@ def run() -> int:
     failures += check_summarize_tricks()
     failures += check_whole_percent()
     failures += check_recent_gain()
+    failures += check_daily_rows()
     failures += check_moved_scores(expected)
     failures += check_history_rows(expected)
     failures += check_empty_map()
@@ -1114,6 +1115,16 @@ def check_recent_gain() -> list[str]:
     return [f"recent_gain gives {progress.recent_gain(history)} for {history}, not {wanted}"
             for history, wanted in cases if progress.recent_gain(history) != wanted]
 
+
+def check_daily_rows() -> list[str]:
+    """One day a calendar day: the last row of a day with several, the day before's row for a day with none, and the
+    game functions matched since the day before."""
+    first, second, third = ({"date": day, "matched": matched} for day, matched in
+                            (("2026-10-01", "3"), ("2026-10-01", "5"), ("2026-10-03", "9")))
+    wanted = [progress.Day("2026-10-01", second, 5), progress.Day("2026-10-02", second, 0),
+              progress.Day("2026-10-03", third, 4)]
+    found = progress.daily_rows([first, second, third])
+    return [] if found == wanted else [f"daily_rows gives {found}, not {wanted}"]
 
 def check_whole_percent() -> list[str]:
     """A whole percent rounds down, so only a whole that is all done shows 100%. It counts in integers: 29 of 100 is

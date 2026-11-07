@@ -1,6 +1,6 @@
-"""Checks for tools/pages.py: the badge colours, the near misses, the home page, an area page, a file card and the tab
-icon. Also the layout helpers its art uses, the remote's web link from tools/osutil.py and the measures of
-tools/objdiffreport.py."""
+"""Checks for tools/pages.py: the badge colours, the near misses, the home page, an area page, the History page and
+its pace, a file card and the tab icon. Also the layout helpers its art uses, the remote's web link from
+tools/osutil.py and the measures of tools/objdiffreport.py."""
 
 import json
 import re
@@ -188,10 +188,56 @@ def check_objdiff_measures() -> list[str]:
     return [] if found == wanted else [f"measures gives {found}, not {wanted}"]
 
 
+def history_days(*gains: int) -> list:
+    """One day for each gain from 2026-10-01 on, with 100 functions in the game."""
+    days, matched = [], 0
+    for offset, gain in enumerate(gains):
+        matched += gain
+        row = {"date": f"2026-10-{offset + 1:02d}", "decompiled": str(matched), "matched": str(matched),
+               "game_total": "100", "matched_bytes": "1", "game_bytes": "4", "accuracy": "99.50"}
+        days.append(progress.Day(row["date"], row, gain))
+    return days
+
+
+def check_pace() -> list[str]:
+    """The pace is the mean gain of the last PACE_DAYS days, or of all days when there are fewer. The page names the
+    month all functions are done in at that pace, and no month at a pace of zero."""
+    failures = []
+    for gains, wanted in (((2, 4), 3.0), ((0, 0, 7, 7, 7, 7, 7, 7, 7), 7.0)):
+        if pages.pace(history_days(*gains)) != wanted:
+            failures.append(f"pace gives {pages.pace(history_days(*gains))} for {gains}, not {wanted}")
+    # 10 matched on 2026-10-02 at 5 a day: the other 90 take 18 days, to 2026-10-20
+    if "around <b>October 2026</b>" not in pages.pace_html(history_days(5, 5)):
+        failures.append(f"pace_html gives {pages.pace_html(history_days(5, 5))!r}, not October 2026")
+    if "At this pace" in pages.pace_html(history_days(0, 0)):
+        failures.append("pace_html names a month at a pace of zero")
+    return failures
+
+
+def check_history_page() -> list[str]:
+    """The History page holds one data row a day for its script, the script itself, the README chart for a browser
+    without scripts, and links back home and to Help out."""
+    days = history_days(5, 0, 3)
+    fake = SimpleNamespace(summary={"exe": "Game.exe"}, history=[day.row for day in days if day.gain])
+    text = pages.history_page(fake, "https://example.com/r")
+    failures = [f"history_page does not hold {wanted!r}"
+                for wanted in ('<script type="application/json" id="history-data">', "<noscript><svg",
+                               'href="index.html"', 'href="near-misses.html"', "Pace over the last")
+                if wanted not in text]
+    data = re.search(r'id="history-data">(.*?)</script>', text)
+    rows = json.loads(data.group(1)) if data else []
+    if [(row["day"], row["gain"], row["matched"]) for row in rows] != [("2026-10-01", 5, 5), ("2026-10-02", 0, 5),
+                                                                       ("2026-10-03", 3, 8)]:
+        failures.append(f"history_page gives the rows {rows}")
+    if pages.HISTORY_SCRIPT.read_text(encoding="utf-8") not in text:
+        failures.append("history_page does not hold its script")
+    return failures + new_tab_failures("history_page", text)
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_share_color, check_badge, check_near_misses, check_index_page, check_area_page,
-                  check_file_card, check_ring_icon, check_layout_helpers, check_web_url, check_objdiff_measures):
+                  check_pace, check_history_page, check_file_card, check_ring_icon, check_layout_helpers,
+                  check_web_url, check_objdiff_measures):
         failures += check()
     return failures

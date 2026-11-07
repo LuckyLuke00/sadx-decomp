@@ -101,23 +101,31 @@ GROW = 1.1  # how much a block grows each round until its name and cells fit
 MAX_ROUNDS = 200
 
 
-HISTORY_HEIGHT = 330
+HISTORY_HEIGHT = 280
 HISTORY_LEFT = 64
 HISTORY_RIGHT = WIDTH - MARGIN
-
-
-class Line(NamedTuple):
-    label: str
-    values: list[float | None]
-    color: str
-    dashed: bool = False
+HISTORY_DAYS = 7  # the README chart shows this many days; the progress site shows all
+HISTORY_TITLE = f"The last {HISTORY_DAYS} days"
+HISTORY_SUMMARY = f"Game functions done and accuracy, the last {HISTORY_DAYS} days"
+GRID_STEPS = 3  # about this many grid steps span the values of a chart
+LEAST_STEP = 0.001  # 0.1 percentage points, so a flat line stays flat and noise stays small
 
 
 class Panel(NamedTuple):
     top: int  # pixel rows of the plot area
     bottom: int
-    top_value: float  # the value at the top edge
-    lines: list[Line]
+    low: float  # the values at the bottom and top edges
+    high: float
+    step: float  # the value between two grid lines
+
+    def y(self, value: float) -> float:
+        return self.bottom - (self.bottom - self.top) * (value - self.low) / (self.high - self.low)
+
+
+class Day(NamedTuple):
+    date: str
+    row: dict  # the last history row of the day, or the one before it when the day has none
+    gain: int  # the game functions matched that day
 
 
 # Inputs
@@ -198,15 +206,8 @@ def read_blobs(root: Path, specs: list[str]) -> dict[str, str]:
         if line.endswith(" missing"):
             sys.exit(f"git has no {spec}")
         ids.append(line.split()[0])
-    unique = sorted(set(ids))
-    data = osutil.git(root, "cat-file", "--batch", stdin="".join(f"{blob}\n" for blob in unique).encode())
-    texts, position = {}, 0
-    for blob in unique:
-        header_end = data.index(b"\n", position)
-        size = int(data[position:header_end].split()[2])
-        texts[blob] = data[header_end + 1:header_end + 1 + size].decode("utf-8")
-        position = header_end + 1 + size + 1  # the content ends with a newline of its own
-    return {spec: texts[blob] for spec, blob in zip(specs, ids)}
+    blobs = osutil.git_blobs(root, ids)
+    return {spec: blobs[blob].decode("utf-8") for spec, blob in zip(specs, ids)}
 
 
 def csv_rows(text: str) -> list[dict]:
@@ -603,6 +604,11 @@ def code_share(row: dict) -> float:
     return ratio(int(row["matched_bytes"]), int(row["game_bytes"]))
 
 
+def function_share(row: dict) -> float:
+    """The share of the game functions matched in a history row."""
+    return ratio(int(row["matched"]), int(row["game_total"]))
+
+
 def recent_gain(history: list[dict]) -> tuple[float, str]:
     """The gain in the share of the game's code matched since the last history row a week or more before the newest,
     and "this week". A history younger than a week counts from its oldest row instead, and the label says since when.
@@ -644,148 +650,119 @@ def render_card(stats: Totals, code: Bytes, areas: list[Emblem], data: tuple[int
     return "\n".join(parts) + "\n"
 
 
-def axis_top(value: float) -> float:
-    """The smallest 1, 2 or 5 times a power of ten that is at least value, for a 0 to 1 axis."""
+def nice_ceiling(value: float) -> float:
+    """The smallest 1, 2 or 5 times a power of ten that is at least value, and 1 for a value of 0 or less."""
     if value <= 0:
-        return 0.01
+        return 1.0
     exponent = math.floor(math.log10(value))
     for step in (1, 2, 5, 10):
         top = step * 10.0 ** exponent
         if top >= value:
-            return min(top, 1.0)
-    return 1.0
+            return top
+    return 10.0 ** (exponent + 1)
 
 
-def history_x(index: int, count: int) -> float:
-    if count == 1:
-        return (HISTORY_LEFT + HISTORY_RIGHT) / 2
-    return HISTORY_LEFT + (HISTORY_RIGHT - HISTORY_LEFT) * index / (count - 1)
+def daily_rows(history: list[dict]) -> list[Day]:
+    """One Day for each calendar day from the first history row's date to the last one's."""
+    last = {row["date"]: row for row in history}
+    first, end = date.fromisoformat(history[0]["date"]), date.fromisoformat(history[-1]["date"])
+    days, before = [], None
+    for offset in range((end - first).days + 1):
+        day = (first + timedelta(offset)).isoformat()
+        row = last.get(day, before)
+        gain = int(row["matched"]) - (int(before["matched"]) if before else 0)
+        days.append(Day(day, row, gain))
+        before = row
+    return days
 
 
-def dash(line: Line) -> str:
-    return ' stroke-dasharray="5 3"' if line.dashed else ""
+def day_x(index: float, count: int) -> float:
+    """The x of a point in day index's column; day i spans [i, i + 1) of count columns."""
+    return HISTORY_LEFT + (HISTORY_RIGHT - HISTORY_LEFT) * index / count
 
 
-def history_legend(lines: list[Line], theme: Theme) -> list[str]:
-    """A short stroke of each line, dashed or not, and its label, from the right edge."""
-    parts = []
-    x = HISTORY_RIGHT
-    for line in reversed(lines):
-        x -= round(text_width(line.label, 12)) + 19
-        parts.append(f'<line x1="{x}" y1="24" x2="{x + 14}" y2="24" stroke="{line.color}" stroke-width="2.5"'
-                     f'{dash(line)}/>')
-        parts.append(f'<text x="{x + 19}" y="28" font-family="{FONT}" font-size="12" fill="{theme.muted}">'
-                     f'{line.label}</text>')
-        x -= 18
-    return parts
+def fitted_panel(values: list[float], top: int, bottom: int) -> Panel:
+    """A panel whose edges are the grid lines just outside the values, with about GRID_STEPS steps of 1, 2 or 5
+    times a power of ten between them, and at least LEAST_STEP."""
+    step = nice_ceiling(max((max(values) - min(values)) / GRID_STEPS, LEAST_STEP))
+    low = math.floor(min(values) / step) * step
+    high = max(math.ceil(max(values) / step) * step, low + step)
+    return Panel(top, bottom, low, high, step)
 
 
 def panel_grid(panel: Panel, theme: Theme) -> list[str]:
-    """The three horizontal grid lines of a panel, each with its percent label."""
+    """A horizontal grid line at each step of a panel, each with its value as a percent."""
     parts = []
-    for fraction in (0.0, 0.5, 1.0):
-        y = panel.bottom - (panel.bottom - panel.top) * fraction
+    for index in range(round((panel.high - panel.low) / panel.step) + 1):
+        value = panel.low + panel.step * index
+        y = panel.y(value)
         parts.append(f'<line x1="{HISTORY_LEFT}" y1="{y:.1f}" x2="{HISTORY_RIGHT}" y2="{y:.1f}" '
                      f'stroke="{theme.grid}" stroke-width="1"/>')
         parts.append(f'<text x="{HISTORY_LEFT - 8}" y="{y + 4:.1f}" text-anchor="end" font-family="{FONT}" '
-                     f'font-size="11" fill="{theme.muted}">{panel.top_value * fraction * 100:g}%</text>')
+                     f'font-size="11" fill="{theme.muted}">{round(value * 100, 4):g}%</text>')
     return parts
 
 
-def day_starts(dates: list[str]) -> list[int]:
-    """The index of the first row of each day."""
-    return [index for index, day in enumerate(dates) if index == 0 or day != dates[index - 1]]
+def day_label(day: str) -> str:
+    """A date as "Oct 17"."""
+    when = date.fromisoformat(day)
+    return f"{when:%b} {when.day}"
 
 
-def day_lines(dates: list[str], panel: Panel, theme: Theme) -> list[str]:
-    """A vertical grid line across the panel before the first dot of each day but the first. The rows sit an even
-    step apart, not by time, so these lines show where the days change."""
-    parts = []
-    for index in day_starts(dates)[1:]:
-        x = (history_x(index - 1, len(dates)) + history_x(index, len(dates))) / 2
-        parts.append(f'<line x1="{x:.1f}" y1="{panel.top}" x2="{x:.1f}" y2="{panel.bottom}" stroke="{theme.grid}" '
-                     'stroke-width="1"/>')
+def date_labels(days: list[Day], y: float, theme: Theme) -> list[str]:
+    """The date under each day's column."""
+    return [f'<text x="{day_x(index + 0.5, len(days)):.1f}" y="{y}" text-anchor="middle" font-family="{FONT}" '
+            f'font-size="11" fill="{theme.muted}">{day_label(day.date)}</text>' for index, day in enumerate(days)]
+
+
+def day_line(marks: list[tuple[int, float, str]], count: int, panel: Panel, color: str, theme: Theme) -> list[str]:
+    """A line through (day index, value, label) marks of count days, with a dot a mark, and the label over the first
+    and last dot."""
+    points = [(day_x(index + 0.5, count), panel.y(value)) for index, value, _ in marks]
+    parts = [f'<polyline points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in points)}" fill="none" '
+             f'stroke="{color}" stroke-width="2.5" stroke-linejoin="round"/>']
+    parts += [f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.5" fill="{color}" stroke="{theme.background}" '
+              'stroke-width="2"/>' for x, y in points]
+    for (x, y), (_, _, label) in ((points[0], marks[0]), (points[-1], marks[-1])):
+        parts.append(f'<text x="{x:.1f}" y="{y - 12:.1f}" text-anchor="middle" font-family="{FONT}" font-size="13" '
+                     f'font-weight="600" fill="{theme.text}">{label}</text>')
     return parts
 
 
-def dot_radius(count: int) -> float:
-    """3 px, or a third of the step between dots when they sit closer than 9 px, but at least 1 px."""
-    if count < 2:
-        return 3.0
-    return max(1.0, min(3.0, (HISTORY_RIGHT - HISTORY_LEFT) / (count - 1) / 3))
+def panel_title(text: str, y: int, theme: Theme) -> str:
+    return (f'<text x="{MARGIN}" y="{y}" font-family="{FONT}" font-size="15" font-weight="600" fill="{theme.text}">'
+            f"{text}</text>")
 
 
-def plot_line(line: Line, panel: Panel, dates: list[str]) -> list[str]:
-    """A polyline through the line's values, and a dot with a tooltip at each one."""
-    height = panel.bottom - panel.top
-    points = [(history_x(index, len(dates)), panel.bottom - height * value / panel.top_value, index, value)
-              for index, value in enumerate(line.values) if value is not None]
-    radius = dot_radius(len(dates))
-    parts = []
-    if len(points) > 1:
-        path = " ".join(f"{px:.1f},{py:.1f}" for px, py, _, _ in points)
-        parts.append(f'<polyline points="{path}" fill="none" stroke="{line.color}" stroke-width="2"{dash(line)}/>')
-    for px, py, index, value in points:
-        tip = escape(f"{dates[index]}: {line.label} {value:.2%}")
-        parts.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="{radius:.1f}" fill="{line.color}">'
-                     f'<title>{tip}</title></circle>')
-    return parts
-
-
-def date_labels(dates: list[str], y: int, theme: Theme) -> list[str]:
-    """The date of each day, centred under its dots and kept inside the drawing. A label that would come within
-    8 px of the one before is left out."""
-    parts, last_end = [], -math.inf
-    starts = day_starts(dates)
-    for start, end in zip(starts, starts[1:] + [len(dates)]):
-        width = text_width(dates[start], 11)
-        middle = (history_x(start, len(dates)) + history_x(end - 1, len(dates))) / 2
-        x = min(max(middle, MARGIN + width / 2), WIDTH - MARGIN - width / 2)
-        if x - width / 2 < last_end + 8:
-            continue
-        parts.append(f'<text x="{x:.1f}" y="{y}" text-anchor="middle" font-family="{FONT}" font-size="11" '
-                     f'fill="{theme.muted}">{escape(dates[start])}</text>')
-        last_end = x + width / 2
-    return parts
-
-
-def history_heading(theme: Theme) -> list[str]:
-    """The history chart's opening tags: background and the two panel titles."""
-    return [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HISTORY_HEIGHT}" '
-        f'width="{WIDTH}" height="{HISTORY_HEIGHT}">',
-        "<title>Decompilation progress over time</title>",
-        backdrop(WIDTH, HISTORY_HEIGHT, theme),
-        f'<text x="{MARGIN}" y="28" font-family="{FONT}" font-size="15" font-weight="600" fill="{theme.text}">'
-        "Share of the game decompiled and done</text>",
-        f'<text x="{MARGIN}" y="176" font-family="{FONT}" font-size="15" font-weight="600" fill="{theme.text}">'
-        "Accuracy of the decompiled functions</text>",
-    ]
+def panel_label(text: str, color: str, y: int, theme: Theme) -> str:
+    """A panel's name over it, after a dot in its line's colour."""
+    return (f'<circle cx="{MARGIN + 5}" cy="{y - 4}" r="4.5" fill="{color}"/>'
+            f'<text x="{MARGIN + 16}" y="{y}" font-family="{FONT}" font-size="13" fill="{theme.text}">{text}</text>')
 
 
 def render_history(history: list[dict], theme: Theme) -> str:
-    """Two panels over the history rows, one dot a row: completeness on an auto scale, accuracy on 0 to 100%. The
-    code bytes done is the solid gold line, the functions done the dashed one."""
-    decompiled = [ratio(int(row["decompiled"]), int(row["game_total"])) for row in history]
-    matched = [ratio(int(row["matched"]), int(row["game_total"])) for row in history]
-    matched_bytes = [code_share(row) for row in history]
-    accuracy = [float(row["accuracy"]) / 100 if row["accuracy"] else None for row in history]
-    panels = [
-        Panel(48, 140, axis_top(max(decompiled + matched + matched_bytes)),
-              [Line("functions decompiled", decompiled, theme.decompiled),
-               Line("functions done", matched, theme.done, dashed=True),
-               Line("code bytes done", matched_bytes, theme.done)]),
-        Panel(196, 288, 1.0, [Line("accuracy", accuracy, theme.accuracy)]),
-    ]
-    parts = history_heading(theme)
-    parts += history_legend([line for panel in panels for line in panel.lines], theme)
-    dates = [row["date"] for row in history]
-    for panel in panels:
-        parts += panel_grid(panel, theme)
-        parts += day_lines(dates, panel, theme)
-        for line in panel.lines:
-            parts += plot_line(line, panel, dates)
-    parts += date_labels(dates, panels[-1].bottom + 22, theme)  # below the lower panel
+    """The share of game functions done and the accuracy on each of the last HISTORY_DAYS calendar days, as two
+    lines on axes fitted to them. A day without an accuracy gets no accuracy dot. The progress site has the whole
+    history."""
+    days = daily_rows(history)[-HISTORY_DAYS:]
+    shares = [(index, function_share(day.row), percent(int(day.row["matched"]), int(day.row["game_total"])))
+              for index, day in enumerate(days)]
+    accuracies = [(index, float(day.row["accuracy"]) / 100, f'{day.row["accuracy"]}%')
+                  for index, day in enumerate(days) if day.row["accuracy"]]
+    share_panel = fitted_panel([value for _, value, _ in shares], 74, 154)
+    parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HISTORY_HEIGHT}" '
+             f'width="{WIDTH}" height="{HISTORY_HEIGHT}">',
+             f"<title>{HISTORY_SUMMARY}</title>",
+             backdrop(WIDTH, HISTORY_HEIGHT, theme),
+             panel_title(HISTORY_TITLE, 28, theme),
+             panel_label("Game functions done", theme.done, 54, theme)]
+    parts += panel_grid(share_panel, theme) + day_line(shares, len(days), share_panel, theme.done, theme)
+    parts.append(panel_label("Accuracy", theme.accuracy, 180, theme))
+    if accuracies:
+        accuracy_panel = fitted_panel([value for _, value, _ in accuracies], 200, 240)
+        parts += panel_grid(accuracy_panel, theme)
+        parts += day_line(accuracies, len(days), accuracy_panel, theme.accuracy, theme)
+    parts += date_labels(days, 264, theme)
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 

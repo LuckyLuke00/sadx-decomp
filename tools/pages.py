@@ -7,8 +7,9 @@ Reads only committed files: docs/progress/summary.json and history.csv,
 data/areas.yml and areas.csv, data/functions.csv and
 data/codegen-groups.csv, and the sources under src. The GitHub link comes
 from git's origin remote. Writes the home page, a page for each area, the
-Help out page, the tab icon and shields.io endpoint badges to DIR (default
-_site). The areas come from tools/areas.py, as on the progress map, so run
+Help out page, the History page (its chart script is
+tools/pages-history.js), the tab icon and shields.io endpoint badges to DIR
+(default _site). The areas come from tools/areas.py, as on the progress map, so run
 as a script it reruns itself in .venv.
 """
 
@@ -19,6 +20,7 @@ import json
 import math
 import random
 from collections.abc import Iterable
+from datetime import date, timedelta
 from pathlib import Path
 
 import areas
@@ -29,6 +31,8 @@ import progress
 import scoring
 
 NEAR_MISS = 0.9  # the lowest score the Help out page lists
+PACE_DAYS = 7  # the History page's pace is the mean gain of this many days
+HISTORY_SCRIPT = Path(__file__).with_name("pages-history.js")
 STAR = ", ".join(f"{x:g}% {y:g}%" for x, y in layout.star_points(50, 50, 50, 21))  # the emblem's star as a CSS polygon
 WATER_TILE = (600, 450)  # the size of one tile of the water pattern, in px
 WATER_BLEED = 20  # how far a blurred cell may lie outside its tile and still show in it, in px
@@ -196,6 +200,30 @@ a.bar:hover, a.bar:focus-visible { --fill: linear-gradient(180deg, #ffffff 0 55%
 .nowrap { white-space: nowrap; }
 .small { margin: 0; font-size: 0.85rem; color: #d8dcff; }
 a { color: var(--yellow); }
+.chart-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 12px; }
+.chart-tools button { padding: 4px 14px; border: 2px solid #ffffff; border-radius: 999px; background: #0a0040;
+  color: #ffffff; font: var(--heavy); font-size: 0.9rem; cursor: pointer; }
+.chart-tools button[aria-pressed="true"], .chart-tools button:hover { border-color: var(--yellow);
+  color: var(--yellow); }
+.chart-tools .range { margin-left: auto; color: #cfd8ff; font-size: 0.9rem; }
+.chart { position: relative; touch-action: pan-y; user-select: none; }
+.chart svg, noscript svg { display: block; width: 100%; height: auto; }
+.chart text { fill: #cfd8ff; font: 12px "Segoe UI", system-ui, sans-serif; }
+.chart .title { fill: #ffffff; font-weight: 700; font-size: 13px; }
+.chart .grid { stroke: rgba(255, 255, 255, 0.14); }
+.chart .day { stroke: rgba(255, 255, 255, 0.06); }
+.chart .cross { stroke: #ffffff; stroke-opacity: 0.6; }
+.chart .select { fill: var(--yellow); fill-opacity: 0.18; stroke: var(--yellow); }
+.tip { position: absolute; z-index: 2; min-width: 13rem; padding: 8px 12px; border: 2px solid #ffffff;
+  border-radius: 12px; background: rgba(0, 0, 30, 0.92); font-size: 0.85rem; line-height: 1.45;
+  pointer-events: none; }
+.tip b { color: var(--yellow); }
+.tip .key { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 10px 0 0; font-size: 0.85rem; }
+.legend span::before { content: ""; display: inline-block; width: 16px; height: 3px; margin-right: 6px;
+  vertical-align: middle; background: var(--c); }
+.legend .key-dash::before { background: repeating-linear-gradient(90deg, var(--c) 0 5px, transparent 5px 8px); }
+.legend .key-bar::before { height: 10px; border-radius: 2px; }
 @media (max-width: 40rem) { .window { padding: 14px 16px 16px; } .hudrow dd { font-size: 1.45rem; } }
 """
 STYLE = (STYLE.replace("NEAR_WATER", layout.svg_url(caustics(seed=7, opacity=0.34, inset=(2.5, 5.5), blur=2.4)))
@@ -210,7 +238,8 @@ ICONS = {"back": "<path d='M10 3 L5 8 L10 13'/>",
          "help": "<path fill='#ffffff' stroke='none' transform='rotate(-45 8 8)' "
                  "d='M2 6.6 H7.56 A3.9 3.9 0 0 1 14.8 6.5 H11.6 V9.5 H14.8 A3.9 3.9 0 0 1 7.56 9.4 H2 "
                  "A1.4 1.4 0 0 1 2 6.6 Z'/>",
-         "code": "<path d='M5.5 4.5 L2 8 L5.5 11.5'/><path d='M10.5 4.5 L14 8 L10.5 11.5'/>"}
+         "code": "<path d='M5.5 4.5 L2 8 L5.5 11.5'/><path d='M10.5 4.5 L14 8 L10.5 11.5'/>",
+         "history": "<path d='M2 12 L6 7.5 L9 10 L14 4'/>"}
 SHAPE = '<span class="shape" aria-hidden="true"></span>'  # a bar's body and raised step, drawn behind its text
 
 
@@ -380,7 +409,8 @@ def index_page(site: Site, repo: str) -> str:
                    ("Emblems", f"{scoring.earned_count(site.emblems)} <small>/ {len(site.emblems)}</small>")])
             + f'{gauge(code.matched, code.game)}\n<p class="gain">{gain_html(site.history)}</p>\n'
             "</section>\n" + area_bars(site))
-    hints = hint("help", "Help out", "near-misses.html") + hint("code", "GitHub", repo)
+    hints = (hint("history", "History", "history.html") + hint("help", "Help out", "near-misses.html")
+             + hint("code", "GitHub", repo))
     return frame(site, "Area Select", "Decompilation progress", body, hints)
 
 
@@ -455,8 +485,8 @@ def area_page(site: Site, repo: str, area: str, addresses: list[int]) -> str:
     rest = len(addresses) - len(matched) - len(near)
     if rest:
         body += f'<p class="lead">{layout.counted(rest, "more function")} to go.</p>\n'
-    hints = (hint("back", "Back", "index.html") + hint("help", "Help out", "near-misses.html")
-             + hint("code", "GitHub", repo))
+    hints = (hint("back", "Back", "index.html") + hint("history", "History", "history.html")
+             + hint("help", "Help out", "near-misses.html") + hint("code", "GitHub", repo))
     section = site.section_of[area]
     return frame(site, site.area_title(area), f"{gem(site.section_colors[section])} {e(section)}", body, hints)
 
@@ -471,8 +501,66 @@ def near_misses_page(site: Site, repo: str) -> str:
     body = ('<section class="window">\n'
             f"<p>These functions are {NEAR_MISS:.0%} done or more. Pick a small one and finish it. "
             f"{guide_link(repo)} shows you how.</p>\n</section>\n" + groups)
-    hints = hint("back", "Back", "index.html") + hint("code", "GitHub", repo)
+    hints = (hint("back", "Back", "index.html") + hint("history", "History", "history.html")
+             + hint("code", "GitHub", repo))
     return frame(site, "Help out", "Decompilation progress", body, hints)
+
+
+def pace(days: list[progress.Day]) -> float:
+    """The mean game functions matched a day over the PACE_DAYS days that end on the newest day, or all days when
+    there are fewer."""
+    window = days[-PACE_DAYS:]
+    return sum(day.gain for day in window) / len(window)
+
+
+def chart_rows(days: list[progress.Day]) -> list[dict]:
+    """What the History page's script draws, one row a day, with the pace up to that day."""
+    return [{"day": day.date, "decompiled": int(day.row["decompiled"]), "matched": int(day.row["matched"]),
+             "total": int(day.row["game_total"]),
+             "accuracy": float(day.row["accuracy"]) if day.row["accuracy"] else None,
+             "gain": day.gain, "pace": pace(days[:index + 1])} for index, day in enumerate(days)]
+
+
+def pace_html(days: list[progress.Day]) -> str:
+    """The pace, and the month all game functions would be done in at that pace. No month when the pace is zero."""
+    speed = pace(days)
+    text = f"Pace over the last {PACE_DAYS} days: <b>{speed:,.0f}</b> functions done a day."
+    if speed <= 0:
+        return text
+    newest = days[-1]
+    left = int(newest.row["game_total"]) - int(newest.row["matched"])
+    finish = date.fromisoformat(newest.date) + timedelta(days=round(left / speed))
+    return text + (f" At this pace, all functions are done around <b>{finish:%B %Y}</b> (an estimate; the pace "
+                   "changes a lot).")
+
+
+def history_page(site: Site, repo: str) -> str:
+    """The zoomable history chart, drawn by HISTORY_SCRIPT from the daily rows. Without scripts the page shows the
+    README's history chart instead."""
+    days = progress.daily_rows(site.history)
+    data = json.dumps(chart_rows(days), separators=(",", ":"))  # numbers and dates only, so no "</" to escape
+    legend = [("functions decompiled", "var(--sky-light)", ""), ("functions done", "var(--emblem)", "key-dash"),
+              ("functions done a day", "var(--emblem)", "key-bar"),
+              ("7-day average", "var(--cyan)", ""), ("accuracy", "#ffffff", "")]
+    keys = "".join(f'<span class="{kind}" style="--c: {color}">{label}</span>' for label, color, kind in legend)
+    body = ('<section class="window">\n'
+            f"<p>{pace_html(days)}</p>\n"
+            '<div class="chart-tools" role="group" aria-label="Time range">'
+            '<button type="button" data-days="7">7 days</button>'
+            '<button type="button" data-days="30">30 days</button>'
+            '<button type="button" data-days="0">All</button>'
+            '<span class="range" id="range"></span></div>\n'
+            '<div class="chart" id="chart"></div>\n'
+            f"<noscript>{progress.render_history(site.history, progress.DARK)}</noscript>\n"
+            f'<div class="legend">{keys}</div>\n'
+            '<p class="small" style="margin-top: 12px">Drag across the chart to zoom in. Double-click or press All '
+            "to see everything again.</p>\n"
+            "</section>\n"
+            f'<script type="application/json" id="history-data">{data}</script>\n'
+            f"<script>{HISTORY_SCRIPT.read_text(encoding='utf-8')}</script>\n")
+    hints = (hint("back", "Back", "index.html") + hint("help", "Help out", "near-misses.html")
+             + hint("code", "GitHub", repo))
+    return frame(site, "History", "Decompilation progress", body, hints)
 
 
 def share_color(part: int, whole: int) -> str:
@@ -507,7 +595,7 @@ def ring_icon() -> str:
 
 def render_all(site: Site, repo: str) -> dict[str, str]:
     files = {"index.html": index_page(site, repo), "near-misses.html": near_misses_page(site, repo),
-             "favicon.svg": ring_icon()}
+             "history.html": history_page(site, repo), "favicon.svg": ring_icon()}
     for area, addresses in site.areas().items():
         files[f"area-{area}.html"] = area_page(site, repo, area, addresses)
     files.update(badge_files(site))

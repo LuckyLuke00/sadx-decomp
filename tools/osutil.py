@@ -1,5 +1,5 @@
-"""Helpers that know nothing about the decomp: run a command, catch a step's output, run git in another repository
-than a hook's, link a git remote, hash a file, copy and delete folders, read counts from the command line, tell how
+"""Helpers that know nothing about the decomp: run a command, catch a step's output, read git blobs, run git in another
+repository than a hook's, link a git remote, hash a file, copy and delete folders, read counts from the command line, tell how
 alike two counts are, count differing bytes, escape a Markdown table cell, tell whether a process runs, lock a file,
 write a file whole.
 
@@ -58,6 +58,19 @@ def git(root: Path, *args: str, stdin: bytes = b"") -> bytes:
     return result.stdout
 
 
+def git_blobs(root: Path, ids: list[str]) -> dict[str, bytes]:
+    """The bytes of each blob id in the repository at root, read by one `git cat-file --batch` process."""
+    unique = sorted(set(ids))
+    data = git(root, "cat-file", "--batch", stdin="".join(f"{blob}\n" for blob in unique).encode())
+    blobs, position = {}, 0
+    for blob in unique:
+        header_end = data.index(b"\n", position)
+        size = int(data[position:header_end].split()[2])
+        blobs[blob] = data[header_end + 1:header_end + 1 + size]
+        position = header_end + 1 + size + 1  # the content ends with a newline of its own
+    return blobs
+
+
 @contextlib.contextmanager
 def foreign_repository():
     """Clear the variables that tie git to one repository, as `git rev-parse --local-env-vars` lists them, while git
@@ -88,10 +101,11 @@ def write_if_changed(path: Path, text: str) -> None:
         path.write_text(text, encoding="utf-8")
 
 
-def write_whole(path: Path, text: str) -> None:
-    """Write TEXT to PATH through a rename, so another process reads the old text or the new one, never a part."""
+def write_whole(path: Path, data: str | bytes) -> None:
+    """Write DATA to PATH through a rename, so another process reads the old data or the new, never a part. Text goes
+    out as UTF-8 with its line ends unchanged."""
     temp = path.with_name(path.name + ".new")
-    temp.write_text(text, encoding="utf-8")
+    temp.write_bytes(data.encode("utf-8") if isinstance(data, str) else data)
     for _ in range(REPLACE_TRIES - 1):
         try:
             os.replace(temp, path)
