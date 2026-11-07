@@ -7,7 +7,8 @@ on each side, or none, and the function can't match.
 
 renaming() gives such an operand the array's name with its offset, on both sides. An operand counts only when
 both sides have it at the same place next to the same matched array: past the end as an immediate, before the
-start as an index scaled by the element size. A function that matches stays as it is. Any other function is
+start as an index scaled by the element size. A pointer that walks one field of each element ends past the end
+plus the field offset; that counts when both sides also start the pointer at the array plus the same offset. A function that matches stays as it is. Any other function is
 compared again with the names, and the better result counts.
 
 install() makes reccmp compare each function through renaming(). Needs reccmp and capstone, so it runs in .venv.
@@ -77,6 +78,17 @@ def renames(db, types, orig: Operands, recomp: Operands) -> tuple[dict[int, str]
         layout = array_layout(array, types)
         if layout and layout.element == scale and (array.recomp_addr - scale, scale) in recomp.indexed:
             orig_names[value] = recomp_names[array.recomp_addr - scale] = array.match_name(f"-{scale}")
+    for start in orig.immediates:
+        array = db.get(ImageId.ORIG, start, exact=False)
+        layout = array_layout(array, types)
+        if not layout or not layout.element or array.orig_addr == start:
+            continue
+        field = start - array.orig_addr  # a pointer that walks the elements at this offset into each
+        end = array.orig_addr + layout.size + field
+        if (field < layout.element and end in orig.immediates and array.recomp_addr + field in recomp.immediates
+                and array.recomp_addr + layout.size + field in recomp.immediates):
+            orig_names[end] = recomp_names[array.recomp_addr + layout.size + field] = array.match_name(
+                f"+{layout.size + field}")
     return orig_names, recomp_names
 
 

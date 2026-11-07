@@ -19,8 +19,9 @@ import endrefs
 ORIG_CODE, RECOMP_CODE = 0x00401000, 0x00501000  # the function on each side
 LIST, OTHER = 0x00600000, 0x00600100  # two int[6] arrays in the game
 OURS = 0x00700000  # where our build puts the arrays: LIST at OURS, OTHER at OURS + 0x100
-INT6, INT = CvdumpTypeKey(0x1000), CvdumpTypeKey(0x74)
-TYPES = {INT6: TypeInfo(INT6, 24, array_type=INT, array_length=6, array_element_size=4), INT: TypeInfo(INT, 4)}
+INT6, INT, PAIRS = CvdumpTypeKey(0x1000), CvdumpTypeKey(0x74), CvdumpTypeKey(0x1001)
+TYPES = {INT6: TypeInfo(INT6, 24, array_type=INT, array_length=6, array_element_size=4), INT: TypeInfo(INT, 4),
+         PAIRS: TypeInfo(PAIRS, 24, array_type=INT, array_length=3, array_element_size=8)}  # three 8-byte elements
 
 
 class FakeTypes:
@@ -170,6 +171,30 @@ def check_before_start() -> list[str]:
     return failures
 
 
+def check_field_walk() -> list[str]:
+    """A pointer that starts at the list plus a field offset ends at the end of the list plus that offset: both
+    sides show the same name for the end, though our build has another global there. No rename without the start
+    on both sides, with another offset on each side, or with an offset of a whole element or more."""
+    globals_ = arrays(key=PAIRS) + [(None, OURS + 28, "extra", {"recomp_size": 4})]
+    start, end = LIST + 4, LIST + 24 + 4
+    result, before = compared(globals_, immediate(start) + cmp(end), immediate(OURS + 4) + cmp(OURS + 28))
+    found = (before.match_ratio < 1.0, result.match_ratio, first_lines(result)[1])
+    wanted = (True, 1.0, "mov eax, list+4 (OFFSET)")
+    failures = [] if found == wanted else [f"a pointer walking a field gives {found}, not {wanted}"]
+    compare, _ = comparator(globals_, b"", b"")
+    for case, orig, recomp in (("no start in the game", cmp(end), immediate(OURS + 4) + cmp(OURS + 28)),
+                               ("no start in our build", immediate(start) + cmp(end), cmp(OURS + 28)),
+                               ("another offset on each side", immediate(start) + cmp(end),
+                                immediate(OURS + 2) + cmp(OURS + 26)),
+                               ("a whole element", immediate(LIST + 8) + cmp(LIST + 32),
+                                immediate(OURS + 8) + cmp(OURS + 32))):
+        renamed = endrefs.renames(compare.db, compare.types, endrefs.operands(orig, ORIG_CODE),
+                                  endrefs.operands(recomp, RECOMP_CODE))
+        if renamed != ({}, {}):
+            failures.append(f"renames gives {renamed} for {case}, not ({{}}, {{}})")
+    return failures
+
+
 def check_guards() -> list[str]:
     """No rename past a global that is not an array, or past an array whose two sides have other sizes."""
     failures = []
@@ -208,7 +233,7 @@ def check_perfect() -> list[str]:
 def run() -> list[str]:
     """Every check of the rename rule, in order: the failures of all."""
     failures = []
-    for check in (check_past_end, check_real_neighbour, check_other_array, check_before_start, check_guards,
+    for check in (check_past_end, check_real_neighbour, check_other_array, check_before_start, check_field_walk, check_guards,
                   check_worse, check_perfect):
         failures += check()
     return failures
