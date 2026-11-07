@@ -36,24 +36,17 @@ int FUN_00928720(void *param_1)
 // FUNCTION: SADX 0x00928740
 Magic::Base::File::~File()
 {
-	void *var1 = *(void **)this;
+	FileImpl *var1 = m_pFile;
 	if (var1 != 0)
 	{
-		FILE *var2 = *(FILE **)var1;
+		FILE *var2 = var1->m_pFile;
 		if (var2 != 0)
 		{
 			fclose(var2);
-			*(FILE **)var1 = 0;
+			var1->m_pFile = 0;
 		}
 		operator delete(var1);
 	}
-	if (*(void **)((char *)this + 0x18) >= (void *)0x10)
-	{
-		operator delete(*(void **)((char *)this + 4));
-	}
-	*(void **)((char *)this + 0x18) = (void *)0xf;
-	*(void **)((char *)this + 0x14) = 0;
-	*(char *)((char *)this + 4) = 0;
 }
 
 #pragma optimize("", off)

@@ -78,14 +78,14 @@ private:
 	char field_0x24[0x28];
 };
 
-class DAT_0629c340_0
+class SOCAudioSystem
 {
 public:
 	void FUN_00425db0();
 	void FUN_00425e30();
 private:
-	friend class Magic::Base::Singleton<DAT_0629c340_0>;
-	DAT_0629c340_0();
+	friend class Magic::Base::Singleton<SOCAudioSystem>;
+	SOCAudioSystem();
 	bool field_0x0;
 	char field_0x4[0x90];
 	char field_0x94[0x90];
@@ -105,6 +105,11 @@ namespace Magic
 {
 namespace Base
 {
+class FileImpl
+{
+public:
+	FILE* m_pFile;
+};
 class File
 {
 public:
@@ -116,8 +121,8 @@ public:
 	bool FUN_00928630(int param_1, int param_2);
 	bool FUN_009286c0(void* param_1, size_t param_2, unsigned long* param_3);
 private:
-	FILE** m_pFile;
-	char m_FileName[0x1c];
+	FileImpl* m_pFile;
+	std::string m_FileName;
 };
 class IniFile
 {
@@ -137,23 +142,37 @@ private:
 template<class T> class Singleton
 {
 public:
+	~Singleton()
+	{
+		if (m_pSubject != 0)
+		{
+			delete m_pSubject;
+			m_pSubject = 0;
+		}
+	}
 	T* GetSubject()
 	{
 		if (m_pSubject == 0)
 			m_pSubject = new T;
 		return m_pSubject;
 	}
+	static Singleton s_Instance;
 private:
 	T* m_pSubject;
 };
+template<class T> Singleton<T> Singleton<T>::s_Instance;
 
+// PLACEHOLDER: UNKNOWN_SINGLETON_SUBJECT_MACRO: the bytes read the subject of this singleton instance; the source form of that access is unknown.
+#define UNKNOWN_SINGLETON_SUBJECT_MACRO(param_1) (param_1).GetSubject()
+
+class TimerImpl;
 class Timer
 {
 public:
 	Timer();
 	double FUN_00929760();
 private:
-	void* m_pTimer;
+	TimerImpl* m_pTimer;
 };
 class App
 {
@@ -185,8 +204,8 @@ public:
 protected:
 	int m_ResType;
 	int m_ResPool;
-	int m_pUserData;
-	int m_ResMask;
+	void* m_pUserData;
+	unsigned int m_ResMask;
 	std::string m_Name;
 	std::string m_Path;
 };
@@ -280,20 +299,25 @@ private:
 	int field_0x2798;
 };
 
-extern void* DAT_0629c344;
+// GLOBAL: SADX 0x0629c340
+// Magic::Base::Singleton<SOCAudioSystem>::s_Instance
+
+// GLOBAL: SADX 0x0629c344
+// Magic::Base::Singleton<SOCInput>::s_Instance
+
+extern Magic::Base::Singleton<SOCSystem> DAT_0629c338;
+extern Magic::Base::Singleton<SOCTimer> DAT_05ab4304;
 
 // FUNCTION: SADX 0x00405f00
 inline class SOCInput* FUN_00405f00()
 {
-	return ((Magic::Base::Singleton<SOCInput>*)&DAT_0629c344)->GetSubject();
+	return UNKNOWN_SINGLETON_SUBJECT_MACRO(Magic::Base::Singleton<SOCInput>::s_Instance);
 }
-
-extern void* DAT_05ab4304;
 
 // FUNCTION: SADX 0x0041a800
 inline class SOCTimer* FUN_0041a800()
 {
-	return ((Magic::Base::Singleton<SOCTimer>*)&DAT_05ab4304)->GetSubject();
+	return UNKNOWN_SINGLETON_SUBJECT_MACRO(DAT_05ab4304);
 }
 
 struct FUN_0040e170_0

@@ -1,7 +1,6 @@
 #include "decls.h"
 #include "../advertise.h"
 
-extern void* DAT_0629c340;
 extern signed char DAT_060f4ae0[0x40000];
 extern float DAT_060eead0;
 extern NJS_MATRIX DAT_06274b18[0x80];
@@ -39,7 +38,7 @@ void FUN_004059d0()
 	njControl3D(8);
 	___njSetBackColor(0, 0, 0);
 	FUN_007d21b0(1);
-	((Magic::Base::Singleton<DAT_0629c340_0>*)&DAT_0629c340)->GetSubject()->FUN_00425db0();
+	UNKNOWN_SINGLETON_SUBJECT_MACRO(Magic::Base::Singleton<SOCAudioSystem>::s_Instance)->FUN_00425db0();
 	FUN_00405f00()->FUN_00424a90(Magic::Base::App::Get("hInstance"), Magic::Base::App::Get("hWnd"));
 }
 
@@ -49,7 +48,7 @@ void FUN_00405b40()
 	FUN_004b6140();
 	___njReleaseTextureAll();
 	FUN_00405f00()->FUN_00424ac0();
-	((Magic::Base::Singleton<DAT_0629c340_0>*)&DAT_0629c340)->GetSubject()->FUN_00425e30();
+	UNKNOWN_SINGLETON_SUBJECT_MACRO(Magic::Base::Singleton<SOCAudioSystem>::s_Instance)->FUN_00425e30();
 	syTmrGenStop();
 	njExitTexture();
 	njExitPrint();

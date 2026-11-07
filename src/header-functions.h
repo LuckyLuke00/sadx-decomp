@@ -1,7 +1,7 @@
 // Header functions whose one kept copy sits in game code: LIBRARY annotations for the library calls that reach them.
 
 // LIBRARY: SADX 0x00405f80
-// ?GetSubject@?$Singleton@VDAT_0629c340_0@@@Base@Magic@@QAEPAVDAT_0629c340_0@@XZ
+// ?GetSubject@?$Singleton@VSOCAudioSystem@@@Base@Magic@@QAEPAVSOCAudioSystem@@XZ
 
 // LIBRARY: SADX 0x00406000
 // ?GetSubject@?$Singleton@VSOCInput@@@Base@Magic@@QAEPAVSOCInput@@XZ

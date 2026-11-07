@@ -60,5 +60,8 @@ namespace std
 #define UNKNOWN_DOUBLE_MACRO(param_1) (double)(param_1)
 
 namespace Magic { namespace RenderCore { class Texture; class VertexBuffer; class Material; } }
+namespace Magic { namespace Base { template<class T> class Singleton; } }
+class SOCSystem;
+class SOCTimer;
 #include "functions.h"
 #include "globals.h"

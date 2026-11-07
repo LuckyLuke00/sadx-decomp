@@ -29,6 +29,7 @@ TYPE_WORDS = {"void", "char", "short", "int", "long", "float", "double", "signed
 LITERAL = re.compile(r"\"(?:\\.|[^\"\\\n])*\"|'(?:\\.|[^'\\\n])*'|//[^\n]*|/\*.*?\*/",
                      re.S)  # a string, a character or a comment, also over lines
 BRACE = re.compile(rf"{LITERAL.pattern}|[{{}}]", re.S)  # a brace, or a literal that hides the braces in it
+MARKER = re.compile(r"\s*//\s*[A-Z]+:\s*\w+\s+0x[0-9a-fA-F]+")  # a reccmp marker line, of any target
 
 
 class Previous(NamedTuple):
@@ -221,23 +222,31 @@ def context_sources(context: Path | None, sources: dict[str, str]) -> dict[str, 
 
 def parse_annotations(text: str) -> list[tuple[str, int, str]]:
     """(kind, address, signature) of each annotation: the signature is the first code line after it, without
-    `__declspec(naked)`, which only a definition may carry: declared from it, the name fails every file."""
+    `__declspec(naked)`, which only a definition may carry: declared from it, the name fails every file. A GLOBAL
+    whose first line after its markers is a `//` comment is left out: reccmp reads that comment as the name to look
+    up, such as a template's static member, so no line here defines it."""
     found = []
     for m in annotation().finditer(text):
         kind, address = m.group(1), int(m.group(2), 16)
         nl = text.find("\n", m.end())
         rest = text[nl + 1:] if nl != -1 else ""
+        by_name = False
         # skip further annotation and blank lines
         while True:
             line_end = rest.find("\n")
             line = rest if line_end == -1 else rest[:line_end]
             if line.strip().startswith("//") or not line.strip():
+                if kind == "GLOBAL" and line.strip() and not MARKER.match(line):
+                    by_name = True
+                    break
                 if line_end == -1:
                     rest = ""
                     break
                 rest = rest[line_end + 1:]
                 continue
             break
+        if by_name:
+            continue
         sig = re.sub(r"__declspec\s*\(\s*naked\s*\)\s*", "", signature_after(rest, 0))
         found.append((kind, address, sig))
     return found

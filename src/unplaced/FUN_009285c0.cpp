@@ -5,17 +5,17 @@
 // FUNCTION: SADX 0x009285c0
 long Magic::Base::File::FUN_009285c0()
 {
-	FILE **var1;
+	FileImpl *var1;
 	long var2;
 	long var3;
 
 	var1 = m_pFile;
-	if (*var1 == NULL)
+	if (var1->m_pFile == NULL)
 		return -1;
 
-	var2 = ftell(*var1);
-	fseek(*var1, 0, 2);
-	var3 = ftell(*var1);
-	fseek(*var1, var2, 0);
+	var2 = ftell(var1->m_pFile);
+	fseek(var1->m_pFile, 0, 2);
+	var3 = ftell(var1->m_pFile);
+	fseek(var1->m_pFile, var2, 0);
 	return var3;
 }

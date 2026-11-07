@@ -105,7 +105,7 @@ void __fastcall FUN_00412230(void *param_1)
 	*(void **)((char *)param_1 + 0x28) = (void *)0;
 }
 
-// STUB: SADX 0x00412260
+// FUNCTION: SADX 0x00412260
 char *FUN_00412260(char *param_1)
 {
 	int var1;

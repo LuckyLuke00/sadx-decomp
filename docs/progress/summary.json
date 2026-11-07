@@ -267,7 +267,7 @@
   },
   {
    "address": "0x00405f80",
-   "name": "Magic::Base::Singleton<DAT_0629c340_0>::GetSubject",
+   "name": "Magic::Base::Singleton<SOCAudioSystem>::GetSubject",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -1198,7 +1198,7 @@
    "name": "FUN_00412260",
    "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -2939,7 +2939,7 @@
   },
   {
    "address": "0x00425db0",
-   "name": "DAT_0629c340_0::FUN_00425db0",
+   "name": "SOCAudioSystem::FUN_00425db0",
    "accuracy": 0.05128205128205128,
    "effective": false,
    "stub": true,
@@ -2947,7 +2947,7 @@
   },
   {
    "address": "0x00425e30",
-   "name": "DAT_0629c340_0::FUN_00425e30",
+   "name": "SOCAudioSystem::FUN_00425e30",
    "accuracy": 0.04,
    "effective": false,
    "stub": true,
@@ -2955,7 +2955,7 @@
   },
   {
    "address": "0x004261d0",
-   "name": "DAT_0629c340_0::DAT_0629c340_0",
+   "name": "SOCAudioSystem::SOCAudioSystem",
    "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
@@ -88348,7 +88348,7 @@
   {
    "address": "0x00928790",
    "name": "Magic::Base::File::File",
-   "accuracy": 0.2608695652173913,
+   "accuracy": 0.20408163265306123,
    "effective": false,
    "stub": true,
    "library": false
@@ -104210,5 +104210,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "86502d3b518d011d6e110d0276d974524b74cd72068ee7c4d2ab05a1bf6e2098"
+ "inputs_sha256": "3fb2c5332526163751efad231d262af102c6113ee46dac53a49f0b61f46bad63"
 }

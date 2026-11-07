@@ -29,17 +29,17 @@ void SOCAudio::Play(float param_1, int param_2)
 }
 
 // STUB: SADX 0x00425db0
-void DAT_0629c340_0::FUN_00425db0()
+void SOCAudioSystem::FUN_00425db0()
 {
 }
 
 // STUB: SADX 0x00425e30
-void DAT_0629c340_0::FUN_00425e30()
+void SOCAudioSystem::FUN_00425e30()
 {
 }
 
 // STUB: SADX 0x004261d0
-DAT_0629c340_0::DAT_0629c340_0()
+SOCAudioSystem::SOCAudioSystem()
 {
 }
 
