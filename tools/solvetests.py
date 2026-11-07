@@ -45,10 +45,11 @@ DIFF = ("---\n+++\n@@ -0x401000,4 +0x405900,4 @@\n"  # reccmp's diff: two instru
 IMAGE = range(0x400000, 0x800000)  # the fake exe's sections
 KNOWN = {0x00450000, 0x00600008}  # a function and a byte of a global in the fake exe
 DEBUG = 0x00402000  # a function that the fake tree builds with /Od
-# the fake tree's globals: an int, a char, 16 ints, one of a struct the types header does not size, and a pointer
+# the fake tree's globals: an int, a char, 16 ints, one of a struct the types header does not size, a pointer, and 153
+# longs at 0x20ffe40, whose element 112 is at 0x2100000
 TREE = fakematch.Tree(KNOWN.__contains__, {"g": "int g", "c": "unsigned char c", "big": "int big[16]",
-                                           "s": "struct S s", "gp": "void *gp"}, names.Types(Path("no/types.h")),
-                      {DEBUG}.__contains__)
+                                           "s": "struct S s", "gp": "void *gp", "regs": "long regs[153]"},
+                      names.Types(Path("no/types.h")), {DEBUG}.__contains__, {"regs": 0x20ffe40})
 
 
 class Run(NamedTuple):

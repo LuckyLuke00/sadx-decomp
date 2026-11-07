@@ -24,7 +24,9 @@ The kinds:
   self_assignment  a variable set to itself, such as x = x;: it does nothing
   unused_label     a label that no goto names
   address_number   the address of a DAT_ that is not a multiple of 4 cast to an integer, such as (int)&DAT_04000002:
-                   such a number is nearly always a flag or a count, not the address of a global
+                   such a number is nearly always a flag or a count, not the address of a global. Also the address of
+                   an element of a tree global that is one bit, such as (long)&vertex_al_hrp_reg_l[112] for 0x2100000:
+                   a number of one bit that is not a global's start is a flag
   constant_global  a float or double DAT_ declared at an address of read-only data (constant_globals): the compiler
                    puts the source's literals there, so the source wrote a literal
 
@@ -50,6 +52,7 @@ import progress
 KEYWORDS = {"return", "goto", "else", "case", "default", "break", "continue", "do", "if", "while", "for", "switch",
             "sizeof", "delete", "new", "throw"}
 QUALIFIER = r"(?:(?:const|unsigned|signed|struct|union|enum|volatile|register)\s+)*"
+TYPE_NAME = r"(?:[\w\s]|::|<(?:[^<>]|<[^<>]*>)*>)+"  # a type's words, maybe qualified (A::B) or a template (A<B>)
 DECLARATOR = re.compile(r"\s*((?:\*\s*)*)([A-Za-z_]\w*)\s*((?:\[[^\]]*\]\s*)*)(?:=.*)?$", re.S)
 DECLARATION = re.compile(rf"^\s*({QUALIFIER}[A-Za-z_]\w*)\b\s*(\*?[\s*]*[A-Za-z_].*);\s*$")
 PATTERNS = {
@@ -67,9 +70,13 @@ PATTERNS = {
     # address_pun. A cast before the &, as in (char *)&x + i, is CAST_ADDRESS.
     "neighbor_address": re.compile(r"(?:^|(?<!>)\(|[=,?:]|\breturn)\s*&\s*[A-Za-z_]\w*\s*"
                                    r"(?:\)\s*\[|[-+]\s*(?:0x[0-9a-fA-F]+|\d+)\b)"),
-    # A pointer type, maybe to an array or a function, then maybe casts to void * or char *, then maybe a (, then &.
-    "address_pun": re.compile(r"\*\s*\(\s*[\w\s]+[\s*]*(?:\(\s*\*+\s*\)\s*(?:\[[^\]]*\]|\([^()]*\))?)?\s*\)"
+    # A pointer type, maybe qualified or a template, to an array or a function, then maybe casts to void * or char *,
+    # then maybe a (, then &. Or a cast to a pointer on an address that a -> or [ then reads through: ((T *)&x)->m.
+    "address_pun": re.compile(rf"\*\s*\(\s*{TYPE_NAME}[\s*]*(?:\(\s*\*+\s*\)\s*(?:\[[^\]]*\]|\([^()]*\))?)?\s*\)"
                               r"\s*(?:\(\s*(?:void|(?:unsigned\s+)?char)\s*\*\s*\)\s*)*\(?\s*&\s*\w"
+                              rf"|\(\s*\(\s*{TYPE_NAME}\*[\s*]*\)"
+                              r"\s*(?:\(\s*(?:void|(?:unsigned\s+)?char)\s*\*\s*\)\s*)*\(?\s*&\s*\w[\w.>\[\]\s-]*\)"
+                              r"\s*(?:->|\[)"
                               r"|reinterpret_cast\s*<(?:[^<>]|<[^<>]*>)*\*\s*>\s*\(\s*&\s*\w"),
     # In C, ((T)x)(a) is only ever a call through a cast, whether T is spelled out or a typedef. A field is left out:
     # the struct fixes its type, so a callback in a void * field needs the cast.
@@ -92,6 +99,10 @@ NUMBER = re.compile(r"(?<![\w.])(0[xX][0-9a-fA-F]+|[1-9]\d*|0)[uUlL]*(?![\w.])")
 LABEL = re.compile(r"^\s*([A-Za-z_]\w*)\s*:\s*;?\s*$")
 HEAD = re.compile(r"\s*(?:if|for|while)\s*\(")
 ENDLESS = re.compile(r"\s*(?:while\s*\(\s*1\s*\)|for\s*\(\s*;\s*;\s*\))\s*;?\s*$")  # an endless loop's head
+# an integer cast on the address of an element of a global at a literal index: group 1 is the global, 2 the index. An
+# element of an element, as in &x[1][2], is left out.
+ELEMENT_NUMBER = re.compile(r"\(\s*(?:unsigned\s+)?(?:int|long)\s*\)\s*&\s*([A-Za-z_]\w*)\s*\[\s*"
+                            r"(0[xX][0-9a-fA-F]+|[1-9]\d*)\s*\](?!\s*\[)")
 DEBUG_PLAIN = {"self_assignment"}  # the kinds that are plain C at /Od
 DAT_NAME = re.compile(r"DAT_([0-9a-f]{8})")  # a global's placeholder name, which holds its address
 FLOAT_GLOBAL = re.compile(r"^\s*(?:extern\s+)?(?:const\s+)?(float|double)\s+(?:const\s+)?DAT_([0-9a-fA-F]{8})\s*;\s*$")
@@ -109,6 +120,7 @@ class Tree(NamedTuple):
     definitions: dict[str, str]
     types: names.Types
     is_debug: Callable[[int], bool]
+    addresses: dict[str, int] = {}  # the address of each global by name, when the tree has it
 
     def is_debug_function(self, func: list[str]) -> bool:
         """Whether FUNC, a definition's lines from its annotation on, builds with /Od."""
@@ -139,6 +151,20 @@ class Tree(NamedTuple):
             base = names.element_layout(definition, name, self.types)[0]
             definition, name = self.types.member(base, member), member
         return names.global_size(definition, name, self.types) if definition else 0
+
+    def element_address(self, name: str, index: int) -> int | None:
+        """The address of element INDEX of the global NAME, or None when the tree has no address for it or does not
+        know the size of an element: a step of the first index is the bytes of one element with its inner counts."""
+        address = self.addresses.get(name)
+        if address is None and (m := DAT_NAME.fullmatch(name)):
+            address = int(m[1], 16)
+        definition = self.definitions.get(name)
+        if address is None or not definition:
+            return None
+        _, element, counts = names.element_layout(definition, name, self.types)
+        if element is None or not counts or None in counts[1:]:
+            return None
+        return address + index * element * math.prod(counts[1:])
 
     def is_pointer(self, name: str) -> bool:
         """Whether the global NAME is a pointer or an array: a number added to it is an offset."""
@@ -321,6 +347,13 @@ def past_bytes(m: re.Match, line: str, tree: Tree) -> bool:
     return m[5] == "-" or any(term_bytes(term, unit) >= size for term in split_top(offset_text(line, m.end()), "+"))
 
 
+def flag_element(m: re.Match, tree: Tree) -> bool:
+    """Whether the ELEMENT_NUMBER match M is the address of an element of a tree global that is one bit: such a number
+    is a flag, so the source wrote it as a number."""
+    address = tree.element_address(m[1], int(m[2], 0))
+    return address is not None and address.bit_count() == 1
+
+
 def added_to_pointer(before: str, variables: dict[str, str], tree: Tree) -> bool:
     """Whether the number after BEFORE, the text of a line up to it, is added to a pointer or an array: then it is an
     offset, not an address. A name is a parameter or local of VARIABLES (variable_types), else a tree global."""
@@ -350,6 +383,8 @@ def found(func: list[str], at: int, in_image: Callable[[int], bool], tree: Tree)
                     hits.append((kind, source))
         if any(m[3] not in variables and past_bytes(m, line, tree) for m in CAST_ADDRESS.finditer(line)):
             hits.append(("neighbor_address", source))
+        if any(flag_element(m, tree) for m in ELEMENT_NUMBER.finditer(line)):
+            hits.append(("address_number", source))
         if any(tree.is_address(int(m[1], 0)) for m in NUMBER.finditer(line)):
             hits.append(("raw_address", source))
     for i in body:
@@ -419,7 +454,7 @@ def read_tree(root: Path) -> Tree:
                               [(address, names.global_size(definition, name, types))
                                for address, name, definition in named])
     return Tree(is_address, {name: definition for _, name, definition in named}, types,
-                debug_test(progress.load_codegen_groups()))
+                debug_test(progress.load_codegen_groups()), {name: address for address, name, _ in named})
 
 
 def checker(root: Path, game: Path) -> Callable[[list[str]], list[str]]:
