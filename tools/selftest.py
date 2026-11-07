@@ -18,6 +18,7 @@ from pathlib import Path
 
 import coff
 import declgen
+import libobjects
 import library
 import link
 import names
@@ -79,6 +80,7 @@ def run() -> int:
     failures += check_nested_globals()
     failures += check_decls_aliases()
     failures += check_decls_members()
+    failures += check_global_functions()
     failures += check_shared_global_sizes()
     failures += check_table_sizes()
     failures += check_extern_of()
@@ -646,6 +648,14 @@ def check_decls_aliases() -> list[str]:
     finally:
         project.library_rows = saved
     return failures
+
+
+def check_global_functions() -> list[str]:
+    """A folded library address takes the function outside any class: operator new[] beats the ConcRT member."""
+    cases = {"_floor": True, "??_U@YAPAXI@Z": True, "?h@std@@YAXXZ": True, "?f@C@@QAEXXZ": False,
+             "??2UMSThreadInternalContext@details@Concurrency@@CAPAXI@Z": False}
+    return [f"is_global_function({symbol!r}) is not {expected}" for symbol, expected in cases.items()
+            if libobjects.is_global_function(symbol) != expected]
 
 
 def check_decls_members() -> list[str]:

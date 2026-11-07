@@ -292,10 +292,12 @@ class Chooser:
         return {self.accepted[other].member for other in around if other in self.accepted}
 
     def pick(self, address: int, functions: list[libobjects.Function], neighbors: set[str]) -> libobjects.Function:
-        # Of functions the linker folded, the one most calls name, then the one beside its object.
+        # Of functions the linker folded, the one most calls name, then the one beside its object, then one outside
+        # any class. The calls here are the library's. The game's calls are not counted, and game code calls a
+        # global such as operator new[] more likely than a member of a library class.
         return max(functions, key=lambda f: (
             sum(self.calls[address + offset][key] for offset, keys in f.spots().items() for key in keys),
-            f.member in neighbors))
+            f.member in neighbors, libobjects.is_global_function(f.symbol)))
 
     def consistent(self, address: int, function: libobjects.Function) -> bool:
         for offset, keys in function.spots().items():

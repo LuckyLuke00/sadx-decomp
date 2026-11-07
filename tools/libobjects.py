@@ -8,6 +8,7 @@ Standard library only.
 """
 
 import collections
+import re
 import struct
 from pathlib import Path
 from typing import Iterator, NamedTuple
@@ -26,6 +27,9 @@ NAMED_RECORDS = {0x110F: (32, 39), 0x1110: (32, 39), 0x1105: (4, 11), 0x110C: (8
 PROCEDURES = (0x110F, 0x1110)  # their length is at offset 16
 DEBUG_SYMBOLS = 0xF1  # the .debug$S subsection that holds symbol records
 IMPORT_ENTRY = b"\x00\x00\xff\xff"  # the start of an import library entry, which has no COFF object
+# An MSVC symbol of a function outside any class: ? and the name (name@, or an operator code such as ?2 or
+# ?_U), its namespaces (namespace@...), @ and the function class code Y or Z.
+GLOBAL_FUNCTION = re.compile(r"\?(?:\?_?[0-9A-Z_]|[^?$@][^@]*@)(?:[^?$@][^@]*@)*@[YZ]")
 
 
 class Reference(NamedTuple):
@@ -231,6 +235,11 @@ def plain_name(symbol: str) -> str:
     symbol = symbol.removeprefix("_")
     head, _, tail = symbol.rpartition("@")
     return head if head and tail.isdigit() else symbol
+
+
+def is_global_function(symbol: str) -> bool:
+    """Whether a symbol names a C function or a C++ function outside any class."""
+    return not symbol.startswith("?") or GLOBAL_FUNCTION.match(symbol) is not None
 
 
 def archive_members(path: Path) -> Iterator[tuple[str, bytes]]:
