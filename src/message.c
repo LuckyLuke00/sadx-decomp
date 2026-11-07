@@ -7,7 +7,7 @@ void FUN_004c2a30(struct MSGC *param_1, char *param_2);
 extern unsigned char DAT_05b42e20[0x50000];
 extern struct MSGC *DAT_05b92e20;
 extern int DAT_05cd14d4;
-extern unsigned int *DAT_05b93264;
+extern struct PDS_PERIPHERAL *DAT_05b93264[4];
 extern int DAT_05b42c34;
 extern int DAT_05b42c38;
 extern int DAT_05b3ebbc;
@@ -569,7 +569,7 @@ void MSG_WaitC(struct MSGC *msgc, int time)
 	{
 		MSG_Disp(msgc);
 		FUN_005a4d70();
-		if ((DAT_05b93264[4] & 2) != 0)
+		if ((DAT_05b93264[0]->press & 2) != 0)
 		{
 			break;
 		}

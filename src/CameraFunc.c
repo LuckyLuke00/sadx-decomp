@@ -3,7 +3,7 @@ void sonicCameraAvoidObstacle();
 extern int DAT_05ccdbd8;
 extern int DAT_05ccdafc;
 extern "C" double atan2(double v, double u);
-extern struct PDS_PERIPHERAL *DAT_05b93268;
+extern struct PDS_PERIPHERAL *DAT_05b93264[4];
 extern char DAT_05ccdad0;
 extern int DAT_05ccdb08;
 extern float DAT_05ccdb30;
@@ -523,8 +523,8 @@ void cameraDebugMake(struct _OBJ_CAMERAPARAM *pParam, struct NJS_POINT3 *_pos, s
 	*(int *)((char *)camcont_wp + 0x2c) = 0;
 	if ((DAT_05b932e8[1].on & 8) != 0)
 	{
-		local_ci = (short)(DAT_05b93268->x1 << 8);
-		local_10m = (short)(DAT_05b93268->y1 << 8);
+		local_ci = (short)(DAT_05b93264[1]->x1 << 8);
+		local_10m = (short)(DAT_05b93264[1]->y1 << 8);
 		if (local_ci > -5000 && local_ci < 0x1388)
 		{
 			local_ci = 0;
@@ -533,8 +533,8 @@ void cameraDebugMake(struct _OBJ_CAMERAPARAM *pParam, struct NJS_POINT3 *_pos, s
 		{
 			local_10m = 0;
 		}
-		local_14 = (short)(((unsigned short)DAT_05b93268->r << 8) - 0x8000);
-		local_8g = (short)(((unsigned short)DAT_05b93268->l << 8) - 0x8000);
+		local_14 = (short)(((unsigned short)DAT_05b93264[1]->r << 8) - 0x8000);
+		local_8g = (short)(((unsigned short)DAT_05b93264[1]->l << 8) - 0x8000);
 		*(int *)((char *)camcont_wp + 0x28) += (int)local_ci / 64;
 		*(int *)((char *)camcont_wp + 0x24) += (int)local_10m / 64;
 		if ((DAT_05b932e8[1].on & 0x20000) != 0)

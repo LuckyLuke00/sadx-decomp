@@ -1,5 +1,5 @@
 #include "decls.h"
-extern unsigned int *DAT_05b93264;
+extern struct PDS_PERIPHERAL *DAT_05b93264[4];
 extern int DAT_05b92e44;
 
 // FUNCTION: SADX 0x0055e260
@@ -17,5 +17,5 @@ int IsBtnCancel(void)
 // FUNCTION: SADX 0x0055e2a0
 int IsSOCAVAPress(int padno, int keys)
 {
-	return ((unsigned int **)&DAT_05b93264)[padno][4] & keys;
+	return DAT_05b93264[padno]->press & keys;
 }

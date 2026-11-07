@@ -1,6 +1,6 @@
 #include "decls.h"
 extern int DAT_05b2c9f4;
-extern void *DAT_05b9326c;
+extern struct PDS_PERIPHERAL *DAT_05b93264[4];
 long AL_GetCurrLandAttr(struct NJS_POINT3 *pPos);
 void AL__EditCancelMode(struct task *tp);
 extern signed char DAT_05b92ea0;
@@ -223,7 +223,7 @@ void AL_JingleEdit(struct task *tp)
 		}
 		DAT_05b2c9f4 = var2;
 	}
-	if (*(unsigned char *)((char *)DAT_05b9326c + 0x10) & 4)
+	if (DAT_05b93264[2]->press & 4)
 	{
 		Jingle_Play(var2 + 0x70);
 	}

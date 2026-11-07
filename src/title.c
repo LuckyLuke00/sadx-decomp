@@ -281,11 +281,11 @@ void TitleSetStageNumber()
 		local_5i = 0;
 	}
 	SetStageNumber(local_6g, local_5i);
-	if (((*(unsigned int *)((char *)DAT_05b93264 + 8)) & 4) != 0)
+	if ((DAT_05b93264[0]->on & 4) != 0)
 	{
 		DAT_05cda170 = 2;
 	}
-	if (((*(unsigned int *)((char *)DAT_05b93264 + 8)) & 2) != 0)
+	if ((DAT_05b93264[0]->on & 2) != 0)
 	{
 		DAT_05cda170 = 1;
 	}

@@ -3,7 +3,7 @@ void flickE102Shot(struct task *pTask);
 extern void (*DAT_05b9e0b0)();
 extern void *DAT_060c4570;
 extern int DAT_060c462c;
-extern unsigned int *DAT_05b93264;
+extern struct PDS_PERIPHERAL *DAT_05b93264[4];
 extern void *DAT_060c4574;
 
 // FUNCTION: SADX 0x00707650
@@ -57,7 +57,7 @@ void FUN_00708820(struct task *param_1, struct taskwk *param_2)
 // FUNCTION: SADX 0x0070a380
 void edit(struct task *pTask)
 {
-	if ((*(int *)((char *)DAT_05b93264 + 0x10) & 6) != 0)
+	if ((DAT_05b93264[0]->press & 6) != 0)
 	{
 		if (pTask->twp->mode != 1)
 		{
