@@ -15,12 +15,18 @@ struct _eventobjwk;
 struct _OBJ_ADJUSTPARAM;
 struct _OBJ_CAMERAENTRY;
 struct _OBJ_CAMERAPARAM;
+struct _OBJ_EDITENTRY;
+struct _OBJ_ITEMENTRY;
 struct _OBJ_ITEMTABLE;
+struct _OBJ_LANDENTRY;
 struct _OBJ_LANDTABLE;
+struct _OBJ_MOTLANDENTRY;
+struct _OBJ_SLEEPCON;
 struct _OptionSelWk;
 struct _SC_NUMBERS;
 struct _SEcallbuf;
 struct _sSTVERTEXSTREAM;
+union _UNION_STATUS;
 struct ActionParam;
 struct ADV1_AL_BODY;
 struct ADV1_AL_FACE;
@@ -246,11 +252,10 @@ struct NJS_VERTEX_BUF;
 struct NpcMessageTable;
 struct obj;
 struct OBJ_CONDITION;
-struct OBJ_EDITENTRY;
-struct OBJ_SLEEPCON;
 struct OBJ_UNIT;
 struct ObjCmnInfo;
 struct OCMDATA;
+struct OptCsrPrmT;
 struct PanelPrmType;
 struct particle_entry;
 struct particle_info;
@@ -314,7 +319,6 @@ struct TREE_SAVE_INFO;
 struct TrialActSelWk;
 struct TvSettingWk;
 struct u4s;
-union UNION_STATUS;
 struct uv_info;
 struct VolumeInfo;
 struct WIDELINE_TEXDATA;
@@ -528,6 +532,35 @@ enum OdeMenuState : int {
     ODE_MENU_STATE_END = 2,
 };
 static_assert(sizeof(OdeMenuState) == 4, "sizeof OdeMenuState");
+
+enum OptionSelEnum : int {
+    CSR_OPTIONSEL_SNDTEST = 0,
+    CSR_OPTIONSEL_MSG = 1,
+    CSR_OPTIONSEL_FILESEL = 2,
+    CSR_OPTIONSEL_GOBACK = 3,
+    CSR_OPTIONSEL_LANGSEL = 4,
+    CSR_OPTIONSEL_VIBRATION = 5,
+    CSR_OPTIONSEL_TVSETTING = 6,
+    CSR_OPTIONSEL_MAX = 7,
+};
+static_assert(sizeof(OptionSelEnum) == 4, "sizeof OptionSelEnum");
+
+enum OptionSelSbMdEnum : int {
+    OPTIONSEL_SMD_STAY = 0,
+    OPTIONSEL_SMD_TO_SNDTEST = 1,
+    OPTIONSEL_SMD_MSG = 2,
+    OPTIONSEL_SMD_VOICE = 3,
+    OPTIONSEL_SMD_TEXT = 4,
+    OPTIONSEL_SMD_TVSETTING = 5,
+    OPTIONSEL_SMD_TO_FILESEL = 6,
+    OPTIONSEL_SMD_BACK = 7,
+    OPTIONSEL_SMD_VIBRATION = 8,
+    OPTIONSEL_SMD_NWAIT = 9,
+    OPTIONSEL_SMD_CFADEOUT = 10,
+    OPTIONSEL_SMD_CFADEIN = 11,
+    OPTIONSEL_SMD_MAX = 12,
+};
+static_assert(sizeof(OptionSelSbMdEnum) == 4, "sizeof OptionSelSbMdEnum");
 
 enum SndSubMenuEnum : int {
     SNDSUBMENU_MAIN = 0,
@@ -3655,21 +3688,21 @@ static_assert(offsetof(NJS_TEXANIM, v2) == 0xe, "NJS_TEXANIM::v2");
 static_assert(offsetof(NJS_TEXANIM, texid) == 0x10, "NJS_TEXANIM::texid");
 static_assert(offsetof(NJS_TEXANIM, attr) == 0x12, "NJS_TEXANIM::attr");
 
-union UNION_STATUS {
+union _UNION_STATUS {
     float fRangeOut;
-    struct OBJ_SLEEPCON *pObjSleepCondition;
+    struct _OBJ_SLEEPCON *pObjSleepCondition;
 };
-static_assert(sizeof(UNION_STATUS) == 0x4, "sizeof UNION_STATUS");
-static_assert(offsetof(UNION_STATUS, fRangeOut) == 0x0, "UNION_STATUS::fRangeOut");
-static_assert(offsetof(UNION_STATUS, pObjSleepCondition) == 0x0, "UNION_STATUS::pObjSleepCondition");
+static_assert(sizeof(_UNION_STATUS) == 0x4, "sizeof _UNION_STATUS");
+static_assert(offsetof(_UNION_STATUS, fRangeOut) == 0x0, "_UNION_STATUS::fRangeOut");
+static_assert(offsetof(_UNION_STATUS, pObjSleepCondition) == 0x0, "_UNION_STATUS::pObjSleepCondition");
 
 struct OBJ_CONDITION {
     signed char scCount;
     signed char scUserFlag;
     short ssCondition;
     struct task *pTask;
-    struct OBJ_EDITENTRY *pObjEditEntry;
-    union UNION_STATUS unionStatus;
+    struct _OBJ_EDITENTRY *pObjEditEntry;
+    union _UNION_STATUS unionStatus;
 };
 static_assert(sizeof(OBJ_CONDITION) == 0x10, "sizeof OBJ_CONDITION");
 static_assert(offsetof(OBJ_CONDITION, scCount) == 0x0, "OBJ_CONDITION::scCount");
@@ -4179,7 +4212,89 @@ static_assert(offsetof(WIREMODEL, index) == 0x8, "WIREMODEL::index");
 static_assert(offsetof(WIREMODEL, nbLine) == 0xc, "WIREMODEL::nbLine");
 static_assert(offsetof(WIREMODEL, p3col) == 0x10, "WIREMODEL::p3col");
 
-struct OBJ_EDITENTRY {
+struct _OBJ_ADJUSTPARAM {
+    short ssAdjustFlag;
+    long angSpeed[3];
+    float fSpeed;
+    long counter;
+};
+static_assert(sizeof(_OBJ_ADJUSTPARAM) == 0x18, "sizeof _OBJ_ADJUSTPARAM");
+static_assert(offsetof(_OBJ_ADJUSTPARAM, ssAdjustFlag) == 0x0, "_OBJ_ADJUSTPARAM::ssAdjustFlag");
+static_assert(offsetof(_OBJ_ADJUSTPARAM, angSpeed) == 0x4, "_OBJ_ADJUSTPARAM::angSpeed");
+static_assert(offsetof(_OBJ_ADJUSTPARAM, fSpeed) == 0x10, "_OBJ_ADJUSTPARAM::fSpeed");
+static_assert(offsetof(_OBJ_ADJUSTPARAM, counter) == 0x14, "_OBJ_ADJUSTPARAM::counter");
+
+struct _OBJ_CAMERAENTRY {
+    signed char scMode;
+    signed char scPriority;
+    unsigned char ucAdjType;
+    signed char scColType;
+    unsigned short xColAng;
+    unsigned short yColAng;
+    float xColPos;
+    float yColPos;
+    float zColPos;
+    float xColScl;
+    float yColScl;
+    float zColScl;
+    unsigned short xCamAng;
+    unsigned short yCamAng;
+    float xDirPos;
+    float yDirPos;
+    float zDirPos;
+    float xCamPos;
+    float yCamPos;
+    float zCamPos;
+    float fDistance;
+};
+static_assert(sizeof(_OBJ_CAMERAENTRY) == 0x40, "sizeof _OBJ_CAMERAENTRY");
+static_assert(offsetof(_OBJ_CAMERAENTRY, scMode) == 0x0, "_OBJ_CAMERAENTRY::scMode");
+static_assert(offsetof(_OBJ_CAMERAENTRY, scPriority) == 0x1, "_OBJ_CAMERAENTRY::scPriority");
+static_assert(offsetof(_OBJ_CAMERAENTRY, ucAdjType) == 0x2, "_OBJ_CAMERAENTRY::ucAdjType");
+static_assert(offsetof(_OBJ_CAMERAENTRY, scColType) == 0x3, "_OBJ_CAMERAENTRY::scColType");
+static_assert(offsetof(_OBJ_CAMERAENTRY, xColAng) == 0x4, "_OBJ_CAMERAENTRY::xColAng");
+static_assert(offsetof(_OBJ_CAMERAENTRY, yColAng) == 0x6, "_OBJ_CAMERAENTRY::yColAng");
+static_assert(offsetof(_OBJ_CAMERAENTRY, xColPos) == 0x8, "_OBJ_CAMERAENTRY::xColPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, yColPos) == 0xc, "_OBJ_CAMERAENTRY::yColPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, zColPos) == 0x10, "_OBJ_CAMERAENTRY::zColPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, xColScl) == 0x14, "_OBJ_CAMERAENTRY::xColScl");
+static_assert(offsetof(_OBJ_CAMERAENTRY, yColScl) == 0x18, "_OBJ_CAMERAENTRY::yColScl");
+static_assert(offsetof(_OBJ_CAMERAENTRY, zColScl) == 0x1c, "_OBJ_CAMERAENTRY::zColScl");
+static_assert(offsetof(_OBJ_CAMERAENTRY, xCamAng) == 0x20, "_OBJ_CAMERAENTRY::xCamAng");
+static_assert(offsetof(_OBJ_CAMERAENTRY, yCamAng) == 0x22, "_OBJ_CAMERAENTRY::yCamAng");
+static_assert(offsetof(_OBJ_CAMERAENTRY, xDirPos) == 0x24, "_OBJ_CAMERAENTRY::xDirPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, yDirPos) == 0x28, "_OBJ_CAMERAENTRY::yDirPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, zDirPos) == 0x2c, "_OBJ_CAMERAENTRY::zDirPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, xCamPos) == 0x30, "_OBJ_CAMERAENTRY::xCamPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, yCamPos) == 0x34, "_OBJ_CAMERAENTRY::yCamPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, zCamPos) == 0x38, "_OBJ_CAMERAENTRY::zCamPos");
+static_assert(offsetof(_OBJ_CAMERAENTRY, fDistance) == 0x3c, "_OBJ_CAMERAENTRY::fDistance");
+
+struct _OBJ_CAMERAPARAM {
+    unsigned short xCamAng;
+    unsigned short yCamAng;
+    float xCamPos;
+    float yCamPos;
+    float zCamPos;
+    float xDirPos;
+    float yDirPos;
+    float zDirPos;
+    float fDistance;
+    unsigned long ulTimer;
+};
+static_assert(sizeof(_OBJ_CAMERAPARAM) == 0x24, "sizeof _OBJ_CAMERAPARAM");
+static_assert(offsetof(_OBJ_CAMERAPARAM, xCamAng) == 0x0, "_OBJ_CAMERAPARAM::xCamAng");
+static_assert(offsetof(_OBJ_CAMERAPARAM, yCamAng) == 0x2, "_OBJ_CAMERAPARAM::yCamAng");
+static_assert(offsetof(_OBJ_CAMERAPARAM, xCamPos) == 0x4, "_OBJ_CAMERAPARAM::xCamPos");
+static_assert(offsetof(_OBJ_CAMERAPARAM, yCamPos) == 0x8, "_OBJ_CAMERAPARAM::yCamPos");
+static_assert(offsetof(_OBJ_CAMERAPARAM, zCamPos) == 0xc, "_OBJ_CAMERAPARAM::zCamPos");
+static_assert(offsetof(_OBJ_CAMERAPARAM, xDirPos) == 0x10, "_OBJ_CAMERAPARAM::xDirPos");
+static_assert(offsetof(_OBJ_CAMERAPARAM, yDirPos) == 0x14, "_OBJ_CAMERAPARAM::yDirPos");
+static_assert(offsetof(_OBJ_CAMERAPARAM, zDirPos) == 0x18, "_OBJ_CAMERAPARAM::zDirPos");
+static_assert(offsetof(_OBJ_CAMERAPARAM, fDistance) == 0x1c, "_OBJ_CAMERAPARAM::fDistance");
+static_assert(offsetof(_OBJ_CAMERAPARAM, ulTimer) == 0x20, "_OBJ_CAMERAPARAM::ulTimer");
+
+struct _OBJ_EDITENTRY {
     unsigned short usID;
     short rotx;
     short roty;
@@ -4191,17 +4306,183 @@ struct OBJ_EDITENTRY {
     float yscl;
     float zscl;
 };
-static_assert(sizeof(OBJ_EDITENTRY) == 0x20, "sizeof OBJ_EDITENTRY");
-static_assert(offsetof(OBJ_EDITENTRY, usID) == 0x0, "OBJ_EDITENTRY::usID");
-static_assert(offsetof(OBJ_EDITENTRY, rotx) == 0x2, "OBJ_EDITENTRY::rotx");
-static_assert(offsetof(OBJ_EDITENTRY, roty) == 0x4, "OBJ_EDITENTRY::roty");
-static_assert(offsetof(OBJ_EDITENTRY, rotz) == 0x6, "OBJ_EDITENTRY::rotz");
-static_assert(offsetof(OBJ_EDITENTRY, xpos) == 0x8, "OBJ_EDITENTRY::xpos");
-static_assert(offsetof(OBJ_EDITENTRY, ypos) == 0xc, "OBJ_EDITENTRY::ypos");
-static_assert(offsetof(OBJ_EDITENTRY, zpos) == 0x10, "OBJ_EDITENTRY::zpos");
-static_assert(offsetof(OBJ_EDITENTRY, xscl) == 0x14, "OBJ_EDITENTRY::xscl");
-static_assert(offsetof(OBJ_EDITENTRY, yscl) == 0x18, "OBJ_EDITENTRY::yscl");
-static_assert(offsetof(OBJ_EDITENTRY, zscl) == 0x1c, "OBJ_EDITENTRY::zscl");
+static_assert(sizeof(_OBJ_EDITENTRY) == 0x20, "sizeof _OBJ_EDITENTRY");
+static_assert(offsetof(_OBJ_EDITENTRY, usID) == 0x0, "_OBJ_EDITENTRY::usID");
+static_assert(offsetof(_OBJ_EDITENTRY, rotx) == 0x2, "_OBJ_EDITENTRY::rotx");
+static_assert(offsetof(_OBJ_EDITENTRY, roty) == 0x4, "_OBJ_EDITENTRY::roty");
+static_assert(offsetof(_OBJ_EDITENTRY, rotz) == 0x6, "_OBJ_EDITENTRY::rotz");
+static_assert(offsetof(_OBJ_EDITENTRY, xpos) == 0x8, "_OBJ_EDITENTRY::xpos");
+static_assert(offsetof(_OBJ_EDITENTRY, ypos) == 0xc, "_OBJ_EDITENTRY::ypos");
+static_assert(offsetof(_OBJ_EDITENTRY, zpos) == 0x10, "_OBJ_EDITENTRY::zpos");
+static_assert(offsetof(_OBJ_EDITENTRY, xscl) == 0x14, "_OBJ_EDITENTRY::xscl");
+static_assert(offsetof(_OBJ_EDITENTRY, yscl) == 0x18, "_OBJ_EDITENTRY::yscl");
+static_assert(offsetof(_OBJ_EDITENTRY, zscl) == 0x1c, "_OBJ_EDITENTRY::zscl");
+
+struct _OBJ_ITEMTABLE {
+    short ssCount;
+    short ssAttribute;
+    struct _OBJ_ITEMENTRY *pObjItemEntry;
+};
+static_assert(sizeof(_OBJ_ITEMTABLE) == 0x8, "sizeof _OBJ_ITEMTABLE");
+static_assert(offsetof(_OBJ_ITEMTABLE, ssCount) == 0x0, "_OBJ_ITEMTABLE::ssCount");
+static_assert(offsetof(_OBJ_ITEMTABLE, ssAttribute) == 0x2, "_OBJ_ITEMTABLE::ssAttribute");
+static_assert(offsetof(_OBJ_ITEMTABLE, pObjItemEntry) == 0x4, "_OBJ_ITEMTABLE::pObjItemEntry");
+
+struct _OBJ_LANDENTRY {
+    float xCenter;
+    float yCenter;
+    float zCenter;
+    float xWidth;
+    float yWidth;
+    float zWidth;
+    struct obj *pObject;
+    int blockbit;
+    long slAttribute;
+};
+static_assert(sizeof(_OBJ_LANDENTRY) == 0x24, "sizeof _OBJ_LANDENTRY");
+static_assert(offsetof(_OBJ_LANDENTRY, xCenter) == 0x0, "_OBJ_LANDENTRY::xCenter");
+static_assert(offsetof(_OBJ_LANDENTRY, yCenter) == 0x4, "_OBJ_LANDENTRY::yCenter");
+static_assert(offsetof(_OBJ_LANDENTRY, zCenter) == 0x8, "_OBJ_LANDENTRY::zCenter");
+static_assert(offsetof(_OBJ_LANDENTRY, xWidth) == 0xc, "_OBJ_LANDENTRY::xWidth");
+static_assert(offsetof(_OBJ_LANDENTRY, yWidth) == 0x10, "_OBJ_LANDENTRY::yWidth");
+static_assert(offsetof(_OBJ_LANDENTRY, zWidth) == 0x14, "_OBJ_LANDENTRY::zWidth");
+static_assert(offsetof(_OBJ_LANDENTRY, pObject) == 0x18, "_OBJ_LANDENTRY::pObject");
+static_assert(offsetof(_OBJ_LANDENTRY, blockbit) == 0x1c, "_OBJ_LANDENTRY::blockbit");
+static_assert(offsetof(_OBJ_LANDENTRY, slAttribute) == 0x20, "_OBJ_LANDENTRY::slAttribute");
+
+struct _OBJ_LANDTABLE {
+    short ssCount;
+    short ssMotCount;
+    short ssAttribute;
+    short ssLoadFlag;
+    float fFarClipping;
+    struct _OBJ_LANDENTRY *pLandEntry;
+    struct _OBJ_MOTLANDENTRY *pMotLandEntry;
+    char *pPvmFileName;
+    struct NJS_TEXLIST *pTexList;
+    char *pBinaryFileName;
+    void *pLoadBinary;
+};
+static_assert(sizeof(_OBJ_LANDTABLE) == 0x24, "sizeof _OBJ_LANDTABLE");
+static_assert(offsetof(_OBJ_LANDTABLE, ssCount) == 0x0, "_OBJ_LANDTABLE::ssCount");
+static_assert(offsetof(_OBJ_LANDTABLE, ssMotCount) == 0x2, "_OBJ_LANDTABLE::ssMotCount");
+static_assert(offsetof(_OBJ_LANDTABLE, ssAttribute) == 0x4, "_OBJ_LANDTABLE::ssAttribute");
+static_assert(offsetof(_OBJ_LANDTABLE, ssLoadFlag) == 0x6, "_OBJ_LANDTABLE::ssLoadFlag");
+static_assert(offsetof(_OBJ_LANDTABLE, fFarClipping) == 0x8, "_OBJ_LANDTABLE::fFarClipping");
+static_assert(offsetof(_OBJ_LANDTABLE, pLandEntry) == 0xc, "_OBJ_LANDTABLE::pLandEntry");
+static_assert(offsetof(_OBJ_LANDTABLE, pMotLandEntry) == 0x10, "_OBJ_LANDTABLE::pMotLandEntry");
+static_assert(offsetof(_OBJ_LANDTABLE, pPvmFileName) == 0x14, "_OBJ_LANDTABLE::pPvmFileName");
+static_assert(offsetof(_OBJ_LANDTABLE, pTexList) == 0x18, "_OBJ_LANDTABLE::pTexList");
+static_assert(offsetof(_OBJ_LANDTABLE, pBinaryFileName) == 0x1c, "_OBJ_LANDTABLE::pBinaryFileName");
+static_assert(offsetof(_OBJ_LANDTABLE, pLoadBinary) == 0x20, "_OBJ_LANDTABLE::pLoadBinary");
+
+struct _OptionSelWk {
+    enum AdvaStatEnum Stat;
+    enum AdvaModeEnum PrevMode;
+    enum AdvaModeEnum NextMode;
+    float BaseZ;
+    float T;
+    unsigned long BaseCol;
+    enum OptionSelSbMdEnum SubMode;
+    enum OptionSelEnum SelMenu;
+    short Cnt;
+    long SpkAniAng;
+    unsigned char CdAniCnt;
+    unsigned char CdAniPat;
+    unsigned char MesSonicAniCnt;
+    unsigned char MesSonicAniPat;
+    unsigned char MesSetUpAniCnt;
+    unsigned char MesSetUpAniPat;
+    unsigned long CsrCol;
+    float CsrScale;
+    long CsrAniAng;
+    unsigned char CsrAlpha;
+    signed char speech;
+    unsigned char TvAniPat;
+    unsigned char LangAniPat;
+    unsigned char TvAniCnt;
+    unsigned char LangAniCnt;
+    unsigned char VibAniPat;
+    unsigned char VibAniCnt;
+    unsigned char SaveAniPat;
+    unsigned char SaveAniCnt;
+    struct OptCsrPrmT *OptCsrPrms;
+    unsigned long optcntmax;
+    float DeltaT;
+};
+static_assert(sizeof(_OptionSelWk) == 0x54, "sizeof _OptionSelWk");
+static_assert(offsetof(_OptionSelWk, Stat) == 0x0, "_OptionSelWk::Stat");
+static_assert(offsetof(_OptionSelWk, PrevMode) == 0x4, "_OptionSelWk::PrevMode");
+static_assert(offsetof(_OptionSelWk, NextMode) == 0x8, "_OptionSelWk::NextMode");
+static_assert(offsetof(_OptionSelWk, BaseZ) == 0xc, "_OptionSelWk::BaseZ");
+static_assert(offsetof(_OptionSelWk, T) == 0x10, "_OptionSelWk::T");
+static_assert(offsetof(_OptionSelWk, BaseCol) == 0x14, "_OptionSelWk::BaseCol");
+static_assert(offsetof(_OptionSelWk, SubMode) == 0x18, "_OptionSelWk::SubMode");
+static_assert(offsetof(_OptionSelWk, SelMenu) == 0x1c, "_OptionSelWk::SelMenu");
+static_assert(offsetof(_OptionSelWk, Cnt) == 0x20, "_OptionSelWk::Cnt");
+static_assert(offsetof(_OptionSelWk, SpkAniAng) == 0x24, "_OptionSelWk::SpkAniAng");
+static_assert(offsetof(_OptionSelWk, CdAniCnt) == 0x28, "_OptionSelWk::CdAniCnt");
+static_assert(offsetof(_OptionSelWk, CdAniPat) == 0x29, "_OptionSelWk::CdAniPat");
+static_assert(offsetof(_OptionSelWk, MesSonicAniCnt) == 0x2a, "_OptionSelWk::MesSonicAniCnt");
+static_assert(offsetof(_OptionSelWk, MesSonicAniPat) == 0x2b, "_OptionSelWk::MesSonicAniPat");
+static_assert(offsetof(_OptionSelWk, MesSetUpAniCnt) == 0x2c, "_OptionSelWk::MesSetUpAniCnt");
+static_assert(offsetof(_OptionSelWk, MesSetUpAniPat) == 0x2d, "_OptionSelWk::MesSetUpAniPat");
+static_assert(offsetof(_OptionSelWk, CsrCol) == 0x30, "_OptionSelWk::CsrCol");
+static_assert(offsetof(_OptionSelWk, CsrScale) == 0x34, "_OptionSelWk::CsrScale");
+static_assert(offsetof(_OptionSelWk, CsrAniAng) == 0x38, "_OptionSelWk::CsrAniAng");
+static_assert(offsetof(_OptionSelWk, CsrAlpha) == 0x3c, "_OptionSelWk::CsrAlpha");
+static_assert(offsetof(_OptionSelWk, speech) == 0x3d, "_OptionSelWk::speech");
+static_assert(offsetof(_OptionSelWk, TvAniPat) == 0x3e, "_OptionSelWk::TvAniPat");
+static_assert(offsetof(_OptionSelWk, LangAniPat) == 0x3f, "_OptionSelWk::LangAniPat");
+static_assert(offsetof(_OptionSelWk, TvAniCnt) == 0x40, "_OptionSelWk::TvAniCnt");
+static_assert(offsetof(_OptionSelWk, LangAniCnt) == 0x41, "_OptionSelWk::LangAniCnt");
+static_assert(offsetof(_OptionSelWk, VibAniPat) == 0x42, "_OptionSelWk::VibAniPat");
+static_assert(offsetof(_OptionSelWk, VibAniCnt) == 0x43, "_OptionSelWk::VibAniCnt");
+static_assert(offsetof(_OptionSelWk, SaveAniPat) == 0x44, "_OptionSelWk::SaveAniPat");
+static_assert(offsetof(_OptionSelWk, SaveAniCnt) == 0x45, "_OptionSelWk::SaveAniCnt");
+static_assert(offsetof(_OptionSelWk, OptCsrPrms) == 0x48, "_OptionSelWk::OptCsrPrms");
+static_assert(offsetof(_OptionSelWk, optcntmax) == 0x4c, "_OptionSelWk::optcntmax");
+static_assert(offsetof(_OptionSelWk, DeltaT) == 0x50, "_OptionSelWk::DeltaT");
+
+struct _SC_NUMBERS {
+    unsigned char type;
+    unsigned char attr;
+    short rot;
+    unsigned long max;
+    unsigned long value;
+    struct NJS_POINT3 pos;
+    float scl;
+    unsigned long color;
+};
+static_assert(sizeof(_SC_NUMBERS) == 0x20, "sizeof _SC_NUMBERS");
+static_assert(offsetof(_SC_NUMBERS, type) == 0x0, "_SC_NUMBERS::type");
+static_assert(offsetof(_SC_NUMBERS, attr) == 0x1, "_SC_NUMBERS::attr");
+static_assert(offsetof(_SC_NUMBERS, rot) == 0x2, "_SC_NUMBERS::rot");
+static_assert(offsetof(_SC_NUMBERS, max) == 0x4, "_SC_NUMBERS::max");
+static_assert(offsetof(_SC_NUMBERS, value) == 0x8, "_SC_NUMBERS::value");
+static_assert(offsetof(_SC_NUMBERS, pos) == 0xc, "_SC_NUMBERS::pos");
+static_assert(offsetof(_SC_NUMBERS, scl) == 0x18, "_SC_NUMBERS::scl");
+static_assert(offsetof(_SC_NUMBERS, color) == 0x1c, "_SC_NUMBERS::color");
+
+struct ___stcClip {
+    float f32Near;
+    float f32Far;
+};
+static_assert(sizeof(___stcClip) == 0x8, "sizeof ___stcClip");
+static_assert(offsetof(___stcClip, f32Near) == 0x0, "___stcClip::f32Near");
+static_assert(offsetof(___stcClip, f32Far) == 0x4, "___stcClip::f32Far");
+
+struct ___stcFog {
+    float f32StartZ;
+    float f32EndZ;
+    unsigned long Col;
+    unsigned char u8Enable;
+};
+static_assert(sizeof(___stcFog) == 0x10, "sizeof ___stcFog");
+static_assert(offsetof(___stcFog, f32StartZ) == 0x0, "___stcFog::f32StartZ");
+static_assert(offsetof(___stcFog, f32EndZ) == 0x4, "___stcFog::f32EndZ");
+static_assert(offsetof(___stcFog, Col) == 0x8, "___stcFog::Col");
+static_assert(offsetof(___stcFog, u8Enable) == 0xc, "___stcFog::u8Enable");
 
 // Offsets not checked against the code yet.
 struct al_action_ctrl {

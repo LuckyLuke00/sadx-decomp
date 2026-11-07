@@ -2,17 +2,6 @@
 struct NJS_POINT3;
 extern struct obj DAT_05cd29bc[4];
 void FUN_005e7800(int param_1);
-struct _SC_NUMBERS
-{
-	unsigned char type;
-	unsigned char attr;
-	short rot;
-	unsigned long max;
-	unsigned long value;
-	NJS_POINT3 pos;
-	float scl;
-	unsigned long color;
-};
 struct taskwk;
 extern "C" int rand(void);
 void dispDistanceNum(float dist);

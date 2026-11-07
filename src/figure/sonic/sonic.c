@@ -540,8 +540,8 @@ void ManageSonicLightSpinCharge(struct task *tp)
 // FUNCTION: SADX 0x0054ed00
 void ManageSonicLightSpinChargeExit(struct task *tp)
 {
-	struct OBJ_EDITENTRY *local_8;
-	local_8 = (struct OBJ_EDITENTRY *)tp->awp->work.ptr[1];
+	struct _OBJ_EDITENTRY *local_8;
+	local_8 = (struct _OBJ_EDITENTRY *)tp->awp->work.ptr[1];
 	if (DAT_05baf368[0] != 0)
 	{
 		*(float *)((char *)local_8 + 0xac) = tp->awp->work.f[2];
