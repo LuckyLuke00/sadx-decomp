@@ -162,3 +162,4 @@ address,from,to,reason
 0x004d0a20,100.00%,98.25%,"the original frame has 12 more bytes whose source the code cannot show; the unused locals and inline marks that filled them are gone, and a DIFF: frame note says so"
 0x00706a20,100.00%,75.78%,"the original has the body of death at some call sites; the inline mark that made it is gone, since a compile flag gives the same code, and a DIFF: code note says so"
 0x00810080,100.00%,59.02%,"the original has the body of death at some call sites; the inline mark that made it is gone, since a compile flag gives the same code, and a DIFF: code note says so"
+0x004b5ad0,100.00%,97.17%,"matched only through reading the std::vector members through a char *** pun; the plain vector code orders three stack slots differently, and a DIFF: frame note says so"

@@ -5837,15 +5837,6 @@ int DAT_05b40a48;
 // GLOBAL: SADX 0x05b40a4c
 struct NJS_ARGB DAT_05b40a4c;
 
-// GLOBAL: SADX 0x05b422d8
-char **DAT_05b422d8;
-
-// GLOBAL: SADX 0x05b422dc
-char **DAT_05b422dc;
-
-// GLOBAL: SADX 0x05b422e0
-char **DAT_05b422e0;
-
 // GLOBAL: SADX 0x05b423fc
 unsigned char DAT_05b423fc;
 

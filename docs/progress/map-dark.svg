@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1432" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,307 of 16,485 game functions done (38.25%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,306 of 16,485 game functions done (38.25%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="590.8,1186.5 597.2,1186.5 598.9,1188 600,1189.6 594,1196.5 588,1189.6 589.1,1188" fill="#4e32f3"/>
 <polygon points="590.8,1186.5 597.2,1186.5 598.9,1188 600,1189.6 588,1189.6 589.1,1188" fill="#ffffff" fill-opacity="0.4"/>
@@ -6616,8 +6616,8 @@
 <rect x="175" y="217" width="6" height="6" fill="#b5b58a"><title>0x0092b1b0 Magic::Base::IniFile::FUN_0092b1b0: 67.8%</title></rect>
 <rect x="112" y="224" width="6" height="6" fill="#ffd700"><title>0x0092c9e0 FUN_0092c9e0: 100%</title></rect>
 </g>
-<text x="19" y="579" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Not sorted yet <tspan font-weight="400" fill="#8b949e">1%</tspan></text>
-<rect x="20" y="587" width="302" height="378" rx="3" fill="#21262d" stroke="#30363d"><title>Not sorted yet: 110 of 1,982 functions done</title></rect>
+<text x="19" y="579" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Not sorted yet <tspan font-weight="400" fill="#8b949e">0%</tspan></text>
+<rect x="20" y="587" width="302" height="378" rx="3" fill="#21262d" stroke="#30363d"><title>Not sorted yet: 109 of 1,982 functions done</title></rect>
 <g transform="translate(23,590)">
 <rect y="0" width="294" height="329" fill="url(#todo)"/>
 <rect y="329" width="56" height="7" fill="url(#todo)"/>
@@ -6649,8 +6649,8 @@
 <rect x="210" y="77" width="6" height="6" fill="#f1d130"><title>0x004b23e0 FUN_004b23e0: 94.1%</title></rect>
 <rect x="224" y="77" width="6" height="6" fill="#ffd700"><title>0x004b2860 FUN_004b2860: 100%</title></rect>
 <rect x="273" y="77" width="6" height="6" fill="#ffd700"><title>0x004b3210 FUN_004b3210: 100%</title></rect>
-<rect x="21" y="84" width="6" height="6" fill="#ffd700"><title>0x004b5ad0 FUN_004b5ad0: 100%</title></rect>
-<rect x="28" y="84" width="6" height="6" fill="#e5cb55"><title>0x004b5e70 FUN_004b5e70: 88.6%</title></rect>
+<rect x="21" y="84" width="6" height="6" fill="#f8d417"><title>0x004b5ad0 FUN_004b5ad0: 97.2%</title></rect>
+<rect x="28" y="84" width="6" height="6" fill="#e8cd51"><title>0x004b5e70 FUN_004b5e70: 90.0%</title></rect>
 <rect x="42" y="84" width="6" height="6" fill="#ffd700"><title>0x004b6460 FUN_004b6460: 100%</title></rect>
 <rect x="49" y="84" width="6" height="6" fill="#ffd700"><title>0x004b6520 FUN_004b6520: 100%</title></rect>
 <rect x="56" y="84" width="6" height="6" fill="#ffd700"><title>0x004b6590 std::vector&lt;FUN_004b6590_0 *,std::allocator&lt;FUN_004b6590_0 *&gt; &gt;::clear: 100%</title></rect>
