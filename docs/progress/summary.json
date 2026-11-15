@@ -65446,9 +65446,9 @@
   {
    "address": "0x00878480",
    "name": "ExecCM",
-   "accuracy": 0.0392156862745098,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -65958,17 +65958,17 @@
   {
    "address": "0x0087ef00",
    "name": "ObjectCasinoTutuBDraw",
-   "accuracy": 0.03225806451612903,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x0087efc0",
    "name": "ObjectCasinoTutuCDraw",
-   "accuracy": 0.03225806451612903,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -66590,9 +66590,9 @@
   {
    "address": "0x00886240",
    "name": "cNormalLR",
-   "accuracy": 0.043478260869565216,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -68036,6 +68036,14 @@
    "library": false
   },
   {
+   "address": "0x00898010",
+   "name": "BrokenPiece",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00898630",
    "name": "ShutterPartsDisplayer(struct task *)",
    "accuracy": 1.0,
@@ -68518,9 +68526,9 @@
   {
    "address": "0x008aac00",
    "name": "DispATask(12)",
-   "accuracy": 0.03389830508474576,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -102234,6 +102242,20 @@
    "library": false
   },
   {
+   "address": "0x0478749c",
+   "name": "object_csn_obj_tutu_b_obj_tutu_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04787a9c",
+   "name": "object_csn_obj_tutu_c_obj_tutu_c",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0478bdf8",
    "name": "object_cas_obj_cris_cris",
    "size": 52,
@@ -103490,6 +103512,20 @@
    "address": "0x04aa1cc0",
    "name": "model_hasi_enhasi_enhasi",
    "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ab0484",
+   "name": "object_gt_bgatecente_bgate02",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ab0c4c",
+   "name": "object_gt_bgatecente_bgate01",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -105169,5 +105205,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "698baba8974feeea7e0eb8b1c6c0d27e639110d8d28c52493684e35b1755b326"
+ "inputs_sha256": "0b0125c0dac0e2afe5cbca8f55f307e2fab76a1bb1e6cc5e765f71ff9d6197c6"
 }

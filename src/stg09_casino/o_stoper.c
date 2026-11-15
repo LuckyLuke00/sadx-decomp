@@ -93,9 +93,33 @@ void DispLR(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00886240
+// FUNCTION: SADX 0x00886240
 void cNormalLR(struct task *ctp)
 {
+	struct taskwk *var1 = ctp->twp;
+	struct colliwk *var2 = var1->cwp;
+	if ((var2->flag & 1) != 0)
+	{
+		if ((var1->flag & 0x8000) == 0)
+		{
+			if ((DAT_060dbcb0 & 0x100) != 0)
+			{
+				DAT_060dbcb0 &= 0xfffffeff;
+				DAT_060dbca7 = 0x80;
+			}
+			else
+			{
+				DAT_060dbcb0 |= 0x100;
+			}
+			var1->flag |= 0x8000;
+		}
+	}
+	else
+	{
+		var1->flag &= 0x7fff;
+	}
+	EntryColliList(var1);
+	ObjectSetupInput(var1, 0);
 }
 
 // STUB: SADX 0x008862e0

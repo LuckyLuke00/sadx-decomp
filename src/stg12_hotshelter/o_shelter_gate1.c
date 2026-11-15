@@ -6,9 +6,30 @@ static struct CCL_INFO ColliInfo[2];
 static void ExecATask(struct task *tp);
 static void DispATask(struct task *tp);
 
-// STUB: SADX 0x008aac00
+// FUNCTION: SADX 0x008aac00
 static void DispATask(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	float var2;
+
+	var2 = var1->counter.f;
+	if (DAT_05b9d838)
+	{
+		return;
+	}
+	SetObjectTexture();
+	njPushMatrix(0);
+	njTranslateV(0, &var1->pos);
+	if (var1->ang.y)
+	{
+		njRotateY(0, (Uint16)var1->ang.y);
+	}
+	FUN_0067d830(0, 0.0f, 0.0f, var2);
+	late_DrawObjectClipEx((struct obj *)&object_gt_bgatecente_bgate02, 0, 1.0f);
+	var2 = var2 * -2.0;
+	FUN_0067d830(0, 0.0f, 0.0f, var2);
+	late_DrawObjectClipEx((struct obj *)&object_gt_bgatecente_bgate01, 0, 1.0f);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x008aacd0

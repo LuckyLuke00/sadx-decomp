@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1426" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,370 of 16,480 game functions done (38.65%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,376 of 16,480 game functions done (38.68%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="589.8,1189.5 596.2,1189.5 597.9,1191 599,1192.6 593,1199.5 587,1192.6 588.1,1191" fill="#4e32f3"/>
 <polygon points="589.8,1189.5 596.2,1189.5 597.9,1191 599,1192.6 587,1192.6 588.1,1191" fill="#ffffff" fill-opacity="0.4"/>
@@ -485,8 +485,8 @@
 <rect x="98" y="56" width="6" height="6" fill="#b07d00"><title>0x00811360 StartCameraWindy_TgtDeath: 100%</title></rect>
 <rect x="105" y="56" width="6" height="6" fill="#b07d00"><title>0x00837700 death(3): 100%</title></rect>
 </g>
-<rect x="20" y="87" width="200" height="203" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Casinopolis: 230 of 633 functions done</title></rect>
-<text x="23" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Casinopolis <tspan font-weight="400" fill="#59636e">12%</tspan></text>
+<rect x="20" y="87" width="200" height="203" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Casinopolis: 234 of 633 functions done</title></rect>
+<text x="23" y="101" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Casinopolis <tspan font-weight="400" fill="#59636e">13%</tspan></text>
 <g transform="translate(23,105)">
 <rect y="0" width="189" height="161" fill="url(#todo)"/>
 <rect y="161" width="84" height="7" fill="url(#todo)"/>
@@ -587,6 +587,7 @@
 <rect x="49" y="63" width="6" height="6" fill="#b07d00"><title>0x00878120 ObjectCasinoSlotArmDraw: 100%</title></rect>
 <rect x="63" y="63" width="6" height="6" fill="#b07d00"><title>0x00878340 ObjectCasinoSlotArm: 100%</title></rect>
 <rect x="70" y="63" width="6" height="6" fill="#b07d00"><title>0x008783b0 DispMot3: 100%</title></rect>
+<rect x="77" y="63" width="6" height="6" fill="#b07d00"><title>0x00878480 ExecCM: 100%</title></rect>
 <rect x="84" y="63" width="6" height="6" fill="#b07d00"><title>0x00878510 FUN_00878510: 100%</title></rect>
 <rect x="91" y="63" width="6" height="6" fill="#b07d00"><title>0x00878570 FUN_00878570: 100%</title></rect>
 <rect x="98" y="63" width="6" height="6" fill="#b07d00"><title>0x008785d0 FUN_008785d0: 100%</title></rect>
@@ -625,6 +626,8 @@
 <rect x="154" y="84" width="6" height="6" fill="#b07d00"><title>0x0087e4e0 ObjectCasino6SlotEnd: 100%</title></rect>
 <rect x="182" y="84" width="6" height="6" fill="#b07d00"><title>0x0087e960 ObjectCasino6Slot: 100%</title></rect>
 <rect x="21" y="91" width="6" height="6" fill="#b07d00"><title>0x0087ee30 ObjectCasinoTutuADraw: 100%</title></rect>
+<rect x="28" y="91" width="6" height="6" fill="#b07d00"><title>0x0087ef00 ObjectCasinoTutuBDraw: 100%</title></rect>
+<rect x="35" y="91" width="6" height="6" fill="#b07d00"><title>0x0087efc0 ObjectCasinoTutuCDraw: 100%</title></rect>
 <rect x="70" y="91" width="6" height="6" fill="#b07d00"><title>0x0087f590 ObjectCasinoTutuA: 100%</title></rect>
 <rect x="91" y="91" width="6" height="6" fill="#b07d00"><title>0x0087f660 Disp(45): 100%</title></rect>
 <rect x="105" y="91" width="6" height="6" fill="#b07d00"><title>0x0087f770 ObjectBanjuDoor: 100%</title></rect>
@@ -675,6 +678,7 @@
 <rect x="49" y="126" width="6" height="6" fill="#b07d00"><title>0x00886060 Exit(6): 100%</title></rect>
 <rect x="56" y="126" width="6" height="6" fill="#b07d00"><title>0x00886090 DispC: 100%</title></rect>
 <rect x="63" y="126" width="6" height="6" fill="#b07d00"><title>0x00886150 DispLR: 100%</title></rect>
+<rect x="70" y="126" width="6" height="6" fill="#b07d00"><title>0x00886240 cNormalLR: 100%</title></rect>
 <rect x="84" y="126" width="6" height="6" fill="#b07d00"><title>0x008863a0 NormalL(2): 100%</title></rect>
 <rect x="91" y="126" width="6" height="6" fill="#b07d00"><title>0x008864a0 NormalR(struct task *): 100%</title></rect>
 <rect x="105" y="126" width="6" height="6" fill="#b07d00"><title>0x008865f0 ObjectStoperL: 100%</title></rect>
@@ -1248,7 +1252,7 @@
 <rect x="112" y="56" width="6" height="6" fill="#b07d00"><title>0x008e1ab0 FUN_008e1ab0: 100%</title></rect>
 <rect x="119" y="56" width="6" height="6" fill="#b07d00"><title>0x008e1b50 FUN_008e1b50: 100%</title></rect>
 </g>
-<rect x="20" y="434" width="200" height="128" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Final Egg: 70 of 364 functions done</title></rect>
+<rect x="20" y="434" width="200" height="128" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Final Egg: 71 of 364 functions done</title></rect>
 <text x="23" y="448" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Final Egg <tspan font-weight="400" fill="#59636e">8%</tspan></text>
 <g transform="translate(23,452)">
 <rect y="0" width="189" height="91" fill="url(#todo)"/>
@@ -1312,6 +1316,7 @@
 <rect x="119" y="49" width="6" height="6" fill="#b07d00"><title>0x008975c0 FUN_008975c0: 100%</title></rect>
 <rect x="147" y="49" width="6" height="6" fill="#b07d00"><title>0x00897b70 DrumPartsDisplayer: 100%</title></rect>
 <rect x="175" y="49" width="6" height="6" fill="#b07d00"><title>0x00897eb0 DrumDisplayer: 100%</title></rect>
+<rect x="0" y="56" width="6" height="6" fill="#b07d00"><title>0x00898010 BrokenPiece: 100%</title></rect>
 <rect x="28" y="56" width="6" height="6" fill="#b07d00"><title>0x00898630 ShutterPartsDisplayer(struct task *): 100%</title></rect>
 <rect x="42" y="56" width="6" height="6" fill="#b07d00"><title>0x00898800 BrokenPieceDisplayer(struct task *): 100%</title></rect>
 <rect x="126" y="77" width="6" height="6" fill="#b07d00"><title>0x0089ddc0 SideTaskExec: 100%</title></rect>
@@ -1324,7 +1329,7 @@
 <rect x="77" y="91" width="6" height="6" fill="#b07d00"><title>0x008a2130 FEGG_TaskCheckGround: 100%</title></rect>
 <rect x="84" y="91" width="6" height="6" fill="#b07d00"><title>0x008a2170 FEGG_SetDynamicsWork: 100%</title></rect>
 </g>
-<rect x="20" y="292" width="200" height="140" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Hot Shelter: 110 of 399 functions done</title></rect>
+<rect x="20" y="292" width="200" height="140" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Hot Shelter: 111 of 399 functions done</title></rect>
 <text x="23" y="306" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Hot Shelter <tspan font-weight="400" fill="#59636e">16%</tspan></text>
 <g transform="translate(23,310)">
 <rect y="0" width="189" height="98" fill="url(#todo)"/>
@@ -1365,6 +1370,7 @@
 <rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x008a73d0 ObjShelterSyoumei: 100%</title></rect>
 <rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x008a9eb0 Disp2Task(struct task *): 100%</title></rect>
 <rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x008a9f20 Disp3Task: 100%</title></rect>
+<rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x008aac00 DispATask(12): 100%</title></rect>
 <rect x="14" y="49" width="6" height="6" fill="#b07d00"><title>0x008aaf20 ObjShelterGate1: 100%</title></rect>
 <rect x="126" y="49" width="6" height="6" fill="#b07d00"><title>0x008ab900 HahenDisp: 100%</title></rect>
 <rect x="182" y="49" width="6" height="6" fill="#b07d00"><title>0x008abd90 DispATask(13): 100%</title></rect>

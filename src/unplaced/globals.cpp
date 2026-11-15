@@ -4100,6 +4100,12 @@ struct obj *DAT_04786eb0;
 // GLOBAL: SADX 0x04786ed8
 struct obj *DAT_04786ed8;
 
+// GLOBAL: SADX 0x0478749c
+struct obj object_csn_obj_tutu_b_obj_tutu_b[1];
+
+// GLOBAL: SADX 0x04787a9c
+struct obj object_csn_obj_tutu_c_obj_tutu_c[1];
+
 // GLOBAL: SADX 0x0478bdf8
 struct obj object_cas_obj_cris_cris;
 
@@ -4528,6 +4534,12 @@ struct NJS_MODEL model_hasi_enhasi_bmerge1[1];
 
 // GLOBAL: SADX 0x04aa1cc0
 struct NJS_MODEL model_hasi_enhasi_enhasi[1];
+
+// GLOBAL: SADX 0x04ab0484
+struct obj object_gt_bgatecente_bgate02[1];
+
+// GLOBAL: SADX 0x04ab0c4c
+struct obj object_gt_bgatecente_bgate01[1];
 
 // GLOBAL: SADX 0x04ac3ca0
 struct obj object_breakkabe_br_part_br_part[1];

@@ -38,9 +38,25 @@ void DispMot3(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00878480
+// FUNCTION: SADX 0x00878480
 void ExecCM(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	if (CheckRangeOutWithR(tp, 640010.0f) == 0)
+	{
+		if (var1->counter.f >= (float)(unsigned int)(*(int *)(*(int *)(var1->timer.l + 4) + 4) - 1))
+		{
+			var1->counter.f = 0.0f;
+		}
+		DispMot3(tp);
+		if (FUN_004c39c0(tp) != 0)
+		{
+			njPrintC(0x120014, "Mot Pitch");
+			return;
+		}
+		EntryColliList(var1);
+		var1->counter.f += *(float *)((char *)var1 + 0x30);
+	}
 }
 
 // FUNCTION: SADX 0x00878510
