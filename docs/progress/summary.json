@@ -56276,11 +56276,19 @@
    "library": false
   },
   {
-   "address": "0x007e68b0",
-   "name": "CartTimeDisplayTimeWithColor",
-   "accuracy": 0.13333333333333333,
+   "address": "0x007e67b0",
+   "name": "CartTimeDisplayTime",
+   "accuracy": 0.029411764705882353,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007e68b0",
+   "name": "CartTimeDisplayTimeWithColor",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -56574,9 +56582,9 @@
   {
    "address": "0x007e8910",
    "name": "SandScoreSetScoreTask",
-   "accuracy": 0.2857142857142857,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -56902,9 +56910,9 @@
   {
    "address": "0x007ecbc0",
    "name": "Zako2GunDraw",
-   "accuracy": 0.028985507246376812,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -90174,6 +90182,13 @@
    "library": false
   },
   {
+   "address": "0x00a0a288",
+   "name": "DAT_00a0a288",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00a0a32c",
    "name": "DAT_00a0a32c",
    "size": 24,
@@ -90260,6 +90275,20 @@
   {
    "address": "0x00a0aa60",
    "name": "CactusTaskInfo",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a0ac90",
+   "name": "DAT_00a0ac90",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a0aca0",
+   "name": "DAT_00a0aca0",
    "size": 24,
    "match": false,
    "library": false
@@ -99204,6 +99233,13 @@
    "library": false
   },
   {
+   "address": "0x0371e230",
+   "name": "object_stair_gunpod_gunpod",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0375bcf4",
    "name": "action_shot_bf_s_bodya",
    "size": 8,
@@ -105205,5 +105241,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0b0125c0dac0e2afe5cbca8f55f307e2fab76a1bb1e6cc5e765f71ff9d6197c6"
+ "inputs_sha256": "628cdaa419e10e3df5b3ebfaeca492b07c67da5cdc1dfe7e74c115b77969e472"
 }

@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct obj object_stair_gunpod_gunpod[];
 
 #pragma optimize("", off)
 // STUB: SADX 0x007ecac0
@@ -7,12 +8,28 @@ void DirectionToPlayer(struct taskwk *twp)
 }
 #pragma optimize("", on)
 
-#pragma optimize("", off)
-// STUB: SADX 0x007ecbc0
+// FUNCTION: SADX 0x007ecbc0
 void Zako2GunDraw(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct taskwk *var2 = tp->ptp->twp;
+	if (DAT_05b9d838 == 0)
+	{
+		___njFogDisable();
+		njPushMatrix(NULL);
+		FUN_0067d830(NULL, var2->pos.x, var2->pos.y, var2->pos.z);
+		njRotateXYZ(NULL, var2->ang.x, var2->ang.y, var2->ang.z);
+		FUN_0067d2d0(NULL, 2.0f, 2.0f, 2.0f);
+		FUN_0067d830(NULL, 0.0f, -5.014568f, -1.932182f);
+		if (var1->ang.y != 0)
+		{
+			njRotateY(NULL, (Uint16)var1->ang.y);
+		}
+		___njSetTexture(&texlist_shooting0);
+		late_DrawObjectEx(&object_stair_gunpod_gunpod[0], 4);
+		njPopMatrix(1);
+	}
 }
-#pragma optimize("", on)
 
 // FUNCTION: SADX 0x007ecca0
 void Zako2GunDead(struct task *tp)

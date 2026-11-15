@@ -3085,6 +3085,7 @@ long CartRaceInitTime();
 struct task *CartRaceSetManageTask();
 void FUN_007e5960(struct task *);
 void CartInitLetter();
+void CartTimeDisplayTime(long time);
 void effectSand(struct sp_task *task_p, struct sp_link *link_p);
 struct task *SandObjSetChildTask(const struct TaskInfo *info_p, void *param_p);
 int StageEventCheck();

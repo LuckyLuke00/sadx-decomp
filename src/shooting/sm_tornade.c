@@ -1,4 +1,6 @@
 #include "decls.h"
+extern long action_button;
+extern long jump_button;
 extern int DAT_060ce3fc;
 
 // FUNCTION: SADX 0x007ea050

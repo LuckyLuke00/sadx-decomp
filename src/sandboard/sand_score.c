@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct TaskInfo DAT_00a0aca0;
 static void dispScore(struct task *task_p);
 
 // STUB: SADX 0x007e85a0
@@ -45,8 +46,8 @@ void execScore(struct task *task_p)
 	dispScore(task_p);
 }
 
-// STUB: SADX 0x007e8910
+// FUNCTION: SADX 0x007e8910
 struct task *SandScoreSetScoreTask()
 {
-	return (struct task *)0;
+	return SandObjSetChildTask(&DAT_00a0aca0, NULL);
 }

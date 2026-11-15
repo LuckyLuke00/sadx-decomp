@@ -248,6 +248,9 @@ struct TaskInfo DAT_00a09f08;
 // GLOBAL: SADX 0x00a09fb0
 struct ActionParam DAT_00a09fb0;
 
+// GLOBAL: SADX 0x00a0a288
+struct NJS_ARGB DAT_00a0a288;
+
 // GLOBAL: SADX 0x00a0a32c
 struct TaskInfo DAT_00a0a32c;
 
@@ -271,6 +274,12 @@ struct ActionParam DAT_00a0a9bc;
 
 // GLOBAL: SADX 0x00a0aa18
 struct ActionParam DAT_00a0aa18;
+
+// GLOBAL: SADX 0x00a0ac90
+struct NJS_ARGB DAT_00a0ac90;
+
+// GLOBAL: SADX 0x00a0aca0
+struct TaskInfo DAT_00a0aca0;
 
 // GLOBAL: SADX 0x00a0c8f0
 struct TaskInfo RockyHeadTaskInfo;
@@ -2998,6 +3007,9 @@ struct NJS_ACTION action_stene_s_renzako[1];
 
 // GLOBAL: SADX 0x0371aa9c
 struct NJS_ACTION action_stene_s_kibody[1];
+
+// GLOBAL: SADX 0x0371e230
+struct obj object_stair_gunpod_gunpod[1];
 
 // GLOBAL: SADX 0x0375bcf4
 struct NJS_ACTION action_shot_bf_s_bodya;

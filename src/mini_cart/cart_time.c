@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_ARGB DAT_00a0a288;
+extern struct NJS_ARGB DAT_00a0ac90;
 extern struct NJS_SPRITE DAT_03527f50;
 
 // STUB: SADX 0x007e6270
@@ -30,7 +32,13 @@ void CartTimeHistoryTime(signed char lap, long *subToal, long *bestSubTotal)
 {
 }
 
-// STUB: SADX 0x007e68b0
+// FUNCTION: SADX 0x007e68b0
 void CartTimeDisplayTimeWithColor(long time, long best)
 {
+	if (time < best)
+	{
+		___njSetConstantMaterial(&DAT_00a0a288);
+	}
+	CartTimeDisplayTime(time);
+	___njSetConstantMaterial(&DAT_00a0ac90);
 }

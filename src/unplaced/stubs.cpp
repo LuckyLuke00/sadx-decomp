@@ -3215,6 +3215,11 @@ void FUN_007e5960(struct task *)
 {
 }
 
+// STUB: SADX 0x007e67b0
+void CartTimeDisplayTime(long time)
+{
+}
+
 // STUB: SADX 0x007e98e0
 int StageEventCheck()
 {
