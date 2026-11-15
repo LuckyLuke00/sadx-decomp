@@ -329,10 +329,39 @@ long SonicCheckHoldObject(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	return (long)0;
 }
 
-// STUB: SADX 0x0054cc20
+// FUNCTION: SADX 0x0054cc20
 long SonicCheckPickObject(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	long local_8;
+
+	PAdjustHoldingPosition(twp, mwp, pwp);
+	if (pwp->mj.nframe >= 12.0f)
+	{
+		local_8 = PCheckHoldObject(twp);
+		if (local_8)
+		{
+			switch (PCheckColliAngle(twp, mwp))
+			{
+			case 4:
+				if ((local_8 & 0x200) != 0)
+				{
+					twp->mode = 0x17;
+					if (DAT_05bb00a9 == 0)
+					{
+						dsPlay_oneshot(0x4c8, 0, 0, 0);
+					}
+					pwp->htp = twp->cwp->hit_cwp->mytask;
+					pwp->htp->twp->flag |= 0x1000;
+					twp->flag |= 0x800;
+					twp->flag &= ~0x8;
+					return 1;
+				}
+				break;
+			}
+		}
+		FUN_00547070(twp, mwp, pwp);
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0054cd40

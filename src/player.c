@@ -68,9 +68,40 @@ void SetUpPlayerWork()
 	}
 }
 
-// STUB: SADX 0x004dad90
+// FUNCTION: SADX 0x004dad90
 void PDestruct(long num)
 {
+	struct taskwk *local_10;
+	struct motionwk2 *local_8g;
+	struct playerwk *local_cj;
+	local_10 = DAT_05baf368[num];
+	local_8g = (struct motionwk2 *)DAT_05ba3328[num];
+	local_cj = (struct playerwk *)DAT_05ba9348[num];
+	DAT_05baf388[num] = 0;
+	DAT_05baf368[num] = 0;
+	DAT_05ba3328[num] = 0;
+	DAT_05ba9348[num] = 0;
+	if (local_cj->cstsp != 0)
+	{
+		Free(local_cj->cstsp);
+		local_cj->cstsp = 0;
+	}
+	local_cj->mj.mtnmode = 0xe;
+	if (local_cj->mj.actwkptr != 0)
+	{
+		PSetMotion(&local_cj->mj);
+	}
+	local_cj->mj.jvmode = 2;
+	if (local_cj->mj.pljvptr != 0)
+	{
+		PJoinVertexes(local_10, local_8g, local_cj);
+	}
+	FUN_004f2630(local_cj);
+	if (local_8g->work.ptr != 0)
+	{
+		Free(local_8g->work.ptr);
+		local_8g->work.ptr = 0;
+	}
 }
 
 // STUB: SADX 0x004daeb0
@@ -255,9 +286,57 @@ void PGetAccelerationPushPull(struct taskwk *twp, struct motionwk2 *mwp, struct 
 {
 }
 
-// STUB: SADX 0x004df220
+// FUNCTION: SADX 0x004df220
 void PGetAccelerationFly(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	long local_20;
+	float accel;
+	struct NJS_POINT3 v;
+	v = mwp->acc;
+	if (twp->flag & 0x4000)
+	{
+		return;
+	}
+	v.x = DAT_05b3ebc8 * *(float *)((char *)pwp + 0x114) + v.x;
+	v.y = DAT_05b3ebcc * *(float *)((char *)pwp + 0x114) + v.y;
+	v.z = DAT_05b3ebd0 * *(float *)((char *)pwp + 0x114) + v.z;
+	PConvertVector_G2P(twp, &v);
+	v.x = *(float *)((char *)pwp + 0xec) * pwp->spd.x + v.x;
+	v.y = *(float *)((char *)pwp + 0xf4) * pwp->spd.y + v.y;
+	v.z = *(float *)((char *)pwp + 0xf8) * pwp->spd.z + v.z;
+	int local_1c;
+	local_1c = PCheckPower(twp, &local_20, &accel);
+	if (local_1c == 0)
+	{
+		accel = 0.0;
+		mwp->ang_aim.y = twp->ang.y;
+	}
+	else
+	{
+		long local_24;
+		local_24 = DiffAngle(twp->ang.y, local_20);
+		if (pwp->spd.x > *(float *)((char *)pwp + 0xc4) && local_24 > 0x6000)
+		{
+			accel = *(float *)((char *)pwp + 0xe8) * accel;
+		}
+		else if (local_24 > 0x1000)
+		{
+			mwp->ang_aim.y = local_20;
+			accel = 0.0;
+		}
+		else
+		{
+			mwp->ang_aim.y = local_20;
+			accel = accel * 0.10000000149011612;
+			if (pwp->equipment & 8)
+			{
+				accel = accel * 1.5;
+			}
+		}
+		PAdjustAngleY(twp, mwp, pwp, mwp->ang_aim.y);
+	}
+	v.x = v.x + accel;
+	pwp->acc = v;
 }
 
 // FUNCTION: SADX 0x004df400
@@ -578,9 +657,29 @@ void FUN_004e3420(struct task *param_1, struct NJS_POINT3 *param_2, struct taskw
 	FUN_004e2cb0(param_1, param_2, param_3);
 }
 
-// STUB: SADX 0x004e34b0
+// FUNCTION: SADX 0x004e34b0
 void PGetSpeedGliK(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
+	struct NJS_POINT3 v;
+	pwp->spd.x += pwp->acc.x;
+	pwp->spd.y += pwp->acc.y;
+	pwp->spd.z += pwp->acc.z;
+	if (pwp->spd.x < 1.5f)
+	{
+		if (pwp->spd.x < 0.0f)
+		{
+			pwp->spd.x = 0.0f;
+		}
+		pwp->spd.x += 0.15f;
+	}
+	if (pwp->spd.x > 3.5f)
+	{
+		pwp->spd.x = 3.5f;
+	}
+	v = pwp->spd;
+	PConvertVector_P2G(twp, &v);
+	mwp->spd = v;
+	FUN_004e2cb0((struct task *)twp, (struct NJS_POINT3 *)mwp, (struct taskwk *)pwp);
 }
 
 // FUNCTION: SADX 0x004e4110

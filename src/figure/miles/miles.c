@@ -338,10 +338,30 @@ long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
 	}
 }
 
-// STUB: SADX 0x0053b270
+// FUNCTION: SADX 0x0053b270
 long MilesCheckStartTAttack(struct taskwk *twp, struct playerwk *pwp)
 {
-	return (long)0;
+	struct PDS_PERIPHERAL *local_8;
+
+	if ((DAT_05b932e8[twp->counter.b[0]].press & action_button) != 0 && (twp->flag & 0x2000) == 0)
+	{
+		twp->mode = 0x14;
+		*(short *)((char *)pwp + 0x124) = 0x2b;
+		*(char *)((char *)twp + 0xe) = *(char *)((char *)twp + 0xe) | 2;
+		*(float *)((char *)pwp + 0x7c) = 0.0f;
+		*(float *)((char *)pwp + 0x80) = 0.0f;
+		*(float *)((char *)pwp + 0x84) = 0.0f;
+		*(float *)((char *)pwp + 0x88) = 0.0f;
+		*(float *)((char *)pwp + 0x8c) = 0.0f;
+		*(float *)((char *)pwp + 0x90) = 0.0f;
+		local_8 = (struct PDS_PERIPHERAL *)*(int *)((char *)DAT_06298ccc + 0x40);
+		local_8->release = 0;
+		local_8 = (struct PDS_PERIPHERAL *)*(int *)((char *)DAT_06298ccc + 0x44);
+		local_8->release = 0;
+		FUN_0053e4f0(twp, 0x305, 0);
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0053b850

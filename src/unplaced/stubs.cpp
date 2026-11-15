@@ -1465,6 +1465,11 @@ void PSetMotion(struct mtnjvwk *mjp)
 {
 }
 
+// STUB: SADX 0x004ee340
+void PJoinVertexes(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+{
+}
+
 // STUB: SADX 0x004ef250
 void PlayerFaceMotionExec(struct task *tp)
 {
@@ -1572,6 +1577,11 @@ void AmyChangeWaitingMotion(struct taskwk *twp, struct motionwk2 *mwp, struct pl
 
 // STUB: SADX 0x005206b0
 void AmyDirectAhead(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005216f0
+extern void AmyZanzoBody(struct task *)
 {
 }
 

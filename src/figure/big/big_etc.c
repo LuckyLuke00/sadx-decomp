@@ -39,10 +39,22 @@ void FUN_0058d6a0();
 extern void *DAT_05cd2980;
 void FUN_00592520(struct task *);
 
-// STUB: SADX 0x0058b9e0
+// FUNCTION: SADX 0x0058b9e0
 void *SetFishingCursorTask(struct task *tp)
 {
-	return (void *)0;
+	struct task *local_8;
+	local_8 = CreateElementalTask(0xb, 2, fishingCursorCtrl);
+	if (local_8 != 0)
+	{
+		local_8->twp->pos = tp->twp->pos;
+		local_8->twp->ang = tp->twp->ang;
+		local_8->awp->work.sw[4] = *(short *)((char *)tp->twp + 0x18);
+		local_8->awp->work.f[0] = 20.0f;
+		local_8->twp->pos.x = local_8->twp->pos.x + njCos(local_8->twp->ang.y) * local_8->awp->work.f[0];
+		local_8->twp->pos.y += 20.0;
+		local_8->twp->pos.z = local_8->twp->pos.z + njSin(local_8->twp->ang.y) * local_8->awp->work.f[0];
+	}
+	return local_8;
 }
 
 // STUB: SADX 0x0058baf0

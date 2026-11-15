@@ -289,10 +289,26 @@ long KnucklesCheckStartPunch(struct taskwk *twp, struct motionwk2 *mwp, struct p
 	return 0;
 }
 
-// STUB: SADX 0x0052bda0
+// FUNCTION: SADX 0x0052bda0
 long FUN_0052bda0(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3)
 {
-	return (long)0;
+	if (param_3->spd.x < *(float *)((char *)param_3 + 0xc4))
+	{
+		if (param_3->spd.x <= 0.0f)
+		{
+			FUN_00528530(param_1, param_2, param_3);
+		}
+		else
+		{
+			param_1->mode = 2;
+			*(short *)((char *)param_3 + 0x124) = 9;
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0052c320

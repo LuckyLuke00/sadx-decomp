@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct obj object_c0_chibiman[];
+extern signed char DAT_060dfd68;
+extern float DAT_060dfd70[48];
+extern float DAT_060dfe38[16];
 extern short DAT_060dfc80;
 extern "C" double atan2(double v, double u);
 extern struct task *DAT_060dfe30;
@@ -21,9 +25,28 @@ void DisplayChaosCrashSphere0(struct taskwk *twp, struct chaoswk *chwp)
 {
 }
 
-// STUB: SADX 0x008c86b0
+// FUNCTION: SADX 0x008c86b0
 void DisplayChaosCrashSphere(struct taskwk *twp, struct chaoswk *chwp, float param)
 {
+	int local_8;
+
+	for (local_8 = 0; local_8 < DAT_060dfd68; local_8++)
+	{
+		float local_c;
+		float local_10l;
+		float local_14;
+
+		local_c = chwp->sp_scale.x * DAT_060dfe38[local_8];
+		local_10l = chwp->sp_scale.y * DAT_060dfe38[local_8];
+		local_14 = param * chwp->sp_scale.x * 0.5f;
+		njPushMatrix(0);
+		FUN_0067d830(0, ((struct NJS_POINT3 *)DAT_060dfd70)[local_8].x * local_14, ((struct NJS_POINT3 *)DAT_060dfd70)[local_8].y, ((struct NJS_POINT3 *)DAT_060dfd70)[local_8].z * local_14);
+		FUN_0067d2d0(0, local_c, local_10l, local_c);
+		CHAOS_SetMeshMode(2);
+		CHAOS_DrawObject((struct obj *)&object_c0_chibiman);
+		CHAOS_SetMeshMode(0);
+		njPopMatrix(1);
+	}
 }
 
 // STUB: SADX 0x008c87c0

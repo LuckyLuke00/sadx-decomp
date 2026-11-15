@@ -19796,9 +19796,9 @@
   {
    "address": "0x004dad90",
    "name": "PDestruct",
-   "accuracy": 0.10526315789473684,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -19956,9 +19956,9 @@
   {
    "address": "0x004df220",
    "name": "PGetAccelerationFly",
-   "accuracy": 0.05263157894736842,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -20148,9 +20148,9 @@
   {
    "address": "0x004e34b0",
    "name": "PGetSpeedGliK",
-   "accuracy": 0.08602150537634409,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -20341,6 +20341,14 @@
    "address": "0x004ee220",
    "name": "PTerminateInterpolateMotion",
    "accuracy": 0.08695652173913043,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004ee340",
+   "name": "PJoinVertexes",
+   "accuracy": 0.008238928939237899,
    "effective": false,
    "stub": true,
    "library": false
@@ -23452,9 +23460,9 @@
   {
    "address": "0x0051b730",
    "name": "FUN_0051b730",
-   "accuracy": 0.20408163265306123,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23492,9 +23500,9 @@
   {
    "address": "0x0051c5f0",
    "name": "AmyCheckDamage",
-   "accuracy": 0.10869565217391304,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23596,9 +23604,9 @@
   {
    "address": "0x0051f240",
    "name": "AmyCheckStartHammer",
-   "accuracy": 0.20833333333333334,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23692,9 +23700,9 @@
   {
    "address": "0x00520f10",
    "name": "AmyERobApperChecker",
-   "accuracy": 0.11764705882352941,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -23748,7 +23756,15 @@
   {
    "address": "0x00521640",
    "name": "FUN_00521640",
-   "accuracy": 0.13333333333333333,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005216f0",
+   "name": "AmyZanzoBody",
+   "accuracy": 0.027491408934707903,
    "effective": false,
    "stub": true,
    "library": false
@@ -23916,9 +23932,9 @@
   {
    "address": "0x0052bda0",
    "name": "FUN_0052bda0",
-   "accuracy": 0.24390243902439024,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -24340,9 +24356,9 @@
   {
    "address": "0x0053b270",
    "name": "MilesCheckStartTAttack",
-   "accuracy": 0.14705882352941177,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -24716,9 +24732,9 @@
   {
    "address": "0x0054cc20",
    "name": "SonicCheckPickObject",
-   "accuracy": 0.10869565217391304,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -30172,9 +30188,9 @@
   {
    "address": "0x0058b9e0",
    "name": "SetFishingCursorTask",
-   "accuracy": 0.08602150537634409,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -70758,9 +70774,9 @@
   {
    "address": "0x008c86b0",
    "name": "DisplayChaosCrashSphere",
-   "accuracy": 0.09523809523809523,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -103523,6 +103539,13 @@
    "library": false
   },
   {
+   "address": "0x04c345a8",
+   "name": "object_c0_chibiman",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c37898",
    "name": "object_c0_balia_a_balia_a",
    "size": 52,
@@ -104890,5 +104913,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "2eca2177e49270baed9b9b8e9a8f7cfd66ced4c4c03bdb52a6b8f29e6638d56e"
+ "inputs_sha256": "6b88c522c7cce64831b119994f4ec7d08085b73431878550036b584e62259b49"
 }

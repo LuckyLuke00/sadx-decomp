@@ -1,4 +1,7 @@
 #include "decls.h"
+extern void AmyZanzoBody(struct task *tp);
+extern int DAT_05cc4f38;
+extern unsigned short DAT_05cc54ae;
 struct amyhndlstr *AmyHndlGetInfoStrP();
 extern struct PDS_PERIPHERAL DAT_05b932e8[8];
 extern long action_button;
@@ -25,10 +28,34 @@ void AmyDestruct(struct task *tp)
 	ReleasePlayersTexture(5);
 }
 
-// STUB: SADX 0x0051b730
+// FUNCTION: SADX 0x0051b730
 long FUN_0051b730(struct taskwk *param_1, int *param_2, float *param_3)
 {
-	return (long)0;
+	struct eventwk *var1;
+	int var2;
+	int var3;
+
+	var1 = param_1->ewp;
+	if (var1 != 0)
+	{
+		var3 = *(int *)((char *)var1 + 0x40);
+		var2 = *(int *)((char *)var1 + 0x44);
+		if (var3 != 0)
+		{
+			if (var2 != 0 && *(unsigned char *)(var3 + 1) != 0)
+			{
+				*param_2 = var3 + 4;
+				*param_3 = 0.0f;
+			}
+			else
+			{
+				*param_2 = var3 + 4;
+				*param_3 = *(float *)((char *)var1 + 0x3c);
+			}
+			return 1;
+		}
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x0051b7b0
@@ -58,10 +85,37 @@ long AmyCheckFlyingHammer(struct taskwk *twp, struct motionwk2 *mwp, struct play
 	return (long)0;
 }
 
-// STUB: SADX 0x0051c5f0
+// FUNCTION: SADX 0x0051c5f0
 long AmyCheckDamage(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (pwp != 0 && ((twp->flag & 4) != 0 || (pwp->attr & 0x10000) != 0))
+	{
+		if (twp->mode == 0x30)
+		{
+			return 0;
+		}
+		if (twp->mode == 0x11 || twp->mode == 0x12)
+		{
+			ADC_PutDrumCan(&twp->pos);
+		}
+		if (DAT_05b9d724 == 3 && DAT_05b9d744 == 1 && twp->mode == 0xd && *(unsigned short *)((char *)pwp + 0x124) == 0x20)
+		{
+			return 0;
+		}
+		twp->mode = 0xb;
+		*(unsigned short *)((char *)pwp + 0x124) = 0x18;
+		twp->flag = twp->flag & ~0x4;
+		*(float *)((char *)pwp + 0x3c) = *(float *)((char *)pwp + 0xb4);
+		*(float *)((char *)pwp + 0x38) = -*(float *)((char *)pwp + 0xc4);
+		twp->wtimer = 0x78;
+		VibConvergence(twp->counter.b[0], 7, 0x3b, 6);
+		PFaceChange(0, 8);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 // FUNCTION: SADX 0x0051c960
@@ -287,10 +341,26 @@ long FUN_0051f1f0(struct taskwk *param_1, int param_2, int param_3)
 	}
 }
 
-// STUB: SADX 0x0051f240
+// FUNCTION: SADX 0x0051f240
 long AmyCheckStartHammer(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
+	if (DAT_05b932e8[twp->counter.b[0]].press & action_button)
+	{
+		DAT_05cc54ae = 0x58;
+		pwp->spd.x = 0.0f;
+		pwp->spd.z = 0.0f;
+		*(char *)((char *)pwp + 0x7d) = 0;
+		DAT_05cc4f38 = 0;
+		twp->mode = 0x13;
+		*(short *)((char *)pwp + 0x124) = 0x55;
+		dsPlay_oneshot(0x508, 0, 0, 0);
+		if ((twp->flag & 0x20) != 0)
+		{
+			*(float *)((char *)pwp->cstsp + 0x7c) = 0.0f;
+		}
+		return 1;
+	}
+	return 0;
 }
 
 // STUB: SADX 0x0051f2e0
@@ -385,9 +455,26 @@ long Amy_Status(long plnmb)
 	return (long)0;
 }
 
-// STUB: SADX 0x00520f10
+// FUNCTION: SADX 0x00520f10
 void AmyERobApperChecker(struct task *tp)
 {
+	struct taskwk *local_8g;
+	struct taskwk *local_cg;
+
+	local_8g = DAT_05baf368[0];
+	if (local_8g == 0)
+	{
+		FreeTask(tp);
+		return;
+	}
+	local_cg = tp->twp;
+	if (njSqrt((local_8g->pos.x - local_cg->pos.x) * (local_8g->pos.x - local_cg->pos.x) +
+	          (local_8g->pos.y - local_cg->pos.y) * (local_8g->pos.y - local_cg->pos.y) +
+	          (local_8g->pos.z - local_cg->pos.z) * (local_8g->pos.z - local_cg->pos.z)) < local_cg->value.f)
+	{
+		ERobByenara();
+		FreeTask(tp);
+	}
 }
 
 // STUB: SADX 0x00520fd0
@@ -452,9 +539,21 @@ long AmyBlindEntry()
 	return 1;
 }
 
-// STUB: SADX 0x00521640
-void FUN_00521640(struct task *param_1, struct taskwk *param_2, struct motionwk *param_3)
+// FUNCTION: SADX 0x00521640
+void FUN_00521640(struct taskwk *param_1, struct motionwk *param_2)
 {
+	struct task *local_8;
+
+	local_8 = CreateElementalTask(2, 6, AmyZanzoBody);
+	if (local_8 != NULL)
+	{
+		local_8->twp->pos = param_1->pos;
+		local_8->twp->ang = param_1->ang;
+		local_8->twp->wtimer = *(short *)((char *)param_2 + 0x124);
+		local_8->twp->counter.f = *(float *)((char *)param_2 + 0x130);
+		local_8->twp->value.f = *(float *)((char *)param_2 + 0x110);
+		local_8->twp->timer.f = *(float *)((char *)param_2 + 0x98);
+	}
 }
 
 // FUNCTION: SADX 0x00521a60

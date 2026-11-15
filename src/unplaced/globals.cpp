@@ -4565,6 +4565,9 @@ struct NJS_SPRITE sprite_c2_brain;
 // GLOBAL: SADX 0x04c33554
 struct obj object_c0_manju_c0_manju[1];
 
+// GLOBAL: SADX 0x04c345a8
+struct obj object_c0_chibiman[1];
+
 // GLOBAL: SADX 0x04c37898
 struct obj object_c0_balia_a_balia_a[1];
 
@@ -7051,6 +7054,12 @@ void *DAT_05cc43a4;
 
 // GLOBAL: SADX 0x05cc44b8
 unsigned char DAT_05cc44b8;
+
+// GLOBAL: SADX 0x05cc4f38
+int DAT_05cc4f38;
+
+// GLOBAL: SADX 0x05cc54ae
+unsigned short DAT_05cc54ae;
 
 // GLOBAL: SADX 0x05cc603c
 int DAT_05cc603c;
@@ -9983,8 +9992,17 @@ float DAT_060dfb58;
 // GLOBAL: SADX 0x060dfc80
 short DAT_060dfc80;
 
+// GLOBAL: SADX 0x060dfd68
+signed char DAT_060dfd68;
+
+// GLOBAL: SADX 0x060dfd70
+float DAT_060dfd70[48];
+
 // GLOBAL: SADX 0x060dfe30
 struct task *DAT_060dfe30;
+
+// GLOBAL: SADX 0x060dfe38
+float DAT_060dfe38[16];
 
 // GLOBAL: SADX 0x060dfe78
 int DAT_060dfe78[7];
