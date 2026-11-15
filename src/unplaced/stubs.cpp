@@ -1018,6 +1018,12 @@ void TutorialTask(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00497e40
+long DispMiClearStatus()
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00498e30
 void DisplayMiMessage()
 {
@@ -1665,6 +1671,11 @@ void DisplayScoreAction()
 {
 }
 
+// STUB: SADX 0x005579a0
+void dispScoreBack(float, float, float, float)
+{
+}
+
 // STUB: SADX 0x0055de60
 void FUN_0055de60(struct _SC_NUMBERS *)
 {
@@ -1744,6 +1755,17 @@ void ghDrawPvrTextureS(int, float, float, float, float, float)
 
 // STUB: SADX 0x00576220
 void dialog_exec(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0057ac80
+signed char PauseNext(signed char sel)
+{
+	return (signed char)0;
+}
+
+// STUB: SADX 0x0057ae90
+void DisplayPauseMenu(unsigned short sel)
 {
 }
 

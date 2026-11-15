@@ -1,15 +1,12 @@
 #include "decls.h"
-extern int DAT_05cccf54[8];
-extern unsigned short DAT_05cccf3c[8];
 struct SAVE_DATA *GetSDp();
-extern int DAT_05cccef4[7];
 extern unsigned char DAT_05cd14ed;
-extern char DAT_05ccca18;
+extern struct SAVE_DATA DAT_05ccca18;
 
 // FUNCTION: SADX 0x005a4170
 struct SAVE_DATA *GetSDp()
 {
-	return (struct SAVE_DATA *)&DAT_05ccca18;
+	return &DAT_05ccca18;
 }
 
 // FUNCTION: SADX 0x005a4180
@@ -127,7 +124,7 @@ long AvaGetTrialBestScore(enum AvaCharEnum chnum, unsigned char stg)
 	local_8g = GetSDp();
 	if (DAT_05cd14ed == 6)
 	{
-		local_10 = DAT_05cccef4[stg];
+		local_10 = DAT_05ccca18.M_bestScore[stg - 1];
 	}
 	else
 	{
@@ -178,7 +175,7 @@ short AvaGetTrialBestRing(enum AvaCharEnum chnum, unsigned char stg)
 	local_8g = GetSDp();
 	if (DAT_05cd14ed == 6)
 	{
-		local_10 = DAT_05cccf3c[stg];
+		local_10 = DAT_05ccca18.M_bestRing[stg - 1];
 	}
 	else
 	{
@@ -269,10 +266,10 @@ long AvaGetMiniGameScore(enum AvaCharEnum chnum, unsigned char stg, int rank)
 		switch (stg)
 		{
 		case 8:
-			sc = DAT_05cccf54[rank];
+			sc = DAT_05ccca18.M_miniSnowBoard.score[rank];
 			break;
 		case 0x26:
-			sc = DAT_05cccf54[3 + rank];
+			sc = DAT_05ccca18.M_miniSandBoard.score[rank];
 			break;
 		}
 	}

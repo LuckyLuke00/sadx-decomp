@@ -18,7 +18,7 @@ extern const int MRVT_Sonic[16];
 extern const int MRVT_Moble[16];
 void Serif_Play(int no);
 extern struct NJS_TEXLIST texlist_MRace_Eggmoble;
-extern char DAT_05ccca18;
+extern struct SAVE_DATA DAT_05ccca18;
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 void FUN_005a9290(struct taskwk *param_1);
@@ -391,9 +391,9 @@ int FUN_005ab4a0()
 
 	local_8g = 0;
 	local_cg = ((DAT_05b9d724 << 8) | DAT_05b9d744) >> 8 & 0xff;
-	if (CheckEmblemofStageClear((SAVE_DATA *)&DAT_05ccca18, 2, local_cg, 2) != 0)
+	if (CheckEmblemofStageClear(&DAT_05ccca18, 2, local_cg, 2) != 0)
 	{
-		if (CheckEmblemofStageClear((SAVE_DATA *)&DAT_05ccca18, 2, local_cg, 1) != 0)
+		if (CheckEmblemofStageClear(&DAT_05ccca18, 2, local_cg, 1) != 0)
 		{
 			local_8g = 1;
 		}

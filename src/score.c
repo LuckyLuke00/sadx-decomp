@@ -1,4 +1,13 @@
 #include "decls.h"
+extern struct NJS_SPRITE sprite_score_cart[4];
+void dispScoreBack(float pX, float pY, float sX, float sY);
+struct SCORE_TIME {
+	int min;
+	int sec;
+	int ms;
+	float x;
+	float y;
+};
 static void DisplayCalcBoardScoreSB(struct task *tp);
 void DisplayCalcLettersHH(struct task *tp);
 extern long bWake;
@@ -23,7 +32,6 @@ extern char DAT_05b3ebba;
 void FUN_00554d30(void);
 void FUN_00554ce0(long param_1);
 extern int DAT_05b3e05c;
-extern unsigned char DAT_05cccc6a[];
 extern unsigned char DAT_05b3ea14;
 extern unsigned long DAT_05b3ec08;
 extern int DAT_05ccdab8;
@@ -112,7 +120,7 @@ void SetDefaultNumPlayer(void)
 			local_8 -= 1;
 		if (local_8 > 1)
 			local_8 -= 1;
-		DAT_05b3ea14 = DAT_05cccc6a[local_8];
+		DAT_05b3ea14 = DAT_05ccca18.charenge[local_8];
 	}
 }
 
@@ -349,15 +357,112 @@ void late_DisplayTotalScore(struct task *tp)
 {
 }
 
+// FUNCTION: SADX 0x00557f30
+void drawSNumbersTime(struct SCORE_TIME score_time)
+{
+	float local_10;
+	float local_c;
+	local_c = score_time.x;
+	local_10 = score_sc_time.scl * 16.0f;
+	score_sc_time.max = 99;
+	score_sc_time.value = score_time.min;
+	score_sc_time.pos.x = local_c;
+	score_sc_time.pos.y = score_time.y;
+	FUN_0055de60(&score_sc_time);
+	local_c = local_10 * 2.0f + local_c;
+	score_sc_time.type |= 0x20;
+	score_sc_time.max = 9;
+	score_sc_time.pos.x = local_c;
+	FUN_0055de60(&score_sc_time);
+	local_c = local_c + local_10;
+	score_sc_time.type |= 0x40;
+	score_sc_time.type &= ~0x20;
+	score_sc_time.max = 0x3b;
+	score_sc_time.value = score_time.sec;
+	score_sc_time.pos.x = local_c;
+	FUN_0055de60(&score_sc_time);
+	local_c = local_10 * 2.0f + local_c;
+	score_sc_time.type |= 0x20;
+	score_sc_time.max = 9;
+	score_sc_time.pos.x = local_c;
+	FUN_0055de60(&score_sc_time);
+	local_c = local_c + local_10;
+	score_sc_time.type &= ~0x20;
+	score_sc_time.max = 99;
+	score_sc_time.value = score_time.ms;
+	score_sc_time.pos.x = local_c;
+	FUN_0055de60(&score_sc_time);
+	score_sc_time.type &= ~0x40;
+}
+
 // STUB: SADX 0x00559b60
 int FUN_00559b60(int param_1, int param_2, int param_3)
 {
 	return (int)0;
 }
 
-// STUB: SADX 0x00559c40
+// FUNCTION: SADX 0x00559c40
 void DisplayCalcLettersHH(struct task *tp)
 {
+	struct NJS_ARGB argb;
+	argb.a = -0.5f;
+	argb.b = 1.0f;
+	argb.g = argb.b;
+	argb.r = argb.g;
+	argb.a = 0.0f;
+	argb.b = 0.0f;
+	argb.g = argb.b;
+	argb.r = argb.g;
+	___njSetConstantMaterial(&argb);
+	dispScoreBack(320.0f, 224.0f, 15.0f, 3.0f);
+	dispScoreBack(320.0f, 336.0f, 15.0f, 0.0f);
+	___njSetConstantMaterial(&argb);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	DAT_060eea04 = sprite_score_mole[0];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_1c = -1.0099999904632568;
+		if (local_1c >= -3.0 && local_1c < 12048.0)
+		{
+			local_1c = local_1c + 22048.0;
+		}
+		late_DrawSprite2D(&DAT_060eea04, 0, local_1c, 0x21, 4);
+	}
+	DAT_060eea04 = sprite_score_mole[1];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_20 = -1.0099999904632568;
+		if (local_20 >= -3.0 && local_20 < 12048.0)
+		{
+			local_20 = local_20 + 22048.0;
+		}
+		late_DrawSprite2D(&DAT_060eea04, 1, local_20, 0x21, 4);
+	}
+	DAT_060eea04 = sprite_score_mole[2];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_24 = -1.0099999904632568;
+		if (local_24 >= -3.0 && local_24 < 12048.0)
+		{
+			local_24 = local_24 + 22048.0;
+		}
+		late_DrawSprite2D(&DAT_060eea04, 2, local_24, 0x21, 4);
+	}
+	DAT_060eea04 = sprite_score_mole[3];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_28 = -1.0099999904632568;
+		if (local_28 >= -3.0 && local_28 < 12048.0)
+		{
+			local_28 = local_28 + 22048.0;
+		}
+		late_DrawSprite2D(&DAT_060eea04, 3, local_28, 0x21, 4);
+	}
 }
 
 // FUNCTION: SADX 0x00559fa0
@@ -545,9 +650,56 @@ void FUN_0055b940(struct task *param_1)
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055c250
+// FUNCTION: SADX 0x0055c250
 void DisplayCalcLettersSB(struct task *tp)
 {
+	struct NJS_ARGB argb;
+	float local_1ci;
+	float local_28;
+	float local_24;
+	float local_20;
+	argb.a = -0.5f;
+	argb.b = 1.0f;
+	argb.g = argb.b;
+	argb.r = argb.g;
+	argb.a = 0.0f;
+	argb.b = 0.0f;
+	argb.g = argb.b;
+	argb.r = argb.g;
+	___njSetConstantMaterial(&argb);
+	dispScoreBack(320.0f, 224.0f, 15.0f, 3.0f);
+	dispScoreBack(320.0f, 336.0f, 15.0f, 0.0f);
+	___njSetConstantMaterial(&argb);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	DAT_060eea04 = sprite_score_board[0];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	local_1ci = -1.0099999904632568;
+	if (local_1ci >= -3.0 && local_1ci < 12048.0)
+		local_1ci = local_1ci + 22048.0;
+	late_DrawSprite2D(&DAT_060eea04, 0, local_1ci, 0x21, 4);
+	DAT_060eea04 = sprite_score_board[1];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	local_20 = -1.0099999904632568;
+	if (local_20 >= -3.0 && local_20 < 12048.0)
+		local_20 = local_20 + 22048.0;
+	late_DrawSprite2D(&DAT_060eea04, 1, local_20, 0x21, 4);
+	DAT_060eea04 = sprite_score_board[2];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	local_24 = -1.0099999904632568;
+	if (local_24 >= -3.0 && local_24 < 12048.0)
+		local_24 = local_24 + 22048.0;
+	late_DrawSprite2D(&DAT_060eea04, 2, local_24, 0x21, 4);
+	DAT_060eea04 = sprite_score_board[3];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	local_28 = -1.0099999904632568;
+	if (local_28 >= -3.0 && local_28 < 12048.0)
+		local_28 = local_28 + 22048.0;
+	late_DrawSprite2D(&DAT_060eea04, 3, local_28, 0x21, 4);
 }
 
 // FUNCTION: SADX 0x0055c5b0
@@ -631,9 +783,60 @@ void FUN_0055cf70(struct task *param_1)
 	FUN_0055de60((struct _SC_NUMBERS *)score_sc);
 }
 
-// STUB: SADX 0x0055d510
+// FUNCTION: SADX 0x0055d510
 void DisplayCalcLettersTC(struct task *tp)
 {
+	struct NJS_ARGB argb;
+	argb.a = -0.5f;
+	argb.b = 1.0f;
+	argb.g = argb.b;
+	argb.r = argb.g;
+	argb.a = 0.0f;
+	argb.b = 0.0f;
+	argb.g = argb.b;
+	argb.r = argb.g;
+	___njSetConstantMaterial(&argb);
+	dispScoreBack(320.0f, 224.0f, 15.0f, 3.0f);
+	dispScoreBack(320.0f, 336.0f, 15.0f, 0.0f);
+	___njSetConstantMaterial(&argb);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
+	DAT_060eea04 = sprite_score_cart[0];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_1c = -1.0099999904632568;
+		if (local_1c >= -3.0f && local_1c < 12048.0f)
+			local_1c = local_1c + 22048.0f;
+		late_DrawSprite2D(&DAT_060eea04, 0, local_1c, 0x21, 4);
+	}
+	DAT_060eea04 = sprite_score_cart[1];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_20 = -1.0099999904632568;
+		if (local_20 >= -3.0f && local_20 < 12048.0f)
+			local_20 = local_20 + 22048.0f;
+		late_DrawSprite2D(&DAT_060eea04, 1, local_20, 0x21, 4);
+	}
+	DAT_060eea04 = sprite_score_cart[2];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_24 = -1.0099999904632568;
+		if (local_24 >= -3.0f && local_24 < 12048.0f)
+			local_24 = local_24 + 22048.0f;
+		late_DrawSprite2D(&DAT_060eea04, 2, local_24, 0x21, 4);
+	}
+	DAT_060eea04 = sprite_score_cart[3];
+	DAT_060eea04.p.x = DAT_060eea04.p.x - 320.0 + ScreenRaitoX * 320.0;
+	DAT_060eea04.p.y = DAT_060eea04.p.y - 240.0 + ScreenRaitoY * 240.0;
+	{
+		float local_28 = -1.0099999904632568;
+		if (local_28 >= -3.0f && local_28 < 12048.0f)
+			local_28 = local_28 + 22048.0f;
+		late_DrawSprite2D(&DAT_060eea04, 3, local_28, 0x21, 4);
+	}
 }
 
 // STUB: SADX 0x0055db30

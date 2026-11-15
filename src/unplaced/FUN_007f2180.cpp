@@ -1,11 +1,10 @@
 #include "decls.h"
-extern unsigned char DAT_05ccceb8[60];
-extern char DAT_05ccca18;
+extern struct SAVE_DATA DAT_05ccca18;
 
 // FUNCTION: SADX 0x007f2180
 int FUN_007f2180()
 {
-	return FUN_0049e130((SAVE_DATA *)&DAT_05ccca18);
+	return FUN_0049e130(&DAT_05ccca18);
 }
 
 // FUNCTION: SADX 0x007f2190
@@ -18,17 +17,17 @@ int FUN_007f2190()
 	var2 = 0;
 	do
 	{
-		if ((DAT_05ccceb8[var2] & 0x80) != 0)
+		if ((DAT_05ccca18.MissionData[var2] & 0x80) != 0)
 			var1++;
-		if ((DAT_05ccceb8[var2 + 1] & 0x80) != 0)
+		if ((DAT_05ccca18.MissionData[var2 + 1] & 0x80) != 0)
 			var1++;
-		if ((DAT_05ccceb8[var2 + 2] & 0x80) != 0)
+		if ((DAT_05ccca18.MissionData[var2 + 2] & 0x80) != 0)
 			var1++;
-		if ((DAT_05ccceb8[var2 + 3] & 0x80) != 0)
+		if ((DAT_05ccca18.MissionData[var2 + 3] & 0x80) != 0)
 			var1++;
-		if ((DAT_05ccceb8[var2 + 4] & 0x80) != 0)
+		if ((DAT_05ccca18.MissionData[var2 + 4] & 0x80) != 0)
 			var1++;
-		if ((DAT_05ccceb8[var2 + 5] & 0x80) != 0)
+		if ((DAT_05ccca18.MissionData[var2 + 5] & 0x80) != 0)
 			var1++;
 		var2 += 6;
 	}

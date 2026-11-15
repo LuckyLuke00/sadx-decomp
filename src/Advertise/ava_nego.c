@@ -4,7 +4,7 @@ extern unsigned char DAT_05cd14ea;
 int AvaCheckMetalSonic();
 extern unsigned char DAT_05cd14e0;
 extern int DAT_05cc3574;
-extern char DAT_05cc3631;
+extern unsigned char DAT_05cc3631;
 void CreateSaveData();
 int AvaGetEndingEnable(enum AvaCharEnum chnum);
 unsigned char FUN_0059db20(int param_1);

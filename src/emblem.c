@@ -18,13 +18,12 @@ extern struct task *ADXTaskInit();
 
 extern int DAT_05b3e05c;
 extern int DAT_05cc3574;
-extern char DAT_05cc3631;
+extern unsigned char DAT_05cc3631;
 extern unsigned char DAT_05bb00a9;
-extern unsigned long DAT_05cccf84;
 extern int DAT_05b9d838;
 extern struct taskwk *DAT_05baf368[8];
 extern struct taskwk *DAT_05b42a7c;
-extern char DAT_05ccca18;
+extern struct SAVE_DATA DAT_05ccca18;
 extern char emblem_num[0x20];
 
 void FUN_0055de60(struct _SC_NUMBERS *);
@@ -161,7 +160,7 @@ long CheckEmblemofStageClear(struct SAVE_DATA *psd, long chara, long stage, long
 	}
 	else
 	{
-		return 1 << FUN_0049f2a0(stage, level) & DAT_05cccf84;
+		return 1 << FUN_0049f2a0(stage, level) & DAT_05ccca18.M_emblem;
 	}
 }
 
@@ -238,7 +237,7 @@ void ObjectEmblem(struct task *tp)
   {
    local_9=local_8g->cwp->hit_cwp->mytask->twp->counter.b[0];
    VibShot(local_9,4);
-   GetEmblem((struct SAVE_DATA *)&DAT_05ccca18,local_8g->value.l);
+   GetEmblem(&DAT_05ccca18,local_8g->value.l);
    local_8g->mode=2;
    FUN_0049e8d0(&local_8g->pos);
   }
@@ -342,7 +341,7 @@ static void Exec(struct task *tp)
 	case 0:
 		local_8g->mode = 1;
 		local_8g->wtimer = 0;
-		local_8g->value.l = FUN_0049e130((struct SAVE_DATA *)&DAT_05ccca18);
+		local_8g->value.l = FUN_0049e130(&DAT_05ccca18);
 		dsPlay_oneshot(12, 0, 0, 0);
 		break;
 	case 1:

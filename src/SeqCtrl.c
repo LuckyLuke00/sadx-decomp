@@ -53,7 +53,7 @@ extern int DAT_05baf53c;
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
 extern int DAT_05cc3574;
-extern char DAT_05cc3631;
+extern unsigned char DAT_05cc3631;
 extern unsigned char DAT_05bb00a8;
 extern short DAT_05bafd18;
 extern int DAT_05baf544;

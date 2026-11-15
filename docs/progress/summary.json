@@ -13218,6 +13218,14 @@
    "library": false
   },
   {
+   "address": "0x00497e40",
+   "name": "DispMiClearStatus",
+   "accuracy": 0.02702702702702703,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00498030",
    "name": "DrawSprite_Signal",
    "accuracy": 1.0,
@@ -17996,9 +18004,9 @@
   {
    "address": "0x004c83e0",
    "name": "PauseLoop",
-   "accuracy": 0.09009009009009009,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -25810,6 +25818,22 @@
    "library": false
   },
   {
+   "address": "0x005579a0",
+   "name": "dispScoreBack",
+   "accuracy": 0.021505376344086023,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00557f30",
+   "name": "drawSNumbersTime",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00559b60",
    "name": "FUN_00559b60",
    "accuracy": 0.1111111111111111,
@@ -25820,9 +25844,9 @@
   {
    "address": "0x00559c40",
    "name": "DisplayCalcLettersHH",
-   "accuracy": 0.03375527426160337,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -25956,9 +25980,9 @@
   {
    "address": "0x0055c250",
    "name": "DisplayCalcLettersSB",
-   "accuracy": 0.03375527426160337,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26028,9 +26052,9 @@
   {
    "address": "0x0055d510",
    "name": "DisplayCalcLettersTC",
-   "accuracy": 0.03375527426160337,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29338,9 +29362,25 @@
    "library": false
   },
   {
+   "address": "0x0057ac80",
+   "name": "PauseNext",
+   "accuracy": 0.1724137931034483,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0057ae10",
    "name": "PausePrev",
    "accuracy": 0.20408163265306123,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0057ae90",
+   "name": "DisplayPauseMenu",
+   "accuracy": 0.004711425206124852,
    "effective": false,
    "stub": true,
    "library": false
@@ -94100,6 +94140,34 @@
    "library": false
   },
   {
+   "address": "0x026014e8",
+   "name": "score_sc_time",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02601828",
+   "name": "sprite_score_mole",
+   "size": 128,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02601a68",
+   "name": "sprite_score_board",
+   "size": 128,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02601b98",
+   "name": "sprite_score_cart",
+   "size": 128,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02603650",
    "name": "chaoscam_angacc_lim_def",
    "size": 12,
@@ -104308,5 +104376,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "4d5589c6ee8253ec96a05450d7979d341b80307bb20acc9fe3c5506c18fa5503"
+ "inputs_sha256": "86923f8d49901aef04898ca0874e962470ab86cba56b96d3e4a92742c6a7d2e4"
 }

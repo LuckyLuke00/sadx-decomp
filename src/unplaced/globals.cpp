@@ -1241,6 +1241,18 @@ struct NJS_TEXLIST texlist_score;
 // GLOBAL: SADX 0x026014c8
 char score_sc[32];
 
+// GLOBAL: SADX 0x026014e8
+struct _SC_NUMBERS score_sc_time;
+
+// GLOBAL: SADX 0x02601828
+struct NJS_SPRITE sprite_score_mole[4];
+
+// GLOBAL: SADX 0x02601a68
+struct NJS_SPRITE sprite_score_board[4];
+
+// GLOBAL: SADX 0x02601b98
+struct NJS_SPRITE sprite_score_cart[4];
+
 // GLOBAL: SADX 0x02603668
 struct NJS_POINT3 chaoscam_camspd_lim_def;
 
@@ -6801,7 +6813,7 @@ int DAT_05cc3620;
 int DAT_05cc3628;
 
 // GLOBAL: SADX 0x05cc3631
-char DAT_05cc3631;
+unsigned char DAT_05cc3631;
 
 // GLOBAL: SADX 0x05cc3b18
 int DAT_05cc3b18;
@@ -6897,37 +6909,7 @@ int DAT_05ccca0c;
 long DAT_05ccca10;
 
 // GLOBAL: SADX 0x05ccca18
-char DAT_05ccca18;
-
-// GLOBAL: SADX 0x05cccbbc
-int DAT_05cccbbc;
-
-// GLOBAL: SADX 0x05cccbc0
-int DAT_05cccbc0;
-
-// GLOBAL: SADX 0x05cccbc4
-int DAT_05cccbc4;
-
-// GLOBAL: SADX 0x05cccc69
-char DAT_05cccc69;
-
-// GLOBAL: SADX 0x05cccc6a
-unsigned char DAT_05cccc6a[1];
-
-// GLOBAL: SADX 0x05ccceb8
-unsigned char DAT_05ccceb8[60];
-
-// GLOBAL: SADX 0x05cccef4
-int DAT_05cccef4[7];
-
-// GLOBAL: SADX 0x05cccf3c
-unsigned short DAT_05cccf3c[8];
-
-// GLOBAL: SADX 0x05cccf54
-int DAT_05cccf54[8];
-
-// GLOBAL: SADX 0x05cccf84
-unsigned long DAT_05cccf84;
+struct SAVE_DATA DAT_05ccca18;
 
 // GLOBAL: SADX 0x05ccda98
 int DAT_05ccda98;

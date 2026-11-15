@@ -37,13 +37,11 @@ extern int DAT_05cda160;
 extern int DAT_05cda164;
 extern unsigned char DAT_05b3ea26;
 extern unsigned char DAT_05b9d776;
-extern unsigned char DAT_05cccc6a[];
 extern unsigned char DAT_05b3ea14;
 extern void FUN_005a4d70();
 extern int DAT_05cda154;
 extern short DAT_05b93710;
 extern int DAT_05b9d778;
-extern char DAT_05cccc69;
 extern void SetDefaultGravity();
 extern void ResetNumPlayer();
 extern short GetNumPlayer();
@@ -260,7 +258,7 @@ long InitGame()
 	SetDefaultGravity();
 	DAT_05b93710 = 0;
 	DAT_05b9d778 = 0;
-	if (DAT_05cccc69 & 2)
+	if (DAT_05ccca18.option & 2)
 	{
 		DAT_05b42c1c = 0;
 	}
@@ -527,10 +525,67 @@ unsigned short FUN_004c83c0()
 	return local_8;
 }
 
-// STUB: SADX 0x004c83e0
+// FUNCTION: SADX 0x004c83e0
 short PauseLoop()
 {
-	return (short)0;
+	int local_8g;
+	int local_cj;
+	int local_10;
+	local_8g = DAT_05b93264[0]->press;
+	local_10 = DAT_05b93264[1]->press;
+	GetSwitchData();
+	pdVibMxStop(0);
+	if (padconfig(0) != 0)
+	{
+		return 1;
+	}
+	if (cameramodechange(0) != 0)
+	{
+		return 1;
+	}
+	local_cj = GameQuitYesNo(0, 0);
+	if (local_cj != 0)
+	{
+		return (short)local_cj;
+	}
+	local_cj = FUN_0057cd40();
+	if (local_cj != 0)
+	{
+		DisplayTask();
+		if (local_cj == 2)
+		{
+			local_cj = 3;
+		}
+		return (short)local_cj;
+	}
+	if (DAT_05b3e05c == 0xa)
+	{
+		if (DispMiClearStatus() != 0)
+		{
+			DisplayTask();
+			return 1;
+		}
+	}
+	DAT_05b9d838 = 0;
+	DisplayTask();
+	DisplayScore();
+	if ((DAT_05b92e44 & 0x20) != 0)
+	{
+		DAT_05b93710 = PauseNext((signed char)DAT_05b93710);
+	}
+	if ((DAT_05b92e44 & 0x10) != 0)
+	{
+		DAT_05b93710 = PausePrev((signed char)DAT_05b93710);
+	}
+	DisplayPauseMenu(DAT_05b93710);
+	DisplayTimer();
+	SpLoopOnlyDisplay();
+	if ((DAT_05b92e44 & 0x20) != 0 || (DAT_05b92e44 & 0x10) != 0 || (DAT_05b93264[0]->press & 0x20) != 0 || (DAT_05b93264[0]->press & 0x10) != 0)
+	{
+		DAT_05b3ea00 = 0;
+		dsPlay_oneshot(1, 0, 0, 0);
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x004c8570
@@ -755,7 +810,7 @@ void SetPlayerNumberForGame(unsigned short pno)
 	{
 		local_8--;
 	}
-	DAT_05b3ea14 = DAT_05cccc6a[local_8];
+	DAT_05b3ea14 = DAT_05ccca18.charenge[local_8];
 	if (GetNumPlayer() < 4)
 	{
 		ResetNumPlayer();

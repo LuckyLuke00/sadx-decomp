@@ -1,7 +1,4 @@
 #include "decls.h"
-extern int DAT_05cccbbc;
-extern int DAT_05cccbc0;
-extern int DAT_05cccbc4;
 extern int *DAT_060b867c;
 extern int DAT_05ccdaa0;
 extern int DAT_05ccdaa4;
@@ -13,7 +10,7 @@ extern "C" void *memset(void *param_1, int param_2, unsigned int param_3);
 extern int DAT_060b8680;
 extern int DAT_05b3e05c;
 extern int DAT_05cc3574;
-extern char DAT_05cc3631;
+extern unsigned char DAT_05cc3631;
 void PadReadOnP(unsigned char pno);
 void Free(void *mp);
 void CreateSaveData();
@@ -105,21 +102,21 @@ void FUN_006a0f90(void)
 {
 	int *var1 = DAT_060b867c;
 	int var2 = var1[2];
-	if (DAT_05cccbbc < var2)
+	if (DAT_05ccca18.miniMole.score[0] < var2)
 	{
-		DAT_05cccbc4 = DAT_05cccbc0;
-		DAT_05cccbc0 = DAT_05cccbbc;
-		DAT_05cccbbc = var1[2];
+		DAT_05ccca18.miniMole.score[2] = DAT_05ccca18.miniMole.score[1];
+		DAT_05ccca18.miniMole.score[1] = DAT_05ccca18.miniMole.score[0];
+		DAT_05ccca18.miniMole.score[0] = var1[2];
 		return;
 	}
-	if (DAT_05cccbc0 < var2)
+	if (DAT_05ccca18.miniMole.score[1] < var2)
 	{
-		DAT_05cccbc4 = DAT_05cccbc0;
-		DAT_05cccbc0 = var1[2];
+		DAT_05ccca18.miniMole.score[2] = DAT_05ccca18.miniMole.score[1];
+		DAT_05ccca18.miniMole.score[1] = var1[2];
 		return;
 	}
-	if (DAT_05cccbc4 < var2)
+	if (DAT_05ccca18.miniMole.score[2] < var2)
 	{
-		DAT_05cccbc4 = var2;
+		DAT_05ccca18.miniMole.score[2] = var2;
 	}
 }
