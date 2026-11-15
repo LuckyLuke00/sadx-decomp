@@ -24,7 +24,8 @@ sets are other header sources, such as a vendor SDK.
 - An origin names the folders whose headers it covers. A name's origin is the origin of the deepest folder that holds
   its definition; a predefined macro has the origin "predefined".
 - "kept" lists the hand-owned files, relative to evidence/, that each backup holds.
-- "thresholds" overrides entries of THRESHOLDS; an unknown entry is an error.
+- "thresholds" overrides entries of THRESHOLDS; an unknown entry is an error. remap_exact must stay more than twice
+  the larger of remap_rewrite and remap_target, so an exact pair beats two weaker pairs (remap.Scores).
 - "samples" names the sample trees, such as vendor sample code. The named reference set's headers and profile
   evaluate a tree's calls; the encoding decodes its files. Optional.
 - "manuals" lists text dumps of vendor manuals, each read for the functions of its reference set. Optional.
@@ -50,12 +51,16 @@ SCHEMA = 2
 RULES_VERSION = 6  # raised by hand for a deliberate change of meaning; part of every fingerprint
 FILE = "config.json"
 CODE = Path(__file__).resolve().parent  # the tool's sources: their hash is part of every fingerprint
-KEYS = {"schema", "sources", "target", "references", "origins", "backups", "kept", "thresholds", "samples", "manuals",
-        "placeholders"}
-SET_KEYS = {"name", "profile", "search_path", "predefines", "known_undefined", "umbrellas", "encoding"}
-SOURCE_KEYS = {"root", "suffixes", "encoding", "annotation"}
-SAMPLE_KEYS = {"folders", "reference", "encoding"}
-MANUAL_KEYS = {"path", "reference", "encoding"}
+NUMBER = (int, float)
+TYPE_NAMES = {dict: "an object", list: "a list", str: "a string", int: "a whole number", NUMBER: "a number"}
+# Each key an object may hold, with the JSON type of its value.
+KEYS = {"schema": int, "sources": dict, "target": dict, "references": list, "origins": dict, "backups": str,
+        "kept": list, "thresholds": dict, "samples": dict, "manuals": list, "placeholders": dict}
+SET_KEYS = {"name": str, "profile": str, "search_path": list, "predefines": dict, "known_undefined": list,
+            "umbrellas": list, "encoding": str}
+SOURCE_KEYS = {"root": str, "suffixes": list, "encoding": str, "annotation": str}
+SAMPLE_KEYS = {"folders": list, "reference": str, "encoding": str}
+MANUAL_KEYS = {"path": str, "reference": str, "encoding": str}
 PLACEHOLDER_KINDS = ("code", "no-code")
 PREDEFINED = "predefined"
 
@@ -137,7 +142,7 @@ class Config:
 
     def origin(self, file: str) -> str:
         """The origin of the header FILE, "" when no origin folder holds it."""
-        if file == "<predefined>":
+        if file == cheaders.PREDEFINED_FILE:
             return PREDEFINED
         path = cheaders.canonical(file)
         return next((name for folder, name in self.origins if path.startswith(folder + os.sep)), "")
@@ -151,8 +156,8 @@ class Config:
 
     def fingerprint(self) -> str:
         """The configuration hash: every header set in order, the sample trees, the manuals, the placeholder macros,
-        the threshold table, RULES_VERSION, the schema and the hash of the tool's sources (tests excluded). Canonical JSON, so equal
-        settings give equal hashes."""
+        the threshold table, RULES_VERSION, the schema and the hash of the tool's sources (tests excluded). Canonical
+        JSON, so equal settings give equal hashes."""
         sets = [{"name": item.name, "profile": [item.config.profile.name, item.config.profile.version],
                  "search_path": list(item.config.search_path), "predefines": item.config.predefines,
                  "known_undefined": sorted(item.config.known_undefined), "branch_cap": item.config.branch_cap,
@@ -161,12 +166,8 @@ class Config:
         samples = [[tree.name, [str(folder) for folder in tree.folders], tree.reference, tree.encoding]
                    for tree in self.samples]
         manuals = [[str(manual.path), manual.reference, manual.encoding] for manual in self.manuals]
-        code = hashlib.sha256()
-        for path in sorted(CODE.glob("*.py")):
-            if not path.stem.endswith("tests"):
-                code.update(path.name.encode("utf-8") + b"\0" + path.read_bytes() + b"\0")
         data = {"schema": SCHEMA, "rules": RULES_VERSION, "sets": sets, "samples": samples, "manuals": manuals,
-                "placeholders": self.placeholders, "thresholds": self.thresholds, "code": code.hexdigest()}
+                "placeholders": self.placeholders, "thresholds": self.thresholds, "code": _code_digest()}
         return hashlib.sha256(json.dumps(data, sort_keys=True).encode("utf-8")).hexdigest()
 
 
@@ -181,14 +182,12 @@ def load(root: Path, folder: Path) -> Config:
     _keys(data, KEYS, {"schema", "sources", "target", "backups", "kept"}, str(path))
     if data["schema"] != SCHEMA:
         raise ConfigError(f"{path}: schema {data['schema']}, this tool reads schema {SCHEMA}")
-    thresholds = dict(THRESHOLDS)
-    for name, number in data.get("thresholds", {}).items():
-        if name not in THRESHOLDS:
-            raise ConfigError(f"{path}: unknown threshold {name!r}; known: {', '.join(sorted(THRESHOLDS))}")
-        thresholds[name] = number
-    origins = sorted(((cheaders.canonical(str(_path(root, item))), name)
-                      for name, items in data.get("origins", {}).items() for item in items),
-                     key=lambda entry: -len(entry[0]))
+    thresholds = _thresholds(data.get("thresholds", {}), f"{path}: thresholds")
+    origins = data.get("origins", {})
+    for name, folders in origins.items():
+        _typed(folders, list, f"{path}: origins", name)
+    origins = sorted(((cheaders.canonical(str(_path(root, folder))), name)
+                      for name, folders in origins.items() for folder in folders), key=lambda entry: -len(entry[0]))
     references = tuple(_header_set(root, item, thresholds, f"{path}: references[{index}]")
                        for index, item in enumerate(data.get("references", [])))
     names = {item.name for item in references}
@@ -203,9 +202,22 @@ def load(root: Path, folder: Path) -> Config:
                   placeholders)
 
 
-def _placeholders(data, where: str) -> dict:
-    if not isinstance(data, dict):
-        raise ConfigError(f"{where}: not an object")
+def _thresholds(data: dict, where: str) -> dict:
+    """THRESHOLDS with the overrides in DATA."""
+    thresholds = dict(THRESHOLDS)
+    for name, number in data.items():
+        if name not in THRESHOLDS:
+            raise ConfigError(f"{where}: unknown threshold {name!r}; known: {', '.join(sorted(THRESHOLDS))}")
+        _typed(number, NUMBER, where, name)
+        thresholds[name] = number
+    exact, weaker = thresholds["remap_exact"], max(thresholds["remap_rewrite"], thresholds["remap_target"])
+    if exact <= 2 * weaker:
+        raise ConfigError(f"{where}: remap_exact {exact} must be more than twice the larger of remap_rewrite and "
+                          f"remap_target ({weaker})")
+    return thresholds
+
+
+def _placeholders(data: dict, where: str) -> dict:
     for macro, kind in data.items():
         if kind not in PLACEHOLDER_KINDS:
             raise ConfigError(f"{where}.{macro}: unknown kind {kind!r}; known: {', '.join(PLACEHOLDER_KINDS)}")
@@ -223,25 +235,47 @@ def _manual(root: Path, data, references: set, where: str) -> Manual:
     return Manual(_path(root, data["path"]), data["reference"], data["encoding"])
 
 
-def _check_reading(data, allowed: set, references: set, where: str):
+def _check_reading(data, allowed: dict, references: set, where: str):
     """Checks the keys, the reference set and the encoding of one sample tree or manual entry."""
-    _keys(data, allowed, allowed, where)
+    _keys(data, allowed, set(allowed), where)
     if data["reference"] not in references:
         raise ConfigError(f"{where}: unknown reference set {data['reference']!r}")
+    _check_encoding(data["encoding"], where)
+
+
+def _check_encoding(name: str, where: str) -> None:
     try:
-        codecs.lookup(data["encoding"])
+        codecs.lookup(name)
     except LookupError as error:
-        raise ConfigError(f"{where}: unknown encoding {data['encoding']!r}") from error
+        raise ConfigError(f"{where}: unknown encoding {name!r}") from error
 
 
-def _keys(data, allowed: set, required: set, where: str):
+def _keys(data, allowed: dict, required: set, where: str):
+    """Checks that DATA is an object with the REQUIRED keys, and that each key is in ALLOWED with its type."""
     if not isinstance(data, dict):
         raise ConfigError(f"{where}: not an object")
-    unknown, missing = set(data) - allowed, required - set(data)
+    unknown, missing = set(data) - set(allowed), required - set(data)
     if unknown:
         raise ConfigError(f"{where}: unknown keys {', '.join(sorted(unknown))}")
     if missing:
         raise ConfigError(f"{where}: missing keys {', '.join(sorted(missing))}")
+    for key, value in data.items():
+        _typed(value, allowed[key], where, key)
+
+
+def _typed(value, kind, where: str, key: str):
+    """Raises ConfigError unless VALUE has the JSON type KIND. JSON true and false are no numbers."""
+    if isinstance(value, bool) or not isinstance(value, kind):
+        raise ConfigError(f"{where}: {key} must be {TYPE_NAMES[kind]}")
+
+
+def _code_digest() -> str:
+    """The hash of the tool's sources, tests excluded."""
+    code = hashlib.sha256()
+    for path in sorted(CODE.glob("*.py")):
+        if not path.stem.endswith("tests"):
+            code.update(path.name.encode("utf-8") + b"\0" + path.read_bytes() + b"\0")
+    return code.hexdigest()
 
 
 def _path(root: Path, text: str) -> Path:
@@ -250,23 +284,32 @@ def _path(root: Path, text: str) -> Path:
 
 
 def _sources(root: Path, data, where: str) -> Sources:
-    _keys(data, SOURCE_KEYS, SOURCE_KEYS, where)
+    _keys(data, SOURCE_KEYS, set(SOURCE_KEYS), where)
     try:
         annotation = re.compile(data["annotation"])
     except re.error as error:
         raise ConfigError(f"{where}: annotation: {error}") from error
     if not {"kind", "address"} <= set(annotation.groupindex):
         raise ConfigError(f"{where}: the annotation regex needs the groups kind and address")
+    _check_encoding(data["encoding"], where)
     return Sources(_path(root, data["root"]), tuple(data["suffixes"]), data["encoding"], annotation)
 
 
 def _header_set(root: Path, data, thresholds: dict, where: str) -> HeaderSet:
     _keys(data, SET_KEYS, {"name", "profile", "search_path", "umbrellas"}, where)
     if data["profile"] not in profiles.PROFILES:
-        raise ConfigError(f"{where}: unknown profile {data['profile']!r}; known: {', '.join(sorted(profiles.PROFILES))}")
+        known = ", ".join(sorted(profiles.PROFILES))
+        raise ConfigError(f"{where}: unknown profile {data['profile']!r}; known: {known}")
+    encoding = data.get("encoding", "utf-8")
+    _check_encoding(encoding, where)
     config = cheaders.Config(profiles.PROFILES[data["profile"]],
                              tuple(str(_path(root, item)) for item in data["search_path"]),
                              dict(data.get("predefines", {})), frozenset(data.get("known_undefined", [])),
-                             thresholds["branch_cap"], data.get("encoding", "utf-8"))
-    umbrellas = tuple(str(_path(root, item)) if _path(root, item).is_file() else item for item in data["umbrellas"])
-    return HeaderSet(data["name"], config, umbrellas)
+                             thresholds["branch_cap"], encoding)
+    return HeaderSet(data["name"], config, tuple(_umbrella(root, item) for item in data["umbrellas"]))
+
+
+def _umbrella(root: Path, item: str) -> str:
+    """The file path when that file exists, else ITEM as written: a name the search path finds."""
+    path = _path(root, item)
+    return str(path) if path.is_file() else item

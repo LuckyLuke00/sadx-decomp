@@ -36,6 +36,13 @@ DATA = {
 }
 
 
+def changed(edit) -> dict:
+    """A copy of DATA after EDIT."""
+    data = copy.deepcopy(DATA)
+    edit(data)
+    return data
+
+
 def loaded(data: dict, folder: str) -> config.Config:
     root = Path(folder)
     for name in ("src", "inc/deep", "ref", "evidence"):
@@ -101,12 +108,6 @@ def check_load() -> list[str]:
 
 def check_faults() -> list[str]:
     failures = []
-
-    def changed(edit) -> dict:
-        data = copy.deepcopy(DATA)
-        edit(data)
-        return data
-
     cases = (
         (None, "missing hand-owned file"),
         (changed(lambda data: data.update(extra=1)), "unknown keys extra"),
@@ -123,10 +124,22 @@ def check_faults() -> list[str]:
         (changed(lambda data: data["samples"]["old"].update(encoding="xx-codec")),
          "samples.old: unknown encoding 'xx-codec'"),
         (changed(lambda data: data["samples"]["old"].pop("encoding")), "samples.old: missing keys encoding"),
+        (changed(lambda data: data["sources"].update(encoding="xx-codec")), "sources: unknown encoding 'xx-codec'"),
+        (changed(lambda data: data["target"].update(encoding="xx-codec")), "target: unknown encoding 'xx-codec'"),
         (changed(lambda data: data["manuals"][0].update(extra=1)), "manuals[0]: unknown keys extra"),
         (changed(lambda data: data["placeholders"].update(XX_ASSERT="maybe")),
          "placeholders.XX_ASSERT: unknown kind 'maybe'; known: code, no-code"),
-        (changed(lambda data: data.update(placeholders=["XX_ASSERT"])), "placeholders: not an object"),
+        (changed(lambda data: data.update(placeholders=["XX_ASSERT"])), "placeholders must be an object"),
+        (changed(lambda data: data.update(kept="config.json")), "config.json: kept must be a list"),
+        (changed(lambda data: data["sources"].update(suffixes=".c")), "sources: suffixes must be a list"),
+        (changed(lambda data: data["origins"].update(vendor="inc")), "origins: vendor must be a list"),
+        (changed(lambda data: data["thresholds"].update(cover_budget="7")),
+         "thresholds: cover_budget must be a number"),
+        (changed(lambda data: data["thresholds"].update(gate_brake=True)), "thresholds: gate_brake must be a number"),
+        (changed(lambda data: data.update(samples=[])), "config.json: samples must be an object"),
+        (changed(lambda data: data["target"].update(profile=["xx"])), "target: profile must be a string"),
+        (changed(lambda data: data["thresholds"].update(remap_exact=6)),
+         "remap_exact 6 must be more than twice the larger of remap_rewrite and remap_target"),
     )
     for data, wanted in cases:
         with tempfile.TemporaryDirectory() as folder:
@@ -162,7 +175,7 @@ def check_docs() -> list[str]:
     text = (Path(__file__).resolve().parents[2] / "docs" / "EVIDENCE.md").read_text(encoding="utf-8")
     block = text.split("<!-- thresholds -->", 1)[1].split("<!-- /thresholds -->", 1)[0]
     documented = {}
-    for line in block.splitlines()[3:]:
+    for line in (line for line in block.splitlines() if line.startswith("| `")):
         name, default = (cell.strip() for cell in line.split("|")[1:3])
         documented[name.strip("`")] = float(default) if "." in default else int(default)
     if documented != config.THRESHOLDS:
@@ -173,12 +186,6 @@ def check_docs() -> list[str]:
 def check_fingerprint() -> list[str]:
     """Equal settings give equal hashes; each setting that changes evaluation changes the hash."""
     failures = []
-
-    def changed(edit) -> dict:
-        data = copy.deepcopy(DATA)
-        edit(data)
-        return data
-
     with tempfile.TemporaryDirectory() as folder:
         base = loaded(DATA, folder).fingerprint()
         if loaded(copy.deepcopy(DATA), folder).fingerprint() != base:
@@ -201,10 +208,35 @@ def check_fingerprint() -> list[str]:
     return failures
 
 
+def check_fingerprint_code() -> list[str]:
+    """The tool's sources and RULES_VERSION count in the fingerprint; the tests do not."""
+    failures = []
+    saved = config.CODE, config.RULES_VERSION
+    with tempfile.TemporaryDirectory() as folder, tempfile.TemporaryDirectory() as code:
+        config.CODE = Path(code)
+        try:
+            (config.CODE / "tool.py").write_text("x = 1\n", encoding="utf-8")
+            (config.CODE / "tooltests.py").write_text("x = 1\n", encoding="utf-8")
+            base = loaded(DATA, folder).fingerprint()
+            (config.CODE / "tooltests.py").write_text("x = 2\n", encoding="utf-8")
+            if loaded(DATA, folder).fingerprint() != base:
+                failures.append("a test file changes the fingerprint")
+            config.RULES_VERSION += 1
+            if loaded(DATA, folder).fingerprint() == base:
+                failures.append("RULES_VERSION changes the fingerprint")
+            config.RULES_VERSION = saved[1]
+            (config.CODE / "tool.py").write_text("x = 2\n", encoding="utf-8")
+            if loaded(DATA, folder).fingerprint() == base:
+                failures.append("a tool source changes the fingerprint")
+        finally:
+            config.CODE, config.RULES_VERSION = saved
+    return failures
+
+
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
-    for check in (check_load, check_faults, check_defaults, check_docs, check_fingerprint):
+    for check in (check_load, check_faults, check_defaults, check_docs, check_fingerprint, check_fingerprint_code):
         failures += check()
     return failures
 
