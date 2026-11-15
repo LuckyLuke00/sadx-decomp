@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1431" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,379 of 16,480 game functions done (38.70%), accuracy 99.87%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,380 of 16,480 game functions done (38.71%), accuracy 99.87%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="587.8,1194.5 594.2,1194.5 595.9,1196 597,1197.6 591,1204.5 585,1197.6 586.1,1196" fill="#4e32f3"/>
 <polygon points="587.8,1194.5 594.2,1194.5 595.9,1196 597,1197.6 585,1197.6 586.1,1196" fill="#ffffff" fill-opacity="0.4"/>
@@ -3726,7 +3726,7 @@
 <rect x="14" y="210" width="6" height="6" fill="#ffd700"><title>0x00716350 AL_GetMessage: 100%</title></rect>
 <rect x="35" y="210" width="6" height="6" fill="#ffd700"><title>0x00717030 ChaoSelectWindowDestructor: 100%</title></rect>
 </g>
-<rect x="660" y="834" width="320" height="95" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 146 of 405 functions done</title></rect>
+<rect x="660" y="834" width="320" height="95" rx="3" fill="#21262d" stroke="#30363d"><title>Chao Race: 147 of 405 functions done</title></rect>
 <text x="663" y="848" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Chao Race <tspan font-weight="400" fill="#8b949e">12%</tspan></text>
 <g transform="translate(663,852)">
 <rect y="0" width="315" height="63" fill="url(#todo)"/>
@@ -3860,6 +3860,7 @@
 <rect x="294" y="49" width="6" height="6" fill="#ffd700"><title>0x004936e0 ObjectAlrZone: 100%</title></rect>
 <rect x="301" y="49" width="6" height="6" fill="#ffd700"><title>0x00493700 AL_GetObjectEntryList: 100%</title></rect>
 <rect x="308" y="49" width="6" height="6" fill="#ffd700"><title>0x00493710 AL_GetChaoEntryNum: 100%</title></rect>
+<rect x="0" y="56" width="6" height="6" fill="#ffd700"><title>0x005a51d0 Bg_AL_Race: 100%</title></rect>
 <rect x="49" y="56" width="6" height="6" fill="#ffd700"><title>0x00717130 ObjectAlrBowChao: 100%</title></rect>
 <rect x="70" y="56" width="6" height="6" fill="#ffd700"><title>0x00717230 execObject(3): 100%</title></rect>
 <rect x="77" y="56" width="6" height="6" fill="#ffd700"><title>0x007172c0 ObjectAlrCheerChao: 100%</title></rect>

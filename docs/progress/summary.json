@@ -32626,6 +32626,14 @@
    "library": false
   },
   {
+   "address": "0x005a51d0",
+   "name": "Bg_AL_Race",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x005a5450",
    "name": "FUN_005a5450",
    "accuracy": 1.0,
@@ -89797,6 +89805,13 @@
    "library": false
   },
   {
+   "address": "0x0099226c",
+   "name": "DAT_0099226c",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x00996070",
    "name": "MRVT_Sonic",
    "size": 64,
@@ -105241,5 +105256,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "628cdaa419e10e3df5b3ebfaeca492b07c67da5cdc1dfe7e74c115b77969e472"
+ "inputs_sha256": "ea619ce981ac0aff3c9a6dc83f4ceb9b28d4d17fb6f9e75292dbe81fc014a3a6"
 }

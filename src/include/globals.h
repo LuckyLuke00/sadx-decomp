@@ -45,6 +45,7 @@ extern const int AdvaCharSelSerifuTbl[8];
 extern const int AdvaSerifuTbl[9][9];
 extern struct DialogPrmType DAT_009919e0[31];
 extern struct u4s DAT_009921c0[];
+extern const struct TaskInfo *DAT_0099226c;
 extern const int MRVT_Sonic[16];
 extern const int MRVT_Moble[16];
 extern char DAT_009960fc[1];

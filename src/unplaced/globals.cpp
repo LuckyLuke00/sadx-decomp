@@ -125,6 +125,9 @@ struct DialogPrmType DAT_009919e0[31];
 // GLOBAL: SADX 0x009921c0
 struct u4s DAT_009921c0[1];
 
+// GLOBAL: SADX 0x0099226c
+const struct TaskInfo *DAT_0099226c = 0;
+
 // GLOBAL: SADX 0x00996070
 const int MRVT_Sonic[16] = {};
 

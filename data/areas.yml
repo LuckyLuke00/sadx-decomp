@@ -12,6 +12,7 @@ tree:
   - ['^src/adv02_mysticruin/', mystic_ruins]
   - ['^src/adv03_past/', the_past]
   - ['^src/Advertise/', menus]
+  - ['^src/al_race/', chao_race]
   - ['^src/chao/stg_race1/', chao_race]
   - ['^src/chao/', chao_garden]
   - ['^src/enemy/', enemies]
