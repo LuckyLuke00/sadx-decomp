@@ -3170,6 +3170,8 @@ void ObjectHighwayGreenD(struct task *tp);
 void ObjectFence02(struct task *tp);
 void ObjectPinPin(struct task *tp);
 void ObjectHighwayClight(struct task *tp);
+void DrawA(struct task *tp);
+void DrawB(struct task *tp);
 void ObjectHighwayNeonRegular(struct task *tp);
 void ObjectFence(struct task *tp);
 void FUN_00825de0(struct task *param_1);

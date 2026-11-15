@@ -17,9 +17,45 @@ static void Exit(struct task *tp)
 	WithdrawCollisionEntry(tp, var2);
 }
 
-// STUB: SADX 0x00856f90
+// FUNCTION: SADX 0x00856f90
 static void Normal(struct task *tp)
 {
+	struct taskwk *var1;
+	struct obj *var2;
+
+	var1 = tp->twp;
+	var2 = (struct obj *)var1->counter.ptr;
+	if (CheckRangeOut(tp) == 0)
+	{
+		if (CheckCollisionP(&var1->pos, var2->model->r + 20.0f) != 0)
+		{
+			var1->flag |= 0x100;
+		}
+		else
+		{
+			var1->flag &= 0xfeff;
+		}
+		if (dsCheckViewV(&var1->pos, 30.0f) != 0)
+		{
+			njPushMatrix(NULL);
+			njTranslateV(NULL, &var1->pos);
+			if (var1->ang.z != 0)
+			{
+				njRotateZ(NULL, (unsigned short)var1->ang.z);
+			}
+			if (var1->ang.x != 0)
+			{
+				njRotateX(NULL, (unsigned short)var1->ang.x);
+			}
+			if (var1->ang.y != 0)
+			{
+				njRotateY(NULL, (unsigned short)var1->ang.y);
+			}
+			SetObjectTexture();
+			ds_DrawModelClip(var2->model, 1.0f);
+			njPopMatrix(1);
+		}
+	}
 }
 
 // FUNCTION: SADX 0x00857080

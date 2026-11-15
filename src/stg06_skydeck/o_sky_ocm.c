@@ -1,4 +1,5 @@
 #include "decls.h"
+extern "C" double fabs(double param_1);
 extern char DAT_060d0db8[0x3c];
 extern char DAT_060d0df8[0x4b0];
 void ObjectSkydeck_OCM(struct task *tp);
@@ -53,10 +54,49 @@ struct OCMDATA *OCMsearchRideobj()
     return NULL;
 }
 
-// STUB: SADX 0x0084c3e0
+// FUNCTION: SADX 0x0084c3e0
 struct OCMDATA *OCMsearchNearobjByTypePosRangeFlagmask(signed char stype, struct NJS_POINT3 *spos, float range, float rangey, signed char sflag, signed char mask)
 {
-	return (struct OCMDATA *)0;
+	char *var1 = DAT_060d0df8;
+	int var2;
+	float var3;
+	float var4;
+	float var5;
+	float var6;
+
+	var3 = spos->x;
+	var4 = spos->y;
+	var5 = spos->z;
+	for (var2 = 0; var2 < 0x64; var2++)
+	{
+		if (*(int *)var1 != 0)
+		{
+			if (*(char *)(var1 + 0xa) == stype)
+			{
+				if ((*(char *)(var1 + 9) & mask) == (sflag & mask))
+				{
+					var6 = *(float *)(*(int *)var1 + 0x20) - var3;
+					var6 = fabs(var6);
+					if (var6 < range)
+					{
+						var6 = *(float *)(*(int *)var1 + 0x28) - var5;
+						var6 = fabs(var6);
+						if (var6 < range)
+						{
+							var6 = *(float *)(*(int *)var1 + 0x24) - var4;
+							var6 = fabs(var6);
+							if (var6 < rangey)
+							{
+								return (struct OCMDATA *)var1;
+							}
+						}
+					}
+				}
+			}
+		}
+		var1 += 0xc;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x0084c4d0

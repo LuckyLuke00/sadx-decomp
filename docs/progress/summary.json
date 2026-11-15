@@ -58566,9 +58566,9 @@
   {
    "address": "0x00809e00",
    "name": "Draw(5)",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -59765,7 +59765,23 @@
   },
   {
    "address": "0x00820210",
-   "name": "Draw(struct task *)",
+   "name": "Draw(11)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008205e0",
+   "name": "Norm(2)",
+   "accuracy": 0.06382978723404255,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00820710",
+   "name": "ObjectHighwayBaketu",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59782,6 +59798,22 @@
   {
    "address": "0x00820810",
    "name": "DrawB",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00820880",
+   "name": "ObjectHighwayKanbanA",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00820920",
+   "name": "ObjectHighwayKanbanB",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59965,7 +59997,7 @@
   },
   {
    "address": "0x00822190",
-   "name": "Norm(2)",
+   "name": "Norm(3)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60757,7 +60789,7 @@
   },
   {
    "address": "0x008320b0",
-   "name": "Norm(3)",
+   "name": "Norm(4)",
    "accuracy": 0.02631578947368421,
    "effective": false,
    "stub": true,
@@ -62358,9 +62390,9 @@
   {
    "address": "0x0084c3e0",
    "name": "OCMsearchNearobjByTypePosRangeFlagmask",
-   "accuracy": 0.043478260869565216,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -63158,9 +63190,9 @@
   {
    "address": "0x00856f90",
    "name": "Normal(11)",
-   "accuracy": 0.024390243902439025,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -63484,6 +63516,22 @@
    "library": false
   },
   {
+   "address": "0x0085dc90",
+   "name": "Normal(13)",
+   "accuracy": 0.02197802197802198,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0085ddb0",
+   "name": "ObjectKuguri",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0085de40",
    "name": "Disp2(2)",
    "accuracy": 0.02631578947368421,
@@ -63517,7 +63565,7 @@
   },
   {
    "address": "0x0085e000",
-   "name": "Normal(13)",
+   "name": "Normal(14)",
    "accuracy": 0.02666666666666667,
    "effective": false,
    "stub": true,
@@ -63621,7 +63669,7 @@
   },
   {
    "address": "0x00860c00",
-   "name": "Normal(14)",
+   "name": "Normal(15)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63669,7 +63717,7 @@
   },
   {
    "address": "0x00860e50",
-   "name": "Normal(15)",
+   "name": "Normal(16)",
    "accuracy": 0.013888888888888888,
    "effective": false,
    "stub": true,
@@ -65965,7 +66013,7 @@
   },
   {
    "address": "0x0087f6d0",
-   "name": "Normal(16)",
+   "name": "Normal(17)",
    "accuracy": 0.037037037037037035,
    "effective": false,
    "stub": true,
@@ -65989,7 +66037,7 @@
   },
   {
    "address": "0x0087f840",
-   "name": "Normal(17)",
+   "name": "Normal(18)",
    "accuracy": 0.03125,
    "effective": false,
    "stub": true,
@@ -66021,7 +66069,7 @@
   },
   {
    "address": "0x0087fc80",
-   "name": "Normal(18)",
+   "name": "Normal(19)",
    "accuracy": 0.045454545454545456,
    "effective": false,
    "stub": true,
@@ -66069,7 +66117,7 @@
   },
   {
    "address": "0x0087ff90",
-   "name": "Normal(19)",
+   "name": "Normal(20)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -66093,7 +66141,7 @@
   },
   {
    "address": "0x008803b0",
-   "name": "Normal(20)",
+   "name": "Normal(21)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66141,7 +66189,7 @@
   },
   {
    "address": "0x00880650",
-   "name": "Normal(21)",
+   "name": "Normal(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66165,7 +66213,7 @@
   },
   {
    "address": "0x00880790",
-   "name": "Normal(22)",
+   "name": "Normal(23)",
    "accuracy": 0.08695652173913043,
    "effective": false,
    "stub": true,
@@ -66229,7 +66277,7 @@
   },
   {
    "address": "0x008823d0",
-   "name": "Normal(23)",
+   "name": "Normal(24)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66253,7 +66301,7 @@
   },
   {
    "address": "0x00882510",
-   "name": "Normal(24)",
+   "name": "Normal(25)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -66317,7 +66365,7 @@
   },
   {
    "address": "0x00882ea0",
-   "name": "Normal(25)",
+   "name": "Normal(26)",
    "accuracy": 0.0,
    "effective": false,
    "stub": true,
@@ -66629,7 +66677,7 @@
   },
   {
    "address": "0x00887da0",
-   "name": "Normal(26)",
+   "name": "Normal(27)",
    "accuracy": 0.03636363636363636,
    "effective": false,
    "stub": true,
@@ -66645,7 +66693,7 @@
   },
   {
    "address": "0x00887ea0",
-   "name": "Normal(27)",
+   "name": "Normal(28)",
    "accuracy": 0.012121212121212121,
    "effective": false,
    "stub": true,
@@ -99610,6 +99658,13 @@
    "library": false
   },
   {
+   "address": "0x03b35004",
+   "name": "action_wvobj_tree",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03b3805c",
    "name": "object_windobj_haneobj_a_haneobj_a",
    "size": 52,
@@ -100107,6 +100162,13 @@
    "library": false
   },
   {
+   "address": "0x03e446f4",
+   "name": "object_knbn_01_kanban01_kanban01",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03e44b28",
    "name": "model_knbn_02_kanban02_kanban02",
    "size": 44,
@@ -100114,9 +100176,23 @@
    "library": false
   },
   {
+   "address": "0x03e44b54",
+   "name": "object_knbn_02_kanban02_kanban02",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x03e44dbc",
    "name": "model_ss_bkt_bkt_bkt_bkt",
    "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03e44de8",
+   "name": "object_ss_bkt_bkt_bkt_bkt",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -100402,6 +100478,20 @@
   },
   {
    "address": "0x03e71b54",
+   "name": "object_c_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03e71b84",
+   "name": "object_c_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x03e71bbc",
    "name": "object_c_info",
    "size": 48,
    "match": false,
@@ -101720,6 +101810,13 @@
    "address": "0x045d9f51",
    "name": "DAT_045d9f51",
    "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x045d9f54",
+   "name": "object_c_info",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -105072,5 +105169,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "8cac98714e4d4b89706a4987f966f7cad592fcb0bf77b11519c58374e3ec2355"
+ "inputs_sha256": "698baba8974feeea7e0eb8b1c6c0d27e639110d8d28c52493684e35b1755b326"
 }

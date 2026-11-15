@@ -3179,6 +3179,9 @@ struct obj object_windobj_saku_b_saku_b[1];
 // GLOBAL: SADX 0x03b32804
 struct obj object_windobj_saku_c_saku_c[1];
 
+// GLOBAL: SADX 0x03b35004
+struct NJS_ACTION action_wvobj_tree[1];
+
 // GLOBAL: SADX 0x03b3805c
 struct obj object_windobj_haneobj_a_haneobj_a[1];
 
@@ -3359,11 +3362,20 @@ struct obj object_ss_sign1_sign1[1];
 // GLOBAL: SADX 0x03e446c8
 struct NJS_MODEL model_knbn_01_kanban01_kanban01[1];
 
+// GLOBAL: SADX 0x03e446f4
+struct obj object_knbn_01_kanban01_kanban01[1];
+
 // GLOBAL: SADX 0x03e44b28
 struct NJS_MODEL model_knbn_02_kanban02_kanban02[1];
 
+// GLOBAL: SADX 0x03e44b54
+struct obj object_knbn_02_kanban02_kanban02[1];
+
 // GLOBAL: SADX 0x03e44dbc
 struct NJS_MODEL model_ss_bkt_bkt_bkt_bkt[1];
+
+// GLOBAL: SADX 0x03e44de8
+struct obj object_ss_bkt_bkt_bkt_bkt[1];
 
 // GLOBAL: SADX 0x03e45194
 struct NJS_MODEL model_ss_bkt_huta_bkt_huta[1];
