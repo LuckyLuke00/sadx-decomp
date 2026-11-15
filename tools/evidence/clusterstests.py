@@ -51,6 +51,10 @@ def check_complete_linkage() -> list[str]:
     at_cut = table({("a", "b"): 0.5})
     if clusters.complete_linkage(["b", "x", "a"], at_cut, 0.5) != [["b", "a"], ["x"]]:
         failures.append("a pair at the cut merges, and clusters keep the item order")
+    tie = table({("a", "b"): 0.7, ("b", "c"): 0.7})
+    ties = [clusters.complete_linkage(order, tie, 0.5) for order in (list("abc"), list("cba"))]
+    if ties != [[["a", "b"], ["c"]], [["c", "b"], ["a"]]]:
+        failures.append(f"a tie goes to the pair that comes first: got {ties}")
     tight = table({(first, second): 0.8 for first in "abcd" for second in "abcd" if first < second})
     if clusters.complete_linkage(list("dcba"), tight, 0.5) != [list("dcba")]:
         failures.append("four alike items are one cluster")

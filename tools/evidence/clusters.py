@@ -56,18 +56,25 @@ def _parts(items: list, similarity, cut: float) -> list[list]:
     return list(parts.values())
 
 
+def _closest(alive: list, link: dict, cut: float) -> tuple | None:
+    """The most similar pair of the ALIVE clusters at CUT or over, as (similarity, first, second), or None. A tie goes
+    to the pair that comes first."""
+    best = None
+    for position, first in enumerate(alive):
+        for second in alive[position + 1:]:
+            value = link[first, second]
+            if value >= cut and (best is None or value > best[0]):
+                best = (value, first, second)
+    return best
+
+
 def _merged(items: list, similarity, cut: float) -> list[list]:
     clusters = [[item] for item in items]
     link = {(first, second): similarity(items[first], items[second])
             for first in range(len(items)) for second in range(first + 1, len(items))}
     alive = list(range(len(items)))
     while True:
-        best = None
-        for position, first in enumerate(alive):
-            for second in alive[position + 1:]:
-                value = link[first, second]
-                if value >= cut and (best is None or value > best[0]):
-                    best = (value, first, second)
+        best = _closest(alive, link, cut)
         if best is None:
             return [clusters[index] for index in alive]
         _, kept, gone = best
