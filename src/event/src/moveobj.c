@@ -79,6 +79,45 @@ void moveObject(struct task *obj, float st_x, float st_y, float st_z, float end_
 {
 }
 
+// FUNCTION: SADX 0x007d1870
+void moveObjectOn(struct task *obj, float far_x, float far_y, float far_z, int frame, struct task *dest_obj)
+{
+	int var1;
+	struct task *var2;
+	struct taskwk *var3;
+	struct taskwk *var4;
+
+	var1 = FUN_007d0bd0();
+	if (var1 < 0)
+	{
+		return;
+	}
+	var2 = CreateElementalTask(2, 5, initMoveObjTask);
+	DAT_060cbfb4[var1] = (int)var2;
+	var3 = (struct taskwk *)MAlloc(0x6c);
+	var4 = ((struct task *)DAT_060cbfb4[var1])->twp;
+	*(void **)((char *)var4 + 0x10) = var3;
+	var4->pos.x = obj->twp->pos.x;
+	var4->pos.y = obj->twp->pos.y;
+	var4->pos.z = obj->twp->pos.z;
+	*(int *)((char *)var3 + 0x38) = (int)obj->twp->ang.x;
+	*(int *)((char *)var3 + 0x3c) = (int)obj->twp->ang.y;
+	*(int *)((char *)var3 + 0x40) = (int)obj->twp->ang.z;
+	*(float *)((char *)var3 + 0x2c) = far_x;
+	*(float *)((char *)var3 + 0x30) = far_y;
+	*(float *)((char *)var3 + 0x34) = far_z;
+	*(struct task **)((char *)var3 + 0x00) = obj;
+	*(struct task **)((char *)var3 + 0x04) = dest_obj;
+	*(int *)((char *)var3 + 0x60) = frame;
+	*(int *)((char *)var3 + 0x64) = 0;
+	*(int *)((char *)var3 + 0x68) = var1;
+	var2 = (struct task *)DAT_060cbfb4[var1];
+	if (var2)
+	{
+		var2->twp->mode = 7;
+	}
+}
+
 // FUNCTION: SADX 0x007d1bd0
 void moveObjectRightHand(struct task *obj, int player_no, float far_x, float far_y, float far_z, int frame)
 {

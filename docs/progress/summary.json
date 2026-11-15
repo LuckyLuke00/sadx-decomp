@@ -27612,9 +27612,9 @@
   {
    "address": "0x0056cbf0",
    "name": "EV_CameraAng",
-   "accuracy": 0.2962962962962963,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -53049,6 +53049,14 @@
    "accuracy": 0.02631578947368421,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x007d1870",
+   "name": "moveObjectOn",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -104882,5 +104890,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "07f061a02a8673676802d7e35c45e83538c5164795cdaec96587df1c798175a3"
+ "inputs_sha256": "2eca2177e49270baed9b9b8e9a8f7cfd66ced4c4c03bdb52a6b8f29e6638d56e"
 }

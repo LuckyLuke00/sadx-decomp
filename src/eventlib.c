@@ -1010,9 +1010,17 @@ void FUN_0056cb30(float *param_1, float *param_2, int *param_3)
 {
 }
 
-// STUB: SADX 0x0056cbf0
+// FUNCTION: SADX 0x0056cbf0
 void EV_CameraAng(int mode, int time, long x, long y, long z)
 {
+	int *local_8;
+
+	local_8 = (int *)&DAT_05ccdd28;
+	*(char *)((char *)local_8 + 1) = (char)mode;
+	*(long *)((char *)local_8 + 0x48) = x;
+	*(long *)((char *)local_8 + 0x4c) = y;
+	*(long *)((char *)local_8 + 0x50) = z;
+	FUN_0056cc30(time);
 }
 
 // STUB: SADX 0x0056cc30
