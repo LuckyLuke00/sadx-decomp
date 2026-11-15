@@ -334,6 +334,14 @@ def check_with_renames_names() -> list[str]:
     return failures
 
 
+def check_with_renames_order() -> list[str]:
+    """The renames of one kind come back in name order, whatever the hash seed: their order is in the feedback that
+    the model sees, so a seeded prompt must not change between runs."""
+    text = "error C3861: 'sqrtf': x\nerror C3861: '_CIsin': x\nerror C3861: '__builtin_memcpy': x"
+    found = list(llm.with_renames([], ["sqrtf(1); _CIsin(2); __builtin_memcpy(3);"], text, "")[2])
+    return [] if found == sorted(found) else [f"with_renames gives the renames in the order {found}"]
+
+
 def check_with_renames_ftol() -> list[str]:
     """A float to int helper that the build flags and the code uses loses its declaration, and the function calls
     become casts, with the renames of the same try: the renames list it as `(long)`. A helper that the build
@@ -603,8 +611,8 @@ def run() -> list[str]:
               check_definition_block, check_stub_functions_wrap, check_stub_functions_keeps_globals,
               check_stub_functions_whole_structs,
               check_cast_calls, check_one_edit_apart,
-              check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_ftol,
-              check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime, check_with_earlier,
-              check_without_declarations, check_tool_lines, check_about_reply, check_build_errors, check_error_count,
-              check_names_only]
+              check_short_globals, check_ftol_casts, check_with_renames_names, check_with_renames_order,
+              check_with_renames_ftol, check_cast_globals, check_runtime_line, check_undeclared, check_with_runtime,
+              check_with_earlier, check_without_declarations, check_tool_lines, check_about_reply, check_build_errors,
+              check_error_count, check_names_only]
     return [failure for check in checks for failure in check()]

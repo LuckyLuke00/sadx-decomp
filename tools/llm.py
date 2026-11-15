@@ -879,7 +879,7 @@ def short_globals(flagged, prompt):
     to match: the digits with zeros in front, else the only address one edit apart."""
     known = {(a or b).rjust(8, "0") for a, b in PROMPT_GLOBAL.findall(prompt)}
     fixes = {}
-    for name in flagged:
+    for name in sorted(flagged):
         m = SHORT_GLOBAL.match(name)
         if m:
             padded = m.group(1).rjust(8, "0")
@@ -912,8 +912,8 @@ def with_renames(decls, func, text, prompt):
     flagged = undeclared(text) | set(UNRESOLVED_VARIABLE.findall(text))
     renames = dict(ALIAS.findall(text))
     renames.update(short_globals(flagged, prompt))
-    renames.update({name: RUNTIME_SYNONYMS[name] for name in flagged & RUNTIME_SYNONYMS.keys()})
-    renames.update({name: GHIDRA_TYPES[name] for name in flagged & GHIDRA_TYPES.keys()})
+    renames.update({name: RUNTIME_SYNONYMS[name] for name in sorted(flagged & RUNTIME_SYNONYMS.keys())})
+    renames.update({name: GHIDRA_TYPES[name] for name in sorted(flagged & GHIDRA_TYPES.keys())})
     used = set(re.findall(r"\w+", "\n".join(decls + func)))
     renames = {old: new for old, new in renames.items() if old in used}
     ftol = flagged & set(FTOL_NAMES) & used
