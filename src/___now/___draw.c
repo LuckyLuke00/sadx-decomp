@@ -1870,8 +1870,9 @@ void late_ActionEx(NJS_ACTION *action, float frame, int flgs)
 
 // DIFF: frame: the original frame has 28 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004a8a80
-void late_ActionClipEx(NJS_ACTION *action, float frame, int flgs, float clipScl)
+void late_ActionClipEx(struct NJS_ACTION *action, float frame, int flgs, float clipScl)
 {
+	char local_24[28];
 	DrawAction(action, frame, flgs, clipScl, (void *)DrawModelEx);
 }
 

@@ -3440,6 +3440,7 @@ extern int DAT_06299468;
 extern char *DAT_0629948c;
 extern char *DAT_06299490;
 extern int DAT_062994b8;
+extern char DAT_0629c100[256];
 extern int DAT_0629c200;
 extern Magic::Base::Singleton<SOCSystem> DAT_0629c338;
 extern int DAT_0629c3b0;

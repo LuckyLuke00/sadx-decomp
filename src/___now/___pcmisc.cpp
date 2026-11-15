@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <stdarg.h>
 #include <stdio.h>
+extern char DAT_0629c100[256];
 extern unsigned char DAT_05b39db0;
 extern int zcompflag;
 
@@ -9,9 +10,12 @@ void FUN_00422560(int param_1);
 // GLOBAL: SADX 0x05ab1564
 int zcompflag;
 
-// STUB: SADX 0x00404ef0
+// FUNCTION: SADX 0x00404ef0
 void ___OutputDebugString(char *str, ...)
 {
+	va_list var1;
+	va_start(var1, str);
+	vsprintf(DAT_0629c100, str, var1);
 }
 
 // STUB: SADX 0x00404f10

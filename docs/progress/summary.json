@@ -140,9 +140,9 @@
   {
    "address": "0x00404ef0",
    "name": "___OutputDebugString",
-   "accuracy": 0.2222222222222222,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -15228,10 +15228,11 @@
   {
    "address": "0x004a8a80",
    "name": "late_ActionClipEx",
-   "accuracy": 0.9444444444444444,
+   "accuracy": 0.9473684210526315,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": false,
+   "trick": true
   },
   {
    "address": "0x004a8ab0",
@@ -105256,5 +105257,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "f1b9ddcf0809a6762c817f654199032b899a35fd62303f00d26a411480c2d23e"
+ "inputs_sha256": "784cd38bcd610afb696b94cbfc1b2188a949fa572af70dda26bb950b9b684afe"
 }

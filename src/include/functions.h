@@ -818,7 +818,7 @@ void DrawAction(struct NJS_ACTION *action, float frame, int flgs, float clpScl, 
 void ds_ActionClip(NJS_ACTION *action, float frame, float clipScl);
 void late_ActionClip(NJS_ACTION *action, float frame, int flgs, float clipScl);
 void late_ActionEx(NJS_ACTION *action, float frame, int flgs);
-void late_ActionClipEx(NJS_ACTION *action, float frame, int flgs, float clipScl);
+void late_ActionClipEx(struct NJS_ACTION *action, float frame, int flgs, float clipScl);
 void late_ActionMS(NJS_ACTION *action, float frame, int flgs);
 void late_ActionClipMS(NJS_ACTION *action, float frame, int flgs, float clipScl);
 void late_ActionMesh(NJS_ACTION *action, float frame, int flgs);
