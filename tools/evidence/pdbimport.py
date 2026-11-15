@@ -73,6 +73,8 @@ TAGS = {LF_CLASS: "class", LF_STRUCTURE: "struct", LF_UNION: "union", LF_ENUM: "
 SIZE_AT = {LF_CLASS: 18, LF_STRUCTURE: 18, LF_UNION: 10}  # the offset of the size of a class, struct or union
 ARGUMENT_LISTS = {LF_PROCEDURE: 10, LF_MFUNCTION: 18}  # the offset of the argument list of a function type
 FORWARD = 0x80  # the property bit of a forward reference
+PROPERTY_AT = 4  # the offset of the property bits of a class, struct, union or enum
+ENUM_FIELDS_AT = 10  # the offset of the field list of an enum
 POINTER_MARKS = {0: "*", 1: "&", 4: "&&"}  # pointer mode -> mark
 MEMBER_MODES = (2, 3)  # pointer to data member, pointer to member function
 POINTER_QUALIFIERS = ((1 << 10, "const"), (1 << 9, "volatile"))
@@ -248,7 +250,8 @@ class Types:
         self.end = tpi.u32(12)
         record_bytes = tpi.u32(16)
         tpi.check(header_size, record_bytes)
-        self.records = list(_type_records(tpi, header_size, header_size + record_bytes))
+        self.records = [tpi.data[offset + 2:end]
+                        for offset, end in _records(tpi, header_size, header_size + record_bytes, "records")]
         if len(self.records) != self.end - self.begin:
             raise PdbError(f"{tpi.name}: the header says {self.end - self.begin} records, the stream holds "
                            f"{len(self.records)}")
@@ -257,10 +260,10 @@ class Types:
         for index in range(self.begin, self.end):
             record = self.record(index)
             kind = record.u16(0)
-            if kind not in TAGS or record.u16(4) & FORWARD:
+            if kind not in TAGS or _is_forward(record):
                 continue
             if kind == LF_ENUM:
-                self.enum_fields.setdefault(_tag_name(record), []).append(record.u32(10))
+                self.enum_fields.setdefault(_tag_name(record), []).append(record.u32(ENUM_FIELDS_AT))
             else:
                 self.sizes.setdefault(_tag_name(record), set()).add(record.integer(SIZE_AT[kind])[0])
 
@@ -281,7 +284,7 @@ class Types:
             if self.kind(index) != LF_MODIFIER:
                 return index
             index = self.record(index).u32(2)
-        raise PdbError(f"{self.name}: type {index:#x} nests deeper than {MAX_DEPTH} levels")
+        raise self._too_deep(index)
 
     def enum_name(self, index: int) -> str:
         """`enum NAME` for the enum record INDEX."""
@@ -296,8 +299,8 @@ class Types:
         None when the enum has no single definition."""
         record = self.record(index)
         name = _tag_name(record)
-        if not record.u16(4) & FORWARD:
-            return self._fields(record.u32(10), f"enum {name}")
+        if not _is_forward(record):
+            return self._fields(record.u32(ENUM_FIELDS_AT), f"enum {name}")
         definitions = self.enumerators(name)
         return definitions[0] if len(definitions) == 1 else None
 
@@ -323,8 +326,10 @@ class Types:
         slots = [self.slot(record.u32(2))] + [self.slot(parameter) for parameter in parameters]
         return tuple(slots + [symbols.VARIADIC] if variadic else slots)
 
-    def size(self, index: int) -> int | None:
+    def size(self, index: int, depth: int = 0) -> int | None:
         """The size of type INDEX in bytes; None when unknown."""
+        if depth > MAX_DEPTH:
+            raise self._too_deep(index)
         index = self.unmodified(index)
         if index < self.begin:
             return _simple_size(index)
@@ -335,10 +340,10 @@ class Types:
         if kind == LF_ARRAY:
             return record.integer(10)[0]
         if kind == LF_ENUM:
-            return self.size(record.u32(6))
+            return self.size(record.u32(6), depth + 1)
         if kind not in SIZE_AT:
             return None
-        if not record.u16(4) & FORWARD:
+        if not _is_forward(record):
             return record.integer(SIZE_AT[kind])[0]
         sizes = self.sizes.get(_tag_name(record), set())
         return next(iter(sizes)) if len(sizes) == 1 else None
@@ -346,7 +351,7 @@ class Types:
     def _parts(self, index: int, depth: int) -> tuple[str, str]:
         """The spelling of type INDEX split where a declarator would go: `float (*` and `)[16]`."""
         if depth > MAX_DEPTH:
-            raise PdbError(f"{self.name}: type {index:#x} nests deeper than {MAX_DEPTH} levels")
+            raise self._too_deep(index)
         if index < self.begin:
             return _simple(index), ""
         record = self.record(index)
@@ -388,7 +393,7 @@ class Types:
         attributes = record.u32(6)
         mode = (attributes >> 5) & 7
         if mode in MEMBER_MODES:
-            mark = self._class_name(record.u32(10)) + "::*"
+            mark = self._class_name(record.u32(10), depth) + "::*"
         elif mode in POINTER_MARKS:
             mark = POINTER_MARKS[mode]
         else:
@@ -399,12 +404,15 @@ class Types:
             return f"{left}{_joint(left)}({mark}", f"){right}"
         return f"{left}{_joint(left)}{mark}", right
 
-    def _class_name(self, index: int) -> str:
+    def _class_name(self, index: int, depth: int) -> str:
         """The name of the class that a member pointer belongs to."""
         index = self.unmodified(index)
         if self.kind(index) in SIZE_AT:
             return _tag_name(self.record(index))
-        return self.spell(index)
+        return self.spell(index, depth + 1)
+
+    def _too_deep(self, index: int) -> PdbError:
+        return PdbError(f"{self.name}: type {index:#x} nests deeper than {MAX_DEPTH} levels")
 
     def _count(self, record: Reader) -> int | str:
         """The element count of an array record; `?` when the element size is unknown."""
@@ -461,14 +469,21 @@ class Types:
         return tuple(members)
 
 
-def _type_records(tpi: Reader, offset: int, stop: int):
-    """The kind and data of each type record from OFFSET to STOP."""
+def _records(reader: Reader, offset: int, stop: int, what: str):
+    """(start, end) of each record from OFFSET to STOP, its 2-byte length included. WHAT names the records in the
+    error for a record that runs past STOP."""
     while offset < stop:
-        length = tpi.u16(offset) if offset + 4 <= stop else 0
-        if length < 2 or offset + 2 + length > stop:
-            raise PdbError(f"{tpi.name}: the record at offset {offset:#x} runs past the end of the records")
-        yield tpi.data[offset + 2:offset + 2 + length]
-        offset += 2 + length
+        length = reader.u16(offset) if offset + 4 <= stop else 0
+        end = offset + 2 + length
+        if length < 2 or end > stop:
+            raise PdbError(f"{reader.name}: the record at offset {offset:#x} runs past the end of the {what}")
+        yield offset, end
+        offset = end
+
+
+def _is_forward(record: Reader) -> bool:
+    """Whether a class, struct, union or enum record is a forward reference."""
+    return bool(record.u16(PROPERTY_AT) & FORWARD)
 
 
 def _tag_name(record: Reader) -> str:
@@ -564,13 +579,10 @@ def _module_functions(stream: Reader, size: int, types: Types, sections: list, c
     if signature != C13:
         raise PdbError(f"{stream.name}: signature {signature} is not supported: only C13 ({C13})")
     stream.check(0, size)
-    scopes, current, constants = [], None, []  # the kind of each open scope, innermost last
-    offset = 4
-    while offset < size:
-        length = stream.u16(offset) if offset + 4 <= size else 0
-        end = offset + 2 + length
-        if length < 2 or end > size:
-            raise PdbError(f"{stream.name}: the record at offset {offset:#x} runs past the end of the symbols")
+    scopes = []  # the kind of each open scope, innermost last
+    current = None  # (RVA, name, slots) of the open top-level procedure, when it is kept
+    constants = []  # the scope constants of the open top-level procedure
+    for offset, end in _records(stream, 4, size, "symbols"):
         kind = stream.u16(offset + 2)
         if kind in ID_PROCEDURES:
             raise PdbError(f"{stream.name}: the procedure at offset {offset:#x} keeps its type in the IPI stream "
@@ -591,7 +603,6 @@ def _module_functions(stream: Reader, size: int, types: Types, sections: list, c
             constant = _constant(_record(stream, offset, end), types, counts)
             if constant is not None:
                 constants.append(constant)
-        offset = end
     if scopes:
         raise PdbError(f"{stream.name}: the symbols end inside an open scope ({len(scopes)} deep)")
 
@@ -705,6 +716,8 @@ def import_file(source: Path, mapping: Path | None, folder: Path) -> Counter:
 
 
 def _write(kept: dict, types: Types, folder: Path, counts: Counter) -> None:
+    """Writes the three symbol files of the KEPT functions to FOLDER, and adds what it writes and leaves out to
+    COUNTS."""
     prototypes, scopes = [], []
     for address in sorted(kept):
         function, text = kept[address], f"0x{address:08x}"

@@ -81,6 +81,14 @@ def msf(streams: list, block_size: int = 512) -> bytes:
     return b"".join(blocks)
 
 
+def tpi_stream(types: bytes, count: int, version: int = 20040203, declared: int | None = None) -> bytes:
+    """A TPI stream of COUNT type records, TYPES. DECLARED is the record byte count in the header, len(TYPES) by
+    default."""
+    size = len(types) if declared is None else declared
+    return struct.pack("<5I2H8I", version, 56, 0x1000, 0x1000 + count, size, NO_STREAM, NO_STREAM, 4,
+                       *[0] * 7) + types
+
+
 def module_record(stream: int, size: int, path: str) -> bytes:
     """A module record of the DBI stream: the 64-byte header, the module and object names, zeros to 4 bytes."""
     data = struct.pack("<I28sHHIIIH2xIII", 0, bytes(28), 0, stream, size, 0, 0, 0, 0, 0, 0) + name(path) * 2
@@ -107,9 +115,7 @@ class Pdb:
 
     def streams(self) -> list:
         """The old directory, info, TPI, DBI, IPI (nil), section header and module streams."""
-        types = records(self.types)
-        tpi = struct.pack("<5I2H8I", self.versions["tpi"], 56, 0x1000, 0x1000 + len(self.types), len(types),
-                          NO_STREAM, NO_STREAM, 4, *[0] * 7) + types
+        tpi = tpi_stream(records(self.types), len(self.types), self.versions["tpi"])
         module = struct.pack("<I", self.versions["module"]) + records(self.symbols)
         modules = module_record(NO_STREAM, 0, "ab.obj") + module_record(6, len(module), "xx.obj")
         debug = struct.pack(f"<{len(self.debug)}H", *self.debug)
@@ -160,8 +166,9 @@ def fieldlist(pdb: Pdb, *members: bytes) -> int:
     return pdb.type(LF_FIELDLIST, b"".join(members))
 
 
-def enum_of(pdb: Pdb, text: str, fields: int, count: int = 0, forward: bool = False) -> int:
-    return pdb.type(LF_ENUM, struct.pack("<HHII", count, 0x80 if forward else 0, T_INT4, fields) + name(text))
+def enum_of(pdb: Pdb, text: str, fields: int, count: int = 0, forward: bool = False,
+            underlying: int = T_INT4) -> int:
+    return pdb.type(LF_ENUM, struct.pack("<HHII", count, 0x80 if forward else 0, underlying, fields) + name(text))
 
 
 def enum(pdb: Pdb, text: str, enumerators: tuple = (), forward: bool = False) -> int:
@@ -223,6 +230,12 @@ def imported(pdb: Pdb, mapping: str | None = None):
             return str(error)
         texts = {file: (out / file).read_bytes().decode("utf-8") for file in symbols.FILES}
         return {key: value for key, value in counts.items() if value}, texts, symbols.load(out)
+
+
+def expect_import_error(pdb: Pdb, message: str, mapping: str | None = None) -> list[str]:
+    """No failure when importing PDB (with MAPPING) fails with an error that holds MESSAGE."""
+    got = imported(pdb, mapping)
+    return [] if isinstance(got, str) and message in got else [f"import {got!r}, want {message!r}"]
 
 
 # Checks
@@ -320,9 +333,7 @@ def check_versions() -> list[str]:
             ("module", 1, "x.pdb: module stream 6: signature 1 is not supported: only C13 (4)")):
         pdb = Pdb()
         pdb.versions[key] = value
-        got = imported(pdb)
-        if not isinstance(got, str) or message not in got:
-            failures.append(f"{key} version {value}: {got!r}, want {message!r}")
+        failures += expect_import_error(pdb, message)
     return failures
 
 
@@ -331,9 +342,7 @@ def check_types() -> list[str]:
     one = records([struct.pack("<HIH", LF_MODIFIER, T_INT4, CONST)])
 
     def tpi(declared: int, data: bytes, count: int) -> pdbimport.Reader:
-        header = struct.pack("<5I2H8I", 20040203, 56, 0x1000, 0x1000 + count, declared, NO_STREAM, NO_STREAM, 4,
-                             *[0] * 7)
-        return pdbimport.Reader(header + data, "t")
+        return pdbimport.Reader(tpi_stream(data, count, declared=declared), "t")
 
     types = pdbimport.Types(tpi(len(one), one, 1))
     if types.spell(0x1000) != "const int":
@@ -344,7 +353,8 @@ def check_types() -> list[str]:
                              "t: the record at offset 0x38 runs past the end of the records")
     failures += expect_error(lambda: pdbimport.Types(tpi(len(one), one, 2)),
                              "t: the header says 2 records, the stream holds 1")
-    failures += expect_error(lambda: types.record(0x1005), "t: type 0x1005 is outside the type records (0x1000 to 0x1000)")
+    failures += expect_error(lambda: types.record(0x1005),
+                             "t: type 0x1005 is outside the type records (0x1000 to 0x1000)")
     return failures
 
 
@@ -393,6 +403,11 @@ def check_spellings() -> list[str]:
     deep = T_INT4
     for _ in range(70):
         deep = pointer(pdb, deep)
+    own_enum = 0x1000 + len(pdb.types)
+    enum_of(pdb, "XX_SELF", 0, underlying=own_enum)
+    own_enum_array = array(pdb, own_enum, 4)
+    own_member = 0x1000 + len(pdb.types)
+    pointer(pdb, T_INT4, DATA_MEMBER, owner=own_member)
     types = types_of(pdb)
     for index, spelled in cases:
         if types.spell(index) != spelled:
@@ -401,6 +416,8 @@ def check_spellings() -> list[str]:
     if slots != ["enum XX_MODE", "enum XX_MODE *", "int"]:
         failures.append(f"slots {slots}")
     failures += expect_error(lambda: types.spell(deep), "nests deeper than 64 levels")
+    failures += expect_error(lambda: types.spell(own_enum_array), "nests deeper than 64 levels")
+    failures += expect_error(lambda: types.spell(own_member), "nests deeper than 64 levels")
     return failures
 
 
@@ -520,9 +537,10 @@ def check_balance() -> list[str]:
                          (open_scope, "module stream 6: the symbols end inside an open scope (1 deep)"),
                          (ids, "the procedure at offset 0x4 keeps its type in the IPI stream (kind 0x1147), which "
                                "this reader does not support")):
-        got = imported(pdb)
-        if not isinstance(got, str) or message not in got:
-            failures.append(f"symbols {got!r}, want {message!r}")
+        failures += expect_import_error(pdb, message)
+    short = pdbimport.Reader(struct.pack("<IHH", 4, 20, S_END), "s")
+    failures += expect_error(lambda: list(pdbimport._module_functions(short, len(short), None, [], None)),
+                             "s: the record at offset 0x4 runs past the end of the symbols")
     return failures
 
 
@@ -544,9 +562,7 @@ def check_map() -> list[str]:
                               "map.csv:3: target 0x00401000 is also at"),
                              ("ref,target\n", "map.csv: the columns must be reference,target"),
                              ("reference,target\nzz,0x1\n", "map.csv:2: 'zz' is not a hex address")):
-        got = imported(symbol_fixture(), mapping)
-        if not isinstance(got, str) or message not in got:
-            failures.append(f"map {mapping!r}: {got!r}, want {message!r}")
+        failures += expect_import_error(symbol_fixture(), message, mapping)
     with tempfile.TemporaryDirectory() as temp:
         failures += expect_error(lambda: pdbimport.read_map(Path(temp) / "none.csv"), "none.csv")
         failures += expect_error(lambda: pdbimport.import_file(Path(temp) / "x.pdb", None, Path(temp) / "missing"),
@@ -583,9 +599,7 @@ def check_dbi() -> list[str]:
                                 "not support"),
                          (bare, "x.pdb: DBI stream: the optional debug header names no section header stream"),
                          (unnamed, "x.pdb: DBI stream: the optional debug header names no section header stream")):
-        got = imported(pdb)
-        if not isinstance(got, str) or message not in got:
-            failures.append(f"debug header {pdb.debug}: {got!r}, want {message!r}")
+        failures += expect_import_error(pdb, message)
     return failures
 
 
