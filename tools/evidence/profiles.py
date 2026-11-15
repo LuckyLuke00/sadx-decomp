@@ -8,13 +8,16 @@ evaluator never guesses.
 
 Each profile says where its values come from. The msvc-vc10-x86 values come from a probe compiled with the VC10
 compiler (tools/evidence/probe.py); the probe's output is kept as test fixtures in tools/evidence/probe/, and
-cevaltests.py checks the evaluator and the predefines against them. The shc values are not probed and not yet checked against the SHC manual.
+cevaltests.py checks the evaluator and the predefines against them. The shc values are not probed and not yet checked
+against the SHC manual.
 
 Standard library only.
 """
 
 from dataclasses import dataclass, field
 from functools import cached_property
+
+from cdecls import QUALIFIERS
 
 UNSUPPORTED, WRAP, ARITHMETIC, BIG_ENDIAN = "unsupported", "wrap", "arithmetic", "big-endian"
 
@@ -41,12 +44,16 @@ class CType:
         return self.kind, self.bits, self.signed
 
 
+def _key(words) -> tuple:
+    """The built-in type table's key for a run of type keywords: the words in sorted order."""
+    return tuple(sorted(words))
+
+
 @dataclass(frozen=True)
 class Profile:
     name: str
     version: int
     language: str  # c or cpp
-    provenance: str
     char_signed: bool
     short_bits: int
     int_bits: int
@@ -68,10 +75,11 @@ class Profile:
     boolean_names: tuple = ("BOOL", "Bool", "bool")
     ignored_words: tuple = ()  # dropped, with a (...) group that follows: calling conventions, __declspec, SAL
     ignored_prefixes: tuple = ()  # dropped words that start with one of these, such as _In_
+    sized_int_words: bool = False  # MSVC's __int8, __int16, __int32 and __int64
 
     def builtin(self, words: tuple) -> CType | None:
         """The type that a run of type keywords spells, or None if it spells none."""
-        key = tuple(sorted(word for word in words if word not in ("const", "volatile")))
+        key = _key(word for word in words if word not in QUALIFIERS)
         return self.builtins.get(key)
 
     def int_type(self, name: str) -> CType:
@@ -86,7 +94,7 @@ class Profile:
     @cached_property
     def type_words(self) -> frozenset:
         """Every keyword that can start a type name."""
-        return frozenset(word for key in self.builtins for word in key) | {"const", "volatile"}
+        return frozenset(word for key in self.builtins for word in key) | QUALIFIERS
 
     @cached_property
     def builtins(self) -> dict:
@@ -106,24 +114,22 @@ class Profile:
                                         (("long", "long"), self.long_long_bits, 5, "long long")):
             signed = CType("int", bits, True, rank, name)
             unsigned = CType("int", bits, False, rank, "unsigned " + name)
-            variants = [words, words + ("signed",)]
-            if words != ("int",):
-                variants += [words + ("int",), words + ("int", "signed")]
-            for variant in variants:
-                table[tuple(sorted(variant))] = signed
-            for variant in (words + ("unsigned",), words + ("int", "unsigned")):
-                table[tuple(sorted(variant))] = unsigned
+            spellings = [words] if words == ("int",) else [words, words + ("int",)]  # short int, long int, ...
+            for spelling in spellings:
+                table[_key(spelling)] = signed
+                table[_key(spelling + ("signed",))] = signed
+                table[_key(spelling + ("unsigned",))] = unsigned
         table[("signed",)] = table[("int",)]
         table[("unsigned",)] = table[("int", "unsigned")]
         if self.language == "cpp":
             table[("bool",)] = CType("bool", 8, False, 0, "bool")
             table[("wchar_t",)] = self.wchar()
-        if self.name.startswith("msvc"):
+        if self.sized_int_words:
             for word, base in (("__int8", ("char",)), ("__int16", ("short",)), ("__int32", ("int",)),
                                ("__int64", ("long", "long"))):
-                table[(word,)] = table[tuple(sorted(base))]
-                table[tuple(sorted((word, "signed")))] = table[tuple(sorted(base))]
-                table[tuple(sorted((word, "unsigned")))] = table[tuple(sorted(base + ("unsigned",)))]
+                table[(word,)] = table[_key(base)]
+                table[_key((word, "signed"))] = table[_key(base)]
+                table[_key((word, "unsigned"))] = table[_key(base + ("unsigned",))]
         return table
 
 
@@ -145,26 +151,24 @@ SAL_PREFIXES = ("_In_", "_Out_", "_Inout_", "_Deref_", "_Pre_", "_Post_", "_Ret_
                 "_Reserved_", "_Field_", "_Struct_", "_When_", "_Success_", "_Null_", "_Notnull_", "_Maybenull_",
                 "_Outptr_", "_Frees_", "_Use_decl_", "_Always_", "_Analysis_", "_Must_inspect_", "_Translates_",
                 "__in_", "__out_", "__inout_", "__deref_", "__drv_", "__bcount", "__ecount", "__field_", "__struct_")
-VC10_PROVENANCE = ("probe: VC10 SP1 cl.exe, C and C++ mode; fixtures in tools/evidence/probe/vc10-*.json "
-                   "(values checked by cevaltests.py)")
-
-
+# Probed: VC10 SP1 cl.exe in C and C++ mode. The fixtures are tools/evidence/probe/vc10-*.json, and cevaltests.py
+# checks the values against them.
 def _vc10(language: str) -> Profile:
     predefines = dict(MSVC_PREDEFINES)
     if language == "cpp":
         predefines["__cplusplus"] = "199711L"
-    return Profile(name=f"msvc-vc10-x86-{language}", version=1, language=language, provenance=VC10_PROVENANCE,
+    return Profile(name=f"msvc-vc10-x86-{language}", version=1, language=language,
                    char_signed=True, short_bits=16, int_bits=32, long_bits=32, long_long_bits=64, pointer_bits=32,
                    wchar_bits=16, long_double_bits=64, size_type="unsigned int",
                    decimal_types=("int", "long", "unsigned long"),
                    extra_suffixes=("ll", "ull", "llu", "i64", "ui64"),
                    wide_types=("long long", "unsigned long long"), signed_overflow=WRAP, narrowing=WRAP,
                    signed_right_shift=ARITHMETIC, multichar=BIG_ENDIAN, pp_bits=64, predefines=predefines,
-                   ignored_words=MSVC_WORDS, ignored_prefixes=SAL_PREFIXES)
+                   ignored_words=MSVC_WORDS, ignored_prefixes=SAL_PREFIXES, sized_int_words=True)
 
 
+# Unchecked: not probed and not yet checked against the SHC manual.
 SHC = Profile(name="shc-c", version=1, language="c",
-              provenance="unchecked: not probed and not yet checked against the SHC manual",
               char_signed=True, short_bits=16, int_bits=32, long_bits=32, long_long_bits=64, pointer_bits=32,
               wchar_bits=16, long_double_bits=64, size_type="unsigned int",
               decimal_types=("int", "long", "unsigned long"), extra_suffixes=(), wide_types=(),
@@ -172,7 +176,8 @@ SHC = Profile(name="shc-c", version=1, language="c",
               narrowing=UNSUPPORTED, signed_right_shift=UNSUPPORTED, multichar=UNSUPPORTED, pp_bits=32,
               predefines={"__SHC__": "1"})
 
-PROFILES = {profile.name: profile for profile in (_vc10("cpp"), _vc10("c"), SHC)}
+VC10 = {language: _vc10(language) for language in ("cpp", "c")}
+PROFILES = {profile.name: profile for profile in (*VC10.values(), SHC)}
 
 
 def get(name: str) -> Profile:

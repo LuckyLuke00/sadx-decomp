@@ -6,7 +6,8 @@ character constants, strings and punctuators, and gives each token its line in t
 line starts a new logical line has `bol` set, so the header reader can find directives. Comments are not tokens;
 they come back apart, with their lines, so the source reader can find annotations.
 
-A trigraph (such as ??/) makes the text unsupported: tokenize() raises Unsupported. A quote with no closing quote is
+A trigraph (such as ??/) anywhere, in a comment or a string too, makes the text unsupported: tokenize() raises
+Unsupported. A quote with no closing quote is
 one punctuator token, as in text that a compiler skips, such as `#error don't`.
 
 drop_directives() and find_calls() are the shared scanning steps of the game source reader and the sample reader.
@@ -18,6 +19,7 @@ Standard library only.
 import bisect
 import re
 from dataclasses import dataclass
+from typing import NamedTuple
 
 PUNCTUATORS = sorted("""
     ... <<= >>= ->* -> ++ -- << >> <= >= == != && || += -= *= /= %= &= ^= |= ## :: .*
@@ -58,7 +60,7 @@ class Token:
     text: str
     line: int  # 1-based line in the file as written
     bol: bool  # the first token of a logical line
-    column: int = 0  # 1-based column in the line as written, a tab counting 1
+    column: int  # 1-based column in the line as written, a tab counting 1
 
 
 @dataclass(frozen=True)
@@ -68,42 +70,38 @@ class Comment:
     end_line: int  # the line it ends on
 
 
-def splice(text: str) -> tuple[str, list[int], list[int]]:
-    """The text after the first phases, and the splice map: at each offset in SPLICE_AT, the written line number
-    jumps by the matching count in SKIPPED."""
-    if text.startswith("﻿"):
+def splice(text: str) -> tuple[str, list[int]]:
+    """The text after the first phases, and the offsets in it where a backslash-newline was removed: at each, the
+    written line number grows by one."""
+    if text.startswith("\ufeff"):
         text = text[1:]
     text = text.replace("\r\n", "\n")
-    parts, offsets, skipped, length = [], [], [], 0
+    parts, offsets, length = [], [], 0
     for piece in re.split(r"(\\\n)", text):
         if piece == "\\\n":
             offsets.append(length)
-            skipped.append(1)
             continue
         parts.append(piece)
         length += len(piece)
-    return "".join(parts), offsets, skipped
+    return "".join(parts), offsets
 
 
 def tokenize(text: str) -> tuple[list[Token], list[Comment]]:
     """The tokens and comments of TEXT. Raises Unsupported on a trigraph or an unterminated block comment."""
-    spliced, splice_at, skipped = splice(text)
+    spliced, splice_at = splice(text)
     if TRIGRAPH.search(spliced):
         raise Unsupported("trigraph")
-    extra = [0]
-    for count in skipped:
-        extra.append(extra[-1] + count)
     newlines = [match.start() for match in re.finditer("\n", spliced)]
 
     def written_line(offset: int) -> int:
-        return bisect.bisect_left(newlines, offset) + 1 + extra[bisect.bisect_right(splice_at, offset)]
+        return bisect.bisect_left(newlines, offset) + 1 + bisect.bisect_right(splice_at, offset)
 
     def written_column(offset: int) -> int:
         newline = bisect.bisect_left(newlines, offset)
         line_start = newlines[newline - 1] + 1 if newline else 0
-        splice = bisect.bisect_right(splice_at, offset)
-        if splice:
-            line_start = max(line_start, splice_at[splice - 1])
+        joins = bisect.bisect_right(splice_at, offset)
+        if joins:
+            line_start = max(line_start, splice_at[joins - 1])
         return offset - line_start + 1
 
     tokens, comments, bol = [], [], True
@@ -144,17 +142,12 @@ def kept_indices(tokens: list[Token], words, prefixes=()) -> list[int]:
     while index < len(tokens):
         token = tokens[index]
         index += 1
-        if token.kind != "id" or not (token.text in words or token.text.startswith(prefixes)):
+        if token.kind == "id" and (token.text in words or token.text.startswith(prefixes)):
+            if index < len(tokens) and tokens[index].text == "(":
+                close = matching_closer(tokens, index, len(tokens))
+                index = len(tokens) if close is None else close + 1
+        else:
             kept.append(index - 1)
-            continue
-        if index < len(tokens) and tokens[index].text == "(":
-            depth = 0
-            while index < len(tokens):
-                if tokens[index].kind == "punct" and tokens[index].text in ("(", ")"):
-                    depth += 1 if tokens[index].text == "(" else -1
-                index += 1
-                if depth == 0:
-                    break
     return kept
 
 
@@ -215,6 +208,13 @@ class FoundCall:
         return () if arguments == ((),) else arguments
 
 
+class _OpenCall(NamedTuple):
+    callee: str
+    position: int
+    starts: list  # grows at each depth-1 comma
+    outer: tuple
+
+
 def find_calls(tokens: list[Token], is_callee, low: int = -1, high: int | None = None) -> list[FoundCall]:
     """The calls strictly between LOW and HIGH, in callee order: each ( right after a token whose index IS_CALLEE
     accepts. The arguments split at the call's depth-1 commas, with (), [] and {} balanced. A closer with no opener
@@ -227,16 +227,16 @@ def find_calls(tokens: list[Token], is_callee, low: int = -1, high: int | None =
             continue
         if token.text in OPENERS:
             if token.text == "(" and index - 1 > low and is_callee(index - 1):
-                outer = tuple((entry[0], len(entry[2])) for entry in stack if entry)
-                stack.append((tokens[index - 1].text, index - 1, [index + 1], outer))
+                outer = tuple((entry.callee, len(entry.starts)) for entry in stack if entry)
+                stack.append(_OpenCall(tokens[index - 1].text, index - 1, [index + 1], outer))
             else:
                 stack.append(None)
         elif token.text in CLOSERS:
             entry = stack.pop() if stack else None
             if entry:
-                found.append(FoundCall(entry[1], entry[3], tuple(entry[2]), index))
+                found.append(FoundCall(entry.position, entry.outer, tuple(entry.starts), index))
         elif token.text == "," and stack and stack[-1]:
-            stack[-1][2].append(index + 1)
+            stack[-1].starts.append(index + 1)
     found.sort(key=lambda call: call.position)
     return found
 
@@ -259,13 +259,13 @@ def find_fields(tokens: list[Token], is_callee, low: int = -1, high: int | None 
     found, folded = [], set()
     for member in range(low + 3, high - 2):
         operator = tokens[member + 1].text
-        if tokens[member].kind != "id" or tokens[member - 1].text not in (".", "->") or operator not in FIELD_OPERATORS:
+        if (tokens[member].kind != "id" or tokens[member - 1].text not in (".", "->")
+                or operator not in FIELD_OPERATORS):
             continue
         base = _postfix_start(tokens, member - 2, low, is_callee)
         if member in folded or base is None or not _whole_left_operand(tokens, base, operator, low):
             continue
-        precedence = BINARY_PRECEDENCE[operator]
-        end = operand_end(tokens, member + 2, high, 1 if precedence == ASSIGNMENT else precedence)
+        end = _right_operand_end(tokens, member + 1, high)
         if end <= member + 2:
             continue
         spot = _compound(tokens, FoundField(base, member, operator, member + 2, end))
@@ -298,20 +298,19 @@ def find_values(tokens: list[Token], is_name, low: int = -1, high: int | None = 
         token = tokens[index]
         if token.text == "case" and token.kind == "id":
             end = operand_end(tokens, index + 1, high, 0)
-            around = [switch for switch in switches if switch[2] < index < switch[3]]
+            around = [switch for switch in switches if switch.opener < index < switch.closer]
             if around and end > index + 1 and end < high and tokens[end].text == ":":
-                head = max(around)
-                found.append(FoundValue(CASE, (head[0], head[1]), "case", index, index + 1, end))
+                head = max(around, key=lambda switch: switch.opener)  # the innermost
+                found.append(FoundValue(CASE, (head.start, head.end), "case", index, index + 1, end))
         elif token.text == "return" and token.kind == "id":
             end = operand_end(tokens, index + 1, high, 0)
             if end > index + 1:
                 found.append(FoundValue(RETURN, (), "return", index, index + 1, end))
-        elif index + 2 < high and tokens[index + 1].text in VALUE_OPERATORS and _is_variable(tokens, index, is_name, low):
-            operator = tokens[index + 1].text
-            precedence = BINARY_PRECEDENCE[operator]
-            end = operand_end(tokens, index + 2, high, 1 if precedence == ASSIGNMENT else precedence)
+        elif (index + 2 < high and tokens[index + 1].text in VALUE_OPERATORS
+              and _is_variable(tokens, index, is_name, low)):
+            end = _right_operand_end(tokens, index + 1, high)
             if end > index + 2:
-                found.append(FoundValue(VARIABLE, (index, index + 1), operator, index, index + 2, end))
+                found.append(FoundValue(VARIABLE, (index, index + 1), tokens[index + 1].text, index, index + 2, end))
     return found
 
 
@@ -325,8 +324,15 @@ def _is_variable(tokens: list[Token], index: int, is_name, low: int) -> bool:
     return _whole_left_operand(tokens, index, tokens[index + 1].text, low)
 
 
-def _switches(tokens: list[Token], low: int, high: int) -> list[tuple]:
-    """(expression start, expression end, body opener, body closer) of each braced switch between LOW and HIGH."""
+class _Switch(NamedTuple):
+    start: int  # the index of the first token of the expression
+    end: int  # the index of the ) after the expression
+    opener: int  # the index of the body's {
+    closer: int  # the index of the body's }
+
+
+def _switches(tokens: list[Token], low: int, high: int) -> list[_Switch]:
+    """Each braced switch between LOW and HIGH."""
     found = []
     for index in range(low + 1, high - 1):
         if tokens[index].text != "switch" or tokens[index + 1].text != "(":
@@ -336,8 +342,15 @@ def _switches(tokens: list[Token], low: int, high: int) -> list[tuple]:
             continue
         body = matching_closer(tokens, close + 1, high)
         if body is not None:
-            found.append((index + 2, close, close + 1, body))
+            found.append(_Switch(index + 2, close, close + 1, body))
     return found
+
+
+def _right_operand_end(tokens: list[Token], operator: int, high: int) -> int:
+    """The index after the right operand of the binary operator at OPERATOR. An assignment takes the assignments
+    after it too, as they group right to left."""
+    precedence = BINARY_PRECEDENCE[tokens[operator].text]
+    return operand_end(tokens, operator + 1, high, ASSIGNMENT - 1 if precedence == ASSIGNMENT else precedence)
 
 
 def operand_end(tokens: list[Token], start: int, high: int, limit: int) -> int:
@@ -431,11 +444,15 @@ def matching_closer(tokens: list[Token], opener: int, high: int) -> int | None:
 
 def _whole_left_operand(tokens: list[Token], base: int, operator: str, low: int) -> bool:
     """No token before BASE takes part of the left operand of OPERATOR: no unary operator or ::, no cast before a
-    compare, and no binary operator that binds tighter."""
+    compare, no sizeof, and no binary operator that binds tighter."""
     before = base - 1
-    if before <= low or tokens[before].kind != "punct":
-        return True  # nothing, or a keyword such as return
+    if before <= low:
+        return True
     text = tokens[before].text
+    if text == "sizeof":
+        return False
+    if tokens[before].kind != "punct":
+        return True  # a keyword such as return
     if text in ("(", "[", "{", "}", ";", ",", ":"):
         return True
     precedence = BINARY_PRECEDENCE[operator]
@@ -443,6 +460,8 @@ def _whole_left_operand(tokens: list[Token], base: int, operator: str, low: int)
         return precedence == ASSIGNMENT  # the head of an if or while; before a compare, a cast
     if text not in BINARY_PRECEDENCE or not ends_operand(tokens, before - 1, low):
         return False  # a unary operator or ::
+    if text in ("&", "*", "+", "-") and tokens[before - 1].text == ")":
+        return False  # (T)&x: unary after a cast, or binary after a group; the tokens cannot tell which
     if precedence == ASSIGNMENT:
         return BINARY_PRECEDENCE[text] <= BINARY_PRECEDENCE["?"]  # a = x.f = 1, c ? x.f = 1 : 0
     return BINARY_PRECEDENCE[text] < precedence
@@ -450,7 +469,8 @@ def _whole_left_operand(tokens: list[Token], base: int, operator: str, low: int)
 
 def _compound(tokens: list[Token], found: FoundField) -> FoundField:
     """X.F = X.F | K as X.F |= K, and & as &=, when K is the whole right operand of that | or &."""
-    joint = found.value + found.member + 1 - found.base
+    left_length = found.member + 1 - found.base
+    joint = found.value + left_length
     if found.operator != "=" or joint + 1 >= found.end or tokens[joint].text not in ("|", "&"):
         return found
     if [token.text for token in tokens[found.value:joint]] != [token.text for token in

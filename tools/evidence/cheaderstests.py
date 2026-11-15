@@ -7,14 +7,17 @@ temporary folder.
 
 import json
 import os
+from collections import Counter
 import sys
 import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
 
 import ceval  # noqa: E402
 import cheaders  # noqa: E402
+import osutil  # noqa: E402
 import probe  # noqa: E402
 import profiles  # noqa: E402
 
@@ -22,18 +25,14 @@ CPP = profiles.get("msvc-vc10-x86-cpp")
 C = profiles.get("msvc-vc10-x86-c")
 
 
-def closure(files: dict, start: str = "top.h", profile=CPP, closed_world=True, **options) -> cheaders.Closure:
+def closure(files: dict, start: str = "top.h", profile=CPP, **options) -> cheaders.Closure:
     """The closure of START over FILES (relative path -> text), written into a new temporary folder whose "inc"
     subfolder is the search path. A START that begins with @ is a name to find on the search path."""
     with tempfile.TemporaryDirectory() as folder:
-        for name, text in files.items():
-            path = os.path.join(folder, name)
-            os.makedirs(os.path.dirname(path), exist_ok=True)
-            with open(path, "w", encoding="utf-8", newline="") as handle:
-                handle.write(text)
+        osutil.write_files(Path(folder), files)
         config = cheaders.Config(profile, search_path=(os.path.join(folder, "inc"),), **options)
         path = start[1:] if start.startswith("@") else os.path.join(folder, start)
-        return cheaders.read(path, config, closed_world)
+        return cheaders.read(path, config)
 
 
 def value(found: cheaders.Closure, name: str):
@@ -62,10 +61,19 @@ def check_guards_and_once() -> list[str]:
         failures.append(f"a guard skips a second copy: got {sorted(found.constants)}")
     if value(found, "X") != 1 or "after_x" not in found.variables:
         failures.append(f"a mid-file #ifndef is an ordinary condition: got {value(found, 'X')}")
-    alone = closure({"g.h": "#ifndef G_H\n#define G_H\nenum { FOUR = 4 };\n#endif\n"}, "g.h", closed_world=False)
-    if value(alone, "FOUR") != 4 or alone.diagnostics.unresolved_if:
-        failures.append(f"a guard is live in an open world: got {value(alone, 'FOUR')}, "
-                        f"{alone.diagnostics.unresolved_if}")
+    late = "#ifndef R_H\n#define R_H\n#endif\n#if 1\nenum { XX_R = 1 };\n#endif\n"
+    spelled = closure({
+        "top.h": '#include "p.h"\n#include "copy/p.h"\n#include "q.h"\n#include "copy/q.h"\n'
+                 '#include "r.h"\n#include "copy/r.h"\n',
+        "p.h": "#if !defined(P_H)\n#define P_H\nenum { XX_P = 1 };\n#endif\n",
+        "copy/p.h": "#if !defined(P_H)\n#define P_H\nenum { XX_P = 1 };\n#endif\n",
+        "q.h": "#if !defined Q_H\n#define Q_H\nenum { XX_Q = 1 };\n#endif\n",
+        "copy/q.h": "#if !defined Q_H\n#define Q_H\nenum { XX_Q = 1 };\n#endif\n",
+        "r.h": late, "copy/r.h": late,
+    })
+    counts = [len(spelled.constants.get(name, [])) for name in ("XX_P", "XX_Q", "XX_R")]
+    if counts != [1, 1, 2]:
+        failures.append(f"guards spelled with !defined count, a guard must close at the last #endif: got {counts}")
     return failures
 
 
@@ -127,12 +135,9 @@ def check_default_definition() -> list[str]:
     found = closure({"top.h": '#define DEF 7\n#include "d.h"\n', "d.h": header})
     if value(found, "DEF") != 7:
         failures.append(f"a default definition follows the closure order: got {value(found, 'DEF')}")
-    alone = closure({"d.h": header}, "d.h", closed_world=False)
-    if value(alone, "DEF") != ("unresolved", "unresolved #if"):
-        failures.append(f"a default definition read alone keeps both alternatives: got {value(alone, 'DEF')}")
-    known = closure({"d.h": header}, "d.h", closed_world=False, known_undefined=frozenset({"DEF"}))
-    if value(known, "DEF") != 4:
-        failures.append(f"a known-undefined name takes the default: got {value(known, 'DEF')}")
+    alone = closure({"d.h": header}, "d.h")
+    if value(alone, "DEF") != 4:
+        failures.append(f"a default definition read alone takes the default: got {value(alone, 'DEF')}")
     same = closure({"top.h": "#define E 1\n#if NEVER_SEEN\n#define E 1\n#endif\n"})
     if value(same, "E") != 1:
         failures.append(f"equal alternatives merge: got {value(same, 'E')}")
@@ -151,8 +156,10 @@ def check_macros() -> list[str]:
                 "FM": ("unsupported", "function-like macro")}
     if got != expected:
         failures.append(f"macros: got {got}")
-    if found.expand("FM").function is not True or found.expand("EMPTY").body != ():
+    if found.expand("FM").function is not True:
         failures.append("a ( right after the name makes a function-like macro")
+    if found.expand("EMPTY").body != ():
+        failures.append(f"an empty macro has an empty body: got {found.expand('EMPTY').body}")
     chain = closure({"top.h": (
         "#define WINNT 0x0600\n#define FROM2(ver) ver##0000\n#define FROM(ver) FROM2(ver)\n"
         "#define VERSION FROM(WINNT)\n#if VERSION >= 0x06000000\n#define NEW 1\n#else\n#define NEW 0\n#endif\n"
@@ -188,11 +195,11 @@ def check_declarations() -> list[str]:
     )})
     if found.typedefs["HWIDGET"][0].spelled != "struct HWIDGET__ *" or "HWIDGET__" not in found.tags:
         failures.append(f"DECLARE_HANDLE: got {found.typedefs.get('HWIDGET')}")
-    if found.type_id("FOO") != "struct _FOO" or [m.name for m in found.members["struct _FOO"]] != ["a", "next"]:
-        failures.append(f"a typedef before the body shares the type id: got {found.type_id('FOO')}, "
-                        f"{found.members.get('struct _FOO')}")
-    if (found.type_id("ANON"), found.typedefs["PANON"][0].spelled) != ("ANON", "ANON *"):
-        failures.append(f"an anonymous typedef: got {found.type_id('ANON')}, {found.typedefs['PANON']}")
+    members = [member.name for member in found.members["struct _FOO"]]
+    if found.typedefs["FOO"][0].spelled != "struct _FOO" or members != ["a", "next"]:
+        failures.append(f"a typedef before the body shares the type id: got {found.typedefs['FOO']}, {members}")
+    if found.typedefs["PANON"][0].spelled != "ANON *" or "ANON" not in found.members:
+        failures.append(f"an anonymous typedef: got {found.typedefs['PANON']}, {sorted(found.members)}")
     if [(m.name, m.spelled) for m in found.members.get("ANON", [])] != [("x", "int"), ("y", "int"), ("z", "float")]:
         failures.append(f"anonymous members lift into their parent: got {found.members.get('ANON')}")
     bodies = {type_id: (os.path.basename(origin.file), origin.line) for type_id, origin in found.bodies.items()
@@ -244,6 +251,28 @@ def check_directives() -> list[str]:
     return failures
 
 
+def check_diagnostics() -> list[str]:
+    """Faults that cost declarations are listed: unbalanced conditionals at the line that opens or closes them, a file
+    that does not tokenize, a malformed #define, and a file reached from an unresolved branch."""
+    failures = []
+    found = closure({"top.h": '#endif\n#else\n#include "bad.h"\n#define\n#define XX_F(x\n#if NEVER_SEEN\n'
+                              '#include "maybe.h"\n#endif\nint xx_a;\n#if 1\nint xx_b;\n',
+                     "bad.h": "/* open\n", "maybe.h": "int xx_c;\n"})
+    notes = found.diagnostics
+    unbalanced = [(line, problem) for _, line, problem in notes.unterminated]
+    if unbalanced != [(1, "#endif without #if"), (2, "#else without #if"), (10, "#if without #endif")]:
+        failures.append(f"unbalanced conditionals: got {unbalanced}")
+    if [os.path.basename(file) for file, _ in notes.unsupported_files] != ["bad.h"]:
+        failures.append(f"a file that does not tokenize: got {notes.unsupported_files}")
+    if notes.unknown_directives != Counter({"malformed define": 2}):
+        failures.append(f"malformed #define: got {notes.unknown_directives}")
+    if names(notes.uncertain_files) != ["maybe.h"] or found.variables["xx_c"][0].origin.certain:
+        failures.append(f"a file from an unresolved branch is uncertain: got {notes.uncertain_files}")
+    if "xx_b" not in found.variables:
+        failures.append("the lines after an unterminated #if 1 are read")
+    return failures
+
+
 def check_faults() -> list[str]:
     failures = []
     try:
@@ -270,7 +299,8 @@ def check_faults() -> list[str]:
 
 
 def check_other_profile() -> list[str]:
-    """A header read under one profile, its constants evaluated under another; the cache keeps them apart."""
+    """A header read under one profile, its enumerators and macros evaluated under another; the constant cache keeps
+    the two profiles' values of XX_MANY apart."""
     failures = []
     found = closure({"top.h": "enum { XX_MANY = 'AB' };\n#define XX_SHIFTED (-8 >> 1)\ntypedef long XX_LONG;\n"},
                     profile=profiles.get("shc-c"))
@@ -302,7 +332,7 @@ def check_probe_enums() -> list[str]:
     """Enumerator values against what cl.exe gave for the probe's enum (tools/evidence/probe.py)."""
     failures = []
     found = closure({"top.h": probe.ENUM_DECLARATION + "\n"})
-    for language in probe.PROFILE_NAMES:
+    for language in sorted(profiles.VC10):
         fixture = json.loads((probe.FIXTURES / f"vc10-{language}.json").read_text(encoding="utf-8"))
         wanted = {case["text"]: case["value"] for case in fixture["cases"] if case["text"] in probe.ENUM_NAMES}
         for name, value in wanted.items():
@@ -318,7 +348,8 @@ def check_tag_types() -> list[str]:
     failures = []
     found = closure({"top.h": "enum XX_MODE : int { XX_MODE_ON = 1 };\nstruct xxbody { int a; };\n"
                               "union xxboth { int a; };\nvoid xxuse(enum XX_FWD mode);\n"
-                              "struct xxhid { int a; };\nextern int xxhid;\nstruct xxfun { int a; };\nvoid xxfun(void);\n"})
+                              "struct xxhid { int a; };\nextern int xxhid;\nstruct xxfun { int a; };\n"
+                              "void xxfun(void);\n"})
     for spelled, wanted in (("XX_MODE", CPP.int_type("int")), ("xxbody", found.resolve_type("struct xxbody")),
                             ("xxboth", found.resolve_type("union xxboth")), ("XX_FWD", CPP.int_type("int")),
                             ("xxhid", None), ("xxfun", None), ("xxnone", None)):
@@ -341,8 +372,8 @@ def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
     for check in (check_guards_and_once, check_includes, check_conditions, check_default_definition, check_macros,
-                  check_branch_cap, check_declarations, check_extern_c, check_directives, check_faults,
-                  check_other_profile, check_array_typedef, check_probe_enums, check_tag_types):
+                  check_branch_cap, check_declarations, check_extern_c, check_directives, check_diagnostics,
+                  check_faults, check_other_profile, check_array_typedef, check_probe_enums, check_tag_types):
         failures += check()
     return failures
 

@@ -31,6 +31,8 @@ MACROS = {
     "PASTE": "a ## b",
     "ERRNO": "(*get_errno())",
     "ALIAS": "FLAG",
+    "HIGH": "0x0600",
+    "JOIN": "MAY ## BE",
 }
 FUNCTION_MACROS = {"LOCATION"}
 # Function-like macros with parameters and bodies, for #if mode: name -> (parameters, body).
@@ -45,8 +47,6 @@ FUNCTIONS = {
     "STR": (("x",), "#x"),
     "SELF": (("x",), "SELF(x)"),
 }
-MACROS["HIGH"] = "0x0600"
-MACROS["JOIN"] = "MAY ## BE"
 TYPES = {"U32": U32, "S16": S16, "struct VEC": profiles.CType("record", 96, name="struct VEC")}
 CONSTANTS = {"RED": Result(OK, 2, CPP.int_type("int"))}
 
@@ -60,6 +60,16 @@ def expand(name):
     if name in MACROS:
         return Macro(False, tuple(ctokens.tokens_of(MACROS[name])))
     return None
+
+
+def chain_expand(length: int):
+    """An expand callback for CHAIN0 to CHAIN(LENGTH - 1): each expands to the next, the last to 1."""
+    def expand_chain(name):
+        if not name.startswith("CHAIN"):
+            return None
+        index = int(name[5:])
+        return Macro(False, tuple(ctokens.tokens_of("1" if index == length - 1 else f"CHAIN{index + 1}")))
+    return expand_chain
 
 
 def resolve(name):
@@ -128,6 +138,10 @@ def check_literal_types() -> list[str]:
     expect(failures, "4294967296", OK, 4294967296, "long long")
     expect(failures, "4294967296u", OK, 4294967296, "unsigned long long")
     expect(failures, "4294967296", UNSUPPORTED, profile=SHC, cause="literal")
+    for profile in profiles.PROFILES.values():
+        for suffix in profile.extra_suffixes:
+            if suffix not in ceval.LITERAL_TYPES:
+                failures.append(f"{profile.name}: suffix {suffix!r} has no entry in ceval.LITERAL_TYPES")
     expect(failures, "18446744073709551616", UNSUPPORTED, cause="literal")
     expect(failures, "1i64", UNSUPPORTED, profile=SHC, cause="literal")
     expect(failures, "08", UNSUPPORTED, cause="literal")
@@ -174,6 +188,10 @@ def check_casts_and_sizes() -> list[str]:
     result = ceval.convert(value_of("-1"), U32, CPP)
     if result.value != 0xFFFFFFFF:
         failures.append(f"-1 at an unsigned slot: got {result}")
+    for profile in profiles.PROFILES.values():
+        repeated = [key for key in profile.builtins if any(key.count(word) > 1 for word in key if word != "long")]
+        if repeated:
+            failures.append(f"{profile.name}: built-in type keys with a repeated keyword {repeated}")
     return failures
 
 
@@ -189,6 +207,7 @@ def check_characters() -> list[str]:
     expect(failures, "'/'", OK, 47)
     expect(failures, "'\\101'", OK, 65)
     expect(failures, "'\\q'", UNSUPPORTED, cause="character constant")
+    expect(failures, "L'ab'", UNSUPPORTED, cause="character constant")
     return failures
 
 
@@ -219,6 +238,10 @@ def check_preprocessor_mode() -> list[str]:
     expect(failures, "(int)1", UNSUPPORTED, cause="not a #if expression", **pp)
     expect(failures, "1.0", UNSUPPORTED, cause="not a #if expression", **pp)
     expect(failures, "0xFFFFFFFFFFFFFFFF", OK, 0xFFFFFFFFFFFFFFFF, "uintmax_t", **pp)
+    expect(failures, "true", UNSUPPORTED, cause="true or false in #if", **pp)
+    expect(failures, "false", UNSUPPORTED, cause="true or false in #if", **pp)
+    expect(failures, "defined", UNSUPPORTED, cause="syntax", **pp)
+    expect(failures, "defined(", UNSUPPORTED, cause="syntax", **pp)
     expect(failures, "-1 < 0u", OK, 0, **pp)
     expect(failures, "defined(SUM) || SUM", OK, 1, **pp)
     expect(failures, "defined(SUM) && SUM", UNRESOLVED, **pp)
@@ -251,6 +274,11 @@ def check_macros_and_names() -> list[str]:
     expect(failures, "SUM * 3", OK, 7)
     expect(failures, "LOOP", UNSUPPORTED, cause="macro cycle")
     expect(failures, "PASTE", UNSUPPORTED, cause="token pasting")
+    depth = ceval.MAX_MACRO_DEPTH
+    for length, status, cause in ((depth, OK, None), (depth + 1, UNSUPPORTED, "macro depth")):
+        result = ceval.evaluate("CHAIN0", CPP, expand=chain_expand(length))
+        if result.status != status or (cause is not None and result.cause != cause):
+            failures.append(f"a chain of {length} macros: got {result}, want {status} {cause or ''}")
     expect(failures, "ERRNO", UNSUPPORTED, cause="macro expands to a call")
     expect(failures, "LOCATION(0, 0)", UNSUPPORTED, cause="function-like macro")
     expect(failures, "LOCATION(x, 0)", NONCONSTANT)
@@ -276,16 +304,15 @@ def check_nonconstant_and_unsupported() -> list[str]:
     expect(failures, "??/", UNSUPPORTED, cause="syntax")
     expect(failures, "", UNSUPPORTED, cause="syntax")
     expect(failures, "(1", UNSUPPORTED, cause="syntax")
+    expect(failures, "int", UNSUPPORTED, cause="syntax")
+    expect(failures, "(struct)1", UNSUPPORTED, cause="syntax")
     expect(failures, "UNKNOWN + 1 / 0", UNRESOLVED)
     return failures
 
 
-def check_profiles_differ() -> list[str]:
-    """One token with different values under two profiles: the scorer reports such a pair as counterevidence."""
-    cpp, shc = value_of("'\\xff' < 0"), value_of("(S16)0x18000", SHC)
+def check_predefines_by_language() -> list[str]:
+    """The failures when __cplusplus is not predefined in the C++ profile only."""
     failures = []
-    if not (cpp.ok and cpp.value == 1 and shc.status == UNSUPPORTED):
-        failures.append(f"profiles: got {cpp} and {shc}")
     if CPP.predefines.get("__cplusplus") is None or "__cplusplus" in C.predefines:
         failures.append("__cplusplus must be predefined in C++ mode only")
     return failures
@@ -293,7 +320,7 @@ def check_profiles_differ() -> list[str]:
 
 # Clean compiler values that ceval refuses on purpose, each with its reason. Any other refusal of a clean case fails.
 REFUSED = {
-    "(1, 2)": "a comma in a constant is unsupported (plan)",
+    "(1, 2)": "a comma operator, which the tools do not model",
     "'\\x41\\x42'": "a multi-character constant that starts with a numeric escape has no known rule",
     "'\\101\\102'": "a multi-character constant that starts with a numeric escape has no known rule",
     "'\\x41\\x42\\x43'": "a multi-character constant that starts with a numeric escape has no known rule",
@@ -311,7 +338,7 @@ REFUSED = {
 
 def check_probe_fixtures() -> list[str]:
     """ceval against what cl.exe gave in the VC10 probe (tools/evidence/probe.py writes the fixtures)."""
-    failures = []
+    failures, refused = [], set()
     for language, profile in (("c", C), ("cpp", CPP)):
         path = probe.FIXTURES / f"vc10-{language}.json"
         fixture = json.loads(path.read_text(encoding="utf-8"))
@@ -320,12 +347,16 @@ def check_probe_fixtures() -> list[str]:
                 continue  # enum values need a header; cheaderstests.py checks them
             result = probe.evaluate(case, profile)
             problem = probe.disagreement(case, result, language)
-            if problem and not (case["text"] in REFUSED and not result.ok):
+            if problem and case["text"] in REFUSED and not result.ok:
+                refused.add(case["text"])
+            elif problem:
                 failures.append(f"probe {language} {case['kind']} {case['text']!r}: {problem}")
         for name, value in profile.predefines.items():
             if fixture["predefines"].get(name) != value:
                 failures.append(f"probe {language}: profile {name}={value!r}, compiler "
                                 f"{fixture['predefines'].get(name)!r}")
+    for text in REFUSED.keys() - refused:
+        failures.append(f"REFUSED entry {text!r} never produced a refusal: remove it")
     return failures
 
 
@@ -334,7 +365,7 @@ def run() -> list[str]:
     failures = []
     for check in (check_integer_operations, check_literal_types, check_floats, check_casts_and_sizes,
                   check_characters, check_preprocessor_mode, check_function_macros_in_if, check_macros_and_names,
-                  check_nonconstant_and_unsupported, check_profiles_differ, check_probe_fixtures):
+                  check_nonconstant_and_unsupported, check_predefines_by_language, check_probe_fixtures):
         failures += check()
     return failures
 

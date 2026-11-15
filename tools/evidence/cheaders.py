@@ -2,36 +2,37 @@
 
 read() starts at one header (an umbrella) and follows its #include lines. A quoted name searches the including
 file's folder, then the search path; an angle name searches the search path only. Each file is read once per closure,
-by its canonical path, which models include guards and #pragma once. A missing file is reported, and so is an
-#include of a macro; reading goes on without them.
+by its canonical path, which models include guards and #pragma once. So a file first reached from an unresolved
+branch stays uncertain, also when a live #include reaches it later: its declarations are flagged, never wrong. A
+missing file is reported, and so is an #include of a macro; reading goes on without them.
 
 Conditions are three-valued: true, false or unresolved. An identifier in #if that is not defined and not in the
 configuration's known-undefined list makes the condition unresolved, never 0. That differs from a real preprocessor on
-purpose, so that a guess is never taken for a fact. `defined X` of a name that was never defined is false in a closed
-world (an umbrella closure) and unresolved in an open world (a header read alone), unless the name is known to be
-undefined. Nothing in a false branch is read. An unresolved branch is read with every definition and declaration in
-it marked uncertain.
+purpose, so that a guess is never taken for a fact. `defined X` of a name that no file of the closure defines is
+false. Nothing in a false branch is read. An unresolved branch is read with every definition and declaration in it
+marked uncertain.
 
-Each macro name keeps a list of alternatives: a definition, "undefined" (after #undef or for a known-undefined name),
-"never defined" or "unknown" (open world). A definition in a live region replaces the list. One in an unresolved
-region adds an alternative; equal alternatives merge. A name with more alternatives than the branch cap becomes
-"truncated". A name with more than one alternative is unresolved wherever it is used.
+Each macro name keeps a list of alternatives: a definition, "undefined" (after #undef or for a known-undefined name)
+or "never defined". A definition in a live region replaces the list. One in an unresolved region adds an
+alternative; equal alternatives merge. A name with more alternatives than the branch cap becomes "truncated". A name
+with more than one alternative is unresolved wherever it is used.
 
-An include guard counts as live: the first directive is `#ifndef G` (or `#if !defined(G)`), the next is `#define G`
-with an empty body, the matching #endif is the last directive, and only comments sit before or after. If G is
-already defined, the file is skipped, as a compiler does. Any other #ifndef is an ordinary condition.
+An include guard counts as live: the first directive is `#ifndef G` (or `#if !defined(G)` or `#if !defined G`), the
+next is `#define G` with an empty body, the matching #endif is the last directive, and only comments sit before or
+after. If G is already defined, the file is skipped, as a compiler does. Any other #ifndef is an ordinary condition.
 
 The tokens outside directives and false branches are kept per file, with object-like macros expanded (function-like
 names stay as written). Each file's tokens are then read for declarations, the included files first: typedefs (a
 struct, union or enum tag and its typedefs share one type id; an anonymous body takes its first typedef name),
 enumerators (an implicit value is the previous one plus 1), struct and union members, function prototypes, global
-variables and, in C++, const integral constants. `extern "C"` and the profile's ignored words are dropped first.
-DECLARE_HANDLE(N) is built in. A declaration that uses another function-like macro, a namespace, template or using
-block, a C++ class body or an unknown block is skipped and listed; the closure stays alive.
+variables and, in C++, const variables with an initializer (no pointer, reference or array) as constants.
+`extern "C"` and the profile's ignored words are dropped first. DECLARE_HANDLE(N) is built in. A declaration that
+uses another function-like macro, a namespace, template or using block, a C++ class body or an unknown block is
+skipped and listed; the closure stays alive.
 
-The finished Closure answers the evaluator's callbacks (expand, resolve, resolve_type, is_defined) with the state at
-the end of the closure. Under a C++ profile, a tag is a type name: a bare tag resolves as its tag type, also when only
-a prototype names it, unless a function, variable or constant of the same name hides it.
+The finished Closure answers the evaluator's callbacks (expand, resolve and resolve_type) and is_defined with the
+state at the end of the closure. Under a C++ profile, a tag is a type name: a bare tag resolves as its tag type,
+also when only a prototype names it, unless a function, variable or constant of the same name hides it.
 
 Standard library only.
 """
@@ -42,12 +43,12 @@ from dataclasses import dataclass, field, replace
 
 import ceval
 import ctokens
-from cdecls import QUALIFIERS, TAG_WORDS, Declarations, without_extern_c
+from cdecls import QUALIFIERS, SKIPPED_HEADS, TAG_WORDS, Declarations, without_extern_c
 from ctokens import Token, Unsupported
 
 MAX_EXPANSION_DEPTH = 64
+PREDEFINED_FILE = "<predefined>"  # the origin file of the profile's and the configuration's predefined macros
 CONDITIONALS = ("if", "ifdef", "ifndef")
-SKIPPED_HEADS = ("namespace", "template", "using")
 CLASS_WORDS = frozenset({"public", "private", "protected", "virtual", "operator", "friend", "template"})
 
 
@@ -96,8 +97,7 @@ class _Sentinel:
 
 
 UNDEFINED = _Sentinel("undefined")  # after #undef, or a known-undefined name
-NEVER = _Sentinel("never defined")  # closed world: no file of the closure defines it
-UNKNOWN = _Sentinel("unknown")  # open world: some file outside may define it
+NEVER = _Sentinel("never defined")  # no file of the closure defines it
 TRUNCATED = _Sentinel("truncated")  # more alternatives than the branch cap
 
 
@@ -114,7 +114,6 @@ class Function:
 class Typedef:
     name: str
     spelled: str
-    type_id: str  # the id of an anonymous body it names, else ""
     origin: Origin
 
 
@@ -155,20 +154,24 @@ class Diagnostics:
     unknown_directives: Counter = field(default_factory=Counter)
 
 
-def _and(*values):
-    if False in values:
+def _and(first, second):
+    if False in (first, second):
         return False
-    return None if None in values else True
+    return None if None in (first, second) else True
 
 
-def _or(*values):
-    if True in values:
+def _or(first, second):
+    if True in (first, second):
         return True
-    return None if None in values else False
+    return None if None in (first, second) else False
 
 
 def _not(value):
     return None if value is None else not value
+
+
+def _add(table: dict, record):
+    table.setdefault(record.name, []).append(record)
 
 
 def canonical(path: str) -> str:
@@ -178,8 +181,8 @@ def canonical(path: str) -> str:
 class _Macros:
     """The macro table: name -> list of alternatives."""
 
-    def __init__(self, profile, closed_world: bool, known_undefined: frozenset, cap: int, truncated: Counter):
-        self.profile, self.closed_world, self.known_undefined, self.cap = profile, closed_world, known_undefined, cap
+    def __init__(self, profile, known_undefined: frozenset, cap: int, truncated: Counter):
+        self.profile, self.known_undefined, self.cap = profile, known_undefined, cap
         self.table, self.truncated = {}, truncated
 
     def alternatives(self, name: str) -> list:
@@ -187,7 +190,7 @@ class _Macros:
             return self.table[name]
         if name in self.known_undefined:
             return [UNDEFINED]
-        return [NEVER] if self.closed_world else [UNKNOWN]
+        return [NEVER]
 
     def set(self, name: str, alternative, certain: bool):
         if certain:
@@ -227,7 +230,7 @@ class _Macros:
             return ceval.failure(ceval.UNRESOLVED, "truncated branches", name)
         if len(alternatives) > 1:
             return ceval.failure(ceval.UNRESOLVED, "unresolved #if", name)
-        if isinstance(alternatives[0], Definition):
+        if isinstance(alternatives[0], Definition) and alternatives[0].function:
             return ceval.failure(ceval.UNSUPPORTED, "function-like macro", name)
         return None
 
@@ -235,7 +238,7 @@ class _Macros:
         alternatives = self.alternatives(name)
         if TRUNCATED in alternatives:
             return ceval.failure(ceval.UNRESOLVED, "truncated branches", name)
-        answers = {None if item is UNKNOWN else isinstance(item, Definition) for item in alternatives}
+        answers = {isinstance(item, Definition) for item in alternatives}
         if len(answers) > 1:
             return ceval.failure(ceval.UNRESOLVED, "unresolved #if", name)
         return answers.pop()
@@ -264,6 +267,7 @@ class _Frame:
     parent: object  # the region state around the #if: True or None (a false parent makes the frame dead)
     taken: object  # some earlier branch was taken: True, False or None
     current: object  # this branch: True, False or None
+    line: int  # the line of the #if
     dead: bool = False
 
     @property
@@ -274,15 +278,14 @@ class _Frame:
 class Closure:
     """The macros and declarations of one closure, with the evaluator callbacks."""
 
-    def __init__(self, name: str, config: Config, closed_world: bool):
-        self.name, self.config, self.closed_world = name, config, closed_world
+    def __init__(self, name: str, config: Config):
+        self.name, self.config = name, config
         self.profile = config.profile
         self.diagnostics = Diagnostics()
         known = set(config.known_undefined)
         if self.profile.language == "c":
             known.add("__cplusplus")
-        self.macros = _Macros(self.profile, closed_world, frozenset(known), config.branch_cap,
-                              self.diagnostics.truncated)
+        self.macros = _Macros(self.profile, frozenset(known), config.branch_cap, self.diagnostics.truncated)
         self.functions, self.typedefs, self.constants, self.variables = {}, {}, {}, {}  # name -> list
         self.members = {}  # type id -> list of Member
         self.bodies = {}  # type id -> the Origin of the struct or union body that gave its members
@@ -290,9 +293,6 @@ class Closure:
         self.tags, self.type_names = set(), set()
         self.files, self.edges = [], []  # read order; (from file, line, to file)
         self._values, self._evaluating = {}, set()
-
-    def add(self, table: dict, record):
-        table.setdefault(record.name, []).append(record)
 
     # Evaluator callbacks, with the state at the end of the closure. PROFILE (default: the closure's own) evaluates
     # the constants and gives the built-in types, so a reference header's names can be read under the target's rules.
@@ -383,35 +383,34 @@ class Closure:
                 dimension.append(word)
             elif word == "]":
                 count = ceval.evaluate(" ".join(dimension), profile, **self.callbacks(profile)) if dimension else None
-                bits = bits * count.value if count and count.ok and isinstance(count.value, int) else 0
+                known = count is not None and count.ok and isinstance(count.value, int)
+                bits = bits * count.value if known else 0
                 dimension = []
         return ceval.CType("array", bits, name=" ".join(words))
 
-    def type_id(self, spelling: str, depth: int = 0) -> str:
-        """The type id that SPELLING names: typedef chains unroll; `struct T` and its typedefs share one id."""
-        records = self.typedefs.get(spelling)
-        if not records or len({record.spelled for record in records}) > 1 or depth > MAX_EXPANSION_DEPTH:
-            return spelling
-        return records[0].type_id or self.type_id(records[0].spelled, depth + 1)
 
-
-def read(start: str, config: Config, closed_world: bool = True) -> Closure:
-    """The closure of START: a header path, or a name found on the search path. An umbrella closure is a closed
-    world; a header read alone (closed_world False) is an open one."""
+def read(start: str, config: Config) -> Closure:
+    """The closure of START: a header path, or a name found on the search path."""
     path = start if os.path.isfile(start) else _search(start, config.search_path)
     if path is None:
         raise HeaderError(f"umbrella {start!r} not found on the search path")
-    closure = Closure(start, config, closed_world)
+    closure = Closure(start, config)
     reader = _Preprocessor(closure)
     for name, body in {**config.profile.predefines, **config.predefines}.items():
         if name in closure.macros.known_undefined:
             raise HeaderError(f"{name} is both predefined and known to be undefined")
-        definition = Definition(name, False, (), tuple(ctokens.tokens_of(body)), Origin("<predefined>", 0, True))
+        definition = Definition(name, False, (), tuple(ctokens.tokens_of(body)), Origin(PREDEFINED_FILE, 0, True))
         closure.macros.set(name, definition, True)
     reader.read_file(path, True)
     for stream in reader.streams:
         _read_declarations(stream, closure)
     return closure
+
+
+def search_include(name: str, angle: bool, folder: str, search_path) -> str | None:
+    """The file that `#include NAME` finds in a file of FOLDER: a quoted name searches FOLDER, then the search path;
+    an angle name searches the search path only."""
+    return _search(name, tuple(search_path) if angle else (folder,) + tuple(search_path))
 
 
 def _search(name: str, folders) -> str | None:
@@ -437,21 +436,27 @@ def _directives(tokens: list[Token]) -> list[tuple[int, int]]:
     return found
 
 
+def _guard_name(words: list[str]) -> str | None:
+    """G of the directive WORDS `ifndef G`, `if ! defined G` or `if ! defined ( G )`, else None."""
+    if len(words) == 2 and words[0] == "ifndef":
+        return words[1]
+    if words[:3] != ["if", "!", "defined"]:
+        return None
+    operand = words[3:]
+    if len(operand) == 1 and operand[0] != "(":
+        return operand[0]
+    if len(operand) == 3 and operand[0] == "(" and operand[2] == ")":
+        return operand[1]
+    return None
+
+
 def _guard(tokens: list[Token], directives: list[tuple[int, int]]) -> str | None:
     """The guard macro of a guarded file, or None."""
     if len(directives) < 3 or directives[0][0] != 0 or directives[-1][1] != len(tokens):
         return None
     words = [[token.text for token in tokens[start + 1:end]] for start, end in directives]
-    first = words[0]
-    if len(first) == 2 and first[0] == "ifndef":
-        name = first[1]
-    elif first[:3] == ["if", "!", "defined"] and first[3:4] != ["("] and len(first) == 4:
-        name = first[3]
-    elif first[:4] == ["if", "!", "defined", "("] and len(first) == 6 and first[5] == ")":
-        name = first[4]
-    else:
-        return None
-    if words[1] != ["define", name] or words[-1] != ["endif"]:
+    name = _guard_name(words[0])
+    if name is None or words[1] != ["define", name] or words[-1] != ["endif"]:
         return None
     depth = 0
     for number, line in enumerate(words):
@@ -478,54 +483,57 @@ class _Preprocessor:
         self.closure.files.append(path)
         if region is None:
             self.diagnostics.uncertain_files.append(path)
-        try:
-            with open(path, encoding=self.config.encoding, newline="") as handle:
-                text = handle.read()
-        except UnicodeDecodeError as error:
-            raise HeaderError(f"{path}: does not decode as {self.config.encoding}: {error}") from error
-        try:
-            tokens = ctokens.tokenize(text)[0]
-        except Unsupported as error:
-            self.diagnostics.unsupported_files.append((path, str(error)))
+        tokens = self.tokens(path)
+        if tokens is None:
             return
         directives = _directives(tokens)
         guard = _guard(tokens, directives)
         if guard and self.macros.definition(guard):
             return
         stream, frames = _Stream(path), []
+        ends = dict(directives)
         guard_start = directives[0][0] if guard else None
         index = 0
         while index < len(tokens):
             token = tokens[index]
             state = frames[-1].state if frames else region
-            if token.bol and token.text == "#":
-                end = index + 1
-                while end < len(tokens) and not tokens[end].bol:
-                    end += 1
-                words = tokens[index + 1:end]
+            if index in ends:
                 if index == guard_start:
-                    frames.append(_Frame(region, True, True))
+                    frames.append(_Frame(region, True, True, token.line))
                 else:
-                    self.directive(path, words, token.line, frames, region, state)
-                index = end
+                    self.directive(path, tokens[index + 1:ends[index]], token.line, frames, state)
+                index = ends[index]
                 continue
             if state is not False:
                 self.emit(stream, token, state is True)
             index += 1
         if frames:
-            self.diagnostics.unterminated.append((path, tokens[-1].line, "#if without #endif"))
+            self.diagnostics.unterminated.append((path, frames[-1].line, "#if without #endif"))
         self.streams.append(stream)
+
+    def tokens(self, path: str) -> list[Token] | None:
+        """The tokens of the file at PATH, or None when it does not tokenize (listed as unsupported)."""
+        try:
+            with open(path, encoding=self.config.encoding, newline="") as handle:
+                text = handle.read()
+        except UnicodeDecodeError as error:
+            raise HeaderError(f"{path}: does not decode as {self.config.encoding}: {error}") from error
+        try:
+            return ctokens.tokenize(text)[0]
+        except Unsupported as error:
+            self.diagnostics.unsupported_files.append((path, str(error)))
+            return None
 
     # Directives
 
-    def directive(self, path: str, words: list[Token], line: int, frames: list, region, state):
+    def directive(self, path: str, words: list[Token], line: int, frames: list, state):
         name = words[0].text if words else ""
         if name in CONDITIONALS:
             if state is False:
-                frames.append(_Frame(None, True, False, dead=True))
+                frames.append(_Frame(None, True, False, line, dead=True))
                 return
-            value = self.condition(name, words[1:], path, line)
-            frames.append(_Frame(state, value, value))
+            value = self.condition(name, words[1:])
+            frames.append(_Frame(state, value, value, line))
         elif name in ("elif", "else", "endif"):
             if not frames:
                 self.diagnostics.unterminated.append((path, line, f"#{name} without #if"))
@@ -541,7 +549,7 @@ class _Preprocessor:
             elif frame.taken is True:
                 frame.current = False
             else:
-                value = self.condition("if", words[1:], path, line)
+                value = self.condition("if", words[1:])
                 frame.current = False if value is False else (None if frame.taken is None else value)
                 frame.taken = _or(frame.taken, value)
         elif state is False:
@@ -559,7 +567,7 @@ class _Preprocessor:
         elif name not in ("", "pragma", "line"):
             self.diagnostics.unknown_directives[name] += 1
 
-    def condition(self, kind: str, words: list[Token], path: str, line: int):
+    def condition(self, kind: str, words: list[Token]):
         """True, False or None (unresolved) for #if, #ifdef or #ifndef WORDS."""
         if kind in ("ifdef", "ifndef"):
             if not words or words[0].kind != "id":
@@ -570,7 +578,7 @@ class _Preprocessor:
                 self.diagnostics.unresolved_if[words[0].text] += 1
                 return None
             return answer if kind == "ifdef" else not answer
-        result = ceval.evaluate(words, self.closure.profile, mode="pp", expand=self.macros.expand,
+        result = ceval.evaluate(words, self.closure.profile, mode=ceval.PP, expand=self.macros.expand,
                                 resolve=self.macros.resolve_pp, is_defined=self.macros.is_defined)
         if result.ok:
             return result.value != 0
@@ -601,13 +609,13 @@ class _Preprocessor:
 
     def include(self, path: str, words: list[Token], line: int, state):
         if len(words) == 1 and words[0].kind == "str":
-            name, folders = words[0].text[1:-1], (os.path.dirname(path),) + tuple(self.config.search_path)
+            name, angle = words[0].text[1:-1], False
         elif len(words) >= 3 and words[0].text == "<" and words[-1].text == ">":
-            name, folders = "".join(token.text for token in words[1:-1]), tuple(self.config.search_path)
+            name, angle = "".join(token.text for token in words[1:-1]), True
         else:
             self.diagnostics.macro_includes.append((path, line, ctokens.spelling(words)))
             return
-        found = _search(name, folders)
+        found = search_include(name, angle, os.path.dirname(path), self.config.search_path)
         if found is None:
             self.diagnostics.missing.append((path, line, name))
             return
@@ -627,7 +635,7 @@ class _Preprocessor:
         stay as written, so that declaration reading drops them whole."""
         profile = self.closure.profile
         if (token.kind != "id" or token.text in hidden or token.text in profile.ignored_words
-                or token.text.startswith(tuple(profile.ignored_prefixes))):
+                or token.text.startswith(profile.ignored_prefixes)):
             return [(token, True)]
         alternatives = self.macros.alternatives(token.text)
         if any(isinstance(item, Definition) for item in alternatives) and len(alternatives) > 1:
@@ -750,7 +758,7 @@ class _Header(Declarations):
         name = tokens[start + 2].text
         self.tags.add(f"{name}__")
         self.types.add(name)
-        self.closure.add(self.closure.typedefs, Typedef(name, f"struct {name}__ *", "", self.origin(start,
+        _add(self.closure.typedefs, Typedef(name, f"struct {name}__ *", self.origin(start,
                                                                                                     start + 4)))
         return True
 
@@ -758,8 +766,8 @@ class _Header(Declarations):
         """A C++ class body: member functions, access words and the like, which the reader does not model."""
         tokens = self.tokens
         for index in range(brace + 1, self.pairs[brace]):
-            if tokens[index].text in CLASS_WORDS or tokens[index].text == "{" and tokens[index - 1].text in (")",
-                                                                                                         "const"):
+            member_function = tokens[index].text == "{" and tokens[index - 1].text in (")", "const")
+            if tokens[index].text in CLASS_WORDS or member_function:
                 return True
         return False
 
@@ -778,27 +786,26 @@ class _Header(Declarations):
         declared = self.declarators(low, end)
         body_id, anonymous = (self.define_type(low, bodies[0], declared if typedef else None, origin)
                               if bodies else (None, False))
-        for name, spelled, group, (part_start, part_end, cut) in declared:
+        for declarator in declared:
+            name, spelled, cut = declarator.name, declarator.spelled, declarator.cut
             if not name:
                 continue
             if anonymous:
                 spelled = _respell(spelled, tokens[bodies[0] - 1].text, body_id)
-            text = name[0]
             if typedef:
-                plain = anonymous and spelled == body_id
-                self.closure.add(self.closure.typedefs, Typedef(text, spelled, body_id if plain else "", origin))
-                self.types.add(text)
-            elif group is not None:
-                parameters, variadic = self.parameters(group)
-                self.closure.add(self.closure.functions, Function(text, spelled, parameters, variadic, origin))
+                _add(self.closure.typedefs, Typedef(name, spelled, origin))
+                self.types.add(name)
+            elif declarator.group is not None:
+                parameters, variadic, _ = self.parameters(declarator.group)
+                _add(self.closure.functions, Function(name, spelled, parameters, variadic, origin))
             else:
-                self.closure.add(self.closure.variables, Variable(text, spelled, origin))
-                if self.is_constant(spelled, cut, part_end):
-                    constant = Constant(text, tuple(tokens[cut + 1:part_end]), spelled, False, origin)
-                    self.closure.add(self.closure.constants, constant)
+                _add(self.closure.variables, Variable(name, spelled, origin))
+                if self.is_constant(spelled, cut, declarator.end):
+                    constant = Constant(name, tuple(tokens[cut + 1:declarator.end]), spelled, False, origin)
+                    _add(self.closure.constants, constant)
 
     def is_constant(self, spelled: str, cut: int, end: int) -> bool:
-        """A C++ const integral variable with an initializer."""
+        """A C++ const variable with an initializer, not a pointer, reference or array."""
         words = spelled.split()
         return (self.profile.language == "cpp" and cut < end and "const" in words
                 and not any(word in ("*", "&", "[") for word in words))
@@ -813,7 +820,7 @@ class _Header(Declarations):
         if not anonymous:
             type_id = f"{kind} {self.qualified(tag_at + 1)[0]}"
         else:
-            plain = [name[0] for name, spelled, _, _ in typedefs or () if name and spelled == kind]
+            plain = [declarator.name for declarator in typedefs or () if declarator.name and declarator.spelled == kind]
             type_id = plain[0] if plain else f"{kind}@{origin.file}:{tokens[brace].line}"
         if kind == "enum":
             self.enumerators(brace, type_id, origin)
@@ -825,9 +832,10 @@ class _Header(Declarations):
     def enumerators(self, brace: int, type_id: str, origin: Origin):
         previous = None
         for low, high in self.split(brace + 1, self.pairs[brace]):
-            if low == high or self.tokens[low].kind != "id":
-                if low != high:
-                    self.note_skip(low, "enumerator")
+            if low == high:
+                continue
+            if self.tokens[low].kind != "id":
+                self.note_skip(low, "enumerator")
                 continue
             name = self.tokens[low]
             if high > low + 1 and self.tokens[low + 1].text == "=":
@@ -835,7 +843,7 @@ class _Header(Declarations):
             else:
                 expression = tuple(ctokens.tokens_of("0" if previous is None else f"( {previous} ) + 1"))
             certain = origin.certain and all(self.certain[low:high])
-            self.closure.add(self.closure.constants,
+            _add(self.closure.constants,
                              Constant(name.text, expression, type_id, True, Origin(self.path, name.line, certain)))
             previous = name.text
 
@@ -847,14 +855,15 @@ class _Header(Declarations):
             nested = [index for index in self.depth_zero(low, high) if self.tokens[index].text == "{"]
             declared = self.declarators(low, high)
             nested_id, anonymous = self.define_type(low, nested[0], None, origin) if nested else (None, False)
-            names = [entry for entry in declared if entry[0]]
-            if anonymous and not names:
+            named = [declarator for declarator in declared if declarator.name]
+            if anonymous and not named:
                 found += self.closure.members.get(nested_id, [])
                 continue
-            for name, spelled, _, _ in names:
+            for declarator in named:
+                spelled = declarator.spelled
                 if anonymous:
                     spelled = _respell(spelled, self.tokens[nested[0] - 1].text, nested_id)
-                found.append(Member(name[0], spelled))
+                found.append(Member(declarator.name, spelled))
         return found
 
 

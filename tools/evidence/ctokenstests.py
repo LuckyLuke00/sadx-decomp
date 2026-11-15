@@ -24,14 +24,15 @@ def check_strings_and_comments() -> list[str]:
         failures.append(f"comment opener in a string: got {[token.text for token in tokens]}")
     if [comment.text for comment in comments] != ['// say "hi"', "/* it's */"]:
         failures.append(f"quotes in comments: got {[comment.text for comment in comments]}")
-    if texts(r"'\\' '\'' '/' L'A'") != [r"'\\'", r"'\''", "'/'", "L'A'"]:
-        failures.append(f"character constants: got {texts(chr(39))}")
+    got = texts(r"'\\' '\'' '/' L'A'")
+    if got != [r"'\\'", r"'\''", "'/'", "L'A'"]:
+        failures.append(f"character constants: got {got}")
     return failures
 
 
 def check_lines_and_columns() -> list[str]:
     failures = []
-    tokens, _ = ctokens.tokenize("﻿a\r\n\tbc  d\r\n")
+    tokens, _ = ctokens.tokenize("\ufeffa\r\n\tbc  d\r\n")
     got = [(token.text, token.line, token.column, token.bol) for token in tokens]
     if got != [("a", 1, 1, True), ("bc", 2, 2, True), ("d", 2, 6, False)]:
         failures.append(f"BOM, CRLF and columns: got {got}")
@@ -56,8 +57,9 @@ def check_unsupported() -> list[str]:
         except Unsupported as error:
             if str(error) != reason:
                 failures.append(f"{text!r}: got reason {error}")
-    if texts("#error don't") != ["#", "error", "don", "'", "t"]:
-        failures.append(f"a lone quote is one token: got {texts(chr(39))}")
+    got = texts("#error don't")
+    if got != ["#", "error", "don", "'", "t"]:
+        failures.append(f"a lone quote is one token: got {got}")
     return failures
 
 
@@ -94,7 +96,8 @@ def calls_of(text: str) -> list[tuple]:
     """(callee, outer, argument spellings) of each call in TEXT, with any identifier as a callee."""
     tokens = ctokens.tokens_of(text)
     found = ctokens.find_calls(tokens, lambda index: tokens[index].kind == "id")
-    return [(tokens[call.position].text, call.outer, [ctokens.spelling(argument) for argument in call.arguments(tokens)])
+    return [(tokens[call.position].text, call.outer,
+             [ctokens.spelling(argument) for argument in call.arguments(tokens)])
             for call in found]
 
 
@@ -112,11 +115,13 @@ def check_find_calls() -> list[str]:
     for text, wanted in cases.items():
         if calls_of(text) != wanted:
             failures.append(f"find_calls {text!r}: got {calls_of(text)}")
-    tokens = ctokens.tokens_of("x.f(1); g(2); h(3);")
+    tokens = ctokens.tokens_of("a(0); x.f(1); g(2); h(3);")
+    spellings = [token.text for token in tokens]
     found = ctokens.find_calls(tokens, lambda index: tokens[index].kind == "id" and tokens[index - 1].text != ".",
-                               tokens.index(next(token for token in tokens if token.text == "g")) - 1, len(tokens) - 4)
-    if [tokens[call.position].text for call in found] != ["g"]:
-        failures.append("find_calls: the callee filter and the bounds")
+                               spellings.index(";"), spellings.index("h"))
+    got = [tokens[call.position].text for call in found]
+    if got != ["g"]:
+        failures.append(f"find_calls, the callee filter and the bounds: got {got}")
     return failures
 
 
@@ -155,7 +160,7 @@ def check_find_fields() -> list[str]:
         "if (x) p->f = 3;": [("p", "f", "=", "3")],
     }
     rejected = ("*p->f = 3;", "a + p->f == 3;", "(int)p->f == 3;", "&p->f == q;", "!p->f == 0;", "p->f[2] = 3;",
-                "x & p->f & 8;", "{ .f = 3 }", "p->f -= 1;", "p->f;")
+                "x & p->f & 8;", "{ .f = 3 }", "p->f -= 1;", "p->f;", "(void *)&p->f == q;", "sizeof p->f == 4;")
     failures = [f"find_fields {text!r}: got {fields_of(text)}" for text, wanted in cases.items()
                 if fields_of(text) != wanted]
     failures += [f"find_fields {text!r} is no spot: got {fields_of(text)}" for text in rejected if fields_of(text)]
@@ -196,7 +201,8 @@ def check_find_values() -> list[str]:
         "switch (a) { case c ? 1 : 2: break; }": [(case, "a", "case", "c ? 1 : 2")],
     }
     rejected = ("int x = 1;", "*p = 3;", "a + b == 3;", "&x == q;", "!x == 0;", "p->x = 3;", "x[2] = 3;",
-                "x += 1;", "return;", "case 1:", "switch (a) case 1: break;", "A::x = 1;", "(int)x == 3;")
+                "x += 1;", "return;", "case 1:", "switch (a) case 1: break;", "A::x = 1;", "(int)x == 3;",
+                "(void *)&x == q;")
     failures = [f"find_values {text!r}: got {values_of(text)}" for text, wanted in cases.items()
                 if values_of(text) != wanted]
     failures += [f"find_values {text!r} is no spot: got {values_of(text)}" for text in rejected if values_of(text)]

@@ -26,27 +26,29 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+sys.path.append(str(HERE.parent))  # tools/, after the standard library
 
 import ceval  # noqa: E402
 import profiles  # noqa: E402
+import toolchain  # noqa: E402
 
 ROOT = HERE.parents[1]
 FIXTURES = HERE / "probe"
 BUILD = ROOT / "build" / "probe"
 TOOLCHAIN = ROOT / ".toolchain"
 FLAGS = ("/nologo", "/DWIN32", "/D_WINDOWS", "/EHsc", "/fp:precise", "/DNDEBUG", "/MT", "/O2", "/W4")
-PROFILE_NAMES = {"c": "msvc-vc10-x86-c", "cpp": "msvc-vc10-x86-cpp"}
 LANGUAGE_FLAGS = {"c": "/TC", "cpp": "/TP"}
 MAX_ROUNDS = 40
 TYPE_NAMES = {"__int64": "long long", "unsigned __int64": "unsigned long long"}  # typeid spelling: ceval spelling
 DIAGNOSTIC = re.compile(r"\((\d+)\) : (?:fatal )?(error|warning) (C\d{4})")
+TAIL = 2000  # the characters of compiler or program output that an error shows
 
 INT, F32, F64, PP = "int", "f32", "f64", "pp"
-BOTH, C_ONLY, CPP_ONLY = ("c", "cpp"), ("c",), ("cpp",)
+BOTH, CPP_ONLY = ("c", "cpp"), ("cpp",)
 ENUM_DECLARATION = "enum probe_enum { PROBE_HIGH = 0x80000000, PROBE_NEXT, PROBE_ALL = 0xFFFFFFFF };"
 ENUM_NAMES = ("PROBE_HIGH", "PROBE_NEXT", "PROBE_ALL")
 
-# (kind, expression, languages). Grouped as the plan lists them: shifts, operators, literal typing, characters,
+# (kind, expression, languages). Grouped: shifts, operators, literal typing, characters,
 # sizes, conversions, floats, enums, #if.
 CASES = (
     (INT, "1 << 31", BOTH), (INT, "1 << 30", BOTH), (INT, "1u << 31", BOTH), (INT, "1 << 32", BOTH),
@@ -177,9 +179,8 @@ def program(cases: list[tuple], skipped: set[int]) -> _Source:
     source.add('#define PROBE_TYPE(e) ""')
     source.add("#endif")
     source.add(ENUM_DECLARATION)
-    for index, (kind, text) in enumerate(cases):
-        if index in skipped:
-            continue
+    kept = [(index, kind, text) for index, (kind, text) in enumerate(cases) if index not in skipped]
+    for index, kind, text in kept:
         if kind == INT:
             source.add(f"static const unsigned __int64 probe_bits_{index} = (unsigned __int64)({text});", index)
             source.add(f"static const unsigned int probe_size_{index} = sizeof({text});", index)
@@ -199,9 +200,7 @@ def program(cases: list[tuple], skipped: set[int]) -> _Source:
     source.add("{")
     for index, name in enumerate(PREDEFINES):
         source.add(f'    printf("define {name} %s\\n", probe_define_{index} ? probe_define_{index} : "<undefined>");')
-    for index, (kind, text) in enumerate(cases):
-        if index in skipped:
-            continue
+    for index, kind, text in kept:
         if kind == INT:
             source.add(f'    printf("{index} %u %d %I64u %s\\n", probe_size_{index}, probe_signed_{index}, '
                        f"probe_bits_{index}, PROBE_TYPE({text}));", index)
@@ -221,8 +220,9 @@ def program(cases: list[tuple], skipped: set[int]) -> _Source:
 def compile_and_run(cases: list[tuple], language: str) -> tuple[dict, dict, dict, str]:
     """Compile CASES as LANGUAGE until the program builds, then run it. Returns the errors (case: code), the
     warnings (case: codes), the output lines (case: text, and "define NAME": value) and the compiler banner."""
-    sys.path.insert(0, str(ROOT / "tools"))
-    import toolchain
+    compiler = TOOLCHAIN / "bin" / "cl.exe"
+    if not compiler.is_file():
+        raise ProbeError(f"{compiler} is missing: run tools/check.py setup")
     env = toolchain.env(TOOLCHAIN)
     BUILD.mkdir(parents=True, exist_ok=True)
     stem = BUILD / f"probe-{language}"
@@ -230,35 +230,22 @@ def compile_and_run(cases: list[tuple], language: str) -> tuple[dict, dict, dict
     for _ in range(MAX_ROUNDS):
         source = program(cases, set(errors))
         stem.with_suffix(".c").write_text(source.text(), encoding="ascii")
-        command = [str(TOOLCHAIN / "bin" / "cl.exe"), *FLAGS, LANGUAGE_FLAGS[language], stem.with_suffix(".c").name,
+        command = [str(compiler), *FLAGS, LANGUAGE_FLAGS[language], stem.with_suffix(".c").name,
                    f"/Fe{stem.name}.exe", f"/Fo{stem.name}.obj"]
         built = subprocess.run(command, cwd=BUILD, env=env, capture_output=True, text=True)
-        warnings: dict[int, list[str]] = {}
-        new_errors = {}
-        unowned = []
-        for match in DIAGNOSTIC.finditer(built.stdout + built.stderr):
-            line, severity, code = int(match[1]), match[2], match[3]
-            case = source.owner.get(line)
-            if case is None:
-                if severity == "error":
-                    unowned.append(match[0])
-                continue
-            if severity == "error":
-                new_errors.setdefault(case, code)
-            else:
-                warnings.setdefault(case, [])
-                if code not in warnings[case]:
-                    warnings[case].append(code)
+        new_errors, warnings, unowned = _diagnostics(built.stdout + built.stderr, source.owner)
         if unowned:
-            raise ProbeError(f"errors outside every case: {unowned[:5]}\n{built.stdout[-2000:]}")
+            raise ProbeError(f"errors outside every case: {unowned[:5]}\n{built.stdout[-TAIL:]}")
         if not new_errors:
             if built.returncode != 0:
-                raise ProbeError(f"cl.exe failed with no case error:\n{built.stdout[-2000:]}")
+                raise ProbeError(f"cl.exe failed with no case error:\n{built.stdout[-TAIL:]}")
             break
         errors.update(new_errors)
     else:
         raise ProbeError(f"the program still does not build after {MAX_ROUNDS} rounds")
-    ran = subprocess.run([str(stem.with_suffix(".exe"))], capture_output=True, text=True, check=True)
+    ran = subprocess.run([str(stem.with_suffix(".exe"))], capture_output=True, text=True)
+    if ran.returncode != 0:
+        raise ProbeError(f"{stem.name}.exe exited with {ran.returncode}:\n{ran.stderr[-TAIL:]}")
     output = {}
     for line in ran.stdout.splitlines():
         head, _, rest = line.partition(" ")
@@ -267,11 +254,31 @@ def compile_and_run(cases: list[tuple], language: str) -> tuple[dict, dict, dict
             output[f"define {name}"] = None if value == "<undefined>" else value
         else:
             output[int(head)] = rest
-    banner = subprocess.run([str(TOOLCHAIN / "bin" / "cl.exe")], env=env, capture_output=True, text=True)
+    banner = subprocess.run([str(compiler)], env=env, capture_output=True, text=True)
     versions = [line.strip() for line in (banner.stderr + banner.stdout).splitlines() if "Version" in line]
     if not versions:
         raise ProbeError(f"cl.exe printed no version line:\n{banner.stderr}{banner.stdout}")
     return errors, warnings, output, versions[0]
+
+
+def _diagnostics(text: str, owner: dict) -> tuple[dict, dict, list]:
+    """The errors (case: first code) and warnings (case: codes) in the compiler output TEXT, each under the case
+    that OWNER gives its line, and the errors on lines that no case owns."""
+    errors, warnings, unowned = {}, {}, []
+    for match in DIAGNOSTIC.finditer(text):
+        line, severity, code = int(match[1]), match[2], match[3]
+        case = owner.get(line)
+        if case is None:
+            if severity == "error":
+                unowned.append(match[0])
+            continue
+        if severity == "error":
+            errors.setdefault(case, code)
+        else:
+            warnings.setdefault(case, [])
+            if code not in warnings[case]:
+                warnings[case].append(code)
+    return errors, warnings, unowned
 
 
 def results(cases: list[tuple], language: str) -> dict:
@@ -348,9 +355,9 @@ def disagreement(case: dict, result: ceval.Result, language: str) -> str | None:
 
 
 def evaluate(case: dict, profile: profiles.Profile) -> ceval.Result:
-    """CASE evaluated by ceval under PROFILE: #if cases in preprocessor mode, with only _MSC_VER defined."""
+    """CASE evaluated by ceval under PROFILE: #if cases in preprocessor mode, with the profile's predefines defined."""
     if case["kind"] == PP:
-        return ceval.evaluate(case["text"], profile, mode="pp", is_defined=lambda name: name in profile.predefines)
+        return ceval.evaluate(case["text"], profile, mode=ceval.PP, is_defined=lambda name: name in profile.predefines)
     return ceval.evaluate(case["text"], profile)
 
 
@@ -395,7 +402,7 @@ def differential(count: int, seed: int, language: str) -> int:
     """Compare ceval with cl.exe on COUNT random expressions; print the disagreements and return their number."""
     rng = random.Random(seed)
     cases = [(INT, random_expression(rng, 4, language)) for _ in range(count)]
-    profile = profiles.get(PROFILE_NAMES[language])
+    profile = profiles.VC10[language]
     found = results(cases, language)["cases"]
     tally = {"agree": 0, "disagree": 0, "compiler error": 0, "ceval unsupported, compiler warned": 0,
              "ceval value, compiler warned": 0}
@@ -422,13 +429,13 @@ def main() -> int:
     random_run = commands.add_parser("differential", help="compare ceval with cl.exe on random expressions")
     random_run.add_argument("--count", type=int, default=2000)
     random_run.add_argument("--seed", type=int, default=1)
-    random_run.add_argument("--language", choices=sorted(PROFILE_NAMES), default="cpp")
+    random_run.add_argument("--language", choices=sorted(profiles.VC10), default="cpp")
     arguments = parser.parse_args()
     try:
         if arguments.command == "differential":
             return 1 if differential(arguments.count, arguments.seed, arguments.language) else 0
         FIXTURES.mkdir(exist_ok=True)
-        for language in PROFILE_NAMES:
+        for language in sorted(profiles.VC10):
             fixture = results(cases_for(language), language)
             path = FIXTURES / f"vc10-{language}.json"
             path.write_text(json.dumps(fixture, indent=1) + "\n", encoding="utf-8", newline="\n")

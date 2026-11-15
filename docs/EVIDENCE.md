@@ -350,7 +350,7 @@ call arguments and field spots in the game source
 │   ├── function-like macro callees
 │   ├── field spots whose base has no known type, and bitfields
 │   ├── nonconstant values: a variable or function, ., ->, [], unary * or &
-│   └── unsupported files: a file with #if lines
+│   └── unsupported files: a file with a directive other than #include and #pragma
 └── coverage sites
     ├── resolved: the value evaluates
     │   ├── A, A*, B, C: from the top candidate
@@ -490,8 +490,9 @@ A pairing is kept only when every optimal alignment makes it. Otherwise the old 
 - A no-code placeholder leaves nothing in the binary, so nothing can check it.
 - Host Python is not the target machine. The tool claims only what the profiles model, each with its provenance.
 - There is no full preprocessor and no C++ parser. Include order is modelled only inside the umbrella closures. Unresolved conditions never count as 0.
-- The game source is not preprocessed. A file with `#if` lines is unsupported as a whole. A local that shares its name with a header constant is caught only by the declaration subset. The target closures act as one, so a name can resolve in a file that does not include its header. Such a site gets the flag "include", nothing more.
+- The game source is not preprocessed. A file with a directive other than `#include` and `#pragma` is unsupported as a whole. A local that shares its name with a header constant is caught only by the declaration subset. The target closures act as one, so a name can resolve in a file that does not include its header. Such a site gets the flag "include", nothing more.
 - A header included twice under different macro state (X-macro style) is not modelled.
+- Each header is read once per closure. A header first reached from an unresolved `#if` branch stays uncertain, also when a live `#include` reaches it later. Its declarations are flagged, never wrong.
 - Swapping two sites in one owner keeps one id at most.
 - The expansion rules are for Release builds only.
 - Vendor values may differ in the game's port of the library.

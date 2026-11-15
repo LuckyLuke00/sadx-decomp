@@ -8,21 +8,33 @@ still gives the name, with the type as spelled.
 Standard library only.
 """
 
+from typing import NamedTuple
+
 from ctokens import CLOSERS, OPENERS, Token, Unsupported, spelling
 
 KEYWORDS = frozenset("""
     auto break case char const continue default do double else enum extern float for goto if inline int long
     register restrict return short signed sizeof static struct switch typedef union unsigned void volatile while
-    __try __finally __leave __asm _asm __alignof __uuidof __if_exists __if_not_exists
+    __try __except __finally __leave __asm _asm __alignof __uuidof __if_exists __if_not_exists
     asm bool catch class const_cast delete dynamic_cast explicit export false friend mutable namespace new operator
     private protected public reinterpret_cast static_cast template this throw true try typeid typename using virtual
-    nullptr and and_eq bitand bitor compl not not_eq or or_eq xor xor_eq
+    nullptr and and_eq bitand bitor compl not not_eq or or_eq xor xor_eq alignof decltype noexcept static_assert
 """.split())
+SKIPPED_HEADS = frozenset({"template", "using", "namespace"})  # the readers skip a statement that starts with one
 STORAGE = frozenset({"static", "extern", "register", "auto", "inline", "typedef", "mutable", "virtual", "explicit",
                      "friend"})
 QUALIFIERS = frozenset({"const", "volatile"})
 TAG_WORDS = frozenset({"struct", "union", "enum", "class"})
 POINTER_TOKENS = frozenset({"*", "&"})
+
+
+class Declarator(NamedTuple):
+    name: str | None  # None when the declarator names nothing, as in `int f(int)`'s parameter
+    name_at: int | None  # the index of the name's first token
+    spelled: str  # the spelled type: no name, no storage words, no { } body
+    group: int | None  # the index of the parameter group when it declares a function
+    end: int  # the index after the declarator, initializer included
+    cut: int  # the index of its =, or END without an initializer
 
 
 def pairs(tokens: list[Token]) -> dict[int, int]:
@@ -124,6 +136,7 @@ class Declarations:
                 self.note_tag(self.tokens[index].text, self.qualified(index + 1)[0])
 
     def note_tag(self, kind: str, name: str):
+        """Add the tag NAME. KIND (struct, union, enum or class) is for the header reader, which overrides this."""
         self.tags.add(name)
 
     def function_head(self, start: int, brace: int) -> int | None:
@@ -162,12 +175,9 @@ class Declarations:
             if token.text == "(":
                 if name:
                     return name, index, cut
-                inner = index + 1
-                while inner < self.pairs[index] and tokens[inner].text in POINTER_TOKENS | QUALIFIERS:
-                    inner += 1
-                if inner > index + 1 and inner < self.pairs[index] and self.is_name(tokens[inner]):
-                    text, end = self.qualified(inner)
-                    return (text, inner, end), None, cut
+                inner = self.pointer_name(index)
+                if inner:
+                    return inner, None, cut
                 index = self.pairs[index] + 1
                 continue
             if token.text in OPENERS:
@@ -200,10 +210,19 @@ class Declarations:
             name = unknown
         return name, None, cut
 
-    def declarators(self, low: int, high: int, parameter: bool = False):
-        """Each declarator of LOW..HIGH as (name or None, spelled type, parameter group or None, (start, end, cut)).
-        The spelled type leaves out the name, storage words and any { } body: `struct A { int x; } a` spells
-        `struct A`. A function's spelled type is its return type."""
+    def pointer_name(self, group: int) -> tuple | None:
+        """The name inside the group at GROUP when it reads `(*name)` or `(&name)`, as (text, start, end)."""
+        tokens, inner, close = self.tokens, group + 1, self.pairs[group]
+        while inner < close and tokens[inner].text in POINTER_TOKENS | QUALIFIERS:
+            inner += 1
+        if inner == group + 1 or inner == close or not self.is_name(tokens[inner]):
+            return None
+        text, end = self.qualified(inner)
+        return text, inner, end
+
+    def declarators(self, low: int, high: int, parameter: bool = False) -> list[Declarator]:
+        """Each declarator of LOW..HIGH. The spelled type leaves out the name, storage words and any { } body:
+        `struct A { int x; } a` spells `struct A`. A function's spelled type is its return type."""
         found, base = [], []
         for number, (start, end) in enumerate(self.split(low, high)):
             name, group, cut = self.declarator(start, end, number > 0, parameter)
@@ -220,13 +239,14 @@ class Declarations:
                         break
                 base = [self.tokens[index] for index in range(start, base_stop) if index not in skipped]
             own = [self.tokens[index] for index in range(start, stop) if index not in skipped]
-            found.append((name, self.spelled(own if number == 0 else base + own), group, (start, end, cut)))
+            spelled = self.spelled(own if number == 0 else base + own)
+            found.append(Declarator(name[0] if name else None, name[1] if name else None, spelled, group, end, cut))
         return found
 
-    def parameters(self, group: int, names: dict | None = None) -> tuple[tuple, bool]:
-        """The spelled parameter types of the group at GROUP and whether it ends with ...; puts each named
-        parameter's spelled type in NAMES."""
-        types, variadic = [], False
+    def parameters(self, group: int) -> tuple[tuple, bool, dict]:
+        """The spelled parameter types of the group at GROUP, whether it ends with ..., and the spelled type of each
+        named parameter by name."""
+        types, variadic, named = [], False, {}
         close = self.pairs[group]
         self.note_tags(group + 1, close)
         for start, end in self.split(group + 1, close):
@@ -236,8 +256,8 @@ class Declarations:
                 continue
             if not words or words == ["void"]:
                 continue
-            [(name, spelled, _, _)] = self.declarators(start, end, parameter=True)
-            types.append(spelled)
-            if names is not None and name:
-                names[name[0]] = spelled
-        return tuple(types), variadic
+            [declarator] = self.declarators(start, end, parameter=True)
+            types.append(declarator.spelled)
+            if declarator.name:
+                named[declarator.name] = declarator.spelled
+        return tuple(types), variadic, named

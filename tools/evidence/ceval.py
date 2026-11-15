@@ -15,9 +15,11 @@ branch that fails also fails the result, because the result type depends on it.
 
 The caller supplies the names through callbacks, each of which may be left out:
 
-- expand(name) -> Macro or None: an object-like macro is expanded token by token, as a compiler does; a function-like
-  macro followed by "(" gives "unsupported" (cause "function-like macro"), or "nonconstant" when its arguments name a
-  variable. A cycle, # or ## in a body, or a body that ends in a call gives "unsupported".
+- expand(name) -> Macro or None: an object-like macro is expanded token by token, as a compiler does. In expression
+  mode a function-like macro followed by "(" gives "unsupported" (cause "function-like macro"), or "nonconstant" when
+  its arguments name a variable. In #if mode it is expanded as a compiler does (arguments, # and ##, rescan). A cycle,
+  or a body with a call anywhere in it, gives "unsupported"; so does # or ## in an object-like body, in expression
+  mode only.
 - resolve(name) -> Result or None: any other identifier, such as an enum constant, a const variable or a variable
   (a "nonconstant" Result). None means the name is unknown.
 - resolve_type(spelling) -> CType or None: a typedef name or "struct TAG", for casts and sizeof.
@@ -40,9 +42,12 @@ from dataclasses import dataclass, replace
 from fractions import Fraction
 
 import ctokens
-from profiles import BIG_ENDIAN, WRAP, ARITHMETIC, CType, Profile
+from cdecls import QUALIFIERS
+from profiles import ARITHMETIC, BIG_ENDIAN, WRAP, CType, Profile
 
 OK, NONCONSTANT, UNRESOLVED, UNSUPPORTED = "ok", "nonconstant", "unresolved", "unsupported"
+PP, EXPR = "pp", "expr"  # the modes of evaluate(): #if or a C expression
+MAX_MACRO_DEPTH = 64  # macro expansions inside each other before the result is "unsupported"
 SEVERITY = {OK: 0, UNSUPPORTED: 1, UNRESOLVED: 2, NONCONSTANT: 3}
 
 INTEGER = re.compile(r"(0[xX][0-9A-Fa-f]+|0[0-7]*|[1-9][0-9]*)([A-Za-z0-9]*)\Z")
@@ -75,8 +80,7 @@ INTEGER_OPERATIONS = {"+": operator.add, "-": operator.sub, "*": operator.mul, "
 FLOAT_OPERATIONS = {"+": operator.add, "-": operator.sub, "*": operator.mul, "/": operator.truediv}
 ARITHMETIC_KINDS = ("int", "bool", "float")
 SCALAR_KINDS = ("int", "bool", "float", "pointer")
-QUALIFIERS = ("const", "volatile")
-TAG_WORDS = ("struct", "union", "enum")
+TAG_WORDS = ("struct", "union", "enum")  # no class: in a C profile it is an ordinary name
 
 
 @dataclass(frozen=True)
@@ -125,19 +129,19 @@ def _unknown(_name):
     return None
 
 
-def evaluate(source, profile: Profile, *, mode: str = "expr", expand=_unknown, resolve=_unknown,
-             resolve_type=_unknown, is_defined=_unknown, max_depth: int = 64) -> Result:
+def evaluate(source, profile: Profile, *, mode: str = EXPR, expand=_unknown, resolve=_unknown,
+             resolve_type=_unknown, is_defined=_unknown) -> Result:
     """The value and type of SOURCE (text or a list of ctokens.Token) under PROFILE. MODE is expr or pp (#if)."""
     try:
         tokens = ctokens.tokens_of(source) if isinstance(source, str) else list(source)
     except ctokens.Unsupported as error:
         return failure(UNSUPPORTED, "syntax", str(error))
-    evaluator = _Evaluator(profile, mode, expand, resolve, resolve_type, is_defined, max_depth)
+    evaluator = _Evaluator(profile, mode, expand, resolve, resolve_type, is_defined)
     try:
-        result = evaluator.parse(evaluator.expand_items(tokens, "", frozenset(), 0))
+        result = evaluator.evaluate_items(evaluator.expand_items(tokens, "", frozenset(), 0))
     except _Syntax as error:
         return failure(UNSUPPORTED, "syntax", str(error))
-    if mode == "pp" and result.status == NONCONSTANT:
+    if mode == PP and result.status == NONCONSTANT:
         return failure(UNSUPPORTED, "not a #if expression", result.cause)
     return result
 
@@ -230,6 +234,30 @@ def _with_sources(result: Result, *parts: Result) -> Result:
     return replace(result, names=names, literal=any(part.literal for part in parts))
 
 
+def _escape_unit(body: str, index: int) -> tuple[int, int] | None:
+    """The code unit of the escape in BODY and the index after it, or None for an escape the tools do not model.
+    INDEX is the index of the character after the backslash; a backslash at the very end gives None."""
+    if index == len(body):
+        return None
+    escape = body[index]
+    index += 1
+    if escape in SIMPLE_ESCAPES:
+        return SIMPLE_ESCAPES[escape], index
+    if escape in "01234567":
+        end = index
+        while end < len(body) and end - index < 2 and body[end] in "01234567":
+            end += 1
+        return int(escape + body[index:end], 8), end
+    if escape == "x":
+        end = index
+        while end < len(body) and body[end] in "0123456789abcdefABCDEF":
+            end += 1
+        if end == index:
+            return None
+        return int(body[index:end], 16), end
+    return None
+
+
 def _char_units(body: str, limit: int) -> list[int] | None:
     """The code units of a character constant's body; None for an escape the tools do not model, a non-ASCII
     character or a unit above LIMIT."""
@@ -240,32 +268,15 @@ def _char_units(body: str, limit: int) -> list[int] | None:
         if char != "\\":
             if ord(char) > 0x7F:
                 return None
-            units.append(ord(char))
-            continue
-        if index == len(body):
-            return None
-        escape = body[index]
-        index += 1
-        if escape in SIMPLE_ESCAPES:
-            units.append(SIMPLE_ESCAPES[escape])
-        elif escape in "01234567":
-            end = index
-            while end < len(body) and end - index < 2 and body[end] in "01234567":
-                end += 1
-            units.append(int(escape + body[index:end], 8))
-            index = end
-        elif escape == "x":
-            end = index
-            while end < len(body) and body[end] in "0123456789abcdefABCDEF":
-                end += 1
-            if end == index:
-                return None
-            units.append(int(body[index:end], 16))
-            index = end
+            unit = ord(char)
         else:
+            escape = _escape_unit(body, index)
+            if escape is None:
+                return None
+            unit, index = escape
+        if unit > limit:
             return None
-        if units[-1] > limit:
-            return None
+        units.append(unit)
     return units
 
 
@@ -294,26 +305,43 @@ def _stringized(tokens: tuple) -> list:
     return ctokens.tokens_of(f'"{text}"')
 
 
+def _bound_arguments(macro: Macro, raw: tuple) -> dict | None:
+    """The argument tokens of each parameter name of MACRO (a variadic "..." is named __VA_ARGS__) for the call
+    arguments RAW, or None when the count does not match."""
+    names = list(macro.parameters)
+    arguments = _split_arguments(raw)
+    if not names and arguments == [()]:
+        arguments = []
+    if names[-1:] == ["..."]:
+        names[-1] = "__VA_ARGS__"
+        fixed = len(names) - 1
+        if len(arguments) == fixed:
+            arguments.append(())
+        elif len(arguments) > fixed:
+            rest = [token for argument in arguments[fixed:-1] for token in (*argument, _Item("punct", ","))]
+            arguments = arguments[:fixed] + [tuple(rest) + arguments[-1]]
+    if len(arguments) != len(names):
+        return None
+    return dict(zip(names, arguments))
+
+
 def _call_arguments(tokens: list, index: int) -> tuple[tuple, int]:
     """The tokens between the "(" at INDEX and its matching ")", and the index after the ")"."""
-    depth = 0
-    for end in range(index, len(tokens)):
-        if tokens[end].kind == "punct" and tokens[end].text in ("(", ")"):
-            depth += 1 if tokens[end].text == "(" else -1
-            if depth == 0:
-                return tuple(tokens[index + 1:end]), end + 1
-    raise _Syntax("unbalanced parentheses")
+    end = ctokens.matching_closer(tokens, index, len(tokens))
+    if end is None:
+        raise _Syntax("unbalanced parentheses")
+    return tuple(tokens[index + 1:end]), end + 1
 
 
 class _Evaluator:
-    def __init__(self, profile, mode, expand, resolve, resolve_type, is_defined, max_depth):
-        self.profile, self.mode, self.max_depth = profile, mode, max_depth
+    def __init__(self, profile, mode, expand, resolve, resolve_type, is_defined):
+        self.profile, self.pp = profile, mode == PP
         self.expand, self.resolve, self.resolve_type, self.is_defined = expand, resolve, resolve_type, is_defined
         self.int = profile.int_type("int")
         self.uint = profile.int_type("unsigned int")
         self.intmax = CType("int", profile.pp_bits, True, 6, "intmax_t")
         self.uintmax = CType("int", profile.pp_bits, False, 6, "uintmax_t")
-        if mode == "pp":
+        if self.pp:
             self.truth = self.intmax
         else:
             self.truth = profile.builtin(("bool",)) if profile.language == "cpp" else self.int
@@ -330,7 +358,7 @@ class _Evaluator:
                 # An item from an expanded macro argument keeps what it holds (a call, a failure, a defined name).
                 items.append(token if isinstance(token, _Item) else _Item(token.kind, token.text, origin))
                 continue
-            if self.mode == "pp" and token.text == "defined":
+            if self.pp and token.text == "defined":
                 name, index = self._defined_operand(tokens, index)
                 items.append(_Item("defined", name, origin))
                 continue
@@ -341,15 +369,15 @@ class _Evaluator:
             where = origin or token.text
             if macro.function:
                 args, index = _call_arguments(tokens, index)
-            if macro.function and self.mode != "pp":
+            if macro.function and not self.pp:
                 items.append(_Item("call", token.text, where, args))
             elif token.text in hidden:
                 items.append(_Item("bad", token.text, where, result=failure(UNSUPPORTED, "macro cycle", token.text)))
-            elif depth >= self.max_depth:
+            elif depth >= MAX_MACRO_DEPTH:
                 items.append(_Item("bad", token.text, where, result=failure(UNSUPPORTED, "macro depth", token.text)))
             elif macro.function:
                 items += self.expand_call(token.text, macro, args, where, hidden, depth)
-            elif self.mode != "pp" and any(part.text in ("#", "##") for part in macro.body):
+            elif not self.pp and any(part.text in ("#", "##") for part in macro.body):
                 items.append(_Item("bad", token.text, where,
                                    result=failure(UNSUPPORTED, "token pasting", token.text)))
             elif self._calls(macro.body):
@@ -362,21 +390,9 @@ class _Evaluator:
     def expand_call(self, name: str, macro: Macro, raw: tuple, where: str, hidden: frozenset, depth: int) -> list:
         """A function-like macro use in #if: each parameter takes its argument (as written next to # and ##,
         else fully expanded), then # and ## apply and the result is rescanned with NAME hidden."""
-        names = list(macro.parameters)
-        arguments = _split_arguments(raw)
-        if not names and arguments == [()]:
-            arguments = []
-        if names[-1:] == ["..."]:
-            names[-1] = "__VA_ARGS__"
-            fixed = len(names) - 1
-            if len(arguments) == fixed:
-                arguments.append(())
-            elif len(arguments) > fixed:
-                rest = [token for argument in arguments[fixed:-1] for token in (*argument, _Item("punct", ","))]
-                arguments = arguments[:fixed] + [tuple(rest) + arguments[-1]]
-        if len(arguments) != len(names):
+        given = _bound_arguments(macro, raw)
+        if given is None:
             return [_Item("bad", name, where, result=failure(UNSUPPORTED, "macro arguments", name))]
-        given = dict(zip(names, arguments))
         body = list(macro.body)
         parts, index = [], 0
         while index < len(body):
@@ -401,7 +417,7 @@ class _Evaluator:
 
     def rescan(self, parts: list, where: str, hidden: frozenset, depth: int) -> list:
         """PARTS expanded again after the ## operators are applied (in #if mode only)."""
-        if self.mode == "pp":
+        if self.pp:
             parts = self.pasted(parts, where)
             if isinstance(parts, _Item):
                 return [parts]
@@ -419,12 +435,9 @@ class _Evaluator:
                 continue
             left, right = out.pop(), parts[index + 1]
             for operand in (left, right):
-                if operand.kind not in ("id", "num", "char", "str", "punct", "placemarker"):
-                    return _Item("bad", where, where, result=failure(UNSUPPORTED, "token pasting", where))
-                if operand.kind == "id" and self.expand(operand.text) is None:
-                    found = self.resolve(operand.text)
-                    if found is not None and not found.ok:
-                        return _Item("bad", operand.text, where, result=found)
+                refusal = self._paste_refusal(operand, where)
+                if refusal is not None:
+                    return refusal
             text = left.text + right.text
             try:
                 made = ctokens.tokens_of(text) if text else [_Item("placemarker", "")]
@@ -435,6 +448,16 @@ class _Evaluator:
             out.append(made[0])
             index += 2
         return [part for part in out if part.kind != "placemarker"]
+
+    def _paste_refusal(self, operand: _Item, where: str) -> _Item | None:
+        """The bad item that refuses OPERAND of a ## join, or None when the operand may be pasted."""
+        if operand.kind not in ("id", "num", "char", "str", "punct", "placemarker"):
+            return _Item("bad", where, where, result=failure(UNSUPPORTED, "token pasting", where))
+        if operand.kind == "id" and self.expand(operand.text) is None:
+            found = self.resolve(operand.text)
+            if found is not None and not found.ok:
+                return _Item("bad", operand.text, where, result=found)
+        return None
 
     def _calls(self, body: tuple) -> bool:
         """BODY calls a function: an identifier other than sizeof, a type word or a function-like macro, before "("."""
@@ -484,7 +507,7 @@ class _Evaluator:
 
     # ------------------------------------------------------------ grammar
 
-    def parse(self, items: list) -> Result:
+    def evaluate_items(self, items: list) -> Result:
         self.items, self.pos = items, 0
         if not items:
             raise _Syntax("empty expression")
@@ -624,7 +647,7 @@ class _Evaluator:
         """A value that ITEM gives. In #if mode an integer acts as the #if type of its signedness."""
         names = (item.origin,) if item.origin else (() if literal else (item.text,))
         result = Result(OK, value, ctype, names=names, literal=literal and not item.origin)
-        if self.mode != "pp":
+        if not self.pp:
             return result
         if ctype.kind not in ("int", "bool"):
             return failure(UNSUPPORTED, "not a #if expression", ctype.name)
@@ -635,7 +658,7 @@ class _Evaluator:
         match = FLOATING.match(item.text)  # first: the integer pattern would take "e3f" in 1e3f as a suffix
         if match is None:
             return self.integer(item)
-        if self.mode == "pp":
+        if self.pp:
             return failure(UNSUPPORTED, "not a #if expression", item.text)
         digits, suffix = match.groups()
         ctype = self.profile.builtin(("float",) if suffix in ("f", "F") else ("long", "double") if suffix else
@@ -663,12 +686,13 @@ class _Evaluator:
         is the signed #if type when it fits and has no u, else the unsigned one."""
         if suffix not in BASIC_SUFFIXES and suffix not in self.profile.extra_suffixes:
             return None
-        if self.mode == "pp":
+        if self.pp:
             if "u" not in suffix and value <= self.intmax.highest():
                 return self.intmax
             return self.uintmax if value <= self.uintmax.highest() else None
         if suffix:
-            candidates = LITERAL_TYPES[suffix][hex_or_octal]
+            decimal, radix = LITERAL_TYPES[suffix]
+            candidates = radix if hex_or_octal else decimal
         else:
             candidates = HEX_TYPES if hex_or_octal else self.profile.decimal_types
         if suffix in BASIC_SUFFIXES:
@@ -683,26 +707,27 @@ class _Evaluator:
     def character(self, item: _Item) -> Result:
         wide = item.text.startswith("L")
         body = item.text[2 if wide else 1:-1]
-        units = _char_units(body, 0xFFFF if wide else 0xFF)
+        unit_type = self.profile.wchar() if wide else self.profile.builtin(("char",))
+        units = _char_units(body, (1 << unit_type.bits) - 1)
         if not units or (wide and len(units) > 1):
             return failure(UNSUPPORTED, "character constant", item.text)
         if wide:
-            return self.leaf(units[0], self.profile.wchar(), item, True)
+            return self.leaf(units[0], unit_type, item, True)
         if len(units) == 1:
-            char = self.profile.builtin(("char",))
-            return self.leaf(_wrap(units[0], char), char if self.profile.language == "cpp" else self.int, item, True)
+            return self.leaf(_wrap(units[0], unit_type), unit_type if self.profile.language == "cpp" else self.int,
+                             item, True)
         # VC10 packs '\x41\x42' as 0x4241 but 'A\x42' as 0x4142; the rule for a leading numeric escape is not known.
         numeric_first = body[:1] == "\\" and body[1:2] in tuple("01234567x")
-        if self.profile.multichar != BIG_ENDIAN or len(units) * 8 > self.int.bits or numeric_first:
+        if self.profile.multichar != BIG_ENDIAN or len(units) * unit_type.bits > self.int.bits or numeric_first:
             return failure(UNSUPPORTED, "character constant", item.text)
         packed = 0
         for unit in units:
-            packed = packed << 8 | unit
+            packed = packed << unit_type.bits | unit
         return self.leaf(_wrap(packed, self.int), self.int, item, True)
 
     def identifier(self, item: _Item) -> Result:
         name = item.text
-        if self.mode == "pp" and name in ("true", "false"):  # VC10 rejects them in #if (error C1017)
+        if self.pp and name in ("true", "false"):  # VC10 rejects them in #if (error C1017)
             return failure(UNSUPPORTED, "true or false in #if", name)
         if self.profile.language == "cpp" and name in ("true", "false"):
             return self.leaf(int(name == "true"), self.profile.builtin(("bool",)), item, True)
@@ -799,24 +824,22 @@ class _Evaluator:
     def apply_cast(self, target: CType | Result, operand: Result) -> Result:
         if isinstance(target, Result):
             return _first_failure(operand, target)
-        if self.mode == "pp":
+        if self.pp:
             return _first_failure(operand) or failure(UNSUPPORTED, "not a #if expression", "cast")
         return convert(operand, target, self.profile)
 
     def size_of(self) -> Result:
         """sizeof(type), or sizeof of an expression whose value and so its type are known."""
+        result = None
         if self.at("("):
             start = self.pos
             self.pos += 1
             target = self.type_name()
-            if target is not None:
+            if target is None:
+                self.pos = start
+            else:
                 self.expect(")")
                 result = target if isinstance(target, Result) else self.size_result(target)
-            else:
-                self.pos = start
-                result = None
-        else:
-            result = None
         if result is None:
             operand = self.unary()
             if operand.ok:
@@ -825,7 +848,7 @@ class _Evaluator:
                 result = operand
             else:
                 result = failure(UNSUPPORTED, "sizeof of an expression", operand.cause)
-        if self.mode == "pp":
+        if self.pp:
             return failure(UNSUPPORTED, "not a #if expression", "sizeof")
         return result
 
@@ -943,11 +966,11 @@ class _Evaluator:
             if side.ok and side.ctype.kind not in SCALAR_KINDS:
                 return failure(UNSUPPORTED, "operand type", symbol)
         if left.ok and bool(left.value) == (symbol == "||"):
-            if self.mode == "pp" or right.status != NONCONSTANT:
+            if self.pp or right.status != NONCONSTANT:
                 return _with_sources(Result(OK, int(symbol == "||"), self.truth), left)
         # In #if, `x && 0` is 0 and `x || 1` is 1 whatever integer x is, so an unresolved x does not matter.
         # Not in expressions: there an unknown name may be a variable, and the site must stay unresolved.
-        if self.mode == "pp" and left.status == UNRESOLVED and right.ok and bool(right.value) == (symbol == "||"):
+        if self.pp and left.status == UNRESOLVED and right.ok and bool(right.value) == (symbol == "||"):
             return _with_sources(Result(OK, int(symbol == "||"), self.truth), right)
         bad = _first_failure(left, right)
         if bad is not None:
@@ -958,7 +981,7 @@ class _Evaluator:
         if not condition.ok:
             return _first_failure(condition, yes, no)
         taken, skipped = (yes, no) if condition.value else (no, yes)
-        if self.mode == "pp":
+        if self.pp:
             return _with_sources(taken, condition, taken)
         bad = _first_failure(taken, skipped)
         if bad is not None:

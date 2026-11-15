@@ -32,11 +32,10 @@ import bisect
 from dataclasses import dataclass, field
 
 import ctokens
-from cdecls import KEYWORDS, QUALIFIERS, STORAGE, TAG_WORDS, Declarations, without_extern_c
+from cdecls import KEYWORDS, QUALIFIERS, SKIPPED_HEADS, STORAGE, TAG_WORDS, Declarations, without_extern_c
 from ctokens import OPENERS, Token, Unsupported
 
 STATEMENT_ENDS = frozenset({";", "{", "}"})
-SKIPPED_HEADS = frozenset({"template", "using", "namespace"})
 
 
 @dataclass(frozen=True)
@@ -58,8 +57,6 @@ class Declared:
     name: str
     kind: str  # variable or function
     type: str  # the spelled type, storage words dropped; for a function, its return type
-    line: int
-    annotations: tuple = ()
 
 
 @dataclass(frozen=True)
@@ -67,7 +64,6 @@ class Prototype:
     name: str
     parameters: tuple  # the spelled parameter types
     variadic: bool
-    line: int
 
 
 @dataclass
@@ -148,6 +144,9 @@ def parse(text: str, path: str, profile, annotation=None, type_names=frozenset()
 
 
 class _Reader(Declarations):
+    """Reads one file into RESULT. The constructor already records the #include lines, and RESULT.tags is the tag
+    set that Declarations adds to."""
+
     def __init__(self, tokens, comments, result, profile, annotation, type_names):
         self.result, self.annotation = result, annotation
         self.token_lines = {token.line for token in tokens}
@@ -155,14 +154,14 @@ class _Reader(Declarations):
         for comment in comments:
             for line in range(comment.line, comment.end_line + 1):
                 self.comment_lines.setdefault(line, []).append(comment)
-        tokens = ctokens.drop_directives(tokens, self.directive)
+        tokens = ctokens.drop_directives(tokens, self.read_directive)
         tokens = [tokens[index] for index in without_extern_c(tokens)]
         tokens = ctokens.drop_words(tokens, profile.ignored_words, profile.ignored_prefixes)
         super().__init__(tokens, profile, set(type_names), result.tags)
 
     # Preparation
 
-    def directive(self, words: list[Token], line: int):
+    def read_directive(self, words: list[Token], line: int):
         name = words[0].text if words else ""
         if name in ("", "pragma"):
             return
@@ -232,18 +231,20 @@ class _Reader(Declarations):
         tokens = self.tokens
         name, name_start = self.name_before(start, group)
         line = tokens[start].line
-        annotations = self.annotations(line)
         self.note_tags(start, group)
-        owner = Owner("function", name, line, annotations)
-        parameters, variadic = self.parameters(group, owner.names)
-        self.result.prototypes[name] = Prototype(name, parameters, variadic, line)
-        self.result.names[name] = Declared(name, "function", self.spelled(tokens[start:name_start]), line, annotations)
+        owner = Owner("function", name, line, self.annotations(line))
+        parameters, variadic, named = self.parameters(group)
+        owner.names.update(named)
+        self.result.prototypes[name] = Prototype(name, parameters, variadic)
+        self.result.names[name] = Declared(name, "function", self.spelled(tokens[start:name_start]))
+        owner_index = len(self.result.owners)
         self.result.owners.append(owner)
-        declarations, initializers = self.locals(brace, self.pairs[brace], owner)
+        local_names, declarations, initializers = self.read_locals(brace, self.pairs[brace])
+        owner.names.update(local_names)
         bounds = self.bounds(brace, self.pairs[brace])
-        self.calls(bounds, len(self.result.owners) - 1)
-        self.spots(bounds, len(self.result.owners) - 1)
-        self.values(bounds, len(self.result.owners) - 1, declarations, initializers)
+        self.record_calls(bounds, owner_index)
+        self.record_spots(bounds, owner_index)
+        self.record_values(bounds, owner_index, declarations, initializers)
 
     def declaration(self, start: int, end: int):
         if start == end or self.tokens[start].text in SKIPPED_HEADS:
@@ -251,31 +252,31 @@ class _Reader(Declarations):
         typedef = self.tokens[start].text == "typedef"
         low = start + 1 if typedef else start
         self.note_tags(low, end)
-        annotations = self.annotations(self.tokens[start].line)
-        for name, spelled, group, (part_start, part_end, cut) in self.declarators(low, end):
+        for declarator in self.declarators(low, end):
+            name = declarator.name
             if not name:
                 continue
-            text = name[0]
             if typedef:
-                self.result.typedefs[text] = spelled
-                self.types.add(text)
+                self.result.typedefs[name] = declarator.spelled
+                self.types.add(name)
                 continue
-            line = self.tokens[name[1]].line
-            kind = "variable" if group is None else "function"
-            self.result.names[text] = Declared(text, kind, spelled, line, annotations)
+            group = declarator.group
+            self.result.names[name] = Declared(name, "variable" if group is None else "function", declarator.spelled)
             if group is not None:
-                parameters, variadic = self.parameters(group)
-                self.result.prototypes[text] = Prototype(text, parameters, variadic, line)
-            if cut < part_end and self.holds_call(cut + 1, part_end):
-                self.result.owners.append(Owner("global", text, self.tokens[start].line, annotations))
-                self.calls(self.bounds(cut, part_end), len(self.result.owners) - 1)
+                parameters, variadic, _ = self.parameters(group)
+                self.result.prototypes[name] = Prototype(name, parameters, variadic)
+            if declarator.cut < declarator.end and self.holds_call(declarator.cut + 1, declarator.end):
+                line = self.tokens[start].line
+                owner_index = len(self.result.owners)
+                self.result.owners.append(Owner("global", name, line, self.annotations(line)))
+                self.record_calls(self.bounds(declarator.cut, declarator.end), owner_index)
 
     # Function bodies
 
-    def locals(self, low: int, high: int, owner: Owner) -> tuple[list, list]:
-        """Put each local's spelled type in OWNER.names. Returns the (start, end) of each declaration, and the (name,
-        cut, end) indices of each initialized declarator."""
-        tokens, declarations, initializers = self.tokens, [], []
+    def read_locals(self, low: int, high: int) -> tuple[dict, list, list]:
+        """The spelled type of each local by name, the (start, end) of each declaration, and the (name, cut, end)
+        indices of each initialized declarator."""
+        tokens, names, declarations, initializers = self.tokens, {}, [], []
         for index in range(low + 1, high):
             before = tokens[index - 1].text
             start = before in STATEMENT_ENDS or before == "(" and tokens[index - 2].text == "for"
@@ -283,12 +284,12 @@ class _Reader(Declarations):
                 end = self.statement_end(index, high)
                 self.note_tags(index, end)
                 declarations.append((index, end))
-                for name, spelled, _, (_, part_end, cut) in self.declarators(index, end):
-                    if name:
-                        owner.names[name[0]] = spelled
-                        if cut < part_end:
-                            initializers.append((name[1], cut, part_end))
-        return declarations, initializers
+                for declarator in self.declarators(index, end):
+                    if declarator.name:
+                        names[declarator.name] = declarator.spelled
+                        if declarator.cut < declarator.end:
+                            initializers.append((declarator.name_at, declarator.cut, declarator.end))
+        return names, declarations, initializers
 
     def starts_declaration(self, index: int, high: int) -> bool:
         tokens, start = self.tokens, index
@@ -323,14 +324,14 @@ class _Reader(Declarations):
             index += 1
         return high
 
-    def is_callee(self, index: int) -> bool:
+    def is_plain_name(self, index: int) -> bool:
         token = self.tokens[index]
         if not self.is_name(token) or self.is_type(token.text):
             return False
         return index == 0 or self.tokens[index - 1].text not in (".", "->", "::")
 
     def holds_call(self, low: int, high: int) -> bool:
-        return any(self.tokens[index].text == "(" and self.is_callee(index - 1) for index in range(low + 1, high))
+        return any(self.tokens[index].text == "(" and self.is_plain_name(index - 1) for index in range(low + 1, high))
 
     def bounds(self, low: int, high: int) -> list[int]:
         """LOW, the indices of the statement ends strictly between LOW and HIGH, and HIGH."""
@@ -345,21 +346,18 @@ class _Reader(Declarations):
         previous = ctokens.spelling(self.tokens[bounds[bound - 2] + 1:bounds[bound - 1]]) if bound >= 2 else ""
         return statement, previous
 
-    def calls(self, bounds: list[int], owner: int):
+    def record_calls(self, bounds: list[int], owner: int):
         """Record the calls strictly between the first and the last of BOUNDS."""
-        for found in ctokens.find_calls(self.tokens, self.is_callee, bounds[0], bounds[-1]):
-            self.result.calls.append(self.call(found, bounds, owner))
+        for found in ctokens.find_calls(self.tokens, self.is_plain_name, bounds[0], bounds[-1]):
+            token = self.tokens[found.position]
+            self.result.calls.append(Call(token.text, found.outer, found.arguments(self.tokens), token.line,
+                                          token.column, owner, *self.context(found.position, bounds)))
 
-    def call(self, found: ctokens.FoundCall, bounds: list[int], owner: int) -> Call:
-        token = self.tokens[found.position]
-        return Call(token.text, found.outer, found.arguments(self.tokens), token.line, token.column, owner,
-                    *self.context(found.position, bounds))
-
-    def spots(self, bounds: list[int], owner: int):
+    def record_spots(self, bounds: list[int], owner: int):
         """Record the field spots strictly between the first and the last of BOUNDS, and count the case labels and
         raw-offset accesses there."""
         tokens, low, high = self.tokens, bounds[0], bounds[-1]
-        for found in ctokens.find_fields(tokens, self.is_callee, low, high):
+        for found in ctokens.find_fields(tokens, self.is_plain_name, low, high):
             member = tokens[found.member]
             self.result.spots.append(Spot(tuple(tokens[found.base:found.member - 1]),
                                           tokens[found.member - 1].text == "->", member.text, found.operator,
@@ -368,19 +366,18 @@ class _Reader(Declarations):
         self.result.case_labels += sum(1 for index in range(low + 1, high) if tokens[index].text == "case")
         self.result.raw_offsets += ctokens.raw_offsets(tokens, low, high)
 
-    def values(self, bounds: list[int], owner: int, declarations: list, initializers: list):
+    def record_values(self, bounds: list[int], owner: int, declarations: list, initializers: list):
         """Record the value spots strictly between the first and the last of BOUNDS, in position order. A variable
         spot inside a declaration is left out: the declaration's initializers stand for it."""
         tokens, found = self.tokens, []
-        for spot in ctokens.find_values(tokens, self.is_callee, bounds[0], bounds[-1]):
-            if spot.kind == ctokens.VARIABLE and any(start <= spot.position < end for start, end in declarations):
-                continue
+        for spot in ctokens.find_values(tokens, self.is_plain_name, bounds[0], bounds[-1]):
+            in_declaration = any(start <= spot.position < end for start, end in declarations)
+            if spot.kind != ctokens.VARIABLE or not in_declaration:
+                found.append(spot)
+        found += [ctokens.FoundValue(ctokens.VARIABLE, (name, name + 1), "=", name, cut + 1, end)
+                  for name, cut, end in initializers if cut + 1 < end and tokens[cut + 1].text != "{"]
+        for spot in sorted(found, key=lambda spot: spot.position):
+            token = tokens[spot.position]
             lvalue = tuple(tokens[spot.lvalue[0]:spot.lvalue[1]]) if spot.lvalue else ()
-            found.append((spot.position, spot.kind, lvalue, spot.operator, spot.value, spot.end))
-        for name, cut, end in initializers:
-            if cut + 1 < end and tokens[cut + 1].text != "{":
-                found.append((name, ctokens.VARIABLE, (tokens[name],), "=", cut + 1, end))
-        for position, kind, lvalue, operator, value, end in sorted(found, key=lambda entry: entry[0]):
-            token = tokens[position]
-            self.result.values.append(ValueSpot(kind, lvalue, operator, tuple(tokens[value:end]), token.line,
-                                                token.column, owner, *self.context(position, bounds)))
+            self.result.values.append(ValueSpot(spot.kind, lvalue, spot.operator, tuple(tokens[spot.value:spot.end]),
+                                                token.line, token.column, owner, *self.context(spot.position, bounds)))

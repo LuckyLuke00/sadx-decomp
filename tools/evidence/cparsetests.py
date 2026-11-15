@@ -58,7 +58,8 @@ def check_nested_and_multiline() -> list[str]:
 
 def check_not_calls() -> list[str]:
     source = read("void g(struct S *s)\n{\n\ts->exec(s);\n\ts.f(1);\n\tA::b(2);\n\tx = sizeof(int);\n"
-                  "\tif (x) { }\n\twhile (y) { }\n\treturn (z);\n\t(void)0;\n\tx = int(3);\n}\n")
+                  "\tif (x) { }\n\twhile (y) { }\n\treturn (z);\n\t(void)0;\n\tx = int(3);\n"
+                  "\tstatic_assert(sizeof(int) == 4, \"size\");\n\tx = alignof(int);\n}\n")
     if source.calls:
         return [f"not calls: got {calls(source)}"]
     return []
@@ -66,7 +67,7 @@ def check_not_calls() -> list[str]:
 
 def check_except() -> list[str]:
     source = read("void g(void)\n{\n\t__try\n\t{\n\t\tf();\n\t}\n\t__except (1)\n\t{\n\t\th();\n\t}\n}\n")
-    if calls(source) != [("f", (), []), ("__except", (), ["1"]), ("h", (), [])]:
+    if calls(source) != [("f", (), []), ("h", (), [])]:
         return [f"__except: got {calls(source)}"]
     return []
 
@@ -92,8 +93,8 @@ def check_annotations() -> list[str]:
         failures.append(f"a global with a call in its initializer is an owner: got {source.owners}")
     if calls(source) != [("f", (), ["1"])] or source.names["plain"].kind != "variable":
         failures.append(f"global initializer calls: got {calls(source)}")
-    if source.names["table"].annotations[0].kind != "GLOBAL":
-        failures.append(f"a global keeps its annotation: got {source.names['table']}")
+    if source.owners[0].annotations[0].kind != "GLOBAL":
+        failures.append(f"a global owner keeps its annotation: got {source.owners[0]}")
     source = cparse.parse("// FUNCTION: GAME 0x1\nvoid foo(void) { }\n", "f.c", CPP)
     if source.owners[0].annotations:
         failures.append("no annotation pattern reads no annotations")
@@ -132,10 +133,14 @@ def check_directives() -> list[str]:
                          ("#ifdef A\n#endif\n", "#ifdef"), ("void g(void) { f(1; }\n", "unbalanced brackets"),
                          ("int x ??/\n;\n", "trigraph"), ("struct A { void f() { g(); } };\n",
                                                           "function body inside a type"),
-                         ("namespace n { int x; }\n", "namespace")):
+                         ("namespace n { int x; }\n", "namespace"), ("#include MACRO\n", "#include of a macro")):
         source = read(text)
         if source.unsupported != reason or source.names or source.calls:
             failures.append(f"{text!r}: got {source.unsupported!r}, {source.names}")
+    for text in ("", "// only a comment\n"):
+        source = read(text)
+        if source.unsupported or source.names or source.owners or source.calls:
+            failures.append(f"{text!r}: got {source.unsupported!r}, {source.names}, {source.owners}")
     source = read('#include "decls.h"\n#include <sys/types.h>\n#pragma optimize("", off)\nint x;\n')
     includes = [(include.name, include.angle, include.line) for include in source.includes]
     if source.unsupported or includes != [("decls.h", False, 1), ("sys/types.h", True, 2)]:
@@ -145,31 +150,42 @@ def check_directives() -> list[str]:
 
 def check_declarations() -> list[str]:
     failures = []
-    source = read("struct taskwk;\ntypedef int MyInt;\nextern int DAT_1;\nstatic struct VEC table[4], *ptr;\n"
+    source = read("struct xx_task;\ntypedef int MyInt;\nextern int DAT_1;\nstatic struct XX_VEC table[4], *ptr;\n"
                   "void (*handler)(int);\nUnknown thing;\nlong Diff(long a, long b);\n"
-                  "void g(struct taskwk *tp, MyInt n, float (*cb)(int), ...)\n{\n\tint i, j[3];\n"
-                  "\tstruct taskwk *t2 = tp;\n\tNJS_VECTOR v;\n\tMystery m;\n\tOther *op;\n"
-                  "\tfor (int k = 0; k < 2; k++) { use(k); }\n\tstruct taskwk *taskwk;\n}\n",
-                  type_names={"NJS_VECTOR"})
+                  "void g(struct xx_task *tp, MyInt n, float (*cb)(int), ...)\n{\n\tint i, j[3];\n"
+                  "\tstruct xx_task *t2 = tp;\n\tXX_VECTOR v;\n\tMystery m;\n\tOther *op;\n"
+                  "\tfor (int k = 0; k < 2; k++) { use(k); }\n\tstruct xx_task *xx_task;\n}\n",
+                  type_names={"XX_VECTOR"})
     got = {name: (declared.kind, declared.type) for name, declared in source.names.items()}
-    expected = {"DAT_1": ("variable", "int"), "table": ("variable", "struct VEC [ 4 ]"),
-                "ptr": ("variable", "struct VEC *"), "handler": ("variable", "void ( * ) ( int )"),
+    expected = {"DAT_1": ("variable", "int"), "table": ("variable", "struct XX_VEC [ 4 ]"),
+                "ptr": ("variable", "struct XX_VEC *"), "handler": ("variable", "void ( * ) ( int )"),
                 "thing": ("variable", "Unknown"), "Diff": ("function", "long"), "g": ("function", "void")}
     if got != expected:
         failures.append(f"file-scope names: got {got}")
-    if source.typedefs != {"MyInt": "int"} or source.tags != {"taskwk", "VEC"}:
+    if source.typedefs != {"MyInt": "int"} or source.tags != {"xx_task", "XX_VEC"}:
         failures.append(f"typedefs and tags: got {source.typedefs}, {source.tags}")
     prototype = source.prototypes["g"]
-    if (prototype.parameters, prototype.variadic) != (("struct taskwk *", "MyInt", "float ( * ) ( int )"), True):
+    if (prototype.parameters, prototype.variadic) != (("struct xx_task *", "MyInt", "float ( * ) ( int )"), True):
         failures.append(f"parameters: got {prototype}")
     if source.prototypes["Diff"].parameters != ("long", "long"):
         failures.append(f"prototype: got {source.prototypes['Diff']}")
-    expected = {"tp": "struct taskwk *", "n": "MyInt", "cb": "float ( * ) ( int )", "i": "int", "j": "int [ 3 ]",
-                "t2": "struct taskwk *", "v": "NJS_VECTOR", "m": "Mystery", "op": "Other *", "k": "int",
-                "taskwk": "struct taskwk *"}
+    expected = {"tp": "struct xx_task *", "n": "MyInt", "cb": "float ( * ) ( int )", "i": "int", "j": "int [ 3 ]",
+                "t2": "struct xx_task *", "v": "XX_VECTOR", "m": "Mystery", "op": "Other *", "k": "int",
+                "xx_task": "struct xx_task *"}
     if source.owners[0].names != expected:
         failures.append(f"parameters and locals: got {source.owners[0].names}")
     return failures
+
+
+def check_type_bodies() -> list[str]:
+    source = read("typedef struct { int a; } XX_PAIR, *XX_PPAIR;\ntypedef void (*XX_CB)(int);\n"
+                  "struct XX_B { int x; } b;\nenum XX_E { XX_ONE, XX_TWO };\nint list[2] = { 1, 2 };\nint last")
+    got = {name: (declared.kind, declared.type) for name, declared in source.names.items()}
+    expected = {"b": ("variable", "struct XX_B"), "list": ("variable", "int [ 2 ]"), "last": ("variable", "int")}
+    typedefs = {"XX_PAIR": "struct", "XX_PPAIR": "struct *", "XX_CB": "void ( * ) ( int )"}
+    if source.unsupported or got != expected or source.typedefs != typedefs or source.tags != {"XX_B", "XX_E"}:
+        return [f"type bodies: got {source.unsupported!r}, {got}, {source.typedefs}, {source.tags}"]
+    return []
 
 
 def check_ignored_words() -> list[str]:
@@ -184,14 +200,14 @@ def check_spots() -> list[str]:
     """Field spots per owner, also inside call arguments, in function bodies only, with their context; case labels
     and raw offsets are counted there."""
     failures = []
-    source = read("int g_z = make(g_s.f == 1);\nvoid g(struct taskwk *tp)\n{\n\tstruct VEC v;\n\tv.x = 0;\n"
+    source = read("int g_z = make(g_s.f == 1);\nvoid g(struct xx_task *tp)\n{\n\tstruct XX_VEC v;\n\tv.x = 0;\n"
                   "\ttp->mode = 1;\n\tset(tp->flag & 8);\n"
-                  "\tswitch (tp->mode) { case 1: tp->wtimer |= 0x10; break; case 2: break; }\n"
+                  "\tswitch (tp->mode) { case 1: tp->timer |= 0x10; break; case 2: break; }\n"
                   "\t*(int *)((char *)tp + 4) = 0;\n}\nvoid h(void)\n{\n\tg_tp->mode = 2;\n}\n")
     got = [(ctokens.spelling(list(spot.base)), spot.arrow, spot.member, spot.operator,
             ctokens.spelling(list(spot.value)), spot.line, spot.owner) for spot in source.spots]
     expected = [("v", False, "x", "=", "0", 5, 1), ("tp", True, "mode", "=", "1", 6, 1),
-                ("tp", True, "flag", "&", "8", 7, 1), ("tp", True, "wtimer", "|=", "0x10", 8, 1),
+                ("tp", True, "flag", "&", "8", 7, 1), ("tp", True, "timer", "|=", "0x10", 8, 1),
                 ("g_tp", True, "mode", "=", "2", 13, 2)]
     if got != expected:
         failures.append(f"spots: got {got}")
@@ -230,7 +246,7 @@ def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
     for check in (check_arguments, check_nested_and_multiline, check_not_calls, check_except, check_annotations,
-                  check_qualified_owners, check_extern_c, check_directives, check_declarations,
+                  check_qualified_owners, check_extern_c, check_directives, check_declarations, check_type_bodies,
                   check_ignored_words, check_spots, check_values):
         failures += check()
     return failures
