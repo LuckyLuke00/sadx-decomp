@@ -5,6 +5,8 @@ Run on its own: .venv/Scripts/python.exe -I tools/evidence/scoretests.py
 run() calls every check and returns the failures. All names are made up, apart from generic toolchain words.
 """
 
+import csv
+import io
 import sys
 import tempfile
 from dataclasses import replace
@@ -12,9 +14,6 @@ from pathlib import Path
 from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).parent))
-
-import csv
-import io
 
 import argmap  # noqa: E402
 import ceval  # noqa: E402
@@ -73,7 +72,8 @@ def check_tiers() -> list[str]:
         got = score.grade_site(record)
         if (got.tier, got.counter) != (tier, counter):
             failures.append(f"{label}: {got.tier} {got.counter}, wanted {tier} {counter}")
-    reasons = [score.grade_site(record).reason for record in (cases[6][1], cases[7][1], cases[0][1])]
+    by_label = {label: record for label, record, _, _ in cases}
+    reasons = [score.grade_site(by_label[label]).reason for label in ("B unverified", "B check", "A")]
     if reasons != [score.UNVERIFIED_ROW, score.CHECK_FAILED, ""]:
         failures.append(f"B reasons {reasons}")
     if score.grade_site(site(origins=("vendor", "crt"))).origins != ("crt", "vendor"):
@@ -108,9 +108,10 @@ def check_counts() -> list[str]:
     unverified = replace(ROW, status=argmap.UNVERIFIED)
     nonconstant = ceval.failure(ceval.NONCONSTANT, "variable", "m")
     records = [site(), site(origins=("crt",)), site(row=unverified), site(result=nonconstant), site(names=())]
-    got = score.tier_counts(records)
-    wanted = {"A": 2, "A vendor": 1, "A crt": 1, "B": 1, "B unverified row": 1, "no candidate": 1}
-    return [] if got == wanted else [f"counts {dict(got)}, wanted {wanted}"]
+    tiers, details = score.tier_counts(score.grade_site(record) for record in records if record.covered)
+    got = dict(tiers), {tier: dict(counts) for tier, counts in details.items()}
+    wanted = ({"A": 2, "B": 1, "no candidate": 1}, {"A": {"vendor": 1, "crt": 1}, "B": {"unverified row": 1}})
+    return [] if got == wanted else [f"counts {got}, wanted {wanted}"]
 
 
 def check_eligibility() -> list[str]:
@@ -187,12 +188,15 @@ def check_references() -> list[str]:
     rows = {record.id: SimpleNamespace(status=inventory.OPEN) for record in records}
     ranked = score.review_order(records, rows)
     order = [(item.record.id, item.review_list) for item in ranked]
-    wanted = [("S000006", score.REVIEW_LIST)] + [(f"S00000{number}", score.REFERENCE_LIST) for number in (3, 2, 4, 5, 1)]
+    wanted = [("S000006", score.REVIEW_LIST)] + [(f"S00000{number}", score.REFERENCE_LIST)
+                                                 for number in (3, 2, 4, 5, 1)]
     if order != wanted:
         failures.append(f"reference order {order}")
-    text = score.summary_text(records, ranked, 1, None)
+    text = score.summary_text(ranked, 1, None)
     if "## Reference names\n\n- sites: 5; one enumerator 1; lvalue check 1\n" not in text:
         failures.append(f"confidence.md lists the reference names\n{text}")
+    if "| XXF_A \\| XXF_B |" not in text or "| XXF_A | XXF_B |" in text:
+        failures.append(f"a | in a candidate is escaped in the tables\n{text}")
     return failures
 
 
@@ -234,11 +238,11 @@ def check_outputs() -> list[str]:
     with tempfile.TemporaryDirectory() as temp:
         loaded, rows = inventorytests.repository(temp)
         found, made = inventorytests.committed(loaded, rows)
-        score.write(loaded.folder, found.records, made.generation, None, made.rows, made.decided)
+        score.write(loaded.folder, score.review_order(found.records, made.rows), made.generation, None, made.decided)
         confidence = (loaded.folder / score.CONFIDENCE).read_text(encoding="utf-8").split("\n")
         candidates = (loaded.folder / score.CANDIDATES).read_text(encoding="utf-8").split("\n")
         text = (loaded.folder / score.CONFIDENCE_MD).read_text(encoding="utf-8")
-        score.write(loaded.folder, found.records, made.generation, [], made.rows, made.decided)
+        score.write(loaded.folder, score.review_order(found.records, made.rows), made.generation, [], made.decided)
         with_diff = (loaded.folder / score.CONFIDENCE_MD).read_text(encoding="utf-8")
     if confidence[:2] != ["# evidence-confidence generation=1", ",".join(score.CONFIDENCE_COLUMNS)]:
         failures.append(f"confidence.csv header {confidence[:2]}")
@@ -278,7 +282,7 @@ def check_aliases() -> list[str]:
     with tempfile.TemporaryDirectory() as temp:
         loaded, rows = inventorytests.repository(temp)
         found, made = inventorytests.committed(loaded, rows)
-        score.write(loaded.folder, found.records, made.generation, None, made.rows, made.decided)
+        score.write(loaded.folder, score.review_order(found.records, made.rows), made.generation, None, made.decided)
         data = (loaded.folder / score.CANDIDATES).read_text(encoding="utf-8").split("\n", 1)[1]
         site_id = next(fields["id"] for fields in csv.DictReader(io.StringIO(data))
                        if fields["name"] == "XXF_A | XXF_B")
@@ -298,12 +302,11 @@ def check_placeholders() -> list[str]:
     """Placeholder sites: their own list, last in review order, kept out of the review tables, with a table per macro
     in confidence.md."""
     failures = []
-    settings = dict(inventorytests.CONFIG, placeholders={"XX_ASSERT": "no-code", "XX_GUESS": "code"})
-    files = dict(inventorytests.FILES, **{"src/d.c": inventorytests.D_C})
     with tempfile.TemporaryDirectory() as temp:
-        loaded, rows = inventorytests.repository(temp, files, settings)
+        loaded, rows = inventorytests.repository(temp, inventorytests.PLACEHOLDER_FILES,
+                                                 inventorytests.PLACEHOLDER_SETTINGS)
         found, made = inventorytests.committed(loaded, rows)
-        score.write(loaded.folder, found.records, made.generation, None, made.rows, made.decided)
+        score.write(loaded.folder, score.review_order(found.records, made.rows), made.generation, None, made.decided)
         data = (loaded.folder / score.CONFIDENCE).read_text(encoding="utf-8").split("\n", 1)[1]
         text = (loaded.folder / score.CONFIDENCE_MD).read_text(encoding="utf-8")
     table = list(csv.DictReader(io.StringIO(data)))

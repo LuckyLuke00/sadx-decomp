@@ -4,7 +4,8 @@
    they exist;
 2. in memory: the inventory of the game source (inventory.py), the reference calls of other builds (pairs.py), the
    sample corpus with the sample columns of the proposals (corpus.py), the manuals (manual.py), and the spelling of
-   each candidate (spelling.py);
+   each candidate (spelling.py). The reference calls, the sample columns and the spellings go into the inventory in
+   place, so each later step reads the whole inventory;
 3. the commit: sites, ids and the ledger as one state generation, then ledger-changes.md, inventory.csv and
    argmap-proposed.csv (ledger.py); then diagnostics/sample-calls.csv (corpus.py);
 4. the baseline diff, when a baseline exists (baseline.py);
@@ -16,6 +17,8 @@ A fault in steps 1 and 2 stops the run before anything is written.
 
 Standard library only.
 """
+
+from typing import NamedTuple
 
 import baseline
 import corpus
@@ -32,9 +35,14 @@ OUTPUTS = (inventory.INVENTORY, inventory.PROPOSED, ledger.CHANGES, score.CONFID
            score.CONFIDENCE_MD, gate.GATE, baseline.DIFF, corpus.SAMPLE_CALLS)
 
 
-def run(loaded, rows: list, today: str) -> tuple:
-    """LOADED: the configuration. ROWS: the argmap rows. TODAY: the date for the ledger. Returns the brakes, the
-    generation and the notes for the console."""
+class Run(NamedTuple):
+    stops: list  # the brakes (gate.Brake)
+    generation: int
+    notes: list  # the lines for the console
+
+
+def run(loaded, rows: list, today: str) -> Run:
+    """LOADED: the configuration. ROWS: the argmap rows. TODAY: the date for the ledger."""
     folder = loaded.folder
     expected = gate.read_expected(folder / gate.EXPECTED)
     probes = gate.read_probes(folder / gate.PROBES)
@@ -50,10 +58,12 @@ def run(loaded, rows: list, today: str) -> tuple:
     generation = made.generation
     corpus.write(folder, samples, generation)
     entries = baseline.explain(found, old_rows, loaded, rows, generation) if has_baseline else None
-    ranked = score.write(folder, found.records, generation, entries, made.rows, made.decided)
+    ranked = score.review_order(found.records, made.rows)
+    score.write(folder, ranked, generation, entries, made.decided)
     stops = gate.write(loaded, rows, found, generation, expected, probes, entries, samples, readings, ranked)
-    notes = made.notes + corpus.summary(samples)
+    notes = made.notes + corpus.summary(samples) + [f"warning: {warning}" for warning in found.warnings]
     notes += [f"out of date: {name}" for name in outputs.stale(folder, OUTPUTS, generation)]
-    if entries is not None and baseline.unexplained(entries):
-        notes.append(f"baseline: {baseline.unexplained(entries)} old rows unexplained, see {baseline.DIFF.as_posix()}")
-    return stops, generation, notes
+    unexplained = baseline.unexplained(entries) if has_baseline else 0
+    if unexplained:
+        notes.append(f"baseline: {unexplained} old rows unexplained, see {baseline.DIFF.as_posix()}")
+    return Run(stops, generation, notes)

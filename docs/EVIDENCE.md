@@ -44,7 +44,7 @@ Run each command with the venv Python and `-I`:
 
 ## Tests
 
-Each module has its own test script beside it, `<module>tests.py`. Each script runs on its own and exits 1 on a failure:
+Most modules have a test script beside them, `<module>tests.py`. `cdecls.py`, `outputs.py` and `profiles.py` are tested through the scripts of the modules that use them. `probetests.py` tests `probe.py` without `cl.exe`: the probe program, the decode of its output, the comparison with the evaluator and its errors. `cevaltests.py` checks the evaluator against the fixtures. `evidencetests.py` tests the command layer of `evidence.py`: each command reaches its function, and a fault gives one line and exit code 1. Each script runs on its own and exits 1 on a failure:
 
 ```bash
 .venv/Scripts/python.exe -I tools/evidence/configtests.py

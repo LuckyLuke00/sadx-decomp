@@ -27,21 +27,24 @@ FOLDER = ROOT / "evidence"
 ARGMAP = "argmap.csv"
 sys.path.insert(0, str(HERE))
 
+import argmap  # noqa: E402
+import audit  # noqa: E402
+import baseline  # noqa: E402
+import cheaders  # noqa: E402
+import config  # noqa: E402
+import decisions  # noqa: E402
+import gate  # noqa: E402
+import inventory  # noqa: E402
+import ledger  # noqa: E402
+import pairs  # noqa: E402
+import pdbimport  # noqa: E402
+import pipeline  # noqa: E402
+import score  # noqa: E402
+import state  # noqa: E402
+import symbols  # noqa: E402
+
 
 def run_command() -> int:
-    import argmap
-    import audit
-    import baseline
-    import cheaders
-    import config
-    import decisions
-    import gate
-    import inventory
-    import ledger
-    import pairs
-    import pipeline
-    import state
-    import symbols
     try:
         loaded = config.load(ROOT, FOLDER)
         rows = argmap.read_argmap(FOLDER / ARGMAP)
@@ -52,13 +55,11 @@ def run_command() -> int:
         print(f"evidence run: {error}", file=sys.stderr)
         return 1
     print("\n".join(notes + [f"generation {generation}, {FOLDER / gate.GATE}"]
-                    + [f"brake {stop.kind}: {stop.stopped} of {stop.coverage} ({stop.share:.1%}), "
-                       + ("FIRED" if stop.fired else "not fired") for stop in stops if stop.coverage]))
+                    + [gate.describe(stop) for stop in stops if stop.coverage]))
     return 1 if any(stop.fired for stop in stops) else 0
 
 
 def import_command(source: Path) -> int:
-    import baseline
     try:
         print(f"imported {baseline.import_baseline(source, FOLDER)}")
     except baseline.BaselineError as error:
@@ -68,10 +69,6 @@ def import_command(source: Path) -> int:
 
 
 def decide_command(site_id: str, decision: str, candidate: str, note: str) -> int:
-    import decisions
-    import ledger
-    import score
-    import state
     try:
         live = state.read_state(FOLDER)
         if live is None or ledger.LEDGER not in live.files:
@@ -90,7 +87,6 @@ def decide_command(site_id: str, decision: str, candidate: str, note: str) -> in
 
 
 def pdbimport_command(source: Path, mapping: Path | None) -> int:
-    import pdbimport
     try:
         counts = pdbimport.import_file(source, mapping, FOLDER)
     except pdbimport.PdbError as error:
@@ -101,34 +97,29 @@ def pdbimport_command(source: Path, mapping: Path | None) -> int:
 
 
 def main() -> int:
-    import decisions
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     commands = parser.add_subparsers(dest="command", required=True)
-    commands.add_parser("audit", help="check that no deny-listed word is in what git would publish")
-    commands.add_parser("run", help="run the whole tool and write the reports in evidence/")
-    copy = commands.add_parser("import-baseline", help="copy an earlier inventory in, once")
-    copy.add_argument("source", type=Path, help="the earlier inventory.csv")
-    decide = commands.add_parser("decide", help="append a review decision for one site id to evidence/notes.csv")
-    decide.add_argument("id", help="the site id, such as S000123")
-    decide.add_argument("decision", choices=decisions.DECISIONS)
-    decide.add_argument("--candidate", default="", help="another candidate of the row than the top one, or a "
-                        "candidate written with other aliases of its names")
-    decide.add_argument("--note", default="", help="free text")
-    reader = commands.add_parser("pdbimport", help="write the neutral symbol files from a program database")
-    reader.add_argument("source", type=Path, help="the program database (.pdb)")
-    reader.add_argument("--map", type=Path, default=None, help="reference,target address map (hex); without it the "
-                        "files keep the reference addresses")
+    audit_parser = commands.add_parser("audit", help="check that no deny-listed word is in what git would publish")
+    audit_parser.set_defaults(handler=lambda args: audit.main(ROOT))
+    run_parser = commands.add_parser("run", help="run the whole tool and write the reports in evidence/")
+    run_parser.set_defaults(handler=lambda args: run_command())
+    import_parser = commands.add_parser("import-baseline", help="copy an earlier inventory in, once")
+    import_parser.add_argument("source", type=Path, help="the earlier inventory.csv")
+    import_parser.set_defaults(handler=lambda args: import_command(args.source))
+    decide_parser = commands.add_parser("decide", help="append a review decision for one site id to evidence/notes.csv")
+    decide_parser.add_argument("id", help="the site id, such as S000123")
+    decide_parser.add_argument("decision", choices=decisions.DECISIONS)
+    decide_parser.add_argument("--candidate", default="", help="another candidate of the row than the top one, or a "
+                               "candidate written with other aliases of its names")
+    decide_parser.add_argument("--note", default="", help="free text")
+    decide_parser.set_defaults(handler=lambda args: decide_command(args.id, args.decision, args.candidate, args.note))
+    pdb_parser = commands.add_parser("pdbimport", help="write the neutral symbol files from a program database")
+    pdb_parser.add_argument("source", type=Path, help="the program database (.pdb)")
+    pdb_parser.add_argument("--map", type=Path, default=None, help="reference,target address map (hex); without it "
+                            "the files keep the reference addresses")
+    pdb_parser.set_defaults(handler=lambda args: pdbimport_command(args.source, args.map))
     args = parser.parse_args()
-    if args.command == "audit":
-        import audit
-        return audit.main(ROOT)
-    if args.command == "run":
-        return run_command()
-    if args.command == "decide":
-        return decide_command(args.id, args.decision, args.candidate, args.note)
-    if args.command == "pdbimport":
-        return pdbimport_command(args.source, args.map)
-    return import_command(args.source)
+    return args.handler(args)
 
 
 if __name__ == "__main__":

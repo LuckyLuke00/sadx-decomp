@@ -25,10 +25,10 @@ slot under C++ takes no plain integer, so the original spelled a name or a cast.
 tree reads can never get sample support, so it is not eligible by construction ("no sample"). Eligible is not
 confirmed.
 
-write() puts the coverage sites in review order into confidence.csv (one row per site), candidates.csv (every
-candidate, ranked, with its spelling tier and the aliases of its terms) and confidence.md (the tiers, the top spelling per meaning tier, the
-eligibility per callee, the rollup by target, slot and value, the placeholders per macro, and the baseline diff
-causes). The column "list" names the review list of each site: review, reference or placeholder. The reference list
+write() puts the coverage sites in review order into confidence.csv (one row per site), candidates.csv (every candidate,
+ranked, with its spelling tier and the aliases of its terms) and confidence.md (the tiers, the top spelling per meaning
+tier, the eligibility per callee, the rollup by target, slot and value, the placeholders per macro, and the baseline
+diff causes). The column "list" names the review list of each site: review, reference or placeholder. The reference list
 holds the open or stale sites of meaning A whose top candidate has a reference origin, in this order: one enumerator,
 then the lvalue check, then the sites with the same target, slot and value (most first), then id.
 
@@ -41,6 +41,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import argmap
+import baseline
 import ceval
 import decisions
 import fields
@@ -128,20 +129,16 @@ def _origins(candidate) -> tuple:
     return tuple(sorted({origin for node in candidate.terms for alias in node.aliases for origin in alias.origins}))
 
 
-def tier_counts(records: list) -> Counter:
-    """The tiers of the coverage sites, with B split by reason and A by origin: keys like "B unverified row" and
-    "A crt"."""
-    counts = Counter()
-    for record in records:
-        if not record.covered:
-            continue
-        found = grade_site(record)
-        counts[found.tier] += 1
-        if found.tier == B:
-            counts[f"{B} {found.reason}"] += 1
-        if found.tier == A:
-            counts[f"{A} {' '.join(found.origins) or 'no origin'}"] += 1
-    return counts
+def tier_counts(grades) -> tuple[Counter, dict]:
+    """The sites per tier of GRADES, and per tier A and B a Counter of its sites: A by origins, B by reason."""
+    tiers, details = Counter(), {A: Counter(), B: Counter()}
+    for grade in grades:
+        tiers[grade.tier] += 1
+        if grade.tier == A:
+            details[A][" ".join(grade.origins) or "no origin"] += 1
+        elif grade.tier == B:
+            details[B][grade.reason] += 1
+    return tiers, details
 
 
 # Outputs
@@ -224,17 +221,19 @@ def _reference_rank(item: Ranked) -> tuple:
 
 
 def confidence_rows(ranked: list[Ranked], decided: dict) -> list[tuple]:
-    """One row per site. DECIDED: id -> its latest decision."""
+    """One row per site, in CONFIDENCE_COLUMNS order. DECIDED: id -> its latest decision."""
     rows = []
     for item in ranked:
         record, grade = item.record, item.grade
-        search, decision = record.search, decided.get(record.id)
-        rows.append((record.id, item.eligible, grade.tier, item.top.tier, item.sites, record.target, record.slot,
-                     record.callee, record.argument, record.value, item.status,
-                     search.candidates[0].text if search and search.candidates else "", grade.reason,
-                     "; ".join(grade.counter), " ".join(grade.origins), item.top.text if record.spellings else "",
-                     decisions.describe(decision) if decision else "", " ".join(record.flags), record.file,
-                     record.line, item.review_list))
+        decision = decided.get(record.id)
+        values = {"id": record.id, "eligible": item.eligible, "meaning": grade.tier, "spelling": item.top.tier,
+                  "sites": item.sites, "target": record.target, "slot": record.slot, "callee": record.callee,
+                  "argument": record.argument, "value": record.value, "status": item.status, "top": record.top_text,
+                  "reason": grade.reason, "counter": "; ".join(grade.counter), "origins": " ".join(grade.origins),
+                  "samples": item.top.text if record.spellings else "",
+                  "decision": decisions.describe(decision) if decision else "", "flags": " ".join(record.flags),
+                  "file": record.file, "line": record.line, "list": item.review_list}
+        rows.append(tuple(values[column] for column in CONFIDENCE_COLUMNS))
     return rows
 
 
@@ -272,11 +271,9 @@ def read_aliases(folder: Path, generation: int, site_id: str) -> dict:
 def spelling_table(ranked: list[Ranked]) -> list[str]:
     """A table of the sites with a candidate: meaning tier against the top candidate's spelling tier."""
     counts = Counter((item.grade.tier, item.top.tier) for item in ranked if item.record.spellings)
-    lines = ["| meaning | " + " | ".join(spelling.ORDER) + " |", "|---|" + "---|" * len(spelling.ORDER)]
-    for tier in ORDER:
-        if any(counts[tier, spelled] for spelled in spelling.ORDER):
-            lines.append(f"| {tier} | " + " | ".join(str(counts[tier, spelled]) for spelled in spelling.ORDER) + " |")
-    return lines
+    rows = [(tier, *(counts[tier, spelled] for spelled in spelling.ORDER)) for tier in ORDER
+            if any(counts[tier, spelled] for spelled in spelling.ORDER)]
+    return osutil.markdown_table(("meaning", *spelling.ORDER), rows)
 
 
 def eligibility_lines(ranked: list[Ranked]) -> list[str]:
@@ -287,96 +284,81 @@ def eligibility_lines(ranked: list[Ranked]) -> list[str]:
         per_callee.setdefault(item.record.callee, Counter())[item.eligible] += 1
     lines = [f"- {kind}: " + ", ".join(f"{label} {per_kind[kind][label]}" for label in ELIGIBILITY)
              for kind in inventory.KINDS if kind in per_kind]
-    lines += ["", "| callee | " + " | ".join(ELIGIBILITY) + " |", "|---|" + "---|" * len(ELIGIBILITY)]
-    lines += [f"| {callee} | " + " | ".join(str(counts[label]) for label in ELIGIBILITY) + " |"
-              for callee, counts in sorted(per_callee.items())]
-    return lines
+    rows = [(callee, *(counts[label] for label in ELIGIBILITY)) for callee, counts in sorted(per_callee.items())]
+    return lines + ["", *osutil.markdown_table(("callee", *ELIGIBILITY), rows)]
 
 
 def reference_lines(items: list[Ranked]) -> list[str]:
     """The reference list: its sites per flag, then a table per target, slot and value in list order."""
     one = sum(symbols.ONE_ENUMERATOR in item.record.flags for item in items)
     passed = sum(symbols.LVALUE_CHECK in item.record.flags for item in items)
-    lines = [f"- sites: {len(items)}; {symbols.ONE_ENUMERATOR} {one}; {symbols.LVALUE_CHECK} {passed}", "",
-             "| kind | callee | slot | value | sites | flags | top candidate |", "|---|---|---|---|---|---|---|"]
-    groups = {}
-    for item in items:
-        groups.setdefault(group_key(item.record), []).append(item)
-    for held in groups.values():
+    rows = []
+    for held in osutil.group_by(items, lambda item: group_key(item.record)).values():
         first = held[0].record
+        _, _, value = group_key(first)
         flags = " ".join(flag for flag in (symbols.ONE_ENUMERATOR, symbols.LVALUE_CHECK) if flag in first.flags)
-        lines.append(f"| {first.kind} | {first.callee} | {first.slot} | {group_key(first)[2]} | {len(held)} | "
-                     f"{flags} | {first.search.candidates[0].text} |")
-    return lines
+        rows.append((first.kind, first.callee, first.slot, value, len(held), flags, first.top_text))
+    head = ("kind", "callee", "slot", "value", "sites", "flags", "top candidate")
+    return [f"- sites: {len(items)}; {symbols.ONE_ENUMERATOR} {one}; {symbols.LVALUE_CHECK} {passed}", "",
+            *osutil.markdown_table(head, rows)]
 
 
 def placeholder_lines(items: list[Ranked]) -> list[str]:
     """The placeholder kinds, then a table per macro: its kind, its sites, their ledger statuses and their flags."""
-    lines = [f"- {kind}: {note}" for kind, note in inventory.PLACEHOLDER_NOTES.items()]
-    lines += ["", "| macro | kind | sites | statuses | flags |", "|---|---|---|---|---|"]
-    macros = {}
-    for item in items:
-        macros.setdefault(item.record.target, []).append(item)
-    for macro, held in sorted(macros.items()):
+    rows = []
+    for macro, held in sorted(osutil.group_by(items, lambda item: item.record.target).items()):
         statuses = Counter(item.status for item in held)
         flags = Counter(flag for item in held for flag in item.record.flags)
-        lines.append(f"| {macro} | {held[0].record.row.note} | {len(held)} | "
-                     + ", ".join(f"{status} {count}" for status, count in sorted(statuses.items())) + " | "
-                     + ", ".join(f"{flag} {count}" for flag, count in sorted(flags.items())) + " |")
-    return lines
+        rows.append((macro, held[0].record.row.note, len(held),
+                     ", ".join(f"{status} {count}" for status, count in sorted(statuses.items())),
+                     ", ".join(f"{flag} {count}" for flag, count in sorted(flags.items()))))
+    lines = [f"- {kind}: {note}" for kind, note in inventory.PLACEHOLDER_NOTES.items()]
+    return lines + ["", *osutil.markdown_table(("macro", "kind", "sites", "statuses", "flags"), rows)]
 
 
-def summary_text(records: list, ranked: list[Ranked], generation: int, entries) -> str:
-    """confidence.md: the tiers, the rollup by target, slot and value, the placeholders, and the baseline diff causes
-    when ENTRIES is not None."""
+def summary_text(ranked: list[Ranked], generation: int, entries: list | None) -> str:
+    """confidence.md from RANKED, the sites in review order: the tiers, the rollup by target, slot and value, the
+    placeholders, and the baseline diff causes when ENTRIES is not None."""
     placeholders = [item for item in ranked if item.review_list == PLACEHOLDER_LIST]
     references = [item for item in ranked if item.review_list == REFERENCE_LIST]
     graded = [item for item in ranked if item.review_list != PLACEHOLDER_LIST]
-    ranked = [item for item in ranked if item.review_list == REVIEW_LIST]
+    review = [item for item in ranked if item.review_list == REVIEW_LIST]
     lines = [f"# Confidence, generation {generation}", "", NOTE, "", "## Tiers", ""]
-    tiers = tier_counts(records)
+    tiers, details = tier_counts(item.grade for item in ranked)
     by_origin = Counter(" ".join(item.grade.origins) or "no origin" for item in graded if item.grade.tier == B)
     for tier in ORDER:
         if tier not in tiers:
             continue
         lines.append(f"- {tier}: {tiers[tier]}")
-        if tier in (A, B):
-            lines += [f"  - {key[len(tier) + 1:]}: {count}" for key, count in sorted(tiers.items())
-                      if key.startswith(tier + " ")]
+        lines += [f"  - {key}: {count}" for key, count in sorted(details.get(tier, {}).items())]
         if tier == B:
             lines += [f"  - origins {origins}: {count}" for origins, count in sorted(by_origin.items())]
     lines += ["", "## Spelling of the top candidates", "", *spelling_table(graded), "", "## Eligibility", "",
               *eligibility_lines(graded)]
-    lines += ["", "## By target, slot and value", "",
-              "| callee | slot | value | sites | tiers | spelling | top candidate |", "|---|---|---|---|---|---|---|"]
-    groups = {}
-    for item in ranked:
-        groups.setdefault(group_key(item.record), []).append(item)
-    for items in groups.values():
+    rows = []
+    for items in osutil.group_by(review, lambda item: group_key(item.record)).values():
         first = items[0].record
+        _, _, value = group_key(first)
         counts = Counter(item.grade.tier for item in items)
-        top = first.search.candidates[0].text if first.search and first.search.candidates else ""
-        lines.append(f"| {first.callee} | {first.slot} | {group_key(first)[2]} | {len(items)} | "
-                     + ", ".join(f"{tier} {counts[tier]}" for tier in ORDER if counts[tier])
-                     + f" | {items[0].top.tier} | {top} |")
+        rows.append((first.callee, first.slot, value, len(items),
+                     ", ".join(f"{tier} {counts[tier]}" for tier in ORDER if counts[tier]), items[0].top.tier,
+                     first.top_text))
+    head = ("callee", "slot", "value", "sites", "tiers", "spelling", "top candidate")
+    lines += ["", "## By target, slot and value", "", *osutil.markdown_table(head, rows)]
     if references:
         lines += ["", "## Reference names", "", *reference_lines(references)]
     if placeholders:
         lines += ["", "## Placeholders", "", *placeholder_lines(placeholders)]
     if entries is not None:
-        lines += ["", "## Baseline diff causes", ""]
-        lines += [f"- {side} {cause}: {count}" for (side, cause), count in
-                  sorted(Counter((entry.side, entry.cause) for entry in entries).items())]
+        lines += ["", "## Baseline diff causes", "", *baseline.cause_lines(entries)]
     return "\n".join(lines) + "\n"
 
 
-def write(folder, records: list, generation: int, entries, rows: dict, decided: dict) -> list[Ranked]:
-    """confidence.csv, candidates.csv and confidence.md in FOLDER. ENTRIES: the baseline diff, or None. ROWS: the
-    ledger by id. DECIDED: id -> its latest decision. Returns the sites in review order."""
-    ranked = review_order(records, rows)
+def write(folder, ranked: list[Ranked], generation: int, entries: list | None, decided: dict) -> None:
+    """confidence.csv, candidates.csv and confidence.md in FOLDER from RANKED, the sites in review order
+    (review_order). ENTRIES: the baseline diff, or None. DECIDED: id -> its latest decision."""
     osutil.write_whole(folder / CONFIDENCE, outputs.csv_text("evidence-confidence", generation, CONFIDENCE_COLUMNS,
                                                              confidence_rows(ranked, decided)))
     osutil.write_whole(folder / CANDIDATES, outputs.csv_text("evidence-candidates", generation, CANDIDATE_COLUMNS,
                                                              candidate_rows(ranked)))
-    osutil.write_whole(folder / CONFIDENCE_MD, summary_text(records, ranked, generation, entries))
-    return ranked
+    osutil.write_whole(folder / CONFIDENCE_MD, summary_text(ranked, generation, entries))

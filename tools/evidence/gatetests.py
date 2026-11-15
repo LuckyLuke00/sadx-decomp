@@ -10,11 +10,14 @@ import tempfile
 from collections import Counter
 from dataclasses import replace
 from pathlib import Path
+from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+import argmap  # noqa: E402
 import baseline  # noqa: E402
 import ceval  # noqa: E402
+import cheaders  # noqa: E402
 import config  # noqa: E402
 import corpus  # noqa: E402
 import corpustests  # noqa: E402
@@ -23,6 +26,7 @@ import inventory  # noqa: E402
 import inventorytests  # noqa: E402
 import manualtests  # noqa: E402
 import pairs  # noqa: E402
+import profiles  # noqa: E402
 import score  # noqa: E402
 import scoretests  # noqa: E402
 
@@ -39,6 +43,18 @@ def probe_rows(folder: str, text: str | None = PROBES):
         path.write_text(text, encoding="utf-8")
     try:
         return gate.read_probes(path)
+    except gate.GateError as error:
+        return str(error)
+
+
+def expected_fault(folder: str, text: str | None) -> str:
+    """The fault that expected-names.csv with TEXT gives, as a str; "" when it reads. None: no file."""
+    path = Path(folder) / gate.EXPECTED
+    if text is not None:
+        path.write_text(text, encoding="utf-8")
+    try:
+        gate.read_expected(path)
+        return ""
     except gate.GateError as error:
         return str(error)
 
@@ -73,14 +89,22 @@ def check_brake() -> list[str]:
     return failures
 
 
+def check_describe() -> list[str]:
+    """The console line of a brake: the stopped sites of its coverage, their share, and whether it fired."""
+    lines = [gate.describe(gate.Brake(inventory.CALL, 4, 1, 0.25, False)),
+             gate.describe(gate.Brake(inventory.PLACEHOLDER, 3, 2, 2 / 3, True))]
+    wanted = [f"brake {inventory.CALL}: 1 of 4 (25.0%), not fired",
+              f"brake {inventory.PLACEHOLDER}: 2 of 3 (66.7%), FIRED"]
+    return [] if lines == wanted else [f"describe: {lines}, wanted {wanted}"]
+
+
 def brake_rows(text: str) -> list:
     """The kind rows of the brake table in TEXT."""
     return [line for line in section(text, "Brake") if line.startswith("| ") and not line.startswith("| kind ")]
 
 
 def check_report() -> list[str]:
-    """Each section on the inventory fixture, with the corpus and manual fixtures; the coverage split sums to its
-    totals."""
+    """Each section on the inventory fixture, with the corpus and manual fixtures."""
     failures = []
     with tempfile.TemporaryDirectory() as folder:
         loaded, rows = inventorytests.repository(folder)
@@ -90,7 +114,7 @@ def check_report() -> list[str]:
         probes = probe_rows(folder)
     ranked = score.review_order(found.records, made.rows)
     mapped = {"xxPush", "xxFlags", "xxMode", "xxCount", "xxMacro"}
-    entries = [baseline.Entry("old", baseline.SAME, None, None)] * 2
+    entries = [baseline.Entry(baseline.OLD_SIDE, baseline.SAME, None, None)] * 2
     text, stop = gate.report(found, 7, config.THRESHOLDS, expected_rows(), probes, mapped, entries, samples,
                              [manualtests.parse()], ranked, (["x.txt:1:word"], 0.5))
     if not text.startswith("# Evidence gate, generation 7\n\n" + score.NOTE):
@@ -105,14 +129,9 @@ def check_report() -> list[str]:
               "  - unknown identifier: 1", "- unevaluated: 1", "  - arity: 1"]
     if split != wanted:
         failures.append(f"coverage split {split}")
-    numbers = {line: int(line.rsplit(": ", 1)[1]) for line in split[1:]}
-    tiers = sum(value for line, value in numbers.items() if line.startswith("  - ") and "budget" not in line
-                and line.split(":")[0][4:] in score.ORDER)
-    if tiers != numbers["- resolved: 8"] or numbers["- resolved: 8"] + 2 != numbers["- coverage sites: 10"]:
-        failures.append("the tiers sum to the resolved sites, and resolved, unresolved and unevaluated to coverage")
     outside = section(text, "Out of coverage")
-    for line in (f"- unmapped calls: {found.unmapped}", "- function-like macro callees: 1", "- nonconstant arguments: 1",
-                 "  - variable: 1", "- unsupported files: 1"):
+    for line in (f"- unmapped calls: {found.unmapped}", "- function-like macro callees: 1",
+                 "- nonconstant arguments: 1", "  - variable: 1", "- unsupported files: 1"):
         if line not in outside:
             failures.append(f"out of coverage lacks {line!r}: {outside}")
     if section(text, "Field spots")[0] != "- no fieldmap: no spot is a field site":
@@ -124,7 +143,7 @@ def check_report() -> list[str]:
     if section(text, "Top unresolved identifiers")[0] != "- sites: XX_UNKNOWN 1":
         failures.append(f"top unresolved {section(text, 'Top unresolved identifiers')}")
     umbrellas = section(text, "Umbrellas")
-    if not umbrellas[2].startswith("| game | vendor.h | 1 | 0 | 0 | 0 | 0 | XX_MISSING |"):
+    if not umbrellas[2].startswith("| game | vendor.h | 1 | 0 | 0 | 0 | 0 | 0 | 0 | XX_MISSING |"):
         failures.append(f"umbrella row: only the name that is not defined is listed: {umbrellas[2]}")
     if umbrellas[-1] != "expected-names.csv names umbrellas that config.json lacks: game other.h, ref vendor.h":
         failures.append(f"unknown umbrella {umbrellas[-1]}")
@@ -158,11 +177,24 @@ def check_report() -> list[str]:
     if any(item.fired for item in stop) or not any(item.fired for item in fired):
         failures.append("the brake fires only over the limit")
     if brake_rows(bare) != ["| call | 10 | previous run 12, change -2 | 2 (20.0%) | FIRED: fix the model before "
-                            "anything else |", "| placeholder | 0 | previous run 5, change -5 | 0 (0.0%) | not fired |"]:
+                            "anything else |",
+                            "| placeholder | 0 | previous run 5, change -5 | 0 (0.0%) | not fired |"]:
         failures.append(f"a kind of the previous run stays in the table: {brake_rows(bare)}")
     if bare.count("- none configured") != 2 or section(bare, "Skipped modules") != ["- none recorded"]:
         failures.append("with no sample tree, no manual and no probe, the three tables say so")
     return failures
+
+
+def check_umbrella_faults() -> list[str]:
+    """The umbrella table counts the files that do not tokenize and the unbalanced conditionals."""
+    with tempfile.TemporaryDirectory() as folder:
+        (Path(folder) / "top.h").write_text('#include "bad.h"\n#if 1\nint xx;\n', encoding="utf-8")
+        (Path(folder) / "bad.h").write_text("/* open\n", encoding="utf-8")
+        closure = cheaders.read(str(Path(folder) / "top.h"), cheaders.Config(profiles.get("msvc-vc10-x86-cpp")))
+    row = gate._umbrellas(SimpleNamespace(closures=[("game", closure)]), [])[4]
+    if row != "| game | top.h | 2 | 0 | 0 | 0 | 0 | 1 | 1 | none |":
+        return [f"umbrella faults {row}"]
+    return []
 
 
 def check_fields() -> list[str]:
@@ -206,7 +238,8 @@ def check_symbols() -> list[str]:
                      "  - field sites: 0 (in coverage 0, nonconstant value 0)",
                      "  - scope sites (no fieldmap row, in a function with scope constants): 1"]:
         failures.append(f"field spots {spots}")
-    for row in ("| case | 1 | first run | 0 (0.0%) | not fired |", "| variable | 5 | first run | 0 (0.0%) | not fired |",
+    for row in ("| case | 1 | first run | 0 (0.0%) | not fired |",
+                "| variable | 5 | first run | 0 (0.0%) | not fired |",
                 "| return | 1 | first run | 0 (0.0%) | not fired |"):
         if row not in brake_rows(text):
             failures.append(f"brake rows lack {row!r}: {brake_rows(text)}")
@@ -248,10 +281,9 @@ def check_references() -> list[str]:
 def check_kinds() -> list[str]:
     """A kind new in this run has its first run now; each kind has its own coverage split and eligibility counts."""
     failures = []
-    settings = dict(inventorytests.CONFIG, placeholders={"XX_ASSERT": "no-code", "XX_GUESS": "code"})
-    files = dict(inventorytests.FILES, **{"src/d.c": inventorytests.D_C})
     with tempfile.TemporaryDirectory() as folder:
-        loaded, rows = inventorytests.repository(folder, files, settings)
+        loaded, rows = inventorytests.repository(folder, inventorytests.PLACEHOLDER_FILES,
+                                                 inventorytests.PLACEHOLDER_SETTINGS)
         found, made = inventorytests.committed(loaded, rows)
     found.previous = Counter({inventory.CALL: 8})
     ranked = score.review_order(found.records, made.rows)
@@ -270,20 +302,49 @@ def check_kinds() -> list[str]:
     return failures
 
 
-def check_inputs() -> list[str]:
+def mask_site(mode: str, inverted: tuple, covered: bool = True) -> SimpleNamespace:
+    """A record as gate._masks reads it: its slot MODE and one candidate per INVERTED flag."""
+    candidates = [SimpleNamespace(inverted=flag) for flag in inverted]
+    return SimpleNamespace(covered=covered, row=SimpleNamespace(mode=mode),
+                           search=SimpleNamespace(candidates=candidates))
+
+
+def check_masks() -> list[str]:
+    """The and-mask line counts covered and-mask sites: those with an inverted candidate anywhere in the list, and
+    those with no candidate. An uncovered site and a site of another mode do not count."""
+    records = [mask_site(argmap.AND_MASK, (False, True)), mask_site(argmap.AND_MASK, (False,)),
+               mask_site(argmap.AND_MASK, ()), mask_site(argmap.AND_MASK, (True,), covered=False),
+               mask_site(argmap.FLAGS, (True,))]
+    line = gate._masks(records)[2]
+    if line != "- sites 3, with an inverted candidate 1, with no candidate 1":
+        return [f"and-mask counts {line}"]
+    return []
+
+
+def check_lineage_cut() -> list[str]:
+    """A cut of 1.0 marks the last bin, the one that holds a similarity of 1.0."""
+    samples = SimpleNamespace(histograms=lambda: ([0] * 10, [0] * 10))
+    head = gate._lineage(samples, 1.0)[4]
+    if not head.endswith("| 0.9 (cut) |"):
+        return [f"lineage cut 1.0: {head}"]
+    return []
+
+
+def check_expected_faults() -> list[str]:
+    """expected-names.csv faults: a missing file, wrong columns, a short row."""
+    cases = ((None, "missing hand-owned file"),
+             ("umbrella,name\nx.h,XX\n", "the columns must be set,umbrella,name"),
+             (EXPECTED + "game,vendor.h\n", ":9: the row needs 3 values"))
+    with tempfile.TemporaryDirectory() as folder:
+        faults = [expected_fault(folder, text) for text, _ in cases]
+    return [f"{text!r}: fault {fault!r}, wanted {wanted!r}" for (text, wanted), fault in zip(cases, faults)
+            if wanted not in fault]
+
+
+def check_probes() -> list[str]:
+    """probes.csv: no file gives no rows; wrong columns and a short row fail; a | in a note is escaped."""
     failures = []
     with tempfile.TemporaryDirectory() as folder:
-        path = Path(folder) / gate.EXPECTED
-        for text, wanted in ((None, "missing hand-owned file"),
-                             ("umbrella,name\nx.h,XX\n", "the columns must be set,umbrella,name")):
-            if text is not None:
-                path.write_text(text, encoding="utf-8")
-            try:
-                gate.read_expected(path)
-                failures.append(f"no fault for {text!r}")
-            except gate.GateError as error:
-                if wanted not in str(error):
-                    failures.append(f"fault {error}, wanted {wanted!r}")
         if probe_rows(folder, None) != []:
             failures.append("a missing probes.csv gives no rows")
         if [row["module"] for row in probe_rows(folder)] != ["xxmod"]:
@@ -291,8 +352,22 @@ def check_inputs() -> list[str]:
         bad = probe_rows(folder, "module\nx\n")
         if "the columns must be module,sites,floor,verdict,date,method,note" not in bad:
             failures.append(f"probes.csv columns: {bad}")
-    for umbrella, wanted, result in (("D:/xx/inc/vendor.h", "vendor.h", True), ("D:\\xx\\inc\\vendor.h", "inc/vendor.h",
-                                                                               True), ("myvendor.h", "vendor.h", False)):
+        short = probe_rows(folder, PROBES + "xxother,3\n")
+        if not isinstance(short, str) or ":3: the row needs 7 values" not in short:
+            failures.append(f"a short probes.csv row: {short}")
+        noted = gate._probes(probe_rows(folder, PROBES.replace("a count,", "a count,a | b")))
+        if noted[4] != "| xxmod | 3 | 20 | under the floor: skipped | 2026-01-01 | a count | a \\| b |":
+            failures.append(f"a | in a probes.csv note is escaped: {noted[4]}")
+    return failures
+
+
+def check_matches() -> list[str]:
+    """An umbrella matches an expected-names row when equal or when its path ends in the row's path, with either
+    slash. A longer file name does not match."""
+    failures = []
+    for umbrella, wanted, result in (("D:/xx/inc/vendor.h", "vendor.h", True),
+                                     ("D:\\xx\\inc\\vendor.h", "inc/vendor.h", True),
+                                     ("myvendor.h", "vendor.h", False)):
         if gate.matches(umbrella, wanted) != result:
             failures.append(f"matches({umbrella!r}, {wanted!r}) is not {result}")
     return failures
@@ -301,8 +376,9 @@ def check_inputs() -> list[str]:
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
-    for check in (check_brake, check_report, check_fields, check_symbols, check_references, check_kinds,
-                  check_inputs):
+    for check in (check_brake, check_describe, check_report, check_umbrella_faults, check_fields, check_symbols,
+                  check_references, check_kinds, check_masks, check_lineage_cut, check_expected_faults, check_probes,
+                  check_matches):
         failures += check()
     return failures
 
