@@ -34,6 +34,9 @@
 // LIBRARY: SADX 0x005889f0
 // ?size@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@QBEIXZ
 
+// LIBRARY: SADX 0x004bab50
+// ??0?$_Vector_const_iterator@V?$_Vector_val@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@@std@@QAE@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@1@PBU_Container_base0@1@@Z
+
 // LIBRARY: SADX 0x005fb840
 // ?clear@?$list@ULBOnData@@V?$allocator@ULBOnData@@@std@@@std@@QAEXXZ
 
@@ -231,3 +234,15 @@
 
 // LIBRARY: SADX 0x0058aa80
 // ??1?$_List_val@ULBOnData@@V?$allocator@ULBOnData@@@std@@@std@@QAE@XZ
+
+// LIBRARY: SADX 0x00582ad0
+// floorf
+
+// LIBRARY: SADX 0x005f5a30
+// swprintf
+
+// LIBRARY: SADX 0x005fb8d0
+// ?_Insert@?$list@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@std@@QAEXV?$_List_const_iterator@V?$_List_val@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@std@@@2@ABUDAT_05edd970_1@@@Z
+
+// LIBRARY: SADX 0x0041a400
+// ?GetSubject@?$Singleton@VSOCTimer@@@Base@Magic@@QAEPAVSOCTimer@@XZ

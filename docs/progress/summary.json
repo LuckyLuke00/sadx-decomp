@@ -1619,7 +1619,7 @@
   },
   {
    "address": "0x00419d00",
-   "name": "FUN_00419d00",
+   "name": "SOCRender::FUN_00419d00",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -1664,6 +1664,14 @@
    "effective": false,
    "stub": true,
    "library": false
+  },
+  {
+   "address": "0x0041a400",
+   "name": "Magic::Base::Singleton<SOCTimer>::GetSubject",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x0041a6c0",
@@ -1939,7 +1947,7 @@
   },
   {
    "address": "0x004207c0",
-   "name": "FUN_004207c0",
+   "name": "SOCRender::FUN_004207c0",
    "accuracy": 0.16666666666666666,
    "effective": false,
    "stub": true,
@@ -2651,7 +2659,7 @@
   },
   {
    "address": "0x00424910",
-   "name": "FUN_00424910",
+   "name": "SOCInput::FUN_00424910",
    "accuracy": 0.058823529411764705,
    "effective": false,
    "stub": true,
@@ -2659,7 +2667,7 @@
   },
   {
    "address": "0x00424950",
-   "name": "FUN_00424950",
+   "name": "SOCInput::FUN_00424950",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -2683,7 +2691,7 @@
   },
   {
    "address": "0x00424a70",
-   "name": "FUN_00424a70",
+   "name": "SOCInput::FUN_00424a70",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -2691,7 +2699,7 @@
   },
   {
    "address": "0x00424a80",
-   "name": "FUN_00424a80",
+   "name": "SOCInput::FUN_00424a80",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -16436,7 +16444,7 @@
   {
    "address": "0x004b6d90",
    "name": "file_sel_exec",
-   "accuracy": 0.7737226277372263,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -16602,6 +16610,14 @@
    "library": false
   },
   {
+   "address": "0x004bab50",
+   "name": "std::_Vector_const_iterator<std::_Vector_val<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > > >::_Vector_const_iterator<std::_Vector_val<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >,std::allocator<std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> > > > >",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
    "address": "0x004bab70",
    "name": "Title2Init",
    "accuracy": 1.0,
@@ -16676,9 +16692,9 @@
   {
    "address": "0x004baea0",
    "name": "SetCameraTask",
-   "accuracy": 0.14814814814814814,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -17004,9 +17020,9 @@
   {
    "address": "0x004bec60",
    "name": "FUN_004bec60",
-   "accuracy": 0.07920792079207921,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29370,6 +29386,14 @@
    "library": false
   },
   {
+   "address": "0x0057ad20",
+   "name": "GetPauseMenuActive",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0057ae10",
    "name": "PausePrev",
    "accuracy": 0.20408163265306123,
@@ -29380,9 +29404,9 @@
   {
    "address": "0x0057ae90",
    "name": "DisplayPauseMenu",
-   "accuracy": 0.004711425206124852,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29444,9 +29468,17 @@
   {
    "address": "0x0057d000",
    "name": "late_DrawMap",
-   "accuracy": 0.1,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0057d100",
+   "name": "DrawCharMark",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -29460,18 +29492,18 @@
   {
    "address": "0x0057d490",
    "name": "padconfig",
-   "accuracy": 0.8184908225696805,
+   "accuracy": 0.814843598212551,
    "effective": false,
    "stub": false,
    "library": false
   },
   {
    "address": "0x00582ad0",
-   "name": "FUN_00582ad0",
+   "name": "floorf",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": true
   },
   {
    "address": "0x00582af0",
@@ -29484,9 +29516,9 @@
   {
    "address": "0x00582b10",
    "name": "InitLBOn",
-   "accuracy": 0.011477761836441894,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29500,9 +29532,9 @@
   {
    "address": "0x005837c0",
    "name": "DrawLBOn",
-   "accuracy": 0.0019398642095053346,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -29527,6 +29559,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00588110",
+   "name": "DrawButtonAVXCBB",
+   "accuracy": 0.017543859649122806,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -31978,8 +32018,24 @@
    "library": false
   },
   {
+   "address": "0x0059fc10",
+   "name": "TitleNewWakeProcedure",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x0059fd80",
    "name": "FUN_0059fd80",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0059fdb0",
+   "name": "FUN_0059fdb0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -32095,6 +32151,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005a4040",
+   "name": "SetSerifuChar",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -38932,7 +38996,7 @@
   {
    "address": "0x005ebea0",
    "name": "InitStaff",
-   "accuracy": 0.9991496598639455,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -39252,25 +39316,33 @@
   {
    "address": "0x005f4ee0",
    "name": "InitLB",
-   "accuracy": 0.013377926421404682,
+   "accuracy": 0.9983136593591906,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x005f5940",
    "name": "FUN_005f5940",
-   "accuracy": 0.1095890410958904,
+   "accuracy": 0.9855072463768116,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
+  },
+  {
+   "address": "0x005f5a30",
+   "name": "swprintf(1)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x005f5a70",
    "name": "DrawLB",
-   "accuracy": 0.0017837235228539577,
+   "accuracy": 0.9995536710555679,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -39303,6 +39375,14 @@
    "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005fa460",
+   "name": "title_menu_sub_lb_exec",
+   "accuracy": 0.9936842105263158,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -39349,6 +39429,14 @@
    "address": "0x005fb840",
    "name": "std::list<LBOnData,std::allocator<LBOnData> >::clear",
    "accuracy": 0.9795918367346939,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x005fb8d0",
+   "name": "std::list<DAT_05edd970_1,std::allocator<DAT_05edd970_1> >::_Insert",
+   "accuracy": 0.9791666666666666,
    "effective": false,
    "stub": false,
    "library": true
@@ -42642,6 +42730,14 @@
    "library": false
   },
   {
+   "address": "0x0067f6d0",
+   "name": "DrawMapSS",
+   "accuracy": 0.044444444444444446,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0067f8b0",
    "name": "DestroyMapSS",
    "accuracy": 1.0,
@@ -44466,6 +44562,14 @@
    "library": false
   },
   {
+   "address": "0x00693520",
+   "name": "DrawMapEC",
+   "accuracy": 0.03680981595092025,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x00693830",
    "name": "ECPcInitInit",
    "accuracy": 1.0,
@@ -44911,6 +45015,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0069dc70",
+   "name": "DrawMapECH",
+   "accuracy": 0.0594059405940594,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -45447,6 +45559,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006a8500",
+   "name": "DrawMapMR",
+   "accuracy": 0.0594059405940594,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -46383,6 +46503,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x006bc6b0",
+   "name": "DrawMapPAST",
+   "accuracy": 0.05217391304347826,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -60860,9 +60988,9 @@
   {
    "address": "0x00839fe0",
    "name": "SysSkydeck_GoAct3",
-   "accuracy": 0.038461538461538464,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -94315,6 +94443,48 @@
    "library": false
   },
   {
+   "address": "0x02604e68",
+   "name": "DAT_02604e68",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02604f78",
+   "name": "DAT_02604f78",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02605088",
+   "name": "DAT_02605088",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02605198",
+   "name": "DAT_02605198",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026052a8",
+   "name": "DAT_026052a8",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026053b8",
+   "name": "DAT_026053b8",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026054e8",
    "name": "DAT_026054e8",
    "size": 16,
@@ -94374,6 +94544,55 @@
    "address": "0x02605a48",
    "name": "DAT_02605a48",
    "size": 20,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02605f10",
+   "name": "Ontexinfo_E",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02606110",
+   "name": "Ontexinfo_J",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02606310",
+   "name": "Ontexinfo_G",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02606510",
+   "name": "Ontexinfo_S",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02606710",
+   "name": "Ontexinfo_F",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02606910",
+   "name": "Ontexinfo_I",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02606b10",
+   "name": "DAT_02606b10",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -94567,6 +94786,27 @@
    "library": false
   },
   {
+   "address": "0x02631394",
+   "name": "texlist_ava_title_sub",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026313a4",
+   "name": "DAT_026313a4",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026313a8",
+   "name": "DAT_026313a8",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026313ac",
    "name": "DAT_026313ac",
    "size": 4,
@@ -94598,6 +94838,34 @@
    "address": "0x026314d4",
    "name": "DAT_026314d4",
    "size": 50,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02631ab8",
+   "name": "DAT_02631ab8",
+   "size": 2,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02631aba",
+   "name": "DAT_02631aba",
+   "size": 2,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02631abc",
+   "name": "DAT_02631abc",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02631ac0",
+   "name": "DAT_02631ac0",
+   "size": 4,
    "match": false,
    "library": false
   },
@@ -95375,6 +95643,97 @@
    "address": "0x0267b758",
    "name": "DAT_0267b758",
    "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267b760",
+   "name": "DAT_0267b760",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267b870",
+   "name": "DAT_0267b870",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267b980",
+   "name": "DAT_0267b980",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267ba90",
+   "name": "DAT_0267ba90",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267bba0",
+   "name": "DAT_0267bba0",
+   "size": 272,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267bdd0",
+   "name": "LbPage",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267bdd4",
+   "name": "LBChange",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267be70",
+   "name": "texinfo_E",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267c070",
+   "name": "texinfo_J",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267c270",
+   "name": "texinfo_G",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267c470",
+   "name": "texinfo_S",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267c670",
+   "name": "texinfo_F",
+   "size": 512,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267c870",
+   "name": "texinfo_I",
+   "size": 512,
    "match": false,
    "library": false
   },
@@ -104304,6 +104663,13 @@
    "library": false
   },
   {
+   "address": "0x05a92334",
+   "name": "DAT_05a92334",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x05a9238c",
    "name": "DAT_05a9238c",
    "size": 8,
@@ -104397,5 +104763,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "99f6f8f366a3033309ac39c9d0002b350b3e5125d80ff2389b1d158ae95b74fb"
+ "inputs_sha256": "bbe7df9bd7c7d816700d00ee409e2d54a0dc5b6aa81501365b8ef3ba14d397e8"
 }

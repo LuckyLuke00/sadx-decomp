@@ -10,15 +10,15 @@ SOCInput::SOCInput()
 }
 
 // FUNCTION: SADX 0x00424a70
-int __fastcall FUN_00424a70(void *param_1)
+int SOCInput::FUN_00424a70()
 {
-	return *(int *)((char *)param_1 + 0x48);
+	return field_0x48;
 }
 
 // FUNCTION: SADX 0x00424a80
-char __fastcall FUN_00424a80(void *param_1)
+int SOCInput::FUN_00424a80()
 {
-	return (*(int *)((char *)param_1 + 0x48) == 5) + 5;
+	return (field_0x48 == 5) + 5;
 }
 
 // STUB: SADX 0x00424a90

@@ -8,7 +8,7 @@ int FUN_004c39c0(...);
 extern unsigned char DAT_05ad95e1;
 extern unsigned char DAT_05cd14e2;
 extern unsigned char DAT_05cd14eb;
-extern int DAT_05b9d848;
+extern volatile int DAT_05b9d848;
 extern struct NJS_CAMERA DAT_06298c48;
 
 void FUN_004bac60();

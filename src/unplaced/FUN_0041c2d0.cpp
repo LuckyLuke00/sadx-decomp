@@ -3,7 +3,7 @@
 extern std::vector<struct FUN_00420960_0, std::allocator<struct FUN_00420960_0> > DAT_05ab42dc;
 
 // FUNCTION: SADX 0x0041c2d0
-void FUN_0041c2d0(void *param_1)
+void FUN_0041c2d0(Magic::RenderCore::Texture *param_1)
 {
 	std::vector<FUN_00420960_0>::iterator var1;
 	var1 = DAT_05ab42dc.begin();

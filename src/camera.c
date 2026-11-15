@@ -1,4 +1,12 @@
 #include "decls.h"
+extern struct taskwk *DAT_05b3e340;
+extern short DAT_05b42a6c;
+extern short DAT_05b42a70;
+extern short DAT_05b428ec;
+extern short DAT_02631ab8;
+extern short DAT_02631aba;
+extern int DAT_02631abc;
+extern int DAT_02631ac0;
 long CameraCollisionCube(struct _OBJ_CAMERAENTRY *pCameraEntry);
 long CameraCollisionPlane(struct _OBJ_CAMERAENTRY *pCameraEntry);
 void CameraSetCamera(signed char scCameraMode, short ssCameraEntry);
@@ -163,9 +171,30 @@ void SetViewAngle(long new_view_angle)
 	DAT_05b42a80 = DAT_05b42968;
 }
 
-// STUB: SADX 0x004baea0
+// FUNCTION: SADX 0x004baea0
 void SetCameraTask()
 {
+	struct task *local_8;
+	local_8 = CreateElementalTask(2, 0, Camera);
+	DAT_05b42a6c = (short)(DAT_05b9d724 << 8 | DAT_05b9d744);
+	DAT_05b42998 = (short)(DAT_05b42a6c & 0xff);
+	DAT_05b42a6c = (short)(DAT_05b42a6c >> 8);
+	DAT_05b42a70 = DAT_02631ab8;
+	DAT_05b4299c[0] = DAT_02631abc;
+	DAT_05b428ec = DAT_02631aba;
+	DAT_05b4298c = (int *)DAT_02631ac0;
+	DAT_05b42894 = (unsigned long *)DAT_05cda1b0[DAT_05b42998];
+	DAT_05b42974 = (struct _OBJ_CAMERAENTRY *)((char *)DAT_05cda1b0[DAT_05b42998] + 0x40);
+	cameraModeInit();
+	local_8->dest = CameraEnd;
+	local_8->disp = CameraPause;
+	DAT_05b4259c = 0;
+	DAT_05b42978 = 0xffffffff;
+	DAT_05b42a78 = 0xffffffff;
+	FUN_004bafb0();
+	InitFreeCamera();
+	DAT_05b42940 = 0;
+	DAT_05b42a84 = 0;
 }
 
 // FUNCTION: SADX 0x004bafb0
@@ -362,7 +391,7 @@ void FUN_004bba70()
 					{
 						FUN_004bee10();
 						SetAdjustMode(5);
-						if (DAT_05b3e320[8] != 0 && DAT_05b9d724 == 3 && DAT_05b9d744 == 0 && GetPlayerNumber() == 0 && *(char *)DAT_05b3e320[8] == 0x2d)
+						if (DAT_05b3e340 != 0 && DAT_05b9d724 == 3 && DAT_05b9d744 == 0 && GetPlayerNumber() == 0 && DAT_05b3e340->mode == 0x2d)
 						{
 							FUN_004bf070(0x31);
 						}
@@ -931,9 +960,43 @@ void CameraSetCollisionCameraFunc(void (*fnCamera)(struct _OBJ_CAMERAPARAM *), u
 	}
 }
 
-// STUB: SADX 0x004bec60
+// FUNCTION: SADX 0x004bec60
 void FUN_004bec60(short param_1, unsigned char param_2)
 {
+	if ((signed char) *(char *)((char *)pCameraSystemWork + 8) <= 4)
+	{
+		if ((signed char) *(char *)((char *)pCameraSystemWork + 8) != 4)
+		{
+			*(int *)((char *)pCameraSystemWork + 0x28) = (signed char) *(char *)((char *)pCameraSystemWork + 8);
+			*(short *)((char *)pCameraSystemWork + 0x38) = *(short *)((char *)pCameraSystemWork + 4);
+			*(char *)((char *)pCameraSystemWork + 0x40) = *(char *)((char *)pCameraSystemWork + 0xb);
+			*(char *)((char *)pCameraSystemWork + 0x7c) = *(char *)((char *)pCameraSystemWork + 6);
+			*(int *)((char *)pCameraSystemWork + 0x54) = *(int *)((char *)pCameraSystemWork + 0xc);
+			if ((short) *(short *)((char *)pCameraSystemWork + 4) != -1)
+			{
+				*(char *)((char *)pCameraSystemWork + 0x82) = DAT_05b42974[(short) *(short *)((char *)pCameraSystemWork + 4)].ucAdjType;
+			}
+			else
+			{
+				*(char *)((char *)pCameraSystemWork + 0x82) = 0x15;
+			}
+			*(int *)((char *)pCameraSystemWork + 0x6c) = *(int *)((char *)DAT_05b4298c + (signed char) *(char *)((char *)pCameraSystemWork + 0x82) * 8 + 4);
+			*(char *)((char *)pCameraSystemWork + 8) = 4;
+		}
+		*(short *)((char *)pCameraSystemWork + 4) = -1;
+		*(char *)((char *)pCameraSystemWork + 6) = param_1;
+		*(int *)((char *)pCameraSystemWork + 0xc) = *(int *)(DAT_05b4299c[0] + param_1 * 16);
+		*(char *)((char *)pCameraSystemWork + 9) = param_2;
+		*(int *)((char *)pCameraSystemWork + 0x10) = *(int *)((char *)DAT_05b4298c + param_2 * 8 + 4);
+		*(int *)((char *)pObjAdjustParam + 0x14) = 0;
+		*(char *)((char *)pCameraSystemWork + 0xb) = 2;
+		if (*(int *)((char *)DAT_05b4298c + (signed char) *(char *)((char *)pCameraSystemWork + 9) * 8) != 0)
+		{
+			*(char *)((char *)pCameraSystemWork + 0xb) = (signed char) *(char *)((char *)pCameraSystemWork + 0xb) | 1;
+		}
+		*(char *)((char *)pCameraSystemWork + 7) = *(char *)(DAT_05b4299c[0] + (signed char) *(char *)((char *)pCameraSystemWork + 6) * 16 + 5);
+		*(int *)pCameraSystemWork = 1;
+	}
 }
 
 // FUNCTION: SADX 0x004bee10

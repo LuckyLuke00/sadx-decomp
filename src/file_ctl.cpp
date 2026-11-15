@@ -2,11 +2,12 @@
 extern "C" char *strcat(char *param_1, const char *param_2);
 extern "C" char *strcpy(char *param_1, const char *param_2);
 void LoadSetFile(char *pcFileName, unsigned long u32SetType);
-extern struct _OBJ_CAMERAENTRYTABLE *DAT_05b3e308[16];
+extern struct _OBJ_CAMERAENTRYTABLE *DAT_05b3e308[6];
 extern unsigned char DAT_05bb00a8;
 extern int DAT_05cc8670;
 extern int DAT_05cc8674;
-extern int DAT_05b3e320[16];
+extern int DAT_05b3e320[6];
+extern unsigned char DAT_05b3e348;
 extern void (*DAT_05b9e0b0)();
 
 // FUNCTION: SADX 0x004cde50
@@ -146,6 +147,6 @@ void LoadPlayerMotionData(long PlayerNo)
 // FUNCTION: SADX 0x004cfb60
 long NeonuLoadTexture(struct NJS_TEXLIST *pTexlist)
 {
-	*(char *)((char *)DAT_05b3e320 + 0x28) = 1;
+	DAT_05b3e348 = 1;
 	return njLoadTexture(pTexlist);
 }

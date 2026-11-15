@@ -24,7 +24,7 @@ struct FUN_004b2330_0
 };
 template class std::vector<FUN_004b6590_0 *>;
 template class std::vector<FUN_004b2330_0 *>;
-void FUN_004b5e70(int param_1);
+void FUN_004b5e70(Magic::RenderCore::Texture **param_1);
 void *FUN_0040efd0();
 void FUN_004b38e0(struct FUN_004b2330_0 *param_1);
 
@@ -84,7 +84,7 @@ FUN_004b2330_0::FUN_004b2330_0()
 
 // DIFF: type: the original allocates 0x12c bytes, and the last member of the record is unknown.
 // FUNCTION: SADX 0x004b23e0
-void FUN_004b23e0(void *param_1, void *param_2, int param_3, const char *param_4, int param_5)
+void FUN_004b23e0(Magic::RenderCore::Texture **param_1, char *param_2, unsigned int param_3, const char *param_4, int param_5)
 {
 	int *local_c = (int *)param_1;
 	std::string local_30(param_4);
@@ -231,7 +231,7 @@ void FUN_004b5ad0(void)
 
 // DIFF: code: the original has an empty wait loop that this code leaves out.
 // FUNCTION: SADX 0x004b5e70
-void FUN_004b5e70(int param_1)
+void FUN_004b5e70(Magic::RenderCore::Texture **param_1)
 {
 	bool local_5i;
 	unsigned int local_cj;
@@ -247,7 +247,7 @@ void FUN_004b5e70(int param_1)
 		for (local_cj = 0; local_cj < DAT_05b422dc.size(); local_cj++, DAT_05b422d8++)
 		{
 			local_10m = DAT_05b422dc[local_cj];
-			if (local_10m != 0 && (int)local_10m->field_0x108 == param_1)
+			if (local_10m != 0 && local_10m->field_0x108 == param_1)
 			{
 				local_5i = true;
 				break;
@@ -327,7 +327,7 @@ void FUN_004b6520(int param_1)
 				int local_14 = *(int *)(local_10 + 0x34);
 				if (local_14 != 0)
 				{
-					FUN_004b5e70(local_10 + 0x34);
+					FUN_004b5e70((Magic::RenderCore::Texture **)(local_10 + 0x34));
 				}
 			}
 		}

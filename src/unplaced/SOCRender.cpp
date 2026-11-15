@@ -74,10 +74,16 @@ void __fastcall FUN_00419b40(float param_1, void *param_2)
 	DAT_05ab4243 = 0;
 }
 
-// FUNCTION: SADX 0x00419d00
-void __fastcall FUN_00419d00(int param_1, int param_2, int param_3)
+// FUNCTION: SADX 0x00419cf0
+void SOCRender::FUN_00419cf0(int param_1)
 {
-	*(int *)((char *)param_1 + 0x279c) = param_3;
+	field_0x2798 = param_1;
+}
+
+// FUNCTION: SADX 0x00419d00
+void SOCRender::FUN_00419d00(int param_1)
+{
+	field_0x279c = param_1;
 }
 
 // STUB: SADX 0x00419d40
@@ -101,7 +107,7 @@ struct FUN_0041b7e0_0
 	float field_0x18;
 };
 
-extern void *DAT_05ab39ac;
+extern class SOCRender *DAT_05ab39ac;
 extern unsigned char DAT_05ab4239;
 extern unsigned char DAT_05ab423b;
 extern class Magic::RenderCore::VertexBuffer *DAT_05ab4284;
@@ -125,6 +131,12 @@ void SOCsetZwrite(bool param_1)
 bool SOCGetZwrite(void)
 {
 	return (bool)0;
+}
+
+// FUNCTION: SADX 0x0041a7d0
+void FUN_0041a7d0(int param_1)
+{
+	DAT_05ab39ac->FUN_00419cf0(param_1);
 }
 
 // STUB: SADX 0x0041b120
@@ -160,7 +172,7 @@ void RenderTexture(int param_1, int param_2, int param_3, int param_4, float par
 		memcpy(var3, local_7c, sizeof(local_7c));
 		DAT_05ab4284->Unlock();
 	}
-	((SOCRender *)DAT_05ab39ac)->UIShaderSet();
+	DAT_05ab39ac->UIShaderSet();
 	DAT_05ab4278->CommitDeviceShader();
 	((void (__thiscall *)(void *, int, Magic::RenderCore::VertexBuffer *, unsigned int, int, int, int, int))(*(void ***)DAT_05ab8060)[14])(DAT_05ab8060, DAT_05ab421c, DAT_05ab4284, DAT_05ab4288 / 28, 4, 0, 0, 0);
 	DAT_05ab4288 += 112;
@@ -218,7 +230,7 @@ void FUN_004207b0(void)
 }
 
 // STUB: SADX 0x004207c0
-void FUN_004207c0(void)
+void SOCRender::FUN_004207c0()
 {
 }
 

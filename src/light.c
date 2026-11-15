@@ -4,7 +4,7 @@ static struct LE_PALIGHT_ENV *le_find_paenv(int stg, int act, int chr);
 static struct LE_PALIGHT_ENV *le_find_paenv(int, int, int);
 
 extern float DAT_05b39d10;
-extern void *DAT_05ab39ac;
+extern class SOCRender *DAT_05ab39ac;
 extern struct LE_LIGHT_ENV DAT_05b39bf0[4];
 extern struct LE_LIGHT_ENV DAT_05b39cb0;
 extern struct LE_PALIGHT_ENV DAT_05b39ce0;

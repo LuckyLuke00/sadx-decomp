@@ -3,6 +3,10 @@
 #include <new>
 #include <windows.h>
 #include "advertise.h"
+extern struct taskwk *DAT_05b3e340;
+extern unsigned long DAT_05b3e338;
+extern struct NJS_TEXLIST DAT_02606b10;
+extern Angle DAT_05cd2858;
 extern struct NJS_TEXLIST DAT_02605a3c;
 extern struct NJS_TEXANIM DAT_02605a48;
 extern float ScreenRaitoY;
@@ -12,7 +16,7 @@ void FUN_0057cd30();
 long InitMap();
 void FUN_0057cf20();
 void late_SetFunc(void (*fnc)(void *), void *arg, float zprio, int flgs);
-void FUN_0041c2d0(void *param_1);
+void FUN_0041c2d0(Magic::RenderCore::Texture *param_1);
 int dsPlay_oneshot(int tone, int id, int pri, int volofs);
 int InitLBOn();
 void DrawLBOn();
@@ -21,7 +25,7 @@ extern struct NJS_TEXLIST DAT_05cd2664;
 extern unsigned char DAT_05cd2786;
 
 extern class SOCAudio *DAT_05b3dfdc;
-void FUN_004b5e70(int param_1);
+void FUN_004b5e70(Magic::RenderCore::Texture **param_1);
 extern Magic::RenderCore::Texture *DAT_05cd274c;
 extern Magic::RenderCore::Texture *DAT_05cd2750;
 extern Magic::RenderCore::Texture *DAT_05cd2754;
@@ -38,7 +42,7 @@ extern unsigned char DAT_0260553c;
 extern unsigned char DAT_0260553d;
 std::wstring trim2(const std::wstring& param_1);
 std::vector<std::wstring, std::allocator<std::wstring> > FUN_005ebc40(const std::wstring& param_1, const std::wstring& param_2, bool param_3);
-void FUN_004b23e0(void*, void*, int, const char*, int);
+void FUN_004b23e0(Magic::RenderCore::Texture**, char*, unsigned int, const char*, int);
 
 // GLOBAL: SADX 0x05cd2834
 std::vector<std::wstring>::iterator DAT_05cd2834;
@@ -82,64 +86,35 @@ int InitStaff2()
 	}
 	DAT_05cd2834 = DAT_05cd27f4.begin() + 426;
 	int local_45c = 1;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Patch"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"LITTLE STONE SOFTWARE"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jeff Astor"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Peter Bratcher"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Adam Hooley"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Ben Watson"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Sean Workman"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"SEGA OF EUROPE"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*ASSOCIATE PRODUCER"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jessica Padkin"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*PROJECT LEAD"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Andrew Sparks"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*FUNCTIONALITY QA LEAD"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Christopher Dadswell"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*SENIOR TESTER"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Wing-Pui Chung"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*TESTER"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Finlay Milligan"), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
-	MAYBE_ASSERT();
-	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c++;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Patch"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"LITTLE STONE SOFTWARE"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jeff Astor"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Peter Bratcher"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Adam Hooley"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Ben Watson"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Sean Workman"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"SEGA OF EUROPE"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*ASSOCIATE PRODUCER"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Jessica Padkin"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*PROJECT LEAD"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Andrew Sparks"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*FUNCTIONALITY QA LEAD"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Christopher Dadswell"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*SENIOR TESTER"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Wing-Pui Chung"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"*TESTER"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L"Finlay Milligan"), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
+	DAT_05cd27f4.insert(DAT_05cd2834 + local_45c, 1, L""), local_45c = local_45c + 1;
 	delete local_448;
 	delete[] local_44cm;
 	DAT_05cd2824 = DAT_01c6e42c;
@@ -218,7 +193,7 @@ void FUN_00579960(struct MSGC *param_1, int *param_2, int *param_3)
 	FUN_0041c2d0(DAT_05cd2750);
 	delete DAT_05cd2750;
 	DAT_05cd2750 = 0;
-	FUN_004b5e70((int)&DAT_05cd2754);
+	FUN_004b5e70(&DAT_05cd2754);
 	FUN_0041c2d0(DAT_05cd2754);
 	delete DAT_05cd2754;
 	DAT_05cd2754 = 0;
@@ -326,7 +301,7 @@ void printPause(float ofsy)
 }
 
 // FUNCTION: SADX 0x0057aa00
-void FUN_0057aa00(enum PAUSE_TEXTURE_ID param_1, long param_2, long param_3, long param_4)
+void FUN_0057aa00(enum PAUSE_TEXTURE_ID param_1, long param_2, long param_3)
 {
 	printMenu2(param_1, 0xf0, param_2 + 0xf0, param_3);
 }
@@ -389,7 +364,7 @@ void printMenu2(enum PAUSE_TEXTURE_ID id, long pos_x, long pos_y, long flag)
 	SetMaterial(1.0, 1.0, 1.0, 1.0);
 	if (flag != 0)
 	{
-		SetMaterial(1.0, 1.0, 1.0, njSin(DAT_05b3e320[6] << 0xb));
+		SetMaterial(1.0, 1.0, 1.0, njSin(DAT_05b3e338 << 0xb));
 		_pos.x = (float)pos_x + -16.0;
 		_pos.y = (float)pos_y + -8.0;
 		printPauseTexture((enum PAUSE_TEXTURE_ID)2, &_pos, &_scl);
@@ -397,11 +372,430 @@ void printMenu2(enum PAUSE_TEXTURE_ID id, long pos_x, long pos_y, long flag)
 	}
 }
 
+extern struct ButtonInfo DAT_02604e68[17];
+extern struct ButtonInfo DAT_02604f78[17];
+extern struct ButtonInfo DAT_02605088[17];
+extern struct ButtonInfo DAT_02605198[17];
+extern struct ButtonInfo DAT_026052a8[17];
+extern struct ButtonInfo DAT_026053b8[17];
+
+// FUNCTION: SADX 0x0057ad20
+unsigned char GetPauseMenuActive(unsigned short *menu)
+{
+	unsigned char local_5i = 0;
+	unsigned short local_cg = 0;
+
+	local_cg |= 1;
+	local_5i++;
+	local_cg |= 8;
+	local_5i++;
+	if ((DAT_05b9d724 < 0x1a || DAT_05b9d724 > 0x22) && (DAT_05b9d724 < 0x27 || DAT_05b9d724 > 0x29) && GetNumPlayer() > 0)
+	{
+		local_cg |= 2;
+		local_5i++;
+	}
+	if (FUN_0057cc20())
+	{
+		local_cg |= 0x10;
+		local_5i++;
+	}
+	if (DAT_05b3e05c == 10)
+	{
+		local_cg |= 0x40;
+		local_5i++;
+	}
+	local_cg |= 0x80;
+	local_5i++;
+	*menu = local_cg;
+	return local_5i;
+}
 
 // STUB: SADX 0x0057ae10
 signed char PausePrev(signed char sel)
 {
 	return (signed char)0;
+}
+
+// FUNCTION: SADX 0x0057ae90
+void DisplayPauseMenu(unsigned short sel)
+{
+	int local_248i;
+	unsigned char local_249p = 0;
+	unsigned short bAct = 0;
+	enum PAUSE_TEXTURE_ID tex;
+
+	local_249p = GetPauseMenuActive(&bAct);
+	{
+		SOCFileStream local_25c;
+
+		switch (DAT_05b42a90)
+		{
+		case 5:
+			if (!DAT_05cd2744)
+			{
+				if (local_25c.ReadFile("system\\Tips_DDS\\Tips_I.dds"))
+				{
+					DAT_05cd2744 = new Magic::RenderCore::Texture;
+					DAT_05cd2744->Load(local_25c.FUN_00424960(), 1, local_25c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2740)
+			{
+				SOCFileStream local_264;
+
+				if (local_264.ReadFile("system\\Tips_DDS\\PauseTips_I.dds"))
+				{
+					DAT_05cd2740 = new Magic::RenderCore::Texture;
+					DAT_05cd2740->Load(local_264.FUN_00424960(), 1, local_264.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2748)
+			{
+				SOCFileStream local_26c;
+
+				if (local_26c.ReadFile("system\\Tips_DDS\\PauseTips2_I.dds"))
+				{
+					DAT_05cd2748 = new Magic::RenderCore::Texture;
+					DAT_05cd2748->Load(local_26c.FUN_00424960(), 1, local_26c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			break;
+		case 4:
+			if (!DAT_05cd2744)
+			{
+				if (local_25c.ReadFile("system\\Tips_DDS\\Tips_G.dds"))
+				{
+					DAT_05cd2744 = new Magic::RenderCore::Texture;
+					DAT_05cd2744->Load(local_25c.FUN_00424960(), 1, local_25c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2740)
+			{
+				SOCFileStream local_274;
+
+				if (local_274.ReadFile("system\\Tips_DDS\\PauseTips_G.dds"))
+				{
+					DAT_05cd2740 = new Magic::RenderCore::Texture;
+					DAT_05cd2740->Load(local_274.FUN_00424960(), 1, local_274.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2748)
+			{
+				SOCFileStream local_27c;
+
+				if (local_27c.ReadFile("system\\Tips_DDS\\PauseTips2_G.dds"))
+				{
+					DAT_05cd2748 = new Magic::RenderCore::Texture;
+					DAT_05cd2748->Load(local_27c.FUN_00424960(), 1, local_27c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			break;
+		case 3:
+			if (!DAT_05cd2744)
+			{
+				if (local_25c.ReadFile("system\\Tips_DDS\\Tips_S.dds"))
+				{
+					DAT_05cd2744 = new Magic::RenderCore::Texture;
+					DAT_05cd2744->Load(local_25c.FUN_00424960(), 1, local_25c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2740)
+			{
+				SOCFileStream local_284;
+
+				if (local_284.ReadFile("system\\Tips_DDS\\PauseTips_S.dds"))
+				{
+					DAT_05cd2740 = new Magic::RenderCore::Texture;
+					DAT_05cd2740->Load(local_284.FUN_00424960(), 1, local_284.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2748)
+			{
+				SOCFileStream local_28c;
+
+				if (local_28c.ReadFile("system\\Tips_DDS\\PauseTips2_S.dds"))
+				{
+					DAT_05cd2748 = new Magic::RenderCore::Texture;
+					DAT_05cd2748->Load(local_28c.FUN_00424960(), 1, local_28c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			break;
+		case 2:
+			if (!DAT_05cd2744)
+			{
+				if (local_25c.ReadFile("system\\Tips_DDS\\Tips_F.dds"))
+				{
+					DAT_05cd2744 = new Magic::RenderCore::Texture;
+					DAT_05cd2744->Load(local_25c.FUN_00424960(), 1, local_25c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2740)
+			{
+				SOCFileStream local_294;
+
+				if (local_294.ReadFile("system\\Tips_DDS\\PauseTips_F.dds"))
+				{
+					DAT_05cd2740 = new Magic::RenderCore::Texture;
+					DAT_05cd2740->Load(local_294.FUN_00424960(), 1, local_294.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2748)
+			{
+				SOCFileStream local_29c;
+
+				if (local_29c.ReadFile("system\\Tips_DDS\\PauseTips2_F.dds"))
+				{
+					DAT_05cd2748 = new Magic::RenderCore::Texture;
+					DAT_05cd2748->Load(local_29c.FUN_00424960(), 1, local_29c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			break;
+		case 0:
+			if (!DAT_05cd2744)
+			{
+				if (local_25c.ReadFile("system\\Tips_DDS\\Tips_J.dds"))
+				{
+					DAT_05cd2744 = new Magic::RenderCore::Texture;
+					DAT_05cd2744->Load(local_25c.FUN_00424960(), 1, local_25c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2740)
+			{
+				SOCFileStream local_2a4;
+
+				if (local_2a4.ReadFile("system\\Tips_DDS\\PauseTips_J.dds"))
+				{
+					DAT_05cd2740 = new Magic::RenderCore::Texture;
+					DAT_05cd2740->Load(local_2a4.FUN_00424960(), 1, local_2a4.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2748)
+			{
+				SOCFileStream local_2ac;
+
+				if (local_2ac.ReadFile("system\\Tips_DDS\\PauseTips2_J.dds"))
+				{
+					DAT_05cd2748 = new Magic::RenderCore::Texture;
+					DAT_05cd2748->Load(local_2ac.FUN_00424960(), 1, local_2ac.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			break;
+		default:
+			if (!DAT_05cd2744)
+			{
+				if (local_25c.ReadFile("system\\Tips_DDS\\Tips.dds"))
+				{
+					DAT_05cd2744 = new Magic::RenderCore::Texture;
+					DAT_05cd2744->Load(local_25c.FUN_00424960(), 1, local_25c.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2740)
+			{
+				SOCFileStream local_2b4;
+
+				if (local_2b4.ReadFile("system\\Tips_DDS\\PauseTips.dds"))
+				{
+					DAT_05cd2740 = new Magic::RenderCore::Texture;
+					DAT_05cd2740->Load(local_2b4.FUN_00424960(), 1, local_2b4.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			if (!DAT_05cd2748)
+			{
+				SOCFileStream local_2bc;
+
+				if (local_2bc.ReadFile("system\\Tips_DDS\\PauseTips2.dds"))
+				{
+					DAT_05cd2748 = new Magic::RenderCore::Texture;
+					DAT_05cd2748->Load(local_2bc.FUN_00424960(), 1, local_2bc.FUN_0040b8a0(), 0, 1, 0);
+				}
+			}
+			break;
+		}
+	}
+	switch (DAT_05b42a90)
+	{
+	case 5:
+		DAT_05cd273c = DAT_026053b8;
+		break;
+	case 4:
+		DAT_05cd273c = DAT_02605088;
+		break;
+	case 3:
+		DAT_05cd273c = DAT_02605198;
+		break;
+	case 2:
+		DAT_05cd273c = DAT_026052a8;
+		break;
+	case 0:
+		DAT_05cd273c = DAT_02604f78;
+		break;
+	default:
+		DAT_05cd273c = DAT_02604e68;
+		break;
+	}
+	if (!DAT_05cd275c)
+	{
+		SOCFileStream local_2c4;
+
+		switch (DAT_05b42a90)
+		{
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+				if (local_2c4.ReadFile("system\\LeaderBoards\\Leader_load_e4.dds"))
+				{
+					DAT_05cd275c = new Magic::RenderCore::Texture;
+					DAT_05cd275c->Load(local_2c4.FUN_00424960(), 1, local_2c4.FUN_0040b8a0(), 0, 1, 0);
+				}
+			break;
+		default:
+				if (local_2c4.ReadFile("system\\LeaderBoards\\Leader_load.dds"))
+				{
+					DAT_05cd275c = new Magic::RenderCore::Texture;
+					DAT_05cd275c->Load(local_2c4.FUN_00424960(), 1, local_2c4.FUN_0040b8a0(), 0, 1, 0);
+				}
+			break;
+		}
+	}
+	{
+		float local_2c8;
+		struct NJS_POINT3 _pos;
+		struct NJS_POINT2 _scl;
+		float local_2e0;
+		float local_2e4h;
+		float local_2e8;
+
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+		___njSetTexture(&DAT_02605a3c);
+		_pos.x = 208.0f;
+		_pos.y = 240.0 - (local_249p < 4 ? 100.0f : 140.0f) - 58.0 + 54.0 - 49.0;
+		_scl.x = 14.0f;
+		_scl.y = local_249p > 5 ? 23.2f : (local_249p < 4 ? 11.5f : 17.5f);
+		switch (local_249p)
+		{
+		case 2:
+			local_2c8 = 72.0f;
+			local_2e4h = -36.0f;
+			break;
+		case 3:
+			local_2c8 = 48.0f;
+			local_2e4h = -128.0f;
+			_scl.y -= 2.0;
+			break;
+		case 4:
+			local_2c8 = 60.0f;
+			local_2e4h = -103.0f;
+			_pos.y += 70.0;
+			_scl.y -= 6.0;
+			break;
+		case 5:
+			local_2c8 = 40.0f;
+			local_2e4h = -142.0f;
+			_pos.y = 85.0f;
+			_scl.y = 14.0f;
+			break;
+		case 6:
+			local_2c8 = 40.0f;
+			local_2e4h = -142.0f;
+			_pos.y = 85.0f;
+			_scl.y = 16.0f;
+			break;
+		case 7:
+			local_2c8 = 40.0f;
+			local_2e4h = -142.0f;
+			_pos.y = 85.0f;
+			_scl.y = 19.0f;
+			break;
+		case 8:
+			local_2c8 = 40.0f;
+			local_2e4h = -153.0f;
+			_scl.y = 22.0f;
+			break;
+		case 9:
+			local_2c8 = 40.0f;
+			local_2e4h = -156.0f;
+			break;
+		default:
+			return;
+		}
+		local_2e4h -= 40.0;
+		SetMaterial(0.5f, 0.0f, 0.0f, 1.0f);
+		printPauseTexture((enum PAUSE_TEXTURE_ID)8, &_pos, &_scl);
+		SetMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+		if (local_249p == 6)
+			printPause(21.0f);
+		else if (local_249p == 7)
+			printPause(21.0f);
+		else if (local_249p == 5)
+			printPause(21.0f);
+		else
+			printPause(local_249p < 4 ? 35.0f : 59.0f);
+		local_248i = 4;
+		do
+		{
+			if (bAct & (1 << local_248i))
+			{
+				local_2e4h += 40.0;
+				switch (local_248i)
+				{
+				case 0:
+					tex = (enum PAUSE_TEXTURE_ID)5;
+					break;
+				case 1:
+					tex = (enum PAUSE_TEXTURE_ID)4;
+					break;
+				case 3:
+					tex = (enum PAUSE_TEXTURE_ID)6;
+					break;
+				case 4:
+					tex = (enum PAUSE_TEXTURE_ID)0xd;
+					break;
+				case 6:
+					tex = (enum PAUSE_TEXTURE_ID)0xe;
+					break;
+				case 7:
+					tex = (enum PAUSE_TEXTURE_ID)0xf;
+					break;
+				}
+				FUN_0057aa00(tex, local_2e4h, sel == local_248i);
+			}
+			local_248i++;
+			if (local_248i >= 8)
+				local_248i = 0;
+		} while (local_248i != 4);
+		local_2e8 = DAT_01c6e428 / 920.0;
+		local_2e0 = DAT_01c6e42c / 690.0;
+		if (DAT_05cd2740)
+		{
+			switch (sel)
+			{
+			case 1:
+				DrawTexture(local_2e8 * 0.0, local_2e0 * 500.0, local_2e8 * 920.0, local_2e0 * 52.0, 0.01f, DAT_05cd2740, 0.0f, 0.0f, 0.8984375f, 0.05078125f, -1);
+				break;
+			case 3:
+				DrawTexture(0.0 * local_2e8, local_2e0 * 500.0, local_2e8 * 920.0, local_2e0 * 52.0, 0.01f, DAT_05cd2740, 0.0f, 0.4921875f, 0.8984375f, 0.54296875f, -1);
+				break;
+			case 4:
+				DrawTexture(local_2e8 * 0.0, local_2e0 * 500.0, local_2e8 * 920.0, local_2e0 * 52.0, 0.01f, DAT_05cd2740, 0.0f, 0.1640625f, 0.8984375f, 0.21484375f, -1);
+				break;
+			case 5:
+				DrawTexture(local_2e8 * 0.0, local_2e0 * 500.0, local_2e8 * 920.0, local_2e0 * 52.0, 0.01f, DAT_05cd2740, 0.0f, 0.109375f, 0.8984375f, 0.16015625f, -1);
+				break;
+			case 6:
+				DrawTexture(local_2e8 * 0.0, local_2e0 * 500.0, local_2e8 * 920.0, local_2e0 * 52.0, 0.01f, DAT_05cd2740, 0.0f, 0.21875f, 0.8984375f, 0.26953125f, -1);
+				break;
+			case 7:
+				DrawTexture(local_2e8 * 0.0, local_2e0 * 500.0, local_2e8 * 920.0, local_2e0 * 52.0, 0.01f, DAT_05cd2740, 0.0f, 0.2734375f, 0.8984375f, 0.32421875f, -1);
+				break;
+			case 0:
+				DrawTexture(local_2e8 * 0.0, local_2e0 * 500.0, local_2e8 * 920.0, local_2e0 * 52.0, 0.01f, DAT_05cd2740, 0.0f, 0.0546875f, 0.8984375f, 0.10546875f, -1);
+				break;
+			}
+		}
+	}
+	DrawButtonACBB();
 }
 
 // STUB: SADX 0x0057cc20
@@ -441,14 +835,14 @@ extern unsigned char DAT_0260553e;
 extern unsigned char DAT_0260553f;
 extern int DAT_02605a24;
 extern unsigned char DAT_02606b18;
-extern char* DAT_02606b1c[6];
-extern char* DAT_02606b34[6];
-extern char* DAT_02606b4c[6];
+extern const char* DAT_02606b1c[6];
+extern const char* DAT_02606b34[6];
+extern const char* DAT_02606b4c[6];
 extern char* DAT_02606b64[5];
 extern char* DAT_02606b78[5];
 extern char* DAT_02606b8c[5];
 extern char* DAT_02606ba0[5];
-extern void* DAT_05ab39ac;
+extern class SOCRender* DAT_05ab39ac;
 extern struct NJS_ARGB DAT_05ad9654;
 extern int DAT_05b3e05c;
 extern Magic::RenderCore::Texture* DAT_05b3e36c;
@@ -514,10 +908,27 @@ extern int DAT_05cd2908;
 bool FUN_0040ae00();
 int FUN_0040b010(const void*, const void*);
 void FUN_004208c0(int, int, const wchar_t*, int, float, float);
-void FUN_004b23e0(void*, void*, int, const char*, int);
+void FUN_004b23e0(Magic::RenderCore::Texture**, char*, unsigned int, const char*, int);
 void FUN_004f3470();
 void FUN_00579960(struct MSGC*, int*, int*);
 int FUN_00583720();
+extern struct ButtonInfo Ontexinfo_E[];
+extern struct ButtonInfo Ontexinfo_J[];
+extern struct ButtonInfo Ontexinfo_G[];
+extern struct ButtonInfo Ontexinfo_S[];
+extern struct ButtonInfo Ontexinfo_F[];
+extern struct ButtonInfo Ontexinfo_I[];
+extern Magic::RenderCore::Texture* DAT_05cd2660;
+extern Magic::RenderCore::Texture* DAT_05cd275c;
+extern Magic::RenderCore::Texture* DAT_05cd2788;
+extern Magic::RenderCore::Texture* DAT_05cd278c;
+extern bool DAT_05cd2766;
+extern unsigned char DAT_05cd2764;
+extern unsigned char DAT_05cd2765;
+extern int DAT_05cd277c;
+void DrawStringW(int, int, const wchar_t*, int, float);
+void DrawButtonAVXCBB();
+
 void DrawTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int);
 void RenderTexture(int, int, int, int, float, Magic::RenderCore::Texture*, float, float, float, float, int);
 
@@ -568,13 +979,81 @@ void FUN_0057cf20()
 {
 }
 
-// STUB: SADX 0x0057d000
+// FUNCTION: SADX 0x0057d000
 void late_DrawMap(void *arg)
 {
+	unsigned short local_8g;
+	unsigned short local_cg;
+
+	local_8g = DAT_05b9d724 << 8 | DAT_05b9d744;
+	local_cg = local_8g & 0xff;
+	local_8g = (local_8g & 0xff00) >> 8;
+	switch (local_8g)
+	{
+		case 0x21:
+			DrawMapMR(local_cg, &DAT_05b3e340->pos);
+			break;
+		case 0x1a:
+		case 0x1b:
+		case 0x1c:
+			DrawMapSS(local_cg, &DAT_05b3e340->pos);
+			break;
+		case 0x22:
+			DrawMapPAST(local_cg, &DAT_05b3e340->pos);
+			break;
+		case 0x1d:
+		case 0x1e:
+		case 0x1f:
+			DrawMapEC(local_cg, &DAT_05b3e340->pos);
+			break;
+		case 0x20:
+			DrawMapECH(local_cg, &DAT_05b3e340->pos);
+			break;
+	}
 }
 
 extern int DAT_05cd285c;
 extern int DAT_05cd2860;
+
+// FUNCTION: SADX 0x0057d100
+void DrawCharMark(float mx, float my)
+{
+	int no;
+	float local_10;
+	float local_cj;
+
+	___njSetTexture(&DAT_02606b10);
+	ghSetPvrTexMaterial(0xffffffff);
+	local_10 = (float)njSin(DAT_05cd2858);
+	local_cj = (float)fabs(local_10) + 0.699999988079071;
+	DAT_05cd2858 = DAT_05cd2858 + 0x38e;
+	if (DAT_05cd2858 >= 0x10000)
+	{
+		DAT_05cd2858 = 0;
+	}
+	switch (GetPlayerNumber())
+	{
+		case 0:
+			no = 0;
+			break;
+		case 2:
+			no = 1;
+			break;
+		case 3:
+			no = 2;
+			break;
+		case 5:
+			no = 3;
+			break;
+		case 6:
+			no = 4;
+			break;
+		case 7:
+			no = 5;
+			break;
+	}
+	ghDrawPvrTextureS(no | 0x4000000, mx, my, 1.0, local_cj, local_cj);
+}
 
 // FUNCTION: SADX 0x0057d220
 int cameramodechange(int sw)
@@ -648,6 +1127,7 @@ int cameramodechange(int sw)
 	return 0;
 }
 
+// DIFF: code: the original inlines the std::string constructor of the default-case ReadFile call; the cause is unknown (docs/findings/padconfig-inline.md).
 // FUNCTION: SADX 0x0057d490
 int padconfig(int sw)
 {
@@ -669,7 +1149,7 @@ int padconfig(int sw)
 	switch (sw)
 	{
 	case 0:
-		if (DAT_05cd2908 == 0)
+		if (!DAT_05cd2908)
 			break;
 		switch (DAT_05cd2904)
 		{
@@ -748,14 +1228,14 @@ int padconfig(int sw)
 			local_230 = pdGetPeripheral(0);
 			if (DAT_05cd287c == -2)
 			{
-				if (local_230->on != 0)
+				if (local_230->on)
 					break;
 				else
 					DAT_05cd287c = -1;
 			}
 			local_240g = 0;
 			local_24cp = 0;
-			if (local_240g == 0)
+			if (!local_240g)
 				local_240g = local_24cp;
 			if (local_240g > 0)
 			{
@@ -768,7 +1248,7 @@ int padconfig(int sw)
 			MSG_Puts(&DAT_05cd28b8, DAT_02606b8c[DAT_05b3ebbc]);
 			MSG_LoadTexture(&DAT_05cd28b8);
 		case 10:
-			if (DAT_05b3ebbc == 0)
+			if (!DAT_05b3ebbc)
 				texLoadTexturePvmFile("ava_dlg", &DAT_025ddb78);
 			else
 				texLoadTexturePvmFile("ava_dlg_e", &DAT_025ddb78);
@@ -934,10 +1414,10 @@ int padconfig(int sw)
                 DAT_05cd2828.clear();
                 DAT_05cd2794 = 0;
                 DAT_05cd2798 = 0;
-                if (DAT_0260553e == 0) {
+                if (!DAT_0260553e) {
                     DAT_05cd279c = 0;
                     FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
-                } else if (DAT_0260553e != 0) {
+                } else if (DAT_0260553e) {
                     FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 }
                 local_36du = true;
@@ -958,10 +1438,10 @@ int padconfig(int sw)
                 DAT_05cd2828.clear();
                 DAT_05cd2794 = 0;
                 DAT_05cd2798 = 0;
-                if (DAT_0260553e == 0) {
+                if (!DAT_0260553e) {
                     DAT_05cd279c = 0;
                     FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
-                } else if (DAT_0260553e != 0) {
+                } else if (DAT_0260553e) {
                     FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 }
                 local_36du = true;
@@ -983,10 +1463,10 @@ int padconfig(int sw)
                 DAT_05cd2828.clear();
                 DAT_05cd2794 = 0;
                 DAT_05cd2798 = 0;
-                if (DAT_0260553e == 0) {
+                if (!DAT_0260553e) {
                     DAT_05cd279c = 0;
                     FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
-                } else if (DAT_0260553e != 0) {
+                } else if (DAT_0260553e) {
                     FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
                 }
                 local_36du = true;
@@ -1083,7 +1563,7 @@ int padconfig(int sw)
 			printPause(0.0f);
 			local_22ci = 0;
 			printMenu2((PAUSE_TEXTURE_ID)((GetFreeCamera() != 0) + 11),0xf0,0x62,DAT_05cd2900 == 0);
-			for (local_22ci = 1; local_22ci < 4; local_22ci = local_22ci + 1)
+			for (local_22ci = 1; local_22ci < 4; local_22ci++)
 			{
 				printMenu2((PAUSE_TEXTURE_ID)(local_22ci + 0x15),0xf0,(long)(50.0 * local_22ci + 70.0 - 7.0 + 42.0 - 7.0),DAT_05cd2900 == local_22ci);
 			}
@@ -1122,24 +1602,24 @@ int padconfig(int sw)
     {
         SOCFileStream local_37c;
             if (local_37c.ReadFile(DAT_02606b4c[DAT_05b42a90])) {
-            void* local_384 = local_37c.FUN_00424960();
-            int local_380 = local_37c.FUN_0040b8a0();
+            char* local_384 = local_37c.FUN_00424960();
+            unsigned int local_380 = local_37c.FUN_0040b8a0();
             DAT_05cd2700 = new Magic::RenderCore::Texture;
             FUN_004b23e0(&DAT_05cd2700, local_384, local_380,
                 DAT_02606b4c[DAT_05b42a90], DAT_05b42a90);
             DAT_05cd2700->Load(local_384, 1, local_380, 0, 1, 0);
         }
             if (local_37c.ReadFile(DAT_02606b34[DAT_05b42a90])) {
-            void* local_38cj = local_37c.FUN_00424960();
-            int local_388g = local_37c.FUN_0040b8a0();
+            char* local_38cj = local_37c.FUN_00424960();
+            unsigned int local_388g = local_37c.FUN_0040b8a0();
             DAT_05cd2704 = new Magic::RenderCore::Texture;
             FUN_004b23e0(&DAT_05cd2704, local_38cj, local_388g,
                 DAT_02606b34[DAT_05b42a90], DAT_05b42a90);
             DAT_05cd2704->Load(local_38cj, 1, local_388g, 0, 1, 0);
         }
             if (local_37c.ReadFile(DAT_02606b1c[DAT_05b42a90])) {
-            void* local_394w = local_37c.FUN_00424960();
-            int local_390l = local_37c.FUN_0040b8a0();
+            char* local_394w = local_37c.FUN_00424960();
+            unsigned int local_390l = local_37c.FUN_0040b8a0();
             DAT_05cd2708 = new Magic::RenderCore::Texture;
             FUN_004b23e0(&DAT_05cd2708, local_394w, local_390l,
                 DAT_02606b1c[DAT_05b42a90], DAT_05b42a90);
@@ -1184,7 +1664,7 @@ int padconfig(int sw)
 				if ((DAT_05b92e44 & 0x20) != 0)
 				{
 					dsPlay_oneshot(1,0,0,0);
-					DAT_05cd2900 = DAT_05cd2900 + 1;
+					DAT_05cd2900++;
 					if (0x1a < DAT_05cd2900 + 0x16)
 					{
 						DAT_05cd2900 = 0;
@@ -1198,7 +1678,7 @@ int padconfig(int sw)
 			if ((DAT_05b92e44 & 0x10) != 0)
 			{
 				dsPlay_oneshot(1,0,0,0);
-				DAT_05cd2900 = DAT_05cd2900 - 1;
+				DAT_05cd2900--;
 				if (DAT_05cd2900 + 0x16 < 0x16)
 				{
 					DAT_05cd2900 = 4;
@@ -1218,7 +1698,7 @@ int padconfig(int sw)
 			printPauseTexture((PAUSE_TEXTURE_ID)8,&local_23cv,&local_248j);
 			SetMaterial(1.0f,1.0f,1.0f,1.0f);
 			printPause(21.0f);
-			for (local_22ci = 0; local_22ci < 6; local_22ci = local_22ci + 1)
+			for (local_22ci = 0; local_22ci < 6; local_22ci++)
 			{
 				printMenu2((PAUSE_TEXTURE_ID)(local_22ci + 0x19),0xf0,(long)(40.0 * local_22ci + 70.0 - 7.0 + 42.0 - 7.0),DAT_05cd2900 == local_22ci);
 			}
@@ -1262,7 +1742,7 @@ int padconfig(int sw)
 					DAT_05cd27f0 = 0;
 					setBtpToBtp_Pre();
 					FUN_004f3470();
-					((SOCRender*)DAT_05ab39ac)->FUN_00419cf0(3);
+					DAT_05ab39ac->FUN_00419cf0(3);
 					break;
 				case 1:
 					DAT_05cd2900 = 1;
@@ -1272,7 +1752,7 @@ int padconfig(int sw)
 					DAT_05cd27f0 = 1;
 					setBtpToBtp_Pre();
 					FUN_004f3470();
-					((SOCRender*)DAT_05ab39ac)->FUN_00419cf0(3);
+					DAT_05ab39ac->FUN_00419cf0(3);
 					break;
 				case 2:
 					DAT_05cd2900 = 2;
@@ -1282,7 +1762,7 @@ int padconfig(int sw)
 					DAT_05cd27f0 = 2;
 					setBtpToBtp_Pre();
 					FUN_004f3470();
-					((SOCRender*)DAT_05ab39ac)->FUN_00419cf0(3);
+					DAT_05ab39ac->FUN_00419cf0(3);
 					break;
 				case 3:
 					DAT_05cd2900 = 3;
@@ -1292,7 +1772,7 @@ int padconfig(int sw)
 					DAT_05cd27f0 = 3;
 					setBtpToBtp_Pre();
 					FUN_004f3470();
-					((SOCRender*)DAT_05ab39ac)->FUN_00419cf0(3);
+					DAT_05ab39ac->FUN_00419cf0(3);
 					break;
 				case 4:
 					DAT_05cd2900 = 4;
@@ -1302,7 +1782,7 @@ int padconfig(int sw)
 					DAT_05cd27f0 = 4;
 					setBtpToBtp_Pre();
 					FUN_004f3470();
-					((SOCRender*)DAT_05ab39ac)->FUN_00419cf0(3);
+					DAT_05ab39ac->FUN_00419cf0(3);
 					break;
 				case 5:
 					DAT_05cd2900 = 5;
@@ -1312,7 +1792,7 @@ int padconfig(int sw)
 					DAT_05cd27f0 = 5;
 					setBtpToBtp_Pre();
 					FUN_004f3470();
-					((SOCRender*)DAT_05ab39ac)->FUN_00419cf0(3);
+					DAT_05ab39ac->FUN_00419cf0(3);
 					break;
 				default:
 					MSG_Close(&DAT_05cd28b8);
@@ -1340,7 +1820,7 @@ int padconfig(int sw)
 				if ((DAT_05b92e44 & 0x20) != 0)
 				{
 					dsPlay_oneshot(1,0,0,0);
-					DAT_05cd2900 = DAT_05cd2900 + 1;
+					DAT_05cd2900++;
 					if (0x1f < DAT_05cd2900 + 0x19)
 					{
 						DAT_05cd2900 = 0;
@@ -1350,7 +1830,7 @@ int padconfig(int sw)
 			if ((DAT_05b92e44 & 0x10) != 0)
 			{
 				dsPlay_oneshot(1,0,0,0);
-				DAT_05cd2900 = DAT_05cd2900 - 1;
+				DAT_05cd2900--;
 				if (DAT_05cd2900 + 0x19 < 0x19)
 				{
 					DAT_05cd2900 = 6;
@@ -1377,7 +1857,7 @@ int padconfig(int sw)
 			{
 				local_39cj = DAT_05cd2704;
 			}
-			if (local_39cj != 0)
+			if (local_39cj)
 			{
 				local_3a0m = (float)(DAT_01c6e428 / 640.0);
 				local_3a4x = (float)(DAT_01c6e42c / 480.0);
@@ -1397,9 +1877,9 @@ int padconfig(int sw)
 				FUN_0041c2d0(DAT_05cd2700);
 				FUN_0041c2d0(DAT_05cd2704);
 				FUN_0041c2d0(DAT_05cd2708);
-				FUN_004b5e70((int)&DAT_05cd2700);
-				FUN_004b5e70((int)&DAT_05cd2704);
-				FUN_004b5e70((int)&DAT_05cd2708);
+				FUN_004b5e70(&DAT_05cd2700);
+				FUN_004b5e70(&DAT_05cd2704);
+				FUN_004b5e70(&DAT_05cd2708);
 				delete DAT_05cd2700;
 				DAT_05cd2700 = 0;
 				delete DAT_05cd2704;
@@ -1421,7 +1901,7 @@ int padconfig(int sw)
 			printPauseTexture((PAUSE_TEXTURE_ID)8,&local_23cv,&local_248j);
 			SetMaterial(1.0f,1.0f,1.0f,1.0f);
 			printPause(0.0f);
-			for (local_22ci = 0; local_22ci < 2; local_22ci = local_22ci + 1)
+			for (local_22ci = 0; local_22ci < 2; local_22ci++)
 			{
 				printMenu2((PAUSE_TEXTURE_ID)(local_22ci + 0x1f),0xf0,(long)(40.0 * local_22ci + 70.0 - 7.0 + 42.0 - 7.0),DAT_05cd2900 == local_22ci);
 			}
@@ -1497,7 +1977,7 @@ int padconfig(int sw)
 				if ((DAT_05b92e44 & 0x20) != 0)
 				{
 					dsPlay_oneshot(1,0,0,0);
-					DAT_05cd2900 = DAT_05cd2900 + 1;
+					DAT_05cd2900++;
 					if (0x21 < DAT_05cd2900 + 0x1f)
 					{
 						DAT_05cd2900 = 0;
@@ -1507,7 +1987,7 @@ int padconfig(int sw)
 			if ((DAT_05b92e44 & 0x10) != 0)
 			{
 				dsPlay_oneshot(1,0,0,0);
-				DAT_05cd2900 = DAT_05cd2900 - 1;
+				DAT_05cd2900--;
 				if (DAT_05cd2900 + 0x1f < 0x1f)
 				{
 					DAT_05cd2900 = 2;
@@ -1534,7 +2014,7 @@ int padconfig(int sw)
 			local_3a8g = (int)((DAT_05cd27f4.size() * 52) * UNKNOWN_DOUBLE_MACRO(local_3acq));
 			if (DAT_05cd2824 + 640.0 > -local_3a8g)
 			{
-				for (local_3b4x = 0; local_3b4x < DAT_05cd27f4.size(); local_3b4x = local_3b4x + 1)
+				for (local_3b4x = 0; local_3b4x < DAT_05cd27f4.size(); local_3b4x++)
 				{
 					local_3b8n = (const wchar_t *)DAT_05cd27f4[local_3b4x].c_str();
 					local_3bcr = 0;
@@ -1547,8 +2027,8 @@ int padconfig(int sw)
 					{
 						GetTextSize(local_3b8n,local_3bcr,local_3c0x);
 					}
-					local_3c8o = FUN_00582ad0((float)((int)(local_3b4x - 1) * 32.0 + 20.0) * ScreenRaitoY + DAT_05cd2824);
-					local_3c4 = FUN_00582ad0((float)((DAT_01c6e428 - local_3bcr) / 2.0));
+					local_3c8o = floorf((float)((int)(local_3b4x - 1) * 32.0 + 20.0) * ScreenRaitoY + DAT_05cd2824);
+					local_3c4 = floorf((float)((DAT_01c6e428 - local_3bcr) / 2.0));
 					if (*local_3b8n == 0)
 					{
 						DAT_02606b18 = '\0';
@@ -1625,7 +2105,7 @@ int padconfig(int sw)
 						DAT_0260553d = '\0';
 						DAT_05cd286c = FUN_0041a800()->FUN_004caf80();
 					}
-					if (DAT_05cd2870 != 0)
+					if (DAT_05cd2870)
 					{
 						DAT_05cd2868 = FUN_0041a800()->FUN_004caf80() - DAT_05cd2870;
 						if (DAT_05cd2868 >= 5000)
@@ -1636,7 +2116,7 @@ int padconfig(int sw)
 						if (DAT_05cd2868 >= 3000)
 						{
 							DrawTexture(0, 0, (int)(local_3b0o * 960.0), (int)(local_3acq * 690.0), 0.0f, 0, 0.0f, 0.0f, 1.0f, 1.0f, DAT_05cd2780);
-							if (DAT_05cd286c != 0)
+							if (DAT_05cd286c)
 							{
 								if (FUN_0041a800()->FUN_004caf80() - DAT_05cd286c >= 13)
 								{
@@ -1648,7 +2128,7 @@ int padconfig(int sw)
 									{
 										DAT_05cd2780 = DAT_05cd2780 + 0x2000000;
 									}
-									if (DAT_05cd2780 == 0)
+									if (!DAT_05cd2780)
 									{
 										DAT_05cd2780 = -0x1000000;
 									}
@@ -1663,7 +2143,7 @@ int padconfig(int sw)
 					}
 				}
 			}
-			DAT_05cd2824 = FUN_00582ad0((float)(DAT_05cd2824 - 8.0));
+			DAT_05cd2824 = floorf((float)(DAT_05cd2824 - 8.0));
 			switch(DAT_05b42a90)
 			{
 			case 5:
@@ -1703,7 +2183,7 @@ int padconfig(int sw)
 			SetMaterial(0.5f,0.0f,0.0f,1.0f);
 			printPauseTexture((PAUSE_TEXTURE_ID)8,&local_23cv,&local_248j);
 			SetMaterial(1.0f,1.0f,1.0f,1.0f);
-			for (local_22ci = 0; local_22ci < 2; local_22ci = local_22ci + 1)
+			for (local_22ci = 0; local_22ci < 2; local_22ci++)
 			{
 				switch (local_22ci)
 				{
@@ -1766,7 +2246,7 @@ int padconfig(int sw)
 				if ((DAT_05b92e44 & 0x80) != 0)
 				{
 					dsPlay_oneshot(1,0,0,0);
-					DAT_05cd2900 = DAT_05cd2900 + 1;
+					DAT_05cd2900++;
 					if (0x23 < DAT_05cd2900 + 0x22)
 					{
 						DAT_05cd2900 = 0;
@@ -1776,7 +2256,7 @@ int padconfig(int sw)
 			if ((DAT_05b92e44 & 0x40) != 0)
 			{
 				dsPlay_oneshot(1,0,0,0);
-				DAT_05cd2900 = DAT_05cd2900 - 1;
+				DAT_05cd2900--;
 				if (DAT_05cd2900 + 0x22 < 0x22)
 				{
 					DAT_05cd2900 = 1;
@@ -1794,7 +2274,7 @@ int padconfig(int sw)
 			local_23cv.y = 54.0f;
 			local_248j.x = 14.0f;
 			local_248j.y = 21.5f;
-			for (local_22ci = 0; local_22ci < 4; local_22ci = local_22ci + 1)
+			for (local_22ci = 0; local_22ci < 4; local_22ci++)
 			{
 				printMenu2((PAUSE_TEXTURE_ID)(local_22ci + 0x24),0xf0,(long)(40.0 * local_22ci + 70.0 + 100.0),DAT_05cd2900 == local_22ci);
 			}
@@ -1854,7 +2334,7 @@ int padconfig(int sw)
 				if ((DAT_05b92e44 & 0x20) != 0)
 				{
 					dsPlay_oneshot(1,0,0,0);
-					DAT_05cd2900 = DAT_05cd2900 + 1;
+					DAT_05cd2900++;
 					if (0x29 < DAT_05cd2900 + 0x24)
 					{
 						DAT_05cd2900 = 0;
@@ -1864,7 +2344,7 @@ int padconfig(int sw)
 			if ((DAT_05b92e44 & 0x10) != 0)
 			{
 				dsPlay_oneshot(1,0,0,0);
-				DAT_05cd2900 = DAT_05cd2900 - 1;
+				DAT_05cd2900--;
 				if (DAT_05cd2900 + 0x24 < 0x24)
 				{
 					DAT_05cd2900 = 4;
@@ -1883,7 +2363,7 @@ int padconfig(int sw)
 			SetMaterial(0.5f,0.0f,0.0f,1.0f);
 			printPauseTexture((PAUSE_TEXTURE_ID)8,&local_23cv,&local_248j);
 			SetMaterial(1.0f,1.0f,1.0f,1.0f);
-			for (local_22ci = 0; local_22ci < 2; local_22ci = local_22ci + 1)
+			for (local_22ci = 0; local_22ci < 2; local_22ci++)
 			{
 				switch (local_22ci)
 				{
@@ -1945,7 +2425,7 @@ int padconfig(int sw)
 				if ((DAT_05b92e44 & 0x80) != 0)
 				{
 					dsPlay_oneshot(1,0,0,0);
-					DAT_05cd2900 = DAT_05cd2900 + 1;
+					DAT_05cd2900++;
 					if (0x2a < DAT_05cd2900 + 0x29)
 					{
 						DAT_05cd2900 = 0;
@@ -1955,7 +2435,7 @@ int padconfig(int sw)
 			if ((DAT_05b92e44 & 0x40) != 0)
 			{
 				dsPlay_oneshot(1,0,0,0);
-				DAT_05cd2900 = DAT_05cd2900 - 1;
+				DAT_05cd2900--;
 				if (DAT_05cd2900 + 0x29 < 0x29)
 				{
 					DAT_05cd2900 = 1;
@@ -2003,13 +2483,13 @@ int padconfig(int sw)
 					FUN_0041c2d0(DAT_05cd2728);
 					delete DAT_05cd2728;
 					DAT_05cd2728 = 0;
-					if (DAT_05cd272c != 0)
+					if (DAT_05cd272c)
 					{
 						FUN_0041c2d0(DAT_05cd272c);
 						delete DAT_05cd272c;
 						DAT_05cd272c = 0;
 					}
-					if (DAT_05cd2730 != 0)
+					if (DAT_05cd2730)
 					{
 						FUN_0041c2d0(DAT_05cd2730);
 						delete DAT_05cd2730;
@@ -2037,7 +2517,7 @@ int padconfig(int sw)
 			break;
 		case 0x18:
 {
-			if (DAT_05cd2758 != 0)
+			if (DAT_05cd2758)
 			{
 				DrawTexture(0, 0, 0x280, 0x1e0, 0.01f, DAT_05cd2758, 0.0f, 0.0f, 0.8984375f, 0.6738281f, -1);
 				DrawButtonXUBB();
@@ -2073,7 +2553,7 @@ int padconfig(int sw)
 			printPauseTexture((PAUSE_TEXTURE_ID)8,&local_23cv,&local_248j);
 			SetMaterial(1.0f,1.0f,1.0f,1.0f);
 			printPause(21.0f);
-			for (local_22ci = 0; local_22ci < 3; local_22ci = local_22ci + 1)
+			for (local_22ci = 0; local_22ci < 3; local_22ci++)
 			{
 				printMenu2((PAUSE_TEXTURE_ID)(local_22ci + 0x13),0xf0,(long)(40.0 * local_22ci + 70.0 - 7.0 + 42.0 - 7.0),DAT_05cd2900 == local_22ci);
 			}
@@ -2143,7 +2623,7 @@ int padconfig(int sw)
 				if ((DAT_05b92e44 & 0x20) != 0)
 				{
 					dsPlay_oneshot(1,0,0,0);
-					DAT_05cd2900 = DAT_05cd2900 + 1;
+					DAT_05cd2900++;
 					if (0x15 < DAT_05cd2900 + 0x13)
 					{
 						DAT_05cd2900 = 0;
@@ -2153,7 +2633,7 @@ int padconfig(int sw)
 			if ((DAT_05b92e44 & 0x10) != 0)
 			{
 				dsPlay_oneshot(1,0,0,0);
-				DAT_05cd2900 = DAT_05cd2900 - 1;
+				DAT_05cd2900--;
 				if (DAT_05cd2900 + 0x13 < 0x13)
 				{
 					DAT_05cd2900 = 2;
@@ -2166,7 +2646,7 @@ int padconfig(int sw)
 		return 1;
 		break;
 	case 1:
-		if (DAT_05cd2908 == 0)
+		if (!DAT_05cd2908)
 		{
 			DAT_05cd2908 = 1;
 			DAT_05cd2904 = 0;
@@ -2181,7 +2661,7 @@ int padconfig(int sw)
 		DAT_05cd2908 = 0;
 		break;
 	case 3:
-		if (DAT_05cd2908 == 0)
+		if (!DAT_05cd2908)
 		{
 			DAT_05cd2908 = 1;
 			DAT_05cd2904 = 11;
@@ -2189,7 +2669,7 @@ int padconfig(int sw)
 		}
 		break;
 	case 4:
-		if (DAT_05cd2908 == 0)
+		if (!DAT_05cd2908)
 		{
 			DAT_05cd2908 = 1;
 			DAT_05cd2904 = 13;
@@ -2197,7 +2677,7 @@ int padconfig(int sw)
 		}
 		break;
 	case 5:
-		if (DAT_05cd2908 == 0)
+		if (!DAT_05cd2908)
 		{
 			DAT_05cd2908 = 1;
 			DAT_05cd2904 = 14;
@@ -2207,17 +2687,108 @@ int padconfig(int sw)
 	return 0;
 }
 
-// FUNCTION: SADX 0x00582ad0
-float FUN_00582ad0(float param_1)
-{
-	float local_8;
-	local_8 = (float)floor((double)param_1);
-	return local_8;
-}
-
 // STUB: SADX 0x00582af0
 void __fastcall FUN_00582af0(int param_1)
 {
+}
+
+// FUNCTION: SADX 0x00582b10
+int InitLBOn()
+{
+	SOCFileStream fileStream;
+
+	if (fileStream.ReadFile("system\\LeaderBoards\\BG.dds"))
+	{
+		DAT_05cd2660 = new Magic::RenderCore::Texture;
+		DAT_05cd2660->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 2, 1, 0);
+	}
+	switch (DAT_05b42a90)
+	{
+		case 0:
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1.dds"))
+			{
+				DAT_05cd2788 = new Magic::RenderCore::Texture;
+				DAT_05cd2788->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2.dds"))
+			{
+				DAT_05cd278c = new Magic::RenderCore::Texture;
+				DAT_05cd278c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+		case 5:
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1_it.dds"))
+			{
+				DAT_05cd2788 = new Magic::RenderCore::Texture;
+				DAT_05cd2788->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2_it.dds"))
+			{
+				DAT_05cd278c = new Magic::RenderCore::Texture;
+				DAT_05cd278c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+		case 4:
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1_de.dds"))
+			{
+				DAT_05cd2788 = new Magic::RenderCore::Texture;
+				DAT_05cd2788->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2_de.dds"))
+			{
+				DAT_05cd278c = new Magic::RenderCore::Texture;
+				DAT_05cd278c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+		case 3:
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1_es.dds"))
+			{
+				DAT_05cd2788 = new Magic::RenderCore::Texture;
+				DAT_05cd2788->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2_es.dds"))
+			{
+				DAT_05cd278c = new Magic::RenderCore::Texture;
+				DAT_05cd278c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+		case 2:
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1_fr.dds"))
+			{
+				DAT_05cd2788 = new Magic::RenderCore::Texture;
+				DAT_05cd2788->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2_fr.dds"))
+			{
+				DAT_05cd278c = new Magic::RenderCore::Texture;
+				DAT_05cd278c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+		default:
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1.dds"))
+			{
+				DAT_05cd2788 = new Magic::RenderCore::Texture;
+				DAT_05cd2788->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2.dds"))
+			{
+				DAT_05cd278c = new Magic::RenderCore::Texture;
+				DAT_05cd278c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
+			}
+			break;
+	}
+	DAT_05cd2768 = 0;
+	DAT_05cd2774 = 0;
+	DAT_0260553e = 2;
+	DAT_05cd2785 = 0;
+	if (DAT_05cd2765 == 0)
+		FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, 2);
+	DAT_05cd2820 = DAT_05cd2828.begin();
+	DAT_05cd2764 = 0;
+	DAT_02605538 = 1;
+	DAT_05cd2766 = 1;
+	DAT_05cd277c = FUN_0041a800()->FUN_004caf80();
+	return 1;
 }
 
 // FUNCTION: SADX 0x00583720
@@ -2249,6 +2820,375 @@ int FUN_00583720()
 		return 2;
 	}
 	return 1;
+}
+
+// FUNCTION: SADX 0x005837c0
+void DrawLBOn()
+{
+	float local_6cv = 0.0f;
+	float local_30g = -18.0f;
+	float local_68t = DAT_01c6e428 / 920.0;
+	float local_64m = DAT_01c6e42c / 690.0;
+	int local_2c = 0;
+	if (FUN_0041a800()->FUN_004caf80() - DAT_05cd277c >= 500)
+	{
+		DAT_05cd2766 = !DAT_05cd2766;
+		DAT_05cd277c = FUN_0041a800()->FUN_004caf80();
+	}
+	DrawTexture(0, 0, 640, 480, 0.9f, DAT_05cd2660, 0.0f, 0.0f, 0.8984375f, 0.6738281f, -1);
+	struct ButtonInfo *local_44 = 0;
+	float local_40 = 0.0f;
+	float local_3cl = 0.0f;
+	float local_38i = 0.0f;
+	float local_4cgr = 0.0f;
+	float local_50r = 0.0f;
+	float local_60j = 0.0f;
+	float local_48j = 0.0f;
+	float local_5cs = 0.0f;
+	switch (DAT_05b42a90)
+	{
+		case 5:
+			local_44 = Ontexinfo_I;
+			break;
+		case 4:
+			local_44 = Ontexinfo_G;
+			break;
+		case 3:
+			local_44 = Ontexinfo_S;
+			break;
+		case 2:
+			local_44 = Ontexinfo_F;
+			break;
+		case 0:
+			local_44 = Ontexinfo_J;
+			break;
+		default:
+			local_44 = Ontexinfo_E;
+			break;
+	}
+	if (DAT_0260553f == 1)
+	{
+		DrawTexture((int)(local_68t * 43.0), (int)(local_64m * 22.0 - local_64m * 12.0), (int)(local_44[1].Windth * local_68t), (int)(local_44[1].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[1].PosX / 1024.0), (float)(local_44[1].PosY / 1024.0), (float)((local_44[1].PosX + local_44[1].Windth) / 1024.0), (float)((local_44[1].PosY + local_44[1].Height) / 1024.0), -1);
+		switch (DAT_0260553e)
+		{
+			case 0:
+				DrawTexture((int)(local_44[1].Windth * local_68t + 13.0 + 26.0), (int)(local_64m * 36.0 - local_64m * -5.0), (int)(local_44[20].Windth * local_68t), (int)(local_44[20].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[20].PosX / 1024.0), (float)(local_44[20].PosY / 1024.0), (float)((local_44[20].PosX + local_44[20].Windth) / 1024.0), (float)((local_44[20].PosY + local_44[20].Height) / 1024.0), -1);
+				break;
+			case 1:
+				DrawTexture((int)(local_44[1].Windth * local_68t + 13.0 + 26.0), (int)(local_64m * 36.0 - local_64m * -5.0), (int)(local_44[21].Windth * local_68t), (int)(local_44[21].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[21].PosX / 1024.0), (float)(local_44[21].PosY / 1024.0), (float)((local_44[21].PosX + local_44[21].Windth) / 1024.0), (float)((local_44[21].PosY + local_44[21].Height) / 1024.0), -1);
+				break;
+			case 2:
+				DrawTexture((int)(local_44[1].Windth * local_68t + 13.0 + 26.0), (int)(local_64m * 36.0 - local_64m * -5.0), (int)(local_44[22].Windth * local_68t), (int)(local_44[22].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[22].PosX / 1024.0), (float)(local_44[22].PosY / 1024.0), (float)((local_44[22].PosX + local_44[22].Windth) / 1024.0), (float)((local_44[22].PosY + local_44[22].Height) / 1024.0), -1);
+				break;
+		}
+	}
+	else
+	{
+		DrawTexture((int)(local_68t * 43.0), (int)(local_64m * 22.0 - local_64m * 12.0), (int)(local_44[0].Windth * local_68t), (int)(local_44[0].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[0].PosX / 1024.0), (float)(local_44[0].PosY / 1024.0), (float)((local_44[0].PosX + local_44[0].Windth) / 1024.0), (float)((local_44[0].PosY + local_44[0].Height) / 1024.0), -1);
+		switch (DAT_0260553e)
+		{
+			case 0:
+				DrawTexture((int)(local_44[0].Windth * local_68t + 13.0 + 26.0), (int)(local_64m * 36.0 - local_64m * -5.0), (int)(local_44[20].Windth * local_68t), (int)(local_44[20].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[20].PosX / 1024.0), (float)(local_44[20].PosY / 1024.0), (float)((local_44[20].PosX + local_44[20].Windth) / 1024.0), (float)((local_44[20].PosY + local_44[20].Height) / 1024.0), -1);
+				break;
+			case 1:
+				DrawTexture((int)(local_44[0].Windth * local_68t + 13.0 + 26.0), (int)(local_64m * 36.0 - local_64m * -5.0), (int)(local_44[21].Windth * local_68t), (int)(local_44[21].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[21].PosX / 1024.0), (float)(local_44[21].PosY / 1024.0), (float)((local_44[21].PosX + local_44[21].Windth) / 1024.0), (float)((local_44[21].PosY + local_44[21].Height) / 1024.0), -1);
+				break;
+			case 2:
+				DrawTexture((int)(local_44[0].Windth * local_68t + 13.0 + 26.0), (int)(local_64m * 36.0 - local_64m * -5.0), (int)(local_44[22].Windth * local_68t), (int)(local_44[22].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[22].PosX / 1024.0), (float)(local_44[22].PosY / 1024.0), (float)((local_44[22].PosX + local_44[22].Windth) / 1024.0), (float)((local_44[22].PosY + local_44[22].Height) / 1024.0), -1);
+				break;
+		}
+	}
+	if (DAT_05cd2766 != 0)
+	{
+		DrawTexture((int)(local_68t * 79.0), (int)(local_64m * 109.0), (int)(local_44[30].Windth * local_68t), (int)(local_44[30].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[30].PosX / 1024.0), (float)(local_44[30].PosY / 1024.0), (float)((local_44[30].PosX + local_44[30].Windth) / 1024.0), (float)((local_44[30].PosY + local_44[30].Height) / 1024.0), -1);
+		DrawTexture((int)(local_68t * 800.0), (int)(local_64m * 109.0), (int)(local_44[31].Windth * local_68t), (int)(local_44[31].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[31].PosX / 1024.0), (float)(local_44[31].PosY / 1024.0), (float)((local_44[31].PosX + local_44[31].Windth) / 1024.0), (float)((local_44[31].PosY + local_44[31].Height) / 1024.0), -1);
+	}
+	switch (DAT_05cd2785)
+	{
+		case 0:
+			DrawTexture((int)((920.0 - local_44[2].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[2].Windth * local_68t), (int)(local_44[2].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[2].PosX / 1024.0), (float)(local_44[2].PosY / 1024.0), (float)((local_44[2].PosX + local_44[2].Windth) / 1024.0), (float)((local_44[2].PosY + local_44[2].Height) / 1024.0), -1);
+			break;
+		case 1:
+			DrawTexture((int)((920.0 - local_44[3].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[3].Windth * local_68t), (int)(local_44[3].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[3].PosX / 1024.0), (float)(local_44[3].PosY / 1024.0), (float)((local_44[3].PosX + local_44[3].Windth) / 1024.0), (float)((local_44[3].PosY + local_44[3].Height) / 1024.0), -1);
+			break;
+		case 15:
+			DrawTexture((int)((920.0 - local_44[4].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[4].Windth * local_68t), (int)(local_44[4].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[4].PosX / 1024.0), (float)(local_44[4].PosY / 1024.0), (float)((local_44[4].PosX + local_44[4].Windth) / 1024.0), (float)((local_44[4].PosY + local_44[4].Height) / 1024.0), -1);
+			break;
+		case 5:
+			DrawTexture((int)((920.0 - local_44[5].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[5].Windth * local_68t), (int)(local_44[5].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[5].PosX / 1024.0), (float)(local_44[5].PosY / 1024.0), (float)((local_44[5].PosX + local_44[5].Windth) / 1024.0), (float)((local_44[5].PosY + local_44[5].Height) / 1024.0), -1);
+			break;
+		case 12:
+			DrawTexture((int)((920.0 - local_44[6].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[6].Windth * local_68t), (int)(local_44[6].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[6].PosX / 1024.0), (float)(local_44[6].PosY / 1024.0), (float)((local_44[6].PosX + local_44[6].Windth) / 1024.0), (float)((local_44[6].PosY + local_44[6].Height) / 1024.0), -1);
+			break;
+		case 7:
+			DrawTexture((int)((920.0 - local_44[7].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[7].Windth * local_68t), (int)(local_44[7].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[7].PosX / 1024.0), (float)(local_44[7].PosY / 1024.0), (float)((local_44[7].PosX + local_44[7].Windth) / 1024.0), (float)((local_44[7].PosY + local_44[7].Height) / 1024.0), -1);
+			break;
+		case 9:
+			DrawTexture((int)((DAT_01c6e428 - local_44[9].Windth * local_68t) / 2.0), (int)(local_64m * 104.0), (int)(local_44[9].Windth * local_68t), (int)(local_44[9].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[9].PosX / 1024.0), (float)(local_44[9].PosY / 1024.0), (float)((local_44[9].PosX + local_44[9].Windth) / 1024.0), (float)((local_44[9].PosY + local_44[9].Height) / 1024.0), -1);
+			break;
+		case 16:
+			DrawTexture((int)((920.0 - local_44[10].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[10].Windth * local_68t), (int)(local_44[10].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[10].PosX / 1024.0), (float)(local_44[10].PosY / 1024.0), (float)((local_44[10].PosX + local_44[10].Windth) / 1024.0), (float)((local_44[10].PosY + local_44[10].Height) / 1024.0), -1);
+			break;
+		case 13:
+			DrawTexture((int)((920.0 - local_44[11].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[11].Windth * local_68t), (int)(local_44[11].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[11].PosX / 1024.0), (float)(local_44[11].PosY / 1024.0), (float)((local_44[11].PosX + local_44[11].Windth) / 1024.0), (float)((local_44[11].PosY + local_44[11].Height) / 1024.0), -1);
+			break;
+		case 4:
+			DrawTexture((int)((920.0 - local_44[12].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[12].Windth * local_68t), (int)(local_44[12].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[12].PosX / 1024.0), (float)(local_44[12].PosY / 1024.0), (float)((local_44[12].PosX + local_44[12].Windth) / 1024.0), (float)((local_44[12].PosY + local_44[12].Height) / 1024.0), -1);
+			break;
+		case 14:
+			DrawTexture((int)((920.0 - local_44[13].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[13].Windth * local_68t), (int)(local_44[13].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[13].PosX / 1024.0), (float)(local_44[13].PosY / 1024.0), (float)((local_44[13].PosX + local_44[13].Windth) / 1024.0), (float)((local_44[13].PosY + local_44[13].Height) / 1024.0), -1);
+			break;
+		case 8:
+			DrawTexture((int)((920.0 - local_44[14].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[14].Windth * local_68t), (int)(local_44[14].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[14].PosX / 1024.0), (float)(local_44[14].PosY / 1024.0), (float)((local_44[14].PosX + local_44[14].Windth) / 1024.0), (float)((local_44[14].PosY + local_44[14].Height) / 1024.0), -1);
+			break;
+		case 6:
+			DrawTexture((int)((920.0 - local_44[15].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[15].Windth * local_68t), (int)(local_44[15].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[15].PosX / 1024.0), (float)(local_44[15].PosY / 1024.0), (float)((local_44[15].PosX + local_44[15].Windth) / 1024.0), (float)((local_44[15].PosY + local_44[15].Height) / 1024.0), -1);
+			break;
+		case 11:
+			DrawTexture((int)((920.0 - local_44[16].Windth) / 2.0 * local_68t - 10.0), (int)(local_64m * 104.0), (int)(local_44[16].Windth * local_68t), (int)(local_44[16].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[16].PosX / 1024.0), (float)(local_44[16].PosY / 1024.0), (float)((local_44[16].PosX + local_44[16].Windth) / 1024.0), (float)((local_44[16].PosY + local_44[16].Height) / 1024.0), -1);
+			break;
+		case 3:
+			DrawTexture((int)((920.0 - local_44[17].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[17].Windth * local_68t), (int)(local_44[17].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[17].PosX / 1024.0), (float)(local_44[17].PosY / 1024.0), (float)((local_44[17].PosX + local_44[17].Windth) / 1024.0), (float)((local_44[17].PosY + local_44[17].Height) / 1024.0), -1);
+			break;
+		case 17:
+			DrawTexture((int)((920.0 - local_44[18].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[18].Windth * local_68t), (int)(local_44[18].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[18].PosX / 1024.0), (float)(local_44[18].PosY / 1024.0), (float)((local_44[18].PosX + local_44[18].Windth) / 1024.0), (float)((local_44[18].PosY + local_44[18].Height) / 1024.0), -1);
+			break;
+		case 10:
+			DrawTexture((int)((920.0 - local_44[19].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[19].Windth * local_68t), (int)(local_44[19].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[19].PosX / 1024.0), (float)(local_44[19].PosY / 1024.0), (float)((local_44[19].PosX + local_44[19].Windth) / 1024.0), (float)((local_44[19].PosY + local_44[19].Height) / 1024.0), -1);
+			break;
+		case 2:
+			DrawTexture((int)((920.0 - local_44[8].Windth) / 2.0 * local_68t), (int)(local_64m * 104.0), (int)(local_44[8].Windth * local_68t), (int)(local_44[8].Height * local_64m), 0.01f, DAT_05cd2788, (float)(local_44[8].PosX / 1024.0), (float)(local_44[8].PosY / 1024.0), (float)((local_44[8].PosX + local_44[8].Windth) / 1024.0), (float)((local_44[8].PosY + local_44[8].Height) / 1024.0), -1);
+			break;
+	}
+	DrawTexture((int)(local_68t * 50.0 + local_68t * 10.0 + local_40 * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[26].Windth * local_68t), (int)(local_44[26].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[26].PosX / 1024.0), (float)(local_44[26].PosY / 1024.0), (float)((local_44[26].PosX + local_44[26].Windth + 3.0) / 1024.0), (float)((local_44[26].PosY + local_44[26].Height) / 1024.0), -1);
+	DrawTexture((int)(local_68t * 233.0 - 25.0 + 8.0 + local_3cl * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[24].Windth * local_68t), (int)(local_44[24].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[24].PosX / 1024.0), (float)(local_44[24].PosY / 1024.0), (float)((local_44[24].PosX + local_44[24].Windth) / 1024.0), (float)((local_44[24].PosY + local_44[24].Height) / 1024.0), -1);
+	if (DAT_05cd2785 == 11 || DAT_05cd2785 == 12)
+	{
+		DrawTexture((int)(local_68t * 561.0 + 10.0 + 2.0 - 8.0 + 4.0 + local_50r * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[28].Windth * local_68t), (int)(local_44[28].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[28].PosX / 1024.0), (float)(local_44[28].PosY / 1024.0), (float)((local_44[28].PosX + local_44[28].Windth + 5.0) / 1024.0), (float)((local_44[28].PosY + local_44[28].Height) / 1024.0), -1);
+		DrawTexture((int)(local_68t * 772.0 - 16.0 + local_48j * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[25].Windth * local_68t), (int)(local_44[25].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[25].PosX / 1024.0), (float)(local_44[25].PosY / 1024.0), (float)((local_44[25].PosX + local_44[25].Windth) / 1024.0), (float)((local_44[25].PosY + local_44[25].Height) / 1024.0), -1);
+	}
+	else if (DAT_05cd2785 == 15 || DAT_05cd2785 == 17 || DAT_05cd2785 == 16 || DAT_05cd2785 == 14)
+	{
+		DrawTexture((int)(local_68t * 561.0 + 10.0 + 2.0 + local_60j * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[25].Windth * local_68t), (int)(local_44[25].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[25].PosX / 1024.0), (float)(local_44[25].PosY / 1024.0), (float)((local_44[25].PosX + local_44[25].Windth) / 1024.0), (float)((local_44[25].PosY + local_44[25].Height) / 1024.0), -1);
+	}
+	else if (DAT_05cd2785 == 13)
+	{
+		DrawTexture((int)(local_68t * 561.0 + 10.0 + 2.0 + 13.0 - 4.0 + local_38i * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[27].Windth * local_68t), (int)(local_44[27].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[27].PosX / 1024.0), (float)(local_44[27].PosY / 1024.0), (float)((local_44[27].PosX + local_44[27].Windth + 5.0) / 1024.0), (float)((local_44[27].PosY + local_44[27].Height) / 1024.0), -1);
+	}
+	else
+	{
+		DrawTexture((int)(local_68t * 561.0 + 10.0 + 2.0 + 13.0 - 4.0 + local_4cgr * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[27].Windth * local_68t), (int)(local_44[27].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[27].PosX / 1024.0), (float)(local_44[27].PosY / 1024.0), (float)((local_44[27].PosX + local_44[27].Windth + 5.0) / 1024.0), (float)((local_44[27].PosY + local_44[27].Height) / 1024.0), -1);
+		DrawTexture((int)(local_68t * 772.0 - 16.0 + local_48j * local_68t), (int)(local_64m * 188.0 - 5.0 - 5.0 - local_64m * 5.0), (int)(local_44[25].Windth * local_68t), (int)(local_44[25].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[25].PosX / 1024.0), (float)(local_44[25].PosY / 1024.0), (float)((local_44[25].PosX + local_44[25].Windth) / 1024.0), (float)((local_44[25].PosY + local_44[25].Height) / 1024.0), -1);
+	}
+	wchar_t num[16] = {0};
+	if (DAT_0260553e == 1)
+		swprintf(num, 16, L"%d", DAT_05cd2768);
+	else if (DAT_0260553e == 0)
+		swprintf(num, 16, L"%d", DAT_05cd276c);
+	else
+		swprintf(num, 16, L"%d", DAT_05cd2768);
+	wchar_t *local_54n = num;
+	int Widthg = 0;
+	int Heighti = 0;
+	GetTextSize(local_54n, Widthg, Heighti);
+	DrawStringW((int)(local_68t * 603.0 - Widthg - local_68t * 170.0), (int)(local_64m * 610.0 + 6.0 - 12.0 + 1.0), local_54n, -1, 1.0f);
+	DrawTexture((int)(local_68t * 461.0), (int)(local_64m * 624.0 - 15.0 + 1.0 - local_64m * 11.0), (int)(local_44[23].Windth * local_68t), (int)(local_44[23].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[23].PosX / 1024.0), (float)(local_44[23].PosY / 1024.0), (float)((local_44[23].PosX + local_44[23].Windth) / 1024.0), (float)((local_44[23].PosY + local_44[23].Height) / 1024.0), -1);
+	DrawButtonAVXCBB();
+	if (DAT_05cd2767 != 1)
+	{
+		if ((DAT_05b92e44 & 0x10) && (DAT_02605538 != 1 || DAT_05cd2790 != 0))
+		{
+			dsPlay_oneshot(1, 0, 0, 0);
+			if (--DAT_05cd2790 < 0)
+			{
+				DAT_02605538--;
+				DAT_05cd2790 = 9;
+				if (DAT_02605538 <= 0)
+					DAT_02605538 = 1;
+				if (DAT_0260553e != 0 && DAT_02605538 >= 1)
+				{
+					DAT_05cd2828.clear();
+					local_2c = 1;
+					DAT_05cd2767 = 1;
+				}
+				else if (DAT_0260553e == 0 && DAT_02605538 > 1)
+					DAT_05cd2820--;
+			}
+			else
+				DAT_05cd2820--;
+		}
+		if (DAT_05b92e44 & 0x20)
+		{
+			int local_70 = 0;
+			if (DAT_0260553e == 0)
+				local_70 = DAT_05cd276c;
+			else
+				local_70 = DAT_05cd2768;
+			if ((DAT_02605538 - 1) * 10 + 1 + DAT_05cd2790 <= local_70)
+			{
+				DAT_05cd2790++;
+				if (DAT_05cd2790 >= DAT_05cd2828.size() && DAT_05cd2828.size() < 10)
+					DAT_05cd2790--;
+				else if ((DAT_02605538 - 1) * 10 + 1 + DAT_05cd2790 > local_70)
+					DAT_05cd2790--;
+				else if (DAT_05cd2790 > 9 && DAT_0260553e != 0)
+				{
+					dsPlay_oneshot(1, 0, 0, 0);
+					DAT_05cd2790 = 0;
+					DAT_05cd2828.clear();
+					local_2c = 2;
+					DAT_05cd2767 = 1;
+					DAT_02605538++;
+				}
+				else if (DAT_05cd2820 != DAT_05cd2828.end() && DAT_0260553e == 0 && DAT_05cd2790 > 9)
+				{
+					dsPlay_oneshot(1, 0, 0, 0);
+					DAT_02605538++;
+					DAT_05cd2820++;
+				}
+				else if (DAT_05cd2820 != DAT_05cd2828.end())
+				{
+					dsPlay_oneshot(1, 0, 0, 0);
+					DAT_05cd2820++;
+				}
+			}
+		}
+	}
+	if (DAT_05cd2767 != 0)
+	{
+		switch (DAT_05b42a90)
+		{
+			case 5:
+				DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.171875f, 0.82128906f, 0.20800781f, -1);
+				break;
+			case 4:
+				DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.34472656f, 0.82128906f, 0.38085938f, -1);
+				break;
+			case 3:
+				DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.51660156f, 0.82128906f, 0.5527344f, -1);
+				break;
+			case 2:
+				DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.0f, 0.82128906f, 0.036132812f, -1);
+				break;
+			case 0:
+				DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.171875f, 0.82128906f, 0.20800781f, -1);
+				break;
+			default:
+				DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.0f, 0.82128906f, 0.038085938f, -1);
+		}
+	}
+	else
+	{
+		if (DAT_05cd2828.empty())
+		{
+			switch (DAT_0260553e)
+			{
+				case 0:
+					switch (DAT_05b42a90)
+					{
+					case 5:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.21484375f, 0.82128906f, 0.25097656f, -1);
+						break;
+					case 4:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.3876953f, 0.82128906f, 0.42382812f, -1);
+						break;
+					case 3:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.5595703f, 0.82128906f, 0.5957031f, -1);
+						break;
+					case 2:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.04296875f, 0.82128906f, 0.07910156f, -1);
+						break;
+					case 0:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.21484375f, 0.82128906f, 0.25097656f, -1);
+						break;
+					default:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.04296875f, 0.82128906f, 0.07910156f, -1);
+					}
+					break;
+				case 1:
+					switch (DAT_05b42a90)
+					{
+					case 5:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.30078125f, 0.82128906f, 0.33691406f, -1);
+						break;
+					case 4:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.4736328f, 0.82128906f, 0.5097656f, -1);
+						break;
+					case 3:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.6455078f, 0.82128906f, 0.6816406f, -1);
+						break;
+					case 2:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.12890625f, 0.82128906f, 0.16503906f, -1);
+						break;
+					case 0:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.30078125f, 0.82128906f, 0.33691406f, -1);
+						break;
+					default:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.12890625f, 0.82128906f, 0.16503906f, -1);
+					}
+					break;
+				case 2:
+					switch (DAT_05b42a90)
+					{
+					case 5:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.2578125f, 0.82128906f, 0.2939453f, -1);
+						break;
+					case 4:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.43066406f, 0.82128906f, 0.46679688f, -1);
+						break;
+					case 3:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.60253906f, 0.82128906f, 0.6386719f, -1);
+						break;
+					case 2:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.0859375f, 0.82128906f, 0.12207031f, -1);
+						break;
+					case 0:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.2578125f, 0.82128906f, 0.2939453f, -1);
+						break;
+					default:
+						DrawTexture((int)(local_68t * 42.0), (int)(local_64m * 242.0 - 9.0), (int)(local_68t * 841.0), (int)(local_64m * 37.0), 0.01f, DAT_05cd275c, 0.0f, 0.0859375f, 0.82128906f, 0.12207031f, -1);
+					}
+					break;
+			}
+		}
+		else
+		{
+			std::list<LBOnData>::iterator local_74 = DAT_05cd2828.begin();
+			int local_78i = 0;
+			for (; local_78i < 10; local_74++, local_78i++)
+			{
+				if (local_74 == DAT_05cd2828.end())
+					break;
+				int WidthEntries = 0;
+				int HeightEntries = 0;
+				wchar_t *local_7cg = (*local_74).strRank;
+				GetTextSize(local_7cg, WidthEntries, HeightEntries);
+				DrawStringW((int)(local_68t * 129.0 + (local_68t * 100.0 - WidthEntries * 1.4f) - local_68t * 90.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_7cg, -1, 1.2f);
+				DrawStringW((int)(local_68t * 225.0 - 13.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), (*local_74).strGameRtag, -1, 1.2f);
+				if (DAT_05cd2785 == 15 || DAT_05cd2785 == 17 || DAT_05cd2785 == 16 || DAT_05cd2785 == 14 || DAT_05cd2785 == 12 || DAT_05cd2785 == 11)
+				{
+					int WidthData = 0;
+					int HeightData = 0;
+					wchar_t *local_88q = (*local_74).strData;
+					GetTextSize(local_88q, WidthData, HeightData);
+					DrawStringW((int)(local_68t * 580.0 - local_68t * 20.0 + (local_68t * 120.0 - WidthData * 1.4f)), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_88q, -1, 1.2f);
+				}
+				else
+					DrawStringW((int)(local_68t * 580.0 - local_68t * 20.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), (*local_74).strData, -1, 1.2f);
+				if (DAT_05cd2785 != 13 && DAT_05cd2785 != 15 && DAT_05cd2785 != 17 && DAT_05cd2785 != 16 && DAT_05cd2785 != 14)
+				{
+					wchar_t *local_98j = (*local_74).strScore;
+					int WidthScore = 0;
+					int HeightScore = 0;
+					GetTextSize(local_98j, WidthScore, HeightScore);
+					DrawStringW((int)(local_68t * 760.0 - local_68t * 10.0 + (local_68t * 120.0 - WidthScore * 1.4f) - local_68t * 20.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_98j, -1, 1.2f);
+				}
+			}
+			DrawTexture((int)(local_68t * 42.0), (int)((DAT_05cd2790 * 17 + DAT_05cd2790 * 20 + 242) * local_64m - 9.0 - 4.0), (int)(local_68t * 838.0), (int)(local_64m * 34.0), 0.01f, DAT_05cd2660, 0.0f, 0.68359375f, 0.818359375f, 0.71875f, -1);
+		}
+	}
+	if (local_2c != 0)
+		FUN_005b5aa0(DAT_0260553f, DAT_0260553e, DAT_05cd2785, (unsigned char)local_2c);
 }
 
 // STUB: SADX 0x00587710

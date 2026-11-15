@@ -4,6 +4,7 @@
 static struct CCL_INFO wall_info[1];
 
 extern short DAT_05b9d724;
+extern struct playerwk *DAT_05b3e344;
 extern int DAT_060d0a5c;
 void FUN_008895d0(struct task *param_1);
 extern struct taskwk *DAT_05baf368[8];
@@ -180,9 +181,42 @@ void SysSkydeck_GoAct2(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x00839fe0
+// FUNCTION: SADX 0x00839fe0
 void SysSkydeck_GoAct3(struct task *tp)
 {
+	struct taskwk *var1;
+
+	var1 = tp->twp;
+	switch (var1->mode)
+	{
+	case 0:
+		if (FUN_004c39c0(tp) == 0)
+		{
+			var1->mode = 1;
+		}
+		var1->wtimer = 0x3c;
+		break;
+	case 1:
+		var1->wtimer--;
+		if (DAT_05b3e344 != 0)
+		{
+			if ((*(unsigned short *)((char *)DAT_05b3e344 + 6) & 0x4000) != 0)
+			{
+				DestroyTask(tp);
+			}
+		}
+		if (var1->wtimer == 0)
+		{
+			ADX_Close();
+			LandChangeStage(1);
+			AddSetStage(1);
+			AddCameraStage(1);
+			AdvanceAct(1);
+			SetPlayerInitialPosition((struct taskwk *)DAT_05baf368[0]);
+			DestroyTask(tp);
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x0083a510

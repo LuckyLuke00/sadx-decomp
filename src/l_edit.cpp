@@ -10,7 +10,7 @@ void DialogJimakuPut(char *str);
 extern int DAT_05b3ebbc;
 int FUN_00502cd0();
 extern int DAT_05b9d84c;
-extern int DAT_05b9d848;
+extern volatile int DAT_05b9d848;
 extern void *DAT_05b42528;
 extern void *DAT_05cc3564;
 extern unsigned char DAT_05cc3560;

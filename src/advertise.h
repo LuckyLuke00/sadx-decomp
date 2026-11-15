@@ -67,6 +67,10 @@ template<class T> class Singleton;
 class SOCInput
 {
 public:
+	int FUN_00424910(int param_1);
+	void FUN_00424950(int param_1);
+	int FUN_00424a70();
+	int FUN_00424a80();
 	void FUN_00424a90(int param_1, int param_2);
 	void FUN_00424ac0();
 	SOCController* FUN_00424b40();
@@ -75,7 +79,8 @@ private:
 	SOCInput();
 	int m_ActiveIndex;
 	SOCController* m_pController[8];
-	char field_0x24[0x28];
+	char field_0x24[0x24];
+	int field_0x48;
 };
 
 class SOCAudioSystem
@@ -262,8 +267,8 @@ public:
 	SOCFileStream();
 	~SOCFileStream();
 	bool ReadFile(const std::string&);
-	void* FUN_00424960();
-	int FUN_0040b8a0();
+	char* FUN_00424960();
+	unsigned int FUN_0040b8a0();
 private:
 	void* field_0x0;
 	int field_0x4;
@@ -288,15 +293,14 @@ class SOCRender
 public:
 	void SetSpecularEnable(bool param_1);
 	void UIShaderSet();
+	void FUN_00419d00(int param_1);
 	void FUN_0041b120(int param_1, int param_2);
-	// FUNCTION: SADX 0x00419cf0
-	void FUN_00419cf0(int param_1)
-	{
-		field_0x2798 = param_1;
-	}
+	void FUN_00419cf0(int param_1);
+	void FUN_004207c0();
 private:
 	char field_0x0[0x2798];
 	int field_0x2798;
+	int field_0x279c;
 };
 
 // GLOBAL: SADX 0x0629c340

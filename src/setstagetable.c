@@ -1,6 +1,6 @@
 #include "decls.h"
 extern struct u4s DAT_0098fcf0[];
-extern int DAT_05b3e320[16];
+extern int DAT_05b3e320[6];
 extern int DAT_05cd2948[8];
 
 // FUNCTION: SADX 0x0058b920

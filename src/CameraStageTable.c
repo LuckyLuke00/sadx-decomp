@@ -1,5 +1,5 @@
 #include "decls.h"
-extern struct _OBJ_CAMERAENTRYTABLE *DAT_05b3e308[16];
+extern struct _OBJ_CAMERAENTRYTABLE *DAT_05b3e308[6];
 extern struct _OBJ_CAMERAENTRYTABLE *DAT_05cda1b0[8];
 extern struct u4s DAT_009921c0[];
 

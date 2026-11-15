@@ -6,7 +6,7 @@ extern void _njCnkPushPopMotion(struct cnkobj const *);
 void _njCnkPushPopMotion(struct cnkobj const *);
 extern void _njCnkDrawObject(struct cnkobj *param_1);
 extern void stSetBaseMatrix(float (*param_1)[16]);
-extern void *DAT_05ab39ac;
+extern class SOCRender *DAT_05ab39ac;
 void stSetBaseMatrix(float (*)[16]);
 extern int DAT_0629c518;
 extern int DAT_05ada5b8;
@@ -17,8 +17,8 @@ void njCnkDrawMotion(const NJS_CNK_OBJECT *param_1, const NJS_MOTION *param_2, F
 	njStartMotionObj(param_2, param_3);
 	DAT_05ada5b8 = 1;
 	stSetBaseMatrix((float (*)[16])DAT_0629c518);
-	((SOCRender *)DAT_05ab39ac)->FUN_0041b120(0, 0);
-	((SOCRender *)DAT_05ab39ac)->FUN_0041b120(1, 0);
+	DAT_05ab39ac->FUN_0041b120(0, 0);
+	DAT_05ab39ac->FUN_0041b120(1, 0);
 	_njCnkPushPopMotion(param_1);
 }
 

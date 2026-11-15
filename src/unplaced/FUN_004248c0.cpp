@@ -19,19 +19,19 @@ char __stdcall FUN_00424900(int param_1, int param_2, int param_3, int param_4)
 }
 
 // STUB: SADX 0x00424910
-int __fastcall FUN_00424910(int *param_1, int param_2, int param_3)
+int SOCInput::FUN_00424910(int param_1)
 {
 	return (int)0;
 }
 
 // FUNCTION: SADX 0x00424950
-void __fastcall FUN_00424950(int *param_1, int param_2, int param_3)
+void SOCInput::FUN_00424950(int param_1)
 {
-	*param_1 = param_3;
+	m_ActiveIndex = param_1;
 }
 
 // FUNCTION: SADX 0x00424960
-void* SOCFileStream::FUN_00424960()
+char* SOCFileStream::FUN_00424960()
 {
-	return *(void **)this;
+	return *(char **)this;
 }

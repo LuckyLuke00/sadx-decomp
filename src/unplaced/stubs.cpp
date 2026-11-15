@@ -1764,19 +1764,8 @@ signed char PauseNext(signed char sel)
 	return (signed char)0;
 }
 
-// STUB: SADX 0x0057ae90
-void DisplayPauseMenu(unsigned short sel)
-{
-}
-
-// STUB: SADX 0x00582b10
-int InitLBOn()
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x005837c0
-void DrawLBOn()
+// STUB: SADX 0x00588110
+void DrawButtonAVXCBB()
 {
 }
 
@@ -1891,6 +1880,11 @@ void DisplayFinTitle(struct TitleNewWk *, float)
 
 // STUB: SADX 0x005a06f0
 void DrawDXTitle(struct TitleNewWk *)
+{
+}
+
+// STUB: SADX 0x005a4040
+void SetSerifuChar()
 {
 }
 
@@ -2222,17 +2216,6 @@ extern void LoadTrialPicture()
 {
 }
 
-// STUB: SADX 0x005f4ee0
-int InitLB()
-{
-	return (int)0;
-}
-
-// STUB: SADX 0x005f5a70
-void DrawLB()
-{
-}
-
 // STUB: SADX 0x005fcd60
 void FUN_005fcd60(float)
 {
@@ -2473,6 +2456,11 @@ Int njCollisionCheckSS(NJS_SPHERE *sphere1, NJS_SPHERE *sphere2)
 	return (Int)0;
 }
 
+// STUB: SADX 0x0067f6d0
+void DrawMapSS(unsigned short act, struct NJS_POINT3 *pos)
+{
+}
+
 // STUB: SADX 0x0067fc20
 void SSPcEnd()
 {
@@ -2530,6 +2518,11 @@ void CreamManager(struct task *tp)
 {
 }
 
+// STUB: SADX 0x00693520
+void DrawMapEC(unsigned short act, struct NJS_POINT3 *pos)
+{
+}
+
 // STUB: SADX 0x00694da0
 void BookRegular(struct task *tp)
 {
@@ -2543,6 +2536,11 @@ long Object_EgaGun1DrawStat(struct task *tp)
 
 // STUB: SADX 0x0069c990
 void ObjectECCommonDoorS(struct task *tp)
+{
+}
+
+// STUB: SADX 0x0069dc70
+void DrawMapECH(unsigned short act, struct NJS_POINT3 *pos)
 {
 }
 
@@ -2601,8 +2599,18 @@ void ButtonExec(struct task *tp)
 {
 }
 
+// STUB: SADX 0x006a8500
+void DrawMapMR(unsigned short act, struct NJS_POINT3 *pos)
+{
+}
+
 // STUB: SADX 0x006ab950
 void ObjectMysticRuinHandyKey(struct task *tp)
+{
+}
+
+// STUB: SADX 0x006bc6b0
+void DrawMapPAST(unsigned short act, struct NJS_POINT3 *pos)
 {
 }
 

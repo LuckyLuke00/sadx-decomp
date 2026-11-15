@@ -16,14 +16,14 @@ void FUN_004b6c50(struct FileSelWk *param_1);
 void FUN_004b7800(struct FileSelWk *param_1);
 void file_sel_disp(struct task *tp);
 void FUN_004b9c10(struct FileSelWk *param_1);
-void FUN_0041c2d0(void *param_1);
+void FUN_0041c2d0(Magic::RenderCore::Texture *param_1);
 
 extern void *DAT_05cc3564;
 extern unsigned char DAT_05cc3568;
 extern unsigned char DAT_05cc3560;
 extern unsigned char DAT_05cd14e9;
 extern unsigned char DAT_05cd2604;
-extern int DAT_05b9d848;
+extern volatile int DAT_05b9d848;
 extern struct task *DAT_05cda18c;
 extern unsigned char DAT_05b4252c;
 extern unsigned char DAT_05b3e356;
@@ -122,7 +122,7 @@ void file_sel_exec(struct task *tp)
 		break;
 	case ADVA_STAT_FADEIN:
 		local_8->BaseCol = GetFadeInColFromT(local_8->T);
-		local_8->T = (float)DAT_05b9d848 * 0.05 + local_8->T;
+		local_8->T = (float)(DAT_05b9d848 * 0.05) + local_8->T;
 		if (local_8->T >= 1.0)
 		{
 			CloseDialog();
@@ -137,7 +137,7 @@ void file_sel_exec(struct task *tp)
 		break;
 	case ADVA_STAT_FADEOUT:
 		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
-		local_8->T = (float)DAT_05b9d848 * 0.05 + local_8->T;
+		local_8->T = (float)(DAT_05b9d848 * 0.05) + local_8->T;
 		if (local_8->T > 1.0)
 		{
 			local_8->T = 1.0f;
