@@ -120,6 +120,7 @@ STOP_AFTER = 2  # --stop-below looks at the best after this many tries
 REPLY_TOKENS_PER_BYTE, REPLY_MAX_TOKENS = 3, 4000  # a try's reply limit by its function's size (see reply_limit)
 TEMPERATURE_STEP, TEMPERATURE_MAX = 0.3, 1.2  # added after each repeated attempt
 EXAMPLES = 2
+FENCE = "```cpp\n"  # --fence-prefill starts the reply with this
 CAST_ROUNDS = 3  # builds of a try with casts added on the pointer conversions the compiler refused
 STRUCT_LINES = 120  # member lines in the first prompt's Structs section
 STRUCT_DEPTH = 2  # levels of member types below the types the dossier names
@@ -1815,6 +1816,8 @@ def solve_function(args, file, address, size, transcript):
                   args.refuse_fakematch)
     stale, temperature = 0, config["temperature"]
     totals = collections.Counter(prompt_tokens=0, completion_tokens=0, think_tries=0, repeats=0)  # with no try too
+    ask = llmclient.replayer(args.replies, f"{address:08x}") if args.replies else llmclient.chat
+    pending = False  # an ask waits for a batch reply: the run ends here and the next run replays it
     transcript.parent.mkdir(parents=True, exist_ok=True)
     with open(transcript, "w", encoding="utf-8") as log:
         log.write(json.dumps({"prompt": first}) + "\n")
@@ -1836,8 +1839,16 @@ def solve_function(args, file, address, size, transcript):
                         live.write(json.dumps([kind, text]) + "\n")
                         live.flush()
 
-                    reply = llmclient.chat({**config, "max_tokens": reply_limit(args, config, tries, size)}, messages,
-                                           temperature, thinking, seed, show)
+                    prefill = args.fence_prefill and not thinking
+                    sent = messages + [{"role": "assistant", "content": FENCE}] if prefill else messages
+                    reply = ask({**config, "max_tokens": reply_limit(args, config, tries, size)}, sent, temperature,
+                                thinking, seed, show)
+                    if prefill:
+                        reply = reply._replace(text=FENCE + reply.text)
+            except llmclient.Pending:
+                pending = True
+                end_live("waits for a batch reply")
+                break
             except llmclient.ServerError as e:
                 if e.status != 400 or "context" not in str(e).lower():
                     end_live(f"the server failed: {e}")
@@ -1920,7 +1931,8 @@ def solve_function(args, file, address, size, transcript):
             log.write(json.dumps({"try": tries, "thinking": thinking, "result": result,
                                   "seconds": round(time.time() - asked, 1), "usage": reply.usage,
                                   "finish": reply.finish, "reasoning": reply.reasoning, "reply": reply.text,
-                                  "note": note, **repairs.logged(), **({"refused": refused} if refused else {})})
+                                  "sent": sent[len(base):], "note": note, **repairs.logged(),
+                                  **({"refused": refused} if refused else {})})
                       + "\n")
             log.flush()
             end_live(result)
@@ -1944,15 +1956,18 @@ def solve_function(args, file, address, size, transcript):
             if args.think_max is not None and would_think and (totals["think_tries"] >= args.think_max
                                                                or (thinking and repeat is not None)):
                 break
-            messages = base + next_turn(best, improved, shown, note, latest)
+            blind = args.feedback_from is not None and best_percent < args.feedback_from
+            messages = base if blind else base + next_turn(best, improved, shown, note, latest)
         if fallback and not best:
             best = fallback
             log.write(json.dumps({"kept_refused": True}) + "\n")
-    # The file keeps the code of tree_code: a use of it can match.
-    write_source(path, tree_code(best.text, file, roots, config["tables"], table_types) if best else before, crlf)
+    # The file keeps the code of tree_code: a use of it can match. A pending run keeps the file as it was.
+    kept = best and not pending
+    write_source(path, tree_code(best.text, file, roots, config["tables"], table_types) if kept else before, crlf)
     restore(generated)
     decls(config)
-    return {"tries": tries, "best": best.percent if best else 0.0, "wall_s": time.time() - started, **totals}
+    return {"tries": tries, "best": best.percent if best else 0.0, "wall_s": time.time() - started,
+            "pending": pending, **totals}
 
 
 def log_result(path, file, address, size, result, model):
@@ -1972,6 +1987,9 @@ def solve_and_log(args, file, address, size):
     if results.exists() and results.read_text(encoding="utf-8").splitlines()[0].split("\t") != RESULT_FIELDS:
         sys.exit(f"{results} has other columns than {RESULT_FIELDS}: log to another tag")
     result = solve_function(args, file, address, size, folder / "transcripts" / f"{address:08x}.jsonl")
+    if result["pending"]:  # logged once a later run finishes it
+        print(f"{hexa(address)}: waits for a batch reply after {result['tries']} tries", flush=True)
+        return
     log_result(results, file, address, size, result, args.settings["model"])
     print(f"{hexa(address)}: best {result['best']:.2f}% in {result['tries']} tries "
           f"({result['think_tries']} thinking), {result['wall_s']:.0f}s", flush=True)
@@ -1983,7 +2001,8 @@ def solve(args):
     unknown = [hexa(a) for a in args.addresses if a not in sizes]
     if unknown:
         sys.exit(f"not a function in data/functions.csv: {' '.join(unknown)}")
-    llmclient.ensure_server(args.settings, SERVER_LOG)
+    if not args.replies:
+        llmclient.ensure_server(args.settings, SERVER_LOG)
     for address in sorted(args.addresses):
         solve_and_log(args, file, address, sizes[address])
     return 0
@@ -2029,7 +2048,8 @@ def bench(args):
     if not args.set or Path(args.set).resolve() != saved_set.resolve():
         write_set(saved_set, rows)
     print(f"bench: {len(rows)} functions from {source}, tag {args.tag}", flush=True)
-    llmclient.ensure_server(args.settings, SERVER_LOG)
+    if not args.replies:
+        llmclient.ensure_server(args.settings, SERVER_LOG)
     results = folder / "results.tsv"
     done = {int(r["address"], 16) for r in names.table_rows(results)} if results.exists() else set()
     matched = matched_functions()
@@ -2106,6 +2126,11 @@ def parse_args():
                       help=f"end a run after {STOP_AFTER} tries when the best is below P%% or nothing built")
     runs.add_argument("--stop-first", type=float, metavar="P",
                       help="end a run after the first try when it is below P%% or did not build")
+    runs.add_argument("--feedback-from", type=float, metavar="P",
+                      help="a try after the first sees the best try and its feedback only when the best is P%% or "
+                           "more, else the first prompt again (101: every try is a fresh sample)")
+    runs.add_argument("--fence-prefill", action="store_true",
+                      help="a try that does not think gets its reply started with the opening of the cpp block")
     runs.add_argument("--try-tokens", type=osutil.positive_ints, metavar="N,N,...",
                       help="the reply limit of each try in turn, the last one for the tries after it")
     runs.add_argument("--stale-built-only", action="store_true",
@@ -2122,6 +2147,9 @@ def parse_args():
                       help="add the other build's code in DIR/ADDRESS/twin.md to the first prompt of each function "
                            "that has one")
     runs.add_argument("--tag", help="results go to build/llm/TAG (default: the prompt's name)")
+    runs.add_argument("--replies", type=Path, metavar="DIR",
+                      help="no server: ask N of a function gets DIR/replies/ADDRESS-N.json; a missing one goes to "
+                           "DIR/requests.jsonl for a batch worker, and the function waits (llmclient.replayer)")
     commands = parser.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init", parents=[common])
     init.add_argument("--url", help="the URL before /chat/completions, such as http://127.0.0.1:8080/v1")

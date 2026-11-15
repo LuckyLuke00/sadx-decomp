@@ -188,16 +188,22 @@ def parse(data: dict) -> Reply:
     return Reply(content, reasoning, counts, choice.get("finish_reason") or "")
 
 
+def request_body(config: dict, messages: list[dict], temperature: float, thinking: bool, seed: int | None) -> dict:
+    """The /chat/completions body of one ask, without the stream fields."""
+    body = {"model": config["model"], "messages": messages, "temperature": temperature,
+            "max_tokens": config["max_tokens"]}
+    if seed is not None and config["seed"]:
+        body["seed"] = seed
+    body = merged(body, config["extra_body"])
+    return merged(body, config["think_on"] if thinking else config["think_off"])
+
+
 def chat(config: dict, messages: list[dict], temperature: float, thinking: bool, seed: int | None,
          on_text=None) -> Reply:
     """The reply, asked as a stream: ON_TEXT, when given, gets each piece as it comes (see events), and
     ("restart", "") when a full context or a failed draft makes it ask again."""
-    body = {"model": config["model"], "messages": messages, "temperature": temperature,
-            "max_tokens": config["max_tokens"], "stream": True, "stream_options": {"include_usage": True}}
-    if seed is not None and config["seed"]:
-        body["seed"] = seed
-    body = merged(body, config["extra_body"])
-    body = merged(body, config["think_on"] if thinking else config["think_off"])
+    body = {**request_body(config, messages, temperature, thinking, seed),
+            "stream": True, "stream_options": {"include_usage": True}}
     for retry in range(FULL_RETRIES + 1):
         try:
             with reserved(config, body):
@@ -210,6 +216,47 @@ def chat(config: dict, messages: list[dict], temperature: float, thinking: bool,
             if on_text:
                 on_text("restart", "")
             time.sleep(random.uniform(*FULL_WAIT_SECONDS))
+
+
+# Replay: a batch worker elsewhere answers the asks between runs
+
+class Pending(Exception):
+    """A replayed ask has no stored reply yet. Its request waits in requests.jsonl for the batch worker."""
+
+
+def body_sha256(body: dict) -> str:
+    return hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()
+
+
+def replayer(folder: Path, prefix: str):
+    """A chat that answers the Nth ask of this run with FOLDER/replies/PREFIX-N.json: {"sha256" of the request's
+    body, then "text", "reasoning", "usage", "finish", or "error": {"status", "text"}}. An ask with no stored reply
+    appends {"id", "body"} to FOLDER/requests.jsonl and raises Pending. A stored reply answers its ask even when
+    the request differs (the tree changed between runs, so a prompt did): FOLDER/mismatches.jsonl logs that ask."""
+    asks = 0
+
+    def chat(config: dict, messages: list[dict], temperature: float, thinking: bool, seed: int | None,
+             on_text=None) -> Reply:
+        nonlocal asks
+        asks += 1
+        key = f"{prefix}-{asks}"
+        body = request_body(config, messages, temperature, thinking, seed)
+        stored = folder / "replies" / f"{key}.json"
+        if not stored.exists():
+            with osutil.locked(folder / "requests.lock"), open(folder / "requests.jsonl", "a", encoding="utf-8") as out:
+                out.write(json.dumps({"id": key, "body": body}, ensure_ascii=False) + "\n")  # lanes share the file
+            raise Pending(key)
+        reply = json.loads(stored.read_text(encoding="utf-8"))
+        if reply["sha256"] != body_sha256(body):
+            with open(folder / "mismatches.jsonl", "a", encoding="utf-8") as out:
+                out.write(json.dumps({"id": key}) + "\n")
+        if "error" in reply:
+            raise ServerError(reply["error"]["text"], reply["error"]["status"])
+        if on_text:
+            on_text("content", reply["text"])
+        return Reply(reply["text"], reply["reasoning"], reply["usage"], reply["finish"])
+
+    return chat
 
 
 # The shared context

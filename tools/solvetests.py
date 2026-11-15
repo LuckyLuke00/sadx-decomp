@@ -64,6 +64,19 @@ class Run(NamedTuple):
     kept: str  # the text that the file got last
     entries: list[dict]  # every line of its transcript
     live: list  # every line of its live file: the last try's header, its reply's pieces, then its result
+    sent: list  # the messages after the system and first prompt of each ask that got a reply
+    pending: bool  # the run waits for a batch reply (--replies)
+
+
+class Ask(NamedTuple):
+    seed: int
+    refused: bool  # the server refused the chat as too long
+    max_tokens: int
+    last: str  # the content of its last message
+    sent: list  # its messages after the system message and the first prompt
+
+
+BASE_MESSAGES = 2  # the system message and the first prompt
 
 
 def never_too_long(messages) -> bool:
@@ -79,10 +92,10 @@ def solved(tries, too_long, reply="no code", size=SIZE, **flags) -> Run:
 
     def chat(config, messages, temperature, thinking, seed, on_text):
         refused = too_long(messages)
-        asks.append((seed, refused, config["max_tokens"], messages[-1]["content"]))
+        asks.append(Ask(seed, refused, config["max_tokens"], messages[-1]["content"], messages[BASE_MESSAGES:]))
         if refused:
             raise llmclient.ServerError(TOO_LONG, 400)
-        answered = sum(not ask[1] for ask in asks)
+        answered = sum(not ask.refused for ask in asks)
         text = replies[min(answered, len(replies)) - 1]
         on_text("content", text)
         return llmclient.Reply(text, "", {"prompt_tokens": 1, "completion_tokens": 1}, "stop")
@@ -95,12 +108,13 @@ def solved(tries, too_long, reply="no code", size=SIZE, **flags) -> Run:
              "tree_warnings": lambda config: set(), "load_types": lambda config: None, "first_prompt": first_prompt,
              "file_best": lambda *args: None, "decls": lambda config: ("", 0), "exe_contains": lambda: IMAGE.__contains__,
              "exe_literal": lambda: lambda address, width: None, "known_tree": lambda: TREE}
-    settings = {"tables": None, "context": None, "temperature": 0.2, "think_on": None, "max_tokens": MAX_TOKENS}
+    settings = {**llmclient.DEFAULTS, "tables": None, "context": None, "temperature": 0.2, "think_on": None,
+                "max_tokens": MAX_TOKENS}
     options = dict(settings=settings, system="", tries=tries, seed=SEED, structs=False, accesses=False, facts=False,
                    idioms=False, tree_wins=False, stale_built_only=False, max_repeats=None, give_up=False,
                    stop_below=None, stop_first=None, try_tokens=None, think_max=None,
-                   think_after=None, similar_examples=False,
-                   prefix_feedback=False, refuse_fakematch=False, recipes=None, twins=None)
+                   think_after=None, similar_examples=False, feedback_from=None, fence_prefill=False,
+                   prefix_feedback=False, refuse_fakematch=False, recipes=None, twins=None, replies=None)
     args = argparse.Namespace(**{**options, **flags})
     with (tempfile.TemporaryDirectory() as folder, mock.patch.multiple(llm, **fakes),
           mock.patch.object(llmclient, "chat", chat), contextlib.redirect_stdout(io.StringIO())):
@@ -109,10 +123,94 @@ def solved(tries, too_long, reply="no code", size=SIZE, **flags) -> Run:
             result = llm.solve_function(args, FILE, ADDRESS, size, transcript)
         logged = [json.loads(line) for line in transcript.read_text(encoding="utf-8").splitlines()]
         shown = [json.loads(line) for line in live.read_text(encoding="utf-8").splitlines()] if live.exists() else []
-    return Run([ask[0] for ask in asks], sum(not ask[1] for ask in asks), result["tries"],
-               [entry["try"] for entry in logged if "try" in entry], [ask[2] for ask in asks],
-               [entry["result"] for entry in logged if "try" in entry], [ask[3] for ask in asks], result["best"],
-               kept[-1], logged, shown)
+    return Run([ask.seed for ask in asks], sum(not ask.refused for ask in asks), result["tries"],
+               [entry["try"] for entry in logged if "try" in entry], [ask.max_tokens for ask in asks],
+               [entry["result"] for entry in logged if "try" in entry], [ask.last for ask in asks], result["best"],
+               kept[-1], logged, shown, [ask.sent for ask in asks if not ask.refused], result["pending"])
+
+
+def stored_reply(body, number, store, too_long, replies) -> dict:
+    """The reply of solved()'s fake server to ask NUMBER with BODY, as the batch worker's reply lands in STORE."""
+    digest = llmclient.body_sha256(body)
+    if too_long(body["messages"]):
+        return {"sha256": digest, "error": {"status": 400, "text": TOO_LONG}}
+    earlier = [json.loads((store / f"{ADDRESS:08x}-{n}.json").read_text(encoding="utf-8")) for n in range(1, number)]
+    answered = sum("error" not in reply for reply in earlier) + 1
+    return {"sha256": digest, "text": replies[min(answered, len(replies)) - 1], "reasoning": "",
+            "usage": {"prompt_tokens": 1, "completion_tokens": 1}, "finish": "stop"}
+
+
+def replayed(tries, too_long, reply="no code", tamper=False, **flags) -> tuple[Run, int, list]:
+    """solved() with --replies: each run's request gets the reply of solved()'s fake server for the next run, until a
+    run no longer waits. TAMPER changes the stored request digest of ask 1 before the last run. Returns the last
+    run, the number of runs and the lines of mismatches.jsonl."""
+    replies = [reply] if isinstance(reply, str) else reply
+    with tempfile.TemporaryDirectory() as folder:
+        store = Path(folder)
+        (store / "replies").mkdir()
+        for runs in range(1, 30):
+            (store / "requests.jsonl").unlink(missing_ok=True)
+            run = solved(tries, too_long, reply, replies=store, **flags)
+            if not run.pending:
+                break
+            for line in (store / "requests.jsonl").read_text(encoding="utf-8").splitlines():
+                request = json.loads(line)
+                number = int(request["id"].rpartition("-")[2])
+                answer = stored_reply(request["body"], number, store / "replies", too_long, replies)
+                (store / "replies" / f"{request['id']}.json").write_text(json.dumps(answer), encoding="utf-8")
+        if tamper:
+            first = store / "replies" / f"{ADDRESS:08x}-1.json"
+            first.write_text(json.dumps({**json.loads(first.read_text(encoding="utf-8")), "sha256": "0"}),
+                             encoding="utf-8")
+            run = solved(tries, too_long, reply, replies=store, **flags)
+        mismatches = store / "mismatches.jsonl"
+        lines = mismatches.read_text(encoding="utf-8").splitlines() if mismatches.exists() else []
+    return run, runs, lines
+
+
+def tries_of(run) -> list:
+    """What each try of RUN's transcript did: its number, result, the messages it sent and its reply."""
+    return [(entry["try"], entry["result"], entry["sent"], entry["reply"]) for entry in run.entries if "try" in entry]
+
+
+def check_replies() -> list[str]:
+    """--replies: a function solved over runs, one batch reply per run, ends with the same tries, results, messages
+    and best as the same function asked live. A run that waits keeps the file as it was and asks no server. A reply
+    whose request changed still answers, and mismatches.jsonl names it."""
+    cases = [("feedback", 3, never_too_long, ["no code", "still no code", "no code at all"], {}),
+             ("a history too long", 3, lambda messages: len(messages) > 2, "no code", {}),
+             ("--fence-prefill", 2, never_too_long, "no code", {"fence_prefill": True}),
+             ("a forbidden reply", 2, never_too_long,
+              f"```cpp\n{llm.function_line(ADDRESS)}\nvoid Foo(void)\n{{\n\t__asm nop\n}}\n```", {})]
+    failures = []
+    for case, tries, too_long, reply, flags in cases:
+        live = solved(tries, too_long, reply, **flags)
+        run, runs, mismatches = replayed(tries, too_long, reply, **flags)
+        wanted = (tries_of(live), live.tries, live.best, False, [])
+        found = (tries_of(run), run.tries, run.best, run.pending, mismatches)
+        if found != wanted:
+            failures.append(f"{case} replayed gives {found}, not {wanted}")
+        if runs != len(live.seeds) + 1:
+            failures.append(f"{case} took {runs} runs, not one per ask plus the last ({len(live.seeds) + 1})")
+    with tempfile.TemporaryDirectory() as folder:
+        (Path(folder) / "replies").mkdir()
+        waiting = solved(2, never_too_long, replies=Path(folder))
+        found = (waiting.pending, waiting.seeds, waiting.kept, waiting.tries)
+        if found != (True, [], '#include "decls.h"\n', 0):
+            failures.append(f"a run with no stored reply gives {found}, not (True, [], the old file, 0 tries)")
+        # try 1 scores 80% and try 2 waits: the file stays as it was until the run that ends the function
+        request = json.loads((Path(folder) / "requests.jsonl").read_text(encoding="utf-8"))
+        answer = stored_reply(request["body"], 1, Path(folder) / "replies", never_too_long, [cpp("\treturn 0;")])
+        (Path(folder) / "replies" / f"{request['id']}.json").write_text(json.dumps(answer), encoding="utf-8")
+        with mock.patch.object(llm.Bench, "build", lambda self, decls, func: llm.Build(decls, func, "", 80.0, DIFF)):
+            scored = solved(2, never_too_long, replies=Path(folder))
+        found = (scored.pending, scored.results, scored.kept)
+        if found != (True, ["80.00%"], '#include "decls.h"\n'):
+            failures.append(f"a run that waits after an 80% try gives {found}, not (True, ['80.00%'], the old file)")
+    run, _, mismatches = replayed(2, never_too_long, tamper=True)
+    if (run.pending, [json.loads(line)["id"] for line in mismatches]) != (False, [f"{ADDRESS:08x}-1"]):
+        failures.append(f"a changed request gives pending {run.pending} and mismatches {mismatches}")
+    return failures
 
 
 def check_too_long() -> list[str]:
@@ -160,6 +258,61 @@ def check_stop_below() -> list[str]:
         found = solved(tries, never_too_long, **flags).tries
         if found != wanted:
             failures.append(f"{case} gives {found} tries, not {wanted}")
+    return failures
+
+
+def check_feedback_from() -> list[str]:
+    """--feedback-from P: a try after the first sees the best try and its feedback only when the best so far is P% or
+    more, else it gets the first prompt again. Here no try builds, so the best is 0%: P 101 asks the first prompt
+    every time, P 0 and no flag send the feedback."""
+    first = f"{llm.EXAMPLES} examples"
+    cases = [("--feedback-from 101", {"feedback_from": 101.0}, [first, first, first]),
+             ("--feedback-from 0", {"feedback_from": 0.0}, [first, "feedback", "feedback"]),
+             ("no --feedback-from", {}, [first, "feedback", "feedback"])]
+    failures = []
+    for case, flags, wanted in cases:
+        found = [last if last == first else "feedback" for last in solved(3, never_too_long, **flags).lasts]
+        if found != wanted:
+            failures.append(f"{case} gives {found}, not {wanted}")
+    return failures
+
+
+def check_sent_log() -> list[str]:
+    """Each try's transcript line logs as "sent" the messages after the first prompt that the server got for that
+    try: none for try 1, the feedback turns after it, the prefill too. A try the server refused as too long logs
+    nothing, and the shorter ask that follows logs its own messages."""
+    cases = [("feedback", 3, never_too_long, {}), ("--feedback-from 101", 3, never_too_long, {"feedback_from": 101.0}),
+             ("--fence-prefill", 2, never_too_long, {"fence_prefill": True}),
+             ("a history too long", 3, lambda messages: len(messages) > 2, {})]
+    failures, runs = [], {}
+    for case, tries, too_long, flags in cases:
+        runs[case] = run = solved(tries, too_long, **flags)
+        logged = [entry.get("sent") for entry in run.entries if "try" in entry]
+        if logged != run.sent or len(logged) != run.replies:
+            failures.append(f"{case} logs {logged}, not {run.sent}")
+    if runs["feedback"].sent[1] == []:
+        failures.append("feedback: try 2 got no feedback turns, so the check proves nothing")
+    if runs["--fence-prefill"].sent[0] == []:
+        failures.append("--fence-prefill: try 1 got no prefill, so the check proves nothing")
+    return failures
+
+
+def check_fence_prefill() -> list[str]:
+    """--fence-prefill ends each ask of a try that does not think with an assistant message that opens the cpp block,
+    and the try's reply starts with that opening. A thinking try asks without it."""
+    think_on = {"think_on": {"max_tokens": 1}}
+    cases = [("--fence-prefill", {"fence_prefill": True}, {}, llm.FENCE, llm.FENCE + "no code"),
+             ("--fence-prefill on a thinking try", {"fence_prefill": True, "think_after": 0}, think_on, "1 examples",
+              "no code"),
+             ("no --fence-prefill", {}, {}, "1 examples", "no code")]
+    failures = []
+    for case, flags, server, last, reply in cases:
+        with mock.patch.object(llm, "EXAMPLES", 1):
+            run = solved(1, never_too_long, settings={"tables": None, "context": None, "temperature": 0.2,
+                                                      "think_on": None, "max_tokens": MAX_TOKENS, **server}, **flags)
+        found = (run.lasts, [entry["reply"] for entry in run.entries if "try" in entry])
+        if found != ([last], [reply]):
+            failures.append(f"{case} gives {found}, not {([last], [reply])}")
     return failures
 
 
@@ -1000,13 +1153,15 @@ def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_too_long, check_thinks,
-                  check_stop_below, check_try_tokens, check_forbidden_reply, check_tries_flag,
+                  check_stop_below, check_feedback_from, check_sent_log, check_fence_prefill, check_try_tokens,
+                  check_forbidden_reply, check_tries_flag,
                   check_prefix_feedback, check_recipes, check_twins, check_refuse_fakematch, check_fn_trick,
                   check_fakematch_kinds,
                   check_debug_kinds, check_exe_targets, check_member_path, check_struct_section, check_header_layouts,
                   check_unlaid_structs, check_fold_copies, check_own_stubs, check_own_globals, check_try_globals,
                   check_address_test, check_table_test, check_read_tree, check_refusal_names, check_constant_globals,
                   check_debug_constants, check_annotation_below_signature, check_struct_in_reply, check_live,
-                  check_live_ends, check_stream_events, check_full_context_restart, check_shared_context):
+                  check_live_ends, check_stream_events, check_full_context_restart, check_shared_context,
+                  check_replies):
         failures += check()
     return failures
