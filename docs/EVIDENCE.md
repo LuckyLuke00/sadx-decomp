@@ -291,7 +291,7 @@ The line `# evidence-ledger schema=2`, then a CSV header and one row per id ever
 - `candidates`: every candidate, ranked, with `; ` between them. The first is the top candidate.
 - `tier`: the meaning tier of the top candidate. `spelling_tier`: its spelling tier (see [Spelling](#spelling)).
 - `evidence`: the argmap row and its prototype check (for a field site, the fieldmap row and its member check; for a reference symbol site, the row's status, its groups and the symbol check), the top candidate's origins and its spelling. For a placeholder site: the macro's kind, its note and the hash of its definition. `counter`: the counterevidence.
-- `fingerprint`: a hash of the inputs that feed the row: the names its argmap row takes with their values and origins, the argmap row, the prototype, the expression and its value, the evidence, the spellings of the candidates and the configuration hash. Canonical JSON.
+- `fingerprint`: a hash of the inputs that feed the row: the names its argmap row takes with their values, origins and doubts, the argmap row, the prototype, the expression and its value, the evidence, the spellings of the candidates and the configuration hash. Canonical JSON.
 - `first_seen`: the date the ledger first held the id. `last_checked`: the date its fingerprint last changed.
 - `file`, `line`: where the site was last seen.
 

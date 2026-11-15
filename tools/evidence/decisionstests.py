@@ -36,11 +36,18 @@ def check_file() -> list[str]:
         if decisions.read_notes(path) != made:
             failures.append("notes.csv round-trips, a comma in a note included")
         data = path.read_bytes()
+        path.write_bytes(data.replace(b"\n", b"\r\n"))
+        if decisions.read_notes(path) != made:
+            failures.append("a notes.csv with CRLF line ends reads as with LF")
         lines = data.split(b"\n")
         for broken, wanted in ((b"id,decision\n", "not a notes file"),
                                (data.replace(b"schema=1", b"schema=2"), "notes schema 2"),
                                (b"\n".join([lines[0], b"id,decision"] + lines[2:]), "the columns must be"),
-                               (data.replace(b",confirm,", b",approve,"), ":3: unknown decision 'approve'")):
+                               (data.replace(b",confirm,", b",approve,"), ":3: unknown decision 'approve'"),
+                               (b"\n".join(lines[:2] + [lines[2] + b",extra"] + lines[3:]),
+                                ":3: the row needs 7 values"),
+                               (b"\n".join(lines[:2] + [b"S000001,confirm"] + lines[3:]),
+                                ":3: the row needs 7 values")):
             path.write_bytes(broken)
             try:
                 decisions.read_notes(path)

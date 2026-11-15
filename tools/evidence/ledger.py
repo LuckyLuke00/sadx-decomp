@@ -32,19 +32,17 @@ it exists.
 Standard library only.
 """
 
-import csv
 import hashlib
-import io
 import json
-import re
 import sys
 from collections import Counter
-from dataclasses import dataclass, replace
+from dataclasses import astuple, dataclass, fields, replace
 from pathlib import Path
 
 import ceval
 import decisions
 import inventory
+import outputs
 import remap
 import score
 import spelling
@@ -56,9 +54,7 @@ import osutil  # noqa: E402
 
 LEDGER, CHANGES = "ledger.csv", "ledger-changes.md"
 SCHEMA = 2
-HEADER = re.compile(r"# evidence-ledger schema=(\d+)")
-COLUMNS = ("id", "kind", "status", "spelling", "candidates", "tier", "spelling_tier", "evidence", "counter",
-           "fingerprint", "first_seen", "last_checked", "file", "line")
+JOIN = "; "  # between the items of a list column: candidates, evidence, counter
 VALUE, PLACEHOLDER = "value", "placeholder"
 CHECKS = {inventory.CALL: ("argmap", "prototype check"), inventory.FIELD: ("fieldmap", "member check")}  # per kind
 SYMBOL_CHECK = ("symbols", "symbol check")  # the source and check of a row from the reference symbols, of any kind
@@ -91,6 +87,14 @@ class Row:
     file: str
     line: int
 
+    @property
+    def texts(self) -> list:
+        """The candidates, top first."""
+        return self.candidates.split(JOIN) if self.candidates else []
+
+
+COLUMNS = tuple(item.name for item in fields(Row))
+
 
 @dataclass(frozen=True)
 class Change:
@@ -100,28 +104,14 @@ class Change:
 
 
 def format_ledger(rows: dict) -> bytes:
-    out = io.StringIO()
-    out.write(f"# evidence-ledger schema={SCHEMA}\n")
-    writer = csv.writer(out, lineterminator="\n")
-    writer.writerow(COLUMNS)
-    for key in sorted(rows, key=remap.id_number):
-        row = rows[key]
-        writer.writerow([getattr(row, column) for column in COLUMNS])
-    return out.getvalue().encode("utf-8")
+    ordered = (astuple(rows[key]) for key in sorted(rows, key=remap.id_number))
+    return outputs.schema_text(LEDGER, SCHEMA, COLUMNS, ordered).encode("utf-8")
 
 
 def parse_ledger(data: bytes) -> dict:
     """The rows by id."""
-    first, _, rest = data.decode("utf-8").partition("\n")
-    match = HEADER.fullmatch(first)
-    if match is None:
-        raise LedgerError(f"not a ledger file: its first line is {first[:60]!r}")
-    if int(match[1]) != SCHEMA:
-        raise LedgerError(f"ledger schema {match[1]}: this tool reads schema {SCHEMA}")
-    reader = csv.DictReader(io.StringIO(rest))
-    if tuple(reader.fieldnames or ()) != COLUMNS:
-        raise LedgerError(f"the ledger columns must be {','.join(COLUMNS)}")
-    return {fields["id"]: Row(**{**fields, "line": int(fields["line"])}) for fields in reader}
+    return {values["id"]: Row(**{**values, "line": int(values["line"])})
+            for _, values in outputs.schema_rows(data.decode("utf-8"), LEDGER, SCHEMA, COLUMNS, LedgerError)}
 
 
 def kind_of(site_kind: str) -> str:
@@ -147,7 +137,7 @@ def evidence(record, grade: score.Grade, top: spelling.Spelling) -> str:
         parts.append(f"same value in build {', '.join(same)}")
     parts += [f"other value in build {build}: {text}" for build, text, agrees in record.references if not agrees]
     parts.append(f"spelling {top.text}")
-    return "; ".join(parts)
+    return JOIN.join(parts)
 
 
 def live_status(site_state: str, decision, current: str) -> str:
@@ -190,13 +180,17 @@ def build(records: list, mapping: remap.Remap, old_sites: list, old: dict, confi
         grade = score.grade_site(record)
         top = spelling.top_of(record.spellings)
         texts = [candidate.text for candidate in record.search.candidates] if record.search else []
+        candidates = JOIN.join(texts)
         stamp = fingerprint(record, grade, texts, configuration)
         before = old.get(record.id)
-        current = decisions.review_hash("; ".join(texts), grade.tier, top.tier)
-        row = Row(record.id, kind_of(record.kind), live_status(record.state, decided.get(record.id), current), record.argument,
-                  "; ".join(texts), grade.tier, top.tier, evidence(record, grade, top), "; ".join(grade.counter),
-                  stamp, before.first_seen if before else today,
-                  before.last_checked if before and before.fingerprint == stamp else today, record.file, record.line)
+        status = live_status(record.state, decided.get(record.id), decisions.review_hash(candidates, grade.tier,
+                                                                                         top.tier))
+        row = Row(id=record.id, kind=kind_of(record.kind), status=status, spelling=record.argument,
+                  candidates=candidates, tier=grade.tier, spelling_tier=top.tier,
+                  evidence=evidence(record, grade, top), counter=JOIN.join(grade.counter), fingerprint=stamp,
+                  first_seen=before.first_seen if before else today,
+                  last_checked=before.last_checked if before and before.fingerprint == stamp else today,
+                  file=record.file, line=record.line)
         rows[record.id] = row
         changes += _moved(before, row, mapping.ids[index], mapping.kinds[index])
     sites = {site.id: site for site in old_sites}
@@ -206,8 +200,10 @@ def build(records: list, mapping: remap.Remap, old_sites: list, old: dict, confi
     for status, ids in ((GONE, mapping.gone), (AMBIGUOUS, mapping.ambiguous)):
         for old_id in ids:
             site = sites[old_id]
-            known = old.get(old_id) or Row(old_id, kind_of(site.kind), status, site.expression, "", "", "", "", "", "", today,
-                                           today, site.file, site.line)
+            known = old.get(old_id) or Row(id=old_id, kind=kind_of(site.kind), status=status,
+                                           spelling=site.expression, candidates="", tier="", spelling_tier="",
+                                           evidence="", counter="", fingerprint="", first_seen=today,
+                                           last_checked=today, file=site.file, line=site.line)
             rows[old_id] = replace(known, status=status)
             note = f", suggested: {' '.join(suggested[old_id])}" if old_id in suggested else ""
             changes.append(Change(status, old_id, f"{site.file}:{site.line} {site.expression}{note}"))
@@ -229,21 +225,23 @@ def _decision_changes(rows: dict, decided: dict) -> list:
     return changes
 
 
-def _moved(before: Row | None, row: Row, kept: str, kind: str) -> list:
+def _moved(before: Row | None, row: Row, old_id: str, pair: str) -> list:
+    """The changes of ROW against BEFORE, its row in the old ledger. OLD_ID: the id the remap kept, "" for a new id.
+    PAIR: the remap's pair kind."""
     where = f"{row.file}:{row.line} {row.spelling}"
-    if not kept:
+    if not old_id:
         return [Change(NEW, row.id, where)]
     if before is None:
         return [Change(ADDED, row.id)]
     changes = []
-    if kind != remap.EXACT:
-        changes.append(Change(REMAPPED, row.id, f"{where}: {kind} pair, was {before.spelling}"))
+    if pair != remap.EXACT:
+        changes.append(Change(REMAPPED, row.id, f"{where}: {pair} pair, was {before.spelling}"))
     moved = [f"{label} {old_tier} to {new_tier}" for label, old_tier, new_tier in
              (("meaning", before.tier, row.tier), ("spelling", before.spelling_tier, row.spelling_tier))
              if old_tier != new_tier]
     if moved:
         changes.append(Change(TIER, row.id, f"{where}: {', '.join(moved)}"))
-    old_texts, new_texts = _texts(before.candidates), _texts(row.candidates)
+    old_texts, new_texts = before.texts, row.texts
     if old_texts != new_texts:
         added = [text for text in new_texts if text not in old_texts]
         removed = [text for text in old_texts if text not in new_texts]
@@ -253,10 +251,6 @@ def _moved(before: Row | None, row: Row, kept: str, kind: str) -> list:
     if before.fingerprint != row.fingerprint and not changes:
         changes.append(Change(RECHECKED, row.id))
     return changes
-
-
-def _texts(candidates: str) -> list:
-    return candidates.split("; ") if candidates else []
 
 
 @dataclass(frozen=True)
@@ -281,14 +275,13 @@ def commit(loaded, found, today: str) -> Commit:
     found.previous = Counter(site.kind for site in old) if live else None
     covered = [record for record in found.records if record.covered]
     new = [remap.Site(record.owner, record.kind, record.target, record.slot, record.expression, record.value,
-                      record.context, "", record.file, record.line, record.column) for record in covered]
+                      record.context, file=record.file, line=record.line, column=record.column) for record in covered]
     mapping = remap.remap(old, new, _revaluer(found, loaded.target.config.profile), loaded.scores())
     fresh, high_water = remap.mint(mapping.ids.count(""), state.highest_minted(folder, live))
     fresh = iter(fresh)
-    for record, kept in zip(covered, mapping.ids):
-        record.id = kept or next(fresh)
-    sites = [remap.Site(site.owner, site.kind, site.target, site.slot, site.expression, site.value, site.context,
-                        record.id, site.file, site.line, site.column) for site, record in zip(new, covered)]
+    for record, old_id in zip(covered, mapping.ids):
+        record.id = old_id or next(fresh)
+    sites = [replace(site, id=record.id) for site, record in zip(new, covered)]
     rows, changes = build(covered, mapping, old, old_ledger, loaded.fingerprint(), today, decided)
     generation = state.commit(folder, {state.SITES: state.format_sites(sites), LEDGER: format_ledger(rows)},
                               high_water)

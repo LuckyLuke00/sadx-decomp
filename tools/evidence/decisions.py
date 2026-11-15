@@ -16,21 +16,19 @@ or ambiguous id gives a warning: its decision is orphaned. The new file is writt
 Standard library only.
 """
 
-import csv
 import hashlib
-import io
 import json
-import re
 import sys
-from dataclasses import dataclass, fields
+from dataclasses import astuple, dataclass, fields
 from pathlib import Path
+
+import outputs
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
 import osutil  # noqa: E402
 
 NOTES = "notes.csv"
 SCHEMA = 1
-HEADER = re.compile(r"# evidence-notes schema=(\d+)")
 CONFIRM, REJECT, REOPEN = "confirm", "reject", "reopen"
 DECISIONS = (CONFIRM, REJECT, REOPEN)
 ORPHAN_STATUSES = ("gone", "ambiguous")  # ledger statuses of an id that is not live
@@ -64,19 +62,12 @@ def read_notes(path: Path) -> list[Decision]:
     """The decisions in file order. A missing file holds none: no decision was made yet."""
     if not path.is_file():
         return []
-    first, _, rest = path.read_bytes().decode("utf-8").partition("\n")
-    match = HEADER.fullmatch(first)
-    if match is None:
-        raise DecisionError(f"{path}: not a notes file, its first line is {first[:60]!r}")
-    if int(match[1]) != SCHEMA:
-        raise DecisionError(f"{path}: notes schema {match[1]}, this tool reads schema {SCHEMA}")
-    reader = csv.DictReader(io.StringIO(rest))
-    if tuple(reader.fieldnames or ()) != COLUMNS:
-        raise DecisionError(f"{path}: the columns must be {','.join(COLUMNS)}")
-    found = [Decision(**row) for row in reader]
-    for line, item in enumerate(found, start=3):
-        if item.decision not in DECISIONS:
-            raise DecisionError(f"{path}:{line}: unknown decision {item.decision!r}")
+    found = []
+    for where, values in outputs.schema_rows(path.read_text(encoding="utf-8"), str(path), SCHEMA, COLUMNS,
+                                             DecisionError):
+        if values["decision"] not in DECISIONS:
+            raise DecisionError(f"{where}: unknown decision {values['decision']!r}")
+        found.append(Decision(**values))
     return found
 
 
@@ -92,13 +83,7 @@ def describe(decision: Decision) -> str:
 
 
 def format_notes(decisions: list[Decision]) -> bytes:
-    out = io.StringIO()
-    out.write(f"# evidence-notes schema={SCHEMA}\n")
-    writer = csv.writer(out, lineterminator="\n")
-    writer.writerow(COLUMNS)
-    for item in decisions:
-        writer.writerow([getattr(item, column) for column in COLUMNS])
-    return out.getvalue().encode("utf-8")
+    return outputs.schema_text(NOTES, SCHEMA, COLUMNS, (astuple(item) for item in decisions)).encode("utf-8")
 
 
 def spelled_candidate(text: str, aliases: dict) -> str | None:
@@ -125,7 +110,7 @@ def decide(folder: Path, rows: dict, site_id: str, decision: str, candidate: str
     row = rows.get(site_id)
     if row is None:
         raise DecisionError(f"{site_id}: no such id in the ledger")
-    texts = row.candidates.split("; ") if row.candidates else []
+    texts = row.texts
     if decision == REOPEN:
         if candidate:
             raise DecisionError("reopen takes no candidate")

@@ -18,6 +18,7 @@ import fields  # noqa: E402
 import inventory  # noqa: E402
 import inventorytests  # noqa: E402
 import ledger  # noqa: E402
+import remap  # noqa: E402
 import state  # noqa: E402
 
 DAYS = ("2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04")
@@ -57,7 +58,8 @@ def check_format() -> list[str]:
     lines = data.decode("utf-8").split("\n")
     for broken, wanted in ((b"id,kind\n", "not a ledger file"),
                            (data.replace(b"schema=2", b"schema=1"), "ledger schema 1"),
-                           ("\n".join([lines[0], "id,kind"] + lines[2:]).encode("utf-8"), "the ledger columns")):
+                           ("\n".join([lines[0], "id,kind"] + lines[2:]).encode("utf-8"),
+                            "ledger.csv: the columns must be")):
         try:
             ledger.parse_ledger(broken)
             failures.append(f"no error for {wanted!r}")
@@ -122,9 +124,7 @@ def check_runs() -> list[str]:
         files["inc/vendor.h"] = files["inc/vendor.h"].replace("#define XXF_C 0x4\n",
                                                               "#define XXF_C 0x4\n#define XXF_AB 0x3\n")
         loaded, rows = inventorytests.repository(temp, files)
-        (folder / "argmap.csv").write_text(inventorytests.ARGMAP.replace(
-            "xxFlags,1,flags,XXF_,header prototype", "xxFlags,1,flags,XXF_,unverified"), encoding="utf-8")
-        rows = inventorytests.argmap.read_argmap(folder / "argmap.csv")
+        rows = inventorytests.unverified_argmap(folder)
         inventorytests.committed(loaded, rows, DAYS[3])
         found, text = live_ledger(folder), changes_text(folder)
         tiers = text.split(f"## {ledger.TIER}")[-1].split("## ")[0]
@@ -146,10 +146,9 @@ def check_placeholders() -> list[str]:
     """A placeholder site is a placeholder row whose evidence names its kind and definition; a second run keeps its
     id. A call site is a value row."""
     failures = []
-    settings = dict(inventorytests.CONFIG, placeholders={"XX_ASSERT": "no-code", "XX_GUESS": "code"})
-    files = dict(inventorytests.FILES, **{"src/d.c": inventorytests.D_C})
     with tempfile.TemporaryDirectory() as temp:
-        loaded, rows = inventorytests.repository(temp, files, settings)
+        loaded, rows = inventorytests.repository(temp, inventorytests.PLACEHOLDER_FILES,
+                                                 inventorytests.PLACEHOLDER_SETTINGS)
         first, _ = inventorytests.committed(loaded, rows, DAYS[0])
         second, _ = inventorytests.committed(loaded, rows, DAYS[1])
         found = live_ledger(Path(temp) / "evidence")
@@ -181,7 +180,8 @@ def check_fields() -> list[str]:
     held = {record.callee: record.id for record in first.records if record.kind == inventory.FIELD and record.covered}
     if {found[key].kind for key in held.values()} != {ledger.VALUE}:
         failures.append(f"field rows {[(key, found[key].kind) for key in held.values()]}")
-    for callee, wanted in (("XX_OBJ.flags", "fieldmap header declaration vendor.h; member check passed; origins vendor"),
+    for callee, wanted in (("XX_OBJ.flags",
+                            "fieldmap header declaration vendor.h; member check passed; origins vendor"),
                            ("struct xxcnk.flags", "fieldmap unverified; member check failed: unverified row")):
         if not found[held[callee]].evidence.startswith(wanted):
             failures.append(f"{callee} evidence {found[held[callee]].evidence!r}")
@@ -233,9 +233,7 @@ def check_decisions() -> list[str]:
         if made.rows[flags].status != decisions.CONFIRMED or flags not in made.decided:
             failures.append(f"a confirmed row: {made.rows[flags]}")
 
-        (folder / "argmap.csv").write_text(inventorytests.ARGMAP.replace(
-            "xxFlags,1,flags,XXF_,header prototype", "xxFlags,1,flags,XXF_,unverified"), encoding="utf-8")
-        _, made = inventorytests.committed(loaded, inventorytests.argmap.read_argmap(folder / "argmap.csv"), DAYS[2])
+        _, made = inventorytests.committed(loaded, inventorytests.unverified_argmap(folder), DAYS[2])
         text = changes_text(folder)
         stale = text.split(f"## {ledger.STALE_DECISION}")[-1].split("## ")[0]
         if made.rows[flags].status != decisions.STALE or f"- {flags} src/a.c:" not in stale or (
@@ -266,10 +264,34 @@ def check_decisions() -> list[str]:
     return failures
 
 
+def check_live_status() -> list[str]:
+    """A live site keeps its state with no decision or after a reopen. A decision made on another review hash is
+    stale; else the decision sets the status."""
+    confirmed = decisions.Decision("S000001", decisions.CONFIRM, "XXF_A", "h1", "", TIME, "")
+    cases = [(inventory.OPEN, None, inventory.OPEN),
+             (inventory.APPLIED, replace(confirmed, decision=decisions.REOPEN), inventory.APPLIED),
+             (inventory.OPEN, replace(confirmed, hash="h0"), decisions.STALE),
+             (inventory.OPEN, confirmed, decisions.CONFIRMED),
+             (inventory.APPLIED, replace(confirmed, decision=decisions.REJECT), decisions.REJECTED)]
+    return [f"live_status({site_state}, {decision}) is not {wanted}" for site_state, decision, wanted in cases
+            if ledger.live_status(site_state, decision, "h1") != wanted]
+
+
+def check_order_change() -> list[str]:
+    """Candidates that only swap places are a candidate change with nothing added or removed."""
+    row = replace(ledger.Row(*[""] * len(ledger.COLUMNS)), id="S000001", file="src/a.c", line=3, spelling="3",
+                  candidates=ledger.JOIN.join(("XXF_B", "XXF_A")))
+    before = replace(row, candidates=ledger.JOIN.join(("XXF_A", "XXF_B")))
+    changes = ledger._moved(before, row, row.id, remap.EXACT)
+    wanted = [ledger.Change(ledger.CANDIDATES, row.id, "src/a.c:3 3: added none, removed none, order changed")]
+    return [] if changes == wanted else [f"an order change: {changes}"]
+
+
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
-    for check in (check_format, check_runs, check_placeholders, check_fields, check_transition, check_decisions):
+    for check in (check_format, check_runs, check_placeholders, check_fields, check_transition, check_decisions,
+                  check_live_status, check_order_change):
         failures += check()
     return failures
 
