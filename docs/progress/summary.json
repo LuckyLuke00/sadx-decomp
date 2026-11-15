@@ -26428,9 +26428,9 @@
   {
    "address": "0x0055ff10",
    "name": "CameraModeEditor",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26444,9 +26444,9 @@
   {
    "address": "0x00560140",
    "name": "CameraGuriGuri",
-   "accuracy": 0.06557377049180328,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26620,9 +26620,9 @@
   {
    "address": "0x005637a0",
    "name": "CameraAshland",
-   "accuracy": 0.0898876404494382,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -26791,6 +26791,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00566940",
+   "name": "CameraKnuckle",
+   "accuracy": 0.016359918200409,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -104874,5 +104882,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3e86f98eaa4e8dda4461bc903ca39656780878133a4271b191322f58bd1b8098"
+ "inputs_sha256": "357877fe9c188db1c7217a518b8eeecaf301a49e7b67a7ef7e0b13c5a7910f77"
 }

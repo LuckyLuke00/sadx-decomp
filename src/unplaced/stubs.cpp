@@ -1718,6 +1718,11 @@ signed char calcCameraPos(int coli_on)
 	return (signed char)0;
 }
 
+// STUB: SADX 0x00566940
+void CameraKnuckle(struct _OBJ_CAMERAPARAM *pParam)
+{
+}
+
 // STUB: SADX 0x00569420
 void CameraCollisitonCheckAdj(struct NJS_POINT3 *src, struct NJS_POINT3 *dst)
 {

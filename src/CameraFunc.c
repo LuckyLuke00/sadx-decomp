@@ -1,4 +1,7 @@
 #include "decls.h"
+extern int DAT_05ccdb50;
+struct _OBJ_CAMERAPARAM *pParam;
+extern struct taskwk *DAT_05b42970;
 void sonicCameraAvoidObstacle();
 extern int DAT_05ccdbd8;
 extern int DAT_05ccdafc;
@@ -97,9 +100,50 @@ void CameraAdvertise(struct _OBJ_CAMERAPARAM *pParam)
 	*(int *)((char *)camcont_wp + 0x28) = 0;
 }
 
-// STUB: SADX 0x0055ff10
+// FUNCTION: SADX 0x0055ff10
 void CameraModeEditor(struct _OBJ_CAMERAPARAM *pParam)
 {
+	short local_ci;
+	short local_10m;
+	short local_14;
+	short local_8g;
+	*(float *)((char *)camcont_wp + 0x18) = DAT_05b42970->pos.x;
+	*(float *)((char *)camcont_wp + 0x1c) = DAT_05b42970->pos.y;
+	*(float *)((char *)camcont_wp + 0x20) = DAT_05b42970->pos.z;
+	*(int *)((char *)camcont_wp + 0x2c) = 0;
+	if ((DAT_05b93264[3]->on & 8) != 0)
+	{
+		local_ci = (short)(DAT_05b93264[3]->x1 << 8);
+		local_10m = (short)(DAT_05b93264[3]->y1 << 8);
+		if (local_ci > -5000 && local_ci < 0x1388)
+		{
+			local_ci = 0;
+		}
+		if (local_10m > -5000 && local_10m < 0x1388)
+		{
+			local_10m = 0;
+		}
+		local_14 = (short)(((unsigned short)DAT_05b93264[3]->r << 8) - 0x8000);
+		local_8g = (short)(((unsigned short)DAT_05b93264[3]->l << 8) - 0x8000);
+		*(int *)((char *)camcont_wp + 0x28) += (int)local_ci / 64;
+		*(int *)((char *)camcont_wp + 0x24) += (int)local_10m / 64;
+		if ((DAT_05b93264[3]->on & 0x20000) != 0)
+		{
+			*(float *)((char *)camcont_wp + 8) += 2.0;
+		}
+		else
+		{
+			if ((DAT_05b93264[3]->on & 0x10000) != 0)
+			{
+				*(float *)((char *)camcont_wp + 8) -= 2.0;
+			}
+		}
+	}
+	if (*(float *)((char *)camcont_wp + 8) < 5.0)
+	{
+		*(float *)((char *)camcont_wp + 8) = 5.0f;
+	}
+	CamcontSetCameraTGTOFST(DAT_05b42a7c);
 }
 
 // FUNCTION: SADX 0x005600c0
@@ -115,9 +159,53 @@ void CameraModeEditorLOOKAT(struct _OBJ_CAMERAPARAM *pParam)
 	CamcontSetCameraLOOKAT(DAT_05b42a7c);
 }
 
-// STUB: SADX 0x00560140
+// FUNCTION: SADX 0x00560140
 void CameraGuriGuri(struct _OBJ_CAMERAPARAM *pParam)
 {
+	short local_ci;
+	short local_10m;
+	unsigned short local_14;
+	unsigned short local_8g;
+	*(float *)((char *)camcont_wp + 0x18) = DAT_05baf368[0]->pos.x;
+	*(float *)((char *)camcont_wp + 0x1c) = DAT_05baf368[0]->pos.y;
+	*(float *)((char *)camcont_wp + 0x20) = DAT_05baf368[0]->pos.z;
+	*(int *)((char *)camcont_wp + 0x2c) = 0;
+	if ((DAT_05b932e8[1].press & 2) != 0)
+	{
+		*(float *)((char *)camcont_wp + 8) = 50.0;
+		*(int *)((char *)camcont_wp + 0x24) = -2048;
+	}
+	local_ci = (short)(DAT_05b932e8[0].x1 << 8);
+	local_10m = (short)(DAT_05b932e8[0].y1 << 8);
+	if (local_ci > -5000 && local_ci < 0x1388)
+	{
+		local_ci = 0;
+	}
+	if (local_10m > -5000 && local_10m < 0x1388)
+	{
+		local_10m = 0;
+	}
+	local_14 = (unsigned short)(((unsigned short)DAT_05b932e8[0].r << 8) - 0x8000);
+	local_8g = (unsigned short)(((unsigned short)DAT_05b932e8[0].l << 8) - 0x8000);
+	*(float *)((char *)camcont_wp + 8) += (float)(int)local_14 / 10000.0;
+	*(float *)((char *)camcont_wp + 8) -= (float)(int)local_8g / 10000.0;
+	*(int *)((char *)camcont_wp + 0x28) += (int)local_ci / 64;
+	*(int *)((char *)camcont_wp + 0x24) += (int)local_10m / 64;
+	if ((DAT_05b932e8[0].on & 1) != 0)
+	{
+		*(float *)((char *)camcont_wp + 8) += 2.0;
+	}
+	else
+	{
+		if ((DAT_05b932e8[0].on & 0x100) != 0)
+		{
+			*(float *)((char *)camcont_wp + 8) -= 2.0;
+		}
+	}
+	if (*(float *)((char *)camcont_wp + 8) < 5.0)
+	{
+		*(float *)((char *)camcont_wp + 8) = 5.0f;
+	}
 }
 
 // STUB: SADX 0x00560a30
@@ -273,9 +361,42 @@ void CameraLine(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 
-// STUB: SADX 0x005637a0
+// FUNCTION: SADX 0x005637a0
 void CameraAshland(struct _OBJ_CAMERAPARAM *pParam)
 {
+	struct taskwk *local_8;
+	local_8 = DAT_05baf368[0];
+	if (pParam->ulTimer == 0)
+	{
+		DAT_05ccdb50 = 0;
+	}
+	if (GetCameraMode() >= 0x14 && GetCameraMode() <= 0x16)
+	{
+		if (DAT_05ccdb50 != 0)
+		{
+			CameraKnuckle(pParam);
+			if ((DAT_05b932e8[0].l << 8) - 0x8000 <= 0x80 && (DAT_05b932e8[0].r << 8) - 0x8000 <= 0x80 && DAT_05b4297c == 0)
+			{
+				DAT_05ccdb50 = 0;
+				SetAdjustMode(0x1a);
+			}
+			return;
+		}
+		else
+		{
+			if (((DAT_05b932e8[0].l << 8) - 0x8000 > 0x80 || (DAT_05b932e8[0].r << 8) - 0x8000 > 0x80) && CheckPadReadMode() != 0)
+			{
+				DAT_05ccdb50 = 1;
+			}
+		}
+	}
+	*(float *)((char *)camcont_wp + 0x0c) = pParam->xCamPos;
+	*(float *)((char *)camcont_wp + 0x10) = pParam->yCamPos;
+	*(float *)((char *)camcont_wp + 0x14) = pParam->zCamPos;
+	*(float *)((char *)camcont_wp + 0x18) = local_8->pos.x;
+	*(float *)((char *)camcont_wp + 0x1c) = local_8->pos.y + 7.0;
+	*(float *)((char *)camcont_wp + 0x20) = local_8->pos.z;
+	gravDispose3(pParam);
 }
 
 // FUNCTION: SADX 0x00563900

@@ -6173,6 +6173,9 @@ int DAT_05b42968;
 // GLOBAL: SADX 0x05b4296c
 void *DAT_05b4296c;
 
+// GLOBAL: SADX 0x05b42970
+struct taskwk *DAT_05b42970;
+
 // GLOBAL: SADX 0x05b42974
 struct _OBJ_CAMERAENTRY *DAT_05b42974;
 
@@ -7198,6 +7201,9 @@ float DAT_05ccdb40;
 
 // GLOBAL: SADX 0x05ccdb44
 struct NJS_POINT3 DAT_05ccdb44;
+
+// GLOBAL: SADX 0x05ccdb50
+int DAT_05ccdb50;
 
 // GLOBAL: SADX 0x05ccdb54
 long DAT_05ccdb54;
