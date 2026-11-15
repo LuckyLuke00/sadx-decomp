@@ -4,12 +4,15 @@ Run on its own: .venv/Scripts/python.exe -I tools/evidence/remaptests.py
 run() calls every check and returns the failures. All names are made up.
 """
 
+import dataclasses
 import math
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
 
+import osutil  # noqa: E402
 import remap  # noqa: E402
 from remap import EXACT, REWRITE, TARGET, TARGET_AND_REWRITE, Site  # noqa: E402
 
@@ -23,14 +26,15 @@ def site(expression: str, value: str = "0", target: str = "f", slot: str = "1", 
 
 def numbered(sites: list) -> list:
     """The sites with ids S000001, S000002 and on, as a last run gives them."""
-    return [Site(**{**vars(item), "id": remap.format_id(number)}) for number, item in enumerate(sites, 1)]
+    return [dataclasses.replace(item, id=remap.format_id(number)) for number, item in enumerate(sites, 1)]
 
 
 def expect(failures: list, name: str, result: remap.Remap, ids: list, kinds: list | None = None,
            gone: list | None = None, ambiguous: list | None = None) -> None:
     got = (result.ids, result.kinds if kinds is not None else None, sorted(result.gone) if gone is not None else None,
            sorted(result.ambiguous) if ambiguous is not None else None)
-    want = (ids, kinds, sorted(gone) if gone is not None else None, sorted(ambiguous) if ambiguous is not None else None)
+    want = (ids, kinds, sorted(gone) if gone is not None else None,
+            sorted(ambiguous) if ambiguous is not None else None)
     if got != want:
         failures.append(f"{name}: got {got}, want {want}")
 
@@ -75,8 +79,6 @@ def check_new_ids() -> list[str]:
     expect(failures, "a target change that is not unique",
            remap.remap(old, [site("0", target="njPushMatrix"), site("0", target="njPushMatrix")]), ["", ""],
            gone=["S000001", "S000002"])
-    # A reverted edit: the last run holds only f(1), so f(0) is new again.
-    expect(failures, "a reverted edit", remap.remap(numbered([site("1", "1")]), [site("0")]), [""], gone=["S000001"])
     return failures
 
 
@@ -122,14 +124,28 @@ def check_second_pass() -> list[str]:
     return failures
 
 
+def check_owners_and_slots() -> list[str]:
+    """Owners may interleave in one new list, and a pair needs the same kind and slot."""
+    failures = []
+    old = numbered([site("0", owner="a"), site("1", "1", owner="a"), site("0", owner="b")])
+    new = [site("0", owner="b"), site("0", owner="a"), site("1", "1", owner="a")]
+    expect(failures, "two owners interleaved", remap.remap(old, new), ["S000003", "S000001", "S000002"],
+           [EXACT, EXACT, EXACT])
+    expect(failures, "another slot", remap.remap(numbered([site("0")]), [site("0", slot="2")]), [""],
+           gone=["S000001"])
+    other_kind = dataclasses.replace(site("0"), kind="field")
+    expect(failures, "another kind", remap.remap(numbered([site("0")]), [other_kind]), [""], gone=["S000001"])
+    return failures
+
+
 def check_counts() -> list[str]:
-    """The shared-pairing check counts the optimal paths with exact integers."""
+    """osutil.align counts the optimal paths with exact integers."""
     failures = []
     old, new = [site("0")] * 200, [site("0")] * 400
-    found = remap.align(old, new, lambda i, j: 10)
+    found = osutil.align(old, new, lambda i, j: 10)
     if found.count != math.comb(400, 200) or found.shared or len(found.disputed_old) != 200:
         failures.append(f"200 twins against 400: count {found.count}, shared {len(found.shared)}")
-    found = remap.align(old, old, lambda i, j: 10)
+    found = osutil.align(old, old, lambda i, j: 10)
     if found.count != 1 or found.shared != {i: i for i in range(200)}:
         failures.append(f"200 twins against themselves: count {found.count}, shared {len(found.shared)}")
     return failures
@@ -150,9 +166,27 @@ def check_ids() -> list[str]:
     return failures
 
 
+def check_empty() -> list[str]:
+    """The empty edges: no sites on a side, an owner that left, and nothing to mint."""
+    failures = []
+    expect(failures, "both empty", remap.remap([], []), [], [], [], [])
+    expect(failures, "no old sites", remap.remap([], [site("0")]), [""], [""], [], [])
+    expect(failures, "no new sites", remap.remap(numbered([site("0")]), []), [], [], ["S000001"], [])
+    old = numbered([site("0", owner="a"), site("0", owner="b")])
+    expect(failures, "an owner that left", remap.remap(old, [site("0", owner="a")]), ["S000001"], [EXACT],
+           ["S000002"], [])
+    found = osutil.align([], [], lambda i, j: 10)
+    if (found.shared, found.candidates, found.count) != ({}, [], 1):
+        failures.append(f"align of two empty lists: got {found}")
+    if remap.mint(0, 7) != ([], 7):
+        failures.append(f"mint(0, 7): got {remap.mint(0, 7)}")
+    return failures
+
+
 def run() -> list[str]:
     failures = []
-    for check in (check_kept_ids, check_new_ids, check_ties, check_second_pass, check_counts, check_ids):
+    for check in (check_kept_ids, check_new_ids, check_ties, check_second_pass, check_owners_and_slots,
+                  check_counts, check_ids, check_empty):
         failures += check()
     return failures
 

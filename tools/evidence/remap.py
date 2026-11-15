@@ -22,8 +22,13 @@ identical sites changed, those sites become ambiguous instead.
 Standard library only.
 """
 
+import sys
 from collections import Counter
 from dataclasses import dataclass, field
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
+import osutil  # noqa: E402
 
 ID_PREFIX, ID_DIGITS = "S", 6
 EXACT, REWRITE, TARGET, TARGET_AND_REWRITE = "exact", "rewrite", "target", "target and rewrite"
@@ -65,15 +70,6 @@ class Remap:
     suggestions: list = field(default_factory=list)  # (old id, new index) for ambiguous rows, same context first
 
 
-@dataclass
-class Alignment:
-    shared: dict  # old index -> new index, for the pairs every optimal alignment makes
-    disputed_old: set  # old indices on an optimal pair that is not shared
-    disputed_new: set
-    candidates: list  # (old index, new index) of every optimal pair that is not shared
-    count: int  # the number of optimal paths
-
-
 def format_id(number: int) -> str:
     return f"{ID_PREFIX}{number:0{ID_DIGITS}d}"
 
@@ -87,52 +83,6 @@ def id_number(text: str) -> int:
 def mint(count: int, high_water: int) -> tuple[list[str], int]:
     """COUNT fresh ids above HIGH_WATER, and the new high-water mark."""
     return [format_id(high_water + offset) for offset in range(1, count + 1)], high_water + count
-
-
-def align(old: list, new: list, score) -> Alignment:
-    """The shared and disputed pairs of OLD against NEW. SCORE(i, j) gives a pair's score, or None when the two
-    cannot pair. Gaps score 0."""
-    rows, columns = len(old), len(new)
-    pairs = [[score(i, j) for j in range(columns)] for i in range(rows)]
-    forward = [[0] * (columns + 1) for _ in range(rows + 1)]  # the best score from the start to (i, j)
-    ways = [[0] * (columns + 1) for _ in range(rows + 1)]  # the optimal paths from the start to (i, j)
-    for i in range(rows + 1):
-        for j in range(columns + 1):
-            if i == 0 or j == 0:
-                ways[i][j] = 1
-                continue
-            steps = [(forward[i - 1][j], ways[i - 1][j]), (forward[i][j - 1], ways[i][j - 1])]
-            if pairs[i - 1][j - 1] is not None:
-                steps.append((forward[i - 1][j - 1] + pairs[i - 1][j - 1], ways[i - 1][j - 1]))
-            best = max(value for value, _ in steps)
-            forward[i][j] = best
-            ways[i][j] = sum(count for value, count in steps if value == best)
-    backward = [[0] * (columns + 1) for _ in range(rows + 1)]  # the best score from (i, j) to the end
-    back_ways = [[0] * (columns + 1) for _ in range(rows + 1)]
-    for i in range(rows, -1, -1):
-        for j in range(columns, -1, -1):
-            if i == rows or j == columns:
-                back_ways[i][j] = 1
-                continue
-            steps = [(backward[i + 1][j], back_ways[i + 1][j]), (backward[i][j + 1], back_ways[i][j + 1])]
-            if pairs[i][j] is not None:
-                steps.append((backward[i + 1][j + 1] + pairs[i][j], back_ways[i + 1][j + 1]))
-            best = max(value for value, _ in steps)
-            backward[i][j] = best
-            back_ways[i][j] = sum(count for value, count in steps if value == best)
-    total, count = forward[rows][columns], ways[rows][columns]
-    found = Alignment({}, set(), set(), [], count)
-    for i in range(rows):
-        for j in range(columns):
-            if pairs[i][j] is None or forward[i][j] + pairs[i][j] + backward[i + 1][j + 1] != total:
-                continue
-            if ways[i][j] * back_ways[i + 1][j + 1] == count:
-                found.shared[i] = j
-            else:
-                found.disputed_old.add(i)
-                found.disputed_new.add(j)
-                found.candidates.append((i, j))
-    return found
 
 
 def _pair_kind(old: Site, old_value: str, new: Site, unique_old: Counter, unique_new: Counter) -> str | None:
@@ -153,27 +103,30 @@ def _remap_owner(old: list, new: list, revalue, scores: Scores, result: Remap, i
     values = [revalue(site) or site.value for site in old]
     unique_old = Counter((site.kind, site.slot, site.expression) for site in old)
     unique_new = Counter((site.kind, site.slot, site.expression) for site in new)
-    kinds = {}
+
+    def kind(i, j):
+        return _pair_kind(old[i], values[i], new[j], unique_old, unique_new)
 
     def score(i, j):
-        kind = _pair_kind(old[i], values[i], new[j], unique_old, unique_new)
-        kinds[i, j] = kind
-        return None if kind is None else getattr(scores, kind)
+        pair = kind(i, j)
+        return None if pair is None else getattr(scores, pair)
 
-    found = align(old, new, score)
+    found = osutil.align(old, new, score)
     for i, j in found.shared.items():
-        result.ids[indices[j]], result.kinds[indices[j]] = old[i].id, kinds[i, j]
+        result.ids[indices[j]], result.kinds[indices[j]] = old[i].id, kind(i, j)
     paired_old = set(found.shared) | found.disputed_old
     gone = [i for i in range(len(old)) if i not in paired_old]
     fresh = [j for j in range(len(new)) if j not in found.shared.values()]
     # Second pass: a gone row and a fresh row whose target and expression both changed.
-    unpaired_old = Counter((old[i].kind, old[i].slot, values[i]) for i in range(len(old)) if i not in found.shared)
-    unpaired_new = Counter((new[j].kind, new[j].slot, new[j].value) for j in fresh)
+    loose_old = [(site.kind, site.slot, value) for site, value in zip(old, values)]
+    loose_new = [(site.kind, site.slot, site.value) for site in new]
+    unpaired_old = Counter(loose_old[i] for i in range(len(old)) if i not in found.shared)
+    unpaired_new = Counter(loose_new[j] for j in fresh)
     for i in list(gone):
-        key = (old[i].kind, old[i].slot, values[i])
+        key = loose_old[i]
         if not values[i] or unpaired_old[key] != 1 or unpaired_new[key] != 1:
             continue
-        j = next(j for j in fresh if (new[j].kind, new[j].slot, new[j].value) == key)
+        j = next(index for index in fresh if loose_new[index] == key)
         if j in found.disputed_new or old[i].target == new[j].target or old[i].expression == new[j].expression:
             continue
         result.ids[indices[j]], result.kinds[indices[j]] = old[i].id, TARGET_AND_REWRITE
@@ -189,11 +142,8 @@ def remap(old: list, new: list, revalue=lambda site: "", scores: Scores = Scores
     in owner order. REVALUE(site) gives an old site's value under the current rules, or "" when it no longer
     evaluates."""
     result = Remap([""] * len(new), [""] * len(new))
-    old_by_owner, new_by_owner = {}, {}
-    for site in old:
-        old_by_owner.setdefault(site.owner, []).append(site)
-    for index, site in enumerate(new):
-        new_by_owner.setdefault(site.owner, []).append(index)
+    old_by_owner = osutil.group_by(old, lambda site: site.owner)
+    new_by_owner = osutil.group_by(range(len(new)), lambda index: new[index].owner)
     for owner, indices in new_by_owner.items():
         _remap_owner(old_by_owner.pop(owner, []), [new[index] for index in indices], revalue, scores, result, indices)
     for sites in old_by_owner.values():
