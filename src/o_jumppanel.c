@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_TEXLIST texlist_eff_jp[8];
+extern struct NJS_SPRITE spr_eff_jp;
 
 // GLOBAL: SADX 0x0263d728
 static struct CCL_INFO object_c_info[4];
@@ -255,9 +257,43 @@ void EffectJumpPannel(struct task *tp)
 	EffJPDisp(tp);
 }
 
-// STUB: SADX 0x005b41e0
+// FUNCTION: SADX 0x005b41e0
 void EffJPDisp(struct task *tp)
 {
+	struct taskwk *local_8g;
+	int local_cg;
+
+	local_8g = tp->twp;
+	local_cg = *(unsigned char *)((char *)local_8g + 3) >> 1;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	spr_eff_jp.tlist = &texlist_eff_jp[local_cg];
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 0xa);
+	njPushMatrix(0);
+	njTranslateV(0, &local_8g->pos);
+	if (*(int *)((char *)local_8g + 0x1c) != 0)
+	{
+		njRotateZ(0, *(unsigned short *)((char *)local_8g + 0x1c));
+	}
+	if (*(int *)((char *)local_8g + 0x14) != 0)
+	{
+		njRotateX(0, *(unsigned short *)((char *)local_8g + 0x14));
+	}
+	if (*(int *)((char *)local_8g + 0x18) != 0)
+	{
+		njRotateY(0, *(unsigned short *)((char *)local_8g + 0x18));
+	}
+	if (1 != 0)
+	{
+		njRotateX(0, 0x4000);
+	}
+	late_DrawSprite3D(&spr_eff_jp, local_cg, 0x20, 4);
+	njPopMatrix(1);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // STUB: SADX 0x005b42f0

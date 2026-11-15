@@ -158,6 +158,9 @@ int DAT_0099b0a8;
 // GLOBAL: SADX 0x0099b698
 const struct FlickyData flickydata[15] = {};
 
+// GLOBAL: SADX 0x0099ca80
+struct NJS_SPRITE sprite_particle_waka;
+
 // GLOBAL: SADX 0x009bf710
 int DAT_009bf710[5];
 
@@ -1493,6 +1496,9 @@ int DAT_02631abc;
 // GLOBAL: SADX 0x02631ac0
 int DAT_02631ac0;
 
+// GLOBAL: SADX 0x02639ac4
+struct CUSTOM_OBJ ball_model;
+
 // GLOBAL: SADX 0x02639adc
 struct NJS_POINT3 vec[2];
 
@@ -1544,6 +1550,12 @@ struct CCL_INFO DAT_0263d6f4;
 // GLOBAL: SADX 0x0263d7e8
 struct NJS_TEXLIST texlist_yellow_numbers[10];
 
+// GLOBAL: SADX 0x0263d838
+struct NJS_TEXLIST texlist_eff_jp[8];
+
+// GLOBAL: SADX 0x0263d8c4
+struct NJS_SPRITE spr_eff_jp;
+
 // GLOBAL: SADX 0x0263da30
 struct FACETBL *faceTbl[2];
 
@@ -1591,6 +1603,9 @@ struct _OBJ_LANDTABLE *objLandTable[43][8];
 
 // GLOBAL: SADX 0x0263ef48
 struct CUSTOM_OBJ panel_model[2];
+
+// GLOBAL: SADX 0x0263f00c
+struct NJS_SPRITE sprite_panjet;
 
 // GLOBAL: SADX 0x0263f0e8
 struct particle_entry particle_rocketsmoke;
@@ -4819,6 +4834,15 @@ struct obj DAT_05a8c05c;
 
 // GLOBAL: SADX 0x05a8c248
 struct obj DAT_05a8c248;
+
+// GLOBAL: SADX 0x05a8de70
+struct CUSTOM_OBJ *DAT_05a8de70;
+
+// GLOBAL: SADX 0x05a8e650
+struct CUSTOM_OBJ *DAT_05a8e650;
+
+// GLOBAL: SADX 0x05a8f6b4
+void *DAT_05a8f6b4;
 
 // GLOBAL: SADX 0x05a9014c
 struct obj DAT_05a9014c;

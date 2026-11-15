@@ -1,4 +1,8 @@
 #include "decls.h"
+extern struct CUSTOM_OBJ *DAT_05a8de70;
+extern struct CUSTOM_OBJ *DAT_05a8e650;
+extern struct CUSTOM_OBJ ball_model;
+extern void *DAT_05a8f6b4;
 extern int DAT_05eda288;
 extern float DAT_05eda270;
 extern float DAT_05eda274;
@@ -43,9 +47,45 @@ void savepointExit(struct task *tp)
 	}
 }
 
-// STUB: SADX 0x005a58f0
+// FUNCTION: SADX 0x005a58f0
 void savepointDisplay(struct task *tp)
 {
+	struct taskwk *local_8;
+
+	local_8 = tp->twp;
+	if (dsCheckViewV(&local_8->pos, 20.0f) == 0)
+	{
+		return;
+	}
+	DAT_05eda248 = *(void **)tp->awp;
+	njPushMatrix(NULL);
+	njTranslateV(NULL, &local_8->pos);
+	if (local_8->ang.z != 0)
+	{
+		njRotateZ(NULL, (unsigned short)local_8->ang.z);
+	}
+	if (local_8->ang.x != 0)
+	{
+		njRotateX(NULL, (unsigned short)local_8->ang.x);
+	}
+	if (local_8->ang.y != 0)
+	{
+		njRotateY(NULL, (unsigned short)local_8->ang.y);
+	}
+	SetRegularTexture();
+	if (local_8->mode != 1)
+	{
+		*(int *)((char *)*(void **)((char *)DAT_05a8e650 + 0x10) + 0xc) = 0x3c;
+		*(int *)((char *)*(void **)((char *)DAT_05a8de70 + 0x10) + 0xc) = 0x3c;
+	}
+	else
+	{
+		*(int *)((char *)*(void **)((char *)DAT_05a8e650 + 0x10) + 0xc) = 0x3b;
+		*(int *)((char *)*(void **)((char *)DAT_05a8de70 + 0x10) + 0xc) = 0x3b;
+	}
+	local_8->counter.ptr = &DAT_05a8f6b4;
+	DrawCustomObject((struct obj *)local_8->counter.ptr, &ball_model);
+	njPopMatrix(1);
 }
 
 // STUB: SADX 0x005a5a20

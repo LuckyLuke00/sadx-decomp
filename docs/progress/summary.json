@@ -32676,9 +32676,9 @@
   {
    "address": "0x005a58f0",
    "name": "savepointDisplay",
-   "accuracy": 0.08602150537634409,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34228,9 +34228,9 @@
   {
    "address": "0x005b41e0",
    "name": "EffJPDisp",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -34932,9 +34932,9 @@
   {
    "address": "0x005b94c0",
    "name": "DrawRocketJet",
-   "accuracy": 0.04938271604938271,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -42393,6 +42393,22 @@
    "accuracy": 0.1568627450980392,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x0061ed90",
+   "name": "Wa_new",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0061ee70",
+   "name": "dispWa_new",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -70110,9 +70126,9 @@
   {
    "address": "0x008c22b0",
    "name": "rotate",
-   "accuracy": 0.08695652173913043,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -72804,6 +72820,14 @@
    "library": false
   },
   {
+   "address": "0x008e1ba0",
+   "name": "DoSceneChange",
+   "accuracy": 0.10810810810810811,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x008e1c90",
    "name": "CollisionSceneChanger",
    "accuracy": 1.0,
@@ -72814,9 +72838,9 @@
   {
    "address": "0x008e1dc0",
    "name": "CollisionSceneChangerRegular",
-   "accuracy": 0.050955414012738856,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -89786,6 +89810,13 @@
    "library": false
   },
   {
+   "address": "0x0099ca80",
+   "name": "sprite_particle_waka",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x009b8010",
    "name": "WarpColliInfo",
    "size": 192,
@@ -95022,6 +95053,13 @@
    "library": false
   },
   {
+   "address": "0x02639ac4",
+   "name": "ball_model",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x02639adc",
    "name": "vec",
    "size": 24,
@@ -95148,6 +95186,20 @@
    "library": false
   },
   {
+   "address": "0x0263d838",
+   "name": "texlist_eff_jp",
+   "size": 64,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0263d8c4",
+   "name": "spr_eff_jp",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0263da30",
    "name": "faceTbl",
    "size": 8,
@@ -95256,6 +95308,13 @@
    "address": "0x0263ef48",
    "name": "panel_model",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0263f00c",
+   "name": "sprite_panjet",
+   "size": 32,
    "match": false,
    "library": false
   },
@@ -104829,6 +104888,27 @@
    "library": false
   },
   {
+   "address": "0x05a8de70",
+   "name": "DAT_05a8de70",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x05a8e650",
+   "name": "DAT_05a8e650",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x05a8f6b4",
+   "name": "DAT_05a8f6b4",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x05a9014c",
    "name": "DAT_05a9014c",
    "size": 52,
@@ -104992,5 +105072,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "5f3894c510f03417b42501c1f8928e37f533816394f0e59ef123ff53a3ed2f7d"
+ "inputs_sha256": "8cac98714e4d4b89706a4987f966f7cad592fcb0bf77b11519c58374e3ec2355"
 }

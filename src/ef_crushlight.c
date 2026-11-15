@@ -11,9 +11,49 @@ void execCrushLight(struct task *pTask)
 {
 }
 
-// STUB: SADX 0x008c22b0
+// FUNCTION: SADX 0x008c22b0
 void rotate(struct CRUSHLIGHT_WK *pCrushWk)
 {
+	int local_8g;
+	int local_cj;
+	int local_14;
+	int local_10;
+	if (*(int *)((char *)pCrushWk + 0x28) + *(int *)((char *)pCrushWk + 0x34) < -*(int *)((char *)pCrushWk + 0x40))
+	{
+		local_8g = -*(int *)((char *)pCrushWk + 0x40);
+	}
+	else
+	{
+		if (*(int *)((char *)pCrushWk + 0x28) + *(int *)((char *)pCrushWk + 0x34) > *(int *)((char *)pCrushWk + 0x40))
+		{
+			local_cj = *(int *)((char *)pCrushWk + 0x40);
+		}
+		else
+		{
+			local_cj = *(int *)((char *)pCrushWk + 0x28) + *(int *)((char *)pCrushWk + 0x34);
+		}
+		local_8g = local_cj;
+	}
+	*(int *)((char *)pCrushWk + 0x28) = local_8g;
+	if (*(int *)((char *)pCrushWk + 0x2c) + *(int *)((char *)pCrushWk + 0x38) < -*(int *)((char *)pCrushWk + 0x40))
+	{
+		local_10 = -*(int *)((char *)pCrushWk + 0x40);
+	}
+	else
+	{
+		if (*(int *)((char *)pCrushWk + 0x2c) + *(int *)((char *)pCrushWk + 0x38) > *(int *)((char *)pCrushWk + 0x40))
+		{
+			local_14 = *(int *)((char *)pCrushWk + 0x40);
+		}
+		else
+		{
+			local_14 = *(int *)((char *)pCrushWk + 0x2c) + *(int *)((char *)pCrushWk + 0x38);
+		}
+		local_10 = local_14;
+	}
+	*(int *)((char *)pCrushWk + 0x2c) = local_10;
+	*(int *)((char *)pCrushWk + 0x1c) = *(int *)((char *)pCrushWk + 0x1c) + *(int *)((char *)pCrushWk + 0x28);
+	*(int *)((char *)pCrushWk + 0x20) = *(int *)((char *)pCrushWk + 0x20) + *(int *)((char *)pCrushWk + 0x2c);
 }
 
 // FUNCTION: SADX 0x008c23b0

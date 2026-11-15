@@ -4054,6 +4054,11 @@ void dispBuyonBodySub(struct task *tp)
 {
 }
 
+// STUB: SADX 0x008e1ba0
+void DoSceneChange(int stageNo)
+{
+}
+
 // STUB: SADX 0x00903380
 extern void EV_Egm3Draw(struct task *)
 {

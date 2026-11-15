@@ -1,4 +1,5 @@
 #include "decls.h"
+extern struct NJS_SPRITE sprite_panjet;
 extern float DAT_05b3eab8[16];
 extern float DAT_05b3ebe0;
 extern float DAT_05b3ebe4;
@@ -338,9 +339,46 @@ void FUN_005b9490(struct task *param_1)
 	DAT_05edc104[(int)(signed char)(local_8->smode)] = 0;
 }
 
-// STUB: SADX 0x005b94c0
+// FUNCTION: SADX 0x005b94c0
 void DrawRocketJet(struct task *tp)
 {
+	struct taskwk *local_cg = tp->twp;
+	struct anywk *local_10g = tp->awp;
+	float local_8g;
+
+	if (ChkPause() == 0)
+	{
+		local_8g = local_10g->work.f[1] + 1.0;
+		if (local_8g >= 3.0)
+			local_8g = 0.0f;
+		local_10g->work.f[1] = local_8g;
+	}
+	else
+	{
+		local_8g = local_10g->work.f[1];
+	}
+	if (local_10g->work.ub[0] != 0 && DAT_05b9d838 == 0)
+	{
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 10);
+		njPushMatrix(0);
+		njTranslateV(0, &local_cg->pos);
+		if (local_cg->ang.y != 0)
+			njRotateY(0, (Angle)(unsigned short)local_cg->ang.y);
+		if (local_cg->ang.z != 0)
+			njRotateZ(0, (Angle)(unsigned short)local_cg->ang.z);
+		FUN_0067d830(0, -8.0f, 2.4f, -2.4f);
+		___njDrawSprite3D(&sprite_panjet, (int)local_8g, 0x30);
+		FUN_0067d830(0, 0.0f, 0.0f, 4.8f);
+		___njDrawSprite3D(&sprite_panjet, (int)local_8g, 0x30);
+		FUN_0067d830(0, 0.0f, -4.8f, 0.0f);
+		___njDrawSprite3D(&sprite_panjet, (int)local_8g, 0x30);
+		FUN_0067d830(0, 0.0f, 0.0f, -4.8f);
+		___njDrawSprite3D(&sprite_panjet, (int)local_8g, 0x30);
+		njPopMatrix(1);
+		___njColorBlendingMode(0, 8);
+		___njColorBlendingMode(1, 6);
+	}
 }
 
 // FUNCTION: SADX 0x005b96b0
