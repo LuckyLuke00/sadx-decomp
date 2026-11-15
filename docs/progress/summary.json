@@ -75948,7 +75948,7 @@
   {
    "address": "0x008f1ac0",
    "name": "_setlocale_set_cat",
-   "accuracy": 0.9955947136563876,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
@@ -91811,6 +91811,104 @@
    "library": true
   },
   {
+   "address": "0x00a63034",
+   "name": "__TI2?AVbad_exception@std@@",
+   "size": 16,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63044",
+   "name": "__CTA2?AVbad_exception@std@@",
+   "size": 12,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63050",
+   "name": "__CT??_R0?AVbad_exception@std@@@8??0bad_exception@std@@QAE@ABV01@@Z12",
+   "size": 28,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a633fc",
+   "name": "__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z12",
+   "size": 28,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63418",
+   "name": "__TI3?AVlength_error@std@@",
+   "size": 16,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63428",
+   "name": "__CTA3?AVlength_error@std@@",
+   "size": 16,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63438",
+   "name": "__CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z12",
+   "size": 28,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63454",
+   "name": "__TI3?AVout_of_range@std@@",
+   "size": 16,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63464",
+   "name": "__CTA3?AVout_of_range@std@@",
+   "size": 16,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63474",
+   "name": "__CT??_R0?AVout_of_range@std@@@8??0out_of_range@std@@QAE@ABV01@@Z12",
+   "size": 28,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63a5c",
+   "name": "__CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12",
+   "size": 28,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63a78",
+   "name": "__CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12",
+   "size": 28,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63a94",
+   "name": "__CTA2?AVbad_alloc@std@@",
+   "size": 12,
+   "match": false,
+   "library": true
+  },
+  {
+   "address": "0x00a63aa0",
+   "name": "__TI2?AVbad_alloc@std@@",
+   "size": 16,
+   "match": false,
+   "library": true
+  },
+  {
    "address": "0x01c6e418",
    "name": "DAT_01c6e418",
    "size": 4,
@@ -103644,7 +103742,7 @@
    "address": "0x04c7d038",
    "name": "_d_ind",
    "size": 8,
-   "match": false,
+   "match": true,
    "library": true
   },
   {
@@ -104210,5 +104308,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3821fae86229aacd4b4efc4a43645734b8f23088ec1e38ebb726ca0d8ec939d3"
+ "inputs_sha256": "168ea37294e1abc8a0311cea9ec53cc2f583e61e95f211a3d7b5da7c4de2e842"
 }

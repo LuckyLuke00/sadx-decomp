@@ -102,7 +102,11 @@ struct AvaStgActT;
 struct bankdata;
 struct bankdatalist;
 struct BEST3_CART;
+struct BEST3_SCORE;
+struct BEST3_TIME;
+struct BEST3_WEIGHT;
 struct BgTask;
+struct BIGGEST_WEIGHT;
 struct BOSSPLAYER_CREATE_PARAM;
 struct bosswk;
 struct bridge_model_info;
@@ -128,6 +132,7 @@ struct CharSelWk;
 struct childtaskset;
 struct CL_ObjInfo;
 struct CL_PolyInfo;
+struct CLEAR_TIME;
 struct cloud_scroll;
 struct cloudtbl;
 struct CMoviePolyData;
@@ -201,6 +206,7 @@ struct LE_LIGHT_ENV;
 struct LE_PALIGHT_ENV;
 struct LegModel;
 struct LightInfo;
+struct Magic_Base_SystemTime_t;
 struct MDHANDLE;
 struct MID_EXPLOSION_INFO;
 struct MiniGameSelWk;
@@ -283,6 +289,7 @@ struct SAlMsgTelop;
 struct SAlMsgWin;
 struct SAVE_DATA;
 struct SEQ_CLEAR_EQUIV;
+struct SEQ_DATA;
 struct SEQ_SECTION;
 struct SEQ_SECTIONTBL;
 struct SeqPrmType;
@@ -6062,3 +6069,146 @@ struct u4s {
     unsigned char u4_ACT8 : 4;
 };
 static_assert(sizeof(u4s) == 4, "sizeof u4s");
+
+struct CLEAR_TIME {
+    signed char m;
+    signed char s;
+    signed char f;
+};
+static_assert(sizeof(CLEAR_TIME) == 0x3, "sizeof CLEAR_TIME");
+
+struct BEST3_WEIGHT {
+    short weight[3];
+};
+static_assert(sizeof(BEST3_WEIGHT) == 0x6, "sizeof BEST3_WEIGHT");
+
+struct BIGGEST_WEIGHT {
+    short weight;
+    short type;
+};
+static_assert(sizeof(BIGGEST_WEIGHT) == 0x4, "sizeof BIGGEST_WEIGHT");
+
+struct BEST3_SCORE {
+    long score[3];
+};
+static_assert(sizeof(BEST3_SCORE) == 0xc, "sizeof BEST3_SCORE");
+
+struct BEST3_CART {
+    struct CLEAR_TIME time[3];
+    struct CLEAR_TIME lap[2];
+};
+static_assert(sizeof(BEST3_CART) == 0xf, "sizeof BEST3_CART");
+static_assert(offsetof(BEST3_CART, lap) == 0x9, "BEST3_CART::lap");
+
+struct BEST3_TIME {
+    struct CLEAR_TIME time[3];
+};
+static_assert(sizeof(BEST3_TIME) == 0x9, "sizeof BEST3_TIME");
+
+struct SEQ_DATA {
+    signed char time;
+    signed char s8pad;
+    short seqno;
+    short sec;
+    short nextsec;
+    unsigned short stage;
+    unsigned short destination;
+};
+static_assert(sizeof(SEQ_DATA) == 0xc, "sizeof SEQ_DATA");
+static_assert(offsetof(SEQ_DATA, seqno) == 0x2, "SEQ_DATA::seqno");
+static_assert(offsetof(SEQ_DATA, sec) == 0x4, "SEQ_DATA::sec");
+static_assert(offsetof(SEQ_DATA, nextsec) == 0x6, "SEQ_DATA::nextsec");
+static_assert(offsetof(SEQ_DATA, stage) == 0x8, "SEQ_DATA::stage");
+static_assert(offsetof(SEQ_DATA, destination) == 0xa, "SEQ_DATA::destination");
+
+struct Magic_Base_SystemTime_t {
+    unsigned short m_Year;
+    unsigned short m_Month;
+    unsigned short m_DayOfWeek;
+    unsigned short m_Day;
+    unsigned short m_Hour;
+    unsigned short m_Minute;
+    unsigned short m_Second;
+    unsigned short m_Milliseconds;
+};
+static_assert(sizeof(Magic_Base_SystemTime_t) == 0x10, "sizeof Magic_Base_SystemTime_t");
+
+struct SAVE_DATA {
+    long code;
+    long totalTime;
+    long bestScore[32];
+    struct CLEAR_TIME bestTime[28];
+    struct BEST3_WEIGHT bestWeight[4];
+    struct BIGGEST_WEIGHT biggestWeight[4];
+    short bestRing[32];
+    struct BEST3_SCORE miniShooting[2];
+    struct BEST3_SCORE miniShooting2[2];
+    struct BEST3_SCORE miniSnowBoard[2];
+    struct BEST3_SCORE miniSandBoard[2];
+    struct BEST3_SCORE miniMole;
+    struct BEST3_CART miniCart[6];
+    struct BEST3_TIME bossGame[6];
+    signed char emblem[17];
+    signed char option;
+    signed char charenge[7];
+    unsigned char lastPlayer;
+    unsigned char vibration;
+    signed char dummy;
+    unsigned short lastStage;
+    unsigned short lastAction;
+    signed char seqVars[64];
+    signed char evExecFlag[64];
+    signed char scPlayableFlag[8];
+    struct SEQ_DATA seqTable[8];
+    signed char flgCompletedActionStage[8][43];
+    unsigned char MissionData[60];
+    unsigned long u32TotalRing;
+    long M_bestScore[10];
+    struct CLEAR_TIME M_bestTime[10];
+    short M_bestRing[10];
+    signed char Align[2];
+    struct BEST3_SCORE M_miniSnowBoard;
+    struct BEST3_SCORE M_miniSandBoard;
+    struct BEST3_CART M_miniCart;
+    struct BEST3_TIME M_bossGame;
+    long M_emblem;
+    struct Magic_Base_SystemTime_t m_LastWritenTime;
+};
+static_assert(sizeof(SAVE_DATA) == 0x580, "sizeof SAVE_DATA");
+static_assert(offsetof(SAVE_DATA, bestScore) == 0x8, "SAVE_DATA::bestScore");
+static_assert(offsetof(SAVE_DATA, bestTime) == 0x88, "SAVE_DATA::bestTime");
+static_assert(offsetof(SAVE_DATA, bestWeight) == 0xdc, "SAVE_DATA::bestWeight");
+static_assert(offsetof(SAVE_DATA, biggestWeight) == 0xf4, "SAVE_DATA::biggestWeight");
+static_assert(offsetof(SAVE_DATA, bestRing) == 0x104, "SAVE_DATA::bestRing");
+static_assert(offsetof(SAVE_DATA, miniShooting) == 0x144, "SAVE_DATA::miniShooting");
+static_assert(offsetof(SAVE_DATA, miniShooting2) == 0x15c, "SAVE_DATA::miniShooting2");
+static_assert(offsetof(SAVE_DATA, miniSnowBoard) == 0x174, "SAVE_DATA::miniSnowBoard");
+static_assert(offsetof(SAVE_DATA, miniSandBoard) == 0x18c, "SAVE_DATA::miniSandBoard");
+static_assert(offsetof(SAVE_DATA, miniMole) == 0x1a4, "SAVE_DATA::miniMole");
+static_assert(offsetof(SAVE_DATA, miniCart) == 0x1b0, "SAVE_DATA::miniCart");
+static_assert(offsetof(SAVE_DATA, bossGame) == 0x20a, "SAVE_DATA::bossGame");
+static_assert(offsetof(SAVE_DATA, emblem) == 0x240, "SAVE_DATA::emblem");
+static_assert(offsetof(SAVE_DATA, option) == 0x251, "SAVE_DATA::option");
+static_assert(offsetof(SAVE_DATA, charenge) == 0x252, "SAVE_DATA::charenge");
+static_assert(offsetof(SAVE_DATA, lastPlayer) == 0x259, "SAVE_DATA::lastPlayer");
+static_assert(offsetof(SAVE_DATA, vibration) == 0x25a, "SAVE_DATA::vibration");
+static_assert(offsetof(SAVE_DATA, dummy) == 0x25b, "SAVE_DATA::dummy");
+static_assert(offsetof(SAVE_DATA, lastStage) == 0x25c, "SAVE_DATA::lastStage");
+static_assert(offsetof(SAVE_DATA, lastAction) == 0x25e, "SAVE_DATA::lastAction");
+static_assert(offsetof(SAVE_DATA, seqVars) == 0x260, "SAVE_DATA::seqVars");
+static_assert(offsetof(SAVE_DATA, evExecFlag) == 0x2a0, "SAVE_DATA::evExecFlag");
+static_assert(offsetof(SAVE_DATA, scPlayableFlag) == 0x2e0, "SAVE_DATA::scPlayableFlag");
+static_assert(offsetof(SAVE_DATA, seqTable) == 0x2e8, "SAVE_DATA::seqTable");
+static_assert(offsetof(SAVE_DATA, flgCompletedActionStage) == 0x348, "SAVE_DATA::flgCompletedActionStage");
+static_assert(offsetof(SAVE_DATA, MissionData) == 0x4a0, "SAVE_DATA::MissionData");
+static_assert(offsetof(SAVE_DATA, u32TotalRing) == 0x4dc, "SAVE_DATA::u32TotalRing");
+static_assert(offsetof(SAVE_DATA, M_bestScore) == 0x4e0, "SAVE_DATA::M_bestScore");
+static_assert(offsetof(SAVE_DATA, M_bestTime) == 0x508, "SAVE_DATA::M_bestTime");
+static_assert(offsetof(SAVE_DATA, M_bestRing) == 0x526, "SAVE_DATA::M_bestRing");
+static_assert(offsetof(SAVE_DATA, Align) == 0x53a, "SAVE_DATA::Align");
+static_assert(offsetof(SAVE_DATA, M_miniSnowBoard) == 0x53c, "SAVE_DATA::M_miniSnowBoard");
+static_assert(offsetof(SAVE_DATA, M_miniSandBoard) == 0x548, "SAVE_DATA::M_miniSandBoard");
+static_assert(offsetof(SAVE_DATA, M_miniCart) == 0x554, "SAVE_DATA::M_miniCart");
+static_assert(offsetof(SAVE_DATA, M_bossGame) == 0x563, "SAVE_DATA::M_bossGame");
+static_assert(offsetof(SAVE_DATA, M_emblem) == 0x56c, "SAVE_DATA::M_emblem");
+static_assert(offsetof(SAVE_DATA, m_LastWritenTime) == 0x570, "SAVE_DATA::m_LastWritenTime");

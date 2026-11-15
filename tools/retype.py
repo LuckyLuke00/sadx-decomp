@@ -235,7 +235,7 @@ def evaluate(name: str, spec: dict, edits: list[dict], game: Path, context: Path
         casts = sum(count_casts(text, s) for text in texts.values() for s in symbols(spec))
         error = failure(spec, context, tables)
         puns, others = watched(texts, [int(a, 16) for a in spec["watch"]], in_image, llm.known_tree())
-        scores = {} if error else {a: e["matching"] for a, e in runner.score_target(runner.game_build(), game).items()}
+        scores = {} if error else {a: e["matching"] for a, e in runner.score_target(runner.game_build()).items()}
     finally:
         llm.restore(saved)
     return Result(name, error, scores, puns, others, casts, time.time() - started)

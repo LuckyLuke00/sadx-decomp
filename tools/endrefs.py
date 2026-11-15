@@ -22,6 +22,7 @@ import capstone
 from reccmp.compare import functions
 from reccmp.compare.asm.parse import ParseAsm
 from reccmp.cvdump.cvinfo import CvdumpTypeKey
+from reccmp.cvdump.types import TypeKind
 from reccmp.types import EntityType, ImageId
 
 
@@ -60,8 +61,10 @@ def array_layout(entity, types) -> Layout | None:
     size = entity.size(ImageId.RECOMP)
     if not size or entity.size(ImageId.ORIG) not in (None, size):
         return None
-    info = types.get(CvdumpTypeKey(entity.get("data_type")))
-    return Layout(size, info.array_element_size) if info.is_array() else None
+    key = CvdumpTypeKey(entity.get("data_type"))
+    if types.get(key).kind != TypeKind.ARRAY:
+        return None
+    return Layout(size, types.get(types.element_type(key)).size)
 
 
 def renames(db, types, orig: Operands, recomp: Operands) -> tuple[dict[int, str], dict[int, str]]:
@@ -112,7 +115,7 @@ def with_names(parser: ParseAsm, names: dict[int, str]) -> ParseAsm:
             return names[address]
         return lookup(address, exact=exact, indirect=indirect)
 
-    renamed.addr_test = lambda address: address in names or is_address(address)
+    renamed.addr_test = lambda address, operand: address in names or is_address(address, operand)
     renamed.name_lookup = name_lookup
     return renamed
 

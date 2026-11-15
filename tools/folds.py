@@ -70,7 +70,7 @@ def code(image, function, folds: dict[int, int]) -> list[str]:
             return f"<start+{value - start:#x}>"
         return hex(folds.get(value, value))
 
-    parser = ParseAsm(addr_test=lambda value: True, name_lookup=address)
+    parser = ParseAsm(addr_test=lambda value, operand: True, name_lookup=address)
     return [text for _, text in parser.parse_asm(image.read(start, size), start)]
 
 

@@ -16,7 +16,7 @@ def score_functions(addresses: list[int], game: Path, diffs: bool = True) -> int
     """One line per function, and with DIFFS a diff for each miss: each diff is one more reccmp run. Exit 0 only when
     all match."""
     runner.require_our_game()
-    functions = runner.score_target(runner.game_build(), game)
+    functions = runner.score_target(runner.game_build())
     unmatched = runner.unmatched_library_rows(functions, game)
     fakes = fakematch.checker(project.ROOT, game)
     tricked = {address: reasons for address, (_, reasons) in tricks.scan(project.ROOT, fakes).items()}
@@ -72,7 +72,7 @@ def report_miss(address: int, entry: dict, label: str, diffs: bool = True) -> No
 def score_library(game: Path) -> int:
     """Score every function in src/library.csv. Exit 0 only when all of them match."""
     runner.require_our_game()
-    functions = runner.score_target(runner.game_build(), game)
+    functions = runner.score_target(runner.game_build())
     unmatched = runner.unmatched_library_rows(functions, game)
     problems = [runner.unmatched_library_note(address, name) for address, name in unmatched.items()]
     scored = [(row, functions[row.address]) for row in project.library_rows()

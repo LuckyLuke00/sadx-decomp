@@ -5,6 +5,7 @@ with the code of one function on each side, and compares it with reccmp's Functi
 """
 
 import struct
+import types
 from unittest import mock
 
 from reccmp.compare.db import EntityDb
@@ -28,6 +29,7 @@ class FakeImage:
     def __init__(self, start: int, code: bytes, relocated: set[int]):
         self.start, self.code, self.relocated = start, code, relocated
         self.imagebase = 0x400000
+        self.sections = [types.SimpleNamespace(virtual_range=range(0x400000, 0x1000000))]
         self.relocations = {start + at for at in range(len(code) - 3)
                             if struct.unpack_from("<I", code, at)[0] in relocated}
 

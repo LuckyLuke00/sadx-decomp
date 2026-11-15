@@ -753,7 +753,7 @@ def stub_harm(tree: Tree, matched: set[int], scores: dict[int, dict], kept: dict
 
 def run(game: Path, addresses: list[int], every: bool, tables: Path | None) -> int:
     runner.require_our_game()
-    matched = {a for a, entry in runner.score_target(runner.game_build(), game).items() if is_match(entry)}
+    matched = {a for a, entry in runner.score_target(runner.game_build()).items() if is_match(entry)}
     tree = Tree(game, tables)
     if every:
         templates = sorted(a for a in matched if tree.kind(a) == "FUNCTION")
@@ -812,7 +812,7 @@ def run(game: Path, addresses: list[int], every: bool, tables: Path | None) -> i
         stubs = place(tree, kept, stubs, originals, take_out(kept, hit))
 
     runner.require_our_game()
-    scores = runner.score_target(runner.game_build(), game)
+    scores = runner.score_target(runner.game_build())
     for copies in kept.values():
         for copy in copies:
             entry = scores.get(copy.address)

@@ -6,12 +6,13 @@ with the code of one function on each side, and compares it with reccmp's Functi
 """
 
 import struct
+import types
 from unittest import mock
 
 from reccmp.compare.db import EntityDb
 from reccmp.compare.functions import FunctionComparator
 from reccmp.cvdump.cvinfo import CvdumpTypeKey
-from reccmp.cvdump.types import TypeInfo
+from reccmp.cvdump.types import TypeInfo, TypeKind
 from reccmp.types import EntityType, ImageId
 
 import endrefs
@@ -19,9 +20,10 @@ import endrefs
 ORIG_CODE, RECOMP_CODE = 0x00401000, 0x00501000  # the function on each side
 LIST, OTHER = 0x00600000, 0x00600100  # two int[6] arrays in the game
 OURS = 0x00700000  # where our build puts the arrays: LIST at OURS, OTHER at OURS + 0x100
-INT6, INT, PAIRS = CvdumpTypeKey(0x1000), CvdumpTypeKey(0x74), CvdumpTypeKey(0x1001)
-TYPES = {INT6: TypeInfo(INT6, 24, array_type=INT, array_length=6, array_element_size=4), INT: TypeInfo(INT, 4),
-         PAIRS: TypeInfo(PAIRS, 24, array_type=INT, array_length=3, array_element_size=8)}  # three 8-byte elements
+INT6, INT, PAIRS, PAIR = CvdumpTypeKey(0x1000), CvdumpTypeKey(0x74), CvdumpTypeKey(0x1001), CvdumpTypeKey(0x1002)
+TYPES = {INT6: TypeInfo(INT6, TypeKind.ARRAY, 24, None), INT: TypeInfo(INT, TypeKind.SCALAR, 4, None),
+         PAIRS: TypeInfo(PAIRS, TypeKind.ARRAY, 24, None), PAIR: TypeInfo(PAIR, TypeKind.SCALAR, 8, None)}
+ELEMENTS = {INT6: INT, PAIRS: PAIR}  # PAIRS has three 8-byte elements
 
 
 class FakeTypes:
@@ -29,6 +31,9 @@ class FakeTypes:
 
     def get(self, key: CvdumpTypeKey) -> TypeInfo:
         return TYPES[key]
+
+    def element_type(self, key: CvdumpTypeKey) -> CvdumpTypeKey:
+        return ELEMENTS[key]
 
     def get_name_for_offset(self, key: CvdumpTypeKey, offset: int) -> str:
         return f"+{offset}"
@@ -41,6 +46,7 @@ class FakeImage:
     def __init__(self, start: int, code: bytes, relocated: bool):
         self.start, self.code, self.relocated = start, code, relocated
         self.imagebase = 0x400000
+        self.sections = [types.SimpleNamespace(virtual_range=range(0x400000, 0x1000000))]
 
     def read(self, address: int, size: int) -> bytes:
         return self.code[address - self.start:][:size]
@@ -179,7 +185,7 @@ def check_field_walk() -> list[str]:
     start, end = LIST + 4, LIST + 24 + 4
     result, before = compared(globals_, immediate(start) + cmp(end), immediate(OURS + 4) + cmp(OURS + 28))
     found = (before.match_ratio < 1.0, result.match_ratio, first_lines(result)[1])
-    wanted = (True, 1.0, "mov eax, list+4 (OFFSET)")
+    wanted = (True, 1.0, "mov eax, list[0]+4 (OFFSET)")
     failures = [] if found == wanted else [f"a pointer walking a field gives {found}, not {wanted}"]
     compare, _ = comparator(globals_, b"", b"")
     for case, orig, recomp in (("no start in the game", cmp(end), immediate(OURS + 4) + cmp(OURS + 28)),

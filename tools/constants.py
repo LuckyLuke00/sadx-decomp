@@ -1,27 +1,27 @@
-"""The float and string constants that the game's code uses, for reccmp.
+"""The constants that the game's code uses and reccmp does not name there, for reccmp.
 
-reccmp's own search for constants needs relocations. It names a float, such as
-400.0 in fld [0x00403000], only where a relocation marks that operand as an
-address. It names a string where any relocation, in code or in a data table,
-holds its address. Our build has relocations. Most old exes don't, so on the
-game's side such an operand shows as a bare number and the function can't
-match. find() repeats reccmp's search on the game, with each operand of an
-instruction in data/functions.csv standing in for a relocation:
+Our build has relocations, and each marks an operand as an address. The game has
+none. There reccmp takes each 4-byte value in the image that is an address in a
+data section for a pointer. It names a float, such as 400.0 in
+fld [0x00403000], where an x87 instruction that it checks (fld, fadd, fmul and
+the like) reads read-only data through such a pointer. It names a NUL-terminated
+text that it takes for Latin-1 where a pointer holds its address. That is a text
+whose first byte is a tab, CR, LF or 0x20-0x7f, and whose other bytes are those
+or 0xa0-0xff. find() gives a row to what that search leaves out, from each
+operand of an instruction in data/functions.csv:
 
-- A float is what an x87 instruction that reccmp checks (fld, fadd, fmul and
-  the like) reads from read-only data.
-- A string is an operand address in a data section that holds a NUL-terminated
-  text reccmp takes for Latin-1, if no string before it covers it. That is a
-  text whose first byte is a tab, CR, LF or 0x20-0x7f, and whose other bytes
-  are those or 0xa0-0xff. An import slot holds a pointer, so it is no string.
+- A float that such an x87 instruction reads from read-only data. reccmp's own
+  search skips a few of them.
+- An operand address in read-only data that holds no Latin-1 text, if no literal
+  before it covers it. An import slot holds a pointer, so it is no literal.
 
-reccmp names no other literal on our side, such as Shift-JIS text or text that
+reccmp names no such literal on our side, such as Shift-JIS text or text that
 starts with a control code, unless the compiler pooled strings (/GF, which /O1
 and /O2 turn on). Then each literal has a symbol, and reccmp names it after its
-bytes. So any other operand address in read-only data gets a string row where
-its function's group pools strings, and a row with no name elsewhere, which
-shows as an address placeholder, as on our side. Writable data holds variables
-more than literals, so there only Latin-1 text counts, as in reccmp.
+bytes. So the address gets a string row where its function's group pools
+strings, and a row with no name elsewhere, which shows as an address
+placeholder, as on our side. Writable data holds variables more than literals,
+so there only Latin-1 text counts, as in reccmp, and no address gets a row.
 
 A wide literal, such as L"sum", follows the same rules. Without pooling it has
 no symbol, and reccmp reads it as narrow text from our relocation, so "s" is
@@ -34,13 +34,14 @@ after its first character. One character is too few, as a one-character narrow
 string and its padding read the same way. Other wide text needs a STRING
 annotation.
 
-Two other kinds of address have no name on our side, so they get a row with no
-name too. One is an exception handler that the compiler made for a function: it
-ends with mov eax, offset FuncInfo; jmp ___CxxFrameHandler3. reccmp's own search
-for these knows only the FuncInfo of Visual C++ 6. The other is an address in
-the exe's headers above the image base, such as the header fields that
-the runtime's startup code reads. reccmp takes no number at or below the image
-base for an address, so the image base itself needs no row.
+One other kind of address has no name on our side, so it gets a row with no
+name too: an exception handler that the compiler made for a function. It ends
+with mov eax, offset FuncInfo; jmp ___CxxFrameHandler3. reccmp's own search for
+these knows only the FuncInfo of Visual C++ 6.
+
+The image base is a number in the game, where no relocation marks it. Our build
+has a relocation on it. So run_reccmp() makes reccmp take no number at or below
+the image base for an address.
 
 reccmp adds the constants it finds itself after it matches, and skips each
 address inside an entity it knows. There both sides name the address after the
@@ -74,7 +75,7 @@ from typing import NamedTuple
 import capstone
 from reccmp.analysis.float_const import FLOAT_OPCODES, SINGLE_PRECISION_OPCODES
 from reccmp.analysis.string_const import is_likely_latin1
-from reccmp.compare import core
+from reccmp.compare import core, functions
 from reccmp.compare.csv import csv_parse
 from reccmp.formats import detect_image
 from reccmp.tools import asmcmp
@@ -83,11 +84,9 @@ from reccmp.types import ImageId
 import endrefs
 import immediates
 import folds
-import scopes
 import varfiles
 
 HEX = re.compile(r"0x[0-9a-f]+")
-MEMORY = re.compile(r"\[([^\]]*)\]")  # a memory operand, such as [eax + 0x400018]
 HANDLER_START = (b"\xb8", b"\x8b\x54\x24\x08")  # mov eax, offset FuncInfo; or mov edx, [esp + 8] for cookie checks
 HANDLER_END = re.compile(rb"\xb8(.{4})\xe9", re.DOTALL)  # mov eax, offset FuncInfo; jmp
 HANDLER_LENGTH = 64  # bytes enough for a handler that checks two security cookies
@@ -120,7 +119,6 @@ class Scan:
         self.const = const
         self.floats = {}  # address: size
         self.operands = {}  # address: whether a function that pools strings uses it
-        self.memory = set()  # the addresses in memory operands
         self.disassembler = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_32)
 
     def add(self, function: Function) -> None:
@@ -131,7 +129,6 @@ class Scan:
             for value in HEX.findall(operand_text):
                 operand = int(value, 16)
                 self.operands[operand] = self.operands.get(operand, False) or function.pools_strings
-            self.memory.update(int(value, 16) for inner in MEMORY.findall(operand_text) for value in HEX.findall(inner))
 
     def add_float(self, code: bytes, offset: int, length: int) -> bool:
         """Add the float that the instruction at offset reads, if it reads one from read-only data."""
@@ -161,42 +158,35 @@ def other_constants(image, scan: Scan, regions: Regions) -> list[Constant]:
     """The string and global rows for the operand addresses that scan found."""
     imports = {slot.addr for slot in image.imports}
     covered = set().union(*(range(address, address + size) for address, size in scan.floats.items()))
-    headers = range(image.imagebase + 1, min(section.virtual_address for section in image.sections))
     found = []
-    end = 0  # the end of the last string
+    end = 0  # the end of the last literal
     for address, pooled in sorted(scan.operands.items()):
-        # An integer such as 0x400002 can look like a header address, so there only memory operands count.
-        if address in headers and address in scan.memory or exception_handler(image, address, regions):
+        if exception_handler(image, address, regions):
             found.append(Constant(address, "global", 1))
             continue
         if address < end or address in covered or address in imports or not inside(address, regions.data):
             continue
-        constant = (pooled_constant if pooled else plain_constant)(image, address, regions.const)
-        if constant is not None:
-            found.append(constant)
-            end = address + constant.size
+        size, kind = literal(image, address, pooled, regions.const)
+        if kind is not None:
+            found.append(Constant(address, kind, size))
+        end = address + size
     return found
 
 
-def plain_constant(image, address: int, const: list[range]) -> Constant | None:
-    """The row for an operand address in data that no function pools strings for, or None if it needs none."""
+def literal(image, address: int, pooled: bool, const: list[range]) -> tuple[int, str | None]:
+    """The size of the literal at an operand address in data, and the kind of the row it needs. The kind is None
+    where it needs no row: reccmp names Latin-1 text itself. Other bytes in writable data are no literal, so their
+    size is 0. POOLED says whether a function that pools strings uses the address."""
+    in_const = inside(address, const)
+    wide = wide_text(image, address) if pooled and in_const else ""
+    if wide:
+        return 2 * len(wide) + 2, "widechar"
     text = image.read_string(address)
     if is_likely_latin1(text.decode("latin1")):
-        return Constant(address, "string", len(text) + 1)
-    if inside(address, const):
-        return Constant(address, "global", len(text) + 1)
-    return None
-
-
-def pooled_constant(image, address: int, const: list[range]) -> Constant | None:
-    """The row for an operand address in data that a function pools strings for, or None if it needs none."""
-    wide = wide_text(image, address) if inside(address, const) else ""
-    if wide:
-        return Constant(address, "widechar", 2 * len(wide) + 2)
-    text = image.read_string(address)
-    if is_likely_latin1(text.decode("latin1")) or inside(address, const):
-        return Constant(address, "string", len(text) + 1)
-    return None
+        return len(text) + 1, None
+    if in_const:
+        return len(text) + 1, "string" if pooled else "global"
+    return 0, None
 
 
 def wide_text(image, address: int) -> str:
@@ -259,7 +249,7 @@ def run_reccmp(args: list[str]) -> int:
     constants.csv. The folder must have both files."""
     sizes = read_rows(Path("sizes.csv"))
     rows = read_rows(Path("constants.csv"))
-    find_floats = core.create_analysis_floats  # reccmp's first step that adds constants
+    find_floats = core.complete_partial_floats  # reccmp's first step on constants
 
     def add_rows_then_find_floats(db, image_id, binfile):
         if image_id == ImageId.ORIG:
@@ -267,12 +257,18 @@ def run_reccmp(args: list[str]) -> int:
             add_rows(db, image_id, rows)
         find_floats(db, image_id, binfile)
 
-    core.create_analysis_floats = add_rows_then_find_floats
+    core.complete_partial_floats = add_rows_then_find_floats
+    make_lookup = functions.create_valid_addr_lookup
+
+    def make_lookup_above_base(db, image_id, binfile):
+        lookup = make_lookup(db, image_id, binfile)
+        return lambda address, operand: address > binfile.imagebase and lookup(address, operand)
+
+    functions.create_valid_addr_lookup = make_lookup_above_base
     folds.install()
     endrefs.install()
     immediates.install()
     varfiles.install()
-    scopes.install()
     # reccmp prints a sparkle emoji, which the code page of a pipe on Windows may not have.
     sys.stdout.reconfigure(errors="replace")
     sys.argv = ["reccmp-reccmp", *args]

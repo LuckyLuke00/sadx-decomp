@@ -102,20 +102,17 @@ def reccmp(*args: str, cwd: Path) -> tuple[str, list[str]]:
     return result.stdout, [message for message in messages if message and not message.startswith("[INFO]")]
 
 
-def score_target(build: Build, original: Path, *extra: str) -> dict[int, dict]:
+def score_target(build: Build, *extra: str) -> dict[int, dict]:
     """Score a target, print reccmp's log and return the function entries keyed by original address.
 
     reccmp's stdout summary is dropped: callers print their own, shorter one.
-    Only entries at code addresses count: reccmp types a symbol with "@" and no leading "?" as a function,
-    so throw info such as __TI2?AVbad_exception@std@@ also gets a score.
     """
     report = build.folder / f"{build.target}.json"
     _, log = reccmp("--target", build.target, "--json", str(report), "--json-diet", "--silent", *extra,
                     cwd=build.folder)
     data = json.loads(report.read_text(encoding="utf-8"))
-    image = pe.Image(original)
     functions = {int(entry["address"], 16): entry for entry in data["data"]
-                 if entry.get("type") in (None, FUNCTION_TYPE) and image.is_code(int(entry["address"], 16))}
+                 if entry.get("type") in (None, FUNCTION_TYPE)}
     for message in log:
         if not harmless_ambiguity(message, functions):
             print(message)
@@ -138,6 +135,7 @@ def compare_data(build: Build, spans: list[range]) -> list[dict]:
 
     folds.install()
     varfiles.install()
+    compare_wide_reals_raw()
     target = RecCmpProject.from_directory(build.folder).get(build.target)
     log = logging.getLogger("reccmp")
     level = log.level
@@ -157,6 +155,29 @@ def compare_data(build: Build, spans: list[range]) -> list[dict]:
         data.append({"address": f"0x{var.orig_addr:08x}", "name": var.name, "size": size,
                      "match": result == CompareResult.MATCH, "library": var.orig_addr in library_rows})
     return sorted(data, key=lambda entry: entry["address"])
+
+
+def compare_wide_reals_raw() -> None:
+    """Make reccmp compare a global that holds an 80-bit real byte by byte. reccmp 0.1.9 reads such a member as
+    10 values, then raises because the values outnumber the members. Calling it again changes nothing."""
+    from reccmp.compare import variables
+    from reccmp.cvdump.cvinfo import CVInfoTypeEnum, CvdumpTypeKey
+    from reccmp.cvdump.types import FieldListItem
+
+    typed_layout = variables.get_variable_layout
+    if getattr(typed_layout, "wide_reals", False):
+        return
+    wide = {CvdumpTypeKey(0x42), CvdumpTypeKey(0x52)}  # T_REAL80, T_CPLX80
+
+    def layout_of(types, var):
+        layout = typed_layout(types, var)
+        if layout.is_raw or not any(member.type in wide for member in layout.members):
+            return layout
+        raw = [FieldListItem(offset=i, name="", type=CVInfoTypeEnum.T_UCHAR) for i in range(layout.size)]
+        return variables.VariableLayout(layout.size, raw, True)
+
+    layout_of.wide_reals = True
+    variables.get_variable_layout = layout_of
 
 
 def harmless_ambiguity(message: str, functions: dict[int, dict]) -> bool:

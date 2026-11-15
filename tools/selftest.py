@@ -127,7 +127,7 @@ def score_selftest(spans: list[tuple[int, int]]) -> dict:
     runner.write_constants_csv(SELFTEST_BUILD / "constants.csv", SELFTEST_ORIGINAL,
                                [constants.Function(address, size, True) for address, size in spans])
     runner.write_sizes_csv(SELFTEST_BUILD / "sizes.csv", spans)
-    return runner.summarize("SELFTEST", runner.score_target(build, SELFTEST_ORIGINAL), set())
+    return runner.summarize("SELFTEST", runner.score_target(build), set())
 
 
 def check_scores(expected: dict, current: dict) -> list[str]:

@@ -20,13 +20,14 @@ import struct
 
 from reccmp.compare import functions
 from reccmp.compare.asm.parse import ParseAsm
+from reccmp.compare.asm.replacement import OperandType
 
 import endrefs
 
 
 def reads_address(parser: ParseAsm, value: int) -> bool:
     """Whether PARSER gives VALUE a name or a placeholder where it is an immediate."""
-    return parser.is_addr(value) or parser.lookup(value) is not None
+    return parser.is_addr(value, OperandType.IMMEDIATE) or parser.lookup(value) is not None
 
 
 _sites: dict[int, list[int]] = {}  # id of an image: the sorted addresses of its relocations
@@ -59,7 +60,7 @@ def with_numbers(parser: ParseAsm, values: set[int]) -> ParseAsm:
             return None
         return lookup(address, exact=exact, indirect=indirect)
 
-    renamed.addr_test = lambda address: address not in values and is_address(address)
+    renamed.addr_test = lambda address, operand: address not in values and is_address(address, operand)
     renamed.name_lookup = name_lookup
     return renamed
 

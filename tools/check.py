@@ -472,7 +472,7 @@ def score_game(game: Path) -> dict | None:
     """Score every function, as a new summary.json. None if an annotation names no symbol or a score dropped below summary.json."""
     html = project.BUILD / "report.html"
     build = runner.game_build()
-    functions = runner.score_target(build, game, "--html", str(html))
+    functions = runner.score_target(build, "--html", str(html))
     current = runner.summarize(build.target, functions, set(tricks.scan(ROOT, fakematch.checker(ROOT, game))))
     spans = pe.initialized_data(game)
     current["data"] = runner.compare_data(build, spans)
