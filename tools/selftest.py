@@ -1006,7 +1006,6 @@ def check_units() -> list[str]:
     import progresstests
     import recipetests
     import retypetests
-    import scopestests
     import sitetests
     import solvetests
     import stackargtests
