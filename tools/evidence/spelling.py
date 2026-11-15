@@ -135,7 +135,8 @@ class Speller:
                 named += part
                 if text == key:
                     weight += part
-            combo += (key, True) in found
+            if (key, True) in found:
+                combo += 1
         clusters = len(lineages)
         share = weight / named if named else Fraction(0)
         literal_share = literal / clusters if clusters else Fraction(0)

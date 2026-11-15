@@ -5,6 +5,7 @@ Run on its own: .venv/Scripts/python.exe -I tools/evidence/spellingtests.py
 run() calls every check and returns the failures. All names are made up.
 """
 
+import dataclasses
 import sys
 from fractions import Fraction
 from pathlib import Path
@@ -52,7 +53,11 @@ def seen(tree: str, path: str, argument: str, value: int) -> corpus.Observation:
 
 def sample_corpus(rows: list, trees: dict | None = None, **overrides) -> corpus.Corpus:
     """ROWS: (tree, path, argument, value). Each relative path is one lineage."""
-    observations = [seen(*row) for row in rows]
+    return corpus_of([seen(*row) for row in rows], trees, **overrides)
+
+
+def corpus_of(observations: list, trees: dict | None = None, **overrides) -> corpus.Corpus:
+    """A corpus of OBSERVATIONS. Each relative path is one lineage."""
     nodes = {item.node: item.file for item in observations}
     thresholds = {**config.THRESHOLDS, **overrides}
     return corpus.Corpus(observations, trees or {"new": StubTree(VALUES)}, thresholds,
@@ -205,6 +210,10 @@ def check_text_and_assign() -> list[str]:
     hinted = spell(sample_corpus(files(("XX_F2 | XX_F1", 1, 48))), candidate("XX_F1", "XX_F2"))
     if not hinted.text.endswith(", written XX_F2 | XX_F1"):
         failures.append(f"text: a key written in another order names the hint: got {hinted.text}")
+    if "named in the manual" not in dataclasses.replace(hinted, manual=True).text:
+        failures.append("text: a manual that names the key says so")
+    if (corpus.canonical(("XX_A",), True), corpus.canonical(("XX_B", "XX_A"), True)) != ("~XX_A", "~(XX_A | XX_B)"):
+        failures.append("canonical: an inverted key is ~NAME, or ~( ) around a combination")
     if not speller.reads(CALLEE, SLOT) or speller.reads(CALLEE, SLOT + 1):
         failures.append("reads: only the slot that a sample tree reads")
     record = SimpleNamespace(covered=True, callee=CALLEE, row=SimpleNamespace(slot=SLOT), spellings=(), sampled=False,
@@ -219,11 +228,34 @@ def check_text_and_assign() -> list[str]:
     return failures
 
 
+def check_skipped() -> list[str]:
+    """A failed observation counts for nothing, one relative path in two trees is one cluster, and assign leaves a
+    record that is not covered alone."""
+    failures = []
+    observations = [seen(*row) for row in files(("XX_A", 5, 1))]
+    unresolved = ceval.failure(ceval.UNRESOLVED, "unknown identifier", "XX_A")
+    observations[0] = dataclasses.replace(observations[0], result=unresolved, kind="")
+    got = spell(corpus_of(observations), candidate("XX_A"))
+    if (got.tier, got.clusters) != (spelling.B, 4):
+        failures.append(f"a failed observation: got {got.tier} with {got.clusters} clusters, wanted B with 4")
+    trees = {"old": StubTree({**VALUES, "XX_A": 5}), "new": StubTree(VALUES)}
+    got = spell(sample_corpus([("new", "f1.c", "XX_A", 1), ("old", "f1.c", "XX_A", 5)], trees), candidate("XX_A"))
+    if got.clusters != 1:
+        failures.append(f"one path in two trees: got {got.clusters} clusters")
+    samples = sample_corpus(files(("XX_A", 3, 1)))
+    record = SimpleNamespace(covered=False, callee=CALLEE, row=SimpleNamespace(slot=SLOT), spellings=(),
+                             sampled=False, search=covers.Search([candidate("XX_A")]))
+    spelling.assign([record], spelling.Speller(samples, {}, samples.thresholds))
+    if record.sampled or record.spellings:
+        failures.append("assign: a record that is not covered got a spelling")
+    return failures
+
+
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
     for check in (check_a_edges, check_b_edges, check_weights, check_combination, check_keys, check_trees,
-                  check_manual, check_text_and_assign):
+                  check_manual, check_text_and_assign, check_skipped):
         failures += check()
     return failures
 
