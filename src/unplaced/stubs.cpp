@@ -1215,11 +1215,6 @@ void wmaresume()
 {
 }
 
-// STUB: SADX 0x004b0aa0
-void LoadGameDDS()
-{
-}
-
 // STUB: SADX 0x004b1940
 void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {

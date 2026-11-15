@@ -16196,9 +16196,9 @@
   {
    "address": "0x004b0aa0",
    "name": "LoadGameDDS",
-   "accuracy": 0.009535160905840286,
+   "accuracy": 0.9377245508982036,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -104763,5 +104763,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "bbe7df9bd7c7d816700d00ee409e2d54a0dc5b6aa81501365b8ef3ba14d397e8"
+ "inputs_sha256": "d85bfee2936c7b1f3d25063be73d3a4f8047421485ce8ff461d737374a7e1618"
 }

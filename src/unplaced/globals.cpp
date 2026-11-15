@@ -5804,6 +5804,15 @@ bool DAT_05b3e359;
 // GLOBAL: SADX 0x05b3e35c
 int DAT_05b3e35c;
 
+// GLOBAL: SADX 0x05b3e360
+Magic::RenderCore::Texture *DAT_05b3e360;
+
+// GLOBAL: SADX 0x05b3e364
+Magic::RenderCore::Texture *DAT_05b3e364;
+
+// GLOBAL: SADX 0x05b3e368
+Magic::RenderCore::Texture *DAT_05b3e368;
+
 // GLOBAL: SADX 0x05b3e36c
 Magic::RenderCore::Texture* DAT_05b3e36c;
 
@@ -5977,6 +5986,9 @@ int DAT_05b40a48;
 
 // GLOBAL: SADX 0x05b40a4c
 struct NJS_ARGB DAT_05b40a4c;
+
+// GLOBAL: SADX 0x05b422ec
+int DAT_05b422ec;
 
 // GLOBAL: SADX 0x05b423fc
 unsigned char DAT_05b423fc;

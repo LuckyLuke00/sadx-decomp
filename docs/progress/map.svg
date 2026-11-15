@@ -4257,6 +4257,7 @@
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x004b0990 AvaReleaseTex: 100%</title></rect>
 <rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x004b0a10 FUN_004b0a10: 100%</title></rect>
 <rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x004b0a50 FUN_004b0a50: 100%</title></rect>
+<rect x="84" y="14" width="6" height="6" fill="#ad8023"><title>0x004b0aa0 LoadGameDDS: 93.8%</title></rect>
 <rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x004b1920 AvaLoadTexForEachMode: 100%</title></rect>
 <rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x004b1a40 FUN_004b1a40: 100%</title></rect>
 <rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x004b6c50 FUN_004b6c50: 100%</title></rect>
