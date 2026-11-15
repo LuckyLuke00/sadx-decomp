@@ -206,8 +206,8 @@ def read_blobs(root: Path, specs: list[str]) -> dict[str, str]:
         if line.endswith(" missing"):
             sys.exit(f"git has no {spec}")
         ids.append(line.split()[0])
-    blobs = osutil.git_blobs(root, ids)
-    return {spec: blobs[blob].decode("utf-8") for spec, blob in zip(specs, ids)}
+    texts = {blob: data.decode("utf-8") for blob, data in osutil.git_blobs(root, ids).items()}
+    return {spec: texts[blob] for spec, blob in zip(specs, ids)}
 
 
 def csv_rows(text: str) -> list[dict]:
