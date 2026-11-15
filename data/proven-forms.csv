@@ -1,0 +1,5 @@
+kind,function,name,evidence
+volatile_global,,DAT_05b9d848,"At /Od each int to float read copies the value to a frame slot before the fild (0x004c06f0, 0x004b6d90). A plain int gives a fild on the global. Every function that uses it keeps or gains its score with volatile."
+unused_local,0x005f25a0,local_cj,"The frame has an unused 4-byte slot at [ebp-8]. 0x004c0970, which this function copies, has a 3-byte array there and fills it."
+unused_local,0x005f37e0,local_cj,"The frame has an unused 4-byte slot at [ebp-8]. 0x004c0970, which this function copies, has a 3-byte array there and fills it."
+unused_local,0x005fa460,local_cj,"The frame has an unused 4-byte slot at [ebp-8]. 0x004c0970, which this function copies, has a 3-byte array there and fills it."
