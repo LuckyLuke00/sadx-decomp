@@ -302,11 +302,25 @@ def check_proposals() -> list[str]:
     return failures
 
 
+def check_summary_and_write() -> list[str]:
+    """One console line per tree; write() puts the sample-calls text in the diagnostics folder."""
+    with tempfile.TemporaryDirectory() as folder:
+        read = read_fixture(folder)
+        corpus.write(Path(folder), read, 3)
+        written = (Path(folder) / corpus.SAMPLE_CALLS).read_bytes().decode("utf-8")
+    failures = [] if written == corpus.sample_calls_text(read, 3) else ["write() must write the sample-calls text"]
+    wanted = ["old: 6 files, 6 distinct, 3 with calls, 13 observations, 2 failed",
+              "new: 4 files, 4 distinct, 4 with calls, 19 observations, 0 failed"]
+    if corpus.summary(read) != wanted:
+        failures.append(f"summary: got {corpus.summary(read)}")
+    return failures
+
+
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
     for check in (check_observations, check_left_out, check_files, check_lineage, check_spelling_keys,
-                  check_sample_calls, check_proposals):
+                  check_sample_calls, check_proposals, check_summary_and_write):
         failures += check()
     return failures
 

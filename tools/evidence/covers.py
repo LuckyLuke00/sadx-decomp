@@ -8,7 +8,7 @@ The search, in rank order:
    ~(A | B ...) of 2 to MAX_INVERTED_FLAGS single-bit names;
 2. one name with the value itself;
 3. at a flags or and-mask slot: the composites A | B ..., then the split A | B ... of single-bit names.
-A composite covers the value with 2 to TERMS bit-disjoint nodes, one of them multi-bit at least. Composites rank by
+A composite covers the value with 2 to MAX_TERMS bit-disjoint nodes, one of them multi-bit at least. Composites rank by
 the number of names, then by the names, lowest bit first. A split takes one single-bit node per set bit, so there is
 one at most. It ranks last, because a composite of the same value has fewer names. A value of 0 gets a candidate only
 from a name whose value is 0; a zero name never takes part in a composite, a split or a ~.
@@ -25,6 +25,8 @@ Standard library only.
 """
 
 from dataclasses import dataclass, field
+
+import argmap
 
 MAX_INVERTED_FLAGS = 4
 NULL_NAMES = frozenset({"NULL"})
@@ -86,7 +88,7 @@ def passes_gate(name: Name, slot: Slot) -> bool:
     return slot.kind == POINTER if name.pointer else slot.kind in (INTEGER, BOOLEAN)
 
 
-def nodes(names: list[Name], bits: int) -> dict[int, Node]:
+def _nodes(names: list[Name], bits: int) -> dict[int, Node]:
     """The alias nodes by unsigned pattern."""
     mask = (1 << bits) - 1
     grouped = {}
@@ -99,90 +101,89 @@ def _bits_of(value: int) -> list[int]:
     return [1 << bit for bit in range(value.bit_length()) if value >> bit & 1]
 
 
+class _BudgetSpent(Exception):
+    """The steps reached the budget."""
+
+
 class _Searcher:
     def __init__(self, by_value: dict, budget: int):
         self.by_value, self.budget, self.result = by_value, budget, Search()
 
-    def step(self) -> bool:
-        """Count one lookup. False when the budget is spent."""
+    def step(self):
+        """Count one lookup. Raises _BudgetSpent when the budget is spent."""
         if self.result.steps >= self.budget:
             self.result.incomplete = True
-            return False
+            raise _BudgetSpent
         self.result.steps += 1
-        return True
 
-    def exact(self, value: int, inverted: bool) -> bool:
-        if not self.step():
-            return False
+    def exact(self, value: int, inverted: bool):
+        self.step()
         node = self.by_value.get(value)
         if node is not None:
             self.result.candidates.append(Candidate((node,), inverted))
-        return True
 
-    def split(self, value: int, inverted: bool) -> bool:
+    def split(self, value: int, inverted: bool):
         terms = []
         for bit in _bits_of(value):
-            if not self.step():
-                return False
+            self.step()
             node = self.by_value.get(bit)
             if node is None:
-                return True
+                return
             terms.append(node)
         self.result.candidates.append(Candidate(tuple(terms), inverted))
-        return True
 
-    def composites(self, value: int, inverted: bool, terms: int) -> bool:
-        """Every cover of VALUE by 2 to TERMS bit-disjoint nodes, one of them multi-bit at least, in rank order."""
+    def composites(self, value: int, inverted: bool, max_terms: int):
+        """Every cover of VALUE by 2 to MAX_TERMS bit-disjoint nodes, one of them multi-bit at least, in rank order.
+        The covers found before the budget is spent stay."""
         parts = sorted(part for part in self.by_value if part and part & value == part)
-        if all(len(_bits_of(part)) == 1 for part in parts):
-            return True
+        if all(part.bit_count() == 1 for part in parts):
+            return
         found = []
 
-        def walk(rest: int, chosen: list) -> bool:
-            if not self.step():
-                return False
+        def walk(rest: int, chosen: list):
+            self.step()
             if rest == 0:
-                if len(chosen) >= 2 and any(len(_bits_of(node.value)) > 1 for node in chosen):
+                if len(chosen) >= 2 and any(node.value.bit_count() > 1 for node in chosen):
                     found.append(tuple(chosen))
-                return True
-            if len(chosen) == terms:
-                return True
+                return
+            if len(chosen) == max_terms:
+                return
             low = rest & -rest  # the lowest bit left must come from the next node
             for part in parts:
-                if part & low and part & rest == part and not walk(rest & ~part, chosen + [self.by_value[part]]):
-                    return False
-            return True
+                if part & low and part & rest == part:
+                    walk(rest & ~part, chosen + [self.by_value[part]])
 
-        complete = walk(value, [])
-        found.sort(key=lambda chosen: (len(chosen), [node.name for node in chosen]))
-        self.result.candidates += [Candidate(chosen, inverted) for chosen in found]
-        return complete
+        try:
+            walk(value, [])
+        finally:
+            found.sort(key=lambda chosen: (len(chosen), [node.name for node in chosen]))
+            self.result.candidates += [Candidate(chosen, inverted) for chosen in found]
 
-    def covers(self, value: int, inverted: bool, terms: int, split_names: int) -> bool:
-        """The exact name, the composites, then the split if it takes 2 to SPLIT_NAMES names. False when the budget
-        is spent."""
-        if not (self.exact(value, inverted) and self.composites(value, inverted, terms)):
-            return False
-        if 2 <= len(_bits_of(value)) <= split_names:
-            return self.split(value, inverted)
-        return True
+    def covers(self, value: int, inverted: bool, max_terms: int, split_names: int):
+        """The exact name, the composites, then the split if it takes 2 to SPLIT_NAMES names."""
+        self.exact(value, inverted)
+        self.composites(value, inverted, max_terms)
+        if 2 <= value.bit_count() <= split_names:
+            self.split(value, inverted)
 
 
-def search(value: int, slot: Slot, names: list[Name], budget: int, terms: int) -> Search:
-    """The candidates for VALUE at SLOT, with composites of at most TERMS names."""
+def search(value: int, slot: Slot, names: list[Name], *, budget: int, max_terms: int) -> Search:
+    """The candidates for VALUE at SLOT, with composites of at most MAX_TERMS names, in at most BUDGET steps."""
     if slot.variadic:
         return Search()
     mask = (1 << slot.bits) - 1
     pattern = value & mask
-    searcher = _Searcher(nodes([name for name in names if passes_gate(name, slot)], slot.bits), budget)
-    if slot.mode == "and-mask":
-        inverse = ~pattern & mask
-        if inverse and not searcher.covers(inverse, True, terms, MAX_INVERTED_FLAGS):
-            return searcher.result
-    if slot.mode == "value":
-        searcher.exact(pattern, False)
-    else:
-        searcher.covers(pattern, False, terms, slot.bits)
+    inverse = ~pattern & mask
+    searcher = _Searcher(_nodes([name for name in names if passes_gate(name, slot)], slot.bits), budget)
+    try:
+        if slot.mode == argmap.AND_MASK and inverse:
+            searcher.covers(inverse, True, max_terms, MAX_INVERTED_FLAGS)
+        if slot.mode == argmap.VALUE:
+            searcher.exact(pattern, False)
+        else:
+            searcher.covers(pattern, False, max_terms, slot.bits)
+    except _BudgetSpent:
+        pass  # result.incomplete records it
     return searcher.result
 
 

@@ -113,9 +113,17 @@ def committed(loaded, rows, today: str = "2026-01-01") -> tuple:
     return found, ledger.commit(loaded, found, today)
 
 
+def unverified_argmap(folder: Path) -> list:
+    """The argmap rows with the xxFlags row marked unverified, written to FOLDER/argmap.csv first."""
+    path = folder / "argmap.csv"
+    path.write_text(ARGMAP.replace("xxFlags,1,flags,XXF_,header prototype", "xxFlags,1,flags,XXF_,unverified"),
+                    encoding="utf-8")
+    return argmap.read_argmap(path)
+
+
 def describe(record: inventory.Record) -> tuple:
     result = record.result
-    top = record.search.candidates[0].text if record.search and record.search.candidates else ""
+    top = record.top_text
     return (record.callee, record.slot, record.expression, result.status, result.cause, record.value, record.state,
             top, tuple(record.flags))
 
@@ -142,10 +150,12 @@ def check_sites() -> list[str]:
         failures += [f"site {index}: {item}" for index, item in enumerate(got) if index >= len(wanted)
                      or item != wanted[index]]
         failures += [f"missing site {item}" for item in wanted[len(got):]]
-    if [record.owner for record in found.records[:2]] != ["0x00401000"] * 2 or found.records[-1].owner != "src/c.c:other":
+    if ([record.owner for record in found.records[:2]] != ["0x00401000"] * 2
+            or found.records[-1].owner != "src/c.c:other"):
         failures.append(f"owners {[record.owner for record in found.records]}")
-    if found.unsupported_files != [("src/b.c", "#if")] and [file for file, _ in found.unsupported_files] != ["src/b.c"]:
-        failures.append(f"unsupported files {found.unsupported_files}")
+    unsupported = found.unsupported_files
+    if [file for file, _ in unsupported] != ["src/b.c"] or "#if" not in unsupported[0][1]:
+        failures.append(f"unsupported files {unsupported}")
     if found.macro_calls != 1:
         failures.append(f"a function-like macro callee is no site: {found.macro_calls}")
     if found.proposed != [("xxUnmapped", 1, 1, "5", "vendor.h", "int", "", "")]:
@@ -160,6 +170,55 @@ def check_sites() -> list[str]:
     return failures
 
 
+FLAG_C = """\
+#include "vendor.h"
+
+void xxMode(long mode, int other);
+
+// FUNCTION: XX 0x00403000
+// FUNCTION: XX 0x00403010
+void twice(void)
+{
+    xxMode(XXM_ONE, 0);
+    xxNone(1);
+    xxWrap(1);
+    xxQuiet(7);
+}
+"""
+
+
+def check_flags() -> list[str]:
+    """The counterevidence flags: an owner with two addresses, a callee defined at two addresses, no prototype, a
+    source prototype that spells the slot otherwise, and two target closures that give a name two values. A function
+    from a header with no origin is not proposed. Owned calls carry their argument values."""
+    files = {"inc/vendor.h": VENDOR, "lib/other.h": "#define XXM_ONE 2\nvoid xxQuiet(int value);\n", "src/e.c": FLAG_C,
+             "src/w1.c": "// FUNCTION: XX 0x00404000\nvoid xxWrap(int value)\n{\n}\n",
+             "src/w2.c": "// FUNCTION: XX 0x00405000\nvoid xxWrap(int value)\n{\n}\n"}
+    target = dict(CONFIG["target"], search_path=["inc", "lib"], umbrellas=["vendor.h", "other.h"])
+    with tempfile.TemporaryDirectory() as folder:
+        loaded, _ = repository(folder, files, dict(CONFIG, target=target))
+        path = Path(folder) / "evidence" / "argmap.csv"
+        path.write_text(ARGMAP + "xxNone,1,value,XXM_,unverified,,,,\nxxWrap,1,value,XXM_,unverified,,,,\n",
+                        encoding="utf-8")
+        found = inventory.build(loaded, argmap.read_argmap(path))
+    failures = []
+    flags = {record.callee: tuple(record.flags) for record in found.records}
+    wanted = {"xxMode": ("ambiguous owner", "closures disagree", "target prototype differs"),
+              "xxNone": ("ambiguous owner", "no prototype"),
+              "xxWrap": ("ambiguous owner", "ambiguous target", "no prototype")}
+    if flags != wanted:
+        failures.append(f"flags {flags}")
+    if [record.owner for record in found.records] != ["src/e.c:twice"] * 3:
+        failures.append(f"an owner with two addresses falls back to its file and name: {found.records[0].owner}")
+    if found.proposed:
+        failures.append(f"a function from a header with no origin is not proposed: {found.proposed}")
+    calls = found.owned_calls.get("src/e.c:twice", [])
+    values = [(call.target, tuple(value[0] if value else None for value in call.values)) for call in calls]
+    if values != [("xxMode", (1, 0)), ("xxNone", (1,)), ("xxWrap", (1,)), ("xxQuiet", (7,))]:
+        failures.append(f"owned calls {values}")
+    return failures
+
+
 D_C = """\
 #include "vendor.h"
 
@@ -171,19 +230,19 @@ void guarded(int value)
     XX_GUESS(1, 2);
 }
 """
+PLACEHOLDER_SETTINGS = dict(CONFIG, placeholders={"XX_ASSERT": "no-code", "XX_GUESS": "code"})
+PLACEHOLDER_FILES = dict(FILES, **{"src/d.c": D_C})
 
 
 def check_placeholders() -> list[str]:
     """Each use of a listed placeholder macro is a placeholder site: in coverage, open, with no value. Its prototype
     text holds the hash of the macro's definition, and a literal inside a no-code macro gets a flag."""
     failures = []
-    settings = dict(CONFIG, placeholders={"XX_ASSERT": "no-code", "XX_GUESS": "code"})
-    files = dict(FILES, **{"src/d.c": D_C})
     with tempfile.TemporaryDirectory() as folder:
-        found = inventory.build(*repository(folder, files, settings))
-        plain = inventory.build(*repository(folder, files))
-        changed = dict(files, **{"inc/vendor.h": VENDOR.replace("((void)0)", "((void)1)")})
-        redefined = inventory.build(*repository(folder, changed, settings))
+        found = inventory.build(*repository(folder, PLACEHOLDER_FILES, PLACEHOLDER_SETTINGS))
+        plain = inventory.build(*repository(folder, PLACEHOLDER_FILES))
+        changed = dict(PLACEHOLDER_FILES, **{"inc/vendor.h": VENDOR.replace("((void)0)", "((void)1)")})
+        redefined = inventory.build(*repository(folder, changed, PLACEHOLDER_SETTINGS))
     held = [record for record in found.records if record.kind == inventory.PLACEHOLDER]
     got = [(record.target, record.slot, record.argument, record.expression, record.row.note, record.covered,
             record.state, record.value, tuple(record.flags)) for record in held]
@@ -397,7 +456,7 @@ def check_symbols() -> list[str]:
         ("return", "0x00405000", "return", "1", "XX_MODE_ON", ("enum XX_MODE",), (one,)),
     ]
     got = [(record.kind, record.target, record.slot, record.value,
-            record.search.candidates[0].text if record.search and record.search.candidates else "",
+            record.top_text,
             record.row.groups, tuple(record.flags)) for record in held]
     if sorted(got) != sorted(wanted):
         failures += [f"symbol site {item}" for item in got if item not in wanted]
@@ -455,7 +514,8 @@ def check_run() -> list[str]:
         header = (folder_path / inventory.INVENTORY).read_text(encoding="utf-8").split("\n")[:2]
         if header != ["# evidence-inventory generation=3", ",".join(inventory.COLUMNS)]:
             failures.append(f"inventory.csv header {header}")
-        if not (folder_path / inventory.PROPOSED).read_text(encoding="utf-8").startswith("# argmap-proposed generation=3"):
+        if not (folder_path / inventory.PROPOSED).read_text(encoding="utf-8").startswith(
+                "# argmap-proposed generation=3"):
             failures.append("argmap-proposed.csv header")
         live = state.read_state(folder_path)
         if len(state.parse_sites(live.files[state.SITES])) != len(ids):
@@ -468,7 +528,8 @@ def check_run() -> list[str]:
 def run() -> list[str]:
     """Every check, in order. Returns the failures."""
     failures = []
-    for check in (check_sites, check_placeholders, check_fields, check_symbols, check_normalized, check_run):
+    for check in (check_sites, check_flags, check_placeholders, check_fields, check_symbols, check_normalized,
+                  check_run):
         failures += check()
     return failures
 

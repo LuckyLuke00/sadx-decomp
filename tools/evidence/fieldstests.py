@@ -11,13 +11,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-import argmap  # noqa: E402
 import cheaders  # noqa: E402
 import cparse  # noqa: E402
 import fields  # noqa: E402
 import profiles  # noqa: E402
 from argmap import ArgmapError  # noqa: E402
-from cheaders import Member  # noqa: E402
+from cheaders import Member, Origin  # noqa: E402
 
 CPP = profiles.get("msvc-vc10-x86-cpp")
 HEADER = ",".join(fields.COLUMNS)
@@ -119,17 +118,23 @@ def check_read() -> list[str]:
     return failures
 
 
+def at(file: str, certain: bool = True) -> Origin:
+    return Origin(file, 1, certain)
+
+
 def check_member() -> list[str]:
     failures = []
     flags, count = read(GOOD)
     body = (Member("flags", "Uint32"), Member("child", "struct xxobj *"))
     cases = (
-        (count, [("xx.h", body)], "unverified row"),
-        (flags, [("other.h", body)], "no body of struct xxobj in xx.h"),
-        (flags, [("sdk/xx.h", body), ("XX.H", body[:1])], "xx.h defines struct xxobj in different ways"),
-        (flags, [("xx.h", body[1:])], "xx.h's struct xxobj has no member flags"),
-        (flags, [("xx.h", (Member("flags", "int"),))], "xx.h spells flags 'int', the row says 'Uint32'"),
-        (flags, [("sdk/xx.h", body), ("other.h", ())], ""),
+        (count, [(at("xx.h"), body)], "unverified row"),
+        (flags, [(at("other.h"), body)], "no body of struct xxobj in xx.h"),
+        (flags, [(at("sdk/xx.h"), body), (at("XX.H"), body[:1])], "xx.h defines struct xxobj in different ways"),
+        (flags, [(at("xx.h"), body[1:])], "xx.h's struct xxobj has no member flags"),
+        (flags, [(at("xx.h"), (Member("flags", "int"),))], "xx.h spells flags 'int', the row says 'Uint32'"),
+        (flags, [(at("sdk/xx.h"), body), (at("other.h", False), ())], ""),
+        (flags, [(at("xx.h"), body), (at("xx.h", False), body)],
+         "xx.h defines struct xxobj in an unresolved #if branch"),
     )
     for row, bodies, wanted in cases:
         got = fields.check_member(row, bodies)
@@ -176,8 +181,11 @@ def check_types() -> list[str]:
     for spot in source.spots:
         scope = fields.Scope([found], source, source.owners[spot.owner].names)
         got.append(scope.member(fields.base_type(spot.base, scope), spot.arrow, spot.member))
-    if got != SPOT_TYPES:
-        failures.append(f"spot types: got {got}")
+    if len(got) != len(SPOT_TYPES):
+        failures.append(f"{len(got)} spots, want {len(SPOT_TYPES)}")
+    for spot, typed, wanted in zip(source.spots, got, SPOT_TYPES):
+        if typed != wanted:
+            failures.append(f"spot .{spot.member} at line {spot.line}: got {typed}, want {wanted}")
     scope = fields.Scope([found], source, {})
     cases = (("XX_OBJECT * const", "XX_OBJECT"), ("int [ 2 ] [ 3 ]", "int [ 3 ]"), ("XX_PHOLDER", "XX_HOLDER"),
              ("MY_HOLDER", "XX_HOLDER"), ("int ( * ) [ 3 ]", None), ("int", None), ("XX_HOLDER", None), (None, None))
@@ -199,6 +207,13 @@ def check_types() -> list[str]:
     split = fields.Scope([found, other], source, {})
     if split.name_type("g_holder") is not None or split.members("struct xxobj") is None:
         failures.append(f"two closures: got {split.name_type('g_holder')!r}, {split.members('struct xxobj')}")
+    declared = cparse.parse("int xxCount;\nint xxGetCount(void);\n", "b.c", CPP,
+                            type_names=frozenset(found.type_names))
+    file_scope = fields.Scope([found], declared, {})
+    got = (file_scope.name_type("xxCount"), file_scope.returns("xxCount"), file_scope.name_type("xxGetCount"),
+           file_scope.returns("xxGetCount"))
+    if got != ("int", None, None, "int"):
+        failures.append(f"a file-scope variable types only as a variable, a function only as a call: got {got}")
     return failures
 
 

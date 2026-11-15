@@ -88,6 +88,7 @@ class Tree:
     headers: Headers
     profile: object
     slots: dict = field(default_factory=dict)  # (callee, slot) -> CType or None, for the slots the tree reads
+    callee_slots: dict = field(default_factory=dict)  # callee -> the slots of it that the tree reads, in order
     left_out: dict = field(default_factory=dict)  # (callee, slot) -> reason
     prototypes: dict = field(default_factory=dict)  # callee -> the tree's cheaders.Function
     files: int = 0  # paths with a source suffix
@@ -102,6 +103,27 @@ class Tree:
         ctype = self.slots.get(key)
         return ceval.convert(result, ctype, self.profile) if result.ok and ctype is not None else result
 
+    def choose_slots(self, wanted: dict):
+        """Reads each slot of WANTED (wanted_slots()) whose prototype this tree declares the same way; leaves the
+        others out, with the reason."""
+        for key, (parameters, variadic) in wanted.items():
+            callee, slot = key
+            closure = self.headers.owner(callee)
+            records = closure.functions.get(callee) if closure is not None else None
+            spelled = argmap.normalized_type(parameters[slot - 1])
+            if self.headers.is_function_macro(callee):
+                self.left_out[key] = "function-like macro"
+            elif not records:
+                self.left_out[key] = "no prototype"
+            elif len(records[0].parameters) != len(parameters) or records[0].variadic != variadic:
+                self.left_out[key] = "arity differs"
+            elif argmap.normalized_type(records[0].parameters[slot - 1]) != spelled:
+                self.left_out[key] = "slot type differs"
+            else:
+                self.slots[key] = self.headers.resolve_type(spelled)
+                self.callee_slots.setdefault(callee, []).append(slot)
+                self.prototypes[callee] = records[0]
+
 
 @dataclass
 class Corpus:
@@ -111,9 +133,9 @@ class Corpus:
     paths: dict = field(default_factory=dict)  # node -> set of lower-case paths, over every tree
     shingles: dict = field(default_factory=dict)  # node -> frozenset, for the nodes with an ok observation
     seconds: float = 0.0
-    _at: dict = field(default_factory=dict)
-    _similar: dict = field(default_factory=dict)
-    _lineages: dict = field(default_factory=dict)
+    _at: dict = field(default_factory=dict, init=False, repr=False, compare=False)
+    _similar: dict = field(default_factory=dict, init=False, repr=False, compare=False)
+    _lineages: dict = field(default_factory=dict, init=False, repr=False, compare=False)
 
     def at(self, callee: str, slot: int) -> list:
         """The observations at one slot."""
@@ -155,8 +177,12 @@ class Corpus:
         for group in nodes.values():
             ordered = sorted(group)
             pairs.update((first, second) for index, first in enumerate(ordered) for second in ordered[index + 1:])
-        same = [self.similarity(*pair) for pair in sorted(pairs) if self.paths[pair[0]] & self.paths[pair[1]]]
-        other = [self.similarity(*pair) for pair in sorted(pairs) if not self.paths[pair[0]] & self.paths[pair[1]]]
+        same, other = [], []
+        for first, second in sorted(pairs):
+            if self.paths[first] & self.paths[second]:
+                same.append(self.similarity(first, second))
+            else:
+                other.append(self.similarity(first, second))
         return clusters.histogram(same, HISTOGRAM_BINS), clusters.histogram(other, HISTOGRAM_BINS)
 
 
@@ -175,7 +201,7 @@ def read(loaded, found) -> Corpus:
         profile = loaded.reference(sample.reference).config.profile
         closures = [closure for name, closure in found.closures if name == sample.reference]
         tree = Tree(sample.name, Headers(closures, profile), profile)
-        _choose_slots(tree, wanted)
+        tree.choose_slots(wanted)
         corpus.trees[sample.name] = tree
         if tree.slots:
             _read_tree(corpus, tree, sample, suffixes)
@@ -183,29 +209,7 @@ def read(loaded, found) -> Corpus:
     return corpus
 
 
-def _choose_slots(tree: Tree, wanted: dict):
-    for key, (parameters, variadic) in wanted.items():
-        callee, slot = key
-        closure = tree.headers.owner(callee)
-        records = closure.functions.get(callee) if closure is not None else None
-        if tree.headers.is_function_macro(callee):
-            tree.left_out[key] = "function-like macro"
-        elif not records:
-            tree.left_out[key] = "no prototype"
-        elif len(records[0].parameters) != len(parameters) or records[0].variadic != variadic:
-            tree.left_out[key] = "arity differs"
-        elif argmap.normalized(records[0].parameters[slot - 1]) != argmap.normalized(parameters[slot - 1]):
-            tree.left_out[key] = "slot type differs"
-        else:
-            tree.slots[key] = tree.headers.resolve_type(argmap.normalized(parameters[slot - 1]))
-            tree.prototypes[callee] = records[0]
-
-
 def _read_tree(corpus: Corpus, tree: Tree, sample, suffixes: tuple):
-    callees = sorted(tree.prototypes)
-    slots = {}
-    for callee, slot in tree.slots:
-        slots.setdefault(callee, []).append(slot)
     for folder in sample.folders:
         for path in sorted(folder.rglob("*")):
             if path.suffix.lower() not in suffixes or not path.is_file():
@@ -217,45 +221,44 @@ def _read_tree(corpus: Corpus, tree: Tree, sample, suffixes: tuple):
             corpus.paths.setdefault(node, set()).add(relative.lower())
             if node not in tree.nodes:
                 tree.nodes.add(node)
-                _read_node(corpus, tree, node, relative, data, sample.encoding, callees, slots)
+                _read_node(corpus, tree, node, relative, data, sample.encoding)
 
 
-def _read_node(corpus: Corpus, tree: Tree, node: str, relative: str, data: bytes, encoding: str, callees: list,
-               slots: dict):
+def _read_node(corpus: Corpus, tree: Tree, node: str, relative: str, data: bytes, encoding: str):
     try:
         text = data.decode(encoding)
     except UnicodeDecodeError as error:
         tree.failures.append((relative, f"does not decode as {encoding}: {error.reason}"))
         return
-    if not any(callee in text for callee in callees):  # a plain search is three times faster than a regex
+    if not any(callee in text for callee in tree.prototypes):  # a plain search is three times faster than a regex
         return
     try:
         tokens = ctokens.drop_directives(ctokens.tokenize(text)[0])
     except ctokens.Unsupported as error:
         tree.failures.append((relative, str(error)))
         return
-    found = _observations(tree, node, relative, tokens, slots)
-    corpus.observations += found
-    if found:
+    observations = _observations(tree, node, relative, tokens)
+    corpus.observations += observations
+    if observations:
         tree.call_nodes.add(node)
-    if node not in corpus.shingles and any(observation.result.ok for observation in found):
+    if node not in corpus.shingles and any(observation.result.ok for observation in observations):
         corpus.shingles[node] = clusters.shingles([token.text for token in tokens], corpus.thresholds["shingle_size"])
 
 
-def _observations(tree: Tree, node: str, relative: str, tokens: list, slots: dict) -> list:
+def _observations(tree: Tree, node: str, relative: str, tokens: list) -> list:
     def is_callee(index: int) -> bool:
         token = tokens[index]
         return (token.kind == "id" and token.text in tree.prototypes
                 and (index == 0 or tokens[index - 1].text not in MEMBER_ACCESS))
 
-    found = []
+    observations = []
     for call in ctokens.find_calls(tokens, is_callee):
         callee = tokens[call.position].text
         arguments = call.arguments(tokens)
         if any(token.text in BRANCH_JOINS for argument in arguments for token in argument):
             continue
         fits = arity_fits(len(arguments), tree.prototypes[callee])
-        for slot in slots[callee]:
+        for slot in tree.callee_slots[callee]:
             if slot > len(arguments):
                 continue
             argument = list(arguments[slot - 1])
@@ -264,9 +267,10 @@ def _observations(tree: Tree, node: str, relative: str, tokens: list, slots: dic
             else:
                 result = ceval.failure(ceval.UNSUPPORTED, "arity", f"{len(arguments)} arguments")
             key, names, inverted = spelling_key(argument, tree.profile)
-            found.append(Observation(tree.name, node, relative, tokens[call.position].line, callee, slot,
-                                     ctokens.spelling(argument), result, key, names, inverted, kind_of(result)))
-    return found
+            observations.append(Observation(tree.name, node, relative, tokens[call.position].line, callee, slot,
+                                            ctokens.spelling(argument), result, key, names, inverted,
+                                            kind_of(result)))
+    return observations
 
 
 def spelling_key(tokens: list, profile) -> tuple[str, tuple, bool]:
@@ -326,23 +330,25 @@ def lineage_ids(corpus: Corpus) -> dict:
         if observation.result.ok:
             key = (observation.callee, observation.slot, observation.value)
             groups.setdefault(key, set()).add(observation.node)
-    found = {}
+    labels = {}
     for (callee, slot, value), nodes in groups.items():
         for cluster in corpus.lineage(nodes):
             label = min(cluster)[:NODE_DIGITS]
-            found.update(((callee, slot, value, node), label) for node in cluster)
-    return found
+            labels.update(((callee, slot, value, node), label) for node in cluster)
+    return labels
 
 
 def sample_calls_text(corpus: Corpus, generation: int) -> str:
     """diagnostics/sample-calls.csv: one row per observation."""
     labels = lineage_ids(corpus)
     rows = []
-    for item in corpus.observations:
-        result = item.result
-        label = labels.get((item.callee, item.slot, item.value, item.node), "") if result.ok else ""
-        rows.append((item.tree, item.file, item.line, item.callee, item.slot, item.argument, result.status,
-                     result.cause, value_text(result), item.key, item.kind, item.node[:NODE_DIGITS], label))
+    for observation in corpus.observations:
+        result = observation.result
+        where = (observation.callee, observation.slot, observation.value, observation.node)
+        label = labels.get(where, "") if result.ok else ""
+        rows.append((observation.tree, observation.file, observation.line, observation.callee, observation.slot,
+                     observation.argument, result.status, result.cause, value_text(result), observation.key,
+                     observation.kind, observation.node[:NODE_DIGITS], label))
     return outputs.csv_text("evidence-sample-calls", generation, SAMPLE_CALL_COLUMNS, rows)
 
 
@@ -356,14 +362,15 @@ def sampled_proposals(corpus: Corpus, rows: list) -> list:
         if not any(key in tree.slots for tree in corpus.trees.values()):
             filled.append(row)
             continue
-        ok = [item for item in corpus.at(*key) if item.result.ok]
+        ok = [observation for observation in corpus.at(*key) if observation.result.ok]
         named = {}
-        for item in ok:
-            if item.kind == NAMED:
-                named.setdefault(item.key, set()).add(item.node)
-        counts = sorted((-len(corpus.lineage(nodes)), text) for text, nodes in named.items())
-        spellings = "; ".join(f"{text} {-count}" for count, text in counts[:PROPOSAL_SPELLINGS])
-        filled.append(row[:-2] + (len(corpus.lineage({item.node for item in ok})), spellings))
+        for observation in ok:
+            if observation.kind == NAMED:
+                named.setdefault(observation.key, set()).add(observation.node)
+        counted = {text: len(corpus.lineage(nodes)) for text, nodes in named.items()}
+        ranked = osutil.most_first(counted)
+        spellings = "; ".join(f"{text} {count}" for text, count in ranked[:PROPOSAL_SPELLINGS])
+        filled.append(row[:-2] + (len(corpus.lineage({observation.node for observation in ok})), spellings))
     return filled
 
 

@@ -30,7 +30,8 @@ from cheaders import MAX_EXPANSION_DEPTH
 FIELDMAP = "fieldmap.csv"
 COLUMNS = ("type", "member", "mode", "groups", "status", "header", "spelled_type", "origins", "note")
 HEADER_DECLARATION = "header declaration"
-OPERATOR_MODES = {"&=": "and-mask", "|=": "flags", "&": "flags"}  # the other operators keep the row's mode
+# the mode an assignment operator gives a field site; the other operators keep the row's mode
+OPERATOR_MODES = {"&=": argmap.AND_MASK, "|=": argmap.FLAGS, "&": argmap.FLAGS}
 
 
 def read_fieldmap(path: Path) -> list[Row]:
@@ -43,7 +44,7 @@ def read_fieldmap(path: Path) -> list[Row]:
 def _row(values: dict, line: int, where: str) -> Row:
     if not values["type"] or not values["member"]:
         raise ArgmapError(f"{where}: a row needs a type and a member")
-    callee = f"{argmap.normalized(values['type'])}.{values['member']}"
+    callee = f"{argmap.normalized_type(values['type'])}.{values['member']}"
     return argmap.checked_row(values, callee, 0, HEADER_DECLARATION, line, where)
 
 
@@ -58,32 +59,35 @@ def operator_row(row: Row, operator: str) -> Row:
 
 
 def check_member(row: Row, bodies: list) -> Check:
-    """BODIES: (file, members) of the row's type, one per closure that defines it, members as cheaders Member
-    records."""
+    """BODIES: (origin, members) of the row's type, one per closure that defines it, members as cheaders Member
+    records. A body read in an unresolved #if branch fails the check."""
     if row.status != HEADER_DECLARATION:
         return Check(False, "unverified row")
     type_name, member = type_and_member(row)
-    found = {tuple(members) for file, members in bodies if argmap.in_header(file, row.header)}
-    if not found:
+    defined = [(origin, tuple(members)) for origin, members in bodies if argmap.in_header(origin.file, row.header)]
+    if not defined:
         return Check(False, f"no body of {type_name} in {row.header}")
+    if not all(origin.certain for origin, _ in defined):
+        return Check(False, f"{row.header} defines {type_name} in an unresolved #if branch")
+    found = {members for _, members in defined}
     if len(found) > 1:
         return Check(False, f"{row.header} defines {type_name} in different ways")
     [members] = found
     spelled = [entry.spelled for entry in members if entry.name == member]
     if not spelled:
         return Check(False, f"{row.header}'s {type_name} has no member {member}")
-    if argmap.normalized(spelled[0]) != row.spelled_type:
+    if argmap.normalized_type(spelled[0]) != row.spelled_type:
         return Check(False, f"{row.header} spells {member} {spelled[0]!r}, the row says {row.spelled_type!r}")
     return Check(True, "")
 
 
 def named_bodies(closures: list, type_name: str, header: str) -> list:
-    """(closure, (file, members)) per closure of CLOSURES in which TYPE_NAME names a body that HEADER defines."""
+    """(closure, (origin, members)) per closure of CLOSURES in which TYPE_NAME names a body that HEADER defines."""
     found = []
     for closure in closures:
         type_id = Scope([closure], None, {}).body(type_name)
         if type_id is not None and argmap.in_header(closure.bodies[type_id].file, header):
-            found.append((closure, (closure.bodies[type_id].file, tuple(closure.members[type_id]))))
+            found.append((closure, (closure.bodies[type_id], tuple(closure.members[type_id]))))
     return found
 
 
@@ -114,10 +118,7 @@ def member_owners(closures: list) -> dict:
         for type_id, members in closure.members.items():
             for entry in members:
                 owners = found.setdefault(entry.name, {})
-                if owners.get(type_id, entry.spelled) != entry.spelled:
-                    owners[type_id] = None
-                elif type_id not in owners:
-                    owners[type_id] = entry.spelled
+                owners[type_id] = entry.spelled if owners.get(type_id, entry.spelled) == entry.spelled else None
     return found
 
 
@@ -131,18 +132,19 @@ class Scope:
     def name_type(self, name: str) -> str | None:
         if name in self.locals:
             return self.locals[name]
-        declared = self.source.names.get(name) if self.source else None
-        if declared is not None:
-            return declared.type if declared.kind == "variable" else None
-        return self._agreed("variables", name, "spelled")
+        return self._declared(name, "variable", "variables", "spelled")
 
     def returns(self, name: str) -> str | None:
         if name in self.locals:
             return None
+        return self._declared(name, "function", "functions", "returns")
+
+    def _declared(self, name: str, kind: str, table: str, attribute: str) -> str | None:
+        """The type of NAME when the source declares it as a KIND, else the one the closures' TABLE agrees on."""
         declared = self.source.names.get(name) if self.source else None
         if declared is not None:
-            return declared.type if declared.kind == "function" else None
-        return self._agreed("functions", name, "returns")
+            return declared.type if declared.kind == kind else None
+        return self._agreed(table, name, attribute)
 
     def typedef(self, name: str) -> str | None:
         if self.source and name in self.source.typedefs:
@@ -193,7 +195,7 @@ class Scope:
         words = [text for text in texts if text not in QUALIFIERS]
         if not words:
             return False
-        return words[-1] == "*" or len(words) == 1 and self.typedef(words[0]) is not None
+        return words[-1] == "*" or (len(words) == 1 and self.typedef(words[0]) is not None)
 
     def member(self, spelling: str | None, arrow: bool, name: str) -> tuple[str, str] | None:
         """The type id and the spelled type of member NAME of an object of type SPELLING, or of the object that
@@ -207,18 +209,18 @@ class Scope:
         return (type_id, found[0]) if len(found) == 1 else None
 
 
-def base_type(tokens, scope: Scope, depth: int = 0) -> str | None:
+def base_type(tokens, scope: Scope) -> str | None:
     """The spelled type of the expression TOKENS, a field spot's base, or None when SCOPE cannot tell."""
     tokens = list(tokens)
     layers = (len(tokens) - len(ctokens.unwrapped([token.text for token in tokens]))) // 2
     tokens = tokens[layers:len(tokens) - layers]
-    if not tokens or depth > MAX_EXPANSION_DEPTH:
+    if not tokens:
         return None
     first, last = tokens[0], tokens[-1]
     if len(tokens) == 1:
         return scope.name_type(first.text) if _is_name(first) else None
     if first.text == "*":
-        return scope.dereferenced(base_type(tokens[1:], scope, depth + 1))
+        return scope.dereferenced(base_type(tokens[1:], scope))
     if first.text == "(":
         cast = [token.text for token in tokens[1:ctokens.matching_closer(tokens, 0, len(tokens))]]
         if scope.is_cast(cast):
@@ -226,11 +228,11 @@ def base_type(tokens, scope: Scope, depth: int = 0) -> str | None:
     elif not _is_name(first):
         return None
     if tokens[-2].text in (".", "->") and _is_name(last):
-        found = scope.member(base_type(tokens[:-2], scope, depth + 1), tokens[-2].text == "->", last.text)
+        found = scope.member(base_type(tokens[:-2], scope), tokens[-2].text == "->", last.text)
         return found[1] if found else None
     opener = ctokens.matching_opener(tokens, len(tokens) - 1, -1) if last.text in ("]", ")") else None
     if last.text == "]" and opener:
-        return scope.dereferenced(base_type(tokens[:opener], scope, depth + 1))
+        return scope.dereferenced(base_type(tokens[:opener], scope))
     if last.text == ")" and opener == 1 and _is_name(first):
         return scope.returns(first.text)
     return None

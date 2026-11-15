@@ -93,7 +93,8 @@ class Symbols:
         if not constants:
             return None
         groups = scopes or tuple(sorted({constant.scope for constant in constants}))
-        return argmap.Row(address, 0, "value", groups, REFERENCE_SCOPE, "", "", (REFERENCE,), "", 0)
+        return argmap.Row(callee=address, slot=0, mode=argmap.VALUE, groups=groups, status=REFERENCE_SCOPE,
+                          header="", spelled_type="", origins=(REFERENCE,), note="", line=0)
 
     def names(self, row: argmap.Row) -> list:
         """The covers.Name records that ROW takes, one per name and value."""
@@ -116,7 +117,8 @@ def enum_slot(spelled: str) -> bool:
 
 
 def _enum_row(callee: str, slot: int, spelled: str) -> argmap.Row:
-    return argmap.Row(callee, slot, "value", (spelled,), REFERENCE_PROTOTYPE, "", spelled, (REFERENCE,), PROTOTYPES, 0)
+    return argmap.Row(callee=callee, slot=slot, mode=argmap.VALUE, groups=(spelled,), status=REFERENCE_PROTOTYPE,
+                      header="", spelled_type=spelled, origins=(REFERENCE,), note=PROTOTYPES, line=0)
 
 
 def one_enumerator(search, row: argmap.Row, profile) -> bool:
@@ -188,7 +190,7 @@ def _read_prototypes(path: Path) -> dict:
         address = _address(values["address"], where)
         if not values["name"] or not values["type"]:
             raise SymbolsError(f"{where}: the name and the type must not be empty")
-        if not values["slot"].isdigit():
+        if not values["slot"].isdecimal():
             raise SymbolsError(f"{where}: slot {values['slot']!r} is not a number from 0")
         slot = int(values["slot"])
         if (address, slot) in seen:
@@ -211,7 +213,7 @@ def _read_enums(path: Path) -> dict:
     enums, seen = {}, {}
     for where, values in _rows(path, ENUM_COLUMNS):
         enum = values["enum"]
-        if not enum.startswith(ENUM_PREFIX) or not enum[len(ENUM_PREFIX):].strip():
+        if not enum.startswith(ENUM_PREFIX):
             raise SymbolsError(f"{where}: enum {enum!r} must be spelled {ENUM_PREFIX}NAME")
         name = _name(values["name"], where)
         if (enum, name) in seen:

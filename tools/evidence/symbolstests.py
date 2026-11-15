@@ -10,8 +10,11 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
 
+import argmap  # noqa: E402
 import covers  # noqa: E402
+import osutil  # noqa: E402
 import profiles  # noqa: E402
 import symbols  # noqa: E402
 from symbols import Constant, SymbolsError  # noqa: E402
@@ -40,8 +43,7 @@ SCOPES = ("address,scope,name,value\n"
 
 def load(files: dict):
     with tempfile.TemporaryDirectory() as folder:
-        for name, text in files.items():
-            (Path(folder) / name).write_text(text, encoding="utf-8", newline="")
+        osutil.write_files(Path(folder), files)
         try:
             return symbols.load(Path(folder))
         except SymbolsError as error:
@@ -75,6 +77,7 @@ def check_load() -> list[str]:
         ({symbols.PROTOTYPES: header + "0x401000,f,0,int,extra\n"}, ":2: the row needs 4 values"),
         ({symbols.PROTOTYPES: header + "zz,f,0,int\n"}, ":2: address 'zz' is not a hex number"),
         ({symbols.PROTOTYPES: header + "0x401000,f,one,int\n"}, ":2: slot 'one' is not a number from 0"),
+        ({symbols.PROTOTYPES: header + "0x401000,f,\u00b2,int\n"}, ":2: slot '\u00b2' is not a number from 0"),
         ({symbols.PROTOTYPES: header + "0x401000,f,0,\n"}, ":2: the name and the type must not be empty"),
         ({symbols.PROTOTYPES: header + "0x401000,f,0,int\n0x401000,f,0,int\n"}, ":3: 0x401000 slot 0 is also at"),
         ({symbols.PROTOTYPES: header + "0x401000,f,0,int\n0x401000,f,2,int\n"}, "0x401000 has no slot 1"),
@@ -135,7 +138,7 @@ def check_rows() -> list[str]:
         failures.append(f"enum names {found.names(rows[2])}")
     if not found.check(rows[2]).passed or not found.check(wide).passed:
         failures.append("checked rows must pass")
-    if load({symbols.PROTOTYPES: PROTOTYPES}).check(rows[2]) != symbols.argmap.Check(False, symbols.NO_ENUM):
+    if load({symbols.PROTOTYPES: PROTOTYPES}).check(rows[2]) != argmap.Check(False, symbols.NO_ENUM):
         failures.append("an enum with no enums.csv rows must fail its check")
     return failures
 

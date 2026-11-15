@@ -21,33 +21,43 @@ WIDE = FLAGS + [Name("XX_NONE", 0, False), Name("XX_LOW", 0x3, False), Name("XX_
 MASKS = [Name("XX_HI_MASK", 0xE0000000, False), Name("XX_MD_MASK", 0x1C000000, False)]
 
 
-def texts(value: int, slot: Slot, names=GROUP, budget: int = 100, terms: int = 4) -> list[str]:
-    return [candidate.text for candidate in covers.search(value, slot, names, budget, terms).candidates]
+def search(value: int, slot: Slot, names=GROUP, budget: int = 100, max_terms: int = 4) -> covers.Search:
+    return covers.search(value, slot, names, budget=budget, max_terms=max_terms)
+
+
+def texts(value: int, slot: Slot, names=GROUP, budget: int = 100, max_terms: int = 4) -> list[str]:
+    return [candidate.text for candidate in search(value, slot, names, budget, max_terms).candidates]
 
 
 def check_search() -> list[str]:
     failures = []
     flags, mask, plain = Slot(INTEGER, "flags", 32), Slot(INTEGER, "and-mask", 32), Slot(INTEGER, "value", 32)
+    byte_flags, byte_mask = Slot(INTEGER, "flags", 8), Slot(INTEGER, "and-mask", 8)
+    no_zero, every = [entry for entry in GROUP if entry.name != "XX_NONE"], FLAGS + [Name("XX_ALL", -1, False)]
+    eight = " | ".join(f"XX_F{bit}" for bit in range(8))
     cases = (
-        ("an uncapped 6-flag split", 0x3F, flags, ["XX_F0 | XX_ALSO_F1 | XX_F2 | XX_F3 | XX_F4 | XX_F5"]),
-        ("exact before a split", 0x3, flags, ["XX_LOW", "XX_F0 | XX_ALSO_F1"]),
-        ("a value slot takes no split", 0x5, plain, []),
-        ("a bit with no name", 0x101, flags, []),
-        ("a zero name", 0, flags, ["XX_NONE"]),
-        ("no zero name", 0, flags, []),
-        ("an inverted mask", ~0x5 & 0xFFFFFFFF, mask, ["~(XX_F0 | XX_F2)"]),
-        ("one inverted name before the split", ~0x3 & 0xFFFFFFFF, mask, ["~XX_LOW", "~(XX_F0 | XX_ALSO_F1)"]),
-        ("five inverted flags are too many", ~0x1F & 0xFFFFFFFF, mask, []),  # FLAGS only: no composite
-        ("no inverted mask at a flags slot", ~0x5 & 0xFFFFFFFF, flags, []),
-        ("a signed slot value and a signed name", -0x80000000, flags, ["XX_SIGN"]),
+        ("an uncapped 6-flag split", 0x3F, flags, GROUP, ["XX_F0 | XX_ALSO_F1 | XX_F2 | XX_F3 | XX_F4 | XX_F5"]),
+        ("exact before a split", 0x3, flags, GROUP, ["XX_LOW", "XX_F0 | XX_ALSO_F1"]),
+        ("a value slot takes no split", 0x5, plain, GROUP, []),
+        ("a bit with no name", 0x101, flags, GROUP, []),
+        ("a zero name", 0, flags, GROUP, ["XX_NONE"]),
+        ("no zero name", 0, flags, no_zero, []),
+        ("an inverted mask", ~0x5 & 0xFFFFFFFF, mask, GROUP, ["~(XX_F0 | XX_F2)"]),
+        ("one inverted name before the split", ~0x3 & 0xFFFFFFFF, mask, GROUP, ["~XX_LOW", "~(XX_F0 | XX_ALSO_F1)"]),
+        ("four inverted flags", ~0xF & 0xFFFFFFFF, mask, FLAGS, ["~(XX_F0 | XX_F1 | XX_F2 | XX_F3)"]),
+        ("five inverted flags are too many", ~0x1F & 0xFFFFFFFF, mask, FLAGS, []),  # FLAGS only: no composite
+        ("no inverted mask at a flags slot", ~0x5 & 0xFFFFFFFF, flags, GROUP, []),
+        ("a signed slot value and a signed name", -0x80000000, flags, GROUP, ["XX_SIGN"]),
+        ("an 8-bit slot drops the high bits", 0x105, byte_flags, GROUP, ["XX_F0 | XX_F2"]),
+        ("an 8-bit inverted mask", 0xFA, byte_mask, GROUP,
+         ["~(XX_F0 | XX_F2)", "XX_ALSO_F1 | XX_F3 | XX_F4 | XX_F5 | XX_F6 | XX_F7"]),
+        ("an 8-bit slot reads -1 as 0xFF", 0xFF, byte_flags, every, ["XX_ALL", eight]),
     )
-    for name, value, slot, wanted in cases:
-        names = {"no zero name": [entry for entry in GROUP if entry.name != "XX_NONE"],
-                 "five inverted flags are too many": FLAGS}.get(name, GROUP)
+    for name, value, slot, names, wanted in cases:
         got = texts(value, slot, names)
         if got != wanted:
             failures.append(f"{name}: got {got}, want {wanted}")
-    node = covers.search(0x2, flags, GROUP, 100, 4).candidates[0].terms[0]
+    node = search(0x2, flags).candidates[0].terms[0]
     if [(alias.name, alias.origins) for alias in node.aliases] != [("XX_ALSO_F1", ("other",)), ("XX_F1", ("vendor",))]:
         failures.append(f"an alias node keeps every alias with its origins: {node}")
     if texts(0x3, flags, list(reversed(GROUP))) != texts(0x3, flags):
@@ -58,23 +68,26 @@ def check_search() -> list[str]:
 def check_budget() -> list[str]:
     failures = []
     flags = Slot(INTEGER, "flags", 32)
-    found = covers.search(0x3, flags, GROUP, 0, 4)
+    found = search(0x3, flags, budget=0)
     if found.candidates or not found.incomplete:
         failures.append(f"a budget of 0: {found}")
-    found = covers.search(0x3, flags, GROUP, 2, 4)
+    found = search(0x3, flags, budget=2)
     if [candidate.text for candidate in found.candidates] != ["XX_LOW"] or not found.incomplete:
         failures.append(f"incomplete with cover: {found}")
-    found = covers.search(0x3, flags, FLAGS, 3, 4)  # no multi-bit name: the composite walk costs no step
+    found = search(0x3, flags, FLAGS, budget=3)  # no multi-bit name: the composite walk costs no step
     if len(found.candidates) != 1 or found.incomplete or found.steps != 3:
         failures.append(f"a budget that fits: {found}")
-    found = covers.search(0x7, flags, WIDE, 10, 4)  # exact 1, composite walk 7, split 3
+    found = search(0x7, flags, WIDE, budget=6)  # exact 1, then the walk stops after its first composite
+    if [candidate.text for candidate in found.candidates] != ["XX_F0 | XX_WIDE"] or not found.incomplete:
+        failures.append(f"the composites stay when the budget ends in the walk: {found}")
+    found = search(0x7, flags, WIDE, budget=10)  # exact 1, composite walk 7, split 3
     if [candidate.text for candidate in found.candidates] != ["XX_F0 | XX_WIDE", "XX_LOW | XX_F2"] \
             or not found.incomplete:
         failures.append(f"the composites stay when the budget ends in the split: {found}")
-    found = covers.search(0x7, flags, WIDE, 11, 4)
+    found = search(0x7, flags, WIDE, budget=11)
     if len(found.candidates) != 3 or found.incomplete or found.steps != 11:
         failures.append(f"a budget that fits the composite walk: {found}")
-    if covers.search(0x3, Slot(INTEGER, "flags", 32, variadic=True), GROUP, 100, 4).candidates:
+    if search(0x3, Slot(INTEGER, "flags", 32, variadic=True)).candidates:
         failures.append("a variadic argument got candidates")
     return failures
 
@@ -94,20 +107,22 @@ def check_gates() -> list[str]:
         got = texts(value, Slot(kind, "value", 32), names)
         if got != wanted:
             failures.append(f"{kind} slot, value {value}: got {got}, want {wanted}")
-    aliases = covers.search(0, Slot(POINTER, "value", 32), names, 10, 4).candidates[0].terms[0].aliases
+    aliases = search(0, Slot(POINTER, "value", 32), names).candidates[0].terms[0].aliases
     if [alias.name for alias in aliases] != ["NULL", "XX_PTR"]:
         failures.append(f"pointer aliases {aliases}")
+    return failures
+
+
+def check_slot_kind() -> list[str]:
     profile = profiles.get("msvc-vc10-x86-cpp")
     int_type, pointer = profile.int_type("int"), profile.pointer()
     kinds = [covers.slot_kind("BOOL", int_type, profile.boolean_names), covers.slot_kind("Int", int_type, ()),
              covers.slot_kind("void *", pointer, ()), covers.slot_kind("Float", None, ())]
-    if kinds != [BOOLEAN, INTEGER, POINTER, None]:
-        failures.append(f"slot kinds {kinds}")
-    return failures
+    return [] if kinds == [BOOLEAN, INTEGER, POINTER, None] else [f"slot kinds {kinds}"]
 
 
 def check_composites() -> list[str]:
-    """Covers by 2 to TERMS bit-disjoint names, one of them multi-bit: after the exact name, before the split, fewer
+    """Covers by 2 to MAX_TERMS bit-disjoint names, one of them multi-bit: after the exact name, before the split, fewer
     names first, then the names in order. Overlapping names never pair, and a zero name is no term."""
     flags, mask, plain = Slot(INTEGER, "flags", 32), Slot(INTEGER, "and-mask", 32), Slot(INTEGER, "value", 32)
     split = "XX_F0 | XX_F1 | XX_F2 | XX_F3 | XX_F4"
@@ -123,8 +138,8 @@ def check_composites() -> list[str]:
          [f"~({cover})" for cover in four]),
     )
     failures = []
-    for name, value, slot, names, terms, wanted in cases:
-        got = texts(value, slot, names, terms=terms)
+    for name, value, slot, names, max_terms, wanted in cases:
+        got = texts(value, slot, names, max_terms=max_terms)
         if got != wanted:
             failures.append(f"{name}: got {got}, want {wanted}")
     return failures
@@ -132,7 +147,7 @@ def check_composites() -> list[str]:
 
 def run() -> list[str]:
     failures = []
-    for check in (check_search, check_budget, check_gates, check_composites):
+    for check in (check_search, check_budget, check_gates, check_slot_kind, check_composites):
         failures += check()
     return failures
 

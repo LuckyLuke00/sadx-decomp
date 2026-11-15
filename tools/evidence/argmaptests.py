@@ -46,11 +46,21 @@ def check_read() -> list[str]:
     cases = (
         ("callee,slot\n", "the columns must be"),
         (GOOD + "xxTurn,2,value,XX_,unverified,,,,\n", "also on line 2"),
+        (f"{HEADER}\n\nxxTurn,2,value,A,unverified,,,,\nxxTurn,2,value,A,unverified,,,,\n",
+         "argmap.csv:4: xxTurn argument 2 is also on line 3"),
+        (f'{HEADER}\nf,1,value,A,unverified,,,,"two\nlines"\nf,0,value,A,unverified,,,,\n', "argmap.csv:4: slot '0'"),
         (f"{HEADER}\nf,0,value,A,unverified,,,,\n", "not an argument number"),
         (f"{HEADER}\nf,1,bits,A,unverified,,,,\n", "mode 'bits'"),
         (f"{HEADER}\nf,1,value,A,maybe,,,,\n", "status 'maybe'"),
         (f"{HEADER}\nf,1,value,,unverified,,,,\n", "no groups"),
         (f"{HEADER}\nf,1,value,A,header prototype,,int,,\n", "needs a header"),
+        (f"{HEADER}\n,1,value,A,unverified,,,,\n", "no callee"),
+        (f"{HEADER}\nf,abc,value,A,unverified,,,,\n", "not an argument number"),
+        (f"{HEADER}\nf,-1,value,A,unverified,,,,\n", "not an argument number"),
+        (f"{HEADER}\nf,\u00b2,value,A,unverified,,,,\n", "not an argument number"),
+        (f"{HEADER}\nf,1,value,A,unverified\n", "argmap.csv:2: the row needs 9 values"),
+        (f"{HEADER}\nf,1,value,A,unverified,,,,,extra\n", "argmap.csv:2: the row needs 9 values"),
+        (f"{HEADER}\nf,1,value,A,header prototype,x.h,/* int,,\n", "argmap.csv:2: unterminated block comment"),
     )
     for text, wanted in cases:
         got = read(text)
@@ -63,11 +73,13 @@ def check_read() -> list[str]:
         except ArgmapError as error:
             if "missing hand-owned file" not in str(error):
                 failures.append(f"missing argmap: {error}")
+    if read(f"{HEADER}\n") != []:
+        failures.append(f"a header-only argmap has no rows: {read(HEADER)}")
     return failures
 
 
-def function(file: str, *parameters: str, variadic: bool = False) -> Function:
-    return Function("xxTurn", "void", parameters, variadic, Origin(file, 1, True))
+def function(file: str, *parameters: str, variadic: bool = False, certain: bool = True) -> Function:
+    return Function("xxTurn", "void", parameters, variadic, Origin(file, 1, certain))
 
 
 def check_prototypes() -> list[str]:
@@ -83,14 +95,17 @@ def check_prototypes() -> list[str]:
         (draw, [function("x/sdk/xxapi.h", "a *", "Int", "Uint32")], ""),
         (draw, [function("xxapi.h", "a *", "Int", "Uint32")], "no prototype"),
         (wrap, [function("xxapi.h", "Uint32")], "unverified row"),
+        (turn, [function("xxapi.h", "Int", "Angle"), function("other.h", "Int", "Angle", certain=False)], ""),
+        (turn, [function("xxapi.h", "Int", "Angle", certain=False)], "declares xxTurn in an unresolved #if branch"),
     )
+    if argmap.in_header("sdk/myxxapi.h", "xxapi.h"):
+        failures.append("a header is a whole path part: myxxapi.h is not xxapi.h")
     for row, functions, wanted in cases:
         check = argmap.check_prototype(row, functions)
         if check.passed != (wanted == "") or wanted not in check.reason:
             failures.append(f"{row.callee} against {functions}: got {check}, want {wanted!r}")
-    warnings = argmap.hygiene(read(GOOD) + read(f"{HEADER}\n__except,1,value,A,unverified,,,,\n"), {"xxTurn"},
-                              {"xxDraw"})
-    if warnings != ["argmap callee Wrap matches no annotated function and no header declaration"]:
+    warnings = argmap.hygiene(read(GOOD), {"xxTurn"}, {"xxDraw"})
+    if warnings != ["argmap callee Wrap matches no function in the sources and no header declaration"]:
         failures.append(f"hygiene {warnings}")
     return failures
 

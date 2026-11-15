@@ -1,5 +1,5 @@
-"""Inventory: one site per mapped call argument and mapped field spot in the game source, with its value and the
-names that may spell it.
+"""Inventory: one site per mapped call argument, mapped field spot, placeholder use, and return or scope value in the
+game source, with its value and the names that may spell it.
 
 build() does the work in memory:
 1. It reads one closure per umbrella of the target header set and of each reference set.
@@ -75,8 +75,9 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the s
 import osutil  # noqa: E402
 
 INVENTORY, PROPOSED = "inventory.csv", "argmap-proposed.csv"
-COLUMNS = ("id", "kind", "file", "line", "column", "owner", "target", "slot", "callee", "argument", "expression", "status",
-           "cause", "detail", "value", "type", "state", "mode", "row", "check", "flags", "candidates", "incomplete")
+COLUMNS = ("id", "kind", "file", "line", "column", "owner", "target", "slot", "callee", "argument", "expression",
+           "status", "cause", "detail", "value", "type", "state", "mode", "row", "check", "flags", "candidates",
+           "incomplete")
 PROPOSED_COLUMNS = ("callee", "slot", "sites", "values", "header", "spelled_type", "sample_clusters",
                     "sample_spellings")
 LITERAL_SUFFIXES = {"int": "", "unsigned int": "u", "long": "l", "unsigned long": "ul", "long long": "ll",
@@ -89,7 +90,7 @@ KINDS = (CALL, FIELD, CASE, VARIABLE, RETURN, PLACEHOLDER)  # the site kinds, in
 MEMBER_NAME_ONLY = "member name only"  # the flag of a field site that its member name alone types
 PLACEHOLDER_NOTES = {"no-code": "the binary cannot tell this apart from no statement",
                      "code": "stands for code that has no name yet"}
-VENDOR_ORIGINS_EXCLUDED = ("game", "")  # origins whose functions are not proposed for argmap rows
+UNPROPOSED_ORIGINS = ("game", "")  # the game's own origin and none: their functions get no argmap proposal
 EXCEPT = "__except"  # an exception filter, which cparse reads as a call: no owned call
 
 
@@ -99,7 +100,7 @@ class InventoryError(Exception):
 
 @dataclass
 class Record:
-    """One site: a mapped call argument, a mapped field spot, or a placeholder use."""
+    """One site: a mapped call argument, a mapped field spot, a placeholder use, or a return or scope value."""
     file: str
     line: int
     column: int
@@ -136,6 +137,11 @@ class Record:
     @property
     def value(self) -> str:
         return value_text(self.result)
+
+    @property
+    def top_text(self) -> str:
+        """The text of the top candidate; "" without one."""
+        return self.search.candidates[0].text if self.search and self.search.candidates else ""
 
 
 @dataclass
@@ -253,10 +259,19 @@ class Parameter:
 
 
 @dataclass(frozen=True)
+class _File:
+    """One parsed source file, as its sites see it."""
+    source: cparse.SourceFile
+    owner_ids: list  # (owner id, flag) per owner
+    reachable: set  # the canonical paths of the headers that its own #include lines reach
+    scoped: dict  # owner index -> the owner's entry of _Reader.scoped()
+
+
+@dataclass(frozen=True)
 class Prototype:
     parameters: tuple  # spelled types
     variadic: bool
-    source: str  # header, target or source
+    source: str  # header, target, source or reference
     resolve_type: object  # spelled type -> CType
     file: str  # the file that declares it
 
@@ -342,8 +357,8 @@ class _Reader:
             if source.unsupported:
                 inventory.unsupported_files.append((relative, source.unsupported))
                 continue
-            reachable = self.reachable(relative, source)
             owner_ids = [self.owner_id(relative, owner) for owner in source.owners]
+            file = _File(source, owner_ids, self.reachable(relative, source), self.scoped(source, owner_ids))
             for call in source.calls:
                 inventory.calls += 1
                 if self.is_owned(call, source):
@@ -351,7 +366,7 @@ class _Reader:
                     inventory.owned_calls.setdefault(owner_ids[call.owner][0], []).append(owned)
                 kind = self.loaded.placeholders.get(call.callee)
                 if kind is not None:
-                    inventory.records.append(self.placeholder(call, kind, source, owner_ids[call.owner]))
+                    inventory.records.append(self.placeholder(call, kind, file))
                     continue
                 rows = self.rows.get(call.callee) or self.reference_rows(call.callee)
                 if not rows:
@@ -361,15 +376,13 @@ class _Reader:
                 if self.headers.is_function_macro(call.callee):
                     inventory.macro_calls += 1
                     continue
-                inventory.records += self.sites(call, rows, source, owner_ids[call.owner], reachable)
-            scoped = self.scoped(source, owner_ids)
+                inventory.records += self.sites(call, rows, file)
             for spot in source.spots:
-                record = self.field_site(spot, source, owner_ids[spot.owner], reachable, inventory.field_counts,
-                                         scoped.get(spot.owner))
+                record = self.field_site(spot, file, inventory.field_counts)
                 if record is not None:
                     inventory.records.append(record)
             for spot in source.values:
-                record = self.value_site(spot, source, owner_ids[spot.owner], reachable, scoped.get(spot.owner))
+                record = self.value_site(spot, file)
                 if record is not None:
                     inventory.records.append(record)
             inventory.field_counts["case labels"] += source.case_labels
@@ -399,9 +412,7 @@ class _Reader:
         search = self.loaded.target.config.search_path
         found, stack = set(), []
         for include in source.includes:
-            folders = search if include.angle else (folder,) + search
-            path = next((os.path.join(item, include.name) for item in folders
-                         if os.path.isfile(os.path.join(item, include.name))), None)
+            path = cheaders.search_include(include.name, include.angle, folder, search)
             if path:
                 stack.append(cheaders.canonical(path))
         while stack:
@@ -413,8 +424,9 @@ class _Reader:
 
     # Sites
 
-    def sites(self, call: cparse.Call, rows: dict, source, owner: tuple, reachable: set) -> list:
-        owner_id, owner_flag = owner
+    def sites(self, call: cparse.Call, rows: dict, file: _File) -> list:
+        source = file.source
+        owner_id, owner_flag = file.owner_ids[call.owner]
         target, target_flag = self.role(call.callee)
         prefix = "".join(f"{self.role(callee)[0]}#{index}/" for callee, index in call.outer)
         context = _context(call)
@@ -439,19 +451,15 @@ class _Reader:
                                            f"{len(prototype.parameters)}")
             else:
                 parameter = _parameter(prototype, index)
-                if parameter.ctype is not None and not parameter.spelled == "" and result.ok:
-                    result = ceval.convert(result, parameter.ctype, self.profile)
-            flags += self.name_flags(result, reachable)
+                result = self.converted(result, parameter.ctype)
+            flags += self.name_flags(result, file.reachable)
             flags += self.prototype_flags(row, call.callee, prototype, source)
             record = Record(source.path, call.line, call.column, owner_id, target, f"{prefix}{index}", call.callee,
                             ctokens.spelling(list(tokens)), normalized(tokens, self.profile), result, row,
                             self.check(row), context, flags,
                             accepted=self.accepted(row, prototype.file if prototype else None),
                             prototype=_prototype_text(prototype))
-            if record.covered and result.ok:
-                record.search, record.pool, record.cover_slot = self.search(result, row, parameter)
-                if symbols.one_enumerator(record.search, row, self.profile):
-                    record.flags.append(symbols.ONE_ENUMERATOR)
+            self.add_candidates(record, parameter)
             records.append(record)
         return records
 
@@ -470,9 +478,7 @@ class _Reader:
             parameter = _parameter(prototype, index) if prototype is not None else None
             ctype = parameter.ctype if parameter is not None and parameter.spelled else None
             floats = floats or (ctype is not None and ctype.kind == "float")
-            result = self.evaluate(tokens, locals_, source)
-            if result.ok and ctype is not None:
-                result = ceval.convert(result, ctype, self.profile)
+            result = self.converted(self.evaluate(tokens, locals_, source), ctype)
             if not result.ok or not isinstance(result.value, (int, float)):
                 values.append(None)
                 continue
@@ -480,9 +486,10 @@ class _Reader:
             values.append((result.value, result.ctype))
         return OwnedCall(self.role(call.callee)[0], source.path, call.line, call.column, tuple(values), floats)
 
-    def placeholder(self, call: cparse.Call, kind: str, source, owner: tuple) -> Record:
+    def placeholder(self, call: cparse.Call, kind: str, file: _File) -> Record:
         """One use of a placeholder macro of KIND, no-code or code."""
-        owner_id, owner_flag = owner
+        source = file.source
+        owner_id, owner_flag = file.owner_ids[call.owner]
         flags = [owner_flag] if owner_flag else []
         if kind == "no-code" and any(token.kind in ("num", "char") for tokens in call.arguments for token in tokens):
             flags.append("literal inside a no-code macro")
@@ -494,10 +501,10 @@ class _Reader:
                       row, argmap.Check(True, ""), _context(call), flags, prototype=self.definition_text(call.callee),
                       kind=PLACEHOLDER)
 
-    def field_site(self, spot: cparse.Spot, source, owner: tuple, reachable: set, counts: Counter,
-                   scoped: tuple | None = None) -> Record | None:
-        """The site of one field spot, or None when no fieldmap row maps it and SCOPED (the owner's entry of
-        scoped()) makes it no scope site; COUNTS gets the reason."""
+    def field_site(self, spot: cparse.Spot, file: _File, counts: Counter) -> Record | None:
+        """The site of one field spot, or None when no fieldmap row maps it and its owner has no scope constants;
+        COUNTS gets the reason."""
+        source = file.source
         counts["spots"] += 1
         locals_ = source.owners[spot.owner].names
         scope = fields.Scope(self.headers.closures, source, locals_)
@@ -515,32 +522,28 @@ class _Reader:
         if typed is not None and ":" in typed[1].split():
             counts["bitfields"] += 1
             return None
-        if row is None and scoped is not None and spot.operator in symbols.SCOPE_OPERATORS:
+        if row is None and spot.owner in file.scoped and spot.operator in symbols.SCOPE_OPERATORS:
             counts["scope sites"] += 1
             target = f"{typed[0]}.{spot.member}" if typed else f"?.{spot.member}"
             key = _lvalue_key([token.text for token in spot.base] + ["->" if spot.arrow else ".", spot.member])
-            return self.scope_site(spot, FIELD, target, key, source, owner, reachable, scoped,
-                                   typed[1] if typed else None)
+            return self.scope_site(spot, FIELD, target, key, file, typed[1] if typed else None)
         if row is None:
             counts[reason] += 1
             return None
         type_id, spelled = typed
-        owner_id, owner_flag = owner
+        owner_id, owner_flag = file.owner_ids[spot.owner]
         flags = [flag for flag in (owner_flag, MEMBER_NAME_ONLY if by_name else "") if flag]
         row = fields.operator_row(row, spot.operator)
-        result = self.evaluate(spot.value, locals_, source)
         ctype = self.resolve_type(spelled, source)
-        if ctype is not None and result.ok:
-            result = ceval.convert(result, ctype, self.profile)
-        flags += self.name_flags(result, reachable) + self.member_flags(row, ctype)
+        result = self.converted(self.evaluate(spot.value, locals_, source), ctype)
+        flags += self.name_flags(result, file.reachable) + self.member_flags(row, ctype)
         target = f"?.{spot.member}" if by_name else f"{type_id}.{spot.member}"
         record = Record(source.path, spot.line, spot.column, owner_id, target, spot.operator, row.callee,
                         ctokens.spelling(list(spot.value)), normalized(spot.value, self.profile), result, row,
                         self.member_check(row), _context(spot), flags,
                         accepted=self.accepted(row, self.body_file(row, type_id)), prototype=f"member {spelled}",
                         kind=FIELD)
-        if record.covered and result.ok:
-            record.search, record.pool, record.cover_slot = self.search(result, row, Parameter(spelled, ctype))
+        self.add_candidates(record, Parameter(spelled, ctype))
         return record
 
     def reference_rows(self, callee: str) -> dict:
@@ -574,17 +577,17 @@ class _Reader:
             found[index] = (address, symbols.lvalue_check(pairs, self.symbols.scopes[address], minimum))
         return found
 
-    def value_site(self, spot: cparse.ValueSpot, source, owner: tuple, reachable: set,
-                   scoped: tuple | None) -> Record | None:
+    def value_site(self, spot: cparse.ValueSpot, file: _File) -> Record | None:
         """The site of one value spot: a return in a function whose reference return type is an enum, or a scope
         site (a nonconstant variable or a case label, in a function with scope constants). None for other spots."""
+        source = file.source
         if spot.kind == RETURN:
-            row = self.symbols.return_row(owner[0], source.owners[spot.owner].name) if self.symbols else None
+            owner_id = file.owner_ids[spot.owner][0]
+            row = self.symbols.return_row(owner_id, source.owners[spot.owner].name) if self.symbols else None
             if row is None:
                 return None
-            return self.symbol_site(spot, RETURN, owner[0], "return", source, owner, reachable, row,
-                                    row.spelled_type, [])
-        if scoped is None:
+            return self.symbol_site(spot, RETURN, owner_id, "return", file, row, row.spelled_type, [])
+        if spot.owner not in file.scoped:
             return None
         if spot.kind == VARIABLE:
             locals_ = source.owners[spot.owner].names
@@ -595,37 +598,31 @@ class _Reader:
             scope = fields.Scope(self.headers.closures, source, source.owners[spot.owner].names)
             spelled = fields.base_type(spot.lvalue, scope)
         key = _lvalue_key([token.text for token in spot.lvalue])
-        return self.scope_site(spot, spot.kind, key, key, source, owner, reachable, scoped, spelled)
+        return self.scope_site(spot, spot.kind, key, key, file, spelled)
 
-    def scope_site(self, spot, kind: str, target: str, key: str, source, owner: tuple, reachable: set,
-                   scoped: tuple, spelled: str | None) -> Record:
+    def scope_site(self, spot, kind: str, target: str, key: str, file: _File, spelled: str | None) -> Record:
         """A scope site of SPOT, whose lvalue is KEY: it takes the constants of the scopes that pass the lvalue check
         for KEY, with the flag "lvalue check", else every scope constant of the function."""
-        address, passed = scoped
+        address, passed = file.scoped[spot.owner]
         flags = [symbols.LVALUE_CHECK] if key in passed else []
         row = self.symbols.scope_row(address, passed.get(key, ()))
-        return self.symbol_site(spot, kind, target, spot.operator, source, owner, reachable, row, spelled, flags)
+        return self.symbol_site(spot, kind, target, spot.operator, file, row, spelled, flags)
 
-    def symbol_site(self, spot, kind: str, target: str, slot: str, source, owner: tuple, reachable: set,
-                    row: argmap.Row, spelled: str | None, flags: list) -> Record:
+    def symbol_site(self, spot, kind: str, target: str, slot: str, file: _File, row: argmap.Row, spelled: str | None,
+                    flags: list) -> Record:
         """A site whose row comes from the reference symbols: SPOT's value, converted to SPELLED's type when it
         resolves, searched among the row's names."""
-        owner_id, owner_flag = owner
+        source = file.source
+        owner_id, owner_flag = file.owner_ids[spot.owner]
         locals_ = source.owners[spot.owner].names
         ctype = self.reference_type(spelled, source) if spelled is not None else None
-        result = self.evaluate(spot.value, locals_, source)
-        if ctype is not None and result.ok:
-            result = ceval.convert(result, ctype, self.profile)
-        flags = ([owner_flag] if owner_flag else []) + flags + self.name_flags(result, reachable)
+        result = self.converted(self.evaluate(spot.value, locals_, source), ctype)
+        flags = ([owner_flag] if owner_flag else []) + flags + self.name_flags(result, file.reachable)
         record = Record(source.path, spot.line, spot.column, owner_id, target, slot, source.owners[spot.owner].name,
                         ctokens.spelling(list(spot.value)), normalized(spot.value, self.profile), result, row,
                         self.check(row), _context(spot), flags, accepted=row.origins,
                         prototype=f"{kind} {spelled if spelled is not None else '?'}", kind=kind)
-        if record.covered and result.ok:
-            parameter = Parameter(spelled, ctype) if ctype is not None else None
-            record.search, record.pool, record.cover_slot = self.search(result, row, parameter)
-            if symbols.one_enumerator(record.search, row, self.profile):
-                record.flags.append(symbols.ONE_ENUMERATOR)
+        self.add_candidates(record, Parameter(spelled, ctype) if ctype is not None else None)
         return record
 
     def reference_type(self, spelled: str, source: cparse.SourceFile | None = None):
@@ -655,6 +652,10 @@ class _Reader:
                               resolve=lambda name: self.resolve(name, locals_, source),
                               resolve_type=lambda spelling: self.resolve_type(spelling, source))
 
+    def converted(self, result: ceval.Result, ctype) -> ceval.Result:
+        """RESULT converted to CTYPE when it is ok and CTYPE is known, else RESULT."""
+        return ceval.convert(result, ctype, self.profile) if ctype is not None and result.ok else result
+
     def definition_text(self, name: str) -> str:
         """"definition" and the hash of NAME's alternatives in the first target closure that knows it."""
         closure = self.headers.owner(name)
@@ -683,7 +684,8 @@ class _Reader:
         if any(self.headers.disagree(name) for name in result.names):
             flags.append("closures disagree")
         files = [self.headers.origin_file(name) for name in result.names]
-        if any(file and file != "<predefined>" and cheaders.canonical(file) not in reachable for file in files):
+        header_files = [file for file in files if file and file != cheaders.PREDEFINED_FILE]
+        if any(cheaders.canonical(file) not in reachable for file in header_files):
             flags.append("include")
         if result.names and result.literal:
             flags.append("partial")
@@ -749,8 +751,8 @@ class _Reader:
             if argmap.in_header(record.origin.file, row.header)])
 
     def header_bodies(self, row: argmap.Row) -> list:
-        """(closure, (file, members)) per body that the row's type names in the row's header, as the game sees that
-        header."""
+        """(closure, (origin, members)) per body that the row's type names in the row's header, as the game sees
+        that header."""
         if not row.header:
             return []
         type_name, _ = fields.type_and_member(row)
@@ -761,8 +763,8 @@ class _Reader:
         closure that defines TYPE_ID."""
         bodies = self.header_bodies(row)
         if bodies:
-            _, (file, _) = bodies[0]
-            return file
+            _, (origin, _) = bodies[0]
+            return origin.file
         return next((closure.bodies[type_id].file for closure in self.headers.closures if type_id in closure.bodies),
                     None)
 
@@ -802,17 +804,24 @@ class _Reader:
 
     # Candidates
 
-    def search(self, result: ceval.Result, row: argmap.Row, parameter: Parameter | None):
+    def add_candidates(self, record: Record, parameter: Parameter | None):
+        """For a coverage site with an ok integer value: the cover search among the names its row takes, its pool and
+        slot, and the flag "one enumerator"."""
+        result, row = record.result, record.row
+        if not (record.covered and result.ok):
+            return
         ctype = parameter.ctype if parameter is not None and parameter.ctype is not None else result.ctype
         variadic = parameter is not None and parameter.spelled == ""
         kind = covers.slot_kind(parameter.spelled if parameter else "", ctype, self.profile.boolean_names)
         if kind is None or not isinstance(result.value, int):
-            return None, None, None
-        pool = self.pool(row, ctype)
-        slot = covers.Slot(kind, row.mode, ctype.bits, variadic)
+            return
+        record.pool = self.pool(row, ctype)
+        record.cover_slot = covers.Slot(kind, row.mode, ctype.bits, variadic)
         thresholds = self.loaded.thresholds
-        found = covers.search(result.value, slot, pool.names, thresholds["cover_budget"], thresholds["composite_terms"])
-        return found, pool, slot
+        record.search = covers.search(result.value, record.cover_slot, record.pool.names,
+                                      budget=thresholds["cover_budget"], max_terms=thresholds["composite_terms"])
+        if symbols.one_enumerator(record.search, row, self.profile):
+            record.flags.append(symbols.ONE_ENUMERATOR)
 
     def pool(self, row: argmap.Row, ctype) -> Pool:
         key = (row.callee, row.slot, row.status, row.groups, ctype)
@@ -838,8 +847,8 @@ class _Reader:
                 origin_file, certain = _definition(closure, name)
                 if not certain:
                     uncertain.add(name)
-                entry = values.setdefault((name, result.value), [raw.ctype.kind == "pointer", set()])
-                entry[1].add(self.origin(origin_file) or set_name)
+                _, origins = values.setdefault((name, result.value), (raw.ctype.kind == "pointer", set()))
+                origins.add(self.origin(origin_file) or set_name)
         names = []
         for (name, value), (pointer, origins) in sorted(values.items()):
             names.append(covers.Name(name, value, pointer, tuple(sorted(origins))))
@@ -854,7 +863,8 @@ class _Reader:
         another value is disputed."""
         names, disputed, failed = [], {}, Counter()
         for name in self.symbols.names(row):
-            result = ceval.convert(ceval.Result(ceval.OK, name.value, self.profile.int_type("int")), ctype, self.profile)
+            value = ceval.Result(ceval.OK, name.value, self.profile.int_type("int"))
+            result = ceval.convert(value, ctype, self.profile)
             if not result.ok:
                 failed[result.cause] += 1
                 continue
@@ -869,7 +879,7 @@ class _Reader:
 
     def propose(self, call: cparse.Call, source: cparse.SourceFile):
         record = next((record for _, closure in self.every for record in closure.functions.get(call.callee, ())
-                       if self.origin(record.origin.file) not in VENDOR_ORIGINS_EXCLUDED), None)
+                       if self.origin(record.origin.file) not in UNPROPOSED_ORIGINS), None)
         if record is None:
             return
         for index, tokens in enumerate(call.arguments, 1):
@@ -877,8 +887,8 @@ class _Reader:
                 continue
             result = ceval.evaluate(list(tokens), self.profile)
             if result.ok and isinstance(result.value, int):
-                entry = self.proposals.setdefault((call.callee, index), [Counter(), record])
-                entry[0][result.value] += 1
+                values, _ = self.proposals.setdefault((call.callee, index), (Counter(), record))
+                values[result.value] += 1
                 self.prototypes.setdefault((call.callee, index), (record.parameters, record.variadic))
 
     def proposed_rows(self) -> list:
@@ -917,12 +927,12 @@ def arity_fits(count: int, prototype: Prototype) -> bool:
 def _parameter(prototype: Prototype, index: int) -> Parameter:
     if index > len(prototype.parameters):
         return Parameter("", None)
-    spelled = argmap.normalized(prototype.parameters[index - 1])
+    spelled = argmap.normalized_type(prototype.parameters[index - 1])
     return Parameter(spelled, prototype.resolve_type(spelled))
 
 
 def _spelled(parameters: tuple, slot: int) -> str | None:
-    return argmap.normalized(parameters[slot - 1]) if slot <= len(parameters) else None
+    return argmap.normalized_type(parameters[slot - 1]) if slot <= len(parameters) else None
 
 
 def _definition(closure, name: str) -> tuple[str, bool]:
@@ -962,30 +972,12 @@ def format_inventory(inventory: Inventory, generation: int) -> str:
     rows = []
     for record in inventory.records:
         result, search = record.result, record.search
-        rows.append((record.id, record.kind, record.file, record.line, record.column, record.owner, record.target, record.slot,
-                     record.callee, record.argument, record.expression, result.status, result.cause, result.detail,
-                     record.value, result.ctype.name if result.ok and result.ctype else "", record.state,
+        rows.append((record.id, record.kind, record.file, record.line, record.column, record.owner, record.target,
+                     record.slot, record.callee, record.argument, record.expression, result.status, result.cause,
+                     result.detail, record.value, result.ctype.name if result.ok and result.ctype else "", record.state,
                      record.row.mode, record.row.status, "pass" if record.check.passed else record.check.reason,
                      " ".join(record.flags),
                      "; ".join(candidate.text for candidate in search.candidates) if search else "",
                      "yes" if search and search.incomplete else ""))
     return outputs.csv_text("evidence-inventory", generation, COLUMNS, rows)
 
-
-def summary(inventory: Inventory) -> list[str]:
-    """The counts for the console."""
-    records = inventory.records
-    statuses = Counter(record.result.status for record in records)
-    kinds = Counter(record.kind for record in records)
-    causes = Counter((record.result.status, record.result.cause) for record in records if not record.result.ok)
-    found = sum(1 for record in records if record.search and record.search.candidates)
-    lines = [f"files {inventory.files} ({len(inventory.unsupported_files)} unsupported), calls {inventory.calls}, "
-             f"unmapped {inventory.unmapped}, macro callees {inventory.macro_calls}",
-             f"sites {len(records)} (" + ", ".join(f"{kind} {count}" for kind, count in sorted(kinds.items()))
-             + "): " + ", ".join(f"{status} {count}" for status, count in statuses.most_common()),
-             f"with a candidate {found}, proposals {len(inventory.proposed)}",
-             "seconds: " + ", ".join(f"{name} {value:.1f}" for name, value in inventory.seconds.items())]
-    lines += [f"  {status} {cause}: {count}" for (status, cause), count in causes.most_common(12)]
-    lines += [f"  unsupported file {file}: {reason}" for file, reason in inventory.unsupported_files[:5]]
-    lines += [f"  warning: {warning}" for warning in inventory.warnings]
-    return lines
