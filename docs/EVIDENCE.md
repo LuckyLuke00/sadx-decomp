@@ -119,7 +119,7 @@ The other outputs are written after the commit. The first line of each names the
 
 ### Backups
 
-Each run makes a snapshot in the `backups` folder of `config.json`. A snapshot holds the live state files, the hand-owned files that `kept` lists and `notes.csv` when it exists, because no run can make them again. A run whose files hash the same as the latest snapshot makes none. The newest 10 snapshots stay. `state.restore()` puts a snapshot back as a new generation. It never lowers the high-water mark, so a restored state never reuses an id. No command calls it yet.
+Each run makes a snapshot in the `backups` folder of `config.json`. A snapshot holds the live state files, the hand-owned files that `kept` lists and `notes.csv` when it exists, because no run can make them again. A run whose files hash the same as the latest snapshot makes none. The newest 10 snapshots stay. Each snapshot holds the high-water mark of its time. `state.restore()` puts a snapshot back as a new generation, with the highest mark of `high-water.txt`, the restored snapshot and the newest snapshot. So a restored state reuses no id, even when `high-water.txt` was lost. A snapshot made before snapshots held a mark cannot be restored this way: `restore()` stops with a clear error. No command calls it yet.
 
 ## Schemas
 

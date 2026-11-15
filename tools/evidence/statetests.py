@@ -91,6 +91,15 @@ def check_faults() -> list[str]:
         (folder / STATE / "1" / state.MANIFEST).write_text("{")
         if "is not JSON" not in fault(lambda: state.read_state(folder)):
             failures.append("a torn manifest was not caught")
+        for data, wanted in ((b"\xff{}", "is not JSON"), (b"[]", "not a schema 1 manifest"),
+                             (b'{"schema": 1, "generation": "1", "high_water": 2, "files": {}}',
+                              "lacks a valid generation")):
+            (folder / STATE / "1" / state.MANIFEST).write_bytes(data)
+            if wanted not in fault(lambda: state.read_state(folder)):
+                failures.append(f"manifest {data!r} did not fail with {wanted!r}")
+        (folder / STATE / state.CURRENT).write_text("\u00b2\n", encoding="utf-8")
+        if "not a number" not in fault(lambda: state.read_state(folder)):
+            failures.append("a superscript digit in CURRENT was not caught")
         (folder / STATE / state.CURRENT).write_text("x\n")
         if "not a number" not in fault(lambda: state.read_state(folder)):
             failures.append("a bad CURRENT was not caught")
@@ -110,20 +119,23 @@ def check_backups() -> list[str]:
         folder.mkdir()
         (folder / "argmap.csv").write_text("callee\n")
         kept = ["argmap.csv"]
+        if state.backup(folder, destination, kept) is None or state.highest_minted(folder, None) != 0:
+            failures.append("a backup before the first commit")
         state.commit(folder, {"sites.csv": b"one\n"}, 1)
         first = state.backup(folder, destination, kept)
-        if first is None or state.backup(folder, destination, kept) is not None:
+        if first is None:
+            failures.append("a changed run made no snapshot")
+        if state.backup(folder, destination, kept) is not None:
             failures.append("an unchanged run made a snapshot")
         if first and (first / "argmap.csv").read_text() != "callee\n":
             failures.append("the hand-owned file is not in the snapshot")
-        (folder / "notes.csv").unlink(missing_ok=True)
         if "missing hand-owned file" not in fault(lambda: state.backup(folder, destination, ["notes.csv"])):
             failures.append("a missing hand-owned file did not fail")
         (destination / "000099.new").mkdir()  # a backup stopped while it wrote
-        for number in range(2, 13):
+        for number in range(3, 14):
             state.commit(folder, {"sites.csv": f"run {number}\n".encode()}, number)
             state.backup(folder, destination, kept)
-        if state._numbered(destination) != list(range(3, 13)) or (destination / "000099.new").exists():
+        if state._numbered(destination) != list(range(4, 14)) or (destination / "000099.new").exists():
             failures.append(f"snapshots kept {state._numbered(destination)}")
     return failures
 
@@ -133,6 +145,8 @@ def check_restore() -> list[str]:
     with tempfile.TemporaryDirectory() as temp:
         folder, destination = Path(temp) / "evidence", Path(temp) / "backups"
         folder.mkdir()
+        if "no snapshots" not in fault(lambda: state.restore(folder, destination)):
+            failures.append("a restore with no snapshots")
         (folder / "argmap.csv").write_text("old\n")
         state.commit(folder, {"sites.csv": b"old ids\n"}, 2)
         state.backup(folder, destination, ["argmap.csv"])
@@ -145,6 +159,8 @@ def check_restore() -> list[str]:
             failures.append("a broken snapshot was restored")
         if (folder / "argmap.csv").read_text() != "new\n":
             failures.append("a failed restore wrote a file")
+        if "no snapshot 9" not in fault(lambda: state.restore(folder, destination, 9)):
+            failures.append("a restore of an unknown snapshot")
         generation = state.restore(folder, destination, 1)
         live = state.read_state(folder)
         if live.files != {"sites.csv": b"old ids\n"} or (folder / "argmap.csv").read_text() != "old\n":
@@ -158,6 +174,9 @@ def check_restore() -> list[str]:
         (folder / state.HIGH_WATER).unlink()
         if state.highest_minted(folder, state.read_state(folder)) != 5:
             failures.append("the commit's mark did not stand in for a lost high-water.txt")
+        state.restore(folder, destination, 1)  # high-water.txt is still lost
+        if state.highest_minted(folder, state.read_state(folder)) != 5:
+            failures.append("a restore after high-water.txt was lost lowered the mark under the newest snapshot's")
     return failures
 
 

@@ -11,9 +11,10 @@ only the live and the previous generation stay; the backups keep the history.
 
 A backup snapshot holds the live state's files and the hand-owned files, which no run can make again. A snapshot is
 built under a temporary name and renamed when whole. No snapshot is made when the hashes equal the latest one's, and
-the newest BACKUPS_KEPT stay. A restore checks the whole snapshot before it writes anything, writes the hand-owned files
-back, then commits the state files as a new generation. It never lowers the high-water mark, so a restored older state
-never reuses an id.
+the newest BACKUPS_KEPT stay. A snapshot's manifest holds the high-water mark of its time. A restore checks the whole
+snapshot before it writes anything, writes the hand-owned files back, then commits the state files as a new generation.
+Its mark is the highest of high-water.txt, the restored snapshot and the newest snapshot. Each run backs up after its
+commit, so a restored older state reuses no id, even when high-water.txt was lost.
 
 sites.csv: the line `# evidence-sites schema=1`, then a CSV header and one row per site, each owner's sites in order.
 The ordinal column counts a site's place in its owner, from 1; it is for reading only.
@@ -21,13 +22,9 @@ The ordinal column counts a site's place in its owner, from 1; it is for reading
 Standard library only.
 """
 
-import csv
 import hashlib
-import io
 import json
 import os
-import re
-import shutil
 import sys
 from collections import Counter
 from dataclasses import dataclass
@@ -36,6 +33,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
 import osutil  # noqa: E402
+import outputs  # noqa: E402
 from remap import Site  # noqa: E402
 
 SCHEMA = 1
@@ -43,10 +41,10 @@ STATE, CURRENT, MANIFEST, HIGH_WATER = "state", "CURRENT", "manifest.json", "hig
 SITES = "sites.csv"
 SITE_COLUMNS = ("id", "owner", "ordinal", "kind", "target", "slot", "expression", "value", "file", "line", "column",
                 "context")
-SITES_HEADER = re.compile(r"# evidence-sites schema=(\d+)")
 BACKUPS_KEPT = 10
 SNAPSHOT_DIGITS = 6
 PARTIAL = ".new"  # the suffix of a snapshot folder still being written
+MANIFEST_TYPES = {"generation": int, "high_water": int, "files": dict}
 
 
 class StateError(Exception):
@@ -65,34 +63,25 @@ def digest(data: bytes) -> str:
 
 
 def format_sites(sites: list[Site]) -> bytes:
-    out = io.StringIO()
-    out.write(f"# evidence-sites schema={SCHEMA}\n")
-    writer = csv.writer(out, lineterminator="\n")
-    writer.writerow(SITE_COLUMNS)
     ordinals = Counter()
+    rows = []
     for site in sites:
         ordinals[site.owner] += 1
-        writer.writerow([site.id, site.owner, ordinals[site.owner], site.kind, site.target, site.slot,
-                         site.expression, site.value, site.file, site.line, site.column, site.context])
-    return out.getvalue().encode("utf-8")
+        rows.append((site.id, site.owner, ordinals[site.owner], site.kind, site.target, site.slot, site.expression,
+                     site.value, site.file, site.line, site.column, site.context))
+    return outputs.schema_text(SITES, SCHEMA, SITE_COLUMNS, rows).encode("utf-8")
 
 
 def parse_sites(data: bytes) -> list[Site]:
-    first, _, rest = data.decode("utf-8").partition("\n")
-    match = SITES_HEADER.fullmatch(first)
-    if match is None:
-        raise StateError(f"not a sites file: its first line is {first[:60]!r}")
-    if int(match[1]) != SCHEMA:
-        raise StateError(f"sites schema {match[1]}: this tool reads schema {SCHEMA}")
     return [Site(row["owner"], row["kind"], row["target"], row["slot"], row["expression"], row["value"],
                  row["context"], row["id"], row["file"], int(row["line"]), int(row["column"]))
-            for row in csv.DictReader(io.StringIO(rest))]
+            for _, row in outputs.schema_rows(data.decode("utf-8"), SITES, SCHEMA, SITE_COLUMNS, StateError)]
 
 
 def _number(path: Path) -> int:
     """The number in a one-line file."""
     text = path.read_text(encoding="utf-8").strip()
-    if not text.isdigit():
+    if not text.isdecimal():
         raise StateError(f"{path} holds {text[:40]!r}, not a number")
     return int(text)
 
@@ -130,14 +119,21 @@ def live_generation(folder: Path) -> int:
     return _number(state / CURRENT)
 
 
-def _manifest(where: Path, advice: str = "") -> dict:
+def _manifest(where: Path, keys: tuple, advice: str = "") -> dict:
+    """WHERE's manifest, checked for the schema and for the KEYS the caller reads."""
     path = where / MANIFEST
     if not path.is_file():
         raise StateError(f"{where} has no {MANIFEST}{advice}")
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as error:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as error:  # not UTF-8, or not JSON
         raise StateError(f"{path} is not JSON ({error}){advice}") from None
+    if not isinstance(manifest, dict) or manifest.get("schema") != SCHEMA:
+        raise StateError(f"{path} is not a schema {SCHEMA} manifest{advice}")
+    wrong = [key for key in keys if not isinstance(manifest.get(key), MANIFEST_TYPES[key])]
+    if wrong:
+        raise StateError(f"{path} lacks a valid {', '.join(wrong)}{advice}")
+    return manifest
 
 
 def _checked_files(where: Path, manifest: dict, advice: str = "") -> dict:
@@ -160,7 +156,7 @@ def read_state(folder: Path) -> State | None:
     if generation == 0:
         return None
     where, advice = folder / STATE / str(generation), ": restore a backup"
-    manifest = _manifest(where, advice)
+    manifest = _manifest(where, ("generation", "high_water", "files"), advice)
     if manifest["generation"] != generation:
         raise StateError(f"{where / MANIFEST} names generation {manifest['generation']}{advice}")
     return State(generation, _checked_files(where, manifest, advice), manifest["high_water"])
@@ -176,7 +172,7 @@ def recover(folder: Path) -> list[str]:
             notes.append(f"deleted {STATE}/{number}: a run stopped before it cleared the old generations")
         else:
             continue
-        shutil.rmtree(folder / STATE / str(number))
+        osutil.remove(folder / STATE / str(number))
     return notes
 
 
@@ -185,8 +181,8 @@ def _write_folder(where: Path, files: dict, manifest: dict) -> None:
     for name, data in files.items():
         (where / name).parent.mkdir(parents=True, exist_ok=True)
         (where / name).write_bytes(data)
-    manifest["files"] = {name: digest(data) for name, data in sorted(files.items())}
-    (where / MANIFEST).write_bytes((json.dumps(manifest, indent=1, sort_keys=True) + "\n").encode("utf-8"))
+    whole = {**manifest, "files": {name: digest(data) for name, data in sorted(files.items())}}
+    (where / MANIFEST).write_bytes((json.dumps(whole, indent=1, sort_keys=True) + "\n").encode("utf-8"))
 
 
 def commit(folder: Path, files: dict, high_water: int) -> int:
@@ -206,11 +202,11 @@ def commit(folder: Path, files: dict, high_water: int) -> int:
     osutil.write_whole(state / CURRENT, f"{generation}\n")
     for number in _numbered(state):
         if number < generation - 1:
-            shutil.rmtree(state / str(number))
+            osutil.remove(state / str(number))
     return generation
 
 
-def backup(folder: Path, destination: Path, kept: list[str], keep: int = BACKUPS_KEPT) -> Path | None:
+def backup(folder: Path, destination: Path, kept: list[str]) -> Path | None:
     """Snapshot the live state's files and the KEPT files (paths relative to FOLDER) into DESTINATION. Returns the
     snapshot folder, None when nothing changed since the latest snapshot."""
     state = read_state(folder)
@@ -222,33 +218,42 @@ def backup(folder: Path, destination: Path, kept: list[str], keep: int = BACKUPS
         files[name] = path.read_bytes()
     numbers = _numbered(destination)
     hashes = {name: digest(data) for name, data in sorted(files.items())}
-    if numbers and _manifest(destination / f"{numbers[-1]:0{SNAPSHOT_DIGITS}d}")["files"] == hashes:
+    if numbers and _manifest(_snapshot(destination, numbers[-1]), ("files",))["files"] == hashes:
         return None
     destination.mkdir(parents=True, exist_ok=True)
     for path in destination.glob(f"*{PARTIAL}"):  # a backup stopped while it wrote
-        shutil.rmtree(path)
-    name = f"{(numbers[-1] if numbers else 0) + 1:0{SNAPSHOT_DIGITS}d}"
-    temp = destination / (name + PARTIAL)
+        osutil.remove(path)
+    snapshot = _snapshot(destination, (numbers[-1] if numbers else 0) + 1)
+    temp = destination / (snapshot.name + PARTIAL)
     temp.mkdir()
     created = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    _write_folder(temp, files, {"schema": SCHEMA, "generation": state.generation if state else 0, "created": created})
-    os.replace(temp, destination / name)
-    for number in _numbered(destination)[:-keep]:
-        shutil.rmtree(destination / f"{number:0{SNAPSHOT_DIGITS}d}")
-    return destination / name
+    _write_folder(temp, files, {"schema": SCHEMA, "generation": state.generation if state else 0, "created": created,
+                                "high_water": highest_minted(folder, state)})
+    os.replace(temp, snapshot)
+    for number in _numbered(destination)[:-BACKUPS_KEPT]:
+        osutil.remove(_snapshot(destination, number))
+    return snapshot
+
+
+def _snapshot(destination: Path, number: int) -> Path:
+    return destination / f"{number:0{SNAPSHOT_DIGITS}d}"
 
 
 def restore(folder: Path, destination: Path, number: int | None = None) -> int:
     """Put snapshot NUMBER (the latest when None) back: first the hand-owned files, then the state files as a new
-    generation. The high-water mark stays. Returns the new generation."""
+    generation, with the highest mark of high-water.txt, this snapshot and the newest one. Returns the new
+    generation."""
     numbers = _numbered(destination)
     if not numbers:
         raise StateError(f"no snapshots in {destination}")
     chosen = numbers[-1] if number is None else number
     if chosen not in numbers:
         raise StateError(f"no snapshot {chosen} in {destination}: there are {numbers}")
-    where = destination / f"{chosen:0{SNAPSHOT_DIGITS}d}"
-    files = _checked_files(where, _manifest(where))
+    where = _snapshot(destination, chosen)
+    manifest = _manifest(where, ("high_water", "files"))
+    files = _checked_files(where, manifest)
+    newest = _manifest(_snapshot(destination, numbers[-1]), ("high_water",))
+    mark = max(read_high_water(folder), manifest["high_water"], newest["high_water"])
     prefix = f"{STATE}/"
     for name, data in files.items():
         if not name.startswith(prefix):
@@ -258,5 +263,5 @@ def restore(folder: Path, destination: Path, number: int | None = None) -> int:
     if state.is_dir() and not (state / CURRENT).is_file():  # CURRENT was lost: the newest folder stands in for it
         osutil.write_whole(state / CURRENT, f"{max(_numbered(state), default=0)}\n")
     recover(folder)
-    state_files = {name[len(prefix):]: data for name, data in files.items() if name.startswith(prefix)}
-    return commit(folder, state_files, read_high_water(folder))
+    state_files = {name.removeprefix(prefix): data for name, data in files.items() if name.startswith(prefix)}
+    return commit(folder, state_files, mark)
