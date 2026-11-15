@@ -22,14 +22,20 @@ with a lowercase letter only as a whole word.
 Standard library only.
 """
 
+import functools
 import re
+import sys
 from collections import Counter
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import config
 
-MARKER = re.compile(r"(?<![A-Za-z0-9_])FORMAT(?![A-Za-z0-9_])")
-HEAD_END = re.compile(r"(?<![A-Za-z0-9_])PARAMETERS(?![A-Za-z0-9_])")
+sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
+import osutil  # noqa: E402
+
+MARKER = re.compile(osutil.whole_word("FORMAT"))
+HEAD_END = re.compile(osutil.whole_word("PARAMETERS"))
 INDEX = re.compile(r"(?<![A-Za-z0-9_])[A-Za-z_][A-Za-z0-9_]*\s?\.{4,}")
 CALL = re.compile(r"(?<![A-Za-z0-9_])([A-Za-z_][A-Za-z0-9_]*)\s*\(")
 WORD = re.compile(r"[A-Za-z0-9_]+")
@@ -65,9 +71,10 @@ def names_of(text: str) -> frozenset:
         run = CAPITALS.match(word)
         if run is None or run.end() == len(word) or not word[run.end()].islower():
             continue
-        names.add(run.group())
-        if len(run.group()) >= 2 and run.group()[-1].isupper():
-            names.add(run.group()[:-1])
+        capitals = run.group()
+        names.add(capitals)
+        if len(capitals) >= 2 and capitals[-1].isupper():
+            names.add(capitals[:-1])
     return frozenset(names)
 
 
@@ -93,22 +100,26 @@ def parse(path: str, text: str, is_function) -> Reading:
     return reading
 
 
+def _declares(closures: list, name: str) -> bool:
+    """Whether one of the reference CLOSURES declares NAME as a function or a function-like macro."""
+    return any(name in closure.functions or closure.macros.is_function(name) for closure in closures)
+
+
+def _read_text(manual) -> str:
+    try:
+        return manual.path.read_text(encoding=manual.encoding)
+    except FileNotFoundError as error:
+        raise config.ConfigError(f"missing manual {manual.path}") from error
+    except UnicodeDecodeError as error:
+        raise config.ConfigError(f"{manual.path}: does not decode as {manual.encoding}: {error}") from error
+
+
 def read(loaded, found) -> list:
     """The Reading of each manual of LOADED (a config.Config). FOUND: the inventory, for the reference closures."""
     readings = []
     for manual in loaded.manuals:
         closures = [closure for name, closure in found.closures if name == manual.reference]
-
-        def is_function(name: str, closures=closures) -> bool:
-            return any(name in closure.functions or closure.macros.is_function(name) for closure in closures)
-
-        try:
-            text = manual.path.read_text(encoding=manual.encoding)
-        except FileNotFoundError as error:
-            raise config.ConfigError(f"missing manual {manual.path}") from error
-        except UnicodeDecodeError as error:
-            raise config.ConfigError(f"{manual.path}: does not decode as {manual.encoding}: {error}") from error
-        readings.append(parse(str(manual.path), text, is_function))
+        readings.append(parse(str(manual.path), _read_text(manual), functools.partial(_declares, closures)))
     return readings
 
 

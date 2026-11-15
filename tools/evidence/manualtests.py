@@ -32,11 +32,11 @@ def parse(text: str = TEXT) -> manual.Reading:
 
 def check_names() -> list[str]:
     failures = []
-    names = manual.names_of("XX_SOURCE_COLORsource color, XX_ASource xxFoo( x ) 16bit xxGluedtext Mixed_case")
-    for wanted in ("XX_SOURCE_COLOR", "XX_A", "xxFoo", "xxGluedtext", "Mixed_case", "color"):
+    names = manual.names_of("XX_SOURCE_COLORsource color, XX_ASource xxFoo( x ) 16bit xxGluedtext Mixed_case NAME2text")
+    for wanted in ("XX_SOURCE_COLOR", "XX_A", "xxFoo", "xxGluedtext", "Mixed_case", "color", "NAME2"):
         if wanted not in names:
             failures.append(f"names: {wanted} missing from {sorted(names)}")
-    for unwanted in ("16bit", "xxGlued", "XX_SOURCE_COLORsourc"):
+    for unwanted in ("16bit", "xxGlued", "XX_SOURCE_COLORsourc", "NAME"):  # a run that ends in a digit stays whole
         if unwanted in names:
             failures.append(f"names: {unwanted} found")
     return failures
@@ -70,12 +70,16 @@ def check_sections() -> list[str]:
         failures.append(f"dropped: got {reading.dropped}")
     if reading.unknown != Counter({"xxUnknown": 1}):
         failures.append(f"unknown: got {reading.unknown}")
+    tail = parse("FORMAT void xxFoo( a ) Calls xxBar( b ).").sections
+    if [section.functions for section in tail] != [("xxFoo", "xxBar")]:
+        failures.append(f"a section with no PARAMETERS heading reads its calls to its end: got {tail}")
     return failures
 
 
 def check_read() -> list[str]:
     failures = []
-    closure = SimpleNamespace(functions={"xxFoo": [None]}, macros=SimpleNamespace(is_function="xxMac".__eq__))
+    closure = SimpleNamespace(functions={"xxFoo": [None]},
+                              macros=SimpleNamespace(is_function=lambda name: name == "xxMac"))
     other = SimpleNamespace(functions={"xxBar": [None]}, macros=SimpleNamespace(is_function=lambda name: False))
     found = SimpleNamespace(closures=[("ref", closure), ("other", other)])
     with tempfile.TemporaryDirectory() as folder:
