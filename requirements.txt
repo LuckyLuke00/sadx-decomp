@@ -1,3 +1,4 @@
 reccmp==0.1.9
 cmake==4.4.4
 ninja==1.13.2
+cryptography==50.0.2

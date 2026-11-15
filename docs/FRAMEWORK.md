@@ -251,4 +251,20 @@ python tools/recipes.py export work/recipes --run build/llm/recipes [...] --out 
 
 `decls`, `dossier` and the `tables` key of `llm.json` take a folder of name tables. The tables give names that the tree does not know yet. The folder holds tab-separated `functions.tsv` and `globals.tsv`, and `types.h`. [tools/declgen.py](../tools/declgen.py) lists their columns. The `context` key names another checkout. Its source files serve as examples, and `decls` reads its signatures. The `drafts` key names a folder of Ghidra drafts in place of `build/decomp`.
 
+### Training rows in the cloud
+
+[tools/cloudpack.py](../tools/cloudpack.py) packs JSONL training rows for a cloud trainer. Each game keeps a rules file: `drop REGEX` removes the matching lines. `private GLOB` turns each word of those files that no tracked file holds into `hidden_name`. `deny REGEX` stops the pack if a match remains. Run `pack` inside the repo. One pack holds named sets of rows and the sha256 of a manifest file, so the cloud stores one file. The pack is gzip and AES-256-GCM. `keygen KEY` writes the key outside the repo; put it in the trainer's secret store. The trainer calls `cloudpack.load(blob, cloudpack.decode_key(text))`, which decrypts in memory only and returns the meta and the sets.
+
+The trainer's outputs go back encrypted too. `boxgen KEY --public PUB` writes a private key outside the repo and its public key, which the trainer embeds. The trainer seals each output file with `seal_box(data, public)` as `PATH.sealed`, and its resume files with the pack key as `PATH.pk`. A box does not prove who made it. `open FOLDER --key KEY --pack-key PACKKEY --out DIR` writes a pulled folder back in plain text; without `--pack-key` it skips the `.pk` files and counts them.
+
+On Kaggle, a secret reaches only a run that starts in the editor. A run that `kaggle kernels push` starts gets HTTP 400 for the secret. So push the code with `--no-run`, open the notebook in the editor, and pick Save Version, Save & Run All. Set the accelerator under Advanced Settings. The editor's own session stays off until you run a cell.
+
+```
+python tools/cloudpack.py keygen D:/keys/game.key
+python tools/cloudpack.py boxgen D:/keys/outbox.key --public outbox.pub
+python tools/cloudpack.py pack data.bin --set train=train.jsonl --set dev=dev.jsonl --manifest manifest.json --rules rules.txt --key D:/keys/game.key
+python tools/cloudpack.py check data.bin --key D:/keys/game.key
+python tools/cloudpack.py open pulled --key D:/keys/outbox.key --pack-key D:/keys/game.key --out opened
+```
+
 [tests/llm/mock_server.py](../tests/llm/mock_server.py) is a fake server, to test the harness without a model.

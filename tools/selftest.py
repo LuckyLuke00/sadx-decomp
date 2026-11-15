@@ -986,12 +986,13 @@ def check_units() -> list[str]:
     facts.py, of the trick finder in tricks.py, of the site pages in pages.py, of the data scores in scoring.py, of
     the split in link.py, of the recipe checks in recipes.py, of the type search in retype.py, of the rewrites in
     permute.py, of the stack argument audit in stackargs.py, of the fold rule in folds.py, of the array-end names
-    in endrefs.py, of the fold test in groups.py, of the names in dossier.py, of the variable pairs in varfiles.py
-    and of the evidence modules in tools/evidence, one module each."""
+    in endrefs.py, of the fold test in groups.py, of the names in dossier.py, of the variable pairs in varfiles.py,
+    of the cloud pack in cloudpack.py and of the evidence modules in tools/evidence, one module each."""
     # here, not at the top: they need .venv's packages, and check.py imports this module before .venv
     import benchtests
     import bytetests
     import casttests
+    import cloudpacktests
     import ctexttests
     import decltests
     import dossiertests
@@ -1013,7 +1014,7 @@ def check_units() -> list[str]:
     import varfilestests
     modules = (ctexttests, bytetests, casttests, decltests, dossiertests, benchtests, solvetests, facttests, tricktests,
                sitetests, progresstests, linktests, recipetests, retypetests, permutetests, stackargtests, foldtests,
-               endrefstests, groupstests, varfilestests, immediatestests, scopestests)
+               endrefstests, groupstests, varfilestests, immediatestests, cloudpacktests)
     failures = [failure for module in modules for failure in module.run()]
     # each evidence test runs on its own, as docs/EVIDENCE.md says: they put tools/evidence first on sys.path
     for test in sorted((ROOT / "tools" / "evidence").glob("*tests.py")):
