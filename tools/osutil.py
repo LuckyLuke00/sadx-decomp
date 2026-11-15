@@ -1,7 +1,7 @@
 """Helpers that know nothing about the decomp: run a command, catch a step's output, read git blobs, run git in another
-repository than a hook's, link a git remote, hash a file, copy and delete folders, read counts from the command line, tell how
-alike two counts are, count differing bytes, escape a Markdown table cell, tell whether a process runs, lock a file,
-write a file whole.
+repository than a hook's, link a git remote, hash a file, copy and delete folders, read counts from the command line,
+tell how alike two counts are, count differing bytes, escape a Markdown table cell, tell whether a process runs, lock a
+file, write a file whole.
 
 Standard library only.
 """
@@ -10,6 +10,7 @@ import argparse
 import collections
 import contextlib
 import ctypes
+import dataclasses
 import hashlib
 import html
 import io
@@ -101,6 +102,14 @@ def write_if_changed(path: Path, text: str) -> None:
         path.write_text(text, encoding="utf-8")
 
 
+def write_files(root: Path, files: dict) -> None:
+    """Write FILES (relative path -> text) under ROOT as UTF-8 with their line ends unchanged, making the folders."""
+    for name, text in files.items():
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8", newline="")
+
+
 def write_whole(path: Path, data: str | bytes) -> None:
     """Write DATA to PATH through a rename, so another process reads the old data or the new, never a part. Text goes
     out as UTF-8 with its line ends unchanged."""
@@ -176,9 +185,82 @@ def byte_differences(a: bytes, b: bytes, block: int = 1 << 16) -> tuple[int, int
     return count, first
 
 
+def whole_word(pattern: str) -> str:
+    """PATTERN as a regular expression that matches only where no letter, digit or underscore touches either end."""
+    return f"(?<![A-Za-z0-9_]){pattern}(?![A-Za-z0-9_])"
+
+
 def table_cell(text: str) -> str:
     """TEXT for a cell of a GitHub Markdown table: a `<` would start an HTML tag and a `|` would end the cell."""
     return html.escape(text, quote=False).replace("|", "\\|")
+
+
+def markdown_table(head: tuple, rows) -> list[str]:
+    """The lines of a GitHub Markdown table: the column names HEAD, then ROWS, each cell through table_cell."""
+    lines = ["| " + " | ".join(table_cell(str(cell)) for cell in row) + " |" for row in (head, *rows)]
+    return lines[:1] + ["|---" * len(head) + "|"] + lines[1:]
+
+
+def group_by(items, key) -> dict:
+    """KEY(item) -> the ITEMS with that key, the keys and the items in first-seen order."""
+    groups = {}
+    for item in items:
+        groups.setdefault(key(item), []).append(item)
+    return groups
+
+
+def most_first(counts: dict) -> list[tuple]:
+    """The (key, count) pairs of COUNTS, the highest count first, then by key."""
+    return sorted(counts.items(), key=lambda pair: (-pair[1], pair[0]))
+
+
+@dataclasses.dataclass
+class Alignment:
+    shared: dict  # old index -> new index, for the pairs every optimal alignment makes
+    disputed_old: set  # old indices on an optimal pair that is not shared
+    disputed_new: set
+    candidates: list  # (old index, new index) of every optimal pair that is not shared
+    count: int  # the number of optimal paths
+
+
+def align(old: list, new: list, score) -> Alignment:
+    """The pairs of a scored global alignment (Needleman-Wunsch) of OLD against NEW. SCORE(i, j) gives a pair's
+    score, or None when the two cannot pair. Gaps score 0. A pair is shared when every optimal alignment makes it,
+    and disputed when only some do."""
+    rows, columns = len(old), len(new)
+    pairs = [[score(i, j) for j in range(columns)] for i in range(rows)]
+    head, head_ways = _best_paths(pairs, rows, columns)
+    # The same tables over the mirrored pairs: tail[a][b] is the best score of the last a old and the last b new items.
+    tail, tail_ways = _best_paths([row[::-1] for row in pairs[::-1]], rows, columns)
+    total, count = head[rows][columns], head_ways[rows][columns]
+    found = Alignment({}, set(), set(), [], count)
+    for i in range(rows):
+        for j in range(columns):
+            after = rows - 1 - i, columns - 1 - j  # the items after the pair (i, j)
+            if pairs[i][j] is None or head[i][j] + pairs[i][j] + tail[after[0]][after[1]] != total:
+                continue
+            if head_ways[i][j] * tail_ways[after[0]][after[1]] == count:
+                found.shared[i] = j
+            else:
+                found.disputed_old.add(i)
+                found.disputed_new.add(j)
+                found.candidates.append((i, j))
+    return found
+
+
+def _best_paths(pairs: list, rows: int, columns: int) -> tuple[list, list]:
+    """best[i][j], the best score of the first i rows against the first j columns of PAIRS (gaps score 0), and
+    ways[i][j], the number of paths with that score."""
+    best = [[0] * (columns + 1) for _ in range(rows + 1)]
+    ways = [[1] * (columns + 1) for _ in range(rows + 1)]
+    for i in range(1, rows + 1):
+        for j in range(1, columns + 1):
+            steps = [(best[i - 1][j], ways[i - 1][j]), (best[i][j - 1], ways[i][j - 1])]
+            if pairs[i - 1][j - 1] is not None:
+                steps.append((best[i - 1][j - 1] + pairs[i - 1][j - 1], ways[i - 1][j - 1]))
+            best[i][j] = max(value for value, _ in steps)
+            ways[i][j] = sum(count for value, count in steps if value == best[i][j])
+    return best, ways
 
 
 def remove(path: Path) -> None:
