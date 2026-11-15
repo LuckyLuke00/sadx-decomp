@@ -138,7 +138,8 @@ def check_causes() -> list[str]:
     with tempfile.TemporaryDirectory() as folder:
         loaded, rows = repository(folder)
         old = baseline.read_baseline(loaded.folder / baseline.BASELINE, baseline.prefix(loaded))
-        entries = baseline.diff(inventory.build(loaded, rows), old, loaded, rows)
+        entries = baseline.explain(inventory.build(loaded, rows), old, loaded, rows, 4)
+        written = (loaded.folder / baseline.DIFF).read_text(encoding="utf-8")
     got = [where(entry) for entry in entries]
     failures += [f"cause {item}" for item in sorted(set(got) - WANTED)]
     failures += [f"missing cause {item}" for item in sorted(WANTED - set(got))]
@@ -147,10 +148,13 @@ def check_causes() -> list[str]:
     twin = [entry.new for entry in entries if entry.new and entry.new.line == 19]
     if [record.column for record in twin] != [5, 19]:
         failures.append(f"rows with one key pair in order: columns {[record.column for record in twin]}")
-    if baseline.unexplained(entries) != 1 or baseline.summary(entries)[-1] != "unexplained old rows: 1":
-        failures.append(f"summary {baseline.summary(entries)}")
-    text = baseline.format_diff(entries, 4).split("\n")
-    if text[:2] != ["# evidence-baseline-diff generation=4", ",".join(baseline.DIFF_COLUMNS)] or len(text) != 22:
+    if baseline.unexplained(entries) != 1 or "- old unexplained: 1" not in baseline.cause_lines(entries):
+        failures.append(f"cause lines {baseline.cause_lines(entries)}")
+    if written != baseline.format_diff(entries, 4):
+        failures.append("explain writes the diff file")
+    text = written.split("\n")
+    if text[:2] != ["# evidence-baseline-diff generation=4", ",".join(baseline.DIFF_COLUMNS)] or (
+            len(text[2:-1]) != len(WANTED)):
         failures.append(f"diff file {text[:2]}, {len(text)} lines")
     return failures
 
@@ -161,7 +165,9 @@ def check_faults() -> list[str]:
         root = Path(folder)
         for name, text, wanted in (("columns.csv", "file,line,callee\n", "the columns must be"),
                                    ("line.csv", OLD.replace("a.c,5,", "a.c,five,"), "line.csv:2"),
-                                   ("value.csv", OLD.replace(",98304,", ",0x18000,"), "value.csv:4")):
+                                   ("value.csv", OLD.replace(",98304,", ",0x18000,"), "value.csv:4"),
+                                   ("short.csv", OLD.replace("a.c,5,xxPush,1,0,0,NULL (vendor.h)", "a.c,5,xxPush"),
+                                    "short.csv:2: the row needs 7 values")):
             (root / name).write_text(text, encoding="utf-8")
             try:
                 baseline.read_baseline(root / name, "")

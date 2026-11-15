@@ -34,14 +34,13 @@ scanner's comment pattern blanks the call, because it ignored strings), not a pl
 Standard library only.
 """
 
-import csv
 import re
-import shutil
 import sys
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
+import ceval
 import covers
 import ctokens
 import inventory
@@ -62,6 +61,7 @@ NOT_READ, UNSUPPORTED_FILE, STRIPPED = "file not read", "unsupported file", "cal
 MACRO, IN_STRING, UNEXPLAINED = "macro callee", "inside a string", "unexplained"
 NAMES, NONCONSTANT, COMMENT_CUT = "spelled with names", "nonconstant", "old comment stripping"
 NOT_PLAIN, NOT_IN_BASELINE = "not a plain literal", "not in the baseline"
+OLD_SIDE, NEW_SIDE = "old", "new"  # an entry's side: a row of the baseline, or a new row the baseline lacks
 
 # The first scanner's patterns: comments, blind to strings; the casts it dropped before it evaluated.
 OLD_COMMENT = re.compile(r"//[^\n]*|/\*.*?\*/", re.S)
@@ -90,7 +90,7 @@ class Old:
 
 @dataclass(frozen=True)
 class Entry:
-    side: str  # old or new
+    side: str  # OLD_SIDE or NEW_SIDE
     cause: str
     old: Old | None
     new: inventory.Record | None
@@ -102,7 +102,7 @@ def import_baseline(source: Path, folder: Path) -> Path:
     if target.exists():
         raise BaselineError(f"{target} exists; the baseline is imported once")
     read_baseline(source, "")
-    shutil.copyfile(source, target)
+    osutil.write_whole(target, source.read_bytes())
     return target
 
 
@@ -110,17 +110,13 @@ def read_baseline(path: Path, prefix: str) -> list[Old]:
     """PREFIX: the sources root relative to the repository, with a trailing slash ("" keeps the paths)."""
     if not path.is_file():
         raise BaselineError(f"missing hand-owned file {path}")
-    with path.open(encoding="utf-8", newline="") as data:
-        reader = csv.DictReader(data)
-        if tuple(reader.fieldnames or ()) != OLD_COLUMNS:
-            raise BaselineError(f"{path}: the columns must be {','.join(OLD_COLUMNS)}")
-        rows = []
-        for line, fields in enumerate(reader, 2):
-            try:
-                rows.append(Old(prefix + fields["file"], int(fields["line"]), fields["callee"], int(fields["arg"]),
-                                fields["literal"], str(int(fields["value"])), _texts(fields["candidates"])))
-            except ValueError as error:
-                raise BaselineError(f"{path}:{line}: {error}") from None
+    rows = []
+    for where, values in outputs.read_rows(path, OLD_COLUMNS, BaselineError):
+        try:
+            rows.append(Old(prefix + values["file"], int(values["line"]), values["callee"], int(values["arg"]),
+                            values["literal"], str(int(values["value"])), _texts(values["candidates"])))
+        except ValueError as error:
+            raise BaselineError(f"{where}: {error}") from None
     return rows
 
 
@@ -147,7 +143,7 @@ def explain(found: inventory.Inventory, old_rows: list[Old], loaded, rows: list,
 
 
 def unexplained(entries: list[Entry]) -> int:
-    return sum(1 for entry in entries if entry.side == "old" and entry.cause == UNEXPLAINED)
+    return sum(1 for entry in entries if entry.side == OLD_SIDE and entry.cause == UNEXPLAINED)
 
 
 def diff(found: inventory.Inventory, old_rows: list[Old], loaded, rows: list) -> list[Entry]:
@@ -166,14 +162,15 @@ def diff(found: inventory.Inventory, old_rows: list[Old], loaded, rows: list) ->
     entries = []
     for key, items in olds.items():
         records = new.get(key, [])
-        entries += [Entry("old", kept(row, record), row, record) for row, record in zip(items, records)]
-        entries += [Entry("old", sources.missing(row), row, None) for row in items[len(records):]]
+        entries += [Entry(OLD_SIDE, kept_cause(row, record), row, record) for row, record in zip(items, records)]
+        entries += [Entry(OLD_SIDE, sources.missing_cause(row), row, None) for row in items[len(records):]]
     for key, records in new.items():
-        entries += [Entry("new", sources.extra(record), None, record) for record in records[len(olds.get(key, [])):]]
+        entries += [Entry(NEW_SIDE, sources.extra_cause(record), None, record)
+                    for record in records[len(olds.get(key, [])):]]
     return entries
 
 
-def kept(old: Old, record: inventory.Record) -> str:
+def kept_cause(old: Old, record: inventory.Record) -> str:
     result = record.result
     if old.value != record.value:
         if not result.ok or not isinstance(result.value, int) or _bare(old.literal) != _bare(record.argument):
@@ -226,7 +223,7 @@ class _Sources:
             self.tokens[file] = tokens
         return [token for token in self.tokens[file] if token.line == line]
 
-    def missing(self, old: Old) -> str:
+    def missing_cause(self, old: Old) -> str:
         if Path(old.file).suffix not in self.loaded.sources.suffixes:
             return NOT_READ
         if old.file in self.unsupported:
@@ -240,9 +237,9 @@ class _Sources:
         quoted = any(token.kind in ("str", "char") and old.callee in token.text for token in tokens)
         return IN_STRING if quoted and not named else UNEXPLAINED
 
-    def extra(self, record: inventory.Record) -> str:
+    def extra_cause(self, record: inventory.Record) -> str:
         result = record.result
-        if result.status == "nonconstant":
+        if result.status == ceval.NONCONSTANT:
             return NONCONSTANT
         if result.names:
             return NAMES
@@ -282,11 +279,7 @@ def _order(entry: Entry) -> tuple:
     return entry.side, entry.cause, where.file, where.line, where.callee
 
 
-def summary(entries: list[Entry]) -> list[str]:
+def cause_lines(entries: list[Entry]) -> list[str]:
+    """A Markdown list line per side and cause of ENTRIES with its count, in sorted order."""
     counts = Counter((entry.side, entry.cause) for entry in entries)
-    lines = [f"old rows {sum(1 for entry in entries if entry.side == 'old')}, "
-             f"new rows not in the baseline {sum(1 for entry in entries if entry.side == 'new')}"]
-    lines += [f"  {side} {cause}: {count}" for (side, cause), count in sorted(counts.items())]
-    missing = unexplained(entries)
-    lines.append(f"unexplained old rows: {missing}" if missing else "every old row is kept or explained")
-    return lines
+    return [f"- {side} {cause}: {count}" for (side, cause), count in sorted(counts.items())]
