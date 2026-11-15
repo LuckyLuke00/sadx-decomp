@@ -19,7 +19,7 @@ void FUN_00422e60(void *param_1)
 }
 
 // FUNCTION: SADX 0x00422e70
-void FUN_00422e70(void *param_1)
+void FUN_00422e70()
 {
 	_gjWaitVsync();
 }
