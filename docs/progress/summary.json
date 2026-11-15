@@ -38932,9 +38932,9 @@
   {
    "address": "0x005ebea0",
    "name": "InitStaff",
-   "accuracy": 0.00846740050804403,
+   "accuracy": 0.9991496598639455,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -95351,6 +95351,27 @@
    "library": false
   },
   {
+   "address": "0x0267aa40",
+   "name": "DAT_0267aa40",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267aa44",
+   "name": "DAT_0267aa44",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0267aa45",
+   "name": "DAT_0267aa45",
+   "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0267b758",
    "name": "DAT_0267b758",
    "size": 1,
@@ -104376,5 +104397,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "86923f8d49901aef04898ca0874e962470ab86cba56b96d3e4a92742c6a7d2e4"
+ "inputs_sha256": "99f6f8f366a3033309ac39c9d0002b350b3e5125d80ff2389b1d158ae95b74fb"
 }

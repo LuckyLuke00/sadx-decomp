@@ -2187,12 +2187,6 @@ void DrawControl()
 {
 }
 
-// STUB: SADX 0x005ebea0
-int InitStaff()
-{
-	return (int)0;
-}
-
 // STUB: SADX 0x005edc30
 void DrawStaff()
 {

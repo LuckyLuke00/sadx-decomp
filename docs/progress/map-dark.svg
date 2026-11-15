@@ -4401,6 +4401,7 @@
 <rect x="119" y="77" width="6" height="6" fill="#ffd700"><title>0x005eb290 DrawOptionMenuSubDlgSub: 100%</title></rect>
 <rect x="126" y="77" width="6" height="6" fill="#ffd700"><title>0x005eb2b0 DisplayControl: 100%</title></rect>
 <rect x="154" y="77" width="6" height="6" fill="#ffd700"><title>0x005ebb90 DisplayStaff: 100%</title></rect>
+<rect x="168" y="77" width="6" height="6" fill="#ffd701"><title>0x005ebea0 InitStaff: 99.9%</title></rect>
 <rect x="21" y="84" width="6" height="6" fill="#ffd700"><title>0x005ee430 SetAdvaOptionMenuTask: 100%</title></rect>
 <rect x="63" y="84" width="6" height="6" fill="#ffd700"><title>0x005f0b00 FUN_005f0b00: 100%</title></rect>
 <rect x="84" y="84" width="6" height="6" fill="#ffd700"><title>0x005f1010 FUN_005f1010: 100%</title></rect>

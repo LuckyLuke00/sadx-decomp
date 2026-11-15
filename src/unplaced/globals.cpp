@@ -1742,6 +1742,15 @@ struct NJS_SPRITE DAT_026792ec;
 // GLOBAL: SADX 0x026795dc
 struct particle_entry particle_flash;
 
+// GLOBAL: SADX 0x0267aa40
+int DAT_0267aa40;
+
+// GLOBAL: SADX 0x0267aa44
+unsigned char DAT_0267aa44;
+
+// GLOBAL: SADX 0x0267aa45
+unsigned char DAT_0267aa45;
+
 // GLOBAL: SADX 0x0267b758
 unsigned char DAT_0267b758;
 
@@ -7969,6 +7978,15 @@ unsigned char DAT_05edd820;
 
 // GLOBAL: SADX 0x05edd821
 unsigned char DAT_05edd821;
+
+// GLOBAL: SADX 0x05edd830
+int DAT_05edd830;
+
+// GLOBAL: SADX 0x05edd854
+float DAT_05edd854;
+
+// GLOBAL: SADX 0x05edd858
+float DAT_05edd858;
 
 // GLOBAL: SADX 0x05edd870
 struct task *DAT_05edd870;
