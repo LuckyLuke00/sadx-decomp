@@ -1,4 +1,4 @@
-"""The copies of a static function that the game's link folded, for reccmp.
+"""The copies of a function that the game's link folded, for reccmp.
 
 Two source files can each define the same static function. The game's link kept
 one copy and sent the other file's calls to it, where its objects were compiled
@@ -8,9 +8,14 @@ COMDATs. With two copies it keeps the later object's. Our link keeps both
 name, so such a call shows as UVScroll(2) where the game's shows UVScroll(1),
 and the caller can't match.
 
+Two instances of one template can be the same code too, as std::list<A>::clear
+and std::list<B>::clear. The game's link folded those as well. reccmp knows one
+name for the game's copy, so a call to our other instance can't match.
+
 alias_folds() names such a copy after the copy the game kept. A copy qualifies
-when it is static, matches no function of the game, and is the same code as
-exactly one function that does and shares its name. Same code is
+when it matches no function of the game and is the same code as exactly one
+function that does. A static copy must share that function's name. An instance
+of a template must share its name but for the template arguments. Same code is
 the same size, the same instructions and the same targets, where an address
 inside each function counts as its offset from the start. A call to a copy that
 folds counts as a call to the copy it folds into, so a chain of copies folds
@@ -27,18 +32,30 @@ from reccmp.compare import core
 from reccmp.compare.asm.parse import ParseAsm
 from reccmp.types import EntityType, ImageId
 
+TEMPLATE_INSTANCE = "?$"  # in the decorated name of each instance of a template
+
 
 def alias_folds(db, image) -> dict[int, int]:
     """Name each fold copy in our IMAGE after the copy the game kept. Returns {copy: kept copy}, our addresses."""
     functions = [entity for entity in db.all(ImageId.RECOMP)
                  if entity.entity_type == EntityType.FUNCTION and entity.name and entity.size(ImageId.RECOMP)]
-    matched = {}
+    matched, matched_templates = {}, {}
     for entity in functions:
         if entity.matched:
             matched.setdefault(entity.name, []).append(entity)
-    copies = [(entity, [kept for kept in matched.get(entity.name, [])
-                        if kept.size(ImageId.RECOMP) == entity.size(ImageId.RECOMP)])
-              for entity in functions if not entity.matched and entity.get("symbol") is None]
+            matched_templates.setdefault(template(entity.name), []).append(entity)
+
+    def candidates(entity) -> list:
+        symbol = entity.get("symbol")
+        if symbol is None:
+            named = matched.get(entity.name, [])
+        elif TEMPLATE_INSTANCE in symbol:
+            named = matched_templates.get(template(entity.name), [])
+        else:
+            named = []
+        return [kept for kept in named if kept.size(ImageId.RECOMP) == entity.size(ImageId.RECOMP)]
+
+    copies = [(entity, candidates(entity)) for entity in functions if not entity.matched]
     folds, kept_copies = {}, {}
     changed = True
     while changed:
@@ -56,6 +73,19 @@ def alias_folds(db, image) -> dict[int, int]:
         for address, kept in kept_copies.items():
             batch.set(ImageId.RECOMP, address, computed_name=kept.best_name())
     return folds
+
+
+def template(name: str) -> str:
+    """NAME without its template arguments: std::list<A,std::allocator<A> >::clear gives std::list::clear."""
+    kept, depth = [], 0
+    for char in name:
+        if char == "<":
+            depth += 1
+        elif char == ">":
+            depth -= 1
+        elif depth == 0:
+            kept.append(char)
+    return "".join(kept)
 
 
 def code(image, function, folds: dict[int, int]) -> list[str]:

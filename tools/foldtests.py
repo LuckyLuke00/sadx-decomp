@@ -1,4 +1,4 @@
-"""Tests of tools/folds.py: which copies of a static function alias_folds() names after the copy the game kept.
+"""Tests of tools/folds.py: which copies of a function alias_folds() names after the copy the game kept.
 
 run() returns the failures as "<helper> gives <found> for <input>, not <wanted>". Each check builds a small reccmp
 database by hand, with the code of each function at its address in a FakeImage.
@@ -89,10 +89,35 @@ def check_same_code() -> list[str]:
     return [] if found == wanted else [failure("alias_folds", found, given, wanted)]
 
 
+LIST_A = ("std::list<A,std::allocator<A> >::clear", "?clear@?$list@UA@@V?$allocator@UA@@@std@@@std@@QAEXXZ")
+LIST_B = ("std::list<B,std::allocator<B> >::clear", "?clear@?$list@UB@@V?$allocator@UB@@@std@@@std@@QAEXXZ")
+LIST_C = ("std::list<C,std::allocator<C> >::clear", "?clear@?$list@UC@@V?$allocator@UC@@@std@@@std@@QAEXXZ")
+VECTOR_B = ("std::vector<B,std::allocator<B> >::clear", "?clear@?$vector@UB@@V?$allocator@UB@@@std@@@std@@QAEXXZ")
+
+
+def check_template() -> list[str]:
+    """An instance of a template folds into the matched instance of that template with its code."""
+    given = [(0x401000, LIST_A[0], calls(0x401000, CALLEE), True, LIST_A[1]),
+             (0x401100, LIST_C[0], reads(DATA), True, LIST_C[1]),
+             (0x402000, LIST_B[0], calls(0x402000, CALLEE), False, LIST_B[1])]
+    db, image = database(given)
+    found = (folds.alias_folds(db, image), names(db)[0x402000])
+    wanted = ({0x402000: 0x401000}, f"{LIST_A[0]}(1)")
+    return [] if found == wanted else [failure("alias_folds", found, given, wanted)]
+
+
 def check_not_folded() -> list[str]:
     """No copy folds that reads another global, is a global function, has another name or is the same code as two
-    matched functions of its name."""
+    matched functions of its name. No instance of a template folds into another template, into other code or into
+    one of two matched instances with its code."""
     cases = {
+        "another template": [(0x401000, LIST_A[0], calls(0x401000, CALLEE), True, LIST_A[1]),
+                             (0x402000, VECTOR_B[0], calls(0x402000, CALLEE), False, VECTOR_B[1])],
+        "a template with other code": [(0x401000, LIST_A[0], reads(DATA), True, LIST_A[1]),
+                                       (0x402000, LIST_B[0], reads(DATA + 4), False, LIST_B[1])],
+        "two matched instances": [(0x401000, LIST_A[0], calls(0x401000, CALLEE), True, LIST_A[1]),
+                                  (0x401100, LIST_C[0], calls(0x401100, CALLEE), True, LIST_C[1]),
+                                  (0x402000, LIST_B[0], calls(0x402000, CALLEE), False, LIST_B[1])],
         "another global": [(0x401000, "Read", reads(DATA), True, None),
                            (0x402000, "Read", reads(DATA + 4), False, None)],
         "a global function": [(0x401000, "Scroll", calls(0x401000, CALLEE), True, None),
@@ -128,6 +153,6 @@ def check_chain() -> list[str]:
 def run() -> list[str]:
     """Every check of the fold rule, in order: the failures of all."""
     failures = []
-    for check in (check_copy, check_same_code, check_not_folded, check_chain):
+    for check in (check_copy, check_same_code, check_template, check_not_folded, check_chain):
         failures += check()
     return failures
