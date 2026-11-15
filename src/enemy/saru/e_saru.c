@@ -1,6 +1,7 @@
 #include "decls.h"
 #include <math.h>
 #include <stdlib.h>
+void SaruEditMode(struct task *tp);
 struct enemywk;
 void SaruBombAExecutor(struct task *tp);
 void SaruBombADisplayer(struct task *tp);
@@ -39,9 +40,79 @@ void SaruTraceCircle(struct taskwk *twp, struct enemywk *ewp)
 	twp->pos.z = twp->pos.z + ewp->home.z;
 }
 
-// STUB: SADX 0x005c6020
+// FUNCTION: SADX 0x005c6020
 void SaruExecutor(struct task *tp)
 {
+	struct taskwk *local_cg;
+	struct motionwk *local_8g;
+	local_cg = tp->twp;
+	local_8g = tp->mwp;
+	if (CheckEditMode())
+	{
+		SaruEditMode(tp);
+		return;
+	}
+	if (CheckRangeOutWithR(tp, 490000.0f))
+	{
+		return;
+	}
+	switch (local_cg->mode)
+	{
+	case 0:
+		SaruWait(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 1:
+		FUN_005c7050(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 2:
+		SaruPori(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 3:
+		SaruTurnL(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 4:
+		FUN_005c7a80((struct task *)local_cg, (struct enemywk *)local_8g);
+		break;
+	case 5:
+		SaruTurnR(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 6:
+		FUN_005c7ff0((struct task *)local_cg, (struct enemywk *)local_8g);
+		break;
+	case 7:
+		SaruTurnP(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 0xa:
+		FUN_005c8300(local_cg, (struct enemywk *)local_8g);
+		break;
+	case 9:
+		SaruThrow(tp, (struct enemywk *)local_8g);
+		break;
+	case 0xc:
+		Knuckles_KakeraGame_Set_PutEme((int)(*(short *)((char *)local_8g + 0x4c)), &local_cg->pos);
+		FUN_005c6930(local_cg, (int)(struct enemywk *)local_8g);
+		FUN_005cf4f0(tp, local_cg, local_8g);
+		return;
+	}
+	FUN_005c62a0(local_cg, (struct enemywk *)local_8g);
+	if (EnemyCheckDamage(local_cg, (struct enemywk *)local_8g))
+	{
+		local_cg->mode = 0xc;
+		*(char *)((char *)local_cg + 9) = 0;
+		*(char *)((char *)local_cg + 0xa) = 1;
+	}
+	EnemyPreservePreviousPosition(local_cg, (struct enemywk *)local_8g);
+	Knuckles_KakeraGame_Set_CheckEme((int)(*(short *)((char *)local_8g + 0x4c)), &local_cg->pos);
+	local_cg->wtimer++;
+	if (local_cg->timer.l++ > 0x258)
+	{
+		local_cg->flag &= ~0x400;
+	}
+	if ((local_cg->flag & 0x100) != 0)
+	{
+		EntryColliList(local_cg);
+	}
+	LoopTaskC(tp);
 }
 
 // STUB: SADX 0x005c62a0

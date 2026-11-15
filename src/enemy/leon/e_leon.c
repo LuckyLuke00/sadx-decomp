@@ -71,9 +71,29 @@ void FUN_005c09e0(struct taskwk *param_1, struct enemywk *param_2)
 	}
 }
 
-// STUB: SADX 0x005c0a60
+// FUNCTION: SADX 0x005c0a60
 void FUN_005c0a60(struct taskwk *param_1, struct enemywk *param_2)
 {
+	struct taskwk *local_8g;
+
+	local_8g = DAT_05baf368[0];
+	if (EnemyDist2FromAim(param_1, param_2) > 1600.0)
+	{
+		param_2->velo.x = njCos(param_1->ang.y) * 0.5;
+		param_2->velo.y += -0.18000000715255737;
+		param_2->velo.z = njSin(-param_1->ang.y) * 0.5;
+		param_2->force.x = 2.5;
+	}
+	else
+	{
+		param_2->velo.x = njCos(param_1->ang.y) * 0.4000000059604645;
+		param_2->velo.y += -0.18000000715255737;
+		param_2->velo.z = njSin(-param_1->ang.y) * 0.4000000059604645;
+		param_2->force.x = 1.100000023841858;
+	}
+	param_1->pos.x += param_2->velo.x;
+	param_1->pos.y += param_2->velo.y;
+	param_1->pos.z += param_2->velo.z;
 }
 
 // STUB: SADX 0x005c0b80

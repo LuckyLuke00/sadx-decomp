@@ -68,9 +68,37 @@ void SpinnaDisplayer(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005941f0
+// FUNCTION: SADX 0x005941f0
 void SpinnaEditModeA(struct task *tp, struct taskwk *twp)
 {
+	if (FUN_004c39c0(tp) != 0)
+	{
+		if (twp->btimer > 0x19)
+		{
+			njPrintC(0xc0008, "<< SPINNA A >>");
+		}
+		else
+		{
+			njPrintC(0xc0008, "<<          >>");
+		}
+		if (twp->btimer++ > 0x32)
+		{
+			twp->btimer = 0;
+		}
+		njPrintC(0x110010, "->              ");
+		njPrintC(0x110011, "->  OBJECT ANG  ");
+		njPrintC(0x110012, "->  EMERALD     ");
+		njPrintC(0x110013, "->  SEARCH RANGE");
+		njPrintC(0x110014, "->              ");
+		njPrintC(0x110015, "->              ");
+	}
+	SpinnaEditDraw(twp, twp->pos.x, twp->pos.y, twp->pos.z);
+	njPushMatrix(0);
+	njTranslateV(0, &twp->pos);
+	SetMaterial(0.2f, 0.0, 1.0, 0.0);
+	FUN_0067d2d0(0, (twp->scl.x + 60.0f + 10.0f) * 0.1f, 0.02f, (twp->scl.x + 60.0f + 10.0f) * 0.1f);
+	___dsDrawObject(&object_cylinder01[0]);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x005943b0

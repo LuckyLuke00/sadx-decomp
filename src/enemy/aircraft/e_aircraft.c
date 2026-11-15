@@ -1,4 +1,14 @@
 #include "decls.h"
+extern struct CCL_INFO air_info[1];
+extern struct obj object_sky_obj_lift_b_obj_lift_b[];
+extern struct obj object_sky_signal_signal[];
+extern struct NJS_TEXLIST texlist_e_aircraft;
+extern struct NJS_TEXLIST texlist_air_signal;
+static void AirLiftDraw(struct task *tp);
+
+// GLOBAL: SADX 0x026617ec
+static struct NJS_SPRITE sprite_wing_light;
+
 long AdjustAngle(long ang0, long ang1, long dang);
 long AdjustAngle(long ang0, long ang1, long dang);
 extern struct CCL_INFO lift_info[3];
@@ -29,9 +39,37 @@ void EnemyAirLift(struct task *tp)
 	local_8->flag = local_8->flag & ~0x100;
 }
 
-// STUB: SADX 0x005c2c10
-void AirLiftDraw(struct task *tp)
+// FUNCTION: SADX 0x005c2c10
+static void AirLiftDraw(struct task *tp)
 {
+	struct taskwk *local_8 = tp->twp;
+	if (local_8->flag & 0x100)
+		*(int *)((char *)object_sky_signal_signal[0].model->mats + 0x48) = 3;
+	else
+		*(int *)((char *)object_sky_signal_signal[0].model->mats + 0x48) = 8;
+	___njSetTexture(&texlist_e_aircraft);
+	njPushMatrix(0);
+	FUN_0067d830(0, local_8->pos.x, local_8->pos.y, local_8->pos.z);
+	UNKNOWN_ROTATE_Y_MACRO(0, local_8->ang.y);
+	njPushMatrix(0);
+	FUN_0067d830(0, 0.0f, 0.0f, -local_8->scl.x);
+	___dsDrawObject(&object_sky_obj_lift_a_obj_lift_a);
+	njPopMatrix(1);
+	njPushMatrix(0);
+	FUN_0067d830(0, 0.0f, 0.0f, local_8->scl.x);
+	UNKNOWN_ROTATE_Y_MACRO(0, 0x8000);
+	___dsDrawObject(&object_sky_obj_lift_a_obj_lift_a);
+	njPopMatrix(1);
+	njPushMatrix(0);
+	FUN_0067d830(0, 0.0f, local_8->scl.y + local_8->timer.f, 0.0f);
+	___dsDrawObject((struct obj *)&object_sky_obj_lift_b_obj_lift_b);
+	FUN_0067d830(0, -26.0f, 0.0f, 0.0f);
+	UNKNOWN_ROTATE_Y_MACRO(0, 0x4000);
+	___njSetTexture(&texlist_air_signal);
+	___dsDrawObject((struct obj *)&object_sky_signal_signal);
+	njPopMatrix(1);
+	njPopMatrix(1);
+	*(int *)((char *)object_sky_signal_signal[0].model->mats + 0x48) = 3;
 }
 
 // FUNCTION: SADX 0x005c2e00
@@ -111,9 +149,48 @@ void AirLiftSleep(struct task *tp)
 {
 }
 
-// STUB: SADX 0x005c3180
+// FUNCTION: SADX 0x005c3180
 void EnemyAir(struct task *tp)
 {
+	struct taskwk *local_ci;
+	struct enemywk *local_8g;
+	struct task *local_10;
+
+	local_ci = tp->twp;
+	CCL_Init(tp, air_info, 4, 3);
+	local_8g = EnemyInitialize(tp, local_ci);
+	local_8g->flag |= 3;
+	local_ci->btimer = 0;
+	local_ci->wtimer = 0;
+	local_8g->height = 0.0f;
+	local_8g->angy_spd = 0xe0;
+	local_8g->aim_angle = *(int *)((char *)local_ci + 0x18);
+	local_8g->nframe = 0.0f;
+	local_8g->shadow_scl = 1.6f;
+	local_8g->shadow_scl_ratio = 1.0f;
+	local_8g->height = 0.0f;
+	local_8g->weight = 0.0f;
+	local_8g->sub_angle[1] = 0;
+	local_8g->sub_angle[5] = 0;
+	*(int *)((char *)local_ci + 0x14) = 0;
+	*(int *)((char *)local_ci + 0x1c) = 0;
+	EnemyPreserveHomePosition(local_ci, local_8g);
+	tp->dest = (void (__cdecl *)(struct task *))FUN_005c34a0;
+	tp->exec = FUN_005c40f0;
+	local_ci->flag |= 0x100;
+	local_ci->flag &= ~0x600;
+	local_10 = CreateChildTask(2, AirMissle, tp);
+	if (local_10 != NULL)
+	{
+		local_10->twp->smode = 0;
+		local_10->twp->value.l = (long)local_ci;
+	}
+	local_10 = CreateChildTask(2, AirMissle, tp);
+	if (local_10 != NULL)
+	{
+		local_10->twp->smode = 1;
+		local_10->twp->value.l = (long)local_ci;
+	}
 }
 
 // FUNCTION: SADX 0x005c3320
@@ -291,9 +368,33 @@ void AirCollision(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 
-// STUB: SADX 0x005c4ab0
+// FUNCTION: SADX 0x005c4ab0
 void AirWingLightDraw(struct taskwk *twp)
 {
+	float local_8;
+	if (DAT_05b9d838 != 0)
+	{
+		return;
+	}
+	local_8 = (float)njSin((Angle)(twp->counter.b[3] << 9)) * 0.5f + 0.5f;
+	___njColorBlendingMode(0, 7);
+	___njColorBlendingMode(1, 0xa);
+	SetMaterial(local_8, 1.0f, 0.3f, 0.3f);
+	njPushMatrix(0);
+	FUN_0067d830(0, 21.05194f, -23.085514f, 34.323315f);
+	___njFogDisable();
+	___njDrawSprite3D(&sprite_wing_light, 0, 0x32);
+	___njFogEnable();
+	njPopMatrix(1);
+	SetMaterial(local_8, 0.3f, 1.0f, 0.3f);
+	njPushMatrix(0);
+	FUN_0067d830(0, 21.05194f, -23.085514f, -34.323315f);
+	___njFogDisable();
+	___njDrawSprite3D(&sprite_wing_light, 0, 0x32);
+	___njFogEnable();
+	njPopMatrix(1);
+	___njColorBlendingMode(0, 8);
+	___njColorBlendingMode(1, 6);
 }
 
 // STUB: SADX 0x005c4c10

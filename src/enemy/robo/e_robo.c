@@ -687,9 +687,36 @@ void RoboWakeUp(struct taskwk *twp, struct enemywk *ewp)
 	}
 }
 
-// STUB: SADX 0x005beb60
+// FUNCTION: SADX 0x005beb60
 void RoboSmokeSide(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 left;
+	struct NJS_POINT3 right;
+	struct NJS_POINT3 tmp_velo;
+	struct NJS_POINT3 lpos;
+	struct NJS_POINT3 velo;
+	struct NJS_POINT3 rpos;
+	left.x = -4.1f;
+	left.y = -3.7f;
+	left.z = 2.0f;
+	right.x = 4.1f;
+	right.y = -3.7f;
+	right.z = 2.0f;
+	tmp_velo.x = 0.0f;
+	tmp_velo.y = -0.8f;
+	tmp_velo.z = 0.6f;
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njSetMatrix(0, &ewp->mat);
+	njCalcVector(0, &tmp_velo, &velo);
+	njCalcPoint(0, &left, &lpos);
+	njCalcPoint(0, &right, &rpos);
+	njPopMatrix(1);
+	robo_smoke3.velo = velo;
+	robo_smoke3.pos = lpos;
+	FUN_005536c0(&robo_smoke3);
+	robo_smoke3.pos = rpos;
+	FUN_005536c0(&robo_smoke3);
 }
 
 // FUNCTION: SADX 0x005beca0

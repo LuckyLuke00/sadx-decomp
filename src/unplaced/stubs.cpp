@@ -1600,6 +1600,12 @@ void KnucklesDirectAhead(struct task *tp)
 {
 }
 
+// STUB: SADX 0x0052fb60
+long Knuckles_KakeraGame_Set_PutEme(long emeid, struct NJS_POINT3 *emepos)
+{
+	return (long)0;
+}
+
 // STUB: SADX 0x00530180
 void MilesTalesPrower(struct task *tp)
 {
@@ -2071,6 +2077,11 @@ void MissleAttack(struct task *tp)
 
 // STUB: SADX 0x005c45e0
 void AirDraw(struct taskwk *, struct enemywk *)
+{
+}
+
+// STUB: SADX 0x005c69d0
+void SaruWait(struct taskwk *twp, struct enemywk *ewp)
 {
 }
 

@@ -1655,6 +1655,9 @@ struct particle_info robo_smoke1;
 // GLOBAL: SADX 0x0264da70
 struct particle_info robo_smoke2;
 
+// GLOBAL: SADX 0x0264dabc
+struct particle_info robo_smoke3;
+
 // GLOBAL: SADX 0x0264db34
 struct particle_info robo_smoke5;
 
@@ -1679,11 +1682,26 @@ struct NJS_ACTION action_reon2_walk2_reon2[1];
 // GLOBAL: SADX 0x02660324
 struct obj object_sky_obj_lift_a_obj_lift_a;
 
+// GLOBAL: SADX 0x02660854
+struct obj object_sky_obj_lift_b_obj_lift_b[1];
+
+// GLOBAL: SADX 0x0266144c
+struct obj object_sky_signal_signal[1];
+
+// GLOBAL: SADX 0x02661618
+struct NJS_TEXLIST texlist_e_aircraft;
+
+// GLOBAL: SADX 0x02661620
+struct CCL_INFO air_info[1];
+
 // GLOBAL: SADX 0x026616e0
 struct CCL_INFO lift_info[3];
 
 // GLOBAL: SADX 0x02661770
 struct CCL_INFO missle_info[2];
+
+// GLOBAL: SADX 0x02661894
+struct NJS_TEXLIST texlist_air_signal;
 
 // GLOBAL: SADX 0x02661a88
 struct NJS_TEXLIST texlist_e_saru;
@@ -1882,6 +1900,12 @@ struct NJS_MODEL *snowface_model[4];
 
 // GLOBAL: SADX 0x02684534
 struct particle_entry particle_pom;
+
+// GLOBAL: SADX 0x02684544
+struct particle_info pom_backsmoke;
+
+// GLOBAL: SADX 0x02684580
+struct particle_info pom_footsmoke;
 
 // GLOBAL: SADX 0x026845bc
 struct particle_info pom_breathe;

@@ -24130,6 +24130,14 @@
    "library": false
   },
   {
+   "address": "0x0052fb60",
+   "name": "Knuckles_KakeraGame_Set_PutEme",
+   "accuracy": 0.040160642570281124,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0052feb0",
    "name": "Knuckles_KakeraGamePutRadar0C",
    "accuracy": 0.12121212121212122,
@@ -30748,9 +30756,9 @@
   {
    "address": "0x005941f0",
    "name": "SpinnaEditModeA",
-   "accuracy": 0.06060606060606061,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35500,9 +35508,9 @@
   {
    "address": "0x005beb60",
    "name": "RoboSmokeSide",
-   "accuracy": 0.0851063829787234,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35668,9 +35676,9 @@
   {
    "address": "0x005c0a60",
    "name": "FUN_005c0a60",
-   "accuracy": 0.08791208791208792,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35796,9 +35804,9 @@
   {
    "address": "0x005c2c10",
    "name": "AirLiftDraw",
-   "accuracy": 0.050314465408805034,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35836,9 +35844,9 @@
   {
    "address": "0x005c3180",
    "name": "EnemyAir",
-   "accuracy": 0.06611570247933884,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -35988,9 +35996,9 @@
   {
    "address": "0x005c4ab0",
    "name": "AirWingLightDraw",
-   "accuracy": 0.07339449541284404,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36132,9 +36140,9 @@
   {
    "address": "0x005c6020",
    "name": "SaruExecutor",
-   "accuracy": 0.037383177570093455,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -36167,6 +36175,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x005c69d0",
+   "name": "SaruWait",
+   "accuracy": 0.03571428571428571,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -41054,9 +41070,9 @@
   {
    "address": "0x0060c300",
    "name": "SnowmanBackSmoke",
-   "accuracy": 0.05970149253731343,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -41078,9 +41094,9 @@
   {
    "address": "0x0060c7c0",
    "name": "SnowmanFootSmoke",
-   "accuracy": 0.0547945205479452,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -71830,9 +71846,9 @@
   {
    "address": "0x008d7d30",
    "name": "CreateSaiCatSmoke",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -95391,6 +95407,13 @@
    "library": false
   },
   {
+   "address": "0x0264dabc",
+   "name": "robo_smoke3",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0264db34",
    "name": "robo_smoke5",
    "size": 60,
@@ -95447,6 +95470,34 @@
    "library": false
   },
   {
+   "address": "0x02660854",
+   "name": "object_sky_obj_lift_b_obj_lift_b",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0266144c",
+   "name": "object_sky_signal_signal",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02661618",
+   "name": "texlist_e_aircraft",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02661620",
+   "name": "air_info",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x026616e0",
    "name": "lift_info",
    "size": 144,
@@ -95457,6 +95508,20 @@
    "address": "0x02661770",
    "name": "missle_info",
    "size": 96,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x026617ec",
+   "name": "sprite_wing_light",
+   "size": 32,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02661894",
+   "name": "texlist_air_signal",
+   "size": 8,
    "match": false,
    "library": false
   },
@@ -95926,6 +95991,20 @@
    "address": "0x02684534",
    "name": "particle_pom",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02684544",
+   "name": "pom_backsmoke",
+   "size": 60,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x02684580",
+   "name": "pom_footsmoke",
+   "size": 60,
    "match": false,
    "library": false
   },
@@ -104913,5 +104992,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "6b88c522c7cce64831b119994f4ec7d08085b73431878550036b584e62259b49"
+ "inputs_sha256": "5f3894c510f03417b42501c1f8928e37f533816394f0e59ef123ff53a3ed2f7d"
 }

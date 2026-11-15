@@ -159,9 +159,44 @@ void FUN_008d7d00(int param_1, char *param_2)
 	}
 }
 
-// STUB: SADX 0x008d7d30
+// FUNCTION: SADX 0x008d7d30
 void CreateSaiCatSmoke(struct taskwk *twp)
 {
+	struct NJS_POINT3 pos;
+	struct NJS_POINT3 left;
+	struct NJS_POINT3 right;
+	struct NJS_POINT3 velo;
+	if ((int)twp->wtimer % 2 != 0)
+	{
+		left.x = -1.0;
+		left.y = 0.0;
+		left.z = -4.0;
+		right.x = -1.0;
+		right.y = 0.0;
+		right.z = 4.0;
+		velo.x = 0.0;
+		velo.y = 0.0;
+		velo.z = 0.0;
+		njPushMatrix(&_nj_unit_matrix_);
+		njTranslateV(0, &twp->pos);
+		if (twp->ang.z != 0)
+		{
+			njRotateZ(0, (unsigned short)twp->ang.z);
+		}
+		if (twp->ang.x != 0)
+		{
+			njRotateX(0, (unsigned short)twp->ang.x);
+		}
+		if (twp->ang.y != 0)
+		{
+			njRotateY(0, (unsigned short)twp->ang.y);
+		}
+		njCalcPoint(0, &left, &pos);
+		CreateSmoke(&pos, &velo, 0.7);
+		njCalcPoint(0, &right, &pos);
+		CreateSmoke(&pos, &velo, 0.7);
+		njPopMatrix(1);
+	}
 }
 
 // FUNCTION: SADX 0x008d7e80

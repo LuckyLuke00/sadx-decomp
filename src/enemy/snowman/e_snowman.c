@@ -806,9 +806,34 @@ void DrawSnowmanRange(struct NJS_POINT3 *pos, float radius)
 {
 }
 
-// STUB: SADX 0x0060c300
+// FUNCTION: SADX 0x0060c300
 void SnowmanBackSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 spd;
+	struct NJS_POINT3 pos;
+
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njTranslateV(0, &twp->pos);
+	if (twp->ang.y + 0x4000 != 0)
+	{
+		njRotateY(0, (unsigned short)(twp->ang.y + 0x4000));
+	}
+	spd.x = (float)(rand() / 32768.0) * 0.10000000149011612 + 0.20000000298023224;
+	spd.y = (float)(rand() / 32768.0) * 0.20000000298023224 + 0.4000000059604645;
+	spd.z = -0.5;
+	pos.x = 2.0;
+	pos.y = 2.0;
+	pos.z = 0.0;
+	create_whitesmoke(&pom_backsmoke, &pos, &spd, (float)(rand() / 32768.0) * 0.05000000074505806 + 0.10000000149011612);
+	spd.x = -((float)(rand() / 32768.0) * 0.10000000149011612 + 0.20000000298023224);
+	spd.y = (float)(rand() / 32768.0) * 0.20000000298023224 + 0.4000000059604645;
+	spd.z = -0.5;
+	pos.x = -2.0;
+	pos.y = 2.0;
+	pos.z = 0.0;
+	create_whitesmoke(&pom_backsmoke, &pos, &spd, (float)(rand() / 32768.0) * 0.05000000074505806 + 0.10000000149011612);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x0060c4e0
@@ -842,9 +867,34 @@ void EffectPom(struct sp_task *tp, struct sp_link *lp)
 {
 }
 
-// STUB: SADX 0x0060c7c0
+// FUNCTION: SADX 0x0060c7c0
 void SnowmanFootSmoke(struct taskwk *twp, struct enemywk *ewp)
 {
+	struct NJS_POINT3 spd;
+	struct NJS_POINT3 pos;
+
+	njPushMatrix(0);
+	njUnitMatrix(0);
+	njTranslateV(0, &twp->pos);
+	if (twp->ang.y + 0x4000 != 0)
+	{
+		njRotateY(0, (unsigned short)(twp->ang.y + 0x4000));
+	}
+	spd.x = (float)(rand() / 32768.0) * 0.10000000149011612;
+	spd.y = (float)(rand() / 32768.0) * 0.10000000149011612 + 0.10000000149011612;
+	spd.z = 0.0;
+	pos.x = 3.0f;
+	pos.y = 2.0f;
+	pos.z = ((float)(rand() / 32768.0) - 0.5) * 10.0;
+	create_whitesmoke(&pom_footsmoke, &pos, &spd, (float)(rand() / 32768.0) * 0.05000000074505806 + 0.10000000149011612);
+	spd.x = -((float)(rand() / 32768.0) * 0.10000000149011612);
+	spd.y = (float)(rand() / 32768.0) * 0.10000000149011612 + 0.10000000149011612;
+	spd.z = 0.0;
+	pos.x = -3.0f;
+	pos.y = 2.0f;
+	pos.z = ((float)(rand() / 32768.0) - 0.5) * 10.0;
+	create_whitesmoke(&pom_footsmoke, &pos, &spd, (float)(rand() / 32768.0) * 0.05000000074505806 + 0.10000000149011612);
+	njPopMatrix(1);
 }
 
 // FUNCTION: SADX 0x0060c9d0
