@@ -68,6 +68,9 @@ struct _CameraSystemWork *pCameraSystemWork;
 // GLOBAL: SADX 0x00987244
 struct _OBJ_ADJUSTPARAM *pObjAdjustParam;
 
+// GLOBAL: SADX 0x00987278
+int DAT_00987278[6];
+
 // GLOBAL: SADX 0x0098b338
 unsigned char DAT_0098b338;
 
@@ -961,6 +964,9 @@ struct NJS_TEXLIST texlist_ava_inetdemo;
 
 // GLOBAL: SADX 0x025adcd8
 struct NJS_TEXLIST texlist_tvsetting;
+
+// GLOBAL: SADX 0x025adce0
+struct NJS_TEXLIST texlist_ava_title;
 
 // GLOBAL: SADX 0x025adcf0
 struct NJS_TEXLIST texlist_ava_new_menu;
@@ -5822,6 +5828,9 @@ Magic::RenderCore::Texture *DAT_05b3e378;
 // GLOBAL: SADX 0x05b3e37c
 Magic::RenderCore::Texture *DAT_05b3e37c;
 
+// GLOBAL: SADX 0x05b3e384
+int DAT_05b3e384;
+
 // GLOBAL: SADX 0x05b3e388
 int DAT_05b3e388;
 
@@ -6223,6 +6232,9 @@ struct task *DAT_05b42a8c;
 
 // GLOBAL: SADX 0x05b42a90
 int DAT_05b42a90;
+
+// GLOBAL: SADX 0x05b42a94
+unsigned char DAT_05b42a94;
 
 // GLOBAL: SADX 0x05b42a98
 struct NJS_POINT3 DAT_05b42a98[32];

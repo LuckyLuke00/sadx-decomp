@@ -17292,9 +17292,9 @@
   {
    "address": "0x004c06f0",
    "name": "title_menu_exec(1)",
-   "accuracy": 0.05970149253731343,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -17303,6 +17303,14 @@
    "accuracy": 0.15384615384615385,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c0970",
+   "name": "title_menu_sub_exec",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -39106,6 +39114,15 @@
    "library": false
   },
   {
+   "address": "0x005f1320",
+   "name": "achivement_exec",
+   "accuracy": 0.8333333333333334,
+   "effective": false,
+   "stub": false,
+   "library": false,
+   "trick": true
+  },
+  {
    "address": "0x005f1600",
    "name": "title_menu_disp(5)",
    "accuracy": 0.018140589569160998,
@@ -39178,6 +39195,15 @@
    "library": false
   },
   {
+   "address": "0x005f25a0",
+   "name": "FUN_005f25a0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false,
+   "trick": true
+  },
+  {
    "address": "0x005f2850",
    "name": "FUN_005f2850",
    "accuracy": 0.021621621621621623,
@@ -39239,6 +39265,14 @@
    "accuracy": 0.06060606060606061,
    "effective": false,
    "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x005f37e0",
+   "name": "FUN_005f37e0",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
    "library": false
   },
   {
@@ -89424,6 +89458,13 @@
    "library": false
   },
   {
+   "address": "0x00987278",
+   "name": "DAT_00987278",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0098b338",
    "name": "DAT_0098b338",
    "size": 1,
@@ -93598,6 +93639,13 @@
   {
    "address": "0x025adcd8",
    "name": "texlist_tvsetting",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x025adce0",
+   "name": "texlist_ava_title",
    "size": 8,
    "match": false,
    "library": false
@@ -104763,5 +104811,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "d85bfee2936c7b1f3d25063be73d3a4f8047421485ce8ff461d737374a7e1618"
+ "inputs_sha256": "fec9c06fdcf6fc686be52ece1fb90f8469dede011b6f7efb607f0a20c7bf4ef3"
 }
