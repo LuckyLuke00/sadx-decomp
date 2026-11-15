@@ -1215,6 +1215,12 @@ void wmaresume()
 {
 }
 
+// STUB: SADX 0x004ac9b0
+Sint32 njUserMain(void)
+{
+	return (Sint32)0;
+}
+
 // STUB: SADX 0x004b1940
 void AvaReleaseTexForEachMode(enum AdvaModeEnum mode)
 {
@@ -1302,6 +1308,11 @@ void FUN_004c0e10(void *)
 {
 }
 
+// STUB: SADX 0x004c1dc0
+void MSG_Disp2()
+{
+}
+
 // STUB: SADX 0x004c26f0
 void MSG_Putc(struct MSGC *, int)
 {
@@ -1317,6 +1328,11 @@ void input_reset()
 {
 }
 
+// STUB: SADX 0x004c43d0
+void input_padUpdate()
+{
+}
+
 // STUB: SADX 0x004c79b0
 void GameInit()
 {
@@ -1324,6 +1340,11 @@ void GameInit()
 
 // STUB: SADX 0x004c9650
 void SetPlayerInitialPosition(struct taskwk *twp)
+{
+}
+
+// STUB: SADX 0x004cb840
+void FUN_004cb840()
 {
 }
 
@@ -1702,6 +1723,11 @@ void CameraCollisitonCheckAdj(struct NJS_POINT3 *src, struct NJS_POINT3 *dst)
 {
 }
 
+// STUB: SADX 0x0056a5d0
+void FUN_0056a5d0()
+{
+}
+
 // STUB: SADX 0x0056aea0
 void FUN_0056aea0(int)
 {
@@ -1735,6 +1761,11 @@ long CalcMMMatrix(float (*)[16], struct NJS_ACTION *, float, unsigned long, floa
 
 // STUB: SADX 0x00572210
 void MirenObjEditDrawCollision(const struct colliwk *)
+{
+}
+
+// STUB: SADX 0x00573280
+void FUN_00573280(int)
 {
 }
 

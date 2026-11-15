@@ -18,7 +18,10 @@ namespace std
 #define MAYBE_ASSERT() ((void)0)
 
 // PLACEHOLDER: UNKNOWN_NO_CODE: the original tests a condition here and then runs no code, so its body is unknown.
-#define UNKNOWN_NO_CODE() ((void)0)
+#define UNKNOWN_NO_CODE()
+
+// PLACEHOLDER: UNKNOWN_CONDITION: the original tests a condition here that makes no code and takes one register, so its text is unknown and a constant stands in for it.
+#define UNKNOWN_CONDITION 0
 
 // PLACEHOLDER: UNKNOWN_MACRO: likely a macro, since the code is a do-while (0) block that fills an NJS_ARGB and passes it to ___njSetConstantMaterial.
 #define UNKNOWN_MACRO(param_1, param_2, param_3, param_4) \

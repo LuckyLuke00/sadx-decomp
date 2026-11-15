@@ -4820,6 +4820,9 @@ int DAT_05a92330;
 // GLOBAL: SADX 0x05a92334
 int DAT_05a92334;
 
+// GLOBAL: SADX 0x05a92378
+int DAT_05a92378;
+
 // GLOBAL: SADX 0x05a9238c
 struct NJS_TEXLIST DAT_05a9238c;
 
@@ -4888,6 +4891,9 @@ unsigned char DAT_05ab423b;
 
 // GLOBAL: SADX 0x05ab4243
 unsigned char DAT_05ab4243;
+
+// GLOBAL: SADX 0x05ab4248
+float DAT_05ab4248;
 
 // GLOBAL: SADX 0x05ab4278
 class Magic::RenderCore::Material *DAT_05ab4278;
@@ -5029,6 +5035,9 @@ int DAT_05ab8300;
 
 // GLOBAL: SADX 0x05ab8304
 int DAT_05ab8304;
+
+// GLOBAL: SADX 0x05ab834c
+unsigned char DAT_05ab834c;
 
 // GLOBAL: SADX 0x05ad95b8
 int DAT_05ad95b8;
@@ -5771,6 +5780,9 @@ struct NJS_POINT3 DAT_05b3e074;
 // GLOBAL: SADX 0x05b3e080
 struct NJS_POINT2 DAT_05b3e080;
 
+// GLOBAL: SADX 0x05b3e088
+struct MSGC DAT_05b3e088;
+
 // GLOBAL: SADX 0x05b3e0d0
 int DAT_05b3e0d0;
 
@@ -5789,6 +5801,9 @@ int DAT_05b3e320[6];
 // GLOBAL: SADX 0x05b3e338
 unsigned long DAT_05b3e338;
 
+// GLOBAL: SADX 0x05b3e33c
+unsigned long DAT_05b3e33c;
+
 // GLOBAL: SADX 0x05b3e340
 struct taskwk *DAT_05b3e340;
 
@@ -5801,8 +5816,14 @@ unsigned char DAT_05b3e348;
 // GLOBAL: SADX 0x05b3e350
 int DAT_05b3e350;
 
+// GLOBAL: SADX 0x05b3e354
+unsigned char DAT_05b3e354;
+
 // GLOBAL: SADX 0x05b3e356
 unsigned char DAT_05b3e356;
+
+// GLOBAL: SADX 0x05b3e357
+unsigned char DAT_05b3e357;
 
 // GLOBAL: SADX 0x05b3e359
 bool DAT_05b3e359;
@@ -5822,11 +5843,20 @@ Magic::RenderCore::Texture *DAT_05b3e368;
 // GLOBAL: SADX 0x05b3e36c
 Magic::RenderCore::Texture* DAT_05b3e36c;
 
+// GLOBAL: SADX 0x05b3e370
+Magic::RenderCore::Texture *DAT_05b3e370;
+
+// GLOBAL: SADX 0x05b3e374
+Magic::RenderCore::Texture *DAT_05b3e374;
+
 // GLOBAL: SADX 0x05b3e378
 Magic::RenderCore::Texture *DAT_05b3e378;
 
 // GLOBAL: SADX 0x05b3e37c
 Magic::RenderCore::Texture *DAT_05b3e37c;
+
+// GLOBAL: SADX 0x05b3e380
+Magic::RenderCore::Texture *DAT_05b3e380;
 
 // GLOBAL: SADX 0x05b3e384
 int DAT_05b3e384;
@@ -6407,6 +6437,9 @@ volatile int DAT_05b9d848;
 // GLOBAL: SADX 0x05b9d84c
 int DAT_05b9d84c;
 
+// GLOBAL: SADX 0x05b9d854
+int DAT_05b9d854;
+
 // GLOBAL: SADX 0x05b9d860
 float DAT_05b9d860[32][16];
 
@@ -6982,6 +7015,9 @@ int DAT_05cc3628;
 
 // GLOBAL: SADX 0x05cc3631
 unsigned char DAT_05cc3631;
+
+// GLOBAL: SADX 0x05cc3636
+unsigned char DAT_05cc3636;
 
 // GLOBAL: SADX 0x05cc3b18
 int DAT_05cc3b18;

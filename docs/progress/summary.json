@@ -15706,6 +15706,14 @@
    "library": false
   },
   {
+   "address": "0x004abe70",
+   "name": "_prolog",
+   "accuracy": 0.9497206703910615,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004ac820",
    "name": "DialogJimakuInit",
    "accuracy": 1.0,
@@ -15735,6 +15743,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004ac9b0",
+   "name": "njUserMain",
+   "accuracy": 0.008216926869350863,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -17450,6 +17466,14 @@
    "library": false
   },
   {
+   "address": "0x004c1dc0",
+   "name": "MSG_Disp2",
+   "accuracy": 0.021108179419525065,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x004c22f0",
    "name": "MSG_Cls",
    "accuracy": 1.0,
@@ -17781,6 +17805,14 @@
    "address": "0x004c42e0",
    "name": "input_reset",
    "accuracy": 0.13559322033898305,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x004c43d0",
+   "name": "input_padUpdate",
+   "accuracy": 0.011299435028248588,
    "effective": false,
    "stub": true,
    "library": false
@@ -18559,6 +18591,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x004cb840",
+   "name": "FUN_004cb840",
+   "accuracy": 0.0898876404494382,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -27042,6 +27082,14 @@
    "library": false
   },
   {
+   "address": "0x0056a5d0",
+   "name": "FUN_0056a5d0",
+   "accuracy": 0.11764705882352941,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x0056a6a0",
    "name": "EV_MainThread",
    "accuracy": 1.0,
@@ -28671,6 +28719,14 @@
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00573280",
+   "name": "FUN_00573280",
+   "accuracy": 0.04790419161676647,
+   "effective": false,
+   "stub": true,
    "library": false
   },
   {
@@ -104718,6 +104774,13 @@
    "library": false
   },
   {
+   "address": "0x05a92378",
+   "name": "DAT_05a92378",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x05a9238c",
    "name": "DAT_05a9238c",
    "size": 8,
@@ -104811,5 +104874,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "fec9c06fdcf6fc686be52ece1fb90f8469dede011b6f7efb607f0a20c7bf4ef3"
+ "inputs_sha256": "3e86f98eaa4e8dda4461bc903ca39656780878133a4271b191322f58bd1b8098"
 }
