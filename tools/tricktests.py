@@ -6,6 +6,7 @@ import io
 import tempfile
 from pathlib import Path
 
+import fakematch
 import names
 import project
 import report
@@ -194,10 +195,43 @@ def check_scan_needs_src() -> list[str]:
     return ["tricks.scan of a root with no src folder found nothing instead of stopping"]
 
 
+def check_proven_forms() -> list[str]:
+    """A volatile global that data/proven-forms.csv names is no trick in a scan; another one still is. An unused_local
+    hit goes only for the function and the local a row names. A row with no evidence stops the run."""
+    header = "kind,function,name,evidence\n"
+    rows = "volatile_global,,g_tick,the code copies it before each use\nunused_local,0x00401000,y,the frame has it\n"
+    source = "\n".join(["extern volatile int g_tick;", "extern volatile int g_rate;",
+                        *function(0x401000, "\tx = g_tick;"), *function(0x401010, "\tx = g_rate;")])
+    failures = []
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        (root / "src").mkdir()
+        (root / "data").mkdir()
+        (root / "src" / "a.c").write_text(source, encoding="utf-8")
+        (root / "data" / "proven-forms.csv").write_text(header + rows, encoding="utf-8")
+        found = {address: reasons for address, (_, reasons) in tricks.scan(root).items()}
+        if found != {0x401010: "volatile global g_rate"}:
+            failures.append(f"a scan with a proven volatile global gives {found}, not only g_rate")
+        proven = fakematch.proven_forms(root)
+        hits = [("unused_local", "y"), ("unused_local", "z"), ("empty_block", "{")]
+        for address, wanted in ((0x401000, hits[1:]), (0x401010, hits)):
+            left = fakematch.without_proven(hits, function(address, "\tint y;"), proven)
+            if left != wanted:
+                failures.append(f"without_proven for 0x{address:08x} leaves {left}, not {wanted}")
+        (root / "data" / "proven-forms.csv").write_text(header + "unused_local,0x00401000,y,\n", encoding="utf-8")
+        try:
+            fakematch.proven_forms(root)
+            failures.append("proven_forms took a row with no evidence")
+        except SystemExit:
+            pass
+    return failures
+
+
 def run() -> list[str]:
     """Every check of this module, in order."""
     failures = []
     for check in (check_forbidden, check_file_tricks, check_declarator_start, check_report_function,
-                  check_report_miss_without_diff, check_volatile_globals, check_fake_tricks, check_scan_needs_src):
+                  check_report_miss_without_diff, check_volatile_globals, check_fake_tricks, check_scan_needs_src,
+                  check_proven_forms):
         failures += check()
     return failures

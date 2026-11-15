@@ -36,6 +36,7 @@ The game files:
 | `data/areas.yml`, `data/areas.csv` | The game's areas, such as its stages and characters. `areas.yml` holds the rules: the `tree` lines for source folders, and the exe's tables and strings behind the guess. Its `map` list holds the sections of the progress map and the name the map shows for each area. A `map` section can have a `color`, a quoted `"#rrggbb"`, for the gem before its title. `check.py areas` writes the guess to `areas.csv`. |
 | `src/library.csv` | Runtime library functions and their globals, matched by name. |
 | `data/accepted-drops.csv` | Optional. The score drops that are on purpose: `address`, `from` and `to` as the gate prints them (`100.00%`, `76.26%`), and the `reason`. For a global, `from` is `matched` and `to` is `differs` or `gone`. A row covers only that exact drop. |
+| `data/proven-forms.csv` | Optional. The forms that the trick checks count and that the game's code proves the source had: `kind` (`unused_local` or `volatile_global`), `function` (the address, empty for a global), `name` (the local or the global) and the `evidence`, in a quoted sentence or two. A named form is no trick. A row with no evidence stops the checks. |
 | `data/llm-hints.txt` | Optional. The game's facts for the system prompt of `tools/llm.py`, such as which release the exe is. |
 | `src/header-functions.h` | `LIBRARY` annotations for header functions the linker kept in game code, such as `swprintf`. Written by hand in a header. The lint rejects them in a `.cpp`. |
 | `CLAUDE.md` | Imports `docs/CLAUDE-GENERIC.md`, then adds the game's facts for Claude. |
@@ -60,7 +61,7 @@ void FUN_00401000(int value)
 | Figure | Meaning |
 | --- | --- |
 | Score | The share of instructions that are the same in both copies. The game's copy runs to the end of its row in `data/functions.csv`. Code that our copy lacks at the end counts as a miss. Calls and globals compare by name. A function can match at another address in our exe. |
-| Matched | A score of 100% in plain C. A function at 100% only through a trick, such as inline assembly, `#pragma auto_inline(off)` or a global declared `volatile`, keeps its score but does not count as matched. `python tools/tricks.py` lists those functions and says why. reccmp also calls some misses an *effective* match (other registers or another instruction order). Its check is loose and can pass code that behaves differently. An effective match keeps its score. The totals count it apart as *effective*. |
+| Matched | A score of 100% in plain C. A function at 100% only through a trick, such as inline assembly, `#pragma auto_inline(off)` or a global declared `volatile`, keeps its score but does not count as matched. `python tools/tricks.py` lists those functions and says why. A form that `data/proven-forms.csv` names with its evidence is no trick. reccmp also calls some misses an *effective* match (other registers or another instruction order). Its check is loose and can pass code that behaves differently. An effective match keeps its score. The totals count it apart as *effective*. |
 | Decompiled | The share of game functions that have a body. Stubs do not count. |
 | Accuracy | The average score of the decompiled functions. |
 

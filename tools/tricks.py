@@ -4,7 +4,8 @@ A trick is one of these:
 - inline assembly, `__emit`, `__declspec(naked)`, `#pragma` or `__pragma` in the function: forbidden(), the words
   the local model's harness refuses;
 - `volatile`, `__restrict`, `__declspec(safebuffers)` or `__declspec(noinline)` in the function;
-- a global declared `volatile` at file level in any source, used in the function;
+- a global declared `volatile` at file level in any source, used in the function, unless data/proven-forms.csv
+  names it (fakematch.proven_forms);
 - a place after a file-level pragma that changes the code, such as `#pragma auto_inline(off)`, and before the pragma
   that resets it;
 - a fake-match line (tools/fakematch.py), when the scan gets FAKES.
@@ -120,9 +121,11 @@ def file_tricks(text: str, volatiles: set[str] = frozenset(),
 
 
 def scan(root: Path, fakes: Callable[[list[str]], list[str]] | None = None) -> dict[int, tuple[str, str]]:
-    """address: (file, tricks) of each function in root/src that has a trick. FAKES: as in file_tricks."""
+    """address: (file, tricks) of each function in root/src that has a trick. FAKES: as in file_tricks. A volatile
+    global that root's data/proven-forms.csv names is no trick."""
     sources = names.read_sources(root)
-    volatiles = all_volatile_globals(sources)
+    proven = {name for kind, _, name in fakematch.proven_forms(root) if kind == "volatile_global"}
+    volatiles = all_volatile_globals(sources) - proven
     return {address: (rel, reasons) for rel, text in sources.items()
             for address, reasons in file_tricks(text, volatiles, fakes).items()}
 

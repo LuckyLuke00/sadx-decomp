@@ -38,8 +38,12 @@ operand there, so a float DAT_ that the code uses so is a float object (constant
 
 llm.py --refuse-fakematch refuses a 100% try with one of them. A function at 100% with one counts as matched only
 through a trick: checker gives tools/tricks.py the kinds. Standard library only.
+
+data/proven-forms.csv lists the forms that look like a trick and that the game's code proves the source had
+(proven_forms). checker leaves out an unused_local that a row names.
 """
 
+import csv
 import math
 import re
 from collections.abc import Callable
@@ -50,6 +54,8 @@ import names
 import pe
 import progress
 
+PROVEN_FORMS = Path("data") / "proven-forms.csv"  # under the tree's root
+PROVEN_KINDS = ("unused_local", "volatile_global")
 KEYWORDS = {"return", "goto", "else", "case", "default", "break", "continue", "do", "if", "while", "for", "switch",
             "sizeof", "delete", "new", "throw"}
 QUALIFIER = r"(?:(?:const|unsigned|signed|struct|union|enum|volatile|register)\s+)*"
@@ -461,13 +467,40 @@ def read_tree(root: Path) -> Tree:
                 debug_test(progress.load_codegen_groups()), {name: address for address, name, _ in named})
 
 
+def proven_forms(root: Path) -> set[tuple[str, int | None, str]]:
+    """(kind, function address, name) of each row of ROOT's data/proven-forms.csv: a form that the checks count as a
+    trick and that the game's code proves the source had. An `unused_local` row names the function and the local. A
+    `volatile_global` row names the global and no function. A tree without the file has none. A row of another kind
+    or with no evidence stops the run."""
+    path = root / PROVEN_FORMS
+    if not path.exists():
+        return set()
+    with path.open(encoding="utf-8", newline="") as file:
+        rows = list(csv.DictReader(file))
+    for row in rows:
+        if row["kind"] not in PROVEN_KINDS or not row["evidence"].strip():
+            raise SystemExit(f"{PROVEN_FORMS.as_posix()}: the row of {row['name']} needs a kind of "
+                             f"{', '.join(PROVEN_KINDS)} and its evidence")
+    return {(row["kind"], int(row["function"], 16) if row["function"] else None, row["name"]) for row in rows}
+
+
+def without_proven(hits: list[tuple[str, str]], func: list[str],
+                   proven: set[tuple[str, int | None, str]]) -> list[tuple[str, str]]:
+    """HITS (found) of the definition FUNC, whose first line is its annotation, without those that PROVEN
+    (proven_forms) names for its address."""
+    annotation = names.annotation().match(func[0])
+    address = int(annotation[2], 16) if annotation else None
+    return [hit for hit in hits if (hit[0], address, hit[1]) not in proven]
+
+
 def checker(root: Path, game: Path) -> Callable[[list[str]], list[str]]:
     """The fake-match kinds of a definition, given its lines from its annotation on, in the tree at ROOT against the
     exe GAME: those of found, with the addresses the exe reads or writes as such (direct_targets) and of its tables of
-    functions (table_test), and those of
+    functions (table_test), without the forms that data/proven-forms.csv names (without_proven), and those of
     constant_globals for the float or double DAT_ at read-only data that its body names."""
     import accesses  # loads capstone, so only here
 
+    proven = proven_forms(root)
     image = pe.Image(game)
     tree = read_tree(root).with_addresses(direct_targets(accesses.load(image)))
     is_table = table_test(image, {function["address"] for function in progress.load_functions()})
@@ -479,7 +512,7 @@ def checker(root: Path, game: Path) -> Callable[[list[str]], list[str]]:
         at = names.signature_index(func)
         text = "\n".join(func)
         words = set(re.findall(r"\w+", text))
-        hits = found(func, at, image.contains, tree)
+        hits = without_proven(found(func, at, image.contains, tree), func, proven)
         named = [line for name, line in floats.items() if name in words]
         return [kind for kind, _ in hits] + [kind for kind, _ in constant_globals(
             named, lambda address, width: image.is_read_only_data(address), text, tree.is_debug_function(func))]
