@@ -15,10 +15,18 @@ int FUN_00903ba0()
 	return DAT_060e3ae8;
 }
 
-// STUB: SADX 0x00903c50
-int FUN_00903c50(int param_1)
+// FUNCTION: SADX 0x00903c50
+int FUN_00903c50(unsigned int param_1)
 {
-	return (int)0;
+	int (*var1)() = FUN_00903ba0;
+	int iVar1;
+
+	iVar1 = var1();
+	if (iVar1 != 0 && param_1 <= 7)
+	{
+		return *(int *)(iVar1 + 0x2608 + param_1 * 0x48);
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x00903c70

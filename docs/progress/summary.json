@@ -78446,9 +78446,9 @@
   {
    "address": "0x00903c50",
    "name": "FUN_00903c50",
-   "accuracy": 0.3076923076923077,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -82486,25 +82486,25 @@
   {
    "address": "0x00914c00",
    "name": "srl_a",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914c30",
    "name": "srl_b",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
    "address": "0x00914c60",
    "name": "srl_c",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -82518,9 +82518,9 @@
   {
    "address": "0x00914cc0",
    "name": "srl_e",
-   "accuracy": 0.15384615384615385,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -105256,5 +105256,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ea619ce981ac0aff3c9a6dc83f4ceb9b28d4d17fb6f9e75292dbe81fc014a3a6"
+ "inputs_sha256": "f1b9ddcf0809a6762c817f654199032b899a35fd62303f00d26a411480c2d23e"
 }
