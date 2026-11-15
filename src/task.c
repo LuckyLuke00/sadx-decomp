@@ -93,10 +93,69 @@ void InitTask()
 {
 }
 
-// STUB: SADX 0x004f3750
+// FUNCTION: SADX 0x004f3750
 struct task *CreateElementalTask(unsigned short im, long level, void (*exec)(struct task *))
 {
-	return (struct task *)0;
+	struct task *local_18;
+	struct taskwk *local_ci;
+	struct motionwk *local_8g;
+	struct forcewk *local_14;
+	struct anywk *local_10;
+
+	local_18 = FUN_004f3870(level, exec);
+	if (local_18 == 0)
+	{
+		return 0;
+	}
+	if ((im & 2) != 0)
+	{
+		local_ci = (struct taskwk *)FUN_004f3fe0();
+		if (local_ci == 0)
+		{
+			DestroyTask(local_18);
+			return 0;
+		}
+		local_18->twp = local_ci;
+	}
+	if ((im & 4) != 0)
+	{
+		local_14 = (struct forcewk *)FUN_004f4000();
+		if (local_14 == 0)
+		{
+			DestroyTask(local_18);
+			return 0;
+		}
+		local_18->fwp = local_14;
+	}
+	if ((im & 1) != 0)
+	{
+		local_8g = (struct motionwk *)FUN_004f3fe0();
+		if (local_8g == 0)
+		{
+			DestroyTask(local_18);
+			return 0;
+		}
+		local_18->mwp = local_8g;
+	}
+	if ((im & 8) != 0)
+	{
+		local_10 = (struct anywk *)FUN_004f4020();
+		if (local_10 == 0)
+		{
+			DestroyTask(local_18);
+			return 0;
+		}
+		local_18->awp = local_10;
+	}
+	if (DAT_05baf524 != 0)
+	{
+		local_18->thp = DAT_05baf524;
+	}
+	else
+	{
+		local_18->thp = DAT_05eda1d8;
+	}
+	return local_18;
 }
 
 // FUNCTION: SADX 0x004f3870
@@ -161,9 +220,100 @@ struct task *FUN_004f3870(long param_1, void (*param_2)(struct task *))
 	return local_cg;
 }
 
-// STUB: SADX 0x004f39c0
+// FUNCTION: SADX 0x004f39c0
 void DestroyTask(struct task *tp)
 {
+	struct task *local_ci;
+	struct task *local_10;
+	int local_8g;
+
+	if (!checkdestroytask(tp))
+	{
+		return;
+	}
+	if (tp->dest)
+	{
+		tp->dest(tp);
+	}
+	tp->exec = 0;
+	tp->disp = 0;
+	tp->dest = 0;
+	local_10 = tp->next;
+	local_ci = tp->last;
+	if (tp->ctp)
+	{
+		FreeTaskC(tp);
+	}
+	if (local_10 && local_ci)
+	{
+		local_10->last = local_ci;
+		local_ci->next = local_10;
+	}
+	else if (!local_10 && local_ci)
+	{
+		local_ci->next = 0;
+	}
+	else if (tp->ptp)
+	{
+		if (local_10)
+		{
+			local_10->last = 0;
+		}
+		tp->ptp->ctp = local_10;
+	}
+	else
+	{
+		if (local_10)
+		{
+			local_10->last = 0;
+		}
+		for (local_8g = 0; local_8g < 8; local_8g++)
+		{
+			if (tp == (struct task *)DAT_05baf4d0[local_8g])
+			{
+				DAT_05baf4d0[local_8g] = (int)local_10;
+				break;
+			}
+		}
+	}
+	if (tp->twp)
+	{
+		FUN_004f4040(tp);
+	}
+	if (tp->fwp)
+	{
+		FUN_004f40c0(tp);
+	}
+	if (tp->mwp)
+	{
+		FUN_004f40a0(tp);
+	}
+	if (tp->awp)
+	{
+		FUN_004f40e0(tp);
+	}
+	if (tp->ocp)
+	{
+		tp->ocp->pTask = 0;
+		tp->ocp->ssCondition &= ~0x1;
+		tp->ocp = 0;
+	}
+	if (!DAT_05baf518)
+	{
+		DAT_05baf518 = tp;
+		tp->last = 0;
+		tp->next = 0;
+	}
+	else
+	{
+		local_10 = DAT_05baf518;
+		local_10->last = tp;
+		tp->next = local_10;
+		tp->last = 0;
+		DAT_05baf518 = tp;
+	}
+	tp->ctp = 0;
+	tp->ptp = 0;
 }
 
 // FUNCTION: SADX 0x004f3be0
