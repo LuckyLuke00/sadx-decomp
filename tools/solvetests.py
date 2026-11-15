@@ -459,9 +459,10 @@ def check_fakematch_kinds() -> list[str]:
 
 def check_debug_kinds() -> list[str]:
     """In a function that builds with /Od, a self-assignment is plain C: x = x; loads and stores. An unused local
-    still counts there, as do the other kinds. fakematch.debug_test reads the /Od flag of the function's codegen
-    group."""
+    still counts there, as do the other kinds. One with a start value does not: /Od keeps its store.
+    fakematch.debug_test reads the /Od flag of the function's codegen group."""
     cases = [(["\tp[0] = p[0];"], []), (["\tint y;", "\treturn x;"], [("unused_local", "y")]),
+             (["\tfloat y = 0.0f;", "\treturn x;"], []), (["\tint y; int z = x;", "\treturn x;"], [("unused_local", "y")]),
              (["\tif (0) x = 1;"], [("constant_test", "if (0) x = 1;")])]
     failures = []
     for body, wanted in cases:

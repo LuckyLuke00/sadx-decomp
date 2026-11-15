@@ -32,7 +32,8 @@ The kinds:
 
 In a function that builds with /Od (Tree.is_debug), self_assignment is plain C: x = x; loads and stores there. An
 unused_local still counts at /Od: it gets a stack slot, but the code cannot show that the source declared it, so it only
-fills the frame. A float literal in arithmetic or a comparison compiles to a qword
+fills the frame. One with a start value, such as float x = 0.0f;, does not count there: /Od keeps the store, so the
+code shows it. A float literal in arithmetic or a comparison compiles to a qword
 operand there, so a float DAT_ that the code uses so is a float object (constant_globals).
 
 llm.py --refuse-fakematch refuses a 100% try with one of them. A function at 100% with one counts as matched only
@@ -368,7 +369,8 @@ def found(func: list[str], at: int, in_image: Callable[[int], bool], tree: Tree)
     its body (names.definition_end), whose signature is FUNC[AT], each once. A kind of DEBUG_PLAIN does not count in a
     /Od function. IN_IMAGE says whether an address is in the exe, TREE what the tree knows (read_tree). The line of an
     unused_local is the local's name."""
-    plain = DEBUG_PLAIN if tree.is_debug_function(func) else set()
+    debug = tree.is_debug_function(func)
+    plain = DEBUG_PLAIN if debug else set()
     clean = names.blank_literals("\n".join(func)).split("\n")
     body = range(at + 1, len(clean))
     text = "\n".join(clean[at + 1:])
@@ -402,7 +404,9 @@ def found(func: list[str], at: int, in_image: Callable[[int], bool], tree: Tree)
         if label and label[1] != "default" and not re.search(rf"\bgoto\s+{label[1]}\b", text):
             hits.append(("unused_label", source))
     for name, _ in locals_:
-        if len(re.findall(rf"(?<!\.)(?<!->)\b{name}\b", text)) == 1:  # p->name and p.name are members, not uses
+        # p->name and p.name are members, not uses. The group holds the = of a start value.
+        uses = re.findall(rf"(?<!\.)(?<!->)\b{name}\b(\s*=(?!=))?", text)
+        if len(uses) == 1 and not (debug and uses[0]):
             hits.append(("unused_local", name))
     return [hit for hit in dict.fromkeys(hits) if hit[0] not in plain]
 
