@@ -12,11 +12,13 @@ from pathlib import Path
 from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
 
 import config  # noqa: E402
 import inventory  # noqa: E402
 import inventorytests  # noqa: E402
 import ledger  # noqa: E402
+import osutil  # noqa: E402
 import pairs  # noqa: E402
 import score  # noqa: E402
 import scoretests  # noqa: E402
@@ -26,6 +28,7 @@ from pairs import Call, PairsError, Value  # noqa: E402
 CPP = inventorytests.CPP
 INT, UINT8, FLOAT, DOUBLE = (CPP.int_type("int"), CPP.builtin(("unsigned", "char")), CPP.builtin(("float",)),
                              CPP.builtin(("double",)))
+INT64 = CPP.builtin(("long", "long"))
 PAIRS = ("target,reference\n"
          "0x00401000,0x10\n"
          "0x00402000,0x20\n"
@@ -45,8 +48,7 @@ OWNER = "0x00401000"
 
 def load(files: dict):
     with tempfile.TemporaryDirectory() as folder:
-        for name, text in files.items():
-            (Path(folder) / name).write_text(text, encoding="utf-8", newline="")
+        osutil.write_files(Path(folder), files)
         try:
             return pairs.load(Path(folder))
         except PairsError as error:
@@ -88,6 +90,7 @@ def check_load() -> list[str]:
                          "refcalls-xx.csv: the columns")
     failures += error_of(dict(good, **{"pairs-xx.csv": PAIRS.replace("0x00402000", "402000")}), "pairs-xx.csv:3")
     for bad, line in (("0x10,2,", "zz,2,"), ("0x10,2,", "0x10,x,"), ("0x10,2,", "0x10,0,"), ("0x10,2,", "0x10,1,"),
+                      ("0x10,2,", "0x10,\u00b2,"),
                       ("xxName", "1xx"), ("-1 0xff:8", "-1 0xff:12"), ("1.5", "1.5:32"), ("1.5", "x1")):
         failures += error_of(dict(good, **{"refcalls-xx.csv": CALLS.replace(bad, line, 1)}), "refcalls-xx.csv:3")
     failures += error_of(dict(good, **{"refcalls-xx.csv": CALLS.replace("0x10,3,", "0x10,4,")}),
@@ -101,14 +104,17 @@ def check_values() -> list[str]:
         failures.append("? must give None")
     if pairs.parse_value("-0x10:16", "here") != Value(-16, 16, "-0x10:16"):
         failures.append(f"-0x10:16: {pairs.parse_value('-0x10:16', 'here')}")
-    if pairs.parse_value("1e+06", "here") != Value(1e6, 0, "1e+06"):
-        failures.append(f"1e+06: {pairs.parse_value('1e+06', 'here')}")
+    for text, number in (("1e+06", 1e6), (".5", 0.5), ("5.", 5.0), ("5e3", 5000.0)):
+        if pairs.parse_value(text, "here") != Value(number, 0, text):
+            failures.append(f"{text}: {pairs.parse_value(text, 'here')}")
     cases = [(16, INT, "0x10", True), (-1, INT, "0xffffffff", True), (-1, INT, "0xff:8", True),
              (0xff, UINT8, "0x1ff", True), (2, INT, "3", False), (1.0, FLOAT, "1.0", True),
              (0.1, DOUBLE, "0.1", True), (0.5, FLOAT, "0.25", False), (1.0, FLOAT, "0x3f800000", True),
              (0.5, DOUBLE, "0x3f000000", True), (1.0, DOUBLE, "0x3ff0000000000000", True),
              (1.0, FLOAT, "0x3f800001", False), (1, INT, "1.0", True), (0, INT, "0.0", True), (2, INT, "1.5", False),
-             (1e300, DOUBLE, "1e300", True), (1e300, DOUBLE, "1e299", False), (3, None, "3", True)]
+             (1e300, DOUBLE, "1e300", True), (1e300, DOUBLE, "1e299", False), (3, None, "3", True),
+             (-1, INT64, "4294967295", True), (0, INT64, "4294967296", False),
+             (0x80000000, INT64, "-2147483648", True), (0x7fffffff, INT64, "-2147483649", False)]
     for value, ctype, text, wanted in cases:
         if pairs.same_value(value, ctype, pairs.parse_value(text, "here")) != wanted:
             failures.append(f"same_value({value!r}, {ctype.name if ctype else None}, {text}) must be {wanted}")
@@ -121,7 +127,8 @@ def check_alignment() -> list[str]:
              (["x", "x", "a"], ["x", "a"], {2: 1}, "a callee twice on one side does not anchor"),
              (["a", None], [None, "a"], {0: 1}, "None never pairs"),
              (["x", "x"], ["x", "x"], {0: 0, 1: 1}, "no anchor: the plain alignment"),
-             (["a", "x", "b"], ["a", "y", "b"], {0: 0, 2: 2}, "an unmatched callee is a gap")]
+             (["a", "x", "b"], ["a", "y", "b"], {0: 0, 2: 2}, "an unmatched callee is a gap"),
+             ([], [], {}, "no calls"), (["a"], [], {}, "no reference calls"), ([], ["a"], {}, "no game calls")]
     for source, reference, wanted, label in cases:
         found = pairs.align_calls(source, reference)
         if found != wanted:
@@ -200,7 +207,7 @@ def check_kill_switch() -> list[str]:
             calls.append(Call(callee, (Value(index, 0, str(index)),)))
             owned_calls.append(owned(callee, index + 1, ((index if index < agree else index + 100, INT),)))
         records = [record(1, 0, INT)]
-        reports = apply([build(tuple(calls))], records, owned_calls)
+        reports = apply([build(tuple(calls))], records, owned_calls, pair_min_sites=3, pair_min_rate=0.5)
         if bool(records[0].references) != live or reports[0].live != int(live):
             failures.append(f"{agree} same and {differ} other: live must be {live}, {reports[0]}")
         killed = reports[0].few + reports[0].low

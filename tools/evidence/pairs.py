@@ -30,6 +30,7 @@ Standard library only.
 
 import re
 import struct
+import sys
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -37,6 +38,9 @@ from pathlib import Path
 import inventory
 import outputs
 import remap
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))  # tools/, after the standard library
+import osutil  # noqa: E402
 
 PAIRS_PREFIX, CALLS_PREFIX = "pairs-", "refcalls-"
 PAIR_COLUMNS = ("target", "reference")
@@ -93,9 +97,10 @@ class Report:
     live: int = 0
     slots: int = 0  # the known slots of the live functions
     agree: int = 0  # the known slots of the live functions with the same value
-    same: int = 0  # the coverage sites of the live functions, by the reference value: the same,
-    differs: int = 0  # another,
-    unknown: int = 0  # or none (an unknown value, an unaligned call, another argument count, a float apart)
+    same: int = 0  # the coverage sites of the live functions whose reference value is the same
+    differs: int = 0  # the coverage sites of the live functions whose reference value is another
+    unknown: int = 0  # the coverage sites of the live functions with no reference value: an unknown value, an
+    #                   unaligned call, another argument count or a float apart
     under_floor: bool = False  # same plus differs under yield_floor: the build gives no evidence
 
 
@@ -142,7 +147,7 @@ def _read_calls(path: Path) -> tuple[str, dict]:
     functions, seen = {}, {}
     for where, values in outputs.read_rows(path, CALL_COLUMNS, PairsError, skip=1):
         owner = _address(values["owner"], "owner", where)
-        if not values["order"].isdigit() or int(values["order"]) < 1:
+        if not values["order"].isdecimal() or int(values["order"]) < 1:
             raise PairsError(f"{where}: order {values['order']!r} is not a number from 1")
         order = int(values["order"])
         if (owner, order) in seen:
@@ -224,7 +229,7 @@ def align_calls(source: list, reference: list) -> dict:
             return None
         return anchor if source_counts[callee] == 1 and reference_counts[callee] == 1 else 1
 
-    return remap.align(source, reference, score).shared
+    return osutil.align(source, reference, score).shared
 
 
 def apply(builds: list, found, thresholds: dict) -> list[Report]:
