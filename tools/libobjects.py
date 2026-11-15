@@ -28,7 +28,8 @@ PROCEDURES = (0x110F, 0x1110)  # their length is at offset 16
 DEBUG_SYMBOLS = 0xF1  # the .debug$S subsection that holds symbol records
 IMPORT_ENTRY = b"\x00\x00\xff\xff"  # the start of an import library entry, which has no COFF object
 # An MSVC symbol of a function outside any class: ? and the name (name@, or an operator code such as ?2 or
-# ?_U), its namespaces (namespace@...), @ and the function class code Y or Z.
+# ?_U), its namespaces (namespace@...), @ and the function class code Y or Z. A template function (??$) does not
+# match.
 GLOBAL_FUNCTION = re.compile(r"\?(?:\?_?[0-9A-Z_]|[^?$@][^@]*@)(?:[^?$@][^@]*@)*@[YZ]")
 
 
@@ -238,7 +239,8 @@ def plain_name(symbol: str) -> str:
 
 
 def is_global_function(symbol: str) -> bool:
-    """Whether a symbol names a C function or a C++ function outside any class."""
+    """Whether a symbol names a C function or a C++ function outside any class. A static function, whose symbol is
+    "", counts as one."""
     return not symbol.startswith("?") or GLOBAL_FUNCTION.match(symbol) is not None
 
 

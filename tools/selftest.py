@@ -7,6 +7,7 @@ rules of progress.py on changed copies of the pinned scores, its git reader on a
 throwaway repository, and where the annotation lint lets a function annotation sit.
 """
 
+import collections
 import contextlib
 import copy
 import io
@@ -653,11 +654,21 @@ def check_decls_aliases() -> list[str]:
 
 
 def check_global_functions() -> list[str]:
-    """A folded library address takes the function outside any class: operator new[] beats the ConcRT member."""
+    """A folded library address takes the function outside any class: operator new[] beats the ConcRT member. When
+    the calls tie, the function beside its object comes first."""
     cases = {"_floor": True, "??_U@YAPAXI@Z": True, "?h@std@@YAXXZ": True, "?f@C@@QAEXXZ": False,
-             "??2UMSThreadInternalContext@details@Concurrency@@CAPAXI@Z": False}
-    return [f"is_global_function({symbol!r}) is not {expected}" for symbol, expected in cases.items()
-            if libobjects.is_global_function(symbol) != expected]
+             "??2UMSThreadInternalContext@details@Concurrency@@CAPAXI@Z": False, "": True}
+    failures = [f"is_global_function({symbol!r}) is not {expected}" for symbol, expected in cases.items()
+                if libobjects.is_global_function(symbol) != expected]
+    chooser = object.__new__(library.Chooser)
+    chooser.calls = collections.defaultdict(collections.Counter)  # no calls, so both candidates tie
+    member, outside = (libobjects.Function(member, (1, 0), "", symbol, frozenset({symbol}), b"", b"", (), (), 0)
+                       for member, symbol in (("a.lib:a.obj", "?f@C@@QAEXXZ"), ("b.lib:b.obj", "??_U@YAPAXI@Z")))
+    for case, neighbors, wanted in (("beside its object", {"a.lib:a.obj"}, member), ("no neighbor", set(), outside)):
+        got = chooser.pick(0x401000, [member, outside], neighbors)
+        if got != wanted:
+            failures.append(f"pick with {case} takes {got.symbol}, not {wanted.symbol}")
+    return failures
 
 
 def check_decls_members() -> list[str]:
