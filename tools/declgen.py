@@ -182,6 +182,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     own_decls = set()  # (name, declaration) pairs from this tree's files, not the context's
     free_decls = collections.defaultdict(set)  # name: (file, declaration) of this tree's file-scope function ones
     own_copies = {}  # file: the names of the static functions it defines with no annotation
+    header_funcs = set()  # LIBRARY addresses: a use by name gets the library header's own declaration, as swprintf
     file_tokens = {}
     for rel, text in sources.items():
         for kind, address, sig in names.parse_annotations(text):
@@ -189,6 +190,8 @@ def write(context: Path | None, tables: Path | None) -> int:
                 if address in defined_funcs:
                     problems.append(f"{rel}: 0x{address:08x} is also annotated in {defined_funcs[address][0]}")
                 defined_funcs[address] = (rel, sig, bool(re.match(r"static\b", sig)), kind == "STUB")
+            elif kind == "LIBRARY":
+                header_funcs.add(address)
             elif kind == "GLOBAL":
                 if address in defined_globals:
                     problems.append(f"{rel}: GLOBAL 0x{address:08x} is also defined in {defined_globals[address][0]}")
@@ -224,6 +227,8 @@ def write(context: Path | None, tables: Path | None) -> int:
         for kind, address, sig in names.parse_annotations(text):
             if kind in names.FUNCTION_KINDS:
                 context_funcs[address] = (rel, sig, bool(re.match(r"static\b", sig)), kind == "STUB")
+            elif kind == "LIBRARY":
+                header_funcs.add(address)
             elif kind == "GLOBAL":
                 context_globals[address] = (rel, sig)
         lf, lv = names.local_declarations(text)
@@ -233,6 +238,8 @@ def write(context: Path | None, tables: Path | None) -> int:
             local_funcs[name].add(decl)
         for name, decl in lv:
             local_vars[name].add(decl)
+    for address in sorted(header_funcs & defined_funcs.keys()):
+        problems.append(f"{defined_funcs[address][0]}: 0x{address:08x} also has a LIBRARY note: keep one of the two")
 
     def report_conflict(name, options):
         """A name declared in several ways, where one of them is this tree's own. A way that only a context
@@ -289,6 +296,8 @@ def write(context: Path | None, tables: Path | None) -> int:
     for rel, found in file_tokens.items():
         for tok in (fnames.keys() & found) - own_copies[rel]:  # a file's own copy means that copy
             for a in meaning(tok, rel):
+                if a in header_funcs:
+                    continue
                 users[a].add(rel)
                 if a not in defined_funcs or rel != defined_funcs[a][0] or found[tok] > 1:
                     used_funcs.add(a)
