@@ -69,6 +69,7 @@ class SOCInput
 public:
 	int FUN_00424910(int param_1);
 	void FUN_00424950(int param_1);
+	int FUN_00424960();
 	int FUN_00424a70();
 	int FUN_00424a80();
 	void FUN_00424a90(int param_1, int param_2);
@@ -222,7 +223,12 @@ public:
 	Texture();
 	virtual ~Texture();
 	bool Load(void*, int, int, int, int, int);
+	void Unlock();
+	bool Lock(int, class LockedSurface*, struct GRect_t*, int);
 	void FUN_00922750();
+	int FUN_009227f0();
+	int FUN_00922850();
+	int FUN_00922870();
 private:
 	int m_TexType;
 	int m_TexSize;
@@ -235,8 +241,45 @@ private:
 	int m_MipmapLevelCount;
 	bool m_IsLocked;
 };
+
+class LockedSurface
+{
+public:
+	LockedSurface();
+	~LockedSurface();
+	Texture* FUN_009225a0();
+	int FUN_009225b0();
+	int field_0x0;
+	int field_0x4;
+	Texture* field_0x8;
+	int field_0xc;
+};
+
+namespace DeviceUtility
+{
+int GetSizeByPixelFormatInBit(int);
 }
 }
+}
+
+struct FUN_00412290_1
+{
+	char* field_0x0;
+	char field_0x4[0x14];
+};
+
+struct FUN_00412290_0
+{
+	int FUN_00412290(struct NJS_ARGB param_1);
+	int field_0x0;
+	int field_0x4;
+	char field_0x8[8];
+	char* field_0x10;
+	char field_0x14[4];
+	char* field_0x18;
+	char field_0x1c[4];
+	std::vector<FUN_00412290_1> field_0x20;
+};
 
 class SOCFile : public Magic::Base::File
 {
@@ -308,6 +351,9 @@ private:
 
 // GLOBAL: SADX 0x0629c344
 // Magic::Base::Singleton<SOCInput>::s_Instance
+
+// GLOBAL: SADX 0x00a5b648
+// std::basic_string<char,std::char_traits<char>,std::allocator<char> >::npos
 
 extern Magic::Base::Singleton<SOCSystem> DAT_0629c338;
 extern Magic::Base::Singleton<SOCTimer> DAT_05ab4304;

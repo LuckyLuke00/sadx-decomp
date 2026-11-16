@@ -3,15 +3,15 @@
 #include "../advertise.h"
 
 // FUNCTION: SADX 0x009225a0
-int __fastcall FUN_009225a0(int param_1)
+Magic::RenderCore::Texture* Magic::RenderCore::LockedSurface::FUN_009225a0()
 {
-	return *(int *)(param_1 + 8);
+	return field_0x8;
 }
 
 // FUNCTION: SADX 0x009225b0
-int __fastcall FUN_009225b0(int param_1)
+int Magic::RenderCore::LockedSurface::FUN_009225b0()
 {
-	return *(int *)(param_1 + 4);
+	return field_0x4;
 }
 
 // FUNCTION: SADX 0x009225c0
@@ -26,9 +26,44 @@ void __stdcall FUN_009225d0(int param_1, int param_2)
 }
 
 // FUNCTION: SADX 0x00922640
-void FUN_00922640(void *param_1)
+Magic::RenderCore::LockedSurface::~LockedSurface()
 {
-	return;
+}
+
+// FUNCTION: SADX 0x00922650
+Magic::RenderCore::LockedSurface::LockedSurface()
+{
+	field_0x0 = 0;
+	field_0x4 = 0;
+	field_0x8 = 0;
+}
+
+// FUNCTION: SADX 0x00922660
+void Magic::RenderCore::Texture::Unlock()
+{
+	if (((bool (__thiscall *)(Texture*))(*(void***)this)[2])(this))
+	{
+		((void (__thiscall *)(void*, Texture*))(*(void***)DAT_062992fc)[0x144 / 4])((void*)DAT_062992fc, this);
+		m_IsLocked = false;
+	}
+}
+
+// FUNCTION: SADX 0x00922690
+bool Magic::RenderCore::Texture::Lock(int param_1, LockedSurface* param_2, GRect_t* param_3, int param_4)
+{
+	if (!((bool (__thiscall *)(Texture*))(*(void***)this)[2])(this) || param_2 == 0)
+	{
+		return false;
+	}
+	int local_8 = 0;
+	int local_c = 0;
+	m_IsLocked = ((bool (__thiscall *)(void*, Texture*, int, int*, int*, GRect_t*, int))
+		(*(void***)DAT_062992fc)[0x140 / 4])((void*)DAT_062992fc, this, param_1, &local_8, &local_c, param_3, param_4);
+	param_2->field_0xc = param_1;
+	param_2->field_0x8 = this;
+	param_2->field_0x0 = local_8;
+	param_2->field_0x4 = local_c;
+	return m_IsLocked;
 }
 
 // STUB: SADX 0x00922710
@@ -61,9 +96,9 @@ int __fastcall FUN_009227d0(int param_1)
 }
 
 // FUNCTION: SADX 0x009227f0
-int __fastcall FUN_009227f0(int param_1)
+int Magic::RenderCore::Texture::FUN_009227f0()
 {
-	return *(int *)(param_1 + 0x64);
+	return m_Format;
 }
 
 // STUB: SADX 0x00922810
@@ -88,9 +123,9 @@ void __fastcall FUN_00922840(int param_1)
 }
 
 // FUNCTION: SADX 0x00922850
-int __fastcall FUN_00922850(int param_1)
+int Magic::RenderCore::Texture::FUN_00922850()
 {
-	return *(int *)(param_1 + 0x5c);
+	return m_Height;
 }
 
 // STUB: SADX 0x00922860
@@ -99,9 +134,9 @@ void __fastcall FUN_00922860(int param_1)
 }
 
 // FUNCTION: SADX 0x00922870
-int __fastcall FUN_00922870(int param_1)
+int Magic::RenderCore::Texture::FUN_00922870()
 {
-	return *(int *)(param_1 + 0x58);
+	return m_Width;
 }
 
 // DIFF: code: the local placement and the conditional branches differ from the original.

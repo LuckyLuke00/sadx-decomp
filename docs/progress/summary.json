@@ -87403,6 +87403,14 @@
    "library": false
   },
   {
+   "address": "0x00921410",
+   "name": "Magic::RenderCore::DeviceUtility::GetSizeByPixelFormatInBit",
+   "accuracy": 0.12658227848101267,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
    "address": "0x009214b0",
    "name": "FUN_009214b0",
    "accuracy": 0.03773584905660377,
@@ -87548,7 +87556,7 @@
   },
   {
    "address": "0x009225a0",
-   "name": "FUN_009225a0",
+   "name": "Magic::RenderCore::LockedSurface::FUN_009225a0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87556,7 +87564,7 @@
   },
   {
    "address": "0x009225b0",
-   "name": "FUN_009225b0",
+   "name": "Magic::RenderCore::LockedSurface::FUN_009225b0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87580,7 +87588,31 @@
   },
   {
    "address": "0x00922640",
-   "name": "FUN_00922640",
+   "name": "Magic::RenderCore::LockedSurface::~LockedSurface",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00922650",
+   "name": "Magic::RenderCore::LockedSurface::LockedSurface",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00922660",
+   "name": "Magic::RenderCore::Texture::Unlock",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00922690",
+   "name": "Magic::RenderCore::Texture::Lock",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87628,7 +87660,7 @@
   },
   {
    "address": "0x009227f0",
-   "name": "FUN_009227f0",
+   "name": "Magic::RenderCore::Texture::FUN_009227f0",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87668,7 +87700,7 @@
   },
   {
    "address": "0x00922850",
-   "name": "FUN_00922850",
+   "name": "Magic::RenderCore::Texture::FUN_00922850",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -87684,7 +87716,7 @@
   },
   {
    "address": "0x00922870",
-   "name": "FUN_00922870",
+   "name": "Magic::RenderCore::Texture::FUN_00922870",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -91831,6 +91863,13 @@
    "name": "DAT_00a5aa00",
    "size": 4,
    "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a5b648",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::npos",
+   "size": 4,
+   "match": true,
    "library": false
   },
   {
@@ -105255,5 +105294,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "e9e6a681dc2b397bafdd2081bf8da1869ce293c30fad8a1534e6346b65bf6a2f"
+ "inputs_sha256": "b4d4e0e8743d8cbf04833ca4c22e34cd2dc05bb3861440a3568b3bf728e99639"
 }

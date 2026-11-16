@@ -21,6 +21,7 @@ void FUN_0040c3a0(int param_1);
 void * __stdcall FUN_0040c470(void *param_1, void *param_2, void *param_3);
 void * __fastcall FUN_0040cf10(unsigned int param_1);
 void *FUN_0040efd0();
+int __fastcall FUN_00412290(void *param_1, int param_2, void *param_3, void *param_4, int param_5);
 void __stdcall FUN_00415a10(int param_1);
 void FUN_004160c0(char *param_1, int param_2, char *param_3, char *param_4);
 extern void FUN_00418a70(void);

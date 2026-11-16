@@ -62,7 +62,7 @@ namespace std
 // PLACEHOLDER: UNKNOWN_DOUBLE_MACRO: the bytes do this math in double precision; the source form of the conversion is unknown.
 #define UNKNOWN_DOUBLE_MACRO(param_1) (double)(param_1)
 
-namespace Magic { namespace RenderCore { class Texture; class VertexBuffer; class Material; } }
+namespace Magic { namespace RenderCore { class Texture; class VertexBuffer; class Material; class LockedSurface; } }
 namespace Magic { namespace Base { template<class T> class Singleton; } }
 class SOCSystem;
 class SOCTimer;
