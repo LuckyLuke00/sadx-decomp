@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1430" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,390 of 16,480 game functions done (38.77%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,391 of 16,480 game functions done (38.78%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="589.8,1193.5 596.2,1193.5 597.9,1195 599,1196.6 593,1203.5 587,1196.6 588.1,1195" fill="#4e32f3"/>
 <polygon points="589.8,1193.5 596.2,1193.5 597.9,1195 599,1196.6 587,1196.6 588.1,1195" fill="#ffffff" fill-opacity="0.4"/>
@@ -4236,8 +4236,8 @@
 <rect x="35" y="161" width="6" height="6" fill="#b07d00"><title>0x008c9030 ReturnChaosEmerald: 100%</title></rect>
 <rect x="42" y="161" width="6" height="6" fill="#b07d00"><title>0x008cb190 EggmanDestruct: 100%</title></rect>
 </g>
-<rect x="330" y="1167" width="184" height="200" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 336 of 534 functions done</title></rect>
-<text x="333" y="1181" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Menus <tspan font-weight="400" fill="#59636e">29%</tspan></text>
+<rect x="330" y="1167" width="184" height="200" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Menus: 337 of 534 functions done</title></rect>
+<text x="333" y="1181" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Menus <tspan font-weight="400" fill="#59636e">30%</tspan></text>
 <g transform="translate(333,1185)">
 <rect y="0" width="175" height="147" fill="url(#todo)"/>
 <rect y="147" width="63" height="7" fill="url(#todo)"/>
@@ -4448,7 +4448,7 @@
 <rect x="126" y="84" width="6" height="6" fill="#b07d00"><title>0x005f2230 FUN_005f2230: 100%</title></rect>
 <rect x="133" y="84" width="6" height="6" fill="#b07d00"><title>0x005f2250 FUN_005f2250: 100%</title></rect>
 <rect x="140" y="84" width="6" height="6" fill="#b07d00"><title>0x005f22c0 FUN_005f22c0: 100%</title></rect>
-<rect x="161" y="84" width="6" height="6" fill="#ab8239"><title>0x005f25a0 FUN_005f25a0: 100%, through a trick</title></rect>
+<rect x="161" y="84" width="6" height="6" fill="#b07d00"><title>0x005f25a0 FUN_005f25a0: 100%</title></rect>
 <rect x="7" y="91" width="6" height="6" fill="#b07d00"><title>0x005f32f0 FUN_005f32f0: 100%</title></rect>
 <rect x="14" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3310 FUN_005f3310: 100%</title></rect>
 <rect x="21" y="91" width="6" height="6" fill="#b07d00"><title>0x005f3390 FUN_005f3390: 100%</title></rect>

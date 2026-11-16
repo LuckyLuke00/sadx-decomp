@@ -577,13 +577,17 @@ def check_fakematch_kinds() -> list[str]:
               ["\treinterpret_cast<int *>(p)[0] = 1;"]),
              ("cast_call", ["\t((void (*)(int))(Foo))(x);"], "((void (*)(int))(Foo))(x);", ["\t((Foo))(p, x);"]),
              ("constant_test", ["\tif (0) x = 1;"], "if (0) x = 1;", ["\twhile (1) x++;"]),
-             ("empty_statement", ["\twhile (Bar(x)) ;"], "while (Bar(x)) ;",
-              ["\tdo", "\t{", "\t\tx--;", "\t}", "\twhile (x);"]),
-             ("empty_statement", ["\twhile (Bar(x)) ;"], "while (Bar(x)) ;", ["\tif (x)", "\t\tfor (;;) ;"]),
+             ("empty_statement", ["\twhile (x) ;"], "while (x) ;", ["\tdo", "\t{", "\t\tx--;", "\t}", "\twhile (x);"]),
+             ("empty_statement", ["\tif (Bar(x)) ;"], "if (Bar(x)) ;", ["\tif (x)", "\t\tfor (;;) ;"]),
+             ("empty_statement", ["\tfor (x = 0; x < sizeof(g); x++) ;"], "for (x = 0; x < sizeof(g); x++) ;",
+              ["\twhile (Bar(x)) ;", "\tfor (; Bar(x); ) ;", "\twhile (Bar(x))", "\t\t;"]),
              ("empty_block", ["\tif (x)", "\t{", "\t}", "\telse", "\t\tx = 1;"], "{",
               ["\tif (x)", "\t{", "\t\tx = 1;", "\t}"]),
              ("empty_block", ["\tif (x)", "\t{", "\t}", "\telse", "\t\tx = 1;"], "{",
               ["\tif (x)", "\t\twhile (1)", "\t\t{", "\t\t}"]),
+             ("empty_block", ["\tif (Bar(x))", "\t{}"], "{}", ["\twhile (Bar(x))", "\t{", "\t}", "\twhile (Bar(x))", "\t{}"]),
+             ("empty_block", ["\twhile (x) { }"], "while (x) { }", ["\twhile (Bar(x)) {}", "\twhile (1) {", "\t}"]),
+             ("empty_block", ["\twhile (x) {", "\t}"], "while (x) {", ["\twhile (x) {", "\t\tx--;", "\t}"]),
              ("unused_local", ["\tint y;", "\treturn x;"], "y", ["\tint y = x;", "\treturn y;"]),
              ("unused_local", ["\tint *y = p->y;", "\treturn x;"], "y", ["\tint *y = p->y;", "\treturn *y;"]),
              ("unused_local", ["\tint y; int z;", "\treturn z;"], "y", ["\tint y; int z;", "\treturn y + z;"]),
@@ -612,11 +616,16 @@ def check_fakematch_kinds() -> list[str]:
 
 def check_debug_kinds() -> list[str]:
     """In a function that builds with /Od, a self-assignment is plain C: x = x; loads and stores. An unused local
-    still counts there, as do the other kinds. One with a start value does not: /Od keeps its store.
-    fakematch.debug_test reads the /Od flag of the function's codegen group."""
+    still counts there, as do the other kinds. One with a start value does not: /Od keeps its store. Nor does the
+    empty body of an if, for or while: /Od keeps the test and the jump. A lone ; and an empty block with no head still
+    count. fakematch.debug_test reads the /Od flag of the function's codegen group."""
     cases = [(["\tp[0] = p[0];"], []), (["\tint y;", "\treturn x;"], [("unused_local", "y")]),
              (["\tfloat y = 0.0f;", "\treturn x;"], []), (["\tint y; int z = x;", "\treturn x;"], [("unused_local", "y")]),
-             (["\tif (0) x = 1;"], [("constant_test", "if (0) x = 1;")])]
+             (["\tif (0) x = 1;"], [("constant_test", "if (0) x = 1;")]),
+             (["\tif (x)", "\t{", "\t}", "\tif (x) {}", "\twhile (x) ;", "\tfor (x = 0; x < 4; x++)", "\t{}"], []),
+             (["\tx = 1;", "\t;"], [("empty_statement", ";")]),
+             (["\tif (x)", "\t\tx = 1;", "\telse", "\t{", "\t}"], [("empty_block", "{")]),
+             (["\tif (x) x = 1;", "\t{}"], [("empty_block", "{}")])]
     failures = []
     for body, wanted in cases:
         func = [llm.function_line(DEBUG), "int Foo(int *p, int x)", "{", *body, "}"]

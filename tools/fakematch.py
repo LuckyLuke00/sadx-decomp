@@ -16,8 +16,10 @@ The kinds:
   cast_call        a call through a cast function type, such as ((void (*)(int))f)(a) or (*(void (*)(int))f)(a)
   constant_test    if (0), if (1) or while (0); while (1) is a plain loop
   empty_statement  a lone ;, or an if, for or while (not the end of a do) with an empty body
-  empty_block      { then } inside a function body
-                   The empty body of an endless loop, while (1) or for (;;), is neither: it is the hang itself.
+  empty_block      { then } inside a function body, on one line or on two
+                   The empty body of an endless loop, while (1) or for (;;), is neither: it is the hang itself. Nor is
+                   that of a for or while whose head calls a function, such as while (Busy()) ;: the calls are the
+                   loop's work.
   lone_conditional a ?: that is a whole statement, such as p ? f(p) : 0;: plain C writes an if, and the form copies
                    the code a delete compiles to
   unused_local     a local that is declared and never used again: it only fills the frame
@@ -30,7 +32,8 @@ The kinds:
   constant_global  a float or double DAT_ declared at an address of read-only data (constant_globals): the compiler
                    puts the source's literals there, so the source wrote a literal
 
-In a function that builds with /Od (Tree.is_debug), self_assignment is plain C: x = x; loads and stores there. An
+In a function that builds with /Od (Tree.is_debug), self_assignment is plain C: x = x; loads and stores there. So is
+the empty body of an if, for or while: /Od keeps the test and the jump, so the code shows it. An
 unused_local still counts at /Od: it gets a stack slot, but the code cannot show that the source declared it, so it only
 fills the frame. One with a start value, such as float x = 0.0f;, does not count there: /Od keeps the store, so the
 code shows it. A float literal in arithmetic or a comparison compiles to a qword
@@ -104,8 +107,9 @@ OFFSET_END = set(")]},;?:=<>&|^!")  # what ends an offset: a closing bracket, or
 ADDED_TO = re.compile(r"(?<![\w.])([A-Za-z_]\w*)\s*\)?\s*[-+]\s*$")  # a name, maybe in parentheses, then + or -
 NUMBER = re.compile(r"(?<![\w.])(0[xX][0-9a-fA-F]+|[1-9]\d*|0)[uUlL]*(?![\w.])")  # an integer, not part of a float
 LABEL = re.compile(r"^\s*([A-Za-z_]\w*)\s*:\s*;?\s*$")
-HEAD = re.compile(r"\s*(?:if|for|while)\s*\(")
-ENDLESS = re.compile(r"\s*(?:while\s*\(\s*1\s*\)|for\s*\(\s*;\s*;\s*\))\s*;?\s*$")  # an endless loop's head
+HEAD = re.compile(r"\s*(if|for|while)\s*\(")
+CALL = re.compile(r"\b([A-Za-z_]\w*)\s*\(")  # a name then (: a call, unless the name is one of KEYWORDS
+EMPTY_BLOCK = re.compile(r"\{\s*\}")
 # an integer cast on the address of an element of a global at a literal index: group 1 is the global, 2 the index. An
 # element of an element, as in &x[1][2], is left out.
 ELEMENT_NUMBER = re.compile(r"\(\s*(?:unsigned\s+)?(?:int|long)\s*\)\s*&\s*([A-Za-z_]\w*)\s*\[\s*"
@@ -182,17 +186,30 @@ class Tree(NamedTuple):
         return base.endswith("*") or bool(counts)
 
 
-def empty_head(line: str) -> bool:
-    """Whether LINE is an if, for or while whose body is the ; right after its closing parenthesis."""
+def head_parts(line: str) -> tuple[str, str, str] | None:
+    """(keyword, inside, rest) of LINE when it starts with an if, for or while: the text inside its parentheses and
+    the text after them, stripped. None for another line, or when the parentheses close on a later line."""
     m = HEAD.match(line)
     if not m:
-        return False
+        return None
     depth = 1
     for i in range(m.end(), len(line)):
         depth += (line[i] == "(") - (line[i] == ")")
         if depth == 0:
-            return line[i + 1:].strip() == ";"
-    return False
+            return m[1], line[m.end():i], line[i + 1:].strip()
+    return None
+
+
+def plain_empty(head: tuple[str, str, str] | None, debug: bool) -> bool:
+    """Whether an empty body is plain C. HEAD is the head_parts of the if, for or while that the body belongs to, or
+    None when it belongs to none. The body of an endless loop, while (1) or for (;;), is the hang itself. The calls in
+    the head of a for or while are the loop's work. In a /Od function (DEBUG), the test and the jump of any head stay
+    in the code, so the code shows the body."""
+    if not head:
+        return False
+    keyword, inside, _ = head
+    endless = "".join(inside.split()) == {"while": "1", "for": ";;"}.get(keyword)
+    return debug or endless or (keyword != "if" and any(m[1] not in KEYWORDS for m in CALL.finditer(inside)))
 
 
 def lone_conditional(line: str) -> bool:
@@ -398,12 +415,19 @@ def found(func: list[str], at: int, in_image: Callable[[int], bool], tree: Tree)
     for i in body:
         line, source = clean[i], func[i].strip()
         prior = next((clean[j].strip() for j in range(i - 1, at, -1) if clean[j].strip()), "")
-        if line.strip() == ";" or (empty_head(line) and not ENDLESS.match(line)
-                                   and not (line.lstrip().startswith("while") and prior == "}")):
-            hits.append(("empty_statement", source))
-        if (line.strip() == "{" and i > at + 1 and i + 1 < len(clean) and clean[i + 1].strip() == "}"
-                and not ENDLESS.match(prior)):
-            hits.append(("empty_block", source))
+        # The body is what follows a head on its line, else the line: then it belongs to a head that ends the line above.
+        own, above = head_parts(line), head_parts(prior)
+        if own:
+            head, rest = own, own[2]
+        else:
+            head, rest = (above if above and not above[2] else None), line.strip()
+        do_end = bool(own) and own[0] == "while" and prior == "}"
+        opens = rest == "{" and i + 1 < len(clean) and clean[i + 1].strip() == "}"
+        if not plain_empty(head, debug):
+            if rest == ";" and not do_end:
+                hits.append(("empty_statement", source))
+            if i > at + 1 and (opens or EMPTY_BLOCK.fullmatch(rest)):
+                hits.append(("empty_block", source))
         if lone_conditional(line):
             hits.append(("lone_conditional", source))
         label = LABEL.match(line)
