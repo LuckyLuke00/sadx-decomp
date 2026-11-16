@@ -14,12 +14,12 @@ void AL_OdeTelopDelete()
 }
 
 // FUNCTION: SADX 0x00481a20
-void FUN_00481a20()
+void AL_OdeTelopClear()
 {
 	AlMsgTelopClear((struct SAlMsgTelop *)DAT_05b33104->awp->work.ptr[0]);
 }
 
 // STUB: SADX 0x00481a40
-void AL_OdeTelopClear()
+void AL_OdeTelopAdd(int id)
 {
 }

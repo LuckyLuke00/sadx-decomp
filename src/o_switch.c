@@ -3,12 +3,12 @@
 // GLOBAL: SADX 0x02606c48
 static char *KindMes[5];
 
+static void InitData(struct task *tp);
 static void ExecATask(struct task *tp);
+static void DispATask(struct task *tp);
 extern int DAT_05b3e05c;
 extern unsigned char *DAT_05b37314;
 void FUN_0058ac40(struct task *param_1);
-void FUN_0058acd0(struct task *param_1);
-void FUN_0058afb0(struct task *param_1);
 void FUN_0058b190(struct task *param_1);
 void FUN_0058b210(struct task *param_1);
 void FUN_0058b270(struct task *param_1);
@@ -54,8 +54,8 @@ void ObjectSwitch(struct task *tp)
 			break;
 		case 1:
 			FUN_0058b160(tp);
-			FUN_0058acd0(tp);
-			FUN_0058afb0(tp);
+			InitData(tp);
+			DispATask(tp);
 			break;
 		}
 		DebPrintf(0x110010, "<- ANGLE X");
@@ -76,11 +76,16 @@ void ObjectSwitch(struct task *tp)
 			FUN_0058ac40(tp);
 			break;
 		case 1:
-			FUN_0058afb0(tp);
+			DispATask(tp);
 			ExecATask(tp);
 			break;
 		}
 	}
+}
+
+// STUB: SADX 0x0058acd0
+static void InitData(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x0058aeb0
@@ -121,6 +126,11 @@ static void ExecATask(struct task *tp)
 		local_8->flag &= ~0x100;
 	}
 	EntryColliList(local_8);
+}
+
+// STUB: SADX 0x0058afb0
+static void DispATask(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x0058b140

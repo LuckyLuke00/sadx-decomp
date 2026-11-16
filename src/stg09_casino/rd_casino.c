@@ -23,7 +23,7 @@ extern int DAT_060dbc34;
 extern char DAT_048093d8;
 
 // FUNCTION: SADX 0x00869bc0
-void LoadTextureOnCasino(long No)
+void FUN_00869bc0()
 {
 	unsigned int local_8 = (unsigned char)DAT_05b9d744 * 4;
 	DAT_05b3e040 = (*(struct NJS_ARGB **)((char *)pFogTable_Stg09 + local_8))[DAT_05b3e0d0];

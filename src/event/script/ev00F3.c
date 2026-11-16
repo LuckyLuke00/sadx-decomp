@@ -173,7 +173,7 @@ static void evmain(int code)
 		EV_Msg(strtbl[DAT_05b3ebbc][0]);
 		EV_SerifPlay(0x574);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_MsgCls();
 		EV_ClrFace(FUN_0056b1f0(2));
 		FUN_0056aea0(0x1e);
@@ -190,7 +190,7 @@ static void evmain(int code)
 		EV_CameraPos(0, 100, -3.39f, -150.72f, 2223.22f);
 		EV_CameraAng(0,100,0,0xfe00,0);
 		EV_CameraPerspective(1,100,0x3111);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_MsgCls();
 		EV_ClrFace(FUN_0056b1f0(2));
 		FUN_0056aea0(0x1e);
@@ -198,7 +198,7 @@ static void evmain(int code)
 		EV_SerifPlay(0x576);
 		EV_Msg(strtbl[DAT_05b3ebbc][2]);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_MsgCls();
 		EV_ClrFace(FUN_0056b1f0(2));
 		FUN_0056aea0(0x1e);
@@ -209,7 +209,7 @@ static void evmain(int code)
 		EV_Msg(strtbl[DAT_05b3ebbc][3]);
 		EV_SerifPlay(0x577);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_ClrFace(FUN_0056b1f0(2));
 		EV_MsgCls();
 		FUN_0056aea0(0x1e);
@@ -222,7 +222,7 @@ static void evmain(int code)
 		EV_Msg(strtbl[DAT_05b3ebbc][4]);
 		EV_SerifPlay(0x578);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_MsgCls();
 		FUN_0056bb50(FUN_0056b1f0(2));
 		FUN_0056aea0(10);
@@ -233,7 +233,7 @@ static void evmain(int code)
 		EV_Msg(strtbl[DAT_05b3ebbc][5]);
 		EV_SerifPlay(0x579);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_ClrFace(FUN_0056b1f0(2));
 		EV_MsgCls();
 		FUN_0056aea0(0x1e);
@@ -266,7 +266,7 @@ static void evmain(int code)
 		EV_Msg(strtbl[DAT_05b3ebbc][7]);
 		EV_SerifPlay(0x57b);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_MsgClose();
 		FUN_0056b6d0(FUN_0056b1f0(2));
 		EV_MovePoint2(FUN_0056b1f0(2), -1.06f, -239.57f, 2398.72f, 3.0f, 3.0f);
@@ -289,7 +289,7 @@ static void evmain(int code)
 		EV_Msg(strtbl[DAT_05b3ebbc][8]);
 		EV_SerifPlay(0x57c);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_MsgCls();
 		FUN_0056aea0(10);
 		FUN_0056b650(FUN_0056b1f0(2), &DAT_060cc840, &texlist_knuckles, 1.0f, 1, 0x10);
@@ -297,7 +297,7 @@ static void evmain(int code)
 		EV_Msg(strtbl[DAT_05b3ebbc][9]);
 		EV_SerifPlay(0x57d);
 		FUN_0056aea0(1);
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_MsgCls();
 		FUN_00718010(0,0x537,0x708);
 		EV_CameraPos(0, 0x5a, 26.59f, -261.28f, 2653.96f);
@@ -340,7 +340,7 @@ static void evmain(int code)
 		EV_InitPlayer(0);
 		FUN_0056b510(2);
 		FUN_0056b510(5);
-		FUN_0056bcd0();
+		EV_CameraOff();
 		FUN_0056a2a0();
 		return;
 	}

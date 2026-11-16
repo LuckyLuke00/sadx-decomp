@@ -673,7 +673,7 @@ void FUN_005914c0(void)
 }
 
 // STUB: SADX 0x00591500
-void CameraLureAndFish(struct _OBJ_CAMERAPARAM *pParam)
+void CameraFishingCatch(struct _OBJ_CAMERAPARAM *pParam)
 {
 }
 

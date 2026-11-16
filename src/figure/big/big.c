@@ -12,7 +12,7 @@ extern struct taskwk *DAT_05baf368[8];
 int dsPlay_oneshot(int tone, int id, int pri, int volofs);
 long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 extern unsigned short DAT_05cd296c;
-void FUN_004bee10(void);
+void CameraReleaseCollisionCamera();
 long FUN_0050aa70(struct taskwk *param_1, struct motionwk2 *param_2, struct playerwk *param_3);
 extern short DAT_05b9d724;
 extern short DAT_05b9d744;
@@ -372,7 +372,7 @@ void FUN_0050cbf0(struct playerwk *param_1, int param_2, int param_3)
 // FUNCTION: SADX 0x0050cd80
 void bigActMissSet(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	FUN_004bee10();
+	CameraReleaseCollisionCamera();
 	DAT_05b42a7c->pos.y = DAT_05baf368[0]->pos.y + 10.0f;
 	DAT_05b42a7c->pos.x = (DAT_05b42a7c->pos.x - DAT_05baf368[0]->pos.x) * 0.009999999776482582 + DAT_05baf368[0]->pos.x;
 	DAT_05b42a7c->pos.z = (DAT_05b42a7c->pos.z - DAT_05baf368[0]->pos.z) * 0.009999999776482582 + DAT_05baf368[0]->pos.z;
@@ -400,7 +400,7 @@ void FUN_0050ce60()
 {
 	if ((DAT_05cd296c & 0x40) != 0)
 	{
-		FUN_004bee10();
+		CameraReleaseCollisionCamera();
 	}
 	else
 	{

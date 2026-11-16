@@ -18,7 +18,7 @@ static void evmain(int code)
 		FUN_0056aea0(0x55);
 		return;
 	case 2:
-		FUN_0056bcd0();
+		EV_CameraOff();
 		FUN_0056a2a0();
 		return;
 	}

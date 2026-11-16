@@ -1,7 +1,6 @@
 #include "decls.h"
 int FUN_005ac4e0(int param_1);
 void FUN_005abd40(int param_1);
-void FUN_005abbc0(struct task *param_1);
 void FUN_005ac3c0(struct task *param_1);
 void FUN_005ac3c0(struct task *param_1);
 extern struct NJS_MODEL DAT_05a7fd5c;
@@ -54,16 +53,16 @@ struct task *IsReleaseBoxActive()
 }
 
 // FUNCTION: SADX 0x005abbc0
-void FUN_005abbc0(struct task *param_1)
+void relbox_exec(struct task *task_p)
 {
 	struct taskwk *local_8;
-	local_8 = param_1->twp;
-	if (FUN_004c39c0(param_1) == 0)
+	local_8 = task_p->twp;
+	if (FUN_004c39c0(task_p) == 0)
 	{
-		LoopTaskC(param_1);
+		LoopTaskC(task_p);
 	}
-	DAT_0099613c[local_8->mode](param_1);
-	relbox_end(param_1);
+	DAT_0099613c[local_8->mode](task_p);
+	relbox_draw(task_p);
 	EntryColliList(local_8);
 }
 
@@ -86,7 +85,7 @@ void FUN_005abd40(int param_1)
 }
 
 // FUNCTION: SADX 0x005abd70
-void relbox_end(struct task *task_p)
+void relbox_draw(struct task *task_p)
 {
 	struct taskwk *local_8;
 	local_8 = task_p->twp;
@@ -117,9 +116,9 @@ void relbox_end(struct task *task_p)
 }
 
 // FUNCTION: SADX 0x005abe10
-void relbox_exec(struct task *task_p)
+void FUN_005abe10(struct task *param_1)
 {
-	FUN_005ac3c0(task_p);
+	FUN_005ac3c0(param_1);
 	DAT_05edbde4 = 0;
 }
 
@@ -136,7 +135,7 @@ void relbox_switch_init(struct task *task_p)
 }
 
 // STUB: SADX 0x005ac000
-void relbox_player_hold(long player_id, struct NJS_POINT3 *pos_p)
+void FUN_005ac000(long param_1, struct NJS_POINT3 *param_2)
 {
 }
 

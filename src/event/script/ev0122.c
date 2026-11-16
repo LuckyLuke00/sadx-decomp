@@ -24,7 +24,7 @@ static void evmain(int code)
 		FUN_0056d0b0(FUN_0056b1f0(0), "CCDDEDC");
 		EV_MsgW(0x78, (char *)(*(int *)(DAT_02c21248[DAT_05b3ebbc] + 1)));
 		EV_MsgCls();
-		EV_CameraOff();
+		FUN_0056d110();
 		EV_ClrFace(FUN_0056b1f0(0));
 		FUN_0056b920(FUN_0056b1f0(0));
 		break;
@@ -32,7 +32,7 @@ static void evmain(int code)
 	case 2:
 	{
 		EV_InitPlayer(0);
-		FUN_0056bcd0();
+		EV_CameraOff();
 		FUN_0056a2a0();
 		break;
 	}

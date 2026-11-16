@@ -1876,16 +1876,6 @@ void FUN_0058ac40(struct task *)
 {
 }
 
-// STUB: SADX 0x0058acd0
-void FUN_0058acd0(struct task *)
-{
-}
-
-// STUB: SADX 0x0058afb0
-void FUN_0058afb0(struct task *)
-{
-}
-
 // STUB: SADX 0x0058b190
 void FUN_0058b190(struct task *)
 {

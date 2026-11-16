@@ -100,7 +100,7 @@ void rotateBall(struct obj *obj)
 }
 
 // STUB: SADX 0x005a5cf0
-void FUN_005a5cf0(struct task *param_1, struct taskwk *param_2)
+void savepointCollision(struct task *tp, struct taskwk *twp)
 {
 }
 

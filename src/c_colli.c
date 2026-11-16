@@ -196,19 +196,19 @@ void CCL_CalcColliCenterR(struct taskwk *twp, struct CCL_INFO *info, struct NJS_
 }
 
 // FUNCTION: SADX 0x004d0460
-void CCL_ColliLine2Sphere(struct taskwk *twp1, struct CCL_INFO *info1, struct taskwk *twp2, struct CCL_INFO *info2)
+void FUN_004d0460(struct taskwk *param_1, struct CCL_INFO *param_2, struct NJS_POINT3 *param_3)
 {
-	if ((info1->attr & 0x20) != 0)
+	if ((param_2->attr & 0x20) != 0)
 	{
-		*(float *)twp2 = info1->center.x;
-		*(float *)((char *)twp2 + 4) = info1->center.y;
-		twp2->counter.f = info1->center.z;
+		param_3->x = param_2->center.x;
+		param_3->y = param_2->center.y;
+		param_3->z = param_2->center.z;
 	}
 	else
 	{
-		*(float *)twp2 = twp1->pos.x + info1->center.x;
-		*(float *)((char *)twp2 + 4) = twp1->pos.y + info1->center.y;
-		twp2->counter.f = twp1->pos.z + info1->center.z;
+		param_3->x = param_1->pos.x + param_2->center.x;
+		param_3->y = param_1->pos.y + param_2->center.y;
+		param_3->z = param_1->pos.z + param_2->center.z;
 	}
 }
 

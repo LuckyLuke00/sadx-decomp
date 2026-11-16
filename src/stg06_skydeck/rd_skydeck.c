@@ -279,9 +279,9 @@ void ObjectSkydeck_radder_Display(struct task *tp)
 }
 
 // FUNCTION: SADX 0x0083a700
-void FUN_0083a700(struct task *param_1)
+void ObjectSkydeck_duct0_Display(struct task *tp)
 {
-	struct taskwk *var1 = param_1->twp;
+	struct taskwk *var1 = tp->twp;
 	struct obj *var2 = *(struct obj **)((char *)com_objtbl + (var1->smode << 4));
 	if (DAT_05b9d838 == 0)
 	{
@@ -302,21 +302,21 @@ void FUN_0083a700(struct task *param_1)
 }
 
 // FUNCTION: SADX 0x0083a790
-void FUN_0083a790(struct task *param_1)
+void ObjectSkydeck_duct0_Exit(struct task *tp)
 {
-	struct taskwk *var1 = param_1->twp;
+	struct taskwk *var1 = tp->twp;
 	if (var1->counter.ptr != 0)
 	{
-		WithdrawCollisionEntry(param_1, (struct obj *)var1->counter.ptr);
+		WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
 		ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
 		var1->counter.ptr = 0;
 	}
-	var1 = param_1->twp;
+	var1 = tp->twp;
 	Free(var1->value.ptr);
 	var1->value.ptr = 0;
 	Free(var1->timer.ptr);
 	var1->timer.ptr = 0;
-	FreeTaskC(param_1);
+	FreeTaskC(tp);
 }
 
 // STUB: SADX 0x0083a7f0

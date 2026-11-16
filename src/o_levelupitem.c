@@ -25,12 +25,12 @@ void levelupitemDisplay(struct task *tp)
 	switch (local_8->mode)
 	{
 	case 1:
-		displayEffectGet(tp);
 		displayEffectNormal(tp);
+		FUN_005e6990(tp);
 		break;
 	case 2:
-		FUN_005e64e0(tp);
-		displayEffectNormal(tp);
+		displayEffectGet(tp);
+		FUN_005e6990(tp);
 		break;
 	}
 }
@@ -66,7 +66,7 @@ void FUN_005e63c0(short param_1, int param_2, int *param_3)
 }
 
 // FUNCTION: SADX 0x005e6410
-void displayEffectGet(struct task *tp)
+void displayEffectNormal(struct task *tp)
 {
 	struct taskwk *local_8;
 
@@ -96,12 +96,12 @@ void displayEffectGet(struct task *tp)
 }
 
 // STUB: SADX 0x005e64e0
-void FUN_005e64e0(struct task *param_1)
+void displayEffectGet(struct task *tp)
 {
 }
 
 // STUB: SADX 0x005e6990
-void displayEffectNormal(struct task *tp)
+void FUN_005e6990(struct task *param_1)
 {
 }
 

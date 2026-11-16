@@ -4,7 +4,7 @@ extern int DAT_05edd2a0;
 void ef_random_ring(struct taskwk *twp);
 extern struct NJS_POINT3 DAT_009c610c;
 extern struct CCL_INFO itembox_colli_info0[1];
-void FUN_005ddc80(struct task *param_1);
+static void Draw(struct task *tp);
 extern struct NJS_MODEL DAT_05a85e0c;
 extern unsigned char DAT_05edd2a4;
 void ObjectItemBox(struct task *tp);
@@ -20,7 +20,7 @@ void PutItem_ItemBox(struct NJS_POINT3 *putpos, long putItem)
 	local_8g->pos = *putpos;
 	local_8g->scl.x = (float)putItem;
 	local_cg->dest = Dead_ItemBox;
-	local_cg->disp = FUN_005ddc80;
+	local_cg->disp = Draw;
 	CCL_Init(local_cg, itembox_colli_info0, 2, 2);
 	FUN_005b47c0(local_8g);
 	local_8g->scl.z = 0.0f;
@@ -107,6 +107,16 @@ void FUN_005ddbf0(struct task *param_1)
 	FUN_004da910((int)local_8);
 	CCL_Init(param_1, itembox_colli_info1, 2, 4);
 	local_8->mode = 4;
+}
+
+// STUB: SADX 0x005ddc80
+static void Draw(struct task *tp)
+{
+}
+
+// STUB: SADX 0x005ddea0
+void DrawInWater(struct task *tp)
+{
 }
 
 // FUNCTION: SADX 0x005de0d0

@@ -192,26 +192,26 @@ long MilesCheckBeInTheAir(struct taskwk *twp, struct playerwk *pwp)
 }
 
 // FUNCTION: SADX 0x0053a220
-long FUN_0053a220(struct taskwk *param_1, struct playerwk *param_2)
+long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
 {
-	if (PCheckPower(param_1, 0, 0) == 0 && param_2->spd.x == 0.0f)
+	if (PCheckPower(twp, 0, 0) == 0 && pwp->spd.x == 0.0f)
 	{
-		if ((param_1->flag & 0x800) != 0)
+		if ((twp->flag & 0x800) != 0)
 		{
-			if ((PCheckHoldObject(param_1) & 0xc00) != 0)
+			if ((PCheckHoldObject(twp) & 0xc00) != 0)
 			{
-				param_1->mode = 0x18;
-				param_2->mj.reqaction = 0x4f;
+				twp->mode = 0x18;
+				pwp->mj.reqaction = 0x4f;
 			}
 			else
 			{
-				param_1->mode = 0x17;
-				param_2->mj.reqaction = 0x3e;
+				twp->mode = 0x17;
+				pwp->mj.reqaction = 0x3e;
 			}
 		}
 		else
 		{
-			FUN_005360f0(param_1, param_2);
+			FUN_005360f0(twp, pwp);
 		}
 		return 1;
 	}
@@ -322,14 +322,14 @@ int FUN_0053b120(struct task *param_1)
 }
 
 // FUNCTION: SADX 0x0053b210
-long MilesCheckStop(struct taskwk *twp, struct playerwk *pwp)
+long FUN_0053b210(struct taskwk *param_1, struct playerwk *param_2)
 {
-	if (DAT_05b932e8[twp->counter.b[0]].press & action_button)
+	if (DAT_05b932e8[param_1->counter.b[0]].press & action_button)
 	{
-		twp->mode = 4;
-		pwp->mj.reqaction = 0xf;
-		twp->flag |= 0x500;
-		pwp->work.f = pwp->spd.x;
+		param_1->mode = 4;
+		param_2->mj.reqaction = 0xf;
+		param_1->flag |= 0x500;
+		param_2->work.f = param_2->spd.x;
 		return 1;
 	}
 	else

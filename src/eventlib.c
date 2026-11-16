@@ -50,7 +50,6 @@ void FUN_004c3310(int *param_1);
 void FUN_0056aa50(int *param_1);
 void FUN_0056ab30();
 void FUN_0056ab80(int *param_1, void (*param_2)(void (*)(int)));
-void FUN_0056bcd0();
 void FUN_0056aea0(int param_1);
 void FUN_0056b2f0(struct task **param_1);
 static void dsEventFinish();
@@ -424,7 +423,7 @@ void EV_Destruct()
 	}
 	if (DAT_05ccddf4 == local_cg)
 	{
-		FUN_0056bcd0();
+		EV_CameraOff();
 	}
 	*(int *)(local_cg + 4) = 0;
 }
@@ -943,7 +942,7 @@ void FUN_0056bb50(struct task *param_1)
 }
 
 // FUNCTION: SADX 0x0056bcd0
-void FUN_0056bcd0()
+void EV_CameraOff()
 {
 	int *local_8g = (int *)TH_GetWork(0);
 	int *local_cg = (int *)&DAT_05ccdd28;
@@ -1138,7 +1137,7 @@ void EV_ClrFace(struct task *tp)
 }
 
 // FUNCTION: SADX 0x0056d110
-void EV_CameraOff()
+void FUN_0056d110()
 {
 	long local_8g = FUN_004f6400();
 	while (local_8g != 0 && local_8g != 5)
@@ -1151,7 +1150,7 @@ void EV_CameraOff()
 // FUNCTION: SADX 0x0056d140
 void EV_SerifPlay(int id)
 {
-	EV_CameraOff();
+	FUN_0056d110();
 	Serif_Play(id);
 }
 

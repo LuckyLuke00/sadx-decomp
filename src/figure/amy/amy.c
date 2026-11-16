@@ -80,9 +80,8 @@ void FUN_0051b800(struct taskwk *param_1, struct motionwk2 *param_2, struct play
 }
 
 // STUB: SADX 0x0051bab0
-long AmyCheckFlyingHammer(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
+void AmyChangeRunningMotion(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	return (long)0;
 }
 
 // FUNCTION: SADX 0x0051c5f0
@@ -119,15 +118,15 @@ long AmyCheckDamage(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *
 }
 
 // FUNCTION: SADX 0x0051c960
-long FUN_0051c960(struct taskwk *param_1, int param_2, int param_3)
+long AmyCheckFlyingHammer(struct taskwk *twp, struct motionwk2 *mwp, struct playerwk *pwp)
 {
-	if ((DAT_05b932e8[param_1->counter.b[0]].press & action_button) != 0)
+	if ((DAT_05b932e8[twp->counter.b[0]].press & action_button) != 0)
 	{
-		*(char *)(param_3 + 0x83) = 0;
-		param_1->mode = 0x16;
-		*(short *)(param_3 + 0x124) = 0x63;
+		*(char *)((char *)pwp + 0x83) = 0;
+		twp->mode = 0x16;
+		*(short *)((char *)pwp + 0x124) = 0x63;
 		dsPlay_oneshot(0x500, 0, 0, 0);
-		VibShot(param_1->counter.b[0], 0);
+		VibShot(twp->counter.b[0], 0);
 		return 1;
 	}
 	else
@@ -456,7 +455,7 @@ long Amy_Status(long plnmb)
 }
 
 // FUNCTION: SADX 0x00520f10
-void AmyERobApperChecker(struct task *tp)
+void AmyERobByenaraChecker(struct task *tp)
 {
 	struct taskwk *local_8g;
 	struct taskwk *local_cg;
@@ -478,7 +477,7 @@ void AmyERobApperChecker(struct task *tp)
 }
 
 // STUB: SADX 0x00520fd0
-void AmyERobByenaraChecker(struct task *tp)
+void AmyERobApperChecker(struct task *tp)
 {
 }
 
