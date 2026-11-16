@@ -175,6 +175,9 @@
 // LIBRARY: SADX 0x004074e0
 // ?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
 
+// LIBRARY: SADX 0x004077a0
+// ?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z
+
 // LIBRARY: SADX 0x00409670
 // ?_Erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@@Z
 
@@ -243,6 +246,18 @@
 
 // LIBRARY: SADX 0x005fb8d0
 // ?_Insert@?$list@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@std@@QAEXV?$_List_const_iterator@V?$_List_val@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@std@@@2@ABUDAT_05edd970_1@@@Z
+
+// LIBRARY: SADX 0x005fb960
+// ?_Buynode@?$_List_val@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@std@@QAEPAU_Node@?$_List_nod@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@2@PAU342@0ABUDAT_05edd970_1@@@Z
+
+// LIBRARY: SADX 0x005fba20
+// ??$_Cons_val@V?$allocator@UDAT_05edd970_1@@@std@@UDAT_05edd970_1@@ABU3@@std@@YAXAAV?$allocator@UDAT_05edd970_1@@@0@PAUDAT_05edd970_1@@ABU2@@Z
+
+// LIBRARY: SADX 0x005fba70
+// ??$_Allocate@U_Node@?$_List_nod@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@std@@@std@@YAPAU_Node@?$_List_nod@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@0@IPAU120@@Z
+
+// LIBRARY: SADX 0x005fbae0
+// ??0?$list@UDAT_05edd970_1@@V?$allocator@UDAT_05edd970_1@@@std@@@std@@QAE@XZ
 
 // LIBRARY: SADX 0x0041a400
 // ?GetSubject@?$Singleton@VSOCTimer@@@Base@Magic@@QAEPAVSOCTimer@@XZ

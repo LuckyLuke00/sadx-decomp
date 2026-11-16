@@ -88,73 +88,73 @@ int FUN_005f4e60()
 // FUNCTION: SADX 0x005f4ee0
 int InitLB()
 {
-	SOCFileStream local_150;
+	SOCFileStream fileStream;
 
-	if (local_150.ReadFile("system\\LeaderBoards\\BG.dds"))
+	if (fileStream.ReadFile("system\\LeaderBoards\\BG.dds"))
 	{
 		DAT_05edd948 = new Magic::RenderCore::Texture;
-		DAT_05edd948->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+		DAT_05edd948->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 	}
 	switch (DAT_05b3ebbc)
 	{
 		case 0:
-			if (local_150.ReadFile("system\\LeaderBoards\\Text1.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1.dds"))
 			{
 				DAT_05edd94c = new Magic::RenderCore::Texture;
-				DAT_05edd94c->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd94c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
-			if (local_150.ReadFile("system\\LeaderBoards\\Text2.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2.dds"))
 			{
 				DAT_05edd950 = new Magic::RenderCore::Texture;
-				DAT_05edd950->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd950->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
 			break;
 		case 4:
-			if (local_150.ReadFile("system\\LeaderBoards\\Text1_de.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1_de.dds"))
 			{
 				DAT_05edd94c = new Magic::RenderCore::Texture;
-				DAT_05edd94c->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd94c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
-			if (local_150.ReadFile("system\\LeaderBoards\\Text2_de.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2_de.dds"))
 			{
 				DAT_05edd950 = new Magic::RenderCore::Texture;
-				DAT_05edd950->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd950->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
 			break;
 		case 3:
-			if (local_150.ReadFile("system\\LeaderBoards\\Text1_es.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1_es.dds"))
 			{
 				DAT_05edd94c = new Magic::RenderCore::Texture;
-				DAT_05edd94c->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd94c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
-			if (local_150.ReadFile("system\\LeaderBoards\\Text2_es.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2_es.dds"))
 			{
 				DAT_05edd950 = new Magic::RenderCore::Texture;
-				DAT_05edd950->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd950->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
 			break;
 		case 2:
-			if (local_150.ReadFile("system\\LeaderBoards\\Text1_fr.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1_fr.dds"))
 			{
 				DAT_05edd94c = new Magic::RenderCore::Texture;
-				DAT_05edd94c->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd94c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
-			if (local_150.ReadFile("system\\LeaderBoards\\Text2_fr.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2_fr.dds"))
 			{
 				DAT_05edd950 = new Magic::RenderCore::Texture;
-				DAT_05edd950->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd950->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
 			break;
 		default:
-			if (local_150.ReadFile("system\\LeaderBoards\\Text1.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text1.dds"))
 			{
 				DAT_05edd94c = new Magic::RenderCore::Texture;
-				DAT_05edd94c->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd94c->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
-			if (local_150.ReadFile("system\\LeaderBoards\\Text2.dds"))
+			if (fileStream.ReadFile("system\\LeaderBoards\\Text2.dds"))
 			{
 				DAT_05edd950 = new Magic::RenderCore::Texture;
-				DAT_05edd950->Load(local_150.FUN_00424960(), 1, local_150.FUN_0040b8a0(), 0, 1, 0);
+				DAT_05edd950->Load(fileStream.FUN_00424960(), 1, fileStream.FUN_0040b8a0(), 0, 1, 0);
 			}
 			break;
 	}
@@ -600,18 +600,18 @@ void FUN_005fa3a0(struct DDlgType *param_1)
 // FUNCTION: SADX 0x005fa460
 void title_menu_sub_lb_exec(struct TitleMenuWk *wkp)
 {
-	signed char local_5i;
-	signed char local_cj[3];
-	signed char local_18[5];
+	signed char local_5kt;
+	signed char local_ci[3];
+	signed char cs[5];
 	float local_20 = DAT_01c6e428 / 920.0;
 	float local_1c = DAT_01c6e42c / 690.0;
 
-	local_5i = 0;
-	local_18[local_5i] = -1;
+	local_5kt = 0;
+	cs[local_5kt] = -1;
 	switch (wkp->SubMode)
 	{
 		case 0:
-			AdvaOpenDialogQuick((enum DiaTypeEnum)0x1c, (signed char)wkp->SelMenu, local_18);
+			AdvaOpenDialogQuick((enum DiaTypeEnum)0x1c, (signed char)wkp->SelMenu, cs);
 			wkp->SubMode = (enum TitleMenuSbMdEnum)1;
 			DAT_05edd940 = 0;
 		case 1:
@@ -725,11 +725,11 @@ void title_menu_sub_lb_exec(struct TitleMenuWk *wkp)
 		case 5:
 			if (AvaGetPutiEnable() != 0)
 			{
-				AdvaOpenDialogCsrLet((enum DiaTypeEnum)3, (signed char)wkp->SelMenu, local_18);
+				AdvaOpenDialogCsrLet((enum DiaTypeEnum)3, (signed char)wkp->SelMenu, cs);
 			}
 			else
 			{
-				AdvaOpenDialogCsrLet((enum DiaTypeEnum)3, (signed char)wkp->SelMenu, local_18);
+				AdvaOpenDialogCsrLet((enum DiaTypeEnum)3, (signed char)wkp->SelMenu, cs);
 			}
 			wkp->SubMode = TITLEMENU_SMD_DECIDE;
 			break;

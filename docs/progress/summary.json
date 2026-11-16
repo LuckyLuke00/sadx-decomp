@@ -346,6 +346,14 @@
    "library": false
   },
   {
+   "address": "0x004077a0",
+   "name": "std::basic_string<char,std::char_traits<char>,std::allocator<char> >::find",
+   "accuracy": 0.1686746987951807,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
    "address": "0x00407850",
    "name": "FUN_00407850",
    "accuracy": 0.0,
@@ -16381,7 +16389,7 @@
   {
    "address": "0x004b38e0",
    "name": "FUN_004b38e0",
-   "accuracy": 0.9986541049798116,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -39661,34 +39669,42 @@
   {
    "address": "0x005fb8d0",
    "name": "std::list<DAT_05edd970_1,std::allocator<DAT_05edd970_1> >::_Insert",
-   "accuracy": 0.9791666666666666,
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
+  },
+  {
+   "address": "0x005fb960",
+   "name": "std::_List_val<DAT_05edd970_1,std::allocator<DAT_05edd970_1> >::_Buynode",
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
   },
   {
    "address": "0x005fba20",
-   "name": "FUN_005fba20",
-   "accuracy": 0.25806451612903225,
-   "effective": false,
-   "stub": true,
-   "library": false
-  },
-  {
-   "address": "0x005fba70",
-   "name": "FUN_005fba70",
+   "name": "std::_Cons_val<std::allocator<DAT_05edd970_1>,DAT_05edd970_1,DAT_05edd970_1 const &>",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
-   "library": false
+   "library": true
+  },
+  {
+   "address": "0x005fba70",
+   "name": "std::_Allocate<std::_List_nod<DAT_05edd970_1,std::allocator<DAT_05edd970_1> >::_Node>",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x005fbae0",
-   "name": "FUN_005fbae0",
-   "accuracy": 0.23809523809523808,
+   "name": "std::list<DAT_05edd970_1,std::allocator<DAT_05edd970_1> >::list<DAT_05edd970_1,std::allocator<DAT_05edd970_1> >",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
-   "library": false
+   "stub": false,
+   "library": true
   },
   {
    "address": "0x005fbb40",
@@ -105382,5 +105398,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "69b3bde36ab138d9bbbd694eb84bd78ab27d6bf5b07a7b2e5dac51d213cd7a51"
+ "inputs_sha256": "8a01e9f634e56e23fa435733ec4c44f7c3030b7f3924baecf1a49a22a9f1d225"
 }
