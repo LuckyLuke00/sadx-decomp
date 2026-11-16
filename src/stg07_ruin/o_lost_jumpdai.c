@@ -1,5 +1,13 @@
 #include "decls.h"
 
+// FUNCTION: SADX 0x00855000
+void DeadJumpdai(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
+	ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
+}
+
 // FUNCTION: SADX 0x00855030
 void DrawJumpdai(struct task *tp)
 {
@@ -64,7 +72,7 @@ void ObjLostWorldJumpdai(struct task *tp)
 		var2->pos_spd.x = 0.0f;
 		var2->pos_spd.y = 0.0f;
 		var2->pos_spd.z = 0.0f;
-		tp->dest = KasyaDestruct;
+		tp->dest = DeadJumpdai;
 		tp->exec = ExecJumpdai;
 		tp->disp = DrawJumpdai;
 		if (FUN_004c39c0(tp) == 0)

@@ -16,6 +16,21 @@ void dispElevator(struct task *tp)
 	njPopMatrix(1);
 }
 
+// FUNCTION: SADX 0x00825da0
+void exitElevator(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	int var2;
+
+	var2 = FUN_004c39c0(tp);
+	if ((var2 == 0) && (var1->counter.ptr != 0))
+	{
+		WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
+		ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
+	}
+	FreeTaskC(tp);
+}
+
 // FUNCTION: SADX 0x00825e10
 void dispEvStep(struct task *tp)
 {

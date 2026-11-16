@@ -1,6 +1,12 @@
 #include "decls.h"
 void FUN_004f5550(int param_1);
 
+// FUNCTION: SADX 0x006aae80
+void initSonicMR05()
+{
+	SeqSetTime(1);
+}
+
 // FUNCTION: SADX 0x006aae90
 void mainSonicMR05(int seqno)
 {

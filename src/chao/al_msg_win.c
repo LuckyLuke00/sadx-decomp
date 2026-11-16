@@ -33,9 +33,9 @@ void FUN_0044e2e0(int param_1, int param_2)
 }
 
 // FUNCTION: SADX 0x0044e2f0
-int FUN_0044e2f0(int param_1)
+enum EAlMsgWinStatus AlMsgWinGetStatus(struct SAlMsgWin *self)
 {
-	return *(short *)((char *)param_1 + 0xa) > 0;
+	return (enum EAlMsgWinStatus)(*(short *)((char *)self + 0xa) > 0);
 }
 
 // STUB: SADX 0x0044e330

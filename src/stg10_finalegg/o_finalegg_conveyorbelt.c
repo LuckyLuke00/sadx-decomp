@@ -50,5 +50,5 @@ void SideTask(struct task *tp)
 	}
 	tp->disp = 0;
 	tp->exec = SideTaskExec;
-	tp->dest = KasyaDestruct;
+	tp->dest = DeadJumpdai;
 }

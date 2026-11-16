@@ -10,6 +10,12 @@ void SeqChangeStage(long stg, long act);
 void EV_Load2(int no);
 void EV_Exec2();
 
+// FUNCTION: SADX 0x006aa880
+void initKnucklesMR01()
+{
+	SeqSetTime(2);
+}
+
 // FUNCTION: SADX 0x006aa890
 void mainKnucklesMR01(int seqno)
 {

@@ -52,10 +52,10 @@ void GetEmblem(struct SAVE_DATA *psd, long no)
 }
 
 // FUNCTION: SADX 0x0049e130
-int FUN_0049e130(struct SAVE_DATA *param_1)
+long GetTotalNumberEmblem(struct SAVE_DATA *psd)
 {
 	int local_14 = 0;
-	unsigned char *local_ci = (unsigned char *)param_1 + 0x240;
+	unsigned char *local_ci = (unsigned char *)psd + 0x240;
 	int local_8g;
 	unsigned char local_dg;
 
@@ -341,7 +341,7 @@ static void Exec(struct task *tp)
 	case 0:
 		local_8g->mode = 1;
 		local_8g->wtimer = 0;
-		local_8g->value.l = FUN_0049e130(&DAT_05ccca18);
+		local_8g->value.l = GetTotalNumberEmblem(&DAT_05ccca18);
 		dsPlay_oneshot(12, 0, 0, 0);
 		break;
 	case 1:

@@ -3390,7 +3390,7 @@ void DrawGate(struct task *tp)
 }
 
 // STUB: SADX 0x00810f90
-long ChkE104ColliLandXZ(struct NJS_POINT3 *pPos, float fDistChk, float *pfGroundY, struct NJS_POINT3 *pVec)
+long ChkE103ColliLandXZ(struct NJS_POINT3 *pPos, float fDistChk, float *pfGroundY, struct NJS_POINT3 *pVec)
 {
 	return (long)0;
 }

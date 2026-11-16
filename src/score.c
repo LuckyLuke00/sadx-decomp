@@ -50,7 +50,7 @@ extern char score_sc[32];
 // FUNCTION: SADX 0x00554a00
 void InitScore()
 {
-	FUN_00554a70();
+	ResetNumRing();
 	FUN_00554a10();
 }
 
@@ -82,13 +82,13 @@ void FUN_00554a50(void)
 }
 
 // FUNCTION: SADX 0x00554a70
-void FUN_00554a70()
+void ResetNumRing()
 {
 	DAT_05b3ebb8 = 0;
 }
 
 // FUNCTION: SADX 0x00554a80
-long FUN_00554a80()
+unsigned long GetTotalRing()
 {
 	return DAT_05ccca10;
 }

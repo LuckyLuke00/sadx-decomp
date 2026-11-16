@@ -45,7 +45,7 @@ void AlMsgWarnDelete(int winid)
 // FUNCTION: SADX 0x0044c940
 enum EAlMsgWinStatus AlMsgWarnGetStatus(int winid)
 {
-	return (enum EAlMsgWinStatus)FUN_0044e2f0((int)(*(struct SAlMsgWin **)((char *)DAT_05b2ca64 + winid * 24)));
+	return AlMsgWinGetStatus(*(struct SAlMsgWin **)((char *)DAT_05b2ca64 + winid * 24));
 }
 
 // STUB: SADX 0x0044c960

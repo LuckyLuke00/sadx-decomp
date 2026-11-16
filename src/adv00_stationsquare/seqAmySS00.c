@@ -29,9 +29,3 @@ void mainAmySS00(int seqno)
 		break;
 	}
 }
-
-// FUNCTION: SADX 0x006aae80
-void initAmySS00()
-{
-	SeqSetTime(1);
-}

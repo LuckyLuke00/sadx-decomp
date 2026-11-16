@@ -7,7 +7,7 @@ static void Normal(struct task *tp);
 static void Exit(struct task *tp);
 extern struct obj object_hebi_asiba01_hebi_asiba01_hebi_asiba01[];
 
-// FUNCTION: SADX 0x0081f2b0
+// FOLD: the game's link folded this copy into the one of o_esc.c (0x0081f2b0).
 static void Exit(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;

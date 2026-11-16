@@ -12,6 +12,24 @@ namespace std
 }
 #include "shinobi.h"
 #include "ninja.h"
+
+namespace Magic
+{
+namespace Base
+{
+struct SystemTime_t
+{
+	unsigned short m_Year;
+	unsigned short m_Month;
+	unsigned short m_DayOfWeek;
+	unsigned short m_Day;
+	unsigned short m_Hour;
+	unsigned short m_Minute;
+	unsigned short m_Second;
+	unsigned short m_Milliseconds;
+};
+}
+}
 #include "types.h"
 
 // PLACEHOLDER: MAYBE_ASSERT: likely an assert, since the file includes the porting SDK's assert header; it makes no code but still counts toward the compiler's inline budget, and debug prints stay real calls.

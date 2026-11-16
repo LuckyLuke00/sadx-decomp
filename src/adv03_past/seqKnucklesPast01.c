@@ -1,11 +1,5 @@
 #include "decls.h"
 
-// FUNCTION: SADX 0x006801d0
-void initKnucklesPast01()
-{
-	SeqSetTime(0);
-}
-
 // FUNCTION: SADX 0x006bd610
 void mainKnucklesPast01(int seqno)
 {

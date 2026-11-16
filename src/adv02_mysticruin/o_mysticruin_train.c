@@ -42,7 +42,7 @@ void KasyaInit(struct task *tp)
 	var1->child = *(struct obj **)((char *)*(void **)((char *)DAT_060eea9c + 0x1c) + 0x2c);
 	var1->sibling = *(struct obj **)((char *)*(void **)((char *)DAT_060eea9c + 0x1c) + 0x30);
 	RegisterCollisionEntry(0x48001001, tp, var1);
-	tp->dest = KasyaDestruct;
+	tp->dest = DeadJumpdai;
 	CCL_Init(tp, ccinfo, 0xa, 4);
 	tp->exec = KasyaMain;
 	tp->disp = KasyaDisplay;
@@ -62,12 +62,4 @@ void mrtrain_adxprove(struct task *tp)
 		DestroyTask(tp);
 		return;
 	}
-}
-
-// FUNCTION: SADX 0x00855000
-void KasyaDestruct(struct task *tp)
-{
-	struct taskwk *var1 = tp->twp;
-	WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
-	ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
 }

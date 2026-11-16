@@ -2,16 +2,6 @@
 extern const struct NJS_MOTION *kBuyerMotionTable[3];
 extern struct obj object_kin_bl_buyer_buyer[];
 
-// FUNCTION: SADX 0x0046e080
-void FBuyerDest(struct task *tp)
-{
-	if (tp->awp != NULL)
-	{
-		Free(tp->awp);
-		tp->awp = NULL;
-	}
-}
-
 // FUNCTION: SADX 0x0046e300
 void FBuyerDisp(struct task *tp)
 {

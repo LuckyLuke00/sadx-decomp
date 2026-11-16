@@ -227,7 +227,7 @@ static void move(struct task *pTask)
 	float local_18h;
 	struct NJS_POINT3 *var3 = (struct NJS_POINT3 *)(var2 + 26);
 	*var3 = var1->pos;
-	if (ChkE104ColliLandXZ(&var1->pos, 5.0f, &var2[23], &vec) == 1)
+	if (ChkE103ColliLandXZ(&var1->pos, 5.0f, &var2[23], &vec) == 1)
 	{
 		var1->pos.x += vec.x;
 		var1->pos.y += vec.y;

@@ -1,5 +1,15 @@
 #include "decls.h"
 
+// FUNCTION: SADX 0x0046e080
+void FHangyoDest(struct task *tp)
+{
+	if (tp->awp != NULL)
+	{
+		Free(tp->awp);
+		tp->awp = NULL;
+	}
+}
+
 // STUB: SADX 0x0046e0a0
 void FHangyoDisp(struct task *tp)
 {

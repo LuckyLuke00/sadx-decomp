@@ -1,5 +1,11 @@
 #include "decls.h"
 
+// FUNCTION: SADX 0x006801d0
+void initBigSS02()
+{
+	SeqSetTime(0);
+}
+
 // FUNCTION: SADX 0x006801e0
 void mainBigSS02(int seqno)
 {

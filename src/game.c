@@ -72,7 +72,6 @@ void FUN_004f3f00();
 extern int DAT_05b9d838;
 extern int DAT_05b9d83c;
 extern short DAT_05b9d740;
-void FUN_00554a70();
 extern short DAT_05b9d774;
 extern int DAT_05b3e05c;
 extern short DAT_05b9d73c;
@@ -756,7 +755,7 @@ short Adventure()
 			FUN_004c76e0();
 			AddNumPlayer(-1);
 			DAT_05b9d73c = 2;
-			FUN_00554a70();
+			ResetNumRing();
 		}
 		else
 		{
@@ -771,7 +770,7 @@ short Adventure()
 			FUN_004c87a0();
 			FUN_004c76e0();
 			DAT_05b9d73c = 0x12;
-			FUN_00554a70();
+			ResetNumRing();
 		}
 		break;
 	case 9:
@@ -1022,13 +1021,13 @@ void FUN_004c7950()
 	SetDefaultGravity();
 	if ((short)DAT_05b9d724 == 0x23)
 	{
-		FUN_00554a70();
+		ResetNumRing();
 	}
 	if ((short)DAT_05b9d724 == 9)
 	{
 		if (GetPlayerCharacterName(0) == 0)
 		{
-			FUN_00554a70();
+			ResetNumRing();
 		}
 	}
 }

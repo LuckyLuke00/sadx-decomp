@@ -1,5 +1,12 @@
 #include "decls.h"
 
+// FUNCTION: SADX 0x00701f50
+void destChaos7Object(struct task *tp)
+{
+	FreeTaskC(tp);
+	FreeTask(tp);
+}
+
 // STUB: SADX 0x00701f70
 void dispChaos7Object(struct task *tp)
 {

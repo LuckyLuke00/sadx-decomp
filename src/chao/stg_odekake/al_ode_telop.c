@@ -23,8 +23,3 @@ void FUN_00481a20()
 void AL_OdeTelopClear()
 {
 }
-
-// STUB: SADX 0x004820e0
-void AL_OdeTelopAdd(int param_1, float param_2, short param_3, int param_4, float param_5)
-{
-}

@@ -1,6 +1,32 @@
 #include "decls.h"
 void SetMaterial(float a, float r, float g, float b);
 
+// FUNCTION: SADX 0x00828ab0
+void DisplayStone(struct task *tp)
+{
+	struct taskwk *local_8 = tp->twp;
+	float local_c = local_8->scl.x;
+	if (dsCheckViewV(&local_8->pos, 40.0f) != 0)
+	{
+		if (SetObjectTexture() != 0)
+		{
+			njPushMatrix(NULL);
+			njTranslateV(NULL, &local_8->pos);
+			if (local_8->ang.z != 0)
+			{
+				njRotateZ(NULL, (unsigned short)local_8->ang.z);
+			}
+			if (local_8->ang.x != 0)
+			{
+				njRotateX(NULL, (unsigned short)local_8->ang.x);
+			}
+			FUN_0067d2d0(NULL, local_c, local_c, local_c);
+			ds_DrawModelClip((struct NJS_MODEL *)(*(int *)((char *)((int)local_8->counter.l) + 4)), local_c);
+			njPopMatrix(1);
+		}
+	}
+}
+
 // FUNCTION: SADX 0x00828d40
 void ExplosionRockDestructor(struct task *tp)
 {

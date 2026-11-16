@@ -7,9 +7,9 @@ void FUN_0046ea30(void *param_1)
 }
 
 // FUNCTION: SADX 0x0046ea60
-unsigned long GetTotalRing()
+unsigned long FUN_0046ea60()
 {
-	return FUN_00554a80();
+	return GetTotalRing();
 }
 
 // STUB: SADX 0x0046ea70

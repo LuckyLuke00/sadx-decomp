@@ -46,7 +46,7 @@ static void chkDamage(struct task *pTask)
 		death(pTask, 0.5f);
 		return;
 	}
-	if (ChkE104ColliLandXZ(&local_8->pos, 2.0f, 0, &local_14) == 1)
+	if (ChkE103ColliLandXZ(&local_8->pos, 2.0f, 0, &local_14) == 1)
 	{
 		death(pTask, 0.5f);
 		return;

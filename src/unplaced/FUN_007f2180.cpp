@@ -4,7 +4,7 @@ extern struct SAVE_DATA DAT_05ccca18;
 // FUNCTION: SADX 0x007f2180
 int FUN_007f2180()
 {
-	return FUN_0049e130(&DAT_05ccca18);
+	return GetTotalNumberEmblem(&DAT_05ccca18);
 }
 
 // FUNCTION: SADX 0x007f2190

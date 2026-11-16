@@ -7395,7 +7395,7 @@
   },
   {
    "address": "0x0044e2f0",
-   "name": "FUN_0044e2f0",
+   "name": "AlMsgWinGetStatus",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9531,7 +9531,7 @@
   },
   {
    "address": "0x0046e080",
-   "name": "FBuyerDest",
+   "name": "FHangyoDest",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -9611,10 +9611,10 @@
   },
   {
    "address": "0x0046e5a0",
-   "name": "GetTotalNumberEmblem",
-   "accuracy": 0.2222222222222222,
+   "name": "FUN_0046e5a0",
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -9659,7 +9659,7 @@
   },
   {
    "address": "0x0046ea60",
-   "name": "GetTotalRing",
+   "name": "FUN_0046ea60",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -11115,8 +11115,8 @@
   },
   {
    "address": "0x004820e0",
-   "name": "AL_OdeTelopAdd",
-   "accuracy": 0.1,
+   "name": "CreateMainMenuBar",
+   "accuracy": 0.08695652173913043,
    "effective": false,
    "stub": true,
    "library": false
@@ -13819,7 +13819,7 @@
   },
   {
    "address": "0x0049e130",
-   "name": "FUN_0049e130",
+   "name": "GetTotalNumberEmblem",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -25732,7 +25732,7 @@
   },
   {
    "address": "0x00554a70",
-   "name": "FUN_00554a70",
+   "name": "ResetNumRing",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -25740,7 +25740,7 @@
   },
   {
    "address": "0x00554a80",
-   "name": "FUN_00554a80",
+   "name": "GetTotalRing",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -43044,7 +43044,7 @@
   },
   {
    "address": "0x006801d0",
-   "name": "initKnucklesPast01",
+   "name": "initBigSS02",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -46068,7 +46068,7 @@
   },
   {
    "address": "0x006aa880",
-   "name": "initSonicSS01",
+   "name": "initKnucklesMR01",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -46124,7 +46124,7 @@
   },
   {
    "address": "0x006aae80",
-   "name": "initAmySS00",
+   "name": "initSonicMR05",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -50868,7 +50868,7 @@
   },
   {
    "address": "0x00701f50",
-   "name": "exitSkyEscalatorManager",
+   "name": "destChaos7Object",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -57020,7 +57020,7 @@
   },
   {
    "address": "0x007ec8c0",
-   "name": "Zako3Move",
+   "name": "Zako2Move",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -58948,7 +58948,7 @@
   },
   {
    "address": "0x00810f90",
-   "name": "ChkE104ColliLandXZ",
+   "name": "ChkE103ColliLandXZ",
    "accuracy": 0.03980099502487562,
    "effective": false,
    "stub": true,
@@ -59212,7 +59212,7 @@
   },
   {
    "address": "0x00815380",
-   "name": "destTPRoof",
+   "name": "destTPPit",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -59820,7 +59820,7 @@
   },
   {
    "address": "0x0081f2b0",
-   "name": "Exit(1)",
+   "name": "Exit(struct task *)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60300,7 +60300,7 @@
   },
   {
    "address": "0x00825da0",
-   "name": "exitSkySinkRane",
+   "name": "exitElevator",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -60733,7 +60733,7 @@
   {
    "address": "0x0082ed70",
    "name": "ObjectMountainAsiba1",
-   "accuracy": 0.015151515151515152,
+   "accuracy": 0.044444444444444446,
    "effective": false,
    "stub": true,
    "library": false
@@ -61916,7 +61916,7 @@
   },
   {
    "address": "0x00840070",
-   "name": "OnHitMissile",
+   "name": "OnHitBomb",
    "accuracy": 0.07692307692307693,
    "effective": false,
    "stub": true,
@@ -62004,7 +62004,7 @@
   },
   {
    "address": "0x00842d60",
-   "name": "dispTPFoothold",
+   "name": "dispSkySinkRane",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -63124,7 +63124,7 @@
   },
   {
    "address": "0x00855000",
-   "name": "KasyaDestruct",
+   "name": "DeadJumpdai",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -105344,5 +105344,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "0f685a3a3f8251bb065927d711941294e287802b5454c4b37b2296d158381c5e"
+ "inputs_sha256": "ecbf461929445e16a4f5ce8cfef08fc440fb13b8565f91556fcdfc8f6d602ca0"
 }

@@ -1,5 +1,10 @@
 #include "decls.h"
 
+// STUB: SADX 0x00840070
+void OnHitBomb(long lParam, struct NJS_POINT3 *hitpos, struct NJS_POINT3 *hitspd)
+{
+}
+
 // FUNCTION: SADX 0x00840550
 void ObjectSkydeck_cannon_h2_End(struct task *tp)
 {

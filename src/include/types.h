@@ -206,7 +206,6 @@ struct LE_LIGHT_ENV;
 struct LE_PALIGHT_ENV;
 struct LegModel;
 struct LightInfo;
-struct Magic_Base_SystemTime_t;
 struct MDHANDLE;
 struct MID_EXPLOSION_INFO;
 struct MiniGameSelWk;
@@ -6121,18 +6120,6 @@ static_assert(offsetof(SEQ_DATA, nextsec) == 0x6, "SEQ_DATA::nextsec");
 static_assert(offsetof(SEQ_DATA, stage) == 0x8, "SEQ_DATA::stage");
 static_assert(offsetof(SEQ_DATA, destination) == 0xa, "SEQ_DATA::destination");
 
-struct Magic_Base_SystemTime_t {
-    unsigned short m_Year;
-    unsigned short m_Month;
-    unsigned short m_DayOfWeek;
-    unsigned short m_Day;
-    unsigned short m_Hour;
-    unsigned short m_Minute;
-    unsigned short m_Second;
-    unsigned short m_Milliseconds;
-};
-static_assert(sizeof(Magic_Base_SystemTime_t) == 0x10, "sizeof Magic_Base_SystemTime_t");
-
 struct SAVE_DATA {
     long code;
     long totalTime;
@@ -6172,7 +6159,7 @@ struct SAVE_DATA {
     struct BEST3_CART M_miniCart;
     struct BEST3_TIME M_bossGame;
     long M_emblem;
-    struct Magic_Base_SystemTime_t m_LastWritenTime;
+    Magic::Base::SystemTime_t m_LastWritenTime;
 };
 static_assert(sizeof(SAVE_DATA) == 0x580, "sizeof SAVE_DATA");
 static_assert(offsetof(SAVE_DATA, bestScore) == 0x8, "SAVE_DATA::bestScore");

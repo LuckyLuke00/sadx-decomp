@@ -1,9 +1,9 @@
 #include "decls.h"
 
-// STUB: SADX 0x0046e5a0
-long GetTotalNumberEmblem(struct SAVE_DATA *psd)
+// FUNCTION: SADX 0x0046e5a0
+long FUN_0046e5a0()
 {
-	return (long)0;
+	return GetTotalNumberEmblem(&DAT_05ccca18 + DAT_05cc3620);
 }
 
 // STUB: SADX 0x0046e5c0

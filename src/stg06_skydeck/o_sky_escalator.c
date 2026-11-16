@@ -1,13 +1,6 @@
 #include "decls.h"
 extern struct NJS_ACTION action_skymain_eskwa_u[1];
 
-// FUNCTION: SADX 0x00701f50
-void exitSkyEscalatorManager(struct task *tp)
-{
-	FreeTaskC(tp);
-	FreeTask(tp);
-}
-
 // FUNCTION: SADX 0x00841230
 void dispSkyEscalator(struct task *tp)
 {

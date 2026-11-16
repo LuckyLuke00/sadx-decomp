@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x00815380
-void destTPRoof(struct task *tp)
+void destTPPit(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	int var2;
