@@ -15236,11 +15236,10 @@
   {
    "address": "0x004a8a80",
    "name": "late_ActionClipEx",
-   "accuracy": 0.9473684210526315,
+   "accuracy": 0.9444444444444444,
    "effective": false,
    "stub": false,
-   "library": false,
-   "trick": true
+   "library": false
   },
   {
    "address": "0x004a8ab0",
@@ -105344,5 +105343,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "ecbf461929445e16a4f5ce8cfef08fc440fb13b8565f91556fcdfc8f6d602ca0"
+ "inputs_sha256": "34c3661a6e7fbceef116223b6f37d42a418c54757dce1a7954b3df0eef2df518"
 }
