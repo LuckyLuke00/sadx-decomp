@@ -1203,8 +1203,8 @@
   },
   {
    "address": "0x00412290",
-   "name": "FUN_00412290",
-   "accuracy": 0.0,
+   "name": "FUN_00412290_0::FUN_00412290",
+   "accuracy": 0.023809523809523808,
    "effective": false,
    "stub": true,
    "library": false
@@ -105294,5 +105294,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b4d4e0e8743d8cbf04833ca4c22e34cd2dc05bb3861440a3568b3bf728e99639"
+ "inputs_sha256": "78694468dcf9eac7c16f2dd153a0dc41a9f80e4f2b43635beda02fb6e9f23965"
 }

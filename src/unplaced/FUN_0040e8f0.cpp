@@ -3,6 +3,7 @@
 #include <cctype>
 #include <new>
 #include <exception>
+#include "../advertise.h"
 extern void __cdecl operator delete(void *param_1);
 extern char DAT_05ab16d8[44][0x30];
 void FUN_004160c0(char *param_1, int param_2, char *param_3, char *param_4);
@@ -120,7 +121,7 @@ char *FUN_00412260(char *param_1)
 }
 
 // STUB: SADX 0x00412290
-int __fastcall FUN_00412290(void *param_1, int param_2, void *param_3, void *param_4, int param_5)
+int FUN_00412290_0::FUN_00412290(struct NJS_ARGB param_1)
 {
 	return (int)0;
 }
