@@ -2,11 +2,11 @@
 extern struct NJS_SPRITE sprite_score_cart[4];
 void dispScoreBack(float pX, float pY, float sX, float sY);
 struct SCORE_TIME {
-	int min;
-	int sec;
-	int ms;
-	float x;
-	float y;
+	unsigned long min;
+	unsigned long sec;
+	unsigned long point;
+	float h;
+	float v;
 };
 static void DisplayCalcBoardScoreSB(struct task *tp);
 void DisplayCalcLettersHH(struct task *tp);
@@ -362,12 +362,12 @@ void drawSNumbersTime(struct SCORE_TIME score_time)
 {
 	float local_10;
 	float local_c;
-	local_c = score_time.x;
+	local_c = score_time.h;
 	local_10 = score_sc_time.scl * 16.0f;
 	score_sc_time.max = 99;
 	score_sc_time.value = score_time.min;
 	score_sc_time.pos.x = local_c;
-	score_sc_time.pos.y = score_time.y;
+	score_sc_time.pos.y = score_time.v;
 	FUN_0055de60(&score_sc_time);
 	local_c = local_10 * 2.0f + local_c;
 	score_sc_time.type |= 0x20;
@@ -389,7 +389,7 @@ void drawSNumbersTime(struct SCORE_TIME score_time)
 	local_c = local_c + local_10;
 	score_sc_time.type &= ~0x20;
 	score_sc_time.max = 99;
-	score_sc_time.value = score_time.ms;
+	score_sc_time.value = score_time.point;
 	score_sc_time.pos.x = local_c;
 	FUN_0055de60(&score_sc_time);
 	score_sc_time.type &= ~0x40;
