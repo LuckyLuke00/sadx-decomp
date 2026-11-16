@@ -150,9 +150,30 @@ def check_chain() -> list[str]:
                                                wanted)]
 
 
+EMPTY_HELPER = ("std::_Destroy<A>", "??$_Destroy@UA@@@std@@YAXPAUA@@@Z")
+
+
+def check_listed() -> list[str]:
+    """A listed copy folds into the function at its row's game address, though the names differ and another matched
+    function has the same code. A listed copy with other code does not fold, and not_folded() names it. A row whose
+    copy the image lacks is no problem."""
+    listed = {EMPTY_HELPER[1]: ORIGINAL + 0x401100, "?Gone@@YAXXZ": ORIGINAL + 0x401000}
+    failures = []
+    for case, copy_code, wanted in (("the same code", reads(DATA), ({0x402000: 0x401100}, "FUN_00401100(1)", [])),
+                                    ("other code", reads(DATA + 4), ({}, EMPTY_HELPER[0], [EMPTY_HELPER[1]]))):
+        db, image = database([(0x401000, "FUN_00401000", reads(DATA), True, "?FUN_00401000@@YAXXZ"),
+                              (0x401100, "FUN_00401100", reads(DATA), True, "?FUN_00401100@@YAXXZ"),
+                              (0x402000, EMPTY_HELPER[0], copy_code, False, EMPTY_HELPER[1])])
+        folded = folds.alias_folds(db, image, listed)
+        found = (folded, names(db)[0x402000], folds.not_folded(db, listed, folded))
+        if found != wanted:
+            failures.append(failure("alias_folds", found, f"a listed copy with {case}", wanted))
+    return failures
+
+
 def run() -> list[str]:
     """Every check of the fold rule, in order: the failures of all."""
     failures = []
-    for check in (check_copy, check_same_code, check_template, check_not_folded, check_chain):
+    for check in (check_copy, check_same_code, check_template, check_not_folded, check_chain, check_listed):
         failures += check()
     return failures

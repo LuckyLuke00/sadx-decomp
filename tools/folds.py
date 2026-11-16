@@ -22,32 +22,64 @@ folds counts as a call to the copy it folds into, so a chain of copies folds
 too. Only the name changes, so a call to the copy scores as a call to the kept
 one, as in the game.
 
+The link also folds functions whose names differ, such as an empty helper of
+the standard library and an empty function of the game. The names give no
+rule for those, so data/folds.csv lists them: `copy`, the decorated name of our
+copy, `kept`, the game address of the function that the game's link kept, and
+`evidence`, the game code that calls the kept function where the source calls
+the copy. A listed copy folds into that function alone, and only when it is the
+same code.
+
 install() makes each Compare made after it run alias_folds() on our image at
-the end of reccmp's analysis.
+the end of reccmp's analysis, with the rows of data/folds.csv.
 
 Needs reccmp, so it runs in .venv.
 """
+
+import csv
+import sys
+from pathlib import Path
 
 from reccmp.compare import core
 from reccmp.compare.asm.parse import ParseAsm
 from reccmp.types import EntityType, ImageId
 
 TEMPLATE_INSTANCE = "?$"  # in the decorated name of each instance of a template
+LISTED_FOLDS = Path("data") / "folds.csv"  # under the tree's root
 
 
-def alias_folds(db, image) -> dict[int, int]:
-    """Name each fold copy in our IMAGE after the copy the game kept. Returns {copy: kept copy}, our addresses."""
+def listed_folds(root: Path) -> dict[str, int]:
+    """{decorated name of our copy: game address of the kept function} for each row of ROOT's data/folds.csv. A tree
+    without the file has none. A row with no evidence stops the run."""
+    path = root / LISTED_FOLDS
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8", newline="") as file:
+        rows = list(csv.DictReader(file))
+    for row in rows:
+        if not row["evidence"].strip():
+            raise SystemExit(f"{LISTED_FOLDS.as_posix()}: the row of {row['copy']} needs its evidence")
+    return {row["copy"]: int(row["kept"], 16) for row in rows}
+
+
+def alias_folds(db, image, listed: dict[str, int] | None = None) -> dict[int, int]:
+    """Name each fold copy in our IMAGE after the copy the game kept. LISTED: listed_folds(). Returns
+    {copy: kept copy}, our addresses."""
+    listed = listed or {}
     functions = [entity for entity in db.all(ImageId.RECOMP)
                  if entity.entity_type == EntityType.FUNCTION and entity.name and entity.size(ImageId.RECOMP)]
-    matched, matched_templates = {}, {}
+    matched, matched_templates, matched_at = {}, {}, {}
     for entity in functions:
         if entity.matched:
             matched.setdefault(entity.name, []).append(entity)
             matched_templates.setdefault(template(entity.name), []).append(entity)
+            matched_at[entity.orig_addr] = entity
 
     def candidates(entity) -> list:
         symbol = entity.get("symbol")
-        if symbol is None:
+        if symbol in listed:
+            named = [matched_at[listed[symbol]]] if listed[symbol] in matched_at else []
+        elif symbol is None:
             named = matched.get(entity.name, [])
         elif TEMPLATE_INSTANCE in symbol:
             named = matched_templates.get(template(entity.name), [])
@@ -73,6 +105,14 @@ def alias_folds(db, image) -> dict[int, int]:
         for address, kept in kept_copies.items():
             batch.set(ImageId.RECOMP, address, computed_name=kept.best_name())
     return folds
+
+
+def not_folded(db, listed: dict[str, int], folds: dict[int, int]) -> list[str]:
+    """The decorated names of LISTED that a copy in our image has and that FOLDS (alias_folds) lacks: rows that
+    name the wrong function or a copy with other code. A row whose copy our image does not hold is left out."""
+    return [entity.get("symbol") for entity in db.all(ImageId.RECOMP)
+            if entity.entity_type == EntityType.FUNCTION and entity.get("symbol") in listed
+            and not entity.matched and entity.recomp_addr not in folds]
 
 
 def template(name: str) -> str:
@@ -114,7 +154,10 @@ def install() -> None:
     def then_alias_folds(db, image_id, binfile, encoding):
         last_step(db, image_id, binfile, encoding)
         if image_id == ImageId.RECOMP:
-            alias_folds(db, binfile)
+            listed = listed_folds(Path(__file__).resolve().parent.parent)
+            for symbol in not_folded(db, listed, alias_folds(db, binfile, listed)):
+                print(f"[WARNING] {LISTED_FOLDS.as_posix()}: {symbol} does not fold into 0x{listed[symbol]:08x}: "
+                      "no matched function is there, or its code differs", file=sys.stderr)
 
     then_alias_folds.folds = True
     core.complete_partial_strings = then_alias_folds

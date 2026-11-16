@@ -39455,7 +39455,7 @@
   {
    "address": "0x005f4ee0",
    "name": "InitLB",
-   "accuracy": 0.9983136593591906,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -39463,7 +39463,7 @@
   {
    "address": "0x005f5940",
    "name": "FUN_005f5940",
-   "accuracy": 0.9855072463768116,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -39479,7 +39479,7 @@
   {
    "address": "0x005f5a70",
    "name": "DrawLB",
-   "accuracy": 0.9995536710555679,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -39519,7 +39519,7 @@
   {
    "address": "0x005fa460",
    "name": "title_menu_sub_lb_exec",
-   "accuracy": 0.9936842105263158,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -39567,7 +39567,7 @@
   {
    "address": "0x005fb840",
    "name": "std::list<LBOnData,std::allocator<LBOnData> >::clear",
-   "accuracy": 0.9795918367346939,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": true
