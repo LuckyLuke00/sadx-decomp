@@ -171,9 +171,31 @@ def check_listed() -> list[str]:
     return failures
 
 
+def check_listed_static() -> list[str]:
+    """A static copy is listed by its name. With the same code it folds into its row's function, though the names
+    differ and a matched function of its own name has the same code. With other code it does not fold, and
+    not_folded() names it. A global function whose name is a listed name does not fold."""
+    listed = {"KasyaDestruct": ORIGINAL + 0x401100}
+    kept = [(0x401000, "KasyaDestruct", reads(DATA), True, None),
+            (0x401100, "DeadJumpdai", reads(DATA), True, None)]
+    cases = (("a static copy with the same code", reads(DATA), None,
+              ({0x402000: 0x401100}, "DeadJumpdai(1)", [])),
+             ("a static copy with other code", reads(DATA + 4), None, ({}, "KasyaDestruct", ["KasyaDestruct"])),
+             ("a global copy", reads(DATA), "?KasyaDestruct@@YAXPAUtask@@@Z", ({}, "KasyaDestruct", [])))
+    failures = []
+    for case, copy_code, symbol, wanted in cases:
+        db, image = database([*kept, (0x402000, "KasyaDestruct", copy_code, False, symbol)])
+        folded = folds.alias_folds(db, image, listed)
+        found = (folded, names(db)[0x402000], folds.not_folded(db, listed, folded))
+        if found != wanted:
+            failures.append(failure("alias_folds", found, case, wanted))
+    return failures
+
+
 def run() -> list[str]:
     """Every check of the fold rule, in order: the failures of all."""
     failures = []
-    for check in (check_copy, check_same_code, check_template, check_not_folded, check_chain, check_listed):
+    for check in (check_copy, check_same_code, check_template, check_not_folded, check_chain, check_listed,
+                  check_listed_static):
         failures += check()
     return failures

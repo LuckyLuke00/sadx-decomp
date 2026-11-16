@@ -23,12 +23,14 @@ too. Only the name changes, so a call to the copy scores as a call to the kept
 one, as in the game.
 
 The link also folds functions whose names differ, such as an empty helper of
-the standard library and an empty function of the game. The names give no
-rule for those, so data/folds.csv lists them: `copy`, the decorated name of our
-copy, `kept`, the game address of the function that the game's link kept, and
-`evidence`, the game code that calls the kept function where the source calls
-the copy. A listed copy folds into that function alone, and only when it is the
-same code.
+the standard library and an empty function of the game, or the static
+destructors of two files. The names give no rule for those, so data/folds.csv
+lists them: `copy`, the decorated name of our copy, or its name for a static
+copy, which has no decorated name, `kept`, the game address of the function
+that the game's link kept, and `evidence`, the game code that calls the kept
+function where the source calls the copy. A listed copy folds into that
+function alone, and only when it is the same code. A name has one row, so the
+static copies of one name can fold into one function only.
 
 install() makes each Compare made after it run alias_folds() on our image at
 the end of reccmp's analysis, with the rows of data/folds.csv.
@@ -49,17 +51,28 @@ LISTED_FOLDS = Path("data") / "folds.csv"  # under the tree's root
 
 
 def listed_folds(root: Path) -> dict[str, int]:
-    """{decorated name of our copy: game address of the kept function} for each row of ROOT's data/folds.csv. A tree
-    without the file has none. A row with no evidence stops the run."""
+    """{copy_key() of our copy: game address of the kept function} for each row of ROOT's data/folds.csv. A tree
+    without the file has none. A row with no evidence or a copy with two rows stops the run."""
     path = root / LISTED_FOLDS
     if not path.exists():
         return {}
     with path.open(encoding="utf-8", newline="") as file:
         rows = list(csv.DictReader(file))
+    listed = {}
     for row in rows:
         if not row["evidence"].strip():
             raise SystemExit(f"{LISTED_FOLDS.as_posix()}: the row of {row['copy']} needs its evidence")
-    return {row["copy"]: int(row["kept"], 16) for row in rows}
+        if row["copy"] in listed:
+            raise SystemExit(f"{LISTED_FOLDS.as_posix()}: {row['copy']} has two rows")
+        listed[row["copy"]] = int(row["kept"], 16)
+    return listed
+
+
+def copy_key(entity) -> str | None:
+    """How data/folds.csv names the function ENTITY: its decorated name, or its name when it has none, as a static
+    function has none."""
+    symbol = entity.get("symbol")
+    return entity.name if symbol is None else symbol
 
 
 def alias_folds(db, image, listed: dict[str, int] | None = None) -> dict[int, int]:
@@ -77,8 +90,9 @@ def alias_folds(db, image, listed: dict[str, int] | None = None) -> dict[int, in
 
     def candidates(entity) -> list:
         symbol = entity.get("symbol")
-        if symbol in listed:
-            named = [matched_at[listed[symbol]]] if listed[symbol] in matched_at else []
+        key = copy_key(entity)
+        if key in listed:
+            named = [matched_at[listed[key]]] if listed[key] in matched_at else []
         elif symbol is None:
             named = matched.get(entity.name, [])
         elif TEMPLATE_INSTANCE in symbol:
@@ -108,10 +122,10 @@ def alias_folds(db, image, listed: dict[str, int] | None = None) -> dict[int, in
 
 
 def not_folded(db, listed: dict[str, int], folds: dict[int, int]) -> list[str]:
-    """The decorated names of LISTED that a copy in our image has and that FOLDS (alias_folds) lacks: rows that
-    name the wrong function or a copy with other code. A row whose copy our image does not hold is left out."""
-    return [entity.get("symbol") for entity in db.all(ImageId.RECOMP)
-            if entity.entity_type == EntityType.FUNCTION and entity.get("symbol") in listed
+    """The copies of LISTED, by copy_key(), that a function in our image is and that FOLDS (alias_folds) lacks: rows
+    that name the wrong function or a copy with other code. A row whose copy our image does not hold is left out."""
+    return [copy_key(entity) for entity in db.all(ImageId.RECOMP)
+            if entity.entity_type == EntityType.FUNCTION and copy_key(entity) in listed
             and not entity.matched and entity.recomp_addr not in folds]
 
 
@@ -155,8 +169,8 @@ def install() -> None:
         last_step(db, image_id, binfile, encoding)
         if image_id == ImageId.RECOMP:
             listed = listed_folds(Path(__file__).resolve().parent.parent)
-            for symbol in not_folded(db, listed, alias_folds(db, binfile, listed)):
-                print(f"[WARNING] {LISTED_FOLDS.as_posix()}: {symbol} does not fold into 0x{listed[symbol]:08x}: "
+            for copy in not_folded(db, listed, alias_folds(db, binfile, listed)):
+                print(f"[WARNING] {LISTED_FOLDS.as_posix()}: {copy} does not fold into 0x{listed[copy]:08x}: "
                       "no matched function is there, or its code differs", file=sys.stderr)
 
     then_alias_folds.folds = True
