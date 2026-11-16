@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "decls.h"
+#include "advertise.h"
 extern void (*DAT_025d7530[43])(struct task *);
 extern struct task *DAT_05b3eab4;
 extern void (*DAT_025d77e8[43])(struct task *);
@@ -83,6 +84,44 @@ extern char DAT_05b42c1c;
 extern unsigned char DAT_05b3ea25;
 
 int FUN_005030d0();
+extern short DAT_05b9d734;
+extern short DAT_05b9d71c;
+extern short DAT_05b9d738;
+extern short DAT_05b9d76c;
+extern int DAT_05baf540;
+void FUN_00587810();
+void FUN_0057cd20();
+short FadeOut();
+short GameOver(long sel);
+long MsMovie(long mn);
+unsigned short FUN_004c8570(void);
+void FUN_004c85b0();
+void FUN_004c85c0();
+short FUN_004c85d0();
+void FUN_004c93f0();
+void FUN_004c9400();
+void EndGameOver();
+void InitGameOver();
+void SeqSetSection(int sec);
+long GameStageNameModeInit(long time);
+long GameStageNameMode(void *Param);
+void FUN_00573e40(void);
+void SetNextStageNumber(unsigned char stg, unsigned char act);
+short PauseLoop();
+unsigned short FUN_004c83c0();
+void FUN_004c8170();
+short FUN_004c76d0();
+void GoNextAdventure();
+void InitializeStage();
+void InitDisplayStart();
+void AL_ExitChaoGarden();
+void EndStage();
+void InitFadeOut();
+void MapDispOn();
+void SeqRun();
+void SeqSetPlayer(int no);
+int dsPause_all();
+int dsRelease_all();
 
 // FUNCTION: SADX 0x004c4fa0
 void PauseEnable()
@@ -332,6 +371,592 @@ void GoNextAction()
 		FUN_004c76e0();
 		DAT_05b9d73c = 0x11;
 	}
+}
+
+// FUNCTION: SADX 0x004c67f0
+short Adventure()
+{
+	int local_18;
+	unsigned short local_14;
+	union NJS_COLOR local_10;
+	union NJS_COLOR local_ci;
+	short local_8g;
+
+	if (!FUN_0040ae00())
+	{
+		if (FUN_00405f00()->FUN_00424960() != -1)
+		{
+			StartTheFirstGame();
+			FUN_00573e40();
+			SetNextStageNumber(1, 0);
+			FUN_004c9400();
+			return 2;
+		}
+	}
+	switch (DAT_05b9d73c)
+	{
+	case 0x15:
+		if (DAT_05b9d724 == 0x22 || (DAT_05b9d718 == 3 && EV_CheckExec(0x80) == 0))
+		{
+			DAT_05b9d73c = 0;
+			break;
+		}
+		else if (DAT_05b9d724 == 0x21 && DAT_05b9d744 == 3)
+		{
+			DAT_05b9d73c = 0;
+			break;
+		}
+		else if (DAT_05cd0f24 != 0)
+		{
+			DAT_05b9d73c = 0;
+			DAT_05bb00a9 = 0;
+			break;
+		}
+		local_ci.argb.a = 0;
+		local_ci.argb.r = 0;
+		local_ci.argb.g = 0;
+		local_ci.argb.b = 0;
+		SetOffsetColor(&local_ci);
+		local_8g = GameStageNameModeInit(1);
+		if (local_8g == -1)
+		{
+			DAT_05b9d73c = 0;
+			break;
+		}
+		else
+		{
+			DAT_05b9d73c++;
+			DAT_05cd14d4 = 1;
+		}
+		break;
+	case 0x16:
+		DAT_05cd14d4 = 0;
+		DAT_05b9d838 = 0;
+		local_8g = GameStageNameMode(0);
+		if (local_8g == 1)
+		{
+			DAT_05cd14d4 = 0;
+			InitializeStage();
+			FUN_004c8170();
+			InitFadeIn();
+			InitDisplayStart();
+			ADXTaskInit();
+			while (FadeIn())
+			{
+			}
+			if (GM_CheckStartEvent())
+			{
+				DAT_05b9d73c = 4;
+			}
+			else
+			{
+				DAT_05b9d73c = 4;
+			}
+		}
+		break;
+	case 0:
+		DAT_05cd14d4 = 0;
+		InitFadeIn();
+		DAT_05b9d73c = 1;
+	case 1:
+		if (DAT_05cc3628 == 0 && FadeIn() == 0)
+		{
+			InitializeStage();
+			FUN_004c8170();
+			while (FadeIn() != 0)
+			{
+			}
+			GM_CheckStartEvent();
+			DAT_05b9d73c = 4;
+		}
+		break;
+	case 2:
+		InitFadeIn();
+		DAT_05b9d73c = 3;
+	case 3:
+		if (FadeIn() == 0)
+		{
+			FUN_004c8170();
+			DAT_05b9d73c = 4;
+		}
+		ADXTaskInit();
+		break;
+	case 4:
+		local_8g = FadeIn();
+		SeqCtrl();
+		FUN_004c83c0();
+		if (local_8g != 0)
+		{
+			DAT_05b9d73c = 0xf;
+			if (EV_CheckCansel() == 0)
+			{
+				PadReadOn();
+			}
+			WakeTimer();
+			PauseEnable();
+		}
+		break;
+	case 0x19:
+		if ((DAT_05b93264[0]->on & 0xe) == 0)
+		{
+			DAT_05b9d73c = 0xf;
+		}
+		else
+		{
+			GetSwitchData();
+			DAT_05b9d838 = 0;
+			DisplayTask();
+			DisplayScore();
+			DisplayTimer();
+			SpLoopOnlyDisplay();
+			break;
+		}
+	case 0xf:
+		SeqCtrl();
+		if (DAT_05baf540 != 0)
+		{
+			SetChangeGameMode(1);
+		}
+		if (FUN_004c76d0() == 0)
+		{
+			local_8g = FUN_004c83c0();
+		}
+		if (FUN_004c76d0() == 6)
+		{
+		label_6:
+			FUN_004c76e0();
+			DAT_05b9d73c = 0xd;
+			InitFadeOut();
+			PadReadOff();
+			SleepTimer();
+			PauseDisable();
+		}
+		else if (FUN_004c76d0() == 1)
+		{
+			FUN_004c76e0();
+			if (DAT_05baf540 == 0)
+			{
+				if (DAT_05b9d728 != 0)
+				{
+					DAT_05b9d73c = 0x11;
+					FUN_004c87a0();
+				}
+				else
+				{
+					DAT_05b9d73c = 5;
+					pdVibMxStop(0);
+					InitFadeOut();
+				}
+			}
+			else
+			{
+				DAT_05cd14d4 = 1;
+				DAT_05b9d73c = 0xe;
+			}
+			PadReadOff();
+			SleepTimer();
+			PauseDisable();
+		}
+		else if (FUN_004c76d0() == 2)
+		{
+			FUN_004c76e0();
+			if (GetNumPlayer() > 0)
+			{
+				InitFadeOut();
+				DAT_05b9d73c = 6;
+				pdVibMxStop(0);
+			}
+			else
+			{
+				InitGameOver();
+				DAT_05b9d73c = 8;
+				pdVibMxStop(0);
+			}
+			PadReadOff();
+			SleepTimer();
+			PauseDisable();
+		}
+		else if (FUN_004c76d0() == 3)
+		{
+			FUN_004c76e0();
+			DAT_05b9d73c = 9;
+			if (DAT_05b9d728 != 0)
+			{
+				GoNextAdventure();
+			}
+			else
+			{
+				InitFadeOut();
+			}
+			PadReadOff();
+			SleepTimer();
+			PauseDisable();
+		}
+		else if (FUN_004c76d0() == 4)
+		{
+			FUN_004c76e0();
+			DAT_05b9d73c = 0xb;
+			InitFadeOut();
+			PadReadOff();
+			SleepTimer();
+			PauseDisable();
+		}
+		else if ((DAT_05b93264[0]->press & 8) != 0 || DAT_05cd0f2c != 0 || (DAT_05cda170 == 0 && IsNeedForcePause()))
+		{
+			if (DAT_05cda170 != 0)
+			{
+				if (DAT_05cd0f28 >= 0 && DAT_05cd0f2c != 0)
+				{
+					FUN_004c87a0();
+					FUN_004c76e0();
+					DAT_05b9d73c = 0x14;
+				}
+				else
+				{
+					SetChangeGameMode(6);
+					if (DAT_05cd0f2c == 0)
+					{
+						DAT_05cda170 = 0;
+					}
+					goto label_6;
+				}
+			}
+			else if ((DAT_05b932e8[0].on & 8) != 0 || IsNeedForcePause())
+			{
+				if (ssPauseEnable == 1 && EV_CheckCansel() == 0 && DAT_05cd14d4 == 0)
+				{
+					dsPlay_oneshot(3, 0, 0, 0);
+					DAT_05b93710 = 0;
+					DAT_05b9d73c = 0x10;
+					pdVibMxStop(0);
+					dsPause_all();
+				}
+			}
+		}
+		else if ((DAT_05b93264[0]->press & 0x606) != 0 && (DAT_05b93264[0]->on & 0x606) == 0x606)
+		{
+			DAT_05b3ea16 = ~DAT_05b3ea16;
+		}
+		break;
+	case 0x10:
+		if (DAT_05cc3628 != 0)
+		{
+			break;
+		}
+		local_8g = PauseLoop();
+		DAT_05b3ea00 = 0;
+		if (local_8g == 1)
+		{
+			local_8g = 0;
+			break;
+		}
+		else if (local_8g == 2)
+		{
+			if (DAT_05b9d724 >= 0x27 && DAT_05b9d724 <= 0x2a)
+			{
+				local_8g = 0;
+				FUN_00587810();
+				AL_ExitChaoGarden();
+				DAT_05b9d73c = 0xf;
+			}
+			else
+			{
+				local_8g = 0;
+				FUN_004c87a0();
+				FUN_00587810();
+				DAT_05b9d73c = 0x14;
+			}
+			break;
+		}
+		else if (local_8g == 3)
+		{
+			dsRelease_all();
+			DAT_05b9d73c = 0xf;
+			local_8g = 0;
+			break;
+		}
+		if (IsSOCAVAPress(0, 2))
+		{
+			dsRelease_all();
+			dsPlay_oneshot(3, 0, 0, 0);
+			DAT_05b9d73c = 0xf;
+		}
+		else if (IsSOCAVAPress(0, 8) || IsSOCAVAPress(0, 4))
+		{
+			IsndVolume(DAT_05b3e988[0], 0);
+			IsndVolume(DAT_05b3e988[1], 1);
+			DAT_05b3ea00 = 0;
+			dsPlay_oneshot(3, 0, 0, 0);
+			if (DAT_05b93710 == 0)
+			{
+				dsRelease_all();
+				DAT_05b9d73c = 0xf;
+			}
+			else if (DAT_05b93710 == 1)
+			{
+				dsRelease_all();
+				DAT_05b9d73c = 0xf;
+				FUN_004c93f0();
+			}
+			else if (DAT_05b93710 == 2)
+			{
+				padconfig(1);
+			}
+			else if (DAT_05b93710 == 7)
+			{
+				padconfig(5);
+			}
+			else if (DAT_05b93710 == 5)
+			{
+				cameramodechange(1);
+			}
+			else if (DAT_05b93710 == 4)
+			{
+				MapDispOn();
+			}
+			else if (DAT_05b9d724 >= 0x27 && DAT_05b9d724 <= 0x2a)
+			{
+				GameQuitYesNo(1, 0);
+			}
+			else
+			{
+				GameQuitYesNo(1, 0);
+			}
+			if (DAT_05cda170 == 0)
+			{
+				DAT_05cda168 = 0;
+			}
+			else
+			{
+				AddNumPlayer(1);
+				SetChangeGameMode(2);
+			}
+		}
+		break;
+	case 5:
+		if (DAT_05cc3628 != 0)
+		{
+			break;
+		}
+		local_8g = FadeOut();
+		SeqCtrl();
+		FUN_004c83c0();
+		if (local_8g != 0)
+		{
+			FUN_004c87a0();
+			FUN_004c76e0();
+			DAT_05b9d73c = 0x11;
+		}
+		break;
+	case 6:
+		local_8g = FadeOut();
+		if (local_8g != 0)
+		{
+			FUN_004c87a0();
+			FUN_004c76e0();
+			AddNumPlayer(-1);
+			DAT_05b9d73c = 2;
+			FUN_00554a70();
+		}
+		else
+		{
+			FUN_004c83c0();
+		}
+		break;
+	case 8:
+		local_8g = GameOver(DAT_05b9d76c);
+		FUN_004c83c0();
+		if (local_8g != 0)
+		{
+			FUN_004c87a0();
+			FUN_004c76e0();
+			DAT_05b9d73c = 0x12;
+			FUN_00554a70();
+		}
+		break;
+	case 9:
+		local_8g = FadeOut();
+		SeqCtrl();
+		if (local_8g != 0)
+		{
+			GoNextAdventure();
+		}
+		else
+		{
+			FUN_004c83c0();
+		}
+		break;
+	case 0xd:
+		local_8g = FadeOut();
+		FUN_004c83c0();
+		if (local_8g != 0)
+		{
+			FUN_004c87a0();
+			FUN_004c76e0();
+			DAT_05b9d73c = 0x14;
+		}
+		break;
+	case 0xe:
+		FUN_004c87a0();
+		FUN_004c76e0();
+		EndStage();
+		DAT_05b9d73c = 0x15;
+		local_10.color = 0;
+		SetOffsetColor(&local_10);
+		return 10;
+		break;
+	case 0xb:
+		local_8g = FadeOut();
+		if (local_8g != 0)
+		{
+			FUN_004c87a0();
+			FUN_004c76e0();
+			local_14 = DAT_05b9d734 - DAT_05b9d744;
+			DAT_05b9d73c = 2;
+			AddSetStage(local_14);
+			AdvanceActLocal(local_14);
+		}
+		else
+		{
+			FUN_004c8570();
+		}
+		break;
+	case 0x11:
+		FUN_00587810();
+		EndStage();
+		FUN_004c9400();
+		if (DAT_05cda154 != 0)
+		{
+			if (MsMovie(DAT_05cda154) < 0)
+			{
+				DAT_05b9d73c = 0x15;
+				FUN_004c76e0();
+				return -2;
+			}
+			DAT_05b9d73c = 0;
+		}
+		else if (DAT_05b9d730 == 0x22)
+		{
+			DAT_05b9d73c = 0;
+		}
+		else if (DAT_05b9d724 == 0x21 && DAT_05b9d744 == 3)
+		{
+			DAT_05b9d73c = 0;
+		}
+		else
+		{
+			DAT_05b9d73c = 0x15;
+		}
+		return GM_CheckMode();
+	case 0x12:
+		EndStage();
+		DAT_05b9d73c = 0x13;
+		DAT_05b9d76c = 0;
+		DAT_05b9d738 = 0x4b0;
+		FUN_004c85b0();
+		ADXTaskInit();
+		Jingle_Play(0x1a);
+	case 0x13:
+		if (DAT_05b92e44 & advance_button)
+		{
+			FUN_004c85c0();
+			EndGameOver();
+			if (DAT_05b9d76c == 0)
+			{
+				InitScore();
+				SeqInit();
+				DAT_05ccca18.lastPlayer = DAT_05b9d718;
+				local_18 = FUN_005030d0();
+				if (local_18 & 1)
+				{
+					dsVMSLoadGame();
+				}
+				DAT_05ccca18.lastPlayer = DAT_05b9d718;
+				ExtractLoadData();
+				if (GetNumPlayer() < 4)
+				{
+					ResetNumPlayer();
+				}
+				SeqRun();
+				SeqSetPlayer(DAT_05b9d718);
+				SeqSetSection(*(short *)(DAT_05b3ea28 + 4));
+				if (DAT_05bb00a8 == 0)
+				{
+					DAT_05b9d724 = DAT_05b9d71c;
+					DAT_05b9d744 = DAT_05b9d734;
+					SeqInitStage();
+				}
+				DAT_05b9d73c = 0x15;
+				return 0;
+			}
+			else
+			{
+				DAT_05b9d73c = 0x15;
+				return -1;
+			}
+		}
+		if (DAT_05b92e44 & 0x300c0)
+		{
+			DAT_05b9d76c = DAT_05b9d76c ^ 1;
+		}
+		GameOver(DAT_05b9d76c);
+		FUN_004c85d0();
+		break;
+	case 0x14:
+		EndStage();
+		DAT_05b9d73c = 0x15;
+		DAT_05b9d76c = 0;
+		return -1;
+	default:
+		DAT_05b9d73c = 0x11;
+		break;
+	}
+	if (FUN_004c39c0(0) != 0)
+	{
+		switch (DAT_05b9d73c)
+		{
+		case 0xb:
+			if ((((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) == 0x2700 || (((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) == 0x2800 || (((DAT_05b9d724 << 8) | DAT_05b9d744) & 0xff00) == 0x2900)
+			{
+				FUN_004c87a0();
+				EndStage();
+			}
+			break;
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 9:
+		case 0xd:
+		case 0xf:
+		case 0x10:
+		case 0x19:
+			FUN_004c87a0();
+		case 0x11:
+		case 0x12:
+		case 0x14:
+			FUN_00587810();
+			EndStage();
+			break;
+		case 8:
+			FUN_004c87a0();
+			EndStage();
+			break;
+		case 0x13:
+			EndGameOver();
+			break;
+		}
+		DAT_05b9d73c = 0x15;
+		FUN_004c76e0();
+		FUN_0057cd20();
+		cameramodechange(2);
+		padconfig(2);
+		dsStop_all();
+		dsPause_all();
+		return -2;
+	}
+	return 0;
 }
 
 // FUNCTION: SADX 0x004c75c0

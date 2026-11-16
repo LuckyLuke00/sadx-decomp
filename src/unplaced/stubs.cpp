@@ -1861,6 +1861,11 @@ signed char PauseNext(signed char sel)
 	return (signed char)0;
 }
 
+// STUB: SADX 0x00587810
+void FUN_00587810()
+{
+}
+
 // STUB: SADX 0x00588110
 void DrawButtonAVXCBB()
 {

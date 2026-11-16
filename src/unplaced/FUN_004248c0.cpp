@@ -30,8 +30,13 @@ void SOCInput::FUN_00424950(int param_1)
 	m_ActiveIndex = param_1;
 }
 
+int SOCInput::FUN_00424960()
+{
+	return m_ActiveIndex;
+}
+
 // FUNCTION: SADX 0x00424960
 char* SOCFileStream::FUN_00424960()
 {
-	return *(char **)this;
+	return (char *)field_0x0;
 }

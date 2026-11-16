@@ -1034,6 +1034,9 @@ long action_button;
 // GLOBAL: SADX 0x025d59f4
 long jump_button;
 
+// GLOBAL: SADX 0x025d59f8
+long advance_button;
+
 // GLOBAL: SADX 0x025d5a00
 long hold_button;
 
@@ -6452,6 +6455,9 @@ short DAT_05b93710;
 // GLOBAL: SADX 0x05b9d718
 unsigned short DAT_05b9d718;
 
+// GLOBAL: SADX 0x05b9d71c
+short DAT_05b9d71c;
+
 // GLOBAL: SADX 0x05b9d720
 short DAT_05b9d720;
 
@@ -6467,6 +6473,12 @@ short DAT_05b9d72c;
 // GLOBAL: SADX 0x05b9d730
 short DAT_05b9d730;
 
+// GLOBAL: SADX 0x05b9d734
+short DAT_05b9d734;
+
+// GLOBAL: SADX 0x05b9d738
+short DAT_05b9d738;
+
 // GLOBAL: SADX 0x05b9d73c
 short DAT_05b9d73c;
 
@@ -6478,6 +6490,9 @@ short DAT_05b9d744;
 
 // GLOBAL: SADX 0x05b9d748
 short DAT_05b9d748;
+
+// GLOBAL: SADX 0x05b9d76c
+short DAT_05b9d76c;
 
 // GLOBAL: SADX 0x05b9d770
 short DAT_05b9d770;
@@ -6685,6 +6700,9 @@ int DAT_05baf538;
 
 // GLOBAL: SADX 0x05baf53c
 int DAT_05baf53c;
+
+// GLOBAL: SADX 0x05baf540
+int DAT_05baf540;
 
 // GLOBAL: SADX 0x05baf544
 int DAT_05baf544;

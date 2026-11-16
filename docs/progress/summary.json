@@ -18043,6 +18043,14 @@
    "library": false
   },
   {
+   "address": "0x004c67f0",
+   "name": "Adventure",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x004c75c0",
    "name": "GoNextAdventure",
    "accuracy": 1.0,
@@ -29734,6 +29742,14 @@
    "address": "0x00587710",
    "name": "DestroyLBOn",
    "accuracy": 0.10526315789473684,
+   "effective": false,
+   "stub": true,
+   "library": false
+  },
+  {
+   "address": "0x00587810",
+   "name": "FUN_00587810",
+   "accuracy": 0.08163265306122448,
    "effective": false,
    "stub": true,
    "library": false
@@ -94154,6 +94170,13 @@
    "library": false
   },
   {
+   "address": "0x025d59f8",
+   "name": "advance_button",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x025d5a00",
    "name": "hold_button",
    "size": 4,
@@ -105398,5 +105421,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "8a01e9f634e56e23fa435733ec4c44f7c3030b7f3924baecf1a49a22a9f1d225"
+ "inputs_sha256": "6aedae11e23472305f766f0153b8b462307fcbff90433183caf466ac7be14903"
 }
