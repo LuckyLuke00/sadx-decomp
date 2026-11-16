@@ -1,6 +1,6 @@
 #include "decls.h"
 extern int DAT_05b9d838;
-extern struct obj *DAT_04a08338;
+extern struct obj object_hane_prhdp_prhdp[];
 
 // FUNCTION: SADX 0x00893000
 void hane_draw(struct task *task_p)
@@ -23,7 +23,7 @@ void hane_draw(struct task *task_p)
 		njRotateY(0, (Uint16)var1->ang.y);
 	}
 	FUN_0067d2d0(0, var1->scl.x, var1->scl.y, var1->scl.z);
-	ds_DrawObjectClip(DAT_04a08338, FUN_00500c70(var1->scl.x, var1->scl.y, var1->scl.z));
+	ds_DrawObjectClip(object_hane_prhdp_prhdp->child, FUN_00500c70(var1->scl.x, var1->scl.y, var1->scl.z));
 	njPopMatrix(1);
 }
 

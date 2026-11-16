@@ -542,11 +542,8 @@ struct obj object_casinoobj_casinobuil_casinobuil[1];
 // GLOBAL: SADX 0x01cd8000
 struct obj object_casinoobj_casinoji_casinoji[1];
 
-// GLOBAL: SADX 0x01cd8c58
-struct NJS_MODEL *DAT_01cd8c58;
-
-// GLOBAL: SADX 0x01cd8c80
-struct obj *DAT_01cd8c80;
+// GLOBAL: SADX 0x01cd8c54
+struct obj object_sssikake_cajinobutton_cajinobutton[1];
 
 // GLOBAL: SADX 0x01e55450
 long TexBankList[6][3];
@@ -821,8 +818,8 @@ struct NJS_TEXLIST texlist_tuto_cmn;
 // GLOBAL: SADX 0x0234f908
 struct NJS_TEXLIST *TutorialBgTexlistTbl[7];
 
-// GLOBAL: SADX 0x023b7114
-char DAT_023b7114[20480];
+// GLOBAL: SADX 0x023b4928
+struct _OBJ_LANDENTRY objLandEntry[582];
 
 // GLOBAL: SADX 0x0257cfe4
 struct NJS_TEXLIST texlist_kariobj;
@@ -2313,28 +2310,19 @@ union NJS_COLOR vuvS_0_kemuri_boss_boss[12];
 struct NJS_TEXLIST texlist_egm3mdl;
 
 // GLOBAL: SADX 0x02833c5c
-struct obj *egm3_object_list[1];
-
-// GLOBAL: SADX 0x02833c70
-struct obj *DAT_02833c70;
+struct obj *egm3_object_list[7];
 
 // GLOBAL: SADX 0x02833c78
-struct NJS_MOTION *egm3_motion_list[8];
+struct NJS_MOTION *egm3_motion_list[6];
 
 // GLOBAL: SADX 0x02833cb0
-struct obj *egm3_effect_objectlist[1];
-
-// GLOBAL: SADX 0x02833cb4
-struct obj *DAT_02833cb4;
+struct obj *egm3_effect_objectlist[5];
 
 // GLOBAL: SADX 0x02833cc4
 struct NJS_MOTION *egm3_effect_motionlist[6];
 
 // GLOBAL: SADX 0x02833cdc
-struct NJS_TEXLIST *egm3_effect_texlist_list;
-
-// GLOBAL: SADX 0x02833ce0
-struct NJS_TEXLIST *DAT_02833ce0;
+struct NJS_TEXLIST *egm3_effect_texlist_list[5];
 
 // GLOBAL: SADX 0x02833cf0
 struct NJS_TEXLIST *egm3_texlist_list[4];
@@ -2370,13 +2358,7 @@ int DAT_0286c4bc[4];
 struct GHSPRITE_ANIM_TABLE animtable_HandSpark[9];
 
 // GLOBAL: SADX 0x0286c6c0
-struct WIDELINE_TEXDATA wline_thunder[1];
-
-// GLOBAL: SADX 0x0286c6f3
-unsigned char DAT_0286c6f3;
-
-// GLOBAL: SADX 0x0286c6f7
-unsigned char DAT_0286c6f7;
+struct WIDELINE_TEXDATA wline_thunder[2];
 
 // GLOBAL: SADX 0x0286c718
 struct GHSPRITE_ANIM_TABLE animtable_spark[1];
@@ -3170,14 +3152,14 @@ struct NJS_MODEL model_wvobj_ha_yellow_ha_yellow[1];
 // GLOBAL: SADX 0x03b23fc8
 struct NJS_MODEL model_wvobj_ha_green_ha_green[1];
 
-// GLOBAL: SADX 0x03b26f48
-struct NJS_MODEL *DAT_03b26f48;
+// GLOBAL: SADX 0x03b26f44
+struct obj object_wvobj_cube_s_cube_s[1];
 
-// GLOBAL: SADX 0x03b273a0
-struct NJS_MODEL *DAT_03b273a0;
+// GLOBAL: SADX 0x03b2739c
+struct obj object_wvobj_cube_m_cube_m[1];
 
-// GLOBAL: SADX 0x03b27828
-struct NJS_MODEL *DAT_03b27828;
+// GLOBAL: SADX 0x03b27824
+struct obj object_wvobj_cube_l_cube_l[1];
 
 // GLOBAL: SADX 0x03b28cac
 struct obj object_wvobj_ukisima_ukisima[1];
@@ -3256,18 +3238,6 @@ struct bridge_model_info windy_bridge_02;
 
 // GLOBAL: SADX 0x03b75448
 struct CCL_INFO hasi_colli_info2[3];
-
-// GLOBAL: SADX 0x03b75568
-struct CCL_INFO DAT_03b75568[1];
-
-// GLOBAL: SADX 0x03b75598
-struct CCL_INFO DAT_03b75598[1];
-
-// GLOBAL: SADX 0x03b755c8
-struct CCL_INFO DAT_03b755c8[1];
-
-// GLOBAL: SADX 0x03b75628
-struct CCL_INFO DAT_03b75628[1];
 
 // GLOBAL: SADX 0x03b75660
 float alpha;
@@ -3932,11 +3902,11 @@ struct obj object_green_moku_b_moku_b[1];
 // GLOBAL: SADX 0x045b135c
 struct obj object_green_moku_c_moku_c[1];
 
-// GLOBAL: SADX 0x045b2db0
-struct obj *DAT_045b2db0;
+// GLOBAL: SADX 0x045b2dac
+struct obj object_obj_house_ita02_house_ita02[1];
 
-// GLOBAL: SADX 0x045b3108
-struct NJS_MODEL *DAT_045b3108;
+// GLOBAL: SADX 0x045b3104
+struct obj object_obj_house_ita01_house_ita01[1];
 
 // GLOBAL: SADX 0x045b34c0
 struct obj object_obj_mizuiwa_a_obj_mizuiwa_a[1];
@@ -4112,11 +4082,8 @@ struct NJS_TEXLIST texlist_obj_casino8;
 // GLOBAL: SADX 0x0478629c
 struct obj object_csn_obj_haguruma_obj_haguruma[1];
 
-// GLOBAL: SADX 0x04786eb0
-struct obj *DAT_04786eb0;
-
-// GLOBAL: SADX 0x04786ed8
-struct obj *DAT_04786ed8;
+// GLOBAL: SADX 0x04786eac
+struct obj object_csn_obj_tutu_a_obj_tutu_a[1];
 
 // GLOBAL: SADX 0x0478749c
 struct obj object_csn_obj_tutu_b_obj_tutu_b[1];
@@ -4448,8 +4415,8 @@ struct CCL_INFO standlight_colli_info[1];
 // GLOBAL: SADX 0x048a5a74
 struct CCL_INFO uptarget_colli_info[1];
 
-// GLOBAL: SADX 0x04a08338
-struct obj *DAT_04a08338;
+// GLOBAL: SADX 0x04a0830c
+struct obj object_hane_prhdp_prhdp[1];
 
 // GLOBAL: SADX 0x04a09554
 struct obj object_kanban_eggkanban_eggkanban[1];
@@ -4655,8 +4622,8 @@ struct obj object_c0_balia_a_balia_a[1];
 // GLOBAL: SADX 0x04c37a2c
 struct NJS_TEXLIST texlist_chaos_effect;
 
-// GLOBAL: SADX 0x04c37b48
-int DAT_04c37b48[6][3];
+// GLOBAL: SADX 0x04c37b40
+struct NJS_TEXNAME texture_chaos_surface[6];
 
 // GLOBAL: SADX 0x04c38b98
 int DAT_04c38b98[4];

@@ -48397,7 +48397,7 @@
   {
    "address": "0x006ce8d0",
    "name": "EggmanEnergyDraw",
-   "accuracy": 0.9855072463768116,
+   "accuracy": 1.0,
    "effective": false,
    "stub": false,
    "library": false
@@ -92973,16 +92973,9 @@
    "library": false
   },
   {
-   "address": "0x01cd8c58",
-   "name": "DAT_01cd8c58",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x01cd8c80",
-   "name": "DAT_01cd8c80",
-   "size": 4,
+   "address": "0x01cd8c54",
+   "name": "object_sssikake_cajinobutton_cajinobutton",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -93652,9 +93645,9 @@
    "library": false
   },
   {
-   "address": "0x023b7114",
-   "name": "DAT_023b7114",
-   "size": 20480,
+   "address": "0x023b4928",
+   "name": "objLandEntry",
+   "size": 20952,
    "match": false,
    "library": false
   },
@@ -97588,35 +97581,21 @@
   {
    "address": "0x02833c5c",
    "name": "egm3_object_list",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x02833c70",
-   "name": "DAT_02833c70",
-   "size": 4,
+   "size": 28,
    "match": false,
    "library": false
   },
   {
    "address": "0x02833c78",
    "name": "egm3_motion_list",
-   "size": 32,
+   "size": 24,
    "match": false,
    "library": false
   },
   {
    "address": "0x02833cb0",
    "name": "egm3_effect_objectlist",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x02833cb4",
-   "name": "DAT_02833cb4",
-   "size": 4,
+   "size": 20,
    "match": false,
    "library": false
   },
@@ -97630,14 +97609,7 @@
   {
    "address": "0x02833cdc",
    "name": "egm3_effect_texlist_list",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x02833ce0",
-   "name": "DAT_02833ce0",
-   "size": 4,
+   "size": 20,
    "match": false,
    "library": false
   },
@@ -97728,21 +97700,7 @@
   {
    "address": "0x0286c6c0",
    "name": "wline_thunder",
-   "size": 44,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x0286c6f3",
-   "name": "DAT_0286c6f3",
-   "size": 1,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x0286c6f7",
-   "name": "DAT_0286c6f7",
-   "size": 1,
+   "size": 88,
    "match": false,
    "library": false
   },
@@ -99819,23 +99777,23 @@
    "library": false
   },
   {
-   "address": "0x03b26f48",
-   "name": "DAT_03b26f48",
-   "size": 4,
+   "address": "0x03b26f44",
+   "name": "object_wvobj_cube_s_cube_s",
+   "size": 52,
    "match": false,
    "library": false
   },
   {
-   "address": "0x03b273a0",
-   "name": "DAT_03b273a0",
-   "size": 4,
+   "address": "0x03b2739c",
+   "name": "object_wvobj_cube_m_cube_m",
+   "size": 52,
    "match": false,
    "library": false
   },
   {
-   "address": "0x03b27828",
-   "name": "DAT_03b27828",
-   "size": 4,
+   "address": "0x03b27824",
+   "name": "object_wvobj_cube_l_cube_l",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -100045,35 +100003,7 @@
   {
    "address": "0x03b75508",
    "name": "object_c_info",
-   "size": 96,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x03b75568",
-   "name": "DAT_03b75568",
-   "size": 48,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x03b75598",
-   "name": "DAT_03b75598",
-   "size": 48,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x03b755c8",
-   "name": "DAT_03b755c8",
-   "size": 48,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x03b75628",
-   "name": "DAT_03b75628",
-   "size": 48,
+   "size": 336,
    "match": false,
    "library": false
   },
@@ -101919,16 +101849,16 @@
    "library": false
   },
   {
-   "address": "0x045b2db0",
-   "name": "DAT_045b2db0",
-   "size": 4,
+   "address": "0x045b2dac",
+   "name": "object_obj_house_ita02_house_ita02",
+   "size": 52,
    "match": false,
    "library": false
   },
   {
-   "address": "0x045b3108",
-   "name": "DAT_045b3108",
-   "size": 4,
+   "address": "0x045b3104",
+   "name": "object_obj_house_ita01_house_ita01",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -102444,16 +102374,9 @@
    "library": false
   },
   {
-   "address": "0x04786eb0",
-   "name": "DAT_04786eb0",
-   "size": 4,
-   "match": false,
-   "library": false
-  },
-  {
-   "address": "0x04786ed8",
-   "name": "DAT_04786ed8",
-   "size": 4,
+   "address": "0x04786eac",
+   "name": "object_csn_obj_tutu_a_obj_tutu_a",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -103487,9 +103410,9 @@
    "library": false
   },
   {
-   "address": "0x04a08338",
-   "name": "DAT_04a08338",
-   "size": 4,
+   "address": "0x04a0830c",
+   "name": "object_hane_prhdp_prhdp",
+   "size": 52,
    "match": false,
    "library": false
   },
@@ -104047,8 +103970,8 @@
    "library": false
   },
   {
-   "address": "0x04c37b48",
-   "name": "DAT_04c37b48",
+   "address": "0x04c37b40",
+   "name": "texture_chaos_surface",
    "size": 72,
    "match": false,
    "library": false
@@ -105421,5 +105344,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "347cdf60321fc23ed7d017f722ec0571d02eedb0dd1f6ea8135d6219ef116a07"
+ "inputs_sha256": "0f685a3a3f8251bb065927d711941294e287802b5454c4b37b2296d158381c5e"
 }

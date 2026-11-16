@@ -1,6 +1,5 @@
 #include "decls.h"
-extern struct NJS_MODEL *DAT_01cd8c58;
-extern struct obj *DAT_01cd8c80;
+extern struct obj object_sssikake_cajinobutton_cajinobutton[];
 
 // FUNCTION: SADX 0x00688630
 void Disp(struct task *tp)
@@ -29,8 +28,8 @@ void Disp(struct task *tp)
 		{
 			njRotateY(NULL, (unsigned short)var1->ang.y);
 		}
-		ds_DrawModelClip(DAT_01cd8c58, 1.0f);
-		var2 = DAT_01cd8c80;
+		ds_DrawModelClip(object_sssikake_cajinobutton_cajinobutton->model, 1.0f);
+		var2 = object_sssikake_cajinobutton_cajinobutton->child;
 		FUN_0067d830(NULL, 0.0f, 0.0f, var1->counter.f);
 		if (var1->ang.z != 0)
 		{

@@ -1,7 +1,5 @@
 #include "decls.h"
-extern unsigned char DAT_0286c6f3;
-extern unsigned char DAT_0286c6f7;
-extern struct WIDELINE_TEXDATA wline_thunder[1];
+extern struct WIDELINE_TEXDATA wline_thunder[];
 extern struct GHSPRITE_ANIM_TABLE animtable_spark[1];
 extern struct WIDELINE_TEXDATA wline_segment;
 extern int DAT_0286c4bc[4];
@@ -240,10 +238,10 @@ void EffAll_Init(struct task *pTask)
 {
 	exec_Emission((struct task *)((char *)pTask->twp + 0x20));
 	EffHandSpark_Init();
-	DAT_0286c6f7 = 0xff;
-	DAT_0286c6f3 = 0xff;
-	*(unsigned char *)((char *)wline_thunder + 0xb) = 0xff;
-	*(unsigned char *)((char *)wline_thunder + 0x7) = 0xff;
+	wline_thunder[1].pColor[1].argb.a = 0xff;
+	wline_thunder[1].pColor[0].argb.a = 0xff;
+	wline_thunder[0].pColor[1].argb.a = 0xff;
+	wline_thunder[0].pColor[0].argb.a = 0xff;
 	ghSpriteAnimTableInit(&texlist_erobo, &animtable_spark[0], 0);
 }
 

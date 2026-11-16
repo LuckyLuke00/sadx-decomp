@@ -1,5 +1,5 @@
 #include "decls.h"
-extern struct NJS_MODEL *DAT_045b3108;
+extern struct obj object_obj_house_ita01_house_ita01[];
 extern int DAT_05b9d838;
 
 // FUNCTION: SADX 0x00863090
@@ -21,7 +21,7 @@ void Object_IcecapIta01Draw(struct task *tp)
 			{
 				njRotateY(NULL, (unsigned short)var1->ang.y);
 			}
-			ds_DrawModelClip(DAT_045b3108, 1.0f);
+			ds_DrawModelClip(object_obj_house_ita01_house_ita01->model, 1.0f);
 			njPopMatrix(1);
 		}
 	}

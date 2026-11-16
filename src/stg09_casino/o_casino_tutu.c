@@ -1,7 +1,6 @@
 #include "decls.h"
 extern struct obj object_csn_obj_tutu_c_obj_tutu_c[];
-extern struct obj *DAT_04786eb0;
-extern struct obj *DAT_04786ed8;
+extern struct obj object_csn_obj_tutu_a_obj_tutu_a[];
 
 // FUNCTION: SADX 0x0087ee30
 void ObjectCasinoTutuADraw(struct task *tp)
@@ -23,12 +22,12 @@ void ObjectCasinoTutuADraw(struct task *tp)
 	{
 		njRotateY(0, (unsigned short)var1->value.w[0]);
 	}
-	late_DrawModelClip((struct NJS_MODEL *)DAT_04786eb0, 0, 1.0f);
+	late_DrawModelClip(object_csn_obj_tutu_a_obj_tutu_a->model, 0, 1.0f);
 	if (var1->ang.y - var1->value.w[0])
 	{
 		njRotateY(0, (unsigned short)(var1->ang.y - var1->value.w[0]));
 	}
-	late_DrawObjectClip(DAT_04786ed8, 0, 1.0f);
+	late_DrawObjectClip(object_csn_obj_tutu_a_obj_tutu_a->child, 0, 1.0f);
 	njPopMatrix(1);
 }
 

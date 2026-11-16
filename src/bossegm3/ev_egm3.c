@@ -4,18 +4,16 @@ extern struct task *DAT_060e3a90;
 // GLOBAL: SADX 0x04c7d76c
 static void (*egm3_exec[5])(struct task *);
 
-extern struct obj *DAT_02833c70;
 extern struct NJS_TEXLIST texlist_egm3mdl;
 extern int DAT_05b9d838;
 extern struct obj *egm3_object_list[];
 extern struct anywk *DAT_060ba008;
 extern float DAT_060ba100[16];
-extern struct NJS_MOTION *egm3_motion_list[8];
+extern struct NJS_MOTION *egm3_motion_list[];
 extern int DAT_060e3ac8;
 extern int DAT_060e3ae0;
 extern void egm3CalcObjMatrix(struct obj *object, float *matbuf);
 extern void EV_Egm3Draw(struct task *tp);
-extern struct obj *egm3_object_list[1];
 extern void FUN_0067d830(float *, float, float, float);
 
 // STUB: SADX 0x00903090
@@ -79,7 +77,7 @@ void EV_EggmanDraw(struct task *tp)
 		{
 			njRotateZ(0, (unsigned short)var1->ang.z);
 		}
-		FUN_004a8800(DAT_02833c70, *(struct NJS_MOTION **)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1.0f);
+		FUN_004a8800(egm3_object_list[5],*(struct NJS_MOTION **)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1.0f);
 		njPopMatrix(1);
 		LoadConstantAttr();
 	}

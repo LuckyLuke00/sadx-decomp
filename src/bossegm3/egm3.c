@@ -2,16 +2,13 @@
 extern int DAT_060bb1d0;
 extern long adx_table[10];
 void Serif_Play(int no);
-extern struct NJS_TEXLIST *DAT_02833ce0;
-extern struct obj *DAT_02833cb4;
 extern void *DAT_060bb218;
 extern struct LE_LIGHT_ENV DAT_05b39bf0[4];
-extern struct obj *DAT_02833c70;
 extern struct obj *egm3_object_list[];
 extern int DAT_060ba04c;
 extern struct NJS_TEXLIST texlist_egm3mdl;
-extern struct NJS_TEXLIST *egm3_effect_texlist_list;
-extern struct obj *egm3_effect_objectlist[1];
+extern struct NJS_TEXLIST *egm3_effect_texlist_list[];
+extern struct obj *egm3_effect_objectlist[];
 extern int DAT_05b9d838;
 static void TikalTaskExit(struct task *tp);
 extern int DAT_060bb24c;
@@ -72,7 +69,7 @@ void Egm3_laser1Draw(struct task *tp)
 	{
 	case 0:
 		SaveConstantAttr();
-		___njSetTexture(egm3_effect_texlist_list);
+		___njSetTexture(egm3_effect_texlist_list[0]);
 		njPushMatrix(NULL);
 		FUN_0067d830(NULL, var1->pos.x, var1->pos.y, var1->pos.z);
 		if (var1->ang.y != 0)
@@ -109,7 +106,7 @@ void Egm3_laser1ponDraw(struct task *tp)
 	{
 		SaveConstantAttr();
 		njSetConstantAttr(0xffffffff, 0x100000);
-		___njSetTexture(DAT_02833ce0);
+		___njSetTexture(egm3_effect_texlist_list[1]);
 		njPushMatrix(NULL);
 		FUN_0067d830(NULL, var1->pos.x, var1->pos.y, var1->pos.z);
 		if (var1->ang.y != 0)
@@ -121,7 +118,7 @@ void Egm3_laser1ponDraw(struct task *tp)
 			njRotateX(NULL, (unsigned short)var1->ang.x);
 		}
 		FUN_0067d2d0(NULL, var2->work.f[0], var2->work.f[0], var2->work.f[0]);
-		late_DrawObjectClip(DAT_02833cb4, 4, var2->work.f[0]);
+		late_DrawObjectClip(egm3_effect_objectlist[1], 4, var2->work.f[0]);
 		njPopMatrix(1);
 		LoadConstantAttr();
 	}
@@ -194,7 +191,7 @@ void EggmanBoomerangDraw(struct task *tp)
 			{
 				njRotateZ(NULL, (unsigned short)var1->ang.z);
 			}
-			late_DrawMotionClipEx(DAT_02833c70, (struct NJS_MOTION *)*(int *)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1, 1.0f);
+			late_DrawMotionClipEx(egm3_object_list[5],(struct NJS_MOTION *)*(int *)((char *)var2 + 0x6c), *(float *)((char *)var2 + 0x78), 1, 1.0f);
 			njPopMatrix(1);
 			LoadConstantAttr();
 		}

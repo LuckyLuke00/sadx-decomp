@@ -1,6 +1,6 @@
 #include "decls.h"
 extern short DAT_060dfc80;
-extern int DAT_04c37b48[6][3];
+extern struct NJS_TEXNAME texture_chaos_surface[];
 
 // STUB: SADX 0x008c74a0
 int traceObjectTree(struct obj *obj, struct obj **list)
@@ -68,7 +68,7 @@ void ChaosSurfacePatternChange(struct chaoswk *chwp)
 		if (chwp->txchg_num >= 6)
 			chwp->txchg_num = 0;
 	}
-	*(int *)((char *)local_8 + 8) = *(int *)((char *)DAT_04c37b48 + chwp->txchg_num * 0xc);
+	*(int *)((char *)local_8 + 8) = texture_chaos_surface[chwp->txchg_num].texaddr;
 }
 
 // STUB: SADX 0x008c8130

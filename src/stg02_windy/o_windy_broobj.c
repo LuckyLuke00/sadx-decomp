@@ -6,9 +6,9 @@ static struct CCL_INFO c_info01[2];
 static void Exec(struct task *tp);
 static void Disp(struct task *tp);
 static void PieceDisp(struct task *tp);
-extern struct NJS_MODEL *DAT_03b26f48;
-extern struct NJS_MODEL *DAT_03b273a0;
-extern struct NJS_MODEL *DAT_03b27828;
+extern struct obj object_wvobj_cube_s_cube_s[];
+extern struct obj object_wvobj_cube_m_cube_m[];
+extern struct obj object_wvobj_cube_l_cube_l[];
 
 // STUB: SADX 0x00809340
 static void Disp(struct task *tp)
@@ -47,13 +47,13 @@ void DispCube(struct task *tp)
 		switch ((int)var1->scl.x)
 		{
 			case 0:
-				late_DrawModelClip(DAT_03b27828, 1, 1.0f);
+				late_DrawModelClip(object_wvobj_cube_l_cube_l->model, 1, 1.0f);
 				break;
 			case 1:
-				late_DrawModelClip(DAT_03b273a0, 1, 1.0f);
+				late_DrawModelClip(object_wvobj_cube_m_cube_m->model, 1, 1.0f);
 				break;
 			case 2:
-				late_DrawModelClip(DAT_03b26f48, 1, 1.0f);
+				late_DrawModelClip(object_wvobj_cube_s_cube_s->model, 1, 1.0f);
 				break;
 		}
 		njPopMatrix(1);
