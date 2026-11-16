@@ -2988,10 +2988,10 @@ void DrawLBOn()
 	else
 		swprintf(num, 16, L"%d", DAT_05cd2768);
 	wchar_t *local_54n = num;
-	int Widthg = 0;
-	int Heighti = 0;
-	GetTextSize(local_54n, Widthg, Heighti);
-	DrawStringW((int)(local_68t * 603.0 - Widthg - local_68t * 170.0), (int)(local_64m * 610.0 + 6.0 - 12.0 + 1.0), local_54n, -1, 1.0f);
+	int local_34o = 0;
+	int local_58i = 0;
+	GetTextSize(local_54n, local_34o, local_58i);
+	DrawStringW((int)(local_68t * 603.0 - local_34o - local_68t * 170.0), (int)(local_64m * 610.0 + 6.0 - 12.0 + 1.0), local_54n, -1, 1.0f);
 	DrawTexture((int)(local_68t * 461.0), (int)(local_64m * 624.0 - 15.0 + 1.0 - local_64m * 11.0), (int)(local_44[23].Windth * local_68t), (int)(local_44[23].Height * local_64m), 0.01f, DAT_05cd278c, (float)(local_44[23].PosX / 1024.0), (float)(local_44[23].PosY / 1024.0), (float)((local_44[23].PosX + local_44[23].Windth) / 1024.0), (float)((local_44[23].PosY + local_44[23].Height) / 1024.0), -1);
 	DrawButtonAVXCBB();
 	if (DAT_05cd2767 != 1)
@@ -3159,29 +3159,29 @@ void DrawLBOn()
 			{
 				if (local_74 == DAT_05cd2828.end())
 					break;
-				int WidthEntries = 0;
-				int HeightEntries = 0;
+				int local_80g = 0;
+				int local_84j = 0;
 				wchar_t *local_7cg = (*local_74).strRank;
-				GetTextSize(local_7cg, WidthEntries, HeightEntries);
-				DrawStringW((int)(local_68t * 129.0 + (local_68t * 100.0 - WidthEntries * 1.4f) - local_68t * 90.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_7cg, -1, 1.2f);
+				GetTextSize(local_7cg, local_80g, local_84j);
+				DrawStringW((int)(local_68t * 129.0 + (local_68t * 100.0 - local_80g * 1.4f) - local_68t * 90.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_7cg, -1, 1.2f);
 				DrawStringW((int)(local_68t * 225.0 - 13.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), (*local_74).strGameRtag, -1, 1.2f);
 				if (DAT_05cd2785 == 15 || DAT_05cd2785 == 17 || DAT_05cd2785 == 16 || DAT_05cd2785 == 14 || DAT_05cd2785 == 12 || DAT_05cd2785 == 11)
 				{
-					int WidthData = 0;
-					int HeightData = 0;
+					int local_90s = 0;
+					int local_8ck = 0;
 					wchar_t *local_88q = (*local_74).strData;
-					GetTextSize(local_88q, WidthData, HeightData);
-					DrawStringW((int)(local_68t * 580.0 - local_68t * 20.0 + (local_68t * 120.0 - WidthData * 1.4f)), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_88q, -1, 1.2f);
+					GetTextSize(local_88q, local_90s, local_8ck);
+					DrawStringW((int)(local_68t * 580.0 - local_68t * 20.0 + (local_68t * 120.0 - local_90s * 1.4f)), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_88q, -1, 1.2f);
 				}
 				else
 					DrawStringW((int)(local_68t * 580.0 - local_68t * 20.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), (*local_74).strData, -1, 1.2f);
 				if (DAT_05cd2785 != 13 && DAT_05cd2785 != 15 && DAT_05cd2785 != 17 && DAT_05cd2785 != 16 && DAT_05cd2785 != 14)
 				{
 					wchar_t *local_98j = (*local_74).strScore;
-					int WidthScore = 0;
-					int HeightScore = 0;
-					GetTextSize(local_98j, WidthScore, HeightScore);
-					DrawStringW((int)(local_68t * 760.0 - local_68t * 10.0 + (local_68t * 120.0 - WidthScore * 1.4f) - local_68t * 20.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_98j, -1, 1.2f);
+					int local_94p = 0;
+					int local_9cj = 0;
+					GetTextSize(local_98j, local_94p, local_9cj);
+					DrawStringW((int)(local_68t * 760.0 - local_68t * 10.0 + (local_68t * 120.0 - local_94p * 1.4f) - local_68t * 20.0), (int)((local_78i * 17 + 224.0f + local_78i * 20) * local_64m - 9.0 + 10.3f - 4.0), local_98j, -1, 1.2f);
 				}
 			}
 			DrawTexture((int)(local_68t * 42.0), (int)((DAT_05cd2790 * 17 + DAT_05cd2790 * 20 + 242) * local_64m - 9.0 - 4.0), (int)(local_68t * 838.0), (int)(local_64m * 34.0), 0.01f, DAT_05cd2660, 0.0f, 0.68359375f, 0.818359375f, 0.71875f, -1);

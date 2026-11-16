@@ -347,10 +347,10 @@ void DrawLB()
 	else
 		swprintf(num, 16, L"%d", DAT_05edd930);
 	wchar_t *local_58aq = num;
-	int Widthv = 0;
-	int Heightr = 0;
-	GetTextSize(local_58aq, Widthv, Heightr);
-	DrawStringW((int)(local_6c * 603.0 - Widthv - local_6c * 170.0), (int)(local_68i * 610.0 + 6.0 - 12.0 + 1.0 + 2.0 * local_68i), local_58aq, -1, 1.0f);
+	int local_38gl = 0;
+	int local_5ch = 0;
+	GetTextSize(local_58aq, local_38gl, local_5ch);
+	DrawStringW((int)(local_6c * 603.0 - local_38gl - local_6c * 170.0), (int)(local_68i * 610.0 + 6.0 - 12.0 + 1.0 + 2.0 * local_68i), local_58aq, -1, 1.0f);
 	DrawTexture((int)(local_6c * 461.0 + DAT_05edd928 * local_6c), (int)(local_68i * 624.0 - 15.0 + 1.0 - local_68i * 11.0 + 2.0 * local_68i), (int)(local_50t[23].Windth * local_6c), (int)(local_50t[23].Height * local_68i), 0.01f, DAT_05edd950, (float)(local_50t[23].PosX / 1024.0), (float)(local_50t[23].PosY / 1024.0), (float)((local_50t[23].PosX + local_50t[23].Windth) / 1024.0), (float)((local_50t[23].PosY + local_50t[23].Height) / 1024.0), -1);
 	struct ButtonInfo *local_7cz = 0;
 	float local_88 = 0.0f;
@@ -528,29 +528,29 @@ void DrawLB()
 			{
 				if (local_94 == DAT_05edd970.end())
 					break;
-				int WidthEntries = 0;
-				int HeightEntries = 0;
+				int local_a0h = 0;
+				int local_a4y = 0;
 				wchar_t *local_9c = (*local_94).field_0x0;
-				GetTextSize(local_9c, WidthEntries, HeightEntries);
-				DrawStringW((int)(local_6c * 129.0 + (local_6c * 100.0 - WidthEntries * 1.4f) - local_6c * 90.0), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), local_9c, -1, 1.2f);
+				GetTextSize(local_9c, local_a0h, local_a4y);
+				DrawStringW((int)(local_6c * 129.0 + (local_6c * 100.0 - local_a0h * 1.4f) - local_6c * 90.0), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), local_9c, -1, 1.2f);
 				DrawStringW((int)(local_6c * 225.0 - 13.0), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), (*local_94).field_0x0 + 5, -1, 1.2f);
 				if (DAT_05edd941 == 15 || DAT_05edd941 == 17 || DAT_05edd941 == 16 || DAT_05edd941 == 14 || DAT_05edd941 == 12 || DAT_05edd941 == 11)
 				{
-					int WidthData = 0;
-					int HeightData = 0;
+					int local_b0y = 0;
+					int local_acg = 0;
 					wchar_t *local_a8g = (*local_94).field_0x2a;
-					GetTextSize(local_a8g, WidthData, HeightData);
-					DrawStringW((int)(local_6c * 580.0 - local_6c * 20.0 + (local_6c * 120.0 - WidthData * 1.4f)), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), local_a8g, -1, 1.2f);
+					GetTextSize(local_a8g, local_b0y, local_acg);
+					DrawStringW((int)(local_6c * 580.0 - local_6c * 20.0 + (local_6c * 120.0 - local_b0y * 1.4f)), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), local_a8g, -1, 1.2f);
 				}
 				else
 					DrawStringW((int)(local_6c * 580.0 - local_6c * 20.0), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), (*local_94).field_0x2a, -1, 1.2f);
 				if (DAT_05edd941 != 13 && DAT_05edd941 != 15 && DAT_05edd941 != 17 && DAT_05edd941 != 16 && DAT_05edd941 != 14)
 				{
 					wchar_t *local_b8 = (*local_94).field_0x4a;
-					int WidthScore = 0;
-					int HeightScore = 0;
-					GetTextSize(local_b8, WidthScore, HeightScore);
-					DrawStringW((int)(local_6c * 760.0 - local_6c * 10.0 + (local_6c * 120.0 - WidthScore * 1.4f) - local_6c * 20.0), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), local_b8, -1, 1.2f);
+					int local_b4j = 0;
+					int local_bcl = 0;
+					GetTextSize(local_b8, local_b4j, local_bcl);
+					DrawStringW((int)(local_6c * 760.0 - local_6c * 10.0 + (local_6c * 120.0 - local_b4j * 1.4f) - local_6c * 20.0), (int)((local_98g * 17 + 224.0f + local_98g * 20) * local_68i - 9.0 + 10.3f - 4.0), local_b8, -1, 1.2f);
 				}
 			}
 			DrawTexture((int)(local_6c * 42.0), (int)((DAT_05edd964 * 17 + DAT_05edd964 * 20 + 242) * local_68i - 9.0 - 4.0), (int)(local_6c * 838.0), (int)(local_68i * 34.0), 0.01f, DAT_05edd948, 0.0f, 0.68359375f, 0.818359375f, 0.71875f, -1);
