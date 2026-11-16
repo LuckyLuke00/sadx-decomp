@@ -908,6 +908,32 @@ plain form: 14 file loads with `Load`, 6 calls of `FUN_004b23e0`, two `switch` b
 Local tools for this part, in `build/witness/ctl/`: `BRIEF.md` (the brief for a draft), `one.sh` (own count
 and compare of one variant), `rep.py` (make a variant), `voidload.py`, and one folder per control.
 
+### Result of 2026-11-15, seventh part: the forms that the tree's `padconfig` still holds
+
+A count of the source forms that carry nodes and make no code, per function, as the tree has them now:
+
+| Function           | Lines | `!= 0` | `== 0` | `if (x)` | `if (!x)` | `(int)` | `(long)` | `(float)` | `x = x +` | `++` `--` |
+| ------------------ | ----- | ------ | ------ | -------- | --------- | ------- | -------- | --------- | --------- | --------- |
+| `padconfig`        | 1557  | 43     | 4      | 10       | 12        | 90      | 11       | 11        | 4         | 38        |
+| `DisplayPauseMenu` | 380   | 0      | 0      | 1        | 19        | 0       | 0        | 0         | 0         | 1         |
+| `InitLBOn`         | 97    | 0      | 1      | 0        | 0         | 0       | 0        | 0         | 0         | 0         |
+| `InitLB`           | 89    | 0      | 1      | 0        | 0         | 0       | 0        | 0         | 0         | 0         |
+| `InitStaff2`       | 124   | 1      | 3      | 0        | 1         | 0       | 0        | 1         | 30        | 0         |
+| `InitStaff`        | 76    | 0      | 0      | 0        | 1         | 0       | 0        | 0         | 30        | 0         |
+| `LoadGameDDS`      | 137   | 0      | 0      | 0        | 5         | 0       | 0        | 0         | 0         | 0         |
+
+1. **These forms are the ones of the seventh part of 2026-11-14.** Its plainest source drops them and is still
+   too heavy. So the count gives no new saving. The 91 to 113 nodes stay open.
+2. **No matched control holds `(int)`, `(long)` or `!= 0` in number.** `DrawLB` and `DrawLBOn` hold 260 and
+   more `(int)` casts, but they equal the game at every own count. So no control pins the price of a cast.
+3. **`x = x + 1` is a form of the game's source.** `InitStaff` and `InitStaff2` hold 30 such lines each and
+   are inside their windows.
+4. **Three calls of a base class method.** `padconfig` calls `FUN_0092b1b0`, a method of `IniFile`, on a
+   `SOCIniFile` local three times. Such a call costs 7 nodes more than a call of a method of the object's own
+   class. So these calls hold 21 nodes at most. No control has this call, so the price is not tested there.
+
+Local tool for this part: `build/witness/ctl/formcount.py`.
+
 ## The full record
 
 The long record, the traces and the scripts are local research files and not in this repo:
