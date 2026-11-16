@@ -1231,8 +1231,58 @@ void FUN_004b1cb0(int, int, int, int)
 {
 }
 
-// STUB: SADX 0x004b38e0
-void FUN_004b38e0(struct FUN_004b2330_0 *)
+// STUB: SADX 0x004b2740
+void FUN_004b2740(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b28d0
+void FUN_004b28d0(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b2ab0
+void FUN_004b2ab0(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b2cd0
+void FUN_004b2cd0(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b2e50
+void FUN_004b2e50(Magic::RenderCore::LockedSurface *, int, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b2f10
+void FUN_004b2f10(Magic::RenderCore::LockedSurface *, int, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b3060
+void FUN_004b3060(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b3260
+void FUN_004b3260(Magic::RenderCore::LockedSurface *, int, int, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b3390
+void FUN_004b3390(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b3590
+void FUN_004b3590(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int)
+{
+}
+
+// STUB: SADX 0x004b3710
+void FUN_004b3710(Magic::RenderCore::LockedSurface *, char *, int, int, int, int, int, int, int, int)
 {
 }
 
