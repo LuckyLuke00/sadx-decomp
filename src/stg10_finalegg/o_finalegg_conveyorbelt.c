@@ -14,6 +14,14 @@ void SideTaskExec(struct task *tp)
 	var1->flag &= 0xfeff;
 }
 
+// FOLD: the game's link folded this copy into the one of o_lost_jumpdai.c (0x00855000).
+static void SideTaskDestructer(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
+	ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
+}
+
 // FUNCTION: SADX 0x0089de40
 void SideTask(struct task *tp)
 {
@@ -50,5 +58,5 @@ void SideTask(struct task *tp)
 	}
 	tp->disp = 0;
 	tp->exec = SideTaskExec;
-	tp->dest = DeadJumpdai;
+	tp->dest = SideTaskDestructer;
 }

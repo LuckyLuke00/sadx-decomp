@@ -19,6 +19,14 @@ static void KasyaMain(struct task *tp)
 {
 }
 
+// FOLD: the game's link folded this copy into the one of o_lost_jumpdai.c (0x00855000).
+static void KasyaDestruct(struct task *tp)
+{
+	struct taskwk *var1 = tp->twp;
+	WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
+	ReleaseMobileLandObject((struct obj *)var1->counter.ptr);
+}
+
 // FUNCTION: SADX 0x006b4640
 void KasyaInit(struct task *tp)
 {
@@ -42,7 +50,7 @@ void KasyaInit(struct task *tp)
 	var1->child = *(struct obj **)((char *)*(void **)((char *)DAT_060eea9c + 0x1c) + 0x2c);
 	var1->sibling = *(struct obj **)((char *)*(void **)((char *)DAT_060eea9c + 0x1c) + 0x30);
 	RegisterCollisionEntry(0x48001001, tp, var1);
-	tp->dest = DeadJumpdai;
+	tp->dest = KasyaDestruct;
 	CCL_Init(tp, ccinfo, 0xa, 4);
 	tp->exec = KasyaMain;
 	tp->disp = KasyaDisplay;

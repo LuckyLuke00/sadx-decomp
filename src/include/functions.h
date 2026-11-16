@@ -3328,7 +3328,6 @@ void FUN_00853a90();
 void dispObjectRuinLightEff(struct task *tp);
 void PanelExec(struct task *tp);
 void DispExp(struct task *tp);
-void DeadJumpdai(struct task *tp);
 void DrawJumpdai(struct task *tp);
 void ExecJumpdai(struct task *tp);
 void ObjectRuinSnakeEv(struct task *tp);

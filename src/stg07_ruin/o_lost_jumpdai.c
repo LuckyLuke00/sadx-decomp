@@ -1,7 +1,7 @@
 #include "decls.h"
 
 // FUNCTION: SADX 0x00855000
-void DeadJumpdai(struct task *tp)
+static void DeadJumpdai(struct task *tp)
 {
 	struct taskwk *var1 = tp->twp;
 	WithdrawCollisionEntry(tp, (struct obj *)var1->counter.ptr);
