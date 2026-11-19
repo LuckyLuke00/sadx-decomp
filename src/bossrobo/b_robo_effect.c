@@ -1,4 +1,6 @@
 #include "decls.h"
+extern char DAT_0286c84c[0x10];
+extern float DAT_0286c85c;
 extern struct WIDELINE_TEXDATA wline_thunder[];
 extern struct GHSPRITE_ANIM_TABLE animtable_spark[1];
 extern struct WIDELINE_TEXDATA wline_segment;
@@ -228,9 +230,11 @@ void EffHandSpark_Init()
 	}
 }
 
-// STUB: SADX 0x006dd4e0
+// FUNCTION: SADX 0x006dd4e0
 void EffSpark(struct GHSPRITE *spr, struct NJS_POINT3 *pPos, float fScale, int flag)
 {
+	DAT_0286c85c = fScale;
+	ghSpriteInit(spr, pPos, (struct GHSPRITE_INIT_INFO *)DAT_0286c84c, flag);
 }
 
 // FUNCTION: SADX 0x006dd500

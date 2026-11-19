@@ -1,9 +1,11 @@
 #include "decls.h"
 struct NJS_TEXLIST;
+extern struct TaskInfo DAT_00a098a8;
 
-// STUB: SADX 0x007e4140
+// FUNCTION: SADX 0x007e4140
 void Bg_MiniCart(struct task *task_p)
 {
+	MirenInitTask(task_p, &DAT_00a098a8, 0);
 }
 
 // STUB: SADX 0x007e4160

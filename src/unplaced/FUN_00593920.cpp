@@ -37,10 +37,15 @@ void FUN_00593ab0(short *param_1, int param_2, short param_3, short param_4)
 	}
 }
 
-// STUB: SADX 0x00593af0
+// FUNCTION: SADX 0x00593af0
 float FUN_00593af0(void)
 {
-	return (float)0;
+	int local_cg;
+	struct SAVE_DATA *local_8g;
+	local_8g = &DAT_05ccca18;
+	local_cg = FUN_00593920();
+	DAT_05cd2970 = local_8g->biggestWeight[local_cg].weight;
+	return (float)DAT_05cd2970;
 }
 
 // STUB: SADX 0x00593b30

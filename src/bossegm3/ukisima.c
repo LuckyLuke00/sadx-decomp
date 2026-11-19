@@ -1,4 +1,5 @@
 #include "decls.h"
+extern int DAT_060bb3f8[8];
 extern char DAT_060bb3e4[8];
 extern char DAT_060bb3ec[8];
 extern int DAT_060bb3e0;
@@ -113,7 +114,14 @@ long UkisimaExist(float x, float z)
 	return 0;
 }
 
-// STUB: SADX 0x006d5c40
+// FUNCTION: SADX 0x006d5c40
 void UkisimaBreak(float x, float z)
 {
+	if (UkisimaExist(x, z) != 0)
+	{
+		int iVar1;
+		iVar1 = DAT_060bb3f4 * 8 + DAT_060bb3e0;
+		*(char *)(*(int *)(DAT_060bb3f8[iVar1] + 0x20) + 3) = 2;
+		DAT_060bb3e4[iVar1] = 0;
+	}
 }

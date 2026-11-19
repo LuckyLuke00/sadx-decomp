@@ -1,9 +1,17 @@
 #include "decls.h"
 
-// STUB: SADX 0x006f0e80
+// FUNCTION: SADX 0x006f0e80
 long Chaos4PlayerFlyingCheck()
 {
-	return (long)0;
+	switch (GetPlayerNumber())
+	{
+		case 2:
+			return DAT_05baf368[0]->timer.b[2] & 1;
+		case 3:
+			return Knuckles_Status(0) == 7;
+		default:
+			return 0;
+	}
 }
 
 // STUB: SADX 0x006f0ec0

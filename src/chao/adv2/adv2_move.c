@@ -40,9 +40,12 @@ void MOV_SetGravity(struct task *tp, float gravity)
 	*(float *)((char *)tp->mwp + 0x48) = gravity;
 }
 
-// STUB: SADX 0x00458330
+// FUNCTION: SADX 0x00458330
 void MOV_PreservePreviousPosition(struct task *tp)
 {
+	struct taskwk *var1 = tp->twp;
+	struct motionwk *var2 = tp->mwp;
+	*(struct NJS_POINT3 *)((char *)var2 + 0x60) = var1->pos;
 }
 
 // FUNCTION: SADX 0x00458350

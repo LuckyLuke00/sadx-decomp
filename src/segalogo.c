@@ -68,9 +68,30 @@ void dsGoDemoLoop()
 {
 }
 
-// STUB: SADX 0x005739a0
+// FUNCTION: SADX 0x005739a0
 void dsInitTitle()
 {
+	union NJS_COLOR col;
+	InitMemory();
+	InitTask();
+	DAT_05cd0f24 = 0;
+	DAT_05cd0f28 = 0;
+	DAT_05cd0f2c = 0;
+	DAT_05cda168 = 0;
+	DAT_05cda170 = 0;
+	ClearDownload();
+	DAT_05b3ea16 = 0;
+	DAT_05cd14d4 = 0;
+	SeqStop();
+	DAT_05baf53c = 0;
+	DAT_05cd0f30 = DAT_05ccca18;
+	ExtractLoadData();
+	col.argb.a = 0;
+	col.argb.r = 0;
+	col.argb.g = 0;
+	col.argb.b = 0;
+	SetOffsetColor(&col);
+	SetStageNumber(0, 0);
 }
 
 // STUB: SADX 0x00573a50

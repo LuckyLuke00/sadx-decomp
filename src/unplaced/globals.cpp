@@ -221,6 +221,9 @@ char DAT_009ec7a8[1];
 // GLOBAL: SADX 0x009f2c10
 char DAT_009f2c10[1];
 
+// GLOBAL: SADX 0x00a098a8
+struct TaskInfo DAT_00a098a8;
+
 // GLOBAL: SADX 0x00a09c28
 struct TaskInfo DAT_00a09c28;
 
@@ -2359,6 +2362,12 @@ struct WIDELINE_TEXDATA wline_thunder[2];
 
 // GLOBAL: SADX 0x0286c718
 struct GHSPRITE_ANIM_TABLE animtable_spark[1];
+
+// GLOBAL: SADX 0x0286c84c
+char DAT_0286c84c[0x10];
+
+// GLOBAL: SADX 0x0286c85c
+float DAT_0286c85c;
 
 // GLOBAL: SADX 0x0286c878
 struct CCL_INFO colliInfoPunch[1];
@@ -4558,6 +4567,12 @@ struct obj object_breakkabe_aftercoli_aftercoli[1];
 
 // GLOBAL: SADX 0x04ad8094
 float TVpos[3];
+
+// GLOBAL: SADX 0x04c2c3e8
+struct NJS_POINT3 door_pos[2];
+
+// GLOBAL: SADX 0x04c2c400
+float door_limit[2];
 
 // GLOBAL: SADX 0x04c2c63c
 struct NJS_SPRITE sprite_fade;
@@ -8758,6 +8773,9 @@ char DAT_060bb3ec[8];
 
 // GLOBAL: SADX 0x060bb3f4
 int DAT_060bb3f4;
+
+// GLOBAL: SADX 0x060bb3f8
+int DAT_060bb3f8[8];
 
 // GLOBAL: SADX 0x060bb8cc
 struct NJS_POINT3 *DAT_060bb8cc;

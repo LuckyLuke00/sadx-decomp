@@ -90,9 +90,11 @@ int __fastcall FUN_0091e800(int param_1)
 	return *(int *)*(int *)(param_1 + 0x48);
 }
 
-// STUB: SADX 0x0091e810
+// FUNCTION: SADX 0x0091e810
 void __fastcall FUN_0091e810(int *param_1)
 {
+	((void (__thiscall *)(int*))(*(void***)param_1)[0x28])(param_1);
+	((void (__thiscall *)(int*))(*(void***)param_1)[0x2b])(param_1);
 }
 
 // STUB: SADX 0x0091e850

@@ -1,9 +1,13 @@
 #include "decls.h"
 void FUN_0090b5e0(int param_1, int param_2, int param_3, int param_4, int param_5);
 
-// STUB: SADX 0x0090a010
-void __fastcall FUN_0090a010(void *param_1, void *param_2)
+// FUNCTION: SADX 0x0090a010
+void __fastcall FUN_0090a010(void *param_1, void *param_2, void *param_3, void *param_4)
 {
+	if (*(int *)((char *)param_1 + 0x24) == 0)
+	{
+		*(void **)((char *)param_1 + 0x24) = operator new(0xc);
+	}
 }
 
 // FUNCTION: SADX 0x0090a090

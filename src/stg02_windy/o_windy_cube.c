@@ -3,6 +3,18 @@
 // GLOBAL: SADX 0x03b75698
 static struct CCL_INFO object_c_info[7];
 
+// FUNCTION: SADX 0x00808d10
+void FUN_00808d10(struct task *tp)
+{
+	tp->twp->counter.ptr = object_wvobj_cube_s_cube_s;
+	if (!FUN_004c39c0(tp))
+	{
+		CCL_Init(tp, &object_c_info[0], 1, 4);
+	}
+	ObjectCCollision_setWZ(tp);
+	ObjectCCollision(tp);
+}
+
 // FUNCTION: SADX 0x00808dd0
 void ObjectWindyUkisima(struct task *tp)
 {

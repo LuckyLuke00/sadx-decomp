@@ -508,9 +508,9 @@
   {
    "address": "0x00408490",
    "name": "FUN_00408490",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4356,9 +4356,9 @@
   {
    "address": "0x00436030",
    "name": "njCnkDrawMotionLink",
-   "accuracy": 0.07142857142857142,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -4372,7 +4372,7 @@
   {
    "address": "0x004360c0",
    "name": "_njCnkDrawObject",
-   "accuracy": 0.025,
+   "accuracy": 0.0963855421686747,
    "effective": false,
    "stub": true,
    "library": false
@@ -4388,9 +4388,9 @@
   {
    "address": "0x00436200",
    "name": "njCnkDrawObject",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -8444,9 +8444,9 @@
   {
    "address": "0x00458330",
    "name": "MOV_PreservePreviousPosition",
-   "accuracy": 0.18181818181818182,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -28908,9 +28908,9 @@
   {
    "address": "0x005739a0",
    "name": "dsInitTitle",
-   "accuracy": 0.18604651162790697,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -30820,9 +30820,9 @@
   {
    "address": "0x00593af0",
    "name": "FUN_00593af0",
-   "accuracy": 0.42105263157894735,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -48644,9 +48644,9 @@
   {
    "address": "0x006d5c40",
    "name": "UkisimaBreak",
-   "accuracy": 0.1111111111111111,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -48908,9 +48908,9 @@
   {
    "address": "0x006dd4e0",
    "name": "EffSpark",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -49956,9 +49956,9 @@
   {
    "address": "0x006f0e80",
    "name": "Chaos4PlayerFlyingCheck",
-   "accuracy": 0.19047619047619047,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -55956,9 +55956,9 @@
   {
    "address": "0x007e4140",
    "name": "Bg_MiniCart",
-   "accuracy": 0.25,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -58548,6 +58548,14 @@
   {
    "address": "0x00808620",
    "name": "DrawBall",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00808d10",
+   "name": "FUN_00808d10",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -69356,9 +69364,9 @@
   {
    "address": "0x008b4940",
    "name": "CreateUkidoor",
-   "accuracy": 0.07407407407407407,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -78900,9 +78908,9 @@
   {
    "address": "0x0090a010",
    "name": "FUN_0090a010",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -86820,9 +86828,9 @@
   {
    "address": "0x0091e810",
    "name": "FUN_0091e810",
-   "accuracy": 0.0,
+   "accuracy": 1.0,
    "effective": false,
-   "stub": true,
+   "stub": false,
    "library": false
   },
   {
@@ -90245,6 +90253,13 @@
    "address": "0x009f2c10",
    "name": "DAT_009f2c10",
    "size": 1,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x00a098a8",
+   "name": "DAT_00a098a8",
+   "size": 24,
    "match": false,
    "library": false
   },
@@ -97711,6 +97726,20 @@
    "library": false
   },
   {
+   "address": "0x0286c84c",
+   "name": "DAT_0286c84c",
+   "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0286c85c",
+   "name": "DAT_0286c85c",
+   "size": 4,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0286c878",
    "name": "colliInfoPunch",
    "size": 48,
@@ -103801,6 +103830,20 @@
    "library": false
   },
   {
+   "address": "0x04c2c3e8",
+   "name": "door_pos",
+   "size": 24,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04c2c400",
+   "name": "door_limit",
+   "size": 8,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04c2c408",
    "name": "c_info_a",
    "size": 48,
@@ -105343,5 +105386,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "3663fe25925728145392ed7be0ea0a45a53690274c9c784ba905284e41c71ff2"
+ "inputs_sha256": "435724503699c7c45ad710db8a8ce5d5eed6550ab13d99f91462509d1512dd1b"
 }

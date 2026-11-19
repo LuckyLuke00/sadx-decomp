@@ -1,4 +1,6 @@
 #include "decls.h"
+extern struct NJS_POINT3 door_pos[2];
+extern float door_limit[2];
 
 // GLOBAL: SADX 0x04c2c408
 static struct CCL_INFO c_info_a[1];
@@ -42,7 +44,20 @@ void ObjShelterUkidoor(struct task *tp)
 	tp->disp = Disp;
 }
 
-// STUB: SADX 0x008b4940
+// FUNCTION: SADX 0x008b4940
 void CreateUkidoor()
 {
+	struct task *var1;
+	struct taskwk *var2;
+	int var3;
+
+	for (var3 = 0; var3 < 2; var3++)
+	{
+		var1 = CreateElementalTask(2, 3, ObjShelterUkidoor);
+		var2 = var1->twp;
+		var2->pos.x = door_pos[var3].x;
+		var2->pos.y = door_pos[var3].y;
+		var2->pos.z = door_pos[var3].z;
+		var2->counter.f = door_limit[var3];
+	}
 }

@@ -9,7 +9,6 @@ extern "C" void *memcpy(void *param_1, const void *param_2, unsigned int param_3
 struct FUN_004086f0_0;
 void FUN_004086c0(void *param_1, void *param_2);
 extern "C" void free(void *param_1);
-void __stdcall FUN_00408490(void *param_1, void *param_2, void *param_3, void *param_4);
 
 // FUNCTION: SADX 0x00407f40
 void * FUN_00407f40()
@@ -94,9 +93,11 @@ char __stdcall FUN_00408480(char param_1, char param_2)
 	return param_1;
 }
 
-// STUB: SADX 0x00408490
-void __stdcall FUN_00408490(void *param_1, void *param_2, void *param_3, void *param_4)
+// FUNCTION: SADX 0x00408490
+char *__stdcall FUN_00408490(char *param_1, char *param_2, void *param_3, void *param_4)
 {
+	memcpy(param_4, param_1, param_2 - param_1);
+	return param_2;
 }
 
 // STUB: SADX 0x004084c0
