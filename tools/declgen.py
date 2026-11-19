@@ -184,6 +184,7 @@ def write(context: Path | None, tables: Path | None) -> int:
     own_copies = {}  # file: the names of the static functions it defines with no annotation
     header_funcs = set()  # LIBRARY addresses: a use by name gets the library header's own declaration, as swprintf
     file_tokens = {}
+    member_tokens = {}  # file: the names it writes after . or ->, as counts
     for rel, text in sources.items():
         for kind, address, sig in names.parse_annotations(text):
             if kind in names.FUNCTION_KINDS:
@@ -201,6 +202,7 @@ def write(context: Path | None, tables: Path | None) -> int:
             fatal.append(f"{rel}: `{tag}` names a placeholder variable, not a type: write the real type")
         found = re.findall(r"[A-Za-z_]\w*", code)
         file_tokens[rel] = collections.Counter(found)
+        member_tokens[rel] = collections.Counter(re.findall(r"(?:\.|->)\s*([A-Za-z_]\w*)", code))
         own_copies[rel] = names.unannotated_statics(text)
         tokens |= set(found)
         counts.update(found)
@@ -298,7 +300,8 @@ def write(context: Path | None, tables: Path | None) -> int:
             for a in meaning(tok, rel):
                 if a in header_funcs:
                     continue
-                users[a].add(rel)
+                if found[tok] > member_tokens[rel][tok]:  # a struct member of the same name is no use
+                    users[a].add(rel)
                 if a not in defined_funcs or rel != defined_funcs[a][0] or found[tok] > 1:
                     used_funcs.add(a)
     for tok in tokens:

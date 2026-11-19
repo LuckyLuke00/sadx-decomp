@@ -504,15 +504,18 @@ def check_decls_trees() -> list[str]:
 
 def check_static_users() -> list[str]:
     """decls says to drop the static of a function that another file calls. A file that defines its own copy with no
-    annotation, which the game's link folded into the other file's, calls that copy."""
+    annotation, which the game's link folded into the other file's, calls that copy. A struct member of the same name
+    is no call."""
     target = project.game_config().target
     helper = f"// FUNCTION: {target} 0x00405000\nstatic void Helper(struct task *tp)\n{{\n}}\n"
     calls = f"// FUNCTION: {target} 0x00404000\nstatic void DispY(struct task *tp)\n{{\n\tHelper(tp);\n}}\n"
     copy = "static void Helper(struct task *tp)\n{\n}\n\n"
+    member = f"// FUNCTION: {target} 0x00404000\nstatic void DispY(struct task *tp)\n{{\n\ttp->Helper.mode = s.Helper;\n}}\n"
     functions = [("0x00404000", "DispY", "L", "src/y.c", "o_y.obj"), ("0x00405000", "Helper", "L", "src/z.c", "o_z.obj")]
     notice = "Helper is static in src/z.c but src/y.c use it: drop the static"
     failures = []
-    for case, caller, wanted in (("another file's static", calls, True), ("a copy of it", copy + calls, False)):
+    for case, caller, wanted in (("another file's static", calls, True), ("a copy of it", copy + calls, False),
+                                 ("a struct member", member, False)):
         _, output, _ = run_decls({"src/z.c": helper, "src/y.c": caller}, {}, functions, [])
         if (notice in output) != wanted:
             failures.append(f"decls for a call to {case} prints {output!r}, {'not ' if wanted else ''}{notice!r}")
