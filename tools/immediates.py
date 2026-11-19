@@ -17,6 +17,7 @@ install() makes reccmp compare each function through as_numbers(). Needs reccmp 
 import bisect
 import copy
 import struct
+import weakref
 
 from reccmp.compare import functions
 from reccmp.compare.asm.parse import ParseAsm
@@ -30,13 +31,14 @@ def reads_address(parser: ParseAsm, value: int) -> bool:
     return parser.is_addr(value, OperandType.IMMEDIATE) or parser.lookup(value) is not None
 
 
-_sites: dict[int, list[int]] = {}  # id of an image: the sorted addresses of its relocations
+_sites: dict[int, list[int]] = {}  # id of a live image: the sorted addresses of its relocations
 
 
 def relocated(image, start: int, code: bytes) -> set[int]:
     """The values that IMAGE's relocations hold inside CODE, the bytes of IMAGE at START."""
     if id(image) not in _sites:
         _sites[id(image)] = sorted(image.relocations)
+        weakref.finalize(image, _sites.pop, id(image))  # Python gives a freed image's id to a later object
     sites = _sites[id(image)]
     first, last = bisect.bisect_left(sites, start), bisect.bisect_right(sites, start + len(code) - 4)
     return {struct.unpack_from("<I", code, site - start)[0] for site in sites[first:last]}
