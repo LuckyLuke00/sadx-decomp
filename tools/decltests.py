@@ -553,7 +553,7 @@ def check_build_errors() -> list[str]:
     """The lines that say why the build failed are the error lines, the fatal lines and the decls lines that are not
     summaries or known, in order, at most ERROR_LINES of them. Without such a line the last ERROR_LINES lines
     come back. When a line says the build holds no code for the function, the hint about `static` ends the list,
-    after the cap."""
+    after the cap. Object file names lose their .obj."""
     cap = llm.ERROR_LINES
     hint = ("If the function is `static`, drop the `static`: the compiler leaves out a static function "
             "that nothing in the build calls, so there is nothing to score.")
@@ -573,7 +573,9 @@ def check_build_errors() -> list[str]:
               ["a.c(1) : error C2065: 'x' : x", hint]),
              (f"note\n{llm.NOT_BUILT}: Run", ["note", f"{llm.NOT_BUILT}: Run", hint]),
              ("\n".join(many_errors) + f"\n{llm.NOT_BUILT}", many_errors[:cap] + [hint]),
-             ("decls: old\ndecls: 4 functions (0 stubs)\nnote", ["note"])]
+             ("decls: old\ndecls: 4 functions (0 stubs)\nnote", ["note"]),
+             ('a.c.obj : error LNK2005: "x" already defined in b.cpp.obj',
+              ['a.c : error LNK2005: "x" already defined in b.cpp'])]
     return [f"build_errors gives {found} for {text!r}, not {wanted}"
             for text, wanted in cases if (found := llm.build_errors(text, known)) != wanted]
 

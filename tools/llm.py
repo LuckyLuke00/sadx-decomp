@@ -807,11 +807,15 @@ def about_reply(text, decls, func):
                      if not line.startswith("decls:") or words & set(re.findall(r"[A-Za-z_]\w*", line[6:])))
 
 
+OBJECT_SUFFIX = re.compile(r"\.obj\b")
+
+
 def build_errors(text, known):
     """The lines that say why decls or the build failed."""
     lines = tool_lines(text, known)
     errors = [line for line in lines if " error " in line or "fatal" in line or line.startswith("decls:")]
-    shown = (errors or lines[-ERROR_LINES:])[:ERROR_LINES]
+    # Object file names say nothing that the source file name does not, and the cloud upload rules refuse them.
+    shown = [OBJECT_SUFFIX.sub("", line) for line in (errors or lines[-ERROR_LINES:])[:ERROR_LINES]]
     if any(NOT_BUILT in line for line in lines):
         shown.append("If the function is `static`, drop the `static`: the compiler leaves out a static function "
                      "that nothing in the build calls, so there is nothing to score.")
