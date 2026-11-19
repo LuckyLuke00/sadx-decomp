@@ -2264,9 +2264,6 @@ struct NJS_TEXLIST texlist_egm2_car;
 // GLOBAL: SADX 0x027dbb50
 struct obj object_boss_em2_sky_n_sky_n[1];
 
-// GLOBAL: SADX 0x027dbb84
-struct CCL_INFO colliInfo[1];
-
 // GLOBAL: SADX 0x0280af38
 struct obj object_egman_body_body[1];
 

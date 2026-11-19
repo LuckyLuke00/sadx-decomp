@@ -758,7 +758,6 @@ extern struct NJS_TEXLIST texlist_egm2_missile;
 extern struct NJS_TEXLIST texlist_egm2_fire;
 extern struct NJS_TEXLIST texlist_egm2_car;
 extern struct obj object_boss_em2_sky_n_sky_n[1];
-extern struct CCL_INFO colliInfo[1];
 extern struct obj object_egman_body_body[1];
 extern struct obj object_egm2_mine[1];
 extern struct NJS_TEXANIM anim_kaen[];

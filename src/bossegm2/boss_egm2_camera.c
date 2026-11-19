@@ -1,6 +1,9 @@
 #include "decls.h"
 extern struct taskwk *DAT_05baf368[8];
-extern struct CCL_INFO colliInfo[1];
+
+// GLOBAL: SADX 0x027dbb84
+static struct CCL_INFO colliInfo[1];
+
 extern struct taskwk *DAT_060b9b10;
 extern float DAT_060b9b00;
 extern float DAT_060b9b04;
