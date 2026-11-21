@@ -2288,11 +2288,6 @@ void DestroyStaff()
 {
 }
 
-// STUB: SADX 0x005f10a0
-void trial_game_exec(struct task *tp)
-{
-}
-
 // STUB: SADX 0x005f2850
 void FUN_005f2850(struct task *)
 {
@@ -3283,6 +3278,11 @@ void FUN_007ecd30(struct task *)
 
 // STUB: SADX 0x007eecb0
 void KumoDisp(struct task *tp)
+{
+}
+
+// STUB: SADX 0x007eee30
+void CreateKumo(struct task *tp)
 {
 }
 

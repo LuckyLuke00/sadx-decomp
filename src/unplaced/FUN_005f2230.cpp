@@ -50,9 +50,52 @@ void FUN_005f22c0(struct task *param_1, struct ModeSelPrmType *param_2)
 	FUN_005f34f0(local_8);
 }
 
-// STUB: SADX 0x005f2320
+// FUNCTION: SADX 0x005f2320
 void FUN_005f2320(struct task *param_1)
 {
+	struct TitleMenuWk *local_8 = (struct TitleMenuWk *)param_1->awp;
+
+	if (DAT_05cda18c->awp->work.sl[1] == 0x11 && local_8->Stat == ADVA_STAT_REQWAIT)
+	{
+		FUN_005f24e0(local_8);
+		local_8->T = 0.0f;
+		local_8->Stat = ADVA_STAT_FADEIN;
+	}
+	if (DAT_05cda18c->awp->work.sl[2] == 0x11 && local_8->Stat == ADVA_STAT_KEEP)
+	{
+		FUN_005b5aa0(local_8);
+		local_8->T = 0.0f;
+		local_8->Stat = ADVA_STAT_FADEOUT;
+	}
+	switch (local_8->Stat)
+	{
+	case ADVA_STAT_REQWAIT:
+		local_8->BaseCol = 0;
+		break;
+	case ADVA_STAT_FADEIN:
+		local_8->BaseCol = GetFadeInColFromT(local_8->T);
+		local_8->T = (float)DAT_05b9d848 * 0.1f + local_8->T;
+		if (local_8->T >= 1.0f)
+			local_8->Stat = ADVA_STAT_KEEP;
+		break;
+	case ADVA_STAT_KEEP:
+		local_8->WakeFlg = 0;
+		*((char *)DAT_05cda18c->awp + 0x20) = 0;
+		local_8->BaseCol = 0xffffffff;
+		DAT_05cda18c->awp->work.sl[3] = 6;
+		FUN_005f25a0(local_8);
+		break;
+	case ADVA_STAT_FADEOUT:
+		local_8->BaseCol = GetFadeOutColFromT(local_8->T);
+		local_8->T = (float)DAT_05b9d848 * 0.1f + local_8->T;
+		if (local_8->T >= 1.0f)
+		{
+			*((char *)DAT_05cda18c->awp + 0x20) = 1;
+			*((char *)DAT_05cda18c->awp + 0x1f) = 1;
+			local_8->Stat = ADVA_STAT_REQWAIT;
+		}
+		break;
+	}
 }
 
 // STUB: SADX 0x005f24e0

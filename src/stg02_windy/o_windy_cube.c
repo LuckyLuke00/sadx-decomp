@@ -15,6 +15,30 @@ void FUN_00808d10(struct task *tp)
 	ObjectCCollision(tp);
 }
 
+// FUNCTION: SADX 0x00808d50
+void ObjectWindyCubeM(struct task *tp)
+{
+	tp->twp->counter.ptr = object_wvobj_cube_m_cube_m;
+	if (!FUN_004c39c0(tp))
+	{
+		CCL_Init(tp, &object_c_info[1], 1, 4);
+	}
+	ObjectCCollision_setWZ(tp);
+	ObjectCCollision(tp);
+}
+
+// FUNCTION: SADX 0x00808d90
+void ObjectWindyCubeL(struct task *tp)
+{
+	tp->twp->counter.ptr = object_wvobj_cube_l_cube_l;
+	if (!FUN_004c39c0(tp))
+	{
+		CCL_Init(tp, &object_c_info[2], 1, 4);
+	}
+	ObjectCCollision_setWZ(tp);
+	ObjectCCollision(tp);
+}
+
 // FUNCTION: SADX 0x00808dd0
 void ObjectWindyUkisima(struct task *tp)
 {
