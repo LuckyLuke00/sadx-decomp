@@ -60,6 +60,7 @@ extern int DAT_05b3e018;
 extern int DAT_05b3e390;
 extern int DAT_05b3dff8[4];
 
+// DIFF: frame: the original frame has 12 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004abe70
 void _prolog()
 {

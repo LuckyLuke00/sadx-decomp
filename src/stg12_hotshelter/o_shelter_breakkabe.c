@@ -371,6 +371,7 @@ static void CreateShutterParts(struct task *tp)
 	njPopMatrix(1);
 }
 
+// DIFF: code: the stub for FUN_008b1850 takes a stack argument where the original passes a register argument.
 // FUNCTION: SADX 0x008b1dc0
 void ObjShelterBreakKabe(struct task *tp)
 {

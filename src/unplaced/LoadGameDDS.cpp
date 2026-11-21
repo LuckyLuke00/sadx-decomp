@@ -5,6 +5,7 @@ extern Magic::RenderCore::Texture *DAT_05b3e360;
 extern Magic::RenderCore::Texture *DAT_05b3e364;
 extern Magic::RenderCore::Texture *DAT_05b3e368;
 
+// DIFF: frame: the original frame has 44 more bytes; their source is unknown.
 // FUNCTION: SADX 0x004b0aa0
 void LoadGameDDS()
 {

@@ -236,6 +236,7 @@ static void CreateShutterParticles(struct taskwk *twp)
 	njPopMatrix(1);
 }
 
+// DIFF: code: the counter clear uses a new zero register instead of reusing the earlier zero register.
 // FUNCTION: SADX 0x008af6f0
 static void InitATask(struct task *tp)
 {
@@ -381,6 +382,7 @@ static void CreateShutterParts(struct task *tp)
 	njPopMatrix(1);
 }
 
+// DIFF: code: the call to FUN_008af650 passes a task pointer on the stack instead of a taskwk pointer in a register.
 // FUNCTION: SADX 0x008afcc0
 void ObjShelterCrashMonitor(struct task *tp)
 {

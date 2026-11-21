@@ -15,8 +15,8 @@ struct FUN_004b2330_0
 	FUN_004b2330_0();
 	char field_0x0[0x104];
 	int field_0x104;
-	void *field_0x108;
-	int field_0x10c;
+	Magic::RenderCore::Texture **field_0x108;
+	Magic::RenderCore::Texture *field_0x10c;
 	Magic::RenderCore::Texture *field_0x110;
 	Magic::RenderCore::Texture *field_0x114;
 	Magic::RenderCore::Texture *field_0x118;
@@ -109,25 +109,25 @@ FUN_004b2330_0::FUN_004b2330_0()
 {
 }
 
-// DIFF: type: the original allocates 0x12c bytes, and the last member of the record is unknown.
+// DIFF: code: the allocation temporaries use different stack offsets and the inner vector call resolves to a different specialization.
 // FUNCTION: SADX 0x004b23e0
 void FUN_004b23e0(Magic::RenderCore::Texture **param_1, char *param_2, unsigned int param_3, const char *param_4, int param_5)
 {
-	int *local_c = (int *)param_1;
+	Magic::RenderCore::Texture **local_c = param_1;
 	std::string local_30(param_4);
 	int local_8c;
-	char *local_128;
+	FUN_004b38e0_0 *local_128;
 	FUN_004b2330_0 *local_dc;
 	unsigned int local_a0;
 	FUN_004b6590_0 *local_9c;
 
 	for (local_8c = 0; local_8c < 0x20e; local_8c++)
 	{
-		local_128 = DAT_025adde0[local_8c];
-		if (strcmp(local_128 + 4, param_4) == 0 && *(int *)(local_128 + 0x108) == param_5 && !FUN_004b1a80((char *)param_4, param_5))
+		local_128 = (FUN_004b38e0_0 *)DAT_025adde0[local_8c];
+		if (strcmp(local_128->field_0x4, param_4) == 0 && local_128->field_0x108 == param_5 && !FUN_004b1a80((char *)param_4, param_5))
 		{
 			local_dc = new FUN_004b2330_0;
-			strcpy_s(local_dc->field_0x0, 0x100, local_128 + 4);
+			strcpy_s(local_dc->field_0x0, 0x100, local_128->field_0x4);
 			local_dc->field_0x104 = param_5;
 			local_dc->field_0x108 = param_1;
 			local_dc->field_0x10c = *local_c;
@@ -685,7 +685,7 @@ void FUN_004b5ad0(void)
 	}
 }
 
-// DIFF: code: the original has an empty wait loop that this code leaves out.
+// DIFF: code: an always false loop test precedes the iterator dereference in the original.
 // FUNCTION: SADX 0x004b5e70
 void FUN_004b5e70(Magic::RenderCore::Texture **param_1)
 {
@@ -712,7 +712,7 @@ void FUN_004b5e70(Magic::RenderCore::Texture **param_1)
 		if (local_5i)
 		{
 			local_14 = *DAT_05b422d8;
-			*(int *)local_14->field_0x108 = local_14->field_0x10c;
+			*local_14->field_0x108 = local_14->field_0x10c;
 			if (local_14->field_0x114 != 0)
 			{
 				(local_14->field_0x114)->FUN_00922750();

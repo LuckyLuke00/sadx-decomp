@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1431" rx="6" fill="#161b22" stroke="#30363d"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e6edf3">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#8b949e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,420 of 16,475 game functions done (38.96%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#8b949e">6,421 of 16,475 game functions done (38.97%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#0d1117"/></pattern></defs>
 <polygon points="591.8,1185.5 598.2,1185.5 599.9,1187 601,1188.6 595,1195.5 589,1188.6 590.1,1187" fill="#4e32f3"/>
 <polygon points="591.8,1185.5 598.2,1185.5 599.9,1187 601,1188.6 589,1188.6 590.1,1187" fill="#ffffff" fill-opacity="0.4"/>
@@ -2252,9 +2252,9 @@
 <rect x="56" y="84" width="6" height="6" fill="#ffd700"><title>0x006e1a80 RoboLockOnCursor: 100%</title></rect>
 <rect x="49" y="91" width="6" height="6" fill="#ffd700"><title>0x0070b6a0 changere101rinit: 100%</title></rect>
 </g>
-<rect x="233" y="907" width="92" height="60" rx="3" fill="#21262d" stroke="#30363d"><title>E-101 Beta: 29 of 35 functions done</title></rect>
+<rect x="233" y="907" width="92" height="60" rx="3" fill="#21262d" stroke="#30363d"><title>E-101 Beta: 30 of 35 functions done</title></rect>
 <text x="236" y="921" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">E-101 Beta</text>
-<text x="236" y="936" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">67%</tspan></text>
+<text x="236" y="936" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e6edf3"><tspan font-weight="400" fill="#8b949e">72%</tspan></text>
 <g transform="translate(236,940)">
 <rect y="0" width="84" height="14" fill="url(#todo)"/>
 <rect y="14" width="77" height="7" fill="url(#todo)"/>
@@ -2274,7 +2274,7 @@
 <rect x="7" y="7" width="6" height="6" fill="#869bab"><title>0x00705bc0 hover: 46.2%</title></rect>
 <rect x="14" y="7" width="6" height="6" fill="#ffd700"><title>0x00705d30 fall: 100%</title></rect>
 <rect x="21" y="7" width="6" height="6" fill="#ffd700"><title>0x00705e20 damage: 100%</title></rect>
-<rect x="28" y="7" width="6" height="6" fill="#fdd607"><title>0x00705f10 attack: 99.1%</title></rect>
+<rect x="28" y="7" width="6" height="6" fill="#ffd700"><title>0x00705f10 attack: 100%</title></rect>
 <rect x="35" y="7" width="6" height="6" fill="#ffd700"><title>0x007060a0 death(1): 100%</title></rect>
 <rect x="42" y="7" width="6" height="6" fill="#5a80c1"><title>0x007061a0 execMode: 25.7%</title></rect>
 <rect x="49" y="7" width="6" height="6" fill="#ffd700"><title>0x00706270 callbackTgt: 100%</title></rect>

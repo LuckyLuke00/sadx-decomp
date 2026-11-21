@@ -310,6 +310,7 @@ static void CreateShutterParts(struct task *tp)
 	njPopMatrix(1);
 }
 
+// DIFF: code: the stub for AppearZERO takes a stack argument where the original passes a register argument.
 // FUNCTION: SADX 0x008b1170
 void ObjShelterGrass(struct task *tp)
 {

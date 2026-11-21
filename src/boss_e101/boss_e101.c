@@ -14,7 +14,7 @@ static void FUN_00705690(int *param_1, int *param_2);
 extern char DAT_05ccdad1;
 static void waitPlayer(struct task *pTask);
 static void FUN_00705520(struct task *param_1);
-static void FUN_007054e0(int param_1, struct task *param_2);
+static void FUN_007054e0(struct task *param_1, int param_2);
 static void turnBody(struct task *pTask, struct NJS_POINT3 *posTarget, long angMax);
 static int FUN_00705400(struct task *param_1, float param_2);
 static void chkDamage(struct task *pTask);
@@ -123,10 +123,10 @@ static void turnBody(struct task *pTask, struct NJS_POINT3 *posTarget, long angM
 }
 
 // FUNCTION: SADX 0x007054e0
-static void FUN_007054e0(int param_1, struct task *param_2)
+static void FUN_007054e0(struct task *param_1, int param_2)
 {
-	char *var1 = (char *)param_2->awp + param_1 * 12;
-	EnemyBossE101Missile((struct NJS_POINT3 *)(var1 + 0xa4), (struct NJS_POINT3 *)(var1 + 0xbc), param_2->twp->cwp);
+	char *var1 = (char *)param_1->awp + param_2 * 12;
+	EnemyBossE101Missile((struct NJS_POINT3 *)(var1 + 0xa4), (struct NJS_POINT3 *)(var1 + 0xbc), param_1->twp->cwp);
 	dsPlay_oneshot(0x99, 0, 0, 0);
 }
 
@@ -611,13 +611,12 @@ static void attack(struct task *pTask)
 	case 2:
 		turnBody(pTask, &DAT_05baf368[0]->pos, 0x2d8);
 		DAT_05edd13e &= 0xfd;
-		if (!(var2->nframe >= 35.0f))
+		if (var2->nframe >= 35.0f)
 		{
-			break;
+			FUN_007054e0(pTask, 1);
+			DAT_05edd13e &= 0xfe;
+			var1->smode = 3;
 		}
-		FUN_007054e0(1, pTask);
-		DAT_05edd13e &= 0xfe;
-		var1->smode = 3;
 		break;
 	case 3:
 		if (DAT_05edd13e & 1)
@@ -791,6 +790,7 @@ static void destTgt(struct task *pTask)
 	BSetMotion(var1, var2);
 }
 
+// DIFF: code: this code stores and reloads the motion frame before the CalcMMMatrix call.
 // FUNCTION: SADX 0x00706460
 static void dispTgt(struct task *pTask)
 {
