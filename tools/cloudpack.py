@@ -1,7 +1,8 @@
 """Pack JSONL training rows for a cloud trainer, so the cloud never stores them in plain text.
 
 pack drops each line that a project's drop rule matches from every string value in every row, turns each private word
-into hidden_name, then refuses to write if a deny rule still matches a value. Dict keys are the row format's own and
+into a numbered placeholder (hidden_1, hidden_2, ...: one number per word within a row, by first appearance), then
+refuses to write if a deny rule still matches a value. Dict keys are the row format's own and
 are not checked. One pack holds named sets of rows (such as train and dev) and a small meta object (such as the export
 manifest's sha256), so the cloud stores one opaque file. It gzips them and encrypts them with AES-256-GCM. keygen
 writes the key, 32 random bytes in base64, to a file outside the repo; no command prints it. The trainer reads the key
@@ -18,8 +19,9 @@ Every function takes keys as bytes; decode_key turns a key file's base64 text in
 Rules file, one rule per line, `#` starts a comment:
     drop REGEX     a line of a string that this matches leaves the row
     private GLOB   a word of these files (relative to the repo root) that no file git tracks holds, in its text or
-                   its path, becomes hidden_name: a name that only a private source knows. A word that is a hex
-                   number, such as dead, stays: the rows' bytes are written with such words
+                   its path, becomes its row's placeholder: a name that only a private source knows. A word that
+                   is a hex number, such as dead, stays: the rows' bytes are written with such words. pack_rows
+                   returns each row's placeholders, so the caller can turn a cloud reply back with unhide
     deny REGEX     a string that still matches after the drops stops the pack
 """
 import argparse
@@ -43,7 +45,7 @@ BOX_MAGIC = b"CPB1"  # a box: this magic, the sender's one-time public key, then
 BOX_HEADER_BYTES = len(BOX_MAGIC) + KEY_BYTES
 WORD = re.compile(r"\b[A-Za-z_]\w*", re.ASCII)
 HEX = re.compile(r"[0-9A-Fa-f]+")
-HIDDEN_NAME = "hidden_name"
+HIDDEN_PREFIX = "hidden_"  # a private word's placeholder is this and its number within the row
 SHOWN_HITS = 20  # the deny hits a refused pack prints
 
 
@@ -93,14 +95,15 @@ def private_words(globs: list[str]) -> set[str]:
     return private - public
 
 
-def scrub(value, drops: list[re.Pattern], hidden: set[str], counts: Counter):
-    """VALUE with drop_lines and hide applied to each string in it."""
+def scrub(value, drops: list[re.Pattern], hidden: set[str], counts: Counter, names: dict):
+    """VALUE with drop_lines and hide applied to each string in it, in order; NAMES ({word: placeholder}) is the
+    row's numbering."""
     if isinstance(value, str):
-        return hide(drop_lines(value, drops, counts), hidden, counts)
+        return hide(drop_lines(value, drops, counts), hidden, counts, names)
     if isinstance(value, list):
-        return [scrub(item, drops, hidden, counts) for item in value]
+        return [scrub(item, drops, hidden, counts, names) for item in value]
     if isinstance(value, dict):
-        return {key: scrub(item, drops, hidden, counts) for key, item in value.items()}
+        return {key: scrub(item, drops, hidden, counts, names) for key, item in value.items()}
     return value
 
 
@@ -116,18 +119,26 @@ def drop_lines(text: str, drops: list[re.Pattern], counts: Counter) -> str:
     return "\n".join(kept)
 
 
-def hide(text: str, hidden: set[str], counts: Counter) -> str:
-    """TEXT with each word of HIDDEN turned into HIDDEN_NAME; COUNTS gets one per word."""
+def hide(text: str, hidden: set[str], counts: Counter, names: dict) -> str:
+    """TEXT with each word of HIDDEN turned into its placeholder in NAMES ({word: placeholder}); a word NAMES lacks
+    gets the next number. COUNTS gets one per word."""
     if not hidden:
         return text
 
     def rename(match: re.Match) -> str:
-        if match.group(0) not in hidden:
-            return match.group(0)
+        word = match.group(0)
+        if word not in hidden:
+            return word
         counts["private words hidden"] += 1
-        return HIDDEN_NAME
+        return names.setdefault(word, f"{HIDDEN_PREFIX}{len(names) + 1}")
 
     return WORD.sub(rename, text)
+
+
+def unhide(text: str, placeholders: dict) -> str:
+    """TEXT with each placeholder of PLACEHOLDERS ({placeholder: word}) turned back into its word; a placeholder the
+    row never had stays."""
+    return WORD.sub(lambda match: placeholders.get(match.group(0), match.group(0)), text)
 
 
 def strings(value):
@@ -234,14 +245,16 @@ def unseal_box(blob: bytes, private: bytes) -> bytes:
     return unseal(blob[BOX_HEADER_BYTES:], box_key(shared, sender_public, raw_public(private_key)))
 
 
-def pack_rows(sets: dict, meta: dict, rules_text: str, key: bytes) -> tuple[bytes, Counter]:
-    """SETS ({name: rows}) scrubbed by the rules, checked, and sealed with KEY together with META; and the counts of
-    what the rules removed. The plain text is a header line {"meta": META, "sets": {name: row count}}, then the rows
-    of each set in order, one JSON line each."""
+def pack_rows(sets: dict, meta: dict, rules_text: str, key: bytes) -> tuple[bytes, Counter, dict]:
+    """SETS ({name: rows}) scrubbed by the rules, checked, and sealed with KEY together with META; the counts of
+    what the rules removed; and per set, each row's placeholders ({placeholder: word}), for unhide. The plain text is
+    a header line {"meta": META, "sets": {name: row count}}, then the rows of each set in order, one JSON line each."""
     drops, globs, denies = read_rules(rules_text)
     hidden = private_words(globs) if globs else set()
     counts = Counter()
-    scrubbed = {name: [scrub(row, drops, hidden, counts) for row in rows] for name, rows in sets.items()}
+    names = {name: [{} for _ in rows] for name, rows in sets.items()}
+    scrubbed = {name: [scrub(row, drops, hidden, counts, row_names) for row, row_names in zip(rows, names[name])]
+                for name, rows in sets.items()}
     hits = [f"{name} row {index}: {hit}" for name, rows in scrubbed.items()
             for index, row in enumerate(rows) for hit in deny_hits(row, denies)]
     if hits:
@@ -250,7 +263,9 @@ def pack_rows(sets: dict, meta: dict, rules_text: str, key: bytes) -> tuple[byte
     header = {"meta": meta, "sets": {name: len(rows) for name, rows in scrubbed.items()}}
     lines = [header] + [row for rows in scrubbed.values() for row in rows]
     text = "".join(json.dumps(line, ensure_ascii=False) + "\n" for line in lines)
-    return seal(gzip.compress(text.encode("utf-8")), key), counts
+    placeholders = {name: [{placeholder: word for word, placeholder in row_names.items()} for row_names in rows]
+                    for name, rows in names.items()}
+    return seal(gzip.compress(text.encode("utf-8")), key), counts, placeholders
 
 
 def load(blob: bytes, key: bytes) -> tuple[dict, dict]:
@@ -337,7 +352,7 @@ def pack(args):
             sys.exit(f"--set takes NAME=FILE with a new name each time, not {item!r}")
         sets[name] = read_jsonl(Path(path))
     meta = {"manifest_sha256": hashlib.sha256(args.manifest.read_bytes()).hexdigest()} if args.manifest else {}
-    blob, counts = pack_rows(sets, meta, args.rules.read_text(encoding="utf-8"), decode_key(args.key.read_text()))
+    blob, counts, _ = pack_rows(sets, meta, args.rules.read_text(encoding="utf-8"), decode_key(args.key.read_text()))
     args.out.write_bytes(blob)
     print(f"rows: {sizes(sets)}; {len(blob)} bytes to {args.out}")
     for label, count in counts.most_common():

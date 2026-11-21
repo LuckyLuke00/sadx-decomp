@@ -1,5 +1,6 @@
-"""Checks for tools/cloudpack.py: the rules file, the drops, the hidden private words, the deny stop, the round trip,
-line separators inside a row, the refusals of a changed pack or box and of a wrong key, and the command line."""
+"""Checks for tools/cloudpack.py: the rules file, the drops, the numbered private words and their way back, the deny
+stop, the round trip, line separators inside a row, the refusals of a changed pack or box and of a wrong key, and the
+command line."""
 import base64
 import hashlib
 import json
@@ -9,6 +10,7 @@ import sys
 import tempfile
 from collections import Counter
 from pathlib import Path
+from unittest import mock
 
 import cloudpack
 import osutil
@@ -61,7 +63,7 @@ def check_rules() -> list[str]:
 def check_drops() -> list[str]:
     """A drop rule removes only the lines it matches, in nested strings, and counts them; a rule keeps its spaces."""
     key = new_key()
-    blob, counts = cloudpack.pack_rows({"train": [ROW]}, {}, RULES, key)
+    blob, counts, _ = cloudpack.pack_rows({"train": [ROW]}, {}, RULES, key)
     rows = cloudpack.load(blob, key)[1]["train"]
     wanted = [{"messages": [{"role": "user", "content": "file: a.cpp\nmov eax, 1"},
                             {"role": "assistant", "content": "int a;"}]}]
@@ -70,13 +72,32 @@ def check_drops() -> list[str]:
 
 
 def check_hidden() -> list[str]:
-    """A private word becomes hidden_name in nested strings, and a longer word that holds it stays."""
-    counts = Counter()
-    value = {"a": ["mov eax, [0x10] ; secret_name+0x4", "secret_names stay"]}
-    got = cloudpack.scrub(value, [], {"secret_name"}, counts)
-    wanted = {"a": ["mov eax, [0x10] ; hidden_name+0x4", "secret_names stay"]}
+    """Each private word gets its own placeholder, numbered by first appearance across nested strings, the same one
+    each time it comes back; a longer word that holds it stays. unhide turns them back and leaves a placeholder the
+    row never had."""
+    counts, names = Counter(), {}
+    value = {"a": ["mov eax, [0x10] ; secret_name+0x4", "secret_names stay"], "b": "other_secret(secret_name)"}
+    got = cloudpack.scrub(value, [], {"secret_name", "other_secret"}, counts, names)
+    wanted = {"a": ["mov eax, [0x10] ; hidden_1+0x4", "secret_names stay"], "b": "hidden_2(hidden_1)"}
     failures = [] if got == wanted else [f"hiding gives {got}"]
-    return failures + ([] if counts == {"private words hidden": 1} else [f"hide counts are {dict(counts)}"])
+    if counts != {"private words hidden": 3}:
+        failures.append(f"hide counts are {dict(counts)}")
+    back = cloudpack.unhide("hidden_2(hidden_1, hidden_3) hidden_1x", {p: w for w, p in names.items()})
+    if back != "other_secret(secret_name, hidden_3) hidden_1x":
+        failures.append(f"unhide gives {back!r}")
+    return failures
+
+
+def check_placeholders() -> list[str]:
+    """pack_rows numbers each row on its own and returns each row's placeholders."""
+    key = new_key()
+    rows = [{"text": "b a b"}, {"text": "a"}]
+    with mock.patch.object(cloudpack, "private_words", lambda globs: {"a", "b"}):
+        blob, _, placeholders = cloudpack.pack_rows({"train": rows}, {}, "private t/*\n", key)
+    got = (cloudpack.load(blob, key)[1]["train"], placeholders)
+    wanted = ([{"text": "hidden_1 hidden_2 hidden_1"}, {"text": "hidden_1"}],
+              {"train": [{"hidden_1": "b", "hidden_2": "a"}, {"hidden_1": "a"}]})
+    return [] if got == wanted else [f"pack_rows placeholders give {got}, not {wanted}"]
 
 
 def check_words() -> list[str]:
@@ -89,7 +110,7 @@ def check_separators() -> list[str]:
     """A row that holds U+2028, U+2029 or \\x85 comes back whole."""
     key = new_key()
     row = {"text": "a b c\x85d"}
-    blob, _ = cloudpack.pack_rows({"train": [row, row]}, {}, "", key)
+    blob, _, _ = cloudpack.pack_rows({"train": [row, row]}, {}, "", key)
     rows = cloudpack.load(blob, key)[1]["train"]
     return [] if rows == [row, row] else [f"separators round trip gives {rows}"]
 
@@ -113,7 +134,7 @@ def check_refusals() -> list[str]:
     """load refuses a pack with a changed nonce, ciphertext or tag byte, a changed magic or another key, and
     decode_key refuses a key of 16 bytes."""
     key = new_key()
-    blob, _ = cloudpack.pack_rows({"train": [ROW]}, {}, RULES, key)
+    blob, _, _ = cloudpack.pack_rows({"train": [ROW]}, {}, RULES, key)
     changed = "the key is wrong or the pack changed"
     cases = [("a changed nonce", flip(blob, len(cloudpack.MAGIC)), key, changed),
              ("a changed ciphertext", flip(blob, cloudpack.HEADER_BYTES), key, changed),
@@ -190,7 +211,7 @@ def check_pack_command() -> list[str]:
             return [f"cloudpack pack exits {packed.returncode}: {packed.stderr[-300:]}"]
         got = cloudpack.load((folder / "data.bin").read_bytes(), key)
         wanted = ({"manifest_sha256": hashlib.sha256(b"{}").hexdigest()},
-                  {"train": [{"text": "call hidden_name ; public_name"}]})
+                  {"train": [{"text": "call hidden_1 ; public_name"}]})
         failures = [] if got == wanted else [f"pack in a git repo gives {got}"]
         checked = run_cloudpack(folder, "check", "data.bin", "--key", "pack.key")
         return failures + ([] if "rows train 1 " in checked.stdout else [f"cloudpack check prints {checked.stdout!r}"])
@@ -220,7 +241,7 @@ def check_open_command() -> list[str]:
 
 def run() -> list[str]:
     """Every check of cloudpack.py: the failures of all."""
-    return (check_rules() + check_drops() + check_hidden() + check_words() + check_separators() + check_sets()
+    return (check_rules() + check_drops() + check_hidden() + check_placeholders() + check_words() + check_separators() + check_sets()
             + check_deny() + check_refusals() + check_boxes() + check_key_commands() + check_pack_command()
             + check_open_command())
 
