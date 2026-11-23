@@ -4553,6 +4553,9 @@ struct obj object_breakkabe_after_after[1];
 // GLOBAL: SADX 0x04accb44
 struct obj object_hasigo_hasigo_hotsh_hasigo_hotsh[1];
 
+// GLOBAL: SADX 0x04acd694
+struct obj object_fens_nc_fen_nc_fen[1];
+
 // GLOBAL: SADX 0x04ad2918
 struct NJS_ACTION action_kowaresuisou_hikari_sin[1];
 

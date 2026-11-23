@@ -68674,8 +68674,32 @@
    "library": false
   },
   {
-   "address": "0x008a59e0",
+   "address": "0x008a5880",
    "name": "DispATask(14)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008a5900",
+   "name": "InitATask(6)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008a5930",
+   "name": "ObjShelterFens",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008a59e0",
+   "name": "DispATask(15)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68747,7 +68771,7 @@
   },
   {
    "address": "0x008a7360",
-   "name": "DispATask(15)",
+   "name": "DispATask(16)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68787,7 +68811,7 @@
   },
   {
    "address": "0x008aac00",
-   "name": "DispATask(16)",
+   "name": "DispATask(17)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68819,7 +68843,7 @@
   },
   {
    "address": "0x008abd90",
-   "name": "DispATask(17)",
+   "name": "DispATask(18)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68835,7 +68859,7 @@
   },
   {
    "address": "0x008abec0",
-   "name": "DispATask(18)",
+   "name": "DispATask(19)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68947,7 +68971,7 @@
   },
   {
    "address": "0x008aedb0",
-   "name": "DispATask(19)",
+   "name": "DispATask(20)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68971,7 +68995,7 @@
   },
   {
    "address": "0x008aeee0",
-   "name": "InitATask(6)",
+   "name": "InitATask(7)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -69003,7 +69027,7 @@
   },
   {
    "address": "0x008af0e0",
-   "name": "DispATask(20)",
+   "name": "DispATask(21)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -69067,7 +69091,7 @@
   },
   {
    "address": "0x008af6f0",
-   "name": "InitATask(7)",
+   "name": "InitATask(8)",
    "accuracy": 0.9770992366412213,
    "effective": false,
    "stub": false,
@@ -69123,7 +69147,7 @@
   },
   {
    "address": "0x008b06d0",
-   "name": "DispATask(21)",
+   "name": "DispATask(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -69171,7 +69195,7 @@
   },
   {
    "address": "0x008b0c10",
-   "name": "InitATask(8)",
+   "name": "InitATask(9)",
    "accuracy": 0.7654320987654321,
    "effective": false,
    "stub": false,
@@ -69227,7 +69251,7 @@
   },
   {
    "address": "0x008b1400",
-   "name": "DispATask(22)",
+   "name": "DispATask(23)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -69275,7 +69299,7 @@
   },
   {
    "address": "0x008b1910",
-   "name": "InitATask(9)",
+   "name": "InitATask(10)",
    "accuracy": 0.7654320987654321,
    "effective": false,
    "stub": false,
@@ -103887,6 +103911,13 @@
    "library": false
   },
   {
+   "address": "0x04acd694",
+   "name": "object_fens_nc_fen_nc_fen",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x04ad2918",
    "name": "action_kowaresuisou_hikari_sin",
    "size": 8,
@@ -103932,6 +103963,13 @@
    "address": "0x04ad74d4",
    "name": "object_breakkabe_aftercoli_aftercoli",
    "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x04ad7698",
+   "name": "ColliInfo",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -105548,5 +105586,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "b6d559dd06c11bff5ed1c340028e93c1811a727840769bd0f1ada475bed5a654"
+ "inputs_sha256": "c055d1f509a5b7942ada8c4bc762609cb828800ea8391505ba565f3b91ede7a2"
 }

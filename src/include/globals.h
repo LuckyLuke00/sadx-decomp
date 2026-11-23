@@ -1521,6 +1521,7 @@ extern struct obj object_breakkabe_br_part_br_part[];
 extern struct obj object_breakkabe_before_before[];
 extern struct obj object_breakkabe_after_after[];
 extern struct obj object_hasigo_hasigo_hotsh_hasigo_hotsh[1];
+extern struct obj object_fens_nc_fen_nc_fen[];
 extern struct NJS_ACTION action_kowaresuisou_hikari_sin[1];
 extern struct obj object_wc_kanso_kanso_kanso[];
 extern struct obj object_wc_mark1a_m1a_m1a[];
