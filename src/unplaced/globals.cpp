@@ -4397,17 +4397,26 @@ struct NJS_TEXLIST texlist_obj_finalegg;
 // GLOBAL: SADX 0x0481569c
 struct obj object_b_con_cl_conbere_cl_side[1];
 
+// GLOBAL: SADX 0x0481e218
+struct NJS_MODEL model_setasiba_lv1_lv1[1];
+
 // GLOBAL: SADX 0x0485455c
 struct obj object_dramcan_can_can;
 
 // GLOBAL: SADX 0x0485a5d4
 struct obj object_kowarekabe_mae_mae[1];
 
+// GLOBAL: SADX 0x0486eb04
+struct obj object_hakidasi_hakidasi_hakidasi[1];
+
 // GLOBAL: SADX 0x0488ad3c
 struct obj object_hsgo_hasigo_hasigo[1];
 
 // GLOBAL: SADX 0x0488dfa4
 struct obj object_ligpfr_light01_light01[1];
+
+// GLOBAL: SADX 0x0488e5b4
+struct obj object_bl_nc_bllight_nc_bllight[1];
 
 // GLOBAL: SADX 0x048a54a8
 struct NJS_TEXLIST texlist_unyo;
@@ -9955,6 +9964,9 @@ int DAT_060dd080[16];
 
 // GLOBAL: SADX 0x060dd0c0
 int DAT_060dd0c0[21];
+
+// GLOBAL: SADX 0x060dd27c
+bool DAT_060dd27c;
 
 // GLOBAL: SADX 0x060dd388
 int DAT_060dd388;

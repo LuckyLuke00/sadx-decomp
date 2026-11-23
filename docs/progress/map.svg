@@ -3,7 +3,7 @@
 <rect x="0.5" y="0.5" width="999" height="1431" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="16" y="28" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#1f2328">Sonic Adventure DX.exe</text>
 <text x="984" y="28" text-anchor="end" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#59636e">one square per function, shares in code bytes</text>
-<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,421 of 16,475 game functions done (38.97%), accuracy 99.88%</text>
+<text x="16" y="50" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#59636e">6,430 of 16,475 game functions done (39.02%), accuracy 99.88%</text>
 <defs><pattern id="todo" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e6eaef"/></pattern></defs>
 <polygon points="591.8,1185.5 598.2,1185.5 599.9,1187 601,1188.6 595,1195.5 589,1188.6 590.1,1187" fill="#4e32f3"/>
 <polygon points="591.8,1185.5 598.2,1185.5 599.9,1187 601,1188.6 589,1188.6 590.1,1187" fill="#ffffff" fill-opacity="0.4"/>
@@ -1257,8 +1257,8 @@
 <rect x="56" y="56" width="6" height="6" fill="#b07d00"><title>0x008e1ab0 FUN_008e1ab0: 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#b07d00"><title>0x008e1b50 FUN_008e1b50: 100%</title></rect>
 </g>
-<rect x="20" y="435" width="200" height="127" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Final Egg: 71 of 364 functions done</title></rect>
-<text x="23" y="449" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Final Egg <tspan font-weight="400" fill="#59636e">8%</tspan></text>
+<rect x="20" y="435" width="200" height="127" rx="3" fill="#ffffff" stroke="#d0d7de"><title>Final Egg: 80 of 364 functions done</title></rect>
+<text x="23" y="449" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">Final Egg <tspan font-weight="400" fill="#59636e">9%</tspan></text>
 <g transform="translate(23,453)">
 <rect y="0" width="189" height="91" fill="url(#todo)"/>
 <rect y="91" width="91" height="7" fill="url(#todo)"/>
@@ -1285,7 +1285,10 @@
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x00891100 FinalEggSetAppearZERO: 100%</title></rect>
 <rect x="70" y="14" width="6" height="6" fill="#b07d00"><title>0x00891110 FUN_00891110: 100%</title></rect>
 <rect x="77" y="14" width="6" height="6" fill="#b07d00"><title>0x00891150 ObjectFinalEggRelease: 100%</title></rect>
-<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008913b0 DispATask(6): 100%</title></rect>
+<rect x="84" y="14" width="6" height="6" fill="#b07d00"><title>0x00891240 DispATask(6): 100%</title></rect>
+<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x008912d0 InitATask(2): 100%</title></rect>
+<rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x00891300 ObjectFinalEggLight2: 100%</title></rect>
+<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008913b0 DispATask(7): 100%</title></rect>
 <rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x00891440 ObjectFinalEggLight1: 100%</title></rect>
 <rect x="133" y="14" width="6" height="6" fill="#b07d00"><title>0x00891720 Object_finalegg_saku_End: 100%</title></rect>
 <rect x="63" y="21" width="6" height="6" fill="#b07d00"><title>0x00893000 hane_draw: 100%</title></rect>
@@ -1317,6 +1320,9 @@
 <rect x="0" y="42" width="6" height="6" fill="#b07d00"><title>0x008959f0 ObjectFinalEggTarget: 100%</title></rect>
 <rect x="7" y="42" width="6" height="6" fill="#b07d00"><title>0x00895a40 hallgate_draw: 100%</title></rect>
 <rect x="42" y="42" width="6" height="6" fill="#b07d00"><title>0x00895cd0 hallgate_o_switch_end: 100%</title></rect>
+<rect x="49" y="49" width="6" height="6" fill="#b07d00"><title>0x00897110 DispATask(8): 100%</title></rect>
+<rect x="56" y="49" width="6" height="6" fill="#b07d00"><title>0x00897180 InitATask(3): 100%</title></rect>
+<rect x="63" y="49" width="6" height="6" fill="#b07d00"><title>0x008971b0 ObjectFinalEggHakidashi: 100%</title></rect>
 <rect x="98" y="49" width="6" height="6" fill="#b07d00"><title>0x00897400 WallPartsDisplayer: 100%</title></rect>
 <rect x="119" y="49" width="6" height="6" fill="#b07d00"><title>0x008975c0 FUN_008975c0: 100%</title></rect>
 <rect x="147" y="49" width="6" height="6" fill="#b07d00"><title>0x00897b70 DrumPartsDisplayer: 100%</title></rect>
@@ -1327,6 +1333,9 @@
 <rect x="126" y="77" width="6" height="6" fill="#b07d00"><title>0x0089ddc0 SideTaskExec: 100%</title></rect>
 <rect x="140" y="77" width="6" height="6" fill="#b07d00"><title>0x0089de40 SideTask: 100%</title></rect>
 <rect x="175" y="77" width="6" height="6" fill="#b07d00"><title>0x0089e140 DispAllHahens: 100%</title></rect>
+<rect x="63" y="84" width="6" height="6" fill="#b07d00"><title>0x0089f230 DispATask(9): 100%</title></rect>
+<rect x="70" y="84" width="6" height="6" fill="#b07d00"><title>0x0089f310 InitATask(4): 100%</title></rect>
+<rect x="77" y="84" width="6" height="6" fill="#b07d00"><title>0x0089f340 ObjectFinalEggSetStep: 100%</title></rect>
 <rect x="49" y="91" width="6" height="6" fill="#b07d00"><title>0x008a1160 ObjectCamPathCam_End: 100%</title></rect>
 <rect x="56" y="91" width="6" height="6" fill="#b07d00"><title>0x008a1ff0 FEGG_DrawBrokenPiece: 100%</title></rect>
 <rect x="63" y="91" width="6" height="6" fill="#b07d00"><title>0x008a2020 FEGG_TaskActGravity: 100%</title></rect>
@@ -1357,13 +1366,13 @@
 <rect x="84" y="7" width="6" height="6" fill="#b07d00"><title>0x008a40d0 ObjShelterEnemycontainer: 100%</title></rect>
 <rect x="56" y="14" width="6" height="6" fill="#b07d00"><title>0x008a4f00 ObjShelterGate2: 100%</title></rect>
 <rect x="63" y="14" width="6" height="6" fill="#b07d00"><title>0x008a4f30 ObjShelterGate13: 100%</title></rect>
-<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x008a54f0 DispATask(8): 100%</title></rect>
+<rect x="91" y="14" width="6" height="6" fill="#b07d00"><title>0x008a54f0 DispATask(11): 100%</title></rect>
 <rect x="98" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5560 ObjShelterWcMark2: 100%</title></rect>
-<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5620 DispATask(9): 100%</title></rect>
+<rect x="105" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5620 DispATask(12): 100%</title></rect>
 <rect x="112" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5690 ObjShelterWcMark1: 100%</title></rect>
-<rect x="119" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5750 DispATask(10): 100%</title></rect>
+<rect x="119" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5750 DispATask(13): 100%</title></rect>
 <rect x="126" y="14" width="6" height="6" fill="#b07d00"><title>0x008a57c0 ObjShelterKanso: 100%</title></rect>
-<rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x008a59e0 DispATask(11): 100%</title></rect>
+<rect x="154" y="14" width="6" height="6" fill="#b07d00"><title>0x008a59e0 DispATask(14): 100%</title></rect>
 <rect x="161" y="14" width="6" height="6" fill="#b07d00"><title>0x008a5a50 ObjShelterHikari: 100%</title></rect>
 <rect x="0" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5c70 Disp(59): 100%</title></rect>
 <rect x="7" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5ce0 Exec(48): 100%</title></rect>
@@ -1371,16 +1380,16 @@
 <rect x="28" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5e60 Exec(49): 100%</title></rect>
 <rect x="35" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5e90 ObjShelterGateside: 100%</title></rect>
 <rect x="42" y="21" width="6" height="6" fill="#b07d00"><title>0x008a5ee0 Hasigo_Display: 100%</title></rect>
-<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x008a7360 DispATask(12): 100%</title></rect>
+<rect x="63" y="28" width="6" height="6" fill="#b07d00"><title>0x008a7360 DispATask(15): 100%</title></rect>
 <rect x="70" y="28" width="6" height="6" fill="#b07d00"><title>0x008a73d0 ObjShelterSyoumei: 100%</title></rect>
 <rect x="91" y="42" width="6" height="6" fill="#b07d00"><title>0x008a9eb0 Disp2Task(struct task *): 100%</title></rect>
 <rect x="98" y="42" width="6" height="6" fill="#b07d00"><title>0x008a9f20 Disp3Task: 100%</title></rect>
-<rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x008aac00 DispATask(13): 100%</title></rect>
+<rect x="0" y="49" width="6" height="6" fill="#b07d00"><title>0x008aac00 DispATask(16): 100%</title></rect>
 <rect x="14" y="49" width="6" height="6" fill="#b07d00"><title>0x008aaf20 ObjShelterGate1: 100%</title></rect>
 <rect x="126" y="49" width="6" height="6" fill="#b07d00"><title>0x008ab900 HahenDisp: 100%</title></rect>
-<rect x="182" y="49" width="6" height="6" fill="#b07d00"><title>0x008abd90 DispATask(14): 100%</title></rect>
+<rect x="182" y="49" width="6" height="6" fill="#b07d00"><title>0x008abd90 DispATask(17): 100%</title></rect>
 <rect x="0" y="56" width="6" height="6" fill="#b07d00"><title>0x008abe00 ObjShelterLight3: 100%</title></rect>
-<rect x="7" y="56" width="6" height="6" fill="#b07d00"><title>0x008abec0 DispATask(15): 100%</title></rect>
+<rect x="7" y="56" width="6" height="6" fill="#b07d00"><title>0x008abec0 DispATask(18): 100%</title></rect>
 <rect x="14" y="56" width="6" height="6" fill="#b07d00"><title>0x008abf30 ObjShelterLight2: 100%</title></rect>
 <rect x="63" y="56" width="6" height="6" fill="#b07d00"><title>0x008ac3f0 DrawBoxColli(2): 100%</title></rect>
 <rect x="70" y="56" width="6" height="6" fill="#b07d00"><title>0x008ac4b0 ColliShelterSwitch: 100%</title></rect>
@@ -1390,43 +1399,43 @@
 <rect x="98" y="56" width="6" height="6" fill="#b07d00"><title>0x008adb80 execTgt_waitPlayerTask: 100%</title></rect>
 <rect x="112" y="56" width="6" height="6" fill="#b07d00"><title>0x008add30 Destructor(struct task *): 100%</title></rect>
 <rect x="14" y="63" width="6" height="6" fill="#b07d00"><title>0x008aed70 FUN_008aed70: 100%</title></rect>
-<rect x="21" y="63" width="6" height="6" fill="#b07d00"><title>0x008aedb0 DispATask(16): 100%</title></rect>
+<rect x="21" y="63" width="6" height="6" fill="#b07d00"><title>0x008aedb0 DispATask(19): 100%</title></rect>
 <rect x="28" y="63" width="6" height="6" fill="#b07d00"><title>0x008aee30 DesertATask(3): 100%</title></rect>
 <rect x="35" y="63" width="6" height="6" fill="#b07d00"><title>0x008aee60 FUN_008aee60: 100%</title></rect>
-<rect x="42" y="63" width="6" height="6" fill="#b07d00"><title>0x008aeee0 InitATask(3): 100%</title></rect>
+<rect x="42" y="63" width="6" height="6" fill="#b07d00"><title>0x008aeee0 InitATask(6): 100%</title></rect>
 <rect x="49" y="63" width="6" height="6" fill="#b07d00"><title>0x008aefa0 ObjShelterBoxAna: 100%</title></rect>
 <rect x="56" y="63" width="6" height="6" fill="#b07d00"><title>0x008af040 FUN_008af040: 100%</title></rect>
 <rect x="63" y="63" width="6" height="6" fill="#b07d00"><title>0x008af090 FUN_008af090: 100%</title></rect>
-<rect x="70" y="63" width="6" height="6" fill="#b07d00"><title>0x008af0e0 DispATask(17): 100%</title></rect>
+<rect x="70" y="63" width="6" height="6" fill="#b07d00"><title>0x008af0e0 DispATask(20): 100%</title></rect>
 <rect x="77" y="63" width="6" height="6" fill="#b07d00"><title>0x008af150 DispBTask: 100%</title></rect>
 <rect x="84" y="63" width="6" height="6" fill="#b07d00"><title>0x008af1c0 InitBTask(1): 100%</title></rect>
 <rect x="91" y="63" width="6" height="6" fill="#b07d00"><title>0x008af250 ShutterPartsDisplayer(2): 100%</title></rect>
 <rect x="98" y="63" width="6" height="6" fill="#b07d00"><title>0x008af2d0 ShutterParts(1): 100%</title></rect>
 <rect x="105" y="63" width="6" height="6" fill="#b07d00"><title>0x008af410 BrokenPieceDisplayer(2): 100%</title></rect>
 <rect x="112" y="63" width="6" height="6" fill="#b07d00"><title>0x008af4c0 CreateShutterParticles(1): 100%</title></rect>
-<rect x="126" y="63" width="6" height="6" fill="#af7e0d"><title>0x008af6f0 InitATask(4): 97.7%</title></rect>
+<rect x="126" y="63" width="6" height="6" fill="#af7e0d"><title>0x008af6f0 InitATask(7): 97.7%</title></rect>
 <rect x="133" y="63" width="6" height="6" fill="#b07d00"><title>0x008af7e0 ShutterBrokenPiece(1): 100%</title></rect>
 <rect x="140" y="63" width="6" height="6" fill="#9b8f7d"><title>0x008af8a0 CreateShutterParts(1): 61.6%</title></rect>
 <rect x="147" y="63" width="6" height="6" fill="#ad8025"><title>0x008afcc0 ObjShelterCrashMonitor: 93.5%</title></rect>
 <rect x="63" y="70" width="6" height="6" fill="#b07d00"><title>0x008b0650 ExecATask(6): 100%</title></rect>
-<rect x="70" y="70" width="6" height="6" fill="#b07d00"><title>0x008b06d0 DispATask(18): 100%</title></rect>
+<rect x="70" y="70" width="6" height="6" fill="#b07d00"><title>0x008b06d0 DispATask(21): 100%</title></rect>
 <rect x="77" y="70" width="6" height="6" fill="#b07d00"><title>0x008b0740 ShutterPartsDisplayer(3): 100%</title></rect>
 <rect x="84" y="70" width="6" height="6" fill="#b07d00"><title>0x008b07c0 ShutterParts(2): 100%</title></rect>
 <rect x="91" y="70" width="6" height="6" fill="#b07d00"><title>0x008b0910 BrokenPieceDisplayer(3): 100%</title></rect>
 <rect x="98" y="70" width="6" height="6" fill="#b07d00"><title>0x008b09c0 CreateShutterParticles(2): 100%</title></rect>
-<rect x="112" y="70" width="6" height="6" fill="#a3895c"><title>0x008b0c10 InitATask(5): 76.5%</title></rect>
+<rect x="112" y="70" width="6" height="6" fill="#a3895c"><title>0x008b0c10 InitATask(8): 76.5%</title></rect>
 <rect x="119" y="70" width="6" height="6" fill="#b07d00"><title>0x008b0ca0 ShutterBrokenPiece(2): 100%</title></rect>
 <rect x="126" y="70" width="6" height="6" fill="#96918a"><title>0x008b0d60 CreateShutterParts(2): 54.8%</title></rect>
 <rect x="133" y="70" width="6" height="6" fill="#ad8027"><title>0x008b1170 ObjShelterGrass: 93.2%</title></rect>
 <rect x="140" y="70" width="6" height="6" fill="#b07d00"><title>0x008b12a0 InitBTask(2): 100%</title></rect>
 <rect x="147" y="70" width="6" height="6" fill="#b07d00"><title>0x008b1330 ExecATask(7): 100%</title></rect>
 <rect x="154" y="70" width="6" height="6" fill="#b07d00"><title>0x008b13b0 FUN_008b13b0: 100%</title></rect>
-<rect x="161" y="70" width="6" height="6" fill="#b07d00"><title>0x008b1400 DispATask(19): 100%</title></rect>
+<rect x="161" y="70" width="6" height="6" fill="#b07d00"><title>0x008b1400 DispATask(22): 100%</title></rect>
 <rect x="168" y="70" width="6" height="6" fill="#b07d00"><title>0x008b1470 Disp2Task(2): 100%</title></rect>
 <rect x="175" y="70" width="6" height="6" fill="#b07d00"><title>0x008b14e0 ShutterPartsDisplayer(4): 100%</title></rect>
 <rect x="182" y="70" width="6" height="6" fill="#b07d00"><title>0x008b1560 ShutterParts(3): 100%</title></rect>
 <rect x="0" y="77" width="6" height="6" fill="#b07d00"><title>0x008b16b0 CreateShutterParticles(3): 100%</title></rect>
-<rect x="14" y="77" width="6" height="6" fill="#a3895c"><title>0x008b1910 InitATask(6): 76.5%</title></rect>
+<rect x="14" y="77" width="6" height="6" fill="#a3895c"><title>0x008b1910 InitATask(9): 76.5%</title></rect>
 <rect x="21" y="77" width="6" height="6" fill="#979189"><title>0x008b19a0 CreateShutterParts(3): 55.5%</title></rect>
 <rect x="28" y="77" width="6" height="6" fill="#ac812d"><title>0x008b1dc0 ObjShelterBreakKabe: 92.2%</title></rect>
 <rect x="105" y="77" width="6" height="6" fill="#b07d00"><title>0x008b2a40 PieceDisp(struct task *): 100%</title></rect>

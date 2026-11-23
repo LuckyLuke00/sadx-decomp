@@ -67778,8 +67778,32 @@
    "library": false
   },
   {
-   "address": "0x008913b0",
+   "address": "0x00891240",
    "name": "DispATask(6)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008912d0",
+   "name": "InitATask(2)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00891300",
+   "name": "ObjectFinalEggLight2",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008913b0",
+   "name": "DispATask(7)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68178,6 +68202,30 @@
    "library": false
   },
   {
+   "address": "0x00897110",
+   "name": "DispATask(8)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x00897180",
+   "name": "InitATask(3)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x008971b0",
+   "name": "ObjectFinalEggHakidashi",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
    "address": "0x00897400",
    "name": "WallPartsDisplayer",
    "accuracy": 1.0,
@@ -68276,6 +68324,30 @@
   {
    "address": "0x0089e140",
    "name": "DispAllHahens",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0089f230",
+   "name": "DispATask(9)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0089f310",
+   "name": "InitATask(4)",
+   "accuracy": 1.0,
+   "effective": false,
+   "stub": false,
+   "library": false
+  },
+  {
+   "address": "0x0089f340",
+   "name": "ObjectFinalEggSetStep",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68515,7 +68587,7 @@
   },
   {
    "address": "0x008a4a90",
-   "name": "InitATask(2)",
+   "name": "InitATask(5)",
    "accuracy": 0.05555555555555555,
    "effective": false,
    "stub": true,
@@ -68523,7 +68595,7 @@
   },
   {
    "address": "0x008a4bd0",
-   "name": "DispATask(7)",
+   "name": "DispATask(10)",
    "accuracy": 0.029411764705882353,
    "effective": false,
    "stub": true,
@@ -68555,7 +68627,7 @@
   },
   {
    "address": "0x008a54f0",
-   "name": "DispATask(8)",
+   "name": "DispATask(11)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68571,7 +68643,7 @@
   },
   {
    "address": "0x008a5620",
-   "name": "DispATask(9)",
+   "name": "DispATask(12)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68587,7 +68659,7 @@
   },
   {
    "address": "0x008a5750",
-   "name": "DispATask(10)",
+   "name": "DispATask(13)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68603,7 +68675,7 @@
   },
   {
    "address": "0x008a59e0",
-   "name": "DispATask(11)",
+   "name": "DispATask(14)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68675,7 +68747,7 @@
   },
   {
    "address": "0x008a7360",
-   "name": "DispATask(12)",
+   "name": "DispATask(15)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68715,7 +68787,7 @@
   },
   {
    "address": "0x008aac00",
-   "name": "DispATask(13)",
+   "name": "DispATask(16)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68747,7 +68819,7 @@
   },
   {
    "address": "0x008abd90",
-   "name": "DispATask(14)",
+   "name": "DispATask(17)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68763,7 +68835,7 @@
   },
   {
    "address": "0x008abec0",
-   "name": "DispATask(15)",
+   "name": "DispATask(18)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68875,7 +68947,7 @@
   },
   {
    "address": "0x008aedb0",
-   "name": "DispATask(16)",
+   "name": "DispATask(19)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68899,7 +68971,7 @@
   },
   {
    "address": "0x008aeee0",
-   "name": "InitATask(3)",
+   "name": "InitATask(6)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68931,7 +69003,7 @@
   },
   {
    "address": "0x008af0e0",
-   "name": "DispATask(17)",
+   "name": "DispATask(20)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -68995,7 +69067,7 @@
   },
   {
    "address": "0x008af6f0",
-   "name": "InitATask(4)",
+   "name": "InitATask(7)",
    "accuracy": 0.9770992366412213,
    "effective": false,
    "stub": false,
@@ -69051,7 +69123,7 @@
   },
   {
    "address": "0x008b06d0",
-   "name": "DispATask(18)",
+   "name": "DispATask(21)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -69099,7 +69171,7 @@
   },
   {
    "address": "0x008b0c10",
-   "name": "InitATask(5)",
+   "name": "InitATask(8)",
    "accuracy": 0.7654320987654321,
    "effective": false,
    "stub": false,
@@ -69155,7 +69227,7 @@
   },
   {
    "address": "0x008b1400",
-   "name": "DispATask(19)",
+   "name": "DispATask(22)",
    "accuracy": 1.0,
    "effective": false,
    "stub": false,
@@ -69203,7 +69275,7 @@
   },
   {
    "address": "0x008b1910",
-   "name": "InitATask(6)",
+   "name": "InitATask(9)",
    "accuracy": 0.7654320987654321,
    "effective": false,
    "stub": false,
@@ -103409,6 +103481,13 @@
    "library": false
   },
   {
+   "address": "0x0481e218",
+   "name": "model_setasiba_lv1_lv1",
+   "size": 44,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x0485455c",
    "name": "object_dramcan_can_can",
    "size": 52,
@@ -103418,6 +103497,13 @@
   {
    "address": "0x0485a5d4",
    "name": "object_kowarekabe_mae_mae",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x0486eb04",
+   "name": "object_hakidasi_hakidasi_hakidasi",
    "size": 52,
    "match": false,
    "library": false
@@ -103437,6 +103523,13 @@
    "library": false
   },
   {
+   "address": "0x0488e5b4",
+   "name": "object_bl_nc_bllight_nc_bllight",
+   "size": 52,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x048a54a8",
    "name": "texlist_unyo",
    "size": 8,
@@ -103446,6 +103539,13 @@
   {
    "address": "0x048a5720",
    "name": "cinfo_root",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x048a5750",
+   "name": "ColliInfo",
    "size": 48,
    "match": false,
    "library": false
@@ -103479,9 +103579,23 @@
    "library": false
   },
   {
+   "address": "0x048a5bfc",
+   "name": "ColliInfo",
+   "size": 48,
+   "match": false,
+   "library": false
+  },
+  {
    "address": "0x048a6280",
    "name": "HahenInfo",
    "size": 16,
+   "match": false,
+   "library": false
+  },
+  {
+   "address": "0x048a6440",
+   "name": "ColliInfo",
+   "size": 48,
    "match": false,
    "library": false
   },
@@ -105434,5 +105548,5 @@
  ],
  "data_bytes": 85341574,
  "exe": "Sonic Adventure DX.exe",
- "inputs_sha256": "c5fe9aebd2834970f35dc9a42de3da4c9addb2cd124c70f446c4876b457f5c5d"
+ "inputs_sha256": "b6d559dd06c11bff5ed1c340028e93c1811a727840769bd0f1ada475bed5a654"
 }
