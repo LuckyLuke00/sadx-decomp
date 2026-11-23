@@ -58,25 +58,32 @@ def check_without_static() -> list[str]:
 
 
 def check_kept_alive() -> list[str]:
-    """A static definition that nothing else in the file names gets a global that holds its address, when its name
-    is in SHARED or SHARED is None. Its own body, its file-scope declarations and comments do not count as naming it.
-    Any other file stays as it was."""
+    """A static definition that nothing else in the file names gets a global that holds its address, or with CALLS a
+    global function that calls it and passes its own parameters on (a parameter without a name gets one), when its
+    name is in SHARED or SHARED is None. Its own body, its file-scope declarations and comments do not count as naming
+    it. Any other file stays as it was."""
     keep = "\n\nvoid *llm_keep_00401000 = (void *)Foo;\n"
+    call = "\n\nvoid llm_keep_00401000(void)\n{\n\tFoo();\n}\n"
     foo = [ANN, "static void Foo(void)", "{", "}"]
-    cases = [(foo, None, keep), (foo, {"Foo"}, keep), (foo, {"Bar"}, ""),
-             ([ANN, "void Foo(void)", "{", "}"], None, ""),
-             (["static void Foo(void);", "// Foo is set up here", *foo], None, keep),
-             ([ANN, "static void Foo(void)", "{", "    Foo();", "}"], None, keep),
-             ([*foo, "", "// FUNCTION: SADX 0x00401010", "void Bar(void)", "{", "    Foo();", "}"], None, ""),
-             ([*foo, "", "void (*hook)(void) = Foo;"], None, ""),
-             (["// FUNCTION: SADX 0x00401010", "static void Bar(void)", "{", "}"], None, "")]
+    params = [ANN, "static int Foo(struct task *tp, float m[16], void (*cb)(int), short, void (*)(void), ...)",
+              "{", "\treturn 0;", "}"]
+    forward = ("\n\nvoid llm_keep_00401000(struct task *tp, float m[16], void (*cb)(int), short forwarded_3, "
+               "void (*forwarded_4)(void), ...)\n{\n\tFoo(tp, m, cb, forwarded_3, forwarded_4);\n}\n")
+    cases = [(foo, None, False, keep), (foo, {"Foo"}, False, keep), (foo, {"Bar"}, False, ""),
+             (foo, None, True, call), (foo, {"Bar"}, True, ""), (params, None, True, forward),
+             ([ANN, "void Foo(void)", "{", "}"], None, True, ""),
+             (["static void Foo(void);", "// Foo is set up here", *foo], None, False, keep),
+             ([ANN, "static void Foo(void)", "{", "    Foo();", "}"], None, True, call),
+             ([*foo, "", "// FUNCTION: SADX 0x00401010", "void Bar(void)", "{", "    Foo();", "}"], None, True, ""),
+             ([*foo, "", "void (*hook)(void) = Foo;"], None, False, ""),
+             (["// FUNCTION: SADX 0x00401010", "static void Bar(void)", "{", "}"], None, True, "")]
     failures = []
-    for lines, shared, wanted in cases:
+    for lines, shared, calls, wanted in cases:
         text = "\n".join(lines) + "\n"
         expected = text.rstrip("\n") + wanted if wanted else text
-        found = llm.kept_alive(text, 0x00401000, shared)
+        found = llm.kept_alive(text, 0x00401000, shared, calls)
         if found != expected:
-            failures.append(f"kept_alive gives {found!r} for {text!r} and {shared}, not {expected!r}")
+            failures.append(f"kept_alive gives {found!r} for {text!r}, {shared} and {calls}, not {expected!r}")
     return failures
 
 

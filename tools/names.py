@@ -141,6 +141,31 @@ def without_parameter_name(param: str) -> str:
     return (m.group(1).rstrip() + m.group(3)).strip()
 
 
+def forwarded_parameters(params: list[str]) -> tuple[str, str]:
+    """(parameter list, argument list) of a function that takes PARAMS and passes each one on: a parameter without a
+    name gets `forwarded_N` (N its index), `...` passes nothing on, and a lone `void` gives `void` and no arguments."""
+    declared, passed = [], []
+    for i, param in enumerate(params):
+        param = " ".join(param.split())
+        if param == "void":
+            continue
+        if param == "...":
+            declared.append(param)
+            continue
+        pointer = re.search(r"\(\s*\*\s*(\w*)\s*\)", param)
+        if pointer:
+            name = pointer.group(1) or f"forwarded_{i}"
+            param = param[:pointer.start()] + f"(*{name})" + param[pointer.end():]
+        elif without_parameter_name(param) != param:
+            name = re.search(r"([A-Za-z_]\w*)\s*(?:\[[^\]]*\]\s*)*$", param).group(1)
+        else:
+            name = f"forwarded_{i}"
+            param = f"{param} {name}"
+        declared.append(param)
+        passed.append(name)
+    return ", ".join(declared) or "void", ", ".join(passed)
+
+
 def without_parameter_names(sig: str) -> str:
     """SIG with its parameters' names dropped: two declarations of one function then compare equal."""
     span = parameter_span(sig)

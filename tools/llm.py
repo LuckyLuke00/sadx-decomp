@@ -497,11 +497,14 @@ def defined_twice(output, func):
     return any("error LNK2005:" in line and f"(?{name}@@" in line for line in output.split("\n"))
 
 
-def kept_alive(text, address, shared):
-    """TEXT with a global that holds the address of its static definition at ADDRESS, when nothing else in TEXT names
-    it and its name may be in SHARED (None: unknown), so it cannot lose its `static` (see without_static): the
-    compiler leaves out a static function that nothing names, which leaves nothing to score. The global changes no
-    code of the function. Only the build that scores gets it: the file keeps TEXT."""
+def kept_alive(text, address, shared, calls):
+    """TEXT with a scoring-only global that keeps its static definition at ADDRESS, when nothing else in TEXT names it
+    and its name may be in SHARED (None: unknown), so it cannot lose its `static` (see without_static): the compiler
+    leaves out a static function that nothing names, which leaves nothing to score. CALLS: a global function that
+    calls it and passes its own parameters on, for a register-argument callee (see register_args), whose code a held
+    address changes; else a global that holds its address, as the game holds its callbacks (2026-11-21: 10 matched
+    cluster callees scored 61% to 98% with the address and 100% with a call; 6 matched callbacks scored 100% with the
+    address and 84% to 99% with a call). Only the build that scores gets it: the file keeps TEXT."""
     lines = text.split("\n")
     span = definition_span(lines, address)
     if span is None:
@@ -513,13 +516,21 @@ def kept_alive(text, address, shared):
         return text
     if re.search(rf"\b{re.escape(name)}\b", names.code_outside(lines, name, span)):
         return text
-    return text.rstrip("\n") + f"\n\nvoid *llm_keep_{address:08x} = (void *){name};\n"
+    if not calls:
+        return text.rstrip("\n") + f"\n\nvoid *llm_keep_{address:08x} = (void *){name};\n"
+    params, args = names.forwarded_parameters(names.parameter_span(signature)[2])
+    return text.rstrip("\n") + f"\n\nvoid llm_keep_{address:08x}({params})\n{{\n\t{name}({args});\n}}\n"
 
 
 @functools.cache
 def function_rows(tables):
     """address: row of each function in TABLES' functions.tsv."""
     return {int(r["address"], 16): r for r in names.table_rows(Path(tables) / "functions.tsv")}
+
+
+def register_args(tables, address):
+    """Whether TABLES put the function at ADDRESS in a cluster: its callers pass it arguments in registers."""
+    return bool(function_rows(tables).get(address, {}).get("cluster"))
 
 
 @functools.cache
@@ -1786,7 +1797,8 @@ def solve_function(args, file, address, size, transcript):
         """(the percent of TEXT as the file, or None, the build output). The file is TEXT again afterwards: the
         global of kept_alive and the code of tree_code are only for the build."""
         built = tree_code(text, file, roots, config["tables"], table_types)
-        write_source(path, kept_alive(built, address, shared), crlf)
+        calls = register_args(config["tables"], address)
+        write_source(path, kept_alive(built, address, shared, calls), crlf)
         restore(generated)
         result = score(config, address)
         write_source(path, text, crlf)
